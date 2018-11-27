@@ -30,7 +30,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.URLRewriteRuleAction;
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.URLRewriteRuleAction} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class URLRewriteRuleActionItemProvider extends EsbNodeItemProvider {
@@ -38,7 +37,6 @@ public class URLRewriteRuleActionItemProvider extends EsbNodeItemProvider {
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public URLRewriteRuleActionItemProvider(AdapterFactory adapterFactory) {
@@ -49,7 +47,6 @@ public class URLRewriteRuleActionItemProvider extends EsbNodeItemProvider {
      * This returns the property descriptors for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -71,108 +68,138 @@ public class URLRewriteRuleActionItemProvider extends EsbNodeItemProvider {
      * This adds a property descriptor for the Rule Action feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addRuleActionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_URLRewriteRuleAction_ruleAction_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_URLRewriteRuleAction_ruleAction_feature",
-                        "_UI_URLRewriteRuleAction_type"),
-                EsbPackage.Literals.URL_REWRITE_RULE_ACTION__RULE_ACTION, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_URLRewriteRuleAction_ruleAction_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_URLRewriteRuleAction_ruleAction_feature", "_UI_URLRewriteRuleAction_type"),
+                 EsbPackage.Literals.URL_REWRITE_RULE_ACTION__RULE_ACTION,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Rule Fragment feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addRuleFragmentPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_URLRewriteRuleAction_ruleFragment_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_URLRewriteRuleAction_ruleFragment_feature",
-                        "_UI_URLRewriteRuleAction_type"),
-                EsbPackage.Literals.URL_REWRITE_RULE_ACTION__RULE_FRAGMENT, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_URLRewriteRuleAction_ruleFragment_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_URLRewriteRuleAction_ruleFragment_feature", "_UI_URLRewriteRuleAction_type"),
+                 EsbPackage.Literals.URL_REWRITE_RULE_ACTION__RULE_FRAGMENT,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Rule Option feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addRuleOptionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_URLRewriteRuleAction_ruleOption_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_URLRewriteRuleAction_ruleOption_feature",
-                        "_UI_URLRewriteRuleAction_type"),
-                EsbPackage.Literals.URL_REWRITE_RULE_ACTION__RULE_OPTION, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_URLRewriteRuleAction_ruleOption_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_URLRewriteRuleAction_ruleOption_feature", "_UI_URLRewriteRuleAction_type"),
+                 EsbPackage.Literals.URL_REWRITE_RULE_ACTION__RULE_OPTION,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Action Expression feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addActionExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_URLRewriteRuleAction_actionExpression_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_URLRewriteRuleAction_actionExpression_feature",
-                        "_UI_URLRewriteRuleAction_type"),
-                EsbPackage.Literals.URL_REWRITE_RULE_ACTION__ACTION_EXPRESSION, true, false, true, null, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_URLRewriteRuleAction_actionExpression_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_URLRewriteRuleAction_actionExpression_feature", "_UI_URLRewriteRuleAction_type"),
+                 EsbPackage.Literals.URL_REWRITE_RULE_ACTION__ACTION_EXPRESSION,
+                 true,
+                 false,
+                 true,
+                 null,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Action Value feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addActionValuePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_URLRewriteRuleAction_actionValue_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_URLRewriteRuleAction_actionValue_feature",
-                        "_UI_URLRewriteRuleAction_type"),
-                EsbPackage.Literals.URL_REWRITE_RULE_ACTION__ACTION_VALUE, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_URLRewriteRuleAction_actionValue_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_URLRewriteRuleAction_actionValue_feature", "_UI_URLRewriteRuleAction_type"),
+                 EsbPackage.Literals.URL_REWRITE_RULE_ACTION__ACTION_VALUE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Action Regex feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addActionRegexPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_URLRewriteRuleAction_actionRegex_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_URLRewriteRuleAction_actionRegex_feature",
-                        "_UI_URLRewriteRuleAction_type"),
-                EsbPackage.Literals.URL_REWRITE_RULE_ACTION__ACTION_REGEX, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_URLRewriteRuleAction_actionRegex_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_URLRewriteRuleAction_actionRegex_feature", "_UI_URLRewriteRuleAction_type"),
+                 EsbPackage.Literals.URL_REWRITE_RULE_ACTION__ACTION_REGEX,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This returns URLRewriteRuleAction.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -184,15 +211,15 @@ public class URLRewriteRuleActionItemProvider extends EsbNodeItemProvider {
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public String getText(Object object) {
-        RuleActionType labelValue = ((URLRewriteRuleAction) object).getRuleAction();
+        RuleActionType labelValue = ((URLRewriteRuleAction)object).getRuleAction();
         String label = labelValue == null ? null : labelValue.toString();
-        return label == null || label.length() == 0 ? getString("_UI_URLRewriteRuleAction_type")
-                : getString("_UI_URLRewriteRuleAction_type") + " " + label;
+        return label == null || label.length() == 0 ?
+            getString("_UI_URLRewriteRuleAction_type") :
+            getString("_UI_URLRewriteRuleAction_type") + " " + label;
     }
 
     /**
@@ -200,7 +227,6 @@ public class URLRewriteRuleActionItemProvider extends EsbNodeItemProvider {
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -208,13 +234,13 @@ public class URLRewriteRuleActionItemProvider extends EsbNodeItemProvider {
         updateChildren(notification);
 
         switch (notification.getFeatureID(URLRewriteRuleAction.class)) {
-        case EsbPackage.URL_REWRITE_RULE_ACTION__RULE_ACTION:
-        case EsbPackage.URL_REWRITE_RULE_ACTION__RULE_FRAGMENT:
-        case EsbPackage.URL_REWRITE_RULE_ACTION__RULE_OPTION:
-        case EsbPackage.URL_REWRITE_RULE_ACTION__ACTION_VALUE:
-        case EsbPackage.URL_REWRITE_RULE_ACTION__ACTION_REGEX:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-            return;
+            case EsbPackage.URL_REWRITE_RULE_ACTION__RULE_ACTION:
+            case EsbPackage.URL_REWRITE_RULE_ACTION__RULE_FRAGMENT:
+            case EsbPackage.URL_REWRITE_RULE_ACTION__RULE_OPTION:
+            case EsbPackage.URL_REWRITE_RULE_ACTION__ACTION_VALUE:
+            case EsbPackage.URL_REWRITE_RULE_ACTION__ACTION_REGEX:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+                return;
         }
         super.notifyChanged(notification);
     }
@@ -224,7 +250,6 @@ public class URLRewriteRuleActionItemProvider extends EsbNodeItemProvider {
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

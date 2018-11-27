@@ -32,8 +32,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CommentMediatorImpl#getCommentText <em>Comment
- * Text</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CommentMediatorImpl#getCommentText <em>Comment Text</em>}</li>
  * </ul>
  *
  * @generated
@@ -43,7 +42,6 @@ public class CommentMediatorImpl extends MediatorImpl implements CommentMediator
      * The default value of the '{@link #getCommentText() <em>Comment Text</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getCommentText()
      * @generated
      * @ordered
@@ -54,7 +52,6 @@ public class CommentMediatorImpl extends MediatorImpl implements CommentMediator
      * The cached value of the '{@link #getCommentText() <em>Comment Text</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getCommentText()
      * @generated
      * @ordered
@@ -64,7 +61,6 @@ public class CommentMediatorImpl extends MediatorImpl implements CommentMediator
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected CommentMediatorImpl() {
@@ -74,7 +70,6 @@ public class CommentMediatorImpl extends MediatorImpl implements CommentMediator
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -85,7 +80,6 @@ public class CommentMediatorImpl extends MediatorImpl implements CommentMediator
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getCommentText() {
@@ -95,28 +89,25 @@ public class CommentMediatorImpl extends MediatorImpl implements CommentMediator
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setCommentText(String newCommentText) {
         String oldCommentText = commentText;
         commentText = newCommentText;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.COMMENT_MEDIATOR__COMMENT_TEXT,
-                    oldCommentText, commentText));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.COMMENT_MEDIATOR__COMMENT_TEXT, oldCommentText, commentText));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-        case EsbPackage.COMMENT_MEDIATOR__COMMENT_TEXT:
-            return getCommentText();
+            case EsbPackage.COMMENT_MEDIATOR__COMMENT_TEXT:
+                return getCommentText();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -124,15 +115,14 @@ public class CommentMediatorImpl extends MediatorImpl implements CommentMediator
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-        case EsbPackage.COMMENT_MEDIATOR__COMMENT_TEXT:
-            setCommentText((String) newValue);
-            return;
+            case EsbPackage.COMMENT_MEDIATOR__COMMENT_TEXT:
+                setCommentText((String)newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
@@ -140,15 +130,14 @@ public class CommentMediatorImpl extends MediatorImpl implements CommentMediator
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-        case EsbPackage.COMMENT_MEDIATOR__COMMENT_TEXT:
-            setCommentText(COMMENT_TEXT_EDEFAULT);
-            return;
+            case EsbPackage.COMMENT_MEDIATOR__COMMENT_TEXT:
+                setCommentText(COMMENT_TEXT_EDEFAULT);
+                return;
         }
         super.eUnset(featureID);
     }
@@ -156,14 +145,13 @@ public class CommentMediatorImpl extends MediatorImpl implements CommentMediator
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-        case EsbPackage.COMMENT_MEDIATOR__COMMENT_TEXT:
-            return COMMENT_TEXT_EDEFAULT == null ? commentText != null : !COMMENT_TEXT_EDEFAULT.equals(commentText);
+            case EsbPackage.COMMENT_MEDIATOR__COMMENT_TEXT:
+                return COMMENT_TEXT_EDEFAULT == null ? commentText != null : !COMMENT_TEXT_EDEFAULT.equals(commentText);
         }
         return super.eIsSet(featureID);
     }
@@ -171,13 +159,11 @@ public class CommentMediatorImpl extends MediatorImpl implements CommentMediator
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
-            return super.toString();
+        if (eIsProxy()) return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (commentText: ");

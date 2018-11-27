@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.Session#getType <em>Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.Session#getType <em>Type</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSession()
@@ -34,7 +34,6 @@ public interface Session extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.Type
      * @see #setType(Type)
@@ -48,7 +47,6 @@ public interface Session extends EObject {
      * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.Session#getType <em>Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.Type
      * @see #getType()

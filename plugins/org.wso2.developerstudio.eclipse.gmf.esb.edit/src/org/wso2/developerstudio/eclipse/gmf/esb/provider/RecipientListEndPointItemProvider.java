@@ -39,11 +39,9 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RecipientListEndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.RecipientListEndpointType;
 
 /**
- * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.RecipientListEndPoint}
- * object.
+ * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.RecipientListEndPoint} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class RecipientListEndPointItemProvider extends ParentEndPointItemProvider {
@@ -51,7 +49,6 @@ public class RecipientListEndPointItemProvider extends ParentEndPointItemProvide
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public RecipientListEndPointItemProvider(AdapterFactory adapterFactory) {
@@ -93,68 +90,88 @@ public class RecipientListEndPointItemProvider extends ParentEndPointItemProvide
      * This adds a property descriptor for the Endpoint Type feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addEndpointTypePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_RecipientListEndPoint_endpointType_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_RecipientListEndPoint_endpointType_feature",
-                        "_UI_RecipientListEndPoint_type"),
-                EsbPackage.Literals.RECIPIENT_LIST_END_POINT__ENDPOINT_TYPE, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_RecipientListEndPoint_endpointType_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_RecipientListEndPoint_endpointType_feature", "_UI_RecipientListEndPoint_type"),
+                 EsbPackage.Literals.RECIPIENT_LIST_END_POINT__ENDPOINT_TYPE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Endpoints Value feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addEndpointsValuePropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_RecipientListEndPoint_endpointsValue_feature"),
-                        getString("_UI_PropertyDescriptor_description",
-                                "_UI_RecipientListEndPoint_endpointsValue_feature", "_UI_RecipientListEndPoint_type"),
-                        EsbPackage.Literals.RECIPIENT_LIST_END_POINT__ENDPOINTS_VALUE, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_RecipientListEndPoint_endpointsValue_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_RecipientListEndPoint_endpointsValue_feature", "_UI_RecipientListEndPoint_type"),
+                 EsbPackage.Literals.RECIPIENT_LIST_END_POINT__ENDPOINTS_VALUE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Endpoints Expression feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addEndpointsExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_RecipientListEndPoint_endpointsExpression_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_RecipientListEndPoint_endpointsExpression_feature",
-                        "_UI_RecipientListEndPoint_type"),
-                EsbPackage.Literals.RECIPIENT_LIST_END_POINT__ENDPOINTS_EXPRESSION, true, false, false, null, null,
-                null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_RecipientListEndPoint_endpointsExpression_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_RecipientListEndPoint_endpointsExpression_feature", "_UI_RecipientListEndPoint_type"),
+                 EsbPackage.Literals.RECIPIENT_LIST_END_POINT__ENDPOINTS_EXPRESSION,
+                 true,
+                 false,
+                 false,
+                 null,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Max Cache feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addMaxCachePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_RecipientListEndPoint_maxCache_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_RecipientListEndPoint_maxCache_feature",
-                        "_UI_RecipientListEndPoint_type"),
-                EsbPackage.Literals.RECIPIENT_LIST_END_POINT__MAX_CACHE, true, false, false,
-                ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_RecipientListEndPoint_maxCache_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_RecipientListEndPoint_maxCache_feature", "_UI_RecipientListEndPoint_type"),
+                 EsbPackage.Literals.RECIPIENT_LIST_END_POINT__MAX_CACHE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
@@ -163,7 +180,6 @@ public class RecipientListEndPointItemProvider extends ParentEndPointItemProvide
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -182,7 +198,6 @@ public class RecipientListEndPointItemProvider extends ParentEndPointItemProvide
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -197,7 +212,6 @@ public class RecipientListEndPointItemProvider extends ParentEndPointItemProvide
      * This returns RecipientListEndPoint.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -209,14 +223,14 @@ public class RecipientListEndPointItemProvider extends ParentEndPointItemProvide
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public String getText(Object object) {
-        String label = ((RecipientListEndPoint) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_RecipientListEndPoint_type")
-                : getString("_UI_RecipientListEndPoint_type") + " " + label;
+        String label = ((RecipientListEndPoint)object).getName();
+        return label == null || label.length() == 0 ?
+            getString("_UI_RecipientListEndPoint_type") :
+            getString("_UI_RecipientListEndPoint_type") + " " + label;
     }
 
     /**
@@ -224,7 +238,6 @@ public class RecipientListEndPointItemProvider extends ParentEndPointItemProvide
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -232,18 +245,18 @@ public class RecipientListEndPointItemProvider extends ParentEndPointItemProvide
         updateChildren(notification);
 
         switch (notification.getFeatureID(RecipientListEndPoint.class)) {
-        case EsbPackage.RECIPIENT_LIST_END_POINT__ENDPOINT_TYPE:
-        case EsbPackage.RECIPIENT_LIST_END_POINT__ENDPOINTS_VALUE:
-        case EsbPackage.RECIPIENT_LIST_END_POINT__MAX_CACHE:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-            return;
-        case EsbPackage.RECIPIENT_LIST_END_POINT__INPUT_CONNECTOR:
-        case EsbPackage.RECIPIENT_LIST_END_POINT__OUTPUT_CONNECTOR:
-        case EsbPackage.RECIPIENT_LIST_END_POINT__WEST_OUTPUT_CONNECTOR:
-        case EsbPackage.RECIPIENT_LIST_END_POINT__ENDPOINTS_EXPRESSION:
-        case EsbPackage.RECIPIENT_LIST_END_POINT__MEDIATOR_FLOW:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-            return;
+            case EsbPackage.RECIPIENT_LIST_END_POINT__ENDPOINT_TYPE:
+            case EsbPackage.RECIPIENT_LIST_END_POINT__ENDPOINTS_VALUE:
+            case EsbPackage.RECIPIENT_LIST_END_POINT__MAX_CACHE:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+                return;
+            case EsbPackage.RECIPIENT_LIST_END_POINT__INPUT_CONNECTOR:
+            case EsbPackage.RECIPIENT_LIST_END_POINT__OUTPUT_CONNECTOR:
+            case EsbPackage.RECIPIENT_LIST_END_POINT__WEST_OUTPUT_CONNECTOR:
+            case EsbPackage.RECIPIENT_LIST_END_POINT__ENDPOINTS_EXPRESSION:
+            case EsbPackage.RECIPIENT_LIST_END_POINT__MEDIATOR_FLOW:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+                return;
         }
         super.notifyChanged(notification);
     }
@@ -253,28 +266,36 @@ public class RecipientListEndPointItemProvider extends ParentEndPointItemProvide
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.RECIPIENT_LIST_END_POINT__INPUT_CONNECTOR,
-                EsbFactory.eINSTANCE.createRecipientListEndPointInputConnector()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.RECIPIENT_LIST_END_POINT__INPUT_CONNECTOR,
+                 EsbFactory.eINSTANCE.createRecipientListEndPointInputConnector()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.RECIPIENT_LIST_END_POINT__OUTPUT_CONNECTOR,
-                EsbFactory.eINSTANCE.createRecipientListEndPointOutputConnector()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.RECIPIENT_LIST_END_POINT__OUTPUT_CONNECTOR,
+                 EsbFactory.eINSTANCE.createRecipientListEndPointOutputConnector()));
 
-        newChildDescriptors
-                .add(createChildParameter(EsbPackage.Literals.RECIPIENT_LIST_END_POINT__WEST_OUTPUT_CONNECTOR,
-                        EsbFactory.eINSTANCE.createRecipientListEndPointWestOutputConnector()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.RECIPIENT_LIST_END_POINT__WEST_OUTPUT_CONNECTOR,
+                 EsbFactory.eINSTANCE.createRecipientListEndPointWestOutputConnector()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.RECIPIENT_LIST_END_POINT__ENDPOINTS_EXPRESSION,
-                EsbFactory.eINSTANCE.createNamespacedProperty()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.RECIPIENT_LIST_END_POINT__ENDPOINTS_EXPRESSION,
+                 EsbFactory.eINSTANCE.createNamespacedProperty()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.RECIPIENT_LIST_END_POINT__MEDIATOR_FLOW,
-                EsbFactory.eINSTANCE.createMediatorFlow()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.RECIPIENT_LIST_END_POINT__MEDIATOR_FLOW,
+                 EsbFactory.eINSTANCE.createMediatorFlow()));
     }
 
 }

@@ -462,6 +462,13 @@
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//SqlExecutorIsolationLevel/TRANSACTION_SERIALIZABLE"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//SqlExecutorIsolationLevel/DEFAULT"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//SqlDatabaseType">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//SqlDatabaseType/OTHER"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//SqlDatabaseType/MYSQL"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//SqlDatabaseType/ORACLE"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//SqlDatabaseType/MSSQL"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//SqlDatabaseType/POSTGRESQL"/>
+    </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//SqlParameterValueType">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//SqlParameterValueType/LITERAL"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//SqlParameterValueType/EXPRESSION"/>
@@ -1712,6 +1719,7 @@
     <genClasses image="false" ecoreClass="esb.ecore#//AbstractSqlExecutorMediator">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractSqlExecutorMediator/connectionType"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractSqlExecutorMediator/connectionDsType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractSqlExecutorMediator/connectionDbType"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractSqlExecutorMediator/connectionDbDriver"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractSqlExecutorMediator/connectionDsInitialContext"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractSqlExecutorMediator/connectionDsName"/>
@@ -2393,6 +2401,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportVFSFileProcessCount"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportVFSLocking"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportVFSMaxRetryCount"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportVFSMoveAfterFailedMove"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportVFSReconnectTimeout"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportJMSSharedSubscription"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportJMSSubscriptionName"/>
@@ -2401,8 +2410,14 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportVFSMoveAfterProcess"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportVFSActionAfterErrors"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportVFSMoveAfterErrors"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportVFSFailedRecordsFileName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportVFSFailedRecordsFileDestination"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportVFSMoveFailedRecordTimestampFormat"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportVFSFailedRecordNextRetryDuration"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportVFSActionAfterFailure"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportVFSMoveAfterFailure"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportVFSReplyFileURI"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportVFSReplyFileName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportVFSAutoLockRelease"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportVFSAutoLockReleaseInterval"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportVFSLockReleaseSameNode"/>
@@ -2576,6 +2591,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/wssSslCipherSuites"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportRabbitMqConsumerQos"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportRabbitMqConsumerQosType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportJMSDBUrl"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//InboundEndpointParameter">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpointParameter/name"/>

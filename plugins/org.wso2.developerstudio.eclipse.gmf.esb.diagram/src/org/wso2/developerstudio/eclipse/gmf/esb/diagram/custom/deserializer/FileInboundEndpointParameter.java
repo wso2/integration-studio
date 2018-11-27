@@ -36,7 +36,14 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOU
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_VFS_LOCKING;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_VFS_LOCK_RELEASE_SAME_NODE;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_VFS_MAX_RETRY_COUNT;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_FAILED_MOVE;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_FAILURE;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_VFS_REPLY_FILE_URI;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_VFS_REPLY_FILE_NAME;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_VFS_FAILED_RECORDS_FILE_NAME;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_VFS_FAILED_RECORDS_FILE_DESTINATION;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_FAILED_RECORD_TIMESTAMP_FORMAT;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_VFS_FAILED_RECORD_NEXT_RETRY_DURATION;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_PROCESS;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_TIMESTAMP_FORMAT;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_VFS_RECONNECT_TIMEOUT;
@@ -70,61 +77,82 @@ public enum FileInboundEndpointParameter {
                                                             true), VFS_MAX_RETRY_COUNT_TYPE(
                                                                     InboundEndpointConstants.VFS_MAX_RETRY_COUNT,
                                                                     INBOUND_ENDPOINT__TRANSPORT_VFS_MAX_RETRY_COUNT,
-                                                                    true), VFS_RECONNECT_TIMEOUT_TYPE(
-                                                                            InboundEndpointConstants.VFS_RECONNECT_TIMEOUT,
-                                                                            INBOUND_ENDPOINT__TRANSPORT_VFS_RECONNECT_TIMEOUT,
-                                                                            true), VFS_MOVE_AFTER_PROCESS_TYPE(
-                                                                                    InboundEndpointConstants.VFS_MOVE_AFTER_PROCESS,
-                                                                                    INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_PROCESS,
-                                                                                    true), VFS_MOVE_AFTER_FAILURE_TYPE(
-                                                                                            InboundEndpointConstants.VFS_MOVE_AFTER_FAILURE,
-                                                                                            INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_FAILURE,
-                                                                                            true), VFS_MOVE_TIMESTAMP_FORMAT_TYPE(
-                                                                                                    InboundEndpointConstants.VFS_MOVE_TIMESTAMP_FORMAT,
-                                                                                                    INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_TIMESTAMP_FORMAT,
-                                                                                                    true), VFS_AUTO_LOCK_RELEASE_INTERVAL_TYPE(
-                                                                                                            InboundEndpointConstants.VFS_AUTO_LOCK_RELEASE_INTERVAL,
-                                                                                                            INBOUND_ENDPOINT__TRANSPORT_VFS_AUTO_LOCK_RELEASE_INTERVAL,
-                                                                                                            true), VFS_DISTRIBUTED_TIMEOUT_TYPE(
-                                                                                                                    InboundEndpointConstants.VFS_DISTRIBUTED_TIMEOUT,
-                                                                                                                    INBOUND_ENDPOINT__TRANSPORT_VFS_DISTRIBUTED_TIMEOUT,
-                                                                                                                    true), VFS_SUBFOLDER_TIMESTAMP_FORMAT_TYPE(
-                                                                                                                            InboundEndpointConstants.VFS_SUBFOLDER_TIMESTAMP_FORMAT,
-                                                                                                                            INBOUND_ENDPOINT__TRANSPORT_VFS_SUB_FOLDER_TIMESTAMP_FORMAT,
-                                                                                                                            true), VFS_LOCKING_TYPE(
-                                                                                                                                    InboundEndpointConstants.VFS_LOCKING,
-                                                                                                                                    INBOUND_ENDPOINT__TRANSPORT_VFS_LOCKING,
-                                                                                                                                    false), VFS_ACTION_AFTER_PROCESS_TYPE(
-                                                                                                                                            InboundEndpointConstants.VFS_ACTION_AFTER_PROCESS,
-                                                                                                                                            INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_PROCESS,
-                                                                                                                                            false), VFS_ACTION_AFTER_FAILURE_TYPE(
-                                                                                                                                                    InboundEndpointConstants.VFS_ACTION_AFTER_FAILURE,
-                                                                                                                                                    INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_FAILURE,
-                                                                                                                                                    false), VFS_AUTO_LOCK_RELEASE_TYPE(
-                                                                                                                                                            InboundEndpointConstants.VFS_AUTO_LOCK_RELEASE,
-                                                                                                                                                            INBOUND_ENDPOINT__TRANSPORT_VFS_AUTO_LOCK_RELEASE,
-                                                                                                                                                            false), VFS_LOCK_RELEASE_SAME_NODE_TYPE(
-                                                                                                                                                                    InboundEndpointConstants.VFS_LOCK_RELEASE_SAME_NODE,
-                                                                                                                                                                    INBOUND_ENDPOINT__TRANSPORT_VFS_LOCK_RELEASE_SAME_NODE,
-                                                                                                                                                                    false), VFS_DISTRIBUTED_LOCK_TYPE(
-                                                                                                                                                                            InboundEndpointConstants.VFS_DISTRIBUTED_LOCK,
-                                                                                                                                                                            INBOUND_ENDPOINT__TRANSPORT_VFS_DISTRIBUTED_LOCK,
-                                                                                                                                                                            false), VFS_FILESORT_ATTRIBUTE_TYPE(
-                                                                                                                                                                                    InboundEndpointConstants.VFS_FILESORT_ATTRIBUTE,
-                                                                                                                                                                                    INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_SORT_ATTRIBUTE,
-                                                                                                                                                                                    false), VFS_FILESORT_ASCENDING_TYPE(
-                                                                                                                                                                                            InboundEndpointConstants.VFS_FILESORT_ASCENDING,
-                                                                                                                                                                                            INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_SORT_ASCENDING,
-                                                                                                                                                                                            false), VFS_CREATE_FOLDER_TYPE(
-                                                                                                                                                                                                    InboundEndpointConstants.VFS_CREATE_FOLDER,
-                                                                                                                                                                                                    INBOUND_ENDPOINT__TRANSPORT_VFS_CREATE_FOLDER,
-                                                                                                                                                                                                    false), VFS_STREAMING_TYPE(
-                                                                                                                                                                                                            InboundEndpointConstants.VFS_STREAMING,
-                                                                                                                                                                                                            INBOUND_ENDPOINT__TRANSPORT_VFS_STREAMING,
-                                                                                                                                                                                                            false), VFS_BUILD_TYPE(
-                                                                                                                                                                                                                    InboundEndpointConstants.VFS_BUILD,
-                                                                                                                                                                                                                    INBOUND_ENDPOINT__TRANSPORT_VFS_BUILD,
-                                                                                                                                                                                                                    false);
+                                                                    true), VFS_MOVE_AFTER_FAILED_MOVE(
+                                                                            InboundEndpointConstants.VFS_MOVE_AFTER_FAILED_MOVE,
+                                                                            INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_FAILED_MOVE,
+                                                                            true), VFS_FAILED_RECORDS_FILE_NAME(
+                                                                                    InboundEndpointConstants.VFS_FAILED_RECORDS_FILE_NAME,
+                                                                                    INBOUND_ENDPOINT__TRANSPORT_VFS_FAILED_RECORDS_FILE_NAME,
+                                                                                    true), VFS_FAILED_RECORDS_FILE_DESTINATION(
+                                                                                            InboundEndpointConstants.VFS_FAILED_RECORDS_FILE_DESTINATION,
+                                                                                            INBOUND_ENDPOINT__TRANSPORT_VFS_FAILED_RECORDS_FILE_DESTINATION,
+                                                                                            true), VFS_MOVE_FAILED_RECORD_TIMESTAMP_FORMAT(
+                                                                                                    InboundEndpointConstants.VFS_MOVE_FAILED_RECORD_TIMESTAMP_FORMAT,
+                                                                                                    INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_FAILED_RECORD_TIMESTAMP_FORMAT,
+                                                                                                    true), VFS_FAILED_RECORD_NEXT_RETRY_DURATION(
+                                                                                                            InboundEndpointConstants.VFS_FAILED_RECORD_NEXT_RETRY_DURATION,
+                                                                                                            INBOUND_ENDPOINT__TRANSPORT_VFS_FAILED_RECORD_NEXT_RETRY_DURATION,
+                                                                                                            true), VFS_RECONNECT_TIMEOUT_TYPE(
+                                                                                                                    InboundEndpointConstants.VFS_RECONNECT_TIMEOUT,
+                                                                                                                    INBOUND_ENDPOINT__TRANSPORT_VFS_RECONNECT_TIMEOUT,
+                                                                                                                    true), VFS_MOVE_AFTER_PROCESS_TYPE(
+                                                                                                                            InboundEndpointConstants.VFS_MOVE_AFTER_PROCESS,
+                                                                                                                            INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_PROCESS,
+                                                                                                                            true), VFS_MOVE_AFTER_FAILURE_TYPE(
+                                                                                                                                    InboundEndpointConstants.VFS_MOVE_AFTER_FAILURE,
+                                                                                                                                    INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_FAILURE,
+                                                                                                                                    true), VFS_REPLY_FILE_URI(
+                                                                                                                                            InboundEndpointConstants.VFS_REPLY_FILE_URI,
+                                                                                                                                            INBOUND_ENDPOINT__TRANSPORT_VFS_REPLY_FILE_URI,
+                                                                                                                                            true), VFS_REPLY_FILE_NAME(
+                                                                                                                                                    InboundEndpointConstants.VFS_REPLY_FILE_NAME,
+                                                                                                                                                    INBOUND_ENDPOINT__TRANSPORT_VFS_REPLY_FILE_NAME,
+                                                                                                                                                    true), VFS_MOVE_TIMESTAMP_FORMAT_TYPE(
+                                                                                                                                                            InboundEndpointConstants.VFS_MOVE_TIMESTAMP_FORMAT,
+                                                                                                                                                            INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_TIMESTAMP_FORMAT,
+                                                                                                                                                            true), VFS_AUTO_LOCK_RELEASE_INTERVAL_TYPE(
+                                                                                                                                                                    InboundEndpointConstants.VFS_AUTO_LOCK_RELEASE_INTERVAL,
+                                                                                                                                                                    INBOUND_ENDPOINT__TRANSPORT_VFS_AUTO_LOCK_RELEASE_INTERVAL,
+                                                                                                                                                                    true), VFS_DISTRIBUTED_TIMEOUT_TYPE(
+                                                                                                                                                                            InboundEndpointConstants.VFS_DISTRIBUTED_TIMEOUT,
+                                                                                                                                                                            INBOUND_ENDPOINT__TRANSPORT_VFS_DISTRIBUTED_TIMEOUT,
+                                                                                                                                                                            true), VFS_SUBFOLDER_TIMESTAMP_FORMAT_TYPE(
+                                                                                                                                                                                    InboundEndpointConstants.VFS_SUBFOLDER_TIMESTAMP_FORMAT,
+                                                                                                                                                                                    INBOUND_ENDPOINT__TRANSPORT_VFS_SUB_FOLDER_TIMESTAMP_FORMAT,
+                                                                                                                                                                                    true), VFS_LOCKING_TYPE(
+                                                                                                                                                                                            InboundEndpointConstants.VFS_LOCKING,
+                                                                                                                                                                                            INBOUND_ENDPOINT__TRANSPORT_VFS_LOCKING,
+                                                                                                                                                                                            false), VFS_ACTION_AFTER_PROCESS_TYPE(
+                                                                                                                                                                                                    InboundEndpointConstants.VFS_ACTION_AFTER_PROCESS,
+                                                                                                                                                                                                    INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_PROCESS,
+                                                                                                                                                                                                    false), VFS_ACTION_AFTER_FAILURE_TYPE(
+                                                                                                                                                                                                            InboundEndpointConstants.VFS_ACTION_AFTER_FAILURE,
+                                                                                                                                                                                                            INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_FAILURE,
+                                                                                                                                                                                                            false), VFS_AUTO_LOCK_RELEASE_TYPE(
+                                                                                                                                                                                                                    InboundEndpointConstants.VFS_AUTO_LOCK_RELEASE,
+                                                                                                                                                                                                                    INBOUND_ENDPOINT__TRANSPORT_VFS_AUTO_LOCK_RELEASE,
+                                                                                                                                                                                                                    false), VFS_LOCK_RELEASE_SAME_NODE_TYPE(
+                                                                                                                                                                                                                            InboundEndpointConstants.VFS_LOCK_RELEASE_SAME_NODE,
+                                                                                                                                                                                                                            INBOUND_ENDPOINT__TRANSPORT_VFS_LOCK_RELEASE_SAME_NODE,
+                                                                                                                                                                                                                            false), VFS_DISTRIBUTED_LOCK_TYPE(
+                                                                                                                                                                                                                                    InboundEndpointConstants.VFS_DISTRIBUTED_LOCK,
+                                                                                                                                                                                                                                    INBOUND_ENDPOINT__TRANSPORT_VFS_DISTRIBUTED_LOCK,
+                                                                                                                                                                                                                                    false), VFS_FILESORT_ATTRIBUTE_TYPE(
+                                                                                                                                                                                                                                            InboundEndpointConstants.VFS_FILESORT_ATTRIBUTE,
+                                                                                                                                                                                                                                            INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_SORT_ATTRIBUTE,
+                                                                                                                                                                                                                                            false), VFS_FILESORT_ASCENDING_TYPE(
+                                                                                                                                                                                                                                                    InboundEndpointConstants.VFS_FILESORT_ASCENDING,
+                                                                                                                                                                                                                                                    INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_SORT_ASCENDING,
+                                                                                                                                                                                                                                                    false), VFS_CREATE_FOLDER_TYPE(
+                                                                                                                                                                                                                                                            InboundEndpointConstants.VFS_CREATE_FOLDER,
+                                                                                                                                                                                                                                                            INBOUND_ENDPOINT__TRANSPORT_VFS_CREATE_FOLDER,
+                                                                                                                                                                                                                                                            false), VFS_STREAMING_TYPE(
+                                                                                                                                                                                                                                                                    InboundEndpointConstants.VFS_STREAMING,
+                                                                                                                                                                                                                                                                    INBOUND_ENDPOINT__TRANSPORT_VFS_STREAMING,
+                                                                                                                                                                                                                                                                    false), VFS_BUILD_TYPE(
+                                                                                                                                                                                                                                                                            InboundEndpointConstants.VFS_BUILD,
+                                                                                                                                                                                                                                                                            INBOUND_ENDPOINT__TRANSPORT_VFS_BUILD,
+                                                                                                                                                                                                                                                                            false);
 
     private final String name;
     private final EAttribute eAttributeValue;

@@ -32,7 +32,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.CommandMediator} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class CommandMediatorItemProvider extends MediatorItemProvider {
@@ -40,7 +39,6 @@ public class CommandMediatorItemProvider extends MediatorItemProvider {
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public CommandMediatorItemProvider(AdapterFactory adapterFactory) {
@@ -70,33 +68,44 @@ public class CommandMediatorItemProvider extends MediatorItemProvider {
      * This adds a property descriptor for the Class Name feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addClassNamePropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_CommandMediator_className_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_CommandMediator_className_feature",
-                                "_UI_CommandMediator_type"),
-                        EsbPackage.Literals.COMMAND_MEDIATOR__CLASS_NAME, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_CommandMediator_className_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_CommandMediator_className_feature", "_UI_CommandMediator_type"),
+                 EsbPackage.Literals.COMMAND_MEDIATOR__CLASS_NAME,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Properties feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addPropertiesPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_CommandMediator_properties_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_CommandMediator_properties_feature",
-                                "_UI_CommandMediator_type"),
-                        EsbPackage.Literals.COMMAND_MEDIATOR__PROPERTIES, true, false, false, null, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_CommandMediator_properties_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_CommandMediator_properties_feature", "_UI_CommandMediator_type"),
+                 EsbPackage.Literals.COMMAND_MEDIATOR__PROPERTIES,
+                 true,
+                 false,
+                 false,
+                 null,
+                 null,
+                 null));
     }
 
     /**
@@ -105,7 +114,6 @@ public class CommandMediatorItemProvider extends MediatorItemProvider {
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -123,7 +131,6 @@ public class CommandMediatorItemProvider extends MediatorItemProvider {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -139,7 +146,6 @@ public class CommandMediatorItemProvider extends MediatorItemProvider {
      * This returns CommandMediator.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -152,15 +158,15 @@ public class CommandMediatorItemProvider extends MediatorItemProvider {
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public String getText(Object object) {
-        String label = ((CommandMediator) object).getClassName();
-        return label == null || label.length() == 0 ? getString("_UI_CommandMediator_type")
-                : getString("_UI_CommandMediator_type") + " " + label;
+        String label = ((CommandMediator)object).getClassName();
+        return label == null || label.length() == 0 ?
+            getString("_UI_CommandMediator_type") :
+            getString("_UI_CommandMediator_type") + " " + label;
     }
 
     /**
@@ -168,7 +174,6 @@ public class CommandMediatorItemProvider extends MediatorItemProvider {
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -177,14 +182,14 @@ public class CommandMediatorItemProvider extends MediatorItemProvider {
         updateChildren(notification);
 
         switch (notification.getFeatureID(CommandMediator.class)) {
-        case EsbPackage.COMMAND_MEDIATOR__CLASS_NAME:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-            return;
-        case EsbPackage.COMMAND_MEDIATOR__PROPERTIES:
-        case EsbPackage.COMMAND_MEDIATOR__INPUT_CONNECTOR:
-        case EsbPackage.COMMAND_MEDIATOR__OUTPUT_CONNECTOR:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-            return;
+            case EsbPackage.COMMAND_MEDIATOR__CLASS_NAME:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+                return;
+            case EsbPackage.COMMAND_MEDIATOR__PROPERTIES:
+            case EsbPackage.COMMAND_MEDIATOR__INPUT_CONNECTOR:
+            case EsbPackage.COMMAND_MEDIATOR__OUTPUT_CONNECTOR:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+                return;
         }
         super.notifyChanged(notification);
     }
@@ -194,7 +199,6 @@ public class CommandMediatorItemProvider extends MediatorItemProvider {
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -202,14 +206,20 @@ public class CommandMediatorItemProvider extends MediatorItemProvider {
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.COMMAND_MEDIATOR__PROPERTIES,
-                EsbFactory.eINSTANCE.createCommandProperty()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.COMMAND_MEDIATOR__PROPERTIES,
+                 EsbFactory.eINSTANCE.createCommandProperty()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.COMMAND_MEDIATOR__INPUT_CONNECTOR,
-                EsbFactory.eINSTANCE.createCommandMediatorInputConnector()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.COMMAND_MEDIATOR__INPUT_CONNECTOR,
+                 EsbFactory.eINSTANCE.createCommandMediatorInputConnector()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.COMMAND_MEDIATOR__OUTPUT_CONNECTOR,
-                EsbFactory.eINSTANCE.createCommandMediatorOutputConnector()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.COMMAND_MEDIATOR__OUTPUT_CONNECTOR,
+                 EsbFactory.eINSTANCE.createCommandMediatorOutputConnector()));
     }
 
 }

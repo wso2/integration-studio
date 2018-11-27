@@ -17,7 +17,6 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>XQuery Variable Type</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * 
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getXQueryVariableType()
  * @model
  * @generated
@@ -27,7 +26,6 @@ public enum XQueryVariableType implements Enumerator {
      * The '<em><b>DOCUMENT</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #DOCUMENT_VALUE
      * @generated
      * @ordered
@@ -38,7 +36,6 @@ public enum XQueryVariableType implements Enumerator {
      * The '<em><b>DOCUMENT ELEMENT</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #DOCUMENT_ELEMENT_VALUE
      * @generated
      * @ordered
@@ -49,7 +46,6 @@ public enum XQueryVariableType implements Enumerator {
      * The '<em><b>ELEMENT</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #ELEMENT_VALUE
      * @generated
      * @ordered
@@ -60,7 +56,6 @@ public enum XQueryVariableType implements Enumerator {
      * The '<em><b>INT</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #INT_VALUE
      * @generated
      * @ordered
@@ -71,7 +66,6 @@ public enum XQueryVariableType implements Enumerator {
      * The '<em><b>INTEGER</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #INTEGER_VALUE
      * @generated
      * @ordered
@@ -82,7 +76,6 @@ public enum XQueryVariableType implements Enumerator {
      * The '<em><b>BOOLEAN</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #BOOLEAN_VALUE
      * @generated
      * @ordered
@@ -93,7 +86,6 @@ public enum XQueryVariableType implements Enumerator {
      * The '<em><b>BYTE</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #BYTE_VALUE
      * @generated
      * @ordered
@@ -104,7 +96,6 @@ public enum XQueryVariableType implements Enumerator {
      * The '<em><b>DOUBLE</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #DOUBLE_VALUE
      * @generated
      * @ordered
@@ -115,7 +106,6 @@ public enum XQueryVariableType implements Enumerator {
      * The '<em><b>SHORT</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #SHORT_VALUE
      * @generated
      * @ordered
@@ -126,7 +116,6 @@ public enum XQueryVariableType implements Enumerator {
      * The '<em><b>LONG</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #LONG_VALUE
      * @generated
      * @ordered
@@ -137,7 +126,6 @@ public enum XQueryVariableType implements Enumerator {
      * The '<em><b>FLOAT</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #FLOAT_VALUE
      * @generated
      * @ordered
@@ -148,7 +136,6 @@ public enum XQueryVariableType implements Enumerator {
      * The '<em><b>STRING</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #STRING_VALUE
      * @generated
      * @ordered
@@ -163,7 +150,6 @@ public enum XQueryVariableType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #DOCUMENT
      * @model
      * @generated
@@ -179,7 +165,6 @@ public enum XQueryVariableType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #DOCUMENT_ELEMENT
      * @model
      * @generated
@@ -195,7 +180,6 @@ public enum XQueryVariableType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #ELEMENT
      * @model
      * @generated
@@ -211,7 +195,6 @@ public enum XQueryVariableType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #INT
      * @model
      * @generated
@@ -227,7 +210,6 @@ public enum XQueryVariableType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #INTEGER
      * @model
      * @generated
@@ -243,7 +225,6 @@ public enum XQueryVariableType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #BOOLEAN
      * @model
      * @generated
@@ -259,7 +240,6 @@ public enum XQueryVariableType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #BYTE
      * @model
      * @generated
@@ -275,7 +255,6 @@ public enum XQueryVariableType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #DOUBLE
      * @model
      * @generated
@@ -291,7 +270,6 @@ public enum XQueryVariableType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #SHORT
      * @model
      * @generated
@@ -307,7 +285,6 @@ public enum XQueryVariableType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #LONG
      * @model
      * @generated
@@ -323,7 +300,6 @@ public enum XQueryVariableType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #FLOAT
      * @model
      * @generated
@@ -339,7 +315,6 @@ public enum XQueryVariableType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #STRING
      * @model
      * @generated
@@ -351,17 +326,27 @@ public enum XQueryVariableType implements Enumerator {
      * An array of all the '<em><b>XQuery Variable Type</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
-    private static final XQueryVariableType[] VALUES_ARRAY = new XQueryVariableType[] { DOCUMENT, DOCUMENT_ELEMENT,
-            ELEMENT, INT, INTEGER, BOOLEAN, BYTE, DOUBLE, SHORT, LONG, FLOAT, STRING, };
+    private static final XQueryVariableType[] VALUES_ARRAY = new XQueryVariableType[] {
+            DOCUMENT,
+            DOCUMENT_ELEMENT,
+            ELEMENT,
+            INT,
+            INTEGER,
+            BOOLEAN,
+            BYTE,
+            DOUBLE,
+            SHORT,
+            LONG,
+            FLOAT,
+            STRING,
+        };
 
     /**
      * A public read-only list of all the '<em><b>XQuery Variable Type</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public static final List<XQueryVariableType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
@@ -370,7 +355,6 @@ public enum XQueryVariableType implements Enumerator {
      * Returns the '<em><b>XQuery Variable Type</b></em>' literal with the specified literal value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param literal the literal.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -389,7 +373,6 @@ public enum XQueryVariableType implements Enumerator {
      * Returns the '<em><b>XQuery Variable Type</b></em>' literal with the specified name.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param name the name.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -408,37 +391,24 @@ public enum XQueryVariableType implements Enumerator {
      * Returns the '<em><b>XQuery Variable Type</b></em>' literal with the specified integer value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the integer value.
      * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static XQueryVariableType get(int value) {
         switch (value) {
-        case DOCUMENT_VALUE:
-            return DOCUMENT;
-        case DOCUMENT_ELEMENT_VALUE:
-            return DOCUMENT_ELEMENT;
-        case ELEMENT_VALUE:
-            return ELEMENT;
-        case INT_VALUE:
-            return INT;
-        case INTEGER_VALUE:
-            return INTEGER;
-        case BOOLEAN_VALUE:
-            return BOOLEAN;
-        case BYTE_VALUE:
-            return BYTE;
-        case DOUBLE_VALUE:
-            return DOUBLE;
-        case SHORT_VALUE:
-            return SHORT;
-        case LONG_VALUE:
-            return LONG;
-        case FLOAT_VALUE:
-            return FLOAT;
-        case STRING_VALUE:
-            return STRING;
+            case DOCUMENT_VALUE: return DOCUMENT;
+            case DOCUMENT_ELEMENT_VALUE: return DOCUMENT_ELEMENT;
+            case ELEMENT_VALUE: return ELEMENT;
+            case INT_VALUE: return INT;
+            case INTEGER_VALUE: return INTEGER;
+            case BOOLEAN_VALUE: return BOOLEAN;
+            case BYTE_VALUE: return BYTE;
+            case DOUBLE_VALUE: return DOUBLE;
+            case SHORT_VALUE: return SHORT;
+            case LONG_VALUE: return LONG;
+            case FLOAT_VALUE: return FLOAT;
+            case STRING_VALUE: return STRING;
         }
         return null;
     }
@@ -446,7 +416,6 @@ public enum XQueryVariableType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final int value;
@@ -454,7 +423,6 @@ public enum XQueryVariableType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final String name;
@@ -462,7 +430,6 @@ public enum XQueryVariableType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final String literal;
@@ -471,7 +438,6 @@ public enum XQueryVariableType implements Enumerator {
      * Only this class can construct instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private XQueryVariableType(int value, String name, String literal) {
@@ -483,38 +449,34 @@ public enum XQueryVariableType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public int getValue() {
-        return value;
+      return value;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getName() {
-        return name;
+      return name;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getLiteral() {
-        return literal;
+      return literal;
     }
 
     /**
      * Returns the literal value of the enumerator, which is its string representation.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 

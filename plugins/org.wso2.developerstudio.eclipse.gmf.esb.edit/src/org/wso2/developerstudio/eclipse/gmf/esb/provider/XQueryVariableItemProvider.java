@@ -35,7 +35,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.XQueryVariable;
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.XQueryVariable} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class XQueryVariableItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
@@ -44,7 +43,6 @@ public class XQueryVariableItemProvider extends ItemProviderAdapter implements I
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public XQueryVariableItemProvider(AdapterFactory adapterFactory) {
@@ -55,7 +53,6 @@ public class XQueryVariableItemProvider extends ItemProviderAdapter implements I
      * This returns the property descriptors for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -76,68 +73,88 @@ public class XQueryVariableItemProvider extends ItemProviderAdapter implements I
      * This adds a property descriptor for the Variable Name feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addVariableNamePropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_XQueryVariable_variableName_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_XQueryVariable_variableName_feature",
-                                "_UI_XQueryVariable_type"),
-                        EsbPackage.Literals.XQUERY_VARIABLE__VARIABLE_NAME, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_XQueryVariable_variableName_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_XQueryVariable_variableName_feature", "_UI_XQueryVariable_type"),
+                 EsbPackage.Literals.XQUERY_VARIABLE__VARIABLE_NAME,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Variable Type feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addVariableTypePropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_XQueryVariable_variableType_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_XQueryVariable_variableType_feature",
-                                "_UI_XQueryVariable_type"),
-                        EsbPackage.Literals.XQUERY_VARIABLE__VARIABLE_TYPE, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_XQueryVariable_variableType_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_XQueryVariable_variableType_feature", "_UI_XQueryVariable_type"),
+                 EsbPackage.Literals.XQUERY_VARIABLE__VARIABLE_TYPE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Value Type feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addValueTypePropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_XQueryVariable_valueType_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_XQueryVariable_valueType_feature",
-                                "_UI_XQueryVariable_type"),
-                        EsbPackage.Literals.XQUERY_VARIABLE__VALUE_TYPE, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_XQueryVariable_valueType_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_XQueryVariable_valueType_feature", "_UI_XQueryVariable_type"),
+                 EsbPackage.Literals.XQUERY_VARIABLE__VALUE_TYPE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Value Literal feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addValueLiteralPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_XQueryVariable_valueLiteral_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_XQueryVariable_valueLiteral_feature",
-                                "_UI_XQueryVariable_type"),
-                        EsbPackage.Literals.XQUERY_VARIABLE__VALUE_LITERAL, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_XQueryVariable_valueLiteral_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_XQueryVariable_valueLiteral_feature", "_UI_XQueryVariable_type"),
+                 EsbPackage.Literals.XQUERY_VARIABLE__VALUE_LITERAL,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
@@ -146,7 +163,6 @@ public class XQueryVariableItemProvider extends ItemProviderAdapter implements I
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -163,7 +179,6 @@ public class XQueryVariableItemProvider extends ItemProviderAdapter implements I
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -179,7 +194,6 @@ public class XQueryVariableItemProvider extends ItemProviderAdapter implements I
      * This returns XQueryVariable.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -192,15 +206,15 @@ public class XQueryVariableItemProvider extends ItemProviderAdapter implements I
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public String getText(Object object) {
-        String label = ((XQueryVariable) object).getVariableName();
-        return label == null || label.length() == 0 ? getString("_UI_XQueryVariable_type")
-                : getString("_UI_XQueryVariable_type") + " " + label;
+        String label = ((XQueryVariable)object).getVariableName();
+        return label == null || label.length() == 0 ?
+            getString("_UI_XQueryVariable_type") :
+            getString("_UI_XQueryVariable_type") + " " + label;
     }
 
     /**
@@ -208,7 +222,6 @@ public class XQueryVariableItemProvider extends ItemProviderAdapter implements I
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -217,16 +230,16 @@ public class XQueryVariableItemProvider extends ItemProviderAdapter implements I
         updateChildren(notification);
 
         switch (notification.getFeatureID(XQueryVariable.class)) {
-        case EsbPackage.XQUERY_VARIABLE__VARIABLE_NAME:
-        case EsbPackage.XQUERY_VARIABLE__VARIABLE_TYPE:
-        case EsbPackage.XQUERY_VARIABLE__VALUE_TYPE:
-        case EsbPackage.XQUERY_VARIABLE__VALUE_LITERAL:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-            return;
-        case EsbPackage.XQUERY_VARIABLE__VALUE_EXPRESSION:
-        case EsbPackage.XQUERY_VARIABLE__VALUE_KEY:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-            return;
+            case EsbPackage.XQUERY_VARIABLE__VARIABLE_NAME:
+            case EsbPackage.XQUERY_VARIABLE__VARIABLE_TYPE:
+            case EsbPackage.XQUERY_VARIABLE__VALUE_TYPE:
+            case EsbPackage.XQUERY_VARIABLE__VALUE_LITERAL:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+                return;
+            case EsbPackage.XQUERY_VARIABLE__VALUE_EXPRESSION:
+            case EsbPackage.XQUERY_VARIABLE__VALUE_KEY:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+                return;
         }
         super.notifyChanged(notification);
     }
@@ -236,7 +249,6 @@ public class XQueryVariableItemProvider extends ItemProviderAdapter implements I
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -244,18 +256,21 @@ public class XQueryVariableItemProvider extends ItemProviderAdapter implements I
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.XQUERY_VARIABLE__VALUE_EXPRESSION,
-                EsbFactory.eINSTANCE.createNamespacedProperty()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.XQUERY_VARIABLE__VALUE_EXPRESSION,
+                 EsbFactory.eINSTANCE.createNamespacedProperty()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.XQUERY_VARIABLE__VALUE_KEY,
-                EsbFactory.eINSTANCE.createRegistryKeyProperty()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.XQUERY_VARIABLE__VALUE_KEY,
+                 EsbFactory.eINSTANCE.createRegistryKeyProperty()));
     }
 
     /**
      * Return the resource locator for this item provider's resources.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 

@@ -29,7 +29,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.LogProperty;
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.LogProperty} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class LogPropertyItemProvider extends AbstractNameValueExpressionPropertyItemProvider {
@@ -37,7 +36,6 @@ public class LogPropertyItemProvider extends AbstractNameValueExpressionProperty
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public LogPropertyItemProvider(AdapterFactory adapterFactory) {
@@ -48,7 +46,6 @@ public class LogPropertyItemProvider extends AbstractNameValueExpressionProperty
      * This returns the property descriptors for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -65,7 +62,6 @@ public class LogPropertyItemProvider extends AbstractNameValueExpressionProperty
      * This returns LogProperty.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -78,15 +74,15 @@ public class LogPropertyItemProvider extends AbstractNameValueExpressionProperty
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public String getText(Object object) {
-        String label = ((LogProperty) object).getPropertyName();
-        return label == null || label.length() == 0 ? getString("_UI_LogProperty_type")
-                : getString("_UI_LogProperty_type") + " " + label;
+        String label = ((LogProperty)object).getPropertyName();
+        return label == null || label.length() == 0 ?
+            getString("_UI_LogProperty_type") :
+            getString("_UI_LogProperty_type") + " " + label;
     }
 
     /**
@@ -94,7 +90,6 @@ public class LogPropertyItemProvider extends AbstractNameValueExpressionProperty
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -109,7 +104,6 @@ public class LogPropertyItemProvider extends AbstractNameValueExpressionProperty
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 

@@ -29,11 +29,9 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 
 /**
- * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateParameter}
- * object.
+ * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateParameter} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class CallTemplateParameterItemProvider extends EsbNodeItemProvider {
@@ -41,7 +39,6 @@ public class CallTemplateParameterItemProvider extends EsbNodeItemProvider {
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public CallTemplateParameterItemProvider(AdapterFactory adapterFactory) {
@@ -52,7 +49,6 @@ public class CallTemplateParameterItemProvider extends EsbNodeItemProvider {
      * This returns the property descriptors for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -71,51 +67,66 @@ public class CallTemplateParameterItemProvider extends EsbNodeItemProvider {
      * This adds a property descriptor for the Parameter Name feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addParameterNamePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_CallTemplateParameter_parameterName_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_CallTemplateParameter_parameterName_feature",
-                        "_UI_CallTemplateParameter_type"),
-                EsbPackage.Literals.CALL_TEMPLATE_PARAMETER__PARAMETER_NAME, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_CallTemplateParameter_parameterName_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_CallTemplateParameter_parameterName_feature", "_UI_CallTemplateParameter_type"),
+                 EsbPackage.Literals.CALL_TEMPLATE_PARAMETER__PARAMETER_NAME,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Template Parameter Type feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addTemplateParameterTypePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_CallTemplateParameter_templateParameterType_feature"),
-                getString("_UI_PropertyDescriptor_description",
-                        "_UI_CallTemplateParameter_templateParameterType_feature", "_UI_CallTemplateParameter_type"),
-                EsbPackage.Literals.CALL_TEMPLATE_PARAMETER__TEMPLATE_PARAMETER_TYPE, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_CallTemplateParameter_templateParameterType_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_CallTemplateParameter_templateParameterType_feature", "_UI_CallTemplateParameter_type"),
+                 EsbPackage.Literals.CALL_TEMPLATE_PARAMETER__TEMPLATE_PARAMETER_TYPE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Parameter Value feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addParameterValuePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_CallTemplateParameter_parameterValue_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_CallTemplateParameter_parameterValue_feature",
-                        "_UI_CallTemplateParameter_type"),
-                EsbPackage.Literals.CALL_TEMPLATE_PARAMETER__PARAMETER_VALUE, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_CallTemplateParameter_parameterValue_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_CallTemplateParameter_parameterValue_feature", "_UI_CallTemplateParameter_type"),
+                 EsbPackage.Literals.CALL_TEMPLATE_PARAMETER__PARAMETER_VALUE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
@@ -124,7 +135,6 @@ public class CallTemplateParameterItemProvider extends EsbNodeItemProvider {
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -139,7 +149,6 @@ public class CallTemplateParameterItemProvider extends EsbNodeItemProvider {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -154,7 +163,6 @@ public class CallTemplateParameterItemProvider extends EsbNodeItemProvider {
      * This returns CallTemplateParameter.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -166,14 +174,14 @@ public class CallTemplateParameterItemProvider extends EsbNodeItemProvider {
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public String getText(Object object) {
-        String label = ((CallTemplateParameter) object).getParameterName();
-        return label == null || label.length() == 0 ? getString("_UI_CallTemplateParameter_type")
-                : getString("_UI_CallTemplateParameter_type") + " " + label;
+        String label = ((CallTemplateParameter)object).getParameterName();
+        return label == null || label.length() == 0 ?
+            getString("_UI_CallTemplateParameter_type") :
+            getString("_UI_CallTemplateParameter_type") + " " + label;
     }
 
     /**
@@ -181,7 +189,6 @@ public class CallTemplateParameterItemProvider extends EsbNodeItemProvider {
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -189,14 +196,14 @@ public class CallTemplateParameterItemProvider extends EsbNodeItemProvider {
         updateChildren(notification);
 
         switch (notification.getFeatureID(CallTemplateParameter.class)) {
-        case EsbPackage.CALL_TEMPLATE_PARAMETER__PARAMETER_NAME:
-        case EsbPackage.CALL_TEMPLATE_PARAMETER__TEMPLATE_PARAMETER_TYPE:
-        case EsbPackage.CALL_TEMPLATE_PARAMETER__PARAMETER_VALUE:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-            return;
-        case EsbPackage.CALL_TEMPLATE_PARAMETER__PARAMETER_EXPRESSION:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-            return;
+            case EsbPackage.CALL_TEMPLATE_PARAMETER__PARAMETER_NAME:
+            case EsbPackage.CALL_TEMPLATE_PARAMETER__TEMPLATE_PARAMETER_TYPE:
+            case EsbPackage.CALL_TEMPLATE_PARAMETER__PARAMETER_VALUE:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+                return;
+            case EsbPackage.CALL_TEMPLATE_PARAMETER__PARAMETER_EXPRESSION:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+                return;
         }
         super.notifyChanged(notification);
     }
@@ -206,15 +213,16 @@ public class CallTemplateParameterItemProvider extends EsbNodeItemProvider {
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.CALL_TEMPLATE_PARAMETER__PARAMETER_EXPRESSION,
-                EsbFactory.eINSTANCE.createNamespacedProperty()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.CALL_TEMPLATE_PARAMETER__PARAMETER_EXPRESSION,
+                 EsbFactory.eINSTANCE.createNamespacedProperty()));
     }
 
 }

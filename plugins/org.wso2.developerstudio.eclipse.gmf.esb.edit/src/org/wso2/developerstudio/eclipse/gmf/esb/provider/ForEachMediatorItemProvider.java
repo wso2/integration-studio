@@ -36,7 +36,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.ForEachMediator;
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.ForEachMediator} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class ForEachMediatorItemProvider extends MediatorItemProvider {
@@ -44,7 +43,6 @@ public class ForEachMediatorItemProvider extends MediatorItemProvider {
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public ForEachMediatorItemProvider(AdapterFactory adapterFactory) {
@@ -92,85 +90,110 @@ public class ForEachMediatorItemProvider extends MediatorItemProvider {
      * This adds a property descriptor for the For Each ID feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addForEachIDPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_ForEachMediator_forEachID_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_ForEachMediator_forEachID_feature",
-                                "_UI_ForEachMediator_type"),
-                        EsbPackage.Literals.FOR_EACH_MEDIATOR__FOR_EACH_ID, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_ForEachMediator_forEachID_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_ForEachMediator_forEachID_feature", "_UI_ForEachMediator_type"),
+                 EsbPackage.Literals.FOR_EACH_MEDIATOR__FOR_EACH_ID,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the For Each Expression feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addForEachExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_ForEachMediator_forEachExpression_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_ForEachMediator_forEachExpression_feature",
-                                "_UI_ForEachMediator_type"),
-                        EsbPackage.Literals.FOR_EACH_MEDIATOR__FOR_EACH_EXPRESSION, true, false, false, null, null,
-                        null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_ForEachMediator_forEachExpression_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_ForEachMediator_forEachExpression_feature", "_UI_ForEachMediator_type"),
+                 EsbPackage.Literals.FOR_EACH_MEDIATOR__FOR_EACH_EXPRESSION,
+                 true,
+                 false,
+                 false,
+                 null,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Sequence Type feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addSequenceTypePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ForEachMediator_sequenceType_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_ForEachMediator_sequenceType_feature",
-                        "_UI_ForEachMediator_type"),
-                EsbPackage.Literals.FOR_EACH_MEDIATOR__SEQUENCE_TYPE, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_SequencePropertyCategory"), null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_ForEachMediator_sequenceType_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_ForEachMediator_sequenceType_feature", "_UI_ForEachMediator_type"),
+                 EsbPackage.Literals.FOR_EACH_MEDIATOR__SEQUENCE_TYPE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 getString("_UI_SequencePropertyCategory"),
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Sequence Key feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addSequenceKeyPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_ForEachMediator_sequenceKey_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_ForEachMediator_sequenceKey_feature",
-                                "_UI_ForEachMediator_type"),
-                        EsbPackage.Literals.FOR_EACH_MEDIATOR__SEQUENCE_KEY, true, false, false, null,
-                        getString("_UI_SequencePropertyCategory"), null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_ForEachMediator_sequenceKey_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_ForEachMediator_sequenceKey_feature", "_UI_ForEachMediator_type"),
+                 EsbPackage.Literals.FOR_EACH_MEDIATOR__SEQUENCE_KEY,
+                 true,
+                 false,
+                 false,
+                 null,
+                 getString("_UI_SequencePropertyCategory"),
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Sequence Name feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addSequenceNamePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ForEachMediator_sequenceName_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_ForEachMediator_sequenceName_feature",
-                        "_UI_ForEachMediator_type"),
-                EsbPackage.Literals.FOR_EACH_MEDIATOR__SEQUENCE_NAME, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_SequencePropertyCategory"), null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_ForEachMediator_sequenceName_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_ForEachMediator_sequenceName_feature", "_UI_ForEachMediator_type"),
+                 EsbPackage.Literals.FOR_EACH_MEDIATOR__SEQUENCE_NAME,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 getString("_UI_SequencePropertyCategory"),
+                 null));
     }
 
     /**
@@ -179,7 +202,6 @@ public class ForEachMediatorItemProvider extends MediatorItemProvider {
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -201,7 +223,6 @@ public class ForEachMediatorItemProvider extends MediatorItemProvider {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -216,7 +237,6 @@ public class ForEachMediatorItemProvider extends MediatorItemProvider {
      * This returns ForEachMediator.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -228,14 +248,14 @@ public class ForEachMediatorItemProvider extends MediatorItemProvider {
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public String getText(Object object) {
-        String label = ((ForEachMediator) object).getSequenceName();
-        return label == null || label.length() == 0 ? getString("_UI_ForEachMediator_type")
-                : getString("_UI_ForEachMediator_type") + " " + label;
+        String label = ((ForEachMediator)object).getSequenceName();
+        return label == null || label.length() == 0 ?
+            getString("_UI_ForEachMediator_type") :
+            getString("_UI_ForEachMediator_type") + " " + label;
     }
 
     /**
@@ -243,7 +263,6 @@ public class ForEachMediatorItemProvider extends MediatorItemProvider {
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -251,21 +270,21 @@ public class ForEachMediatorItemProvider extends MediatorItemProvider {
         updateChildren(notification);
 
         switch (notification.getFeatureID(ForEachMediator.class)) {
-        case EsbPackage.FOR_EACH_MEDIATOR__FOR_EACH_ID:
-        case EsbPackage.FOR_EACH_MEDIATOR__SEQUENCE_TYPE:
-        case EsbPackage.FOR_EACH_MEDIATOR__SEQUENCE_NAME:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-            return;
-        case EsbPackage.FOR_EACH_MEDIATOR__FOR_EACH_EXPRESSION:
-        case EsbPackage.FOR_EACH_MEDIATOR__ATTACH_PATH:
-        case EsbPackage.FOR_EACH_MEDIATOR__TARGET:
-        case EsbPackage.FOR_EACH_MEDIATOR__INPUT_CONNECTOR:
-        case EsbPackage.FOR_EACH_MEDIATOR__OUTPUT_CONNECTOR:
-        case EsbPackage.FOR_EACH_MEDIATOR__TARGET_OUTPUT_CONNECTOR:
-        case EsbPackage.FOR_EACH_MEDIATOR__MEDIATOR_FLOW:
-        case EsbPackage.FOR_EACH_MEDIATOR__SEQUENCE_KEY:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-            return;
+            case EsbPackage.FOR_EACH_MEDIATOR__FOR_EACH_ID:
+            case EsbPackage.FOR_EACH_MEDIATOR__SEQUENCE_TYPE:
+            case EsbPackage.FOR_EACH_MEDIATOR__SEQUENCE_NAME:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+                return;
+            case EsbPackage.FOR_EACH_MEDIATOR__FOR_EACH_EXPRESSION:
+            case EsbPackage.FOR_EACH_MEDIATOR__ATTACH_PATH:
+            case EsbPackage.FOR_EACH_MEDIATOR__TARGET:
+            case EsbPackage.FOR_EACH_MEDIATOR__INPUT_CONNECTOR:
+            case EsbPackage.FOR_EACH_MEDIATOR__OUTPUT_CONNECTOR:
+            case EsbPackage.FOR_EACH_MEDIATOR__TARGET_OUTPUT_CONNECTOR:
+            case EsbPackage.FOR_EACH_MEDIATOR__MEDIATOR_FLOW:
+            case EsbPackage.FOR_EACH_MEDIATOR__SEQUENCE_KEY:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+                return;
         }
         super.notifyChanged(notification);
     }
@@ -275,43 +294,57 @@ public class ForEachMediatorItemProvider extends MediatorItemProvider {
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.FOR_EACH_MEDIATOR__FOR_EACH_EXPRESSION,
-                EsbFactory.eINSTANCE.createNamespacedProperty()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.FOR_EACH_MEDIATOR__FOR_EACH_EXPRESSION,
+                 EsbFactory.eINSTANCE.createNamespacedProperty()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.FOR_EACH_MEDIATOR__ATTACH_PATH,
-                EsbFactory.eINSTANCE.createNamespacedProperty()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.FOR_EACH_MEDIATOR__ATTACH_PATH,
+                 EsbFactory.eINSTANCE.createNamespacedProperty()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.FOR_EACH_MEDIATOR__TARGET,
-                EsbFactory.eINSTANCE.createForEachTarget()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.FOR_EACH_MEDIATOR__TARGET,
+                 EsbFactory.eINSTANCE.createForEachTarget()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.FOR_EACH_MEDIATOR__INPUT_CONNECTOR,
-                EsbFactory.eINSTANCE.createForEachMediatorInputConnector()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.FOR_EACH_MEDIATOR__INPUT_CONNECTOR,
+                 EsbFactory.eINSTANCE.createForEachMediatorInputConnector()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.FOR_EACH_MEDIATOR__OUTPUT_CONNECTOR,
-                EsbFactory.eINSTANCE.createForEachMediatorOutputConnector()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.FOR_EACH_MEDIATOR__OUTPUT_CONNECTOR,
+                 EsbFactory.eINSTANCE.createForEachMediatorOutputConnector()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.FOR_EACH_MEDIATOR__TARGET_OUTPUT_CONNECTOR,
-                EsbFactory.eINSTANCE.createForEachMediatorTargetOutputConnector()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.FOR_EACH_MEDIATOR__TARGET_OUTPUT_CONNECTOR,
+                 EsbFactory.eINSTANCE.createForEachMediatorTargetOutputConnector()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.FOR_EACH_MEDIATOR__MEDIATOR_FLOW,
-                EsbFactory.eINSTANCE.createMediatorFlow()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.FOR_EACH_MEDIATOR__MEDIATOR_FLOW,
+                 EsbFactory.eINSTANCE.createMediatorFlow()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.FOR_EACH_MEDIATOR__SEQUENCE_KEY,
-                EsbFactory.eINSTANCE.createRegistryKeyProperty()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.FOR_EACH_MEDIATOR__SEQUENCE_KEY,
+                 EsbFactory.eINSTANCE.createRegistryKeyProperty()));
     }
 
     /**
      * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -319,12 +352,14 @@ public class ForEachMediatorItemProvider extends MediatorItemProvider {
         Object childFeature = feature;
         Object childObject = child;
 
-        boolean qualify = childFeature == EsbPackage.Literals.FOR_EACH_MEDIATOR__FOR_EACH_EXPRESSION
-                || childFeature == EsbPackage.Literals.FOR_EACH_MEDIATOR__ATTACH_PATH;
+        boolean qualify =
+            childFeature == EsbPackage.Literals.FOR_EACH_MEDIATOR__FOR_EACH_EXPRESSION ||
+            childFeature == EsbPackage.Literals.FOR_EACH_MEDIATOR__ATTACH_PATH;
 
         if (qualify) {
-            return getString("_UI_CreateChild_text2",
-                    new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+            return getString
+                ("_UI_CreateChild_text2",
+                 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
         }
         return super.getCreateChildText(owner, feature, child, selection);
     }

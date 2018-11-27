@@ -34,7 +34,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.ThrottleSequenceType;
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottleMediator} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class ThrottleMediatorItemProvider extends MediatorItemProvider {
@@ -42,7 +41,6 @@ public class ThrottleMediatorItemProvider extends MediatorItemProvider {
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public ThrottleMediatorItemProvider(AdapterFactory adapterFactory) {
@@ -242,7 +240,6 @@ public class ThrottleMediatorItemProvider extends MediatorItemProvider {
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -269,7 +266,6 @@ public class ThrottleMediatorItemProvider extends MediatorItemProvider {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -285,7 +281,6 @@ public class ThrottleMediatorItemProvider extends MediatorItemProvider {
      * This returns ThrottleMediator.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -298,15 +293,15 @@ public class ThrottleMediatorItemProvider extends MediatorItemProvider {
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public String getText(Object object) {
-        String label = ((ThrottleMediator) object).getDescription();
-        return label == null || label.length() == 0 ? getString("_UI_ThrottleMediator_type")
-                : getString("_UI_ThrottleMediator_type") + " " + label;
+        String label = ((ThrottleMediator)object).getDescription();
+        return label == null || label.length() == 0 ?
+            getString("_UI_ThrottleMediator_type") :
+            getString("_UI_ThrottleMediator_type") + " " + label;
     }
 
     /**
@@ -314,7 +309,6 @@ public class ThrottleMediatorItemProvider extends MediatorItemProvider {
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -323,27 +317,27 @@ public class ThrottleMediatorItemProvider extends MediatorItemProvider {
         updateChildren(notification);
 
         switch (notification.getFeatureID(ThrottleMediator.class)) {
-        case EsbPackage.THROTTLE_MEDIATOR__GROUP_ID:
-        case EsbPackage.THROTTLE_MEDIATOR__POLICY_TYPE:
-        case EsbPackage.THROTTLE_MEDIATOR__MAX_CONCURRENT_ACCESS_COUNT:
-        case EsbPackage.THROTTLE_MEDIATOR__ON_ACCEPT_BRANCHSEQUENCE_TYPE:
-        case EsbPackage.THROTTLE_MEDIATOR__ON_REJECT_BRANCHSEQUENCE_TYPE:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-            return;
-        case EsbPackage.THROTTLE_MEDIATOR__POLICY_KEY:
-        case EsbPackage.THROTTLE_MEDIATOR__POLICY_ENTRIES:
-        case EsbPackage.THROTTLE_MEDIATOR__POLICY_CONFIGURATION:
-        case EsbPackage.THROTTLE_MEDIATOR__ON_ACCEPT_BRANCH:
-        case EsbPackage.THROTTLE_MEDIATOR__ON_REJECT_BRANCH:
-        case EsbPackage.THROTTLE_MEDIATOR__INPUT_CONNECTOR:
-        case EsbPackage.THROTTLE_MEDIATOR__OUTPUT_CONNECTOR:
-        case EsbPackage.THROTTLE_MEDIATOR__ON_ACCEPT_OUTPUT_CONNECTOR:
-        case EsbPackage.THROTTLE_MEDIATOR__ON_REJECT_OUTPUT_CONNECTOR:
-        case EsbPackage.THROTTLE_MEDIATOR__THROTTLE_CONTAINER:
-        case EsbPackage.THROTTLE_MEDIATOR__ON_ACCEPT_BRANCHSEQUENCE_KEY:
-        case EsbPackage.THROTTLE_MEDIATOR__ON_REJECT_BRANCHSEQUENCE_KEY:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-            return;
+            case EsbPackage.THROTTLE_MEDIATOR__GROUP_ID:
+            case EsbPackage.THROTTLE_MEDIATOR__POLICY_TYPE:
+            case EsbPackage.THROTTLE_MEDIATOR__MAX_CONCURRENT_ACCESS_COUNT:
+            case EsbPackage.THROTTLE_MEDIATOR__ON_ACCEPT_BRANCHSEQUENCE_TYPE:
+            case EsbPackage.THROTTLE_MEDIATOR__ON_REJECT_BRANCHSEQUENCE_TYPE:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+                return;
+            case EsbPackage.THROTTLE_MEDIATOR__POLICY_KEY:
+            case EsbPackage.THROTTLE_MEDIATOR__POLICY_ENTRIES:
+            case EsbPackage.THROTTLE_MEDIATOR__POLICY_CONFIGURATION:
+            case EsbPackage.THROTTLE_MEDIATOR__ON_ACCEPT_BRANCH:
+            case EsbPackage.THROTTLE_MEDIATOR__ON_REJECT_BRANCH:
+            case EsbPackage.THROTTLE_MEDIATOR__INPUT_CONNECTOR:
+            case EsbPackage.THROTTLE_MEDIATOR__OUTPUT_CONNECTOR:
+            case EsbPackage.THROTTLE_MEDIATOR__ON_ACCEPT_OUTPUT_CONNECTOR:
+            case EsbPackage.THROTTLE_MEDIATOR__ON_REJECT_OUTPUT_CONNECTOR:
+            case EsbPackage.THROTTLE_MEDIATOR__THROTTLE_CONTAINER:
+            case EsbPackage.THROTTLE_MEDIATOR__ON_ACCEPT_BRANCHSEQUENCE_KEY:
+            case EsbPackage.THROTTLE_MEDIATOR__ON_REJECT_BRANCHSEQUENCE_KEY:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+                return;
         }
         super.notifyChanged(notification);
     }
@@ -353,7 +347,6 @@ public class ThrottleMediatorItemProvider extends MediatorItemProvider {
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -361,50 +354,71 @@ public class ThrottleMediatorItemProvider extends MediatorItemProvider {
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.THROTTLE_MEDIATOR__POLICY_KEY,
-                EsbFactory.eINSTANCE.createRegistryKeyProperty()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.THROTTLE_MEDIATOR__POLICY_KEY,
+                 EsbFactory.eINSTANCE.createRegistryKeyProperty()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.THROTTLE_MEDIATOR__POLICY_ENTRIES,
-                EsbFactory.eINSTANCE.createThrottlePolicyEntry()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.THROTTLE_MEDIATOR__POLICY_ENTRIES,
+                 EsbFactory.eINSTANCE.createThrottlePolicyEntry()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.THROTTLE_MEDIATOR__POLICY_CONFIGURATION,
-                EsbFactory.eINSTANCE.createThrottlePolicyConfiguration()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.THROTTLE_MEDIATOR__POLICY_CONFIGURATION,
+                 EsbFactory.eINSTANCE.createThrottlePolicyConfiguration()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.THROTTLE_MEDIATOR__ON_ACCEPT_BRANCH,
-                EsbFactory.eINSTANCE.createThrottleOnAcceptBranch()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.THROTTLE_MEDIATOR__ON_ACCEPT_BRANCH,
+                 EsbFactory.eINSTANCE.createThrottleOnAcceptBranch()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.THROTTLE_MEDIATOR__ON_REJECT_BRANCH,
-                EsbFactory.eINSTANCE.createThrottleOnRejectBranch()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.THROTTLE_MEDIATOR__ON_REJECT_BRANCH,
+                 EsbFactory.eINSTANCE.createThrottleOnRejectBranch()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.THROTTLE_MEDIATOR__INPUT_CONNECTOR,
-                EsbFactory.eINSTANCE.createThrottleMediatorInputConnector()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.THROTTLE_MEDIATOR__INPUT_CONNECTOR,
+                 EsbFactory.eINSTANCE.createThrottleMediatorInputConnector()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.THROTTLE_MEDIATOR__OUTPUT_CONNECTOR,
-                EsbFactory.eINSTANCE.createThrottleMediatorOutputConnector()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.THROTTLE_MEDIATOR__OUTPUT_CONNECTOR,
+                 EsbFactory.eINSTANCE.createThrottleMediatorOutputConnector()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.THROTTLE_MEDIATOR__ON_ACCEPT_OUTPUT_CONNECTOR,
-                EsbFactory.eINSTANCE.createThrottleMediatorOnAcceptOutputConnector()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.THROTTLE_MEDIATOR__ON_ACCEPT_OUTPUT_CONNECTOR,
+                 EsbFactory.eINSTANCE.createThrottleMediatorOnAcceptOutputConnector()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.THROTTLE_MEDIATOR__ON_REJECT_OUTPUT_CONNECTOR,
-                EsbFactory.eINSTANCE.createThrottleMediatorOnRejectOutputConnector()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.THROTTLE_MEDIATOR__ON_REJECT_OUTPUT_CONNECTOR,
+                 EsbFactory.eINSTANCE.createThrottleMediatorOnRejectOutputConnector()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.THROTTLE_MEDIATOR__THROTTLE_CONTAINER,
-                EsbFactory.eINSTANCE.createThrottleContainer()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.THROTTLE_MEDIATOR__THROTTLE_CONTAINER,
+                 EsbFactory.eINSTANCE.createThrottleContainer()));
 
-        newChildDescriptors
-                .add(createChildParameter(EsbPackage.Literals.THROTTLE_MEDIATOR__ON_ACCEPT_BRANCHSEQUENCE_KEY,
-                        EsbFactory.eINSTANCE.createRegistryKeyProperty()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.THROTTLE_MEDIATOR__ON_ACCEPT_BRANCHSEQUENCE_KEY,
+                 EsbFactory.eINSTANCE.createRegistryKeyProperty()));
 
-        newChildDescriptors
-                .add(createChildParameter(EsbPackage.Literals.THROTTLE_MEDIATOR__ON_REJECT_BRANCHSEQUENCE_KEY,
-                        EsbFactory.eINSTANCE.createRegistryKeyProperty()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.THROTTLE_MEDIATOR__ON_REJECT_BRANCHSEQUENCE_KEY,
+                 EsbFactory.eINSTANCE.createRegistryKeyProperty()));
     }
 
     /**
      * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -412,13 +426,15 @@ public class ThrottleMediatorItemProvider extends MediatorItemProvider {
         Object childFeature = feature;
         Object childObject = child;
 
-        boolean qualify = childFeature == EsbPackage.Literals.THROTTLE_MEDIATOR__POLICY_KEY
-                || childFeature == EsbPackage.Literals.THROTTLE_MEDIATOR__ON_ACCEPT_BRANCHSEQUENCE_KEY
-                || childFeature == EsbPackage.Literals.THROTTLE_MEDIATOR__ON_REJECT_BRANCHSEQUENCE_KEY;
+        boolean qualify =
+            childFeature == EsbPackage.Literals.THROTTLE_MEDIATOR__POLICY_KEY ||
+            childFeature == EsbPackage.Literals.THROTTLE_MEDIATOR__ON_ACCEPT_BRANCHSEQUENCE_KEY ||
+            childFeature == EsbPackage.Literals.THROTTLE_MEDIATOR__ON_REJECT_BRANCHSEQUENCE_KEY;
 
         if (qualify) {
-            return getString("_UI_CreateChild_text2",
-                    new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+            return getString
+                ("_UI_CreateChild_text2",
+                 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
         }
         return super.getCreateChildText(owner, feature, child, selection);
     }

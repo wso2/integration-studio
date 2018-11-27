@@ -26,9 +26,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AbstractLocationKeyResourceImpl#getLocation
- * <em>Location</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AbstractLocationKeyResourceImpl#getKey <em>Key</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AbstractLocationKeyResourceImpl#getLocation <em>Location</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AbstractLocationKeyResourceImpl#getKey <em>Key</em>}</li>
  * </ul>
  *
  * @generated
@@ -43,7 +42,6 @@ public abstract class AbstractLocationKeyResourceImpl extends EsbNodeImpl implem
      * The default value of the '{@link #getLocation() <em>Location</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getLocation()
      * @generated
      * @ordered
@@ -54,7 +52,6 @@ public abstract class AbstractLocationKeyResourceImpl extends EsbNodeImpl implem
      * The cached value of the '{@link #getLocation() <em>Location</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getLocation()
      * @generated
      * @ordered
@@ -65,7 +62,6 @@ public abstract class AbstractLocationKeyResourceImpl extends EsbNodeImpl implem
      * The cached value of the '{@link #getKey() <em>Key</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getKey()
      * @generated
      * @ordered
@@ -75,7 +71,6 @@ public abstract class AbstractLocationKeyResourceImpl extends EsbNodeImpl implem
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected AbstractLocationKeyResourceImpl() {
@@ -85,7 +80,6 @@ public abstract class AbstractLocationKeyResourceImpl extends EsbNodeImpl implem
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -97,7 +91,6 @@ public abstract class AbstractLocationKeyResourceImpl extends EsbNodeImpl implem
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getLocation() {
@@ -107,21 +100,18 @@ public abstract class AbstractLocationKeyResourceImpl extends EsbNodeImpl implem
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setLocation(String newLocation) {
         String oldLocation = location;
         location = newLocation;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ABSTRACT_LOCATION_KEY_RESOURCE__LOCATION,
-                    oldLocation, location));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ABSTRACT_LOCATION_KEY_RESOURCE__LOCATION, oldLocation, location));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public RegistryKeyProperty getKey() {
@@ -131,19 +121,14 @@ public abstract class AbstractLocationKeyResourceImpl extends EsbNodeImpl implem
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public NotificationChain basicSetKey(RegistryKeyProperty newKey, NotificationChain msgs) {
         RegistryKeyProperty oldKey = key;
         key = newKey;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.ABSTRACT_LOCATION_KEY_RESOURCE__KEY, oldKey, newKey);
-            if (msgs == null)
-                msgs = notification;
-            else
-                msgs.add(notification);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.ABSTRACT_LOCATION_KEY_RESOURCE__KEY, oldKey, newKey);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
         }
         return msgs;
     }
@@ -151,38 +136,33 @@ public abstract class AbstractLocationKeyResourceImpl extends EsbNodeImpl implem
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setKey(RegistryKeyProperty newKey) {
         if (newKey != key) {
             NotificationChain msgs = null;
             if (key != null)
-                msgs = ((InternalEObject) key).eInverseRemove(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.ABSTRACT_LOCATION_KEY_RESOURCE__KEY, null, msgs);
+                msgs = ((InternalEObject)key).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.ABSTRACT_LOCATION_KEY_RESOURCE__KEY, null, msgs);
             if (newKey != null)
-                msgs = ((InternalEObject) newKey).eInverseAdd(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.ABSTRACT_LOCATION_KEY_RESOURCE__KEY, null, msgs);
+                msgs = ((InternalEObject)newKey).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.ABSTRACT_LOCATION_KEY_RESOURCE__KEY, null, msgs);
             msgs = basicSetKey(newKey, msgs);
-            if (msgs != null)
-                msgs.dispatch();
-        } else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ABSTRACT_LOCATION_KEY_RESOURCE__KEY,
-                    newKey, newKey));
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ABSTRACT_LOCATION_KEY_RESOURCE__KEY, newKey, newKey));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
-        case EsbPackage.ABSTRACT_LOCATION_KEY_RESOURCE__KEY:
-            return basicSetKey(null, msgs);
+            case EsbPackage.ABSTRACT_LOCATION_KEY_RESOURCE__KEY:
+                return basicSetKey(null, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -190,17 +170,16 @@ public abstract class AbstractLocationKeyResourceImpl extends EsbNodeImpl implem
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-        case EsbPackage.ABSTRACT_LOCATION_KEY_RESOURCE__LOCATION:
-            return getLocation();
-        case EsbPackage.ABSTRACT_LOCATION_KEY_RESOURCE__KEY:
-            return getKey();
+            case EsbPackage.ABSTRACT_LOCATION_KEY_RESOURCE__LOCATION:
+                return getLocation();
+            case EsbPackage.ABSTRACT_LOCATION_KEY_RESOURCE__KEY:
+                return getKey();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -208,19 +187,18 @@ public abstract class AbstractLocationKeyResourceImpl extends EsbNodeImpl implem
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-        case EsbPackage.ABSTRACT_LOCATION_KEY_RESOURCE__LOCATION:
-            setLocation((String) newValue);
-            return;
-        case EsbPackage.ABSTRACT_LOCATION_KEY_RESOURCE__KEY:
-            setKey((RegistryKeyProperty) newValue);
-            return;
+            case EsbPackage.ABSTRACT_LOCATION_KEY_RESOURCE__LOCATION:
+                setLocation((String)newValue);
+                return;
+            case EsbPackage.ABSTRACT_LOCATION_KEY_RESOURCE__KEY:
+                setKey((RegistryKeyProperty)newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
@@ -228,19 +206,18 @@ public abstract class AbstractLocationKeyResourceImpl extends EsbNodeImpl implem
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-        case EsbPackage.ABSTRACT_LOCATION_KEY_RESOURCE__LOCATION:
-            setLocation(LOCATION_EDEFAULT);
-            return;
-        case EsbPackage.ABSTRACT_LOCATION_KEY_RESOURCE__KEY:
-            setKey((RegistryKeyProperty) null);
-            return;
+            case EsbPackage.ABSTRACT_LOCATION_KEY_RESOURCE__LOCATION:
+                setLocation(LOCATION_EDEFAULT);
+                return;
+            case EsbPackage.ABSTRACT_LOCATION_KEY_RESOURCE__KEY:
+                setKey((RegistryKeyProperty)null);
+                return;
         }
         super.eUnset(featureID);
     }
@@ -248,17 +225,16 @@ public abstract class AbstractLocationKeyResourceImpl extends EsbNodeImpl implem
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-        case EsbPackage.ABSTRACT_LOCATION_KEY_RESOURCE__LOCATION:
-            return LOCATION_EDEFAULT == null ? location != null : !LOCATION_EDEFAULT.equals(location);
-        case EsbPackage.ABSTRACT_LOCATION_KEY_RESOURCE__KEY:
-            return key != null;
+            case EsbPackage.ABSTRACT_LOCATION_KEY_RESOURCE__LOCATION:
+                return LOCATION_EDEFAULT == null ? location != null : !LOCATION_EDEFAULT.equals(location);
+            case EsbPackage.ABSTRACT_LOCATION_KEY_RESOURCE__KEY:
+                return key != null;
         }
         return super.eIsSet(featureID);
     }
@@ -266,14 +242,12 @@ public abstract class AbstractLocationKeyResourceImpl extends EsbNodeImpl implem
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public String toString() {
-        if (eIsProxy())
-            return super.toString();
+        if (eIsProxy()) return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (location: ");

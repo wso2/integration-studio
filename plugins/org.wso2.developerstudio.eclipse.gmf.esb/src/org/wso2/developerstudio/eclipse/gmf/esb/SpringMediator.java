@@ -15,11 +15,10 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SpringMediator#getBeanName <em>Bean Name</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SpringMediator#getConfigurationKey <em>Configuration
- * Key</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SpringMediator#getInputConnector <em>Input Connector</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SpringMediator#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SpringMediator#getBeanName <em>Bean Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SpringMediator#getConfigurationKey <em>Configuration Key</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SpringMediator#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SpringMediator#getOutputConnector <em>Output Connector</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSpringMediator()
@@ -29,28 +28,25 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
 public interface SpringMediator extends Mediator {
     /**
      * Returns the value of the '<em><b>Bean Name</b></em>' attribute.
-     * The default value is <code>"bean_name"</code>.
+     * The default value is <code>""</code>.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Bean Name</em>' attribute isn't clear,
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Bean Name</em>' attribute.
      * @see #setBeanName(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSpringMediator_BeanName()
-     * @model default="bean_name"
+     * @model default=""
      * @generated
      */
     String getBeanName();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SpringMediator#getBeanName <em>Bean
-     * Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SpringMediator#getBeanName <em>Bean Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Bean Name</em>' attribute.
      * @see #getBeanName()
      * @generated
@@ -65,7 +61,6 @@ public interface SpringMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Configuration Key</em>' containment reference.
      * @see #setConfigurationKey(RegistryKeyProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSpringMediator_ConfigurationKey()
@@ -75,11 +70,9 @@ public interface SpringMediator extends Mediator {
     RegistryKeyProperty getConfigurationKey();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SpringMediator#getConfigurationKey
-     * <em>Configuration Key</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SpringMediator#getConfigurationKey <em>Configuration Key</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Configuration Key</em>' containment reference.
      * @see #getConfigurationKey()
      * @generated
@@ -94,7 +87,6 @@ public interface SpringMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Input Connector</em>' containment reference.
      * @see #setInputConnector(SpringMediatorInputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSpringMediator_InputConnector()
@@ -104,11 +96,9 @@ public interface SpringMediator extends Mediator {
     SpringMediatorInputConnector getInputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SpringMediator#getInputConnector <em>Input
-     * Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SpringMediator#getInputConnector <em>Input Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Input Connector</em>' containment reference.
      * @see #getInputConnector()
      * @generated
@@ -123,7 +113,6 @@ public interface SpringMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Output Connector</em>' containment reference.
      * @see #setOutputConnector(SpringMediatorOutputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSpringMediator_OutputConnector()
@@ -133,11 +122,9 @@ public interface SpringMediator extends Mediator {
     SpringMediatorOutputConnector getOutputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SpringMediator#getOutputConnector
-     * <em>Output Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SpringMediator#getOutputConnector <em>Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Output Connector</em>' containment reference.
      * @see #getOutputConnector()
      * @generated

@@ -22,7 +22,6 @@ public class LogMediatorOutputConnectorImpl extends OutputConnectorImpl implemen
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected LogMediatorOutputConnectorImpl() {
@@ -32,7 +31,6 @@ public class LogMediatorOutputConnectorImpl extends OutputConnectorImpl implemen
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 

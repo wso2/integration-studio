@@ -22,7 +22,6 @@ public class ClassMediatorInputConnectorImpl extends InputConnectorImpl implemen
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected ClassMediatorInputConnectorImpl() {
@@ -32,7 +31,6 @@ public class ClassMediatorInputConnectorImpl extends InputConnectorImpl implemen
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 

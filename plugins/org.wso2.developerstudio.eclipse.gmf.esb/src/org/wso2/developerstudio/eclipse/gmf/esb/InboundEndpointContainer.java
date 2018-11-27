@@ -24,10 +24,8 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointContainer#getSequenceContainer <em>Sequence
- * Container</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointContainer#getOnErrorSequenceContainer <em>On Error
- * Sequence Container</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointContainer#getSequenceContainer <em>Sequence Container</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointContainer#getOnErrorSequenceContainer <em>On Error Sequence Container</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpointContainer()
@@ -43,7 +41,6 @@ public interface InboundEndpointContainer extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Sequence Container</em>' containment reference.
      * @see #setSequenceContainer(InboundEndpointSequenceContainer)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpointContainer_SequenceContainer()
@@ -53,12 +50,9 @@ public interface InboundEndpointContainer extends EsbElement {
     InboundEndpointSequenceContainer getSequenceContainer();
 
     /**
-     * Sets the value of the
-     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointContainer#getSequenceContainer <em>Sequence
-     * Container</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointContainer#getSequenceContainer <em>Sequence Container</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Sequence Container</em>' containment reference.
      * @see #getSequenceContainer()
      * @generated
@@ -73,7 +67,6 @@ public interface InboundEndpointContainer extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>On Error Sequence Container</em>' containment reference.
      * @see #setOnErrorSequenceContainer(InboundEndpointOnErrorSequenceContainer)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpointContainer_OnErrorSequenceContainer()
@@ -83,12 +76,9 @@ public interface InboundEndpointContainer extends EsbElement {
     InboundEndpointOnErrorSequenceContainer getOnErrorSequenceContainer();
 
     /**
-     * Sets the value of the
-     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointContainer#getOnErrorSequenceContainer <em>On
-     * Error Sequence Container</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointContainer#getOnErrorSequenceContainer <em>On Error Sequence Container</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>On Error Sequence Container</em>' containment reference.
      * @see #getOnErrorSequenceContainer()
      * @generated

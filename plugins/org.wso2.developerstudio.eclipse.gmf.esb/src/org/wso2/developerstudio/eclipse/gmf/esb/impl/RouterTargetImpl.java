@@ -22,7 +22,6 @@ public class RouterTargetImpl extends AbstractCommonTargetImpl implements Router
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected RouterTargetImpl() {
@@ -32,7 +31,6 @@ public class RouterTargetImpl extends AbstractCommonTargetImpl implements Router
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

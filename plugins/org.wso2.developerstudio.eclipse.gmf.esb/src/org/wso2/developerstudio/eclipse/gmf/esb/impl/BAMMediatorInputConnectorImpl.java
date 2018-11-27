@@ -31,7 +31,6 @@ public class BAMMediatorInputConnectorImpl extends InputConnectorImpl implements
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected BAMMediatorInputConnectorImpl() {
@@ -41,7 +40,6 @@ public class BAMMediatorInputConnectorImpl extends InputConnectorImpl implements
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

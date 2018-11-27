@@ -151,8 +151,8 @@ public interface DataMapperMediator extends Mediator {
     void setConfiguration(RegistryKeyProperty value);
 
     /**
-	 * Returns the value of the '<em><b>Input Schema</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Input Schema</b></em>' containment reference.
+     * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Input Schema</em>' containment reference isn't clear,
      * there really should be more of a description here...
@@ -322,7 +322,7 @@ public interface DataMapperMediator extends Mediator {
 	 */
 	String getXsltStyleSheetLocalPath();
 
-				/**
+	/**
 	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator#getXsltStyleSheetLocalPath <em>Xslt Style Sheet Local Path</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -332,7 +332,7 @@ public interface DataMapperMediator extends Mediator {
 	 */
 	void setXsltStyleSheetLocalPath(String value);
 
-				/**
+	/**
 	 * Returns the value of the '<em><b>Output Type</b></em>' attribute.
 	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediatorDataTypes}.
 	 * <!-- begin-user-doc -->

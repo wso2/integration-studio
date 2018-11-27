@@ -34,10 +34,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AddressingEndpointImpl#getInputConnector <em>Input
- * Connector</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AddressingEndpointImpl#getOutputConnector <em>Output
- * Connector</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AddressingEndpointImpl#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AddressingEndpointImpl#getOutputConnector <em>Output Connector</em>}</li>
  * </ul>
  *
  * @generated
@@ -47,7 +45,6 @@ public class AddressingEndpointImpl extends AbstractEndPointImpl implements Addr
      * The cached value of the '{@link #getInputConnector() <em>Input Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getInputConnector()
      * @generated
      * @ordered
@@ -57,7 +54,6 @@ public class AddressingEndpointImpl extends AbstractEndPointImpl implements Addr
      * The cached value of the '{@link #getOutputConnector() <em>Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getOutputConnector()
      * @generated
      * @ordered
@@ -67,7 +63,6 @@ public class AddressingEndpointImpl extends AbstractEndPointImpl implements Addr
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected AddressingEndpointImpl() {
@@ -77,7 +72,6 @@ public class AddressingEndpointImpl extends AbstractEndPointImpl implements Addr
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -88,7 +82,6 @@ public class AddressingEndpointImpl extends AbstractEndPointImpl implements Addr
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public AddressingEndpointInputConnector getInputConnector() {
@@ -98,7 +91,6 @@ public class AddressingEndpointImpl extends AbstractEndPointImpl implements Addr
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public NotificationChain basicSetInputConnector(AddressingEndpointInputConnector newInputConnector,
@@ -106,12 +98,8 @@ public class AddressingEndpointImpl extends AbstractEndPointImpl implements Addr
         AddressingEndpointInputConnector oldInputConnector = inputConnector;
         inputConnector = newInputConnector;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.ADDRESSING_ENDPOINT__INPUT_CONNECTOR, oldInputConnector, newInputConnector);
-            if (msgs == null)
-                msgs = notification;
-            else
-                msgs.add(notification);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.ADDRESSING_ENDPOINT__INPUT_CONNECTOR, oldInputConnector, newInputConnector);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
         }
         return msgs;
     }
@@ -119,30 +107,25 @@ public class AddressingEndpointImpl extends AbstractEndPointImpl implements Addr
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setInputConnector(AddressingEndpointInputConnector newInputConnector) {
         if (newInputConnector != inputConnector) {
             NotificationChain msgs = null;
             if (inputConnector != null)
-                msgs = ((InternalEObject) inputConnector).eInverseRemove(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.ADDRESSING_ENDPOINT__INPUT_CONNECTOR, null, msgs);
+                msgs = ((InternalEObject)inputConnector).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.ADDRESSING_ENDPOINT__INPUT_CONNECTOR, null, msgs);
             if (newInputConnector != null)
-                msgs = ((InternalEObject) newInputConnector).eInverseAdd(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.ADDRESSING_ENDPOINT__INPUT_CONNECTOR, null, msgs);
+                msgs = ((InternalEObject)newInputConnector).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.ADDRESSING_ENDPOINT__INPUT_CONNECTOR, null, msgs);
             msgs = basicSetInputConnector(newInputConnector, msgs);
-            if (msgs != null)
-                msgs.dispatch();
-        } else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ADDRESSING_ENDPOINT__INPUT_CONNECTOR,
-                    newInputConnector, newInputConnector));
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ADDRESSING_ENDPOINT__INPUT_CONNECTOR, newInputConnector, newInputConnector));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public AddressingEndpointOutputConnector getOutputConnector() {
@@ -152,7 +135,6 @@ public class AddressingEndpointImpl extends AbstractEndPointImpl implements Addr
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public NotificationChain basicSetOutputConnector(AddressingEndpointOutputConnector newOutputConnector,
@@ -160,12 +142,8 @@ public class AddressingEndpointImpl extends AbstractEndPointImpl implements Addr
         AddressingEndpointOutputConnector oldOutputConnector = outputConnector;
         outputConnector = newOutputConnector;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.ADDRESSING_ENDPOINT__OUTPUT_CONNECTOR, oldOutputConnector, newOutputConnector);
-            if (msgs == null)
-                msgs = notification;
-            else
-                msgs.add(notification);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.ADDRESSING_ENDPOINT__OUTPUT_CONNECTOR, oldOutputConnector, newOutputConnector);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
         }
         return msgs;
     }
@@ -173,39 +151,34 @@ public class AddressingEndpointImpl extends AbstractEndPointImpl implements Addr
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setOutputConnector(AddressingEndpointOutputConnector newOutputConnector) {
         if (newOutputConnector != outputConnector) {
             NotificationChain msgs = null;
             if (outputConnector != null)
-                msgs = ((InternalEObject) outputConnector).eInverseRemove(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.ADDRESSING_ENDPOINT__OUTPUT_CONNECTOR, null, msgs);
+                msgs = ((InternalEObject)outputConnector).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.ADDRESSING_ENDPOINT__OUTPUT_CONNECTOR, null, msgs);
             if (newOutputConnector != null)
-                msgs = ((InternalEObject) newOutputConnector).eInverseAdd(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.ADDRESSING_ENDPOINT__OUTPUT_CONNECTOR, null, msgs);
+                msgs = ((InternalEObject)newOutputConnector).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.ADDRESSING_ENDPOINT__OUTPUT_CONNECTOR, null, msgs);
             msgs = basicSetOutputConnector(newOutputConnector, msgs);
-            if (msgs != null)
-                msgs.dispatch();
-        } else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ADDRESSING_ENDPOINT__OUTPUT_CONNECTOR,
-                    newOutputConnector, newOutputConnector));
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ADDRESSING_ENDPOINT__OUTPUT_CONNECTOR, newOutputConnector, newOutputConnector));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
-        case EsbPackage.ADDRESSING_ENDPOINT__INPUT_CONNECTOR:
-            return basicSetInputConnector(null, msgs);
-        case EsbPackage.ADDRESSING_ENDPOINT__OUTPUT_CONNECTOR:
-            return basicSetOutputConnector(null, msgs);
+            case EsbPackage.ADDRESSING_ENDPOINT__INPUT_CONNECTOR:
+                return basicSetInputConnector(null, msgs);
+            case EsbPackage.ADDRESSING_ENDPOINT__OUTPUT_CONNECTOR:
+                return basicSetOutputConnector(null, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -213,16 +186,15 @@ public class AddressingEndpointImpl extends AbstractEndPointImpl implements Addr
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-        case EsbPackage.ADDRESSING_ENDPOINT__INPUT_CONNECTOR:
-            return getInputConnector();
-        case EsbPackage.ADDRESSING_ENDPOINT__OUTPUT_CONNECTOR:
-            return getOutputConnector();
+            case EsbPackage.ADDRESSING_ENDPOINT__INPUT_CONNECTOR:
+                return getInputConnector();
+            case EsbPackage.ADDRESSING_ENDPOINT__OUTPUT_CONNECTOR:
+                return getOutputConnector();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -230,18 +202,17 @@ public class AddressingEndpointImpl extends AbstractEndPointImpl implements Addr
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-        case EsbPackage.ADDRESSING_ENDPOINT__INPUT_CONNECTOR:
-            setInputConnector((AddressingEndpointInputConnector) newValue);
-            return;
-        case EsbPackage.ADDRESSING_ENDPOINT__OUTPUT_CONNECTOR:
-            setOutputConnector((AddressingEndpointOutputConnector) newValue);
-            return;
+            case EsbPackage.ADDRESSING_ENDPOINT__INPUT_CONNECTOR:
+                setInputConnector((AddressingEndpointInputConnector)newValue);
+                return;
+            case EsbPackage.ADDRESSING_ENDPOINT__OUTPUT_CONNECTOR:
+                setOutputConnector((AddressingEndpointOutputConnector)newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
@@ -249,18 +220,17 @@ public class AddressingEndpointImpl extends AbstractEndPointImpl implements Addr
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-        case EsbPackage.ADDRESSING_ENDPOINT__INPUT_CONNECTOR:
-            setInputConnector((AddressingEndpointInputConnector) null);
-            return;
-        case EsbPackage.ADDRESSING_ENDPOINT__OUTPUT_CONNECTOR:
-            setOutputConnector((AddressingEndpointOutputConnector) null);
-            return;
+            case EsbPackage.ADDRESSING_ENDPOINT__INPUT_CONNECTOR:
+                setInputConnector((AddressingEndpointInputConnector)null);
+                return;
+            case EsbPackage.ADDRESSING_ENDPOINT__OUTPUT_CONNECTOR:
+                setOutputConnector((AddressingEndpointOutputConnector)null);
+                return;
         }
         super.eUnset(featureID);
     }
@@ -268,16 +238,15 @@ public class AddressingEndpointImpl extends AbstractEndPointImpl implements Addr
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-        case EsbPackage.ADDRESSING_ENDPOINT__INPUT_CONNECTOR:
-            return inputConnector != null;
-        case EsbPackage.ADDRESSING_ENDPOINT__OUTPUT_CONNECTOR:
-            return outputConnector != null;
+            case EsbPackage.ADDRESSING_ENDPOINT__INPUT_CONNECTOR:
+                return inputConnector != null;
+            case EsbPackage.ADDRESSING_ENDPOINT__OUTPUT_CONNECTOR:
+                return outputConnector != null;
         }
         return super.eIsSet(featureID);
     }

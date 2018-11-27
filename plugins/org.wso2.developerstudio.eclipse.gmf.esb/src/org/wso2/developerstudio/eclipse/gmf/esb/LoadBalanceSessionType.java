@@ -26,7 +26,6 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>Load Balance Session Type</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * 
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getLoadBalanceSessionType()
  * @model
  * @generated
@@ -36,7 +35,6 @@ public enum LoadBalanceSessionType implements Enumerator {
      * The '<em><b>NONE</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #NONE_VALUE
      * @generated
      * @ordered
@@ -47,7 +45,6 @@ public enum LoadBalanceSessionType implements Enumerator {
      * The '<em><b>TRANSPORT</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #TRANSPORT_VALUE
      * @generated
      * @ordered
@@ -58,7 +55,6 @@ public enum LoadBalanceSessionType implements Enumerator {
      * The '<em><b>SOAP</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #SOAP_VALUE
      * @generated
      * @ordered
@@ -69,7 +65,6 @@ public enum LoadBalanceSessionType implements Enumerator {
      * The '<em><b>CLIENT ID</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #CLIENT_ID_VALUE
      * @generated
      * @ordered
@@ -84,7 +79,6 @@ public enum LoadBalanceSessionType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #NONE
      * @model
      * @generated
@@ -100,7 +94,6 @@ public enum LoadBalanceSessionType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #TRANSPORT
      * @model literal="http"
      * @generated
@@ -116,7 +109,6 @@ public enum LoadBalanceSessionType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #SOAP
      * @model literal="soap"
      * @generated
@@ -132,7 +124,6 @@ public enum LoadBalanceSessionType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #CLIENT_ID
      * @model literal="simpleClientSession"
      * @generated
@@ -144,17 +135,19 @@ public enum LoadBalanceSessionType implements Enumerator {
      * An array of all the '<em><b>Load Balance Session Type</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
-    private static final LoadBalanceSessionType[] VALUES_ARRAY = new LoadBalanceSessionType[] { NONE, TRANSPORT, SOAP,
-            CLIENT_ID, };
+    private static final LoadBalanceSessionType[] VALUES_ARRAY = new LoadBalanceSessionType[] {
+            NONE,
+            TRANSPORT,
+            SOAP,
+            CLIENT_ID,
+        };
 
     /**
      * A public read-only list of all the '<em><b>Load Balance Session Type</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public static final List<LoadBalanceSessionType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
@@ -163,7 +156,6 @@ public enum LoadBalanceSessionType implements Enumerator {
      * Returns the '<em><b>Load Balance Session Type</b></em>' literal with the specified literal value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param literal the literal.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -182,7 +174,6 @@ public enum LoadBalanceSessionType implements Enumerator {
      * Returns the '<em><b>Load Balance Session Type</b></em>' literal with the specified name.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param name the name.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -201,21 +192,16 @@ public enum LoadBalanceSessionType implements Enumerator {
      * Returns the '<em><b>Load Balance Session Type</b></em>' literal with the specified integer value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the integer value.
      * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static LoadBalanceSessionType get(int value) {
         switch (value) {
-        case NONE_VALUE:
-            return NONE;
-        case TRANSPORT_VALUE:
-            return TRANSPORT;
-        case SOAP_VALUE:
-            return SOAP;
-        case CLIENT_ID_VALUE:
-            return CLIENT_ID;
+            case NONE_VALUE: return NONE;
+            case TRANSPORT_VALUE: return TRANSPORT;
+            case SOAP_VALUE: return SOAP;
+            case CLIENT_ID_VALUE: return CLIENT_ID;
         }
         return null;
     }
@@ -223,7 +209,6 @@ public enum LoadBalanceSessionType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final int value;
@@ -231,7 +216,6 @@ public enum LoadBalanceSessionType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final String name;
@@ -239,7 +223,6 @@ public enum LoadBalanceSessionType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final String literal;
@@ -248,7 +231,6 @@ public enum LoadBalanceSessionType implements Enumerator {
      * Only this class can construct instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private LoadBalanceSessionType(int value, String name, String literal) {
@@ -260,38 +242,34 @@ public enum LoadBalanceSessionType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public int getValue() {
-        return value;
+      return value;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getName() {
-        return name;
+      return name;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getLiteral() {
-        return literal;
+      return literal;
     }
 
     /**
      * Returns the literal value of the enumerator, which is its string representation.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

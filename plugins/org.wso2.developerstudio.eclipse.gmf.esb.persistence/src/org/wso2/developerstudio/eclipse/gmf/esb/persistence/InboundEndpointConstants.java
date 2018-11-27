@@ -73,6 +73,11 @@ public class InboundEndpointConstants {
     public static final String VFS_FILE_PROCESS_COUNT = "transport.vfs.FileProcessCount";
     public static final String VFS_LOCKING = "transport.vfs.Locking";
     public static final String VFS_MAX_RETRY_COUNT = "transport.vfs.MaxRetryCount";
+    public static final String VFS_MOVE_AFTER_FAILED_MOVE = "transport.vfs.MoveAfterFailedMove";
+    public static final String VFS_FAILED_RECORDS_FILE_NAME = "transport.vfs.FailedRecordsFileName";
+    public static final String VFS_FAILED_RECORDS_FILE_DESTINATION = "transport.vfs.FailedRecordsFileDestination";
+    public static final String VFS_MOVE_FAILED_RECORD_TIMESTAMP_FORMAT = "transport.vfs.MoveFailedRecordTimestampFormat";
+    public static final String VFS_FAILED_RECORD_NEXT_RETRY_DURATION = "transport.vfs.FailedRecordNextRetryDuration";
     public static final String VFS_RECONNECT_TIMEOUT = "transport.vfs.ReconnectTimeout";
     public static final String VFS_ACTION_AFTER_PROCESS = "transport.vfs.ActionAfterProcess";
     public static final String VFS_MOVE_AFTER_PROCESS = "transport.vfs.MoveAfterProcess";
@@ -80,6 +85,8 @@ public class InboundEndpointConstants {
     public static final String VFS_MOVE_AFTER_ERRORS = "transport.vfs.MoveAfterErrors";
     public static final String VFS_ACTION_AFTER_FAILURE = "transport.vfs.ActionAfterFailure";
     public static final String VFS_MOVE_AFTER_FAILURE = "transport.vfs.MoveAfterFailure";
+    public static final String VFS_REPLY_FILE_URI = "transport.vfs.ReplyFileURI";
+    public static final String VFS_REPLY_FILE_NAME = "transport.vfs.ReplyFileName";
     public static final String VFS_MOVE_TIMESTAMP_FORMAT = "transport.vfs.MoveTimestampFormat";
     public static final String VFS_AUTO_LOCK_RELEASE = "transport.vfs.AutoLockRelease";
     public static final String VFS_AUTO_LOCK_RELEASE_INTERVAL = "transport.vfs.AutoLockReleaseInterval";
@@ -117,6 +124,9 @@ public class InboundEndpointConstants {
     public static final String JMS_RETRIES_BEFORE_SUSPENSION = "transport.jms.RetriesBeforeSuspension";
     public static final String JMS_POLLING_SUSPENSION_PERIOD = "transport.jms.PollingSuspensionPeriod";
     public static final String JMS_RESET_CONNECTION_ON_POLLING_SUSPENSION = "transport.jms.ResetConnectionOnPollingSuspension";
+    public static final String JMS_BROKER_TYPE_IDENTIFIER_WSO2MB = "andes";
+    public static final String JMS_BROKER_TYPE_IDENTIFIER_ACTIVEMQ = "activemq";
+    public static final String JMS_DB_URL = "db_url";
 
     public static final String WSO2_MB_CONNECTION_URL = "wso2mb.connection.url";
     public static final String WSO2_MB__QUEUE_CONNECTION_URL = "connectionfactory.QueueConnectionFactory";

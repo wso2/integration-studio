@@ -32,7 +32,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.TransactionMediator;
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.TransactionMediator} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class TransactionMediatorItemProvider extends MediatorItemProvider {
@@ -40,7 +39,6 @@ public class TransactionMediatorItemProvider extends MediatorItemProvider {
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public TransactionMediatorItemProvider(AdapterFactory adapterFactory) {
@@ -70,17 +68,22 @@ public class TransactionMediatorItemProvider extends MediatorItemProvider {
      * This adds a property descriptor for the Action feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addActionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_TransactionMediator_action_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_TransactionMediator_action_feature",
-                                "_UI_TransactionMediator_type"),
-                        EsbPackage.Literals.TRANSACTION_MEDIATOR__ACTION, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_TransactionMediator_action_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_TransactionMediator_action_feature", "_UI_TransactionMediator_type"),
+                 EsbPackage.Literals.TRANSACTION_MEDIATOR__ACTION,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
@@ -89,7 +92,6 @@ public class TransactionMediatorItemProvider extends MediatorItemProvider {
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -105,7 +107,6 @@ public class TransactionMediatorItemProvider extends MediatorItemProvider {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -120,7 +121,6 @@ public class TransactionMediatorItemProvider extends MediatorItemProvider {
      * This returns TransactionMediator.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -133,15 +133,15 @@ public class TransactionMediatorItemProvider extends MediatorItemProvider {
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public String getText(Object object) {
-        String label = ((TransactionMediator) object).getDescription();
-        return label == null || label.length() == 0 ? getString("_UI_TransactionMediator_type")
-                : getString("_UI_TransactionMediator_type") + " " + label;
+        String label = ((TransactionMediator)object).getDescription();
+        return label == null || label.length() == 0 ?
+            getString("_UI_TransactionMediator_type") :
+            getString("_UI_TransactionMediator_type") + " " + label;
     }
 
     /**
@@ -149,7 +149,6 @@ public class TransactionMediatorItemProvider extends MediatorItemProvider {
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -158,13 +157,13 @@ public class TransactionMediatorItemProvider extends MediatorItemProvider {
         updateChildren(notification);
 
         switch (notification.getFeatureID(TransactionMediator.class)) {
-        case EsbPackage.TRANSACTION_MEDIATOR__ACTION:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-            return;
-        case EsbPackage.TRANSACTION_MEDIATOR__INPUT_CONNECTOR:
-        case EsbPackage.TRANSACTION_MEDIATOR__OUTPUT_CONNECTOR:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-            return;
+            case EsbPackage.TRANSACTION_MEDIATOR__ACTION:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+                return;
+            case EsbPackage.TRANSACTION_MEDIATOR__INPUT_CONNECTOR:
+            case EsbPackage.TRANSACTION_MEDIATOR__OUTPUT_CONNECTOR:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+                return;
         }
         super.notifyChanged(notification);
     }
@@ -174,7 +173,6 @@ public class TransactionMediatorItemProvider extends MediatorItemProvider {
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -182,11 +180,15 @@ public class TransactionMediatorItemProvider extends MediatorItemProvider {
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.TRANSACTION_MEDIATOR__INPUT_CONNECTOR,
-                EsbFactory.eINSTANCE.createTransactionMediatorInputConnector()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.TRANSACTION_MEDIATOR__INPUT_CONNECTOR,
+                 EsbFactory.eINSTANCE.createTransactionMediatorInputConnector()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.TRANSACTION_MEDIATOR__OUTPUT_CONNECTOR,
-                EsbFactory.eINSTANCE.createTransactionMediatorOutputConnector()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.TRANSACTION_MEDIATOR__OUTPUT_CONNECTOR,
+                 EsbFactory.eINSTANCE.createTransactionMediatorOutputConnector()));
     }
 
 }

@@ -23,7 +23,6 @@ public class PayloadFactoryMediatorInputConnectorImpl extends InputConnectorImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected PayloadFactoryMediatorInputConnectorImpl() {
@@ -33,7 +32,6 @@ public class PayloadFactoryMediatorInputConnectorImpl extends InputConnectorImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

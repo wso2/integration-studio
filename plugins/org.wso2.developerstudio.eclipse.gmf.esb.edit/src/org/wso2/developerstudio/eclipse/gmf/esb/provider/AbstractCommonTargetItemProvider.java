@@ -33,7 +33,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.TargetSequenceType;
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractCommonTarget} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class AbstractCommonTargetItemProvider extends EsbNodeItemProvider {
@@ -41,7 +40,6 @@ public class AbstractCommonTargetItemProvider extends EsbNodeItemProvider {
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public AbstractCommonTargetItemProvider(AdapterFactory adapterFactory) {
@@ -52,7 +50,6 @@ public class AbstractCommonTargetItemProvider extends EsbNodeItemProvider {
      * This returns the property descriptors for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -71,50 +68,66 @@ public class AbstractCommonTargetItemProvider extends EsbNodeItemProvider {
      * This adds a property descriptor for the Sequence Type feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addSequenceTypePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_AbstractCommonTarget_sequenceType_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_AbstractCommonTarget_sequenceType_feature",
-                        "_UI_AbstractCommonTarget_type"),
-                EsbPackage.Literals.ABSTRACT_COMMON_TARGET__SEQUENCE_TYPE, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_AbstractCommonTarget_sequenceType_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_AbstractCommonTarget_sequenceType_feature", "_UI_AbstractCommonTarget_type"),
+                 EsbPackage.Literals.ABSTRACT_COMMON_TARGET__SEQUENCE_TYPE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Sequence feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addSequencePropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_AbstractCommonTarget_sequence_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_AbstractCommonTarget_sequence_feature",
-                                "_UI_AbstractCommonTarget_type"),
-                        EsbPackage.Literals.ABSTRACT_COMMON_TARGET__SEQUENCE, true, false, true, null, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_AbstractCommonTarget_sequence_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_AbstractCommonTarget_sequence_feature", "_UI_AbstractCommonTarget_type"),
+                 EsbPackage.Literals.ABSTRACT_COMMON_TARGET__SEQUENCE,
+                 true,
+                 false,
+                 true,
+                 null,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Endpoint Type feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addEndpointTypePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_AbstractCommonTarget_endpointType_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_AbstractCommonTarget_endpointType_feature",
-                        "_UI_AbstractCommonTarget_type"),
-                EsbPackage.Literals.ABSTRACT_COMMON_TARGET__ENDPOINT_TYPE, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_AbstractCommonTarget_endpointType_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_AbstractCommonTarget_endpointType_feature", "_UI_AbstractCommonTarget_type"),
+                 EsbPackage.Literals.ABSTRACT_COMMON_TARGET__ENDPOINT_TYPE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
@@ -123,7 +136,6 @@ public class AbstractCommonTargetItemProvider extends EsbNodeItemProvider {
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -140,7 +152,6 @@ public class AbstractCommonTargetItemProvider extends EsbNodeItemProvider {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -155,7 +166,6 @@ public class AbstractCommonTargetItemProvider extends EsbNodeItemProvider {
      * This returns AbstractCommonTarget.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -167,15 +177,15 @@ public class AbstractCommonTargetItemProvider extends EsbNodeItemProvider {
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public String getText(Object object) {
-        TargetSequenceType labelValue = ((AbstractCommonTarget) object).getSequenceType();
+        TargetSequenceType labelValue = ((AbstractCommonTarget)object).getSequenceType();
         String label = labelValue == null ? null : labelValue.toString();
-        return label == null || label.length() == 0 ? getString("_UI_AbstractCommonTarget_type")
-                : getString("_UI_AbstractCommonTarget_type") + " " + label;
+        return label == null || label.length() == 0 ?
+            getString("_UI_AbstractCommonTarget_type") :
+            getString("_UI_AbstractCommonTarget_type") + " " + label;
     }
 
     /**
@@ -183,7 +193,6 @@ public class AbstractCommonTargetItemProvider extends EsbNodeItemProvider {
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -191,15 +200,15 @@ public class AbstractCommonTargetItemProvider extends EsbNodeItemProvider {
         updateChildren(notification);
 
         switch (notification.getFeatureID(AbstractCommonTarget.class)) {
-        case EsbPackage.ABSTRACT_COMMON_TARGET__SEQUENCE_TYPE:
-        case EsbPackage.ABSTRACT_COMMON_TARGET__ENDPOINT_TYPE:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-            return;
-        case EsbPackage.ABSTRACT_COMMON_TARGET__SEQUENCE_KEY:
-        case EsbPackage.ABSTRACT_COMMON_TARGET__ENDPOINT:
-        case EsbPackage.ABSTRACT_COMMON_TARGET__ENDPOINT_KEY:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-            return;
+            case EsbPackage.ABSTRACT_COMMON_TARGET__SEQUENCE_TYPE:
+            case EsbPackage.ABSTRACT_COMMON_TARGET__ENDPOINT_TYPE:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+                return;
+            case EsbPackage.ABSTRACT_COMMON_TARGET__SEQUENCE_KEY:
+            case EsbPackage.ABSTRACT_COMMON_TARGET__ENDPOINT:
+            case EsbPackage.ABSTRACT_COMMON_TARGET__ENDPOINT_KEY:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+                return;
         }
         super.notifyChanged(notification);
     }
@@ -209,61 +218,87 @@ public class AbstractCommonTargetItemProvider extends EsbNodeItemProvider {
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.ABSTRACT_COMMON_TARGET__SEQUENCE_KEY,
-                EsbFactory.eINSTANCE.createRegistryKeyProperty()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.ABSTRACT_COMMON_TARGET__SEQUENCE_KEY,
+                 EsbFactory.eINSTANCE.createRegistryKeyProperty()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.ABSTRACT_COMMON_TARGET__ENDPOINT,
-                EsbFactory.eINSTANCE.createDefaultEndPoint()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.ABSTRACT_COMMON_TARGET__ENDPOINT,
+                 EsbFactory.eINSTANCE.createDefaultEndPoint()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.ABSTRACT_COMMON_TARGET__ENDPOINT,
-                EsbFactory.eINSTANCE.createAddressEndPoint()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.ABSTRACT_COMMON_TARGET__ENDPOINT,
+                 EsbFactory.eINSTANCE.createAddressEndPoint()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.ABSTRACT_COMMON_TARGET__ENDPOINT,
-                EsbFactory.eINSTANCE.createTemplateEndpoint()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.ABSTRACT_COMMON_TARGET__ENDPOINT,
+                 EsbFactory.eINSTANCE.createTemplateEndpoint()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.ABSTRACT_COMMON_TARGET__ENDPOINT,
-                EsbFactory.eINSTANCE.createHTTPEndpoint()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.ABSTRACT_COMMON_TARGET__ENDPOINT,
+                 EsbFactory.eINSTANCE.createHTTPEndpoint()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.ABSTRACT_COMMON_TARGET__ENDPOINT,
-                EsbFactory.eINSTANCE.createParentEndPoint()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.ABSTRACT_COMMON_TARGET__ENDPOINT,
+                 EsbFactory.eINSTANCE.createParentEndPoint()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.ABSTRACT_COMMON_TARGET__ENDPOINT,
-                EsbFactory.eINSTANCE.createFailoverEndPoint()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.ABSTRACT_COMMON_TARGET__ENDPOINT,
+                 EsbFactory.eINSTANCE.createFailoverEndPoint()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.ABSTRACT_COMMON_TARGET__ENDPOINT,
-                EsbFactory.eINSTANCE.createWSDLEndPoint()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.ABSTRACT_COMMON_TARGET__ENDPOINT,
+                 EsbFactory.eINSTANCE.createWSDLEndPoint()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.ABSTRACT_COMMON_TARGET__ENDPOINT,
-                EsbFactory.eINSTANCE.createLoadBalanceEndPoint()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.ABSTRACT_COMMON_TARGET__ENDPOINT,
+                 EsbFactory.eINSTANCE.createLoadBalanceEndPoint()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.ABSTRACT_COMMON_TARGET__ENDPOINT,
-                EsbFactory.eINSTANCE.createNamedEndpoint()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.ABSTRACT_COMMON_TARGET__ENDPOINT,
+                 EsbFactory.eINSTANCE.createNamedEndpoint()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.ABSTRACT_COMMON_TARGET__ENDPOINT,
-                EsbFactory.eINSTANCE.createAPIResourceEndpoint()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.ABSTRACT_COMMON_TARGET__ENDPOINT,
+                 EsbFactory.eINSTANCE.createAPIResourceEndpoint()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.ABSTRACT_COMMON_TARGET__ENDPOINT,
-                EsbFactory.eINSTANCE.createAddressingEndpoint()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.ABSTRACT_COMMON_TARGET__ENDPOINT,
+                 EsbFactory.eINSTANCE.createAddressingEndpoint()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.ABSTRACT_COMMON_TARGET__ENDPOINT,
-                EsbFactory.eINSTANCE.createRecipientListEndPoint()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.ABSTRACT_COMMON_TARGET__ENDPOINT,
+                 EsbFactory.eINSTANCE.createRecipientListEndPoint()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.ABSTRACT_COMMON_TARGET__ENDPOINT_KEY,
-                EsbFactory.eINSTANCE.createRegistryKeyProperty()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.ABSTRACT_COMMON_TARGET__ENDPOINT_KEY,
+                 EsbFactory.eINSTANCE.createRegistryKeyProperty()));
     }
 
     /**
      * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -271,12 +306,14 @@ public class AbstractCommonTargetItemProvider extends EsbNodeItemProvider {
         Object childFeature = feature;
         Object childObject = child;
 
-        boolean qualify = childFeature == EsbPackage.Literals.ABSTRACT_COMMON_TARGET__SEQUENCE_KEY
-                || childFeature == EsbPackage.Literals.ABSTRACT_COMMON_TARGET__ENDPOINT_KEY;
+        boolean qualify =
+            childFeature == EsbPackage.Literals.ABSTRACT_COMMON_TARGET__SEQUENCE_KEY ||
+            childFeature == EsbPackage.Literals.ABSTRACT_COMMON_TARGET__ENDPOINT_KEY;
 
         if (qualify) {
-            return getString("_UI_CreateChild_text2",
-                    new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+            return getString
+                ("_UI_CreateChild_text2",
+                 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
         }
         return super.getCreateChildText(owner, feature, child, selection);
     }

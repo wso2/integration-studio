@@ -22,7 +22,6 @@ public class EventMediatorOutputConnectorImpl extends OutputConnectorImpl implem
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected EventMediatorOutputConnectorImpl() {
@@ -32,7 +31,6 @@ public class EventMediatorOutputConnectorImpl extends OutputConnectorImpl implem
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 

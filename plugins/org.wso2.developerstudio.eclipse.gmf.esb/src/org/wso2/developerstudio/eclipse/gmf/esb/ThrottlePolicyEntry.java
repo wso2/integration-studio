@@ -17,15 +17,12 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottlePolicyEntry#getThrottleType <em>Throttle Type</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottlePolicyEntry#getThrottleRange <em>Throttle
- * Range</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottlePolicyEntry#getAccessType <em>Access Type</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottlePolicyEntry#getMaxRequestCount <em>Max Request
- * Count</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottlePolicyEntry#getUnitTime <em>Unit Time</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottlePolicyEntry#getProhibitPeriod <em>Prohibit
- * Period</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottlePolicyEntry#getThrottleType <em>Throttle Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottlePolicyEntry#getThrottleRange <em>Throttle Range</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottlePolicyEntry#getAccessType <em>Access Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottlePolicyEntry#getMaxRequestCount <em>Max Request Count</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottlePolicyEntry#getUnitTime <em>Unit Time</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottlePolicyEntry#getProhibitPeriod <em>Prohibit Period</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getThrottlePolicyEntry()
@@ -43,7 +40,6 @@ public interface ThrottlePolicyEntry extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Throttle Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.ThrottleConditionType
      * @see #setThrottleType(ThrottleConditionType)
@@ -54,11 +50,9 @@ public interface ThrottlePolicyEntry extends EObject {
     ThrottleConditionType getThrottleType();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottlePolicyEntry#getThrottleType
-     * <em>Throttle Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottlePolicyEntry#getThrottleType <em>Throttle Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Throttle Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.ThrottleConditionType
      * @see #getThrottleType()
@@ -75,7 +69,6 @@ public interface ThrottlePolicyEntry extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Throttle Range</em>' attribute.
      * @see #setThrottleRange(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getThrottlePolicyEntry_ThrottleRange()
@@ -85,11 +78,9 @@ public interface ThrottlePolicyEntry extends EObject {
     String getThrottleRange();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottlePolicyEntry#getThrottleRange
-     * <em>Throttle Range</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottlePolicyEntry#getThrottleRange <em>Throttle Range</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Throttle Range</em>' attribute.
      * @see #getThrottleRange()
      * @generated
@@ -105,7 +96,6 @@ public interface ThrottlePolicyEntry extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Access Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.ThrottleAccessType
      * @see #setAccessType(ThrottleAccessType)
@@ -116,11 +106,9 @@ public interface ThrottlePolicyEntry extends EObject {
     ThrottleAccessType getAccessType();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottlePolicyEntry#getAccessType
-     * <em>Access Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottlePolicyEntry#getAccessType <em>Access Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Access Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.ThrottleAccessType
      * @see #getAccessType()
@@ -136,7 +124,6 @@ public interface ThrottlePolicyEntry extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Max Request Count</em>' attribute.
      * @see #setMaxRequestCount(int)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getThrottlePolicyEntry_MaxRequestCount()
@@ -146,11 +133,9 @@ public interface ThrottlePolicyEntry extends EObject {
     int getMaxRequestCount();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottlePolicyEntry#getMaxRequestCount
-     * <em>Max Request Count</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottlePolicyEntry#getMaxRequestCount <em>Max Request Count</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Max Request Count</em>' attribute.
      * @see #getMaxRequestCount()
      * @generated
@@ -165,7 +150,6 @@ public interface ThrottlePolicyEntry extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Unit Time</em>' attribute.
      * @see #setUnitTime(int)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getThrottlePolicyEntry_UnitTime()
@@ -175,11 +159,9 @@ public interface ThrottlePolicyEntry extends EObject {
     int getUnitTime();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottlePolicyEntry#getUnitTime <em>Unit
-     * Time</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottlePolicyEntry#getUnitTime <em>Unit Time</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Unit Time</em>' attribute.
      * @see #getUnitTime()
      * @generated
@@ -194,7 +176,6 @@ public interface ThrottlePolicyEntry extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Prohibit Period</em>' attribute.
      * @see #setProhibitPeriod(int)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getThrottlePolicyEntry_ProhibitPeriod()
@@ -204,11 +185,9 @@ public interface ThrottlePolicyEntry extends EObject {
     int getProhibitPeriod();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottlePolicyEntry#getProhibitPeriod
-     * <em>Prohibit Period</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottlePolicyEntry#getProhibitPeriod <em>Prohibit Period</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Prohibit Period</em>' attribute.
      * @see #getProhibitPeriod()
      * @generated

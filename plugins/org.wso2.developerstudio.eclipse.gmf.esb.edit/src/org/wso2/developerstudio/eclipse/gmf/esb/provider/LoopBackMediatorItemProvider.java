@@ -39,7 +39,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.LoopBackMediator;
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.LoopBackMediator} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class LoopBackMediatorItemProvider extends MediatorItemProvider {
@@ -47,7 +46,6 @@ public class LoopBackMediatorItemProvider extends MediatorItemProvider {
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public LoopBackMediatorItemProvider(AdapterFactory adapterFactory) {
@@ -79,7 +77,6 @@ public class LoopBackMediatorItemProvider extends MediatorItemProvider {
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -95,7 +92,6 @@ public class LoopBackMediatorItemProvider extends MediatorItemProvider {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -110,7 +106,6 @@ public class LoopBackMediatorItemProvider extends MediatorItemProvider {
      * This returns LoopBackMediator.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -122,14 +117,14 @@ public class LoopBackMediatorItemProvider extends MediatorItemProvider {
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public String getText(Object object) {
-        String label = ((LoopBackMediator) object).getDescription();
-        return label == null || label.length() == 0 ? getString("_UI_LoopBackMediator_type")
-                : getString("_UI_LoopBackMediator_type") + " " + label;
+        String label = ((LoopBackMediator)object).getDescription();
+        return label == null || label.length() == 0 ?
+            getString("_UI_LoopBackMediator_type") :
+            getString("_UI_LoopBackMediator_type") + " " + label;
     }
 
     /**
@@ -137,7 +132,6 @@ public class LoopBackMediatorItemProvider extends MediatorItemProvider {
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -145,10 +139,10 @@ public class LoopBackMediatorItemProvider extends MediatorItemProvider {
         updateChildren(notification);
 
         switch (notification.getFeatureID(LoopBackMediator.class)) {
-        case EsbPackage.LOOP_BACK_MEDIATOR__INPUT_CONNECTOR:
-        case EsbPackage.LOOP_BACK_MEDIATOR__OUTPUT_CONNECTOR:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-            return;
+            case EsbPackage.LOOP_BACK_MEDIATOR__INPUT_CONNECTOR:
+            case EsbPackage.LOOP_BACK_MEDIATOR__OUTPUT_CONNECTOR:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+                return;
         }
         super.notifyChanged(notification);
     }
@@ -158,18 +152,21 @@ public class LoopBackMediatorItemProvider extends MediatorItemProvider {
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.LOOP_BACK_MEDIATOR__INPUT_CONNECTOR,
-                EsbFactory.eINSTANCE.createLoopBackMediatorInputConnector()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.LOOP_BACK_MEDIATOR__INPUT_CONNECTOR,
+                 EsbFactory.eINSTANCE.createLoopBackMediatorInputConnector()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.LOOP_BACK_MEDIATOR__OUTPUT_CONNECTOR,
-                EsbFactory.eINSTANCE.createLoopBackMediatorOutputConnector()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.LOOP_BACK_MEDIATOR__OUTPUT_CONNECTOR,
+                 EsbFactory.eINSTANCE.createLoopBackMediatorOutputConnector()));
     }
 
 }

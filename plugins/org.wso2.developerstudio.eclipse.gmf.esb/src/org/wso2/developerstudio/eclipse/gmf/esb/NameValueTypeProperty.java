@@ -15,12 +15,9 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.NameValueTypeProperty#getPropertyName <em>Property
- * Name</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.NameValueTypeProperty#getPropertyValue <em>Property
- * Value</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.NameValueTypeProperty#getPropertyType <em>Property
- * Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.NameValueTypeProperty#getPropertyName <em>Property Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.NameValueTypeProperty#getPropertyValue <em>Property Value</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.NameValueTypeProperty#getPropertyType <em>Property Type</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getNameValueTypeProperty()
@@ -36,7 +33,6 @@ public interface NameValueTypeProperty extends EsbNode {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Property Name</em>' attribute.
      * @see #setPropertyName(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getNameValueTypeProperty_PropertyName()
@@ -46,11 +42,9 @@ public interface NameValueTypeProperty extends EsbNode {
     String getPropertyName();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.NameValueTypeProperty#getPropertyName
-     * <em>Property Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.NameValueTypeProperty#getPropertyName <em>Property Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Property Name</em>' attribute.
      * @see #getPropertyName()
      * @generated
@@ -65,7 +59,6 @@ public interface NameValueTypeProperty extends EsbNode {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Property Value</em>' attribute.
      * @see #setPropertyValue(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getNameValueTypeProperty_PropertyValue()
@@ -75,11 +68,9 @@ public interface NameValueTypeProperty extends EsbNode {
     String getPropertyValue();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.NameValueTypeProperty#getPropertyValue
-     * <em>Property Value</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.NameValueTypeProperty#getPropertyValue <em>Property Value</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Property Value</em>' attribute.
      * @see #getPropertyValue()
      * @generated
@@ -95,7 +86,6 @@ public interface NameValueTypeProperty extends EsbNode {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Property Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.TaskPropertyType
      * @see #setPropertyType(TaskPropertyType)
@@ -106,11 +96,9 @@ public interface NameValueTypeProperty extends EsbNode {
     TaskPropertyType getPropertyType();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.NameValueTypeProperty#getPropertyType
-     * <em>Property Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.NameValueTypeProperty#getPropertyType <em>Property Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Property Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.TaskPropertyType
      * @see #getPropertyType()

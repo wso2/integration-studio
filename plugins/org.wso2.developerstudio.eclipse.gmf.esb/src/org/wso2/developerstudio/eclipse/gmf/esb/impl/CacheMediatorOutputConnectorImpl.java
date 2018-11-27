@@ -22,7 +22,6 @@ public class CacheMediatorOutputConnectorImpl extends OutputConnectorImpl implem
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected CacheMediatorOutputConnectorImpl() {
@@ -32,7 +31,6 @@ public class CacheMediatorOutputConnectorImpl extends OutputConnectorImpl implem
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

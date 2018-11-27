@@ -27,7 +27,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.TargetSequenceType;
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.RouterTarget} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class RouterTargetItemProvider extends AbstractCommonTargetItemProvider {
@@ -35,7 +34,6 @@ public class RouterTargetItemProvider extends AbstractCommonTargetItemProvider {
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public RouterTargetItemProvider(AdapterFactory adapterFactory) {
@@ -46,7 +44,6 @@ public class RouterTargetItemProvider extends AbstractCommonTargetItemProvider {
      * This returns the property descriptors for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -62,7 +59,6 @@ public class RouterTargetItemProvider extends AbstractCommonTargetItemProvider {
      * This returns RouterTarget.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -74,15 +70,15 @@ public class RouterTargetItemProvider extends AbstractCommonTargetItemProvider {
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public String getText(Object object) {
-        TargetSequenceType labelValue = ((RouterTarget) object).getSequenceType();
+        TargetSequenceType labelValue = ((RouterTarget)object).getSequenceType();
         String label = labelValue == null ? null : labelValue.toString();
-        return label == null || label.length() == 0 ? getString("_UI_RouterTarget_type")
-                : getString("_UI_RouterTarget_type") + " " + label;
+        return label == null || label.length() == 0 ?
+            getString("_UI_RouterTarget_type") :
+            getString("_UI_RouterTarget_type") + " " + label;
     }
 
     /**
@@ -90,7 +86,6 @@ public class RouterTargetItemProvider extends AbstractCommonTargetItemProvider {
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -104,7 +99,6 @@ public class RouterTargetItemProvider extends AbstractCommonTargetItemProvider {
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -116,7 +110,6 @@ public class RouterTargetItemProvider extends AbstractCommonTargetItemProvider {
      * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -124,12 +117,14 @@ public class RouterTargetItemProvider extends AbstractCommonTargetItemProvider {
         Object childFeature = feature;
         Object childObject = child;
 
-        boolean qualify = childFeature == EsbPackage.Literals.ABSTRACT_COMMON_TARGET__SEQUENCE_KEY
-                || childFeature == EsbPackage.Literals.ABSTRACT_COMMON_TARGET__ENDPOINT_KEY;
+        boolean qualify =
+            childFeature == EsbPackage.Literals.ABSTRACT_COMMON_TARGET__SEQUENCE_KEY ||
+            childFeature == EsbPackage.Literals.ABSTRACT_COMMON_TARGET__ENDPOINT_KEY;
 
         if (qualify) {
-            return getString("_UI_CreateChild_text2",
-                    new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+            return getString
+                ("_UI_CreateChild_text2",
+                 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
         }
         return super.getCreateChildText(owner, feature, child, selection);
     }

@@ -29,16 +29,12 @@ import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EventMediatorImpl#getTopicType <em>Topic Type</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EventMediatorImpl#getStaticTopic <em>Static Topic</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EventMediatorImpl#getDynamicTopic <em>Dynamic
- * Topic</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EventMediatorImpl#getEventExpression <em>Event
- * Expression</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EventMediatorImpl#getInputConnector <em>Input
- * Connector</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EventMediatorImpl#getOutputConnector <em>Output
- * Connector</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EventMediatorImpl#getTopicType <em>Topic Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EventMediatorImpl#getStaticTopic <em>Static Topic</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EventMediatorImpl#getDynamicTopic <em>Dynamic Topic</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EventMediatorImpl#getEventExpression <em>Event Expression</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EventMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EventMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
  * </ul>
  *
  * @generated
@@ -48,7 +44,6 @@ public class EventMediatorImpl extends MediatorImpl implements EventMediator {
      * The default value of the '{@link #getTopicType() <em>Topic Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getTopicType()
      * @generated
      * @ordered
@@ -59,7 +54,6 @@ public class EventMediatorImpl extends MediatorImpl implements EventMediator {
      * The cached value of the '{@link #getTopicType() <em>Topic Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getTopicType()
      * @generated
      * @ordered
@@ -70,18 +64,16 @@ public class EventMediatorImpl extends MediatorImpl implements EventMediator {
      * The default value of the '{@link #getStaticTopic() <em>Static Topic</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getStaticTopic()
      * @generated
      * @ordered
      */
-    protected static final String STATIC_TOPIC_EDEFAULT = "source_property";
+    protected static final String STATIC_TOPIC_EDEFAULT = "";
 
     /**
      * The cached value of the '{@link #getStaticTopic() <em>Static Topic</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getStaticTopic()
      * @generated
      * @ordered
@@ -92,7 +84,6 @@ public class EventMediatorImpl extends MediatorImpl implements EventMediator {
      * The cached value of the '{@link #getDynamicTopic() <em>Dynamic Topic</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getDynamicTopic()
      * @generated
      * @ordered
@@ -103,7 +94,6 @@ public class EventMediatorImpl extends MediatorImpl implements EventMediator {
      * The cached value of the '{@link #getEventExpression() <em>Event Expression</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getEventExpression()
      * @generated
      * @ordered
@@ -114,7 +104,6 @@ public class EventMediatorImpl extends MediatorImpl implements EventMediator {
      * The cached value of the '{@link #getInputConnector() <em>Input Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getInputConnector()
      * @generated
      * @ordered
@@ -125,7 +114,6 @@ public class EventMediatorImpl extends MediatorImpl implements EventMediator {
      * The cached value of the '{@link #getOutputConnector() <em>Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getOutputConnector()
      * @generated
      * @ordered
@@ -158,7 +146,6 @@ public class EventMediatorImpl extends MediatorImpl implements EventMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -170,7 +157,6 @@ public class EventMediatorImpl extends MediatorImpl implements EventMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public EventTopicType getTopicType() {
@@ -180,21 +166,18 @@ public class EventMediatorImpl extends MediatorImpl implements EventMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTopicType(EventTopicType newTopicType) {
         EventTopicType oldTopicType = topicType;
         topicType = newTopicType == null ? TOPIC_TYPE_EDEFAULT : newTopicType;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.EVENT_MEDIATOR__TOPIC_TYPE, oldTopicType,
-                    topicType));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.EVENT_MEDIATOR__TOPIC_TYPE, oldTopicType, topicType));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getStaticTopic() {
@@ -204,21 +187,18 @@ public class EventMediatorImpl extends MediatorImpl implements EventMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setStaticTopic(String newStaticTopic) {
         String oldStaticTopic = staticTopic;
         staticTopic = newStaticTopic;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.EVENT_MEDIATOR__STATIC_TOPIC,
-                    oldStaticTopic, staticTopic));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.EVENT_MEDIATOR__STATIC_TOPIC, oldStaticTopic, staticTopic));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public NamespacedProperty getDynamicTopic() {
@@ -228,19 +208,14 @@ public class EventMediatorImpl extends MediatorImpl implements EventMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public NotificationChain basicSetDynamicTopic(NamespacedProperty newDynamicTopic, NotificationChain msgs) {
         NamespacedProperty oldDynamicTopic = dynamicTopic;
         dynamicTopic = newDynamicTopic;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.EVENT_MEDIATOR__DYNAMIC_TOPIC, oldDynamicTopic, newDynamicTopic);
-            if (msgs == null)
-                msgs = notification;
-            else
-                msgs.add(notification);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.EVENT_MEDIATOR__DYNAMIC_TOPIC, oldDynamicTopic, newDynamicTopic);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
         }
         return msgs;
     }
@@ -248,30 +223,25 @@ public class EventMediatorImpl extends MediatorImpl implements EventMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setDynamicTopic(NamespacedProperty newDynamicTopic) {
         if (newDynamicTopic != dynamicTopic) {
             NotificationChain msgs = null;
             if (dynamicTopic != null)
-                msgs = ((InternalEObject) dynamicTopic).eInverseRemove(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.EVENT_MEDIATOR__DYNAMIC_TOPIC, null, msgs);
+                msgs = ((InternalEObject)dynamicTopic).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.EVENT_MEDIATOR__DYNAMIC_TOPIC, null, msgs);
             if (newDynamicTopic != null)
-                msgs = ((InternalEObject) newDynamicTopic).eInverseAdd(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.EVENT_MEDIATOR__DYNAMIC_TOPIC, null, msgs);
+                msgs = ((InternalEObject)newDynamicTopic).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.EVENT_MEDIATOR__DYNAMIC_TOPIC, null, msgs);
             msgs = basicSetDynamicTopic(newDynamicTopic, msgs);
-            if (msgs != null)
-                msgs.dispatch();
-        } else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.EVENT_MEDIATOR__DYNAMIC_TOPIC,
-                    newDynamicTopic, newDynamicTopic));
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.EVENT_MEDIATOR__DYNAMIC_TOPIC, newDynamicTopic, newDynamicTopic));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public NamespacedProperty getEventExpression() {
@@ -281,19 +251,14 @@ public class EventMediatorImpl extends MediatorImpl implements EventMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public NotificationChain basicSetEventExpression(NamespacedProperty newEventExpression, NotificationChain msgs) {
         NamespacedProperty oldEventExpression = eventExpression;
         eventExpression = newEventExpression;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.EVENT_MEDIATOR__EVENT_EXPRESSION, oldEventExpression, newEventExpression);
-            if (msgs == null)
-                msgs = notification;
-            else
-                msgs.add(notification);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.EVENT_MEDIATOR__EVENT_EXPRESSION, oldEventExpression, newEventExpression);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
         }
         return msgs;
     }
@@ -301,30 +266,25 @@ public class EventMediatorImpl extends MediatorImpl implements EventMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setEventExpression(NamespacedProperty newEventExpression) {
         if (newEventExpression != eventExpression) {
             NotificationChain msgs = null;
             if (eventExpression != null)
-                msgs = ((InternalEObject) eventExpression).eInverseRemove(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.EVENT_MEDIATOR__EVENT_EXPRESSION, null, msgs);
+                msgs = ((InternalEObject)eventExpression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.EVENT_MEDIATOR__EVENT_EXPRESSION, null, msgs);
             if (newEventExpression != null)
-                msgs = ((InternalEObject) newEventExpression).eInverseAdd(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.EVENT_MEDIATOR__EVENT_EXPRESSION, null, msgs);
+                msgs = ((InternalEObject)newEventExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.EVENT_MEDIATOR__EVENT_EXPRESSION, null, msgs);
             msgs = basicSetEventExpression(newEventExpression, msgs);
-            if (msgs != null)
-                msgs.dispatch();
-        } else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.EVENT_MEDIATOR__EVENT_EXPRESSION,
-                    newEventExpression, newEventExpression));
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.EVENT_MEDIATOR__EVENT_EXPRESSION, newEventExpression, newEventExpression));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public EventMediatorInputConnector getInputConnector() {
@@ -334,7 +294,6 @@ public class EventMediatorImpl extends MediatorImpl implements EventMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public NotificationChain basicSetInputConnector(EventMediatorInputConnector newInputConnector,
@@ -342,12 +301,8 @@ public class EventMediatorImpl extends MediatorImpl implements EventMediator {
         EventMediatorInputConnector oldInputConnector = inputConnector;
         inputConnector = newInputConnector;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.EVENT_MEDIATOR__INPUT_CONNECTOR, oldInputConnector, newInputConnector);
-            if (msgs == null)
-                msgs = notification;
-            else
-                msgs.add(notification);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.EVENT_MEDIATOR__INPUT_CONNECTOR, oldInputConnector, newInputConnector);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
         }
         return msgs;
     }
@@ -355,30 +310,25 @@ public class EventMediatorImpl extends MediatorImpl implements EventMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setInputConnector(EventMediatorInputConnector newInputConnector) {
         if (newInputConnector != inputConnector) {
             NotificationChain msgs = null;
             if (inputConnector != null)
-                msgs = ((InternalEObject) inputConnector).eInverseRemove(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.EVENT_MEDIATOR__INPUT_CONNECTOR, null, msgs);
+                msgs = ((InternalEObject)inputConnector).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.EVENT_MEDIATOR__INPUT_CONNECTOR, null, msgs);
             if (newInputConnector != null)
-                msgs = ((InternalEObject) newInputConnector).eInverseAdd(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.EVENT_MEDIATOR__INPUT_CONNECTOR, null, msgs);
+                msgs = ((InternalEObject)newInputConnector).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.EVENT_MEDIATOR__INPUT_CONNECTOR, null, msgs);
             msgs = basicSetInputConnector(newInputConnector, msgs);
-            if (msgs != null)
-                msgs.dispatch();
-        } else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.EVENT_MEDIATOR__INPUT_CONNECTOR,
-                    newInputConnector, newInputConnector));
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.EVENT_MEDIATOR__INPUT_CONNECTOR, newInputConnector, newInputConnector));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public EventMediatorOutputConnector getOutputConnector() {
@@ -388,7 +338,6 @@ public class EventMediatorImpl extends MediatorImpl implements EventMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public NotificationChain basicSetOutputConnector(EventMediatorOutputConnector newOutputConnector,
@@ -396,12 +345,8 @@ public class EventMediatorImpl extends MediatorImpl implements EventMediator {
         EventMediatorOutputConnector oldOutputConnector = outputConnector;
         outputConnector = newOutputConnector;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.EVENT_MEDIATOR__OUTPUT_CONNECTOR, oldOutputConnector, newOutputConnector);
-            if (msgs == null)
-                msgs = notification;
-            else
-                msgs.add(notification);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.EVENT_MEDIATOR__OUTPUT_CONNECTOR, oldOutputConnector, newOutputConnector);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
         }
         return msgs;
     }
@@ -409,44 +354,39 @@ public class EventMediatorImpl extends MediatorImpl implements EventMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setOutputConnector(EventMediatorOutputConnector newOutputConnector) {
         if (newOutputConnector != outputConnector) {
             NotificationChain msgs = null;
             if (outputConnector != null)
-                msgs = ((InternalEObject) outputConnector).eInverseRemove(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.EVENT_MEDIATOR__OUTPUT_CONNECTOR, null, msgs);
+                msgs = ((InternalEObject)outputConnector).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.EVENT_MEDIATOR__OUTPUT_CONNECTOR, null, msgs);
             if (newOutputConnector != null)
-                msgs = ((InternalEObject) newOutputConnector).eInverseAdd(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.EVENT_MEDIATOR__OUTPUT_CONNECTOR, null, msgs);
+                msgs = ((InternalEObject)newOutputConnector).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.EVENT_MEDIATOR__OUTPUT_CONNECTOR, null, msgs);
             msgs = basicSetOutputConnector(newOutputConnector, msgs);
-            if (msgs != null)
-                msgs.dispatch();
-        } else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.EVENT_MEDIATOR__OUTPUT_CONNECTOR,
-                    newOutputConnector, newOutputConnector));
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.EVENT_MEDIATOR__OUTPUT_CONNECTOR, newOutputConnector, newOutputConnector));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
-        case EsbPackage.EVENT_MEDIATOR__DYNAMIC_TOPIC:
-            return basicSetDynamicTopic(null, msgs);
-        case EsbPackage.EVENT_MEDIATOR__EVENT_EXPRESSION:
-            return basicSetEventExpression(null, msgs);
-        case EsbPackage.EVENT_MEDIATOR__INPUT_CONNECTOR:
-            return basicSetInputConnector(null, msgs);
-        case EsbPackage.EVENT_MEDIATOR__OUTPUT_CONNECTOR:
-            return basicSetOutputConnector(null, msgs);
+            case EsbPackage.EVENT_MEDIATOR__DYNAMIC_TOPIC:
+                return basicSetDynamicTopic(null, msgs);
+            case EsbPackage.EVENT_MEDIATOR__EVENT_EXPRESSION:
+                return basicSetEventExpression(null, msgs);
+            case EsbPackage.EVENT_MEDIATOR__INPUT_CONNECTOR:
+                return basicSetInputConnector(null, msgs);
+            case EsbPackage.EVENT_MEDIATOR__OUTPUT_CONNECTOR:
+                return basicSetOutputConnector(null, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -454,25 +394,24 @@ public class EventMediatorImpl extends MediatorImpl implements EventMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-        case EsbPackage.EVENT_MEDIATOR__TOPIC_TYPE:
-            return getTopicType();
-        case EsbPackage.EVENT_MEDIATOR__STATIC_TOPIC:
-            return getStaticTopic();
-        case EsbPackage.EVENT_MEDIATOR__DYNAMIC_TOPIC:
-            return getDynamicTopic();
-        case EsbPackage.EVENT_MEDIATOR__EVENT_EXPRESSION:
-            return getEventExpression();
-        case EsbPackage.EVENT_MEDIATOR__INPUT_CONNECTOR:
-            return getInputConnector();
-        case EsbPackage.EVENT_MEDIATOR__OUTPUT_CONNECTOR:
-            return getOutputConnector();
+            case EsbPackage.EVENT_MEDIATOR__TOPIC_TYPE:
+                return getTopicType();
+            case EsbPackage.EVENT_MEDIATOR__STATIC_TOPIC:
+                return getStaticTopic();
+            case EsbPackage.EVENT_MEDIATOR__DYNAMIC_TOPIC:
+                return getDynamicTopic();
+            case EsbPackage.EVENT_MEDIATOR__EVENT_EXPRESSION:
+                return getEventExpression();
+            case EsbPackage.EVENT_MEDIATOR__INPUT_CONNECTOR:
+                return getInputConnector();
+            case EsbPackage.EVENT_MEDIATOR__OUTPUT_CONNECTOR:
+                return getOutputConnector();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -480,31 +419,30 @@ public class EventMediatorImpl extends MediatorImpl implements EventMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-        case EsbPackage.EVENT_MEDIATOR__TOPIC_TYPE:
-            setTopicType((EventTopicType) newValue);
-            return;
-        case EsbPackage.EVENT_MEDIATOR__STATIC_TOPIC:
-            setStaticTopic((String) newValue);
-            return;
-        case EsbPackage.EVENT_MEDIATOR__DYNAMIC_TOPIC:
-            setDynamicTopic((NamespacedProperty) newValue);
-            return;
-        case EsbPackage.EVENT_MEDIATOR__EVENT_EXPRESSION:
-            setEventExpression((NamespacedProperty) newValue);
-            return;
-        case EsbPackage.EVENT_MEDIATOR__INPUT_CONNECTOR:
-            setInputConnector((EventMediatorInputConnector) newValue);
-            return;
-        case EsbPackage.EVENT_MEDIATOR__OUTPUT_CONNECTOR:
-            setOutputConnector((EventMediatorOutputConnector) newValue);
-            return;
+            case EsbPackage.EVENT_MEDIATOR__TOPIC_TYPE:
+                setTopicType((EventTopicType)newValue);
+                return;
+            case EsbPackage.EVENT_MEDIATOR__STATIC_TOPIC:
+                setStaticTopic((String)newValue);
+                return;
+            case EsbPackage.EVENT_MEDIATOR__DYNAMIC_TOPIC:
+                setDynamicTopic((NamespacedProperty)newValue);
+                return;
+            case EsbPackage.EVENT_MEDIATOR__EVENT_EXPRESSION:
+                setEventExpression((NamespacedProperty)newValue);
+                return;
+            case EsbPackage.EVENT_MEDIATOR__INPUT_CONNECTOR:
+                setInputConnector((EventMediatorInputConnector)newValue);
+                return;
+            case EsbPackage.EVENT_MEDIATOR__OUTPUT_CONNECTOR:
+                setOutputConnector((EventMediatorOutputConnector)newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
@@ -512,31 +450,30 @@ public class EventMediatorImpl extends MediatorImpl implements EventMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-        case EsbPackage.EVENT_MEDIATOR__TOPIC_TYPE:
-            setTopicType(TOPIC_TYPE_EDEFAULT);
-            return;
-        case EsbPackage.EVENT_MEDIATOR__STATIC_TOPIC:
-            setStaticTopic(STATIC_TOPIC_EDEFAULT);
-            return;
-        case EsbPackage.EVENT_MEDIATOR__DYNAMIC_TOPIC:
-            setDynamicTopic((NamespacedProperty) null);
-            return;
-        case EsbPackage.EVENT_MEDIATOR__EVENT_EXPRESSION:
-            setEventExpression((NamespacedProperty) null);
-            return;
-        case EsbPackage.EVENT_MEDIATOR__INPUT_CONNECTOR:
-            setInputConnector((EventMediatorInputConnector) null);
-            return;
-        case EsbPackage.EVENT_MEDIATOR__OUTPUT_CONNECTOR:
-            setOutputConnector((EventMediatorOutputConnector) null);
-            return;
+            case EsbPackage.EVENT_MEDIATOR__TOPIC_TYPE:
+                setTopicType(TOPIC_TYPE_EDEFAULT);
+                return;
+            case EsbPackage.EVENT_MEDIATOR__STATIC_TOPIC:
+                setStaticTopic(STATIC_TOPIC_EDEFAULT);
+                return;
+            case EsbPackage.EVENT_MEDIATOR__DYNAMIC_TOPIC:
+                setDynamicTopic((NamespacedProperty)null);
+                return;
+            case EsbPackage.EVENT_MEDIATOR__EVENT_EXPRESSION:
+                setEventExpression((NamespacedProperty)null);
+                return;
+            case EsbPackage.EVENT_MEDIATOR__INPUT_CONNECTOR:
+                setInputConnector((EventMediatorInputConnector)null);
+                return;
+            case EsbPackage.EVENT_MEDIATOR__OUTPUT_CONNECTOR:
+                setOutputConnector((EventMediatorOutputConnector)null);
+                return;
         }
         super.eUnset(featureID);
     }
@@ -544,25 +481,24 @@ public class EventMediatorImpl extends MediatorImpl implements EventMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-        case EsbPackage.EVENT_MEDIATOR__TOPIC_TYPE:
-            return topicType != TOPIC_TYPE_EDEFAULT;
-        case EsbPackage.EVENT_MEDIATOR__STATIC_TOPIC:
-            return STATIC_TOPIC_EDEFAULT == null ? staticTopic != null : !STATIC_TOPIC_EDEFAULT.equals(staticTopic);
-        case EsbPackage.EVENT_MEDIATOR__DYNAMIC_TOPIC:
-            return dynamicTopic != null;
-        case EsbPackage.EVENT_MEDIATOR__EVENT_EXPRESSION:
-            return eventExpression != null;
-        case EsbPackage.EVENT_MEDIATOR__INPUT_CONNECTOR:
-            return inputConnector != null;
-        case EsbPackage.EVENT_MEDIATOR__OUTPUT_CONNECTOR:
-            return outputConnector != null;
+            case EsbPackage.EVENT_MEDIATOR__TOPIC_TYPE:
+                return topicType != TOPIC_TYPE_EDEFAULT;
+            case EsbPackage.EVENT_MEDIATOR__STATIC_TOPIC:
+                return STATIC_TOPIC_EDEFAULT == null ? staticTopic != null : !STATIC_TOPIC_EDEFAULT.equals(staticTopic);
+            case EsbPackage.EVENT_MEDIATOR__DYNAMIC_TOPIC:
+                return dynamicTopic != null;
+            case EsbPackage.EVENT_MEDIATOR__EVENT_EXPRESSION:
+                return eventExpression != null;
+            case EsbPackage.EVENT_MEDIATOR__INPUT_CONNECTOR:
+                return inputConnector != null;
+            case EsbPackage.EVENT_MEDIATOR__OUTPUT_CONNECTOR:
+                return outputConnector != null;
         }
         return super.eIsSet(featureID);
     }
@@ -570,14 +506,12 @@ public class EventMediatorImpl extends MediatorImpl implements EventMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public String toString() {
-        if (eIsProxy())
-            return super.toString();
+        if (eIsProxy()) return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (topicType: ");

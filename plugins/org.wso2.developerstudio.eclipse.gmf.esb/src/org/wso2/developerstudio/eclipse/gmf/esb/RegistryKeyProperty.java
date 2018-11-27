@@ -18,10 +18,10 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty#getPrettyName <em>Pretty Name</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty#getKeyName <em>Key Name</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty#getKeyValue <em>Key Value</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty#getFilters <em>Filters</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty#getPrettyName <em>Pretty Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty#getKeyName <em>Key Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty#getKeyValue <em>Key Value</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty#getFilters <em>Filters</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getRegistryKeyProperty()
@@ -38,7 +38,6 @@ public interface RegistryKeyProperty extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Pretty Name</em>' attribute.
      * @see #setPrettyName(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getRegistryKeyProperty_PrettyName()
@@ -48,11 +47,9 @@ public interface RegistryKeyProperty extends EObject {
     String getPrettyName();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty#getPrettyName
-     * <em>Pretty Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty#getPrettyName <em>Pretty Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Pretty Name</em>' attribute.
      * @see #getPrettyName()
      * @generated
@@ -68,7 +65,6 @@ public interface RegistryKeyProperty extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Key Name</em>' attribute.
      * @see #setKeyName(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getRegistryKeyProperty_KeyName()
@@ -78,11 +74,9 @@ public interface RegistryKeyProperty extends EObject {
     String getKeyName();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty#getKeyName <em>Key
-     * Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty#getKeyName <em>Key Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Key Name</em>' attribute.
      * @see #getKeyName()
      * @generated
@@ -97,7 +91,6 @@ public interface RegistryKeyProperty extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Key Value</em>' attribute.
      * @see #setKeyValue(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getRegistryKeyProperty_KeyValue()
@@ -107,11 +100,9 @@ public interface RegistryKeyProperty extends EObject {
     String getKeyValue();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty#getKeyValue <em>Key
-     * Value</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty#getKeyValue <em>Key Value</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Key Value</em>' attribute.
      * @see #getKeyValue()
      * @generated
@@ -126,21 +117,18 @@ public interface RegistryKeyProperty extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Filters</em>' attribute.
      * @see #setFilters(Map)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getRegistryKeyProperty_Filters()
-     * @model dataType="org.wso2.developerstudio.eclipse.gmf.esb.Map<?, ?>"
+     * @model dataType="org.wso2.developerstudio.eclipse.gmf.esb.Map&lt;?, ?&gt;"
      * @generated
      */
     Map<?, ?> getFilters();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty#getFilters
-     * <em>Filters</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty#getFilters <em>Filters</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Filters</em>' attribute.
      * @see #getFilters()
      * @generated

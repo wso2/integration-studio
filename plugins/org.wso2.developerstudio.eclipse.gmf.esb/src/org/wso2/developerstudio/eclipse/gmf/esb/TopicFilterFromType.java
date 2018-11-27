@@ -26,7 +26,6 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>Topic Filter From Type</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * 
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getTopicFilterFromType()
  * @model
  * @generated
@@ -36,7 +35,6 @@ public enum TopicFilterFromType implements Enumerator {
      * The '<em><b>Filter From Whitelist</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #FILTER_FROM_WHITELIST_VALUE
      * @generated
      * @ordered
@@ -47,7 +45,6 @@ public enum TopicFilterFromType implements Enumerator {
      * The '<em><b>Filter From Blacklist</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #FILTER_FROM_BLACKLIST_VALUE
      * @generated
      * @ordered
@@ -62,7 +59,6 @@ public enum TopicFilterFromType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #FILTER_FROM_WHITELIST
      * @model name="filterFromWhitelist" literal="filter.from.whitelist"
      * @generated
@@ -78,7 +74,6 @@ public enum TopicFilterFromType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #FILTER_FROM_BLACKLIST
      * @model name="filterFromBlacklist" literal="filter.from.blacklist"
      * @generated
@@ -90,17 +85,17 @@ public enum TopicFilterFromType implements Enumerator {
      * An array of all the '<em><b>Topic Filter From Type</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
-    private static final TopicFilterFromType[] VALUES_ARRAY = new TopicFilterFromType[] { FILTER_FROM_WHITELIST,
-            FILTER_FROM_BLACKLIST, };
+    private static final TopicFilterFromType[] VALUES_ARRAY = new TopicFilterFromType[] {
+            FILTER_FROM_WHITELIST,
+            FILTER_FROM_BLACKLIST,
+        };
 
     /**
      * A public read-only list of all the '<em><b>Topic Filter From Type</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public static final List<TopicFilterFromType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
@@ -109,7 +104,6 @@ public enum TopicFilterFromType implements Enumerator {
      * Returns the '<em><b>Topic Filter From Type</b></em>' literal with the specified literal value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param literal the literal.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -128,7 +122,6 @@ public enum TopicFilterFromType implements Enumerator {
      * Returns the '<em><b>Topic Filter From Type</b></em>' literal with the specified name.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param name the name.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -147,17 +140,14 @@ public enum TopicFilterFromType implements Enumerator {
      * Returns the '<em><b>Topic Filter From Type</b></em>' literal with the specified integer value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the integer value.
      * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static TopicFilterFromType get(int value) {
         switch (value) {
-        case FILTER_FROM_WHITELIST_VALUE:
-            return FILTER_FROM_WHITELIST;
-        case FILTER_FROM_BLACKLIST_VALUE:
-            return FILTER_FROM_BLACKLIST;
+            case FILTER_FROM_WHITELIST_VALUE: return FILTER_FROM_WHITELIST;
+            case FILTER_FROM_BLACKLIST_VALUE: return FILTER_FROM_BLACKLIST;
         }
         return null;
     }
@@ -165,7 +155,6 @@ public enum TopicFilterFromType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final int value;
@@ -173,7 +162,6 @@ public enum TopicFilterFromType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final String name;
@@ -181,7 +169,6 @@ public enum TopicFilterFromType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final String literal;
@@ -190,7 +177,6 @@ public enum TopicFilterFromType implements Enumerator {
      * Only this class can construct instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private TopicFilterFromType(int value, String name, String literal) {
@@ -202,38 +188,34 @@ public enum TopicFilterFromType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public int getValue() {
-        return value;
+      return value;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getName() {
-        return name;
+      return name;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getLiteral() {
-        return literal;
+      return literal;
     }
 
     /**
      * Returns the literal value of the enumerator, which is its string representation.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

@@ -29,11 +29,9 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 
 /**
- * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractLocationKeyResource}
- * object.
+ * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractLocationKeyResource} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class AbstractLocationKeyResourceItemProvider extends EsbNodeItemProvider {
@@ -41,7 +39,6 @@ public class AbstractLocationKeyResourceItemProvider extends EsbNodeItemProvider
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public AbstractLocationKeyResourceItemProvider(AdapterFactory adapterFactory) {
@@ -52,7 +49,6 @@ public class AbstractLocationKeyResourceItemProvider extends EsbNodeItemProvider
      * This returns the property descriptors for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -70,17 +66,22 @@ public class AbstractLocationKeyResourceItemProvider extends EsbNodeItemProvider
      * This adds a property descriptor for the Location feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addLocationPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_AbstractLocationKeyResource_location_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_AbstractLocationKeyResource_location_feature",
-                        "_UI_AbstractLocationKeyResource_type"),
-                EsbPackage.Literals.ABSTRACT_LOCATION_KEY_RESOURCE__LOCATION, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_AbstractLocationKeyResource_location_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_AbstractLocationKeyResource_location_feature", "_UI_AbstractLocationKeyResource_type"),
+                 EsbPackage.Literals.ABSTRACT_LOCATION_KEY_RESOURCE__LOCATION,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
@@ -89,7 +90,6 @@ public class AbstractLocationKeyResourceItemProvider extends EsbNodeItemProvider
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -105,7 +105,6 @@ public class AbstractLocationKeyResourceItemProvider extends EsbNodeItemProvider
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -121,15 +120,15 @@ public class AbstractLocationKeyResourceItemProvider extends EsbNodeItemProvider
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public String getText(Object object) {
-        String label = ((AbstractLocationKeyResource) object).getLocation();
-        return label == null || label.length() == 0 ? getString("_UI_AbstractLocationKeyResource_type")
-                : getString("_UI_AbstractLocationKeyResource_type") + " " + label;
+        String label = ((AbstractLocationKeyResource)object).getLocation();
+        return label == null || label.length() == 0 ?
+            getString("_UI_AbstractLocationKeyResource_type") :
+            getString("_UI_AbstractLocationKeyResource_type") + " " + label;
     }
 
     /**
@@ -137,7 +136,6 @@ public class AbstractLocationKeyResourceItemProvider extends EsbNodeItemProvider
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -146,12 +144,12 @@ public class AbstractLocationKeyResourceItemProvider extends EsbNodeItemProvider
         updateChildren(notification);
 
         switch (notification.getFeatureID(AbstractLocationKeyResource.class)) {
-        case EsbPackage.ABSTRACT_LOCATION_KEY_RESOURCE__LOCATION:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-            return;
-        case EsbPackage.ABSTRACT_LOCATION_KEY_RESOURCE__KEY:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-            return;
+            case EsbPackage.ABSTRACT_LOCATION_KEY_RESOURCE__LOCATION:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+                return;
+            case EsbPackage.ABSTRACT_LOCATION_KEY_RESOURCE__KEY:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+                return;
         }
         super.notifyChanged(notification);
     }
@@ -161,7 +159,6 @@ public class AbstractLocationKeyResourceItemProvider extends EsbNodeItemProvider
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -169,8 +166,10 @@ public class AbstractLocationKeyResourceItemProvider extends EsbNodeItemProvider
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.ABSTRACT_LOCATION_KEY_RESOURCE__KEY,
-                EsbFactory.eINSTANCE.createRegistryKeyProperty()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.ABSTRACT_LOCATION_KEY_RESOURCE__KEY,
+                 EsbFactory.eINSTANCE.createRegistryKeyProperty()));
     }
 
 }

@@ -17,18 +17,16 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ScriptMediator#getScriptType <em>Script Type</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ScriptMediator#getScriptLanguage <em>Script Language</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ScriptMediator#getMediateFunction <em>Mediate Function</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ScriptMediator#getScriptDynamicKey <em>Script Dynamic
- * Key</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ScriptMediator#getScriptBody <em>Script Body</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ScriptMediator#getInputConnector <em>Input Connector</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ScriptMediator#getOutputConnector <em>Output Connector</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ScriptMediator#getKeyType <em>Key Type</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ScriptMediator#getScriptStaticKey <em>Script Static
- * Key</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ScriptMediator#getScriptKeys <em>Script Keys</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ScriptMediator#getScriptType <em>Script Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ScriptMediator#getScriptLanguage <em>Script Language</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ScriptMediator#getMediateFunction <em>Mediate Function</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ScriptMediator#getScriptDynamicKey <em>Script Dynamic Key</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ScriptMediator#getScriptBody <em>Script Body</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ScriptMediator#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ScriptMediator#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ScriptMediator#getKeyType <em>Key Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ScriptMediator#getScriptStaticKey <em>Script Static Key</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ScriptMediator#getScriptKeys <em>Script Keys</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getScriptMediator()
@@ -46,7 +44,6 @@ public interface ScriptMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Script Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.ScriptType
      * @see #setScriptType(ScriptType)
@@ -57,11 +54,9 @@ public interface ScriptMediator extends Mediator {
     ScriptType getScriptType();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ScriptMediator#getScriptType <em>Script
-     * Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ScriptMediator#getScriptType <em>Script Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Script Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.ScriptType
      * @see #getScriptType()
@@ -78,7 +73,6 @@ public interface ScriptMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Script Language</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.ScriptLanguage
      * @see #setScriptLanguage(ScriptLanguage)
@@ -89,11 +83,9 @@ public interface ScriptMediator extends Mediator {
     ScriptLanguage getScriptLanguage();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ScriptMediator#getScriptLanguage
-     * <em>Script Language</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ScriptMediator#getScriptLanguage <em>Script Language</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Script Language</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.ScriptLanguage
      * @see #getScriptLanguage()
@@ -110,7 +102,6 @@ public interface ScriptMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Mediate Function</em>' attribute.
      * @see #setMediateFunction(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getScriptMediator_MediateFunction()
@@ -120,11 +111,9 @@ public interface ScriptMediator extends Mediator {
     String getMediateFunction();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ScriptMediator#getMediateFunction
-     * <em>Mediate Function</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ScriptMediator#getMediateFunction <em>Mediate Function</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Mediate Function</em>' attribute.
      * @see #getMediateFunction()
      * @generated
@@ -139,7 +128,6 @@ public interface ScriptMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Script Dynamic Key</em>' containment reference.
      * @see #setScriptDynamicKey(NamespacedProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getScriptMediator_ScriptDynamicKey()
@@ -149,11 +137,9 @@ public interface ScriptMediator extends Mediator {
     NamespacedProperty getScriptDynamicKey();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ScriptMediator#getScriptDynamicKey
-     * <em>Script Dynamic Key</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ScriptMediator#getScriptDynamicKey <em>Script Dynamic Key</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Script Dynamic Key</em>' containment reference.
      * @see #getScriptDynamicKey()
      * @generated
@@ -169,7 +155,6 @@ public interface ScriptMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Script Body</em>' attribute.
      * @see #setScriptBody(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getScriptMediator_ScriptBody()
@@ -179,11 +164,9 @@ public interface ScriptMediator extends Mediator {
     String getScriptBody();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ScriptMediator#getScriptBody <em>Script
-     * Body</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ScriptMediator#getScriptBody <em>Script Body</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Script Body</em>' attribute.
      * @see #getScriptBody()
      * @generated
@@ -198,7 +181,6 @@ public interface ScriptMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Input Connector</em>' containment reference.
      * @see #setInputConnector(ScriptMediatorInputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getScriptMediator_InputConnector()
@@ -208,11 +190,9 @@ public interface ScriptMediator extends Mediator {
     ScriptMediatorInputConnector getInputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ScriptMediator#getInputConnector <em>Input
-     * Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ScriptMediator#getInputConnector <em>Input Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Input Connector</em>' containment reference.
      * @see #getInputConnector()
      * @generated
@@ -227,7 +207,6 @@ public interface ScriptMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Output Connector</em>' containment reference.
      * @see #setOutputConnector(ScriptMediatorOutputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getScriptMediator_OutputConnector()
@@ -237,11 +216,9 @@ public interface ScriptMediator extends Mediator {
     ScriptMediatorOutputConnector getOutputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ScriptMediator#getOutputConnector
-     * <em>Output Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ScriptMediator#getOutputConnector <em>Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Output Connector</em>' containment reference.
      * @see #getOutputConnector()
      * @generated
@@ -257,7 +234,6 @@ public interface ScriptMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Key Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.scriptKeyTypeEnum
      * @see #setKeyType(scriptKeyTypeEnum)
@@ -268,11 +244,9 @@ public interface ScriptMediator extends Mediator {
     scriptKeyTypeEnum getKeyType();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ScriptMediator#getKeyType <em>Key
-     * Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ScriptMediator#getKeyType <em>Key Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Key Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.scriptKeyTypeEnum
      * @see #getKeyType()
@@ -288,7 +262,6 @@ public interface ScriptMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Script Static Key</em>' containment reference.
      * @see #setScriptStaticKey(RegistryKeyProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getScriptMediator_ScriptStaticKey()
@@ -298,11 +271,9 @@ public interface ScriptMediator extends Mediator {
     RegistryKeyProperty getScriptStaticKey();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ScriptMediator#getScriptStaticKey
-     * <em>Script Static Key</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ScriptMediator#getScriptStaticKey <em>Script Static Key</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Script Static Key</em>' containment reference.
      * @see #getScriptStaticKey()
      * @generated
@@ -318,7 +289,6 @@ public interface ScriptMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Script Keys</em>' containment reference list.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getScriptMediator_ScriptKeys()
      * @model containment="true"

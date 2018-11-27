@@ -41,7 +41,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.EJBMediator} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class EJBMediatorItemProvider extends MediatorItemProvider {
@@ -49,7 +48,6 @@ public class EJBMediatorItemProvider extends MediatorItemProvider {
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public EJBMediatorItemProvider(AdapterFactory adapterFactory) {
@@ -97,168 +95,220 @@ public class EJBMediatorItemProvider extends MediatorItemProvider {
      * This adds a property descriptor for the Beanstalk feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addBeanstalkPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_EJBMediator_beanstalk_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_EJBMediator_beanstalk_feature",
-                                "_UI_EJBMediator_type"),
-                        EsbPackage.Literals.EJB_MEDIATOR__BEANSTALK, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_EJBMediator_beanstalk_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_EJBMediator_beanstalk_feature", "_UI_EJBMediator_type"),
+                 EsbPackage.Literals.EJB_MEDIATOR__BEANSTALK,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Class feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addClassPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_EJBMediator_class_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_EJBMediator_class_feature",
-                                "_UI_EJBMediator_type"),
-                        EsbPackage.Literals.EJB_MEDIATOR__CLASS, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_EJBMediator_class_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_EJBMediator_class_feature", "_UI_EJBMediator_type"),
+                 EsbPackage.Literals.EJB_MEDIATOR__CLASS,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Method feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addMethodPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_EJBMediator_method_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_EJBMediator_method_feature",
-                                "_UI_EJBMediator_type"),
-                        EsbPackage.Literals.EJB_MEDIATOR__METHOD, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_EJBMediator_method_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_EJBMediator_method_feature", "_UI_EJBMediator_type"),
+                 EsbPackage.Literals.EJB_MEDIATOR__METHOD,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Session Id Type feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addSessionIdTypePropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_EJBMediator_sessionIdType_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_EJBMediator_sessionIdType_feature",
-                                "_UI_EJBMediator_type"),
-                        EsbPackage.Literals.EJB_MEDIATOR__SESSION_ID_TYPE, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_EJBMediator_sessionIdType_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_EJBMediator_sessionIdType_feature", "_UI_EJBMediator_type"),
+                 EsbPackage.Literals.EJB_MEDIATOR__SESSION_ID_TYPE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Session Id Literal feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addSessionIdLiteralPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_EJBMediator_sessionIdLiteral_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_EJBMediator_sessionIdLiteral_feature",
-                                "_UI_EJBMediator_type"),
-                        EsbPackage.Literals.EJB_MEDIATOR__SESSION_ID_LITERAL, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_EJBMediator_sessionIdLiteral_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_EJBMediator_sessionIdLiteral_feature", "_UI_EJBMediator_type"),
+                 EsbPackage.Literals.EJB_MEDIATOR__SESSION_ID_LITERAL,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Session Id Expression feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addSessionIdExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_EJBMediator_sessionIdExpression_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_EJBMediator_sessionIdExpression_feature",
-                                "_UI_EJBMediator_type"),
-                        EsbPackage.Literals.EJB_MEDIATOR__SESSION_ID_EXPRESSION, true, false, false, null, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_EJBMediator_sessionIdExpression_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_EJBMediator_sessionIdExpression_feature", "_UI_EJBMediator_type"),
+                 EsbPackage.Literals.EJB_MEDIATOR__SESSION_ID_EXPRESSION,
+                 true,
+                 false,
+                 false,
+                 null,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Remove feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addRemovePropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_EJBMediator_remove_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_EJBMediator_remove_feature",
-                                "_UI_EJBMediator_type"),
-                        EsbPackage.Literals.EJB_MEDIATOR__REMOVE, true, false, false,
-                        ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_EJBMediator_remove_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_EJBMediator_remove_feature", "_UI_EJBMediator_type"),
+                 EsbPackage.Literals.EJB_MEDIATOR__REMOVE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Target feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addTargetPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_EJBMediator_target_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_EJBMediator_target_feature",
-                                "_UI_EJBMediator_type"),
-                        EsbPackage.Literals.EJB_MEDIATOR__TARGET, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_EJBMediator_target_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_EJBMediator_target_feature", "_UI_EJBMediator_type"),
+                 EsbPackage.Literals.EJB_MEDIATOR__TARGET,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the JNDI Name feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addJNDINamePropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_EJBMediator_JNDIName_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_EJBMediator_JNDIName_feature",
-                                "_UI_EJBMediator_type"),
-                        EsbPackage.Literals.EJB_MEDIATOR__JNDI_NAME, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_EJBMediator_JNDIName_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_EJBMediator_JNDIName_feature", "_UI_EJBMediator_type"),
+                 EsbPackage.Literals.EJB_MEDIATOR__JNDI_NAME,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Method Arguments feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addMethodArgumentsPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_EJBMediator_methodArguments_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_EJBMediator_methodArguments_feature",
-                                "_UI_EJBMediator_type"),
-                        EsbPackage.Literals.EJB_MEDIATOR__METHOD_ARGUMENTS, true, false, false, null, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_EJBMediator_methodArguments_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_EJBMediator_methodArguments_feature", "_UI_EJBMediator_type"),
+                 EsbPackage.Literals.EJB_MEDIATOR__METHOD_ARGUMENTS,
+                 true,
+                 false,
+                 false,
+                 null,
+                 null,
+                 null));
     }
 
     /**
@@ -267,7 +317,6 @@ public class EJBMediatorItemProvider extends MediatorItemProvider {
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -285,7 +334,6 @@ public class EJBMediatorItemProvider extends MediatorItemProvider {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -300,7 +348,6 @@ public class EJBMediatorItemProvider extends MediatorItemProvider {
      * This returns EJBMediator.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -312,14 +359,14 @@ public class EJBMediatorItemProvider extends MediatorItemProvider {
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public String getText(Object object) {
-        String label = ((EJBMediator) object).getJNDIName();
-        return label == null || label.length() == 0 ? getString("_UI_EJBMediator_type")
-                : getString("_UI_EJBMediator_type") + " " + label;
+        String label = ((EJBMediator)object).getJNDIName();
+        return label == null || label.length() == 0 ?
+            getString("_UI_EJBMediator_type") :
+            getString("_UI_EJBMediator_type") + " " + label;
     }
 
     /**
@@ -327,7 +374,6 @@ public class EJBMediatorItemProvider extends MediatorItemProvider {
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -335,22 +381,22 @@ public class EJBMediatorItemProvider extends MediatorItemProvider {
         updateChildren(notification);
 
         switch (notification.getFeatureID(EJBMediator.class)) {
-        case EsbPackage.EJB_MEDIATOR__BEANSTALK:
-        case EsbPackage.EJB_MEDIATOR__CLASS:
-        case EsbPackage.EJB_MEDIATOR__METHOD:
-        case EsbPackage.EJB_MEDIATOR__SESSION_ID_TYPE:
-        case EsbPackage.EJB_MEDIATOR__SESSION_ID_LITERAL:
-        case EsbPackage.EJB_MEDIATOR__REMOVE:
-        case EsbPackage.EJB_MEDIATOR__TARGET:
-        case EsbPackage.EJB_MEDIATOR__JNDI_NAME:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-            return;
-        case EsbPackage.EJB_MEDIATOR__INPUT_CONNECTOR:
-        case EsbPackage.EJB_MEDIATOR__OUTPUT_CONNECTOR:
-        case EsbPackage.EJB_MEDIATOR__SESSION_ID_EXPRESSION:
-        case EsbPackage.EJB_MEDIATOR__METHOD_ARGUMENTS:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-            return;
+            case EsbPackage.EJB_MEDIATOR__BEANSTALK:
+            case EsbPackage.EJB_MEDIATOR__CLASS:
+            case EsbPackage.EJB_MEDIATOR__METHOD:
+            case EsbPackage.EJB_MEDIATOR__SESSION_ID_TYPE:
+            case EsbPackage.EJB_MEDIATOR__SESSION_ID_LITERAL:
+            case EsbPackage.EJB_MEDIATOR__REMOVE:
+            case EsbPackage.EJB_MEDIATOR__TARGET:
+            case EsbPackage.EJB_MEDIATOR__JNDI_NAME:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+                return;
+            case EsbPackage.EJB_MEDIATOR__INPUT_CONNECTOR:
+            case EsbPackage.EJB_MEDIATOR__OUTPUT_CONNECTOR:
+            case EsbPackage.EJB_MEDIATOR__SESSION_ID_EXPRESSION:
+            case EsbPackage.EJB_MEDIATOR__METHOD_ARGUMENTS:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+                return;
         }
         super.notifyChanged(notification);
     }
@@ -360,24 +406,31 @@ public class EJBMediatorItemProvider extends MediatorItemProvider {
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.EJB_MEDIATOR__INPUT_CONNECTOR,
-                EsbFactory.eINSTANCE.createEJBMediatorInputConnector()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.EJB_MEDIATOR__INPUT_CONNECTOR,
+                 EsbFactory.eINSTANCE.createEJBMediatorInputConnector()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.EJB_MEDIATOR__OUTPUT_CONNECTOR,
-                EsbFactory.eINSTANCE.createEJBMediatorOutputConnector()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.EJB_MEDIATOR__OUTPUT_CONNECTOR,
+                 EsbFactory.eINSTANCE.createEJBMediatorOutputConnector()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.EJB_MEDIATOR__SESSION_ID_EXPRESSION,
-                EsbFactory.eINSTANCE.createNamespacedProperty()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.EJB_MEDIATOR__SESSION_ID_EXPRESSION,
+                 EsbFactory.eINSTANCE.createNamespacedProperty()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.EJB_MEDIATOR__METHOD_ARGUMENTS,
-                EsbFactory.eINSTANCE.createMethodArgument()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.EJB_MEDIATOR__METHOD_ARGUMENTS,
+                 EsbFactory.eINSTANCE.createMethodArgument()));
     }
 
 }

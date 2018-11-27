@@ -23,12 +23,9 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EvaluatorExpressionProperty;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EvaluatorExpressionPropertyImpl#getPrettyName <em>Pretty
- * Name</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EvaluatorExpressionPropertyImpl#getEvaluatorName
- * <em>Evaluator Name</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EvaluatorExpressionPropertyImpl#getEvaluatorValue
- * <em>Evaluator Value</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EvaluatorExpressionPropertyImpl#getPrettyName <em>Pretty Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EvaluatorExpressionPropertyImpl#getEvaluatorName <em>Evaluator Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EvaluatorExpressionPropertyImpl#getEvaluatorValue <em>Evaluator Value</em>}</li>
  * </ul>
  *
  * @generated
@@ -38,7 +35,6 @@ public class EvaluatorExpressionPropertyImpl extends EsbNodeImpl implements Eval
      * The default value of the '{@link #getPrettyName() <em>Pretty Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getPrettyName()
      * @generated
      * @ordered
@@ -49,7 +45,6 @@ public class EvaluatorExpressionPropertyImpl extends EsbNodeImpl implements Eval
      * The cached value of the '{@link #getPrettyName() <em>Pretty Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getPrettyName()
      * @generated
      * @ordered
@@ -60,7 +55,6 @@ public class EvaluatorExpressionPropertyImpl extends EsbNodeImpl implements Eval
      * The default value of the '{@link #getEvaluatorName() <em>Evaluator Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getEvaluatorName()
      * @generated
      * @ordered
@@ -71,7 +65,6 @@ public class EvaluatorExpressionPropertyImpl extends EsbNodeImpl implements Eval
      * The cached value of the '{@link #getEvaluatorName() <em>Evaluator Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getEvaluatorName()
      * @generated
      * @ordered
@@ -82,7 +75,6 @@ public class EvaluatorExpressionPropertyImpl extends EsbNodeImpl implements Eval
      * The default value of the '{@link #getEvaluatorValue() <em>Evaluator Value</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getEvaluatorValue()
      * @generated
      * @ordered
@@ -93,7 +85,6 @@ public class EvaluatorExpressionPropertyImpl extends EsbNodeImpl implements Eval
      * The cached value of the '{@link #getEvaluatorValue() <em>Evaluator Value</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getEvaluatorValue()
      * @generated
      * @ordered
@@ -103,7 +94,6 @@ public class EvaluatorExpressionPropertyImpl extends EsbNodeImpl implements Eval
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected EvaluatorExpressionPropertyImpl() {
@@ -113,7 +103,6 @@ public class EvaluatorExpressionPropertyImpl extends EsbNodeImpl implements Eval
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -124,7 +113,6 @@ public class EvaluatorExpressionPropertyImpl extends EsbNodeImpl implements Eval
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getPrettyName() {
@@ -134,21 +122,18 @@ public class EvaluatorExpressionPropertyImpl extends EsbNodeImpl implements Eval
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setPrettyName(String newPrettyName) {
         String oldPrettyName = prettyName;
         prettyName = newPrettyName;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.EVALUATOR_EXPRESSION_PROPERTY__PRETTY_NAME,
-                    oldPrettyName, prettyName));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.EVALUATOR_EXPRESSION_PROPERTY__PRETTY_NAME, oldPrettyName, prettyName));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getEvaluatorName() {
@@ -158,21 +143,18 @@ public class EvaluatorExpressionPropertyImpl extends EsbNodeImpl implements Eval
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setEvaluatorName(String newEvaluatorName) {
         String oldEvaluatorName = evaluatorName;
         evaluatorName = newEvaluatorName;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.EVALUATOR_EXPRESSION_PROPERTY__EVALUATOR_NAME, oldEvaluatorName, evaluatorName));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.EVALUATOR_EXPRESSION_PROPERTY__EVALUATOR_NAME, oldEvaluatorName, evaluatorName));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getEvaluatorValue() {
@@ -182,32 +164,29 @@ public class EvaluatorExpressionPropertyImpl extends EsbNodeImpl implements Eval
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setEvaluatorValue(String newEvaluatorValue) {
         String oldEvaluatorValue = evaluatorValue;
         evaluatorValue = newEvaluatorValue;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.EVALUATOR_EXPRESSION_PROPERTY__EVALUATOR_VALUE, oldEvaluatorValue, evaluatorValue));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.EVALUATOR_EXPRESSION_PROPERTY__EVALUATOR_VALUE, oldEvaluatorValue, evaluatorValue));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-        case EsbPackage.EVALUATOR_EXPRESSION_PROPERTY__PRETTY_NAME:
-            return getPrettyName();
-        case EsbPackage.EVALUATOR_EXPRESSION_PROPERTY__EVALUATOR_NAME:
-            return getEvaluatorName();
-        case EsbPackage.EVALUATOR_EXPRESSION_PROPERTY__EVALUATOR_VALUE:
-            return getEvaluatorValue();
+            case EsbPackage.EVALUATOR_EXPRESSION_PROPERTY__PRETTY_NAME:
+                return getPrettyName();
+            case EsbPackage.EVALUATOR_EXPRESSION_PROPERTY__EVALUATOR_NAME:
+                return getEvaluatorName();
+            case EsbPackage.EVALUATOR_EXPRESSION_PROPERTY__EVALUATOR_VALUE:
+                return getEvaluatorValue();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -215,21 +194,20 @@ public class EvaluatorExpressionPropertyImpl extends EsbNodeImpl implements Eval
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-        case EsbPackage.EVALUATOR_EXPRESSION_PROPERTY__PRETTY_NAME:
-            setPrettyName((String) newValue);
-            return;
-        case EsbPackage.EVALUATOR_EXPRESSION_PROPERTY__EVALUATOR_NAME:
-            setEvaluatorName((String) newValue);
-            return;
-        case EsbPackage.EVALUATOR_EXPRESSION_PROPERTY__EVALUATOR_VALUE:
-            setEvaluatorValue((String) newValue);
-            return;
+            case EsbPackage.EVALUATOR_EXPRESSION_PROPERTY__PRETTY_NAME:
+                setPrettyName((String)newValue);
+                return;
+            case EsbPackage.EVALUATOR_EXPRESSION_PROPERTY__EVALUATOR_NAME:
+                setEvaluatorName((String)newValue);
+                return;
+            case EsbPackage.EVALUATOR_EXPRESSION_PROPERTY__EVALUATOR_VALUE:
+                setEvaluatorValue((String)newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
@@ -237,21 +215,20 @@ public class EvaluatorExpressionPropertyImpl extends EsbNodeImpl implements Eval
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-        case EsbPackage.EVALUATOR_EXPRESSION_PROPERTY__PRETTY_NAME:
-            setPrettyName(PRETTY_NAME_EDEFAULT);
-            return;
-        case EsbPackage.EVALUATOR_EXPRESSION_PROPERTY__EVALUATOR_NAME:
-            setEvaluatorName(EVALUATOR_NAME_EDEFAULT);
-            return;
-        case EsbPackage.EVALUATOR_EXPRESSION_PROPERTY__EVALUATOR_VALUE:
-            setEvaluatorValue(EVALUATOR_VALUE_EDEFAULT);
-            return;
+            case EsbPackage.EVALUATOR_EXPRESSION_PROPERTY__PRETTY_NAME:
+                setPrettyName(PRETTY_NAME_EDEFAULT);
+                return;
+            case EsbPackage.EVALUATOR_EXPRESSION_PROPERTY__EVALUATOR_NAME:
+                setEvaluatorName(EVALUATOR_NAME_EDEFAULT);
+                return;
+            case EsbPackage.EVALUATOR_EXPRESSION_PROPERTY__EVALUATOR_VALUE:
+                setEvaluatorValue(EVALUATOR_VALUE_EDEFAULT);
+                return;
         }
         super.eUnset(featureID);
     }
@@ -259,20 +236,17 @@ public class EvaluatorExpressionPropertyImpl extends EsbNodeImpl implements Eval
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-        case EsbPackage.EVALUATOR_EXPRESSION_PROPERTY__PRETTY_NAME:
-            return PRETTY_NAME_EDEFAULT == null ? prettyName != null : !PRETTY_NAME_EDEFAULT.equals(prettyName);
-        case EsbPackage.EVALUATOR_EXPRESSION_PROPERTY__EVALUATOR_NAME:
-            return EVALUATOR_NAME_EDEFAULT == null ? evaluatorName != null
-                    : !EVALUATOR_NAME_EDEFAULT.equals(evaluatorName);
-        case EsbPackage.EVALUATOR_EXPRESSION_PROPERTY__EVALUATOR_VALUE:
-            return EVALUATOR_VALUE_EDEFAULT == null ? evaluatorValue != null
-                    : !EVALUATOR_VALUE_EDEFAULT.equals(evaluatorValue);
+            case EsbPackage.EVALUATOR_EXPRESSION_PROPERTY__PRETTY_NAME:
+                return PRETTY_NAME_EDEFAULT == null ? prettyName != null : !PRETTY_NAME_EDEFAULT.equals(prettyName);
+            case EsbPackage.EVALUATOR_EXPRESSION_PROPERTY__EVALUATOR_NAME:
+                return EVALUATOR_NAME_EDEFAULT == null ? evaluatorName != null : !EVALUATOR_NAME_EDEFAULT.equals(evaluatorName);
+            case EsbPackage.EVALUATOR_EXPRESSION_PROPERTY__EVALUATOR_VALUE:
+                return EVALUATOR_VALUE_EDEFAULT == null ? evaluatorValue != null : !EVALUATOR_VALUE_EDEFAULT.equals(evaluatorValue);
         }
         return super.eIsSet(featureID);
     }
@@ -280,13 +254,11 @@ public class EvaluatorExpressionPropertyImpl extends EsbNodeImpl implements Eval
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
-            return super.toString();
+        if (eIsProxy()) return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (prettyName: ");

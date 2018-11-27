@@ -22,7 +22,6 @@ public class DBReportMediatorInputConnectorImpl extends InputConnectorImpl imple
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected DBReportMediatorInputConnectorImpl() {
@@ -32,7 +31,6 @@ public class DBReportMediatorInputConnectorImpl extends InputConnectorImpl imple
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 

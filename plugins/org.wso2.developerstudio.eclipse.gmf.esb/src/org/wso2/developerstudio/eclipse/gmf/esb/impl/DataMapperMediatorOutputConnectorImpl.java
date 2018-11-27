@@ -32,7 +32,6 @@ public class DataMapperMediatorOutputConnectorImpl extends OutputConnectorImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected DataMapperMediatorOutputConnectorImpl() {
@@ -42,7 +41,6 @@ public class DataMapperMediatorOutputConnectorImpl extends OutputConnectorImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

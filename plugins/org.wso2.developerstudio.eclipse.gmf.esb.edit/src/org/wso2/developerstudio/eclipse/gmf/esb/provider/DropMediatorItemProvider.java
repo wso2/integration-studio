@@ -27,7 +27,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.DropMediator} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class DropMediatorItemProvider extends MediatorItemProvider {
@@ -35,7 +34,6 @@ public class DropMediatorItemProvider extends MediatorItemProvider {
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public DropMediatorItemProvider(AdapterFactory adapterFactory) {
@@ -67,7 +65,6 @@ public class DropMediatorItemProvider extends MediatorItemProvider {
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -83,7 +80,6 @@ public class DropMediatorItemProvider extends MediatorItemProvider {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -99,7 +95,6 @@ public class DropMediatorItemProvider extends MediatorItemProvider {
      * This returns DropMediator.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -112,15 +107,15 @@ public class DropMediatorItemProvider extends MediatorItemProvider {
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public String getText(Object object) {
-        String label = ((DropMediator) object).getDescription();
-        return label == null || label.length() == 0 ? getString("_UI_DropMediator_type")
-                : getString("_UI_DropMediator_type") + " " + label;
+        String label = ((DropMediator)object).getDescription();
+        return label == null || label.length() == 0 ?
+            getString("_UI_DropMediator_type") :
+            getString("_UI_DropMediator_type") + " " + label;
     }
 
     /**
@@ -128,7 +123,6 @@ public class DropMediatorItemProvider extends MediatorItemProvider {
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -137,9 +131,9 @@ public class DropMediatorItemProvider extends MediatorItemProvider {
         updateChildren(notification);
 
         switch (notification.getFeatureID(DropMediator.class)) {
-        case EsbPackage.DROP_MEDIATOR__INPUT_CONNECTOR:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-            return;
+            case EsbPackage.DROP_MEDIATOR__INPUT_CONNECTOR:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+                return;
         }
         super.notifyChanged(notification);
     }
@@ -149,7 +143,6 @@ public class DropMediatorItemProvider extends MediatorItemProvider {
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -157,8 +150,10 @@ public class DropMediatorItemProvider extends MediatorItemProvider {
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.DROP_MEDIATOR__INPUT_CONNECTOR,
-                EsbFactory.eINSTANCE.createDropMediatorInputConnector()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.DROP_MEDIATOR__INPUT_CONNECTOR,
+                 EsbFactory.eINSTANCE.createDropMediatorInputConnector()));
     }
 
 }

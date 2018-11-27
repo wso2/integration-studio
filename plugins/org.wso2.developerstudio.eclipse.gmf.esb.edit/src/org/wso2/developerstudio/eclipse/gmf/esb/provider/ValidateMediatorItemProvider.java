@@ -32,7 +32,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.ValidateMediator;
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.ValidateMediator} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class ValidateMediatorItemProvider extends MediatorItemProvider {
@@ -40,7 +39,6 @@ public class ValidateMediatorItemProvider extends MediatorItemProvider {
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public ValidateMediatorItemProvider(AdapterFactory adapterFactory) {
@@ -76,81 +74,110 @@ public class ValidateMediatorItemProvider extends MediatorItemProvider {
      * This adds a property descriptor for the Source Xpath feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addSourceXpathPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_ValidateMediator_sourceXpath_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_ValidateMediator_sourceXpath_feature",
-                                "_UI_ValidateMediator_type"),
-                        EsbPackage.Literals.VALIDATE_MEDIATOR__SOURCE_XPATH, true, false, false, null, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_ValidateMediator_sourceXpath_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_ValidateMediator_sourceXpath_feature", "_UI_ValidateMediator_type"),
+                 EsbPackage.Literals.VALIDATE_MEDIATOR__SOURCE_XPATH,
+                 true,
+                 false,
+                 false,
+                 null,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Features feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addFeaturesPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_ValidateMediator_features_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_ValidateMediator_features_feature",
-                                "_UI_ValidateMediator_type"),
-                        EsbPackage.Literals.VALIDATE_MEDIATOR__FEATURES, true, false, false, null, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_ValidateMediator_features_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_ValidateMediator_features_feature", "_UI_ValidateMediator_type"),
+                 EsbPackage.Literals.VALIDATE_MEDIATOR__FEATURES,
+                 true,
+                 false,
+                 false,
+                 null,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Schemas feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addSchemasPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_ValidateMediator_schemas_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_ValidateMediator_schemas_feature",
-                                "_UI_ValidateMediator_type"),
-                        EsbPackage.Literals.VALIDATE_MEDIATOR__SCHEMAS, true, false, false, null, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_ValidateMediator_schemas_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_ValidateMediator_schemas_feature", "_UI_ValidateMediator_type"),
+                 EsbPackage.Literals.VALIDATE_MEDIATOR__SCHEMAS,
+                 true,
+                 false,
+                 false,
+                 null,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Resources feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addResourcesPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_ValidateMediator_resources_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_ValidateMediator_resources_feature",
-                                "_UI_ValidateMediator_type"),
-                        EsbPackage.Literals.VALIDATE_MEDIATOR__RESOURCES, true, false, false, null, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_ValidateMediator_resources_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_ValidateMediator_resources_feature", "_UI_ValidateMediator_type"),
+                 EsbPackage.Literals.VALIDATE_MEDIATOR__RESOURCES,
+                 true,
+                 false,
+                 false,
+                 null,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Enable Cache Schema feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addEnableCacheSchemaPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ValidateMediator_enableCacheSchema_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_ValidateMediator_enableCacheSchema_feature",
-                        "_UI_ValidateMediator_type"),
-                EsbPackage.Literals.VALIDATE_MEDIATOR__ENABLE_CACHE_SCHEMA, true, false, false,
-                ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_ValidateMediator_enableCacheSchema_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_ValidateMediator_enableCacheSchema_feature", "_UI_ValidateMediator_type"),
+                 EsbPackage.Literals.VALIDATE_MEDIATOR__ENABLE_CACHE_SCHEMA,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
@@ -159,7 +186,6 @@ public class ValidateMediatorItemProvider extends MediatorItemProvider {
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -182,7 +208,6 @@ public class ValidateMediatorItemProvider extends MediatorItemProvider {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -198,7 +223,6 @@ public class ValidateMediatorItemProvider extends MediatorItemProvider {
      * This returns ValidateMediator.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -211,15 +235,15 @@ public class ValidateMediatorItemProvider extends MediatorItemProvider {
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public String getText(Object object) {
-        String label = ((ValidateMediator) object).getDescription();
-        return label == null || label.length() == 0 ? getString("_UI_ValidateMediator_type")
-                : getString("_UI_ValidateMediator_type") + " " + label;
+        String label = ((ValidateMediator)object).getDescription();
+        return label == null || label.length() == 0 ?
+            getString("_UI_ValidateMediator_type") :
+            getString("_UI_ValidateMediator_type") + " " + label;
     }
 
     /**
@@ -227,7 +251,6 @@ public class ValidateMediatorItemProvider extends MediatorItemProvider {
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -236,19 +259,19 @@ public class ValidateMediatorItemProvider extends MediatorItemProvider {
         updateChildren(notification);
 
         switch (notification.getFeatureID(ValidateMediator.class)) {
-        case EsbPackage.VALIDATE_MEDIATOR__ENABLE_CACHE_SCHEMA:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-            return;
-        case EsbPackage.VALIDATE_MEDIATOR__SOURCE_XPATH:
-        case EsbPackage.VALIDATE_MEDIATOR__FEATURES:
-        case EsbPackage.VALIDATE_MEDIATOR__SCHEMAS:
-        case EsbPackage.VALIDATE_MEDIATOR__INPUT_CONNECTOR:
-        case EsbPackage.VALIDATE_MEDIATOR__OUTPUT_CONNECTOR:
-        case EsbPackage.VALIDATE_MEDIATOR__ON_FAIL_OUTPUT_CONNECTOR:
-        case EsbPackage.VALIDATE_MEDIATOR__MEDIATOR_FLOW:
-        case EsbPackage.VALIDATE_MEDIATOR__RESOURCES:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-            return;
+            case EsbPackage.VALIDATE_MEDIATOR__ENABLE_CACHE_SCHEMA:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+                return;
+            case EsbPackage.VALIDATE_MEDIATOR__SOURCE_XPATH:
+            case EsbPackage.VALIDATE_MEDIATOR__FEATURES:
+            case EsbPackage.VALIDATE_MEDIATOR__SCHEMAS:
+            case EsbPackage.VALIDATE_MEDIATOR__INPUT_CONNECTOR:
+            case EsbPackage.VALIDATE_MEDIATOR__OUTPUT_CONNECTOR:
+            case EsbPackage.VALIDATE_MEDIATOR__ON_FAIL_OUTPUT_CONNECTOR:
+            case EsbPackage.VALIDATE_MEDIATOR__MEDIATOR_FLOW:
+            case EsbPackage.VALIDATE_MEDIATOR__RESOURCES:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+                return;
         }
         super.notifyChanged(notification);
     }
@@ -258,7 +281,6 @@ public class ValidateMediatorItemProvider extends MediatorItemProvider {
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -266,29 +288,45 @@ public class ValidateMediatorItemProvider extends MediatorItemProvider {
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.VALIDATE_MEDIATOR__SOURCE_XPATH,
-                EsbFactory.eINSTANCE.createNamespacedProperty()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.VALIDATE_MEDIATOR__SOURCE_XPATH,
+                 EsbFactory.eINSTANCE.createNamespacedProperty()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.VALIDATE_MEDIATOR__FEATURES,
-                EsbFactory.eINSTANCE.createValidateFeature()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.VALIDATE_MEDIATOR__FEATURES,
+                 EsbFactory.eINSTANCE.createValidateFeature()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.VALIDATE_MEDIATOR__SCHEMAS,
-                EsbFactory.eINSTANCE.createValidateSchema()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.VALIDATE_MEDIATOR__SCHEMAS,
+                 EsbFactory.eINSTANCE.createValidateSchema()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.VALIDATE_MEDIATOR__INPUT_CONNECTOR,
-                EsbFactory.eINSTANCE.createValidateMediatorInputConnector()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.VALIDATE_MEDIATOR__INPUT_CONNECTOR,
+                 EsbFactory.eINSTANCE.createValidateMediatorInputConnector()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.VALIDATE_MEDIATOR__OUTPUT_CONNECTOR,
-                EsbFactory.eINSTANCE.createValidateMediatorOutputConnector()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.VALIDATE_MEDIATOR__OUTPUT_CONNECTOR,
+                 EsbFactory.eINSTANCE.createValidateMediatorOutputConnector()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.VALIDATE_MEDIATOR__ON_FAIL_OUTPUT_CONNECTOR,
-                EsbFactory.eINSTANCE.createValidateMediatorOnFailOutputConnector()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.VALIDATE_MEDIATOR__ON_FAIL_OUTPUT_CONNECTOR,
+                 EsbFactory.eINSTANCE.createValidateMediatorOnFailOutputConnector()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.VALIDATE_MEDIATOR__MEDIATOR_FLOW,
-                EsbFactory.eINSTANCE.createMediatorFlow()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.VALIDATE_MEDIATOR__MEDIATOR_FLOW,
+                 EsbFactory.eINSTANCE.createMediatorFlow()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.VALIDATE_MEDIATOR__RESOURCES,
-                EsbFactory.eINSTANCE.createValidateResource()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.VALIDATE_MEDIATOR__RESOURCES,
+                 EsbFactory.eINSTANCE.createValidateResource()));
     }
 
 }

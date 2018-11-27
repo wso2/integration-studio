@@ -15,8 +15,8 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractLocationKeyResource#getLocation <em>Location</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractLocationKeyResource#getKey <em>Key</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractLocationKeyResource#getLocation <em>Location</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractLocationKeyResource#getKey <em>Key</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractLocationKeyResource()
@@ -33,7 +33,6 @@ public interface AbstractLocationKeyResource extends EsbNode {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Location</em>' attribute.
      * @see #setLocation(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractLocationKeyResource_Location()
@@ -43,11 +42,9 @@ public interface AbstractLocationKeyResource extends EsbNode {
     String getLocation();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractLocationKeyResource#getLocation
-     * <em>Location</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractLocationKeyResource#getLocation <em>Location</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Location</em>' attribute.
      * @see #getLocation()
      * @generated
@@ -62,7 +59,6 @@ public interface AbstractLocationKeyResource extends EsbNode {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Key</em>' containment reference.
      * @see #setKey(RegistryKeyProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractLocationKeyResource_Key()
@@ -72,11 +68,9 @@ public interface AbstractLocationKeyResource extends EsbNode {
     RegistryKeyProperty getKey();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractLocationKeyResource#getKey
-     * <em>Key</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractLocationKeyResource#getKey <em>Key</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Key</em>' containment reference.
      * @see #getKey()
      * @generated

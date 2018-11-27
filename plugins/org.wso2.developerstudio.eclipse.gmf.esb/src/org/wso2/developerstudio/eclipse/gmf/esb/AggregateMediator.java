@@ -17,36 +17,23 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getAggregateID <em>Aggregate ID</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getCorrelationExpression <em>Correlation
- * Expression</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getCompletionTimeout <em>Completion
- * Timeout</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getCompletionMinMessagesType <em>Completion Min
- * Messages Type</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getCompletionMaxMessagesType <em>Completion Max
- * Messages Type</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getCompletionMinMessagesValue <em>Completion
- * Min Messages Value</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getCompletionMinMessagesExpression
- * <em>Completion Min Messages Expression</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getCompletionMaxMessagesValue <em>Completion
- * Max Messages Value</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getCompletionMaxMessagesExpression
- * <em>Completion Max Messages Expression</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getInputConnector <em>Input
- * Connector</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getOutputConnector <em>Output
- * Connector</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getOnCompleteOutputConnector <em>On Complete
- * Output Connector</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getMediatorFlow <em>Mediator Flow</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getAggregationExpression <em>Aggregation
- * Expression</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getSequenceType <em>Sequence Type</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getSequenceKey <em>Sequence Key</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getEnclosingElementProperty <em>Enclosing
- * Element Property</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getAggregateID <em>Aggregate ID</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getCorrelationExpression <em>Correlation Expression</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getCompletionTimeout <em>Completion Timeout</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getCompletionMinMessagesType <em>Completion Min Messages Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getCompletionMaxMessagesType <em>Completion Max Messages Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getCompletionMinMessagesValue <em>Completion Min Messages Value</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getCompletionMinMessagesExpression <em>Completion Min Messages Expression</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getCompletionMaxMessagesValue <em>Completion Max Messages Value</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getCompletionMaxMessagesExpression <em>Completion Max Messages Expression</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getOnCompleteOutputConnector <em>On Complete Output Connector</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getMediatorFlow <em>Mediator Flow</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getAggregationExpression <em>Aggregation Expression</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getSequenceType <em>Sequence Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getSequenceKey <em>Sequence Key</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getEnclosingElementProperty <em>Enclosing Element Property</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAggregateMediator()
@@ -62,7 +49,6 @@ public interface AggregateMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Aggregate ID</em>' attribute.
      * @see #setAggregateID(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAggregateMediator_AggregateID()
@@ -72,11 +58,9 @@ public interface AggregateMediator extends Mediator {
     String getAggregateID();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getAggregateID
-     * <em>Aggregate ID</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getAggregateID <em>Aggregate ID</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Aggregate ID</em>' attribute.
      * @see #getAggregateID()
      * @generated
@@ -91,7 +75,6 @@ public interface AggregateMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Correlation Expression</em>' containment reference.
      * @see #setCorrelationExpression(NamespacedProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAggregateMediator_CorrelationExpression()
@@ -101,11 +84,9 @@ public interface AggregateMediator extends Mediator {
     NamespacedProperty getCorrelationExpression();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getCorrelationExpression
-     * <em>Correlation Expression</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getCorrelationExpression <em>Correlation Expression</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Correlation Expression</em>' containment reference.
      * @see #getCorrelationExpression()
      * @generated
@@ -120,7 +101,6 @@ public interface AggregateMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Completion Timeout</em>' attribute.
      * @see #setCompletionTimeout(long)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAggregateMediator_CompletionTimeout()
@@ -130,11 +110,9 @@ public interface AggregateMediator extends Mediator {
     long getCompletionTimeout();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getCompletionTimeout
-     * <em>Completion Timeout</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getCompletionTimeout <em>Completion Timeout</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Completion Timeout</em>' attribute.
      * @see #getCompletionTimeout()
      * @generated
@@ -150,7 +128,6 @@ public interface AggregateMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Completion Min Messages Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.CompletionMessagesType
      * @see #setCompletionMinMessagesType(CompletionMessagesType)
@@ -161,12 +138,9 @@ public interface AggregateMediator extends Mediator {
     CompletionMessagesType getCompletionMinMessagesType();
 
     /**
-     * Sets the value of the
-     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getCompletionMinMessagesType <em>Completion
-     * Min Messages Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getCompletionMinMessagesType <em>Completion Min Messages Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Completion Min Messages Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.CompletionMessagesType
      * @see #getCompletionMinMessagesType()
@@ -183,7 +157,6 @@ public interface AggregateMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Completion Max Messages Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.CompletionMessagesType
      * @see #setCompletionMaxMessagesType(CompletionMessagesType)
@@ -194,12 +167,9 @@ public interface AggregateMediator extends Mediator {
     CompletionMessagesType getCompletionMaxMessagesType();
 
     /**
-     * Sets the value of the
-     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getCompletionMaxMessagesType <em>Completion
-     * Max Messages Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getCompletionMaxMessagesType <em>Completion Max Messages Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Completion Max Messages Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.CompletionMessagesType
      * @see #getCompletionMaxMessagesType()
@@ -216,7 +186,6 @@ public interface AggregateMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Completion Min Messages Value</em>' attribute.
      * @see #setCompletionMinMessagesValue(int)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAggregateMediator_CompletionMinMessagesValue()
@@ -226,12 +195,9 @@ public interface AggregateMediator extends Mediator {
     int getCompletionMinMessagesValue();
 
     /**
-     * Sets the value of the
-     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getCompletionMinMessagesValue <em>Completion
-     * Min Messages Value</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getCompletionMinMessagesValue <em>Completion Min Messages Value</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Completion Min Messages Value</em>' attribute.
      * @see #getCompletionMinMessagesValue()
      * @generated
@@ -246,7 +212,6 @@ public interface AggregateMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Completion Min Messages Expression</em>' containment reference.
      * @see #setCompletionMinMessagesExpression(NamespacedProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAggregateMediator_CompletionMinMessagesExpression()
@@ -256,12 +221,9 @@ public interface AggregateMediator extends Mediator {
     NamespacedProperty getCompletionMinMessagesExpression();
 
     /**
-     * Sets the value of the
-     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getCompletionMinMessagesExpression
-     * <em>Completion Min Messages Expression</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getCompletionMinMessagesExpression <em>Completion Min Messages Expression</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Completion Min Messages Expression</em>' containment reference.
      * @see #getCompletionMinMessagesExpression()
      * @generated
@@ -277,7 +239,6 @@ public interface AggregateMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Completion Max Messages Value</em>' attribute.
      * @see #setCompletionMaxMessagesValue(int)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAggregateMediator_CompletionMaxMessagesValue()
@@ -287,12 +248,9 @@ public interface AggregateMediator extends Mediator {
     int getCompletionMaxMessagesValue();
 
     /**
-     * Sets the value of the
-     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getCompletionMaxMessagesValue <em>Completion
-     * Max Messages Value</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getCompletionMaxMessagesValue <em>Completion Max Messages Value</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Completion Max Messages Value</em>' attribute.
      * @see #getCompletionMaxMessagesValue()
      * @generated
@@ -307,7 +265,6 @@ public interface AggregateMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Completion Max Messages Expression</em>' containment reference.
      * @see #setCompletionMaxMessagesExpression(NamespacedProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAggregateMediator_CompletionMaxMessagesExpression()
@@ -317,12 +274,9 @@ public interface AggregateMediator extends Mediator {
     NamespacedProperty getCompletionMaxMessagesExpression();
 
     /**
-     * Sets the value of the
-     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getCompletionMaxMessagesExpression
-     * <em>Completion Max Messages Expression</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getCompletionMaxMessagesExpression <em>Completion Max Messages Expression</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Completion Max Messages Expression</em>' containment reference.
      * @see #getCompletionMaxMessagesExpression()
      * @generated
@@ -337,7 +291,6 @@ public interface AggregateMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Input Connector</em>' containment reference.
      * @see #setInputConnector(AggregateMediatorInputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAggregateMediator_InputConnector()
@@ -347,11 +300,9 @@ public interface AggregateMediator extends Mediator {
     AggregateMediatorInputConnector getInputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getInputConnector
-     * <em>Input Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getInputConnector <em>Input Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Input Connector</em>' containment reference.
      * @see #getInputConnector()
      * @generated
@@ -366,7 +317,6 @@ public interface AggregateMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Output Connector</em>' containment reference.
      * @see #setOutputConnector(AggregateMediatorOutputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAggregateMediator_OutputConnector()
@@ -376,11 +326,9 @@ public interface AggregateMediator extends Mediator {
     AggregateMediatorOutputConnector getOutputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getOutputConnector
-     * <em>Output Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getOutputConnector <em>Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Output Connector</em>' containment reference.
      * @see #getOutputConnector()
      * @generated
@@ -395,7 +343,6 @@ public interface AggregateMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>On Complete Output Connector</em>' containment reference.
      * @see #setOnCompleteOutputConnector(AggregateMediatorOnCompleteOutputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAggregateMediator_OnCompleteOutputConnector()
@@ -405,12 +352,9 @@ public interface AggregateMediator extends Mediator {
     AggregateMediatorOnCompleteOutputConnector getOnCompleteOutputConnector();
 
     /**
-     * Sets the value of the
-     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getOnCompleteOutputConnector <em>On Complete
-     * Output Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getOnCompleteOutputConnector <em>On Complete Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>On Complete Output Connector</em>' containment reference.
      * @see #getOnCompleteOutputConnector()
      * @generated
@@ -425,7 +369,6 @@ public interface AggregateMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Mediator Flow</em>' containment reference.
      * @see #setMediatorFlow(MediatorFlow)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAggregateMediator_MediatorFlow()
@@ -435,11 +378,9 @@ public interface AggregateMediator extends Mediator {
     MediatorFlow getMediatorFlow();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getMediatorFlow
-     * <em>Mediator Flow</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getMediatorFlow <em>Mediator Flow</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Mediator Flow</em>' containment reference.
      * @see #getMediatorFlow()
      * @generated
@@ -454,7 +395,6 @@ public interface AggregateMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Aggregation Expression</em>' containment reference.
      * @see #setAggregationExpression(NamespacedProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAggregateMediator_AggregationExpression()
@@ -464,11 +404,9 @@ public interface AggregateMediator extends Mediator {
     NamespacedProperty getAggregationExpression();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getAggregationExpression
-     * <em>Aggregation Expression</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getAggregationExpression <em>Aggregation Expression</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Aggregation Expression</em>' containment reference.
      * @see #getAggregationExpression()
      * @generated
@@ -484,7 +422,6 @@ public interface AggregateMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Sequence Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.AggregateSequenceType
      * @see #setSequenceType(AggregateSequenceType)
@@ -495,11 +432,9 @@ public interface AggregateMediator extends Mediator {
     AggregateSequenceType getSequenceType();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getSequenceType
-     * <em>Sequence Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getSequenceType <em>Sequence Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Sequence Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.AggregateSequenceType
      * @see #getSequenceType()
@@ -515,7 +450,6 @@ public interface AggregateMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Sequence Key</em>' containment reference.
      * @see #setSequenceKey(RegistryKeyProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAggregateMediator_SequenceKey()
@@ -525,11 +459,9 @@ public interface AggregateMediator extends Mediator {
     RegistryKeyProperty getSequenceKey();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getSequenceKey
-     * <em>Sequence Key</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getSequenceKey <em>Sequence Key</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Sequence Key</em>' containment reference.
      * @see #getSequenceKey()
      * @generated
@@ -544,7 +476,6 @@ public interface AggregateMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Enclosing Element Property</em>' attribute.
      * @see #setEnclosingElementProperty(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAggregateMediator_EnclosingElementProperty()
@@ -554,12 +485,9 @@ public interface AggregateMediator extends Mediator {
     String getEnclosingElementProperty();
 
     /**
-     * Sets the value of the
-     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getEnclosingElementProperty <em>Enclosing
-     * Element Property</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getEnclosingElementProperty <em>Enclosing Element Property</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Enclosing Element Property</em>' attribute.
      * @see #getEnclosingElementProperty()
      * @generated

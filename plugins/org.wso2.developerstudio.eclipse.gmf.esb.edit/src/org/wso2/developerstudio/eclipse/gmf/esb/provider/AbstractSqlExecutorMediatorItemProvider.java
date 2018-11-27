@@ -15,35 +15,41 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-
+import org.eclipse.emf.transaction.RecordingCommand;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.developerstudio.eclipse.gmf.esb.JMSBrokerType;
+import org.wso2.developerstudio.eclipse.gmf.esb.SqlDatabaseType;
 import org.wso2.developerstudio.eclipse.gmf.esb.SqlExecutorConnectionType;
 import org.wso2.developerstudio.eclipse.gmf.esb.SqlExecutorDatasourceType;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
+
+import static org.wso2.developerstudio.eclipse.gmf.esb.Constants.*;
 
 /**
- * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator}
- * object.
+ * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class AbstractSqlExecutorMediatorItemProvider extends MediatorItemProvider {
+
+    private static final String PLUGIN_ID = "org.wso2.developerstudio.eclipse.gmf.esb.provider";
+    private static IDeveloperStudioLog log = Logger.getLog(PLUGIN_ID);
+    
+    private static SqlDatabaseType currentDbType = null;
+
     /**
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public AbstractSqlExecutorMediatorItemProvider(AdapterFactory adapterFactory) {
@@ -75,6 +81,41 @@ public class AbstractSqlExecutorMediatorItemProvider extends MediatorItemProvide
             }
             addConnectionDsNamePropertyDescriptor(object);
         } else {
+            addConnectionDbTypePropertyDescriptor(object);
+            
+            AbstractSqlExecutorMediator sqlMediator = (AbstractSqlExecutorMediator) object;
+            switch (sqlMediator.getConnectionDbType()) {
+            case OTHER:
+                if (currentDbType != SqlDatabaseType.OTHER || currentDbType == null) {
+                    updateDatabaseTypeDefaults(sqlMediator, SqlDatabaseType.OTHER);
+                    currentDbType = SqlDatabaseType.OTHER;
+                }
+                break;
+            case MYSQL:
+                if (currentDbType != SqlDatabaseType.MYSQL || currentDbType == null) {
+                    updateDatabaseTypeDefaults(sqlMediator, SqlDatabaseType.MYSQL);
+                    currentDbType = SqlDatabaseType.MYSQL;
+                }
+                break;
+            case ORACLE:
+                if (currentDbType != SqlDatabaseType.ORACLE || currentDbType == null) {
+                    updateDatabaseTypeDefaults(sqlMediator, SqlDatabaseType.ORACLE);
+                    currentDbType = SqlDatabaseType.ORACLE;
+                }
+                break;
+            case MSSQL:
+                if (currentDbType != SqlDatabaseType.MSSQL || currentDbType == null) {
+                    updateDatabaseTypeDefaults(sqlMediator, SqlDatabaseType.MSSQL);
+                    currentDbType = SqlDatabaseType.MSSQL;
+                }
+                break;
+            case POSTGRESQL:
+                if (currentDbType != SqlDatabaseType.POSTGRESQL || currentDbType == null) {
+                    updateDatabaseTypeDefaults(sqlMediator, SqlDatabaseType.POSTGRESQL);
+                    currentDbType = SqlDatabaseType.POSTGRESQL;
+                }
+                break;
+            }
             addConnectionDbDriverPropertyDescriptor(object);
             addSqlConnectionPropertyDescriptors(object);
         }
@@ -141,6 +182,24 @@ public class AbstractSqlExecutorMediatorItemProvider extends MediatorItemProvide
                                 "_UI_AbstractSqlExecutorMediator_connectionDsType_feature",
                                 "_UI_AbstractSqlExecutorMediator_type"),
                         EsbPackage.Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DS_TYPE, true, false, false,
+                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, "Connection", null));
+    }
+
+    /**
+     * This adds a property descriptor for the Connection Db Type feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated NOT
+     */
+    protected void addConnectionDbTypePropertyDescriptor(Object object) {
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+                        getResourceLocator(), getString("_UI_AbstractSqlExecutorMediator_connectionDbType_feature"),
+                        getString("_UI_PropertyDescriptor_description",
+                                "_UI_AbstractSqlExecutorMediator_connectionDbType_feature",
+                                "_UI_AbstractSqlExecutorMediator_type"),
+                        EsbPackage.Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DB_TYPE, true, false, false,
                         ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, "Connection", null));
     }
 
@@ -489,7 +548,6 @@ public class AbstractSqlExecutorMediatorItemProvider extends MediatorItemProvide
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -505,7 +563,6 @@ public class AbstractSqlExecutorMediatorItemProvider extends MediatorItemProvide
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -521,15 +578,15 @@ public class AbstractSqlExecutorMediatorItemProvider extends MediatorItemProvide
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public String getText(Object object) {
-        String label = ((AbstractSqlExecutorMediator) object).getConnectionDsName();
-        return label == null || label.length() == 0 ? getString("_UI_AbstractSqlExecutorMediator_type")
-                : getString("_UI_AbstractSqlExecutorMediator_type") + " " + label;
+        String label = ((AbstractSqlExecutorMediator)object).getConnectionDsName();
+        return label == null || label.length() == 0 ?
+            getString("_UI_AbstractSqlExecutorMediator_type") :
+            getString("_UI_AbstractSqlExecutorMediator_type") + " " + label;
     }
 
     /**
@@ -537,7 +594,6 @@ public class AbstractSqlExecutorMediatorItemProvider extends MediatorItemProvide
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -546,31 +602,32 @@ public class AbstractSqlExecutorMediatorItemProvider extends MediatorItemProvide
         updateChildren(notification);
 
         switch (notification.getFeatureID(AbstractSqlExecutorMediator.class)) {
-        case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_TYPE:
-        case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DS_TYPE:
-        case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DB_DRIVER:
-        case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DS_INITIAL_CONTEXT:
-        case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DS_NAME:
-        case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_URL:
-        case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_USERNAME:
-        case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_PASSWORD:
-        case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_AUTOCOMMIT:
-        case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_ISOLATION:
-        case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_MAXACTIVE:
-        case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_MAXIDLE:
-        case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_MAXOPENSTATEMENTS:
-        case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_MAXWAIT:
-        case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_MINIDLE:
-        case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_POOLSTATEMENTS:
-        case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_TESTONBORROW:
-        case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_TESTWHILEIDLE:
-        case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_VALIDATIONQUERY:
-        case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_INITIALSIZE:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-            return;
-        case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__SQL_STATEMENTS:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-            return;
+            case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_TYPE:
+            case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DS_TYPE:
+            case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DB_TYPE:
+            case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DB_DRIVER:
+            case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DS_INITIAL_CONTEXT:
+            case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DS_NAME:
+            case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_URL:
+            case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_USERNAME:
+            case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_PASSWORD:
+            case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_AUTOCOMMIT:
+            case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_ISOLATION:
+            case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_MAXACTIVE:
+            case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_MAXIDLE:
+            case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_MAXOPENSTATEMENTS:
+            case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_MAXWAIT:
+            case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_MINIDLE:
+            case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_POOLSTATEMENTS:
+            case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_TESTONBORROW:
+            case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_TESTWHILEIDLE:
+            case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_VALIDATIONQUERY:
+            case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_INITIALSIZE:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+                return;
+            case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__SQL_STATEMENTS:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+                return;
         }
         super.notifyChanged(notification);
     }
@@ -580,7 +637,6 @@ public class AbstractSqlExecutorMediatorItemProvider extends MediatorItemProvide
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -588,8 +644,148 @@ public class AbstractSqlExecutorMediatorItemProvider extends MediatorItemProvide
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__SQL_STATEMENTS,
-                EsbFactory.eINSTANCE.createSqlStatement()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__SQL_STATEMENTS,
+                 EsbFactory.eINSTANCE.createSqlStatement()));
+    }
+
+    /**
+     * Updates default values for SQL database types
+     * 
+     * @param sqlMediator Abstract SQL Mediator
+     * @param dbType Database Type
+     */
+    private void updateDatabaseTypeDefaults(AbstractSqlExecutorMediator sqlMediator, SqlDatabaseType dbType) {
+        TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain(sqlMediator);
+        updateSQLDbDriver(sqlMediator, dbType, editingDomain);
+        updateSQLDbUrl(sqlMediator, dbType, editingDomain);
+        updateSQLDbUsername(sqlMediator, dbType, editingDomain);
+    }
+
+    /**
+     * Updates the DB driver property with default values
+     * 
+     * @param sqlMediator Abstract SQL Mediator
+     * @param dbType Database Type
+     * @param editingDomain Editing Domain
+     */
+    private void updateSQLDbDriver(final AbstractSqlExecutorMediator sqlMediator, final SqlDatabaseType dbType,
+            final TransactionalEditingDomain editingDomain) {
+        try {
+            editingDomain.getCommandStack().execute(new RecordingCommand(editingDomain) {
+                @Override
+                protected void doExecute() {
+                    if (dbType == SqlDatabaseType.MYSQL) {
+                        if (!sqlMediator.getConnectionDbDriver().equals(TXT_DATABASE_DRIVER_MYSQL)) {
+                            sqlMediator.setConnectionDbDriver(TXT_DATABASE_DRIVER_MYSQL);
+                        }
+                    } else if (dbType == SqlDatabaseType.ORACLE) {
+                        if (!sqlMediator.getConnectionDbDriver().equals(TXT_DATABASE_DRIVER_ORACLE)) {
+                            sqlMediator.setConnectionDbDriver(TXT_DATABASE_DRIVER_ORACLE);
+                        }
+                    } else if (dbType == SqlDatabaseType.MSSQL) {
+                        if (!sqlMediator.getConnectionDbDriver().equals(TXT_DATABASE_DRIVER_MSSQL)) {
+                            sqlMediator.setConnectionDbDriver(TXT_DATABASE_DRIVER_MSSQL);
+                        }
+                    } else if (dbType == SqlDatabaseType.POSTGRESQL) {
+                        if (!sqlMediator.getConnectionDbDriver().equals(TXT_DATABASE_DRIVER_POSTGRESQL)) {
+                            sqlMediator.setConnectionDbDriver(TXT_DATABASE_DRIVER_POSTGRESQL);
+                        }
+                    } else if (dbType == SqlDatabaseType.OTHER) {
+                        if (!sqlMediator.getConnectionDbDriver().equals(TXT_EMPTY)) {
+                            sqlMediator.setConnectionDbDriver(TXT_EMPTY);
+                        }
+                    }
+                }
+            });
+        } catch (IllegalStateException e) {
+            log.error("Cannot modify property "
+                    + EsbPackage.Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DB_DRIVER.getName());
+        }
+    }
+
+    /**
+     * Updates the DB connection URL property with default values
+     * 
+     * @param sqlMediator Abstract SQL Mediator
+     * @param dbType Database Type
+     * @param editingDomain Editing Domain
+     */
+    private void updateSQLDbUrl(final AbstractSqlExecutorMediator sqlMediator, final SqlDatabaseType dbType,
+            final TransactionalEditingDomain editingDomain) {
+        try {
+            editingDomain.getCommandStack().execute(new RecordingCommand(editingDomain) {
+                @Override
+                protected void doExecute() {
+                    if (dbType == SqlDatabaseType.MYSQL) {
+                        if (!sqlMediator.getConnectionURL().equals(TXT_DATABASE_CONNECTION_URL_MYSQL)) {
+                            sqlMediator.setConnectionURL(TXT_DATABASE_CONNECTION_URL_MYSQL);
+                        }
+                    } else if (dbType == SqlDatabaseType.ORACLE) {
+                        if (!sqlMediator.getConnectionURL().equals(TXT_DATABASE_CONNECTION_URL_ORACLE)) {
+                            sqlMediator.setConnectionURL(TXT_DATABASE_CONNECTION_URL_ORACLE);
+                        }
+                    } else if (dbType == SqlDatabaseType.MSSQL) {
+                        if (!sqlMediator.getConnectionURL().equals(TXT_DATABASE_CONNECTION_URL_MSSQL)) {
+                            sqlMediator.setConnectionURL(TXT_DATABASE_CONNECTION_URL_MSSQL);
+                        }
+                    } else if (dbType == SqlDatabaseType.POSTGRESQL) {
+                        if (!sqlMediator.getConnectionURL().equals(TXT_DATABASE_CONNECTION_URL_POSTGRESQL)) {
+                            sqlMediator.setConnectionURL(TXT_DATABASE_CONNECTION_URL_POSTGRESQL);
+                        }
+                    } else if (dbType == SqlDatabaseType.OTHER) {
+                        if (!sqlMediator.getConnectionURL().equals(TXT_EMPTY)) {
+                            sqlMediator.setConnectionURL(TXT_EMPTY);
+                        }
+                    }
+                }
+            });
+        } catch (IllegalStateException e) {
+            log.error("Cannot modify property " + EsbPackage.Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_URL.getName());
+        }
+    }
+
+    /**
+     * Updates the DB connection username property with default values
+     * 
+     * @param sqlMediator Abstract SQL Mediator
+     * @param dbType Database Type
+     * @param editingDomain Editing Domain
+     */
+    private void updateSQLDbUsername(final AbstractSqlExecutorMediator sqlMediator, final SqlDatabaseType dbType,
+            final TransactionalEditingDomain editingDomain) {
+        try {
+            editingDomain.getCommandStack().execute(new RecordingCommand(editingDomain) {
+                @Override
+                protected void doExecute() {
+                    if (dbType == SqlDatabaseType.MYSQL) {
+                        if (!sqlMediator.getConnectionUsername().equals(TXT_DATABASE_USER_MYSQL)) {
+                            sqlMediator.setConnectionUsername(TXT_DATABASE_USER_MYSQL);
+                        }
+                    } else if (dbType == SqlDatabaseType.ORACLE) {
+                        if (!sqlMediator.getConnectionUsername().equals(TXT_DATABASE_USER_ORACLE)) {
+                            sqlMediator.setConnectionUsername(TXT_DATABASE_USER_ORACLE);
+                        }
+                    } else if (dbType == SqlDatabaseType.MSSQL) {
+                        if (!sqlMediator.getConnectionUsername().equals(TXT_DATABASE_USER_MSSQL)) {
+                            sqlMediator.setConnectionUsername(TXT_DATABASE_USER_MSSQL);
+                        }
+                    } else if (dbType == SqlDatabaseType.POSTGRESQL) {
+                        if (!sqlMediator.getConnectionUsername().equals(TXT_DATABASE_USER_POSTGRESQL)) {
+                            sqlMediator.setConnectionUsername(TXT_DATABASE_USER_POSTGRESQL);
+                        }
+                    } else if (dbType == SqlDatabaseType.OTHER) {
+                        if (!sqlMediator.getConnectionUsername().equals(TXT_EMPTY)) {
+                            sqlMediator.setConnectionUsername(TXT_EMPTY);
+                        }
+                    }
+                }
+            });
+        } catch (IllegalStateException e) {
+            log.error("Cannot modify property "
+                    + EsbPackage.Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_USERNAME.getName());
+        }
     }
 
 }

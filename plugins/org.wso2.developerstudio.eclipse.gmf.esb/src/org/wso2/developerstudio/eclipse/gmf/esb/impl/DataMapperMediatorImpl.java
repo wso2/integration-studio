@@ -264,13 +264,13 @@ public class DataMapperMediatorImpl extends MediatorImpl implements DataMapperMe
         outputSchema.setPrettyName("outputschema");
         // outputSchema.setKeyValue("/default/key");
         setOutputSchema(outputSchema);
-        
+
         RegistryKeyProperty xsltStyleSheet = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
   		xsltStyleSheet.setKeyName("XsltStyleSheet");
   		xsltStyleSheet.setPrettyName("xsltStyleSheet");
   		//xsltStyleSheet.setKeyValue("/default/key");
   		setXsltStyleSheet(xsltStyleSheet);
-  		
+
     }
 
     /**
@@ -314,18 +314,21 @@ public class DataMapperMediatorImpl extends MediatorImpl implements DataMapperMe
 	 * @generated
 	 */
     public void setInputConnector(DataMapperMediatorInputConnector newInputConnector) {
-		if (newInputConnector != inputConnector) {
-			NotificationChain msgs = null;
-			if (inputConnector != null)
-				msgs = ((InternalEObject)inputConnector).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.DATA_MAPPER_MEDIATOR__INPUT_CONNECTOR, null, msgs);
-			if (newInputConnector != null)
-				msgs = ((InternalEObject)newInputConnector).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.DATA_MAPPER_MEDIATOR__INPUT_CONNECTOR, null, msgs);
-			msgs = basicSetInputConnector(newInputConnector, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.DATA_MAPPER_MEDIATOR__INPUT_CONNECTOR, newInputConnector, newInputConnector));
-	}
+        if (newInputConnector != inputConnector) {
+            NotificationChain msgs = null;
+            if (inputConnector != null)
+                msgs = ((InternalEObject) inputConnector).eInverseRemove(this,
+                        EOPPOSITE_FEATURE_BASE - EsbPackage.DATA_MAPPER_MEDIATOR__INPUT_CONNECTOR, null, msgs);
+            if (newInputConnector != null)
+                msgs = ((InternalEObject) newInputConnector).eInverseAdd(this,
+                        EOPPOSITE_FEATURE_BASE - EsbPackage.DATA_MAPPER_MEDIATOR__INPUT_CONNECTOR, null, msgs);
+            msgs = basicSetInputConnector(newInputConnector, msgs);
+            if (msgs != null)
+                msgs.dispatch();
+        } else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.DATA_MAPPER_MEDIATOR__INPUT_CONNECTOR,
+                    newInputConnector, newInputConnector));
+    }
 
     /**
 	 * <!-- begin-user-doc -->

@@ -17,7 +17,6 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>Property Data Type</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * 
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getPropertyDataType()
  * @model
  * @generated
@@ -27,7 +26,6 @@ public enum PropertyDataType implements Enumerator {
      * The '<em><b>STRING</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #STRING_VALUE
      * @generated
      * @ordered
@@ -38,7 +36,6 @@ public enum PropertyDataType implements Enumerator {
      * The '<em><b>INTEGER</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #INTEGER_VALUE
      * @generated
      * @ordered
@@ -49,7 +46,6 @@ public enum PropertyDataType implements Enumerator {
      * The '<em><b>BOOLEAN</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #BOOLEAN_VALUE
      * @generated
      * @ordered
@@ -60,7 +56,6 @@ public enum PropertyDataType implements Enumerator {
      * The '<em><b>DOUBLE</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #DOUBLE_VALUE
      * @generated
      * @ordered
@@ -71,7 +66,6 @@ public enum PropertyDataType implements Enumerator {
      * The '<em><b>FLOAT</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #FLOAT_VALUE
      * @generated
      * @ordered
@@ -82,7 +76,6 @@ public enum PropertyDataType implements Enumerator {
      * The '<em><b>LONG</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #LONG_VALUE
      * @generated
      * @ordered
@@ -93,7 +86,6 @@ public enum PropertyDataType implements Enumerator {
      * The '<em><b>SHORT</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #SHORT_VALUE
      * @generated
      * @ordered
@@ -104,7 +96,6 @@ public enum PropertyDataType implements Enumerator {
      * The '<em><b>OM</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #OM_VALUE
      * @generated
      * @ordered
@@ -119,7 +110,6 @@ public enum PropertyDataType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #STRING
      * @model
      * @generated
@@ -135,7 +125,6 @@ public enum PropertyDataType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #INTEGER
      * @model
      * @generated
@@ -151,7 +140,6 @@ public enum PropertyDataType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #BOOLEAN
      * @model
      * @generated
@@ -167,7 +155,6 @@ public enum PropertyDataType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #DOUBLE
      * @model
      * @generated
@@ -183,7 +170,6 @@ public enum PropertyDataType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #FLOAT
      * @model
      * @generated
@@ -199,7 +185,6 @@ public enum PropertyDataType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #LONG
      * @model
      * @generated
@@ -215,7 +200,6 @@ public enum PropertyDataType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #SHORT
      * @model
      * @generated
@@ -231,7 +215,6 @@ public enum PropertyDataType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #OM
      * @model
      * @generated
@@ -243,17 +226,23 @@ public enum PropertyDataType implements Enumerator {
      * An array of all the '<em><b>Property Data Type</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
-    private static final PropertyDataType[] VALUES_ARRAY = new PropertyDataType[] { STRING, INTEGER, BOOLEAN, DOUBLE,
-            FLOAT, LONG, SHORT, OM, };
+    private static final PropertyDataType[] VALUES_ARRAY = new PropertyDataType[] {
+            STRING,
+            INTEGER,
+            BOOLEAN,
+            DOUBLE,
+            FLOAT,
+            LONG,
+            SHORT,
+            OM,
+        };
 
     /**
      * A public read-only list of all the '<em><b>Property Data Type</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public static final List<PropertyDataType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
@@ -262,7 +251,6 @@ public enum PropertyDataType implements Enumerator {
      * Returns the '<em><b>Property Data Type</b></em>' literal with the specified literal value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param literal the literal.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -281,7 +269,6 @@ public enum PropertyDataType implements Enumerator {
      * Returns the '<em><b>Property Data Type</b></em>' literal with the specified name.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param name the name.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -300,29 +287,20 @@ public enum PropertyDataType implements Enumerator {
      * Returns the '<em><b>Property Data Type</b></em>' literal with the specified integer value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the integer value.
      * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static PropertyDataType get(int value) {
         switch (value) {
-        case STRING_VALUE:
-            return STRING;
-        case INTEGER_VALUE:
-            return INTEGER;
-        case BOOLEAN_VALUE:
-            return BOOLEAN;
-        case DOUBLE_VALUE:
-            return DOUBLE;
-        case FLOAT_VALUE:
-            return FLOAT;
-        case LONG_VALUE:
-            return LONG;
-        case SHORT_VALUE:
-            return SHORT;
-        case OM_VALUE:
-            return OM;
+            case STRING_VALUE: return STRING;
+            case INTEGER_VALUE: return INTEGER;
+            case BOOLEAN_VALUE: return BOOLEAN;
+            case DOUBLE_VALUE: return DOUBLE;
+            case FLOAT_VALUE: return FLOAT;
+            case LONG_VALUE: return LONG;
+            case SHORT_VALUE: return SHORT;
+            case OM_VALUE: return OM;
         }
         return null;
     }
@@ -330,7 +308,6 @@ public enum PropertyDataType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final int value;
@@ -338,7 +315,6 @@ public enum PropertyDataType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final String name;
@@ -346,7 +322,6 @@ public enum PropertyDataType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final String literal;
@@ -355,7 +330,6 @@ public enum PropertyDataType implements Enumerator {
      * Only this class can construct instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private PropertyDataType(int value, String name, String literal) {
@@ -367,38 +341,34 @@ public enum PropertyDataType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public int getValue() {
-        return value;
+      return value;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getName() {
-        return name;
+      return name;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getLiteral() {
-        return literal;
+      return literal;
     }
 
     /**
      * Returns the literal value of the enumerator, which is its string representation.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 

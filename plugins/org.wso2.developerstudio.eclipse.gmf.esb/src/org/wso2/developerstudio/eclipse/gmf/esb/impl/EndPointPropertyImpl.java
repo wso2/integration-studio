@@ -38,12 +38,11 @@ import org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EndPointPropertyImpl#getName <em>Name</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EndPointPropertyImpl#getValue <em>Value</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EndPointPropertyImpl#getScope <em>Scope</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EndPointPropertyImpl#getValueType <em>Value Type</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EndPointPropertyImpl#getValueExpression <em>Value
- * Expression</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EndPointPropertyImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EndPointPropertyImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EndPointPropertyImpl#getScope <em>Scope</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EndPointPropertyImpl#getValueType <em>Value Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EndPointPropertyImpl#getValueExpression <em>Value Expression</em>}</li>
  * </ul>
  *
  * @generated
@@ -53,7 +52,6 @@ public class EndPointPropertyImpl extends EObjectImpl implements EndPointPropert
      * The default value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getName()
      * @generated
      * @ordered
@@ -64,7 +62,6 @@ public class EndPointPropertyImpl extends EObjectImpl implements EndPointPropert
      * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getName()
      * @generated
      * @ordered
@@ -75,7 +72,6 @@ public class EndPointPropertyImpl extends EObjectImpl implements EndPointPropert
      * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getValue()
      * @generated
      * @ordered
@@ -86,7 +82,6 @@ public class EndPointPropertyImpl extends EObjectImpl implements EndPointPropert
      * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getValue()
      * @generated
      * @ordered
@@ -97,7 +92,6 @@ public class EndPointPropertyImpl extends EObjectImpl implements EndPointPropert
      * The default value of the '{@link #getScope() <em>Scope</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getScope()
      * @generated
      * @ordered
@@ -108,7 +102,6 @@ public class EndPointPropertyImpl extends EObjectImpl implements EndPointPropert
      * The cached value of the '{@link #getScope() <em>Scope</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getScope()
      * @generated
      * @ordered
@@ -119,7 +112,6 @@ public class EndPointPropertyImpl extends EObjectImpl implements EndPointPropert
      * The default value of the '{@link #getValueType() <em>Value Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getValueType()
      * @generated
      * @ordered
@@ -130,7 +122,6 @@ public class EndPointPropertyImpl extends EObjectImpl implements EndPointPropert
      * The cached value of the '{@link #getValueType() <em>Value Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getValueType()
      * @generated
      * @ordered
@@ -141,7 +132,6 @@ public class EndPointPropertyImpl extends EObjectImpl implements EndPointPropert
      * The cached value of the '{@link #getValueExpression() <em>Value Expression</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getValueExpression()
      * @generated
      * @ordered
@@ -167,7 +157,6 @@ public class EndPointPropertyImpl extends EObjectImpl implements EndPointPropert
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -178,7 +167,6 @@ public class EndPointPropertyImpl extends EObjectImpl implements EndPointPropert
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getName() {
@@ -188,7 +176,6 @@ public class EndPointPropertyImpl extends EObjectImpl implements EndPointPropert
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setName(String newName) {
@@ -201,7 +188,6 @@ public class EndPointPropertyImpl extends EObjectImpl implements EndPointPropert
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getValue() {
@@ -211,21 +197,18 @@ public class EndPointPropertyImpl extends EObjectImpl implements EndPointPropert
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setValue(String newValue) {
         String oldValue = value;
         value = newValue;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.END_POINT_PROPERTY__VALUE, oldValue,
-                    value));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.END_POINT_PROPERTY__VALUE, oldValue, value));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public EndPointPropertyScope getScope() {
@@ -235,21 +218,18 @@ public class EndPointPropertyImpl extends EObjectImpl implements EndPointPropert
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setScope(EndPointPropertyScope newScope) {
         EndPointPropertyScope oldScope = scope;
         scope = newScope == null ? SCOPE_EDEFAULT : newScope;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.END_POINT_PROPERTY__SCOPE, oldScope,
-                    scope));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.END_POINT_PROPERTY__SCOPE, oldScope, scope));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public PropertyValueType getValueType() {
@@ -259,21 +239,18 @@ public class EndPointPropertyImpl extends EObjectImpl implements EndPointPropert
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setValueType(PropertyValueType newValueType) {
         PropertyValueType oldValueType = valueType;
         valueType = newValueType == null ? VALUE_TYPE_EDEFAULT : newValueType;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.END_POINT_PROPERTY__VALUE_TYPE,
-                    oldValueType, valueType));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.END_POINT_PROPERTY__VALUE_TYPE, oldValueType, valueType));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public NamespacedProperty getValueExpression() {
@@ -283,19 +260,14 @@ public class EndPointPropertyImpl extends EObjectImpl implements EndPointPropert
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public NotificationChain basicSetValueExpression(NamespacedProperty newValueExpression, NotificationChain msgs) {
         NamespacedProperty oldValueExpression = valueExpression;
         valueExpression = newValueExpression;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.END_POINT_PROPERTY__VALUE_EXPRESSION, oldValueExpression, newValueExpression);
-            if (msgs == null)
-                msgs = notification;
-            else
-                msgs.add(notification);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.END_POINT_PROPERTY__VALUE_EXPRESSION, oldValueExpression, newValueExpression);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
         }
         return msgs;
     }
@@ -303,37 +275,32 @@ public class EndPointPropertyImpl extends EObjectImpl implements EndPointPropert
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setValueExpression(NamespacedProperty newValueExpression) {
         if (newValueExpression != valueExpression) {
             NotificationChain msgs = null;
             if (valueExpression != null)
-                msgs = ((InternalEObject) valueExpression).eInverseRemove(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.END_POINT_PROPERTY__VALUE_EXPRESSION, null, msgs);
+                msgs = ((InternalEObject)valueExpression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.END_POINT_PROPERTY__VALUE_EXPRESSION, null, msgs);
             if (newValueExpression != null)
-                msgs = ((InternalEObject) newValueExpression).eInverseAdd(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.END_POINT_PROPERTY__VALUE_EXPRESSION, null, msgs);
+                msgs = ((InternalEObject)newValueExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.END_POINT_PROPERTY__VALUE_EXPRESSION, null, msgs);
             msgs = basicSetValueExpression(newValueExpression, msgs);
-            if (msgs != null)
-                msgs.dispatch();
-        } else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.END_POINT_PROPERTY__VALUE_EXPRESSION,
-                    newValueExpression, newValueExpression));
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.END_POINT_PROPERTY__VALUE_EXPRESSION, newValueExpression, newValueExpression));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
-        case EsbPackage.END_POINT_PROPERTY__VALUE_EXPRESSION:
-            return basicSetValueExpression(null, msgs);
+            case EsbPackage.END_POINT_PROPERTY__VALUE_EXPRESSION:
+                return basicSetValueExpression(null, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -341,22 +308,21 @@ public class EndPointPropertyImpl extends EObjectImpl implements EndPointPropert
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-        case EsbPackage.END_POINT_PROPERTY__NAME:
-            return getName();
-        case EsbPackage.END_POINT_PROPERTY__VALUE:
-            return getValue();
-        case EsbPackage.END_POINT_PROPERTY__SCOPE:
-            return getScope();
-        case EsbPackage.END_POINT_PROPERTY__VALUE_TYPE:
-            return getValueType();
-        case EsbPackage.END_POINT_PROPERTY__VALUE_EXPRESSION:
-            return getValueExpression();
+            case EsbPackage.END_POINT_PROPERTY__NAME:
+                return getName();
+            case EsbPackage.END_POINT_PROPERTY__VALUE:
+                return getValue();
+            case EsbPackage.END_POINT_PROPERTY__SCOPE:
+                return getScope();
+            case EsbPackage.END_POINT_PROPERTY__VALUE_TYPE:
+                return getValueType();
+            case EsbPackage.END_POINT_PROPERTY__VALUE_EXPRESSION:
+                return getValueExpression();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -364,27 +330,26 @@ public class EndPointPropertyImpl extends EObjectImpl implements EndPointPropert
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-        case EsbPackage.END_POINT_PROPERTY__NAME:
-            setName((String) newValue);
-            return;
-        case EsbPackage.END_POINT_PROPERTY__VALUE:
-            setValue((String) newValue);
-            return;
-        case EsbPackage.END_POINT_PROPERTY__SCOPE:
-            setScope((EndPointPropertyScope) newValue);
-            return;
-        case EsbPackage.END_POINT_PROPERTY__VALUE_TYPE:
-            setValueType((PropertyValueType) newValue);
-            return;
-        case EsbPackage.END_POINT_PROPERTY__VALUE_EXPRESSION:
-            setValueExpression((NamespacedProperty) newValue);
-            return;
+            case EsbPackage.END_POINT_PROPERTY__NAME:
+                setName((String)newValue);
+                return;
+            case EsbPackage.END_POINT_PROPERTY__VALUE:
+                setValue((String)newValue);
+                return;
+            case EsbPackage.END_POINT_PROPERTY__SCOPE:
+                setScope((EndPointPropertyScope)newValue);
+                return;
+            case EsbPackage.END_POINT_PROPERTY__VALUE_TYPE:
+                setValueType((PropertyValueType)newValue);
+                return;
+            case EsbPackage.END_POINT_PROPERTY__VALUE_EXPRESSION:
+                setValueExpression((NamespacedProperty)newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
@@ -392,27 +357,26 @@ public class EndPointPropertyImpl extends EObjectImpl implements EndPointPropert
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-        case EsbPackage.END_POINT_PROPERTY__NAME:
-            setName(NAME_EDEFAULT);
-            return;
-        case EsbPackage.END_POINT_PROPERTY__VALUE:
-            setValue(VALUE_EDEFAULT);
-            return;
-        case EsbPackage.END_POINT_PROPERTY__SCOPE:
-            setScope(SCOPE_EDEFAULT);
-            return;
-        case EsbPackage.END_POINT_PROPERTY__VALUE_TYPE:
-            setValueType(VALUE_TYPE_EDEFAULT);
-            return;
-        case EsbPackage.END_POINT_PROPERTY__VALUE_EXPRESSION:
-            setValueExpression((NamespacedProperty) null);
-            return;
+            case EsbPackage.END_POINT_PROPERTY__NAME:
+                setName(NAME_EDEFAULT);
+                return;
+            case EsbPackage.END_POINT_PROPERTY__VALUE:
+                setValue(VALUE_EDEFAULT);
+                return;
+            case EsbPackage.END_POINT_PROPERTY__SCOPE:
+                setScope(SCOPE_EDEFAULT);
+                return;
+            case EsbPackage.END_POINT_PROPERTY__VALUE_TYPE:
+                setValueType(VALUE_TYPE_EDEFAULT);
+                return;
+            case EsbPackage.END_POINT_PROPERTY__VALUE_EXPRESSION:
+                setValueExpression((NamespacedProperty)null);
+                return;
         }
         super.eUnset(featureID);
     }
@@ -420,22 +384,21 @@ public class EndPointPropertyImpl extends EObjectImpl implements EndPointPropert
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-        case EsbPackage.END_POINT_PROPERTY__NAME:
-            return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-        case EsbPackage.END_POINT_PROPERTY__VALUE:
-            return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
-        case EsbPackage.END_POINT_PROPERTY__SCOPE:
-            return scope != SCOPE_EDEFAULT;
-        case EsbPackage.END_POINT_PROPERTY__VALUE_TYPE:
-            return valueType != VALUE_TYPE_EDEFAULT;
-        case EsbPackage.END_POINT_PROPERTY__VALUE_EXPRESSION:
-            return valueExpression != null;
+            case EsbPackage.END_POINT_PROPERTY__NAME:
+                return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+            case EsbPackage.END_POINT_PROPERTY__VALUE:
+                return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
+            case EsbPackage.END_POINT_PROPERTY__SCOPE:
+                return scope != SCOPE_EDEFAULT;
+            case EsbPackage.END_POINT_PROPERTY__VALUE_TYPE:
+                return valueType != VALUE_TYPE_EDEFAULT;
+            case EsbPackage.END_POINT_PROPERTY__VALUE_EXPRESSION:
+                return valueExpression != null;
         }
         return super.eIsSet(featureID);
     }
@@ -443,13 +406,11 @@ public class EndPointPropertyImpl extends EObjectImpl implements EndPointPropert
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
-            return super.toString();
+        if (eIsProxy()) return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (name: ");

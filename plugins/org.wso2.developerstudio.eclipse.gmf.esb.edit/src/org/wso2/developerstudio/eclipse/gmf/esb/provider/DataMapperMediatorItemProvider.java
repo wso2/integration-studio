@@ -37,6 +37,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.impl.RegistryKeyPropertyImpl;
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class DataMapperMediatorItemProvider extends MediatorItemProvider {

@@ -17,41 +17,30 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getRuleSetURL <em>Rule Set URL</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getRuleSetSourceType <em>Rule Set Source
- * Type</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getRuleSetSourceCode <em>Rule Set Source
- * Code</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getRuleSetSourceKey <em>Rule Set Source
- * Key</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#isStatefulSession <em>Stateful Session</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getRuleSessionProperties <em>Rule Session
- * Properties</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getFactsConfiguration <em>Facts
- * Configuration</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getResultsConfiguration <em>Results
- * Configuration</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getChildMediatorsConfiguration <em>Child Mediators
- * Configuration</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getInputConnector <em>Input Connector</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getOutputConnector <em>Output Connector</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getChildMediatorsOutputConnector <em>Child Mediators
- * Output Connector</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getMediatorFlow <em>Mediator Flow</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getSourceValue <em>Source Value</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getSourceXpath <em>Source Xpath</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getTargetValue <em>Target Value</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getTargetResultXpath <em>Target Result
- * Xpath</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getTargetXpath <em>Target Xpath</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getTargetAction <em>Target Action</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getInputWrapperName <em>Input Wrapper
- * Name</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getInputNameSpace <em>Input Name Space</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getOutputWrapperName <em>Output Wrapper
- * Name</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getOutputNameSpace <em>Output Name Space</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getRuleSetType <em>Rule Set Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getRuleSetURL <em>Rule Set URL</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getRuleSetSourceType <em>Rule Set Source Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getRuleSetSourceCode <em>Rule Set Source Code</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getRuleSetSourceKey <em>Rule Set Source Key</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#isStatefulSession <em>Stateful Session</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getRuleSessionProperties <em>Rule Session Properties</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getFactsConfiguration <em>Facts Configuration</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getResultsConfiguration <em>Results Configuration</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getChildMediatorsConfiguration <em>Child Mediators Configuration</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getChildMediatorsOutputConnector <em>Child Mediators Output Connector</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getMediatorFlow <em>Mediator Flow</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getSourceValue <em>Source Value</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getSourceXpath <em>Source Xpath</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getTargetValue <em>Target Value</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getTargetResultXpath <em>Target Result Xpath</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getTargetXpath <em>Target Xpath</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getTargetAction <em>Target Action</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getInputWrapperName <em>Input Wrapper Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getInputNameSpace <em>Input Name Space</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getOutputWrapperName <em>Output Wrapper Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getOutputNameSpace <em>Output Name Space</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getRuleSetType <em>Rule Set Type</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getRuleMediator()
@@ -67,7 +56,6 @@ public interface RuleMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Rule Set URL</em>' attribute.
      * @see #setRuleSetURL(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getRuleMediator_RuleSetURL()
@@ -77,11 +65,9 @@ public interface RuleMediator extends Mediator {
     String getRuleSetURL();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getRuleSetURL <em>Rule Set
-     * URL</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getRuleSetURL <em>Rule Set URL</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Rule Set URL</em>' attribute.
      * @see #getRuleSetURL()
      * @generated
@@ -98,7 +84,6 @@ public interface RuleMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Rule Set Source Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.RuleSourceType
      * @see #setRuleSetSourceType(RuleSourceType)
@@ -109,11 +94,9 @@ public interface RuleMediator extends Mediator {
     RuleSourceType getRuleSetSourceType();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getRuleSetSourceType <em>Rule
-     * Set Source Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getRuleSetSourceType <em>Rule Set Source Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Rule Set Source Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.RuleSourceType
      * @see #getRuleSetSourceType()
@@ -130,21 +113,18 @@ public interface RuleMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Rule Set Source Code</em>' attribute.
      * @see #setRuleSetSourceCode(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getRuleMediator_RuleSetSourceCode()
-     * @model default="<code/>"
+     * @model default="&lt;code/&gt;"
      * @generated
      */
     String getRuleSetSourceCode();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getRuleSetSourceCode <em>Rule
-     * Set Source Code</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getRuleSetSourceCode <em>Rule Set Source Code</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Rule Set Source Code</em>' attribute.
      * @see #getRuleSetSourceCode()
      * @generated
@@ -159,7 +139,6 @@ public interface RuleMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Rule Set Source Key</em>' containment reference.
      * @see #setRuleSetSourceKey(RegistryKeyProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getRuleMediator_RuleSetSourceKey()
@@ -169,11 +148,9 @@ public interface RuleMediator extends Mediator {
     RegistryKeyProperty getRuleSetSourceKey();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getRuleSetSourceKey <em>Rule
-     * Set Source Key</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getRuleSetSourceKey <em>Rule Set Source Key</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Rule Set Source Key</em>' containment reference.
      * @see #getRuleSetSourceKey()
      * @generated
@@ -189,7 +166,6 @@ public interface RuleMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Stateful Session</em>' attribute.
      * @see #setStatefulSession(boolean)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getRuleMediator_StatefulSession()
@@ -199,11 +175,9 @@ public interface RuleMediator extends Mediator {
     boolean isStatefulSession();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#isStatefulSession
-     * <em>Stateful Session</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#isStatefulSession <em>Stateful Session</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Stateful Session</em>' attribute.
      * @see #isStatefulSession()
      * @generated
@@ -219,7 +193,6 @@ public interface RuleMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Rule Session Properties</em>' containment reference list.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getRuleMediator_RuleSessionProperties()
      * @model containment="true"
@@ -235,7 +208,6 @@ public interface RuleMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Facts Configuration</em>' containment reference.
      * @see #setFactsConfiguration(RuleFactsConfiguration)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getRuleMediator_FactsConfiguration()
@@ -245,11 +217,9 @@ public interface RuleMediator extends Mediator {
     RuleFactsConfiguration getFactsConfiguration();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getFactsConfiguration
-     * <em>Facts Configuration</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getFactsConfiguration <em>Facts Configuration</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Facts Configuration</em>' containment reference.
      * @see #getFactsConfiguration()
      * @generated
@@ -264,7 +234,6 @@ public interface RuleMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Results Configuration</em>' containment reference.
      * @see #setResultsConfiguration(RuleResultsConfiguration)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getRuleMediator_ResultsConfiguration()
@@ -274,11 +243,9 @@ public interface RuleMediator extends Mediator {
     RuleResultsConfiguration getResultsConfiguration();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getResultsConfiguration
-     * <em>Results Configuration</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getResultsConfiguration <em>Results Configuration</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Results Configuration</em>' containment reference.
      * @see #getResultsConfiguration()
      * @generated
@@ -293,7 +260,6 @@ public interface RuleMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Child Mediators Configuration</em>' containment reference.
      * @see #setChildMediatorsConfiguration(RuleChildMediatorsConfiguration)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getRuleMediator_ChildMediatorsConfiguration()
@@ -303,12 +269,9 @@ public interface RuleMediator extends Mediator {
     RuleChildMediatorsConfiguration getChildMediatorsConfiguration();
 
     /**
-     * Sets the value of the
-     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getChildMediatorsConfiguration <em>Child Mediators
-     * Configuration</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getChildMediatorsConfiguration <em>Child Mediators Configuration</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Child Mediators Configuration</em>' containment reference.
      * @see #getChildMediatorsConfiguration()
      * @generated
@@ -323,7 +286,6 @@ public interface RuleMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Input Connector</em>' containment reference.
      * @see #setInputConnector(RuleMediatorInputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getRuleMediator_InputConnector()
@@ -333,11 +295,9 @@ public interface RuleMediator extends Mediator {
     RuleMediatorInputConnector getInputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getInputConnector <em>Input
-     * Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getInputConnector <em>Input Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Input Connector</em>' containment reference.
      * @see #getInputConnector()
      * @generated
@@ -352,7 +312,6 @@ public interface RuleMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Output Connector</em>' containment reference.
      * @see #setOutputConnector(RuleMediatorOutputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getRuleMediator_OutputConnector()
@@ -362,11 +321,9 @@ public interface RuleMediator extends Mediator {
     RuleMediatorOutputConnector getOutputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getOutputConnector <em>Output
-     * Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getOutputConnector <em>Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Output Connector</em>' containment reference.
      * @see #getOutputConnector()
      * @generated
@@ -381,7 +338,6 @@ public interface RuleMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Child Mediators Output Connector</em>' containment reference.
      * @see #setChildMediatorsOutputConnector(RuleMediatorChildMediatorsOutputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getRuleMediator_ChildMediatorsOutputConnector()
@@ -391,12 +347,9 @@ public interface RuleMediator extends Mediator {
     RuleMediatorChildMediatorsOutputConnector getChildMediatorsOutputConnector();
 
     /**
-     * Sets the value of the
-     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getChildMediatorsOutputConnector <em>Child
-     * Mediators Output Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getChildMediatorsOutputConnector <em>Child Mediators Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Child Mediators Output Connector</em>' containment reference.
      * @see #getChildMediatorsOutputConnector()
      * @generated
@@ -411,7 +364,6 @@ public interface RuleMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Mediator Flow</em>' containment reference.
      * @see #setMediatorFlow(MediatorFlow)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getRuleMediator_MediatorFlow()
@@ -421,11 +373,9 @@ public interface RuleMediator extends Mediator {
     MediatorFlow getMediatorFlow();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getMediatorFlow <em>Mediator
-     * Flow</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getMediatorFlow <em>Mediator Flow</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Mediator Flow</em>' containment reference.
      * @see #getMediatorFlow()
      * @generated
@@ -440,7 +390,6 @@ public interface RuleMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Source Value</em>' attribute.
      * @see #setSourceValue(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getRuleMediator_SourceValue()
@@ -450,11 +399,9 @@ public interface RuleMediator extends Mediator {
     String getSourceValue();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getSourceValue <em>Source
-     * Value</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getSourceValue <em>Source Value</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Source Value</em>' attribute.
      * @see #getSourceValue()
      * @generated
@@ -469,7 +416,6 @@ public interface RuleMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Source Xpath</em>' containment reference.
      * @see #setSourceXpath(NamespacedProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getRuleMediator_SourceXpath()
@@ -479,11 +425,9 @@ public interface RuleMediator extends Mediator {
     NamespacedProperty getSourceXpath();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getSourceXpath <em>Source
-     * Xpath</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getSourceXpath <em>Source Xpath</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Source Xpath</em>' containment reference.
      * @see #getSourceXpath()
      * @generated
@@ -498,7 +442,6 @@ public interface RuleMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Target Value</em>' attribute.
      * @see #setTargetValue(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getRuleMediator_TargetValue()
@@ -508,11 +451,9 @@ public interface RuleMediator extends Mediator {
     String getTargetValue();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getTargetValue <em>Target
-     * Value</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getTargetValue <em>Target Value</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Target Value</em>' attribute.
      * @see #getTargetValue()
      * @generated
@@ -527,7 +468,6 @@ public interface RuleMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Target Result Xpath</em>' containment reference.
      * @see #setTargetResultXpath(NamespacedProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getRuleMediator_TargetResultXpath()
@@ -537,11 +477,9 @@ public interface RuleMediator extends Mediator {
     NamespacedProperty getTargetResultXpath();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getTargetResultXpath
-     * <em>Target Result Xpath</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getTargetResultXpath <em>Target Result Xpath</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Target Result Xpath</em>' containment reference.
      * @see #getTargetResultXpath()
      * @generated
@@ -556,7 +494,6 @@ public interface RuleMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Target Xpath</em>' containment reference.
      * @see #setTargetXpath(NamespacedProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getRuleMediator_TargetXpath()
@@ -566,11 +503,9 @@ public interface RuleMediator extends Mediator {
     NamespacedProperty getTargetXpath();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getTargetXpath <em>Target
-     * Xpath</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getTargetXpath <em>Target Xpath</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Target Xpath</em>' containment reference.
      * @see #getTargetXpath()
      * @generated
@@ -586,7 +521,6 @@ public interface RuleMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Target Action</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.RuleActions
      * @see #setTargetAction(RuleActions)
@@ -597,11 +531,9 @@ public interface RuleMediator extends Mediator {
     RuleActions getTargetAction();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getTargetAction <em>Target
-     * Action</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getTargetAction <em>Target Action</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Target Action</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.RuleActions
      * @see #getTargetAction()
@@ -617,7 +549,6 @@ public interface RuleMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Input Wrapper Name</em>' attribute.
      * @see #setInputWrapperName(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getRuleMediator_InputWrapperName()
@@ -627,11 +558,9 @@ public interface RuleMediator extends Mediator {
     String getInputWrapperName();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getInputWrapperName <em>Input
-     * Wrapper Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getInputWrapperName <em>Input Wrapper Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Input Wrapper Name</em>' attribute.
      * @see #getInputWrapperName()
      * @generated
@@ -646,7 +575,6 @@ public interface RuleMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Input Name Space</em>' attribute.
      * @see #setInputNameSpace(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getRuleMediator_InputNameSpace()
@@ -656,11 +584,9 @@ public interface RuleMediator extends Mediator {
     String getInputNameSpace();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getInputNameSpace <em>Input
-     * Name Space</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getInputNameSpace <em>Input Name Space</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Input Name Space</em>' attribute.
      * @see #getInputNameSpace()
      * @generated
@@ -675,7 +601,6 @@ public interface RuleMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Output Wrapper Name</em>' attribute.
      * @see #setOutputWrapperName(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getRuleMediator_OutputWrapperName()
@@ -685,11 +610,9 @@ public interface RuleMediator extends Mediator {
     String getOutputWrapperName();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getOutputWrapperName
-     * <em>Output Wrapper Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getOutputWrapperName <em>Output Wrapper Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Output Wrapper Name</em>' attribute.
      * @see #getOutputWrapperName()
      * @generated
@@ -704,7 +627,6 @@ public interface RuleMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Output Name Space</em>' attribute.
      * @see #setOutputNameSpace(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getRuleMediator_OutputNameSpace()
@@ -714,11 +636,9 @@ public interface RuleMediator extends Mediator {
     String getOutputNameSpace();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getOutputNameSpace <em>Output
-     * Name Space</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getOutputNameSpace <em>Output Name Space</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Output Name Space</em>' attribute.
      * @see #getOutputNameSpace()
      * @generated
@@ -734,7 +654,6 @@ public interface RuleMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Rule Set Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.RuleType
      * @see #setRuleSetType(RuleType)
@@ -745,11 +664,9 @@ public interface RuleMediator extends Mediator {
     RuleType getRuleSetType();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getRuleSetType <em>Rule Set
-     * Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator#getRuleSetType <em>Rule Set Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Rule Set Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.RuleType
      * @see #getRuleSetType()

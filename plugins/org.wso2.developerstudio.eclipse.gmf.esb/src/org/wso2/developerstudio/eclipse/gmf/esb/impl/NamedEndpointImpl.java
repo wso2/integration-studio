@@ -30,17 +30,12 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.NamedEndpointImpl#getInputConnector <em>Input
- * Connector</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.NamedEndpointImpl#getOutputConnector <em>Output
- * Connector</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.NamedEndpointImpl#getName <em>Name</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.NamedEndpointImpl#getReferringEndpointType <em>Referring
- * Endpoint Type</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.NamedEndpointImpl#getDynamicReferenceKey <em>Dynamic
- * Reference Key</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.NamedEndpointImpl#getStaticReferenceKey <em>Static Reference
- * Key</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.NamedEndpointImpl#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.NamedEndpointImpl#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.NamedEndpointImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.NamedEndpointImpl#getReferringEndpointType <em>Referring Endpoint Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.NamedEndpointImpl#getDynamicReferenceKey <em>Dynamic Reference Key</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.NamedEndpointImpl#getStaticReferenceKey <em>Static Reference Key</em>}</li>
  * </ul>
  *
  * @generated
@@ -50,7 +45,6 @@ public class NamedEndpointImpl extends AbstractEndPointImpl implements NamedEndp
      * The cached value of the '{@link #getInputConnector() <em>Input Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getInputConnector()
      * @generated
      * @ordered
@@ -61,7 +55,6 @@ public class NamedEndpointImpl extends AbstractEndPointImpl implements NamedEndp
      * The cached value of the '{@link #getOutputConnector() <em>Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getOutputConnector()
      * @generated
      * @ordered
@@ -72,7 +65,6 @@ public class NamedEndpointImpl extends AbstractEndPointImpl implements NamedEndp
      * The default value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getName()
      * @generated
      * @ordered
@@ -83,7 +75,6 @@ public class NamedEndpointImpl extends AbstractEndPointImpl implements NamedEndp
      * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getName()
      * @generated
      * @ordered
@@ -94,7 +85,6 @@ public class NamedEndpointImpl extends AbstractEndPointImpl implements NamedEndp
      * The default value of the '{@link #getReferringEndpointType() <em>Referring Endpoint Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getReferringEndpointType()
      * @generated
      * @ordered
@@ -105,7 +95,6 @@ public class NamedEndpointImpl extends AbstractEndPointImpl implements NamedEndp
      * The cached value of the '{@link #getReferringEndpointType() <em>Referring Endpoint Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getReferringEndpointType()
      * @generated
      * @ordered
@@ -116,7 +105,6 @@ public class NamedEndpointImpl extends AbstractEndPointImpl implements NamedEndp
      * The cached value of the '{@link #getDynamicReferenceKey() <em>Dynamic Reference Key</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getDynamicReferenceKey()
      * @generated
      * @ordered
@@ -127,7 +115,6 @@ public class NamedEndpointImpl extends AbstractEndPointImpl implements NamedEndp
      * The cached value of the '{@link #getStaticReferenceKey() <em>Static Reference Key</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getStaticReferenceKey()
      * @generated
      * @ordered
@@ -158,7 +145,6 @@ public class NamedEndpointImpl extends AbstractEndPointImpl implements NamedEndp
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -169,7 +155,6 @@ public class NamedEndpointImpl extends AbstractEndPointImpl implements NamedEndp
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public NamedEndpointInputConnector getInputConnector() {
@@ -179,7 +164,6 @@ public class NamedEndpointImpl extends AbstractEndPointImpl implements NamedEndp
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public NotificationChain basicSetInputConnector(NamedEndpointInputConnector newInputConnector,
@@ -187,12 +171,8 @@ public class NamedEndpointImpl extends AbstractEndPointImpl implements NamedEndp
         NamedEndpointInputConnector oldInputConnector = inputConnector;
         inputConnector = newInputConnector;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.NAMED_ENDPOINT__INPUT_CONNECTOR, oldInputConnector, newInputConnector);
-            if (msgs == null)
-                msgs = notification;
-            else
-                msgs.add(notification);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.NAMED_ENDPOINT__INPUT_CONNECTOR, oldInputConnector, newInputConnector);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
         }
         return msgs;
     }
@@ -200,30 +180,25 @@ public class NamedEndpointImpl extends AbstractEndPointImpl implements NamedEndp
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setInputConnector(NamedEndpointInputConnector newInputConnector) {
         if (newInputConnector != inputConnector) {
             NotificationChain msgs = null;
             if (inputConnector != null)
-                msgs = ((InternalEObject) inputConnector).eInverseRemove(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.NAMED_ENDPOINT__INPUT_CONNECTOR, null, msgs);
+                msgs = ((InternalEObject)inputConnector).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.NAMED_ENDPOINT__INPUT_CONNECTOR, null, msgs);
             if (newInputConnector != null)
-                msgs = ((InternalEObject) newInputConnector).eInverseAdd(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.NAMED_ENDPOINT__INPUT_CONNECTOR, null, msgs);
+                msgs = ((InternalEObject)newInputConnector).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.NAMED_ENDPOINT__INPUT_CONNECTOR, null, msgs);
             msgs = basicSetInputConnector(newInputConnector, msgs);
-            if (msgs != null)
-                msgs.dispatch();
-        } else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.NAMED_ENDPOINT__INPUT_CONNECTOR,
-                    newInputConnector, newInputConnector));
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.NAMED_ENDPOINT__INPUT_CONNECTOR, newInputConnector, newInputConnector));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public NamedEndpointOutputConnector getOutputConnector() {
@@ -233,7 +208,6 @@ public class NamedEndpointImpl extends AbstractEndPointImpl implements NamedEndp
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public NotificationChain basicSetOutputConnector(NamedEndpointOutputConnector newOutputConnector,
@@ -241,12 +215,8 @@ public class NamedEndpointImpl extends AbstractEndPointImpl implements NamedEndp
         NamedEndpointOutputConnector oldOutputConnector = outputConnector;
         outputConnector = newOutputConnector;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.NAMED_ENDPOINT__OUTPUT_CONNECTOR, oldOutputConnector, newOutputConnector);
-            if (msgs == null)
-                msgs = notification;
-            else
-                msgs.add(notification);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.NAMED_ENDPOINT__OUTPUT_CONNECTOR, oldOutputConnector, newOutputConnector);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
         }
         return msgs;
     }
@@ -254,30 +224,25 @@ public class NamedEndpointImpl extends AbstractEndPointImpl implements NamedEndp
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setOutputConnector(NamedEndpointOutputConnector newOutputConnector) {
         if (newOutputConnector != outputConnector) {
             NotificationChain msgs = null;
             if (outputConnector != null)
-                msgs = ((InternalEObject) outputConnector).eInverseRemove(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.NAMED_ENDPOINT__OUTPUT_CONNECTOR, null, msgs);
+                msgs = ((InternalEObject)outputConnector).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.NAMED_ENDPOINT__OUTPUT_CONNECTOR, null, msgs);
             if (newOutputConnector != null)
-                msgs = ((InternalEObject) newOutputConnector).eInverseAdd(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.NAMED_ENDPOINT__OUTPUT_CONNECTOR, null, msgs);
+                msgs = ((InternalEObject)newOutputConnector).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.NAMED_ENDPOINT__OUTPUT_CONNECTOR, null, msgs);
             msgs = basicSetOutputConnector(newOutputConnector, msgs);
-            if (msgs != null)
-                msgs.dispatch();
-        } else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.NAMED_ENDPOINT__OUTPUT_CONNECTOR,
-                    newOutputConnector, newOutputConnector));
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.NAMED_ENDPOINT__OUTPUT_CONNECTOR, newOutputConnector, newOutputConnector));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getName() {
@@ -287,7 +252,6 @@ public class NamedEndpointImpl extends AbstractEndPointImpl implements NamedEndp
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setName(String newName) {
@@ -300,7 +264,6 @@ public class NamedEndpointImpl extends AbstractEndPointImpl implements NamedEndp
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public KeyType getReferringEndpointType() {
@@ -310,22 +273,18 @@ public class NamedEndpointImpl extends AbstractEndPointImpl implements NamedEndp
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setReferringEndpointType(KeyType newReferringEndpointType) {
         KeyType oldReferringEndpointType = referringEndpointType;
-        referringEndpointType = newReferringEndpointType == null ? REFERRING_ENDPOINT_TYPE_EDEFAULT
-                : newReferringEndpointType;
+        referringEndpointType = newReferringEndpointType == null ? REFERRING_ENDPOINT_TYPE_EDEFAULT : newReferringEndpointType;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.NAMED_ENDPOINT__REFERRING_ENDPOINT_TYPE,
-                    oldReferringEndpointType, referringEndpointType));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.NAMED_ENDPOINT__REFERRING_ENDPOINT_TYPE, oldReferringEndpointType, referringEndpointType));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public NamespacedProperty getDynamicReferenceKey() {
@@ -335,7 +294,6 @@ public class NamedEndpointImpl extends AbstractEndPointImpl implements NamedEndp
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public NotificationChain basicSetDynamicReferenceKey(NamespacedProperty newDynamicReferenceKey,
@@ -343,12 +301,8 @@ public class NamedEndpointImpl extends AbstractEndPointImpl implements NamedEndp
         NamespacedProperty oldDynamicReferenceKey = dynamicReferenceKey;
         dynamicReferenceKey = newDynamicReferenceKey;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.NAMED_ENDPOINT__DYNAMIC_REFERENCE_KEY, oldDynamicReferenceKey, newDynamicReferenceKey);
-            if (msgs == null)
-                msgs = notification;
-            else
-                msgs.add(notification);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.NAMED_ENDPOINT__DYNAMIC_REFERENCE_KEY, oldDynamicReferenceKey, newDynamicReferenceKey);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
         }
         return msgs;
     }
@@ -356,30 +310,25 @@ public class NamedEndpointImpl extends AbstractEndPointImpl implements NamedEndp
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setDynamicReferenceKey(NamespacedProperty newDynamicReferenceKey) {
         if (newDynamicReferenceKey != dynamicReferenceKey) {
             NotificationChain msgs = null;
             if (dynamicReferenceKey != null)
-                msgs = ((InternalEObject) dynamicReferenceKey).eInverseRemove(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.NAMED_ENDPOINT__DYNAMIC_REFERENCE_KEY, null, msgs);
+                msgs = ((InternalEObject)dynamicReferenceKey).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.NAMED_ENDPOINT__DYNAMIC_REFERENCE_KEY, null, msgs);
             if (newDynamicReferenceKey != null)
-                msgs = ((InternalEObject) newDynamicReferenceKey).eInverseAdd(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.NAMED_ENDPOINT__DYNAMIC_REFERENCE_KEY, null, msgs);
+                msgs = ((InternalEObject)newDynamicReferenceKey).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.NAMED_ENDPOINT__DYNAMIC_REFERENCE_KEY, null, msgs);
             msgs = basicSetDynamicReferenceKey(newDynamicReferenceKey, msgs);
-            if (msgs != null)
-                msgs.dispatch();
-        } else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.NAMED_ENDPOINT__DYNAMIC_REFERENCE_KEY,
-                    newDynamicReferenceKey, newDynamicReferenceKey));
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.NAMED_ENDPOINT__DYNAMIC_REFERENCE_KEY, newDynamicReferenceKey, newDynamicReferenceKey));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public RegistryKeyProperty getStaticReferenceKey() {
@@ -389,7 +338,6 @@ public class NamedEndpointImpl extends AbstractEndPointImpl implements NamedEndp
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public NotificationChain basicSetStaticReferenceKey(RegistryKeyProperty newStaticReferenceKey,
@@ -397,12 +345,8 @@ public class NamedEndpointImpl extends AbstractEndPointImpl implements NamedEndp
         RegistryKeyProperty oldStaticReferenceKey = staticReferenceKey;
         staticReferenceKey = newStaticReferenceKey;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.NAMED_ENDPOINT__STATIC_REFERENCE_KEY, oldStaticReferenceKey, newStaticReferenceKey);
-            if (msgs == null)
-                msgs = notification;
-            else
-                msgs.add(notification);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.NAMED_ENDPOINT__STATIC_REFERENCE_KEY, oldStaticReferenceKey, newStaticReferenceKey);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
         }
         return msgs;
     }
@@ -410,43 +354,38 @@ public class NamedEndpointImpl extends AbstractEndPointImpl implements NamedEndp
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setStaticReferenceKey(RegistryKeyProperty newStaticReferenceKey) {
         if (newStaticReferenceKey != staticReferenceKey) {
             NotificationChain msgs = null;
             if (staticReferenceKey != null)
-                msgs = ((InternalEObject) staticReferenceKey).eInverseRemove(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.NAMED_ENDPOINT__STATIC_REFERENCE_KEY, null, msgs);
+                msgs = ((InternalEObject)staticReferenceKey).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.NAMED_ENDPOINT__STATIC_REFERENCE_KEY, null, msgs);
             if (newStaticReferenceKey != null)
-                msgs = ((InternalEObject) newStaticReferenceKey).eInverseAdd(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.NAMED_ENDPOINT__STATIC_REFERENCE_KEY, null, msgs);
+                msgs = ((InternalEObject)newStaticReferenceKey).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.NAMED_ENDPOINT__STATIC_REFERENCE_KEY, null, msgs);
             msgs = basicSetStaticReferenceKey(newStaticReferenceKey, msgs);
-            if (msgs != null)
-                msgs.dispatch();
-        } else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.NAMED_ENDPOINT__STATIC_REFERENCE_KEY,
-                    newStaticReferenceKey, newStaticReferenceKey));
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.NAMED_ENDPOINT__STATIC_REFERENCE_KEY, newStaticReferenceKey, newStaticReferenceKey));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
-        case EsbPackage.NAMED_ENDPOINT__INPUT_CONNECTOR:
-            return basicSetInputConnector(null, msgs);
-        case EsbPackage.NAMED_ENDPOINT__OUTPUT_CONNECTOR:
-            return basicSetOutputConnector(null, msgs);
-        case EsbPackage.NAMED_ENDPOINT__DYNAMIC_REFERENCE_KEY:
-            return basicSetDynamicReferenceKey(null, msgs);
-        case EsbPackage.NAMED_ENDPOINT__STATIC_REFERENCE_KEY:
-            return basicSetStaticReferenceKey(null, msgs);
+            case EsbPackage.NAMED_ENDPOINT__INPUT_CONNECTOR:
+                return basicSetInputConnector(null, msgs);
+            case EsbPackage.NAMED_ENDPOINT__OUTPUT_CONNECTOR:
+                return basicSetOutputConnector(null, msgs);
+            case EsbPackage.NAMED_ENDPOINT__DYNAMIC_REFERENCE_KEY:
+                return basicSetDynamicReferenceKey(null, msgs);
+            case EsbPackage.NAMED_ENDPOINT__STATIC_REFERENCE_KEY:
+                return basicSetStaticReferenceKey(null, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -454,24 +393,23 @@ public class NamedEndpointImpl extends AbstractEndPointImpl implements NamedEndp
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-        case EsbPackage.NAMED_ENDPOINT__INPUT_CONNECTOR:
-            return getInputConnector();
-        case EsbPackage.NAMED_ENDPOINT__OUTPUT_CONNECTOR:
-            return getOutputConnector();
-        case EsbPackage.NAMED_ENDPOINT__NAME:
-            return getName();
-        case EsbPackage.NAMED_ENDPOINT__REFERRING_ENDPOINT_TYPE:
-            return getReferringEndpointType();
-        case EsbPackage.NAMED_ENDPOINT__DYNAMIC_REFERENCE_KEY:
-            return getDynamicReferenceKey();
-        case EsbPackage.NAMED_ENDPOINT__STATIC_REFERENCE_KEY:
-            return getStaticReferenceKey();
+            case EsbPackage.NAMED_ENDPOINT__INPUT_CONNECTOR:
+                return getInputConnector();
+            case EsbPackage.NAMED_ENDPOINT__OUTPUT_CONNECTOR:
+                return getOutputConnector();
+            case EsbPackage.NAMED_ENDPOINT__NAME:
+                return getName();
+            case EsbPackage.NAMED_ENDPOINT__REFERRING_ENDPOINT_TYPE:
+                return getReferringEndpointType();
+            case EsbPackage.NAMED_ENDPOINT__DYNAMIC_REFERENCE_KEY:
+                return getDynamicReferenceKey();
+            case EsbPackage.NAMED_ENDPOINT__STATIC_REFERENCE_KEY:
+                return getStaticReferenceKey();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -479,30 +417,29 @@ public class NamedEndpointImpl extends AbstractEndPointImpl implements NamedEndp
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-        case EsbPackage.NAMED_ENDPOINT__INPUT_CONNECTOR:
-            setInputConnector((NamedEndpointInputConnector) newValue);
-            return;
-        case EsbPackage.NAMED_ENDPOINT__OUTPUT_CONNECTOR:
-            setOutputConnector((NamedEndpointOutputConnector) newValue);
-            return;
-        case EsbPackage.NAMED_ENDPOINT__NAME:
-            setName((String) newValue);
-            return;
-        case EsbPackage.NAMED_ENDPOINT__REFERRING_ENDPOINT_TYPE:
-            setReferringEndpointType((KeyType) newValue);
-            return;
-        case EsbPackage.NAMED_ENDPOINT__DYNAMIC_REFERENCE_KEY:
-            setDynamicReferenceKey((NamespacedProperty) newValue);
-            return;
-        case EsbPackage.NAMED_ENDPOINT__STATIC_REFERENCE_KEY:
-            setStaticReferenceKey((RegistryKeyProperty) newValue);
-            return;
+            case EsbPackage.NAMED_ENDPOINT__INPUT_CONNECTOR:
+                setInputConnector((NamedEndpointInputConnector)newValue);
+                return;
+            case EsbPackage.NAMED_ENDPOINT__OUTPUT_CONNECTOR:
+                setOutputConnector((NamedEndpointOutputConnector)newValue);
+                return;
+            case EsbPackage.NAMED_ENDPOINT__NAME:
+                setName((String)newValue);
+                return;
+            case EsbPackage.NAMED_ENDPOINT__REFERRING_ENDPOINT_TYPE:
+                setReferringEndpointType((KeyType)newValue);
+                return;
+            case EsbPackage.NAMED_ENDPOINT__DYNAMIC_REFERENCE_KEY:
+                setDynamicReferenceKey((NamespacedProperty)newValue);
+                return;
+            case EsbPackage.NAMED_ENDPOINT__STATIC_REFERENCE_KEY:
+                setStaticReferenceKey((RegistryKeyProperty)newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
@@ -510,30 +447,29 @@ public class NamedEndpointImpl extends AbstractEndPointImpl implements NamedEndp
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-        case EsbPackage.NAMED_ENDPOINT__INPUT_CONNECTOR:
-            setInputConnector((NamedEndpointInputConnector) null);
-            return;
-        case EsbPackage.NAMED_ENDPOINT__OUTPUT_CONNECTOR:
-            setOutputConnector((NamedEndpointOutputConnector) null);
-            return;
-        case EsbPackage.NAMED_ENDPOINT__NAME:
-            setName(NAME_EDEFAULT);
-            return;
-        case EsbPackage.NAMED_ENDPOINT__REFERRING_ENDPOINT_TYPE:
-            setReferringEndpointType(REFERRING_ENDPOINT_TYPE_EDEFAULT);
-            return;
-        case EsbPackage.NAMED_ENDPOINT__DYNAMIC_REFERENCE_KEY:
-            setDynamicReferenceKey((NamespacedProperty) null);
-            return;
-        case EsbPackage.NAMED_ENDPOINT__STATIC_REFERENCE_KEY:
-            setStaticReferenceKey((RegistryKeyProperty) null);
-            return;
+            case EsbPackage.NAMED_ENDPOINT__INPUT_CONNECTOR:
+                setInputConnector((NamedEndpointInputConnector)null);
+                return;
+            case EsbPackage.NAMED_ENDPOINT__OUTPUT_CONNECTOR:
+                setOutputConnector((NamedEndpointOutputConnector)null);
+                return;
+            case EsbPackage.NAMED_ENDPOINT__NAME:
+                setName(NAME_EDEFAULT);
+                return;
+            case EsbPackage.NAMED_ENDPOINT__REFERRING_ENDPOINT_TYPE:
+                setReferringEndpointType(REFERRING_ENDPOINT_TYPE_EDEFAULT);
+                return;
+            case EsbPackage.NAMED_ENDPOINT__DYNAMIC_REFERENCE_KEY:
+                setDynamicReferenceKey((NamespacedProperty)null);
+                return;
+            case EsbPackage.NAMED_ENDPOINT__STATIC_REFERENCE_KEY:
+                setStaticReferenceKey((RegistryKeyProperty)null);
+                return;
         }
         super.eUnset(featureID);
     }
@@ -541,24 +477,23 @@ public class NamedEndpointImpl extends AbstractEndPointImpl implements NamedEndp
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-        case EsbPackage.NAMED_ENDPOINT__INPUT_CONNECTOR:
-            return inputConnector != null;
-        case EsbPackage.NAMED_ENDPOINT__OUTPUT_CONNECTOR:
-            return outputConnector != null;
-        case EsbPackage.NAMED_ENDPOINT__NAME:
-            return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-        case EsbPackage.NAMED_ENDPOINT__REFERRING_ENDPOINT_TYPE:
-            return referringEndpointType != REFERRING_ENDPOINT_TYPE_EDEFAULT;
-        case EsbPackage.NAMED_ENDPOINT__DYNAMIC_REFERENCE_KEY:
-            return dynamicReferenceKey != null;
-        case EsbPackage.NAMED_ENDPOINT__STATIC_REFERENCE_KEY:
-            return staticReferenceKey != null;
+            case EsbPackage.NAMED_ENDPOINT__INPUT_CONNECTOR:
+                return inputConnector != null;
+            case EsbPackage.NAMED_ENDPOINT__OUTPUT_CONNECTOR:
+                return outputConnector != null;
+            case EsbPackage.NAMED_ENDPOINT__NAME:
+                return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+            case EsbPackage.NAMED_ENDPOINT__REFERRING_ENDPOINT_TYPE:
+                return referringEndpointType != REFERRING_ENDPOINT_TYPE_EDEFAULT;
+            case EsbPackage.NAMED_ENDPOINT__DYNAMIC_REFERENCE_KEY:
+                return dynamicReferenceKey != null;
+            case EsbPackage.NAMED_ENDPOINT__STATIC_REFERENCE_KEY:
+                return staticReferenceKey != null;
         }
         return super.eIsSet(featureID);
     }
@@ -566,13 +501,11 @@ public class NamedEndpointImpl extends AbstractEndPointImpl implements NamedEndp
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
-            return super.toString();
+        if (eIsProxy()) return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (name: ");

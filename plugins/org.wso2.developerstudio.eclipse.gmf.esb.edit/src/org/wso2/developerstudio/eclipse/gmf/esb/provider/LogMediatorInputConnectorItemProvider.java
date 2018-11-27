@@ -19,11 +19,9 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
 /**
- * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.LogMediatorInputConnector}
- * object.
+ * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.LogMediatorInputConnector} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class LogMediatorInputConnectorItemProvider extends InputConnectorItemProvider {
@@ -31,7 +29,6 @@ public class LogMediatorInputConnectorItemProvider extends InputConnectorItemPro
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public LogMediatorInputConnectorItemProvider(AdapterFactory adapterFactory) {
@@ -42,7 +39,6 @@ public class LogMediatorInputConnectorItemProvider extends InputConnectorItemPro
      * This returns the property descriptors for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -59,7 +55,6 @@ public class LogMediatorInputConnectorItemProvider extends InputConnectorItemPro
      * This returns LogMediatorInputConnector.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -72,7 +67,6 @@ public class LogMediatorInputConnectorItemProvider extends InputConnectorItemPro
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -86,7 +80,6 @@ public class LogMediatorInputConnectorItemProvider extends InputConnectorItemPro
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -101,7 +94,6 @@ public class LogMediatorInputConnectorItemProvider extends InputConnectorItemPro
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 

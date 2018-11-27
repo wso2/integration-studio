@@ -22,7 +22,6 @@ public class FilterMediatorInputConnectorImpl extends InputConnectorImpl impleme
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected FilterMediatorInputConnectorImpl() {
@@ -32,7 +31,6 @@ public class FilterMediatorInputConnectorImpl extends InputConnectorImpl impleme
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 

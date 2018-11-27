@@ -31,7 +31,6 @@ public class BAMMediatorOutputConnectorImpl extends OutputConnectorImpl implemen
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected BAMMediatorOutputConnectorImpl() {
@@ -41,7 +40,6 @@ public class BAMMediatorOutputConnectorImpl extends OutputConnectorImpl implemen
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

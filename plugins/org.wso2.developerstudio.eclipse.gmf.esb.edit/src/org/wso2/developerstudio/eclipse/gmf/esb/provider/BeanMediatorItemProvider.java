@@ -40,7 +40,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType;
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.BeanMediator} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class BeanMediatorItemProvider extends MediatorItemProvider {
@@ -48,7 +47,6 @@ public class BeanMediatorItemProvider extends MediatorItemProvider {
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public BeanMediatorItemProvider(AdapterFactory adapterFactory) {
@@ -119,168 +117,220 @@ public class BeanMediatorItemProvider extends MediatorItemProvider {
      * This adds a property descriptor for the Class feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addClassPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_BeanMediator_class_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_BeanMediator_class_feature",
-                                "_UI_BeanMediator_type"),
-                        EsbPackage.Literals.BEAN_MEDIATOR__CLASS, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_BeanMediator_class_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_BeanMediator_class_feature", "_UI_BeanMediator_type"),
+                 EsbPackage.Literals.BEAN_MEDIATOR__CLASS,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Action feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addActionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_BeanMediator_action_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_BeanMediator_action_feature",
-                                "_UI_BeanMediator_type"),
-                        EsbPackage.Literals.BEAN_MEDIATOR__ACTION, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_BeanMediator_action_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_BeanMediator_action_feature", "_UI_BeanMediator_type"),
+                 EsbPackage.Literals.BEAN_MEDIATOR__ACTION,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Var feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addVarPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_BeanMediator_var_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_BeanMediator_var_feature",
-                                "_UI_BeanMediator_type"),
-                        EsbPackage.Literals.BEAN_MEDIATOR__VAR, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_BeanMediator_var_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_BeanMediator_var_feature", "_UI_BeanMediator_type"),
+                 EsbPackage.Literals.BEAN_MEDIATOR__VAR,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Property feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addPropertyPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_BeanMediator_property_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_BeanMediator_property_feature",
-                                "_UI_BeanMediator_type"),
-                        EsbPackage.Literals.BEAN_MEDIATOR__PROPERTY, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_BeanMediator_property_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_BeanMediator_property_feature", "_UI_BeanMediator_type"),
+                 EsbPackage.Literals.BEAN_MEDIATOR__PROPERTY,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Value Type feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addValueTypePropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_BeanMediator_valueType_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_BeanMediator_valueType_feature",
-                                "_UI_BeanMediator_type"),
-                        EsbPackage.Literals.BEAN_MEDIATOR__VALUE_TYPE, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_BeanMediator_valueType_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_BeanMediator_valueType_feature", "_UI_BeanMediator_type"),
+                 EsbPackage.Literals.BEAN_MEDIATOR__VALUE_TYPE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Value Literal feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addValueLiteralPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_BeanMediator_valueLiteral_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_BeanMediator_valueLiteral_feature",
-                                "_UI_BeanMediator_type"),
-                        EsbPackage.Literals.BEAN_MEDIATOR__VALUE_LITERAL, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_BeanMediator_valueLiteral_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_BeanMediator_valueLiteral_feature", "_UI_BeanMediator_type"),
+                 EsbPackage.Literals.BEAN_MEDIATOR__VALUE_LITERAL,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Value Expression feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addValueExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_BeanMediator_valueExpression_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_BeanMediator_valueExpression_feature",
-                                "_UI_BeanMediator_type"),
-                        EsbPackage.Literals.BEAN_MEDIATOR__VALUE_EXPRESSION, true, false, false, null, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_BeanMediator_valueExpression_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_BeanMediator_valueExpression_feature", "_UI_BeanMediator_type"),
+                 EsbPackage.Literals.BEAN_MEDIATOR__VALUE_EXPRESSION,
+                 true,
+                 false,
+                 false,
+                 null,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Target Type feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addTargetTypePropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_BeanMediator_targetType_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_BeanMediator_targetType_feature",
-                                "_UI_BeanMediator_type"),
-                        EsbPackage.Literals.BEAN_MEDIATOR__TARGET_TYPE, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_BeanMediator_targetType_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_BeanMediator_targetType_feature", "_UI_BeanMediator_type"),
+                 EsbPackage.Literals.BEAN_MEDIATOR__TARGET_TYPE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Target Literal feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addTargetLiteralPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_BeanMediator_targetLiteral_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_BeanMediator_targetLiteral_feature",
-                                "_UI_BeanMediator_type"),
-                        EsbPackage.Literals.BEAN_MEDIATOR__TARGET_LITERAL, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_BeanMediator_targetLiteral_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_BeanMediator_targetLiteral_feature", "_UI_BeanMediator_type"),
+                 EsbPackage.Literals.BEAN_MEDIATOR__TARGET_LITERAL,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Target Expression feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addTargetExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_BeanMediator_targetExpression_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_BeanMediator_targetExpression_feature",
-                                "_UI_BeanMediator_type"),
-                        EsbPackage.Literals.BEAN_MEDIATOR__TARGET_EXPRESSION, true, false, false, null, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_BeanMediator_targetExpression_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_BeanMediator_targetExpression_feature", "_UI_BeanMediator_type"),
+                 EsbPackage.Literals.BEAN_MEDIATOR__TARGET_EXPRESSION,
+                 true,
+                 false,
+                 false,
+                 null,
+                 null,
+                 null));
     }
 
     /**
@@ -289,7 +339,6 @@ public class BeanMediatorItemProvider extends MediatorItemProvider {
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -307,7 +356,6 @@ public class BeanMediatorItemProvider extends MediatorItemProvider {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -322,7 +370,6 @@ public class BeanMediatorItemProvider extends MediatorItemProvider {
      * This returns BeanMediator.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -334,14 +381,14 @@ public class BeanMediatorItemProvider extends MediatorItemProvider {
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public String getText(Object object) {
-        String label = ((BeanMediator) object).getDescription();
-        return label == null || label.length() == 0 ? getString("_UI_BeanMediator_type")
-                : getString("_UI_BeanMediator_type") + " " + label;
+        String label = ((BeanMediator)object).getDescription();
+        return label == null || label.length() == 0 ?
+            getString("_UI_BeanMediator_type") :
+            getString("_UI_BeanMediator_type") + " " + label;
     }
 
     /**
@@ -349,7 +396,6 @@ public class BeanMediatorItemProvider extends MediatorItemProvider {
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -357,22 +403,22 @@ public class BeanMediatorItemProvider extends MediatorItemProvider {
         updateChildren(notification);
 
         switch (notification.getFeatureID(BeanMediator.class)) {
-        case EsbPackage.BEAN_MEDIATOR__CLASS:
-        case EsbPackage.BEAN_MEDIATOR__ACTION:
-        case EsbPackage.BEAN_MEDIATOR__VAR:
-        case EsbPackage.BEAN_MEDIATOR__PROPERTY:
-        case EsbPackage.BEAN_MEDIATOR__VALUE_TYPE:
-        case EsbPackage.BEAN_MEDIATOR__VALUE_LITERAL:
-        case EsbPackage.BEAN_MEDIATOR__TARGET_TYPE:
-        case EsbPackage.BEAN_MEDIATOR__TARGET_LITERAL:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-            return;
-        case EsbPackage.BEAN_MEDIATOR__INPUT_CONNECTOR:
-        case EsbPackage.BEAN_MEDIATOR__OUTPUT_CONNECTOR:
-        case EsbPackage.BEAN_MEDIATOR__VALUE_EXPRESSION:
-        case EsbPackage.BEAN_MEDIATOR__TARGET_EXPRESSION:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-            return;
+            case EsbPackage.BEAN_MEDIATOR__CLASS:
+            case EsbPackage.BEAN_MEDIATOR__ACTION:
+            case EsbPackage.BEAN_MEDIATOR__VAR:
+            case EsbPackage.BEAN_MEDIATOR__PROPERTY:
+            case EsbPackage.BEAN_MEDIATOR__VALUE_TYPE:
+            case EsbPackage.BEAN_MEDIATOR__VALUE_LITERAL:
+            case EsbPackage.BEAN_MEDIATOR__TARGET_TYPE:
+            case EsbPackage.BEAN_MEDIATOR__TARGET_LITERAL:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+                return;
+            case EsbPackage.BEAN_MEDIATOR__INPUT_CONNECTOR:
+            case EsbPackage.BEAN_MEDIATOR__OUTPUT_CONNECTOR:
+            case EsbPackage.BEAN_MEDIATOR__VALUE_EXPRESSION:
+            case EsbPackage.BEAN_MEDIATOR__TARGET_EXPRESSION:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+                return;
         }
         super.notifyChanged(notification);
     }
@@ -382,31 +428,37 @@ public class BeanMediatorItemProvider extends MediatorItemProvider {
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.BEAN_MEDIATOR__INPUT_CONNECTOR,
-                EsbFactory.eINSTANCE.createBeanMediatorInputConnector()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.BEAN_MEDIATOR__INPUT_CONNECTOR,
+                 EsbFactory.eINSTANCE.createBeanMediatorInputConnector()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.BEAN_MEDIATOR__OUTPUT_CONNECTOR,
-                EsbFactory.eINSTANCE.createBeanMediatorOutputConnector()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.BEAN_MEDIATOR__OUTPUT_CONNECTOR,
+                 EsbFactory.eINSTANCE.createBeanMediatorOutputConnector()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.BEAN_MEDIATOR__VALUE_EXPRESSION,
-                EsbFactory.eINSTANCE.createNamespacedProperty()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.BEAN_MEDIATOR__VALUE_EXPRESSION,
+                 EsbFactory.eINSTANCE.createNamespacedProperty()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.BEAN_MEDIATOR__TARGET_EXPRESSION,
-                EsbFactory.eINSTANCE.createNamespacedProperty()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.BEAN_MEDIATOR__TARGET_EXPRESSION,
+                 EsbFactory.eINSTANCE.createNamespacedProperty()));
     }
 
     /**
      * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -414,12 +466,14 @@ public class BeanMediatorItemProvider extends MediatorItemProvider {
         Object childFeature = feature;
         Object childObject = child;
 
-        boolean qualify = childFeature == EsbPackage.Literals.BEAN_MEDIATOR__VALUE_EXPRESSION
-                || childFeature == EsbPackage.Literals.BEAN_MEDIATOR__TARGET_EXPRESSION;
+        boolean qualify =
+            childFeature == EsbPackage.Literals.BEAN_MEDIATOR__VALUE_EXPRESSION ||
+            childFeature == EsbPackage.Literals.BEAN_MEDIATOR__TARGET_EXPRESSION;
 
         if (qualify) {
-            return getString("_UI_CreateChild_text2",
-                    new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+            return getString
+                ("_UI_CreateChild_text2",
+                 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
         }
         return super.getCreateChildText(owner, feature, child, selection);
     }

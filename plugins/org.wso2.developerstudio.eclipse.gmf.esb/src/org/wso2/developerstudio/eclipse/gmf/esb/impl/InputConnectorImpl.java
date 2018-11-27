@@ -42,8 +42,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.SendMediatorOutputConnector;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InputConnectorImpl#getIncomingLinks <em>Incoming
- * Links</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InputConnectorImpl#getIncomingLinks <em>Incoming Links</em>}</li>
  * </ul>
  *
  * @generated
@@ -53,7 +52,6 @@ public abstract class InputConnectorImpl extends EsbConnectorImpl implements Inp
      * The cached value of the '{@link #getIncomingLinks() <em>Incoming Links</em>}' reference list.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getIncomingLinks()
      * @generated
      * @ordered
@@ -63,7 +61,6 @@ public abstract class InputConnectorImpl extends EsbConnectorImpl implements Inp
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected InputConnectorImpl() {
@@ -73,7 +70,6 @@ public abstract class InputConnectorImpl extends EsbConnectorImpl implements Inp
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -85,13 +81,11 @@ public abstract class InputConnectorImpl extends EsbConnectorImpl implements Inp
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public EList<EsbLink> getIncomingLinks() {
         if (incomingLinks == null) {
-            incomingLinks = new EObjectWithInverseResolvingEList<EsbLink>(EsbLink.class, this,
-                    EsbPackage.INPUT_CONNECTOR__INCOMING_LINKS, EsbPackage.ESB_LINK__TARGET);
+            incomingLinks = new EObjectWithInverseResolvingEList<EsbLink>(EsbLink.class, this, EsbPackage.INPUT_CONNECTOR__INCOMING_LINKS, EsbPackage.ESB_LINK__TARGET);
         }
         return incomingLinks;
     }
@@ -168,7 +162,6 @@ public abstract class InputConnectorImpl extends EsbConnectorImpl implements Inp
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -176,8 +169,8 @@ public abstract class InputConnectorImpl extends EsbConnectorImpl implements Inp
 
     public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
-        case EsbPackage.INPUT_CONNECTOR__INCOMING_LINKS:
-            return ((InternalEList<InternalEObject>) (InternalEList<?>) getIncomingLinks()).basicAdd(otherEnd, msgs);
+            case EsbPackage.INPUT_CONNECTOR__INCOMING_LINKS:
+                return ((InternalEList<InternalEObject>)(InternalEList<?>)getIncomingLinks()).basicAdd(otherEnd, msgs);
         }
         return super.eInverseAdd(otherEnd, featureID, msgs);
     }
@@ -185,15 +178,14 @@ public abstract class InputConnectorImpl extends EsbConnectorImpl implements Inp
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
-        case EsbPackage.INPUT_CONNECTOR__INCOMING_LINKS:
-            return ((InternalEList<?>) getIncomingLinks()).basicRemove(otherEnd, msgs);
+            case EsbPackage.INPUT_CONNECTOR__INCOMING_LINKS:
+                return ((InternalEList<?>)getIncomingLinks()).basicRemove(otherEnd, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -201,15 +193,14 @@ public abstract class InputConnectorImpl extends EsbConnectorImpl implements Inp
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-        case EsbPackage.INPUT_CONNECTOR__INCOMING_LINKS:
-            return getIncomingLinks();
+            case EsbPackage.INPUT_CONNECTOR__INCOMING_LINKS:
+                return getIncomingLinks();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -217,7 +208,6 @@ public abstract class InputConnectorImpl extends EsbConnectorImpl implements Inp
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -225,10 +215,10 @@ public abstract class InputConnectorImpl extends EsbConnectorImpl implements Inp
 
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-        case EsbPackage.INPUT_CONNECTOR__INCOMING_LINKS:
-            getIncomingLinks().clear();
-            getIncomingLinks().addAll((Collection<? extends EsbLink>) newValue);
-            return;
+            case EsbPackage.INPUT_CONNECTOR__INCOMING_LINKS:
+                getIncomingLinks().clear();
+                getIncomingLinks().addAll((Collection<? extends EsbLink>)newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
@@ -236,16 +226,15 @@ public abstract class InputConnectorImpl extends EsbConnectorImpl implements Inp
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-        case EsbPackage.INPUT_CONNECTOR__INCOMING_LINKS:
-            getIncomingLinks().clear();
-            return;
+            case EsbPackage.INPUT_CONNECTOR__INCOMING_LINKS:
+                getIncomingLinks().clear();
+                return;
         }
         super.eUnset(featureID);
     }
@@ -253,15 +242,14 @@ public abstract class InputConnectorImpl extends EsbConnectorImpl implements Inp
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-        case EsbPackage.INPUT_CONNECTOR__INCOMING_LINKS:
-            return incomingLinks != null && !incomingLinks.isEmpty();
+            case EsbPackage.INPUT_CONNECTOR__INCOMING_LINKS:
+                return incomingLinks != null && !incomingLinks.isEmpty();
         }
         return super.eIsSet(featureID);
     }

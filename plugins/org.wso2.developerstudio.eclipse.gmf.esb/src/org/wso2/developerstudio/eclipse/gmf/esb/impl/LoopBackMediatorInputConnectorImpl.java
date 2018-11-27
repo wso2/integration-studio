@@ -31,7 +31,6 @@ public class LoopBackMediatorInputConnectorImpl extends InputConnectorImpl imple
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected LoopBackMediatorInputConnectorImpl() {
@@ -41,7 +40,6 @@ public class LoopBackMediatorInputConnectorImpl extends InputConnectorImpl imple
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

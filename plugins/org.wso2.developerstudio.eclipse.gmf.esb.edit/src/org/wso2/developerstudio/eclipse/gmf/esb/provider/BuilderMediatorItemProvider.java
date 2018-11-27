@@ -31,7 +31,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.BuilderMediator} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class BuilderMediatorItemProvider extends MediatorItemProvider {
@@ -39,7 +38,6 @@ public class BuilderMediatorItemProvider extends MediatorItemProvider {
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public BuilderMediatorItemProvider(AdapterFactory adapterFactory) {
@@ -69,16 +67,22 @@ public class BuilderMediatorItemProvider extends MediatorItemProvider {
      * This adds a property descriptor for the Message Builders feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addMessageBuildersPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_BuilderMediator_messageBuilders_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_BuilderMediator_messageBuilders_feature",
-                                "_UI_BuilderMediator_type"),
-                        EsbPackage.Literals.BUILDER_MEDIATOR__MESSAGE_BUILDERS, true, false, false, null, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_BuilderMediator_messageBuilders_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_BuilderMediator_messageBuilders_feature", "_UI_BuilderMediator_type"),
+                 EsbPackage.Literals.BUILDER_MEDIATOR__MESSAGE_BUILDERS,
+                 true,
+                 false,
+                 false,
+                 null,
+                 null,
+                 null));
     }
 
     /**
@@ -87,7 +91,6 @@ public class BuilderMediatorItemProvider extends MediatorItemProvider {
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -104,7 +107,6 @@ public class BuilderMediatorItemProvider extends MediatorItemProvider {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -119,7 +121,6 @@ public class BuilderMediatorItemProvider extends MediatorItemProvider {
      * This returns BuilderMediator.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -131,14 +132,14 @@ public class BuilderMediatorItemProvider extends MediatorItemProvider {
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public String getText(Object object) {
-        String label = ((BuilderMediator) object).getDescription();
-        return label == null || label.length() == 0 ? getString("_UI_BuilderMediator_type")
-                : getString("_UI_BuilderMediator_type") + " " + label;
+        String label = ((BuilderMediator)object).getDescription();
+        return label == null || label.length() == 0 ?
+            getString("_UI_BuilderMediator_type") :
+            getString("_UI_BuilderMediator_type") + " " + label;
     }
 
     /**
@@ -146,7 +147,6 @@ public class BuilderMediatorItemProvider extends MediatorItemProvider {
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -154,11 +154,11 @@ public class BuilderMediatorItemProvider extends MediatorItemProvider {
         updateChildren(notification);
 
         switch (notification.getFeatureID(BuilderMediator.class)) {
-        case EsbPackage.BUILDER_MEDIATOR__MESSAGE_BUILDERS:
-        case EsbPackage.BUILDER_MEDIATOR__INPUT_CONNECTOR:
-        case EsbPackage.BUILDER_MEDIATOR__OUTPUT_CONNECTOR:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-            return;
+            case EsbPackage.BUILDER_MEDIATOR__MESSAGE_BUILDERS:
+            case EsbPackage.BUILDER_MEDIATOR__INPUT_CONNECTOR:
+            case EsbPackage.BUILDER_MEDIATOR__OUTPUT_CONNECTOR:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+                return;
         }
         super.notifyChanged(notification);
     }
@@ -168,21 +168,26 @@ public class BuilderMediatorItemProvider extends MediatorItemProvider {
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.BUILDER_MEDIATOR__MESSAGE_BUILDERS,
-                EsbFactory.eINSTANCE.createMessageBuilder()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.BUILDER_MEDIATOR__MESSAGE_BUILDERS,
+                 EsbFactory.eINSTANCE.createMessageBuilder()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.BUILDER_MEDIATOR__INPUT_CONNECTOR,
-                EsbFactory.eINSTANCE.createBuilderMediatorInputConnector()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.BUILDER_MEDIATOR__INPUT_CONNECTOR,
+                 EsbFactory.eINSTANCE.createBuilderMediatorInputConnector()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.BUILDER_MEDIATOR__OUTPUT_CONNECTOR,
-                EsbFactory.eINSTANCE.createBuilderMediatorOutputConector()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.BUILDER_MEDIATOR__OUTPUT_CONNECTOR,
+                 EsbFactory.eINSTANCE.createBuilderMediatorOutputConector()));
     }
 
 }

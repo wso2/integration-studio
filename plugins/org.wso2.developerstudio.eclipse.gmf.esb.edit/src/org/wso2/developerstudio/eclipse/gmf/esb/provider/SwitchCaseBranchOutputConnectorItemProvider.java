@@ -26,11 +26,9 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.SwitchCaseBranchOutputConnector;
 
 /**
- * This is the item provider adapter for a
- * {@link org.wso2.developerstudio.eclipse.gmf.esb.SwitchCaseBranchOutputConnector} object.
+ * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.SwitchCaseBranchOutputConnector} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class SwitchCaseBranchOutputConnectorItemProvider extends OutputConnectorItemProvider {
@@ -38,7 +36,6 @@ public class SwitchCaseBranchOutputConnectorItemProvider extends OutputConnector
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public SwitchCaseBranchOutputConnectorItemProvider(AdapterFactory adapterFactory) {
@@ -49,7 +46,6 @@ public class SwitchCaseBranchOutputConnectorItemProvider extends OutputConnector
      * This returns the property descriptors for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -67,24 +63,28 @@ public class SwitchCaseBranchOutputConnectorItemProvider extends OutputConnector
      * This adds a property descriptor for the Case Regex feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addCaseRegexPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_SwitchCaseBranchOutputConnector_caseRegex_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_SwitchCaseBranchOutputConnector_caseRegex_feature",
-                        "_UI_SwitchCaseBranchOutputConnector_type"),
-                EsbPackage.Literals.SWITCH_CASE_BRANCH_OUTPUT_CONNECTOR__CASE_REGEX, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_SwitchCaseBranchOutputConnector_caseRegex_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_SwitchCaseBranchOutputConnector_caseRegex_feature", "_UI_SwitchCaseBranchOutputConnector_type"),
+                 EsbPackage.Literals.SWITCH_CASE_BRANCH_OUTPUT_CONNECTOR__CASE_REGEX,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This returns SwitchCaseBranchOutputConnector.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -97,15 +97,15 @@ public class SwitchCaseBranchOutputConnectorItemProvider extends OutputConnector
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public String getText(Object object) {
-        String label = ((SwitchCaseBranchOutputConnector) object).getCaseRegex();
-        return label == null || label.length() == 0 ? getString("_UI_SwitchCaseBranchOutputConnector_type")
-                : getString("_UI_SwitchCaseBranchOutputConnector_type") + " " + label;
+        String label = ((SwitchCaseBranchOutputConnector)object).getCaseRegex();
+        return label == null || label.length() == 0 ?
+            getString("_UI_SwitchCaseBranchOutputConnector_type") :
+            getString("_UI_SwitchCaseBranchOutputConnector_type") + " " + label;
     }
 
     /**
@@ -113,7 +113,6 @@ public class SwitchCaseBranchOutputConnectorItemProvider extends OutputConnector
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -122,9 +121,9 @@ public class SwitchCaseBranchOutputConnectorItemProvider extends OutputConnector
         updateChildren(notification);
 
         switch (notification.getFeatureID(SwitchCaseBranchOutputConnector.class)) {
-        case EsbPackage.SWITCH_CASE_BRANCH_OUTPUT_CONNECTOR__CASE_REGEX:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-            return;
+            case EsbPackage.SWITCH_CASE_BRANCH_OUTPUT_CONNECTOR__CASE_REGEX:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+                return;
         }
         super.notifyChanged(notification);
     }
@@ -134,7 +133,6 @@ public class SwitchCaseBranchOutputConnectorItemProvider extends OutputConnector
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 

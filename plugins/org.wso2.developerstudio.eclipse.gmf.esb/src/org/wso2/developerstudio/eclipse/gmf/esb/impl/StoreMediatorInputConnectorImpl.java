@@ -22,7 +22,6 @@ public class StoreMediatorInputConnectorImpl extends InputConnectorImpl implemen
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected StoreMediatorInputConnectorImpl() {
@@ -32,7 +31,6 @@ public class StoreMediatorInputConnectorImpl extends InputConnectorImpl implemen
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

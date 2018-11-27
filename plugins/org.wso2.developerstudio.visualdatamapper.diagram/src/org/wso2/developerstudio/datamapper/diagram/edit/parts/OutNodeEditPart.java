@@ -321,7 +321,7 @@ public class OutNodeEditPart extends AbstractBorderItemEditPart {
 			RectangleFigure mainImageRectangle = new RectangleFigure();
 			mainImageRectangle.setOutline(false);
 			mainImageRectangle.setBackgroundColor(new Color(null, 255, 255, 255));
-			mainImageRectangle.setPreferredSize(new Dimension(nodeDimension, nodeDimension));
+			mainImageRectangle.setPreferredSize(new Dimension(nodeDimension*2, nodeDimension));
 			mainImageRectangle.add(mainImg);
 
 			mainImageRectangle.setFill(false);

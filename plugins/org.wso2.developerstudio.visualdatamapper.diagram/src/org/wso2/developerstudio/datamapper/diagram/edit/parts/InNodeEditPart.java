@@ -18,6 +18,7 @@ package org.wso2.developerstudio.datamapper.diagram.edit.parts;
 
 import java.util.HashMap;
 
+import org.eclipse.draw2d.GridLayout;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.ImageFigure;
 import org.eclipse.draw2d.MouseEvent;
@@ -280,15 +281,19 @@ public class InNodeEditPart extends AbstractInNodeEditPart {
 		 */
 		private void createContents() {
 			int nodeDimension = 10; // width for connection nodes
-
 			ImageFigure mainImg = new ImageFigure(ImageHolder.getInstance().getArrowBlueImage());
 			mainImg.setSize(new Dimension(nodeDimension, nodeDimension));
 			RectangleFigure mainImageRectangle = new RectangleFigure();
 			mainImageRectangle.setOutline(false);
 			mainImageRectangle.setBackgroundColor(new Color(null, 255, 255, 255));
-			mainImageRectangle.setPreferredSize(new Dimension(nodeDimension, nodeDimension));
+			mainImageRectangle.setPreferredSize(new Dimension(nodeDimension*2, nodeDimension));
+			ImageFigure fillImg = new ImageFigure(ImageHolder.getInstance().getArrowBlueImage());
+			fillImg.setSize(new Dimension(nodeDimension, nodeDimension));
+			GridLayout gridLayout = new GridLayout();
+			gridLayout.marginHeight = 0;
+			gridLayout.marginWidth = nodeDimension;
+			mainImageRectangle.setLayoutManager(gridLayout);
 			mainImageRectangle.add(mainImg);
-
 			mainImageRectangle.setFill(false);
 			mainImageRectangle.setOutline(false);
 			this.add(mainImageRectangle);

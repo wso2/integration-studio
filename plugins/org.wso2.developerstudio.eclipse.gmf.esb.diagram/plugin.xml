@@ -305,7 +305,7 @@
       </page>
    </extension>
 
-   <extension point="org.eclipse.ui.views.properties.tabbed.propertyContributor" id="prop-contrib">
+   <!--extension point="org.eclipse.ui.views.properties.tabbed.propertyContributor" id="prop-contrib">
       <?gmfgen generated="true"?>
       <propertyContributor
             contributorId="org.wso2.developerstudio.eclipse.gmf.esb.diagram"
@@ -314,9 +314,9 @@
          <propertyCategory category="visual"/>
          <propertyCategory category="extra"/>
       </propertyContributor>
-   </extension>
+   </extension-->
 
-   <extension point="org.eclipse.ui.views.properties.tabbed.propertyTabs" id="proptabs">
+   <!--extension point="org.eclipse.ui.views.properties.tabbed.propertyTabs" id="proptabs">
       <?gmfgen generated="true"?>   
       <propertyTabs contributorId="org.wso2.developerstudio.eclipse.gmf.esb.diagram">
          <propertyTab
@@ -332,9 +332,9 @@
              id="property.tab.domain"
              label="%tab.domain"/>
       </propertyTabs>
-   </extension>
+   </extension-->
 
-   <extension point="org.eclipse.ui.views.properties.tabbed.propertySections" id="propsections">
+   <!--extension point="org.eclipse.ui.views.properties.tabbed.propertySections" id="propsections">
       <?gmfgen generated="true"?>   
       <propertySections contributorId="org.wso2.developerstudio.eclipse.gmf.esb.diagram">
          <propertySection id="property.section.ConnectorAppearancePropertySection" 
@@ -366,7 +366,7 @@
             <input type="org.wso2.developerstudio.eclipse.gmf.esb.diagram.navigator.EsbAbstractNavigatorItem"/>
          </propertySection>
       </propertySections>
-   </extension>
+   </extension-->
 
    <extension point="org.eclipse.gmf.runtime.diagram.core.viewProviders" id="view-provider">
       <?gmfgen generated="true"?>

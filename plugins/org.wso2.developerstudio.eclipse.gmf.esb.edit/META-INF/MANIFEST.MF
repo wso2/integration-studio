@@ -14,6 +14,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.edit;visibility:=reexport,
  org.eclipse.emf.common.ui;bundle-version="2.6.0",
  org.eclipse.emf.edit.ui;bundle-version="2.6.0",
- org.eclipse.emf.transaction
+ org.eclipse.emf.transaction,
+ org.eclipse.emf.eef.runtime;bundle-version="1.5.1"
 Bundle-ActivationPolicy: lazy
 Import-Package: org.wso2.developerstudio.eclipse.logging.core

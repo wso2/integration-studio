@@ -22,7 +22,7 @@ import java.util.HashMap;
 import org.w3c.dom.Node;
 
 import static org.wso2.developerstudio.datamapper.diagram.xslt.config.XSLTGeneratorConstants.ATTRIBUTES_INITIALS;
-import static org.wso2.developerstudio.datamapper.diagram.xslt.config.XSLTGeneratorConstants.PROPERTIES_LOWER_CASE;
+import static org.wso2.developerstudio.datamapper.diagram.xslt.config.XSLTGeneratorConstants.PROPERTIES;
 import static org.wso2.developerstudio.datamapper.diagram.xslt.config.XSLTGeneratorConstants.KEY;
 import static org.wso2.developerstudio.datamapper.diagram.xslt.config.XSLTGeneratorConstants.VALUE;
 import static org.wso2.developerstudio.datamapper.diagram.xslt.config.XSLTGeneratorConstants.NODE;
@@ -81,7 +81,7 @@ public class OutPutNode extends XMLNode {
             Node childNode = node.getChildNodes().item(i);
             if (childNode.getAttributes() != null) {
                 switch (childNode.getNodeName()) {
-                case PROPERTIES_LOWER_CASE:
+                case PROPERTIES:
                     this.properties.put(childNode.getAttributes().getNamedItem(KEY).getTextContent(),
                             childNode.getAttributes().getNamedItem(VALUE).getTextContent());
                     break;

@@ -23,7 +23,7 @@ import org.w3c.dom.Node;
 import static org.wso2.developerstudio.datamapper.diagram.xslt.config.XSLTGeneratorConstants.KEY;
 import static org.wso2.developerstudio.datamapper.diagram.xslt.config.XSLTGeneratorConstants.NAME;
 import static org.wso2.developerstudio.datamapper.diagram.xslt.config.XSLTGeneratorConstants.LEVEL;
-import static org.wso2.developerstudio.datamapper.diagram.xslt.config.XSLTGeneratorConstants.PROPERTIES_LOWER_CASE;
+import static org.wso2.developerstudio.datamapper.diagram.xslt.config.XSLTGeneratorConstants.PROPERTIES;
 import static org.wso2.developerstudio.datamapper.diagram.xslt.config.XSLTGeneratorConstants.VALUE;
 import static org.wso2.developerstudio.datamapper.diagram.xslt.config.XSLTGeneratorConstants.NODE;
 
@@ -70,7 +70,7 @@ public class InPutNode extends XMLNode {
         for (int i = 0; i < node.getChildNodes().getLength(); i++) {
             Node childNode = node.getChildNodes().item(i);
             if (childNode.getAttributes() != null) {
-                if (childNode.getNodeName().equals(PROPERTIES_LOWER_CASE)) {
+                if (childNode.getNodeName().equals(PROPERTIES)) {
                     this.properties.put(childNode.getAttributes().getNamedItem(KEY).getTextContent(),
                             childNode.getAttributes().getNamedItem(VALUE).getTextContent());
                 } else if (childNode.getNodeName().equals(NODE)) {

@@ -71,7 +71,7 @@ import static org.wso2.developerstudio.datamapper.diagram.xslt.config.XSLTGenera
 import static org.wso2.developerstudio.datamapper.diagram.xslt.config.XSLTGeneratorConstants.OR;
 import static org.wso2.developerstudio.datamapper.diagram.xslt.config.XSLTGeneratorConstants.OUTPUT;
 import static org.wso2.developerstudio.datamapper.diagram.xslt.config.XSLTGeneratorConstants.OWN_SET_PRECISION;
-import static org.wso2.developerstudio.datamapper.diagram.xslt.config.XSLTGeneratorConstants.PROPERTIES_UPPER_CASE;
+import static org.wso2.developerstudio.datamapper.diagram.xslt.config.XSLTGeneratorConstants.PROPERTIES_OPERATOR;
 import static org.wso2.developerstudio.datamapper.diagram.xslt.config.XSLTGeneratorConstants.REPLACE;
 import static org.wso2.developerstudio.datamapper.diagram.xslt.config.XSLTGeneratorConstants.RESULT_STRING;
 import static org.wso2.developerstudio.datamapper.diagram.xslt.config.XSLTGeneratorConstants.ROUND;
@@ -130,6 +130,7 @@ public class XSLTGenerator {
      *
      * @param styleSheetFilePath path of the file that needed to save the generated stylesheet
      * @param schemaFilePath path of the datamapper schema file
+     * @return whether an xslt stylesheet can be generated
      */
     public boolean initializeGeneration(DataMapperSchemaProcessor inputXML, XSLTStyleSheetWriter outputXML) {
         rootElement = outputXML.getDocument().createElement(XSL_STYLESHEET);
@@ -137,7 +138,9 @@ public class XSLTGenerator {
         outputXML.getDocument().appendChild(rootElement);
         setPrecisionFunction(outputXML);
         createOperatorNodes(inputXML);
-        if (setPropertyOperators(outputXML)) {
+        // if a custom function operator exists, it is not possible to generate an xslt stylesheet
+        boolean customFunctionExists = processSpecialOperators(outputXML);
+        if (customFunctionExists) {
             return false;
         }
         templateElement = outputXML.getDocument().createElement(XSL_TEMPLATE);
@@ -232,11 +235,29 @@ public class XSLTGenerator {
         }
     }
 
-    private boolean setPropertyOperators(XSLTStyleSheetWriter outputXMLFile) {
+    /**
+     * This method process special operators
+     * 
+     * properties operator : 
+     *      Transformation requires system properties in the server. 
+     *      Therefore the set of properties are passed in xslt stylesheet as a property
+     * 
+     * global variable operator:
+     *      Declare a global variable in the beginning of the xslt stylesheet.
+     *      Then it can be used throughout the stylesheet
+     *      
+     * custom function operator:
+     *      Custom function is the only function that cannot be supported in xslt transformation.
+     *      Therefore aborts stylesheet generation and returns true when an custom function found
+     * 
+     * @param outputXMLFile
+     * @return whether an custom function exists
+     */
+    private boolean processSpecialOperators(XSLTStyleSheetWriter outputXMLFile) {
         String propertyOperatorString = EMPTY_STRING;
         for (OperatorNode operatorNode : operatorNodes) {
             switch (operatorNode.getProperty(OPERATOR_TYPE)) {
-            case PROPERTIES_UPPER_CASE:
+            case PROPERTIES_OPERATOR:
                 Element propertyElement = outputXMLFile.getDocument().createElement(XSL_PARAM);
                 String propertyName = operatorNode.getProperty(NAME);
                 String scope = operatorNode.getProperty(SCOPE);
@@ -604,7 +625,7 @@ public class XSLTGenerator {
                     return "$" + DEFAULT_NAME;
                 }
                 return "$" + operatorNode.getProperty(NAME);
-            case PROPERTIES_UPPER_CASE:
+            case PROPERTIES_OPERATOR:
                 String scope = operatorNode.getProperty(SCOPE);
                 if (scope == null) {
                     scope = DEFAULT_SCOPE;

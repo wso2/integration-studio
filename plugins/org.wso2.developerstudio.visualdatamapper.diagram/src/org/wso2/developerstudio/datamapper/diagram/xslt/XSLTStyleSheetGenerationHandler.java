@@ -31,7 +31,7 @@ import org.xml.sax.SAXException;
  */
 public class XSLTStyleSheetGenerationHandler {
 
-    public static XSLTStyleSheetGenerationHandler instance;
+    private static XSLTStyleSheetGenerationHandler instance;
 
     public static XSLTStyleSheetGenerationHandler getInstance() {
         if (instance == null) {
@@ -44,9 +44,9 @@ public class XSLTStyleSheetGenerationHandler {
      * This method generate xslt stylesheet and handle exception relevant to the generation
      * 
      * @param schemaInPutSource datamapper schema file as an input stream
-     * @return
+     * @return content that need to be written to the xslt stylesheet
      * @throws TransformerException 
-     * @throws ParserConfigurationException 
+     * @throws ParserConfigurationException
      * @throws IOException 
      * @throws SAXException 
      */
@@ -54,6 +54,7 @@ public class XSLTStyleSheetGenerationHandler {
         DataMapperSchemaProcessor inputXML = new DataMapperSchemaProcessor(schemaInPutSource);
         XSLTStyleSheetWriter outputXML = new XSLTStyleSheetWriter();
         XSLTGenerator xsltGenerator = new XSLTGenerator();
+        // when there is a custom function operator xslt is not applicable
         boolean xsltApplicable = xsltGenerator.initializeGeneration(inputXML, outputXML);
         if (xsltApplicable) {
             xsltGenerator.generateStyleSheet(outputXML);

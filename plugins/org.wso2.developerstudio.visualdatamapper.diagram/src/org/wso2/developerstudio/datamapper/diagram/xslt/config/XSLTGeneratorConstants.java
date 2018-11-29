@@ -21,12 +21,22 @@ public final class XSLTGeneratorConstants {
     private XSLTGeneratorConstants() {
     }
 
-    // constants
-    public static final String STRING_TYPE = "string";
+    /* node types in the .datamapper file
+     
+       object type nodes : contain child nodes
+       array type nodes : contain array of child nodes
+       string type nodes : contain only a string value in it
+       number type nodes : contain only a number value in it
+       boolean type nodes : contain only a boolean value in it
+       
+    */
     public static final String OBJECT_TYPE = "object";
     public static final String ARRAY_TYPE = "array";
+    public static final String STRING_TYPE = "string";
     public static final String NUMBER_TYPE = "number";
     public static final String BOOLEAN_TYPE = "boolean";
+    
+    // node names in the .datamapper file
     public static final String TYPE = "type";
     public static final String ITEMS_TYPE = "items_type";
     public static final String INPUT = "input";
@@ -50,7 +60,7 @@ public final class XSLTGeneratorConstants {
     // common operators
     public static final String CONSTANT = "CONSTANT";
     public static final String GLOBAL_VARIABLE = "GLOBAL_VARIABLE";
-    public static final String PROPERTIES_UPPER_CASE = "PROPERTIES";
+    public static final String PROPERTIES_OPERATOR = "PROPERTIES";
     public static final String COMPARE = "COMPARE";
 
     // conditional operators
@@ -102,7 +112,7 @@ public final class XSLTGeneratorConstants {
     public static final String OUT_NODE = "outNode";
     public static final String IN_NODE = "inNode";
     public static final String LEVEL = "level";
-    public static final String PROPERTIES_LOWER_CASE = "properties";
+    public static final String PROPERTIES = "properties";
     public static final String KEY = "key";
     public static final String NODE = "node";
     public static final String VALUE = "value";

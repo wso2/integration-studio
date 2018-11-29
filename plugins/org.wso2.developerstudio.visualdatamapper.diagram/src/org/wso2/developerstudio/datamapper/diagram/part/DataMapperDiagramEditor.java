@@ -378,8 +378,8 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
 		//Fixing DEVTOOLESB-651
 		if (success) {
 			super.doSave(monitor);
+			updateAssociatedXsltFile(monitor);
 		}
-		updateAssociatedXsltFile(monitor);
 	}
 
 	private void updateSchema() {
@@ -508,27 +508,17 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
         if (editorInput instanceof IFileEditorInput) {
             IFile diagramFile = ((FileEditorInput) editorInput).getFile();
             String diagramFilePath = diagramFile.getFullPath().toString();
-            String schemaFilePath = diagramFilePath.replaceAll(".datamapper_diagram$", ".datamapper"); //$NON-NLS-1$ //$NON-NLS-2$
+            String schemaFilePath = diagramFilePath.replaceAll(".datamapper_diagram$", ".datamapper");
             String xsltStyleSheetFilePath = diagramFilePath.replaceAll(".datamapper_diagram$", "_xsltStyleSheet.xml");
             IFile schemaFile = diagramFile.getWorkspace().getRoot().getFile(new Path(schemaFilePath));
             IFile xsltStyleSheetFile = diagramFile.getWorkspace().getRoot().getFile(new Path(xsltStyleSheetFilePath));
-            InputStream schemaInPutStream = null;
             if (xsltStyleSheetFile.exists() && schemaFile.exists()) {
-                try {
-                    schemaInPutStream = schemaFile.getContents();
+                try (InputStream schemaInPutStream = schemaFile.getContents()){
                     String source = XSLTStyleSheetGenerationHandler.getInstance().generate(schemaInPutStream);
                     xsltStyleSheetFile.setContents(new ByteArrayInputStream(source.getBytes()), true, true, monitor);
                 } catch (CoreException | TransformerException | SAXException | IOException | ParserConfigurationException e) {
-                    log.error("Could not save file " + xsltStyleSheetFilePath + " : " + e); //$NON-NLS-1$
+                    log.error("Could not save file " + xsltStyleSheetFilePath + " : " + e);
                     popupErrorDialogBox(e);
-                } finally {
-                    if (schemaInPutStream != null) {
-                        try {
-                            schemaInPutStream.close();
-                        } catch (IOException e) {
-                            // ignore.
-                        }
-                    }
                 }
             }
         }

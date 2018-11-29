@@ -85,15 +85,7 @@ public class LoopBackMediatorPropertiesEditionComponent extends SinglePartProper
 			if (isAccessible(EsbViewsRepository.LoopBackMediator.Properties.description))
 				basePart.setDescription(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, loopBackMediator.getDescription()));
 			
-			if (isAccessible(EsbViewsRepository.LoopBackMediator.Properties.commentsList))
-				basePart.setCommentsList(loopBackMediator.getCommentsList());
-			
-			if (isAccessible(EsbViewsRepository.LoopBackMediator.Properties.reverse)) {
-				basePart.setReverse(loopBackMediator.isReverse());
-			}
 			// init filters
-			
-			
 			
 			// init values for referenced views
 			
@@ -106,8 +98,6 @@ public class LoopBackMediatorPropertiesEditionComponent extends SinglePartProper
 
 
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
@@ -115,12 +105,6 @@ public class LoopBackMediatorPropertiesEditionComponent extends SinglePartProper
 	public EStructuralFeature associatedFeature(Object editorKey) {
 		if (editorKey == EsbViewsRepository.LoopBackMediator.Properties.description) {
 			return EsbPackage.eINSTANCE.getEsbElement_Description();
-		}
-		if (editorKey == EsbViewsRepository.LoopBackMediator.Properties.commentsList) {
-			return EsbPackage.eINSTANCE.getEsbElement_CommentsList();
-		}
-		if (editorKey == EsbViewsRepository.LoopBackMediator.Properties.reverse) {
-			return EsbPackage.eINSTANCE.getMediator_Reverse();
 		}
 		return super.associatedFeature(editorKey);
 	}
@@ -134,15 +118,6 @@ public class LoopBackMediatorPropertiesEditionComponent extends SinglePartProper
 		LoopBackMediator loopBackMediator = (LoopBackMediator)semanticObject;
 		if (EsbViewsRepository.LoopBackMediator.Properties.description == event.getAffectedEditor()) {
 			loopBackMediator.setDescription((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
-		}
-		if (EsbViewsRepository.LoopBackMediator.Properties.commentsList == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET) {
-				loopBackMediator.getCommentsList().clear();
-				loopBackMediator.getCommentsList().addAll(((EList) event.getNewValue()));
-			}
-		}
-		if (EsbViewsRepository.LoopBackMediator.Properties.reverse == event.getAffectedEditor()) {
-			loopBackMediator.setReverse((Boolean)event.getNewValue());
 		}
 	}
 
@@ -161,21 +136,6 @@ public class LoopBackMediatorPropertiesEditionComponent extends SinglePartProper
 					basePart.setDescription("");
 				}
 			}
-			if (EsbPackage.eINSTANCE.getEsbElement_CommentsList().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.LoopBackMediator.Properties.commentsList)) {
-				if (msg.getNewValue() instanceof EList<?>) {
-					basePart.setCommentsList((EList<?>)msg.getNewValue());
-				} else if (msg.getNewValue() == null) {
-					basePart.setCommentsList(new BasicEList<Object>());
-				} else {
-					BasicEList<Object> newValueAsList = new BasicEList<Object>();
-					newValueAsList.add(msg.getNewValue());
-					basePart.setCommentsList(newValueAsList);
-				}
-			}
-			
-			if (EsbPackage.eINSTANCE.getMediator_Reverse().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.LoopBackMediator.Properties.reverse))
-				basePart.setReverse((Boolean)msg.getNewValue());
-			
 			
 		}
 	}
@@ -188,9 +148,7 @@ public class LoopBackMediatorPropertiesEditionComponent extends SinglePartProper
 	@Override
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
-			EsbPackage.eINSTANCE.getEsbElement_Description(),
-			EsbPackage.eINSTANCE.getEsbElement_CommentsList(),
-			EsbPackage.eINSTANCE.getMediator_Reverse()		);
+			EsbPackage.eINSTANCE.getEsbElement_Description()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -211,20 +169,6 @@ public class LoopBackMediatorPropertiesEditionComponent extends SinglePartProper
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getEsbElement_Description().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getEsbElement_Description().getEAttributeType(), newValue);
-				}
-				if (EsbViewsRepository.LoopBackMediator.Properties.commentsList == event.getAffectedEditor()) {
-					BasicDiagnostic chain = new BasicDiagnostic();
-					for (Iterator iterator = ((List)event.getNewValue()).iterator(); iterator.hasNext();) {
-						chain.add(Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getEsbElement_CommentsList().getEAttributeType(), iterator.next()));
-					}
-					ret = chain;
-				}
-				if (EsbViewsRepository.LoopBackMediator.Properties.reverse == event.getAffectedEditor()) {
-					Object newValue = event.getNewValue();
-					if (newValue instanceof String) {
-						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getMediator_Reverse().getEAttributeType(), (String)newValue);
-					}
-					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getMediator_Reverse().getEAttributeType(), newValue);
 				}
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);

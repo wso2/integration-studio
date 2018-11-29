@@ -105,15 +105,6 @@ public class LogMediatorPropertiesEditionComponent extends SinglePartPropertiesE
 			final LogMediator logMediator = (LogMediator)elt;
 			final LogMediatorPropertiesEditionPart basePart = (LogMediatorPropertiesEditionPart)editingPart;
 			// init values
-			if (isAccessible(EsbViewsRepository.LogMediator.Properties.description))
-				basePart.setDescription(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, logMediator.getDescription()));
-			
-			if (isAccessible(EsbViewsRepository.LogMediator.Properties.commentsList))
-				basePart.setCommentsList(logMediator.getCommentsList());
-			
-			if (isAccessible(EsbViewsRepository.LogMediator.Properties.reverse)) {
-				basePart.setReverse(logMediator.isReverse());
-			}
 			if (isAccessible(EsbViewsRepository.LogMediator.Properties.logCategory)) {
 				basePart.initLogCategory(EEFUtils.choiceOfValues(logMediator, EsbPackage.eINSTANCE.getLogMediator_LogCategory()), logMediator.getLogCategory());
 			}
@@ -127,10 +118,10 @@ public class LogMediatorPropertiesEditionComponent extends SinglePartPropertiesE
 				propertiesSettings = new ReferencesTableSettings(logMediator, EsbPackage.eINSTANCE.getLogMediator_Properties());
 				basePart.initProperties(propertiesSettings);
 			}
+			if (isAccessible(EsbViewsRepository.LogMediator.Properties.description))
+				basePart.setDescription(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, logMediator.getDescription()));
+			
 			// init filters
-			
-			
-			
 			
 			
 			
@@ -149,6 +140,7 @@ public class LogMediatorPropertiesEditionComponent extends SinglePartPropertiesE
 				// Start of user code for additional businessfilters for properties
 				// End of user code
 			}
+			
 			// init values for referenced views
 			
 			// init filters for referenced views
@@ -164,22 +156,11 @@ public class LogMediatorPropertiesEditionComponent extends SinglePartPropertiesE
 
 
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
 	 */
 	public EStructuralFeature associatedFeature(Object editorKey) {
-		if (editorKey == EsbViewsRepository.LogMediator.Properties.description) {
-			return EsbPackage.eINSTANCE.getEsbElement_Description();
-		}
-		if (editorKey == EsbViewsRepository.LogMediator.Properties.commentsList) {
-			return EsbPackage.eINSTANCE.getEsbElement_CommentsList();
-		}
-		if (editorKey == EsbViewsRepository.LogMediator.Properties.reverse) {
-			return EsbPackage.eINSTANCE.getMediator_Reverse();
-		}
 		if (editorKey == EsbViewsRepository.LogMediator.Properties.logCategory) {
 			return EsbPackage.eINSTANCE.getLogMediator_LogCategory();
 		}
@@ -192,6 +173,9 @@ public class LogMediatorPropertiesEditionComponent extends SinglePartPropertiesE
 		if (editorKey == EsbViewsRepository.LogMediator.Properties.properties_) {
 			return EsbPackage.eINSTANCE.getLogMediator_Properties();
 		}
+		if (editorKey == EsbViewsRepository.LogMediator.Properties.description) {
+			return EsbPackage.eINSTANCE.getEsbElement_Description();
+		}
 		return super.associatedFeature(editorKey);
 	}
 
@@ -202,18 +186,6 @@ public class LogMediatorPropertiesEditionComponent extends SinglePartPropertiesE
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		LogMediator logMediator = (LogMediator)semanticObject;
-		if (EsbViewsRepository.LogMediator.Properties.description == event.getAffectedEditor()) {
-			logMediator.setDescription((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
-		}
-		if (EsbViewsRepository.LogMediator.Properties.commentsList == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET) {
-				logMediator.getCommentsList().clear();
-				logMediator.getCommentsList().addAll(((EList) event.getNewValue()));
-			}
-		}
-		if (EsbViewsRepository.LogMediator.Properties.reverse == event.getAffectedEditor()) {
-			logMediator.setReverse((Boolean)event.getNewValue());
-		}
 		if (EsbViewsRepository.LogMediator.Properties.logCategory == event.getAffectedEditor()) {
 			logMediator.setLogCategory((LogCategory)event.getNewValue());
 		}
@@ -248,6 +220,9 @@ public class LogMediatorPropertiesEditionComponent extends SinglePartPropertiesE
 				propertiesSettings.move(event.getNewIndex(), (LogProperty) event.getNewValue());
 			}
 		}
+		if (EsbViewsRepository.LogMediator.Properties.description == event.getAffectedEditor()) {
+			logMediator.setDescription((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
+		}
 	}
 
 	/**
@@ -258,28 +233,6 @@ public class LogMediatorPropertiesEditionComponent extends SinglePartPropertiesE
 		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			LogMediatorPropertiesEditionPart basePart = (LogMediatorPropertiesEditionPart)editingPart;
-			if (EsbPackage.eINSTANCE.getEsbElement_Description().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.LogMediator.Properties.description)) {
-				if (msg.getNewValue() != null) {
-					basePart.setDescription(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
-				} else {
-					basePart.setDescription("");
-				}
-			}
-			if (EsbPackage.eINSTANCE.getEsbElement_CommentsList().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.LogMediator.Properties.commentsList)) {
-				if (msg.getNewValue() instanceof EList<?>) {
-					basePart.setCommentsList((EList<?>)msg.getNewValue());
-				} else if (msg.getNewValue() == null) {
-					basePart.setCommentsList(new BasicEList<Object>());
-				} else {
-					BasicEList<Object> newValueAsList = new BasicEList<Object>();
-					newValueAsList.add(msg.getNewValue());
-					basePart.setCommentsList(newValueAsList);
-				}
-			}
-			
-			if (EsbPackage.eINSTANCE.getMediator_Reverse().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.LogMediator.Properties.reverse))
-				basePart.setReverse((Boolean)msg.getNewValue());
-			
 			if (EsbPackage.eINSTANCE.getLogMediator_LogCategory().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EsbViewsRepository.LogMediator.Properties.logCategory))
 				basePart.setLogCategory((LogCategory)msg.getNewValue());
 			
@@ -295,6 +248,13 @@ public class LogMediatorPropertiesEditionComponent extends SinglePartPropertiesE
 			}
 			if (EsbPackage.eINSTANCE.getLogMediator_Properties().equals(msg.getFeature()) && isAccessible(EsbViewsRepository.LogMediator.Properties.properties_))
 				basePart.updateProperties();
+			if (EsbPackage.eINSTANCE.getEsbElement_Description().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.LogMediator.Properties.description)) {
+				if (msg.getNewValue() != null) {
+					basePart.setDescription(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
+				} else {
+					basePart.setDescription("");
+				}
+			}
 			
 		}
 	}
@@ -307,13 +267,11 @@ public class LogMediatorPropertiesEditionComponent extends SinglePartPropertiesE
 	@Override
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
-			EsbPackage.eINSTANCE.getEsbElement_Description(),
-			EsbPackage.eINSTANCE.getEsbElement_CommentsList(),
-			EsbPackage.eINSTANCE.getMediator_Reverse(),
 			EsbPackage.eINSTANCE.getLogMediator_LogCategory(),
 			EsbPackage.eINSTANCE.getLogMediator_LogLevel(),
 			EsbPackage.eINSTANCE.getLogMediator_LogSeparator(),
-			EsbPackage.eINSTANCE.getLogMediator_Properties()		);
+			EsbPackage.eINSTANCE.getLogMediator_Properties(),
+			EsbPackage.eINSTANCE.getEsbElement_Description()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -328,27 +286,6 @@ public class LogMediatorPropertiesEditionComponent extends SinglePartPropertiesE
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
 			try {
-				if (EsbViewsRepository.LogMediator.Properties.description == event.getAffectedEditor()) {
-					Object newValue = event.getNewValue();
-					if (newValue instanceof String) {
-						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getEsbElement_Description().getEAttributeType(), (String)newValue);
-					}
-					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getEsbElement_Description().getEAttributeType(), newValue);
-				}
-				if (EsbViewsRepository.LogMediator.Properties.commentsList == event.getAffectedEditor()) {
-					BasicDiagnostic chain = new BasicDiagnostic();
-					for (Iterator iterator = ((List)event.getNewValue()).iterator(); iterator.hasNext();) {
-						chain.add(Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getEsbElement_CommentsList().getEAttributeType(), iterator.next()));
-					}
-					ret = chain;
-				}
-				if (EsbViewsRepository.LogMediator.Properties.reverse == event.getAffectedEditor()) {
-					Object newValue = event.getNewValue();
-					if (newValue instanceof String) {
-						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getMediator_Reverse().getEAttributeType(), (String)newValue);
-					}
-					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getMediator_Reverse().getEAttributeType(), newValue);
-				}
 				if (EsbViewsRepository.LogMediator.Properties.logCategory == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
@@ -369,6 +306,13 @@ public class LogMediatorPropertiesEditionComponent extends SinglePartPropertiesE
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getLogMediator_LogSeparator().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getLogMediator_LogSeparator().getEAttributeType(), newValue);
+				}
+				if (EsbViewsRepository.LogMediator.Properties.description == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getEsbElement_Description().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getEsbElement_Description().getEAttributeType(), newValue);
 				}
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);

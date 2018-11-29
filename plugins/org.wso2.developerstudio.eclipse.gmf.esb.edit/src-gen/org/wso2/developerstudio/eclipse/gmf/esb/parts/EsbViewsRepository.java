@@ -1035,12 +1035,6 @@ public class EsbViewsRepository {
 			
 			public static String description = "esb::DropMediator::properties::description";
 			
-			
-			public static String commentsList = "esb::DropMediator::properties::commentsList";
-			
-			
-			public static String reverse = "esb::DropMediator::properties::Reverse";
-			
 	
 		}
 	
@@ -1258,15 +1252,6 @@ public class EsbViewsRepository {
 		public static class Properties {
 	
 			
-			public static String description = "esb::LogMediator::properties::description";
-			
-			
-			public static String commentsList = "esb::LogMediator::properties::commentsList";
-			
-			
-			public static String reverse = "esb::LogMediator::properties::Reverse";
-			
-			
 			public static String logCategory = "esb::LogMediator::properties::logCategory";
 			
 			
@@ -1277,6 +1262,9 @@ public class EsbViewsRepository {
 			
 			
 			public static String properties_ = "esb::LogMediator::properties::properties_";
+			
+			
+			public static String description = "esb::LogMediator::properties::description";
 			
 	
 		}
@@ -5075,12 +5063,6 @@ public class EsbViewsRepository {
 			
 			public static String description = "esb::LoopBackMediator::properties::description";
 			
-			
-			public static String commentsList = "esb::LoopBackMediator::properties::commentsList";
-			
-			
-			public static String reverse = "esb::LoopBackMediator::properties::Reverse";
-			
 	
 		}
 	
@@ -5125,12 +5107,6 @@ public class EsbViewsRepository {
 	
 			
 			public static String description = "esb::RespondMediator::properties::description";
-			
-			
-			public static String commentsList = "esb::RespondMediator::properties::commentsList";
-			
-			
-			public static String reverse = "esb::RespondMediator::properties::Reverse";
 			
 	
 		}

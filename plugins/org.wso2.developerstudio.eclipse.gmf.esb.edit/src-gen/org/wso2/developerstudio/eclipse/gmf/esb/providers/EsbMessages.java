@@ -3700,12 +3700,6 @@ public class EsbMessages extends NLS {
 	public static String DropMediatorPropertiesEditionPart_DescriptionLabel;
 
 	
-	public static String DropMediatorPropertiesEditionPart_CommentsListLabel;
-
-	
-	public static String DropMediatorPropertiesEditionPart_ReverseLabel;
-
-	
 	public static String DropMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;
 
 	
@@ -3754,15 +3748,6 @@ public class EsbMessages extends NLS {
 	public static String MergeNodeOutputConnectorPropertiesEditionPart_CommentMediatorsLabel;
 
 	
-	public static String LogMediatorPropertiesEditionPart_DescriptionLabel;
-
-	
-	public static String LogMediatorPropertiesEditionPart_CommentsListLabel;
-
-	
-	public static String LogMediatorPropertiesEditionPart_ReverseLabel;
-
-	
 	public static String LogMediatorPropertiesEditionPart_LogCategoryLabel;
 
 	
@@ -3773,6 +3758,9 @@ public class EsbMessages extends NLS {
 
 	
 	public static String LogMediatorPropertiesEditionPart_PropertiesLabel;
+
+	
+	public static String LogMediatorPropertiesEditionPart_DescriptionLabel;
 
 	
 	public static String LogMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;
@@ -5434,12 +5422,6 @@ public class EsbMessages extends NLS {
 	public static String LoopBackMediatorPropertiesEditionPart_DescriptionLabel;
 
 	
-	public static String LoopBackMediatorPropertiesEditionPart_CommentsListLabel;
-
-	
-	public static String LoopBackMediatorPropertiesEditionPart_ReverseLabel;
-
-	
 	public static String LoopBackMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;
 
 	
@@ -5447,12 +5429,6 @@ public class EsbMessages extends NLS {
 
 	
 	public static String RespondMediatorPropertiesEditionPart_DescriptionLabel;
-
-	
-	public static String RespondMediatorPropertiesEditionPart_CommentsListLabel;
-
-	
-	public static String RespondMediatorPropertiesEditionPart_ReverseLabel;
 
 	
 	public static String RespondMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;

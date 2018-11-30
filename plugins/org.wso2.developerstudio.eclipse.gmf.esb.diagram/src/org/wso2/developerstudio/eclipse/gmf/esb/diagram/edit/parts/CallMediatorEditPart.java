@@ -68,7 +68,8 @@ import org.eclipse.papyrus.infra.gmfdiag.css.CSSNodeImpl;
  * @generated NOT
  */
 public class CallMediatorEditPart extends SingleCompartmentComplexFiguredAbstractMediator {
-
+    
+    private static String CALL_MEDIATOR_QNAME = "call";
     public IFigure endpointOutputConnector;
     /**
      * @generated
@@ -355,6 +356,7 @@ public class CallMediatorEditPart extends SingleCompartmentComplexFiguredAbstrac
      */
     @Override
     public void notifyChanged(Notification notification) {
+        // this.getModel will get EMF datamodel of the call mediator datamodel 
         if (this.getModel() instanceof CSSNodeImpl) {
             // The following part will check for validation issues with the current data in the model
             CSSNodeImpl model = (CSSNodeImpl) this.getModel();
@@ -367,7 +369,7 @@ public class CallMediatorEditPart extends SingleCompartmentComplexFiguredAbstrac
                     OMElement omElement = callMediatorSerializer.serializeSpecificMediator(callMediator);
                     // This will add a marker in the visual view if the data model is incomplete
                     if (StringUtils
-                            .isEmpty(MediatorValidationUtil.validateMediatorsFromOEMElement(omElement, "call"))) {
+                            .isEmpty(MediatorValidationUtil.validateMediatorsFromOEMElement(omElement, CALL_MEDIATOR_QNAME))) {
                         GraphicalValidatorUtil.removeValidationMark(this);
                     } else {
                         GraphicalValidatorUtil.addValidationMark(this);

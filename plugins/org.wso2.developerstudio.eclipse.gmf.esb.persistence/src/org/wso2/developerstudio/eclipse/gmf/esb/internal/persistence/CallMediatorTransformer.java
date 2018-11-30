@@ -35,6 +35,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.ValidationConstansts;
 
 public class CallMediatorTransformer extends AbstractEsbNodeTransformer {
 
@@ -125,7 +126,7 @@ public class CallMediatorTransformer extends AbstractEsbNodeTransformer {
         SynapseXPath synapseXPath;
         ResolvingEndpoint resolvingEndpoint;
         if (StringUtils.isEmpty(nameSpacedProperty.getPropertyValue()) && !isForValidation) {
-            synapseXPath = new SynapseXPath("FACTORY/DEFAULT/VALUE");
+            synapseXPath = new SynapseXPath(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
             resolvingEndpoint = new ResolvingEndpoint();
             resolvingEndpoint.setKeyExpression(synapseXPath);
             return resolvingEndpoint;

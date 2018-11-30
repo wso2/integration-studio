@@ -91,6 +91,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.WSDLEndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.CustomAPISerializer;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.EsbModelTransformer;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.ValidationConstansts;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.AddressEndpointFormPage;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.DefaultEndpointFormPage;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.EndpointFormPage;
@@ -539,7 +540,8 @@ public class DefaultEsbModelExporter implements EsbModelTransformer {
 
         // sourceXML = baos.toString("UTF-8");
         sourceXML = sourceXML.replaceAll("\\?><", "?>\n<");
-        sourceXML = sourceXML.replaceAll("FACTORY/DEFAULT/VALUE", "");
+        // Remove the default values added for design view validations
+        sourceXML = sourceXML.replaceAll(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION, "");
         return sourceXML;
     }
 

@@ -46,6 +46,7 @@ import org.wso2.developerstudio.eclipse.platform.ui.wizard.AbstractWSO2ProjectCr
  */
 public class ESBSolutionProjectCreationWizard extends AbstractWSO2ProjectCreationWizard {
 	private static final String JAVAEE_PERSPECTIVE = "org.eclipse.jst.j2ee.J2EEPerspective";
+	private static final String ESB_GRAPHICAL_PERSPECTIVE = "org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.perspective";
 
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	private IProject project;
@@ -133,17 +134,21 @@ public class ESBSolutionProjectCreationWizard extends AbstractWSO2ProjectCreatio
 			distributionProjectWizard.performFinish();
 		}
 		
-		//open J2EE perspective for 'Create New' project from template dashboard
-		IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
-		if (!JAVAEE_PERSPECTIVE.equals(window.getActivePage().getPerspective().getId())) {
-			try {
-				PlatformUI.getWorkbench().showPerspective(JAVAEE_PERSPECTIVE, window);
-			} catch (WorkbenchException e) {
-				log.error("Cannot switch to " + JAVAEE_PERSPECTIVE, e);
-			}
-		}
-		
-		return true;
+        getShell().getDisplay().asyncExec(new Runnable() {
+            @Override
+            public void run() {
+                IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+                if (!ESB_GRAPHICAL_PERSPECTIVE.equals(window.getActivePage().getPerspective().getId())) {
+                    try {
+                        PlatformUI.getWorkbench().showPerspective(ESB_GRAPHICAL_PERSPECTIVE, window);
+                    } catch (Exception e) {
+                        log.error("Cannot switch to ESB Graphical Perspective", e);
+                    }
+                }
+            }
+        });
+
+        return true;
 	}
 
 	private void updateMavenInformation(File pomLocation, String name) {

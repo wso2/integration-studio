@@ -146,6 +146,7 @@ public class XmlToJsonTransformationTemplate extends Wizard implements INewWizar
             Shell shell = getShell();
             URL url = ProjectCreationUtil.copyReadMe(project, sampleName);
             ProjectCreationUtil.openEditor(shell, fileDesc, TemplateProjectConstants.SYNAPSE_CONFIG_EDITOR_ID, url);
+            templateWizardUtil.setPerspective(getShell());
         } catch (CoreException ex) {
             templateWizardUtil
                     .throwCoreException(TemplateProjectConstants.THE_PROJECT_EXISTS_IN_THE_WORKSPACE_MESSAGE, null);

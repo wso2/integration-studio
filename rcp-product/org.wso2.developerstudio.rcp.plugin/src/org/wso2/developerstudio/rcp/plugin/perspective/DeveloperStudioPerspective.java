@@ -33,6 +33,10 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.intro.IIntroPart;
 
+/**
+ * This class contributes a new perspective to workbench. This perspective will clear the existing dashboards
+ * and provides a black starting point where we can start the getting started page in startup.
+ */
 public class DeveloperStudioPerspective implements IPerspectiveFactory {
 
     private static final String ANIMATED_DASHBOARD_ID = "org.wso2.developerstudio.eclipse.rcp.dashboard";
@@ -42,6 +46,7 @@ public class DeveloperStudioPerspective implements IPerspectiveFactory {
 
     @Override
     public void createInitialLayout(IPageLayout layout) {
+        //Handling Win32 OS specifically since animated dashboard doesn't support
         if (Platform.getOS().equals(Platform.OS_WIN32)) {
             final IIntroPart introPart = PlatformUI.getWorkbench().getIntroManager().getIntro();
             PlatformUI.getWorkbench().getIntroManager().closeIntro(introPart);

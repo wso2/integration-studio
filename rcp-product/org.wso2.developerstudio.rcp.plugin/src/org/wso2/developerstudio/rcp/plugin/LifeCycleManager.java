@@ -33,10 +33,20 @@ import org.wso2.developerstudio.eclipse.platform.ui.Activator;
 import org.wso2.developerstudio.eclipse.templates.dashboard.handlers.JettyServerHandler;
 import org.wso2.developerstudio.rcp.plugin.utils.RCPPluginHandlerUtils;
 
+/**
+ * This class handles the eclipse lifecycle events. In a RCP distribution we can
+ * customize this to have pre launch activities before starting the workbench
+ */
 public class LifeCycleManager {
 
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
+    /**
+     * This will fire once the workspece is selected in eclipse startup.
+     * We use this method to start the Embedded jetty server and java version checker
+     * @param appContext Eclipse Application Context
+     * @param display Startup display instance
+     */
     @PostContextCreate
     void postContextCreate(IApplicationContext appContext, Display display) {
         RCPPluginHandlerUtils rcpUtils = new RCPPluginHandlerUtils();

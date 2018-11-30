@@ -265,6 +265,7 @@ Please visit : http://wso2.com/products/developer-studio/
    </plugins>
 
    <features>
+      <!-- Basic Eclipse Features -->
       <feature id="org.eclipse.e4.rcp"/>
       <feature id="org.eclipse.emf.ecore"/>
       <feature id="org.eclipse.emf.common"/>
@@ -334,6 +335,7 @@ Please visit : http://wso2.com/products/developer-studio/
       <feature id="org.eclipse.pde" version="3.13.4.v20180330-0640"/>
       <feature id="org.eclipse.jdt" version="3.13.4.v20180330-0919"/>
 
+      <!-- Dev studio kernel/platform features -->
       <feature id="org.wso2.developerstudio.capp.feature"/>
       <feature id="org.wso2.developerstudio.carbon.server.feature"/>
       <feature id="org.wso2.developerstudio.carbon.server-40.feature"/>
@@ -354,20 +356,24 @@ Please visit : http://wso2.com/products/developer-studio/
       <feature id="org.wso2.developerstudio.web.ui.feature"/>
 <!--       <feature id="org.eclipse.graphiti.feature"/> -->
 
+      <!-- Dev studio ESB features -->
       <feature id="org.wso2.developerstudio.eclipse.esb.feature"/>
       <feature id="org.wso2.developerstudio.eclipse.esb.editor.feature"/>
       <feature id="org.wso2.developerstudio.eclipse.esb.dependencies.feature"/>
       <feature id="org.wso2.developerstudio.eclipse.visualdatamapper.editor.feature"/>
       <feature id="org.wso2.developerstudio.eclipse.smooks.editor.feature"/>
 
+      <!-- Dev studio BPS features -->
 <!--       <feature id="org.wso2.developerstudio.eclipse.bps.feature"/>
       <feature id="org.wso2.developerstudio.eclipse.bps.hteditor.feature"/>
       <feature id="org.wso2.developerstudio.eclipse.bps.bpmn.feature"/> -->
 
+      <!-- Dev studio DSS features -->
       <feature id="org.wso2.developerstudio.eclipse.data.service.feature"/>
       <feature id="org.wso2.developerstudio.eclipse.data.source.feature"/>
       <feature id="org.wso2.developerstudio.eclipse.dss.dependencies.feature"/>
 
+      <!-- Dev studio EI features -->
       <feature id="org.wso2.developerstudio.eclipse.ei.project.feature"/>
    </features>
 

@@ -25,6 +25,9 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.internal.splash.EclipseSplashHandler;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
+/**
+ * This class handles the splash events. We are using this to change the splash screen
+ */
 public class SplashHandler extends EclipseSplashHandler {
 
     private static final String PLUGIN_ID = "org.wso2.developerstudio.rcp.plugin";
@@ -41,6 +44,9 @@ public class SplashHandler extends EclipseSplashHandler {
         super();
     }
 
+    /**
+     * This method fires once the workspace is selected and splash screen is initializing
+     */
     @Override
     public void init(Shell splash) {
         super.init(splash);

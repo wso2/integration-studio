@@ -25,6 +25,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.Mediator;
 import org.apache.synapse.config.xml.SynapsePath;
 import org.apache.synapse.endpoints.AbstractEndpoint;
@@ -1045,6 +1046,12 @@ public abstract class AbstractEsbNodeDeserializer<T, R extends EsbNode> implemen
 
     protected NamespacedProperty createNamespacedProperty(SynapseXPath xpath) {
         NamespacedProperty nsp = EsbFactory.eINSTANCE.createNamespacedProperty();
+        if (xpath == null) {
+            return nsp;
+        }
+        if (StringUtils.isEmpty(xpath.toString())) {
+            return nsp;
+        }
         nsp.setPropertyValue(xpath.toString());
         if (xpath.getNamespaces() != null) {
             @SuppressWarnings("unchecked")

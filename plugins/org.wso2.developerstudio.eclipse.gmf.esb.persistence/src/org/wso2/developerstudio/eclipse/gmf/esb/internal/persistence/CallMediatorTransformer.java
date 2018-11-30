@@ -17,14 +17,17 @@ package org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence;
 
 import java.util.List;
 
+import org.apache.axiom.om.OMAttribute;
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.endpoints.IndirectEndpoint;
 import org.apache.synapse.endpoints.ResolvingEndpoint;
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.apache.synapse.util.xpath.SynapseXPath;
+import org.codehaus.plexus.util.StringUtils;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.ecore.EObject;
 import org.jaxen.JaxenException;
+import org.jaxen.XPathSyntaxException;
 import org.wso2.developerstudio.eclipse.gmf.esb.CallMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.CallMediatorEndpointType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
@@ -32,13 +35,14 @@ import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.ValidationConstansts;
 
 public class CallMediatorTransformer extends AbstractEsbNodeTransformer {
 
     public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
         org.apache.synapse.mediators.builtin.CallMediator callMediator;
         try {
-            callMediator = createCallMediator(subject);
+            callMediator = createCallMediator(subject, false);
             if (callMediator != null) {
                 information.getParentSequence().addChild(callMediator);
             }
@@ -74,7 +78,7 @@ public class CallMediatorTransformer extends AbstractEsbNodeTransformer {
             throws TransformerException {
         org.apache.synapse.mediators.builtin.CallMediator callMediator;
         try {
-            callMediator = createCallMediator(subject);
+            callMediator = createCallMediator(subject, false);
             if (callMediator != null) {
                 sequence.addChild(callMediator);
             }
@@ -91,8 +95,8 @@ public class CallMediatorTransformer extends AbstractEsbNodeTransformer {
         }
     }
 
-    private org.apache.synapse.mediators.builtin.CallMediator createCallMediator(EsbNode subject)
-            throws TransformerException, JaxenException {
+    public static org.apache.synapse.mediators.builtin.CallMediator createCallMediator(EsbNode subject,
+            boolean isForValidation) throws TransformerException, JaxenException {
         // Check subject.
         Assert.isTrue(subject instanceof CallMediator, "Invalid subject.");
         CallMediator visualCallMediator = (CallMediator) subject;
@@ -103,7 +107,7 @@ public class CallMediatorTransformer extends AbstractEsbNodeTransformer {
 
         if (visualCallMediator.getEndpointType() == CallMediatorEndpointType.XPATH) {
             NamespacedProperty nameSpacedProperty = visualCallMediator.getEndpointXpath();
-            Endpoint resolvingEndpoint = getEndpointFromXpath(nameSpacedProperty);
+            Endpoint resolvingEndpoint = getEndpointFromXpath(nameSpacedProperty, isForValidation);
             synapseCallMediator.setEndpoint(resolvingEndpoint);
         } else if (visualCallMediator.getEndpointType() == CallMediatorEndpointType.REGISRTYKEY) {
             RegistryKeyProperty regKey = visualCallMediator.getEndpointRegistrykey();
@@ -117,17 +121,26 @@ public class CallMediatorTransformer extends AbstractEsbNodeTransformer {
         return synapseCallMediator;
     }
 
-    public ResolvingEndpoint getEndpointFromXpath(NamespacedProperty nameSpacedProperty) throws JaxenException {
-
-        SynapseXPath synapseXPath = new SynapseXPath(nameSpacedProperty.getPropertyValue());
-        for (int i = 0; i < nameSpacedProperty.getNamespaces().keySet().size(); ++i) {
-            String prefix = (String) nameSpacedProperty.getNamespaces().keySet().toArray()[i];
-            String namespaceUri = nameSpacedProperty.getNamespaces().get(prefix);
-            synapseXPath.addNamespace(prefix, namespaceUri);
+    public static ResolvingEndpoint getEndpointFromXpath(NamespacedProperty nameSpacedProperty, boolean isForValidation)
+            throws JaxenException {
+        SynapseXPath synapseXPath;
+        ResolvingEndpoint resolvingEndpoint;
+        if (StringUtils.isEmpty(nameSpacedProperty.getPropertyValue()) && !isForValidation) {
+            synapseXPath = new SynapseXPath(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
+            resolvingEndpoint = new ResolvingEndpoint();
+            resolvingEndpoint.setKeyExpression(synapseXPath);
+            return resolvingEndpoint;
+        } else {
+            synapseXPath = new SynapseXPath(nameSpacedProperty.getPropertyValue());
+            for (int i = 0; i < nameSpacedProperty.getNamespaces().keySet().size(); ++i) {
+                String prefix = (String) nameSpacedProperty.getNamespaces().keySet().toArray()[i];
+                String namespaceUri = nameSpacedProperty.getNamespaces().get(prefix);
+                synapseXPath.addNamespace(prefix, namespaceUri);
+            }
+            resolvingEndpoint = new ResolvingEndpoint();
+            resolvingEndpoint.setKeyExpression(synapseXPath);
+            return resolvingEndpoint;
         }
-        ResolvingEndpoint resolvingEndpoint = new ResolvingEndpoint();
-        resolvingEndpoint.setKeyExpression(synapseXPath);
-        return resolvingEndpoint;
     }
 
 }

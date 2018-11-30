@@ -133,7 +133,7 @@ public abstract class AbstractEsbNodeTransformer implements EsbNodeTransformer {
         }
     }
 
-    protected void setCommonProperties(Mediator mediator,
+    protected static void setCommonProperties(Mediator mediator,
             org.wso2.developerstudio.eclipse.gmf.esb.Mediator visualElement) {
         mediator.setShortDescription(visualElement.getDescription());
         // FIXME : invoke getCommentsList() from org.apache.synapse.Mediator

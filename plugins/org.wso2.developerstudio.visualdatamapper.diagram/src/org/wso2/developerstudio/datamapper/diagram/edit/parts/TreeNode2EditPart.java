@@ -919,7 +919,10 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 
 				@Override
 				public void mouseEntered(MouseEvent me) {
-					highlightElementOnSelection();
+					String type = getNodeType();
+					if(!type.equals(JSON_SCHEMA_ARRAY) && !type.equals(JSON_SCHEMA_OBJECT)){
+						highlightElementOnSelection();
+					}
 					if (!(getEditDomain().getPaletteViewer().getActiveTool() instanceof PaletteToolEntry)) {
 						getEditDomain().getPaletteViewer()
 								.setActiveTool((ToolEntry) (((PaletteContainer) getEditDomain().getPaletteViewer()
@@ -939,7 +942,6 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 
 				@Override
 				public void mouseHover(MouseEvent me) {
-					highlightElementOnSelection();
 
 				}
 
@@ -1227,6 +1229,9 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 			newLabel.setForegroundColor(bckGrndColor);
 			rectFigure.remove(childrenList.get(1));
 			rectFigure.add(newLabel);
+			Figure attribFigure = (Figure)((this.getParent().getParent()).getChildren().get(0));
+			attribFigure.setOpaque(true);
+			attribFigure.setBackgroundColor(DataMapperColorConstants.highlightNodeBackColor);
 		}
 
 		public void removeHighlight() {
@@ -1238,6 +1243,9 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 			newLabel.setForegroundColor(bckGrndColor);
 			rectFigure.remove(childrenList.get(1));
 			rectFigure.add(newLabel);
+			Figure attribFigure = (Figure)((this.getParent().getParent()).getChildren().get(0));
+			attribFigure.setOpaque(false);
+			attribFigure.setBackgroundColor(DataMapperColorConstants.inputBoxFillColor);
 		}
 	}
 

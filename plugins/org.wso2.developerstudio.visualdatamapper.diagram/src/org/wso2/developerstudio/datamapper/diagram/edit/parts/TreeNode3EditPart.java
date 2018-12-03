@@ -839,7 +839,6 @@ public class TreeNode3EditPart extends AbstractBorderedShapeEditPart {
 
 				@Override
 				public void mouseEntered(MouseEvent me) {
-					highlightElementOnSelection();
 					if (!(getEditDomain().getPaletteViewer().getActiveTool() instanceof PaletteToolEntry)) {
 						getEditDomain().getPaletteViewer()
 								.setActiveTool((ToolEntry) (((PaletteContainer) getEditDomain().getPaletteViewer()
@@ -860,8 +859,6 @@ public class TreeNode3EditPart extends AbstractBorderedShapeEditPart {
 
 				@Override
 				public void mouseHover(MouseEvent me) {
-					highlightElementOnSelection();
-
 				}
 
 				@Override

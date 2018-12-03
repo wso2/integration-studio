@@ -65,7 +65,7 @@ public class CallTemplateMediatorExtFactory extends InvokeMediatorFactory {
             OMElement child = (OMElement) subElements.next();
             if (child.getQName().equals(new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "with-param"))) {
                 OMAttribute paramNameAttr = child.getAttribute(ATT_NAME);
-                Value paramValue = new ValueFactory().createValue("value", child);
+                Value paramValue = new ValueExtFactory().createValue("value", child);
                 if (paramNameAttr != null) {
                     invoker.addExpressionForParamName(paramNameAttr.getAttributeValue(), paramValue);
                 }

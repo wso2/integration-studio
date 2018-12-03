@@ -1480,10 +1480,10 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
         NamespacedProperty namespacedProperty = createNamespacedProperty();
         namespacedProperty.setPrettyName("property expression");
         namespacedProperty.setPropertyName("expression");
-        namespacedProperty.setPropertyValue("/default/expression");
+        namespacedProperty.setPropertyValue("");
         logProperty.setPropertyExpression(namespacedProperty);
-        logProperty.setPropertyName("property_name");
-        logProperty.setPropertyValue("property_value");
+        logProperty.setPropertyName("");
+        logProperty.setPropertyValue("");
         return logProperty;
     }
 
@@ -4279,7 +4279,7 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
         namespacedProperty.setPropertyName("expression");
         namespacedProperty.setPropertyValue("");
         namespacedProperty.setSupportsDynamicXPaths(true);
-        callTemplateParameter.setParameterName("param_name");
+        callTemplateParameter.setParameterName("");
         callTemplateParameter.setParameterValue("");
         callTemplateParameter.setParameterExpression(namespacedProperty);
         callTemplateParameter.setTemplateParameterType(RuleOptionType.VALUE);

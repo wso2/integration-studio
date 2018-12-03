@@ -35,6 +35,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.Cust
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.EsbNodeTransformer;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.ValidationConstansts;
 
 /**
  * {@link EsbNodeTransformer} responsible for transforming
@@ -51,7 +52,7 @@ public class LogMediatorTransformer extends AbstractEsbNodeTransformer {
         LogMediator visualLog = (LogMediator) subject;
 
         try {
-            info.getParentSequence().addChild(createLogMediator(visualLog));
+            info.getParentSequence().addChild(createLogMediator(visualLog, false));
             // Transform the log mediator output data flow path.
             doTransform(info, visualLog.getOutputConnector());
         } catch (JaxenException e) {
@@ -64,7 +65,7 @@ public class LogMediatorTransformer extends AbstractEsbNodeTransformer {
      * @return org.apache.synapse.mediators.builtin.LogMediator
      * @throws JaxenException
      */
-    private org.apache.synapse.mediators.builtin.LogMediator createLogMediator(LogMediator visualLog)
+    public static org.apache.synapse.mediators.builtin.LogMediator createLogMediator(LogMediator visualLog, boolean isForValidation)
             throws JaxenException {
         org.apache.synapse.mediators.builtin.LogMediator logMediator = new org.apache.synapse.mediators.builtin.LogMediator();
         setCommonProperties(logMediator, visualLog);
@@ -123,16 +124,30 @@ public class LogMediatorTransformer extends AbstractEsbNodeTransformer {
                 if (visualProperty.getPropertyValueType().getLiteral().equals("EXPRESSION")) {
                     NamespacedProperty namespacedExpression = visualProperty.getPropertyExpression();
                     if (namespacedExpression != null) {
-                        SynapsePath propertyExpression = CustomSynapsePathFactory
-                                .getSynapsePath(namespacedExpression.getPropertyValue());
-                        if (namespacedExpression.getNamespaces() != null
-                                && !(propertyExpression instanceof SynapseJsonPath)) {
-                            for (Entry<String, String> entry : namespacedExpression.getNamespaces().entrySet()) {
-                                propertyExpression.addNamespace(entry.getKey(), entry.getValue());
+                        if (!isForValidation && StringUtils.isEmpty(namespacedExpression.getPropertyValue())) {
+                            SynapsePath propertyExpression = CustomSynapsePathFactory
+                                    .getSynapsePath(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
+                            if (namespacedExpression.getNamespaces() != null
+                                    && !(propertyExpression instanceof SynapseJsonPath)) {
+                                for (Entry<String, String> entry : namespacedExpression.getNamespaces().entrySet()) {
+                                    propertyExpression.addNamespace(entry.getKey(), entry.getValue());
+                                }
                             }
-                        }
 
-                        mediatorProperty.setExpression(propertyExpression);
+                            mediatorProperty.setExpression(propertyExpression);
+                        }
+                        else {
+                            SynapsePath propertyExpression = CustomSynapsePathFactory
+                                    .getSynapsePath(namespacedExpression.getPropertyValue());
+                            if (namespacedExpression.getNamespaces() != null
+                                    && !(propertyExpression instanceof SynapseJsonPath)) {
+                                for (Entry<String, String> entry : namespacedExpression.getNamespaces().entrySet()) {
+                                    propertyExpression.addNamespace(entry.getKey(), entry.getValue());
+                                }
+                            }
+
+                            mediatorProperty.setExpression(propertyExpression);
+                        }
                     }
                 }
                 logMediator.addProperty(mediatorProperty);
@@ -154,7 +169,7 @@ public class LogMediatorTransformer extends AbstractEsbNodeTransformer {
         LogMediator visualLog = (LogMediator) subject;
 
         try {
-            sequence.addChild(createLogMediator(visualLog));
+            sequence.addChild(createLogMediator(visualLog, false));
             doTransformWithinSequence(info, visualLog.getOutputConnector().getOutgoingLink(), sequence);
         } catch (JaxenException e) {
             throw new TransformerException(e);

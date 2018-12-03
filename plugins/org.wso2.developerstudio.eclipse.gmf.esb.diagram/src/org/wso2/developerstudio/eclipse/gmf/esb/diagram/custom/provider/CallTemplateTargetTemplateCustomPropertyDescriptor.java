@@ -74,7 +74,7 @@ public class CallTemplateTargetTemplateCustomPropertyDescriptor extends Property
     private static final String synapseNS = "http://ws.apache.org/ns/synapse";
     private Properties properties = new Properties();
     private final String TYPE_TEMPLATE = "synapse/sequenceTemplate";
-    private final String DEFAULT_VALUE = "Select From Templates";
+    private final String DEFAULT_VALUE = "";
 
     public CallTemplateTargetTemplateCustomPropertyDescriptor(Object object,
             IItemPropertyDescriptor itemPropertyDescriptor) {

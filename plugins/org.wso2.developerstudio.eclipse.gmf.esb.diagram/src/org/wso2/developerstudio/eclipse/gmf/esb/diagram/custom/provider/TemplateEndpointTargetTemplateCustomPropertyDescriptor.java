@@ -67,7 +67,7 @@ public class TemplateEndpointTargetTemplateCustomPropertyDescriptor extends Prop
     private Properties properties = new Properties();
     private final String TYPE_TEMPLATE_SEQ = "synapse/sequenceTemplate";
     private final String TYPE_TEMPLATE_EPT = "synapse/endpointTemplate";
-    private final String DEFAULT_VALUE = "Select From Templates";
+    private final String DEFAULT_VALUE = "";
 
     public TemplateEndpointTargetTemplateCustomPropertyDescriptor(Object object,
             IItemPropertyDescriptor itemPropertyDescriptor) {

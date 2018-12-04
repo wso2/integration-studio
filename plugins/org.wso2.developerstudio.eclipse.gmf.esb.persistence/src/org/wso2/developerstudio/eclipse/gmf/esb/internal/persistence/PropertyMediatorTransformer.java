@@ -29,6 +29,7 @@ import org.apache.synapse.config.xml.XMLConfigConstants;
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.apache.synapse.util.xpath.SynapseJsonPath;
+import org.codehaus.plexus.util.StringUtils;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.ecore.EObject;
 import org.jaxen.JaxenException;
@@ -40,6 +41,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.Cust
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.EsbNodeTransformer;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.ValidationConstansts;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
@@ -50,7 +52,7 @@ import org.wso2.developerstudio.eclipse.logging.core.Logger;
  */
 public class PropertyMediatorTransformer extends AbstractEsbNodeTransformer {
 
-    private final String NEW_PROPERTY = "New Property...";
+    private final static String NEW_PROPERTY = "New Property...";
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
     /**
@@ -58,7 +60,7 @@ public class PropertyMediatorTransformer extends AbstractEsbNodeTransformer {
      */
     public void transform(TransformationInfo info, EsbNode subject) throws TransformerException {
         try {
-            info.getParentSequence().addChild(createPropertyMediator(subject));
+            info.getParentSequence().addChild(createPropertyMediator(subject, false));
             // Transform the property mediator output data flow path.
             doTransform(info, ((PropertyMediator) subject).getOutputConnector());
         } catch (JaxenException e) {
@@ -77,7 +79,7 @@ public class PropertyMediatorTransformer extends AbstractEsbNodeTransformer {
             throws TransformerException {
         // TODO Auto-generated method stub
         try {
-            sequence.addChild(createPropertyMediator(subject));
+            sequence.addChild(createPropertyMediator(subject, false));
             doTransformWithinSequence(information, ((PropertyMediator) subject).getOutputConnector().getOutgoingLink(),
                     sequence);
         } catch (JaxenException e) {
@@ -87,7 +89,7 @@ public class PropertyMediatorTransformer extends AbstractEsbNodeTransformer {
         }
     }
 
-    private org.apache.synapse.mediators.builtin.PropertyMediator createPropertyMediator(EsbNode subject)
+    public static org.apache.synapse.mediators.builtin.PropertyMediator createPropertyMediator(EsbNode subject, boolean isForValidation)
             throws XMLStreamException, JaxenException, TransformerException {
         // Check subject.
         Assert.isTrue(subject instanceof PropertyMediator, "Invalid subject.");
@@ -103,8 +105,8 @@ public class PropertyMediatorTransformer extends AbstractEsbNodeTransformer {
                     String newPropertyName = visualProp.getNewPropertyName();
                     if (newPropertyName != null && !"".equals(newPropertyName)) {
                         propMediator.setName(newPropertyName);
-                    } else {
-                        propMediator.setName("PROPERTY_NAME");
+                    } else if (!isForValidation){
+                        propMediator.setName(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
                     }
                 } else {
                     propMediator.setName(visualProp.getPropertyName().getLiteral());
@@ -172,6 +174,14 @@ public class PropertyMediatorTransformer extends AbstractEsbNodeTransformer {
                             while (entries.hasNext()) {
                                 Map.Entry<String, String> entry = entries.next();
                                 xpath.addNamespace(entry.getKey(), entry.getValue());
+                            }
+                        }
+
+                        // Add the default XPath if the user did not provide any expression
+                        if (!isForValidation) {
+                            if (xpath == null || StringUtils.isBlank(xpath.getExpression())) {
+                                xpath = CustomSynapsePathFactory
+                                        .getSynapsePath(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
                             }
                         }
 

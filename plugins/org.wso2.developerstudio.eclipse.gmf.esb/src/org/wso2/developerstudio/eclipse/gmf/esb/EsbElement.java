@@ -141,7 +141,7 @@ public interface EsbElement extends EsbNode {
     /**
      * Default property value used for namespaced expressions.
      */
-    String DEFAULT_EXPRESSION_PROPERTY_VALUE = "/default/expression";
+    String DEFAULT_EXPRESSION_PROPERTY_VALUE = "";
 
     /**
      * Default property value used for string literals.

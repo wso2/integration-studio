@@ -91,8 +91,6 @@ public class OutPutNode extends XMLNode {
                 case IN_NODE:
                     this.inNode = new InNode(childNode);
                     break;
-                default:
-                    //
                 }
             }
         }

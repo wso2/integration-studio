@@ -55,11 +55,10 @@ public class LeftContainer {
                         if (getAttribute(inNode, INCOMING_LINK) == null) {
                             for (int k = 0; k < inNode.getChildNodes().getLength(); k++) {
                                 Node incomingLink = inNode.getChildNodes().item(k);
-                                if (incomingLink.getAttributes() != null
-                                        && incomingLink.getNodeName().equals(INCOMING_LINK)) {
-                                    if (getAttribute(incomingLink, OUT_NODE) != null) {
+                                if (incomingLink.getAttributes() != null && 
+                                    (incomingLink.getNodeName().equals(INCOMING_LINK) && 
+                                     getAttribute(incomingLink, OUT_NODE) != null)) {
                                         this.inNodes.add(getAttribute(incomingLink, OUT_NODE));
-                                    }
                                 }
                             }
                         } else {

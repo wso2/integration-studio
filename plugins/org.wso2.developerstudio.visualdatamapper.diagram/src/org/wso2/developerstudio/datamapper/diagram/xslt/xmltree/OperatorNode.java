@@ -47,10 +47,8 @@ public class OperatorNode {
             if (basicContainer.getAttributes() != null && basicContainer.getNodeName().equals(BASIC_CONTAINER)) {
                 for (int j = 0; j < basicContainer.getChildNodes().getLength(); j++) {
                     Node childNode = basicContainer.getChildNodes().item(j);
-                    if (childNode.getAttributes() != null) {
-                        if (childNode.getNodeName().equals(LEFT_CONTAINER)) {
-                            this.leftContainer = new LeftContainer(childNode);
-                        }
+                    if (childNode.getAttributes() != null && childNode.getNodeName().equals(LEFT_CONTAINER)) {
+                        this.leftContainer = new LeftContainer(childNode);
                     }
                 }
             }

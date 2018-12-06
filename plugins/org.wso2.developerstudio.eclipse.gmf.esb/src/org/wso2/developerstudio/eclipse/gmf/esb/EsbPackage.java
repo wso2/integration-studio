@@ -22973,13 +22973,23 @@ public interface EsbPackage extends EPackage {
     int DATA_MAPPER_MEDIATOR__OUTPUT_SCHEMA = MEDIATOR_FEATURE_COUNT + 5;
 
     /**
+     * The feature id for the '<em><b>Xslt Style Sheet</b></em>' containment reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int DATA_MAPPER_MEDIATOR__XSLT_STYLE_SHEET = MEDIATOR_FEATURE_COUNT + 6;
+
+    /**
      * The feature id for the '<em><b>Configuration Local Path</b></em>' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int DATA_MAPPER_MEDIATOR__CONFIGURATION_LOCAL_PATH = MEDIATOR_FEATURE_COUNT + 6;
+    int DATA_MAPPER_MEDIATOR__CONFIGURATION_LOCAL_PATH = MEDIATOR_FEATURE_COUNT + 7;
 
     /**
      * The feature id for the '<em><b>Input Schema Local Path</b></em>' attribute.
@@ -22988,7 +22998,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DATA_MAPPER_MEDIATOR__INPUT_SCHEMA_LOCAL_PATH = MEDIATOR_FEATURE_COUNT + 7;
+    int DATA_MAPPER_MEDIATOR__INPUT_SCHEMA_LOCAL_PATH = MEDIATOR_FEATURE_COUNT + 8;
 
     /**
      * The feature id for the '<em><b>Output Schema Local Path</b></em>' attribute.
@@ -22997,7 +23007,17 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DATA_MAPPER_MEDIATOR__OUTPUT_SCHEMA_LOCAL_PATH = MEDIATOR_FEATURE_COUNT + 8;
+    int DATA_MAPPER_MEDIATOR__OUTPUT_SCHEMA_LOCAL_PATH = MEDIATOR_FEATURE_COUNT + 9;
+
+    /**
+     * The feature id for the '<em><b>Xslt Style Sheet Local Path</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int DATA_MAPPER_MEDIATOR__XSLT_STYLE_SHEET_LOCAL_PATH = MEDIATOR_FEATURE_COUNT + 10;
 
     /**
      * The feature id for the '<em><b>Output Type</b></em>' attribute.
@@ -23006,7 +23026,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DATA_MAPPER_MEDIATOR__OUTPUT_TYPE = MEDIATOR_FEATURE_COUNT + 9;
+    int DATA_MAPPER_MEDIATOR__OUTPUT_TYPE = MEDIATOR_FEATURE_COUNT + 11;
 
     /**
      * The number of structural features of the '<em>Data Mapper Mediator</em>' class.
@@ -23015,7 +23035,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DATA_MAPPER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 10;
+    int DATA_MAPPER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 12;
 
     /**
      * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.DataMapperMediatorInputConnectorImpl <em>Data Mapper Mediator Input Connector</em>}' class.
@@ -34532,6 +34552,20 @@ public interface EsbPackage extends EPackage {
     EReference getDataMapperMediator_OutputSchema();
 
     /**
+     * Returns the meta object for the containment reference
+     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator#getXsltStyleSheet <em>Xslt Style
+     * Sheet</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     *
+     * @return the meta object for the containment reference '<em>Xslt Style Sheet</em>'.
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator#getXsltStyleSheet()
+     * @see #getDataMapperMediator()
+     * @generated
+     */
+    EReference getDataMapperMediator_XsltStyleSheet();
+
+    /**
      * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator#getConfigurationLocalPath <em>Configuration Local Path</em>}'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -34563,6 +34597,20 @@ public interface EsbPackage extends EPackage {
      * @generated
      */
     EAttribute getDataMapperMediator_OutputSchemaLocalPath();
+
+    /**
+     * Returns the meta object for the attribute
+     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator#getXsltStyleSheetLocalPath <em>Xslt Style
+     * Sheet Local Path</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     *
+     * @return the meta object for the attribute '<em>Xslt Style Sheet Local Path</em>'.
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator#getXsltStyleSheetLocalPath()
+     * @see #getDataMapperMediator()
+     * @generated
+     */
+    EAttribute getDataMapperMediator_XsltStyleSheetLocalPath();
 
     /**
      * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator#getOutputType <em>Output Type</em>}'.
@@ -51118,6 +51166,15 @@ public interface EsbPackage extends EPackage {
         EReference DATA_MAPPER_MEDIATOR__OUTPUT_SCHEMA = eINSTANCE.getDataMapperMediator_OutputSchema();
 
         /**
+         * The meta object literal for the '<em><b>Xslt Style Sheet</b></em>' containment reference feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EReference DATA_MAPPER_MEDIATOR__XSLT_STYLE_SHEET = eINSTANCE.getDataMapperMediator_XsltStyleSheet();
+
+        /**
          * The meta object literal for the '<em><b>Configuration Local Path</b></em>' attribute feature.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -51140,6 +51197,16 @@ public interface EsbPackage extends EPackage {
          * @generated
          */
         EAttribute DATA_MAPPER_MEDIATOR__OUTPUT_SCHEMA_LOCAL_PATH = eINSTANCE.getDataMapperMediator_OutputSchemaLocalPath();
+
+        /**
+         * The meta object literal for the '<em><b>Xslt Style Sheet Local Path</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EAttribute DATA_MAPPER_MEDIATOR__XSLT_STYLE_SHEET_LOCAL_PATH = eINSTANCE
+                .getDataMapperMediator_XsltStyleSheetLocalPath();
 
         /**
          * The meta object literal for the '<em><b>Output Type</b></em>' attribute feature.

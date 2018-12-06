@@ -5,6 +5,7 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.DATA_
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.DATA_MAPPER_MEDIATOR__INPUT_TYPE;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.DATA_MAPPER_MEDIATOR__OUTPUT_SCHEMA;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.DATA_MAPPER_MEDIATOR__OUTPUT_TYPE;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.DATA_MAPPER_MEDIATOR__XSLT_STYLE_SHEET;
 
 import org.apache.synapse.mediators.AbstractMediator;
 import org.apache.synapse.mediators.Value;
@@ -36,6 +37,7 @@ public class DataMapperMediatorDeserializer extends AbstractEsbNodeDeserializer<
         if (setConfigurationKey(carbonDataMapperMediator)) {
             if (setInputSchemaKey(carbonDataMapperMediator)) {
                 setOutputSchemaKey(carbonDataMapperMediator);
+                setXSLTStyleSheetKey(carbonDataMapperMediator);
             }
         }
         setInputDataType(carbonDataMapperMediator);
@@ -90,6 +92,18 @@ public class DataMapperMediatorDeserializer extends AbstractEsbNodeDeserializer<
         } else {
             throw new DeserializerException("Data Mapper Mediator Output Schema Configuration is empty, "
                     + "\n \n Please double click on the datamapper to create a new configuration or add an existing configuration key before saving the ESB Config.");
+        }
+    }
+    
+    private void setXSLTStyleSheetKey(org.wso2.carbon.mediator.datamapper.DataMapperMediator carbonDataMapperMediator)
+            throws DeserializerException {
+        if (carbonDataMapperMediator.getXsltStyleSheetKey() != null) {
+            Value keyValue = carbonDataMapperMediator.getXsltStyleSheetKey();
+            if (keyValue.getKeyValue() != null && !keyValue.getKeyValue().equals("")) {
+                RegistryKeyProperty regKey = EsbFactory.eINSTANCE.createRegistryKeyProperty();
+                regKey.setKeyValue(keyValue.getKeyValue());
+                executeSetValueCommand(DATA_MAPPER_MEDIATOR__XSLT_STYLE_SHEET, regKey);
+            }
         }
     }
 

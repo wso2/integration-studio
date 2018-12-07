@@ -121,7 +121,7 @@
                                     <version>6.4.0</version>
                                     <type>zip</type>
                                     <overWrite>true</overWrite>
-                                    <outputDirectory>target/Eclipse.app/Contents/Eclipse/runtime</outputDirectory>
+                                    <outputDirectory>target/Eclipse.app/Contents/MacOS/runtime</outputDirectory>
                                 </artifactItem>
                             </artifactItems>
                         </configuration>

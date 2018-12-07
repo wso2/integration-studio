@@ -70,6 +70,7 @@
         <version.sortpom.plugin>2.3.0</version.sortpom.plugin>
         <webeditor.version>4.0.0-SNAPSHOT</webeditor.version>
         <wso2.tomcat.version>7.0.59.wso2v3</wso2.tomcat.version>
+        <ei.product.version>6.4.0</ei.product.version>
     </properties>
     <repositories>
         <repository>

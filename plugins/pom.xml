@@ -32,8 +32,9 @@
 		<module>org.wso2.developerstudio.eclipse.carbonserver40</module>
 		<module>org.wso2.developerstudio.eclipse.carbonserver42</module>
 		<module>org.wso2.developerstudio.eclipse.carbonserver44</module>
-                <module>org.wso2.developerstudio.eclipse.carbonserver44ei</module>
-                <module>org.wso2.developerstudio.eclipse.server.base</module>
+        <module>org.wso2.developerstudio.eclipse.carbonserver44ei</module>
+        <module>org.wso2.developerstudio.eclipse.carbonserver44microei</module>
+        <module>org.wso2.developerstudio.eclipse.server.base</module>
 		<module>org.wso2.developerstudio.eclipse.general.project</module>
 		<module>org.wso2.developerstudio.eclipse.registry.perspective</module>
 		<module>org.wso2.developerstudio.eclipse.registry.search</module>

@@ -186,7 +186,6 @@ public class PlatformEarlyStartUpHandler implements IStartup {
         public String getToolTipText() {
             return "Getting Started";
         }
-
     }
 
 }

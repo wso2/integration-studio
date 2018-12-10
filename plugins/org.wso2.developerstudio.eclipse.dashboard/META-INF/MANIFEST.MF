@@ -7,7 +7,7 @@ Bundle-Activator: org.wso2.developerstudio.eclipse.dashboard.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.wso2.developerstudio.eclipse.platform.ui
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Import-Package: org.eclipse.core.resources,
  org.eclipse.ui.forms,
@@ -21,6 +21,7 @@ Import-Package: org.eclipse.core.resources,
  org.wso2.developerstudio.eclipse.carbonserver42.register.product.servers;version="[6.0.0,7.0.0)",
  org.wso2.developerstudio.eclipse.carbonserver44.register.product.servers;version="[6.0.0,7.0.0)",
  org.wso2.developerstudio.eclipse.carbonserver44ei.register.product.servers;version="[6.0.0,7.0.0)",
+ org.wso2.developerstudio.eclipse.carbonserver44microei.register.product.servers;version="[6.0.0,7.0.0)",
  org.wso2.developerstudio.eclipse.logging.core;version="[4.0.0,7.0.0)",
  org.wso2.developerstudio.eclipse.platform.core.utils;version="[4.0.0,7.0.0)",
  org.wso2.developerstudio.eclipse.samples.contributor;version="[6.0.0,7.0.0)",

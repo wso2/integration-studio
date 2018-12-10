@@ -61,5 +61,6 @@ Export-Package: org.wso2.developerstudio.eclipse.distribution.project.export;ver
  org.wso2.developerstudio.eclipse.distribution.project.model;version="6.5.0",
  org.wso2.developerstudio.eclipse.distribution.project.publisher;version="6.5.0",
  org.wso2.developerstudio.eclipse.distribution.project.ui.wizard;version="6.5.0",
- org.wso2.developerstudio.eclipse.distribution.project.util;version="6.5.0"
+ org.wso2.developerstudio.eclipse.distribution.project.util;version="6.5.0",
+ org.wso2.developerstudio.eclipse.distribution.project.validator
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8

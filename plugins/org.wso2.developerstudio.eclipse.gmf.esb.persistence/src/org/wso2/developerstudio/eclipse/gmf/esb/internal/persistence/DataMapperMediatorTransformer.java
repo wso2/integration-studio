@@ -47,6 +47,9 @@ public class DataMapperMediatorTransformer extends AbstractEsbNodeTransformer {
             if (setInputSchemaKey(visualDataMapperMediator, carbonDataMapperMediator)) {
 
                 setOutputSchemaKey(visualDataMapperMediator, carbonDataMapperMediator);
+                
+                setXsltStyleSheetKey(visualDataMapperMediator, carbonDataMapperMediator);
+                
             }
         }
 
@@ -108,6 +111,19 @@ public class DataMapperMediatorTransformer extends AbstractEsbNodeTransformer {
                     + "\n \n Please double click on the datamapper mediator to create a new configuration or add an existing configuration key before saving the ESB Config.");
         }
         return true;
+    }
+    
+    private void setXsltStyleSheetKey(DataMapperMediator visualDataMapperMediator,
+            org.wso2.carbon.mediator.datamapper.DataMapperMediator carbonDataMapperMediator)
+            throws TransformerException {
+        Value xsltStyleSheetKey = null;
+        String key = visualDataMapperMediator.getXsltStyleSheet().getKeyValue();
+        if (key != null && !key.equals("")) {
+            xsltStyleSheetKey = new Value(key);
+        }
+        if (xsltStyleSheetKey != null) {
+            carbonDataMapperMediator.setXsltStyleSheetKey(xsltStyleSheetKey);
+        }
     }
 
     private void setInputDataType(DataMapperMediator visualDataMapperMediator,

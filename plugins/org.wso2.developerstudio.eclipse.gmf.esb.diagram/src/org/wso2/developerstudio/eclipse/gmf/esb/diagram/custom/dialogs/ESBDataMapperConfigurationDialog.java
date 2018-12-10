@@ -106,6 +106,7 @@ public class ESBDataMapperConfigurationDialog extends Dialog {
     private static final String GROUP_ID = "org.wso2.carbon"; //$NON-NLS-1$
     private static final String INPUT_AVROSCHEMA = "_inputSchema.json"; //$NON-NLS-1$
     private static final String OUTPUT_AVROSCHEMA = "_outputSchema.json"; //$NON-NLS-1$
+    private static final String XSLT_AVROSTYLESHEET = "_xsltStyleSheet.xml";
     private static final String DATAMAPPER_CONFIG_EXT = ".dmc"; //$NON-NLS-1$
     private static final String TYPE_TEXT_PLAIN = "text/plain"; //$NON-NLS-1$
     private static final int REGISTRY_RESOURCE = 0;
@@ -442,8 +443,10 @@ public class ESBDataMapperConfigurationDialog extends Dialog {
             throws Exception {
         String inputAvroSchemaName = name.replace(DATAMAPPER_CONFIG_EXT, INPUT_AVROSCHEMA);
         String outputAvroSchemaName = name.replace(DATAMAPPER_CONFIG_EXT, OUTPUT_AVROSCHEMA);
+        String xsltAvroStyleSheetName = name.replace(DATAMAPPER_CONFIG_EXT, XSLT_AVROSTYLESHEET);
         createRegistryArtifact(project, inputAvroSchemaName, path, ""); //$NON-NLS-1$
         createRegistryArtifact(project, outputAvroSchemaName, path, ""); //$NON-NLS-1$
+        createRegistryArtifact(project, xsltAvroStyleSheetName, path, "");
     }
 
     private static String getMavenGroupId(File pomLocation) {

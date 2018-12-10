@@ -20,27 +20,28 @@
    <extension point="org.eclipse.e4.ui.css.swt.theme">
       <theme
       	basestylesheeturi="themes/css/wso2-theme-standalone.css" 
-      	id="org.wso2.developerstudio.eclipse.esb.theme.standalone" 
-      	label="WSO2 (standalone)" 
-      	os="macosx" 
-      	/>
-      <theme
-      	basestylesheeturi="themes/css/wso2-theme-standalone.css" 
       	id="org.wso2.developerstudio.eclipse.esb.theme" 
-      	label="WSO2" 
+      	label="WSO2EI" 
       	os="macosx" 
       	/>
       	<theme
       	basestylesheeturi="themes/css/wso2-theme-standalone.css" 
       	id="org.wso2.developerstudio.eclipse.esb.theme" 
-      	label="WSO2" 
+      	label="WSO2EI" 
       	os="linux" 
       	/>
       	<theme
       	basestylesheeturi="themes/css/wso2-theme-standalone.css" 
       	id="org.wso2.developerstudio.eclipse.esb.theme" 
-      	label="WSO2" 
+      	label="WSO2EI" 
       	os="win32"
+      	/>
+      	<theme
+      	basestylesheeturi="themes/css/wso2-theme-standalone.css" 
+      	id="org.wso2.developerstudio.eclipse.esb.theme" 
+      	label="WSO2EI" 
+      	os="win"
+      	os_version="6.0,6.1,6.2,6.3,10.0"
       	/>
       <property name="applicationCSSResources" 
       value="platform:/plugin/org.wso2.developerstudio.eclipse.esb.theme/themes/images/" />

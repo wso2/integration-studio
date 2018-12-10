@@ -57,15 +57,25 @@ public class NamespacedPropertyEditor extends CustomDialogCellEditor {
         this.propertyDescriptor = propertyDescriptor;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+	/**
+	 * {@inheritDoc}
+	 */
     protected Object openDialogBox(Control cellEditorWindow) {
-        NamespacedPropertyEditorDialog dialog = new NamespacedPropertyEditorDialog(cellEditorWindow.getShell(),
-                getStyle(), namespacedProperty);
-        dialog.open();
-        if (dialog.isSaved()) {
-            propertyDescriptor.setPropertyValue(propertyContainer, namespacedProperty);
+        if (namespacedProperty.isSupportJsonPaths()) {
+            // If JSON path is supported by the expression then the expressions dialog box will pop-up 
+            ExpressionPropertyEditorDialog dialog = new ExpressionPropertyEditorDialog(cellEditorWindow.getShell(),
+                    getStyle(), namespacedProperty);
+            dialog.open();
+            if (dialog.isSaved()) {
+                propertyDescriptor.setPropertyValue(propertyContainer, namespacedProperty);
+            }
+        } else {
+            NamespacedPropertyEditorDialog dialog = new NamespacedPropertyEditorDialog(cellEditorWindow.getShell(),
+                    getStyle(), namespacedProperty);
+            dialog.open();
+            if (dialog.isSaved()) {
+                propertyDescriptor.setPropertyValue(propertyContainer, namespacedProperty);
+            }
         }
         return null;
     }

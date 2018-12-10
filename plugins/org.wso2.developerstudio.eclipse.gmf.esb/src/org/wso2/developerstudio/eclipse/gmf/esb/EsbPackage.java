@@ -5974,6 +5974,15 @@ public interface EsbPackage extends EPackage {
      * @ordered
      */
     int NAMESPACED_PROPERTY__DYNAMIC = ESB_NODE_FEATURE_COUNT + 5;
+    
+	/**
+	 * The feature id for the '<em><b>Support Json Paths</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NAMESPACED_PROPERTY__SUPPORT_JSON_PATHS = ESB_NODE_FEATURE_COUNT + 6;
 
     /**
      * The number of structural features of the '<em>Namespaced Property</em>' class.
@@ -5982,7 +5991,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NAMESPACED_PROPERTY_FEATURE_COUNT = ESB_NODE_FEATURE_COUNT + 6;
+    int NAMESPACED_PROPERTY_FEATURE_COUNT = ESB_NODE_FEATURE_COUNT + 7;
 
     /**
      * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -30200,6 +30209,18 @@ public interface EsbPackage extends EPackage {
      * @generated
      */
     EAttribute getNamespacedProperty_Dynamic();
+    
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty#isSupportJsonPaths <em>Support Json Paths</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Support Json Paths</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty#isSupportJsonPaths()
+	 * @see #getNamespacedProperty()
+	 * @generated
+	 */
+	EAttribute getNamespacedProperty_SupportJsonPaths();
+
 
     /**
      * Returns the meta object for class '{@link org.wso2.developerstudio.eclipse.gmf.esb.EnrichMediator <em>Enrich Mediator</em>}'.
@@ -47714,6 +47735,14 @@ public interface EsbPackage extends EPackage {
          * @generated
          */
         EAttribute NAMESPACED_PROPERTY__DYNAMIC = eINSTANCE.getNamespacedProperty_Dynamic();
+        
+		/**
+		 * The meta object literal for the '<em><b>Support Json Paths</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute NAMESPACED_PROPERTY__SUPPORT_JSON_PATHS = eINSTANCE.getNamespacedProperty_SupportJsonPaths();
 
         /**
          * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EnrichMediatorImpl <em>Enrich Mediator</em>}' class.

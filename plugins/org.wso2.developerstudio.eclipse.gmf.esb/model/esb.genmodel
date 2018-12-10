@@ -1149,6 +1149,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//NamespacedProperty/namespaces"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//NamespacedProperty/supportsDynamicXPaths"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//NamespacedProperty/dynamic"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//NamespacedProperty/supportJsonPaths"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//EnrichMediator">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//EnrichMediator/cloneSource"/>

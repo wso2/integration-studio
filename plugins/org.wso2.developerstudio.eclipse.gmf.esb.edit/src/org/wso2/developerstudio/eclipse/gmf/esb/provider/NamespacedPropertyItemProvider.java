@@ -54,12 +54,13 @@ public class NamespacedPropertyItemProvider extends EsbNodeItemProvider {
         if (itemPropertyDescriptors == null) {
             super.getPropertyDescriptors(object);
 
-            addPrettyNamePropertyDescriptor(object);
-            addPropertyNamePropertyDescriptor(object);
-            addPropertyValuePropertyDescriptor(object);
-            addNamespacesPropertyDescriptor(object);
-            addSupportsDynamicXPathsPropertyDescriptor(object);
-            addDynamicPropertyDescriptor(object);
+			addPrettyNamePropertyDescriptor(object);
+			addPropertyNamePropertyDescriptor(object);
+			addPropertyValuePropertyDescriptor(object);
+			addNamespacesPropertyDescriptor(object);
+			addSupportsDynamicXPathsPropertyDescriptor(object);
+			addDynamicPropertyDescriptor(object);
+			addSupportJsonPathsPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
@@ -152,6 +153,7 @@ public class NamespacedPropertyItemProvider extends EsbNodeItemProvider {
                  null));
     }
 
+
     /**
      * This adds a property descriptor for the Supports Dynamic XPaths feature.
      * <!-- begin-user-doc -->
@@ -226,38 +228,46 @@ public class NamespacedPropertyItemProvider extends EsbNodeItemProvider {
         return keyValue;
     }
 
-    /**
-     * This handles model notifications by calling {@link #updateChildren} to update any cached
-     * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
+	/**
+	 * This adds a property descriptor for the Support Json Paths feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSupportJsonPathsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_NamespacedProperty_supportJsonPaths_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_NamespacedProperty_supportJsonPaths_feature", "_UI_NamespacedProperty_type"),
+				 EsbPackage.Literals.NAMESPACED_PROPERTY__SUPPORT_JSON_PATHS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
 
     @Override
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
 
-        switch (notification.getFeatureID(NamespacedProperty.class)) {
-            case EsbPackage.NAMESPACED_PROPERTY__PRETTY_NAME:
-            case EsbPackage.NAMESPACED_PROPERTY__PROPERTY_NAME:
-            case EsbPackage.NAMESPACED_PROPERTY__PROPERTY_VALUE:
-            case EsbPackage.NAMESPACED_PROPERTY__NAMESPACES:
-            case EsbPackage.NAMESPACED_PROPERTY__SUPPORTS_DYNAMIC_XPATHS:
-            case EsbPackage.NAMESPACED_PROPERTY__DYNAMIC:
-                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-                return;
-        }
-        super.notifyChanged(notification);
-    }
+		switch (notification.getFeatureID(NamespacedProperty.class)) {
+			case EsbPackage.NAMESPACED_PROPERTY__PRETTY_NAME:
+			case EsbPackage.NAMESPACED_PROPERTY__PROPERTY_NAME:
+			case EsbPackage.NAMESPACED_PROPERTY__PROPERTY_VALUE:
+			case EsbPackage.NAMESPACED_PROPERTY__NAMESPACES:
+			case EsbPackage.NAMESPACED_PROPERTY__SUPPORTS_DYNAMIC_XPATHS:
+			case EsbPackage.NAMESPACED_PROPERTY__DYNAMIC:
+			case EsbPackage.NAMESPACED_PROPERTY__SUPPORT_JSON_PATHS:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
+		}
+		super.notifyChanged(notification);
+	}
 
-    /**
-     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
-     * that can be created under this object.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
 
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {

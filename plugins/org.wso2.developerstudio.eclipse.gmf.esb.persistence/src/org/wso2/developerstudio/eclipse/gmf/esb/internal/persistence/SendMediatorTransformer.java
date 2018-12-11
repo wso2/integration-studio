@@ -19,6 +19,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.mediators.Value;
 import org.apache.synapse.mediators.base.SequenceMediator;
@@ -28,15 +29,17 @@ import org.eclipse.emf.ecore.EObject;
 import org.jaxen.JaxenException;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.SendMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.SynapseXPathExt;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.ValidationConstansts;
 
 public class SendMediatorTransformer extends AbstractEsbNodeTransformer {
 
     public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
         org.apache.synapse.mediators.builtin.SendMediator sendMediator;
         try {
-            sendMediator = createSendMediator(subject);
+            sendMediator = createSendMediator(subject, false);
             if (sendMediator != null) {
                 information.getParentSequence().addChild(sendMediator);
             }
@@ -66,7 +69,7 @@ public class SendMediatorTransformer extends AbstractEsbNodeTransformer {
             throws TransformerException {
         org.apache.synapse.mediators.builtin.SendMediator sendMediator;
         try {
-            sendMediator = createSendMediator(subject);
+            sendMediator = createSendMediator(subject, false);
             if (sendMediator != null) {
                 sequence.addChild(sendMediator);
             }
@@ -77,7 +80,7 @@ public class SendMediatorTransformer extends AbstractEsbNodeTransformer {
         }
     }
 
-    private org.apache.synapse.mediators.builtin.SendMediator createSendMediator(EsbNode subject)
+    public static org.apache.synapse.mediators.builtin.SendMediator createSendMediator(EsbNode subject, boolean isForValidation)
             throws JaxenException {
         // Check subject.
         Assert.isTrue(subject instanceof SendMediator, "Invalid subject.");
@@ -103,13 +106,18 @@ public class SendMediatorTransformer extends AbstractEsbNodeTransformer {
             }
 
             if (visualSend.getReceivingSequenceType().getLiteral().equals("Dynamic")) {
-
+                SynapseXPath expression;
                 if (visualSend.getDynamicReceivingSequence() != null
                         && visualSend.getDynamicReceivingSequence().getPropertyValue() != null) {
 
-                    SynapseXPath expression = new SynapseXPath(
-                            visualSend.getDynamicReceivingSequence().getPropertyValue());
-
+                    // If not for validation and the synapse path is empty the fill it with default values
+                    if (!isForValidation
+                            && StringUtils.isEmpty(visualSend.getDynamicReceivingSequence().getPropertyValue())) {
+                        expression = (SynapseXPath) SynapseXPathExt
+                                .createSynapsePath(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
+                    } else {
+                        expression = new SynapseXPath(visualSend.getDynamicReceivingSequence().getPropertyValue());
+                    }
                     if (visualSend.getDynamicReceivingSequence().getNamespaces() != null) {
 
                         Map<String, String> map = visualSend.getDynamicReceivingSequence().getNamespaces();

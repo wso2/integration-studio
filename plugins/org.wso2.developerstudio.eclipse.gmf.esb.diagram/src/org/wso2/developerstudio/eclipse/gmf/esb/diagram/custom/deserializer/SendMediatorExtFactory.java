@@ -158,7 +158,7 @@ public class SendMediatorExtFactory extends SendMediatorFactory {
 
         String receivingSequence = omElement.getAttributeValue(RECEIVING_SEQUENCE);
         if (receivingSequence != null) {
-            ValueFactory valueFactory = new ValueFactory();
+            ValueExtFactory valueFactory = new ValueExtFactory();
             Value value = valueFactory.createValue(XMLConfigConstants.RECEIVE, omElement);
 
             ((SendMediator) mediator).setReceivingSequence(value);

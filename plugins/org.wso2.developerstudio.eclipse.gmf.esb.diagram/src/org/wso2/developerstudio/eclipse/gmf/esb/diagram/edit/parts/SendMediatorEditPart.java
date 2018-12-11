@@ -21,7 +21,10 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EditPa
 
 import java.util.Iterator;
 
+import org.apache.axiom.om.OMElement;
 import org.apache.commons.lang.StringUtils;
+import org.apache.synapse.SynapseException;
+import org.apache.synapse.config.xml.SendMediatorSerializer;
 import org.eclipse.draw2d.GridData;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.PositionConstants;
@@ -54,8 +57,11 @@ import org.eclipse.gmf.runtime.emf.type.core.requests.SetRequest;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.papyrus.infra.gmfdiag.css.CSSNodeImpl;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
+import org.jaxen.JaxenException;
+import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractEndpoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EsbGroupingShape;
@@ -67,6 +73,10 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.utils.CustomToolT
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.SendMediatorCanonicalEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.SendMediatorItemSemanticEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.validator.GraphicalValidatorUtil;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.validator.MediatorValidationUtil;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.SendMediatorImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.SendMediatorTransformer;
 
 /**
  * @generated NOT
@@ -138,36 +148,6 @@ public class SendMediatorEditPart extends SingleCompartmentComplexFiguredAbstrac
             }
         };
         return lep;
-    }
-
-    public void notifyChanged(Notification notification) {
-        super.notifyChanged(notification);
-        /*
-         * if(notification.getFeature() instanceof EReference){
-         * if("StaticReceivingSequence".equals(((EReference)notification.getFeature()).getName())){
-         * 
-         * String oldValue=((RegistryKeyProperty) notification.getOldValue()).getKeyValue();
-         * String newValue=((RegistryKeyProperty) notification.getNewValue()).getKeyValue();
-         * if(!oldValue.equals(newValue)){
-         * 
-         * IEditorPart
-         * activeEditor=PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
-         * if (activeEditor instanceof EsbMultiPageEditor) {
-         * IFile openedFile = ((IFileEditorInput)activeEditor.getEditorInput()).getFile();
-         * ElementDuplicator endPointDuplicator = new
-         * ElementDuplicator(openedFile.getProject(),((EsbMultiPageEditor)activeEditor).getGraphicalEditor());
-         * endPointDuplicator.updateAssociatedDiagrams((EsbMultiPageEditor)activeEditor);
-         * }
-         * }
-         * }
-         * }
-         */
-        if (notification.getFeature() instanceof EAttribute) {
-            if (EsbPackage.eINSTANCE.getSendMediator_SkipSerialization().equals(notification.getFeature())) {
-                updateEndpointInlineProperty(notification);
-            }
-        }
-
     }
 
     /**
@@ -504,6 +484,41 @@ public class SendMediatorEditPart extends SingleCompartmentComplexFiguredAbstrac
 
     }
 
+    @Override
+    public void notifyChanged(Notification notification) {
+        super.notifyChanged(notification);
+
+        if (notification.getFeature() instanceof EAttribute) {
+            if (EsbPackage.eINSTANCE.getSendMediator_SkipSerialization().equals(notification.getFeature())) {
+                updateEndpointInlineProperty(notification);
+            }
+        }
+        // this.getModel() will get EMF datamodel of the send mediator datamodel
+        if (this.getModel() instanceof CSSNodeImpl) {
+            // The following part will check for validation issues with the current data in the model
+            CSSNodeImpl model = (CSSNodeImpl) this.getModel();
+            if (model.getElement() instanceof SendMediatorImpl) {
+                SendMediatorImpl sendMediatorDataModel = (SendMediatorImpl) model.getElement();
+                try {
+                    org.apache.synapse.mediators.builtin.SendMediator sendMediator = SendMediatorTransformer
+                            .createSendMediator((EsbNode) sendMediatorDataModel, true);
+
+                    SendMediatorSerializer sendMediatorSerializer = new SendMediatorSerializer();
+                    OMElement omElement = sendMediatorSerializer.serializeSpecificMediator(sendMediator);
+
+                    if (StringUtils
+                            .isEmpty(MediatorValidationUtil.validateMediatorsFromOEMElement(omElement, "send"))) {
+                        GraphicalValidatorUtil.removeValidationMark(this);
+                    } else {
+                        GraphicalValidatorUtil.addValidationMark(this);
+                    }
+                } catch (JaxenException | SynapseException e) {
+                    GraphicalValidatorUtil.addValidationMark(this);
+                }
+            }
+        }
+    }
+    
     /**
      * @generated NOT
      */

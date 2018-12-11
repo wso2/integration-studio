@@ -12,6 +12,7 @@ import org.apache.synapse.mediators.Value;
 import org.apache.synapse.util.xpath.SynapseJsonPath;
 import org.apache.synapse.util.xpath.SynapseXPath;
 import org.jaxen.JaxenException;
+import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.SynapseXPathExt;
 
 import javax.xml.namespace.QName;
 
@@ -177,7 +178,8 @@ public class ValueExtFactory {
         try {
             synapseXPath = SynapseXPathFactory.getSynapseXPath(elem, xpathExpr);
         } catch (JaxenException e) {
-            handleException("Can not create Synapse Xpath from given key");
+            log.error("Can not create Synapse Xpath from given key" + e );
+            synapseXPath = (SynapseXPath) SynapseXPathExt.createSynapsePath("");
         }
 
         return synapseXPath;

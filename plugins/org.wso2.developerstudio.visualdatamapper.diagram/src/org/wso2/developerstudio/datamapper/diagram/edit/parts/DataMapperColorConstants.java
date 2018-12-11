@@ -25,6 +25,7 @@ public class DataMapperColorConstants {
 	public static final Color outputTitleBarColor = new Color(null, 241, 196, 15);
 	public static final Color titleBarColor = new Color(null, 155, 89, 182);
 	public static final Color highlightNodeColor = new Color(null, 41, 128, 185);
+	public static final Color highlightNodeBackColor = new Color(null, 255, 255, 0);
 	public static final Color borderColor = new Color(null, 71, 68, 68);
 	public static final Color connectorColor = new Color(null, 71, 68, 68);
 	public static final Color color_white = new Color(null, 255, 255, 255);

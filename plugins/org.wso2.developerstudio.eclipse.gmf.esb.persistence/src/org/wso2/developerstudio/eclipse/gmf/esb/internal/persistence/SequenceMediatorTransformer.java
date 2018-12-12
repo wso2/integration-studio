@@ -21,6 +21,7 @@ import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.mediators.Value;
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.apache.synapse.util.xpath.SynapseXPath;
+import org.eclipse.aether.util.StringUtils;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -30,8 +31,10 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.KeyType;
 import org.wso2.developerstudio.eclipse.gmf.esb.Sequence;
+import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.SynapseXPathExt;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.ValidationConstansts;
 
 public class SequenceMediatorTransformer extends AbstractEsbNodeTransformer {
 
@@ -45,16 +48,30 @@ public class SequenceMediatorTransformer extends AbstractEsbNodeTransformer {
         sequence.setName(visualSequence.getName());
         try {
             Value value = null;
+            SynapseXPath synapseXPath = null;
             if (visualSequence.getReferringSequenceType() == KeyType.DYNAMIC) {
-                SynapseXPath synapseXPath = new SynapseXPath(
-                        visualSequence.getDynamicReferenceKey().getPropertyValue());
-                for (int i = 0; i < visualSequence.getDynamicReferenceKey().getNamespaces().keySet().size(); ++i) {
-                    String prefix = (String) visualSequence.getDynamicReferenceKey().getNamespaces().keySet()
-                            .toArray()[i];
-                    String namespaceUri = visualSequence.getDynamicReferenceKey().getNamespaces().get(prefix);
-                    synapseXPath.addNamespace(prefix, namespaceUri);
+                if (StringUtils.isEmpty(visualSequence.getDynamicReferenceKey().getPropertyValue())) {
+                    synapseXPath =
+                            (SynapseXPath) SynapseXPathExt
+                                    .createSynapsePath(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
+                    for (int i = 0; i < visualSequence.getDynamicReferenceKey().getNamespaces().keySet().size(); ++i) {
+                        String prefix =
+                                (String) visualSequence.getDynamicReferenceKey().getNamespaces().keySet().toArray()[i];
+                        String namespaceUri = visualSequence.getDynamicReferenceKey().getNamespaces().get(prefix);
+                        synapseXPath.addNamespace(prefix, namespaceUri);
+                    }
+                    value = new Value(synapseXPath);
+
+                } else {
+                    synapseXPath = new SynapseXPath(visualSequence.getDynamicReferenceKey().getPropertyValue());
+                    for (int i = 0; i < visualSequence.getDynamicReferenceKey().getNamespaces().keySet().size(); ++i) {
+                        String prefix =
+                                (String) visualSequence.getDynamicReferenceKey().getNamespaces().keySet().toArray()[i];
+                        String namespaceUri = visualSequence.getDynamicReferenceKey().getNamespaces().get(prefix);
+                        synapseXPath.addNamespace(prefix, namespaceUri);
+                    }
+                    value = new Value(synapseXPath);
                 }
-                value = new Value(synapseXPath);
             } else {
                 value = new Value(visualSequence.getStaticReferenceKey().getKeyValue());
             }
@@ -125,5 +142,38 @@ public class SequenceMediatorTransformer extends AbstractEsbNodeTransformer {
         } catch (JaxenException e) {
             throw new TransformerException(e);
         }
+    }
+    
+    public static org.apache.synapse.mediators.base.SequenceMediator createSequenceMediatorValidation(TransformationInfo information, EsbNode subject)
+            throws TransformerException {
+        // Check subject.
+        Assert.isTrue(subject instanceof Sequence, "Invalid subject.");
+        Sequence visualSequence = (Sequence) subject;
+        org.apache.synapse.mediators.base.SequenceMediator sequence = new SequenceMediator();
+        org.apache.synapse.mediators.base.SequenceMediator refferingSequence = new SequenceMediator();
+        setCommonProperties(refferingSequence, visualSequence);
+        sequence.setName(visualSequence.getName());
+        try {
+            Value value = null;
+            SynapseXPath synapseXPath = null;
+            if (visualSequence.getReferringSequenceType() == KeyType.DYNAMIC) {
+
+                synapseXPath = new SynapseXPath(visualSequence.getDynamicReferenceKey().getPropertyValue());
+                for (int i = 0; i < visualSequence.getDynamicReferenceKey().getNamespaces().keySet().size(); ++i) {
+                    String prefix =
+                            (String) visualSequence.getDynamicReferenceKey().getNamespaces().keySet().toArray()[i];
+                    String namespaceUri = visualSequence.getDynamicReferenceKey().getNamespaces().get(prefix);
+                    synapseXPath.addNamespace(prefix, namespaceUri);
+                }
+                value = new Value(synapseXPath);
+
+            } else {
+                value = new Value(visualSequence.getStaticReferenceKey().getKeyValue());
+            }
+            refferingSequence.setKey(value);
+        } catch (JaxenException e) {
+            throw new TransformerException(e);
+        }
+        return sequence;
     }
 }

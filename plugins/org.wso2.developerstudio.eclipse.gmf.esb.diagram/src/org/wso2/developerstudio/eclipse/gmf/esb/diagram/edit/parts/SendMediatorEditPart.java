@@ -493,6 +493,7 @@ public class SendMediatorEditPart extends SingleCompartmentComplexFiguredAbstrac
                 updateEndpointInlineProperty(notification);
             }
         }
+        
         // this.getModel() will get EMF datamodel of the send mediator datamodel
         if (this.getModel() instanceof CSSNodeImpl) {
             // The following part will check for validation issues with the current data in the model

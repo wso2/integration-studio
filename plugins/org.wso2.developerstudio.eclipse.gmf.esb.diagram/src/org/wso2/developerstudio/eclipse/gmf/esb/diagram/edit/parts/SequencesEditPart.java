@@ -1,5 +1,9 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts;
 
+import org.apache.axiom.om.OMElement;
+import org.apache.commons.lang.StringUtils;
+import org.apache.synapse.SynapseException;
+import org.apache.synapse.config.xml.SendMediatorSerializer;
 import org.eclipse.draw2d.FigureCanvas;
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.GridLayout;
@@ -13,6 +17,7 @@ import org.eclipse.draw2d.ToolbarLayout;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.impl.EAttributeImpl;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
@@ -36,14 +41,22 @@ import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.runtime.notation.impl.BoundsImpl;
+import org.eclipse.papyrus.infra.gmfdiag.css.CSSNodeImpl;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
+import org.jaxen.JaxenException;
+import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
+import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractSequencesEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.CustomNonResizableEditPolicyEx;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedBorderItemLocator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.SequencesCanonicalEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.SequencesItemSemanticEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.validator.GraphicalValidatorUtil;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.validator.MediatorValidationUtil;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.SendMediatorImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.SendMediatorTransformer;
 
 /**
  * @generated NOT
@@ -122,19 +135,6 @@ public class SequencesEditPart extends AbstractSequencesEditPart {
             }
         };
         return lep;
-    }
-
-    public void notifyChanged(Notification notification) {
-        super.notifyChanged(notification);
-        if (notification.getFeature() instanceof EAttributeImpl) {
-            if (notification.getNotifier() instanceof BoundsImpl) {
-                alignLeft(((BoundsImpl) notification.getNotifier()).getY(),
-                        ((BoundsImpl) notification.getNotifier()).getWidth(),
-                        ((BoundsImpl) notification.getNotifier()).getHeight());
-                FigureCanvas canvas = (FigureCanvas) getViewer().getControl();
-                canvas.getViewport().repaint();
-            }
-        }
     }
 
     private void alignLeft(int y, int width, int height) {
@@ -317,6 +317,21 @@ public class SequencesEditPart extends AbstractSequencesEditPart {
 
     }
 
+    @Override
+    public void notifyChanged(Notification notification) {
+        super.notifyChanged(notification);
+        if (notification.getFeature() instanceof EAttributeImpl) {
+            if (notification.getNotifier() instanceof BoundsImpl) {
+                alignLeft(((BoundsImpl) notification.getNotifier()).getY(),
+                        ((BoundsImpl) notification.getNotifier()).getWidth(),
+                        ((BoundsImpl) notification.getNotifier()).getHeight());
+                FigureCanvas canvas = (FigureCanvas) getViewer().getControl();
+                canvas.getViewport().repaint();
+            }
+        }        
+    }
+
+    
     /**
      * @generated
      */

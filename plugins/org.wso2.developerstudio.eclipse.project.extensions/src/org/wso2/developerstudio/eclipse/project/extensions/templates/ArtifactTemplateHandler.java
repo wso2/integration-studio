@@ -25,10 +25,14 @@ import org.eclipse.core.runtime.Platform;
 import org.osgi.framework.Bundle;
 import org.wso2.developerstudio.eclipse.platform.core.utils.CSProviderConstants;
 import org.wso2.developerstudio.eclipse.platform.core.utils.DeveloperStudioProviderUtils;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.developerstudio.eclipse.project.extensions.Activator;
 
 public class ArtifactTemplateHandler {
 	private static final String ESB_ARTIFACT_TEMPLATE_EXTENSION = "org.wso2.developerstudio.eclipse.project.extensions.artifacttemplates";
 	private static List<ArtifactTemplate> templateList;
+	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
 	private static void loadProxyTemplateInfo() {
 		templateList = new ArrayList<ArtifactTemplate>();
@@ -51,7 +55,7 @@ public class ArtifactTemplateHandler {
 				proxyTemplate.setDefaultExtension(e.getAttribute("extension"));
 				templateList.add(proxyTemplate);
 			} catch (Exception ex) {
-				ex.printStackTrace();
+				log.error("Error occured while retrieving artifact template " + ex);
 			}
 		}
 	}

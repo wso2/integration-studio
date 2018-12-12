@@ -55,7 +55,7 @@ public class ArtifactTemplateHandler {
 				proxyTemplate.setDefaultExtension(e.getAttribute("extension"));
 				templateList.add(proxyTemplate);
 			} catch (Exception ex) {
-				log.error("Error occured while retrieving artifact template " + ex);
+				log.error("Error occured while retrieving artifact template", ex);
 			}
 		}
 	}

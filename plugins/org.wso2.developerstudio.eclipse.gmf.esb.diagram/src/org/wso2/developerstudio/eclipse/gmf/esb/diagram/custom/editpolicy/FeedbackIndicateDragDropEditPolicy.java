@@ -81,6 +81,7 @@ public class FeedbackIndicateDragDropEditPolicy extends DragDropEditPolicy {
     private static final String ALLOW_DROP_ICON_PATH = "/icons/custom/check.png";
     private static final String NOT_ALLOW_DROP_ICON_PATH = "/icons/custom/exclamation.png";
     private static final int WIDTH_OF_PROXYCONNECTOR = 82;
+    private static final int MEDIATOR_HEIGHT_IN_PIXELS = 70;
 
     /**
      * {@inheritDoc}
@@ -112,12 +113,10 @@ public class FeedbackIndicateDragDropEditPolicy extends DragDropEditPolicy {
                 } else {
                     showFeedBackFigure(false);
                 }
+            } else if (getHost() instanceof AbstractEndpoint) {
+                showFeedBackFigure(true);
             } else {
-                if (getHost() instanceof AbstractEndpoint) {
-                    showFeedBackFigure(true);
-                } else {
-                    showFeedBackFigure(false);
-                }
+                showFeedBackFigure(false);
             }
         }
     }
@@ -300,15 +299,23 @@ public class FeedbackIndicateDragDropEditPolicy extends DragDropEditPolicy {
                 double xLeft = connectorFigureLocation.x;
                 // If the current connector is East Pointer
                 if ((figure instanceof EastPointerFigure)
-                        || (figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractMediatorInputConnectorEditPart.EastPointerFigure)
-                        || (figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ProxyOutputConnectorEditPart.EastPointerFigure)
-                        || (figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.APIResourceOutputConnectorEditPart.EastPointerFigure)
-                        || (figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.SequencesOutputConnectorEditPart.EastPointerFigure)
-                        || (figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.SequencesInputConnectorEditPart.EastPointerFigure)
-                        || (figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AdditionalOutputConnector.EastPointerFigure)) {
+                        || (figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom
+                                .AbstractMediatorInputConnectorEditPart.EastPointerFigure)
+                        || (figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit
+                                .parts.ProxyOutputConnectorEditPart.EastPointerFigure)
+                        || (figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit
+                                .parts.APIResourceOutputConnectorEditPart.EastPointerFigure)
+                        || (figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit
+                                .parts.SequencesOutputConnectorEditPart.EastPointerFigure)
+                        || (figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit
+                                .parts.SequencesInputConnectorEditPart.EastPointerFigure)
+                        || (figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram
+                                .custom.AdditionalOutputConnector.EastPointerFigure)) {
 
-                    if ((figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ProxyOutputConnectorEditPart.EastPointerFigure)
-                            || (figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.APIResourceOutputConnectorEditPart.EastPointerFigure)) {
+                    if ((figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit
+                            .parts.ProxyOutputConnectorEditPart.EastPointerFigure)
+                            || (figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram
+                                    .edit.parts.APIResourceOutputConnectorEditPart.EastPointerFigure)) {
                         // WIDH_OF_PROXYCONNECTOR is the x position of a proxy or API Connector . the
                         // inside container is
                         // starting from (0,0) but API and proxy compartments are at different container
@@ -329,13 +336,20 @@ public class FeedbackIndicateDragDropEditPolicy extends DragDropEditPolicy {
 
                     // If the current connector is West Pointer
                 } else if ((figure instanceof WestPointerFigure)
-                        || (figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractMediatorInputConnectorEditPart.WestPointerFigure)
-                        || (figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ProxyInputConnectorEditPart.WestPointerFigure)
-                        || (figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.APIResourceInputConnectorEditPart.WestPointerFigure)
-                        || (figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractEndpointOutputConnectorEditPart.WestPointerFigure)
-                        || (figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ProxyFaultInputConnectorEditPart.WestPointerFigure)
-                        || (figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ProxyOutSequenceOutputConnectorEditPart.WestPointerFigure)
-                        || (figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.APIResourceOutSequenceOutputConnectorEditPart.WestPointerFigure)) {
+                        || (figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom
+                                .AbstractMediatorInputConnectorEditPart.WestPointerFigure)
+                        || (figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts
+                                .ProxyInputConnectorEditPart.WestPointerFigure)
+                        || (figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts
+                                .APIResourceInputConnectorEditPart.WestPointerFigure)
+                        || (figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom
+                                .AbstractEndpointOutputConnectorEditPart.WestPointerFigure)
+                        || (figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts
+                                .ProxyFaultInputConnectorEditPart.WestPointerFigure)
+                        || (figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts
+                                .ProxyOutSequenceOutputConnectorEditPart.WestPointerFigure)
+                        || (figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts
+                                .APIResourceOutSequenceOutputConnectorEditPart.WestPointerFigure)) {
 
                     WestDistance = Math.abs(xLeft - actualCurrentPosition);
                     if (((connectors.get(i) instanceof AbstractOutputConnectorEditPart)
@@ -392,8 +406,8 @@ public class FeedbackIndicateDragDropEditPolicy extends DragDropEditPolicy {
             nearConnector = nearReverseConnector;
         }
         // This will restrict adding new connectors if the Y distance(in pixels) is more
-        // than 35
-        if (yCurrent > 35) {
+        // than 35 (half the height of a mediator)
+        if (yCurrent > MEDIATOR_HEIGHT_IN_PIXELS/2) {
             return false;
         }
 
@@ -501,7 +515,7 @@ public class FeedbackIndicateDragDropEditPolicy extends DragDropEditPolicy {
         // more than 35
         // this will return false as the main calculation logic in the
         // ConnectionCalculator class
-        if (current > (35 * zoom)) {
+        if (current > ((MEDIATOR_HEIGHT_IN_PIXELS/2) * zoom)) {
             return false;
         }
 

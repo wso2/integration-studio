@@ -20,6 +20,7 @@ package org.wso2.developerstudio.eclipse.carbonserver44microei.register.product.
 
 import java.io.File;
 import java.nio.file.Paths;
+import java.util.Locale;
 import java.util.Map;
 
 import org.eclipse.core.runtime.CoreException;
@@ -52,6 +53,8 @@ public class MicroIntegratorInstance {
 	//static relative path to where micro-ESB is packaged
 	private static final String microesbPath = "runtime" + File.separator + "microesb"
 			+ File.separator + "wso2" + File.separator + "micro-integrator";
+	//static path for DeveloperStudio for MAC when it is on Application folder
+	private static final String eiToolingHomeForMac = "/Applications/DeveloperStudio.app/Contents/MacOS";
 
 	/**
 	 * Private constructor for singleton class
@@ -131,8 +134,22 @@ public class MicroIntegratorInstance {
 	 * @return return path as a string
 	 */
 	public String getServerHome() {
-		java.nio.file.Path path = Paths.get("");
-		String microInteratorPath = (path).toAbsolutePath().toString() + File.separator + microesbPath;
+		String microInteratorPath = null;
+		String OS = System.getProperty("os.name", "generic").toLowerCase(Locale.ENGLISH);
+		if ((OS.indexOf("mac") >= 0) || (OS.indexOf("darwin") >= 0)) {
+			//check if EI Tooling is in Application folder for MAC
+			File macOSEIToolingAppFile = new File(eiToolingHomeForMac);
+			if(macOSEIToolingAppFile.exists()) {
+				microInteratorPath = eiToolingHomeForMac + File.separator + microesbPath;
+			} else {
+				java.nio.file.Path path = Paths.get("");
+				microInteratorPath = (path).toAbsolutePath().toString() + File.separator + microesbPath;
+			}
+			
+		} else {
+			java.nio.file.Path path = Paths.get("");
+			microInteratorPath = (path).toAbsolutePath().toString() + File.separator + microesbPath;
+		}
 		return microInteratorPath;
 	}
 

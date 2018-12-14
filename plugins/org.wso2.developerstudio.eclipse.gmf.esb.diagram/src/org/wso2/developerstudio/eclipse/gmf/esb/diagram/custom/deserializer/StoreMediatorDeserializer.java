@@ -7,6 +7,8 @@ import org.eclipse.ui.forms.editor.FormEditor;
 import org.wso2.developerstudio.eclipse.gmf.esb.StoreMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.StoreMediatorSpecifyType;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
+import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.SynapseXPathExt;
+
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
 
 public class StoreMediatorDeserializer extends AbstractEsbNodeDeserializer<AbstractMediator, StoreMediator> {
@@ -22,23 +24,23 @@ public class StoreMediatorDeserializer extends AbstractEsbNodeDeserializer<Abstr
         setElementToEdit(visualStoreMediator);
         setCommonProperties(storeMediator, visualStoreMediator);
 
-        if (storeMediator.getMessageStoreName() != null && !storeMediator.getMessageStoreName().isEmpty()) {
-            executeSetValueCommand(STORE_MEDIATOR__MESSAGE_STORE, storeMediator.getMessageStoreName());
-        } else {
-            executeSetValueCommand(STORE_MEDIATOR__MESSAGE_STORE, "messageStore");
-        }
-
         if ((storeMediator.getOnStoreSequence() != null) && !("".equals(storeMediator.getOnStoreSequence()))) {
             executeSetValueCommand(visualStoreMediator.getOnStoreSequence(), REGISTRY_KEY_PROPERTY__KEY_VALUE,
                     storeMediator.getOnStoreSequence());
-            if (storeMediator.getMessageStoreExp() != null) {
-                executeSetValueCommand(STORE_MEDIATOR__EXPRESSION,
-                        createNamespacedProperty(storeMediator.getMessageStoreExp()));
-                executeSetValueCommand(STORE_MEDIATOR__SPECIFY_AS, StoreMediatorSpecifyType.EXPRESSION);
-            } else {
-                executeSetValueCommand(STORE_MEDIATOR__MESSAGE_STORE, storeMediator.getMessageStoreName());
-                executeSetValueCommand(STORE_MEDIATOR__SPECIFY_AS, StoreMediatorSpecifyType.VALUE);
-            }
+        }
+        
+        if (storeMediator.getMessageStoreExp() != null) {
+            executeSetValueCommand(STORE_MEDIATOR__EXPRESSION,
+                    createNamespacedProperty(storeMediator.getMessageStoreExp()));
+            executeSetValueCommand(STORE_MEDIATOR__SPECIFY_AS, StoreMediatorSpecifyType.EXPRESSION);
+        } else if(storeMediator.getMessageStoreName() != null){
+            executeSetValueCommand(STORE_MEDIATOR__MESSAGE_STORE, storeMediator.getMessageStoreName());
+            executeSetValueCommand(STORE_MEDIATOR__SPECIFY_AS, StoreMediatorSpecifyType.VALUE);
+        }
+        else {
+            executeSetValueCommand(STORE_MEDIATOR__EXPRESSION,
+                    createNamespacedProperty(SynapseXPathExt.createSynapsePath("")));
+            executeSetValueCommand(STORE_MEDIATOR__SPECIFY_AS, StoreMediatorSpecifyType.EXPRESSION);
         }
 
         return visualStoreMediator;

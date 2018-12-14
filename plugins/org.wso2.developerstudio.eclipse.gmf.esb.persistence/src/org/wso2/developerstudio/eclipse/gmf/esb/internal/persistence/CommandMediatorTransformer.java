@@ -63,7 +63,7 @@ public class CommandMediatorTransformer extends AbstractEsbNodeTransformer {
         }
     }
 
-    private POJOCommandMediator createCommandMediator(TransformationInfo information, EsbNode subject)
+    public static POJOCommandMediator createCommandMediator(TransformationInfo information, EsbNode subject)
             throws JaxenException {
         // Check subject.
         Assert.isTrue(subject instanceof CommandMediator, "Invalid subject.");

@@ -35,7 +35,9 @@ import org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.EJBMediatorExt;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.ValidationConstansts;
 import org.apache.synapse.util.xpath.SynapseXPath;
+import org.codehaus.plexus.util.StringUtils;
 
 /**
  * EJBMediatorTransformer responsible for transforming
@@ -46,7 +48,7 @@ public class EJBMediatorTransformer extends AbstractEsbNodeTransformer {
 
     public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
         try {
-            information.getParentSequence().addChild(createEJBMediator(subject));
+            information.getParentSequence().addChild(createEJBMediator(subject, false));
             // Transform the EJB mediator output data flow path.
             doTransform(information, ((EJBMediator) subject).getOutputConnector());
         } catch (JaxenException e) {
@@ -62,7 +64,7 @@ public class EJBMediatorTransformer extends AbstractEsbNodeTransformer {
     public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
             throws TransformerException {
         try {
-            sequence.addChild(createEJBMediator(subject));
+            sequence.addChild(createEJBMediator(subject, false));
             // Transform the EJB mediator output data flow path.
             doTransformWithinSequence(information, ((EJBMediator) subject).getOutputConnector().getOutgoingLink(),
                     sequence);
@@ -71,7 +73,7 @@ public class EJBMediatorTransformer extends AbstractEsbNodeTransformer {
         }
     }
 
-    private Mediator createEJBMediator(EsbNode subject) throws JaxenException {
+    public static Mediator createEJBMediator(EsbNode subject, boolean isForValidation) throws JaxenException {
         Assert.isTrue(subject instanceof EJBMediator, "Unsupported mediator passed in for serialization");
         EJBMediator mediatorModel = (EJBMediator) subject;
 
@@ -87,7 +89,13 @@ public class EJBMediatorTransformer extends AbstractEsbNodeTransformer {
         if (mediatorModel.getSessionIdType() == PropertyValueType.EXPRESSION) {
             NamespacedProperty sessionExpression = mediatorModel.getSessionIdExpression();
             if (sessionExpression != null && sessionExpression.getPropertyValue() != null) {
-                SynapseXPath expression = new SynapseXPath(sessionExpression.getPropertyValue());
+                SynapseXPath expression;
+                if(!isForValidation && StringUtils.isEmpty(sessionExpression.getPropertyValue())) {
+                    expression = new SynapseXPath(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
+                }
+                else {
+                    expression = new SynapseXPath(sessionExpression.getPropertyValue());
+                }
                 for (Entry<String, String> entry : sessionExpression.getNamespaces().entrySet()) {
                     expression.addNamespace(entry.getKey(), entry.getValue());
                 }

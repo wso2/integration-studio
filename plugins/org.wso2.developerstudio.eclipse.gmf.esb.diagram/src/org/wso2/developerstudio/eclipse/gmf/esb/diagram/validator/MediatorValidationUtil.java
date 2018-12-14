@@ -282,7 +282,7 @@ public class MediatorValidationUtil {
                 if (ejbMediatorExtFactory == null) {
                     ejbMediatorExtFactory = new EJBMediatorExtFactory();
                 }
-                ejbMediatorExtFactory.createMediator(omElement, null);
+                ejbMediatorExtFactory.createSpecificMediatorForValidation(omElement, null);
 
             } else if (qTag.equals("script")) {
                 Properties properties = new Properties();

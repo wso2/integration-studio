@@ -51,7 +51,7 @@ public abstract class AbstractEsbNodeTransformer implements EsbNodeTransformer {
      * @throws TransformerException
      * @throws Exception
      */
-    protected void doTransform(TransformationInfo info, OutputConnector outputConnector) throws TransformerException {
+    protected static void doTransform(TransformationInfo info, OutputConnector outputConnector) throws TransformerException {
         if (null != outputConnector) {
             EObject previousNode = outputConnector.eContainer();
             info.setPreviousNode(previousNode);
@@ -141,7 +141,7 @@ public abstract class AbstractEsbNodeTransformer implements EsbNodeTransformer {
         ((AbstractMediator) mediator).getCommentsList().addAll(visualElement.getCommentsList());
     }
 
-    private void addXMLCommnets(TransformationInfo info, EList<CommentMediator> commentMediators) {
+    private static void addXMLCommnets(TransformationInfo info, EList<CommentMediator> commentMediators) {
         CommentMediatorTransformer commentMediatorTransformer = new CommentMediatorTransformer();
         for (CommentMediator mediator : commentMediators) {
             commentMediatorTransformer.transform(info, mediator);

@@ -38,7 +38,7 @@ public class SwitchCaseBranchOutputConnectorImpl extends OutputConnectorImpl
      * @generated
      * @ordered
      */
-    protected static final String CASE_REGEX_EDEFAULT = ".*+";
+    protected static final String CASE_REGEX_EDEFAULT = "";
 
     /**
      * The cached value of the '{@link #getCaseRegex() <em>Case Regex</em>}' attribute.

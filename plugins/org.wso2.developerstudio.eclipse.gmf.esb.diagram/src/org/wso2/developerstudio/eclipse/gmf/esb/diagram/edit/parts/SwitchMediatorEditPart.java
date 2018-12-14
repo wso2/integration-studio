@@ -20,7 +20,10 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EditPa
 
 import java.util.ArrayList;
 
+import org.apache.axiom.om.OMElement;
 import org.apache.commons.lang.StringUtils;
+import org.apache.synapse.SynapseException;
+import org.apache.synapse.config.xml.SwitchMediatorSerializer;
 import org.eclipse.draw2d.GridData;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.PositionConstants;
@@ -50,7 +53,10 @@ import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.papyrus.infra.gmfdiag.css.CSSNodeImpl;
 import org.eclipse.swt.graphics.Color;
+import org.jaxen.JaxenException;
+import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.SwitchMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedBorderItemLocator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.MultipleCompartmentComplexFiguredAbstractMediator;
@@ -62,6 +68,12 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.utils.SwitchMedia
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.SwitchMediatorCanonicalEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.SwitchMediatorItemSemanticEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.validator.GraphicalValidatorUtil;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.validator.MediatorValidationUtil;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.SwitchMediatorImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.SwitchMediatorTransformer;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 
 /**
  * @generated NOT
@@ -227,6 +239,31 @@ public class SwitchMediatorEditPart extends MultipleCompartmentComplexFiguredAbs
             if (((SwitchMediator) parentContainer).getCaseBranches().size() > 1) {
                 SwitchMediatorUtils.reorderWhenForward(this);
                 reorderdOnUndo = true;
+            }
+        }
+
+        // this.getModel() will get EMF datamodel of the switch mediator datamodel
+        if (this.getModel() instanceof CSSNodeImpl) {
+            // The following part will check for validation issues with the current data in the model
+            CSSNodeImpl model = (CSSNodeImpl) this.getModel();
+            if (model.getElement() instanceof SwitchMediatorImpl) {
+                SwitchMediatorImpl switchMediatorDataModel = (SwitchMediatorImpl) model.getElement();
+                try {
+                    org.apache.synapse.mediators.filters.SwitchMediator switchMediator = SwitchMediatorTransformer
+                            .createSwitchMediator(new TransformationInfo(), (EsbNode) switchMediatorDataModel, true);
+
+                    SwitchMediatorSerializer switchMediatorSerializer = new SwitchMediatorSerializer();
+                    OMElement omElement = switchMediatorSerializer.serializeSpecificMediator(switchMediator);
+
+                    if (StringUtils
+                            .isEmpty(MediatorValidationUtil.validateMediatorsFromOEMElement(omElement, "switch"))) {
+                        GraphicalValidatorUtil.removeValidationMark(this);
+                    } else {
+                        GraphicalValidatorUtil.addValidationMark(this);
+                    }
+                } catch (JaxenException | TransformerException | SynapseException e) {
+                    GraphicalValidatorUtil.addValidationMark(this);
+                }
             }
         }
     }

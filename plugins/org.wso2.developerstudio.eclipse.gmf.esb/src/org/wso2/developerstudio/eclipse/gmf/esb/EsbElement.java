@@ -151,7 +151,7 @@ public interface EsbElement extends EsbNode {
     /**
      * Default property value used for registry keys.
      */
-    String DEFAULT_REGISTRY_KEY = "/default/key";
+    String DEFAULT_REGISTRY_KEY = "";
 
     /**
      * Default property value used for sequence reference registry keys.

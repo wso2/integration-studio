@@ -117,7 +117,7 @@ public class ConfigureScriptKeysDialog extends TitleAreaDialog {
             @Override
             public void widgetSelected(SelectionEvent e) {
                 RegistryKeyProperty createRegistryKeyProperty = EsbFactory.eINSTANCE.createRegistryKeyProperty();
-                createRegistryKeyProperty.setKeyValue("/default/key");
+                createRegistryKeyProperty.setKeyValue("");
                 createRegistryKeyProperty.setKeyName("Registry Key");
                 bindKeys(createRegistryKeyProperty);
             }

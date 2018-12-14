@@ -61,7 +61,7 @@ public class ScriptMediatorExtFactory extends ScriptMediatorFactory {
 
         if (keyAtt != null && langAtt != null) {
 
-            ValueFactory keyFac = new ValueFactory();
+            ValueExtFactory keyFac = new ValueExtFactory();
             Value generatedKey = keyFac.createValue(XMLConfigConstants.KEY, omElement);
 
             String functionName = (functionAtt == null ? null : functionAtt.getAttributeValue());

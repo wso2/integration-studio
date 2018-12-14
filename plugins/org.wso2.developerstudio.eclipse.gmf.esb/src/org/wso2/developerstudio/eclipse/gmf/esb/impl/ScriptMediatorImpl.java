@@ -219,7 +219,7 @@ public class ScriptMediatorImpl extends MediatorImpl implements ScriptMediator {
         NamespacedProperty namespacedProperty = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
         namespacedProperty.setPrettyName("");
         namespacedProperty.setPropertyName("dynamic key");
-        namespacedProperty.setPropertyValue("/xpath/expression");
+        namespacedProperty.setPropertyValue("");
         setScriptDynamicKey(namespacedProperty);
 
     }

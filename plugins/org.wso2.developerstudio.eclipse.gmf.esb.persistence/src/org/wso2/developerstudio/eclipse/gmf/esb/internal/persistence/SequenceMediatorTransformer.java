@@ -51,12 +51,11 @@ public class SequenceMediatorTransformer extends AbstractEsbNodeTransformer {
             SynapseXPath synapseXPath = null;
             if (visualSequence.getReferringSequenceType() == KeyType.DYNAMIC) {
                 if (StringUtils.isEmpty(visualSequence.getDynamicReferenceKey().getPropertyValue())) {
-                    synapseXPath =
-                            (SynapseXPath) SynapseXPathExt
-                                    .createSynapsePath(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
+                    synapseXPath = (SynapseXPath) SynapseXPathExt
+                            .createSynapsePath(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
                     for (int i = 0; i < visualSequence.getDynamicReferenceKey().getNamespaces().keySet().size(); ++i) {
-                        String prefix =
-                                (String) visualSequence.getDynamicReferenceKey().getNamespaces().keySet().toArray()[i];
+                        String prefix = (String) visualSequence.getDynamicReferenceKey().getNamespaces().keySet()
+                                .toArray()[i];
                         String namespaceUri = visualSequence.getDynamicReferenceKey().getNamespaces().get(prefix);
                         synapseXPath.addNamespace(prefix, namespaceUri);
                     }
@@ -65,8 +64,8 @@ public class SequenceMediatorTransformer extends AbstractEsbNodeTransformer {
                 } else {
                     synapseXPath = new SynapseXPath(visualSequence.getDynamicReferenceKey().getPropertyValue());
                     for (int i = 0; i < visualSequence.getDynamicReferenceKey().getNamespaces().keySet().size(); ++i) {
-                        String prefix =
-                                (String) visualSequence.getDynamicReferenceKey().getNamespaces().keySet().toArray()[i];
+                        String prefix = (String) visualSequence.getDynamicReferenceKey().getNamespaces().keySet()
+                                .toArray()[i];
                         String namespaceUri = visualSequence.getDynamicReferenceKey().getNamespaces().get(prefix);
                         synapseXPath.addNamespace(prefix, namespaceUri);
                     }
@@ -143,9 +142,16 @@ public class SequenceMediatorTransformer extends AbstractEsbNodeTransformer {
             throw new TransformerException(e);
         }
     }
-    
-    public static org.apache.synapse.mediators.base.SequenceMediator createSequenceMediatorValidation(TransformationInfo information, EsbNode subject)
-            throws TransformerException {
+    /**
+     * This method will create a synapse sequence mediator using the mediator data model
+     * 
+     * @param information information related to the transformation
+     * @param subject the data model object of the mediator
+     * @return synapse sequence mediator
+     * @throws TransformerException
+     */
+    public static org.apache.synapse.mediators.base.SequenceMediator createSequenceMediatorValidation(
+            TransformationInfo information, EsbNode subject) throws TransformerException {
         // Check subject.
         Assert.isTrue(subject instanceof Sequence, "Invalid subject.");
         Sequence visualSequence = (Sequence) subject;
@@ -160,8 +166,8 @@ public class SequenceMediatorTransformer extends AbstractEsbNodeTransformer {
 
                 synapseXPath = new SynapseXPath(visualSequence.getDynamicReferenceKey().getPropertyValue());
                 for (int i = 0; i < visualSequence.getDynamicReferenceKey().getNamespaces().keySet().size(); ++i) {
-                    String prefix =
-                            (String) visualSequence.getDynamicReferenceKey().getNamespaces().keySet().toArray()[i];
+                    String prefix = (String) visualSequence.getDynamicReferenceKey().getNamespaces().keySet()
+                            .toArray()[i];
                     String namespaceUri = visualSequence.getDynamicReferenceKey().getNamespaces().get(prefix);
                     synapseXPath.addNamespace(prefix, namespaceUri);
                 }

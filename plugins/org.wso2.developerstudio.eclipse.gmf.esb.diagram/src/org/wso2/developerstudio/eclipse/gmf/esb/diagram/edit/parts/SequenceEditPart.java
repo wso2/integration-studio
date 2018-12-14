@@ -32,8 +32,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.xml.stream.XMLStreamException;
-
 import org.apache.axiom.om.OMElement;
 import org.apache.commons.lang.RandomStringUtils;
 import org.apache.commons.lang.StringUtils;
@@ -41,7 +39,6 @@ import org.apache.maven.model.Plugin;
 import org.apache.maven.model.PluginExecution;
 import org.apache.maven.project.MavenProject;
 import org.apache.synapse.SynapseException;
-import org.apache.synapse.config.xml.PropertyMediatorSerializer;
 import org.apache.synapse.config.xml.SequenceMediatorSerializer;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
 import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
@@ -145,9 +142,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.validator.GraphicalValidatorUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.validator.MediatorValidationUtil;
-import org.wso2.developerstudio.eclipse.gmf.esb.impl.PropertyMediatorImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.SequenceImpl;
-import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.PropertyMediatorTransformer;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.SequenceMediatorTransformer;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
@@ -267,10 +262,9 @@ public class SequenceEditPart extends FixedSizedAbstractMediator {
             if (model.getElement() instanceof SequenceImpl) {
                 SequenceImpl sequenceMediatorDataModel = (SequenceImpl) model.getElement();
                 try {
-                    org.apache.synapse.mediators.base.SequenceMediator sequenceMediator =
-                            SequenceMediatorTransformer.createSequenceMediatorValidation(
-                                    new TransformationInfo(),
-                                        (EsbNode) sequenceMediatorDataModel);
+                    org.apache.synapse.mediators.base.SequenceMediator sequenceMediator = SequenceMediatorTransformer
+                            .createSequenceMediatorValidation(new TransformationInfo(),
+                                    (EsbNode) sequenceMediatorDataModel);
 
                     SequenceMediatorSerializer sequenceMediatorSerializer = new SequenceMediatorSerializer();
                     OMElement omElement = sequenceMediatorSerializer.serializeSpecificMediator(sequenceMediator);

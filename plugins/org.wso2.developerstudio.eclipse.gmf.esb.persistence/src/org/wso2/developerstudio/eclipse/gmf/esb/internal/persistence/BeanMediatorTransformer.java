@@ -24,6 +24,7 @@ import org.apache.synapse.mediators.Value;
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.apache.synapse.mediators.bean.BeanMediator.Action;
 import org.apache.synapse.util.xpath.SynapseXPath;
+import org.codehaus.plexus.util.StringUtils;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.ecore.EObject;
 import org.jaxen.JaxenException;
@@ -34,12 +35,13 @@ import org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.BeanMediatorExt;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.ValidationConstansts;
 
 public class BeanMediatorTransformer extends AbstractEsbNodeTransformer {
 
     public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
         try {
-            information.getParentSequence().addChild(createBeanMediator(subject, information));
+            information.getParentSequence().addChild(createBeanMediator(subject, information, false));
             doTransform(information, ((BeanMediator) subject).getOutputConnector());
         } catch (JaxenException e) {
             throw new TransformerException(e);
@@ -53,7 +55,7 @@ public class BeanMediatorTransformer extends AbstractEsbNodeTransformer {
     public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
             throws TransformerException {
         try {
-            sequence.addChild(createBeanMediator(subject, information));
+            sequence.addChild(createBeanMediator(subject, information, false));
             doTransformWithinSequence(information, ((BeanMediator) subject).getOutputConnector().getOutgoingLink(),
                     sequence);
         } catch (JaxenException e) {
@@ -61,7 +63,7 @@ public class BeanMediatorTransformer extends AbstractEsbNodeTransformer {
         }
     }
 
-    private BeanMediatorExt createBeanMediator(EsbNode subject, TransformationInfo information)
+    public static BeanMediatorExt createBeanMediator(EsbNode subject, TransformationInfo information, boolean isForValidation)
             throws TransformerException, JaxenException {
 
         /*
@@ -86,7 +88,13 @@ public class BeanMediatorTransformer extends AbstractEsbNodeTransformer {
             if (visualBeanMediator.getTargetType() == PropertyValueType.EXPRESSION) {
                 NamespacedProperty sessionExpression = visualBeanMediator.getTargetExpression();
                 if (sessionExpression != null && sessionExpression.getPropertyValue() != null) {
-                    SynapseXPath expression = new SynapseXPath(sessionExpression.getPropertyValue());
+                    SynapseXPath expression;
+                    if (!isForValidation && StringUtils.isEmpty(sessionExpression.getPropertyValue())) {
+                        // Fill a default value so that we can use the synapse serialization
+                        expression = new SynapseXPath(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
+                    } else {
+                        expression = new SynapseXPath(sessionExpression.getPropertyValue());
+                    }
                     for (Entry<String, String> entry : sessionExpression.getNamespaces().entrySet()) {
                         expression.addNamespace(entry.getKey(), entry.getValue());
                     }
@@ -110,7 +118,13 @@ public class BeanMediatorTransformer extends AbstractEsbNodeTransformer {
             if (visualBeanMediator.getValueType() == PropertyValueType.EXPRESSION) {
                 NamespacedProperty sessionExpression = visualBeanMediator.getValueExpression();
                 if (sessionExpression != null && sessionExpression.getPropertyValue() != null) {
-                    SynapseXPath expression = new SynapseXPath(sessionExpression.getPropertyValue());
+                    SynapseXPath expression;
+                    if (!isForValidation && StringUtils.isEmpty(sessionExpression.getPropertyValue())) {
+                        // Fill a default value so that we can use the synapse serialization
+                        expression = new SynapseXPath(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
+                    } else {
+                        expression = new SynapseXPath(sessionExpression.getPropertyValue());
+                    }
                     for (Entry<String, String> entry : sessionExpression.getNamespaces().entrySet()) {
                         expression.addNamespace(entry.getKey(), entry.getValue());
                     }

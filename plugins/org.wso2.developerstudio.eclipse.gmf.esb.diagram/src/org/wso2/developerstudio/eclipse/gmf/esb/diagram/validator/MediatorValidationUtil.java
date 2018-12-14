@@ -264,7 +264,7 @@ public class MediatorValidationUtil {
                 if (beanMediatorExtFactory == null) {
                     beanMediatorExtFactory = new BeanMediatorExtFactory();
                 }
-                beanMediatorExtFactory.createMediator(omElement, null);
+                beanMediatorExtFactory.createSpecificMediatorForValidation(omElement, null);
 
             } else if (qTag.equals("class")) {
                 if (classMediatorExtFactory == null) {

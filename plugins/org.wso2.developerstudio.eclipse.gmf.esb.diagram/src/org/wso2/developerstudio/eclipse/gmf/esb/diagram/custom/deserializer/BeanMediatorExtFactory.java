@@ -67,6 +67,43 @@ public class BeanMediatorExtFactory extends AbstractMediatorFactory {
                 // ignore
             }
         }
+        return mediator;
+    }
+
+        public Mediator createSpecificMediatorForValidation(OMElement elem, Properties properties) {
+
+            BeanMediatorExt mediator = new BeanMediatorExt();
+
+            String attributeValue;
+
+            attributeValue = elem.getAttributeValue(new QName(BeanConstants.VAR));
+            if (attributeValue != null) {
+                mediator.setVarName(attributeValue);
+            }
+
+            attributeValue = elem.getAttributeValue(new QName(BeanConstants.ACTION));
+            if (attributeValue != null) {
+                try {
+                    switch (Action.valueOf(attributeValue.toUpperCase())) {
+                    case CREATE:
+                        populateCreateBeanCase(mediator, elem);
+                        break;
+                    case REMOVE:
+                        mediator.setAction(Action.REMOVE);
+                        break;
+                    case SET_PROPERTY:
+                        populateSetPropertyCaseForValidation(mediator, elem);
+                        break;
+                    case GET_PROPERTY:
+                        populateGetPropertyCaseForValidation(mediator, elem);
+                        break;
+                    default:
+                        assert false;
+                    }
+                } catch (IllegalArgumentException e) {
+                    // ignore
+                }
+            }
 
         return mediator;
     }
@@ -96,11 +133,31 @@ public class BeanMediatorExtFactory extends AbstractMediatorFactory {
         populatePropertyName(mediator, elem);
 
         if (elem.getAttributeValue(ATT_VALUE) != null) {
+            mediator.setValue(new ValueExtFactory().createValue(BeanConstants.VALUE, elem));
+        }
+    }
+    private void populateSetPropertyCaseForValidation(BeanMediatorExt mediator, OMElement elem) {
+
+        mediator.setAction(Action.SET_PROPERTY);
+
+        populatePropertyName(mediator, elem);
+
+        if (elem.getAttributeValue(ATT_VALUE) != null) {
             mediator.setValue(new ValueFactory().createValue(BeanConstants.VALUE, elem));
         }
     }
 
     private void populateGetPropertyCase(BeanMediatorExt mediator, OMElement elem) {
+
+        mediator.setAction(Action.GET_PROPERTY);
+
+        populatePropertyName(mediator, elem);
+
+        if (elem.getAttributeValue(new QName(BeanConstants.TARGET)) != null) {
+            mediator.setTargetValue(new ValueExtFactory().createValue(BeanConstants.TARGET, elem));
+        }
+    }
+    private void populateGetPropertyCaseForValidation(BeanMediatorExt mediator, OMElement elem) {
 
         mediator.setAction(Action.GET_PROPERTY);
 

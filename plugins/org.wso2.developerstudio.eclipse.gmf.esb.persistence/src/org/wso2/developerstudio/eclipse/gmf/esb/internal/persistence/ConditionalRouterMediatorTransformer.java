@@ -72,7 +72,7 @@ public class ConditionalRouterMediatorTransformer extends AbstractEsbNodeTransfo
         }
     }
 
-    private org.apache.synapse.mediators.filters.router.ConditionalRouterMediator createConditionalRouterMediator(
+    public static org.apache.synapse.mediators.filters.router.ConditionalRouterMediator createConditionalRouterMediator(
             TransformationInfo information, EsbNode subject) throws XMLStreamException, EvaluatorException {
 
         Assert.isTrue(subject instanceof ConditionalRouterMediator, "Unsupported mediator passed in for serialization");

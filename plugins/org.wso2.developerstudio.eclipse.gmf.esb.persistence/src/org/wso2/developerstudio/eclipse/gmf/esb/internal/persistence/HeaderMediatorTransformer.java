@@ -10,6 +10,7 @@ import org.apache.axiom.om.util.AXIOMUtil;
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.apache.synapse.util.xpath.SynapseXPath;
+import org.codehaus.plexus.util.StringUtils;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.ecore.EObject;
 import org.jaxen.JaxenException;
@@ -17,12 +18,13 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.HeaderMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.ValidationConstansts;
 
 public class HeaderMediatorTransformer extends AbstractEsbNodeTransformer {
 
     public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
         try {
-            information.getParentSequence().addChild(createHeaderMediator(subject));
+            information.getParentSequence().addChild(createHeaderMediator(subject, false));
             /*
              * Transform the Header mediator output data flow path.
              */
@@ -39,7 +41,7 @@ public class HeaderMediatorTransformer extends AbstractEsbNodeTransformer {
     public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
             throws TransformerException {
         try {
-            sequence.addChild(createHeaderMediator(subject));
+            sequence.addChild(createHeaderMediator(subject, false));
             doTransformWithinSequence(information, ((HeaderMediator) subject).getOutputConnector().getOutgoingLink(),
                     sequence);
         } catch (JaxenException e) {
@@ -47,7 +49,7 @@ public class HeaderMediatorTransformer extends AbstractEsbNodeTransformer {
         }
     }
 
-    private org.apache.synapse.mediators.transform.HeaderMediator createHeaderMediator(EsbNode subject)
+    public static org.apache.synapse.mediators.transform.HeaderMediator createHeaderMediator(EsbNode subject, boolean isForValidation)
             throws JaxenException {
         /*
          * Check subject.
@@ -92,7 +94,14 @@ public class HeaderMediatorTransformer extends AbstractEsbNodeTransformer {
                     /* Ignored if user body is not in the xml format */
                 }
             } else {
-                SynapseXPath synapseXPath = new SynapseXPath(visualHeader.getValueExpression().getPropertyValue());
+                SynapseXPath synapseXPath;
+                if(!isForValidation && StringUtils.isEmpty(visualHeader.getValueExpression().getPropertyValue())) {
+                    // Fill the XPath with a default values, so that we can use synapse serializer
+                    synapseXPath = new SynapseXPath(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
+                }
+                else {
+                    synapseXPath = new SynapseXPath(visualHeader.getValueExpression().getPropertyValue());
+                }
                 for (int i = 0; i < visualHeader.getValueExpression().getNamespaces().keySet().size(); ++i) {
                     String prefix = (String) visualHeader.getValueExpression().getNamespaces().keySet().toArray()[i];
                     String namespaceUri = visualHeader.getValueExpression().getNamespaces().get(prefix);

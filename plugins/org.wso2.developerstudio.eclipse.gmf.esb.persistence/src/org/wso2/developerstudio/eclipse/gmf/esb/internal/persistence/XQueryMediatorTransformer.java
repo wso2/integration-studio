@@ -46,12 +46,13 @@ import org.wso2.developerstudio.eclipse.gmf.esb.XQueryVariableType;
 import org.wso2.developerstudio.eclipse.gmf.esb.XQueryVariableValueType;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.ValidationConstansts;
 
 public class XQueryMediatorTransformer extends AbstractEsbNodeTransformer {
 
     public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
         try {
-            information.getParentSequence().addChild(createXQueryMediator(subject));
+            information.getParentSequence().addChild(createXQueryMediator(subject, false));
             // Transform the XQuery mediator output data flow path.
             doTransform(information, ((XQueryMediator) subject).getOutputConnector());
         } catch (JaxenException e) {
@@ -68,7 +69,7 @@ public class XQueryMediatorTransformer extends AbstractEsbNodeTransformer {
             throws TransformerException {
         // TODO Auto-generated method stub
         try {
-            sequence.addChild(createXQueryMediator(subject));
+            sequence.addChild(createXQueryMediator(subject, false));
             doTransformWithinSequence(information, ((XQueryMediator) subject).getOutputConnector().getOutgoingLink(),
                     sequence);
         } catch (JaxenException e) {
@@ -76,7 +77,7 @@ public class XQueryMediatorTransformer extends AbstractEsbNodeTransformer {
         }
     }
 
-    private org.apache.synapse.mediators.xquery.XQueryMediator createXQueryMediator(EsbNode subject)
+    public static org.apache.synapse.mediators.xquery.XQueryMediator createXQueryMediator(EsbNode subject, boolean isForValidation)
             throws JaxenException {
         Assert.isTrue(subject instanceof XQueryMediator, "Invalid subject.");
         XQueryMediator visualXQuery = (XQueryMediator) subject;
@@ -96,7 +97,13 @@ public class XQueryMediatorTransformer extends AbstractEsbNodeTransformer {
             if (visualXQuery.getScriptKeyType().compareTo(KeyType.STATIC) == 0) {
                 key = new Value(visualXQuery.getStaticScriptKey().getKeyValue());
             } else {
-                SynapseXPath expression = new SynapseXPath(visualXQuery.getDynamicScriptKey().getPropertyValue());
+                SynapseXPath expression;
+                if (!isForValidation && StringUtils.isEmpty(visualXQuery.getDynamicScriptKey().getPropertyValue())) {
+                    // Fill the XPath with a default values, so that we can use synapse serializer
+                    expression = new SynapseXPath(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
+                } else {
+                    expression = new SynapseXPath(visualXQuery.getDynamicScriptKey().getPropertyValue());
+                }
                 key = new Value(expression);
             }
             xqueryMediator.setQueryKey(key);
@@ -173,8 +180,13 @@ public class XQueryMediatorTransformer extends AbstractEsbNodeTransformer {
 
                     NamespacedProperty valueExpression = vishualVariable.getValueExpression();
                     if (valueExpression != null) {
-                        SynapseXPath propertyExpression = new SynapseXPath(
-                                vishualVariable.getValueExpression().getPropertyValue());
+                        SynapseXPath propertyExpression;
+                        if (!isForValidation && StringUtils.isEmpty(vishualVariable.getValueExpression().getPropertyValue())) {
+                            // Fill the XPath with a default values, so that we can use synapse serializer
+                            propertyExpression = new SynapseXPath(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
+                        } else {
+                            propertyExpression = new SynapseXPath(vishualVariable.getValueExpression().getPropertyValue());
+                        }
                         if (valueExpression.getNamespaces() != null) {
                             for (Entry<String, String> entry : valueExpression.getNamespaces().entrySet()) {
                                 propertyExpression.addNamespace(entry.getKey(), entry.getValue());

@@ -62,7 +62,7 @@ public class XSLTMediatorExtFactory extends XSLTMediatorFactory {
         OMAttribute attUseCache = omElement.getAttribute(ATT_USECACHE);
 
         if (attXslt != null) {
-            ValueFactory keyFac = new ValueFactory();
+            ValueExtFactory keyFac = new ValueExtFactory();
             Value generatedKey = keyFac.createValue(XMLConfigConstants.KEY, omElement);
 
             ((XSLTMediator) mediator).setXsltKey(generatedKey);

@@ -39,12 +39,13 @@ import org.wso2.developerstudio.eclipse.gmf.esb.XSLTProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.XSLTResource;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.ValidationConstansts;
 
 public class XSLTMediatorTransformer extends AbstractEsbNodeTransformer {
 
     public void transform(TransformationInfo info, EsbNode subject) throws TransformerException {
         try {
-            info.getParentSequence().addChild(createXSLTMediator(subject));
+            info.getParentSequence().addChild(createXSLTMediator(subject, false));
             doTransform(info, ((XSLTMediator) subject).getOutputConnector());
         } catch (JaxenException e) {
             throw new TransformerException(e);
@@ -60,7 +61,7 @@ public class XSLTMediatorTransformer extends AbstractEsbNodeTransformer {
             throws TransformerException {
         // TODO Auto-generated method stub
         try {
-            sequence.addChild(createXSLTMediator(subject));
+            sequence.addChild(createXSLTMediator(subject, false));
             doTransformWithinSequence(information, ((XSLTMediator) subject).getOutputConnector().getOutgoingLink(),
                     sequence);
         } catch (JaxenException e) {
@@ -68,7 +69,7 @@ public class XSLTMediatorTransformer extends AbstractEsbNodeTransformer {
         }
     }
 
-    private org.apache.synapse.mediators.transform.XSLTMediator createXSLTMediator(EsbNode subject)
+    public static org.apache.synapse.mediators.transform.XSLTMediator createXSLTMediator(EsbNode subject, boolean isForValidation)
             throws JaxenException {
         Assert.isTrue(subject instanceof XSLTMediator, "Invalid subject.");
         XSLTMediator visualXSLT = (XSLTMediator) subject;
@@ -92,10 +93,21 @@ public class XSLTMediatorTransformer extends AbstractEsbNodeTransformer {
             if (key != null && !key.equals("")) {
                 xsltKey = new Value(key);
             }
+            else if (key != null && !isForValidation) {
+                // Fill the XPath with a default values, so that we can use synapse serializer
+                xsltKey = new Value(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
+            }
         } else {
             NamespacedProperty key = visualXSLT.getXsltDynamicSchemaKey();
-            if (key.getPropertyValue() != null && !key.getPropertyValue().equals("")) {
-                SynapseXPath expression = new SynapseXPath(key.getPropertyValue());
+            if (key.getPropertyValue() != null) {
+                SynapseXPath expression;
+                if(!isForValidation && StringUtils.isEmpty(key.getPropertyValue())) {
+                    // Fill the XPath with a default values, so that we can use synapse serializer
+                    expression = new SynapseXPath(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
+                }
+                else {
+                    expression = new SynapseXPath(key.getPropertyValue());
+                }
                 for (Entry<String, String> entry : key.getNamespaces().entrySet()) {
                     expression.addNamespace(entry.getKey(), entry.getValue());
                 }

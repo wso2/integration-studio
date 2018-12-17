@@ -22,9 +22,7 @@ import javax.xml.stream.XMLStreamException;
 import org.apache.axiom.om.OMElement;
 import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.SynapseException;
-import org.apache.synapse.config.xml.InvokeMediatorSerializer;
 import org.apache.synapse.config.xml.PropertyMediatorSerializer;
-import org.apache.synapse.mediators.builtin.PropertyMediator;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.Shape;
@@ -64,11 +62,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.PropertyMe
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.validator.GraphicalValidatorUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.validator.MediatorValidationUtil;
-import org.wso2.developerstudio.eclipse.gmf.esb.impl.CallTemplateMediatorImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.PropertyMediatorImpl;
-import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.CallTemplateMediatorTransformer;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.PropertyMediatorTransformer;
-import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 
 /**

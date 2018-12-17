@@ -38,7 +38,7 @@ import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 public abstract class AbstractEsbNodeTransformer implements EsbNodeTransformer {
 
-    protected final IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+    protected final static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
     /**
      * Performs the transformation of the data-flow path begining with the

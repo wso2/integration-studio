@@ -15,7 +15,7 @@ Please visit : http://wso2.com/products/developer-studio/
    </configIni>
 
    <launcherArgs>
-      <programArgsMac>/org.wso2.developerstudio.rcp.plugin/icons/icon-linux.xpm
+      <programArgsMac>/org.wso2.developerstudio.rcp.plugin/icons/256x256.png.icns
       </programArgsMac>
       <vmArgs>-Xms512m
 -Xmx1536m

@@ -50,25 +50,10 @@ public class SplashHandler extends EclipseSplashHandler {
     @Override
     public void init(Shell splash) {
         super.init(splash);
-        ImageDescriptor descriptor = AbstractUIPlugin.imageDescriptorFromPlugin(PLUGIN_ID, BETA_PNG);
-        if (descriptor != null)
-            image = descriptor.createImage();
-        if (image != null) {
-            final int xposition = splash.getSize().x - image.getImageData().width - 60;
-            final int yposition = BORDER;
-            getContent().addPaintListener(new PaintListener() {
-                public void paintControl(PaintEvent e) {
-                    e.gc.drawImage(image, xposition, yposition);
-                }
-            });
-        }
     }
 
     @Override
     public void dispose() {
         super.dispose();
-        if (image != null) {
-            image.dispose();
-        }
     }
 }

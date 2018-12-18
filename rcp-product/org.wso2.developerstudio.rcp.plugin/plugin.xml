@@ -24,6 +24,10 @@
                value="icons/icon-16.gif,icons/icon-32.gif,icons/icon-48.gif,icons/icon-64.gif,icons/icon-128.gif,icons/icon-256.gif">
          </property>
          <property
+		   name="cssTheme"
+	         value="org.wso2.developerstudio.eclipse.esb.theme">
+         </property>      
+         <property
            name="lifeCycleURI"
            value="bundleclass://org.wso2.developerstudio.rcp.plugin/org.wso2.developerstudio.rcp.plugin.LifeCycleManager">
          </property>

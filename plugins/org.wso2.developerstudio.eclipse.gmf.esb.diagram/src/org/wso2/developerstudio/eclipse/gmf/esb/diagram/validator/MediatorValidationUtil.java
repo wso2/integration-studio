@@ -412,6 +412,7 @@ public class MediatorValidationUtil {
                 if (aggregateMediatorFactory == null) {
                     aggregateMediatorFactory = new AggregateMediatorFactory();
                 }
+                setNamespaceForChildren(omElement);
                 aggregateMediatorFactory.createMediator(omElement, null);
 
             } else if (qTag.equals("callout")) {

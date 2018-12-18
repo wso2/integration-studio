@@ -21,7 +21,10 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EditPa
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.axiom.om.OMElement;
 import org.apache.commons.lang.StringUtils;
+import org.apache.synapse.SynapseException;
+import org.apache.synapse.config.xml.CloneMediatorSerializer;
 import org.eclipse.draw2d.GridData;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.PositionConstants;
@@ -51,8 +54,11 @@ import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.papyrus.infra.gmfdiag.css.CSSNodeImpl;
 import org.eclipse.swt.graphics.Color;
+import org.jaxen.JaxenException;
 import org.wso2.developerstudio.eclipse.gmf.esb.CloneMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.CloneMediatorGraphicalShape;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedBorderItemLocator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.MultipleCompartmentComplexFiguredAbstractMediator;
@@ -63,6 +69,12 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.utils.CustomToolT
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.CloneMediatorCanonicalEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.CloneMediatorItemSemanticEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.validator.GraphicalValidatorUtil;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.validator.MediatorValidationUtil;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.CloneMediatorImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.CloneMediatorTransformer;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 
 /**
  * @generated NOT
@@ -115,6 +127,32 @@ public class CloneMediatorEditPart extends MultipleCompartmentComplexFiguredAbst
                 reorderdOnUndo = true;
             }
         }
+
+        // this.getModel() will get EMF datamodel of the clone mediator datamodel
+        if (this.getModel() instanceof CSSNodeImpl) {
+            // The following part will check for validation issues with the current data in the model
+            CSSNodeImpl model = (CSSNodeImpl) this.getModel();
+            if (model.getElement() instanceof CloneMediatorImpl) {
+                CloneMediatorImpl cloneMediatorDataModel = (CloneMediatorImpl) model.getElement();
+                try {
+                    org.apache.synapse.mediators.eip.splitter.CloneMediator cloneMediator = CloneMediatorTransformer
+                            .createCloneMediator(new TransformationInfo(), (EsbNode) cloneMediatorDataModel);
+
+                    CloneMediatorSerializer cloneMediatorSerializer = new CloneMediatorSerializer();
+                    OMElement omElement = cloneMediatorSerializer.serializeSpecificMediator(cloneMediator);
+
+                    if (StringUtils
+                            .isEmpty(MediatorValidationUtil.validateMediatorsFromOEMElement(omElement, "clone"))) {
+                        GraphicalValidatorUtil.removeValidationMark(this);
+                    } else {
+                        GraphicalValidatorUtil.addValidationMark(this);
+                    }
+                } catch (JaxenException | TransformerException | SynapseException e) {
+                    GraphicalValidatorUtil.addValidationMark(this);
+                }
+            }
+        }
+
     }
 
     /**

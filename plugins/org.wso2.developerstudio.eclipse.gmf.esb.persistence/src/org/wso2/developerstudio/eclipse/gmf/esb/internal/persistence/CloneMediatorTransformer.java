@@ -86,7 +86,7 @@ public class CloneMediatorTransformer extends AbstractEsbNodeTransformer {
         }
     }
 
-    private org.apache.synapse.mediators.eip.splitter.CloneMediator createCloneMediator(TransformationInfo information,
+    public static org.apache.synapse.mediators.eip.splitter.CloneMediator createCloneMediator(TransformationInfo information,
             EsbNode subject) throws TransformerException, JaxenException {
         /*
          * Check subject.

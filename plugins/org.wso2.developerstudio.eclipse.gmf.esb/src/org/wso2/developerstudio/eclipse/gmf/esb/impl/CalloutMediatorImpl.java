@@ -208,7 +208,7 @@ public class CalloutMediatorImpl extends MediatorImpl implements CalloutMediator
      * @generated
      * @ordered
      */
-    protected static final String RESULT_CONTEXT_PROPERTY_EDEFAULT = "context_property_name";
+    protected static final String RESULT_CONTEXT_PROPERTY_EDEFAULT = "";
 
     /**
      * The cached value of the '{@link #getResultContextProperty() <em>Result Context Property</em>}' attribute.

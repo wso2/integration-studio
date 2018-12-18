@@ -45,7 +45,7 @@ public class EventMediatorTransformer extends AbstractEsbNodeTransformer {
         }
     }
 
-    private org.wso2.carbon.mediator.event.EventMediator createEventMediator(TransformationInfo information,
+    public static org.wso2.carbon.mediator.event.EventMediator createEventMediator(TransformationInfo information,
             EsbNode subject) throws JaxenException {
         // Check subject.
         Assert.isTrue(subject instanceof EventMediator, "Invalid subject.");

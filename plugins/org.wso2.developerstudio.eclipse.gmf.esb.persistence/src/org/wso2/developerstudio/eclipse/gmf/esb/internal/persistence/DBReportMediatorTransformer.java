@@ -44,7 +44,7 @@ public class DBReportMediatorTransformer extends AbstractDBMediatorTransformer {
 
     }
 
-    private org.apache.synapse.mediators.db.DBReportMediator createDBReportMediator(EsbNode subject) {
+    public static org.apache.synapse.mediators.db.DBReportMediator createDBReportMediator(EsbNode subject) {
 
         Assert.isTrue(subject instanceof DBReportMediator, "Unsupported mediator passed in for serialization.");
         DBReportMediator visualDBReport = (DBReportMediator) subject;

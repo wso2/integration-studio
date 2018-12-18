@@ -984,7 +984,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
                 ESBDebuggerUtil.updateModifiedDebugPoints(true);
                 ESBDebuggerUtil.setPageSaveOperationActivated(true);
             } catch (Exception e) {
-                log.error(e);
+                log.error("An error has occurred while trying to modify the debug points", e);
             }
         }
         MediatorFactoryUtils.registerFactories();

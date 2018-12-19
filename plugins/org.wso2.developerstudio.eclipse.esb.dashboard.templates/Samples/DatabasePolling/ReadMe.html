@@ -26,7 +26,7 @@
 	<div class="header">
 	    <h1>
 			<a href="../DefaultReadMe.html" class="arrow" ></a>
-			<span>Database Polling Template</span> 
+			<span id="page_title">Database Polling Template</span> 
 		</h1>
 	</div>
 	<div id="content">
@@ -163,5 +163,22 @@
 					</div>
 		</div>			
 	</div>
+	<script type="text/javascript">
+		Prism.plugins.NormalizeWhitespace.setDefaults({
+			'remove-trailing': true,
+			'remove-indent': true,
+			'left-trim': true,
+			'right-trim': true,
+		});
+	
+		var url = window.location.pathname;
+		var filename = url.substring(url.lastIndexOf('/')+1);
+		if(filename == 'Readme.html'){
+			var arrow_element = document.getElementsByClassName('arrow')[0];
+			var heading_title = document.getElementById('page_title');
+			arrow_element.style.visibility = 'hidden';
+			heading_title.style.paddingLeft = 0;
+		}
+	</script>	
 </body>
 </html>

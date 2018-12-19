@@ -414,11 +414,11 @@ public class ProjectCreationUtil {
         File importFile = ResourceUtils.getInstance()
                 .getResourceFile("Samples" + File.separator + sampleName + File.separator + "ReadMe.html");
 
-        IFile htmlFile = project.getFile(new Path("ReadMe.html"));
+        IFile htmlFile = project.getFile(new Path("Readme.html"));
         File destFile = htmlFile.getLocation().toFile();
         FileUtils.copy(importFile, destFile);
 
-        IFile fileDeschtml = project.getFile("ReadMe.html");
+        IFile fileDeschtml = project.getFile("Readme.html");
         File file = new File(fileDeschtml.getLocation().toString());
         URL url = file.toURI().toURL();
         project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());

@@ -26,7 +26,7 @@
       <div class="header">
          <h1>
             <a href="../DefaultReadMe.html" class="arrow" ></a>
-            <span>Proxying a SOAP Service Template</span> 
+            <span id="page_title">Proxying a SOAP Service Template</span> 
          </h1>
       </div>
       <div id="content">
@@ -133,6 +133,15 @@
              'left-trim': true,
              'right-trim': true,
          });
-      </script>
+     
+        var url = window.location.pathname;
+        var filename = url.substring(url.lastIndexOf('/')+1);
+        if(filename == 'Readme.html'){
+           var arrow_element = document.getElementsByClassName('arrow')[0];
+           var heading_title = document.getElementById('page_title');
+           arrow_element.style.visibility = 'hidden';
+           heading_title.style.paddingLeft = 0;
+        }
+     </script>
    </body>
 </html>

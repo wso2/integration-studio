@@ -18,7 +18,10 @@ package org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts;
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EditPartConstants.DEFAULT_PROPERTY_VALUE_TEXT;
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EditPartConstants.ITERATE_MEDIATOR_ICON_PATH;
 
+import org.apache.axiom.om.OMElement;
 import org.apache.commons.lang.StringUtils;
+import org.apache.synapse.SynapseException;
+import org.apache.synapse.config.xml.IterateMediatorSerializer;
 import org.eclipse.draw2d.GridData;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.PositionConstants;
@@ -27,6 +30,7 @@ import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.StackLayout;
 import org.eclipse.draw2d.ToolbarLayout;
 import org.eclipse.draw2d.geometry.Dimension;
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.Request;
@@ -46,8 +50,11 @@ import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.papyrus.infra.gmfdiag.css.CSSNodeImpl;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
+import org.jaxen.JaxenException;
+import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EsbGroupingShape;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedBorderItemLocator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.ShowPropertyViewEditPolicy;
@@ -57,6 +64,12 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.utils.CustomToolT
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.IterateMediatorCanonicalEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.IterateMediatorItemSemanticEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.validator.GraphicalValidatorUtil;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.validator.MediatorValidationUtil;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.IterateMediatorImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.IterateMediatorTransformer;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 
 /**
  * @generated NOT
@@ -415,6 +428,35 @@ public class IterateMediatorEditPart extends SingleCompartmentComplexFiguredAbst
 
     }
 
+    @Override
+    public void notifyChanged(Notification notification) {
+        // this.getModel() will get EMF datamodel of the iterate mediator datamodel
+        if (this.getModel() instanceof CSSNodeImpl) {
+            // The following part will check for validation issues with the current data in the model
+            CSSNodeImpl model = (CSSNodeImpl) this.getModel();
+            if (model.getElement() instanceof IterateMediatorImpl) {
+                IterateMediatorImpl iterateMediatorDataModel = (IterateMediatorImpl) model.getElement();
+                try {
+                    org.apache.synapse.mediators.eip.splitter.IterateMediator iterateMediator = IterateMediatorTransformer
+                            .createIterateMediator(new TransformationInfo(), (EsbNode) iterateMediatorDataModel, true);
+
+                    IterateMediatorSerializer iterateMediatorSerializer = new IterateMediatorSerializer();
+                    OMElement omElement = iterateMediatorSerializer.serializeSpecificMediator(iterateMediator);
+
+                    if (StringUtils
+                            .isEmpty(MediatorValidationUtil.validateMediatorsFromOEMElement(omElement, "iterate"))) {
+                        GraphicalValidatorUtil.removeValidationMark(this);
+                    } else {
+                        GraphicalValidatorUtil.addValidationMark(this);
+                    }
+                } catch (JaxenException | TransformerException | SynapseException e) {
+                    GraphicalValidatorUtil.addValidationMark(this);
+                }
+            }
+        }
+        super.notifyChanged(notification);
+    }
+    
     /**
      * @generated NOT
      */

@@ -19,6 +19,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.apache.synapse.util.xpath.SynapseXPath;
@@ -30,12 +31,13 @@ import org.wso2.developerstudio.eclipse.gmf.esb.ForEachMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.ValidationConstansts;
 
 public class ForEachMediatorTransformer extends AbstractEsbNodeTransformer {
 
     public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
         try {
-            information.getParentSequence().addChild(createForEachMediator(information, subject));
+            information.getParentSequence().addChild(createForEachMediator(information, subject, false));
             // Transform mediator output data flow path.
             doTransform(information, ((ForEachMediator) subject).getOutputConnector());
         } catch (JaxenException e) {
@@ -46,7 +48,7 @@ public class ForEachMediatorTransformer extends AbstractEsbNodeTransformer {
     public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
             throws TransformerException {
         try {
-            sequence.addChild(createForEachMediator(information, subject));
+            sequence.addChild(createForEachMediator(information, subject, false));
             doTransformWithinSequence(information, ((ForEachMediator) subject).getOutputConnector().getOutgoingLink(),
                     sequence);
         } catch (JaxenException e) {
@@ -54,8 +56,8 @@ public class ForEachMediatorTransformer extends AbstractEsbNodeTransformer {
         }
     }
 
-    private org.apache.synapse.mediators.builtin.ForEachMediator createForEachMediator(TransformationInfo information,
-            EsbNode subject) throws JaxenException, TransformerException {
+    public static org.apache.synapse.mediators.builtin.ForEachMediator createForEachMediator(TransformationInfo information,
+            EsbNode subject, boolean isForValidation) throws JaxenException, TransformerException {
         // Check subject.
         Assert.isTrue(subject instanceof ForEachMediator, "Invalid subject.");
         ForEachMediator visualForEach = (ForEachMediator) subject;
@@ -65,8 +67,14 @@ public class ForEachMediatorTransformer extends AbstractEsbNodeTransformer {
         setCommonProperties(forEachMediator, visualForEach);
 
         NamespacedProperty ForEachExp = visualForEach.getForEachExpression();
-        if (ForEachExp != null && !ForEachExp.getPropertyValue().equals("")) {
-            SynapseXPath xpath = new SynapseXPath(ForEachExp.getPropertyValue());
+        if (ForEachExp != null) {
+            SynapseXPath xpath;
+            if (!isForValidation && StringUtils.isEmpty(ForEachExp.getPropertyValue())) {
+                // Add a default xpath to use the synapse serializer
+                xpath = new SynapseXPath(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
+            } else {
+                xpath = new SynapseXPath(ForEachExp.getPropertyValue());
+            }
             Map<String, String> nameSpaceMap = ForEachExp.getNamespaces();
 
             for (String key : nameSpaceMap.keySet()) {

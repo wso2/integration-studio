@@ -69,7 +69,7 @@ public class PublishEventMediatorTransformer extends AbstractEsbNodeTransformer 
      * @return org.wso2.carbon.mediator.publishevent.PublishEventMediator
      * @throws JaxenException
      */
-    private org.wso2.carbon.mediator.publishevent.PublishEventMediator createPublishEventMediator(
+    public static org.wso2.carbon.mediator.publishevent.PublishEventMediator createPublishEventMediator(
             PublishEventMediator visualPublishEvent) throws JaxenException {
         org.wso2.carbon.mediator.publishevent.PublishEventMediator publishEventMediator = new org.wso2.carbon.mediator.publishevent.PublishEventMediator();
         setCommonProperties(publishEventMediator, visualPublishEvent);
@@ -107,7 +107,7 @@ public class PublishEventMediatorTransformer extends AbstractEsbNodeTransformer 
         return publishEventMediator;
     }
 
-    private List<Property> getVisualAttributes(EList<PublishEventMediatorAttribute> visualAttributes)
+    public static List<Property> getVisualAttributes(EList<PublishEventMediatorAttribute> visualAttributes)
             throws JaxenException {
         List<Property> attributesList = new ArrayList<Property>();
         for (PublishEventMediatorAttribute visualAttribute : visualAttributes) {

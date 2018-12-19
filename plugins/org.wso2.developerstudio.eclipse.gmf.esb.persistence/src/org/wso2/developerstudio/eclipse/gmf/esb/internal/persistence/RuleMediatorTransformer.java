@@ -47,7 +47,7 @@ public class RuleMediatorTransformer extends AbstractEsbNodeTransformer {
                 sequence);
     }
 
-    private RuleMediatorExt createRuleMediator(TransformationInfo information, EsbNode subject) {
+    public static RuleMediatorExt createRuleMediator(TransformationInfo information, EsbNode subject) {
         // Check subject.
         Assert.isTrue(subject instanceof RuleMediator, "Unsupported mediator passed in for serialization.");
         RuleMediatorExt ruleMediator = new RuleMediatorExt();

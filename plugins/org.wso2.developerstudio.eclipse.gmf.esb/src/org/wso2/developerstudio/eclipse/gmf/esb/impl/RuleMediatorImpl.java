@@ -442,7 +442,7 @@ public class RuleMediatorImpl extends MediatorImpl implements RuleMediator {
         RegistryKeyProperty ruleSetSourceKey = EsbFactory.eINSTANCE.createRegistryKeyProperty();
         ruleSetSourceKey.setKeyName("ruleSet-SourceKey");
         ruleSetSourceKey.setPrettyName("ruleSet-SourceKey");
-        ruleSetSourceKey.setKeyValue("/default/key");
+        ruleSetSourceKey.setKeyValue("");
         setRuleSetSourceKey(ruleSetSourceKey);
 
         NamespacedProperty evaluatorExpressionProperty = EsbFactory.eINSTANCE.createNamespacedProperty();

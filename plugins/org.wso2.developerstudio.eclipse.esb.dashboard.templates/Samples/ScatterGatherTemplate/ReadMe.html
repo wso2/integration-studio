@@ -7,8 +7,7 @@
     <title>Scatter-Gather Flow Control Template</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
 	<style>
-	        body,h1,p{font-weight:300}html{line-height:1.15;-webkit-text-size-adjust:100%}body{font-family:Roboto,sans-serif;margin:0;font-size:15px;color:#373D3F;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}#content{margin:15px;padding-top:4em}.header{z-index:9999;background:#efecec;border-top:2px solid #ff7437;padding:5px 15px;transition:background-color .25s,color .25s,box-shadow .25s;box-shadow:0 0 .4rem rgba(0,0,0,.1),0 .4rem .8rem rgba(0,0,0,.2);position:fixed;top:0;width:100%}h1{font-size:2em;margin:.3em 0;letter-spacing:-.01em;color:rgba(0,0,0,.54)}h3,li{font-size:16px}
-        .about-template{background:#fff8f0;padding:10px;border:1px solid rgba(230, 126, 34, 0.47843137254901963);border-left:5px solid rgba(230, 126, 34, 0.47843137254901963);margin-bottom:2em}h3{display:inline}div.code-toolbar>.toolbar .toolbar-item,li::before{display:inline-block}ol{counter-reset:list;-webkit-padding-start:10px;list-style:none}li{counter-increment:list;margin-bottom:10px;color:#2c3e50;font-weight:400}li::before{content:counter(list,decimal-leading-zero);background:#2b4353;color:#fff;font-size:13px;text-align:center;border-radius:50%;width:2.2em;height:2.2em;line-height:2.3em;margin-right:1em}code[class*=language-],pre[class*=language-]{color:#f8f8f2;background:0 0;text-shadow:0 1px rgba(0,0,0,.3);font-family:Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto;border-radius:.3em}:not(pre)>code[class*=language-],pre[class*=language-]{background:#272822}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#708090}.token.punctuation{color:#f8f8f2}.namespace{opacity:.7}.token.constant,.token.deleted,.token.property,.token.symbol,.token.tag{color:#f92672}.token.boolean,.token.number{color:#ae81ff}.token.attr-name,.token.builtin,.token.char,.token.inserted,.token.selector,.token.string{color:#a6e22e}.language-css .token.string,.style .token.string,.token.entity,.token.operator,.token.url,.token.variable{color:#f8f8f2}.token.atrule,.token.attr-value,.token.class-name,.token.function{color:#e6db74}.token.keyword{color:#66d9ef}.token.important,.token.regex{color:#fd971f}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}div.code-toolbar{position:relative}div.code-toolbar>.toolbar{position:absolute;top:.3em;right:.2em;transition:opacity .3s ease-in-out;opacity:0}div.code-toolbar:hover>.toolbar{opacity:1}div.code-toolbar>.toolbar a{cursor:pointer}div.code-toolbar>.toolbar button{border:0;font:inherit;line-height:normal;overflow:visible;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none}div.code-toolbar>.toolbar a,div.code-toolbar>.toolbar button,div.code-toolbar>.toolbar span{color:#bbb;font-size:.8em;padding:0 .5em;background:#f5f2f0;background:rgba(224,224,224,.2);box-shadow:0 2px 0 0 rgba(0,0,0,.2);border-radius:.5em}div.code-toolbar>.toolbar a:focus,div.code-toolbar>.toolbar a:hover,div.code-toolbar>.toolbar button:focus,div.code-toolbar>.toolbar button:hover,div.code-toolbar>.toolbar span:focus,div.code-toolbar>.toolbar span:hover{color:inherit;text-decoration:none}
+	body, h1, p {font-weight: 300 }html {line-height: 1.15;-webkit-text-size-adjust: 100% }body {font-family: Roboto, sans-serif;margin: 0;font-size: 15px;color: #373D3F;-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale }#content {margin: 15px;padding-top: 4em }.header {z-index: 9999;background: #efecec;padding: 5px 15px;transition: background-color .25s, color .25s, box-shadow .25s;box-shadow: 0 0 .4rem rgba(0, 0, 0, .1), 0 .4rem .8rem rgba(0, 0, 0, .2);position: fixed;top: 0;width: 100% }h1 {font-size: 2em;margin: .3em 0;letter-spacing: -.01em;color: rgba(0, 0, 0, .54) }h3, li {font-size: 16px }.about-template {background: #f0f4ff;padding: 10px;border: 1px solid rgba(34, 84, 230, 0.47843137254901963);border-left: 5px solid rgba(34, 46, 230, 0.47843137254901963);margin-bottom: 2em;}h3 {display: inline }div.code-toolbar>.toolbar .toolbar-item, li::before {display: inline-block }ol {counter-reset: list;-webkit-padding-start: 10px;list-style: none }li {counter-increment: list;margin-bottom: 10px;color: #2c3e50;font-weight: 400 }li::before {content: counter(list, decimal-leading-zero);background: #2b4353;color: #fff;font-size: 13px;text-align: center;border-radius: 50%;width: 2.2em;height: 2.2em;line-height: 2.3em;margin-right: 1em }code[class*=language-], pre[class*=language-] {color: #f8f8f2;background: 0 0;text-shadow: 0 1px rgba(0, 0, 0, .3);font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;text-align: left;white-space: pre;word-spacing: normal;word-break: normal;word-wrap: normal;line-height: 1.5;-moz-tab-size: 4;-o-tab-size: 4;tab-size: 4;-webkit-hyphens: none;-moz-hyphens: none;-ms-hyphens: none;hyphens: none }pre[class*=language-] {padding: 1em;margin: .5em 0;overflow: auto;border-radius: .3em }:not(pre)>code[class*=language-], pre[class*=language-] {background: #272822 }:not(pre)>code[class*=language-] {padding: .1em;border-radius: .3em;white-space: normal }.token.cdata, .token.comment, .token.doctype, .token.prolog {color: #708090 }.token.punctuation {color: #f8f8f2 }.namespace {opacity: .7 }.token.constant, .token.deleted, .token.property, .token.symbol, .token.tag {color: #f92672 }.token.boolean, .token.number {color: #ae81ff }.token.attr-name, .token.builtin, .token.char, .token.inserted, .token.selector, .token.string {color: #a6e22e }.language-css .token.string, .style .token.string, .token.entity, .token.operator, .token.url, .token.variable {color: #f8f8f2 }.token.atrule, .token.attr-value, .token.class-name, .token.function {color: #e6db74 }.token.keyword {color: #66d9ef }.token.important, .token.regex {color: #fd971f }.token.bold, .token.important {font-weight: 700 }.token.italic {font-style: italic }.token.entity {cursor: help }div.code-toolbar {position: relative }div.code-toolbar>.toolbar {position: absolute;top: .3em;right: .2em;transition: opacity .3s ease-in-out;opacity: 0 }div.code-toolbar:hover>.toolbar {opacity: 1 }div.code-toolbar>.toolbar a {cursor: pointer }div.code-toolbar>.toolbar button {border: 0;font: inherit;line-height: normal;overflow: visible;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none }div.code-toolbar>.toolbar a, div.code-toolbar>.toolbar button, div.code-toolbar>.toolbar span {color: #bbb;font-size: .8em;padding: 0 .5em;background: #f5f2f0;background: rgba(224, 224, 224, .2);box-shadow: 0 2px 0 0 rgba(0, 0, 0, .2);border-radius: .5em }div.code-toolbar>.toolbar a:focus, div.code-toolbar>.toolbar a:hover, div.code-toolbar>.toolbar button:focus, div.code-toolbar>.toolbar button:hover, div.code-toolbar>.toolbar span:focus, div.code-toolbar>.toolbar span:hover {color: inherit;text-decoration: none }.accordion {margin: 3em auto;}.toggle {display: none;}.option {position: relative;margin-bottom: 1em;}.title, .content {-webkit-backface-visibility: hidden;backface-visibility: hidden;-webkit-transform: translateZ(0);transform: translateZ(0);transition: all 0.2s;border: 1px solid #cacaca61;}.title {background: #fff;padding: 1em;display: block;color: #7A7572;font-weight: bold;}.title:after, .title:before {content: '';position: absolute;right: 1.25em;top: 1.25em;width: 2px;height: 0.75em;background-color: #7A7572;transition: all 0.2s;}.title:after {-webkit-transform: rotate(90deg);transform: rotate(90deg);}.content {max-height: 0;overflow: hidden;background-color: #fff;}.content p {margin: 0;padding: 0.5em 1em 1em;font-size: 0.9em;line-height: 1.5;}.toggle:checked + .title, .toggle:checked + .title + .content {box-shadow: 3px 3px 6px #ddd, -3px 3px 6px #ddd;}.toggle:checked + .title + .content {max-height: 500px;overflow: auto;padding: 20px;}.toggle:checked + .title:before {-webkit-transform: rotate(90deg) !important;transform: rotate(90deg) !important;}.arrow {position: absolute;padding: 14px;box-shadow: 1px -1px 0 1px #6471af inset;-webkit-box-shadow: 4px -4px #6471af inset;border: solid transparent;border-width: 0 0 5px;transition: 0.2s;transform: rotate(45deg);}.arrow:hover {box-shadow: 2px -2px 0 2px orchid inset;-webkit-box-shadow: 4px -4px orchid inset;}h1 span{padding-left: 30px;}
     </style>
 	<script type="text/javascript">
         /* PrismJS 1.15.0
@@ -25,7 +24,10 @@
 </head>
 <body>
 	<div class="header">
-	    <h1>Scatter-Gather Flow Control Template</h1>
+	    <h1>
+			<a href="../DefaultReadMe.html" class="arrow" ></a>
+		<span>	Scatter-Gather Flow Control Template</span>
+		</h1>
 	</div>
 	<div id="content">
 		<div class="about-template">
@@ -40,40 +42,73 @@
 			The responses are aggregated and built into a single payload and send back to the client.</p>
 		</div>
 		 
-		<h3>Executing the sample</h3>
-		<ol>
-	        <li>
-	            <h3>Connect the ESB server to WSO2 EI Tooling</h3>
-	            <p>If you haven't already attached the WSO2 EI runtime to WSO2 EI Tooling, follow the instructions given below.</p>
-	            <p>- Open the <strong>Developer Studio Dashboard</strong> and click <strong>Server</strong>
-	                    under <strong>Add Server</strong>.</p>
-	            <p>- In the &lsquo;<strong>Define a New Server</strong>&rsquo; dialog box, expand the WSO2 folder,
-	                and select the respective product and version.</p>
-	            <p>- Click <strong>Next</strong>, and then click <strong>Browse</strong> (next to CARBON_HOME) and
-	                select the WSO2 EI distribution directory.</p>
-	            <p>- Click <strong>Next</strong> and review the default ports for the ESB profile of WSO2 EI.
-	                Typically, you can leave these unchanged, but if you are already running another server on these ports,
-	                specify unused ports here.</p>
-	            <p>- Click <strong>Finish</strong>. The ESB server of WSO2 EI is now connected to WSO2 EI Tooling.</p>
-	        </li>
-	        <li>
-	            <h3>Deploy the ESB artifacts in the server</h3>
-	            <p>- In the <strong>Servers</strong> tab, right-click the server and click <strong>Add and Remove</strong>.</p>
-	            <p>- Select the relevant project from the list, and click <strong>Add</strong>.</p>
-	            <p>- Click <strong>Finish</strong>. The template sample is now deployed in the server.</p>
-	        </li>
-	        <li>
-	            <h3>Start the server</h3>
-	            <p>- Click the <strong>Start the server</strong> button on the toolbar.</p>
-	            <p>- If you are prompted to save changes to any of the artifact files, click <strong>Yes</strong>.</p>
-	            <p>- As the server starts, the <strong>Console</strong> tab will appear.
-	                You should see messages indicating that the C-App was successfully deployed.</p>
-	        </li>
-			<li> 
-				<h3>Invoke the service with the following request. Use an HTTP client like cURL.</h3>
-				<pre><code class="language-bash">curl -X POST -d '&lt;tem:Mission xmlns:tem="http://tempuri.org"/&gt;' http://localhost:8280/services/MissionService -H "Content-Type: text/xml"</code></pre>
+		<div class="accordion">
+				<div class="option">
+					<input type="checkbox" id="toggle1" class="toggle" checked/>
+					<label class="title" for="toggle1">Run using embeded WSO2 Micro Integrator
+					</label>
+					<div class="content">
+						<ol>
+							<li>
+								<h3>Export project atrifacts & run</h3>
+								<p>
+									- Right click on the respective <strong>Composite Application</strong> 
+									project and select <strong>Export project atrifacts & run </strong> from menu.
+								</p>
+							</li>
+							<li>
+								<h3>Invoke the service</h3>
+								<p>Invoke the service using an HTTP client like cURL.</p>
+								<pre><code class="language-bash">curl -X POST -d '&lt;tem:Mission xmlns:tem="http://tempuri.org"/&gt;' http://localhost:8290/services/MissionService -H "Content-Type: text/xml"</code></pre>
 			</li>
-		</ol>		
+						</ol>        
+					</div>
+				</div>
+					
+				<div class="option">
+					<input type="checkbox" id="toggle2" class="toggle" />
+					<label class="title" for="toggle2">
+						Run using external WSO2 Enterprise Integrator
+					</label>
+					<div class="content">
+							<ol>
+									<li>
+										<h3>Connect the ESB server to WSO2 EI Tooling</h3>
+										<p>If you haven't already attached the WSO2 EI runtime to WSO2 EI Tooling, follow the instructions given below.</p>
+										<p>- Open the <strong>Developer Studio Dashboard</strong> and click <strong>Server</strong>
+												under <strong>Add Server</strong>.</p>
+										<p>- In the &lsquo;<strong>Define a New Server</strong>&rsquo; dialog box, expand the WSO2 folder,
+											and select the respective product and version.</p>
+										<p>- Click <strong>Next</strong>, and then click <strong>Browse</strong> (next to CARBON_HOME) and
+											select the WSO2 EI distribution directory.</p>
+										<p>- Click <strong>Next</strong> and review the default ports for the ESB profile of WSO2 EI.
+											Typically, you can leave these unchanged, but if you are already running another server on these ports,
+											specify unused ports here.</p>
+										<p>- Click <strong>Finish</strong>. The ESB server of WSO2 EI is now connected to WSO2 EI Tooling.</p>
+									</li>
+									<li>
+										<h3>Deploy the ESB artifacts in the server</h3>
+										<p>- In the <strong>Servers</strong> tab, right-click the server and click <strong>Add and Remove</strong>.</p>
+										<p>- Select the relevant project from the list, and click <strong>Add</strong>.</p>
+										<p>- Click <strong>Finish</strong>. The template sample is now deployed in the server.</p>
+									</li>
+									<li>
+										<h3>Start the server</h3>
+										<p>- Click the <strong>Start the server</strong> button on the toolbar.</p>
+										<p>- If you are prompted to save changes to any of the artifact files, click <strong>Yes</strong>.</p>
+										<p>- As the server starts, the <strong>Console</strong> tab will appear.
+											You should see messages indicating that the C-App was successfully deployed.</p>
+									</li>
+									<li> 
+										<h3>Invoke the service with the following request. Use an HTTP client like cURL.</h3>
+										<pre><code class="language-bash">curl -X POST -d '&lt;tem:Mission xmlns:tem="http://tempuri.org"/&gt;' http://localhost:8280/services/MissionService -H "Content-Type: text/xml"</code></pre>
+									</li>
+								</ol>	
+					</div>
+				</div>
+			</div>			
+		
+			
 	</div>
 </body>
 </html>

@@ -123,7 +123,7 @@ public class TemplateProjectConstants {
 
     public static final String PROJECT_WIZARD_PAGE_DESCRIPTION = "Create Sample Template";
 
-    public static final String PROJECT_WIZARD_PAGE_TITLE = "Create Proejct Using ";
+    public static final String PROJECT_WIZARD_PAGE_TITLE = "Create Project Using ";
 
     public static final String WIZARD_PAGE_NAME = "wizardPage";
 

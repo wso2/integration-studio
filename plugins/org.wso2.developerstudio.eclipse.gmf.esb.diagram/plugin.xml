@@ -5943,7 +5943,7 @@
 	<extension point="org.eclipse.ui.perspectives">
 		<perspective
 			class="org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.perspective.EsbGraphicalEditorPerspective"
-			icon="icons/full/obj16/EsbModelFile.png" id="org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.perspective"
+			icon="icons/obj16/wso2ESBview.png" id="org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.perspective"
 			name="WSO2 ESB Graphical">
 		</perspective>
 	</extension>

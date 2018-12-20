@@ -100,6 +100,14 @@ public class EJBMediatorExtFactory extends AbstractMediatorFactory {
         return mediator;
     }
     
+    /**
+     * This method will create a EJB mediator for the validation purposes. This will try 
+     * to create the EJB mediator with the given OMElement, if it fails to create a mediator
+     * this will throw synapse excpetions, otherwise this will return a valid bean mediator
+     * @param elem OMElement of the mediator
+     * @param properties
+     * @return
+     */
     public Mediator createSpecificMediatorForValidation(OMElement elem, Properties properties) {
 
         EJBMediatorExt mediator = new EJBMediatorExt();

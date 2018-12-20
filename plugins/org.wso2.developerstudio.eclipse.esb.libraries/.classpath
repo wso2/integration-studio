@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry exported="true" kind="lib" path="lib/synapse-core_2.1.7.wso2v82.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/synapse-core_2.1.7.wso2v83.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/synapse-extensions_2.1.7.wso2v80.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.rule.mediation_4.4.9.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.rule.kernel_4.4.9.jar"/>

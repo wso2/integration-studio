@@ -42,6 +42,8 @@ public class ImageHolder {
 	private static final String ARROW_EAST = "icons/ico20/arrowEast.png";
 	private static final String ARROW_WEST = "icons/ico20/arrowWest.png";
 	private static final String BLACK_COLOURED = "icons/gmf/black.jpg";
+	private static final String ADD_CONTENT = "icons/gmf/add-content.png";
+	private static final String ADD_ROOT = "icons/gmf/add-root.png";
 	
 	private Image elementImage;
 	private Image attributeImage;
@@ -58,6 +60,8 @@ public class ImageHolder {
 	private Image arrowEastImage;
 	private Image arrowWestImage;
 	private Image blackColouredImage;
+	private Image addContentImage;
+	private Image addRootImage;
 	
 	private ImageHolder() {
 		
@@ -93,6 +97,10 @@ public class ImageHolder {
 		ImageDescriptor arrowWestImgDesc = DataMapperDiagramEditorPlugin.getBundledImageDescriptor(ARROW_WEST);
 		ImageDescriptor blackColouredImgDesc = AbstractUIPlugin
 				.imageDescriptorFromPlugin(ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, BLACK_COLOURED);
+		ImageDescriptor addContentDesc = AbstractUIPlugin
+				.imageDescriptorFromPlugin(ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, ADD_CONTENT);
+		ImageDescriptor addRootDesc = AbstractUIPlugin
+				.imageDescriptorFromPlugin(ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, ADD_ROOT);
 		
 		elementImage = elementImgDescCollapse.createImage();
 		attributeImage = attributeImgDesc.createImage();
@@ -109,6 +117,8 @@ public class ImageHolder {
 		arrowEastImage = arrowEastImgDesc.createImage();
 		arrowWestImage = arrowWestImgDesc.createImage();
 		blackColouredImage = blackColouredImgDesc.createImage();
+		addContentImage = addContentDesc.createImage();
+		addRootImage = addRootDesc.createImage();
 	}
 	
 	public Image getElementImage() {
@@ -170,6 +180,14 @@ public class ImageHolder {
 		return blackColouredImage;
 	}
 	
+	public Image getAddContentImage() {
+		return addContentImage;
+	}
+
+	public Image getAddRootImage() {
+		return addRootImage;
+	}
+
 	public static ImageHolder getInstance() {
 		return ImageHolderInstanceHolder.IMAGEHOLDER_INSTANCE;
 	}

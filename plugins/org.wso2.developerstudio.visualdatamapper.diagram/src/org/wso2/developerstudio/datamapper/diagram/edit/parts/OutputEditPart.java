@@ -18,16 +18,22 @@ package org.wso2.developerstudio.datamapper.diagram.edit.parts;
 
 import java.io.IOException;
 
+import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.FigureCanvas;
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.IFigure;
+import org.eclipse.draw2d.ImageFigure;
+import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.LineBorder;
+import org.eclipse.draw2d.MouseListener;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.StackLayout;
 import org.eclipse.draw2d.TitleBarBorder;
 import org.eclipse.draw2d.ToolbarLayout;
+import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
@@ -54,9 +60,15 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.runtime.notation.impl.BoundsImpl;
 import org.eclipse.gmf.runtime.notation.impl.DiagramImpl;
 import org.eclipse.gmf.tooling.runtime.edit.policies.reparent.CreationEditPolicyWithCustomReparent;
+import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
+import org.eclipse.ui.ISelectionService;
+import org.eclipse.ui.IWorkbenchPart;
+import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.datamapper.DataMapperFactory;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
 import org.wso2.developerstudio.datamapper.DataMapperRoot;
@@ -65,6 +77,10 @@ import org.wso2.developerstudio.datamapper.Output;
 import org.wso2.developerstudio.datamapper.SchemaDataType;
 import org.wso2.developerstudio.datamapper.TreeNode;
 import org.wso2.developerstudio.datamapper.diagram.Activator;
+import org.wso2.developerstudio.datamapper.diagram.custom.action.AddNewRootAction;
+import org.wso2.developerstudio.datamapper.diagram.custom.action.LoadInputSchemaAction;
+import org.wso2.developerstudio.datamapper.diagram.custom.action.LoadOutputSchemaAction;
+import org.wso2.developerstudio.datamapper.diagram.custom.util.ImageHolder;
 import org.wso2.developerstudio.datamapper.diagram.custom.util.TreeNodeUtils;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.custom.CustomNonResizableEditPolicyEx;
 import org.wso2.developerstudio.datamapper.diagram.edit.policies.OutputCanonicalEditPolicy;
@@ -105,12 +121,14 @@ public class OutputEditPart extends ShapeNodeEditPart {
 	 * @generated
 	 */
 	protected IFigure primaryShape;
+	protected OutputEditPart thisEditPart;
 
 	/**
 	 * @generated
 	 */
 	public OutputEditPart(View view) {
 		super(view);
+		thisEditPart = this;
 	}
 
 	/**
@@ -126,6 +144,10 @@ public class OutputEditPart extends ShapeNodeEditPart {
 	}
 
 	public void resetOutputTreeFromFile(String filePath) {
+		Figure fig = (Figure) primaryShape;
+		if (fig.getChildren() != null && !fig.getChildren().isEmpty()) {
+			fig.remove((IFigure) fig.getChildren().get(0));
+		}
 		EObject parentContainer = ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) (this).getModel()).getElement();
 		Output iip = (Output) parentContainer;
 
@@ -649,7 +671,95 @@ public class OutputEditPart extends ShapeNodeEditPart {
 			titleBarBorder.setFont(new Font(null, "Arial", 10, SWT.BOLD));
 			this.setBorder(titleBarBorder);
 
+            if (!(this.getChildren() != null && this.getChildren().size() > 1)) {
+                int nodeDimension = 64; // width for connection nodes
+                ImageFigure addContentImg = new ImageFigure(ImageHolder.getInstance().getAddContentImage());
+                ImageFigure addRootImg = new ImageFigure(ImageHolder.getInstance().getAddRootImage());
+                addContentImg.setSize(new Dimension(nodeDimension, nodeDimension));
+                addRootImg.setSize(new Dimension(nodeDimension, nodeDimension));
+                addContentImg.setBounds(new Rectangle(X + 35, Y + 30, 180, 60));
+                addRootImg.setBounds(new Rectangle(X + 35, Y + 94, 180, 60));
+                addContentImg.setToolTip(new Label("Load Output"));
+                addRootImg.setToolTip(new Label("Add new Root Element"));
+                RectangleFigure rf = new RectangleFigure();
+                rf.setOpaque(true);
+                rf.setBounds(new Rectangle(X, Y + 25, TreeNodeUtils.getTreeWidth(outputRootTreeNode, LEAF_WIDTH),
+                                TreeNodeUtils.getTreeHeight(outputRootTreeNode, LEAF_HEIGHT) - 25));
+                rf.add(addContentImg);
+                rf.add(addRootImg);
+                this.add(rf);
+                addContentImg.addMouseListener(new MouseListener() {
+                        @Override
+                        public void mousePressed(org.eclipse.draw2d.MouseEvent me) {
+                                IWorkbenchPart iwbp = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getPartService()
+                                                .getActivePart();
+                                LoadOutputSchemaAction losa = new LoadOutputSchemaAction(iwbp);
+                                losa.doRun(new NullProgressMonitor());
+                        }
+
+                        @Override
+                        public void mouseReleased(org.eclipse.draw2d.MouseEvent me) {
+                        }
+
+                        @Override
+                        public void mouseDoubleClicked(org.eclipse.draw2d.MouseEvent me) {
+                        }
+                });
+                addRootImg.addMouseListener(new MouseListener() {
+                        @Override
+                        public void mousePressed(org.eclipse.draw2d.MouseEvent me) {
+                                IWorkbenchPart iwbp = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getPartService()
+                                                .getActivePart();
+                                EditPart selectedEP = getSelectedEditPart(iwbp);
+                                AddNewRootAction anra = new AddNewRootAction(iwbp, selectedEP);
+                               anra.doRun(new NullProgressMonitor());
+                        }
+
+                        @Override
+                        public void mouseReleased(org.eclipse.draw2d.MouseEvent me) {
+                        }
+
+                        @Override
+                        public void mouseDoubleClicked(org.eclipse.draw2d.MouseEvent me) {
+                        }
+                });
+            }
+
 		}
+
+		private EditPart getSelectedEditPart(IWorkbenchPart iwbp) {
+			IStructuredSelection selection = getStructuredSelection(iwbp);
+			if (selection.size() == 1) {
+				Object selectedEP = selection.getFirstElement();
+				if (selectedEP instanceof DataMapperRootEditPart) {
+					return (EditPart)((EditPart) selectedEP).getChildren().get(1);
+				}
+			}
+			// In case of selecting the wrong editpart
+			return null;
+		}
+
+		private IStructuredSelection getStructuredSelection(IWorkbenchPart iwbp) {
+	        ISelection selection = getSelection(iwbp);
+	        return (selection instanceof StructuredSelection) ? (StructuredSelection) selection
+	            : StructuredSelection.EMPTY;
+	    }
+
+		private ISelection getSelection(IWorkbenchPart iwbp) {
+	        ISelection selection = null;
+	        ISelectionService selectionService = null;
+	        if (iwbp != null && iwbp.getSite().getWorkbenchWindow() != null) {
+	            selectionService = iwbp.getSite()
+	                .getWorkbenchWindow().getSelectionService();
+	        }
+
+	        if (selectionService != null) {
+	            selection = selectionService.getSelection();
+	        }
+
+	        return (selection != null) ? selection
+	            : StructuredSelection.EMPTY;
+	    }
 
 		/**
 		 * @generated NOT

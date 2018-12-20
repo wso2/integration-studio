@@ -94,10 +94,16 @@ public class AddNewRootAction extends AbstractActionHandler {
 		setImageDescriptor(workbenchImages.getImageDescriptor(ISharedImages.IMG_TOOL_NEW_WIZARD));
 	}
 
-	@Override
-	protected void doRun(IProgressMonitor progressMonitor) {
-		selectedEP = getSelectedEditPart();
+	public AddNewRootAction(IWorkbenchPart workbenchPart, EditPart currentlySelectedEP) {
+		this(workbenchPart);
+		selectedEP = currentlySelectedEP;
+	}
 
+	@Override
+	public void doRun(IProgressMonitor progressMonitor) {
+		if (selectedEP == null) {
+			selectedEP = getSelectedEditPart();
+		}
 		if (null != selectedEP) {
 			// Not allow to add multiple root elements
 			if (!selectedEP.getChildren().isEmpty() && selectedEP instanceof InputEditPart) {

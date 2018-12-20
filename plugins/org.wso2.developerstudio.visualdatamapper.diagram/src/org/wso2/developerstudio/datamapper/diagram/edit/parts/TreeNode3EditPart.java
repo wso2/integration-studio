@@ -508,6 +508,10 @@ public class TreeNode3EditPart extends AbstractBorderedShapeEditPart {
 		NodeFigure figure = createNodePlate();
 		figure.setLayoutManager(new StackLayout());
 		IFigure shape = createNodeShape();
+		Figure iep = (Figure)((OutputEditPart)this.getParent()).getContentPane();
+		if (iep.getChildren() != null && !iep.getChildren().isEmpty()) {
+			((Figure)iep).remove((IFigure) iep.getChildren().get(0));
+		}
 		figure.add(shape);
 		contentPane = setupContentPane(shape);
 		return figure;

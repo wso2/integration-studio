@@ -27,7 +27,7 @@ public class TreeNodeUtils {
 	public static int getTreeHeight(TreeNode tree, int leafHeight) {
  		int h = getTreeHeight(tree);
  		if (h < 4) {
- 			return 100;
+			return 160;
  		}
  		else return (h+1) * leafHeight;
  	}

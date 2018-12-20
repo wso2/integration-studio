@@ -31,6 +31,8 @@ import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.datamapper.Output;
 import org.wso2.developerstudio.datamapper.diagram.custom.util.DialogDisplayUtils;
 import org.wso2.developerstudio.datamapper.diagram.custom.util.SchemaKeyEditorDialog;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.DataMapperRootEditPart;
+import org.wso2.developerstudio.datamapper.impl.DataMapperRootImpl;
 
 /**
  * This class handles context menu action 'load output schema'
@@ -56,13 +58,13 @@ public class LoadOutputSchemaAction extends AbstractActionHandler {
 		setImageDescriptor(workbenchImages.getImageDescriptor(ISharedImages.IMG_TOOL_NEW_WIZARD));
 	}
 
-	protected void doRun(IProgressMonitor progressMonitor) {
+	public void doRun(IProgressMonitor progressMonitor) {
 		EditPart selectedEP = getSelectedEditPart();
 
 		if (selectedEP != null) {
 			EObject selectedObj = ((View) selectedEP.getModel()).getElement();
-			Assert.isTrue(selectedObj instanceof Output, INVALID_SELECTION);
-
+			Assert.isTrue(selectedObj instanceof Output || selectedObj instanceof DataMapperRootImpl,
+					INVALID_SELECTION);
 			// Schema key editor dialog : create/import schema
 			SchemaKeyEditorDialog dialog = new SchemaKeyEditorDialog(Display.getDefault().getActiveShell(), selectedEP,
 					getWorkbenchPart(), SCHEMA_TYPE_OUTPUT);
@@ -81,7 +83,11 @@ public class LoadOutputSchemaAction extends AbstractActionHandler {
 		if (selection.size() == 1) {
 			Object selectedEP = selection.getFirstElement();
 			if (selectedEP instanceof EditPart) {
-				return (EditPart) selectedEP;
+               if (selectedEP instanceof DataMapperRootEditPart) {
+                       return (EditPart)((EditPart) selectedEP).getChildren().get(1);
+               } else {
+                       return (EditPart) selectedEP;
+               }
 			}
 		}
 

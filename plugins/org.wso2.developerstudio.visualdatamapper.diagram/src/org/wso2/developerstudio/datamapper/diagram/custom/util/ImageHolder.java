@@ -42,6 +42,9 @@ public class ImageHolder {
 	private static final String ARROW_EAST = "icons/ico20/arrowEast.png";
 	private static final String ARROW_WEST = "icons/ico20/arrowWest.png";
 	private static final String BLACK_COLOURED = "icons/gmf/black.jpg";
+	private static final String ADD_INPUT_CONTENT = "icons/gmf/add-input-content.png";
+	private static final String ADD_OUTPUT_CONTENT = "icons/gmf/add-output-content.png";
+	private static final String ADD_ROOT = "icons/gmf/add-root.png";
 	
 	private Image elementImage;
 	private Image attributeImage;
@@ -58,6 +61,9 @@ public class ImageHolder {
 	private Image arrowEastImage;
 	private Image arrowWestImage;
 	private Image blackColouredImage;
+	private Image addInputContentImage;
+	private Image addOutputContentImage;
+	private Image addRootImage;
 	
 	private ImageHolder() {
 		
@@ -93,6 +99,12 @@ public class ImageHolder {
 		ImageDescriptor arrowWestImgDesc = DataMapperDiagramEditorPlugin.getBundledImageDescriptor(ARROW_WEST);
 		ImageDescriptor blackColouredImgDesc = AbstractUIPlugin
 				.imageDescriptorFromPlugin(ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, BLACK_COLOURED);
+		ImageDescriptor addInputContentDesc = AbstractUIPlugin
+				.imageDescriptorFromPlugin(ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, ADD_INPUT_CONTENT);
+		ImageDescriptor addOutputContentDesc = AbstractUIPlugin
+				.imageDescriptorFromPlugin(ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, ADD_OUTPUT_CONTENT);
+		ImageDescriptor addRootDesc = AbstractUIPlugin
+				.imageDescriptorFromPlugin(ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, ADD_ROOT);
 		
 		elementImage = elementImgDescCollapse.createImage();
 		attributeImage = attributeImgDesc.createImage();
@@ -109,6 +121,9 @@ public class ImageHolder {
 		arrowEastImage = arrowEastImgDesc.createImage();
 		arrowWestImage = arrowWestImgDesc.createImage();
 		blackColouredImage = blackColouredImgDesc.createImage();
+		addInputContentImage = addInputContentDesc.createImage();
+		addOutputContentImage = addOutputContentDesc.createImage();
+		addRootImage = addRootDesc.createImage();
 	}
 	
 	public Image getElementImage() {
@@ -170,6 +185,18 @@ public class ImageHolder {
 		return blackColouredImage;
 	}
 	
+	public Image getAddInputContentImage() {
+		return addInputContentImage;
+	}
+
+	public Image getAddOutputContentImage() {
+		return addOutputContentImage;
+	}
+
+	public Image getAddRootImage() {
+		return addRootImage;
+	}
+
 	public static ImageHolder getInstance() {
 		return ImageHolderInstanceHolder.IMAGEHOLDER_INSTANCE;
 	}

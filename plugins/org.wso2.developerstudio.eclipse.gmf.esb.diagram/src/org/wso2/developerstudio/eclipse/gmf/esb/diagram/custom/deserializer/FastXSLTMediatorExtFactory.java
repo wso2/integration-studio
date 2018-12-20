@@ -48,7 +48,7 @@ public class FastXSLTMediatorExtFactory extends FastXSLTMediatorFactory {
         OMAttribute attXslt = omElement.getAttribute(ATT_KEY);
 
         if (attXslt != null) {
-            ValueExtFactory keyFac = new ValueExtFactory();
+            ValueFactoryExtended keyFac = new ValueFactoryExtended();
             Value generatedKey = keyFac.createValue(XMLConfigConstants.KEY, omElement);
 
             ((FastXSLTMediator) mediator).setXsltKey(generatedKey);

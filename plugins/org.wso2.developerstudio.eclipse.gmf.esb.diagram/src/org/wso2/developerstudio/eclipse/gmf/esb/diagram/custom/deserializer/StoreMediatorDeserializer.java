@@ -28,16 +28,15 @@ public class StoreMediatorDeserializer extends AbstractEsbNodeDeserializer<Abstr
             executeSetValueCommand(visualStoreMediator.getOnStoreSequence(), REGISTRY_KEY_PROPERTY__KEY_VALUE,
                     storeMediator.getOnStoreSequence());
         }
-        
+
         if (storeMediator.getMessageStoreExp() != null) {
             executeSetValueCommand(STORE_MEDIATOR__EXPRESSION,
                     createNamespacedProperty(storeMediator.getMessageStoreExp()));
             executeSetValueCommand(STORE_MEDIATOR__SPECIFY_AS, StoreMediatorSpecifyType.EXPRESSION);
-        } else if(storeMediator.getMessageStoreName() != null){
+        } else if (storeMediator.getMessageStoreName() != null) {
             executeSetValueCommand(STORE_MEDIATOR__MESSAGE_STORE, storeMediator.getMessageStoreName());
             executeSetValueCommand(STORE_MEDIATOR__SPECIFY_AS, StoreMediatorSpecifyType.VALUE);
-        }
-        else {
+        } else {
             executeSetValueCommand(STORE_MEDIATOR__EXPRESSION,
                     createNamespacedProperty(SynapseXPathExt.createSynapsePath("")));
             executeSetValueCommand(STORE_MEDIATOR__SPECIFY_AS, StoreMediatorSpecifyType.EXPRESSION);

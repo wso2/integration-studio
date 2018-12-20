@@ -19,14 +19,14 @@ import javax.xml.namespace.QName;
 /**
  * Factory for {@link org.apache.synapse.mediators.Value} instances.
  */
-public class ValueExtFactory {
+public class ValueFactoryExtended {
 
-    private static final Log log = LogFactory.getLog(ValueExtFactory.class);
+    private static final Log log = LogFactory.getLog(ValueFactoryExtended.class);
 
     private static final QName ATT_KEY = new QName("key");
 
     /**
-     * Create a key instance
+     * Create a key instance without validation
      *
      * @param elem OMElement
      * @return Key

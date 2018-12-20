@@ -70,6 +70,14 @@ public class BeanMediatorExtFactory extends AbstractMediatorFactory {
         return mediator;
     }
 
+        /**
+         * This method will create a Bean mediator for the validation purposes. This will try 
+         * to create the bean mediator with the given OMElement, if it fails to create a mediator
+         * this will throw synapse excpetions, otherwise this will return a valid bean mediator
+         * @param elem OMElement of the mediator
+         * @param properties
+         * @return
+         */
         public Mediator createSpecificMediatorForValidation(OMElement elem, Properties properties) {
 
             BeanMediatorExt mediator = new BeanMediatorExt();
@@ -101,7 +109,9 @@ public class BeanMediatorExtFactory extends AbstractMediatorFactory {
                         assert false;
                     }
                 } catch (IllegalArgumentException e) {
-                    // ignore
+                    // The purpose of this method is to create a dummy bean mediator synapse 
+                    // object. So if there are exceptions the EI-tooling, we can proceed with
+                    // the already created mediator object, hence ignoring
                 }
             }
 
@@ -133,9 +143,18 @@ public class BeanMediatorExtFactory extends AbstractMediatorFactory {
         populatePropertyName(mediator, elem);
 
         if (elem.getAttributeValue(ATT_VALUE) != null) {
-            mediator.setValue(new ValueExtFactory().createValue(BeanConstants.VALUE, elem));
+            mediator.setValue(new ValueFactoryExtended().createValue(BeanConstants.VALUE, elem));
         }
     }
+    
+    /**
+     * This method will populate the SetPropertyCase parameter with the use the synapse 
+     * ValueFactory() class which will throw synapse exceptions if the mediator contains invalid parameters.
+     * This is useful for the validation of the 
+     * bean mediator
+     * @param mediator
+     * @param elem
+     */
     private void populateSetPropertyCaseForValidation(BeanMediatorExt mediator, OMElement elem) {
 
         mediator.setAction(Action.SET_PROPERTY);
@@ -154,9 +173,18 @@ public class BeanMediatorExtFactory extends AbstractMediatorFactory {
         populatePropertyName(mediator, elem);
 
         if (elem.getAttributeValue(new QName(BeanConstants.TARGET)) != null) {
-            mediator.setTargetValue(new ValueExtFactory().createValue(BeanConstants.TARGET, elem));
+            mediator.setTargetValue(new ValueFactoryExtended().createValue(BeanConstants.TARGET, elem));
         }
     }
+    
+    /**
+     * This method will populate the GetPropertyCase parameter with the use the synapse 
+     * ValueFactory() class which will throw synapse exceptions if the mediator contains invalid parameters.
+     * This is useful for the validation of the 
+     * bean mediator
+     * @param mediator
+     * @param elem
+     */
     private void populateGetPropertyCaseForValidation(BeanMediatorExt mediator, OMElement elem) {
 
         mediator.setAction(Action.GET_PROPERTY);

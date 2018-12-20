@@ -54,7 +54,7 @@ public class EJBMediatorExtFactory extends AbstractMediatorFactory {
         if (Boolean.valueOf(attributeValue)) {
             attributeValue = elem.getAttributeValue(new QName(EJBConstants.BEAN_ID));
             if (attributeValue != null) {
-                mediator.setBeanId(new ValueExtFactory().createValue(EJBConstants.BEAN_ID, elem));
+                mediator.setBeanId(new ValueFactoryExtended().createValue(EJBConstants.BEAN_ID, elem));
             }
         }
 
@@ -80,15 +80,14 @@ public class EJBMediatorExtFactory extends AbstractMediatorFactory {
 
         if (argumentsElem != null) {
 
-            @SuppressWarnings("rawtypes")
-            Iterator itr = argumentsElem
+            Iterator<?> itr = argumentsElem
                     .getChildrenWithName(new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, EJBConstants.ARG));
 
             while (itr.hasNext()) {
                 OMElement argElem = (OMElement) itr.next();
 
                 if (argElem.getAttributeValue(ATT_VALUE) != null) {
-                    mediator.addArgument(new ValueExtFactory().createValue(BeanConstants.VALUE, argElem));
+                    mediator.addArgument(new ValueFactoryExtended().createValue(BeanConstants.VALUE, argElem));
                 }
             }
         }

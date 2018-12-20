@@ -35,6 +35,12 @@ import org.apache.synapse.util.xpath.SynapseXPath;
 import org.jaxen.JaxenException;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.SynapseXPathExt;
 
+/**
+ * This class is use to create a Aggregate mediator synapse object by 
+ * skipping the synapse validations.
+ * This is useful when building the synapse model from the source to the diagram.
+ * (by skipping the exceptions if certain properties are empty by default)
+ */
 public class AggregateMediatorExtFactory extends AggregateMediatorFactory {
     
     private static AggregateMediatorExtFactory instance;
@@ -80,7 +86,9 @@ public class AggregateMediatorExtFactory extends AggregateMediatorFactory {
                     ((AggregateMediator) mediator)
                             .setCorrelateExpression(SynapseXPathFactory.getSynapseXPath(corelateOn, EXPRESSION_Q));
                 } catch (JaxenException e) {
-                    // If the xPath is not a valid synapse xpath this will add the invalid xpath to the model
+                    // If the xPath is not a valid synapse xpath this will add the invalid xpath to the model.
+                    // This is useful when we use this extended class for create dummy synapse mediators with
+                    // empty string properties for create model class objects for generating the design view
                     ((AggregateMediator) mediator).setCorrelateExpression((SynapseXPath) SynapseXPathExt
                             .createSynapsePath(corelateOn.getAttribute(EXPRESSION_Q).getAttributeValue()));
                 }
@@ -100,13 +108,13 @@ public class AggregateMediatorExtFactory extends AggregateMediatorFactory {
                 OMAttribute min = messageCount.getAttribute(MIN_Q);
                 if (min != null) {
                     ((AggregateMediator) mediator)
-                            .setMinMessagesToComplete(new ValueExtFactory().createValue("min", messageCount));
+                            .setMinMessagesToComplete(new ValueFactoryExtended().createValue("min", messageCount));
                 }
 
                 OMAttribute max = messageCount.getAttribute(MAX_Q);
                 if (max != null) {
                     ((AggregateMediator) mediator)
-                            .setMaxMessagesToComplete(new ValueExtFactory().createValue("max", messageCount));
+                            .setMaxMessagesToComplete(new ValueFactoryExtended().createValue("max", messageCount));
                 }
             }
         }
@@ -120,7 +128,9 @@ public class AggregateMediatorExtFactory extends AggregateMediatorFactory {
                     ((AggregateMediator) mediator)
                             .setAggregationExpression(SynapseXPathFactory.getSynapseXPath(onComplete, EXPRESSION_Q));
                 } catch (JaxenException e) {
-                    // If the xPath is not a valid synapse xpath this will add the invalid xpath to the model
+                    // If the xPath is not a valid synapse xpath this will add the invalid xpath to the model.
+                    // This is useful when we use this extended class for create dummy synapse mediators with
+                    // empty string properties for create model class objects for generating the design view
                     ((AggregateMediator) mediator).setAggregationExpression((SynapseXPath) SynapseXPathExt
                             .createSynapsePath(onComplete.getAttribute(EXPRESSION_Q).getAttributeValue()));
                 }

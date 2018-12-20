@@ -53,7 +53,7 @@
                             <goal>wget</goal>
                         </goals>
                         <configuration>
-                            <url>http://atuwa.private.wso2.com/WSO2-Products/enterprise-integrator/${ei.product.version}/wso2ei-${ei.product.version}.zip</url>
+                            <url>http://product-dist.wso2.com/tools/developerstudio/wso2ei-${ei.product.version}.zip</url>
                             <unpack>true</unpack>
                             <outputDirectory>${project.build.directory}/products</outputDirectory>
                         </configuration>

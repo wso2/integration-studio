@@ -11,6 +11,7 @@
         <editor
                 class="org.wso2.developerstudio.eclipse.templates.dashboard.web.view.WelcomePageEditor"
                 id="org.wso2.developerstudio.eclipse.templates.dashboard"
+                icon="icons/getting-started.png"
                 name="Getting Started">
         </editor>
     </extension>

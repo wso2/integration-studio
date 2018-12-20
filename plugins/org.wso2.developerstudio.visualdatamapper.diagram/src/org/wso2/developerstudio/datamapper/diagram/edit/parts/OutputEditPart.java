@@ -673,7 +673,7 @@ public class OutputEditPart extends ShapeNodeEditPart {
 
             if (!(this.getChildren() != null && this.getChildren().size() > 1)) {
                 int nodeDimension = 64; // width for connection nodes
-                ImageFigure addContentImg = new ImageFigure(ImageHolder.getInstance().getAddContentImage());
+                ImageFigure addContentImg = new ImageFigure(ImageHolder.getInstance().getAddOutputContentImage());
                 ImageFigure addRootImg = new ImageFigure(ImageHolder.getInstance().getAddRootImage());
                 addContentImg.setSize(new Dimension(nodeDimension, nodeDimension));
                 addRootImg.setSize(new Dimension(nodeDimension, nodeDimension));

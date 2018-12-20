@@ -22,6 +22,7 @@ import java.util.Map.Entry;
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.apache.synapse.util.xpath.SynapseXPath;
+import org.codehaus.plexus.util.StringUtils;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.ecore.EObject;
 import org.jaxen.JaxenException;
@@ -36,12 +37,13 @@ import org.wso2.developerstudio.eclipse.gmf.esb.SmooksMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.SmooksOutputDataType;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.ValidationConstansts;
 
 public class SmooksMediatorTransformer extends AbstractEsbNodeTransformer {
 
     public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
         try {
-            information.getParentSequence().addChild(createSmooksMediator(information, subject));
+            information.getParentSequence().addChild(createSmooksMediator(information, subject, false));
             // Transform the property mediator output data flow path.
             doTransform(information, ((SmooksMediator) subject).getOutputConnector());
         } catch (JaxenException e) {
@@ -55,7 +57,7 @@ public class SmooksMediatorTransformer extends AbstractEsbNodeTransformer {
     public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
             throws TransformerException {
         try {
-            sequence.addChild(createSmooksMediator(information, subject));
+            sequence.addChild(createSmooksMediator(information, subject, false));
             doTransformWithinSequence(information, ((SmooksMediator) subject).getOutputConnector().getOutgoingLink(),
                     sequence);
         } catch (JaxenException e) {
@@ -63,8 +65,8 @@ public class SmooksMediatorTransformer extends AbstractEsbNodeTransformer {
         }
     }
 
-    private org.wso2.carbon.mediator.transform.SmooksMediator createSmooksMediator(TransformationInfo information,
-            EsbNode subject) throws JaxenException {
+    public static org.wso2.carbon.mediator.transform.SmooksMediator createSmooksMediator(TransformationInfo information,
+            EsbNode subject, boolean isForValidation) throws JaxenException {
         // Check subject.
         Assert.isTrue(subject instanceof SmooksMediator, "Invalid subject.");
         SmooksMediator visualSmooks = (SmooksMediator) subject;
@@ -98,7 +100,13 @@ public class SmooksMediatorTransformer extends AbstractEsbNodeTransformer {
             } else if (visualSmooks.getOutputMethod().equals(OutputMethod.EXPRESSION)) {
                 output.setAction(visualSmooks.getOutputAction().getLiteral().toLowerCase());
                 NamespacedProperty namespacedProperty = visualSmooks.getOutputExpression();
-                SynapseXPath expression = new SynapseXPath(namespacedProperty.getPropertyValue());
+                SynapseXPath expression;
+                if (!isForValidation && StringUtils.isEmpty(namespacedProperty.getPropertyValue())) {
+                    // Fill the XPath with a default values, so that we can use synapse serializer
+                    expression = new SynapseXPath(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
+                } else {
+                    expression = new SynapseXPath(namespacedProperty.getPropertyValue());
+                }
                 for (Entry<String, String> entry : namespacedProperty.getNamespaces().entrySet()) {
                     expression.addNamespace(entry.getKey(), entry.getValue());
                 }

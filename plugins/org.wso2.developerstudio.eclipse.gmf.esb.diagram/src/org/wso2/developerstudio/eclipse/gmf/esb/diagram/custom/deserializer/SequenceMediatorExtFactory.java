@@ -67,7 +67,7 @@ public class SequenceMediatorExtFactory extends SequenceMediatorFactory {
         } else {
             n = omElement.getAttribute(ATT_KEY);
             if (n != null) {
-                ValueFactory keyFac = new ValueFactory();
+                ValueFactoryExtended keyFac = new ValueFactoryExtended();
                 Value generatedKey = keyFac.createValue(XMLConfigConstants.KEY, omElement);
                 ((SequenceMediator) mediator).setKey(generatedKey);
 

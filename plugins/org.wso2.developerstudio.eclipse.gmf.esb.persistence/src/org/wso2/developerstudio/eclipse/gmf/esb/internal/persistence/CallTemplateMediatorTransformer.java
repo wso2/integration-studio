@@ -28,6 +28,7 @@ import org.apache.synapse.mediators.Value;
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.apache.synapse.mediators.template.InvokeMediator;
 import org.apache.synapse.util.xpath.SynapseXPath;
+import org.codehaus.plexus.util.StringUtils;
 import org.apache.synapse.config.xml.SynapsePath;
 import org.apache.synapse.util.xpath.SynapseJsonPath;
 import org.eclipse.core.runtime.Assert;
@@ -40,6 +41,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.RuleOptionType;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.ValidationConstansts;
 
 public class CallTemplateMediatorTransformer extends AbstractEsbNodeTransformer {
 
@@ -73,7 +75,7 @@ public class CallTemplateMediatorTransformer extends AbstractEsbNodeTransformer 
         }
     }
 
-    private InvokeMediator createInvokeMediator(TransformationInfo information, CallTemplateMediator obj)
+    public static InvokeMediator createInvokeMediator(TransformationInfo information, CallTemplateMediator obj)
             throws JaxenException {
 
         InvokeMediator invokeMediator = new InvokeMediator();
@@ -110,7 +112,13 @@ public class CallTemplateMediatorTransformer extends AbstractEsbNodeTransformer 
                             value.setNamespaces(root);
                         }
                         invokeMediator.getpName2ExpressionMap().put(param.getParameterName(), value);
-                    } else {
+                    } else if (StringUtils.isBlank(xpathValue)){
+                        String xpathValueTemp = ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION;
+                        SynapsePath paramExpression = getParamExpression(namespacedExpression, xpathValueTemp);
+                        invokeMediator.getpName2ExpressionMap().put(param.getParameterName(),
+                                new Value(paramExpression));
+                    }
+                    else {
                         SynapsePath paramExpression = getParamExpression(namespacedExpression, xpathValue);
                         invokeMediator.getpName2ExpressionMap().put(param.getParameterName(),
                                 new Value(paramExpression));
@@ -133,7 +141,7 @@ public class CallTemplateMediatorTransformer extends AbstractEsbNodeTransformer 
      * @throws JaxenException
      */
 
-    private SynapsePath getParamExpression(NamespacedProperty namespacedExpression, String xpathValue)
+    private static SynapsePath getParamExpression(NamespacedProperty namespacedExpression, String xpathValue)
             throws JaxenException {
         if (xpathValue.startsWith(JSON_EVAL)) {
             SynapseJsonPath paramExpression = new SynapseJsonPath(xpathValue.substring(10, xpathValue.length() - 1));
@@ -151,7 +159,7 @@ public class CallTemplateMediatorTransformer extends AbstractEsbNodeTransformer 
      * @param paramExpression
      * @throws JaxenException
      */
-    private SynapsePath addNamespaceToParam(NamespacedProperty namespacedExpression, SynapsePath paramExpression)
+    private static SynapsePath addNamespaceToParam(NamespacedProperty namespacedExpression, SynapsePath paramExpression)
             throws JaxenException {
         for (Entry<String, String> entry : namespacedExpression.getNamespaces().entrySet()) {
             paramExpression.addNamespace(entry.getKey(), entry.getValue());

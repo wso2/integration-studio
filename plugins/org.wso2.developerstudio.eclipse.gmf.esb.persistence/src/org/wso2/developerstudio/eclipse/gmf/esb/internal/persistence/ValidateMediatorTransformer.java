@@ -73,7 +73,7 @@ public class ValidateMediatorTransformer extends AbstractEsbNodeTransformer {
         }
     }
 
-    private org.apache.synapse.mediators.builtin.ValidateMediator createValidateMediator(EsbNode subject,
+    public static org.apache.synapse.mediators.builtin.ValidateMediator createValidateMediator(EsbNode subject,
             TransformationInfo information) throws TransformerException, JaxenException {
 
         /*
@@ -177,7 +177,7 @@ public class ValidateMediatorTransformer extends AbstractEsbNodeTransformer {
      * @throws JaxenException
      */
 
-    private SynapsePath getParamExpression(NamespacedProperty sourcePath, String sourceValue) throws JaxenException {
+    private static SynapsePath getParamExpression(NamespacedProperty sourcePath, String sourceValue) throws JaxenException {
         if (sourceValue.startsWith(JSON_EVAL)) {
             SynapseJsonPath paramExpression = new SynapseJsonPath(sourceValue.substring(10, sourceValue.length() - 1));
             return addNamespaceToParam(sourcePath, paramExpression);
@@ -194,7 +194,7 @@ public class ValidateMediatorTransformer extends AbstractEsbNodeTransformer {
      * @param paramExpression
      * @throws JaxenException
      */
-    private SynapsePath addNamespaceToParam(NamespacedProperty sourcePath, SynapsePath paramExpression)
+    private static SynapsePath addNamespaceToParam(NamespacedProperty sourcePath, SynapsePath paramExpression)
             throws JaxenException {
         for (Entry<String, String> entry : sourcePath.getNamespaces().entrySet()) {
             paramExpression.addNamespace(entry.getKey(), entry.getValue());

@@ -369,7 +369,7 @@ public class CacheMediatorImpl extends MediatorImpl implements CacheMediator {
         RegistryKeyProperty keyproperty = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
         keyproperty.setKeyName("keyName");
         keyproperty.setPrettyName("prettyName");
-        keyproperty.setKeyValue("default/path");
+        keyproperty.setKeyValue("");
         setSequenceKey(keyproperty);
 
     }

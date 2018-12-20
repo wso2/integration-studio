@@ -44,7 +44,7 @@ public class DBLookupMediatorTransformer extends AbstractDBMediatorTransformer {
 
     }
 
-    private org.apache.synapse.mediators.db.DBLookupMediator createDBLookupMediator(TransformationInfo information,
+    public static org.apache.synapse.mediators.db.DBLookupMediator createDBLookupMediator(TransformationInfo information,
             EsbNode subject) {
         Assert.isTrue(subject instanceof DBLookupMediator, "Unsupported mediator passed in for serialization.");
         DBLookupMediator visualDBLookup = (DBLookupMediator) subject;

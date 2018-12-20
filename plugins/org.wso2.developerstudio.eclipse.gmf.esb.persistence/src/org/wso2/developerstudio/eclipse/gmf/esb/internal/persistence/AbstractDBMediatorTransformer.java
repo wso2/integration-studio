@@ -60,7 +60,7 @@ public abstract class AbstractDBMediatorTransformer extends AbstractEsbNodeTrans
     public static final QName DSNAME_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "dsName");
     static final QName ICCLASS_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "icClass");
 
-    protected <T extends AbstractDBMediator> void transformDBMediator(T dbMediator,
+    protected static <T extends AbstractDBMediator>  void transformDBMediator(T dbMediator,
             AbstractSqlExecutorMediator sqlExecutor) {
         setCommonProperties(dbMediator, sqlExecutor);
 
@@ -114,7 +114,7 @@ public abstract class AbstractDBMediatorTransformer extends AbstractEsbNodeTrans
 
     }
 
-    private <T extends AbstractDBMediator> void addDataSourceProperties(T dbMediator,
+    private static <T extends AbstractDBMediator> void addDataSourceProperties(T dbMediator,
             AbstractSqlExecutorMediator sqlExecutor) {
         /* there are several setter method in DataSourceInformation class, but not required for serialization */
 

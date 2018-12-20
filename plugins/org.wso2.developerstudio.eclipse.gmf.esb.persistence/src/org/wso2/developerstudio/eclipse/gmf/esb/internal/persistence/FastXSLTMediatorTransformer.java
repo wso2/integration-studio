@@ -19,6 +19,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence;
 import java.util.List;
 import java.util.Map.Entry;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.mediators.Value;
 import org.apache.synapse.mediators.base.SequenceMediator;
@@ -31,6 +32,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.FastXSLTMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.KeyType;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.ValidationConstansts;
 
 /**
  * 
@@ -42,7 +44,7 @@ public class FastXSLTMediatorTransformer extends AbstractEsbNodeTransformer {
 
     public void transform(TransformationInfo info, EsbNode subject) {
         try {
-            info.getParentSequence().addChild(createFastXSLTMediator(subject));
+            info.getParentSequence().addChild(createFastXSLTMediator(subject, false));
         } catch (Exception e1) {
             log.error("An exception occured in transforming the FastXSLT mediator" + e1);
         }
@@ -58,7 +60,7 @@ public class FastXSLTMediatorTransformer extends AbstractEsbNodeTransformer {
 
     public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence) {
         try {
-            sequence.addChild(createFastXSLTMediator(subject));
+            sequence.addChild(createFastXSLTMediator(subject, false));
         } catch (Exception e) {
             log.error("An exception occured in transforming the FastXSLT mediator" + e);
         }
@@ -71,7 +73,7 @@ public class FastXSLTMediatorTransformer extends AbstractEsbNodeTransformer {
 
     }
 
-    private org.wso2.carbon.mediator.fastXSLT.FastXSLTMediator createFastXSLTMediator(EsbNode subject) {
+    public static org.wso2.carbon.mediator.fastXSLT.FastXSLTMediator createFastXSLTMediator(EsbNode subject, boolean isForValidation) {
         Assert.isTrue(subject instanceof FastXSLTMediator, INVALID_SUBJECT);
         FastXSLTMediator visualFastXSLT = (FastXSLTMediator) subject;
         org.wso2.carbon.mediator.fastXSLT.FastXSLTMediator fastXsltMediator = new org.wso2.carbon.mediator.fastXSLT.FastXSLTMediator();
@@ -83,12 +85,22 @@ public class FastXSLTMediatorTransformer extends AbstractEsbNodeTransformer {
             if (key != null && !key.equals("")) {
                 fastXsltKey = new Value(key);
             }
+            else if (key != null && !isForValidation) {
+                // Fill the XPath with a default values, so that we can use synapse serializer
+                fastXsltKey = new Value(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
+            }
         } else { // if not static key type is dynamic (i.e xpathExpression) by default
             NamespacedProperty key = visualFastXSLT.getFastXsltDynamicSchemaKey();
-            if (key.getPropertyValue() != null && !key.getPropertyValue().equals("")) {
+            if (key.getPropertyValue() != null) {
                 SynapseXPath expression = null;
                 try {
-                    expression = new SynapseXPath(key.getPropertyValue());
+                    if(!isForValidation && StringUtils.isEmpty(key.getPropertyValue())) {
+                        // Fill the XPath with a default values, so that we can use synapse serializer
+                        expression = new SynapseXPath(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
+                    }
+                    else {
+                        expression = new SynapseXPath(key.getPropertyValue());
+                    }
                 } catch (JaxenException e) {
                     log.error("A Jaxen exception occured in transforming the FastXSLT mediator" + e);
                 }

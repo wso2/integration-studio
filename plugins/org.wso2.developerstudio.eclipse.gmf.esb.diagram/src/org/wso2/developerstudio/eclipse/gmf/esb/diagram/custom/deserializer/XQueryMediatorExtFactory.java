@@ -72,7 +72,7 @@ public class XQueryMediatorExtFactory extends XQueryMediatorFactory {
         OMAttribute attrTarget = omElement.getAttribute(new QName(XMLConfigConstants.NULL_NAMESPACE, "target"));
 
         if (xqueryKey != null) {
-            ValueFactory keyFac = new ValueFactory();
+            ValueFactoryExtended keyFac = new ValueFactoryExtended();
             Value generatedKey = keyFac.createValue(XMLConfigConstants.KEY, omElement);
 
             if (generatedKey != null) {

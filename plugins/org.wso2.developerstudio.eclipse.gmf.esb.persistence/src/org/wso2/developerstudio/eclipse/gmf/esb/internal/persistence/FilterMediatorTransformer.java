@@ -18,6 +18,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence;
 import java.util.List;
 import java.util.regex.Pattern;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.config.xml.AnonymousListMediator;
 import org.apache.synapse.config.xml.SynapsePath;
 import org.apache.synapse.endpoints.Endpoint;
@@ -33,6 +34,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.Cust
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.EsbNodeTransformer;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.ValidationConstansts;
 
 /**
  * {@link EsbNodeTransformer} responsible for transforming
@@ -55,10 +57,15 @@ public class FilterMediatorTransformer extends AbstractEsbNodeTransformer {
         try {
             if (visualFilter.getConditionType() == FilterMediatorConditionType.XPATH) {
                 // TODO: validate xpaths before adding
-                if (visualFilter.getXpath() != null && visualFilter.getXpath().getPropertyValue() != null
-                        && !visualFilter.getXpath().getPropertyValue().equals("")) {
+                if (visualFilter.getXpath() != null && visualFilter.getXpath().getPropertyValue() != null) {
                     SynapsePath xPath;
-                    xPath = CustomSynapsePathFactory.getSynapsePath(visualFilter.getXpath().getPropertyValue());
+                    if(StringUtils.isEmpty(visualFilter.getXpath().getPropertyValue())) {
+                        // If the validation filter is empty then add a factory default value for serialize using synapse serialize
+                        xPath = CustomSynapsePathFactory.getSynapsePath(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
+                    }
+                    else {
+                        xPath = CustomSynapsePathFactory.getSynapsePath(visualFilter.getXpath().getPropertyValue());
+                    }
                     if (visualFilter.getXpath().getNamespaces() != null && !(xPath instanceof SynapseJsonPath)) {
                         for (int i = 0; i < visualFilter.getXpath().getNamespaces().keySet().size(); ++i) {
                             String prefix = (String) visualFilter.getXpath().getNamespaces().keySet().toArray()[i];
@@ -73,11 +80,16 @@ public class FilterMediatorTransformer extends AbstractEsbNodeTransformer {
                     filterMediator.setXpath(xPath);
                 }
             } else {
-                if (visualFilter.getSource() != null && visualFilter.getSource().getPropertyValue() != null
-                        && !visualFilter.getSource().getPropertyValue().equals("")) {
+                if (visualFilter.getSource() != null && visualFilter.getSource().getPropertyValue() != null) {
 
                     SynapsePath source;
-                    source = CustomSynapsePathFactory.getSynapsePath(visualFilter.getSource().getPropertyValue());
+                    if(StringUtils.isEmpty(visualFilter.getSource().getPropertyValue())) {
+                        // If the validation filter is empty then add a factory default value for serialize using synapse serialize
+                        source = CustomSynapsePathFactory.getSynapsePath(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
+                    }
+                    else {
+                        source = CustomSynapsePathFactory.getSynapsePath(visualFilter.getSource().getPropertyValue());
+                    }
 
                     if (visualFilter.getXpath().getNamespaces() != null && !(source instanceof SynapseJsonPath)) {
                         for (int i = 0; i < visualFilter.getSource().getNamespaces().keySet().size(); ++i) {
@@ -214,5 +226,76 @@ public class FilterMediatorTransformer extends AbstractEsbNodeTransformer {
         doTransform(newElseInfo, visualFilter.getFailOutputConnector());
 
         doTransformWithinSequence(info, ((FilterMediator) subject).getOutputConnector().getOutgoingLink(), sequence);
+    }
+    
+    /**
+     * This method will return synapse object of the filter mediator using the emf data model
+     * @param info information related to the mediator
+     * @param subject data model of the mediator
+     * @return
+     * @throws TransformerException
+     */
+    public static org.apache.synapse.mediators.filters.FilterMediator createFilterMediator(TransformationInfo info,
+            EsbNode subject) throws TransformerException {
+        // Check subject.
+        Assert.isTrue(subject instanceof FilterMediator, "Invalid subject.");
+        FilterMediator visualFilter = (FilterMediator) subject;
+
+        // Build filter mediator.
+        org.apache.synapse.mediators.filters.FilterMediator filterMediator = new org.apache.synapse.mediators.filters.FilterMediator();
+        setCommonProperties(filterMediator, visualFilter);
+        if (visualFilter.getConditionType() == FilterMediatorConditionType.XPATH) {
+            // TODO: validate xpaths before adding
+            if (visualFilter.getXpath() != null && visualFilter.getXpath().getPropertyValue() != null
+                    && !visualFilter.getXpath().getPropertyValue().equals("")) {
+
+                SynapsePath xPath;
+                try {
+                    xPath = CustomSynapsePathFactory.getSynapsePath(visualFilter.getXpath().getPropertyValue());
+                } catch (JaxenException e) {
+                    throw new TransformerException(e);
+                }
+
+                if (visualFilter.getXpath().getNamespaces() != null && !(xPath instanceof SynapseJsonPath)) {
+                    for (int i = 0; i < visualFilter.getXpath().getNamespaces().keySet().size(); ++i) {
+                        String prefix = (String) visualFilter.getXpath().getNamespaces().keySet().toArray()[i];
+                        String namespaceUri = visualFilter.getXpath().getNamespaces().get(prefix);
+                        try {
+                            xPath.addNamespace(prefix, namespaceUri);
+                        } catch (JaxenException e) {
+                            throw new TransformerException(e);
+                        }
+                    }
+                }
+                filterMediator.setXpath(xPath);
+            }
+        } else {
+            if (visualFilter.getSource() != null && visualFilter.getSource().getPropertyValue() != null
+                    && !visualFilter.getSource().getPropertyValue().equals("")) {
+
+                SynapsePath source;
+                try {
+                    source = CustomSynapsePathFactory.getSynapsePath(visualFilter.getSource().getPropertyValue());
+                } catch (JaxenException e) {
+                    throw new TransformerException(e);
+                }
+
+                if (visualFilter.getXpath().getNamespaces() != null && !(source instanceof SynapseJsonPath)) {
+                    for (int i = 0; i < visualFilter.getSource().getNamespaces().keySet().size(); ++i) {
+                        String prefix = (String) visualFilter.getSource().getNamespaces().keySet().toArray()[i];
+                        String namespaceUri = visualFilter.getSource().getNamespaces().get(prefix);
+                        try {
+                            source.addNamespace(prefix, namespaceUri);
+                        } catch (JaxenException e) {
+                            throw new TransformerException(e);
+                        }
+                    }
+                }
+                filterMediator.setSource(source);
+            }
+            filterMediator.setRegex(Pattern.compile(visualFilter.getRegex()));
+        }
+        return filterMediator;
+
     }
 }

@@ -30,7 +30,7 @@ import org.apache.synapse.mediators.template.InvokeMediator;
 public class CloudConnectorOperationExtSerializer extends InvokeMediatorSerializer {
 
     @Override
-    protected OMElement serializeSpecificMediator(Mediator m) {
+    public OMElement serializeSpecificMediator(Mediator m) {
         CloudConnectorOperationExt cloudConnectorOperation = (CloudConnectorOperationExt) m;
         OMElement mediatorElem = fac.createOMElement(
                 cloudConnectorOperation.getConnectorComponentName() + "." + cloudConnectorOperation.getOperation(),

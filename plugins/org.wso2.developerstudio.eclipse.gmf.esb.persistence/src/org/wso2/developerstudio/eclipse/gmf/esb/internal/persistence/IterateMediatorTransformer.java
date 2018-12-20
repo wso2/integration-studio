@@ -32,12 +32,13 @@ import org.wso2.developerstudio.eclipse.gmf.esb.IterateMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.ValidationConstansts;
 
 public class IterateMediatorTransformer extends AbstractEsbNodeTransformer {
 
     public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
         try {
-            information.getParentSequence().addChild(createIterateMediator(information, subject));
+            information.getParentSequence().addChild(createIterateMediator(information, subject, false));
             /*
              * Transform the property mediator output data flow path.
              */
@@ -54,7 +55,7 @@ public class IterateMediatorTransformer extends AbstractEsbNodeTransformer {
     public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
             throws TransformerException {
         try {
-            sequence.addChild(createIterateMediator(information, subject));
+            sequence.addChild(createIterateMediator(information, subject, false));
             doTransformWithinSequence(information, ((IterateMediator) subject).getOutputConnector().getOutgoingLink(),
                     sequence);
         } catch (JaxenException e) {
@@ -62,8 +63,8 @@ public class IterateMediatorTransformer extends AbstractEsbNodeTransformer {
         }
     }
 
-    private org.apache.synapse.mediators.eip.splitter.IterateMediator createIterateMediator(
-            TransformationInfo information, EsbNode subject) throws JaxenException, TransformerException {
+    public static org.apache.synapse.mediators.eip.splitter.IterateMediator createIterateMediator(
+            TransformationInfo information, EsbNode subject, boolean isForValidation) throws JaxenException, TransformerException {
         /*
          * Check subject.
          */
@@ -78,9 +79,14 @@ public class IterateMediatorTransformer extends AbstractEsbNodeTransformer {
         {
             NamespacedProperty iterateExp = visualIterate.getIterateExpression();
 
-            if (iterateExp != null && !iterateExp.getPropertyValue().equals("")) {
-
-                SynapseXPath xpath = new SynapseXPath(iterateExp.getPropertyValue());
+            if (iterateExp != null) {
+                SynapseXPath xpath;
+                if (!isForValidation && StringUtils.isEmpty(iterateExp.getPropertyValue())) {
+                    // Add a default xpath to use the synapse serializer
+                    xpath = new SynapseXPath(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
+                } else {
+                    xpath = new SynapseXPath(iterateExp.getPropertyValue());
+                }
                 Map<String, String> nameSpaceMap = iterateExp.getNamespaces();
 
                 for (String key : nameSpaceMap.keySet()) {
@@ -95,8 +101,14 @@ public class IterateMediatorTransformer extends AbstractEsbNodeTransformer {
             if (visualIterate.isPreservePayload()) {
                 iterateMediator.setPreservePayload(true);
                 NamespacedProperty attachedPath = visualIterate.getAttachPath();
-                if (attachedPath != null && !attachedPath.getPropertyValue().equals("")) {
-                    SynapseXPath xpath = new SynapseXPath(attachedPath.getPropertyValue());
+                if (attachedPath != null) {
+                    SynapseXPath xpath;
+                    if (!isForValidation && StringUtils.isEmpty(attachedPath.getPropertyValue())) {
+                        // Add a default xpath to use the synapse serializer
+                        xpath = new SynapseXPath(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
+                    } else {
+                        xpath = new SynapseXPath(attachedPath.getPropertyValue());
+                    }
                     Map<String, String> nameSpaceMap = attachedPath.getNamespaces();
                     for (String key : nameSpaceMap.keySet()) {
                         xpath.addNamespace(key, nameSpaceMap.get(key));

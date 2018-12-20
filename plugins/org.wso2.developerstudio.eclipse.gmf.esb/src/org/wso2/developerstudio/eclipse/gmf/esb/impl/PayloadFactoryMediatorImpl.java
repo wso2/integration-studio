@@ -163,7 +163,7 @@ public class PayloadFactoryMediatorImpl extends MediatorImpl implements PayloadF
         RegistryKeyProperty payloadFormatKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
         payloadFormatKey.setKeyName("Sequence Key");
         payloadFormatKey.setPrettyName("Sequence Key");
-        payloadFormatKey.setKeyValue("/default/key");
+        payloadFormatKey.setKeyValue("");
         setPayloadKey(payloadFormatKey);
     }
 

@@ -37,10 +37,10 @@ import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 
 public class ThrottleMediatorTransformer extends AbstractEsbNodeTransformer {
-    private OMFactory factory;
-    private OMNamespace ns_wsp;
-    private OMNamespace ns_throttle;
-    private OMNamespace ns_wsu;
+    private static OMFactory factory;
+    private static OMNamespace ns_wsp;
+    private static OMNamespace ns_throttle;
+    private static OMNamespace ns_wsu;
 
     public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
         information.getParentSequence().addChild(createThrottleMediator(subject, information));
@@ -63,7 +63,7 @@ public class ThrottleMediatorTransformer extends AbstractEsbNodeTransformer {
 
     }
 
-    private org.apache.synapse.mediators.throttle.ThrottleMediator createThrottleMediator(EsbNode subject,
+    public static org.apache.synapse.mediators.throttle.ThrottleMediator createThrottleMediator(EsbNode subject,
             TransformationInfo information) throws TransformerException {
         /*
          * Check subject.
@@ -139,7 +139,7 @@ public class ThrottleMediatorTransformer extends AbstractEsbNodeTransformer {
         return throttleMediator;
     }
 
-    private OMElement createPolicyconfiguration(ThrottleMediator vishualThrottle) {
+    private static OMElement createPolicyconfiguration(ThrottleMediator vishualThrottle) {
         factory = OMAbstractFactory.getOMFactory();
 
         ns_wsp = factory.createOMNamespace("http://schemas.xmlsoap.org/ws/2004/09/policy", "wsp");
@@ -171,7 +171,7 @@ public class ThrottleMediatorTransformer extends AbstractEsbNodeTransformer {
 
     }
 
-    private OMElement createpolicyEntryElment(ThrottlePolicyEntry vishualPolicyEntry) {
+    private static OMElement createpolicyEntryElment(ThrottlePolicyEntry vishualPolicyEntry) {
 
         OMElement policyEntry = factory.createOMElement("Policy", ns_wsp);
 

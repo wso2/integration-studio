@@ -71,7 +71,7 @@ public class PayloadFactoryMediatorTransformer extends AbstractEsbNodeTransforme
         }
     }
 
-    private org.apache.synapse.mediators.transform.PayloadFactoryMediator createPayloadFactoryMediator(EsbNode subject)
+    public static org.apache.synapse.mediators.transform.PayloadFactoryMediator createPayloadFactoryMediator(EsbNode subject)
             throws JaxenException {
 
         // Check subject.

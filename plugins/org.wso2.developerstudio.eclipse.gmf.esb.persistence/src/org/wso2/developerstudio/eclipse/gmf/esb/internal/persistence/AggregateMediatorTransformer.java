@@ -34,13 +34,14 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.ValidationConstansts;
 
 public class AggregateMediatorTransformer extends AbstractEsbNodeTransformer {
 
     public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
 
         try {
-            information.getParentSequence().addChild(createAggregateMediator(information, subject));
+            information.getParentSequence().addChild(createAggregateMediator(information, subject, false));
             /*
              * Transform the property mediator output data flow path.
              */
@@ -62,7 +63,7 @@ public class AggregateMediatorTransformer extends AbstractEsbNodeTransformer {
             return;
 
         try {
-            sequence.addChild(createAggregateMediator(information, subject));
+            sequence.addChild(createAggregateMediator(information, subject, false));
             transformedMediators.add(subject);
             doTransformWithinSequence(information, ((AggregateMediator) subject).getOutputConnector().getOutgoingLink(),
                     sequence);
@@ -71,8 +72,8 @@ public class AggregateMediatorTransformer extends AbstractEsbNodeTransformer {
         }
     }
 
-    private org.apache.synapse.mediators.eip.aggregator.AggregateMediator createAggregateMediator(
-            TransformationInfo information, EsbNode subject) throws TransformerException, JaxenException {
+    public static org.apache.synapse.mediators.eip.aggregator.AggregateMediator createAggregateMediator(
+            TransformationInfo information, EsbNode subject, boolean isForValidation) throws TransformerException, JaxenException {
         /*
          * Check subject.
          */
@@ -100,7 +101,14 @@ public class AggregateMediatorTransformer extends AbstractEsbNodeTransformer {
                         && visualAggregate.getCompletionMinMessagesExpression() != null) {
 
                     NamespacedProperty minMsgExp = visualAggregate.getCompletionMinMessagesExpression();
-                    SynapseXPath xpath = new SynapseXPath(minMsgExp.getPropertyValue());
+
+                    SynapseXPath xpath;
+                    if (!isForValidation && StringUtils.isEmpty(minMsgExp.getPropertyValue())) {
+                        // Set default values for the property since we need to use synapse serializer
+                        xpath = new SynapseXPath(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
+                    } else {
+                        xpath = new SynapseXPath(minMsgExp.getPropertyValue());
+                    }
 
                     for (Entry<String, String> entry : minMsgExp.getNamespaces().entrySet()) {
                         xpath.addNamespace(entry.getKey(), entry.getValue());
@@ -125,8 +133,13 @@ public class AggregateMediatorTransformer extends AbstractEsbNodeTransformer {
                         && visualAggregate.getCompletionMaxMessagesExpression() != null) {
 
                     NamespacedProperty minMsgExp = visualAggregate.getCompletionMaxMessagesExpression();
-                    SynapseXPath xpath = new SynapseXPath(minMsgExp.getPropertyValue());
-
+                    SynapseXPath xpath;
+                    if (!isForValidation && StringUtils.isEmpty(minMsgExp.getPropertyValue())) {
+                        // Set default values for the property since we need to use synapse serializer
+                        xpath = new SynapseXPath(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
+                    } else {
+                        xpath = new SynapseXPath(minMsgExp.getPropertyValue());
+                    }
                     for (Entry<String, String> entry : minMsgExp.getNamespaces().entrySet()) {
                         xpath.addNamespace(entry.getKey(), entry.getValue());
                     }
@@ -142,10 +155,16 @@ public class AggregateMediatorTransformer extends AbstractEsbNodeTransformer {
             }
 
             if (visualAggregate.getCorrelationExpression() != null
-                    && visualAggregate.getCorrelationExpression().getPropertyValue() != null
-                    && !visualAggregate.getCorrelationExpression().getPropertyValue().equals("")) {
-                SynapseXPath correlationExpression = new SynapseXPath(
-                        visualAggregate.getCorrelationExpression().getPropertyValue());
+                    && visualAggregate.getCorrelationExpression().getPropertyValue() != null) {
+                SynapseXPath correlationExpression;
+                if (!isForValidation
+                        && StringUtils.isEmpty(visualAggregate.getCorrelationExpression().getPropertyValue())) {
+                    // Set default values for the property since we need to use synapse serializer
+                    correlationExpression = new SynapseXPath(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
+                } else {
+                    correlationExpression = new SynapseXPath(
+                            visualAggregate.getCorrelationExpression().getPropertyValue());
+                }
                 for (int i = 0; i < visualAggregate.getCorrelationExpression().getNamespaces().keySet().size(); ++i) {
                     String prefix = (String) visualAggregate.getCorrelationExpression().getNamespaces().keySet()
                             .toArray()[i];
@@ -155,17 +174,24 @@ public class AggregateMediatorTransformer extends AbstractEsbNodeTransformer {
 
                 aggregateMediator.setCorrelateExpression(correlationExpression);
             }
-            SynapseXPath aggregateExpression = new SynapseXPath(
-                    visualAggregate.getAggregationExpression().getPropertyValue());
-            for (int i = 0; i < visualAggregate.getAggregationExpression().getNamespaces().keySet().size(); ++i) {
-                String prefix = (String) visualAggregate.getAggregationExpression().getNamespaces().keySet()
-                        .toArray()[i];
-                String namespaceUri = visualAggregate.getAggregationExpression().getNamespaces().get(prefix);
-                aggregateExpression.addNamespace(prefix, namespaceUri);
+            if (visualAggregate.getAggregationExpression() != null
+                    && visualAggregate.getAggregationExpression().getPropertyValue() != null) {
+                SynapseXPath aggregateExpression;
+                if (!isForValidation && StringUtils.isEmpty(visualAggregate.getAggregationExpression().getPropertyValue())) {
+                    // Set default values for the property since we need to use synapse serializer
+                    aggregateExpression = new SynapseXPath(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
+                } else {
+                    aggregateExpression = new SynapseXPath(visualAggregate.getAggregationExpression().getPropertyValue());
+                }
+                for (int i = 0; i < visualAggregate.getAggregationExpression().getNamespaces().keySet().size(); ++i) {
+                    String prefix = (String) visualAggregate.getAggregationExpression().getNamespaces().keySet()
+                            .toArray()[i];
+                    String namespaceUri = visualAggregate.getAggregationExpression().getNamespaces().get(prefix);
+                    aggregateExpression.addNamespace(prefix, namespaceUri);
+                }
+
+                aggregateMediator.setAggregationExpression(aggregateExpression);
             }
-
-            aggregateMediator.setAggregationExpression(aggregateExpression);
-
             if (visualAggregate.getSequenceType().equals(AggregateSequenceType.REGISTRY_REFERENCE)) {
                 aggregateMediator.setOnCompleteSequenceRef(visualAggregate.getSequenceKey().getKeyValue());
             } else {

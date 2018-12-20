@@ -33,7 +33,7 @@ public class BuilderMediatorTransformer extends AbstractEsbNodeTransformer {
 
     }
 
-    private org.wso2.carbon.relay.mediators.builder.BuilderMediator createBuilderMediator(EsbNode subject,
+    public static org.wso2.carbon.relay.mediators.builder.BuilderMediator createBuilderMediator(EsbNode subject,
             TransformationInfo information) throws TransformerException {
 
         /*

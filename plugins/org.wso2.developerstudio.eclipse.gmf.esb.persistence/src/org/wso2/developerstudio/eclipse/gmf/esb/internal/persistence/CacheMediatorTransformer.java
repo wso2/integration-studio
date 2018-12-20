@@ -64,7 +64,7 @@ public class CacheMediatorTransformer extends AbstractEsbNodeTransformer {
 
     }
 
-    private org.wso2.carbon.mediator.cache.CacheMediator createNewCacheMediator(EsbNode subject,
+    public static org.wso2.carbon.mediator.cache.CacheMediator createNewCacheMediator(EsbNode subject,
             TransformationInfo info) throws TransformerException {
         /*
          * Check subject.

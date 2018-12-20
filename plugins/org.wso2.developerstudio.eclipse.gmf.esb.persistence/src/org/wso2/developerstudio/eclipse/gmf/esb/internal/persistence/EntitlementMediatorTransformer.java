@@ -47,7 +47,7 @@ public class EntitlementMediatorTransformer extends AbstractEsbNodeTransformer {
                 sequence);
     }
 
-    private EntitlementMediatorExt createEntitlementMediator(TransformationInfo information, EsbNode subject)
+    public static EntitlementMediatorExt createEntitlementMediator(TransformationInfo information, EsbNode subject)
             throws TransformerException {
         /*
          * Check subject.

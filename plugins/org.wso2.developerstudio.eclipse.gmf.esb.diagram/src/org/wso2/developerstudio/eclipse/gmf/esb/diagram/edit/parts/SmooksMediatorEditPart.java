@@ -18,11 +18,14 @@ package org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts;
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EditPartConstants.DEFAULT_PROPERTY_VALUE_TEXT;
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EditPartConstants.SMOOKS_MEDIATOR_ICON_PATH;
 
+import org.apache.axiom.om.OMElement;
 import org.apache.commons.lang.StringUtils;
+import org.apache.synapse.SynapseException;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.ToolbarLayout;
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.Request;
@@ -39,8 +42,12 @@ import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.papyrus.infra.gmfdiag.css.CSSNodeImpl;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
+import org.jaxen.JaxenException;
+import org.wso2.carbon.mediator.transform.xml.SmooksMediatorSerializer;
+import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EsbGraphicalShapeWithLabel;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedBorderItemLocator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedSizedAbstractMediator;
@@ -50,6 +57,11 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.utils.CustomToolT
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.SmooksMediatorCanonicalEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.SmooksMediatorItemSemanticEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.validator.GraphicalValidatorUtil;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.validator.MediatorValidationUtil;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.SmooksMediatorImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.SmooksMediatorTransformer;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 
 /**
  * @generated NOT
@@ -339,6 +351,35 @@ public class SmooksMediatorEditPart extends FixedSizedAbstractMediator {
 
     }
 
+    @Override
+    public void notifyChanged(Notification notification) {
+        // this.getModel() will get EMF datamodel of the smooks mediator datamodel
+        if (this.getModel() instanceof CSSNodeImpl) {
+            // The following part will check for validation issues with the current data in the model
+            CSSNodeImpl model = (CSSNodeImpl) this.getModel();
+            if (model.getElement() instanceof SmooksMediatorImpl) {
+                SmooksMediatorImpl smooksMediatorDataModel = (SmooksMediatorImpl) model.getElement();
+                try {
+                    org.wso2.carbon.mediator.transform.SmooksMediator smooksMediator = SmooksMediatorTransformer
+                            .createSmooksMediator(new TransformationInfo(), (EsbNode) smooksMediatorDataModel, true);
+
+                    SmooksMediatorSerializer smooksMediatorSerializer = new SmooksMediatorSerializer();
+                    OMElement omElement = smooksMediatorSerializer.serializeSpecificMediator(smooksMediator);
+
+                    if (StringUtils
+                            .isEmpty(MediatorValidationUtil.validateMediatorsFromOEMElement(omElement, "smooks"))) {
+                        GraphicalValidatorUtil.removeValidationMark(this);
+                    } else {
+                        GraphicalValidatorUtil.addValidationMark(this);
+                    }
+                } catch (JaxenException | SynapseException e) {
+                    GraphicalValidatorUtil.addValidationMark(this);
+                }
+            }
+        }
+        super.notifyChanged(notification);
+    }
+    
     /**
      * @generated
      */

@@ -16,11 +16,14 @@
 
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts;
 
+import org.apache.axiom.om.OMElement;
 import org.apache.commons.lang.StringUtils;
+import org.apache.synapse.SynapseException;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.ToolbarLayout;
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.Request;
@@ -37,8 +40,11 @@ import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.papyrus.infra.gmfdiag.css.CSSNodeImpl;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
+import org.wso2.carbon.mediator.fastXSLT.config.xml.FastXSLTMediatorSerializer;
+import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EsbGraphicalShapeWithLabel;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedBorderItemLocator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedSizedAbstractMediator;
@@ -48,6 +54,10 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.utils.CustomToolT
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.FastXSLTMediatorCanonicalEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.FastXSLTMediatorItemSemanticEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.validator.GraphicalValidatorUtil;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.validator.MediatorValidationUtil;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.FastXSLTMediatorImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.FastXSLTMediatorTransformer;
 
 /**
  * @generated NOT
@@ -333,6 +343,35 @@ public class FastXSLTMediatorEditPart extends FixedSizedAbstractMediator {
             return new CustomToolTip().getCustomToolTipShape(toolTipMessage);
         }
 
+    }
+
+    @Override
+    public void notifyChanged(Notification notification) {
+        // this.getModel() will get EMF datamodel of the fast XSLT mediator datamodel
+        if (this.getModel() instanceof CSSNodeImpl) {
+            // The following part will check for validation issues with the current data in the model
+            CSSNodeImpl model = (CSSNodeImpl) this.getModel();
+            if (model.getElement() instanceof FastXSLTMediatorImpl) {
+                FastXSLTMediatorImpl fastXsltMediatorDataModel = (FastXSLTMediatorImpl) model.getElement();
+                try {
+                    org.wso2.carbon.mediator.fastXSLT.FastXSLTMediator fastXSLTMediator = FastXSLTMediatorTransformer
+                            .createFastXSLTMediator((EsbNode) fastXsltMediatorDataModel, true);
+
+                    FastXSLTMediatorSerializer fastXSLTMediatorSerializer = new FastXSLTMediatorSerializer();
+                    OMElement omElement = fastXSLTMediatorSerializer.serializeSpecificMediator(fastXSLTMediator);
+
+                    if (StringUtils
+                            .isEmpty(MediatorValidationUtil.validateMediatorsFromOEMElement(omElement, "fastXSLT"))) {
+                        GraphicalValidatorUtil.removeValidationMark(this);
+                    } else {
+                        GraphicalValidatorUtil.addValidationMark(this);
+                    }
+                } catch (SynapseException | NullPointerException e) {
+                    GraphicalValidatorUtil.addValidationMark(this);
+                }
+            }
+        }
+        super.notifyChanged(notification);
     }
 
     /**

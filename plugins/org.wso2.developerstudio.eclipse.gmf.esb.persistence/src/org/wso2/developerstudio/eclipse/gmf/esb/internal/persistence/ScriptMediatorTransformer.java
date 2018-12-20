@@ -37,12 +37,13 @@ import org.wso2.developerstudio.eclipse.gmf.esb.ScriptType;
 import org.wso2.developerstudio.eclipse.gmf.esb.scriptKeyTypeEnum;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.ValidationConstansts;
 
 public class ScriptMediatorTransformer extends AbstractEsbNodeTransformer {
 
     public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
         try {
-            information.getParentSequence().addChild(createScriptMediator(subject));
+            information.getParentSequence().addChild(createScriptMediator(subject, false));
             // Transform the Script mediator output data flow path.
             doTransform(information, ((ScriptMediator) subject).getOutputConnector());
         } catch (JaxenException e) {
@@ -59,7 +60,7 @@ public class ScriptMediatorTransformer extends AbstractEsbNodeTransformer {
             throws TransformerException {
         // TODO Auto-generated method stub
         try {
-            sequence.addChild(createScriptMediator(subject));
+            sequence.addChild(createScriptMediator(subject, false));
             doTransformWithinSequence(information, ((ScriptMediator) subject).getOutputConnector().getOutgoingLink(),
                     sequence);
         } catch (JaxenException e) {
@@ -67,7 +68,7 @@ public class ScriptMediatorTransformer extends AbstractEsbNodeTransformer {
         }
     }
 
-    private org.apache.synapse.mediators.bsf.ScriptMediator createScriptMediator(EsbNode subject)
+    public static org.apache.synapse.mediators.bsf.ScriptMediator createScriptMediator(EsbNode subject, boolean isForValidation)
             throws JaxenException, TransformerException {
         Assert.isTrue(subject instanceof ScriptMediator, "Invalid subject.");
         ScriptMediator visualScript = (ScriptMediator) subject;
@@ -94,7 +95,13 @@ public class ScriptMediatorTransformer extends AbstractEsbNodeTransformer {
 
             } else {
                 NamespacedProperty scriptDynamicKey = visualScript.getScriptDynamicKey();
-                SynapseXPath synapseXPath = new SynapseXPath(scriptDynamicKey.getPropertyValue());
+                SynapseXPath synapseXPath;
+                if(!isForValidation && StringUtils.isEmpty(scriptDynamicKey.getPropertyValue())) {
+                    synapseXPath = new SynapseXPath(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
+                }else {
+                    synapseXPath = new SynapseXPath(scriptDynamicKey.getPropertyValue());
+                }
+
                 for (Entry<String, String> entry : scriptDynamicKey.getNamespaces().entrySet()) {
                     synapseXPath.addNamespace(entry.getKey(), entry.getValue());
                 }

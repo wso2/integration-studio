@@ -356,7 +356,7 @@ public class RuleMediatorEditPart extends SingleCompartmentComplexFiguredAbstrac
             }
             return new CustomToolTip().getCustomToolTipShape(toolTipMessage);
         }
-
+        
     }
 
     /**

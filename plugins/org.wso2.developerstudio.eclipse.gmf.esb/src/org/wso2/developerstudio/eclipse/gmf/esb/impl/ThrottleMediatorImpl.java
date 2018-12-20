@@ -293,15 +293,15 @@ public class ThrottleMediatorImpl extends MediatorImpl implements ThrottleMediat
         super();
 
         RegistryKeyProperty policyKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
-        policyKey.setKeyValue("default/key");
+        policyKey.setKeyValue("");
         setPolicyKey(policyKey);
 
         RegistryKeyProperty onAcceptKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
-        onAcceptKey.setKeyValue("default/key");
+        onAcceptKey.setKeyValue("");
         setOnAcceptBranchsequenceKey(onAcceptKey);
 
         RegistryKeyProperty onRejectKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
-        onRejectKey.setKeyValue("default/key");
+        onRejectKey.setKeyValue("");
         setOnRejectBranchsequenceKey(onRejectKey);
     }
 

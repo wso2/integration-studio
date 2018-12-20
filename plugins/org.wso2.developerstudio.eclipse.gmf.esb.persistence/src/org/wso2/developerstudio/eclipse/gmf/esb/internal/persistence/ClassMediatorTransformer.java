@@ -77,7 +77,7 @@ public class ClassMediatorTransformer extends AbstractEsbNodeTransformer {
                 sequence);
     }
 
-    private ClassMediatorExt createClassMediator(EsbNode subject) throws TransformerException, JaxenException {
+    public static ClassMediatorExt createClassMediator(EsbNode subject) throws TransformerException, JaxenException {
         Assert.isTrue(subject instanceof ClassMediator, "Invalid subject.");
         ClassMediator visualClass = (ClassMediator) subject;
 

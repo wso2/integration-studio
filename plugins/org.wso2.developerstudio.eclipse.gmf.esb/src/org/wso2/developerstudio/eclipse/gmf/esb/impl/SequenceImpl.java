@@ -215,7 +215,7 @@ public class SequenceImpl extends MediatorImpl implements Sequence {
         NamespacedProperty dynamicKey = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
         dynamicKey.setPrettyName("Sequence Expression");
         dynamicKey.setPropertyName("expression");
-        dynamicKey.setPropertyValue("/default/expression");
+        dynamicKey.setPropertyValue("");
         setDynamicReferenceKey(dynamicKey);
 
         RegistryKeyProperty staticKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();

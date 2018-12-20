@@ -27,12 +27,13 @@ import org.wso2.developerstudio.eclipse.gmf.esb.BAMMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.ValidationConstansts;
 
 public class BAMMediatorTransformer extends AbstractEsbNodeTransformer {
 
     @Override
     public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
-        information.getParentSequence().addChild(createBAMMediator(subject, information));
+        information.getParentSequence().addChild(createBAMMediator(subject, information, false));
 
         doTransform(information, ((BAMMediator) subject).getOutputConnector());
     }
@@ -44,13 +45,13 @@ public class BAMMediatorTransformer extends AbstractEsbNodeTransformer {
     @Override
     public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
             throws TransformerException {
-        sequence.addChild(createBAMMediator(subject, information));
+        sequence.addChild(createBAMMediator(subject, information, false));
         doTransformWithinSequence(information, ((BAMMediator) subject).getOutputConnector().getOutgoingLink(),
                 sequence);
 
     }
 
-    private org.wso2.carbon.mediator.bam.BamMediator createBAMMediator(EsbNode subject, TransformationInfo information)
+    public static org.wso2.carbon.mediator.bam.BamMediator createBAMMediator(EsbNode subject, TransformationInfo information, boolean isForValidation)
             throws TransformerException {
 
         if (subject instanceof BAMMediator) {
@@ -60,9 +61,9 @@ public class BAMMediatorTransformer extends AbstractEsbNodeTransformer {
             setCommonProperties(bamMediator, visualBAMMediator);
             if (StringUtils.isNotEmpty(visualBAMMediator.getServerProfile())) {
                 bamMediator.setServerProfile(visualBAMMediator.getServerProfile());
-            } else {
-                throw new IllegalArgumentException(
-                        Messages.BAMMediatorTransformer_Server_Profile_Name_Required_Error_Message);
+            } else if(!isForValidation){
+                // Set the default values for use the synapse transformers
+                bamMediator.setServerProfile(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
             }
 
             if (StringUtils.isNotEmpty(visualBAMMediator.getStreamName())) {
@@ -71,12 +72,19 @@ public class BAMMediatorTransformer extends AbstractEsbNodeTransformer {
                     streamConfiguration.setName(visualBAMMediator.getStreamName());
                     streamConfiguration.setVersion(visualBAMMediator.getStreamVersion());
                     bamMediator.getStream().setStreamConfiguration(streamConfiguration);
-                } else {
-                    throw new IllegalArgumentException(
-                            Messages.BAMMediatorTransformer_Stream_Version_Required_Error_Message);
+                } else if(!isForValidation){
+                    // Set the default values for use the synapse transformers
+                    StreamConfiguration streamConfiguration = new StreamConfiguration();
+                    streamConfiguration.setName(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
+                    streamConfiguration.setVersion(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
+                    bamMediator.getStream().setStreamConfiguration(streamConfiguration);
                 }
             } else {
-                throw new IllegalArgumentException(Messages.BAMMediatorTransformer_Stream_Name_Required_Error_Message);
+                // Set the default values for use the synapse transformers
+                StreamConfiguration streamConfiguration = new StreamConfiguration();
+                streamConfiguration.setName(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
+                streamConfiguration.setVersion(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
+                bamMediator.getStream().setStreamConfiguration(streamConfiguration);
             }
             return bamMediator;
         } else {

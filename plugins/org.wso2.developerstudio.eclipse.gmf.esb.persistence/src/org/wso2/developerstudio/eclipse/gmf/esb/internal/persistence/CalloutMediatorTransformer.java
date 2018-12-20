@@ -49,7 +49,7 @@ public class CalloutMediatorTransformer extends AbstractEsbNodeTransformer {
         }
     }
 
-    private org.apache.synapse.mediators.builtin.CalloutMediator createCalloutMediator(EsbNode subject)
+    public static org.apache.synapse.mediators.builtin.CalloutMediator createCalloutMediator(EsbNode subject)
             throws TransformerException, JaxenException {
         /*
          * Check subject.

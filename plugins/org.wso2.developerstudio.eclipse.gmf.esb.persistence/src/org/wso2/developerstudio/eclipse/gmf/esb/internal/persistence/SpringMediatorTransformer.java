@@ -49,7 +49,7 @@ public class SpringMediatorTransformer extends AbstractEsbNodeTransformer {
                 sequence);
     }
 
-    private org.apache.synapse.mediators.spring.SpringMediator createSpringMediator(EsbNode subject) {
+    public static org.apache.synapse.mediators.spring.SpringMediator createSpringMediator(EsbNode subject) {
         // Check subject.
         Assert.isTrue(subject instanceof SpringMediator, "Invalid subject.");
         SpringMediator visualSpring = (SpringMediator) subject;

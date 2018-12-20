@@ -54,6 +54,80 @@ public class EJBMediatorExtFactory extends AbstractMediatorFactory {
         if (Boolean.valueOf(attributeValue)) {
             attributeValue = elem.getAttributeValue(new QName(EJBConstants.BEAN_ID));
             if (attributeValue != null) {
+                mediator.setBeanId(new ValueFactoryExtended().createValue(EJBConstants.BEAN_ID, elem));
+            }
+        }
+
+        boolean remove;
+        attributeValue = elem.getAttributeValue(new QName(EJBConstants.REMOVE));
+        remove = Boolean.valueOf(attributeValue);
+        if (remove) {
+            mediator.setRemove(true);
+        }
+
+        String targetValue = elem.getAttributeValue(new QName(BeanConstants.TARGET));
+        if (targetValue != null) {
+            mediator.setTargetValue(targetValue);
+        }
+
+        attributeValue = elem.getAttributeValue(new QName(EJBConstants.JNDI_NAME));
+        if (attributeValue != null) {
+            mediator.setJndiName(attributeValue);
+        }
+
+        OMElement argumentsElem = elem
+                .getFirstChildWithName(new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, EJBConstants.ARGS));
+
+        if (argumentsElem != null) {
+
+            Iterator<?> itr = argumentsElem
+                    .getChildrenWithName(new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, EJBConstants.ARG));
+
+            while (itr.hasNext()) {
+                OMElement argElem = (OMElement) itr.next();
+
+                if (argElem.getAttributeValue(ATT_VALUE) != null) {
+                    mediator.addArgument(new ValueFactoryExtended().createValue(BeanConstants.VALUE, argElem));
+                }
+            }
+        }
+
+        attributeValue = elem.getAttributeValue(new QName(EJBConstants.METHOD));
+        if (attributeValue != null) {
+            mediator.setMethodName(attributeValue);
+        }
+
+        return mediator;
+    }
+    
+    /**
+     * This method will create a EJB mediator for the validation purposes. This will try 
+     * to create the EJB mediator with the given OMElement, if it fails to create a mediator
+     * this will throw synapse excpetions, otherwise this will return a valid bean mediator
+     * @param elem OMElement of the mediator
+     * @param properties
+     * @return
+     */
+    public Mediator createSpecificMediatorForValidation(OMElement elem, Properties properties) {
+
+        EJBMediatorExt mediator = new EJBMediatorExt();
+
+        String attributeValue;
+
+        attributeValue = elem.getAttributeValue(new QName(EJBConstants.BEANSTALK));
+        if (attributeValue != null) {
+            mediator.setBeanstalkName(attributeValue.trim());
+        }
+
+        attributeValue = elem.getAttributeValue(new QName(BeanConstants.CLASS));
+        if (attributeValue != null) {
+            mediator.setClassName(attributeValue.trim());
+        }
+
+        attributeValue = elem.getAttributeValue(new QName(EJBConstants.STATEFUL));
+        if (Boolean.valueOf(attributeValue)) {
+            attributeValue = elem.getAttributeValue(new QName(EJBConstants.BEAN_ID));
+            if (attributeValue != null) {
                 mediator.setBeanId(new ValueFactory().createValue(EJBConstants.BEAN_ID, elem));
             }
         }

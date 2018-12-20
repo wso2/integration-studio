@@ -18,11 +18,17 @@ package org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts;
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EditPartConstants.DEFAULT_PROPERTY_VALUE_TEXT;
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EditPartConstants.LOG_MEDIATOR_ICON_PATH;
 
+import org.apache.axiom.om.OMElement;
 import org.apache.commons.lang.StringUtils;
+import org.apache.synapse.SynapseException;
+import org.apache.synapse.config.xml.LogMediatorFactory;
+import org.apache.synapse.config.xml.LogMediatorSerializer;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.PositionConstants;
+import org.eclipse.draw2d.RoundedRectangle;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.ToolbarLayout;
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.Request;
@@ -43,15 +49,29 @@ import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
+import org.jaxen.JaxenException;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.CloneMediatorGraphicalShape;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EntitlementMediatorGraphicalShape;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EsbGraphicalShapeWithLabel;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EsbGroupingShape;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FilterMediatorGraphicalShape;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedBorderItemLocator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedSizedAbstractMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.ShowPropertyViewEditPolicy;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.SwitchMediatorGraphicalShape;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.complexFiguredAbstractMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.editpolicy.FeedbackIndicateDragDropEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.utils.CustomToolTip;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.LogMediatorCanonicalEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.LogMediatorItemSemanticEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.validator.GraphicalValidatorUtil;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.validator.MediatorValidationUtil;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.LogMediatorImpl;
+import org.eclipse.papyrus.infra.gmfdiag.css.CSSNodeImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.LogMediatorTransformer;
+import org.wso2.developerstudio.eclipse.gmf.esb.LogMediator;
 
 /**
  * @generated NOT
@@ -378,6 +398,32 @@ public class LogMediatorEditPart extends FixedSizedAbstractMediator {
             return new CustomToolTip().getCustomToolTipShape(toolTipMessage);
         }
 
+    }
+
+    @Override
+    public void notifyChanged(Notification notification) {
+        // This will validate the log mediator data object
+        if (this.getModel() instanceof CSSNodeImpl) {
+            CSSNodeImpl model = (CSSNodeImpl) this.getModel();
+            if (model.getElement() instanceof LogMediatorImpl) {
+                LogMediatorImpl logMediatorDataModel = (LogMediatorImpl) model.getElement();
+                try {
+                    org.apache.synapse.mediators.builtin.LogMediator log = LogMediatorTransformer
+                            .createLogMediator((LogMediator) logMediatorDataModel, true);
+                    LogMediatorSerializer logMediatorSerializer = new LogMediatorSerializer();
+                    OMElement omElement = logMediatorSerializer.serializeSpecificMediator(log);
+
+                    if (StringUtils.isEmpty(MediatorValidationUtil.validateMediatorsFromOEMElement(omElement, "log"))) {
+                        GraphicalValidatorUtil.removeValidationMark(this);
+                    } else {
+                        GraphicalValidatorUtil.addValidationMark(this);
+                    }
+                } catch (JaxenException | SynapseException e) {
+                    GraphicalValidatorUtil.addValidationMark(this);
+                }
+            }
+        }
+        super.notifyChanged(notification);
     }
 
     /**

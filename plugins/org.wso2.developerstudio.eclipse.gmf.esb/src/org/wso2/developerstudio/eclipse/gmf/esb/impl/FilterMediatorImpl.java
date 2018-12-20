@@ -179,7 +179,7 @@ public class FilterMediatorImpl extends MediatorImpl implements FilterMediator {
         NamespacedProperty source = EsbFactory.eINSTANCE.createNamespacedProperty();
         source.setPrettyName("Filter Source");
         source.setPropertyName("source");
-        source.setPropertyValue("get-property('To')");
+        source.setPropertyValue("");
         setSource(source);
     }
 

@@ -132,7 +132,7 @@ public class SmooksMediatorImpl extends MediatorImpl implements SmooksMediator {
      * @generated NOT
      * @ordered
      */
-    protected static final String OUTPUT_PROPERTY_EDEFAULT = "smooksOutputProperty";
+    protected static final String OUTPUT_PROPERTY_EDEFAULT = "";
 
     /**
      * The cached value of the '{@link #getOutputProperty() <em>Output Property</em>}' attribute.
@@ -223,7 +223,7 @@ public class SmooksMediatorImpl extends MediatorImpl implements SmooksMediator {
         NamespacedProperty outputExpression = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
         outputExpression.setPrettyName("Expression");
         outputExpression.setPropertyName("expression");
-        outputExpression.setPropertyValue("/default/expression");
+        outputExpression.setPropertyValue("");
         setOutputExpression(outputExpression);
 
         NamespacedProperty inputExpression = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();

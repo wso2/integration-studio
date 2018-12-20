@@ -30,14 +30,16 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.StoreMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.StoreMediatorSpecifyType;
+import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.SynapseXPathExt;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.ValidationConstansts;
 
 public class StoreMediatorTransformer extends AbstractEsbNodeTransformer {
 
     public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
         try {
-            information.getParentSequence().addChild(createStoreMediator(subject));
+            information.getParentSequence().addChild(createStoreMediator(subject, false));
         } catch (JaxenException e) {
             throw new TransformerException(e);
         }
@@ -52,7 +54,7 @@ public class StoreMediatorTransformer extends AbstractEsbNodeTransformer {
     public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
             throws TransformerException {
         try {
-            sequence.addChild(createStoreMediator(subject));
+            sequence.addChild(createStoreMediator(subject, false));
             doTransformWithinSequence(information, ((StoreMediator) subject).getOutputConnector().getOutgoingLink(),
                     sequence);
         } catch (JaxenException e) {
@@ -60,7 +62,7 @@ public class StoreMediatorTransformer extends AbstractEsbNodeTransformer {
         }
     }
 
-    private org.apache.synapse.mediators.store.MessageStoreMediator createStoreMediator(EsbNode subject)
+    public static org.apache.synapse.mediators.store.MessageStoreMediator createStoreMediator(EsbNode subject, boolean isForValidation)
             throws JaxenException {
         Assert.isTrue(subject instanceof StoreMediator, "Invalid subject.");
         StoreMediator visualStore = (StoreMediator) subject;
@@ -71,12 +73,23 @@ public class StoreMediatorTransformer extends AbstractEsbNodeTransformer {
             storeMediator.setOnStoreSequence(visualStore.getOnStoreSequence().getKeyValue());
         }
         if (visualStore.getSpecifyAs() == StoreMediatorSpecifyType.VALUE) {
-            storeMediator.setMessageStoreName(visualStore.getMessageStore());
+            if (!isForValidation && StringUtils.isEmpty(visualStore.getMessageStore())) {
+                storeMediator.setMessageStoreName(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
+            } else {
+                storeMediator.setMessageStoreName(visualStore.getMessageStore());
+            }
         } else if (visualStore.getSpecifyAs() == StoreMediatorSpecifyType.EXPRESSION) {
             NamespacedProperty payLoadExp = visualStore.getExpression();
-            if (payLoadExp != null && !payLoadExp.getPropertyValue().equals("")) {
+            if (payLoadExp != null) {
                 SynapseXPath xpath = null;
-                xpath = new SynapseXPath(payLoadExp.getPropertyValue());
+                // If the value of the expression is empty the fill the xpath with default values for synapse
+                // serialization
+                if (!isForValidation && StringUtils.isEmpty(payLoadExp.getPropertyValue())) {
+                    xpath = (SynapseXPath) SynapseXPathExt
+                            .createSynapsePath(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
+                } else {
+                    xpath = new SynapseXPath(payLoadExp.getPropertyValue());
+                }
                 Map<String, String> nameSpaceMap = payLoadExp.getNamespaces();
                 for (String key : nameSpaceMap.keySet()) {
                     xpath.addNamespace(key, nameSpaceMap.get(key));

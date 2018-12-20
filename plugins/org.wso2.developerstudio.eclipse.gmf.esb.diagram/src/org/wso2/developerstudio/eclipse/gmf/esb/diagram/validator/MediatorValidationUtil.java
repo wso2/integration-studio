@@ -264,7 +264,7 @@ public class MediatorValidationUtil {
                 if (beanMediatorExtFactory == null) {
                     beanMediatorExtFactory = new BeanMediatorExtFactory();
                 }
-                beanMediatorExtFactory.createMediator(omElement, null);
+                beanMediatorExtFactory.createSpecificMediatorForValidation(omElement, null);
 
             } else if (qTag.equals("class")) {
                 if (classMediatorExtFactory == null) {
@@ -282,7 +282,7 @@ public class MediatorValidationUtil {
                 if (ejbMediatorExtFactory == null) {
                     ejbMediatorExtFactory = new EJBMediatorExtFactory();
                 }
-                ejbMediatorExtFactory.createMediator(omElement, null);
+                ejbMediatorExtFactory.createSpecificMediatorForValidation(omElement, null);
 
             } else if (qTag.equals("script")) {
                 Properties properties = new Properties();
@@ -412,6 +412,7 @@ public class MediatorValidationUtil {
                 if (aggregateMediatorFactory == null) {
                     aggregateMediatorFactory = new AggregateMediatorFactory();
                 }
+                setNamespaceForChildren(omElement);
                 aggregateMediatorFactory.createMediator(omElement, null);
 
             } else if (qTag.equals("callout")) {

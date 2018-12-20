@@ -329,25 +329,25 @@ public class AggregateMediatorImpl extends MediatorImpl implements AggregateMedi
         NamespacedProperty aggregationExpression = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
         aggregationExpression.setPrettyName("Aggregation Expression");
         aggregationExpression.setPropertyName("expression");
-        aggregationExpression.setPropertyValue("/default/expression");
+        aggregationExpression.setPropertyValue("");
         setAggregationExpression(aggregationExpression);
 
         NamespacedProperty completionMaxMessagesExpression = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
         completionMaxMessagesExpression.setPrettyName("completionMaxMessagesExpression");
         completionMaxMessagesExpression.setPropertyName("expression");
-        completionMaxMessagesExpression.setPropertyValue("/default/expression");
+        completionMaxMessagesExpression.setPropertyValue("");
         setCompletionMaxMessagesExpression(completionMaxMessagesExpression);
 
         NamespacedProperty completionMinMessagesExpression = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
         completionMinMessagesExpression.setPrettyName("completionMinMessagesExpression");
         completionMinMessagesExpression.setPropertyName("expression");
-        completionMinMessagesExpression.setPropertyValue("/default/expression");
+        completionMinMessagesExpression.setPropertyValue("");
         setCompletionMinMessagesExpression(completionMinMessagesExpression);
 
         RegistryKeyProperty sequenceKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
         sequenceKey.setKeyName("Sequence Key");
         sequenceKey.setPrettyName("Sequence Key");
-        sequenceKey.setKeyValue("/default/key");
+        sequenceKey.setKeyValue("");
         setSequenceKey(sequenceKey);
     }
 

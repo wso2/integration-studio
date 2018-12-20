@@ -271,7 +271,7 @@ public class EJBMediatorImpl extends MediatorImpl implements EJBMediator {
         NamespacedProperty sessionIdExpression = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
         sessionIdExpression.setPrettyName("SessionId Expression");
         sessionIdExpression.setPropertyName("expression");
-        sessionIdExpression.setPropertyValue("/default/expression");
+        sessionIdExpression.setPropertyValue("");
         setSessionIdExpression(sessionIdExpression);
     }
 

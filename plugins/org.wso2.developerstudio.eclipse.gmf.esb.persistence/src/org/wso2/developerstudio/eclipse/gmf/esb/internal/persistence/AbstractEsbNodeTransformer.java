@@ -38,7 +38,7 @@ import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 public abstract class AbstractEsbNodeTransformer implements EsbNodeTransformer {
 
-    protected final IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+    protected final static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
     /**
      * Performs the transformation of the data-flow path begining with the
@@ -51,7 +51,7 @@ public abstract class AbstractEsbNodeTransformer implements EsbNodeTransformer {
      * @throws TransformerException
      * @throws Exception
      */
-    protected void doTransform(TransformationInfo info, OutputConnector outputConnector) throws TransformerException {
+    protected static void doTransform(TransformationInfo info, OutputConnector outputConnector) throws TransformerException {
         if (null != outputConnector) {
             EObject previousNode = outputConnector.eContainer();
             info.setPreviousNode(previousNode);
@@ -141,7 +141,7 @@ public abstract class AbstractEsbNodeTransformer implements EsbNodeTransformer {
         ((AbstractMediator) mediator).getCommentsList().addAll(visualElement.getCommentsList());
     }
 
-    private void addXMLCommnets(TransformationInfo info, EList<CommentMediator> commentMediators) {
+    private static void addXMLCommnets(TransformationInfo info, EList<CommentMediator> commentMediators) {
         CommentMediatorTransformer commentMediatorTransformer = new CommentMediatorTransformer();
         for (CommentMediator mediator : commentMediators) {
             commentMediatorTransformer.transform(info, mediator);

@@ -136,12 +136,12 @@ public interface EsbElement extends EsbNode {
     /**
      * Default property value used for xpath expressions.
      */
-    String DEFAULT_XPATH_PROPERTY_VALUE = "/default/xpath";
+    String DEFAULT_XPATH_PROPERTY_VALUE = "";
 
     /**
      * Default property value used for namespaced expressions.
      */
-    String DEFAULT_EXPRESSION_PROPERTY_VALUE = "/default/expression";
+    String DEFAULT_EXPRESSION_PROPERTY_VALUE = "";
 
     /**
      * Default property value used for string literals.
@@ -151,12 +151,12 @@ public interface EsbElement extends EsbNode {
     /**
      * Default property value used for registry keys.
      */
-    String DEFAULT_REGISTRY_KEY = "/default/key";
+    String DEFAULT_REGISTRY_KEY = "";
 
     /**
      * Default property value used for sequence reference registry keys.
      */
-    String DEFAULT_SEQUENCE_REFERENCE_REGISTRY_KEY = "/default/sequence";
+    String DEFAULT_SEQUENCE_REFERENCE_REGISTRY_KEY = "";
 
     /**
      * Default property value used for endpoint reference registry keys.

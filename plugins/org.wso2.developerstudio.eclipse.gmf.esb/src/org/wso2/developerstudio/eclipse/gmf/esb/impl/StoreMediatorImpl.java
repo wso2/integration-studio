@@ -154,7 +154,7 @@ public class StoreMediatorImpl extends MediatorImpl implements StoreMediator {
     @SuppressWarnings("unchecked")
     protected StoreMediatorImpl() {
         super();
-        setMessageStore("messageStore");
+        setMessageStore("");
         onStoreSequence = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
         DeveloperStudioProviderUtils.addFilter((Map<String, List<String>>) onStoreSequence.getFilters(),
                 CSProviderConstants.FILTER_MEDIA_TYPE, ESBMediaTypeConstants.MEDIA_TYPE_SEQUENCE);

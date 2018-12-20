@@ -70,7 +70,7 @@ public class URLReWriterMediatorTransformer extends AbstractEsbNodeTransformer {
         }
     }
 
-    private org.apache.synapse.mediators.transform.url.URLRewriteMediator createURLRewriteMediator(
+    public static org.apache.synapse.mediators.transform.url.URLRewriteMediator createURLRewriteMediator(
             TransformationInfo information, EsbNode subject) throws JaxenException {
         Assert.isTrue(subject instanceof URLRewriteMediator, "Invalid subject.");
         URLRewriteMediator visualUrlRewriter = (URLRewriteMediator) subject;

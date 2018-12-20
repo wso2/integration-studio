@@ -34,12 +34,13 @@ import org.wso2.developerstudio.eclipse.gmf.esb.SwitchMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.CustomSynapsePathFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.ValidationConstansts;
 
 public class SwitchMediatorTransformer extends AbstractEsbNodeTransformer {
 
     public void transform(TransformationInfo info, EsbNode subject) throws TransformerException {
         try {
-            info.getParentSequence().addChild(createSwitchMediator(info, subject));
+            info.getParentSequence().addChild(createSwitchMediator(info, subject, false));
             doTransform(info, ((SwitchMediator) subject).getOutputConnector());
         } catch (JaxenException e) {
             throw new TransformerException(e);
@@ -54,7 +55,7 @@ public class SwitchMediatorTransformer extends AbstractEsbNodeTransformer {
     public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
             throws TransformerException {
         try {
-            sequence.addChild(createSwitchMediator(information, subject));
+            sequence.addChild(createSwitchMediator(information, subject, false));
             doTransformWithinSequence(information, ((SwitchMediator) subject).getOutputConnector().getOutgoingLink(),
                     sequence);
         } catch (JaxenException e) {
@@ -62,8 +63,8 @@ public class SwitchMediatorTransformer extends AbstractEsbNodeTransformer {
         }
     }
 
-    private org.apache.synapse.mediators.filters.SwitchMediator createSwitchMediator(TransformationInfo info,
-            EsbNode subject) throws JaxenException, TransformerException {
+    public static org.apache.synapse.mediators.filters.SwitchMediator createSwitchMediator(TransformationInfo info,
+            EsbNode subject, boolean isForValidation) throws JaxenException, TransformerException {
 
         Assert.isTrue(subject instanceof SwitchMediator, "Invalid subject.");
         SwitchMediator visualSwitch = (SwitchMediator) subject;
@@ -83,8 +84,9 @@ public class SwitchMediatorTransformer extends AbstractEsbNodeTransformer {
             }
 
             switchMediator.setSource(XPath);
-        } else {
-            switchMediator.setSource(new SynapseXPath("Default:"));
+        } else if(!isForValidation) {
+            //Add default XPath for use synapse serialization engine
+            switchMediator.setSource(new SynapseXPath(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION));
         }
 
         for (SwitchCaseBranchOutputConnector outputConnector : visualSwitch.getCaseBranches()) {

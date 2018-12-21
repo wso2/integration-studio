@@ -61,49 +61,6 @@
                 </executions>
             </plugin>
             <plugin>
-                <groupId>com.googlecode.maven-download-plugin</groupId>
-                <artifactId>download-maven-plugin</artifactId>
-                <version>1.3.0</version>
-                <executions>
-                    <execution>
-                        <id>download-jdk-linux</id>
-                        <phase>prepare-package</phase>
-                        <goals>
-                            <goal>wget</goal>
-                        </goals>
-                        <configuration>
-                            <url>http://product-dist.wso2.com/tools/developerstudio/jdk-distributions/OpenJDK8U-jdk_x64_linux_hotspot_8u192b12.tar.gz</url>
-                            <unpack>false</unpack>
-                            <outputDirectory>${project.build.directory}/jdk/jdk-linux</outputDirectory>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>download-jdk-windows</id>
-                        <phase>prepare-package</phase>
-                        <goals>
-                            <goal>wget</goal>
-                        </goals>
-                        <configuration>
-                            <url>http://product-dist.wso2.com/tools/developerstudio/jdk-distributions/OpenJDK8U-jdk_x64_windows_hotspot_8u192b12.zip</url>
-                            <unpack>false</unpack>
-                            <outputDirectory>${project.build.directory}/jdk/jdk-windows</outputDirectory>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>download-jdk-macos</id>
-                        <phase>prepare-package</phase>
-                        <goals>
-                            <goal>wget</goal>
-                        </goals>
-                        <configuration>
-                            <url>http://product-dist.wso2.com/tools/developerstudio/jdk-distributions/OpenJDK8U-jdk_x64_mac_hotspot_8u192b12.tar.gz</url>
-                            <unpack>false</unpack>
-                            <outputDirectory>${project.build.directory}/jdk/jdk-macos</outputDirectory>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-antrun-plugin</artifactId>
                     <executions>

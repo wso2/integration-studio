@@ -364,9 +364,9 @@ Please visit : http://wso2.com/products/developer-studio/
       <feature id="org.wso2.developerstudio.eclipse.smooks.editor.feature"/>
 
       <!-- Dev studio BPS features -->
-<!--       <feature id="org.wso2.developerstudio.eclipse.bps.feature"/>
+      <feature id="org.wso2.developerstudio.eclipse.bps.feature"/>
       <feature id="org.wso2.developerstudio.eclipse.bps.hteditor.feature"/>
-      <feature id="org.wso2.developerstudio.eclipse.bps.bpmn.feature"/> -->
+      <feature id="org.wso2.developerstudio.eclipse.bps.bpmn.feature"/>
 
       <!-- Dev studio DSS features -->
       <feature id="org.wso2.developerstudio.eclipse.data.service.feature"/>

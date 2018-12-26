@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry exported="true" kind="lib" path="lib/synapse-core_2.1.7.wso2v83.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/synapse-core_2.1.7.wso2v86.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/synapse-extensions_2.1.7.wso2v80.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.rule.mediation_4.4.9.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.rule.kernel_4.4.9.jar"/>
@@ -56,7 +56,6 @@
 	<classpathentry exported="true" kind="lib" path="lib/js_1.7.0.R4wso2v1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/json_1.0.0.wso2v1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/json_2.0.0.wso2v1.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/json-path-0.8.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/json-schema-validator-all_2.2.6.wso2v1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/jsr311-api-1.1.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/libphonenumber_7.4.2.wso2v1.jar"/>

@@ -31,6 +31,7 @@ import org.apache.synapse.config.xml.XMLConfigConstants;
 import org.apache.synapse.mediators.elementary.EnrichMediator;
 import org.apache.synapse.mediators.elementary.Source;
 import org.jaxen.JaxenException;
+import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.SynapseXPathExt;
 
 public class EnrichMediatorExtFactory extends EnrichMediatorFactory {
 
@@ -70,89 +71,93 @@ public class EnrichMediatorExtFactory extends EnrichMediatorFactory {
         org.apache.synapse.mediators.elementary.Target target = new org.apache.synapse.mediators.elementary.Target();
         ((EnrichMediator) mediator).setTarget(target);
 
-        populateSource(source, sourceEle);
-        populateTarget(target, targetEle);
+	populateSource(source, sourceEle, mediator);
+	populateTarget(target, targetEle, mediator);
 
         return mediator;
     }
 
-    private void populateSource(Source source, OMElement sourceEle) {
+    private void populateSource(Source source, OMElement sourceEle, Mediator mediator) {
 
-        OMAttribute typeAttr = sourceEle.getAttribute(ATT_TYPE);
-        if (typeAttr != null && typeAttr.getAttributeValue() != null) {
-            source.setSourceType(convertTypeToInt(typeAttr.getAttributeValue()));
-        }
+	OMAttribute typeAttr = sourceEle.getAttribute(ATT_TYPE);
+	if (typeAttr != null && typeAttr.getAttributeValue() != null) {
+	    source.setSourceType(convertTypeToInt(typeAttr.getAttributeValue()));
+	}
 
-        OMAttribute cloneAttr = sourceEle.getAttribute(ATT_CLONE);
-        if (cloneAttr != null && cloneAttr.getAttributeValue() != null) {
-            source.setClone(Boolean.parseBoolean(cloneAttr.getAttributeValue()));
-        }
+	OMAttribute cloneAttr = sourceEle.getAttribute(ATT_CLONE);
+	if (cloneAttr != null && cloneAttr.getAttributeValue() != null) {
+	    source.setClone(Boolean.parseBoolean(cloneAttr.getAttributeValue()));
+	}
 
-        if (source.getSourceType() == EnrichMediator.CUSTOM) {
-            OMAttribute xpathAttr = sourceEle.getAttribute(ATT_XPATH);
-            if (xpathAttr != null && xpathAttr.getAttributeValue() != null) {
-                try {
-                    source.setXpath(SynapseXPathFactory.getSynapseXPath(sourceEle, ATT_XPATH));
-                } catch (JaxenException e) {
-                    // ignore
-                }
-            }
+	if (source.getSourceType() == EnrichMediator.CUSTOM) {
+	    OMAttribute xpathAttr = sourceEle.getAttribute(ATT_XPATH);
+	    if (xpathAttr != null && xpathAttr.getAttributeValue() != null) {
+		try {
+		    source.setXpath(SynapseXPathFactory.getSynapseXPath(sourceEle, ATT_XPATH));
+		} catch (JaxenException e) {
+            // If the xPath is not a valid synapse xpath this will add the invalid xpath to the model
+		    source.setXpath(SynapseXPathExt
+                    .createSynapsePath(xpathAttr.getAttributeValue()));
+		}
+	    }
 
-        } else if (source.getSourceType() == EnrichMediator.PROPERTY) {
-            OMAttribute propertyAttr = sourceEle.getAttribute(ATT_PROPERTY);
-            if (propertyAttr != null && propertyAttr.getAttributeValue() != null) {
-                source.setProperty(propertyAttr.getAttributeValue());
-            }
+	} else if (source.getSourceType() == EnrichMediator.PROPERTY) {
+	    OMAttribute propertyAttr = sourceEle.getAttribute(ATT_PROPERTY);
+	    if (propertyAttr != null && propertyAttr.getAttributeValue() != null) {
+		source.setProperty(propertyAttr.getAttributeValue());
+	    }
 
-        } else if (source.getSourceType() == EnrichMediator.INLINE) {
-            OMElement inlineElem = null;
-            if (sourceEle.getFirstElement() != null) {
-                inlineElem = sourceEle.getFirstElement().cloneOMElement();
-            }
+	} else if (source.getSourceType() == EnrichMediator.INLINE) {
+	    OMElement inlineElem = null;
+	    if (sourceEle.getFirstElement() != null) {
+		inlineElem = sourceEle.getFirstElement().cloneOMElement();
+	    }
 
-            if (inlineElem != null) {
-                source.setInlineOMNode(inlineElem);
-            } else if (!StringUtils.isBlank(sourceEle.getText())) {
-                source.setInlineOMNode(OMAbstractFactory.getOMFactory().createOMText(sourceEle.getText()));
-            } else if (sourceEle.getAttributeValue(ATT_KEY) != null) {
-                source.setInlineKey(sourceEle.getAttributeValue(ATT_KEY));
-            }
-        }
+	    if (inlineElem != null) {
+		source.setInlineOMNode(inlineElem);
+	    } else if (!StringUtils.isBlank(sourceEle.getText())) {
+		source.setInlineOMNode(OMAbstractFactory.getOMFactory().createOMText(sourceEle.getText()));
+	    } else if (sourceEle.getAttributeValue(ATT_KEY) != null) {
+		source.setInlineKey(sourceEle.getAttributeValue(ATT_KEY));
+	    }
+	}
     }
 
-    private void populateTarget(org.apache.synapse.mediators.elementary.Target target, OMElement sourceEle) {
+    private void populateTarget(org.apache.synapse.mediators.elementary.Target target, OMElement sourceEle, Mediator mediator) {
 
-        OMAttribute typeAttr = sourceEle.getAttribute(ATT_TYPE);
-        OMAttribute actionAttr = sourceEle.getAttribute(ATT_ACTION);
+	OMAttribute typeAttr = sourceEle.getAttribute(ATT_TYPE);
+	OMAttribute actionAttr = sourceEle.getAttribute(ATT_ACTION);
 
-        if (actionAttr != null && actionAttr.getAttributeValue() != null) {
-            target.setAction(actionAttr.getAttributeValue());
-        } else {
-            target.setAction("replace");
-        }
+	if (actionAttr != null && actionAttr.getAttributeValue() != null) {
+	    target.setAction(actionAttr.getAttributeValue());
+	} else {
+	    target.setAction("replace");
+	}
 
-        if (typeAttr != null && typeAttr.getAttributeValue() != null) {
-            int type = convertTypeToInt(typeAttr.getAttributeValue());
-            if (type >= 0) {
-                target.setTargetType(type);
-            }
-        }
+	if (typeAttr != null && typeAttr.getAttributeValue() != null) {
+	    int type = convertTypeToInt(typeAttr.getAttributeValue());
+	    if (type >= 0) {
+		target.setTargetType(type);
+	    }
+	}
 
-        if (target.getTargetType() == EnrichMediator.CUSTOM) {
-            OMAttribute xpathAttr = sourceEle.getAttribute(ATT_XPATH);
-            if (xpathAttr != null && xpathAttr.getAttributeValue() != null) {
-                try {
-                    target.setXpath(SynapseXPathFactory.getSynapseXPath(sourceEle, ATT_XPATH));
-                } catch (JaxenException e) {
-                    // ignore
-                }
-            }
-        } else if (target.getTargetType() == EnrichMediator.PROPERTY) {
-            OMAttribute propertyAttr = sourceEle.getAttribute(ATT_PROPERTY);
-            if (propertyAttr != null && propertyAttr.getAttributeValue() != null) {
-                target.setProperty(propertyAttr.getAttributeValue());
-            }
-        }
+	if (target.getTargetType() == EnrichMediator.CUSTOM) {
+	    OMAttribute xpathAttr = sourceEle.getAttribute(ATT_XPATH);
+	    if (xpathAttr != null && xpathAttr.getAttributeValue() != null) {
+		try {
+		    target.setXpath(SynapseXPathFactory.getSynapseXPath(sourceEle, ATT_XPATH));
+		} catch (JaxenException e) {
+		 // If the xPath is not a valid synapse xpath this will add the invalid xpath to the model
+		    target.setXpath(SynapseXPathExt
+                    .createSynapsePath(xpathAttr.getAttributeValue()));
+		}
+	    }
+	} else if (target.getTargetType() == EnrichMediator.PROPERTY) {
+	    OMAttribute propertyAttr = sourceEle.getAttribute(ATT_PROPERTY);
+	    if (propertyAttr != null && propertyAttr.getAttributeValue() != null) {
+		target.setProperty(propertyAttr.getAttributeValue());
+	    }
+	}
     }
 
     private int convertTypeToInt(String type) {

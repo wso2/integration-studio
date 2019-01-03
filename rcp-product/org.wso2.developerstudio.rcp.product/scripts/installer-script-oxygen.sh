@@ -60,11 +60,11 @@ mv $PRODUCT_PATH_WIN_86/runtime/wso2ei-$PRODUCT_VERSION $PRODUCT_PATH_WIN_86/run
 mv $PRODUCT_PATH_WIN_64/runtime/wso2ei-$PRODUCT_VERSION $PRODUCT_PATH_WIN_64/runtime/microesb
 
 # Clean up existing packages
-rm -rf $PRODUCT_PATH_ROOT/WSO2-Developer-Studio-linux.gtk.x86.zip
-rm -rf $PRODUCT_PATH_ROOT/WSO2-Developer-Studio-linux.gtk.x86_64.zip
+rm -rf $PRODUCT_PATH_ROOT/WSO2-Developer-Studio-linux.gtk.x86.tar.gz
+rm -rf $PRODUCT_PATH_ROOT/WSO2-Developer-Studio-linux.gtk.x86_64.tar.gz
 rm -rf $PRODUCT_PATH_ROOT/WSO2-Developer-Studio-win32.win32.x86.zip
 rm -rf $PRODUCT_PATH_ROOT/WSO2-Developer-Studio-win32.win32.x86_64.zip
-rm -rf $PRODUCT_PATH_ROOT/WSO2-Developer-Studio-macosx.cocoa.x86_64.zip
+rm -rf $PRODUCT_PATH_ROOT/WSO2-Developer-Studio-macosx.cocoa.x86_64.tar.gz
 
 # Extract JDK distributions
 pushd ${JDK_DISTRIBUTION_PATH_LINUX}
@@ -110,21 +110,18 @@ popd
 
 # Zip the packages with microesb and JDK
 pushd ${PRODUCT_PATH_LINUX_86}
-zip -r $PRODUCT_PATH_ROOT/WSO2-Developer-Studio-linux.gtk.x86.zip *
+tar -czf WSO2-Developer-Studio-linux.gtk.x86.tar.gz *
+mv WSO2-Developer-Studio-linux.gtk.x86.tar.gz $PRODUCT_PATH_ROOT/WSO2-Developer-Studio-linux.gtk.x86.tar.gz
 popd
 
 pushd ${PRODUCT_PATH_LINUX_64}
-zip -r $PRODUCT_PATH_ROOT/WSO2-Developer-Studio-linux.gtk.x86_64.zip *
+tar -czf WSO2-Developer-Studio-linux.gtk.x86_64.tar.gz *
+mv WSO2-Developer-Studio-linux.gtk.x86_64.tar.gz $PRODUCT_PATH_ROOT/WSO2-Developer-Studio-linux.gtk.x86_64.tar.gz
 popd
 
 pushd ${PRODUCT_PATH_MACOS}
-# The reason for using ditto on BSD kernels is to preserve the package state of the JDK. Using the zip command will
-# result in losing the package state of the JDK packed inside
-if [[ "$OSTYPE" == "darwin"* ]]; then
-    ditto -c -k --sequesterRsrc --keepParent * $PRODUCT_PATH_ROOT/WSO2-Developer-Studio-macosx.cocoa.x86_64.zip
-else
-    zip -r $PRODUCT_PATH_ROOT/WSO2-Developer-Studio-macosx.cocoa.x86_64.zip *
-fi
+tar -czf WSO2-Developer-Studio-macosx.cocoa.x86_64.tar.gz *
+mv WSO2-Developer-Studio-macosx.cocoa.x86_64.tar.gz $PRODUCT_PATH_ROOT/WSO2-Developer-Studio-macosx.cocoa.x86_64.tar.gz
 popd
 
 pushd ${PRODUCT_PATH_WIN_86}

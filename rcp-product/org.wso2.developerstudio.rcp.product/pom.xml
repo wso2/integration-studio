@@ -178,16 +178,16 @@
                      <configuration>
                          <fileSets>
                                 <fileSet>
-                                    <sourceFile>${project.basedir}/target/products/WSO2-Developer-Studio-linux.gtk.x86_64.zip</sourceFile>
-                                    <destinationFile>${project.basedir}/target/products/WSO2-Developer-Studio-linux-gtk-x86_64.zip</destinationFile>
+                                    <sourceFile>${project.basedir}/target/products/WSO2-Developer-Studio-linux.gtk.x86_64.tar.gz</sourceFile>
+                                    <destinationFile>${project.basedir}/target/products/WSO2-Developer-Studio-linux-gtk-x86_64.tar.gz</destinationFile>
                                 </fileSet>
                                 <fileSet>
-                                    <sourceFile>${project.basedir}/target/products/WSO2-Developer-Studio-linux.gtk.x86.zip</sourceFile>
-                                    <destinationFile>${project.basedir}/target/products/WSO2-Developer-Studio-linux-gtk-x86.zip</destinationFile>
+                                    <sourceFile>${project.basedir}/target/products/WSO2-Developer-Studio-linux.gtk.x86.tar.gz</sourceFile>
+                                    <destinationFile>${project.basedir}/target/products/WSO2-Developer-Studio-linux-gtk-x86.tar.gz</destinationFile>
                                 </fileSet>
                                 <fileSet>
-                                    <sourceFile>${project.basedir}/target/products/WSO2-Developer-Studio-macosx.cocoa.x86_64.zip</sourceFile>
-                                    <destinationFile>${project.basedir}/target/products/WSO2-Developer-Studio-macosx-cocoa-x86_64.zip</destinationFile>
+                                    <sourceFile>${project.basedir}/target/products/WSO2-Developer-Studio-macosx.cocoa.x86_64.tar.gz</sourceFile>
+                                    <destinationFile>${project.basedir}/target/products/WSO2-Developer-Studio-macosx-cocoa-x86_64.tar.gz</destinationFile>
                                 </fileSet>
                                 <fileSet>
                                     <sourceFile>${project.basedir}/target/products/WSO2-Developer-Studio-win32.win32.x86.zip</sourceFile>

@@ -102,9 +102,9 @@ public class EsbLinkEditPart extends ConnectionNodeEditPart implements ITreeBran
     protected Connection createConnectionFigure() {
         PolylineConnectionEx figure = new PolylineConnectionEx();
         PolygonDecoration decoration = new PolygonDecoration();
-        decoration.setScale(12, 4);
+        decoration.setScale(10, 5);
         decoration.setAlpha(250);
-        decoration.setBackgroundColor(new Color(null, 50, 50, 50));
+        decoration.setBackgroundColor(new Color(null, 145, 145, 145));
         decoration.setOutline(false);
         figure.setTargetDecoration(decoration);
         figure.setAlpha(150);

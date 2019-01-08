@@ -84,7 +84,7 @@ public class EsbGraphicalShapeWithLabel extends RoundedRectangle {
         this.setCornerDimensions(new Dimension(8, 8));
         this.setOutline(false);
 
-        RoundedRectangleBorder border = new RoundedRectangleBorder(8, 8);
+        RoundedRectangleBorder border = new RoundedRectangleBorder(0, 0);
         border.setColor(EditPartDrawingHelper.FigureNormalColor);
         this.setBorder(border);
 
@@ -220,7 +220,7 @@ public class EsbGraphicalShapeWithLabel extends RoundedRectangle {
         mainImageRectangle.setOutline(false);
         mainImageRectangle.setPreferredSize(new Dimension(Image_PreferredWidth, Image_PreferredHeight));
         mainImageRectangle.add(iconImageFigure);
-        RoundedRectangleBorder border = new RoundedRectangleBorder(8, 8);
+        RoundedRectangleBorder border = new RoundedRectangleBorder(0,0);
         border.setColor(borderColor);
         mainImageRectangle.setBorder(border);
         figureLayer.add(mainImageRectangle, constraintMainImageRectangle);

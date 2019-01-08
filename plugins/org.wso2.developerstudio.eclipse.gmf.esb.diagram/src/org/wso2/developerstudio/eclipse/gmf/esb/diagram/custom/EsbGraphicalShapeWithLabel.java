@@ -44,7 +44,7 @@ public class EsbGraphicalShapeWithLabel extends RoundedRectangle {
     public RoundedRectangle tempPropertyValueRectangle1;
     private WrappingLabel propertyNameLabel;
     private static int Image_PreferredWidth = 72;
-    private static int Image_PreferredHeight = 52;
+    private static int Image_PreferredHeight = 80;
     protected RoundedRectangle mainImageRectangle;
     private LayeredPane pane;
     protected Layer figureLayer;

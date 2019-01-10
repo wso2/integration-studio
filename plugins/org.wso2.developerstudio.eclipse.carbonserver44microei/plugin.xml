@@ -51,6 +51,12 @@
                class="org.wso2.developerstudio.eclipse.carbonserver44microei.wizard.ExportDistributionAndRunAction"
                     id="org.wso2.developerstudio.eclipse.carbonserver44microei.exportandrun">
            </action>
+           <action
+                    label="Export Project Artifacts and Debug"
+                    icon="icons/car.png"
+               class="org.wso2.developerstudio.eclipse.carbonserver44microei.wizard.ExportDistributionAndDebugAction"
+                    id="org.wso2.developerstudio.eclipse.carbonserver44microei.exportanddebug">
+           </action>
            <enablement>
 					<adapt type="org.eclipse.core.resources.IProject">
 						<test property="org.eclipse.core.resources.projectNature"

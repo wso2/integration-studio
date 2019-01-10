@@ -20,9 +20,11 @@ package org.wso2.developerstudio.eclipse.carbonserver44microei.register.product.
 
 import java.io.File;
 import java.nio.file.Paths;
+import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
@@ -50,12 +52,13 @@ public class MicroIntegratorInstance {
 	private static MicroIntegratorInstance instance;
 	private IServer microIntegratorServer;
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+	private IServerWorkingCopy server = null;
 	//static relative path to where micro-ESB is packaged
 	private static final String microesbPath = "runtime" + File.separator + "microesb"
 			+ File.separator + "wso2" + File.separator + "micro-integrator";
 	//static path for DeveloperStudio for MAC when it is on Application folder
 	private static final String eiToolingHomeForMac = "/Applications/DeveloperStudio.app/Contents/MacOS";
-
+	private static boolean isDebugMode = false;
 	/**
 	 * Private constructor for singleton class
 	 */
@@ -96,7 +99,7 @@ public class MicroIntegratorInstance {
 
 			IRuntime microIntegratorRuntime = runtime.save(true, progressMonitor);
 
-			IServerWorkingCopy server = serverType.createServer("org.wso2.micro.integrator.server", null,
+			server = serverType.createServer("org.wso2.micro.integrator.server", null,
 					microIntegratorRuntime, progressMonitor);
 			server.setName("Micro Integrator Server");
 
@@ -231,6 +234,35 @@ public class MicroIntegratorInstance {
 		Map<String, String> serverInstanceProperties = dl.getServerInstanceProperties();
 		int offset = Integer.parseInt(serverInstanceProperties.get("carbon.offset"));
 		return offset;
+	}
+
+	/**
+	 * This will set the mediation debug parameter to the micro-ei instance
+	 * 
+	 * @param setDebug the configuration for the mediation debug server parameter
+	 */
+	public void setDebugMode(boolean setDebug) {
+		GenericServer dl = (GenericServer) server.loadAdapter(GenericServer.class, null);
+		Map<String, String> temserverInstanceProperties = dl.getServerInstanceProperties();
+		temserverInstanceProperties.put("esb.debug", String.valueOf(setDebug));
+		dl.setServerInstanceProperties(temserverInstanceProperties);
+		try {
+			dl.saveConfiguration(new NullProgressMonitor());
+			isDebugMode = setDebug;
+		} catch (CoreException e) {
+			log.error("Unexpected error occured while trying to set mediation debug argument to the "
+					+ "micro integrator server instance", e);
+		}
+	}
+
+	/**
+	 * This method will return the status of the mediation debug with the current
+	 * micro-ei instance
+	 * 
+	 * @return the mediation debug mode status
+	 */
+	public boolean isDebugMode() {
+		return isDebugMode;
 	}
 
 }

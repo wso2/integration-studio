@@ -19,6 +19,8 @@
 package org.wso2.developerstudio.eclipse.carbonserver44microei.wizard;
 
 import java.io.File;
+import java.io.IOException;
+import java.net.Socket;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -33,7 +35,12 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.core.runtime.QualifiedName;
+import org.eclipse.debug.core.DebugPlugin;
+import org.eclipse.debug.core.ILaunchConfiguration;
+import org.eclipse.debug.core.ILaunchConfigurationType;
+import org.eclipse.debug.internal.ui.DebugUIPlugin;
+import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
+import org.eclipse.debug.core.ILaunchManager;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.swt.SWT;
@@ -58,7 +65,7 @@ import org.wso2.developerstudio.eclipse.platform.core.project.export.util.Export
 import org.wso2.developerstudio.eclipse.platform.core.utils.Constants;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 
-public class DistributionProjectExportAndRunWizard extends Wizard implements IExportWizard {
+public class DistributionProjectExportAndDebugWizard extends Wizard implements IExportWizard {
 
 	DistributionProjectExportWizardPage mainPage;
 	private IFile pomFileRes;
@@ -71,17 +78,19 @@ public class DistributionProjectExportAndRunWizard extends Wizard implements IEx
 	private Map<String, Dependency> dependencyMap = new HashMap<String, Dependency>();
 	private Map<String, String> serverRoleList = new HashMap<String, String>();
 	private ArtifactTypeMapping artifactTypeMapping = new ArtifactTypeMapping();
-	
+
 	private static final String CARFileName = "TestCompositeApplication";
 	private static final String CARFileVersion = "1.0.0";
-	private static final String DEPLOYMENT_DIR = "repository" + File.separator + "deployment" 
-			+ File.separator + "server" + File.separator + "carbonapps";
+	private static final String DEPLOYMENT_DIR = "repository" + File.separator + "deployment" + File.separator
+			+ "server" + File.separator + "carbonapps";
 	private String deploymentFolderPath;
+	private static final String DEBUG_PROFILE_NAME = "INTERNAL_DEBUG_PROFILE";
 
 	@SuppressWarnings("unchecked")
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
 		try {
-			deploymentFolderPath = MicroIntegratorInstance.getInstance().getServerHome() + File.separator + DEPLOYMENT_DIR;
+			deploymentFolderPath = MicroIntegratorInstance.getInstance().getServerHome() + File.separator
+					+ DEPLOYMENT_DIR;
 			selectedProject = getSelectedProject(selection);
 			pomFileRes = selectedProject.getFile("pom.xml");
 			pomFile = pomFileRes.getLocation().toFile();
@@ -109,8 +118,15 @@ public class DistributionProjectExportAndRunWizard extends Wizard implements IEx
 			mainPage.setProjectList(projectList);
 			mainPage.setDependencyList(dependencyMap);
 			mainPage.setMissingDependencyList(
-					(Map<String, Dependency>) ((HashMap) mainPage.getDependencyList()).clone());
+					(Map<String, Dependency>) ((HashMap<String, Dependency>) mainPage.getDependencyList()).clone());
 			mainPage.setServerRoleList(serverRoleList);
+
+			// Create ESB mediation debug launch configuration in the EI tooling IDE
+			ILaunchManager launchManager = DebugPlugin.getDefault().getLaunchManager();
+			createESBDebugProfile(launchManager);
+
+		} catch (CoreException e) {
+			log.error("Unable to create ESB debug launch profile", e);
 		} catch (Exception e) {
 			initError = true;
 			Display display = PlatformUI.getWorkbench().getDisplay();
@@ -159,7 +175,7 @@ public class DistributionProjectExportAndRunWizard extends Wizard implements IEx
 
 	private Properties identifyNonProjectProperties(Properties properties) {
 		Map<String, DependencyData> dependencies = projectList;
-		for (Iterator iterator = dependencies.values().iterator(); iterator.hasNext();) {
+		for (Iterator<DependencyData> iterator = dependencies.values().iterator(); iterator.hasNext();) {
 			DependencyData dependency = (DependencyData) iterator.next();
 			String artifactInfoAsString = DistProjectUtils.getArtifactInfoAsString(dependency.getDependency());
 			if (properties.containsKey(artifactInfoAsString)) {
@@ -201,8 +217,7 @@ public class DistributionProjectExportAndRunWizard extends Wizard implements IEx
 	}
 
 	public boolean performFinish() {
-		String finalFileName = String.format("%s_%s.car", CARFileName.replaceAll(".car$", ""),
-				CARFileVersion);
+		String finalFileName = String.format("%s_%s.car", CARFileName.replaceAll(".car$", ""), CARFileVersion);
 		try {
 			File destFileName = new File(deploymentFolderPath, finalFileName);
 			if (destFileName.exists()) {
@@ -214,14 +229,20 @@ public class DistributionProjectExportAndRunWizard extends Wizard implements IEx
 			IResource carbonArchive = ExportUtil.buildCAppProject(selectedProject);
 			FileUtils.copy(carbonArchive.getLocation().toFile(), destFileName);
 
-			// set the mediation debug off if the server is configured with mediation debug
-			if (MicroIntegratorInstance.getInstance().isDebugMode()) {
-				MicroIntegratorInstance.getInstance().setDebugMode(false);
+			// set the mediation debug mode in micro-integrator instance
+			if (!MicroIntegratorInstance.getInstance().isDebugMode()) {
+				MicroIntegratorInstance.getInstance().setDebugMode(true);
 			}
 
-			// restart internal micro integrator profile
+			// restart internal micro-integrator profile
 			restartServer();
 
+			// Start a separate thread to launch the debugger mode in the eclipse
+			MediationDebugLauncher debugLauncherThread = new MediationDebugLauncher();
+			debugLauncherThread.start();
+
+		} catch (CoreException e) {
+			log.error("Unable to create ESB debug launch profile", e);
 		} catch (Exception e) {
 			log.error("An error occured while creating the carbon archive file", e);
 			openMessageBox(getShell(), "WSO2 Platform Distribution",
@@ -237,8 +258,30 @@ public class DistributionProjectExportAndRunWizard extends Wizard implements IEx
 		exportMsg.setMessage(message);
 		return exportMsg.open();
 	}
-	
+
 	private void restartServer() throws CoreException {
 		MicroIntegratorInstance.getInstance().restart();
 	}
+
+	private void createESBDebugProfile(ILaunchManager launchManager) throws CoreException {
+		if (findLaunchConfigurationByName(launchManager, DEBUG_PROFILE_NAME) == null) {
+			ILaunchConfigurationType debugESBLaunchType = launchManager
+					.getLaunchConfigurationType("org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.launch");
+			ILaunchConfigurationWorkingCopy debugESBLaunchConfig = debugESBLaunchType.newInstance(null,
+					DebugPlugin.getDefault().getLaunchManager().generateLaunchConfigurationName(DEBUG_PROFILE_NAME));
+			debugESBLaunchConfig.doSave();
+		}
+	}
+
+	private ILaunchConfiguration findLaunchConfigurationByName(ILaunchManager launchManager, String configName)
+			throws CoreException {
+		ILaunchConfiguration[] availableLauchConfigs = launchManager.getLaunchConfigurations();
+		for (ILaunchConfiguration iLaunchConfig : availableLauchConfigs) {
+			if (configName.equals(iLaunchConfig.getName())) {
+				return iLaunchConfig;
+			}
+		}
+		return null;
+	}
+
 }

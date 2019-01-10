@@ -17,6 +17,7 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.launch;
 
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.DEFAULT_COMMAND_PORT;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.DEFAULT_EVENT_PORT;
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.DEFAULT_HOST_NAME;
 
 import java.io.IOException;
@@ -77,7 +78,7 @@ public class ESBDebugLaunchDelegate implements ILaunchConfigurationDelegate {
             commandPort = Integer.parseInt(
                     configuration.getAttribute(Messages.DebuggerConfigTab_CommandPortLabel, DEFAULT_COMMAND_PORT));
             eventPort = Integer.parseInt(
-                    configuration.getAttribute(Messages.DebuggerConfigTab_EventPortLabel, DEFAULT_COMMAND_PORT));
+                    configuration.getAttribute(Messages.DebuggerConfigTab_EventPortLabel, DEFAULT_EVENT_PORT));
             hostName = configuration.getAttribute(Messages.DebuggerConfigTab_ServerHostName, hostName);
 
             ESBDebugger esbDebugger = new ESBDebugger(commandPort, eventPort, hostName);

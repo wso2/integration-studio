@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.net.UnknownHostException;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.IESBDebugger;
@@ -185,7 +186,7 @@ public class ESBDebuggerInterface implements IESBDebuggerInterface {
 
     @Override
     public void setRequestSocket(int commandPort, String hostName) throws IOException {
-        this.requestSocket = new Socket(hostName, commandPort);
+        this.requestSocket = createSocketWithPolling(hostName, commandPort);
     }
 
     @Override
@@ -200,7 +201,7 @@ public class ESBDebuggerInterface implements IESBDebuggerInterface {
 
     @Override
     public void setEventSocket(int eventPort, String hostName) throws IOException {
-        this.eventSocket = new Socket(hostName, eventPort);
+        this.eventSocket = createSocketWithPolling(hostName, eventPort);
     }
 
     @Override
@@ -227,5 +228,25 @@ public class ESBDebuggerInterface implements IESBDebuggerInterface {
     public ChannelEventDispatcher getEventDispatcher() {
         return eventDispatcher;
     }
+
+	private Socket createSocketWithPolling(String host, int port) throws UnknownHostException, IOException {
+		int MAX_TIME = 60000;
+		int INTERVAL = 100;
+		int time = 0;
+		while (time < MAX_TIME) {
+			try {
+				Socket socket = new Socket(host, port);
+				return socket;
+			} catch (IOException ignored) {
+			}
+			try {
+				Thread.sleep(INTERVAL);
+			} catch (InterruptedException e) {
+				log.error("Error occured while waiting to connect event debug port", e);
+			}
+			time = time + INTERVAL;
+		}
+		return new Socket(host, port);
+	}
 
 }

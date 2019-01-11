@@ -139,19 +139,6 @@ public class DistributionProjectExportAndDebugWizard extends Wizard implements I
 	}
 
 	public void savePOM() throws Exception {
-		// Properties properties = parentPrj.getModel().getProperties();
-		// properties.clear();
-		// Map<String,String> serverRoles = mainPage.getServerRoleList();
-		// for (Dependency dependency : mainPage.getDependencyList().values()) {
-		// String artifactInfo = DistProjectUtils.getArtifactInfoAsString(dependency);
-		// if(serverRoles.containsKey(artifactInfo)){
-		// properties.put(artifactInfo, serverRoles.get(artifactInfo));
-		// } else{
-		// properties.put(artifactInfo, "capp/ApplicationServer");
-		// }
-		// }
-		// properties.put("artifact.types", ArtifactTypeMapping.getArtifactTypes());
-		// parentPrj.getModel().setProperties(properties);
 		writeProperties();
 		parentPrj.setDependencies(new ArrayList<Dependency>(mainPage.getDependencyList().values()));
 		MavenUtils.saveMavenProject(parentPrj, pomFile);

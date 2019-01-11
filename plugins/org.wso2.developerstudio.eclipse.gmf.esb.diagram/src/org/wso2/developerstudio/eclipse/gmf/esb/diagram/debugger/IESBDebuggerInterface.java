@@ -40,8 +40,9 @@ public interface IESBDebuggerInterface {
      * @param commandPort
      * @param hostName
      * @throws IOException
+     * @throws InterruptedException 
      */
-    public void setRequestSocket(int commandPort, String hostName) throws IOException;
+    public void setRequestSocket(int commandPort, String hostName) throws IOException, InterruptedException;
 
     /**
      * This method sets {@link PrintWriter} to send messages to ESB Server
@@ -66,8 +67,9 @@ public interface IESBDebuggerInterface {
      * @param eventPort
      * @param hostName
      * @throws IOException
+     * @throws InterruptedException 
      */
-    public void setEventSocket(int eventPort, String hostName) throws IOException;
+    public void setEventSocket(int eventPort, String hostName) throws IOException, InterruptedException;
 
     /**
      * This method sets {@link BufferedReader} to read messages to ESB Server

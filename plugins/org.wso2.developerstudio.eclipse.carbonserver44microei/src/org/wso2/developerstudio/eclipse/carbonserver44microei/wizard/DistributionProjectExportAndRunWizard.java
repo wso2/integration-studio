@@ -214,7 +214,8 @@ public class DistributionProjectExportAndRunWizard extends Wizard implements IEx
 			IResource carbonArchive = ExportUtil.buildCAppProject(selectedProject);
 			FileUtils.copy(carbonArchive.getLocation().toFile(), destFileName);
 
-			// set the mediation debug off if the server is configured with mediation debug
+			// Set the mediation debug off if the server is configured with mediation debug
+			// This will reset the server instance debug property
 			if (MicroIntegratorInstance.getInstance().isDebugMode()) {
 				MicroIntegratorInstance.getInstance().setDebugMode(false);
 			}

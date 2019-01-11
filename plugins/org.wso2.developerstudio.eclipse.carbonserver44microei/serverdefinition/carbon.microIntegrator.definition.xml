@@ -87,7 +87,6 @@
             type="boolean"
             context="runtime"
             default="false" />
-    
 
     <port>
         <no>${carbon.http}</no>

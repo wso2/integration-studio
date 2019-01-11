@@ -53,7 +53,7 @@
            </action>
            <action
                     label="Export Project Artifacts and Debug"
-                    icon="icons/car.png"
+                    icon="icons/debug.png"
                class="org.wso2.developerstudio.eclipse.carbonserver44microei.wizard.ExportDistributionAndDebugAction"
                     id="org.wso2.developerstudio.eclipse.carbonserver44microei.exportanddebug">
            </action>

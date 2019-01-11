@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2019, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
 
  * WSO2 Inc. licenses this file to you under the Apache License,
  * Version 2.0 (the "License"); you may not use this file except
@@ -65,6 +65,10 @@ import org.wso2.developerstudio.eclipse.platform.core.project.export.util.Export
 import org.wso2.developerstudio.eclipse.platform.core.utils.Constants;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 
+/**
+* This class will handle the operations related to the Debug Wizard for the 
+* CarbonCompositeApplication
+*/
 public class DistributionProjectExportAndDebugWizard extends Wizard implements IExportWizard {
 
 	DistributionProjectExportWizardPage mainPage;
@@ -79,12 +83,14 @@ public class DistributionProjectExportAndDebugWizard extends Wizard implements I
 	private Map<String, String> serverRoleList = new HashMap<String, String>();
 	private ArtifactTypeMapping artifactTypeMapping = new ArtifactTypeMapping();
 
+	// The CAR file name is made constant since we allow only one carbon application to be
+	// inside te micro-integrator server while debugging
 	private static final String CARFileName = "TestCompositeApplication";
 	private static final String CARFileVersion = "1.0.0";
 	private static final String DEPLOYMENT_DIR = "repository" + File.separator + "deployment" + File.separator
 			+ "server" + File.separator + "carbonapps";
 	private String deploymentFolderPath;
-	private static final String DEBUG_PROFILE_NAME = "INTERNAL_DEBUG_PROFILE";
+	private static final String DEBUG_PROFILE_NAME = "Microei_Debug_Profile";
 
 	@SuppressWarnings("unchecked")
 	public void init(IWorkbench workbench, IStructuredSelection selection) {

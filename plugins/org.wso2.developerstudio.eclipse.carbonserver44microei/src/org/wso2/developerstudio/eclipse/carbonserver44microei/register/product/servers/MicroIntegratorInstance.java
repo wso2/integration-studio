@@ -49,6 +49,7 @@ import org.wso2.developerstudio.eclipse.logging.core.Logger;
 @SuppressWarnings("restriction")
 public class MicroIntegratorInstance {
 
+	private static final String ESB_DEBUG_ATTRIBUTE = "esb.debug";
 	private static MicroIntegratorInstance instance;
 	private IServer microIntegratorServer;
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
@@ -119,8 +120,8 @@ public class MicroIntegratorInstance {
 	 */
 	@SuppressWarnings("restriction")
 	private void readConfigs(IServerWorkingCopy server) throws CoreException {
-		GenericServer dl = (GenericServer) server.loadAdapter(GenericServer.class, null);
-		Map<String, String> temserverInstanceProperties = dl.getServerInstanceProperties();
+		GenericServer microIntegratorGenericServer = (GenericServer) server.loadAdapter(GenericServer.class, null);
+		Map<String, String> temserverInstanceProperties = microIntegratorGenericServer.getServerInstanceProperties();
 		IRuntime runtime = server.getRuntime();
 		String location = runtime.getLocation().toOSString();
 		Map<String, String> serverInstanceProperties = new ServerProperties().getServerInstanceProperties(location);
@@ -128,8 +129,8 @@ public class MicroIntegratorInstance {
 			temserverInstanceProperties.put(entry.getKey(), entry.getValue());
 		}
 		//Once set server instance properties they will be used to override properties defined at server definition xml file
-		dl.setServerInstanceProperties(temserverInstanceProperties);
-		dl.saveConfiguration(new NullProgressMonitor());
+		microIntegratorGenericServer.setServerInstanceProperties(temserverInstanceProperties);
+		microIntegratorGenericServer.saveConfiguration(new NullProgressMonitor());
 	}
 
 	/**
@@ -230,8 +231,8 @@ public class MicroIntegratorInstance {
 	 */
 	public int getOffset() {
 		@SuppressWarnings("restriction")
-		GenericServer dl = (GenericServer) microIntegratorServer.loadAdapter(GenericServer.class, null);
-		Map<String, String> serverInstanceProperties = dl.getServerInstanceProperties();
+		GenericServer microIntegratorGenericServer = (GenericServer) microIntegratorServer.loadAdapter(GenericServer.class, null);
+		Map<String, String> serverInstanceProperties = microIntegratorGenericServer.getServerInstanceProperties();
 		int offset = Integer.parseInt(serverInstanceProperties.get("carbon.offset"));
 		return offset;
 	}
@@ -242,12 +243,12 @@ public class MicroIntegratorInstance {
 	 * @param setDebug the configuration for the mediation debug server parameter
 	 */
 	public void setDebugMode(boolean setDebug) {
-		GenericServer dl = (GenericServer) server.loadAdapter(GenericServer.class, null);
-		Map<String, String> temserverInstanceProperties = dl.getServerInstanceProperties();
-		temserverInstanceProperties.put("esb.debug", String.valueOf(setDebug));
-		dl.setServerInstanceProperties(temserverInstanceProperties);
+		GenericServer microIntegratorGenericServer = (GenericServer) server.loadAdapter(GenericServer.class, null);
+		Map<String, String> temserverInstanceProperties = microIntegratorGenericServer.getServerInstanceProperties();
+		temserverInstanceProperties.put(ESB_DEBUG_ATTRIBUTE, String.valueOf(setDebug));
+		microIntegratorGenericServer.setServerInstanceProperties(temserverInstanceProperties);
 		try {
-			dl.saveConfiguration(new NullProgressMonitor());
+			microIntegratorGenericServer.saveConfiguration(new NullProgressMonitor());
 			isDebugMode = setDebug;
 		} catch (CoreException e) {
 			log.error("Unexpected error occured while trying to set mediation debug argument to the "

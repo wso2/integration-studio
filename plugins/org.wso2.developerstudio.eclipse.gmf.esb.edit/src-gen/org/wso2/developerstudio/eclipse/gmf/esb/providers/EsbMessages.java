@@ -3961,15 +3961,6 @@ public class EsbMessages extends NLS {
 	public static String RegistryKeyPropertyPropertiesEditionPart_FiltersLabel;
 
 	
-	public static String PropertyMediatorPropertiesEditionPart_DescriptionLabel;
-
-	
-	public static String PropertyMediatorPropertiesEditionPart_CommentsListLabel;
-
-	
-	public static String PropertyMediatorPropertiesEditionPart_ReverseLabel;
-
-	
 	public static String PropertyMediatorPropertiesEditionPart_PropertyNameLabel;
 
 	
@@ -4010,6 +4001,9 @@ public class EsbMessages extends NLS {
 
 	
 	public static String PropertyMediatorPropertiesEditionPart_NewPropertyNameLabel;
+
+	
+	public static String PropertyMediatorPropertiesEditionPart_ValueExpressionLabel;
 
 	
 	public static String PropertyMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;

@@ -1693,15 +1693,6 @@ public class EsbViewsRepository {
 		public static class Properties {
 	
 			
-			public static String description = "esb::PropertyMediator::properties::description";
-			
-			
-			public static String commentsList = "esb::PropertyMediator::properties::commentsList";
-			
-			
-			public static String reverse = "esb::PropertyMediator::properties::Reverse";
-			
-			
 			public static String propertyName = "esb::PropertyMediator::properties::propertyName";
 			
 			
@@ -1742,6 +1733,10 @@ public class EsbViewsRepository {
 			
 			
 			public static String newPropertyName = "esb::PropertyMediator::properties::newPropertyName";
+			
+			// Start of user code for valueExpression ElementEditor key
+			public static String valueExpression = "esb::PropertyMediator::properties::valueExpression";
+			// End of user code
 			
 	
 		}

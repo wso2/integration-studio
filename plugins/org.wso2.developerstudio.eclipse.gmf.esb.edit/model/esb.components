@@ -1035,15 +1035,6 @@
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//RegistryKeyProperty"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_E7vVTvJnEei6boXzpRIfnA" name="PropertyMediator" views="_E7wj2PJnEei6boXzpRIfnA">
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7vVT_JnEei6boXzpRIfnA" name="description" views="_E7wj2vJnEei6boXzpRIfnA">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//EsbElement/description"/>
-        </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7vVUPJnEei6boXzpRIfnA" name="commentsList" views="_E7wj2_JnEei6boXzpRIfnA">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//EsbElement/commentsList"/>
-        </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7vVUfJnEei6boXzpRIfnA" name="Reverse" views="_E7wj3PJnEei6boXzpRIfnA">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//Mediator/Reverse"/>
-        </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7vVUvJnEei6boXzpRIfnA" name="propertyName" views="_E7wj3fJnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//PropertyMediator/propertyName"/>
         </properties>
@@ -1085,6 +1076,9 @@
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7vVX_JnEei6boXzpRIfnA" name="newPropertyName" views="_E7wj6vJnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//PropertyMediator/newPropertyName"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_X9lZABjOEemBdI3RQ1zfLA" name="valueExpression" views="_gdPbABjQEemBdI3RQ1zfLA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//PropertyMediator/valueExpression"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//PropertyMediator"/>
       </bindings>
@@ -6613,15 +6607,6 @@
       <views xmi:id="_E7wj2PJnEei6boXzpRIfnA" name="PropertyMediator">
         <elements xsi:type="eef-views:Container" xmi:id="_E7wj2fJnEei6boXzpRIfnA" name="properties">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wj2vJnEei6boXzpRIfnA" name="description">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
-          </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wj2_JnEei6boXzpRIfnA" name="commentsList">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.3"/>
-          </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wj3PJnEei6boXzpRIfnA" name="Reverse">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
-          </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wj3fJnEei6boXzpRIfnA" name="propertyName">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
           </elements>
@@ -6664,6 +6649,7 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wj6vJnEei6boXzpRIfnA" name="newPropertyName">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_gdPbABjQEemBdI3RQ1zfLA" name="valueExpression"/>
         </elements>
       </views>
       <views xmi:id="_E7wj6_JnEei6boXzpRIfnA" name="PropertyMediatorInputConnector">

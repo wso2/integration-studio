@@ -34,8 +34,6 @@
             providerClass="org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbPropertiesEditionPartProvider">
       </PropertiesEditionPartProvider>
    </extension>
-
-  <!-- Tabbed properties views extension -->
    <extension
          point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
       <propertyContributor

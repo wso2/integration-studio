@@ -38,13 +38,14 @@ import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyAction;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyDataType;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyName;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyScope;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.PropertyMediatorPropertiesEditionPart;
 
@@ -88,15 +89,6 @@ public class PropertyMediatorPropertiesEditionComponent extends SinglePartProper
 			final PropertyMediator propertyMediator = (PropertyMediator)elt;
 			final PropertyMediatorPropertiesEditionPart basePart = (PropertyMediatorPropertiesEditionPart)editingPart;
 			// init values
-			if (isAccessible(EsbViewsRepository.PropertyMediator.Properties.description))
-				basePart.setDescription(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, propertyMediator.getDescription()));
-			
-			if (isAccessible(EsbViewsRepository.PropertyMediator.Properties.commentsList))
-				basePart.setCommentsList(propertyMediator.getCommentsList());
-			
-			if (isAccessible(EsbViewsRepository.PropertyMediator.Properties.reverse)) {
-				basePart.setReverse(propertyMediator.isReverse());
-			}
 			if (isAccessible(EsbViewsRepository.PropertyMediator.Properties.propertyName)) {
 				basePart.initPropertyName(EEFUtils.choiceOfValues(propertyMediator, EsbPackage.eINSTANCE.getPropertyMediator_PropertyName()), propertyMediator.getPropertyName());
 			}
@@ -140,6 +132,12 @@ public class PropertyMediatorPropertiesEditionComponent extends SinglePartProper
 			if (isAccessible(EsbViewsRepository.PropertyMediator.Properties.newPropertyName))
 				basePart.setNewPropertyName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, propertyMediator.getNewPropertyName()));
 			
+			// Start of user code  for valueExpression command update
+			if (isAccessible(EsbViewsRepository.PropertyMediator.Properties.valueExpression)) {
+			    basePart.setValueExpression(propertyMediator.getValueExpression());
+            }
+			// End of user code
+			
 			// init filters
 			
 			
@@ -155,8 +153,8 @@ public class PropertyMediatorPropertiesEditionComponent extends SinglePartProper
 			
 			
 			
-			
-			
+			// Start of user code  for valueExpression filter update
+			// End of user code
 			
 			// init values for referenced views
 			
@@ -183,22 +181,11 @@ public class PropertyMediatorPropertiesEditionComponent extends SinglePartProper
 
 
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
 	 */
 	public EStructuralFeature associatedFeature(Object editorKey) {
-		if (editorKey == EsbViewsRepository.PropertyMediator.Properties.description) {
-			return EsbPackage.eINSTANCE.getEsbElement_Description();
-		}
-		if (editorKey == EsbViewsRepository.PropertyMediator.Properties.commentsList) {
-			return EsbPackage.eINSTANCE.getEsbElement_CommentsList();
-		}
-		if (editorKey == EsbViewsRepository.PropertyMediator.Properties.reverse) {
-			return EsbPackage.eINSTANCE.getMediator_Reverse();
-		}
 		if (editorKey == EsbViewsRepository.PropertyMediator.Properties.propertyName) {
 			return EsbPackage.eINSTANCE.getPropertyMediator_PropertyName();
 		}
@@ -241,6 +228,9 @@ public class PropertyMediatorPropertiesEditionComponent extends SinglePartProper
 		if (editorKey == EsbViewsRepository.PropertyMediator.Properties.newPropertyName) {
 			return EsbPackage.eINSTANCE.getPropertyMediator_NewPropertyName();
 		}
+		if (editorKey == EsbViewsRepository.PropertyMediator.Properties.valueExpression) {
+			return EsbPackage.eINSTANCE.getPropertyMediator_ValueExpression();
+		}
 		return super.associatedFeature(editorKey);
 	}
 
@@ -251,18 +241,6 @@ public class PropertyMediatorPropertiesEditionComponent extends SinglePartProper
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		PropertyMediator propertyMediator = (PropertyMediator)semanticObject;
-		if (EsbViewsRepository.PropertyMediator.Properties.description == event.getAffectedEditor()) {
-			propertyMediator.setDescription((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
-		}
-		if (EsbViewsRepository.PropertyMediator.Properties.commentsList == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET) {
-				propertyMediator.getCommentsList().clear();
-				propertyMediator.getCommentsList().addAll(((EList) event.getNewValue()));
-			}
-		}
-		if (EsbViewsRepository.PropertyMediator.Properties.reverse == event.getAffectedEditor()) {
-			propertyMediator.setReverse((Boolean)event.getNewValue());
-		}
 		if (EsbViewsRepository.PropertyMediator.Properties.propertyName == event.getAffectedEditor()) {
 			propertyMediator.setPropertyName((PropertyName)event.getNewValue());
 		}
@@ -305,6 +283,17 @@ public class PropertyMediatorPropertiesEditionComponent extends SinglePartProper
 		if (EsbViewsRepository.PropertyMediator.Properties.newPropertyName == event.getAffectedEditor()) {
 			propertyMediator.setNewPropertyName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
+		if (EsbViewsRepository.PropertyMediator.Properties.valueExpression == event.getAffectedEditor()) {
+			// Start of user code for updateValueExpression method body
+    /*        if (event.getNewValue() != null) {
+                NamespacedProperty nsp = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
+                propertyMediator.setValueExpression();
+            } else {
+                propertyMediator.setValueExpression(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+            }*/
+			// End of user code
+			
+		}
 	}
 
 	/**
@@ -315,28 +304,6 @@ public class PropertyMediatorPropertiesEditionComponent extends SinglePartProper
 		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			PropertyMediatorPropertiesEditionPart basePart = (PropertyMediatorPropertiesEditionPart)editingPart;
-			if (EsbPackage.eINSTANCE.getEsbElement_Description().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.PropertyMediator.Properties.description)) {
-				if (msg.getNewValue() != null) {
-					basePart.setDescription(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
-				} else {
-					basePart.setDescription("");
-				}
-			}
-			if (EsbPackage.eINSTANCE.getEsbElement_CommentsList().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.PropertyMediator.Properties.commentsList)) {
-				if (msg.getNewValue() instanceof EList<?>) {
-					basePart.setCommentsList((EList<?>)msg.getNewValue());
-				} else if (msg.getNewValue() == null) {
-					basePart.setCommentsList(new BasicEList<Object>());
-				} else {
-					BasicEList<Object> newValueAsList = new BasicEList<Object>();
-					newValueAsList.add(msg.getNewValue());
-					basePart.setCommentsList(newValueAsList);
-				}
-			}
-			
-			if (EsbPackage.eINSTANCE.getMediator_Reverse().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.PropertyMediator.Properties.reverse))
-				basePart.setReverse((Boolean)msg.getNewValue());
-			
 			if (EsbPackage.eINSTANCE.getPropertyMediator_PropertyName().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EsbViewsRepository.PropertyMediator.Properties.propertyName))
 				basePart.setPropertyName((PropertyName)msg.getNewValue());
 			
@@ -411,6 +378,16 @@ public class PropertyMediatorPropertiesEditionComponent extends SinglePartProper
 					basePart.setNewPropertyName("");
 				}
 			}
+					// Start of user code for valueExpression live update
+			if (EsbPackage.eINSTANCE.getPropertyMediator_ValueExpression().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.PropertyMediator.Properties.valueExpression)) {
+                if (msg.getNewValue() != null) {
+                    basePart.setValueExpression((NamespacedProperty)msg.getNewValue());
+                } else {
+                    basePart.setValueExpression(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+                }
+            }	
+					// End of user code
+			
 			
 		}
 	}
@@ -423,9 +400,6 @@ public class PropertyMediatorPropertiesEditionComponent extends SinglePartProper
 	@Override
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
-			EsbPackage.eINSTANCE.getEsbElement_Description(),
-			EsbPackage.eINSTANCE.getEsbElement_CommentsList(),
-			EsbPackage.eINSTANCE.getMediator_Reverse(),
 			EsbPackage.eINSTANCE.getPropertyMediator_PropertyName(),
 			EsbPackage.eINSTANCE.getPropertyMediator_PropertyDataType(),
 			EsbPackage.eINSTANCE.getPropertyMediator_PropertyAction(),
@@ -439,7 +413,8 @@ public class PropertyMediatorPropertiesEditionComponent extends SinglePartProper
 			EsbPackage.eINSTANCE.getPropertyMediator_OM(),
 			EsbPackage.eINSTANCE.getPropertyMediator_ValueStringPattern(),
 			EsbPackage.eINSTANCE.getPropertyMediator_ValueStringCapturingGroup(),
-			EsbPackage.eINSTANCE.getPropertyMediator_NewPropertyName()		);
+			EsbPackage.eINSTANCE.getPropertyMediator_NewPropertyName(),
+			EsbPackage.eINSTANCE.getPropertyMediator_ValueExpression()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -454,27 +429,6 @@ public class PropertyMediatorPropertiesEditionComponent extends SinglePartProper
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
 			try {
-				if (EsbViewsRepository.PropertyMediator.Properties.description == event.getAffectedEditor()) {
-					Object newValue = event.getNewValue();
-					if (newValue instanceof String) {
-						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getEsbElement_Description().getEAttributeType(), (String)newValue);
-					}
-					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getEsbElement_Description().getEAttributeType(), newValue);
-				}
-				if (EsbViewsRepository.PropertyMediator.Properties.commentsList == event.getAffectedEditor()) {
-					BasicDiagnostic chain = new BasicDiagnostic();
-					for (Iterator iterator = ((List)event.getNewValue()).iterator(); iterator.hasNext();) {
-						chain.add(Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getEsbElement_CommentsList().getEAttributeType(), iterator.next()));
-					}
-					ret = chain;
-				}
-				if (EsbViewsRepository.PropertyMediator.Properties.reverse == event.getAffectedEditor()) {
-					Object newValue = event.getNewValue();
-					if (newValue instanceof String) {
-						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getMediator_Reverse().getEAttributeType(), (String)newValue);
-					}
-					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getMediator_Reverse().getEAttributeType(), newValue);
-				}
 				if (EsbViewsRepository.PropertyMediator.Properties.propertyName == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {

@@ -233,83 +233,82 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
     void createPage0() {
         deleteMarkers();
 
-        try {
-            GMFPluginDetails.setiUpdateGMFPlugin(new UpdateGMFPlugin());
-            currentEditor = this;
-            graphicalEditor = new EsbDiagramEditor(this);
-            IEditorInput editorInput = getEditorInput();
-            if (editorInput instanceof FileEditorInput) {
-                IFile file = ((FileEditorInput) editorInput).getFile();
-                fileName = file.getName();
-                final Deserializer deserializer = Deserializer.getInstance();
-                InputStream inputStream = null;
-                try {
-                    inputStream = file.getContents();
-                    final String source = new Scanner(inputStream).useDelimiter("\\A").next();
-                    ArtifactType artifactType = deserializer.getArtifactType(source);
-                    editorInput = new EsbEditorInput(null, file, artifactType.getLiteral());
+        GMFPluginDetails.setiUpdateGMFPlugin(new UpdateGMFPlugin());
+        currentEditor = this;
+        graphicalEditor = new EsbDiagramEditor(this);
+        IEditorInput editorInput = getEditorInput();
+        if (editorInput instanceof FileEditorInput) {
+            IFile file = ((FileEditorInput) editorInput).getFile();
+            fileName = file.getName();
+            final Deserializer deserializer = Deserializer.getInstance();
+            InputStream inputStream = null;
+            try {
+                inputStream = file.getContents();
+                final String source = new Scanner(inputStream).useDelimiter("\\A").next();
+                ArtifactType artifactType = deserializer.getArtifactType(source);
+                editorInput = new EsbEditorInput(null, file, artifactType.getLiteral());
 
-                    Display.getDefault().asyncExec(new Runnable() {
-                        @Override
-                        public void run() {
-                            ESBDebuggerUtil.setPageCreateOperationActivated(true);
-                            try {
-                                DeserializeStatus deserializeStatus = deserializer.isValidSynapseConfig(source, true);
-                                deleteMarkers();
-                                if (deserializeStatus.isValid()
-                                        || deserializeStatus.getExecption() instanceof SynapseException
-                                        || deserializeStatus.getExecption() instanceof MediatorException) {
+                addPage(DESIGN_VIEW_PAGE_INDEX, graphicalEditor, editorInput);
 
-                                    if (!deserializeStatus.isValid()) {
-                                        SourceError sourceError = ProcessSourceView.validateSynapseContent(source);
+                Display.getDefault().syncExec(new Runnable() {
+                    @Override
+                    public void run() {
+                        ESBDebuggerUtil.setPageCreateOperationActivated(true);
+                        try {
+                            DeserializeStatus deserializeStatus = deserializer.isValidSynapseConfig(source, true);
+                            deleteMarkers();
+                            if (deserializeStatus.isValid()
+                                    || deserializeStatus.getExecption() instanceof SynapseException
+                                    || deserializeStatus.getExecption() instanceof MediatorException) {
 
-                                        if (sourceError == null) {
-                                            sourceError = new SourceError(deserializeStatus.getExecption().getMessage(),
-                                                    0, 0, 2);
-                                        }
+                                if (!deserializeStatus.isValid()) {
+                                    SourceError sourceError = ProcessSourceView.validateSynapseContent(source);
 
-                                        addMarker(sourceError);
+                                    if (sourceError == null) {
+                                        sourceError = new SourceError(deserializeStatus.getExecption().getMessage(), 0,
+                                                0, 2);
                                     }
 
-                                    deserializer.updateDesign(source, graphicalEditor, false);
-                                    Display.getDefault().asyncExec(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            doSave(new NullProgressMonitor());
-                                        }
-                                    });
-
-                                } else if (deserializeStatus.getExecption() instanceof NullPointerException) {
-                                    addMarker(new SourceError("Invalid mediator configuration: "
-                                            + deserializeStatus.getExecption().getMessage(), 0, 0, 2));
-
-                                } else {
-                                    setActivePage(SOURCE_VIEW_PAGE_INDEX);
-                                    sourceEditor.getDocument().set(source);
-
-                                    addMarker(ProcessSourceView.validateXMLContent(source));
+                                    addMarker(sourceError);
                                 }
-                            } catch (Exception e) {
-                                log.error("Error while generating diagram from source", e);
-                            } finally {
-                                ESBDebuggerUtil.setPageCreateOperationActivated(false);
-                            }
-                        }
-                    });
-                    inputStream.close();
-                } catch (CoreException e1) {
-                    log.error("Error while generating diagram from source", e1);
-                } catch (Exception e) {
-                    log.error("Error while generating diagram from source", e);
-                }
-                setTitle(file.getName());
-            }
-            addPage(DESIGN_VIEW_PAGE_INDEX, graphicalEditor, editorInput);
-            setPageText(DESIGN_VIEW_PAGE_INDEX, "Design"); //$NON-NLS-1$
 
-        } catch (PartInitException e) {
-            ErrorDialog.openError(getSite().getShell(), "ErrorCreatingNestedEditor", null, e.getStatus());
+                                deserializer.updateDesign(source, graphicalEditor, false);
+                                Display.getDefault().asyncExec(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        doSave(new NullProgressMonitor());
+                                    }
+                                });
+
+                            } else if (deserializeStatus.getExecption() instanceof NullPointerException) {
+                                addMarker(new SourceError("Invalid mediator configuration: "
+                                        + deserializeStatus.getExecption().getMessage(), 0, 0, 2));
+
+                            } else {
+                                setActivePage(SOURCE_VIEW_PAGE_INDEX);
+                                sourceEditor.getDocument().set(source);
+
+                                addMarker(ProcessSourceView.validateXMLContent(source));
+                            }
+                        } catch (Exception e) {
+                            log.error("Error while generating diagram from source", e);
+                        } finally {
+                            ESBDebuggerUtil.setPageCreateOperationActivated(false);
+                        }
+                    }
+                });
+                inputStream.close();
+            } catch (PartInitException e) {
+                ErrorDialog.openError(getSite().getShell(), "ErrorCreatingNestedEditor", null, e.getStatus());
+            } catch (CoreException e1) {
+                log.error("Error while generating diagram from source", e1);
+            } catch (Exception e) {
+                log.error("Error while generating diagram from source", e);
+            }
+            setTitle(file.getName());
         }
+
+        setPageText(DESIGN_VIEW_PAGE_INDEX, "Design");
 
         /*
          * This must be altered. 'addDefinedSequences' and 'addDefinedEndpoints' methods

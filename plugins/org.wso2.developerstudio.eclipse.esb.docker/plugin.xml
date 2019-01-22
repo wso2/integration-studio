@@ -25,7 +25,7 @@
            <action
                     label="Generate Docker Image"
                     icon="icons/car.png"
-               class="org.wso2.developerstudio.eclipse.esb.docker.wizard.ExportAndGenerateDockerAction"
+               class="org.wso2.developerstudio.eclipse.esb.docker.action.ExportAndGenerateDockerAction"
                     id="org.wso2.developerstudio.eclipse.esb.docker.exportandgeneratedocker">
            </action>
            <enablement>

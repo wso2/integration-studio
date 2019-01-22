@@ -136,7 +136,7 @@ public class CarExportDetailsWizardPage extends WizardPage {
         lblVersion.setText(FILE_VERSION_LABEL_TEXT);
 
         txtVersion = new Text(container, SWT.BORDER);
-        GridData txtVersionGridData = new GridData(SWT.LEFT, SWT.CENTER, true, false, 1, 1);
+        GridData txtVersionGridData = new GridData(SWT.LEFT, SWT.CENTER, true, false, 2, 1);
         txtVersionGridData.widthHint = 253;
         initialVersion = getVersion();
         txtVersion.setText(initialVersion);

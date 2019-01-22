@@ -19,10 +19,12 @@
 package org.wso2.developerstudio.eclipse.esb.docker.wizard;
 
 import java.io.File;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Properties;
 
@@ -44,7 +46,7 @@ import org.eclipse.ui.IExportWizard;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.esb.docker.Activator;
-import org.wso2.developerstudio.eclipse.carbonserver44microei.register.product.servers.MicroIntegratorInstance;
+import org.wso2.developerstudio.eclipse.esb.docker.job.GenerateDockerImageJob;
 import org.wso2.developerstudio.eclipse.distribution.project.model.DependencyData;
 import org.wso2.developerstudio.eclipse.esb.docker.wizard.CarExportDetailsWizardPage;
 import org.wso2.developerstudio.eclipse.distribution.project.ui.wizard.DistributionProjectExportWizardPage;
@@ -61,6 +63,12 @@ import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 
 public class ExportAndGenerateDockerImageWizard extends Wizard implements IExportWizard {
 
+    private static final String EI_TOOLING_HOME_MACOS = "/Applications/DeveloperStudio.app/Contents/MacOS";
+    private static final String DOCKER_IMAGE_TEMPORARY_DIR_NAME = "dockerImageTemp";
+    private static final String OS_TYPE_DARWIN = "darwin";
+    private static final String OS_TYPE_MAC = "mac";
+    private static final String SYSTEM_PROPERTY_TYPE_GENERIC = "generic";
+    private static final String OS_NAME = "os.name";
     private DistributionProjectExportWizardPage mainPage;
     private CarExportDetailsWizardPage detailsPage;
     private IFile pomFileRes;
@@ -69,6 +77,7 @@ public class ExportAndGenerateDockerImageWizard extends Wizard implements IExpor
     private MavenProject parentPrj;
     private boolean initError = false;
     private String deploymentFolderPath;
+    private GenerateDockerImageJob dockerJob;
 
     private Map<String, DependencyData> projectList = new HashMap<String, DependencyData>();
     private Map<String, Dependency> dependencyMap = new HashMap<String, Dependency>();
@@ -77,8 +86,9 @@ public class ExportAndGenerateDockerImageWizard extends Wizard implements IExpor
     
     private static final String DIALOG_TITLE_TEXT = "WSO2 Platform Distribution - Generate Docker Image";
     private static final String EMPTY_STRING = "";
-    private static final String DEPLOYMENT_DIR = "repository" + File.separator + "deployment" 
-            + File.separator + "server" + File.separator + "carbonapps";
+    private static final String MICRO_EI_DISTRIBUTION_REL_PATH = "runtime" + File.separator + "microesb";
+    private static final String MICRO_EI_HOME_REL_PATH = "wso2" + File.separator + "micro-integrator";
+    private static final String DEPLOYMENT_DIR_REL_PATH = "repository" + File.separator + "deployment" + File.separator + "server" + File.separator + "carbonapps";
 
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
@@ -87,6 +97,7 @@ public class ExportAndGenerateDockerImageWizard extends Wizard implements IExpor
     public void init(IWorkbench workbench, IStructuredSelection selection) {
 
         try {
+            //deploymentFolderPath = MicroIntegratorInstance.getInstance().getServerHome() + File.separator + DEPLOYMENT_DIR_REL_PATH;
             detailsPage = new CarExportDetailsWizardPage(workbench, selection);
             selectedProject = getSelectedProject(selection);
             pomFileRes = selectedProject.getFile("pom.xml");
@@ -204,27 +215,27 @@ public class ExportAndGenerateDockerImageWizard extends Wizard implements IExpor
 
         String finalFileName = String.format("%s_%s.car", detailsPage.getName().replaceAll(".car$", ""),
                 detailsPage.getVersion());
+        
+        String temporaryFolderPath = getWorkingDirectory() + File.separator + DOCKER_IMAGE_TEMPORARY_DIR_NAME;
+        String eiDestributionAbsPath = getWorkingDirectory() + File.separator + MICRO_EI_DISTRIBUTION_REL_PATH;
+        String eiHomeAbsPath = temporaryFolderPath + File.separator + MICRO_EI_HOME_REL_PATH;
+        String deploymentAbsPath = eiHomeAbsPath + File.separator + DEPLOYMENT_DIR_REL_PATH;
+        
         try {
-            File destFileName = new File(detailsPage.getExportPath(), finalFileName);
-            if (destFileName.exists()) {
-                int response = openMessageBox(getShell(), DIALOG_TITLE_TEXT, "there is already a file "
-                        + "with same name (" + finalFileName + ") in target location\n\n Would you like "
-                                + "to replace the existing file?", SWT.ICON_QUESTION | SWT.YES | SWT.NO);
-                
-                if (response == SWT.NO) {
-                    return false;
-                }
-
-                org.apache.commons.io.FileUtils.deleteQuietly(destFileName);
-            }
+            File destFileName = new File(temporaryFolderPath, finalFileName);
 
             if (mainPage.isPageDirty() || detailsPage.isPageDirty()) {
                 savePOM();
             }
+            
+            FileUtils.createDirectory(temporaryFolderPath);
 
             IResource carbonArchive = ExportUtil.buildCAppProject(selectedProject);
             FileUtils.copy(carbonArchive.getLocation().toFile(), destFileName);
             
+            dockerJob = new GenerateDockerImageJob(temporaryFolderPath, eiDestributionAbsPath, 
+                    eiHomeAbsPath, deploymentAbsPath, detailsPage.getExportPath(), this, destFileName);
+            dockerJob.schedule();
 
         } catch (Exception e) {
             log.error("An error occured while creating the carbon archive file", e);
@@ -253,6 +264,26 @@ public class ExportAndGenerateDockerImageWizard extends Wizard implements IExpor
         exportMsg.setText(title);
         exportMsg.setMessage(message);
         return exportMsg.open();
+    }
+    
+    private String getWorkingDirectory() {
+        String workingDirectory = null;
+        String OS = System.getProperty(OS_NAME, SYSTEM_PROPERTY_TYPE_GENERIC).toLowerCase(Locale.ENGLISH);
+        if ((OS.indexOf(OS_TYPE_MAC) >= 0) || (OS.indexOf(OS_TYPE_DARWIN) >= 0)) {
+            String eiToolingHomeForMac = EI_TOOLING_HOME_MACOS;
+            File macOSEIToolingAppFile = new File(eiToolingHomeForMac);
+            if(macOSEIToolingAppFile.exists()) {
+                workingDirectory = eiToolingHomeForMac;
+            } else {
+                java.nio.file.Path path = Paths.get(EMPTY_STRING);
+                workingDirectory = (path).toAbsolutePath().toString();
+            }
+            
+        } else {
+            java.nio.file.Path path = Paths.get(EMPTY_STRING);
+            workingDirectory = (path).toAbsolutePath().toString();
+        }
+        return workingDirectory;
     }
 
 }

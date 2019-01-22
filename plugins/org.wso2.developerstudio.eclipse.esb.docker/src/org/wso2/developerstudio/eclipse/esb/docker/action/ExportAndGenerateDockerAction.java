@@ -16,7 +16,7 @@
  * under the License.
  */
 
-package org.wso2.developerstudio.eclipse.esb.docker.wizard;
+package org.wso2.developerstudio.eclipse.esb.docker.action;
 
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;

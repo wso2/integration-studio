@@ -19,32 +19,40 @@
 package org.wso2.developerstudio.eclipse.esb.docker.job;
 
 import java.io.File;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
+import org.wso2.developerstudio.eclipse.esb.docker.model.MicroIntegratorDockerModel;
+import org.wso2.developerstudio.eclipse.esb.docker.resources.DockerGenConstants;
+import org.wso2.developerstudio.eclipse.esb.docker.util.DockerImageGenerator;
 import org.wso2.developerstudio.eclipse.esb.docker.wizard.ExportAndGenerateDockerImageWizard;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 
 public class GenerateDockerImageJob extends Job {
 
-    private String workingDirectory;
+    private String dockerDirectory;
     private String serverHome;
     private String deploymentDirectory;
     private String destinationDirectory;
-    private String serverLocation;
+    private String eiDistributionSource;
+    private String eiDistributionDestination;
     private ExportAndGenerateDockerImageWizard callingWizard;
     private File carbonFile;
 
-    public GenerateDockerImageJob(String workingDir, String serverLocation, String serverHome, String deploymentDir,
-            String destinationDir, ExportAndGenerateDockerImageWizard callingWizard, File carbonFile) {
+    public GenerateDockerImageJob(String dockerDir, String eiDistributionSource, String eiDistributionDestination,
+            String serverHome, String deploymentDir, String destinationDir,
+            ExportAndGenerateDockerImageWizard callingWizard, File carbonFile) {
         super("Generating Docker Image...");
-        this.workingDirectory = workingDir;
+        this.dockerDirectory = dockerDir;
         this.serverHome = serverHome;
         this.deploymentDirectory = deploymentDir;
         this.destinationDirectory = destinationDir;
-        this.serverLocation = serverLocation;
+        this.eiDistributionSource = eiDistributionSource;
+        this.eiDistributionDestination = eiDistributionDestination;
         this.callingWizard = callingWizard;
         this.carbonFile = carbonFile;
     }
@@ -58,7 +66,9 @@ public class GenerateDockerImageJob extends Job {
             operationText = "Copying files...";
             monitor.subTask(operationText);
             monitor.worked(20);
-            FileUtils.copyDirectory(new File(serverLocation), new File(workingDirectory));
+
+            // Copy MicroEI distribution to the docker directory
+            FileUtils.copyDirectory(new File(eiDistributionSource), new File(eiDistributionDestination));
 
             operationText = "Copying CAR application...";
             monitor.subTask(operationText);
@@ -68,15 +78,31 @@ public class GenerateDockerImageJob extends Job {
             org.apache.commons.io.FileUtils.cleanDirectory(new File(deploymentDirectory));
 
             // Copy CAR file to the deployment directory
-            FileUtils.copyFile(carbonFile.getAbsolutePath(),
-                    deploymentDirectory + File.separator + carbonFile.getName());
+            FileUtils.copyFile(carbonFile.getAbsolutePath(), dockerDirectory + File.separator + carbonFile.getName());
 
             // Remove temporary CAR file
             org.apache.commons.io.FileUtils.deleteQuietly(carbonFile);
 
+            // Create docker model
+            MicroIntegratorDockerModel dockerModel = new MicroIntegratorDockerModel();
+            dockerModel.setCommandArg(DockerGenConstants.ImageParamDefaults.EI_START_COMMAND);
+
+            Set<Integer> ports = new HashSet<>();
+            ports.add(100);
+            ports.add(150);
+
+            dockerModel.setName("meow01");
+            dockerModel.setServerHome(eiDistributionDestination);
+            dockerModel.setPorts(ports);
+
+            DockerImageGenerator generator = new DockerImageGenerator(dockerModel);
+
+            generator.generateDockerImage(dockerDirectory);
+
             monitor.worked(60);
 
         } catch (Exception e) {
+            e.printStackTrace();
             operationText = e.getMessage();
             monitor.beginTask(operationText, 100);
             monitor.worked(0);

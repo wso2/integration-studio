@@ -18,25 +18,40 @@
 
 package org.wso2.developerstudio.eclipse.carbonserver44microei.wizard;
 
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.window.Window;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.PlatformUI;
-
+import org.wso2.developerstudio.eclipse.carbonserver44microei.Activator;
+import org.wso2.developerstudio.eclipse.carbonserver44microei.register.product.servers.MicroIntegratorInstance;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 public class ExportDistributionAndRunAction implements IActionDelegate {
 
 	IStructuredSelection selection;
+	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
 	public void run(IAction action) {
 		if (selection != null) {
-			DistributionProjectExportAndRunWizard wizard = new DistributionProjectExportAndRunWizard();
+			CompositeApplicationArtifactUpdateWizard wizard = new CompositeApplicationArtifactUpdateWizard();
 			wizard.init(PlatformUI.getWorkbench(), selection);
 			WizardDialog exportWizardDialog = new WizardDialog(
 					PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), wizard);
-			exportWizardDialog.open();
+
+			int returnCode = exportWizardDialog.open();
+			if (returnCode == Window.OK) {
+				// restart internal micro-integrator profile
+				try {
+					MicroIntegratorInstance.getInstance().restart();
+				} catch (CoreException e) {
+					log.error("Error occured while restarting the micro-integrator", e);
+				}
+			}
 		}
 	}
 

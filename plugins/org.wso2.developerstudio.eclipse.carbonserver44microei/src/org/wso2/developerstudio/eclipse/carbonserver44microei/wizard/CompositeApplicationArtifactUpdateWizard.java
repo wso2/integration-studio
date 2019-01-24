@@ -15,12 +15,9 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-
 package org.wso2.developerstudio.eclipse.carbonserver44microei.wizard;
 
 import java.io.File;
-import java.io.IOException;
-import java.net.Socket;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -35,12 +32,6 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.debug.core.DebugPlugin;
-import org.eclipse.debug.core.ILaunchConfiguration;
-import org.eclipse.debug.core.ILaunchConfigurationType;
-import org.eclipse.debug.internal.ui.DebugUIPlugin;
-import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
-import org.eclipse.debug.core.ILaunchManager;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.swt.SWT;
@@ -66,10 +57,11 @@ import org.wso2.developerstudio.eclipse.platform.core.utils.Constants;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 
 /**
-* This class will handle the operations related to the Debug Wizard for the 
-* CarbonCompositeApplication
-*/
-public class DistributionProjectExportAndDebugWizard extends Wizard implements IExportWizard {
+ * This class will provide a wizard for update a composite application by
+ * allowing user to select the artifacts
+ * 
+ */
+public class CompositeApplicationArtifactUpdateWizard extends Wizard implements IExportWizard {
 
 	DistributionProjectExportWizardPage mainPage;
 	private IFile pomFileRes;
@@ -83,65 +75,23 @@ public class DistributionProjectExportAndDebugWizard extends Wizard implements I
 	private Map<String, String> serverRoleList = new HashMap<String, String>();
 	private ArtifactTypeMapping artifactTypeMapping = new ArtifactTypeMapping();
 
-	// The CAR file name is made constant since we allow only one carbon application to be
-	// inside te micro-integrator server while debugging
+	// The CAR file name is made constant since we allow only one carbon application
+	// to be
+	// inside the micro-integrator server while debugging
 	private static final String CARFileName = "TestCompositeApplication";
 	private static final String CARFileVersion = "1.0.0";
 	private static final String DEPLOYMENT_DIR = "repository" + File.separator + "deployment" + File.separator
 			+ "server" + File.separator + "carbonapps";
 	private String deploymentFolderPath;
-	private static final String DEBUG_PROFILE_NAME = "Microei_Debug_Profile";
 
 	@SuppressWarnings("unchecked")
+	@Override
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
-		try {
-			deploymentFolderPath = MicroIntegratorInstance.getInstance().getServerHome() + File.separator
-					+ DEPLOYMENT_DIR;
-			selectedProject = getSelectedProject(selection);
-			pomFileRes = selectedProject.getFile("pom.xml");
-			pomFile = pomFileRes.getLocation().toFile();
+		initializeWizard(selection);
+	}
 
-			if (!selectedProject.hasNature(Constants.DISTRIBUTION_PROJECT_NATURE)) {
-				throw new Exception();
-			}
-
-			ProjectList projectListProvider = new ProjectList();
-			List<ListData> projectListData = projectListProvider.getListData(null, null);
-
-			for (ListData data : projectListData) {
-				DependencyData dependencyData = (DependencyData) data.getData();
-				projectList.put(data.getCaption(), dependencyData);
-			}
-
-			parentPrj = MavenUtils.getMavenProject(pomFile);
-
-			for (Dependency dependency : (List<Dependency>) parentPrj.getDependencies()) {
-				dependencyMap.put(DistProjectUtils.getArtifactInfoAsString(dependency), dependency);
-				serverRoleList.put(DistProjectUtils.getArtifactInfoAsString(dependency),
-						DistProjectUtils.getServerRole(parentPrj, dependency));
-			}
-			mainPage = new DistributionProjectExportWizardPage(parentPrj);
-			mainPage.setProjectList(projectList);
-			mainPage.setDependencyList(dependencyMap);
-			mainPage.setMissingDependencyList(
-					(Map<String, Dependency>) ((HashMap<String, Dependency>) mainPage.getDependencyList()).clone());
-			mainPage.setServerRoleList(serverRoleList);
-
-			// Create ESB mediation debug launch configuration in the EI tooling IDE
-			ILaunchManager launchManager = DebugPlugin.getDefault().getLaunchManager();
-			createESBDebugProfile(launchManager);
-
-		} catch (CoreException e) {
-			log.error("Unable to create ESB debug launch profile", e);
-		} catch (Exception e) {
-			initError = true;
-			Display display = PlatformUI.getWorkbench().getDisplay();
-			Shell shell = display.getActiveShell();
-			openMessageBox(shell, "WSO2 Platform Distribution", "Please select a valid carbon application project",
-					SWT.ICON_INFORMATION);
-
-		}
-
+	public void init(IWorkbench workbench, IResource selection) {
+		initializeWizard(selection);
 	}
 
 	public void savePOM() throws Exception {
@@ -183,6 +133,7 @@ public class DistributionProjectExportAndDebugWizard extends Wizard implements I
 	public static IProject getSelectedProject(Object obj) throws Exception {
 		if (obj == null) {
 			return null;
+
 		}
 		if (obj instanceof IResource) {
 			return ((IResource) obj).getProject();
@@ -222,20 +173,6 @@ public class DistributionProjectExportAndDebugWizard extends Wizard implements I
 			IResource carbonArchive = ExportUtil.buildCAppProject(selectedProject);
 			FileUtils.copy(carbonArchive.getLocation().toFile(), destFileName);
 
-			// set the mediation debug mode in micro-integrator instance
-			if (!MicroIntegratorInstance.getInstance().isDebugMode()) {
-				MicroIntegratorInstance.getInstance().setDebugMode(true);
-			}
-
-			// restart internal micro-integrator profile
-			restartServer();
-
-			// Start a separate thread to launch the debugger mode in the eclipse
-			MediationDebugLauncher debugLauncherThread = new MediationDebugLauncher();
-			debugLauncherThread.start();
-
-		} catch (CoreException e) {
-			log.error("Unable to create ESB debug launch profile", e);
 		} catch (Exception e) {
 			log.error("An error occured while creating the carbon archive file", e);
 			openMessageBox(getShell(), "WSO2 Platform Distribution",
@@ -252,29 +189,50 @@ public class DistributionProjectExportAndDebugWizard extends Wizard implements I
 		return exportMsg.open();
 	}
 
-	private void restartServer() throws CoreException {
-		MicroIntegratorInstance.getInstance().restart();
-	}
+	private void initializeWizard(Object selection) {
+		try {
+			selectedProject = getSelectedProject(selection);
+			deploymentFolderPath = MicroIntegratorInstance.getInstance().getServerHome() + File.separator
+					+ DEPLOYMENT_DIR;
+			pomFileRes = selectedProject.getFile("pom.xml");
+			pomFile = pomFileRes.getLocation().toFile();
 
-	private void createESBDebugProfile(ILaunchManager launchManager) throws CoreException {
-		if (findLaunchConfigurationByName(launchManager, DEBUG_PROFILE_NAME) == null) {
-			ILaunchConfigurationType debugESBLaunchType = launchManager
-					.getLaunchConfigurationType("org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.launch");
-			ILaunchConfigurationWorkingCopy debugESBLaunchConfig = debugESBLaunchType.newInstance(null,
-					DebugPlugin.getDefault().getLaunchManager().generateLaunchConfigurationName(DEBUG_PROFILE_NAME));
-			debugESBLaunchConfig.doSave();
-		}
-	}
-
-	private ILaunchConfiguration findLaunchConfigurationByName(ILaunchManager launchManager, String configName)
-			throws CoreException {
-		ILaunchConfiguration[] availableLauchConfigs = launchManager.getLaunchConfigurations();
-		for (ILaunchConfiguration iLaunchConfig : availableLauchConfigs) {
-			if (configName.equals(iLaunchConfig.getName())) {
-				return iLaunchConfig;
+			if (!selectedProject.hasNature(Constants.DISTRIBUTION_PROJECT_NATURE)) {
+				throw new Exception();
 			}
+
+			ProjectList projectListProvider = new ProjectList();
+			List<ListData> projectListData = projectListProvider.getListData(null, null);
+
+			for (ListData data : projectListData) {
+				DependencyData dependencyData = (DependencyData) data.getData();
+				projectList.put(data.getCaption(), dependencyData);
+			}
+
+			parentPrj = MavenUtils.getMavenProject(pomFile);
+
+			for (Dependency dependency : (List<Dependency>) parentPrj.getDependencies()) {
+				dependencyMap.put(DistProjectUtils.getArtifactInfoAsString(dependency), dependency);
+				serverRoleList.put(DistProjectUtils.getArtifactInfoAsString(dependency),
+						DistProjectUtils.getServerRole(parentPrj, dependency));
+			}
+			mainPage = new DistributionProjectExportWizardPage(parentPrj);
+			mainPage.setProjectList(projectList);
+			mainPage.setDependencyList(dependencyMap);
+			mainPage.setMissingDependencyList(
+					(Map<String, Dependency>) ((HashMap<String, Dependency>) mainPage.getDependencyList()).clone());
+			mainPage.setServerRoleList(serverRoleList);
+
+		} catch (CoreException e) {
+			log.error("Unable to create ESB debug launch profile", e);
+		} catch (Exception e) {
+			initError = true;
+			Display display = PlatformUI.getWorkbench().getDisplay();
+			Shell shell = display.getActiveShell();
+			openMessageBox(shell, "WSO2 Platform Distribution", "Please select a valid carbon application project",
+					SWT.ICON_INFORMATION);
 		}
-		return null;
+
 	}
 
 }

@@ -7,6 +7,9 @@ import org.eclipse.ui.IPlaceholderFolderLayout;
 
 public class EsbDataMapperEditorPerspective implements IPerspectiveFactory {
 
+    // The plug-in ID of datamapper test window
+    public static final String DATAMAPPER_PLUGIN_ID = "org.wso2.developerstudio.datamapper.views.RealtimeDatamapperView";
+
 	// private static final String PROPERTIES_VIEW_ID =
 	// "org.eclipse.ui.views.PropertySheet";
 
@@ -36,6 +39,10 @@ public class EsbDataMapperEditorPerspective implements IPerspectiveFactory {
 				IPageLayout.BOTTOM, 0.65f, "topLeft");
 		bottomLeft.addView(IPageLayout.ID_OUTLINE);
 		// bottomLeft.addView(IPageLayout.ID_PROP_SHEET);
+		
+		// Bottom - for datamapper test window
+        IFolderLayout bottom = layout.createFolder("bottom", IPageLayout.BOTTOM, 0.65f, editorArea);
+        bottom.addView(DATAMAPPER_PLUGIN_ID);
 
 	}
 }

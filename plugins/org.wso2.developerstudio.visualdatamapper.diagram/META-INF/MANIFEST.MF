@@ -224,7 +224,10 @@ Require-Bundle: org.eclipse.core.runtime,
  org.wso2.developerstudio.eclipse.gmf.esb,
  org.eclipse.equinox.registry,
  org.wso2.developerstudio.eclipse.kernel.libraries;bundle-version="[4.1.0,7.0.0)",
- org.wso2.developerstudio.eclipse.esb.libraries;bundle-version="[6.0.0,7.0.0)"
+ org.wso2.developerstudio.eclipse.esb.libraries;bundle-version="[6.0.0,7.0.0)",
+ org.eclipse.jetty.server;bundle-version="9.4.8",
+ org.eclipse.jetty.servlet;bundle-version="9.4.8",
+ org.eclipse.jetty.util;bundle-version="9.4.8"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Import-Package: com.fasterxml.jackson.annotation;version="2.7.2",
@@ -332,4 +335,6 @@ Import-Package: com.fasterxml.jackson.annotation;version="2.7.2",
  org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.provider,
  org.wso2.developerstudio.eclipse.gmf.esb.diagram.part,
  org.wso2.developerstudio.eclipse.registry.core;version="[6.0.0,7.0.0)",
- org.wso2.developerstudio.eclipse.registry.core.interfaces;version="[6.0.0,7.0.0)"
+ org.wso2.developerstudio.eclipse.registry.core.interfaces;version="[6.0.0,7.0.0)",
+ org.wso2.developerstudio.eclipse.templates.dashboard.handlers;version="[6.0.0,7.0.0)",
+ org.wso2.developerstudio.eclipse.templates.dashboard.web.function.server;version="[6.5.0,7.0.0)"

@@ -1,0 +1,25 @@
+.custom{
+  margin-bottom:10px;
+  margin-top:10px;
+}
+
+.no-gutter > [class*='col-'] {
+    padding-right:0;
+    padding-left:5;
+}
+
+.alert
+{
+position: relative;
+z-index: 10;
+padding-left: 250px;
+font-size: 14px;
+}
+
+.alert h3,
+.alert .h3
+{
+margin-top:0;
+margin-bottom:0;
+font-size: 24px;
+}

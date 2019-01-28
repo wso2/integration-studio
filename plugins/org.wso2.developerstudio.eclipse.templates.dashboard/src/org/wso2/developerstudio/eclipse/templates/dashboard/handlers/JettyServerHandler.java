@@ -23,6 +23,7 @@ import java.net.URISyntaxException;
 import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.ContextHandlerCollection;
+import org.eclipse.jetty.server.handler.HandlerCollection;
 import org.eclipse.jetty.servlet.DefaultServlet;
 import org.eclipse.jetty.servlet.FilterHolder;
 import org.eclipse.jetty.servlet.ServletContextHandler;
@@ -39,6 +40,11 @@ public class JettyServerHandler {
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
     private static JettyServerHandler jettyServerHandler;
     public static boolean serverStarted;
+    private static HandlerCollection contexts;
+
+    public HandlerCollection getHandlerCollection() {
+        return contexts;
+    }
 
     private JettyServerHandler() {
         super();
@@ -47,7 +53,11 @@ public class JettyServerHandler {
     public static JettyServerHandler getInstance() {
         if (jettyServerHandler == null) {
             jettyServerHandler = new JettyServerHandler();
+            // Once the server started handler collection becomes immutable.
+            // We are using "true" here to keep it mutable
+            contexts = new HandlerCollection(true);
         }
+        
         return jettyServerHandler;
     }
 
@@ -122,9 +132,9 @@ public class JettyServerHandler {
         // Context path where servlets are hosted
         ServletContextHandler wsContext = new ServletContextHandler();
         wsContext.setContextPath("/servlet");
-
-        ContextHandlerCollection contexts = new ContextHandlerCollection();
-        contexts.setHandlers(new Handler[] { context, wsContext });
+        
+        contexts.addHandler(wsContext);
+        contexts.addHandler(context);
 
         server.setHandler(contexts);
         // All the static web page requests are handled through DefaultServlet

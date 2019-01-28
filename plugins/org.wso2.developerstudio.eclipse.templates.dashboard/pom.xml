@@ -27,12 +27,12 @@
 		<dependency>
 			<groupId>org.eclipse.jetty</groupId>
 			<artifactId>jetty-server</artifactId>
-			<version>9.4.3.v20170317</version>
+			<version>9.4.14.v20181114</version>
 		</dependency>
 		<dependency>
 			<groupId>org.eclipse.jetty</groupId>
 			<artifactId>jetty-servlet</artifactId>
-			<version>9.4.3.v20170317</version>
+			<version>9.4.14.v20181114</version>
 		</dependency>
 	</dependencies>
 </project>

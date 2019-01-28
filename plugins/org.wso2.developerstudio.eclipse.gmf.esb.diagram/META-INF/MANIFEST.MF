@@ -15,6 +15,7 @@ Export-Package: org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom,
  org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.export,
  org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.perspective,
  org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.provider,
+ org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.launch,
  org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts,
  org.wso2.developerstudio.eclipse.gmf.esb.diagram.part,
  org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers,
@@ -59,7 +60,8 @@ Require-Bundle: org.eclipse.core.runtime,
  org.wso2.developerstudio.eclipse.platform.ui;bundle-version="[4.1.0,7.0.0)",
  org.wso2.developerstudio.eclipse.kernel.libraries;bundle-version="[4.1.0,7.0.0)",
  org.wso2.developerstudio.eclipse.project.extensions;bundle-version="[6.5.0,7.0.0)",
- org.eclipse.papyrus.infra.gmfdiag.css
+ org.eclipse.papyrus.infra.gmfdiag.css,
+ org.wso2.developerstudio.eclipse.carbonserver44microei;bundle-version="[6.5.0,7.0.0)"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Eclipse-LazyStart: true
@@ -80,6 +82,8 @@ Import-Package: net.sf.saxon.s9api,
  org.wso2.developerstudio.eclipse.capp.core.model;version="[6.0.0,7.0.0)",
  org.wso2.developerstudio.eclipse.capp.maven;version="[6.0.0,7.0.0)",
  org.wso2.developerstudio.eclipse.capp.maven.utils;version="[6.0.0,7.0.0)",
+ org.wso2.developerstudio.eclipse.carbonserver44microei.register.product.servers;version="[6.0.0,7.0.0)",
+ org.wso2.developerstudio.eclipse.carbonserver44microei.wizard;version="[6.0.0,7.0.0)",
  org.wso2.developerstudio.eclipse.esb.core,
  org.wso2.developerstudio.eclipse.esb.core.interfaces,
  org.wso2.developerstudio.eclipse.esb.core.utils,

@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.net.UnknownHostException;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.IESBDebugger;
@@ -56,7 +57,7 @@ public class ESBDebuggerInterface implements IESBDebuggerInterface {
 
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
-    public ESBDebuggerInterface(int commandPort, int eventPort, String hostName) throws IOException {
+    public ESBDebuggerInterface(int commandPort, int eventPort, String hostName) throws IOException, InterruptedException {
         setRequestSocket(commandPort, hostName);
         log.info("Socket created for command channel : " + hostName + ":" + commandPort);
         setEventSocket(eventPort, hostName);
@@ -184,8 +185,8 @@ public class ESBDebuggerInterface implements IESBDebuggerInterface {
     }
 
     @Override
-    public void setRequestSocket(int commandPort, String hostName) throws IOException {
-        this.requestSocket = new Socket(hostName, commandPort);
+    public void setRequestSocket(int commandPort, String hostName) throws IOException, InterruptedException {
+        this.requestSocket = createSocketWithPolling(hostName, commandPort);
     }
 
     @Override
@@ -199,8 +200,8 @@ public class ESBDebuggerInterface implements IESBDebuggerInterface {
     }
 
     @Override
-    public void setEventSocket(int eventPort, String hostName) throws IOException {
-        this.eventSocket = new Socket(hostName, eventPort);
+    public void setEventSocket(int eventPort, String hostName) throws IOException, InterruptedException {
+        this.eventSocket = createSocketWithPolling(hostName, eventPort);
     }
 
     @Override
@@ -227,5 +228,24 @@ public class ESBDebuggerInterface implements IESBDebuggerInterface {
     public ChannelEventDispatcher getEventDispatcher() {
         return eventDispatcher;
     }
+
+	private Socket createSocketWithPolling(String host, int port)
+			throws UnknownHostException, IOException, InterruptedException {
+		int MAX_TIME = 60000;
+		int INTERVAL = 100;
+		int time = 0;
+		while (time < MAX_TIME) {
+			try {
+				Socket socket = new Socket(host, port);
+				return socket;
+			} catch (IOException ignored) {
+				// Ignoring the exception since we are polling till the port opens from the
+				// server-side
+			}
+			Thread.sleep(INTERVAL);
+			time = time + INTERVAL;
+		}
+		return new Socket(host, port);
+	}
 
 }

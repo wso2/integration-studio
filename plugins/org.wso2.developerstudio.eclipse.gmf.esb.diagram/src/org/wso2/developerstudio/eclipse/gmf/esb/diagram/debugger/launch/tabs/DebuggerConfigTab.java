@@ -20,6 +20,8 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ES
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.DEFAULT_EVENT_PORT;
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.DEFAULT_HOST_NAME;
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.ESB_SERVER_LOCATION;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.DEBUG_PROFILE_INTERNAL_RUNNING_MODE;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.DEBUG_PROFILE_REMOTE_RUNNING_MODE;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -31,8 +33,11 @@ import org.eclipse.debug.ui.AbstractLaunchConfigurationTab;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
@@ -60,15 +65,17 @@ public class DebuggerConfigTab extends AbstractLaunchConfigurationTab {
     private Text commandPort;
     private Text eventPort;
     private Text hostName;
+    private Combo debugModeCombo;
     String hostNameString;
+    String debugModeString;
 
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
     /**
      * Initializes the launch configuration with default values for the tab.
      * <p>
-     * This method is called when a new launch configuration is created this method may be called before this tab's
-     * control is created.
+     * This method is called when a new launch configuration is created this method
+     * may be called before this tab's control is created.
      */
     @Override
     public void setDefaults(ILaunchConfigurationWorkingCopy configuration) {
@@ -83,14 +90,15 @@ public class DebuggerConfigTab extends AbstractLaunchConfigurationTab {
         configuration.setAttribute(Messages.DebuggerConfigTab_CommandPortLabel, DEFAULT_COMMAND_PORT);
         configuration.setAttribute(Messages.DebuggerConfigTab_EventPortLabel, DEFAULT_EVENT_PORT);
         configuration.setAttribute(Messages.DebuggerConfigTab_ServerHostName, hostNameString);
+        configuration.setAttribute(Messages.DebuggerConfigTab_DebuggerMode, DEBUG_PROFILE_INTERNAL_RUNNING_MODE);
     }
 
     /**
      * Initializes this tab's controls with values from the given launch
      * configuration.
      * <p>
-     * This method is called when a configuration is selected to view or edit, after this tab's control has been
-     * created.
+     * This method is called when a configuration is selected to view or edit, after
+     * this tab's control has been created.
      */
     @Override
     public void initializeFrom(ILaunchConfiguration launchConfig) {
@@ -107,6 +115,10 @@ public class DebuggerConfigTab extends AbstractLaunchConfigurationTab {
         eventPort.setText(tempConfigValue);
         tempConfigValue = getAttribute(launchConfig, Messages.DebuggerConfigTab_ServerHostName, hostNameString);
         hostName.setText(tempConfigValue);
+        debugModeString = getAttribute(launchConfig, Messages.DebuggerConfigTab_DebuggerMode,
+                DEBUG_PROFILE_INTERNAL_RUNNING_MODE);
+        debugModeCombo.setText(debugModeString);
+
     }
 
     /**
@@ -118,13 +130,16 @@ public class DebuggerConfigTab extends AbstractLaunchConfigurationTab {
         configuration.setAttribute(Messages.DebuggerConfigTab_CommandPortLabel, commandPort.getText().toString());
         configuration.setAttribute(Messages.DebuggerConfigTab_EventPortLabel, eventPort.getText().toString());
         configuration.setAttribute(Messages.DebuggerConfigTab_ServerHostName, hostName.getText().toString());
+        configuration.setAttribute(Messages.DebuggerConfigTab_DebuggerMode, debugModeCombo.getText().toString());
+
     }
 
     /**
-     * Returns whether this tab is in a valid state in the context of the
-     * specified launch configuration.
+     * Returns whether this tab is in a valid state in the context of the specified
+     * launch configuration.
      * <p>
-     * This information is typically used by the launch configuration dialog to decide when it is okay to launch.
+     * This information is typically used by the launch configuration dialog to
+     * decide when it is okay to launch.
      * 
      * @return boolean Whether this tab is in a valid state
      */
@@ -152,8 +167,8 @@ public class DebuggerConfigTab extends AbstractLaunchConfigurationTab {
     }
 
     /**
-     * @return whether this tab is in a state that allows the launch
-     *         configuration whose values this tab is showing to be saved.
+     * @return whether this tab is in a state that allows the launch configuration
+     *         whose values this tab is showing to be saved.
      */
     @Override
     public boolean canSave() {
@@ -181,7 +196,8 @@ public class DebuggerConfigTab extends AbstractLaunchConfigurationTab {
      * given parent composite.
      * 
      * <p>
-     * This method is called once on tab creation, after setLaunchConfigurationDialog is called.
+     * This method is called once on tab creation, after
+     * setLaunchConfigurationDialog is called.
      */
     @Override
     public void createControl(Composite parent) {
@@ -228,6 +244,32 @@ public class DebuggerConfigTab extends AbstractLaunchConfigurationTab {
         hostName.addModifyListener(new ModifyListener() {
             @Override
             public void modifyText(ModifyEvent modifyEvent) {
+                setDirty(true);
+                updateLaunchConfigurationDialog();
+            }
+        });
+
+        Group debugModeGroup = new Group(topControl, SWT.NONE);
+        debugModeGroup.setLayout(new GridLayout(2, false));
+        debugModeGroup.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+        debugModeGroup.setText(Messages.DebuggerConfigTab_DebuggerMode);
+
+        String[] availableDebugModes = new String[] { DEBUG_PROFILE_INTERNAL_RUNNING_MODE,
+                DEBUG_PROFILE_REMOTE_RUNNING_MODE };
+        // Create a drop-down Combo & Read only
+        debugModeCombo = new Combo(debugModeGroup, SWT.DROP_DOWN | SWT.READ_ONLY);
+        debugModeCombo.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+        debugModeCombo.setItems(availableDebugModes);
+        debugModeCombo.addSelectionListener(new SelectionListener() {
+
+            @Override
+            public void widgetSelected(SelectionEvent e) {
+                setDirty(true);
+                updateLaunchConfigurationDialog();
+            }
+
+            @Override
+            public void widgetDefaultSelected(SelectionEvent e) {
                 setDirty(true);
                 updateLaunchConfigurationDialog();
             }

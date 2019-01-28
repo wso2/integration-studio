@@ -82,7 +82,7 @@ public class ESBDebugger implements IESBDebugger, EventHandler {
 
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
-    public ESBDebugger(int commandPort, int eventPort, String hostName) throws IOException {
+    public ESBDebugger(int commandPort, int eventPort, String hostName) throws IOException, InterruptedException {
         this(new ESBDebuggerInterface(commandPort, eventPort, hostName));
     }
 

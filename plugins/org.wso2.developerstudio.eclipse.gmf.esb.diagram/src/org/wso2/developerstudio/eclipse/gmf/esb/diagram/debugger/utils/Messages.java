@@ -20,6 +20,7 @@ import org.eclipse.osgi.util.NLS;
 
 public class Messages extends NLS {
     private static final String BUNDLE_NAME = "org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.messages"; //$NON-NLS-1$
+    public static String DebuggerConfigTab_DebuggerMode;
     public static String AddPropertyToTableDialog_DialogDescription;
     public static String AddPropertyToTableDialog_DialogTitle;
     public static String AddPropertyToTableDialog_ShellTitle;

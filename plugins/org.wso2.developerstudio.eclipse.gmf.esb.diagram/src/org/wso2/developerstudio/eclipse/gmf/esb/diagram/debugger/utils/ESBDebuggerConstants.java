@@ -206,4 +206,6 @@ public class ESBDebuggerConstants {
     public static final String WIRE_LOG_VIEW_PRIMARY_ID = "org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.wirelog.view";
     public static final String WIRE_LOG_VIEW_SECONDARY_ID = "org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.wirelog.secondary";
 
+	public static final String DEBUG_PROFILE_INTERNAL_RUNNING_MODE = "Internal";
+	public static final String DEBUG_PROFILE_REMOTE_RUNNING_MODE = "Remote";
 }

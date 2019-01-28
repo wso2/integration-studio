@@ -256,7 +256,9 @@ public class FileDecorator extends LabelProvider implements ILightweightLabelDec
                 return false;
 
             } else {
-                iFile.deleteMarkers(null, false, 1);
+                // Remove the created markers for validation
+                iFile.deleteMarkers(CAPP_NOT_ALLOWED, false, 1);
+                iFile.deleteMarkers(SOURCE_VIEW_ERROR, false, 1);
 
             }
         } catch (CoreException e) {

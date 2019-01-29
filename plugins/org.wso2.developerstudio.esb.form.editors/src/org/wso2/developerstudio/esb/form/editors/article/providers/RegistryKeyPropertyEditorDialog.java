@@ -18,11 +18,13 @@ package org.wso2.developerstudio.esb.form.editors.article.providers;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
+import org.eclipse.emf.transaction.RecordingCommand;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.SWT;
@@ -242,9 +244,21 @@ public class RegistryKeyPropertyEditorDialog extends Dialog {
 		super.okPressed();
 	}
 	
-	private void saveConfiguration() {
+	protected void saveConfiguration() {
 		rkProperty.setKeyValue(rkTextField.getText());
 	}
+	
+   protected void saveConfigurationWithTransaction() {
+       TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(rkProperty);
+       domain.getCommandStack().execute(new RecordingCommand(domain) {
+
+           @Override
+           protected void doExecute() {
+               rkProperty.setKeyValue(rkTextField.getText());
+           }
+       });
+   }
+
 	
 	protected void openEmbeddedEntryBrowser() {
 		hide();

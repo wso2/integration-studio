@@ -6,6 +6,8 @@ package org.wso2.developerstudio.eclipse.gmf.esb.parts;
 // Start of user code for imports
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.Enumerator;
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 
 
 // End of user code
@@ -169,6 +171,20 @@ public interface AggregateMediatorPropertiesEditionPart {
 
 
 	/**
+	 * @return the enclosingElementProperty
+	 * 
+	 */
+	public String getEnclosingElementProperty();
+
+	/**
+	 * Defines a new enclosingElementProperty
+	 * @param newValue the new enclosingElementProperty to set
+	 * 
+	 */
+	public void setEnclosingElementProperty(String newValue);
+
+
+	/**
 	 * @return the sequenceType
 	 * 
 	 */
@@ -189,22 +205,33 @@ public interface AggregateMediatorPropertiesEditionPart {
 	public void setSequenceType(Enumerator newValue);
 
 
-	/**
-	 * @return the enclosingElementProperty
-	 * 
-	 */
-	public String getEnclosingElementProperty();
-
-	/**
-	 * Defines a new enclosingElementProperty
-	 * @param newValue the new enclosingElementProperty to set
-	 * 
-	 */
-	public void setEnclosingElementProperty(String newValue);
 
 
-
-
+	// Start of user code for correlationExpression specific getters and setters declaration
+	public NamespacedProperty getCorrelationExpression();
+    
+	public void setCorrelationExpression(NamespacedProperty nameSpacedProperty);
+	// End of user code
+	// Start of user code for completionMinMessages specific getters and setters declaration
+	public NamespacedProperty getCompletionMinMessagesExpression();
+	    
+	public void setCompletionMinMessagesExpression(NamespacedProperty nameSpacedProperty);
+	// End of user code
+	// Start of user code for completionMaxMessages specific getters and setters declaration
+	public NamespacedProperty getCompletionMaxMessagesExpression();
+       
+	public void setCompletionMaxMessagesExpression(NamespacedProperty nameSpacedProperty);
+	// End of user code
+	// Start of user code for aggregationExpression specific getters and setters declaration
+	public NamespacedProperty getAggregationExpression();
+    
+    public void setAggregationExpression(NamespacedProperty nameSpacedProperty);
+	// End of user code
+	// Start of user code for sequenceKey specific getters and setters declaration
+    public RegistryKeyProperty getSequenceKey();
+    
+    public void setSequenceKey(RegistryKeyProperty registryKeyProperty);
+	// End of user code
 
 	/**
 	 * Returns the internationalized title text.

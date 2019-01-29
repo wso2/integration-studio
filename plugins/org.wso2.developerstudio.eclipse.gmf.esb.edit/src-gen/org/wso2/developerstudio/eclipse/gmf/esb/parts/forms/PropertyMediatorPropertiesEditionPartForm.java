@@ -70,6 +70,10 @@ import org.eclipse.ui.forms.widgets.Section;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.PropertyAction;
+import org.wso2.developerstudio.eclipse.gmf.esb.PropertyDataType;
+import org.wso2.developerstudio.eclipse.gmf.esb.PropertyName;
+import org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.PropertyMediatorPropertiesEditionPart;
@@ -103,10 +107,20 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
 	// Start of user code  for valueExpression widgets declarations
 	protected NamespacedProperty valueExpression;
 	protected Text valueExpressionText;
-	protected Label valueLabel;
-	protected Label expressionLabel;
-	protected Control expressionHelpButton;
-    protected Control valueHelpButton;
+	protected Control[] propertyNameElements;
+	protected Control[] propertyDataTypeElements;
+	protected Control[] propertyActionElements;
+	protected Control[] propertyScopeElements;
+	protected Control[] valueTypeElements;
+	protected Control[] valueElements;
+	protected Control[] expressionElements;
+	protected Control[] booleanElements;
+	protected Control[] omTextElements;
+	protected Control[] valueStringPatternElements;
+	protected Control[] valueStringCapturingGroupElements;
+    protected Control[] newPropertyNameElements;
+    protected Control[] valueExpressionElements;
+    protected Composite propertiesGroup;
 	// End of user code
 
 
@@ -114,11 +128,10 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
 
 	/**
 	 * For {@link ISection} use only.
+	 * 
 	 */
 	public PropertyMediatorPropertiesEditionPartForm() {
 	    super();
-	    if(valueExpression == null)
-	        valueExpression = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
 	}
 
 	/**
@@ -128,10 +141,7 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
 	 */
 	
 	public PropertyMediatorPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
-		super(editionComponent);
-		if(valueExpression == null)
-		    valueExpression = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
-        
+		super(editionComponent);        
 	}
 
 	/**
@@ -231,11 +241,12 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
 				if(key == EsbViewsRepository.PropertyMediator.Properties.valueExpression) {
 				    return createValueExpressionWidget(widgetFactory, parent);
 				}
-				// End of user code
+		        // End of user code
 				return parent;
 			}
 		};
 		composer.compose(view);
+        
 	}
 	/**
 	 * @generated NOT
@@ -244,7 +255,7 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
 		GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
 		propertiesSectionData.horizontalSpan = 3;
 		parent.setLayoutData(propertiesSectionData);
-		Composite propertiesGroup = widgetFactory.createComposite(parent);
+		propertiesGroup = widgetFactory.createComposite(parent);
 		GridLayout propertiesGroupLayout = new GridLayout();
 		propertiesGroupLayout.makeColumnsEqualWidth = true;
 		propertiesGroupLayout.numColumns = 3;
@@ -252,9 +263,11 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
 		return propertiesGroup;
 	}
 
-	
+	/**
+     * @generated NOT
+     */
 	protected Composite createPropertyNameEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EsbViewsRepository.PropertyMediator.Properties.propertyName, EsbMessages.PropertyMediatorPropertiesEditionPart_PropertyNameLabel);
+		Control propertyNameLabel = createDescription(parent, EsbViewsRepository.PropertyMediator.Properties.propertyName, EsbMessages.PropertyMediatorPropertiesEditionPart_PropertyNameLabel);
 		propertyName = new EMFComboViewer(parent);
 		propertyName.setContentProvider(new ArrayContentProvider());
 		propertyName.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -275,16 +288,30 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
 
 		});
 		propertyName.setID(EsbViewsRepository.PropertyMediator.Properties.propertyName);
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PropertyMediator.Properties.propertyName, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		Control propertyNameHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PropertyMediator.Properties.propertyName, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createPropertyNameEMFComboViewer
-
+		propertyNameElements = new Control[] {propertyNameLabel, propertyName.getCombo(), propertyNameHelp};
+		propertyName.addSelectionChangedListener(new ISelectionChangedListener() {
+			        
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+             *  
+             */
+            public void selectionChanged(SelectionChangedEvent event) {
+                validate();
+            }
+        });
 		// End of user code
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */	
 	protected Composite createPropertyDataTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EsbViewsRepository.PropertyMediator.Properties.propertyDataType, EsbMessages.PropertyMediatorPropertiesEditionPart_PropertyDataTypeLabel);
+		Control propertyDataTypeLabel = createDescription(parent, EsbViewsRepository.PropertyMediator.Properties.propertyDataType, EsbMessages.PropertyMediatorPropertiesEditionPart_PropertyDataTypeLabel);
 		propertyDataType = new EMFComboViewer(parent);
 		propertyDataType.setContentProvider(new ArrayContentProvider());
 		propertyDataType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -305,16 +332,30 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
 
 		});
 		propertyDataType.setID(EsbViewsRepository.PropertyMediator.Properties.propertyDataType);
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PropertyMediator.Properties.propertyDataType, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		Control propertyDataTypeHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PropertyMediator.Properties.propertyDataType, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createPropertyDataTypeEMFComboViewer
+		propertyDataTypeElements = new Control[] {propertyDataTypeLabel, propertyDataType.getCombo(), propertyDataTypeHelp};
+		propertyDataType.addSelectionChangedListener(new ISelectionChangedListener() {
 
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+             *  
+             */
+            public void selectionChanged(SelectionChangedEvent event) {
+                validate();
+            }
+        });
 		// End of user code
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */	
 	protected Composite createPropertyActionEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EsbViewsRepository.PropertyMediator.Properties.propertyAction, EsbMessages.PropertyMediatorPropertiesEditionPart_PropertyActionLabel);
+		Control propertyActionLabel = createDescription(parent, EsbViewsRepository.PropertyMediator.Properties.propertyAction, EsbMessages.PropertyMediatorPropertiesEditionPart_PropertyActionLabel);
 		propertyAction = new EMFComboViewer(parent);
 		propertyAction.setContentProvider(new ArrayContentProvider());
 		propertyAction.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -335,16 +376,31 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
 
 		});
 		propertyAction.setID(EsbViewsRepository.PropertyMediator.Properties.propertyAction);
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PropertyMediator.Properties.propertyAction, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		Control propertyActionHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PropertyMediator.Properties.propertyAction, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createPropertyActionEMFComboViewer
+		propertyActionElements = new Control[] {propertyActionLabel, propertyAction.getCombo(), propertyActionHelp};
+		propertyAction.addSelectionChangedListener(new ISelectionChangedListener() {
 
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+             *  
+             */
+            public void selectionChanged(SelectionChangedEvent event) {
+               validate();
+            }
+
+        });
 		// End of user code
 		return parent;
 	}
 
-	
+	/**
+     * @generated NOT
+     */
 	protected Composite createPropertyScopeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EsbViewsRepository.PropertyMediator.Properties.propertyScope, EsbMessages.PropertyMediatorPropertiesEditionPart_PropertyScopeLabel);
+		Control propertyScopeLabel = createDescription(parent, EsbViewsRepository.PropertyMediator.Properties.propertyScope, EsbMessages.PropertyMediatorPropertiesEditionPart_PropertyScopeLabel);
 		propertyScope = new EMFComboViewer(parent);
 		propertyScope.setContentProvider(new ArrayContentProvider());
 		propertyScope.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -365,9 +421,22 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
 
 		});
 		propertyScope.setID(EsbViewsRepository.PropertyMediator.Properties.propertyScope);
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PropertyMediator.Properties.propertyScope, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		Control propertyScopeHelp =FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PropertyMediator.Properties.propertyScope, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createPropertyScopeEMFComboViewer
+		propertyScopeElements = new Control[] {propertyScopeLabel, propertyScope.getCombo(), propertyScopeHelp};
+		propertyScope.addSelectionChangedListener(new ISelectionChangedListener() {
 
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+             *  
+             */
+            public void selectionChanged(SelectionChangedEvent event) {
+               validate();
+            }
+
+        });
 		// End of user code
 		return parent;
 	}
@@ -376,7 +445,7 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
      * @generated NOT
      */	
 	protected Composite createValueTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EsbViewsRepository.PropertyMediator.Properties.valueType, EsbMessages.PropertyMediatorPropertiesEditionPart_ValueTypeLabel);
+		Control valueTypeLabel = createDescription(parent, EsbViewsRepository.PropertyMediator.Properties.valueType, EsbMessages.PropertyMediatorPropertiesEditionPart_ValueTypeLabel);
 		valueType = new EMFComboViewer(parent);
 		valueType.setContentProvider(new ArrayContentProvider());
 		valueType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -397,29 +466,25 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
 
 		});
 		valueType.setID(EsbViewsRepository.PropertyMediator.Properties.valueType);
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PropertyMediator.Properties.valueType, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		Control valueTypeHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PropertyMediator.Properties.valueType, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createValueTypeEMFComboViewer
-		        valueType.addSelectionChangedListener(new ISelectionChangedListener() {
+		valueTypeElements  = new Control[] {valueTypeLabel, valueType.getCombo(), valueTypeHelp};
+        valueType.addSelectionChangedListener(new ISelectionChangedListener() {
 
-		                public void selectionChanged(SelectionChangedEvent event) {
-		                    view.getChildren();
-		                    if (getValueType().getValue() == 1) {
-		                        hideEntry(new Control[]{value, valueLabel, valueHelpButton}, false);
-		                        showEntry(new Control[] {expression, expressionLabel, expressionHelpButton}, true);
-		                    } else {
-                                showEntry(new Control[]{value, valueLabel, valueHelpButton}, false);
-                                hideEntry(new Control[] {expression, expressionLabel, expressionHelpButton}, true);
-		                    }
-		                }
-		            });
+            public void selectionChanged(SelectionChangedEvent event) {
+                validate();
+            }
+        });
 
 		// End of user code
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */ 
 	protected Composite createValueText(FormToolkit widgetFactory, Composite parent) {
-	    valueLabel = createDescription(parent, EsbViewsRepository.PropertyMediator.Properties.value, EsbMessages.PropertyMediatorPropertiesEditionPart_ValueLabel);
+	    Control valueLabel = createDescription(parent, EsbViewsRepository.PropertyMediator.Properties.value, EsbMessages.PropertyMediatorPropertiesEditionPart_ValueLabel);
 		value = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		value.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -478,16 +543,18 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
 		});
 		EditingUtils.setID(value, EsbViewsRepository.PropertyMediator.Properties.value);
 		EditingUtils.setEEFtype(value, "eef::Text"); //$NON-NLS-1$
-	    valueHelpButton = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PropertyMediator.Properties.value, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+	    Control valueHelpButton = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PropertyMediator.Properties.value, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createValueText
-
+	    valueElements = new Control[] {valueLabel, value, valueHelpButton};
 		// End of user code
 		return parent;
 	}
 
-	
+	/**
+     * @generated NOT
+     */
 	protected Composite createExpressionText(FormToolkit widgetFactory, Composite parent) {
-	    expressionLabel = createDescription(parent, EsbViewsRepository.PropertyMediator.Properties.expression, EsbMessages.PropertyMediatorPropertiesEditionPart_ExpressionLabel);
+	    Control expressionLabel = createDescription(parent, EsbViewsRepository.PropertyMediator.Properties.expression, EsbMessages.PropertyMediatorPropertiesEditionPart_ExpressionLabel);
 		expression = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		expression.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -546,14 +613,16 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
 		});
 		EditingUtils.setID(expression, EsbViewsRepository.PropertyMediator.Properties.expression);
 		EditingUtils.setEEFtype(expression, "eef::Text"); //$NON-NLS-1$
-		expressionHelpButton = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PropertyMediator.Properties.expression, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		Control expressionHelpButton = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PropertyMediator.Properties.expression, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createExpressionText
-
+		expressionElements = new Control[] {expressionLabel, expression, expressionHelpButton};
 		// End of user code
 		return parent;
 	}
 
-	
+	/**
+     * @generated NOT
+     */
 	protected Composite createNamespacePrefixText(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.PropertyMediator.Properties.namespacePrefix, EsbMessages.PropertyMediatorPropertiesEditionPart_NamespacePrefixLabel);
 		namespacePrefix = widgetFactory.createText(parent, ""); //$NON-NLS-1$
@@ -621,7 +690,9 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
 		return parent;
 	}
 
-	
+	/**
+     * @generated NOT
+     */
 	protected Composite createNamespaceText(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.PropertyMediator.Properties.namespace, EsbMessages.PropertyMediatorPropertiesEditionPart_NamespaceLabel);
 		namespace = widgetFactory.createText(parent, ""); //$NON-NLS-1$
@@ -689,7 +760,9 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
 		return parent;
 	}
 
-	
+	/**
+     * @generated NOT
+     */
 	protected Composite createBoolean_Checkbox(FormToolkit widgetFactory, Composite parent) {
 		boolean_ = widgetFactory.createButton(parent, getDescription(EsbViewsRepository.PropertyMediator.Properties.boolean_, EsbMessages.PropertyMediatorPropertiesEditionPart_Boolean_Label), SWT.CHECK);
 		boolean_.addSelectionListener(new SelectionAdapter() {
@@ -711,16 +784,18 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
 		boolean_.setLayoutData(boolean_Data);
 		EditingUtils.setID(boolean_, EsbViewsRepository.PropertyMediator.Properties.boolean_);
 		EditingUtils.setEEFtype(boolean_, "eef::Checkbox"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PropertyMediator.Properties.boolean_, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		Control booleanHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PropertyMediator.Properties.boolean_, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createBoolean_Checkbox
-
+		booleanElements = new Control[] {boolean_, booleanHelp};
 		// End of user code
 		return parent;
 	}
 
-	
+	/**
+     * @generated NOT
+     */
 	protected Composite createOMText(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EsbViewsRepository.PropertyMediator.Properties.oM, EsbMessages.PropertyMediatorPropertiesEditionPart_OMLabel);
+		Control omTextLabel = createDescription(parent, EsbViewsRepository.PropertyMediator.Properties.oM, EsbMessages.PropertyMediatorPropertiesEditionPart_OMLabel);
 		oM = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		oM.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -779,16 +854,18 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
 		});
 		EditingUtils.setID(oM, EsbViewsRepository.PropertyMediator.Properties.oM);
 		EditingUtils.setEEFtype(oM, "eef::Text"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PropertyMediator.Properties.oM, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		Control omHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PropertyMediator.Properties.oM, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createOMText
-
+		omTextElements = new Control[] {omTextLabel, oM, omHelp};
 		// End of user code
 		return parent;
 	}
 
-	
+	/**
+     * @generated NOT
+     */
 	protected Composite createValueStringPatternText(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EsbViewsRepository.PropertyMediator.Properties.valueStringPattern, EsbMessages.PropertyMediatorPropertiesEditionPart_ValueStringPatternLabel);
+		Control valueStringPatternLabel = createDescription(parent, EsbViewsRepository.PropertyMediator.Properties.valueStringPattern, EsbMessages.PropertyMediatorPropertiesEditionPart_ValueStringPatternLabel);
 		valueStringPattern = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		valueStringPattern.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -847,16 +924,18 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
 		});
 		EditingUtils.setID(valueStringPattern, EsbViewsRepository.PropertyMediator.Properties.valueStringPattern);
 		EditingUtils.setEEFtype(valueStringPattern, "eef::Text"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PropertyMediator.Properties.valueStringPattern, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		Control valueStringPatternHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PropertyMediator.Properties.valueStringPattern, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createValueStringPatternText
-
+		valueStringPatternElements = new Control[] {valueStringPatternLabel, valueStringPattern, valueStringPatternHelp};
 		// End of user code
 		return parent;
 	}
 
-	
+	/**
+     * @generated NOT
+     */
 	protected Composite createValueStringCapturingGroupText(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EsbViewsRepository.PropertyMediator.Properties.valueStringCapturingGroup, EsbMessages.PropertyMediatorPropertiesEditionPart_ValueStringCapturingGroupLabel);
+		Control valueStringCapturingGroupLabel = createDescription(parent, EsbViewsRepository.PropertyMediator.Properties.valueStringCapturingGroup, EsbMessages.PropertyMediatorPropertiesEditionPart_ValueStringCapturingGroupLabel);
 		valueStringCapturingGroup = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		valueStringCapturingGroup.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -915,16 +994,18 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
 		});
 		EditingUtils.setID(valueStringCapturingGroup, EsbViewsRepository.PropertyMediator.Properties.valueStringCapturingGroup);
 		EditingUtils.setEEFtype(valueStringCapturingGroup, "eef::Text"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PropertyMediator.Properties.valueStringCapturingGroup, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		Control valueStringCapturingGroupHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PropertyMediator.Properties.valueStringCapturingGroup, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createValueStringCapturingGroupText
-
+		valueStringCapturingGroupElements = new Control[] {valueStringCapturingGroupLabel, valueStringCapturingGroup, valueStringCapturingGroupHelp};
 		// End of user code
 		return parent;
 	}
 
-	
+	/**
+     * @generated NOT
+     */
 	protected Composite createNewPropertyNameText(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EsbViewsRepository.PropertyMediator.Properties.newPropertyName, EsbMessages.PropertyMediatorPropertiesEditionPart_NewPropertyNameLabel);
+		Control newPropertyNameLabel = createDescription(parent, EsbViewsRepository.PropertyMediator.Properties.newPropertyName, EsbMessages.PropertyMediatorPropertiesEditionPart_NewPropertyNameLabel);
 		newPropertyName = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		newPropertyName.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -983,9 +1064,9 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
 		});
 		EditingUtils.setID(newPropertyName, EsbViewsRepository.PropertyMediator.Properties.newPropertyName);
 		EditingUtils.setEEFtype(newPropertyName, "eef::Text"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PropertyMediator.Properties.newPropertyName, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		Control newPropertyNameHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PropertyMediator.Properties.newPropertyName, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createNewPropertyNameText
-
+		newPropertyNameElements = new Control[] {newPropertyNameLabel, newPropertyName, newPropertyNameHelp};
 		// End of user code
 		return parent;
 	}
@@ -999,7 +1080,6 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-		event.getNewValue();
 		// End of user code
 	}
 
@@ -1540,8 +1620,16 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
     @Override
     public void setValueExpression(
             NamespacedProperty nameSpacedProperty) {
-        valueExpressionText.setText(nameSpacedProperty.getPropertyValue());
-        valueExpression = nameSpacedProperty;
+        if(nameSpacedProperty != null) {
+            valueExpressionText.setText(nameSpacedProperty.getPropertyValue());
+            valueExpression = nameSpacedProperty;
+        }
+    }
+    
+    @Override
+    public void refresh() {
+        super.refresh();
+        validate();
     }
 	// End of user code
 
@@ -1557,8 +1645,11 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
 
 	// Start of user code additional methods
 	protected Composite createValueExpressionWidget(FormToolkit widgetFactory, Composite parent) {
-	    createDescription(parent, EsbViewsRepository.PropertyMediator.Properties.valueExpression, EsbMessages.PropertyMediatorPropertiesEditionPart_ValueExpressionLabel);
+	    Control valueExpressionLabel = createDescription(parent, EsbViewsRepository.PropertyMediator.Properties.valueExpression, EsbMessages.PropertyMediatorPropertiesEditionPart_ValueExpressionLabel);
 	    widgetFactory.paintBordersFor(parent);
+        if(valueExpression == null) {
+            valueExpression = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
+        } 
 	    String initValueExpression = valueExpression.getPropertyValue().isEmpty() ? "/default/expression" : valueExpression.getPropertyValue();
 	    valueExpressionText = widgetFactory.createText(parent, initValueExpression);
 	    valueExpressionText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
@@ -1589,29 +1680,66 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
         });
         EditingUtils.setID(valueExpressionText, EsbViewsRepository.PropertyMediator.Properties.valueExpression);
         EditingUtils.setEEFtype(valueExpressionText, "eef::Text");
-        FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PropertyMediator.Properties.valueExpression, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-        
-/*	    Button button = new Button(parent, SWT.PUSH);
-        button.setLayoutData(new GridData(SWT.BEGINNING, SWT.CENTER, false, false));
-        button.setText("Open NameSpaced Editor");
-        button.addSelectionListener(new SelectionAdapter() {
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL, valueExpression);
-                nspd.open();
-                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertyMediatorPropertiesEditionPartForm.this, EsbViewsRepository.PropertyMediator.Properties.valueExpression, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getValueExpression()));
-                
-            }
-        });    */
+        Control valueExpressionHelp =FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PropertyMediator.Properties.valueExpression, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+        valueExpressionElements = new Control[] {valueExpressionLabel, valueExpressionText, valueExpressionHelp};
         return parent;
 	}
+	
+	public void validate() {
+	    clearElements();
+	    showEntry(propertyNameElements, false);
+	    //System.out.println("ADoooooooo " + getPropertyName().getName());
+	    if(getPropertyName().getName().equals(PropertyName.NEW_PROPERTY_NAME.getName())) {
+	        showEntry(newPropertyNameElements, false);
+	    }
+	    showEntry(propertyActionElements, false);
+	    if(getPropertyAction().getName().equals(PropertyAction.SET.getName())) {
+	        showEntry(valueTypeElements, false);
+	        showEntry(propertyDataTypeElements, false);
+	        if(getValueType().getName().equals(PropertyValueType.LITERAL.getName())) {
+	            switch (getPropertyDataType().getName()) {
+                    case "STRING": {
+                        showEntry(valueElements, false);
+                        showEntry(valueStringPatternElements, false);
+                        showEntry(valueStringCapturingGroupElements, false);
+                        break;
+                    }
+                    default: {
+                        showEntry(valueElements, false);
+                    }
+	            }
+	        } else {
+	            showEntry(valueExpressionElements, false);
+                switch (getPropertyDataType().getName()) {
+                case "STRING": {
+                    showEntry(valueStringPatternElements, false);
+                    showEntry(valueStringCapturingGroupElements, false);
+                    break;
+                }
+                default:
+                    break;
+                }
+	        }
+	    }
+	    showEntry(propertyScopeElements, false);
+        view.layout(true,true);
+        view.pack();
+	}
+	
+	public void clearElements() {
+	    hideEntry(propertiesGroup.getChildren(), true);
+	}
+	
+	
 	
 	public void hideEntry(Control controls[], boolean layout) {
 	    //view.getChildren();
 	    for(Control control : controls) {
 	        //null check and type check
-	        ((GridData)control.getLayoutData()).exclude=true;
-	        control.setVisible(false);
+	        if(control.getLayoutData()!= null && control.getLayoutData() instanceof GridData) {
+    	        ((GridData)control.getLayoutData()).exclude=true;
+    	        control.setVisible(false);
+	        }
 	    }
 	    if(layout) {
 	        view.layout(true,true);

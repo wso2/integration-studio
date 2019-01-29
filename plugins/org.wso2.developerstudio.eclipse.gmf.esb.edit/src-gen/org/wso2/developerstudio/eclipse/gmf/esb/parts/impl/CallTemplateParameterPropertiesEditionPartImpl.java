@@ -29,6 +29,7 @@ import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 
 import org.eclipse.emf.eef.runtime.ui.widgets.EMFComboViewer;
+import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 
 import org.eclipse.jface.viewers.ArrayContentProvider;
@@ -42,17 +43,22 @@ import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
-
+import org.eclipse.swt.events.MouseEvent;
+import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
-
+import org.eclipse.ui.forms.widgets.FormToolkit;
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.CallTemplateParameterPropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.parts.forms.CallMediatorPropertiesEditionPartForm;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFNameSpacedPropertyEditorDialog;
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
 
 // End of user code
@@ -66,6 +72,16 @@ public class CallTemplateParameterPropertiesEditionPartImpl extends CompositePro
 	protected Text parameterName;
 	protected EMFComboViewer templateParameterType;
 	protected Text parameterValue;
+	// Start of user code  for parameterExpression widgets declarations
+    protected NamespacedProperty parameterExpression;
+    protected Text parameterExpressionText;
+    protected Control[] parameterValueElements;
+    protected Control[] parameterExpressionElements;
+    protected Control[] parameterTypeElements;
+    protected Control[] parameterNameElements;
+    protected Group propertiesGroup;
+	// End of user code
+
 
 
 
@@ -107,6 +123,7 @@ public class CallTemplateParameterPropertiesEditionPartImpl extends CompositePro
 		propertiesStep.addStep(EsbViewsRepository.CallTemplateParameter.Properties.parameterName);
 		propertiesStep.addStep(EsbViewsRepository.CallTemplateParameter.Properties.templateParameterType);
 		propertiesStep.addStep(EsbViewsRepository.CallTemplateParameter.Properties.parameterValue);
+		propertiesStep.addStep(EsbViewsRepository.CallTemplateParameter.Properties.parameterExpression);
 		
 		
 		composer = new PartComposer(callTemplateParameterStep) {
@@ -125,17 +142,23 @@ public class CallTemplateParameterPropertiesEditionPartImpl extends CompositePro
 				if (key == EsbViewsRepository.CallTemplateParameter.Properties.parameterValue) {
 					return createParameterValueText(parent);
 				}
+				// Start of user code for parameterExpression addToPart creation
+                if (key == EsbViewsRepository.CallTemplateParameter.Properties.parameterExpression) {
+                    return createParameterExpressionWidget(parent);
+                }
+				// End of user code
 				return parent;
 			}
 		};
 		composer.compose(view);
 	}
 
-	/**
-	 * 
-	 */
+
+    /**
+     * @generated NOT
+     */
 	protected Composite createPropertiesGroup(Composite parent) {
-		Group propertiesGroup = new Group(parent, SWT.NONE);
+		propertiesGroup = new Group(parent, SWT.NONE);
 		propertiesGroup.setText(EsbMessages.CallTemplateParameterPropertiesEditionPart_PropertiesGroupLabel);
 		GridData propertiesGroupData = new GridData(GridData.FILL_HORIZONTAL);
 		propertiesGroupData.horizontalSpan = 3;
@@ -146,9 +169,11 @@ public class CallTemplateParameterPropertiesEditionPartImpl extends CompositePro
 		return propertiesGroup;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createParameterNameText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.CallTemplateParameter.Properties.parameterName, EsbMessages.CallTemplateParameterPropertiesEditionPart_ParameterNameLabel);
+		Control parameterNameLabel = createDescription(parent, EsbViewsRepository.CallTemplateParameter.Properties.parameterName, EsbMessages.CallTemplateParameterPropertiesEditionPart_ParameterNameLabel);
 		parameterName = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData parameterNameData = new GridData(GridData.FILL_HORIZONTAL);
 		parameterName.setLayoutData(parameterNameData);
@@ -188,16 +213,18 @@ public class CallTemplateParameterPropertiesEditionPartImpl extends CompositePro
 		});
 		EditingUtils.setID(parameterName, EsbViewsRepository.CallTemplateParameter.Properties.parameterName);
 		EditingUtils.setEEFtype(parameterName, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.CallTemplateParameter.Properties.parameterName, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		Control parameterNameHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.CallTemplateParameter.Properties.parameterName, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createParameterNameText
-
+		parameterNameElements = new Control[] {parameterNameLabel, parameterName, parameterNameHelp};        
 		// End of user code
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createTemplateParameterTypeEMFComboViewer(Composite parent) {
-		createDescription(parent, EsbViewsRepository.CallTemplateParameter.Properties.templateParameterType, EsbMessages.CallTemplateParameterPropertiesEditionPart_TemplateParameterTypeLabel);
+		Control parameterTypeLabel = createDescription(parent, EsbViewsRepository.CallTemplateParameter.Properties.templateParameterType, EsbMessages.CallTemplateParameterPropertiesEditionPart_TemplateParameterTypeLabel);
 		templateParameterType = new EMFComboViewer(parent);
 		templateParameterType.setContentProvider(new ArrayContentProvider());
 		templateParameterType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -218,16 +245,30 @@ public class CallTemplateParameterPropertiesEditionPartImpl extends CompositePro
 
 		});
 		templateParameterType.setID(EsbViewsRepository.CallTemplateParameter.Properties.templateParameterType);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.CallTemplateParameter.Properties.templateParameterType, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		Control parameterTypeHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.CallTemplateParameter.Properties.templateParameterType, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createTemplateParameterTypeEMFComboViewer
-
+		parameterTypeElements = new Control[] {parameterTypeLabel, templateParameterType.getCombo(), parameterTypeHelp};        
+		templateParameterType.addSelectionChangedListener(new ISelectionChangedListener() {
+	            
+	            /**
+	             * {@inheritDoc}
+	             * 
+	             * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+	             *  
+	             */
+	            public void selectionChanged(SelectionChangedEvent event) {
+	                validate();
+	            }
+	        });
 		// End of user code
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createParameterValueText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.CallTemplateParameter.Properties.parameterValue, EsbMessages.CallTemplateParameterPropertiesEditionPart_ParameterValueLabel);
+		Control parameterValueLabel = createDescription(parent, EsbViewsRepository.CallTemplateParameter.Properties.parameterValue, EsbMessages.CallTemplateParameterPropertiesEditionPart_ParameterValueLabel);
 		parameterValue = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData parameterValueData = new GridData(GridData.FILL_HORIZONTAL);
 		parameterValue.setLayoutData(parameterValueData);
@@ -267,9 +308,9 @@ public class CallTemplateParameterPropertiesEditionPartImpl extends CompositePro
 		});
 		EditingUtils.setID(parameterValue, EsbViewsRepository.CallTemplateParameter.Properties.parameterValue);
 		EditingUtils.setEEFtype(parameterValue, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.CallTemplateParameter.Properties.parameterValue, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		Control parameterValueHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.CallTemplateParameter.Properties.parameterValue, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createParameterValueText
-
+		parameterValueElements = new Control[] {parameterValueLabel, parameterValue, parameterValueHelp};
 		// End of user code
 		return parent;
 	}
@@ -403,6 +444,22 @@ public class CallTemplateParameterPropertiesEditionPartImpl extends CompositePro
 
 
 
+	// Start of user code for parameterExpression specific getters and setters implementation
+    @Override
+    public NamespacedProperty getParameterExpression() {
+        return parameterExpression;
+    }
+
+    @Override
+    public void setParameterExpression(NamespacedProperty nameSpacedProperty) {
+        if(nameSpacedProperty != null) {
+            parameterExpressionText.setText(nameSpacedProperty.getPropertyValue());
+            parameterExpression = nameSpacedProperty;
+        }  
+        
+    }
+	// End of user code
+
 	/**
 	 * {@inheritDoc}
 	 *
@@ -413,8 +470,102 @@ public class CallTemplateParameterPropertiesEditionPartImpl extends CompositePro
 		return EsbMessages.CallTemplateParameter_Part_Title;
 	}
 
+
+
 	// Start of user code additional methods
+	protected Composite createParameterExpressionWidget(Composite parent) {
+        Control parameterExpressionLabel = createDescription(parent, EsbViewsRepository.CallTemplateParameter.Properties.parameterExpression, EsbMessages.CallTemplateParameterPropertiesEditionPart_ParameterExpressionLabel);
+        parameterExpressionText = SWTUtils.createScrollableText(parent, SWT.BORDER);
+        GridData parameterExpressionData = new GridData(GridData.FILL_HORIZONTAL);
+        parameterExpressionText.setLayoutData(parameterExpressionData);
+	    if(parameterExpression == null) {
+	        parameterExpression = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
+        } 
+        String initValueExpression = parameterExpression.getPropertyValue().isEmpty() ? "/default/expression" : parameterExpression.getPropertyValue();
+        parameterExpressionText.setText(initValueExpression);
+        parameterExpressionText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+        parameterExpressionText.addMouseListener(new MouseListener(){
+
+            @Override
+            public void mouseDoubleClick(MouseEvent e) {
+                // TODO Auto-generated method stub
+                
+            }
+
+            @Override
+            public void mouseDown(MouseEvent e) {
+                EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL, parameterExpression);
+                nspd.open();
+                parameterExpressionText.setText(parameterExpression.getPropertyValue());
+                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CallTemplateParameterPropertiesEditionPartImpl.this, EsbViewsRepository.CallTemplateParameter.Properties.parameterExpression, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getParameterExpression()));
+
+                
+            }
+
+            @Override
+            public void mouseUp(MouseEvent e) {
+                // TODO Auto-generated method stub
+                
+            }
+            
+        });
+        
+        EditingUtils.setID(parameterExpressionText, EsbViewsRepository.AggregateMediator.OnComplete.aggregationExpression);
+        EditingUtils.setEEFtype(parameterExpressionText, "eef::Text");
+        Control parameterExpressionHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.CallTemplateParameter.Properties.parameterExpression, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+        parameterExpressionElements = new Control[] {parameterExpressionLabel, parameterExpressionText, parameterExpressionHelp};
+        return parent;
+    }
 	
+	@Override
+    public void refresh() {
+        super.refresh();
+        validate();
+    }
+
+    public void validate() {
+        clearElements();
+        showEntry(parameterNameElements, false);
+        showEntry(parameterTypeElements, false);
+        if(getTemplateParameterType().getName().equals("EXPRESSION")) {
+            showEntry(parameterExpressionElements, false);
+        } else {
+            showEntry(parameterValueElements, false);
+        }
+        view.layout(true, true);
+        view.pack();
+    }
+
+    public void clearElements() {
+        hideEntry(propertiesGroup.getChildren(), false);
+    }
+
+    public void hideEntry(Control controls[], boolean layout) {
+        // view.getChildren();
+        for (Control control : controls) {
+            // null check and type check
+            if (control.getLayoutData() != null && control.getLayoutData() instanceof GridData) {
+                ((GridData) control.getLayoutData()).exclude = true;
+                control.setVisible(false);
+            }
+        }
+        if (layout) {
+            view.layout(true, true);
+            view.pack();
+        }
+    }
+
+    public void showEntry(Control controls[], boolean layout) {
+        for (Control control : controls) {
+            // null check and type check
+            ((GridData) control.getLayoutData()).exclude = false;
+            control.setVisible(true);
+        }
+        if (layout) {
+            view.layout(true, true);
+            view.pack();
+        }
+    }
 	// End of user code
 
 

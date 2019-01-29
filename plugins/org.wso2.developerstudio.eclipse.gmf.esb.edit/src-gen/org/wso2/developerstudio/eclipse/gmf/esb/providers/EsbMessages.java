@@ -419,6 +419,9 @@ public class EsbMessages extends NLS {
 	public static String AggregateMediatorPropertiesEditionPart_PropertiesGroupLabel;
 
 	
+	public static String AggregateMediatorPropertiesEditionPart_OnCompleteGroupLabel;
+
+	
 	public static String AggregateMediatorInputConnectorPropertiesEditionPart_PropertiesGroupLabel;
 
 	
@@ -3175,6 +3178,12 @@ public class EsbMessages extends NLS {
 	public static String CallMediatorPropertiesEditionPart_EnableBlockingCallsLabel;
 
 	
+	public static String CallMediatorPropertiesEditionPart_EndpointXpathLabel;
+
+	
+	public static String CallMediatorPropertiesEditionPart_EndpointRegistryKeyLabel;
+
+	
 	public static String CallMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;
 
 	
@@ -4474,10 +4483,25 @@ public class EsbMessages extends NLS {
 	public static String AggregateMediatorPropertiesEditionPart_CompletionMaxMessagesValueLabel;
 
 	
+	public static String AggregateMediatorPropertiesEditionPart_EnclosingElementPropertyLabel;
+
+	
+	public static String AggregateMediatorPropertiesEditionPart_CorrelationExpressionLabel;
+
+	
+	public static String AggregateMediatorPropertiesEditionPart_CompletionMinMessagesLabel;
+
+	
+	public static String AggregateMediatorPropertiesEditionPart_CompletionMaxMessagesLabel;
+
+	
+	public static String AggregateMediatorPropertiesEditionPart_AggregationExpressionLabel;
+
+	
 	public static String AggregateMediatorPropertiesEditionPart_SequenceTypeLabel;
 
 	
-	public static String AggregateMediatorPropertiesEditionPart_EnclosingElementPropertyLabel;
+	public static String AggregateMediatorPropertiesEditionPart_SequenceKeyLabel;
 
 	
 	public static String AggregateMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;
@@ -5387,6 +5411,9 @@ public class EsbMessages extends NLS {
 
 	
 	public static String CallTemplateParameterPropertiesEditionPart_ParameterValueLabel;
+
+	
+	public static String CallTemplateParameterPropertiesEditionPart_ParameterExpressionLabel;
 
 	
 	public static String CallTemplateMediatorPropertiesEditionPart_DescriptionLabel;

@@ -90,6 +90,14 @@ public class EsbViewsRepository {
 			
 			public static String enableBlockingCalls = "esb::CallMediator::properties::enableBlockingCalls";
 			
+			// Start of user code for endpointXpath ElementEditor key
+			public static String endpointXpath = "esb::CallMediator::properties::endpointXpath";
+			// End of user code
+			
+			// Start of user code for endpointRegistryKey ElementEditor key
+			public static String endpointRegistryKey = "esb::CallMediator::properties::endpointRegistryKey";
+			// End of user code
+			
 	
 		}
 	
@@ -2963,10 +2971,35 @@ public class EsbViewsRepository {
 			public static String completionMaxMessagesValue = "esb::AggregateMediator::properties::completionMaxMessagesValue";
 			
 			
-			public static String sequenceType = "esb::AggregateMediator::properties::sequenceType";
-			
-			
 			public static String enclosingElementProperty = "esb::AggregateMediator::properties::enclosingElementProperty";
+			
+			// Start of user code for correlationExpression ElementEditor key
+			public static String correlationExpression = "esb::AggregateMediator::properties::correlationExpression";
+			// End of user code
+			
+			// Start of user code for completionMinMessages ElementEditor key
+			public static String completionMinMessages = "esb::AggregateMediator::properties::completionMinMessages";
+			// End of user code
+			
+			// Start of user code for completionMaxMessages ElementEditor key
+			public static String completionMaxMessages = "esb::AggregateMediator::properties::completionMaxMessages";
+			// End of user code
+			
+	
+		}
+	
+		public static class OnComplete {
+	
+			// Start of user code for aggregationExpression ElementEditor key
+			public static String aggregationExpression = "esb::AggregateMediator::properties::aggregationExpression";
+			// End of user code
+			
+			
+			public static String sequenceType = "esb::AggregateMediator::onComplete::sequenceType";
+			
+			// Start of user code for sequenceKey ElementEditor key
+			public static String sequenceKey = "esb::AggregateMediator::properties::sequenceKey";
+			// End of user code
 			
 	
 		}
@@ -4982,6 +5015,10 @@ public class EsbViewsRepository {
 			
 			
 			public static String parameterValue = "esb::CallTemplateParameter::properties::parameterValue";
+			
+			// Start of user code for parameterExpression ElementEditor key
+			public static String parameterExpression = "esb::CallTemplateParameter::properties::parameterExpression";
+			// End of user code
 			
 	
 		}

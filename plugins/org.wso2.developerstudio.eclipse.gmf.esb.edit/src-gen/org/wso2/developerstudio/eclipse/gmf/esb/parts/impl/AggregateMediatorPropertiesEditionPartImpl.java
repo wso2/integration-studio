@@ -59,7 +59,8 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.AggregateMediatorPropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 
@@ -84,8 +85,28 @@ public class AggregateMediatorPropertiesEditionPartImpl extends CompositePropert
 	protected EMFComboViewer completionMaxMessagesType;
 	protected Text completionMinMessagesValue;
 	protected Text completionMaxMessagesValue;
-	protected EMFComboViewer sequenceType;
 	protected Text enclosingElementProperty;
+	// Start of user code  for correlationExpression widgets declarations
+	
+	// End of user code
+
+	// Start of user code  for completionMinMessages widgets declarations
+	
+	// End of user code
+
+	// Start of user code  for completionMaxMessages widgets declarations
+	
+	// End of user code
+
+	// Start of user code  for aggregationExpression widgets declarations
+	
+	// End of user code
+
+	protected EMFComboViewer sequenceType;
+	// Start of user code  for sequenceKey widgets declarations
+	
+	// End of user code
+
 
 
 
@@ -133,8 +154,15 @@ public class AggregateMediatorPropertiesEditionPartImpl extends CompositePropert
 		propertiesStep.addStep(EsbViewsRepository.AggregateMediator.Properties.completionMaxMessagesType);
 		propertiesStep.addStep(EsbViewsRepository.AggregateMediator.Properties.completionMinMessagesValue);
 		propertiesStep.addStep(EsbViewsRepository.AggregateMediator.Properties.completionMaxMessagesValue);
-		propertiesStep.addStep(EsbViewsRepository.AggregateMediator.Properties.sequenceType);
 		propertiesStep.addStep(EsbViewsRepository.AggregateMediator.Properties.enclosingElementProperty);
+		propertiesStep.addStep(EsbViewsRepository.AggregateMediator.Properties.correlationExpression);
+		propertiesStep.addStep(EsbViewsRepository.AggregateMediator.Properties.completionMinMessages);
+		propertiesStep.addStep(EsbViewsRepository.AggregateMediator.Properties.completionMaxMessages);
+		
+		CompositionStep onCompleteStep = aggregateMediatorStep.addStep(EsbViewsRepository.AggregateMediator.OnComplete.class);
+		onCompleteStep.addStep(EsbViewsRepository.AggregateMediator.OnComplete.aggregationExpression);
+		onCompleteStep.addStep(EsbViewsRepository.AggregateMediator.OnComplete.sequenceType);
+		onCompleteStep.addStep(EsbViewsRepository.AggregateMediator.OnComplete.sequenceKey);
 		
 		
 		composer = new PartComposer(aggregateMediatorStep) {
@@ -171,12 +199,30 @@ public class AggregateMediatorPropertiesEditionPartImpl extends CompositePropert
 				if (key == EsbViewsRepository.AggregateMediator.Properties.completionMaxMessagesValue) {
 					return createCompletionMaxMessagesValueText(parent);
 				}
-				if (key == EsbViewsRepository.AggregateMediator.Properties.sequenceType) {
-					return createSequenceTypeEMFComboViewer(parent);
-				}
 				if (key == EsbViewsRepository.AggregateMediator.Properties.enclosingElementProperty) {
 					return createEnclosingElementPropertyText(parent);
 				}
+				// Start of user code for correlationExpression addToPart creation
+				
+				// End of user code
+				// Start of user code for completionMinMessages addToPart creation
+				
+				// End of user code
+				// Start of user code for completionMaxMessages addToPart creation
+				
+				// End of user code
+				if (key == EsbViewsRepository.AggregateMediator.OnComplete.class) {
+					return createOnCompleteGroup(parent);
+				}
+				// Start of user code for aggregationExpression addToPart creation
+				
+				// End of user code
+				if (key == EsbViewsRepository.AggregateMediator.OnComplete.sequenceType) {
+					return createSequenceTypeEMFComboViewer(parent);
+				}
+				// Start of user code for sequenceKey addToPart creation
+				
+				// End of user code
 				return parent;
 			}
 		};
@@ -577,36 +623,6 @@ public class AggregateMediatorPropertiesEditionPartImpl extends CompositePropert
 	}
 
 	
-	protected Composite createSequenceTypeEMFComboViewer(Composite parent) {
-		createDescription(parent, EsbViewsRepository.AggregateMediator.Properties.sequenceType, EsbMessages.AggregateMediatorPropertiesEditionPart_SequenceTypeLabel);
-		sequenceType = new EMFComboViewer(parent);
-		sequenceType.setContentProvider(new ArrayContentProvider());
-		sequenceType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
-		GridData sequenceTypeData = new GridData(GridData.FILL_HORIZONTAL);
-		sequenceType.getCombo().setLayoutData(sequenceTypeData);
-		sequenceType.addSelectionChangedListener(new ISelectionChangedListener() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-			 * 	
-			 */
-			public void selectionChanged(SelectionChangedEvent event) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AggregateMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.AggregateMediator.Properties.sequenceType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getSequenceType()));
-			}
-
-		});
-		sequenceType.setID(EsbViewsRepository.AggregateMediator.Properties.sequenceType);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.AggregateMediator.Properties.sequenceType, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		// Start of user code for createSequenceTypeEMFComboViewer
-
-		// End of user code
-		return parent;
-	}
-
-	
 	protected Composite createEnclosingElementPropertyText(Composite parent) {
 		createDescription(parent, EsbViewsRepository.AggregateMediator.Properties.enclosingElementProperty, EsbMessages.AggregateMediatorPropertiesEditionPart_EnclosingElementPropertyLabel);
 		enclosingElementProperty = SWTUtils.createScrollableText(parent, SWT.BORDER);
@@ -650,6 +666,51 @@ public class AggregateMediatorPropertiesEditionPartImpl extends CompositePropert
 		EditingUtils.setEEFtype(enclosingElementProperty, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.AggregateMediator.Properties.enclosingElementProperty, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createEnclosingElementPropertyText
+
+		// End of user code
+		return parent;
+	}
+
+	/**
+	 * 
+	 */
+	protected Composite createOnCompleteGroup(Composite parent) {
+		Group onCompleteGroup = new Group(parent, SWT.NONE);
+		onCompleteGroup.setText(EsbMessages.AggregateMediatorPropertiesEditionPart_OnCompleteGroupLabel);
+		GridData onCompleteGroupData = new GridData(GridData.FILL_HORIZONTAL);
+		onCompleteGroupData.horizontalSpan = 3;
+		onCompleteGroup.setLayoutData(onCompleteGroupData);
+		GridLayout onCompleteGroupLayout = new GridLayout();
+		onCompleteGroupLayout.numColumns = 3;
+		onCompleteGroup.setLayout(onCompleteGroupLayout);
+		return onCompleteGroup;
+	}
+
+	
+	protected Composite createSequenceTypeEMFComboViewer(Composite parent) {
+		createDescription(parent, EsbViewsRepository.AggregateMediator.OnComplete.sequenceType, EsbMessages.AggregateMediatorPropertiesEditionPart_SequenceTypeLabel);
+		sequenceType = new EMFComboViewer(parent);
+		sequenceType.setContentProvider(new ArrayContentProvider());
+		sequenceType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
+		GridData sequenceTypeData = new GridData(GridData.FILL_HORIZONTAL);
+		sequenceType.getCombo().setLayoutData(sequenceTypeData);
+		sequenceType.addSelectionChangedListener(new ISelectionChangedListener() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+			 * 	
+			 */
+			public void selectionChanged(SelectionChangedEvent event) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AggregateMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.AggregateMediator.OnComplete.sequenceType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getSequenceType()));
+			}
+
+		});
+		sequenceType.setID(EsbViewsRepository.AggregateMediator.OnComplete.sequenceType);
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.AggregateMediator.OnComplete.sequenceType, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createSequenceTypeEMFComboViewer
 
 		// End of user code
 		return parent;
@@ -1008,53 +1069,6 @@ public class AggregateMediatorPropertiesEditionPartImpl extends CompositePropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.AggregateMediatorPropertiesEditionPart#getSequenceType()
-	 * 
-	 */
-	public Enumerator getSequenceType() {
-		Enumerator selection = (Enumerator) ((StructuredSelection) sequenceType.getSelection()).getFirstElement();
-		return selection;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.AggregateMediatorPropertiesEditionPart#initSequenceType(Object input, Enumerator current)
-	 */
-	public void initSequenceType(Object input, Enumerator current) {
-		sequenceType.setInput(input);
-		sequenceType.modelUpdating(new StructuredSelection(current));
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.AggregateMediator.Properties.sequenceType);
-		if (eefElementEditorReadOnlyState && sequenceType.isEnabled()) {
-			sequenceType.setEnabled(false);
-			sequenceType.setToolTipText(EsbMessages.AggregateMediator_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !sequenceType.isEnabled()) {
-			sequenceType.setEnabled(true);
-		}	
-		
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.AggregateMediatorPropertiesEditionPart#setSequenceType(Enumerator newValue)
-	 * 
-	 */
-	public void setSequenceType(Enumerator newValue) {
-		sequenceType.modelUpdating(new StructuredSelection(newValue));
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.AggregateMediator.Properties.sequenceType);
-		if (eefElementEditorReadOnlyState && sequenceType.isEnabled()) {
-			sequenceType.setEnabled(false);
-			sequenceType.setToolTipText(EsbMessages.AggregateMediator_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !sequenceType.isEnabled()) {
-			sequenceType.setEnabled(true);
-		}	
-		
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.AggregateMediatorPropertiesEditionPart#getEnclosingElementProperty()
 	 * 
 	 */
@@ -1084,10 +1098,77 @@ public class AggregateMediatorPropertiesEditionPartImpl extends CompositePropert
 		
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.AggregateMediatorPropertiesEditionPart#getSequenceType()
+	 * 
+	 */
+	public Enumerator getSequenceType() {
+		Enumerator selection = (Enumerator) ((StructuredSelection) sequenceType.getSelection()).getFirstElement();
+		return selection;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.AggregateMediatorPropertiesEditionPart#initSequenceType(Object input, Enumerator current)
+	 */
+	public void initSequenceType(Object input, Enumerator current) {
+		sequenceType.setInput(input);
+		sequenceType.modelUpdating(new StructuredSelection(current));
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.AggregateMediator.OnComplete.sequenceType);
+		if (eefElementEditorReadOnlyState && sequenceType.isEnabled()) {
+			sequenceType.setEnabled(false);
+			sequenceType.setToolTipText(EsbMessages.AggregateMediator_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !sequenceType.isEnabled()) {
+			sequenceType.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.AggregateMediatorPropertiesEditionPart#setSequenceType(Enumerator newValue)
+	 * 
+	 */
+	public void setSequenceType(Enumerator newValue) {
+		sequenceType.modelUpdating(new StructuredSelection(newValue));
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.AggregateMediator.OnComplete.sequenceType);
+		if (eefElementEditorReadOnlyState && sequenceType.isEnabled()) {
+			sequenceType.setEnabled(false);
+			sequenceType.setToolTipText(EsbMessages.AggregateMediator_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !sequenceType.isEnabled()) {
+			sequenceType.setEnabled(true);
+		}	
+		
+	}
 
 
 
 
+
+
+	// Start of user code for correlationExpression specific getters and setters implementation
+	
+	// End of user code
+
+	// Start of user code for completionMinMessages specific getters and setters implementation
+	
+	// End of user code
+
+	// Start of user code for completionMaxMessages specific getters and setters implementation
+	
+	// End of user code
+
+	// Start of user code for aggregationExpression specific getters and setters implementation
+	
+	// End of user code
+
+	// Start of user code for sequenceKey specific getters and setters implementation
+	
+	// End of user code
 
 	/**
 	 * {@inheritDoc}
@@ -1100,7 +1181,65 @@ public class AggregateMediatorPropertiesEditionPartImpl extends CompositePropert
 	}
 
 	// Start of user code additional methods
-	
+    @Override
+    public NamespacedProperty getCorrelationExpression() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void setCorrelationExpression(NamespacedProperty nameSpacedProperty) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public NamespacedProperty getCompletionMinMessagesExpression() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void setCompletionMinMessagesExpression(NamespacedProperty nameSpacedProperty) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public NamespacedProperty getCompletionMaxMessagesExpression() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void setCompletionMaxMessagesExpression(NamespacedProperty nameSpacedProperty) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public NamespacedProperty getAggregationExpression() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void setAggregationExpression(NamespacedProperty nameSpacedProperty) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public RegistryKeyProperty getSequenceKey() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void setSequenceKey(RegistryKeyProperty registryKeyProperty) {
+        // TODO Auto-generated method stub
+        
+    }
 	// End of user code
 
 

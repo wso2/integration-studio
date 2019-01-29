@@ -3,6 +3,8 @@
  */
 package org.wso2.developerstudio.eclipse.gmf.esb.parts.forms;
 
+import java.util.ArrayList;
+
 // Start of user code for imports
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
@@ -57,19 +59,26 @@ import org.eclipse.swt.layout.GridLayout;
 
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Text;
 
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.AggregateSequenceType;
+import org.wso2.developerstudio.eclipse.gmf.esb.CompletionMessagesType;
+import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.AggregateMediatorPropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFNameSpacedPropertyEditorDialog;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.developerstudio.esb.form.editors.article.providers.NamedEntityDescriptor;
 
 // End of user code
 
@@ -92,6 +101,46 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
 	protected Text completionMaxMessagesValue;
 	protected EMFComboViewer sequenceType;
 	protected Text enclosingElementProperty;
+	// Start of user code  for correlationExpression widgets declarations
+    protected NamespacedProperty correlationExpression;
+    protected Text correlationExpressionText;
+	// End of user code
+
+	// Start of user code  for completionMinMessages widgets declarations
+    protected NamespacedProperty completionMinMessagesExpression;
+    protected Text completionMinMessagesText;
+	// End of user code
+
+	// Start of user code  for completionMaxMessages widgets declarations
+    protected NamespacedProperty completionMaxMessagesExpression;
+    protected Text completionMaxMessagesText;
+	// End of user code
+
+	// Start of user code  for aggregationExpression widgets declarations
+    protected NamespacedProperty aggregationExpression;
+    protected Text aggregationExpressionText;
+	// End of user code
+
+	// Start of user code  for sequenceKey widgets declarations
+    protected RegistryKeyProperty sequenceKey;
+    protected Text sequenceKeyText;
+    protected Control[] aggregateIDElements;
+    protected Control[] completionTimeoutElements;
+    protected Control[] completionMinMessagesTypeElements;
+    protected Control[] completionMaxMessagesTypeElements;
+    protected Control[] completionMinMessagesValueElements;
+    protected Control[] completionMaxMessagesValueElements;
+    protected Control[] sequenceTypeElements;
+    protected Control[] enclosingElementElements;
+    protected Control[] correlationExpressionElements;
+    protected Control[] completionMinMessagesExpressionElements;
+    protected Control[] completionMaxMessagesExpressionElements;
+    protected Control[] aggregationExpressionElements;
+    protected Control[] sequenceKeyElements;
+    protected Composite propertiesGroup;
+    protected Composite onCompleteGroup;
+	// End of user code
+
 
 
 
@@ -146,9 +195,15 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
 		propertiesStep.addStep(EsbViewsRepository.AggregateMediator.Properties.completionMaxMessagesType);
 		propertiesStep.addStep(EsbViewsRepository.AggregateMediator.Properties.completionMinMessagesValue);
 		propertiesStep.addStep(EsbViewsRepository.AggregateMediator.Properties.completionMaxMessagesValue);
-		propertiesStep.addStep(EsbViewsRepository.AggregateMediator.Properties.sequenceType);
 		propertiesStep.addStep(EsbViewsRepository.AggregateMediator.Properties.enclosingElementProperty);
-		
+		propertiesStep.addStep(EsbViewsRepository.AggregateMediator.Properties.correlationExpression);
+		propertiesStep.addStep(EsbViewsRepository.AggregateMediator.Properties.completionMinMessages);
+		propertiesStep.addStep(EsbViewsRepository.AggregateMediator.Properties.completionMaxMessages);
+        CompositionStep onCompleteStep = aggregateMediatorStep
+                .addStep(EsbViewsRepository.AggregateMediator.OnComplete.class);
+        onCompleteStep.addStep(EsbViewsRepository.AggregateMediator.OnComplete.aggregationExpression);
+        onCompleteStep.addStep(EsbViewsRepository.AggregateMediator.OnComplete.sequenceType);
+        onCompleteStep.addStep(EsbViewsRepository.AggregateMediator.OnComplete.sequenceKey);
 		
 		composer = new PartComposer(aggregateMediatorStep) {
 
@@ -157,6 +212,9 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
 				if (key == EsbViewsRepository.AggregateMediator.Properties.class) {
 					return createPropertiesGroup(widgetFactory, parent);
 				}
+                if (key == EsbViewsRepository.AggregateMediator.OnComplete.class) {
+                    return createOnCompleteGroup(widgetFactory, parent);
+                }
 				if (key == EsbViewsRepository.AggregateMediator.Properties.description) {
 					return createDescriptionText(widgetFactory, parent);
 				}
@@ -184,27 +242,54 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
 				if (key == EsbViewsRepository.AggregateMediator.Properties.completionMaxMessagesValue) {
 					return createCompletionMaxMessagesValueText(widgetFactory, parent);
 				}
-				if (key == EsbViewsRepository.AggregateMediator.Properties.sequenceType) {
+				if (key == EsbViewsRepository.AggregateMediator.OnComplete.sequenceType) {
 					return createSequenceTypeEMFComboViewer(widgetFactory, parent);
 				}
 				if (key == EsbViewsRepository.AggregateMediator.Properties.enclosingElementProperty) {
 					return createEnclosingElementPropertyText(widgetFactory, parent);
 				}
+				// Start of user code for correlationExpression addToPart creation
+				if(key == EsbViewsRepository.AggregateMediator.Properties.correlationExpression) {
+                    return createCorrelationExpressionWidget(widgetFactory, parent);
+                }
+				// End of user code
+				// Start of user code for completionMinMessages addToPart creation
+                if(key == EsbViewsRepository.AggregateMediator.Properties.completionMinMessages) {
+                    return createCompletionMinMessagesExpressionWidget(widgetFactory, parent);
+                }
+				// End of user code
+				// Start of user code for completionMaxMessages addToPart creation
+                if(key == EsbViewsRepository.AggregateMediator.Properties.completionMaxMessages) {
+                    return createCompletionMaxMessagesExpressionWidget(widgetFactory, parent);
+                }
+				// End of user code
+				// Start of user code for aggregationExpression addToPart creation
+                if(key == EsbViewsRepository.AggregateMediator.OnComplete.aggregationExpression) {
+                    return createAggregationExpressionWidget(widgetFactory, parent);
+                }
+				// End of user code
+				// Start of user code for sequenceKey addToPart creation
+                if(key == EsbViewsRepository.AggregateMediator.OnComplete.sequenceKey) {
+                    return createsequenceKeyWidget(widgetFactory, parent);
+                }
+
+				// End of user code
 				return parent;
 			}
 		};
 		composer.compose(view);
 	}
+	
 	/**
-	 * 
-	 */
+     * @generated NOT
+     */
 	protected Composite createPropertiesGroup(FormToolkit widgetFactory, final Composite parent) {
 		Section propertiesSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		propertiesSection.setText(EsbMessages.AggregateMediatorPropertiesEditionPart_PropertiesGroupLabel);
 		GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
 		propertiesSectionData.horizontalSpan = 3;
 		propertiesSection.setLayoutData(propertiesSectionData);
-		Composite propertiesGroup = widgetFactory.createComposite(propertiesSection);
+		propertiesGroup = widgetFactory.createComposite(propertiesSection);
 		GridLayout propertiesGroupLayout = new GridLayout();
 		propertiesGroupLayout.numColumns = 3;
 		propertiesGroup.setLayout(propertiesGroupLayout);
@@ -355,9 +440,11 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
 		return parent;
 	}
 
-	
+	/**
+     * @generated NOT
+     */
 	protected Composite createAggregateIDText(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EsbViewsRepository.AggregateMediator.Properties.aggregateID, EsbMessages.AggregateMediatorPropertiesEditionPart_AggregateIDLabel);
+		Control aggregateIDLabel = createDescription(parent, EsbViewsRepository.AggregateMediator.Properties.aggregateID, EsbMessages.AggregateMediatorPropertiesEditionPart_AggregateIDLabel);
 		aggregateID = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		aggregateID.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -416,16 +503,18 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
 		});
 		EditingUtils.setID(aggregateID, EsbViewsRepository.AggregateMediator.Properties.aggregateID);
 		EditingUtils.setEEFtype(aggregateID, "eef::Text"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.AggregateMediator.Properties.aggregateID, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		Control aggregateIDHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.AggregateMediator.Properties.aggregateID, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createAggregateIDText
-
+		aggregateIDElements = new Control[] {aggregateIDLabel, aggregateID, aggregateIDHelp};
 		// End of user code
 		return parent;
 	}
 
-	
+	/**
+     * @generated NOT
+     */
 	protected Composite createCompletionTimeoutText(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EsbViewsRepository.AggregateMediator.Properties.completionTimeout, EsbMessages.AggregateMediatorPropertiesEditionPart_CompletionTimeoutLabel);
+		Control completionTimeoutLabel = createDescription(parent, EsbViewsRepository.AggregateMediator.Properties.completionTimeout, EsbMessages.AggregateMediatorPropertiesEditionPart_CompletionTimeoutLabel);
 		completionTimeout = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		completionTimeout.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -484,16 +573,18 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
 		});
 		EditingUtils.setID(completionTimeout, EsbViewsRepository.AggregateMediator.Properties.completionTimeout);
 		EditingUtils.setEEFtype(completionTimeout, "eef::Text"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.AggregateMediator.Properties.completionTimeout, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		Control completionTimeoutHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.AggregateMediator.Properties.completionTimeout, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createCompletionTimeoutText
-
+		completionTimeoutElements = new Control[] {completionTimeoutLabel, completionTimeout, completionTimeoutHelp};
 		// End of user code
 		return parent;
 	}
 
-	
+	/**
+     * @generated NOT
+     */
 	protected Composite createCompletionMinMessagesTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EsbViewsRepository.AggregateMediator.Properties.completionMinMessagesType, EsbMessages.AggregateMediatorPropertiesEditionPart_CompletionMinMessagesTypeLabel);
+		Control completionMinMessagesTypeLabel = createDescription(parent, EsbViewsRepository.AggregateMediator.Properties.completionMinMessagesType, EsbMessages.AggregateMediatorPropertiesEditionPart_CompletionMinMessagesTypeLabel);
 		completionMinMessagesType = new EMFComboViewer(parent);
 		completionMinMessagesType.setContentProvider(new ArrayContentProvider());
 		completionMinMessagesType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -514,16 +605,30 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
 
 		});
 		completionMinMessagesType.setID(EsbViewsRepository.AggregateMediator.Properties.completionMinMessagesType);
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.AggregateMediator.Properties.completionMinMessagesType, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		Control completionMinMessagesTypeHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.AggregateMediator.Properties.completionMinMessagesType, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createCompletionMinMessagesTypeEMFComboViewer
-
+		completionMinMessagesTypeElements = new Control[] {completionMinMessagesTypeLabel, completionMinMessagesType.getCombo(), completionMinMessagesTypeHelp};
+		completionMinMessagesType.addSelectionChangedListener(new ISelectionChangedListener() {
+            
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+             *  
+             */
+            public void selectionChanged(SelectionChangedEvent event) {
+                validate();
+            }
+        });
 		// End of user code
 		return parent;
 	}
 
-	
+	/**
+     * @generated NOT
+     */
 	protected Composite createCompletionMaxMessagesTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EsbViewsRepository.AggregateMediator.Properties.completionMaxMessagesType, EsbMessages.AggregateMediatorPropertiesEditionPart_CompletionMaxMessagesTypeLabel);
+		Control completionMaxMessagesTypeLabel = createDescription(parent, EsbViewsRepository.AggregateMediator.Properties.completionMaxMessagesType, EsbMessages.AggregateMediatorPropertiesEditionPart_CompletionMaxMessagesTypeLabel);
 		completionMaxMessagesType = new EMFComboViewer(parent);
 		completionMaxMessagesType.setContentProvider(new ArrayContentProvider());
 		completionMaxMessagesType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -544,16 +649,30 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
 
 		});
 		completionMaxMessagesType.setID(EsbViewsRepository.AggregateMediator.Properties.completionMaxMessagesType);
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.AggregateMediator.Properties.completionMaxMessagesType, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		Control completionMaxMessagesTypeHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.AggregateMediator.Properties.completionMaxMessagesType, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createCompletionMaxMessagesTypeEMFComboViewer
-
+        completionMaxMessagesTypeElements = new Control[] {completionMaxMessagesTypeLabel, completionMaxMessagesType.getCombo(), completionMaxMessagesTypeHelp};
+        completionMaxMessagesType.addSelectionChangedListener(new ISelectionChangedListener() {
+            
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+             *  
+             */
+            public void selectionChanged(SelectionChangedEvent event) {
+                validate();
+            }
+        });
 		// End of user code
 		return parent;
 	}
 
-	
+	/**
+     * @generated NOT
+     */
 	protected Composite createCompletionMinMessagesValueText(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EsbViewsRepository.AggregateMediator.Properties.completionMinMessagesValue, EsbMessages.AggregateMediatorPropertiesEditionPart_CompletionMinMessagesValueLabel);
+		Control completionMinMessagesValueLabel = createDescription(parent, EsbViewsRepository.AggregateMediator.Properties.completionMinMessagesValue, EsbMessages.AggregateMediatorPropertiesEditionPart_CompletionMinMessagesValueLabel);
 		completionMinMessagesValue = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		completionMinMessagesValue.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -612,16 +731,18 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
 		});
 		EditingUtils.setID(completionMinMessagesValue, EsbViewsRepository.AggregateMediator.Properties.completionMinMessagesValue);
 		EditingUtils.setEEFtype(completionMinMessagesValue, "eef::Text"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.AggregateMediator.Properties.completionMinMessagesValue, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		Control completionMinMessagesValueHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.AggregateMediator.Properties.completionMinMessagesValue, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createCompletionMinMessagesValueText
-
+		completionMinMessagesValueElements = new Control[] {completionMinMessagesValueLabel, completionMinMessagesValue, completionMinMessagesValueHelp};
 		// End of user code
 		return parent;
 	}
 
-	
+	/**
+     * @generated NOT
+     */
 	protected Composite createCompletionMaxMessagesValueText(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EsbViewsRepository.AggregateMediator.Properties.completionMaxMessagesValue, EsbMessages.AggregateMediatorPropertiesEditionPart_CompletionMaxMessagesValueLabel);
+		Control completionMaxMessagesValueLabel = createDescription(parent, EsbViewsRepository.AggregateMediator.Properties.completionMaxMessagesValue, EsbMessages.AggregateMediatorPropertiesEditionPart_CompletionMaxMessagesValueLabel);
 		completionMaxMessagesValue = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		completionMaxMessagesValue.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -680,16 +801,18 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
 		});
 		EditingUtils.setID(completionMaxMessagesValue, EsbViewsRepository.AggregateMediator.Properties.completionMaxMessagesValue);
 		EditingUtils.setEEFtype(completionMaxMessagesValue, "eef::Text"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.AggregateMediator.Properties.completionMaxMessagesValue, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		Control completionMaxMessagesValueHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.AggregateMediator.Properties.completionMaxMessagesValue, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createCompletionMaxMessagesValueText
-
+		completionMaxMessagesValueElements = new Control[] {completionMaxMessagesValueLabel, completionMaxMessagesValue, completionMaxMessagesValueHelp};
 		// End of user code
 		return parent;
 	}
 
-	
+	/**
+     * @generated NOT
+     */
 	protected Composite createSequenceTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EsbViewsRepository.AggregateMediator.Properties.sequenceType, EsbMessages.AggregateMediatorPropertiesEditionPart_SequenceTypeLabel);
+		Control sequenceTypeLabel = createDescription(parent, EsbViewsRepository.AggregateMediator.OnComplete.sequenceType, EsbMessages.AggregateMediatorPropertiesEditionPart_SequenceTypeLabel);
 		sequenceType = new EMFComboViewer(parent);
 		sequenceType.setContentProvider(new ArrayContentProvider());
 		sequenceType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -705,21 +828,36 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AggregateMediatorPropertiesEditionPartForm.this, EsbViewsRepository.AggregateMediator.Properties.sequenceType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getSequenceType()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AggregateMediatorPropertiesEditionPartForm.this, EsbViewsRepository.AggregateMediator.OnComplete.sequenceType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getSequenceType()));
 			}
 
 		});
-		sequenceType.setID(EsbViewsRepository.AggregateMediator.Properties.sequenceType);
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.AggregateMediator.Properties.sequenceType, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		sequenceType.setID(EsbViewsRepository.AggregateMediator.OnComplete.sequenceType);
+		Control sequenceTypeHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.AggregateMediator.OnComplete.sequenceType, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createSequenceTypeEMFComboViewer
+		sequenceTypeElements = new Control[] {sequenceTypeLabel, sequenceType.getCombo(), sequenceTypeHelp};
 
+		sequenceType.addSelectionChangedListener(new ISelectionChangedListener() {
+                    
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+             *  
+             */
+            public void selectionChanged(SelectionChangedEvent event) {
+                validate();
+            }
+        });
 		// End of user code
 		return parent;
 	}
 
-	
+	/**
+     * @generated NOT
+     */
 	protected Composite createEnclosingElementPropertyText(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EsbViewsRepository.AggregateMediator.Properties.enclosingElementProperty, EsbMessages.AggregateMediatorPropertiesEditionPart_EnclosingElementPropertyLabel);
+		Control enclosingElementPropertyLabel = createDescription(parent, EsbViewsRepository.AggregateMediator.Properties.enclosingElementProperty, EsbMessages.AggregateMediatorPropertiesEditionPart_EnclosingElementPropertyLabel);
 		enclosingElementProperty = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		enclosingElementProperty.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -778,15 +916,33 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
 		});
 		EditingUtils.setID(enclosingElementProperty, EsbViewsRepository.AggregateMediator.Properties.enclosingElementProperty);
 		EditingUtils.setEEFtype(enclosingElementProperty, "eef::Text"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.AggregateMediator.Properties.enclosingElementProperty, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		Control enclosingElementPropertyHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.AggregateMediator.Properties.enclosingElementProperty, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createEnclosingElementPropertyText
+		enclosingElementElements = new Control[] {enclosingElementPropertyLabel, enclosingElementProperty, enclosingElementPropertyHelp};
 
 		// End of user code
 		return parent;
 	}
 
 
-	/**
+/**
+ * @generated NOT
+ */
+  protected Composite createOnCompleteGroup(FormToolkit widgetFactory, final Composite parent) {
+    Section onCompleteSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
+    onCompleteSection.setText(EsbMessages.AggregateMediatorPropertiesEditionPart_OnCompleteGroupLabel);
+    GridData onCompleteSectionData = new GridData(GridData.FILL_HORIZONTAL);
+    onCompleteSectionData.horizontalSpan = 3;
+    onCompleteSection.setLayoutData(onCompleteSectionData);
+    onCompleteGroup = widgetFactory.createComposite(onCompleteSection);
+    GridLayout onCompleteGroupLayout = new GridLayout();
+    onCompleteGroupLayout.numColumns = 3;
+    onCompleteGroup.setLayout(onCompleteGroupLayout);
+    onCompleteSection.setClient(onCompleteGroup);
+    return onCompleteGroup;
+  }
+
+  /**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
@@ -1154,7 +1310,7 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
 	public void initSequenceType(Object input, Enumerator current) {
 		sequenceType.setInput(input);
 		sequenceType.modelUpdating(new StructuredSelection(current));
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.AggregateMediator.Properties.sequenceType);
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.AggregateMediator.OnComplete.sequenceType);
 		if (eefElementEditorReadOnlyState && sequenceType.isEnabled()) {
 			sequenceType.setEnabled(false);
 			sequenceType.setToolTipText(EsbMessages.AggregateMediator_ReadOnly);
@@ -1172,7 +1328,7 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
 	 */
 	public void setSequenceType(Enumerator newValue) {
 		sequenceType.modelUpdating(new StructuredSelection(newValue));
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.AggregateMediator.Properties.sequenceType);
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.AggregateMediator.OnComplete.sequenceType);
 		if (eefElementEditorReadOnlyState && sequenceType.isEnabled()) {
 			sequenceType.setEnabled(false);
 			sequenceType.setToolTipText(EsbMessages.AggregateMediator_ReadOnly);
@@ -1219,6 +1375,85 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
 
 
 
+	// Start of user code for correlationExpression specific getters and setters implementation
+
+    @Override
+    public NamespacedProperty getCorrelationExpression() {
+        return correlationExpression;
+    }
+
+    @Override
+    public void setCorrelationExpression(NamespacedProperty nameSpacedProperty) {
+        if(nameSpacedProperty != null) {
+            correlationExpressionText.setText(nameSpacedProperty.getPropertyValue());
+            correlationExpression = nameSpacedProperty;
+        }
+    }
+	// End of user code
+
+	// Start of user code for completionMinMessages specific getters and setters implementation
+    @Override
+    public NamespacedProperty getCompletionMinMessagesExpression() {
+        return completionMinMessagesExpression;
+    }
+
+    @Override
+    public void setCompletionMinMessagesExpression(NamespacedProperty nameSpacedProperty) {
+        if(nameSpacedProperty != null) {
+            completionMinMessagesText.setText(nameSpacedProperty.getPropertyValue());
+            completionMinMessagesExpression = nameSpacedProperty;
+        }
+    }
+	// End of user code
+
+	// Start of user code for completionMaxMessages specific getters and setters implementation
+    @Override
+    public NamespacedProperty getCompletionMaxMessagesExpression() {
+        return completionMaxMessagesExpression;
+    }
+
+    @Override
+    public void setCompletionMaxMessagesExpression(NamespacedProperty nameSpacedProperty) {
+        if(nameSpacedProperty != null) {
+            completionMaxMessagesText.setText(nameSpacedProperty.getPropertyValue());
+            completionMaxMessagesExpression = nameSpacedProperty;
+        }
+        
+    }
+	// End of user code
+
+	// Start of user code for aggregationExpression specific getters and setters implementation
+    @Override
+    public NamespacedProperty getAggregationExpression() {
+        return aggregationExpression;
+    }
+
+    @Override
+    public void setAggregationExpression(NamespacedProperty nameSpacedProperty) {
+        if(nameSpacedProperty != null) {
+            aggregationExpressionText.setText(nameSpacedProperty.getPropertyValue());
+            aggregationExpression = nameSpacedProperty;
+        }
+        
+    }
+	// End of user code
+
+	// Start of user code for sequenceKey specific getters and setters implementation
+    @Override
+    public RegistryKeyProperty getSequenceKey() {
+        return sequenceKey;
+    }
+
+    @Override
+    public void setSequenceKey(RegistryKeyProperty registryKeyProperty) {
+        if(registryKeyProperty != null) {
+            sequenceKeyText.setText(registryKeyProperty.getKeyValue());
+            sequenceKey = registryKeyProperty;
+        }
+        
+    }
+	// End of user code
+
 	/**
 	 * {@inheritDoc}
 	 *
@@ -1230,8 +1465,281 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
 	}
 
 	// Start of user code additional methods
-	
+    protected Composite createsequenceKeyWidget(FormToolkit widgetFactory, Composite parent) {
+        Control sequenceKeyLabel = createDescription(parent, EsbViewsRepository.AggregateMediator.OnComplete.sequenceKey, EsbMessages.AggregateMediatorPropertiesEditionPart_SequenceKeyLabel);
+        widgetFactory.paintBordersFor(parent);
+        if(sequenceKey == null) {
+            sequenceKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
+        } 
+        String initValueExpression = sequenceKey.getKeyValue().isEmpty() ? "" : sequenceKey.getKeyValue();
+        sequenceKeyText = widgetFactory.createText(parent, initValueExpression);
+        sequenceKeyText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+        widgetFactory.paintBordersFor(parent);
+        GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
+        sequenceKeyText.setLayoutData(valueData);
+        sequenceKeyText.addFocusListener(new FocusAdapter() {
+            /**
+             * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+             * 
+             */
+            @Override
+            @SuppressWarnings("synthetic-access")
+            public void focusLost(FocusEvent e) {
+            }
+
+            /**
+             * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+             */
+            @Override
+            public void focusGained(FocusEvent e) {
+                EEFRegistryKeyPropertyEditorDialog dialog = new  EEFRegistryKeyPropertyEditorDialog(view.getShell(), SWT.NULL,
+                        sequenceKey, new ArrayList<NamedEntityDescriptor>());
+                dialog.open();
+                sequenceKeyText.setText(sequenceKey.getKeyValue());
+                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AggregateMediatorPropertiesEditionPartForm.this, EsbViewsRepository.AggregateMediator.OnComplete.sequenceKey, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getSequenceKey()));
+            }
+        });
+        EditingUtils.setID(sequenceKeyText, EsbViewsRepository.AggregateMediator.OnComplete.sequenceKey);
+        EditingUtils.setEEFtype(sequenceKeyText, "eef::Text");
+        Control sequenceKeyHelp =FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.AggregateMediator.OnComplete.sequenceKey, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+        sequenceKeyElements = new Control[] {sequenceKeyLabel, sequenceKeyText, sequenceKeyHelp};
+        return parent;
+    }
+
+    protected Composite createAggregationExpressionWidget(FormToolkit widgetFactory, Composite parent) {
+        Control aggregationExpressionLabel = createDescription(parent, EsbViewsRepository.AggregateMediator.OnComplete.aggregationExpression, EsbMessages.AggregateMediatorPropertiesEditionPart_AggregationExpressionLabel);
+        widgetFactory.paintBordersFor(parent);
+        if(aggregationExpression == null) {
+            aggregationExpression = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
+        } 
+        String initValueExpression = aggregationExpression.getPropertyValue().isEmpty() ? "/default/expression" : aggregationExpression.getPropertyValue();
+        aggregationExpressionText = widgetFactory.createText(parent, initValueExpression);
+        aggregationExpressionText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+        widgetFactory.paintBordersFor(parent);
+        GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
+        aggregationExpressionText.setLayoutData(valueData);
+        aggregationExpressionText.addFocusListener(new FocusAdapter() {
+            /**
+             * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+             * 
+             */
+            @Override
+            @SuppressWarnings("synthetic-access")
+            public void focusLost(FocusEvent e) {
+            }
+
+            /**
+             * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+             */
+            @Override
+            public void focusGained(FocusEvent e) {
+                EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL, aggregationExpression);
+                //valueExpression.setPropertyValue(valueExpressionText.getText());
+                nspd.open();
+                aggregationExpressionText.setText(aggregationExpression.getPropertyValue());
+                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AggregateMediatorPropertiesEditionPartForm.this, EsbViewsRepository.AggregateMediator.OnComplete.aggregationExpression, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getAggregationExpression()));
+            }
+        });
+        EditingUtils.setID(aggregationExpressionText, EsbViewsRepository.AggregateMediator.OnComplete.aggregationExpression);
+        EditingUtils.setEEFtype(aggregationExpressionText, "eef::Text");
+        Control aggregationExpressionHelp =FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.AggregateMediator.OnComplete.aggregationExpression, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+        aggregationExpressionElements = new Control[] {aggregationExpressionLabel, aggregationExpressionText, aggregationExpressionHelp};
+        return parent;
+    }
+
+    protected Composite createCompletionMaxMessagesExpressionWidget(FormToolkit widgetFactory, Composite parent) {
+        Control completionMaxMessagesExpressionLabel = createDescription(parent, EsbViewsRepository.AggregateMediator.Properties.completionMaxMessages, EsbMessages.AggregateMediatorPropertiesEditionPart_CompletionMaxMessagesLabel);
+        widgetFactory.paintBordersFor(parent);
+        if(completionMaxMessagesExpression == null) {
+            completionMaxMessagesExpression = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
+        } 
+        String initValueExpression = completionMaxMessagesExpression.getPropertyValue().isEmpty() ? "/default/expression" : completionMaxMessagesExpression.getPropertyValue();
+        completionMaxMessagesText = widgetFactory.createText(parent, initValueExpression);
+        completionMaxMessagesText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+        widgetFactory.paintBordersFor(parent);
+        GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
+        completionMaxMessagesText.setLayoutData(valueData);
+        completionMaxMessagesText.addFocusListener(new FocusAdapter() {
+            /**
+             * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+             * 
+             */
+            @Override
+            @SuppressWarnings("synthetic-access")
+            public void focusLost(FocusEvent e) {
+            }
+
+            /**
+             * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+             */
+            @Override
+            public void focusGained(FocusEvent e) {
+                EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL, completionMaxMessagesExpression);
+                //valueExpression.setPropertyValue(valueExpressionText.getText());
+                nspd.open();
+                completionMaxMessagesText.setText(completionMaxMessagesExpression.getPropertyValue());
+                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AggregateMediatorPropertiesEditionPartForm.this, EsbViewsRepository.AggregateMediator.Properties.completionMaxMessages, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getCompletionMaxMessagesExpression()));
+            }
+        });
+        EditingUtils.setID(completionMaxMessagesText, EsbViewsRepository.AggregateMediator.Properties.completionMaxMessages);
+        EditingUtils.setEEFtype(completionMaxMessagesText, "eef::Text");
+        Control completionMaxMessagesHelp =FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.AggregateMediator.Properties.completionMaxMessages, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+        completionMaxMessagesExpressionElements = new Control[] {completionMaxMessagesExpressionLabel, completionMaxMessagesText, completionMaxMessagesHelp};
+        return parent;
+    }
+
+    protected Composite createCompletionMinMessagesExpressionWidget(FormToolkit widgetFactory, Composite parent) {
+        Control completionMinMessagesExpressionLabel = createDescription(parent, EsbViewsRepository.AggregateMediator.Properties.completionMinMessages, EsbMessages.AggregateMediatorPropertiesEditionPart_CompletionMinMessagesLabel);
+        widgetFactory.paintBordersFor(parent);
+        if(completionMinMessagesExpression == null) {
+            completionMinMessagesExpression = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
+        } 
+        String initValueExpression = completionMinMessagesExpression.getPropertyValue().isEmpty() ? "/default/expression" : completionMinMessagesExpression.getPropertyValue();
+        completionMinMessagesText = widgetFactory.createText(parent, initValueExpression);
+        completionMinMessagesText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+        widgetFactory.paintBordersFor(parent);
+        GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
+        completionMinMessagesText.setLayoutData(valueData);
+        completionMinMessagesText.addFocusListener(new FocusAdapter() {
+            /**
+             * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+             * 
+             */
+            @Override
+            @SuppressWarnings("synthetic-access")
+            public void focusLost(FocusEvent e) {
+            }
+
+            /**
+             * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+             */
+            @Override
+            public void focusGained(FocusEvent e) {
+                EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL, completionMinMessagesExpression);
+                //valueExpression.setPropertyValue(valueExpressionText.getText());
+                nspd.open();
+                completionMinMessagesText.setText(completionMinMessagesExpression.getPropertyValue());
+                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AggregateMediatorPropertiesEditionPartForm.this, EsbViewsRepository.AggregateMediator.Properties.completionMinMessages, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getCompletionMinMessagesExpression()));
+            }
+        });
+        EditingUtils.setID(completionMinMessagesText, EsbViewsRepository.AggregateMediator.Properties.completionMinMessages);
+        EditingUtils.setEEFtype(completionMinMessagesText, "eef::Text");
+        Control completionMinMessagesHelp =FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.AggregateMediator.Properties.completionMinMessages, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+        completionMinMessagesExpressionElements = new Control[] {completionMinMessagesExpressionLabel, completionMinMessagesText, completionMinMessagesHelp};
+        return parent;
+    }
+
+    protected Composite createCorrelationExpressionWidget(FormToolkit widgetFactory, Composite parent) {
+        Control correlationExpressionLabel = createDescription(parent, EsbViewsRepository.AggregateMediator.Properties.correlationExpression, EsbMessages.AggregateMediatorPropertiesEditionPart_CorrelationExpressionLabel);
+        widgetFactory.paintBordersFor(parent);
+        if(correlationExpression == null) {
+            correlationExpression = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
+        } 
+        String initValueExpression = correlationExpression.getPropertyValue().isEmpty() ? "/default/expression" : correlationExpression.getPropertyValue();
+        correlationExpressionText = widgetFactory.createText(parent, initValueExpression);
+        correlationExpressionText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+        widgetFactory.paintBordersFor(parent);
+        GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
+        correlationExpressionText.setLayoutData(valueData);
+        correlationExpressionText.addFocusListener(new FocusAdapter() {
+            /**
+             * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+             * 
+             */
+            @Override
+            @SuppressWarnings("synthetic-access")
+            public void focusLost(FocusEvent e) {
+            }
+
+            /**
+             * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+             */
+            @Override
+            public void focusGained(FocusEvent e) {
+                EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL, correlationExpression);
+                //valueExpression.setPropertyValue(valueExpressionText.getText());
+                nspd.open();
+                correlationExpressionText.setText(correlationExpression.getPropertyValue());
+                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AggregateMediatorPropertiesEditionPartForm.this, EsbViewsRepository.AggregateMediator.Properties.correlationExpression, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getCorrelationExpression()));
+            }
+        });
+        EditingUtils.setID(correlationExpressionText, EsbViewsRepository.AggregateMediator.Properties.correlationExpression);
+        EditingUtils.setEEFtype(correlationExpressionText, "eef::Text");
+        Control correlationExpressionHelp =FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.AggregateMediator.Properties.correlationExpression, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+        correlationExpressionElements = new Control[] {correlationExpressionLabel, correlationExpressionText, correlationExpressionHelp};
+        return parent;
+    }
+    
+    @Override
+    public void refresh() {
+        super.refresh();
+        validate();
+    }
+
+    public void validate() {
+        clearElements();
+        showEntry(aggregateIDElements, false);
+        showEntry(correlationExpressionElements, false);
+        showEntry(completionTimeoutElements, false);
+        showEntry(completionMinMessagesTypeElements, false);
+        showEntry(completionMaxMessagesTypeElements, false);
+        if (getCompletionMinMessagesType().getName().equals(CompletionMessagesType.VALUE.getName())) {
+
+            showEntry(completionMinMessagesValueElements, false);
+        } else {
+
+            showEntry(completionMinMessagesExpressionElements, false);
+        }
+
+        if (getCompletionMaxMessagesType().getName().equals(CompletionMessagesType.VALUE.getName())) {
+
+            showEntry(completionMaxMessagesValueElements, false);
+        } else {
+
+            showEntry(completionMaxMessagesExpressionElements, false);
+        }
+        showEntry(aggregationExpressionElements, false);
+        showEntry(sequenceTypeElements, false);
+        
+        if (getSequenceType().getName().equals(AggregateSequenceType.REGISTRY_REFERENCE.getName())) {
+            showEntry(sequenceKeyElements, false);
+        }
+
+        showEntry(enclosingElementElements, false);
+        view.layout(true, true);
+        view.pack();
+    }
+
+    public void clearElements() {
+        hideEntry(propertiesGroup.getChildren(), false);
+        hideEntry(onCompleteGroup.getChildren(), false);
+    }
+
+    public void hideEntry(Control controls[], boolean layout) {
+        // view.getChildren();
+        for (Control control : controls) {
+            // null check and type check
+            if (control.getLayoutData() != null && control.getLayoutData() instanceof GridData) {
+                ((GridData) control.getLayoutData()).exclude = true;
+                control.setVisible(false);
+            }
+        }
+        if (layout) {
+            view.layout(true, true);
+            view.pack();
+        }
+    }
+
+    public void showEntry(Control controls[], boolean layout) {
+        for (Control control : controls) {
+            // null check and type check
+            ((GridData) control.getLayoutData()).exclude = false;
+            control.setVisible(true);
+        }
+        if (layout) {
+            view.layout(true, true);
+            view.pack();
+        }
+    }
 	// End of user code
-
-
 }

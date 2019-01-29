@@ -154,6 +154,7 @@ public class PropertyMediatorPropertiesEditionComponent extends SinglePartProper
 			
 			
 			// Start of user code  for valueExpression filter update
+			
 			// End of user code
 			
 			// init values for referenced views
@@ -285,12 +286,12 @@ public class PropertyMediatorPropertiesEditionComponent extends SinglePartProper
 		}
 		if (EsbViewsRepository.PropertyMediator.Properties.valueExpression == event.getAffectedEditor()) {
 			// Start of user code for updateValueExpression method body
-    /*        if (event.getNewValue() != null) {
-                NamespacedProperty nsp = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
-                propertyMediator.setValueExpression();
+            if (event.getNewValue() != null) {
+                NamespacedProperty nsp = (NamespacedProperty) event.getNewValue();
+                propertyMediator.setValueExpression(nsp);
             } else {
                 propertyMediator.setValueExpression(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
-            }*/
+            }
 			// End of user code
 			
 		}

@@ -12,6 +12,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 
 import org.eclipse.jface.viewers.ViewerFilter;
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 
 
 // End of user code
@@ -155,6 +157,16 @@ public interface CallMediatorPropertiesEditionPart {
 
 
 
+	// Start of user code for endpointXpath specific getters and setters declaration
+    public NamespacedProperty getEndpointXPath();
+
+    public void setEndpointXPath(NamespacedProperty nameSpacedProperty);
+	// End of user code
+	// Start of user code for endpointRegistryKey specific getters and setters declaration
+    public RegistryKeyProperty getEndpointRegistryKey();
+    
+    public void setEndpointRegistryKey(RegistryKeyProperty registryKeyProperty);
+	// End of user code
 
 	/**
 	 * Returns the internationalized title text.

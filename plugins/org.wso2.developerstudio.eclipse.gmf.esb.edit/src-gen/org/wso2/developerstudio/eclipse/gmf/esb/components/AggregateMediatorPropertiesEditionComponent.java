@@ -41,7 +41,9 @@ import org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.AggregateSequenceType;
 import org.wso2.developerstudio.eclipse.gmf.esb.CompletionMessagesType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.AggregateMediatorPropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 
@@ -115,11 +117,41 @@ public class AggregateMediatorPropertiesEditionComponent extends SinglePartPrope
 				basePart.setCompletionMaxMessagesValue(EEFConverterUtil.convertToString(EcorePackage.Literals.EINT, aggregateMediator.getCompletionMaxMessagesValue()));
 			}
 			
-			if (isAccessible(EsbViewsRepository.AggregateMediator.Properties.sequenceType)) {
+			if (isAccessible(EsbViewsRepository.AggregateMediator.OnComplete.sequenceType)) {
 				basePart.initSequenceType(EEFUtils.choiceOfValues(aggregateMediator, EsbPackage.eINSTANCE.getAggregateMediator_SequenceType()), aggregateMediator.getSequenceType());
 			}
 			if (isAccessible(EsbViewsRepository.AggregateMediator.Properties.enclosingElementProperty))
 				basePart.setEnclosingElementProperty(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, aggregateMediator.getEnclosingElementProperty()));
+			
+			// Start of user code  for correlationExpression command update
+	         if (isAccessible(EsbViewsRepository.AggregateMediator.Properties.correlationExpression)) {
+	                basePart.setCorrelationExpression(aggregateMediator.getCorrelationExpression());
+	         }
+			// End of user code
+			
+			// Start of user code  for completionMinMessagesExpression command update
+	        if (isAccessible(EsbViewsRepository.AggregateMediator.Properties.completionMinMessages)) {
+                basePart.setCompletionMinMessagesExpression(aggregateMediator.getCompletionMinMessagesExpression());
+            }
+			// End of user code
+			
+			// Start of user code  for completionMaxMessagesExpression command update
+	        if (isAccessible(EsbViewsRepository.AggregateMediator.Properties.completionMaxMessages)) {
+                basePart.setCompletionMaxMessagesExpression(aggregateMediator.getCompletionMaxMessagesExpression());
+            }
+			// End of user code
+			
+			// Start of user code  for aggregationExpression command update
+            if (isAccessible(EsbViewsRepository.AggregateMediator.OnComplete.aggregationExpression)) {
+                basePart.setAggregationExpression(aggregateMediator.getAggregationExpression());
+            }
+			// End of user code
+			
+			// Start of user code  for sequenceKey command update
+            if (isAccessible(EsbViewsRepository.AggregateMediator.OnComplete.sequenceKey)) {
+                basePart.setSequenceKey(aggregateMediator.getSequenceKey());
+            }
+			// End of user code
 			
 			// init filters
 			
@@ -133,6 +165,21 @@ public class AggregateMediatorPropertiesEditionComponent extends SinglePartPrope
 			
 			
 			
+			// Start of user code  for correlationExpression filter update
+			// End of user code
+			
+			// Start of user code  for completionMinMessagesExpression filter update
+			// End of user code
+			
+			// Start of user code  for completionMaxMessagesExpression filter update
+			// End of user code
+			
+			// Start of user code  for aggregationExpression filter update
+			// End of user code
+			
+			// Start of user code  for sequenceKey filter update
+			// End of user code
+			
 			// init values for referenced views
 			
 			// init filters for referenced views
@@ -140,6 +187,11 @@ public class AggregateMediatorPropertiesEditionComponent extends SinglePartPrope
 		}
 		setInitializing(false);
 	}
+
+
+
+
+
 
 
 
@@ -186,11 +238,26 @@ public class AggregateMediatorPropertiesEditionComponent extends SinglePartPrope
 		if (editorKey == EsbViewsRepository.AggregateMediator.Properties.completionMaxMessagesValue) {
 			return EsbPackage.eINSTANCE.getAggregateMediator_CompletionMaxMessagesValue();
 		}
-		if (editorKey == EsbViewsRepository.AggregateMediator.Properties.sequenceType) {
+		if (editorKey == EsbViewsRepository.AggregateMediator.OnComplete.sequenceType) {
 			return EsbPackage.eINSTANCE.getAggregateMediator_SequenceType();
 		}
 		if (editorKey == EsbViewsRepository.AggregateMediator.Properties.enclosingElementProperty) {
 			return EsbPackage.eINSTANCE.getAggregateMediator_EnclosingElementProperty();
+		}
+		if (editorKey == EsbViewsRepository.AggregateMediator.Properties.correlationExpression) {
+			return EsbPackage.eINSTANCE.getAggregateMediator_CorrelationExpression();
+		}
+		if (editorKey == EsbViewsRepository.AggregateMediator.Properties.completionMinMessages) {
+			return EsbPackage.eINSTANCE.getAggregateMediator_CompletionMinMessagesExpression();
+		}
+		if (editorKey == EsbViewsRepository.AggregateMediator.Properties.completionMaxMessages) {
+			return EsbPackage.eINSTANCE.getAggregateMediator_CompletionMaxMessagesExpression();
+		}
+		if (editorKey == EsbViewsRepository.AggregateMediator.OnComplete.aggregationExpression) {
+			return EsbPackage.eINSTANCE.getAggregateMediator_AggregationExpression();
+		}
+		if (editorKey == EsbViewsRepository.AggregateMediator.OnComplete.sequenceKey) {
+			return EsbPackage.eINSTANCE.getAggregateMediator_SequenceKey();
 		}
 		return super.associatedFeature(editorKey);
 	}
@@ -232,11 +299,66 @@ public class AggregateMediatorPropertiesEditionComponent extends SinglePartPrope
 		if (EsbViewsRepository.AggregateMediator.Properties.completionMaxMessagesValue == event.getAffectedEditor()) {
 			aggregateMediator.setCompletionMaxMessagesValue((EEFConverterUtil.createIntFromString(EcorePackage.Literals.EINT, (String)event.getNewValue())));
 		}
-		if (EsbViewsRepository.AggregateMediator.Properties.sequenceType == event.getAffectedEditor()) {
+		if (EsbViewsRepository.AggregateMediator.OnComplete.sequenceType == event.getAffectedEditor()) {
 			aggregateMediator.setSequenceType((AggregateSequenceType)event.getNewValue());
 		}
 		if (EsbViewsRepository.AggregateMediator.Properties.enclosingElementProperty == event.getAffectedEditor()) {
 			aggregateMediator.setEnclosingElementProperty((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
+		}
+		if (EsbViewsRepository.AggregateMediator.Properties.correlationExpression == event.getAffectedEditor()) {
+			// Start of user code for updateCorrelationExpression method body
+            if (event.getNewValue() != null) {
+                NamespacedProperty nsp = (NamespacedProperty) event.getNewValue();
+                aggregateMediator.setCorrelationExpression(nsp);
+            } else {
+                aggregateMediator.setCorrelationExpression(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+            }
+			// End of user code
+			
+		}
+		if (EsbViewsRepository.AggregateMediator.Properties.completionMinMessages == event.getAffectedEditor()) {
+			// Start of user code for updateCompletionMinMessagesExpression method body
+            if (event.getNewValue() != null) {
+                NamespacedProperty nsp = (NamespacedProperty) event.getNewValue();
+                aggregateMediator.setCompletionMinMessagesExpression(nsp);
+            } else {
+                aggregateMediator.setCompletionMinMessagesExpression(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+            }
+			// End of user code
+			
+		}
+		if (EsbViewsRepository.AggregateMediator.Properties.completionMaxMessages == event.getAffectedEditor()) {
+			// Start of user code for updateCompletionMaxMessagesExpression method body
+            if (event.getNewValue() != null) {
+                NamespacedProperty nsp = (NamespacedProperty) event.getNewValue();
+                aggregateMediator.setCompletionMaxMessagesExpression(nsp);
+            } else {
+                aggregateMediator.setCompletionMaxMessagesExpression(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+            }
+			// End of user code
+			
+		}
+		if (EsbViewsRepository.AggregateMediator.OnComplete.aggregationExpression == event.getAffectedEditor()) {
+			// Start of user code for updateAggregationExpression method body
+            if (event.getNewValue() != null) {
+                NamespacedProperty nsp = (NamespacedProperty) event.getNewValue();
+                aggregateMediator.setAggregationExpression(nsp);
+            } else {
+                aggregateMediator.setAggregationExpression(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+            }
+			// End of user code
+			
+		}
+		if (EsbViewsRepository.AggregateMediator.OnComplete.sequenceKey == event.getAffectedEditor()) {
+			// Start of user code for updateSequenceKey method body
+            if (event.getNewValue() != null) {
+                RegistryKeyProperty rkp = (RegistryKeyProperty) event.getNewValue();
+                aggregateMediator.setSequenceKey(rkp);
+            } else {
+                aggregateMediator.setSequenceKey(EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty());
+            }
+			// End of user code
+			
 		}
 	}
 
@@ -304,7 +426,7 @@ public class AggregateMediatorPropertiesEditionComponent extends SinglePartPrope
 					basePart.setCompletionMaxMessagesValue("");
 				}
 			}
-			if (EsbPackage.eINSTANCE.getAggregateMediator_SequenceType().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EsbViewsRepository.AggregateMediator.Properties.sequenceType))
+			if (EsbPackage.eINSTANCE.getAggregateMediator_SequenceType().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EsbViewsRepository.AggregateMediator.OnComplete.sequenceType))
 				basePart.setSequenceType((AggregateSequenceType)msg.getNewValue());
 			
 			if (EsbPackage.eINSTANCE.getAggregateMediator_EnclosingElementProperty().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.AggregateMediator.Properties.enclosingElementProperty)) {
@@ -314,6 +436,56 @@ public class AggregateMediatorPropertiesEditionComponent extends SinglePartPrope
 					basePart.setEnclosingElementProperty("");
 				}
 			}
+					// Start of user code for correlationExpression live update
+           if (EsbPackage.eINSTANCE.getAggregateMediator_CorrelationExpression().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.AggregateMediator.Properties.correlationExpression)) {
+                if (msg.getNewValue() != null) {
+                    basePart.setCorrelationExpression((NamespacedProperty)msg.getNewValue());
+                } else {
+                    basePart.setCorrelationExpression(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+                }
+            }
+					// End of user code
+			
+					// Start of user code for completionMinMessagesExpression live update
+           if (EsbPackage.eINSTANCE.getAggregateMediator_CompletionMinMessagesExpression().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.AggregateMediator.Properties.completionMinMessages)) {
+               if (msg.getNewValue() != null) {
+                   basePart.setCompletionMinMessagesExpression((NamespacedProperty)msg.getNewValue());
+               } else {
+                   basePart.setCompletionMinMessagesExpression(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+               }
+           }
+					// End of user code
+			
+					// Start of user code for completionMaxMessagesExpression live update
+           if (EsbPackage.eINSTANCE.getAggregateMediator_CompletionMaxMessagesExpression().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.AggregateMediator.Properties.completionMaxMessages)) {
+               if (msg.getNewValue() != null) {
+                   basePart.setCompletionMaxMessagesExpression((NamespacedProperty)msg.getNewValue());
+               } else {
+                   basePart.setCompletionMaxMessagesExpression(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+               }
+           }
+					// End of user code
+			
+					// Start of user code for aggregationExpression live update
+           if (EsbPackage.eINSTANCE.getAggregateMediator_AggregationExpression().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.AggregateMediator.OnComplete.aggregationExpression)) {
+               if (msg.getNewValue() != null) {
+                   basePart.setAggregationExpression((NamespacedProperty)msg.getNewValue());
+               } else {
+                   basePart.setAggregationExpression(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+               }
+           }			
+					// End of user code
+			
+					// Start of user code for sequenceKey live update
+           if (EsbPackage.eINSTANCE.getAggregateMediator_SequenceKey().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.AggregateMediator.OnComplete.sequenceKey)) {
+               if (msg.getNewValue() != null) {
+                   basePart.setSequenceKey((RegistryKeyProperty)msg.getNewValue());
+               } else {
+                   basePart.setSequenceKey(EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty());
+               }
+           }
+					// End of user code
+			
 			
 		}
 	}
@@ -336,10 +508,27 @@ public class AggregateMediatorPropertiesEditionComponent extends SinglePartPrope
 			EsbPackage.eINSTANCE.getAggregateMediator_CompletionMinMessagesValue(),
 			EsbPackage.eINSTANCE.getAggregateMediator_CompletionMaxMessagesValue(),
 			EsbPackage.eINSTANCE.getAggregateMediator_SequenceType(),
-			EsbPackage.eINSTANCE.getAggregateMediator_EnclosingElementProperty()		);
+			EsbPackage.eINSTANCE.getAggregateMediator_EnclosingElementProperty(),
+			EsbPackage.eINSTANCE.getAggregateMediator_CorrelationExpression(),
+			EsbPackage.eINSTANCE.getAggregateMediator_CompletionMinMessagesExpression(),
+			EsbPackage.eINSTANCE.getAggregateMediator_CompletionMaxMessagesExpression(),
+			EsbPackage.eINSTANCE.getAggregateMediator_AggregationExpression(),
+			EsbPackage.eINSTANCE.getAggregateMediator_SequenceKey()		);
 		return new NotificationFilter[] {filter,};
 	}
 
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getHelpContent(java.lang.Object, int)
+	 * 
+	 */
+	public String getHelpContent(Object key, int kind) {
+		if (key == EsbViewsRepository.AggregateMediator.OnComplete.aggregationExpression)
+			return ""; //$NON-NLS-1$
+		return super.getHelpContent(key, kind);
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -414,7 +603,7 @@ public class AggregateMediatorPropertiesEditionComponent extends SinglePartPrope
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getAggregateMediator_CompletionMaxMessagesValue().getEAttributeType(), newValue);
 				}
-				if (EsbViewsRepository.AggregateMediator.Properties.sequenceType == event.getAffectedEditor()) {
+				if (EsbViewsRepository.AggregateMediator.OnComplete.sequenceType == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getAggregateMediator_SequenceType().getEAttributeType(), (String)newValue);

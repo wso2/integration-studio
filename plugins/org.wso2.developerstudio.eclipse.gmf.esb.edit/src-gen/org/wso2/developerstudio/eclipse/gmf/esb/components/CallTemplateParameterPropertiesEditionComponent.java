@@ -32,8 +32,9 @@ import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateParameter;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.RuleOptionType;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.CallTemplateParameterPropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 
@@ -86,9 +87,19 @@ public class CallTemplateParameterPropertiesEditionComponent extends SinglePartP
 			if (isAccessible(EsbViewsRepository.CallTemplateParameter.Properties.parameterValue))
 				basePart.setParameterValue(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, callTemplateParameter.getParameterValue()));
 			
+			// Start of user code  for parameterExpression command update
+            if (isAccessible(EsbViewsRepository.CallTemplateParameter.Properties.parameterExpression)) {
+                basePart.setParameterExpression(callTemplateParameter.getParameterExpression());
+            }
+			// End of user code
+			
 			// init filters
 			
 			
+			
+			// Start of user code  for parameterExpression filter update
+            validate();
+			// End of user code
 			
 			// init values for referenced views
 			
@@ -97,6 +108,7 @@ public class CallTemplateParameterPropertiesEditionComponent extends SinglePartP
 		}
 		setInitializing(false);
 	}
+
 
 
 
@@ -117,6 +129,9 @@ public class CallTemplateParameterPropertiesEditionComponent extends SinglePartP
 		if (editorKey == EsbViewsRepository.CallTemplateParameter.Properties.parameterValue) {
 			return EsbPackage.eINSTANCE.getCallTemplateParameter_ParameterValue();
 		}
+		if (editorKey == EsbViewsRepository.CallTemplateParameter.Properties.parameterExpression) {
+			return EsbPackage.eINSTANCE.getCallTemplateParameter_ParameterExpression();
+		}
 		return super.associatedFeature(editorKey);
 	}
 
@@ -135,6 +150,17 @@ public class CallTemplateParameterPropertiesEditionComponent extends SinglePartP
 		}
 		if (EsbViewsRepository.CallTemplateParameter.Properties.parameterValue == event.getAffectedEditor()) {
 			callTemplateParameter.setParameterValue((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
+		}
+		if (EsbViewsRepository.CallTemplateParameter.Properties.parameterExpression == event.getAffectedEditor()) {
+			// Start of user code for updateParameterExpression method body
+            if (event.getNewValue() != null) {
+                NamespacedProperty nsp = (NamespacedProperty) event.getNewValue();
+                callTemplateParameter.setParameterExpression(nsp);
+            } else {
+                callTemplateParameter.setParameterExpression(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+            }
+			// End of user code
+			
 		}
 	}
 
@@ -163,6 +189,16 @@ public class CallTemplateParameterPropertiesEditionComponent extends SinglePartP
 					basePart.setParameterValue("");
 				}
 			}
+					// Start of user code for parameterExpression live update
+			if (EsbPackage.eINSTANCE.getCallTemplateParameter_ParameterExpression().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.CallTemplateParameter.Properties.parameterValue)) {
+                if (msg.getNewValue() != null) {
+                    basePart.setParameterExpression((NamespacedProperty)msg.getNewValue());
+                } else {
+                    basePart.setParameterExpression(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+                }
+            }
+					// End of user code
+			
 			
 		}
 	}
@@ -177,7 +213,8 @@ public class CallTemplateParameterPropertiesEditionComponent extends SinglePartP
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			EsbPackage.eINSTANCE.getCallTemplateParameter_ParameterName(),
 			EsbPackage.eINSTANCE.getCallTemplateParameter_TemplateParameterType(),
-			EsbPackage.eINSTANCE.getCallTemplateParameter_ParameterValue()		);
+			EsbPackage.eINSTANCE.getCallTemplateParameter_ParameterValue(),
+			EsbPackage.eINSTANCE.getCallTemplateParameter_ParameterExpression()		);
 		return new NotificationFilter[] {filter,};
 	}
 

@@ -45,7 +45,9 @@ import org.wso2.developerstudio.eclipse.gmf.esb.CallMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.CallMediatorEndpointType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.CallMediatorPropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 
@@ -113,6 +115,18 @@ public class CallMediatorPropertiesEditionComponent extends SinglePartProperties
 			if (isAccessible(EsbViewsRepository.CallMediator.Properties.enableBlockingCalls)) {
 				basePart.setEnableBlockingCalls(callMediator.isEnableBlockingCalls());
 			}
+			// Start of user code  for endpointXPath command update
+	        if (isAccessible(EsbViewsRepository.CallMediator.Properties.endpointXpath)) {
+                  basePart.setEndpointXPath(callMediator.getEndpointXpath());
+           }
+			// End of user code
+			
+			// Start of user code  for endpointRegistryKey command update
+            if (isAccessible(EsbViewsRepository.CallMediator.Properties.endpointRegistryKey)) {
+                basePart.setEndpointRegistryKey(callMediator.getEndpointRegistrykey());
+            }
+			// End of user code
+			
 			// init filters
 			
 			
@@ -124,6 +138,12 @@ public class CallMediatorPropertiesEditionComponent extends SinglePartProperties
 			}
 			
 			
+			// Start of user code  for endpointXPath filter update
+			// End of user code
+			
+			// Start of user code  for endpointRegistryKey filter update
+			// End of user code
+			
 			// init values for referenced views
 			
 			// init filters for referenced views
@@ -131,6 +151,8 @@ public class CallMediatorPropertiesEditionComponent extends SinglePartProperties
 		}
 		setInitializing(false);
 	}
+
+
 
 
 
@@ -162,6 +184,12 @@ public class CallMediatorPropertiesEditionComponent extends SinglePartProperties
 		}
 		if (editorKey == EsbViewsRepository.CallMediator.Properties.enableBlockingCalls) {
 			return EsbPackage.eINSTANCE.getCallMediator_EnableBlockingCalls();
+		}
+		if (editorKey == EsbViewsRepository.CallMediator.Properties.endpointXpath) {
+			return EsbPackage.eINSTANCE.getCallMediator_EndpointXpath();
+		}
+		if (editorKey == EsbViewsRepository.CallMediator.Properties.endpointRegistryKey) {
+			return EsbPackage.eINSTANCE.getCallMediator_EndpointRegistrykey();
 		}
 		return super.associatedFeature(editorKey);
 	}
@@ -201,6 +229,28 @@ public class CallMediatorPropertiesEditionComponent extends SinglePartProperties
 		}
 		if (EsbViewsRepository.CallMediator.Properties.enableBlockingCalls == event.getAffectedEditor()) {
 			callMediator.setEnableBlockingCalls((Boolean)event.getNewValue());
+		}
+		if (EsbViewsRepository.CallMediator.Properties.endpointXpath == event.getAffectedEditor()) {
+			// Start of user code for updateEndpointXPath method body
+            if (event.getNewValue() != null) {
+                NamespacedProperty nsp = (NamespacedProperty) event.getNewValue();
+                callMediator.setEndpointXpath(nsp);
+            } else {
+                callMediator.setEndpointXpath(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+            }
+			// End of user code
+			
+		}
+		if (EsbViewsRepository.CallMediator.Properties.endpointRegistryKey == event.getAffectedEditor()) {
+			// Start of user code for updateEndpointRegistryKey method body
+            if (event.getNewValue() != null) {
+                RegistryKeyProperty rkp = (RegistryKeyProperty) event.getNewValue();
+                callMediator.setEndpointRegistrykey(rkp);
+            } else {
+                callMediator.setEndpointRegistrykey(EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty());
+            }
+			// End of user code
+			
 		}
 	}
 
@@ -242,6 +292,26 @@ public class CallMediatorPropertiesEditionComponent extends SinglePartProperties
 			if (EsbPackage.eINSTANCE.getCallMediator_EnableBlockingCalls().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.CallMediator.Properties.enableBlockingCalls))
 				basePart.setEnableBlockingCalls((Boolean)msg.getNewValue());
 			
+					// Start of user code for endpointXPath live update
+			if (EsbPackage.eINSTANCE.getCallMediator_EndpointXpath().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.CallMediator.Properties.endpointXpath)) {
+                if (msg.getNewValue() != null) {
+                    basePart.setEndpointXPath((NamespacedProperty)msg.getNewValue());
+                } else {
+                    basePart.setEndpointXPath(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+                }
+             }
+					// End of user code
+			
+					// Start of user code for endpointRegistryKey live update
+			if (EsbPackage.eINSTANCE.getCallMediator_EndpointRegistrykey().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.CallMediator.Properties.endpointRegistryKey)) {
+               if (msg.getNewValue() != null) {
+                   basePart.setEndpointRegistryKey((RegistryKeyProperty)msg.getNewValue());
+               } else {
+                   basePart.setEndpointRegistryKey(EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty());
+               }
+			}		
+					// End of user code
+			
 			
 		}
 	}
@@ -259,7 +329,9 @@ public class CallMediatorPropertiesEditionComponent extends SinglePartProperties
 			EsbPackage.eINSTANCE.getMediator_Reverse(),
 			EsbPackage.eINSTANCE.getCallMediator_Endpoint(),
 			EsbPackage.eINSTANCE.getCallMediator_EndpointType(),
-			EsbPackage.eINSTANCE.getCallMediator_EnableBlockingCalls()		);
+			EsbPackage.eINSTANCE.getCallMediator_EnableBlockingCalls(),
+			EsbPackage.eINSTANCE.getCallMediator_EndpointXpath(),
+			EsbPackage.eINSTANCE.getCallMediator_EndpointRegistrykey()		);
 		return new NotificationFilter[] {filter,};
 	}
 

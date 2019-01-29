@@ -55,7 +55,7 @@ import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.CallTemplateParameterPropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 
@@ -72,6 +72,10 @@ public class CallTemplateParameterPropertiesEditionPartForm extends SectionPrope
 	protected Text parameterName;
 	protected EMFComboViewer templateParameterType;
 	protected Text parameterValue;
+	// Start of user code  for parameterExpression widgets declarations
+	
+	// End of user code
+
 
 
 
@@ -120,6 +124,7 @@ public class CallTemplateParameterPropertiesEditionPartForm extends SectionPrope
 		propertiesStep.addStep(EsbViewsRepository.CallTemplateParameter.Properties.parameterName);
 		propertiesStep.addStep(EsbViewsRepository.CallTemplateParameter.Properties.templateParameterType);
 		propertiesStep.addStep(EsbViewsRepository.CallTemplateParameter.Properties.parameterValue);
+		propertiesStep.addStep(EsbViewsRepository.CallTemplateParameter.Properties.parameterExpression);
 		
 		
 		composer = new PartComposer(callTemplateParameterStep) {
@@ -138,6 +143,9 @@ public class CallTemplateParameterPropertiesEditionPartForm extends SectionPrope
 				if (key == EsbViewsRepository.CallTemplateParameter.Properties.parameterValue) {
 					return createParameterValueText(widgetFactory, parent);
 				}
+				// Start of user code for parameterExpression addToPart creation
+				
+				// End of user code
 				return parent;
 			}
 		};
@@ -455,6 +463,10 @@ public class CallTemplateParameterPropertiesEditionPartForm extends SectionPrope
 
 
 
+	// Start of user code for parameterExpression specific getters and setters implementation
+	
+	// End of user code
+
 	/**
 	 * {@inheritDoc}
 	 *
@@ -465,8 +477,20 @@ public class CallTemplateParameterPropertiesEditionPartForm extends SectionPrope
 		return EsbMessages.CallTemplateParameter_Part_Title;
 	}
 
+
 	// Start of user code additional methods
-	
+
+    @Override
+    public NamespacedProperty getParameterExpression() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void setParameterExpression(NamespacedProperty nameSpacedProperty) {
+        // TODO Auto-generated method stub
+        
+    }
 	// End of user code
 
 

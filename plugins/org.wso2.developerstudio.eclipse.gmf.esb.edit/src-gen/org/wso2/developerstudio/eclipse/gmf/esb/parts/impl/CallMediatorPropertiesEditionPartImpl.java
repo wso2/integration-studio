@@ -81,7 +81,8 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.CallMediatorPropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 
@@ -105,6 +106,14 @@ public class CallMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 	protected List<ViewerFilter> endpointFilters = new ArrayList<ViewerFilter>();
 	protected EMFComboViewer endpointType;
 	protected Button enableBlockingCalls;
+	// Start of user code  for endpointXpath widgets declarations
+	
+	// End of user code
+
+	// Start of user code  for endpointRegistryKey widgets declarations
+	
+	// End of user code
+
 
 
 
@@ -149,6 +158,8 @@ public class CallMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 		propertiesStep.addStep(EsbViewsRepository.CallMediator.Properties.endpoint);
 		propertiesStep.addStep(EsbViewsRepository.CallMediator.Properties.endpointType);
 		propertiesStep.addStep(EsbViewsRepository.CallMediator.Properties.enableBlockingCalls);
+		propertiesStep.addStep(EsbViewsRepository.CallMediator.Properties.endpointXpath);
+		propertiesStep.addStep(EsbViewsRepository.CallMediator.Properties.endpointRegistryKey);
 		
 		
 		composer = new PartComposer(callMediatorStep) {
@@ -176,6 +187,12 @@ public class CallMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 				if (key == EsbViewsRepository.CallMediator.Properties.enableBlockingCalls) {
 					return createEnableBlockingCallsCheckbox(parent);
 				}
+				// Start of user code for endpointXpath addToPart creation
+				
+				// End of user code
+				// Start of user code for endpointRegistryKey addToPart creation
+				
+				// End of user code
 				return parent;
 			}
 		};
@@ -738,6 +755,14 @@ public class CallMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 
 
 
+	// Start of user code for endpointXpath specific getters and setters implementation
+	
+	// End of user code
+
+	// Start of user code for endpointRegistryKey specific getters and setters implementation
+	
+	// End of user code
+
 	/**
 	 * {@inheritDoc}
 	 *
@@ -749,7 +774,29 @@ public class CallMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 	}
 
 	// Start of user code additional methods
-	
+    @Override
+    public NamespacedProperty getEndpointXPath() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void setEndpointXPath(NamespacedProperty nameSpacedProperty) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public RegistryKeyProperty getEndpointRegistryKey() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void setEndpointRegistryKey(RegistryKeyProperty registryKeyProperty) {
+        // TODO Auto-generated method stub
+        
+    }
 	// End of user code
 
 

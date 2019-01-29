@@ -5,6 +5,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb.parts;
 
 // Start of user code for imports
 import org.eclipse.emf.common.util.Enumerator;
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 
 
 // End of user code
@@ -66,6 +67,11 @@ public interface CallTemplateParameterPropertiesEditionPart {
 
 
 
+	// Start of user code for parameterExpression specific getters and setters declaration
+    public NamespacedProperty getParameterExpression();
+
+    public void setParameterExpression(NamespacedProperty nameSpacedProperty);
+	// End of user code
 
 	/**
 	 * Returns the internationalized title text.

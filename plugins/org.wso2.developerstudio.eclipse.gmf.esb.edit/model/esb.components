@@ -45,6 +45,12 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7vUAPJnEei6boXzpRIfnA" name="enableBlockingCalls" views="_E7wiR_JnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//CallMediator/enableBlockingCalls"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_dHZTcCI6EemnaM3ogRIOJQ" name="endpointXPath" views="_1Cw5sCI1EemnaM3ogRIOJQ">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//CallMediator/endpointXpath"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_i3pa0CI6EemnaM3ogRIOJQ" name="endpointRegistryKey" views="_AJ3J8CI2EemnaM3ogRIOJQ">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//CallMediator/endpointRegistrykey"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//CallMediator"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_E7vUAfJnEei6boXzpRIfnA" name="CallMediatorInputConnector" views="_E7wiSPJnEei6boXzpRIfnA">
@@ -1743,6 +1749,21 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v7rvJnEei6boXzpRIfnA" name="enclosingElementProperty" views="_E7wlBvJnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//AggregateMediator/enclosingElementProperty"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_mexhUCFwEemj6_7mTNYftw" name="correlationExpression" views="_Qar_ECFwEemj6_7mTNYftw">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//AggregateMediator/correlationExpression"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_rqXnACFxEemj6_7mTNYftw" name="completionMinMessagesExpression" views="_LnncMCFxEemj6_7mTNYftw">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//AggregateMediator/completionMinMessagesExpression"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_24vj8CFxEemj6_7mTNYftw" name="completionMaxMessagesExpression" views="_UzTvsCFxEemj6_7mTNYftw">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//AggregateMediator/completionMaxMessagesExpression"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_PbFRUCFyEemj6_7mTNYftw" name="aggregationExpression" views="_dbK9YCFxEemj6_7mTNYftw">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//AggregateMediator/aggregationExpression"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_aVnsQCFyEemj6_7mTNYftw" name="sequenceKey" views="_hdzFUCFxEemj6_7mTNYftw">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//AggregateMediator/sequenceKey"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//AggregateMediator"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_E7v7r_JnEei6boXzpRIfnA" name="AggregateMediatorInputConnector" views="_E7wlB_JnEei6boXzpRIfnA">
@@ -2930,6 +2951,9 @@
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v9OvJnEei6boXzpRIfnA" name="parameterValue" views="_E7wm7fJnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//CallTemplateParameter/parameterValue"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_SWURgCJxEemnaM3ogRIOJQ" name="parameterExpression" views="_J_lQECJxEemnaM3ogRIOJQ">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//CallTemplateParameter/parameterExpression"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//CallTemplateParameter"/>
       </bindings>
@@ -5481,6 +5505,8 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wiR_JnEei6boXzpRIfnA" name="enableBlockingCalls">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
           </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_1Cw5sCI1EemnaM3ogRIOJQ" name="endpointXpath"/>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_AJ3J8CI2EemnaM3ogRIOJQ" name="endpointRegistryKey"/>
         </elements>
       </views>
       <views xmi:id="_E7wiSPJnEei6boXzpRIfnA" name="CallMediatorInputConnector">
@@ -7433,12 +7459,20 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wlBPJnEei6boXzpRIfnA" name="completionMaxMessagesValue">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wlBfJnEei6boXzpRIfnA" name="sequenceType">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
-          </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wlBvJnEei6boXzpRIfnA" name="enclosingElementProperty">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_Qar_ECFwEemj6_7mTNYftw" name="correlationExpression"/>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_LnncMCFxEemj6_7mTNYftw" name="completionMinMessages"/>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_UzTvsCFxEemj6_7mTNYftw" name="completionMaxMessages"/>
+        </elements>
+        <elements xsi:type="eef-views:Container" xmi:id="_-2basCIKEemnaM3ogRIOJQ" name="onComplete">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_dbK9YCFxEemj6_7mTNYftw" name="aggregationExpression"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wlBfJnEei6boXzpRIfnA" name="sequenceType">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
+          </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_hdzFUCFxEemj6_7mTNYftw" name="sequenceKey"/>
         </elements>
       </views>
       <views xmi:id="_E7wlB_JnEei6boXzpRIfnA" name="AggregateMediatorInputConnector">
@@ -8805,6 +8839,7 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wm7fJnEei6boXzpRIfnA" name="parameterValue">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_J_lQECJxEemnaM3ogRIOJQ" name="parameterExpression"/>
         </elements>
       </views>
       <views xmi:id="_E7wm7vJnEei6boXzpRIfnA" name="CallTemplateMediator">

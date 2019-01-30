@@ -213,7 +213,7 @@ public class CallMediatorItemProvider extends MediatorItemProvider {
     }
 
     /**
-     * This returns CallMediator.gif.
+     * This returns CallMediator.png.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated NOT

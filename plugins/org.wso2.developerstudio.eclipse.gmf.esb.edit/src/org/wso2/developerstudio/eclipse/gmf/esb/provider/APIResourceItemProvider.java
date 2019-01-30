@@ -539,14 +539,14 @@ public class APIResourceItemProvider extends EsbNodeItemProvider {
     }
 
     /**
-     * This returns APIResource.gif.
+     * This returns APIResource.png.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
+     * @generated NOT
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/APIResource"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/APIResource.png"));
     }
 
     /**

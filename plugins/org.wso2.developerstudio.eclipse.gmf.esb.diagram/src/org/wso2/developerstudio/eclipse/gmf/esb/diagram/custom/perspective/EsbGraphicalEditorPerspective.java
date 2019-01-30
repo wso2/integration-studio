@@ -24,6 +24,9 @@ public class EsbGraphicalEditorPerspective implements IPerspectiveFactory {
         // layout.setFixed(true);
         layout.addShowViewShortcut(IPageLayout.ID_OUTLINE);
         layout.addShowViewShortcut(IPageLayout.ID_PROJECT_EXPLORER);
+        // Add eclipse launch action set including running and debugging tool buttons
+        layout.addActionSet("org.eclipse.debug.ui.launchActionSet");
+
     }
 
     public void defineLayout(IPageLayout layout) {

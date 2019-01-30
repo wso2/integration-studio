@@ -4,9 +4,8 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.parts;
 
 // Start of user code for imports
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.Enumerator;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 
 // End of user code
 
@@ -15,60 +14,6 @@ import org.eclipse.emf.common.util.Enumerator;
  * 
  */
 public interface HeaderMediatorPropertiesEditionPart {
-
-	/**
-	 * @return the description
-	 * 
-	 */
-	public String getDescription();
-
-	/**
-	 * Defines a new description
-	 * @param newValue the new description to set
-	 * 
-	 */
-	public void setDescription(String newValue);
-
-
-	/**
-	 * @return the commentsList
-	 * 
-	 */
-	public EList getCommentsList();
-
-	/**
-	 * Defines a new commentsList
-	 * @param newValue the new commentsList to set
-	 * 
-	 */
-	public void setCommentsList(EList newValue);
-
-	/**
-	 * Add a value to the commentsList multivalued attribute.
-	 * @param newValue the value to add
-	 */
-	public void addToCommentsList(Object newValue);
-
-	/**
-	 * Remove a value to the commentsList multivalued attribute.
-	 * @param newValue the value to remove
-	 */
-	public void removeToCommentsList(Object newValue);
-
-
-	/**
-	 * @return the Reverse
-	 * 
-	 */
-	public Boolean getReverse();
-
-	/**
-	 * Defines a new Reverse
-	 * @param newValue the new Reverse to set
-	 * 
-	 */
-	public void setReverse(Boolean newValue);
-
 
 	/**
 	 * @return the headerAction
@@ -148,21 +93,47 @@ public interface HeaderMediatorPropertiesEditionPart {
 
 
 	/**
-	 * @return the valueInline
+	 * @return the value Inline
 	 * 
 	 */
 	public String getValueInline();
 
 	/**
-	 * Defines a new valueInline
-	 * @param newValue the new valueInline to set
+	 * Defines a new value Inline
+	 * @param newValue the new value Inline to set
 	 * 
 	 */
 	public void setValueInline(String newValue);
 
 
+	/**
+	 * @return the description
+	 * 
+	 */
+	public String getDescription();
+
+	/**
+	 * Defines a new description
+	 * @param newValue the new description to set
+	 * 
+	 */
+	public void setDescription(String newValue);
 
 
+
+
+	// Start of user code for header Name specific getters and setters declaration
+	public NamespacedProperty getHeaderName();
+	       
+	public void setHeaderName(NamespacedProperty namespacedProperty);
+
+	// End of user code
+	// Start of user code for value Expression specific getters and setters declaration
+	public NamespacedProperty getValueExpression();
+	       
+	public void setValueExpression(NamespacedProperty namespacedProperty);
+	
+	// End of user code
 
 	/**
 	 * Returns the internationalized title text.

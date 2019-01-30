@@ -1743,7 +1743,7 @@ public class EsbViewsRepository {
 			public static String newPropertyName = "esb::PropertyMediator::properties::newPropertyName";
 			
 			// Start of user code for valueExpression ElementEditor key
-			public static String valueExpression = "esb::PropertyMediator::properties::valueExpression";
+			public static String valueExpression = "esb::HeaderMediator::properties::valueExpression";
 			// End of user code
 			
 	
@@ -4107,15 +4107,6 @@ public class EsbViewsRepository {
 		public static class Properties {
 	
 			
-			public static String description = "esb::HeaderMediator::properties::description";
-			
-			
-			public static String commentsList = "esb::HeaderMediator::properties::commentsList";
-			
-			
-			public static String reverse = "esb::HeaderMediator::properties::Reverse";
-			
-			
 			public static String headerAction = "esb::HeaderMediator::properties::headerAction";
 			
 			
@@ -4128,7 +4119,18 @@ public class EsbViewsRepository {
 			public static String valueLiteral = "esb::HeaderMediator::properties::valueLiteral";
 			
 			
-			public static String valueInline = "esb::HeaderMediator::properties::valueInline";
+			public static String valueInline = "esb::HeaderMediator::properties::value Inline";
+			
+			// Start of user code for header Name ElementEditor key
+			public static String headerName = "esb::HeaderMediator::properties::header Name";
+			// End of user code
+			
+			// Start of user code for value Expression ElementEditor key
+			public static String valueExpression = "esb::HeaderMediator::properties::value Expression";
+			// End of user code
+			
+			
+			public static String description = "esb::HeaderMediator::properties::description";
 			
 	
 		}

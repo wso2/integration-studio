@@ -4966,15 +4966,6 @@ public class EsbMessages extends NLS {
 	public static String AutoscaleOutMediatorPropertiesEditionPart_ReverseLabel;
 
 	
-	public static String HeaderMediatorPropertiesEditionPart_DescriptionLabel;
-
-	
-	public static String HeaderMediatorPropertiesEditionPart_CommentsListLabel;
-
-	
-	public static String HeaderMediatorPropertiesEditionPart_ReverseLabel;
-
-	
 	public static String HeaderMediatorPropertiesEditionPart_HeaderActionLabel;
 
 	
@@ -4988,6 +4979,15 @@ public class EsbMessages extends NLS {
 
 	
 	public static String HeaderMediatorPropertiesEditionPart_ValueInlineLabel;
+
+	
+	public static String HeaderMediatorPropertiesEditionPart_HeaderNameLabel;
+
+	
+	public static String HeaderMediatorPropertiesEditionPart_ValueExpressionLabel;
+
+	
+	public static String HeaderMediatorPropertiesEditionPart_DescriptionLabel;
 
 	
 	public static String HeaderMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;

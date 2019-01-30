@@ -2388,15 +2388,6 @@
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//AutoscaleOutMediator"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_E7v8fvJnEei6boXzpRIfnA" name="HeaderMediator" views="_E7wmCvJnEei6boXzpRIfnA">
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v8f_JnEei6boXzpRIfnA" name="description" views="_E7wmDPJnEei6boXzpRIfnA">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//EsbElement/description"/>
-        </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v8gPJnEei6boXzpRIfnA" name="commentsList" views="_E7wmDfJnEei6boXzpRIfnA">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//EsbElement/commentsList"/>
-        </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v8gfJnEei6boXzpRIfnA" name="Reverse" views="_E7wmDvJnEei6boXzpRIfnA">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//Mediator/Reverse"/>
-        </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v8gvJnEei6boXzpRIfnA" name="headerAction" views="_E7wmD_JnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//HeaderMediator/headerAction"/>
         </properties>
@@ -2411,6 +2402,15 @@
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v8hvJnEei6boXzpRIfnA" name="valueInline" views="_E7wmE_JnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//HeaderMediator/valueInline"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_vSHuoCPTEemagNadSZ2E_A" name="headerName" views="_pJwpQCPTEemagNadSZ2E_A">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//HeaderMediator/valueExpression"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_JlWK0CPUEemagNadSZ2E_A" name="valueExpression" views="_Dk2oACPUEemagNadSZ2E_A">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//HeaderMediator/valueExpression"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v8f_JnEei6boXzpRIfnA" name="description" views="_E7wmDPJnEei6boXzpRIfnA">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//EsbElement/description"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//HeaderMediator"/>
       </bindings>
@@ -8201,15 +8201,6 @@
       <views xmi:id="_E7wmCvJnEei6boXzpRIfnA" name="HeaderMediator">
         <elements xsi:type="eef-views:Container" xmi:id="_E7wmC_JnEei6boXzpRIfnA" name="properties">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wmDPJnEei6boXzpRIfnA" name="description">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
-          </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wmDfJnEei6boXzpRIfnA" name="commentsList">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.3"/>
-          </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wmDvJnEei6boXzpRIfnA" name="Reverse">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
-          </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wmD_JnEei6boXzpRIfnA" name="headerAction">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
           </elements>
@@ -8222,7 +8213,12 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wmEvJnEei6boXzpRIfnA" name="valueLiteral">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wmE_JnEei6boXzpRIfnA" name="valueInline">
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wmE_JnEei6boXzpRIfnA" name="value Inline">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_pJwpQCPTEemagNadSZ2E_A" name="header Name"/>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_Dk2oACPUEemagNadSZ2E_A" name="value Expression"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wmDPJnEei6boXzpRIfnA" name="description">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
         </elements>

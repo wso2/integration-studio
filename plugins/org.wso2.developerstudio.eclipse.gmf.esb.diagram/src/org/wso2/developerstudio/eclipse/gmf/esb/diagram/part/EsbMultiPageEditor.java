@@ -1160,7 +1160,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
             for (IFile iFile : files) {
                 iFile.deleteMarkers(CONFIG_ERROR, false, 1);
             }
-        } catch (CoreException e) {
+        } catch (Exception e) {
             // ignore
         }
         files.clear();
@@ -1194,7 +1194,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
                 }
             }
 
-        } catch (CoreException e) {
+        } catch (Exception e) {
             // ignore
         }
     }

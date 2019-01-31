@@ -103,14 +103,14 @@ public class LoopBackMediatorItemProvider extends MediatorItemProvider {
     }
 
     /**
-     * This returns LoopBackMediator.gif.
+     * This returns LoopBackMediator.png.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
+     * @generated NOT
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/LoopBackMediator"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/LoopBackMediator.png"));
     }
 
     /**

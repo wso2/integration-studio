@@ -60,6 +60,7 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
 import org.eclipse.ui.forms.widgets.Form;
@@ -97,6 +98,7 @@ public class CloneMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
     protected List<ViewerFilter> targetsOutputConnectorBusinessFilters = new ArrayList<ViewerFilter>();
     protected List<ViewerFilter> targetsOutputConnectorFilters = new ArrayList<ViewerFilter>();
 
+    
     protected Control[] descriptionElements;
     protected Control[] commentListElements;
     protected Control[] cloneIDElements;
@@ -198,7 +200,7 @@ public class CloneMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
     }
 
     /**
-     * 
+     * @generated NOT
      */
     protected Composite createPropertiesGroup(FormToolkit widgetFactory, final Composite parent) {
         Section propertiesSection = widgetFactory.createSection(parent,
@@ -215,6 +217,9 @@ public class CloneMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
         return propertiesGroup;
     }
 
+    /**
+     * @generated NOT
+     */
     protected Composite createDescriptionText(FormToolkit widgetFactory, Composite parent) {
         Control itemLabel = createDescription(parent, EsbViewsRepository.CloneMediator.Properties.description,
                 EsbMessages.CloneMediatorPropertiesEditionPart_DescriptionLabel);
@@ -284,7 +289,7 @@ public class CloneMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
     }
 
     /**
-     * 
+     * @generated NOT
      */
     protected Composite createCommentsListMultiValuedEditor(FormToolkit widgetFactory, Composite parent) {
         commentsList = widgetFactory.createText(parent, "", SWT.READ_ONLY); //$NON-NLS-1$
@@ -332,7 +337,9 @@ public class CloneMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
         // End of user code
         return parent;
     }
-
+    /**
+     * @generated NOT
+     */
     protected Composite createReverseCheckbox(FormToolkit widgetFactory, Composite parent) {
         reverse = widgetFactory.createButton(parent, getDescription(EsbViewsRepository.CloneMediator.Properties.reverse,
                 EsbMessages.CloneMediatorPropertiesEditionPart_ReverseLabel), SWT.CHECK);
@@ -361,11 +368,13 @@ public class CloneMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
         FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(
                 EsbViewsRepository.CloneMediator.Properties.reverse, EsbViewsRepository.FORM_KIND), null); // $NON-NLS-1$
         // Start of user code for createReverseCheckbox
-
+        
         // End of user code
         return parent;
     }
-
+    /**
+     * @generated NOT
+     */
     protected Composite createCloneIDText(FormToolkit widgetFactory, Composite parent) {
         Control itemLabel = createDescription(parent, EsbViewsRepository.CloneMediator.Properties.cloneID,
                 EsbMessages.CloneMediatorPropertiesEditionPart_CloneIDLabel);
@@ -433,7 +442,9 @@ public class CloneMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
         // End of user code
         return parent;
     }
-
+    /**
+     * @generated NOT
+     */
     protected Composite createSequentialMediationCheckbox(FormToolkit widgetFactory, Composite parent) {
         sequentialMediation = widgetFactory.createButton(parent,
                 getDescription(EsbViewsRepository.CloneMediator.Properties.sequentialMediation,
@@ -471,7 +482,9 @@ public class CloneMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
         // End of user code
         return parent;
     }
-
+    /**
+     * @generated NOT
+     */
     protected Composite createContinueParentCheckbox(FormToolkit widgetFactory, Composite parent) {
         continueParent = widgetFactory.createButton(parent,
                 getDescription(EsbViewsRepository.CloneMediator.Properties.continueParent,
@@ -509,7 +522,8 @@ public class CloneMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
 
     /**
      * @param container
-     * 
+     *
+     * @generated NOT
      */
     protected Composite createTargetsTableComposition(FormToolkit widgetFactory, Composite parent) {
         this.targets = new ReferencesTable(getDescription(EsbViewsRepository.CloneMediator.Properties.targets,
@@ -582,12 +596,14 @@ public class CloneMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
 
     /**
      * @param container
-     * 
+     *
+     * @generated NOT
      */
     protected Composite createTargetsOutputConnectorTableComposition(FormToolkit widgetFactory, Composite parent) {
+        Label itemLabel = createDescription(parent, EsbViewsRepository.CloneMediator.Properties.targetsOutputConnector,
+                EsbMessages.CloneMediatorPropertiesEditionPart_TargetsOutputConnectorLabel);
         this.targetsOutputConnector = new ReferencesTable(
-                getDescription(EsbViewsRepository.CloneMediator.Properties.targetsOutputConnector,
-                        EsbMessages.CloneMediatorPropertiesEditionPart_TargetsOutputConnectorLabel),
+                itemLabel.getText(),
                 new ReferencesTableListener() {
                     public void handleAdd() {
                         propertiesEditionComponent.firePropertiesChanged(
@@ -651,7 +667,7 @@ public class CloneMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
         targetsOutputConnector.setID(EsbViewsRepository.CloneMediator.Properties.targetsOutputConnector);
         targetsOutputConnector.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
         // Start of user code for createTargetsOutputConnectorTableComposition
-        targetOutputElements = new Control [] {targetsOutputConnector.getTable()};
+        targetOutputElements = new Control [] {itemLabel, targetsOutputConnector.getTable()};
         // End of user code
         return parent;
     }
@@ -1046,10 +1062,6 @@ public class CloneMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
         epv.hideEntry(new Control[] {reverse}, false);
         epv.hideEntry(commentListElements, false);
         epv.hideEntry(targetOutputElements, false);
-        /*clearElements();
-        showEntry(availableTemplatesElements, false);
-        showEntry(templateParametersElements, false);
-        showEntry(targetTemplateElements, false);*/
         view.layout(true, true);
         view.pack();
     }

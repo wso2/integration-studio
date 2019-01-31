@@ -3787,6 +3787,9 @@ public class EsbMessages extends NLS {
 	public static String LogPropertyPropertiesEditionPart_PropertyValueLabel;
 
 	
+	public static String LogPropertyPropertiesEditionPart_PropertyExpressionLabel;
+
+	
 	public static String PublishEventMediatorPropertiesEditionPart_DescriptionLabel;
 
 	

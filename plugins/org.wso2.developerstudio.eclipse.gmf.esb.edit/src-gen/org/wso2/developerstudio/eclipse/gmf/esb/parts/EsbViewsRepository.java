@@ -1325,6 +1325,10 @@ public class EsbViewsRepository {
 			
 			public static String propertyValue = "esb::LogProperty::properties::propertyValue";
 			
+			// Start of user code for propertyExpression ElementEditor key
+			public static String propertyExpression = "esb::LogProperty::properties::propertyExpression";
+			// End of user code
+			
 	
 		}
 	

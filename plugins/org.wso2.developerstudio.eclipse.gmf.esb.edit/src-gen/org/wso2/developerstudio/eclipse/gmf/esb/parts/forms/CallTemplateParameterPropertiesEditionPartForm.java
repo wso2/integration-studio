@@ -477,7 +477,6 @@ public class CallTemplateParameterPropertiesEditionPartForm extends SectionPrope
 		return EsbMessages.CallTemplateParameter_Part_Title;
 	}
 
-
 	// Start of user code additional methods
 
     @Override

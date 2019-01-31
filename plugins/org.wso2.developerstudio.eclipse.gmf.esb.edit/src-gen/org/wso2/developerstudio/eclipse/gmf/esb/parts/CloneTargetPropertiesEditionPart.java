@@ -13,6 +13,7 @@ import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
 
 import org.eclipse.jface.viewers.ViewerFilter;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 
 
 // End of user code
@@ -142,6 +143,17 @@ public interface CloneTargetPropertiesEditionPart {
 
 
 
+	// Start of user code for endpointRegistryKey specific getters and setters declaration
+	public RegistryKeyProperty getEndpointKey();
+    
+    public void setEndpointKey(RegistryKeyProperty registryKeyProperty);
+    
+	// End of user code
+	// Start of user code for sequenceRegistryKey specific getters and setters declaration
+    public RegistryKeyProperty getSequenceKey();
+    
+    public void setSequenceKey(RegistryKeyProperty registryKeyProperty);
+	// End of user code
 
 	/**
 	 * Returns the internationalized title text.

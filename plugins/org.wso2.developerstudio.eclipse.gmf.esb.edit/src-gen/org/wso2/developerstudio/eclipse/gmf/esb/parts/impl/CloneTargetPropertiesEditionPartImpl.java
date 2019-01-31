@@ -3,6 +3,8 @@
  */
 package org.wso2.developerstudio.eclipse.gmf.esb.parts.impl;
 
+import java.util.ArrayList;
+
 // Start of user code for imports
 import org.eclipse.emf.common.util.Enumerator;
 
@@ -33,6 +35,7 @@ import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EMFComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
+import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
@@ -49,18 +52,26 @@ import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
-
+import org.eclipse.swt.events.MouseEvent;
+import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
-
+import org.eclipse.ui.forms.widgets.FormToolkit;
+import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.CloneTargetPropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.parts.forms.CloneTargetPropertiesEditionPartForm;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.developerstudio.esb.form.editors.article.providers.NamedEntityDescriptor;
 
 // End of user code
 
@@ -75,6 +86,24 @@ public class CloneTargetPropertiesEditionPartImpl extends CompositePropertiesEdi
 	protected EMFComboViewer endpointType;
 	protected Text soapAction;
 	protected Text toAddress;
+	// Start of user code  for endpointRegistryKey widgets declarations
+    protected RegistryKeyProperty endpointKey;
+    protected Text endpointKeyText;
+	// End of user code
+
+	// Start of user code  for sequenceRegistryKey widgets declarations
+    protected RegistryKeyProperty sequenceKey;
+    protected Text sequenceKeyText;
+    protected Control[] sequenceTypeElements;
+    protected Control[] sequenceElements;
+    protected Control[] sequenceKeyElements;
+    protected Control[] endpointTypeElements;
+    protected Control[] endpointKeyElements;
+    protected Control[] soapActionElements;
+    protected Control[] toAddressElements;
+    protected Group propertiesGroup;
+	// End of user code
+
 
 
 
@@ -118,6 +147,8 @@ public class CloneTargetPropertiesEditionPartImpl extends CompositePropertiesEdi
 		propertiesStep.addStep(EsbViewsRepository.CloneTarget.Properties.endpointType);
 		propertiesStep.addStep(EsbViewsRepository.CloneTarget.Properties.soapAction);
 		propertiesStep.addStep(EsbViewsRepository.CloneTarget.Properties.toAddress);
+		propertiesStep.addStep(EsbViewsRepository.CloneTarget.Properties.endpointRegistryKey);
+		propertiesStep.addStep(EsbViewsRepository.CloneTarget.Properties.sequenceRegistryKey);
 		
 		
 		composer = new PartComposer(cloneTargetStep) {
@@ -142,6 +173,16 @@ public class CloneTargetPropertiesEditionPartImpl extends CompositePropertiesEdi
 				if (key == EsbViewsRepository.CloneTarget.Properties.toAddress) {
 					return createToAddressText(parent);
 				}
+				// Start of user code for endpointRegistryKey addToPart creation
+                if (key == EsbViewsRepository.CloneTarget.Properties.sequenceRegistryKey) {
+                    return createSequenceKeyWidget(parent);
+                }
+				// End of user code
+				// Start of user code for sequenceRegistryKey addToPart creation
+                if (key == EsbViewsRepository.CloneTarget.Properties.endpointRegistryKey) {
+                    return createEndpointKeyWidget(parent);
+                }
+				// End of user code
 				return parent;
 			}
 		};
@@ -149,10 +190,10 @@ public class CloneTargetPropertiesEditionPartImpl extends CompositePropertiesEdi
 	}
 
 	/**
-	 * 
+	 * @generated NOT
 	 */
 	protected Composite createPropertiesGroup(Composite parent) {
-		Group propertiesGroup = new Group(parent, SWT.NONE);
+		propertiesGroup = new Group(parent, SWT.NONE);
 		propertiesGroup.setText(EsbMessages.CloneTargetPropertiesEditionPart_PropertiesGroupLabel);
 		GridData propertiesGroupData = new GridData(GridData.FILL_HORIZONTAL);
 		propertiesGroupData.horizontalSpan = 3;
@@ -163,9 +204,11 @@ public class CloneTargetPropertiesEditionPartImpl extends CompositePropertiesEdi
 		return propertiesGroup;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createSequenceTypeEMFComboViewer(Composite parent) {
-		createDescription(parent, EsbViewsRepository.CloneTarget.Properties.sequenceType, EsbMessages.CloneTargetPropertiesEditionPart_SequenceTypeLabel);
+	    Control sequenceTypeLabel = createDescription(parent, EsbViewsRepository.CloneTarget.Properties.sequenceType, EsbMessages.CloneTargetPropertiesEditionPart_SequenceTypeLabel);
 		sequenceType = new EMFComboViewer(parent);
 		sequenceType.setContentProvider(new ArrayContentProvider());
 		sequenceType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -186,19 +229,31 @@ public class CloneTargetPropertiesEditionPartImpl extends CompositePropertiesEdi
 
 		});
 		sequenceType.setID(EsbViewsRepository.CloneTarget.Properties.sequenceType);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.CloneTarget.Properties.sequenceType, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		Control sequenceTypeHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.CloneTarget.Properties.sequenceType, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createSequenceTypeEMFComboViewer
+		sequenceTypeElements = new Control[] { sequenceTypeLabel, sequenceType.getCombo(), sequenceTypeHelp };
+        sequenceType.addSelectionChangedListener(new ISelectionChangedListener() {
 
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+             * 
+             */
+            public void selectionChanged(SelectionChangedEvent event) {
+                validate();
+            }
+        });
 		// End of user code
 		return parent;
 	}
 
 	/**
 	 * @param parent the parent composite
-	 * 
+	 * @generated NOT
 	 */
 	protected Composite createSequenceFlatComboViewer(Composite parent) {
-		createDescription(parent, EsbViewsRepository.CloneTarget.Properties.sequence, EsbMessages.CloneTargetPropertiesEditionPart_SequenceLabel);
+	    Control sequenceLabel = createDescription(parent, EsbViewsRepository.CloneTarget.Properties.sequence, EsbMessages.CloneTargetPropertiesEditionPart_SequenceLabel);
 		sequence = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(EsbViewsRepository.CloneTarget.Properties.sequence, EsbViewsRepository.SWT_KIND));
 		sequence.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
@@ -212,16 +267,19 @@ public class CloneTargetPropertiesEditionPartImpl extends CompositePropertiesEdi
 		GridData sequenceData = new GridData(GridData.FILL_HORIZONTAL);
 		sequence.setLayoutData(sequenceData);
 		sequence.setID(EsbViewsRepository.CloneTarget.Properties.sequence);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.CloneTarget.Properties.sequence, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		Control sequenceHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.CloneTarget.Properties.sequence, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createSequenceFlatComboViewer
-
+		sequenceElements = new Control[] {sequenceLabel, sequence, sequenceHelp};
+        
 		// End of user code
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createEndpointTypeEMFComboViewer(Composite parent) {
-		createDescription(parent, EsbViewsRepository.CloneTarget.Properties.endpointType, EsbMessages.CloneTargetPropertiesEditionPart_EndpointTypeLabel);
+	    Control endpointTypeLabel = createDescription(parent, EsbViewsRepository.CloneTarget.Properties.endpointType, EsbMessages.CloneTargetPropertiesEditionPart_EndpointTypeLabel);
 		endpointType = new EMFComboViewer(parent);
 		endpointType.setContentProvider(new ArrayContentProvider());
 		endpointType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -242,16 +300,30 @@ public class CloneTargetPropertiesEditionPartImpl extends CompositePropertiesEdi
 
 		});
 		endpointType.setID(EsbViewsRepository.CloneTarget.Properties.endpointType);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.CloneTarget.Properties.endpointType, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		Control endpointTypeHelp =  SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.CloneTarget.Properties.endpointType, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createEndpointTypeEMFComboViewer
-
+		endpointTypeElements = new Control[] {endpointTypeLabel, endpointType.getCombo(), endpointTypeHelp};
+        endpointType.addSelectionChangedListener(new ISelectionChangedListener() {
+            
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+             *  
+             */
+            public void selectionChanged(SelectionChangedEvent event) {
+                validate();
+            }
+        });
 		// End of user code
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createSoapActionText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.CloneTarget.Properties.soapAction, EsbMessages.CloneTargetPropertiesEditionPart_SoapActionLabel);
+	    Control soapActionLabel = createDescription(parent, EsbViewsRepository.CloneTarget.Properties.soapAction, EsbMessages.CloneTargetPropertiesEditionPart_SoapActionLabel);
 		soapAction = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData soapActionData = new GridData(GridData.FILL_HORIZONTAL);
 		soapAction.setLayoutData(soapActionData);
@@ -291,16 +363,19 @@ public class CloneTargetPropertiesEditionPartImpl extends CompositePropertiesEdi
 		});
 		EditingUtils.setID(soapAction, EsbViewsRepository.CloneTarget.Properties.soapAction);
 		EditingUtils.setEEFtype(soapAction, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.CloneTarget.Properties.soapAction, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		Control soapActionHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.CloneTarget.Properties.soapAction, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createSoapActionText
-
+		soapActionElements = new Control[] {soapActionLabel, soapAction, soapActionHelp};
+        
 		// End of user code
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createToAddressText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.CloneTarget.Properties.toAddress, EsbMessages.CloneTargetPropertiesEditionPart_ToAddressLabel);
+	    Control toAddressLabel = createDescription(parent, EsbViewsRepository.CloneTarget.Properties.toAddress, EsbMessages.CloneTargetPropertiesEditionPart_ToAddressLabel);
 		toAddress = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData toAddressData = new GridData(GridData.FILL_HORIZONTAL);
 		toAddress.setLayoutData(toAddressData);
@@ -340,9 +415,10 @@ public class CloneTargetPropertiesEditionPartImpl extends CompositePropertiesEdi
 		});
 		EditingUtils.setID(toAddress, EsbViewsRepository.CloneTarget.Properties.toAddress);
 		EditingUtils.setEEFtype(toAddress, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.CloneTarget.Properties.toAddress, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		Control toAddressHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.CloneTarget.Properties.toAddress, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createToAddressText
-
+		toAddressElements = new Control[] {toAddressLabel, toAddress, toAddressHelp};
+        
 		// End of user code
 		return parent;
 	}
@@ -609,6 +685,38 @@ public class CloneTargetPropertiesEditionPartImpl extends CompositePropertiesEdi
 
 
 
+	// Start of user code for endpointRegistryKey specific getters and setters implementation
+
+    @Override
+    public RegistryKeyProperty getEndpointKey() {
+        return endpointKey;
+    }
+
+    @Override
+    public void setEndpointKey(RegistryKeyProperty registryKeyProperty) {
+        if (registryKeyProperty != null) {
+            endpointKeyText.setText(registryKeyProperty.getKeyValue());
+            endpointKey = registryKeyProperty;
+        }
+
+    }
+	// End of user code
+
+	// Start of user code for sequenceRegistryKey specific getters and setters implementation
+    @Override
+    public RegistryKeyProperty getSequenceKey() {
+        return sequenceKey;
+    }
+
+    @Override
+    public void setSequenceKey(RegistryKeyProperty registryKeyProperty) {
+        if (registryKeyProperty != null) {
+            sequenceKeyText.setText(registryKeyProperty.getKeyValue());
+            sequenceKey = registryKeyProperty;
+        }
+    }
+	// End of user code
+
 	/**
 	 * {@inheritDoc}
 	 *
@@ -620,7 +728,127 @@ public class CloneTargetPropertiesEditionPartImpl extends CompositePropertiesEdi
 	}
 
 	// Start of user code additional methods
-	
+	 protected Composite createEndpointKeyWidget(Composite parent) {
+	        Control endpointKeyLabel = createDescription(parent,
+	                EsbViewsRepository.CloneTarget.Properties.endpointRegistryKey,
+	                EsbMessages.CloneTargetPropertiesEditionPart_EndpointRegistryKeyLabel);
+	        if (endpointKey == null) {
+	            endpointKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
+	        }
+	        String initValueExpression = endpointKey.getKeyValue().isEmpty() ? "" : endpointKey.getKeyValue();
+	        endpointKeyText = SWTUtils.createScrollableText(parent, SWT.BORDER);
+	        endpointKeyText.setText(initValueExpression);
+            endpointKeyText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+	        GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
+	        endpointKeyText.setLayoutData(valueData);
+	        endpointKeyText.addMouseListener(new MouseListener(){
+	            @Override
+	            public void mouseDoubleClick(MouseEvent e) {
+	                // TODO Auto-generated method stub
+	                
+	            }
+
+	            @Override
+	            public void mouseDown(MouseEvent e) {
+	                EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
+	                        SWT.NULL, endpointKey, new ArrayList<NamedEntityDescriptor>());
+	                dialog.open();
+	                endpointKeyText.setText(endpointKey.getKeyValue());
+	                propertiesEditionComponent
+	                        .firePropertiesChanged(new PropertiesEditionEvent(CloneTargetPropertiesEditionPartImpl.this,
+	                                EsbViewsRepository.CloneTarget.Properties.sequenceRegistryKey,
+	                                PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getSequenceKey()));
+	            }
+
+                @Override
+                public void mouseUp(MouseEvent e) {
+                    // TODO Auto-generated method stub
+                    
+                }
+	        });
+	        EditingUtils.setID(endpointKeyText, EsbViewsRepository.AggregateMediator.OnComplete.sequenceKey);
+	        EditingUtils.setEEFtype(endpointKeyText, "eef::Text");
+	        Control endpointKeyHelp = SWTUtils.createHelpButton(parent,
+	                propertiesEditionComponent.getHelpContent(EsbViewsRepository.CloneTarget.Properties.endpointRegistryKey,
+	                        EsbViewsRepository.FORM_KIND),
+	                null); // $NON-NLS-1$
+	        endpointKeyElements = new Control[] { endpointKeyLabel, endpointKeyText, endpointKeyHelp };
+	        return parent;
+	    }
+
+	    protected Composite createSequenceKeyWidget(Composite parent) {
+	        Control sequenceKeyLabel = createDescription(parent,
+	                EsbViewsRepository.CloneTarget.Properties.sequenceRegistryKey,
+	                EsbMessages.CloneTargetPropertiesEditionPart_SequenceRegistryKeyLabel);
+	        if (sequenceKey == null) {
+	            sequenceKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
+	        }
+	        String initValueExpression = sequenceKey.getKeyValue().isEmpty() ? "" : sequenceKey.getKeyValue();
+	        sequenceKeyText = SWTUtils.createScrollableText(parent, SWT.BORDER);
+	        sequenceKeyText.setText(initValueExpression);
+	        sequenceKeyText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+	        GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
+	        sequenceKeyText.setLayoutData(valueData);
+	        sequenceKeyText.addMouseListener(new MouseListener(){
+
+	            @Override
+	            public void mouseDoubleClick(MouseEvent e) {
+	                // TODO Auto-generated method stub
+	                
+	            }
+
+	            @Override
+	            public void mouseDown(MouseEvent e) {
+	                EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
+	                        SWT.NULL, sequenceKey, new ArrayList<NamedEntityDescriptor>());
+	                dialog.open();
+	                sequenceKeyText.setText(sequenceKey.getKeyValue());
+	                propertiesEditionComponent
+	                        .firePropertiesChanged(new PropertiesEditionEvent(CloneTargetPropertiesEditionPartImpl.this,
+	                                EsbViewsRepository.CloneTarget.Properties.sequenceRegistryKey,
+	                                PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getSequenceKey()));
+	            }
+
+                @Override
+                public void mouseUp(MouseEvent e) {
+                    // TODO Auto-generated method stub
+                    
+                }
+	        });
+	        EditingUtils.setID(sequenceKeyText, EsbViewsRepository.AggregateMediator.OnComplete.sequenceKey);
+	        EditingUtils.setEEFtype(sequenceKeyText, "eef::Text");
+	        Control sequenceKeyHelp = SWTUtils.createHelpButton(parent,
+	                propertiesEditionComponent.getHelpContent(EsbViewsRepository.CloneTarget.Properties.sequenceRegistryKey,
+	                        EsbViewsRepository.FORM_KIND),
+	                null); // $NON-NLS-1$
+	        sequenceKeyElements = new Control[] { sequenceKeyLabel, sequenceKeyText, sequenceKeyHelp };
+	        return parent;
+	    }
+
+	    @Override
+	    public void refresh() {
+	        super.refresh();
+	        validate();
+	    }
+
+	    public void validate() {
+	        EEFPropertyViewUtil eu = new EEFPropertyViewUtil(view);
+	        eu.clearElements(new Composite[] {propertiesGroup});
+	        eu.showEntry(sequenceTypeElements, false);
+            if(getSequenceType().getName().equals("REGISTRY_REFERENCE")) {
+	            eu.showEntry(sequenceKeyElements, false);
+	        }
+	       
+	        eu.showEntry(endpointTypeElements, false);
+	        if(getEndpointType().getName().equals("REGISTRY_REFERENCE")) {
+	            eu.showEntry(endpointKeyElements, false);
+	        }
+	        eu.showEntry(soapActionElements, false);
+	        eu.showEntry(toAddressElements, true);
+	    }
+
+
+
 	// End of user code
 
 

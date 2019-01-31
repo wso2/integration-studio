@@ -4609,6 +4609,12 @@ public class EsbMessages extends NLS {
 	public static String CloneTargetPropertiesEditionPart_ToAddressLabel;
 
 	
+	public static String CloneTargetPropertiesEditionPart_EndpointRegistryKeyLabel;
+
+	
+	public static String CloneTargetPropertiesEditionPart_SequenceRegistryKeyLabel;
+
+	
 	public static String CloneMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;
 
 	

@@ -96,6 +96,7 @@ public class CloneMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
 	protected List<ViewerFilter> targetsOutputConnectorBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> targetsOutputConnectorFilters = new ArrayList<ViewerFilter>();
 
+	
 
 
 	/**

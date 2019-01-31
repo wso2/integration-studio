@@ -1908,6 +1908,12 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v73vJnEei6boXzpRIfnA" name="toAddress" views="_E7wlQ_JnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//CloneTarget/toAddress"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_ZgZkYCP3EemyGK1-rNd17g" name="endpointRegistryKey" views="_hxtPECP-EemyGK1-rNd17g">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//AbstractCommonTarget/endpointKey"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_w_SMgCP-EemyGK1-rNd17g" name="sequenceRegistryKey" views="_mfbicCP-EemyGK1-rNd17g">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//AbstractCommonTarget/sequenceKey"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//CloneTarget"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_E7v73_JnEei6boXzpRIfnA" name="CloneMediatorInputConnector" views="_E7wlRPJnEei6boXzpRIfnA">
@@ -7640,6 +7646,8 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wlQ_JnEei6boXzpRIfnA" name="toAddress">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_hxtPECP-EemyGK1-rNd17g" name="endpointRegistryKey"/>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_mfbicCP-EemyGK1-rNd17g" name="sequenceRegistryKey"/>
         </elements>
       </views>
       <views xmi:id="_E7wlRPJnEei6boXzpRIfnA" name="CloneMediatorInputConnector">

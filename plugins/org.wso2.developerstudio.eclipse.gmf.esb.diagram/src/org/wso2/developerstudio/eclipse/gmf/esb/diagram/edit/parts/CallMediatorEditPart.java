@@ -142,7 +142,7 @@ public class CallMediatorEditPart extends SingleCompartmentComplexFiguredAbstrac
      * @generated NOT
      */
     protected IFigure createNodeShape() {
-        return primaryShape = new CallMediatorFigure(new Color(null, 245, 252, 255), new Color(null, 41, 128, 185)) {
+        return primaryShape = new CallMediatorFigure(new Color(null, 59, 151, 211), new Color(null, 255, 255, 255)) {
             public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
                 super.setBounds(rect);
                 if ((!connected) && (this.getBounds().getLocation().x != 0 && this.getBounds().getLocation().y != 0)) {

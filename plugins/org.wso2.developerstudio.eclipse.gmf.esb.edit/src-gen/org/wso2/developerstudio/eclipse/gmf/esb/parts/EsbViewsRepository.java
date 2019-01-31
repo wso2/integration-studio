@@ -3262,6 +3262,14 @@ public class EsbViewsRepository {
 			
 			public static String toAddress = "esb::CloneTarget::properties::toAddress";
 			
+			// Start of user code for endpointRegistryKey ElementEditor key
+			public static String endpointRegistryKey = "esb::CloneTarget::properties::endpointRegistryKey";
+			// End of user code
+			
+			// Start of user code for sequenceRegistryKey ElementEditor key
+			public static String sequenceRegistryKey = "esb::CloneTarget::properties::sequenceRegistryKey";
+			// End of user code
+			
 	
 		}
 	

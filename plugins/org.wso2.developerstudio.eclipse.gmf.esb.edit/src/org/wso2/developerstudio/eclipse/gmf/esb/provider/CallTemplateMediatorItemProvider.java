@@ -158,14 +158,14 @@ public class CallTemplateMediatorItemProvider extends MediatorItemProvider {
     }
 
     /**
-     * This returns CallTemplateMediator.gif.
+     * This returns CallTemplateMediator.png.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/CallTemplateMediator"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/CallTemplateMediator.png"));
     }
 
     /**

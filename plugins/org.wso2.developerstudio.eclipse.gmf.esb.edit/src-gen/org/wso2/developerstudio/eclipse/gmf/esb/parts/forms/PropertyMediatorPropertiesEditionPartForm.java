@@ -1005,7 +1005,7 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
      * @generated NOT
      */
 	protected Composite createNewPropertyNameText(FormToolkit widgetFactory, Composite parent) {
-		Control newPropertyNameLabel = createDescription(parent, EsbViewsRepository.PropertyMediator.Properties.newPropertyName, EsbMessages.PropertyMediatorPropertiesEditionPart_NewPropertyNameLabel);
+		Control itemLabel = createDescription(parent, EsbViewsRepository.PropertyMediator.Properties.newPropertyName, EsbMessages.PropertyMediatorPropertiesEditionPart_NewPropertyNameLabel);
 		newPropertyName = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		newPropertyName.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -1064,9 +1064,9 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
 		});
 		EditingUtils.setID(newPropertyName, EsbViewsRepository.PropertyMediator.Properties.newPropertyName);
 		EditingUtils.setEEFtype(newPropertyName, "eef::Text"); //$NON-NLS-1$
-		Control newPropertyNameHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PropertyMediator.Properties.newPropertyName, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		Control itemHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PropertyMediator.Properties.newPropertyName, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createNewPropertyNameText
-		newPropertyNameElements = new Control[] {newPropertyNameLabel, newPropertyName, newPropertyNameHelp};
+		newPropertyNameElements = new Control[] {itemLabel, newPropertyName, itemHelp};
 		// End of user code
 		return parent;
 	}

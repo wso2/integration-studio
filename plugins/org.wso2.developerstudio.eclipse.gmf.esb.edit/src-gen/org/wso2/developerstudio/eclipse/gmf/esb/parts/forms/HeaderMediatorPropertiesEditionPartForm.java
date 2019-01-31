@@ -66,8 +66,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
 // End of user code
 
 /**
- * 
- * 
+ * @generated NOT
  */
 public class HeaderMediatorPropertiesEditionPartForm extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, HeaderMediatorPropertiesEditionPart {
 

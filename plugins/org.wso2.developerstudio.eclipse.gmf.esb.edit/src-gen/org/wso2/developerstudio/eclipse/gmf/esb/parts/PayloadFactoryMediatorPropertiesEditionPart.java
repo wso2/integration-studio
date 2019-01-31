@@ -12,6 +12,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 
 import org.eclipse.jface.viewers.ViewerFilter;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 
 
 // End of user code
@@ -23,57 +24,24 @@ import org.eclipse.jface.viewers.ViewerFilter;
 public interface PayloadFactoryMediatorPropertiesEditionPart {
 
 	/**
-	 * @return the description
+	 * @return the payloadFormat
 	 * 
 	 */
-	public String getDescription();
+	public Enumerator getPayloadFormat();
 
 	/**
-	 * Defines a new description
-	 * @param newValue the new description to set
+	 * Init the payloadFormat
+	 * @param input the viewer input
+	 * @param current the current value
+	 */
+	public void initPayloadFormat(Object input, Enumerator current);
+
+	/**
+	 * Defines a new payloadFormat
+	 * @param newValue the new payloadFormat to set
 	 * 
 	 */
-	public void setDescription(String newValue);
-
-
-	/**
-	 * @return the commentsList
-	 * 
-	 */
-	public EList getCommentsList();
-
-	/**
-	 * Defines a new commentsList
-	 * @param newValue the new commentsList to set
-	 * 
-	 */
-	public void setCommentsList(EList newValue);
-
-	/**
-	 * Add a value to the commentsList multivalued attribute.
-	 * @param newValue the value to add
-	 */
-	public void addToCommentsList(Object newValue);
-
-	/**
-	 * Remove a value to the commentsList multivalued attribute.
-	 * @param newValue the value to remove
-	 */
-	public void removeToCommentsList(Object newValue);
-
-
-	/**
-	 * @return the Reverse
-	 * 
-	 */
-	public Boolean getReverse();
-
-	/**
-	 * Defines a new Reverse
-	 * @param newValue the new Reverse to set
-	 * 
-	 */
-	public void setReverse(Boolean newValue);
+	public void setPayloadFormat(Enumerator newValue);
 
 
 	/**
@@ -156,28 +124,27 @@ public interface PayloadFactoryMediatorPropertiesEditionPart {
 
 
 	/**
-	 * @return the payloadFormat
+	 * @return the description
 	 * 
 	 */
-	public Enumerator getPayloadFormat();
+	public String getDescription();
 
 	/**
-	 * Init the payloadFormat
-	 * @param input the viewer input
-	 * @param current the current value
-	 */
-	public void initPayloadFormat(Object input, Enumerator current);
-
-	/**
-	 * Defines a new payloadFormat
-	 * @param newValue the new payloadFormat to set
+	 * Defines a new description
+	 * @param newValue the new description to set
 	 * 
 	 */
-	public void setPayloadFormat(Enumerator newValue);
+	public void setDescription(String newValue);
 
 
 
 
+	// Start of user code for payloadKey specific getters and setters declaration
+	public void setPayloadKey(RegistryKeyProperty registryKeyProperty);
+	
+	public RegistryKeyProperty getPayloadKey();
+	
+	// End of user code
 
 	/**
 	 * Returns the internationalized title text.

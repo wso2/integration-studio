@@ -5386,13 +5386,11 @@ public class EsbViewsRepository {
 		public static class Properties {
 	
 			
-			public static String description = "esb::PayloadFactoryMediator::properties::description";
+			public static String payloadFormat = "esb::PayloadFactoryMediator::properties::payloadFormat";
 			
-			
-			public static String commentsList = "esb::PayloadFactoryMediator::properties::commentsList";
-			
-			
-			public static String reverse = "esb::PayloadFactoryMediator::properties::Reverse";
+			// Start of user code for payloadKey ElementEditor key
+			public static String payloadKey = "esb::PayloadFactoryMediator::properties::payloadKey";
+			// End of user code
 			
 			
 			public static String payload = "esb::PayloadFactoryMediator::properties::payload";
@@ -5404,7 +5402,7 @@ public class EsbViewsRepository {
 			public static String mediaType = "esb::PayloadFactoryMediator::properties::mediaType";
 			
 			
-			public static String payloadFormat = "esb::PayloadFactoryMediator::properties::payloadFormat";
+			public static String description = "esb::PayloadFactoryMediator::properties::description";
 			
 	
 		}

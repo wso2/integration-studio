@@ -105,15 +105,12 @@ public class PayloadFactoryMediatorPropertiesEditionComponent extends SinglePart
 			final PayloadFactoryMediator payloadFactoryMediator = (PayloadFactoryMediator)elt;
 			final PayloadFactoryMediatorPropertiesEditionPart basePart = (PayloadFactoryMediatorPropertiesEditionPart)editingPart;
 			// init values
-			if (isAccessible(EsbViewsRepository.PayloadFactoryMediator.Properties.description))
-				basePart.setDescription(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, payloadFactoryMediator.getDescription()));
-			
-			if (isAccessible(EsbViewsRepository.PayloadFactoryMediator.Properties.commentsList))
-				basePart.setCommentsList(payloadFactoryMediator.getCommentsList());
-			
-			if (isAccessible(EsbViewsRepository.PayloadFactoryMediator.Properties.reverse)) {
-				basePart.setReverse(payloadFactoryMediator.isReverse());
+			if (isAccessible(EsbViewsRepository.PayloadFactoryMediator.Properties.payloadFormat)) {
+				basePart.initPayloadFormat(EEFUtils.choiceOfValues(payloadFactoryMediator, EsbPackage.eINSTANCE.getPayloadFactoryMediator_PayloadFormat()), payloadFactoryMediator.getPayloadFormat());
 			}
+			// Start of user code  for payloadKey command update
+			// End of user code
+			
 			if (isAccessible(EsbViewsRepository.PayloadFactoryMediator.Properties.payload))
 				basePart.setPayload(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, payloadFactoryMediator.getPayload()));
 			
@@ -124,12 +121,13 @@ public class PayloadFactoryMediatorPropertiesEditionComponent extends SinglePart
 			if (isAccessible(EsbViewsRepository.PayloadFactoryMediator.Properties.mediaType)) {
 				basePart.initMediaType(EEFUtils.choiceOfValues(payloadFactoryMediator, EsbPackage.eINSTANCE.getPayloadFactoryMediator_MediaType()), payloadFactoryMediator.getMediaType());
 			}
-			if (isAccessible(EsbViewsRepository.PayloadFactoryMediator.Properties.payloadFormat)) {
-				basePart.initPayloadFormat(EEFUtils.choiceOfValues(payloadFactoryMediator, EsbPackage.eINSTANCE.getPayloadFactoryMediator_PayloadFormat()), payloadFactoryMediator.getPayloadFormat());
-			}
+			if (isAccessible(EsbViewsRepository.PayloadFactoryMediator.Properties.description))
+				basePart.setDescription(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, payloadFactoryMediator.getDescription()));
+			
 			// init filters
 			
-			
+			// Start of user code  for payloadKey filter update
+			// End of user code
 			
 			
 			if (isAccessible(EsbViewsRepository.PayloadFactoryMediator.Properties.args)) {
@@ -165,20 +163,16 @@ public class PayloadFactoryMediatorPropertiesEditionComponent extends SinglePart
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
 	 */
 	public EStructuralFeature associatedFeature(Object editorKey) {
-		if (editorKey == EsbViewsRepository.PayloadFactoryMediator.Properties.description) {
-			return EsbPackage.eINSTANCE.getEsbElement_Description();
+		if (editorKey == EsbViewsRepository.PayloadFactoryMediator.Properties.payloadFormat) {
+			return EsbPackage.eINSTANCE.getPayloadFactoryMediator_PayloadFormat();
 		}
-		if (editorKey == EsbViewsRepository.PayloadFactoryMediator.Properties.commentsList) {
-			return EsbPackage.eINSTANCE.getEsbElement_CommentsList();
-		}
-		if (editorKey == EsbViewsRepository.PayloadFactoryMediator.Properties.reverse) {
-			return EsbPackage.eINSTANCE.getMediator_Reverse();
+		if (editorKey == EsbViewsRepository.PayloadFactoryMediator.Properties.payloadKey) {
+			return EsbPackage.eINSTANCE.getPayloadFactoryMediator_PayloadKey();
 		}
 		if (editorKey == EsbViewsRepository.PayloadFactoryMediator.Properties.payload) {
 			return EsbPackage.eINSTANCE.getPayloadFactoryMediator_Payload();
@@ -189,8 +183,8 @@ public class PayloadFactoryMediatorPropertiesEditionComponent extends SinglePart
 		if (editorKey == EsbViewsRepository.PayloadFactoryMediator.Properties.mediaType) {
 			return EsbPackage.eINSTANCE.getPayloadFactoryMediator_MediaType();
 		}
-		if (editorKey == EsbViewsRepository.PayloadFactoryMediator.Properties.payloadFormat) {
-			return EsbPackage.eINSTANCE.getPayloadFactoryMediator_PayloadFormat();
+		if (editorKey == EsbViewsRepository.PayloadFactoryMediator.Properties.description) {
+			return EsbPackage.eINSTANCE.getEsbElement_Description();
 		}
 		return super.associatedFeature(editorKey);
 	}
@@ -202,17 +196,13 @@ public class PayloadFactoryMediatorPropertiesEditionComponent extends SinglePart
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		PayloadFactoryMediator payloadFactoryMediator = (PayloadFactoryMediator)semanticObject;
-		if (EsbViewsRepository.PayloadFactoryMediator.Properties.description == event.getAffectedEditor()) {
-			payloadFactoryMediator.setDescription((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
+		if (EsbViewsRepository.PayloadFactoryMediator.Properties.payloadFormat == event.getAffectedEditor()) {
+			payloadFactoryMediator.setPayloadFormat((PayloadFormatType)event.getNewValue());
 		}
-		if (EsbViewsRepository.PayloadFactoryMediator.Properties.commentsList == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET) {
-				payloadFactoryMediator.getCommentsList().clear();
-				payloadFactoryMediator.getCommentsList().addAll(((EList) event.getNewValue()));
-			}
-		}
-		if (EsbViewsRepository.PayloadFactoryMediator.Properties.reverse == event.getAffectedEditor()) {
-			payloadFactoryMediator.setReverse((Boolean)event.getNewValue());
+		if (EsbViewsRepository.PayloadFactoryMediator.Properties.payloadKey == event.getAffectedEditor()) {
+			// Start of user code for updatePayloadKey method body
+			// End of user code
+			
 		}
 		if (EsbViewsRepository.PayloadFactoryMediator.Properties.payload == event.getAffectedEditor()) {
 			payloadFactoryMediator.setPayload((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
@@ -245,8 +235,8 @@ public class PayloadFactoryMediatorPropertiesEditionComponent extends SinglePart
 		if (EsbViewsRepository.PayloadFactoryMediator.Properties.mediaType == event.getAffectedEditor()) {
 			payloadFactoryMediator.setMediaType((MediaType)event.getNewValue());
 		}
-		if (EsbViewsRepository.PayloadFactoryMediator.Properties.payloadFormat == event.getAffectedEditor()) {
-			payloadFactoryMediator.setPayloadFormat((PayloadFormatType)event.getNewValue());
+		if (EsbViewsRepository.PayloadFactoryMediator.Properties.description == event.getAffectedEditor()) {
+			payloadFactoryMediator.setDescription((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 	}
 
@@ -258,27 +248,12 @@ public class PayloadFactoryMediatorPropertiesEditionComponent extends SinglePart
 		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			PayloadFactoryMediatorPropertiesEditionPart basePart = (PayloadFactoryMediatorPropertiesEditionPart)editingPart;
-			if (EsbPackage.eINSTANCE.getEsbElement_Description().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.PayloadFactoryMediator.Properties.description)) {
-				if (msg.getNewValue() != null) {
-					basePart.setDescription(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
-				} else {
-					basePart.setDescription("");
-				}
-			}
-			if (EsbPackage.eINSTANCE.getEsbElement_CommentsList().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.PayloadFactoryMediator.Properties.commentsList)) {
-				if (msg.getNewValue() instanceof EList<?>) {
-					basePart.setCommentsList((EList<?>)msg.getNewValue());
-				} else if (msg.getNewValue() == null) {
-					basePart.setCommentsList(new BasicEList<Object>());
-				} else {
-					BasicEList<Object> newValueAsList = new BasicEList<Object>();
-					newValueAsList.add(msg.getNewValue());
-					basePart.setCommentsList(newValueAsList);
-				}
-			}
+			if (EsbPackage.eINSTANCE.getPayloadFactoryMediator_PayloadFormat().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EsbViewsRepository.PayloadFactoryMediator.Properties.payloadFormat))
+				basePart.setPayloadFormat((PayloadFormatType)msg.getNewValue());
 			
-			if (EsbPackage.eINSTANCE.getMediator_Reverse().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.PayloadFactoryMediator.Properties.reverse))
-				basePart.setReverse((Boolean)msg.getNewValue());
+					// Start of user code for payloadKey live update
+					
+					// End of user code
 			
 			if (EsbPackage.eINSTANCE.getPayloadFactoryMediator_Payload().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.PayloadFactoryMediator.Properties.payload)) {
 				if (msg.getNewValue() != null) {
@@ -292,9 +267,13 @@ public class PayloadFactoryMediatorPropertiesEditionComponent extends SinglePart
 			if (EsbPackage.eINSTANCE.getPayloadFactoryMediator_MediaType().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EsbViewsRepository.PayloadFactoryMediator.Properties.mediaType))
 				basePart.setMediaType((MediaType)msg.getNewValue());
 			
-			if (EsbPackage.eINSTANCE.getPayloadFactoryMediator_PayloadFormat().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EsbViewsRepository.PayloadFactoryMediator.Properties.payloadFormat))
-				basePart.setPayloadFormat((PayloadFormatType)msg.getNewValue());
-			
+			if (EsbPackage.eINSTANCE.getEsbElement_Description().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.PayloadFactoryMediator.Properties.description)) {
+				if (msg.getNewValue() != null) {
+					basePart.setDescription(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
+				} else {
+					basePart.setDescription("");
+				}
+			}
 			
 		}
 	}
@@ -307,13 +286,12 @@ public class PayloadFactoryMediatorPropertiesEditionComponent extends SinglePart
 	@Override
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
-			EsbPackage.eINSTANCE.getEsbElement_Description(),
-			EsbPackage.eINSTANCE.getEsbElement_CommentsList(),
-			EsbPackage.eINSTANCE.getMediator_Reverse(),
+			EsbPackage.eINSTANCE.getPayloadFactoryMediator_PayloadFormat(),
+			EsbPackage.eINSTANCE.getPayloadFactoryMediator_PayloadKey(),
 			EsbPackage.eINSTANCE.getPayloadFactoryMediator_Payload(),
 			EsbPackage.eINSTANCE.getPayloadFactoryMediator_Args(),
 			EsbPackage.eINSTANCE.getPayloadFactoryMediator_MediaType(),
-			EsbPackage.eINSTANCE.getPayloadFactoryMediator_PayloadFormat()		);
+			EsbPackage.eINSTANCE.getEsbElement_Description()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -340,26 +318,12 @@ public class PayloadFactoryMediatorPropertiesEditionComponent extends SinglePart
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
 			try {
-				if (EsbViewsRepository.PayloadFactoryMediator.Properties.description == event.getAffectedEditor()) {
+				if (EsbViewsRepository.PayloadFactoryMediator.Properties.payloadFormat == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getEsbElement_Description().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getPayloadFactoryMediator_PayloadFormat().getEAttributeType(), (String)newValue);
 					}
-					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getEsbElement_Description().getEAttributeType(), newValue);
-				}
-				if (EsbViewsRepository.PayloadFactoryMediator.Properties.commentsList == event.getAffectedEditor()) {
-					BasicDiagnostic chain = new BasicDiagnostic();
-					for (Iterator iterator = ((List)event.getNewValue()).iterator(); iterator.hasNext();) {
-						chain.add(Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getEsbElement_CommentsList().getEAttributeType(), iterator.next()));
-					}
-					ret = chain;
-				}
-				if (EsbViewsRepository.PayloadFactoryMediator.Properties.reverse == event.getAffectedEditor()) {
-					Object newValue = event.getNewValue();
-					if (newValue instanceof String) {
-						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getMediator_Reverse().getEAttributeType(), (String)newValue);
-					}
-					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getMediator_Reverse().getEAttributeType(), newValue);
+					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getPayloadFactoryMediator_PayloadFormat().getEAttributeType(), newValue);
 				}
 				if (EsbViewsRepository.PayloadFactoryMediator.Properties.payload == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
@@ -375,12 +339,12 @@ public class PayloadFactoryMediatorPropertiesEditionComponent extends SinglePart
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getPayloadFactoryMediator_MediaType().getEAttributeType(), newValue);
 				}
-				if (EsbViewsRepository.PayloadFactoryMediator.Properties.payloadFormat == event.getAffectedEditor()) {
+				if (EsbViewsRepository.PayloadFactoryMediator.Properties.description == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getPayloadFactoryMediator_PayloadFormat().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getEsbElement_Description().getEAttributeType(), (String)newValue);
 					}
-					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getPayloadFactoryMediator_PayloadFormat().getEAttributeType(), newValue);
+					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getEsbElement_Description().getEAttributeType(), newValue);
 				}
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);

@@ -56,7 +56,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.MediaType;
 import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryArgument;
 import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFormatType;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.PayloadFactoryMediatorPropertiesEditionPart;
 
@@ -109,6 +110,9 @@ public class PayloadFactoryMediatorPropertiesEditionComponent extends SinglePart
 				basePart.initPayloadFormat(EEFUtils.choiceOfValues(payloadFactoryMediator, EsbPackage.eINSTANCE.getPayloadFactoryMediator_PayloadFormat()), payloadFactoryMediator.getPayloadFormat());
 			}
 			// Start of user code  for payloadKey command update
+			if (isAccessible(EsbViewsRepository.PayloadFactoryMediator.Properties.payloadKey)) {
+				basePart.setPayloadKey(payloadFactoryMediator.getPayloadKey());
+			}
 			// End of user code
 			
 			if (isAccessible(EsbViewsRepository.PayloadFactoryMediator.Properties.payload))
@@ -201,6 +205,12 @@ public class PayloadFactoryMediatorPropertiesEditionComponent extends SinglePart
 		}
 		if (EsbViewsRepository.PayloadFactoryMediator.Properties.payloadKey == event.getAffectedEditor()) {
 			// Start of user code for updatePayloadKey method body
+			if (event.getNewValue() != null) {
+				RegistryKeyProperty rkp = (RegistryKeyProperty) event.getNewValue();
+				payloadFactoryMediator.setPayloadKey(rkp);
+			} else {
+				payloadFactoryMediator.setPayloadKey(EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty());
+			}
 			// End of user code
 			
 		}
@@ -252,7 +262,13 @@ public class PayloadFactoryMediatorPropertiesEditionComponent extends SinglePart
 				basePart.setPayloadFormat((PayloadFormatType)msg.getNewValue());
 			
 					// Start of user code for payloadKey live update
-					
+			if (EsbPackage.eINSTANCE.getPayloadFactoryMediator_PayloadKey().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EsbViewsRepository.PayloadFactoryMediator.Properties.payloadKey)) {
+				if (msg.getNewValue() != null) {
+					basePart.setPayloadKey((RegistryKeyProperty)msg.getNewValue());
+				} else {
+					basePart.setPayloadKey(EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty());
+				}
+			}
 					// End of user code
 			
 			if (EsbPackage.eINSTANCE.getPayloadFactoryMediator_Payload().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.PayloadFactoryMediator.Properties.payload)) {

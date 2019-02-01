@@ -95,7 +95,7 @@ public class EsbViewsRepository {
 			// End of user code
 			
 			// Start of user code for endpointRegistryKey ElementEditor key
-			public static String endpointRegistryKey = "esb::CallMediator::properties::endpointRegistryKey";
+			public static String endpointRegistryKey = "esb::CloneTarget::properties::endpointRegistryKey";
 			// End of user code
 			
 	
@@ -5459,6 +5459,10 @@ public class EsbViewsRepository {
 			
 			
 			public static String argumentValue = "esb::PayloadFactoryArgument::properties::argumentValue";
+			
+			// Start of user code for argumentExpression ElementEditor key
+			public static String argumentExpression = "esb::PayloadFactoryArgument::properties::argumentExpression";
+			// End of user code
 			
 			
 			public static String evaluator = "esb::PayloadFactoryArgument::properties::evaluator";

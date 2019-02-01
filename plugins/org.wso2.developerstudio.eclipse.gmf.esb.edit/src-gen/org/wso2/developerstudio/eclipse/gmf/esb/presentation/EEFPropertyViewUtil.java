@@ -1,5 +1,6 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.presentation;
 
+import org.eclipse.swt.layout.FormData;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
@@ -14,8 +15,15 @@ public class EEFPropertyViewUtil {
 
     public void clearElements(Composite[] propertiesGroups) {
         for (Composite propertiesGroup : propertiesGroups) {
-            hideEntry(propertiesGroup.getChildren(), false);
+        	hideEntry(propertiesGroup.getChildren(), false);
         }
+    }
+    
+    public void clearElement(Control control) {
+    	 if (control.getLayoutData() != null && control.getLayoutData() instanceof GridData) {
+             ((GridData) control.getLayoutData()).exclude = true;
+             control.setVisible(false);
+         }
     }
 
     public void hideEntry(Control controls[], boolean layout) {
@@ -35,8 +43,9 @@ public class EEFPropertyViewUtil {
 
     public void showEntry(Control controls[], boolean layout) {
         for (Control control : controls) {
-            // null check and type check
-            ((GridData) control.getLayoutData()).exclude = false;
+            if (control != null && control.getLayoutData() instanceof GridData) {
+            	((GridData) control.getLayoutData()).exclude = false;
+            }
             control.setVisible(true);
         }
         if (layout) {

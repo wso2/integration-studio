@@ -250,13 +250,15 @@ public class RegistryKeyPropertyEditorDialog extends Dialog {
 	
    protected void saveConfigurationWithTransaction() {
        TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(rkProperty);
-       domain.getCommandStack().execute(new RecordingCommand(domain) {
-
-           @Override
-           protected void doExecute() {
-               rkProperty.setKeyValue(rkTextField.getText());
-           }
-       });
+       if (domain != null && domain.getCommandStack() != null) { 
+	       domain.getCommandStack().execute(new RecordingCommand(domain) {
+	
+	           @Override
+	           protected void doExecute() {
+	               rkProperty.setKeyValue(rkTextField.getText());
+	           }
+	       });
+       }
    }
 
 	

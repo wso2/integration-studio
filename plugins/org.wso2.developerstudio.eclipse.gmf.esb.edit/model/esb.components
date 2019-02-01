@@ -3189,6 +3189,9 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v9i_JnEei6boXzpRIfnA" name="literal" views="_E7xJXPJnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//PayloadFactoryArgument/literal"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_N2fCwCXrEemmDY5PU6MPfg" name="argumentExpression" views="__07MgCXqEemmDY5PU6MPfg">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//PayloadFactoryArgument/argumentExpression"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//PayloadFactoryArgument"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_E7v9jPJnEei6boXzpRIfnA" name="ConditionalRouteBranch" views="_E7xJXfJnEei6boXzpRIfnA">
@@ -9107,6 +9110,7 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xJWvJnEei6boXzpRIfnA" name="argumentValue">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="__07MgCXqEemmDY5PU6MPfg" name="argumentExpression"/>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xJW_JnEei6boXzpRIfnA" name="evaluator">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
           </elements>

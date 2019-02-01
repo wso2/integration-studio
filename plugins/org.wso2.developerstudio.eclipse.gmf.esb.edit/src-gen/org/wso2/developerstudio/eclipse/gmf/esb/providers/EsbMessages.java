@@ -5575,6 +5575,9 @@ public class EsbMessages extends NLS {
 	public static String PayloadFactoryArgumentPropertiesEditionPart_ArgumentValueLabel;
 
 	
+	public static String PayloadFactoryArgumentPropertiesEditionPart_ArgumentExpressionLabel;
+
+	
 	public static String PayloadFactoryArgumentPropertiesEditionPart_EvaluatorLabel;
 
 	

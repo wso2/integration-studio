@@ -6,8 +6,6 @@ package org.wso2.developerstudio.eclipse.gmf.esb.parts.forms;
 // Start of user code for imports
 import org.eclipse.emf.common.util.Enumerator;
 
-import org.eclipse.emf.ecore.util.EcoreAdapterFactory;
-
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
@@ -44,6 +42,8 @@ import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.MouseEvent;
+import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 
@@ -52,16 +52,20 @@ import org.eclipse.swt.layout.GridLayout;
 
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Text;
 
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryArgumentType;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.PayloadFactoryArgumentPropertiesEditionPart;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFNameSpacedPropertyEditorDialog;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
 
 // End of user code
@@ -74,6 +78,12 @@ public class PayloadFactoryArgumentPropertiesEditionPartForm extends SectionProp
 
 	protected EMFComboViewer argumentType;
 	protected Text argumentValue;
+	// Start of user code  for argumentExpression widgets declarations
+	
+	protected Composite propertiesGroup;
+
+	// End of user code
+
 	protected EMFComboViewer evaluator;
 	protected Button literal;
 
@@ -123,6 +133,7 @@ public class PayloadFactoryArgumentPropertiesEditionPartForm extends SectionProp
 		CompositionStep propertiesStep = payloadFactoryArgumentStep.addStep(EsbViewsRepository.PayloadFactoryArgument.Properties.class);
 		propertiesStep.addStep(EsbViewsRepository.PayloadFactoryArgument.Properties.argumentType);
 		propertiesStep.addStep(EsbViewsRepository.PayloadFactoryArgument.Properties.argumentValue);
+		propertiesStep.addStep(EsbViewsRepository.PayloadFactoryArgument.Properties.argumentExpression);
 		propertiesStep.addStep(EsbViewsRepository.PayloadFactoryArgument.Properties.evaluator);
 		propertiesStep.addStep(EsbViewsRepository.PayloadFactoryArgument.Properties.literal);
 		
@@ -140,6 +151,8 @@ public class PayloadFactoryArgumentPropertiesEditionPartForm extends SectionProp
 				if (key == EsbViewsRepository.PayloadFactoryArgument.Properties.argumentValue) {
 					return createArgumentValueText(widgetFactory, parent);
 				}
+				// Start of user code for argumentExpression addToPart creation
+				// End of user code
 				if (key == EsbViewsRepository.PayloadFactoryArgument.Properties.evaluator) {
 					return createEvaluatorEMFComboViewer(widgetFactory, parent);
 				}
@@ -160,7 +173,7 @@ public class PayloadFactoryArgumentPropertiesEditionPartForm extends SectionProp
 		GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
 		propertiesSectionData.horizontalSpan = 3;
 		propertiesSection.setLayoutData(propertiesSectionData);
-		Composite propertiesGroup = widgetFactory.createComposite(propertiesSection);
+		propertiesGroup = widgetFactory.createComposite(propertiesSection);
 		GridLayout propertiesGroupLayout = new GridLayout();
 		propertiesGroupLayout.numColumns = 3;
 		propertiesGroup.setLayout(propertiesGroupLayout);
@@ -168,9 +181,11 @@ public class PayloadFactoryArgumentPropertiesEditionPartForm extends SectionProp
 		return propertiesGroup;
 	}
 
-	
+	/**
+     * @generated NOT
+     */
 	protected Composite createArgumentTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EsbViewsRepository.PayloadFactoryArgument.Properties.argumentType, EsbMessages.PayloadFactoryArgumentPropertiesEditionPart_ArgumentTypeLabel);
+		Control argumentTypeLabel = createDescription(parent, EsbViewsRepository.PayloadFactoryArgument.Properties.argumentType, EsbMessages.PayloadFactoryArgumentPropertiesEditionPart_ArgumentTypeLabel);
 		argumentType = new EMFComboViewer(parent);
 		argumentType.setContentProvider(new ArrayContentProvider());
 		argumentType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -185,22 +200,22 @@ public class PayloadFactoryArgumentPropertiesEditionPartForm extends SectionProp
 			 * 	
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PayloadFactoryArgumentPropertiesEditionPartForm.this, EsbViewsRepository.PayloadFactoryArgument.Properties.argumentType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getArgumentType()));
 			}
 
 		});
 		argumentType.setID(EsbViewsRepository.PayloadFactoryArgument.Properties.argumentType);
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PayloadFactoryArgument.Properties.argumentType, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		Control argumentTypeHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PayloadFactoryArgument.Properties.argumentType, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createArgumentTypeEMFComboViewer
 
 		// End of user code
 		return parent;
 	}
 
-	
+	/**
+     * @generated NOT
+     */
 	protected Composite createArgumentValueText(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EsbViewsRepository.PayloadFactoryArgument.Properties.argumentValue, EsbMessages.PayloadFactoryArgumentPropertiesEditionPart_ArgumentValueLabel);
+		Control argumentValueLabel = createDescription(parent, EsbViewsRepository.PayloadFactoryArgument.Properties.argumentValue, EsbMessages.PayloadFactoryArgumentPropertiesEditionPart_ArgumentValueLabel);
 		argumentValue = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		argumentValue.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -259,16 +274,18 @@ public class PayloadFactoryArgumentPropertiesEditionPartForm extends SectionProp
 		});
 		EditingUtils.setID(argumentValue, EsbViewsRepository.PayloadFactoryArgument.Properties.argumentValue);
 		EditingUtils.setEEFtype(argumentValue, "eef::Text"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PayloadFactoryArgument.Properties.argumentValue, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		Control argumentValueHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PayloadFactoryArgument.Properties.argumentValue, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createArgumentValueText
-
+		
 		// End of user code
 		return parent;
 	}
 
-	
+	/**
+     * @generated NOT
+     */
 	protected Composite createEvaluatorEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EsbViewsRepository.PayloadFactoryArgument.Properties.evaluator, EsbMessages.PayloadFactoryArgumentPropertiesEditionPart_EvaluatorLabel);
+		Control evaluatorLabel = createDescription(parent, EsbViewsRepository.PayloadFactoryArgument.Properties.evaluator, EsbMessages.PayloadFactoryArgumentPropertiesEditionPart_EvaluatorLabel);
 		evaluator = new EMFComboViewer(parent);
 		evaluator.setContentProvider(new ArrayContentProvider());
 		evaluator.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -289,14 +306,16 @@ public class PayloadFactoryArgumentPropertiesEditionPartForm extends SectionProp
 
 		});
 		evaluator.setID(EsbViewsRepository.PayloadFactoryArgument.Properties.evaluator);
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PayloadFactoryArgument.Properties.evaluator, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		Control evaluatorHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PayloadFactoryArgument.Properties.evaluator, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createEvaluatorEMFComboViewer
 
 		// End of user code
 		return parent;
 	}
 
-	
+	/**
+     * @generated NOT
+     */
 	protected Composite createLiteralCheckbox(FormToolkit widgetFactory, Composite parent) {
 		literal = widgetFactory.createButton(parent, getDescription(EsbViewsRepository.PayloadFactoryArgument.Properties.literal, EsbMessages.PayloadFactoryArgumentPropertiesEditionPart_LiteralLabel), SWT.CHECK);
 		literal.addSelectionListener(new SelectionAdapter() {
@@ -318,7 +337,7 @@ public class PayloadFactoryArgumentPropertiesEditionPartForm extends SectionProp
 		literal.setLayoutData(literalData);
 		EditingUtils.setID(literal, EsbViewsRepository.PayloadFactoryArgument.Properties.literal);
 		EditingUtils.setEEFtype(literal, "eef::Checkbox"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PayloadFactoryArgument.Properties.literal, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		Control literalHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PayloadFactoryArgument.Properties.literal, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createLiteralCheckbox
 
 		// End of user code
@@ -501,6 +520,19 @@ public class PayloadFactoryArgumentPropertiesEditionPartForm extends SectionProp
 
 
 
+	// Start of user code for argumentExpression specific getters and setters implementation
+	@Override
+	public void setArgumentExpression(NamespacedProperty namespacedProperty) {
+
+	}
+
+	@Override
+	public NamespacedProperty getArgumentExpression() {
+		return null;
+	}
+	
+	// End of user code
+
 	/**
 	 * {@inheritDoc}
 	 *
@@ -511,8 +543,9 @@ public class PayloadFactoryArgumentPropertiesEditionPartForm extends SectionProp
 		return EsbMessages.PayloadFactoryArgument_Part_Title;
 	}
 
+
 	// Start of user code additional methods
-	
+
 	// End of user code
 
 

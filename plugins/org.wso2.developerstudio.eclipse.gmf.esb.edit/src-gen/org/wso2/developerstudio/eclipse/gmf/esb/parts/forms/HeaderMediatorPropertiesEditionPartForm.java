@@ -837,7 +837,7 @@ public class HeaderMediatorPropertiesEditionPartForm extends SectionPropertiesEd
         if(headerName == null) {
             headerName = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
         } 
-        String initHeaderName = headerName.getPropertyValue().isEmpty() ? "/default/expression" : headerName.getPropertyValue();
+        String initHeaderName = headerName.getPropertyValue().isEmpty() ? "" : headerName.getPropertyValue();
         headerNameText = widgetFactory.createText(parent, initHeaderName);
         headerNameText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
         widgetFactory.paintBordersFor(parent);
@@ -877,7 +877,7 @@ public class HeaderMediatorPropertiesEditionPartForm extends SectionPropertiesEd
         if(valueExpression == null) {
             valueExpression = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
         } 
-        String initValueExpression = valueExpression.getPropertyValue().isEmpty() ? "/default/expression" : valueExpression.getPropertyValue();
+        String initValueExpression = valueExpression.getPropertyValue().isEmpty() ? "" : valueExpression.getPropertyValue();
         valueExpressionText = widgetFactory.createText(parent, initValueExpression);
         valueExpressionText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
         widgetFactory.paintBordersFor(parent);

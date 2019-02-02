@@ -135,6 +135,7 @@ public class IterateMediatorPropertiesEditionPartImpl extends CompositePropertie
 	public void createControls(Composite view) { 
 		CompositionSequence iterateMediatorStep = new BindingCompositionSequence(propertiesEditionComponent);
 		CompositionStep propertiesStep = iterateMediatorStep.addStep(EsbViewsRepository.IterateMediator.Properties.class);
+		propertiesStep.addStep(EsbViewsRepository.IterateMediator.Properties.description);
 		propertiesStep.addStep(EsbViewsRepository.IterateMediator.Properties.commentsList);
 		propertiesStep.addStep(EsbViewsRepository.IterateMediator.Properties.reverse);
 		propertiesStep.addStep(EsbViewsRepository.IterateMediator.Properties.iterateID);
@@ -146,8 +147,6 @@ public class IterateMediatorPropertiesEditionPartImpl extends CompositePropertie
 		propertiesStep.addStep(EsbViewsRepository.IterateMediator.Properties.iterateExpression);
 		propertiesStep.addStep(EsbViewsRepository.IterateMediator.Properties.sequenceKey);
 		propertiesStep.addStep(EsbViewsRepository.IterateMediator.Properties.attachPath);
-	    propertiesStep.addStep(EsbViewsRepository.IterateMediator.Properties.description);
-
 		
 		
 		composer = new PartComposer(iterateMediatorStep) {
@@ -894,16 +893,46 @@ public class IterateMediatorPropertiesEditionPartImpl extends CompositePropertie
 
 
 
-	// Start of user code for iterateExpression specific getters and setters implementation
-	
-	// End of user code
+    // Start of user code for iterateExpression specific getters and setters implementation
+    @Override
+    public NamespacedProperty getIterateExpression() {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	// Start of user code for sequenceKey specific getters and setters implementation
-	
-	// End of user code
+    @Override
+    public void setIterateExpression(NamespacedProperty nameSpacedProperty) {
+        // TODO Auto-generated method stub
 
-	// Start of user code for attachPath specific getters and setters implementation
-	
+    }
+    // End of user code
+
+    // Start of user code for sequenceKey specific getters and setters implementation
+    @Override
+    public RegistryKeyProperty getSequenceKey() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void setSequenceKey(RegistryKeyProperty registryKeyProperty) {
+        // TODO Auto-generated method stub
+
+    }
+    // End of user code
+
+    // Start of user code for attachPath specific getters and setters implementation
+    @Override
+    public NamespacedProperty getAttachPath() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void setAttachPath(NamespacedProperty nameSpacedProperty) {
+        // TODO Auto-generated method stub
+
+    }
 	// End of user code
 
 	/**
@@ -915,42 +944,6 @@ public class IterateMediatorPropertiesEditionPartImpl extends CompositePropertie
 	public String getTitle() {
 		return EsbMessages.IterateMediator_Part_Title;
 	}
-
-    @Override
-    public NamespacedProperty getIterateExpression() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public void setIterateExpression(NamespacedProperty nameSpacedProperty) {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
-    public RegistryKeyProperty getSequenceKey() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public void setSequenceKey(RegistryKeyProperty registryKeyProperty) {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
-    public NamespacedProperty getAttachPath() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public void setAttachPath(NamespacedProperty nameSpacedProperty) {
-        // TODO Auto-generated method stub
-        
-    }
 
 	// Start of user code additional methods
 	

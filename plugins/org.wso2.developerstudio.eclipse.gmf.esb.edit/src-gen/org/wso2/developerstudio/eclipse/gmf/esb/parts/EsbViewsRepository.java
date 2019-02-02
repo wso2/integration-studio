@@ -95,7 +95,7 @@ public class EsbViewsRepository {
 			// End of user code
 			
 			// Start of user code for endpointRegistryKey ElementEditor key
-			public static String endpointRegistryKey = "esb::CallMediator::properties::endpointRegistryKey";
+			public static String endpointRegistryKey = "esb::CloneTarget::properties::endpointRegistryKey";
 			// End of user code
 			
 	
@@ -1085,6 +1085,14 @@ public class EsbViewsRepository {
 			
 			public static String regex = "esb::FilterMediator::properties::regex";
 			
+			// Start of user code for XPath ElementEditor key
+			public static String xPath = "esb::FilterMediator::properties::XPath";
+			// End of user code
+			
+			// Start of user code for Source ElementEditor key
+			public static String source = "esb::FilterMediator::properties::Source";
+			// End of user code
+			
 	
 		}
 	
@@ -1816,40 +1824,62 @@ public class EsbViewsRepository {
 	 * 
 	 */
 	public static class EnrichMediator {
-		public static class Properties {
+		public static class Misc {
 	
 			
-			public static String description = "esb::EnrichMediator::properties::description";
+			public static String description = "esb::EnrichMediator::Misc::description";
 			
 			
-			public static String commentsList = "esb::EnrichMediator::properties::commentsList";
+			public static String commentsList = "esb::EnrichMediator::Misc::commentsList";
 			
 			
-			public static String reverse = "esb::EnrichMediator::properties::Reverse";
+			public static String reverse = "esb::EnrichMediator::Misc::Reverse";
+			
+	
+		}
+	
+		public static class Source {
+	
+			
+			public static String cloneSource = "esb::EnrichMediator::Source::cloneSource";
 			
 			
-			public static String cloneSource = "esb::EnrichMediator::properties::cloneSource";
+			public static String sourceType = "esb::EnrichMediator::Source::sourceType";
 			
 			
-			public static String sourceType = "esb::EnrichMediator::properties::sourceType";
+			public static String inlineType = "esb::EnrichMediator::Source::inlineType";
 			
 			
-			public static String sourceProperty = "esb::EnrichMediator::properties::sourceProperty";
+			public static String sourceXML = "esb::EnrichMediator::Source::sourceXML";
 			
 			
-			public static String sourceXML = "esb::EnrichMediator::properties::sourceXML";
+			public static String sourceProperty = "esb::EnrichMediator::Source::sourceProperty";
+			
+			// Start of user code for sourceXPath ElementEditor key
+			public static String sourceXPath = "esb::EnrichMediator::Source::sourceXPath";
+			// End of user code
+			
+			// Start of user code for inlineRegistryKey ElementEditor key
+			public static String inlineRegistryKey = "esb::EnrichMediator::Source::inlineRegistryKey";
+			// End of user code
+			
+	
+		}
+	
+		public static class Target {
+	
+			
+			public static String targetAction = "esb::EnrichMediator::Target::targetAction";
 			
 			
-			public static String targetAction = "esb::EnrichMediator::properties::targetAction";
+			public static String targetType = "esb::EnrichMediator::Target::targetType";
 			
 			
-			public static String targetType = "esb::EnrichMediator::properties::targetType";
+			public static String targetProperty = "esb::EnrichMediator::Target::targetProperty";
 			
-			
-			public static String targetProperty = "esb::EnrichMediator::properties::targetProperty";
-			
-			
-			public static String inlineType = "esb::EnrichMediator::properties::inlineType";
+			// Start of user code for targetXPath ElementEditor key
+			public static String targetXPath = "esb::EnrichMediator::Target::targetXPath";
+			// End of user code
 			
 	
 		}
@@ -2030,6 +2060,10 @@ public class EsbViewsRepository {
 			
 			
 			public static String caseBranches = "esb::SwitchMediator::properties::caseBranches";
+			
+			// Start of user code for sourceXPath ElementEditor key
+			public static String sourceXPath = "esb::SwitchMediator::properties::sourceXPath";
+			// End of user code
 			
 	
 		}
@@ -2998,7 +3032,7 @@ public class EsbViewsRepository {
 			public static String sequenceType = "esb::AggregateMediator::onComplete::sequenceType";
 			
 			// Start of user code for sequenceKey ElementEditor key
-			public static String sequenceKey = "esb::AggregateMediator::properties::sequenceKey";
+			public static String sequenceKey = "esb::ForEachMediator::Sequence::sequenceKey";
 			// End of user code
 			
 	
@@ -3372,11 +3406,24 @@ public class EsbViewsRepository {
 			
 			public static String forEachID = "esb::ForEachMediator::properties::forEachID";
 			
+			// Start of user code for forEachExpression ElementEditor key
+			public static String forEachExpression = "esb::ForEachMediator::properties::forEachExpression";
+			// End of user code
 			
-			public static String sequenceType = "esb::ForEachMediator::properties::sequenceType";
+	
+		}
+	
+		public static class Sequence {
+	
+			
+			public static String sequenceType = "esb::ForEachMediator::Sequence::sequenceType";
 			
 			
-			public static String sequenceName = "esb::ForEachMediator::properties::sequenceName";
+			public static String sequenceName = "esb::ForEachMediator::Sequence::sequenceName";
+			
+			// Start of user code for sequenceKey ElementEditor key
+			public static String sequenceKey = "esb::ForEachMediator::Sequence::sequenceKey";
+			// End of user code
 			
 	
 		}

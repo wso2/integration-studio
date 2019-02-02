@@ -239,7 +239,13 @@ public class EsbMessages extends NLS {
 	public static String NamespacedPropertyPropertiesEditionPart_PropertiesGroupLabel;
 
 	
-	public static String EnrichMediatorPropertiesEditionPart_PropertiesGroupLabel;
+	public static String EnrichMediatorPropertiesEditionPart_MiscGroupLabel;
+
+	
+	public static String EnrichMediatorPropertiesEditionPart_SourceGroupLabel;
+
+	
+	public static String EnrichMediatorPropertiesEditionPart_TargetGroupLabel;
 
 	
 	public static String EnrichMediatorInputConnectorPropertiesEditionPart_PropertiesGroupLabel;
@@ -477,6 +483,9 @@ public class EsbMessages extends NLS {
 
 	
 	public static String ForEachMediatorPropertiesEditionPart_PropertiesGroupLabel;
+
+	
+	public static String ForEachMediatorPropertiesEditionPart_SequenceGroupLabel;
 
 	
 	public static String ForEachMediatorInputConnectorPropertiesEditionPart_PropertiesGroupLabel;
@@ -3727,6 +3736,12 @@ public class EsbMessages extends NLS {
 	public static String FilterMediatorPropertiesEditionPart_RegexLabel;
 
 	
+	public static String FilterMediatorPropertiesEditionPart_XPathLabel;
+
+	
+	public static String FilterMediatorPropertiesEditionPart_SourceLabel;
+
+	
 	public static String FilterMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;
 
 	
@@ -4054,10 +4069,19 @@ public class EsbMessages extends NLS {
 	public static String EnrichMediatorPropertiesEditionPart_SourceTypeLabel;
 
 	
-	public static String EnrichMediatorPropertiesEditionPart_SourcePropertyLabel;
+	public static String EnrichMediatorPropertiesEditionPart_InlineTypeLabel;
 
 	
 	public static String EnrichMediatorPropertiesEditionPart_SourceXMLLabel;
+
+	
+	public static String EnrichMediatorPropertiesEditionPart_SourcePropertyLabel;
+
+	
+	public static String EnrichMediatorPropertiesEditionPart_SourceXPathLabel;
+
+	
+	public static String EnrichMediatorPropertiesEditionPart_InlineRegistryKeyLabel;
 
 	
 	public static String EnrichMediatorPropertiesEditionPart_TargetActionLabel;
@@ -4069,7 +4093,7 @@ public class EsbMessages extends NLS {
 	public static String EnrichMediatorPropertiesEditionPart_TargetPropertyLabel;
 
 	
-	public static String EnrichMediatorPropertiesEditionPart_InlineTypeLabel;
+	public static String EnrichMediatorPropertiesEditionPart_TargetXPathLabel;
 
 	
 	public static String EnrichMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;
@@ -4142,6 +4166,9 @@ public class EsbMessages extends NLS {
 
 	
 	public static String SwitchMediatorPropertiesEditionPart_CaseBranchesLabel;
+
+	
+	public static String SwitchMediatorPropertiesEditionPart_SourceXPathLabel;
 
 	
 	public static String SwitchCaseBranchOutputConnectorPropertiesEditionPart_CommentMediatorsLabel;
@@ -4645,10 +4672,16 @@ public class EsbMessages extends NLS {
 	public static String ForEachMediatorPropertiesEditionPart_ForEachIDLabel;
 
 	
+	public static String ForEachMediatorPropertiesEditionPart_ForEachExpressionLabel;
+
+	
 	public static String ForEachMediatorPropertiesEditionPart_SequenceTypeLabel;
 
 	
 	public static String ForEachMediatorPropertiesEditionPart_SequenceNameLabel;
+
+	
+	public static String ForEachMediatorPropertiesEditionPart_SequenceKeyLabel;
 
 	
 	public static String ForEachMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;

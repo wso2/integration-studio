@@ -196,9 +196,9 @@ public class DataMapperMediatorPropertiesEditionPartForm extends SectionProperti
 		};
 		composer.compose(view);
 	}
-	/**
-	 * 
-	 */
+    /**
+     * @generated NOT
+     */
 	protected Composite createPropertiesGroup(FormToolkit widgetFactory, final Composite parent) {
 		Section propertiesSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		propertiesSection.setText(EsbMessages.DataMapperMediatorPropertiesEditionPart_PropertiesGroupLabel);
@@ -281,9 +281,9 @@ public class DataMapperMediatorPropertiesEditionPartForm extends SectionProperti
 		return parent;
 	}
 
-	/**
-	 * 
-	 */
+    /**
+     * @generated NOT
+     */
 	protected Composite createCommentsListMultiValuedEditor(FormToolkit widgetFactory, Composite parent) {
 		commentsList = widgetFactory.createText(parent, "", SWT.READ_ONLY); //$NON-NLS-1$
 		GridData commentsListData = new GridData(GridData.FILL_HORIZONTAL);
@@ -356,7 +356,9 @@ public class DataMapperMediatorPropertiesEditionPartForm extends SectionProperti
 		return parent;
 	}
 
-	
+	/**
+     * @generated NOT
+     */
 	protected Composite createInputTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 	    Control itemLabel = createDescription(parent, EsbViewsRepository.DataMapperMediator.Properties.inputType, EsbMessages.DataMapperMediatorPropertiesEditionPart_InputTypeLabel);
 		inputType = new EMFComboViewer(parent);
@@ -386,7 +388,9 @@ public class DataMapperMediatorPropertiesEditionPartForm extends SectionProperti
 		return parent;
 	}
 
-	
+	/**
+     * @generated NOT
+     */
 	protected Composite createConfigurationLocalPathText(FormToolkit widgetFactory, Composite parent) {
 	    Control itemLabel = createDescription(parent, EsbViewsRepository.DataMapperMediator.Properties.configurationLocalPath, EsbMessages.DataMapperMediatorPropertiesEditionPart_ConfigurationLocalPathLabel);
 		configurationLocalPath = widgetFactory.createText(parent, ""); //$NON-NLS-1$
@@ -480,7 +484,9 @@ public class DataMapperMediatorPropertiesEditionPartForm extends SectionProperti
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */	
 	protected Composite createInputSchemaLocalPathText(FormToolkit widgetFactory, Composite parent) {
 		Control itemLabel = createDescription(parent, EsbViewsRepository.DataMapperMediator.Properties.inputSchemaLocalPath, EsbMessages.DataMapperMediatorPropertiesEditionPart_InputSchemaLocalPathLabel);
 		inputSchemaLocalPath = widgetFactory.createText(parent, ""); //$NON-NLS-1$
@@ -574,7 +580,9 @@ public class DataMapperMediatorPropertiesEditionPartForm extends SectionProperti
 		return parent;
 	}
 
-	
+	/**
+     * @generated NOT
+     */ 
 	protected Composite createOutputSchemaLocalPathText(FormToolkit widgetFactory, Composite parent) {
 		Control itemLabel = createDescription(parent, EsbViewsRepository.DataMapperMediator.Properties.outputSchemaLocalPath, EsbMessages.DataMapperMediatorPropertiesEditionPart_OutputSchemaLocalPathLabel);
 		outputSchemaLocalPath = widgetFactory.createText(parent, ""); //$NON-NLS-1$
@@ -668,7 +676,9 @@ public class DataMapperMediatorPropertiesEditionPartForm extends SectionProperti
 		return parent;
 	}
 
-	
+	/**
+     * @generated NOT
+     */ 
 	protected Composite createOutputTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control itemLabel = createDescription(parent, EsbViewsRepository.DataMapperMediator.Properties.outputType, EsbMessages.DataMapperMediatorPropertiesEditionPart_OutputTypeLabel);
 		outputType = new EMFComboViewer(parent);

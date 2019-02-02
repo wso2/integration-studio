@@ -6,6 +6,8 @@ package org.wso2.developerstudio.eclipse.gmf.esb.parts;
 // Start of user code for imports
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.Enumerator;
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 
 
 // End of user code
@@ -121,6 +123,17 @@ public interface ForEachMediatorPropertiesEditionPart {
 
 
 
+	// Start of user code for forEachExpression specific getters and setters declaration
+	public NamespacedProperty getForEachExpression();
+    
+    public void setForEachExpression(NamespacedProperty nameSpacedProperty);
+
+	// End of user code
+	// Start of user code for sequenceKey specific getters and setters declaration
+    public RegistryKeyProperty getSequenceKey();
+    
+    public void setSequenceKey(RegistryKeyProperty registryKeyProperty);
+	// End of user code
 
 	/**
 	 * Returns the internationalized title text.

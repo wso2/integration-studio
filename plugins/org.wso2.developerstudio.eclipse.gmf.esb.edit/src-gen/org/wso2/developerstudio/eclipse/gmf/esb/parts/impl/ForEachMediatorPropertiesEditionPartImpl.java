@@ -59,7 +59,8 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.ForEachMediatorPropertiesEditionPart;
 
@@ -79,8 +80,16 @@ public class ForEachMediatorPropertiesEditionPartImpl extends CompositePropertie
 	protected EList commentsListList;
 	protected Button reverse;
 	protected Text forEachID;
+	// Start of user code  for forEachExpression widgets declarations
+	
+	// End of user code
+
 	protected EMFComboViewer sequenceType;
 	protected Text sequenceName;
+	// Start of user code  for sequenceKey widgets declarations
+	
+	// End of user code
+
 
 
 
@@ -123,8 +132,12 @@ public class ForEachMediatorPropertiesEditionPartImpl extends CompositePropertie
 		propertiesStep.addStep(EsbViewsRepository.ForEachMediator.Properties.commentsList);
 		propertiesStep.addStep(EsbViewsRepository.ForEachMediator.Properties.reverse);
 		propertiesStep.addStep(EsbViewsRepository.ForEachMediator.Properties.forEachID);
-		propertiesStep.addStep(EsbViewsRepository.ForEachMediator.Properties.sequenceType);
-		propertiesStep.addStep(EsbViewsRepository.ForEachMediator.Properties.sequenceName);
+		propertiesStep.addStep(EsbViewsRepository.ForEachMediator.Properties.forEachExpression);
+		
+		CompositionStep sequenceStep = forEachMediatorStep.addStep(EsbViewsRepository.ForEachMediator.Sequence.class);
+		sequenceStep.addStep(EsbViewsRepository.ForEachMediator.Sequence.sequenceType);
+		sequenceStep.addStep(EsbViewsRepository.ForEachMediator.Sequence.sequenceName);
+		sequenceStep.addStep(EsbViewsRepository.ForEachMediator.Sequence.sequenceKey);
 		
 		
 		composer = new PartComposer(forEachMediatorStep) {
@@ -146,12 +159,21 @@ public class ForEachMediatorPropertiesEditionPartImpl extends CompositePropertie
 				if (key == EsbViewsRepository.ForEachMediator.Properties.forEachID) {
 					return createForEachIDText(parent);
 				}
-				if (key == EsbViewsRepository.ForEachMediator.Properties.sequenceType) {
+				// Start of user code for forEachExpression addToPart creation
+				
+				// End of user code
+				if (key == EsbViewsRepository.ForEachMediator.Sequence.class) {
+					return createSequenceGroup(parent);
+				}
+				if (key == EsbViewsRepository.ForEachMediator.Sequence.sequenceType) {
 					return createSequenceTypeEMFComboViewer(parent);
 				}
-				if (key == EsbViewsRepository.ForEachMediator.Properties.sequenceName) {
+				if (key == EsbViewsRepository.ForEachMediator.Sequence.sequenceName) {
 					return createSequenceNameText(parent);
 				}
+				// Start of user code for sequenceKey addToPart creation
+				
+				// End of user code
 				return parent;
 			}
 		};
@@ -344,9 +366,24 @@ public class ForEachMediatorPropertiesEditionPartImpl extends CompositePropertie
 		return parent;
 	}
 
+	/**
+	 * 
+	 */
+	protected Composite createSequenceGroup(Composite parent) {
+		Group sequenceGroup = new Group(parent, SWT.NONE);
+		sequenceGroup.setText(EsbMessages.ForEachMediatorPropertiesEditionPart_SequenceGroupLabel);
+		GridData sequenceGroupData = new GridData(GridData.FILL_HORIZONTAL);
+		sequenceGroupData.horizontalSpan = 3;
+		sequenceGroup.setLayoutData(sequenceGroupData);
+		GridLayout sequenceGroupLayout = new GridLayout();
+		sequenceGroupLayout.numColumns = 3;
+		sequenceGroup.setLayout(sequenceGroupLayout);
+		return sequenceGroup;
+	}
+
 	
 	protected Composite createSequenceTypeEMFComboViewer(Composite parent) {
-		createDescription(parent, EsbViewsRepository.ForEachMediator.Properties.sequenceType, EsbMessages.ForEachMediatorPropertiesEditionPart_SequenceTypeLabel);
+		createDescription(parent, EsbViewsRepository.ForEachMediator.Sequence.sequenceType, EsbMessages.ForEachMediatorPropertiesEditionPart_SequenceTypeLabel);
 		sequenceType = new EMFComboViewer(parent);
 		sequenceType.setContentProvider(new ArrayContentProvider());
 		sequenceType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -362,12 +399,12 @@ public class ForEachMediatorPropertiesEditionPartImpl extends CompositePropertie
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ForEachMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.ForEachMediator.Properties.sequenceType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getSequenceType()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ForEachMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.ForEachMediator.Sequence.sequenceType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getSequenceType()));
 			}
 
 		});
-		sequenceType.setID(EsbViewsRepository.ForEachMediator.Properties.sequenceType);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.ForEachMediator.Properties.sequenceType, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		sequenceType.setID(EsbViewsRepository.ForEachMediator.Sequence.sequenceType);
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.ForEachMediator.Sequence.sequenceType, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createSequenceTypeEMFComboViewer
 
 		// End of user code
@@ -376,7 +413,7 @@ public class ForEachMediatorPropertiesEditionPartImpl extends CompositePropertie
 
 	
 	protected Composite createSequenceNameText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.ForEachMediator.Properties.sequenceName, EsbMessages.ForEachMediatorPropertiesEditionPart_SequenceNameLabel);
+		createDescription(parent, EsbViewsRepository.ForEachMediator.Sequence.sequenceName, EsbMessages.ForEachMediatorPropertiesEditionPart_SequenceNameLabel);
 		sequenceName = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData sequenceNameData = new GridData(GridData.FILL_HORIZONTAL);
 		sequenceName.setLayoutData(sequenceNameData);
@@ -392,7 +429,7 @@ public class ForEachMediatorPropertiesEditionPartImpl extends CompositePropertie
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ForEachMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.ForEachMediator.Properties.sequenceName, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, sequenceName.getText()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ForEachMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.ForEachMediator.Sequence.sequenceName, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, sequenceName.getText()));
 			}
 
 		});
@@ -409,14 +446,14 @@ public class ForEachMediatorPropertiesEditionPartImpl extends CompositePropertie
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
 					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ForEachMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.ForEachMediator.Properties.sequenceName, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, sequenceName.getText()));
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ForEachMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.ForEachMediator.Sequence.sequenceName, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, sequenceName.getText()));
 				}
 			}
 
 		});
-		EditingUtils.setID(sequenceName, EsbViewsRepository.ForEachMediator.Properties.sequenceName);
+		EditingUtils.setID(sequenceName, EsbViewsRepository.ForEachMediator.Sequence.sequenceName);
 		EditingUtils.setEEFtype(sequenceName, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.ForEachMediator.Properties.sequenceName, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.ForEachMediator.Sequence.sequenceName, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createSequenceNameText
 
 		// End of user code
@@ -602,7 +639,7 @@ public class ForEachMediatorPropertiesEditionPartImpl extends CompositePropertie
 	public void initSequenceType(Object input, Enumerator current) {
 		sequenceType.setInput(input);
 		sequenceType.modelUpdating(new StructuredSelection(current));
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.ForEachMediator.Properties.sequenceType);
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.ForEachMediator.Sequence.sequenceType);
 		if (eefElementEditorReadOnlyState && sequenceType.isEnabled()) {
 			sequenceType.setEnabled(false);
 			sequenceType.setToolTipText(EsbMessages.ForEachMediator_ReadOnly);
@@ -620,7 +657,7 @@ public class ForEachMediatorPropertiesEditionPartImpl extends CompositePropertie
 	 */
 	public void setSequenceType(Enumerator newValue) {
 		sequenceType.modelUpdating(new StructuredSelection(newValue));
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.ForEachMediator.Properties.sequenceType);
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.ForEachMediator.Sequence.sequenceType);
 		if (eefElementEditorReadOnlyState && sequenceType.isEnabled()) {
 			sequenceType.setEnabled(false);
 			sequenceType.setToolTipText(EsbMessages.ForEachMediator_ReadOnly);
@@ -652,7 +689,7 @@ public class ForEachMediatorPropertiesEditionPartImpl extends CompositePropertie
 		} else {
 			sequenceName.setText(""); //$NON-NLS-1$
 		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.ForEachMediator.Properties.sequenceName);
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.ForEachMediator.Sequence.sequenceName);
 		if (eefElementEditorReadOnlyState && sequenceName.isEnabled()) {
 			sequenceName.setEnabled(false);
 			sequenceName.setToolTipText(EsbMessages.ForEachMediator_ReadOnly);
@@ -667,6 +704,14 @@ public class ForEachMediatorPropertiesEditionPartImpl extends CompositePropertie
 
 
 
+	// Start of user code for forEachExpression specific getters and setters implementation
+	
+	// End of user code
+
+	// Start of user code for sequenceKey specific getters and setters implementation
+	
+	// End of user code
+
 	/**
 	 * {@inheritDoc}
 	 *
@@ -678,7 +723,31 @@ public class ForEachMediatorPropertiesEditionPartImpl extends CompositePropertie
 	}
 
 	// Start of user code additional methods
-	
+    @Override
+    public NamespacedProperty getForEachExpression() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void setForEachExpression(NamespacedProperty nameSpacedProperty) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public RegistryKeyProperty getSequenceKey() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void setSequenceKey(RegistryKeyProperty registryKeyProperty) {
+        // TODO Auto-generated method stub
+        
+    }
+
+
 	// End of user code
 
 

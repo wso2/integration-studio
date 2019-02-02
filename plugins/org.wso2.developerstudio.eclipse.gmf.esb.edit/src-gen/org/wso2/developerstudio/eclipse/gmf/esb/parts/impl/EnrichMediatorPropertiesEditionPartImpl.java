@@ -59,7 +59,8 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EnrichMediatorPropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 
@@ -80,12 +81,24 @@ public class EnrichMediatorPropertiesEditionPartImpl extends CompositeProperties
 	protected Button reverse;
 	protected Button cloneSource;
 	protected EMFComboViewer sourceType;
-	protected Text sourceProperty;
+	protected EMFComboViewer inlineType;
 	protected Text sourceXML;
+	protected Text sourceProperty;
+	// Start of user code  for sourceXPath widgets declarations
+	
+	// End of user code
+
+	// Start of user code  for inlineRegistryKey widgets declarations
+	
+	// End of user code
+
 	protected EMFComboViewer targetAction;
 	protected EMFComboViewer targetType;
 	protected Text targetProperty;
-	protected EMFComboViewer inlineType;
+	// Start of user code  for targetXPath widgets declarations
+	
+	// End of user code
+
 
 
 
@@ -123,60 +136,82 @@ public class EnrichMediatorPropertiesEditionPartImpl extends CompositeProperties
 	 */
 	public void createControls(Composite view) { 
 		CompositionSequence enrichMediatorStep = new BindingCompositionSequence(propertiesEditionComponent);
-		CompositionStep propertiesStep = enrichMediatorStep.addStep(EsbViewsRepository.EnrichMediator.Properties.class);
-		propertiesStep.addStep(EsbViewsRepository.EnrichMediator.Properties.description);
-		propertiesStep.addStep(EsbViewsRepository.EnrichMediator.Properties.commentsList);
-		propertiesStep.addStep(EsbViewsRepository.EnrichMediator.Properties.reverse);
-		propertiesStep.addStep(EsbViewsRepository.EnrichMediator.Properties.cloneSource);
-		propertiesStep.addStep(EsbViewsRepository.EnrichMediator.Properties.sourceType);
-		propertiesStep.addStep(EsbViewsRepository.EnrichMediator.Properties.sourceProperty);
-		propertiesStep.addStep(EsbViewsRepository.EnrichMediator.Properties.sourceXML);
-		propertiesStep.addStep(EsbViewsRepository.EnrichMediator.Properties.targetAction);
-		propertiesStep.addStep(EsbViewsRepository.EnrichMediator.Properties.targetType);
-		propertiesStep.addStep(EsbViewsRepository.EnrichMediator.Properties.targetProperty);
-		propertiesStep.addStep(EsbViewsRepository.EnrichMediator.Properties.inlineType);
+		CompositionStep miscStep = enrichMediatorStep.addStep(EsbViewsRepository.EnrichMediator.Misc.class);
+		miscStep.addStep(EsbViewsRepository.EnrichMediator.Misc.description);
+		miscStep.addStep(EsbViewsRepository.EnrichMediator.Misc.commentsList);
+		miscStep.addStep(EsbViewsRepository.EnrichMediator.Misc.reverse);
+		
+		CompositionStep sourceStep = enrichMediatorStep.addStep(EsbViewsRepository.EnrichMediator.Source.class);
+		sourceStep.addStep(EsbViewsRepository.EnrichMediator.Source.cloneSource);
+		sourceStep.addStep(EsbViewsRepository.EnrichMediator.Source.sourceType);
+		sourceStep.addStep(EsbViewsRepository.EnrichMediator.Source.inlineType);
+		sourceStep.addStep(EsbViewsRepository.EnrichMediator.Source.sourceXML);
+		sourceStep.addStep(EsbViewsRepository.EnrichMediator.Source.sourceProperty);
+		sourceStep.addStep(EsbViewsRepository.EnrichMediator.Source.sourceXPath);
+		sourceStep.addStep(EsbViewsRepository.EnrichMediator.Source.inlineRegistryKey);
+		
+		CompositionStep targetStep = enrichMediatorStep.addStep(EsbViewsRepository.EnrichMediator.Target.class);
+		targetStep.addStep(EsbViewsRepository.EnrichMediator.Target.targetAction);
+		targetStep.addStep(EsbViewsRepository.EnrichMediator.Target.targetType);
+		targetStep.addStep(EsbViewsRepository.EnrichMediator.Target.targetProperty);
+		targetStep.addStep(EsbViewsRepository.EnrichMediator.Target.targetXPath);
 		
 		
 		composer = new PartComposer(enrichMediatorStep) {
 
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
-				if (key == EsbViewsRepository.EnrichMediator.Properties.class) {
-					return createPropertiesGroup(parent);
+				if (key == EsbViewsRepository.EnrichMediator.Misc.class) {
+					return createMiscGroup(parent);
 				}
-				if (key == EsbViewsRepository.EnrichMediator.Properties.description) {
+				if (key == EsbViewsRepository.EnrichMediator.Misc.description) {
 					return createDescriptionText(parent);
 				}
-				if (key == EsbViewsRepository.EnrichMediator.Properties.commentsList) {
+				if (key == EsbViewsRepository.EnrichMediator.Misc.commentsList) {
 					return createCommentsListMultiValuedEditor(parent);
 				}
-				if (key == EsbViewsRepository.EnrichMediator.Properties.reverse) {
+				if (key == EsbViewsRepository.EnrichMediator.Misc.reverse) {
 					return createReverseCheckbox(parent);
 				}
-				if (key == EsbViewsRepository.EnrichMediator.Properties.cloneSource) {
+				if (key == EsbViewsRepository.EnrichMediator.Source.class) {
+					return createSourceGroup(parent);
+				}
+				if (key == EsbViewsRepository.EnrichMediator.Source.cloneSource) {
 					return createCloneSourceCheckbox(parent);
 				}
-				if (key == EsbViewsRepository.EnrichMediator.Properties.sourceType) {
+				if (key == EsbViewsRepository.EnrichMediator.Source.sourceType) {
 					return createSourceTypeEMFComboViewer(parent);
 				}
-				if (key == EsbViewsRepository.EnrichMediator.Properties.sourceProperty) {
-					return createSourcePropertyText(parent);
-				}
-				if (key == EsbViewsRepository.EnrichMediator.Properties.sourceXML) {
-					return createSourceXMLText(parent);
-				}
-				if (key == EsbViewsRepository.EnrichMediator.Properties.targetAction) {
-					return createTargetActionEMFComboViewer(parent);
-				}
-				if (key == EsbViewsRepository.EnrichMediator.Properties.targetType) {
-					return createTargetTypeEMFComboViewer(parent);
-				}
-				if (key == EsbViewsRepository.EnrichMediator.Properties.targetProperty) {
-					return createTargetPropertyText(parent);
-				}
-				if (key == EsbViewsRepository.EnrichMediator.Properties.inlineType) {
+				if (key == EsbViewsRepository.EnrichMediator.Source.inlineType) {
 					return createInlineTypeEMFComboViewer(parent);
 				}
+				if (key == EsbViewsRepository.EnrichMediator.Source.sourceXML) {
+					return createSourceXMLText(parent);
+				}
+				if (key == EsbViewsRepository.EnrichMediator.Source.sourceProperty) {
+					return createSourcePropertyText(parent);
+				}
+				// Start of user code for sourceXPath addToPart creation
+				
+				// End of user code
+				// Start of user code for inlineRegistryKey addToPart creation
+				
+				// End of user code
+				if (key == EsbViewsRepository.EnrichMediator.Target.class) {
+					return createTargetGroup(parent);
+				}
+				if (key == EsbViewsRepository.EnrichMediator.Target.targetAction) {
+					return createTargetActionEMFComboViewer(parent);
+				}
+				if (key == EsbViewsRepository.EnrichMediator.Target.targetType) {
+					return createTargetTypeEMFComboViewer(parent);
+				}
+				if (key == EsbViewsRepository.EnrichMediator.Target.targetProperty) {
+					return createTargetPropertyText(parent);
+				}
+				// Start of user code for targetXPath addToPart creation
+				
+				// End of user code
 				return parent;
 			}
 		};
@@ -186,21 +221,21 @@ public class EnrichMediatorPropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * 
 	 */
-	protected Composite createPropertiesGroup(Composite parent) {
-		Group propertiesGroup = new Group(parent, SWT.NONE);
-		propertiesGroup.setText(EsbMessages.EnrichMediatorPropertiesEditionPart_PropertiesGroupLabel);
-		GridData propertiesGroupData = new GridData(GridData.FILL_HORIZONTAL);
-		propertiesGroupData.horizontalSpan = 3;
-		propertiesGroup.setLayoutData(propertiesGroupData);
-		GridLayout propertiesGroupLayout = new GridLayout();
-		propertiesGroupLayout.numColumns = 3;
-		propertiesGroup.setLayout(propertiesGroupLayout);
-		return propertiesGroup;
+	protected Composite createMiscGroup(Composite parent) {
+		Group miscGroup = new Group(parent, SWT.NONE);
+		miscGroup.setText(EsbMessages.EnrichMediatorPropertiesEditionPart_MiscGroupLabel);
+		GridData miscGroupData = new GridData(GridData.FILL_HORIZONTAL);
+		miscGroupData.horizontalSpan = 3;
+		miscGroup.setLayoutData(miscGroupData);
+		GridLayout miscGroupLayout = new GridLayout();
+		miscGroupLayout.numColumns = 3;
+		miscGroup.setLayout(miscGroupLayout);
+		return miscGroup;
 	}
 
 	
 	protected Composite createDescriptionText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.EnrichMediator.Properties.description, EsbMessages.EnrichMediatorPropertiesEditionPart_DescriptionLabel);
+		createDescription(parent, EsbViewsRepository.EnrichMediator.Misc.description, EsbMessages.EnrichMediatorPropertiesEditionPart_DescriptionLabel);
 		description = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData descriptionData = new GridData(GridData.FILL_HORIZONTAL);
 		description.setLayoutData(descriptionData);
@@ -216,7 +251,7 @@ public class EnrichMediatorPropertiesEditionPartImpl extends CompositeProperties
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EnrichMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.EnrichMediator.Properties.description, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, description.getText()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EnrichMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.EnrichMediator.Misc.description, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, description.getText()));
 			}
 
 		});
@@ -233,14 +268,14 @@ public class EnrichMediatorPropertiesEditionPartImpl extends CompositeProperties
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
 					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EnrichMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.EnrichMediator.Properties.description, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, description.getText()));
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EnrichMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.EnrichMediator.Misc.description, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, description.getText()));
 				}
 			}
 
 		});
-		EditingUtils.setID(description, EsbViewsRepository.EnrichMediator.Properties.description);
+		EditingUtils.setID(description, EsbViewsRepository.EnrichMediator.Misc.description);
 		EditingUtils.setEEFtype(description, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.EnrichMediator.Properties.description, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.EnrichMediator.Misc.description, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createDescriptionText
 
 		// End of user code
@@ -252,10 +287,10 @@ public class EnrichMediatorPropertiesEditionPartImpl extends CompositeProperties
 		GridData commentsListData = new GridData(GridData.FILL_HORIZONTAL);
 		commentsListData.horizontalSpan = 2;
 		commentsList.setLayoutData(commentsListData);
-		EditingUtils.setID(commentsList, EsbViewsRepository.EnrichMediator.Properties.commentsList);
+		EditingUtils.setID(commentsList, EsbViewsRepository.EnrichMediator.Misc.commentsList);
 		EditingUtils.setEEFtype(commentsList, "eef::MultiValuedEditor::field"); //$NON-NLS-1$
 		editCommentsList = new Button(parent, SWT.NONE);
-		editCommentsList.setText(getDescription(EsbViewsRepository.EnrichMediator.Properties.commentsList, EsbMessages.EnrichMediatorPropertiesEditionPart_CommentsListLabel));
+		editCommentsList.setText(getDescription(EsbViewsRepository.EnrichMediator.Misc.commentsList, EsbMessages.EnrichMediatorPropertiesEditionPart_CommentsListLabel));
 		GridData editCommentsListData = new GridData();
 		editCommentsList.setLayoutData(editCommentsListData);
 		editCommentsList.addSelectionListener(new SelectionAdapter() {
@@ -277,12 +312,12 @@ public class EnrichMediatorPropertiesEditionPartImpl extends CompositeProperties
 						commentsListList = new BasicEList();
 					}
 					commentsList.setText(commentsListList.toString());
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EnrichMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.EnrichMediator.Properties.commentsList, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new BasicEList(commentsListList)));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EnrichMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.EnrichMediator.Misc.commentsList, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new BasicEList(commentsListList)));
 					setHasChanged(true);
 				}
 			}
 		});
-		EditingUtils.setID(editCommentsList, EsbViewsRepository.EnrichMediator.Properties.commentsList);
+		EditingUtils.setID(editCommentsList, EsbViewsRepository.EnrichMediator.Misc.commentsList);
 		EditingUtils.setEEFtype(editCommentsList, "eef::MultiValuedEditor::browsebutton"); //$NON-NLS-1$
 		// Start of user code for createCommentsListMultiValuedEditor
 
@@ -293,7 +328,7 @@ public class EnrichMediatorPropertiesEditionPartImpl extends CompositeProperties
 	
 	protected Composite createReverseCheckbox(Composite parent) {
 		reverse = new Button(parent, SWT.CHECK);
-		reverse.setText(getDescription(EsbViewsRepository.EnrichMediator.Properties.reverse, EsbMessages.EnrichMediatorPropertiesEditionPart_ReverseLabel));
+		reverse.setText(getDescription(EsbViewsRepository.EnrichMediator.Misc.reverse, EsbMessages.EnrichMediatorPropertiesEditionPart_ReverseLabel));
 		reverse.addSelectionListener(new SelectionAdapter() {
 
 			/**
@@ -304,26 +339,41 @@ public class EnrichMediatorPropertiesEditionPartImpl extends CompositeProperties
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EnrichMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.EnrichMediator.Properties.reverse, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(reverse.getSelection())));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EnrichMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.EnrichMediator.Misc.reverse, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(reverse.getSelection())));
 			}
 
 		});
 		GridData reverseData = new GridData(GridData.FILL_HORIZONTAL);
 		reverseData.horizontalSpan = 2;
 		reverse.setLayoutData(reverseData);
-		EditingUtils.setID(reverse, EsbViewsRepository.EnrichMediator.Properties.reverse);
+		EditingUtils.setID(reverse, EsbViewsRepository.EnrichMediator.Misc.reverse);
 		EditingUtils.setEEFtype(reverse, "eef::Checkbox"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.EnrichMediator.Properties.reverse, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.EnrichMediator.Misc.reverse, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createReverseCheckbox
 
 		// End of user code
 		return parent;
 	}
 
+	/**
+	 * 
+	 */
+	protected Composite createSourceGroup(Composite parent) {
+		Group sourceGroup = new Group(parent, SWT.NONE);
+		sourceGroup.setText(EsbMessages.EnrichMediatorPropertiesEditionPart_SourceGroupLabel);
+		GridData sourceGroupData = new GridData(GridData.FILL_HORIZONTAL);
+		sourceGroupData.horizontalSpan = 3;
+		sourceGroup.setLayoutData(sourceGroupData);
+		GridLayout sourceGroupLayout = new GridLayout();
+		sourceGroupLayout.numColumns = 3;
+		sourceGroup.setLayout(sourceGroupLayout);
+		return sourceGroup;
+	}
+
 	
 	protected Composite createCloneSourceCheckbox(Composite parent) {
 		cloneSource = new Button(parent, SWT.CHECK);
-		cloneSource.setText(getDescription(EsbViewsRepository.EnrichMediator.Properties.cloneSource, EsbMessages.EnrichMediatorPropertiesEditionPart_CloneSourceLabel));
+		cloneSource.setText(getDescription(EsbViewsRepository.EnrichMediator.Source.cloneSource, EsbMessages.EnrichMediatorPropertiesEditionPart_CloneSourceLabel));
 		cloneSource.addSelectionListener(new SelectionAdapter() {
 
 			/**
@@ -334,16 +384,16 @@ public class EnrichMediatorPropertiesEditionPartImpl extends CompositeProperties
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EnrichMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.EnrichMediator.Properties.cloneSource, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(cloneSource.getSelection())));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EnrichMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.EnrichMediator.Source.cloneSource, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(cloneSource.getSelection())));
 			}
 
 		});
 		GridData cloneSourceData = new GridData(GridData.FILL_HORIZONTAL);
 		cloneSourceData.horizontalSpan = 2;
 		cloneSource.setLayoutData(cloneSourceData);
-		EditingUtils.setID(cloneSource, EsbViewsRepository.EnrichMediator.Properties.cloneSource);
+		EditingUtils.setID(cloneSource, EsbViewsRepository.EnrichMediator.Source.cloneSource);
 		EditingUtils.setEEFtype(cloneSource, "eef::Checkbox"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.EnrichMediator.Properties.cloneSource, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.EnrichMediator.Source.cloneSource, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createCloneSourceCheckbox
 
 		// End of user code
@@ -352,7 +402,7 @@ public class EnrichMediatorPropertiesEditionPartImpl extends CompositeProperties
 
 	
 	protected Composite createSourceTypeEMFComboViewer(Composite parent) {
-		createDescription(parent, EsbViewsRepository.EnrichMediator.Properties.sourceType, EsbMessages.EnrichMediatorPropertiesEditionPart_SourceTypeLabel);
+		createDescription(parent, EsbViewsRepository.EnrichMediator.Source.sourceType, EsbMessages.EnrichMediatorPropertiesEditionPart_SourceTypeLabel);
 		sourceType = new EMFComboViewer(parent);
 		sourceType.setContentProvider(new ArrayContentProvider());
 		sourceType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -368,12 +418,12 @@ public class EnrichMediatorPropertiesEditionPartImpl extends CompositeProperties
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EnrichMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.EnrichMediator.Properties.sourceType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getSourceType()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EnrichMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.EnrichMediator.Source.sourceType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getSourceType()));
 			}
 
 		});
-		sourceType.setID(EsbViewsRepository.EnrichMediator.Properties.sourceType);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.EnrichMediator.Properties.sourceType, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		sourceType.setID(EsbViewsRepository.EnrichMediator.Source.sourceType);
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.EnrichMediator.Source.sourceType, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createSourceTypeEMFComboViewer
 
 		// End of user code
@@ -381,49 +431,30 @@ public class EnrichMediatorPropertiesEditionPartImpl extends CompositeProperties
 	}
 
 	
-	protected Composite createSourcePropertyText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.EnrichMediator.Properties.sourceProperty, EsbMessages.EnrichMediatorPropertiesEditionPart_SourcePropertyLabel);
-		sourceProperty = SWTUtils.createScrollableText(parent, SWT.BORDER);
-		GridData sourcePropertyData = new GridData(GridData.FILL_HORIZONTAL);
-		sourceProperty.setLayoutData(sourcePropertyData);
-		sourceProperty.addFocusListener(new FocusAdapter() {
+	protected Composite createInlineTypeEMFComboViewer(Composite parent) {
+		createDescription(parent, EsbViewsRepository.EnrichMediator.Source.inlineType, EsbMessages.EnrichMediatorPropertiesEditionPart_InlineTypeLabel);
+		inlineType = new EMFComboViewer(parent);
+		inlineType.setContentProvider(new ArrayContentProvider());
+		inlineType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
+		GridData inlineTypeData = new GridData(GridData.FILL_HORIZONTAL);
+		inlineType.getCombo().setLayoutData(inlineTypeData);
+		inlineType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
 			 * {@inheritDoc}
 			 * 
-			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
+			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+			 * 	
 			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void focusLost(FocusEvent e) {
+			public void selectionChanged(SelectionChangedEvent event) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EnrichMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.EnrichMediator.Properties.sourceProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, sourceProperty.getText()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EnrichMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.EnrichMediator.Source.inlineType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getInlineType()));
 			}
 
 		});
-		sourceProperty.addKeyListener(new KeyAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EnrichMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.EnrichMediator.Properties.sourceProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, sourceProperty.getText()));
-				}
-			}
-
-		});
-		EditingUtils.setID(sourceProperty, EsbViewsRepository.EnrichMediator.Properties.sourceProperty);
-		EditingUtils.setEEFtype(sourceProperty, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.EnrichMediator.Properties.sourceProperty, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		// Start of user code for createSourcePropertyText
+		inlineType.setID(EsbViewsRepository.EnrichMediator.Source.inlineType);
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.EnrichMediator.Source.inlineType, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createInlineTypeEMFComboViewer
 
 		// End of user code
 		return parent;
@@ -431,7 +462,7 @@ public class EnrichMediatorPropertiesEditionPartImpl extends CompositeProperties
 
 	
 	protected Composite createSourceXMLText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.EnrichMediator.Properties.sourceXML, EsbMessages.EnrichMediatorPropertiesEditionPart_SourceXMLLabel);
+		createDescription(parent, EsbViewsRepository.EnrichMediator.Source.sourceXML, EsbMessages.EnrichMediatorPropertiesEditionPart_SourceXMLLabel);
 		sourceXML = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData sourceXMLData = new GridData(GridData.FILL_HORIZONTAL);
 		sourceXML.setLayoutData(sourceXMLData);
@@ -447,7 +478,7 @@ public class EnrichMediatorPropertiesEditionPartImpl extends CompositeProperties
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EnrichMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.EnrichMediator.Properties.sourceXML, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, sourceXML.getText()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EnrichMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.EnrichMediator.Source.sourceXML, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, sourceXML.getText()));
 			}
 
 		});
@@ -464,14 +495,14 @@ public class EnrichMediatorPropertiesEditionPartImpl extends CompositeProperties
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
 					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EnrichMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.EnrichMediator.Properties.sourceXML, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, sourceXML.getText()));
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EnrichMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.EnrichMediator.Source.sourceXML, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, sourceXML.getText()));
 				}
 			}
 
 		});
-		EditingUtils.setID(sourceXML, EsbViewsRepository.EnrichMediator.Properties.sourceXML);
+		EditingUtils.setID(sourceXML, EsbViewsRepository.EnrichMediator.Source.sourceXML);
 		EditingUtils.setEEFtype(sourceXML, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.EnrichMediator.Properties.sourceXML, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.EnrichMediator.Source.sourceXML, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createSourceXMLText
 
 		// End of user code
@@ -479,8 +510,72 @@ public class EnrichMediatorPropertiesEditionPartImpl extends CompositeProperties
 	}
 
 	
+	protected Composite createSourcePropertyText(Composite parent) {
+		createDescription(parent, EsbViewsRepository.EnrichMediator.Source.sourceProperty, EsbMessages.EnrichMediatorPropertiesEditionPart_SourcePropertyLabel);
+		sourceProperty = SWTUtils.createScrollableText(parent, SWT.BORDER);
+		GridData sourcePropertyData = new GridData(GridData.FILL_HORIZONTAL);
+		sourceProperty.setLayoutData(sourcePropertyData);
+		sourceProperty.addFocusListener(new FocusAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void focusLost(FocusEvent e) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EnrichMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.EnrichMediator.Source.sourceProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, sourceProperty.getText()));
+			}
+
+		});
+		sourceProperty.addKeyListener(new KeyAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void keyPressed(KeyEvent e) {
+				if (e.character == SWT.CR) {
+					if (propertiesEditionComponent != null)
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EnrichMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.EnrichMediator.Source.sourceProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, sourceProperty.getText()));
+				}
+			}
+
+		});
+		EditingUtils.setID(sourceProperty, EsbViewsRepository.EnrichMediator.Source.sourceProperty);
+		EditingUtils.setEEFtype(sourceProperty, "eef::Text"); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.EnrichMediator.Source.sourceProperty, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createSourcePropertyText
+
+		// End of user code
+		return parent;
+	}
+
+	/**
+	 * 
+	 */
+	protected Composite createTargetGroup(Composite parent) {
+		Group targetGroup = new Group(parent, SWT.NONE);
+		targetGroup.setText(EsbMessages.EnrichMediatorPropertiesEditionPart_TargetGroupLabel);
+		GridData targetGroupData = new GridData(GridData.FILL_HORIZONTAL);
+		targetGroupData.horizontalSpan = 3;
+		targetGroup.setLayoutData(targetGroupData);
+		GridLayout targetGroupLayout = new GridLayout();
+		targetGroupLayout.numColumns = 3;
+		targetGroup.setLayout(targetGroupLayout);
+		return targetGroup;
+	}
+
+	
 	protected Composite createTargetActionEMFComboViewer(Composite parent) {
-		createDescription(parent, EsbViewsRepository.EnrichMediator.Properties.targetAction, EsbMessages.EnrichMediatorPropertiesEditionPart_TargetActionLabel);
+		createDescription(parent, EsbViewsRepository.EnrichMediator.Target.targetAction, EsbMessages.EnrichMediatorPropertiesEditionPart_TargetActionLabel);
 		targetAction = new EMFComboViewer(parent);
 		targetAction.setContentProvider(new ArrayContentProvider());
 		targetAction.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -496,12 +591,12 @@ public class EnrichMediatorPropertiesEditionPartImpl extends CompositeProperties
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EnrichMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.EnrichMediator.Properties.targetAction, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getTargetAction()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EnrichMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.EnrichMediator.Target.targetAction, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getTargetAction()));
 			}
 
 		});
-		targetAction.setID(EsbViewsRepository.EnrichMediator.Properties.targetAction);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.EnrichMediator.Properties.targetAction, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		targetAction.setID(EsbViewsRepository.EnrichMediator.Target.targetAction);
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.EnrichMediator.Target.targetAction, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createTargetActionEMFComboViewer
 
 		// End of user code
@@ -510,7 +605,7 @@ public class EnrichMediatorPropertiesEditionPartImpl extends CompositeProperties
 
 	
 	protected Composite createTargetTypeEMFComboViewer(Composite parent) {
-		createDescription(parent, EsbViewsRepository.EnrichMediator.Properties.targetType, EsbMessages.EnrichMediatorPropertiesEditionPart_TargetTypeLabel);
+		createDescription(parent, EsbViewsRepository.EnrichMediator.Target.targetType, EsbMessages.EnrichMediatorPropertiesEditionPart_TargetTypeLabel);
 		targetType = new EMFComboViewer(parent);
 		targetType.setContentProvider(new ArrayContentProvider());
 		targetType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -526,12 +621,12 @@ public class EnrichMediatorPropertiesEditionPartImpl extends CompositeProperties
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EnrichMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.EnrichMediator.Properties.targetType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getTargetType()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EnrichMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.EnrichMediator.Target.targetType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getTargetType()));
 			}
 
 		});
-		targetType.setID(EsbViewsRepository.EnrichMediator.Properties.targetType);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.EnrichMediator.Properties.targetType, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		targetType.setID(EsbViewsRepository.EnrichMediator.Target.targetType);
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.EnrichMediator.Target.targetType, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createTargetTypeEMFComboViewer
 
 		// End of user code
@@ -540,7 +635,7 @@ public class EnrichMediatorPropertiesEditionPartImpl extends CompositeProperties
 
 	
 	protected Composite createTargetPropertyText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.EnrichMediator.Properties.targetProperty, EsbMessages.EnrichMediatorPropertiesEditionPart_TargetPropertyLabel);
+		createDescription(parent, EsbViewsRepository.EnrichMediator.Target.targetProperty, EsbMessages.EnrichMediatorPropertiesEditionPart_TargetPropertyLabel);
 		targetProperty = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData targetPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		targetProperty.setLayoutData(targetPropertyData);
@@ -556,7 +651,7 @@ public class EnrichMediatorPropertiesEditionPartImpl extends CompositeProperties
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EnrichMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.EnrichMediator.Properties.targetProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, targetProperty.getText()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EnrichMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.EnrichMediator.Target.targetProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, targetProperty.getText()));
 			}
 
 		});
@@ -573,45 +668,15 @@ public class EnrichMediatorPropertiesEditionPartImpl extends CompositeProperties
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
 					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EnrichMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.EnrichMediator.Properties.targetProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, targetProperty.getText()));
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EnrichMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.EnrichMediator.Target.targetProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, targetProperty.getText()));
 				}
 			}
 
 		});
-		EditingUtils.setID(targetProperty, EsbViewsRepository.EnrichMediator.Properties.targetProperty);
+		EditingUtils.setID(targetProperty, EsbViewsRepository.EnrichMediator.Target.targetProperty);
 		EditingUtils.setEEFtype(targetProperty, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.EnrichMediator.Properties.targetProperty, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.EnrichMediator.Target.targetProperty, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createTargetPropertyText
-
-		// End of user code
-		return parent;
-	}
-
-	
-	protected Composite createInlineTypeEMFComboViewer(Composite parent) {
-		createDescription(parent, EsbViewsRepository.EnrichMediator.Properties.inlineType, EsbMessages.EnrichMediatorPropertiesEditionPart_InlineTypeLabel);
-		inlineType = new EMFComboViewer(parent);
-		inlineType.setContentProvider(new ArrayContentProvider());
-		inlineType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
-		GridData inlineTypeData = new GridData(GridData.FILL_HORIZONTAL);
-		inlineType.getCombo().setLayoutData(inlineTypeData);
-		inlineType.addSelectionChangedListener(new ISelectionChangedListener() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-			 * 	
-			 */
-			public void selectionChanged(SelectionChangedEvent event) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EnrichMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.EnrichMediator.Properties.inlineType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getInlineType()));
-			}
-
-		});
-		inlineType.setID(EsbViewsRepository.EnrichMediator.Properties.inlineType);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.EnrichMediator.Properties.inlineType, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		// Start of user code for createInlineTypeEMFComboViewer
 
 		// End of user code
 		return parent;
@@ -652,7 +717,7 @@ public class EnrichMediatorPropertiesEditionPartImpl extends CompositeProperties
 		} else {
 			description.setText(""); //$NON-NLS-1$
 		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.EnrichMediator.Properties.description);
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.EnrichMediator.Misc.description);
 		if (eefElementEditorReadOnlyState && description.isEnabled()) {
 			description.setEnabled(false);
 			description.setToolTipText(EsbMessages.EnrichMediator_ReadOnly);
@@ -685,7 +750,7 @@ public class EnrichMediatorPropertiesEditionPartImpl extends CompositeProperties
 		} else {
 			commentsList.setText(""); //$NON-NLS-1$
 		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.EnrichMediator.Properties.commentsList);
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.EnrichMediator.Misc.commentsList);
 		if (eefElementEditorReadOnlyState && commentsList.isEnabled()) {
 			commentsList.setEnabled(false);
 			commentsList.setToolTipText(EsbMessages.EnrichMediator_ReadOnly);
@@ -735,7 +800,7 @@ public class EnrichMediatorPropertiesEditionPartImpl extends CompositeProperties
 		} else {
 			reverse.setSelection(false);
 		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.EnrichMediator.Properties.reverse);
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.EnrichMediator.Misc.reverse);
 		if (eefElementEditorReadOnlyState && reverse.isEnabled()) {
 			reverse.setEnabled(false);
 			reverse.setToolTipText(EsbMessages.EnrichMediator_ReadOnly);
@@ -767,7 +832,7 @@ public class EnrichMediatorPropertiesEditionPartImpl extends CompositeProperties
 		} else {
 			cloneSource.setSelection(false);
 		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.EnrichMediator.Properties.cloneSource);
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.EnrichMediator.Source.cloneSource);
 		if (eefElementEditorReadOnlyState && cloneSource.isEnabled()) {
 			cloneSource.setEnabled(false);
 			cloneSource.setToolTipText(EsbMessages.EnrichMediator_ReadOnly);
@@ -796,7 +861,7 @@ public class EnrichMediatorPropertiesEditionPartImpl extends CompositeProperties
 	public void initSourceType(Object input, Enumerator current) {
 		sourceType.setInput(input);
 		sourceType.modelUpdating(new StructuredSelection(current));
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.EnrichMediator.Properties.sourceType);
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.EnrichMediator.Source.sourceType);
 		if (eefElementEditorReadOnlyState && sourceType.isEnabled()) {
 			sourceType.setEnabled(false);
 			sourceType.setToolTipText(EsbMessages.EnrichMediator_ReadOnly);
@@ -814,7 +879,7 @@ public class EnrichMediatorPropertiesEditionPartImpl extends CompositeProperties
 	 */
 	public void setSourceType(Enumerator newValue) {
 		sourceType.modelUpdating(new StructuredSelection(newValue));
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.EnrichMediator.Properties.sourceType);
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.EnrichMediator.Source.sourceType);
 		if (eefElementEditorReadOnlyState && sourceType.isEnabled()) {
 			sourceType.setEnabled(false);
 			sourceType.setToolTipText(EsbMessages.EnrichMediator_ReadOnly);
@@ -827,31 +892,46 @@ public class EnrichMediatorPropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.EnrichMediatorPropertiesEditionPart#getSourceProperty()
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.EnrichMediatorPropertiesEditionPart#getInlineType()
 	 * 
 	 */
-	public String getSourceProperty() {
-		return sourceProperty.getText();
+	public Enumerator getInlineType() {
+		Enumerator selection = (Enumerator) ((StructuredSelection) inlineType.getSelection()).getFirstElement();
+		return selection;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.EnrichMediatorPropertiesEditionPart#setSourceProperty(String newValue)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.EnrichMediatorPropertiesEditionPart#initInlineType(Object input, Enumerator current)
+	 */
+	public void initInlineType(Object input, Enumerator current) {
+		inlineType.setInput(input);
+		inlineType.modelUpdating(new StructuredSelection(current));
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.EnrichMediator.Source.inlineType);
+		if (eefElementEditorReadOnlyState && inlineType.isEnabled()) {
+			inlineType.setEnabled(false);
+			inlineType.setToolTipText(EsbMessages.EnrichMediator_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !inlineType.isEnabled()) {
+			inlineType.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.EnrichMediatorPropertiesEditionPart#setInlineType(Enumerator newValue)
 	 * 
 	 */
-	public void setSourceProperty(String newValue) {
-		if (newValue != null) {
-			sourceProperty.setText(newValue);
-		} else {
-			sourceProperty.setText(""); //$NON-NLS-1$
-		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.EnrichMediator.Properties.sourceProperty);
-		if (eefElementEditorReadOnlyState && sourceProperty.isEnabled()) {
-			sourceProperty.setEnabled(false);
-			sourceProperty.setToolTipText(EsbMessages.EnrichMediator_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !sourceProperty.isEnabled()) {
-			sourceProperty.setEnabled(true);
+	public void setInlineType(Enumerator newValue) {
+		inlineType.modelUpdating(new StructuredSelection(newValue));
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.EnrichMediator.Source.inlineType);
+		if (eefElementEditorReadOnlyState && inlineType.isEnabled()) {
+			inlineType.setEnabled(false);
+			inlineType.setToolTipText(EsbMessages.EnrichMediator_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !inlineType.isEnabled()) {
+			inlineType.setEnabled(true);
 		}	
 		
 	}
@@ -878,12 +958,44 @@ public class EnrichMediatorPropertiesEditionPartImpl extends CompositeProperties
 		} else {
 			sourceXML.setText(""); //$NON-NLS-1$
 		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.EnrichMediator.Properties.sourceXML);
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.EnrichMediator.Source.sourceXML);
 		if (eefElementEditorReadOnlyState && sourceXML.isEnabled()) {
 			sourceXML.setEnabled(false);
 			sourceXML.setToolTipText(EsbMessages.EnrichMediator_ReadOnly);
 		} else if (!eefElementEditorReadOnlyState && !sourceXML.isEnabled()) {
 			sourceXML.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.EnrichMediatorPropertiesEditionPart#getSourceProperty()
+	 * 
+	 */
+	public String getSourceProperty() {
+		return sourceProperty.getText();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.EnrichMediatorPropertiesEditionPart#setSourceProperty(String newValue)
+	 * 
+	 */
+	public void setSourceProperty(String newValue) {
+		if (newValue != null) {
+			sourceProperty.setText(newValue);
+		} else {
+			sourceProperty.setText(""); //$NON-NLS-1$
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.EnrichMediator.Source.sourceProperty);
+		if (eefElementEditorReadOnlyState && sourceProperty.isEnabled()) {
+			sourceProperty.setEnabled(false);
+			sourceProperty.setToolTipText(EsbMessages.EnrichMediator_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !sourceProperty.isEnabled()) {
+			sourceProperty.setEnabled(true);
 		}	
 		
 	}
@@ -907,7 +1019,7 @@ public class EnrichMediatorPropertiesEditionPartImpl extends CompositeProperties
 	public void initTargetAction(Object input, Enumerator current) {
 		targetAction.setInput(input);
 		targetAction.modelUpdating(new StructuredSelection(current));
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.EnrichMediator.Properties.targetAction);
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.EnrichMediator.Target.targetAction);
 		if (eefElementEditorReadOnlyState && targetAction.isEnabled()) {
 			targetAction.setEnabled(false);
 			targetAction.setToolTipText(EsbMessages.EnrichMediator_ReadOnly);
@@ -925,7 +1037,7 @@ public class EnrichMediatorPropertiesEditionPartImpl extends CompositeProperties
 	 */
 	public void setTargetAction(Enumerator newValue) {
 		targetAction.modelUpdating(new StructuredSelection(newValue));
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.EnrichMediator.Properties.targetAction);
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.EnrichMediator.Target.targetAction);
 		if (eefElementEditorReadOnlyState && targetAction.isEnabled()) {
 			targetAction.setEnabled(false);
 			targetAction.setToolTipText(EsbMessages.EnrichMediator_ReadOnly);
@@ -954,7 +1066,7 @@ public class EnrichMediatorPropertiesEditionPartImpl extends CompositeProperties
 	public void initTargetType(Object input, Enumerator current) {
 		targetType.setInput(input);
 		targetType.modelUpdating(new StructuredSelection(current));
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.EnrichMediator.Properties.targetType);
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.EnrichMediator.Target.targetType);
 		if (eefElementEditorReadOnlyState && targetType.isEnabled()) {
 			targetType.setEnabled(false);
 			targetType.setToolTipText(EsbMessages.EnrichMediator_ReadOnly);
@@ -972,7 +1084,7 @@ public class EnrichMediatorPropertiesEditionPartImpl extends CompositeProperties
 	 */
 	public void setTargetType(Enumerator newValue) {
 		targetType.modelUpdating(new StructuredSelection(newValue));
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.EnrichMediator.Properties.targetType);
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.EnrichMediator.Target.targetType);
 		if (eefElementEditorReadOnlyState && targetType.isEnabled()) {
 			targetType.setEnabled(false);
 			targetType.setToolTipText(EsbMessages.EnrichMediator_ReadOnly);
@@ -1004,7 +1116,7 @@ public class EnrichMediatorPropertiesEditionPartImpl extends CompositeProperties
 		} else {
 			targetProperty.setText(""); //$NON-NLS-1$
 		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.EnrichMediator.Properties.targetProperty);
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.EnrichMediator.Target.targetProperty);
 		if (eefElementEditorReadOnlyState && targetProperty.isEnabled()) {
 			targetProperty.setEnabled(false);
 			targetProperty.setToolTipText(EsbMessages.EnrichMediator_ReadOnly);
@@ -1014,57 +1126,22 @@ public class EnrichMediatorPropertiesEditionPartImpl extends CompositeProperties
 		
 	}
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.EnrichMediatorPropertiesEditionPart#getInlineType()
-	 * 
-	 */
-	public Enumerator getInlineType() {
-		Enumerator selection = (Enumerator) ((StructuredSelection) inlineType.getSelection()).getFirstElement();
-		return selection;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.EnrichMediatorPropertiesEditionPart#initInlineType(Object input, Enumerator current)
-	 */
-	public void initInlineType(Object input, Enumerator current) {
-		inlineType.setInput(input);
-		inlineType.modelUpdating(new StructuredSelection(current));
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.EnrichMediator.Properties.inlineType);
-		if (eefElementEditorReadOnlyState && inlineType.isEnabled()) {
-			inlineType.setEnabled(false);
-			inlineType.setToolTipText(EsbMessages.EnrichMediator_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !inlineType.isEnabled()) {
-			inlineType.setEnabled(true);
-		}	
-		
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.EnrichMediatorPropertiesEditionPart#setInlineType(Enumerator newValue)
-	 * 
-	 */
-	public void setInlineType(Enumerator newValue) {
-		inlineType.modelUpdating(new StructuredSelection(newValue));
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.EnrichMediator.Properties.inlineType);
-		if (eefElementEditorReadOnlyState && inlineType.isEnabled()) {
-			inlineType.setEnabled(false);
-			inlineType.setToolTipText(EsbMessages.EnrichMediator_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !inlineType.isEnabled()) {
-			inlineType.setEnabled(true);
-		}	
-		
-	}
 
 
 
 
 
+	// Start of user code for sourceXPath specific getters and setters implementation
+	
+	// End of user code
+
+	// Start of user code for inlineRegistryKey specific getters and setters implementation
+	
+	// End of user code
+
+	// Start of user code for targetXPath specific getters and setters implementation
+	
+	// End of user code
 
 	/**
 	 * {@inheritDoc}
@@ -1077,7 +1154,41 @@ public class EnrichMediatorPropertiesEditionPartImpl extends CompositeProperties
 	}
 
 	// Start of user code additional methods
-	
+    @Override
+    public NamespacedProperty getSourceXPath() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void setSourceXPath(NamespacedProperty nameSpacedProperty) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public RegistryKeyProperty getInlineRegistryKey() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void setInlineRegistryKey(RegistryKeyProperty registryKeyProperty) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public NamespacedProperty getTargetXPath() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void setTargetXPath(NamespacedProperty nameSpacedProperty) {
+        // TODO Auto-generated method stub
+        
+    }
 	// End of user code
 
 

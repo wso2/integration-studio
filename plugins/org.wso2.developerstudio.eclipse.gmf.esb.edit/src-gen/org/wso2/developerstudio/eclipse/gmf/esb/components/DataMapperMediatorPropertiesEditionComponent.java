@@ -74,7 +74,7 @@ public class DataMapperMediatorPropertiesEditionComponent extends SinglePartProp
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject, 
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
-	 * 
+	 * @generated NOT
 	 */
 	public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
 		setInitializing(true);
@@ -97,13 +97,13 @@ public class DataMapperMediatorPropertiesEditionComponent extends SinglePartProp
 				basePart.initInputType(EEFUtils.choiceOfValues(dataMapperMediator, EsbPackage.eINSTANCE.getDataMapperMediator_InputType()), dataMapperMediator.getInputType());
 			}
 			if (isAccessible(EsbViewsRepository.DataMapperMediator.Properties.configurationLocalPath))
-				basePart.setConfigurationLocalPath(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, dataMapperMediator.getConfigurationLocalPath()));
+				basePart.setConfigurationLocalPath(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, dataMapperMediator.getConfiguration().getKeyValue()));
 			
 			if (isAccessible(EsbViewsRepository.DataMapperMediator.Properties.inputSchemaLocalPath))
-				basePart.setInputSchemaLocalPath(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, dataMapperMediator.getInputSchemaLocalPath()));
+				basePart.setInputSchemaLocalPath(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, dataMapperMediator.getInputSchema().getKeyValue()));
 			
 			if (isAccessible(EsbViewsRepository.DataMapperMediator.Properties.outputSchemaLocalPath))
-				basePart.setOutputSchemaLocalPath(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, dataMapperMediator.getOutputSchemaLocalPath()));
+				basePart.setOutputSchemaLocalPath(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, dataMapperMediator.getOutputSchema().getKeyValue()));
 			
 			if (isAccessible(EsbViewsRepository.DataMapperMediator.Properties.outputType)) {
 				basePart.initOutputType(EEFUtils.choiceOfValues(dataMapperMediator, EsbPackage.eINSTANCE.getDataMapperMediator_OutputType()), dataMapperMediator.getOutputType());

@@ -89,6 +89,10 @@ public class SwitchMediatorPropertiesEditionPartImpl extends CompositeProperties
 	protected ReferencesTable caseBranches;
 	protected List<ViewerFilter> caseBranchesBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> caseBranchesFilters = new ArrayList<ViewerFilter>();
+	// Start of user code  for sourceXPath widgets declarations
+	
+	// End of user code
+
 
 
 
@@ -134,6 +138,7 @@ public class SwitchMediatorPropertiesEditionPartImpl extends CompositeProperties
 		propertiesStep.addStep(EsbViewsRepository.SwitchMediator.Properties.namespace);
 		propertiesStep.addStep(EsbViewsRepository.SwitchMediator.Properties.namespacePrefix);
 		propertiesStep.addStep(EsbViewsRepository.SwitchMediator.Properties.caseBranches);
+		propertiesStep.addStep(EsbViewsRepository.SwitchMediator.Properties.sourceXPath);
 		
 		
 		composer = new PartComposer(switchMediatorStep) {
@@ -164,6 +169,9 @@ public class SwitchMediatorPropertiesEditionPartImpl extends CompositeProperties
 				if (key == EsbViewsRepository.SwitchMediator.Properties.caseBranches) {
 					return createCaseBranchesAdvancedTableComposition(parent);
 				}
+				// Start of user code for sourceXPath addToPart creation
+				
+				// End of user code
 				return parent;
 			}
 		};
@@ -799,6 +807,10 @@ public class SwitchMediatorPropertiesEditionPartImpl extends CompositeProperties
 
 
 
+
+	// Start of user code for sourceXPath specific getters and setters implementation
+	
+	// End of user code
 
 	/**
 	 * {@inheritDoc}

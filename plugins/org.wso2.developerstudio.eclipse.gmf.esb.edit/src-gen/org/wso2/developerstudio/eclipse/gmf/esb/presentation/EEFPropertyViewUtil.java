@@ -28,7 +28,6 @@ public class EEFPropertyViewUtil {
                 control.setVisible(false);
             } else if (control.getLayoutData() != null && control.getLayoutData() instanceof FormData) {
                // ((FormData) control.getLayoutData()). = true;
-                System.out.println("**********************" + control);
                 control.setVisible(false);
             }
         }

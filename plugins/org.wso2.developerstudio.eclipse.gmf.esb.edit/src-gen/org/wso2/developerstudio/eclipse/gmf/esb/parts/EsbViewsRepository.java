@@ -3493,6 +3493,18 @@ public class EsbViewsRepository {
 			
 			public static String sequenceName = "esb::IterateMediator::properties::sequenceName";
 			
+			// Start of user code for iterateExpression ElementEditor key
+			public static String iterateExpression = "esb::IterateMediator::properties::iterateExpression";
+			// End of user code
+			
+			// Start of user code for sequenceKey ElementEditor key
+			public static String sequenceKey = "esb::IterateMediator::properties::sequenceKey";
+			// End of user code
+			
+			// Start of user code for attachPath ElementEditor key
+			public static String attachPath = "esb::IterateMediator::properties::attachPath";
+			// End of user code
+			
 	
 		}
 	

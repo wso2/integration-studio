@@ -4705,6 +4705,15 @@ public class EsbMessages extends NLS {
 	public static String IterateMediatorPropertiesEditionPart_SequenceNameLabel;
 
 	
+	public static String IterateMediatorPropertiesEditionPart_IterateExpressionLabel;
+
+	
+	public static String IterateMediatorPropertiesEditionPart_SequenceKeyLabel;
+
+	
+	public static String IterateMediatorPropertiesEditionPart_AttachPathLabel;
+
+	
 	public static String IterateMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;
 
 	

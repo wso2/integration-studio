@@ -2037,6 +2037,15 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v8BvJnEei6boXzpRIfnA" name="sequenceName" views="_E7wldvJnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//IterateMediator/sequenceName"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_cSkDMCRpEembWdx92qFZQA" name="iterateExpression" views="_VA1skCRqEembWdx92qFZQA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//IterateMediator/iterateExpression"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_QivUICRrEembWdx92qFZQA" name="attachPath" views="_AjC9QCRrEembWdx92qFZQA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//IterateMediator/attachPath"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_WryWACRrEembWdx92qFZQA" name="sequenceKey" views="_0ExesCRqEembWdx92qFZQA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//IterateMediator/sequenceKey"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//IterateMediator"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_E7v8B_JnEei6boXzpRIfnA" name="IterateMediatorInputConnector" views="_E7wld_JnEei6boXzpRIfnA">
@@ -7797,6 +7806,9 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wldvJnEei6boXzpRIfnA" name="sequenceName">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_VA1skCRqEembWdx92qFZQA" name="iterateExpression"/>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_0ExesCRqEembWdx92qFZQA" name="sequenceKey"/>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_AjC9QCRrEembWdx92qFZQA" name="attachPath"/>
         </elements>
       </views>
       <views xmi:id="_E7wld_JnEei6boXzpRIfnA" name="IterateMediatorInputConnector">

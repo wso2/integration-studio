@@ -3237,14 +3237,8 @@
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//ConditionalRouterMediatorAdditionalOutputConnector"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_E7v9mvJnEei6boXzpRIfnA" name="SendMediator" views="_E7xJcPJnEei6boXzpRIfnA">
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v9m_JnEei6boXzpRIfnA" name="description" views="_E7xJcvJnEei6boXzpRIfnA">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//EsbElement/description"/>
-        </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v9nPJnEei6boXzpRIfnA" name="commentsList" views="_E7xJc_JnEei6boXzpRIfnA">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//EsbElement/commentsList"/>
-        </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v9nfJnEei6boXzpRIfnA" name="Reverse" views="_E7xJdPJnEei6boXzpRIfnA">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//Mediator/Reverse"/>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v9oPJnEei6boXzpRIfnA" name="skipSerialization" views="_E7xJd_JnEei6boXzpRIfnA">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//SendMediator/skipSerialization"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v9nvJnEei6boXzpRIfnA" name="EndPoint" views="_E7xJdfJnEei6boXzpRIfnA">
           <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//SendMediator/EndPoint"/>
@@ -3252,11 +3246,17 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v9n_JnEei6boXzpRIfnA" name="receivingSequenceType" views="_E7xJdvJnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//SendMediator/receivingSequenceType"/>
         </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v9oPJnEei6boXzpRIfnA" name="skipSerialization" views="_E7xJd_JnEei6boXzpRIfnA">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//SendMediator/skipSerialization"/>
-        </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v9ofJnEei6boXzpRIfnA" name="buildMessageBeforeSending" views="_E7xJePJnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//SendMediator/buildMessageBeforeSending"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_VPeU0CYzEemmDY5PU6MPfg" name="StaticReceivingSequence" views="_Y0eFkCYzEemmDY5PU6MPfg">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//SendMediator/StaticReceivingSequence"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_8QddECYzEemmDY5PU6MPfg" name="DynamicReceivingSequence" views="_5nAukCYzEemmDY5PU6MPfg">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//SendMediator/DynamicReceivingSequence"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v9m_JnEei6boXzpRIfnA" name="description" views="_E7xJcvJnEei6boXzpRIfnA">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//EsbElement/description"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//SendMediator"/>
       </bindings>
@@ -9174,13 +9174,7 @@
       <views xmi:id="_E7xJcPJnEei6boXzpRIfnA" name="SendMediator">
         <elements xsi:type="eef-views:Container" xmi:id="_E7xJcfJnEei6boXzpRIfnA" name="properties">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xJcvJnEei6boXzpRIfnA" name="description">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
-          </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xJc_JnEei6boXzpRIfnA" name="commentsList">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.3"/>
-          </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xJdPJnEei6boXzpRIfnA" name="Reverse">
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xJd_JnEei6boXzpRIfnA" name="skipSerialization">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xJdfJnEei6boXzpRIfnA" name="EndPoint">
@@ -9189,11 +9183,13 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xJdvJnEei6boXzpRIfnA" name="receivingSequenceType">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
           </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xJd_JnEei6boXzpRIfnA" name="skipSerialization">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
-          </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xJePJnEei6boXzpRIfnA" name="buildMessageBeforeSending">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
+          </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_Y0eFkCYzEemmDY5PU6MPfg" name="StaticReceivingSequence"/>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_5nAukCYzEemmDY5PU6MPfg" name="DynamicReceivingSequence"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xJcvJnEei6boXzpRIfnA" name="description">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
         </elements>
       </views>

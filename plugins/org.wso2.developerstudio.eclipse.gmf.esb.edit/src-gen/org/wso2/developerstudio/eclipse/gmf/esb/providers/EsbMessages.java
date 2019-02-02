@@ -5611,13 +5611,7 @@ public class EsbMessages extends NLS {
 	public static String ConditionalRouterMediatorAdditionalOutputConnectorPropertiesEditionPart_CommentMediatorsLabel;
 
 	
-	public static String SendMediatorPropertiesEditionPart_DescriptionLabel;
-
-	
-	public static String SendMediatorPropertiesEditionPart_CommentsListLabel;
-
-	
-	public static String SendMediatorPropertiesEditionPart_ReverseLabel;
+	public static String SendMediatorPropertiesEditionPart_SkipSerializationLabel;
 
 	
 	public static String SendMediatorPropertiesEditionPart_EndPointLabel;
@@ -5626,10 +5620,16 @@ public class EsbMessages extends NLS {
 	public static String SendMediatorPropertiesEditionPart_ReceivingSequenceTypeLabel;
 
 	
-	public static String SendMediatorPropertiesEditionPart_SkipSerializationLabel;
+	public static String SendMediatorPropertiesEditionPart_BuildMessageBeforeSendingLabel;
 
 	
-	public static String SendMediatorPropertiesEditionPart_BuildMessageBeforeSendingLabel;
+	public static String SendMediatorPropertiesEditionPart_StaticReceivingSequenceLabel;
+
+	
+	public static String SendMediatorPropertiesEditionPart_DynamicReceivingSequenceLabel;
+
+	
+	public static String SendMediatorPropertiesEditionPart_DescriptionLabel;
 
 	
 	public static String SendMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;

@@ -4,7 +4,6 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.parts;
 
 // Start of user code for imports
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.Enumerator;
 
 import org.eclipse.emf.ecore.EObject;
@@ -12,6 +11,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 
 import org.eclipse.jface.viewers.ViewerFilter;
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 
 
 // End of user code
@@ -23,57 +24,17 @@ import org.eclipse.jface.viewers.ViewerFilter;
 public interface SendMediatorPropertiesEditionPart {
 
 	/**
-	 * @return the description
+	 * @return the skipSerialization
 	 * 
 	 */
-	public String getDescription();
+	public Boolean getSkipSerialization();
 
 	/**
-	 * Defines a new description
-	 * @param newValue the new description to set
+	 * Defines a new skipSerialization
+	 * @param newValue the new skipSerialization to set
 	 * 
 	 */
-	public void setDescription(String newValue);
-
-
-	/**
-	 * @return the commentsList
-	 * 
-	 */
-	public EList getCommentsList();
-
-	/**
-	 * Defines a new commentsList
-	 * @param newValue the new commentsList to set
-	 * 
-	 */
-	public void setCommentsList(EList newValue);
-
-	/**
-	 * Add a value to the commentsList multivalued attribute.
-	 * @param newValue the value to add
-	 */
-	public void addToCommentsList(Object newValue);
-
-	/**
-	 * Remove a value to the commentsList multivalued attribute.
-	 * @param newValue the value to remove
-	 */
-	public void removeToCommentsList(Object newValue);
-
-
-	/**
-	 * @return the Reverse
-	 * 
-	 */
-	public Boolean getReverse();
-
-	/**
-	 * Defines a new Reverse
-	 * @param newValue the new Reverse to set
-	 * 
-	 */
-	public void setReverse(Boolean newValue);
+	public void setSkipSerialization(Boolean newValue);
 
 
 
@@ -140,20 +101,6 @@ public interface SendMediatorPropertiesEditionPart {
 
 
 	/**
-	 * @return the skipSerialization
-	 * 
-	 */
-	public Boolean getSkipSerialization();
-
-	/**
-	 * Defines a new skipSerialization
-	 * @param newValue the new skipSerialization to set
-	 * 
-	 */
-	public void setSkipSerialization(Boolean newValue);
-
-
-	/**
 	 * @return the buildMessageBeforeSending
 	 * 
 	 */
@@ -167,8 +114,34 @@ public interface SendMediatorPropertiesEditionPart {
 	public void setBuildMessageBeforeSending(Boolean newValue);
 
 
+	/**
+	 * @return the description
+	 * 
+	 */
+	public String getDescription();
+
+	/**
+	 * Defines a new description
+	 * @param newValue the new description to set
+	 * 
+	 */
+	public void setDescription(String newValue);
 
 
+
+
+	// Start of user code for StaticReceivingSequence specific getters and setters declaration
+	public void setStaticReceivingSequence(RegistryKeyProperty registryKeyProperty);
+	
+	public RegistryKeyProperty getStaticReceivingSequence();
+	
+	// End of user code
+	// Start of user code for DynamicReceivingSequence specific getters and setters declaration
+	public void setDynamicReceivingSequence(NamespacedProperty namespacedProperty);
+	
+	public NamespacedProperty getDynamicReceivingSequence();
+	
+	// End of user code
 
 	/**
 	 * Returns the internationalized title text.

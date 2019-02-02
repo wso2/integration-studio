@@ -5570,13 +5570,7 @@ public class EsbViewsRepository {
 		public static class Properties {
 	
 			
-			public static String description = "esb::SendMediator::properties::description";
-			
-			
-			public static String commentsList = "esb::SendMediator::properties::commentsList";
-			
-			
-			public static String reverse = "esb::SendMediator::properties::Reverse";
+			public static String skipSerialization = "esb::SendMediator::properties::skipSerialization";
 			
 			
 			public static String endPoint = "esb::SendMediator::properties::EndPoint";
@@ -5585,10 +5579,18 @@ public class EsbViewsRepository {
 			public static String receivingSequenceType = "esb::SendMediator::properties::receivingSequenceType";
 			
 			
-			public static String skipSerialization = "esb::SendMediator::properties::skipSerialization";
-			
-			
 			public static String buildMessageBeforeSending = "esb::SendMediator::properties::buildMessageBeforeSending";
+			
+			// Start of user code for StaticReceivingSequence ElementEditor key
+			public static String staticReceivingSequence = "esb::SendMediator::properties::StaticReceivingSequence";
+			// End of user code
+			
+			// Start of user code for DynamicReceivingSequence ElementEditor key
+			public static String dynamicReceivingSequence = "esb::SendMediator::properties::DynamicReceivingSequence";
+			// End of user code
+			
+			
+			public static String description = "esb::SendMediator::properties::description";
 			
 	
 		}

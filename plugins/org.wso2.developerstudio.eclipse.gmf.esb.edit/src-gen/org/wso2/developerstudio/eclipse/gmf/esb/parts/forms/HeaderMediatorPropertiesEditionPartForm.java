@@ -192,9 +192,10 @@ public class HeaderMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 		};
 		composer.compose(view);
 	}
+	
 	/**
-	 * 
-	 */
+     * @generated NOT
+     */
 	protected Composite createPropertiesGroup(FormToolkit widgetFactory, final Composite parent) {
 		Section propertiesSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		propertiesSection.setText(EsbMessages.HeaderMediatorPropertiesEditionPart_PropertiesGroupLabel);

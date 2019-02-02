@@ -81,7 +81,8 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.SendMediatorPropertiesEditionPart;
 
@@ -95,17 +96,21 @@ import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
  */
 public class SendMediatorPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, SendMediatorPropertiesEditionPart {
 
-	protected Text description;
-	protected Text commentsList;
-	protected Button editCommentsList;
-	protected EList commentsListList;
-	protected Button reverse;
+	protected Button skipSerialization;
 	protected ReferencesTable endPoint;
 	protected List<ViewerFilter> endPointBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> endPointFilters = new ArrayList<ViewerFilter>();
 	protected EMFComboViewer receivingSequenceType;
-	protected Button skipSerialization;
 	protected Button buildMessageBeforeSending;
+	// Start of user code  for StaticReceivingSequence widgets declarations
+	
+	// End of user code
+
+	// Start of user code  for DynamicReceivingSequence widgets declarations
+	
+	// End of user code
+
+	protected Text description;
 
 
 
@@ -144,13 +149,13 @@ public class SendMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 	public void createControls(Composite view) { 
 		CompositionSequence sendMediatorStep = new BindingCompositionSequence(propertiesEditionComponent);
 		CompositionStep propertiesStep = sendMediatorStep.addStep(EsbViewsRepository.SendMediator.Properties.class);
-		propertiesStep.addStep(EsbViewsRepository.SendMediator.Properties.description);
-		propertiesStep.addStep(EsbViewsRepository.SendMediator.Properties.commentsList);
-		propertiesStep.addStep(EsbViewsRepository.SendMediator.Properties.reverse);
+		propertiesStep.addStep(EsbViewsRepository.SendMediator.Properties.skipSerialization);
 		propertiesStep.addStep(EsbViewsRepository.SendMediator.Properties.endPoint);
 		propertiesStep.addStep(EsbViewsRepository.SendMediator.Properties.receivingSequenceType);
-		propertiesStep.addStep(EsbViewsRepository.SendMediator.Properties.skipSerialization);
 		propertiesStep.addStep(EsbViewsRepository.SendMediator.Properties.buildMessageBeforeSending);
+		propertiesStep.addStep(EsbViewsRepository.SendMediator.Properties.staticReceivingSequence);
+		propertiesStep.addStep(EsbViewsRepository.SendMediator.Properties.dynamicReceivingSequence);
+		propertiesStep.addStep(EsbViewsRepository.SendMediator.Properties.description);
 		
 		
 		composer = new PartComposer(sendMediatorStep) {
@@ -160,14 +165,8 @@ public class SendMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 				if (key == EsbViewsRepository.SendMediator.Properties.class) {
 					return createPropertiesGroup(parent);
 				}
-				if (key == EsbViewsRepository.SendMediator.Properties.description) {
-					return createDescriptionText(parent);
-				}
-				if (key == EsbViewsRepository.SendMediator.Properties.commentsList) {
-					return createCommentsListMultiValuedEditor(parent);
-				}
-				if (key == EsbViewsRepository.SendMediator.Properties.reverse) {
-					return createReverseCheckbox(parent);
+				if (key == EsbViewsRepository.SendMediator.Properties.skipSerialization) {
+					return createSkipSerializationCheckbox(parent);
 				}
 				if (key == EsbViewsRepository.SendMediator.Properties.endPoint) {
 					return createEndPointAdvancedReferencesTable(parent);
@@ -175,11 +174,17 @@ public class SendMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 				if (key == EsbViewsRepository.SendMediator.Properties.receivingSequenceType) {
 					return createReceivingSequenceTypeEMFComboViewer(parent);
 				}
-				if (key == EsbViewsRepository.SendMediator.Properties.skipSerialization) {
-					return createSkipSerializationCheckbox(parent);
-				}
 				if (key == EsbViewsRepository.SendMediator.Properties.buildMessageBeforeSending) {
 					return createBuildMessageBeforeSendingCheckbox(parent);
+				}
+				// Start of user code for StaticReceivingSequence addToPart creation
+				
+				// End of user code
+				// Start of user code for DynamicReceivingSequence addToPart creation
+				
+				// End of user code
+				if (key == EsbViewsRepository.SendMediator.Properties.description) {
+					return createDescriptionText(parent);
 				}
 				return parent;
 			}
@@ -203,102 +208,10 @@ public class SendMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 	}
 
 	
-	protected Composite createDescriptionText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.SendMediator.Properties.description, EsbMessages.SendMediatorPropertiesEditionPart_DescriptionLabel);
-		description = SWTUtils.createScrollableText(parent, SWT.BORDER);
-		GridData descriptionData = new GridData(GridData.FILL_HORIZONTAL);
-		description.setLayoutData(descriptionData);
-		description.addFocusListener(new FocusAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SendMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.SendMediator.Properties.description, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, description.getText()));
-			}
-
-		});
-		description.addKeyListener(new KeyAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SendMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.SendMediator.Properties.description, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, description.getText()));
-				}
-			}
-
-		});
-		EditingUtils.setID(description, EsbViewsRepository.SendMediator.Properties.description);
-		EditingUtils.setEEFtype(description, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.SendMediator.Properties.description, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		// Start of user code for createDescriptionText
-
-		// End of user code
-		return parent;
-	}
-
-	protected Composite createCommentsListMultiValuedEditor(Composite parent) {
-		commentsList = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.READ_ONLY);
-		GridData commentsListData = new GridData(GridData.FILL_HORIZONTAL);
-		commentsListData.horizontalSpan = 2;
-		commentsList.setLayoutData(commentsListData);
-		EditingUtils.setID(commentsList, EsbViewsRepository.SendMediator.Properties.commentsList);
-		EditingUtils.setEEFtype(commentsList, "eef::MultiValuedEditor::field"); //$NON-NLS-1$
-		editCommentsList = new Button(parent, SWT.NONE);
-		editCommentsList.setText(getDescription(EsbViewsRepository.SendMediator.Properties.commentsList, EsbMessages.SendMediatorPropertiesEditionPart_CommentsListLabel));
-		GridData editCommentsListData = new GridData();
-		editCommentsList.setLayoutData(editCommentsListData);
-		editCommentsList.addSelectionListener(new SelectionAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
-			 */
-			public void widgetSelected(SelectionEvent e) {
-				EEFFeatureEditorDialog dialog = new EEFFeatureEditorDialog(
-						commentsList.getShell(), "SendMediator", new AdapterFactoryLabelProvider(adapterFactory), //$NON-NLS-1$
-						commentsListList, EsbPackage.eINSTANCE.getEsbElement_CommentsList().getEType(), null,
-						false, true, 
-						null, null);
-				if (dialog.open() == Window.OK) {
-					commentsListList = dialog.getResult();
-					if (commentsListList == null) {
-						commentsListList = new BasicEList();
-					}
-					commentsList.setText(commentsListList.toString());
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SendMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.SendMediator.Properties.commentsList, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new BasicEList(commentsListList)));
-					setHasChanged(true);
-				}
-			}
-		});
-		EditingUtils.setID(editCommentsList, EsbViewsRepository.SendMediator.Properties.commentsList);
-		EditingUtils.setEEFtype(editCommentsList, "eef::MultiValuedEditor::browsebutton"); //$NON-NLS-1$
-		// Start of user code for createCommentsListMultiValuedEditor
-
-		// End of user code
-		return parent;
-	}
-
-	
-	protected Composite createReverseCheckbox(Composite parent) {
-		reverse = new Button(parent, SWT.CHECK);
-		reverse.setText(getDescription(EsbViewsRepository.SendMediator.Properties.reverse, EsbMessages.SendMediatorPropertiesEditionPart_ReverseLabel));
-		reverse.addSelectionListener(new SelectionAdapter() {
+	protected Composite createSkipSerializationCheckbox(Composite parent) {
+		skipSerialization = new Button(parent, SWT.CHECK);
+		skipSerialization.setText(getDescription(EsbViewsRepository.SendMediator.Properties.skipSerialization, EsbMessages.SendMediatorPropertiesEditionPart_SkipSerializationLabel));
+		skipSerialization.addSelectionListener(new SelectionAdapter() {
 
 			/**
 			 * {@inheritDoc}
@@ -308,17 +221,17 @@ public class SendMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SendMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.SendMediator.Properties.reverse, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(reverse.getSelection())));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SendMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.SendMediator.Properties.skipSerialization, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(skipSerialization.getSelection())));
 			}
 
 		});
-		GridData reverseData = new GridData(GridData.FILL_HORIZONTAL);
-		reverseData.horizontalSpan = 2;
-		reverse.setLayoutData(reverseData);
-		EditingUtils.setID(reverse, EsbViewsRepository.SendMediator.Properties.reverse);
-		EditingUtils.setEEFtype(reverse, "eef::Checkbox"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.SendMediator.Properties.reverse, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		// Start of user code for createReverseCheckbox
+		GridData skipSerializationData = new GridData(GridData.FILL_HORIZONTAL);
+		skipSerializationData.horizontalSpan = 2;
+		skipSerialization.setLayoutData(skipSerializationData);
+		EditingUtils.setID(skipSerialization, EsbViewsRepository.SendMediator.Properties.skipSerialization);
+		EditingUtils.setEEFtype(skipSerialization, "eef::Checkbox"); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.SendMediator.Properties.skipSerialization, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createSkipSerializationCheckbox
 
 		// End of user code
 		return parent;
@@ -437,36 +350,6 @@ public class SendMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 	}
 
 	
-	protected Composite createSkipSerializationCheckbox(Composite parent) {
-		skipSerialization = new Button(parent, SWT.CHECK);
-		skipSerialization.setText(getDescription(EsbViewsRepository.SendMediator.Properties.skipSerialization, EsbMessages.SendMediatorPropertiesEditionPart_SkipSerializationLabel));
-		skipSerialization.addSelectionListener(new SelectionAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 *
-			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
-			 * 	
-			 */
-			public void widgetSelected(SelectionEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SendMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.SendMediator.Properties.skipSerialization, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(skipSerialization.getSelection())));
-			}
-
-		});
-		GridData skipSerializationData = new GridData(GridData.FILL_HORIZONTAL);
-		skipSerializationData.horizontalSpan = 2;
-		skipSerialization.setLayoutData(skipSerializationData);
-		EditingUtils.setID(skipSerialization, EsbViewsRepository.SendMediator.Properties.skipSerialization);
-		EditingUtils.setEEFtype(skipSerialization, "eef::Checkbox"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.SendMediator.Properties.skipSerialization, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		// Start of user code for createSkipSerializationCheckbox
-
-		// End of user code
-		return parent;
-	}
-
-	
 	protected Composite createBuildMessageBeforeSendingCheckbox(Composite parent) {
 		buildMessageBeforeSending = new Button(parent, SWT.CHECK);
 		buildMessageBeforeSending.setText(getDescription(EsbViewsRepository.SendMediator.Properties.buildMessageBeforeSending, EsbMessages.SendMediatorPropertiesEditionPart_BuildMessageBeforeSendingLabel));
@@ -496,6 +379,55 @@ public class SendMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 		return parent;
 	}
 
+	
+	protected Composite createDescriptionText(Composite parent) {
+		createDescription(parent, EsbViewsRepository.SendMediator.Properties.description, EsbMessages.SendMediatorPropertiesEditionPart_DescriptionLabel);
+		description = SWTUtils.createScrollableText(parent, SWT.BORDER);
+		GridData descriptionData = new GridData(GridData.FILL_HORIZONTAL);
+		description.setLayoutData(descriptionData);
+		description.addFocusListener(new FocusAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void focusLost(FocusEvent e) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SendMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.SendMediator.Properties.description, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, description.getText()));
+			}
+
+		});
+		description.addKeyListener(new KeyAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void keyPressed(KeyEvent e) {
+				if (e.character == SWT.CR) {
+					if (propertiesEditionComponent != null)
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SendMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.SendMediator.Properties.description, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, description.getText()));
+				}
+			}
+
+		});
+		EditingUtils.setID(description, EsbViewsRepository.SendMediator.Properties.description);
+		EditingUtils.setEEFtype(description, "eef::Text"); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.SendMediator.Properties.description, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createDescriptionText
+
+		// End of user code
+		return parent;
+	}
+
 
 	/**
 	 * {@inheritDoc}
@@ -512,114 +444,31 @@ public class SendMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.SendMediatorPropertiesEditionPart#getDescription()
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.SendMediatorPropertiesEditionPart#getSkipSerialization()
 	 * 
 	 */
-	public String getDescription() {
-		return description.getText();
+	public Boolean getSkipSerialization() {
+		return Boolean.valueOf(skipSerialization.getSelection());
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.SendMediatorPropertiesEditionPart#setDescription(String newValue)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.SendMediatorPropertiesEditionPart#setSkipSerialization(Boolean newValue)
 	 * 
 	 */
-	public void setDescription(String newValue) {
+	public void setSkipSerialization(Boolean newValue) {
 		if (newValue != null) {
-			description.setText(newValue);
+			skipSerialization.setSelection(newValue.booleanValue());
 		} else {
-			description.setText(""); //$NON-NLS-1$
+			skipSerialization.setSelection(false);
 		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.SendMediator.Properties.description);
-		if (eefElementEditorReadOnlyState && description.isEnabled()) {
-			description.setEnabled(false);
-			description.setToolTipText(EsbMessages.SendMediator_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !description.isEnabled()) {
-			description.setEnabled(true);
-		}	
-		
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.SendMediatorPropertiesEditionPart#getCommentsList()
-	 * 
-	 */
-	public EList getCommentsList() {
-		return commentsListList;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.SendMediatorPropertiesEditionPart#setCommentsList(EList newValue)
-	 * 
-	 */
-	public void setCommentsList(EList newValue) {
-		commentsListList = newValue;
-		if (newValue != null) {
-			commentsList.setText(commentsListList.toString());
-		} else {
-			commentsList.setText(""); //$NON-NLS-1$
-		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.SendMediator.Properties.commentsList);
-		if (eefElementEditorReadOnlyState && commentsList.isEnabled()) {
-			commentsList.setEnabled(false);
-			commentsList.setToolTipText(EsbMessages.SendMediator_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !commentsList.isEnabled()) {
-			commentsList.setEnabled(true);
-		}	
-		
-	}
-
-	public void addToCommentsList(Object newValue) {
-		commentsListList.add(newValue);
-		if (newValue != null) {
-			commentsList.setText(commentsListList.toString());
-		} else {
-			commentsList.setText(""); //$NON-NLS-1$
-		}
-	}
-
-	public void removeToCommentsList(Object newValue) {
-		commentsListList.remove(newValue);
-		if (newValue != null) {
-			commentsList.setText(commentsListList.toString());
-		} else {
-			commentsList.setText(""); //$NON-NLS-1$
-		}
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.SendMediatorPropertiesEditionPart#getReverse()
-	 * 
-	 */
-	public Boolean getReverse() {
-		return Boolean.valueOf(reverse.getSelection());
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.SendMediatorPropertiesEditionPart#setReverse(Boolean newValue)
-	 * 
-	 */
-	public void setReverse(Boolean newValue) {
-		if (newValue != null) {
-			reverse.setSelection(newValue.booleanValue());
-		} else {
-			reverse.setSelection(false);
-		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.SendMediator.Properties.reverse);
-		if (eefElementEditorReadOnlyState && reverse.isEnabled()) {
-			reverse.setEnabled(false);
-			reverse.setToolTipText(EsbMessages.SendMediator_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !reverse.isEnabled()) {
-			reverse.setEnabled(true);
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.SendMediator.Properties.skipSerialization);
+		if (eefElementEditorReadOnlyState && skipSerialization.isEnabled()) {
+			skipSerialization.setEnabled(false);
+			skipSerialization.setToolTipText(EsbMessages.SendMediator_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !skipSerialization.isEnabled()) {
+			skipSerialization.setEnabled(true);
 		}	
 		
 	}
@@ -739,38 +588,6 @@ public class SendMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.SendMediatorPropertiesEditionPart#getSkipSerialization()
-	 * 
-	 */
-	public Boolean getSkipSerialization() {
-		return Boolean.valueOf(skipSerialization.getSelection());
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.SendMediatorPropertiesEditionPart#setSkipSerialization(Boolean newValue)
-	 * 
-	 */
-	public void setSkipSerialization(Boolean newValue) {
-		if (newValue != null) {
-			skipSerialization.setSelection(newValue.booleanValue());
-		} else {
-			skipSerialization.setSelection(false);
-		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.SendMediator.Properties.skipSerialization);
-		if (eefElementEditorReadOnlyState && skipSerialization.isEnabled()) {
-			skipSerialization.setEnabled(false);
-			skipSerialization.setToolTipText(EsbMessages.SendMediator_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !skipSerialization.isEnabled()) {
-			skipSerialization.setEnabled(true);
-		}	
-		
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.SendMediatorPropertiesEditionPart#getBuildMessageBeforeSending()
 	 * 
 	 */
@@ -800,10 +617,71 @@ public class SendMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 		
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.SendMediatorPropertiesEditionPart#getDescription()
+	 * 
+	 */
+	public String getDescription() {
+		return description.getText();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.SendMediatorPropertiesEditionPart#setDescription(String newValue)
+	 * 
+	 */
+	public void setDescription(String newValue) {
+		if (newValue != null) {
+			description.setText(newValue);
+		} else {
+			description.setText(""); //$NON-NLS-1$
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.SendMediator.Properties.description);
+		if (eefElementEditorReadOnlyState && description.isEnabled()) {
+			description.setEnabled(false);
+			description.setToolTipText(EsbMessages.SendMediator_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !description.isEnabled()) {
+			description.setEnabled(true);
+		}	
+		
+	}
 
 
 
 
+
+
+	// Start of user code for StaticReceivingSequence specific getters and setters implementation
+	@Override
+	public void setStaticReceivingSequence(RegistryKeyProperty registryKeyProperty) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public RegistryKeyProperty getStaticReceivingSequence() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	// End of user code
+
+	// Start of user code for DynamicReceivingSequence specific getters and setters implementation
+	@Override
+	public void setDynamicReceivingSequence(NamespacedProperty namespacedProperty) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public NamespacedProperty getDynamicReceivingSequence() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	// End of user code
 
 	/**
 	 * {@inheritDoc}

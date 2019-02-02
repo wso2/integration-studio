@@ -59,7 +59,8 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.IterateMediatorPropertiesEditionPart;
 
@@ -84,6 +85,18 @@ public class IterateMediatorPropertiesEditionPartImpl extends CompositePropertie
 	protected Button preservePayload;
 	protected EMFComboViewer sequenceType;
 	protected Text sequenceName;
+	// Start of user code  for iterateExpression widgets declarations
+	protected NamespacedProperty iterateExpression;
+	// End of user code
+
+	// Start of user code  for sequenceKey widgets declarations
+	protected RegistryKeyProperty sequenceKey;
+	// End of user code
+
+	// Start of user code  for attachPath widgets declarations
+	protected NamespacedProperty attachPath;
+	// End of user code
+
 
 
 
@@ -122,7 +135,6 @@ public class IterateMediatorPropertiesEditionPartImpl extends CompositePropertie
 	public void createControls(Composite view) { 
 		CompositionSequence iterateMediatorStep = new BindingCompositionSequence(propertiesEditionComponent);
 		CompositionStep propertiesStep = iterateMediatorStep.addStep(EsbViewsRepository.IterateMediator.Properties.class);
-		propertiesStep.addStep(EsbViewsRepository.IterateMediator.Properties.description);
 		propertiesStep.addStep(EsbViewsRepository.IterateMediator.Properties.commentsList);
 		propertiesStep.addStep(EsbViewsRepository.IterateMediator.Properties.reverse);
 		propertiesStep.addStep(EsbViewsRepository.IterateMediator.Properties.iterateID);
@@ -131,6 +143,11 @@ public class IterateMediatorPropertiesEditionPartImpl extends CompositePropertie
 		propertiesStep.addStep(EsbViewsRepository.IterateMediator.Properties.preservePayload);
 		propertiesStep.addStep(EsbViewsRepository.IterateMediator.Properties.sequenceType);
 		propertiesStep.addStep(EsbViewsRepository.IterateMediator.Properties.sequenceName);
+		propertiesStep.addStep(EsbViewsRepository.IterateMediator.Properties.iterateExpression);
+		propertiesStep.addStep(EsbViewsRepository.IterateMediator.Properties.sequenceKey);
+		propertiesStep.addStep(EsbViewsRepository.IterateMediator.Properties.attachPath);
+	    propertiesStep.addStep(EsbViewsRepository.IterateMediator.Properties.description);
+
 		
 		
 		composer = new PartComposer(iterateMediatorStep) {
@@ -167,6 +184,15 @@ public class IterateMediatorPropertiesEditionPartImpl extends CompositePropertie
 				if (key == EsbViewsRepository.IterateMediator.Properties.sequenceName) {
 					return createSequenceNameText(parent);
 				}
+				// Start of user code for iterateExpression addToPart creation
+				
+				// End of user code
+				// Start of user code for sequenceKey addToPart creation
+				
+				// End of user code
+				// Start of user code for attachPath addToPart creation
+				
+				// End of user code
 				return parent;
 			}
 		};
@@ -868,6 +894,18 @@ public class IterateMediatorPropertiesEditionPartImpl extends CompositePropertie
 
 
 
+	// Start of user code for iterateExpression specific getters and setters implementation
+	
+	// End of user code
+
+	// Start of user code for sequenceKey specific getters and setters implementation
+	
+	// End of user code
+
+	// Start of user code for attachPath specific getters and setters implementation
+	
+	// End of user code
+
 	/**
 	 * {@inheritDoc}
 	 *
@@ -877,6 +915,42 @@ public class IterateMediatorPropertiesEditionPartImpl extends CompositePropertie
 	public String getTitle() {
 		return EsbMessages.IterateMediator_Part_Title;
 	}
+
+    @Override
+    public NamespacedProperty getIterateExpression() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void setIterateExpression(NamespacedProperty nameSpacedProperty) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public RegistryKeyProperty getSequenceKey() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void setSequenceKey(RegistryKeyProperty registryKeyProperty) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public NamespacedProperty getAttachPath() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void setAttachPath(NamespacedProperty nameSpacedProperty) {
+        // TODO Auto-generated method stub
+        
+    }
 
 	// Start of user code additional methods
 	

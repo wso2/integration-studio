@@ -49,13 +49,19 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Text;
 
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.AggregateSequenceType;
+import org.wso2.developerstudio.eclipse.gmf.esb.CompletionMessagesType;
+import org.wso2.developerstudio.eclipse.gmf.esb.LogProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.LogPropertyPropertiesEditionPart;
 
@@ -67,22 +73,34 @@ import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
  * 
  * 
  */
-public class LogPropertyPropertiesEditionPartForm extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, LogPropertyPropertiesEditionPart {
+public class LogPropertyPropertiesEditionPartForm extends SectionPropertiesEditingPart
+		implements IFormPropertiesEditionPart, LogPropertyPropertiesEditionPart {
 
 	protected Text propertyName;
 	protected EMFComboViewer propertyValueType;
 	protected Text propertyValue;
-
-
+	// Start of user code for propertyExpression widgets declarations
+	protected NamespacedProperty propertyExpression;
+	protected Text propertyExpressionText;
+	protected Control[] propertyNameElements;
+	protected Control[] propertyValueTypeElements;
+	protected Control[] propertyExpressionTypeElements;
+	protected Control[] propertyValueElements;
+	Composite propertiesGroup;
+	// End of user code
 
 	/**
 	 * For {@link ISection} use only.
 	 */
-	public LogPropertyPropertiesEditionPartForm() { super(); }
+	public LogPropertyPropertiesEditionPartForm() {
+		super();
+	}
 
 	/**
 	 * Default constructor
-	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 * 
+	 * @param editionComponent
+	 *            the {@link IPropertiesEditionComponent} that manage this part
 	 * 
 	 */
 	public LogPropertyPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
@@ -93,7 +111,8 @@ public class LogPropertyPropertiesEditionPartForm extends SectionPropertiesEditi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
-	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
+	 *      createFigure(org.eclipse.swt.widgets.Composite,
+	 *      org.eclipse.ui.forms.widgets.FormToolkit)
 	 * 
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
@@ -111,7 +130,8 @@ public class LogPropertyPropertiesEditionPartForm extends SectionPropertiesEditi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
-	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
+	 *      createControls(org.eclipse.ui.forms.widgets.FormToolkit,
+	 *      org.eclipse.swt.widgets.Composite)
 	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
@@ -120,8 +140,8 @@ public class LogPropertyPropertiesEditionPartForm extends SectionPropertiesEditi
 		propertiesStep.addStep(EsbViewsRepository.LogProperty.Properties.propertyName);
 		propertiesStep.addStep(EsbViewsRepository.LogProperty.Properties.propertyValueType);
 		propertiesStep.addStep(EsbViewsRepository.LogProperty.Properties.propertyValue);
-		
-		
+		propertiesStep.addStep(EsbViewsRepository.LogProperty.Properties.propertyExpression);
+
 		composer = new PartComposer(logPropertyStep) {
 
 			@Override
@@ -138,21 +158,28 @@ public class LogPropertyPropertiesEditionPartForm extends SectionPropertiesEditi
 				if (key == EsbViewsRepository.LogProperty.Properties.propertyValue) {
 					return createPropertyValueText(widgetFactory, parent);
 				}
+				// Start of user code for propertyExpression addToPart creation
+				if (key == EsbViewsRepository.LogProperty.Properties.propertyExpression) {
+					return createPropertyExpressionText(widgetFactory, parent);
+				}
+				// End of user code
 				return parent;
 			}
 		};
 		composer.compose(view);
 	}
+
 	/**
 	 * 
 	 */
 	protected Composite createPropertiesGroup(FormToolkit widgetFactory, final Composite parent) {
-		Section propertiesSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
+		Section propertiesSection = widgetFactory.createSection(parent,
+				Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		propertiesSection.setText(EsbMessages.LogPropertyPropertiesEditionPart_PropertiesGroupLabel);
 		GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
 		propertiesSectionData.horizontalSpan = 3;
 		propertiesSection.setLayoutData(propertiesSectionData);
-		Composite propertiesGroup = widgetFactory.createComposite(propertiesSection);
+		propertiesGroup = widgetFactory.createComposite(propertiesSection);
 		GridLayout propertiesGroupLayout = new GridLayout();
 		propertiesGroupLayout.numColumns = 3;
 		propertiesGroup.setLayout(propertiesGroupLayout);
@@ -160,9 +187,12 @@ public class LogPropertyPropertiesEditionPartForm extends SectionPropertiesEditi
 		return propertiesGroup;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createPropertyNameText(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EsbViewsRepository.LogProperty.Properties.propertyName, EsbMessages.LogPropertyPropertiesEditionPart_PropertyNameLabel);
+		Control propertyNameText = createDescription(parent, EsbViewsRepository.LogProperty.Properties.propertyName,
+				EsbMessages.LogPropertyPropertiesEditionPart_PropertyNameLabel);
 		propertyName = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		propertyName.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -179,14 +209,13 @@ public class LogPropertyPropertiesEditionPartForm extends SectionPropertiesEditi
 				if (propertiesEditionComponent != null) {
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
 							LogPropertyPropertiesEditionPartForm.this,
-							EsbViewsRepository.LogProperty.Properties.propertyName,
-							PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, propertyName.getText()));
+							EsbViewsRepository.LogProperty.Properties.propertyName, PropertiesEditionEvent.COMMIT,
+							PropertiesEditionEvent.SET, null, propertyName.getText()));
 					propertiesEditionComponent
-							.firePropertiesChanged(new PropertiesEditionEvent(
-									LogPropertyPropertiesEditionPartForm.this,
+							.firePropertiesChanged(new PropertiesEditionEvent(LogPropertyPropertiesEditionPartForm.this,
 									EsbViewsRepository.LogProperty.Properties.propertyName,
-									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, propertyName.getText()));
+									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST, null,
+									propertyName.getText()));
 				}
 			}
 
@@ -196,12 +225,9 @@ public class LogPropertyPropertiesEditionPartForm extends SectionPropertiesEditi
 			@Override
 			public void focusGained(FocusEvent e) {
 				if (propertiesEditionComponent != null) {
-					propertiesEditionComponent
-							.firePropertiesChanged(new PropertiesEditionEvent(
-									LogPropertyPropertiesEditionPartForm.this,
-									null,
-									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_GAINED,
-									null, null));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+							LogPropertyPropertiesEditionPartForm.this, null, PropertiesEditionEvent.FOCUS_CHANGED,
+							PropertiesEditionEvent.FOCUS_GAINED, null, null));
 				}
 			}
 		});
@@ -215,25 +241,38 @@ public class LogPropertyPropertiesEditionPartForm extends SectionPropertiesEditi
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
 					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LogPropertyPropertiesEditionPartForm.this, EsbViewsRepository.LogProperty.Properties.propertyName, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, propertyName.getText()));
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+								LogPropertyPropertiesEditionPartForm.this,
+								EsbViewsRepository.LogProperty.Properties.propertyName, PropertiesEditionEvent.COMMIT,
+								PropertiesEditionEvent.SET, null, propertyName.getText()));
 				}
 			}
 		});
 		EditingUtils.setID(propertyName, EsbViewsRepository.LogProperty.Properties.propertyName);
 		EditingUtils.setEEFtype(propertyName, "eef::Text"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.LogProperty.Properties.propertyName, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		Control propertyNameHelp = FormUtils
+				.createHelpButton(widgetFactory, parent,
+						propertiesEditionComponent.getHelpContent(
+								EsbViewsRepository.LogProperty.Properties.propertyName, EsbViewsRepository.FORM_KIND),
+						null); // $NON-NLS-1$
 		// Start of user code for createPropertyNameText
+		propertyNameElements = new Control[] { propertyNameText, propertyName, propertyNameHelp };
 
 		// End of user code
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createPropertyValueTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EsbViewsRepository.LogProperty.Properties.propertyValueType, EsbMessages.LogPropertyPropertiesEditionPart_PropertyValueTypeLabel);
+		Control propertyValueTypeLabel = createDescription(parent,
+				EsbViewsRepository.LogProperty.Properties.propertyValueType,
+				EsbMessages.LogPropertyPropertiesEditionPart_PropertyValueTypeLabel);
 		propertyValueType = new EMFComboViewer(parent);
 		propertyValueType.setContentProvider(new ArrayContentProvider());
-		propertyValueType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
+		propertyValueType
+				.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData propertyValueTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		propertyValueType.getCombo().setLayoutData(propertyValueTypeData);
 		propertyValueType.addSelectionChangedListener(new ISelectionChangedListener() {
@@ -242,25 +281,50 @@ public class LogPropertyPropertiesEditionPartForm extends SectionPropertiesEditi
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-			 * 	
+			 * 
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LogPropertyPropertiesEditionPartForm.this, EsbViewsRepository.LogProperty.Properties.propertyValueType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getPropertyValueType()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+							LogPropertyPropertiesEditionPartForm.this,
+							EsbViewsRepository.LogProperty.Properties.propertyValueType, PropertiesEditionEvent.COMMIT,
+							PropertiesEditionEvent.SET, null, getPropertyValueType()));
+
 			}
 
 		});
 		propertyValueType.setID(EsbViewsRepository.LogProperty.Properties.propertyValueType);
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.LogProperty.Properties.propertyValueType, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		Control propertyValueTypeHelp = FormUtils.createHelpButton(widgetFactory, parent,
+				propertiesEditionComponent.getHelpContent(EsbViewsRepository.LogProperty.Properties.propertyValueType,
+						EsbViewsRepository.FORM_KIND),
+				null); // $NON-NLS-1$
 		// Start of user code for createPropertyValueTypeEMFComboViewer
+		propertyValueTypeElements = new Control[] { propertyValueTypeLabel, propertyValueType.getCombo(),
+				propertyValueTypeHelp };
+		propertyValueType.addSelectionChangedListener(new ISelectionChangedListener() {
 
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+			 * 
+			 */
+			public void selectionChanged(SelectionChangedEvent event) {
+				validate();
+			}
+
+		});
 		// End of user code
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createPropertyValueText(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EsbViewsRepository.LogProperty.Properties.propertyValue, EsbMessages.LogPropertyPropertiesEditionPart_PropertyValueLabel);
+		Control propertyValueTextLabel = createDescription(parent,
+				EsbViewsRepository.LogProperty.Properties.propertyValue,
+				EsbMessages.LogPropertyPropertiesEditionPart_PropertyValueLabel);
 		propertyValue = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		propertyValue.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -277,14 +341,13 @@ public class LogPropertyPropertiesEditionPartForm extends SectionPropertiesEditi
 				if (propertiesEditionComponent != null) {
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
 							LogPropertyPropertiesEditionPartForm.this,
-							EsbViewsRepository.LogProperty.Properties.propertyValue,
-							PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, propertyValue.getText()));
+							EsbViewsRepository.LogProperty.Properties.propertyValue, PropertiesEditionEvent.COMMIT,
+							PropertiesEditionEvent.SET, null, propertyValue.getText()));
 					propertiesEditionComponent
-							.firePropertiesChanged(new PropertiesEditionEvent(
-									LogPropertyPropertiesEditionPartForm.this,
+							.firePropertiesChanged(new PropertiesEditionEvent(LogPropertyPropertiesEditionPartForm.this,
 									EsbViewsRepository.LogProperty.Properties.propertyValue,
-									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, propertyValue.getText()));
+									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST, null,
+									propertyValue.getText()));
 				}
 			}
 
@@ -294,12 +357,9 @@ public class LogPropertyPropertiesEditionPartForm extends SectionPropertiesEditi
 			@Override
 			public void focusGained(FocusEvent e) {
 				if (propertiesEditionComponent != null) {
-					propertiesEditionComponent
-							.firePropertiesChanged(new PropertiesEditionEvent(
-									LogPropertyPropertiesEditionPartForm.this,
-									null,
-									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_GAINED,
-									null, null));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+							LogPropertyPropertiesEditionPartForm.this, null, PropertiesEditionEvent.FOCUS_CHANGED,
+							PropertiesEditionEvent.FOCUS_GAINED, null, null));
 				}
 			}
 		});
@@ -313,19 +373,23 @@ public class LogPropertyPropertiesEditionPartForm extends SectionPropertiesEditi
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
 					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LogPropertyPropertiesEditionPartForm.this, EsbViewsRepository.LogProperty.Properties.propertyValue, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, propertyValue.getText()));
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+								LogPropertyPropertiesEditionPartForm.this,
+								EsbViewsRepository.LogProperty.Properties.propertyValue, PropertiesEditionEvent.COMMIT,
+								PropertiesEditionEvent.SET, null, propertyValue.getText()));
 				}
 			}
 		});
 		EditingUtils.setID(propertyValue, EsbViewsRepository.LogProperty.Properties.propertyValue);
 		EditingUtils.setEEFtype(propertyValue, "eef::Text"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.LogProperty.Properties.propertyValue, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		Control propertyValueHelp = FormUtils
+				.createHelpButton(widgetFactory, parent,propertiesEditionComponent.getHelpContent(
+								EsbViewsRepository.LogProperty.Properties.propertyValue, EsbViewsRepository.FORM_KIND),null); // $NON-NLS-1$
 		// Start of user code for createPropertyValueText
-
+		propertyValueElements = new Control[] { propertyValueTextLabel, propertyValue, propertyValueHelp };
 		// End of user code
 		return parent;
 	}
-
 
 	/**
 	 * {@inheritDoc}
@@ -335,7 +399,7 @@ public class LogPropertyPropertiesEditionPartForm extends SectionPropertiesEditi
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-		
+
 		// End of user code
 	}
 
@@ -352,7 +416,8 @@ public class LogPropertyPropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.LogPropertyPropertiesEditionPart#setPropertyName(String newValue)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.LogPropertyPropertiesEditionPart#setPropertyName(String
+	 *      newValue)
 	 * 
 	 */
 	public void setPropertyName(String newValue) {
@@ -367,8 +432,8 @@ public class LogPropertyPropertiesEditionPartForm extends SectionPropertiesEditi
 			propertyName.setToolTipText(EsbMessages.LogProperty_ReadOnly);
 		} else if (!eefElementEditorReadOnlyState && !propertyName.isEnabled()) {
 			propertyName.setEnabled(true);
-		}	
-		
+		}
+
 	}
 
 	/**
@@ -385,7 +450,8 @@ public class LogPropertyPropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.LogPropertyPropertiesEditionPart#initPropertyValueType(Object input, Enumerator current)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.LogPropertyPropertiesEditionPart#initPropertyValueType(Object
+	 *      input, Enumerator current)
 	 */
 	public void initPropertyValueType(Object input, Enumerator current) {
 		propertyValueType.setInput(input);
@@ -396,14 +462,15 @@ public class LogPropertyPropertiesEditionPartForm extends SectionPropertiesEditi
 			propertyValueType.setToolTipText(EsbMessages.LogProperty_ReadOnly);
 		} else if (!eefElementEditorReadOnlyState && !propertyValueType.isEnabled()) {
 			propertyValueType.setEnabled(true);
-		}	
-		
+		}
+
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.LogPropertyPropertiesEditionPart#setPropertyValueType(Enumerator newValue)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.LogPropertyPropertiesEditionPart#setPropertyValueType(Enumerator
+	 *      newValue)
 	 * 
 	 */
 	public void setPropertyValueType(Enumerator newValue) {
@@ -414,8 +481,8 @@ public class LogPropertyPropertiesEditionPartForm extends SectionPropertiesEditi
 			propertyValueType.setToolTipText(EsbMessages.LogProperty_ReadOnly);
 		} else if (!eefElementEditorReadOnlyState && !propertyValueType.isEnabled()) {
 			propertyValueType.setEnabled(true);
-		}	
-		
+		}
+
 	}
 
 	/**
@@ -431,7 +498,8 @@ public class LogPropertyPropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.LogPropertyPropertiesEditionPart#setPropertyValue(String newValue)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.LogPropertyPropertiesEditionPart#setPropertyValue(String
+	 *      newValue)
 	 * 
 	 */
 	public void setPropertyValue(String newValue) {
@@ -446,14 +514,102 @@ public class LogPropertyPropertiesEditionPartForm extends SectionPropertiesEditi
 			propertyValue.setToolTipText(EsbMessages.LogProperty_ReadOnly);
 		} else if (!eefElementEditorReadOnlyState && !propertyValue.isEnabled()) {
 			propertyValue.setEnabled(true);
-		}	
-		
+		}
+
 	}
 
+	// Start of user code for propertyExpression specific getters and setters
+	// implementation
+	@Override
+	public NamespacedProperty getExpressionValue() {
+		return propertyExpression;
+	}
 
+	@Override
+	public void setExpressionValue(NamespacedProperty nameSpacedProperty) {
+		if (nameSpacedProperty != null) {
+			propertyExpressionText.setText(nameSpacedProperty.getPropertyValue());
+			propertyExpression = nameSpacedProperty;
+		}
+	}
 
+	/**
+	 * @generated NOT
+	 */
+	protected Composite createPropertyExpressionText(FormToolkit widgetFactory, Composite parent) {
+		Control propertyExpressionTextLabel = createDescription(parent,
+				EsbViewsRepository.LogProperty.Properties.propertyExpression,
+				EsbMessages.LogPropertyPropertiesEditionPart_PropertyExpressionLabel);
+		propertyExpressionText = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+		propertyExpressionText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+		widgetFactory.paintBordersFor(parent);
+		GridData propertyValueData = new GridData(GridData.FILL_HORIZONTAL);
+		propertyExpressionText.setLayoutData(propertyValueData);
+		propertyExpressionText.addFocusListener(new FocusAdapter() {
+			/**
+			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void focusLost(FocusEvent e) {
+				if (propertiesEditionComponent != null) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+							LogPropertyPropertiesEditionPartForm.this,
+							EsbViewsRepository.LogProperty.Properties.propertyExpression, PropertiesEditionEvent.COMMIT,
+							PropertiesEditionEvent.SET, null, propertyExpressionText.getText()));
+					propertiesEditionComponent
+							.firePropertiesChanged(new PropertiesEditionEvent(LogPropertyPropertiesEditionPartForm.this,
+									EsbViewsRepository.LogProperty.Properties.propertyExpression,
+									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST, null,
+									propertyExpressionText.getText()));
+				}
+			}
 
+			/**
+			 * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+			 */
+			@Override
+			public void focusGained(FocusEvent e) {
+				if (propertiesEditionComponent != null) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+							LogPropertyPropertiesEditionPartForm.this, null, PropertiesEditionEvent.FOCUS_CHANGED,
+							PropertiesEditionEvent.FOCUS_GAINED, null, null));
+				}
+			}
+		});
+		propertyExpressionText.addKeyListener(new KeyAdapter() {
+			/**
+			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void keyPressed(KeyEvent e) {
+				if (e.character == SWT.CR) {
+					if (propertiesEditionComponent != null)
+						propertiesEditionComponent.firePropertiesChanged(
+								new PropertiesEditionEvent(LogPropertyPropertiesEditionPartForm.this,
+										EsbViewsRepository.LogProperty.Properties.propertyExpression,
+										PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+										propertyExpressionText.getText()));
+				}
+			}
+		});
+		EditingUtils.setID(propertyExpressionText, EsbViewsRepository.LogProperty.Properties.propertyExpression);
+		EditingUtils.setEEFtype(propertyExpressionText, "eef::Text"); //$NON-NLS-1$
+		Control propertyExpressionHelp = FormUtils.createHelpButton(widgetFactory, parent,
+				propertiesEditionComponent.getHelpContent(EsbViewsRepository.LogProperty.Properties.propertyExpression,
+						EsbViewsRepository.FORM_KIND),
+				null); // $NON-NLS-1$
+		// Start of user code for createPropertyValueText
+		propertyExpressionTypeElements = new Control[] { propertyExpressionTextLabel, propertyExpressionText,
+				propertyExpressionHelp };
+		// End of user code
+		return parent;
+	}
 
+	// End of user code
 
 	/**
 	 * {@inheritDoc}
@@ -466,8 +622,57 @@ public class LogPropertyPropertiesEditionPartForm extends SectionPropertiesEditi
 	}
 
 	// Start of user code additional methods
-	
-	// End of user code
+	@Override
+	public void refresh() {
+		super.refresh();
+		validate();
+	}
 
+	public void validate() {
+		clearElements();
+		showEntry(propertyNameElements, false);
+		showEntry(propertyValueElements, false);
+
+		if (getPropertyValueType().getName().equals(PropertyValueType.EXPRESSION.getName())) {
+			showEntry(propertyExpressionTypeElements, false);
+		} else if (getPropertyValueType().getName().equals(PropertyValueType.LITERAL.getName())) {
+			showEntry(propertyValueTypeElements, false);
+		}
+
+		view.layout(true, true);
+		view.pack();
+	}
+
+	public void clearElements() {
+		hideEntry(propertiesGroup.getChildren(), false);
+	}
+
+	public void hideEntry(Control controls[], boolean layout) {
+		// view.getChildren();
+		for (Control control : controls) {
+			// null check and type check
+			if (control.getLayoutData() != null && control.getLayoutData() instanceof GridData) {
+				((GridData) control.getLayoutData()).exclude = true;
+				control.setVisible(false);
+			}
+		}
+		if (layout) {
+			view.layout(true, true);
+			view.pack();
+		}
+	}
+
+	public void showEntry(Control controls[], boolean layout) {
+		for (Control control : controls) {
+			// null check and type check
+			((GridData) control.getLayoutData()).exclude = false;
+			control.setVisible(true);
+		}
+		if (layout) {
+			view.layout(true, true);
+			view.pack();
+		}
+	}
+	// End of user code
 
 }

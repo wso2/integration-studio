@@ -3787,6 +3787,9 @@ public class EsbMessages extends NLS {
 	public static String LogPropertyPropertiesEditionPart_PropertyValueLabel;
 
 	
+	public static String LogPropertyPropertiesEditionPart_PropertyExpressionLabel;
+
+	
 	public static String PublishEventMediatorPropertiesEditionPart_DescriptionLabel;
 
 	
@@ -4700,6 +4703,15 @@ public class EsbMessages extends NLS {
 
 	
 	public static String IterateMediatorPropertiesEditionPart_SequenceNameLabel;
+
+	
+	public static String IterateMediatorPropertiesEditionPart_IterateExpressionLabel;
+
+	
+	public static String IterateMediatorPropertiesEditionPart_SequenceKeyLabel;
+
+	
+	public static String IterateMediatorPropertiesEditionPart_AttachPathLabel;
 
 	
 	public static String IterateMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;

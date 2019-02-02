@@ -5524,6 +5524,12 @@ public class EsbMessages extends NLS {
 	public static String StoreMediatorPropertiesEditionPart_SpecifyAsLabel;
 
 	
+	public static String StoreMediatorPropertiesEditionPart_OnStoreSequenceLabel;
+
+	
+	public static String StoreMediatorPropertiesEditionPart_ExpressionLabel;
+
+	
 	public static String StoreMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;
 
 	

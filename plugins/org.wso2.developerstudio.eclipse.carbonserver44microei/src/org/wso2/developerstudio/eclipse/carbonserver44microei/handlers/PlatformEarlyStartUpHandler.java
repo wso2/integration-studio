@@ -37,7 +37,7 @@ import org.wso2.developerstudio.eclipse.logging.core.Logger;
  */
 public class PlatformEarlyStartUpHandler implements IStartup {
 
-	private static final String DEBUG_PROFILE_NAME = "Microei_Debug_Profile";
+	public static final String DEBUG_PROFILE_NAME = "Microei_Debug_Profile";
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
 	@Override
@@ -62,7 +62,7 @@ public class PlatformEarlyStartUpHandler implements IStartup {
 		}
 	}
 
-	private ILaunchConfiguration findLaunchConfigurationByName(ILaunchManager launchManager, String configName)
+	public static ILaunchConfiguration findLaunchConfigurationByName(ILaunchManager launchManager, String configName)
 			throws CoreException {
 		ILaunchConfiguration[] availableLauchConfigs = launchManager.getLaunchConfigurations();
 		for (ILaunchConfiguration iLaunchConfig : availableLauchConfigs) {

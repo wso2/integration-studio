@@ -200,4 +200,26 @@
   <extension point="org.eclipse.ui.startup">
      <startup class="org.wso2.developerstudio.eclipse.carbonserver44microei.handlers.PlatformEarlyStartUpHandler"/>
    </extension>
+   
+   <extension
+	    point="org.eclipse.debug.ui.launchShortcuts">
+	    <shortcut
+	        class="org.wso2.developerstudio.eclipse.carbonserver44microei.debug.DebugShortcut"
+	        icon="icons/debug.png"
+	        id="org.wso2.developerstudio.eclipse.microei.debug.shortcut"
+	        label="Mediation Debug"
+	        modes="debug">
+	        <contextualLaunch>
+	            <enablement>
+	                <with
+	                    variable="selection">
+	                    <count
+	                        value="+">
+	                    </count>
+	                </with>
+	            </enablement>
+	        </contextualLaunch>
+	    </shortcut>
+	</extension>
+	
 </plugin>

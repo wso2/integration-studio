@@ -1001,7 +1001,7 @@ public class CacheMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
      * @generated NOT
      */
     protected Composite createEnableCacheControlCheckbox(FormToolkit widgetFactory, Composite parent) {
-        Control enableCacheControlLabel = enableCacheControl = widgetFactory.createButton(parent,
+        enableCacheControl = widgetFactory.createButton(parent,
                 getDescription(EsbViewsRepository.CacheMediator.Protocol.enableCacheControl,
                         EsbMessages.CacheMediatorPropertiesEditionPart_EnableCacheControlLabel),
                 SWT.CHECK);
@@ -1032,7 +1032,7 @@ public class CacheMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
                         EsbViewsRepository.FORM_KIND),
                 null); // $NON-NLS-1$
         // Start of user code for createEnableCacheControlCheckbox
-        enableCacheControlElements = new Control[] { enableCacheControlLabel, enableCacheControl,
+        enableCacheControlElements = new Control[] { enableCacheControl,
                 enableCacheControlHelp };
         // End of user code
         return parent;

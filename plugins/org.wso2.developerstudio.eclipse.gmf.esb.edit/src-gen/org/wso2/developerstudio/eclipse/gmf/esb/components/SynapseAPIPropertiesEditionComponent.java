@@ -74,14 +74,14 @@ public class SynapseAPIPropertiesEditionComponent extends SinglePartPropertiesEd
 
 	
 	/**
-	 * Settings for resources ReferencesTable
-	 */
-	protected ReferencesTableSettings resourcesSettings;
-	
-	/**
 	 * Settings for handlers ReferencesTable
 	 */
 	protected ReferencesTableSettings handlersSettings;
+	
+	/**
+	 * Settings for resources ReferencesTable
+	 */
+	protected ReferencesTableSettings resourcesSettings;
 	
 	
 	/**
@@ -110,68 +110,47 @@ public class SynapseAPIPropertiesEditionComponent extends SinglePartPropertiesEd
 			final SynapseAPI synapseAPI = (SynapseAPI)elt;
 			final SynapseAPIPropertiesEditionPart basePart = (SynapseAPIPropertiesEditionPart)editingPart;
 			// init values
-			if (isAccessible(EsbViewsRepository.SynapseAPI.Properties.description))
-				basePart.setDescription(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, synapseAPI.getDescription()));
-			
-			if (isAccessible(EsbViewsRepository.SynapseAPI.Properties.commentsList))
-				basePart.setCommentsList(synapseAPI.getCommentsList());
-			
-			if (isAccessible(EsbViewsRepository.SynapseAPI.Properties.apiName))
-				basePart.setApiName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, synapseAPI.getApiName()));
-			
-			if (isAccessible(EsbViewsRepository.SynapseAPI.Properties.context))
-				basePart.setContext(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, synapseAPI.getContext()));
-			
-			if (isAccessible(EsbViewsRepository.SynapseAPI.Properties.hostName))
-				basePart.setHostName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, synapseAPI.getHostName()));
-			
-			if (isAccessible(EsbViewsRepository.SynapseAPI.Properties.port)) {
-				basePart.setPort(EEFConverterUtil.convertToString(EcorePackage.Literals.EINT, synapseAPI.getPort()));
-			}
-			
-			if (isAccessible(EsbViewsRepository.SynapseAPI.Properties.resources)) {
-				resourcesSettings = new ReferencesTableSettings(synapseAPI, EsbPackage.eINSTANCE.getSynapseAPI_Resources());
-				basePart.initResources(resourcesSettings);
-			}
-			if (isAccessible(EsbViewsRepository.SynapseAPI.Properties.handlers)) {
+			if (isAccessible(EsbViewsRepository.SynapseAPI.Handler.handlers)) {
 				handlersSettings = new ReferencesTableSettings(synapseAPI, EsbPackage.eINSTANCE.getSynapseAPI_Handlers());
 				basePart.initHandlers(handlersSettings);
 			}
-			if (isAccessible(EsbViewsRepository.SynapseAPI.Properties.traceEnabled)) {
-				basePart.setTraceEnabled(synapseAPI.isTraceEnabled());
-			}
-			if (isAccessible(EsbViewsRepository.SynapseAPI.Properties.statisticsEnabled)) {
-				basePart.setStatisticsEnabled(synapseAPI.isStatisticsEnabled());
-			}
-			if (isAccessible(EsbViewsRepository.SynapseAPI.Properties.version))
-				basePart.setVersion(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, synapseAPI.getVersion()));
+			if (isAccessible(EsbViewsRepository.SynapseAPI.Handler.Properties.commentsList))
+				basePart.setCommentsList(synapseAPI.getCommentsList());
 			
-			if (isAccessible(EsbViewsRepository.SynapseAPI.Properties.versionType)) {
+			if (isAccessible(EsbViewsRepository.SynapseAPI.Handler.Properties.apiName))
+				basePart.setApiName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, synapseAPI.getApiName()));
+			
+			if (isAccessible(EsbViewsRepository.SynapseAPI.Handler.Properties.context))
+				basePart.setContext(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, synapseAPI.getContext()));
+			
+			if (isAccessible(EsbViewsRepository.SynapseAPI.Handler.Properties.hostName))
+				basePart.setHostName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, synapseAPI.getHostName()));
+			
+			if (isAccessible(EsbViewsRepository.SynapseAPI.Handler.Properties.port)) {
+				basePart.setPort(EEFConverterUtil.convertToString(EcorePackage.Literals.EINT, synapseAPI.getPort()));
+			}
+			
+			if (isAccessible(EsbViewsRepository.SynapseAPI.Handler.Properties.resources)) {
+				resourcesSettings = new ReferencesTableSettings(synapseAPI, EsbPackage.eINSTANCE.getSynapseAPI_Resources());
+				basePart.initResources(resourcesSettings);
+			}
+			if (isAccessible(EsbViewsRepository.SynapseAPI.Handler.Properties.versionType)) {
 				basePart.initVersionType(EEFUtils.choiceOfValues(synapseAPI, EsbPackage.eINSTANCE.getSynapseAPI_VersionType()), synapseAPI.getVersionType());
 			}
-			// init filters
+			if (isAccessible(EsbViewsRepository.SynapseAPI.Handler.Properties.version))
+				basePart.setVersion(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, synapseAPI.getVersion()));
 			
-			
-			
-			
-			
-			
-			if (isAccessible(EsbViewsRepository.SynapseAPI.Properties.resources)) {
-				basePart.addFilterToResources(new ViewerFilter() {
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						return (element instanceof String && element.equals("")) || (element instanceof APIResource); //$NON-NLS-1$ 
-					}
-			
-				});
-				// Start of user code for additional businessfilters for resources
-				// End of user code
+			if (isAccessible(EsbViewsRepository.SynapseAPI.Handler.Properties.traceEnabled)) {
+				basePart.setTraceEnabled(synapseAPI.isTraceEnabled());
 			}
-			if (isAccessible(EsbViewsRepository.SynapseAPI.Properties.handlers)) {
+			if (isAccessible(EsbViewsRepository.SynapseAPI.Handler.Properties.statisticsEnabled)) {
+				basePart.setStatisticsEnabled(synapseAPI.isStatisticsEnabled());
+			}
+			if (isAccessible(EsbViewsRepository.SynapseAPI.Handler.Properties.description))
+				basePart.setDescription(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, synapseAPI.getDescription()));
+			
+			// init filters
+			if (isAccessible(EsbViewsRepository.SynapseAPI.Handler.handlers)) {
 				basePart.addFilterToHandlers(new ViewerFilter() {
 					/**
 					 * {@inheritDoc}
@@ -186,6 +165,27 @@ public class SynapseAPIPropertiesEditionComponent extends SinglePartPropertiesEd
 				// Start of user code for additional businessfilters for handlers
 				// End of user code
 			}
+			
+			
+			
+			
+			
+			if (isAccessible(EsbViewsRepository.SynapseAPI.Handler.Properties.resources)) {
+				basePart.addFilterToResources(new ViewerFilter() {
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						return (element instanceof String && element.equals("")) || (element instanceof APIResource); //$NON-NLS-1$ 
+					}
+			
+				});
+				// Start of user code for additional businessfilters for resources
+				// End of user code
+			}
+			
 			
 			
 			
@@ -217,41 +217,41 @@ public class SynapseAPIPropertiesEditionComponent extends SinglePartPropertiesEd
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
 	 */
 	public EStructuralFeature associatedFeature(Object editorKey) {
-		if (editorKey == EsbViewsRepository.SynapseAPI.Properties.description) {
-			return EsbPackage.eINSTANCE.getEsbElement_Description();
-		}
-		if (editorKey == EsbViewsRepository.SynapseAPI.Properties.commentsList) {
-			return EsbPackage.eINSTANCE.getEsbElement_CommentsList();
-		}
-		if (editorKey == EsbViewsRepository.SynapseAPI.Properties.apiName) {
-			return EsbPackage.eINSTANCE.getSynapseAPI_ApiName();
-		}
-		if (editorKey == EsbViewsRepository.SynapseAPI.Properties.context) {
-			return EsbPackage.eINSTANCE.getSynapseAPI_Context();
-		}
-		if (editorKey == EsbViewsRepository.SynapseAPI.Properties.hostName) {
-			return EsbPackage.eINSTANCE.getSynapseAPI_HostName();
-		}
-		if (editorKey == EsbViewsRepository.SynapseAPI.Properties.port) {
-			return EsbPackage.eINSTANCE.getSynapseAPI_Port();
-		}
-		if (editorKey == EsbViewsRepository.SynapseAPI.Properties.resources) {
-			return EsbPackage.eINSTANCE.getSynapseAPI_Resources();
-		}
-		if (editorKey == EsbViewsRepository.SynapseAPI.Properties.handlers) {
+		if (editorKey == EsbViewsRepository.SynapseAPI.Handler.handlers) {
 			return EsbPackage.eINSTANCE.getSynapseAPI_Handlers();
 		}
-		if (editorKey == EsbViewsRepository.SynapseAPI.Properties.traceEnabled) {
-			return EsbPackage.eINSTANCE.getSynapseAPI_TraceEnabled();
+		if (editorKey == EsbViewsRepository.SynapseAPI.Handler.Properties.commentsList) {
+			return EsbPackage.eINSTANCE.getEsbElement_CommentsList();
 		}
-		if (editorKey == EsbViewsRepository.SynapseAPI.Properties.statisticsEnabled) {
-			return EsbPackage.eINSTANCE.getSynapseAPI_StatisticsEnabled();
+		if (editorKey == EsbViewsRepository.SynapseAPI.Handler.Properties.apiName) {
+			return EsbPackage.eINSTANCE.getSynapseAPI_ApiName();
 		}
-		if (editorKey == EsbViewsRepository.SynapseAPI.Properties.version) {
+		if (editorKey == EsbViewsRepository.SynapseAPI.Handler.Properties.context) {
+			return EsbPackage.eINSTANCE.getSynapseAPI_Context();
+		}
+		if (editorKey == EsbViewsRepository.SynapseAPI.Handler.Properties.hostName) {
+			return EsbPackage.eINSTANCE.getSynapseAPI_HostName();
+		}
+		if (editorKey == EsbViewsRepository.SynapseAPI.Handler.Properties.port) {
+			return EsbPackage.eINSTANCE.getSynapseAPI_Port();
+		}
+		if (editorKey == EsbViewsRepository.SynapseAPI.Handler.Properties.resources) {
+			return EsbPackage.eINSTANCE.getSynapseAPI_Resources();
+		}
+		if (editorKey == EsbViewsRepository.SynapseAPI.Handler.Properties.versionType) {
+			return EsbPackage.eINSTANCE.getSynapseAPI_VersionType();
+		}
+		if (editorKey == EsbViewsRepository.SynapseAPI.Handler.Properties.version) {
 			return EsbPackage.eINSTANCE.getSynapseAPI_Version();
 		}
-		if (editorKey == EsbViewsRepository.SynapseAPI.Properties.versionType) {
-			return EsbPackage.eINSTANCE.getSynapseAPI_VersionType();
+		if (editorKey == EsbViewsRepository.SynapseAPI.Handler.Properties.traceEnabled) {
+			return EsbPackage.eINSTANCE.getSynapseAPI_TraceEnabled();
+		}
+		if (editorKey == EsbViewsRepository.SynapseAPI.Handler.Properties.statisticsEnabled) {
+			return EsbPackage.eINSTANCE.getSynapseAPI_StatisticsEnabled();
+		}
+		if (editorKey == EsbViewsRepository.SynapseAPI.Handler.Properties.description) {
+			return EsbPackage.eINSTANCE.getEsbElement_Description();
 		}
 		return super.associatedFeature(editorKey);
 	}
@@ -263,53 +263,7 @@ public class SynapseAPIPropertiesEditionComponent extends SinglePartPropertiesEd
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		SynapseAPI synapseAPI = (SynapseAPI)semanticObject;
-		if (EsbViewsRepository.SynapseAPI.Properties.description == event.getAffectedEditor()) {
-			synapseAPI.setDescription((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
-		}
-		if (EsbViewsRepository.SynapseAPI.Properties.commentsList == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET) {
-				synapseAPI.getCommentsList().clear();
-				synapseAPI.getCommentsList().addAll(((EList) event.getNewValue()));
-			}
-		}
-		if (EsbViewsRepository.SynapseAPI.Properties.apiName == event.getAffectedEditor()) {
-			synapseAPI.setApiName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
-		}
-		if (EsbViewsRepository.SynapseAPI.Properties.context == event.getAffectedEditor()) {
-			synapseAPI.setContext((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
-		}
-		if (EsbViewsRepository.SynapseAPI.Properties.hostName == event.getAffectedEditor()) {
-			synapseAPI.setHostName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
-		}
-		if (EsbViewsRepository.SynapseAPI.Properties.port == event.getAffectedEditor()) {
-			synapseAPI.setPort((EEFConverterUtil.createIntFromString(EcorePackage.Literals.EINT, (String)event.getNewValue())));
-		}
-		if (EsbViewsRepository.SynapseAPI.Properties.resources == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD) {
-				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, resourcesSettings, editingContext.getAdapterFactory());
-				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
-				if (provider != null) {
-					PropertiesEditingPolicy policy = provider.getPolicy(context);
-					if (policy instanceof CreateEditingPolicy) {
-						policy.execute();
-					}
-				}
-			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
-				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
-				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
-				if (provider != null) {
-					PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
-					if (editionPolicy != null) {
-						editionPolicy.execute();
-					}
-				}
-			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-				resourcesSettings.removeFromReference((EObject) event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
-				resourcesSettings.move(event.getNewIndex(), (APIResource) event.getNewValue());
-			}
-		}
-		if (EsbViewsRepository.SynapseAPI.Properties.handlers == event.getAffectedEditor()) {
+		if (EsbViewsRepository.SynapseAPI.Handler.handlers == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, handlersSettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
@@ -334,17 +288,63 @@ public class SynapseAPIPropertiesEditionComponent extends SinglePartPropertiesEd
 				handlersSettings.move(event.getNewIndex(), (APIHandler) event.getNewValue());
 			}
 		}
-		if (EsbViewsRepository.SynapseAPI.Properties.traceEnabled == event.getAffectedEditor()) {
-			synapseAPI.setTraceEnabled((Boolean)event.getNewValue());
+		if (EsbViewsRepository.SynapseAPI.Handler.Properties.commentsList == event.getAffectedEditor()) {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
+				synapseAPI.getCommentsList().clear();
+				synapseAPI.getCommentsList().addAll(((EList) event.getNewValue()));
+			}
 		}
-		if (EsbViewsRepository.SynapseAPI.Properties.statisticsEnabled == event.getAffectedEditor()) {
-			synapseAPI.setStatisticsEnabled((Boolean)event.getNewValue());
+		if (EsbViewsRepository.SynapseAPI.Handler.Properties.apiName == event.getAffectedEditor()) {
+			synapseAPI.setApiName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
-		if (EsbViewsRepository.SynapseAPI.Properties.version == event.getAffectedEditor()) {
+		if (EsbViewsRepository.SynapseAPI.Handler.Properties.context == event.getAffectedEditor()) {
+			synapseAPI.setContext((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
+		}
+		if (EsbViewsRepository.SynapseAPI.Handler.Properties.hostName == event.getAffectedEditor()) {
+			synapseAPI.setHostName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
+		}
+		if (EsbViewsRepository.SynapseAPI.Handler.Properties.port == event.getAffectedEditor()) {
+			synapseAPI.setPort((EEFConverterUtil.createIntFromString(EcorePackage.Literals.EINT, (String)event.getNewValue())));
+		}
+		if (EsbViewsRepository.SynapseAPI.Handler.Properties.resources == event.getAffectedEditor()) {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
+				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, resourcesSettings, editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy policy = provider.getPolicy(context);
+					if (policy instanceof CreateEditingPolicy) {
+						policy.execute();
+					}
+				}
+			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
+					if (editionPolicy != null) {
+						editionPolicy.execute();
+					}
+				}
+			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+				resourcesSettings.removeFromReference((EObject) event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+				resourcesSettings.move(event.getNewIndex(), (APIResource) event.getNewValue());
+			}
+		}
+		if (EsbViewsRepository.SynapseAPI.Handler.Properties.versionType == event.getAffectedEditor()) {
+			synapseAPI.setVersionType((APIVersionType)event.getNewValue());
+		}
+		if (EsbViewsRepository.SynapseAPI.Handler.Properties.version == event.getAffectedEditor()) {
 			synapseAPI.setVersion((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
-		if (EsbViewsRepository.SynapseAPI.Properties.versionType == event.getAffectedEditor()) {
-			synapseAPI.setVersionType((APIVersionType)event.getNewValue());
+		if (EsbViewsRepository.SynapseAPI.Handler.Properties.traceEnabled == event.getAffectedEditor()) {
+			synapseAPI.setTraceEnabled((Boolean)event.getNewValue());
+		}
+		if (EsbViewsRepository.SynapseAPI.Handler.Properties.statisticsEnabled == event.getAffectedEditor()) {
+			synapseAPI.setStatisticsEnabled((Boolean)event.getNewValue());
+		}
+		if (EsbViewsRepository.SynapseAPI.Handler.Properties.description == event.getAffectedEditor()) {
+			synapseAPI.setDescription((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 	}
 
@@ -356,14 +356,9 @@ public class SynapseAPIPropertiesEditionComponent extends SinglePartPropertiesEd
 		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			SynapseAPIPropertiesEditionPart basePart = (SynapseAPIPropertiesEditionPart)editingPart;
-			if (EsbPackage.eINSTANCE.getEsbElement_Description().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.SynapseAPI.Properties.description)) {
-				if (msg.getNewValue() != null) {
-					basePart.setDescription(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
-				} else {
-					basePart.setDescription("");
-				}
-			}
-			if (EsbPackage.eINSTANCE.getEsbElement_CommentsList().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.SynapseAPI.Properties.commentsList)) {
+			if (EsbPackage.eINSTANCE.getSynapseAPI_Handlers().equals(msg.getFeature()) && isAccessible(EsbViewsRepository.SynapseAPI.Handler.handlers))
+				basePart.updateHandlers();
+			if (EsbPackage.eINSTANCE.getEsbElement_CommentsList().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.SynapseAPI.Handler.Properties.commentsList)) {
 				if (msg.getNewValue() instanceof EList<?>) {
 					basePart.setCommentsList((EList<?>)msg.getNewValue());
 				} else if (msg.getNewValue() == null) {
@@ -375,54 +370,59 @@ public class SynapseAPIPropertiesEditionComponent extends SinglePartPropertiesEd
 				}
 			}
 			
-			if (EsbPackage.eINSTANCE.getSynapseAPI_ApiName().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.SynapseAPI.Properties.apiName)) {
+			if (EsbPackage.eINSTANCE.getSynapseAPI_ApiName().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.SynapseAPI.Handler.Properties.apiName)) {
 				if (msg.getNewValue() != null) {
 					basePart.setApiName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setApiName("");
 				}
 			}
-			if (EsbPackage.eINSTANCE.getSynapseAPI_Context().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.SynapseAPI.Properties.context)) {
+			if (EsbPackage.eINSTANCE.getSynapseAPI_Context().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.SynapseAPI.Handler.Properties.context)) {
 				if (msg.getNewValue() != null) {
 					basePart.setContext(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setContext("");
 				}
 			}
-			if (EsbPackage.eINSTANCE.getSynapseAPI_HostName().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.SynapseAPI.Properties.hostName)) {
+			if (EsbPackage.eINSTANCE.getSynapseAPI_HostName().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.SynapseAPI.Handler.Properties.hostName)) {
 				if (msg.getNewValue() != null) {
 					basePart.setHostName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setHostName("");
 				}
 			}
-			if (EsbPackage.eINSTANCE.getSynapseAPI_Port().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.SynapseAPI.Properties.port)) {
+			if (EsbPackage.eINSTANCE.getSynapseAPI_Port().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.SynapseAPI.Handler.Properties.port)) {
 				if (msg.getNewValue() != null) {
 					basePart.setPort(EcoreUtil.convertToString(EcorePackage.Literals.EINT, msg.getNewValue()));
 				} else {
 					basePart.setPort("");
 				}
 			}
-			if (EsbPackage.eINSTANCE.getSynapseAPI_Resources().equals(msg.getFeature()) && isAccessible(EsbViewsRepository.SynapseAPI.Properties.resources))
+			if (EsbPackage.eINSTANCE.getSynapseAPI_Resources().equals(msg.getFeature()) && isAccessible(EsbViewsRepository.SynapseAPI.Handler.Properties.resources))
 				basePart.updateResources();
-			if (EsbPackage.eINSTANCE.getSynapseAPI_Handlers().equals(msg.getFeature()) && isAccessible(EsbViewsRepository.SynapseAPI.Properties.handlers))
-				basePart.updateHandlers();
-			if (EsbPackage.eINSTANCE.getSynapseAPI_TraceEnabled().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.SynapseAPI.Properties.traceEnabled))
-				basePart.setTraceEnabled((Boolean)msg.getNewValue());
+			if (EsbPackage.eINSTANCE.getSynapseAPI_VersionType().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EsbViewsRepository.SynapseAPI.Handler.Properties.versionType))
+				basePart.setVersionType((APIVersionType)msg.getNewValue());
 			
-			if (EsbPackage.eINSTANCE.getSynapseAPI_StatisticsEnabled().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.SynapseAPI.Properties.statisticsEnabled))
-				basePart.setStatisticsEnabled((Boolean)msg.getNewValue());
-			
-			if (EsbPackage.eINSTANCE.getSynapseAPI_Version().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.SynapseAPI.Properties.version)) {
+			if (EsbPackage.eINSTANCE.getSynapseAPI_Version().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.SynapseAPI.Handler.Properties.version)) {
 				if (msg.getNewValue() != null) {
 					basePart.setVersion(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setVersion("");
 				}
 			}
-			if (EsbPackage.eINSTANCE.getSynapseAPI_VersionType().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EsbViewsRepository.SynapseAPI.Properties.versionType))
-				basePart.setVersionType((APIVersionType)msg.getNewValue());
+			if (EsbPackage.eINSTANCE.getSynapseAPI_TraceEnabled().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.SynapseAPI.Handler.Properties.traceEnabled))
+				basePart.setTraceEnabled((Boolean)msg.getNewValue());
 			
+			if (EsbPackage.eINSTANCE.getSynapseAPI_StatisticsEnabled().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.SynapseAPI.Handler.Properties.statisticsEnabled))
+				basePart.setStatisticsEnabled((Boolean)msg.getNewValue());
+			
+			if (EsbPackage.eINSTANCE.getEsbElement_Description().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.SynapseAPI.Handler.Properties.description)) {
+				if (msg.getNewValue() != null) {
+					basePart.setDescription(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
+				} else {
+					basePart.setDescription("");
+				}
+			}
 			
 		}
 	}
@@ -435,18 +435,18 @@ public class SynapseAPIPropertiesEditionComponent extends SinglePartPropertiesEd
 	@Override
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
-			EsbPackage.eINSTANCE.getEsbElement_Description(),
+			EsbPackage.eINSTANCE.getSynapseAPI_Handlers(),
 			EsbPackage.eINSTANCE.getEsbElement_CommentsList(),
 			EsbPackage.eINSTANCE.getSynapseAPI_ApiName(),
 			EsbPackage.eINSTANCE.getSynapseAPI_Context(),
 			EsbPackage.eINSTANCE.getSynapseAPI_HostName(),
 			EsbPackage.eINSTANCE.getSynapseAPI_Port(),
 			EsbPackage.eINSTANCE.getSynapseAPI_Resources(),
-			EsbPackage.eINSTANCE.getSynapseAPI_Handlers(),
+			EsbPackage.eINSTANCE.getSynapseAPI_VersionType(),
+			EsbPackage.eINSTANCE.getSynapseAPI_Version(),
 			EsbPackage.eINSTANCE.getSynapseAPI_TraceEnabled(),
 			EsbPackage.eINSTANCE.getSynapseAPI_StatisticsEnabled(),
-			EsbPackage.eINSTANCE.getSynapseAPI_Version(),
-			EsbPackage.eINSTANCE.getSynapseAPI_VersionType()		);
+			EsbPackage.eINSTANCE.getEsbElement_Description()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -458,7 +458,7 @@ public class SynapseAPIPropertiesEditionComponent extends SinglePartPropertiesEd
 	 * 
 	 */
 	public boolean isRequired(Object key, int kind) {
-		return key == EsbViewsRepository.SynapseAPI.Properties.apiName || key == EsbViewsRepository.SynapseAPI.Properties.context;
+		return key == EsbViewsRepository.SynapseAPI.Handler.Properties.apiName || key == EsbViewsRepository.SynapseAPI.Handler.Properties.context;
 	}
 
 	/**
@@ -471,75 +471,75 @@ public class SynapseAPIPropertiesEditionComponent extends SinglePartPropertiesEd
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
 			try {
-				if (EsbViewsRepository.SynapseAPI.Properties.description == event.getAffectedEditor()) {
-					Object newValue = event.getNewValue();
-					if (newValue instanceof String) {
-						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getEsbElement_Description().getEAttributeType(), (String)newValue);
-					}
-					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getEsbElement_Description().getEAttributeType(), newValue);
-				}
-				if (EsbViewsRepository.SynapseAPI.Properties.commentsList == event.getAffectedEditor()) {
+				if (EsbViewsRepository.SynapseAPI.Handler.Properties.commentsList == event.getAffectedEditor()) {
 					BasicDiagnostic chain = new BasicDiagnostic();
 					for (Iterator iterator = ((List)event.getNewValue()).iterator(); iterator.hasNext();) {
 						chain.add(Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getEsbElement_CommentsList().getEAttributeType(), iterator.next()));
 					}
 					ret = chain;
 				}
-				if (EsbViewsRepository.SynapseAPI.Properties.apiName == event.getAffectedEditor()) {
+				if (EsbViewsRepository.SynapseAPI.Handler.Properties.apiName == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getSynapseAPI_ApiName().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getSynapseAPI_ApiName().getEAttributeType(), newValue);
 				}
-				if (EsbViewsRepository.SynapseAPI.Properties.context == event.getAffectedEditor()) {
+				if (EsbViewsRepository.SynapseAPI.Handler.Properties.context == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getSynapseAPI_Context().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getSynapseAPI_Context().getEAttributeType(), newValue);
 				}
-				if (EsbViewsRepository.SynapseAPI.Properties.hostName == event.getAffectedEditor()) {
+				if (EsbViewsRepository.SynapseAPI.Handler.Properties.hostName == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getSynapseAPI_HostName().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getSynapseAPI_HostName().getEAttributeType(), newValue);
 				}
-				if (EsbViewsRepository.SynapseAPI.Properties.port == event.getAffectedEditor()) {
+				if (EsbViewsRepository.SynapseAPI.Handler.Properties.port == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getSynapseAPI_Port().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getSynapseAPI_Port().getEAttributeType(), newValue);
 				}
-				if (EsbViewsRepository.SynapseAPI.Properties.traceEnabled == event.getAffectedEditor()) {
+				if (EsbViewsRepository.SynapseAPI.Handler.Properties.versionType == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getSynapseAPI_TraceEnabled().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getSynapseAPI_VersionType().getEAttributeType(), (String)newValue);
 					}
-					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getSynapseAPI_TraceEnabled().getEAttributeType(), newValue);
+					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getSynapseAPI_VersionType().getEAttributeType(), newValue);
 				}
-				if (EsbViewsRepository.SynapseAPI.Properties.statisticsEnabled == event.getAffectedEditor()) {
-					Object newValue = event.getNewValue();
-					if (newValue instanceof String) {
-						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getSynapseAPI_StatisticsEnabled().getEAttributeType(), (String)newValue);
-					}
-					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getSynapseAPI_StatisticsEnabled().getEAttributeType(), newValue);
-				}
-				if (EsbViewsRepository.SynapseAPI.Properties.version == event.getAffectedEditor()) {
+				if (EsbViewsRepository.SynapseAPI.Handler.Properties.version == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getSynapseAPI_Version().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getSynapseAPI_Version().getEAttributeType(), newValue);
 				}
-				if (EsbViewsRepository.SynapseAPI.Properties.versionType == event.getAffectedEditor()) {
+				if (EsbViewsRepository.SynapseAPI.Handler.Properties.traceEnabled == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getSynapseAPI_VersionType().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getSynapseAPI_TraceEnabled().getEAttributeType(), (String)newValue);
 					}
-					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getSynapseAPI_VersionType().getEAttributeType(), newValue);
+					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getSynapseAPI_TraceEnabled().getEAttributeType(), newValue);
+				}
+				if (EsbViewsRepository.SynapseAPI.Handler.Properties.statisticsEnabled == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getSynapseAPI_StatisticsEnabled().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getSynapseAPI_StatisticsEnabled().getEAttributeType(), newValue);
+				}
+				if (EsbViewsRepository.SynapseAPI.Handler.Properties.description == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getEsbElement_Description().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getEsbElement_Description().getEAttributeType(), newValue);
 				}
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);

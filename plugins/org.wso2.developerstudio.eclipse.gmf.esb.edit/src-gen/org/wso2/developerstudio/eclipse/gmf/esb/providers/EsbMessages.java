@@ -926,6 +926,9 @@ public class EsbMessages extends NLS {
 	public static String TaskPropertyPropertiesEditionPart_PropertiesGroupLabel;
 
 	
+	public static String SynapseAPIPropertiesEditionPart_HandlerGroupLabel;
+
+	
 	public static String SynapseAPIPropertiesEditionPart_PropertiesGroupLabel;
 
 	
@@ -6229,7 +6232,7 @@ public class EsbMessages extends NLS {
 	public static String TaskPropertyPropertiesEditionPart_PropertyTypeLabel;
 
 	
-	public static String SynapseAPIPropertiesEditionPart_DescriptionLabel;
+	public static String SynapseAPIPropertiesEditionPart_HandlersLabel;
 
 	
 	public static String SynapseAPIPropertiesEditionPart_CommentsListLabel;
@@ -6250,7 +6253,10 @@ public class EsbMessages extends NLS {
 	public static String SynapseAPIPropertiesEditionPart_ResourcesLabel;
 
 	
-	public static String SynapseAPIPropertiesEditionPart_HandlersLabel;
+	public static String SynapseAPIPropertiesEditionPart_VersionTypeLabel;
+
+	
+	public static String SynapseAPIPropertiesEditionPart_VersionLabel;
 
 	
 	public static String SynapseAPIPropertiesEditionPart_TraceEnabledLabel;
@@ -6259,10 +6265,7 @@ public class EsbMessages extends NLS {
 	public static String SynapseAPIPropertiesEditionPart_StatisticsEnabledLabel;
 
 	
-	public static String SynapseAPIPropertiesEditionPart_VersionLabel;
-
-	
-	public static String SynapseAPIPropertiesEditionPart_VersionTypeLabel;
+	public static String SynapseAPIPropertiesEditionPart_DescriptionLabel;
 
 	
 	public static String APIResourcePropertiesEditionPart_InSequenceInputConnectorsLabel;

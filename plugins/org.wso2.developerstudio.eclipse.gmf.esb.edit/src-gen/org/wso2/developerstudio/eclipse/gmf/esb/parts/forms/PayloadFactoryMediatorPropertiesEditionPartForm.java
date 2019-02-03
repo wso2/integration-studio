@@ -818,7 +818,6 @@ public class PayloadFactoryMediatorPropertiesEditionPartForm extends SectionProp
         eu.showEntry(mediaTypeElements, false);
         eu.showEntry(descriptionElements, false);
         view.layout(true, true);
-        view.pack();
     }
 	
 	// End of user code

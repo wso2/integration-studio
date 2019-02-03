@@ -3002,7 +3002,7 @@ public class EsbViewsRepository {
 			public static String sequenceType = "esb::AggregateMediator::onComplete::sequenceType";
 			
 			// Start of user code for sequenceKey ElementEditor key
-			public static String sequenceKey = "esb::AggregateMediator::properties::sequenceKey";
+			public static String sequenceKey = "esb::CacheMediator::OnCacheHit::sequenceKey";
 			// End of user code
 			
 	
@@ -3638,22 +3638,7 @@ public class EsbViewsRepository {
 		public static class Properties {
 	
 			
-			public static String description = "esb::CacheMediator::properties::description";
-			
-			
-			public static String commentsList = "esb::CacheMediator::properties::commentsList";
-			
-			
-			public static String reverse = "esb::CacheMediator::properties::Reverse";
-			
-			
-			public static String cacheProtocolType = "esb::CacheMediator::properties::cacheProtocolType";
-			
-			
 			public static String cacheType = "esb::CacheMediator::properties::cacheType";
-			
-			
-			public static String hashGenerator = "esb::CacheMediator::properties::hashGenerator";
 			
 			
 			public static String cacheTimeout = "esb::CacheMediator::properties::cacheTimeout";
@@ -3661,26 +3646,59 @@ public class EsbViewsRepository {
 			
 			public static String maxMessageSize = "esb::CacheMediator::properties::maxMessageSize";
 			
+	
+		}
+	
+		public static class Implementation {
+	
 			
-			public static String cacheProtocolMethods = "esb::CacheMediator::properties::cacheProtocolMethods";
+			public static String maxEntryCount = "esb::CacheMediator::Implementation::maxEntryCount";
+			
+	
+		}
+	
+		public static class OnCacheHit {
+	
+			
+			public static String sequenceType = "esb::CacheMediator::OnCacheHit::sequenceType";
+			
+			// Start of user code for sequenceKey ElementEditor key
+			public static String sequenceKey = "esb::CacheMediator::OnCacheHit::sequenceKey";
+			// End of user code
+			
+	
+		}
+	
+		public static class Protocol {
+	
+			
+			public static String cacheProtocolType = "esb::CacheMediator::Protocol::cacheProtocolType";
 			
 			
-			public static String maxEntryCount = "esb::CacheMediator::properties::maxEntryCount";
+			public static String cacheProtocolMethods = "esb::CacheMediator::Protocol::cacheProtocolMethods";
 			
 			
-			public static String sequenceType = "esb::CacheMediator::properties::sequenceType";
+			public static String headersToExcludeInHash = "esb::CacheMediator::Protocol::headersToExcludeInHash";
 			
 			
-			public static String headersToExcludeInHash = "esb::CacheMediator::properties::headersToExcludeInHash";
+			public static String responseCodes = "esb::CacheMediator::Protocol::responseCodes";
 			
 			
-			public static String responseCodes = "esb::CacheMediator::properties::responseCodes";
+			public static String enableCacheControl = "esb::CacheMediator::Protocol::enableCacheControl";
 			
 			
-			public static String enableCacheControl = "esb::CacheMediator::properties::enableCacheControl";
+			public static String includeAgeHeader = "esb::CacheMediator::Protocol::includeAgeHeader";
 			
 			
-			public static String includeAgeHeader = "esb::CacheMediator::properties::includeAgeHeader";
+			public static String hashGenerator = "esb::CacheMediator::Protocol::hashGenerator";
+			
+	
+		}
+	
+		public static class Misc {
+	
+			
+			public static String description = "esb::CacheMediator::Misc::description";
 			
 	
 		}

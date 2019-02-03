@@ -515,6 +515,18 @@ public class EsbMessages extends NLS {
 	public static String CacheMediatorPropertiesEditionPart_PropertiesGroupLabel;
 
 	
+	public static String CacheMediatorPropertiesEditionPart_ImplementationGroupLabel;
+
+	
+	public static String CacheMediatorPropertiesEditionPart_OnCacheHitGroupLabel;
+
+	
+	public static String CacheMediatorPropertiesEditionPart_ProtocolGroupLabel;
+
+	
+	public static String CacheMediatorPropertiesEditionPart_MiscGroupLabel;
+
+	
 	public static String CacheMediatorInputConnectorPropertiesEditionPart_PropertiesGroupLabel;
 
 	
@@ -4762,22 +4774,7 @@ public class EsbMessages extends NLS {
 	public static String MediatorSequencePropertiesEditionPart_DescriptionLabel;
 
 	
-	public static String CacheMediatorPropertiesEditionPart_DescriptionLabel;
-
-	
-	public static String CacheMediatorPropertiesEditionPart_CommentsListLabel;
-
-	
-	public static String CacheMediatorPropertiesEditionPart_ReverseLabel;
-
-	
-	public static String CacheMediatorPropertiesEditionPart_CacheProtocolTypeLabel;
-
-	
 	public static String CacheMediatorPropertiesEditionPart_CacheTypeLabel;
-
-	
-	public static String CacheMediatorPropertiesEditionPart_HashGeneratorLabel;
 
 	
 	public static String CacheMediatorPropertiesEditionPart_CacheTimeoutLabel;
@@ -4786,13 +4783,19 @@ public class EsbMessages extends NLS {
 	public static String CacheMediatorPropertiesEditionPart_MaxMessageSizeLabel;
 
 	
-	public static String CacheMediatorPropertiesEditionPart_CacheProtocolMethodsLabel;
-
-	
 	public static String CacheMediatorPropertiesEditionPart_MaxEntryCountLabel;
 
 	
 	public static String CacheMediatorPropertiesEditionPart_SequenceTypeLabel;
+
+	
+	public static String CacheMediatorPropertiesEditionPart_SequenceKeyLabel;
+
+	
+	public static String CacheMediatorPropertiesEditionPart_CacheProtocolTypeLabel;
+
+	
+	public static String CacheMediatorPropertiesEditionPart_CacheProtocolMethodsLabel;
 
 	
 	public static String CacheMediatorPropertiesEditionPart_HeadersToExcludeInHashLabel;
@@ -4805,6 +4808,12 @@ public class EsbMessages extends NLS {
 
 	
 	public static String CacheMediatorPropertiesEditionPart_IncludeAgeHeaderLabel;
+
+	
+	public static String CacheMediatorPropertiesEditionPart_HashGeneratorLabel;
+
+	
+	public static String CacheMediatorPropertiesEditionPart_DescriptionLabel;
 
 	
 	public static String CacheMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;

@@ -2118,12 +2118,6 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v8HvJnEei6boXzpRIfnA" name="description" views="_E7wllfJnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//EsbElement/description"/>
         </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v8H_JnEei6boXzpRIfnA" name="commentsList" views="_E7wllvJnEei6boXzpRIfnA">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//EsbElement/commentsList"/>
-        </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v8IPJnEei6boXzpRIfnA" name="Reverse" views="_E7wll_JnEei6boXzpRIfnA">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//Mediator/Reverse"/>
-        </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v8IfJnEei6boXzpRIfnA" name="cacheProtocolType" views="_E7wlmPJnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//CacheMediator/cacheProtocolType"/>
         </properties>
@@ -2159,6 +2153,9 @@
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v8LPJnEei6boXzpRIfnA" name="includeAgeHeader" views="_E7wlo_JnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//CacheMediator/includeAgeHeader"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_nspJ8CcTEem3lJlzbKMBPg" name="sequenceKey" views="_yYgsMCcSEem3lJlzbKMBPg">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//CacheMediator/sequenceKey"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//CacheMediator"/>
       </bindings>
@@ -7892,23 +7889,8 @@
       <views xmi:id="_E7wlk_JnEei6boXzpRIfnA" name="CacheMediator">
         <elements xsi:type="eef-views:Container" xmi:id="_E7wllPJnEei6boXzpRIfnA" name="properties">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wllfJnEei6boXzpRIfnA" name="description">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
-          </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wllvJnEei6boXzpRIfnA" name="commentsList">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.3"/>
-          </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wll_JnEei6boXzpRIfnA" name="Reverse">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
-          </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wlmPJnEei6boXzpRIfnA" name="cacheProtocolType">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
-          </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wlmfJnEei6boXzpRIfnA" name="cacheType">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
-          </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wlmvJnEei6boXzpRIfnA" name="hashGenerator">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wlm_JnEei6boXzpRIfnA" name="cacheTimeout">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
@@ -7916,14 +7898,27 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wlnPJnEei6boXzpRIfnA" name="maxMessageSize">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wlnfJnEei6boXzpRIfnA" name="cacheProtocolMethods">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
-          </elements>
+        </elements>
+        <elements xsi:type="eef-views:Container" xmi:id="_kzMigCcREem3lJlzbKMBPg" name="Implementation">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wlnvJnEei6boXzpRIfnA" name="maxEntryCount">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
+        </elements>
+        <elements xsi:type="eef-views:Container" xmi:id="_Sw4XICcSEem3lJlzbKMBPg" name="OnCacheHit">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wln_JnEei6boXzpRIfnA" name="sequenceType">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
+          </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_yYgsMCcSEem3lJlzbKMBPg" name="sequenceKey"/>
+        </elements>
+        <elements xsi:type="eef-views:Container" xmi:id="_XJ93QCcSEem3lJlzbKMBPg" name="Protocol">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wlmPJnEei6boXzpRIfnA" name="cacheProtocolType">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wlnfJnEei6boXzpRIfnA" name="cacheProtocolMethods">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wloPJnEei6boXzpRIfnA" name="headersToExcludeInHash">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
@@ -7936,6 +7931,15 @@
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wlo_JnEei6boXzpRIfnA" name="includeAgeHeader">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wlmvJnEei6boXzpRIfnA" name="hashGenerator">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+        </elements>
+        <elements xsi:type="eef-views:Container" xmi:id="_JewrgCcSEem3lJlzbKMBPg" name="Misc">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wllfJnEei6boXzpRIfnA" name="description">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
         </elements>
       </views>

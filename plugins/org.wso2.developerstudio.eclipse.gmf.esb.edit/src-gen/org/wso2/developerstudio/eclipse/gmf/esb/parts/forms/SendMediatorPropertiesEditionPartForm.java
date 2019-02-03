@@ -181,9 +181,9 @@ public class SendMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 		propertiesStep.addStep(EsbViewsRepository.SendMediator.Properties.endPoint);
 		propertiesStep.addStep(EsbViewsRepository.SendMediator.Properties.receivingSequenceType);
 		propertiesStep.addStep(EsbViewsRepository.SendMediator.Properties.buildMessageBeforeSending);
-		propertiesStep.addStep(EsbViewsRepository.SendMediator.Properties.description);
 		propertiesStep.addStep(EsbViewsRepository.SendMediator.Properties.staticReceivingSequence);
 		propertiesStep.addStep(EsbViewsRepository.SendMediator.Properties.dynamicReceivingSequence);
+		propertiesStep.addStep(EsbViewsRepository.SendMediator.Properties.description);
 
 		composer = new PartComposer(sendMediatorStep) {
 
@@ -965,7 +965,6 @@ public class SendMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 
 		eu.showEntry(descriptionElements, false);
 		view.layout(true, true);
-		view.pack();
 	}
 	// End of user code
 

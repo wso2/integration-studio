@@ -949,7 +949,6 @@ public class HeaderMediatorPropertiesEditionPartForm extends SectionPropertiesEd
         
         showEntry(descriptionElements, false);
         view.layout(true, true);
-        view.pack();
     }
 
 	public void clearElements() {

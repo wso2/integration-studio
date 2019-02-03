@@ -59,7 +59,8 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.StoreMediatorPropertiesEditionPart;
 
@@ -81,6 +82,14 @@ public class StoreMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	protected Text messageStore;
 	protected Text availableMessageStores;
 	protected EMFComboViewer specifyAs;
+	// Start of user code  for onStoreSequence widgets declarations
+	
+	// End of user code
+
+	// Start of user code  for expression widgets declarations
+	
+	// End of user code
+
 
 
 
@@ -125,6 +134,8 @@ public class StoreMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 		propertiesStep.addStep(EsbViewsRepository.StoreMediator.Properties.messageStore);
 		propertiesStep.addStep(EsbViewsRepository.StoreMediator.Properties.availableMessageStores);
 		propertiesStep.addStep(EsbViewsRepository.StoreMediator.Properties.specifyAs);
+		propertiesStep.addStep(EsbViewsRepository.StoreMediator.Properties.onStoreSequence);
+		propertiesStep.addStep(EsbViewsRepository.StoreMediator.Properties.expression);
 		
 		
 		composer = new PartComposer(storeMediatorStep) {
@@ -152,6 +163,12 @@ public class StoreMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 				if (key == EsbViewsRepository.StoreMediator.Properties.specifyAs) {
 					return createSpecifyAsEMFComboViewer(parent);
 				}
+				// Start of user code for onStoreSequence addToPart creation
+				
+				// End of user code
+				// Start of user code for expression addToPart creation
+				
+				// End of user code
 				return parent;
 			}
 		};
@@ -667,6 +684,35 @@ public class StoreMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 
 
 
+	// Start of user code for onStoreSequence specific getters and setters implementation
+	@Override
+    public RegistryKeyProperty getOnStoreSequence() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void setOnStoreSequence(RegistryKeyProperty registryKeyProperty) {
+        // TODO Auto-generated method stub
+        
+    }
+
+	// End of user code
+
+	// Start of user code for expression specific getters and setters implementation
+    @Override
+    public NamespacedProperty getExpression() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void setExpression(NamespacedProperty nameSpacedProperty) {
+        // TODO Auto-generated method stub
+        
+    }
+	// End of user code
+
 	/**
 	 * {@inheritDoc}
 	 *
@@ -676,6 +722,9 @@ public class StoreMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	public String getTitle() {
 		return EsbMessages.StoreMediator_Part_Title;
 	}
+
+    
+
 
 	// Start of user code additional methods
 	

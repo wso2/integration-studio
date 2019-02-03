@@ -89,14 +89,16 @@ public class ESBDebugLaunchDelegate implements ILaunchConfigurationDelegate {
     private IWorkbenchWindow activeWorkBenchWindow;
     private int statusCode = Window.CANCEL;
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
-
+    private static int commandPort ;
+    private static int eventPort;
+    private static String hostName;
     @Override
     public void launch(final ILaunchConfiguration configuration, final String mode, final ILaunch launch,
             final IProgressMonitor monitor) throws CoreException {
 
-        int commandPort = 0;
-        int eventPort = 0;
-        String hostName = DEFAULT_HOST_NAME;
+        commandPort = 0;
+        eventPort = 0;
+        hostName = DEFAULT_HOST_NAME;
         // Use the default debugging mode as Internal micro-integrator based debugger
         String debugMode = DEBUG_PROFILE_INTERNAL_RUNNING_MODE;
 
@@ -163,16 +165,28 @@ public class ESBDebugLaunchDelegate implements ILaunchConfigurationDelegate {
                     MicroIntegratorInstance.getInstance().setDebugMode(true);
                     MicroIntegratorInstance.getInstance().restart();
 
-                    ESBDebugger esbDebugger = new ESBDebugger(commandPort, eventPort, hostName);
-                    ESBDebugTarget debugTarget = new ESBDebugTarget(launch);
-                    launch.addDebugTarget(debugTarget);
-                    esbDebugger.fireEvent(new DebuggerStartedEvent());
+                    // run listening to the debug ports in a separate thread to let the server instance
+                    // to run without waiting this main thread to complete
+                    new Thread() {
+                        public void run() {
+                            try {
+                                ESBDebugger esbDebugger = new ESBDebugger(commandPort, eventPort, hostName);
+                                ESBDebugTarget debugTarget = new ESBDebugTarget(launch);
+                                launch.addDebugTarget(debugTarget);
+                                esbDebugger.fireEvent(new DebuggerStartedEvent());
+                                // Reset the status code of Carbon Application update dialog box status
+                                statusCode = Window.CANCEL;
 
-                    // Reset the status code of Carbon Application update dialog box status
-                    statusCode = Window.CANCEL;
+                                // Reset the micro integrator debug mode to false
+                                MicroIntegratorInstance.getInstance().setDebugMode(false);
 
-                    // Reset the micro integrator debug mode to false
-                    MicroIntegratorInstance.getInstance().setDebugMode(false);
+                            } catch (Exception e) {
+                                ESBDebuggerUtil.popUpErrorDialogAndLogException(e,
+                                        "Error occured while listninig to the debug port");
+                            }
+
+                        }
+                    }.start();
                 }
             } else {
                 // This block is for the standard remote mediation debugger

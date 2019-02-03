@@ -29,6 +29,7 @@ import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 
 import org.eclipse.emf.eef.runtime.ui.widgets.EMFComboViewer;
+import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 
 import org.eclipse.jface.viewers.ArrayContentProvider;
@@ -42,6 +43,8 @@ import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.MouseEvent;
+import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 
@@ -50,12 +53,19 @@ import org.eclipse.swt.layout.GridLayout;
 
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
-
+import org.eclipse.ui.forms.widgets.FormToolkit;
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryArgumentType;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.PayloadFactoryArgumentPropertiesEditionPart;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.parts.forms.HeaderMediatorPropertiesEditionPartForm;
+import org.wso2.developerstudio.eclipse.gmf.esb.parts.forms.PayloadFactoryArgumentPropertiesEditionPartForm;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFNameSpacedPropertyEditorDialog;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
 
 // End of user code
@@ -68,6 +78,18 @@ public class PayloadFactoryArgumentPropertiesEditionPartImpl extends CompositePr
 
 	protected EMFComboViewer argumentType;
 	protected Text argumentValue;
+	// Start of user code  for argumentExpression widgets declarations
+	protected NamespacedProperty argumentExpression;
+	protected Text argumentExpressionText;
+	protected Group propertiesGroup;
+	
+	protected Control[] argumentExpressionElements;
+	protected Control[] argumentTypeElements;
+	protected Control[] argumentValueElements;
+	protected Control[] evaluatorElements;
+	protected Control[] literalElements;
+	// End of user code
+
 	protected EMFComboViewer evaluator;
 	protected Button literal;
 
@@ -110,6 +132,7 @@ public class PayloadFactoryArgumentPropertiesEditionPartImpl extends CompositePr
 		CompositionStep propertiesStep = payloadFactoryArgumentStep.addStep(EsbViewsRepository.PayloadFactoryArgument.Properties.class);
 		propertiesStep.addStep(EsbViewsRepository.PayloadFactoryArgument.Properties.argumentType);
 		propertiesStep.addStep(EsbViewsRepository.PayloadFactoryArgument.Properties.argumentValue);
+		propertiesStep.addStep(EsbViewsRepository.PayloadFactoryArgument.Properties.argumentExpression);
 		propertiesStep.addStep(EsbViewsRepository.PayloadFactoryArgument.Properties.evaluator);
 		propertiesStep.addStep(EsbViewsRepository.PayloadFactoryArgument.Properties.literal);
 		
@@ -127,6 +150,11 @@ public class PayloadFactoryArgumentPropertiesEditionPartImpl extends CompositePr
 				if (key == EsbViewsRepository.PayloadFactoryArgument.Properties.argumentValue) {
 					return createArgumentValueText(parent);
 				}
+				// Start of user code for argumentExpression addToPart creation
+				if (key == EsbViewsRepository.PayloadFactoryArgument.Properties.argumentExpression) {
+					return createArgumentExpression(parent);
+				}
+				// End of user code
 				if (key == EsbViewsRepository.PayloadFactoryArgument.Properties.evaluator) {
 					return createEvaluatorEMFComboViewer(parent);
 				}
@@ -143,7 +171,7 @@ public class PayloadFactoryArgumentPropertiesEditionPartImpl extends CompositePr
 	 * 
 	 */
 	protected Composite createPropertiesGroup(Composite parent) {
-		Group propertiesGroup = new Group(parent, SWT.NONE);
+		propertiesGroup = new Group(parent, SWT.NONE);
 		propertiesGroup.setText(EsbMessages.PayloadFactoryArgumentPropertiesEditionPart_PropertiesGroupLabel);
 		GridData propertiesGroupData = new GridData(GridData.FILL_HORIZONTAL);
 		propertiesGroupData.horizontalSpan = 3;
@@ -154,9 +182,12 @@ public class PayloadFactoryArgumentPropertiesEditionPartImpl extends CompositePr
 		return propertiesGroup;
 	}
 
-	
+
+	/**
+     * @generated NOT
+     */
 	protected Composite createArgumentTypeEMFComboViewer(Composite parent) {
-		createDescription(parent, EsbViewsRepository.PayloadFactoryArgument.Properties.argumentType, EsbMessages.PayloadFactoryArgumentPropertiesEditionPart_ArgumentTypeLabel);
+		Control argumentTypeLabel = createDescription(parent, EsbViewsRepository.PayloadFactoryArgument.Properties.argumentType, EsbMessages.PayloadFactoryArgumentPropertiesEditionPart_ArgumentTypeLabel);
 		argumentType = new EMFComboViewer(parent);
 		argumentType.setContentProvider(new ArrayContentProvider());
 		argumentType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -171,22 +202,27 @@ public class PayloadFactoryArgumentPropertiesEditionPartImpl extends CompositePr
 			 * 	
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PayloadFactoryArgumentPropertiesEditionPartImpl.this, EsbViewsRepository.PayloadFactoryArgument.Properties.argumentType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getArgumentType()));
+				validate();
+				if (propertiesEditionComponent != null) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PayloadFactoryArgumentPropertiesEditionPartImpl.this, 
+							EsbViewsRepository.PayloadFactoryArgument.Properties.argumentType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getArgumentType()));
+				}
 			}
 
 		});
 		argumentType.setID(EsbViewsRepository.PayloadFactoryArgument.Properties.argumentType);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PayloadFactoryArgument.Properties.argumentType, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		Control argumentTypeHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PayloadFactoryArgument.Properties.argumentType, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createArgumentTypeEMFComboViewer
-
+		argumentTypeElements = new Control[] {argumentTypeLabel, argumentType.getCombo(), argumentTypeHelp};
 		// End of user code
 		return parent;
 	}
 
-	
+	/**
+     * @generated NOT
+     */
 	protected Composite createArgumentValueText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.PayloadFactoryArgument.Properties.argumentValue, EsbMessages.PayloadFactoryArgumentPropertiesEditionPart_ArgumentValueLabel);
+		Control argumentValueLabel = createDescription(parent, EsbViewsRepository.PayloadFactoryArgument.Properties.argumentValue, EsbMessages.PayloadFactoryArgumentPropertiesEditionPart_ArgumentValueLabel);
 		argumentValue = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData argumentValueData = new GridData(GridData.FILL_HORIZONTAL);
 		argumentValue.setLayoutData(argumentValueData);
@@ -226,16 +262,18 @@ public class PayloadFactoryArgumentPropertiesEditionPartImpl extends CompositePr
 		});
 		EditingUtils.setID(argumentValue, EsbViewsRepository.PayloadFactoryArgument.Properties.argumentValue);
 		EditingUtils.setEEFtype(argumentValue, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PayloadFactoryArgument.Properties.argumentValue, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		Control argumentValueHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PayloadFactoryArgument.Properties.argumentValue, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createArgumentValueText
-
+		argumentValueElements = new Control[] {argumentValueLabel, argumentValue, argumentValueHelp};
 		// End of user code
 		return parent;
 	}
-
 	
+	/**
+     * @generated NOT
+     */
 	protected Composite createEvaluatorEMFComboViewer(Composite parent) {
-		createDescription(parent, EsbViewsRepository.PayloadFactoryArgument.Properties.evaluator, EsbMessages.PayloadFactoryArgumentPropertiesEditionPart_EvaluatorLabel);
+		Control evaluatorLabel = createDescription(parent, EsbViewsRepository.PayloadFactoryArgument.Properties.evaluator, EsbMessages.PayloadFactoryArgumentPropertiesEditionPart_EvaluatorLabel);
 		evaluator = new EMFComboViewer(parent);
 		evaluator.setContentProvider(new ArrayContentProvider());
 		evaluator.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -256,14 +294,16 @@ public class PayloadFactoryArgumentPropertiesEditionPartImpl extends CompositePr
 
 		});
 		evaluator.setID(EsbViewsRepository.PayloadFactoryArgument.Properties.evaluator);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PayloadFactoryArgument.Properties.evaluator, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		Control evaluatorHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PayloadFactoryArgument.Properties.evaluator, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createEvaluatorEMFComboViewer
-
+		evaluatorElements = new Control[] {evaluatorLabel, evaluator.getCombo(), evaluatorHelp};
 		// End of user code
 		return parent;
 	}
 
-	
+	/**
+     * @generated NOT
+     */
 	protected Composite createLiteralCheckbox(Composite parent) {
 		literal = new Button(parent, SWT.CHECK);
 		literal.setText(getDescription(EsbViewsRepository.PayloadFactoryArgument.Properties.literal, EsbMessages.PayloadFactoryArgumentPropertiesEditionPart_LiteralLabel));
@@ -286,9 +326,9 @@ public class PayloadFactoryArgumentPropertiesEditionPartImpl extends CompositePr
 		literal.setLayoutData(literalData);
 		EditingUtils.setID(literal, EsbViewsRepository.PayloadFactoryArgument.Properties.literal);
 		EditingUtils.setEEFtype(literal, "eef::Checkbox"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PayloadFactoryArgument.Properties.literal, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		Control literalHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PayloadFactoryArgument.Properties.literal, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createLiteralCheckbox
-
+		literalElements = new Control[] {literal, literalHelp};
 		// End of user code
 		return parent;
 	}
@@ -469,6 +509,22 @@ public class PayloadFactoryArgumentPropertiesEditionPartImpl extends CompositePr
 
 
 
+	// Start of user code for argumentExpression specific getters and setters implementation
+	@Override
+	public void setArgumentExpression(NamespacedProperty namespacedProperty) {
+		if (namespacedProperty != null) {
+			argumentExpression = namespacedProperty;
+			argumentExpressionText.setText(namespacedProperty.getPropertyValue());
+		}
+	}
+
+	@Override
+	public NamespacedProperty getArgumentExpression() {
+		return argumentExpression;
+	}
+	
+	// End of user code
+
 	/**
 	 * {@inheritDoc}
 	 *
@@ -480,6 +536,72 @@ public class PayloadFactoryArgumentPropertiesEditionPartImpl extends CompositePr
 	}
 
 	// Start of user code additional methods
+	protected void validate() {
+		EEFPropertyViewUtil eu = new EEFPropertyViewUtil(view);
+		eu.clearElements(new Composite[] {propertiesGroup});
+
+        eu.showEntry(argumentTypeElements, false);
+
+        if (getArgumentType().getName().equals(PayloadFactoryArgumentType.VALUE.getName())) {
+        	eu.showEntry(argumentValueElements, false);
+
+        } else if (getArgumentType().getName().equals(PayloadFactoryArgumentType.EXPRESSION.getName())) {
+        	eu.showEntry(argumentExpressionElements, false);
+        	eu.showEntry(evaluatorElements, false);
+        }
+        
+        eu.showEntry(literalElements, false);
+        view.layout(true, true);
+        view.pack();
+	}
+	
+	protected Composite createArgumentExpression(Composite parent) {
+		Control argumentExpressionLabel = createDescription(parent, EsbViewsRepository.PayloadFactoryArgument.Properties.argumentExpression, EsbMessages.PayloadFactoryArgumentPropertiesEditionPart_ArgumentExpressionLabel);
+
+        if (argumentExpression == null) {
+        	argumentExpression = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
+        }
+        
+        argumentExpressionText = SWTUtils.createScrollableText(parent, SWT.BORDER);
+        GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
+        argumentExpressionText.setLayoutData(valueData);
+        argumentExpressionText.addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseUp(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseDown(MouseEvent e) {
+				EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL, argumentExpression);
+                nspd.open();
+                argumentExpressionText.setText(argumentExpression.getPropertyValue());
+                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PayloadFactoryArgumentPropertiesEditionPartImpl.this, 
+                		EsbViewsRepository.PayloadFactoryArgument.Properties.argumentExpression, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getArgumentExpression()));
+			}
+			
+			@Override
+			public void mouseDoubleClick(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+
+        EditingUtils.setID(argumentExpressionText, EsbViewsRepository.PayloadFactoryArgument.Properties.argumentExpression);
+        EditingUtils.setEEFtype(argumentExpressionText, "eef::Text");
+        Control argumentExpressionHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PayloadFactoryArgument.Properties.argumentExpression, EsbViewsRepository.SWT_KIND), null);
+        argumentExpressionElements = new Control[] {argumentExpressionLabel, argumentExpressionText, argumentExpressionHelp};
+        return parent;
+
+	}
+	
+	@Override
+    public void refresh() {
+        super.refresh();
+        validate();
+    }
 	
 	// End of user code
 

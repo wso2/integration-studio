@@ -1137,7 +1137,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
                             + " Please see the error log for more details.";
                     String simpleMessage = ExceptionMessageMapper.getNonTechnicalMessage(e.getMessage());
                     IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, simpleMessage);
-                    if (!simpleMessage.equals("Invalid DataMapper mediator. Configuration registry key is required")) {
+                    if (simpleMessage != null && !simpleMessage.equals("Invalid DataMapper mediator. Configuration registry key is required")) {
                         ErrorDialog.openError(Display.getCurrent().getActiveShell(), "Error", errorMsgHeader,
                                 editorStatus);
                     }

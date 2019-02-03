@@ -1333,6 +1333,10 @@ public class EsbViewsRepository {
 			
 			public static String propertyValue = "esb::LogProperty::properties::propertyValue";
 			
+			// Start of user code for propertyExpression ElementEditor key
+			public static String propertyExpression = "esb::LogProperty::properties::propertyExpression";
+			// End of user code
+			
 	
 		}
 	
@@ -3536,6 +3540,18 @@ public class EsbViewsRepository {
 			
 			public static String sequenceName = "esb::IterateMediator::properties::sequenceName";
 			
+			// Start of user code for iterateExpression ElementEditor key
+			public static String iterateExpression = "esb::IterateMediator::properties::iterateExpression";
+			// End of user code
+			
+			// Start of user code for sequenceKey ElementEditor key
+			public static String sequenceKey = "esb::IterateMediator::properties::sequenceKey";
+			// End of user code
+			
+			// Start of user code for attachPath ElementEditor key
+			public static String attachPath = "esb::IterateMediator::properties::attachPath";
+			// End of user code
+			
 	
 		}
 	
@@ -3669,22 +3685,7 @@ public class EsbViewsRepository {
 		public static class Properties {
 	
 			
-			public static String description = "esb::CacheMediator::properties::description";
-			
-			
-			public static String commentsList = "esb::CacheMediator::properties::commentsList";
-			
-			
-			public static String reverse = "esb::CacheMediator::properties::Reverse";
-			
-			
-			public static String cacheProtocolType = "esb::CacheMediator::properties::cacheProtocolType";
-			
-			
 			public static String cacheType = "esb::CacheMediator::properties::cacheType";
-			
-			
-			public static String hashGenerator = "esb::CacheMediator::properties::hashGenerator";
 			
 			
 			public static String cacheTimeout = "esb::CacheMediator::properties::cacheTimeout";
@@ -3692,26 +3693,59 @@ public class EsbViewsRepository {
 			
 			public static String maxMessageSize = "esb::CacheMediator::properties::maxMessageSize";
 			
+	
+		}
+	
+		public static class Implementation {
+	
 			
-			public static String cacheProtocolMethods = "esb::CacheMediator::properties::cacheProtocolMethods";
+			public static String maxEntryCount = "esb::CacheMediator::Implementation::maxEntryCount";
+			
+	
+		}
+	
+		public static class OnCacheHit {
+	
+			
+			public static String sequenceType = "esb::CacheMediator::OnCacheHit::sequenceType";
+			
+			// Start of user code for sequenceKey ElementEditor key
+			public static String sequenceKey = "esb::CacheMediator::OnCacheHit::sequenceKey";
+			// End of user code
+			
+	
+		}
+	
+		public static class Protocol {
+	
+			
+			public static String cacheProtocolType = "esb::CacheMediator::Protocol::cacheProtocolType";
 			
 			
-			public static String maxEntryCount = "esb::CacheMediator::properties::maxEntryCount";
+			public static String cacheProtocolMethods = "esb::CacheMediator::Protocol::cacheProtocolMethods";
 			
 			
-			public static String sequenceType = "esb::CacheMediator::properties::sequenceType";
+			public static String headersToExcludeInHash = "esb::CacheMediator::Protocol::headersToExcludeInHash";
 			
 			
-			public static String headersToExcludeInHash = "esb::CacheMediator::properties::headersToExcludeInHash";
+			public static String responseCodes = "esb::CacheMediator::Protocol::responseCodes";
 			
 			
-			public static String responseCodes = "esb::CacheMediator::properties::responseCodes";
+			public static String enableCacheControl = "esb::CacheMediator::Protocol::enableCacheControl";
 			
 			
-			public static String enableCacheControl = "esb::CacheMediator::properties::enableCacheControl";
+			public static String includeAgeHeader = "esb::CacheMediator::Protocol::includeAgeHeader";
 			
 			
-			public static String includeAgeHeader = "esb::CacheMediator::properties::includeAgeHeader";
+			public static String hashGenerator = "esb::CacheMediator::Protocol::hashGenerator";
+			
+	
+		}
+	
+		public static class Misc {
+	
+			
+			public static String description = "esb::CacheMediator::Misc::description";
 			
 	
 		}
@@ -5323,6 +5357,14 @@ public class EsbViewsRepository {
 			
 			public static String specifyAs = "esb::StoreMediator::properties::SpecifyAs";
 			
+			// Start of user code for onStoreSequence ElementEditor key
+			public static String onStoreSequence = "esb::StoreMediator::properties::onStoreSequence";
+			// End of user code
+			
+			// Start of user code for expression ElementEditor key
+			public static String expression = "esb::StoreMediator::properties::expression";
+			// End of user code
+			
 	
 		}
 	
@@ -5441,13 +5483,11 @@ public class EsbViewsRepository {
 		public static class Properties {
 	
 			
-			public static String description = "esb::PayloadFactoryMediator::properties::description";
+			public static String payloadFormat = "esb::PayloadFactoryMediator::properties::payloadFormat";
 			
-			
-			public static String commentsList = "esb::PayloadFactoryMediator::properties::commentsList";
-			
-			
-			public static String reverse = "esb::PayloadFactoryMediator::properties::Reverse";
+			// Start of user code for payloadKey ElementEditor key
+			public static String payloadKey = "esb::PayloadFactoryMediator::properties::payloadKey";
+			// End of user code
 			
 			
 			public static String payload = "esb::PayloadFactoryMediator::properties::payload";
@@ -5459,7 +5499,7 @@ public class EsbViewsRepository {
 			public static String mediaType = "esb::PayloadFactoryMediator::properties::mediaType";
 			
 			
-			public static String payloadFormat = "esb::PayloadFactoryMediator::properties::payloadFormat";
+			public static String description = "esb::PayloadFactoryMediator::properties::description";
 			
 	
 		}
@@ -5508,6 +5548,10 @@ public class EsbViewsRepository {
 			
 			
 			public static String argumentValue = "esb::PayloadFactoryArgument::properties::argumentValue";
+			
+			// Start of user code for argumentExpression ElementEditor key
+			public static String argumentExpression = "esb::PayloadFactoryArgument::properties::argumentExpression";
+			// End of user code
 			
 			
 			public static String evaluator = "esb::PayloadFactoryArgument::properties::evaluator";
@@ -5615,13 +5659,7 @@ public class EsbViewsRepository {
 		public static class Properties {
 	
 			
-			public static String description = "esb::SendMediator::properties::description";
-			
-			
-			public static String commentsList = "esb::SendMediator::properties::commentsList";
-			
-			
-			public static String reverse = "esb::SendMediator::properties::Reverse";
+			public static String skipSerialization = "esb::SendMediator::properties::skipSerialization";
 			
 			
 			public static String endPoint = "esb::SendMediator::properties::EndPoint";
@@ -5630,10 +5668,18 @@ public class EsbViewsRepository {
 			public static String receivingSequenceType = "esb::SendMediator::properties::receivingSequenceType";
 			
 			
-			public static String skipSerialization = "esb::SendMediator::properties::skipSerialization";
-			
-			
 			public static String buildMessageBeforeSending = "esb::SendMediator::properties::buildMessageBeforeSending";
+			
+			// Start of user code for StaticReceivingSequence ElementEditor key
+			public static String staticReceivingSequence = "esb::SendMediator::properties::StaticReceivingSequence";
+			// End of user code
+			
+			// Start of user code for DynamicReceivingSequence ElementEditor key
+			public static String dynamicReceivingSequence = "esb::SendMediator::properties::DynamicReceivingSequence";
+			// End of user code
+			
+			
+			public static String description = "esb::SendMediator::properties::description";
 			
 	
 		}

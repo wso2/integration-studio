@@ -21,6 +21,7 @@ Require-Bundle: org.eclipse.core.runtime,
 Bundle-ActivationPolicy: lazy
 Import-Package: org.apache.commons.lang,
  org.eclipse.wst.xml.xpath.core.util,
+ org.wso2.developerstudio.eclipse.esb.project.artifact,
  org.wso2.developerstudio.eclipse.gmf.esb.persistence,
  org.wso2.developerstudio.eclipse.logging.core,
  org.wso2.developerstudio.esb.form.editors.article.providers

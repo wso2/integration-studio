@@ -32,9 +32,10 @@ import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.MediaType;
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryArgument;
 import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryArgumentType;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.PayloadFactoryArgumentPropertiesEditionPart;
 
@@ -90,10 +91,19 @@ public class PayloadFactoryArgumentPropertiesEditionComponent extends SinglePart
 			if (isAccessible(EsbViewsRepository.PayloadFactoryArgument.Properties.literal)) {
 				basePart.setLiteral(payloadFactoryArgument.isLiteral());
 			}
+			// Start of user code  for argumentExpression command update
+			if (isAccessible(EsbViewsRepository.PayloadFactoryArgument.Properties.argumentExpression)) {
+				basePart.setArgumentExpression( payloadFactoryArgument.getArgumentExpression());
+			}
+			// End of user code
+			
 			// init filters
 			
 			
 			
+			
+			// Start of user code  for argumentExpression filter update
+			// End of user code
 			
 			// init values for referenced views
 			
@@ -102,6 +112,7 @@ public class PayloadFactoryArgumentPropertiesEditionComponent extends SinglePart
 		}
 		setInitializing(false);
 	}
+
 
 
 
@@ -126,6 +137,9 @@ public class PayloadFactoryArgumentPropertiesEditionComponent extends SinglePart
 		if (editorKey == EsbViewsRepository.PayloadFactoryArgument.Properties.literal) {
 			return EsbPackage.eINSTANCE.getPayloadFactoryArgument_Literal();
 		}
+		if (editorKey == EsbViewsRepository.PayloadFactoryArgument.Properties.argumentExpression) {
+			return EsbPackage.eINSTANCE.getPayloadFactoryArgument_ArgumentExpression();
+		}
 		return super.associatedFeature(editorKey);
 	}
 
@@ -147,6 +161,17 @@ public class PayloadFactoryArgumentPropertiesEditionComponent extends SinglePart
 		}
 		if (EsbViewsRepository.PayloadFactoryArgument.Properties.literal == event.getAffectedEditor()) {
 			payloadFactoryArgument.setLiteral((Boolean)event.getNewValue());
+		}
+		if (EsbViewsRepository.PayloadFactoryArgument.Properties.argumentExpression == event.getAffectedEditor()) {
+			// Start of user code for updateArgumentExpression method body
+			if (event.getNewValue() != null) {
+				NamespacedProperty nspHeaderName = (NamespacedProperty)event.getNewValue();
+				payloadFactoryArgument.setArgumentExpression(nspHeaderName);
+			} else {
+				payloadFactoryArgument.setArgumentExpression(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+			}
+			// End of user code
+			
 		}
 	}
 
@@ -174,6 +199,16 @@ public class PayloadFactoryArgumentPropertiesEditionComponent extends SinglePart
 			if (EsbPackage.eINSTANCE.getPayloadFactoryArgument_Literal().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.PayloadFactoryArgument.Properties.literal))
 				basePart.setLiteral((Boolean)msg.getNewValue());
 			
+					// Start of user code for argumentExpression live update
+			if (EsbPackage.eINSTANCE.getPayloadFactoryArgument_ArgumentExpression().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.PayloadFactoryArgument.Properties.argumentExpression)) {
+				if (msg.getNewValue() != null) {
+					basePart.setArgumentExpression((NamespacedProperty)msg.getNewValue());
+				} else {
+					basePart.setArgumentExpression(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+				}
+			}
+					// End of user code
+			
 			
 		}
 	}
@@ -189,7 +224,8 @@ public class PayloadFactoryArgumentPropertiesEditionComponent extends SinglePart
 			EsbPackage.eINSTANCE.getPayloadFactoryArgument_ArgumentType(),
 			EsbPackage.eINSTANCE.getPayloadFactoryArgument_ArgumentValue(),
 			EsbPackage.eINSTANCE.getPayloadFactoryArgument_Evaluator(),
-			EsbPackage.eINSTANCE.getPayloadFactoryArgument_Literal()		);
+			EsbPackage.eINSTANCE.getPayloadFactoryArgument_Literal(),
+			EsbPackage.eINSTANCE.getPayloadFactoryArgument_ArgumentExpression()		);
 		return new NotificationFilter[] {filter,};
 	}
 

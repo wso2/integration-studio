@@ -15,8 +15,15 @@ public class EEFPropertyViewUtil {
 
     public void clearElements(Composite[] propertiesGroups) {
         for (Composite propertiesGroup : propertiesGroups) {
-            hideEntry(propertiesGroup.getChildren(), false);
+        	hideEntry(propertiesGroup.getChildren(), false);
         }
+    }
+    
+    public void clearElement(Control control) {
+    	 if (control.getLayoutData() != null && control.getLayoutData() instanceof GridData) {
+             ((GridData) control.getLayoutData()).exclude = true;
+             control.setVisible(false);
+         }
     }
 
     public void hideEntry(Control controls[], boolean layout) {

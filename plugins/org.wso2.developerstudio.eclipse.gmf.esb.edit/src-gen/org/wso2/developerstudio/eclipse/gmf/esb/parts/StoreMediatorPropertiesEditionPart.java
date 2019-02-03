@@ -6,6 +6,8 @@ package org.wso2.developerstudio.eclipse.gmf.esb.parts;
 // Start of user code for imports
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.Enumerator;
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 
 
 // End of user code
@@ -121,6 +123,17 @@ public interface StoreMediatorPropertiesEditionPart {
 
 
 
+	// Start of user code for onStoreSequence specific getters and setters declaration
+    public RegistryKeyProperty getOnStoreSequence();
+
+    public void setOnStoreSequence(RegistryKeyProperty registryKeyProperty);
+	// End of user code
+    
+	// Start of user code for expression specific getters and setters declaration
+    public NamespacedProperty getExpression();
+
+    public void setExpression(NamespacedProperty nameSpacedProperty);
+	// End of user code
 
 	/**
 	 * Returns the internationalized title text.

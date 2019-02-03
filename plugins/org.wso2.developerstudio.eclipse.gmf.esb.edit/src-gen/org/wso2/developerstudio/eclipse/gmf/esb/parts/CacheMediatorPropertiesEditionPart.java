@@ -4,8 +4,8 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.parts;
 
 // Start of user code for imports
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.Enumerator;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 
 
 // End of user code
@@ -15,81 +15,6 @@ import org.eclipse.emf.common.util.Enumerator;
  * 
  */
 public interface CacheMediatorPropertiesEditionPart {
-
-	/**
-	 * @return the description
-	 * 
-	 */
-	public String getDescription();
-
-	/**
-	 * Defines a new description
-	 * @param newValue the new description to set
-	 * 
-	 */
-	public void setDescription(String newValue);
-
-
-	/**
-	 * @return the commentsList
-	 * 
-	 */
-	public EList getCommentsList();
-
-	/**
-	 * Defines a new commentsList
-	 * @param newValue the new commentsList to set
-	 * 
-	 */
-	public void setCommentsList(EList newValue);
-
-	/**
-	 * Add a value to the commentsList multivalued attribute.
-	 * @param newValue the value to add
-	 */
-	public void addToCommentsList(Object newValue);
-
-	/**
-	 * Remove a value to the commentsList multivalued attribute.
-	 * @param newValue the value to remove
-	 */
-	public void removeToCommentsList(Object newValue);
-
-
-	/**
-	 * @return the Reverse
-	 * 
-	 */
-	public Boolean getReverse();
-
-	/**
-	 * Defines a new Reverse
-	 * @param newValue the new Reverse to set
-	 * 
-	 */
-	public void setReverse(Boolean newValue);
-
-
-	/**
-	 * @return the cacheProtocolType
-	 * 
-	 */
-	public Enumerator getCacheProtocolType();
-
-	/**
-	 * Init the cacheProtocolType
-	 * @param input the viewer input
-	 * @param current the current value
-	 */
-	public void initCacheProtocolType(Object input, Enumerator current);
-
-	/**
-	 * Defines a new cacheProtocolType
-	 * @param newValue the new cacheProtocolType to set
-	 * 
-	 */
-	public void setCacheProtocolType(Enumerator newValue);
-
 
 	/**
 	 * @return the cacheType
@@ -110,20 +35,6 @@ public interface CacheMediatorPropertiesEditionPart {
 	 * 
 	 */
 	public void setCacheType(Enumerator newValue);
-
-
-	/**
-	 * @return the hashGenerator
-	 * 
-	 */
-	public String getHashGenerator();
-
-	/**
-	 * Defines a new hashGenerator
-	 * @param newValue the new hashGenerator to set
-	 * 
-	 */
-	public void setHashGenerator(String newValue);
 
 
 	/**
@@ -152,20 +63,6 @@ public interface CacheMediatorPropertiesEditionPart {
 	 * 
 	 */
 	public void setMaxMessageSize(String newValue);
-
-
-	/**
-	 * @return the cacheProtocolMethods
-	 * 
-	 */
-	public String getCacheProtocolMethods();
-
-	/**
-	 * Defines a new cacheProtocolMethods
-	 * @param newValue the new cacheProtocolMethods to set
-	 * 
-	 */
-	public void setCacheProtocolMethods(String newValue);
 
 
 	/**
@@ -201,6 +98,41 @@ public interface CacheMediatorPropertiesEditionPart {
 	 * 
 	 */
 	public void setSequenceType(Enumerator newValue);
+
+
+	/**
+	 * @return the cacheProtocolType
+	 * 
+	 */
+	public Enumerator getCacheProtocolType();
+
+	/**
+	 * Init the cacheProtocolType
+	 * @param input the viewer input
+	 * @param current the current value
+	 */
+	public void initCacheProtocolType(Object input, Enumerator current);
+
+	/**
+	 * Defines a new cacheProtocolType
+	 * @param newValue the new cacheProtocolType to set
+	 * 
+	 */
+	public void setCacheProtocolType(Enumerator newValue);
+
+
+	/**
+	 * @return the cacheProtocolMethods
+	 * 
+	 */
+	public String getCacheProtocolMethods();
+
+	/**
+	 * Defines a new cacheProtocolMethods
+	 * @param newValue the new cacheProtocolMethods to set
+	 * 
+	 */
+	public void setCacheProtocolMethods(String newValue);
 
 
 	/**
@@ -259,8 +191,43 @@ public interface CacheMediatorPropertiesEditionPart {
 	public void setIncludeAgeHeader(Boolean newValue);
 
 
+	/**
+	 * @return the hashGenerator
+	 * 
+	 */
+	public String getHashGenerator();
+
+	/**
+	 * Defines a new hashGenerator
+	 * @param newValue the new hashGenerator to set
+	 * 
+	 */
+	public void setHashGenerator(String newValue);
 
 
+	/**
+	 * @return the description
+	 * 
+	 */
+	public String getDescription();
+
+	/**
+	 * Defines a new description
+	 * @param newValue the new description to set
+	 * 
+	 */
+	public void setDescription(String newValue);
+
+
+
+
+	// Start of user code for sequenceKey specific getters and setters declaration
+	
+	public void setSequenceKey(RegistryKeyProperty registryKeyProperty);
+	
+	public RegistryKeyProperty getSequenceKey();
+	
+	// End of user code
 
 	/**
 	 * Returns the internationalized title text.

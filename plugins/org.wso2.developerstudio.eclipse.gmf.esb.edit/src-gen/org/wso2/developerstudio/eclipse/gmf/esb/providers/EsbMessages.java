@@ -524,6 +524,18 @@ public class EsbMessages extends NLS {
 	public static String CacheMediatorPropertiesEditionPart_PropertiesGroupLabel;
 
 	
+	public static String CacheMediatorPropertiesEditionPart_ImplementationGroupLabel;
+
+	
+	public static String CacheMediatorPropertiesEditionPart_OnCacheHitGroupLabel;
+
+	
+	public static String CacheMediatorPropertiesEditionPart_ProtocolGroupLabel;
+
+	
+	public static String CacheMediatorPropertiesEditionPart_MiscGroupLabel;
+
+	
 	public static String CacheMediatorInputConnectorPropertiesEditionPart_PropertiesGroupLabel;
 
 	
@@ -3802,6 +3814,9 @@ public class EsbMessages extends NLS {
 	public static String LogPropertyPropertiesEditionPart_PropertyValueLabel;
 
 	
+	public static String LogPropertyPropertiesEditionPart_PropertyExpressionLabel;
+
+	
 	public static String PublishEventMediatorPropertiesEditionPart_DescriptionLabel;
 
 	
@@ -4735,6 +4750,15 @@ public class EsbMessages extends NLS {
 	public static String IterateMediatorPropertiesEditionPart_SequenceNameLabel;
 
 	
+	public static String IterateMediatorPropertiesEditionPart_IterateExpressionLabel;
+
+	
+	public static String IterateMediatorPropertiesEditionPart_SequenceKeyLabel;
+
+	
+	public static String IterateMediatorPropertiesEditionPart_AttachPathLabel;
+
+	
 	public static String IterateMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;
 
 	
@@ -4783,22 +4807,7 @@ public class EsbMessages extends NLS {
 	public static String MediatorSequencePropertiesEditionPart_DescriptionLabel;
 
 	
-	public static String CacheMediatorPropertiesEditionPart_DescriptionLabel;
-
-	
-	public static String CacheMediatorPropertiesEditionPart_CommentsListLabel;
-
-	
-	public static String CacheMediatorPropertiesEditionPart_ReverseLabel;
-
-	
-	public static String CacheMediatorPropertiesEditionPart_CacheProtocolTypeLabel;
-
-	
 	public static String CacheMediatorPropertiesEditionPart_CacheTypeLabel;
-
-	
-	public static String CacheMediatorPropertiesEditionPart_HashGeneratorLabel;
 
 	
 	public static String CacheMediatorPropertiesEditionPart_CacheTimeoutLabel;
@@ -4807,13 +4816,19 @@ public class EsbMessages extends NLS {
 	public static String CacheMediatorPropertiesEditionPart_MaxMessageSizeLabel;
 
 	
-	public static String CacheMediatorPropertiesEditionPart_CacheProtocolMethodsLabel;
-
-	
 	public static String CacheMediatorPropertiesEditionPart_MaxEntryCountLabel;
 
 	
 	public static String CacheMediatorPropertiesEditionPart_SequenceTypeLabel;
+
+	
+	public static String CacheMediatorPropertiesEditionPart_SequenceKeyLabel;
+
+	
+	public static String CacheMediatorPropertiesEditionPart_CacheProtocolTypeLabel;
+
+	
+	public static String CacheMediatorPropertiesEditionPart_CacheProtocolMethodsLabel;
 
 	
 	public static String CacheMediatorPropertiesEditionPart_HeadersToExcludeInHashLabel;
@@ -4826,6 +4841,12 @@ public class EsbMessages extends NLS {
 
 	
 	public static String CacheMediatorPropertiesEditionPart_IncludeAgeHeaderLabel;
+
+	
+	public static String CacheMediatorPropertiesEditionPart_HashGeneratorLabel;
+
+	
+	public static String CacheMediatorPropertiesEditionPart_DescriptionLabel;
 
 	
 	public static String CacheMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;
@@ -5545,6 +5566,12 @@ public class EsbMessages extends NLS {
 	public static String StoreMediatorPropertiesEditionPart_SpecifyAsLabel;
 
 	
+	public static String StoreMediatorPropertiesEditionPart_OnStoreSequenceLabel;
+
+	
+	public static String StoreMediatorPropertiesEditionPart_ExpressionLabel;
+
+	
 	public static String StoreMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;
 
 	
@@ -5578,13 +5605,10 @@ public class EsbMessages extends NLS {
 	public static String MessageBuilderPropertiesEditionPart_FormatterClassLabel;
 
 	
-	public static String PayloadFactoryMediatorPropertiesEditionPart_DescriptionLabel;
+	public static String PayloadFactoryMediatorPropertiesEditionPart_PayloadFormatLabel;
 
 	
-	public static String PayloadFactoryMediatorPropertiesEditionPart_CommentsListLabel;
-
-	
-	public static String PayloadFactoryMediatorPropertiesEditionPart_ReverseLabel;
+	public static String PayloadFactoryMediatorPropertiesEditionPart_PayloadKeyLabel;
 
 	
 	public static String PayloadFactoryMediatorPropertiesEditionPart_PayloadLabel;
@@ -5596,7 +5620,7 @@ public class EsbMessages extends NLS {
 	public static String PayloadFactoryMediatorPropertiesEditionPart_MediaTypeLabel;
 
 	
-	public static String PayloadFactoryMediatorPropertiesEditionPart_PayloadFormatLabel;
+	public static String PayloadFactoryMediatorPropertiesEditionPart_DescriptionLabel;
 
 	
 	public static String PayloadFactoryMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;
@@ -5609,6 +5633,9 @@ public class EsbMessages extends NLS {
 
 	
 	public static String PayloadFactoryArgumentPropertiesEditionPart_ArgumentValueLabel;
+
+	
+	public static String PayloadFactoryArgumentPropertiesEditionPart_ArgumentExpressionLabel;
 
 	
 	public static String PayloadFactoryArgumentPropertiesEditionPart_EvaluatorLabel;
@@ -5644,13 +5671,7 @@ public class EsbMessages extends NLS {
 	public static String ConditionalRouterMediatorAdditionalOutputConnectorPropertiesEditionPart_CommentMediatorsLabel;
 
 	
-	public static String SendMediatorPropertiesEditionPart_DescriptionLabel;
-
-	
-	public static String SendMediatorPropertiesEditionPart_CommentsListLabel;
-
-	
-	public static String SendMediatorPropertiesEditionPart_ReverseLabel;
+	public static String SendMediatorPropertiesEditionPart_SkipSerializationLabel;
 
 	
 	public static String SendMediatorPropertiesEditionPart_EndPointLabel;
@@ -5659,10 +5680,16 @@ public class EsbMessages extends NLS {
 	public static String SendMediatorPropertiesEditionPart_ReceivingSequenceTypeLabel;
 
 	
-	public static String SendMediatorPropertiesEditionPart_SkipSerializationLabel;
+	public static String SendMediatorPropertiesEditionPart_BuildMessageBeforeSendingLabel;
 
 	
-	public static String SendMediatorPropertiesEditionPart_BuildMessageBeforeSendingLabel;
+	public static String SendMediatorPropertiesEditionPart_StaticReceivingSequenceLabel;
+
+	
+	public static String SendMediatorPropertiesEditionPart_DynamicReceivingSequenceLabel;
+
+	
+	public static String SendMediatorPropertiesEditionPart_DescriptionLabel;
 
 	
 	public static String SendMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;

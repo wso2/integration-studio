@@ -3002,7 +3002,7 @@ public class EsbViewsRepository {
 			public static String sequenceType = "esb::AggregateMediator::onComplete::sequenceType";
 			
 			// Start of user code for sequenceKey ElementEditor key
-			public static String sequenceKey = "esb::AggregateMediator::properties::sequenceKey";
+			public static String sequenceKey = "esb::IterateMediator::properties::sequenceKey";
 			// End of user code
 			
 	
@@ -5291,6 +5291,14 @@ public class EsbViewsRepository {
 			
 			
 			public static String specifyAs = "esb::StoreMediator::properties::SpecifyAs";
+			
+			// Start of user code for onStoreSequence ElementEditor key
+			public static String onStoreSequence = "esb::StoreMediator::properties::onStoreSequence";
+			// End of user code
+			
+			// Start of user code for expression ElementEditor key
+			public static String expression = "esb::StoreMediator::properties::expression";
+			// End of user code
 			
 	
 		}

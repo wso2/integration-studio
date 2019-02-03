@@ -3102,6 +3102,12 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v9afJnEei6boXzpRIfnA" name="SpecifyAs" views="_E7xJMPJnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//StoreMediator/SpecifyAs"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_ZC0yACYwEemzWpOUK2a0Iw" name="onStoreSequence" views="_hmWHsCYvEemzWpOUK2a0Iw">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//StoreMediator/onStoreSequence"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_fZCtMCYwEemzWpOUK2a0Iw" name="expression" views="_tIpGMCYvEemzWpOUK2a0Iw">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//StoreMediator/Expression"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//StoreMediator"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_E7v9avJnEei6boXzpRIfnA" name="StoreMediatorInputConnector" views="_E7xJMfJnEei6boXzpRIfnA">
@@ -9015,6 +9021,8 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xJMPJnEei6boXzpRIfnA" name="SpecifyAs">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
           </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_hmWHsCYvEemzWpOUK2a0Iw" name="onStoreSequence"/>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_tIpGMCYvEemzWpOUK2a0Iw" name="expression"/>
         </elements>
       </views>
       <views xmi:id="_E7xJMfJnEei6boXzpRIfnA" name="StoreMediatorInputConnector">

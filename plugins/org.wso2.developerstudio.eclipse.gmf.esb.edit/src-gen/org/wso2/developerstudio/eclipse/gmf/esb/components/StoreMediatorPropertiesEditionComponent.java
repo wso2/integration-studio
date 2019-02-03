@@ -38,9 +38,12 @@ import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.developerstudio.eclipse.gmf.esb.IterateMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.StoreMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.StoreMediatorSpecifyType;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.StoreMediatorPropertiesEditionPart;
 
@@ -102,12 +105,30 @@ public class StoreMediatorPropertiesEditionComponent extends SinglePartPropertie
 			if (isAccessible(EsbViewsRepository.StoreMediator.Properties.specifyAs)) {
 				basePart.initSpecifyAs(EEFUtils.choiceOfValues(storeMediator, EsbPackage.eINSTANCE.getStoreMediator_SpecifyAs()), storeMediator.getSpecifyAs());
 			}
+			// Start of user code  for onStoreSequence command update
+			if (isAccessible(EsbViewsRepository.StoreMediator.Properties.onStoreSequence)) {
+                basePart.setOnStoreSequence(storeMediator.getOnStoreSequence());
+            }
+			// End of user code
+			
+			// Start of user code  for expression command update
+			if (isAccessible(EsbViewsRepository.StoreMediator.Properties.expression)) {
+                basePart.setExpression(storeMediator.getExpression());
+            }
+			// End of user code
+			
 			// init filters
 			
 			
 			
 			
 			
+			
+			// Start of user code  for onStoreSequence filter update
+			// End of user code
+			
+			// Start of user code  for expression filter update
+			// End of user code
 			
 			// init values for referenced views
 			
@@ -116,6 +137,8 @@ public class StoreMediatorPropertiesEditionComponent extends SinglePartPropertie
 		}
 		setInitializing(false);
 	}
+
+
 
 
 
@@ -148,6 +171,12 @@ public class StoreMediatorPropertiesEditionComponent extends SinglePartPropertie
 		if (editorKey == EsbViewsRepository.StoreMediator.Properties.specifyAs) {
 			return EsbPackage.eINSTANCE.getStoreMediator_SpecifyAs();
 		}
+		if (editorKey == EsbViewsRepository.StoreMediator.Properties.onStoreSequence) {
+			return EsbPackage.eINSTANCE.getStoreMediator_OnStoreSequence();
+		}
+		if (editorKey == EsbViewsRepository.StoreMediator.Properties.expression) {
+			return EsbPackage.eINSTANCE.getStoreMediator_Expression();
+		}
 		return super.associatedFeature(editorKey);
 	}
 
@@ -178,6 +207,28 @@ public class StoreMediatorPropertiesEditionComponent extends SinglePartPropertie
 		}
 		if (EsbViewsRepository.StoreMediator.Properties.specifyAs == event.getAffectedEditor()) {
 			storeMediator.setSpecifyAs((StoreMediatorSpecifyType)event.getNewValue());
+		}
+		if (EsbViewsRepository.StoreMediator.Properties.onStoreSequence == event.getAffectedEditor()) {
+			// Start of user code for updateOnStoreSequence method body
+            if (event.getNewValue() != null) {
+                RegistryKeyProperty rkp = (RegistryKeyProperty) event.getNewValue();
+                storeMediator.setOnStoreSequence(rkp);
+            } else {
+                storeMediator.setOnStoreSequence(EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty());
+            }
+			// End of user code
+			
+		}
+		if (EsbViewsRepository.StoreMediator.Properties.expression == event.getAffectedEditor()) {
+			// Start of user code for updateExpression method body
+		    if (event.getNewValue() != null) {
+                NamespacedProperty nsp = (NamespacedProperty) event.getNewValue();
+                storeMediator.setExpression(nsp);
+            } else {
+                storeMediator.setExpression(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+            }
+			// End of user code
+			
 		}
 	}
 
@@ -227,7 +278,31 @@ public class StoreMediatorPropertiesEditionComponent extends SinglePartPropertie
 			}
 			if (EsbPackage.eINSTANCE.getStoreMediator_SpecifyAs().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EsbViewsRepository.StoreMediator.Properties.specifyAs))
 				basePart.setSpecifyAs((StoreMediatorSpecifyType)msg.getNewValue());
-			
+
+            // Start of user code for onStoreSequence live update
+            if (EsbPackage.eINSTANCE.getAbstractCommonTarget_EndpointKey().equals(msg.getFeature())
+                    && msg.getNotifier().equals(semanticObject) && basePart != null
+                    && isAccessible(EsbViewsRepository.StoreMediator.Properties.onStoreSequence)) {
+                if (msg.getNewValue() != null) {
+                    basePart.setOnStoreSequence((RegistryKeyProperty) msg.getNewValue());
+                } else {
+                    basePart.setOnStoreSequence(EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty());
+                }
+            }
+
+            // End of user code
+
+            // Start of user code for expression live update
+            if (EsbPackage.eINSTANCE.getStoreMediator_Expression().equals(msg.getFeature())
+                    && msg.getNotifier().equals(semanticObject) && basePart != null
+                    && isAccessible(EsbViewsRepository.StoreMediator.Properties.expression)) {
+                if (msg.getNewValue() != null) {
+                    basePart.setExpression((NamespacedProperty) msg.getNewValue());
+                } else {
+                    basePart.setExpression(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+                }
+            }
+            // End of user code
 			
 		}
 	}
@@ -245,7 +320,9 @@ public class StoreMediatorPropertiesEditionComponent extends SinglePartPropertie
 			EsbPackage.eINSTANCE.getMediator_Reverse(),
 			EsbPackage.eINSTANCE.getStoreMediator_MessageStore(),
 			EsbPackage.eINSTANCE.getStoreMediator_AvailableMessageStores(),
-			EsbPackage.eINSTANCE.getStoreMediator_SpecifyAs()		);
+			EsbPackage.eINSTANCE.getStoreMediator_SpecifyAs(),
+			EsbPackage.eINSTANCE.getStoreMediator_OnStoreSequence(),
+			EsbPackage.eINSTANCE.getStoreMediator_Expression()		);
 		return new NotificationFilter[] {filter,};
 	}
 

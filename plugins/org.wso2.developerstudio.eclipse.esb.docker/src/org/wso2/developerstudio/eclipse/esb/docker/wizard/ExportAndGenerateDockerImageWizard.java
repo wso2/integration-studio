@@ -47,6 +47,9 @@ import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.esb.docker.Activator;
 import org.wso2.developerstudio.eclipse.esb.docker.job.GenerateDockerImageJob;
+import org.wso2.developerstudio.eclipse.esb.docker.model.MicroIntegratorDockerModel;
+import org.wso2.developerstudio.eclipse.esb.docker.resources.DockerGenConstants;
+import org.wso2.developerstudio.eclipse.esb.docker.resources.ExportImageWizardConstants;
 import org.wso2.developerstudio.eclipse.distribution.project.model.DependencyData;
 import org.wso2.developerstudio.eclipse.esb.docker.wizard.CarExportDetailsWizardPage;
 import org.wso2.developerstudio.eclipse.distribution.project.ui.wizard.DistributionProjectExportWizardPage;
@@ -70,7 +73,6 @@ public class ExportAndGenerateDockerImageWizard extends Wizard implements IExpor
     private IProject selectedProject;
     private MavenProject parentPrj;
     private boolean initError = false;
-    private String deploymentFolderPath;
     private GenerateDockerImageJob dockerJob;
 
     private Map<String, DependencyData> projectList = new HashMap<String, DependencyData>();
@@ -78,29 +80,12 @@ public class ExportAndGenerateDockerImageWizard extends Wizard implements IExpor
     private Map<String, String> serverRoleList = new HashMap<String, String>();
     private ArtifactTypeMapping artifactTypeMapping = new ArtifactTypeMapping();
 
-    private static final String DIALOG_TITLE_TEXT = "WSO2 Platform Distribution - Generate Docker Image";
-    private static final String EMPTY_STRING = "";
-    private static final String MICRO_EI_DISTRIBUTION_REL_PATH = "runtime" + File.separator + "microesb";
-    private static final String MICRO_EI_HOME_REL_PATH = "wso2" + File.separator + "micro-integrator";
-    private static final String DEPLOYMENT_DIR_REL_PATH = "repository" + File.separator + "deployment" + File.separator
-            + "server" + File.separator + "carbonapps";
-    private static final String EI_TOOLING_HOME_MACOS = "/Applications/DeveloperStudio.app/Contents/MacOS";
-    private static final String DOCKER_IMAGE_TEMPORARY_DIR_NAME = "dockerTempDir";
-    private static final String EI_DISTRIBUTION_NAME = "wso2ei-6.4.0";
-    private static final String OS_TYPE_DARWIN = "darwin";
-    private static final String OS_TYPE_MAC = "mac";
-    private static final String SYSTEM_PROPERTY_TYPE_GENERIC = "generic";
-    private static final String OS_NAME = "os.name";
-
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
     @Override
-    @SuppressWarnings("unchecked")
     public void init(IWorkbench workbench, IStructuredSelection selection) {
 
         try {
-            // deploymentFolderPath = MicroIntegratorInstance.getInstance().getServerHome() + File.separator +
-            // DEPLOYMENT_DIR_REL_PATH;
             detailsPage = new CarExportDetailsWizardPage(workbench, selection);
             selectedProject = getSelectedProject(selection);
             pomFileRes = selectedProject.getFile("pom.xml");
@@ -132,75 +117,17 @@ public class ExportAndGenerateDockerImageWizard extends Wizard implements IExpor
             mainPage.setMissingDependencyList(
                     (Map<String, Dependency>) ((HashMap<String, Dependency>) mainPage.getDependencyList()).clone());
             mainPage.setServerRoleList(serverRoleList);
+
             detailsPage.setName(parentPrj.getModel().getArtifactId());
             detailsPage.setVersion(parentPrj.getModel().getVersion());
 
         } catch (Exception e) {
             initError = true;
             Display display = PlatformUI.getWorkbench().getDisplay();
+
             Shell shell = display.getActiveShell();
-            openMessageBox(shell, DIALOG_TITLE_TEXT, "Please select a valid carbon application project",
-                    SWT.ICON_INFORMATION);
-        }
-    }
-
-    public void savePOM() throws Exception {
-        writeProperties();
-        parentPrj.setDependencies(new ArrayList<Dependency>(mainPage.getDependencyList().values()));
-        MavenUtils.saveMavenProject(parentPrj, pomFile);
-        pomFileRes.getProject().refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
-    }
-
-    private void writeProperties() {
-        Properties properties = parentPrj.getModel().getProperties();
-        identifyNonProjectProperties(properties);
-        for (Dependency dependency : mainPage.getDependencyList().values()) {
-            String artifactInfo = DistProjectUtils.getArtifactInfoAsString(dependency);
-            if (mainPage.getServerRoleList().containsKey(artifactInfo)) {
-                properties.put(artifactInfo, serverRoleList.get(artifactInfo));
-            } else {
-                properties.put(artifactInfo, "capp/ApplicationServer");
-            }
-        }
-        properties.put("artifact.types", artifactTypeMapping.getArtifactTypes());
-        parentPrj.getModel().setProperties(properties);
-    }
-
-    private Properties identifyNonProjectProperties(Properties properties) {
-        Map<String, DependencyData> dependencies = projectList;
-
-        for (Iterator iterator = dependencies.values().iterator(); iterator.hasNext();) {
-            DependencyData dependency = (DependencyData) iterator.next();
-            String artifactInfoAsString = DistProjectUtils.getArtifactInfoAsString(dependency.getDependency());
-            if (properties.containsKey(artifactInfoAsString)) {
-                properties.remove(artifactInfoAsString);
-            }
-        }
-
-        // Removing the artifact.type
-        properties.remove("artifact.types");
-
-        return properties;
-    }
-
-    public static IProject getSelectedProject(Object obj) throws Exception {
-        if (obj == null) {
-            return null;
-        }
-        if (obj instanceof IResource) {
-            return ((IResource) obj).getProject();
-        } else if (obj instanceof IStructuredSelection) {
-            return getSelectedProject(((IStructuredSelection) obj).getFirstElement());
-        }
-
-        return null;
-    }
-
-    public void addPages() {
-        if (!initError) {
-            addPage(detailsPage);
-            addPage(mainPage);
-            super.addPages();
+            openMessageBox(shell, ExportImageWizardConstants.DIALOG_TITLE_TEXT,
+                    ExportImageWizardConstants.SELECT_VALID_CARBON_APP_MESSAGE, SWT.ICON_INFORMATION);
         }
     }
 
@@ -216,36 +143,59 @@ public class ExportAndGenerateDockerImageWizard extends Wizard implements IExpor
     @Override
     public boolean performFinish() {
 
-        String finalFileName = String.format("%s_%s.car", detailsPage.getName().replaceAll(".car$", EMPTY_STRING),
+        String finalFileName = String.format(ExportImageWizardConstants.CAR_FILE_NAME_PLACEHOLDER, detailsPage.getName()
+                .replaceAll(ExportImageWizardConstants.CAR_FILE_SUFFIX, ExportImageWizardConstants.EMPTY_STRING),
                 detailsPage.getVersion());
 
-        String dockerDirPath = getWorkingDirectory() + File.separator + DOCKER_IMAGE_TEMPORARY_DIR_NAME;
-        String eiDistributionSourcePath = getWorkingDirectory() + File.separator + MICRO_EI_DISTRIBUTION_REL_PATH;
-        String eiDistrubitionDestinationPath = getWorkingDirectory() + File.separator + DOCKER_IMAGE_TEMPORARY_DIR_NAME
-                + File.separator + EI_DISTRIBUTION_NAME;
-        String eiHomePath = eiDistrubitionDestinationPath + File.separator + MICRO_EI_HOME_REL_PATH;
-        String deploymentPath = eiHomePath + File.separator + DEPLOYMENT_DIR_REL_PATH;
+        String dockerDirPath = getWorkingDirectory() + File.separator
+                + ExportImageWizardConstants.DOCKER_IMAGE_TEMPORARY_DIR_NAME;
+        String eiDistributionSourcePath = getWorkingDirectory() + File.separator
+                + ExportImageWizardConstants.MICRO_EI_DISTRIBUTION_REL_PATH;
+        String eiDistrubitionDestinationPath = getWorkingDirectory() + File.separator
+                + ExportImageWizardConstants.DOCKER_IMAGE_TEMPORARY_DIR_NAME + File.separator
+                + ExportImageWizardConstants.EI_DISTRIBUTION_NAME;
+        String eiHomePath = eiDistrubitionDestinationPath + File.separator
+                + ExportImageWizardConstants.MICRO_EI_HOME_REL_PATH;
+        String deploymentPath = eiHomePath + File.separator + ExportImageWizardConstants.DEPLOYMENT_DIR_REL_PATH;
 
         try {
-            File destFileName = new File(dockerDirPath, finalFileName);
+            File dockerDir = new File(dockerDirPath);
+
+            if (dockerDir.exists()) {
+                // Clear the temporary docker directory if exists
+                org.apache.commons.io.FileUtils.cleanDirectory(new File(dockerDirPath));
+            } else {
+                // Create temporary docker directory
+                FileUtils.createDirectory(dockerDirPath);
+            }
 
             if (mainPage.isPageDirty() || detailsPage.isPageDirty()) {
                 savePOM();
             }
 
-            FileUtils.createDirectory(dockerDirPath);
-
+            // Copy the exported car file to the docker directory
+            File destFileName = new File(dockerDirPath, finalFileName);
             IResource carbonArchive = ExportUtil.buildCAppProject(selectedProject);
             FileUtils.copy(carbonArchive.getLocation().toFile(), destFileName);
 
-            dockerJob = new GenerateDockerImageJob(dockerDirPath, eiDistributionSourcePath, eiDistrubitionDestinationPath, eiHomePath,
-                    deploymentPath, detailsPage.getExportPath(), this, destFileName);
+            // Create a docker model
+            MicroIntegratorDockerModel dockerModel = new MicroIntegratorDockerModel();
+            dockerModel.setName(detailsPage.getImageName());
+            dockerModel.setTag(detailsPage.getImageTag());
+            dockerModel.setCommandArg(DockerGenConstants.ImageParamDefaults.EI_START_COMMAND);
+            dockerModel.setPorts(DockerGenConstants.ImageParamDefaults.ports);
+            dockerModel.setServerHome(eiDistrubitionDestinationPath);
+
+            // Create and schedule a background job to generate the docker image
+            dockerJob = new GenerateDockerImageJob(dockerDirPath, eiDistributionSourcePath,
+                    eiDistrubitionDestinationPath, eiHomePath, deploymentPath, detailsPage.getExportPath(),
+                    destFileName, dockerModel);
             dockerJob.schedule();
 
         } catch (Exception e) {
-            log.error("An error occured while creating the carbon archive file", e);
-            openMessageBox(getShell(), DIALOG_TITLE_TEXT,
-                    "An error occured while creating the carbon archive file. For more details view the log.\n",
+            log.error(ExportImageWizardConstants.ERROR_CREATING_CAR_FILE_MSG, e);
+            openMessageBox(getShell(), ExportImageWizardConstants.DIALOG_TITLE_TEXT,
+                    ExportImageWizardConstants.ERROR_CREATING_CAR_FILE_MSG + " For more details view the log.\n",
                     SWT.ICON_ERROR);
         }
 
@@ -254,40 +204,112 @@ public class ExportAndGenerateDockerImageWizard extends Wizard implements IExpor
         return true;
     }
 
+    public static IProject getSelectedProject(Object obj) throws Exception {
+        if (obj == null) {
+            return null;
+        }
+
+        if (obj instanceof IResource) {
+            return ((IResource) obj).getProject();
+        } else if (obj instanceof IStructuredSelection) {
+            return getSelectedProject(((IStructuredSelection) obj).getFirstElement());
+        }
+
+        return null;
+    }
+
+    private void savePOM() throws Exception {
+        writeProperties();
+        parentPrj.setDependencies(new ArrayList<Dependency>(mainPage.getDependencyList().values()));
+        MavenUtils.saveMavenProject(parentPrj, pomFile);
+        pomFileRes.getProject().refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
+    }
+
+    private void writeProperties() {
+        Properties properties = parentPrj.getModel().getProperties();
+        identifyNonProjectProperties(properties);
+        for (Dependency dependency : mainPage.getDependencyList().values()) {
+            String artifactInfo = DistProjectUtils.getArtifactInfoAsString(dependency);
+
+            if (mainPage.getServerRoleList().containsKey(artifactInfo)) {
+                properties.put(artifactInfo, serverRoleList.get(artifactInfo));
+            } else {
+                properties.put(artifactInfo, "capp/ApplicationServer");
+            }
+        }
+
+        properties.put("artifact.types", artifactTypeMapping.getArtifactTypes());
+        parentPrj.getModel().setProperties(properties);
+    }
+
+    private Properties identifyNonProjectProperties(Properties properties) {
+        Map<String, DependencyData> dependencies = projectList;
+
+        for (Iterator<DependencyData> iterator = dependencies.values().iterator(); iterator.hasNext();) {
+            DependencyData dependency = (DependencyData) iterator.next();
+            String artifactInfoAsString = DistProjectUtils.getArtifactInfoAsString(dependency.getDependency());
+
+            if (properties.containsKey(artifactInfoAsString)) {
+                properties.remove(artifactInfoAsString);
+            }
+        }
+
+        // Removing the artifact.type
+        properties.remove("artifact.types");
+
+        return properties;
+    }
+
+    public void addPages() {
+        if (!initError) {
+            addPage(detailsPage);
+            addPage(mainPage);
+            super.addPages();
+        }
+    }
+
     private void setSessionProperty() {
         try {
-            detailsPage.getSelectedProject().setSessionProperty(
-                    new QualifiedName(EMPTY_STRING, detailsPage.getSelectedProject().getName()),
-                    detailsPage.getTxtExportPathText().getText());
+            detailsPage.getSelectedProject()
+                    .setSessionProperty(
+                            new QualifiedName(ExportImageWizardConstants.EMPTY_STRING,
+                                    detailsPage.getSelectedProject().getName()),
+                            detailsPage.getTxtExportPathText().getText());
         } catch (CoreException e) {
             log.error("Error geting session properties", e);
         }
     }
 
-    protected int openMessageBox(Shell shell, String title, String message, int style) {
+    private int openMessageBox(Shell shell, String title, String message, int style) {
         MessageBox exportMsg = new MessageBox(shell, style);
         exportMsg.setText(title);
         exportMsg.setMessage(message);
+
         return exportMsg.open();
     }
 
     private String getWorkingDirectory() {
         String workingDirectory = null;
-        String OS = System.getProperty(OS_NAME, SYSTEM_PROPERTY_TYPE_GENERIC).toLowerCase(Locale.ENGLISH);
-        if ((OS.indexOf(OS_TYPE_MAC) >= 0) || (OS.indexOf(OS_TYPE_DARWIN) >= 0)) {
-            String eiToolingHomeForMac = EI_TOOLING_HOME_MACOS;
+        String OS = System.getProperty(ExportImageWizardConstants.OS_NAME,
+                ExportImageWizardConstants.SYSTEM_PROPERTY_TYPE_GENERIC).toLowerCase(Locale.ENGLISH);
+
+        if ((OS.indexOf(ExportImageWizardConstants.OS_TYPE_MAC) >= 0)
+                || (OS.indexOf(ExportImageWizardConstants.OS_TYPE_DARWIN) >= 0)) {
+            String eiToolingHomeForMac = ExportImageWizardConstants.EI_TOOLING_HOME_MACOS;
             File macOSEIToolingAppFile = new File(eiToolingHomeForMac);
+
             if (macOSEIToolingAppFile.exists()) {
                 workingDirectory = eiToolingHomeForMac;
             } else {
-                java.nio.file.Path path = Paths.get(EMPTY_STRING);
+                java.nio.file.Path path = Paths.get(ExportImageWizardConstants.EMPTY_STRING);
                 workingDirectory = (path).toAbsolutePath().toString();
             }
 
         } else {
-            java.nio.file.Path path = Paths.get(EMPTY_STRING);
+            java.nio.file.Path path = Paths.get(ExportImageWizardConstants.EMPTY_STRING);
             workingDirectory = (path).toAbsolutePath().toString();
         }
+
         return workingDirectory;
     }
 

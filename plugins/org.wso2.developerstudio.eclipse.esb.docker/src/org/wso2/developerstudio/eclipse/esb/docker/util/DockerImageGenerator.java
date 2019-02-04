@@ -18,13 +18,22 @@
 
 package org.wso2.developerstudio.eclipse.esb.docker.util;
 
+import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.nio.file.Paths;
 import java.util.concurrent.atomic.AtomicReference;
 
 import javax.ws.rs.ext.RuntimeDelegate;
 
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.MessageBox;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.PlatformUI;
 import org.glassfish.jersey.internal.RuntimeDelegateImpl;
 import org.wso2.developerstudio.eclipse.esb.docker.Activator;
 import org.wso2.developerstudio.eclipse.esb.docker.model.MicroIntegratorDockerModel;
@@ -38,28 +47,38 @@ import com.spotify.docker.client.ProgressHandler;
 import com.spotify.docker.client.exceptions.DockerException;
 import com.spotify.docker.client.messages.ProgressMessage;
 
-
+/**
+ * This class contains the Docker image generation logic.
+ *
+ */
 public class DockerImageGenerator {
 
     private MicroIntegratorDockerModel dockerModel;
-    // private DockerClient dockerClient;
 
+    private static final String FILE_POSTFIX_TAR = ".tar";
+    private static final String SUCCESS_MESSAGE = "OK";
     private static final String STRING_SPACE = " ";
+    private static final String EMPTY_STRING = "";
 
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
     public DockerImageGenerator(MicroIntegratorDockerModel dockerModel) {
-        init();
+        // Setting the runtime delegate
+        RuntimeDelegate.setInstance(new RuntimeDelegateImpl());
+
         this.dockerModel = dockerModel;
+
+        // Setting the Docker certificate path if available
         if (dockerModel.getDockerCertPath() != null && !"".equals(dockerModel.getDockerCertPath())) {
             System.setProperty("docker.cert.path", dockerModel.getDockerCertPath());
         }
     }
 
-    private void init() {
-        // createDockerClient();
-    }
-
+    /**
+     * Generates the Dockerfile content.
+     * 
+     * @return Dockerfile content as a string.
+     */
     public String generateDockerFileContent() {
         String dockerBase = DockerGenConstants.ImageParamDefaults.DOCKER_FILE_HEADING + "\n\n"
                 + DockerGenConstants.DockerFileCommands.FROM + STRING_SPACE + dockerModel.getBaseImage() + "\n"
@@ -67,6 +86,7 @@ public class DockerImageGenerator {
                 + DockerGenConstants.ImageParamDefaults.DOCKER_FILE_MAINTAINERS + "\n\n";
 
         StringBuilder stringBuilder = new StringBuilder(dockerBase);
+
         dockerModel.getExternalFiles().forEach(file -> {
             // Extract the source filename relative to docker folder.
             String sourceFileName = String.valueOf(Paths.get(file.getSource()).getFileName());
@@ -96,59 +116,141 @@ public class DockerImageGenerator {
         return stringBuilder.toString();
     }
 
-    public void generateDockerImage(String outputDir) throws IOException {
+    /**
+     * Generates the Docker image and bundles into a given location as a tarball.
+     * 
+     * @param dockerDirectory Directory which contains the Dockerfile.
+     * @param outputDir Destination directory.
+     * @throws IOException I/O Exception.
+     */
+    public void generateDockerImage(String dockerDirectory, String outputDir) throws IOException {
         // Write docker file
         String dockerFileContent = generateDockerFileContent();
         DockerGeneratorUtils.getInstance().writeToFile(dockerFileContent,
-                outputDir + File.separator + DockerGenConstants.ImageParamDefaults.DOCKER_FILE_NAME);
-        
+                dockerDirectory + File.separator + DockerGenConstants.ImageParamDefaults.DOCKER_FILE_NAME);
+
         try {
-            buildImage(dockerModel, outputDir);
-        } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            buildImage(dockerModel, dockerDirectory, outputDir);
+        } catch (InterruptedException | DockerException e) {
+            showMessageBox(DockerGenConstants.ErrorMessages.DOCKER_IMAGE_CREATION_FAILED_TITLE,
+                    DockerGenConstants.ErrorMessages.DOCKER_IMAGE_CREATION_FAILED_MSG, SWT.ICON_ERROR);
         }
 
     }
 
-    public void buildImage(MicroIntegratorDockerModel dockerModel, String dockerDir) throws InterruptedException, IOException {
+    /**
+     * Builds the Docker image based on a given Docker model.
+     * 
+     * @param dockerModel The docker model instance.
+     * @param dockerDir Directory containing the Dockerfile.
+     * @param outputDirectory Destination directory.
+     * 
+     * @throws InterruptedException Thread Interrupted Exception.
+     * @throws IOException I/O Exception.
+     * @throws DockerException Docker Exception.
+     */
+    private void buildImage(MicroIntegratorDockerModel dockerModel, String dockerDir, String outputDirectory)
+            throws InterruptedException, IOException, DockerException {
 
-        RuntimeDelegate.setInstance(new RuntimeDelegateImpl());
+        // Creating the docker client instance
+        DockerClient docker = DefaultDockerClient.builder().uri(dockerModel.getDockerHost()).build();
         
-        DockerClient docker = DefaultDockerClient.builder().uri("unix:///var/run/docker.sock").build();
-        System.out.println("#########################");
-        
-//        final DockerClient docker = DefaultDockerClient.fromEnv().build();
-
-        String path = "/Applications/Eclipse.app/Contents/MacOS/dockerTempDir";
-        
-
-        final AtomicReference<String> imageIdFromMessage = new AtomicReference<>();
-
         try {
-            final String returnedImageId = docker.build(
-                    Paths.get(path), "dileesha", new ProgressHandler() {
-                        @Override
-                        public void progress(ProgressMessage message) throws DockerException {
-                            final String imageId = message.buildImageId();
-                            if (imageId != null) {
-                                imageIdFromMessage.set(imageId);
-                            }
-                        }
-                    });
+            // Check if the docker daemon is running
             final String pingResponse = docker.ping();
-            
-            System.out.println("############ : " + returnedImageId);
         } catch (DockerException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+            String msg = DockerGenConstants.ErrorMessages.DOCKER_CONNECTION_FAIL_MSG;
+            log.error(msg, e);
+            showMessageBox(DockerGenConstants.ErrorMessages.DOCKER_IMAGE_CREATION_FAILED_TITLE, msg, SWT.ICON_ERROR);
+            
+            return;
         }
+
+        // Atomic reference to store the generated docker image ID
+        final AtomicReference<String> imageIdFromMessage = new AtomicReference<>();
+        String returnedImageId = EMPTY_STRING;
+
+        String imageNameWithTag = dockerModel.getName() + DockerGenConstants.ImageParamDefaults.TAG_SEPARATOR
+                + dockerModel.getTag();
+
+        try {
+            // build the image
+            returnedImageId = docker.build(Paths.get(dockerDir), imageNameWithTag, new ProgressHandler() {
+                @Override
+                public void progress(ProgressMessage message) throws DockerException {
+                    final String imageId = message.buildImageId();
+
+                    // Image creation successful
+                    if (imageId != null) {
+                        log.info(DockerGenConstants.SuccessMessages.DOCKER_IMAGE_GEN_SUCCESS_MESSAGE + imageId);
+                        imageIdFromMessage.set(imageId);
+                    }
+
+                }
+            });
+        } catch (DockerException e) {
+            String msg = DockerGenConstants.ErrorMessages.DOCKER_IMAGE_CREATION_FAILED_TITLE;
+            log.info(msg, e);
+            throw new DockerException(msg, e);
+        }
+
+        final File destinationDirectory = new File(outputDirectory);
+        String tarFileName = dockerModel.getName() + DockerGenConstants.ImageParamDefaults.HYPHEN_SEPARATOR
+                + dockerModel.getTag();
+        final File imageFile = new File(destinationDirectory, tarFileName + FILE_POSTFIX_TAR);
+
+        imageFile.createNewFile();
+        imageFile.deleteOnExit();
+        final byte[] buffer = new byte[2048];
+        int read;
+
+        try (OutputStream imageOutput = new BufferedOutputStream(new FileOutputStream(imageFile))) {
+            // pull the image from the local registry and write to a file
+            try (InputStream imageInput = docker.save(imageNameWithTag)) {
+                while ((read = imageInput.read(buffer)) > -1) {
+                    imageOutput.write(buffer, 0, read);
+                }
+
+                showMessageBox(DockerGenConstants.SuccessMessages.SUCCESSFUL_TITLE,
+                        DockerGenConstants.SuccessMessages.DOCKER_IMAGE_GEN_SUCCESS_MESSAGE + returnedImageId,
+                        SWT.ICON_INFORMATION);
+
+            } catch (DockerException e) {
+                log.error(DockerGenConstants.ErrorMessages.DOCKER_IMAGE_FILE_CREATION_FAIL_TITLE, e);
+
+                showMessageBox(DockerGenConstants.ErrorMessages.DOCKER_IMAGE_CREATION_FAILED_TITLE,
+                        DockerGenConstants.ErrorMessages.DOCKER_IMAGE_FILE_CREATION_FAIL_TITLE, SWT.ICON_ERROR);
+            }
+        }
+
     }
 
-    private void createDockerClient() {
-        // Create Docker client
-//        dockerClient = DefaultDockerClient.builder().uri(dockerModel.getDockerHost()).build();
+    private void showMessageBox(String title, String message, int style) {
+
+        new Thread(new Runnable() {
+            public void run() {
+                Display.getDefault().asyncExec(new Runnable() {
+                    public void run() {
+                        Display display = PlatformUI.getWorkbench().getDisplay();
+                        Shell shell = display.getActiveShell();
+
+                        MessageBox exportMsg = new MessageBox(shell, style);
+                        exportMsg.setText(title);
+                        exportMsg.setMessage(message);
+
+                        exportMsg.open();
+                    }
+                });
+            }
+        }).start();
+    }
+
+    public MicroIntegratorDockerModel getDockerModel() {
+        return dockerModel;
+    }
+
+    public void setDockerModel(MicroIntegratorDockerModel dockerModel) {
+        this.dockerModel = dockerModel;
     }
 
 }

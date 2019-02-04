@@ -44,25 +44,35 @@ import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 public class CarExportDetailsWizardPage extends WizardPage {
-    
+
     private static final String BROWSE_LABEL_TEXT = "Browse";
     private static final String EXPORT_DESTINATION_LABEL_TEXT = "Export Destination";
-    private static final String FILE_VERSION_LABEL_TEXT = "Version";
+    private static final String FILE_VERSION_LABEL_TEXT = "Application version";
     private static final String FILE_NAME_LABEL_TEXT = "Name of the application";
+    private static final String DOCKER_IMAGE_NAME_LABEL_TEXT = "Name of the Docker Image";
+    private static final String DOCKER_IMAGE_TAG_LABEL_TEXT = "Docker Image Tag";
     private static final String DIALOG_TITLE = "WSO2 Platform Distribution - Generate Docker Image";
     private static final String EMPTY_STRING = "";
-    
+
     private Text txtExportPath;
     private Text txtName;
     private Text txtVersion;
+    private Text txtImageName;
+    private Text txtImageTag;
+    
     private String name = EMPTY_STRING;
     private String version = EMPTY_STRING;
+    private String imageName = EMPTY_STRING;
+    private String imageTag = EMPTY_STRING;
     private String initialName = EMPTY_STRING;
     private String initialVersion = EMPTY_STRING;
+    private String initialImageName = EMPTY_STRING;
+    private String initialImageTag = EMPTY_STRING;
     private String exportPath = EMPTY_STRING;
+    
     private IProject selectedProject;
     private boolean isPageDirty = false;
-    
+
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
     protected CarExportDetailsWizardPage() {
@@ -73,7 +83,7 @@ public class CarExportDetailsWizardPage extends WizardPage {
     protected CarExportDetailsWizardPage(IWorkbench wb, IStructuredSelection selection) {
         super(DIALOG_TITLE);
         setTitle(DIALOG_TITLE);
-        
+
         try {
             IProject project = getProject(selection);
             if (project != null) {
@@ -86,22 +96,6 @@ public class CarExportDetailsWizardPage extends WizardPage {
         } catch (Exception e) {
             log.error("Error reading project", e);
         }
-    }
-
-    public void setName(String carName) {
-        this.name = carName;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setVersion(String version) {
-        this.version = version;
-    }
-
-    public String getVersion() {
-        return version;
     }
 
     public void createControl(Composite parent) {
@@ -122,14 +116,14 @@ public class CarExportDetailsWizardPage extends WizardPage {
         txtName.setLayoutData(txtNameGridData);
         initialName = getName();
         txtName.setText(initialName);
-        
+
         txtName.addModifyListener(new ModifyListener() {
 
             public void modifyText(ModifyEvent evt) {
                 setName(txtName.getText());
                 validate();
             }
-            
+
         });
 
         Label lblVersion = new Label(container, SWT.NONE);
@@ -141,14 +135,58 @@ public class CarExportDetailsWizardPage extends WizardPage {
         initialVersion = getVersion();
         txtVersion.setText(initialVersion);
         txtVersion.setLayoutData(txtVersionGridData);
-        
+
         txtVersion.addModifyListener(new ModifyListener() {
 
             public void modifyText(ModifyEvent evt) {
                 setVersion(txtVersion.getText());
                 validate();
             }
-            
+
+        });
+
+        Label lblImageName = new Label(container, SWT.NONE);
+        GridData lblImageNameGridData = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1);
+        lblImageNameGridData.widthHint = 170;
+        lblImageName.setLayoutData(lblImageNameGridData);
+        lblImageName.setText(DOCKER_IMAGE_NAME_LABEL_TEXT);
+
+        txtImageName = new Text(container, SWT.BORDER);
+        GridData txtImageNameGridData = new GridData(SWT.LEFT, SWT.CENTER, true, false, 2, 1);
+        txtImageNameGridData.widthHint = 253;
+        txtImageName.setLayoutData(txtImageNameGridData);
+        initialImageName = getImageName();
+        txtImageName.setText(initialImageName);
+
+        txtImageName.addModifyListener(new ModifyListener() {
+
+            public void modifyText(ModifyEvent evt) {
+                setImageName(txtImageName.getText());
+                validate();
+            }
+
+        });
+
+        Label lblImageTag = new Label(container, SWT.NONE);
+        GridData lblImageTagGridData = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1);
+        lblImageTagGridData.widthHint = 170;
+        lblImageTag.setLayoutData(lblImageTagGridData);
+        lblImageTag.setText(DOCKER_IMAGE_TAG_LABEL_TEXT);
+
+        txtImageTag = new Text(container, SWT.BORDER);
+        GridData txtImageTagGridData = new GridData(SWT.LEFT, SWT.CENTER, true, false, 2, 1);
+        txtImageTagGridData.widthHint = 253;
+        txtImageTag.setLayoutData(txtImageTagGridData);
+        initialImageTag = getImageTag();
+        txtImageTag.setText(initialImageTag);
+
+        txtImageTag.addModifyListener(new ModifyListener() {
+
+            public void modifyText(ModifyEvent evt) {
+                setImageTag(txtImageTag.getText());
+                validate();
+            }
+
         });
 
         Label lblExportDestination = new Label(container, SWT.NONE);
@@ -158,15 +196,16 @@ public class CarExportDetailsWizardPage extends WizardPage {
         GridData txtExportPathGridData = new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1);
         txtExportPathGridData.widthHint = 499;
         txtExportPath.setLayoutData(txtExportPathGridData);
-        
+
         txtExportPath.addModifyListener(new ModifyListener() {
 
             public void modifyText(ModifyEvent evt) {
                 setExportPath(txtExportPath.getText());
                 validate();
             }
+            
         });
-        
+
         if (exportPath != null) {
             txtExportPath.setText(exportPath);
         } else {
@@ -175,7 +214,7 @@ public class CarExportDetailsWizardPage extends WizardPage {
 
         Button btnBrowse = new Button(container, SWT.NONE);
         btnBrowse.setText(BROWSE_LABEL_TEXT);
-        
+
         btnBrowse.addSelectionListener(new SelectionAdapter() {
 
             public void widgetSelected(SelectionEvent e) {
@@ -186,22 +225,36 @@ public class CarExportDetailsWizardPage extends WizardPage {
                 }
                 validate();
             }
-            
+
         });
     }
 
     private void validate() {
-        if ((getName() == null || getName().equals(EMPTY_STRING)) || getVersion() == null || 
-                getVersion().equals(EMPTY_STRING)) {
-            setErrorMessage("Please specify a name and version to to .car file.");
+        if ((getName() == null || getName().equals(EMPTY_STRING)) || getVersion() == null
+                || getVersion().equals(EMPTY_STRING)) {
+            setErrorMessage("Please specify a name and version to .car file.");
             setPageComplete(false);
             return;
+        } else if (getImageName() == null || getImageName().equals(EMPTY_STRING)) {
+            setErrorMessage("Please specify an image name.");
+            setPageComplete(false);
+            return;
+        } else if (!getImageName().matches("[a-zA-Z0-9][a-zA-Z0-9_.-]+")) {
+            setErrorMessage("The image name format is invalid.");
+            setPageComplete(false);
+            return;
+        } else if (getImageTag() != null && !getImageTag().equalsIgnoreCase(EMPTY_STRING)) {
+            if (!getImageTag().matches("[\\w][\\w.-]{0,127}")) {
+                setErrorMessage("The image tag is invalid.");
+                setPageComplete(false);
+                return;
+            }
         } else if (!getName().matches("[_a-zA-Z0-9\\-\\.]+")) {
             setErrorMessage("Could not create CAR files with special characters");
             setPageComplete(false);
             return;
         } else if ((getExportPath() == null || getExportPath().equals(EMPTY_STRING))) {
-            setErrorMessage("Please specify a export destination");
+            setErrorMessage("Please specify the docker image export destination");
             setPageComplete(false);
             return;
         } else {
@@ -228,7 +281,7 @@ public class CarExportDetailsWizardPage extends WizardPage {
                 return;
             }
         }
-        
+
         setPageDirtyState();
         setErrorMessage(null);
         setPageComplete(true);
@@ -250,13 +303,13 @@ public class CarExportDetailsWizardPage extends WizardPage {
         if (obj == null) {
             return null;
         }
-        
+
         if (obj instanceof IResource) {
             return ((IResource) obj).getProject();
         } else if (obj instanceof IStructuredSelection) {
             return getProject(((IStructuredSelection) obj).getFirstElement());
         }
-        
+
         return null;
     }
 
@@ -278,5 +331,37 @@ public class CarExportDetailsWizardPage extends WizardPage {
 
     public Text getTxtExportPathText() {
         return txtExportPath;
+    }
+    
+    public void setName(String carName) {
+        this.name = carName;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
+    }
+
+    public String getVersion() {
+        return version;
+    }
+
+    public String getImageName() {
+        return imageName;
+    }
+
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
+    }
+
+    public String getImageTag() {
+        return imageTag;
+    }
+
+    public void setImageTag(String imageTag) {
+        this.imageTag = imageTag;
     }
 }

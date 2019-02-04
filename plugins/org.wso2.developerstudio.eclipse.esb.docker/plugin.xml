@@ -18,22 +18,21 @@
 
 <?eclipse version="3.4"?>
 <plugin>
-       <extension point="org.eclipse.ui.popupMenus">
-            <objectContribution
-          objectClass="org.eclipse.core.resources.IProject"
+    <extension point="org.eclipse.ui.popupMenus">
+        <objectContribution objectClass="org.eclipse.core.resources.IProject" 
+        id="org.wso2.developerstudio.eclipse.esb.docker.exportandgeneratedocker">
+            <action
+                label="Generate Docker Image"
+                icon="icons/car.png"
+                class="org.wso2.developerstudio.eclipse.esb.docker.action.ExportAndGenerateDockerAction"
                 id="org.wso2.developerstudio.eclipse.esb.docker.exportandgeneratedocker">
-           <action
-                    label="Generate Docker Image"
-                    icon="icons/car.png"
-               class="org.wso2.developerstudio.eclipse.esb.docker.action.ExportAndGenerateDockerAction"
-                    id="org.wso2.developerstudio.eclipse.esb.docker.exportandgeneratedocker">
-           </action>
-           <enablement>
-					<adapt type="org.eclipse.core.resources.IProject">
-						<test property="org.eclipse.core.resources.projectNature"
-							value="org.wso2.developerstudio.eclipse.distribution.project.nature" />
-					</adapt>
-			</enablement>
-           </objectContribution>
+            </action>
+            <enablement>
+                <adapt type="org.eclipse.core.resources.IProject">
+                    <test property="org.eclipse.core.resources.projectNature" 
+                    value="org.wso2.developerstudio.eclipse.distribution.project.nature" />
+                </adapt>
+            </enablement>
+        </objectContribution>
     </extension>
 </plugin>

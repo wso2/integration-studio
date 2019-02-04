@@ -44,23 +44,34 @@ public class MicroIntegratorDockerModel {
     private String commandArg;
     
     public MicroIntegratorDockerModel() {
-        // Initialize with default values
-        this.tag = DockerGenConstants.Tags.TAG_LATEST;
-        this.push = false;
-        this.buildImage = true;
-        this.baseImage = DockerGenConstants.ImageParamDefaults.EI_BASE_IMAGE + ":" + 
-        DockerGenConstants.ImageParamDefaults.EI_BASE_IMAGE_VERSION;
-        this.enableDebug = false;
-        this.debugPort = 5005;
-
-        // Detect the operating system
-        String operatingSystem = System.getProperty(DockerGenConstants.OSTypes.OS_NAME).toLowerCase(Locale.getDefault());
+        init();
+    }
+    
+    /**
+     * Initialize with default values.
+     */
+    private void init() {
         
+        // Detect the operating system
+        String operatingSystem = System.getProperty(DockerGenConstants.OSTypes.OS_NAME)
+                .toLowerCase(Locale.getDefault());
+
+        // Set default docker host based on the Operating System
         if (operatingSystem.contains(DockerGenConstants.OSTypes.WINDOWS)) {
             this.dockerHost = DockerGenConstants.ImageParamDefaults.WINDOWS_DEFAULT_DOCKER_HOST;
         } else {
             this.dockerHost = DockerGenConstants.ImageParamDefaults.UNIX_DEFAULT_DOCKER_HOST;
         }
+
+        this.tag = DockerGenConstants.Tags.TAG_LATEST;
+        this.baseImage = DockerGenConstants.ImageParamDefaults.EI_BASE_IMAGE + ":"
+                + DockerGenConstants.ImageParamDefaults.EI_BASE_IMAGE_VERSION;
+        this.debugPort = 5005;
+
+        this.push = false;
+        this.buildImage = true;
+        this.enableDebug = false;
+
         externalFiles = new HashSet<>();
     }
     

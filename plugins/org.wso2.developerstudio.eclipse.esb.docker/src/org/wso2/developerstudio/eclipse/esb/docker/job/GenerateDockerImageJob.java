@@ -19,42 +19,36 @@
 package org.wso2.developerstudio.eclipse.esb.docker.job;
 
 import java.io.File;
-import java.util.HashSet;
-import java.util.Set;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.wso2.developerstudio.eclipse.esb.docker.model.MicroIntegratorDockerModel;
-import org.wso2.developerstudio.eclipse.esb.docker.resources.DockerGenConstants;
 import org.wso2.developerstudio.eclipse.esb.docker.util.DockerImageGenerator;
-import org.wso2.developerstudio.eclipse.esb.docker.wizard.ExportAndGenerateDockerImageWizard;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 
 public class GenerateDockerImageJob extends Job {
 
     private String dockerDirectory;
-    private String serverHome;
     private String deploymentDirectory;
     private String destinationDirectory;
     private String eiDistributionSource;
     private String eiDistributionDestination;
-    private ExportAndGenerateDockerImageWizard callingWizard;
     private File carbonFile;
+    private MicroIntegratorDockerModel dockerModel;
 
     public GenerateDockerImageJob(String dockerDir, String eiDistributionSource, String eiDistributionDestination,
-            String serverHome, String deploymentDir, String destinationDir,
-            ExportAndGenerateDockerImageWizard callingWizard, File carbonFile) {
+            String serverHome, String deploymentDir, String destinationDir, File carbonFile,
+            MicroIntegratorDockerModel dockerModel) {
         super("Generating Docker Image...");
         this.dockerDirectory = dockerDir;
-        this.serverHome = serverHome;
         this.deploymentDirectory = deploymentDir;
         this.destinationDirectory = destinationDir;
         this.eiDistributionSource = eiDistributionSource;
         this.eiDistributionDestination = eiDistributionDestination;
-        this.callingWizard = callingWizard;
         this.carbonFile = carbonFile;
+        this.dockerModel = dockerModel;
     }
 
     @Override
@@ -62,44 +56,44 @@ public class GenerateDockerImageJob extends Job {
 
         String operationText = "Preparing files... ";
         monitor.beginTask(operationText, 100);
+
         try {
             operationText = "Copying files...";
             monitor.subTask(operationText);
-            monitor.worked(20);
+            monitor.worked(10);
 
             // Copy MicroEI distribution to the docker directory
-            FileUtils.copyDirectory(new File(eiDistributionSource), new File(eiDistributionDestination));
+            FileUtils.copyDirectory(new File(getEiDistributionSource()), new File(getEiDistributionDestination()));
 
-            operationText = "Copying CAR application...";
+            operationText = "Clearing temporary directories...";
             monitor.subTask(operationText);
             monitor.worked(20);
 
             // Clear the deployment directory
-            org.apache.commons.io.FileUtils.cleanDirectory(new File(deploymentDirectory));
+            org.apache.commons.io.FileUtils.cleanDirectory(new File(getDeploymentDirectory()));
 
+            operationText = "Copying CAR application...";
+            monitor.subTask(operationText);
+            monitor.worked(20);
+            
             // Copy CAR file to the deployment directory
-            FileUtils.copyFile(carbonFile.getAbsolutePath(), dockerDirectory + File.separator + carbonFile.getName());
+            FileUtils.copyFile(getCarbonFile().getAbsolutePath(),
+                    getDeploymentDirectory() + File.separator + getCarbonFile().getName());
 
             // Remove temporary CAR file
-            org.apache.commons.io.FileUtils.deleteQuietly(carbonFile);
+            org.apache.commons.io.FileUtils.deleteQuietly(getCarbonFile());
 
-            // Create docker model
-            MicroIntegratorDockerModel dockerModel = new MicroIntegratorDockerModel();
-            dockerModel.setCommandArg(DockerGenConstants.ImageParamDefaults.EI_START_COMMAND);
-
-            Set<Integer> ports = new HashSet<>();
-            ports.add(100);
-            ports.add(150);
-
-            dockerModel.setName("meow01");
-            dockerModel.setServerHome(eiDistributionDestination);
-            dockerModel.setPorts(ports);
-
-            DockerImageGenerator generator = new DockerImageGenerator(dockerModel);
-
-            generator.generateDockerImage(dockerDirectory);
-
-            monitor.worked(60);
+            operationText = "Generating docker image...";
+            monitor.subTask(operationText);
+            monitor.worked(20);
+            
+            // Generate the docker image
+            DockerImageGenerator generator = new DockerImageGenerator(getDockerModel());
+            generator.generateDockerImage(getDockerDirectory(), getDestinationDirectory());
+            
+            operationText = "Clearing temporary directories...";
+            monitor.subTask(operationText);
+            monitor.worked(20);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -111,7 +105,64 @@ public class GenerateDockerImageJob extends Job {
 
         monitor.worked(100);
         monitor.done();
+        
         return Status.OK_STATUS;
+    }
+    
+    public String getDockerDirectory() {
+        return dockerDirectory;
+    }
+
+    public void setDockerDirectory(String dockerDirectory) {
+        this.dockerDirectory = dockerDirectory;
+    }
+
+    public String getDeploymentDirectory() {
+        return deploymentDirectory;
+    }
+
+    public void setDeploymentDirectory(String deploymentDirectory) {
+        this.deploymentDirectory = deploymentDirectory;
+    }
+
+    public String getDestinationDirectory() {
+        return destinationDirectory;
+    }
+
+    public void setDestinationDirectory(String destinationDirectory) {
+        this.destinationDirectory = destinationDirectory;
+    }
+
+    public String getEiDistributionSource() {
+        return eiDistributionSource;
+    }
+
+    public void setEiDistributionSource(String eiDistributionSource) {
+        this.eiDistributionSource = eiDistributionSource;
+    }
+
+    public String getEiDistributionDestination() {
+        return eiDistributionDestination;
+    }
+
+    public void setEiDistributionDestination(String eiDistributionDestination) {
+        this.eiDistributionDestination = eiDistributionDestination;
+    }
+
+    public File getCarbonFile() {
+        return carbonFile;
+    }
+
+    public void setCarbonFile(File carbonFile) {
+        this.carbonFile = carbonFile;
+    }
+
+    public MicroIntegratorDockerModel getDockerModel() {
+        return dockerModel;
+    }
+
+    public void setDockerModel(MicroIntegratorDockerModel dockerModel) {
+        this.dockerModel = dockerModel;
     }
 
 }

@@ -1065,7 +1065,6 @@ public class CloneMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
         epv.hideEntry(commentListElements, false);
         epv.hideEntry(targetOutputElements, false);
         view.layout(true, true);
-        view.pack();
     }
     // End of user code
 

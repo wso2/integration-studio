@@ -816,7 +816,6 @@ public class CallTemplateMediatorPropertiesEditionPartForm extends SectionProper
         showEntry(templateParametersElements, false);
         showEntry(targetTemplateElements, false);*/
         view.layout(true, true);
-        view.pack();
     }
 
     public void clearElements() {
@@ -834,7 +833,6 @@ public class CallTemplateMediatorPropertiesEditionPartForm extends SectionProper
         }
         if (layout) {
             view.layout(true, true);
-            view.pack();
         }
     }
 
@@ -848,7 +846,6 @@ public class CallTemplateMediatorPropertiesEditionPartForm extends SectionProper
         }
         if (layout) {
             view.layout(true, true);
-            view.pack();
         }
     }
 	// End of user code

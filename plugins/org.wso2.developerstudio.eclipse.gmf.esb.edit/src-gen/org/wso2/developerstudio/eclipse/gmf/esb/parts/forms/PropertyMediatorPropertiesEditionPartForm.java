@@ -1723,7 +1723,6 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
 	    }
 	    showEntry(propertyScopeElements, false);
         view.layout(true,true);
-        view.pack();
 	}
 	
 	public void clearElements() {
@@ -1743,7 +1742,6 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
 	    }
 	    if(layout) {
 	        view.layout(true,true);
-	        view.pack();
 	    }
 	}
 	
@@ -1756,7 +1754,6 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
         }
         if(layout) {
             view.layout(true,true);
-            view.pack();
         }
     }
 	// End of user code

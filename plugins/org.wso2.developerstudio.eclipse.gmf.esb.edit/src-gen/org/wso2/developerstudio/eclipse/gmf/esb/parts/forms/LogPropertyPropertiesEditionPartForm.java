@@ -640,7 +640,6 @@ public class LogPropertyPropertiesEditionPartForm extends SectionPropertiesEditi
 		}
 
 		view.layout(true, true);
-		view.pack();
 	}
 
 	public void clearElements() {
@@ -658,7 +657,6 @@ public class LogPropertyPropertiesEditionPartForm extends SectionPropertiesEditi
 		}
 		if (layout) {
 			view.layout(true, true);
-			view.pack();
 		}
 	}
 
@@ -670,7 +668,6 @@ public class LogPropertyPropertiesEditionPartForm extends SectionPropertiesEditi
 		}
 		if (layout) {
 			view.layout(true, true);
-			view.pack();
 		}
 	}
 	// End of user code

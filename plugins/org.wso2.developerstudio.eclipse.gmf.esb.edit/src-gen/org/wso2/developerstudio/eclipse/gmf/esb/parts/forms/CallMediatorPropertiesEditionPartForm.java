@@ -972,7 +972,6 @@ public class CallMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
             break;
         }
         view.layout(true, true);
-        view.pack();
     }
 
     public void clearElements() {
@@ -990,7 +989,6 @@ public class CallMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
         }
         if (layout) {
             view.layout(true, true);
-            view.pack();
         }
     }
 
@@ -1002,7 +1000,6 @@ public class CallMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
         }
         if (layout) {
             view.layout(true, true);
-            view.pack();
         }
     }
 	// End of user code

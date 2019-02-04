@@ -1059,7 +1059,6 @@ public class DataMapperMediatorPropertiesEditionPartForm extends SectionProperti
         epv.showEntry(inputTypeElements, false);
         epv.showEntry(outputTypeElements, false);
         view.layout(true, true);
-        view.pack();
     }
 	// End of user code
 

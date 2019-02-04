@@ -964,7 +964,6 @@ public class HeaderMediatorPropertiesEditionPartForm extends SectionPropertiesEd
         }
         if (layout) {
             view.layout(true, true);
-            view.pack();
         }
     }
     
@@ -977,7 +976,6 @@ public class HeaderMediatorPropertiesEditionPartForm extends SectionPropertiesEd
         }
         if (layout) {
             view.layout(true, true);
-            view.pack();
         }
     }
 	

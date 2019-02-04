@@ -990,7 +990,6 @@ public class StoreMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
         eu.showEntry(descriptionElements, false);
         
         view.layout(true, true);
-        view.pack();
     }
 
     

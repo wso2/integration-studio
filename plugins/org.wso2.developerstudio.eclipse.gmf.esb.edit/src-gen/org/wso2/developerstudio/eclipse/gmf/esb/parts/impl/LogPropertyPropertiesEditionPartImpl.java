@@ -468,7 +468,6 @@ public class LogPropertyPropertiesEditionPartImpl extends CompositePropertiesEdi
 		}
 
 		view.layout(true, true);
-		view.pack();
 	}
 
 	public void clearElements() {
@@ -486,7 +485,6 @@ public class LogPropertyPropertiesEditionPartImpl extends CompositePropertiesEdi
 		}
 		if (layout) {
 			view.layout(true, true);
-			view.pack();
 		}
 	}
 
@@ -498,7 +496,6 @@ public class LogPropertyPropertiesEditionPartImpl extends CompositePropertiesEdi
 		}
 		if (layout) {
 			view.layout(true, true);
-			view.pack();
 		}
 	}
 

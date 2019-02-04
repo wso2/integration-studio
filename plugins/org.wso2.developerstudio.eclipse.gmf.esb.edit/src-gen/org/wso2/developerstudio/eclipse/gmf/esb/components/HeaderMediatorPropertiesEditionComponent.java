@@ -117,6 +117,10 @@ public class HeaderMediatorPropertiesEditionComponent extends SinglePartProperti
 			
 			// init filters
 			
+			
+			
+			
+			
 			// Start of user code  for headerName filter update
 			// End of user code
 			
@@ -162,11 +166,9 @@ public class HeaderMediatorPropertiesEditionComponent extends SinglePartProperti
 		if (editorKey == EsbViewsRepository.HeaderMediator.Properties.valueInline) {
 			return EsbPackage.eINSTANCE.getHeaderMediator_ValueInline();
 		}
-		// Start of user code for associatedFeature method body
 		if (editorKey == EsbViewsRepository.HeaderMediator.Properties.headerName) {
-			return EsbPackage.eINSTANCE.getHeaderMediator_HeaderName();
+			return EsbPackage.eINSTANCE.getHeaderMediator_ValueExpression();
 		}
-		// End of user code
 		if (editorKey == EsbViewsRepository.HeaderMediator.Properties.valueExpression) {
 			return EsbPackage.eINSTANCE.getHeaderMediator_ValueExpression();
 		}

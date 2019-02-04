@@ -1042,7 +1042,6 @@ public class SequencesPropertiesEditionPartForm extends SectionPropertiesEditing
     	viewUtil.showEntry(staticsEnabledElements, false);
     	
         view.layout(true, true);
-        view.pack();
     }
 
 	// End of user code

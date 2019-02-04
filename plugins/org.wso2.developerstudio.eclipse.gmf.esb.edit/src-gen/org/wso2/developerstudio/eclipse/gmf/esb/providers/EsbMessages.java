@@ -38,6 +38,33 @@ public class EsbMessages extends NLS {
 	public static String EndPointPropertyPropertiesEditionPart_PropertiesGroupLabel;
 
 	
+	public static String ProxyServicePropertiesEditionPart_BasicGroupLabel;
+
+	
+	public static String ProxyServicePropertiesEditionPart_EndpointGroupLabel;
+
+	
+	public static String ProxyServicePropertiesEditionPart_FaultSequenceGroupLabel;
+
+	
+	public static String ProxyServicePropertiesEditionPart_InSequenceGroupLabel;
+
+	
+	public static String ProxyServicePropertiesEditionPart_OutSequenceGroupLabel;
+
+	
+	public static String ProxyServicePropertiesEditionPart_ParametersGroupLabel;
+
+	
+	public static String ProxyServicePropertiesEditionPart_ReliableMessagingGroupLabel;
+
+	
+	public static String ProxyServicePropertiesEditionPart_SecurityGroupLabel;
+
+	
+	public static String ProxyServicePropertiesEditionPart_WsdlGroupLabel;
+
+	
 	public static String ProxyServicePropertiesEditionPart_PropertiesGroupLabel;
 
 	
@@ -239,7 +266,13 @@ public class EsbMessages extends NLS {
 	public static String NamespacedPropertyPropertiesEditionPart_PropertiesGroupLabel;
 
 	
-	public static String EnrichMediatorPropertiesEditionPart_PropertiesGroupLabel;
+	public static String EnrichMediatorPropertiesEditionPart_MiscGroupLabel;
+
+	
+	public static String EnrichMediatorPropertiesEditionPart_SourceGroupLabel;
+
+	
+	public static String EnrichMediatorPropertiesEditionPart_TargetGroupLabel;
 
 	
 	public static String EnrichMediatorInputConnectorPropertiesEditionPart_PropertiesGroupLabel;
@@ -479,6 +512,9 @@ public class EsbMessages extends NLS {
 	public static String ForEachMediatorPropertiesEditionPart_PropertiesGroupLabel;
 
 	
+	public static String ForEachMediatorPropertiesEditionPart_SequenceGroupLabel;
+
+	
 	public static String ForEachMediatorInputConnectorPropertiesEditionPart_PropertiesGroupLabel;
 
 	
@@ -599,7 +635,16 @@ public class EsbMessages extends NLS {
 	public static String HeaderMediatorOutputConnectorPropertiesEditionPart_PropertiesGroupLabel;
 
 	
-	public static String ThrottleMediatorPropertiesEditionPart_PropertiesGroupLabel;
+	public static String ThrottleMediatorPropertiesEditionPart_GeneralGroupLabel;
+
+	
+	public static String ThrottleMediatorPropertiesEditionPart_MiscGroupLabel;
+
+	
+	public static String ThrottleMediatorPropertiesEditionPart_OnAcceptGroupLabel;
+
+	
+	public static String ThrottleMediatorPropertiesEditionPart_ThrottlePolicyGroupLabel;
 
 	
 	public static String ThrottleMediatorInputConnectorPropertiesEditionPart_PropertiesGroupLabel;
@@ -3220,15 +3265,6 @@ public class EsbMessages extends NLS {
 	public static String EndPointPropertyPropertiesEditionPart_ValueTypeLabel;
 
 	
-	public static String ProxyServicePropertiesEditionPart_DescriptionLabel;
-
-	
-	public static String ProxyServicePropertiesEditionPart_CommentsListLabel;
-
-	
-	public static String ProxyServicePropertiesEditionPart_InSequenceInputConnectorsLabel;
-
-	
 	public static String ProxyServicePropertiesEditionPart_NameLabel;
 
 	
@@ -3250,34 +3286,7 @@ public class EsbMessages extends NLS {
 	public static String ProxyServicePropertiesEditionPart_TransportsLabel;
 
 	
-	public static String ProxyServicePropertiesEditionPart_ReliableMessagingEnabledLabel;
-
-	
-	public static String ProxyServicePropertiesEditionPart_SecurityEnabledLabel;
-
-	
-	public static String ProxyServicePropertiesEditionPart_ServiceParametersLabel;
-
-	
-	public static String ProxyServicePropertiesEditionPart_ServicePoliciesLabel;
-
-	
-	public static String ProxyServicePropertiesEditionPart_InSequenceTypeLabel;
-
-	
-	public static String ProxyServicePropertiesEditionPart_InSequenceNameLabel;
-
-	
-	public static String ProxyServicePropertiesEditionPart_OutSequenceTypeLabel;
-
-	
-	public static String ProxyServicePropertiesEditionPart_OutSequenceNameLabel;
-
-	
-	public static String ProxyServicePropertiesEditionPart_FaultSequenceTypeLabel;
-
-	
-	public static String ProxyServicePropertiesEditionPart_FaultSequenceNameLabel;
+	public static String ProxyServicePropertiesEditionPart_OnErrorLabel;
 
 	
 	public static String ProxyServicePropertiesEditionPart_EndpointTypeLabel;
@@ -3286,13 +3295,58 @@ public class EsbMessages extends NLS {
 	public static String ProxyServicePropertiesEditionPart_EndpointNameLabel;
 
 	
-	public static String ProxyServicePropertiesEditionPart_MainSequenceLabel;
+	public static String ProxyServicePropertiesEditionPart_EndpointKeyLabel;
+
+	
+	public static String ProxyServicePropertiesEditionPart_FaultSequenceTypeLabel;
+
+	
+	public static String ProxyServicePropertiesEditionPart_FaultSequenceNameLabel;
+
+	
+	public static String ProxyServicePropertiesEditionPart_FaultSequenceKeyLabel;
+
+	
+	public static String ProxyServicePropertiesEditionPart_FaultSequenceOnErrorLabel;
+
+	
+	public static String ProxyServicePropertiesEditionPart_InSequenceTypeLabel;
+
+	
+	public static String ProxyServicePropertiesEditionPart_InSequenceNameLabel;
+
+	
+	public static String ProxyServicePropertiesEditionPart_InSequenceKeyLabel;
+
+	
+	public static String ProxyServicePropertiesEditionPart_InSequenceOnErrorLabel;
+
+	
+	public static String ProxyServicePropertiesEditionPart_OutSequenceTypeLabel;
+
+	
+	public static String ProxyServicePropertiesEditionPart_OutSequenceNameLabel;
+
+	
+	public static String ProxyServicePropertiesEditionPart_OutSequenceKeyLabel;
+
+	
+	public static String ProxyServicePropertiesEditionPart_OutSequenceOnErrorLabel;
+
+	
+	public static String ProxyServicePropertiesEditionPart_ServiceParametersLabel;
+
+	
+	public static String ProxyServicePropertiesEditionPart_ReliableMessagingEnabledLabel;
+
+	
+	public static String ProxyServicePropertiesEditionPart_SecurityEnabledLabel;
+
+	
+	public static String ProxyServicePropertiesEditionPart_ServicePoliciesLabel;
 
 	
 	public static String ProxyServicePropertiesEditionPart_WsdlTypeLabel;
-
-	
-	public static String ProxyServicePropertiesEditionPart_PreservePolicyLabel;
 
 	
 	public static String ProxyServicePropertiesEditionPart_WsdlXMLLabel;
@@ -3302,6 +3356,27 @@ public class EsbMessages extends NLS {
 
 	
 	public static String ProxyServicePropertiesEditionPart_WsdlResourcesLabel;
+
+	
+	public static String ProxyServicePropertiesEditionPart_PreservePolicyLabel;
+
+	
+	public static String ProxyServicePropertiesEditionPart_WsdlKeyLabel;
+
+	
+	public static String ProxyServicePropertiesEditionPart_WsdlEndpointLabel;
+
+	
+	public static String ProxyServicePropertiesEditionPart_DescriptionLabel;
+
+	
+	public static String ProxyServicePropertiesEditionPart_CommentsListLabel;
+
+	
+	public static String ProxyServicePropertiesEditionPart_InSequenceInputConnectorsLabel;
+
+	
+	public static String ProxyServicePropertiesEditionPart_MainSequenceLabel;
 
 	
 	public static String ProxyOutputConnectorPropertiesEditionPart_CommentMediatorsLabel;
@@ -3742,6 +3817,12 @@ public class EsbMessages extends NLS {
 	public static String FilterMediatorPropertiesEditionPart_RegexLabel;
 
 	
+	public static String FilterMediatorPropertiesEditionPart_XPathLabel;
+
+	
+	public static String FilterMediatorPropertiesEditionPart_SourceLabel;
+
+	
 	public static String FilterMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;
 
 	
@@ -4072,10 +4153,19 @@ public class EsbMessages extends NLS {
 	public static String EnrichMediatorPropertiesEditionPart_SourceTypeLabel;
 
 	
-	public static String EnrichMediatorPropertiesEditionPart_SourcePropertyLabel;
+	public static String EnrichMediatorPropertiesEditionPart_InlineTypeLabel;
 
 	
 	public static String EnrichMediatorPropertiesEditionPart_SourceXMLLabel;
+
+	
+	public static String EnrichMediatorPropertiesEditionPart_SourcePropertyLabel;
+
+	
+	public static String EnrichMediatorPropertiesEditionPart_SourceXPathLabel;
+
+	
+	public static String EnrichMediatorPropertiesEditionPart_InlineRegistryKeyLabel;
 
 	
 	public static String EnrichMediatorPropertiesEditionPart_TargetActionLabel;
@@ -4087,7 +4177,7 @@ public class EsbMessages extends NLS {
 	public static String EnrichMediatorPropertiesEditionPart_TargetPropertyLabel;
 
 	
-	public static String EnrichMediatorPropertiesEditionPart_InlineTypeLabel;
+	public static String EnrichMediatorPropertiesEditionPart_TargetXPathLabel;
 
 	
 	public static String EnrichMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;
@@ -4162,6 +4252,9 @@ public class EsbMessages extends NLS {
 	public static String SwitchMediatorPropertiesEditionPart_CaseBranchesLabel;
 
 	
+	public static String SwitchMediatorPropertiesEditionPart_SourceXPathLabel;
+
+	
 	public static String SwitchCaseBranchOutputConnectorPropertiesEditionPart_CommentMediatorsLabel;
 
 	
@@ -4220,6 +4313,12 @@ public class EsbMessages extends NLS {
 
 	
 	public static String SequencePropertiesEditionPart_ReferringSequenceTypeLabel;
+
+	
+	public static String SequencePropertiesEditionPart_StaticReferenceKeyLabel;
+
+	
+	public static String SequencePropertiesEditionPart_DynamicReferenceKeyLabel;
 
 	
 	public static String SequenceInputConnectorPropertiesEditionPart_IncomingLinksLabel;
@@ -4663,10 +4762,16 @@ public class EsbMessages extends NLS {
 	public static String ForEachMediatorPropertiesEditionPart_ForEachIDLabel;
 
 	
+	public static String ForEachMediatorPropertiesEditionPart_ForEachExpressionLabel;
+
+	
 	public static String ForEachMediatorPropertiesEditionPart_SequenceTypeLabel;
 
 	
 	public static String ForEachMediatorPropertiesEditionPart_SequenceNameLabel;
+
+	
+	public static String ForEachMediatorPropertiesEditionPart_SequenceKeyLabel;
 
 	
 	public static String ForEachMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;
@@ -5026,9 +5131,6 @@ public class EsbMessages extends NLS {
 	public static String HeaderMediatorOutputConnectorPropertiesEditionPart_CommentMediatorsLabel;
 
 	
-	public static String ThrottleMediatorPropertiesEditionPart_DescriptionLabel;
-
-	
 	public static String ThrottleMediatorPropertiesEditionPart_CommentsListLabel;
 
 	
@@ -5036,6 +5138,21 @@ public class EsbMessages extends NLS {
 
 	
 	public static String ThrottleMediatorPropertiesEditionPart_GroupIdLabel;
+
+	
+	public static String ThrottleMediatorPropertiesEditionPart_DescriptionLabel;
+
+	
+	public static String ThrottleMediatorPropertiesEditionPart_OnAcceptBranchsequenceTypeLabel;
+
+	
+	public static String ThrottleMediatorPropertiesEditionPart_OnAcceptBranchSequenceKeyLabel;
+
+	
+	public static String ThrottleMediatorPropertiesEditionPart_OnRejectBranchsequenceTypeLabel;
+
+	
+	public static String ThrottleMediatorPropertiesEditionPart_OnRejectBranchSequenceKeyLabel;
 
 	
 	public static String ThrottleMediatorPropertiesEditionPart_PolicyTypeLabel;
@@ -5047,10 +5164,7 @@ public class EsbMessages extends NLS {
 	public static String ThrottleMediatorPropertiesEditionPart_PolicyEntriesLabel;
 
 	
-	public static String ThrottleMediatorPropertiesEditionPart_OnAcceptBranchsequenceTypeLabel;
-
-	
-	public static String ThrottleMediatorPropertiesEditionPart_OnRejectBranchsequenceTypeLabel;
+	public static String ThrottleMediatorPropertiesEditionPart_PolicyKeyLabel;
 
 	
 	public static String ThrottleMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;
@@ -5959,6 +6073,9 @@ public class EsbMessages extends NLS {
 	public static String SequencesPropertiesEditionPart_StatisticsEnabledLabel;
 
 	
+	public static String SequencesPropertiesEditionPart_OnErrorLabel;
+
+	
 	public static String SequencesOutputConnectorPropertiesEditionPart_CommentMediatorsLabel;
 
 	
@@ -6037,7 +6154,13 @@ public class EsbMessages extends NLS {
 	public static String ValidateMediatorPropertiesEditionPart_EnableCacheSchemaLabel;
 
 	
+	public static String ValidateMediatorPropertiesEditionPart_SourceLabel;
+
+	
 	public static String ValidateResourcePropertiesEditionPart_LocationLabel;
+
+	
+	public static String ValidateResourcePropertiesEditionPart_LocationKeyLabel;
 
 	
 	public static String ValidateFeaturePropertiesEditionPart_FeatureNameLabel;
@@ -6050,6 +6173,12 @@ public class EsbMessages extends NLS {
 
 	
 	public static String ValidateSchemaPropertiesEditionPart_SchemaKeyLabel;
+
+	
+	public static String ValidateSchemaPropertiesEditionPart_StaticSchemaKeyLabel;
+
+	
+	public static String ValidateSchemaPropertiesEditionPart_DynamicSchemaKeyLabel;
 
 	
 	public static String ValidateMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;

@@ -389,7 +389,7 @@ public class CacheMediatorPropertiesEditionComponent extends SinglePartPropertie
             // Start of user code for sequenceKey live update
             if (EsbPackage.eINSTANCE.getCacheMediator_SequenceKey().equals(msg.getFeature())
                     && msg.getNotifier().equals(semanticObject)
-                    && isAccessible(EsbViewsRepository.SendMediator.Properties.staticReceivingSequence)) {
+                    && isAccessible(EsbViewsRepository.CacheMediator.OnCacheHit.sequenceKey)) {
                 if (msg.getNewValue() != null) {
                     basePart.setSequenceKey((RegistryKeyProperty) msg.getNewValue());
                 } else {

@@ -177,6 +177,163 @@ public class EsbViewsRepository {
 	 * 
 	 */
 	public static class ProxyService {
+		public static class Basic {
+	
+			
+			public static String name = "esb::ProxyService::basic::name";
+			
+			
+			public static String pinnedServers = "esb::ProxyService::basic::pinnedServers";
+			
+			
+			public static String serviceGroup = "esb::ProxyService::basic::serviceGroup";
+			
+			
+			public static String traceEnabled = "esb::ProxyService::basic::traceEnabled";
+			
+			
+			public static String statisticsEnabled = "esb::ProxyService::basic::statisticsEnabled";
+			
+			
+			public static String startOnLoad = "esb::ProxyService::basic::startOnLoad";
+			
+			
+			public static String transports = "esb::ProxyService::basic::transports";
+			
+			// Start of user code for onError ElementEditor key
+			public static String onError = "esb::ProxyService::basic::onError";
+			// End of user code
+			
+	
+		}
+	
+		public static class Endpoint {
+	
+			
+			public static String endpointType = "esb::ProxyService::endpoint::endpointType";
+			
+			
+			public static String endpointName = "esb::ProxyService::endpoint::endpointName";
+			
+			// Start of user code for endpointKey ElementEditor key
+			public static String endpointKey = "esb::ProxyService::endpoint::endpointKey";
+			// End of user code
+			
+	
+		}
+	
+		public static class FaultSequence {
+	
+			
+			public static String faultSequenceType = "esb::ProxyService::faultSequence::faultSequenceType";
+			
+			
+			public static String faultSequenceName = "esb::ProxyService::faultSequence::faultSequenceName";
+			
+			// Start of user code for faultSequenceKey ElementEditor key
+			public static String faultSequenceKey = "esb::ProxyService::faultSequence::faultSequenceKey";
+			// End of user code
+			
+			// Start of user code for faultSequenceOnError ElementEditor key
+			public static String faultSequenceOnError = "esb::ProxyService::faultSequence::faultSequenceOnError";
+			// End of user code
+			
+	
+		}
+	
+		public static class InSequence {
+	
+			
+			public static String inSequenceType = "esb::ProxyService::inSequence::inSequenceType";
+			
+			
+			public static String inSequenceName = "esb::ProxyService::inSequence::inSequenceName";
+			
+			// Start of user code for inSequenceKey ElementEditor key
+			public static String inSequenceKey = "esb::ProxyService::inSequence::inSequenceKey";
+			// End of user code
+			
+			// Start of user code for inSequenceOnError ElementEditor key
+			public static String inSequenceOnError = "esb::ProxyService::inSequence::inSequenceOnError";
+			// End of user code
+			
+	
+		}
+	
+		public static class OutSequence {
+	
+			
+			public static String outSequenceType = "esb::ProxyService::outSequence::outSequenceType";
+			
+			
+			public static String outSequenceName = "esb::ProxyService::outSequence::outSequenceName";
+			
+			// Start of user code for outSequenceKey ElementEditor key
+			public static String outSequenceKey = "esb::ProxyService::outSequence::outSequenceKey";
+			// End of user code
+			
+			// Start of user code for outSequenceOnError ElementEditor key
+			public static String outSequenceOnError = "esb::ProxyService::outSequence::outSequenceOnError";
+			// End of user code
+			
+	
+		}
+	
+		public static class Parameters {
+	
+			
+			public static String serviceParameters = "esb::ProxyService::parameters::serviceParameters";
+			
+	
+		}
+	
+		public static class ReliableMessaging {
+	
+			
+			public static String reliableMessagingEnabled = "esb::ProxyService::reliableMessaging::reliableMessagingEnabled";
+			
+	
+		}
+	
+		public static class Security {
+	
+			
+			public static String securityEnabled = "esb::ProxyService::security::securityEnabled";
+			
+			
+			public static String servicePolicies = "esb::ProxyService::security::servicePolicies";
+			
+	
+		}
+	
+		public static class Wsdl {
+	
+			
+			public static String wsdlType = "esb::ProxyService::wsdl::wsdlType";
+			
+			
+			public static String wsdlXML = "esb::ProxyService::wsdl::wsdlXML";
+			
+			
+			public static String wsdlURL = "esb::ProxyService::wsdl::wsdlURL";
+			
+			
+			public static String wsdlResources = "esb::ProxyService::wsdl::wsdlResources";
+			
+			
+			public static String preservePolicy = "esb::ProxyService::wsdl::preservePolicy";
+			
+			// Start of user code for wsdlKey ElementEditor key
+			public static String wsdlKey = "esb::ProxyService::wsdl::wsdlKey";
+			// End of user code
+			
+			// Start of user code for wsdlEndpoint ElementEditor key
+			public static String wsdlEndpoint = "esb::ProxyService::wsdl::wsdlEndpoint";
+			// End of user code
+			
+	
+		}
+	
 		public static class Properties {
 	
 			
@@ -189,79 +346,7 @@ public class EsbViewsRepository {
 			public static String inSequenceInputConnectors = "esb::ProxyService::properties::inSequenceInputConnectors";
 			
 			
-			public static String name = "esb::ProxyService::properties::name";
-			
-			
-			public static String pinnedServers = "esb::ProxyService::properties::pinnedServers";
-			
-			
-			public static String serviceGroup = "esb::ProxyService::properties::serviceGroup";
-			
-			
-			public static String traceEnabled = "esb::ProxyService::properties::traceEnabled";
-			
-			
-			public static String statisticsEnabled = "esb::ProxyService::properties::statisticsEnabled";
-			
-			
-			public static String startOnLoad = "esb::ProxyService::properties::startOnLoad";
-			
-			
-			public static String transports = "esb::ProxyService::properties::transports";
-			
-			
-			public static String reliableMessagingEnabled = "esb::ProxyService::properties::reliableMessagingEnabled";
-			
-			
-			public static String securityEnabled = "esb::ProxyService::properties::securityEnabled";
-			
-			
-			public static String serviceParameters = "esb::ProxyService::properties::serviceParameters";
-			
-			
-			public static String servicePolicies = "esb::ProxyService::properties::servicePolicies";
-			
-			
-			public static String inSequenceType = "esb::ProxyService::properties::inSequenceType";
-			
-			
-			public static String inSequenceName = "esb::ProxyService::properties::inSequenceName";
-			
-			
-			public static String outSequenceType = "esb::ProxyService::properties::outSequenceType";
-			
-			
-			public static String outSequenceName = "esb::ProxyService::properties::outSequenceName";
-			
-			
-			public static String faultSequenceType = "esb::ProxyService::properties::faultSequenceType";
-			
-			
-			public static String faultSequenceName = "esb::ProxyService::properties::faultSequenceName";
-			
-			
-			public static String endpointType = "esb::ProxyService::properties::endpointType";
-			
-			
-			public static String endpointName = "esb::ProxyService::properties::endpointName";
-			
-			
 			public static String mainSequence = "esb::ProxyService::properties::mainSequence";
-			
-			
-			public static String wsdlType = "esb::ProxyService::properties::wsdlType";
-			
-			
-			public static String preservePolicy = "esb::ProxyService::properties::preservePolicy";
-			
-			
-			public static String wsdlXML = "esb::ProxyService::properties::wsdlXML";
-			
-			
-			public static String wsdlURL = "esb::ProxyService::properties::wsdlURL";
-			
-			
-			public static String wsdlResources = "esb::ProxyService::properties::wsdlResources";
 			
 	
 		}
@@ -1085,6 +1170,14 @@ public class EsbViewsRepository {
 			
 			public static String regex = "esb::FilterMediator::properties::regex";
 			
+			// Start of user code for XPath ElementEditor key
+			public static String xPath = "esb::FilterMediator::properties::XPath";
+			// End of user code
+			
+			// Start of user code for Source ElementEditor key
+			public static String source = "esb::FilterMediator::properties::Source";
+			// End of user code
+			
 	
 		}
 	
@@ -1820,40 +1913,62 @@ public class EsbViewsRepository {
 	 * 
 	 */
 	public static class EnrichMediator {
-		public static class Properties {
+		public static class Misc {
 	
 			
-			public static String description = "esb::EnrichMediator::properties::description";
+			public static String description = "esb::EnrichMediator::Misc::description";
 			
 			
-			public static String commentsList = "esb::EnrichMediator::properties::commentsList";
+			public static String commentsList = "esb::EnrichMediator::Misc::commentsList";
 			
 			
-			public static String reverse = "esb::EnrichMediator::properties::Reverse";
+			public static String reverse = "esb::EnrichMediator::Misc::Reverse";
+			
+	
+		}
+	
+		public static class Source {
+	
+			
+			public static String cloneSource = "esb::EnrichMediator::Source::cloneSource";
 			
 			
-			public static String cloneSource = "esb::EnrichMediator::properties::cloneSource";
+			public static String sourceType = "esb::EnrichMediator::Source::sourceType";
 			
 			
-			public static String sourceType = "esb::EnrichMediator::properties::sourceType";
+			public static String inlineType = "esb::EnrichMediator::Source::inlineType";
 			
 			
-			public static String sourceProperty = "esb::EnrichMediator::properties::sourceProperty";
+			public static String sourceXML = "esb::EnrichMediator::Source::sourceXML";
 			
 			
-			public static String sourceXML = "esb::EnrichMediator::properties::sourceXML";
+			public static String sourceProperty = "esb::EnrichMediator::Source::sourceProperty";
+			
+			// Start of user code for sourceXPath ElementEditor key
+			public static String sourceXPath = "esb::SwitchMediator::properties::sourceXPath";
+			// End of user code
+			
+			// Start of user code for inlineRegistryKey ElementEditor key
+			public static String inlineRegistryKey = "esb::EnrichMediator::Source::inlineRegistryKey";
+			// End of user code
+			
+	
+		}
+	
+		public static class Target {
+	
+			
+			public static String targetAction = "esb::EnrichMediator::Target::targetAction";
 			
 			
-			public static String targetAction = "esb::EnrichMediator::properties::targetAction";
+			public static String targetType = "esb::EnrichMediator::Target::targetType";
 			
 			
-			public static String targetType = "esb::EnrichMediator::properties::targetType";
+			public static String targetProperty = "esb::EnrichMediator::Target::targetProperty";
 			
-			
-			public static String targetProperty = "esb::EnrichMediator::properties::targetProperty";
-			
-			
-			public static String inlineType = "esb::EnrichMediator::properties::inlineType";
+			// Start of user code for targetXPath ElementEditor key
+			public static String targetXPath = "esb::EnrichMediator::Target::targetXPath";
+			// End of user code
 			
 	
 		}
@@ -2034,6 +2149,10 @@ public class EsbViewsRepository {
 			
 			
 			public static String caseBranches = "esb::SwitchMediator::properties::caseBranches";
+			
+			// Start of user code for sourceXPath ElementEditor key
+			public static String sourceXPath = "esb::SwitchMediator::properties::sourceXPath";
+			// End of user code
 			
 	
 		}
@@ -2286,6 +2405,14 @@ public class EsbViewsRepository {
 			
 			
 			public static String referringSequenceType = "esb::Sequence::properties::referringSequenceType";
+			
+			// Start of user code for staticReferenceKey ElementEditor key
+			public static String staticReferenceKey = "esb::Sequence::properties::staticReferenceKey";
+			// End of user code
+			
+			// Start of user code for dynamicReferenceKey ElementEditor key
+			public static String dynamicReferenceKey = "esb::Sequence::properties::dynamicReferenceKey";
+			// End of user code
 			
 	
 		}
@@ -3376,11 +3503,24 @@ public class EsbViewsRepository {
 			
 			public static String forEachID = "esb::ForEachMediator::properties::forEachID";
 			
+			// Start of user code for forEachExpression ElementEditor key
+			public static String forEachExpression = "esb::ForEachMediator::properties::forEachExpression";
+			// End of user code
 			
-			public static String sequenceType = "esb::ForEachMediator::properties::sequenceType";
+	
+		}
+	
+		public static class Sequence {
+	
+			
+			public static String sequenceType = "esb::ForEachMediator::Sequence::sequenceType";
 			
 			
-			public static String sequenceName = "esb::ForEachMediator::properties::sequenceName";
+			public static String sequenceName = "esb::ForEachMediator::Sequence::sequenceName";
+			
+			// Start of user code for sequenceKey ElementEditor key
+			public static String sequenceKey = "esb::ForEachMediator::Sequence::sequenceKey";
+			// End of user code
 			
 	
 		}
@@ -4214,34 +4354,66 @@ public class EsbViewsRepository {
 	 * 
 	 */
 	public static class ThrottleMediator {
-		public static class Properties {
+		public static class General {
 	
 			
-			public static String description = "esb::ThrottleMediator::properties::description";
+			public static String commentsList = "esb::ThrottleMediator::general::commentsList";
 			
 			
-			public static String commentsList = "esb::ThrottleMediator::properties::commentsList";
+			public static String reverse = "esb::ThrottleMediator::general::Reverse";
 			
 			
-			public static String reverse = "esb::ThrottleMediator::properties::Reverse";
+			public static String groupId = "esb::ThrottleMediator::general::groupId";
+			
+	
+		}
+	
+		public static class Misc {
+	
+			
+			public static String description = "esb::ThrottleMediator::misc::description";
+			
+	
+		}
+	
+		public static class OnAccept {
+	
+			
+			public static String onAcceptBranchsequenceType = "esb::ThrottleMediator::onAccept::OnAcceptBranchsequenceType";
+			
+			// Start of user code for OnAcceptBranchSequenceKey ElementEditor key
+			public static String onAcceptBranchSequenceKey = "esb::ThrottleMediator::onAccept::OnAcceptBranchSequenceKey";
+			// End of user code
+	
+		}
+
+		public static class OnReject {
+	
+			
+			public static String onRejectBranchsequenceType = "esb::ThrottleMediator::onReject::OnRejectBranchsequenceType";
+			
+			// Start of user code for OnRejectBranchSequenceKey ElementEditor key
+			public static String onRejectBranchSequenceKey = "esb::ThrottleMediator::onReject::OnRejectBranchSequenceKey";
+			// End of user code
+			
+	
+		}
+	
+
+		public static class ThrottlePolicy {
+	
+			
+			public static String policyType = "esb::ThrottleMediator::throttlePolicy::policyType";
 			
 			
-			public static String groupId = "esb::ThrottleMediator::properties::groupId";
+			public static String maxConcurrentAccessCount = "esb::ThrottleMediator::throttlePolicy::maxConcurrentAccessCount";
 			
 			
-			public static String policyType = "esb::ThrottleMediator::properties::policyType";
+			public static String policyEntries = "esb::ThrottleMediator::throttlePolicy::policyEntries";
 			
-			
-			public static String maxConcurrentAccessCount = "esb::ThrottleMediator::properties::maxConcurrentAccessCount";
-			
-			
-			public static String policyEntries = "esb::ThrottleMediator::properties::policyEntries";
-			
-			
-			public static String onAcceptBranchsequenceType = "esb::ThrottleMediator::properties::OnAcceptBranchsequenceType";
-			
-			
-			public static String onRejectBranchsequenceType = "esb::ThrottleMediator::properties::OnRejectBranchsequenceType";
+			// Start of user code for policyKey ElementEditor key
+			public static String policyKey = "esb::ThrottleMediator::throttlePolicy::policyKey";
+			// End of user code
 			
 	
 		}
@@ -6171,6 +6343,10 @@ public class EsbViewsRepository {
 			
 			public static String statisticsEnabled = "esb::Sequences::properties::statisticsEnabled";
 			
+			// Start of user code for onError ElementEditor key
+			public static String onError = "esb::Sequences::properties::onError";
+			// End of user code
+			
 	
 		}
 	
@@ -6357,6 +6533,10 @@ public class EsbViewsRepository {
 			
 			public static String enableCacheSchema = "esb::ValidateMediator::properties::enableCacheSchema";
 			
+			// Start of user code for source ElementEditor key
+			public static String source = "esb::ValidateMediator::properties::source";
+			// End of user code
+			
 	
 		}
 	
@@ -6371,6 +6551,10 @@ public class EsbViewsRepository {
 	
 			
 			public static String location = "esb::ValidateResource::properties::location";
+			
+			// Start of user code for locationKey ElementEditor key
+			public static String locationKey = "esb::ValidateResource::properties::locationKey";
+			// End of user code
 			
 	
 		}
@@ -6407,6 +6591,14 @@ public class EsbViewsRepository {
 			
 			
 			public static String schemaKey = "esb::ValidateSchema::properties::schemaKey";
+			
+			// Start of user code for staticSchemaKey ElementEditor key
+			public static String staticSchemaKey = "esb::ValidateSchema::properties::staticSchemaKey";
+			// End of user code
+			
+			// Start of user code for dynamicSchemaKey ElementEditor key
+			public static String dynamicSchemaKey = "esb::ValidateSchema::properties::dynamicSchemaKey";
+			// End of user code
 			
 	
 		}

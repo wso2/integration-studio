@@ -552,7 +552,6 @@ public class PayloadFactoryArgumentPropertiesEditionPartImpl extends CompositePr
         
         eu.showEntry(literalElements, false);
         view.layout(true, true);
-        view.pack();
 	}
 	
 	protected Composite createArgumentExpression(Composite parent) {

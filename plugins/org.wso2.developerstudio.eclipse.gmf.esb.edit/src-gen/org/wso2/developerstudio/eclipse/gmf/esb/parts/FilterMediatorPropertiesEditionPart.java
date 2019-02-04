@@ -6,6 +6,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb.parts;
 // Start of user code for imports
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.Enumerator;
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 
 
 // End of user code
@@ -107,6 +108,16 @@ public interface FilterMediatorPropertiesEditionPart {
 
 
 
+	// Start of user code for XPath specific getters and setters declaration
+	public NamespacedProperty getXPath();
+    
+    public void setXPath(NamespacedProperty nameSpacedProperty);
+    // End of user code
+	// Start of user code for Source specific getters and setters declaration
+    public NamespacedProperty getSource();
+    
+    public void setSource(NamespacedProperty nameSpacedProperty);    
+	// End of user code
 
 	/**
 	 * Returns the internationalized title text.

@@ -29,7 +29,7 @@ import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
-
+import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 
@@ -47,11 +47,13 @@ import org.eclipse.jface.viewers.ViewerFilter;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.KeyType;
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.ValidateSchema;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.ValidateSchemaPropertiesEditionPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.parts.impl.ValidateSchemaPropertiesEditionPartImpl;
 
 
 // End of user code
@@ -108,6 +110,18 @@ public class ValidateSchemaPropertiesEditionComponent extends SinglePartProperti
 				// set the button mode
 				basePart.setSchemaKeyButtonMode(ButtonsModeEnum.BROWSE);
 			}
+			// Start of user code  for staticSchemaKey command update
+            if (isAccessible(EsbViewsRepository.ValidateSchema.Properties.staticSchemaKey)) {
+                basePart.setStaticSchemaKey(validateSchema.getValidateStaticSchemaKey());
+            }
+			// End of user code
+			
+			// Start of user code  for dynamicSchemaKey command update
+            if (isAccessible(EsbViewsRepository.ValidateSchema.Properties.dynamicSchemaKey)) {
+                basePart.setDynamicSchemaKey(validateSchema.getValidateDynamicSchemaKey());
+            }
+			// End of user code
+			
 			// init filters
 			
 			if (isAccessible(EsbViewsRepository.ValidateSchema.Properties.schemaKey)) {
@@ -126,13 +140,21 @@ public class ValidateSchemaPropertiesEditionComponent extends SinglePartProperti
 				// Start of user code for additional businessfilters for schemaKey
 				// End of user code
 			}
-			// init values for referenced views
+			// Start of user code  for staticSchemaKey filter update
+			// End of user code
 			
+			// Start of user code  for dynamicSchemaKey filter update
+			// End of user code
+			
+			// init values for referenced views
 			// init filters for referenced views
 			
 		}
 		setInitializing(false);
+		((ValidateSchemaPropertiesEditionPartImpl) editingPart).validate();
 	}
+
+
 
 
 
@@ -148,6 +170,12 @@ public class ValidateSchemaPropertiesEditionComponent extends SinglePartProperti
 		}
 		if (editorKey == EsbViewsRepository.ValidateSchema.Properties.schemaKey) {
 			return EsbPackage.eINSTANCE.getValidateSchema_SchemaKey();
+		}
+		if (editorKey == EsbViewsRepository.ValidateSchema.Properties.staticSchemaKey) {
+			return EsbPackage.eINSTANCE.getValidateSchema_ValidateStaticSchemaKey();
+		}
+		if (editorKey == EsbViewsRepository.ValidateSchema.Properties.dynamicSchemaKey) {
+			return EsbPackage.eINSTANCE.getValidateSchema_ValidateDynamicSchemaKey();
 		}
 		return super.associatedFeature(editorKey);
 	}
@@ -178,6 +206,28 @@ public class ValidateSchemaPropertiesEditionComponent extends SinglePartProperti
 				schemaKeySettings.setToReference(eObject);
 			}
 		}
+		if (EsbViewsRepository.ValidateSchema.Properties.staticSchemaKey == event.getAffectedEditor()) {
+			// Start of user code for updateStaticSchemaKey method body
+            if (event.getNewValue() != null) {
+                RegistryKeyProperty rkp = (RegistryKeyProperty) event.getNewValue();
+                validateSchema.setValidateStaticSchemaKey(rkp);
+            } else {
+                validateSchema.setValidateStaticSchemaKey(EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty());
+            }
+			// End of user code
+			
+		}
+		if (EsbViewsRepository.ValidateSchema.Properties.dynamicSchemaKey == event.getAffectedEditor()) {
+			// Start of user code for updateDynamicSchemaKey method body
+            if (event.getNewValue() != null) {
+                NamespacedProperty nsp = (NamespacedProperty) event.getNewValue();
+                validateSchema.setValidateDynamicSchemaKey(nsp);
+            } else {
+                validateSchema.setValidateDynamicSchemaKey(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+            }
+			// End of user code
+			
+		}
 	}
 
 	/**
@@ -193,7 +243,31 @@ public class ValidateSchemaPropertiesEditionComponent extends SinglePartProperti
 			
 			if (EsbPackage.eINSTANCE.getValidateSchema_SchemaKey().equals(msg.getFeature()) && basePart != null && isAccessible(EsbViewsRepository.ValidateSchema.Properties.schemaKey))
 				basePart.setSchemaKey((EObject)msg.getNewValue());
+					// Start of user code for staticSchemaKey live update
+                if (EsbPackage.eINSTANCE.getValidateSchema_ValidateStaticSchemaKey().equals(msg.getFeature())
+                        && msg.getNotifier().equals(semanticObject) && basePart != null
+                        && isAccessible(EsbViewsRepository.ValidateSchema.Properties.staticSchemaKey)) {
+                    if (msg.getNewValue() != null) {
+                        basePart.setStaticSchemaKey((RegistryKeyProperty)msg.getNewValue());
+                    } else {
+                        basePart.setStaticSchemaKey(EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty());
+                    }
+                }
+					// End of user code
 			
+					// Start of user code for dynamicSchemaKey live update
+                if (EsbPackage.eINSTANCE.getValidateSchema_ValidateDynamicSchemaKey().equals(msg.getFeature())
+                        && msg.getNotifier().equals(semanticObject) && basePart != null
+                        && isAccessible(EsbViewsRepository.ValidateSchema.Properties.dynamicSchemaKey)) {
+                    if (msg.getNewValue() != null) {
+                        basePart.setDynamicSchemaKey((NamespacedProperty)msg.getNewValue());
+                    } else {
+                        basePart.setDynamicSchemaKey(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+                    }
+                }
+					// End of user code
+			
+                
 		}
 	}
 
@@ -206,7 +280,9 @@ public class ValidateSchemaPropertiesEditionComponent extends SinglePartProperti
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			EsbPackage.eINSTANCE.getValidateSchema_ValidateSchemaKeyType(),
-			EsbPackage.eINSTANCE.getValidateSchema_SchemaKey()		);
+			EsbPackage.eINSTANCE.getValidateSchema_SchemaKey(),
+			EsbPackage.eINSTANCE.getValidateSchema_ValidateStaticSchemaKey(),
+			EsbPackage.eINSTANCE.getValidateSchema_ValidateDynamicSchemaKey()		);
 		return new NotificationFilter[] {filter,};
 	}
 

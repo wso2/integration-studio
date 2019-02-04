@@ -6,6 +6,8 @@ package org.wso2.developerstudio.eclipse.gmf.esb.parts;
 // Start of user code for imports
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.Enumerator;
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 
 
 // End of user code
@@ -106,17 +108,24 @@ public interface EnrichMediatorPropertiesEditionPart {
 
 
 	/**
-	 * @return the sourceProperty
+	 * @return the inlineType
 	 * 
 	 */
-	public String getSourceProperty();
+	public Enumerator getInlineType();
 
 	/**
-	 * Defines a new sourceProperty
-	 * @param newValue the new sourceProperty to set
+	 * Init the inlineType
+	 * @param input the viewer input
+	 * @param current the current value
+	 */
+	public void initInlineType(Object input, Enumerator current);
+
+	/**
+	 * Defines a new inlineType
+	 * @param newValue the new inlineType to set
 	 * 
 	 */
-	public void setSourceProperty(String newValue);
+	public void setInlineType(Enumerator newValue);
 
 
 	/**
@@ -131,6 +140,20 @@ public interface EnrichMediatorPropertiesEditionPart {
 	 * 
 	 */
 	public void setSourceXML(String newValue);
+
+
+	/**
+	 * @return the sourceProperty
+	 * 
+	 */
+	public String getSourceProperty();
+
+	/**
+	 * Defines a new sourceProperty
+	 * @param newValue the new sourceProperty to set
+	 * 
+	 */
+	public void setSourceProperty(String newValue);
 
 
 	/**
@@ -189,29 +212,24 @@ public interface EnrichMediatorPropertiesEditionPart {
 	public void setTargetProperty(String newValue);
 
 
-	/**
-	 * @return the inlineType
-	 * 
-	 */
-	public Enumerator getInlineType();
-
-	/**
-	 * Init the inlineType
-	 * @param input the viewer input
-	 * @param current the current value
-	 */
-	public void initInlineType(Object input, Enumerator current);
-
-	/**
-	 * Defines a new inlineType
-	 * @param newValue the new inlineType to set
-	 * 
-	 */
-	public void setInlineType(Enumerator newValue);
 
 
+	// Start of user code for sourceXPath specific getters and setters declaration
+	public NamespacedProperty getSourceXPath();
+    
+    public void setSourceXPath(NamespacedProperty nameSpacedProperty);
+	// End of user code
+	// Start of user code for inlineRegistryKey specific getters and setters declaration
+    public RegistryKeyProperty getInlineRegistryKey();
+    
+    public void setInlineRegistryKey(RegistryKeyProperty registryKeyProperty);
+	// End of user code
+	// Start of user code for targetXPath specific getters and setters declaration
+    public NamespacedProperty getTargetXPath();
+    
+    public void setTargetXPath(NamespacedProperty nameSpacedProperty);
 
-
+	// End of user code
 
 	/**
 	 * Returns the internationalized title text.

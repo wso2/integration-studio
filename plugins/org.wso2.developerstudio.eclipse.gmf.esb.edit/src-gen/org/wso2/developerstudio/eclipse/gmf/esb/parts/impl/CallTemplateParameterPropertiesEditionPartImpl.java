@@ -533,7 +533,6 @@ public class CallTemplateParameterPropertiesEditionPartImpl extends CompositePro
             showEntry(parameterValueElements, false);
         }
         view.layout(true, true);
-        view.pack();
     }
 
     public void clearElements() {
@@ -551,7 +550,6 @@ public class CallTemplateParameterPropertiesEditionPartImpl extends CompositePro
         }
         if (layout) {
             view.layout(true, true);
-            view.pack();
         }
     }
 
@@ -563,7 +561,6 @@ public class CallTemplateParameterPropertiesEditionPartImpl extends CompositePro
         }
         if (layout) {
             view.layout(true, true);
-            view.pack();
         }
     }
 	// End of user code

@@ -59,7 +59,7 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.FilterMediatorPropertiesEditionPart;
 
@@ -80,6 +80,14 @@ public class FilterMediatorPropertiesEditionPartImpl extends CompositeProperties
 	protected Button reverse;
 	protected EMFComboViewer conditionType;
 	protected Text regex;
+	// Start of user code  for XPath widgets declarations
+	
+	// End of user code
+
+	// Start of user code  for Source widgets declarations
+	
+	// End of user code
+
 
 
 
@@ -123,6 +131,8 @@ public class FilterMediatorPropertiesEditionPartImpl extends CompositeProperties
 		propertiesStep.addStep(EsbViewsRepository.FilterMediator.Properties.reverse);
 		propertiesStep.addStep(EsbViewsRepository.FilterMediator.Properties.conditionType);
 		propertiesStep.addStep(EsbViewsRepository.FilterMediator.Properties.regex);
+		propertiesStep.addStep(EsbViewsRepository.FilterMediator.Properties.xPath);
+		propertiesStep.addStep(EsbViewsRepository.FilterMediator.Properties.source);
 		
 		
 		composer = new PartComposer(filterMediatorStep) {
@@ -147,6 +157,12 @@ public class FilterMediatorPropertiesEditionPartImpl extends CompositeProperties
 				if (key == EsbViewsRepository.FilterMediator.Properties.regex) {
 					return createRegexText(parent);
 				}
+				// Start of user code for XPath addToPart creation
+				
+				// End of user code
+				// Start of user code for Source addToPart creation
+				
+				// End of user code
 				return parent;
 			}
 		};
@@ -581,6 +597,14 @@ public class FilterMediatorPropertiesEditionPartImpl extends CompositeProperties
 
 
 
+	// Start of user code for XPath specific getters and setters implementation
+	
+	// End of user code
+
+	// Start of user code for Source specific getters and setters implementation
+	
+	// End of user code
+
 	/**
 	 * {@inheritDoc}
 	 *
@@ -592,7 +616,29 @@ public class FilterMediatorPropertiesEditionPartImpl extends CompositeProperties
 	}
 
 	// Start of user code additional methods
-	
+    @Override
+    public NamespacedProperty getXPath() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void setXPath(NamespacedProperty nameSpacedProperty) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public NamespacedProperty getSource() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void setSource(NamespacedProperty nameSpacedProperty) {
+        // TODO Auto-generated method stub
+        
+    }
 	// End of user code
 
 

@@ -1354,7 +1354,6 @@ public class IterateMediatorPropertiesEditionPartForm extends SectionPropertiesE
         }
 
         view.layout(true, true);
-        view.pack();
     }
 
     // End of user code

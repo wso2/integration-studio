@@ -54,9 +54,11 @@ import org.eclipse.jface.viewers.ViewerFilter;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.KeyType;
 import org.wso2.developerstudio.eclipse.gmf.esb.Mediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.Sequence;
 import org.wso2.developerstudio.eclipse.gmf.esb.SequenceOutputConnector;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.SequencePropertiesEditionPart;
 
@@ -142,6 +144,18 @@ public class SequencePropertiesEditionComponent extends SinglePartPropertiesEdit
 			if (isAccessible(EsbViewsRepository.Sequence.Properties.referringSequenceType)) {
 				basePart.initReferringSequenceType(EEFUtils.choiceOfValues(sequence, EsbPackage.eINSTANCE.getSequence_ReferringSequenceType()), sequence.getReferringSequenceType());
 			}
+			// Start of user code  for staticReferenceKey command update
+			if (isAccessible(EsbViewsRepository.Sequence.Properties.staticReferenceKey)) {
+				basePart.setStaticReferenceKey(sequence.getStaticReferenceKey());
+			}
+			// End of user code
+			
+			// Start of user code  for dynamicReferenceKey command update
+			if (isAccessible(EsbViewsRepository.Sequence.Properties.dynamicReferenceKey)) {
+				basePart.setDynamicReferenceKey(sequence.getDynamicReferenceKey());
+			}
+			// End of user code
+			
 			// init filters
 			
 			
@@ -181,6 +195,12 @@ public class SequencePropertiesEditionComponent extends SinglePartPropertiesEdit
 			
 			
 			
+			// Start of user code  for staticReferenceKey filter update
+			// End of user code
+			
+			// Start of user code  for dynamicReferenceKey filter update
+			// End of user code
+			
 			// init values for referenced views
 			
 			// init filters for referenced views
@@ -188,6 +208,8 @@ public class SequencePropertiesEditionComponent extends SinglePartPropertiesEdit
 		}
 		setInitializing(false);
 	}
+
+
 
 
 
@@ -235,6 +257,12 @@ public class SequencePropertiesEditionComponent extends SinglePartPropertiesEdit
 		}
 		if (editorKey == EsbViewsRepository.Sequence.Properties.referringSequenceType) {
 			return EsbPackage.eINSTANCE.getSequence_ReferringSequenceType();
+		}
+		if (editorKey == EsbViewsRepository.Sequence.Properties.staticReferenceKey) {
+			return EsbPackage.eINSTANCE.getSequence_StaticReferenceKey();
+		}
+		if (editorKey == EsbViewsRepository.Sequence.Properties.dynamicReferenceKey) {
+			return EsbPackage.eINSTANCE.getSequence_DynamicReferenceKey();
 		}
 		return super.associatedFeature(editorKey);
 	}
@@ -323,6 +351,28 @@ public class SequencePropertiesEditionComponent extends SinglePartPropertiesEdit
 		if (EsbViewsRepository.Sequence.Properties.referringSequenceType == event.getAffectedEditor()) {
 			sequence.setReferringSequenceType((KeyType)event.getNewValue());
 		}
+		if (EsbViewsRepository.Sequence.Properties.staticReferenceKey == event.getAffectedEditor()) {
+			// Start of user code for updateStaticReferenceKey method body
+			if (event.getNewValue() != null) {
+				RegistryKeyProperty rkp = (RegistryKeyProperty) event.getNewValue();
+				sequence.setStaticReferenceKey(rkp);
+			} else {
+				sequence.setStaticReferenceKey(EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty());
+			}
+			// End of user code
+			
+		}
+		if (EsbViewsRepository.Sequence.Properties.dynamicReferenceKey == event.getAffectedEditor()) {
+			// Start of user code for updateDynamicReferenceKey method body
+			if (event.getNewValue() != null) {
+                NamespacedProperty nsp = (NamespacedProperty) event.getNewValue();
+                sequence.setDynamicReferenceKey(nsp);
+            } else {
+            	sequence.setDynamicReferenceKey(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+            }
+			// End of user code
+			
+		}
 	}
 
 	/**
@@ -382,6 +432,30 @@ public class SequencePropertiesEditionComponent extends SinglePartPropertiesEdit
 			if (EsbPackage.eINSTANCE.getSequence_ReferringSequenceType().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EsbViewsRepository.Sequence.Properties.referringSequenceType))
 				basePart.setReferringSequenceType((KeyType)msg.getNewValue());
 			
+					// Start of user code for staticReferenceKey live update
+			if (EsbPackage.eINSTANCE.getSequence_StaticReferenceKey().equals(msg.getFeature())
+					&& msg.getNotifier().equals(semanticObject) && basePart != null
+					&& isAccessible(EsbViewsRepository.Sequence.Properties.staticReferenceKey)) {
+				if (msg.getNewValue() != null) {
+					basePart.setStaticReferenceKey((RegistryKeyProperty) msg.getNewValue());
+				} else {
+					basePart.setStaticReferenceKey(EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty());
+				}
+			}
+					// End of user code
+			
+					// Start of user code for dynamicReferenceKey live update
+			if (EsbPackage.eINSTANCE.getSequence_DynamicReferenceKey().equals(msg.getFeature())
+					&& msg.getNotifier().equals(semanticObject) && basePart != null
+					&& isAccessible(EsbViewsRepository.Sequence.Properties.dynamicReferenceKey)) {
+				if (msg.getNewValue() != null) {
+					basePart.setDynamicReferenceKey((NamespacedProperty) msg.getNewValue());
+				} else {
+					basePart.setDynamicReferenceKey(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+				}
+			}
+					// End of user code
+			
 			
 		}
 	}
@@ -403,7 +477,9 @@ public class SequencePropertiesEditionComponent extends SinglePartPropertiesEdit
 			EsbPackage.eINSTANCE.getSequence_IncludedMediators(),
 			EsbPackage.eINSTANCE.getSequence_ReceiveSequence(),
 			EsbPackage.eINSTANCE.getSequence_Duplicate(),
-			EsbPackage.eINSTANCE.getSequence_ReferringSequenceType()		);
+			EsbPackage.eINSTANCE.getSequence_ReferringSequenceType(),
+			EsbPackage.eINSTANCE.getSequence_StaticReferenceKey(),
+			EsbPackage.eINSTANCE.getSequence_DynamicReferenceKey()		);
 		return new NotificationFilter[] {filter,};
 	}
 

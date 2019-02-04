@@ -12,6 +12,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 
 import org.eclipse.jface.viewers.ViewerFilter;
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 
 
 // End of user code
@@ -243,6 +245,16 @@ public interface SequencePropertiesEditionPart {
 
 
 
+	// Start of user code for staticReferenceKey specific getters and setters declaration
+    public RegistryKeyProperty getStaticReferenceKey();
+    
+    public void setStaticReferenceKey(RegistryKeyProperty registryKeyProperty);
+	// End of user code
+	// Start of user code for dynamicReferenceKey specific getters and setters declaration
+	public NamespacedProperty getdDynamicReferenceKey();
+    
+    public void setDynamicReferenceKey(NamespacedProperty nameSpacedProperty);
+	// End of user code
 
 	/**
 	 * Returns the internationalized title text.

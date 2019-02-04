@@ -69,6 +69,7 @@ import org.eclipse.swt.layout.GridLayout;
 
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Text;
 
 import org.eclipse.ui.forms.widgets.Form;
@@ -77,11 +78,15 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.FilterMediatorConditionType;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.ThrottleMediatorPropertiesEditionPart;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.developerstudio.esb.form.editors.article.providers.NamedEntityDescriptor;
 
 // End of user code
 
@@ -91,19 +96,49 @@ import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
  */
 public class ThrottleMediatorPropertiesEditionPartForm extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, ThrottleMediatorPropertiesEditionPart {
 
-	protected Text description;
 	protected Text commentsList;
 	protected Button editCommentsList;
 	protected EList commentsListList;
 	protected Button reverse;
 	protected Text groupId;
+	protected Text description;
+	protected EMFComboViewer onAcceptBranchsequenceType;
+	// Start of user code  for OnAcceptBranchSequenceKey widgets declarations
+    protected RegistryKeyProperty onAcceptBranchSequenceKey;
+    protected Text onAcceptBranchSequenceKeyText;
+	// End of user code
+
+	protected EMFComboViewer onRejectBranchsequenceType;
+	// Start of user code  for OnRejectBranchSequenceKey widgets declarations
+    protected RegistryKeyProperty onRejectBranchSequenceKey;
+    protected Text onRejectBranchSequenceKeyText;
+	// End of user code
+
 	protected EMFComboViewer policyType;
 	protected Text maxConcurrentAccessCount;
 	protected ReferencesTable policyEntries;
 	protected List<ViewerFilter> policyEntriesBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> policyEntriesFilters = new ArrayList<ViewerFilter>();
-	protected EMFComboViewer onAcceptBranchsequenceType;
-	protected EMFComboViewer onRejectBranchsequenceType;
+	// Start of user code  for policyKey widgets declarations
+    protected RegistryKeyProperty policyKey;
+    protected Text policyKeyText;
+    protected Control[] groupIDElements;
+    protected Control[] descriptionElements;
+    protected Control[] onAcceptBranchSequenceTypeElements;
+    protected Control[] onAcceptBranchSequenceKeyElements;
+    protected Control[] onRejectBranchSequenceTypeElements;
+    protected Control[] onRejectBranchSequenceKeyElements;
+    protected Control[] policyTypeElements;
+    protected Control[] maxConcurrentElements;
+    protected Control[] policyEntriesElements;
+    protected Control[] policyKeyElements;
+    protected Composite generalGroup;
+    protected Composite miscGroup;
+    protected Composite onAcceptGroup;
+    protected Composite onRejectGroup;
+    protected Composite throttlePolicyGroup;
+	// End of user code
+
 
 
 
@@ -148,153 +183,126 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		CompositionSequence throttleMediatorStep = new BindingCompositionSequence(propertiesEditionComponent);
-		CompositionStep propertiesStep = throttleMediatorStep.addStep(EsbViewsRepository.ThrottleMediator.Properties.class);
-		propertiesStep.addStep(EsbViewsRepository.ThrottleMediator.Properties.description);
-		propertiesStep.addStep(EsbViewsRepository.ThrottleMediator.Properties.commentsList);
-		propertiesStep.addStep(EsbViewsRepository.ThrottleMediator.Properties.reverse);
-		propertiesStep.addStep(EsbViewsRepository.ThrottleMediator.Properties.groupId);
-		propertiesStep.addStep(EsbViewsRepository.ThrottleMediator.Properties.policyType);
-		propertiesStep.addStep(EsbViewsRepository.ThrottleMediator.Properties.maxConcurrentAccessCount);
-		propertiesStep.addStep(EsbViewsRepository.ThrottleMediator.Properties.policyEntries);
-		propertiesStep.addStep(EsbViewsRepository.ThrottleMediator.Properties.onAcceptBranchsequenceType);
-		propertiesStep.addStep(EsbViewsRepository.ThrottleMediator.Properties.onRejectBranchsequenceType);
+		CompositionStep generalStep = throttleMediatorStep.addStep(EsbViewsRepository.ThrottleMediator.General.class);
+		generalStep.addStep(EsbViewsRepository.ThrottleMediator.General.commentsList);
+		generalStep.addStep(EsbViewsRepository.ThrottleMediator.General.reverse);
+		generalStep.addStep(EsbViewsRepository.ThrottleMediator.General.groupId);
+		
+		throttleMediatorStep
+			.addStep(EsbViewsRepository.ThrottleMediator.Misc.class)
+			.addStep(EsbViewsRepository.ThrottleMediator.Misc.description);
+		
+		CompositionStep onAcceptStep = throttleMediatorStep.addStep(EsbViewsRepository.ThrottleMediator.OnAccept.class);
+		onAcceptStep.addStep(EsbViewsRepository.ThrottleMediator.OnAccept.onAcceptBranchsequenceType);
+		onAcceptStep.addStep(EsbViewsRepository.ThrottleMediator.OnAccept.onAcceptBranchSequenceKey);
+		
+		CompositionStep onRejectStep = throttleMediatorStep.addStep(EsbViewsRepository.ThrottleMediator.OnReject.class);
+		onRejectStep.addStep(EsbViewsRepository.ThrottleMediator.OnReject.onRejectBranchsequenceType);
+		onRejectStep.addStep(EsbViewsRepository.ThrottleMediator.OnReject.onRejectBranchSequenceKey);
+		
+		CompositionStep throttlePolicyStep = throttleMediatorStep.addStep(EsbViewsRepository.ThrottleMediator.ThrottlePolicy.class);
+		throttlePolicyStep.addStep(EsbViewsRepository.ThrottleMediator.ThrottlePolicy.policyType);
+		throttlePolicyStep.addStep(EsbViewsRepository.ThrottleMediator.ThrottlePolicy.maxConcurrentAccessCount);
+		throttlePolicyStep.addStep(EsbViewsRepository.ThrottleMediator.ThrottlePolicy.policyEntries);
+		throttlePolicyStep.addStep(EsbViewsRepository.ThrottleMediator.ThrottlePolicy.policyKey);
 		
 		
 		composer = new PartComposer(throttleMediatorStep) {
 
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
-				if (key == EsbViewsRepository.ThrottleMediator.Properties.class) {
-					return createPropertiesGroup(widgetFactory, parent);
+				if (key == EsbViewsRepository.ThrottleMediator.General.class) {
+					return createGeneralGroup(widgetFactory, parent);
 				}
-				if (key == EsbViewsRepository.ThrottleMediator.Properties.description) {
-					return createDescriptionText(widgetFactory, parent);
-				}
-				if (key == EsbViewsRepository.ThrottleMediator.Properties.commentsList) {
+				if (key == EsbViewsRepository.ThrottleMediator.General.commentsList) {
 					return createCommentsListMultiValuedEditor(widgetFactory, parent);
 				}
-				if (key == EsbViewsRepository.ThrottleMediator.Properties.reverse) {
+				if (key == EsbViewsRepository.ThrottleMediator.General.reverse) {
 					return createReverseCheckbox(widgetFactory, parent);
 				}
-				if (key == EsbViewsRepository.ThrottleMediator.Properties.groupId) {
+				if (key == EsbViewsRepository.ThrottleMediator.General.groupId) {
 					return createGroupIdText(widgetFactory, parent);
 				}
-				if (key == EsbViewsRepository.ThrottleMediator.Properties.policyType) {
-					return createPolicyTypeEMFComboViewer(widgetFactory, parent);
+				if (key == EsbViewsRepository.ThrottleMediator.Misc.class) {
+					return createMiscGroup(widgetFactory, parent);
 				}
-				if (key == EsbViewsRepository.ThrottleMediator.Properties.maxConcurrentAccessCount) {
-					return createMaxConcurrentAccessCountText(widgetFactory, parent);
+				if (key == EsbViewsRepository.ThrottleMediator.Misc.description) {
+					return createDescriptionText(widgetFactory, parent);
 				}
-				if (key == EsbViewsRepository.ThrottleMediator.Properties.policyEntries) {
-					return createPolicyEntriesTableComposition(widgetFactory, parent);
+				if (key == EsbViewsRepository.ThrottleMediator.OnAccept.class) {
+					return createOnAcceptGroup(widgetFactory, parent);
 				}
-				if (key == EsbViewsRepository.ThrottleMediator.Properties.onAcceptBranchsequenceType) {
+				if (key == EsbViewsRepository.ThrottleMediator.OnAccept.onAcceptBranchsequenceType) {
 					return createOnAcceptBranchsequenceTypeEMFComboViewer(widgetFactory, parent);
 				}
-				if (key == EsbViewsRepository.ThrottleMediator.Properties.onRejectBranchsequenceType) {
+				// Start of user code for OnAcceptBranchSequenceKey addToPart creation
+                if(key == EsbViewsRepository.ThrottleMediator.OnAccept.onAcceptBranchSequenceKey) {
+                    return createOnAcceptBranchSequenceKey(widgetFactory, parent);
+                }
+				// End of user code
+				if (key == EsbViewsRepository.ThrottleMediator.OnReject.class) {
+					//FIXME INVALID CASE INTO template public implementation(editor : ViewElement) in Form Impl for ViewElement onReject
+				}
+				if (key == EsbViewsRepository.ThrottleMediator.OnReject.onRejectBranchsequenceType) {
 					return createOnRejectBranchsequenceTypeEMFComboViewer(widgetFactory, parent);
 				}
+				// Start of user code for OnRejectBranchSequenceKey addToPart creation
+                if(key == EsbViewsRepository.ThrottleMediator.OnReject.onRejectBranchSequenceKey) {
+                    return createOnRejectBranchSequenceKey(widgetFactory, parent);
+                }
+				// End of user code
+				if (key == EsbViewsRepository.ThrottleMediator.ThrottlePolicy.class) {
+					return createThrottlePolicyGroup(widgetFactory, parent);
+				}
+				if (key == EsbViewsRepository.ThrottleMediator.ThrottlePolicy.policyType) {
+					return createPolicyTypeEMFComboViewer(widgetFactory, parent);
+				}
+				if (key == EsbViewsRepository.ThrottleMediator.ThrottlePolicy.maxConcurrentAccessCount) {
+					return createMaxConcurrentAccessCountText(widgetFactory, parent);
+				}
+				if (key == EsbViewsRepository.ThrottleMediator.ThrottlePolicy.policyEntries) {
+					return createPolicyEntriesTableComposition(widgetFactory, parent);
+				}
+				// Start of user code for policyKey addToPart creation
+                if(key == EsbViewsRepository.ThrottleMediator.ThrottlePolicy.policyKey) {
+                    return createPolicyKey(widgetFactory, parent);
+                }
+				// End of user code
 				return parent;
 			}
 		};
 		composer.compose(view);
 	}
-	/**
-	 * 
-	 */
-	protected Composite createPropertiesGroup(FormToolkit widgetFactory, final Composite parent) {
-		Section propertiesSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
-		propertiesSection.setText(EsbMessages.ThrottleMediatorPropertiesEditionPart_PropertiesGroupLabel);
-		GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
-		propertiesSectionData.horizontalSpan = 3;
-		propertiesSection.setLayoutData(propertiesSectionData);
-		Composite propertiesGroup = widgetFactory.createComposite(propertiesSection);
-		GridLayout propertiesGroupLayout = new GridLayout();
-		propertiesGroupLayout.numColumns = 3;
-		propertiesGroup.setLayout(propertiesGroupLayout);
-		propertiesSection.setClient(propertiesGroup);
-		return propertiesGroup;
+
+
+    /**
+     * @generated NOT
+     */
+	protected Composite createGeneralGroup(FormToolkit widgetFactory, final Composite parent) {
+		Section generalSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
+		generalSection.setText(EsbMessages.ThrottleMediatorPropertiesEditionPart_GeneralGroupLabel);
+		GridData generalSectionData = new GridData(GridData.FILL_HORIZONTAL);
+		generalSectionData.horizontalSpan = 3;
+		generalSection.setLayoutData(generalSectionData);
+		generalGroup = widgetFactory.createComposite(generalSection);
+		GridLayout generalGroupLayout = new GridLayout();
+		generalGroupLayout.numColumns = 3;
+		generalGroup.setLayout(generalGroupLayout);
+		generalSection.setClient(generalGroup);
+		return generalGroup;
 	}
 
-	
-	protected Composite createDescriptionText(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EsbViewsRepository.ThrottleMediator.Properties.description, EsbMessages.ThrottleMediatorPropertiesEditionPart_DescriptionLabel);
-		description = widgetFactory.createText(parent, ""); //$NON-NLS-1$
-		description.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
-		widgetFactory.paintBordersFor(parent);
-		GridData descriptionData = new GridData(GridData.FILL_HORIZONTAL);
-		description.setLayoutData(descriptionData);
-		description.addFocusListener(new FocusAdapter() {
-			/**
-			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null) {
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
-							ThrottleMediatorPropertiesEditionPartForm.this,
-							EsbViewsRepository.ThrottleMediator.Properties.description,
-							PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, description.getText()));
-					propertiesEditionComponent
-							.firePropertiesChanged(new PropertiesEditionEvent(
-									ThrottleMediatorPropertiesEditionPartForm.this,
-									EsbViewsRepository.ThrottleMediator.Properties.description,
-									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, description.getText()));
-				}
-			}
-
-			/**
-			 * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
-			 */
-			@Override
-			public void focusGained(FocusEvent e) {
-				if (propertiesEditionComponent != null) {
-					propertiesEditionComponent
-							.firePropertiesChanged(new PropertiesEditionEvent(
-									ThrottleMediatorPropertiesEditionPartForm.this,
-									null,
-									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_GAINED,
-									null, null));
-				}
-			}
-		});
-		description.addKeyListener(new KeyAdapter() {
-			/**
-			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ThrottleMediatorPropertiesEditionPartForm.this, EsbViewsRepository.ThrottleMediator.Properties.description, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, description.getText()));
-				}
-			}
-		});
-		EditingUtils.setID(description, EsbViewsRepository.ThrottleMediator.Properties.description);
-		EditingUtils.setEEFtype(description, "eef::Text"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.ThrottleMediator.Properties.description, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-		// Start of user code for createDescriptionText
-
-		// End of user code
-		return parent;
-	}
-
-	/**
-	 * 
-	 */
+    /**
+     * @generated NOT
+     */
 	protected Composite createCommentsListMultiValuedEditor(FormToolkit widgetFactory, Composite parent) {
 		commentsList = widgetFactory.createText(parent, "", SWT.READ_ONLY); //$NON-NLS-1$
 		GridData commentsListData = new GridData(GridData.FILL_HORIZONTAL);
 		commentsListData.horizontalSpan = 2;
 		commentsList.setLayoutData(commentsListData);
-		EditingUtils.setID(commentsList, EsbViewsRepository.ThrottleMediator.Properties.commentsList);
+		EditingUtils.setID(commentsList, EsbViewsRepository.ThrottleMediator.General.commentsList);
 		EditingUtils.setEEFtype(commentsList, "eef::MultiValuedEditor::field"); //$NON-NLS-1$
-		editCommentsList = widgetFactory.createButton(parent, getDescription(EsbViewsRepository.ThrottleMediator.Properties.commentsList, EsbMessages.ThrottleMediatorPropertiesEditionPart_CommentsListLabel), SWT.NONE);
+		editCommentsList = widgetFactory.createButton(parent, getDescription(EsbViewsRepository.ThrottleMediator.General.commentsList, EsbMessages.ThrottleMediatorPropertiesEditionPart_CommentsListLabel), SWT.NONE);
 		GridData editCommentsListData = new GridData();
 		editCommentsList.setLayoutData(editCommentsListData);
 		editCommentsList.addSelectionListener(new SelectionAdapter() {
@@ -317,12 +325,12 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
 						commentsListList = new BasicEList();
 					}
 					commentsList.setText(commentsListList.toString());
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ThrottleMediatorPropertiesEditionPartForm.this, EsbViewsRepository.ThrottleMediator.Properties.commentsList, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new BasicEList(commentsListList)));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ThrottleMediatorPropertiesEditionPartForm.this, EsbViewsRepository.ThrottleMediator.General.commentsList, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new BasicEList(commentsListList)));
 					setHasChanged(true);
 				}
 			}
 		});
-		EditingUtils.setID(editCommentsList, EsbViewsRepository.ThrottleMediator.Properties.commentsList);
+		EditingUtils.setID(editCommentsList, EsbViewsRepository.ThrottleMediator.General.commentsList);
 		EditingUtils.setEEFtype(editCommentsList, "eef::MultiValuedEditor::browsebutton"); //$NON-NLS-1$
 		// Start of user code for createCommentsListMultiValuedEditor
 
@@ -332,7 +340,7 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
 
 	
 	protected Composite createReverseCheckbox(FormToolkit widgetFactory, Composite parent) {
-		reverse = widgetFactory.createButton(parent, getDescription(EsbViewsRepository.ThrottleMediator.Properties.reverse, EsbMessages.ThrottleMediatorPropertiesEditionPart_ReverseLabel), SWT.CHECK);
+		reverse = widgetFactory.createButton(parent, getDescription(EsbViewsRepository.ThrottleMediator.General.reverse, EsbMessages.ThrottleMediatorPropertiesEditionPart_ReverseLabel), SWT.CHECK);
 		reverse.addSelectionListener(new SelectionAdapter() {
 
 			/**
@@ -343,25 +351,27 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ThrottleMediatorPropertiesEditionPartForm.this, EsbViewsRepository.ThrottleMediator.Properties.reverse, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(reverse.getSelection())));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ThrottleMediatorPropertiesEditionPartForm.this, EsbViewsRepository.ThrottleMediator.General.reverse, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(reverse.getSelection())));
 			}
 
 		});
 		GridData reverseData = new GridData(GridData.FILL_HORIZONTAL);
 		reverseData.horizontalSpan = 2;
 		reverse.setLayoutData(reverseData);
-		EditingUtils.setID(reverse, EsbViewsRepository.ThrottleMediator.Properties.reverse);
+		EditingUtils.setID(reverse, EsbViewsRepository.ThrottleMediator.General.reverse);
 		EditingUtils.setEEFtype(reverse, "eef::Checkbox"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.ThrottleMediator.Properties.reverse, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.ThrottleMediator.General.reverse, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createReverseCheckbox
 
 		// End of user code
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createGroupIdText(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EsbViewsRepository.ThrottleMediator.Properties.groupId, EsbMessages.ThrottleMediatorPropertiesEditionPart_GroupIdLabel);
+		Control itemLabel = createDescription(parent, EsbViewsRepository.ThrottleMediator.General.groupId, EsbMessages.ThrottleMediatorPropertiesEditionPart_GroupIdLabel);
 		groupId = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		groupId.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -378,12 +388,12 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
 				if (propertiesEditionComponent != null) {
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
 							ThrottleMediatorPropertiesEditionPartForm.this,
-							EsbViewsRepository.ThrottleMediator.Properties.groupId,
+							EsbViewsRepository.ThrottleMediator.General.groupId,
 							PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, groupId.getText()));
 					propertiesEditionComponent
 							.firePropertiesChanged(new PropertiesEditionEvent(
 									ThrottleMediatorPropertiesEditionPartForm.this,
-									EsbViewsRepository.ThrottleMediator.Properties.groupId,
+									EsbViewsRepository.ThrottleMediator.General.groupId,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
 									null, groupId.getText()));
 				}
@@ -414,22 +424,235 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
 					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ThrottleMediatorPropertiesEditionPartForm.this, EsbViewsRepository.ThrottleMediator.Properties.groupId, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, groupId.getText()));
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ThrottleMediatorPropertiesEditionPartForm.this, EsbViewsRepository.ThrottleMediator.General.groupId, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, groupId.getText()));
 				}
 			}
 		});
-		EditingUtils.setID(groupId, EsbViewsRepository.ThrottleMediator.Properties.groupId);
+		EditingUtils.setID(groupId, EsbViewsRepository.ThrottleMediator.General.groupId);
 		EditingUtils.setEEFtype(groupId, "eef::Text"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.ThrottleMediator.Properties.groupId, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		Control itemHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.ThrottleMediator.General.groupId, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createGroupIdText
-
+		groupIDElements = new Control[] {itemLabel, groupId, itemHelp};        
 		// End of user code
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
+	protected Composite createMiscGroup(FormToolkit widgetFactory, final Composite parent) {
+		Section miscSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
+		miscSection.setText(EsbMessages.ThrottleMediatorPropertiesEditionPart_MiscGroupLabel);
+		GridData miscSectionData = new GridData(GridData.FILL_HORIZONTAL);
+		miscSectionData.horizontalSpan = 3;
+		miscSection.setLayoutData(miscSectionData);
+		Composite miscGroup = widgetFactory.createComposite(miscSection);
+		GridLayout miscGroupLayout = new GridLayout();
+		miscGroupLayout.numColumns = 3;
+		miscGroup.setLayout(miscGroupLayout);
+		miscSection.setClient(miscGroup);
+		return miscGroup;
+	}
+
+    /**
+     * @generated NOT
+     */
+	protected Composite createDescriptionText(FormToolkit widgetFactory, Composite parent) {
+		Control itemLabel = createDescription(parent, EsbViewsRepository.ThrottleMediator.Misc.description, EsbMessages.ThrottleMediatorPropertiesEditionPart_DescriptionLabel);
+		description = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+		description.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+		widgetFactory.paintBordersFor(parent);
+		GridData descriptionData = new GridData(GridData.FILL_HORIZONTAL);
+		description.setLayoutData(descriptionData);
+		description.addFocusListener(new FocusAdapter() {
+			/**
+			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void focusLost(FocusEvent e) {
+				if (propertiesEditionComponent != null) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+							ThrottleMediatorPropertiesEditionPartForm.this,
+							EsbViewsRepository.ThrottleMediator.Misc.description,
+							PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, description.getText()));
+					propertiesEditionComponent
+							.firePropertiesChanged(new PropertiesEditionEvent(
+									ThrottleMediatorPropertiesEditionPartForm.this,
+									EsbViewsRepository.ThrottleMediator.Misc.description,
+									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
+									null, description.getText()));
+				}
+			}
+
+			/**
+			 * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+			 */
+			@Override
+			public void focusGained(FocusEvent e) {
+				if (propertiesEditionComponent != null) {
+					propertiesEditionComponent
+							.firePropertiesChanged(new PropertiesEditionEvent(
+									ThrottleMediatorPropertiesEditionPartForm.this,
+									null,
+									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_GAINED,
+									null, null));
+				}
+			}
+		});
+		description.addKeyListener(new KeyAdapter() {
+			/**
+			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void keyPressed(KeyEvent e) {
+				if (e.character == SWT.CR) {
+					if (propertiesEditionComponent != null)
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ThrottleMediatorPropertiesEditionPartForm.this, EsbViewsRepository.ThrottleMediator.Misc.description, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, description.getText()));
+				}
+			}
+		});
+		EditingUtils.setID(description, EsbViewsRepository.ThrottleMediator.Misc.description);
+		EditingUtils.setEEFtype(description, "eef::Text"); //$NON-NLS-1$
+		Control itemHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.ThrottleMediator.Misc.description, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createDescriptionText
+		descriptionElements = new Control[] {itemLabel, description, itemHelp};  
+		// End of user code
+		return parent;
+	}
+
+    /**
+     * @generated NOT
+     */
+	protected Composite createOnAcceptGroup(FormToolkit widgetFactory, final Composite parent) {
+		Section onAcceptSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
+		onAcceptSection.setText(EsbMessages.ThrottleMediatorPropertiesEditionPart_OnAcceptGroupLabel);
+		GridData onAcceptSectionData = new GridData(GridData.FILL_HORIZONTAL);
+		onAcceptSectionData.horizontalSpan = 3;
+		onAcceptSection.setLayoutData(onAcceptSectionData);
+		Composite onAcceptGroup = widgetFactory.createComposite(onAcceptSection);
+		GridLayout onAcceptGroupLayout = new GridLayout();
+		onAcceptGroupLayout.numColumns = 3;
+		onAcceptGroup.setLayout(onAcceptGroupLayout);
+		onAcceptSection.setClient(onAcceptGroup);
+		return onAcceptGroup;
+	}
+
+    /**
+     * @generated NOT
+     */
+	protected Composite createOnAcceptBranchsequenceTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
+		Control itemLabel = createDescription(parent, EsbViewsRepository.ThrottleMediator.OnAccept.onAcceptBranchsequenceType, EsbMessages.ThrottleMediatorPropertiesEditionPart_OnAcceptBranchsequenceTypeLabel);
+		onAcceptBranchsequenceType = new EMFComboViewer(parent);
+		onAcceptBranchsequenceType.setContentProvider(new ArrayContentProvider());
+		onAcceptBranchsequenceType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
+		GridData onAcceptBranchsequenceTypeData = new GridData(GridData.FILL_HORIZONTAL);
+		onAcceptBranchsequenceType.getCombo().setLayoutData(onAcceptBranchsequenceTypeData);
+		onAcceptBranchsequenceType.addSelectionChangedListener(new ISelectionChangedListener() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+			 * 	
+			 */
+			public void selectionChanged(SelectionChangedEvent event) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ThrottleMediatorPropertiesEditionPartForm.this, EsbViewsRepository.ThrottleMediator.OnAccept.onAcceptBranchsequenceType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getOnAcceptBranchsequenceType()));
+			}
+
+		});
+		onAcceptBranchsequenceType.setID(EsbViewsRepository.ThrottleMediator.OnAccept.onAcceptBranchsequenceType);
+		Control itemHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.ThrottleMediator.OnAccept.onAcceptBranchsequenceType, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createOnAcceptBranchsequenceTypeEMFComboViewer
+		onAcceptBranchSequenceTypeElements = new Control[] {itemLabel, onAcceptBranchsequenceType.getCombo(), itemHelp};
+		onAcceptBranchsequenceType.addSelectionChangedListener(new ISelectionChangedListener() {
+            
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+             *  
+             */
+            public void selectionChanged(SelectionChangedEvent event) {
+                validate();
+            }
+        });
+		// End of user code
+		return parent;
+	}
+
+//FIXME INVALID CASE INTO template public additionalImplementation(editor : ViewElement, pec : PropertiesEditionComponent, inputPEC : PropertiesEditionComponent) in Form Impl for ViewElement onReject
+
+    /**
+     * @generated NOT
+     */
+	protected Composite createOnRejectBranchsequenceTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
+		Control itemLabel = createDescription(parent, EsbViewsRepository.ThrottleMediator.OnReject.onRejectBranchsequenceType, EsbMessages.ThrottleMediatorPropertiesEditionPart_OnRejectBranchsequenceTypeLabel);
+		onRejectBranchsequenceType = new EMFComboViewer(parent);
+		onRejectBranchsequenceType.setContentProvider(new ArrayContentProvider());
+		onRejectBranchsequenceType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
+		GridData onRejectBranchsequenceTypeData = new GridData(GridData.FILL_HORIZONTAL);
+		onRejectBranchsequenceType.getCombo().setLayoutData(onRejectBranchsequenceTypeData);
+		onRejectBranchsequenceType.addSelectionChangedListener(new ISelectionChangedListener() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+			 * 	
+			 */
+			public void selectionChanged(SelectionChangedEvent event) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ThrottleMediatorPropertiesEditionPartForm.this, EsbViewsRepository.ThrottleMediator.OnReject.onRejectBranchsequenceType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getOnRejectBranchsequenceType()));
+			}
+
+		});
+		onRejectBranchsequenceType.setID(EsbViewsRepository.ThrottleMediator.OnReject.onRejectBranchsequenceType);
+		Control itemHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.ThrottleMediator.OnReject.onRejectBranchsequenceType, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createOnRejectBranchsequenceTypeEMFComboViewer
+		onRejectBranchSequenceTypeElements = new Control[] {itemLabel, onRejectBranchsequenceType.getCombo(), itemHelp};        
+		onRejectBranchsequenceType.addSelectionChangedListener(new ISelectionChangedListener() {
+            
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+             *  
+             */
+            public void selectionChanged(SelectionChangedEvent event) {
+                validate();
+            }
+        });
+		// End of user code
+		return parent;
+	}
+
+    /**
+     * @generated NOT
+     */
+	protected Composite createThrottlePolicyGroup(FormToolkit widgetFactory, final Composite parent) {
+		Section throttlePolicySection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
+		throttlePolicySection.setText(EsbMessages.ThrottleMediatorPropertiesEditionPart_ThrottlePolicyGroupLabel);
+		GridData throttlePolicySectionData = new GridData(GridData.FILL_HORIZONTAL);
+		throttlePolicySectionData.horizontalSpan = 3;
+		throttlePolicySection.setLayoutData(throttlePolicySectionData);
+		Composite throttlePolicyGroup = widgetFactory.createComposite(throttlePolicySection);
+		GridLayout throttlePolicyGroupLayout = new GridLayout();
+		throttlePolicyGroupLayout.numColumns = 3;
+		throttlePolicyGroup.setLayout(throttlePolicyGroupLayout);
+		throttlePolicySection.setClient(throttlePolicyGroup);
+		return throttlePolicyGroup;
+	}
+
+    /**
+     * @generated NOT
+     */
 	protected Composite createPolicyTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EsbViewsRepository.ThrottleMediator.Properties.policyType, EsbMessages.ThrottleMediatorPropertiesEditionPart_PolicyTypeLabel);
+		Control itemLabel = createDescription(parent, EsbViewsRepository.ThrottleMediator.ThrottlePolicy.policyType, EsbMessages.ThrottleMediatorPropertiesEditionPart_PolicyTypeLabel);
 		policyType = new EMFComboViewer(parent);
 		policyType.setContentProvider(new ArrayContentProvider());
 		policyType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -445,21 +668,35 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ThrottleMediatorPropertiesEditionPartForm.this, EsbViewsRepository.ThrottleMediator.Properties.policyType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getPolicyType()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ThrottleMediatorPropertiesEditionPartForm.this, EsbViewsRepository.ThrottleMediator.ThrottlePolicy.policyType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getPolicyType()));
 			}
 
 		});
-		policyType.setID(EsbViewsRepository.ThrottleMediator.Properties.policyType);
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.ThrottleMediator.Properties.policyType, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		policyType.setID(EsbViewsRepository.ThrottleMediator.ThrottlePolicy.policyType);
+		Control itemHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.ThrottleMediator.ThrottlePolicy.policyType, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createPolicyTypeEMFComboViewer
-
+		policyTypeElements = new Control[] {itemLabel, policyType.getCombo(), itemHelp};        
+		policyType.addSelectionChangedListener(new ISelectionChangedListener() {
+            
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+             *  
+             */
+            public void selectionChanged(SelectionChangedEvent event) {
+                validate();
+            }
+        });
 		// End of user code
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createMaxConcurrentAccessCountText(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EsbViewsRepository.ThrottleMediator.Properties.maxConcurrentAccessCount, EsbMessages.ThrottleMediatorPropertiesEditionPart_MaxConcurrentAccessCountLabel);
+		Control itemLabel = createDescription(parent, EsbViewsRepository.ThrottleMediator.ThrottlePolicy.maxConcurrentAccessCount, EsbMessages.ThrottleMediatorPropertiesEditionPart_MaxConcurrentAccessCountLabel);
 		maxConcurrentAccessCount = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		maxConcurrentAccessCount.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -476,12 +713,12 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
 				if (propertiesEditionComponent != null) {
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
 							ThrottleMediatorPropertiesEditionPartForm.this,
-							EsbViewsRepository.ThrottleMediator.Properties.maxConcurrentAccessCount,
+							EsbViewsRepository.ThrottleMediator.ThrottlePolicy.maxConcurrentAccessCount,
 							PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, maxConcurrentAccessCount.getText()));
 					propertiesEditionComponent
 							.firePropertiesChanged(new PropertiesEditionEvent(
 									ThrottleMediatorPropertiesEditionPartForm.this,
-									EsbViewsRepository.ThrottleMediator.Properties.maxConcurrentAccessCount,
+									EsbViewsRepository.ThrottleMediator.ThrottlePolicy.maxConcurrentAccessCount,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
 									null, maxConcurrentAccessCount.getText()));
 				}
@@ -512,39 +749,41 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
 					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ThrottleMediatorPropertiesEditionPartForm.this, EsbViewsRepository.ThrottleMediator.Properties.maxConcurrentAccessCount, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, maxConcurrentAccessCount.getText()));
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ThrottleMediatorPropertiesEditionPartForm.this, EsbViewsRepository.ThrottleMediator.ThrottlePolicy.maxConcurrentAccessCount, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, maxConcurrentAccessCount.getText()));
 				}
 			}
 		});
-		EditingUtils.setID(maxConcurrentAccessCount, EsbViewsRepository.ThrottleMediator.Properties.maxConcurrentAccessCount);
+		EditingUtils.setID(maxConcurrentAccessCount, EsbViewsRepository.ThrottleMediator.ThrottlePolicy.maxConcurrentAccessCount);
 		EditingUtils.setEEFtype(maxConcurrentAccessCount, "eef::Text"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.ThrottleMediator.Properties.maxConcurrentAccessCount, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		Control itemHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.ThrottleMediator.ThrottlePolicy.maxConcurrentAccessCount, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createMaxConcurrentAccessCountText
-
+		maxConcurrentElements = new Control[] {itemLabel, maxConcurrentAccessCount, itemHelp};        
+        
 		// End of user code
 		return parent;
 	}
 
 	/**
 	 * @param container
-	 * 
-	 */
+     *
+     * @generated NOT
+     */
 	protected Composite createPolicyEntriesTableComposition(FormToolkit widgetFactory, Composite parent) {
-		this.policyEntries = new ReferencesTable(getDescription(EsbViewsRepository.ThrottleMediator.Properties.policyEntries, EsbMessages.ThrottleMediatorPropertiesEditionPart_PolicyEntriesLabel), new ReferencesTableListener() {
+		this.policyEntries = new ReferencesTable(getDescription(EsbViewsRepository.ThrottleMediator.ThrottlePolicy.policyEntries, EsbMessages.ThrottleMediatorPropertiesEditionPart_PolicyEntriesLabel), new ReferencesTableListener() {
 			public void handleAdd() {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ThrottleMediatorPropertiesEditionPartForm.this, EsbViewsRepository.ThrottleMediator.Properties.policyEntries, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ThrottleMediatorPropertiesEditionPartForm.this, EsbViewsRepository.ThrottleMediator.ThrottlePolicy.policyEntries, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
 				policyEntries.refresh();
 			}
 			public void handleEdit(EObject element) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ThrottleMediatorPropertiesEditionPartForm.this, EsbViewsRepository.ThrottleMediator.Properties.policyEntries, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ThrottleMediatorPropertiesEditionPartForm.this, EsbViewsRepository.ThrottleMediator.ThrottlePolicy.policyEntries, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
 				policyEntries.refresh();
 			}
 			public void handleMove(EObject element, int oldIndex, int newIndex) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ThrottleMediatorPropertiesEditionPartForm.this, EsbViewsRepository.ThrottleMediator.Properties.policyEntries, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ThrottleMediatorPropertiesEditionPartForm.this, EsbViewsRepository.ThrottleMediator.ThrottlePolicy.policyEntries, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
 				policyEntries.refresh();
 			}
 			public void handleRemove(EObject element) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ThrottleMediatorPropertiesEditionPartForm.this, EsbViewsRepository.ThrottleMediator.Properties.policyEntries, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ThrottleMediatorPropertiesEditionPartForm.this, EsbViewsRepository.ThrottleMediator.ThrottlePolicy.policyEntries, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
 				policyEntries.refresh();
 			}
 			public void navigateTo(EObject element) { }
@@ -552,13 +791,13 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
 		for (ViewerFilter filter : this.policyEntriesFilters) {
 			this.policyEntries.addFilter(filter);
 		}
-		this.policyEntries.setHelpText(propertiesEditionComponent.getHelpContent(EsbViewsRepository.ThrottleMediator.Properties.policyEntries, EsbViewsRepository.FORM_KIND));
+		this.policyEntries.setHelpText(propertiesEditionComponent.getHelpContent(EsbViewsRepository.ThrottleMediator.ThrottlePolicy.policyEntries, EsbViewsRepository.FORM_KIND));
 		this.policyEntries.createControls(parent, widgetFactory);
 		this.policyEntries.addSelectionListener(new SelectionAdapter() {
 			
 			public void widgetSelected(SelectionEvent e) {
 				if (e.item != null && e.item.getData() instanceof EObject) {
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ThrottleMediatorPropertiesEditionPartForm.this, EsbViewsRepository.ThrottleMediator.Properties.policyEntries, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ThrottleMediatorPropertiesEditionPartForm.this, EsbViewsRepository.ThrottleMediator.ThrottlePolicy.policyEntries, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
 				}
 			}
 			
@@ -568,69 +807,9 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
 		this.policyEntries.setLayoutData(policyEntriesData);
 		this.policyEntries.setLowerBound(0);
 		this.policyEntries.setUpperBound(-1);
-		policyEntries.setID(EsbViewsRepository.ThrottleMediator.Properties.policyEntries);
+		policyEntries.setID(EsbViewsRepository.ThrottleMediator.ThrottlePolicy.policyEntries);
 		policyEntries.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
 		// Start of user code for createPolicyEntriesTableComposition
-
-		// End of user code
-		return parent;
-	}
-
-	
-	protected Composite createOnAcceptBranchsequenceTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EsbViewsRepository.ThrottleMediator.Properties.onAcceptBranchsequenceType, EsbMessages.ThrottleMediatorPropertiesEditionPart_OnAcceptBranchsequenceTypeLabel);
-		onAcceptBranchsequenceType = new EMFComboViewer(parent);
-		onAcceptBranchsequenceType.setContentProvider(new ArrayContentProvider());
-		onAcceptBranchsequenceType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
-		GridData onAcceptBranchsequenceTypeData = new GridData(GridData.FILL_HORIZONTAL);
-		onAcceptBranchsequenceType.getCombo().setLayoutData(onAcceptBranchsequenceTypeData);
-		onAcceptBranchsequenceType.addSelectionChangedListener(new ISelectionChangedListener() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-			 * 	
-			 */
-			public void selectionChanged(SelectionChangedEvent event) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ThrottleMediatorPropertiesEditionPartForm.this, EsbViewsRepository.ThrottleMediator.Properties.onAcceptBranchsequenceType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getOnAcceptBranchsequenceType()));
-			}
-
-		});
-		onAcceptBranchsequenceType.setID(EsbViewsRepository.ThrottleMediator.Properties.onAcceptBranchsequenceType);
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.ThrottleMediator.Properties.onAcceptBranchsequenceType, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-		// Start of user code for createOnAcceptBranchsequenceTypeEMFComboViewer
-
-		// End of user code
-		return parent;
-	}
-
-	
-	protected Composite createOnRejectBranchsequenceTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EsbViewsRepository.ThrottleMediator.Properties.onRejectBranchsequenceType, EsbMessages.ThrottleMediatorPropertiesEditionPart_OnRejectBranchsequenceTypeLabel);
-		onRejectBranchsequenceType = new EMFComboViewer(parent);
-		onRejectBranchsequenceType.setContentProvider(new ArrayContentProvider());
-		onRejectBranchsequenceType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
-		GridData onRejectBranchsequenceTypeData = new GridData(GridData.FILL_HORIZONTAL);
-		onRejectBranchsequenceType.getCombo().setLayoutData(onRejectBranchsequenceTypeData);
-		onRejectBranchsequenceType.addSelectionChangedListener(new ISelectionChangedListener() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-			 * 	
-			 */
-			public void selectionChanged(SelectionChangedEvent event) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ThrottleMediatorPropertiesEditionPartForm.this, EsbViewsRepository.ThrottleMediator.Properties.onRejectBranchsequenceType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getOnRejectBranchsequenceType()));
-			}
-
-		});
-		onRejectBranchsequenceType.setID(EsbViewsRepository.ThrottleMediator.Properties.onRejectBranchsequenceType);
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.ThrottleMediator.Properties.onRejectBranchsequenceType, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-		// Start of user code for createOnRejectBranchsequenceTypeEMFComboViewer
 
 		// End of user code
 		return parent;
@@ -647,38 +826,6 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
 		// Start of user code for tab synchronization
 		
 		// End of user code
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.ThrottleMediatorPropertiesEditionPart#getDescription()
-	 * 
-	 */
-	public String getDescription() {
-		return description.getText();
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.ThrottleMediatorPropertiesEditionPart#setDescription(String newValue)
-	 * 
-	 */
-	public void setDescription(String newValue) {
-		if (newValue != null) {
-			description.setText(newValue);
-		} else {
-			description.setText(""); //$NON-NLS-1$
-		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.ThrottleMediator.Properties.description);
-		if (eefElementEditorReadOnlyState && description.isEnabled()) {
-			description.setEnabled(false);
-			description.setToolTipText(EsbMessages.ThrottleMediator_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !description.isEnabled()) {
-			description.setEnabled(true);
-		}	
-		
 	}
 
 	/**
@@ -704,7 +851,7 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
 		} else {
 			commentsList.setText(""); //$NON-NLS-1$
 		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.ThrottleMediator.Properties.commentsList);
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.ThrottleMediator.General.commentsList);
 		if (eefElementEditorReadOnlyState && commentsList.isEnabled()) {
 			commentsList.setEnabled(false);
 			commentsList.setToolTipText(EsbMessages.ThrottleMediator_ReadOnly);
@@ -754,7 +901,7 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
 		} else {
 			reverse.setSelection(false);
 		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.ThrottleMediator.Properties.reverse);
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.ThrottleMediator.General.reverse);
 		if (eefElementEditorReadOnlyState && reverse.isEnabled()) {
 			reverse.setEnabled(false);
 			reverse.setToolTipText(EsbMessages.ThrottleMediator_ReadOnly);
@@ -786,12 +933,138 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
 		} else {
 			groupId.setText(""); //$NON-NLS-1$
 		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.ThrottleMediator.Properties.groupId);
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.ThrottleMediator.General.groupId);
 		if (eefElementEditorReadOnlyState && groupId.isEnabled()) {
 			groupId.setEnabled(false);
 			groupId.setToolTipText(EsbMessages.ThrottleMediator_ReadOnly);
 		} else if (!eefElementEditorReadOnlyState && !groupId.isEnabled()) {
 			groupId.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.ThrottleMediatorPropertiesEditionPart#getDescription()
+	 * 
+	 */
+	public String getDescription() {
+		return description.getText();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.ThrottleMediatorPropertiesEditionPart#setDescription(String newValue)
+	 * 
+	 */
+	public void setDescription(String newValue) {
+		if (newValue != null) {
+			description.setText(newValue);
+		} else {
+			description.setText(""); //$NON-NLS-1$
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.ThrottleMediator.Misc.description);
+		if (eefElementEditorReadOnlyState && description.isEnabled()) {
+			description.setEnabled(false);
+			description.setToolTipText(EsbMessages.ThrottleMediator_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !description.isEnabled()) {
+			description.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.ThrottleMediatorPropertiesEditionPart#getOnAcceptBranchsequenceType()
+	 * 
+	 */
+	public Enumerator getOnAcceptBranchsequenceType() {
+		Enumerator selection = (Enumerator) ((StructuredSelection) onAcceptBranchsequenceType.getSelection()).getFirstElement();
+		return selection;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.ThrottleMediatorPropertiesEditionPart#initOnAcceptBranchsequenceType(Object input, Enumerator current)
+	 */
+	public void initOnAcceptBranchsequenceType(Object input, Enumerator current) {
+		onAcceptBranchsequenceType.setInput(input);
+		onAcceptBranchsequenceType.modelUpdating(new StructuredSelection(current));
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.ThrottleMediator.OnAccept.onAcceptBranchsequenceType);
+		if (eefElementEditorReadOnlyState && onAcceptBranchsequenceType.isEnabled()) {
+			onAcceptBranchsequenceType.setEnabled(false);
+			onAcceptBranchsequenceType.setToolTipText(EsbMessages.ThrottleMediator_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !onAcceptBranchsequenceType.isEnabled()) {
+			onAcceptBranchsequenceType.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.ThrottleMediatorPropertiesEditionPart#setOnAcceptBranchsequenceType(Enumerator newValue)
+	 * 
+	 */
+	public void setOnAcceptBranchsequenceType(Enumerator newValue) {
+		onAcceptBranchsequenceType.modelUpdating(new StructuredSelection(newValue));
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.ThrottleMediator.OnAccept.onAcceptBranchsequenceType);
+		if (eefElementEditorReadOnlyState && onAcceptBranchsequenceType.isEnabled()) {
+			onAcceptBranchsequenceType.setEnabled(false);
+			onAcceptBranchsequenceType.setToolTipText(EsbMessages.ThrottleMediator_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !onAcceptBranchsequenceType.isEnabled()) {
+			onAcceptBranchsequenceType.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.ThrottleMediatorPropertiesEditionPart#getOnRejectBranchsequenceType()
+	 * 
+	 */
+	public Enumerator getOnRejectBranchsequenceType() {
+		Enumerator selection = (Enumerator) ((StructuredSelection) onRejectBranchsequenceType.getSelection()).getFirstElement();
+		return selection;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.ThrottleMediatorPropertiesEditionPart#initOnRejectBranchsequenceType(Object input, Enumerator current)
+	 */
+	public void initOnRejectBranchsequenceType(Object input, Enumerator current) {
+		onRejectBranchsequenceType.setInput(input);
+		onRejectBranchsequenceType.modelUpdating(new StructuredSelection(current));
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.ThrottleMediator.OnReject.onRejectBranchsequenceType);
+		if (eefElementEditorReadOnlyState && onRejectBranchsequenceType.isEnabled()) {
+			onRejectBranchsequenceType.setEnabled(false);
+			onRejectBranchsequenceType.setToolTipText(EsbMessages.ThrottleMediator_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !onRejectBranchsequenceType.isEnabled()) {
+			onRejectBranchsequenceType.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.ThrottleMediatorPropertiesEditionPart#setOnRejectBranchsequenceType(Enumerator newValue)
+	 * 
+	 */
+	public void setOnRejectBranchsequenceType(Enumerator newValue) {
+		onRejectBranchsequenceType.modelUpdating(new StructuredSelection(newValue));
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.ThrottleMediator.OnReject.onRejectBranchsequenceType);
+		if (eefElementEditorReadOnlyState && onRejectBranchsequenceType.isEnabled()) {
+			onRejectBranchsequenceType.setEnabled(false);
+			onRejectBranchsequenceType.setToolTipText(EsbMessages.ThrottleMediator_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !onRejectBranchsequenceType.isEnabled()) {
+			onRejectBranchsequenceType.setEnabled(true);
 		}	
 		
 	}
@@ -815,7 +1088,7 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
 	public void initPolicyType(Object input, Enumerator current) {
 		policyType.setInput(input);
 		policyType.modelUpdating(new StructuredSelection(current));
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.ThrottleMediator.Properties.policyType);
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.ThrottleMediator.ThrottlePolicy.policyType);
 		if (eefElementEditorReadOnlyState && policyType.isEnabled()) {
 			policyType.setEnabled(false);
 			policyType.setToolTipText(EsbMessages.ThrottleMediator_ReadOnly);
@@ -833,7 +1106,7 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
 	 */
 	public void setPolicyType(Enumerator newValue) {
 		policyType.modelUpdating(new StructuredSelection(newValue));
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.ThrottleMediator.Properties.policyType);
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.ThrottleMediator.ThrottlePolicy.policyType);
 		if (eefElementEditorReadOnlyState && policyType.isEnabled()) {
 			policyType.setEnabled(false);
 			policyType.setToolTipText(EsbMessages.ThrottleMediator_ReadOnly);
@@ -865,7 +1138,7 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
 		} else {
 			maxConcurrentAccessCount.setText(""); //$NON-NLS-1$
 		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.ThrottleMediator.Properties.maxConcurrentAccessCount);
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.ThrottleMediator.ThrottlePolicy.maxConcurrentAccessCount);
 		if (eefElementEditorReadOnlyState && maxConcurrentAccessCount.isEnabled()) {
 			maxConcurrentAccessCount.setEnabled(false);
 			maxConcurrentAccessCount.setToolTipText(EsbMessages.ThrottleMediator_ReadOnly);
@@ -888,7 +1161,7 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		policyEntries.setContentProvider(contentProvider);
 		policyEntries.setInput(settings);
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.ThrottleMediator.Properties.policyEntries);
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.ThrottleMediator.ThrottlePolicy.policyEntries);
 		if (eefElementEditorReadOnlyState && policyEntries.isEnabled()) {
 			policyEntries.setEnabled(false);
 			policyEntries.setToolTipText(EsbMessages.ThrottleMediator_ReadOnly);
@@ -941,104 +1214,55 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
 		return ((ReferencesTableSettings)policyEntries.getInput()).contains(element);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.ThrottleMediatorPropertiesEditionPart#getOnAcceptBranchsequenceType()
-	 * 
-	 */
-	public Enumerator getOnAcceptBranchsequenceType() {
-		Enumerator selection = (Enumerator) ((StructuredSelection) onAcceptBranchsequenceType.getSelection()).getFirstElement();
-		return selection;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.ThrottleMediatorPropertiesEditionPart#initOnAcceptBranchsequenceType(Object input, Enumerator current)
-	 */
-	public void initOnAcceptBranchsequenceType(Object input, Enumerator current) {
-		onAcceptBranchsequenceType.setInput(input);
-		onAcceptBranchsequenceType.modelUpdating(new StructuredSelection(current));
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.ThrottleMediator.Properties.onAcceptBranchsequenceType);
-		if (eefElementEditorReadOnlyState && onAcceptBranchsequenceType.isEnabled()) {
-			onAcceptBranchsequenceType.setEnabled(false);
-			onAcceptBranchsequenceType.setToolTipText(EsbMessages.ThrottleMediator_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !onAcceptBranchsequenceType.isEnabled()) {
-			onAcceptBranchsequenceType.setEnabled(true);
-		}	
-		
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.ThrottleMediatorPropertiesEditionPart#setOnAcceptBranchsequenceType(Enumerator newValue)
-	 * 
-	 */
-	public void setOnAcceptBranchsequenceType(Enumerator newValue) {
-		onAcceptBranchsequenceType.modelUpdating(new StructuredSelection(newValue));
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.ThrottleMediator.Properties.onAcceptBranchsequenceType);
-		if (eefElementEditorReadOnlyState && onAcceptBranchsequenceType.isEnabled()) {
-			onAcceptBranchsequenceType.setEnabled(false);
-			onAcceptBranchsequenceType.setToolTipText(EsbMessages.ThrottleMediator_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !onAcceptBranchsequenceType.isEnabled()) {
-			onAcceptBranchsequenceType.setEnabled(true);
-		}	
-		
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.ThrottleMediatorPropertiesEditionPart#getOnRejectBranchsequenceType()
-	 * 
-	 */
-	public Enumerator getOnRejectBranchsequenceType() {
-		Enumerator selection = (Enumerator) ((StructuredSelection) onRejectBranchsequenceType.getSelection()).getFirstElement();
-		return selection;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.ThrottleMediatorPropertiesEditionPart#initOnRejectBranchsequenceType(Object input, Enumerator current)
-	 */
-	public void initOnRejectBranchsequenceType(Object input, Enumerator current) {
-		onRejectBranchsequenceType.setInput(input);
-		onRejectBranchsequenceType.modelUpdating(new StructuredSelection(current));
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.ThrottleMediator.Properties.onRejectBranchsequenceType);
-		if (eefElementEditorReadOnlyState && onRejectBranchsequenceType.isEnabled()) {
-			onRejectBranchsequenceType.setEnabled(false);
-			onRejectBranchsequenceType.setToolTipText(EsbMessages.ThrottleMediator_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !onRejectBranchsequenceType.isEnabled()) {
-			onRejectBranchsequenceType.setEnabled(true);
-		}	
-		
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.ThrottleMediatorPropertiesEditionPart#setOnRejectBranchsequenceType(Enumerator newValue)
-	 * 
-	 */
-	public void setOnRejectBranchsequenceType(Enumerator newValue) {
-		onRejectBranchsequenceType.modelUpdating(new StructuredSelection(newValue));
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.ThrottleMediator.Properties.onRejectBranchsequenceType);
-		if (eefElementEditorReadOnlyState && onRejectBranchsequenceType.isEnabled()) {
-			onRejectBranchsequenceType.setEnabled(false);
-			onRejectBranchsequenceType.setToolTipText(EsbMessages.ThrottleMediator_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !onRejectBranchsequenceType.isEnabled()) {
-			onRejectBranchsequenceType.setEnabled(true);
-		}	
-		
-	}
 
 
 
 
 
+	// Start of user code for OnAcceptBranchSequenceKey specific getters and setters implementation
+    @Override
+    public RegistryKeyProperty getOnAcceptBranchSequenceKey() {
+        return onAcceptBranchSequenceKey;
+    }
+
+    @Override
+    public void setOnAcceptBranchSequenceKey(RegistryKeyProperty registryKeyProperty) {
+        if(registryKeyProperty != null) {
+            onAcceptBranchSequenceKeyText.setText(registryKeyProperty.getKeyValue());
+            onAcceptBranchSequenceKey = registryKeyProperty;
+        }
+    }
+	// End of user code
+
+	// Start of user code for OnRejectBranchSequenceKey specific getters and setters implementation
+    @Override
+    public RegistryKeyProperty getOnRejectBranchSequenceKey() {
+        return onRejectBranchSequenceKey;
+    }
+
+    @Override
+    public void setOnRejectBranchSequenceKey(RegistryKeyProperty registryKeyProperty) {
+        if(registryKeyProperty != null) {
+            onRejectBranchSequenceKeyText.setText(registryKeyProperty.getKeyValue());
+            onRejectBranchSequenceKey = registryKeyProperty;
+        }
+    }
+	// End of user code
+
+	// Start of user code for policyKey specific getters and setters implementation
+    @Override
+    public RegistryKeyProperty getPolicyKey() {
+        return policyKey;
+    }
+
+    @Override
+    public void setPolicyKey(RegistryKeyProperty registryKeyProperty) {
+        if(registryKeyProperty != null) {
+            policyKeyText.setText(registryKeyProperty.getKeyValue());
+            policyKey = registryKeyProperty;
+        }
+    }
+	// End of user code
 
 	/**
 	 * {@inheritDoc}
@@ -1051,7 +1275,140 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
 	}
 
 	// Start of user code additional methods
-	
+   protected Composite createPolicyKey(FormToolkit widgetFactory, Composite parent) {
+       Control policyKeyLabel = createDescription(parent, EsbViewsRepository.ThrottleMediator.ThrottlePolicy.policyKey, EsbMessages.ThrottleMediatorPropertiesEditionPart_PolicyKeyLabel);
+       widgetFactory.paintBordersFor(parent);
+       if(policyKey == null) {
+           policyKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
+       } 
+       String initValueExpression = policyKey.getKeyValue().isEmpty() ? "" : policyKey.getKeyValue();
+       policyKeyText = widgetFactory.createText(parent, initValueExpression);
+       policyKeyText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+       widgetFactory.paintBordersFor(parent);
+       GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
+       policyKeyText.setLayoutData(valueData);
+       policyKeyText.addFocusListener(new FocusAdapter() {
+           /**
+            * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+            * 
+            */
+           @Override
+           @SuppressWarnings("synthetic-access")
+           public void focusLost(FocusEvent e) {
+           }
+
+           /**
+            * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+            */
+           @Override
+           public void focusGained(FocusEvent e) {
+               EEFRegistryKeyPropertyEditorDialog dialog = new  EEFRegistryKeyPropertyEditorDialog(view.getShell(), SWT.NULL,
+                       policyKey, new ArrayList<NamedEntityDescriptor>());
+               dialog.open();
+               policyKeyText.setText(policyKey.getKeyValue());
+               propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ThrottleMediatorPropertiesEditionPartForm.this, EsbViewsRepository.ThrottleMediator.ThrottlePolicy.policyKey, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getPolicyKey()));
+           }
+       });
+       EditingUtils.setID(policyKeyText, EsbViewsRepository.ThrottleMediator.ThrottlePolicy.policyKey);
+       EditingUtils.setEEFtype(policyKeyText, "eef::Text");
+       Control sequenceKeyHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.ThrottleMediator.ThrottlePolicy.policyKey, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+       policyKeyElements = new Control[] {policyKeyLabel, policyKeyText, sequenceKeyHelp};
+       return parent;
+    }
+
+    protected Composite createOnRejectBranchSequenceKey(FormToolkit widgetFactory, Composite parent) {
+        Control itemLabel = createDescription(parent, EsbViewsRepository.ThrottleMediator.OnReject.onRejectBranchSequenceKey, EsbMessages.ThrottleMediatorPropertiesEditionPart_OnRejectBranchSequenceKeyLabel);
+        widgetFactory.paintBordersFor(parent);
+        if(onRejectBranchSequenceKey == null) {
+            onRejectBranchSequenceKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
+        } 
+        String initValueExpression = onRejectBranchSequenceKey.getKeyValue().isEmpty() ? "" : onRejectBranchSequenceKey.getKeyValue();
+        onRejectBranchSequenceKeyText = widgetFactory.createText(parent, initValueExpression);
+        onRejectBranchSequenceKeyText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+        widgetFactory.paintBordersFor(parent);
+        GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
+        onRejectBranchSequenceKeyText.setLayoutData(valueData);
+        onRejectBranchSequenceKeyText.addFocusListener(new FocusAdapter() {
+            /**
+             * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+             * 
+             */
+            @Override
+            @SuppressWarnings("synthetic-access")
+            public void focusLost(FocusEvent e) {
+            }
+
+            /**
+             * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+             */
+            @Override
+            public void focusGained(FocusEvent e) {
+                EEFRegistryKeyPropertyEditorDialog dialog = new  EEFRegistryKeyPropertyEditorDialog(view.getShell(), SWT.NULL,
+                        onRejectBranchSequenceKey, new ArrayList<NamedEntityDescriptor>());
+                dialog.open();
+                onRejectBranchSequenceKeyText.setText(onRejectBranchSequenceKey.getKeyValue());
+                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ThrottleMediatorPropertiesEditionPartForm.this, EsbViewsRepository.ThrottleMediator.OnReject.onRejectBranchSequenceKey, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getOnRejectBranchSequenceKey()));
+            }
+        });
+        EditingUtils.setID(onRejectBranchSequenceKeyText, EsbViewsRepository.ThrottleMediator.OnReject.onRejectBranchSequenceKey);
+        EditingUtils.setEEFtype(onRejectBranchSequenceKeyText, "eef::Text");
+        Control itemHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.ThrottleMediator.OnReject.onRejectBranchSequenceKey, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+        onRejectBranchSequenceKeyElements = new Control[] {itemLabel, onRejectBranchSequenceKeyText, itemHelp};
+        return parent;
+    }
+
+    protected Composite createOnAcceptBranchSequenceKey(FormToolkit widgetFactory, Composite parent) {
+        Control itemLabel = createDescription(parent, EsbViewsRepository.ThrottleMediator.OnAccept.onAcceptBranchSequenceKey, EsbMessages.ThrottleMediatorPropertiesEditionPart_OnAcceptBranchSequenceKeyLabel);
+        widgetFactory.paintBordersFor(parent);
+        if(onAcceptBranchSequenceKey == null) {
+            onAcceptBranchSequenceKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
+        } 
+        String initValueExpression = onAcceptBranchSequenceKey.getKeyValue().isEmpty() ? "" : onAcceptBranchSequenceKey.getKeyValue();
+        onAcceptBranchSequenceKeyText = widgetFactory.createText(parent, initValueExpression);
+        onAcceptBranchSequenceKeyText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+        widgetFactory.paintBordersFor(parent);
+        GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
+        onAcceptBranchSequenceKeyText.setLayoutData(valueData);
+        onAcceptBranchSequenceKeyText.addFocusListener(new FocusAdapter() {
+            /**
+             * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+             * 
+             */
+            @Override
+            @SuppressWarnings("synthetic-access")
+            public void focusLost(FocusEvent e) {
+            }
+
+            /**
+             * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+             */
+            @Override
+            public void focusGained(FocusEvent e) {
+                EEFRegistryKeyPropertyEditorDialog dialog = new  EEFRegistryKeyPropertyEditorDialog(view.getShell(), SWT.NULL,
+                        onAcceptBranchSequenceKey, new ArrayList<NamedEntityDescriptor>());
+                dialog.open();
+                onAcceptBranchSequenceKeyText.setText(onAcceptBranchSequenceKey.getKeyValue());
+                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ThrottleMediatorPropertiesEditionPartForm.this, EsbViewsRepository.ThrottleMediator.OnAccept.onAcceptBranchSequenceKey, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getOnAcceptBranchSequenceKey()));
+            }
+        });
+        EditingUtils.setID(onAcceptBranchSequenceKeyText, EsbViewsRepository.ThrottleMediator.OnAccept.onAcceptBranchSequenceKey);
+        EditingUtils.setEEFtype(onAcceptBranchSequenceKeyText, "eef::Text");
+        Control itemHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.ThrottleMediator.OnAccept.onAcceptBranchSequenceKey, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+        onAcceptBranchSequenceKeyElements = new Control[] {itemLabel, onAcceptBranchSequenceKeyText, itemHelp};
+        return parent;
+    }
+    
+    @Override
+    public void refresh() {
+        super.refresh();
+        validate();
+    }
+
+    public void validate() {
+        EEFPropertyViewUtil epv = new EEFPropertyViewUtil(view);
+        //epv.clearElements(new Composite[] { generalGroup, miscGroup, onAcceptGroup, onRejectGroup });
+        view.layout(true, true);
+    }
 	// End of user code
 
 

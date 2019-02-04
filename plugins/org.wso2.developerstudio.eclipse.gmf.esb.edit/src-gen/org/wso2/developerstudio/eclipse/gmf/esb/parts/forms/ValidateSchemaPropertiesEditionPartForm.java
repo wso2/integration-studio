@@ -52,7 +52,8 @@ import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.ValidateSchemaPropertiesEditionPart;
 
@@ -68,6 +69,14 @@ public class ValidateSchemaPropertiesEditionPartForm extends SectionPropertiesEd
 
 	protected EMFComboViewer validateSchemaKeyType;
 	protected EObjectFlatComboViewer schemaKey;
+	// Start of user code  for staticSchemaKey widgets declarations
+	
+	// End of user code
+
+	// Start of user code  for dynamicSchemaKey widgets declarations
+	
+	// End of user code
+
 
 
 
@@ -115,6 +124,8 @@ public class ValidateSchemaPropertiesEditionPartForm extends SectionPropertiesEd
 		CompositionStep propertiesStep = validateSchemaStep.addStep(EsbViewsRepository.ValidateSchema.Properties.class);
 		propertiesStep.addStep(EsbViewsRepository.ValidateSchema.Properties.validateSchemaKeyType);
 		propertiesStep.addStep(EsbViewsRepository.ValidateSchema.Properties.schemaKey);
+		propertiesStep.addStep(EsbViewsRepository.ValidateSchema.Properties.staticSchemaKey);
+		propertiesStep.addStep(EsbViewsRepository.ValidateSchema.Properties.dynamicSchemaKey);
 		
 		
 		composer = new PartComposer(validateSchemaStep) {
@@ -130,6 +141,12 @@ public class ValidateSchemaPropertiesEditionPartForm extends SectionPropertiesEd
 				if (key == EsbViewsRepository.ValidateSchema.Properties.schemaKey) {
 					return createSchemaKeyFlatComboViewer(parent, widgetFactory);
 				}
+				// Start of user code for staticSchemaKey addToPart creation
+				
+				// End of user code
+				// Start of user code for dynamicSchemaKey addToPart creation
+				
+				// End of user code
 				return parent;
 			}
 		};
@@ -366,6 +383,14 @@ public class ValidateSchemaPropertiesEditionPartForm extends SectionPropertiesEd
 
 
 
+	// Start of user code for staticSchemaKey specific getters and setters implementation
+	
+	// End of user code
+
+	// Start of user code for dynamicSchemaKey specific getters and setters implementation
+	
+	// End of user code
+
 	/**
 	 * {@inheritDoc}
 	 *
@@ -376,8 +401,32 @@ public class ValidateSchemaPropertiesEditionPartForm extends SectionPropertiesEd
 		return EsbMessages.ValidateSchema_Part_Title;
 	}
 
+
 	// Start of user code additional methods
-	
+
+    @Override
+    public RegistryKeyProperty getStaticSchemaKey() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void setStaticSchemaKey(RegistryKeyProperty registryKeyProperty) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public NamespacedProperty getDynamicSchemaKey() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void setDynamicSchemaKey(NamespacedProperty nameSpacedProperty) {
+        // TODO Auto-generated method stub
+        
+    }
 	// End of user code
 
 

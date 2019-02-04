@@ -3,6 +3,8 @@
  */
 package org.wso2.developerstudio.eclipse.gmf.esb.parts.impl;
 
+import java.util.ArrayList;
+
 // Start of user code for imports
 import org.eclipse.emf.common.util.Enumerator;
 
@@ -27,7 +29,7 @@ import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
-
+import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EMFComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
@@ -42,17 +44,27 @@ import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.ViewerFilter;
 
 import org.eclipse.swt.SWT;
-
+import org.eclipse.swt.events.MouseEvent;
+import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Group;
-
+import org.eclipse.swt.widgets.Text;
+import org.eclipse.ui.forms.widgets.FormToolkit;
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.ValidateSchemaPropertiesEditionPart;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.parts.forms.EnrichMediatorPropertiesEditionPartForm;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFNameSpacedPropertyEditorDialog;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.developerstudio.esb.form.editors.article.providers.NamedEntityDescriptor;
 
 // End of user code
 
@@ -64,6 +76,21 @@ public class ValidateSchemaPropertiesEditionPartImpl extends CompositeProperties
 
 	protected EMFComboViewer validateSchemaKeyType;
 	protected EObjectFlatComboViewer schemaKey;
+	// Start of user code  for staticSchemaKey widgets declarations
+    protected RegistryKeyProperty staticSchemaKey;
+    protected Text staticSchemaKeyText;
+	// End of user code
+
+	// Start of user code  for dynamicSchemaKey widgets declarations
+    protected NamespacedProperty dynamicSchemaKey;
+    protected Text dynamicSchemaKeyText;
+    protected Control[] validateSchemaKeyTypeElements;
+    protected Control[] schemaKeyFlatElements;
+    protected Control[] staticSchemaKeyElements;
+    protected Control[] dynamicSchemaKeyElements;
+    protected Group propertiesGroup;
+	// End of user code
+
 
 
 
@@ -104,6 +131,8 @@ public class ValidateSchemaPropertiesEditionPartImpl extends CompositeProperties
 		CompositionStep propertiesStep = validateSchemaStep.addStep(EsbViewsRepository.ValidateSchema.Properties.class);
 		propertiesStep.addStep(EsbViewsRepository.ValidateSchema.Properties.validateSchemaKeyType);
 		propertiesStep.addStep(EsbViewsRepository.ValidateSchema.Properties.schemaKey);
+		propertiesStep.addStep(EsbViewsRepository.ValidateSchema.Properties.staticSchemaKey);
+		propertiesStep.addStep(EsbViewsRepository.ValidateSchema.Properties.dynamicSchemaKey);
 		
 		
 		composer = new PartComposer(validateSchemaStep) {
@@ -119,17 +148,29 @@ public class ValidateSchemaPropertiesEditionPartImpl extends CompositeProperties
 				if (key == EsbViewsRepository.ValidateSchema.Properties.schemaKey) {
 					return createSchemaKeyFlatComboViewer(parent);
 				}
+				// Start of user code for staticSchemaKey addToPart creation
+                if (key == EsbViewsRepository.ValidateSchema.Properties.staticSchemaKey) {
+                    return createStaticSchemaKeyWidget(parent);
+                }
+				// End of user code
+				// Start of user code for dynamicSchemaKey addToPart creation
+                if (key == EsbViewsRepository.ValidateSchema.Properties.dynamicSchemaKey) {
+                    return createDynamicSchemaKeyWidget(parent);
+                }
+				// End of user code
 				return parent;
 			}
 		};
 		composer.compose(view);
 	}
 
+
+
 	/**
-	 * 
-	 */
+     * @generated NOT
+     */
 	protected Composite createPropertiesGroup(Composite parent) {
-		Group propertiesGroup = new Group(parent, SWT.NONE);
+		propertiesGroup = new Group(parent, SWT.NONE);
 		propertiesGroup.setText(EsbMessages.ValidateSchemaPropertiesEditionPart_PropertiesGroupLabel);
 		GridData propertiesGroupData = new GridData(GridData.FILL_HORIZONTAL);
 		propertiesGroupData.horizontalSpan = 3;
@@ -140,9 +181,11 @@ public class ValidateSchemaPropertiesEditionPartImpl extends CompositeProperties
 		return propertiesGroup;
 	}
 
-	
+	/**
+     * @generated NOT
+     */
 	protected Composite createValidateSchemaKeyTypeEMFComboViewer(Composite parent) {
-		createDescription(parent, EsbViewsRepository.ValidateSchema.Properties.validateSchemaKeyType, EsbMessages.ValidateSchemaPropertiesEditionPart_ValidateSchemaKeyTypeLabel);
+		Control itemLabel = createDescription(parent, EsbViewsRepository.ValidateSchema.Properties.validateSchemaKeyType, EsbMessages.ValidateSchemaPropertiesEditionPart_ValidateSchemaKeyTypeLabel);
 		validateSchemaKeyType = new EMFComboViewer(parent);
 		validateSchemaKeyType.setContentProvider(new ArrayContentProvider());
 		validateSchemaKeyType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -163,19 +206,31 @@ public class ValidateSchemaPropertiesEditionPartImpl extends CompositeProperties
 
 		});
 		validateSchemaKeyType.setID(EsbViewsRepository.ValidateSchema.Properties.validateSchemaKeyType);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.ValidateSchema.Properties.validateSchemaKeyType, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		Control itemHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.ValidateSchema.Properties.validateSchemaKeyType, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createValidateSchemaKeyTypeEMFComboViewer
+		validateSchemaKeyTypeElements = new Control [] {itemLabel, itemHelp, validateSchemaKeyType.getCombo()};
+		validateSchemaKeyType.addSelectionChangedListener(new ISelectionChangedListener() {
 
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+             *  
+             */
+            public void selectionChanged(SelectionChangedEvent event) {
+                validate();
+            }
+
+        });
 		// End of user code
 		return parent;
 	}
 
-	/**
-	 * @param parent the parent composite
-	 * 
-	 */
+	 /**
+     * @generated NOT
+     */
 	protected Composite createSchemaKeyFlatComboViewer(Composite parent) {
-		createDescription(parent, EsbViewsRepository.ValidateSchema.Properties.schemaKey, EsbMessages.ValidateSchemaPropertiesEditionPart_SchemaKeyLabel);
+		Control itemLabel = createDescription(parent, EsbViewsRepository.ValidateSchema.Properties.schemaKey, EsbMessages.ValidateSchemaPropertiesEditionPart_SchemaKeyLabel);
 		schemaKey = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(EsbViewsRepository.ValidateSchema.Properties.schemaKey, EsbViewsRepository.SWT_KIND));
 		schemaKey.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
@@ -189,9 +244,9 @@ public class ValidateSchemaPropertiesEditionPartImpl extends CompositeProperties
 		GridData schemaKeyData = new GridData(GridData.FILL_HORIZONTAL);
 		schemaKey.setLayoutData(schemaKeyData);
 		schemaKey.setID(EsbViewsRepository.ValidateSchema.Properties.schemaKey);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.ValidateSchema.Properties.schemaKey, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		Control itemHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.ValidateSchema.Properties.schemaKey, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createSchemaKeyFlatComboViewer
-
+		schemaKeyFlatElements = new Control [] {itemLabel, itemHelp, schemaKey};
 		// End of user code
 		return parent;
 	}
@@ -347,6 +402,39 @@ public class ValidateSchemaPropertiesEditionPartImpl extends CompositeProperties
 
 
 
+	// Start of user code for staticSchemaKey specific getters and setters implementation
+    @Override
+    public RegistryKeyProperty getStaticSchemaKey() {
+        // TODO Auto-generated method stub
+        return staticSchemaKey;
+    }
+
+    @Override
+    public void setStaticSchemaKey(RegistryKeyProperty registryKeyProperty) {
+        if (registryKeyProperty != null) {
+            staticSchemaKeyText.setText(registryKeyProperty.getKeyValue());
+            staticSchemaKey = registryKeyProperty;
+        }
+        
+    }
+	// End of user code
+
+	// Start of user code for dynamicSchemaKey specific getters and setters implementation
+    @Override
+    public NamespacedProperty getDynamicSchemaKey() {
+        // TODO Auto-generated method stub
+        return dynamicSchemaKey;
+    }
+
+    @Override
+    public void setDynamicSchemaKey(NamespacedProperty nameSpacedProperty) {
+        if (nameSpacedProperty != null) {
+            dynamicSchemaKeyText.setText(nameSpacedProperty.getPropertyValue());
+            dynamicSchemaKey = nameSpacedProperty;
+        }
+    }
+	// End of user code
+
 	/**
 	 * {@inheritDoc}
 	 *
@@ -357,8 +445,134 @@ public class ValidateSchemaPropertiesEditionPartImpl extends CompositeProperties
 		return EsbMessages.ValidateSchema_Part_Title;
 	}
 
+
+
+
+
 	// Start of user code additional methods
-	
+    protected Composite createDynamicSchemaKeyWidget(Composite parent) {
+        Control itemLabel = createDescription(parent, EsbViewsRepository.ValidateSchema.Properties.dynamicSchemaKey, EsbMessages.ValidateSchemaPropertiesEditionPart_DynamicSchemaKeyLabel);
+        dynamicSchemaKeyText = SWTUtils.createScrollableText(parent, SWT.BORDER);
+        GridData parameterExpressionData = new GridData(GridData.FILL_HORIZONTAL);
+        dynamicSchemaKeyText.setLayoutData(parameterExpressionData);
+        if(dynamicSchemaKey == null) {
+            dynamicSchemaKey = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
+        } 
+        String initValueExpression = dynamicSchemaKey.getPropertyValue().isEmpty() ? "/default/expression" : dynamicSchemaKey.getPropertyValue();
+        dynamicSchemaKeyText.setText(initValueExpression);
+        dynamicSchemaKeyText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+        dynamicSchemaKeyText.addMouseListener(new MouseListener(){
+
+            @Override
+            public void mouseDoubleClick(MouseEvent e) {
+                // TODO Auto-generated method stub
+                
+            }
+
+            @Override
+            public void mouseDown(MouseEvent e) {
+                EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL, dynamicSchemaKey);
+                nspd.open();
+                dynamicSchemaKeyText.setText(dynamicSchemaKey.getPropertyValue());
+                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ValidateSchemaPropertiesEditionPartImpl.this, EsbViewsRepository.ValidateSchema.Properties.dynamicSchemaKey, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getDynamicSchemaKey()));
+
+                
+            }
+
+            @Override
+            public void mouseUp(MouseEvent e) {
+                // TODO Auto-generated method stub
+                
+            }
+            
+        });
+        
+        EditingUtils.setID(dynamicSchemaKeyText, EsbViewsRepository.ValidateSchema.Properties.dynamicSchemaKey);
+        EditingUtils.setEEFtype(dynamicSchemaKeyText, "eef::Text");
+        Control itemHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.ValidateSchema.Properties.dynamicSchemaKey, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+        dynamicSchemaKeyElements = new Control[] {itemLabel, dynamicSchemaKeyText, itemHelp};
+        return parent;
+    }
+
+    protected Composite createStaticSchemaKeyWidget(Composite parent) {
+        Control itemLabel = createDescription(parent, EsbViewsRepository.ValidateSchema.Properties.staticSchemaKey, EsbMessages.ValidateSchemaPropertiesEditionPart_StaticSchemaKeyLabel);
+        staticSchemaKeyText = SWTUtils.createScrollableText(parent, SWT.BORDER);
+        GridData parameterExpressionData = new GridData(GridData.FILL_HORIZONTAL);
+        staticSchemaKeyText.setLayoutData(parameterExpressionData);
+        if(staticSchemaKey == null) {
+            staticSchemaKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
+        } 
+        String initValueExpression = staticSchemaKey.getKeyValue().isEmpty() ? "" : staticSchemaKey.getKeyValue();
+        staticSchemaKeyText.setText(initValueExpression);
+        staticSchemaKeyText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+        staticSchemaKeyText.addMouseListener(new MouseListener(){
+
+            @Override
+            public void mouseDoubleClick(MouseEvent e) {
+                // TODO Auto-generated method stub
+                
+            }
+
+            @Override
+            public void mouseDown(MouseEvent e) {
+                EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
+                        SWT.NULL, staticSchemaKey, new ArrayList<NamedEntityDescriptor>());
+                dialog.open();
+                staticSchemaKeyText.setText(staticSchemaKey.getKeyValue());
+                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                        ValidateSchemaPropertiesEditionPartImpl.this,
+                        EsbViewsRepository.EnrichMediator.Source.inlineRegistryKey, PropertiesEditionEvent.COMMIT,
+                        PropertiesEditionEvent.SET, null, getStaticSchemaKey()));
+
+                
+            }
+
+            @Override
+            public void mouseUp(MouseEvent e) {
+                // TODO Auto-generated method stub
+                
+            }
+            
+        });
+        
+        EditingUtils.setID(staticSchemaKeyText, EsbViewsRepository.ValidateSchema.Properties.staticSchemaKey);
+        EditingUtils.setEEFtype(staticSchemaKeyText, "eef::Text");
+        Control itemHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.ValidateSchema.Properties.dynamicSchemaKey, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+        staticSchemaKeyElements = new Control[] {itemLabel, staticSchemaKeyText, itemHelp};
+        return parent;
+    }
+    
+    @Override
+    public void refresh() {
+        super.refresh();
+        validate();
+    }
+
+    public void validate() {
+        EEFPropertyViewUtil epv = new EEFPropertyViewUtil(view);
+        epv.clearElements(new Composite[] { propertiesGroup });
+        epv.showEntry(validateSchemaKeyTypeElements, false);
+        switch (getValidateSchemaKeyType().getLiteral()) {
+        case "Static": {
+            epv.showEntry(staticSchemaKeyElements, false);
+            break;
+        }
+
+        case "Dynamic": {
+            epv.showEntry(dynamicSchemaKeyElements, false);
+            break;
+        }
+        }
+        view.layout(true, true);
+    }
+    
+    public void validate(EObjectFlatComboSettings schemaSettings) {
+        if(getValidateSchemaKeyType() == null) {
+            validateSchemaKeyType.setEnabled(true);
+            //initValidateSchemaKeyType(schemaSettings, current);
+        }
+        validate();
+    }
 	// End of user code
 
 

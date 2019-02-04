@@ -9,7 +9,7 @@ import java.util.List;
 
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
-
+import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.ecore.EObject;
 
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
@@ -40,7 +40,7 @@ import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableLis
 
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableContentProvider;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
-
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.ViewerFilter;
 
 import org.eclipse.jface.window.Window;
@@ -59,6 +59,7 @@ import org.eclipse.swt.layout.GridLayout;
 
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Text;
 
 import org.eclipse.ui.forms.widgets.Form;
@@ -67,10 +68,12 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.ValidateMediatorPropertiesEditionPart;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFNameSpacedPropertyEditorDialog;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
 
 // End of user code
@@ -96,6 +99,14 @@ public class ValidateMediatorPropertiesEditionPartForm extends SectionProperties
 	protected List<ViewerFilter> resourcesBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> resourcesFilters = new ArrayList<ViewerFilter>();
 	protected Button enableCacheSchema;
+	// Start of user code  for source widgets declarations
+    protected NamespacedProperty source;
+    protected Text sourceText;
+    protected Control[] reverseElements;
+    protected Control[] commentListElements;
+    protected Composite propertiesGroup;
+	// End of user code
+
 
 
 
@@ -148,6 +159,7 @@ public class ValidateMediatorPropertiesEditionPartForm extends SectionProperties
 		propertiesStep.addStep(EsbViewsRepository.ValidateMediator.Properties.schemas);
 		propertiesStep.addStep(EsbViewsRepository.ValidateMediator.Properties.resources);
 		propertiesStep.addStep(EsbViewsRepository.ValidateMediator.Properties.enableCacheSchema);
+		propertiesStep.addStep(EsbViewsRepository.ValidateMediator.Properties.source);
 		
 		
 		composer = new PartComposer(validateMediatorStep) {
@@ -178,21 +190,28 @@ public class ValidateMediatorPropertiesEditionPartForm extends SectionProperties
 				if (key == EsbViewsRepository.ValidateMediator.Properties.enableCacheSchema) {
 					return createEnableCacheSchemaCheckbox(widgetFactory, parent);
 				}
+				// Start of user code for source addToPart creation
+                if (key == EsbViewsRepository.ValidateMediator.Properties.source) {
+                    return createSourceWidget(widgetFactory, parent);
+                }
+				// End of user code
 				return parent;
 			}
 		};
 		composer.compose(view);
 	}
-	/**
-	 * 
-	 */
+
+
+    /**
+     * @generated NOT
+     */
 	protected Composite createPropertiesGroup(FormToolkit widgetFactory, final Composite parent) {
 		Section propertiesSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		propertiesSection.setText(EsbMessages.ValidateMediatorPropertiesEditionPart_PropertiesGroupLabel);
 		GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
 		propertiesSectionData.horizontalSpan = 3;
 		propertiesSection.setLayoutData(propertiesSectionData);
-		Composite propertiesGroup = widgetFactory.createComposite(propertiesSection);
+		propertiesGroup = widgetFactory.createComposite(propertiesSection);
 		GridLayout propertiesGroupLayout = new GridLayout();
 		propertiesGroupLayout.numColumns = 3;
 		propertiesGroup.setLayout(propertiesGroupLayout);
@@ -200,7 +219,9 @@ public class ValidateMediatorPropertiesEditionPartForm extends SectionProperties
 		return propertiesGroup;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createDescriptionText(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.ValidateMediator.Properties.description, EsbMessages.ValidateMediatorPropertiesEditionPart_DescriptionLabel);
 		description = widgetFactory.createText(parent, ""); //$NON-NLS-1$
@@ -268,9 +289,9 @@ public class ValidateMediatorPropertiesEditionPartForm extends SectionProperties
 		return parent;
 	}
 
-	/**
-	 * 
-	 */
+    /**
+     * @generated NOT
+     */
 	protected Composite createCommentsListMultiValuedEditor(FormToolkit widgetFactory, Composite parent) {
 		commentsList = widgetFactory.createText(parent, "", SWT.READ_ONLY); //$NON-NLS-1$
 		GridData commentsListData = new GridData(GridData.FILL_HORIZONTAL);
@@ -309,12 +330,14 @@ public class ValidateMediatorPropertiesEditionPartForm extends SectionProperties
 		EditingUtils.setID(editCommentsList, EsbViewsRepository.ValidateMediator.Properties.commentsList);
 		EditingUtils.setEEFtype(editCommentsList, "eef::MultiValuedEditor::browsebutton"); //$NON-NLS-1$
 		// Start of user code for createCommentsListMultiValuedEditor
-
+		commentListElements = new Control [] {editCommentsList, commentsList};
 		// End of user code
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createReverseCheckbox(FormToolkit widgetFactory, Composite parent) {
 		reverse = widgetFactory.createButton(parent, getDescription(EsbViewsRepository.ValidateMediator.Properties.reverse, EsbMessages.ValidateMediatorPropertiesEditionPart_ReverseLabel), SWT.CHECK);
 		reverse.addSelectionListener(new SelectionAdapter() {
@@ -338,14 +361,15 @@ public class ValidateMediatorPropertiesEditionPartForm extends SectionProperties
 		EditingUtils.setEEFtype(reverse, "eef::Checkbox"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.ValidateMediator.Properties.reverse, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createReverseCheckbox
-
+		reverseElements = new Control [] {reverse};
 		// End of user code
 		return parent;
 	}
 
 	/**
 	 * @param container
-	 * 
+     * @generated NOT
+     *
 	 */
 	protected Composite createFeaturesTableComposition(FormToolkit widgetFactory, Composite parent) {
 		this.features = new ReferencesTable(getDescription(EsbViewsRepository.ValidateMediator.Properties.features, EsbMessages.ValidateMediatorPropertiesEditionPart_FeaturesLabel), new ReferencesTableListener() {
@@ -396,8 +420,9 @@ public class ValidateMediatorPropertiesEditionPartForm extends SectionProperties
 
 	/**
 	 * @param container
-	 * 
-	 */
+	 *
+     * @generated NOT
+     */
 	protected Composite createSchemasTableComposition(FormToolkit widgetFactory, Composite parent) {
 		this.schemas = new ReferencesTable(getDescription(EsbViewsRepository.ValidateMediator.Properties.schemas, EsbMessages.ValidateMediatorPropertiesEditionPart_SchemasLabel), new ReferencesTableListener() {
 			public void handleAdd() {
@@ -447,8 +472,9 @@ public class ValidateMediatorPropertiesEditionPartForm extends SectionProperties
 
 	/**
 	 * @param container
-	 * 
-	 */
+	 *
+     * @generated NOT
+     */
 	protected Composite createResourcesTableComposition(FormToolkit widgetFactory, Composite parent) {
 		this.resources = new ReferencesTable(getDescription(EsbViewsRepository.ValidateMediator.Properties.resources, EsbMessages.ValidateMediatorPropertiesEditionPart_ResourcesLabel), new ReferencesTableListener() {
 			public void handleAdd() {
@@ -496,7 +522,9 @@ public class ValidateMediatorPropertiesEditionPartForm extends SectionProperties
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createEnableCacheSchemaCheckbox(FormToolkit widgetFactory, Composite parent) {
 		enableCacheSchema = widgetFactory.createButton(parent, getDescription(EsbViewsRepository.ValidateMediator.Properties.enableCacheSchema, EsbMessages.ValidateMediatorPropertiesEditionPart_EnableCacheSchemaLabel), SWT.CHECK);
 		enableCacheSchema.addSelectionListener(new SelectionAdapter() {
@@ -888,6 +916,23 @@ public class ValidateMediatorPropertiesEditionPartForm extends SectionProperties
 
 
 
+	// Start of user code for source specific getters and setters implementation
+    @Override
+    public NamespacedProperty getSource() {
+        // TODO Auto-generated method stub
+        return source;
+    }
+
+    @Override
+    public void setSource(NamespacedProperty nameSpacedProperty) {
+        if (nameSpacedProperty != null) {
+            sourceText.setText(nameSpacedProperty.getPropertyValue());
+            source = nameSpacedProperty;
+        }
+
+    }
+	// End of user code
+
 	/**
 	 * {@inheritDoc}
 	 *
@@ -898,8 +943,69 @@ public class ValidateMediatorPropertiesEditionPartForm extends SectionProperties
 		return EsbMessages.ValidateMediator_Part_Title;
 	}
 
+
+
 	// Start of user code additional methods
-	
+    protected Composite createSourceWidget(FormToolkit widgetFactory, Composite parent) {
+        Control sourceLabel = createDescription(parent, EsbViewsRepository.ValidateMediator.Properties.source,
+                EsbMessages.ValidateMediatorPropertiesEditionPart_SourceLabel);
+        widgetFactory.paintBordersFor(parent);
+        if (source == null) {
+            source = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
+        }
+        String initValueExpression = source.getPropertyValue().isEmpty() ? "/default/expression"
+                : source.getPropertyValue();
+        sourceText = widgetFactory.createText(parent, initValueExpression);
+        sourceText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+        widgetFactory.paintBordersFor(parent);
+        GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
+        sourceText.setLayoutData(valueData);
+        sourceText.addFocusListener(new FocusAdapter() {
+            /**
+             * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+             * 
+             */
+            @Override
+            @SuppressWarnings("synthetic-access")
+            public void focusLost(FocusEvent e) {
+            }
+
+            /**
+             * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+             */
+            @Override
+            public void focusGained(FocusEvent e) {
+                EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
+                        SWT.NULL, source);
+                // valueExpression.setPropertyValue(valueExpressionText.getText());
+                nspd.open();
+                sourceText.setText(source.getPropertyValue());
+                propertiesEditionComponent
+                        .firePropertiesChanged(new PropertiesEditionEvent(ValidateMediatorPropertiesEditionPartForm.this,
+                                EsbViewsRepository.ValidateMediator.Properties.source, PropertiesEditionEvent.COMMIT,
+                                PropertiesEditionEvent.SET, null, getSource()));
+            }
+        });
+        EditingUtils.setID(sourceText, EsbViewsRepository.EnrichMediator.Source.sourceXPath);
+        EditingUtils.setEEFtype(sourceText, "eef::Text");
+        Control sourceXPathHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent
+                .getHelpContent(EsbViewsRepository.ValidateMediator.Properties.source, EsbViewsRepository.FORM_KIND),
+                null); // $NON-NLS-1$
+        return parent;
+    }
+    @Override
+    public void refresh() {
+        super.refresh();
+        validate();
+    }
+
+    public void validate() {
+        EEFPropertyViewUtil epv = new EEFPropertyViewUtil(view);
+        epv.hideEntry(commentListElements, false);
+        epv.hideEntry(reverseElements, false);
+
+        view.layout(true, true);
+    }
 	// End of user code
 
 

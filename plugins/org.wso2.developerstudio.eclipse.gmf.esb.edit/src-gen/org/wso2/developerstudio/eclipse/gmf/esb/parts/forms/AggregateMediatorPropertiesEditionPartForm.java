@@ -1707,7 +1707,6 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
 
         showEntry(enclosingElementElements, false);
         view.layout(true, true);
-        view.pack();
     }
 
     public void clearElements() {
@@ -1726,7 +1725,6 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
         }
         if (layout) {
             view.layout(true, true);
-            view.pack();
         }
     }
 
@@ -1738,7 +1736,6 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
         }
         if (layout) {
             view.layout(true, true);
-            view.pack();
         }
     }
 	// End of user code

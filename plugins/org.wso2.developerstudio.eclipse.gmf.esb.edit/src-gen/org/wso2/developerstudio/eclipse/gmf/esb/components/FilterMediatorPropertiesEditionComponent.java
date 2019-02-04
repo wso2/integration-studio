@@ -40,7 +40,8 @@ import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.FilterMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.FilterMediatorConditionType;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.FilterMediatorPropertiesEditionPart;
 
@@ -99,11 +100,29 @@ public class FilterMediatorPropertiesEditionComponent extends SinglePartProperti
 			if (isAccessible(EsbViewsRepository.FilterMediator.Properties.regex))
 				basePart.setRegex(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, filterMediator.getRegex()));
 			
+			// Start of user code  for source command update
+            if (isAccessible(EsbViewsRepository.FilterMediator.Properties.source)) {
+                basePart.setSource(filterMediator.getSource());
+            }
+			// End of user code
+			
+			// Start of user code  for xpath command update
+            if (isAccessible(EsbViewsRepository.FilterMediator.Properties.xPath)) {
+                basePart.setXPath(filterMediator.getXpath());
+            }
+			// End of user code
+			
 			// init filters
 			
 			
 			
 			
+			
+			// Start of user code  for source filter update
+			// End of user code
+			
+			// Start of user code  for xpath filter update
+			// End of user code
 			
 			// init values for referenced views
 			
@@ -112,6 +131,8 @@ public class FilterMediatorPropertiesEditionComponent extends SinglePartProperti
 		}
 		setInitializing(false);
 	}
+
+
 
 
 
@@ -140,6 +161,12 @@ public class FilterMediatorPropertiesEditionComponent extends SinglePartProperti
 		if (editorKey == EsbViewsRepository.FilterMediator.Properties.regex) {
 			return EsbPackage.eINSTANCE.getFilterMediator_Regex();
 		}
+		if (editorKey == EsbViewsRepository.FilterMediator.Properties.source) {
+			return EsbPackage.eINSTANCE.getFilterMediator_Source();
+		}
+		if (editorKey == EsbViewsRepository.FilterMediator.Properties.xPath) {
+			return EsbPackage.eINSTANCE.getFilterMediator_Xpath();
+		}
 		return super.associatedFeature(editorKey);
 	}
 
@@ -167,6 +194,28 @@ public class FilterMediatorPropertiesEditionComponent extends SinglePartProperti
 		}
 		if (EsbViewsRepository.FilterMediator.Properties.regex == event.getAffectedEditor()) {
 			filterMediator.setRegex((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
+		}
+		if (EsbViewsRepository.FilterMediator.Properties.source == event.getAffectedEditor()) {
+			// Start of user code for updateSource method body
+            if (event.getNewValue() != null) {
+                NamespacedProperty nsp = (NamespacedProperty) event.getNewValue();
+                filterMediator.setSource(nsp);
+            } else {
+                filterMediator.setSource(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+            }
+			// End of user code
+			
+		}
+		if (EsbViewsRepository.FilterMediator.Properties.xPath == event.getAffectedEditor()) {
+			// Start of user code for updateXpath method body
+            if (event.getNewValue() != null) {
+                NamespacedProperty nsp = (NamespacedProperty) event.getNewValue();
+                filterMediator.setXpath(nsp);
+            } else {
+                filterMediator.setXpath(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+            }
+			// End of user code
+			
 		}
 	}
 
@@ -210,6 +259,30 @@ public class FilterMediatorPropertiesEditionComponent extends SinglePartProperti
 					basePart.setRegex("");
 				}
 			}
+					// Start of user code for source live update
+            if (EsbPackage.eINSTANCE.getFilterMediator_Source().equals(msg.getFeature())
+                    && msg.getNotifier().equals(semanticObject) && basePart != null
+                    && isAccessible(EsbViewsRepository.FilterMediator.Properties.source)) {
+                if (msg.getNewValue() != null) {
+                    basePart.setSource((NamespacedProperty) msg.getNewValue());
+                } else {
+                    basePart.setSource(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+                }
+            }
+					// End of user code
+			
+					// Start of user code for xpath live update
+            if (EsbPackage.eINSTANCE.getFilterMediator_Xpath().equals(msg.getFeature())
+                    && msg.getNotifier().equals(semanticObject) && basePart != null
+                    && isAccessible(EsbViewsRepository.FilterMediator.Properties.xPath)) {
+                if (msg.getNewValue() != null) {
+                    basePart.setXPath((NamespacedProperty) msg.getNewValue());
+                } else {
+                    basePart.setXPath(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+                }
+            }
+					// End of user code
+			
 			
 		}
 	}
@@ -226,7 +299,9 @@ public class FilterMediatorPropertiesEditionComponent extends SinglePartProperti
 			EsbPackage.eINSTANCE.getEsbElement_CommentsList(),
 			EsbPackage.eINSTANCE.getMediator_Reverse(),
 			EsbPackage.eINSTANCE.getFilterMediator_ConditionType(),
-			EsbPackage.eINSTANCE.getFilterMediator_Regex()		);
+			EsbPackage.eINSTANCE.getFilterMediator_Regex(),
+			EsbPackage.eINSTANCE.getFilterMediator_Source(),
+			EsbPackage.eINSTANCE.getFilterMediator_Xpath()		);
 		return new NotificationFilter[] {filter,};
 	}
 

@@ -1,0 +1,8 @@
+
+Fri Feb 01 00:32:35 IST 2019
+================================================================================
+Start of user code for associatedFeature method body
+		if (editorKey == EsbViewsRepository.HeaderMediator.Properties.headerName) {
+			return EsbPackage.eINSTANCE.getHeaderMediator_HeaderName();
+		}
+		// End of user code

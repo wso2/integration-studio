@@ -6179,6 +6179,10 @@ public class EsbViewsRepository {
 			
 			public static String statisticsEnabled = "esb::Sequences::properties::statisticsEnabled";
 			
+			// Start of user code for onError ElementEditor key
+			public static String onError = "esb::Sequences::properties::onError";
+			// End of user code
+			
 	
 		}
 	

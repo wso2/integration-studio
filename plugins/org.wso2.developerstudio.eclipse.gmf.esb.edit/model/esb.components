@@ -3636,6 +3636,9 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v-GPJnEei6boXzpRIfnA" name="statisticsEnabled" views="_E7xKA_JnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//Sequences/statisticsEnabled"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_fNy1ACgpEemHfrPx9BRWXQ" name="onError" views="_k4XnoCgoEemHfrPx9BRWXQ">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//Sequences/onError"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//Sequences"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_E7v-GfJnEei6boXzpRIfnA" name="SequencesOutputConnector" views="_E7xKBPJnEei6boXzpRIfnA">
@@ -9624,6 +9627,7 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xKA_JnEei6boXzpRIfnA" name="statisticsEnabled">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
           </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_k4XnoCgoEemHfrPx9BRWXQ" name="onError"/>
         </elements>
       </views>
       <views xmi:id="_E7xKBPJnEei6boXzpRIfnA" name="SequencesOutputConnector">

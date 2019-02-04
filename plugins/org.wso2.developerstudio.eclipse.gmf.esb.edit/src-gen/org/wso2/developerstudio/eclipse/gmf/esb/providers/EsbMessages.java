@@ -4222,6 +4222,12 @@ public class EsbMessages extends NLS {
 	public static String SequencePropertiesEditionPart_ReferringSequenceTypeLabel;
 
 	
+	public static String SequencePropertiesEditionPart_StaticReferenceKeyLabel;
+
+	
+	public static String SequencePropertiesEditionPart_DynamicReferenceKeyLabel;
+
+	
 	public static String SequenceInputConnectorPropertiesEditionPart_IncomingLinksLabel;
 
 	

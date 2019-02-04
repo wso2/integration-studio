@@ -68,11 +68,13 @@ import org.eclipse.swt.layout.GridLayout;
 
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.SequencePropertiesEditionPart;
 
@@ -102,6 +104,16 @@ public class SequencePropertiesEditionPartImpl extends CompositePropertiesEditio
 	protected Button receiveSequence;
 	protected Button duplicate;
 	protected EMFComboViewer referringSequenceType;
+	// Start of user code  for staticReferenceKey widgets declarations
+	protected RegistryKeyProperty staticReferenceKey;
+    protected Text staticReferenceKeyText;
+	// End of user code
+
+	// Start of user code  for dynamicReferenceKey widgets declarations
+    protected NamespacedProperty dynamicReferenceKey;
+    protected Text dynamicReferenceKeyText;
+	// End of user code
+
 
 
 
@@ -150,6 +162,8 @@ public class SequencePropertiesEditionPartImpl extends CompositePropertiesEditio
 		propertiesStep.addStep(EsbViewsRepository.Sequence.Properties.receiveSequence);
 		propertiesStep.addStep(EsbViewsRepository.Sequence.Properties.duplicate);
 		propertiesStep.addStep(EsbViewsRepository.Sequence.Properties.referringSequenceType);
+		propertiesStep.addStep(EsbViewsRepository.Sequence.Properties.staticReferenceKey);
+		propertiesStep.addStep(EsbViewsRepository.Sequence.Properties.dynamicReferenceKey);
 		
 		
 		composer = new PartComposer(sequenceStep) {
@@ -189,6 +203,12 @@ public class SequencePropertiesEditionPartImpl extends CompositePropertiesEditio
 				if (key == EsbViewsRepository.Sequence.Properties.referringSequenceType) {
 					return createReferringSequenceTypeEMFComboViewer(parent);
 				}
+				// Start of user code for staticReferenceKey addToPart creation
+				
+				// End of user code
+				// Start of user code for dynamicReferenceKey addToPart creation
+				
+				// End of user code
 				return parent;
 			}
 		};
@@ -1061,6 +1081,34 @@ public class SequencePropertiesEditionPartImpl extends CompositePropertiesEditio
 
 
 
+
+	// Start of user code for staticReferenceKey specific getters and setters implementation
+	@Override
+	public RegistryKeyProperty getStaticReferenceKey() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setStaticReferenceKey(RegistryKeyProperty registryKeyProperty) {
+		// TODO Auto-generated method stub
+		
+	}
+	// End of user code
+
+	// Start of user code for dynamicReferenceKey specific getters and setters implementation
+	@Override
+	public NamespacedProperty getdDynamicReferenceKey() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setDynamicReferenceKey(NamespacedProperty nameSpacedProperty) {
+		// TODO Auto-generated method stub
+		
+	}
+	// End of user code
 
 	/**
 	 * {@inheritDoc}

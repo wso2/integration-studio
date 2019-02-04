@@ -69,19 +69,25 @@ import org.eclipse.swt.layout.GridLayout;
 
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Text;
 
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.CompletionMessagesType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.SequencePropertiesEditionPart;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFNameSpacedPropertyEditorDialog;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.developerstudio.esb.form.editors.article.providers.NamedEntityDescriptor;
 
 // End of user code
 
@@ -107,6 +113,23 @@ public class SequencePropertiesEditionPartForm extends SectionPropertiesEditingP
 	protected Button receiveSequence;
 	protected Button duplicate;
 	protected EMFComboViewer referringSequenceType;
+	// Start of user code  for staticReferenceKey widgets declarations
+	protected RegistryKeyProperty staticReferenceKey;
+    protected Text staticReferenceKeyText;
+	// End of user code
+
+	// Start of user code  for dynamicReferenceKey widgets declarations
+    protected NamespacedProperty dynamicReferenceKey;
+    protected Text dynamicReferenceKeyText;
+    
+    protected Control[] referringSequenceTypeElements;
+    protected Control[] descriptionElements;
+    protected Control[] staticReferenceKeyElements;
+    protected Control[] dynamicReferenceKeyElements;
+ 
+    protected Composite propertiesGroup;
+	// End of user code
+
 
 
 
@@ -162,6 +185,8 @@ public class SequencePropertiesEditionPartForm extends SectionPropertiesEditingP
 		propertiesStep.addStep(EsbViewsRepository.Sequence.Properties.receiveSequence);
 		propertiesStep.addStep(EsbViewsRepository.Sequence.Properties.duplicate);
 		propertiesStep.addStep(EsbViewsRepository.Sequence.Properties.referringSequenceType);
+		propertiesStep.addStep(EsbViewsRepository.Sequence.Properties.staticReferenceKey);
+		propertiesStep.addStep(EsbViewsRepository.Sequence.Properties.dynamicReferenceKey);
 		
 		
 		composer = new PartComposer(sequenceStep) {
@@ -201,21 +226,32 @@ public class SequencePropertiesEditionPartForm extends SectionPropertiesEditingP
 				if (key == EsbViewsRepository.Sequence.Properties.referringSequenceType) {
 					return createReferringSequenceTypeEMFComboViewer(widgetFactory, parent);
 				}
+				// Start of user code for staticReferenceKey addToPart creation
+				if (key == EsbViewsRepository.Sequence.Properties.staticReferenceKey) {
+					return createStaticReferenceKey(widgetFactory, parent);
+				}
+				// End of user code
+				// Start of user code for dynamicReferenceKey addToPart creation
+				if (key == EsbViewsRepository.Sequence.Properties.dynamicReferenceKey) {
+					return createDynamicReferenceKey(widgetFactory, parent);
+				}
+				// End of user code
 				return parent;
 			}
 		};
 		composer.compose(view);
 	}
+	
 	/**
-	 * 
-	 */
+     * @generated NOT
+     */
 	protected Composite createPropertiesGroup(FormToolkit widgetFactory, final Composite parent) {
 		Section propertiesSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		propertiesSection.setText(EsbMessages.SequencePropertiesEditionPart_PropertiesGroupLabel);
 		GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
 		propertiesSectionData.horizontalSpan = 3;
 		propertiesSection.setLayoutData(propertiesSectionData);
-		Composite propertiesGroup = widgetFactory.createComposite(propertiesSection);
+		propertiesGroup = widgetFactory.createComposite(propertiesSection);
 		GridLayout propertiesGroupLayout = new GridLayout();
 		propertiesGroupLayout.numColumns = 3;
 		propertiesGroup.setLayout(propertiesGroupLayout);
@@ -223,9 +259,11 @@ public class SequencePropertiesEditionPartForm extends SectionPropertiesEditingP
 		return propertiesGroup;
 	}
 
-	
+	/**
+     * @generated NOT
+     */
 	protected Composite createDescriptionText(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EsbViewsRepository.Sequence.Properties.description, EsbMessages.SequencePropertiesEditionPart_DescriptionLabel);
+		Control descriptionLabel = createDescription(parent, EsbViewsRepository.Sequence.Properties.description, EsbMessages.SequencePropertiesEditionPart_DescriptionLabel);
 		description = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		description.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -284,9 +322,9 @@ public class SequencePropertiesEditionPartForm extends SectionPropertiesEditingP
 		});
 		EditingUtils.setID(description, EsbViewsRepository.Sequence.Properties.description);
 		EditingUtils.setEEFtype(description, "eef::Text"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.Sequence.Properties.description, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		Control descriptionHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.Sequence.Properties.description, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createDescriptionText
-
+		descriptionElements = new Control[] { descriptionLabel, description, descriptionHelp };
 		// End of user code
 		return parent;
 	}
@@ -662,9 +700,11 @@ public class SequencePropertiesEditionPartForm extends SectionPropertiesEditingP
 		return parent;
 	}
 
-	
+	/**
+     * @generated NOT
+     */
 	protected Composite createReferringSequenceTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EsbViewsRepository.Sequence.Properties.referringSequenceType, EsbMessages.SequencePropertiesEditionPart_ReferringSequenceTypeLabel);
+		Control referringSequenceTypeLable = createDescription(parent, EsbViewsRepository.Sequence.Properties.referringSequenceType, EsbMessages.SequencePropertiesEditionPart_ReferringSequenceTypeLabel);
 		referringSequenceType = new EMFComboViewer(parent);
 		referringSequenceType.setContentProvider(new ArrayContentProvider());
 		referringSequenceType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -685,9 +725,18 @@ public class SequencePropertiesEditionPartForm extends SectionPropertiesEditingP
 
 		});
 		referringSequenceType.setID(EsbViewsRepository.Sequence.Properties.referringSequenceType);
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.Sequence.Properties.referringSequenceType, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		Control referringSequenceTypeHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.Sequence.Properties.referringSequenceType, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createReferringSequenceTypeEMFComboViewer
-
+		referringSequenceTypeElements = new Control[] { referringSequenceTypeLable, referringSequenceType.getCombo(),
+				referringSequenceTypeHelp };
+		referringSequenceType.addSelectionChangedListener(new ISelectionChangedListener() {
+			
+			@Override
+			public void selectionChanged(SelectionChangedEvent event) {
+				// TODO Auto-generated method stub
+				validate();	
+			}
+		});
 		// End of user code
 		return parent;
 	}
@@ -1132,6 +1181,37 @@ public class SequencePropertiesEditionPartForm extends SectionPropertiesEditingP
 
 
 
+	// Start of user code for staticReferenceKey specific getters and setters implementation
+    @Override
+    public RegistryKeyProperty getStaticReferenceKey() {
+        return staticReferenceKey;
+    }
+
+    @Override
+    public void setStaticReferenceKey(RegistryKeyProperty registryKeyProperty) {
+        if(registryKeyProperty != null) {
+            staticReferenceKeyText.setText(registryKeyProperty.getKeyValue());
+            staticReferenceKey = registryKeyProperty;
+        }
+    }
+	// End of user code
+
+	// Start of user code for dynamicReferenceKey specific getters and setters implementation
+    @Override
+    public NamespacedProperty getdDynamicReferenceKey() {
+        return dynamicReferenceKey;
+    }
+
+    @Override
+    public void setDynamicReferenceKey(NamespacedProperty nameSpacedProperty) {
+        if(nameSpacedProperty != null) {
+            dynamicReferenceKeyText.setText(nameSpacedProperty.getPropertyValue());
+            dynamicReferenceKey = nameSpacedProperty;
+        }
+        
+    }
+	// End of user code
+
 	/**
 	 * {@inheritDoc}
 	 *
@@ -1143,7 +1223,139 @@ public class SequencePropertiesEditionPartForm extends SectionPropertiesEditingP
 	}
 
 	// Start of user code additional methods
+	protected Composite createStaticReferenceKey(FormToolkit widgetFactory, Composite parent) {
+		Control staticReferenceKeyLabel = createDescription(parent,
+				EsbViewsRepository.Sequence.Properties.staticReferenceKey,
+				EsbMessages.SequencePropertiesEditionPart_StaticReferenceKeyLabel);
+		widgetFactory.paintBordersFor(parent);
+		if (staticReferenceKey == null) {
+			staticReferenceKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
+		}
+		String initValueExpression = staticReferenceKey.getKeyValue().isEmpty() ? "" : staticReferenceKey.getKeyValue();
+		staticReferenceKeyText = widgetFactory.createText(parent, initValueExpression);
+		staticReferenceKeyText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+		widgetFactory.paintBordersFor(parent);
+		GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
+		staticReferenceKeyText.setLayoutData(valueData);
+		staticReferenceKeyText.addFocusListener(new FocusAdapter() {
+			/**
+			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void focusLost(FocusEvent e) {
+			}
+
+			/**
+			 * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+			 */
+			@Override
+			public void focusGained(FocusEvent e) {
+				EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
+						SWT.NULL, staticReferenceKey, new ArrayList<NamedEntityDescriptor>());
+				dialog.open();
+				staticReferenceKeyText.setText(staticReferenceKey.getKeyValue());
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+						SequencePropertiesEditionPartForm.this,
+						EsbViewsRepository.Sequence.Properties.staticReferenceKey, PropertiesEditionEvent.COMMIT,
+						PropertiesEditionEvent.SET, null, getStaticReferenceKey()));
+			}
+		});
+		EditingUtils.setID(staticReferenceKeyText, EsbViewsRepository.Sequence.Properties.staticReferenceKey);
+		EditingUtils.setEEFtype(staticReferenceKeyText, "eef::Text");
+		Control staticReferenceKeyHelp = FormUtils.createHelpButton(widgetFactory, parent,
+				propertiesEditionComponent.getHelpContent(EsbViewsRepository.Sequence.Properties.staticReferenceKey,
+						EsbViewsRepository.FORM_KIND),
+				null); // $NON-NLS-1$
+		staticReferenceKeyElements = new Control[] { staticReferenceKeyLabel, staticReferenceKeyText,
+				staticReferenceKeyHelp };
+		return parent;
+	}
 	
+	protected Composite createDynamicReferenceKey(FormToolkit widgetFactory, Composite parent) {
+		Control dynamicReferenceKeyLabel = createDescription(parent,
+				EsbViewsRepository.Sequence.Properties.dynamicReferenceKey,
+				EsbMessages.SequencePropertiesEditionPart_DynamicReferenceKeyLabel);
+		widgetFactory.paintBordersFor(parent);
+		if (dynamicReferenceKey == null) {
+			dynamicReferenceKey = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
+		}
+		String initValueExpression = dynamicReferenceKey.getPropertyValue().isEmpty() ? "/default/expression"
+				: dynamicReferenceKey.getPropertyValue();
+		dynamicReferenceKeyText = widgetFactory.createText(parent, initValueExpression);
+		dynamicReferenceKeyText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+		widgetFactory.paintBordersFor(parent);
+		GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
+		dynamicReferenceKeyText.setLayoutData(valueData);
+		dynamicReferenceKeyText.addFocusListener(new FocusAdapter() {
+			/**
+			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void focusLost(FocusEvent e) {
+			}
+
+			/**
+			 * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+			 */
+			@Override
+			public void focusGained(FocusEvent e) {
+				EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
+						SWT.NULL, dynamicReferenceKey);
+				// valueExpression.setPropertyValue(valueExpressionText.getText());
+				nspd.open();
+				dynamicReferenceKeyText.setText(dynamicReferenceKey.getPropertyValue());
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+						SequencePropertiesEditionPartForm.this,
+						EsbViewsRepository.Sequence.Properties.dynamicReferenceKey,
+						PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getdDynamicReferenceKey()));
+			}
+		});
+		EditingUtils.setID(dynamicReferenceKeyText,
+				EsbViewsRepository.Sequence.Properties.dynamicReferenceKey);
+		EditingUtils.setEEFtype(dynamicReferenceKeyText, "eef::Text");
+		Control dynamicReferenceKeyHelp = FormUtils.createHelpButton(widgetFactory, parent,
+				propertiesEditionComponent.getHelpContent(
+						EsbViewsRepository.Sequence.Properties.dynamicReferenceKey,
+						EsbViewsRepository.FORM_KIND),
+				null); // $NON-NLS-1$
+		dynamicReferenceKeyElements = new Control[] { dynamicReferenceKeyLabel, dynamicReferenceKeyText,
+				dynamicReferenceKeyHelp };
+		return parent;
+	}
+	
+	@Override
+    public void refresh() {
+        super.refresh();
+        validate();
+    }
+
+	EEFPropertyViewUtil viewUtil = new EEFPropertyViewUtil(view);
+	
+    public void validate() {
+    	
+    	
+    	for (Control control : propertiesGroup.getChildren()) {
+    		if (!(control instanceof Composite)) {
+    			viewUtil.clearElement(control);
+    		}
+    	}
+    	
+    	viewUtil.showEntry(referringSequenceTypeElements, false);
+    	if(getReferringSequenceType().getName().equals("STATIC")) {
+    		viewUtil.showEntry(staticReferenceKeyElements, false);
+    	} else if(getReferringSequenceType().getName().equals("DYNAMIC")) {
+    		viewUtil.showEntry(dynamicReferenceKeyElements, false);
+    	} 
+    	viewUtil.showEntry(descriptionElements, false);
+    	
+        view.layout(true, true);
+        view.pack();
+    }
+
 	// End of user code
 
 

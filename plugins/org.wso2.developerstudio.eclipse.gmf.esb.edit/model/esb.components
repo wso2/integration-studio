@@ -1365,6 +1365,12 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v7LfJnEei6boXzpRIfnA" name="referringSequenceType" views="_E7wkY_JnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//Sequence/referringSequenceType"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_vYnlQCdiEemyIZuNd71www" name="staticReferenceKey" views="_k2UEICdiEemyIZuNd71www">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//Sequence/staticReferenceKey"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_AuXwICdjEemyIZuNd71www" name="dynamicReferenceKey" views="_pUHFICdiEemyIZuNd71www">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//Sequence/dynamicReferenceKey"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//Sequence"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_E7v7LvJnEei6boXzpRIfnA" name="SequenceInputConnector" views="_E7wkZPJnEei6boXzpRIfnA">
@@ -7032,6 +7038,8 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wkY_JnEei6boXzpRIfnA" name="referringSequenceType">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
           </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_k2UEICdiEemyIZuNd71www" name="staticReferenceKey"/>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_pUHFICdiEemyIZuNd71www" name="dynamicReferenceKey"/>
         </elements>
       </views>
       <views xmi:id="_E7wkZPJnEei6boXzpRIfnA" name="SequenceInputConnector">

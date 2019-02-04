@@ -43,6 +43,10 @@ import org.wso2.developerstudio.eclipse.esb.docker.Activator;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
+/**
+ * Wizard page for CAR file generation.
+ *
+ */
 public class CarExportDetailsWizardPage extends WizardPage {
 
     private static final String BROWSE_LABEL_TEXT = "Browse";

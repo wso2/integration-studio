@@ -20,6 +20,10 @@ package org.wso2.developerstudio.eclipse.esb.docker.resources;
 
 import java.io.File;
 
+/**
+ * Constants related to Docker image export wizard.
+ *
+ */
 public class ExportImageWizardConstants {
     
     public static final String DIALOG_TITLE_TEXT = "WSO2 Platform Distribution - Generate Docker Image";

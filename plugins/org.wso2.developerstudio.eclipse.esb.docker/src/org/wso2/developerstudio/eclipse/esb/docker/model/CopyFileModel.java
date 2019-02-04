@@ -26,18 +26,22 @@ public class CopyFileModel {
     
     // Source path of the file
     private String source;
+    
     // Destination which the file should be copied to
     private String destination;
     
     public String getSource() {
         return source;
     }
+    
     public void setSource(String source) {
         this.source = source;
     }
+    
     public String getDestination() {
         return destination;
     }
+    
     public void setDestination(String destination) {
         this.destination = destination;
     }

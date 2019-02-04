@@ -24,6 +24,10 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+/**
+ * Utility class for Docker image generation related file operations.
+ *
+ */
 public class DockerGeneratorUtils {
     
     private static DockerGeneratorUtils instance;

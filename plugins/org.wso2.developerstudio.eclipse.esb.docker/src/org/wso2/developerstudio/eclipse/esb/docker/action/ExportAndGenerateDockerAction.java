@@ -26,6 +26,10 @@ import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.esb.docker.wizard.ExportAndGenerateDockerImageWizard;
 
+/**
+ * Action delegate class for docker image generation operation. 
+ *
+ */
 public class ExportAndGenerateDockerAction implements IActionDelegate {
     
     IStructuredSelection selection;

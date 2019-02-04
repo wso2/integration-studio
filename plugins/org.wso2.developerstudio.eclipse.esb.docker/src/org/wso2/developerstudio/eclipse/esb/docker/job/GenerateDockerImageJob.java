@@ -24,10 +24,17 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
+import org.wso2.developerstudio.eclipse.esb.docker.Activator;
 import org.wso2.developerstudio.eclipse.esb.docker.model.MicroIntegratorDockerModel;
 import org.wso2.developerstudio.eclipse.esb.docker.util.DockerImageGenerator;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 
+/**
+ * Represents a background job to generate the Docker image.
+ *
+ */
 public class GenerateDockerImageJob extends Job {
 
     private String dockerDirectory;
@@ -37,6 +44,8 @@ public class GenerateDockerImageJob extends Job {
     private String eiDistributionDestination;
     private File carbonFile;
     private MicroIntegratorDockerModel dockerModel;
+    
+    private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
     public GenerateDockerImageJob(String dockerDir, String eiDistributionSource, String eiDistributionDestination,
             String serverHome, String deploymentDir, String destinationDir, File carbonFile,
@@ -96,7 +105,7 @@ public class GenerateDockerImageJob extends Job {
             monitor.worked(20);
 
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("Error occured while generating docker image.", e);
             operationText = e.getMessage();
             monitor.beginTask(operationText, 100);
             monitor.worked(0);

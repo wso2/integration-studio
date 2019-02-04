@@ -22,6 +22,10 @@ import java.util.Set;
 import java.util.Arrays;
 import java.util.HashSet;
 
+/**
+ * Constants related to Docker client operations.
+ *
+ */
 public class DockerGenConstants {
 
     public static class ImageParamDefaults {

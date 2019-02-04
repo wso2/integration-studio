@@ -56,7 +56,6 @@ public class DockerImageGenerator {
     private MicroIntegratorDockerModel dockerModel;
 
     private static final String FILE_POSTFIX_TAR = ".tar";
-    private static final String SUCCESS_MESSAGE = "OK";
     private static final String STRING_SPACE = " ";
     private static final String EMPTY_STRING = "";
 
@@ -157,7 +156,7 @@ public class DockerImageGenerator {
         
         try {
             // Check if the docker daemon is running
-            final String pingResponse = docker.ping();
+            docker.ping();
         } catch (DockerException e) {
             String msg = DockerGenConstants.ErrorMessages.DOCKER_CONNECTION_FAIL_MSG;
             log.error(msg, e);

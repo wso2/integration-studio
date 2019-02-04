@@ -24,6 +24,10 @@ import java.util.Set;
 
 import org.wso2.developerstudio.eclipse.esb.docker.resources.DockerGenConstants;
 
+/**
+ * Represents a Docker model for image generation.
+ *
+ */
 public class MicroIntegratorDockerModel {
     
     private String name;

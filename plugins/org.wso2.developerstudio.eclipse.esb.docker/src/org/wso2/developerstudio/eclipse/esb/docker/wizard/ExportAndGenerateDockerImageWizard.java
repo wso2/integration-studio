@@ -64,6 +64,10 @@ import org.wso2.developerstudio.eclipse.platform.core.project.export.util.Export
 import org.wso2.developerstudio.eclipse.platform.core.utils.Constants;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 
+/**
+ * Wizard for docker image generation.
+ *
+ */
 public class ExportAndGenerateDockerImageWizard extends Wizard implements IExportWizard {
 
     private DistributionProjectExportWizardPage mainPage;

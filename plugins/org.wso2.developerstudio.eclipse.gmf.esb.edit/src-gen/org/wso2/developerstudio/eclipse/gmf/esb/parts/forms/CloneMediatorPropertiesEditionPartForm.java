@@ -600,6 +600,7 @@ public class CloneMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
      * @generated NOT
      */
     protected Composite createTargetsOutputConnectorTableComposition(FormToolkit widgetFactory, Composite parent) {
+        Control[] previousControls = propertiesGroup.getChildren();
         Label itemLabel = createDescription(parent, EsbViewsRepository.CloneMediator.Properties.targetsOutputConnector,
                 EsbMessages.CloneMediatorPropertiesEditionPart_TargetsOutputConnectorLabel);
         this.targetsOutputConnector = new ReferencesTable(
@@ -667,7 +668,8 @@ public class CloneMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
         targetsOutputConnector.setID(EsbViewsRepository.CloneMediator.Properties.targetsOutputConnector);
         targetsOutputConnector.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
         // Start of user code for createTargetsOutputConnectorTableComposition
-        targetOutputElements = new Control [] {itemLabel, targetsOutputConnector.getTable()};
+        Control[] newControls = propertiesGroup.getChildren();
+        targetOutputElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
         // End of user code
         return parent;
     }
@@ -1058,7 +1060,7 @@ public class CloneMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
 
     public void validate() {
         EEFPropertyViewUtil epv = new EEFPropertyViewUtil(view);
-        //epv.clearElements(new Composite[] {propertiesGroup});
+       // epv.clearElements(new Composite[] {propertiesGroup});
         epv.hideEntry(new Control[] {reverse}, false);
         epv.hideEntry(commentListElements, false);
         epv.hideEntry(targetOutputElements, false);

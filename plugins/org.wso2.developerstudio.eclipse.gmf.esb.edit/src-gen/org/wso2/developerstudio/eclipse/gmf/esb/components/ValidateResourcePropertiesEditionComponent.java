@@ -30,8 +30,9 @@ import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingCo
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.ValidateResource;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.ValidateResourcePropertiesEditionPart;
 
@@ -78,7 +79,16 @@ public class ValidateResourcePropertiesEditionComponent extends SinglePartProper
 			if (isAccessible(EsbViewsRepository.ValidateResource.Properties.location))
 				basePart.setLocation(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, validateResource.getLocation()));
 			
+			// Start of user code  for locationKey command update
+            if (isAccessible(EsbViewsRepository.ValidateResource.Properties.locationKey)) {
+                basePart.setLocationKey(validateResource.getKey());
+            }
+			// End of user code
+			
 			// init filters
+			
+			// Start of user code  for locationKey filter update
+			// End of user code
 			
 			// init values for referenced views
 			
@@ -91,6 +101,7 @@ public class ValidateResourcePropertiesEditionComponent extends SinglePartProper
 
 
 
+
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
@@ -98,6 +109,9 @@ public class ValidateResourcePropertiesEditionComponent extends SinglePartProper
 	public EStructuralFeature associatedFeature(Object editorKey) {
 		if (editorKey == EsbViewsRepository.ValidateResource.Properties.location) {
 			return EsbPackage.eINSTANCE.getAbstractLocationKeyResource_Location();
+		}
+		if (editorKey == EsbViewsRepository.ValidateResource.Properties.locationKey) {
+			return EsbPackage.eINSTANCE.getAbstractLocationKeyResource_Key();
 		}
 		return super.associatedFeature(editorKey);
 	}
@@ -111,6 +125,17 @@ public class ValidateResourcePropertiesEditionComponent extends SinglePartProper
 		ValidateResource validateResource = (ValidateResource)semanticObject;
 		if (EsbViewsRepository.ValidateResource.Properties.location == event.getAffectedEditor()) {
 			validateResource.setLocation((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
+		}
+		if (EsbViewsRepository.ValidateResource.Properties.locationKey == event.getAffectedEditor()) {
+			// Start of user code for updateLocationKey method body
+            if (event.getNewValue() != null) {
+                RegistryKeyProperty rkp = (RegistryKeyProperty) event.getNewValue();
+                validateResource.setKey(rkp);
+            } else {
+                validateResource.setKey(EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty());
+            }
+			// End of user code
+			
 		}
 	}
 
@@ -129,6 +154,18 @@ public class ValidateResourcePropertiesEditionComponent extends SinglePartProper
 					basePart.setLocation("");
 				}
 			}
+					// Start of user code for locationKey live update
+            if (EsbPackage.eINSTANCE.getAbstractLocationKeyResource_Key().equals(msg.getFeature())
+                    && msg.getNotifier().equals(semanticObject) && basePart != null
+                    && isAccessible(EsbViewsRepository.ValidateResource.Properties.location)) {
+                if (msg.getNewValue() != null) {
+                    basePart.setLocationKey((RegistryKeyProperty)msg.getNewValue());
+                } else {
+                    basePart.setLocationKey(EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty());
+                }
+            }
+					// End of user code
+			
 			
 		}
 	}
@@ -141,7 +178,8 @@ public class ValidateResourcePropertiesEditionComponent extends SinglePartProper
 	@Override
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
-			EsbPackage.eINSTANCE.getAbstractLocationKeyResource_Location()		);
+			EsbPackage.eINSTANCE.getAbstractLocationKeyResource_Location(),
+			EsbPackage.eINSTANCE.getAbstractLocationKeyResource_Key()		);
 		return new NotificationFilter[] {filter,};
 	}
 

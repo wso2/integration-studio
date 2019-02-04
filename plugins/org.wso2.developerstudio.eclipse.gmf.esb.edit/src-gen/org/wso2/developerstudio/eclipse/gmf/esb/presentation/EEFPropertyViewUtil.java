@@ -30,11 +30,14 @@ public class EEFPropertyViewUtil {
         // view.getChildren();
         for (Control control : controls) {
             // null check and type check
+            control.setEnabled(true);
             if (control.getLayoutData() != null && control.getLayoutData() instanceof GridData) {
                 ((GridData) control.getLayoutData()).exclude = true;
                 control.setVisible(false);
             } else if (control.getLayoutData() != null && control.getLayoutData() instanceof FormData) {
                // ((FormData) control.getLayoutData()). = true;
+                control.setVisible(false);
+            } else {
                 control.setVisible(false);
             }
         }
@@ -47,10 +50,13 @@ public class EEFPropertyViewUtil {
     public void showEntry(Control controls[], boolean layout) {
         for (Control control : controls) {
             // null check and type check
+            control.setEnabled(true);
             if (control.getLayoutData() != null && control.getLayoutData() instanceof GridData) {
                ((GridData) control.getLayoutData()).exclude = false;
                 control.setVisible(true);
             } else if (control.getLayoutData() != null && control.getLayoutData() instanceof FormData) {
+                control.setVisible(true);
+            } else {
                 control.setVisible(true);
             }
         }
@@ -58,5 +64,13 @@ public class EEFPropertyViewUtil {
             view.layout(true, true);
             view.pack();
         }
+    }
+    
+    public static Control[] getTableElements(Control[] previousControls, Control[] newControls) {
+        Control [] tableElements = new Control[newControls.length - previousControls.length];
+        for (int i = previousControls.length; i < newControls.length; i++) {
+            tableElements[i - previousControls.length] = newControls[i];
+        }
+        return tableElements;
     }
 }

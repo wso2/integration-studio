@@ -64,7 +64,7 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.ValidateMediatorPropertiesEditionPart;
 
@@ -93,6 +93,10 @@ public class ValidateMediatorPropertiesEditionPartImpl extends CompositeProperti
 	protected List<ViewerFilter> resourcesBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> resourcesFilters = new ArrayList<ViewerFilter>();
 	protected Button enableCacheSchema;
+	// Start of user code  for source widgets declarations
+	
+	// End of user code
+
 
 
 
@@ -138,6 +142,7 @@ public class ValidateMediatorPropertiesEditionPartImpl extends CompositeProperti
 		propertiesStep.addStep(EsbViewsRepository.ValidateMediator.Properties.schemas);
 		propertiesStep.addStep(EsbViewsRepository.ValidateMediator.Properties.resources);
 		propertiesStep.addStep(EsbViewsRepository.ValidateMediator.Properties.enableCacheSchema);
+		propertiesStep.addStep(EsbViewsRepository.ValidateMediator.Properties.source);
 		
 		
 		composer = new PartComposer(validateMediatorStep) {
@@ -168,6 +173,9 @@ public class ValidateMediatorPropertiesEditionPartImpl extends CompositeProperti
 				if (key == EsbViewsRepository.ValidateMediator.Properties.enableCacheSchema) {
 					return createEnableCacheSchemaCheckbox(parent);
 				}
+				// Start of user code for source addToPart creation
+				
+				// End of user code
 				return parent;
 			}
 		};
@@ -857,6 +865,21 @@ public class ValidateMediatorPropertiesEditionPartImpl extends CompositeProperti
 
 
 
+	// Start of user code for source specific getters and setters implementation
+
+    @Override
+    public NamespacedProperty getSource() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void setSource(NamespacedProperty nameSpacedProperty) {
+        // TODO Auto-generated method stub
+        
+    }
+	// End of user code
+
 	/**
 	 * {@inheritDoc}
 	 *
@@ -866,6 +889,7 @@ public class ValidateMediatorPropertiesEditionPartImpl extends CompositeProperti
 	public String getTitle() {
 		return EsbMessages.ValidateMediator_Part_Title;
 	}
+
 
 	// Start of user code additional methods
 	

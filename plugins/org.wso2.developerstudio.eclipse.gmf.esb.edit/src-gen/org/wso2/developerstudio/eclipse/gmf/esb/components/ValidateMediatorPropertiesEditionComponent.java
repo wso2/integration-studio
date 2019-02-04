@@ -51,11 +51,12 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.ValidateFeature;
 import org.wso2.developerstudio.eclipse.gmf.esb.ValidateMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.ValidateResource;
 import org.wso2.developerstudio.eclipse.gmf.esb.ValidateSchema;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.ValidateMediatorPropertiesEditionPart;
 
@@ -138,6 +139,12 @@ public class ValidateMediatorPropertiesEditionComponent extends SinglePartProper
 			if (isAccessible(EsbViewsRepository.ValidateMediator.Properties.enableCacheSchema)) {
 				basePart.setEnableCacheSchema(validateMediator.isEnableCacheSchema());
 			}
+			// Start of user code  for sourceXPath command update
+            if (isAccessible(EsbViewsRepository.ValidateMediator.Properties.source)) {
+                basePart.setSource(validateMediator.getSourceXpath());
+            }
+			// End of user code
+			
 			// init filters
 			
 			
@@ -188,6 +195,9 @@ public class ValidateMediatorPropertiesEditionComponent extends SinglePartProper
 				// End of user code
 			}
 			
+			// Start of user code  for sourceXPath filter update
+			// End of user code
+			
 			// init values for referenced views
 			
 			// init filters for referenced views
@@ -195,6 +205,7 @@ public class ValidateMediatorPropertiesEditionComponent extends SinglePartProper
 		}
 		setInitializing(false);
 	}
+
 
 
 
@@ -230,6 +241,9 @@ public class ValidateMediatorPropertiesEditionComponent extends SinglePartProper
 		}
 		if (editorKey == EsbViewsRepository.ValidateMediator.Properties.enableCacheSchema) {
 			return EsbPackage.eINSTANCE.getValidateMediator_EnableCacheSchema();
+		}
+		if (editorKey == EsbViewsRepository.ValidateMediator.Properties.source) {
+			return EsbPackage.eINSTANCE.getValidateMediator_SourceXpath();
 		}
 		return super.associatedFeature(editorKey);
 	}
@@ -331,6 +345,17 @@ public class ValidateMediatorPropertiesEditionComponent extends SinglePartProper
 		if (EsbViewsRepository.ValidateMediator.Properties.enableCacheSchema == event.getAffectedEditor()) {
 			validateMediator.setEnableCacheSchema((Boolean)event.getNewValue());
 		}
+		if (EsbViewsRepository.ValidateMediator.Properties.source == event.getAffectedEditor()) {
+			// Start of user code for updateSourceXPath method body
+            if (event.getNewValue() != null) {
+                NamespacedProperty nsp = (NamespacedProperty) event.getNewValue();
+                validateMediator.setSourceXpath(nsp);
+            } else {
+                validateMediator.setSourceXpath(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+            }
+			// End of user code
+			
+		}
 	}
 
 	/**
@@ -372,6 +397,18 @@ public class ValidateMediatorPropertiesEditionComponent extends SinglePartProper
 			if (EsbPackage.eINSTANCE.getValidateMediator_EnableCacheSchema().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.ValidateMediator.Properties.enableCacheSchema))
 				basePart.setEnableCacheSchema((Boolean)msg.getNewValue());
 			
+					// Start of user code for sourceXPath live update
+            if (EsbPackage.eINSTANCE.getValidateMediator_SourceXpath().equals(msg.getFeature())
+                    && msg.getNotifier().equals(semanticObject) && basePart != null
+                    && isAccessible(EsbViewsRepository.ValidateMediator.Properties.source)) {
+                if (msg.getNewValue() != null) {
+                    basePart.setSource((NamespacedProperty)msg.getNewValue());
+                } else {
+                    basePart.setSource(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+                }
+            }
+					// End of user code
+			
 			
 		}
 	}
@@ -390,7 +427,8 @@ public class ValidateMediatorPropertiesEditionComponent extends SinglePartProper
 			EsbPackage.eINSTANCE.getValidateMediator_Features(),
 			EsbPackage.eINSTANCE.getValidateMediator_Schemas(),
 			EsbPackage.eINSTANCE.getValidateMediator_Resources(),
-			EsbPackage.eINSTANCE.getValidateMediator_EnableCacheSchema()		);
+			EsbPackage.eINSTANCE.getValidateMediator_EnableCacheSchema(),
+			EsbPackage.eINSTANCE.getValidateMediator_SourceXpath()		);
 		return new NotificationFilter[] {filter,};
 	}
 

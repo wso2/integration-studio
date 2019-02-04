@@ -3,6 +3,8 @@
  */
 package org.wso2.developerstudio.eclipse.gmf.esb.parts;
 
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
+
 // Start of user code for imports
 
 
@@ -31,6 +33,12 @@ public interface ValidateResourcePropertiesEditionPart {
 
 
 
+	// Start of user code for locationKey specific getters and setters declaration
+    public RegistryKeyProperty getLocationKey();
+
+    public void setLocationKey(RegistryKeyProperty registryKeyProperty);
+
+	// End of user code
 
 	/**
 	 * Returns the internationalized title text.

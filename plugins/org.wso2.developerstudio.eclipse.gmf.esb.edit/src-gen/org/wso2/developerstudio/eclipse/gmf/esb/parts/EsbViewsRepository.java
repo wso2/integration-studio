@@ -1860,7 +1860,7 @@ public class EsbViewsRepository {
 			public static String sourceProperty = "esb::EnrichMediator::Source::sourceProperty";
 			
 			// Start of user code for sourceXPath ElementEditor key
-			public static String sourceXPath = "esb::EnrichMediator::Source::sourceXPath";
+			public static String sourceXPath = "esb::SwitchMediator::properties::sourceXPath";
 			// End of user code
 			
 			// Start of user code for inlineRegistryKey ElementEditor key
@@ -4269,34 +4269,66 @@ public class EsbViewsRepository {
 	 * 
 	 */
 	public static class ThrottleMediator {
-		public static class Properties {
+		public static class General {
 	
 			
-			public static String description = "esb::ThrottleMediator::properties::description";
+			public static String commentsList = "esb::ThrottleMediator::general::commentsList";
 			
 			
-			public static String commentsList = "esb::ThrottleMediator::properties::commentsList";
+			public static String reverse = "esb::ThrottleMediator::general::Reverse";
 			
 			
-			public static String reverse = "esb::ThrottleMediator::properties::Reverse";
+			public static String groupId = "esb::ThrottleMediator::general::groupId";
+			
+	
+		}
+	
+		public static class Misc {
+	
+			
+			public static String description = "esb::ThrottleMediator::misc::description";
+			
+	
+		}
+	
+		public static class OnAccept {
+	
+			
+			public static String onAcceptBranchsequenceType = "esb::ThrottleMediator::onAccept::OnAcceptBranchsequenceType";
+			
+			// Start of user code for OnAcceptBranchSequenceKey ElementEditor key
+			public static String onAcceptBranchSequenceKey = "esb::ThrottleMediator::onAccept::OnAcceptBranchSequenceKey";
+			// End of user code
+	
+		}
+
+		public static class OnReject {
+	
+			
+			public static String onRejectBranchsequenceType = "esb::ThrottleMediator::onReject::OnRejectBranchsequenceType";
+			
+			// Start of user code for OnRejectBranchSequenceKey ElementEditor key
+			public static String onRejectBranchSequenceKey = "esb::ThrottleMediator::onReject::OnRejectBranchSequenceKey";
+			// End of user code
+			
+	
+		}
+	
+
+		public static class ThrottlePolicy {
+	
+			
+			public static String policyType = "esb::ThrottleMediator::throttlePolicy::policyType";
 			
 			
-			public static String groupId = "esb::ThrottleMediator::properties::groupId";
+			public static String maxConcurrentAccessCount = "esb::ThrottleMediator::throttlePolicy::maxConcurrentAccessCount";
 			
 			
-			public static String policyType = "esb::ThrottleMediator::properties::policyType";
+			public static String policyEntries = "esb::ThrottleMediator::throttlePolicy::policyEntries";
 			
-			
-			public static String maxConcurrentAccessCount = "esb::ThrottleMediator::properties::maxConcurrentAccessCount";
-			
-			
-			public static String policyEntries = "esb::ThrottleMediator::properties::policyEntries";
-			
-			
-			public static String onAcceptBranchsequenceType = "esb::ThrottleMediator::properties::OnAcceptBranchsequenceType";
-			
-			
-			public static String onRejectBranchsequenceType = "esb::ThrottleMediator::properties::OnRejectBranchsequenceType";
+			// Start of user code for policyKey ElementEditor key
+			public static String policyKey = "esb::ThrottleMediator::throttlePolicy::policyKey";
+			// End of user code
 			
 	
 		}
@@ -6416,6 +6448,10 @@ public class EsbViewsRepository {
 			
 			public static String enableCacheSchema = "esb::ValidateMediator::properties::enableCacheSchema";
 			
+			// Start of user code for source ElementEditor key
+			public static String source = "esb::ValidateMediator::properties::source";
+			// End of user code
+			
 	
 		}
 	
@@ -6430,6 +6466,10 @@ public class EsbViewsRepository {
 	
 			
 			public static String location = "esb::ValidateResource::properties::location";
+			
+			// Start of user code for locationKey ElementEditor key
+			public static String locationKey = "esb::ValidateResource::properties::locationKey";
+			// End of user code
 			
 	
 		}
@@ -6466,6 +6506,14 @@ public class EsbViewsRepository {
 			
 			
 			public static String schemaKey = "esb::ValidateSchema::properties::schemaKey";
+			
+			// Start of user code for staticSchemaKey ElementEditor key
+			public static String staticSchemaKey = "esb::ValidateSchema::properties::staticSchemaKey";
+			// End of user code
+			
+			// Start of user code for dynamicSchemaKey ElementEditor key
+			public static String dynamicSchemaKey = "esb::ValidateSchema::properties::dynamicSchemaKey";
+			// End of user code
 			
 	
 		}

@@ -51,9 +51,10 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.SwitchCaseBranchOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.SwitchMediator;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.SwitchMediatorPropertiesEditionPart;
 
@@ -125,6 +126,9 @@ public class SwitchMediatorPropertiesEditionComponent extends SinglePartProperti
 				basePart.initCaseBranches(caseBranchesSettings);
 			}
 			// Start of user code  for sourceXPath command update
+            if (isAccessible(EsbViewsRepository.SwitchMediator.Properties.sourceXPath)) {
+                basePart.setSourceXPath(switchMediator.getSourceXpath());
+            }
 			// End of user code
 			
 			// init filters
@@ -257,6 +261,12 @@ public class SwitchMediatorPropertiesEditionComponent extends SinglePartProperti
 		}
 		if (EsbViewsRepository.SwitchMediator.Properties.sourceXPath == event.getAffectedEditor()) {
 			// Start of user code for updateSourceXPath method body
+            if (event.getNewValue() != null) {
+                NamespacedProperty nsp = (NamespacedProperty) event.getNewValue();
+                switchMediator.setSourceXpath(nsp);
+            } else {
+                switchMediator.setSourceXpath(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+            }
 			// End of user code
 			
 		}
@@ -316,7 +326,13 @@ public class SwitchMediatorPropertiesEditionComponent extends SinglePartProperti
 			if (EsbPackage.eINSTANCE.getSwitchMediator_CaseBranches().equals(msg.getFeature()) && isAccessible(EsbViewsRepository.SwitchMediator.Properties.caseBranches))
 				basePart.updateCaseBranches();
 					// Start of user code for sourceXPath live update
-					
+           if (EsbPackage.eINSTANCE.getSwitchMediator_SourceXpath().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.SwitchMediator.Properties.sourceXPath)) {
+                if (msg.getNewValue() != null) {
+                    basePart.setSourceXPath((NamespacedProperty)msg.getNewValue());
+                } else {
+                    basePart.setSourceXPath(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+                }
+            }
 					// End of user code
 			
 			

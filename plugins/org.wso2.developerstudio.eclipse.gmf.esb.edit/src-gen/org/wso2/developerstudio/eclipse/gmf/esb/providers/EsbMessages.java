@@ -608,7 +608,16 @@ public class EsbMessages extends NLS {
 	public static String HeaderMediatorOutputConnectorPropertiesEditionPart_PropertiesGroupLabel;
 
 	
-	public static String ThrottleMediatorPropertiesEditionPart_PropertiesGroupLabel;
+	public static String ThrottleMediatorPropertiesEditionPart_GeneralGroupLabel;
+
+	
+	public static String ThrottleMediatorPropertiesEditionPart_MiscGroupLabel;
+
+	
+	public static String ThrottleMediatorPropertiesEditionPart_OnAcceptGroupLabel;
+
+	
+	public static String ThrottleMediatorPropertiesEditionPart_ThrottlePolicyGroupLabel;
 
 	
 	public static String ThrottleMediatorInputConnectorPropertiesEditionPart_PropertiesGroupLabel;
@@ -5065,9 +5074,6 @@ public class EsbMessages extends NLS {
 	public static String HeaderMediatorOutputConnectorPropertiesEditionPart_CommentMediatorsLabel;
 
 	
-	public static String ThrottleMediatorPropertiesEditionPart_DescriptionLabel;
-
-	
 	public static String ThrottleMediatorPropertiesEditionPart_CommentsListLabel;
 
 	
@@ -5075,6 +5081,21 @@ public class EsbMessages extends NLS {
 
 	
 	public static String ThrottleMediatorPropertiesEditionPart_GroupIdLabel;
+
+	
+	public static String ThrottleMediatorPropertiesEditionPart_DescriptionLabel;
+
+	
+	public static String ThrottleMediatorPropertiesEditionPart_OnAcceptBranchsequenceTypeLabel;
+
+	
+	public static String ThrottleMediatorPropertiesEditionPart_OnAcceptBranchSequenceKeyLabel;
+
+	
+	public static String ThrottleMediatorPropertiesEditionPart_OnRejectBranchsequenceTypeLabel;
+
+	
+	public static String ThrottleMediatorPropertiesEditionPart_OnRejectBranchSequenceKeyLabel;
 
 	
 	public static String ThrottleMediatorPropertiesEditionPart_PolicyTypeLabel;
@@ -5086,10 +5107,7 @@ public class EsbMessages extends NLS {
 	public static String ThrottleMediatorPropertiesEditionPart_PolicyEntriesLabel;
 
 	
-	public static String ThrottleMediatorPropertiesEditionPart_OnAcceptBranchsequenceTypeLabel;
-
-	
-	public static String ThrottleMediatorPropertiesEditionPart_OnRejectBranchsequenceTypeLabel;
+	public static String ThrottleMediatorPropertiesEditionPart_PolicyKeyLabel;
 
 	
 	public static String ThrottleMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;
@@ -6079,7 +6097,13 @@ public class EsbMessages extends NLS {
 	public static String ValidateMediatorPropertiesEditionPart_EnableCacheSchemaLabel;
 
 	
+	public static String ValidateMediatorPropertiesEditionPart_SourceLabel;
+
+	
 	public static String ValidateResourcePropertiesEditionPart_LocationLabel;
+
+	
+	public static String ValidateResourcePropertiesEditionPart_LocationKeyLabel;
 
 	
 	public static String ValidateFeaturePropertiesEditionPart_FeatureNameLabel;
@@ -6092,6 +6116,12 @@ public class EsbMessages extends NLS {
 
 	
 	public static String ValidateSchemaPropertiesEditionPart_SchemaKeyLabel;
+
+	
+	public static String ValidateSchemaPropertiesEditionPart_StaticSchemaKeyLabel;
+
+	
+	public static String ValidateSchemaPropertiesEditionPart_DynamicSchemaKeyLabel;
 
 	
 	public static String ValidateMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;

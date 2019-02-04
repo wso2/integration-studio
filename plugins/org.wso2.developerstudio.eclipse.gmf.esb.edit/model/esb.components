@@ -705,6 +705,12 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7vU3PJnEei6boXzpRIfnA" name="regex" views="_E7wjSPJnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//FilterMediator/regex"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_pSFIECaiEemzk6WLMzxYaA" name="source" views="_mf9lwCaiEemzk6WLMzxYaA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//FilterMediator/source"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_sOt4UCaiEemzk6WLMzxYaA" name="xpath" views="_gZy4wCaiEemzk6WLMzxYaA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//FilterMediator/xpath"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//FilterMediator"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_E7vU3fJnEei6boXzpRIfnA" name="FilterContainer" views="_E7wjSfJnEei6boXzpRIfnA">
@@ -1158,6 +1164,15 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7vVdvJnEei6boXzpRIfnA" name="inlineType" views="_E7wkBfJnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//EnrichMediator/inlineType"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_vIHvoCX4EemV94HBAa7pGQ" name="sourceXPath" views="_-Vml4CWJEemV94HBAa7pGQ">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//EnrichMediator/sourceXpath"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_33VigCX4EemV94HBAa7pGQ" name="targetXPath" views="_cph3YCWKEemV94HBAa7pGQ">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//EnrichMediator/targetXpath"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_7VedUCX4EemV94HBAa7pGQ" name="inlineRegistryKey" views="_uAv3UCWJEemV94HBAa7pGQ">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//EnrichMediator/inlineRegistryKey"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//EnrichMediator"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_E7vVd_JnEei6boXzpRIfnA" name="EnrichMediatorInputConnector" views="_E7wkBvJnEei6boXzpRIfnA">
@@ -1256,6 +1271,9 @@
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v7CfJnEei6boXzpRIfnA" name="caseBranches" views="_E7wkL_JnEei6boXzpRIfnA">
           <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//SwitchMediator/caseBranches"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_ONh40CbzEemzk6WLMzxYaA" name="sourceXPath" views="_5Sqv0CbvEemzk6WLMzxYaA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//SwitchMediator/sourceXpath"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//SwitchMediator"/>
       </bindings>
@@ -1977,6 +1995,12 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v78PJnEei6boXzpRIfnA" name="sequenceName" views="_E7wlW_JnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//ForEachMediator/sequenceName"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_nk2ycCa8Eemzk6WLMzxYaA" name="forEachExpression" views="_eFEeQCa8Eemzk6WLMzxYaA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//ForEachMediator/forEachExpression"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_tqjlYCa8Eemzk6WLMzxYaA" name="sequenceKey" views="_XqjR4Ca8Eemzk6WLMzxYaA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//ForEachMediator/sequenceKey"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//ForEachMediator"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_E7v78fJnEei6boXzpRIfnA" name="ForEachMediatorInputConnector" views="_E7wlXPJnEei6boXzpRIfnA">
@@ -2474,6 +2498,15 @@
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v8lPJnEei6boXzpRIfnA" name="OnRejectBranchsequenceType" views="_E7wmJPJnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//ThrottleMediator/OnRejectBranchsequenceType"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_moqfQCclEemzk6WLMzxYaA" name="OnAcceptBranchSequenceKey" views="_VrHZACclEemzk6WLMzxYaA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//ThrottleMediator/OnAcceptBranchsequenceKey"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_uGPEECclEemzk6WLMzxYaA" name="OnRejectBranchSequenceKey" views="_aI82QCclEemzk6WLMzxYaA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//ThrottleMediator/OnRejectBranchsequenceKey"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_yXqdACclEemzk6WLMzxYaA" name="policyKey" views="_enHDoCclEemzk6WLMzxYaA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//ThrottleMediator/policyKey"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//ThrottleMediator"/>
       </bindings>
@@ -3744,11 +3777,17 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v-O_JnEei6boXzpRIfnA" name="enableCacheSchema" views="_E7xKL_JnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//ValidateMediator/enableCacheSchema"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_IUmi4Cd9EemLYYQEdXiJVA" name="sourceXPath" views="_iv6ZgCd8EemLYYQEdXiJVA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//ValidateMediator/sourceXpath"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//ValidateMediator"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_E7v-PPJnEei6boXzpRIfnA" name="ValidateResource" views="_E7xKMPJnEei6boXzpRIfnA">
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v-PfJnEei6boXzpRIfnA" name="location" views="_E7xKMvJnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//AbstractLocationKeyResource/location"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_qwyDMCd9EemLYYQEdXiJVA" name="locationKey" views="_D2GXQCd9EemLYYQEdXiJVA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//AbstractLocationKeyResource/key"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//ValidateResource"/>
       </bindings>
@@ -3767,6 +3806,12 @@
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v-Q_JnEei6boXzpRIfnA" name="schemaKey" views="_E7xKOvJnEei6boXzpRIfnA">
           <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//ValidateSchema/schemaKey"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_6mzgsCd9EemLYYQEdXiJVA" name="staticSchemaKey" views="_3n0cgCd8EemLYYQEdXiJVA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//ValidateSchema/validateStaticSchemaKey"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_TpGggCd-EemLYYQEdXiJVA" name="dynamicSchemaKey" views="_LXgdwCd-EemLYYQEdXiJVA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//ValidateSchema/validateDynamicSchemaKey"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//ValidateSchema"/>
       </bindings>
@@ -6265,6 +6310,8 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wjSPJnEei6boXzpRIfnA" name="regex">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_gZy4wCaiEemzk6WLMzxYaA" name="XPath"/>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_mf9lwCaiEemzk6WLMzxYaA" name="Source"/>
         </elements>
       </views>
       <views xmi:id="_E7wjSfJnEei6boXzpRIfnA" name="FilterContainer">
@@ -6749,7 +6796,7 @@
         </elements>
       </views>
       <views xmi:id="_E7wj-fJnEei6boXzpRIfnA" name="EnrichMediator">
-        <elements xsi:type="eef-views:Container" xmi:id="_E7wj-vJnEei6boXzpRIfnA" name="properties">
+        <elements xsi:type="eef-views:Container" xmi:id="_E7wj-vJnEei6boXzpRIfnA" name="Misc">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wj-_JnEei6boXzpRIfnA" name="description">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
@@ -6760,18 +6807,29 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wj_fJnEei6boXzpRIfnA" name="Reverse">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
           </elements>
+        </elements>
+        <elements xsi:type="eef-views:Container" xmi:id="_bVDNMCWJEemV94HBAa7pGQ" name="Source">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wj_vJnEei6boXzpRIfnA" name="cloneSource">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wj__JnEei6boXzpRIfnA" name="sourceType">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
           </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wkAPJnEei6boXzpRIfnA" name="sourceProperty">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wkBfJnEei6boXzpRIfnA" name="inlineType">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wkAfJnEei6boXzpRIfnA" name="sourceXML">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wkAPJnEei6boXzpRIfnA" name="sourceProperty">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_-Vml4CWJEemV94HBAa7pGQ" name="sourceXPath"/>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_uAv3UCWJEemV94HBAa7pGQ" name="inlineRegistryKey"/>
+        </elements>
+        <elements xsi:type="eef-views:Container" xmi:id="_fAkcsCWJEemV94HBAa7pGQ" name="Target">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wkAvJnEei6boXzpRIfnA" name="targetAction">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
           </elements>
@@ -6781,9 +6839,7 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wkBPJnEei6boXzpRIfnA" name="targetProperty">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wkBfJnEei6boXzpRIfnA" name="inlineType">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
-          </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_cph3YCWKEemV94HBAa7pGQ" name="targetXPath"/>
         </elements>
       </views>
       <views xmi:id="_E7wkBvJnEei6boXzpRIfnA" name="EnrichMediatorInputConnector">
@@ -6901,6 +6957,7 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wkL_JnEei6boXzpRIfnA" name="caseBranches">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
           </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_5Sqv0CbvEemzk6WLMzxYaA" name="sourceXPath"/>
         </elements>
       </views>
       <views xmi:id="_E7wkMPJnEei6boXzpRIfnA" name="SwitchCaseBranchOutputConnector">
@@ -7738,12 +7795,17 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wlWfJnEei6boXzpRIfnA" name="forEachID">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_eFEeQCa8Eemzk6WLMzxYaA" name="forEachExpression"/>
+        </elements>
+        <elements xsi:type="eef-views:Container" xmi:id="_VHI58Ca8Eemzk6WLMzxYaA" name="Sequence">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wlWvJnEei6boXzpRIfnA" name="sequenceType">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wlW_JnEei6boXzpRIfnA" name="sequenceName">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_XqjR4Ca8Eemzk6WLMzxYaA" name="sequenceKey"/>
         </elements>
       </views>
       <views xmi:id="_E7wlXPJnEei6boXzpRIfnA" name="ForEachMediatorInputConnector">
@@ -8285,11 +8347,8 @@
         </elements>
       </views>
       <views xmi:id="_E7wmGvJnEei6boXzpRIfnA" name="ThrottleMediator">
-        <elements xsi:type="eef-views:Container" xmi:id="_E7wmG_JnEei6boXzpRIfnA" name="properties">
+        <elements xsi:type="eef-views:Container" xmi:id="_E7wmG_JnEei6boXzpRIfnA" name="general">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wmHPJnEei6boXzpRIfnA" name="description">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
-          </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wmHfJnEei6boXzpRIfnA" name="commentsList">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.3"/>
           </elements>
@@ -8299,6 +8358,28 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wmH_JnEei6boXzpRIfnA" name="groupId">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
+        </elements>
+        <elements xsi:type="eef-views:Container" xmi:id="_9JqR4CcjEemzk6WLMzxYaA" name="misc">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wmHPJnEei6boXzpRIfnA" name="description">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+        </elements>
+        <elements xsi:type="eef-views:Container" xmi:id="_9l_okCcjEemzk6WLMzxYaA" name="onAccept">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wmI_JnEei6boXzpRIfnA" name="OnAcceptBranchsequenceType">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
+          </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_VrHZACclEemzk6WLMzxYaA" name="OnAcceptBranchSequenceKey"/>
+        </elements>
+        <elements xsi:type="eef-views:Container" xmi:id="__wbf0CcjEemzk6WLMzxYaA" name="onReject">
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wmJPJnEei6boXzpRIfnA" name="OnRejectBranchsequenceType">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
+          </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_aI82QCclEemzk6WLMzxYaA" name="OnRejectBranchSequenceKey"/>
+        </elements>
+        <elements xsi:type="eef-views:Container" xmi:id="_OSDWMCckEemzk6WLMzxYaA" name="throttlePolicy">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wmIPJnEei6boXzpRIfnA" name="policyType">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
           </elements>
@@ -8308,12 +8389,7 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wmIvJnEei6boXzpRIfnA" name="policyEntries">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
           </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wmI_JnEei6boXzpRIfnA" name="OnAcceptBranchsequenceType">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
-          </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wmJPJnEei6boXzpRIfnA" name="OnRejectBranchsequenceType">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
-          </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_enHDoCclEemzk6WLMzxYaA" name="policyKey"/>
         </elements>
       </views>
       <views xmi:id="_E7wmJfJnEei6boXzpRIfnA" name="ThrottleMediatorInputConnector">
@@ -9751,6 +9827,7 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xKL_JnEei6boXzpRIfnA" name="enableCacheSchema">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
           </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_iv6ZgCd8EemLYYQEdXiJVA" name="source"/>
         </elements>
       </views>
       <views xmi:id="_E7xKMPJnEei6boXzpRIfnA" name="ValidateResource">
@@ -9759,6 +9836,7 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xKMvJnEei6boXzpRIfnA" name="location">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_D2GXQCd9EemLYYQEdXiJVA" name="locationKey"/>
         </elements>
       </views>
       <views xmi:id="_E7xKM_JnEei6boXzpRIfnA" name="ValidateFeature">
@@ -9781,6 +9859,8 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xKOvJnEei6boXzpRIfnA" name="schemaKey">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.0"/>
           </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_3n0cgCd8EemLYYQEdXiJVA" name="staticSchemaKey"/>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_LXgdwCd-EemLYYQEdXiJVA" name="dynamicSchemaKey"/>
         </elements>
       </views>
       <views xmi:id="_E7xKO_JnEei6boXzpRIfnA" name="ValidateMediatorInputConnector">

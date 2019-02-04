@@ -12,6 +12,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 
 import org.eclipse.jface.viewers.ViewerFilter;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 
 
 // End of user code
@@ -21,20 +22,6 @@ import org.eclipse.jface.viewers.ViewerFilter;
  * 
  */
 public interface ThrottleMediatorPropertiesEditionPart {
-
-	/**
-	 * @return the description
-	 * 
-	 */
-	public String getDescription();
-
-	/**
-	 * Defines a new description
-	 * @param newValue the new description to set
-	 * 
-	 */
-	public void setDescription(String newValue);
-
 
 	/**
 	 * @return the commentsList
@@ -88,6 +75,62 @@ public interface ThrottleMediatorPropertiesEditionPart {
 	 * 
 	 */
 	public void setGroupId(String newValue);
+
+
+	/**
+	 * @return the description
+	 * 
+	 */
+	public String getDescription();
+
+	/**
+	 * Defines a new description
+	 * @param newValue the new description to set
+	 * 
+	 */
+	public void setDescription(String newValue);
+
+
+	/**
+	 * @return the OnAcceptBranchsequenceType
+	 * 
+	 */
+	public Enumerator getOnAcceptBranchsequenceType();
+
+	/**
+	 * Init the OnAcceptBranchsequenceType
+	 * @param input the viewer input
+	 * @param current the current value
+	 */
+	public void initOnAcceptBranchsequenceType(Object input, Enumerator current);
+
+	/**
+	 * Defines a new OnAcceptBranchsequenceType
+	 * @param newValue the new OnAcceptBranchsequenceType to set
+	 * 
+	 */
+	public void setOnAcceptBranchsequenceType(Enumerator newValue);
+
+
+	/**
+	 * @return the OnRejectBranchsequenceType
+	 * 
+	 */
+	public Enumerator getOnRejectBranchsequenceType();
+
+	/**
+	 * Init the OnRejectBranchsequenceType
+	 * @param input the viewer input
+	 * @param current the current value
+	 */
+	public void initOnRejectBranchsequenceType(Object input, Enumerator current);
+
+	/**
+	 * Defines a new OnRejectBranchsequenceType
+	 * @param newValue the new OnRejectBranchsequenceType to set
+	 * 
+	 */
+	public void setOnRejectBranchsequenceType(Enumerator newValue);
 
 
 	/**
@@ -169,50 +212,26 @@ public interface ThrottleMediatorPropertiesEditionPart {
 	public boolean isContainedInPolicyEntriesTable(EObject element);
 
 
-	/**
-	 * @return the OnAcceptBranchsequenceType
-	 * 
-	 */
-	public Enumerator getOnAcceptBranchsequenceType();
-
-	/**
-	 * Init the OnAcceptBranchsequenceType
-	 * @param input the viewer input
-	 * @param current the current value
-	 */
-	public void initOnAcceptBranchsequenceType(Object input, Enumerator current);
-
-	/**
-	 * Defines a new OnAcceptBranchsequenceType
-	 * @param newValue the new OnAcceptBranchsequenceType to set
-	 * 
-	 */
-	public void setOnAcceptBranchsequenceType(Enumerator newValue);
 
 
-	/**
-	 * @return the OnRejectBranchsequenceType
-	 * 
-	 */
-	public Enumerator getOnRejectBranchsequenceType();
+	// Start of user code for OnAcceptBranchSequenceKey specific getters and setters declaration
+    public RegistryKeyProperty getOnAcceptBranchSequenceKey();
 
-	/**
-	 * Init the OnRejectBranchsequenceType
-	 * @param input the viewer input
-	 * @param current the current value
-	 */
-	public void initOnRejectBranchsequenceType(Object input, Enumerator current);
+    public void setOnAcceptBranchSequenceKey(RegistryKeyProperty registryKeyProperty);
 
-	/**
-	 * Defines a new OnRejectBranchsequenceType
-	 * @param newValue the new OnRejectBranchsequenceType to set
-	 * 
-	 */
-	public void setOnRejectBranchsequenceType(Enumerator newValue);
+    // End of user code
+	// Start of user code for OnRejectBranchSequenceKey specific getters and setters declaration
+    public RegistryKeyProperty getOnRejectBranchSequenceKey();
 
+    public void setOnRejectBranchSequenceKey(RegistryKeyProperty registryKeyProperty);
 
+    // End of user code
+	// Start of user code for policyKey specific getters and setters declaration
+    public RegistryKeyProperty getPolicyKey();
 
+    public void setPolicyKey(RegistryKeyProperty registryKeyProperty);
 
+    // End of user code
 
 	/**
 	 * Returns the internationalized title text.

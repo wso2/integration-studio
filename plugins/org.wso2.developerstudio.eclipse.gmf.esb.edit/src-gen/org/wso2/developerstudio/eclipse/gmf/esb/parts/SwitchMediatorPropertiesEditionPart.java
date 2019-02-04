@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 
 import org.eclipse.jface.viewers.ViewerFilter;
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 
 
 // End of user code
@@ -164,7 +165,9 @@ public interface SwitchMediatorPropertiesEditionPart {
 
 
 	// Start of user code for sourceXPath specific getters and setters declaration
-	
+	public NamespacedProperty getSourceXPath();
+    
+    public void setSourceXPath(NamespacedProperty nameSpacedProperty);    
 	// End of user code
 
 	/**

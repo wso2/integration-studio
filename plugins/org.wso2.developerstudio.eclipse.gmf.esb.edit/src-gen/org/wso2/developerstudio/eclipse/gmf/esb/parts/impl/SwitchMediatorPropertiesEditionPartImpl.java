@@ -64,7 +64,7 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.SwitchMediatorPropertiesEditionPart;
 
@@ -823,7 +823,19 @@ public class SwitchMediatorPropertiesEditionPartImpl extends CompositeProperties
 	}
 
 	// Start of user code additional methods
-	
+
+    @Override
+    public NamespacedProperty getSourceXPath() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void setSourceXPath(NamespacedProperty nameSpacedProperty) {
+        // TODO Auto-generated method stub
+        
+    }
+
 	// End of user code
 
 

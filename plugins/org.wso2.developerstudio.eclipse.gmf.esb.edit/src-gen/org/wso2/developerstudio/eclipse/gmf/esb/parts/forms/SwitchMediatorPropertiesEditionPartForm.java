@@ -9,7 +9,7 @@ import java.util.List;
 
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
-
+import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.ecore.EObject;
 
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
@@ -40,7 +40,7 @@ import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableLis
 
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableContentProvider;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
-
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.ViewerFilter;
 
 import org.eclipse.jface.window.Window;
@@ -59,6 +59,8 @@ import org.eclipse.swt.layout.GridLayout;
 
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
 import org.eclipse.ui.forms.widgets.Form;
@@ -67,10 +69,12 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.SwitchMediatorPropertiesEditionPart;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFNameSpacedPropertyEditorDialog;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
 
 // End of user code
@@ -93,7 +97,18 @@ public class SwitchMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	protected List<ViewerFilter> caseBranchesBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> caseBranchesFilters = new ArrayList<ViewerFilter>();
 	// Start of user code  for sourceXPath widgets declarations
-	
+    protected NamespacedProperty sourceXPath;
+    protected Text sourceXPathText;
+    protected Control[] descriptionElements;
+    protected Control[] completionTimeoutElements;
+    protected Control[] sourceTextElements;
+    protected Control[] nameSpaceTextElements;
+    protected Control[] nameSpacePrefixElements;
+    protected Control[] completionMaxMessagesValueElements;
+    protected Control[] caseBranchesElements;
+    protected Control[] sourceXPathElements;
+    protected Composite propertiesGroup;
+    protected GridData caseBranchesData;
 	// End of user code
 
 
@@ -180,23 +195,27 @@ public class SwitchMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 					return createCaseBranchesTableComposition(widgetFactory, parent);
 				}
 				// Start of user code for sourceXPath addToPart creation
-				
+                if(key == EsbViewsRepository.SwitchMediator.Properties.sourceXPath) {
+                    return createSourceXPathWidget(widgetFactory, parent);
+                }
 				// End of user code
 				return parent;
 			}
 		};
 		composer.compose(view);
 	}
-	/**
-	 * 
-	 */
+
+
+    /**
+     * @generated NOT
+     */
 	protected Composite createPropertiesGroup(FormToolkit widgetFactory, final Composite parent) {
 		Section propertiesSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		propertiesSection.setText(EsbMessages.SwitchMediatorPropertiesEditionPart_PropertiesGroupLabel);
 		GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
 		propertiesSectionData.horizontalSpan = 3;
 		propertiesSection.setLayoutData(propertiesSectionData);
-		Composite propertiesGroup = widgetFactory.createComposite(propertiesSection);
+		propertiesGroup = widgetFactory.createComposite(propertiesSection);
 		GridLayout propertiesGroupLayout = new GridLayout();
 		propertiesGroupLayout.numColumns = 3;
 		propertiesGroup.setLayout(propertiesGroupLayout);
@@ -204,9 +223,11 @@ public class SwitchMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 		return propertiesGroup;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createDescriptionText(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EsbViewsRepository.SwitchMediator.Properties.description, EsbMessages.SwitchMediatorPropertiesEditionPart_DescriptionLabel);
+		Control itemLabel = createDescription(parent, EsbViewsRepository.SwitchMediator.Properties.description, EsbMessages.SwitchMediatorPropertiesEditionPart_DescriptionLabel);
 		description = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		description.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -265,9 +286,10 @@ public class SwitchMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 		});
 		EditingUtils.setID(description, EsbViewsRepository.SwitchMediator.Properties.description);
 		EditingUtils.setEEFtype(description, "eef::Text"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.SwitchMediator.Properties.description, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		Control itemHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.SwitchMediator.Properties.description, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createDescriptionText
-
+		descriptionElements = new Control[] {itemLabel, description, itemHelp};
+        
 		// End of user code
 		return parent;
 	}
@@ -347,9 +369,11 @@ public class SwitchMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createSourceText(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EsbViewsRepository.SwitchMediator.Properties.source, EsbMessages.SwitchMediatorPropertiesEditionPart_SourceLabel);
+		Control itemLabel = createDescription(parent, EsbViewsRepository.SwitchMediator.Properties.source, EsbMessages.SwitchMediatorPropertiesEditionPart_SourceLabel);
 		source = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		source.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -408,14 +432,16 @@ public class SwitchMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 		});
 		EditingUtils.setID(source, EsbViewsRepository.SwitchMediator.Properties.source);
 		EditingUtils.setEEFtype(source, "eef::Text"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.SwitchMediator.Properties.source, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		Control itemHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.SwitchMediator.Properties.source, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createSourceText
-
+		sourceTextElements = new Control[] {itemLabel, source, itemHelp};
 		// End of user code
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createNamespaceText(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.SwitchMediator.Properties.namespace, EsbMessages.SwitchMediatorPropertiesEditionPart_NamespaceLabel);
 		namespace = widgetFactory.createText(parent, ""); //$NON-NLS-1$
@@ -483,7 +509,9 @@ public class SwitchMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createNamespacePrefixText(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.SwitchMediator.Properties.namespacePrefix, EsbMessages.SwitchMediatorPropertiesEditionPart_NamespacePrefixLabel);
 		namespacePrefix = widgetFactory.createText(parent, ""); //$NON-NLS-1$
@@ -553,9 +581,11 @@ public class SwitchMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 
 	/**
 	 * @param container
-	 * 
+	 *
+     * @generated NOT
 	 */
 	protected Composite createCaseBranchesTableComposition(FormToolkit widgetFactory, Composite parent) {
+	    Control[] previousControls = propertiesGroup.getChildren();
 		this.caseBranches = new ReferencesTable(getDescription(EsbViewsRepository.SwitchMediator.Properties.caseBranches, EsbMessages.SwitchMediatorPropertiesEditionPart_CaseBranchesLabel), new ReferencesTableListener() {
 			public void handleAdd() {
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SwitchMediatorPropertiesEditionPartForm.this, EsbViewsRepository.SwitchMediator.Properties.caseBranches, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
@@ -589,7 +619,8 @@ public class SwitchMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 			}
 			
 		});
-		GridData caseBranchesData = new GridData(GridData.FILL_HORIZONTAL);
+		
+		caseBranchesData = new GridData(GridData.FILL_HORIZONTAL);
 		caseBranchesData.horizontalSpan = 3;
 		this.caseBranches.setLayoutData(caseBranchesData);
 		this.caseBranches.setLowerBound(0);
@@ -597,7 +628,9 @@ public class SwitchMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 		caseBranches.setID(EsbViewsRepository.SwitchMediator.Properties.caseBranches);
 		caseBranches.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
 		// Start of user code for createCaseBranchesTableComposition
-
+		//caseBranchesElements = new Control [] {caseBranches.getTable()};
+		Control[] newControls = propertiesGroup.getChildren();
+		caseBranchesElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
 		// End of user code
 		return parent;
 	}
@@ -898,7 +931,19 @@ public class SwitchMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 
 
 	// Start of user code for sourceXPath specific getters and setters implementation
-	
+    @Override
+    public NamespacedProperty getSourceXPath() {
+        // TODO Auto-generated method stub
+        return sourceXPath;
+    }
+
+    @Override
+    public void setSourceXPath(NamespacedProperty nameSpacedProperty) {
+        if(nameSpacedProperty != null) {
+            sourceXPathText.setText(nameSpacedProperty.getPropertyValue());
+            sourceXPath = nameSpacedProperty;
+        }
+    }
 	// End of user code
 
 	/**
@@ -911,8 +956,66 @@ public class SwitchMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 		return EsbMessages.SwitchMediator_Part_Title;
 	}
 
+
+
 	// Start of user code additional methods
-	
+   protected Composite createSourceXPathWidget(FormToolkit widgetFactory, Composite parent) {
+       Control itemLabel = createDescription(parent, EsbViewsRepository.SwitchMediator.Properties.sourceXPath, EsbMessages.SwitchMediatorPropertiesEditionPart_SourceXPathLabel);
+       widgetFactory.paintBordersFor(parent);
+       if(sourceXPath == null) {
+           sourceXPath = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
+       } 
+       String initValueExpression = sourceXPath.getPropertyValue().isEmpty() ? "/default/expression" : sourceXPath.getPropertyValue();
+       sourceXPathText = widgetFactory.createText(parent, initValueExpression);
+       sourceXPathText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+       widgetFactory.paintBordersFor(parent);
+       GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
+       sourceXPathText.setLayoutData(valueData);
+       sourceXPathText.addFocusListener(new FocusAdapter() {
+           /**
+            * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+            * 
+            */
+           @Override
+           @SuppressWarnings("synthetic-access")
+           public void focusLost(FocusEvent e) {
+           }
+
+           /**
+            * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+            */
+           @Override
+           public void focusGained(FocusEvent e) {
+               EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL, sourceXPath);
+               //valueExpression.setPropertyValue(valueExpressionText.getText());
+               nspd.open();
+               sourceXPathText.setText(sourceXPath.getPropertyValue());
+               propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SwitchMediatorPropertiesEditionPartForm.this, EsbViewsRepository.SwitchMediator.Properties.sourceXPath, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getSourceXPath()));
+           }
+       });
+       EditingUtils.setID(sourceXPathText, EsbViewsRepository.SwitchMediator.Properties.sourceXPath);
+       EditingUtils.setEEFtype(sourceXPathText, "eef::Text");
+       Control itemHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.SwitchMediator.Properties.sourceXPath, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+       sourceXPathElements = new Control[] {itemLabel, sourceXPathText, itemHelp};
+       return parent;
+    }
+   
+   @Override
+   public void refresh() {
+       super.refresh();
+       validate();
+   }
+
+   public void validate() {
+       EEFPropertyViewUtil epv = new EEFPropertyViewUtil(view);
+       epv.clearElements(new Composite[] { propertiesGroup });
+
+       epv.showEntry(descriptionElements, false);
+       epv.showEntry(sourceXPathElements, false);
+       epv.showEntry(caseBranchesElements, false);
+       //showTable(caseBranches, caseBranchesData);
+       view.layout(true, true);
+   }
 	// End of user code
 
 

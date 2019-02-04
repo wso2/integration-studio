@@ -51,9 +51,10 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.Sequences;
 import org.wso2.developerstudio.eclipse.gmf.esb.TemplateParameter;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.SequencesPropertiesEditionPart;
 
@@ -127,6 +128,12 @@ public class SequencesPropertiesEditionComponent extends SinglePartPropertiesEdi
 			if (isAccessible(EsbViewsRepository.Sequences.Properties.statisticsEnabled)) {
 				basePart.setStatisticsEnabled(sequences.isStatisticsEnabled());
 			}
+			// Start of user code  for onError command update
+			if (isAccessible(EsbViewsRepository.Sequences.Properties.onError)) {
+				basePart.setOnError(sequences.getOnError());
+			}
+			// End of user code
+			
 			// init filters
 			
 			
@@ -150,6 +157,9 @@ public class SequencesPropertiesEditionComponent extends SinglePartPropertiesEdi
 			}
 			
 			
+			// Start of user code  for onError filter update
+			// End of user code
+			
 			// init values for referenced views
 			
 			// init filters for referenced views
@@ -157,6 +167,7 @@ public class SequencesPropertiesEditionComponent extends SinglePartPropertiesEdi
 		}
 		setInitializing(false);
 	}
+
 
 
 
@@ -196,6 +207,9 @@ public class SequencesPropertiesEditionComponent extends SinglePartPropertiesEdi
 		}
 		if (editorKey == EsbViewsRepository.Sequences.Properties.statisticsEnabled) {
 			return EsbPackage.eINSTANCE.getSequences_StatisticsEnabled();
+		}
+		if (editorKey == EsbViewsRepository.Sequences.Properties.onError) {
+			return EsbPackage.eINSTANCE.getSequences_OnError();
 		}
 		return super.associatedFeature(editorKey);
 	}
@@ -259,6 +273,17 @@ public class SequencesPropertiesEditionComponent extends SinglePartPropertiesEdi
 		if (EsbViewsRepository.Sequences.Properties.statisticsEnabled == event.getAffectedEditor()) {
 			sequences.setStatisticsEnabled((Boolean)event.getNewValue());
 		}
+		if (EsbViewsRepository.Sequences.Properties.onError == event.getAffectedEditor()) {
+			// Start of user code for updateOnError method body
+			if (event.getNewValue() != null) {
+				RegistryKeyProperty rkp = (RegistryKeyProperty) event.getNewValue();
+				sequences.setOnError(rkp);
+			} else {
+				sequences.setOnError(EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty());
+			}
+			// End of user code
+
+		}
 	}
 
 	/**
@@ -318,6 +343,18 @@ public class SequencesPropertiesEditionComponent extends SinglePartPropertiesEdi
 			if (EsbPackage.eINSTANCE.getSequences_StatisticsEnabled().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.Sequences.Properties.statisticsEnabled))
 				basePart.setStatisticsEnabled((Boolean)msg.getNewValue());
 			
+					// Start of user code for onError live update
+			if (EsbPackage.eINSTANCE.getSequences_OnError().equals(msg.getFeature())
+					&& msg.getNotifier().equals(semanticObject) && basePart != null
+					&& isAccessible(EsbViewsRepository.Sequences.Properties.onError)) {
+				if (msg.getNewValue() != null) {
+					basePart.setOnError((RegistryKeyProperty) msg.getNewValue());
+				} else {
+					basePart.setOnError(EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty());
+				}
+			}
+					// End of user code
+			
 			
 		}
 	}
@@ -337,7 +374,8 @@ public class SequencesPropertiesEditionComponent extends SinglePartPropertiesEdi
 			EsbPackage.eINSTANCE.getSequences_AssociatedProxy(),
 			EsbPackage.eINSTANCE.getSequences_TemplateParameters(),
 			EsbPackage.eINSTANCE.getSequences_TraceEnabled(),
-			EsbPackage.eINSTANCE.getSequences_StatisticsEnabled()		);
+			EsbPackage.eINSTANCE.getSequences_StatisticsEnabled(),
+			EsbPackage.eINSTANCE.getSequences_OnError()		);
 		return new NotificationFilter[] {filter,};
 	}
 

@@ -59,6 +59,7 @@ import org.eclipse.swt.layout.GridLayout;
 
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Text;
 
 import org.eclipse.ui.forms.widgets.Form;
@@ -67,11 +68,15 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.SequencesPropertiesEditionPart;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.developerstudio.esb.form.editors.article.providers.NamedEntityDescriptor;
 
 // End of user code
 
@@ -95,6 +100,18 @@ public class SequencesPropertiesEditionPartForm extends SectionPropertiesEditing
 	protected List<ViewerFilter> templateParametersFilters = new ArrayList<ViewerFilter>();
 	protected Button traceEnabled;
 	protected Button statisticsEnabled;
+	// Start of user code  for onError widgets declarations
+    protected RegistryKeyProperty onError;
+    protected Text onErrorText;
+    
+    protected Control[] onErrorElements;
+    protected Control[] nameElements;
+    protected Control[] traceEnabledElements;
+    protected Control[] staticsEnabledElements;
+ 
+    protected Composite propertiesGroup;
+	// End of user code
+
 
 
 
@@ -148,6 +165,7 @@ public class SequencesPropertiesEditionPartForm extends SectionPropertiesEditing
 		propertiesStep.addStep(EsbViewsRepository.Sequences.Properties.templateParameters);
 		propertiesStep.addStep(EsbViewsRepository.Sequences.Properties.traceEnabled);
 		propertiesStep.addStep(EsbViewsRepository.Sequences.Properties.statisticsEnabled);
+		propertiesStep.addStep(EsbViewsRepository.Sequences.Properties.onError);
 		
 		
 		composer = new PartComposer(sequencesStep) {
@@ -181,28 +199,33 @@ public class SequencesPropertiesEditionPartForm extends SectionPropertiesEditing
 				if (key == EsbViewsRepository.Sequences.Properties.statisticsEnabled) {
 					return createStatisticsEnabledCheckbox(widgetFactory, parent);
 				}
+				// Start of user code for onError addToPart creation
+				if (key == EsbViewsRepository.Sequences.Properties.onError) {
+					return createOnError(widgetFactory, parent);
+				}
+				// End of user code
 				return parent;
 			}
 		};
 		composer.compose(view);
 	}
+	
 	/**
-	 * 
-	 */
+     * @generated NOT
+     */
 	protected Composite createPropertiesGroup(FormToolkit widgetFactory, final Composite parent) {
 		Section propertiesSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		propertiesSection.setText(EsbMessages.SequencesPropertiesEditionPart_PropertiesGroupLabel);
 		GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
 		propertiesSectionData.horizontalSpan = 3;
 		propertiesSection.setLayoutData(propertiesSectionData);
-		Composite propertiesGroup = widgetFactory.createComposite(propertiesSection);
+		propertiesGroup = widgetFactory.createComposite(propertiesSection);
 		GridLayout propertiesGroupLayout = new GridLayout();
 		propertiesGroupLayout.numColumns = 3;
 		propertiesGroup.setLayout(propertiesGroupLayout);
 		propertiesSection.setClient(propertiesGroup);
 		return propertiesGroup;
 	}
-
 	
 	protected Composite createDescriptionText(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.Sequences.Properties.description, EsbMessages.SequencesPropertiesEditionPart_DescriptionLabel);
@@ -266,7 +289,7 @@ public class SequencesPropertiesEditionPartForm extends SectionPropertiesEditing
 		EditingUtils.setEEFtype(description, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.Sequences.Properties.description, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createDescriptionText
-
+		
 		// End of user code
 		return parent;
 	}
@@ -317,9 +340,11 @@ public class SequencesPropertiesEditionPartForm extends SectionPropertiesEditing
 		return parent;
 	}
 
-	
+	/**
+     * @generated NOT
+     */
 	protected Composite createNameText(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EsbViewsRepository.Sequences.Properties.name, EsbMessages.SequencesPropertiesEditionPart_NameLabel);
+		Control nameLabel = createDescription(parent, EsbViewsRepository.Sequences.Properties.name, EsbMessages.SequencesPropertiesEditionPart_NameLabel);
 		name = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		name.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -378,9 +403,9 @@ public class SequencesPropertiesEditionPartForm extends SectionPropertiesEditing
 		});
 		EditingUtils.setID(name, EsbViewsRepository.Sequences.Properties.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.Sequences.Properties.name, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		Control nameHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.Sequences.Properties.name, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createNameText
-
+		nameElements = new Control[] { nameLabel, name, nameHelp };
 		// End of user code
 		return parent;
 	}
@@ -511,7 +536,9 @@ public class SequencesPropertiesEditionPartForm extends SectionPropertiesEditing
 		return parent;
 	}
 
-	
+	/**
+     * @generated NOT
+     */
 	protected Composite createTraceEnabledCheckbox(FormToolkit widgetFactory, Composite parent) {
 		traceEnabled = widgetFactory.createButton(parent, getDescription(EsbViewsRepository.Sequences.Properties.traceEnabled, EsbMessages.SequencesPropertiesEditionPart_TraceEnabledLabel), SWT.CHECK);
 		traceEnabled.addSelectionListener(new SelectionAdapter() {
@@ -533,14 +560,16 @@ public class SequencesPropertiesEditionPartForm extends SectionPropertiesEditing
 		traceEnabled.setLayoutData(traceEnabledData);
 		EditingUtils.setID(traceEnabled, EsbViewsRepository.Sequences.Properties.traceEnabled);
 		EditingUtils.setEEFtype(traceEnabled, "eef::Checkbox"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.Sequences.Properties.traceEnabled, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		Control traceEnabledHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.Sequences.Properties.traceEnabled, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createTraceEnabledCheckbox
-
+		traceEnabledElements = new Control[] { traceEnabled, traceEnabledHelp };
 		// End of user code
 		return parent;
 	}
 
-	
+	/**
+     * @generated NOT
+     */
 	protected Composite createStatisticsEnabledCheckbox(FormToolkit widgetFactory, Composite parent) {
 		statisticsEnabled = widgetFactory.createButton(parent, getDescription(EsbViewsRepository.Sequences.Properties.statisticsEnabled, EsbMessages.SequencesPropertiesEditionPart_StatisticsEnabledLabel), SWT.CHECK);
 		statisticsEnabled.addSelectionListener(new SelectionAdapter() {
@@ -562,9 +591,9 @@ public class SequencesPropertiesEditionPartForm extends SectionPropertiesEditing
 		statisticsEnabled.setLayoutData(statisticsEnabledData);
 		EditingUtils.setID(statisticsEnabled, EsbViewsRepository.Sequences.Properties.statisticsEnabled);
 		EditingUtils.setEEFtype(statisticsEnabled, "eef::Checkbox"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.Sequences.Properties.statisticsEnabled, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		Control statEnableHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.Sequences.Properties.statisticsEnabled, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createStatisticsEnabledCheckbox
-
+		staticsEnabledElements = new Control[] { statisticsEnabled, statEnableHelp };
 		// End of user code
 		return parent;
 	}
@@ -915,6 +944,21 @@ public class SequencesPropertiesEditionPartForm extends SectionPropertiesEditing
 
 
 
+	// Start of user code for onError specific getters and setters implementation
+	@Override
+    public RegistryKeyProperty getOnError() {
+        return onError;
+    }
+
+    @Override
+    public void setOnError(RegistryKeyProperty registryKeyProperty) {
+        if(registryKeyProperty != null) {
+            onErrorText.setText(registryKeyProperty.getKeyValue());
+            onError = registryKeyProperty;
+        }
+    }
+	// End of user code
+
 	/**
 	 * {@inheritDoc}
 	 *
@@ -926,7 +970,81 @@ public class SequencesPropertiesEditionPartForm extends SectionPropertiesEditing
 	}
 
 	// Start of user code additional methods
+	protected Composite createOnError(FormToolkit widgetFactory, Composite parent) {
+		Control onErrorLabel = createDescription(parent,
+				EsbViewsRepository.Sequences.Properties.onError,
+				EsbMessages.SequencesPropertiesEditionPart_OnErrorLabel);
+		widgetFactory.paintBordersFor(parent);
+		if (onError == null) {
+			onError = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
+		}
+		String initValueExpression = onError.getKeyValue().isEmpty() ? "" : onError.getKeyValue();
+		onErrorText = widgetFactory.createText(parent, initValueExpression);
+		onErrorText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+		widgetFactory.paintBordersFor(parent);
+		GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
+		onErrorText.setLayoutData(valueData);
+		onErrorText.addFocusListener(new FocusAdapter() {
+			/**
+			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void focusLost(FocusEvent e) {
+			}
+
+			/**
+			 * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+			 */
+			@Override
+			public void focusGained(FocusEvent e) {
+				EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
+						SWT.NULL, onError, new ArrayList<NamedEntityDescriptor>());
+				dialog.open();
+				onErrorText.setText(onError.getKeyValue());
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+						SequencesPropertiesEditionPartForm.this,
+						EsbViewsRepository.Sequences.Properties.onError, PropertiesEditionEvent.COMMIT,
+						PropertiesEditionEvent.SET, null, getOnError()));
+			}
+		});
+		EditingUtils.setID(onErrorText, EsbViewsRepository.Sequences.Properties.onError);
+		EditingUtils.setEEFtype(onErrorText, "eef::Text");
+		Control onErrorHelp = FormUtils.createHelpButton(widgetFactory, parent,
+				propertiesEditionComponent.getHelpContent(EsbViewsRepository.Sequences.Properties.onError,
+						EsbViewsRepository.FORM_KIND),
+				null); // $NON-NLS-1$
+		onErrorElements = new Control[] { onErrorLabel, onErrorText, onErrorHelp };
+		return parent;
+	}
 	
+	@Override
+    public void refresh() {
+        super.refresh();
+        validate();
+    }
+
+	EEFPropertyViewUtil viewUtil = new EEFPropertyViewUtil(view);
+	
+    public void validate() {
+    	
+    	
+    	for (Control control : propertiesGroup.getChildren()) {
+    		if (!(control instanceof Composite)) {
+    			viewUtil.clearElement(control);
+    		}
+    	}
+    	
+    	viewUtil.showEntry(nameElements, false);
+    	viewUtil.showEntry(onErrorElements, false);
+    	viewUtil.showEntry(traceEnabledElements, false);
+    	viewUtil.showEntry(staticsEnabledElements, false);
+    	
+        view.layout(true, true);
+        view.pack();
+    }
+
 	// End of user code
 
 

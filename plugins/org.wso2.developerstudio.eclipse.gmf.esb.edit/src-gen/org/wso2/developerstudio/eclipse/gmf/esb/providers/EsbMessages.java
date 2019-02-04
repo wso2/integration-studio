@@ -5965,6 +5965,9 @@ public class EsbMessages extends NLS {
 	public static String SequencesPropertiesEditionPart_StatisticsEnabledLabel;
 
 	
+	public static String SequencesPropertiesEditionPart_OnErrorLabel;
+
+	
 	public static String SequencesOutputConnectorPropertiesEditionPart_CommentMediatorsLabel;
 
 	

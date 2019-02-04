@@ -3,6 +3,8 @@
  */
 package org.wso2.developerstudio.eclipse.gmf.esb.parts;
 
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
+
 // Start of user code for imports
 
 
@@ -31,6 +33,11 @@ public interface XSLTResourcePropertiesEditionPart {
 
 
 
+	// Start of user code for resourceRegistryKey specific getters and setters declaration
+	public RegistryKeyProperty getResourceRegistryKey();
+	
+	public void setResourceRegistryKey(RegistryKeyProperty regKey);
+	// End of user code
 
 	/**
 	 * Returns the internationalized title text.

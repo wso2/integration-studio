@@ -55,7 +55,7 @@ import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.XSLTPropertyPropertiesEditionPart;
 
@@ -72,6 +72,10 @@ public class XSLTPropertyPropertiesEditionPartForm extends SectionPropertiesEdit
 	protected Text propertyName;
 	protected EMFComboViewer propertyValueType;
 	protected Text propertyValue;
+	// Start of user code  for propertyExpression widgets declarations
+	
+	// End of user code
+
 
 
 
@@ -120,6 +124,7 @@ public class XSLTPropertyPropertiesEditionPartForm extends SectionPropertiesEdit
 		propertiesStep.addStep(EsbViewsRepository.XSLTProperty.Properties.propertyName);
 		propertiesStep.addStep(EsbViewsRepository.XSLTProperty.Properties.propertyValueType);
 		propertiesStep.addStep(EsbViewsRepository.XSLTProperty.Properties.propertyValue);
+		propertiesStep.addStep(EsbViewsRepository.XSLTProperty.Properties.propertyExpression);
 		
 		
 		composer = new PartComposer(xSLTPropertyStep) {
@@ -138,6 +143,9 @@ public class XSLTPropertyPropertiesEditionPartForm extends SectionPropertiesEdit
 				if (key == EsbViewsRepository.XSLTProperty.Properties.propertyValue) {
 					return createPropertyValueText(widgetFactory, parent);
 				}
+				// Start of user code for propertyExpression addToPart creation
+				
+				// End of user code
 				return parent;
 			}
 		};
@@ -455,6 +463,21 @@ public class XSLTPropertyPropertiesEditionPartForm extends SectionPropertiesEdit
 
 
 
+	// Start of user code for propertyExpression specific getters and setters implementation
+
+    @Override
+    public NamespacedProperty getExpressionValue() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void setExpressionValue(NamespacedProperty nameSpacedProperty) {
+        // TODO Auto-generated method stub
+        
+    }
+	// End of user code
+
 	/**
 	 * {@inheritDoc}
 	 *
@@ -464,6 +487,7 @@ public class XSLTPropertyPropertiesEditionPartForm extends SectionPropertiesEdit
 	public String getTitle() {
 		return EsbMessages.XSLTProperty_Part_Title;
 	}
+
 
 	// Start of user code additional methods
 	

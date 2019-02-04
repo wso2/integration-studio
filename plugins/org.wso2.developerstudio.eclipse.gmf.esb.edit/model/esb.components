@@ -1239,6 +1239,15 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7vVgvJnEei6boXzpRIfnA" name="resources" views="_E7wkFPJnEei6boXzpRIfnA">
           <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//XSLTMediator/resources"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_-LEnwCd0Eem2h42X_pSsbg" name="sourceXpath" views="_dHm1kCduEem2h42X_pSsbg">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//XSLTMediator/sourceXPath"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_FeWoICd1Eem2h42X_pSsbg" name="XSLTDynamicSchemaKey" views="_0DErwCduEem2h42X_pSsbg">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//XSLTMediator/xsltDynamicSchemaKey"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_K5QxoCd1Eem2h42X_pSsbg" name="XSLTStaticSchemaKey" views="_uvbn4CduEem2h42X_pSsbg">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//XSLTMediator/xsltStaticSchemaKey"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//XSLTMediator"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_E7vVg_JnEei6boXzpRIfnA" name="XSLTProperty" views="_E7wkFfJnEei6boXzpRIfnA">
@@ -1250,6 +1259,9 @@
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7vVhvJnEei6boXzpRIfnA" name="propertyValue" views="_E7wkGfJnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//AbstractNameValueExpressionProperty/propertyValue"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_asE9gChOEemnd9f5PzROAw" name="propertyExpression" views="_61UoUChCEemnd9f5PzROAw">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//AbstractNameValueExpressionProperty/propertyExpression"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//XSLTProperty"/>
       </bindings>
@@ -1265,6 +1277,9 @@
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_E7vVivJnEei6boXzpRIfnA" name="XSLTResource" views="_E7wkHvJnEei6boXzpRIfnA">
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7vVi_JnEei6boXzpRIfnA" name="location" views="_E7wkIPJnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//AbstractLocationKeyResource/location"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_gnOtUChOEemnd9f5PzROAw" name="resourceRegistyKey" views="_Q2IMEChOEemnd9f5PzROAw">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//AbstractLocationKeyResource/key"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//XSLTResource"/>
       </bindings>
@@ -6949,6 +6964,9 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wkFPJnEei6boXzpRIfnA" name="resources">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
           </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_dHm1kCduEem2h42X_pSsbg" name="sourceXpath"/>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_uvbn4CduEem2h42X_pSsbg" name="XSLTStaticSchemaKey"/>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_0DErwCduEem2h42X_pSsbg" name="XSLTDynamicSchemaKey"/>
         </elements>
       </views>
       <views xmi:id="_E7wkFfJnEei6boXzpRIfnA" name="XSLTProperty">
@@ -6963,6 +6981,7 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wkGfJnEei6boXzpRIfnA" name="propertyValue">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_61UoUChCEemnd9f5PzROAw" name="propertyExpression"/>
         </elements>
       </views>
       <views xmi:id="_E7wkGvJnEei6boXzpRIfnA" name="XSLTFeature">
@@ -6982,6 +7001,7 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wkIPJnEei6boXzpRIfnA" name="location">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_Q2IMEChOEemnd9f5PzROAw" name="resourceRegistryKey"/>
         </elements>
       </views>
       <views xmi:id="_E7wkIfJnEei6boXzpRIfnA" name="XSLTMediatorInputConnector">

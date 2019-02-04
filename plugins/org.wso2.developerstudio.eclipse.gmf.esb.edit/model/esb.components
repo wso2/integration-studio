@@ -1365,6 +1365,12 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v7LfJnEei6boXzpRIfnA" name="referringSequenceType" views="_E7wkY_JnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//Sequence/referringSequenceType"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_vYnlQCdiEemyIZuNd71www" name="staticReferenceKey" views="_k2UEICdiEemyIZuNd71www">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//Sequence/staticReferenceKey"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_AuXwICdjEemyIZuNd71www" name="dynamicReferenceKey" views="_pUHFICdiEemyIZuNd71www">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//Sequence/dynamicReferenceKey"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//Sequence"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_E7v7LvJnEei6boXzpRIfnA" name="SequenceInputConnector" views="_E7wkZPJnEei6boXzpRIfnA">
@@ -3630,6 +3636,9 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v-GPJnEei6boXzpRIfnA" name="statisticsEnabled" views="_E7xKA_JnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//Sequences/statisticsEnabled"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_fNy1ACgpEemHfrPx9BRWXQ" name="onError" views="_k4XnoCgoEemHfrPx9BRWXQ">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//Sequences/onError"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//Sequences"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_E7v-GfJnEei6boXzpRIfnA" name="SequencesOutputConnector" views="_E7xKBPJnEei6boXzpRIfnA">
@@ -3978,8 +3987,8 @@
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//TaskProperty"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_E7v-jPJnEei6boXzpRIfnA" name="SynapseAPI" views="_E7xKj_JnEei6boXzpRIfnA">
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v-jfJnEei6boXzpRIfnA" name="description" views="_E7xKkfJnEei6boXzpRIfnA">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//EsbElement/description"/>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v-lPJnEei6boXzpRIfnA" name="handlers" views="_E7xKmPJnEei6boXzpRIfnA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//SynapseAPI/handlers"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v-jvJnEei6boXzpRIfnA" name="commentsList" views="_E7xKkvJnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//EsbElement/commentsList"/>
@@ -3999,8 +4008,11 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v-k_JnEei6boXzpRIfnA" name="resources" views="_E7xKl_JnEei6boXzpRIfnA">
           <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//SynapseAPI/resources"/>
         </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v-lPJnEei6boXzpRIfnA" name="handlers" views="_E7xKmPJnEei6boXzpRIfnA">
-          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//SynapseAPI/handlers"/>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v-mPJnEei6boXzpRIfnA" name="versionType" views="_E7xKnPJnEei6boXzpRIfnA">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//SynapseAPI/versionType"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v-l_JnEei6boXzpRIfnA" name="version" views="_E7xKm_JnEei6boXzpRIfnA">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//SynapseAPI/version"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v-lfJnEei6boXzpRIfnA" name="traceEnabled" views="_E7xKmfJnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//SynapseAPI/traceEnabled"/>
@@ -4008,11 +4020,8 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v-lvJnEei6boXzpRIfnA" name="statisticsEnabled" views="_E7xKmvJnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//SynapseAPI/statisticsEnabled"/>
         </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v-l_JnEei6boXzpRIfnA" name="version" views="_E7xKm_JnEei6boXzpRIfnA">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//SynapseAPI/version"/>
-        </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v-mPJnEei6boXzpRIfnA" name="versionType" views="_E7xKnPJnEei6boXzpRIfnA">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//SynapseAPI/versionType"/>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v-jfJnEei6boXzpRIfnA" name="description" views="_E7xKkfJnEei6boXzpRIfnA">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//EsbElement/description"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//SynapseAPI"/>
       </bindings>
@@ -7032,6 +7041,8 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wkY_JnEei6boXzpRIfnA" name="referringSequenceType">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
           </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_k2UEICdiEemyIZuNd71www" name="staticReferenceKey"/>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_pUHFICdiEemyIZuNd71www" name="dynamicReferenceKey"/>
         </elements>
       </views>
       <views xmi:id="_E7wkZPJnEei6boXzpRIfnA" name="SequenceInputConnector">
@@ -9616,6 +9627,7 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xKA_JnEei6boXzpRIfnA" name="statisticsEnabled">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
           </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_k4XnoCgoEemHfrPx9BRWXQ" name="onError"/>
         </elements>
       </views>
       <views xmi:id="_E7xKBPJnEei6boXzpRIfnA" name="SequencesOutputConnector">
@@ -10012,43 +10024,46 @@
         </elements>
       </views>
       <views xmi:id="_E7xKj_JnEei6boXzpRIfnA" name="SynapseAPI">
-        <elements xsi:type="eef-views:Container" xmi:id="_E7xKkPJnEei6boXzpRIfnA" name="properties">
+        <elements xsi:type="eef-views:Container" xmi:id="_1T5y8CeZEemzlvjTxgAHwQ" name="handler">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xKkfJnEei6boXzpRIfnA" name="description">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
-          </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xKkvJnEei6boXzpRIfnA" name="commentsList">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.3"/>
-          </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xKk_JnEei6boXzpRIfnA" name="apiName">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
-          </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xKlPJnEei6boXzpRIfnA" name="context">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
-          </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xKlfJnEei6boXzpRIfnA" name="hostName">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
-          </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xKlvJnEei6boXzpRIfnA" name="port">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
-          </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xKl_JnEei6boXzpRIfnA" name="resources">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
-          </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xKmPJnEei6boXzpRIfnA" name="handlers">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
           </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xKmfJnEei6boXzpRIfnA" name="traceEnabled">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
-          </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xKmvJnEei6boXzpRIfnA" name="statisticsEnabled">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
-          </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xKm_JnEei6boXzpRIfnA" name="version">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
-          </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xKnPJnEei6boXzpRIfnA" name="versionType">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
+          <elements xsi:type="eef-views:Container" xmi:id="_E7xKkPJnEei6boXzpRIfnA" name="properties">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+            <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xKkvJnEei6boXzpRIfnA" name="commentsList">
+              <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.3"/>
+            </elements>
+            <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xKk_JnEei6boXzpRIfnA" name="apiName">
+              <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+            </elements>
+            <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xKlPJnEei6boXzpRIfnA" name="context">
+              <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+            </elements>
+            <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xKlfJnEei6boXzpRIfnA" name="hostName">
+              <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+            </elements>
+            <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xKlvJnEei6boXzpRIfnA" name="port">
+              <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+            </elements>
+            <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xKl_JnEei6boXzpRIfnA" name="resources">
+              <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
+            </elements>
+            <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xKnPJnEei6boXzpRIfnA" name="versionType">
+              <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
+            </elements>
+            <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xKm_JnEei6boXzpRIfnA" name="version">
+              <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+            </elements>
+            <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xKmfJnEei6boXzpRIfnA" name="traceEnabled">
+              <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
+            </elements>
+            <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xKmvJnEei6boXzpRIfnA" name="statisticsEnabled">
+              <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
+            </elements>
+            <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xKkfJnEei6boXzpRIfnA" name="description">
+              <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+            </elements>
           </elements>
         </elements>
       </views>

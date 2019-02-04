@@ -2321,6 +2321,14 @@ public class EsbViewsRepository {
 			
 			public static String referringSequenceType = "esb::Sequence::properties::referringSequenceType";
 			
+			// Start of user code for staticReferenceKey ElementEditor key
+			public static String staticReferenceKey = "esb::Sequence::properties::staticReferenceKey";
+			// End of user code
+			
+			// Start of user code for dynamicReferenceKey ElementEditor key
+			public static String dynamicReferenceKey = "esb::Sequence::properties::dynamicReferenceKey";
+			// End of user code
+			
 	
 		}
 	
@@ -6218,6 +6226,10 @@ public class EsbViewsRepository {
 			
 			public static String statisticsEnabled = "esb::Sequences::properties::statisticsEnabled";
 			
+			// Start of user code for onError ElementEditor key
+			public static String onError = "esb::Sequences::properties::onError";
+			// End of user code
+			
 	
 		}
 	
@@ -6789,43 +6801,48 @@ public class EsbViewsRepository {
 	 * 
 	 */
 	public static class SynapseAPI {
-		public static class Properties {
+		public static class Handler {
 	
 			
-			public static String description = "esb::SynapseAPI::properties::description";
+			public static String handlers = "esb::SynapseAPI::handler::handlers";
 			
+				public static class Properties {
 			
-			public static String commentsList = "esb::SynapseAPI::properties::commentsList";
+					
+					public static String commentsList = "esb::SynapseAPI::handler::properties::commentsList";
+					
+					
+					public static String apiName = "esb::SynapseAPI::handler::properties::apiName";
+					
+					
+					public static String context = "esb::SynapseAPI::handler::properties::context";
+					
+					
+					public static String hostName = "esb::SynapseAPI::handler::properties::hostName";
+					
+					
+					public static String port = "esb::SynapseAPI::handler::properties::port";
+					
+					
+					public static String resources = "esb::SynapseAPI::handler::properties::resources";
+					
+					
+					public static String versionType = "esb::SynapseAPI::handler::properties::versionType";
+					
+					
+					public static String version = "esb::SynapseAPI::handler::properties::version";
+					
+					
+					public static String traceEnabled = "esb::SynapseAPI::handler::properties::traceEnabled";
+					
+					
+					public static String statisticsEnabled = "esb::SynapseAPI::handler::properties::statisticsEnabled";
+					
+					
+					public static String description = "esb::SynapseAPI::handler::properties::description";
+					
 			
-			
-			public static String apiName = "esb::SynapseAPI::properties::apiName";
-			
-			
-			public static String context = "esb::SynapseAPI::properties::context";
-			
-			
-			public static String hostName = "esb::SynapseAPI::properties::hostName";
-			
-			
-			public static String port = "esb::SynapseAPI::properties::port";
-			
-			
-			public static String resources = "esb::SynapseAPI::properties::resources";
-			
-			
-			public static String handlers = "esb::SynapseAPI::properties::handlers";
-			
-			
-			public static String traceEnabled = "esb::SynapseAPI::properties::traceEnabled";
-			
-			
-			public static String statisticsEnabled = "esb::SynapseAPI::properties::statisticsEnabled";
-			
-			
-			public static String version = "esb::SynapseAPI::properties::version";
-			
-			
-			public static String versionType = "esb::SynapseAPI::properties::versionType";
+				}
 			
 	
 		}

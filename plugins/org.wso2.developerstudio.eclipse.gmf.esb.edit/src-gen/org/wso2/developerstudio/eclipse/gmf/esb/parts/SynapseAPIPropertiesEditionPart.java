@@ -22,18 +22,48 @@ import org.eclipse.jface.viewers.ViewerFilter;
  */
 public interface SynapseAPIPropertiesEditionPart {
 
-	/**
-	 * @return the description
-	 * 
-	 */
-	public String getDescription();
+
 
 	/**
-	 * Defines a new description
-	 * @param newValue the new description to set
+	 * Init the handlers
+	 * @param current the current value
+	 * @param containgFeature the feature where to navigate if necessary
+	 * @param feature the feature to manage
+	 */
+	public void initHandlers(ReferencesTableSettings settings);
+
+	/**
+	 * Update the handlers
+	 * @param newValue the handlers to update
 	 * 
 	 */
-	public void setDescription(String newValue);
+	public void updateHandlers();
+
+	/**
+	 * Adds the given filter to the handlers edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addFilterToHandlers(ViewerFilter filter);
+
+	/**
+	 * Adds the given filter to the handlers edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addBusinessFilterToHandlers(ViewerFilter filter);
+
+	/**
+	 * @return true if the given element is contained inside the handlers table
+	 * 
+	 */
+	public boolean isContainedInHandlersTable(EObject element);
 
 
 	/**
@@ -162,48 +192,39 @@ public interface SynapseAPIPropertiesEditionPart {
 	public boolean isContainedInResourcesTable(EObject element);
 
 
-
+	/**
+	 * @return the versionType
+	 * 
+	 */
+	public Enumerator getVersionType();
 
 	/**
-	 * Init the handlers
+	 * Init the versionType
+	 * @param input the viewer input
 	 * @param current the current value
-	 * @param containgFeature the feature where to navigate if necessary
-	 * @param feature the feature to manage
 	 */
-	public void initHandlers(ReferencesTableSettings settings);
+	public void initVersionType(Object input, Enumerator current);
 
 	/**
-	 * Update the handlers
-	 * @param newValue the handlers to update
+	 * Defines a new versionType
+	 * @param newValue the new versionType to set
 	 * 
 	 */
-	public void updateHandlers();
+	public void setVersionType(Enumerator newValue);
+
 
 	/**
-	 * Adds the given filter to the handlers edition editor.
-	 * 
-	 * @param filter
-	 *            a viewer filter
-	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * @return the version
 	 * 
 	 */
-	public void addFilterToHandlers(ViewerFilter filter);
+	public String getVersion();
 
 	/**
-	 * Adds the given filter to the handlers edition editor.
-	 * 
-	 * @param filter
-	 *            a viewer filter
-	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * Defines a new version
+	 * @param newValue the new version to set
 	 * 
 	 */
-	public void addBusinessFilterToHandlers(ViewerFilter filter);
-
-	/**
-	 * @return true if the given element is contained inside the handlers table
-	 * 
-	 */
-	public boolean isContainedInHandlersTable(EObject element);
+	public void setVersion(String newValue);
 
 
 	/**
@@ -235,38 +256,17 @@ public interface SynapseAPIPropertiesEditionPart {
 
 
 	/**
-	 * @return the version
+	 * @return the description
 	 * 
 	 */
-	public String getVersion();
+	public String getDescription();
 
 	/**
-	 * Defines a new version
-	 * @param newValue the new version to set
+	 * Defines a new description
+	 * @param newValue the new description to set
 	 * 
 	 */
-	public void setVersion(String newValue);
-
-
-	/**
-	 * @return the versionType
-	 * 
-	 */
-	public Enumerator getVersionType();
-
-	/**
-	 * Init the versionType
-	 * @param input the viewer input
-	 * @param current the current value
-	 */
-	public void initVersionType(Object input, Enumerator current);
-
-	/**
-	 * Defines a new versionType
-	 * @param newValue the new versionType to set
-	 * 
-	 */
-	public void setVersionType(Enumerator newValue);
+	public void setDescription(String newValue);
 
 
 

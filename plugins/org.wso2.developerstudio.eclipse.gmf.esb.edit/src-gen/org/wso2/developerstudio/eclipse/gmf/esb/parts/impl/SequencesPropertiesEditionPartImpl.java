@@ -64,7 +64,7 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.SequencesPropertiesEditionPart;
 
@@ -92,6 +92,10 @@ public class SequencesPropertiesEditionPartImpl extends CompositePropertiesEditi
 	protected List<ViewerFilter> templateParametersFilters = new ArrayList<ViewerFilter>();
 	protected Button traceEnabled;
 	protected Button statisticsEnabled;
+	// Start of user code  for onError widgets declarations
+	
+	// End of user code
+
 
 
 
@@ -138,6 +142,7 @@ public class SequencesPropertiesEditionPartImpl extends CompositePropertiesEditi
 		propertiesStep.addStep(EsbViewsRepository.Sequences.Properties.templateParameters);
 		propertiesStep.addStep(EsbViewsRepository.Sequences.Properties.traceEnabled);
 		propertiesStep.addStep(EsbViewsRepository.Sequences.Properties.statisticsEnabled);
+		propertiesStep.addStep(EsbViewsRepository.Sequences.Properties.onError);
 		
 		
 		composer = new PartComposer(sequencesStep) {
@@ -171,6 +176,9 @@ public class SequencesPropertiesEditionPartImpl extends CompositePropertiesEditi
 				if (key == EsbViewsRepository.Sequences.Properties.statisticsEnabled) {
 					return createStatisticsEnabledCheckbox(parent);
 				}
+				// Start of user code for onError addToPart creation
+				
+				// End of user code
 				return parent;
 			}
 		};
@@ -863,6 +871,20 @@ public class SequencesPropertiesEditionPartImpl extends CompositePropertiesEditi
 
 
 
+	// Start of user code for onError specific getters and setters implementation
+	@Override
+	public RegistryKeyProperty getOnError() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setOnError(RegistryKeyProperty registryKeyProperty) {
+		// TODO Auto-generated method stub
+		
+	}
+	// End of user code
+
 	/**
 	 * {@inheritDoc}
 	 *
@@ -872,6 +894,8 @@ public class SequencesPropertiesEditionPartImpl extends CompositePropertiesEditi
 	public String getTitle() {
 		return EsbMessages.Sequences_Part_Title;
 	}
+
+
 
 	// Start of user code additional methods
 	

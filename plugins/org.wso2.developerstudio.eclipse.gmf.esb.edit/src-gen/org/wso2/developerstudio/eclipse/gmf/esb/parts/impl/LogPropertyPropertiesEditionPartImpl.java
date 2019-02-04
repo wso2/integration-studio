@@ -3,6 +3,8 @@
  */
 package org.wso2.developerstudio.eclipse.gmf.esb.parts.impl;
 
+import javax.annotation.Generated;
+
 // Start of user code for imports
 import org.eclipse.emf.common.util.Enumerator;
 
@@ -159,7 +161,7 @@ public class LogPropertyPropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * 
 	 */
 	protected Composite createPropertiesGroup(Composite parent) {
-		propertiesGroup = new Group(parent, SWT.NONE);
+		Group propertiesGroup = new Group(parent, SWT.NONE);
 		propertiesGroup.setText(EsbMessages.LogPropertyPropertiesEditionPart_PropertiesGroupLabel);
 		GridData propertiesGroupData = new GridData(GridData.FILL_HORIZONTAL);
 		propertiesGroupData.horizontalSpan = 3;
@@ -171,8 +173,8 @@ public class LogPropertyPropertiesEditionPartImpl extends CompositePropertiesEdi
 	}
 
 	/**
-	 * @generated NOT
-	 */
+     * @generated NOT
+     */
 	protected Composite createPropertyNameText(Composite parent) {
 		Control propertyNameText = createDescription(parent, EsbViewsRepository.LogProperty.Properties.propertyName, EsbMessages.LogPropertyPropertiesEditionPart_PropertyNameLabel);
 		propertyName = SWTUtils.createScrollableText(parent, SWT.BORDER);
@@ -222,8 +224,8 @@ public class LogPropertyPropertiesEditionPartImpl extends CompositePropertiesEdi
 	}
 
 	/**
-	 * @generated NOT
-	 */
+     * @generated NOT
+     */
 	protected Composite createPropertyValueTypeEMFComboViewer(Composite parent) {
 		Control propertyValueTypeLabel = createDescription(parent, EsbViewsRepository.LogProperty.Properties.propertyValueType, EsbMessages.LogPropertyPropertiesEditionPart_PropertyValueTypeLabel);
 		propertyValueType = new EMFComboViewer(parent);
@@ -563,6 +565,7 @@ public class LogPropertyPropertiesEditionPartImpl extends CompositePropertiesEdi
 				}
 			}
 		});
+		
 		EditingUtils.setID(propertyExpressionText, EsbViewsRepository.LogProperty.Properties.propertyExpression);
 		EditingUtils.setEEFtype(propertyExpressionText, "eef::Text"); //$NON-NLS-1$
 		Control propertyExpressionHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(
@@ -599,12 +602,10 @@ public class LogPropertyPropertiesEditionPartImpl extends CompositePropertiesEdi
 
 			}
 		});
-
-		// End of user code
 		return parent;
 	}
 
-	// End of user code
+		// End of user code
 
 	/**
 	 * {@inheritDoc}

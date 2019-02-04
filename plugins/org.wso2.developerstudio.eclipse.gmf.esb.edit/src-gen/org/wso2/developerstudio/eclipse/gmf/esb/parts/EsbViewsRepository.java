@@ -2287,6 +2287,14 @@ public class EsbViewsRepository {
 			
 			public static String referringSequenceType = "esb::Sequence::properties::referringSequenceType";
 			
+			// Start of user code for staticReferenceKey ElementEditor key
+			public static String staticReferenceKey = "esb::Sequence::properties::staticReferenceKey";
+			// End of user code
+			
+			// Start of user code for dynamicReferenceKey ElementEditor key
+			public static String dynamicReferenceKey = "esb::Sequence::properties::dynamicReferenceKey";
+			// End of user code
+			
 	
 		}
 	

@@ -125,7 +125,22 @@ public class EsbMessages extends NLS {
 	public static String DefaultEndPointOutputConnectorPropertiesEditionPart_PropertiesGroupLabel;
 
 	
-	public static String AddressEndPointPropertiesEditionPart_PropertiesGroupLabel;
+	public static String AddressEndPointPropertiesEditionPart_BasicGroupLabel;
+
+	
+	public static String AddressEndPointPropertiesEditionPart_EndpointSuspendStateGroupLabel;
+
+	
+	public static String AddressEndPointPropertiesEditionPart_EndpointTimeoutStateGroupLabel;
+
+	
+	public static String AddressEndPointPropertiesEditionPart_MiscGroupLabel;
+
+	
+	public static String AddressEndPointPropertiesEditionPart_QoSGroupLabel;
+
+	
+	public static String AddressEndPointPropertiesEditionPart_TimeoutGroupLabel;
 
 	
 	public static String AddressEndPointInputConnectorPropertiesEditionPart_PropertiesGroupLabel;
@@ -3508,9 +3523,6 @@ public class EsbMessages extends NLS {
 	public static String DefaultEndPointOutputConnectorPropertiesEditionPart_CommentMediatorsLabel;
 
 	
-	public static String AddressEndPointPropertiesEditionPart_DescriptionLabel;
-
-	
 	public static String AddressEndPointPropertiesEditionPart_CommentsListLabel;
 
 	
@@ -3526,10 +3538,52 @@ public class EsbMessages extends NLS {
 	public static String AddressEndPointPropertiesEditionPart_DuplicateLabel;
 
 	
+	public static String AddressEndPointPropertiesEditionPart_ReversedLabel;
+
+	
+	public static String AddressEndPointPropertiesEditionPart_FormatLabel;
+
+	
+	public static String AddressEndPointPropertiesEditionPart_TemplateParametersLabel;
+
+	
+	public static String AddressEndPointPropertiesEditionPart_StatisticsEnabledLabel;
+
+	
+	public static String AddressEndPointPropertiesEditionPart_TraceEnabledLabel;
+
+	
+	public static String AddressEndPointPropertiesEditionPart_URILabel;
+
+	
+	public static String AddressEndPointPropertiesEditionPart_SuspendErrorCodesLabel;
+
+	
+	public static String AddressEndPointPropertiesEditionPart_SuspendInitialDurationLabel;
+
+	
+	public static String AddressEndPointPropertiesEditionPart_SuspendMaximumDurationLabel;
+
+	
+	public static String AddressEndPointPropertiesEditionPart_SuspendProgressionFactorLabel;
+
+	
+	public static String AddressEndPointPropertiesEditionPart_RetryErrorCodesLabel;
+
+	
+	public static String AddressEndPointPropertiesEditionPart_RetryCountLabel;
+
+	
+	public static String AddressEndPointPropertiesEditionPart_RetryDelayLabel;
+
+	
 	public static String AddressEndPointPropertiesEditionPart_PropertiesLabel;
 
 	
-	public static String AddressEndPointPropertiesEditionPart_ReversedLabel;
+	public static String AddressEndPointPropertiesEditionPart_OptimizeLabel;
+
+	
+	public static String AddressEndPointPropertiesEditionPart_DescriptionLabel;
 
 	
 	public static String AddressEndPointPropertiesEditionPart_ReliableMessagingEnabledLabel;
@@ -3547,49 +3601,22 @@ public class EsbMessages extends NLS {
 	public static String AddressEndPointPropertiesEditionPart_AddressingSeparateListenerLabel;
 
 	
+	public static String AddressEndPointPropertiesEditionPart_ReliableMessagingPolicyLabel;
+
+	
+	public static String AddressEndPointPropertiesEditionPart_InboundPolicyLabel;
+
+	
+	public static String AddressEndPointPropertiesEditionPart_OutboundPolicyLabel;
+
+	
+	public static String AddressEndPointPropertiesEditionPart_SecurityPolicyLabel;
+
+	
 	public static String AddressEndPointPropertiesEditionPart_TimeOutDurationLabel;
 
 	
 	public static String AddressEndPointPropertiesEditionPart_TimeOutActionLabel;
-
-	
-	public static String AddressEndPointPropertiesEditionPart_RetryErrorCodesLabel;
-
-	
-	public static String AddressEndPointPropertiesEditionPart_RetryCountLabel;
-
-	
-	public static String AddressEndPointPropertiesEditionPart_RetryDelayLabel;
-
-	
-	public static String AddressEndPointPropertiesEditionPart_SuspendErrorCodesLabel;
-
-	
-	public static String AddressEndPointPropertiesEditionPart_SuspendInitialDurationLabel;
-
-	
-	public static String AddressEndPointPropertiesEditionPart_SuspendMaximumDurationLabel;
-
-	
-	public static String AddressEndPointPropertiesEditionPart_SuspendProgressionFactorLabel;
-
-	
-	public static String AddressEndPointPropertiesEditionPart_FormatLabel;
-
-	
-	public static String AddressEndPointPropertiesEditionPart_OptimizeLabel;
-
-	
-	public static String AddressEndPointPropertiesEditionPart_TemplateParametersLabel;
-
-	
-	public static String AddressEndPointPropertiesEditionPart_StatisticsEnabledLabel;
-
-	
-	public static String AddressEndPointPropertiesEditionPart_TraceEnabledLabel;
-
-	
-	public static String AddressEndPointPropertiesEditionPart_URILabel;
 
 	
 	public static String AddressEndPointInputConnectorPropertiesEditionPart_IncomingLinksLabel;

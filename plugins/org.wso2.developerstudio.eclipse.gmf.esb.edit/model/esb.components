@@ -474,6 +474,18 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7vUg_JnEei6boXzpRIfnA" name="URI" views="_E7wi4_JnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//AddressEndPoint/URI"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_tvRoMCh7EemHfrPx9BRWXQ" name="reliableMessagingPolicy" views="_htRrYCh6EemHfrPx9BRWXQ">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//AbstractEndPoint/reliableMessagingPolicy"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_A7MDcCh8EemHfrPx9BRWXQ" name="securityPolicy" views="_SJc7sCh7EemHfrPx9BRWXQ">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//AbstractEndPoint/securityPolicy"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_Hbhj8Ch8EemHfrPx9BRWXQ" name="inboundPolicy" views="_3AJMECh6EemHfrPx9BRWXQ">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//AbstractEndPoint/inboundPolicy"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_OUbVcCh8EemHfrPx9BRWXQ" name="outboundPolicy" views="_5eonwCh6EemHfrPx9BRWXQ">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//AbstractEndPoint/outboundPolicy"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//AddressEndPoint"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_E7vUhPJnEei6boXzpRIfnA" name="AddressEndPointInputConnector" views="_E7wi5PJnEei6boXzpRIfnA">
@@ -6021,11 +6033,8 @@
         </elements>
       </views>
       <views xmi:id="_E7wixvJnEei6boXzpRIfnA" name="AddressEndPoint">
-        <elements xsi:type="eef-views:Container" xmi:id="_E7wix_JnEei6boXzpRIfnA" name="properties">
+        <elements xsi:type="eef-views:Container" xmi:id="_E7wix_JnEei6boXzpRIfnA" name="Basic">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wiyPJnEei6boXzpRIfnA" name="description">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
-          </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wiyfJnEei6boXzpRIfnA" name="commentsList">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.3"/>
           </elements>
@@ -6041,12 +6050,66 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wizfJnEei6boXzpRIfnA" name="duplicate">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
           </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wizvJnEei6boXzpRIfnA" name="properties">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
-          </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wiz_JnEei6boXzpRIfnA" name="reversed">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
           </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wi3vJnEei6boXzpRIfnA" name="format">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wi4PJnEei6boXzpRIfnA" name="templateParameters">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wi4fJnEei6boXzpRIfnA" name="statisticsEnabled">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wi4vJnEei6boXzpRIfnA" name="traceEnabled">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wi4_JnEei6boXzpRIfnA" name="URI">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+        </elements>
+        <elements xsi:type="eef-views:Container" xmi:id="_Lu8_QChAEemHfrPx9BRWXQ" name="Endpoint Suspend State">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wi2vJnEei6boXzpRIfnA" name="suspendErrorCodes">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wi2_JnEei6boXzpRIfnA" name="suspendInitialDuration">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wi3PJnEei6boXzpRIfnA" name="suspendMaximumDuration">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wi3fJnEei6boXzpRIfnA" name="suspendProgressionFactor">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+        </elements>
+        <elements xsi:type="eef-views:Container" xmi:id="_3D4B4ChAEemHfrPx9BRWXQ" name="Endpoint Timeout State">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wi1_JnEei6boXzpRIfnA" name="retryErrorCodes">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wi2PJnEei6boXzpRIfnA" name="retryCount">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wi2fJnEei6boXzpRIfnA" name="retryDelay">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+        </elements>
+        <elements xsi:type="eef-views:Container" xmi:id="_Cdb7IChBEemHfrPx9BRWXQ" name="Misc">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wizvJnEei6boXzpRIfnA" name="properties">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wi3_JnEei6boXzpRIfnA" name="optimize">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wiyPJnEei6boXzpRIfnA" name="description">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+        </elements>
+        <elements xsi:type="eef-views:Container" xmi:id="_JpkKoChBEemHfrPx9BRWXQ" name="QoS">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wi0PJnEei6boXzpRIfnA" name="reliableMessagingEnabled">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
           </elements>
@@ -6062,50 +6125,18 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wi1PJnEei6boXzpRIfnA" name="addressingSeparateListener">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
           </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_htRrYCh6EemHfrPx9BRWXQ" name="Reliable Messaging Policy"/>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_3AJMECh6EemHfrPx9BRWXQ" name="Inbound Policy"/>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_5eonwCh6EemHfrPx9BRWXQ" name="Outbound Policy"/>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_SJc7sCh7EemHfrPx9BRWXQ" name="Security Policy"/>
+        </elements>
+        <elements xsi:type="eef-views:Container" xmi:id="_SxxsUChBEemHfrPx9BRWXQ" name="Timeout">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wi1fJnEei6boXzpRIfnA" name="timeOutDuration">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wi1vJnEei6boXzpRIfnA" name="timeOutAction">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
-          </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wi1_JnEei6boXzpRIfnA" name="retryErrorCodes">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
-          </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wi2PJnEei6boXzpRIfnA" name="retryCount">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
-          </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wi2fJnEei6boXzpRIfnA" name="retryDelay">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
-          </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wi2vJnEei6boXzpRIfnA" name="suspendErrorCodes">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
-          </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wi2_JnEei6boXzpRIfnA" name="suspendInitialDuration">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
-          </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wi3PJnEei6boXzpRIfnA" name="suspendMaximumDuration">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
-          </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wi3fJnEei6boXzpRIfnA" name="suspendProgressionFactor">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
-          </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wi3vJnEei6boXzpRIfnA" name="format">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
-          </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wi3_JnEei6boXzpRIfnA" name="optimize">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
-          </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wi4PJnEei6boXzpRIfnA" name="templateParameters">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
-          </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wi4fJnEei6boXzpRIfnA" name="statisticsEnabled">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
-          </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wi4vJnEei6boXzpRIfnA" name="traceEnabled">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
-          </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wi4_JnEei6boXzpRIfnA" name="URI">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
         </elements>
       </views>

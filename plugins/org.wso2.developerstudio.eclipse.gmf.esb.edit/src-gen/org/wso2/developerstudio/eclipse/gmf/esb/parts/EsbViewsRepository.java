@@ -715,91 +715,132 @@ public class EsbViewsRepository {
 	 * 
 	 */
 	public static class AddressEndPoint {
-		public static class Properties {
+		public static class Basic {
 	
 			
-			public static String description = "esb::AddressEndPoint::properties::description";
+			public static String commentsList = "esb::AddressEndPoint::Basic::commentsList";
 			
 			
-			public static String commentsList = "esb::AddressEndPoint::properties::commentsList";
+			public static String endPointName = "esb::AddressEndPoint::Basic::endPointName";
 			
 			
-			public static String endPointName = "esb::AddressEndPoint::properties::endPointName";
+			public static String anonymous = "esb::AddressEndPoint::Basic::anonymous";
 			
 			
-			public static String anonymous = "esb::AddressEndPoint::properties::anonymous";
+			public static String inLine = "esb::AddressEndPoint::Basic::InLine";
 			
 			
-			public static String inLine = "esb::AddressEndPoint::properties::InLine";
+			public static String duplicate = "esb::AddressEndPoint::Basic::duplicate";
 			
 			
-			public static String duplicate = "esb::AddressEndPoint::properties::duplicate";
+			public static String reversed = "esb::AddressEndPoint::Basic::reversed";
 			
 			
-			public static String properties_ = "esb::AddressEndPoint::properties::properties_";
+			public static String format = "esb::AddressEndPoint::Basic::format";
 			
 			
-			public static String reversed = "esb::AddressEndPoint::properties::reversed";
+			public static String templateParameters = "esb::AddressEndPoint::Basic::templateParameters";
 			
 			
-			public static String reliableMessagingEnabled = "esb::AddressEndPoint::properties::reliableMessagingEnabled";
+			public static String statisticsEnabled = "esb::AddressEndPoint::Basic::statisticsEnabled";
 			
 			
-			public static String securityEnabled = "esb::AddressEndPoint::properties::securityEnabled";
+			public static String traceEnabled = "esb::AddressEndPoint::Basic::traceEnabled";
 			
 			
-			public static String addressingEnabled = "esb::AddressEndPoint::properties::addressingEnabled";
+			public static String uRI = "esb::AddressEndPoint::Basic::URI";
+			
+	
+		}
+	
+		public static class EndpointSuspendState {
+	
+			
+			public static String suspendErrorCodes = "esb::AddressEndPoint::Endpoint Suspend State::suspendErrorCodes";
 			
 			
-			public static String addressingVersion = "esb::AddressEndPoint::properties::addressingVersion";
+			public static String suspendInitialDuration = "esb::AddressEndPoint::Endpoint Suspend State::suspendInitialDuration";
 			
 			
-			public static String addressingSeparateListener = "esb::AddressEndPoint::properties::addressingSeparateListener";
+			public static String suspendMaximumDuration = "esb::AddressEndPoint::Endpoint Suspend State::suspendMaximumDuration";
 			
 			
-			public static String timeOutDuration = "esb::AddressEndPoint::properties::timeOutDuration";
+			public static String suspendProgressionFactor = "esb::AddressEndPoint::Endpoint Suspend State::suspendProgressionFactor";
+			
+	
+		}
+	
+		public static class EndpointTimeoutState {
+	
+			
+			public static String retryErrorCodes = "esb::AddressEndPoint::Endpoint Timeout State::retryErrorCodes";
 			
 			
-			public static String timeOutAction = "esb::AddressEndPoint::properties::timeOutAction";
+			public static String retryCount = "esb::AddressEndPoint::Endpoint Timeout State::retryCount";
 			
 			
-			public static String retryErrorCodes = "esb::AddressEndPoint::properties::retryErrorCodes";
+			public static String retryDelay = "esb::AddressEndPoint::Endpoint Timeout State::retryDelay";
+			
+	
+		}
+	
+		public static class Misc {
+	
+			
+			public static String properties = "esb::AddressEndPoint::Misc::properties";
 			
 			
-			public static String retryCount = "esb::AddressEndPoint::properties::retryCount";
+			public static String optimize = "esb::AddressEndPoint::Misc::optimize";
 			
 			
-			public static String retryDelay = "esb::AddressEndPoint::properties::retryDelay";
+			public static String description = "esb::AddressEndPoint::Misc::description";
+			
+	
+		}
+	
+		public static class QoS {
+	
+			
+			public static String reliableMessagingEnabled = "esb::AddressEndPoint::QoS::reliableMessagingEnabled";
 			
 			
-			public static String suspendErrorCodes = "esb::AddressEndPoint::properties::suspendErrorCodes";
+			public static String securityEnabled = "esb::AddressEndPoint::QoS::securityEnabled";
 			
 			
-			public static String suspendInitialDuration = "esb::AddressEndPoint::properties::suspendInitialDuration";
+			public static String addressingEnabled = "esb::AddressEndPoint::QoS::addressingEnabled";
 			
 			
-			public static String suspendMaximumDuration = "esb::AddressEndPoint::properties::suspendMaximumDuration";
+			public static String addressingVersion = "esb::AddressEndPoint::QoS::addressingVersion";
 			
 			
-			public static String suspendProgressionFactor = "esb::AddressEndPoint::properties::suspendProgressionFactor";
+			public static String addressingSeparateListener = "esb::AddressEndPoint::QoS::addressingSeparateListener";
+			
+			// Start of user code for Reliable Messaging Policy ElementEditor key
+			public static String reliableMessagingPolicy = "esb::AddressEndPoint::QoS::Reliable Messaging Policy";
+			// End of user code
+			
+			// Start of user code for Inbound Policy ElementEditor key
+			public static String inboundPolicy = "esb::AddressEndPoint::QoS::Inbound Policy";
+			// End of user code
+			
+			// Start of user code for Outbound Policy ElementEditor key
+			public static String outboundPolicy = "esb::AddressEndPoint::QoS::Outbound Policy";
+			// End of user code
+			
+			// Start of user code for Security Policy ElementEditor key
+			public static String securityPolicy = "esb::AddressEndPoint::QoS::Security Policy";
+			// End of user code
+			
+	
+		}
+	
+		public static class Timeout {
+	
+			
+			public static String timeOutDuration = "esb::AddressEndPoint::Timeout::timeOutDuration";
 			
 			
-			public static String format = "esb::AddressEndPoint::properties::format";
-			
-			
-			public static String optimize = "esb::AddressEndPoint::properties::optimize";
-			
-			
-			public static String templateParameters = "esb::AddressEndPoint::properties::templateParameters";
-			
-			
-			public static String statisticsEnabled = "esb::AddressEndPoint::properties::statisticsEnabled";
-			
-			
-			public static String traceEnabled = "esb::AddressEndPoint::properties::traceEnabled";
-			
-			
-			public static String uRI = "esb::AddressEndPoint::properties::URI";
+			public static String timeOutAction = "esb::AddressEndPoint::Timeout::timeOutAction";
 			
 	
 		}

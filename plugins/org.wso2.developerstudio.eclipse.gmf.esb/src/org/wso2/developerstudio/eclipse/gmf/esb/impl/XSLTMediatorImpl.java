@@ -182,15 +182,15 @@ public class XSLTMediatorImpl extends MediatorImpl implements XSLTMediator {
     protected XSLTMediatorImpl() {
         super();
         // XSLT Static Schema Key
-        xsltStaticSchemaKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
+        RegistryKeyProperty xsltStaticSchemaKeyNew = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
         // Set filter properties to filter in only xslt media type
-        DeveloperStudioProviderUtils.addFilter((Map<String, List<String>>) xsltStaticSchemaKey.getFilters(),
+        DeveloperStudioProviderUtils.addFilter((Map<String, List<String>>) xsltStaticSchemaKeyNew.getFilters(),
                 CSProviderConstants.FILTER_MEDIA_TYPE, PlatformMediaTypeConstants.MEDIA_TYPE_XSLT);
 
-        xsltStaticSchemaKey.setPrettyName("XSLT Static Key");
-        xsltStaticSchemaKey.setKeyName("key");
-        xsltStaticSchemaKey.setKeyValue(DEFAULT_REGISTRY_KEY);
-        setXsltStaticSchemaKey(xsltStaticSchemaKey);
+        xsltStaticSchemaKeyNew.setPrettyName("XSLT Static Key");
+        xsltStaticSchemaKeyNew.setKeyName("key");
+        xsltStaticSchemaKeyNew.setKeyValue(DEFAULT_REGISTRY_KEY);
+        setXsltStaticSchemaKey(xsltStaticSchemaKeyNew);
 
         // XSLT Dynamic Schema Key
         xsltDynamicSchemaKey = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();

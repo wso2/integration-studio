@@ -4102,6 +4102,15 @@ public class EsbMessages extends NLS {
 	public static String XSLTMediatorPropertiesEditionPart_ResourcesLabel;
 
 	
+	public static String XSLTMediatorPropertiesEditionPart_SourceXpathLabel;
+
+	
+	public static String XSLTMediatorPropertiesEditionPart_XSLTStaticSchemaKeyLabel;
+
+	
+	public static String XSLTMediatorPropertiesEditionPart_XSLTDynamicSchemaKeyLabel;
+
+	
 	public static String XSLTPropertyPropertiesEditionPart_PropertyNameLabel;
 
 	
@@ -4111,6 +4120,9 @@ public class EsbMessages extends NLS {
 	public static String XSLTPropertyPropertiesEditionPart_PropertyValueLabel;
 
 	
+	public static String XSLTPropertyPropertiesEditionPart_PropertyExpressionLabel;
+
+	
 	public static String XSLTFeaturePropertiesEditionPart_FeatureNameLabel;
 
 	
@@ -4118,6 +4130,9 @@ public class EsbMessages extends NLS {
 
 	
 	public static String XSLTResourcePropertiesEditionPart_LocationLabel;
+
+	
+	public static String XSLTResourcePropertiesEditionPart_ResourceRegistryKeyLabel;
 
 	
 	public static String XSLTMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;

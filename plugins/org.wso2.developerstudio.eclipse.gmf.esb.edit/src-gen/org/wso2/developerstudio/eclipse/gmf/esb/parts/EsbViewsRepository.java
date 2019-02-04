@@ -1918,6 +1918,18 @@ public class EsbViewsRepository {
 			
 			public static String resources = "esb::XSLTMediator::properties::resources";
 			
+			// Start of user code for sourceXpath ElementEditor key
+			public static String sourceXpath = "esb::XSLTMediator::properties::sourceXpath";
+			// End of user code
+			
+			// Start of user code for XSLTStaticSchemaKey ElementEditor key
+			public static String xSLTStaticSchemaKey = "esb::XSLTMediator::properties::XSLTStaticSchemaKey";
+			// End of user code
+			
+			// Start of user code for XSLTDynamicSchemaKey ElementEditor key
+			public static String xSLTDynamicSchemaKey = "esb::XSLTMediator::properties::XSLTDynamicSchemaKey";
+			// End of user code
+			
 	
 		}
 	
@@ -1938,6 +1950,10 @@ public class EsbViewsRepository {
 			
 			
 			public static String propertyValue = "esb::XSLTProperty::properties::propertyValue";
+			
+			// Start of user code for propertyExpression ElementEditor key
+			public static String propertyExpression = "esb::XSLTProperty::properties::propertyExpression";
+			// End of user code
 			
 	
 		}
@@ -1971,6 +1987,10 @@ public class EsbViewsRepository {
 	
 			
 			public static String location = "esb::XSLTResource::properties::location";
+			
+			// Start of user code for resourceRegistryKey ElementEditor key
+			public static String resourceRegistryKey = "esb::XSLTResource::properties::resourceRegistryKey";
+			// End of user code
 			
 	
 		}

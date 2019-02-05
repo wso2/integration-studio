@@ -153,24 +153,19 @@ public class DockerImageGenerator {
 
         // Creating the docker client instance
         DockerClient docker = DefaultDockerClient.builder().uri(dockerModel.getDockerHost()).build();
-        
-        try {
-            // Check if the docker daemon is running
-            docker.ping();
-        } catch (DockerException e) {
-            String msg = DockerGenConstants.ErrorMessages.DOCKER_CONNECTION_FAIL_MSG;
-            log.error(msg, e);
-            showMessageBox(DockerGenConstants.ErrorMessages.DOCKER_IMAGE_CREATION_FAILED_TITLE, msg, SWT.ICON_ERROR);
-            
-            return;
-        }
 
         // Atomic reference to store the generated docker image ID
         final AtomicReference<String> imageIdFromMessage = new AtomicReference<>();
         String returnedImageId = EMPTY_STRING;
 
-        String imageNameWithTag = dockerModel.getName() + DockerGenConstants.ImageParamDefaults.TAG_SEPARATOR
-                + dockerModel.getTag();
+        String imageNameWithTag = EMPTY_STRING;
+
+        if (dockerModel.getTag() != null || !dockerModel.getTag().equals(EMPTY_STRING)) {
+            imageNameWithTag = dockerModel.getName() + DockerGenConstants.ImageParamDefaults.TAG_SEPARATOR
+                    + dockerModel.getTag();
+        } else {
+            imageNameWithTag = dockerModel.getName() + DockerGenConstants.ImageParamDefaults.TAG_SEPARATOR;
+        }
 
         try {
             // build the image
@@ -183,45 +178,63 @@ public class DockerImageGenerator {
                     if (imageId != null) {
                         log.info(DockerGenConstants.SuccessMessages.DOCKER_IMAGE_GEN_SUCCESS_MESSAGE + imageId);
                         imageIdFromMessage.set(imageId);
+
+                        try {
+                            bundleImage(docker, imageId, outputDirectory);
+                        } catch (Exception e) {
+                            log.error(DockerGenConstants.ErrorMessages.IMAGE_BUNDLE_CREATION_FAILED_MSG, e);
+                            throw new DockerException(DockerGenConstants.ErrorMessages.IMAGE_BUNDLE_CREATION_FAILED_MSG, e);
+                        }
                     }
 
                 }
-            });
+            }, DockerClient.BuildParam.noCache(), DockerClient.BuildParam.forceRm());
         } catch (DockerException e) {
-            String msg = DockerGenConstants.ErrorMessages.DOCKER_IMAGE_CREATION_FAILED_TITLE;
-            log.info(msg, e);
-            throw new DockerException(msg, e);
+            String msg = DockerGenConstants.ErrorMessages.DOCKER_CONNECTION_FAIL_MSG;
+            log.error(msg, e);
+            showMessageBox(DockerGenConstants.ErrorMessages.DOCKER_IMAGE_CREATION_FAILED_TITLE, msg, SWT.ICON_ERROR);
+            return;
         }
 
+    }
+
+    private void bundleImage(DockerClient docker, String imageId, String outputDirectory)
+            throws IOException, InterruptedException, DockerException {
         final File destinationDirectory = new File(outputDirectory);
-        String tarFileName = dockerModel.getName() + DockerGenConstants.ImageParamDefaults.HYPHEN_SEPARATOR
-                + dockerModel.getTag();
+
+        String tarFileName = EMPTY_STRING;
+
+        if (dockerModel.getTag() != null || !dockerModel.getTag().equals(EMPTY_STRING)) {
+            tarFileName = dockerModel.getName() + DockerGenConstants.ImageParamDefaults.HYPHEN_SEPARATOR
+                    + dockerModel.getTag();
+        } else {
+            tarFileName = dockerModel.getName();
+        }
+
         final File imageFile = new File(destinationDirectory, tarFileName + FILE_POSTFIX_TAR);
 
         imageFile.createNewFile();
-        imageFile.deleteOnExit();
         final byte[] buffer = new byte[2048];
         int read;
 
         try (OutputStream imageOutput = new BufferedOutputStream(new FileOutputStream(imageFile))) {
             // pull the image from the local registry and write to a file
-            try (InputStream imageInput = docker.save(imageNameWithTag)) {
+            try (InputStream imageInput = docker.save(imageId)) {
                 while ((read = imageInput.read(buffer)) > -1) {
                     imageOutput.write(buffer, 0, read);
                 }
 
                 showMessageBox(DockerGenConstants.SuccessMessages.SUCCESSFUL_TITLE,
-                        DockerGenConstants.SuccessMessages.DOCKER_IMAGE_GEN_SUCCESS_MESSAGE + returnedImageId,
+                        DockerGenConstants.SuccessMessages.DOCKER_IMAGE_GEN_SUCCESS_MESSAGE + imageId,
                         SWT.ICON_INFORMATION);
 
             } catch (DockerException e) {
                 log.error(DockerGenConstants.ErrorMessages.DOCKER_IMAGE_FILE_CREATION_FAIL_TITLE, e);
-
-                showMessageBox(DockerGenConstants.ErrorMessages.DOCKER_IMAGE_CREATION_FAILED_TITLE,
-                        DockerGenConstants.ErrorMessages.DOCKER_IMAGE_FILE_CREATION_FAIL_TITLE, SWT.ICON_ERROR);
+                throw new DockerException(DockerGenConstants.ErrorMessages.DOCKER_IMAGE_FILE_CREATION_FAIL_TITLE, e);
+            } finally {
+                imageOutput.close();
             }
         }
-
     }
 
     private void showMessageBox(String title, String message, int style) {

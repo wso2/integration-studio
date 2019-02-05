@@ -78,6 +78,7 @@ public class DockerGenConstants {
                 + "Make sure docker is running on your computer.";
         public static final String DOCKER_IMAGE_CREATION_FAILED_MSG = "Could not generate the docker image.";
         public static final String DOCKER_IMAGE_CREATION_FAILED_TITLE = "Error creating the Docker image";
+        public static final String IMAGE_BUNDLE_CREATION_FAILED_MSG = "Could not create the Docker image bundle file.";
     }
     
     public static class SuccessMessages {

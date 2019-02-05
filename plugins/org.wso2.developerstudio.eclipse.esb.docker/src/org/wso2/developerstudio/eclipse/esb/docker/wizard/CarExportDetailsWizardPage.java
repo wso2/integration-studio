@@ -247,12 +247,6 @@ public class CarExportDetailsWizardPage extends WizardPage {
             setErrorMessage("The image name format is invalid.");
             setPageComplete(false);
             return;
-        } else if (getImageTag() != null && !getImageTag().equalsIgnoreCase(EMPTY_STRING)) {
-            if (!getImageTag().matches("[\\w][\\w.-]{0,127}")) {
-                setErrorMessage("The image tag is invalid.");
-                setPageComplete(false);
-                return;
-            }
         } else if (!getName().matches("[_a-zA-Z0-9\\-\\.]+")) {
             setErrorMessage("Could not create CAR files with special characters");
             setPageComplete(false);
@@ -283,6 +277,13 @@ public class CarExportDetailsWizardPage extends WizardPage {
                 setErrorMessage("Export destination must be a valid path.");
                 setPageComplete(false);
                 return;
+            }
+            if (getImageTag() != null && !getImageTag().equalsIgnoreCase(EMPTY_STRING)) {
+                if (!getImageTag().matches("[\\w][\\w.-]{0,127}")) {
+                    setErrorMessage("The image tag is invalid.");
+                    setPageComplete(false);
+                    return;
+                }
             }
         }
 

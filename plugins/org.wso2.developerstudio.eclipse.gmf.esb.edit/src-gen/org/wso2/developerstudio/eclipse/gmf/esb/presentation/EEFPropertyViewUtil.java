@@ -17,30 +17,32 @@ public class EEFPropertyViewUtil {
 
     public void clearElements(Composite[] propertiesGroups) {
         for (Composite propertiesGroup : propertiesGroups) {
-        	hideEntry(propertiesGroup.getChildren(), false);
+            hideEntry(propertiesGroup.getChildren(), false);
         }
     }
-    
+
     public void clearElement(Control control) {
-    	 if (control.getLayoutData() != null && control.getLayoutData() instanceof GridData) {
-             ((GridData) control.getLayoutData()).exclude = true;
-             control.setVisible(false);
-         }
+        if (control.getLayoutData() != null && control.getLayoutData() instanceof GridData) {
+            ((GridData) control.getLayoutData()).exclude = true;
+            control.setVisible(false);
+        }
     }
 
     public void hideEntry(Control controls[], boolean layout) {
         // view.getChildren();
         for (Control control : controls) {
             // null check and type check
-            control.setLayoutData( new GridData(GridData.FILL_HORIZONTAL));
+            // control.setLayoutData( new GridData(GridData.FILL_HORIZONTAL));
             control.setEnabled(true);
             if (control.getLayoutData() != null && control.getLayoutData() instanceof GridData) {
                 ((GridData) control.getLayoutData()).exclude = true;
                 control.setVisible(false);
             } else if (control.getLayoutData() != null && control.getLayoutData() instanceof FormData) {
-               // ((FormData) control.getLayoutData()). = true;
+                // ((FormData) control.getLayoutData()). = true;
                 control.setVisible(false);
             } else {
+                control.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+                ((GridData) control.getLayoutData()).exclude = true;
                 control.setVisible(false);
             }
         }
@@ -52,14 +54,16 @@ public class EEFPropertyViewUtil {
     public void showEntry(Control controls[], boolean layout) {
         for (Control control : controls) {
             // null check and type check
-            control.setLayoutData( new GridData(GridData.FILL_HORIZONTAL));
+            // control.setLayoutData( new GridData(GridData.FILL_HORIZONTAL));
             control.setEnabled(true);
             if (control.getLayoutData() != null && control.getLayoutData() instanceof GridData) {
-               ((GridData) control.getLayoutData()).exclude = false;
+                ((GridData) control.getLayoutData()).exclude = false;
                 control.setVisible(true);
             } else if (control.getLayoutData() != null && control.getLayoutData() instanceof FormData) {
                 control.setVisible(true);
             } else {
+                control.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+                ((GridData) control.getLayoutData()).exclude = false;
                 control.setVisible(true);
             }
         }
@@ -67,9 +71,9 @@ public class EEFPropertyViewUtil {
             view.layout(true, true);
         }
     }
-    
+
     public static Control[] getTableElements(Control[] previousControls, Control[] newControls) {
-        Control [] tableElements = new Control[newControls.length - previousControls.length];
+        Control[] tableElements = new Control[newControls.length - previousControls.length];
         for (int i = previousControls.length; i < newControls.length; i++) {
             tableElements[i - previousControls.length] = newControls[i];
         }

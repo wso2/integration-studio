@@ -141,6 +141,7 @@ public class ValidateSchemaPropertiesEditionComponent extends SinglePartProperti
 				// End of user code
 			}
 			// Start of user code  for staticSchemaKey filter update
+			((ValidateSchemaPropertiesEditionPartImpl) editingPart).validate();
 			// End of user code
 			
 			// Start of user code  for dynamicSchemaKey filter update
@@ -151,7 +152,7 @@ public class ValidateSchemaPropertiesEditionComponent extends SinglePartProperti
 			
 		}
 		setInitializing(false);
-		((ValidateSchemaPropertiesEditionPartImpl) editingPart).validate();
+		
 	}
 
 

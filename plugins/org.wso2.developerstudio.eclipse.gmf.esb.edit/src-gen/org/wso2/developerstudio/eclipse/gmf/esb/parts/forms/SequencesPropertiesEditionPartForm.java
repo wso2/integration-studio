@@ -100,6 +100,7 @@ public class SequencesPropertiesEditionPartForm extends SectionPropertiesEditing
 	protected List<ViewerFilter> templateParametersFilters = new ArrayList<ViewerFilter>();
 	protected Button traceEnabled;
 	protected Button statisticsEnabled;
+	protected GridData templateParametersData;
 	// Start of user code  for onError widgets declarations
     protected RegistryKeyProperty onError;
     protected Text onErrorText;
@@ -108,6 +109,7 @@ public class SequencesPropertiesEditionPartForm extends SectionPropertiesEditing
     protected Control[] nameElements;
     protected Control[] traceEnabledElements;
     protected Control[] staticsEnabledElements;
+    protected Control[] createTemplateParameterElements;
  
     protected Composite propertiesGroup;
 	// End of user code
@@ -486,10 +488,10 @@ public class SequencesPropertiesEditionPartForm extends SectionPropertiesEditing
 	}
 
 	/**
-	 * @param container
-	 * 
-	 */
+     * @generated NOT
+     */
 	protected Composite createTemplateParametersTableComposition(FormToolkit widgetFactory, Composite parent) {
+		Control[] previousControls = propertiesGroup.getChildren();
 		this.templateParameters = new ReferencesTable(getDescription(EsbViewsRepository.Sequences.Properties.templateParameters, EsbMessages.SequencesPropertiesEditionPart_TemplateParametersLabel), new ReferencesTableListener() {
 			public void handleAdd() {
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SequencesPropertiesEditionPartForm.this, EsbViewsRepository.Sequences.Properties.templateParameters, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
@@ -523,7 +525,7 @@ public class SequencesPropertiesEditionPartForm extends SectionPropertiesEditing
 			}
 			
 		});
-		GridData templateParametersData = new GridData(GridData.FILL_HORIZONTAL);
+		templateParametersData = new GridData(GridData.FILL_HORIZONTAL);
 		templateParametersData.horizontalSpan = 3;
 		this.templateParameters.setLayoutData(templateParametersData);
 		this.templateParameters.setLowerBound(0);
@@ -531,7 +533,8 @@ public class SequencesPropertiesEditionPartForm extends SectionPropertiesEditing
 		templateParameters.setID(EsbViewsRepository.Sequences.Properties.templateParameters);
 		templateParameters.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
 		// Start of user code for createTemplateParametersTableComposition
-
+		Control[] newControls = propertiesGroup.getChildren();
+		createTemplateParameterElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
 		// End of user code
 		return parent;
 	}
@@ -1029,12 +1032,12 @@ public class SequencesPropertiesEditionPartForm extends SectionPropertiesEditing
 	
     public void validate() {
     	
-    	
-    	for (Control control : propertiesGroup.getChildren()) {
+    	viewUtil.clearElements(new Composite[] { propertiesGroup });
+    	/*for (Control control : propertiesGroup.getChildren()) {
     		if (!(control instanceof Composite)) {
     			viewUtil.clearElement(control);
     		}
-    	}
+    	}*/
     	
     	viewUtil.showEntry(nameElements, false);
     	viewUtil.showEntry(onErrorElements, false);

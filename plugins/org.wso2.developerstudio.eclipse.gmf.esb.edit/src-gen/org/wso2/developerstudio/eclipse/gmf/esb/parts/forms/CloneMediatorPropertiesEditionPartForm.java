@@ -442,6 +442,7 @@ public class CloneMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
         // End of user code
         return parent;
     }
+    
     /**
      * @generated NOT
      */
@@ -473,12 +474,12 @@ public class CloneMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
         sequentialMediation.setLayoutData(sequentialMediationData);
         EditingUtils.setID(sequentialMediation, EsbViewsRepository.CloneMediator.Properties.sequentialMediation);
         EditingUtils.setEEFtype(sequentialMediation, "eef::Checkbox"); //$NON-NLS-1$
-        FormUtils.createHelpButton(widgetFactory, parent,
+        Control itemHelp = FormUtils.createHelpButton(widgetFactory, parent,
                 propertiesEditionComponent.getHelpContent(
                         EsbViewsRepository.CloneMediator.Properties.sequentialMediation, EsbViewsRepository.FORM_KIND),
                 null); // $NON-NLS-1$
         // Start of user code for createSequentialMediationCheckbox
-        sequencialMediationElements = new Control [] {sequentialMediation};
+        sequencialMediationElements = new Control [] {sequentialMediation, itemHelp};
         // End of user code
         return parent;
     }

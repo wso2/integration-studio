@@ -1,5 +1,7 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.presentation;
 
+import java.awt.GridLayout;
+
 import org.eclipse.swt.layout.FormData;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
@@ -30,6 +32,7 @@ public class EEFPropertyViewUtil {
         // view.getChildren();
         for (Control control : controls) {
             // null check and type check
+            control.setLayoutData( new GridData(GridData.FILL_HORIZONTAL));
             control.setEnabled(true);
             if (control.getLayoutData() != null && control.getLayoutData() instanceof GridData) {
                 ((GridData) control.getLayoutData()).exclude = true;
@@ -43,13 +46,13 @@ public class EEFPropertyViewUtil {
         }
         if (layout) {
             view.layout(true, true);
-            view.pack();
         }
     }
 
     public void showEntry(Control controls[], boolean layout) {
         for (Control control : controls) {
             // null check and type check
+            control.setLayoutData( new GridData(GridData.FILL_HORIZONTAL));
             control.setEnabled(true);
             if (control.getLayoutData() != null && control.getLayoutData() instanceof GridData) {
                ((GridData) control.getLayoutData()).exclude = false;
@@ -62,7 +65,6 @@ public class EEFPropertyViewUtil {
         }
         if (layout) {
             view.layout(true, true);
-            view.pack();
         }
     }
     

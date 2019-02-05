@@ -55,6 +55,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.TargetSequenceType;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.CloneTargetPropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.developerstudio.eclipse.gmf.esb.parts.impl.CloneTargetPropertiesEditionPartImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.parts.impl.ValidateSchemaPropertiesEditionPartImpl;
 
 // End of user code
 
@@ -159,7 +161,7 @@ public class CloneTargetPropertiesEditionComponent extends SinglePartPropertiesE
             // End of user code
 			
 			// init values for referenced views
-			
+			((CloneTargetPropertiesEditionPartImpl) editingPart).validate();
 			// init filters for referenced views
 			
 		}

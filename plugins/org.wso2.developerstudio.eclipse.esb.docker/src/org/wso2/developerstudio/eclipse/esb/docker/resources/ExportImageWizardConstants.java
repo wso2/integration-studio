@@ -25,7 +25,7 @@ import java.io.File;
  *
  */
 public class ExportImageWizardConstants {
-    
+
     public static final String DIALOG_TITLE_TEXT = "WSO2 Platform Distribution - Generate Docker Image";
     public static final String SELECT_VALID_CARBON_APP_MESSAGE = "Please select a valid carbon application project";
     public static final String ERROR_CREATING_CAR_FILE_MSG = "An error occured while creating the carbon archive file";
@@ -36,7 +36,7 @@ public class ExportImageWizardConstants {
     public static final String MICRO_EI_HOME_REL_PATH = "wso2" + File.separator + "micro-integrator";
     public static final String DEPLOYMENT_DIR_REL_PATH = "repository" + File.separator + "deployment" + File.separator
             + "server" + File.separator + "carbonapps";
-    
+
     public static final String EI_TOOLING_HOME_MACOS = "/Applications/DeveloperStudio.app/Contents/MacOS";
     public static final String OS_TYPE_DARWIN = "darwin";
     public static final String OS_TYPE_MAC = "mac";
@@ -44,7 +44,7 @@ public class ExportImageWizardConstants {
 
     public static final String OS_NAME = "os.name";
     public static final String SYSTEM_PROPERTY_TYPE_GENERIC = "generic";
-    
+
     public static final String CAR_FILE_SUFFIX = ".car$";
     public static final String CAR_FILE_NAME_PLACEHOLDER = "%s_%s.car";
 

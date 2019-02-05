@@ -19,13 +19,20 @@
 package org.wso2.developerstudio.eclipse.esb.docker.job;
 
 import java.io.File;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.net.URL;
 
+import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
+import org.osgi.framework.Bundle;
 import org.wso2.developerstudio.eclipse.esb.docker.Activator;
 import org.wso2.developerstudio.eclipse.esb.docker.model.MicroIntegratorDockerModel;
+import org.wso2.developerstudio.eclipse.esb.docker.resources.DockerGenConstants;
 import org.wso2.developerstudio.eclipse.esb.docker.util.DockerImageGenerator;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
@@ -44,7 +51,7 @@ public class GenerateDockerImageJob extends Job {
     private String eiDistributionDestination;
     private File carbonFile;
     private MicroIntegratorDockerModel dockerModel;
-    
+
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
     public GenerateDockerImageJob(String dockerDir, String eiDistributionSource, String eiDistributionDestination,
@@ -74,6 +81,20 @@ public class GenerateDockerImageJob extends Job {
             // Copy MicroEI distribution to the docker directory
             FileUtils.copyDirectory(new File(getEiDistributionSource()), new File(getEiDistributionDestination()));
 
+            // Copy entrypoint init file to the docker directory
+            Bundle bundle = Platform.getBundle(Activator.PLUGIN_ID);
+            URL fileURL = bundle.getEntry(DockerGenConstants.ImageParamDefaults.INIT_FILE_PATH);
+            File initFile = null;
+
+            try {
+                initFile = new File(FileLocator.resolve(fileURL).toURI());
+            } catch (URISyntaxException | IOException e) {
+                log.error(DockerGenConstants.ErrorMessages.DOCKER_IMAGE_CREATION_FAILED_MSG, e);
+            }
+
+            FileUtils.copy(initFile,
+                    new File(dockerDirectory + File.separator + DockerGenConstants.ImageParamDefaults.INIT_FILE_NAME));
+
             operationText = "Clearing temporary directories...";
             monitor.subTask(operationText);
             monitor.worked(20);
@@ -84,7 +105,7 @@ public class GenerateDockerImageJob extends Job {
             operationText = "Copying CAR application...";
             monitor.subTask(operationText);
             monitor.worked(20);
-            
+
             // Copy CAR file to the deployment directory
             FileUtils.copyFile(getCarbonFile().getAbsolutePath(),
                     getDeploymentDirectory() + File.separator + getCarbonFile().getName());
@@ -95,11 +116,11 @@ public class GenerateDockerImageJob extends Job {
             operationText = "Generating docker image...";
             monitor.subTask(operationText);
             monitor.worked(20);
-            
+
             // Generate the docker image
             DockerImageGenerator generator = new DockerImageGenerator(getDockerModel());
             generator.generateDockerImage(getDockerDirectory(), getDestinationDirectory());
-            
+
             operationText = "Clearing temporary directories...";
             monitor.subTask(operationText);
             monitor.worked(20);
@@ -114,10 +135,10 @@ public class GenerateDockerImageJob extends Job {
 
         monitor.worked(100);
         monitor.done();
-        
+
         return Status.OK_STATUS;
     }
-    
+
     public String getDockerDirectory() {
         return dockerDirectory;
     }

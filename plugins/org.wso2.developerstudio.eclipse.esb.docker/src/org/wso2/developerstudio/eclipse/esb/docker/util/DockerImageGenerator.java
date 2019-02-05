@@ -56,7 +56,7 @@ public class DockerImageGenerator {
     private MicroIntegratorDockerModel dockerModel;
 
     private static final String FILE_POSTFIX_TAR = ".tar";
-    private static final String STRING_SPACE = " ";
+    private static final String SPACE = " ";
     private static final String EMPTY_STRING = "";
 
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
@@ -80,37 +80,102 @@ public class DockerImageGenerator {
      */
     public String generateDockerFileContent() {
         String dockerBase = DockerGenConstants.ImageParamDefaults.DOCKER_FILE_HEADING + "\n\n"
-                + DockerGenConstants.DockerFileCommands.FROM + STRING_SPACE + dockerModel.getBaseImage() + "\n"
+                + DockerGenConstants.DockerFileCommands.FROM + SPACE + dockerModel.getBaseImage() + "\n"
                 + DockerGenConstants.DockerFileCommands.LABEL + " "
                 + DockerGenConstants.ImageParamDefaults.DOCKER_FILE_MAINTAINERS + "\n\n";
 
         StringBuilder stringBuilder = new StringBuilder(dockerBase);
 
+        // Set ARG variables
+        // User variables
+        stringBuilder.append(DockerGenConstants.DockerFileCommands.ARG).append(SPACE)
+                .append(DockerGenConstants.EnvVariables.USER).append(DockerGenConstants.DefaultArguments.USER)
+                .append("\n");
+        stringBuilder.append(DockerGenConstants.DockerFileCommands.ARG).append(SPACE)
+                .append(DockerGenConstants.EnvVariables.USER_ID).append(DockerGenConstants.DefaultArguments.USER_ID)
+                .append("\n");
+        stringBuilder.append(DockerGenConstants.DockerFileCommands.ARG).append(SPACE)
+                .append(DockerGenConstants.EnvVariables.USER_GROUP)
+                .append(DockerGenConstants.DefaultArguments.USER_GROUP).append("\n");
+        stringBuilder.append(DockerGenConstants.DockerFileCommands.ARG).append(SPACE)
+                .append(DockerGenConstants.EnvVariables.USER_GROUP_ID)
+                .append(DockerGenConstants.DefaultArguments.USER_GROUP_ID).append("\n");
+        stringBuilder.append(DockerGenConstants.DockerFileCommands.ARG).append(SPACE)
+                .append(DockerGenConstants.EnvVariables.USER_HOME).append(DockerGenConstants.DefaultArguments.USER_HOME)
+                .append("\n");
+
+        // Files directory
+        stringBuilder.append(DockerGenConstants.DockerFileCommands.ARG).append(SPACE)
+                .append(DockerGenConstants.EnvVariables.FILES).append(DockerGenConstants.DefaultArguments.FILES)
+                .append("\n");
+
+        // Server variables
+        stringBuilder.append(DockerGenConstants.DockerFileCommands.ARG).append(SPACE)
+                .append(DockerGenConstants.EnvVariables.WSO2_SERVER)
+                .append(DockerGenConstants.DefaultArguments.WSO2_SERVER).append("\n");
+        stringBuilder.append(DockerGenConstants.DockerFileCommands.ARG).append(SPACE)
+                .append(DockerGenConstants.EnvVariables.WSO2_SERVER_VERSION)
+                .append(DockerGenConstants.DefaultArguments.WSO2_SERVER_VERSION).append("\n");
+        stringBuilder.append(DockerGenConstants.DockerFileCommands.ARG).append(SPACE)
+                .append(DockerGenConstants.EnvVariables.WSO2_SERVER_PACK)
+                .append(DockerGenConstants.DefaultArguments.WSO2_SERVER_PACK).append("\n");
+        stringBuilder.append(DockerGenConstants.DockerFileCommands.ARG).append(SPACE)
+                .append(DockerGenConstants.EnvVariables.WSO2_SERVER_HOME)
+                .append(DockerGenConstants.DefaultArguments.WSO2_SERVER_HOME).append("\n");
+
+        stringBuilder.append(DockerGenConstants.DockerFileCommands.ENV).append(SPACE)
+                .append(DockerGenConstants.EnvVariables.ENV).append(DockerGenConstants.DefaultArguments.ENV)
+                .append("\n\n");
+
+        // Run commands
+        stringBuilder.append(DockerGenConstants.DockerFileCommands.RUN).append(SPACE)
+                .append(DockerGenConstants.RunCommands.INSTALL_REQUIRED_PACKAGES_CMD).append("\n\n");
+        stringBuilder.append(DockerGenConstants.DockerFileCommands.RUN).append(SPACE)
+                .append(DockerGenConstants.RunCommands.ADD_USER_GROUP_CMD).append("\n\n");
+
+        // Copy commands
+        stringBuilder.append(DockerGenConstants.DockerFileCommands.COPY).append(SPACE)
+                .append(DockerGenConstants.CopyCommands.COPY_SERVER_PACK_CMD).append("\n");
+        stringBuilder.append(DockerGenConstants.DockerFileCommands.COPY).append(SPACE)
+                .append(DockerGenConstants.CopyCommands.COPY_INIT_FILE_CMD).append("\n");
+
         dockerModel.getExternalFiles().forEach(file -> {
             // Extract the source filename relative to docker folder.
             String sourceFileName = String.valueOf(Paths.get(file.getSource()).getFileName());
-            stringBuilder.append(DockerGenConstants.DockerFileCommands.COPY).append(STRING_SPACE).append(sourceFileName)
-                    .append(STRING_SPACE).append(file.getDestination()).append("\n");
+            stringBuilder.append(DockerGenConstants.DockerFileCommands.COPY).append(SPACE).append(sourceFileName)
+                    .append(SPACE).append(file.getDestination()).append("\n");
         });
+        stringBuilder.append("\n");
 
-        stringBuilder.append(DockerGenConstants.DockerFileCommands.ENV).append(STRING_SPACE)
-                .append(DockerGenConstants.EnvVariables.MICROESB_HOME).append(STRING_SPACE)
-                .append(dockerModel.getServerHome()).append("\n\n");
+        // Change permission of the init script
+        stringBuilder.append(DockerGenConstants.DockerFileCommands.RUN).append(SPACE)
+                .append(DockerGenConstants.RunCommands.CHMOD_INIT_FILE_CMD).append("\n\n");
 
+        // Set user and work directory
+        stringBuilder.append(DockerGenConstants.DockerFileCommands.USER).append(SPACE)
+                .append(DockerGenConstants.EnvVariables.USER_ID_VAR).append("\n");
+        stringBuilder.append(DockerGenConstants.DockerFileCommands.WORKDIR).append(SPACE)
+                .append(DockerGenConstants.EnvVariables.USER_HOME_VAR).append("\n\n");
+
+        // Set server environment variables
+        stringBuilder.append(DockerGenConstants.DockerFileCommands.ENV).append(SPACE)
+                .append(DockerGenConstants.DefaultArguments.ENV_VARIABLES_CMD).append("\n\n");
+
+        // Expose ports
         if (dockerModel.getPorts().size() > 0) {
             stringBuilder.append(DockerGenConstants.DockerFileCommands.EXPOSE);
-            dockerModel.getPorts().forEach(port -> stringBuilder.append(STRING_SPACE).append(port));
+            dockerModel.getPorts().forEach(port -> stringBuilder.append(SPACE).append(port));
             stringBuilder.append("\n\n");
         }
 
-        stringBuilder.append(DockerGenConstants.DockerFileCommands.CMD).append(STRING_SPACE)
-                .append(dockerModel.getCommandArg()).append("\n");
-
         if (dockerModel.isEnableDebug()) {
-            stringBuilder.append(STRING_SPACE).append(DockerGenConstants.CommandArgs.DEBUG).append(STRING_SPACE)
-                    .append(dockerModel.getDebugPort());
+            stringBuilder.append(SPACE).append(DockerGenConstants.CommandArgs.DEBUG).append(SPACE)
+                    .append(dockerModel.getDebugPort()).append("\n\n");
         }
-        stringBuilder.append("\n");
+
+        // Set entry point
+        stringBuilder.append(DockerGenConstants.DockerFileCommands.ENTRYPOINT).append(SPACE)
+                .append(DockerGenConstants.DefaultArguments.ENTRY_POINT_COMMAND);
 
         return stringBuilder.toString();
     }
@@ -183,7 +248,8 @@ public class DockerImageGenerator {
                             bundleImage(docker, imageId, outputDirectory);
                         } catch (Exception e) {
                             log.error(DockerGenConstants.ErrorMessages.IMAGE_BUNDLE_CREATION_FAILED_MSG, e);
-                            throw new DockerException(DockerGenConstants.ErrorMessages.IMAGE_BUNDLE_CREATION_FAILED_MSG, e);
+                            throw new DockerException(DockerGenConstants.ErrorMessages.IMAGE_BUNDLE_CREATION_FAILED_MSG,
+                                    e);
                         }
                     }
 

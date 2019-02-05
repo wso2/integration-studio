@@ -29,7 +29,7 @@ import org.wso2.developerstudio.eclipse.esb.docker.resources.DockerGenConstants;
  *
  */
 public class MicroIntegratorDockerModel {
-    
+
     private String name;
     private String registry;
     private String tag;
@@ -46,16 +46,16 @@ public class MicroIntegratorDockerModel {
     private String serverHome;
     private Set<CopyFileModel> externalFiles;
     private String commandArg;
-    
+
     public MicroIntegratorDockerModel() {
         init();
     }
-    
+
     /**
      * Initialize with default values.
      */
     private void init() {
-        
+
         // Detect the operating system
         String operatingSystem = System.getProperty(DockerGenConstants.OSTypes.OS_NAME)
                 .toLowerCase(Locale.getDefault());
@@ -68,7 +68,8 @@ public class MicroIntegratorDockerModel {
         }
 
         this.tag = DockerGenConstants.Tags.TAG_LATEST;
-        this.baseImage = DockerGenConstants.ImageParamDefaults.EI_BASE_IMAGE + ":"
+        this.baseImage = DockerGenConstants.ImageParamDefaults.EI_BASE_IMAGE
+                + DockerGenConstants.ImageParamDefaults.TAG_SEPARATOR
                 + DockerGenConstants.ImageParamDefaults.EI_BASE_IMAGE_VERSION;
         this.debugPort = 5005;
 
@@ -78,7 +79,7 @@ public class MicroIntegratorDockerModel {
 
         externalFiles = new HashSet<>();
     }
-    
+
     public String getName() {
         return name;
     }
@@ -190,7 +191,7 @@ public class MicroIntegratorDockerModel {
     public void setCommandArg(String commandArg) {
         this.commandArg = commandArg;
     }
-    
+
     public Set<CopyFileModel> getExternalFiles() {
         return externalFiles;
     }
@@ -198,7 +199,7 @@ public class MicroIntegratorDockerModel {
     public void setExternalFiles(Set<CopyFileModel> externalFiles) {
         this.externalFiles = externalFiles;
     }
-    
+
     public String getServerHome() {
         return serverHome;
     }
@@ -206,27 +207,15 @@ public class MicroIntegratorDockerModel {
     public void setServerHome(String serverHome) {
         this.serverHome = serverHome;
     }
-    
+
     @Override
     public String toString() {
-        return "DockerModel{" +
-               "name='" + name + '\'' +
-               ", registry='" + registry + '\'' +
-               ", tag='" + tag + '\'' +
-               ", push=" + push +
-               ", username='" + username + '\'' +
-               ", password='" + password + '\'' +
-               ", buildImage" + "=" + buildImage +
-               ", baseImage='" + baseImage + '\'' +
-               ", ports=" + ports +
-               ", enableDebug=" + enableDebug +
-               ", debugPort=" + debugPort +
-               ", dockerHost='" + dockerHost + '\'' +
-               ", dockerCertPath='" + dockerCertPath + '\'' +
-               ", externalFiles=" + externalFiles +
-               ", serverHome=" + serverHome +
-               ", commandArg='" + commandArg + '\'' +
-               '}';
+        return "DockerModel{" + "name='" + name + '\'' + ", registry='" + registry + '\'' + ", tag='" + tag + '\''
+                + ", push=" + push + ", username='" + username + '\'' + ", password='" + password + '\''
+                + ", buildImage" + "=" + buildImage + ", baseImage='" + baseImage + '\'' + ", ports=" + ports
+                + ", enableDebug=" + enableDebug + ", debugPort=" + debugPort + ", dockerHost='" + dockerHost + '\''
+                + ", dockerCertPath='" + dockerCertPath + '\'' + ", externalFiles=" + externalFiles + ", serverHome="
+                + serverHome + ", commandArg='" + commandArg + '\'' + '}';
     }
 
 }

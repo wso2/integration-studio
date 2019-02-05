@@ -255,6 +255,10 @@ public class CarExportDetailsWizardPage extends WizardPage {
             setErrorMessage("Please specify the docker image export destination");
             setPageComplete(false);
             return;
+        } else if (getImageTag() == null || getImageTag().equals(EMPTY_STRING)) {
+            setErrorMessage("Please specify the image tag.");
+            setPageComplete(false);
+            return;
         } else {
             String version = txtVersion.getText();
             String[] versionParts = version.split("\\.");
@@ -278,12 +282,10 @@ public class CarExportDetailsWizardPage extends WizardPage {
                 setPageComplete(false);
                 return;
             }
-            if (getImageTag() != null && !getImageTag().equalsIgnoreCase(EMPTY_STRING)) {
-                if (!getImageTag().matches("[\\w][\\w.-]{0,127}")) {
-                    setErrorMessage("The image tag is invalid.");
-                    setPageComplete(false);
-                    return;
-                }
+            if (!getImageTag().matches("[\\w][\\w.-]{0,127}")) {
+                setErrorMessage("The image tag is invalid.");
+                setPageComplete(false);
+                return;
             }
         }
 

@@ -231,6 +231,9 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7vUMvJnEei6boXzpRIfnA" name="location" views="_E7wig_JnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//AbstractLocationKeyResource/location"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_tm6c8CioEemzlvjTxgAHwQ" name="key" views="_poCMkCioEemzlvjTxgAHwQ">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//AbstractLocationKeyResource/key"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//ProxyWSDLResource"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_E7vUM_JnEei6boXzpRIfnA" name="ProxyFaultInputConnector" views="_E7wihPJnEei6boXzpRIfnA">
@@ -249,6 +252,9 @@
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//ProxyServiceParameter"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_E7vUOPJnEei6boXzpRIfnA" name="ProxyServicePolicy" views="_E7wii_JnEei6boXzpRIfnA">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_N3kWUCioEemzlvjTxgAHwQ" name="policyKey" views="_E6uXICioEemzlvjTxgAHwQ">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//ProxyServicePolicy/policyKey"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//ProxyServicePolicy"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_E7vUOfJnEei6boXzpRIfnA" name="ProxyServiceSequenceAndEndpointContainer" views="_E7wijfJnEei6boXzpRIfnA">
@@ -5819,6 +5825,7 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wig_JnEei6boXzpRIfnA" name="location">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_poCMkCioEemzlvjTxgAHwQ" name="key"/>
         </elements>
       </views>
       <views xmi:id="_E7wihPJnEei6boXzpRIfnA" name="ProxyFaultInputConnector">
@@ -5843,6 +5850,7 @@
       <views xmi:id="_E7wii_JnEei6boXzpRIfnA" name="ProxyServicePolicy">
         <elements xsi:type="eef-views:Container" xmi:id="_E7wijPJnEei6boXzpRIfnA" name="properties">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_E6uXICioEemzlvjTxgAHwQ" name="policyKey"/>
         </elements>
       </views>
       <views xmi:id="_E7wijfJnEei6boXzpRIfnA" name="ProxyServiceSequenceAndEndpointContainer">

@@ -143,6 +143,14 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createProxyServicePolicyAdapter()
+	 * 
+	 */
+	public Adapter createProxyServicePolicyAdapter() {
+		return new ProxyServicePolicyPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createMediatorFlowAdapter()
 	 * 
 	 */

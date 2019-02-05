@@ -147,6 +147,12 @@
                tab="Base">
          </propertySection>
          <propertySection
+               class="org.wso2.developerstudio.eclipse.gmf.esb.parts.forms.ProxyServicePolicyPropertiesEditionPartForm"
+               filter="org.wso2.developerstudio.eclipse.gmf.esb.providers.ProxyServicePolicyPropertiesEditionProvider$EditionFilter"
+               id="org.wso2.developerstudio.eclipse.gmf.esb.section.ProxyServicePolicy"
+               tab="Base">
+         </propertySection>
+         <propertySection
                class="org.wso2.developerstudio.eclipse.gmf.esb.parts.forms.MediatorFlowPropertiesEditionPartForm"
                filter="org.wso2.developerstudio.eclipse.gmf.esb.providers.MediatorFlowPropertiesEditionProvider$EditionFilter"
                id="org.wso2.developerstudio.eclipse.gmf.esb.section.MediatorFlow"

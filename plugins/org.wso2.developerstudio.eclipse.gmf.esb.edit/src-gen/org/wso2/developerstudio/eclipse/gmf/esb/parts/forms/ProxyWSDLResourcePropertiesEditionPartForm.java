@@ -18,7 +18,7 @@ import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
-
+import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
@@ -40,7 +40,7 @@ import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.ProxyWSDLResourcePropertiesEditionPart;
 
@@ -55,6 +55,10 @@ import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
 public class ProxyWSDLResourcePropertiesEditionPartForm extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, ProxyWSDLResourcePropertiesEditionPart {
 
 	protected Text location;
+	// Start of user code  for key widgets declarations
+	
+	// End of user code
+
 
 
 
@@ -99,9 +103,9 @@ public class ProxyWSDLResourcePropertiesEditionPartForm extends SectionPropertie
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		CompositionSequence proxyWSDLResourceStep = new BindingCompositionSequence(propertiesEditionComponent);
-		proxyWSDLResourceStep
-			.addStep(EsbViewsRepository.ProxyWSDLResource.Properties.class)
-			.addStep(EsbViewsRepository.ProxyWSDLResource.Properties.location);
+		CompositionStep propertiesStep = proxyWSDLResourceStep.addStep(EsbViewsRepository.ProxyWSDLResource.Properties.class);
+		propertiesStep.addStep(EsbViewsRepository.ProxyWSDLResource.Properties.location);
+		propertiesStep.addStep(EsbViewsRepository.ProxyWSDLResource.Properties.key);
 		
 		
 		composer = new PartComposer(proxyWSDLResourceStep) {
@@ -114,6 +118,9 @@ public class ProxyWSDLResourcePropertiesEditionPartForm extends SectionPropertie
 				if (key == EsbViewsRepository.ProxyWSDLResource.Properties.location) {
 					return createLocationText(widgetFactory, parent);
 				}
+				// Start of user code for key addToPart creation
+				
+				// End of user code
 				return parent;
 			}
 		};
@@ -253,6 +260,20 @@ public class ProxyWSDLResourcePropertiesEditionPartForm extends SectionPropertie
 
 
 
+
+	// Start of user code for key specific getters and setters implementation
+	@Override
+    public void setKey(RegistryKeyProperty registryKeyProperty) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public RegistryKeyProperty getKey() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+	// End of user code
 
 	/**
 	 * {@inheritDoc}

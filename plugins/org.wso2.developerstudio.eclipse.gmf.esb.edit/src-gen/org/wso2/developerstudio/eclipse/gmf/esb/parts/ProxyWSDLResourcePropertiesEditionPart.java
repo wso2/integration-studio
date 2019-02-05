@@ -3,6 +3,8 @@
  */
 package org.wso2.developerstudio.eclipse.gmf.esb.parts;
 
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
+
 // Start of user code for imports
 
 
@@ -31,6 +33,12 @@ public interface ProxyWSDLResourcePropertiesEditionPart {
 
 
 
+	// Start of user code for key specific getters and setters declaration
+	public void setKey(RegistryKeyProperty registryKeyProperty);
+	
+	public RegistryKeyProperty getKey();
+	
+	// End of user code
 
 	/**
 	 * Returns the internationalized title text.

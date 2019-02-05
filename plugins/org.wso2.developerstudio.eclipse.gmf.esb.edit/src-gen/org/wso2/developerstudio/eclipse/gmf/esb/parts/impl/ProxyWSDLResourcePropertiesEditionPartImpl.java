@@ -3,6 +3,8 @@
  */
 package org.wso2.developerstudio.eclipse.gmf.esb.parts.impl;
 
+import java.util.ArrayList;
+
 // Start of user code for imports
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 
@@ -18,7 +20,7 @@ import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
-
+import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
@@ -29,18 +31,22 @@ import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
-
+import org.eclipse.swt.events.MouseEvent;
+import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.ProxyWSDLResourcePropertiesEditionPart;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.developerstudio.esb.form.editors.article.providers.NamedEntityDescriptor;
 
 // End of user code
 
@@ -51,6 +57,12 @@ import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
 public class ProxyWSDLResourcePropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, ProxyWSDLResourcePropertiesEditionPart {
 
 	protected Text location;
+	// Start of user code  for key widgets declarations
+	protected RegistryKeyProperty key;
+	protected Text keyText;
+	protected Control[] keyElements;
+	// End of user code
+
 
 
 
@@ -88,9 +100,9 @@ public class ProxyWSDLResourcePropertiesEditionPartImpl extends CompositePropert
 	 */
 	public void createControls(Composite view) { 
 		CompositionSequence proxyWSDLResourceStep = new BindingCompositionSequence(propertiesEditionComponent);
-		proxyWSDLResourceStep
-			.addStep(EsbViewsRepository.ProxyWSDLResource.Properties.class)
-			.addStep(EsbViewsRepository.ProxyWSDLResource.Properties.location);
+		CompositionStep propertiesStep = proxyWSDLResourceStep.addStep(EsbViewsRepository.ProxyWSDLResource.Properties.class);
+		propertiesStep.addStep(EsbViewsRepository.ProxyWSDLResource.Properties.location);
+		propertiesStep.addStep(EsbViewsRepository.ProxyWSDLResource.Properties.key);
 		
 		
 		composer = new PartComposer(proxyWSDLResourceStep) {
@@ -103,6 +115,11 @@ public class ProxyWSDLResourcePropertiesEditionPartImpl extends CompositePropert
 				if (key == EsbViewsRepository.ProxyWSDLResource.Properties.location) {
 					return createLocationText(parent);
 				}
+				// Start of user code for key addToPart creation
+				if (key == EsbViewsRepository.ProxyWSDLResource.Properties.key) {
+                    return createKeyText(parent);
+                }
+				// End of user code
 				return parent;
 			}
 		};
@@ -223,6 +240,19 @@ public class ProxyWSDLResourcePropertiesEditionPartImpl extends CompositePropert
 
 
 
+	// Start of user code for key specific getters and setters implementation
+	@Override
+    public void setKey(RegistryKeyProperty registryKeyProperty) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public RegistryKeyProperty getKey() {
+        return key;
+    }
+	// End of user code
+
 	/**
 	 * {@inheritDoc}
 	 *
@@ -234,7 +264,52 @@ public class ProxyWSDLResourcePropertiesEditionPartImpl extends CompositePropert
 	}
 
 	// Start of user code additional methods
-	
+	protected Composite createKeyText(Composite parent) {
+        Control keyLabel = createDescription(parent, EsbViewsRepository.ProxyWSDLResource.Properties.key,
+                EsbMessages.ProxyWSDLResourcePropertiesEditionPart_KeyLabel);
+
+        if (key == null) {
+            key = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
+        }
+        
+        keyText = SWTUtils.createScrollableText(parent, SWT.BORDER);
+        GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
+        keyText.setLayoutData(valueData);
+        keyText.addMouseListener(new MouseListener() {
+
+            @Override
+            public void mouseUp(MouseEvent e) {
+                // TODO Auto-generated method stub
+            }
+
+            @Override
+            public void mouseDown(MouseEvent e) {
+                EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(parent.getShell(),
+                        SWT.NULL, key, new ArrayList<NamedEntityDescriptor>());
+                dialog.open();
+                keyText.setText(key.getKeyValue());
+                propertiesEditionComponent
+                        .firePropertiesChanged(new PropertiesEditionEvent(ProxyWSDLResourcePropertiesEditionPartImpl.this,
+                                EsbViewsRepository.ProxyWSDLResource.Properties.key, PropertiesEditionEvent.COMMIT,
+                                PropertiesEditionEvent.SET, null, getKey()));
+            }
+
+            @Override
+            public void mouseDoubleClick(MouseEvent e) {
+                // TODO Auto-generated method stub
+
+            }
+        });
+        EditingUtils.setID(keyText, EsbViewsRepository.ProxyWSDLResource.Properties.key);
+        EditingUtils.setEEFtype(keyText, "eef::Text");
+        Control keyHelp = SWTUtils
+                .createHelpButton(parent,
+                        propertiesEditionComponent.getHelpContent(
+                                EsbViewsRepository.ProxyWSDLResource.Properties.key, EsbViewsRepository.FORM_KIND),
+                        null);
+        keyElements = new Control[] { keyLabel, keyText, keyHelp };
+        return parent;
+    }
 	// End of user code
 
 

@@ -3394,6 +3394,9 @@ public class EsbMessages extends NLS {
 	public static String ProxyWSDLResourcePropertiesEditionPart_LocationLabel;
 
 	
+	public static String ProxyWSDLResourcePropertiesEditionPart_KeyLabel;
+
+	
 	public static String ProxyFaultInputConnectorPropertiesEditionPart_IncomingLinksLabel;
 
 	
@@ -3401,6 +3404,9 @@ public class EsbMessages extends NLS {
 
 	
 	public static String ProxyServiceParameterPropertiesEditionPart_ValueLabel;
+
+	
+	public static String ProxyServicePolicyPropertiesEditionPart_PolicyKeyLabel;
 
 	
 	public static String MediatorFlowPropertiesEditionPart_ChildrenLabel;

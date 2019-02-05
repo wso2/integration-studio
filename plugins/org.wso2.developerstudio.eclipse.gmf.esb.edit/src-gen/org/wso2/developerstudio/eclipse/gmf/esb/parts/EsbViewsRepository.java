@@ -423,6 +423,10 @@ public class EsbViewsRepository {
 			
 			public static String location = "esb::ProxyWSDLResource::properties::location";
 			
+			// Start of user code for key ElementEditor key
+			public static String key = "esb::ProxyWSDLResource::properties::key";
+			// End of user code
+			
 	
 		}
 	
@@ -468,6 +472,10 @@ public class EsbViewsRepository {
 	public static class ProxyServicePolicy {
 		public static class Properties {
 	
+			// Start of user code for policyKey ElementEditor key
+			public static String policyKey = "esb::ThrottleMediator::throttlePolicy::policyKey";
+			// End of user code
+			
 	
 		}
 	
@@ -4384,9 +4392,10 @@ public class EsbViewsRepository {
 			// Start of user code for OnAcceptBranchSequenceKey ElementEditor key
 			public static String onAcceptBranchSequenceKey = "esb::ThrottleMediator::onAccept::OnAcceptBranchSequenceKey";
 			// End of user code
+			
 	
 		}
-
+	
 		public static class OnReject {
 	
 			
@@ -4399,7 +4408,6 @@ public class EsbViewsRepository {
 	
 		}
 	
-
 		public static class ThrottlePolicy {
 	
 			

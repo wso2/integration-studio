@@ -33,10 +33,12 @@ import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPointProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPointPropertyScope;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EndPointPropertyPropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.developerstudio.eclipse.gmf.esb.parts.impl.EndPointPropertyPropertiesEditionPartImpl;
 
 
 // End of user code
@@ -90,10 +92,20 @@ public class EndPointPropertyPropertiesEditionComponent extends SinglePartProper
 			if (isAccessible(EsbViewsRepository.EndPointProperty.Properties.valueType)) {
 				basePart.initValueType(EEFUtils.choiceOfValues(endPointProperty, EsbPackage.eINSTANCE.getEndPointProperty_ValueType()), endPointProperty.getValueType());
 			}
+			// Start of user code  for valueExpression command update
+			if (isAccessible(EsbViewsRepository.EndPointProperty.Properties.valueExpression)) {
+                basePart.setValueExpression(endPointProperty.getValueExpression());
+            }
+			// End of user code
+			
 			// init filters
 			
 			
 			
+			
+			// Start of user code  for valueExpression filter update
+			((EndPointPropertyPropertiesEditionPartImpl) editingPart).validate();
+			// End of user code
 			
 			// init values for referenced views
 			
@@ -102,6 +114,7 @@ public class EndPointPropertyPropertiesEditionComponent extends SinglePartProper
 		}
 		setInitializing(false);
 	}
+
 
 
 
@@ -126,6 +139,9 @@ public class EndPointPropertyPropertiesEditionComponent extends SinglePartProper
 		if (editorKey == EsbViewsRepository.EndPointProperty.Properties.valueType) {
 			return EsbPackage.eINSTANCE.getEndPointProperty_ValueType();
 		}
+		if (editorKey == EsbViewsRepository.EndPointProperty.Properties.valueExpression) {
+			return EsbPackage.eINSTANCE.getEndPointProperty_ValueExpression();
+		}
 		return super.associatedFeature(editorKey);
 	}
 
@@ -147,6 +163,17 @@ public class EndPointPropertyPropertiesEditionComponent extends SinglePartProper
 		}
 		if (EsbViewsRepository.EndPointProperty.Properties.valueType == event.getAffectedEditor()) {
 			endPointProperty.setValueType((PropertyValueType)event.getNewValue());
+		}
+		if (EsbViewsRepository.EndPointProperty.Properties.valueExpression == event.getAffectedEditor()) {
+			// Start of user code for updateValueExpression method body
+		    if (event.getNewValue() != null) {
+                NamespacedProperty nspValueExpression = (NamespacedProperty)event.getNewValue();
+                endPointProperty.setValueExpression(nspValueExpression);
+            } else {
+                endPointProperty.setValueExpression(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+            }
+			// End of user code
+			
 		}
 	}
 
@@ -178,6 +205,17 @@ public class EndPointPropertyPropertiesEditionComponent extends SinglePartProper
 			if (EsbPackage.eINSTANCE.getEndPointProperty_ValueType().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EsbViewsRepository.EndPointProperty.Properties.valueType))
 				basePart.setValueType((PropertyValueType)msg.getNewValue());
 			
+					// Start of user code for valueExpression live update
+			if (EsbPackage.eINSTANCE.getEndPointProperty_ValueExpression().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null 
+			        && isAccessible(EsbViewsRepository.EndPointProperty.Properties.valueExpression)) {
+                if (msg.getNewValue() != null) {
+                    basePart.setValueExpression((NamespacedProperty)msg.getNewValue());
+                } else {
+                    basePart.setValueExpression(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+                }
+            }
+					// End of user code
+			
 			
 		}
 	}
@@ -193,7 +231,8 @@ public class EndPointPropertyPropertiesEditionComponent extends SinglePartProper
 			EsbPackage.eINSTANCE.getEndPointProperty_Name(),
 			EsbPackage.eINSTANCE.getEndPointProperty_Value(),
 			EsbPackage.eINSTANCE.getEndPointProperty_Scope(),
-			EsbPackage.eINSTANCE.getEndPointProperty_ValueType()		);
+			EsbPackage.eINSTANCE.getEndPointProperty_ValueType(),
+			EsbPackage.eINSTANCE.getEndPointProperty_ValueExpression()		);
 		return new NotificationFilter[] {filter,};
 	}
 

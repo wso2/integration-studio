@@ -114,7 +114,7 @@ public class HTTPEndpointPropertiesEditionComponent extends SinglePartProperties
 			final HTTPEndpoint hTTPEndpoint = (HTTPEndpoint)elt;
 			final HTTPEndpointPropertiesEditionPart basePart = (HTTPEndpointPropertiesEditionPart)editingPart;
 			// init values
-			if (isAccessible(EsbViewsRepository.HTTPEndpoint.Properties.description))
+			if (isAccessible(EsbViewsRepository.HTTPEndpoint.EndpointDescription.description))
 				basePart.setDescription(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, hTTPEndpoint.getDescription()));
 			
 			if (isAccessible(EsbViewsRepository.HTTPEndpoint.Properties.commentsList))
@@ -132,7 +132,7 @@ public class HTTPEndpointPropertiesEditionComponent extends SinglePartProperties
 			if (isAccessible(EsbViewsRepository.HTTPEndpoint.Properties.duplicate)) {
 				basePart.setDuplicate(hTTPEndpoint.isDuplicate());
 			}
-			if (isAccessible(EsbViewsRepository.HTTPEndpoint.Properties.properties_)) {
+			if (isAccessible(EsbViewsRepository.HTTPEndpoint.EndpointProperties.properties)) {
 				propertiesSettings = new ReferencesTableSettings(hTTPEndpoint, EsbPackage.eINSTANCE.getEndPoint_Properties());
 				basePart.initProperties(propertiesSettings);
 			}
@@ -154,35 +154,35 @@ public class HTTPEndpointPropertiesEditionComponent extends SinglePartProperties
 			if (isAccessible(EsbViewsRepository.HTTPEndpoint.Properties.addressingSeparateListener)) {
 				basePart.setAddressingSeparateListener(hTTPEndpoint.isAddressingSeparateListener());
 			}
-			if (isAccessible(EsbViewsRepository.HTTPEndpoint.Properties.timeOutDuration))
+			if (isAccessible(EsbViewsRepository.HTTPEndpoint.Timeout.timeOutDuration))
 				basePart.setTimeOutDuration(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, hTTPEndpoint.getTimeOutDuration()));
 			
-			if (isAccessible(EsbViewsRepository.HTTPEndpoint.Properties.timeOutAction)) {
+			if (isAccessible(EsbViewsRepository.HTTPEndpoint.Timeout.timeOutAction)) {
 				basePart.initTimeOutAction(EEFUtils.choiceOfValues(hTTPEndpoint, EsbPackage.eINSTANCE.getAbstractEndPoint_TimeOutAction()), hTTPEndpoint.getTimeOutAction());
 			}
-			if (isAccessible(EsbViewsRepository.HTTPEndpoint.Properties.retryErrorCodes))
+			if (isAccessible(EsbViewsRepository.HTTPEndpoint.EndpointTimeoutState.retryErrorCodes))
 				basePart.setRetryErrorCodes(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, hTTPEndpoint.getRetryErrorCodes()));
 			
-			if (isAccessible(EsbViewsRepository.HTTPEndpoint.Properties.retryCount)) {
+			if (isAccessible(EsbViewsRepository.HTTPEndpoint.EndpointTimeoutState.retryCount)) {
 				basePart.setRetryCount(EEFConverterUtil.convertToString(EcorePackage.Literals.EINT, hTTPEndpoint.getRetryCount()));
 			}
 			
-			if (isAccessible(EsbViewsRepository.HTTPEndpoint.Properties.retryDelay)) {
+			if (isAccessible(EsbViewsRepository.HTTPEndpoint.EndpointTimeoutState.retryDelay)) {
 				basePart.setRetryDelay(EEFConverterUtil.convertToString(EcorePackage.Literals.ELONG, hTTPEndpoint.getRetryDelay()));
 			}
 			
-			if (isAccessible(EsbViewsRepository.HTTPEndpoint.Properties.suspendErrorCodes))
+			if (isAccessible(EsbViewsRepository.HTTPEndpoint.EndpointSuspendState.suspendErrorCodes))
 				basePart.setSuspendErrorCodes(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, hTTPEndpoint.getSuspendErrorCodes()));
 			
-			if (isAccessible(EsbViewsRepository.HTTPEndpoint.Properties.suspendInitialDuration)) {
+			if (isAccessible(EsbViewsRepository.HTTPEndpoint.EndpointSuspendState.suspendInitialDuration)) {
 				basePart.setSuspendInitialDuration(EEFConverterUtil.convertToString(EcorePackage.Literals.ELONG, hTTPEndpoint.getSuspendInitialDuration()));
 			}
 			
-			if (isAccessible(EsbViewsRepository.HTTPEndpoint.Properties.suspendMaximumDuration)) {
+			if (isAccessible(EsbViewsRepository.HTTPEndpoint.EndpointSuspendState.suspendMaximumDuration)) {
 				basePart.setSuspendMaximumDuration(EEFConverterUtil.convertToString(EcorePackage.Literals.ELONG, hTTPEndpoint.getSuspendMaximumDuration()));
 			}
 			
-			if (isAccessible(EsbViewsRepository.HTTPEndpoint.Properties.suspendProgressionFactor)) {
+			if (isAccessible(EsbViewsRepository.HTTPEndpoint.EndpointSuspendState.suspendProgressionFactor)) {
 				basePart.setSuspendProgressionFactor(EEFConverterUtil.convertToString(EcorePackage.Literals.EFLOAT, hTTPEndpoint.getSuspendProgressionFactor()));
 			}
 			
@@ -196,16 +196,16 @@ public class HTTPEndpointPropertiesEditionComponent extends SinglePartProperties
 				templateParametersSettings = new ReferencesTableSettings(hTTPEndpoint, EsbPackage.eINSTANCE.getAbstractEndPoint_TemplateParameters());
 				basePart.initTemplateParameters(templateParametersSettings);
 			}
-			if (isAccessible(EsbViewsRepository.HTTPEndpoint.Properties.statisticsEnabled)) {
+			if (isAccessible(EsbViewsRepository.HTTPEndpoint.Basic.statisticsEnabled)) {
 				basePart.setStatisticsEnabled(hTTPEndpoint.isStatisticsEnabled());
 			}
-			if (isAccessible(EsbViewsRepository.HTTPEndpoint.Properties.traceEnabled)) {
+			if (isAccessible(EsbViewsRepository.HTTPEndpoint.Basic.traceEnabled)) {
 				basePart.setTraceEnabled(hTTPEndpoint.isTraceEnabled());
 			}
-			if (isAccessible(EsbViewsRepository.HTTPEndpoint.Properties.uRITemplate))
+			if (isAccessible(EsbViewsRepository.HTTPEndpoint.Basic.uRITemplate))
 				basePart.setURITemplate(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, hTTPEndpoint.getURITemplate()));
 			
-			if (isAccessible(EsbViewsRepository.HTTPEndpoint.Properties.httpMethod)) {
+			if (isAccessible(EsbViewsRepository.HTTPEndpoint.Basic.httpMethod)) {
 				basePart.initHttpMethod(EEFUtils.choiceOfValues(hTTPEndpoint, EsbPackage.eINSTANCE.getHTTPEndpoint_HttpMethod()), hTTPEndpoint.getHttpMethod());
 			}
 			// init filters
@@ -215,7 +215,7 @@ public class HTTPEndpointPropertiesEditionComponent extends SinglePartProperties
 			
 			
 			
-			if (isAccessible(EsbViewsRepository.HTTPEndpoint.Properties.properties_)) {
+			if (isAccessible(EsbViewsRepository.HTTPEndpoint.EndpointProperties.properties)) {
 				basePart.addFilterToProperties(new ViewerFilter() {
 					/**
 					 * {@inheritDoc}
@@ -310,7 +310,7 @@ public class HTTPEndpointPropertiesEditionComponent extends SinglePartProperties
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
 	 */
 	public EStructuralFeature associatedFeature(Object editorKey) {
-		if (editorKey == EsbViewsRepository.HTTPEndpoint.Properties.description) {
+		if (editorKey == EsbViewsRepository.HTTPEndpoint.EndpointDescription.description) {
 			return EsbPackage.eINSTANCE.getEsbElement_Description();
 		}
 		if (editorKey == EsbViewsRepository.HTTPEndpoint.Properties.commentsList) {
@@ -328,7 +328,7 @@ public class HTTPEndpointPropertiesEditionComponent extends SinglePartProperties
 		if (editorKey == EsbViewsRepository.HTTPEndpoint.Properties.duplicate) {
 			return EsbPackage.eINSTANCE.getEndPoint_Duplicate();
 		}
-		if (editorKey == EsbViewsRepository.HTTPEndpoint.Properties.properties_) {
+		if (editorKey == EsbViewsRepository.HTTPEndpoint.EndpointProperties.properties) {
 			return EsbPackage.eINSTANCE.getEndPoint_Properties();
 		}
 		if (editorKey == EsbViewsRepository.HTTPEndpoint.Properties.reversed) {
@@ -349,31 +349,31 @@ public class HTTPEndpointPropertiesEditionComponent extends SinglePartProperties
 		if (editorKey == EsbViewsRepository.HTTPEndpoint.Properties.addressingSeparateListener) {
 			return EsbPackage.eINSTANCE.getAbstractEndPoint_AddressingSeparateListener();
 		}
-		if (editorKey == EsbViewsRepository.HTTPEndpoint.Properties.timeOutDuration) {
+		if (editorKey == EsbViewsRepository.HTTPEndpoint.Timeout.timeOutDuration) {
 			return EsbPackage.eINSTANCE.getAbstractEndPoint_TimeOutDuration();
 		}
-		if (editorKey == EsbViewsRepository.HTTPEndpoint.Properties.timeOutAction) {
+		if (editorKey == EsbViewsRepository.HTTPEndpoint.Timeout.timeOutAction) {
 			return EsbPackage.eINSTANCE.getAbstractEndPoint_TimeOutAction();
 		}
-		if (editorKey == EsbViewsRepository.HTTPEndpoint.Properties.retryErrorCodes) {
+		if (editorKey == EsbViewsRepository.HTTPEndpoint.EndpointTimeoutState.retryErrorCodes) {
 			return EsbPackage.eINSTANCE.getAbstractEndPoint_RetryErrorCodes();
 		}
-		if (editorKey == EsbViewsRepository.HTTPEndpoint.Properties.retryCount) {
+		if (editorKey == EsbViewsRepository.HTTPEndpoint.EndpointTimeoutState.retryCount) {
 			return EsbPackage.eINSTANCE.getAbstractEndPoint_RetryCount();
 		}
-		if (editorKey == EsbViewsRepository.HTTPEndpoint.Properties.retryDelay) {
+		if (editorKey == EsbViewsRepository.HTTPEndpoint.EndpointTimeoutState.retryDelay) {
 			return EsbPackage.eINSTANCE.getAbstractEndPoint_RetryDelay();
 		}
-		if (editorKey == EsbViewsRepository.HTTPEndpoint.Properties.suspendErrorCodes) {
+		if (editorKey == EsbViewsRepository.HTTPEndpoint.EndpointSuspendState.suspendErrorCodes) {
 			return EsbPackage.eINSTANCE.getAbstractEndPoint_SuspendErrorCodes();
 		}
-		if (editorKey == EsbViewsRepository.HTTPEndpoint.Properties.suspendInitialDuration) {
+		if (editorKey == EsbViewsRepository.HTTPEndpoint.EndpointSuspendState.suspendInitialDuration) {
 			return EsbPackage.eINSTANCE.getAbstractEndPoint_SuspendInitialDuration();
 		}
-		if (editorKey == EsbViewsRepository.HTTPEndpoint.Properties.suspendMaximumDuration) {
+		if (editorKey == EsbViewsRepository.HTTPEndpoint.EndpointSuspendState.suspendMaximumDuration) {
 			return EsbPackage.eINSTANCE.getAbstractEndPoint_SuspendMaximumDuration();
 		}
-		if (editorKey == EsbViewsRepository.HTTPEndpoint.Properties.suspendProgressionFactor) {
+		if (editorKey == EsbViewsRepository.HTTPEndpoint.EndpointSuspendState.suspendProgressionFactor) {
 			return EsbPackage.eINSTANCE.getAbstractEndPoint_SuspendProgressionFactor();
 		}
 		if (editorKey == EsbViewsRepository.HTTPEndpoint.Properties.format) {
@@ -385,16 +385,16 @@ public class HTTPEndpointPropertiesEditionComponent extends SinglePartProperties
 		if (editorKey == EsbViewsRepository.HTTPEndpoint.Properties.templateParameters) {
 			return EsbPackage.eINSTANCE.getAbstractEndPoint_TemplateParameters();
 		}
-		if (editorKey == EsbViewsRepository.HTTPEndpoint.Properties.statisticsEnabled) {
+		if (editorKey == EsbViewsRepository.HTTPEndpoint.Basic.statisticsEnabled) {
 			return EsbPackage.eINSTANCE.getAbstractEndPoint_StatisticsEnabled();
 		}
-		if (editorKey == EsbViewsRepository.HTTPEndpoint.Properties.traceEnabled) {
+		if (editorKey == EsbViewsRepository.HTTPEndpoint.Basic.traceEnabled) {
 			return EsbPackage.eINSTANCE.getAbstractEndPoint_TraceEnabled();
 		}
-		if (editorKey == EsbViewsRepository.HTTPEndpoint.Properties.uRITemplate) {
+		if (editorKey == EsbViewsRepository.HTTPEndpoint.Basic.uRITemplate) {
 			return EsbPackage.eINSTANCE.getHTTPEndpoint_URITemplate();
 		}
-		if (editorKey == EsbViewsRepository.HTTPEndpoint.Properties.httpMethod) {
+		if (editorKey == EsbViewsRepository.HTTPEndpoint.Basic.httpMethod) {
 			return EsbPackage.eINSTANCE.getHTTPEndpoint_HttpMethod();
 		}
 		return super.associatedFeature(editorKey);
@@ -407,7 +407,7 @@ public class HTTPEndpointPropertiesEditionComponent extends SinglePartProperties
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		HTTPEndpoint hTTPEndpoint = (HTTPEndpoint)semanticObject;
-		if (EsbViewsRepository.HTTPEndpoint.Properties.description == event.getAffectedEditor()) {
+		if (EsbViewsRepository.HTTPEndpoint.EndpointDescription.description == event.getAffectedEditor()) {
 			hTTPEndpoint.setDescription((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (EsbViewsRepository.HTTPEndpoint.Properties.commentsList == event.getAffectedEditor()) {
@@ -428,7 +428,7 @@ public class HTTPEndpointPropertiesEditionComponent extends SinglePartProperties
 		if (EsbViewsRepository.HTTPEndpoint.Properties.duplicate == event.getAffectedEditor()) {
 			hTTPEndpoint.setDuplicate((Boolean)event.getNewValue());
 		}
-		if (EsbViewsRepository.HTTPEndpoint.Properties.properties_ == event.getAffectedEditor()) {
+		if (EsbViewsRepository.HTTPEndpoint.EndpointProperties.properties == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, propertiesSettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
@@ -471,31 +471,31 @@ public class HTTPEndpointPropertiesEditionComponent extends SinglePartProperties
 		if (EsbViewsRepository.HTTPEndpoint.Properties.addressingSeparateListener == event.getAffectedEditor()) {
 			hTTPEndpoint.setAddressingSeparateListener((Boolean)event.getNewValue());
 		}
-		if (EsbViewsRepository.HTTPEndpoint.Properties.timeOutDuration == event.getAffectedEditor()) {
+		if (EsbViewsRepository.HTTPEndpoint.Timeout.timeOutDuration == event.getAffectedEditor()) {
 			hTTPEndpoint.setTimeOutDuration((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
-		if (EsbViewsRepository.HTTPEndpoint.Properties.timeOutAction == event.getAffectedEditor()) {
+		if (EsbViewsRepository.HTTPEndpoint.Timeout.timeOutAction == event.getAffectedEditor()) {
 			hTTPEndpoint.setTimeOutAction((EndPointTimeOutAction)event.getNewValue());
 		}
-		if (EsbViewsRepository.HTTPEndpoint.Properties.retryErrorCodes == event.getAffectedEditor()) {
+		if (EsbViewsRepository.HTTPEndpoint.EndpointTimeoutState.retryErrorCodes == event.getAffectedEditor()) {
 			hTTPEndpoint.setRetryErrorCodes((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
-		if (EsbViewsRepository.HTTPEndpoint.Properties.retryCount == event.getAffectedEditor()) {
+		if (EsbViewsRepository.HTTPEndpoint.EndpointTimeoutState.retryCount == event.getAffectedEditor()) {
 			hTTPEndpoint.setRetryCount((EEFConverterUtil.createIntFromString(EcorePackage.Literals.EINT, (String)event.getNewValue())));
 		}
-		if (EsbViewsRepository.HTTPEndpoint.Properties.retryDelay == event.getAffectedEditor()) {
+		if (EsbViewsRepository.HTTPEndpoint.EndpointTimeoutState.retryDelay == event.getAffectedEditor()) {
 			hTTPEndpoint.setRetryDelay((EEFConverterUtil.createLongFromString(EcorePackage.Literals.ELONG, (String)event.getNewValue())));
 		}
-		if (EsbViewsRepository.HTTPEndpoint.Properties.suspendErrorCodes == event.getAffectedEditor()) {
+		if (EsbViewsRepository.HTTPEndpoint.EndpointSuspendState.suspendErrorCodes == event.getAffectedEditor()) {
 			hTTPEndpoint.setSuspendErrorCodes((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
-		if (EsbViewsRepository.HTTPEndpoint.Properties.suspendInitialDuration == event.getAffectedEditor()) {
+		if (EsbViewsRepository.HTTPEndpoint.EndpointSuspendState.suspendInitialDuration == event.getAffectedEditor()) {
 			hTTPEndpoint.setSuspendInitialDuration((EEFConverterUtil.createLongFromString(EcorePackage.Literals.ELONG, (String)event.getNewValue())));
 		}
-		if (EsbViewsRepository.HTTPEndpoint.Properties.suspendMaximumDuration == event.getAffectedEditor()) {
+		if (EsbViewsRepository.HTTPEndpoint.EndpointSuspendState.suspendMaximumDuration == event.getAffectedEditor()) {
 			hTTPEndpoint.setSuspendMaximumDuration((EEFConverterUtil.createLongFromString(EcorePackage.Literals.ELONG, (String)event.getNewValue())));
 		}
-		if (EsbViewsRepository.HTTPEndpoint.Properties.suspendProgressionFactor == event.getAffectedEditor()) {
+		if (EsbViewsRepository.HTTPEndpoint.EndpointSuspendState.suspendProgressionFactor == event.getAffectedEditor()) {
 			hTTPEndpoint.setSuspendProgressionFactor((EEFConverterUtil.createFloatFromString(EcorePackage.Literals.EFLOAT, (String)event.getNewValue())));
 		}
 		if (EsbViewsRepository.HTTPEndpoint.Properties.format == event.getAffectedEditor()) {
@@ -529,16 +529,16 @@ public class HTTPEndpointPropertiesEditionComponent extends SinglePartProperties
 				templateParametersSettings.move(event.getNewIndex(), (TemplateParameter) event.getNewValue());
 			}
 		}
-		if (EsbViewsRepository.HTTPEndpoint.Properties.statisticsEnabled == event.getAffectedEditor()) {
+		if (EsbViewsRepository.HTTPEndpoint.Basic.statisticsEnabled == event.getAffectedEditor()) {
 			hTTPEndpoint.setStatisticsEnabled((Boolean)event.getNewValue());
 		}
-		if (EsbViewsRepository.HTTPEndpoint.Properties.traceEnabled == event.getAffectedEditor()) {
+		if (EsbViewsRepository.HTTPEndpoint.Basic.traceEnabled == event.getAffectedEditor()) {
 			hTTPEndpoint.setTraceEnabled((Boolean)event.getNewValue());
 		}
-		if (EsbViewsRepository.HTTPEndpoint.Properties.uRITemplate == event.getAffectedEditor()) {
+		if (EsbViewsRepository.HTTPEndpoint.Basic.uRITemplate == event.getAffectedEditor()) {
 			hTTPEndpoint.setURITemplate((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
-		if (EsbViewsRepository.HTTPEndpoint.Properties.httpMethod == event.getAffectedEditor()) {
+		if (EsbViewsRepository.HTTPEndpoint.Basic.httpMethod == event.getAffectedEditor()) {
 			hTTPEndpoint.setHttpMethod((HttpMethodType)event.getNewValue());
 		}
 	}
@@ -551,7 +551,7 @@ public class HTTPEndpointPropertiesEditionComponent extends SinglePartProperties
 		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			HTTPEndpointPropertiesEditionPart basePart = (HTTPEndpointPropertiesEditionPart)editingPart;
-			if (EsbPackage.eINSTANCE.getEsbElement_Description().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.HTTPEndpoint.Properties.description)) {
+			if (EsbPackage.eINSTANCE.getEsbElement_Description().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.HTTPEndpoint.EndpointDescription.description)) {
 				if (msg.getNewValue() != null) {
 					basePart.setDescription(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
@@ -586,7 +586,7 @@ public class HTTPEndpointPropertiesEditionComponent extends SinglePartProperties
 			if (EsbPackage.eINSTANCE.getEndPoint_Duplicate().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.HTTPEndpoint.Properties.duplicate))
 				basePart.setDuplicate((Boolean)msg.getNewValue());
 			
-			if (EsbPackage.eINSTANCE.getEndPoint_Properties().equals(msg.getFeature()) && isAccessible(EsbViewsRepository.HTTPEndpoint.Properties.properties_))
+			if (EsbPackage.eINSTANCE.getEndPoint_Properties().equals(msg.getFeature()) && isAccessible(EsbViewsRepository.HTTPEndpoint.EndpointProperties.properties))
 				basePart.updateProperties();
 			if (EsbPackage.eINSTANCE.getEndPoint_Reversed().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.HTTPEndpoint.Properties.reversed))
 				basePart.setReversed((Boolean)msg.getNewValue());
@@ -606,59 +606,59 @@ public class HTTPEndpointPropertiesEditionComponent extends SinglePartProperties
 			if (EsbPackage.eINSTANCE.getAbstractEndPoint_AddressingSeparateListener().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.HTTPEndpoint.Properties.addressingSeparateListener))
 				basePart.setAddressingSeparateListener((Boolean)msg.getNewValue());
 			
-			if (EsbPackage.eINSTANCE.getAbstractEndPoint_TimeOutDuration().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.HTTPEndpoint.Properties.timeOutDuration)) {
+			if (EsbPackage.eINSTANCE.getAbstractEndPoint_TimeOutDuration().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.HTTPEndpoint.Timeout.timeOutDuration)) {
 				if (msg.getNewValue() != null) {
 					basePart.setTimeOutDuration(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setTimeOutDuration("");
 				}
 			}
-			if (EsbPackage.eINSTANCE.getAbstractEndPoint_TimeOutAction().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EsbViewsRepository.HTTPEndpoint.Properties.timeOutAction))
+			if (EsbPackage.eINSTANCE.getAbstractEndPoint_TimeOutAction().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EsbViewsRepository.HTTPEndpoint.Timeout.timeOutAction))
 				basePart.setTimeOutAction((EndPointTimeOutAction)msg.getNewValue());
 			
-			if (EsbPackage.eINSTANCE.getAbstractEndPoint_RetryErrorCodes().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.HTTPEndpoint.Properties.retryErrorCodes)) {
+			if (EsbPackage.eINSTANCE.getAbstractEndPoint_RetryErrorCodes().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.HTTPEndpoint.EndpointTimeoutState.retryErrorCodes)) {
 				if (msg.getNewValue() != null) {
 					basePart.setRetryErrorCodes(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setRetryErrorCodes("");
 				}
 			}
-			if (EsbPackage.eINSTANCE.getAbstractEndPoint_RetryCount().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.HTTPEndpoint.Properties.retryCount)) {
+			if (EsbPackage.eINSTANCE.getAbstractEndPoint_RetryCount().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.HTTPEndpoint.EndpointTimeoutState.retryCount)) {
 				if (msg.getNewValue() != null) {
 					basePart.setRetryCount(EcoreUtil.convertToString(EcorePackage.Literals.EINT, msg.getNewValue()));
 				} else {
 					basePart.setRetryCount("");
 				}
 			}
-			if (EsbPackage.eINSTANCE.getAbstractEndPoint_RetryDelay().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.HTTPEndpoint.Properties.retryDelay)) {
+			if (EsbPackage.eINSTANCE.getAbstractEndPoint_RetryDelay().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.HTTPEndpoint.EndpointTimeoutState.retryDelay)) {
 				if (msg.getNewValue() != null) {
 					basePart.setRetryDelay(EcoreUtil.convertToString(EcorePackage.Literals.ELONG, msg.getNewValue()));
 				} else {
 					basePart.setRetryDelay("");
 				}
 			}
-			if (EsbPackage.eINSTANCE.getAbstractEndPoint_SuspendErrorCodes().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.HTTPEndpoint.Properties.suspendErrorCodes)) {
+			if (EsbPackage.eINSTANCE.getAbstractEndPoint_SuspendErrorCodes().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.HTTPEndpoint.EndpointSuspendState.suspendErrorCodes)) {
 				if (msg.getNewValue() != null) {
 					basePart.setSuspendErrorCodes(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setSuspendErrorCodes("");
 				}
 			}
-			if (EsbPackage.eINSTANCE.getAbstractEndPoint_SuspendInitialDuration().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.HTTPEndpoint.Properties.suspendInitialDuration)) {
+			if (EsbPackage.eINSTANCE.getAbstractEndPoint_SuspendInitialDuration().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.HTTPEndpoint.EndpointSuspendState.suspendInitialDuration)) {
 				if (msg.getNewValue() != null) {
 					basePart.setSuspendInitialDuration(EcoreUtil.convertToString(EcorePackage.Literals.ELONG, msg.getNewValue()));
 				} else {
 					basePart.setSuspendInitialDuration("");
 				}
 			}
-			if (EsbPackage.eINSTANCE.getAbstractEndPoint_SuspendMaximumDuration().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.HTTPEndpoint.Properties.suspendMaximumDuration)) {
+			if (EsbPackage.eINSTANCE.getAbstractEndPoint_SuspendMaximumDuration().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.HTTPEndpoint.EndpointSuspendState.suspendMaximumDuration)) {
 				if (msg.getNewValue() != null) {
 					basePart.setSuspendMaximumDuration(EcoreUtil.convertToString(EcorePackage.Literals.ELONG, msg.getNewValue()));
 				} else {
 					basePart.setSuspendMaximumDuration("");
 				}
 			}
-			if (EsbPackage.eINSTANCE.getAbstractEndPoint_SuspendProgressionFactor().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.HTTPEndpoint.Properties.suspendProgressionFactor)) {
+			if (EsbPackage.eINSTANCE.getAbstractEndPoint_SuspendProgressionFactor().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.HTTPEndpoint.EndpointSuspendState.suspendProgressionFactor)) {
 				if (msg.getNewValue() != null) {
 					basePart.setSuspendProgressionFactor(EcoreUtil.convertToString(EcorePackage.Literals.EFLOAT, msg.getNewValue()));
 				} else {
@@ -673,20 +673,20 @@ public class HTTPEndpointPropertiesEditionComponent extends SinglePartProperties
 			
 			if (EsbPackage.eINSTANCE.getAbstractEndPoint_TemplateParameters().equals(msg.getFeature()) && isAccessible(EsbViewsRepository.HTTPEndpoint.Properties.templateParameters))
 				basePart.updateTemplateParameters();
-			if (EsbPackage.eINSTANCE.getAbstractEndPoint_StatisticsEnabled().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.HTTPEndpoint.Properties.statisticsEnabled))
+			if (EsbPackage.eINSTANCE.getAbstractEndPoint_StatisticsEnabled().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.HTTPEndpoint.Basic.statisticsEnabled))
 				basePart.setStatisticsEnabled((Boolean)msg.getNewValue());
 			
-			if (EsbPackage.eINSTANCE.getAbstractEndPoint_TraceEnabled().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.HTTPEndpoint.Properties.traceEnabled))
+			if (EsbPackage.eINSTANCE.getAbstractEndPoint_TraceEnabled().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.HTTPEndpoint.Basic.traceEnabled))
 				basePart.setTraceEnabled((Boolean)msg.getNewValue());
 			
-			if (EsbPackage.eINSTANCE.getHTTPEndpoint_URITemplate().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.HTTPEndpoint.Properties.uRITemplate)) {
+			if (EsbPackage.eINSTANCE.getHTTPEndpoint_URITemplate().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.HTTPEndpoint.Basic.uRITemplate)) {
 				if (msg.getNewValue() != null) {
 					basePart.setURITemplate(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setURITemplate("");
 				}
 			}
-			if (EsbPackage.eINSTANCE.getHTTPEndpoint_HttpMethod().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EsbViewsRepository.HTTPEndpoint.Properties.httpMethod))
+			if (EsbPackage.eINSTANCE.getHTTPEndpoint_HttpMethod().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EsbViewsRepository.HTTPEndpoint.Basic.httpMethod))
 				basePart.setHttpMethod((HttpMethodType)msg.getNewValue());
 			
 			
@@ -744,7 +744,7 @@ public class HTTPEndpointPropertiesEditionComponent extends SinglePartProperties
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
 			try {
-				if (EsbViewsRepository.HTTPEndpoint.Properties.description == event.getAffectedEditor()) {
+				if (EsbViewsRepository.HTTPEndpoint.EndpointDescription.description == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getEsbElement_Description().getEAttributeType(), (String)newValue);
@@ -828,63 +828,63 @@ public class HTTPEndpointPropertiesEditionComponent extends SinglePartProperties
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getAbstractEndPoint_AddressingSeparateListener().getEAttributeType(), newValue);
 				}
-				if (EsbViewsRepository.HTTPEndpoint.Properties.timeOutDuration == event.getAffectedEditor()) {
+				if (EsbViewsRepository.HTTPEndpoint.Timeout.timeOutDuration == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getAbstractEndPoint_TimeOutDuration().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getAbstractEndPoint_TimeOutDuration().getEAttributeType(), newValue);
 				}
-				if (EsbViewsRepository.HTTPEndpoint.Properties.timeOutAction == event.getAffectedEditor()) {
+				if (EsbViewsRepository.HTTPEndpoint.Timeout.timeOutAction == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getAbstractEndPoint_TimeOutAction().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getAbstractEndPoint_TimeOutAction().getEAttributeType(), newValue);
 				}
-				if (EsbViewsRepository.HTTPEndpoint.Properties.retryErrorCodes == event.getAffectedEditor()) {
+				if (EsbViewsRepository.HTTPEndpoint.EndpointTimeoutState.retryErrorCodes == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getAbstractEndPoint_RetryErrorCodes().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getAbstractEndPoint_RetryErrorCodes().getEAttributeType(), newValue);
 				}
-				if (EsbViewsRepository.HTTPEndpoint.Properties.retryCount == event.getAffectedEditor()) {
+				if (EsbViewsRepository.HTTPEndpoint.EndpointTimeoutState.retryCount == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getAbstractEndPoint_RetryCount().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getAbstractEndPoint_RetryCount().getEAttributeType(), newValue);
 				}
-				if (EsbViewsRepository.HTTPEndpoint.Properties.retryDelay == event.getAffectedEditor()) {
+				if (EsbViewsRepository.HTTPEndpoint.EndpointTimeoutState.retryDelay == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getAbstractEndPoint_RetryDelay().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getAbstractEndPoint_RetryDelay().getEAttributeType(), newValue);
 				}
-				if (EsbViewsRepository.HTTPEndpoint.Properties.suspendErrorCodes == event.getAffectedEditor()) {
+				if (EsbViewsRepository.HTTPEndpoint.EndpointSuspendState.suspendErrorCodes == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getAbstractEndPoint_SuspendErrorCodes().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getAbstractEndPoint_SuspendErrorCodes().getEAttributeType(), newValue);
 				}
-				if (EsbViewsRepository.HTTPEndpoint.Properties.suspendInitialDuration == event.getAffectedEditor()) {
+				if (EsbViewsRepository.HTTPEndpoint.EndpointSuspendState.suspendInitialDuration == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getAbstractEndPoint_SuspendInitialDuration().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getAbstractEndPoint_SuspendInitialDuration().getEAttributeType(), newValue);
 				}
-				if (EsbViewsRepository.HTTPEndpoint.Properties.suspendMaximumDuration == event.getAffectedEditor()) {
+				if (EsbViewsRepository.HTTPEndpoint.EndpointSuspendState.suspendMaximumDuration == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getAbstractEndPoint_SuspendMaximumDuration().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getAbstractEndPoint_SuspendMaximumDuration().getEAttributeType(), newValue);
 				}
-				if (EsbViewsRepository.HTTPEndpoint.Properties.suspendProgressionFactor == event.getAffectedEditor()) {
+				if (EsbViewsRepository.HTTPEndpoint.EndpointSuspendState.suspendProgressionFactor == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getAbstractEndPoint_SuspendProgressionFactor().getEAttributeType(), (String)newValue);
@@ -905,28 +905,28 @@ public class HTTPEndpointPropertiesEditionComponent extends SinglePartProperties
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getAbstractEndPoint_Optimize().getEAttributeType(), newValue);
 				}
-				if (EsbViewsRepository.HTTPEndpoint.Properties.statisticsEnabled == event.getAffectedEditor()) {
+				if (EsbViewsRepository.HTTPEndpoint.Basic.statisticsEnabled == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getAbstractEndPoint_StatisticsEnabled().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getAbstractEndPoint_StatisticsEnabled().getEAttributeType(), newValue);
 				}
-				if (EsbViewsRepository.HTTPEndpoint.Properties.traceEnabled == event.getAffectedEditor()) {
+				if (EsbViewsRepository.HTTPEndpoint.Basic.traceEnabled == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getAbstractEndPoint_TraceEnabled().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getAbstractEndPoint_TraceEnabled().getEAttributeType(), newValue);
 				}
-				if (EsbViewsRepository.HTTPEndpoint.Properties.uRITemplate == event.getAffectedEditor()) {
+				if (EsbViewsRepository.HTTPEndpoint.Basic.uRITemplate == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getHTTPEndpoint_URITemplate().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getHTTPEndpoint_URITemplate().getEAttributeType(), newValue);
 				}
-				if (EsbViewsRepository.HTTPEndpoint.Properties.httpMethod == event.getAffectedEditor()) {
+				if (EsbViewsRepository.HTTPEndpoint.Basic.httpMethod == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getHTTPEndpoint_HttpMethod().getEAttributeType(), (String)newValue);

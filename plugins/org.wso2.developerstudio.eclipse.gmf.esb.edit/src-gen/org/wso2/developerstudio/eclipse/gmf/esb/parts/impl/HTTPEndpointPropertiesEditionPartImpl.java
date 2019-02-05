@@ -86,7 +86,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
  */
 public class HTTPEndpointPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, HTTPEndpointPropertiesEditionPart {
 
-	protected Text description;
 	protected Text commentsList;
 	protected Button editCommentsList;
 	protected EList commentsListList;
@@ -94,24 +93,12 @@ public class HTTPEndpointPropertiesEditionPartImpl extends CompositePropertiesEd
 	protected Button anonymous;
 	protected Button inLine;
 	protected Button duplicate;
-	protected ReferencesTable properties;
-	protected List<ViewerFilter> propertiesBusinessFilters = new ArrayList<ViewerFilter>();
-	protected List<ViewerFilter> propertiesFilters = new ArrayList<ViewerFilter>();
 	protected Button reversed;
 	protected Button reliableMessagingEnabled;
 	protected Button securityEnabled;
 	protected Button addressingEnabled;
 	protected EMFComboViewer addressingVersion;
 	protected Button addressingSeparateListener;
-	protected Text timeOutDuration;
-	protected EMFComboViewer timeOutAction;
-	protected Text retryErrorCodes;
-	protected Text retryCount;
-	protected Text retryDelay;
-	protected Text suspendErrorCodes;
-	protected Text suspendInitialDuration;
-	protected Text suspendMaximumDuration;
-	protected Text suspendProgressionFactor;
 	protected EMFComboViewer format;
 	protected EMFComboViewer optimize;
 	protected ReferencesTable templateParameters;
@@ -121,6 +108,19 @@ public class HTTPEndpointPropertiesEditionPartImpl extends CompositePropertiesEd
 	protected Button traceEnabled;
 	protected Text uRITemplate;
 	protected EMFComboViewer httpMethod;
+	protected Text description;
+	protected ReferencesTable properties;
+	protected List<ViewerFilter> propertiesBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> propertiesFilters = new ArrayList<ViewerFilter>();
+	protected Text suspendErrorCodes;
+	protected Text suspendInitialDuration;
+	protected Text suspendMaximumDuration;
+	protected Text suspendProgressionFactor;
+	protected Text retryErrorCodes;
+	protected Text retryCount;
+	protected Text retryDelay;
+	protected Text timeOutDuration;
+	protected EMFComboViewer timeOutAction;
 
 
 
@@ -159,35 +159,49 @@ public class HTTPEndpointPropertiesEditionPartImpl extends CompositePropertiesEd
 	public void createControls(Composite view) { 
 		CompositionSequence hTTPEndpointStep = new BindingCompositionSequence(propertiesEditionComponent);
 		CompositionStep propertiesStep = hTTPEndpointStep.addStep(EsbViewsRepository.HTTPEndpoint.Properties.class);
-		propertiesStep.addStep(EsbViewsRepository.HTTPEndpoint.Properties.description);
 		propertiesStep.addStep(EsbViewsRepository.HTTPEndpoint.Properties.commentsList);
 		propertiesStep.addStep(EsbViewsRepository.HTTPEndpoint.Properties.endPointName);
 		propertiesStep.addStep(EsbViewsRepository.HTTPEndpoint.Properties.anonymous);
 		propertiesStep.addStep(EsbViewsRepository.HTTPEndpoint.Properties.inLine);
 		propertiesStep.addStep(EsbViewsRepository.HTTPEndpoint.Properties.duplicate);
-		propertiesStep.addStep(EsbViewsRepository.HTTPEndpoint.Properties.properties_);
 		propertiesStep.addStep(EsbViewsRepository.HTTPEndpoint.Properties.reversed);
 		propertiesStep.addStep(EsbViewsRepository.HTTPEndpoint.Properties.reliableMessagingEnabled);
 		propertiesStep.addStep(EsbViewsRepository.HTTPEndpoint.Properties.securityEnabled);
 		propertiesStep.addStep(EsbViewsRepository.HTTPEndpoint.Properties.addressingEnabled);
 		propertiesStep.addStep(EsbViewsRepository.HTTPEndpoint.Properties.addressingVersion);
 		propertiesStep.addStep(EsbViewsRepository.HTTPEndpoint.Properties.addressingSeparateListener);
-		propertiesStep.addStep(EsbViewsRepository.HTTPEndpoint.Properties.timeOutDuration);
-		propertiesStep.addStep(EsbViewsRepository.HTTPEndpoint.Properties.timeOutAction);
-		propertiesStep.addStep(EsbViewsRepository.HTTPEndpoint.Properties.retryErrorCodes);
-		propertiesStep.addStep(EsbViewsRepository.HTTPEndpoint.Properties.retryCount);
-		propertiesStep.addStep(EsbViewsRepository.HTTPEndpoint.Properties.retryDelay);
-		propertiesStep.addStep(EsbViewsRepository.HTTPEndpoint.Properties.suspendErrorCodes);
-		propertiesStep.addStep(EsbViewsRepository.HTTPEndpoint.Properties.suspendInitialDuration);
-		propertiesStep.addStep(EsbViewsRepository.HTTPEndpoint.Properties.suspendMaximumDuration);
-		propertiesStep.addStep(EsbViewsRepository.HTTPEndpoint.Properties.suspendProgressionFactor);
 		propertiesStep.addStep(EsbViewsRepository.HTTPEndpoint.Properties.format);
 		propertiesStep.addStep(EsbViewsRepository.HTTPEndpoint.Properties.optimize);
 		propertiesStep.addStep(EsbViewsRepository.HTTPEndpoint.Properties.templateParameters);
-		propertiesStep.addStep(EsbViewsRepository.HTTPEndpoint.Properties.statisticsEnabled);
-		propertiesStep.addStep(EsbViewsRepository.HTTPEndpoint.Properties.traceEnabled);
-		propertiesStep.addStep(EsbViewsRepository.HTTPEndpoint.Properties.uRITemplate);
-		propertiesStep.addStep(EsbViewsRepository.HTTPEndpoint.Properties.httpMethod);
+		
+		CompositionStep basicStep = hTTPEndpointStep.addStep(EsbViewsRepository.HTTPEndpoint.Basic.class);
+		basicStep.addStep(EsbViewsRepository.HTTPEndpoint.Basic.statisticsEnabled);
+		basicStep.addStep(EsbViewsRepository.HTTPEndpoint.Basic.traceEnabled);
+		basicStep.addStep(EsbViewsRepository.HTTPEndpoint.Basic.uRITemplate);
+		basicStep.addStep(EsbViewsRepository.HTTPEndpoint.Basic.httpMethod);
+		
+		hTTPEndpointStep
+			.addStep(EsbViewsRepository.HTTPEndpoint.EndpointDescription.class)
+			.addStep(EsbViewsRepository.HTTPEndpoint.EndpointDescription.description);
+		
+		hTTPEndpointStep
+			.addStep(EsbViewsRepository.HTTPEndpoint.EndpointProperties.class)
+			.addStep(EsbViewsRepository.HTTPEndpoint.EndpointProperties.properties);
+		
+		CompositionStep endpointSuspendStateStep = hTTPEndpointStep.addStep(EsbViewsRepository.HTTPEndpoint.EndpointSuspendState.class);
+		endpointSuspendStateStep.addStep(EsbViewsRepository.HTTPEndpoint.EndpointSuspendState.suspendErrorCodes);
+		endpointSuspendStateStep.addStep(EsbViewsRepository.HTTPEndpoint.EndpointSuspendState.suspendInitialDuration);
+		endpointSuspendStateStep.addStep(EsbViewsRepository.HTTPEndpoint.EndpointSuspendState.suspendMaximumDuration);
+		endpointSuspendStateStep.addStep(EsbViewsRepository.HTTPEndpoint.EndpointSuspendState.suspendProgressionFactor);
+		
+		CompositionStep endpointTimeoutStateStep = hTTPEndpointStep.addStep(EsbViewsRepository.HTTPEndpoint.EndpointTimeoutState.class);
+		endpointTimeoutStateStep.addStep(EsbViewsRepository.HTTPEndpoint.EndpointTimeoutState.retryErrorCodes);
+		endpointTimeoutStateStep.addStep(EsbViewsRepository.HTTPEndpoint.EndpointTimeoutState.retryCount);
+		endpointTimeoutStateStep.addStep(EsbViewsRepository.HTTPEndpoint.EndpointTimeoutState.retryDelay);
+		
+		CompositionStep timeoutStep = hTTPEndpointStep.addStep(EsbViewsRepository.HTTPEndpoint.Timeout.class);
+		timeoutStep.addStep(EsbViewsRepository.HTTPEndpoint.Timeout.timeOutDuration);
+		timeoutStep.addStep(EsbViewsRepository.HTTPEndpoint.Timeout.timeOutAction);
 		
 		
 		composer = new PartComposer(hTTPEndpointStep) {
@@ -196,9 +210,6 @@ public class HTTPEndpointPropertiesEditionPartImpl extends CompositePropertiesEd
 			public Composite addToPart(Composite parent, Object key) {
 				if (key == EsbViewsRepository.HTTPEndpoint.Properties.class) {
 					return createPropertiesGroup(parent);
-				}
-				if (key == EsbViewsRepository.HTTPEndpoint.Properties.description) {
-					return createDescriptionText(parent);
 				}
 				if (key == EsbViewsRepository.HTTPEndpoint.Properties.commentsList) {
 					return createCommentsListMultiValuedEditor(parent);
@@ -214,9 +225,6 @@ public class HTTPEndpointPropertiesEditionPartImpl extends CompositePropertiesEd
 				}
 				if (key == EsbViewsRepository.HTTPEndpoint.Properties.duplicate) {
 					return createDuplicateCheckbox(parent);
-				}
-				if (key == EsbViewsRepository.HTTPEndpoint.Properties.properties_) {
-					return createPropertiesAdvancedTableComposition(parent);
 				}
 				if (key == EsbViewsRepository.HTTPEndpoint.Properties.reversed) {
 					return createReversedCheckbox(parent);
@@ -236,33 +244,6 @@ public class HTTPEndpointPropertiesEditionPartImpl extends CompositePropertiesEd
 				if (key == EsbViewsRepository.HTTPEndpoint.Properties.addressingSeparateListener) {
 					return createAddressingSeparateListenerCheckbox(parent);
 				}
-				if (key == EsbViewsRepository.HTTPEndpoint.Properties.timeOutDuration) {
-					return createTimeOutDurationText(parent);
-				}
-				if (key == EsbViewsRepository.HTTPEndpoint.Properties.timeOutAction) {
-					return createTimeOutActionEMFComboViewer(parent);
-				}
-				if (key == EsbViewsRepository.HTTPEndpoint.Properties.retryErrorCodes) {
-					return createRetryErrorCodesText(parent);
-				}
-				if (key == EsbViewsRepository.HTTPEndpoint.Properties.retryCount) {
-					return createRetryCountText(parent);
-				}
-				if (key == EsbViewsRepository.HTTPEndpoint.Properties.retryDelay) {
-					return createRetryDelayText(parent);
-				}
-				if (key == EsbViewsRepository.HTTPEndpoint.Properties.suspendErrorCodes) {
-					return createSuspendErrorCodesText(parent);
-				}
-				if (key == EsbViewsRepository.HTTPEndpoint.Properties.suspendInitialDuration) {
-					return createSuspendInitialDurationText(parent);
-				}
-				if (key == EsbViewsRepository.HTTPEndpoint.Properties.suspendMaximumDuration) {
-					return createSuspendMaximumDurationText(parent);
-				}
-				if (key == EsbViewsRepository.HTTPEndpoint.Properties.suspendProgressionFactor) {
-					return createSuspendProgressionFactorText(parent);
-				}
 				if (key == EsbViewsRepository.HTTPEndpoint.Properties.format) {
 					return createFormatEMFComboViewer(parent);
 				}
@@ -272,17 +253,68 @@ public class HTTPEndpointPropertiesEditionPartImpl extends CompositePropertiesEd
 				if (key == EsbViewsRepository.HTTPEndpoint.Properties.templateParameters) {
 					return createTemplateParametersAdvancedTableComposition(parent);
 				}
-				if (key == EsbViewsRepository.HTTPEndpoint.Properties.statisticsEnabled) {
+				if (key == EsbViewsRepository.HTTPEndpoint.Basic.class) {
+					return createBasicGroup(parent);
+				}
+				if (key == EsbViewsRepository.HTTPEndpoint.Basic.statisticsEnabled) {
 					return createStatisticsEnabledCheckbox(parent);
 				}
-				if (key == EsbViewsRepository.HTTPEndpoint.Properties.traceEnabled) {
+				if (key == EsbViewsRepository.HTTPEndpoint.Basic.traceEnabled) {
 					return createTraceEnabledCheckbox(parent);
 				}
-				if (key == EsbViewsRepository.HTTPEndpoint.Properties.uRITemplate) {
+				if (key == EsbViewsRepository.HTTPEndpoint.Basic.uRITemplate) {
 					return createURITemplateText(parent);
 				}
-				if (key == EsbViewsRepository.HTTPEndpoint.Properties.httpMethod) {
+				if (key == EsbViewsRepository.HTTPEndpoint.Basic.httpMethod) {
 					return createHttpMethodEMFComboViewer(parent);
+				}
+				if (key == EsbViewsRepository.HTTPEndpoint.EndpointDescription.class) {
+					return createEndpointDescriptionGroup(parent);
+				}
+				if (key == EsbViewsRepository.HTTPEndpoint.EndpointDescription.description) {
+					return createDescriptionText(parent);
+				}
+				if (key == EsbViewsRepository.HTTPEndpoint.EndpointProperties.class) {
+					return createEndpointPropertiesGroup(parent);
+				}
+				if (key == EsbViewsRepository.HTTPEndpoint.EndpointProperties.properties) {
+					return createPropertiesAdvancedTableComposition(parent);
+				}
+				if (key == EsbViewsRepository.HTTPEndpoint.EndpointSuspendState.class) {
+					return createEndpointSuspendStateGroup(parent);
+				}
+				if (key == EsbViewsRepository.HTTPEndpoint.EndpointSuspendState.suspendErrorCodes) {
+					return createSuspendErrorCodesText(parent);
+				}
+				if (key == EsbViewsRepository.HTTPEndpoint.EndpointSuspendState.suspendInitialDuration) {
+					return createSuspendInitialDurationText(parent);
+				}
+				if (key == EsbViewsRepository.HTTPEndpoint.EndpointSuspendState.suspendMaximumDuration) {
+					return createSuspendMaximumDurationText(parent);
+				}
+				if (key == EsbViewsRepository.HTTPEndpoint.EndpointSuspendState.suspendProgressionFactor) {
+					return createSuspendProgressionFactorText(parent);
+				}
+				if (key == EsbViewsRepository.HTTPEndpoint.EndpointTimeoutState.class) {
+					return createEndpointTimeoutStateGroup(parent);
+				}
+				if (key == EsbViewsRepository.HTTPEndpoint.EndpointTimeoutState.retryErrorCodes) {
+					return createRetryErrorCodesText(parent);
+				}
+				if (key == EsbViewsRepository.HTTPEndpoint.EndpointTimeoutState.retryCount) {
+					return createRetryCountText(parent);
+				}
+				if (key == EsbViewsRepository.HTTPEndpoint.EndpointTimeoutState.retryDelay) {
+					return createRetryDelayText(parent);
+				}
+				if (key == EsbViewsRepository.HTTPEndpoint.Timeout.class) {
+					return createTimeoutGroup(parent);
+				}
+				if (key == EsbViewsRepository.HTTPEndpoint.Timeout.timeOutDuration) {
+					return createTimeOutDurationText(parent);
+				}
+				if (key == EsbViewsRepository.HTTPEndpoint.Timeout.timeOutAction) {
+					return createTimeOutActionEMFComboViewer(parent);
 				}
 				return parent;
 			}
@@ -303,55 +335,6 @@ public class HTTPEndpointPropertiesEditionPartImpl extends CompositePropertiesEd
 		propertiesGroupLayout.numColumns = 3;
 		propertiesGroup.setLayout(propertiesGroupLayout);
 		return propertiesGroup;
-	}
-
-	
-	protected Composite createDescriptionText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.HTTPEndpoint.Properties.description, EsbMessages.HTTPEndpointPropertiesEditionPart_DescriptionLabel);
-		description = SWTUtils.createScrollableText(parent, SWT.BORDER);
-		GridData descriptionData = new GridData(GridData.FILL_HORIZONTAL);
-		description.setLayoutData(descriptionData);
-		description.addFocusListener(new FocusAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.HTTPEndpoint.Properties.description, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, description.getText()));
-			}
-
-		});
-		description.addKeyListener(new KeyAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.HTTPEndpoint.Properties.description, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, description.getText()));
-				}
-			}
-
-		});
-		EditingUtils.setID(description, EsbViewsRepository.HTTPEndpoint.Properties.description);
-		EditingUtils.setEEFtype(description, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.HTTPEndpoint.Properties.description, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		// Start of user code for createDescriptionText
-
-		// End of user code
-		return parent;
 	}
 
 	protected Composite createCommentsListMultiValuedEditor(Composite parent) {
@@ -531,57 +514,6 @@ public class HTTPEndpointPropertiesEditionPartImpl extends CompositePropertiesEd
 		EditingUtils.setEEFtype(duplicate, "eef::Checkbox"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.HTTPEndpoint.Properties.duplicate, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createDuplicateCheckbox
-
-		// End of user code
-		return parent;
-	}
-
-	/**
-	 * @param container
-	 * 
-	 */
-	protected Composite createPropertiesAdvancedTableComposition(Composite parent) {
-		this.properties = new ReferencesTable(getDescription(EsbViewsRepository.HTTPEndpoint.Properties.properties_, EsbMessages.HTTPEndpointPropertiesEditionPart_PropertiesLabel), new ReferencesTableListener() {
-			public void handleAdd() { 
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.HTTPEndpoint.Properties.properties_, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
-				properties.refresh();
-			}
-			public void handleEdit(EObject element) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.HTTPEndpoint.Properties.properties_, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
-				properties.refresh();
-			}
-			public void handleMove(EObject element, int oldIndex, int newIndex) { 
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.HTTPEndpoint.Properties.properties_, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
-				properties.refresh();
-			}
-			public void handleRemove(EObject element) { 
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.HTTPEndpoint.Properties.properties_, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
-				properties.refresh();
-			}
-			public void navigateTo(EObject element) { }
-		});
-		for (ViewerFilter filter : this.propertiesFilters) {
-			this.properties.addFilter(filter);
-		}
-		this.properties.setHelpText(propertiesEditionComponent.getHelpContent(EsbViewsRepository.HTTPEndpoint.Properties.properties_, EsbViewsRepository.SWT_KIND));
-		this.properties.createControls(parent);
-		this.properties.addSelectionListener(new SelectionAdapter() {
-			
-			public void widgetSelected(SelectionEvent e) {
-				if (e.item != null && e.item.getData() instanceof EObject) {
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.HTTPEndpoint.Properties.properties_, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
-				}
-			}
-			
-		});
-		GridData propertiesData = new GridData(GridData.FILL_HORIZONTAL);
-		propertiesData.horizontalSpan = 3;
-		this.properties.setLayoutData(propertiesData);
-		this.properties.setLowerBound(0);
-		this.properties.setUpperBound(-1);
-		properties.setID(EsbViewsRepository.HTTPEndpoint.Properties.properties_);
-		properties.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
-		// Start of user code for createPropertiesAdvancedTableComposition
 
 		// End of user code
 		return parent;
@@ -768,428 +700,6 @@ public class HTTPEndpointPropertiesEditionPartImpl extends CompositePropertiesEd
 	}
 
 	
-	protected Composite createTimeOutDurationText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.HTTPEndpoint.Properties.timeOutDuration, EsbMessages.HTTPEndpointPropertiesEditionPart_TimeOutDurationLabel);
-		timeOutDuration = SWTUtils.createScrollableText(parent, SWT.BORDER);
-		GridData timeOutDurationData = new GridData(GridData.FILL_HORIZONTAL);
-		timeOutDuration.setLayoutData(timeOutDurationData);
-		timeOutDuration.addFocusListener(new FocusAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.HTTPEndpoint.Properties.timeOutDuration, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, timeOutDuration.getText()));
-			}
-
-		});
-		timeOutDuration.addKeyListener(new KeyAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.HTTPEndpoint.Properties.timeOutDuration, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, timeOutDuration.getText()));
-				}
-			}
-
-		});
-		EditingUtils.setID(timeOutDuration, EsbViewsRepository.HTTPEndpoint.Properties.timeOutDuration);
-		EditingUtils.setEEFtype(timeOutDuration, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.HTTPEndpoint.Properties.timeOutDuration, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		// Start of user code for createTimeOutDurationText
-
-		// End of user code
-		return parent;
-	}
-
-	
-	protected Composite createTimeOutActionEMFComboViewer(Composite parent) {
-		createDescription(parent, EsbViewsRepository.HTTPEndpoint.Properties.timeOutAction, EsbMessages.HTTPEndpointPropertiesEditionPart_TimeOutActionLabel);
-		timeOutAction = new EMFComboViewer(parent);
-		timeOutAction.setContentProvider(new ArrayContentProvider());
-		timeOutAction.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
-		GridData timeOutActionData = new GridData(GridData.FILL_HORIZONTAL);
-		timeOutAction.getCombo().setLayoutData(timeOutActionData);
-		timeOutAction.addSelectionChangedListener(new ISelectionChangedListener() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-			 * 	
-			 */
-			public void selectionChanged(SelectionChangedEvent event) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.HTTPEndpoint.Properties.timeOutAction, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getTimeOutAction()));
-			}
-
-		});
-		timeOutAction.setID(EsbViewsRepository.HTTPEndpoint.Properties.timeOutAction);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.HTTPEndpoint.Properties.timeOutAction, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		// Start of user code for createTimeOutActionEMFComboViewer
-
-		// End of user code
-		return parent;
-	}
-
-	
-	protected Composite createRetryErrorCodesText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.HTTPEndpoint.Properties.retryErrorCodes, EsbMessages.HTTPEndpointPropertiesEditionPart_RetryErrorCodesLabel);
-		retryErrorCodes = SWTUtils.createScrollableText(parent, SWT.BORDER);
-		GridData retryErrorCodesData = new GridData(GridData.FILL_HORIZONTAL);
-		retryErrorCodes.setLayoutData(retryErrorCodesData);
-		retryErrorCodes.addFocusListener(new FocusAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.HTTPEndpoint.Properties.retryErrorCodes, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, retryErrorCodes.getText()));
-			}
-
-		});
-		retryErrorCodes.addKeyListener(new KeyAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.HTTPEndpoint.Properties.retryErrorCodes, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, retryErrorCodes.getText()));
-				}
-			}
-
-		});
-		EditingUtils.setID(retryErrorCodes, EsbViewsRepository.HTTPEndpoint.Properties.retryErrorCodes);
-		EditingUtils.setEEFtype(retryErrorCodes, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.HTTPEndpoint.Properties.retryErrorCodes, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		// Start of user code for createRetryErrorCodesText
-
-		// End of user code
-		return parent;
-	}
-
-	
-	protected Composite createRetryCountText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.HTTPEndpoint.Properties.retryCount, EsbMessages.HTTPEndpointPropertiesEditionPart_RetryCountLabel);
-		retryCount = SWTUtils.createScrollableText(parent, SWT.BORDER);
-		GridData retryCountData = new GridData(GridData.FILL_HORIZONTAL);
-		retryCount.setLayoutData(retryCountData);
-		retryCount.addFocusListener(new FocusAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.HTTPEndpoint.Properties.retryCount, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, retryCount.getText()));
-			}
-
-		});
-		retryCount.addKeyListener(new KeyAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.HTTPEndpoint.Properties.retryCount, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, retryCount.getText()));
-				}
-			}
-
-		});
-		EditingUtils.setID(retryCount, EsbViewsRepository.HTTPEndpoint.Properties.retryCount);
-		EditingUtils.setEEFtype(retryCount, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.HTTPEndpoint.Properties.retryCount, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		// Start of user code for createRetryCountText
-
-		// End of user code
-		return parent;
-	}
-
-	
-	protected Composite createRetryDelayText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.HTTPEndpoint.Properties.retryDelay, EsbMessages.HTTPEndpointPropertiesEditionPart_RetryDelayLabel);
-		retryDelay = SWTUtils.createScrollableText(parent, SWT.BORDER);
-		GridData retryDelayData = new GridData(GridData.FILL_HORIZONTAL);
-		retryDelay.setLayoutData(retryDelayData);
-		retryDelay.addFocusListener(new FocusAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.HTTPEndpoint.Properties.retryDelay, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, retryDelay.getText()));
-			}
-
-		});
-		retryDelay.addKeyListener(new KeyAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.HTTPEndpoint.Properties.retryDelay, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, retryDelay.getText()));
-				}
-			}
-
-		});
-		EditingUtils.setID(retryDelay, EsbViewsRepository.HTTPEndpoint.Properties.retryDelay);
-		EditingUtils.setEEFtype(retryDelay, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.HTTPEndpoint.Properties.retryDelay, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		// Start of user code for createRetryDelayText
-
-		// End of user code
-		return parent;
-	}
-
-	
-	protected Composite createSuspendErrorCodesText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.HTTPEndpoint.Properties.suspendErrorCodes, EsbMessages.HTTPEndpointPropertiesEditionPart_SuspendErrorCodesLabel);
-		suspendErrorCodes = SWTUtils.createScrollableText(parent, SWT.BORDER);
-		GridData suspendErrorCodesData = new GridData(GridData.FILL_HORIZONTAL);
-		suspendErrorCodes.setLayoutData(suspendErrorCodesData);
-		suspendErrorCodes.addFocusListener(new FocusAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.HTTPEndpoint.Properties.suspendErrorCodes, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, suspendErrorCodes.getText()));
-			}
-
-		});
-		suspendErrorCodes.addKeyListener(new KeyAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.HTTPEndpoint.Properties.suspendErrorCodes, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, suspendErrorCodes.getText()));
-				}
-			}
-
-		});
-		EditingUtils.setID(suspendErrorCodes, EsbViewsRepository.HTTPEndpoint.Properties.suspendErrorCodes);
-		EditingUtils.setEEFtype(suspendErrorCodes, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.HTTPEndpoint.Properties.suspendErrorCodes, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		// Start of user code for createSuspendErrorCodesText
-
-		// End of user code
-		return parent;
-	}
-
-	
-	protected Composite createSuspendInitialDurationText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.HTTPEndpoint.Properties.suspendInitialDuration, EsbMessages.HTTPEndpointPropertiesEditionPart_SuspendInitialDurationLabel);
-		suspendInitialDuration = SWTUtils.createScrollableText(parent, SWT.BORDER);
-		GridData suspendInitialDurationData = new GridData(GridData.FILL_HORIZONTAL);
-		suspendInitialDuration.setLayoutData(suspendInitialDurationData);
-		suspendInitialDuration.addFocusListener(new FocusAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.HTTPEndpoint.Properties.suspendInitialDuration, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, suspendInitialDuration.getText()));
-			}
-
-		});
-		suspendInitialDuration.addKeyListener(new KeyAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.HTTPEndpoint.Properties.suspendInitialDuration, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, suspendInitialDuration.getText()));
-				}
-			}
-
-		});
-		EditingUtils.setID(suspendInitialDuration, EsbViewsRepository.HTTPEndpoint.Properties.suspendInitialDuration);
-		EditingUtils.setEEFtype(suspendInitialDuration, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.HTTPEndpoint.Properties.suspendInitialDuration, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		// Start of user code for createSuspendInitialDurationText
-
-		// End of user code
-		return parent;
-	}
-
-	
-	protected Composite createSuspendMaximumDurationText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.HTTPEndpoint.Properties.suspendMaximumDuration, EsbMessages.HTTPEndpointPropertiesEditionPart_SuspendMaximumDurationLabel);
-		suspendMaximumDuration = SWTUtils.createScrollableText(parent, SWT.BORDER);
-		GridData suspendMaximumDurationData = new GridData(GridData.FILL_HORIZONTAL);
-		suspendMaximumDuration.setLayoutData(suspendMaximumDurationData);
-		suspendMaximumDuration.addFocusListener(new FocusAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.HTTPEndpoint.Properties.suspendMaximumDuration, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, suspendMaximumDuration.getText()));
-			}
-
-		});
-		suspendMaximumDuration.addKeyListener(new KeyAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.HTTPEndpoint.Properties.suspendMaximumDuration, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, suspendMaximumDuration.getText()));
-				}
-			}
-
-		});
-		EditingUtils.setID(suspendMaximumDuration, EsbViewsRepository.HTTPEndpoint.Properties.suspendMaximumDuration);
-		EditingUtils.setEEFtype(suspendMaximumDuration, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.HTTPEndpoint.Properties.suspendMaximumDuration, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		// Start of user code for createSuspendMaximumDurationText
-
-		// End of user code
-		return parent;
-	}
-
-	
-	protected Composite createSuspendProgressionFactorText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.HTTPEndpoint.Properties.suspendProgressionFactor, EsbMessages.HTTPEndpointPropertiesEditionPart_SuspendProgressionFactorLabel);
-		suspendProgressionFactor = SWTUtils.createScrollableText(parent, SWT.BORDER);
-		GridData suspendProgressionFactorData = new GridData(GridData.FILL_HORIZONTAL);
-		suspendProgressionFactor.setLayoutData(suspendProgressionFactorData);
-		suspendProgressionFactor.addFocusListener(new FocusAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.HTTPEndpoint.Properties.suspendProgressionFactor, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, suspendProgressionFactor.getText()));
-			}
-
-		});
-		suspendProgressionFactor.addKeyListener(new KeyAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.HTTPEndpoint.Properties.suspendProgressionFactor, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, suspendProgressionFactor.getText()));
-				}
-			}
-
-		});
-		EditingUtils.setID(suspendProgressionFactor, EsbViewsRepository.HTTPEndpoint.Properties.suspendProgressionFactor);
-		EditingUtils.setEEFtype(suspendProgressionFactor, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.HTTPEndpoint.Properties.suspendProgressionFactor, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		// Start of user code for createSuspendProgressionFactorText
-
-		// End of user code
-		return parent;
-	}
-
-	
 	protected Composite createFormatEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.HTTPEndpoint.Properties.format, EsbMessages.HTTPEndpointPropertiesEditionPart_FormatLabel);
 		format = new EMFComboViewer(parent);
@@ -1300,10 +810,25 @@ public class HTTPEndpointPropertiesEditionPartImpl extends CompositePropertiesEd
 		return parent;
 	}
 
+	/**
+	 * 
+	 */
+	protected Composite createBasicGroup(Composite parent) {
+		Group basicGroup = new Group(parent, SWT.NONE);
+		basicGroup.setText(EsbMessages.HTTPEndpointPropertiesEditionPart_BasicGroupLabel);
+		GridData basicGroupData = new GridData(GridData.FILL_HORIZONTAL);
+		basicGroupData.horizontalSpan = 3;
+		basicGroup.setLayoutData(basicGroupData);
+		GridLayout basicGroupLayout = new GridLayout();
+		basicGroupLayout.numColumns = 3;
+		basicGroup.setLayout(basicGroupLayout);
+		return basicGroup;
+	}
+
 	
 	protected Composite createStatisticsEnabledCheckbox(Composite parent) {
 		statisticsEnabled = new Button(parent, SWT.CHECK);
-		statisticsEnabled.setText(getDescription(EsbViewsRepository.HTTPEndpoint.Properties.statisticsEnabled, EsbMessages.HTTPEndpointPropertiesEditionPart_StatisticsEnabledLabel));
+		statisticsEnabled.setText(getDescription(EsbViewsRepository.HTTPEndpoint.Basic.statisticsEnabled, EsbMessages.HTTPEndpointPropertiesEditionPart_StatisticsEnabledLabel));
 		statisticsEnabled.addSelectionListener(new SelectionAdapter() {
 
 			/**
@@ -1314,16 +839,16 @@ public class HTTPEndpointPropertiesEditionPartImpl extends CompositePropertiesEd
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.HTTPEndpoint.Properties.statisticsEnabled, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(statisticsEnabled.getSelection())));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.HTTPEndpoint.Basic.statisticsEnabled, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(statisticsEnabled.getSelection())));
 			}
 
 		});
 		GridData statisticsEnabledData = new GridData(GridData.FILL_HORIZONTAL);
 		statisticsEnabledData.horizontalSpan = 2;
 		statisticsEnabled.setLayoutData(statisticsEnabledData);
-		EditingUtils.setID(statisticsEnabled, EsbViewsRepository.HTTPEndpoint.Properties.statisticsEnabled);
+		EditingUtils.setID(statisticsEnabled, EsbViewsRepository.HTTPEndpoint.Basic.statisticsEnabled);
 		EditingUtils.setEEFtype(statisticsEnabled, "eef::Checkbox"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.HTTPEndpoint.Properties.statisticsEnabled, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.HTTPEndpoint.Basic.statisticsEnabled, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createStatisticsEnabledCheckbox
 
 		// End of user code
@@ -1333,7 +858,7 @@ public class HTTPEndpointPropertiesEditionPartImpl extends CompositePropertiesEd
 	
 	protected Composite createTraceEnabledCheckbox(Composite parent) {
 		traceEnabled = new Button(parent, SWT.CHECK);
-		traceEnabled.setText(getDescription(EsbViewsRepository.HTTPEndpoint.Properties.traceEnabled, EsbMessages.HTTPEndpointPropertiesEditionPart_TraceEnabledLabel));
+		traceEnabled.setText(getDescription(EsbViewsRepository.HTTPEndpoint.Basic.traceEnabled, EsbMessages.HTTPEndpointPropertiesEditionPart_TraceEnabledLabel));
 		traceEnabled.addSelectionListener(new SelectionAdapter() {
 
 			/**
@@ -1344,16 +869,16 @@ public class HTTPEndpointPropertiesEditionPartImpl extends CompositePropertiesEd
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.HTTPEndpoint.Properties.traceEnabled, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(traceEnabled.getSelection())));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.HTTPEndpoint.Basic.traceEnabled, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(traceEnabled.getSelection())));
 			}
 
 		});
 		GridData traceEnabledData = new GridData(GridData.FILL_HORIZONTAL);
 		traceEnabledData.horizontalSpan = 2;
 		traceEnabled.setLayoutData(traceEnabledData);
-		EditingUtils.setID(traceEnabled, EsbViewsRepository.HTTPEndpoint.Properties.traceEnabled);
+		EditingUtils.setID(traceEnabled, EsbViewsRepository.HTTPEndpoint.Basic.traceEnabled);
 		EditingUtils.setEEFtype(traceEnabled, "eef::Checkbox"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.HTTPEndpoint.Properties.traceEnabled, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.HTTPEndpoint.Basic.traceEnabled, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createTraceEnabledCheckbox
 
 		// End of user code
@@ -1362,7 +887,7 @@ public class HTTPEndpointPropertiesEditionPartImpl extends CompositePropertiesEd
 
 	
 	protected Composite createURITemplateText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.HTTPEndpoint.Properties.uRITemplate, EsbMessages.HTTPEndpointPropertiesEditionPart_URITemplateLabel);
+		createDescription(parent, EsbViewsRepository.HTTPEndpoint.Basic.uRITemplate, EsbMessages.HTTPEndpointPropertiesEditionPart_URITemplateLabel);
 		uRITemplate = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData uRITemplateData = new GridData(GridData.FILL_HORIZONTAL);
 		uRITemplate.setLayoutData(uRITemplateData);
@@ -1378,7 +903,7 @@ public class HTTPEndpointPropertiesEditionPartImpl extends CompositePropertiesEd
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.HTTPEndpoint.Properties.uRITemplate, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, uRITemplate.getText()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.HTTPEndpoint.Basic.uRITemplate, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, uRITemplate.getText()));
 			}
 
 		});
@@ -1395,14 +920,14 @@ public class HTTPEndpointPropertiesEditionPartImpl extends CompositePropertiesEd
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
 					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.HTTPEndpoint.Properties.uRITemplate, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, uRITemplate.getText()));
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.HTTPEndpoint.Basic.uRITemplate, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, uRITemplate.getText()));
 				}
 			}
 
 		});
-		EditingUtils.setID(uRITemplate, EsbViewsRepository.HTTPEndpoint.Properties.uRITemplate);
+		EditingUtils.setID(uRITemplate, EsbViewsRepository.HTTPEndpoint.Basic.uRITemplate);
 		EditingUtils.setEEFtype(uRITemplate, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.HTTPEndpoint.Properties.uRITemplate, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.HTTPEndpoint.Basic.uRITemplate, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createURITemplateText
 
 		// End of user code
@@ -1411,7 +936,7 @@ public class HTTPEndpointPropertiesEditionPartImpl extends CompositePropertiesEd
 
 	
 	protected Composite createHttpMethodEMFComboViewer(Composite parent) {
-		createDescription(parent, EsbViewsRepository.HTTPEndpoint.Properties.httpMethod, EsbMessages.HTTPEndpointPropertiesEditionPart_HttpMethodLabel);
+		createDescription(parent, EsbViewsRepository.HTTPEndpoint.Basic.httpMethod, EsbMessages.HTTPEndpointPropertiesEditionPart_HttpMethodLabel);
 		httpMethod = new EMFComboViewer(parent);
 		httpMethod.setContentProvider(new ArrayContentProvider());
 		httpMethod.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -1427,13 +952,610 @@ public class HTTPEndpointPropertiesEditionPartImpl extends CompositePropertiesEd
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.HTTPEndpoint.Properties.httpMethod, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getHttpMethod()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.HTTPEndpoint.Basic.httpMethod, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getHttpMethod()));
 			}
 
 		});
-		httpMethod.setID(EsbViewsRepository.HTTPEndpoint.Properties.httpMethod);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.HTTPEndpoint.Properties.httpMethod, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		httpMethod.setID(EsbViewsRepository.HTTPEndpoint.Basic.httpMethod);
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.HTTPEndpoint.Basic.httpMethod, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createHttpMethodEMFComboViewer
+
+		// End of user code
+		return parent;
+	}
+
+	/**
+	 * 
+	 */
+	protected Composite createEndpointDescriptionGroup(Composite parent) {
+		Group endpointDescriptionGroup = new Group(parent, SWT.NONE);
+		endpointDescriptionGroup.setText(EsbMessages.HTTPEndpointPropertiesEditionPart_EndpointDescriptionGroupLabel);
+		GridData endpointDescriptionGroupData = new GridData(GridData.FILL_HORIZONTAL);
+		endpointDescriptionGroupData.horizontalSpan = 3;
+		endpointDescriptionGroup.setLayoutData(endpointDescriptionGroupData);
+		GridLayout endpointDescriptionGroupLayout = new GridLayout();
+		endpointDescriptionGroupLayout.numColumns = 3;
+		endpointDescriptionGroup.setLayout(endpointDescriptionGroupLayout);
+		return endpointDescriptionGroup;
+	}
+
+	
+	protected Composite createDescriptionText(Composite parent) {
+		createDescription(parent, EsbViewsRepository.HTTPEndpoint.EndpointDescription.description, EsbMessages.HTTPEndpointPropertiesEditionPart_DescriptionLabel);
+		description = SWTUtils.createScrollableText(parent, SWT.BORDER);
+		GridData descriptionData = new GridData(GridData.FILL_HORIZONTAL);
+		description.setLayoutData(descriptionData);
+		description.addFocusListener(new FocusAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void focusLost(FocusEvent e) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.HTTPEndpoint.EndpointDescription.description, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, description.getText()));
+			}
+
+		});
+		description.addKeyListener(new KeyAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void keyPressed(KeyEvent e) {
+				if (e.character == SWT.CR) {
+					if (propertiesEditionComponent != null)
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.HTTPEndpoint.EndpointDescription.description, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, description.getText()));
+				}
+			}
+
+		});
+		EditingUtils.setID(description, EsbViewsRepository.HTTPEndpoint.EndpointDescription.description);
+		EditingUtils.setEEFtype(description, "eef::Text"); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.HTTPEndpoint.EndpointDescription.description, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createDescriptionText
+
+		// End of user code
+		return parent;
+	}
+
+	/**
+	 * 
+	 */
+	protected Composite createEndpointPropertiesGroup(Composite parent) {
+		Group endpointPropertiesGroup = new Group(parent, SWT.NONE);
+		endpointPropertiesGroup.setText(EsbMessages.HTTPEndpointPropertiesEditionPart_EndpointPropertiesGroupLabel);
+		GridData endpointPropertiesGroupData = new GridData(GridData.FILL_HORIZONTAL);
+		endpointPropertiesGroupData.horizontalSpan = 3;
+		endpointPropertiesGroup.setLayoutData(endpointPropertiesGroupData);
+		GridLayout endpointPropertiesGroupLayout = new GridLayout();
+		endpointPropertiesGroupLayout.numColumns = 3;
+		endpointPropertiesGroup.setLayout(endpointPropertiesGroupLayout);
+		return endpointPropertiesGroup;
+	}
+
+	/**
+	 * @param container
+	 * 
+	 */
+	protected Composite createPropertiesAdvancedTableComposition(Composite parent) {
+		this.properties = new ReferencesTable(getDescription(EsbViewsRepository.HTTPEndpoint.EndpointProperties.properties, EsbMessages.HTTPEndpointPropertiesEditionPart_PropertiesLabel), new ReferencesTableListener() {
+			public void handleAdd() { 
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.HTTPEndpoint.EndpointProperties.properties, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
+				properties.refresh();
+			}
+			public void handleEdit(EObject element) {
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.HTTPEndpoint.EndpointProperties.properties, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
+				properties.refresh();
+			}
+			public void handleMove(EObject element, int oldIndex, int newIndex) { 
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.HTTPEndpoint.EndpointProperties.properties, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
+				properties.refresh();
+			}
+			public void handleRemove(EObject element) { 
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.HTTPEndpoint.EndpointProperties.properties, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+				properties.refresh();
+			}
+			public void navigateTo(EObject element) { }
+		});
+		for (ViewerFilter filter : this.propertiesFilters) {
+			this.properties.addFilter(filter);
+		}
+		this.properties.setHelpText(propertiesEditionComponent.getHelpContent(EsbViewsRepository.HTTPEndpoint.EndpointProperties.properties, EsbViewsRepository.SWT_KIND));
+		this.properties.createControls(parent);
+		this.properties.addSelectionListener(new SelectionAdapter() {
+			
+			public void widgetSelected(SelectionEvent e) {
+				if (e.item != null && e.item.getData() instanceof EObject) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.HTTPEndpoint.EndpointProperties.properties, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+				}
+			}
+			
+		});
+		GridData propertiesData = new GridData(GridData.FILL_HORIZONTAL);
+		propertiesData.horizontalSpan = 3;
+		this.properties.setLayoutData(propertiesData);
+		this.properties.setLowerBound(0);
+		this.properties.setUpperBound(-1);
+		properties.setID(EsbViewsRepository.HTTPEndpoint.EndpointProperties.properties);
+		properties.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
+		// Start of user code for createPropertiesAdvancedTableComposition
+
+		// End of user code
+		return parent;
+	}
+
+	/**
+	 * 
+	 */
+	protected Composite createEndpointSuspendStateGroup(Composite parent) {
+		Group endpointSuspendStateGroup = new Group(parent, SWT.NONE);
+		endpointSuspendStateGroup.setText(EsbMessages.HTTPEndpointPropertiesEditionPart_EndpointSuspendStateGroupLabel);
+		GridData endpointSuspendStateGroupData = new GridData(GridData.FILL_HORIZONTAL);
+		endpointSuspendStateGroupData.horizontalSpan = 3;
+		endpointSuspendStateGroup.setLayoutData(endpointSuspendStateGroupData);
+		GridLayout endpointSuspendStateGroupLayout = new GridLayout();
+		endpointSuspendStateGroupLayout.numColumns = 3;
+		endpointSuspendStateGroup.setLayout(endpointSuspendStateGroupLayout);
+		return endpointSuspendStateGroup;
+	}
+
+	
+	protected Composite createSuspendErrorCodesText(Composite parent) {
+		createDescription(parent, EsbViewsRepository.HTTPEndpoint.EndpointSuspendState.suspendErrorCodes, EsbMessages.HTTPEndpointPropertiesEditionPart_SuspendErrorCodesLabel);
+		suspendErrorCodes = SWTUtils.createScrollableText(parent, SWT.BORDER);
+		GridData suspendErrorCodesData = new GridData(GridData.FILL_HORIZONTAL);
+		suspendErrorCodes.setLayoutData(suspendErrorCodesData);
+		suspendErrorCodes.addFocusListener(new FocusAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void focusLost(FocusEvent e) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.HTTPEndpoint.EndpointSuspendState.suspendErrorCodes, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, suspendErrorCodes.getText()));
+			}
+
+		});
+		suspendErrorCodes.addKeyListener(new KeyAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void keyPressed(KeyEvent e) {
+				if (e.character == SWT.CR) {
+					if (propertiesEditionComponent != null)
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.HTTPEndpoint.EndpointSuspendState.suspendErrorCodes, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, suspendErrorCodes.getText()));
+				}
+			}
+
+		});
+		EditingUtils.setID(suspendErrorCodes, EsbViewsRepository.HTTPEndpoint.EndpointSuspendState.suspendErrorCodes);
+		EditingUtils.setEEFtype(suspendErrorCodes, "eef::Text"); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.HTTPEndpoint.EndpointSuspendState.suspendErrorCodes, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createSuspendErrorCodesText
+
+		// End of user code
+		return parent;
+	}
+
+	
+	protected Composite createSuspendInitialDurationText(Composite parent) {
+		createDescription(parent, EsbViewsRepository.HTTPEndpoint.EndpointSuspendState.suspendInitialDuration, EsbMessages.HTTPEndpointPropertiesEditionPart_SuspendInitialDurationLabel);
+		suspendInitialDuration = SWTUtils.createScrollableText(parent, SWT.BORDER);
+		GridData suspendInitialDurationData = new GridData(GridData.FILL_HORIZONTAL);
+		suspendInitialDuration.setLayoutData(suspendInitialDurationData);
+		suspendInitialDuration.addFocusListener(new FocusAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void focusLost(FocusEvent e) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.HTTPEndpoint.EndpointSuspendState.suspendInitialDuration, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, suspendInitialDuration.getText()));
+			}
+
+		});
+		suspendInitialDuration.addKeyListener(new KeyAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void keyPressed(KeyEvent e) {
+				if (e.character == SWT.CR) {
+					if (propertiesEditionComponent != null)
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.HTTPEndpoint.EndpointSuspendState.suspendInitialDuration, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, suspendInitialDuration.getText()));
+				}
+			}
+
+		});
+		EditingUtils.setID(suspendInitialDuration, EsbViewsRepository.HTTPEndpoint.EndpointSuspendState.suspendInitialDuration);
+		EditingUtils.setEEFtype(suspendInitialDuration, "eef::Text"); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.HTTPEndpoint.EndpointSuspendState.suspendInitialDuration, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createSuspendInitialDurationText
+
+		// End of user code
+		return parent;
+	}
+
+	
+	protected Composite createSuspendMaximumDurationText(Composite parent) {
+		createDescription(parent, EsbViewsRepository.HTTPEndpoint.EndpointSuspendState.suspendMaximumDuration, EsbMessages.HTTPEndpointPropertiesEditionPart_SuspendMaximumDurationLabel);
+		suspendMaximumDuration = SWTUtils.createScrollableText(parent, SWT.BORDER);
+		GridData suspendMaximumDurationData = new GridData(GridData.FILL_HORIZONTAL);
+		suspendMaximumDuration.setLayoutData(suspendMaximumDurationData);
+		suspendMaximumDuration.addFocusListener(new FocusAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void focusLost(FocusEvent e) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.HTTPEndpoint.EndpointSuspendState.suspendMaximumDuration, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, suspendMaximumDuration.getText()));
+			}
+
+		});
+		suspendMaximumDuration.addKeyListener(new KeyAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void keyPressed(KeyEvent e) {
+				if (e.character == SWT.CR) {
+					if (propertiesEditionComponent != null)
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.HTTPEndpoint.EndpointSuspendState.suspendMaximumDuration, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, suspendMaximumDuration.getText()));
+				}
+			}
+
+		});
+		EditingUtils.setID(suspendMaximumDuration, EsbViewsRepository.HTTPEndpoint.EndpointSuspendState.suspendMaximumDuration);
+		EditingUtils.setEEFtype(suspendMaximumDuration, "eef::Text"); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.HTTPEndpoint.EndpointSuspendState.suspendMaximumDuration, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createSuspendMaximumDurationText
+
+		// End of user code
+		return parent;
+	}
+
+	
+	protected Composite createSuspendProgressionFactorText(Composite parent) {
+		createDescription(parent, EsbViewsRepository.HTTPEndpoint.EndpointSuspendState.suspendProgressionFactor, EsbMessages.HTTPEndpointPropertiesEditionPart_SuspendProgressionFactorLabel);
+		suspendProgressionFactor = SWTUtils.createScrollableText(parent, SWT.BORDER);
+		GridData suspendProgressionFactorData = new GridData(GridData.FILL_HORIZONTAL);
+		suspendProgressionFactor.setLayoutData(suspendProgressionFactorData);
+		suspendProgressionFactor.addFocusListener(new FocusAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void focusLost(FocusEvent e) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.HTTPEndpoint.EndpointSuspendState.suspendProgressionFactor, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, suspendProgressionFactor.getText()));
+			}
+
+		});
+		suspendProgressionFactor.addKeyListener(new KeyAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void keyPressed(KeyEvent e) {
+				if (e.character == SWT.CR) {
+					if (propertiesEditionComponent != null)
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.HTTPEndpoint.EndpointSuspendState.suspendProgressionFactor, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, suspendProgressionFactor.getText()));
+				}
+			}
+
+		});
+		EditingUtils.setID(suspendProgressionFactor, EsbViewsRepository.HTTPEndpoint.EndpointSuspendState.suspendProgressionFactor);
+		EditingUtils.setEEFtype(suspendProgressionFactor, "eef::Text"); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.HTTPEndpoint.EndpointSuspendState.suspendProgressionFactor, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createSuspendProgressionFactorText
+
+		// End of user code
+		return parent;
+	}
+
+	/**
+	 * 
+	 */
+	protected Composite createEndpointTimeoutStateGroup(Composite parent) {
+		Group endpointTimeoutStateGroup = new Group(parent, SWT.NONE);
+		endpointTimeoutStateGroup.setText(EsbMessages.HTTPEndpointPropertiesEditionPart_EndpointTimeoutStateGroupLabel);
+		GridData endpointTimeoutStateGroupData = new GridData(GridData.FILL_HORIZONTAL);
+		endpointTimeoutStateGroupData.horizontalSpan = 3;
+		endpointTimeoutStateGroup.setLayoutData(endpointTimeoutStateGroupData);
+		GridLayout endpointTimeoutStateGroupLayout = new GridLayout();
+		endpointTimeoutStateGroupLayout.numColumns = 3;
+		endpointTimeoutStateGroup.setLayout(endpointTimeoutStateGroupLayout);
+		return endpointTimeoutStateGroup;
+	}
+
+	
+	protected Composite createRetryErrorCodesText(Composite parent) {
+		createDescription(parent, EsbViewsRepository.HTTPEndpoint.EndpointTimeoutState.retryErrorCodes, EsbMessages.HTTPEndpointPropertiesEditionPart_RetryErrorCodesLabel);
+		retryErrorCodes = SWTUtils.createScrollableText(parent, SWT.BORDER);
+		GridData retryErrorCodesData = new GridData(GridData.FILL_HORIZONTAL);
+		retryErrorCodes.setLayoutData(retryErrorCodesData);
+		retryErrorCodes.addFocusListener(new FocusAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void focusLost(FocusEvent e) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.HTTPEndpoint.EndpointTimeoutState.retryErrorCodes, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, retryErrorCodes.getText()));
+			}
+
+		});
+		retryErrorCodes.addKeyListener(new KeyAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void keyPressed(KeyEvent e) {
+				if (e.character == SWT.CR) {
+					if (propertiesEditionComponent != null)
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.HTTPEndpoint.EndpointTimeoutState.retryErrorCodes, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, retryErrorCodes.getText()));
+				}
+			}
+
+		});
+		EditingUtils.setID(retryErrorCodes, EsbViewsRepository.HTTPEndpoint.EndpointTimeoutState.retryErrorCodes);
+		EditingUtils.setEEFtype(retryErrorCodes, "eef::Text"); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.HTTPEndpoint.EndpointTimeoutState.retryErrorCodes, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createRetryErrorCodesText
+
+		// End of user code
+		return parent;
+	}
+
+	
+	protected Composite createRetryCountText(Composite parent) {
+		createDescription(parent, EsbViewsRepository.HTTPEndpoint.EndpointTimeoutState.retryCount, EsbMessages.HTTPEndpointPropertiesEditionPart_RetryCountLabel);
+		retryCount = SWTUtils.createScrollableText(parent, SWT.BORDER);
+		GridData retryCountData = new GridData(GridData.FILL_HORIZONTAL);
+		retryCount.setLayoutData(retryCountData);
+		retryCount.addFocusListener(new FocusAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void focusLost(FocusEvent e) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.HTTPEndpoint.EndpointTimeoutState.retryCount, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, retryCount.getText()));
+			}
+
+		});
+		retryCount.addKeyListener(new KeyAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void keyPressed(KeyEvent e) {
+				if (e.character == SWT.CR) {
+					if (propertiesEditionComponent != null)
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.HTTPEndpoint.EndpointTimeoutState.retryCount, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, retryCount.getText()));
+				}
+			}
+
+		});
+		EditingUtils.setID(retryCount, EsbViewsRepository.HTTPEndpoint.EndpointTimeoutState.retryCount);
+		EditingUtils.setEEFtype(retryCount, "eef::Text"); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.HTTPEndpoint.EndpointTimeoutState.retryCount, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createRetryCountText
+
+		// End of user code
+		return parent;
+	}
+
+	
+	protected Composite createRetryDelayText(Composite parent) {
+		createDescription(parent, EsbViewsRepository.HTTPEndpoint.EndpointTimeoutState.retryDelay, EsbMessages.HTTPEndpointPropertiesEditionPart_RetryDelayLabel);
+		retryDelay = SWTUtils.createScrollableText(parent, SWT.BORDER);
+		GridData retryDelayData = new GridData(GridData.FILL_HORIZONTAL);
+		retryDelay.setLayoutData(retryDelayData);
+		retryDelay.addFocusListener(new FocusAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void focusLost(FocusEvent e) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.HTTPEndpoint.EndpointTimeoutState.retryDelay, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, retryDelay.getText()));
+			}
+
+		});
+		retryDelay.addKeyListener(new KeyAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void keyPressed(KeyEvent e) {
+				if (e.character == SWT.CR) {
+					if (propertiesEditionComponent != null)
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.HTTPEndpoint.EndpointTimeoutState.retryDelay, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, retryDelay.getText()));
+				}
+			}
+
+		});
+		EditingUtils.setID(retryDelay, EsbViewsRepository.HTTPEndpoint.EndpointTimeoutState.retryDelay);
+		EditingUtils.setEEFtype(retryDelay, "eef::Text"); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.HTTPEndpoint.EndpointTimeoutState.retryDelay, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createRetryDelayText
+
+		// End of user code
+		return parent;
+	}
+
+	/**
+	 * 
+	 */
+	protected Composite createTimeoutGroup(Composite parent) {
+		Group timeoutGroup = new Group(parent, SWT.NONE);
+		timeoutGroup.setText(EsbMessages.HTTPEndpointPropertiesEditionPart_TimeoutGroupLabel);
+		GridData timeoutGroupData = new GridData(GridData.FILL_HORIZONTAL);
+		timeoutGroupData.horizontalSpan = 3;
+		timeoutGroup.setLayoutData(timeoutGroupData);
+		GridLayout timeoutGroupLayout = new GridLayout();
+		timeoutGroupLayout.numColumns = 3;
+		timeoutGroup.setLayout(timeoutGroupLayout);
+		return timeoutGroup;
+	}
+
+	
+	protected Composite createTimeOutDurationText(Composite parent) {
+		createDescription(parent, EsbViewsRepository.HTTPEndpoint.Timeout.timeOutDuration, EsbMessages.HTTPEndpointPropertiesEditionPart_TimeOutDurationLabel);
+		timeOutDuration = SWTUtils.createScrollableText(parent, SWT.BORDER);
+		GridData timeOutDurationData = new GridData(GridData.FILL_HORIZONTAL);
+		timeOutDuration.setLayoutData(timeOutDurationData);
+		timeOutDuration.addFocusListener(new FocusAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void focusLost(FocusEvent e) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.HTTPEndpoint.Timeout.timeOutDuration, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, timeOutDuration.getText()));
+			}
+
+		});
+		timeOutDuration.addKeyListener(new KeyAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void keyPressed(KeyEvent e) {
+				if (e.character == SWT.CR) {
+					if (propertiesEditionComponent != null)
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.HTTPEndpoint.Timeout.timeOutDuration, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, timeOutDuration.getText()));
+				}
+			}
+
+		});
+		EditingUtils.setID(timeOutDuration, EsbViewsRepository.HTTPEndpoint.Timeout.timeOutDuration);
+		EditingUtils.setEEFtype(timeOutDuration, "eef::Text"); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.HTTPEndpoint.Timeout.timeOutDuration, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createTimeOutDurationText
+
+		// End of user code
+		return parent;
+	}
+
+	
+	protected Composite createTimeOutActionEMFComboViewer(Composite parent) {
+		createDescription(parent, EsbViewsRepository.HTTPEndpoint.Timeout.timeOutAction, EsbMessages.HTTPEndpointPropertiesEditionPart_TimeOutActionLabel);
+		timeOutAction = new EMFComboViewer(parent);
+		timeOutAction.setContentProvider(new ArrayContentProvider());
+		timeOutAction.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
+		GridData timeOutActionData = new GridData(GridData.FILL_HORIZONTAL);
+		timeOutAction.getCombo().setLayoutData(timeOutActionData);
+		timeOutAction.addSelectionChangedListener(new ISelectionChangedListener() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+			 * 	
+			 */
+			public void selectionChanged(SelectionChangedEvent event) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.HTTPEndpoint.Timeout.timeOutAction, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getTimeOutAction()));
+			}
+
+		});
+		timeOutAction.setID(EsbViewsRepository.HTTPEndpoint.Timeout.timeOutAction);
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.HTTPEndpoint.Timeout.timeOutAction, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createTimeOutActionEMFComboViewer
 
 		// End of user code
 		return parent;
@@ -1450,38 +1572,6 @@ public class HTTPEndpointPropertiesEditionPartImpl extends CompositePropertiesEd
 		// Start of user code for tab synchronization
 		
 		// End of user code
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.HTTPEndpointPropertiesEditionPart#getDescription()
-	 * 
-	 */
-	public String getDescription() {
-		return description.getText();
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.HTTPEndpointPropertiesEditionPart#setDescription(String newValue)
-	 * 
-	 */
-	public void setDescription(String newValue) {
-		if (newValue != null) {
-			description.setText(newValue);
-		} else {
-			description.setText(""); //$NON-NLS-1$
-		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.HTTPEndpoint.Properties.description);
-		if (eefElementEditorReadOnlyState && description.isEnabled()) {
-			description.setEnabled(false);
-			description.setToolTipText(EsbMessages.HTTPEndpoint_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !description.isEnabled()) {
-			description.setEnabled(true);
-		}	
-		
 	}
 
 	/**
@@ -1661,72 +1751,6 @@ public class HTTPEndpointPropertiesEditionPartImpl extends CompositePropertiesEd
 			duplicate.setEnabled(true);
 		}	
 		
-	}
-
-
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.HTTPEndpointPropertiesEditionPart#initProperties(EObject current, EReference containingFeature, EReference feature)
-	 */
-	public void initProperties(ReferencesTableSettings settings) {
-		if (current.eResource() != null && current.eResource().getResourceSet() != null)
-			this.resourceSet = current.eResource().getResourceSet();
-		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
-		properties.setContentProvider(contentProvider);
-		properties.setInput(settings);
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.HTTPEndpoint.Properties.properties_);
-		if (eefElementEditorReadOnlyState && properties.isEnabled()) {
-			properties.setEnabled(false);
-			properties.setToolTipText(EsbMessages.HTTPEndpoint_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !properties.isEnabled()) {
-			properties.setEnabled(true);
-		}	
-		
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.HTTPEndpointPropertiesEditionPart#updateProperties()
-	 * 
-	 */
-	public void updateProperties() {
-	properties.refresh();
-}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.HTTPEndpointPropertiesEditionPart#addFilterProperties(ViewerFilter filter)
-	 * 
-	 */
-	public void addFilterToProperties(ViewerFilter filter) {
-		propertiesFilters.add(filter);
-		if (this.properties != null) {
-			this.properties.addFilter(filter);
-		}
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.HTTPEndpointPropertiesEditionPart#addBusinessFilterProperties(ViewerFilter filter)
-	 * 
-	 */
-	public void addBusinessFilterToProperties(ViewerFilter filter) {
-		propertiesBusinessFilters.add(filter);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.HTTPEndpointPropertiesEditionPart#isContainedInPropertiesTable(EObject element)
-	 * 
-	 */
-	public boolean isContainedInPropertiesTable(EObject element) {
-		return ((ReferencesTableSettings)properties.getInput()).contains(element);
 	}
 
 	/**
@@ -1939,309 +1963,6 @@ public class HTTPEndpointPropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.HTTPEndpointPropertiesEditionPart#getTimeOutDuration()
-	 * 
-	 */
-	public String getTimeOutDuration() {
-		return timeOutDuration.getText();
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.HTTPEndpointPropertiesEditionPart#setTimeOutDuration(String newValue)
-	 * 
-	 */
-	public void setTimeOutDuration(String newValue) {
-		if (newValue != null) {
-			timeOutDuration.setText(newValue);
-		} else {
-			timeOutDuration.setText(""); //$NON-NLS-1$
-		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.HTTPEndpoint.Properties.timeOutDuration);
-		if (eefElementEditorReadOnlyState && timeOutDuration.isEnabled()) {
-			timeOutDuration.setEnabled(false);
-			timeOutDuration.setToolTipText(EsbMessages.HTTPEndpoint_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !timeOutDuration.isEnabled()) {
-			timeOutDuration.setEnabled(true);
-		}	
-		
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.HTTPEndpointPropertiesEditionPart#getTimeOutAction()
-	 * 
-	 */
-	public Enumerator getTimeOutAction() {
-		Enumerator selection = (Enumerator) ((StructuredSelection) timeOutAction.getSelection()).getFirstElement();
-		return selection;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.HTTPEndpointPropertiesEditionPart#initTimeOutAction(Object input, Enumerator current)
-	 */
-	public void initTimeOutAction(Object input, Enumerator current) {
-		timeOutAction.setInput(input);
-		timeOutAction.modelUpdating(new StructuredSelection(current));
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.HTTPEndpoint.Properties.timeOutAction);
-		if (eefElementEditorReadOnlyState && timeOutAction.isEnabled()) {
-			timeOutAction.setEnabled(false);
-			timeOutAction.setToolTipText(EsbMessages.HTTPEndpoint_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !timeOutAction.isEnabled()) {
-			timeOutAction.setEnabled(true);
-		}	
-		
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.HTTPEndpointPropertiesEditionPart#setTimeOutAction(Enumerator newValue)
-	 * 
-	 */
-	public void setTimeOutAction(Enumerator newValue) {
-		timeOutAction.modelUpdating(new StructuredSelection(newValue));
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.HTTPEndpoint.Properties.timeOutAction);
-		if (eefElementEditorReadOnlyState && timeOutAction.isEnabled()) {
-			timeOutAction.setEnabled(false);
-			timeOutAction.setToolTipText(EsbMessages.HTTPEndpoint_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !timeOutAction.isEnabled()) {
-			timeOutAction.setEnabled(true);
-		}	
-		
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.HTTPEndpointPropertiesEditionPart#getRetryErrorCodes()
-	 * 
-	 */
-	public String getRetryErrorCodes() {
-		return retryErrorCodes.getText();
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.HTTPEndpointPropertiesEditionPart#setRetryErrorCodes(String newValue)
-	 * 
-	 */
-	public void setRetryErrorCodes(String newValue) {
-		if (newValue != null) {
-			retryErrorCodes.setText(newValue);
-		} else {
-			retryErrorCodes.setText(""); //$NON-NLS-1$
-		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.HTTPEndpoint.Properties.retryErrorCodes);
-		if (eefElementEditorReadOnlyState && retryErrorCodes.isEnabled()) {
-			retryErrorCodes.setEnabled(false);
-			retryErrorCodes.setToolTipText(EsbMessages.HTTPEndpoint_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !retryErrorCodes.isEnabled()) {
-			retryErrorCodes.setEnabled(true);
-		}	
-		
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.HTTPEndpointPropertiesEditionPart#getRetryCount()
-	 * 
-	 */
-	public String getRetryCount() {
-		return retryCount.getText();
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.HTTPEndpointPropertiesEditionPart#setRetryCount(String newValue)
-	 * 
-	 */
-	public void setRetryCount(String newValue) {
-		if (newValue != null) {
-			retryCount.setText(newValue);
-		} else {
-			retryCount.setText(""); //$NON-NLS-1$
-		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.HTTPEndpoint.Properties.retryCount);
-		if (eefElementEditorReadOnlyState && retryCount.isEnabled()) {
-			retryCount.setEnabled(false);
-			retryCount.setToolTipText(EsbMessages.HTTPEndpoint_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !retryCount.isEnabled()) {
-			retryCount.setEnabled(true);
-		}	
-		
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.HTTPEndpointPropertiesEditionPart#getRetryDelay()
-	 * 
-	 */
-	public String getRetryDelay() {
-		return retryDelay.getText();
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.HTTPEndpointPropertiesEditionPart#setRetryDelay(String newValue)
-	 * 
-	 */
-	public void setRetryDelay(String newValue) {
-		if (newValue != null) {
-			retryDelay.setText(newValue);
-		} else {
-			retryDelay.setText(""); //$NON-NLS-1$
-		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.HTTPEndpoint.Properties.retryDelay);
-		if (eefElementEditorReadOnlyState && retryDelay.isEnabled()) {
-			retryDelay.setEnabled(false);
-			retryDelay.setToolTipText(EsbMessages.HTTPEndpoint_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !retryDelay.isEnabled()) {
-			retryDelay.setEnabled(true);
-		}	
-		
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.HTTPEndpointPropertiesEditionPart#getSuspendErrorCodes()
-	 * 
-	 */
-	public String getSuspendErrorCodes() {
-		return suspendErrorCodes.getText();
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.HTTPEndpointPropertiesEditionPart#setSuspendErrorCodes(String newValue)
-	 * 
-	 */
-	public void setSuspendErrorCodes(String newValue) {
-		if (newValue != null) {
-			suspendErrorCodes.setText(newValue);
-		} else {
-			suspendErrorCodes.setText(""); //$NON-NLS-1$
-		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.HTTPEndpoint.Properties.suspendErrorCodes);
-		if (eefElementEditorReadOnlyState && suspendErrorCodes.isEnabled()) {
-			suspendErrorCodes.setEnabled(false);
-			suspendErrorCodes.setToolTipText(EsbMessages.HTTPEndpoint_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !suspendErrorCodes.isEnabled()) {
-			suspendErrorCodes.setEnabled(true);
-		}	
-		
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.HTTPEndpointPropertiesEditionPart#getSuspendInitialDuration()
-	 * 
-	 */
-	public String getSuspendInitialDuration() {
-		return suspendInitialDuration.getText();
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.HTTPEndpointPropertiesEditionPart#setSuspendInitialDuration(String newValue)
-	 * 
-	 */
-	public void setSuspendInitialDuration(String newValue) {
-		if (newValue != null) {
-			suspendInitialDuration.setText(newValue);
-		} else {
-			suspendInitialDuration.setText(""); //$NON-NLS-1$
-		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.HTTPEndpoint.Properties.suspendInitialDuration);
-		if (eefElementEditorReadOnlyState && suspendInitialDuration.isEnabled()) {
-			suspendInitialDuration.setEnabled(false);
-			suspendInitialDuration.setToolTipText(EsbMessages.HTTPEndpoint_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !suspendInitialDuration.isEnabled()) {
-			suspendInitialDuration.setEnabled(true);
-		}	
-		
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.HTTPEndpointPropertiesEditionPart#getSuspendMaximumDuration()
-	 * 
-	 */
-	public String getSuspendMaximumDuration() {
-		return suspendMaximumDuration.getText();
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.HTTPEndpointPropertiesEditionPart#setSuspendMaximumDuration(String newValue)
-	 * 
-	 */
-	public void setSuspendMaximumDuration(String newValue) {
-		if (newValue != null) {
-			suspendMaximumDuration.setText(newValue);
-		} else {
-			suspendMaximumDuration.setText(""); //$NON-NLS-1$
-		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.HTTPEndpoint.Properties.suspendMaximumDuration);
-		if (eefElementEditorReadOnlyState && suspendMaximumDuration.isEnabled()) {
-			suspendMaximumDuration.setEnabled(false);
-			suspendMaximumDuration.setToolTipText(EsbMessages.HTTPEndpoint_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !suspendMaximumDuration.isEnabled()) {
-			suspendMaximumDuration.setEnabled(true);
-		}	
-		
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.HTTPEndpointPropertiesEditionPart#getSuspendProgressionFactor()
-	 * 
-	 */
-	public String getSuspendProgressionFactor() {
-		return suspendProgressionFactor.getText();
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.HTTPEndpointPropertiesEditionPart#setSuspendProgressionFactor(String newValue)
-	 * 
-	 */
-	public void setSuspendProgressionFactor(String newValue) {
-		if (newValue != null) {
-			suspendProgressionFactor.setText(newValue);
-		} else {
-			suspendProgressionFactor.setText(""); //$NON-NLS-1$
-		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.HTTPEndpoint.Properties.suspendProgressionFactor);
-		if (eefElementEditorReadOnlyState && suspendProgressionFactor.isEnabled()) {
-			suspendProgressionFactor.setEnabled(false);
-			suspendProgressionFactor.setToolTipText(EsbMessages.HTTPEndpoint_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !suspendProgressionFactor.isEnabled()) {
-			suspendProgressionFactor.setEnabled(true);
-		}	
-		
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.HTTPEndpointPropertiesEditionPart#getFormat()
 	 * 
 	 */
@@ -2421,7 +2142,7 @@ public class HTTPEndpointPropertiesEditionPartImpl extends CompositePropertiesEd
 		} else {
 			statisticsEnabled.setSelection(false);
 		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.HTTPEndpoint.Properties.statisticsEnabled);
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.HTTPEndpoint.Basic.statisticsEnabled);
 		if (eefElementEditorReadOnlyState && statisticsEnabled.isEnabled()) {
 			statisticsEnabled.setEnabled(false);
 			statisticsEnabled.setToolTipText(EsbMessages.HTTPEndpoint_ReadOnly);
@@ -2453,7 +2174,7 @@ public class HTTPEndpointPropertiesEditionPartImpl extends CompositePropertiesEd
 		} else {
 			traceEnabled.setSelection(false);
 		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.HTTPEndpoint.Properties.traceEnabled);
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.HTTPEndpoint.Basic.traceEnabled);
 		if (eefElementEditorReadOnlyState && traceEnabled.isEnabled()) {
 			traceEnabled.setEnabled(false);
 			traceEnabled.setToolTipText(EsbMessages.HTTPEndpoint_ReadOnly);
@@ -2485,7 +2206,7 @@ public class HTTPEndpointPropertiesEditionPartImpl extends CompositePropertiesEd
 		} else {
 			uRITemplate.setText(""); //$NON-NLS-1$
 		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.HTTPEndpoint.Properties.uRITemplate);
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.HTTPEndpoint.Basic.uRITemplate);
 		if (eefElementEditorReadOnlyState && uRITemplate.isEnabled()) {
 			uRITemplate.setEnabled(false);
 			uRITemplate.setToolTipText(EsbMessages.HTTPEndpoint_ReadOnly);
@@ -2514,7 +2235,7 @@ public class HTTPEndpointPropertiesEditionPartImpl extends CompositePropertiesEd
 	public void initHttpMethod(Object input, Enumerator current) {
 		httpMethod.setInput(input);
 		httpMethod.modelUpdating(new StructuredSelection(current));
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.HTTPEndpoint.Properties.httpMethod);
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.HTTPEndpoint.Basic.httpMethod);
 		if (eefElementEditorReadOnlyState && httpMethod.isEnabled()) {
 			httpMethod.setEnabled(false);
 			httpMethod.setToolTipText(EsbMessages.HTTPEndpoint_ReadOnly);
@@ -2532,12 +2253,413 @@ public class HTTPEndpointPropertiesEditionPartImpl extends CompositePropertiesEd
 	 */
 	public void setHttpMethod(Enumerator newValue) {
 		httpMethod.modelUpdating(new StructuredSelection(newValue));
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.HTTPEndpoint.Properties.httpMethod);
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.HTTPEndpoint.Basic.httpMethod);
 		if (eefElementEditorReadOnlyState && httpMethod.isEnabled()) {
 			httpMethod.setEnabled(false);
 			httpMethod.setToolTipText(EsbMessages.HTTPEndpoint_ReadOnly);
 		} else if (!eefElementEditorReadOnlyState && !httpMethod.isEnabled()) {
 			httpMethod.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.HTTPEndpointPropertiesEditionPart#getDescription()
+	 * 
+	 */
+	public String getDescription() {
+		return description.getText();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.HTTPEndpointPropertiesEditionPart#setDescription(String newValue)
+	 * 
+	 */
+	public void setDescription(String newValue) {
+		if (newValue != null) {
+			description.setText(newValue);
+		} else {
+			description.setText(""); //$NON-NLS-1$
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.HTTPEndpoint.EndpointDescription.description);
+		if (eefElementEditorReadOnlyState && description.isEnabled()) {
+			description.setEnabled(false);
+			description.setToolTipText(EsbMessages.HTTPEndpoint_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !description.isEnabled()) {
+			description.setEnabled(true);
+		}	
+		
+	}
+
+
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.HTTPEndpointPropertiesEditionPart#initProperties(EObject current, EReference containingFeature, EReference feature)
+	 */
+	public void initProperties(ReferencesTableSettings settings) {
+		if (current.eResource() != null && current.eResource().getResourceSet() != null)
+			this.resourceSet = current.eResource().getResourceSet();
+		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
+		properties.setContentProvider(contentProvider);
+		properties.setInput(settings);
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.HTTPEndpoint.EndpointProperties.properties);
+		if (eefElementEditorReadOnlyState && properties.isEnabled()) {
+			properties.setEnabled(false);
+			properties.setToolTipText(EsbMessages.HTTPEndpoint_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !properties.isEnabled()) {
+			properties.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.HTTPEndpointPropertiesEditionPart#updateProperties()
+	 * 
+	 */
+	public void updateProperties() {
+	properties.refresh();
+}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.HTTPEndpointPropertiesEditionPart#addFilterProperties(ViewerFilter filter)
+	 * 
+	 */
+	public void addFilterToProperties(ViewerFilter filter) {
+		propertiesFilters.add(filter);
+		if (this.properties != null) {
+			this.properties.addFilter(filter);
+		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.HTTPEndpointPropertiesEditionPart#addBusinessFilterProperties(ViewerFilter filter)
+	 * 
+	 */
+	public void addBusinessFilterToProperties(ViewerFilter filter) {
+		propertiesBusinessFilters.add(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.HTTPEndpointPropertiesEditionPart#isContainedInPropertiesTable(EObject element)
+	 * 
+	 */
+	public boolean isContainedInPropertiesTable(EObject element) {
+		return ((ReferencesTableSettings)properties.getInput()).contains(element);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.HTTPEndpointPropertiesEditionPart#getSuspendErrorCodes()
+	 * 
+	 */
+	public String getSuspendErrorCodes() {
+		return suspendErrorCodes.getText();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.HTTPEndpointPropertiesEditionPart#setSuspendErrorCodes(String newValue)
+	 * 
+	 */
+	public void setSuspendErrorCodes(String newValue) {
+		if (newValue != null) {
+			suspendErrorCodes.setText(newValue);
+		} else {
+			suspendErrorCodes.setText(""); //$NON-NLS-1$
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.HTTPEndpoint.EndpointSuspendState.suspendErrorCodes);
+		if (eefElementEditorReadOnlyState && suspendErrorCodes.isEnabled()) {
+			suspendErrorCodes.setEnabled(false);
+			suspendErrorCodes.setToolTipText(EsbMessages.HTTPEndpoint_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !suspendErrorCodes.isEnabled()) {
+			suspendErrorCodes.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.HTTPEndpointPropertiesEditionPart#getSuspendInitialDuration()
+	 * 
+	 */
+	public String getSuspendInitialDuration() {
+		return suspendInitialDuration.getText();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.HTTPEndpointPropertiesEditionPart#setSuspendInitialDuration(String newValue)
+	 * 
+	 */
+	public void setSuspendInitialDuration(String newValue) {
+		if (newValue != null) {
+			suspendInitialDuration.setText(newValue);
+		} else {
+			suspendInitialDuration.setText(""); //$NON-NLS-1$
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.HTTPEndpoint.EndpointSuspendState.suspendInitialDuration);
+		if (eefElementEditorReadOnlyState && suspendInitialDuration.isEnabled()) {
+			suspendInitialDuration.setEnabled(false);
+			suspendInitialDuration.setToolTipText(EsbMessages.HTTPEndpoint_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !suspendInitialDuration.isEnabled()) {
+			suspendInitialDuration.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.HTTPEndpointPropertiesEditionPart#getSuspendMaximumDuration()
+	 * 
+	 */
+	public String getSuspendMaximumDuration() {
+		return suspendMaximumDuration.getText();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.HTTPEndpointPropertiesEditionPart#setSuspendMaximumDuration(String newValue)
+	 * 
+	 */
+	public void setSuspendMaximumDuration(String newValue) {
+		if (newValue != null) {
+			suspendMaximumDuration.setText(newValue);
+		} else {
+			suspendMaximumDuration.setText(""); //$NON-NLS-1$
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.HTTPEndpoint.EndpointSuspendState.suspendMaximumDuration);
+		if (eefElementEditorReadOnlyState && suspendMaximumDuration.isEnabled()) {
+			suspendMaximumDuration.setEnabled(false);
+			suspendMaximumDuration.setToolTipText(EsbMessages.HTTPEndpoint_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !suspendMaximumDuration.isEnabled()) {
+			suspendMaximumDuration.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.HTTPEndpointPropertiesEditionPart#getSuspendProgressionFactor()
+	 * 
+	 */
+	public String getSuspendProgressionFactor() {
+		return suspendProgressionFactor.getText();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.HTTPEndpointPropertiesEditionPart#setSuspendProgressionFactor(String newValue)
+	 * 
+	 */
+	public void setSuspendProgressionFactor(String newValue) {
+		if (newValue != null) {
+			suspendProgressionFactor.setText(newValue);
+		} else {
+			suspendProgressionFactor.setText(""); //$NON-NLS-1$
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.HTTPEndpoint.EndpointSuspendState.suspendProgressionFactor);
+		if (eefElementEditorReadOnlyState && suspendProgressionFactor.isEnabled()) {
+			suspendProgressionFactor.setEnabled(false);
+			suspendProgressionFactor.setToolTipText(EsbMessages.HTTPEndpoint_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !suspendProgressionFactor.isEnabled()) {
+			suspendProgressionFactor.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.HTTPEndpointPropertiesEditionPart#getRetryErrorCodes()
+	 * 
+	 */
+	public String getRetryErrorCodes() {
+		return retryErrorCodes.getText();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.HTTPEndpointPropertiesEditionPart#setRetryErrorCodes(String newValue)
+	 * 
+	 */
+	public void setRetryErrorCodes(String newValue) {
+		if (newValue != null) {
+			retryErrorCodes.setText(newValue);
+		} else {
+			retryErrorCodes.setText(""); //$NON-NLS-1$
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.HTTPEndpoint.EndpointTimeoutState.retryErrorCodes);
+		if (eefElementEditorReadOnlyState && retryErrorCodes.isEnabled()) {
+			retryErrorCodes.setEnabled(false);
+			retryErrorCodes.setToolTipText(EsbMessages.HTTPEndpoint_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !retryErrorCodes.isEnabled()) {
+			retryErrorCodes.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.HTTPEndpointPropertiesEditionPart#getRetryCount()
+	 * 
+	 */
+	public String getRetryCount() {
+		return retryCount.getText();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.HTTPEndpointPropertiesEditionPart#setRetryCount(String newValue)
+	 * 
+	 */
+	public void setRetryCount(String newValue) {
+		if (newValue != null) {
+			retryCount.setText(newValue);
+		} else {
+			retryCount.setText(""); //$NON-NLS-1$
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.HTTPEndpoint.EndpointTimeoutState.retryCount);
+		if (eefElementEditorReadOnlyState && retryCount.isEnabled()) {
+			retryCount.setEnabled(false);
+			retryCount.setToolTipText(EsbMessages.HTTPEndpoint_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !retryCount.isEnabled()) {
+			retryCount.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.HTTPEndpointPropertiesEditionPart#getRetryDelay()
+	 * 
+	 */
+	public String getRetryDelay() {
+		return retryDelay.getText();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.HTTPEndpointPropertiesEditionPart#setRetryDelay(String newValue)
+	 * 
+	 */
+	public void setRetryDelay(String newValue) {
+		if (newValue != null) {
+			retryDelay.setText(newValue);
+		} else {
+			retryDelay.setText(""); //$NON-NLS-1$
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.HTTPEndpoint.EndpointTimeoutState.retryDelay);
+		if (eefElementEditorReadOnlyState && retryDelay.isEnabled()) {
+			retryDelay.setEnabled(false);
+			retryDelay.setToolTipText(EsbMessages.HTTPEndpoint_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !retryDelay.isEnabled()) {
+			retryDelay.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.HTTPEndpointPropertiesEditionPart#getTimeOutDuration()
+	 * 
+	 */
+	public String getTimeOutDuration() {
+		return timeOutDuration.getText();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.HTTPEndpointPropertiesEditionPart#setTimeOutDuration(String newValue)
+	 * 
+	 */
+	public void setTimeOutDuration(String newValue) {
+		if (newValue != null) {
+			timeOutDuration.setText(newValue);
+		} else {
+			timeOutDuration.setText(""); //$NON-NLS-1$
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.HTTPEndpoint.Timeout.timeOutDuration);
+		if (eefElementEditorReadOnlyState && timeOutDuration.isEnabled()) {
+			timeOutDuration.setEnabled(false);
+			timeOutDuration.setToolTipText(EsbMessages.HTTPEndpoint_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !timeOutDuration.isEnabled()) {
+			timeOutDuration.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.HTTPEndpointPropertiesEditionPart#getTimeOutAction()
+	 * 
+	 */
+	public Enumerator getTimeOutAction() {
+		Enumerator selection = (Enumerator) ((StructuredSelection) timeOutAction.getSelection()).getFirstElement();
+		return selection;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.HTTPEndpointPropertiesEditionPart#initTimeOutAction(Object input, Enumerator current)
+	 */
+	public void initTimeOutAction(Object input, Enumerator current) {
+		timeOutAction.setInput(input);
+		timeOutAction.modelUpdating(new StructuredSelection(current));
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.HTTPEndpoint.Timeout.timeOutAction);
+		if (eefElementEditorReadOnlyState && timeOutAction.isEnabled()) {
+			timeOutAction.setEnabled(false);
+			timeOutAction.setToolTipText(EsbMessages.HTTPEndpoint_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !timeOutAction.isEnabled()) {
+			timeOutAction.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.HTTPEndpointPropertiesEditionPart#setTimeOutAction(Enumerator newValue)
+	 * 
+	 */
+	public void setTimeOutAction(Enumerator newValue) {
+		timeOutAction.modelUpdating(new StructuredSelection(newValue));
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.HTTPEndpoint.Timeout.timeOutAction);
+		if (eefElementEditorReadOnlyState && timeOutAction.isEnabled()) {
+			timeOutAction.setEnabled(false);
+			timeOutAction.setToolTipText(EsbMessages.HTTPEndpoint_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !timeOutAction.isEnabled()) {
+			timeOutAction.setEnabled(true);
 		}	
 		
 	}

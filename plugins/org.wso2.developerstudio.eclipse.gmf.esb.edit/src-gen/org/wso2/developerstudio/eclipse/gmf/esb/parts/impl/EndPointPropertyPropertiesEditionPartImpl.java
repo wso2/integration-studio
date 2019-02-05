@@ -42,17 +42,22 @@ import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
-
+import org.eclipse.swt.events.MouseEvent;
+import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EndPointPropertyPropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFNameSpacedPropertyEditorDialog;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
 
 // End of user code
@@ -67,6 +72,19 @@ public class EndPointPropertyPropertiesEditionPartImpl extends CompositeProperti
 	protected Text value;
 	protected EMFComboViewer scope;
 	protected EMFComboViewer valueType;
+	// Start of user code  for valueExpression widgets declarations
+	protected NamespacedProperty valueExpression;
+	protected Text valueExpressionText;
+	
+	protected Control[] valueExpressionElements;
+	protected Control[] nameElements;
+	protected Control[] valueElements;
+	protected Control[] scopeElements;
+	protected Control[] valueTypeElements;
+	
+	protected Group propertiesGroup;
+	// End of user code
+
 
 
 
@@ -109,6 +127,7 @@ public class EndPointPropertyPropertiesEditionPartImpl extends CompositeProperti
 		propertiesStep.addStep(EsbViewsRepository.EndPointProperty.Properties.value);
 		propertiesStep.addStep(EsbViewsRepository.EndPointProperty.Properties.scope);
 		propertiesStep.addStep(EsbViewsRepository.EndPointProperty.Properties.valueType);
+		propertiesStep.addStep(EsbViewsRepository.EndPointProperty.Properties.valueExpression);
 		
 		
 		composer = new PartComposer(endPointPropertyStep) {
@@ -130,6 +149,11 @@ public class EndPointPropertyPropertiesEditionPartImpl extends CompositeProperti
 				if (key == EsbViewsRepository.EndPointProperty.Properties.valueType) {
 					return createValueTypeEMFComboViewer(parent);
 				}
+				// Start of user code for valueExpression addToPart creation
+				if ( key == EsbViewsRepository.EndPointProperty.Properties.valueExpression) {
+                    return createValueExpression(parent);
+                }
+				// End of user code
 				return parent;
 			}
 		};
@@ -137,10 +161,10 @@ public class EndPointPropertyPropertiesEditionPartImpl extends CompositeProperti
 	}
 
 	/**
-	 * 
-	 */
+     * @generated NOT
+     */
 	protected Composite createPropertiesGroup(Composite parent) {
-		Group propertiesGroup = new Group(parent, SWT.NONE);
+		propertiesGroup = new Group(parent, SWT.NONE);
 		propertiesGroup.setText(EsbMessages.EndPointPropertyPropertiesEditionPart_PropertiesGroupLabel);
 		GridData propertiesGroupData = new GridData(GridData.FILL_HORIZONTAL);
 		propertiesGroupData.horizontalSpan = 3;
@@ -151,9 +175,11 @@ public class EndPointPropertyPropertiesEditionPartImpl extends CompositeProperti
 		return propertiesGroup;
 	}
 
-	
+	/**
+     * @generated NOT
+     */
 	protected Composite createNameText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.EndPointProperty.Properties.name, EsbMessages.EndPointPropertyPropertiesEditionPart_NameLabel);
+		Control nameLabel = createDescription(parent, EsbViewsRepository.EndPointProperty.Properties.name, EsbMessages.EndPointPropertyPropertiesEditionPart_NameLabel);
 		name = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
@@ -193,16 +219,18 @@ public class EndPointPropertyPropertiesEditionPartImpl extends CompositeProperti
 		});
 		EditingUtils.setID(name, EsbViewsRepository.EndPointProperty.Properties.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.EndPointProperty.Properties.name, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		Control nameHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.EndPointProperty.Properties.name, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createNameText
-
+		nameElements = new Control[] {nameLabel, name, nameHelp};
 		// End of user code
 		return parent;
 	}
 
-	
+	/**
+     * @generated NOT
+     */
 	protected Composite createValueText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.EndPointProperty.Properties.value, EsbMessages.EndPointPropertyPropertiesEditionPart_ValueLabel);
+		Control valueLabel = createDescription(parent, EsbViewsRepository.EndPointProperty.Properties.value, EsbMessages.EndPointPropertyPropertiesEditionPart_ValueLabel);
 		value = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
 		value.setLayoutData(valueData);
@@ -242,16 +270,18 @@ public class EndPointPropertyPropertiesEditionPartImpl extends CompositeProperti
 		});
 		EditingUtils.setID(value, EsbViewsRepository.EndPointProperty.Properties.value);
 		EditingUtils.setEEFtype(value, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.EndPointProperty.Properties.value, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		Control valueHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.EndPointProperty.Properties.value, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createValueText
-
+		valueElements = new Control[] {valueLabel, value, valueHelp};
 		// End of user code
 		return parent;
 	}
 
-	
+	/**
+     * @generated NOT
+     */
 	protected Composite createScopeEMFComboViewer(Composite parent) {
-		createDescription(parent, EsbViewsRepository.EndPointProperty.Properties.scope, EsbMessages.EndPointPropertyPropertiesEditionPart_ScopeLabel);
+		Control scopeLabel = createDescription(parent, EsbViewsRepository.EndPointProperty.Properties.scope, EsbMessages.EndPointPropertyPropertiesEditionPart_ScopeLabel);
 		scope = new EMFComboViewer(parent);
 		scope.setContentProvider(new ArrayContentProvider());
 		scope.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -272,16 +302,18 @@ public class EndPointPropertyPropertiesEditionPartImpl extends CompositeProperti
 
 		});
 		scope.setID(EsbViewsRepository.EndPointProperty.Properties.scope);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.EndPointProperty.Properties.scope, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		Control scopeHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.EndPointProperty.Properties.scope, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createScopeEMFComboViewer
-
+		scopeElements = new Control[] {scopeLabel, scope.getCombo(), scopeHelp};
 		// End of user code
 		return parent;
 	}
 
-	
+	/**
+     * @generated NOT
+     */
 	protected Composite createValueTypeEMFComboViewer(Composite parent) {
-		createDescription(parent, EsbViewsRepository.EndPointProperty.Properties.valueType, EsbMessages.EndPointPropertyPropertiesEditionPart_ValueTypeLabel);
+		Control valueTypeLabel = createDescription(parent, EsbViewsRepository.EndPointProperty.Properties.valueType, EsbMessages.EndPointPropertyPropertiesEditionPart_ValueTypeLabel);
 		valueType = new EMFComboViewer(parent);
 		valueType.setContentProvider(new ArrayContentProvider());
 		valueType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -296,15 +328,16 @@ public class EndPointPropertyPropertiesEditionPartImpl extends CompositeProperti
 			 * 	
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
+			    validate();
 				if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EndPointPropertyPropertiesEditionPartImpl.this, EsbViewsRepository.EndPointProperty.Properties.valueType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getValueType()));
 			}
 
 		});
 		valueType.setID(EsbViewsRepository.EndPointProperty.Properties.valueType);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.EndPointProperty.Properties.valueType, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		Control valueTypeHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.EndPointProperty.Properties.valueType, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createValueTypeEMFComboViewer
-
+		valueTypeElements = new Control[] {valueTypeLabel, valueType.getCombo(), valueTypeHelp};
 		// End of user code
 		return parent;
 	}
@@ -485,6 +518,23 @@ public class EndPointPropertyPropertiesEditionPartImpl extends CompositeProperti
 
 
 
+	// Start of user code for valueExpression specific getters and setters implementation
+    @Override
+    public NamespacedProperty getValueExpression() {
+        return valueExpression;
+    }
+
+    @Override
+    public void setValueExpression(NamespacedProperty namespacedProperty) {
+        if (namespacedProperty != null) {
+            valueExpression = namespacedProperty;
+            valueExpressionText.setText(namespacedProperty.getPropertyValue());
+        }
+    }
+
+	
+	// End of user code
+
 	/**
 	 * {@inheritDoc}
 	 *
@@ -496,6 +546,76 @@ public class EndPointPropertyPropertiesEditionPartImpl extends CompositeProperti
 	}
 
 	// Start of user code additional methods
+	@Override
+    public void refresh() {
+        super.refresh();
+        validate();
+    }
+	
+	public void validate() {
+	    EEFPropertyViewUtil eu = new EEFPropertyViewUtil(view);
+        eu.clearElements(new Composite[] { propertiesGroup });
+        
+        eu.showEntry(nameElements, false);
+        eu.showEntry(scopeElements, false);
+        eu.showEntry(valueTypeElements, false);
+        if (getValueType() != null && getValueType().getName().equals(PropertyValueType.LITERAL.getName())) {
+            eu.showEntry(valueElements, false);
+        } else if (getValueType() != null && getValueType().getName().equals(PropertyValueType.EXPRESSION.getName())) {
+            eu.showEntry(valueExpressionElements, false);
+            eu.showEntry(valueElements, false);
+        }
+        
+        view.layout(true, true);
+	}
+	
+	protected Composite createValueExpression(Composite parent) {
+        Control valueExpressionLabel = createDescription(parent, EsbViewsRepository.EndPointProperty.Properties.valueExpression,
+                EsbMessages.EndPointPropertyPropertiesEditionPart_ValueExpressionLabel);
+
+        if (valueExpression == null) {
+            valueExpression = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
+        }
+
+        valueExpressionText = SWTUtils.createScrollableText(parent, SWT.BORDER);
+        GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
+        valueExpressionText.setLayoutData(valueData);
+        valueExpressionText.addMouseListener(new MouseListener() {
+            
+            @Override
+            public void mouseUp(MouseEvent e) {
+                // TODO Auto-generated method stub
+                
+            }
+            
+            @Override
+            public void mouseDown(MouseEvent e) {
+                EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL, valueExpression);
+                nspd.open();
+                valueExpressionText.setText(valueExpression.getPropertyValue());
+                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EndPointPropertyPropertiesEditionPartImpl.this, 
+                        EsbViewsRepository.EndPointProperty.Properties.valueExpression, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET,
+                        null, getValueExpression()));
+            }
+            
+            @Override
+            public void mouseDoubleClick(MouseEvent e) {
+                // TODO Auto-generated method stub
+                
+            }
+        });
+
+        EditingUtils.setID(valueExpressionText, EsbViewsRepository.EndPointProperty.Properties.valueExpression);
+        EditingUtils.setEEFtype(valueExpressionText, "eef::Text");
+        Control valueExpressionHelp = SWTUtils
+                .createHelpButton(parent,
+                        propertiesEditionComponent.getHelpContent(
+                                EsbViewsRepository.EndPointProperty.Properties.valueExpression, EsbViewsRepository.FORM_KIND),
+                        null);
+        valueExpressionElements = new Control[] { valueExpressionLabel, valueExpressionText, valueExpressionHelp };
+        return parent;
+    }
+
 	
 	// End of user code
 

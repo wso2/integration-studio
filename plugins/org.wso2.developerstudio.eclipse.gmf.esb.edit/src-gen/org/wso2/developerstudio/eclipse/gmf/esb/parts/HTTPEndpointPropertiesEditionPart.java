@@ -23,20 +23,6 @@ import org.eclipse.jface.viewers.ViewerFilter;
 public interface HTTPEndpointPropertiesEditionPart {
 
 	/**
-	 * @return the description
-	 * 
-	 */
-	public String getDescription();
-
-	/**
-	 * Defines a new description
-	 * @param newValue the new description to set
-	 * 
-	 */
-	public void setDescription(String newValue);
-
-
-	/**
 	 * @return the commentsList
 	 * 
 	 */
@@ -116,50 +102,6 @@ public interface HTTPEndpointPropertiesEditionPart {
 	 * 
 	 */
 	public void setDuplicate(Boolean newValue);
-
-
-
-
-	/**
-	 * Init the properties
-	 * @param current the current value
-	 * @param containgFeature the feature where to navigate if necessary
-	 * @param feature the feature to manage
-	 */
-	public void initProperties(ReferencesTableSettings settings);
-
-	/**
-	 * Update the properties
-	 * @param newValue the properties to update
-	 * 
-	 */
-	public void updateProperties();
-
-	/**
-	 * Adds the given filter to the properties edition editor.
-	 * 
-	 * @param filter
-	 *            a viewer filter
-	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
-	 */
-	public void addFilterToProperties(ViewerFilter filter);
-
-	/**
-	 * Adds the given filter to the properties edition editor.
-	 * 
-	 * @param filter
-	 *            a viewer filter
-	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
-	 */
-	public void addBusinessFilterToProperties(ViewerFilter filter);
-
-	/**
-	 * @return true if the given element is contained inside the properties table
-	 * 
-	 */
-	public boolean isContainedInPropertiesTable(EObject element);
 
 
 	/**
@@ -251,139 +193,6 @@ public interface HTTPEndpointPropertiesEditionPart {
 	 * 
 	 */
 	public void setAddressingSeparateListener(Boolean newValue);
-
-
-	/**
-	 * @return the timeOutDuration
-	 * 
-	 */
-	public String getTimeOutDuration();
-
-	/**
-	 * Defines a new timeOutDuration
-	 * @param newValue the new timeOutDuration to set
-	 * 
-	 */
-	public void setTimeOutDuration(String newValue);
-
-
-	/**
-	 * @return the timeOutAction
-	 * 
-	 */
-	public Enumerator getTimeOutAction();
-
-	/**
-	 * Init the timeOutAction
-	 * @param input the viewer input
-	 * @param current the current value
-	 */
-	public void initTimeOutAction(Object input, Enumerator current);
-
-	/**
-	 * Defines a new timeOutAction
-	 * @param newValue the new timeOutAction to set
-	 * 
-	 */
-	public void setTimeOutAction(Enumerator newValue);
-
-
-	/**
-	 * @return the retryErrorCodes
-	 * 
-	 */
-	public String getRetryErrorCodes();
-
-	/**
-	 * Defines a new retryErrorCodes
-	 * @param newValue the new retryErrorCodes to set
-	 * 
-	 */
-	public void setRetryErrorCodes(String newValue);
-
-
-	/**
-	 * @return the retryCount
-	 * 
-	 */
-	public String getRetryCount();
-
-	/**
-	 * Defines a new retryCount
-	 * @param newValue the new retryCount to set
-	 * 
-	 */
-	public void setRetryCount(String newValue);
-
-
-	/**
-	 * @return the retryDelay
-	 * 
-	 */
-	public String getRetryDelay();
-
-	/**
-	 * Defines a new retryDelay
-	 * @param newValue the new retryDelay to set
-	 * 
-	 */
-	public void setRetryDelay(String newValue);
-
-
-	/**
-	 * @return the suspendErrorCodes
-	 * 
-	 */
-	public String getSuspendErrorCodes();
-
-	/**
-	 * Defines a new suspendErrorCodes
-	 * @param newValue the new suspendErrorCodes to set
-	 * 
-	 */
-	public void setSuspendErrorCodes(String newValue);
-
-
-	/**
-	 * @return the suspendInitialDuration
-	 * 
-	 */
-	public String getSuspendInitialDuration();
-
-	/**
-	 * Defines a new suspendInitialDuration
-	 * @param newValue the new suspendInitialDuration to set
-	 * 
-	 */
-	public void setSuspendInitialDuration(String newValue);
-
-
-	/**
-	 * @return the suspendMaximumDuration
-	 * 
-	 */
-	public String getSuspendMaximumDuration();
-
-	/**
-	 * Defines a new suspendMaximumDuration
-	 * @param newValue the new suspendMaximumDuration to set
-	 * 
-	 */
-	public void setSuspendMaximumDuration(String newValue);
-
-
-	/**
-	 * @return the suspendProgressionFactor
-	 * 
-	 */
-	public String getSuspendProgressionFactor();
-
-	/**
-	 * Defines a new suspendProgressionFactor
-	 * @param newValue the new suspendProgressionFactor to set
-	 * 
-	 */
-	public void setSuspendProgressionFactor(String newValue);
 
 
 	/**
@@ -533,6 +342,197 @@ public interface HTTPEndpointPropertiesEditionPart {
 	 * 
 	 */
 	public void setHttpMethod(Enumerator newValue);
+
+
+	/**
+	 * @return the description
+	 * 
+	 */
+	public String getDescription();
+
+	/**
+	 * Defines a new description
+	 * @param newValue the new description to set
+	 * 
+	 */
+	public void setDescription(String newValue);
+
+
+
+
+	/**
+	 * Init the properties
+	 * @param current the current value
+	 * @param containgFeature the feature where to navigate if necessary
+	 * @param feature the feature to manage
+	 */
+	public void initProperties(ReferencesTableSettings settings);
+
+	/**
+	 * Update the properties
+	 * @param newValue the properties to update
+	 * 
+	 */
+	public void updateProperties();
+
+	/**
+	 * Adds the given filter to the properties edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addFilterToProperties(ViewerFilter filter);
+
+	/**
+	 * Adds the given filter to the properties edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addBusinessFilterToProperties(ViewerFilter filter);
+
+	/**
+	 * @return true if the given element is contained inside the properties table
+	 * 
+	 */
+	public boolean isContainedInPropertiesTable(EObject element);
+
+
+	/**
+	 * @return the suspendErrorCodes
+	 * 
+	 */
+	public String getSuspendErrorCodes();
+
+	/**
+	 * Defines a new suspendErrorCodes
+	 * @param newValue the new suspendErrorCodes to set
+	 * 
+	 */
+	public void setSuspendErrorCodes(String newValue);
+
+
+	/**
+	 * @return the suspendInitialDuration
+	 * 
+	 */
+	public String getSuspendInitialDuration();
+
+	/**
+	 * Defines a new suspendInitialDuration
+	 * @param newValue the new suspendInitialDuration to set
+	 * 
+	 */
+	public void setSuspendInitialDuration(String newValue);
+
+
+	/**
+	 * @return the suspendMaximumDuration
+	 * 
+	 */
+	public String getSuspendMaximumDuration();
+
+	/**
+	 * Defines a new suspendMaximumDuration
+	 * @param newValue the new suspendMaximumDuration to set
+	 * 
+	 */
+	public void setSuspendMaximumDuration(String newValue);
+
+
+	/**
+	 * @return the suspendProgressionFactor
+	 * 
+	 */
+	public String getSuspendProgressionFactor();
+
+	/**
+	 * Defines a new suspendProgressionFactor
+	 * @param newValue the new suspendProgressionFactor to set
+	 * 
+	 */
+	public void setSuspendProgressionFactor(String newValue);
+
+
+	/**
+	 * @return the retryErrorCodes
+	 * 
+	 */
+	public String getRetryErrorCodes();
+
+	/**
+	 * Defines a new retryErrorCodes
+	 * @param newValue the new retryErrorCodes to set
+	 * 
+	 */
+	public void setRetryErrorCodes(String newValue);
+
+
+	/**
+	 * @return the retryCount
+	 * 
+	 */
+	public String getRetryCount();
+
+	/**
+	 * Defines a new retryCount
+	 * @param newValue the new retryCount to set
+	 * 
+	 */
+	public void setRetryCount(String newValue);
+
+
+	/**
+	 * @return the retryDelay
+	 * 
+	 */
+	public String getRetryDelay();
+
+	/**
+	 * Defines a new retryDelay
+	 * @param newValue the new retryDelay to set
+	 * 
+	 */
+	public void setRetryDelay(String newValue);
+
+
+	/**
+	 * @return the timeOutDuration
+	 * 
+	 */
+	public String getTimeOutDuration();
+
+	/**
+	 * Defines a new timeOutDuration
+	 * @param newValue the new timeOutDuration to set
+	 * 
+	 */
+	public void setTimeOutDuration(String newValue);
+
+
+	/**
+	 * @return the timeOutAction
+	 * 
+	 */
+	public Enumerator getTimeOutAction();
+
+	/**
+	 * Init the timeOutAction
+	 * @param input the viewer input
+	 * @param current the current value
+	 */
+	public void initTimeOutAction(Object input, Enumerator current);
+
+	/**
+	 * Defines a new timeOutAction
+	 * @param newValue the new timeOutAction to set
+	 * 
+	 */
+	public void setTimeOutAction(Enumerator newValue);
 
 
 

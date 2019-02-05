@@ -167,6 +167,10 @@ public class EsbViewsRepository {
 			
 			public static String valueType = "esb::EndPointProperty::properties::valueType";
 			
+			// Start of user code for valueExpression ElementEditor key
+			public static String valueExpression = "esb::HeaderMediator::properties::valueExpression";
+			// End of user code
+			
 	
 		}
 	
@@ -1046,9 +1050,6 @@ public class EsbViewsRepository {
 		public static class Properties {
 	
 			
-			public static String description = "esb::HTTPEndpoint::properties::description";
-			
-			
 			public static String commentsList = "esb::HTTPEndpoint::properties::commentsList";
 			
 			
@@ -1062,9 +1063,6 @@ public class EsbViewsRepository {
 			
 			
 			public static String duplicate = "esb::HTTPEndpoint::properties::duplicate";
-			
-			
-			public static String properties_ = "esb::HTTPEndpoint::properties::properties_";
 			
 			
 			public static String reversed = "esb::HTTPEndpoint::properties::reversed";
@@ -1085,33 +1083,6 @@ public class EsbViewsRepository {
 			public static String addressingSeparateListener = "esb::HTTPEndpoint::properties::addressingSeparateListener";
 			
 			
-			public static String timeOutDuration = "esb::HTTPEndpoint::properties::timeOutDuration";
-			
-			
-			public static String timeOutAction = "esb::HTTPEndpoint::properties::timeOutAction";
-			
-			
-			public static String retryErrorCodes = "esb::HTTPEndpoint::properties::retryErrorCodes";
-			
-			
-			public static String retryCount = "esb::HTTPEndpoint::properties::retryCount";
-			
-			
-			public static String retryDelay = "esb::HTTPEndpoint::properties::retryDelay";
-			
-			
-			public static String suspendErrorCodes = "esb::HTTPEndpoint::properties::suspendErrorCodes";
-			
-			
-			public static String suspendInitialDuration = "esb::HTTPEndpoint::properties::suspendInitialDuration";
-			
-			
-			public static String suspendMaximumDuration = "esb::HTTPEndpoint::properties::suspendMaximumDuration";
-			
-			
-			public static String suspendProgressionFactor = "esb::HTTPEndpoint::properties::suspendProgressionFactor";
-			
-			
 			public static String format = "esb::HTTPEndpoint::properties::format";
 			
 			
@@ -1120,17 +1091,80 @@ public class EsbViewsRepository {
 			
 			public static String templateParameters = "esb::HTTPEndpoint::properties::templateParameters";
 			
+	
+		}
+	
+		public static class Basic {
+	
 			
-			public static String statisticsEnabled = "esb::HTTPEndpoint::properties::statisticsEnabled";
+			public static String statisticsEnabled = "esb::HTTPEndpoint::basic::statisticsEnabled";
 			
 			
-			public static String traceEnabled = "esb::HTTPEndpoint::properties::traceEnabled";
+			public static String traceEnabled = "esb::HTTPEndpoint::basic::traceEnabled";
 			
 			
-			public static String uRITemplate = "esb::HTTPEndpoint::properties::URITemplate";
+			public static String uRITemplate = "esb::HTTPEndpoint::basic::URITemplate";
 			
 			
-			public static String httpMethod = "esb::HTTPEndpoint::properties::HttpMethod";
+			public static String httpMethod = "esb::HTTPEndpoint::basic::HttpMethod";
+			
+	
+		}
+	
+		public static class EndpointDescription {
+	
+			
+			public static String description = "esb::HTTPEndpoint::endpointDescription::description";
+			
+	
+		}
+	
+		public static class EndpointProperties {
+	
+			
+			public static String properties = "esb::HTTPEndpoint::endpointProperties::properties";
+			
+	
+		}
+	
+		public static class EndpointSuspendState {
+	
+			
+			public static String suspendErrorCodes = "esb::HTTPEndpoint::endpointSuspendState::suspendErrorCodes";
+			
+			
+			public static String suspendInitialDuration = "esb::HTTPEndpoint::endpointSuspendState::suspendInitialDuration";
+			
+			
+			public static String suspendMaximumDuration = "esb::HTTPEndpoint::endpointSuspendState::suspendMaximumDuration";
+			
+			
+			public static String suspendProgressionFactor = "esb::HTTPEndpoint::endpointSuspendState::suspendProgressionFactor";
+			
+	
+		}
+	
+		public static class EndpointTimeoutState {
+	
+			
+			public static String retryErrorCodes = "esb::HTTPEndpoint::endpointTimeoutState::retryErrorCodes";
+			
+			
+			public static String retryCount = "esb::HTTPEndpoint::endpointTimeoutState::retryCount";
+			
+			
+			public static String retryDelay = "esb::HTTPEndpoint::endpointTimeoutState::retryDelay";
+			
+	
+		}
+	
+		public static class Timeout {
+	
+			
+			public static String timeOutDuration = "esb::HTTPEndpoint::timeout::timeOutDuration";
+			
+			
+			public static String timeOutAction = "esb::HTTPEndpoint::timeout::timeOutAction";
 			
 	
 		}
@@ -1889,7 +1923,7 @@ public class EsbViewsRepository {
 			public static String newPropertyName = "esb::PropertyMediator::properties::newPropertyName";
 			
 			// Start of user code for valueExpression ElementEditor key
-			public static String valueExpression = "esb::HeaderMediator::properties::valueExpression";
+			public static String valueExpression = "esb::PropertyMediator::properties::valueExpression";
 			// End of user code
 			
 	

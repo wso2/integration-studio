@@ -55,7 +55,7 @@ import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EndPointPropertyPropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 
@@ -73,6 +73,10 @@ public class EndPointPropertyPropertiesEditionPartForm extends SectionProperties
 	protected Text value;
 	protected EMFComboViewer scope;
 	protected EMFComboViewer valueType;
+	// Start of user code  for valueExpression widgets declarations
+	
+	// End of user code
+
 
 
 
@@ -122,6 +126,7 @@ public class EndPointPropertyPropertiesEditionPartForm extends SectionProperties
 		propertiesStep.addStep(EsbViewsRepository.EndPointProperty.Properties.value);
 		propertiesStep.addStep(EsbViewsRepository.EndPointProperty.Properties.scope);
 		propertiesStep.addStep(EsbViewsRepository.EndPointProperty.Properties.valueType);
+		propertiesStep.addStep(EsbViewsRepository.EndPointProperty.Properties.valueExpression);
 		
 		
 		composer = new PartComposer(endPointPropertyStep) {
@@ -143,6 +148,9 @@ public class EndPointPropertyPropertiesEditionPartForm extends SectionProperties
 				if (key == EsbViewsRepository.EndPointProperty.Properties.valueType) {
 					return createValueTypeEMFComboViewer(widgetFactory, parent);
 				}
+				// Start of user code for valueExpression addToPart creation
+				
+				// End of user code
 				return parent;
 			}
 		};
@@ -536,6 +544,21 @@ public class EndPointPropertyPropertiesEditionPartForm extends SectionProperties
 
 
 
+
+	// Start of user code for valueExpression specific getters and setters implementation
+    @Override
+    public NamespacedProperty getValueExpression() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void setValueExpression(NamespacedProperty namespacedProperty) {
+        // TODO Auto-generated method stub
+        
+    }
+	
+	// End of user code
 
 	/**
 	 * {@inheritDoc}

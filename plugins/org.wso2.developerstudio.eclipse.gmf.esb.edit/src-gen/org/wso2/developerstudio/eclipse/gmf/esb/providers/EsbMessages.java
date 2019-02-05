@@ -164,6 +164,24 @@ public class EsbMessages extends NLS {
 	public static String HTTPEndpointPropertiesEditionPart_PropertiesGroupLabel;
 
 	
+	public static String HTTPEndpointPropertiesEditionPart_BasicGroupLabel;
+
+	
+	public static String HTTPEndpointPropertiesEditionPart_EndpointDescriptionGroupLabel;
+
+	
+	public static String HTTPEndpointPropertiesEditionPart_EndpointPropertiesGroupLabel;
+
+	
+	public static String HTTPEndpointPropertiesEditionPart_EndpointSuspendStateGroupLabel;
+
+	
+	public static String HTTPEndpointPropertiesEditionPart_EndpointTimeoutStateGroupLabel;
+
+	
+	public static String HTTPEndpointPropertiesEditionPart_TimeoutGroupLabel;
+
+	
 	public static String HTTPEndPointInputConnectorPropertiesEditionPart_PropertiesGroupLabel;
 
 	
@@ -3295,6 +3313,9 @@ public class EsbMessages extends NLS {
 	public static String EndPointPropertyPropertiesEditionPart_ValueTypeLabel;
 
 	
+	public static String EndPointPropertyPropertiesEditionPart_ValueExpressionLabel;
+
+	
 	public static String ProxyServicePropertiesEditionPart_NameLabel;
 
 	
@@ -3751,9 +3772,6 @@ public class EsbMessages extends NLS {
 	public static String TemplateEndpointParameterPropertiesEditionPart_ParameterValueLabel;
 
 	
-	public static String HTTPEndpointPropertiesEditionPart_DescriptionLabel;
-
-	
 	public static String HTTPEndpointPropertiesEditionPart_CommentsListLabel;
 
 	
@@ -3767,9 +3785,6 @@ public class EsbMessages extends NLS {
 
 	
 	public static String HTTPEndpointPropertiesEditionPart_DuplicateLabel;
-
-	
-	public static String HTTPEndpointPropertiesEditionPart_PropertiesLabel;
 
 	
 	public static String HTTPEndpointPropertiesEditionPart_ReversedLabel;
@@ -3788,33 +3803,6 @@ public class EsbMessages extends NLS {
 
 	
 	public static String HTTPEndpointPropertiesEditionPart_AddressingSeparateListenerLabel;
-
-	
-	public static String HTTPEndpointPropertiesEditionPart_TimeOutDurationLabel;
-
-	
-	public static String HTTPEndpointPropertiesEditionPart_TimeOutActionLabel;
-
-	
-	public static String HTTPEndpointPropertiesEditionPart_RetryErrorCodesLabel;
-
-	
-	public static String HTTPEndpointPropertiesEditionPart_RetryCountLabel;
-
-	
-	public static String HTTPEndpointPropertiesEditionPart_RetryDelayLabel;
-
-	
-	public static String HTTPEndpointPropertiesEditionPart_SuspendErrorCodesLabel;
-
-	
-	public static String HTTPEndpointPropertiesEditionPart_SuspendInitialDurationLabel;
-
-	
-	public static String HTTPEndpointPropertiesEditionPart_SuspendMaximumDurationLabel;
-
-	
-	public static String HTTPEndpointPropertiesEditionPart_SuspendProgressionFactorLabel;
 
 	
 	public static String HTTPEndpointPropertiesEditionPart_FormatLabel;
@@ -3836,6 +3824,39 @@ public class EsbMessages extends NLS {
 
 	
 	public static String HTTPEndpointPropertiesEditionPart_HttpMethodLabel;
+
+	
+	public static String HTTPEndpointPropertiesEditionPart_DescriptionLabel;
+
+	
+	public static String HTTPEndpointPropertiesEditionPart_PropertiesLabel;
+
+	
+	public static String HTTPEndpointPropertiesEditionPart_SuspendErrorCodesLabel;
+
+	
+	public static String HTTPEndpointPropertiesEditionPart_SuspendInitialDurationLabel;
+
+	
+	public static String HTTPEndpointPropertiesEditionPart_SuspendMaximumDurationLabel;
+
+	
+	public static String HTTPEndpointPropertiesEditionPart_SuspendProgressionFactorLabel;
+
+	
+	public static String HTTPEndpointPropertiesEditionPart_RetryErrorCodesLabel;
+
+	
+	public static String HTTPEndpointPropertiesEditionPart_RetryCountLabel;
+
+	
+	public static String HTTPEndpointPropertiesEditionPart_RetryDelayLabel;
+
+	
+	public static String HTTPEndpointPropertiesEditionPart_TimeOutDurationLabel;
+
+	
+	public static String HTTPEndpointPropertiesEditionPart_TimeOutActionLabel;
 
 	
 	public static String HTTPEndPointInputConnectorPropertiesEditionPart_IncomingLinksLabel;

@@ -51,8 +51,9 @@ import org.wso2.developerstudio.eclipse.gmf.esb.APIResourceInSequenceInputConnec
 import org.wso2.developerstudio.eclipse.gmf.esb.ApiResourceUrlStyle;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.Protocol;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.SequenceType;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.APIResourcePropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 
@@ -145,6 +146,9 @@ public class APIResourcePropertiesEditionComponent extends SinglePartPropertiesE
 				basePart.setInSequenceName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, aPIResource.getInSequenceName()));
 			
 			// Start of user code  for inSequenceKey command update
+			if (isAccessible(EsbViewsRepository.APIResource.InSequence.inSequenceKey)) {
+                basePart.setInSequenceKey(aPIResource.getInSequenceKey());
+            }
 			// End of user code
 			
 			if (isAccessible(EsbViewsRepository.APIResource.OutSequence.outSequenceType)) {
@@ -154,6 +158,9 @@ public class APIResourcePropertiesEditionComponent extends SinglePartPropertiesE
 				basePart.setOutSequenceName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, aPIResource.getOutSequenceName()));
 			
 			// Start of user code  for outSequenceKey command update
+			if (isAccessible(EsbViewsRepository.APIResource.OutSequence.outSequenceKey)) {
+                basePart.setOutSequenceKey(aPIResource.getOutSequenceKey());
+            }
 			// End of user code
 			
 			if (isAccessible(EsbViewsRepository.APIResource.FaultSequence.faultSequenceType)) {
@@ -163,6 +170,9 @@ public class APIResourcePropertiesEditionComponent extends SinglePartPropertiesE
 				basePart.setFaultSequenceName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, aPIResource.getFaultSequenceName()));
 			
 			// Start of user code  for faultSequenceKey command update
+			if (isAccessible(EsbViewsRepository.APIResource.FaultSequence.faultSequenceKey)) {
+                basePart.setFaultSequenceKey(aPIResource.getFaultSequenceKey());
+            }
 			// End of user code
 			
 			// init filters
@@ -382,6 +392,12 @@ public class APIResourcePropertiesEditionComponent extends SinglePartPropertiesE
 		}
 		if (EsbViewsRepository.APIResource.InSequence.inSequenceKey == event.getAffectedEditor()) {
 			// Start of user code for updateInSequenceKey method body
+		    if (event.getNewValue() != null) {
+                RegistryKeyProperty rkp = (RegistryKeyProperty) event.getNewValue();
+                aPIResource.setInSequenceKey(rkp);
+            } else {
+                aPIResource.setInSequenceKey(EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty());
+            }
 			// End of user code
 			
 		}
@@ -393,6 +409,12 @@ public class APIResourcePropertiesEditionComponent extends SinglePartPropertiesE
 		}
 		if (EsbViewsRepository.APIResource.OutSequence.outSequenceKey == event.getAffectedEditor()) {
 			// Start of user code for updateOutSequenceKey method body
+		    if (event.getNewValue() != null) {
+                RegistryKeyProperty rkp = (RegistryKeyProperty) event.getNewValue();
+                aPIResource.setOutSequenceKey(rkp);
+            } else {
+                aPIResource.setOutSequenceKey(EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty());
+            }
 			// End of user code
 			
 		}
@@ -404,6 +426,12 @@ public class APIResourcePropertiesEditionComponent extends SinglePartPropertiesE
 		}
 		if (EsbViewsRepository.APIResource.FaultSequence.faultSequenceKey == event.getAffectedEditor()) {
 			// Start of user code for updateFaultSequenceKey method body
+		    if (event.getNewValue() != null) {
+                RegistryKeyProperty rkp = (RegistryKeyProperty) event.getNewValue();
+                aPIResource.setFaultSequenceKey(rkp);
+            } else {
+                aPIResource.setFaultSequenceKey(EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty());
+            }
 			// End of user code
 			
 		}
@@ -471,7 +499,15 @@ public class APIResourcePropertiesEditionComponent extends SinglePartPropertiesE
 				}
 			}
 					// Start of user code for inSequenceKey live update
-					
+			if (EsbPackage.eINSTANCE.getAPIResource_InSequenceKey().equals(msg.getFeature())
+                    && msg.getNotifier().equals(semanticObject)
+                    && isAccessible(EsbViewsRepository.APIResource.InSequence.inSequenceKey)) {
+                if (msg.getNewValue() != null) {
+                    basePart.setInSequenceKey((RegistryKeyProperty) msg.getNewValue());
+                } else {
+                    basePart.setInSequenceKey(EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty());
+                }
+            }
 					// End of user code
 			
 			if (EsbPackage.eINSTANCE.getAPIResource_OutSequenceType().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EsbViewsRepository.APIResource.OutSequence.outSequenceType))
@@ -485,7 +521,15 @@ public class APIResourcePropertiesEditionComponent extends SinglePartPropertiesE
 				}
 			}
 					// Start of user code for outSequenceKey live update
-					
+			if (EsbPackage.eINSTANCE.getAPIResource_OutSequenceKey().equals(msg.getFeature())
+                    && msg.getNotifier().equals(semanticObject)
+                    && isAccessible(EsbViewsRepository.APIResource.OutSequence.outSequenceKey)) {
+                if (msg.getNewValue() != null) {
+                    basePart.setOutSequenceKey((RegistryKeyProperty) msg.getNewValue());
+                } else {
+                    basePart.setOutSequenceKey(EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty());
+                }
+            }
 					// End of user code
 			
 			if (EsbPackage.eINSTANCE.getAPIResource_FaultSequenceType().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EsbViewsRepository.APIResource.FaultSequence.faultSequenceType))
@@ -499,7 +543,15 @@ public class APIResourcePropertiesEditionComponent extends SinglePartPropertiesE
 				}
 			}
 					// Start of user code for faultSequenceKey live update
-					
+			if (EsbPackage.eINSTANCE.getAPIResource_FaultSequenceKey().equals(msg.getFeature())
+                    && msg.getNotifier().equals(semanticObject)
+                    && isAccessible(EsbViewsRepository.APIResource.FaultSequence.faultSequenceKey)) {
+                if (msg.getNewValue() != null) {
+                    basePart.setFaultSequenceKey((RegistryKeyProperty) msg.getNewValue());
+                } else {
+                    basePart.setFaultSequenceKey(EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty());
+                }
+            }
 					// End of user code
 			
 			

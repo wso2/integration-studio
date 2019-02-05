@@ -83,9 +83,28 @@ public class MicroIntegratorInstance {
 	 */
 	private void setupServer() {
 
-		IRuntimeType runtimeType = ServerCore
-				.findRuntimeType("org.wso2.developerstudio.eclipse.carbon.runtime44microei");
-		IServerType serverType = ServerCore.findServerType("org.wso2.developerstudio.eclipse.carbon.server44microei");
+        IRuntimeType runtimeType = ServerCore
+                .findRuntimeType("org.wso2.developerstudio.eclipse.carbon.runtime44microei");
+        IServerType serverType = ServerCore.findServerType("org.wso2.developerstudio.eclipse.carbon.server44microei");
+
+        // Remove the already existing servers and runtime of micro-ei
+        try {
+            IRuntime[] availableRuntimes = ServerCore.getRuntimes();
+            for (IRuntime temRuntime : availableRuntimes) {
+                if (temRuntime.getRuntimeType().equals(runtimeType)) {
+                    temRuntime.delete();
+                }
+            }
+
+            IServer[] availableServers = ServerCore.getServers();
+            for (IServer tempServers : availableServers) {
+                if (tempServers.getServerType().equals(serverType)) {
+                    tempServers.delete();
+                }
+            }
+        } catch (CoreException e1) {
+            log.error("Exception occured while trying to delete the old runtime", e1);
+        }	    
 
 		try {
 

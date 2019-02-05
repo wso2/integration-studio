@@ -1511,6 +1511,8 @@
          </propertySection>
       </propertySections>
    </extension>
-
+<extension point="org.eclipse.ui.startup">
+   <startup class="org.wso2.developerstudio.datamapper.diagram.DatamapperEarlyStartupHandler"/>
+</extension>
    <!-- optionally, specify keybindings -->
 </plugin>

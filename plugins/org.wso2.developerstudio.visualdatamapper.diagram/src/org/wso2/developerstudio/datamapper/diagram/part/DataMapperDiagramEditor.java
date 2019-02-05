@@ -21,6 +21,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 
+import javax.swing.event.DocumentListener;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 
@@ -39,6 +40,7 @@ import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edit.ui.provider.NotifyChangedToViewerRefresh;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.workspace.util.WorkspaceSynchronizer;
 import org.eclipse.gef.KeyHandler;
@@ -49,26 +51,38 @@ import org.eclipse.gmf.runtime.diagram.core.preferences.PreferencesHint;
 import org.eclipse.gmf.runtime.diagram.ui.actions.ActionIds;
 import org.eclipse.gmf.runtime.diagram.ui.internal.parts.DirectEditKeyHandler;
 import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramGraphicalViewer;
+import org.eclipse.gmf.runtime.diagram.ui.resources.editor.document.DocumentEvent;
 import org.eclipse.gmf.runtime.diagram.ui.resources.editor.document.IDiagramDocument;
 import org.eclipse.gmf.runtime.diagram.ui.resources.editor.document.IDocument;
+import org.eclipse.gmf.runtime.diagram.ui.resources.editor.document.IDocumentListener;
 import org.eclipse.gmf.runtime.diagram.ui.resources.editor.document.IDocumentProvider;
 import org.eclipse.gmf.runtime.diagram.ui.resources.editor.parts.DiagramDocumentEditor;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.util.IPropertyChangeListener;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.window.Window;
 import org.eclipse.osgi.util.NLS;
+import org.eclipse.swt.events.FocusEvent;
+import org.eclipse.swt.events.FocusListener;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorMatchingStrategy;
 import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.IFileEditorInput;
+import org.eclipse.ui.IPageListener;
+import org.eclipse.ui.IPartListener2;
+import org.eclipse.ui.ISelectionService;
 import org.eclipse.ui.IWorkbench;
+import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.IWorkbenchPart;
+import org.eclipse.ui.IWorkbenchPartReference;
 import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.WorkbenchException;
 import org.eclipse.ui.dialogs.SaveAsDialog;
@@ -90,6 +104,9 @@ import org.wso2.developerstudio.datamapper.diagram.tree.generator.SchemaTransfor
 import org.wso2.developerstudio.datamapper.diagram.xslt.XSLTStyleSheetGenerationHandler;
 import org.wso2.developerstudio.datamapper.impl.DataMapperRootImpl;
 import org.wso2.developerstudio.datamapper.impl.TreeNodeImpl;
+import org.wso2.developerstudio.datamapper.servlets.DataMapperConfigHolder;
+import org.wso2.developerstudio.datamapper.views.RealtimeDatamapperView;
+import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.xml.sax.SAXException;
@@ -98,7 +115,18 @@ import org.xml.sax.SAXException;
  * @generated
  */
 public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IGotoMarker {
-
+	RealtimeDatamapperView realtimeDatamapperView = null;
+    private static final String DATA_MAPPER_TEST_VIEW = "org.wso2.developerstudio.datamapper.views.RealtimeDatamapperView";
+    private static final String DATA_MAPPER_PERSPECTIVE = "org.wso2.developerstudio.datamapper.diagram.custom.perspective";
+	
+    @Override
+    public void dispose() {
+        // TODO Auto-generated method stub
+        super.dispose();
+        // Closing the datamapper test view when editor view is closed.
+        PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().hideView(realtimeDatamapperView);
+    }
+	   
 	/**
 	 * @generated NOT
 	 */
@@ -122,16 +150,118 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
 	/**
 	 * @generated NOT
 	 */
+    public DataMapperDiagramEditor() {
+        super(true);
+        IWorkbench workbench = PlatformUI.getWorkbench();
+        final IWorkbenchWindow window = workbench.getActiveWorkbenchWindow();
+        try {
+            workbench.showPerspective(DATA_MAPPER_PERSPECTIVE, window); // $NON-NLS-1$
+            PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        loadInitialConfigFileLocations();
+                        realtimeDatamapperView = (RealtimeDatamapperView) PlatformUI.getWorkbench()
+                                .getActiveWorkbenchWindow().getActivePage().showView(DATA_MAPPER_TEST_VIEW);
+                        realtimeDatamapperView.setURL();
+                    } catch (PartInitException e) {
+                        
+                    }
+                }
+            });
+        } catch (WorkbenchException e) {
+        }
 
-	public DataMapperDiagramEditor() {
-		super(true);
-		IWorkbench workbench = PlatformUI.getWorkbench();
-		IWorkbenchWindow window = workbench.getActiveWorkbenchWindow();
-		try {
-			workbench.showPerspective("org.wso2.developerstudio.datamapper.diagram.custom.perspective", window); //$NON-NLS-1$
-		} catch (WorkbenchException e) {
-		}
-	}
+        // Listener to detect events on datamapper editor part
+        IPartListener2 pl = new IPartListener2() {
+            public void partActivated(IWorkbenchPartReference ref) {
+
+            }
+
+            @Override
+            public void partBroughtToTop(IWorkbenchPartReference partRef) {
+
+            }
+
+            @Override
+            public void partClosed(IWorkbenchPartReference partRef) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void partDeactivated(IWorkbenchPartReference partRef) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void partOpened(IWorkbenchPartReference partRef) {
+            }
+
+            @Override
+            public void partHidden(IWorkbenchPartReference partRef) {
+                // TODO Auto-generated method stub
+
+            }
+
+            // Changing the browser contents when the active datamapper editor window changed
+            @Override
+            public void partVisible(final IWorkbenchPartReference partRef) {
+                IWorkbenchPart part = partRef.getPart(false);
+                if (partRef.getPage().getActiveEditor() instanceof DataMapperDiagramEditor) {
+                    DataMapperDiagramEditor temp = (DataMapperDiagramEditor) partRef.getPage().getActiveEditor();
+                    if (part == window.getActivePage().getActiveEditor()) {
+                        temp.loadInitialConfigFileLocations();
+                        reloadDataMapperTestWindow();
+                    }
+                }
+            }
+
+            @Override
+            public void partInputChanged(IWorkbenchPartReference partRef) {
+                // TODO Auto-generated method stub
+
+            }
+        };
+        window.getActivePage().addPartListener(pl);
+    }
+	
+    // Show datamapper test window and reload web page.
+    private void reloadDataMapperTestWindow() {
+        PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    realtimeDatamapperView = (RealtimeDatamapperView) PlatformUI.getWorkbench()
+                            .getActiveWorkbenchWindow().getActivePage().showView(DATA_MAPPER_TEST_VIEW);
+                    realtimeDatamapperView.setURL();
+                } catch (PartInitException e) {
+
+                }
+            }
+        });
+    }
+    
+	// load inputSchema / outputSchema and DMC file locations and update the singleton class.
+    private void loadInitialConfigFileLocations() {
+
+        File inputSchemaFile = createSchemaFile(INPUT_SCHEMA_ID);
+        DataMapperConfigHolder.getInstance().setInputSchemaPath(inputSchemaFile.getAbsolutePath());
+        File outputSchemaFile = createSchemaFile(OUTPUT_SCHEMA_ID);
+        DataMapperConfigHolder.getInstance().setOutputSchemaPath(outputSchemaFile.getAbsolutePath());
+
+        IEditorInput editorInput = this.getEditorInput();
+
+        if (editorInput instanceof IFileEditorInput) {
+            IFile diagramFile = ((FileEditorInput) editorInput).getFile();
+            String configFilePath = diagramFile.getFullPath().toString();
+            configFilePath = configFilePath.replaceAll(".datamapper_diagram$", ".dmc");
+            IFile configFile = diagramFile.getWorkspace().getRoot().getFile(new Path(configFilePath));
+            String absolutePath = configFile.getLocation().toFile().getAbsoluteFile().getPath();
+            DataMapperConfigHolder.getInstance().setDmcPath(absolutePath);
+        }
+    }
 
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
@@ -409,7 +539,7 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
 			schemaFile = createSchemaFile(INPUT_SCHEMA_ID);
 			content = "";
 		}
-
+		DataMapperConfigHolder.getInstance().setInputSchemaPath(schemaFile.getAbsolutePath());
 		schemaTransformer.updateSchemaFile(content, schemaFile);
 
 		// Model root of output schema tree
@@ -424,11 +554,14 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
 		}
 		// Empty tree node, clear the file
 		else {
-			schemaFile = createSchemaFile(OUTPUT_SCHEMA_ID);
+			schemaFile = createSchemaFile(OUTPUT_SCHEMA_ID);            
 			content = "";
 		}
+		DataMapperConfigHolder.getInstance().setOutputSchemaPath(schemaFile.getAbsolutePath());
 		schemaTransformer.updateSchemaFile(content, schemaFile);
-
+		
+		// reload the datamapper test window once the new schema is saved.
+		reloadDataMapperTestWindow();
 	}
 
 	private File createSchemaFile(String schemaType) {
@@ -467,6 +600,8 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
 			String configFilePath = diagramFile.getFullPath().toString();
 			configFilePath = configFilePath.replaceAll(".datamapper_diagram$", ".dmc"); //$NON-NLS-1$ //$NON-NLS-2$
 			IFile configFile = diagramFile.getWorkspace().getRoot().getFile(new Path(configFilePath));
+			String absolutePath = configFile.getLocation().toFile().getAbsoluteFile().getPath();
+			DataMapperConfigHolder.getInstance().setDmcPath(absolutePath);
 			InputStream is = null;
 			try {
 				DataMapperRoot rootDiagram = (DataMapperRoot) this.getDiagram().getElement();

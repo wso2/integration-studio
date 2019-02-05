@@ -12,6 +12,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 
 import org.eclipse.jface.viewers.ViewerFilter;
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 
 
 // End of user code
@@ -213,6 +215,16 @@ public interface ScriptMediatorPropertiesEditionPart {
 
 
 
+	// Start of user code for Script Static Key specific getters and setters declaration
+    public RegistryKeyProperty getScriptStaticKey();
+    
+    public void setScriptStaticKey(RegistryKeyProperty registryKeyProperty);
+	// End of user code
+	// Start of user code for Script Dynamic Key specific getters and setters declaration
+	public NamespacedProperty getScriptDynamicKey();
+    
+    public void setScriptDynamicKey(NamespacedProperty nameSpacedProperty);
+	// End of user code
 
 	/**
 	 * Returns the internationalized title text.

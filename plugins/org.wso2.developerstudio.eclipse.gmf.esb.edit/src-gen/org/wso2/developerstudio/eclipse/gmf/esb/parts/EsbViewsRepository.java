@@ -3005,6 +3005,14 @@ public class EsbViewsRepository {
 			
 			public static String scriptKeys = "esb::ScriptMediator::properties::scriptKeys";
 			
+			// Start of user code for Script Static Key ElementEditor key
+			public static String scriptStaticKey = "esb::ScriptMediator::properties::Script Static Key";
+			// End of user code
+			
+			// Start of user code for Script Dynamic Key ElementEditor key
+			public static String scriptDynamicKey = "esb::ScriptMediator::properties::Script Dynamic Key";
+			// End of user code
+			
 	
 		}
 	

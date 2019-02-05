@@ -140,7 +140,7 @@ public class PayloadFactoryArgumentImpl extends EsbNodeImpl implements PayloadFa
         NamespacedProperty argumentExpression = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
         argumentExpression.setPrettyName("Argument Expression");
         argumentExpression.setPropertyName("Argument Expression");
-        argumentExpression.setPropertyValue("/default/expression");
+        argumentExpression.setPropertyValue("");
         setArgumentExpression(argumentExpression);
     }
 

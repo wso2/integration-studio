@@ -155,13 +155,13 @@ public class StoreMediatorImpl extends MediatorImpl implements StoreMediator {
     protected StoreMediatorImpl() {
         super();
         setMessageStore("");
-        onStoreSequence = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
-        DeveloperStudioProviderUtils.addFilter((Map<String, List<String>>) onStoreSequence.getFilters(),
+        RegistryKeyProperty newonStoreSequence = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
+        DeveloperStudioProviderUtils.addFilter((Map<String, List<String>>) newonStoreSequence.getFilters(),
                 CSProviderConstants.FILTER_MEDIA_TYPE, ESBMediaTypeConstants.MEDIA_TYPE_SEQUENCE);
-        onStoreSequence.setPrettyName("onStore Sequence");
-        onStoreSequence.setKeyName("onStore Sequence");
-        onStoreSequence.setKeyValue("");
-        setOnStoreSequence(onStoreSequence);
+        newonStoreSequence.setPrettyName("onStore Sequence");
+        newonStoreSequence.setKeyName("onStore Sequence");
+        newonStoreSequence.setKeyValue("");
+        setOnStoreSequence(newonStoreSequence);
 
         // Populate add name-spaced property.
         NamespacedProperty payloadXpath = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();

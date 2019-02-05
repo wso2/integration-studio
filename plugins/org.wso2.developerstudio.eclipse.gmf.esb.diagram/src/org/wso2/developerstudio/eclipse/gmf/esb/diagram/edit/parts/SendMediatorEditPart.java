@@ -505,13 +505,15 @@ public class SendMediatorEditPart extends SingleCompartmentComplexFiguredAbstrac
                             .createSendMediator((EsbNode) sendMediatorDataModel, true);
 
                     SendMediatorSerializer sendMediatorSerializer = new SendMediatorSerializer();
-                    OMElement omElement = sendMediatorSerializer.serializeSpecificMediator(sendMediator);
-
-                    if (StringUtils
-                            .isEmpty(MediatorValidationUtil.validateMediatorsFromOEMElement(omElement, "send"))) {
-                        GraphicalValidatorUtil.removeValidationMark(this);
-                    } else {
-                        GraphicalValidatorUtil.addValidationMark(this);
+                    if (sendMediator != null) {
+	                    OMElement omElement = sendMediatorSerializer.serializeSpecificMediator(sendMediator);
+	
+	                    if (StringUtils
+	                            .isEmpty(MediatorValidationUtil.validateMediatorsFromOEMElement(omElement, "send"))) {
+	                        GraphicalValidatorUtil.removeValidationMark(this);
+	                    } else {
+	                        GraphicalValidatorUtil.addValidationMark(this);
+	                    }
                     }
                 } catch (JaxenException | SynapseException e) {
                     GraphicalValidatorUtil.addValidationMark(this);

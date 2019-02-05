@@ -198,7 +198,7 @@ public class SendMediatorImpl extends MediatorImpl implements SendMediator {
     protected SendMediatorImpl() {
         super();
         // Static Receiving Sequence
-        staticReceivingSequence = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
+        RegistryKeyProperty staticReceivingSequence = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
         DeveloperStudioProviderUtils.addFilter((Map<String, List<String>>) staticReceivingSequence.getFilters(),
                 CSProviderConstants.FILTER_MEDIA_TYPE, ESBMediaTypeConstants.MEDIA_TYPE_SEQUENCE);
         staticReceivingSequence.setPrettyName("Static");
@@ -207,11 +207,12 @@ public class SendMediatorImpl extends MediatorImpl implements SendMediator {
         setStaticReceivingSequence(staticReceivingSequence);
 
         // Dynamic Receiving Sequence
-        dynamicReceivingSequence = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
+        NamespacedProperty dynamicReceivingSequence = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
         dynamicReceivingSequence.setPropertyName("receive");
         dynamicReceivingSequence.setPropertyValue(DEFAULT_XPATH_PROPERTY_VALUE);
         dynamicReceivingSequence.setPrettyName("Dynamic");
         setDynamicReceivingSequence(dynamicReceivingSequence);
+        setSkipSerialization(false);
     }
 
     /**

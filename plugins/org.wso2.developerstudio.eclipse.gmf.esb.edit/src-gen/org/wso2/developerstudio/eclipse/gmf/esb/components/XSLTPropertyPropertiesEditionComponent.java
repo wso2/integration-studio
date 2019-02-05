@@ -31,9 +31,10 @@ import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType;
 import org.wso2.developerstudio.eclipse.gmf.esb.XSLTProperty;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.XSLTPropertyPropertiesEditionPart;
 
@@ -86,9 +87,18 @@ public class XSLTPropertyPropertiesEditionComponent extends SinglePartProperties
 			if (isAccessible(EsbViewsRepository.XSLTProperty.Properties.propertyValue))
 				basePart.setPropertyValue(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, xSLTProperty.getPropertyValue()));
 			
+			// Start of user code  for propertyExpression command update
+	         if (isAccessible(EsbViewsRepository.XSLTProperty.Properties.propertyExpression)) {
+	                basePart.setExpressionValue(xSLTProperty.getPropertyExpression());
+	            }
+			// End of user code
+			
 			// init filters
 			
 			
+			
+			// Start of user code  for propertyExpression filter update
+			// End of user code
 			
 			// init values for referenced views
 			
@@ -97,6 +107,7 @@ public class XSLTPropertyPropertiesEditionComponent extends SinglePartProperties
 		}
 		setInitializing(false);
 	}
+
 
 
 
@@ -117,6 +128,9 @@ public class XSLTPropertyPropertiesEditionComponent extends SinglePartProperties
 		if (editorKey == EsbViewsRepository.XSLTProperty.Properties.propertyValue) {
 			return EsbPackage.eINSTANCE.getAbstractNameValueExpressionProperty_PropertyValue();
 		}
+		if (editorKey == EsbViewsRepository.XSLTProperty.Properties.propertyExpression) {
+			return EsbPackage.eINSTANCE.getAbstractNameValueExpressionProperty_PropertyExpression();
+		}
 		return super.associatedFeature(editorKey);
 	}
 
@@ -135,6 +149,17 @@ public class XSLTPropertyPropertiesEditionComponent extends SinglePartProperties
 		}
 		if (EsbViewsRepository.XSLTProperty.Properties.propertyValue == event.getAffectedEditor()) {
 			xSLTProperty.setPropertyValue((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
+		}
+		if (EsbViewsRepository.XSLTProperty.Properties.propertyExpression == event.getAffectedEditor()) {
+			// Start of user code for updatePropertyExpression method body
+	          if (event.getNewValue() != null) {
+	                NamespacedProperty nsp = (NamespacedProperty) event.getNewValue();
+	                xSLTProperty.setPropertyExpression(nsp);
+	            } else {
+	                xSLTProperty.setPropertyExpression(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+	            }
+			// End of user code
+			
 		}
 	}
 
@@ -163,6 +188,18 @@ public class XSLTPropertyPropertiesEditionComponent extends SinglePartProperties
 					basePart.setPropertyValue("");
 				}
 			}
+					// Start of user code for propertyExpression live update
+	           if (EsbPackage.eINSTANCE.getAbstractNameValueExpressionProperty_PropertyExpression()
+	                    .equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null
+	                    && isAccessible(EsbViewsRepository.XSLTProperty.Properties.propertyExpression)) {
+	                if (msg.getNewValue() != null) {
+	                    basePart.setExpressionValue((NamespacedProperty) msg.getNewValue());
+	                } else {
+	                    basePart.setExpressionValue(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+	                }
+	            }
+					// End of user code
+			
 			
 		}
 	}
@@ -177,7 +214,8 @@ public class XSLTPropertyPropertiesEditionComponent extends SinglePartProperties
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			EsbPackage.eINSTANCE.getAbstractNameValueExpressionProperty_PropertyName(),
 			EsbPackage.eINSTANCE.getAbstractNameValueExpressionProperty_PropertyValueType(),
-			EsbPackage.eINSTANCE.getAbstractNameValueExpressionProperty_PropertyValue()		);
+			EsbPackage.eINSTANCE.getAbstractNameValueExpressionProperty_PropertyValue(),
+			EsbPackage.eINSTANCE.getAbstractNameValueExpressionProperty_PropertyExpression()		);
 		return new NotificationFilter[] {filter,};
 	}
 

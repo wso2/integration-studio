@@ -38,6 +38,33 @@ public class EsbMessages extends NLS {
 	public static String EndPointPropertyPropertiesEditionPart_PropertiesGroupLabel;
 
 	
+	public static String ProxyServicePropertiesEditionPart_BasicGroupLabel;
+
+	
+	public static String ProxyServicePropertiesEditionPart_EndpointGroupLabel;
+
+	
+	public static String ProxyServicePropertiesEditionPart_FaultSequenceGroupLabel;
+
+	
+	public static String ProxyServicePropertiesEditionPart_InSequenceGroupLabel;
+
+	
+	public static String ProxyServicePropertiesEditionPart_OutSequenceGroupLabel;
+
+	
+	public static String ProxyServicePropertiesEditionPart_ParametersGroupLabel;
+
+	
+	public static String ProxyServicePropertiesEditionPart_ReliableMessagingGroupLabel;
+
+	
+	public static String ProxyServicePropertiesEditionPart_SecurityGroupLabel;
+
+	
+	public static String ProxyServicePropertiesEditionPart_WsdlGroupLabel;
+
+	
 	public static String ProxyServicePropertiesEditionPart_PropertiesGroupLabel;
 
 	
@@ -98,7 +125,22 @@ public class EsbMessages extends NLS {
 	public static String DefaultEndPointOutputConnectorPropertiesEditionPart_PropertiesGroupLabel;
 
 	
-	public static String AddressEndPointPropertiesEditionPart_PropertiesGroupLabel;
+	public static String AddressEndPointPropertiesEditionPart_BasicGroupLabel;
+
+	
+	public static String AddressEndPointPropertiesEditionPart_EndpointSuspendStateGroupLabel;
+
+	
+	public static String AddressEndPointPropertiesEditionPart_EndpointTimeoutStateGroupLabel;
+
+	
+	public static String AddressEndPointPropertiesEditionPart_MiscGroupLabel;
+
+	
+	public static String AddressEndPointPropertiesEditionPart_QoSGroupLabel;
+
+	
+	public static String AddressEndPointPropertiesEditionPart_TimeoutGroupLabel;
 
 	
 	public static String AddressEndPointInputConnectorPropertiesEditionPart_PropertiesGroupLabel;
@@ -3238,15 +3280,6 @@ public class EsbMessages extends NLS {
 	public static String EndPointPropertyPropertiesEditionPart_ValueTypeLabel;
 
 	
-	public static String ProxyServicePropertiesEditionPart_DescriptionLabel;
-
-	
-	public static String ProxyServicePropertiesEditionPart_CommentsListLabel;
-
-	
-	public static String ProxyServicePropertiesEditionPart_InSequenceInputConnectorsLabel;
-
-	
 	public static String ProxyServicePropertiesEditionPart_NameLabel;
 
 	
@@ -3268,34 +3301,7 @@ public class EsbMessages extends NLS {
 	public static String ProxyServicePropertiesEditionPart_TransportsLabel;
 
 	
-	public static String ProxyServicePropertiesEditionPart_ReliableMessagingEnabledLabel;
-
-	
-	public static String ProxyServicePropertiesEditionPart_SecurityEnabledLabel;
-
-	
-	public static String ProxyServicePropertiesEditionPart_ServiceParametersLabel;
-
-	
-	public static String ProxyServicePropertiesEditionPart_ServicePoliciesLabel;
-
-	
-	public static String ProxyServicePropertiesEditionPart_InSequenceTypeLabel;
-
-	
-	public static String ProxyServicePropertiesEditionPart_InSequenceNameLabel;
-
-	
-	public static String ProxyServicePropertiesEditionPart_OutSequenceTypeLabel;
-
-	
-	public static String ProxyServicePropertiesEditionPart_OutSequenceNameLabel;
-
-	
-	public static String ProxyServicePropertiesEditionPart_FaultSequenceTypeLabel;
-
-	
-	public static String ProxyServicePropertiesEditionPart_FaultSequenceNameLabel;
+	public static String ProxyServicePropertiesEditionPart_OnErrorLabel;
 
 	
 	public static String ProxyServicePropertiesEditionPart_EndpointTypeLabel;
@@ -3304,13 +3310,58 @@ public class EsbMessages extends NLS {
 	public static String ProxyServicePropertiesEditionPart_EndpointNameLabel;
 
 	
-	public static String ProxyServicePropertiesEditionPart_MainSequenceLabel;
+	public static String ProxyServicePropertiesEditionPart_EndpointKeyLabel;
+
+	
+	public static String ProxyServicePropertiesEditionPart_FaultSequenceTypeLabel;
+
+	
+	public static String ProxyServicePropertiesEditionPart_FaultSequenceNameLabel;
+
+	
+	public static String ProxyServicePropertiesEditionPart_FaultSequenceKeyLabel;
+
+	
+	public static String ProxyServicePropertiesEditionPart_FaultSequenceOnErrorLabel;
+
+	
+	public static String ProxyServicePropertiesEditionPart_InSequenceTypeLabel;
+
+	
+	public static String ProxyServicePropertiesEditionPart_InSequenceNameLabel;
+
+	
+	public static String ProxyServicePropertiesEditionPart_InSequenceKeyLabel;
+
+	
+	public static String ProxyServicePropertiesEditionPart_InSequenceOnErrorLabel;
+
+	
+	public static String ProxyServicePropertiesEditionPart_OutSequenceTypeLabel;
+
+	
+	public static String ProxyServicePropertiesEditionPart_OutSequenceNameLabel;
+
+	
+	public static String ProxyServicePropertiesEditionPart_OutSequenceKeyLabel;
+
+	
+	public static String ProxyServicePropertiesEditionPart_OutSequenceOnErrorLabel;
+
+	
+	public static String ProxyServicePropertiesEditionPart_ServiceParametersLabel;
+
+	
+	public static String ProxyServicePropertiesEditionPart_ReliableMessagingEnabledLabel;
+
+	
+	public static String ProxyServicePropertiesEditionPart_SecurityEnabledLabel;
+
+	
+	public static String ProxyServicePropertiesEditionPart_ServicePoliciesLabel;
 
 	
 	public static String ProxyServicePropertiesEditionPart_WsdlTypeLabel;
-
-	
-	public static String ProxyServicePropertiesEditionPart_PreservePolicyLabel;
 
 	
 	public static String ProxyServicePropertiesEditionPart_WsdlXMLLabel;
@@ -3320,6 +3371,27 @@ public class EsbMessages extends NLS {
 
 	
 	public static String ProxyServicePropertiesEditionPart_WsdlResourcesLabel;
+
+	
+	public static String ProxyServicePropertiesEditionPart_PreservePolicyLabel;
+
+	
+	public static String ProxyServicePropertiesEditionPart_WsdlKeyLabel;
+
+	
+	public static String ProxyServicePropertiesEditionPart_WsdlEndpointLabel;
+
+	
+	public static String ProxyServicePropertiesEditionPart_DescriptionLabel;
+
+	
+	public static String ProxyServicePropertiesEditionPart_CommentsListLabel;
+
+	
+	public static String ProxyServicePropertiesEditionPart_InSequenceInputConnectorsLabel;
+
+	
+	public static String ProxyServicePropertiesEditionPart_MainSequenceLabel;
 
 	
 	public static String ProxyOutputConnectorPropertiesEditionPart_CommentMediatorsLabel;
@@ -3337,6 +3409,9 @@ public class EsbMessages extends NLS {
 	public static String ProxyWSDLResourcePropertiesEditionPart_LocationLabel;
 
 	
+	public static String ProxyWSDLResourcePropertiesEditionPart_KeyLabel;
+
+	
 	public static String ProxyFaultInputConnectorPropertiesEditionPart_IncomingLinksLabel;
 
 	
@@ -3344,6 +3419,9 @@ public class EsbMessages extends NLS {
 
 	
 	public static String ProxyServiceParameterPropertiesEditionPart_ValueLabel;
+
+	
+	public static String ProxyServicePolicyPropertiesEditionPart_PolicyKeyLabel;
 
 	
 	public static String MediatorFlowPropertiesEditionPart_ChildrenLabel;
@@ -3451,9 +3529,6 @@ public class EsbMessages extends NLS {
 	public static String DefaultEndPointOutputConnectorPropertiesEditionPart_CommentMediatorsLabel;
 
 	
-	public static String AddressEndPointPropertiesEditionPart_DescriptionLabel;
-
-	
 	public static String AddressEndPointPropertiesEditionPart_CommentsListLabel;
 
 	
@@ -3469,10 +3544,52 @@ public class EsbMessages extends NLS {
 	public static String AddressEndPointPropertiesEditionPart_DuplicateLabel;
 
 	
+	public static String AddressEndPointPropertiesEditionPart_ReversedLabel;
+
+	
+	public static String AddressEndPointPropertiesEditionPart_FormatLabel;
+
+	
+	public static String AddressEndPointPropertiesEditionPart_TemplateParametersLabel;
+
+	
+	public static String AddressEndPointPropertiesEditionPart_StatisticsEnabledLabel;
+
+	
+	public static String AddressEndPointPropertiesEditionPart_TraceEnabledLabel;
+
+	
+	public static String AddressEndPointPropertiesEditionPart_URILabel;
+
+	
+	public static String AddressEndPointPropertiesEditionPart_SuspendErrorCodesLabel;
+
+	
+	public static String AddressEndPointPropertiesEditionPart_SuspendInitialDurationLabel;
+
+	
+	public static String AddressEndPointPropertiesEditionPart_SuspendMaximumDurationLabel;
+
+	
+	public static String AddressEndPointPropertiesEditionPart_SuspendProgressionFactorLabel;
+
+	
+	public static String AddressEndPointPropertiesEditionPart_RetryErrorCodesLabel;
+
+	
+	public static String AddressEndPointPropertiesEditionPart_RetryCountLabel;
+
+	
+	public static String AddressEndPointPropertiesEditionPart_RetryDelayLabel;
+
+	
 	public static String AddressEndPointPropertiesEditionPart_PropertiesLabel;
 
 	
-	public static String AddressEndPointPropertiesEditionPart_ReversedLabel;
+	public static String AddressEndPointPropertiesEditionPart_OptimizeLabel;
+
+	
+	public static String AddressEndPointPropertiesEditionPart_DescriptionLabel;
 
 	
 	public static String AddressEndPointPropertiesEditionPart_ReliableMessagingEnabledLabel;
@@ -3490,49 +3607,22 @@ public class EsbMessages extends NLS {
 	public static String AddressEndPointPropertiesEditionPart_AddressingSeparateListenerLabel;
 
 	
+	public static String AddressEndPointPropertiesEditionPart_ReliableMessagingPolicyLabel;
+
+	
+	public static String AddressEndPointPropertiesEditionPart_InboundPolicyLabel;
+
+	
+	public static String AddressEndPointPropertiesEditionPart_OutboundPolicyLabel;
+
+	
+	public static String AddressEndPointPropertiesEditionPart_SecurityPolicyLabel;
+
+	
 	public static String AddressEndPointPropertiesEditionPart_TimeOutDurationLabel;
 
 	
 	public static String AddressEndPointPropertiesEditionPart_TimeOutActionLabel;
-
-	
-	public static String AddressEndPointPropertiesEditionPart_RetryErrorCodesLabel;
-
-	
-	public static String AddressEndPointPropertiesEditionPart_RetryCountLabel;
-
-	
-	public static String AddressEndPointPropertiesEditionPart_RetryDelayLabel;
-
-	
-	public static String AddressEndPointPropertiesEditionPart_SuspendErrorCodesLabel;
-
-	
-	public static String AddressEndPointPropertiesEditionPart_SuspendInitialDurationLabel;
-
-	
-	public static String AddressEndPointPropertiesEditionPart_SuspendMaximumDurationLabel;
-
-	
-	public static String AddressEndPointPropertiesEditionPart_SuspendProgressionFactorLabel;
-
-	
-	public static String AddressEndPointPropertiesEditionPart_FormatLabel;
-
-	
-	public static String AddressEndPointPropertiesEditionPart_OptimizeLabel;
-
-	
-	public static String AddressEndPointPropertiesEditionPart_TemplateParametersLabel;
-
-	
-	public static String AddressEndPointPropertiesEditionPart_StatisticsEnabledLabel;
-
-	
-	public static String AddressEndPointPropertiesEditionPart_TraceEnabledLabel;
-
-	
-	public static String AddressEndPointPropertiesEditionPart_URILabel;
 
 	
 	public static String AddressEndPointInputConnectorPropertiesEditionPart_IncomingLinksLabel;
@@ -4150,6 +4240,15 @@ public class EsbMessages extends NLS {
 	public static String XSLTMediatorPropertiesEditionPart_ResourcesLabel;
 
 	
+	public static String XSLTMediatorPropertiesEditionPart_SourceXpathLabel;
+
+	
+	public static String XSLTMediatorPropertiesEditionPart_XSLTStaticSchemaKeyLabel;
+
+	
+	public static String XSLTMediatorPropertiesEditionPart_XSLTDynamicSchemaKeyLabel;
+
+	
 	public static String XSLTPropertyPropertiesEditionPart_PropertyNameLabel;
 
 	
@@ -4159,6 +4258,9 @@ public class EsbMessages extends NLS {
 	public static String XSLTPropertyPropertiesEditionPart_PropertyValueLabel;
 
 	
+	public static String XSLTPropertyPropertiesEditionPart_PropertyExpressionLabel;
+
+	
 	public static String XSLTFeaturePropertiesEditionPart_FeatureNameLabel;
 
 	
@@ -4166,6 +4268,9 @@ public class EsbMessages extends NLS {
 
 	
 	public static String XSLTResourcePropertiesEditionPart_LocationLabel;
+
+	
+	public static String XSLTResourcePropertiesEditionPart_ResourceRegistryKeyLabel;
 
 	
 	public static String XSLTMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;

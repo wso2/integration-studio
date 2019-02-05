@@ -12,6 +12,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 
 import org.eclipse.jface.viewers.ViewerFilter;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 
 
 // End of user code
@@ -21,20 +22,6 @@ import org.eclipse.jface.viewers.ViewerFilter;
  * 
  */
 public interface AddressEndPointPropertiesEditionPart {
-
-	/**
-	 * @return the description
-	 * 
-	 */
-	public String getDescription();
-
-	/**
-	 * Defines a new description
-	 * @param newValue the new description to set
-	 * 
-	 */
-	public void setDescription(String newValue);
-
 
 	/**
 	 * @return the commentsList
@@ -118,6 +105,225 @@ public interface AddressEndPointPropertiesEditionPart {
 	public void setDuplicate(Boolean newValue);
 
 
+	/**
+	 * @return the reversed
+	 * 
+	 */
+	public Boolean getReversed();
+
+	/**
+	 * Defines a new reversed
+	 * @param newValue the new reversed to set
+	 * 
+	 */
+	public void setReversed(Boolean newValue);
+
+
+	/**
+	 * @return the format
+	 * 
+	 */
+	public Enumerator getFormat();
+
+	/**
+	 * Init the format
+	 * @param input the viewer input
+	 * @param current the current value
+	 */
+	public void initFormat(Object input, Enumerator current);
+
+	/**
+	 * Defines a new format
+	 * @param newValue the new format to set
+	 * 
+	 */
+	public void setFormat(Enumerator newValue);
+
+
+
+
+	/**
+	 * Init the templateParameters
+	 * @param current the current value
+	 * @param containgFeature the feature where to navigate if necessary
+	 * @param feature the feature to manage
+	 */
+	public void initTemplateParameters(ReferencesTableSettings settings);
+
+	/**
+	 * Update the templateParameters
+	 * @param newValue the templateParameters to update
+	 * 
+	 */
+	public void updateTemplateParameters();
+
+	/**
+	 * Adds the given filter to the templateParameters edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addFilterToTemplateParameters(ViewerFilter filter);
+
+	/**
+	 * Adds the given filter to the templateParameters edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addBusinessFilterToTemplateParameters(ViewerFilter filter);
+
+	/**
+	 * @return true if the given element is contained inside the templateParameters table
+	 * 
+	 */
+	public boolean isContainedInTemplateParametersTable(EObject element);
+
+
+	/**
+	 * @return the statisticsEnabled
+	 * 
+	 */
+	public Boolean getStatisticsEnabled();
+
+	/**
+	 * Defines a new statisticsEnabled
+	 * @param newValue the new statisticsEnabled to set
+	 * 
+	 */
+	public void setStatisticsEnabled(Boolean newValue);
+
+
+	/**
+	 * @return the traceEnabled
+	 * 
+	 */
+	public Boolean getTraceEnabled();
+
+	/**
+	 * Defines a new traceEnabled
+	 * @param newValue the new traceEnabled to set
+	 * 
+	 */
+	public void setTraceEnabled(Boolean newValue);
+
+
+	/**
+	 * @return the URI
+	 * 
+	 */
+	public String getURI();
+
+	/**
+	 * Defines a new URI
+	 * @param newValue the new URI to set
+	 * 
+	 */
+	public void setURI(String newValue);
+
+
+	/**
+	 * @return the suspendErrorCodes
+	 * 
+	 */
+	public String getSuspendErrorCodes();
+
+	/**
+	 * Defines a new suspendErrorCodes
+	 * @param newValue the new suspendErrorCodes to set
+	 * 
+	 */
+	public void setSuspendErrorCodes(String newValue);
+
+
+	/**
+	 * @return the suspendInitialDuration
+	 * 
+	 */
+	public String getSuspendInitialDuration();
+
+	/**
+	 * Defines a new suspendInitialDuration
+	 * @param newValue the new suspendInitialDuration to set
+	 * 
+	 */
+	public void setSuspendInitialDuration(String newValue);
+
+
+	/**
+	 * @return the suspendMaximumDuration
+	 * 
+	 */
+	public String getSuspendMaximumDuration();
+
+	/**
+	 * Defines a new suspendMaximumDuration
+	 * @param newValue the new suspendMaximumDuration to set
+	 * 
+	 */
+	public void setSuspendMaximumDuration(String newValue);
+
+
+	/**
+	 * @return the suspendProgressionFactor
+	 * 
+	 */
+	public String getSuspendProgressionFactor();
+
+	/**
+	 * Defines a new suspendProgressionFactor
+	 * @param newValue the new suspendProgressionFactor to set
+	 * 
+	 */
+	public void setSuspendProgressionFactor(String newValue);
+
+
+	/**
+	 * @return the retryErrorCodes
+	 * 
+	 */
+	public String getRetryErrorCodes();
+
+	/**
+	 * Defines a new retryErrorCodes
+	 * @param newValue the new retryErrorCodes to set
+	 * 
+	 */
+	public void setRetryErrorCodes(String newValue);
+
+
+	/**
+	 * @return the retryCount
+	 * 
+	 */
+	public String getRetryCount();
+
+	/**
+	 * Defines a new retryCount
+	 * @param newValue the new retryCount to set
+	 * 
+	 */
+	public void setRetryCount(String newValue);
+
+
+	/**
+	 * @return the retryDelay
+	 * 
+	 */
+	public String getRetryDelay();
+
+	/**
+	 * Defines a new retryDelay
+	 * @param newValue the new retryDelay to set
+	 * 
+	 */
+	public void setRetryDelay(String newValue);
+
+
 
 
 	/**
@@ -163,17 +369,38 @@ public interface AddressEndPointPropertiesEditionPart {
 
 
 	/**
-	 * @return the reversed
+	 * @return the optimize
 	 * 
 	 */
-	public Boolean getReversed();
+	public Enumerator getOptimize();
 
 	/**
-	 * Defines a new reversed
-	 * @param newValue the new reversed to set
+	 * Init the optimize
+	 * @param input the viewer input
+	 * @param current the current value
+	 */
+	public void initOptimize(Object input, Enumerator current);
+
+	/**
+	 * Defines a new optimize
+	 * @param newValue the new optimize to set
 	 * 
 	 */
-	public void setReversed(Boolean newValue);
+	public void setOptimize(Enumerator newValue);
+
+
+	/**
+	 * @return the description
+	 * 
+	 */
+	public String getDescription();
+
+	/**
+	 * Defines a new description
+	 * @param newValue the new description to set
+	 * 
+	 */
+	public void setDescription(String newValue);
 
 
 	/**
@@ -288,234 +515,28 @@ public interface AddressEndPointPropertiesEditionPart {
 	public void setTimeOutAction(Enumerator newValue);
 
 
-	/**
-	 * @return the retryErrorCodes
-	 * 
-	 */
-	public String getRetryErrorCodes();
-
-	/**
-	 * Defines a new retryErrorCodes
-	 * @param newValue the new retryErrorCodes to set
-	 * 
-	 */
-	public void setRetryErrorCodes(String newValue);
 
 
-	/**
-	 * @return the retryCount
-	 * 
-	 */
-	public String getRetryCount();
-
-	/**
-	 * Defines a new retryCount
-	 * @param newValue the new retryCount to set
-	 * 
-	 */
-	public void setRetryCount(String newValue);
-
-
-	/**
-	 * @return the retryDelay
-	 * 
-	 */
-	public String getRetryDelay();
-
-	/**
-	 * Defines a new retryDelay
-	 * @param newValue the new retryDelay to set
-	 * 
-	 */
-	public void setRetryDelay(String newValue);
-
-
-	/**
-	 * @return the suspendErrorCodes
-	 * 
-	 */
-	public String getSuspendErrorCodes();
-
-	/**
-	 * Defines a new suspendErrorCodes
-	 * @param newValue the new suspendErrorCodes to set
-	 * 
-	 */
-	public void setSuspendErrorCodes(String newValue);
-
-
-	/**
-	 * @return the suspendInitialDuration
-	 * 
-	 */
-	public String getSuspendInitialDuration();
-
-	/**
-	 * Defines a new suspendInitialDuration
-	 * @param newValue the new suspendInitialDuration to set
-	 * 
-	 */
-	public void setSuspendInitialDuration(String newValue);
-
-
-	/**
-	 * @return the suspendMaximumDuration
-	 * 
-	 */
-	public String getSuspendMaximumDuration();
-
-	/**
-	 * Defines a new suspendMaximumDuration
-	 * @param newValue the new suspendMaximumDuration to set
-	 * 
-	 */
-	public void setSuspendMaximumDuration(String newValue);
-
-
-	/**
-	 * @return the suspendProgressionFactor
-	 * 
-	 */
-	public String getSuspendProgressionFactor();
-
-	/**
-	 * Defines a new suspendProgressionFactor
-	 * @param newValue the new suspendProgressionFactor to set
-	 * 
-	 */
-	public void setSuspendProgressionFactor(String newValue);
-
-
-	/**
-	 * @return the format
-	 * 
-	 */
-	public Enumerator getFormat();
-
-	/**
-	 * Init the format
-	 * @param input the viewer input
-	 * @param current the current value
-	 */
-	public void initFormat(Object input, Enumerator current);
-
-	/**
-	 * Defines a new format
-	 * @param newValue the new format to set
-	 * 
-	 */
-	public void setFormat(Enumerator newValue);
-
-
-	/**
-	 * @return the optimize
-	 * 
-	 */
-	public Enumerator getOptimize();
-
-	/**
-	 * Init the optimize
-	 * @param input the viewer input
-	 * @param current the current value
-	 */
-	public void initOptimize(Object input, Enumerator current);
-
-	/**
-	 * Defines a new optimize
-	 * @param newValue the new optimize to set
-	 * 
-	 */
-	public void setOptimize(Enumerator newValue);
-
-
-
-
-	/**
-	 * Init the templateParameters
-	 * @param current the current value
-	 * @param containgFeature the feature where to navigate if necessary
-	 * @param feature the feature to manage
-	 */
-	public void initTemplateParameters(ReferencesTableSettings settings);
-
-	/**
-	 * Update the templateParameters
-	 * @param newValue the templateParameters to update
-	 * 
-	 */
-	public void updateTemplateParameters();
-
-	/**
-	 * Adds the given filter to the templateParameters edition editor.
-	 * 
-	 * @param filter
-	 *            a viewer filter
-	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
-	 */
-	public void addFilterToTemplateParameters(ViewerFilter filter);
-
-	/**
-	 * Adds the given filter to the templateParameters edition editor.
-	 * 
-	 * @param filter
-	 *            a viewer filter
-	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
-	 */
-	public void addBusinessFilterToTemplateParameters(ViewerFilter filter);
-
-	/**
-	 * @return true if the given element is contained inside the templateParameters table
-	 * 
-	 */
-	public boolean isContainedInTemplateParametersTable(EObject element);
-
-
-	/**
-	 * @return the statisticsEnabled
-	 * 
-	 */
-	public Boolean getStatisticsEnabled();
-
-	/**
-	 * Defines a new statisticsEnabled
-	 * @param newValue the new statisticsEnabled to set
-	 * 
-	 */
-	public void setStatisticsEnabled(Boolean newValue);
-
-
-	/**
-	 * @return the traceEnabled
-	 * 
-	 */
-	public Boolean getTraceEnabled();
-
-	/**
-	 * Defines a new traceEnabled
-	 * @param newValue the new traceEnabled to set
-	 * 
-	 */
-	public void setTraceEnabled(Boolean newValue);
-
-
-	/**
-	 * @return the URI
-	 * 
-	 */
-	public String getURI();
-
-	/**
-	 * Defines a new URI
-	 * @param newValue the new URI to set
-	 * 
-	 */
-	public void setURI(String newValue);
-
-
-
-
+	// Start of user code for Reliable Messaging Policy specific getters and setters declaration
+    public RegistryKeyProperty getReliableMessagingPolicy();
+    
+    public void setReliableMessagingPolicy(RegistryKeyProperty registryKeyProperty);
+	// End of user code
+	// Start of user code for Inbound Policy specific getters and setters declaration
+    public RegistryKeyProperty getInboundPolicy();
+    
+    public void setInboundPolicy(RegistryKeyProperty registryKeyProperty);
+	// End of user code
+	// Start of user code for Outbound Policy specific getters and setters declaration
+    public RegistryKeyProperty getOutboundPolicy();
+    
+    public void setOutboundPolicy(RegistryKeyProperty registryKeyProperty);
+	// End of user code
+	// Start of user code for Security Policy specific getters and setters declaration
+    public RegistryKeyProperty getSecurityPolicy();
+    
+    public void setSecurityPolicy(RegistryKeyProperty registryKeyProperty);
+	// End of user code
 
 	/**
 	 * Returns the internationalized title text.

@@ -18,7 +18,7 @@ import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
-
+import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
@@ -40,7 +40,8 @@ import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.XSLTResourcePropertiesEditionPart;
 
@@ -55,6 +56,10 @@ import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
 public class XSLTResourcePropertiesEditionPartForm extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, XSLTResourcePropertiesEditionPart {
 
 	protected Text location;
+	// Start of user code  for resourceRegistryKey widgets declarations
+	
+	// End of user code
+
 
 
 
@@ -99,9 +104,9 @@ public class XSLTResourcePropertiesEditionPartForm extends SectionPropertiesEdit
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		CompositionSequence xSLTResourceStep = new BindingCompositionSequence(propertiesEditionComponent);
-		xSLTResourceStep
-			.addStep(EsbViewsRepository.XSLTResource.Properties.class)
-			.addStep(EsbViewsRepository.XSLTResource.Properties.location);
+		CompositionStep propertiesStep = xSLTResourceStep.addStep(EsbViewsRepository.XSLTResource.Properties.class);
+		propertiesStep.addStep(EsbViewsRepository.XSLTResource.Properties.location);
+		propertiesStep.addStep(EsbViewsRepository.XSLTResource.Properties.resourceRegistryKey);
 		
 		
 		composer = new PartComposer(xSLTResourceStep) {
@@ -114,6 +119,9 @@ public class XSLTResourcePropertiesEditionPartForm extends SectionPropertiesEdit
 				if (key == EsbViewsRepository.XSLTResource.Properties.location) {
 					return createLocationText(widgetFactory, parent);
 				}
+				// Start of user code for resourceRegistryKey addToPart creation
+				
+				// End of user code
 				return parent;
 			}
 		};
@@ -254,6 +262,21 @@ public class XSLTResourcePropertiesEditionPartForm extends SectionPropertiesEdit
 
 
 
+	// Start of user code for resourceRegistryKey specific getters and setters implementation
+    @Override
+    public RegistryKeyProperty getResourceRegistryKey() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void setResourceRegistryKey(RegistryKeyProperty regKey) {
+        // TODO Auto-generated method stub
+        
+    }
+
+	// End of user code
+
 	/**
 	 * {@inheritDoc}
 	 *
@@ -263,6 +286,10 @@ public class XSLTResourcePropertiesEditionPartForm extends SectionPropertiesEdit
 	public String getTitle() {
 		return EsbMessages.XSLTResource_Part_Title;
 	}
+
+
+
+
 
 	// Start of user code additional methods
 	

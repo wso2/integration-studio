@@ -53,11 +53,13 @@ import org.eclipse.jface.viewers.ViewerFilter;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.KeyType;
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.XSLTFeature;
 import org.wso2.developerstudio.eclipse.gmf.esb.XSLTMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.XSLTProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.XSLTResource;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.XSLTMediatorPropertiesEditionPart;
 
@@ -140,6 +142,24 @@ public class XSLTMediatorPropertiesEditionComponent extends SinglePartProperties
 				resourcesSettings = new ReferencesTableSettings(xSLTMediator, EsbPackage.eINSTANCE.getXSLTMediator_Resources());
 				basePart.initResources(resourcesSettings);
 			}
+			// Start of user code  for sourceXpath command update
+		    if (isAccessible(EsbViewsRepository.XSLTMediator.Properties.sourceXpath)) {
+                basePart.setSourceXpath(xSLTMediator.getSourceXPath());
+            }
+			// End of user code
+			
+			// Start of user code  for XSLTDynamicSchemaKey command update
+		    if (isAccessible(EsbViewsRepository.XSLTMediator.Properties.xSLTDynamicSchemaKey)) {
+                basePart.setXSLTDynamicSchemaKey(xSLTMediator.getXsltDynamicSchemaKey());
+            }
+		    // End of user code
+			
+			// Start of user code  for XSLTStaticSchemaKey command update
+		    if (isAccessible(EsbViewsRepository.XSLTMediator.Properties.xSLTStaticSchemaKey)) {
+                basePart.setXSLTStaticSchemaKey(xSLTMediator.getXsltStaticSchemaKey());
+            }
+		    // End of user code
+			
 			// init filters
 			
 			
@@ -190,6 +210,15 @@ public class XSLTMediatorPropertiesEditionComponent extends SinglePartProperties
 				// Start of user code for additional businessfilters for resources
 				// End of user code
 			}
+			// Start of user code  for sourceXpath filter update
+			// End of user code
+			
+			// Start of user code  for XSLTDynamicSchemaKey filter update
+			// End of user code
+			
+			// Start of user code  for XSLTStaticSchemaKey filter update
+			// End of user code
+			
 			// init values for referenced views
 			
 			// init filters for referenced views
@@ -197,6 +226,9 @@ public class XSLTMediatorPropertiesEditionComponent extends SinglePartProperties
 		}
 		setInitializing(false);
 	}
+
+
+
 
 
 
@@ -232,6 +264,15 @@ public class XSLTMediatorPropertiesEditionComponent extends SinglePartProperties
 		}
 		if (editorKey == EsbViewsRepository.XSLTMediator.Properties.resources) {
 			return EsbPackage.eINSTANCE.getXSLTMediator_Resources();
+		}
+		if (editorKey == EsbViewsRepository.XSLTMediator.Properties.sourceXpath) {
+			return EsbPackage.eINSTANCE.getXSLTMediator_SourceXPath();
+		}
+		if (editorKey == EsbViewsRepository.XSLTMediator.Properties.xSLTDynamicSchemaKey) {
+			return EsbPackage.eINSTANCE.getXSLTMediator_XsltDynamicSchemaKey();
+		}
+		if (editorKey == EsbViewsRepository.XSLTMediator.Properties.xSLTStaticSchemaKey) {
+			return EsbPackage.eINSTANCE.getXSLTMediator_XsltStaticSchemaKey();
 		}
 		return super.associatedFeature(editorKey);
 	}
@@ -333,6 +374,39 @@ public class XSLTMediatorPropertiesEditionComponent extends SinglePartProperties
 				resourcesSettings.move(event.getNewIndex(), (XSLTResource) event.getNewValue());
 			}
 		}
+		if (EsbViewsRepository.XSLTMediator.Properties.sourceXpath == event.getAffectedEditor()) {
+			// Start of user code for updateSourceXpath method body
+		    if (event.getNewValue() != null) {
+                NamespacedProperty nsp = (NamespacedProperty) event.getNewValue();
+                xSLTMediator.setSourceXPath(nsp);
+            } else {
+                xSLTMediator.setSourceXPath(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+            }
+			// End of user code
+			
+		}
+		if (EsbViewsRepository.XSLTMediator.Properties.xSLTDynamicSchemaKey == event.getAffectedEditor()) {
+			// Start of user code for updateXSLTDynamicSchemaKey method body
+		    if (event.getNewValue() != null) {
+                NamespacedProperty nsp = (NamespacedProperty) event.getNewValue();
+                xSLTMediator.setXsltDynamicSchemaKey(nsp);
+            } else {
+                xSLTMediator.setXsltDynamicSchemaKey(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+            }
+			// End of user code
+			
+		}
+		if (EsbViewsRepository.XSLTMediator.Properties.xSLTStaticSchemaKey == event.getAffectedEditor()) {
+			// Start of user code for updateXSLTStaticSchemaKey method body
+		    if (event.getNewValue() != null) {
+                RegistryKeyProperty rkp = (RegistryKeyProperty) event.getNewValue();
+                xSLTMediator.setXsltStaticSchemaKey(rkp);
+            } else {
+                xSLTMediator.setXsltStaticSchemaKey(EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty());
+            }
+			// End of user code
+			
+		}
 	}
 
 	/**
@@ -374,6 +448,42 @@ public class XSLTMediatorPropertiesEditionComponent extends SinglePartProperties
 				basePart.updateFeatures();
 			if (EsbPackage.eINSTANCE.getXSLTMediator_Resources().equals(msg.getFeature()) && isAccessible(EsbViewsRepository.XSLTMediator.Properties.resources))
 				basePart.updateResources();
+					// Start of user code for sourceXpath live update
+            if (EsbPackage.eINSTANCE.getXSLTMediator_SourceXPath().equals(msg.getFeature())
+                    && msg.getNotifier().equals(semanticObject) && basePart != null
+                    && isAccessible(EsbViewsRepository.XSLTMediator.Properties.sourceXpath)) {
+                if (msg.getNewValue() != null) {
+                    basePart.setSourceXpath((NamespacedProperty) msg.getNewValue());
+                } else {
+                    basePart.setSourceXpath(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+                }
+            }
+            // End of user code
+			
+					// Start of user code for XSLTDynamicSchemaKey live update
+            if (EsbPackage.eINSTANCE.getXSLTMediator_XsltDynamicSchemaKey().equals(msg.getFeature())
+                    && msg.getNotifier().equals(semanticObject) && basePart != null
+                    && isAccessible(EsbViewsRepository.XSLTMediator.Properties.xSLTDynamicSchemaKey)) {
+                if (msg.getNewValue() != null) {
+                    basePart.setXSLTDynamicSchemaKey((NamespacedProperty) msg.getNewValue());
+                } else {
+                    basePart.setXSLTDynamicSchemaKey(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+                }
+            }
+            // End of user code
+			
+					// Start of user code for XSLTStaticSchemaKey live update
+            if (EsbPackage.eINSTANCE.getAbstractCommonTarget_EndpointKey().equals(msg.getFeature())
+                    && msg.getNotifier().equals(semanticObject) && basePart != null
+                    && isAccessible(EsbViewsRepository.XSLTMediator.Properties.xSLTStaticSchemaKey)) {
+                if (msg.getNewValue() != null) {
+                    basePart.setXSLTStaticSchemaKey((RegistryKeyProperty) msg.getNewValue());
+                } else {
+                    basePart.setXSLTStaticSchemaKey(EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty());
+                }
+            }
+            // End of user code
+			
 			
 		}
 	}
@@ -392,7 +502,10 @@ public class XSLTMediatorPropertiesEditionComponent extends SinglePartProperties
 			EsbPackage.eINSTANCE.getXSLTMediator_XsltSchemaKeyType(),
 			EsbPackage.eINSTANCE.getXSLTMediator_Properties(),
 			EsbPackage.eINSTANCE.getXSLTMediator_Features(),
-			EsbPackage.eINSTANCE.getXSLTMediator_Resources()		);
+			EsbPackage.eINSTANCE.getXSLTMediator_Resources(),
+			EsbPackage.eINSTANCE.getXSLTMediator_SourceXPath(),
+			EsbPackage.eINSTANCE.getXSLTMediator_XsltDynamicSchemaKey(),
+			EsbPackage.eINSTANCE.getXSLTMediator_XsltStaticSchemaKey()		);
 		return new NotificationFilter[] {filter,};
 	}
 

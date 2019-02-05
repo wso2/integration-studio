@@ -72,7 +72,8 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.XSLTMediatorPropertiesEditionPart;
 
@@ -101,6 +102,18 @@ public class XSLTMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 	protected ReferencesTable resources;
 	protected List<ViewerFilter> resourcesBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> resourcesFilters = new ArrayList<ViewerFilter>();
+	// Start of user code  for sourceXpath widgets declarations
+	
+	// End of user code
+
+	// Start of user code  for XSLTStaticSchemaKey widgets declarations
+	
+	// End of user code
+
+	// Start of user code  for XSLTDynamicSchemaKey widgets declarations
+	
+	// End of user code
+
 
 
 
@@ -146,6 +159,9 @@ public class XSLTMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 		propertiesStep.addStep(EsbViewsRepository.XSLTMediator.Properties.properties_);
 		propertiesStep.addStep(EsbViewsRepository.XSLTMediator.Properties.features);
 		propertiesStep.addStep(EsbViewsRepository.XSLTMediator.Properties.resources);
+		propertiesStep.addStep(EsbViewsRepository.XSLTMediator.Properties.sourceXpath);
+		propertiesStep.addStep(EsbViewsRepository.XSLTMediator.Properties.xSLTStaticSchemaKey);
+		propertiesStep.addStep(EsbViewsRepository.XSLTMediator.Properties.xSLTDynamicSchemaKey);
 		
 		
 		composer = new PartComposer(xSLTMediatorStep) {
@@ -176,6 +192,15 @@ public class XSLTMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 				if (key == EsbViewsRepository.XSLTMediator.Properties.resources) {
 					return createResourcesAdvancedTableComposition(parent);
 				}
+				// Start of user code for sourceXpath addToPart creation
+				
+				// End of user code
+				// Start of user code for XSLTStaticSchemaKey addToPart creation
+				
+				// End of user code
+				// Start of user code for XSLTDynamicSchemaKey addToPart creation
+				
+				// End of user code
 				return parent;
 			}
 		};
@@ -879,6 +904,48 @@ public class XSLTMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 
 
 
+
+	// Start of user code for sourceXpath specific getters and setters implementation
+	@Override
+    public NamespacedProperty getSourceXpath() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void setSourceXpath(NamespacedProperty nameSpacedProperty) {
+        // TODO Auto-generated method stub
+        
+    }
+	// End of user code
+
+	// Start of user code for XSLTStaticSchemaKey specific getters and setters implementation
+    @Override
+    public RegistryKeyProperty getXSLTStaticSchemaKey() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void setXSLTStaticSchemaKey(RegistryKeyProperty registryKeyProperty) {
+        // TODO Auto-generated method stub
+        
+    }
+	// End of user code
+
+	// Start of user code for XSLTDynamicSchemaKey specific getters and setters implementation
+    @Override
+    public NamespacedProperty getXSLTDynamicSchemaKey() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void setXSLTDynamicSchemaKey(NamespacedProperty nameSpacedProperty) {
+        // TODO Auto-generated method stub
+        
+    }
+	// End of user code
 
 	/**
 	 * {@inheritDoc}

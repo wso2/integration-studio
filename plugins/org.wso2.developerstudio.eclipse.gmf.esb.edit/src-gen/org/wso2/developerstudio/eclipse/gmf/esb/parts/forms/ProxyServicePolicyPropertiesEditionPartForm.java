@@ -26,7 +26,7 @@ import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.ProxyServicePolicyPropertiesEditionPart;
 
@@ -39,6 +39,10 @@ import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
  * 
  */
 public class ProxyServicePolicyPropertiesEditionPartForm extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, ProxyServicePolicyPropertiesEditionPart {
+
+	// Start of user code  for policyKey widgets declarations
+	
+	// End of user code
 
 
 
@@ -85,7 +89,9 @@ public class ProxyServicePolicyPropertiesEditionPartForm extends SectionProperti
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		CompositionSequence proxyServicePolicyStep = new BindingCompositionSequence(propertiesEditionComponent);
 		proxyServicePolicyStep
-			.addStep(EsbViewsRepository.ProxyServicePolicy.Properties.class);
+			.addStep(EsbViewsRepository.ProxyServicePolicy.Properties.class)
+			.addStep(EsbViewsRepository.ProxyServicePolicy.Properties.policyKey);
+		
 		
 		composer = new PartComposer(proxyServicePolicyStep) {
 
@@ -94,6 +100,9 @@ public class ProxyServicePolicyPropertiesEditionPartForm extends SectionProperti
 				if (key == EsbViewsRepository.ProxyServicePolicy.Properties.class) {
 					return createPropertiesGroup(widgetFactory, parent);
 				}
+				// Start of user code for policyKey addToPart creation
+				
+				// End of user code
 				return parent;
 			}
 		};
@@ -134,6 +143,20 @@ public class ProxyServicePolicyPropertiesEditionPartForm extends SectionProperti
 
 
 
+	// Start of user code for policyKey specific getters and setters implementation
+	@Override
+    public void setPolicyKey(RegistryKeyProperty registryKeyProperty) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public RegistryKeyProperty getPolicyKey() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+	// End of user code
+
 	/**
 	 * {@inheritDoc}
 	 *
@@ -143,6 +166,8 @@ public class ProxyServicePolicyPropertiesEditionPartForm extends SectionProperti
 	public String getTitle() {
 		return EsbMessages.ProxyServicePolicy_Part_Title;
 	}
+
+    
 
 	// Start of user code additional methods
 	

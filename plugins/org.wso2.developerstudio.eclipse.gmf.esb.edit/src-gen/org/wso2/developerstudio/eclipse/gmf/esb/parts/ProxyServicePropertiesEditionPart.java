@@ -12,6 +12,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 
 import org.eclipse.jface.viewers.ViewerFilter;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 
 
 // End of user code
@@ -21,90 +22,6 @@ import org.eclipse.jface.viewers.ViewerFilter;
  * 
  */
 public interface ProxyServicePropertiesEditionPart {
-
-	/**
-	 * @return the description
-	 * 
-	 */
-	public String getDescription();
-
-	/**
-	 * Defines a new description
-	 * @param newValue the new description to set
-	 * 
-	 */
-	public void setDescription(String newValue);
-
-
-	/**
-	 * @return the commentsList
-	 * 
-	 */
-	public EList getCommentsList();
-
-	/**
-	 * Defines a new commentsList
-	 * @param newValue the new commentsList to set
-	 * 
-	 */
-	public void setCommentsList(EList newValue);
-
-	/**
-	 * Add a value to the commentsList multivalued attribute.
-	 * @param newValue the value to add
-	 */
-	public void addToCommentsList(Object newValue);
-
-	/**
-	 * Remove a value to the commentsList multivalued attribute.
-	 * @param newValue the value to remove
-	 */
-	public void removeToCommentsList(Object newValue);
-
-
-
-
-	/**
-	 * Init the inSequenceInputConnectors
-	 * @param current the current value
-	 * @param containgFeature the feature where to navigate if necessary
-	 * @param feature the feature to manage
-	 */
-	public void initInSequenceInputConnectors(ReferencesTableSettings settings);
-
-	/**
-	 * Update the inSequenceInputConnectors
-	 * @param newValue the inSequenceInputConnectors to update
-	 * 
-	 */
-	public void updateInSequenceInputConnectors();
-
-	/**
-	 * Adds the given filter to the inSequenceInputConnectors edition editor.
-	 * 
-	 * @param filter
-	 *            a viewer filter
-	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
-	 */
-	public void addFilterToInSequenceInputConnectors(ViewerFilter filter);
-
-	/**
-	 * Adds the given filter to the inSequenceInputConnectors edition editor.
-	 * 
-	 * @param filter
-	 *            a viewer filter
-	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
-	 */
-	public void addBusinessFilterToInSequenceInputConnectors(ViewerFilter filter);
-
-	/**
-	 * @return true if the given element is contained inside the inSequenceInputConnectors table
-	 * 
-	 */
-	public boolean isContainedInInSequenceInputConnectorsTable(EObject element);
-
 
 	/**
 	 * @return the name
@@ -205,119 +122,73 @@ public interface ProxyServicePropertiesEditionPart {
 
 
 	/**
-	 * @return the reliableMessagingEnabled
+	 * @return the endpointType
 	 * 
 	 */
-	public Boolean getReliableMessagingEnabled();
+	public Enumerator getEndpointType();
 
 	/**
-	 * Defines a new reliableMessagingEnabled
-	 * @param newValue the new reliableMessagingEnabled to set
-	 * 
-	 */
-	public void setReliableMessagingEnabled(Boolean newValue);
-
-
-	/**
-	 * @return the securityEnabled
-	 * 
-	 */
-	public Boolean getSecurityEnabled();
-
-	/**
-	 * Defines a new securityEnabled
-	 * @param newValue the new securityEnabled to set
-	 * 
-	 */
-	public void setSecurityEnabled(Boolean newValue);
-
-
-
-
-	/**
-	 * Init the serviceParameters
+	 * Init the endpointType
+	 * @param input the viewer input
 	 * @param current the current value
-	 * @param containgFeature the feature where to navigate if necessary
-	 * @param feature the feature to manage
 	 */
-	public void initServiceParameters(ReferencesTableSettings settings);
+	public void initEndpointType(Object input, Enumerator current);
 
 	/**
-	 * Update the serviceParameters
-	 * @param newValue the serviceParameters to update
+	 * Defines a new endpointType
+	 * @param newValue the new endpointType to set
 	 * 
 	 */
-	public void updateServiceParameters();
-
-	/**
-	 * Adds the given filter to the serviceParameters edition editor.
-	 * 
-	 * @param filter
-	 *            a viewer filter
-	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
-	 */
-	public void addFilterToServiceParameters(ViewerFilter filter);
-
-	/**
-	 * Adds the given filter to the serviceParameters edition editor.
-	 * 
-	 * @param filter
-	 *            a viewer filter
-	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
-	 */
-	public void addBusinessFilterToServiceParameters(ViewerFilter filter);
-
-	/**
-	 * @return true if the given element is contained inside the serviceParameters table
-	 * 
-	 */
-	public boolean isContainedInServiceParametersTable(EObject element);
-
-
+	public void setEndpointType(Enumerator newValue);
 
 
 	/**
-	 * Init the servicePolicies
+	 * @return the endpointName
+	 * 
+	 */
+	public String getEndpointName();
+
+	/**
+	 * Defines a new endpointName
+	 * @param newValue the new endpointName to set
+	 * 
+	 */
+	public void setEndpointName(String newValue);
+
+
+	/**
+	 * @return the faultSequenceType
+	 * 
+	 */
+	public Enumerator getFaultSequenceType();
+
+	/**
+	 * Init the faultSequenceType
+	 * @param input the viewer input
 	 * @param current the current value
-	 * @param containgFeature the feature where to navigate if necessary
-	 * @param feature the feature to manage
 	 */
-	public void initServicePolicies(ReferencesTableSettings settings);
+	public void initFaultSequenceType(Object input, Enumerator current);
 
 	/**
-	 * Update the servicePolicies
-	 * @param newValue the servicePolicies to update
+	 * Defines a new faultSequenceType
+	 * @param newValue the new faultSequenceType to set
 	 * 
 	 */
-	public void updateServicePolicies();
+	public void setFaultSequenceType(Enumerator newValue);
+
 
 	/**
-	 * Adds the given filter to the servicePolicies edition editor.
-	 * 
-	 * @param filter
-	 *            a viewer filter
-	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * @return the faultSequenceName
 	 * 
 	 */
-	public void addFilterToServicePolicies(ViewerFilter filter);
+	public String getFaultSequenceName();
 
 	/**
-	 * Adds the given filter to the servicePolicies edition editor.
-	 * 
-	 * @param filter
-	 *            a viewer filter
-	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * Defines a new faultSequenceName
+	 * @param newValue the new faultSequenceName to set
 	 * 
 	 */
-	public void addBusinessFilterToServicePolicies(ViewerFilter filter);
-
-	/**
-	 * @return true if the given element is contained inside the servicePolicies table
-	 * 
-	 */
-	public boolean isContainedInServicePoliciesTable(EObject element);
+	public void setFaultSequenceName(String newValue);
 
 
 	/**
@@ -390,88 +261,120 @@ public interface ProxyServicePropertiesEditionPart {
 	public void setOutSequenceName(String newValue);
 
 
-	/**
-	 * @return the faultSequenceType
-	 * 
-	 */
-	public Enumerator getFaultSequenceType();
+
 
 	/**
-	 * Init the faultSequenceType
-	 * @param input the viewer input
+	 * Init the serviceParameters
 	 * @param current the current value
+	 * @param containgFeature the feature where to navigate if necessary
+	 * @param feature the feature to manage
 	 */
-	public void initFaultSequenceType(Object input, Enumerator current);
+	public void initServiceParameters(ReferencesTableSettings settings);
 
 	/**
-	 * Defines a new faultSequenceType
-	 * @param newValue the new faultSequenceType to set
+	 * Update the serviceParameters
+	 * @param newValue the serviceParameters to update
 	 * 
 	 */
-	public void setFaultSequenceType(Enumerator newValue);
-
+	public void updateServiceParameters();
 
 	/**
-	 * @return the faultSequenceName
+	 * Adds the given filter to the serviceParameters edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
 	 * 
 	 */
-	public String getFaultSequenceName();
+	public void addFilterToServiceParameters(ViewerFilter filter);
 
 	/**
-	 * Defines a new faultSequenceName
-	 * @param newValue the new faultSequenceName to set
+	 * Adds the given filter to the serviceParameters edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
 	 * 
 	 */
-	public void setFaultSequenceName(String newValue);
-
+	public void addBusinessFilterToServiceParameters(ViewerFilter filter);
 
 	/**
-	 * @return the endpointType
+	 * @return true if the given element is contained inside the serviceParameters table
 	 * 
 	 */
-	public Enumerator getEndpointType();
+	public boolean isContainedInServiceParametersTable(EObject element);
+
 
 	/**
-	 * Init the endpointType
-	 * @param input the viewer input
+	 * @return the reliableMessagingEnabled
+	 * 
+	 */
+	public Boolean getReliableMessagingEnabled();
+
+	/**
+	 * Defines a new reliableMessagingEnabled
+	 * @param newValue the new reliableMessagingEnabled to set
+	 * 
+	 */
+	public void setReliableMessagingEnabled(Boolean newValue);
+
+
+	/**
+	 * @return the securityEnabled
+	 * 
+	 */
+	public Boolean getSecurityEnabled();
+
+	/**
+	 * Defines a new securityEnabled
+	 * @param newValue the new securityEnabled to set
+	 * 
+	 */
+	public void setSecurityEnabled(Boolean newValue);
+
+
+
+
+	/**
+	 * Init the servicePolicies
 	 * @param current the current value
+	 * @param containgFeature the feature where to navigate if necessary
+	 * @param feature the feature to manage
 	 */
-	public void initEndpointType(Object input, Enumerator current);
+	public void initServicePolicies(ReferencesTableSettings settings);
 
 	/**
-	 * Defines a new endpointType
-	 * @param newValue the new endpointType to set
+	 * Update the servicePolicies
+	 * @param newValue the servicePolicies to update
 	 * 
 	 */
-	public void setEndpointType(Enumerator newValue);
-
+	public void updateServicePolicies();
 
 	/**
-	 * @return the endpointName
+	 * Adds the given filter to the servicePolicies edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
 	 * 
 	 */
-	public String getEndpointName();
+	public void addFilterToServicePolicies(ViewerFilter filter);
 
 	/**
-	 * Defines a new endpointName
-	 * @param newValue the new endpointName to set
+	 * Adds the given filter to the servicePolicies edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
 	 * 
 	 */
-	public void setEndpointName(String newValue);
-
-
-	/**
-	 * @return the mainSequence
-	 * 
-	 */
-	public Boolean getMainSequence();
+	public void addBusinessFilterToServicePolicies(ViewerFilter filter);
 
 	/**
-	 * Defines a new mainSequence
-	 * @param newValue the new mainSequence to set
+	 * @return true if the given element is contained inside the servicePolicies table
 	 * 
 	 */
-	public void setMainSequence(Boolean newValue);
+	public boolean isContainedInServicePoliciesTable(EObject element);
 
 
 	/**
@@ -493,20 +396,6 @@ public interface ProxyServicePropertiesEditionPart {
 	 * 
 	 */
 	public void setWsdlType(Enumerator newValue);
-
-
-	/**
-	 * @return the preservePolicy
-	 * 
-	 */
-	public Boolean getPreservePolicy();
-
-	/**
-	 * Defines a new preservePolicy
-	 * @param newValue the new preservePolicy to set
-	 * 
-	 */
-	public void setPreservePolicy(Boolean newValue);
 
 
 	/**
@@ -581,8 +470,180 @@ public interface ProxyServicePropertiesEditionPart {
 	public boolean isContainedInWsdlResourcesTable(EObject element);
 
 
+	/**
+	 * @return the preservePolicy
+	 * 
+	 */
+	public Boolean getPreservePolicy();
+
+	/**
+	 * Defines a new preservePolicy
+	 * @param newValue the new preservePolicy to set
+	 * 
+	 */
+	public void setPreservePolicy(Boolean newValue);
 
 
+	/**
+	 * @return the description
+	 * 
+	 */
+	public String getDescription();
+
+	/**
+	 * Defines a new description
+	 * @param newValue the new description to set
+	 * 
+	 */
+	public void setDescription(String newValue);
+
+
+	/**
+	 * @return the commentsList
+	 * 
+	 */
+	public EList getCommentsList();
+
+	/**
+	 * Defines a new commentsList
+	 * @param newValue the new commentsList to set
+	 * 
+	 */
+	public void setCommentsList(EList newValue);
+
+	/**
+	 * Add a value to the commentsList multivalued attribute.
+	 * @param newValue the value to add
+	 */
+	public void addToCommentsList(Object newValue);
+
+	/**
+	 * Remove a value to the commentsList multivalued attribute.
+	 * @param newValue the value to remove
+	 */
+	public void removeToCommentsList(Object newValue);
+
+
+
+
+	/**
+	 * Init the inSequenceInputConnectors
+	 * @param current the current value
+	 * @param containgFeature the feature where to navigate if necessary
+	 * @param feature the feature to manage
+	 */
+	public void initInSequenceInputConnectors(ReferencesTableSettings settings);
+
+	/**
+	 * Update the inSequenceInputConnectors
+	 * @param newValue the inSequenceInputConnectors to update
+	 * 
+	 */
+	public void updateInSequenceInputConnectors();
+
+	/**
+	 * Adds the given filter to the inSequenceInputConnectors edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addFilterToInSequenceInputConnectors(ViewerFilter filter);
+
+	/**
+	 * Adds the given filter to the inSequenceInputConnectors edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addBusinessFilterToInSequenceInputConnectors(ViewerFilter filter);
+
+	/**
+	 * @return true if the given element is contained inside the inSequenceInputConnectors table
+	 * 
+	 */
+	public boolean isContainedInInSequenceInputConnectorsTable(EObject element);
+
+
+	/**
+	 * @return the mainSequence
+	 * 
+	 */
+	public Boolean getMainSequence();
+
+	/**
+	 * Defines a new mainSequence
+	 * @param newValue the new mainSequence to set
+	 * 
+	 */
+	public void setMainSequence(Boolean newValue);
+
+
+
+
+	// Start of user code for onError specific getters and setters declaration
+	public void setOnError(RegistryKeyProperty rkp);
+	
+	public RegistryKeyProperty getOnError();
+	
+	// End of user code
+	// Start of user code for endpointKey specific getters and setters declaration
+	public void setEndpointKey(RegistryKeyProperty rkp);
+	
+	public RegistryKeyProperty getEndpointKey();
+	
+	// End of user code
+	// Start of user code for faultSequenceKey specific getters and setters declaration
+	public void setFaultSequenceKey(RegistryKeyProperty rkp);
+	
+	public RegistryKeyProperty getFaultSequenceKey();
+	
+	// End of user code
+	// Start of user code for faultSequenceOnError specific getters and setters declaration
+	public void setFaultSequenceOnError(RegistryKeyProperty rkp);
+	
+	public RegistryKeyProperty getFaultSequenceOnError();
+	
+	// End of user code
+	// Start of user code for inSequenceKey specific getters and setters declaration
+	public void setInSequenceKey(RegistryKeyProperty rkp);
+	
+	public RegistryKeyProperty getInSequenceKey();
+	    
+	// End of user code
+	// Start of user code for inSequenceOnError specific getters and setters declaration
+	public void setInSequenceOnError(RegistryKeyProperty rkp);
+	
+	public RegistryKeyProperty getInSequenceOnError();
+	
+	// End of user code
+	// Start of user code for outSequenceKey specific getters and setters declaration
+	public void setOutSequenceKey(RegistryKeyProperty rkp);
+	
+	public RegistryKeyProperty getOutSequenceKey();
+	
+	// End of user code
+	// Start of user code for outSequenceOnError specific getters and setters declaration
+	public void setOutSequenceOnError(RegistryKeyProperty rkp);
+	
+	public RegistryKeyProperty getOutSequenceOnError();
+	
+	// End of user code
+	// Start of user code for wsdlKey specific getters and setters declaration
+	public void setWsdlKey(RegistryKeyProperty rkp);
+	
+	public RegistryKeyProperty getWsdlKey();
+	
+	// End of user code
+	// Start of user code for wsdlEndpoint specific getters and setters declaration
+	public void setWsdlEndpoint(RegistryKeyProperty rkp);
+	
+	public RegistryKeyProperty getWsdlEndpoint();
+	
+	// End of user code
 
 	/**
 	 * Returns the internationalized title text.

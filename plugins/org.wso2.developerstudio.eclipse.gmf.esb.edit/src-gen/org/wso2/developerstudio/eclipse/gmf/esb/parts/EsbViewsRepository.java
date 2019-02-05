@@ -177,6 +177,163 @@ public class EsbViewsRepository {
 	 * 
 	 */
 	public static class ProxyService {
+		public static class Basic {
+	
+			
+			public static String name = "esb::ProxyService::basic::name";
+			
+			
+			public static String pinnedServers = "esb::ProxyService::basic::pinnedServers";
+			
+			
+			public static String serviceGroup = "esb::ProxyService::basic::serviceGroup";
+			
+			
+			public static String traceEnabled = "esb::ProxyService::basic::traceEnabled";
+			
+			
+			public static String statisticsEnabled = "esb::ProxyService::basic::statisticsEnabled";
+			
+			
+			public static String startOnLoad = "esb::ProxyService::basic::startOnLoad";
+			
+			
+			public static String transports = "esb::ProxyService::basic::transports";
+			
+			// Start of user code for onError ElementEditor key
+			public static String onError = "esb::ProxyService::basic::onError";
+			// End of user code
+			
+	
+		}
+	
+		public static class Endpoint {
+	
+			
+			public static String endpointType = "esb::ProxyService::endpoint::endpointType";
+			
+			
+			public static String endpointName = "esb::ProxyService::endpoint::endpointName";
+			
+			// Start of user code for endpointKey ElementEditor key
+			public static String endpointKey = "esb::ProxyService::endpoint::endpointKey";
+			// End of user code
+			
+	
+		}
+	
+		public static class FaultSequence {
+	
+			
+			public static String faultSequenceType = "esb::ProxyService::faultSequence::faultSequenceType";
+			
+			
+			public static String faultSequenceName = "esb::ProxyService::faultSequence::faultSequenceName";
+			
+			// Start of user code for faultSequenceKey ElementEditor key
+			public static String faultSequenceKey = "esb::ProxyService::faultSequence::faultSequenceKey";
+			// End of user code
+			
+			// Start of user code for faultSequenceOnError ElementEditor key
+			public static String faultSequenceOnError = "esb::ProxyService::faultSequence::faultSequenceOnError";
+			// End of user code
+			
+	
+		}
+	
+		public static class InSequence {
+	
+			
+			public static String inSequenceType = "esb::ProxyService::inSequence::inSequenceType";
+			
+			
+			public static String inSequenceName = "esb::ProxyService::inSequence::inSequenceName";
+			
+			// Start of user code for inSequenceKey ElementEditor key
+			public static String inSequenceKey = "esb::ProxyService::inSequence::inSequenceKey";
+			// End of user code
+			
+			// Start of user code for inSequenceOnError ElementEditor key
+			public static String inSequenceOnError = "esb::ProxyService::inSequence::inSequenceOnError";
+			// End of user code
+			
+	
+		}
+	
+		public static class OutSequence {
+	
+			
+			public static String outSequenceType = "esb::ProxyService::outSequence::outSequenceType";
+			
+			
+			public static String outSequenceName = "esb::ProxyService::outSequence::outSequenceName";
+			
+			// Start of user code for outSequenceKey ElementEditor key
+			public static String outSequenceKey = "esb::ProxyService::outSequence::outSequenceKey";
+			// End of user code
+			
+			// Start of user code for outSequenceOnError ElementEditor key
+			public static String outSequenceOnError = "esb::ProxyService::outSequence::outSequenceOnError";
+			// End of user code
+			
+	
+		}
+	
+		public static class Parameters {
+	
+			
+			public static String serviceParameters = "esb::ProxyService::parameters::serviceParameters";
+			
+	
+		}
+	
+		public static class ReliableMessaging {
+	
+			
+			public static String reliableMessagingEnabled = "esb::ProxyService::reliableMessaging::reliableMessagingEnabled";
+			
+	
+		}
+	
+		public static class Security {
+	
+			
+			public static String securityEnabled = "esb::ProxyService::security::securityEnabled";
+			
+			
+			public static String servicePolicies = "esb::ProxyService::security::servicePolicies";
+			
+	
+		}
+	
+		public static class Wsdl {
+	
+			
+			public static String wsdlType = "esb::ProxyService::wsdl::wsdlType";
+			
+			
+			public static String wsdlXML = "esb::ProxyService::wsdl::wsdlXML";
+			
+			
+			public static String wsdlURL = "esb::ProxyService::wsdl::wsdlURL";
+			
+			
+			public static String wsdlResources = "esb::ProxyService::wsdl::wsdlResources";
+			
+			
+			public static String preservePolicy = "esb::ProxyService::wsdl::preservePolicy";
+			
+			// Start of user code for wsdlKey ElementEditor key
+			public static String wsdlKey = "esb::ProxyService::wsdl::wsdlKey";
+			// End of user code
+			
+			// Start of user code for wsdlEndpoint ElementEditor key
+			public static String wsdlEndpoint = "esb::ProxyService::wsdl::wsdlEndpoint";
+			// End of user code
+			
+	
+		}
+	
 		public static class Properties {
 	
 			
@@ -189,79 +346,7 @@ public class EsbViewsRepository {
 			public static String inSequenceInputConnectors = "esb::ProxyService::properties::inSequenceInputConnectors";
 			
 			
-			public static String name = "esb::ProxyService::properties::name";
-			
-			
-			public static String pinnedServers = "esb::ProxyService::properties::pinnedServers";
-			
-			
-			public static String serviceGroup = "esb::ProxyService::properties::serviceGroup";
-			
-			
-			public static String traceEnabled = "esb::ProxyService::properties::traceEnabled";
-			
-			
-			public static String statisticsEnabled = "esb::ProxyService::properties::statisticsEnabled";
-			
-			
-			public static String startOnLoad = "esb::ProxyService::properties::startOnLoad";
-			
-			
-			public static String transports = "esb::ProxyService::properties::transports";
-			
-			
-			public static String reliableMessagingEnabled = "esb::ProxyService::properties::reliableMessagingEnabled";
-			
-			
-			public static String securityEnabled = "esb::ProxyService::properties::securityEnabled";
-			
-			
-			public static String serviceParameters = "esb::ProxyService::properties::serviceParameters";
-			
-			
-			public static String servicePolicies = "esb::ProxyService::properties::servicePolicies";
-			
-			
-			public static String inSequenceType = "esb::ProxyService::properties::inSequenceType";
-			
-			
-			public static String inSequenceName = "esb::ProxyService::properties::inSequenceName";
-			
-			
-			public static String outSequenceType = "esb::ProxyService::properties::outSequenceType";
-			
-			
-			public static String outSequenceName = "esb::ProxyService::properties::outSequenceName";
-			
-			
-			public static String faultSequenceType = "esb::ProxyService::properties::faultSequenceType";
-			
-			
-			public static String faultSequenceName = "esb::ProxyService::properties::faultSequenceName";
-			
-			
-			public static String endpointType = "esb::ProxyService::properties::endpointType";
-			
-			
-			public static String endpointName = "esb::ProxyService::properties::endpointName";
-			
-			
 			public static String mainSequence = "esb::ProxyService::properties::mainSequence";
-			
-			
-			public static String wsdlType = "esb::ProxyService::properties::wsdlType";
-			
-			
-			public static String preservePolicy = "esb::ProxyService::properties::preservePolicy";
-			
-			
-			public static String wsdlXML = "esb::ProxyService::properties::wsdlXML";
-			
-			
-			public static String wsdlURL = "esb::ProxyService::properties::wsdlURL";
-			
-			
-			public static String wsdlResources = "esb::ProxyService::properties::wsdlResources";
 			
 	
 		}
@@ -338,6 +423,10 @@ public class EsbViewsRepository {
 			
 			public static String location = "esb::ProxyWSDLResource::properties::location";
 			
+			// Start of user code for key ElementEditor key
+			public static String key = "esb::ProxyWSDLResource::properties::key";
+			// End of user code
+			
 	
 		}
 	
@@ -383,6 +472,10 @@ public class EsbViewsRepository {
 	public static class ProxyServicePolicy {
 		public static class Properties {
 	
+			// Start of user code for policyKey ElementEditor key
+			public static String policyKey = "esb::ThrottleMediator::throttlePolicy::policyKey";
+			// End of user code
+			
 	
 		}
 	
@@ -630,91 +723,132 @@ public class EsbViewsRepository {
 	 * 
 	 */
 	public static class AddressEndPoint {
-		public static class Properties {
+		public static class Basic {
 	
 			
-			public static String description = "esb::AddressEndPoint::properties::description";
+			public static String commentsList = "esb::AddressEndPoint::Basic::commentsList";
 			
 			
-			public static String commentsList = "esb::AddressEndPoint::properties::commentsList";
+			public static String endPointName = "esb::AddressEndPoint::Basic::endPointName";
 			
 			
-			public static String endPointName = "esb::AddressEndPoint::properties::endPointName";
+			public static String anonymous = "esb::AddressEndPoint::Basic::anonymous";
 			
 			
-			public static String anonymous = "esb::AddressEndPoint::properties::anonymous";
+			public static String inLine = "esb::AddressEndPoint::Basic::InLine";
 			
 			
-			public static String inLine = "esb::AddressEndPoint::properties::InLine";
+			public static String duplicate = "esb::AddressEndPoint::Basic::duplicate";
 			
 			
-			public static String duplicate = "esb::AddressEndPoint::properties::duplicate";
+			public static String reversed = "esb::AddressEndPoint::Basic::reversed";
 			
 			
-			public static String properties_ = "esb::AddressEndPoint::properties::properties_";
+			public static String format = "esb::AddressEndPoint::Basic::format";
 			
 			
-			public static String reversed = "esb::AddressEndPoint::properties::reversed";
+			public static String templateParameters = "esb::AddressEndPoint::Basic::templateParameters";
 			
 			
-			public static String reliableMessagingEnabled = "esb::AddressEndPoint::properties::reliableMessagingEnabled";
+			public static String statisticsEnabled = "esb::AddressEndPoint::Basic::statisticsEnabled";
 			
 			
-			public static String securityEnabled = "esb::AddressEndPoint::properties::securityEnabled";
+			public static String traceEnabled = "esb::AddressEndPoint::Basic::traceEnabled";
 			
 			
-			public static String addressingEnabled = "esb::AddressEndPoint::properties::addressingEnabled";
+			public static String uRI = "esb::AddressEndPoint::Basic::URI";
+			
+	
+		}
+	
+		public static class EndpointSuspendState {
+	
+			
+			public static String suspendErrorCodes = "esb::AddressEndPoint::Endpoint Suspend State::suspendErrorCodes";
 			
 			
-			public static String addressingVersion = "esb::AddressEndPoint::properties::addressingVersion";
+			public static String suspendInitialDuration = "esb::AddressEndPoint::Endpoint Suspend State::suspendInitialDuration";
 			
 			
-			public static String addressingSeparateListener = "esb::AddressEndPoint::properties::addressingSeparateListener";
+			public static String suspendMaximumDuration = "esb::AddressEndPoint::Endpoint Suspend State::suspendMaximumDuration";
 			
 			
-			public static String timeOutDuration = "esb::AddressEndPoint::properties::timeOutDuration";
+			public static String suspendProgressionFactor = "esb::AddressEndPoint::Endpoint Suspend State::suspendProgressionFactor";
+			
+	
+		}
+	
+		public static class EndpointTimeoutState {
+	
+			
+			public static String retryErrorCodes = "esb::AddressEndPoint::Endpoint Timeout State::retryErrorCodes";
 			
 			
-			public static String timeOutAction = "esb::AddressEndPoint::properties::timeOutAction";
+			public static String retryCount = "esb::AddressEndPoint::Endpoint Timeout State::retryCount";
 			
 			
-			public static String retryErrorCodes = "esb::AddressEndPoint::properties::retryErrorCodes";
+			public static String retryDelay = "esb::AddressEndPoint::Endpoint Timeout State::retryDelay";
+			
+	
+		}
+	
+		public static class Misc {
+	
+			
+			public static String properties = "esb::AddressEndPoint::Misc::properties";
 			
 			
-			public static String retryCount = "esb::AddressEndPoint::properties::retryCount";
+			public static String optimize = "esb::AddressEndPoint::Misc::optimize";
 			
 			
-			public static String retryDelay = "esb::AddressEndPoint::properties::retryDelay";
+			public static String description = "esb::AddressEndPoint::Misc::description";
+			
+	
+		}
+	
+		public static class QoS {
+	
+			
+			public static String reliableMessagingEnabled = "esb::AddressEndPoint::QoS::reliableMessagingEnabled";
 			
 			
-			public static String suspendErrorCodes = "esb::AddressEndPoint::properties::suspendErrorCodes";
+			public static String securityEnabled = "esb::AddressEndPoint::QoS::securityEnabled";
 			
 			
-			public static String suspendInitialDuration = "esb::AddressEndPoint::properties::suspendInitialDuration";
+			public static String addressingEnabled = "esb::AddressEndPoint::QoS::addressingEnabled";
 			
 			
-			public static String suspendMaximumDuration = "esb::AddressEndPoint::properties::suspendMaximumDuration";
+			public static String addressingVersion = "esb::AddressEndPoint::QoS::addressingVersion";
 			
 			
-			public static String suspendProgressionFactor = "esb::AddressEndPoint::properties::suspendProgressionFactor";
+			public static String addressingSeparateListener = "esb::AddressEndPoint::QoS::addressingSeparateListener";
+			
+			// Start of user code for Reliable Messaging Policy ElementEditor key
+			public static String reliableMessagingPolicy = "esb::AddressEndPoint::QoS::Reliable Messaging Policy";
+			// End of user code
+			
+			// Start of user code for Inbound Policy ElementEditor key
+			public static String inboundPolicy = "esb::AddressEndPoint::QoS::Inbound Policy";
+			// End of user code
+			
+			// Start of user code for Outbound Policy ElementEditor key
+			public static String outboundPolicy = "esb::AddressEndPoint::QoS::Outbound Policy";
+			// End of user code
+			
+			// Start of user code for Security Policy ElementEditor key
+			public static String securityPolicy = "esb::AddressEndPoint::QoS::Security Policy";
+			// End of user code
+			
+	
+		}
+	
+		public static class Timeout {
+	
+			
+			public static String timeOutDuration = "esb::AddressEndPoint::Timeout::timeOutDuration";
 			
 			
-			public static String format = "esb::AddressEndPoint::properties::format";
-			
-			
-			public static String optimize = "esb::AddressEndPoint::properties::optimize";
-			
-			
-			public static String templateParameters = "esb::AddressEndPoint::properties::templateParameters";
-			
-			
-			public static String statisticsEnabled = "esb::AddressEndPoint::properties::statisticsEnabled";
-			
-			
-			public static String traceEnabled = "esb::AddressEndPoint::properties::traceEnabled";
-			
-			
-			public static String uRI = "esb::AddressEndPoint::properties::URI";
+			public static String timeOutAction = "esb::AddressEndPoint::Timeout::timeOutAction";
 			
 	
 		}
@@ -1948,6 +2082,18 @@ public class EsbViewsRepository {
 			
 			public static String resources = "esb::XSLTMediator::properties::resources";
 			
+			// Start of user code for sourceXpath ElementEditor key
+			public static String sourceXpath = "esb::XSLTMediator::properties::sourceXpath";
+			// End of user code
+			
+			// Start of user code for XSLTStaticSchemaKey ElementEditor key
+			public static String xSLTStaticSchemaKey = "esb::XSLTMediator::properties::XSLTStaticSchemaKey";
+			// End of user code
+			
+			// Start of user code for XSLTDynamicSchemaKey ElementEditor key
+			public static String xSLTDynamicSchemaKey = "esb::XSLTMediator::properties::XSLTDynamicSchemaKey";
+			// End of user code
+			
 	
 		}
 	
@@ -1968,6 +2114,10 @@ public class EsbViewsRepository {
 			
 			
 			public static String propertyValue = "esb::XSLTProperty::properties::propertyValue";
+			
+			// Start of user code for propertyExpression ElementEditor key
+			public static String propertyExpression = "esb::XSLTProperty::properties::propertyExpression";
+			// End of user code
 			
 	
 		}
@@ -2001,6 +2151,10 @@ public class EsbViewsRepository {
 	
 			
 			public static String location = "esb::XSLTResource::properties::location";
+			
+			// Start of user code for resourceRegistryKey ElementEditor key
+			public static String resourceRegistryKey = "esb::XSLTResource::properties::resourceRegistryKey";
+			// End of user code
 			
 	
 		}
@@ -3044,7 +3198,7 @@ public class EsbViewsRepository {
 			public static String sequenceType = "esb::AggregateMediator::onComplete::sequenceType";
 			
 			// Start of user code for sequenceKey ElementEditor key
-			public static String sequenceKey = "esb::ForEachMediator::Sequence::sequenceKey";
+			public static String sequenceKey = "esb::AggregateMediator::properties::sequenceKey";
 			// End of user code
 			
 	
@@ -4299,9 +4453,10 @@ public class EsbViewsRepository {
 			// Start of user code for OnAcceptBranchSequenceKey ElementEditor key
 			public static String onAcceptBranchSequenceKey = "esb::ThrottleMediator::onAccept::OnAcceptBranchSequenceKey";
 			// End of user code
+			
 	
 		}
-
+	
 		public static class OnReject {
 	
 			
@@ -4314,7 +4469,6 @@ public class EsbViewsRepository {
 	
 		}
 	
-
 		public static class ThrottlePolicy {
 	
 			

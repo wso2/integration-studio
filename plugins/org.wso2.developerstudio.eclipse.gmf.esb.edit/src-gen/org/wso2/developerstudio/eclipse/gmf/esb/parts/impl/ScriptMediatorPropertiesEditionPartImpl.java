@@ -72,7 +72,8 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.ScriptMediatorPropertiesEditionPart;
 
@@ -99,6 +100,14 @@ public class ScriptMediatorPropertiesEditionPartImpl extends CompositeProperties
 	protected ReferencesTable scriptKeys;
 	protected List<ViewerFilter> scriptKeysBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> scriptKeysFilters = new ArrayList<ViewerFilter>();
+	// Start of user code  for Script Static Key widgets declarations
+	
+	// End of user code
+
+	// Start of user code  for Script Dynamic Key widgets declarations
+	
+	// End of user code
+
 
 
 
@@ -146,6 +155,8 @@ public class ScriptMediatorPropertiesEditionPartImpl extends CompositeProperties
 		propertiesStep.addStep(EsbViewsRepository.ScriptMediator.Properties.scriptBody);
 		propertiesStep.addStep(EsbViewsRepository.ScriptMediator.Properties.keyType);
 		propertiesStep.addStep(EsbViewsRepository.ScriptMediator.Properties.scriptKeys);
+		propertiesStep.addStep(EsbViewsRepository.ScriptMediator.Properties.scriptStaticKey);
+		propertiesStep.addStep(EsbViewsRepository.ScriptMediator.Properties.scriptDynamicKey);
 		
 		
 		composer = new PartComposer(scriptMediatorStep) {
@@ -182,6 +193,12 @@ public class ScriptMediatorPropertiesEditionPartImpl extends CompositeProperties
 				if (key == EsbViewsRepository.ScriptMediator.Properties.scriptKeys) {
 					return createScriptKeysAdvancedTableComposition(parent);
 				}
+				// Start of user code for Script Static Key addToPart creation
+				
+				// End of user code
+				// Start of user code for Script Dynamic Key addToPart creation
+				
+				// End of user code
 				return parent;
 			}
 		};
@@ -967,6 +984,34 @@ public class ScriptMediatorPropertiesEditionPartImpl extends CompositeProperties
 
 
 
+
+	// Start of user code for Script Static Key specific getters and setters implementation
+	@Override
+	public RegistryKeyProperty getScriptStaticKey() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setScriptStaticKey(RegistryKeyProperty registryKeyProperty) {
+		// TODO Auto-generated method stub
+		
+	}
+	// End of user code
+
+	// Start of user code for Script Dynamic Key specific getters and setters implementation
+	@Override
+	public NamespacedProperty getScriptDynamicKey() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setScriptDynamicKey(NamespacedProperty nameSpacedProperty) {
+		// TODO Auto-generated method stub
+		
+	}
+	// End of user code
 
 	/**
 	 * {@inheritDoc}

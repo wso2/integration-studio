@@ -52,6 +52,7 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.ScriptLanguage;
 import org.wso2.developerstudio.eclipse.gmf.esb.ScriptMediator;
@@ -61,6 +62,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.ScriptMediatorPropertiesEditionPart;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.scriptKeyTypeEnum;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 
 
 // End of user code
@@ -135,6 +137,18 @@ public class ScriptMediatorPropertiesEditionComponent extends SinglePartProperti
 				scriptKeysSettings = new ReferencesTableSettings(scriptMediator, EsbPackage.eINSTANCE.getScriptMediator_ScriptKeys());
 				basePart.initScriptKeys(scriptKeysSettings);
 			}
+			// Start of user code  for scriptStaticKey command update
+			if (isAccessible(EsbViewsRepository.ScriptMediator.Properties.scriptStaticKey)) {
+				basePart.setScriptStaticKey(scriptMediator.getScriptStaticKey());
+			}
+			// End of user code
+			
+			// Start of user code  for scriptDynamicKey command update
+			if (isAccessible(EsbViewsRepository.ScriptMediator.Properties.scriptDynamicKey)) {
+				basePart.setScriptDynamicKey(scriptMediator.getScriptDynamicKey());
+			}
+			// End of user code
+			
 			// init filters
 			
 			
@@ -159,6 +173,12 @@ public class ScriptMediatorPropertiesEditionComponent extends SinglePartProperti
 				// Start of user code for additional businessfilters for scriptKeys
 				// End of user code
 			}
+			// Start of user code  for scriptStaticKey filter update
+			// End of user code
+			
+			// Start of user code  for scriptDynamicKey filter update
+			// End of user code
+			
 			// init values for referenced views
 			
 			// init filters for referenced views
@@ -166,6 +186,8 @@ public class ScriptMediatorPropertiesEditionComponent extends SinglePartProperti
 		}
 		setInitializing(false);
 	}
+
+
 
 
 
@@ -209,6 +231,12 @@ public class ScriptMediatorPropertiesEditionComponent extends SinglePartProperti
 		}
 		if (editorKey == EsbViewsRepository.ScriptMediator.Properties.scriptKeys) {
 			return EsbPackage.eINSTANCE.getScriptMediator_ScriptKeys();
+		}
+		if (editorKey == EsbViewsRepository.ScriptMediator.Properties.scriptStaticKey) {
+			return EsbPackage.eINSTANCE.getScriptMediator_ScriptStaticKey();
+		}
+		if (editorKey == EsbViewsRepository.ScriptMediator.Properties.scriptDynamicKey) {
+			return EsbPackage.eINSTANCE.getScriptMediator_ScriptDynamicKey();
 		}
 		return super.associatedFeature(editorKey);
 	}
@@ -272,6 +300,28 @@ public class ScriptMediatorPropertiesEditionComponent extends SinglePartProperti
 				scriptKeysSettings.move(event.getNewIndex(), (RegistryKeyProperty) event.getNewValue());
 			}
 		}
+		if (EsbViewsRepository.ScriptMediator.Properties.scriptStaticKey == event.getAffectedEditor()) {
+			// Start of user code for updateScriptStaticKey method body
+			if (event.getNewValue() != null) {
+				RegistryKeyProperty rkp = (RegistryKeyProperty) event.getNewValue();
+				scriptMediator.setScriptStaticKey(rkp);
+			} else {
+				scriptMediator.setScriptStaticKey(EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty());
+			}
+			// End of user code
+			
+		}
+		if (EsbViewsRepository.ScriptMediator.Properties.scriptDynamicKey == event.getAffectedEditor()) {
+			// Start of user code for updateScriptDynamicKey method body
+			if (event.getNewValue() != null) {
+                NamespacedProperty nsp = (NamespacedProperty) event.getNewValue();
+                scriptMediator.setScriptDynamicKey(nsp);
+            } else {
+            	scriptMediator.setScriptDynamicKey(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+            }
+			// End of user code
+			
+		}
 	}
 
 	/**
@@ -329,6 +379,30 @@ public class ScriptMediatorPropertiesEditionComponent extends SinglePartProperti
 			
 			if (EsbPackage.eINSTANCE.getScriptMediator_ScriptKeys().equals(msg.getFeature()) && isAccessible(EsbViewsRepository.ScriptMediator.Properties.scriptKeys))
 				basePart.updateScriptKeys();
+					// Start of user code for scriptStaticKey live update
+			if (EsbPackage.eINSTANCE.getScriptMediator_ScriptStaticKey().equals(msg.getFeature())
+					&& msg.getNotifier().equals(semanticObject) && basePart != null
+					&& isAccessible(EsbViewsRepository.ScriptMediator.Properties.scriptStaticKey)) {
+				if (msg.getNewValue() != null) {
+					basePart.setScriptStaticKey((RegistryKeyProperty) msg.getNewValue());
+				} else {
+					basePart.setScriptStaticKey(EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty());
+				}
+			}
+					// End of user code
+			
+					// Start of user code for scriptDynamicKey live update
+			if (EsbPackage.eINSTANCE.getScriptMediator_ScriptDynamicKey().equals(msg.getFeature())
+					&& msg.getNotifier().equals(semanticObject) && basePart != null
+					&& isAccessible(EsbViewsRepository.ScriptMediator.Properties.scriptDynamicKey)) {
+				if (msg.getNewValue() != null) {
+					basePart.setScriptDynamicKey((NamespacedProperty) msg.getNewValue());
+				} else {
+					basePart.setScriptDynamicKey(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+				}
+			}
+					// End of user code
+			
 			
 		}
 	}
@@ -349,7 +423,9 @@ public class ScriptMediatorPropertiesEditionComponent extends SinglePartProperti
 			EsbPackage.eINSTANCE.getScriptMediator_MediateFunction(),
 			EsbPackage.eINSTANCE.getScriptMediator_ScriptBody(),
 			EsbPackage.eINSTANCE.getScriptMediator_KeyType(),
-			EsbPackage.eINSTANCE.getScriptMediator_ScriptKeys()		);
+			EsbPackage.eINSTANCE.getScriptMediator_ScriptKeys(),
+			EsbPackage.eINSTANCE.getScriptMediator_ScriptStaticKey(),
+			EsbPackage.eINSTANCE.getScriptMediator_ScriptDynamicKey()		);
 		return new NotificationFilter[] {filter,};
 	}
 

@@ -4570,6 +4570,12 @@ public class EsbMessages extends NLS {
 	public static String ScriptMediatorPropertiesEditionPart_ScriptKeysLabel;
 
 	
+	public static String ScriptMediatorPropertiesEditionPart_ScriptStaticKeyLabel;
+
+	
+	public static String ScriptMediatorPropertiesEditionPart_ScriptDynamicKeyLabel;
+
+	
 	public static String ScriptMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;
 
 	

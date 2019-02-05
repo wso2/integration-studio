@@ -1722,6 +1722,12 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v7h_JnEei6boXzpRIfnA" name="scriptKeys" views="_E7wk2fJnEei6boXzpRIfnA">
           <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//ScriptMediator/scriptKeys"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_3TyfMCjaEemmWZTeZxU5Nw" name="scriptStaticKey" views="_Ymr4sCjaEemmWZTeZxU5Nw">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//ScriptMediator/scriptStaticKey"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="__a-BsCjaEemmWZTeZxU5Nw" name="scriptDynamicKey" views="_e1aEwCjaEemmWZTeZxU5Nw">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//ScriptMediator/scriptDynamicKey"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//ScriptMediator"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_E7v7iPJnEei6boXzpRIfnA" name="ScriptMediatorInputConnector" views="_E7wk2vJnEei6boXzpRIfnA">
@@ -7561,6 +7567,8 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wk2fJnEei6boXzpRIfnA" name="scriptKeys">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
           </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_Ymr4sCjaEemmWZTeZxU5Nw" name="Script Static Key"/>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_e1aEwCjaEemmWZTeZxU5Nw" name="Script Dynamic Key"/>
         </elements>
       </views>
       <views xmi:id="_E7wk2vJnEei6boXzpRIfnA" name="ScriptMediatorInputConnector">

@@ -36,10 +36,6 @@ Import-Package: javax.servlet;version="3.1.0",
  org.wso2.developerstudio.eclipse.samples.contributor;version="[6.0.0,7.0.0)",
  org.wso2.developerstudio.eclipse.samples.utils;version="[6.0.0,7.0.0)",
  org.wso2.developerstudio.eclipse.samples.wizards;version="[6.0.0,7.0.0)"
-Export-Package: org.wso2.developerstudio.eclipse.templates.dashboard.handlers;version="6.5.0";
-  uses:="org.eclipse.core.runtime,
-   org.eclipse.swt.graphics,
-   org.eclipse.jface.resource,
-   org.eclipse.ui.forms.editor,
-   org.eclipse.ui.forms",
- org.wso2.developerstudio.eclipse.templates.dashboard.help
+Export-Package: org.wso2.developerstudio.eclipse.templates.dashboard.handlers;version="6.5.0",
+ org.wso2.developerstudio.eclipse.templates.dashboard.help;version="6.5.0",
+ org.wso2.developerstudio.eclipse.templates.dashboard.web.function.server;version="6.5.0"

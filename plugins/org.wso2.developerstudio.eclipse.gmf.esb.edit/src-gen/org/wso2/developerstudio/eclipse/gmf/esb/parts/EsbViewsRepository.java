@@ -7020,56 +7020,93 @@ public class EsbViewsRepository {
 			
 			public static String inSequenceInputConnectors = "esb::APIResource::properties::inSequenceInputConnectors";
 			
+	
+		}
+	
+		public static class Basic {
+	
 			
-			public static String urlStyle = "esb::APIResource::properties::urlStyle";
-			
-			
-			public static String uriTemplate = "esb::APIResource::properties::uriTemplate";
-			
-			
-			public static String urlMapping = "esb::APIResource::properties::urlMapping";
-			
-			
-			public static String allowGet = "esb::APIResource::properties::allowGet";
+			public static String urlStyle = "esb::APIResource::basic::urlStyle";
 			
 			
-			public static String allowPost = "esb::APIResource::properties::allowPost";
+			public static String uriTemplate = "esb::APIResource::basic::uriTemplate";
 			
 			
-			public static String allowPut = "esb::APIResource::properties::allowPut";
+			public static String urlMapping = "esb::APIResource::basic::urlMapping";
 			
 			
-			public static String allowDelete = "esb::APIResource::properties::allowDelete";
+			public static String protocol = "esb::APIResource::basic::protocol";
+			
+	
+		}
+	
+		public static class Methods {
+	
+			
+			public static String allowGet = "esb::APIResource::methods::allowGet";
 			
 			
-			public static String allowOptions = "esb::APIResource::properties::allowOptions";
+			public static String allowPost = "esb::APIResource::methods::allowPost";
 			
 			
-			public static String allowHead = "esb::APIResource::properties::allowHead";
+			public static String allowPut = "esb::APIResource::methods::allowPut";
 			
 			
-			public static String allowPatch = "esb::APIResource::properties::allowPatch";
+			public static String allowDelete = "esb::APIResource::methods::allowDelete";
 			
 			
-			public static String inSequenceType = "esb::APIResource::properties::inSequenceType";
+			public static String allowOptions = "esb::APIResource::methods::allowOptions";
 			
 			
-			public static String inSequenceName = "esb::APIResource::properties::inSequenceName";
+			public static String allowHead = "esb::APIResource::methods::allowHead";
 			
 			
-			public static String outSequenceType = "esb::APIResource::properties::outSequenceType";
+			public static String allowPatch = "esb::APIResource::methods::allowPatch";
+			
+	
+		}
+	
+		public static class InSequence {
+	
+			
+			public static String inSequenceType = "esb::APIResource::inSequence::inSequenceType";
 			
 			
-			public static String outSequenceName = "esb::APIResource::properties::outSequenceName";
+			public static String inSequenceName = "esb::APIResource::inSequence::inSequenceName";
+			
+			// Start of user code for inSequenceKey ElementEditor key
+			public static String inSequenceKey = "esb::APIResource::inSequence::inSequenceKey";
+			// End of user code
+			
+	
+		}
+	
+		public static class OutSequence {
+	
+			
+			public static String outSequenceType = "esb::APIResource::outSequence::outSequenceType";
 			
 			
-			public static String faultSequenceType = "esb::APIResource::properties::faultSequenceType";
+			public static String outSequenceName = "esb::APIResource::outSequence::outSequenceName";
+			
+			// Start of user code for outSequenceKey ElementEditor key
+			public static String outSequenceKey = "esb::APIResource::outSequence::outSequenceKey";
+			// End of user code
+			
+	
+		}
+	
+		public static class FaultSequence {
+	
+			
+			public static String faultSequenceType = "esb::APIResource::faultSequence::faultSequenceType";
 			
 			
-			public static String faultSequenceName = "esb::APIResource::properties::faultSequenceName";
+			public static String faultSequenceName = "esb::APIResource::faultSequence::faultSequenceName";
 			
-			
-			public static String protocol = "esb::APIResource::properties::protocol";
+			// Start of user code for faultSequenceKey ElementEditor key
+			public static String faultSequenceKey = "esb::APIResource::faultSequence::faultSequenceKey";
+			// End of user code
 			
 	
 		}

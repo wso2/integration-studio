@@ -4134,6 +4134,9 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v-nfJnEei6boXzpRIfnA" name="urlMapping" views="_E7xKovJnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//APIResource/urlMapping"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v-q_JnEei6boXzpRIfnA" name="protocol" views="_E7xKsPJnEei6boXzpRIfnA">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//APIResource/protocol"/>
+        </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v-nvJnEei6boXzpRIfnA" name="allowGet" views="_E7xKo_JnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//APIResource/allowGet"/>
         </properties>
@@ -4161,11 +4164,17 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v-pvJnEei6boXzpRIfnA" name="inSequenceName" views="_E7xKq_JnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//APIResource/inSequenceName"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_4BPZECjwEemez4yxopGMjg" name="inSequenceKey" views="_OgBIsCjwEemez4yxopGMjg">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//APIResource/inSequenceKey"/>
+        </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v-p_JnEei6boXzpRIfnA" name="outSequenceType" views="_E7xKrPJnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//APIResource/outSequenceType"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v-qPJnEei6boXzpRIfnA" name="outSequenceName" views="_E7xKrfJnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//APIResource/outSequenceName"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_969lgCjwEemez4yxopGMjg" name="outSequenceKey" views="_d4Fe4CjwEemez4yxopGMjg">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//APIResource/outSequenceKey"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v-qfJnEei6boXzpRIfnA" name="faultSequenceType" views="_E7xKrvJnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//APIResource/faultSequenceType"/>
@@ -4173,8 +4182,8 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v-qvJnEei6boXzpRIfnA" name="faultSequenceName" views="_E7xKr_JnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//APIResource/faultSequenceName"/>
         </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v-q_JnEei6boXzpRIfnA" name="protocol" views="_E7xKsPJnEei6boXzpRIfnA">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//APIResource/protocol"/>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_DgC-sCjxEemez4yxopGMjg" name="faultSequenceKey" views="_q-9OgCjwEemez4yxopGMjg">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//APIResource/faultSequenceKey"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//APIResource"/>
       </bindings>
@@ -10248,6 +10257,9 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xKn_JnEei6boXzpRIfnA" name="inSequenceInputConnectors">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
           </elements>
+        </elements>
+        <elements xsi:type="eef-views:Container" xmi:id="_X2mTACjvEemez4yxopGMjg" name="basic">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xKoPJnEei6boXzpRIfnA" name="urlStyle">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
           </elements>
@@ -10257,6 +10269,12 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xKovJnEei6boXzpRIfnA" name="urlMapping">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xKsPJnEei6boXzpRIfnA" name="protocol">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
+          </elements>
+        </elements>
+        <elements xsi:type="eef-views:Container" xmi:id="_7VSZMCjvEemez4yxopGMjg" name="methods">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xKo_JnEei6boXzpRIfnA" name="allowGet">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
           </elements>
@@ -10278,27 +10296,36 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xKqfJnEei6boXzpRIfnA" name="allowPatch">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
           </elements>
+        </elements>
+        <elements xsi:type="eef-views:Container" xmi:id="_H3TvUCjwEemez4yxopGMjg" name="inSequence">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xKqvJnEei6boXzpRIfnA" name="inSequenceType">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xKq_JnEei6boXzpRIfnA" name="inSequenceName">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_OgBIsCjwEemez4yxopGMjg" name="inSequenceKey"/>
+        </elements>
+        <elements xsi:type="eef-views:Container" xmi:id="_YP68gCjwEemez4yxopGMjg" name="outSequence">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xKrPJnEei6boXzpRIfnA" name="outSequenceType">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xKrfJnEei6boXzpRIfnA" name="outSequenceName">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_d4Fe4CjwEemez4yxopGMjg" name="outSequenceKey"/>
+        </elements>
+        <elements xsi:type="eef-views:Container" xmi:id="_lEzkQCjwEemez4yxopGMjg" name="faultSequence">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xKrvJnEei6boXzpRIfnA" name="faultSequenceType">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xKr_JnEei6boXzpRIfnA" name="faultSequenceName">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xKsPJnEei6boXzpRIfnA" name="protocol">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
-          </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_q-9OgCjwEemez4yxopGMjg" name="faultSequenceKey"/>
         </elements>
       </views>
       <views xmi:id="_E7xKsfJnEei6boXzpRIfnA" name="APIResourceInputConnector">

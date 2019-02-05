@@ -105,57 +105,66 @@ public class APIResourcePropertiesEditionComponent extends SinglePartPropertiesE
 				inSequenceInputConnectorsSettings = new ReferencesTableSettings(aPIResource, EsbPackage.eINSTANCE.getAPIResource_InSequenceInputConnectors());
 				basePart.initInSequenceInputConnectors(inSequenceInputConnectorsSettings);
 			}
-			if (isAccessible(EsbViewsRepository.APIResource.Properties.urlStyle)) {
+			if (isAccessible(EsbViewsRepository.APIResource.Basic.urlStyle)) {
 				basePart.initUrlStyle(EEFUtils.choiceOfValues(aPIResource, EsbPackage.eINSTANCE.getAPIResource_UrlStyle()), aPIResource.getUrlStyle());
 			}
-			if (isAccessible(EsbViewsRepository.APIResource.Properties.uriTemplate))
+			if (isAccessible(EsbViewsRepository.APIResource.Basic.uriTemplate))
 				basePart.setUriTemplate(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, aPIResource.getUriTemplate()));
 			
-			if (isAccessible(EsbViewsRepository.APIResource.Properties.urlMapping))
+			if (isAccessible(EsbViewsRepository.APIResource.Basic.urlMapping))
 				basePart.setUrlMapping(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, aPIResource.getUrlMapping()));
 			
-			if (isAccessible(EsbViewsRepository.APIResource.Properties.allowGet)) {
-				basePart.setAllowGet(aPIResource.isAllowGet());
-			}
-			if (isAccessible(EsbViewsRepository.APIResource.Properties.allowPost)) {
-				basePart.setAllowPost(aPIResource.isAllowPost());
-			}
-			if (isAccessible(EsbViewsRepository.APIResource.Properties.allowPut)) {
-				basePart.setAllowPut(aPIResource.isAllowPut());
-			}
-			if (isAccessible(EsbViewsRepository.APIResource.Properties.allowDelete)) {
-				basePart.setAllowDelete(aPIResource.isAllowDelete());
-			}
-			if (isAccessible(EsbViewsRepository.APIResource.Properties.allowOptions)) {
-				basePart.setAllowOptions(aPIResource.isAllowOptions());
-			}
-			if (isAccessible(EsbViewsRepository.APIResource.Properties.allowHead)) {
-				basePart.setAllowHead(aPIResource.isAllowHead());
-			}
-			if (isAccessible(EsbViewsRepository.APIResource.Properties.allowPatch)) {
-				basePart.setAllowPatch(aPIResource.isAllowPatch());
-			}
-			if (isAccessible(EsbViewsRepository.APIResource.Properties.inSequenceType)) {
-				basePart.initInSequenceType(EEFUtils.choiceOfValues(aPIResource, EsbPackage.eINSTANCE.getAPIResource_InSequenceType()), aPIResource.getInSequenceType());
-			}
-			if (isAccessible(EsbViewsRepository.APIResource.Properties.inSequenceName))
-				basePart.setInSequenceName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, aPIResource.getInSequenceName()));
-			
-			if (isAccessible(EsbViewsRepository.APIResource.Properties.outSequenceType)) {
-				basePart.initOutSequenceType(EEFUtils.choiceOfValues(aPIResource, EsbPackage.eINSTANCE.getAPIResource_OutSequenceType()), aPIResource.getOutSequenceType());
-			}
-			if (isAccessible(EsbViewsRepository.APIResource.Properties.outSequenceName))
-				basePart.setOutSequenceName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, aPIResource.getOutSequenceName()));
-			
-			if (isAccessible(EsbViewsRepository.APIResource.Properties.faultSequenceType)) {
-				basePart.initFaultSequenceType(EEFUtils.choiceOfValues(aPIResource, EsbPackage.eINSTANCE.getAPIResource_FaultSequenceType()), aPIResource.getFaultSequenceType());
-			}
-			if (isAccessible(EsbViewsRepository.APIResource.Properties.faultSequenceName))
-				basePart.setFaultSequenceName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, aPIResource.getFaultSequenceName()));
-			
-			if (isAccessible(EsbViewsRepository.APIResource.Properties.protocol)) {
+			if (isAccessible(EsbViewsRepository.APIResource.Basic.protocol)) {
 				basePart.initProtocol(EEFUtils.choiceOfValues(aPIResource, EsbPackage.eINSTANCE.getAPIResource_Protocol()), aPIResource.getProtocol());
 			}
+			if (isAccessible(EsbViewsRepository.APIResource.Methods.allowGet)) {
+				basePart.setAllowGet(aPIResource.isAllowGet());
+			}
+			if (isAccessible(EsbViewsRepository.APIResource.Methods.allowPost)) {
+				basePart.setAllowPost(aPIResource.isAllowPost());
+			}
+			if (isAccessible(EsbViewsRepository.APIResource.Methods.allowPut)) {
+				basePart.setAllowPut(aPIResource.isAllowPut());
+			}
+			if (isAccessible(EsbViewsRepository.APIResource.Methods.allowDelete)) {
+				basePart.setAllowDelete(aPIResource.isAllowDelete());
+			}
+			if (isAccessible(EsbViewsRepository.APIResource.Methods.allowOptions)) {
+				basePart.setAllowOptions(aPIResource.isAllowOptions());
+			}
+			if (isAccessible(EsbViewsRepository.APIResource.Methods.allowHead)) {
+				basePart.setAllowHead(aPIResource.isAllowHead());
+			}
+			if (isAccessible(EsbViewsRepository.APIResource.Methods.allowPatch)) {
+				basePart.setAllowPatch(aPIResource.isAllowPatch());
+			}
+			if (isAccessible(EsbViewsRepository.APIResource.InSequence.inSequenceType)) {
+				basePart.initInSequenceType(EEFUtils.choiceOfValues(aPIResource, EsbPackage.eINSTANCE.getAPIResource_InSequenceType()), aPIResource.getInSequenceType());
+			}
+			if (isAccessible(EsbViewsRepository.APIResource.InSequence.inSequenceName))
+				basePart.setInSequenceName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, aPIResource.getInSequenceName()));
+			
+			// Start of user code  for inSequenceKey command update
+			// End of user code
+			
+			if (isAccessible(EsbViewsRepository.APIResource.OutSequence.outSequenceType)) {
+				basePart.initOutSequenceType(EEFUtils.choiceOfValues(aPIResource, EsbPackage.eINSTANCE.getAPIResource_OutSequenceType()), aPIResource.getOutSequenceType());
+			}
+			if (isAccessible(EsbViewsRepository.APIResource.OutSequence.outSequenceName))
+				basePart.setOutSequenceName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, aPIResource.getOutSequenceName()));
+			
+			// Start of user code  for outSequenceKey command update
+			// End of user code
+			
+			if (isAccessible(EsbViewsRepository.APIResource.FaultSequence.faultSequenceType)) {
+				basePart.initFaultSequenceType(EEFUtils.choiceOfValues(aPIResource, EsbPackage.eINSTANCE.getAPIResource_FaultSequenceType()), aPIResource.getFaultSequenceType());
+			}
+			if (isAccessible(EsbViewsRepository.APIResource.FaultSequence.faultSequenceName))
+				basePart.setFaultSequenceName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, aPIResource.getFaultSequenceName()));
+			
+			// Start of user code  for faultSequenceKey command update
+			// End of user code
+			
 			// init filters
 			if (isAccessible(EsbViewsRepository.APIResource.Properties.inSequenceInputConnectors)) {
 				basePart.addFilterToInSequenceInputConnectors(new ViewerFilter() {
@@ -185,9 +194,18 @@ public class APIResourcePropertiesEditionComponent extends SinglePartPropertiesE
 			
 			
 			
+			// Start of user code  for inSequenceKey filter update
+			// End of user code
 			
 			
 			
+			// Start of user code  for outSequenceKey filter update
+			// End of user code
+			
+			
+			
+			// Start of user code  for faultSequenceKey filter update
+			// End of user code
 			
 			// init values for referenced views
 			
@@ -217,6 +235,9 @@ public class APIResourcePropertiesEditionComponent extends SinglePartPropertiesE
 
 
 
+
+
+
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
@@ -225,56 +246,65 @@ public class APIResourcePropertiesEditionComponent extends SinglePartPropertiesE
 		if (editorKey == EsbViewsRepository.APIResource.Properties.inSequenceInputConnectors) {
 			return EsbPackage.eINSTANCE.getAPIResource_InSequenceInputConnectors();
 		}
-		if (editorKey == EsbViewsRepository.APIResource.Properties.urlStyle) {
+		if (editorKey == EsbViewsRepository.APIResource.Basic.urlStyle) {
 			return EsbPackage.eINSTANCE.getAPIResource_UrlStyle();
 		}
-		if (editorKey == EsbViewsRepository.APIResource.Properties.uriTemplate) {
+		if (editorKey == EsbViewsRepository.APIResource.Basic.uriTemplate) {
 			return EsbPackage.eINSTANCE.getAPIResource_UriTemplate();
 		}
-		if (editorKey == EsbViewsRepository.APIResource.Properties.urlMapping) {
+		if (editorKey == EsbViewsRepository.APIResource.Basic.urlMapping) {
 			return EsbPackage.eINSTANCE.getAPIResource_UrlMapping();
 		}
-		if (editorKey == EsbViewsRepository.APIResource.Properties.allowGet) {
+		if (editorKey == EsbViewsRepository.APIResource.Basic.protocol) {
+			return EsbPackage.eINSTANCE.getAPIResource_Protocol();
+		}
+		if (editorKey == EsbViewsRepository.APIResource.Methods.allowGet) {
 			return EsbPackage.eINSTANCE.getAPIResource_AllowGet();
 		}
-		if (editorKey == EsbViewsRepository.APIResource.Properties.allowPost) {
+		if (editorKey == EsbViewsRepository.APIResource.Methods.allowPost) {
 			return EsbPackage.eINSTANCE.getAPIResource_AllowPost();
 		}
-		if (editorKey == EsbViewsRepository.APIResource.Properties.allowPut) {
+		if (editorKey == EsbViewsRepository.APIResource.Methods.allowPut) {
 			return EsbPackage.eINSTANCE.getAPIResource_AllowPut();
 		}
-		if (editorKey == EsbViewsRepository.APIResource.Properties.allowDelete) {
+		if (editorKey == EsbViewsRepository.APIResource.Methods.allowDelete) {
 			return EsbPackage.eINSTANCE.getAPIResource_AllowDelete();
 		}
-		if (editorKey == EsbViewsRepository.APIResource.Properties.allowOptions) {
+		if (editorKey == EsbViewsRepository.APIResource.Methods.allowOptions) {
 			return EsbPackage.eINSTANCE.getAPIResource_AllowOptions();
 		}
-		if (editorKey == EsbViewsRepository.APIResource.Properties.allowHead) {
+		if (editorKey == EsbViewsRepository.APIResource.Methods.allowHead) {
 			return EsbPackage.eINSTANCE.getAPIResource_AllowHead();
 		}
-		if (editorKey == EsbViewsRepository.APIResource.Properties.allowPatch) {
+		if (editorKey == EsbViewsRepository.APIResource.Methods.allowPatch) {
 			return EsbPackage.eINSTANCE.getAPIResource_AllowPatch();
 		}
-		if (editorKey == EsbViewsRepository.APIResource.Properties.inSequenceType) {
+		if (editorKey == EsbViewsRepository.APIResource.InSequence.inSequenceType) {
 			return EsbPackage.eINSTANCE.getAPIResource_InSequenceType();
 		}
-		if (editorKey == EsbViewsRepository.APIResource.Properties.inSequenceName) {
+		if (editorKey == EsbViewsRepository.APIResource.InSequence.inSequenceName) {
 			return EsbPackage.eINSTANCE.getAPIResource_InSequenceName();
 		}
-		if (editorKey == EsbViewsRepository.APIResource.Properties.outSequenceType) {
+		if (editorKey == EsbViewsRepository.APIResource.InSequence.inSequenceKey) {
+			return EsbPackage.eINSTANCE.getAPIResource_InSequenceKey();
+		}
+		if (editorKey == EsbViewsRepository.APIResource.OutSequence.outSequenceType) {
 			return EsbPackage.eINSTANCE.getAPIResource_OutSequenceType();
 		}
-		if (editorKey == EsbViewsRepository.APIResource.Properties.outSequenceName) {
+		if (editorKey == EsbViewsRepository.APIResource.OutSequence.outSequenceName) {
 			return EsbPackage.eINSTANCE.getAPIResource_OutSequenceName();
 		}
-		if (editorKey == EsbViewsRepository.APIResource.Properties.faultSequenceType) {
+		if (editorKey == EsbViewsRepository.APIResource.OutSequence.outSequenceKey) {
+			return EsbPackage.eINSTANCE.getAPIResource_OutSequenceKey();
+		}
+		if (editorKey == EsbViewsRepository.APIResource.FaultSequence.faultSequenceType) {
 			return EsbPackage.eINSTANCE.getAPIResource_FaultSequenceType();
 		}
-		if (editorKey == EsbViewsRepository.APIResource.Properties.faultSequenceName) {
+		if (editorKey == EsbViewsRepository.APIResource.FaultSequence.faultSequenceName) {
 			return EsbPackage.eINSTANCE.getAPIResource_FaultSequenceName();
 		}
-		if (editorKey == EsbViewsRepository.APIResource.Properties.protocol) {
-			return EsbPackage.eINSTANCE.getAPIResource_Protocol();
+		if (editorKey == EsbViewsRepository.APIResource.FaultSequence.faultSequenceKey) {
+			return EsbPackage.eINSTANCE.getAPIResource_FaultSequenceKey();
 		}
 		return super.associatedFeature(editorKey);
 	}
@@ -311,56 +341,71 @@ public class APIResourcePropertiesEditionComponent extends SinglePartPropertiesE
 				inSequenceInputConnectorsSettings.move(event.getNewIndex(), (APIResourceInSequenceInputConnector) event.getNewValue());
 			}
 		}
-		if (EsbViewsRepository.APIResource.Properties.urlStyle == event.getAffectedEditor()) {
+		if (EsbViewsRepository.APIResource.Basic.urlStyle == event.getAffectedEditor()) {
 			aPIResource.setUrlStyle((ApiResourceUrlStyle)event.getNewValue());
 		}
-		if (EsbViewsRepository.APIResource.Properties.uriTemplate == event.getAffectedEditor()) {
+		if (EsbViewsRepository.APIResource.Basic.uriTemplate == event.getAffectedEditor()) {
 			aPIResource.setUriTemplate((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
-		if (EsbViewsRepository.APIResource.Properties.urlMapping == event.getAffectedEditor()) {
+		if (EsbViewsRepository.APIResource.Basic.urlMapping == event.getAffectedEditor()) {
 			aPIResource.setUrlMapping((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
-		if (EsbViewsRepository.APIResource.Properties.allowGet == event.getAffectedEditor()) {
+		if (EsbViewsRepository.APIResource.Basic.protocol == event.getAffectedEditor()) {
+			aPIResource.setProtocol((Protocol)event.getNewValue());
+		}
+		if (EsbViewsRepository.APIResource.Methods.allowGet == event.getAffectedEditor()) {
 			aPIResource.setAllowGet((Boolean)event.getNewValue());
 		}
-		if (EsbViewsRepository.APIResource.Properties.allowPost == event.getAffectedEditor()) {
+		if (EsbViewsRepository.APIResource.Methods.allowPost == event.getAffectedEditor()) {
 			aPIResource.setAllowPost((Boolean)event.getNewValue());
 		}
-		if (EsbViewsRepository.APIResource.Properties.allowPut == event.getAffectedEditor()) {
+		if (EsbViewsRepository.APIResource.Methods.allowPut == event.getAffectedEditor()) {
 			aPIResource.setAllowPut((Boolean)event.getNewValue());
 		}
-		if (EsbViewsRepository.APIResource.Properties.allowDelete == event.getAffectedEditor()) {
+		if (EsbViewsRepository.APIResource.Methods.allowDelete == event.getAffectedEditor()) {
 			aPIResource.setAllowDelete((Boolean)event.getNewValue());
 		}
-		if (EsbViewsRepository.APIResource.Properties.allowOptions == event.getAffectedEditor()) {
+		if (EsbViewsRepository.APIResource.Methods.allowOptions == event.getAffectedEditor()) {
 			aPIResource.setAllowOptions((Boolean)event.getNewValue());
 		}
-		if (EsbViewsRepository.APIResource.Properties.allowHead == event.getAffectedEditor()) {
+		if (EsbViewsRepository.APIResource.Methods.allowHead == event.getAffectedEditor()) {
 			aPIResource.setAllowHead((Boolean)event.getNewValue());
 		}
-		if (EsbViewsRepository.APIResource.Properties.allowPatch == event.getAffectedEditor()) {
+		if (EsbViewsRepository.APIResource.Methods.allowPatch == event.getAffectedEditor()) {
 			aPIResource.setAllowPatch((Boolean)event.getNewValue());
 		}
-		if (EsbViewsRepository.APIResource.Properties.inSequenceType == event.getAffectedEditor()) {
+		if (EsbViewsRepository.APIResource.InSequence.inSequenceType == event.getAffectedEditor()) {
 			aPIResource.setInSequenceType((SequenceType)event.getNewValue());
 		}
-		if (EsbViewsRepository.APIResource.Properties.inSequenceName == event.getAffectedEditor()) {
+		if (EsbViewsRepository.APIResource.InSequence.inSequenceName == event.getAffectedEditor()) {
 			aPIResource.setInSequenceName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
-		if (EsbViewsRepository.APIResource.Properties.outSequenceType == event.getAffectedEditor()) {
+		if (EsbViewsRepository.APIResource.InSequence.inSequenceKey == event.getAffectedEditor()) {
+			// Start of user code for updateInSequenceKey method body
+			// End of user code
+			
+		}
+		if (EsbViewsRepository.APIResource.OutSequence.outSequenceType == event.getAffectedEditor()) {
 			aPIResource.setOutSequenceType((SequenceType)event.getNewValue());
 		}
-		if (EsbViewsRepository.APIResource.Properties.outSequenceName == event.getAffectedEditor()) {
+		if (EsbViewsRepository.APIResource.OutSequence.outSequenceName == event.getAffectedEditor()) {
 			aPIResource.setOutSequenceName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
-		if (EsbViewsRepository.APIResource.Properties.faultSequenceType == event.getAffectedEditor()) {
+		if (EsbViewsRepository.APIResource.OutSequence.outSequenceKey == event.getAffectedEditor()) {
+			// Start of user code for updateOutSequenceKey method body
+			// End of user code
+			
+		}
+		if (EsbViewsRepository.APIResource.FaultSequence.faultSequenceType == event.getAffectedEditor()) {
 			aPIResource.setFaultSequenceType((SequenceType)event.getNewValue());
 		}
-		if (EsbViewsRepository.APIResource.Properties.faultSequenceName == event.getAffectedEditor()) {
+		if (EsbViewsRepository.APIResource.FaultSequence.faultSequenceName == event.getAffectedEditor()) {
 			aPIResource.setFaultSequenceName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
-		if (EsbViewsRepository.APIResource.Properties.protocol == event.getAffectedEditor()) {
-			aPIResource.setProtocol((Protocol)event.getNewValue());
+		if (EsbViewsRepository.APIResource.FaultSequence.faultSequenceKey == event.getAffectedEditor()) {
+			// Start of user code for updateFaultSequenceKey method body
+			// End of user code
+			
 		}
 	}
 
@@ -374,76 +419,88 @@ public class APIResourcePropertiesEditionComponent extends SinglePartPropertiesE
 			APIResourcePropertiesEditionPart basePart = (APIResourcePropertiesEditionPart)editingPart;
 			if (EsbPackage.eINSTANCE.getAPIResource_InSequenceInputConnectors().equals(msg.getFeature()) && isAccessible(EsbViewsRepository.APIResource.Properties.inSequenceInputConnectors))
 				basePart.updateInSequenceInputConnectors();
-			if (EsbPackage.eINSTANCE.getAPIResource_UrlStyle().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EsbViewsRepository.APIResource.Properties.urlStyle))
+			if (EsbPackage.eINSTANCE.getAPIResource_UrlStyle().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EsbViewsRepository.APIResource.Basic.urlStyle))
 				basePart.setUrlStyle((ApiResourceUrlStyle)msg.getNewValue());
 			
-			if (EsbPackage.eINSTANCE.getAPIResource_UriTemplate().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.APIResource.Properties.uriTemplate)) {
+			if (EsbPackage.eINSTANCE.getAPIResource_UriTemplate().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.APIResource.Basic.uriTemplate)) {
 				if (msg.getNewValue() != null) {
 					basePart.setUriTemplate(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setUriTemplate("");
 				}
 			}
-			if (EsbPackage.eINSTANCE.getAPIResource_UrlMapping().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.APIResource.Properties.urlMapping)) {
+			if (EsbPackage.eINSTANCE.getAPIResource_UrlMapping().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.APIResource.Basic.urlMapping)) {
 				if (msg.getNewValue() != null) {
 					basePart.setUrlMapping(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setUrlMapping("");
 				}
 			}
-			if (EsbPackage.eINSTANCE.getAPIResource_AllowGet().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.APIResource.Properties.allowGet))
+			if (EsbPackage.eINSTANCE.getAPIResource_Protocol().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EsbViewsRepository.APIResource.Basic.protocol))
+				basePart.setProtocol((Protocol)msg.getNewValue());
+			
+			if (EsbPackage.eINSTANCE.getAPIResource_AllowGet().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.APIResource.Methods.allowGet))
 				basePart.setAllowGet((Boolean)msg.getNewValue());
 			
-			if (EsbPackage.eINSTANCE.getAPIResource_AllowPost().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.APIResource.Properties.allowPost))
+			if (EsbPackage.eINSTANCE.getAPIResource_AllowPost().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.APIResource.Methods.allowPost))
 				basePart.setAllowPost((Boolean)msg.getNewValue());
 			
-			if (EsbPackage.eINSTANCE.getAPIResource_AllowPut().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.APIResource.Properties.allowPut))
+			if (EsbPackage.eINSTANCE.getAPIResource_AllowPut().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.APIResource.Methods.allowPut))
 				basePart.setAllowPut((Boolean)msg.getNewValue());
 			
-			if (EsbPackage.eINSTANCE.getAPIResource_AllowDelete().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.APIResource.Properties.allowDelete))
+			if (EsbPackage.eINSTANCE.getAPIResource_AllowDelete().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.APIResource.Methods.allowDelete))
 				basePart.setAllowDelete((Boolean)msg.getNewValue());
 			
-			if (EsbPackage.eINSTANCE.getAPIResource_AllowOptions().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.APIResource.Properties.allowOptions))
+			if (EsbPackage.eINSTANCE.getAPIResource_AllowOptions().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.APIResource.Methods.allowOptions))
 				basePart.setAllowOptions((Boolean)msg.getNewValue());
 			
-			if (EsbPackage.eINSTANCE.getAPIResource_AllowHead().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.APIResource.Properties.allowHead))
+			if (EsbPackage.eINSTANCE.getAPIResource_AllowHead().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.APIResource.Methods.allowHead))
 				basePart.setAllowHead((Boolean)msg.getNewValue());
 			
-			if (EsbPackage.eINSTANCE.getAPIResource_AllowPatch().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.APIResource.Properties.allowPatch))
+			if (EsbPackage.eINSTANCE.getAPIResource_AllowPatch().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.APIResource.Methods.allowPatch))
 				basePart.setAllowPatch((Boolean)msg.getNewValue());
 			
-			if (EsbPackage.eINSTANCE.getAPIResource_InSequenceType().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EsbViewsRepository.APIResource.Properties.inSequenceType))
+			if (EsbPackage.eINSTANCE.getAPIResource_InSequenceType().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EsbViewsRepository.APIResource.InSequence.inSequenceType))
 				basePart.setInSequenceType((SequenceType)msg.getNewValue());
 			
-			if (EsbPackage.eINSTANCE.getAPIResource_InSequenceName().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.APIResource.Properties.inSequenceName)) {
+			if (EsbPackage.eINSTANCE.getAPIResource_InSequenceName().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.APIResource.InSequence.inSequenceName)) {
 				if (msg.getNewValue() != null) {
 					basePart.setInSequenceName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setInSequenceName("");
 				}
 			}
-			if (EsbPackage.eINSTANCE.getAPIResource_OutSequenceType().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EsbViewsRepository.APIResource.Properties.outSequenceType))
+					// Start of user code for inSequenceKey live update
+					
+					// End of user code
+			
+			if (EsbPackage.eINSTANCE.getAPIResource_OutSequenceType().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EsbViewsRepository.APIResource.OutSequence.outSequenceType))
 				basePart.setOutSequenceType((SequenceType)msg.getNewValue());
 			
-			if (EsbPackage.eINSTANCE.getAPIResource_OutSequenceName().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.APIResource.Properties.outSequenceName)) {
+			if (EsbPackage.eINSTANCE.getAPIResource_OutSequenceName().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.APIResource.OutSequence.outSequenceName)) {
 				if (msg.getNewValue() != null) {
 					basePart.setOutSequenceName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setOutSequenceName("");
 				}
 			}
-			if (EsbPackage.eINSTANCE.getAPIResource_FaultSequenceType().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EsbViewsRepository.APIResource.Properties.faultSequenceType))
+					// Start of user code for outSequenceKey live update
+					
+					// End of user code
+			
+			if (EsbPackage.eINSTANCE.getAPIResource_FaultSequenceType().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EsbViewsRepository.APIResource.FaultSequence.faultSequenceType))
 				basePart.setFaultSequenceType((SequenceType)msg.getNewValue());
 			
-			if (EsbPackage.eINSTANCE.getAPIResource_FaultSequenceName().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.APIResource.Properties.faultSequenceName)) {
+			if (EsbPackage.eINSTANCE.getAPIResource_FaultSequenceName().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.APIResource.FaultSequence.faultSequenceName)) {
 				if (msg.getNewValue() != null) {
 					basePart.setFaultSequenceName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setFaultSequenceName("");
 				}
 			}
-			if (EsbPackage.eINSTANCE.getAPIResource_Protocol().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EsbViewsRepository.APIResource.Properties.protocol))
-				basePart.setProtocol((Protocol)msg.getNewValue());
+					// Start of user code for faultSequenceKey live update
+					
+					// End of user code
 			
 			
 		}
@@ -461,6 +518,7 @@ public class APIResourcePropertiesEditionComponent extends SinglePartPropertiesE
 			EsbPackage.eINSTANCE.getAPIResource_UrlStyle(),
 			EsbPackage.eINSTANCE.getAPIResource_UriTemplate(),
 			EsbPackage.eINSTANCE.getAPIResource_UrlMapping(),
+			EsbPackage.eINSTANCE.getAPIResource_Protocol(),
 			EsbPackage.eINSTANCE.getAPIResource_AllowGet(),
 			EsbPackage.eINSTANCE.getAPIResource_AllowPost(),
 			EsbPackage.eINSTANCE.getAPIResource_AllowPut(),
@@ -470,11 +528,13 @@ public class APIResourcePropertiesEditionComponent extends SinglePartPropertiesE
 			EsbPackage.eINSTANCE.getAPIResource_AllowPatch(),
 			EsbPackage.eINSTANCE.getAPIResource_InSequenceType(),
 			EsbPackage.eINSTANCE.getAPIResource_InSequenceName(),
+			EsbPackage.eINSTANCE.getAPIResource_InSequenceKey(),
 			EsbPackage.eINSTANCE.getAPIResource_OutSequenceType(),
 			EsbPackage.eINSTANCE.getAPIResource_OutSequenceName(),
+			EsbPackage.eINSTANCE.getAPIResource_OutSequenceKey(),
 			EsbPackage.eINSTANCE.getAPIResource_FaultSequenceType(),
 			EsbPackage.eINSTANCE.getAPIResource_FaultSequenceName(),
-			EsbPackage.eINSTANCE.getAPIResource_Protocol()		);
+			EsbPackage.eINSTANCE.getAPIResource_FaultSequenceKey()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -489,124 +549,124 @@ public class APIResourcePropertiesEditionComponent extends SinglePartPropertiesE
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
 			try {
-				if (EsbViewsRepository.APIResource.Properties.urlStyle == event.getAffectedEditor()) {
+				if (EsbViewsRepository.APIResource.Basic.urlStyle == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getAPIResource_UrlStyle().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getAPIResource_UrlStyle().getEAttributeType(), newValue);
 				}
-				if (EsbViewsRepository.APIResource.Properties.uriTemplate == event.getAffectedEditor()) {
+				if (EsbViewsRepository.APIResource.Basic.uriTemplate == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getAPIResource_UriTemplate().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getAPIResource_UriTemplate().getEAttributeType(), newValue);
 				}
-				if (EsbViewsRepository.APIResource.Properties.urlMapping == event.getAffectedEditor()) {
+				if (EsbViewsRepository.APIResource.Basic.urlMapping == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getAPIResource_UrlMapping().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getAPIResource_UrlMapping().getEAttributeType(), newValue);
 				}
-				if (EsbViewsRepository.APIResource.Properties.allowGet == event.getAffectedEditor()) {
+				if (EsbViewsRepository.APIResource.Basic.protocol == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getAPIResource_Protocol().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getAPIResource_Protocol().getEAttributeType(), newValue);
+				}
+				if (EsbViewsRepository.APIResource.Methods.allowGet == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getAPIResource_AllowGet().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getAPIResource_AllowGet().getEAttributeType(), newValue);
 				}
-				if (EsbViewsRepository.APIResource.Properties.allowPost == event.getAffectedEditor()) {
+				if (EsbViewsRepository.APIResource.Methods.allowPost == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getAPIResource_AllowPost().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getAPIResource_AllowPost().getEAttributeType(), newValue);
 				}
-				if (EsbViewsRepository.APIResource.Properties.allowPut == event.getAffectedEditor()) {
+				if (EsbViewsRepository.APIResource.Methods.allowPut == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getAPIResource_AllowPut().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getAPIResource_AllowPut().getEAttributeType(), newValue);
 				}
-				if (EsbViewsRepository.APIResource.Properties.allowDelete == event.getAffectedEditor()) {
+				if (EsbViewsRepository.APIResource.Methods.allowDelete == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getAPIResource_AllowDelete().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getAPIResource_AllowDelete().getEAttributeType(), newValue);
 				}
-				if (EsbViewsRepository.APIResource.Properties.allowOptions == event.getAffectedEditor()) {
+				if (EsbViewsRepository.APIResource.Methods.allowOptions == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getAPIResource_AllowOptions().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getAPIResource_AllowOptions().getEAttributeType(), newValue);
 				}
-				if (EsbViewsRepository.APIResource.Properties.allowHead == event.getAffectedEditor()) {
+				if (EsbViewsRepository.APIResource.Methods.allowHead == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getAPIResource_AllowHead().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getAPIResource_AllowHead().getEAttributeType(), newValue);
 				}
-				if (EsbViewsRepository.APIResource.Properties.allowPatch == event.getAffectedEditor()) {
+				if (EsbViewsRepository.APIResource.Methods.allowPatch == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getAPIResource_AllowPatch().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getAPIResource_AllowPatch().getEAttributeType(), newValue);
 				}
-				if (EsbViewsRepository.APIResource.Properties.inSequenceType == event.getAffectedEditor()) {
+				if (EsbViewsRepository.APIResource.InSequence.inSequenceType == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getAPIResource_InSequenceType().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getAPIResource_InSequenceType().getEAttributeType(), newValue);
 				}
-				if (EsbViewsRepository.APIResource.Properties.inSequenceName == event.getAffectedEditor()) {
+				if (EsbViewsRepository.APIResource.InSequence.inSequenceName == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getAPIResource_InSequenceName().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getAPIResource_InSequenceName().getEAttributeType(), newValue);
 				}
-				if (EsbViewsRepository.APIResource.Properties.outSequenceType == event.getAffectedEditor()) {
+				if (EsbViewsRepository.APIResource.OutSequence.outSequenceType == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getAPIResource_OutSequenceType().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getAPIResource_OutSequenceType().getEAttributeType(), newValue);
 				}
-				if (EsbViewsRepository.APIResource.Properties.outSequenceName == event.getAffectedEditor()) {
+				if (EsbViewsRepository.APIResource.OutSequence.outSequenceName == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getAPIResource_OutSequenceName().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getAPIResource_OutSequenceName().getEAttributeType(), newValue);
 				}
-				if (EsbViewsRepository.APIResource.Properties.faultSequenceType == event.getAffectedEditor()) {
+				if (EsbViewsRepository.APIResource.FaultSequence.faultSequenceType == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getAPIResource_FaultSequenceType().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getAPIResource_FaultSequenceType().getEAttributeType(), newValue);
 				}
-				if (EsbViewsRepository.APIResource.Properties.faultSequenceName == event.getAffectedEditor()) {
+				if (EsbViewsRepository.APIResource.FaultSequence.faultSequenceName == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getAPIResource_FaultSequenceName().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getAPIResource_FaultSequenceName().getEAttributeType(), newValue);
-				}
-				if (EsbViewsRepository.APIResource.Properties.protocol == event.getAffectedEditor()) {
-					Object newValue = event.getNewValue();
-					if (newValue instanceof String) {
-						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getAPIResource_Protocol().getEAttributeType(), (String)newValue);
-					}
-					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getAPIResource_Protocol().getEAttributeType(), newValue);
 				}
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);

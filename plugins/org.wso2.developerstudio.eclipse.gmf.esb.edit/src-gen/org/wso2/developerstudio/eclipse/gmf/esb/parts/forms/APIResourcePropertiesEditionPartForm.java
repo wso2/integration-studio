@@ -11,8 +11,6 @@ import org.eclipse.emf.common.util.Enumerator;
 
 import org.eclipse.emf.ecore.EObject;
 
-import org.eclipse.emf.ecore.util.EcoreAdapterFactory;
-
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
@@ -56,6 +54,8 @@ import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.MouseEvent;
+import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 
@@ -64,17 +64,24 @@ import org.eclipse.swt.layout.GridLayout;
 
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Text;
 
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.ApiResourceUrlStyle;
+import org.wso2.developerstudio.eclipse.gmf.esb.CacheSequenceType;
+import org.wso2.developerstudio.eclipse.gmf.esb.CacheType;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.APIResourcePropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.developerstudio.esb.form.editors.article.providers.NamedEntityDescriptor;
 
 // End of user code
 
@@ -90,6 +97,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 	protected EMFComboViewer urlStyle;
 	protected Text uriTemplate;
 	protected Text urlMapping;
+	protected EMFComboViewer protocol;
 	protected Button allowGet;
 	protected Button allowPost;
 	protected Button allowPut;
@@ -99,11 +107,44 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 	protected Button allowPatch;
 	protected EMFComboViewer inSequenceType;
 	protected Text inSequenceName;
+	// Start of user code  for inSequenceKey widgets declarations
+	protected RegistryKeyProperty inSequenceKey;
+	protected Text inSequenceKeyText;
+	
+	// End of user code
+
 	protected EMFComboViewer outSequenceType;
 	protected Text outSequenceName;
+	// Start of user code  for outSequenceKey widgets declarations
+	protected RegistryKeyProperty outSequenceKey;
+	protected Text outSequenceKeyText;
+	
+	// End of user code
+
 	protected EMFComboViewer faultSequenceType;
 	protected Text faultSequenceName;
-	protected EMFComboViewer protocol;
+	// Start of user code  for faultSequenceKey widgets declarations
+	protected RegistryKeyProperty faultSequenceKey;
+	protected Text faultSequenceKeyText;
+	
+	protected Section propertiesSection;
+	
+	protected Composite basicGroup;
+	protected Composite propertiesGroup;
+	protected Composite inSequenceGroup;
+	protected Composite outSequenceGroup;
+	protected Composite faultSequenceGroup;
+	
+	protected Control[] inSequenceKeyElements;
+	protected Control[] urlStyleElements;
+	protected Control[] uriTemplateElements;
+	protected Control[] outSequenceKeyElements;
+	protected Control[] faultSequenceKeyElements;
+	protected Control[] urlMappingElements;
+	protected Control[] protocolElements;
+	protected Control[] inSequenceTypeElements;
+	// End of user code
+
 
 
 
@@ -148,25 +189,39 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		CompositionSequence aPIResourceStep = new BindingCompositionSequence(propertiesEditionComponent);
-		CompositionStep propertiesStep = aPIResourceStep.addStep(EsbViewsRepository.APIResource.Properties.class);
-		propertiesStep.addStep(EsbViewsRepository.APIResource.Properties.inSequenceInputConnectors);
-		propertiesStep.addStep(EsbViewsRepository.APIResource.Properties.urlStyle);
-		propertiesStep.addStep(EsbViewsRepository.APIResource.Properties.uriTemplate);
-		propertiesStep.addStep(EsbViewsRepository.APIResource.Properties.urlMapping);
-		propertiesStep.addStep(EsbViewsRepository.APIResource.Properties.allowGet);
-		propertiesStep.addStep(EsbViewsRepository.APIResource.Properties.allowPost);
-		propertiesStep.addStep(EsbViewsRepository.APIResource.Properties.allowPut);
-		propertiesStep.addStep(EsbViewsRepository.APIResource.Properties.allowDelete);
-		propertiesStep.addStep(EsbViewsRepository.APIResource.Properties.allowOptions);
-		propertiesStep.addStep(EsbViewsRepository.APIResource.Properties.allowHead);
-		propertiesStep.addStep(EsbViewsRepository.APIResource.Properties.allowPatch);
-		propertiesStep.addStep(EsbViewsRepository.APIResource.Properties.inSequenceType);
-		propertiesStep.addStep(EsbViewsRepository.APIResource.Properties.inSequenceName);
-		propertiesStep.addStep(EsbViewsRepository.APIResource.Properties.outSequenceType);
-		propertiesStep.addStep(EsbViewsRepository.APIResource.Properties.outSequenceName);
-		propertiesStep.addStep(EsbViewsRepository.APIResource.Properties.faultSequenceType);
-		propertiesStep.addStep(EsbViewsRepository.APIResource.Properties.faultSequenceName);
-		propertiesStep.addStep(EsbViewsRepository.APIResource.Properties.protocol);
+		aPIResourceStep
+			.addStep(EsbViewsRepository.APIResource.Properties.class)
+			.addStep(EsbViewsRepository.APIResource.Properties.inSequenceInputConnectors);
+		
+		CompositionStep basicStep = aPIResourceStep.addStep(EsbViewsRepository.APIResource.Basic.class);
+		basicStep.addStep(EsbViewsRepository.APIResource.Basic.urlStyle);
+		basicStep.addStep(EsbViewsRepository.APIResource.Basic.uriTemplate);
+		basicStep.addStep(EsbViewsRepository.APIResource.Basic.urlMapping);
+		basicStep.addStep(EsbViewsRepository.APIResource.Basic.protocol);
+		
+		CompositionStep methodsStep = aPIResourceStep.addStep(EsbViewsRepository.APIResource.Methods.class);
+		methodsStep.addStep(EsbViewsRepository.APIResource.Methods.allowGet);
+		methodsStep.addStep(EsbViewsRepository.APIResource.Methods.allowPost);
+		methodsStep.addStep(EsbViewsRepository.APIResource.Methods.allowPut);
+		methodsStep.addStep(EsbViewsRepository.APIResource.Methods.allowDelete);
+		methodsStep.addStep(EsbViewsRepository.APIResource.Methods.allowOptions);
+		methodsStep.addStep(EsbViewsRepository.APIResource.Methods.allowHead);
+		methodsStep.addStep(EsbViewsRepository.APIResource.Methods.allowPatch);
+		
+		CompositionStep inSequenceStep = aPIResourceStep.addStep(EsbViewsRepository.APIResource.InSequence.class);
+		inSequenceStep.addStep(EsbViewsRepository.APIResource.InSequence.inSequenceType);
+		inSequenceStep.addStep(EsbViewsRepository.APIResource.InSequence.inSequenceName);
+		inSequenceStep.addStep(EsbViewsRepository.APIResource.InSequence.inSequenceKey);
+		
+		CompositionStep outSequenceStep = aPIResourceStep.addStep(EsbViewsRepository.APIResource.OutSequence.class);
+		outSequenceStep.addStep(EsbViewsRepository.APIResource.OutSequence.outSequenceType);
+		outSequenceStep.addStep(EsbViewsRepository.APIResource.OutSequence.outSequenceName);
+		outSequenceStep.addStep(EsbViewsRepository.APIResource.OutSequence.outSequenceKey);
+		
+		CompositionStep faultSequenceStep = aPIResourceStep.addStep(EsbViewsRepository.APIResource.FaultSequence.class);
+		faultSequenceStep.addStep(EsbViewsRepository.APIResource.FaultSequence.faultSequenceType);
+		faultSequenceStep.addStep(EsbViewsRepository.APIResource.FaultSequence.faultSequenceName);
+		faultSequenceStep.addStep(EsbViewsRepository.APIResource.FaultSequence.faultSequenceKey);
 		
 		
 		composer = new PartComposer(aPIResourceStep) {
@@ -179,72 +234,103 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 				if (key == EsbViewsRepository.APIResource.Properties.inSequenceInputConnectors) {
 					return createInSequenceInputConnectorsTableComposition(widgetFactory, parent);
 				}
-				if (key == EsbViewsRepository.APIResource.Properties.urlStyle) {
+				if (key == EsbViewsRepository.APIResource.Basic.class) {
+					return createBasicGroup(widgetFactory, parent);
+				}
+				if (key == EsbViewsRepository.APIResource.Basic.urlStyle) {
 					return createUrlStyleEMFComboViewer(widgetFactory, parent);
 				}
-				if (key == EsbViewsRepository.APIResource.Properties.uriTemplate) {
+				if (key == EsbViewsRepository.APIResource.Basic.uriTemplate) {
 					return createUriTemplateText(widgetFactory, parent);
 				}
-				if (key == EsbViewsRepository.APIResource.Properties.urlMapping) {
+				if (key == EsbViewsRepository.APIResource.Basic.urlMapping) {
 					return createUrlMappingText(widgetFactory, parent);
 				}
-				if (key == EsbViewsRepository.APIResource.Properties.allowGet) {
-					return createAllowGetCheckbox(widgetFactory, parent);
-				}
-				if (key == EsbViewsRepository.APIResource.Properties.allowPost) {
-					return createAllowPostCheckbox(widgetFactory, parent);
-				}
-				if (key == EsbViewsRepository.APIResource.Properties.allowPut) {
-					return createAllowPutCheckbox(widgetFactory, parent);
-				}
-				if (key == EsbViewsRepository.APIResource.Properties.allowDelete) {
-					return createAllowDeleteCheckbox(widgetFactory, parent);
-				}
-				if (key == EsbViewsRepository.APIResource.Properties.allowOptions) {
-					return createAllowOptionsCheckbox(widgetFactory, parent);
-				}
-				if (key == EsbViewsRepository.APIResource.Properties.allowHead) {
-					return createAllowHeadCheckbox(widgetFactory, parent);
-				}
-				if (key == EsbViewsRepository.APIResource.Properties.allowPatch) {
-					return createAllowPatchCheckbox(widgetFactory, parent);
-				}
-				if (key == EsbViewsRepository.APIResource.Properties.inSequenceType) {
-					return createInSequenceTypeEMFComboViewer(widgetFactory, parent);
-				}
-				if (key == EsbViewsRepository.APIResource.Properties.inSequenceName) {
-					return createInSequenceNameText(widgetFactory, parent);
-				}
-				if (key == EsbViewsRepository.APIResource.Properties.outSequenceType) {
-					return createOutSequenceTypeEMFComboViewer(widgetFactory, parent);
-				}
-				if (key == EsbViewsRepository.APIResource.Properties.outSequenceName) {
-					return createOutSequenceNameText(widgetFactory, parent);
-				}
-				if (key == EsbViewsRepository.APIResource.Properties.faultSequenceType) {
-					return createFaultSequenceTypeEMFComboViewer(widgetFactory, parent);
-				}
-				if (key == EsbViewsRepository.APIResource.Properties.faultSequenceName) {
-					return createFaultSequenceNameText(widgetFactory, parent);
-				}
-				if (key == EsbViewsRepository.APIResource.Properties.protocol) {
+				if (key == EsbViewsRepository.APIResource.Basic.protocol) {
 					return createProtocolEMFComboViewer(widgetFactory, parent);
 				}
+				if (key == EsbViewsRepository.APIResource.Methods.class) {
+					return createMethodsGroup(widgetFactory, parent);
+				}
+				if (key == EsbViewsRepository.APIResource.Methods.allowGet) {
+					return createAllowGetCheckbox(widgetFactory, parent);
+				}
+				if (key == EsbViewsRepository.APIResource.Methods.allowPost) {
+					return createAllowPostCheckbox(widgetFactory, parent);
+				}
+				if (key == EsbViewsRepository.APIResource.Methods.allowPut) {
+					return createAllowPutCheckbox(widgetFactory, parent);
+				}
+				if (key == EsbViewsRepository.APIResource.Methods.allowDelete) {
+					return createAllowDeleteCheckbox(widgetFactory, parent);
+				}
+				if (key == EsbViewsRepository.APIResource.Methods.allowOptions) {
+					return createAllowOptionsCheckbox(widgetFactory, parent);
+				}
+				if (key == EsbViewsRepository.APIResource.Methods.allowHead) {
+					return createAllowHeadCheckbox(widgetFactory, parent);
+				}
+				if (key == EsbViewsRepository.APIResource.Methods.allowPatch) {
+					return createAllowPatchCheckbox(widgetFactory, parent);
+				}
+				if (key == EsbViewsRepository.APIResource.InSequence.class) {
+					return createInSequenceGroup(widgetFactory, parent);
+				}
+				if (key == EsbViewsRepository.APIResource.InSequence.inSequenceType) {
+					return createInSequenceTypeEMFComboViewer(widgetFactory, parent);
+				}
+				if (key == EsbViewsRepository.APIResource.InSequence.inSequenceName) {
+					return createInSequenceNameText(widgetFactory, parent);
+				}
+				// Start of user code for inSequenceKey addToPart creation
+				if (key == EsbViewsRepository.APIResource.InSequence.inSequenceKey) {
+				    return createInSequenceKey(widgetFactory, parent);
+				}
+				// End of user code
+				if (key == EsbViewsRepository.APIResource.OutSequence.class) {
+					return createOutSequenceGroup(widgetFactory, parent);
+				}
+				if (key == EsbViewsRepository.APIResource.OutSequence.outSequenceType) {
+					return createOutSequenceTypeEMFComboViewer(widgetFactory, parent);
+				}
+				if (key == EsbViewsRepository.APIResource.OutSequence.outSequenceName) {
+					return createOutSequenceNameText(widgetFactory, parent);
+				}
+				// Start of user code for outSequenceKey addToPart creation
+				if (key == EsbViewsRepository.APIResource.OutSequence.outSequenceKey) {
+				    return createOutSequenceKey(widgetFactory, parent);
+				}
+				// End of user code
+				if (key == EsbViewsRepository.APIResource.FaultSequence.class) {
+					return createFaultSequenceGroup(widgetFactory, parent);
+				}
+				if (key == EsbViewsRepository.APIResource.FaultSequence.faultSequenceType) {
+					return createFaultSequenceTypeEMFComboViewer(widgetFactory, parent);
+				}
+				if (key == EsbViewsRepository.APIResource.FaultSequence.faultSequenceName) {
+					return createFaultSequenceNameText(widgetFactory, parent);
+				}
+				// Start of user code for faultSequenceKey addToPart creation
+				if (key == EsbViewsRepository.APIResource.FaultSequence.faultSequenceKey) {
+				    return createFaultSequenceKey(widgetFactory, parent);
+				}
+				// End of user code
 				return parent;
 			}
 		};
 		composer.compose(view);
 	}
+	
 	/**
-	 * 
-	 */
+     * @generated NOT
+     */
 	protected Composite createPropertiesGroup(FormToolkit widgetFactory, final Composite parent) {
-		Section propertiesSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
+		propertiesSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		propertiesSection.setText(EsbMessages.APIResourcePropertiesEditionPart_PropertiesGroupLabel);
 		GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
 		propertiesSectionData.horizontalSpan = 3;
 		propertiesSection.setLayoutData(propertiesSectionData);
-		Composite propertiesGroup = widgetFactory.createComposite(propertiesSection);
+		propertiesGroup = widgetFactory.createComposite(propertiesSection);
 		GridLayout propertiesGroupLayout = new GridLayout();
 		propertiesGroupLayout.numColumns = 3;
 		propertiesGroup.setLayout(propertiesGroupLayout);
@@ -303,9 +389,28 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 		return parent;
 	}
 
-	
+	/**
+     * @generated NOT
+     */
+	protected Composite createBasicGroup(FormToolkit widgetFactory, final Composite parent) {
+		Section basicSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
+		basicSection.setText(EsbMessages.APIResourcePropertiesEditionPart_BasicGroupLabel);
+		GridData basicSectionData = new GridData(GridData.FILL_HORIZONTAL);
+		basicSectionData.horizontalSpan = 3;
+		basicSection.setLayoutData(basicSectionData);
+		basicGroup = widgetFactory.createComposite(basicSection);
+		GridLayout basicGroupLayout = new GridLayout();
+		basicGroupLayout.numColumns = 3;
+		basicGroup.setLayout(basicGroupLayout);
+		basicSection.setClient(basicGroup);
+		return basicGroup;
+	}
+
+	/**
+     * @generated NOT
+     */
 	protected Composite createUrlStyleEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EsbViewsRepository.APIResource.Properties.urlStyle, EsbMessages.APIResourcePropertiesEditionPart_UrlStyleLabel);
+		Control urlStyleLabel = createDescription(parent, EsbViewsRepository.APIResource.Basic.urlStyle, EsbMessages.APIResourcePropertiesEditionPart_UrlStyleLabel);
 		urlStyle = new EMFComboViewer(parent);
 		urlStyle.setContentProvider(new ArrayContentProvider());
 		urlStyle.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -321,21 +426,23 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(APIResourcePropertiesEditionPartForm.this, EsbViewsRepository.APIResource.Properties.urlStyle, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getUrlStyle()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(APIResourcePropertiesEditionPartForm.this, EsbViewsRepository.APIResource.Basic.urlStyle, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getUrlStyle()));
 			}
 
 		});
-		urlStyle.setID(EsbViewsRepository.APIResource.Properties.urlStyle);
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.APIResource.Properties.urlStyle, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		urlStyle.setID(EsbViewsRepository.APIResource.Basic.urlStyle);
+		Control urlStyleHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.APIResource.Basic.urlStyle, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createUrlStyleEMFComboViewer
-
+		urlStyleElements = new Control[] {urlStyleLabel, urlStyle.getCombo(), urlStyleHelp};
 		// End of user code
 		return parent;
 	}
 
-	
+	/**
+     * @generated NOT
+     */
 	protected Composite createUriTemplateText(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EsbViewsRepository.APIResource.Properties.uriTemplate, EsbMessages.APIResourcePropertiesEditionPart_UriTemplateLabel);
+		Control uriTemplateLabel = createDescription(parent, EsbViewsRepository.APIResource.Basic.uriTemplate, EsbMessages.APIResourcePropertiesEditionPart_UriTemplateLabel);
 		uriTemplate = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		uriTemplate.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -352,12 +459,12 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 				if (propertiesEditionComponent != null) {
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
 							APIResourcePropertiesEditionPartForm.this,
-							EsbViewsRepository.APIResource.Properties.uriTemplate,
+							EsbViewsRepository.APIResource.Basic.uriTemplate,
 							PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, uriTemplate.getText()));
 					propertiesEditionComponent
 							.firePropertiesChanged(new PropertiesEditionEvent(
 									APIResourcePropertiesEditionPartForm.this,
-									EsbViewsRepository.APIResource.Properties.uriTemplate,
+									EsbViewsRepository.APIResource.Basic.uriTemplate,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
 									null, uriTemplate.getText()));
 				}
@@ -388,22 +495,24 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
 					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(APIResourcePropertiesEditionPartForm.this, EsbViewsRepository.APIResource.Properties.uriTemplate, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, uriTemplate.getText()));
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(APIResourcePropertiesEditionPartForm.this, EsbViewsRepository.APIResource.Basic.uriTemplate, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, uriTemplate.getText()));
 				}
 			}
 		});
-		EditingUtils.setID(uriTemplate, EsbViewsRepository.APIResource.Properties.uriTemplate);
+		EditingUtils.setID(uriTemplate, EsbViewsRepository.APIResource.Basic.uriTemplate);
 		EditingUtils.setEEFtype(uriTemplate, "eef::Text"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.APIResource.Properties.uriTemplate, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		Control uriTemplateHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.APIResource.Basic.uriTemplate, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createUriTemplateText
-
+		uriTemplateElements = new Control[] {uriTemplateLabel, uriTemplate, uriTemplateHelp};
 		// End of user code
 		return parent;
 	}
 
-	
+	/**
+     * @generated NOT
+     */
 	protected Composite createUrlMappingText(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EsbViewsRepository.APIResource.Properties.urlMapping, EsbMessages.APIResourcePropertiesEditionPart_UrlMappingLabel);
+		Control urlMappingLabel = createDescription(parent, EsbViewsRepository.APIResource.Basic.urlMapping, EsbMessages.APIResourcePropertiesEditionPart_UrlMappingLabel);
 		urlMapping = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		urlMapping.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -420,12 +529,12 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 				if (propertiesEditionComponent != null) {
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
 							APIResourcePropertiesEditionPartForm.this,
-							EsbViewsRepository.APIResource.Properties.urlMapping,
+							EsbViewsRepository.APIResource.Basic.urlMapping,
 							PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, urlMapping.getText()));
 					propertiesEditionComponent
 							.firePropertiesChanged(new PropertiesEditionEvent(
 									APIResourcePropertiesEditionPartForm.this,
-									EsbViewsRepository.APIResource.Properties.urlMapping,
+									EsbViewsRepository.APIResource.Basic.urlMapping,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
 									null, urlMapping.getText()));
 				}
@@ -456,22 +565,71 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
 					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(APIResourcePropertiesEditionPartForm.this, EsbViewsRepository.APIResource.Properties.urlMapping, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, urlMapping.getText()));
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(APIResourcePropertiesEditionPartForm.this, EsbViewsRepository.APIResource.Basic.urlMapping, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, urlMapping.getText()));
 				}
 			}
 		});
-		EditingUtils.setID(urlMapping, EsbViewsRepository.APIResource.Properties.urlMapping);
+		EditingUtils.setID(urlMapping, EsbViewsRepository.APIResource.Basic.urlMapping);
 		EditingUtils.setEEFtype(urlMapping, "eef::Text"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.APIResource.Properties.urlMapping, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		Control urlMappingHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.APIResource.Basic.urlMapping, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createUrlMappingText
-
+		urlMappingElements = new Control[] {urlMappingLabel, urlMapping, urlMappingHelp};
 		// End of user code
 		return parent;
 	}
 
+	/**
+     * @generated NOT
+     */
+	protected Composite createProtocolEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
+		Control protocolLabel = createDescription(parent, EsbViewsRepository.APIResource.Basic.protocol, EsbMessages.APIResourcePropertiesEditionPart_ProtocolLabel);
+		protocol = new EMFComboViewer(parent);
+		protocol.setContentProvider(new ArrayContentProvider());
+		protocol.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
+		GridData protocolData = new GridData(GridData.FILL_HORIZONTAL);
+		protocol.getCombo().setLayoutData(protocolData);
+		protocol.addSelectionChangedListener(new ISelectionChangedListener() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+			 * 	
+			 */
+			public void selectionChanged(SelectionChangedEvent event) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(APIResourcePropertiesEditionPartForm.this, EsbViewsRepository.APIResource.Basic.protocol, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getProtocol()));
+			}
+
+		});
+		protocol.setID(EsbViewsRepository.APIResource.Basic.protocol);
+		Control protocolHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.APIResource.Basic.protocol, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createProtocolEMFComboViewer
+		protocolElements = new Control[] {protocolLabel, protocol.getCombo(), protocolHelp};
+		// End of user code
+		return parent;
+	}
+
+	/**
+	 * 
+	 */
+	protected Composite createMethodsGroup(FormToolkit widgetFactory, final Composite parent) {
+		Section methodsSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
+		methodsSection.setText(EsbMessages.APIResourcePropertiesEditionPart_MethodsGroupLabel);
+		GridData methodsSectionData = new GridData(GridData.FILL_HORIZONTAL);
+		methodsSectionData.horizontalSpan = 3;
+		methodsSection.setLayoutData(methodsSectionData);
+		Composite methodsGroup = widgetFactory.createComposite(methodsSection);
+		GridLayout methodsGroupLayout = new GridLayout();
+		methodsGroupLayout.numColumns = 3;
+		methodsGroup.setLayout(methodsGroupLayout);
+		methodsSection.setClient(methodsGroup);
+		return methodsGroup;
+	}
+
 	
 	protected Composite createAllowGetCheckbox(FormToolkit widgetFactory, Composite parent) {
-		allowGet = widgetFactory.createButton(parent, getDescription(EsbViewsRepository.APIResource.Properties.allowGet, EsbMessages.APIResourcePropertiesEditionPart_AllowGetLabel), SWT.CHECK);
+		allowGet = widgetFactory.createButton(parent, getDescription(EsbViewsRepository.APIResource.Methods.allowGet, EsbMessages.APIResourcePropertiesEditionPart_AllowGetLabel), SWT.CHECK);
 		allowGet.addSelectionListener(new SelectionAdapter() {
 
 			/**
@@ -482,16 +640,16 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(APIResourcePropertiesEditionPartForm.this, EsbViewsRepository.APIResource.Properties.allowGet, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(allowGet.getSelection())));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(APIResourcePropertiesEditionPartForm.this, EsbViewsRepository.APIResource.Methods.allowGet, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(allowGet.getSelection())));
 			}
 
 		});
 		GridData allowGetData = new GridData(GridData.FILL_HORIZONTAL);
 		allowGetData.horizontalSpan = 2;
 		allowGet.setLayoutData(allowGetData);
-		EditingUtils.setID(allowGet, EsbViewsRepository.APIResource.Properties.allowGet);
+		EditingUtils.setID(allowGet, EsbViewsRepository.APIResource.Methods.allowGet);
 		EditingUtils.setEEFtype(allowGet, "eef::Checkbox"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.APIResource.Properties.allowGet, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.APIResource.Methods.allowGet, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createAllowGetCheckbox
 
 		// End of user code
@@ -500,7 +658,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 
 	
 	protected Composite createAllowPostCheckbox(FormToolkit widgetFactory, Composite parent) {
-		allowPost = widgetFactory.createButton(parent, getDescription(EsbViewsRepository.APIResource.Properties.allowPost, EsbMessages.APIResourcePropertiesEditionPart_AllowPostLabel), SWT.CHECK);
+		allowPost = widgetFactory.createButton(parent, getDescription(EsbViewsRepository.APIResource.Methods.allowPost, EsbMessages.APIResourcePropertiesEditionPart_AllowPostLabel), SWT.CHECK);
 		allowPost.addSelectionListener(new SelectionAdapter() {
 
 			/**
@@ -511,16 +669,16 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(APIResourcePropertiesEditionPartForm.this, EsbViewsRepository.APIResource.Properties.allowPost, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(allowPost.getSelection())));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(APIResourcePropertiesEditionPartForm.this, EsbViewsRepository.APIResource.Methods.allowPost, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(allowPost.getSelection())));
 			}
 
 		});
 		GridData allowPostData = new GridData(GridData.FILL_HORIZONTAL);
 		allowPostData.horizontalSpan = 2;
 		allowPost.setLayoutData(allowPostData);
-		EditingUtils.setID(allowPost, EsbViewsRepository.APIResource.Properties.allowPost);
+		EditingUtils.setID(allowPost, EsbViewsRepository.APIResource.Methods.allowPost);
 		EditingUtils.setEEFtype(allowPost, "eef::Checkbox"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.APIResource.Properties.allowPost, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.APIResource.Methods.allowPost, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createAllowPostCheckbox
 
 		// End of user code
@@ -529,7 +687,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 
 	
 	protected Composite createAllowPutCheckbox(FormToolkit widgetFactory, Composite parent) {
-		allowPut = widgetFactory.createButton(parent, getDescription(EsbViewsRepository.APIResource.Properties.allowPut, EsbMessages.APIResourcePropertiesEditionPart_AllowPutLabel), SWT.CHECK);
+		allowPut = widgetFactory.createButton(parent, getDescription(EsbViewsRepository.APIResource.Methods.allowPut, EsbMessages.APIResourcePropertiesEditionPart_AllowPutLabel), SWT.CHECK);
 		allowPut.addSelectionListener(new SelectionAdapter() {
 
 			/**
@@ -540,16 +698,16 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(APIResourcePropertiesEditionPartForm.this, EsbViewsRepository.APIResource.Properties.allowPut, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(allowPut.getSelection())));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(APIResourcePropertiesEditionPartForm.this, EsbViewsRepository.APIResource.Methods.allowPut, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(allowPut.getSelection())));
 			}
 
 		});
 		GridData allowPutData = new GridData(GridData.FILL_HORIZONTAL);
 		allowPutData.horizontalSpan = 2;
 		allowPut.setLayoutData(allowPutData);
-		EditingUtils.setID(allowPut, EsbViewsRepository.APIResource.Properties.allowPut);
+		EditingUtils.setID(allowPut, EsbViewsRepository.APIResource.Methods.allowPut);
 		EditingUtils.setEEFtype(allowPut, "eef::Checkbox"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.APIResource.Properties.allowPut, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.APIResource.Methods.allowPut, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createAllowPutCheckbox
 
 		// End of user code
@@ -558,7 +716,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 
 	
 	protected Composite createAllowDeleteCheckbox(FormToolkit widgetFactory, Composite parent) {
-		allowDelete = widgetFactory.createButton(parent, getDescription(EsbViewsRepository.APIResource.Properties.allowDelete, EsbMessages.APIResourcePropertiesEditionPart_AllowDeleteLabel), SWT.CHECK);
+		allowDelete = widgetFactory.createButton(parent, getDescription(EsbViewsRepository.APIResource.Methods.allowDelete, EsbMessages.APIResourcePropertiesEditionPart_AllowDeleteLabel), SWT.CHECK);
 		allowDelete.addSelectionListener(new SelectionAdapter() {
 
 			/**
@@ -569,16 +727,16 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(APIResourcePropertiesEditionPartForm.this, EsbViewsRepository.APIResource.Properties.allowDelete, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(allowDelete.getSelection())));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(APIResourcePropertiesEditionPartForm.this, EsbViewsRepository.APIResource.Methods.allowDelete, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(allowDelete.getSelection())));
 			}
 
 		});
 		GridData allowDeleteData = new GridData(GridData.FILL_HORIZONTAL);
 		allowDeleteData.horizontalSpan = 2;
 		allowDelete.setLayoutData(allowDeleteData);
-		EditingUtils.setID(allowDelete, EsbViewsRepository.APIResource.Properties.allowDelete);
+		EditingUtils.setID(allowDelete, EsbViewsRepository.APIResource.Methods.allowDelete);
 		EditingUtils.setEEFtype(allowDelete, "eef::Checkbox"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.APIResource.Properties.allowDelete, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.APIResource.Methods.allowDelete, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createAllowDeleteCheckbox
 
 		// End of user code
@@ -587,7 +745,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 
 	
 	protected Composite createAllowOptionsCheckbox(FormToolkit widgetFactory, Composite parent) {
-		allowOptions = widgetFactory.createButton(parent, getDescription(EsbViewsRepository.APIResource.Properties.allowOptions, EsbMessages.APIResourcePropertiesEditionPart_AllowOptionsLabel), SWT.CHECK);
+		allowOptions = widgetFactory.createButton(parent, getDescription(EsbViewsRepository.APIResource.Methods.allowOptions, EsbMessages.APIResourcePropertiesEditionPart_AllowOptionsLabel), SWT.CHECK);
 		allowOptions.addSelectionListener(new SelectionAdapter() {
 
 			/**
@@ -598,16 +756,16 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(APIResourcePropertiesEditionPartForm.this, EsbViewsRepository.APIResource.Properties.allowOptions, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(allowOptions.getSelection())));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(APIResourcePropertiesEditionPartForm.this, EsbViewsRepository.APIResource.Methods.allowOptions, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(allowOptions.getSelection())));
 			}
 
 		});
 		GridData allowOptionsData = new GridData(GridData.FILL_HORIZONTAL);
 		allowOptionsData.horizontalSpan = 2;
 		allowOptions.setLayoutData(allowOptionsData);
-		EditingUtils.setID(allowOptions, EsbViewsRepository.APIResource.Properties.allowOptions);
+		EditingUtils.setID(allowOptions, EsbViewsRepository.APIResource.Methods.allowOptions);
 		EditingUtils.setEEFtype(allowOptions, "eef::Checkbox"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.APIResource.Properties.allowOptions, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.APIResource.Methods.allowOptions, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createAllowOptionsCheckbox
 
 		// End of user code
@@ -616,7 +774,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 
 	
 	protected Composite createAllowHeadCheckbox(FormToolkit widgetFactory, Composite parent) {
-		allowHead = widgetFactory.createButton(parent, getDescription(EsbViewsRepository.APIResource.Properties.allowHead, EsbMessages.APIResourcePropertiesEditionPart_AllowHeadLabel), SWT.CHECK);
+		allowHead = widgetFactory.createButton(parent, getDescription(EsbViewsRepository.APIResource.Methods.allowHead, EsbMessages.APIResourcePropertiesEditionPart_AllowHeadLabel), SWT.CHECK);
 		allowHead.addSelectionListener(new SelectionAdapter() {
 
 			/**
@@ -627,16 +785,16 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(APIResourcePropertiesEditionPartForm.this, EsbViewsRepository.APIResource.Properties.allowHead, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(allowHead.getSelection())));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(APIResourcePropertiesEditionPartForm.this, EsbViewsRepository.APIResource.Methods.allowHead, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(allowHead.getSelection())));
 			}
 
 		});
 		GridData allowHeadData = new GridData(GridData.FILL_HORIZONTAL);
 		allowHeadData.horizontalSpan = 2;
 		allowHead.setLayoutData(allowHeadData);
-		EditingUtils.setID(allowHead, EsbViewsRepository.APIResource.Properties.allowHead);
+		EditingUtils.setID(allowHead, EsbViewsRepository.APIResource.Methods.allowHead);
 		EditingUtils.setEEFtype(allowHead, "eef::Checkbox"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.APIResource.Properties.allowHead, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.APIResource.Methods.allowHead, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createAllowHeadCheckbox
 
 		// End of user code
@@ -645,7 +803,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 
 	
 	protected Composite createAllowPatchCheckbox(FormToolkit widgetFactory, Composite parent) {
-		allowPatch = widgetFactory.createButton(parent, getDescription(EsbViewsRepository.APIResource.Properties.allowPatch, EsbMessages.APIResourcePropertiesEditionPart_AllowPatchLabel), SWT.CHECK);
+		allowPatch = widgetFactory.createButton(parent, getDescription(EsbViewsRepository.APIResource.Methods.allowPatch, EsbMessages.APIResourcePropertiesEditionPart_AllowPatchLabel), SWT.CHECK);
 		allowPatch.addSelectionListener(new SelectionAdapter() {
 
 			/**
@@ -656,25 +814,44 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(APIResourcePropertiesEditionPartForm.this, EsbViewsRepository.APIResource.Properties.allowPatch, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(allowPatch.getSelection())));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(APIResourcePropertiesEditionPartForm.this, EsbViewsRepository.APIResource.Methods.allowPatch, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(allowPatch.getSelection())));
 			}
 
 		});
 		GridData allowPatchData = new GridData(GridData.FILL_HORIZONTAL);
 		allowPatchData.horizontalSpan = 2;
 		allowPatch.setLayoutData(allowPatchData);
-		EditingUtils.setID(allowPatch, EsbViewsRepository.APIResource.Properties.allowPatch);
+		EditingUtils.setID(allowPatch, EsbViewsRepository.APIResource.Methods.allowPatch);
 		EditingUtils.setEEFtype(allowPatch, "eef::Checkbox"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.APIResource.Properties.allowPatch, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.APIResource.Methods.allowPatch, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createAllowPatchCheckbox
 
 		// End of user code
 		return parent;
 	}
 
-	
+	/**
+     * @generated NOT
+     */
+	protected Composite createInSequenceGroup(FormToolkit widgetFactory, final Composite parent) {
+		Section inSequenceSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
+		inSequenceSection.setText(EsbMessages.APIResourcePropertiesEditionPart_InSequenceGroupLabel);
+		GridData inSequenceSectionData = new GridData(GridData.FILL_HORIZONTAL);
+		inSequenceSectionData.horizontalSpan = 3;
+		inSequenceSection.setLayoutData(inSequenceSectionData);
+		inSequenceGroup = widgetFactory.createComposite(inSequenceSection);
+		GridLayout inSequenceGroupLayout = new GridLayout();
+		inSequenceGroupLayout.numColumns = 3;
+		inSequenceGroup.setLayout(inSequenceGroupLayout);
+		inSequenceSection.setClient(inSequenceGroup);
+		return inSequenceGroup;
+	}
+
+	/**
+     * @generated NOT
+     */
 	protected Composite createInSequenceTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EsbViewsRepository.APIResource.Properties.inSequenceType, EsbMessages.APIResourcePropertiesEditionPart_InSequenceTypeLabel);
+		Control inSequenceTypeLabel = createDescription(parent, EsbViewsRepository.APIResource.InSequence.inSequenceType, EsbMessages.APIResourcePropertiesEditionPart_InSequenceTypeLabel);
 		inSequenceType = new EMFComboViewer(parent);
 		inSequenceType.setContentProvider(new ArrayContentProvider());
 		inSequenceType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -690,21 +867,23 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(APIResourcePropertiesEditionPartForm.this, EsbViewsRepository.APIResource.Properties.inSequenceType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getInSequenceType()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(APIResourcePropertiesEditionPartForm.this, EsbViewsRepository.APIResource.InSequence.inSequenceType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getInSequenceType()));
 			}
 
 		});
-		inSequenceType.setID(EsbViewsRepository.APIResource.Properties.inSequenceType);
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.APIResource.Properties.inSequenceType, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		inSequenceType.setID(EsbViewsRepository.APIResource.InSequence.inSequenceType);
+		Control inSequenceHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.APIResource.InSequence.inSequenceType, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createInSequenceTypeEMFComboViewer
-
+		inSequenceTypeElements = new Control[] {inSequenceTypeLabel, inSequenceType.getCombo(), inSequenceHelp};
 		// End of user code
 		return parent;
 	}
 
-	
+	/**
+     * @generated NOT
+     */
 	protected Composite createInSequenceNameText(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EsbViewsRepository.APIResource.Properties.inSequenceName, EsbMessages.APIResourcePropertiesEditionPart_InSequenceNameLabel);
+		createDescription(parent, EsbViewsRepository.APIResource.InSequence.inSequenceName, EsbMessages.APIResourcePropertiesEditionPart_InSequenceNameLabel);
 		inSequenceName = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		inSequenceName.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -721,12 +900,12 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 				if (propertiesEditionComponent != null) {
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
 							APIResourcePropertiesEditionPartForm.this,
-							EsbViewsRepository.APIResource.Properties.inSequenceName,
+							EsbViewsRepository.APIResource.InSequence.inSequenceName,
 							PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, inSequenceName.getText()));
 					propertiesEditionComponent
 							.firePropertiesChanged(new PropertiesEditionEvent(
 									APIResourcePropertiesEditionPartForm.this,
-									EsbViewsRepository.APIResource.Properties.inSequenceName,
+									EsbViewsRepository.APIResource.InSequence.inSequenceName,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
 									null, inSequenceName.getText()));
 				}
@@ -757,22 +936,41 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
 					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(APIResourcePropertiesEditionPartForm.this, EsbViewsRepository.APIResource.Properties.inSequenceName, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, inSequenceName.getText()));
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(APIResourcePropertiesEditionPartForm.this, EsbViewsRepository.APIResource.InSequence.inSequenceName, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, inSequenceName.getText()));
 				}
 			}
 		});
-		EditingUtils.setID(inSequenceName, EsbViewsRepository.APIResource.Properties.inSequenceName);
+		EditingUtils.setID(inSequenceName, EsbViewsRepository.APIResource.InSequence.inSequenceName);
 		EditingUtils.setEEFtype(inSequenceName, "eef::Text"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.APIResource.Properties.inSequenceName, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.APIResource.InSequence.inSequenceName, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createInSequenceNameText
 
 		// End of user code
 		return parent;
 	}
 
-	
+	/**
+     * @generated NOT
+     */
+	protected Composite createOutSequenceGroup(FormToolkit widgetFactory, final Composite parent) {
+		Section outSequenceSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
+		outSequenceSection.setText(EsbMessages.APIResourcePropertiesEditionPart_OutSequenceGroupLabel);
+		GridData outSequenceSectionData = new GridData(GridData.FILL_HORIZONTAL);
+		outSequenceSectionData.horizontalSpan = 3;
+		outSequenceSection.setLayoutData(outSequenceSectionData);
+		outSequenceGroup = widgetFactory.createComposite(outSequenceSection);
+		GridLayout outSequenceGroupLayout = new GridLayout();
+		outSequenceGroupLayout.numColumns = 3;
+		outSequenceGroup.setLayout(outSequenceGroupLayout);
+		outSequenceSection.setClient(outSequenceGroup);
+		return outSequenceGroup;
+	}
+
+	/**
+     * @generated NOT
+     */
 	protected Composite createOutSequenceTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EsbViewsRepository.APIResource.Properties.outSequenceType, EsbMessages.APIResourcePropertiesEditionPart_OutSequenceTypeLabel);
+		createDescription(parent, EsbViewsRepository.APIResource.OutSequence.outSequenceType, EsbMessages.APIResourcePropertiesEditionPart_OutSequenceTypeLabel);
 		outSequenceType = new EMFComboViewer(parent);
 		outSequenceType.setContentProvider(new ArrayContentProvider());
 		outSequenceType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -788,21 +986,23 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(APIResourcePropertiesEditionPartForm.this, EsbViewsRepository.APIResource.Properties.outSequenceType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getOutSequenceType()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(APIResourcePropertiesEditionPartForm.this, EsbViewsRepository.APIResource.OutSequence.outSequenceType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getOutSequenceType()));
 			}
 
 		});
-		outSequenceType.setID(EsbViewsRepository.APIResource.Properties.outSequenceType);
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.APIResource.Properties.outSequenceType, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		outSequenceType.setID(EsbViewsRepository.APIResource.OutSequence.outSequenceType);
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.APIResource.OutSequence.outSequenceType, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createOutSequenceTypeEMFComboViewer
 
 		// End of user code
 		return parent;
 	}
 
-	
+	/**
+     * @generated NOT
+     */
 	protected Composite createOutSequenceNameText(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EsbViewsRepository.APIResource.Properties.outSequenceName, EsbMessages.APIResourcePropertiesEditionPart_OutSequenceNameLabel);
+		createDescription(parent, EsbViewsRepository.APIResource.OutSequence.outSequenceName, EsbMessages.APIResourcePropertiesEditionPart_OutSequenceNameLabel);
 		outSequenceName = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		outSequenceName.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -819,12 +1019,12 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 				if (propertiesEditionComponent != null) {
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
 							APIResourcePropertiesEditionPartForm.this,
-							EsbViewsRepository.APIResource.Properties.outSequenceName,
+							EsbViewsRepository.APIResource.OutSequence.outSequenceName,
 							PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, outSequenceName.getText()));
 					propertiesEditionComponent
 							.firePropertiesChanged(new PropertiesEditionEvent(
 									APIResourcePropertiesEditionPartForm.this,
-									EsbViewsRepository.APIResource.Properties.outSequenceName,
+									EsbViewsRepository.APIResource.OutSequence.outSequenceName,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
 									null, outSequenceName.getText()));
 				}
@@ -855,22 +1055,41 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
 					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(APIResourcePropertiesEditionPartForm.this, EsbViewsRepository.APIResource.Properties.outSequenceName, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, outSequenceName.getText()));
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(APIResourcePropertiesEditionPartForm.this, EsbViewsRepository.APIResource.OutSequence.outSequenceName, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, outSequenceName.getText()));
 				}
 			}
 		});
-		EditingUtils.setID(outSequenceName, EsbViewsRepository.APIResource.Properties.outSequenceName);
+		EditingUtils.setID(outSequenceName, EsbViewsRepository.APIResource.OutSequence.outSequenceName);
 		EditingUtils.setEEFtype(outSequenceName, "eef::Text"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.APIResource.Properties.outSequenceName, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.APIResource.OutSequence.outSequenceName, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createOutSequenceNameText
 
 		// End of user code
 		return parent;
 	}
 
-	
+	/**
+     * @generated NOT
+     */
+	protected Composite createFaultSequenceGroup(FormToolkit widgetFactory, final Composite parent) {
+		Section faultSequenceSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
+		faultSequenceSection.setText(EsbMessages.APIResourcePropertiesEditionPart_FaultSequenceGroupLabel);
+		GridData faultSequenceSectionData = new GridData(GridData.FILL_HORIZONTAL);
+		faultSequenceSectionData.horizontalSpan = 3;
+		faultSequenceSection.setLayoutData(faultSequenceSectionData);
+		faultSequenceGroup = widgetFactory.createComposite(faultSequenceSection);
+		GridLayout faultSequenceGroupLayout = new GridLayout();
+		faultSequenceGroupLayout.numColumns = 3;
+		faultSequenceGroup.setLayout(faultSequenceGroupLayout);
+		faultSequenceSection.setClient(faultSequenceGroup);
+		return faultSequenceGroup;
+	}
+
+	/**
+     * @generated NOT
+     */
 	protected Composite createFaultSequenceTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EsbViewsRepository.APIResource.Properties.faultSequenceType, EsbMessages.APIResourcePropertiesEditionPart_FaultSequenceTypeLabel);
+		createDescription(parent, EsbViewsRepository.APIResource.FaultSequence.faultSequenceType, EsbMessages.APIResourcePropertiesEditionPart_FaultSequenceTypeLabel);
 		faultSequenceType = new EMFComboViewer(parent);
 		faultSequenceType.setContentProvider(new ArrayContentProvider());
 		faultSequenceType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -886,21 +1105,23 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(APIResourcePropertiesEditionPartForm.this, EsbViewsRepository.APIResource.Properties.faultSequenceType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getFaultSequenceType()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(APIResourcePropertiesEditionPartForm.this, EsbViewsRepository.APIResource.FaultSequence.faultSequenceType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getFaultSequenceType()));
 			}
 
 		});
-		faultSequenceType.setID(EsbViewsRepository.APIResource.Properties.faultSequenceType);
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.APIResource.Properties.faultSequenceType, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		faultSequenceType.setID(EsbViewsRepository.APIResource.FaultSequence.faultSequenceType);
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.APIResource.FaultSequence.faultSequenceType, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createFaultSequenceTypeEMFComboViewer
 
 		// End of user code
 		return parent;
 	}
 
-	
+	/**
+     * @generated NOT
+     */
 	protected Composite createFaultSequenceNameText(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EsbViewsRepository.APIResource.Properties.faultSequenceName, EsbMessages.APIResourcePropertiesEditionPart_FaultSequenceNameLabel);
+		createDescription(parent, EsbViewsRepository.APIResource.FaultSequence.faultSequenceName, EsbMessages.APIResourcePropertiesEditionPart_FaultSequenceNameLabel);
 		faultSequenceName = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		faultSequenceName.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -917,12 +1138,12 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 				if (propertiesEditionComponent != null) {
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
 							APIResourcePropertiesEditionPartForm.this,
-							EsbViewsRepository.APIResource.Properties.faultSequenceName,
+							EsbViewsRepository.APIResource.FaultSequence.faultSequenceName,
 							PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, faultSequenceName.getText()));
 					propertiesEditionComponent
 							.firePropertiesChanged(new PropertiesEditionEvent(
 									APIResourcePropertiesEditionPartForm.this,
-									EsbViewsRepository.APIResource.Properties.faultSequenceName,
+									EsbViewsRepository.APIResource.FaultSequence.faultSequenceName,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
 									null, faultSequenceName.getText()));
 				}
@@ -953,44 +1174,14 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
 					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(APIResourcePropertiesEditionPartForm.this, EsbViewsRepository.APIResource.Properties.faultSequenceName, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, faultSequenceName.getText()));
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(APIResourcePropertiesEditionPartForm.this, EsbViewsRepository.APIResource.FaultSequence.faultSequenceName, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, faultSequenceName.getText()));
 				}
 			}
 		});
-		EditingUtils.setID(faultSequenceName, EsbViewsRepository.APIResource.Properties.faultSequenceName);
+		EditingUtils.setID(faultSequenceName, EsbViewsRepository.APIResource.FaultSequence.faultSequenceName);
 		EditingUtils.setEEFtype(faultSequenceName, "eef::Text"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.APIResource.Properties.faultSequenceName, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.APIResource.FaultSequence.faultSequenceName, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createFaultSequenceNameText
-
-		// End of user code
-		return parent;
-	}
-
-	
-	protected Composite createProtocolEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EsbViewsRepository.APIResource.Properties.protocol, EsbMessages.APIResourcePropertiesEditionPart_ProtocolLabel);
-		protocol = new EMFComboViewer(parent);
-		protocol.setContentProvider(new ArrayContentProvider());
-		protocol.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
-		GridData protocolData = new GridData(GridData.FILL_HORIZONTAL);
-		protocol.getCombo().setLayoutData(protocolData);
-		protocol.addSelectionChangedListener(new ISelectionChangedListener() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-			 * 	
-			 */
-			public void selectionChanged(SelectionChangedEvent event) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(APIResourcePropertiesEditionPartForm.this, EsbViewsRepository.APIResource.Properties.protocol, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getProtocol()));
-			}
-
-		});
-		protocol.setID(EsbViewsRepository.APIResource.Properties.protocol);
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.APIResource.Properties.protocol, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-		// Start of user code for createProtocolEMFComboViewer
 
 		// End of user code
 		return parent;
@@ -1094,7 +1285,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 	public void initUrlStyle(Object input, Enumerator current) {
 		urlStyle.setInput(input);
 		urlStyle.modelUpdating(new StructuredSelection(current));
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.APIResource.Properties.urlStyle);
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.APIResource.Basic.urlStyle);
 		if (eefElementEditorReadOnlyState && urlStyle.isEnabled()) {
 			urlStyle.setEnabled(false);
 			urlStyle.setToolTipText(EsbMessages.APIResource_ReadOnly);
@@ -1112,7 +1303,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 	 */
 	public void setUrlStyle(Enumerator newValue) {
 		urlStyle.modelUpdating(new StructuredSelection(newValue));
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.APIResource.Properties.urlStyle);
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.APIResource.Basic.urlStyle);
 		if (eefElementEditorReadOnlyState && urlStyle.isEnabled()) {
 			urlStyle.setEnabled(false);
 			urlStyle.setToolTipText(EsbMessages.APIResource_ReadOnly);
@@ -1144,7 +1335,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 		} else {
 			uriTemplate.setText(""); //$NON-NLS-1$
 		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.APIResource.Properties.uriTemplate);
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.APIResource.Basic.uriTemplate);
 		if (eefElementEditorReadOnlyState && uriTemplate.isEnabled()) {
 			uriTemplate.setEnabled(false);
 			uriTemplate.setToolTipText(EsbMessages.APIResource_ReadOnly);
@@ -1176,12 +1367,59 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 		} else {
 			urlMapping.setText(""); //$NON-NLS-1$
 		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.APIResource.Properties.urlMapping);
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.APIResource.Basic.urlMapping);
 		if (eefElementEditorReadOnlyState && urlMapping.isEnabled()) {
 			urlMapping.setEnabled(false);
 			urlMapping.setToolTipText(EsbMessages.APIResource_ReadOnly);
 		} else if (!eefElementEditorReadOnlyState && !urlMapping.isEnabled()) {
 			urlMapping.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.APIResourcePropertiesEditionPart#getProtocol()
+	 * 
+	 */
+	public Enumerator getProtocol() {
+		Enumerator selection = (Enumerator) ((StructuredSelection) protocol.getSelection()).getFirstElement();
+		return selection;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.APIResourcePropertiesEditionPart#initProtocol(Object input, Enumerator current)
+	 */
+	public void initProtocol(Object input, Enumerator current) {
+		protocol.setInput(input);
+		protocol.modelUpdating(new StructuredSelection(current));
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.APIResource.Basic.protocol);
+		if (eefElementEditorReadOnlyState && protocol.isEnabled()) {
+			protocol.setEnabled(false);
+			protocol.setToolTipText(EsbMessages.APIResource_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !protocol.isEnabled()) {
+			protocol.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.APIResourcePropertiesEditionPart#setProtocol(Enumerator newValue)
+	 * 
+	 */
+	public void setProtocol(Enumerator newValue) {
+		protocol.modelUpdating(new StructuredSelection(newValue));
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.APIResource.Basic.protocol);
+		if (eefElementEditorReadOnlyState && protocol.isEnabled()) {
+			protocol.setEnabled(false);
+			protocol.setToolTipText(EsbMessages.APIResource_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !protocol.isEnabled()) {
+			protocol.setEnabled(true);
 		}	
 		
 	}
@@ -1208,7 +1446,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 		} else {
 			allowGet.setSelection(false);
 		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.APIResource.Properties.allowGet);
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.APIResource.Methods.allowGet);
 		if (eefElementEditorReadOnlyState && allowGet.isEnabled()) {
 			allowGet.setEnabled(false);
 			allowGet.setToolTipText(EsbMessages.APIResource_ReadOnly);
@@ -1240,7 +1478,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 		} else {
 			allowPost.setSelection(false);
 		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.APIResource.Properties.allowPost);
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.APIResource.Methods.allowPost);
 		if (eefElementEditorReadOnlyState && allowPost.isEnabled()) {
 			allowPost.setEnabled(false);
 			allowPost.setToolTipText(EsbMessages.APIResource_ReadOnly);
@@ -1272,7 +1510,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 		} else {
 			allowPut.setSelection(false);
 		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.APIResource.Properties.allowPut);
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.APIResource.Methods.allowPut);
 		if (eefElementEditorReadOnlyState && allowPut.isEnabled()) {
 			allowPut.setEnabled(false);
 			allowPut.setToolTipText(EsbMessages.APIResource_ReadOnly);
@@ -1304,7 +1542,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 		} else {
 			allowDelete.setSelection(false);
 		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.APIResource.Properties.allowDelete);
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.APIResource.Methods.allowDelete);
 		if (eefElementEditorReadOnlyState && allowDelete.isEnabled()) {
 			allowDelete.setEnabled(false);
 			allowDelete.setToolTipText(EsbMessages.APIResource_ReadOnly);
@@ -1336,7 +1574,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 		} else {
 			allowOptions.setSelection(false);
 		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.APIResource.Properties.allowOptions);
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.APIResource.Methods.allowOptions);
 		if (eefElementEditorReadOnlyState && allowOptions.isEnabled()) {
 			allowOptions.setEnabled(false);
 			allowOptions.setToolTipText(EsbMessages.APIResource_ReadOnly);
@@ -1368,7 +1606,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 		} else {
 			allowHead.setSelection(false);
 		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.APIResource.Properties.allowHead);
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.APIResource.Methods.allowHead);
 		if (eefElementEditorReadOnlyState && allowHead.isEnabled()) {
 			allowHead.setEnabled(false);
 			allowHead.setToolTipText(EsbMessages.APIResource_ReadOnly);
@@ -1400,7 +1638,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 		} else {
 			allowPatch.setSelection(false);
 		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.APIResource.Properties.allowPatch);
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.APIResource.Methods.allowPatch);
 		if (eefElementEditorReadOnlyState && allowPatch.isEnabled()) {
 			allowPatch.setEnabled(false);
 			allowPatch.setToolTipText(EsbMessages.APIResource_ReadOnly);
@@ -1429,7 +1667,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 	public void initInSequenceType(Object input, Enumerator current) {
 		inSequenceType.setInput(input);
 		inSequenceType.modelUpdating(new StructuredSelection(current));
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.APIResource.Properties.inSequenceType);
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.APIResource.InSequence.inSequenceType);
 		if (eefElementEditorReadOnlyState && inSequenceType.isEnabled()) {
 			inSequenceType.setEnabled(false);
 			inSequenceType.setToolTipText(EsbMessages.APIResource_ReadOnly);
@@ -1447,7 +1685,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 	 */
 	public void setInSequenceType(Enumerator newValue) {
 		inSequenceType.modelUpdating(new StructuredSelection(newValue));
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.APIResource.Properties.inSequenceType);
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.APIResource.InSequence.inSequenceType);
 		if (eefElementEditorReadOnlyState && inSequenceType.isEnabled()) {
 			inSequenceType.setEnabled(false);
 			inSequenceType.setToolTipText(EsbMessages.APIResource_ReadOnly);
@@ -1479,7 +1717,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 		} else {
 			inSequenceName.setText(""); //$NON-NLS-1$
 		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.APIResource.Properties.inSequenceName);
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.APIResource.InSequence.inSequenceName);
 		if (eefElementEditorReadOnlyState && inSequenceName.isEnabled()) {
 			inSequenceName.setEnabled(false);
 			inSequenceName.setToolTipText(EsbMessages.APIResource_ReadOnly);
@@ -1508,7 +1746,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 	public void initOutSequenceType(Object input, Enumerator current) {
 		outSequenceType.setInput(input);
 		outSequenceType.modelUpdating(new StructuredSelection(current));
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.APIResource.Properties.outSequenceType);
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.APIResource.OutSequence.outSequenceType);
 		if (eefElementEditorReadOnlyState && outSequenceType.isEnabled()) {
 			outSequenceType.setEnabled(false);
 			outSequenceType.setToolTipText(EsbMessages.APIResource_ReadOnly);
@@ -1526,7 +1764,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 	 */
 	public void setOutSequenceType(Enumerator newValue) {
 		outSequenceType.modelUpdating(new StructuredSelection(newValue));
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.APIResource.Properties.outSequenceType);
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.APIResource.OutSequence.outSequenceType);
 		if (eefElementEditorReadOnlyState && outSequenceType.isEnabled()) {
 			outSequenceType.setEnabled(false);
 			outSequenceType.setToolTipText(EsbMessages.APIResource_ReadOnly);
@@ -1558,7 +1796,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 		} else {
 			outSequenceName.setText(""); //$NON-NLS-1$
 		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.APIResource.Properties.outSequenceName);
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.APIResource.OutSequence.outSequenceName);
 		if (eefElementEditorReadOnlyState && outSequenceName.isEnabled()) {
 			outSequenceName.setEnabled(false);
 			outSequenceName.setToolTipText(EsbMessages.APIResource_ReadOnly);
@@ -1587,7 +1825,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 	public void initFaultSequenceType(Object input, Enumerator current) {
 		faultSequenceType.setInput(input);
 		faultSequenceType.modelUpdating(new StructuredSelection(current));
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.APIResource.Properties.faultSequenceType);
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.APIResource.FaultSequence.faultSequenceType);
 		if (eefElementEditorReadOnlyState && faultSequenceType.isEnabled()) {
 			faultSequenceType.setEnabled(false);
 			faultSequenceType.setToolTipText(EsbMessages.APIResource_ReadOnly);
@@ -1605,7 +1843,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 	 */
 	public void setFaultSequenceType(Enumerator newValue) {
 		faultSequenceType.modelUpdating(new StructuredSelection(newValue));
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.APIResource.Properties.faultSequenceType);
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.APIResource.FaultSequence.faultSequenceType);
 		if (eefElementEditorReadOnlyState && faultSequenceType.isEnabled()) {
 			faultSequenceType.setEnabled(false);
 			faultSequenceType.setToolTipText(EsbMessages.APIResource_ReadOnly);
@@ -1637,7 +1875,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 		} else {
 			faultSequenceName.setText(""); //$NON-NLS-1$
 		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.APIResource.Properties.faultSequenceName);
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.APIResource.FaultSequence.faultSequenceName);
 		if (eefElementEditorReadOnlyState && faultSequenceName.isEnabled()) {
 			faultSequenceName.setEnabled(false);
 			faultSequenceName.setToolTipText(EsbMessages.APIResource_ReadOnly);
@@ -1647,57 +1885,54 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 		
 	}
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.APIResourcePropertiesEditionPart#getProtocol()
-	 * 
-	 */
-	public Enumerator getProtocol() {
-		Enumerator selection = (Enumerator) ((StructuredSelection) protocol.getSelection()).getFirstElement();
-		return selection;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.APIResourcePropertiesEditionPart#initProtocol(Object input, Enumerator current)
-	 */
-	public void initProtocol(Object input, Enumerator current) {
-		protocol.setInput(input);
-		protocol.modelUpdating(new StructuredSelection(current));
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.APIResource.Properties.protocol);
-		if (eefElementEditorReadOnlyState && protocol.isEnabled()) {
-			protocol.setEnabled(false);
-			protocol.setToolTipText(EsbMessages.APIResource_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !protocol.isEnabled()) {
-			protocol.setEnabled(true);
-		}	
-		
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.APIResourcePropertiesEditionPart#setProtocol(Enumerator newValue)
-	 * 
-	 */
-	public void setProtocol(Enumerator newValue) {
-		protocol.modelUpdating(new StructuredSelection(newValue));
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.APIResource.Properties.protocol);
-		if (eefElementEditorReadOnlyState && protocol.isEnabled()) {
-			protocol.setEnabled(false);
-			protocol.setToolTipText(EsbMessages.APIResource_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !protocol.isEnabled()) {
-			protocol.setEnabled(true);
-		}	
-		
-	}
 
 
 
 
 
+	// Start of user code for inSequenceKey specific getters and setters implementation
+    @Override
+    public void setInSequenceKey(RegistryKeyProperty registryKeyProperty) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public RegistryKeyProperty getInSequenceKey() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+	
+	// End of user code
+
+	// Start of user code for outSequenceKey specific getters and setters implementation
+    @Override
+    public void setOutSequenceKey(RegistryKeyProperty registryKeyProperty) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public RegistryKeyProperty getOutSequenceKey() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+	
+	// End of user code
+
+	// Start of user code for faultSequenceKey specific getters and setters implementation
+    @Override
+    public void setFaultSequenceKey(RegistryKeyProperty registryKeyProperty) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public RegistryKeyProperty getFaultSequenceKey() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+	// End of user code
 
 	/**
 	 * {@inheritDoc}
@@ -1710,6 +1945,226 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 	}
 
 	// Start of user code additional methods
+	@Override
+    public void refresh() {
+        super.refresh();
+        validate();
+    }
+	
+	 protected Composite createInSequenceKey(FormToolkit widgetFactory, Composite parent) {
+	        Control inSequenceKeyLabel = createDescription(parent, EsbViewsRepository.APIResource.InSequence.inSequenceKey,
+	                EsbMessages.APIResourcePropertiesEditionPart_InSequenceKeyLabel);
+	        widgetFactory.paintBordersFor(parent);
+	        if (inSequenceKey == null) {
+	            inSequenceKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
+	        }
+	        String initSequenceKey = inSequenceKey.getKeyValue().isEmpty() ? "" : inSequenceKey.getKeyValue();
+	        inSequenceKeyText = widgetFactory.createText(parent, initSequenceKey);
+	        inSequenceKeyText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+	        widgetFactory.paintBordersFor(parent);
+	        GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
+	        inSequenceKeyText.setLayoutData(valueData);
+	        inSequenceKeyText.addMouseListener(new MouseListener() {
+
+	            @Override
+	            public void mouseUp(MouseEvent e) {
+	                // TODO Auto-generated method stub
+	            }
+
+	            @Override
+	            public void mouseDown(MouseEvent e) {
+	                EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(parent.getShell(),
+	                        SWT.NULL, inSequenceKey, new ArrayList<NamedEntityDescriptor>());
+	                dialog.open();
+	                inSequenceKeyText.setText(inSequenceKey.getKeyValue());
+	                propertiesEditionComponent
+	                        .firePropertiesChanged(new PropertiesEditionEvent(APIResourcePropertiesEditionPartForm.this,
+	                                EsbViewsRepository.APIResource.InSequence.inSequenceKey, PropertiesEditionEvent.COMMIT,
+	                                PropertiesEditionEvent.SET, null, getInSequenceKey()));
+	            }
+
+	            @Override
+	            public void mouseDoubleClick(MouseEvent e) {
+	                // TODO Auto-generated method stub
+
+	            }
+	        });
+	        EditingUtils.setID(inSequenceKeyText, EsbViewsRepository.APIResource.InSequence.inSequenceKey);
+	        EditingUtils.setEEFtype(inSequenceKeyText, "eef::Text");
+	        Control sequenceKeyHelp = FormUtils
+	                .createHelpButton(widgetFactory, parent,
+	                        propertiesEditionComponent.getHelpContent(
+	                                EsbViewsRepository.APIResource.InSequence.inSequenceKey, EsbViewsRepository.FORM_KIND),
+	                        null);
+	        inSequenceKeyElements = new Control[] { inSequenceKeyLabel, inSequenceKeyText, sequenceKeyHelp };
+	        return parent;
+	    }
+	 
+	 protected Composite createOutSequenceKey(FormToolkit widgetFactory, Composite parent) {
+         Control outSequenceKeyLabel = createDescription(parent, EsbViewsRepository.APIResource.OutSequence.outSequenceKey,
+                 EsbMessages.APIResourcePropertiesEditionPart_OutSequenceKeyLabel);
+         widgetFactory.paintBordersFor(parent);
+         if (outSequenceKey == null) {
+             outSequenceKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
+         }
+         String initSequenceKey = outSequenceKey.getKeyValue().isEmpty() ? "" : outSequenceKey.getKeyValue();
+         outSequenceKeyText = widgetFactory.createText(parent, initSequenceKey);
+         outSequenceKeyText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+         widgetFactory.paintBordersFor(parent);
+         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
+         outSequenceKeyText.setLayoutData(valueData);
+         outSequenceKeyText.addMouseListener(new MouseListener() {
+
+             @Override
+             public void mouseUp(MouseEvent e) {
+                 // TODO Auto-generated method stub
+             }
+
+             @Override
+             public void mouseDown(MouseEvent e) {
+                 EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(parent.getShell(),
+                         SWT.NULL, outSequenceKey, new ArrayList<NamedEntityDescriptor>());
+                 dialog.open();
+                 outSequenceKeyText.setText(outSequenceKey.getKeyValue());
+                 propertiesEditionComponent
+                         .firePropertiesChanged(new PropertiesEditionEvent(APIResourcePropertiesEditionPartForm.this,
+                                 EsbViewsRepository.APIResource.OutSequence.outSequenceKey, PropertiesEditionEvent.COMMIT,
+                                 PropertiesEditionEvent.SET, null, getOutSequenceKey()));
+             }
+
+             @Override
+             public void mouseDoubleClick(MouseEvent e) {
+                 // TODO Auto-generated method stub
+
+             }
+         });
+         EditingUtils.setID(outSequenceKeyText, EsbViewsRepository.APIResource.OutSequence.outSequenceKey);
+         EditingUtils.setEEFtype(outSequenceKeyText, "eef::Text");
+         Control sequenceKeyHelp = FormUtils
+                 .createHelpButton(widgetFactory, parent,
+                         propertiesEditionComponent.getHelpContent(
+                                 EsbViewsRepository.APIResource.OutSequence.outSequenceKey, EsbViewsRepository.FORM_KIND),
+                         null);
+         outSequenceKeyElements = new Control[] { outSequenceKeyLabel, outSequenceKeyText, sequenceKeyHelp };
+         return parent;
+     }
+	 
+	 protected Composite createFaultSequenceKey(FormToolkit widgetFactory, Composite parent) {
+         Control sequenceKeyLabel = createDescription(parent, EsbViewsRepository.APIResource.FaultSequence.faultSequenceKey,
+                 EsbMessages.APIResourcePropertiesEditionPart_FaultSequenceKeyLabel);
+         widgetFactory.paintBordersFor(parent);
+         if (faultSequenceKey == null) {
+             faultSequenceKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
+         }
+         String initSequenceKey = faultSequenceKey.getKeyValue().isEmpty() ? "" : faultSequenceKey.getKeyValue();
+         faultSequenceKeyText = widgetFactory.createText(parent, initSequenceKey);
+         faultSequenceKeyText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+         widgetFactory.paintBordersFor(parent);
+         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
+         faultSequenceKeyText.setLayoutData(valueData);
+         faultSequenceKeyText.addMouseListener(new MouseListener() {
+
+             @Override
+             public void mouseUp(MouseEvent e) {
+                 // TODO Auto-generated method stub
+             }
+
+             @Override
+             public void mouseDown(MouseEvent e) {
+                 EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(parent.getShell(),
+                         SWT.NULL, faultSequenceKey, new ArrayList<NamedEntityDescriptor>());
+                 dialog.open();
+                 faultSequenceKeyText.setText(faultSequenceKey.getKeyValue());
+                 propertiesEditionComponent
+                         .firePropertiesChanged(new PropertiesEditionEvent(APIResourcePropertiesEditionPartForm.this,
+                                 EsbViewsRepository.APIResource.FaultSequence.faultSequenceKey, PropertiesEditionEvent.COMMIT,
+                                 PropertiesEditionEvent.SET, null, getFaultSequenceKey()));
+             }
+
+             @Override
+             public void mouseDoubleClick(MouseEvent e) {
+                 // TODO Auto-generated method stub
+
+             }
+         });
+         EditingUtils.setID(faultSequenceKeyText, EsbViewsRepository.APIResource.FaultSequence.faultSequenceKey);
+         EditingUtils.setEEFtype(faultSequenceKeyText, "eef::Text");
+         Control sequenceKeyHelp = FormUtils
+                 .createHelpButton(widgetFactory, parent,
+                         propertiesEditionComponent.getHelpContent(
+                                 EsbViewsRepository.APIResource.FaultSequence.faultSequenceKey, EsbViewsRepository.FORM_KIND),
+                         null);
+         faultSequenceKeyElements = new Control[] { sequenceKeyLabel, faultSequenceKeyText, sequenceKeyHelp };
+         return parent;
+     }
+	
+	public void validate() {
+        EEFPropertyViewUtil eu = new EEFPropertyViewUtil(view);
+        eu.clearElements(new Composite[] { propertiesGroup });
+        propertiesSection.setVisible(false);
+        ((GridData) propertiesSection.getLayoutData()).exclude = true;
+        
+        eu.clearElements(new Composite[] { basicGroup });
+        eu.showEntry(urlStyleElements, false);
+        if (getUrlStyle() != null && getUrlStyle().getName().equals(ApiResourceUrlStyle.URI_TEMPLATE.getName())) {
+            eu.showEntry(uriTemplateElements, false);
+        } else if (getUrlStyle() != null && getUrlStyle().getName().equals(ApiResourceUrlStyle.URI_TEMPLATE.getName())) {
+            eu.showEntry(uriTemplateElements, false);
+        }
+        eu.showEntry(protocolElements, false);
+        
+        eu.clearElements(new Composite[] { inSequenceGroup });
+//        eu.showEntry(inSequenceElements, false);
+//        
+//        eu.clearElements(new Composite[] { outSequenceGroup });
+//        eu.clearElements(new Composite[] { faultSequenceGroup });
+//        
+//        eu.clearElements(new Composite[] { implementationGroup });
+//        eu.clearElements(new Composite[] { miscGroup });
+//        eu.clearElements(new Composite[] { onCacheHitGroup });
+//        eu.clearElements(new Composite[] { protocolGroup });
+//
+//        eu.showEntry(cacheTypeElements, false);
+//
+//        if (getCacheType() != null && getCacheType().getName().equals(CacheType.FINDER.getName())) {
+//            if (!implementationSection.isVisible()) {
+//                implementationSection.setVisible(true);
+//            }
+//            if (!onCacheHitSection.isVisible()) {
+//                onCacheHitSection.setVisible(true);
+//            }
+//            if (!protocolSection.isVisible()) {
+//                protocolSection.setVisible(true);
+//            }
+//
+//            eu.showEntry(cacheTimeoutElements, false);
+//            eu.showEntry(maxMessageSizeElements, false);
+//            eu.showEntry(maxEntryCountElements, false);
+//            eu.showEntry(sequenceTypeElements, false);
+//
+//            if (getSequenceType() != null
+//                    && getSequenceType().getName().equals(CacheSequenceType.REGISTRY_REFERENCE.getName())) {
+//                eu.showEntry(sequenceKeyElements, false);
+//            }
+//
+//            eu.showEntry(cacheProtocolTypeElements, false);
+//            eu.showEntry(cacheProtocolMethodsElements, false);
+//            eu.showEntry(headersToExcludeInHashElements, false);
+//            eu.showEntry(responseCodesElements, false);
+//            eu.showEntry(enableCacheControlElements, false);
+//            eu.showEntry(includeAgeHeaderElements, false);
+//            eu.showEntry(hashGeneratorElements, false);
+//
+//        } else {
+//            implementationSection.setVisible(false);
+//            onCacheHitSection.setVisible(false);
+//            protocolSection.setVisible(false);
+//
+//        }
+//
+//        eu.showEntry(descriptionElements, false);
+        view.layout(true, true);
+    }
 	
 	// End of user code
 

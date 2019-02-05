@@ -980,6 +980,21 @@ public class EsbMessages extends NLS {
 	public static String APIResourcePropertiesEditionPart_PropertiesGroupLabel;
 
 	
+	public static String APIResourcePropertiesEditionPart_BasicGroupLabel;
+
+	
+	public static String APIResourcePropertiesEditionPart_MethodsGroupLabel;
+
+	
+	public static String APIResourcePropertiesEditionPart_InSequenceGroupLabel;
+
+	
+	public static String APIResourcePropertiesEditionPart_OutSequenceGroupLabel;
+
+	
+	public static String APIResourcePropertiesEditionPart_FaultSequenceGroupLabel;
+
+	
 	public static String APIResourceInputConnectorPropertiesEditionPart_PropertiesGroupLabel;
 
 	
@@ -6430,6 +6445,9 @@ public class EsbMessages extends NLS {
 	public static String APIResourcePropertiesEditionPart_UrlMappingLabel;
 
 	
+	public static String APIResourcePropertiesEditionPart_ProtocolLabel;
+
+	
 	public static String APIResourcePropertiesEditionPart_AllowGetLabel;
 
 	
@@ -6457,10 +6475,16 @@ public class EsbMessages extends NLS {
 	public static String APIResourcePropertiesEditionPart_InSequenceNameLabel;
 
 	
+	public static String APIResourcePropertiesEditionPart_InSequenceKeyLabel;
+
+	
 	public static String APIResourcePropertiesEditionPart_OutSequenceTypeLabel;
 
 	
 	public static String APIResourcePropertiesEditionPart_OutSequenceNameLabel;
+
+	
+	public static String APIResourcePropertiesEditionPart_OutSequenceKeyLabel;
 
 	
 	public static String APIResourcePropertiesEditionPart_FaultSequenceTypeLabel;
@@ -6469,7 +6493,7 @@ public class EsbMessages extends NLS {
 	public static String APIResourcePropertiesEditionPart_FaultSequenceNameLabel;
 
 	
-	public static String APIResourcePropertiesEditionPart_ProtocolLabel;
+	public static String APIResourcePropertiesEditionPart_FaultSequenceKeyLabel;
 
 	
 	public static String APIResourceInputConnectorPropertiesEditionPart_IncomingLinksLabel;

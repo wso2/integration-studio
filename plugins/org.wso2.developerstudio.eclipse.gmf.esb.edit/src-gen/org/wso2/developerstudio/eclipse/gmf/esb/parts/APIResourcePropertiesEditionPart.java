@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 
 import org.eclipse.jface.viewers.ViewerFilter;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 
 
 // End of user code
@@ -112,6 +113,27 @@ public interface APIResourcePropertiesEditionPart {
 	 * 
 	 */
 	public void setUrlMapping(String newValue);
+
+
+	/**
+	 * @return the protocol
+	 * 
+	 */
+	public Enumerator getProtocol();
+
+	/**
+	 * Init the protocol
+	 * @param input the viewer input
+	 * @param current the current value
+	 */
+	public void initProtocol(Object input, Enumerator current);
+
+	/**
+	 * Defines a new protocol
+	 * @param newValue the new protocol to set
+	 * 
+	 */
+	public void setProtocol(Enumerator newValue);
 
 
 	/**
@@ -317,29 +339,25 @@ public interface APIResourcePropertiesEditionPart {
 	public void setFaultSequenceName(String newValue);
 
 
-	/**
-	 * @return the protocol
-	 * 
-	 */
-	public Enumerator getProtocol();
-
-	/**
-	 * Init the protocol
-	 * @param input the viewer input
-	 * @param current the current value
-	 */
-	public void initProtocol(Object input, Enumerator current);
-
-	/**
-	 * Defines a new protocol
-	 * @param newValue the new protocol to set
-	 * 
-	 */
-	public void setProtocol(Enumerator newValue);
 
 
-
-
+	// Start of user code for inSequenceKey specific getters and setters declaration
+	public void setInSequenceKey(RegistryKeyProperty registryKeyProperty);
+	
+	public RegistryKeyProperty getInSequenceKey();
+	
+	// End of user code
+	// Start of user code for outSequenceKey specific getters and setters declaration
+	public void setOutSequenceKey(RegistryKeyProperty registryKeyProperty);
+    
+    public RegistryKeyProperty getOutSequenceKey();
+	
+	// End of user code
+	// Start of user code for faultSequenceKey specific getters and setters declaration
+    public void setFaultSequenceKey(RegistryKeyProperty registryKeyProperty);
+    
+    public RegistryKeyProperty getFaultSequenceKey();
+	// End of user code
 
 	/**
 	 * Returns the internationalized title text.

@@ -12,6 +12,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 
 import org.eclipse.jface.viewers.ViewerFilter;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 
 
 // End of user code
@@ -21,20 +22,6 @@ import org.eclipse.jface.viewers.ViewerFilter;
  * 
  */
 public interface DefaultEndPointPropertiesEditionPart {
-
-	/**
-	 * @return the description
-	 * 
-	 */
-	public String getDescription();
-
-	/**
-	 * Defines a new description
-	 * @param newValue the new description to set
-	 * 
-	 */
-	public void setDescription(String newValue);
-
 
 	/**
 	 * @return the commentsList
@@ -118,50 +105,6 @@ public interface DefaultEndPointPropertiesEditionPart {
 	public void setDuplicate(Boolean newValue);
 
 
-
-
-	/**
-	 * Init the properties
-	 * @param current the current value
-	 * @param containgFeature the feature where to navigate if necessary
-	 * @param feature the feature to manage
-	 */
-	public void initProperties(ReferencesTableSettings settings);
-
-	/**
-	 * Update the properties
-	 * @param newValue the properties to update
-	 * 
-	 */
-	public void updateProperties();
-
-	/**
-	 * Adds the given filter to the properties edition editor.
-	 * 
-	 * @param filter
-	 *            a viewer filter
-	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
-	 */
-	public void addFilterToProperties(ViewerFilter filter);
-
-	/**
-	 * Adds the given filter to the properties edition editor.
-	 * 
-	 * @param filter
-	 *            a viewer filter
-	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
-	 */
-	public void addBusinessFilterToProperties(ViewerFilter filter);
-
-	/**
-	 * @return true if the given element is contained inside the properties table
-	 * 
-	 */
-	public boolean isContainedInPropertiesTable(EObject element);
-
-
 	/**
 	 * @return the reversed
 	 * 
@@ -174,216 +117,6 @@ public interface DefaultEndPointPropertiesEditionPart {
 	 * 
 	 */
 	public void setReversed(Boolean newValue);
-
-
-	/**
-	 * @return the reliableMessagingEnabled
-	 * 
-	 */
-	public Boolean getReliableMessagingEnabled();
-
-	/**
-	 * Defines a new reliableMessagingEnabled
-	 * @param newValue the new reliableMessagingEnabled to set
-	 * 
-	 */
-	public void setReliableMessagingEnabled(Boolean newValue);
-
-
-	/**
-	 * @return the securityEnabled
-	 * 
-	 */
-	public Boolean getSecurityEnabled();
-
-	/**
-	 * Defines a new securityEnabled
-	 * @param newValue the new securityEnabled to set
-	 * 
-	 */
-	public void setSecurityEnabled(Boolean newValue);
-
-
-	/**
-	 * @return the addressingEnabled
-	 * 
-	 */
-	public Boolean getAddressingEnabled();
-
-	/**
-	 * Defines a new addressingEnabled
-	 * @param newValue the new addressingEnabled to set
-	 * 
-	 */
-	public void setAddressingEnabled(Boolean newValue);
-
-
-	/**
-	 * @return the addressingVersion
-	 * 
-	 */
-	public Enumerator getAddressingVersion();
-
-	/**
-	 * Init the addressingVersion
-	 * @param input the viewer input
-	 * @param current the current value
-	 */
-	public void initAddressingVersion(Object input, Enumerator current);
-
-	/**
-	 * Defines a new addressingVersion
-	 * @param newValue the new addressingVersion to set
-	 * 
-	 */
-	public void setAddressingVersion(Enumerator newValue);
-
-
-	/**
-	 * @return the addressingSeparateListener
-	 * 
-	 */
-	public Boolean getAddressingSeparateListener();
-
-	/**
-	 * Defines a new addressingSeparateListener
-	 * @param newValue the new addressingSeparateListener to set
-	 * 
-	 */
-	public void setAddressingSeparateListener(Boolean newValue);
-
-
-	/**
-	 * @return the timeOutDuration
-	 * 
-	 */
-	public String getTimeOutDuration();
-
-	/**
-	 * Defines a new timeOutDuration
-	 * @param newValue the new timeOutDuration to set
-	 * 
-	 */
-	public void setTimeOutDuration(String newValue);
-
-
-	/**
-	 * @return the timeOutAction
-	 * 
-	 */
-	public Enumerator getTimeOutAction();
-
-	/**
-	 * Init the timeOutAction
-	 * @param input the viewer input
-	 * @param current the current value
-	 */
-	public void initTimeOutAction(Object input, Enumerator current);
-
-	/**
-	 * Defines a new timeOutAction
-	 * @param newValue the new timeOutAction to set
-	 * 
-	 */
-	public void setTimeOutAction(Enumerator newValue);
-
-
-	/**
-	 * @return the retryErrorCodes
-	 * 
-	 */
-	public String getRetryErrorCodes();
-
-	/**
-	 * Defines a new retryErrorCodes
-	 * @param newValue the new retryErrorCodes to set
-	 * 
-	 */
-	public void setRetryErrorCodes(String newValue);
-
-
-	/**
-	 * @return the retryCount
-	 * 
-	 */
-	public String getRetryCount();
-
-	/**
-	 * Defines a new retryCount
-	 * @param newValue the new retryCount to set
-	 * 
-	 */
-	public void setRetryCount(String newValue);
-
-
-	/**
-	 * @return the retryDelay
-	 * 
-	 */
-	public String getRetryDelay();
-
-	/**
-	 * Defines a new retryDelay
-	 * @param newValue the new retryDelay to set
-	 * 
-	 */
-	public void setRetryDelay(String newValue);
-
-
-	/**
-	 * @return the suspendErrorCodes
-	 * 
-	 */
-	public String getSuspendErrorCodes();
-
-	/**
-	 * Defines a new suspendErrorCodes
-	 * @param newValue the new suspendErrorCodes to set
-	 * 
-	 */
-	public void setSuspendErrorCodes(String newValue);
-
-
-	/**
-	 * @return the suspendInitialDuration
-	 * 
-	 */
-	public String getSuspendInitialDuration();
-
-	/**
-	 * Defines a new suspendInitialDuration
-	 * @param newValue the new suspendInitialDuration to set
-	 * 
-	 */
-	public void setSuspendInitialDuration(String newValue);
-
-
-	/**
-	 * @return the suspendMaximumDuration
-	 * 
-	 */
-	public String getSuspendMaximumDuration();
-
-	/**
-	 * Defines a new suspendMaximumDuration
-	 * @param newValue the new suspendMaximumDuration to set
-	 * 
-	 */
-	public void setSuspendMaximumDuration(String newValue);
-
-
-	/**
-	 * @return the suspendProgressionFactor
-	 * 
-	 */
-	public String getSuspendProgressionFactor();
-
-	/**
-	 * Defines a new suspendProgressionFactor
-	 * @param newValue the new suspendProgressionFactor to set
-	 * 
-	 */
-	public void setSuspendProgressionFactor(String newValue);
 
 
 	/**
@@ -405,27 +138,6 @@ public interface DefaultEndPointPropertiesEditionPart {
 	 * 
 	 */
 	public void setFormat(Enumerator newValue);
-
-
-	/**
-	 * @return the optimize
-	 * 
-	 */
-	public Enumerator getOptimize();
-
-	/**
-	 * Init the optimize
-	 * @param input the viewer input
-	 * @param current the current value
-	 */
-	public void initOptimize(Object input, Enumerator current);
-
-	/**
-	 * Defines a new optimize
-	 * @param newValue the new optimize to set
-	 * 
-	 */
-	public void setOptimize(Enumerator newValue);
 
 
 
@@ -500,8 +212,317 @@ public interface DefaultEndPointPropertiesEditionPart {
 	public void setTraceEnabled(Boolean newValue);
 
 
+	/**
+	 * @return the suspendErrorCodes
+	 * 
+	 */
+	public String getSuspendErrorCodes();
+
+	/**
+	 * Defines a new suspendErrorCodes
+	 * @param newValue the new suspendErrorCodes to set
+	 * 
+	 */
+	public void setSuspendErrorCodes(String newValue);
 
 
+	/**
+	 * @return the suspendInitialDuration
+	 * 
+	 */
+	public String getSuspendInitialDuration();
+
+	/**
+	 * Defines a new suspendInitialDuration
+	 * @param newValue the new suspendInitialDuration to set
+	 * 
+	 */
+	public void setSuspendInitialDuration(String newValue);
+
+
+	/**
+	 * @return the suspendMaximumDuration
+	 * 
+	 */
+	public String getSuspendMaximumDuration();
+
+	/**
+	 * Defines a new suspendMaximumDuration
+	 * @param newValue the new suspendMaximumDuration to set
+	 * 
+	 */
+	public void setSuspendMaximumDuration(String newValue);
+
+
+	/**
+	 * @return the suspendProgressionFactor
+	 * 
+	 */
+	public String getSuspendProgressionFactor();
+
+	/**
+	 * Defines a new suspendProgressionFactor
+	 * @param newValue the new suspendProgressionFactor to set
+	 * 
+	 */
+	public void setSuspendProgressionFactor(String newValue);
+
+
+	/**
+	 * @return the retryErrorCodes
+	 * 
+	 */
+	public String getRetryErrorCodes();
+
+	/**
+	 * Defines a new retryErrorCodes
+	 * @param newValue the new retryErrorCodes to set
+	 * 
+	 */
+	public void setRetryErrorCodes(String newValue);
+
+
+	/**
+	 * @return the retryCount
+	 * 
+	 */
+	public String getRetryCount();
+
+	/**
+	 * Defines a new retryCount
+	 * @param newValue the new retryCount to set
+	 * 
+	 */
+	public void setRetryCount(String newValue);
+
+
+	/**
+	 * @return the retryDelay
+	 * 
+	 */
+	public String getRetryDelay();
+
+	/**
+	 * Defines a new retryDelay
+	 * @param newValue the new retryDelay to set
+	 * 
+	 */
+	public void setRetryDelay(String newValue);
+
+
+
+
+	/**
+	 * Init the properties
+	 * @param current the current value
+	 * @param containgFeature the feature where to navigate if necessary
+	 * @param feature the feature to manage
+	 */
+	public void initProperties(ReferencesTableSettings settings);
+
+	/**
+	 * Update the properties
+	 * @param newValue the properties to update
+	 * 
+	 */
+	public void updateProperties();
+
+	/**
+	 * Adds the given filter to the properties edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addFilterToProperties(ViewerFilter filter);
+
+	/**
+	 * Adds the given filter to the properties edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addBusinessFilterToProperties(ViewerFilter filter);
+
+	/**
+	 * @return true if the given element is contained inside the properties table
+	 * 
+	 */
+	public boolean isContainedInPropertiesTable(EObject element);
+
+
+	/**
+	 * @return the optimize
+	 * 
+	 */
+	public Enumerator getOptimize();
+
+	/**
+	 * Init the optimize
+	 * @param input the viewer input
+	 * @param current the current value
+	 */
+	public void initOptimize(Object input, Enumerator current);
+
+	/**
+	 * Defines a new optimize
+	 * @param newValue the new optimize to set
+	 * 
+	 */
+	public void setOptimize(Enumerator newValue);
+
+
+	/**
+	 * @return the description
+	 * 
+	 */
+	public String getDescription();
+
+	/**
+	 * Defines a new description
+	 * @param newValue the new description to set
+	 * 
+	 */
+	public void setDescription(String newValue);
+
+
+	/**
+	 * @return the reliableMessagingEnabled
+	 * 
+	 */
+	public Boolean getReliableMessagingEnabled();
+
+	/**
+	 * Defines a new reliableMessagingEnabled
+	 * @param newValue the new reliableMessagingEnabled to set
+	 * 
+	 */
+	public void setReliableMessagingEnabled(Boolean newValue);
+
+
+	/**
+	 * @return the securityEnabled
+	 * 
+	 */
+	public Boolean getSecurityEnabled();
+
+	/**
+	 * Defines a new securityEnabled
+	 * @param newValue the new securityEnabled to set
+	 * 
+	 */
+	public void setSecurityEnabled(Boolean newValue);
+
+
+	/**
+	 * @return the addressingEnabled
+	 * 
+	 */
+	public Boolean getAddressingEnabled();
+
+	/**
+	 * Defines a new addressingEnabled
+	 * @param newValue the new addressingEnabled to set
+	 * 
+	 */
+	public void setAddressingEnabled(Boolean newValue);
+
+
+	/**
+	 * @return the addressingSeparateListener
+	 * 
+	 */
+	public Boolean getAddressingSeparateListener();
+
+	/**
+	 * Defines a new addressingSeparateListener
+	 * @param newValue the new addressingSeparateListener to set
+	 * 
+	 */
+	public void setAddressingSeparateListener(Boolean newValue);
+
+
+	/**
+	 * @return the addressingVersion
+	 * 
+	 */
+	public Enumerator getAddressingVersion();
+
+	/**
+	 * Init the addressingVersion
+	 * @param input the viewer input
+	 * @param current the current value
+	 */
+	public void initAddressingVersion(Object input, Enumerator current);
+
+	/**
+	 * Defines a new addressingVersion
+	 * @param newValue the new addressingVersion to set
+	 * 
+	 */
+	public void setAddressingVersion(Enumerator newValue);
+
+
+	/**
+	 * @return the timeOutDuration
+	 * 
+	 */
+	public String getTimeOutDuration();
+
+	/**
+	 * Defines a new timeOutDuration
+	 * @param newValue the new timeOutDuration to set
+	 * 
+	 */
+	public void setTimeOutDuration(String newValue);
+
+
+	/**
+	 * @return the timeOutAction
+	 * 
+	 */
+	public Enumerator getTimeOutAction();
+
+	/**
+	 * Init the timeOutAction
+	 * @param input the viewer input
+	 * @param current the current value
+	 */
+	public void initTimeOutAction(Object input, Enumerator current);
+
+	/**
+	 * Defines a new timeOutAction
+	 * @param newValue the new timeOutAction to set
+	 * 
+	 */
+	public void setTimeOutAction(Enumerator newValue);
+
+
+
+
+	// Start of user code for Reliable Messaging Policy specific getters and setters declaration
+    public RegistryKeyProperty getReliableMessagingPolicy();
+    
+    public void setReliableMessagingPolicy(RegistryKeyProperty registryKeyProperty);
+	// End of user code
+	// Start of user code for Security Policy specific getters and setters declaration
+    public RegistryKeyProperty getSecurityPolicy();
+    
+    public void setSecurityPolicy(RegistryKeyProperty registryKeyProperty);
+	// End of user code
+	// Start of user code for Inbound Policy specific getters and setters declaration
+   public RegistryKeyProperty getInboundPolicy();
+    
+    public void setInboundPolicy(RegistryKeyProperty registryKeyProperty);
+	// End of user code
+	// Start of user code for Outbound Policy specific getters and setters declaration
+    public RegistryKeyProperty getOutboundPolicy();
+    
+    public void setOutboundPolicy(RegistryKeyProperty registryKeyProperty);
+	// End of user code
 
 	/**
 	 * Returns the internationalized title text.

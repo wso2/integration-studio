@@ -22,7 +22,7 @@
                org.eclipse.emf.edit.provider.IItemPropertySource"/>
    </extension>
   <!-- EEF extensions -->
-   <!--extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <factory
             uri="http:///org/wso2/developerstudio/eclipse/gmf/esb"
             class="org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbEEFAdapterFactory"
@@ -1987,5 +1987,5 @@
                tab="Base">
          </propertySection>
       </propertySections>
-   </extension-->
+   </extension>
 </plugin>

@@ -604,88 +604,129 @@ public class EsbViewsRepository {
 	 * 
 	 */
 	public static class DefaultEndPoint {
-		public static class Properties {
+		public static class Basic {
 	
 			
-			public static String description = "esb::DefaultEndPoint::properties::description";
+			public static String commentsList = "esb::DefaultEndPoint::Basic::commentsList";
 			
 			
-			public static String commentsList = "esb::DefaultEndPoint::properties::commentsList";
+			public static String endPointName = "esb::DefaultEndPoint::Basic::endPointName";
 			
 			
-			public static String endPointName = "esb::DefaultEndPoint::properties::endPointName";
+			public static String anonymous = "esb::DefaultEndPoint::Basic::anonymous";
 			
 			
-			public static String anonymous = "esb::DefaultEndPoint::properties::anonymous";
+			public static String inLine = "esb::DefaultEndPoint::Basic::InLine";
 			
 			
-			public static String inLine = "esb::DefaultEndPoint::properties::InLine";
+			public static String duplicate = "esb::DefaultEndPoint::Basic::duplicate";
 			
 			
-			public static String duplicate = "esb::DefaultEndPoint::properties::duplicate";
+			public static String reversed = "esb::DefaultEndPoint::Basic::reversed";
 			
 			
-			public static String properties_ = "esb::DefaultEndPoint::properties::properties_";
+			public static String format = "esb::DefaultEndPoint::Basic::format";
 			
 			
-			public static String reversed = "esb::DefaultEndPoint::properties::reversed";
+			public static String templateParameters = "esb::DefaultEndPoint::Basic::templateParameters";
 			
 			
-			public static String reliableMessagingEnabled = "esb::DefaultEndPoint::properties::reliableMessagingEnabled";
+			public static String statisticsEnabled = "esb::DefaultEndPoint::Basic::statisticsEnabled";
 			
 			
-			public static String securityEnabled = "esb::DefaultEndPoint::properties::securityEnabled";
+			public static String traceEnabled = "esb::DefaultEndPoint::Basic::traceEnabled";
+			
+	
+		}
+	
+		public static class EndpointSuspendState {
+	
+			
+			public static String suspendErrorCodes = "esb::DefaultEndPoint::Endpoint Suspend State::suspendErrorCodes";
 			
 			
-			public static String addressingEnabled = "esb::DefaultEndPoint::properties::addressingEnabled";
+			public static String suspendInitialDuration = "esb::DefaultEndPoint::Endpoint Suspend State::suspendInitialDuration";
 			
 			
-			public static String addressingVersion = "esb::DefaultEndPoint::properties::addressingVersion";
+			public static String suspendMaximumDuration = "esb::DefaultEndPoint::Endpoint Suspend State::suspendMaximumDuration";
 			
 			
-			public static String addressingSeparateListener = "esb::DefaultEndPoint::properties::addressingSeparateListener";
+			public static String suspendProgressionFactor = "esb::DefaultEndPoint::Endpoint Suspend State::suspendProgressionFactor";
+			
+	
+		}
+	
+		public static class EndpointTimeoutState {
+	
+			
+			public static String retryErrorCodes = "esb::DefaultEndPoint::Endpoint Timeout State::retryErrorCodes";
 			
 			
-			public static String timeOutDuration = "esb::DefaultEndPoint::properties::timeOutDuration";
+			public static String retryCount = "esb::DefaultEndPoint::Endpoint Timeout State::retryCount";
 			
 			
-			public static String timeOutAction = "esb::DefaultEndPoint::properties::timeOutAction";
+			public static String retryDelay = "esb::DefaultEndPoint::Endpoint Timeout State::retryDelay";
+			
+	
+		}
+	
+		public static class Misc {
+	
+			
+			public static String properties = "esb::DefaultEndPoint::Misc::properties";
 			
 			
-			public static String retryErrorCodes = "esb::DefaultEndPoint::properties::retryErrorCodes";
+			public static String optimize = "esb::DefaultEndPoint::Misc::optimize";
 			
 			
-			public static String retryCount = "esb::DefaultEndPoint::properties::retryCount";
+			public static String description = "esb::DefaultEndPoint::Misc::description";
+			
+	
+		}
+	
+		public static class QoS {
+	
+			
+			public static String reliableMessagingEnabled = "esb::DefaultEndPoint::QoS::reliableMessagingEnabled";
 			
 			
-			public static String retryDelay = "esb::DefaultEndPoint::properties::retryDelay";
+			public static String securityEnabled = "esb::DefaultEndPoint::QoS::securityEnabled";
 			
 			
-			public static String suspendErrorCodes = "esb::DefaultEndPoint::properties::suspendErrorCodes";
+			public static String addressingEnabled = "esb::DefaultEndPoint::QoS::addressingEnabled";
 			
 			
-			public static String suspendInitialDuration = "esb::DefaultEndPoint::properties::suspendInitialDuration";
+			public static String addressingSeparateListener = "esb::DefaultEndPoint::QoS::addressingSeparateListener";
 			
 			
-			public static String suspendMaximumDuration = "esb::DefaultEndPoint::properties::suspendMaximumDuration";
+			public static String addressingVersion = "esb::DefaultEndPoint::QoS::addressingVersion";
+			
+			// Start of user code for Reliable Messaging Policy ElementEditor key
+			public static String reliableMessagingPolicy = "esb::AddressEndPoint::QoS::Reliable Messaging Policy";
+			// End of user code
+			
+			// Start of user code for Security Policy ElementEditor key
+			public static String securityPolicy = "esb::AddressEndPoint::QoS::Security Policy";
+			// End of user code
+			
+			// Start of user code for Inbound Policy ElementEditor key
+			public static String inboundPolicy = "esb::AddressEndPoint::QoS::Inbound Policy";
+			// End of user code
+			
+			// Start of user code for Outbound Policy ElementEditor key
+			public static String outboundPolicy = "esb::AddressEndPoint::QoS::Outbound Policy";
+			// End of user code
+			
+	
+		}
+	
+		public static class Timeout {
+	
+			
+			public static String timeOutDuration = "esb::DefaultEndPoint::Timeout::timeOutDuration";
 			
 			
-			public static String suspendProgressionFactor = "esb::DefaultEndPoint::properties::suspendProgressionFactor";
-			
-			
-			public static String format = "esb::DefaultEndPoint::properties::format";
-			
-			
-			public static String optimize = "esb::DefaultEndPoint::properties::optimize";
-			
-			
-			public static String templateParameters = "esb::DefaultEndPoint::properties::templateParameters";
-			
-			
-			public static String statisticsEnabled = "esb::DefaultEndPoint::properties::statisticsEnabled";
-			
-			
-			public static String traceEnabled = "esb::DefaultEndPoint::properties::traceEnabled";
+			public static String timeOutAction = "esb::DefaultEndPoint::Timeout::timeOutAction";
 			
 	
 		}

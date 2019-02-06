@@ -116,7 +116,22 @@ public class EsbMessages extends NLS {
 	public static String MessageOutputConnectorPropertiesEditionPart_PropertiesGroupLabel;
 
 	
-	public static String DefaultEndPointPropertiesEditionPart_PropertiesGroupLabel;
+	public static String DefaultEndPointPropertiesEditionPart_BasicGroupLabel;
+
+	
+	public static String DefaultEndPointPropertiesEditionPart_EndpointSuspendStateGroupLabel;
+
+	
+	public static String DefaultEndPointPropertiesEditionPart_EndpointTimeoutStateGroupLabel;
+
+	
+	public static String DefaultEndPointPropertiesEditionPart_MiscGroupLabel;
+
+	
+	public static String DefaultEndPointPropertiesEditionPart_QoSGroupLabel;
+
+	
+	public static String DefaultEndPointPropertiesEditionPart_TimeoutGroupLabel;
 
 	
 	public static String DefaultEndPointInputConnectorPropertiesEditionPart_PropertiesGroupLabel;
@@ -3478,9 +3493,6 @@ public class EsbMessages extends NLS {
 	public static String MessageOutputConnectorPropertiesEditionPart_CommentMediatorsLabel;
 
 	
-	public static String DefaultEndPointPropertiesEditionPart_DescriptionLabel;
-
-	
 	public static String DefaultEndPointPropertiesEditionPart_CommentsListLabel;
 
 	
@@ -3496,40 +3508,19 @@ public class EsbMessages extends NLS {
 	public static String DefaultEndPointPropertiesEditionPart_DuplicateLabel;
 
 	
-	public static String DefaultEndPointPropertiesEditionPart_PropertiesLabel;
-
-	
 	public static String DefaultEndPointPropertiesEditionPart_ReversedLabel;
 
 	
-	public static String DefaultEndPointPropertiesEditionPart_ReliableMessagingEnabledLabel;
+	public static String DefaultEndPointPropertiesEditionPart_FormatLabel;
 
 	
-	public static String DefaultEndPointPropertiesEditionPart_SecurityEnabledLabel;
+	public static String DefaultEndPointPropertiesEditionPart_TemplateParametersLabel;
 
 	
-	public static String DefaultEndPointPropertiesEditionPart_AddressingEnabledLabel;
+	public static String DefaultEndPointPropertiesEditionPart_StatisticsEnabledLabel;
 
 	
-	public static String DefaultEndPointPropertiesEditionPart_AddressingVersionLabel;
-
-	
-	public static String DefaultEndPointPropertiesEditionPart_AddressingSeparateListenerLabel;
-
-	
-	public static String DefaultEndPointPropertiesEditionPart_TimeOutDurationLabel;
-
-	
-	public static String DefaultEndPointPropertiesEditionPart_TimeOutActionLabel;
-
-	
-	public static String DefaultEndPointPropertiesEditionPart_RetryErrorCodesLabel;
-
-	
-	public static String DefaultEndPointPropertiesEditionPart_RetryCountLabel;
-
-	
-	public static String DefaultEndPointPropertiesEditionPart_RetryDelayLabel;
+	public static String DefaultEndPointPropertiesEditionPart_TraceEnabledLabel;
 
 	
 	public static String DefaultEndPointPropertiesEditionPart_SuspendErrorCodesLabel;
@@ -3544,19 +3535,55 @@ public class EsbMessages extends NLS {
 	public static String DefaultEndPointPropertiesEditionPart_SuspendProgressionFactorLabel;
 
 	
-	public static String DefaultEndPointPropertiesEditionPart_FormatLabel;
+	public static String DefaultEndPointPropertiesEditionPart_RetryErrorCodesLabel;
+
+	
+	public static String DefaultEndPointPropertiesEditionPart_RetryCountLabel;
+
+	
+	public static String DefaultEndPointPropertiesEditionPart_RetryDelayLabel;
+
+	
+	public static String DefaultEndPointPropertiesEditionPart_PropertiesLabel;
 
 	
 	public static String DefaultEndPointPropertiesEditionPart_OptimizeLabel;
 
 	
-	public static String DefaultEndPointPropertiesEditionPart_TemplateParametersLabel;
+	public static String DefaultEndPointPropertiesEditionPart_DescriptionLabel;
 
 	
-	public static String DefaultEndPointPropertiesEditionPart_StatisticsEnabledLabel;
+	public static String DefaultEndPointPropertiesEditionPart_ReliableMessagingEnabledLabel;
 
 	
-	public static String DefaultEndPointPropertiesEditionPart_TraceEnabledLabel;
+	public static String DefaultEndPointPropertiesEditionPart_SecurityEnabledLabel;
+
+	
+	public static String DefaultEndPointPropertiesEditionPart_AddressingEnabledLabel;
+
+	
+	public static String DefaultEndPointPropertiesEditionPart_AddressingSeparateListenerLabel;
+
+	
+	public static String DefaultEndPointPropertiesEditionPart_AddressingVersionLabel;
+
+	
+	public static String DefaultEndPointPropertiesEditionPart_ReliableMessagingPolicyLabel;
+
+	
+	public static String DefaultEndPointPropertiesEditionPart_SecurityPolicyLabel;
+
+	
+	public static String DefaultEndPointPropertiesEditionPart_InboundPolicyLabel;
+
+	
+	public static String DefaultEndPointPropertiesEditionPart_OutboundPolicyLabel;
+
+	
+	public static String DefaultEndPointPropertiesEditionPart_TimeOutDurationLabel;
+
+	
+	public static String DefaultEndPointPropertiesEditionPart_TimeOutActionLabel;
 
 	
 	public static String DefaultEndPointInputConnectorPropertiesEditionPart_IncomingLinksLabel;

@@ -4,7 +4,7 @@
  <plugin>
 
   <!-- EEF extensions -->
-   <!--extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <factory
             uri="http:///org/wso2/developerstudio/eclipse/gmf/esb"
             class="org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbEEFAdapterFactory"
@@ -15,10 +15,10 @@
       <PropertiesEditionPartProvider
             providerClass="org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbPropertiesEditionPartProvider">
       </PropertiesEditionPartProvider>
-   </extension-->
+   </extension>
 
   <!-- Tabbed properties views extension -->
-   <!--extension
+   <extension
          point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
       <propertyContributor
             contributorId="org.wso2.developerstudio.eclipse.gmf.esb.properties"
@@ -1977,5 +1977,5 @@
                tab="Base">
          </propertySection>
       </propertySections>
-   </extension-->
+   </extension>
  </plugin>

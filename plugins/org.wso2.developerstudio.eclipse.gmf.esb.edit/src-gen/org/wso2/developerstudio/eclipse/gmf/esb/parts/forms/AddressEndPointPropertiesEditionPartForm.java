@@ -180,6 +180,9 @@ public class AddressEndPointPropertiesEditionPartForm extends SectionPropertiesE
     protected Composite miscGroup;
     protected Composite qoSGroup;
     protected Composite timeoutGroup;
+    
+    protected GridData propertiesData;
+    
 	// End of user code
 
 	protected Text timeOutDuration;
@@ -1414,10 +1417,10 @@ public class AddressEndPointPropertiesEditionPartForm extends SectionPropertiesE
 	}
 
 	/**
-	 * @param container
-	 * 
-	 */
+     * @generated NOT
+     */
 	protected Composite createPropertiesTableComposition(FormToolkit widgetFactory, Composite parent) {
+		Control[] previousControls = miscGroup.getChildren();
 		this.properties = new ReferencesTable(getDescription(EsbViewsRepository.AddressEndPoint.Misc.properties, EsbMessages.AddressEndPointPropertiesEditionPart_PropertiesLabel), new ReferencesTableListener() {
 			public void handleAdd() {
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AddressEndPointPropertiesEditionPartForm.this, EsbViewsRepository.AddressEndPoint.Misc.properties, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
@@ -1451,7 +1454,7 @@ public class AddressEndPointPropertiesEditionPartForm extends SectionPropertiesE
 			}
 			
 		});
-		GridData propertiesData = new GridData(GridData.FILL_HORIZONTAL);
+		propertiesData = new GridData(GridData.FILL_HORIZONTAL);
 		propertiesData.horizontalSpan = 3;
 		this.properties.setLayoutData(propertiesData);
 		this.properties.setLowerBound(0);
@@ -1459,7 +1462,8 @@ public class AddressEndPointPropertiesEditionPartForm extends SectionPropertiesE
 		properties.setID(EsbViewsRepository.AddressEndPoint.Misc.properties);
 		properties.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
 		// Start of user code for createPropertiesTableComposition
-
+		Control[] newControls = miscGroup.getChildren();
+		propertiesTypeElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
 		// End of user code
 		return parent;
 	}
@@ -1612,7 +1616,7 @@ public class AddressEndPointPropertiesEditionPartForm extends SectionPropertiesE
 		reliableMegEnabledTypeElements = new Control[] { reliableMessagingEnabled, reliableMessagingEnabledHelp };
 		reliableMessagingEnabled.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
-				validate();
+				refresh();
 			}
 		});
 		// End of user code
@@ -1648,7 +1652,7 @@ public class AddressEndPointPropertiesEditionPartForm extends SectionPropertiesE
 		securithEnabledTypeElements = new Control[] { securityEnabled, securityEnabledHelp };
 		securityEnabled.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
-				validate();
+				refresh();
 			}
 		});
 		// End of user code
@@ -3230,7 +3234,7 @@ public class AddressEndPointPropertiesEditionPartForm extends SectionPropertiesE
     	viewUtil.showEntry(retryErrorCodesTypeElements, false);
     	viewUtil.showEntry(retryCountTypeElements, false);
        	viewUtil.showEntry(retryDelayTypeElements, false);
-       	//viewUtil.showEntry(propertiesTypeElements, false);
+       	viewUtil.showEntry(propertiesTypeElements, false);
        	viewUtil.showEntry(optimizeTypeElements, false);
        	viewUtil.showEntry(descriptionTypeElements, false);
        	viewUtil.showEntry(reliableMegEnabledTypeElements, false);
@@ -3252,7 +3256,6 @@ public class AddressEndPointPropertiesEditionPartForm extends SectionPropertiesE
        	viewUtil.showEntry(timeoutActionTypeElements, false);
        	
         view.layout(true, true);
-        view.pack();
     }
 	// End of user code
 

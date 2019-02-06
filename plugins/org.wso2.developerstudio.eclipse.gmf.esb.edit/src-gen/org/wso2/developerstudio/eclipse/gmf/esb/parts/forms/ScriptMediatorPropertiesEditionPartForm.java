@@ -1198,7 +1198,7 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 		return parent;
 	}
 	
-	protected Composite createScriptDynamicKey(FormToolkit widgetFactory, Composite parent) {
+	protected Composite createScriptDynamicKey(FormToolkit widgetFactory, final Composite parent) {
 		Control scriptDynamicKeyLabel = createDescription(parent,
 				EsbViewsRepository.ScriptMediator.Properties.scriptDynamicKey,
 				EsbMessages.ScriptMediatorPropertiesEditionPart_ScriptDynamicKeyLabel);

@@ -1506,7 +1506,7 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
         return parent;
     }
 
-    protected Composite createAggregationExpressionWidget(FormToolkit widgetFactory, Composite parent) {
+    protected Composite createAggregationExpressionWidget(FormToolkit widgetFactory, final Composite parent) {
         Control aggregationExpressionLabel = createDescription(parent, EsbViewsRepository.AggregateMediator.OnComplete.aggregationExpression, EsbMessages.AggregateMediatorPropertiesEditionPart_AggregationExpressionLabel);
         widgetFactory.paintBordersFor(parent);
         if(aggregationExpression == null) {
@@ -1547,13 +1547,13 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
         return parent;
     }
 
-    protected Composite createCompletionMaxMessagesExpressionWidget(FormToolkit widgetFactory, Composite parent) {
+    protected Composite createCompletionMaxMessagesExpressionWidget(FormToolkit widgetFactory, final Composite parent) {
         Control completionMaxMessagesExpressionLabel = createDescription(parent, EsbViewsRepository.AggregateMediator.Properties.completionMaxMessages, EsbMessages.AggregateMediatorPropertiesEditionPart_CompletionMaxMessagesLabel);
         widgetFactory.paintBordersFor(parent);
         if(completionMaxMessagesExpression == null) {
             completionMaxMessagesExpression = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
         } 
-        String initValueExpression = completionMaxMessagesExpression.getPropertyValue().isEmpty() ? "/default/expression" : completionMaxMessagesExpression.getPropertyValue();
+        String initValueExpression = completionMaxMessagesExpression.getPropertyValue().isEmpty() ? "" : completionMaxMessagesExpression.getPropertyValue();
         completionMaxMessagesText = widgetFactory.createText(parent, initValueExpression);
         completionMaxMessagesText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
         widgetFactory.paintBordersFor(parent);
@@ -1588,13 +1588,13 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
         return parent;
     }
 
-    protected Composite createCompletionMinMessagesExpressionWidget(FormToolkit widgetFactory, Composite parent) {
+    protected Composite createCompletionMinMessagesExpressionWidget(FormToolkit widgetFactory, final Composite parent) {
         Control completionMinMessagesExpressionLabel = createDescription(parent, EsbViewsRepository.AggregateMediator.Properties.completionMinMessages, EsbMessages.AggregateMediatorPropertiesEditionPart_CompletionMinMessagesLabel);
         widgetFactory.paintBordersFor(parent);
         if(completionMinMessagesExpression == null) {
             completionMinMessagesExpression = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
         } 
-        String initValueExpression = completionMinMessagesExpression.getPropertyValue().isEmpty() ? "/default/expression" : completionMinMessagesExpression.getPropertyValue();
+        String initValueExpression = completionMinMessagesExpression.getPropertyValue().isEmpty() ? "" : completionMinMessagesExpression.getPropertyValue();
         completionMinMessagesText = widgetFactory.createText(parent, initValueExpression);
         completionMinMessagesText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
         widgetFactory.paintBordersFor(parent);
@@ -1629,13 +1629,13 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
         return parent;
     }
 
-    protected Composite createCorrelationExpressionWidget(FormToolkit widgetFactory, Composite parent) {
+    protected Composite createCorrelationExpressionWidget(FormToolkit widgetFactory, final Composite parent) {
         Control correlationExpressionLabel = createDescription(parent, EsbViewsRepository.AggregateMediator.Properties.correlationExpression, EsbMessages.AggregateMediatorPropertiesEditionPart_CorrelationExpressionLabel);
         widgetFactory.paintBordersFor(parent);
         if(correlationExpression == null) {
             correlationExpression = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
         } 
-        String initValueExpression = correlationExpression.getPropertyValue().isEmpty() ? "/default/expression" : correlationExpression.getPropertyValue();
+        String initValueExpression = correlationExpression.getPropertyValue().isEmpty() ? "" : correlationExpression.getPropertyValue();
         correlationExpressionText = widgetFactory.createText(parent, initValueExpression);
         correlationExpressionText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
         widgetFactory.paintBordersFor(parent);

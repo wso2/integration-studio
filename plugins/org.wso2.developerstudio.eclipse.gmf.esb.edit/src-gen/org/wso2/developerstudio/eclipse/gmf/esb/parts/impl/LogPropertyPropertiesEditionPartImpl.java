@@ -502,7 +502,7 @@ public class LogPropertyPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * @generated NOT
 	 */
-	protected Composite createPropertyExpressionText(Composite parent) {
+	protected Composite createPropertyExpressionText(final Composite parent) {
 		Control propertyExpressionTextLabel = createDescription(parent,
 				EsbViewsRepository.LogProperty.Properties.propertyExpression,
 				EsbMessages.LogPropertyPropertiesEditionPart_PropertyExpressionLabel);

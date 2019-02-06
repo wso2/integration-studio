@@ -3490,7 +3490,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
             view.layout(true, true);
         }
 	    
-	protected Composite createOnError(FormToolkit widgetFactory, Composite parent) {
+	protected Composite createOnError(FormToolkit widgetFactory, final Composite parent) {
         Control onErrorLabel = createDescription(parent, EsbViewsRepository.ProxyService.Basic.onError,
                 EsbMessages.ProxyServicePropertiesEditionPart_OnErrorLabel);
         widgetFactory.paintBordersFor(parent);
@@ -3539,7 +3539,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
         return parent;
     }
 	
-	 protected Composite createFaultSequenceKey(FormToolkit widgetFactory, Composite parent) {
+	 protected Composite createFaultSequenceKey(FormToolkit widgetFactory, final Composite parent) {
 	        Control sequenceKeyLabel = createDescription(parent, EsbViewsRepository.ProxyService.FaultSequence.faultSequenceKey,
 	                EsbMessages.ProxyServicePropertiesEditionPart_FaultSequenceKeyLabel);
 	        widgetFactory.paintBordersFor(parent);
@@ -3588,7 +3588,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	        return parent;
 	    }
 	 
-	 protected Composite createFaultSequenceOnError(FormToolkit widgetFactory, Composite parent) {
+	 protected Composite createFaultSequenceOnError(FormToolkit widgetFactory, final Composite parent) {
 	        Control onErrorLabel = createDescription(parent, EsbViewsRepository.ProxyService.FaultSequence.faultSequenceOnError,
 	                EsbMessages.ProxyServicePropertiesEditionPart_FaultSequenceOnErrorLabel);
 	        widgetFactory.paintBordersFor(parent);
@@ -3637,7 +3637,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	        return parent;
 	    }
 	 
-	 protected Composite createEndpointKey(FormToolkit widgetFactory, Composite parent) {
+	 protected Composite createEndpointKey(FormToolkit widgetFactory, final Composite parent) {
 	        Control endpointKeyLabel = createDescription(parent, EsbViewsRepository.ProxyService.Endpoint.endpointKey,
 	                EsbMessages.ProxyServicePropertiesEditionPart_EndpointKeyLabel);
 	        widgetFactory.paintBordersFor(parent);
@@ -3686,7 +3686,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	        return parent;
 	    }
 	 
-	 protected Composite createInSequenceKey(FormToolkit widgetFactory, Composite parent) {
+	 protected Composite createInSequenceKey(FormToolkit widgetFactory, final Composite parent) {
 	        Control sequenceKeyLabel = createDescription(parent, EsbViewsRepository.ProxyService.InSequence.inSequenceKey,
 	                EsbMessages.ProxyServicePropertiesEditionPart_InSequenceKeyLabel);
 	        widgetFactory.paintBordersFor(parent);
@@ -3735,7 +3735,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	        return parent;
 	    }
 	 
-	 protected Composite createInSequenceOnError(FormToolkit widgetFactory, Composite parent) {
+	 protected Composite createInSequenceOnError(FormToolkit widgetFactory, final Composite parent) {
 	        Control onErrorLabel = createDescription(parent, EsbViewsRepository.ProxyService.InSequence.inSequenceOnError,
 	                EsbMessages.ProxyServicePropertiesEditionPart_InSequenceOnErrorLabel);
 	        widgetFactory.paintBordersFor(parent);
@@ -3784,7 +3784,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	        return parent;
 	    }
 
-	 protected Composite createOutSequenceKey(FormToolkit widgetFactory, Composite parent) {
+	 protected Composite createOutSequenceKey(FormToolkit widgetFactory, final Composite parent) {
 	        Control sequenceKeyLabel = createDescription(parent, EsbViewsRepository.ProxyService.OutSequence.outSequenceKey,
 	                EsbMessages.ProxyServicePropertiesEditionPart_OutSequenceKeyLabel);
 	        widgetFactory.paintBordersFor(parent);
@@ -3833,7 +3833,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	        return parent;
 	    }
 	 
-	 protected Composite createOutSequenceOnError(FormToolkit widgetFactory, Composite parent) {
+	 protected Composite createOutSequenceOnError(FormToolkit widgetFactory, final Composite parent) {
 	        Control onErrorLabel = createDescription(parent, EsbViewsRepository.ProxyService.OutSequence.outSequenceOnError,
 	                EsbMessages.ProxyServicePropertiesEditionPart_OutSequenceOnErrorLabel);
 	        widgetFactory.paintBordersFor(parent);
@@ -3882,7 +3882,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	        return parent;
 	    }
 	 
-	 protected Composite createWsdlKey(FormToolkit widgetFactory, Composite parent) {
+	 protected Composite createWsdlKey(FormToolkit widgetFactory, final Composite parent) {
 	        Control sequenceKeyLabel = createDescription(parent, EsbViewsRepository.ProxyService.Wsdl.wsdlKey,
 	                EsbMessages.ProxyServicePropertiesEditionPart_WsdlKeyLabel);
 	        widgetFactory.paintBordersFor(parent);
@@ -3931,7 +3931,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	        return parent;
 	    }
 	 
-	 protected Composite createWsdlEndpoint(FormToolkit widgetFactory, Composite parent) {
+	 protected Composite createWsdlEndpoint(FormToolkit widgetFactory, final Composite parent) {
 	        Control sequenceKeyLabel = createDescription(parent, EsbViewsRepository.ProxyService.Wsdl.wsdlEndpoint,
 	                EsbMessages.ProxyServicePropertiesEditionPart_WsdlEndpointLabel);
 	        widgetFactory.paintBordersFor(parent);

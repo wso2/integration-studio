@@ -450,7 +450,7 @@ public class ValidateSchemaPropertiesEditionPartImpl extends CompositeProperties
 
 
 	// Start of user code additional methods
-    protected Composite createDynamicSchemaKeyWidget(Composite parent) {
+    protected Composite createDynamicSchemaKeyWidget(final Composite parent) {
         Control itemLabel = createDescription(parent, EsbViewsRepository.ValidateSchema.Properties.dynamicSchemaKey, EsbMessages.ValidateSchemaPropertiesEditionPart_DynamicSchemaKeyLabel);
         dynamicSchemaKeyText = SWTUtils.createScrollableText(parent, SWT.BORDER);
         GridData parameterExpressionData = new GridData(GridData.FILL_HORIZONTAL);

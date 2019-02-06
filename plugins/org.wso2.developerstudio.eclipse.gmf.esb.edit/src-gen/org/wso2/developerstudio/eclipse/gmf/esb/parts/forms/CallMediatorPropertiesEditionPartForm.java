@@ -909,7 +909,7 @@ public class CallMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
         return parent;
     }
 
-    protected Composite createEndpointXPathWidget(FormToolkit widgetFactory, Composite parent) {
+    protected Composite createEndpointXPathWidget(FormToolkit widgetFactory, final Composite parent) {
         Control endpointXPathLabel = createDescription(parent, EsbViewsRepository.CallMediator.Properties.endpointXpath, EsbMessages.CallMediatorPropertiesEditionPart_EndpointXpathLabel);
         widgetFactory.paintBordersFor(parent);
         if(endpointXPath == null) {

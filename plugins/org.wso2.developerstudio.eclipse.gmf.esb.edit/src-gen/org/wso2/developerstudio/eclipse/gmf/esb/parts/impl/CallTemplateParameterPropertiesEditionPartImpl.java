@@ -473,7 +473,7 @@ public class CallTemplateParameterPropertiesEditionPartImpl extends CompositePro
 
 
 	// Start of user code additional methods
-	protected Composite createParameterExpressionWidget(Composite parent) {
+	protected Composite createParameterExpressionWidget(final Composite parent) {
         Control parameterExpressionLabel = createDescription(parent, EsbViewsRepository.CallTemplateParameter.Properties.parameterExpression, EsbMessages.CallTemplateParameterPropertiesEditionPart_ParameterExpressionLabel);
         parameterExpressionText = SWTUtils.createScrollableText(parent, SWT.BORDER);
         GridData parameterExpressionData = new GridData(GridData.FILL_HORIZONTAL);

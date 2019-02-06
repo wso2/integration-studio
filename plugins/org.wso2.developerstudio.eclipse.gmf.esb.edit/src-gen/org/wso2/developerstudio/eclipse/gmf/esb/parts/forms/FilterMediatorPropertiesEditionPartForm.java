@@ -733,14 +733,14 @@ public class FilterMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	}
 
 	// Start of user code additional methods
-    protected Composite createSourceWidget(FormToolkit widgetFactory, Composite parent) {
+    protected Composite createSourceWidget(FormToolkit widgetFactory, final Composite parent) {
         Control itemLabel = createDescription(parent, EsbViewsRepository.FilterMediator.Properties.source,
                 EsbMessages.FilterMediatorPropertiesEditionPart_SourceLabel);
         widgetFactory.paintBordersFor(parent);
         if (source == null) {
             source = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
         }
-        String initValueExpression = source.getPropertyValue().isEmpty() ? "/default/expression"
+        String initValueExpression = source.getPropertyValue().isEmpty() ? ""
                 : source.getPropertyValue();
         sourceText = widgetFactory.createText(parent, initValueExpression);
         sourceText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
@@ -784,14 +784,14 @@ public class FilterMediatorPropertiesEditionPartForm extends SectionPropertiesEd
         return parent;
     }
 
-    protected Composite createXPathWidget(FormToolkit widgetFactory, Composite parent) {
+    protected Composite createXPathWidget(FormToolkit widgetFactory, final Composite parent) {
         Control itemLabel = createDescription(parent, EsbViewsRepository.FilterMediator.Properties.xPath,
                 EsbMessages.FilterMediatorPropertiesEditionPart_XPathLabel);
         widgetFactory.paintBordersFor(parent);
         if (xPath == null) {
             xPath = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
         }
-        String initValueExpression = xPath.getPropertyValue().isEmpty() ? "/default/expression"
+        String initValueExpression = xPath.getPropertyValue().isEmpty() ? ""
                 : xPath.getPropertyValue();
         xPathText = widgetFactory.createText(parent, initValueExpression);
         xPathText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);

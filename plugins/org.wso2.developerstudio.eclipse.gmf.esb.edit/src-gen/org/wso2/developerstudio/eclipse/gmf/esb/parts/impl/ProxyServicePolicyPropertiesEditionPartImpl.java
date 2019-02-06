@@ -172,7 +172,7 @@ public class ProxyServicePolicyPropertiesEditionPartImpl extends CompositeProper
 	}
 
 	// Start of user code additional methods
-	protected Composite createPolicyKey(Composite parent) {
+	protected Composite createPolicyKey(final Composite parent) {
         Control policyKeyLabel = createDescription(parent, EsbViewsRepository.ProxyServicePolicy.Properties.policyKey,
                 EsbMessages.ProxyServicePolicyPropertiesEditionPart_PolicyKeyLabel);
 

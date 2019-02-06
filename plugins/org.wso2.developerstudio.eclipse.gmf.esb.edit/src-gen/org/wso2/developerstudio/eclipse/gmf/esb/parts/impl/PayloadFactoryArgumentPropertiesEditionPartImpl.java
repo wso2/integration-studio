@@ -554,7 +554,7 @@ public class PayloadFactoryArgumentPropertiesEditionPartImpl extends CompositePr
         view.layout(true, true);
 	}
 	
-	protected Composite createArgumentExpression(Composite parent) {
+	protected Composite createArgumentExpression(final Composite parent) {
 		Control argumentExpressionLabel = createDescription(parent, EsbViewsRepository.PayloadFactoryArgument.Properties.argumentExpression, EsbMessages.PayloadFactoryArgumentPropertiesEditionPart_ArgumentExpressionLabel);
 
         if (argumentExpression == null) {

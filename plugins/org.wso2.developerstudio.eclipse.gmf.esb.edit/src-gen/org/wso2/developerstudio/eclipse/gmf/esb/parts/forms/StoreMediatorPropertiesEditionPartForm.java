@@ -871,7 +871,7 @@ public class StoreMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
         return parent;
     }
     
-    protected Composite createExpressionWidget(FormToolkit widgetFactory, Composite parent) {
+    protected Composite createExpressionWidget(FormToolkit widgetFactory, final Composite parent) {
         Control expressionPathLabel = createDescription(parent, EsbViewsRepository.StoreMediator.Properties.expression,
                 EsbMessages.StoreMediatorPropertiesEditionPart_ExpressionLabel);
         widgetFactory.paintBordersFor(parent);

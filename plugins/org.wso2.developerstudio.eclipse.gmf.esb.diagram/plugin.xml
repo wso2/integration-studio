@@ -305,7 +305,7 @@
       </page>
    </extension>
 
-   <!--extension point="org.eclipse.ui.views.properties.tabbed.propertyContributor" id="prop-contrib">
+   <extension point="org.eclipse.ui.views.properties.tabbed.propertyContributor" id="prop-contrib">
       <?gmfgen generated="true"?>
       <propertyContributor
             contributorId="org.wso2.developerstudio.eclipse.gmf.esb.diagram"
@@ -366,7 +366,7 @@
             <input type="org.wso2.developerstudio.eclipse.gmf.esb.diagram.navigator.EsbAbstractNavigatorItem"/>
          </propertySection>
       </propertySections>
-   </extension-->
+   </extension>
 
    <extension point="org.eclipse.gmf.runtime.diagram.core.viewProviders" id="view-provider">
       <?gmfgen generated="true"?>

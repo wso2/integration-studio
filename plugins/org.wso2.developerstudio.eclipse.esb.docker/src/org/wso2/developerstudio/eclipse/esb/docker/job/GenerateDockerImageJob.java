@@ -20,6 +20,7 @@ package org.wso2.developerstudio.eclipse.esb.docker.job;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 
@@ -29,6 +30,11 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.MessageBox;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.PlatformUI;
 import org.osgi.framework.Bundle;
 import org.wso2.developerstudio.eclipse.esb.docker.Activator;
 import org.wso2.developerstudio.eclipse.esb.docker.model.MicroIntegratorDockerModel;
@@ -87,7 +93,9 @@ public class GenerateDockerImageJob extends Job {
             File initFile = null;
 
             try {
-                initFile = new File(FileLocator.resolve(fileURL).toURI());
+                URL resolvedFileURL = FileLocator.toFileURL(fileURL);
+                URI resolvedURI = new URI(resolvedFileURL.getProtocol(), resolvedFileURL.getPath(), null);
+                initFile = new File(resolvedURI);
             } catch (URISyntaxException | IOException e) {
                 log.error(DockerGenConstants.ErrorMessages.DOCKER_IMAGE_CREATION_FAILED_MSG, e);
             }
@@ -126,7 +134,10 @@ public class GenerateDockerImageJob extends Job {
             monitor.worked(20);
 
         } catch (Exception e) {
-            log.error("Error occured while generating docker image.", e);
+            log.error(DockerGenConstants.ErrorMessages.DOCKER_IMAGE_CREATION_FAILED_TITLE, e);
+            showMessageBox(DockerGenConstants.ErrorMessages.DOCKER_IMAGE_CREATION_FAILED_TITLE,
+                    DockerGenConstants.ErrorMessages.DOCKER_IMAGE_CREATION_INTERNAL_ERROR_MSG, SWT.ICON_ERROR);
+
             operationText = e.getMessage();
             monitor.beginTask(operationText, 100);
             monitor.worked(0);
@@ -137,6 +148,26 @@ public class GenerateDockerImageJob extends Job {
         monitor.done();
 
         return Status.OK_STATUS;
+    }
+
+    private void showMessageBox(String title, String message, int style) {
+
+        new Thread(new Runnable() {
+            public void run() {
+                Display.getDefault().asyncExec(new Runnable() {
+                    public void run() {
+                        Display display = PlatformUI.getWorkbench().getDisplay();
+                        Shell shell = display.getActiveShell();
+
+                        MessageBox exportMsg = new MessageBox(shell, style);
+                        exportMsg.setText(title);
+                        exportMsg.setMessage(message);
+
+                        exportMsg.open();
+                    }
+                });
+            }
+        }).start();
     }
 
     public String getDockerDirectory() {

@@ -2388,6 +2388,24 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v8U_JnEei6boXzpRIfnA" name="initAxis2ClientOptions" views="_E7wl0vJnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//CalloutMediator/initAxis2ClientOptions"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_miQIECoAEem3mqG1om_1aA" name="addressEndpoint" views="_tQnpECn2Eem3mqG1om_1aA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//CalloutMediator/AddressEndpoint"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_uQDhQCoAEem3mqG1om_1aA" name="payloadMessageXpath" views="_3z4McCn2Eem3mqG1om_1aA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//CalloutMediator/payloadMessageXpath"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_41KewCoAEem3mqG1om_1aA" name="resultMessageXpath" views="_DRxzICn3Eem3mqG1om_1aA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//CalloutMediator/resultMessageXpath"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_BLsE0CoBEem3mqG1om_1aA" name="policyKey" views="_5hq5ECn4Eem3mqG1om_1aA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//CalloutMediator/policyKey"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_fOH9sCoBEem3mqG1om_1aA" name="outboundPolicyKey" views="__XakcCn4Eem3mqG1om_1aA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//CalloutMediator/outboundPolicyKey"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_rchNMCoBEem3mqG1om_1aA" name="inboundPolicyKey" views="_oHvt8Cn6Eem3mqG1om_1aA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//CalloutMediator/inboundPolicyKey"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//CalloutMediator"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_E7v8VPJnEei6boXzpRIfnA" name="CalloutMediatorInputConnector" views="_E7wl0_JnEei6boXzpRIfnA">
@@ -8303,7 +8321,7 @@
         </elements>
       </views>
       <views xmi:id="_E7wlwfJnEei6boXzpRIfnA" name="CalloutMediator">
-        <elements xsi:type="eef-views:Container" xmi:id="_E7wlwvJnEei6boXzpRIfnA" name="properties">
+        <elements xsi:type="eef-views:Container" xmi:id="_E7wlwvJnEei6boXzpRIfnA" name="Misc">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wlw_JnEei6boXzpRIfnA" name="description">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
@@ -8314,45 +8332,63 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wlxfJnEei6boXzpRIfnA" name="Reverse">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
           </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wlxvJnEei6boXzpRIfnA" name="serviceURL">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wlzfJnEei6boXzpRIfnA" name="passHeaders">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
+          </elements>
+        </elements>
+        <elements xsi:type="eef-views:Container" xmi:id="_JdDUgCn1Eem3mqG1om_1aA" name="Service">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wlzvJnEei6boXzpRIfnA" name="EndpointType">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wlx_JnEei6boXzpRIfnA" name="soapAction">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
-          </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wlyPJnEei6boXzpRIfnA" name="pathToAxis2xml">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wlyfJnEei6boXzpRIfnA" name="pathToAxis2Repository">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wlyPJnEei6boXzpRIfnA" name="pathToAxis2xml">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wl0vJnEei6boXzpRIfnA" name="initAxis2ClientOptions">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wlxvJnEei6boXzpRIfnA" name="serviceURL">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_tQnpECn2Eem3mqG1om_1aA" name="Address Endpoint"/>
+        </elements>
+        <elements xsi:type="eef-views:Container" xmi:id="_U4wi0Cn1Eem3mqG1om_1aA" name="Source">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wlyvJnEei6boXzpRIfnA" name="payloadType">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
           </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wlz_JnEei6boXzpRIfnA" name="payloadProperty">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_3z4McCn2Eem3mqG1om_1aA" name="Payload Message Xpath"/>
+        </elements>
+        <elements xsi:type="eef-views:Container" xmi:id="_i9x8wCn1Eem3mqG1om_1aA" name="Target">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wly_JnEei6boXzpRIfnA" name="resultType">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wlzPJnEei6boXzpRIfnA" name="resultContextProperty">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wlzfJnEei6boXzpRIfnA" name="passHeaders">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
-          </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wlzvJnEei6boXzpRIfnA" name="EndpointType">
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_DRxzICn3Eem3mqG1om_1aA" name="Result Message Xpath"/>
+        </elements>
+        <elements xsi:type="eef-views:Container" xmi:id="_qSuKACn1Eem3mqG1om_1aA" name="WS">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wl0fJnEei6boXzpRIfnA" name="policies">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
-          </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wlz_JnEei6boXzpRIfnA" name="payloadProperty">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wl0PJnEei6boXzpRIfnA" name="securityType">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
           </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wl0fJnEei6boXzpRIfnA" name="policies">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
-          </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wl0vJnEei6boXzpRIfnA" name="initAxis2ClientOptions">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
-          </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_5hq5ECn4Eem3mqG1om_1aA" name="Policy Key"/>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="__XakcCn4Eem3mqG1om_1aA" name="Outbound Policy Key"/>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_oHvt8Cn6Eem3mqG1om_1aA" name="Inbound Policy Key"/>
         </elements>
       </views>
       <views xmi:id="_E7wl0_JnEei6boXzpRIfnA" name="CalloutMediatorInputConnector">

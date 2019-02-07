@@ -65,6 +65,10 @@ import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
 public class RespondMediatorPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, RespondMediatorPropertiesEditionPart {
 
 	protected Text description;
+	protected Button reverse;
+	protected Text commentsList;
+	protected Button editCommentsList;
+	protected EList commentsListList;
 
 
 
@@ -102,9 +106,10 @@ public class RespondMediatorPropertiesEditionPartImpl extends CompositePropertie
 	 */
 	public void createControls(Composite view) { 
 		CompositionSequence respondMediatorStep = new BindingCompositionSequence(propertiesEditionComponent);
-		respondMediatorStep
-			.addStep(EsbViewsRepository.RespondMediator.Properties.class)
-			.addStep(EsbViewsRepository.RespondMediator.Properties.description);
+		CompositionStep propertiesStep = respondMediatorStep.addStep(EsbViewsRepository.RespondMediator.Properties.class);
+		propertiesStep.addStep(EsbViewsRepository.RespondMediator.Properties.description);
+		propertiesStep.addStep(EsbViewsRepository.RespondMediator.Properties.reverse);
+		propertiesStep.addStep(EsbViewsRepository.RespondMediator.Properties.commentsList);
 		
 		
 		composer = new PartComposer(respondMediatorStep) {
@@ -116,6 +121,12 @@ public class RespondMediatorPropertiesEditionPartImpl extends CompositePropertie
 				}
 				if (key == EsbViewsRepository.RespondMediator.Properties.description) {
 					return createDescriptionText(parent);
+				}
+				if (key == EsbViewsRepository.RespondMediator.Properties.reverse) {
+					return createReverseCheckbox(parent);
+				}
+				if (key == EsbViewsRepository.RespondMediator.Properties.commentsList) {
+					return createCommentsListMultiValuedEditor(parent);
 				}
 				return parent;
 			}
@@ -187,6 +198,79 @@ public class RespondMediatorPropertiesEditionPartImpl extends CompositePropertie
 		return parent;
 	}
 
+	
+	protected Composite createReverseCheckbox(Composite parent) {
+		reverse = new Button(parent, SWT.CHECK);
+		reverse.setText(getDescription(EsbViewsRepository.RespondMediator.Properties.reverse, EsbMessages.RespondMediatorPropertiesEditionPart_ReverseLabel));
+		reverse.addSelectionListener(new SelectionAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 *
+			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 * 	
+			 */
+			public void widgetSelected(SelectionEvent e) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(RespondMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.RespondMediator.Properties.reverse, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(reverse.getSelection())));
+			}
+
+		});
+		GridData reverseData = new GridData(GridData.FILL_HORIZONTAL);
+		reverseData.horizontalSpan = 2;
+		reverse.setLayoutData(reverseData);
+		EditingUtils.setID(reverse, EsbViewsRepository.RespondMediator.Properties.reverse);
+		EditingUtils.setEEFtype(reverse, "eef::Checkbox"); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.RespondMediator.Properties.reverse, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createReverseCheckbox
+
+		// End of user code
+		return parent;
+	}
+
+	protected Composite createCommentsListMultiValuedEditor(Composite parent) {
+		commentsList = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.READ_ONLY);
+		GridData commentsListData = new GridData(GridData.FILL_HORIZONTAL);
+		commentsListData.horizontalSpan = 2;
+		commentsList.setLayoutData(commentsListData);
+		EditingUtils.setID(commentsList, EsbViewsRepository.RespondMediator.Properties.commentsList);
+		EditingUtils.setEEFtype(commentsList, "eef::MultiValuedEditor::field"); //$NON-NLS-1$
+		editCommentsList = new Button(parent, SWT.NONE);
+		editCommentsList.setText(getDescription(EsbViewsRepository.RespondMediator.Properties.commentsList, EsbMessages.RespondMediatorPropertiesEditionPart_CommentsListLabel));
+		GridData editCommentsListData = new GridData();
+		editCommentsList.setLayoutData(editCommentsListData);
+		editCommentsList.addSelectionListener(new SelectionAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 */
+			public void widgetSelected(SelectionEvent e) {
+				EEFFeatureEditorDialog dialog = new EEFFeatureEditorDialog(
+						commentsList.getShell(), "RespondMediator", new AdapterFactoryLabelProvider(adapterFactory), //$NON-NLS-1$
+						commentsListList, EsbPackage.eINSTANCE.getEsbElement_CommentsList().getEType(), null,
+						false, true, 
+						null, null);
+				if (dialog.open() == Window.OK) {
+					commentsListList = dialog.getResult();
+					if (commentsListList == null) {
+						commentsListList = new BasicEList();
+					}
+					commentsList.setText(commentsListList.toString());
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(RespondMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.RespondMediator.Properties.commentsList, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new BasicEList(commentsListList)));
+					setHasChanged(true);
+				}
+			}
+		});
+		EditingUtils.setID(editCommentsList, EsbViewsRepository.RespondMediator.Properties.commentsList);
+		EditingUtils.setEEFtype(editCommentsList, "eef::MultiValuedEditor::browsebutton"); //$NON-NLS-1$
+		// Start of user code for createCommentsListMultiValuedEditor
+
+		// End of user code
+		return parent;
+	}
+
 
 	/**
 	 * {@inheritDoc}
@@ -230,6 +314,89 @@ public class RespondMediatorPropertiesEditionPartImpl extends CompositePropertie
 			description.setEnabled(true);
 		}	
 		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.RespondMediatorPropertiesEditionPart#getReverse()
+	 * 
+	 */
+	public Boolean getReverse() {
+		return Boolean.valueOf(reverse.getSelection());
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.RespondMediatorPropertiesEditionPart#setReverse(Boolean newValue)
+	 * 
+	 */
+	public void setReverse(Boolean newValue) {
+		if (newValue != null) {
+			reverse.setSelection(newValue.booleanValue());
+		} else {
+			reverse.setSelection(false);
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.RespondMediator.Properties.reverse);
+		if (eefElementEditorReadOnlyState && reverse.isEnabled()) {
+			reverse.setEnabled(false);
+			reverse.setToolTipText(EsbMessages.RespondMediator_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !reverse.isEnabled()) {
+			reverse.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.RespondMediatorPropertiesEditionPart#getCommentsList()
+	 * 
+	 */
+	public EList getCommentsList() {
+		return commentsListList;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.RespondMediatorPropertiesEditionPart#setCommentsList(EList newValue)
+	 * 
+	 */
+	public void setCommentsList(EList newValue) {
+		commentsListList = newValue;
+		if (newValue != null) {
+			commentsList.setText(commentsListList.toString());
+		} else {
+			commentsList.setText(""); //$NON-NLS-1$
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.RespondMediator.Properties.commentsList);
+		if (eefElementEditorReadOnlyState && commentsList.isEnabled()) {
+			commentsList.setEnabled(false);
+			commentsList.setToolTipText(EsbMessages.RespondMediator_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !commentsList.isEnabled()) {
+			commentsList.setEnabled(true);
+		}	
+		
+	}
+
+	public void addToCommentsList(Object newValue) {
+		commentsListList.add(newValue);
+		if (newValue != null) {
+			commentsList.setText(commentsListList.toString());
+		} else {
+			commentsList.setText(""); //$NON-NLS-1$
+		}
+	}
+
+	public void removeToCommentsList(Object newValue) {
+		commentsListList.remove(newValue);
+		if (newValue != null) {
+			commentsList.setText(commentsListList.toString());
+		} else {
+			commentsList.setText(""); //$NON-NLS-1$
+		}
 	}
 
 

@@ -1107,7 +1107,7 @@ public class XSLTMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
         return parent;
     }
 	
-	protected Composite createSourceXpathWidget(FormToolkit widgetFactory, Composite parent) {
+	protected Composite createSourceXpathWidget(FormToolkit widgetFactory, final Composite parent) {
         Control expressionPathLabel = createDescription(parent, EsbViewsRepository.XSLTMediator.Properties.sourceXpath,
                 EsbMessages.XSLTMediatorPropertiesEditionPart_SourceXpathLabel);
         widgetFactory.paintBordersFor(parent);
@@ -1152,7 +1152,7 @@ public class XSLTMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
         return parent;
     }
 	
-    protected Composite createXSLTDynamicSchemaKeyWidget(FormToolkit widgetFactory, Composite parent) {
+    protected Composite createXSLTDynamicSchemaKeyWidget(FormToolkit widgetFactory, final Composite parent) {
         Control expressionPathLabel = createDescription(parent, EsbViewsRepository.XSLTMediator.Properties.xSLTDynamicSchemaKey,
                 EsbMessages.XSLTMediatorPropertiesEditionPart_XSLTDynamicSchemaKeyLabel);
         widgetFactory.paintBordersFor(parent);

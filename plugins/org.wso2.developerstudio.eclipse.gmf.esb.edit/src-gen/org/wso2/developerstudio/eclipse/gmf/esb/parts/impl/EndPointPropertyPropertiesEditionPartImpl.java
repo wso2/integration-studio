@@ -569,7 +569,7 @@ public class EndPointPropertyPropertiesEditionPartImpl extends CompositeProperti
         view.layout(true, true);
 	}
 	
-	protected Composite createValueExpression(Composite parent) {
+	protected Composite createValueExpression(final Composite parent) {
         Control valueExpressionLabel = createDescription(parent, EsbViewsRepository.EndPointProperty.Properties.valueExpression,
                 EsbMessages.EndPointPropertyPropertiesEditionPart_ValueExpressionLabel);
 

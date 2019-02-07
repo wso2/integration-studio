@@ -604,88 +604,129 @@ public class EsbViewsRepository {
 	 * 
 	 */
 	public static class DefaultEndPoint {
-		public static class Properties {
+		public static class Basic {
 	
 			
-			public static String description = "esb::DefaultEndPoint::properties::description";
+			public static String commentsList = "esb::DefaultEndPoint::Basic::commentsList";
 			
 			
-			public static String commentsList = "esb::DefaultEndPoint::properties::commentsList";
+			public static String endPointName = "esb::DefaultEndPoint::Basic::endPointName";
 			
 			
-			public static String endPointName = "esb::DefaultEndPoint::properties::endPointName";
+			public static String anonymous = "esb::DefaultEndPoint::Basic::anonymous";
 			
 			
-			public static String anonymous = "esb::DefaultEndPoint::properties::anonymous";
+			public static String inLine = "esb::DefaultEndPoint::Basic::InLine";
 			
 			
-			public static String inLine = "esb::DefaultEndPoint::properties::InLine";
+			public static String duplicate = "esb::DefaultEndPoint::Basic::duplicate";
 			
 			
-			public static String duplicate = "esb::DefaultEndPoint::properties::duplicate";
+			public static String reversed = "esb::DefaultEndPoint::Basic::reversed";
 			
 			
-			public static String properties_ = "esb::DefaultEndPoint::properties::properties_";
+			public static String format = "esb::DefaultEndPoint::Basic::format";
 			
 			
-			public static String reversed = "esb::DefaultEndPoint::properties::reversed";
+			public static String templateParameters = "esb::DefaultEndPoint::Basic::templateParameters";
 			
 			
-			public static String reliableMessagingEnabled = "esb::DefaultEndPoint::properties::reliableMessagingEnabled";
+			public static String statisticsEnabled = "esb::DefaultEndPoint::Basic::statisticsEnabled";
 			
 			
-			public static String securityEnabled = "esb::DefaultEndPoint::properties::securityEnabled";
+			public static String traceEnabled = "esb::DefaultEndPoint::Basic::traceEnabled";
+			
+	
+		}
+	
+		public static class EndpointSuspendState {
+	
+			
+			public static String suspendErrorCodes = "esb::DefaultEndPoint::Endpoint Suspend State::suspendErrorCodes";
 			
 			
-			public static String addressingEnabled = "esb::DefaultEndPoint::properties::addressingEnabled";
+			public static String suspendInitialDuration = "esb::DefaultEndPoint::Endpoint Suspend State::suspendInitialDuration";
 			
 			
-			public static String addressingVersion = "esb::DefaultEndPoint::properties::addressingVersion";
+			public static String suspendMaximumDuration = "esb::DefaultEndPoint::Endpoint Suspend State::suspendMaximumDuration";
 			
 			
-			public static String addressingSeparateListener = "esb::DefaultEndPoint::properties::addressingSeparateListener";
+			public static String suspendProgressionFactor = "esb::DefaultEndPoint::Endpoint Suspend State::suspendProgressionFactor";
+			
+	
+		}
+	
+		public static class EndpointTimeoutState {
+	
+			
+			public static String retryErrorCodes = "esb::DefaultEndPoint::Endpoint Timeout State::retryErrorCodes";
 			
 			
-			public static String timeOutDuration = "esb::DefaultEndPoint::properties::timeOutDuration";
+			public static String retryCount = "esb::DefaultEndPoint::Endpoint Timeout State::retryCount";
 			
 			
-			public static String timeOutAction = "esb::DefaultEndPoint::properties::timeOutAction";
+			public static String retryDelay = "esb::DefaultEndPoint::Endpoint Timeout State::retryDelay";
+			
+	
+		}
+	
+		public static class Misc {
+	
+			
+			public static String properties = "esb::DefaultEndPoint::Misc::properties";
 			
 			
-			public static String retryErrorCodes = "esb::DefaultEndPoint::properties::retryErrorCodes";
+			public static String optimize = "esb::DefaultEndPoint::Misc::optimize";
 			
 			
-			public static String retryCount = "esb::DefaultEndPoint::properties::retryCount";
+			public static String description = "esb::DefaultEndPoint::Misc::description";
+			
+	
+		}
+	
+		public static class QoS {
+	
+			
+			public static String reliableMessagingEnabled = "esb::DefaultEndPoint::QoS::reliableMessagingEnabled";
 			
 			
-			public static String retryDelay = "esb::DefaultEndPoint::properties::retryDelay";
+			public static String securityEnabled = "esb::DefaultEndPoint::QoS::securityEnabled";
 			
 			
-			public static String suspendErrorCodes = "esb::DefaultEndPoint::properties::suspendErrorCodes";
+			public static String addressingEnabled = "esb::DefaultEndPoint::QoS::addressingEnabled";
 			
 			
-			public static String suspendInitialDuration = "esb::DefaultEndPoint::properties::suspendInitialDuration";
+			public static String addressingSeparateListener = "esb::DefaultEndPoint::QoS::addressingSeparateListener";
 			
 			
-			public static String suspendMaximumDuration = "esb::DefaultEndPoint::properties::suspendMaximumDuration";
+			public static String addressingVersion = "esb::DefaultEndPoint::QoS::addressingVersion";
+			
+			// Start of user code for Reliable Messaging Policy ElementEditor key
+			public static String reliableMessagingPolicy = "esb::AddressEndPoint::QoS::Reliable Messaging Policy";
+			// End of user code
+			
+			// Start of user code for Security Policy ElementEditor key
+			public static String securityPolicy = "esb::AddressEndPoint::QoS::Security Policy";
+			// End of user code
+			
+			// Start of user code for Inbound Policy ElementEditor key
+			public static String inboundPolicy = "esb::AddressEndPoint::QoS::Inbound Policy";
+			// End of user code
+			
+			// Start of user code for Outbound Policy ElementEditor key
+			public static String outboundPolicy = "esb::AddressEndPoint::QoS::Outbound Policy";
+			// End of user code
+			
+	
+		}
+	
+		public static class Timeout {
+	
+			
+			public static String timeOutDuration = "esb::DefaultEndPoint::Timeout::timeOutDuration";
 			
 			
-			public static String suspendProgressionFactor = "esb::DefaultEndPoint::properties::suspendProgressionFactor";
-			
-			
-			public static String format = "esb::DefaultEndPoint::properties::format";
-			
-			
-			public static String optimize = "esb::DefaultEndPoint::properties::optimize";
-			
-			
-			public static String templateParameters = "esb::DefaultEndPoint::properties::templateParameters";
-			
-			
-			public static String statisticsEnabled = "esb::DefaultEndPoint::properties::statisticsEnabled";
-			
-			
-			public static String traceEnabled = "esb::DefaultEndPoint::properties::traceEnabled";
+			public static String timeOutAction = "esb::DefaultEndPoint::Timeout::timeOutAction";
 			
 	
 		}
@@ -4094,55 +4135,99 @@ public class EsbViewsRepository {
 	 * 
 	 */
 	public static class CalloutMediator {
-		public static class Properties {
+		public static class Misc {
 	
 			
-			public static String description = "esb::CalloutMediator::properties::description";
+			public static String description = "esb::CalloutMediator::Misc::description";
 			
 			
-			public static String commentsList = "esb::CalloutMediator::properties::commentsList";
+			public static String commentsList = "esb::CalloutMediator::Misc::commentsList";
 			
 			
-			public static String reverse = "esb::CalloutMediator::properties::Reverse";
+			public static String reverse = "esb::CalloutMediator::Misc::Reverse";
 			
 			
-			public static String serviceURL = "esb::CalloutMediator::properties::serviceURL";
+			public static String passHeaders = "esb::CalloutMediator::Misc::passHeaders";
+			
+	
+		}
+	
+		public static class Service {
+	
+			
+			public static String endpointType = "esb::CalloutMediator::Service::EndpointType";
 			
 			
-			public static String soapAction = "esb::CalloutMediator::properties::soapAction";
+			public static String soapAction = "esb::CalloutMediator::Service::soapAction";
 			
 			
-			public static String pathToAxis2xml = "esb::CalloutMediator::properties::pathToAxis2xml";
+			public static String pathToAxis2Repository = "esb::CalloutMediator::Service::pathToAxis2Repository";
 			
 			
-			public static String pathToAxis2Repository = "esb::CalloutMediator::properties::pathToAxis2Repository";
+			public static String pathToAxis2xml = "esb::CalloutMediator::Service::pathToAxis2xml";
 			
 			
-			public static String payloadType = "esb::CalloutMediator::properties::payloadType";
+			public static String initAxis2ClientOptions = "esb::CalloutMediator::Service::initAxis2ClientOptions";
 			
 			
-			public static String resultType = "esb::CalloutMediator::properties::resultType";
+			public static String serviceURL = "esb::CalloutMediator::Service::serviceURL";
+			
+			// Start of user code for Address Endpoint ElementEditor key
+			public static String addressEndpoint = "esb::CalloutMediator::Service::Address Endpoint";
+			// End of user code
+			
+	
+		}
+	
+		public static class Source {
+	
+			
+			public static String payloadType = "esb::CalloutMediator::Source::payloadType";
 			
 			
-			public static String resultContextProperty = "esb::CalloutMediator::properties::resultContextProperty";
+			public static String payloadProperty = "esb::CalloutMediator::Source::payloadProperty";
+			
+			// Start of user code for Payload Message Xpath ElementEditor key
+			public static String payloadMessageXpath = "esb::CalloutMediator::Source::Payload Message Xpath";
+			// End of user code
+			
+	
+		}
+	
+		public static class Target {
+	
+			
+			public static String resultType = "esb::CalloutMediator::Target::resultType";
 			
 			
-			public static String passHeaders = "esb::CalloutMediator::properties::passHeaders";
+			public static String resultContextProperty = "esb::CalloutMediator::Target::resultContextProperty";
+			
+			// Start of user code for Result Message Xpath ElementEditor key
+			public static String resultMessageXpath = "esb::CalloutMediator::Target::Result Message Xpath";
+			// End of user code
+			
+	
+		}
+	
+		public static class WS {
+	
+			
+			public static String policies = "esb::CalloutMediator::WS::policies";
 			
 			
-			public static String endpointType = "esb::CalloutMediator::properties::EndpointType";
+			public static String securityType = "esb::CalloutMediator::WS::securityType";
 			
+			// Start of user code for Policy Key ElementEditor key
+			public static String policyKey = "esb::CalloutMediator::WS::Policy Key";
+			// End of user code
 			
-			public static String payloadProperty = "esb::CalloutMediator::properties::payloadProperty";
+			// Start of user code for Outbound Policy Key ElementEditor key
+			public static String outboundPolicyKey = "esb::CalloutMediator::WS::Outbound Policy Key";
+			// End of user code
 			
-			
-			public static String securityType = "esb::CalloutMediator::properties::securityType";
-			
-			
-			public static String policies = "esb::CalloutMediator::properties::policies";
-			
-			
-			public static String initAxis2ClientOptions = "esb::CalloutMediator::properties::initAxis2ClientOptions";
+			// Start of user code for Inbound Policy Key ElementEditor key
+			public static String inboundPolicyKey = "esb::CalloutMediator::WS::Inbound Policy Key";
+			// End of user code
 			
 	
 		}

@@ -473,7 +473,7 @@ public class XSLTPropertyPropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
      * @generated NOT
      */
-    protected Composite createPropertyExpressionText(Composite parent) {
+    protected Composite createPropertyExpressionText(final Composite parent) {
         Control propertyExpressionTextLabel = createDescription(parent,
                 EsbViewsRepository.XSLTProperty.Properties.propertyExpression,
                 EsbMessages.XSLTPropertyPropertiesEditionPart_PropertyExpressionLabel);

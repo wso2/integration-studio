@@ -1168,7 +1168,7 @@ public class IterateMediatorPropertiesEditionPartForm extends SectionPropertiesE
     }
 
     // Start of user code additional methods
-    protected Composite createIterateExpressionWidget(FormToolkit widgetFactory, Composite parent) {
+    protected Composite createIterateExpressionWidget(FormToolkit widgetFactory, final Composite parent) {
         Control iterateExpressionLabel = createDescription(parent,
                 EsbViewsRepository.IterateMediator.Properties.iterateExpression,
                 EsbMessages.IterateMediatorPropertiesEditionPart_IterateExpressionLabel);
@@ -1269,7 +1269,7 @@ public class IterateMediatorPropertiesEditionPartForm extends SectionPropertiesE
         return parent;
     }
 
-    protected Composite createAttachPathWidget(FormToolkit widgetFactory, Composite parent) {
+    protected Composite createAttachPathWidget(FormToolkit widgetFactory, final Composite parent) {
         Control attachPathLabel = createDescription(parent, EsbViewsRepository.IterateMediator.Properties.attachPath,
                 EsbMessages.IterateMediatorPropertiesEditionPart_AttachPathLabel);
         widgetFactory.paintBordersFor(parent);

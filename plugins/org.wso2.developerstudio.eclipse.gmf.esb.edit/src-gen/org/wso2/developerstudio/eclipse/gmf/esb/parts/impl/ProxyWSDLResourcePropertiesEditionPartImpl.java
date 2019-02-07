@@ -264,7 +264,7 @@ public class ProxyWSDLResourcePropertiesEditionPartImpl extends CompositePropert
 	}
 
 	// Start of user code additional methods
-	protected Composite createKeyText(Composite parent) {
+	protected Composite createKeyText(final Composite parent) {
         Control keyLabel = createDescription(parent, EsbViewsRepository.ProxyWSDLResource.Properties.key,
                 EsbMessages.ProxyWSDLResourcePropertiesEditionPart_KeyLabel);
 

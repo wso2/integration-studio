@@ -1962,7 +1962,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
         validate();
     }
 	
-	 protected Composite createInSequenceKey(FormToolkit widgetFactory, Composite parent) {
+	 protected Composite createInSequenceKey(FormToolkit widgetFactory, final Composite parent) {
 	        Control inSequenceKeyLabel = createDescription(parent, EsbViewsRepository.APIResource.InSequence.inSequenceKey,
 	                EsbMessages.APIResourcePropertiesEditionPart_InSequenceKeyLabel);
 	        widgetFactory.paintBordersFor(parent);
@@ -2011,7 +2011,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 	        return parent;
 	    }
 	 
-	 protected Composite createOutSequenceKey(FormToolkit widgetFactory, Composite parent) {
+	 protected Composite createOutSequenceKey(FormToolkit widgetFactory, final Composite parent) {
          Control outSequenceKeyLabel = createDescription(parent, EsbViewsRepository.APIResource.OutSequence.outSequenceKey,
                  EsbMessages.APIResourcePropertiesEditionPart_OutSequenceKeyLabel);
          widgetFactory.paintBordersFor(parent);
@@ -2060,7 +2060,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
          return parent;
      }
 	 
-	 protected Composite createFaultSequenceKey(FormToolkit widgetFactory, Composite parent) {
+	 protected Composite createFaultSequenceKey(FormToolkit widgetFactory, final Composite parent) {
          Control sequenceKeyLabel = createDescription(parent, EsbViewsRepository.APIResource.FaultSequence.faultSequenceKey,
                  EsbMessages.APIResourcePropertiesEditionPart_FaultSequenceKeyLabel);
          widgetFactory.paintBordersFor(parent);

@@ -1672,7 +1672,7 @@ public class CacheMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
     }
 
     // Start of user code additional methods
-    protected Composite createSequenceKey(FormToolkit widgetFactory, Composite parent) {
+    protected Composite createSequenceKey(FormToolkit widgetFactory, final Composite parent) {
         Control sequenceKeyLabel = createDescription(parent, EsbViewsRepository.CacheMediator.OnCacheHit.sequenceKey,
                 EsbMessages.CacheMediatorPropertiesEditionPart_SequenceTypeLabel);
         widgetFactory.paintBordersFor(parent);

@@ -750,7 +750,7 @@ public class PayloadFactoryMediatorPropertiesEditionPartForm extends SectionProp
 	}
 
 	// Start of user code additional methods
-    protected Composite createPayloadKey(FormToolkit widgetFactory, Composite parent) {
+    protected Composite createPayloadKey(FormToolkit widgetFactory, final Composite parent) {
         Control payloadKeyLabel = createDescription(parent, EsbViewsRepository.PayloadFactoryMediator.Properties.payloadKey, EsbMessages.PayloadFactoryMediatorPropertiesEditionPart_PayloadKeyLabel);
         widgetFactory.paintBordersFor(parent);
         if(payloadKey == null) {

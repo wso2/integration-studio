@@ -10,8 +10,6 @@ import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.Enumerator;
 
-import org.eclipse.emf.ecore.util.EcoreAdapterFactory;
-
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;

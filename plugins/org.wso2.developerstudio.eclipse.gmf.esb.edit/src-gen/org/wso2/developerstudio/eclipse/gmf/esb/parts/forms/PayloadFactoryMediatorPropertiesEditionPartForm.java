@@ -7,13 +7,9 @@ package org.wso2.developerstudio.eclipse.gmf.esb.parts.forms;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.emf.common.util.BasicEList;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.Enumerator;
 
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.emf.ecore.util.EcoreAdapterFactory;
 
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 
@@ -37,7 +33,6 @@ import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
 
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 
-import org.eclipse.emf.eef.runtime.ui.widgets.EEFFeatureEditorDialog;
 import org.eclipse.emf.eef.runtime.ui.widgets.EMFComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
@@ -52,8 +47,6 @@ import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.ViewerFilter;
-
-import org.eclipse.jface.window.Window;
 
 import org.eclipse.swt.SWT;
 

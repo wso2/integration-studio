@@ -3,7 +3,7 @@
  */
 package org.wso2.developerstudio.eclipse.gmf.esb.parts.impl;
 
-import java.util.ArrayList;
+
 
 // Start of user code for imports
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
@@ -47,7 +47,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.parts.ProxyWSDLResourcePropertie
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
 import org.wso2.developerstudio.esb.form.editors.article.providers.NamedEntityDescriptor;
-
+import java.util.ArrayList;
 // End of user code
 
 /**

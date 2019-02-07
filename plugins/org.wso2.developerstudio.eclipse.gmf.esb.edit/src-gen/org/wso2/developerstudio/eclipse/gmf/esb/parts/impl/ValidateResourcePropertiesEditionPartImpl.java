@@ -3,7 +3,7 @@
  */
 package org.wso2.developerstudio.eclipse.gmf.esb.parts.impl;
 
-import java.util.ArrayList;
+
 
 // Start of user code for imports
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
@@ -50,7 +50,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFNameSpacedProper
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
 import org.wso2.developerstudio.esb.form.editors.article.providers.NamedEntityDescriptor;
-
+import java.util.ArrayList;
 // End of user code
 
 /**
@@ -129,11 +129,9 @@ public class ValidateResourcePropertiesEditionPartImpl extends CompositeProperti
 		composer.compose(view);
 	}
 
-
-
     /**
-	 * 
-	 */
+     * @generated NOT
+     */
 	protected Composite createPropertiesGroup(Composite parent) {
 		propertiesGroup = new Group(parent, SWT.NONE);
 		propertiesGroup.setText(EsbMessages.ValidateResourcePropertiesEditionPart_PropertiesGroupLabel);
@@ -146,7 +144,9 @@ public class ValidateResourcePropertiesEditionPartImpl extends CompositeProperti
 		return propertiesGroup;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createLocationText(Composite parent) {
 		createDescription(parent, EsbViewsRepository.ValidateResource.Properties.location, EsbMessages.ValidateResourcePropertiesEditionPart_LocationLabel);
 		location = SWTUtils.createScrollableText(parent, SWT.BORDER);
@@ -319,8 +319,6 @@ public class ValidateResourcePropertiesEditionPartImpl extends CompositeProperti
 	        return parent;
 	    }
 	// End of user code
-
-
 
 
 }

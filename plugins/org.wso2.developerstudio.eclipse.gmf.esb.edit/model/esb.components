@@ -5532,6 +5532,9 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7wiG_JnEei6boXzpRIfnA" name="transportRabbitMqConsumerQos" views="_E7xMjvJnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//InboundEndpoint/transportRabbitMqConsumerQos"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_MMQOQCoMEemGX_vpHGO25w" name="transportRabbitMqConsumerQosKey" views="_D-I9UCoMEemGX_vpHGO25w">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//InboundEndpoint/transportRabbitMqConsumerQosKey"/>
+        </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7wiHPJnEei6boXzpRIfnA" name="transportRabbitMqConsumerQosType" views="_E7xMj_JnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//InboundEndpoint/transportRabbitMqConsumerQosType"/>
         </properties>
@@ -11785,6 +11788,7 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xMjvJnEei6boXzpRIfnA" name="transportRabbitMqConsumerQos">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_D-I9UCoMEemGX_vpHGO25w" name="transportRabbitMqConsumerQosKey"/>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xMj_JnEei6boXzpRIfnA" name="transportRabbitMqConsumerQosType">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
           </elements>

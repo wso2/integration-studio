@@ -3223,6 +3223,9 @@ public interface InboundEndpointPropertiesEditionPart {
 
 
 
+	// Start of user code for transportRabbitMqConsumerQosKey specific getters and setters declaration
+	
+	// End of user code
 
 	/**
 	 * Returns the internationalized title text.

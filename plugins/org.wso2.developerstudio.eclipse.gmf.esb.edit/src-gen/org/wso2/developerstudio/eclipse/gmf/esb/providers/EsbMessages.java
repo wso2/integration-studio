@@ -7768,6 +7768,9 @@ public class EsbMessages extends NLS {
 	public static String InboundEndpointPropertiesEditionPart_TransportRabbitMqConsumerQosLabel;
 
 	
+	public static String InboundEndpointPropertiesEditionPart_TransportRabbitMqConsumerQosKeyLabel;
+
+	
 	public static String InboundEndpointPropertiesEditionPart_TransportRabbitMqConsumerQosTypeLabel;
 
 	

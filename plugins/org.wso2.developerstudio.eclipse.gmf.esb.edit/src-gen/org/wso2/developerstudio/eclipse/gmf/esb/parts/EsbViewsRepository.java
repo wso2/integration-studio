@@ -205,7 +205,7 @@ public class EsbViewsRepository {
 			public static String transports = "esb::ProxyService::basic::transports";
 			
 			// Start of user code for onError ElementEditor key
-			public static String onError = "esb::ProxyService::basic::onError";
+			public static String onError = "esb::Sequences::properties::onError";
 			// End of user code
 			
 	
@@ -235,7 +235,7 @@ public class EsbViewsRepository {
 			public static String faultSequenceName = "esb::ProxyService::faultSequence::faultSequenceName";
 			
 			// Start of user code for faultSequenceKey ElementEditor key
-			public static String faultSequenceKey = "esb::ProxyService::faultSequence::faultSequenceKey";
+			public static String faultSequenceKey = "esb::APIResource::faultSequence::faultSequenceKey";
 			// End of user code
 			
 			// Start of user code for faultSequenceOnError ElementEditor key
@@ -254,7 +254,7 @@ public class EsbViewsRepository {
 			public static String inSequenceName = "esb::ProxyService::inSequence::inSequenceName";
 			
 			// Start of user code for inSequenceKey ElementEditor key
-			public static String inSequenceKey = "esb::ProxyService::inSequence::inSequenceKey";
+			public static String inSequenceKey = "esb::APIResource::inSequence::inSequenceKey";
 			// End of user code
 			
 			// Start of user code for inSequenceOnError ElementEditor key
@@ -273,7 +273,7 @@ public class EsbViewsRepository {
 			public static String outSequenceName = "esb::ProxyService::outSequence::outSequenceName";
 			
 			// Start of user code for outSequenceKey ElementEditor key
-			public static String outSequenceKey = "esb::ProxyService::outSequence::outSequenceKey";
+			public static String outSequenceKey = "esb::APIResource::outSequence::outSequenceKey";
 			// End of user code
 			
 			// Start of user code for outSequenceOnError ElementEditor key
@@ -1543,7 +1543,7 @@ public class EsbViewsRepository {
 			public static String propertyValue = "esb::LogProperty::properties::propertyValue";
 			
 			// Start of user code for propertyExpression ElementEditor key
-			public static String propertyExpression = "esb::LogProperty::properties::propertyExpression";
+			public static String propertyExpression = "esb::XSLTProperty::properties::propertyExpression";
 			// End of user code
 			
 	
@@ -3281,7 +3281,7 @@ public class EsbViewsRepository {
 			public static String sequenceType = "esb::AggregateMediator::onComplete::sequenceType";
 			
 			// Start of user code for sequenceKey ElementEditor key
-			public static String sequenceKey = "esb::AggregateMediator::properties::sequenceKey";
+			public static String sequenceKey = "esb::CacheMediator::OnCacheHit::sequenceKey";
 			// End of user code
 			
 	
@@ -8931,6 +8931,10 @@ public class EsbViewsRepository {
 			
 			
 			public static String transportRabbitMqConsumerQos = "esb::InboundEndpoint::properties::transportRabbitMqConsumerQos";
+			
+			// Start of user code for transportRabbitMqConsumerQosKey ElementEditor key
+			public static String transportRabbitMqConsumerQosKey = "esb::InboundEndpoint::properties::transportRabbitMqConsumerQosKey";
+			// End of user code
 			
 			
 			public static String transportRabbitMqConsumerQosType = "esb::InboundEndpoint::properties::transportRabbitMqConsumerQosType";

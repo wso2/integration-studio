@@ -303,6 +303,10 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	protected Text wssSslProtocols;
 	protected Text wssSslCipherSuites;
 	protected Text transportRabbitMqConsumerQos;
+	// Start of user code  for transportRabbitMqConsumerQosKey widgets declarations
+	
+	// End of user code
+
 	protected EMFComboViewer transportRabbitMqConsumerQosType;
 	protected Text transportJMSDBUrl;
 
@@ -556,6 +560,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 		propertiesStep.addStep(EsbViewsRepository.InboundEndpoint.Properties.wssSslProtocols);
 		propertiesStep.addStep(EsbViewsRepository.InboundEndpoint.Properties.wssSslCipherSuites);
 		propertiesStep.addStep(EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqConsumerQos);
+		propertiesStep.addStep(EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqConsumerQosKey);
 		propertiesStep.addStep(EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqConsumerQosType);
 		propertiesStep.addStep(EsbViewsRepository.InboundEndpoint.Properties.transportJMSDBUrl);
 		
@@ -1206,6 +1211,9 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 				if (key == EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqConsumerQos) {
 					return createTransportRabbitMqConsumerQosText(parent);
 				}
+				// Start of user code for transportRabbitMqConsumerQosKey addToPart creation
+				
+				// End of user code
 				if (key == EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqConsumerQosType) {
 					return createTransportRabbitMqConsumerQosTypeEMFComboViewer(parent);
 				}
@@ -18155,6 +18163,10 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 
 
 
+
+	// Start of user code for transportRabbitMqConsumerQosKey specific getters and setters implementation
+	
+	// End of user code
 
 	/**
 	 * {@inheritDoc}

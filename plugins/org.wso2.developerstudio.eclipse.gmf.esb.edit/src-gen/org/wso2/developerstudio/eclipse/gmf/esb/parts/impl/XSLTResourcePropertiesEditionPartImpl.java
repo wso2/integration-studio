@@ -3,7 +3,6 @@
  */
 package org.wso2.developerstudio.eclipse.gmf.esb.parts.impl;
 
-import java.util.ArrayList;
 
 // Start of user code for imports
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
@@ -52,6 +51,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFRegistryKeyPrope
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
 import org.wso2.developerstudio.esb.form.editors.article.providers.NamedEntityDescriptor;
 
+import java.util.ArrayList;
 // End of user code
 
 /**
@@ -132,7 +132,7 @@ public class XSLTResourcePropertiesEditionPartImpl extends CompositePropertiesEd
 		composer.compose(view);
 	}
 
-    /**
+	/**
      * @generated NOT
      */
 	protected Composite createPropertiesGroup(Composite parent) {
@@ -147,9 +147,9 @@ public class XSLTResourcePropertiesEditionPartImpl extends CompositePropertiesEd
 		return propertiesGroup;
 	}
 
-    /**
+	/**
      * @generated NOT
-     */	
+     */
 	protected Composite createLocationText(Composite parent) {
 		Control locationTextLabel = createDescription(parent, EsbViewsRepository.XSLTResource.Properties.location, EsbMessages.XSLTResourcePropertiesEditionPart_LocationLabel);
 		location = SWTUtils.createScrollableText(parent, SWT.BORDER);
@@ -274,7 +274,7 @@ public class XSLTResourcePropertiesEditionPartImpl extends CompositePropertiesEd
 	}
 
 	// Start of user code additional methods
-	   /**
+	/**
      * @generated NOT
      */
     protected Composite createRegistryKeyText(Composite parent) {
@@ -373,8 +373,6 @@ public class XSLTResourcePropertiesEditionPartImpl extends CompositePropertiesEd
 
             }
         });
-
-        // End of user code
         return parent;
     }
     
@@ -393,7 +391,8 @@ public class XSLTResourcePropertiesEditionPartImpl extends CompositePropertiesEd
         view.layout(true, true);
         view.pack();
     }
-	// End of user code
+
+        // End of user code
 
 
 }

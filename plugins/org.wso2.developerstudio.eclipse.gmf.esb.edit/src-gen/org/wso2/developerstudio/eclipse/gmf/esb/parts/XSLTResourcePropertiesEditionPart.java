@@ -3,12 +3,10 @@
  */
 package org.wso2.developerstudio.eclipse.gmf.esb.parts;
 
-import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
+
 
 // Start of user code for imports
-
-
-
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 // End of user code
 
 /**

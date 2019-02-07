@@ -153,8 +153,8 @@ public class XSLTPropertyPropertiesEditionPartImpl extends CompositePropertiesEd
 	}
 
 	/**
-	 *@generated NOT
-	 */
+     * @generated NOT
+     */
 	protected Composite createPropertiesGroup(Composite parent) {
 		propertiesGroup = new Group(parent, SWT.NONE);
 		propertiesGroup.setText(EsbMessages.XSLTPropertyPropertiesEditionPart_PropertiesGroupLabel);
@@ -167,7 +167,7 @@ public class XSLTPropertyPropertiesEditionPartImpl extends CompositePropertiesEd
 		return propertiesGroup;
 	}
 
-    /**
+	/**
      * @generated NOT
      */
 	protected Composite createPropertyNameText(Composite parent) {
@@ -218,7 +218,7 @@ public class XSLTPropertyPropertiesEditionPartImpl extends CompositePropertiesEd
 		return parent;
 	}
 
-    /**
+	/**
      * @generated NOT
      */
 	protected Composite createPropertyValueTypeEMFComboViewer(Composite parent) {
@@ -254,7 +254,7 @@ public class XSLTPropertyPropertiesEditionPartImpl extends CompositePropertiesEd
              *  
              */
             public void selectionChanged(SelectionChangedEvent event) {
-                validate();
+                refresh();
             }
 
         });
@@ -263,7 +263,7 @@ public class XSLTPropertyPropertiesEditionPartImpl extends CompositePropertiesEd
 		return parent;
 	}
 
-    /**
+	/**
      * @generated NOT
      */
 	protected Composite createPropertyValueText(Composite parent) {
@@ -571,32 +571,30 @@ public class XSLTPropertyPropertiesEditionPartImpl extends CompositePropertiesEd
 
             }
         });
-
-        // End of user code
         return parent;
     }
-    
-    @Override
-    public void refresh() {
-        super.refresh();
-        validate();
-    }
-
-    public void validate() {
-        EEFPropertyViewUtil eu = new EEFPropertyViewUtil(view);
-        eu.clearElements(new Composite[] { propertiesGroup });
-        eu.showEntry(propertyValueTypeElements, false);
-        eu.showEntry(propertyNameElements, false);
-        if (getPropertyValueType().getName().equals("EXPRESSION")) {
-            eu.showEntry(propertyExpressionElements, false);
-        } else {
-            eu.showEntry(properyValueElements, false);
+        @Override
+        public void refresh() {
+            super.refresh();
+            validate();
         }
-        
-        view.layout(true, true);
-        view.pack();
-    }
-	// End of user code
+    
+        public void validate() {
+            EEFPropertyViewUtil eu = new EEFPropertyViewUtil(view);
+            eu.clearElements(new Composite[] { propertiesGroup });
+            eu.showEntry(propertyValueTypeElements, false);
+            eu.showEntry(propertyNameElements, false);
+            if (getPropertyValueType().getName().equals("EXPRESSION")) {
+                eu.showEntry(propertyExpressionElements, false);
+            } else {
+                eu.showEntry(properyValueElements, false);
+            }
+            
+            view.layout(true, true);
+            view.pack();
+        }
+
+        // End of user code
 
 
 }

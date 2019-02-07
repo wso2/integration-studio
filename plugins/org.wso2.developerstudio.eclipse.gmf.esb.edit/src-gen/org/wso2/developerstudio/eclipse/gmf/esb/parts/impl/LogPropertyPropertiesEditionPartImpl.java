@@ -3,8 +3,6 @@
  */
 package org.wso2.developerstudio.eclipse.gmf.esb.parts.impl;
 
-import javax.annotation.Generated;
-
 // Start of user code for imports
 import org.eclipse.emf.common.util.Enumerator;
 
@@ -31,7 +29,6 @@ import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 
 import org.eclipse.emf.eef.runtime.ui.widgets.EMFComboViewer;
-import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 
 import org.eclipse.jface.viewers.ArrayContentProvider;
@@ -54,15 +51,13 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
-import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.LogPropertyPropertiesEditionPart;
-import org.wso2.developerstudio.eclipse.gmf.esb.parts.forms.AggregateMediatorPropertiesEditionPartForm;
-import org.wso2.developerstudio.eclipse.gmf.esb.parts.forms.LogPropertyPropertiesEditionPartForm;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFNameSpacedPropertyEditorDialog;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
 
 // End of user code
@@ -158,10 +153,10 @@ public class LogPropertyPropertiesEditionPartImpl extends CompositePropertiesEdi
 	}
 
 	/**
-	 * 
-	 */
+     * @generated NOT
+     */
 	protected Composite createPropertiesGroup(Composite parent) {
-		Group propertiesGroup = new Group(parent, SWT.NONE);
+		propertiesGroup = new Group(parent, SWT.NONE);
 		propertiesGroup.setText(EsbMessages.LogPropertyPropertiesEditionPart_PropertiesGroupLabel);
 		GridData propertiesGroupData = new GridData(GridData.FILL_HORIZONTAL);
 		propertiesGroupData.horizontalSpan = 3;
@@ -242,6 +237,7 @@ public class LogPropertyPropertiesEditionPartImpl extends CompositePropertiesEdi
 			 * 	
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
+			    validate();
 				if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LogPropertyPropertiesEditionPartImpl.this, EsbViewsRepository.LogProperty.Properties.propertyValueType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getPropertyValueType()));
 			}
@@ -252,19 +248,6 @@ public class LogPropertyPropertiesEditionPartImpl extends CompositePropertiesEdi
 		// Start of user code for createPropertyValueTypeEMFComboViewer
 		propertyValueTypeElements = new Control[] { propertyValueTypeLabel, propertyValueType.getCombo(),
 				propertyValueTypeHelp };
-		propertyValueType.addSelectionChangedListener(new ISelectionChangedListener() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-			 * 
-			 */
-			public void selectionChanged(SelectionChangedEvent event) {
-				validate();
-			}
-
-		});
 		// End of user code
 		return parent;
 	}
@@ -457,21 +440,25 @@ public class LogPropertyPropertiesEditionPartImpl extends CompositePropertiesEdi
 	}
 
 	public void validate() {
-		clearElements();
-		showEntry(propertyNameElements, false);
-		showEntry(propertyValueTypeElements, false);
+	    
+	    EEFPropertyViewUtil eu = new EEFPropertyViewUtil(view);
+        eu.clearElements(new Composite[] { propertiesGroup });
+        
+        eu.showEntry(propertyNameElements, false);
+        eu.showEntry(propertyValueTypeElements, false);
 
-		if (getPropertyValueType().getName().equals(PropertyValueType.EXPRESSION.getName())) {
-			showEntry(propertyExpressionTypeElements, false);
-		} else if (getPropertyValueType().getName().equals(PropertyValueType.LITERAL.getName())) {
-			showEntry(propertyValueElements, false);
-		}
+        if (getPropertyValueType() != null && getPropertyValueType().getName().equals(PropertyValueType.LITERAL.getName())) {
+            eu.showEntry(propertyValueElements, false);
+        } else if (getPropertyValueType() != null && getPropertyValueType().getName().equals(PropertyValueType.EXPRESSION.getName())) {
+            eu.showEntry(propertyExpressionTypeElements, false);
 
-		view.layout(true, true);
+        }
+        
+        view.layout(true, true);
 	}
 
 	public void clearElements() {
-		hideEntry(propertiesGroup.getChildren(), false);
+	    hideEntry(propertiesGroup.getChildren(), false);
 	}
 
 	public void hideEntry(Control controls[], boolean layout) {
@@ -490,9 +477,10 @@ public class LogPropertyPropertiesEditionPartImpl extends CompositePropertiesEdi
 
 	public void showEntry(Control controls[], boolean layout) {
 		for (Control control : controls) {
-			// null check and type check
-			((GridData) control.getLayoutData()).exclude = false;
-			control.setVisible(true);
+			if (control != null && control.getLayoutData() instanceof GridData) {
+			    ((GridData) control.getLayoutData()).exclude = false;
+			    control.setVisible(true);
+			}
 		}
 		if (layout) {
 			view.layout(true, true);
@@ -506,62 +494,12 @@ public class LogPropertyPropertiesEditionPartImpl extends CompositePropertiesEdi
 		Control propertyExpressionTextLabel = createDescription(parent,
 				EsbViewsRepository.LogProperty.Properties.propertyExpression,
 				EsbMessages.LogPropertyPropertiesEditionPart_PropertyExpressionLabel);
+		if (propertyExpression == null) {
+		    propertyExpression = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
+        } 
 		propertyExpressionText = SWTUtils.createScrollableText(parent, SWT.BORDER); // $NON-NLS-1$
-		propertyExpressionText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		GridData propertyValueData = new GridData(GridData.FILL_HORIZONTAL);
 		propertyExpressionText.setLayoutData(propertyValueData);
-
-		propertyExpressionText.addFocusListener(new FocusAdapter() {
-			/**
-			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null) {
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
-							LogPropertyPropertiesEditionPartImpl.this,
-							EsbViewsRepository.LogProperty.Properties.propertyExpression, PropertiesEditionEvent.COMMIT,
-							PropertiesEditionEvent.SET, null, propertyExpressionText.getText()));
-					propertiesEditionComponent
-							.firePropertiesChanged(new PropertiesEditionEvent(LogPropertyPropertiesEditionPartImpl.this,
-									EsbViewsRepository.LogProperty.Properties.propertyExpression,
-									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST, null,
-									propertyExpressionText.getText()));
-				}
-			}
-
-			/**
-			 * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
-			 */
-			@Override
-			public void focusGained(FocusEvent e) {
-				if (propertiesEditionComponent != null) {
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
-							LogPropertyPropertiesEditionPartImpl.this, null, PropertiesEditionEvent.FOCUS_CHANGED,
-							PropertiesEditionEvent.FOCUS_GAINED, null, null));
-				}
-			}
-		});
-		propertyExpressionText.addKeyListener(new KeyAdapter() {
-			/**
-			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(
-								new PropertiesEditionEvent(LogPropertyPropertiesEditionPartImpl.this,
-										EsbViewsRepository.LogProperty.Properties.propertyExpression,
-										PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
-										propertyExpressionText.getText()));
-				}
-			}
-		});
 		
 		EditingUtils.setID(propertyExpressionText, EsbViewsRepository.LogProperty.Properties.propertyExpression);
 		EditingUtils.setEEFtype(propertyExpressionText, "eef::Text"); //$NON-NLS-1$
@@ -580,17 +518,13 @@ public class LogPropertyPropertiesEditionPartImpl extends CompositePropertiesEdi
 
 			@Override
 			public void mouseDown(MouseEvent e) {
-				// TODO Auto-generated method stub
-				EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
-						SWT.NULL, propertyExpression);
-				// valueExpression.setPropertyValue(valueExpressionText.getText());
-				nspd.open();
-				propertyExpressionText.setText(propertyExpression.getPropertyValue());
-
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
-						LogPropertyPropertiesEditionPartImpl.this,
-						EsbViewsRepository.LogProperty.Properties.propertyExpression, PropertiesEditionEvent.COMMIT,
-						PropertiesEditionEvent.SET, null, propertyExpressionText.getText()));
+			    EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL, propertyExpression);
+                nspd.open();
+                propertyExpressionText.setText(propertyExpression.getPropertyValue());
+                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LogPropertyPropertiesEditionPartImpl.this, 
+                        EsbViewsRepository.LogProperty.Properties.propertyExpression, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET,
+                        null, getExpressionValue()));
+                
 			}
 
 			@Override

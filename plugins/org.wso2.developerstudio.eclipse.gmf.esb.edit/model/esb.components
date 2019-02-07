@@ -3168,6 +3168,12 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v9T_JnEei6boXzpRIfnA" name="description" views="_E7wnCfJnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//EsbElement/description"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_K5mjECqaEemxpMOKNt01xw" name="Reverse" views="_jW0x0CqYEemxpMOKNt01xw">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//Mediator/Reverse"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_PUgBECqaEemxpMOKNt01xw" name="commentsList" views="_3knrYCqZEemxpMOKNt01xw">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//EsbElement/commentsList"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//RespondMediator"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_E7v9UvJnEei6boXzpRIfnA" name="RespondMediatorInputConnector" views="_E7wnDPJnEei6boXzpRIfnA">
@@ -9262,6 +9268,12 @@
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wnCfJnEei6boXzpRIfnA" name="description">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_jW0x0CqYEemxpMOKNt01xw" name="Reverse">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_3knrYCqZEemxpMOKNt01xw" name="commentsList">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.3"/>
           </elements>
         </elements>
       </views>

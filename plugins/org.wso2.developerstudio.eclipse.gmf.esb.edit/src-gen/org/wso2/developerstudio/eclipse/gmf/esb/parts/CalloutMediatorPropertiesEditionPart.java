@@ -6,7 +6,8 @@ package org.wso2.developerstudio.eclipse.gmf.esb.parts;
 // Start of user code for imports
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.Enumerator;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 
 // End of user code
 
@@ -71,17 +72,38 @@ public interface CalloutMediatorPropertiesEditionPart {
 
 
 	/**
-	 * @return the serviceURL
+	 * @return the passHeaders
 	 * 
 	 */
-	public String getServiceURL();
+	public Boolean getPassHeaders();
 
 	/**
-	 * Defines a new serviceURL
-	 * @param newValue the new serviceURL to set
+	 * Defines a new passHeaders
+	 * @param newValue the new passHeaders to set
 	 * 
 	 */
-	public void setServiceURL(String newValue);
+	public void setPassHeaders(Boolean newValue);
+
+
+	/**
+	 * @return the EndpointType
+	 * 
+	 */
+	public Enumerator getEndpointType();
+
+	/**
+	 * Init the EndpointType
+	 * @param input the viewer input
+	 * @param current the current value
+	 */
+	public void initEndpointType(Object input, Enumerator current);
+
+	/**
+	 * Defines a new EndpointType
+	 * @param newValue the new EndpointType to set
+	 * 
+	 */
+	public void setEndpointType(Enumerator newValue);
 
 
 	/**
@@ -99,6 +121,20 @@ public interface CalloutMediatorPropertiesEditionPart {
 
 
 	/**
+	 * @return the pathToAxis2Repository
+	 * 
+	 */
+	public String getPathToAxis2Repository();
+
+	/**
+	 * Defines a new pathToAxis2Repository
+	 * @param newValue the new pathToAxis2Repository to set
+	 * 
+	 */
+	public void setPathToAxis2Repository(String newValue);
+
+
+	/**
 	 * @return the pathToAxis2xml
 	 * 
 	 */
@@ -113,17 +149,31 @@ public interface CalloutMediatorPropertiesEditionPart {
 
 
 	/**
-	 * @return the pathToAxis2Repository
+	 * @return the initAxis2ClientOptions
 	 * 
 	 */
-	public String getPathToAxis2Repository();
+	public Boolean getInitAxis2ClientOptions();
 
 	/**
-	 * Defines a new pathToAxis2Repository
-	 * @param newValue the new pathToAxis2Repository to set
+	 * Defines a new initAxis2ClientOptions
+	 * @param newValue the new initAxis2ClientOptions to set
 	 * 
 	 */
-	public void setPathToAxis2Repository(String newValue);
+	public void setInitAxis2ClientOptions(Boolean newValue);
+
+
+	/**
+	 * @return the serviceURL
+	 * 
+	 */
+	public String getServiceURL();
+
+	/**
+	 * Defines a new serviceURL
+	 * @param newValue the new serviceURL to set
+	 * 
+	 */
+	public void setServiceURL(String newValue);
 
 
 	/**
@@ -145,6 +195,20 @@ public interface CalloutMediatorPropertiesEditionPart {
 	 * 
 	 */
 	public void setPayloadType(Enumerator newValue);
+
+
+	/**
+	 * @return the payloadProperty
+	 * 
+	 */
+	public String getPayloadProperty();
+
+	/**
+	 * Defines a new payloadProperty
+	 * @param newValue the new payloadProperty to set
+	 * 
+	 */
+	public void setPayloadProperty(String newValue);
 
 
 	/**
@@ -183,52 +247,24 @@ public interface CalloutMediatorPropertiesEditionPart {
 
 
 	/**
-	 * @return the passHeaders
+	 * @return the policies
 	 * 
 	 */
-	public Boolean getPassHeaders();
+	public Enumerator getPolicies();
 
 	/**
-	 * Defines a new passHeaders
-	 * @param newValue the new passHeaders to set
-	 * 
-	 */
-	public void setPassHeaders(Boolean newValue);
-
-
-	/**
-	 * @return the EndpointType
-	 * 
-	 */
-	public Enumerator getEndpointType();
-
-	/**
-	 * Init the EndpointType
+	 * Init the policies
 	 * @param input the viewer input
 	 * @param current the current value
 	 */
-	public void initEndpointType(Object input, Enumerator current);
+	public void initPolicies(Object input, Enumerator current);
 
 	/**
-	 * Defines a new EndpointType
-	 * @param newValue the new EndpointType to set
+	 * Defines a new policies
+	 * @param newValue the new policies to set
 	 * 
 	 */
-	public void setEndpointType(Enumerator newValue);
-
-
-	/**
-	 * @return the payloadProperty
-	 * 
-	 */
-	public String getPayloadProperty();
-
-	/**
-	 * Defines a new payloadProperty
-	 * @param newValue the new payloadProperty to set
-	 * 
-	 */
-	public void setPayloadProperty(String newValue);
+	public void setPolicies(Enumerator newValue);
 
 
 	/**
@@ -252,43 +288,38 @@ public interface CalloutMediatorPropertiesEditionPart {
 	public void setSecurityType(Enumerator newValue);
 
 
-	/**
-	 * @return the policies
-	 * 
-	 */
-	public Enumerator getPolicies();
-
-	/**
-	 * Init the policies
-	 * @param input the viewer input
-	 * @param current the current value
-	 */
-	public void initPolicies(Object input, Enumerator current);
-
-	/**
-	 * Defines a new policies
-	 * @param newValue the new policies to set
-	 * 
-	 */
-	public void setPolicies(Enumerator newValue);
 
 
-	/**
-	 * @return the initAxis2ClientOptions
-	 * 
-	 */
-	public Boolean getInitAxis2ClientOptions();
-
-	/**
-	 * Defines a new initAxis2ClientOptions
-	 * @param newValue the new initAxis2ClientOptions to set
-	 * 
-	 */
-	public void setInitAxis2ClientOptions(Boolean newValue);
-
-
-
-
+	// Start of user code for Address Endpoint specific getters and setters declaration
+    public RegistryKeyProperty getAddressEndpoint();
+    
+    public void setAddressEndpoint(RegistryKeyProperty registryKeyProperty);
+	// End of user code
+	// Start of user code for Payload Message Xpath specific getters and setters declaration
+    public NamespacedProperty getPayloadMessageXpath();
+    
+    public void setPayloadMessageXpath(NamespacedProperty namespacedProperty);
+	// End of user code
+	// Start of user code for Result Message Xpath specific getters and setters declaration
+    public NamespacedProperty getResultMessageXpath();
+    
+    public void setResultMessageXpath(NamespacedProperty namespacedProperty);
+	// End of user code
+	// Start of user code for Policy Key specific getters and setters declaration
+    public RegistryKeyProperty getPolicyKey();
+    
+    public void setPolicyKey(RegistryKeyProperty registryKeyProperty);
+	// End of user code
+	// Start of user code for Outbound Policy Key specific getters and setters declaration
+    public RegistryKeyProperty getOutboundPolicyKey();
+    
+    public void setOutboundPolicyKey(RegistryKeyProperty registryKeyProperty);
+	// End of user code
+	// Start of user code for Inbound Policy Key specific getters and setters declaration
+    public RegistryKeyProperty getInboundPolicyKey();
+    
+    public void setInboundPolicyKey(RegistryKeyProperty registryKeyProperty);
+	// End of user code
 
 	/**
 	 * Returns the internationalized title text.

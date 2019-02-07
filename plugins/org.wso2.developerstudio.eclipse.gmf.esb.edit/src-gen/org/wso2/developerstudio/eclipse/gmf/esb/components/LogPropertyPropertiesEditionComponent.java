@@ -36,8 +36,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository.LogMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.LogPropertyPropertiesEditionPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.parts.impl.LogPropertyPropertiesEditionPartImpl;;
 
 
 // End of user code
@@ -100,6 +100,7 @@ public class LogPropertyPropertiesEditionComponent extends SinglePartPropertiesE
 			
 			
 			// Start of user code  for propertyExpression filter update
+			((LogPropertyPropertiesEditionPartImpl) editingPart).validate();
 			// End of user code
 			
 			// init values for referenced views

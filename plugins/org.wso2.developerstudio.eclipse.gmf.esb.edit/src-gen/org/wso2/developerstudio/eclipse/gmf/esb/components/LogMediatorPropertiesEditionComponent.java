@@ -4,15 +4,10 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.components;
 
 // Start of user code for imports
-import java.util.Iterator;
-import java.util.List;
-
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
-import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.Diagnostic;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.WrappedException;
 
 import org.eclipse.emf.ecore.EObject;
@@ -142,7 +137,6 @@ public class LogMediatorPropertiesEditionComponent extends SinglePartPropertiesE
 			}
 			
 			// init values for referenced views
-			
 			// init filters for referenced views
 			
 		}

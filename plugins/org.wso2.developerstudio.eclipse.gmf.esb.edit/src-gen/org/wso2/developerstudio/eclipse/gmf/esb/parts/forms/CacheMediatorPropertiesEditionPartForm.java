@@ -1768,8 +1768,11 @@ public class CacheMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
 
         } else {
             implementationSection.setVisible(false);
+            ((GridData) implementationSection.getLayoutData()).exclude = true;
             onCacheHitSection.setVisible(false);
+            ((GridData) onCacheHitSection.getLayoutData()).exclude = true;
             protocolSection.setVisible(false);
+            ((GridData) protocolSection.getLayoutData()).exclude = true;
 
         }
 

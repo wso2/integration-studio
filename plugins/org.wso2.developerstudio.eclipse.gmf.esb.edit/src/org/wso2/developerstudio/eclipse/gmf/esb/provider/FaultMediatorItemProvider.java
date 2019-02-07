@@ -504,15 +504,17 @@ public class FaultMediatorItemProvider extends MediatorItemProvider {
     }
 
     /**
-     * This returns FaultMediator.gif. <!-- begin-user-doc --> <!-- end-user-doc
+     * This returns FaultMediator.png. 
+     * <!-- begin-user-doc --> 
+     * <!-- end-user-doc
      * -->
      * 
-     * @generated
+     * @generated NNOT
      */
 
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/FaultMediator"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/FaultMediator.png"));
     }
 
     /**

@@ -5713,6 +5713,12 @@ public class EsbMessages extends NLS {
 	public static String RespondMediatorPropertiesEditionPart_DescriptionLabel;
 
 	
+	public static String RespondMediatorPropertiesEditionPart_ReverseLabel;
+
+	
+	public static String RespondMediatorPropertiesEditionPart_CommentsListLabel;
+
+	
 	public static String RespondMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;
 
 	

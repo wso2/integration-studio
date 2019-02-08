@@ -251,7 +251,7 @@ public class BAMMediatorPropertiesEditionPartForm extends SectionPropertiesEditi
 	 * @generated NOT
 	 */
 	protected Composite createCommentsListMultiValuedEditor(FormToolkit widgetFactory, Composite parent) {
-	    Control [] previousList = propertiesGroup.getChildren();
+	     Control [] previousList = propertiesGroup.getChildren();
 		commentsList = widgetFactory.createText(parent, "", SWT.READ_ONLY); //$NON-NLS-1$
 		GridData commentsListData = new GridData(GridData.FILL_HORIZONTAL);
 		commentsListData.horizontalSpan = 2;
@@ -290,7 +290,7 @@ public class BAMMediatorPropertiesEditionPartForm extends SectionPropertiesEditi
 		EditingUtils.setEEFtype(editCommentsList, "eef::MultiValuedEditor::browsebutton"); //$NON-NLS-1$
 		// Start of user code for createCommentsListMultiValuedEditor
 		Control [] newList = propertiesGroup.getChildren();
-	    commentListElements = EEFPropertyViewUtil.getTableElements(previousList, newList);
+	     commentListElements = EEFPropertyViewUtil.getTableElements(previousList, newList);
 		// End of user code
 		return parent;
 	}
@@ -299,7 +299,7 @@ public class BAMMediatorPropertiesEditionPartForm extends SectionPropertiesEditi
 	 * @generated NOT
 	 */
 	protected Composite createReverseCheckbox(FormToolkit widgetFactory, Composite parent) {
-	    Control [] previousList = propertiesGroup.getChildren();
+	   Control [] previousList = propertiesGroup.getChildren();
         reverse = widgetFactory.createButton(parent, getDescription(EsbViewsRepository.BAMMediator.Properties.reverse, EsbMessages.BAMMediatorPropertiesEditionPart_ReverseLabel), SWT.CHECK);
 		reverse.addSelectionListener(new SelectionAdapter() {
 

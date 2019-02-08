@@ -218,11 +218,7 @@ public class EEFNameSpacedPropertyEditorDialog extends Dialog {
      * Selected xpath.
      */
     private String selectedXpath;
-    
-    /**
-     * Content of the XML file loaded.
-     */
-    private String xmlFileContentStr;
+        
     
     /**
      * Inline XML input type radio button.
@@ -945,7 +941,7 @@ public class EEFNameSpacedPropertyEditorDialog extends Dialog {
                                             }
                                             
                                             // Get formatted XML content
-                                            xmlFileContentStr = xPathValidator.getFormattedXMLStringFromDoc(document);
+                                            final String xmlFileContentStr = xPathValidator.getFormattedXMLStringFromDoc(document);
                                             inlineXMLTextArea.setText(xmlFileContentStr);
                                             infoLabel.setText(TREE_VIEW_INFO_LABEL_TEXT);
                                             isCurrentXMLContentValid = true;
@@ -1142,7 +1138,7 @@ public class EEFNameSpacedPropertyEditorDialog extends Dialog {
                             monitor.beginTask("Parsing xml document...", IProgressMonitor.UNKNOWN);
 
                             try {
-                                Document document = xPathValidator.parseXML(xmlText);
+                                final Document document = xPathValidator.parseXML(xmlText);
                                 final Node rootNode = document.getDocumentElement();
 
                                 new UIJob(UI_JOB_ID) {

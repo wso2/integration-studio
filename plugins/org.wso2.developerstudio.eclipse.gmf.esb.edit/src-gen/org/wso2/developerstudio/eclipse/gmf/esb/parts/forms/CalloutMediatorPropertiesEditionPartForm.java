@@ -2062,7 +2062,7 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
 			 */
 			@Override
 			public void focusGained(FocusEvent e) {
-				EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
+				final EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
 						SWT.NULL, payloadMessageXpath);
 				// valueExpression.setPropertyValue(valueExpressionText.getText());
 				nspd.open();
@@ -2115,7 +2115,7 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
 			 */
 			@Override
 			public void focusGained(FocusEvent e) {
-				EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
+				final EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
 						SWT.NULL, resultMessageXpath);
 				// valueExpression.setPropertyValue(valueExpressionText.getText());
 				nspd.open();

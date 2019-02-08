@@ -77,7 +77,7 @@ public class EsbGraphicalShapeWithLabel extends RoundedRectangle {
         layoutThis.makeColumnsEqualWidth = true;
         layoutThis.horizontalSpacing = 0;
         layoutThis.verticalSpacing = -5;
-        layoutThis.marginHeight = 3;
+        layoutThis.marginHeight = 0;
         layoutThis.marginWidth = 0;
 
         this.setLayoutManager(layoutThis);
@@ -243,7 +243,7 @@ public class EsbGraphicalShapeWithLabel extends RoundedRectangle {
         // Label to display description.
         propertyNameLabel = new WrappingLabel();
         propertyNameLabel.setText("");
-        propertyNameLabel.setForegroundColor(new Color(null, 46, 46, 46));
+        propertyNameLabel.setForegroundColor(new Color(null, 126, 126, 126));
         propertyNameLabel.setFont(new Font(null, new FontData(PROPERTY_NAME_LABEL_FONT, 7, SWT.NONE)));
         propertyNameLabel.setAlignment(SWT.CENTER);
         propertyNameLabel.setPreferredSize(new Dimension(FixedSizedAbstractMediator.maxFigureWidth, 20));

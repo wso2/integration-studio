@@ -92,15 +92,15 @@ public class DropMediatorItemProvider extends MediatorItemProvider {
     }
 
     /**
-     * This returns DropMediator.png.
+     * This returns DropMediator.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated NOT
+     * @generated
      */
 
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/DropMediator.png"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/DropMediator"));
     }
 
     /**

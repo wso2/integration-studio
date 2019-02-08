@@ -220,15 +220,15 @@ public class ValidateMediatorItemProvider extends MediatorItemProvider {
     }
 
     /**
-     * This returns ValidateMediator.png.
+     * This returns ValidateMediator.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated NOT
+     * @generated
      */
 
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/ValidateMediator.png"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/ValidateMediator"));
     }
 
     /**

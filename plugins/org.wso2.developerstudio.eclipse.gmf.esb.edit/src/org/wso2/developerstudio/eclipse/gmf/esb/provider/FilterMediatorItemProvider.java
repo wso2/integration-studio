@@ -194,15 +194,15 @@ public class FilterMediatorItemProvider extends MediatorItemProvider {
     }
 
     /**
-     * This returns FilterMediator.png.
+     * This returns FilterMediator.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated NOT
+     * @generated
      */
 
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/FilterMediator.png"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/FilterMediator"));
     }
 
     /**

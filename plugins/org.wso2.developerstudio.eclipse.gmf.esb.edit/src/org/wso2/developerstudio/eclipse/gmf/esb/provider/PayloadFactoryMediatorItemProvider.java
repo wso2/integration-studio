@@ -206,14 +206,14 @@ public class PayloadFactoryMediatorItemProvider extends MediatorItemProvider {
     }
 
     /**
-     * This returns PayloadFactoryMediator.png.
+     * This returns PayloadFactoryMediator.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated NOT
+     * @generated
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/PayloadFactoryMediator.png"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/PayloadFactoryMediator"));
     }
 
     /**

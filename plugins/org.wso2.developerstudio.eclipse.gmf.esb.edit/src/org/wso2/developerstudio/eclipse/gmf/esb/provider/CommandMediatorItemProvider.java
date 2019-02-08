@@ -143,15 +143,15 @@ public class CommandMediatorItemProvider extends MediatorItemProvider {
     }
 
     /**
-     * This returns CommandMediator.png.
+     * This returns CommandMediator.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated NOT
+     * @generated
      */
 
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/CommandMediator.png"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/CommandMediator"));
     }
 
     /**

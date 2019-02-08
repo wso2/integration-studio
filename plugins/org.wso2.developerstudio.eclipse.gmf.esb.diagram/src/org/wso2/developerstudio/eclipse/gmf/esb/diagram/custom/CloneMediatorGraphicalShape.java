@@ -270,11 +270,11 @@ public class CloneMediatorGraphicalShape extends RoundedRectangle {
         innerRect.setCornerDimensions(new Dimension(1, 1));
         innerRect.setOutline(false);
         innerRect.setBackgroundColor(this.getBackgroundColor());
-        LineBorder innerRectBorder = new LineBorder(new Color(null, 255, 255, 255), 1, SWT.BORDER_SOLID);
+        LineBorder innerRectBorder = new LineBorder(new Color(null, 209, 52, 79), 1, SWT.BORDER_SOLID);
         innerRect.setBorder(innerRectBorder);
         innerRect.setPreferredSize(new Dimension(95, 25));
         innerRect.setMinimumSize(new Dimension(80, 100));
-        innerRect.setBackgroundColor(new Color(null, 230, 76, 60));
+        innerRect.setBackgroundColor(new Color(null, 255, 250, 251));
 
         GridLayout innerRectLayout = new GridLayout();
         innerRectLayout.numColumns = 1;

@@ -336,15 +336,15 @@ public class CacheMediatorItemProvider extends MediatorItemProvider {
     }
 
     /**
-     * This returns CacheMediator.png.
+     * This returns CacheMediator.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated NOT
+     * @generated
      */
 
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/CacheMediator.png"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/CacheMediator"));
     }
 
     /**

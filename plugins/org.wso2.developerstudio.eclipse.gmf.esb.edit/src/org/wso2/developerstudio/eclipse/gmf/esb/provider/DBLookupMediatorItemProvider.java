@@ -96,15 +96,15 @@ public class DBLookupMediatorItemProvider extends AbstractSqlExecutorMediatorIte
     }
 
     /**
-     * This returns DBLookupMediator.png.
+     * This returns DBLookupMediator.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated NOT
+     * @generated
      */
 
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/DBLookupMediator.png"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/DBLookupMediator"));
     }
 
     /**

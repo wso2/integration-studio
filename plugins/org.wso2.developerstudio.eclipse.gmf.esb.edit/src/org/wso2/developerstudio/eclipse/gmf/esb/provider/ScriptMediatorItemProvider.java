@@ -288,15 +288,15 @@ public class ScriptMediatorItemProvider extends MediatorItemProvider {
     }
 
     /**
-     * This returns ScriptMediator.png.
+     * This returns ScriptMediator.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated NOT
+     * @generated
      */
 
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/ScriptMediator.png"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/ScriptMediator"));
     }
 
     /**

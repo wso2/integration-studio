@@ -279,15 +279,15 @@ public class DataMapperMediatorItemProvider extends MediatorItemProvider {
     }
 
     /**
-     * This returns DataMapperMediator.png.
+     * This returns DataMapperMediator.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * 
-     * @generated NOT
+     * @generated
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/DataMapperMediator.png"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/DataMapperMediator"));
     }
 
     /**

@@ -85,14 +85,14 @@ public class CommentMediatorItemProvider extends MediatorItemProvider {
     }
 
     /**
-     * This returns CommentMediator.png.
+     * This returns CommentMediator.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated NOT
+     * @generated
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/CommentMediator.png"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/CommentMediator"));
     }
 
     /**

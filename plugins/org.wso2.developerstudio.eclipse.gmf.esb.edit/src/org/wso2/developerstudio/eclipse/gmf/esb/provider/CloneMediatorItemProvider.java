@@ -194,15 +194,15 @@ public class CloneMediatorItemProvider extends MediatorItemProvider {
     }
 
     /**
-     * This returns CloneMediator.png.
+     * This returns CloneMediator.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated NOT
+     * @generated
      */
 
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/CloneMediator.png"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/CloneMediator"));
     }
 
     /**

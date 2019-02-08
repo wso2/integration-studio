@@ -483,15 +483,15 @@ public class PropertyMediatorItemProvider extends MediatorItemProvider {
     }
 
     /**
-     * This returns PropertyMediator.png.
+     * This returns PropertyMediator.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated NOT
+     * @generated
      */
 
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/PropertyMediator.png"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/PropertyMediator"));
     }
 
     /**

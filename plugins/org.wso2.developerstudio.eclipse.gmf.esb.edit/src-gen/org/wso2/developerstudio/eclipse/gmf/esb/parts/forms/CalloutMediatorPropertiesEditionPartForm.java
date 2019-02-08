@@ -2032,7 +2032,7 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
 		return parent;
 	}
 	
-	protected Composite createPayloadMessageXpath(FormToolkit widgetFactory, Composite parent) {
+	protected Composite createPayloadMessageXpath(FormToolkit widgetFactory, final Composite parent) {
 		Control payloadMessageXpathLabel = createDescription(parent,
 				EsbViewsRepository.CalloutMediator.Source.payloadMessageXpath,
 				EsbMessages.CalloutMediatorPropertiesEditionPart_PayloadMessageXpathLabel);
@@ -2085,7 +2085,7 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
 		return parent;
 	}
 	
-	protected Composite createResultMessageXpath(FormToolkit widgetFactory, Composite parent) {
+	protected Composite createResultMessageXpath(FormToolkit widgetFactory, final Composite parent) {
 		Control resultMessageXpathLabel = createDescription(parent,
 				EsbViewsRepository.CalloutMediator.Target.resultMessageXpath,
 				EsbMessages.CalloutMediatorPropertiesEditionPart_ResultMessageXpathLabel);

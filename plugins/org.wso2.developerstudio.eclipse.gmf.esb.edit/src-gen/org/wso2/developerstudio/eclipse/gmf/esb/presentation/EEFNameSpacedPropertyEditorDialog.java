@@ -926,7 +926,7 @@ public class EEFNameSpacedPropertyEditorDialog extends Dialog {
 
                                 // Parse the xml document into a dom object.
                                 try {
-                                    Document document = parseDocument(selectedFile);
+                                    final Document document = parseDocument(selectedFile);
                                     final Node rootNode = document.getDocumentElement();
 
                                     // Adding a tree item is a ui related
@@ -1121,7 +1121,7 @@ public class EEFNameSpacedPropertyEditorDialog extends Dialog {
             @Override
             public void focusLost(org.eclipse.swt.events.FocusEvent e) {
                 
-                String xmlText = inlineXMLTextArea.getText().trim();
+                final String xmlText = inlineXMLTextArea.getText().trim();
                 
                 if (isInlineXMLContentChanged) {
                     

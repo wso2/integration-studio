@@ -259,15 +259,15 @@ public class HeaderMediatorItemProvider extends MediatorItemProvider {
     }
 
     /**
-     * This returns HeaderMediator.png.
+     * This returns HeaderMediator.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated NOT
+     * @generated
      */
 
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/HeaderMediator.png"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/HeaderMediator"));
     }
 
     /**

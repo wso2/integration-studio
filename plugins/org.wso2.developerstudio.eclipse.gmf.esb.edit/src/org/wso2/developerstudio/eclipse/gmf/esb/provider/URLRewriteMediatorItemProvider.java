@@ -165,14 +165,14 @@ public class URLRewriteMediatorItemProvider extends MediatorItemProvider {
     }
 
     /**
-     * This returns URLRewriteMediator.png.
+     * This returns URLRewriteMediator.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/URLRewriteMediator.png"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/URLRewriteMediator"));
     }
 
     /**

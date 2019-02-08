@@ -138,15 +138,15 @@ public class ClassMediatorItemProvider extends MediatorItemProvider {
     }
 
     /**
-     * This returns ClassMediator.png.
+     * This returns ClassMediator.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated NOT
+     * @generated
      */
 
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/ClassMediator.png"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/ClassMediator"));
     }
 
     /**

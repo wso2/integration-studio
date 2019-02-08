@@ -317,15 +317,15 @@ public class EnrichMediatorItemProvider extends MediatorItemProvider {
     }
 
     /**
-     * This returns EnrichMediator.png.
+     * This returns EnrichMediator.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated NOT
+     * @generated
      */
 
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/EnrichMediator.png"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/EnrichMediator"));
     }
 
     /**

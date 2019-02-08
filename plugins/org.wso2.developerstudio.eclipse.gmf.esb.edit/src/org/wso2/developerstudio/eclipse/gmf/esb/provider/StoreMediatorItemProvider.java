@@ -212,15 +212,15 @@ public class StoreMediatorItemProvider extends MediatorItemProvider {
     }
 
     /**
-     * This returns StoreMediator.png.
+     * This returns StoreMediator.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated NOT
+     * @generated
      */
 
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/StoreMediator.png"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/StoreMediator"));
     }
 
     /**

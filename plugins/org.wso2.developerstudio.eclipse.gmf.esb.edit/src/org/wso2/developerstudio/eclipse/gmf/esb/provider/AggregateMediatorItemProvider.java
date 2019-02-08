@@ -369,15 +369,15 @@ public class AggregateMediatorItemProvider extends MediatorItemProvider {
     }
 
     /**
-     * This returns AggregateMediator.png.
+     * This returns AggregateMediator.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated NOT
+     * @generated
      */
 
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/AggregateMediator.png"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/AggregateMediator"));
     }
 
     /**

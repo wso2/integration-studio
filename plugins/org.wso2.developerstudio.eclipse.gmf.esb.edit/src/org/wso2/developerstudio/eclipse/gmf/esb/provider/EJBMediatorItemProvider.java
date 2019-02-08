@@ -345,14 +345,14 @@ public class EJBMediatorItemProvider extends MediatorItemProvider {
     }
 
     /**
-     * This returns EJBMediator.png.
+     * This returns EJBMediator.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated NOT
+     * @generated
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/EJBMediator.png"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/EJBMediator"));
     }
 
     /**

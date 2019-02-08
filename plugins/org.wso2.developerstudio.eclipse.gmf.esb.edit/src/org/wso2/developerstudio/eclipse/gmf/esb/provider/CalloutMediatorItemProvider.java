@@ -517,15 +517,15 @@ public class CalloutMediatorItemProvider extends MediatorItemProvider {
     }
 
     /**
-     * This returns CalloutMediator.png.
+     * This returns CalloutMediator.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated NOT
+     * @generated
      */
 
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/CalloutMediator.png"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/CalloutMediator"));
     }
 
     /**

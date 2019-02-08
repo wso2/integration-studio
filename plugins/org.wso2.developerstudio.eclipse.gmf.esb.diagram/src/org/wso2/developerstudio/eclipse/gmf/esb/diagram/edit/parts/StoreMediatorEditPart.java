@@ -139,7 +139,7 @@ public class StoreMediatorEditPart extends FixedSizedAbstractMediator {
      * @generated NOT
      */
     protected IFigure createNodeShape() {
-        return primaryShape = new StoreMediatorFigure(new Color(null, 255, 255, 255)) {
+        return primaryShape = new StoreMediatorFigure(new Color(null, 41, 128, 185)) {
             public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
                 super.setBounds(rect);
                 if (this.getBounds().getLocation().x != 0 && this.getBounds().getLocation().y != 0) {

@@ -278,15 +278,15 @@ public class ThrottleMediatorItemProvider extends MediatorItemProvider {
     }
 
     /**
-     * This returns ThrottleMediator.png.
+     * This returns ThrottleMediator.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated NOT
+     * @generated
      */
 
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/ThrottleMediator.png"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/ThrottleMediator"));
     }
 
     /**

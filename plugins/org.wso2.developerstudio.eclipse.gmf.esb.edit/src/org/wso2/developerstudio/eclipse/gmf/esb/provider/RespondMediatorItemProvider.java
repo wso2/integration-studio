@@ -103,14 +103,14 @@ public class RespondMediatorItemProvider extends MediatorItemProvider {
     }
 
     /**
-     * This returns RespondMediator.png.
+     * This returns RespondMediator.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated NOT
+     * @generated
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/RespondMediator.png"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/RespondMediator"));
     }
 
     /**

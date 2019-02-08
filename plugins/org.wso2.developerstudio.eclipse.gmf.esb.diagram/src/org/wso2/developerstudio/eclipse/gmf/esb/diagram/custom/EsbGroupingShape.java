@@ -162,7 +162,8 @@ public class EsbGroupingShape extends RoundedRectangle {
             validationMarkImageRectangle.setAlpha(0);
             validationMarkImageRectangle.add(iconImageFigure);
             iconImageFigure.translate(containerInsideLeftRectangle.getSize().width - 30,
-                    containerInsideLeftRectangle.getSize().height / 2 - 55);
+                    containerInsideLeftRectangle.getSize().height / 2
+                            - DiagramCustomConstants.VALIDATIONPOINT_IMAGE_OFFSET_VALUE);
             validationMarkLayer.add(validationMarkImageRectangle, constraintImageRectangle);
             pane.add(validationMarkLayer);
         }
@@ -197,7 +198,7 @@ public class EsbGroupingShape extends RoundedRectangle {
         leftRectangle.setOutline(false);
         leftRectangle.setFill(false);
         leftRectangle.setPreferredSize(new Dimension(110, 30));
-        leftRectangle.setMinimumSize(new Dimension(90, 125));
+        leftRectangle.setMinimumSize(new Dimension(90, 95));
 
         GridLayout layoutGraphicalNodeContainer = new GridLayout();
         layoutGraphicalNodeContainer.numColumns = 1;
@@ -257,7 +258,7 @@ public class EsbGroupingShape extends RoundedRectangle {
         WrappingLabel esbNodeTypeNameLabel = new WrappingLabel();
         esbNodeTypeNameLabel.setText(getNodeName());
         esbNodeTypeNameLabel.setForegroundColor(this.borderColor);
-        esbNodeTypeNameLabel.setFont(new Font(null, "Arial", 12, SWT.BOLD));
+        esbNodeTypeNameLabel.setFont(new Font(null, "Arial", 10, SWT.BOLD));
         esbNodeTypeNameLabel.setAlignment(SWT.CENTER);
         esbNodeTypeNameLabel.setPreferredSize(new Dimension(64, 20));
 

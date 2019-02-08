@@ -509,7 +509,7 @@ public class FaultMediatorItemProvider extends MediatorItemProvider {
      * <!-- end-user-doc
      * -->
      * 
-     * @generated NNOT
+     * @generated NOT
      */
 
     @Override

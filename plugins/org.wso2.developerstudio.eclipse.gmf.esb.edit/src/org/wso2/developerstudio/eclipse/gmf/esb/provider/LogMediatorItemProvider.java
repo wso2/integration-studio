@@ -180,15 +180,16 @@ public class LogMediatorItemProvider extends MediatorItemProvider {
     }
 
     /**
-     * This returns LogMediator.gif. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
+     * This returns LogMediator.png. 
+     * <!-- begin-user-doc --> 
+     * <!-- end-user-doc -->
      * 
-     * @generated
+     * @generated NOT
      */
 
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/LogMediator"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/LogMediator.png"));
     }
 
     /**

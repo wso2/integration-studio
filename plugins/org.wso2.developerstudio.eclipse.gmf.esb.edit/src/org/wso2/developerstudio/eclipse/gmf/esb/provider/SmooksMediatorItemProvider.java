@@ -290,14 +290,14 @@ public class SmooksMediatorItemProvider extends MediatorItemProvider {
     }
 
     /**
-     * This returns SmooksMediator.gif.
+     * This returns SmooksMediator.png.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
+     * @generated NOT
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/SmooksMediator"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/SmooksMediator.png"));
     }
 
     /**

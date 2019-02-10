@@ -591,7 +591,6 @@ public class XSLTPropertyPropertiesEditionPartImpl extends CompositePropertiesEd
             }
             
             view.layout(true, true);
-            view.pack();
         }
 
         // End of user code

@@ -389,7 +389,6 @@ public class XSLTResourcePropertiesEditionPartImpl extends CompositePropertiesEd
         eu.showEntry(resourceRegistryKeyElements, false);
 
         view.layout(true, true);
-        view.pack();
     }
 
         // End of user code

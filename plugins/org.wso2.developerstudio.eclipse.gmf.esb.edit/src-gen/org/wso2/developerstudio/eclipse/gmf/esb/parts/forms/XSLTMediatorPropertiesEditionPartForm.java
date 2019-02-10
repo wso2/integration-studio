@@ -1219,7 +1219,6 @@ public class XSLTMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
         eu.showEntry(descriptionElements, false);
 
         view.layout(true, true);
-        view.pack();
     }
     
 	// End of user code

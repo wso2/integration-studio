@@ -37,6 +37,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.XSLTProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.XSLTPropertyPropertiesEditionPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.parts.impl.XSLTPropertyPropertiesEditionPartImpl;
 
 
 // End of user code
@@ -98,6 +99,7 @@ public class XSLTPropertyPropertiesEditionComponent extends SinglePartProperties
 			
 			
 			// Start of user code  for propertyExpression filter update
+	         ((XSLTPropertyPropertiesEditionPartImpl)editingPart).validate();
 			// End of user code
 			
 			// init values for referenced views

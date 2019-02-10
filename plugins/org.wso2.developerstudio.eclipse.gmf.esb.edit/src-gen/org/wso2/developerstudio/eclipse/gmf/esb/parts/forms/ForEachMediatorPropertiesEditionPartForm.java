@@ -503,7 +503,7 @@ public class ForEachMediatorPropertiesEditionPartForm extends SectionPropertiesE
              * 
              */
             public void selectionChanged(SelectionChangedEvent event) {
-                validate();
+                refresh();
             }
         });
 		// End of user code

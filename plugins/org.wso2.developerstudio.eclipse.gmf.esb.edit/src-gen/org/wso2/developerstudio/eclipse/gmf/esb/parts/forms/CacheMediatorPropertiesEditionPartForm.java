@@ -302,12 +302,12 @@ public class CacheMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
              * 
              */
             public void selectionChanged(SelectionChangedEvent event) {
-                validate();
                 if (propertiesEditionComponent != null)
                     propertiesEditionComponent.firePropertiesChanged(
                             new PropertiesEditionEvent(CacheMediatorPropertiesEditionPartForm.this,
                                     EsbViewsRepository.CacheMediator.Properties.cacheType,
                                     PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getCacheType()));
+                refresh();
             }
 
         });
@@ -689,12 +689,12 @@ public class CacheMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
              * 
              */
             public void selectionChanged(SelectionChangedEvent event) {
-                validate();
                 if (propertiesEditionComponent != null)
                     propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
                             CacheMediatorPropertiesEditionPartForm.this,
                             EsbViewsRepository.CacheMediator.OnCacheHit.sequenceType, PropertiesEditionEvent.COMMIT,
                             PropertiesEditionEvent.SET, null, getSequenceType()));
+                refresh();
             }
 
         });

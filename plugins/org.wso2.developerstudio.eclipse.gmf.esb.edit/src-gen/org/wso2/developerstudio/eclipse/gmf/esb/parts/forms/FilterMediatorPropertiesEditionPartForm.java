@@ -400,7 +400,7 @@ public class FilterMediatorPropertiesEditionPartForm extends SectionPropertiesEd
              * 
              */
             public void selectionChanged(SelectionChangedEvent event) {
-                validate();
+                refresh();
             }
         });
 		// End of user code

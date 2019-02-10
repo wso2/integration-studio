@@ -5884,6 +5884,12 @@ public class EsbMessages extends NLS {
 	public static String ConditionalRouteBranchPropertiesEditionPart_BreakAfterRouteLabel;
 
 	
+	public static String ConditionalRouteBranchPropertiesEditionPart_TargetSequenceLabel;
+
+	
+	public static String ConditionalRouteBranchPropertiesEditionPart_EvaluatorExpressionLabel;
+
+	
 	public static String ConditionalRouterMediatorPropertiesEditionPart_DescriptionLabel;
 
 	

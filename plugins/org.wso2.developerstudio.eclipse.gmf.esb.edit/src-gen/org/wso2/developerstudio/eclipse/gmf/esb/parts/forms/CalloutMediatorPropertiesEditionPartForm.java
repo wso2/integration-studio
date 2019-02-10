@@ -2183,7 +2183,7 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
 				propertiesEditionComponent.getHelpContent(EsbViewsRepository.CalloutMediator.WS.policyKey,
 						EsbViewsRepository.FORM_KIND),
 				null); // $NON-NLS-1$
-		addressEndpointElements = new Control[] { policyKeyLabel, policyKeyText, policyKeyHelp };
+		policyKeyElements = new Control[] { policyKeyLabel, policyKeyText, policyKeyHelp };
 		return parent;
 	}
 	
@@ -2300,9 +2300,9 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
     	
 		viewUtil.showEntry(descriptionElements, false);
 		viewUtil.showEntry(endpointTypeElements, false);
-		if (getEndpointType().getName().equals("URL")) {
+		if (getEndpointType().getLiteral().equals("URL")) {
 			viewUtil.showEntry(serviceUrlElements, false);
-		} else if (getEndpointType().getName().equals("AddressEndpoint")) {
+		} else if (getEndpointType().getLiteral().equals("AddressEndpoint")) {
 			viewUtil.showEntry(addressEndpointElements, false);
 		}
 		
@@ -2311,28 +2311,29 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
     	viewUtil.showEntry(pathToAxis2RepositoryElements, false);
     	viewUtil.showEntry(initAxis2ClientOptionsElements, false);
     	viewUtil.showEntry(payloadTypeElements, false);
+    	viewUtil.showEntry(resultTypeElements, false);
     	
-    	if(getPayloadType().getName().equals("XPATH")) {
+    	if(getPayloadType().getLiteral().equals("XPATH")) {
     		viewUtil.showEntry(PayloadMessageXpathElements, false);
-    	} else if(getPayloadType().getName().equals("PROPERTY")) {
+    	} else if(getPayloadType().getLiteral().equals("PROPERTY")) {
     		viewUtil.showEntry(payloadPropertyElements, false);
     	}
     	
     	viewUtil.showEntry(resultTypeElements, false);
-    	if(getResultType().getName().equals("XAPTH")) {
+    	if(getResultType().getLiteral().equals("XAPTH")) {
     		viewUtil.showEntry(resultMessageXpathElements, false);
-    	}else if(getResultType().getName().equals("PROPERTY")) {
+    	} else if(getResultType().getLiteral().equals("PROPERTY")) {
     		viewUtil.showEntry(resultContextPropertyElements, false);
     	}
     	
     	viewUtil.showEntry(securityTypeElements, false);
-    	if(getSecurityType().getName().equals("TRUE")) {
+    	if(getSecurityType().getLiteral().equals("TRUE")) {
     		viewUtil.showEntry(policiesElements, false);
-    		if(getPolicies().getName().equals("TRUE")) {
+    		if(getPolicies().getLiteral().equals("TRUE")) {
     			viewUtil.showEntry(outboundPolicyKeyElements, false);
     			viewUtil.showEntry(inboundPolicyKeyElements, false);
-    		} else if(getPolicies().getName().equals("FALSE")) {
-    			viewUtil.showEntry(policiesElements, false);
+    		} else if(getPolicies().getLiteral().equals("FALSE")) {
+    			viewUtil.showEntry(policyKeyElements, false);
     		}
     	} 
        	

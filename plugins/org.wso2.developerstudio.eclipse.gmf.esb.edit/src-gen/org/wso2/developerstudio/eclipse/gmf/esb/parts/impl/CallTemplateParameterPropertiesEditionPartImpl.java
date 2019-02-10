@@ -59,6 +59,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.parts.CallTemplateParameterPrope
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.forms.CallMediatorPropertiesEditionPartForm;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFNameSpacedPropertyEditorDialog;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
 
 // End of user code
@@ -257,7 +258,7 @@ public class CallTemplateParameterPropertiesEditionPartImpl extends CompositePro
 	             *  
 	             */
 	            public void selectionChanged(SelectionChangedEvent event) {
-	                refresh();
+	                validate();
 	            }
 	        });
 		// End of user code
@@ -524,45 +525,19 @@ public class CallTemplateParameterPropertiesEditionPartImpl extends CompositePro
     }
 
     public void validate() {
-        clearElements();
-        showEntry(parameterNameElements, false);
-        showEntry(parameterTypeElements, false);
+        EEFPropertyViewUtil epv = new EEFPropertyViewUtil(view);
+        epv.clearElements(new Composite [] {propertiesGroup});
+        epv.showEntry(parameterNameElements, false);
+        epv.showEntry(parameterTypeElements, false);
         if(getTemplateParameterType().getName().equals("EXPRESSION")) {
-            showEntry(parameterExpressionElements, false);
+            epv.showEntry(parameterExpressionElements, false);
         } else {
-            showEntry(parameterValueElements, false);
+            epv.showEntry(parameterValueElements, false);
         }
         view.layout(true, true);
     }
 
-    public void clearElements() {
-        hideEntry(propertiesGroup.getChildren(), false);
-    }
 
-    public void hideEntry(Control controls[], boolean layout) {
-        // view.getChildren();
-        for (Control control : controls) {
-            // null check and type check
-            if (control.getLayoutData() != null && control.getLayoutData() instanceof GridData) {
-                ((GridData) control.getLayoutData()).exclude = true;
-                control.setVisible(false);
-            }
-        }
-        if (layout) {
-            view.layout(true, true);
-        }
-    }
-
-    public void showEntry(Control controls[], boolean layout) {
-        for (Control control : controls) {
-            // null check and type check
-            ((GridData) control.getLayoutData()).exclude = false;
-            control.setVisible(true);
-        }
-        if (layout) {
-            view.layout(true, true);
-        }
-    }
 	// End of user code
 
 

@@ -257,7 +257,7 @@ public class CallTemplateParameterPropertiesEditionPartImpl extends CompositePro
 	             *  
 	             */
 	            public void selectionChanged(SelectionChangedEvent event) {
-	                validate();
+	                refresh();
 	            }
 	        });
 		// End of user code

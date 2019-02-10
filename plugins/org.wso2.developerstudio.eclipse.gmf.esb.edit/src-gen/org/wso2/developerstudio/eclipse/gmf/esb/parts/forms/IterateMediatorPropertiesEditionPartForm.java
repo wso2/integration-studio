@@ -626,7 +626,7 @@ public class IterateMediatorPropertiesEditionPartForm extends SectionPropertiesE
              * 
              */
             public void widgetSelected(SelectionEvent e) {
-                validate();
+                refresh();
             }
 
         });
@@ -681,7 +681,7 @@ public class IterateMediatorPropertiesEditionPartForm extends SectionPropertiesE
              * 
              */
             public void selectionChanged(SelectionChangedEvent event) {
-                validate();
+                refresh();
             }
 
         });

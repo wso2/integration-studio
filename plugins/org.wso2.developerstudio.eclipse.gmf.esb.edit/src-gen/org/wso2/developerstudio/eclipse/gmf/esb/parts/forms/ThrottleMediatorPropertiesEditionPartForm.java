@@ -580,7 +580,7 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
              *  
              */
             public void selectionChanged(SelectionChangedEvent event) {
-                validate();
+                refresh();
             }
         });
 		// End of user code
@@ -626,7 +626,7 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
              *  
              */
             public void selectionChanged(SelectionChangedEvent event) {
-                validate();
+                refresh();
             }
         });
 		// End of user code
@@ -687,7 +687,7 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
              *  
              */
             public void selectionChanged(SelectionChangedEvent event) {
-                validate();
+                refresh();
             }
         });
 		// End of user code

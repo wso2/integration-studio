@@ -241,7 +241,7 @@ public class CloneTargetPropertiesEditionPartImpl extends CompositePropertiesEdi
              * 
              */
             public void selectionChanged(SelectionChangedEvent event) {
-                validate();
+                refresh();
             }
         });
 		// End of user code
@@ -312,7 +312,7 @@ public class CloneTargetPropertiesEditionPartImpl extends CompositePropertiesEdi
              *  
              */
             public void selectionChanged(SelectionChangedEvent event) {
-                validate();
+                refresh();
             }
         });
 		// End of user code

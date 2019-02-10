@@ -509,7 +509,7 @@ public class CallMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
              *  
              */
             public void selectionChanged(SelectionChangedEvent event) {
-                validate();
+                refresh();
             }
         });
 		// End of user code

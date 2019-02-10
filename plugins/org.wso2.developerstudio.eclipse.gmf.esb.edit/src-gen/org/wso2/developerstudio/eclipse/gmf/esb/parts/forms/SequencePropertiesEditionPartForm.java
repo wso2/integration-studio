@@ -733,8 +733,7 @@ public class SequencePropertiesEditionPartForm extends SectionPropertiesEditingP
 			
 			@Override
 			public void selectionChanged(SelectionChangedEvent event) {
-				// TODO Auto-generated method stub
-				validate();	
+			    refresh();
 			}
 		});
 		// End of user code

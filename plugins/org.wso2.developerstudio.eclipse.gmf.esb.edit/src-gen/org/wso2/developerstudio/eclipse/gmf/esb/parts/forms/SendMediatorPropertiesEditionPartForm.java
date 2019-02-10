@@ -264,7 +264,7 @@ public class SendMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 							EsbViewsRepository.SendMediator.Properties.skipSerialization, PropertiesEditionEvent.COMMIT,
 							PropertiesEditionEvent.SET, null, new Boolean(skipSerialization.getSelection())));
 				}
-				validate();
+				refresh();
 			}
 
 		});
@@ -416,13 +416,13 @@ public class SendMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 			 * 
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
-				validate();
 				if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(
 							new PropertiesEditionEvent(SendMediatorPropertiesEditionPartForm.this,
 									EsbViewsRepository.SendMediator.Properties.receivingSequenceType,
 									PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
 									getReceivingSequenceType()));
+				refresh();
 			}
 
 		});

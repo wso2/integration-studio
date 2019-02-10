@@ -202,11 +202,11 @@ public class PayloadFactoryArgumentPropertiesEditionPartImpl extends CompositePr
 			 * 	
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
-				validate();
 				if (propertiesEditionComponent != null) {
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PayloadFactoryArgumentPropertiesEditionPartImpl.this, 
 							EsbViewsRepository.PayloadFactoryArgument.Properties.argumentType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getArgumentType()));
 				}
+				refresh();
 			}
 
 		});
@@ -536,7 +536,7 @@ public class PayloadFactoryArgumentPropertiesEditionPartImpl extends CompositePr
 	}
 
 	// Start of user code additional methods
-	protected void validate() {
+	public void validate() {
 		EEFPropertyViewUtil eu = new EEFPropertyViewUtil(view);
 		eu.clearElements(new Composite[] {propertiesGroup});
 

@@ -218,7 +218,7 @@ public class ValidateSchemaPropertiesEditionPartImpl extends CompositeProperties
              *  
              */
             public void selectionChanged(SelectionChangedEvent event) {
-                validate();
+                refresh();
             }
 
         });

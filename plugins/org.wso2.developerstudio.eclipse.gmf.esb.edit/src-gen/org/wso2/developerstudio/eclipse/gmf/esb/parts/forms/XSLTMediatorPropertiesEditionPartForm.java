@@ -447,7 +447,7 @@ public class XSLTMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
              *  
              */
             public void selectionChanged(SelectionChangedEvent event) {
-                validate();
+                refresh();
             }
 
         });

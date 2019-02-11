@@ -4060,6 +4060,9 @@ public class EsbMessages extends NLS {
 	public static String PublishEventMediatorAttributePropertiesEditionPart_DefaultValueLabel;
 
 	
+	public static String PublishEventMediatorAttributePropertiesEditionPart_AttributeExpressionLabel;
+
+	
 	public static String BAMMediatorPropertiesEditionPart_DescriptionLabel;
 
 	

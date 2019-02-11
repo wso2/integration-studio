@@ -168,7 +168,7 @@ public class EsbViewsRepository {
 			public static String valueType = "esb::EndPointProperty::properties::valueType";
 			
 			// Start of user code for valueExpression ElementEditor key
-			public static String valueExpression = "esb::EndPointProperty::properties::valueExpression";
+			public static String valueExpression = "esb::PropertyMediator::properties::valueExpression";
 			// End of user code
 			
 	
@@ -1650,6 +1650,10 @@ public class EsbViewsRepository {
 			
 			
 			public static String defaultValue = "esb::PublishEventMediatorAttribute::properties::defaultValue";
+			
+			// Start of user code for attributeExpression ElementEditor key
+			public static String attributeExpression = "esb::PublishEventMediatorAttribute::properties::attributeExpression";
+			// End of user code
 			
 	
 		}

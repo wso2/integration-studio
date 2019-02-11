@@ -1163,6 +1163,12 @@ public class EsbMessages extends NLS {
 	public static String FastXSLTMediatorPropertiesEditionPart_PropertiesGroupLabel;
 
 	
+	public static String FastXSLTMediatorPropertiesEditionPart_BasicGroupLabel;
+
+	
+	public static String FastXSLTMediatorPropertiesEditionPart_MiscGroupLabel;
+
+	
 	public static String FastXSLTMediatorInputConnectorPropertiesEditionPart_PropertiesGroupLabel;
 
 	
@@ -7207,16 +7213,22 @@ public class EsbMessages extends NLS {
 	public static String DataMapperMediatorOutputConnectorPropertiesEditionPart_CommentMediatorsLabel;
 
 	
-	public static String FastXSLTMediatorPropertiesEditionPart_DescriptionLabel;
-
-	
 	public static String FastXSLTMediatorPropertiesEditionPart_CommentsListLabel;
 
 	
 	public static String FastXSLTMediatorPropertiesEditionPart_ReverseLabel;
 
 	
+	public static String FastXSLTMediatorPropertiesEditionPart_FastXsltStaticSchemaKeyLabel;
+
+	
+	public static String FastXSLTMediatorPropertiesEditionPart_FastXsltDynamicSchemaKeyLabel;
+
+	
 	public static String FastXSLTMediatorPropertiesEditionPart_FastXsltSchemaKeyTypeLabel;
+
+	
+	public static String FastXSLTMediatorPropertiesEditionPart_DescriptionLabel;
 
 	
 	public static String FastXSLTMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;

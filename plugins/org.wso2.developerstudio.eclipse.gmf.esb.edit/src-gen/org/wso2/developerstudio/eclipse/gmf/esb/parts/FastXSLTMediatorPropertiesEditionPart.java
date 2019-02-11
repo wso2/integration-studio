@@ -6,6 +6,8 @@ package org.wso2.developerstudio.eclipse.gmf.esb.parts;
 // Start of user code for imports
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.Enumerator;
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 
 
 // End of user code
@@ -15,20 +17,6 @@ import org.eclipse.emf.common.util.Enumerator;
  * 
  */
 public interface FastXSLTMediatorPropertiesEditionPart {
-
-	/**
-	 * @return the description
-	 * 
-	 */
-	public String getDescription();
-
-	/**
-	 * Defines a new description
-	 * @param newValue the new description to set
-	 * 
-	 */
-	public void setDescription(String newValue);
-
 
 	/**
 	 * @return the commentsList
@@ -91,8 +79,30 @@ public interface FastXSLTMediatorPropertiesEditionPart {
 	public void setFastXsltSchemaKeyType(Enumerator newValue);
 
 
+	/**
+	 * @return the description
+	 * 
+	 */
+	public String getDescription();
 
+	/**
+	 * Defines a new description
+	 * @param newValue the new description to set
+	 * 
+	 */
+	public void setDescription(String newValue);
 
+	// Start of user code for fastXsltStaticSchemaKey specific getters and setters declaration
+	public RegistryKeyProperty getFastXsltStaticSchemaKey();
+
+    public void setFastXsltStaticSchemaKey(RegistryKeyProperty fastXsltStaticSchemaKey);
+	// End of user code
+    
+	// Start of user code for fastXsltDynamicSchemaKey specific getters and setters declaration
+    public NamespacedProperty getFastXsltDynamicSchemaKey();
+
+    public void setFastXsltDynamicSchemaKey(NamespacedProperty fastXsltDynamicSchemaKey);
+	// End of user code
 
 	/**
 	 * Returns the internationalized title text.

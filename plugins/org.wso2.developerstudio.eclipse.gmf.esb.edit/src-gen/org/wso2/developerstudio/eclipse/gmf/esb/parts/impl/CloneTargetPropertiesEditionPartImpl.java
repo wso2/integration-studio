@@ -241,7 +241,7 @@ public class CloneTargetPropertiesEditionPartImpl extends CompositePropertiesEdi
              * 
              */
             public void selectionChanged(SelectionChangedEvent event) {
-                refresh();
+                validate();
             }
         });
 		// End of user code
@@ -312,7 +312,7 @@ public class CloneTargetPropertiesEditionPartImpl extends CompositePropertiesEdi
              *  
              */
             public void selectionChanged(SelectionChangedEvent event) {
-                refresh();
+                validate();
             }
         });
 		// End of user code
@@ -756,8 +756,8 @@ public class CloneTargetPropertiesEditionPartImpl extends CompositePropertiesEdi
 	                endpointKeyText.setText(endpointKey.getKeyValue());
 	                propertiesEditionComponent
 	                        .firePropertiesChanged(new PropertiesEditionEvent(CloneTargetPropertiesEditionPartImpl.this,
-	                                EsbViewsRepository.CloneTarget.Properties.sequenceRegistryKey,
-	                                PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getSequenceKey()));
+	                                EsbViewsRepository.CloneTarget.Properties.endpointRegistryKey,
+	                                PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getEndpointKey()));
 	            }
 
                 @Override

@@ -158,10 +158,11 @@ public class CloneTargetPropertiesEditionComponent extends SinglePartPropertiesE
             // End of user code
 			
 			// Start of user code for sequenceRegistryKey filter update
+			((CloneTargetPropertiesEditionPartImpl) editingPart).validate();
             // End of user code
 			
 			// init values for referenced views
-			((CloneTargetPropertiesEditionPartImpl) editingPart).validate();
+			
 			// init filters for referenced views
 			
 		}

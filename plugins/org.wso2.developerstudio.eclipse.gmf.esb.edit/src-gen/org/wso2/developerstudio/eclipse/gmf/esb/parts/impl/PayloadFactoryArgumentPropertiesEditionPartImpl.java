@@ -206,7 +206,7 @@ public class PayloadFactoryArgumentPropertiesEditionPartImpl extends CompositePr
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PayloadFactoryArgumentPropertiesEditionPartImpl.this, 
 							EsbViewsRepository.PayloadFactoryArgument.Properties.argumentType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getArgumentType()));
 				}
-				refresh();
+				validate();
 			}
 
 		});

@@ -5901,8 +5901,16 @@ public class EsbViewsRepository {
 			
 			public static String breakAfterRoute = "esb::ConditionalRouteBranch::properties::breakAfterRoute";
 			
+			// Start of user code for targetSequence ElementEditor key
+			public static String targetSequence = "esb::ConditionalRouteBranch::properties::targetSequence";
+			// End of user code
+			
 	
 		}
+	
+	// Start of user code for evaluatorExpression ElementEditor key
+	public static String evaluatorExpression = "esb::ConditionalRouteBranch::evaluatorExpression";
+	// End of user code
 	
 	}
 

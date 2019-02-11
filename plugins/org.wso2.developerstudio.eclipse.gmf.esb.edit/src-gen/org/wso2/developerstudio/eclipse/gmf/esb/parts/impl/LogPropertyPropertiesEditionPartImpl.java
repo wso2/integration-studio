@@ -239,7 +239,7 @@ public class LogPropertyPropertiesEditionPartImpl extends CompositePropertiesEdi
 			public void selectionChanged(SelectionChangedEvent event) {
 			    if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LogPropertyPropertiesEditionPartImpl.this, EsbViewsRepository.LogProperty.Properties.propertyValueType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getPropertyValueType()));
-			    refresh();
+			    validate();
 			}
 
 		});

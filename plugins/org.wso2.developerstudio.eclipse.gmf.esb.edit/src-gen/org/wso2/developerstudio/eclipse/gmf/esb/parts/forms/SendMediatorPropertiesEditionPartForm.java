@@ -264,7 +264,7 @@ public class SendMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 							EsbViewsRepository.SendMediator.Properties.skipSerialization, PropertiesEditionEvent.COMMIT,
 							PropertiesEditionEvent.SET, null, new Boolean(skipSerialization.getSelection())));
 				}
-				validate();
+				refresh();
 			}
 
 		});
@@ -416,13 +416,13 @@ public class SendMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 			 * 
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
-				validate();
 				if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(
 							new PropertiesEditionEvent(SendMediatorPropertiesEditionPartForm.this,
 									EsbViewsRepository.SendMediator.Properties.receivingSequenceType,
 									PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
 									getReceivingSequenceType()));
+				refresh();
 			}
 
 		});
@@ -830,7 +830,7 @@ public class SendMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	}
 
 	// Start of user code additional methods
-	protected Composite createDynamicReceivingSequence(FormToolkit widgetFactory, Composite parent) {
+	protected Composite createDynamicReceivingSequence(FormToolkit widgetFactory, final Composite parent) {
 		Control dynamicReceivingSequenceLabel = createDescription(parent,
 				EsbViewsRepository.SendMediator.Properties.dynamicReceivingSequence,
 				EsbMessages.SendMediatorPropertiesEditionPart_DynamicReceivingSequenceLabel);
@@ -884,7 +884,7 @@ public class SendMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 		return parent;
 	}
 
-	protected Composite createStaticReceivingSequence(FormToolkit widgetFactory, Composite parent) {
+	protected Composite createStaticReceivingSequence(FormToolkit widgetFactory, final Composite parent) {
 		Control staticReceivingSequenceLabel = createDescription(parent,
 				EsbViewsRepository.SendMediator.Properties.staticReceivingSequence,
 				EsbMessages.SendMediatorPropertiesEditionPart_StaticReceivingSequenceLabel);

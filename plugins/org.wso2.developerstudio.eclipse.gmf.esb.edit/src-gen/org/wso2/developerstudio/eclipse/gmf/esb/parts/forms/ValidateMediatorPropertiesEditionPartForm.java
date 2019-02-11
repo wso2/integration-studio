@@ -946,7 +946,7 @@ public class ValidateMediatorPropertiesEditionPartForm extends SectionProperties
 
 
 	// Start of user code additional methods
-    protected Composite createSourceWidget(FormToolkit widgetFactory, Composite parent) {
+    protected Composite createSourceWidget(FormToolkit widgetFactory, final Composite parent) {
         Control sourceLabel = createDescription(parent, EsbViewsRepository.ValidateMediator.Properties.source,
                 EsbMessages.ValidateMediatorPropertiesEditionPart_SourceLabel);
         widgetFactory.paintBordersFor(parent);

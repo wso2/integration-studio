@@ -202,11 +202,11 @@ public class PayloadFactoryArgumentPropertiesEditionPartImpl extends CompositePr
 			 * 	
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
-				validate();
 				if (propertiesEditionComponent != null) {
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PayloadFactoryArgumentPropertiesEditionPartImpl.this, 
 							EsbViewsRepository.PayloadFactoryArgument.Properties.argumentType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getArgumentType()));
 				}
+				validate();
 			}
 
 		});
@@ -536,7 +536,7 @@ public class PayloadFactoryArgumentPropertiesEditionPartImpl extends CompositePr
 	}
 
 	// Start of user code additional methods
-	protected void validate() {
+	public void validate() {
 		EEFPropertyViewUtil eu = new EEFPropertyViewUtil(view);
 		eu.clearElements(new Composite[] {propertiesGroup});
 
@@ -554,7 +554,7 @@ public class PayloadFactoryArgumentPropertiesEditionPartImpl extends CompositePr
         view.layout(true, true);
 	}
 	
-	protected Composite createArgumentExpression(Composite parent) {
+	protected Composite createArgumentExpression(final Composite parent) {
 		Control argumentExpressionLabel = createDescription(parent, EsbViewsRepository.PayloadFactoryArgument.Properties.argumentExpression, EsbMessages.PayloadFactoryArgumentPropertiesEditionPart_ArgumentExpressionLabel);
 
         if (argumentExpression == null) {

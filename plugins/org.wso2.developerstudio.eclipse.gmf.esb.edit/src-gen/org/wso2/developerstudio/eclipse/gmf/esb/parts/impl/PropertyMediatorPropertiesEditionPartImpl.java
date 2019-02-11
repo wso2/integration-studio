@@ -1365,7 +1365,7 @@ public class PropertyMediatorPropertiesEditionPartImpl extends CompositeProperti
         Button button = new Button(parent, SWT.PUSH);
         button.setLayoutData(new GridData(SWT.BEGINNING, SWT.CENTER, false, false));
         button.setText("Open NameSpaced Editor");
-        NamespacedPropertyEditorDialog nspd;
+        final NamespacedPropertyEditorDialog nspd;
         if ((getValueExpression() == null)) {
             valueExpression = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
         }

@@ -717,9 +717,9 @@ public class SynapseAPIPropertiesEditionPartForm extends SectionPropertiesEditin
 			 * 	
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
-			    validate();
-				if (propertiesEditionComponent != null)
+			    if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SynapseAPIPropertiesEditionPartForm.this, EsbViewsRepository.SynapseAPI.Handler.Properties.versionType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getVersionType()));
+			    refresh();
 			}
 
 		});

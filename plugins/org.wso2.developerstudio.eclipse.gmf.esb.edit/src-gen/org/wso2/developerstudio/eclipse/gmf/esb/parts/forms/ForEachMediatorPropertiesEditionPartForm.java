@@ -503,7 +503,7 @@ public class ForEachMediatorPropertiesEditionPartForm extends SectionPropertiesE
              * 
              */
             public void selectionChanged(SelectionChangedEvent event) {
-                validate();
+                refresh();
             }
         });
 		// End of user code
@@ -911,7 +911,7 @@ public class ForEachMediatorPropertiesEditionPartForm extends SectionPropertiesE
        return parent;
     }
 
-    protected Composite createForEachExpressionWidget(FormToolkit widgetFactory, Composite parent) {
+    protected Composite createForEachExpressionWidget(FormToolkit widgetFactory, final Composite parent) {
         Control forEachExpressionLabel = createDescription(parent, EsbViewsRepository.ForEachMediator.Properties.forEachExpression, EsbMessages.ForEachMediatorPropertiesEditionPart_ForEachExpressionLabel);
         widgetFactory.paintBordersFor(parent);
         if(forEachExpression == null) {

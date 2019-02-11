@@ -246,7 +246,7 @@ public class HeaderMediatorPropertiesEditionPartForm extends SectionPropertiesEd
              *  
              */
             public void selectionChanged(SelectionChangedEvent event) {
-                validate();
+                refresh();
             }
         });
 		// End of user code
@@ -290,7 +290,7 @@ public class HeaderMediatorPropertiesEditionPartForm extends SectionPropertiesEd
              *  
              */
             public void selectionChanged(SelectionChangedEvent event) {
-                validate();
+                refresh();
             }
         });
 		// End of user code
@@ -831,7 +831,7 @@ public class HeaderMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	
 	// Start of user code additional methods
 	
-	protected Composite createHeaderName(FormToolkit widgetFactory, Composite parent) {
+	protected Composite createHeaderName(FormToolkit widgetFactory, final Composite parent) {
 		Control headerNameLabel = createDescription(parent, EsbViewsRepository.HeaderMediator.Properties.headerName, EsbMessages.HeaderMediatorPropertiesEditionPart_HeaderNameLabel);
         widgetFactory.paintBordersFor(parent);
         if(headerName == null) {
@@ -871,7 +871,7 @@ public class HeaderMediatorPropertiesEditionPartForm extends SectionPropertiesEd
         return parent;
 	}
 	
-	protected Composite createValueExpression(FormToolkit widgetFactory, Composite parent) {
+	protected Composite createValueExpression(FormToolkit widgetFactory, final Composite parent) {
 		Control valueExpressionLabel = createDescription(parent, EsbViewsRepository.HeaderMediator.Properties.valueExpression, EsbMessages.HeaderMediatorPropertiesEditionPart_ValueExpressionLabel);
         widgetFactory.paintBordersFor(parent);
         if(valueExpression == null) {

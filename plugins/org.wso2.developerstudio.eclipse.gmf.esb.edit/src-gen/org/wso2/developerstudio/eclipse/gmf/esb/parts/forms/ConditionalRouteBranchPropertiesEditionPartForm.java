@@ -18,7 +18,7 @@ import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
-
+import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
@@ -38,7 +38,8 @@ import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.EvaluatorExpressionProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.ConditionalRouteBranchPropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 
@@ -53,6 +54,14 @@ import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
 public class ConditionalRouteBranchPropertiesEditionPartForm extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, ConditionalRouteBranchPropertiesEditionPart {
 
 	protected Button breakAfterRoute;
+	// Start of user code  for targetSequence widgets declarations
+	
+	// End of user code
+
+	// Start of user code  for evaluatorExpression widgets declarations
+	
+	// End of user code
+
 
 
 
@@ -97,10 +106,11 @@ public class ConditionalRouteBranchPropertiesEditionPartForm extends SectionProp
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		CompositionSequence conditionalRouteBranchStep = new BindingCompositionSequence(propertiesEditionComponent);
-		conditionalRouteBranchStep
-			.addStep(EsbViewsRepository.ConditionalRouteBranch.Properties.class)
-			.addStep(EsbViewsRepository.ConditionalRouteBranch.Properties.breakAfterRoute);
+		CompositionStep propertiesStep = conditionalRouteBranchStep.addStep(EsbViewsRepository.ConditionalRouteBranch.Properties.class);
+		propertiesStep.addStep(EsbViewsRepository.ConditionalRouteBranch.Properties.breakAfterRoute);
+		propertiesStep.addStep(EsbViewsRepository.ConditionalRouteBranch.Properties.targetSequence);
 		
+		conditionalRouteBranchStep.addStep(EsbViewsRepository.ConditionalRouteBranch.evaluatorExpression);
 		
 		composer = new PartComposer(conditionalRouteBranchStep) {
 
@@ -112,6 +122,12 @@ public class ConditionalRouteBranchPropertiesEditionPartForm extends SectionProp
 				if (key == EsbViewsRepository.ConditionalRouteBranch.Properties.breakAfterRoute) {
 					return createBreakAfterRouteCheckbox(widgetFactory, parent);
 				}
+				// Start of user code for targetSequence addToPart creation
+				
+				// End of user code
+				// Start of user code for evaluatorExpression addToPart creation
+				
+				// End of user code
 				return parent;
 			}
 		};
@@ -213,6 +229,14 @@ public class ConditionalRouteBranchPropertiesEditionPartForm extends SectionProp
 
 
 
+	// Start of user code for targetSequence specific getters and setters implementation
+	
+	// End of user code
+
+	// Start of user code for evaluatorExpression specific getters and setters implementation
+	
+	// End of user code
+
 	/**
 	 * {@inheritDoc}
 	 *
@@ -223,8 +247,32 @@ public class ConditionalRouteBranchPropertiesEditionPartForm extends SectionProp
 		return EsbMessages.ConditionalRouteBranch_Part_Title;
 	}
 
+
 	// Start of user code additional methods
-	
+
+    @Override
+    public RegistryKeyProperty getTargetSequence() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void setTargetSequence(RegistryKeyProperty registryKeyProperty) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public EvaluatorExpressionProperty getEvaluatorExpression() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void setEvaluatorExpression(EvaluatorExpressionProperty evaluatorExpressionProperty) {
+        // TODO Auto-generated method stub
+        
+    }
 	// End of user code
 
 

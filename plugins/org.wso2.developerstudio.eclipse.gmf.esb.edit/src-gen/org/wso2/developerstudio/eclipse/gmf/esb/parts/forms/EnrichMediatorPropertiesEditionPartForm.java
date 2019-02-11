@@ -534,7 +534,7 @@ public class EnrichMediatorPropertiesEditionPartForm extends SectionPropertiesEd
              * 
              */
             public void selectionChanged(SelectionChangedEvent event) {
-                validate();
+                refresh();
             }
         });
         // End of user code
@@ -583,7 +583,7 @@ public class EnrichMediatorPropertiesEditionPartForm extends SectionPropertiesEd
              * 
              */
             public void selectionChanged(SelectionChangedEvent event) {
-                validate();
+                refresh();
             }
         });
         // End of user code
@@ -792,7 +792,7 @@ public class EnrichMediatorPropertiesEditionPartForm extends SectionPropertiesEd
              * 
              */
             public void selectionChanged(SelectionChangedEvent event) {
-                validate();
+                refresh();
             }
         });
         // End of user code
@@ -841,7 +841,7 @@ public class EnrichMediatorPropertiesEditionPartForm extends SectionPropertiesEd
              * 
              */
             public void selectionChanged(SelectionChangedEvent event) {
-                validate();
+                refresh();
             }
         });
         // End of user code
@@ -1438,7 +1438,7 @@ public class EnrichMediatorPropertiesEditionPartForm extends SectionPropertiesEd
     }
 
     // Start of user code additional methods
-    protected Composite createsourceXPathWidget(FormToolkit widgetFactory, Composite parent) {
+    protected Composite createsourceXPathWidget(FormToolkit widgetFactory, final Composite parent) {
         Control sourceXPathLabel = createDescription(parent, EsbViewsRepository.EnrichMediator.Source.sourceXPath,
                 EsbMessages.EnrichMediatorPropertiesEditionPart_SourceXPathLabel);
         widgetFactory.paintBordersFor(parent);
@@ -1539,7 +1539,7 @@ public class EnrichMediatorPropertiesEditionPartForm extends SectionPropertiesEd
         return parent;
     }
 
-    protected Composite createtargetXPathWidget(FormToolkit widgetFactory, Composite parent) {
+    protected Composite createtargetXPathWidget(FormToolkit widgetFactory, final Composite parent) {
         Control targetXPathLabel = createDescription(parent, EsbViewsRepository.EnrichMediator.Target.targetXPath,
                 EsbMessages.EnrichMediatorPropertiesEditionPart_TargetXPathLabel);
         widgetFactory.paintBordersFor(parent);

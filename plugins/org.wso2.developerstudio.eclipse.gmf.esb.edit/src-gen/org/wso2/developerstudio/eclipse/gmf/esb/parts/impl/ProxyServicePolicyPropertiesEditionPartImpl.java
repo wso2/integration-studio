@@ -3,9 +3,8 @@
  */
 package org.wso2.developerstudio.eclipse.gmf.esb.parts.impl;
 
-import java.util.ArrayList;
-
 // Start of user code for imports
+import java.util.ArrayList;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
@@ -172,7 +171,7 @@ public class ProxyServicePolicyPropertiesEditionPartImpl extends CompositeProper
 	}
 
 	// Start of user code additional methods
-	protected Composite createPolicyKey(Composite parent) {
+	protected Composite createPolicyKey(final Composite parent) {
         Control policyKeyLabel = createDescription(parent, EsbViewsRepository.ProxyServicePolicy.Properties.policyKey,
                 EsbMessages.ProxyServicePolicyPropertiesEditionPart_PolicyKeyLabel);
 

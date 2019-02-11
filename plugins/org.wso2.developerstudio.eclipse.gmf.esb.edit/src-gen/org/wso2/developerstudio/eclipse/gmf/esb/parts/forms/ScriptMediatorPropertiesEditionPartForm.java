@@ -434,7 +434,7 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 		scriptType.addSelectionChangedListener(new ISelectionChangedListener() {
 			@Override
 			public void selectionChanged(SelectionChangedEvent event) {
-				validate();
+			    refresh();
 			}
 		});
 		// End of user code
@@ -644,7 +644,7 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 		keyType.addSelectionChangedListener(new ISelectionChangedListener() {
 			@Override
 			public void selectionChanged(SelectionChangedEvent event) {
-				validate();
+			    refresh();
 				
 			}
 		});
@@ -1198,7 +1198,7 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 		return parent;
 	}
 	
-	protected Composite createScriptDynamicKey(FormToolkit widgetFactory, Composite parent) {
+	protected Composite createScriptDynamicKey(FormToolkit widgetFactory, final Composite parent) {
 		Control scriptDynamicKeyLabel = createDescription(parent,
 				EsbViewsRepository.ScriptMediator.Properties.scriptDynamicKey,
 				EsbMessages.ScriptMediatorPropertiesEditionPart_ScriptDynamicKeyLabel);

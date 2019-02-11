@@ -2042,7 +2042,7 @@ public class FaultMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
 	}
 
 	// Start of user code additional methods
-	protected Composite createFaultDetailExpressionText(FormToolkit widgetFactory, Composite parent) {
+	protected Composite createFaultDetailExpressionText(FormToolkit widgetFactory, final Composite parent) {
         Control faultDetailExpressionLabel = createDescription(parent, null, "Detail Expression");
         widgetFactory.paintBordersFor(parent);
         if (faultDetailExpression== null) {
@@ -2092,7 +2092,7 @@ public class FaultMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
         return parent;
     }
 	
-	   protected Composite createFaultReasonExpressionText(FormToolkit widgetFactory, Composite parent) {
+	   protected Composite createFaultReasonExpressionText(FormToolkit widgetFactory, final Composite parent) {
         Control faultReasonExpressionLabel = createDescription(parent, null, "Fault Reason Expression");
 	        widgetFactory.paintBordersFor(parent);
 	        if (faultReasonExpression== null) {
@@ -2142,7 +2142,7 @@ public class FaultMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
 	        return parent;
 	    }
 	   
-    protected Composite createFaultStringExpressionText(FormToolkit widgetFactory, Composite parent) {
+    protected Composite createFaultStringExpressionText(FormToolkit widgetFactory, final Composite parent) {
         Control faultStringExpressionLabel = createDescription(parent, null, "Fault String Expression");
            widgetFactory.paintBordersFor(parent);
            if (faultStringExpression== null) {
@@ -2192,7 +2192,7 @@ public class FaultMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
            return parent;
        }
 	   
-	   protected Composite createFaultCodeExpressionText(FormToolkit widgetFactory, Composite parent) {
+	   protected Composite createFaultCodeExpressionText(FormToolkit widgetFactory, final Composite parent) {
         Control faultCodeExpressionLabel = createDescription(parent, null, "Fault Code Expression");
            widgetFactory.paintBordersFor(parent);
            if (faultCodeExpression== null) {

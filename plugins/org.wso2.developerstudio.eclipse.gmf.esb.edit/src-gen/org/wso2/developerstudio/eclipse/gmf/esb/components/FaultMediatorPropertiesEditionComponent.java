@@ -46,7 +46,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.FaultReasonType;
 import org.wso2.developerstudio.eclipse.gmf.esb.FaultSoapVersion;
 import org.wso2.developerstudio.eclipse.gmf.esb.FaultStringType;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.FaultMediatorPropertiesEditionPart;
 
@@ -144,24 +145,43 @@ public class FaultMediatorPropertiesEditionComponent extends SinglePartPropertie
 			if (isAccessible(EsbViewsRepository.FaultMediator.Properties.faultDetailValue))
 				basePart.setFaultDetailValue(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, faultMediator.getFaultDetailValue()));
 			
+			// Start of user code  for faultDetailExpression command update
+            if (isAccessible(EsbViewsRepository.FaultMediator.Properties.faultDetailExpression)) {
+                basePart.setFaultDetailExpression(faultMediator.getFaultDetailExpression());
+            }
+			// End of user code
+			
+			// Start of user code  for faultReasonExpression command update
+            if (isAccessible(EsbViewsRepository.FaultMediator.Properties.faultReasonExpression)) {
+                basePart.setFaultReasonExpression(faultMediator.getFaultReasonExpression());
+            }
+            // End of user code
+			
+			// Start of user code  for faultCodeExpression command update
+            if (isAccessible(EsbViewsRepository.FaultMediator.Properties.faultCodeExpression)) {
+                basePart.setFaultCodeExpression(faultMediator.getFaultCodeExpression());
+            }
+			// End of user code
+			
+			// Start of user code  for faultStringExpression command update
+            if (isAccessible(EsbViewsRepository.FaultMediator.Properties.faultStringExpression)) {
+                basePart.setFaultStringExpression(faultMediator.getFaultStringExpression());
+            }
+            // End of user code
+			
 			// init filters
+	
+			// Start of user code  for faultDetailExpression filter update
+			// End of user code
 			
+			// Start of user code  for faultReasonExpression filter update
+			// End of user code
 			
+			// Start of user code  for faultCodeExpression filter update
+			// End of user code
 			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
+			// Start of user code  for faultStringExpression filter update
+			// End of user code
 			
 			// init values for referenced views
 			
@@ -170,6 +190,10 @@ public class FaultMediatorPropertiesEditionComponent extends SinglePartPropertie
 		}
 		setInitializing(false);
 	}
+
+
+
+
 
 
 
@@ -250,6 +274,18 @@ public class FaultMediatorPropertiesEditionComponent extends SinglePartPropertie
 		if (editorKey == EsbViewsRepository.FaultMediator.Properties.faultDetailValue) {
 			return EsbPackage.eINSTANCE.getFaultMediator_FaultDetailValue();
 		}
+		if (editorKey == EsbViewsRepository.FaultMediator.Properties.faultDetailExpression) {
+			return EsbPackage.eINSTANCE.getFaultMediator_FaultDetailExpression();
+		}
+		if (editorKey == EsbViewsRepository.FaultMediator.Properties.faultReasonExpression) {
+			return EsbPackage.eINSTANCE.getFaultMediator_FaultReasonExpression();
+		}
+		if (editorKey == EsbViewsRepository.FaultMediator.Properties.faultCodeExpression) {
+			return EsbPackage.eINSTANCE.getFaultMediator_FaultCodeExpression();
+		}
+		if (editorKey == EsbViewsRepository.FaultMediator.Properties.faultStringExpression) {
+			return EsbPackage.eINSTANCE.getFaultMediator_FaultStringExpression();
+		}
 		return super.associatedFeature(editorKey);
 	}
 
@@ -316,6 +352,50 @@ public class FaultMediatorPropertiesEditionComponent extends SinglePartPropertie
 		}
 		if (EsbViewsRepository.FaultMediator.Properties.faultDetailValue == event.getAffectedEditor()) {
 			faultMediator.setFaultDetailValue((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
+		}
+		if (EsbViewsRepository.FaultMediator.Properties.faultDetailExpression == event.getAffectedEditor()) {
+			// Start of user code for updateFaultDetailExpression method body
+		    if (event.getNewValue() != null) {
+                NamespacedProperty nsp = (NamespacedProperty) event.getNewValue();
+                faultMediator.setFaultDetailExpression(nsp);
+            } else {
+                faultMediator.setFaultDetailExpression(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+            }
+			// End of user code
+			
+		}
+		if (EsbViewsRepository.FaultMediator.Properties.faultReasonExpression == event.getAffectedEditor()) {
+			// Start of user code for updateFaultReasonExpression method body
+		    if (event.getNewValue() != null) {
+                NamespacedProperty nsp = (NamespacedProperty) event.getNewValue();
+                faultMediator.setFaultReasonExpression(nsp);
+            } else {
+                faultMediator.setFaultReasonExpression(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+            }
+			// End of user code
+			
+		}
+		if (EsbViewsRepository.FaultMediator.Properties.faultCodeExpression == event.getAffectedEditor()) {
+			// Start of user code for updateFaultCodeExpression method body
+		    if (event.getNewValue() != null) {
+                NamespacedProperty nsp = (NamespacedProperty) event.getNewValue();
+                faultMediator.setFaultCodeExpression(nsp);
+            } else {
+                faultMediator.setFaultCodeExpression(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+            }
+			// End of user code
+			
+		}
+		if (EsbViewsRepository.FaultMediator.Properties.faultStringExpression == event.getAffectedEditor()) {
+			// Start of user code for updateFaultStringExpression method body
+		    if (event.getNewValue() != null) {
+                NamespacedProperty nsp = (NamespacedProperty) event.getNewValue();
+                faultMediator.setFaultStringExpression(nsp);
+            } else {
+                faultMediator.setFaultStringExpression(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+            }
+		    // End of user code
+			
 		}
 	}
 
@@ -418,6 +498,54 @@ public class FaultMediatorPropertiesEditionComponent extends SinglePartPropertie
 					basePart.setFaultDetailValue("");
 				}
 			}
+					// Start of user code for faultDetailExpression live update
+            if (EsbPackage.eINSTANCE.getFaultMediator_FaultDetailExpression().equals(msg.getFeature())
+                    && msg.getNotifier().equals(semanticObject) && basePart != null
+                    && isAccessible(EsbViewsRepository.FaultMediator.Properties.faultDetailExpression)) {
+                if (msg.getNewValue() != null) {
+                    basePart.setFaultDetailExpression((NamespacedProperty) msg.getNewValue());
+                } else {
+                    basePart.setFaultDetailExpression(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+                }
+            }
+            // End of user code
+			
+					// Start of user code for faultReasonExpression live update
+            if (EsbPackage.eINSTANCE.getFaultMediator_FaultReasonExpression().equals(msg.getFeature())
+                    && msg.getNotifier().equals(semanticObject) && basePart != null
+                    && isAccessible(EsbViewsRepository.FaultMediator.Properties.faultReasonExpression)) {
+                if (msg.getNewValue() != null) {
+                    basePart.setFaultReasonExpression((NamespacedProperty) msg.getNewValue());
+                } else {
+                    basePart.setFaultReasonExpression(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+                }
+            }
+            // End of user code
+			
+					// Start of user code for faultCodeExpression live update
+            if (EsbPackage.eINSTANCE.getFaultMediator_FaultCodeExpression().equals(msg.getFeature())
+                    && msg.getNotifier().equals(semanticObject) && basePart != null
+                    && isAccessible(EsbViewsRepository.FaultMediator.Properties.faultCodeExpression)) {
+                if (msg.getNewValue() != null) {
+                    basePart.setFaultCodeExpression((NamespacedProperty) msg.getNewValue());
+                } else {
+                    basePart.setFaultCodeExpression(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+                }
+            }
+					// End of user code
+			
+					// Start of user code for faultStringExpression live update
+            if (EsbPackage.eINSTANCE.getFaultMediator_FaultCodeExpression().equals(msg.getFeature())
+                    && msg.getNotifier().equals(semanticObject) && basePart != null
+                    && isAccessible(EsbViewsRepository.FaultMediator.Properties.faultCodeExpression)) {
+                if (msg.getNewValue() != null) {
+                    basePart.setFaultCodeExpression((NamespacedProperty) msg.getNewValue());
+                } else {
+                    basePart.setFaultCodeExpression(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+                }
+            }
+					// End of user code
+			
 			
 		}
 	}
@@ -447,7 +575,11 @@ public class FaultMediatorPropertiesEditionComponent extends SinglePartPropertie
 			EsbPackage.eINSTANCE.getFaultMediator_RoleName(),
 			EsbPackage.eINSTANCE.getFaultMediator_NodeName(),
 			EsbPackage.eINSTANCE.getFaultMediator_FaultDetailType(),
-			EsbPackage.eINSTANCE.getFaultMediator_FaultDetailValue()		);
+			EsbPackage.eINSTANCE.getFaultMediator_FaultDetailValue(),
+			EsbPackage.eINSTANCE.getFaultMediator_FaultDetailExpression(),
+			EsbPackage.eINSTANCE.getFaultMediator_FaultReasonExpression(),
+			EsbPackage.eINSTANCE.getFaultMediator_FaultCodeExpression(),
+			EsbPackage.eINSTANCE.getFaultMediator_FaultStringExpression()		);
 		return new NotificationFilter[] {filter,};
 	}
 

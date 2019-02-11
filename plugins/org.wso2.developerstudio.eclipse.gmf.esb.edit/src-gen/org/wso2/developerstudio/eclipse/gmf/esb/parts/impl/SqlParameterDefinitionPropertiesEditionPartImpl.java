@@ -457,7 +457,7 @@ public class SqlParameterDefinitionPropertiesEditionPartImpl extends CompositePr
 
 	// Start of user code additional methods
 	
-	protected Composite createValueExpression(Composite parent) {
+	protected Composite createValueExpression(final Composite parent) {
         Control valueExpressionLabel = createDescription(parent, EsbViewsRepository.SqlParameterDefinition.Properties.valueExpression, EsbMessages.SqlParameterDefinitionPropertiesEditionPart_ValueExpressionLabel);
         if(valueExpression == null) {
             valueExpression = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();

@@ -59,7 +59,8 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.FastXSLTMediatorPropertiesEditionPart;
 
@@ -73,14 +74,21 @@ import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
  */
 public class FastXSLTMediatorPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, FastXSLTMediatorPropertiesEditionPart {
 
-	protected Text description;
 	protected Text commentsList;
 	protected Button editCommentsList;
 	protected EList commentsListList;
 	protected Button reverse;
+	
+	// Start of user code  for fastXsltStaticSchemaKey widgets declarations
+	protected RegistryKeyProperty fastXsltStaticSchemaKey;
+	// End of user code
+
+	// Start of user code  for fastXsltDynamicSchemaKey widgets declarations
+	protected NamespacedProperty fastXsltDynamicSchemaKey;
+	// End of user code
+
 	protected EMFComboViewer fastXsltSchemaKeyType;
-
-
+	protected Text description;
 
 	/**
 	 * Default constructor
@@ -117,10 +125,16 @@ public class FastXSLTMediatorPropertiesEditionPartImpl extends CompositeProperti
 	public void createControls(Composite view) { 
 		CompositionSequence fastXSLTMediatorStep = new BindingCompositionSequence(propertiesEditionComponent);
 		CompositionStep propertiesStep = fastXSLTMediatorStep.addStep(EsbViewsRepository.FastXSLTMediator.Properties.class);
-		propertiesStep.addStep(EsbViewsRepository.FastXSLTMediator.Properties.description);
 		propertiesStep.addStep(EsbViewsRepository.FastXSLTMediator.Properties.commentsList);
 		propertiesStep.addStep(EsbViewsRepository.FastXSLTMediator.Properties.reverse);
-		propertiesStep.addStep(EsbViewsRepository.FastXSLTMediator.Properties.fastXsltSchemaKeyType);
+		
+		CompositionStep basicStep = fastXSLTMediatorStep.addStep(EsbViewsRepository.FastXSLTMediator.Basic.class);
+		basicStep.addStep(EsbViewsRepository.FastXSLTMediator.Basic.fastXsltStaticSchemaKey);
+		basicStep.addStep(EsbViewsRepository.FastXSLTMediator.Basic.fastXsltDynamicSchemaKey);
+		
+		CompositionStep miscStep = fastXSLTMediatorStep.addStep(EsbViewsRepository.FastXSLTMediator.Misc.class);
+		miscStep.addStep(EsbViewsRepository.FastXSLTMediator.Misc.fastXsltSchemaKeyType);
+		miscStep.addStep(EsbViewsRepository.FastXSLTMediator.Misc.description);
 		
 		
 		composer = new PartComposer(fastXSLTMediatorStep) {
@@ -130,17 +144,29 @@ public class FastXSLTMediatorPropertiesEditionPartImpl extends CompositeProperti
 				if (key == EsbViewsRepository.FastXSLTMediator.Properties.class) {
 					return createPropertiesGroup(parent);
 				}
-				if (key == EsbViewsRepository.FastXSLTMediator.Properties.description) {
-					return createDescriptionText(parent);
-				}
 				if (key == EsbViewsRepository.FastXSLTMediator.Properties.commentsList) {
 					return createCommentsListMultiValuedEditor(parent);
 				}
 				if (key == EsbViewsRepository.FastXSLTMediator.Properties.reverse) {
 					return createReverseCheckbox(parent);
 				}
-				if (key == EsbViewsRepository.FastXSLTMediator.Properties.fastXsltSchemaKeyType) {
+				if (key == EsbViewsRepository.FastXSLTMediator.Basic.class) {
+					return createBasicGroup(parent);
+				}
+				// Start of user code for fastXsltStaticSchemaKey addToPart creation
+				
+				// End of user code
+				// Start of user code for fastXsltDynamicSchemaKey addToPart creation
+				
+				// End of user code
+				if (key == EsbViewsRepository.FastXSLTMediator.Misc.class) {
+					return createMiscGroup(parent);
+				}
+				if (key == EsbViewsRepository.FastXSLTMediator.Misc.fastXsltSchemaKeyType) {
 					return createFastXsltSchemaKeyTypeEMFComboViewer(parent);
+				}
+				if (key == EsbViewsRepository.FastXSLTMediator.Misc.description) {
+					return createDescriptionText(parent);
 				}
 				return parent;
 			}
@@ -161,55 +187,6 @@ public class FastXSLTMediatorPropertiesEditionPartImpl extends CompositeProperti
 		propertiesGroupLayout.numColumns = 3;
 		propertiesGroup.setLayout(propertiesGroupLayout);
 		return propertiesGroup;
-	}
-
-	
-	protected Composite createDescriptionText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.FastXSLTMediator.Properties.description, EsbMessages.FastXSLTMediatorPropertiesEditionPart_DescriptionLabel);
-		description = SWTUtils.createScrollableText(parent, SWT.BORDER);
-		GridData descriptionData = new GridData(GridData.FILL_HORIZONTAL);
-		description.setLayoutData(descriptionData);
-		description.addFocusListener(new FocusAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FastXSLTMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.FastXSLTMediator.Properties.description, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, description.getText()));
-			}
-
-		});
-		description.addKeyListener(new KeyAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FastXSLTMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.FastXSLTMediator.Properties.description, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, description.getText()));
-				}
-			}
-
-		});
-		EditingUtils.setID(description, EsbViewsRepository.FastXSLTMediator.Properties.description);
-		EditingUtils.setEEFtype(description, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.FastXSLTMediator.Properties.description, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		// Start of user code for createDescriptionText
-
-		// End of user code
-		return parent;
 	}
 
 	protected Composite createCommentsListMultiValuedEditor(Composite parent) {
@@ -285,9 +262,39 @@ public class FastXSLTMediatorPropertiesEditionPartImpl extends CompositeProperti
 		return parent;
 	}
 
+	/**
+	 * 
+	 */
+	protected Composite createBasicGroup(Composite parent) {
+		Group basicGroup = new Group(parent, SWT.NONE);
+		basicGroup.setText(EsbMessages.FastXSLTMediatorPropertiesEditionPart_BasicGroupLabel);
+		GridData basicGroupData = new GridData(GridData.FILL_HORIZONTAL);
+		basicGroupData.horizontalSpan = 3;
+		basicGroup.setLayoutData(basicGroupData);
+		GridLayout basicGroupLayout = new GridLayout();
+		basicGroupLayout.numColumns = 3;
+		basicGroup.setLayout(basicGroupLayout);
+		return basicGroup;
+	}
+
+	/**
+	 * 
+	 */
+	protected Composite createMiscGroup(Composite parent) {
+		Group miscGroup = new Group(parent, SWT.NONE);
+		miscGroup.setText(EsbMessages.FastXSLTMediatorPropertiesEditionPart_MiscGroupLabel);
+		GridData miscGroupData = new GridData(GridData.FILL_HORIZONTAL);
+		miscGroupData.horizontalSpan = 3;
+		miscGroup.setLayoutData(miscGroupData);
+		GridLayout miscGroupLayout = new GridLayout();
+		miscGroupLayout.numColumns = 3;
+		miscGroup.setLayout(miscGroupLayout);
+		return miscGroup;
+	}
+
 	
 	protected Composite createFastXsltSchemaKeyTypeEMFComboViewer(Composite parent) {
-		createDescription(parent, EsbViewsRepository.FastXSLTMediator.Properties.fastXsltSchemaKeyType, EsbMessages.FastXSLTMediatorPropertiesEditionPart_FastXsltSchemaKeyTypeLabel);
+		createDescription(parent, EsbViewsRepository.FastXSLTMediator.Misc.fastXsltSchemaKeyType, EsbMessages.FastXSLTMediatorPropertiesEditionPart_FastXsltSchemaKeyTypeLabel);
 		fastXsltSchemaKeyType = new EMFComboViewer(parent);
 		fastXsltSchemaKeyType.setContentProvider(new ArrayContentProvider());
 		fastXsltSchemaKeyType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -303,13 +310,62 @@ public class FastXSLTMediatorPropertiesEditionPartImpl extends CompositeProperti
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FastXSLTMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.FastXSLTMediator.Properties.fastXsltSchemaKeyType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getFastXsltSchemaKeyType()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FastXSLTMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.FastXSLTMediator.Misc.fastXsltSchemaKeyType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getFastXsltSchemaKeyType()));
 			}
 
 		});
-		fastXsltSchemaKeyType.setID(EsbViewsRepository.FastXSLTMediator.Properties.fastXsltSchemaKeyType);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.FastXSLTMediator.Properties.fastXsltSchemaKeyType, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		fastXsltSchemaKeyType.setID(EsbViewsRepository.FastXSLTMediator.Misc.fastXsltSchemaKeyType);
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.FastXSLTMediator.Misc.fastXsltSchemaKeyType, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createFastXsltSchemaKeyTypeEMFComboViewer
+
+		// End of user code
+		return parent;
+	}
+
+	
+	protected Composite createDescriptionText(Composite parent) {
+		createDescription(parent, EsbViewsRepository.FastXSLTMediator.Misc.description, EsbMessages.FastXSLTMediatorPropertiesEditionPart_DescriptionLabel);
+		description = SWTUtils.createScrollableText(parent, SWT.BORDER);
+		GridData descriptionData = new GridData(GridData.FILL_HORIZONTAL);
+		description.setLayoutData(descriptionData);
+		description.addFocusListener(new FocusAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void focusLost(FocusEvent e) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FastXSLTMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.FastXSLTMediator.Misc.description, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, description.getText()));
+			}
+
+		});
+		description.addKeyListener(new KeyAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void keyPressed(KeyEvent e) {
+				if (e.character == SWT.CR) {
+					if (propertiesEditionComponent != null)
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FastXSLTMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.FastXSLTMediator.Misc.description, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, description.getText()));
+				}
+			}
+
+		});
+		EditingUtils.setID(description, EsbViewsRepository.FastXSLTMediator.Misc.description);
+		EditingUtils.setEEFtype(description, "eef::Text"); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.FastXSLTMediator.Misc.description, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createDescriptionText
 
 		// End of user code
 		return parent;
@@ -326,38 +382,6 @@ public class FastXSLTMediatorPropertiesEditionPartImpl extends CompositeProperti
 		// Start of user code for tab synchronization
 		
 		// End of user code
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.FastXSLTMediatorPropertiesEditionPart#getDescription()
-	 * 
-	 */
-	public String getDescription() {
-		return description.getText();
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.FastXSLTMediatorPropertiesEditionPart#setDescription(String newValue)
-	 * 
-	 */
-	public void setDescription(String newValue) {
-		if (newValue != null) {
-			description.setText(newValue);
-		} else {
-			description.setText(""); //$NON-NLS-1$
-		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.FastXSLTMediator.Properties.description);
-		if (eefElementEditorReadOnlyState && description.isEnabled()) {
-			description.setEnabled(false);
-			description.setToolTipText(EsbMessages.FastXSLTMediator_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !description.isEnabled()) {
-			description.setEnabled(true);
-		}	
-		
 	}
 
 	/**
@@ -462,7 +486,7 @@ public class FastXSLTMediatorPropertiesEditionPartImpl extends CompositeProperti
 	public void initFastXsltSchemaKeyType(Object input, Enumerator current) {
 		fastXsltSchemaKeyType.setInput(input);
 		fastXsltSchemaKeyType.modelUpdating(new StructuredSelection(current));
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.FastXSLTMediator.Properties.fastXsltSchemaKeyType);
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.FastXSLTMediator.Misc.fastXsltSchemaKeyType);
 		if (eefElementEditorReadOnlyState && fastXsltSchemaKeyType.isEnabled()) {
 			fastXsltSchemaKeyType.setEnabled(false);
 			fastXsltSchemaKeyType.setToolTipText(EsbMessages.FastXSLTMediator_ReadOnly);
@@ -480,7 +504,7 @@ public class FastXSLTMediatorPropertiesEditionPartImpl extends CompositeProperti
 	 */
 	public void setFastXsltSchemaKeyType(Enumerator newValue) {
 		fastXsltSchemaKeyType.modelUpdating(new StructuredSelection(newValue));
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.FastXSLTMediator.Properties.fastXsltSchemaKeyType);
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.FastXSLTMediator.Misc.fastXsltSchemaKeyType);
 		if (eefElementEditorReadOnlyState && fastXsltSchemaKeyType.isEnabled()) {
 			fastXsltSchemaKeyType.setEnabled(false);
 			fastXsltSchemaKeyType.setToolTipText(EsbMessages.FastXSLTMediator_ReadOnly);
@@ -490,10 +514,61 @@ public class FastXSLTMediatorPropertiesEditionPartImpl extends CompositeProperti
 		
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.FastXSLTMediatorPropertiesEditionPart#getDescription()
+	 * 
+	 */
+	public String getDescription() {
+		return description.getText();
+	}
 
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.FastXSLTMediatorPropertiesEditionPart#setDescription(String newValue)
+	 * 
+	 */
+	public void setDescription(String newValue) {
+		if (newValue != null) {
+			description.setText(newValue);
+		} else {
+			description.setText(""); //$NON-NLS-1$
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.FastXSLTMediator.Misc.description);
+		if (eefElementEditorReadOnlyState && description.isEnabled()) {
+			description.setEnabled(false);
+			description.setToolTipText(EsbMessages.FastXSLTMediator_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !description.isEnabled()) {
+			description.setEnabled(true);
+		}	
+		
+	}
 
+	// Start of user code for fastXsltStaticSchemaKey specific getters and setters implementation
+	@Override
+    public RegistryKeyProperty getFastXsltStaticSchemaKey() {
+	    return this.fastXsltStaticSchemaKey;
+    }
 
+    @Override
+    public void setFastXsltStaticSchemaKey(RegistryKeyProperty fastXsltStaticSchemaKey) {       
+        this.fastXsltStaticSchemaKey = fastXsltStaticSchemaKey;
+    }
+	// End of user code
 
+	// Start of user code for fastXsltDynamicSchemaKey specific getters and setters implementation
+    @Override
+    public NamespacedProperty getFastXsltDynamicSchemaKey() {
+        return this.fastXsltDynamicSchemaKey;
+    }
+
+    @Override
+    public void setFastXsltDynamicSchemaKey(NamespacedProperty fastXsltDynamicSchemaKey) {
+        this.fastXsltDynamicSchemaKey = fastXsltDynamicSchemaKey;
+    }
+	// End of user code
 
 	/**
 	 * {@inheritDoc}

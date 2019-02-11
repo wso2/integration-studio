@@ -168,7 +168,7 @@ public class EsbViewsRepository {
 			public static String valueType = "esb::EndPointProperty::properties::valueType";
 			
 			// Start of user code for valueExpression ElementEditor key
-			public static String valueExpression = "esb::EndPointProperty::properties::valueExpression";
+			public static String valueExpression = "esb::PropertyMediator::properties::valueExpression";
 			// End of user code
 			
 	
@@ -8264,16 +8264,34 @@ public class EsbViewsRepository {
 		public static class Properties {
 	
 			
-			public static String description = "esb::FastXSLTMediator::properties::description";
-			
-			
 			public static String commentsList = "esb::FastXSLTMediator::properties::commentsList";
 			
 			
 			public static String reverse = "esb::FastXSLTMediator::properties::Reverse";
 			
+	
+		}
+	
+		public static class Basic {
+	
+			// Start of user code for fastXsltStaticSchemaKey ElementEditor key
+			public static String fastXsltStaticSchemaKey = "esb::FastXSLTMediator::Basic::fastXsltStaticSchemaKey";
+			// End of user code
 			
-			public static String fastXsltSchemaKeyType = "esb::FastXSLTMediator::properties::fastXsltSchemaKeyType";
+			// Start of user code for fastXsltDynamicSchemaKey ElementEditor key
+			public static String fastXsltDynamicSchemaKey = "esb::FastXSLTMediator::Basic::fastXsltDynamicSchemaKey";
+			// End of user code
+			
+	
+		}
+	
+		public static class Misc {
+	
+			
+			public static String fastXsltSchemaKeyType = "esb::FastXSLTMediator::Misc::fastXsltSchemaKeyType";
+			
+			
+			public static String description = "esb::FastXSLTMediator::Misc::description";
 			
 	
 		}

@@ -4920,6 +4920,10 @@ public class EsbViewsRepository {
 			
 			public static String valueLiteral = "esb::SqlParameterDefinition::properties::valueLiteral";
 			
+			// Start of user code for valueExpression ElementEditor key
+			public static String valueExpression = "esb::SqlParameterDefinition::properties::valueExpression";
+			// End of user code
+			
 	
 		}
 	

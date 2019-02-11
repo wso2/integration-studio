@@ -5428,6 +5428,9 @@ public class EsbMessages extends NLS {
 	public static String SqlParameterDefinitionPropertiesEditionPart_ValueLiteralLabel;
 
 	
+	public static String SqlParameterDefinitionPropertiesEditionPart_ValueExpressionLabel;
+
+	
 	public static String SqlResultMappingPropertiesEditionPart_PropertyNameLabel;
 
 	

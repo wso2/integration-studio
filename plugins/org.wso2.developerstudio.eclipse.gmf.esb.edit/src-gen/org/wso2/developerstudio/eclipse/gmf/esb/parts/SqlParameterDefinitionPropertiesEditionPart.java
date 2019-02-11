@@ -5,6 +5,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb.parts;
 
 // Start of user code for imports
 import org.eclipse.emf.common.util.Enumerator;
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 
 
 // End of user code
@@ -73,6 +74,11 @@ public interface SqlParameterDefinitionPropertiesEditionPart {
 
 
 
+	// Start of user code for valueExpression specific getters and setters declaration
+	public void setValueExpression(NamespacedProperty nsp);
+	
+	public NamespacedProperty getValueExpression();
+	// End of user code
 
 	/**
 	 * Returns the internationalized title text.

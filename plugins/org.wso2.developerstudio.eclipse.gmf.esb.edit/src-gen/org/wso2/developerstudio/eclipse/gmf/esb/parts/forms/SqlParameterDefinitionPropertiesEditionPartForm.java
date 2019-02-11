@@ -55,7 +55,7 @@ import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.SqlParameterDefinitionPropertiesEditionPart;
 
@@ -72,6 +72,10 @@ public class SqlParameterDefinitionPropertiesEditionPartForm extends SectionProp
 	protected EMFComboViewer dataType;
 	protected EMFComboViewer valueType;
 	protected Text valueLiteral;
+	// Start of user code  for valueExpression widgets declarations
+	
+	// End of user code
+
 
 
 
@@ -120,6 +124,7 @@ public class SqlParameterDefinitionPropertiesEditionPartForm extends SectionProp
 		propertiesStep.addStep(EsbViewsRepository.SqlParameterDefinition.Properties.dataType);
 		propertiesStep.addStep(EsbViewsRepository.SqlParameterDefinition.Properties.valueType);
 		propertiesStep.addStep(EsbViewsRepository.SqlParameterDefinition.Properties.valueLiteral);
+		propertiesStep.addStep(EsbViewsRepository.SqlParameterDefinition.Properties.valueExpression);
 		
 		
 		composer = new PartComposer(sqlParameterDefinitionStep) {
@@ -138,6 +143,9 @@ public class SqlParameterDefinitionPropertiesEditionPartForm extends SectionProp
 				if (key == EsbViewsRepository.SqlParameterDefinition.Properties.valueLiteral) {
 					return createValueLiteralText(widgetFactory, parent);
 				}
+				// Start of user code for valueExpression addToPart creation
+				
+				// End of user code
 				return parent;
 			}
 		};
@@ -431,6 +439,20 @@ public class SqlParameterDefinitionPropertiesEditionPartForm extends SectionProp
 
 
 
+
+	// Start of user code for valueExpression specific getters and setters implementation
+    @Override
+    public void setValueExpression(NamespacedProperty nsp) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public NamespacedProperty getValueExpression() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+	// End of user code
 
 	/**
 	 * {@inheritDoc}

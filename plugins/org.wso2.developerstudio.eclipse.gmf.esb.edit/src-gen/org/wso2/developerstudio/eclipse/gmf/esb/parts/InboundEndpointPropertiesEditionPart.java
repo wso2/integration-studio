@@ -12,6 +12,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 
 import org.eclipse.jface.viewers.ViewerFilter;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 
 
 // End of user code
@@ -3223,6 +3224,11 @@ public interface InboundEndpointPropertiesEditionPart {
 
 
 
+	// Start of user code for transportRabbitMqConsumerQosKey specific getters and setters declaration
+    public RegistryKeyProperty getRabbitMqConsumerQosKey();
+    
+    public void setRabbitMqConsumerQosKey(RegistryKeyProperty registryKeyProperty);
+	// End of user code
 
 	/**
 	 * Returns the internationalized title text.

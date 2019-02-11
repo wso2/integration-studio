@@ -99,6 +99,7 @@ public class DockerGenConstants {
         public static final String DOCKER_IMAGE_CREATION_FAILED_MSG = "Could not generate the docker image.";
         public static final String DOCKER_IMAGE_CREATION_FAILED_TITLE = "Error creating the Docker image";
         public static final String IMAGE_BUNDLE_CREATION_FAILED_MSG = "Could not create the Docker image bundle file.";
+        public static final String DOCKER_IMAGE_CREATION_INTERNAL_ERROR_MSG = "Could not generate Docker image because of an internal error.";
     }
 
     public static class SuccessMessages {

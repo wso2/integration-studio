@@ -959,7 +959,7 @@ public class SwitchMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 
 
 	// Start of user code additional methods
-   protected Composite createSourceXPathWidget(FormToolkit widgetFactory, Composite parent) {
+   protected Composite createSourceXPathWidget(FormToolkit widgetFactory, final Composite parent) {
        Control itemLabel = createDescription(parent, EsbViewsRepository.SwitchMediator.Properties.sourceXPath, EsbMessages.SwitchMediatorPropertiesEditionPart_SourceXPathLabel);
        widgetFactory.paintBordersFor(parent);
        if(sourceXPath == null) {

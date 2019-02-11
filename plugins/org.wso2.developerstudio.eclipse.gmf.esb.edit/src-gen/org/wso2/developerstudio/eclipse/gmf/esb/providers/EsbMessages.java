@@ -632,7 +632,19 @@ public class EsbMessages extends NLS {
 	public static String XQueryVariablePropertiesEditionPart_PropertiesGroupLabel;
 
 	
-	public static String CalloutMediatorPropertiesEditionPart_PropertiesGroupLabel;
+	public static String CalloutMediatorPropertiesEditionPart_MiscGroupLabel;
+
+	
+	public static String CalloutMediatorPropertiesEditionPart_ServiceGroupLabel;
+
+	
+	public static String CalloutMediatorPropertiesEditionPart_SourceGroupLabel;
+
+	
+	public static String CalloutMediatorPropertiesEditionPart_TargetGroupLabel;
+
+	
+	public static String CalloutMediatorPropertiesEditionPart_WSGroupLabel;
 
 	
 	public static String CalloutMediatorInputConnectorPropertiesEditionPart_PropertiesGroupLabel;
@@ -5104,19 +5116,37 @@ public class EsbMessages extends NLS {
 	public static String CalloutMediatorPropertiesEditionPart_ReverseLabel;
 
 	
-	public static String CalloutMediatorPropertiesEditionPart_ServiceURLLabel;
+	public static String CalloutMediatorPropertiesEditionPart_PassHeadersLabel;
+
+	
+	public static String CalloutMediatorPropertiesEditionPart_EndpointTypeLabel;
 
 	
 	public static String CalloutMediatorPropertiesEditionPart_SoapActionLabel;
 
 	
-	public static String CalloutMediatorPropertiesEditionPart_PathToAxis2xmlLabel;
-
-	
 	public static String CalloutMediatorPropertiesEditionPart_PathToAxis2RepositoryLabel;
 
 	
+	public static String CalloutMediatorPropertiesEditionPart_PathToAxis2xmlLabel;
+
+	
+	public static String CalloutMediatorPropertiesEditionPart_InitAxis2ClientOptionsLabel;
+
+	
+	public static String CalloutMediatorPropertiesEditionPart_ServiceURLLabel;
+
+	
+	public static String CalloutMediatorPropertiesEditionPart_AddressEndpointLabel;
+
+	
 	public static String CalloutMediatorPropertiesEditionPart_PayloadTypeLabel;
+
+	
+	public static String CalloutMediatorPropertiesEditionPart_PayloadPropertyLabel;
+
+	
+	public static String CalloutMediatorPropertiesEditionPart_PayloadMessageXpathLabel;
 
 	
 	public static String CalloutMediatorPropertiesEditionPart_ResultTypeLabel;
@@ -5125,22 +5155,22 @@ public class EsbMessages extends NLS {
 	public static String CalloutMediatorPropertiesEditionPart_ResultContextPropertyLabel;
 
 	
-	public static String CalloutMediatorPropertiesEditionPart_PassHeadersLabel;
-
-	
-	public static String CalloutMediatorPropertiesEditionPart_EndpointTypeLabel;
-
-	
-	public static String CalloutMediatorPropertiesEditionPart_PayloadPropertyLabel;
-
-	
-	public static String CalloutMediatorPropertiesEditionPart_SecurityTypeLabel;
+	public static String CalloutMediatorPropertiesEditionPart_ResultMessageXpathLabel;
 
 	
 	public static String CalloutMediatorPropertiesEditionPart_PoliciesLabel;
 
 	
-	public static String CalloutMediatorPropertiesEditionPart_InitAxis2ClientOptionsLabel;
+	public static String CalloutMediatorPropertiesEditionPart_SecurityTypeLabel;
+
+	
+	public static String CalloutMediatorPropertiesEditionPart_PolicyKeyLabel;
+
+	
+	public static String CalloutMediatorPropertiesEditionPart_OutboundPolicyKeyLabel;
+
+	
+	public static String CalloutMediatorPropertiesEditionPart_InboundPolicyKeyLabel;
 
 	
 	public static String CalloutMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;
@@ -5725,6 +5755,12 @@ public class EsbMessages extends NLS {
 	public static String RespondMediatorPropertiesEditionPart_DescriptionLabel;
 
 	
+	public static String RespondMediatorPropertiesEditionPart_ReverseLabel;
+
+	
+	public static String RespondMediatorPropertiesEditionPart_CommentsListLabel;
+
+	
 	public static String RespondMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;
 
 	
@@ -5858,6 +5894,12 @@ public class EsbMessages extends NLS {
 
 	
 	public static String ConditionalRouteBranchPropertiesEditionPart_BreakAfterRouteLabel;
+
+	
+	public static String ConditionalRouteBranchPropertiesEditionPart_TargetSequenceLabel;
+
+	
+	public static String ConditionalRouteBranchPropertiesEditionPart_EvaluatorExpressionLabel;
 
 	
 	public static String ConditionalRouterMediatorPropertiesEditionPart_DescriptionLabel;
@@ -7805,6 +7847,9 @@ public class EsbMessages extends NLS {
 
 	
 	public static String InboundEndpointPropertiesEditionPart_TransportRabbitMqConsumerQosLabel;
+
+	
+	public static String InboundEndpointPropertiesEditionPart_TransportRabbitMqConsumerQosKeyLabel;
 
 	
 	public static String InboundEndpointPropertiesEditionPart_TransportRabbitMqConsumerQosTypeLabel;

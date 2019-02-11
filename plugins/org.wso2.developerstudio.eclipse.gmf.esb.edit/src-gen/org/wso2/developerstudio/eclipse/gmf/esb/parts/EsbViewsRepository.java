@@ -4151,55 +4151,99 @@ public class EsbViewsRepository {
 	 * 
 	 */
 	public static class CalloutMediator {
-		public static class Properties {
+		public static class Misc {
 	
 			
-			public static String description = "esb::CalloutMediator::properties::description";
+			public static String description = "esb::CalloutMediator::Misc::description";
 			
 			
-			public static String commentsList = "esb::CalloutMediator::properties::commentsList";
+			public static String commentsList = "esb::CalloutMediator::Misc::commentsList";
 			
 			
-			public static String reverse = "esb::CalloutMediator::properties::Reverse";
+			public static String reverse = "esb::CalloutMediator::Misc::Reverse";
 			
 			
-			public static String serviceURL = "esb::CalloutMediator::properties::serviceURL";
+			public static String passHeaders = "esb::CalloutMediator::Misc::passHeaders";
+			
+	
+		}
+	
+		public static class Service {
+	
+			
+			public static String endpointType = "esb::CalloutMediator::Service::EndpointType";
 			
 			
-			public static String soapAction = "esb::CalloutMediator::properties::soapAction";
+			public static String soapAction = "esb::CalloutMediator::Service::soapAction";
 			
 			
-			public static String pathToAxis2xml = "esb::CalloutMediator::properties::pathToAxis2xml";
+			public static String pathToAxis2Repository = "esb::CalloutMediator::Service::pathToAxis2Repository";
 			
 			
-			public static String pathToAxis2Repository = "esb::CalloutMediator::properties::pathToAxis2Repository";
+			public static String pathToAxis2xml = "esb::CalloutMediator::Service::pathToAxis2xml";
 			
 			
-			public static String payloadType = "esb::CalloutMediator::properties::payloadType";
+			public static String initAxis2ClientOptions = "esb::CalloutMediator::Service::initAxis2ClientOptions";
 			
 			
-			public static String resultType = "esb::CalloutMediator::properties::resultType";
+			public static String serviceURL = "esb::CalloutMediator::Service::serviceURL";
+			
+			// Start of user code for Address Endpoint ElementEditor key
+			public static String addressEndpoint = "esb::CalloutMediator::Service::Address Endpoint";
+			// End of user code
+			
+	
+		}
+	
+		public static class Source {
+	
+			
+			public static String payloadType = "esb::CalloutMediator::Source::payloadType";
 			
 			
-			public static String resultContextProperty = "esb::CalloutMediator::properties::resultContextProperty";
+			public static String payloadProperty = "esb::CalloutMediator::Source::payloadProperty";
+			
+			// Start of user code for Payload Message Xpath ElementEditor key
+			public static String payloadMessageXpath = "esb::CalloutMediator::Source::Payload Message Xpath";
+			// End of user code
+			
+	
+		}
+	
+		public static class Target {
+	
+			
+			public static String resultType = "esb::CalloutMediator::Target::resultType";
 			
 			
-			public static String passHeaders = "esb::CalloutMediator::properties::passHeaders";
+			public static String resultContextProperty = "esb::CalloutMediator::Target::resultContextProperty";
+			
+			// Start of user code for Result Message Xpath ElementEditor key
+			public static String resultMessageXpath = "esb::CalloutMediator::Target::Result Message Xpath";
+			// End of user code
+			
+	
+		}
+	
+		public static class WS {
+	
+			
+			public static String policies = "esb::CalloutMediator::WS::policies";
 			
 			
-			public static String endpointType = "esb::CalloutMediator::properties::EndpointType";
+			public static String securityType = "esb::CalloutMediator::WS::securityType";
 			
+			// Start of user code for Policy Key ElementEditor key
+			public static String policyKey = "esb::CalloutMediator::WS::Policy Key";
+			// End of user code
 			
-			public static String payloadProperty = "esb::CalloutMediator::properties::payloadProperty";
+			// Start of user code for Outbound Policy Key ElementEditor key
+			public static String outboundPolicyKey = "esb::CalloutMediator::WS::Outbound Policy Key";
+			// End of user code
 			
-			
-			public static String securityType = "esb::CalloutMediator::properties::securityType";
-			
-			
-			public static String policies = "esb::CalloutMediator::properties::policies";
-			
-			
-			public static String initAxis2ClientOptions = "esb::CalloutMediator::properties::initAxis2ClientOptions";
+			// Start of user code for Inbound Policy Key ElementEditor key
+			public static String inboundPolicyKey = "esb::CalloutMediator::WS::Inbound Policy Key";
+			// End of user code
 			
 	
 		}
@@ -5524,6 +5568,12 @@ public class EsbViewsRepository {
 			
 			public static String description = "esb::RespondMediator::properties::description";
 			
+			
+			public static String reverse = "esb::RespondMediator::properties::Reverse";
+			
+			
+			public static String commentsList = "esb::RespondMediator::properties::commentsList";
+			
 	
 		}
 	
@@ -5867,8 +5917,16 @@ public class EsbViewsRepository {
 			
 			public static String breakAfterRoute = "esb::ConditionalRouteBranch::properties::breakAfterRoute";
 			
+			// Start of user code for targetSequence ElementEditor key
+			public static String targetSequence = "esb::ConditionalRouteBranch::properties::targetSequence";
+			// End of user code
+			
 	
 		}
+	
+	// Start of user code for evaluatorExpression ElementEditor key
+	public static String evaluatorExpression = "esb::ConditionalRouteBranch::evaluatorExpression";
+	// End of user code
 	
 	}
 
@@ -8897,6 +8955,10 @@ public class EsbViewsRepository {
 			
 			
 			public static String transportRabbitMqConsumerQos = "esb::InboundEndpoint::properties::transportRabbitMqConsumerQos";
+			
+			// Start of user code for transportRabbitMqConsumerQosKey ElementEditor key
+			public static String transportRabbitMqConsumerQosKey = "esb::InboundEndpoint::properties::transportRabbitMqConsumerQosKey";
+			// End of user code
 			
 			
 			public static String transportRabbitMqConsumerQosType = "esb::InboundEndpoint::properties::transportRabbitMqConsumerQosType";

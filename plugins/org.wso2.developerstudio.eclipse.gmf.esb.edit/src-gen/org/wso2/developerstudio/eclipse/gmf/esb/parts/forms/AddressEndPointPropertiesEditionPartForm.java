@@ -1688,7 +1688,7 @@ public class AddressEndPointPropertiesEditionPartForm extends SectionPropertiesE
 		addressingEnabledTypeElements = new Control[] { addressingEnabled, addressingEnabledHelp };
 		addressingEnabled.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
-				validate();
+				refresh();
 			}
 		});
 		// End of user code

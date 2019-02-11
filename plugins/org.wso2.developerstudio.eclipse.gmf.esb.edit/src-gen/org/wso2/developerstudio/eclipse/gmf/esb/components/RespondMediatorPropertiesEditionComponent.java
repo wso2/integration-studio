@@ -85,7 +85,15 @@ public class RespondMediatorPropertiesEditionComponent extends SinglePartPropert
 			if (isAccessible(EsbViewsRepository.RespondMediator.Properties.description))
 				basePart.setDescription(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, respondMediator.getDescription()));
 			
+			if (isAccessible(EsbViewsRepository.RespondMediator.Properties.reverse)) {
+				basePart.setReverse(respondMediator.isReverse());
+			}
+			if (isAccessible(EsbViewsRepository.RespondMediator.Properties.commentsList))
+				basePart.setCommentsList(respondMediator.getCommentsList());
+			
 			// init filters
+			
+			
 			
 			// init values for referenced views
 			
@@ -98,6 +106,8 @@ public class RespondMediatorPropertiesEditionComponent extends SinglePartPropert
 
 
 
+
+
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
@@ -105,6 +115,12 @@ public class RespondMediatorPropertiesEditionComponent extends SinglePartPropert
 	public EStructuralFeature associatedFeature(Object editorKey) {
 		if (editorKey == EsbViewsRepository.RespondMediator.Properties.description) {
 			return EsbPackage.eINSTANCE.getEsbElement_Description();
+		}
+		if (editorKey == EsbViewsRepository.RespondMediator.Properties.reverse) {
+			return EsbPackage.eINSTANCE.getMediator_Reverse();
+		}
+		if (editorKey == EsbViewsRepository.RespondMediator.Properties.commentsList) {
+			return EsbPackage.eINSTANCE.getEsbElement_CommentsList();
 		}
 		return super.associatedFeature(editorKey);
 	}
@@ -118,6 +134,15 @@ public class RespondMediatorPropertiesEditionComponent extends SinglePartPropert
 		RespondMediator respondMediator = (RespondMediator)semanticObject;
 		if (EsbViewsRepository.RespondMediator.Properties.description == event.getAffectedEditor()) {
 			respondMediator.setDescription((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
+		}
+		if (EsbViewsRepository.RespondMediator.Properties.reverse == event.getAffectedEditor()) {
+			respondMediator.setReverse((Boolean)event.getNewValue());
+		}
+		if (EsbViewsRepository.RespondMediator.Properties.commentsList == event.getAffectedEditor()) {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
+				respondMediator.getCommentsList().clear();
+				respondMediator.getCommentsList().addAll(((EList) event.getNewValue()));
+			}
 		}
 	}
 
@@ -136,6 +161,21 @@ public class RespondMediatorPropertiesEditionComponent extends SinglePartPropert
 					basePart.setDescription("");
 				}
 			}
+			if (EsbPackage.eINSTANCE.getMediator_Reverse().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.RespondMediator.Properties.reverse))
+				basePart.setReverse((Boolean)msg.getNewValue());
+			
+			if (EsbPackage.eINSTANCE.getEsbElement_CommentsList().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.RespondMediator.Properties.commentsList)) {
+				if (msg.getNewValue() instanceof EList<?>) {
+					basePart.setCommentsList((EList<?>)msg.getNewValue());
+				} else if (msg.getNewValue() == null) {
+					basePart.setCommentsList(new BasicEList<Object>());
+				} else {
+					BasicEList<Object> newValueAsList = new BasicEList<Object>();
+					newValueAsList.add(msg.getNewValue());
+					basePart.setCommentsList(newValueAsList);
+				}
+			}
+			
 			
 		}
 	}
@@ -148,7 +188,9 @@ public class RespondMediatorPropertiesEditionComponent extends SinglePartPropert
 	@Override
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
-			EsbPackage.eINSTANCE.getEsbElement_Description()		);
+			EsbPackage.eINSTANCE.getEsbElement_Description(),
+			EsbPackage.eINSTANCE.getMediator_Reverse(),
+			EsbPackage.eINSTANCE.getEsbElement_CommentsList()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -169,6 +211,20 @@ public class RespondMediatorPropertiesEditionComponent extends SinglePartPropert
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getEsbElement_Description().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getEsbElement_Description().getEAttributeType(), newValue);
+				}
+				if (EsbViewsRepository.RespondMediator.Properties.reverse == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getMediator_Reverse().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getMediator_Reverse().getEAttributeType(), newValue);
+				}
+				if (EsbViewsRepository.RespondMediator.Properties.commentsList == event.getAffectedEditor()) {
+					BasicDiagnostic chain = new BasicDiagnostic();
+					for (Iterator iterator = ((List)event.getNewValue()).iterator(); iterator.hasNext();) {
+						chain.add(Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getEsbElement_CommentsList().getEAttributeType(), iterator.next()));
+					}
+					ret = chain;
 				}
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);

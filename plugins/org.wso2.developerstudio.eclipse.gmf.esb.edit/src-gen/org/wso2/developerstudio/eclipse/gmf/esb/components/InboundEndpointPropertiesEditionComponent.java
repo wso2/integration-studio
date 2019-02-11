@@ -68,15 +68,15 @@ import org.wso2.developerstudio.eclipse.gmf.esb.MQTTSubscriptionQOS;
 import org.wso2.developerstudio.eclipse.gmf.esb.OffsetsStorageType;
 import org.wso2.developerstudio.eclipse.gmf.esb.PartitionAssignmentStrategyType;
 import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFormatType;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.TopicFilterFromType;
 import org.wso2.developerstudio.eclipse.gmf.esb.TopicsType;
 import org.wso2.developerstudio.eclipse.gmf.esb.VFSAction;
 import org.wso2.developerstudio.eclipse.gmf.esb.VFSFileSort;
 import org.wso2.developerstudio.eclipse.gmf.esb.WSClientSideBroadcastLevel;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart;
-
 
 // End of user code
 
@@ -135,7 +135,7 @@ public class InboundEndpointPropertiesEditionComponent extends SinglePartPropert
 				basePart.initType(EEFUtils.choiceOfValues(inboundEndpoint, EsbPackage.eINSTANCE.getInboundEndpoint_Type()), inboundEndpoint.getType());
 			}
 			if (isAccessible(EsbViewsRepository.InboundEndpoint.Properties.class_))
-				basePart.setClass_(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, inboundEndpoint.getClass()));
+				basePart.setClass_(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, inboundEndpoint.getClass().getName()));
 			
 			if (isAccessible(EsbViewsRepository.InboundEndpoint.Properties.protocol))
 				basePart.setProtocol(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, inboundEndpoint.getProtocol()));
@@ -762,6 +762,12 @@ public class InboundEndpointPropertiesEditionComponent extends SinglePartPropert
 			if (isAccessible(EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqConsumerQos))
 				basePart.setTransportRabbitMqConsumerQos(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, inboundEndpoint.getTransportRabbitMqConsumerQos()));
 			
+			// Start of user code for transportRabbitMqConsumerQosKey command update
+	         if (isAccessible(EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqConsumerQosKey))
+	                basePart.setRabbitMqConsumerQosKey(inboundEndpoint.getTransportRabbitMqConsumerQosKey());
+
+            // End of user code
+			
 			if (isAccessible(EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqConsumerQosType)) {
 				basePart.initTransportRabbitMqConsumerQosType(EEFUtils.choiceOfValues(inboundEndpoint, EsbPackage.eINSTANCE.getInboundEndpoint_TransportRabbitMqConsumerQosType()), inboundEndpoint.getTransportRabbitMqConsumerQosType());
 			}
@@ -929,7 +935,9 @@ public class InboundEndpointPropertiesEditionComponent extends SinglePartPropert
 			
 				});
 				// Start of user code for additional businessfilters for serviceParameters
-				// End of user code
+	            if (isAccessible(EsbViewsRepository.InboundEndpoint.Properties.class_))
+	                basePart.setClass_(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, inboundEndpoint.getClass().getName()));
+                // End of user code
 			}
 			
 			
@@ -996,6 +1004,9 @@ public class InboundEndpointPropertiesEditionComponent extends SinglePartPropert
 			
 			
 			
+			// Start of user code for transportRabbitMqConsumerQosKey filter update
+            // End of user code
+			
 			
 			
 			// init values for referenced views
@@ -1005,6 +1016,7 @@ public class InboundEndpointPropertiesEditionComponent extends SinglePartPropert
 		}
 		setInitializing(false);
 	}
+
 
 
 
@@ -1867,6 +1879,9 @@ public class InboundEndpointPropertiesEditionComponent extends SinglePartPropert
 		if (editorKey == EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqConsumerQos) {
 			return EsbPackage.eINSTANCE.getInboundEndpoint_TransportRabbitMqConsumerQos();
 		}
+		if (editorKey == EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqConsumerQosKey) {
+			return EsbPackage.eINSTANCE.getInboundEndpoint_TransportRabbitMqConsumerQosKey();
+		}
 		if (editorKey == EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqConsumerQosType) {
 			return EsbPackage.eINSTANCE.getInboundEndpoint_TransportRabbitMqConsumerQosType();
 		}
@@ -2546,6 +2561,17 @@ public class InboundEndpointPropertiesEditionComponent extends SinglePartPropert
 		}
 		if (EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqConsumerQos == event.getAffectedEditor()) {
 			inboundEndpoint.setTransportRabbitMqConsumerQos((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
+		}
+		if (EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqConsumerQosKey == event.getAffectedEditor()) {
+			// Start of user code for updateTransportRabbitMqConsumerQosKey method body
+            if (event.getNewValue() != null) {
+                RegistryKeyProperty rkp = (RegistryKeyProperty) event.getNewValue();
+                inboundEndpoint.setTransportRabbitMqConsumerQosKey(rkp);
+            } else {
+                inboundEndpoint.setTransportRabbitMqConsumerQosKey(EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty());
+            }
+            // End of user code
+			
 		}
 		if (EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqConsumerQosType == event.getAffectedEditor()) {
 			inboundEndpoint.setTransportRabbitMqConsumerQosType((PayloadFormatType)event.getNewValue());
@@ -3874,6 +3900,16 @@ public class InboundEndpointPropertiesEditionComponent extends SinglePartPropert
 					basePart.setTransportRabbitMqConsumerQos("");
 				}
 			}
+					// Start of user code for transportRabbitMqConsumerQosKey live update
+            if (EsbPackage.eINSTANCE.getInboundEndpoint_TransportRabbitMqConsumerQosKey().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqConsumerQosKey)) {
+                if (msg.getNewValue() != null) {
+                    basePart.setRabbitMqConsumerQosKey((RegistryKeyProperty)msg.getNewValue());
+                } else {
+                    basePart.setRabbitMqConsumerQosKey(EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty());
+                }
+            }
+            // End of user code
+			
 			if (EsbPackage.eINSTANCE.getInboundEndpoint_TransportRabbitMqConsumerQosType().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqConsumerQosType))
 				basePart.setTransportRabbitMqConsumerQosType((PayloadFormatType)msg.getNewValue());
 			
@@ -4109,6 +4145,7 @@ public class InboundEndpointPropertiesEditionComponent extends SinglePartPropert
 			EsbPackage.eINSTANCE.getInboundEndpoint_WssSslProtocols(),
 			EsbPackage.eINSTANCE.getInboundEndpoint_WssSslCipherSuites(),
 			EsbPackage.eINSTANCE.getInboundEndpoint_TransportRabbitMqConsumerQos(),
+			EsbPackage.eINSTANCE.getInboundEndpoint_TransportRabbitMqConsumerQosKey(),
 			EsbPackage.eINSTANCE.getInboundEndpoint_TransportRabbitMqConsumerQosType(),
 			EsbPackage.eINSTANCE.getInboundEndpoint_TransportJMSDBUrl()		);
 		return new NotificationFilter[] {filter,};

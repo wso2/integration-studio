@@ -429,9 +429,9 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 			 * 	
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
-			    validate();
-				if (propertiesEditionComponent != null)
+			    if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(APIResourcePropertiesEditionPartForm.this, EsbViewsRepository.APIResource.Basic.urlStyle, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getUrlStyle()));
+			    refresh();
 			}
 
 		});
@@ -871,9 +871,10 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 			 * 	
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
-			    validate();
-				if (propertiesEditionComponent != null)
+			    if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(APIResourcePropertiesEditionPartForm.this, EsbViewsRepository.APIResource.InSequence.inSequenceType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getInSequenceType()));
+			    refresh();
+                
 			}
 
 		});
@@ -991,9 +992,9 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 			 * 	
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
-			    validate();
-				if (propertiesEditionComponent != null)
+			    if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(APIResourcePropertiesEditionPartForm.this, EsbViewsRepository.APIResource.OutSequence.outSequenceType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getOutSequenceType()));
+			    refresh();
 			}
 
 		});
@@ -1111,9 +1112,9 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 			 * 	
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
-			    validate();
-				if (propertiesEditionComponent != null)
+			    if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(APIResourcePropertiesEditionPartForm.this, EsbViewsRepository.APIResource.FaultSequence.faultSequenceType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getFaultSequenceType()));
+			    refresh();
 			}
 
 		});
@@ -1962,7 +1963,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
         validate();
     }
 	
-	 protected Composite createInSequenceKey(FormToolkit widgetFactory, Composite parent) {
+	 protected Composite createInSequenceKey(FormToolkit widgetFactory, final Composite parent) {
 	        Control inSequenceKeyLabel = createDescription(parent, EsbViewsRepository.APIResource.InSequence.inSequenceKey,
 	                EsbMessages.APIResourcePropertiesEditionPart_InSequenceKeyLabel);
 	        widgetFactory.paintBordersFor(parent);
@@ -2011,7 +2012,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 	        return parent;
 	    }
 	 
-	 protected Composite createOutSequenceKey(FormToolkit widgetFactory, Composite parent) {
+	 protected Composite createOutSequenceKey(FormToolkit widgetFactory, final Composite parent) {
          Control outSequenceKeyLabel = createDescription(parent, EsbViewsRepository.APIResource.OutSequence.outSequenceKey,
                  EsbMessages.APIResourcePropertiesEditionPart_OutSequenceKeyLabel);
          widgetFactory.paintBordersFor(parent);
@@ -2060,7 +2061,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
          return parent;
      }
 	 
-	 protected Composite createFaultSequenceKey(FormToolkit widgetFactory, Composite parent) {
+	 protected Composite createFaultSequenceKey(FormToolkit widgetFactory, final Composite parent) {
          Control sequenceKeyLabel = createDescription(parent, EsbViewsRepository.APIResource.FaultSequence.faultSequenceKey,
                  EsbMessages.APIResourcePropertiesEditionPart_FaultSequenceKeyLabel);
          widgetFactory.paintBordersFor(parent);

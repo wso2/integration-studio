@@ -3,8 +3,11 @@
  */
 package org.wso2.developerstudio.eclipse.gmf.esb.parts;
 
-// Start of user code for imports
 
+
+// Start of user code for imports
+import org.wso2.developerstudio.eclipse.gmf.esb.EvaluatorExpressionProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 
 
 // End of user code
@@ -31,6 +34,16 @@ public interface ConditionalRouteBranchPropertiesEditionPart {
 
 
 
+	// Start of user code for targetSequence specific getters and setters declaration
+    public RegistryKeyProperty getTargetSequence();
+    
+    public void setTargetSequence(RegistryKeyProperty registryKeyProperty);
+	// End of user code
+	// Start of user code for evaluatorExpression specific getters and setters declaration
+    public EvaluatorExpressionProperty getEvaluatorExpression();
+    
+    public void setEvaluatorExpression(EvaluatorExpressionProperty evaluatorExpressionProperty);
+	// End of user code
 
 	/**
 	 * Returns the internationalized title text.

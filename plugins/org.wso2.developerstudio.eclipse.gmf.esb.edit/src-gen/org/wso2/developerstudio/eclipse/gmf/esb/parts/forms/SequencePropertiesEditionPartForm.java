@@ -733,8 +733,7 @@ public class SequencePropertiesEditionPartForm extends SectionPropertiesEditingP
 			
 			@Override
 			public void selectionChanged(SelectionChangedEvent event) {
-				// TODO Auto-generated method stub
-				validate();	
+			    refresh();
 			}
 		});
 		// End of user code
@@ -1273,7 +1272,7 @@ public class SequencePropertiesEditionPartForm extends SectionPropertiesEditingP
 		return parent;
 	}
 	
-	protected Composite createDynamicReferenceKey(FormToolkit widgetFactory, Composite parent) {
+	protected Composite createDynamicReferenceKey(FormToolkit widgetFactory, final Composite parent) {
 		Control dynamicReferenceKeyLabel = createDescription(parent,
 				EsbViewsRepository.Sequence.Properties.dynamicReferenceKey,
 				EsbMessages.SequencePropertiesEditionPart_DynamicReferenceKeyLabel);
@@ -1281,7 +1280,7 @@ public class SequencePropertiesEditionPartForm extends SectionPropertiesEditingP
 		if (dynamicReferenceKey == null) {
 			dynamicReferenceKey = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
 		}
-		String initValueExpression = dynamicReferenceKey.getPropertyValue().isEmpty() ? "/default/expression"
+		String initValueExpression = dynamicReferenceKey.getPropertyValue().isEmpty() ? ""
 				: dynamicReferenceKey.getPropertyValue();
 		dynamicReferenceKeyText = widgetFactory.createText(parent, initValueExpression);
 		dynamicReferenceKeyText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);

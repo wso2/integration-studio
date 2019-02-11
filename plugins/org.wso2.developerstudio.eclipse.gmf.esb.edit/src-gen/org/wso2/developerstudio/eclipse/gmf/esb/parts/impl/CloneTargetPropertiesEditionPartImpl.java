@@ -756,8 +756,8 @@ public class CloneTargetPropertiesEditionPartImpl extends CompositePropertiesEdi
 	                endpointKeyText.setText(endpointKey.getKeyValue());
 	                propertiesEditionComponent
 	                        .firePropertiesChanged(new PropertiesEditionEvent(CloneTargetPropertiesEditionPartImpl.this,
-	                                EsbViewsRepository.CloneTarget.Properties.sequenceRegistryKey,
-	                                PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getSequenceKey()));
+	                                EsbViewsRepository.CloneTarget.Properties.endpointRegistryKey,
+	                                PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getEndpointKey()));
 	            }
 
                 @Override

@@ -310,7 +310,7 @@ public class LogPropertyPropertiesEditionPartForm extends SectionPropertiesEditi
 			 * 
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
-				validate();
+			    refresh();
 			}
 
 		});

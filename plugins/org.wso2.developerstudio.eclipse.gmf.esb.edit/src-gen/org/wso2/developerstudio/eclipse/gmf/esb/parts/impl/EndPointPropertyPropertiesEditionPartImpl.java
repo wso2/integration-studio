@@ -328,9 +328,9 @@ public class EndPointPropertyPropertiesEditionPartImpl extends CompositeProperti
 			 * 	
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
-			    validate();
-				if (propertiesEditionComponent != null)
+			    if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EndPointPropertyPropertiesEditionPartImpl.this, EsbViewsRepository.EndPointProperty.Properties.valueType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getValueType()));
+			    validate();
 			}
 
 		});
@@ -569,7 +569,7 @@ public class EndPointPropertyPropertiesEditionPartImpl extends CompositeProperti
         view.layout(true, true);
 	}
 	
-	protected Composite createValueExpression(Composite parent) {
+	protected Composite createValueExpression(final Composite parent) {
         Control valueExpressionLabel = createDescription(parent, EsbViewsRepository.EndPointProperty.Properties.valueExpression,
                 EsbMessages.EndPointPropertyPropertiesEditionPart_ValueExpressionLabel);
 

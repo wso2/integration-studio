@@ -37,6 +37,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RuleOptionType;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.CallTemplateParameterPropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.developerstudio.eclipse.gmf.esb.parts.impl.CallTemplateParameterPropertiesEditionPartImpl;
 
 
 // End of user code
@@ -98,7 +99,7 @@ public class CallTemplateParameterPropertiesEditionComponent extends SinglePartP
 			
 			
 			// Start of user code  for parameterExpression filter update
-            validate();
+            ((CallTemplateParameterPropertiesEditionPartImpl)editingPart).validate();
 			// End of user code
 			
 			// init values for referenced views

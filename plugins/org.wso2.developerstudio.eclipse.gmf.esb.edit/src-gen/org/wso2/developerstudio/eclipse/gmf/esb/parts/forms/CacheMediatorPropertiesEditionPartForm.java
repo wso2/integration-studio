@@ -302,12 +302,12 @@ public class CacheMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
              * 
              */
             public void selectionChanged(SelectionChangedEvent event) {
-                validate();
                 if (propertiesEditionComponent != null)
                     propertiesEditionComponent.firePropertiesChanged(
                             new PropertiesEditionEvent(CacheMediatorPropertiesEditionPartForm.this,
                                     EsbViewsRepository.CacheMediator.Properties.cacheType,
                                     PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getCacheType()));
+                refresh();
             }
 
         });
@@ -689,12 +689,12 @@ public class CacheMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
              * 
              */
             public void selectionChanged(SelectionChangedEvent event) {
-                validate();
                 if (propertiesEditionComponent != null)
                     propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
                             CacheMediatorPropertiesEditionPartForm.this,
                             EsbViewsRepository.CacheMediator.OnCacheHit.sequenceType, PropertiesEditionEvent.COMMIT,
                             PropertiesEditionEvent.SET, null, getSequenceType()));
+                refresh();
             }
 
         });
@@ -1672,7 +1672,7 @@ public class CacheMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
     }
 
     // Start of user code additional methods
-    protected Composite createSequenceKey(FormToolkit widgetFactory, Composite parent) {
+    protected Composite createSequenceKey(FormToolkit widgetFactory, final Composite parent) {
         Control sequenceKeyLabel = createDescription(parent, EsbViewsRepository.CacheMediator.OnCacheHit.sequenceKey,
                 EsbMessages.CacheMediatorPropertiesEditionPart_SequenceTypeLabel);
         widgetFactory.paintBordersFor(parent);
@@ -1768,8 +1768,11 @@ public class CacheMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
 
         } else {
             implementationSection.setVisible(false);
+            ((GridData) implementationSection.getLayoutData()).exclude = true;
             onCacheHitSection.setVisible(false);
+            ((GridData) onCacheHitSection.getLayoutData()).exclude = true;
             protocolSection.setVisible(false);
+            ((GridData) protocolSection.getLayoutData()).exclude = true;
 
         }
 

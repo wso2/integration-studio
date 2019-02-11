@@ -80,6 +80,8 @@ import org.eclipse.ui.forms.widgets.Section;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.FilterMediatorConditionType;
 import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.ThrottlePolicyType;
+import org.wso2.developerstudio.eclipse.gmf.esb.ThrottleSequenceType;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.ThrottleMediatorPropertiesEditionPart;
@@ -578,7 +580,7 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
              *  
              */
             public void selectionChanged(SelectionChangedEvent event) {
-                validate();
+                refresh();
             }
         });
 		// End of user code
@@ -624,7 +626,7 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
              *  
              */
             public void selectionChanged(SelectionChangedEvent event) {
-                validate();
+                refresh();
             }
         });
 		// End of user code
@@ -685,7 +687,7 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
              *  
              */
             public void selectionChanged(SelectionChangedEvent event) {
-                validate();
+                refresh();
             }
         });
 		// End of user code
@@ -1406,7 +1408,26 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
 
     public void validate() {
         EEFPropertyViewUtil epv = new EEFPropertyViewUtil(view);
-        //epv.clearElements(new Composite[] { generalGroup, miscGroup, onAcceptGroup, onRejectGroup });
+        epv.clearElements(new Composite[] { generalGroup, miscGroup, onAcceptGroup, onRejectGroup });
+        epv.showEntry(descriptionElements, false);
+        epv.showEntry(groupIDElements, false);
+        epv.showEntry(policyTypeElements, false);
+        epv.showEntry(onAcceptBranchSequenceTypeElements, false);
+        epv.showEntry(onRejectBranchSequenceTypeElements, false);
+        if (getPolicyType().getLiteral().equals(ThrottlePolicyType.INLINE)) {
+            // addMaxConcurrentAccessCountPropertyDescriptor(object);
+            epv.showEntry(policyEntriesElements, false);
+        } else {
+            epv.showEntry(policyKeyElements, false);
+        }
+
+        if (getOnAcceptBranchsequenceType().getLiteral().equals(ThrottleSequenceType.REGISTRY_REFERENCE)) {
+            epv.showEntry(onAcceptBranchSequenceKeyElements, false);
+        }
+
+        if (getOnRejectBranchsequenceType().getLiteral().equals(ThrottleSequenceType.REGISTRY_REFERENCE)) {
+            epv.showEntry(onRejectBranchSequenceKeyElements, false);
+        }
         view.layout(true, true);
     }
 	// End of user code

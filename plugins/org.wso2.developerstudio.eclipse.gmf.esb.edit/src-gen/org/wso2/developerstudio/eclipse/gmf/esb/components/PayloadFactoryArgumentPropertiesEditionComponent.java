@@ -38,6 +38,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryArgumentType;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.PayloadFactoryArgumentPropertiesEditionPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.parts.impl.PayloadFactoryArgumentPropertiesEditionPartImpl;
 
 
 // End of user code
@@ -103,6 +104,7 @@ public class PayloadFactoryArgumentPropertiesEditionComponent extends SinglePart
 			
 			
 			// Start of user code  for argumentExpression filter update
+			((PayloadFactoryArgumentPropertiesEditionPartImpl)editingPart).validate();
 			// End of user code
 			
 			// init values for referenced views

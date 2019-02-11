@@ -300,7 +300,7 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
              *  
              */
             public void selectionChanged(SelectionChangedEvent event) {
-                validate();
+                refresh();
             }
         });
 		// End of user code
@@ -344,7 +344,7 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
              *  
              */
             public void selectionChanged(SelectionChangedEvent event) {
-                validate();
+                refresh();
             }
         });
 		// End of user code
@@ -388,7 +388,7 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
              *  
              */
             public void selectionChanged(SelectionChangedEvent event) {
-               validate();
+                refresh();
             }
 
         });
@@ -433,7 +433,7 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
              *  
              */
             public void selectionChanged(SelectionChangedEvent event) {
-               validate();
+                refresh();
             }
 
         });
@@ -472,7 +472,7 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
         valueType.addSelectionChangedListener(new ISelectionChangedListener() {
 
             public void selectionChanged(SelectionChangedEvent event) {
-                validate();
+                refresh();
             }
         });
 

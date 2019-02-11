@@ -617,7 +617,7 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
              *  
              */
             public void selectionChanged(SelectionChangedEvent event) {
-                validate();
+                refresh();
             }
         });
 		// End of user code
@@ -661,7 +661,7 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
              *  
              */
             public void selectionChanged(SelectionChangedEvent event) {
-                validate();
+                refresh();
             }
         });
 		// End of user code
@@ -846,7 +846,7 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
              *  
              */
             public void selectionChanged(SelectionChangedEvent event) {
-                validate();
+                refresh();
             }
         });
 		// End of user code

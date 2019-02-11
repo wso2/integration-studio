@@ -30,7 +30,9 @@ import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.ConditionalRouteBranch;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.EvaluatorExpressionProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.ConditionalRouteBranchPropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 
@@ -77,7 +79,25 @@ public class ConditionalRouteBranchPropertiesEditionComponent extends SinglePart
 			if (isAccessible(EsbViewsRepository.ConditionalRouteBranch.Properties.breakAfterRoute)) {
 				basePart.setBreakAfterRoute(conditionalRouteBranch.isBreakAfterRoute());
 			}
+			// Start of user code  for targetSequence command update
+            if (isAccessible(EsbViewsRepository.ConditionalRouteBranch.Properties.targetSequence)) {
+                basePart.setTargetSequence(conditionalRouteBranch.getTargetSequence());
+            }
+			// End of user code
+			
+			// Start of user code  for evaluatorExpression command update
+            if (isAccessible(EsbViewsRepository.ConditionalRouteBranch.evaluatorExpression)) {
+                basePart.setEvaluatorExpression(conditionalRouteBranch.getEvaluatorExpression());
+            }
+			// End of user code
+			
 			// init filters
+			
+			// Start of user code  for targetSequence filter update
+			// End of user code
+			
+			// Start of user code  for evaluatorExpression filter update
+			// End of user code
 			
 			// init values for referenced views
 			
@@ -90,6 +110,8 @@ public class ConditionalRouteBranchPropertiesEditionComponent extends SinglePart
 
 
 
+
+
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
@@ -97,6 +119,12 @@ public class ConditionalRouteBranchPropertiesEditionComponent extends SinglePart
 	public EStructuralFeature associatedFeature(Object editorKey) {
 		if (editorKey == EsbViewsRepository.ConditionalRouteBranch.Properties.breakAfterRoute) {
 			return EsbPackage.eINSTANCE.getConditionalRouteBranch_BreakAfterRoute();
+		}
+		if (editorKey == EsbViewsRepository.ConditionalRouteBranch.Properties.targetSequence) {
+			return EsbPackage.eINSTANCE.getConditionalRouteBranch_TargetSequence();
+		}
+		if (editorKey == EsbViewsRepository.ConditionalRouteBranch.evaluatorExpression) {
+			return EsbPackage.eINSTANCE.getConditionalRouteBranch_EvaluatorExpression();
 		}
 		return super.associatedFeature(editorKey);
 	}
@@ -111,6 +139,28 @@ public class ConditionalRouteBranchPropertiesEditionComponent extends SinglePart
 		if (EsbViewsRepository.ConditionalRouteBranch.Properties.breakAfterRoute == event.getAffectedEditor()) {
 			conditionalRouteBranch.setBreakAfterRoute((Boolean)event.getNewValue());
 		}
+		if (EsbViewsRepository.ConditionalRouteBranch.Properties.targetSequence == event.getAffectedEditor()) {
+			// Start of user code for updateTargetSequence method body
+            if (event.getNewValue() != null) {
+                RegistryKeyProperty rkp = (RegistryKeyProperty) event.getNewValue();
+                conditionalRouteBranch.setTargetSequence(rkp);
+            } else {
+                conditionalRouteBranch.setTargetSequence(EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty());
+            }
+			// End of user code
+			
+		}
+		if (EsbViewsRepository.ConditionalRouteBranch.evaluatorExpression == event.getAffectedEditor()) {
+			// Start of user code for updateEvaluatorExpression method body
+            if (event.getNewValue() != null) {
+                EvaluatorExpressionProperty eep = (EvaluatorExpressionProperty) event.getNewValue();
+                conditionalRouteBranch.setEvaluatorExpression(eep);
+            } else {
+                conditionalRouteBranch.setEvaluatorExpression(EsbFactoryImpl.eINSTANCE.createEvaluatorExpressionProperty());
+            }
+			// End of user code
+			
+		}
 	}
 
 	/**
@@ -124,6 +174,30 @@ public class ConditionalRouteBranchPropertiesEditionComponent extends SinglePart
 			if (EsbPackage.eINSTANCE.getConditionalRouteBranch_BreakAfterRoute().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.ConditionalRouteBranch.Properties.breakAfterRoute))
 				basePart.setBreakAfterRoute((Boolean)msg.getNewValue());
 			
+					// Start of user code for targetSequence live update
+            if (EsbPackage.eINSTANCE.getConditionalRouteBranch_TargetSequence().equals(msg.getFeature())
+                    && msg.getNotifier().equals(semanticObject) && basePart != null
+                    && isAccessible(EsbViewsRepository.ConditionalRouteBranch.Properties.targetSequence)) {
+                if (msg.getNewValue() != null) {
+                    basePart.setTargetSequence((RegistryKeyProperty) msg.getNewValue());
+                } else {
+                    basePart.setTargetSequence(EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty());
+                }
+            }
+					// End of user code
+			
+					// Start of user code for evaluatorExpression live update
+            if (EsbPackage.eINSTANCE.getConditionalRouteBranch_EvaluatorExpression().equals(msg.getFeature())
+                    && msg.getNotifier().equals(semanticObject) && basePart != null
+                    && isAccessible(EsbViewsRepository.ConditionalRouteBranch.evaluatorExpression)) {
+                if (msg.getNewValue() != null) {
+                    basePart.setEvaluatorExpression((EvaluatorExpressionProperty) msg.getNewValue());
+                } else {
+                    basePart.setEvaluatorExpression(EsbFactoryImpl.eINSTANCE.createEvaluatorExpressionProperty());
+                }
+            }
+					// End of user code
+			
 			
 		}
 	}
@@ -136,7 +210,9 @@ public class ConditionalRouteBranchPropertiesEditionComponent extends SinglePart
 	@Override
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
-			EsbPackage.eINSTANCE.getConditionalRouteBranch_BreakAfterRoute()		);
+			EsbPackage.eINSTANCE.getConditionalRouteBranch_BreakAfterRoute(),
+			EsbPackage.eINSTANCE.getConditionalRouteBranch_TargetSequence(),
+			EsbPackage.eINSTANCE.getConditionalRouteBranch_EvaluatorExpression()		);
 		return new NotificationFilter[] {filter,};
 	}
 

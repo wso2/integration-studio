@@ -78,11 +78,16 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.JMSBrokerType;
+import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFormatType;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.developerstudio.esb.form.editors.article.providers.NamedEntityDescriptor;
 
 // End of user code
 
@@ -311,6 +316,8 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
     protected Text wssSslCipherSuites;
     protected Text transportRabbitMqConsumerQos;
     // Start of user code for transportRabbitMqConsumerQosKey widgets declarations
+    protected RegistryKeyProperty transportRabbitMqConsumerQosKey;
+    protected Text transportRabbitMqConsumerQosKeyText;
     protected ArrayList<Control> generalProperties = new ArrayList<Control>();
     protected ArrayList<Control> HTTPPropertyIDs = new ArrayList<Control>();
     protected ArrayList<Control> filePropertyIDs = new ArrayList<Control>();
@@ -322,6 +329,8 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
     protected ArrayList<Control> cxfWsRmPropertyIDs = new ArrayList<Control>();
     protected ArrayList<Control> mqttPropertyIDs = new ArrayList<Control>();
     protected ArrayList<Control> rabbitmqPropertyIDs = new ArrayList<Control>();
+    protected ArrayList<Control> rabbitmqConsumerQosProperty = new ArrayList<Control>();
+    protected ArrayList<Control> rabbitmqConsumerQosKeyProperty = new ArrayList<Control>();
     protected ArrayList<Control> feedPropertyIDs = new ArrayList<Control>();
     protected ArrayList<Control> wso2MBPropertyIDs = new ArrayList<Control>();
     protected ArrayList<Control> wsPropertyIDs = new ArrayList<Control>();
@@ -331,6 +340,14 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
     protected ArrayList<Control> kafkaHighLevelTopicFilterPropertyIDs = new ArrayList<Control>();
     protected ArrayList<Control> kafkaSimplePropertyIDs = new ArrayList<Control>();
     protected Composite propertiesGroup;
+    private static final String JAVA_NAMING_FACTORY_INITIAL_WSO2_BROKER = "org.wso2.andes.jndi.PropertiesFileInitialContextFactory";
+    private static final String JAVA_NAMING_FACTORY_INITIAL_ACTIVEMQ = "org.apache.activemq.jndi.ActiveMQInitialContextFactory";
+    private static final String CONNECTION_FACTORY_JNDI_NAME_WSO2_BROKER = "QueueConnectionFactory";
+    private static final String CONNECTION_FACTORY_JNDI_NAME_ACTIVEMQ = "QueueConnectionFactory";
+    private static final String TRANSPORT_JMS_DESTINATION_WSO2_BROKER = "JMSMS";
+    private static final String TRANSPORT_JMS_DESTINATION_ACTIVEMQ = "ordersQueue";
+    private static final String JAVA_NAMING_PROVIDER_URL_WSO2_BROKER = "conf/jndi.properties";
+    private static final String JAVA_NAMING_PROVIDER_URL_ACTIVEMQ = "tcp://localhost:61616";
     // End of user code
 
     protected EMFComboViewer transportRabbitMqConsumerQosType;
@@ -2139,11 +2156,17 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
                     Control[] previousControls = parent.getChildren();
                     Composite composite = createTransportRabbitMqConsumerQosText(widgetFactory, parent);
                     Control[] newControls = parent.getChildren();
-                    EEFPropertyViewUtil.addTableElementsAsList(rabbitmqPropertyIDs, previousControls, newControls);
+                    EEFPropertyViewUtil.addTableElementsAsList(rabbitmqConsumerQosProperty, previousControls, newControls);
                     return composite;
                 }
                 // Start of user code for transportRabbitMqConsumerQosKey addToPart creation
-
+                if (key == EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqConsumerQosKey) {
+                    Control[] previousControls = parent.getChildren();
+                    Composite composite = createTransportRabbitMqConsumerQosKey(widgetFactory, parent);
+                    Control[] newControls = parent.getChildren();
+                    EEFPropertyViewUtil.addTableElementsAsList(rabbitmqConsumerQosKeyProperty, previousControls, newControls);
+                    return composite;
+                }
                 // End of user code
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqConsumerQosType) {
                     Control[] previousControls = parent.getChildren();
@@ -2164,6 +2187,7 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
         };
         composer.compose(view);
     }
+
 
     /**
      * 
@@ -7125,7 +7149,19 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
                         EsbViewsRepository.FORM_KIND),
                 null); // $NON-NLS-1$
         // Start of user code for createTransportJMSBrokerTypeEMFComboViewer
+        transportJMSBrokerType.addSelectionChangedListener(new ISelectionChangedListener() {
 
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+             * 
+             */
+            public void selectionChanged(SelectionChangedEvent event) {
+                refresh();
+            }
+
+        });
         // End of user code
         return parent;
     }
@@ -16196,7 +16232,19 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
                         EsbViewsRepository.FORM_KIND),
                 null); // $NON-NLS-1$
         // Start of user code for createTransportRabbitMqConsumerQosTypeEMFComboViewer
+        transportRabbitMqConsumerQosType.addSelectionChangedListener(new ISelectionChangedListener() {
 
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+             * 
+             */
+            public void selectionChanged(SelectionChangedEvent event) {
+                refresh();
+            }
+
+        });
         // End of user code
         return parent;
     }
@@ -23996,6 +24044,19 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
 
     // Start of user code for transportRabbitMqConsumerQosKey specific getters and setters implementation
 
+    @Override
+    public RegistryKeyProperty getRabbitMqConsumerQosKey() {
+        return transportRabbitMqConsumerQosKey;
+    }
+
+    @Override
+    public void setRabbitMqConsumerQosKey(RegistryKeyProperty registryKeyProperty) {
+        if (registryKeyProperty != null) {
+            transportRabbitMqConsumerQosKeyText.setText(registryKeyProperty.getKeyValue());
+            transportRabbitMqConsumerQosKey = registryKeyProperty;
+        }
+        
+    }
     // End of user code
 
     /**
@@ -24009,6 +24070,56 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
     }
 
     // Start of user code additional methods
+    protected Composite createTransportRabbitMqConsumerQosKey(FormToolkit widgetFactory, Composite parent) {
+        createDescription(parent,
+                EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqConsumerQosKey,
+                EsbMessages.InboundEndpointPropertiesEditionPart_TransportRabbitMqConsumerQosKeyLabel);
+        widgetFactory.paintBordersFor(parent);
+        if (transportRabbitMqConsumerQosKey == null) {
+            transportRabbitMqConsumerQosKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
+        }
+        String initValueExpression = transportRabbitMqConsumerQosKey.getKeyValue().isEmpty() ? "" : transportRabbitMqConsumerQosKey.getKeyValue();
+        transportRabbitMqConsumerQosKeyText = widgetFactory.createText(parent, initValueExpression);
+        transportRabbitMqConsumerQosKeyText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+        widgetFactory.paintBordersFor(parent);
+        GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
+        transportRabbitMqConsumerQosKeyText.setLayoutData(valueData);
+        transportRabbitMqConsumerQosKeyText.addFocusListener(new FocusAdapter() {
+            /**
+             * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+             * 
+             */
+            @Override
+            @SuppressWarnings("synthetic-access")
+            public void focusLost(FocusEvent e) {
+            }
+
+            /**
+             * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+             */
+            @Override
+            public void focusGained(FocusEvent e) {
+                EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
+                        SWT.NULL, transportRabbitMqConsumerQosKey, new ArrayList<NamedEntityDescriptor>());
+                dialog.open();
+                transportRabbitMqConsumerQosKeyText.setText(transportRabbitMqConsumerQosKey.getKeyValue());
+                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                        InboundEndpointPropertiesEditionPartForm.this,
+                        EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqConsumerQosKey, PropertiesEditionEvent.COMMIT,
+                        PropertiesEditionEvent.SET, null, getRabbitMqConsumerQosKey()));
+            }
+        });
+        EditingUtils.setID(transportRabbitMqConsumerQosKeyText, EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqConsumerQosKey);
+        EditingUtils.setEEFtype(transportRabbitMqConsumerQosKeyText, "eef::Text");
+        FormUtils.createHelpButton(widgetFactory, parent,
+                propertiesEditionComponent.getHelpContent(EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqConsumerQosKey,
+                        EsbViewsRepository.FORM_KIND),
+                null); // $NON-NLS-1$
+        // sequenceKeyElements = new Control[] { sequenceKeyLabel, sequenceKeyText, sequenceKeyHelp };
+        //inlineRegistryElements = new Control[] { inlineRegistryKeyLabel, inlineRegistryKeyText, inlineRegistryKeyHelp };
+        return parent;
+    }
+    
     @Override
     public void refresh() {
         super.refresh();
@@ -24030,6 +24141,26 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
             }
             case "JMS": {
                 epv.showEntry(jmsPropertyIDs, false);
+                switch (getTransportJMSBrokerType().getLiteral()) {
+                    case "WSO2_BROKER_PROFILE":
+                        setJavaNamingFactoryInitial(JAVA_NAMING_FACTORY_INITIAL_WSO2_BROKER);
+                        setJavaNamingProviderUrl(JAVA_NAMING_PROVIDER_URL_WSO2_BROKER);
+                        setTransportJMSDestination(TRANSPORT_JMS_DESTINATION_WSO2_BROKER);
+                        setTransportJMSConnectionFactoryJNDIName(CONNECTION_FACTORY_JNDI_NAME_WSO2_BROKER); 
+                    break;
+                    case "ActiveMQ":
+                        setJavaNamingFactoryInitial(JAVA_NAMING_FACTORY_INITIAL_ACTIVEMQ);
+                        setJavaNamingProviderUrl(JAVA_NAMING_PROVIDER_URL_ACTIVEMQ);
+                        setTransportJMSDestination(TRANSPORT_JMS_DESTINATION_ACTIVEMQ);
+                        setTransportJMSConnectionFactoryJNDIName(CONNECTION_FACTORY_JNDI_NAME_ACTIVEMQ); 
+                    break;
+                    case "OTHER":
+                        setJavaNamingFactoryInitial("");
+                        setJavaNamingProviderUrl("");
+                        setTransportJMSDestination("");
+                        setTransportJMSConnectionFactoryJNDIName(""); 
+                    break;
+                }
                 break;
             }
             case "Custom": {
@@ -24078,6 +24209,11 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
             }
             case "RABBITMQ": {
                 epv.showEntry(rabbitmqPropertyIDs, false);
+                if (PayloadFormatType.INLINE.equals(getTransportRabbitMqConsumerQosType())) {
+                    epv.showEntry(rabbitmqConsumerQosProperty, false);
+                } else {
+                    epv.showEntry(rabbitmqConsumerQosKeyProperty, false);
+                }
                 break;
             }
             case "Feed": {
@@ -24101,5 +24237,8 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
         view.layout(true, true);
     }
     // End of user code
+
+
+
 
 }

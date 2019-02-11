@@ -533,7 +533,7 @@ public class StoreMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
              *  
              */
             public void selectionChanged(SelectionChangedEvent event) {
-                validate();
+                refresh();
             }
 
         });

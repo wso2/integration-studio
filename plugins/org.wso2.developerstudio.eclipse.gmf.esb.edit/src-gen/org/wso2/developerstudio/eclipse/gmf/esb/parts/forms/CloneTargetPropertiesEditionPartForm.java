@@ -262,7 +262,7 @@ public class CloneTargetPropertiesEditionPartForm extends SectionPropertiesEditi
              * 
              */
             public void selectionChanged(SelectionChangedEvent event) {
-                validate();
+                refresh();
             }
         });
         // End of user code
@@ -351,7 +351,7 @@ public class CloneTargetPropertiesEditionPartForm extends SectionPropertiesEditi
              *  
              */
             public void selectionChanged(SelectionChangedEvent event) {
-                validate();
+                refresh();
             }
         });
         // End of user code

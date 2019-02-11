@@ -247,7 +247,7 @@ public class PayloadFactoryMediatorPropertiesEditionPartForm extends SectionProp
              *  
              */
             public void selectionChanged(SelectionChangedEvent event) {
-                validate();
+                refresh();
             }
         });
 		// End of user code

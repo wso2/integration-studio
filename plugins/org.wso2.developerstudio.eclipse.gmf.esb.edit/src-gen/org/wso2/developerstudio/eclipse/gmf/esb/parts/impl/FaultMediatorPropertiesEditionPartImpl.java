@@ -59,7 +59,7 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.FaultMediatorPropertiesEditionPart;
 
@@ -93,6 +93,22 @@ public class FaultMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	protected Text nodeName;
 	protected EMFComboViewer faultDetailType;
 	protected Text faultDetailValue;
+	// Start of user code  for faultStringExpression widgets declarations
+	
+	// End of user code
+
+	// Start of user code  for faultCodeExpression widgets declarations
+	
+	// End of user code
+
+	// Start of user code  for faultDetailExpression widgets declarations
+	
+	// End of user code
+
+	// Start of user code  for faultReasonExpression widgets declarations
+	
+	// End of user code
+
 
 
 
@@ -149,6 +165,10 @@ public class FaultMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 		propertiesStep.addStep(EsbViewsRepository.FaultMediator.Properties.nodeName);
 		propertiesStep.addStep(EsbViewsRepository.FaultMediator.Properties.faultDetailType);
 		propertiesStep.addStep(EsbViewsRepository.FaultMediator.Properties.faultDetailValue);
+		propertiesStep.addStep(EsbViewsRepository.FaultMediator.Properties.faultStringExpression);
+		propertiesStep.addStep(EsbViewsRepository.FaultMediator.Properties.faultCodeExpression);
+		propertiesStep.addStep(EsbViewsRepository.FaultMediator.Properties.faultDetailExpression);
+		propertiesStep.addStep(EsbViewsRepository.FaultMediator.Properties.faultReasonExpression);
 		
 		
 		composer = new PartComposer(faultMediatorStep) {
@@ -212,6 +232,18 @@ public class FaultMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 				if (key == EsbViewsRepository.FaultMediator.Properties.faultDetailValue) {
 					return createFaultDetailValueText(parent);
 				}
+				// Start of user code for faultStringExpression addToPart creation
+				
+				// End of user code
+				// Start of user code for faultCodeExpression addToPart creation
+				
+				// End of user code
+				// Start of user code for faultDetailExpression addToPart creation
+				
+				// End of user code
+				// Start of user code for faultReasonExpression addToPart creation
+				
+				// End of user code
 				return parent;
 			}
 		};
@@ -1636,6 +1668,62 @@ public class FaultMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 
 
 
+
+	// Start of user code for faultStringExpression specific getters and setters implementation
+    @Override
+    public NamespacedProperty getFaultStringExpression() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void setFaultStringExpression(NamespacedProperty nameSpacedProperty) {
+        // TODO Auto-generated method stub
+        
+    }	
+	// End of user code
+
+	// Start of user code for faultCodeExpression specific getters and setters implementation
+    @Override
+    public NamespacedProperty getFaultCodeExpression() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void setFaultCodeExpression(NamespacedProperty nameSpacedProperty) {
+        // TODO Auto-generated method stub
+        
+    }	
+	// End of user code
+
+	// Start of user code for faultDetailExpression specific getters and setters implementation
+    @Override
+    public NamespacedProperty getFaultDetailExpression() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void setFaultDetailExpression(NamespacedProperty nameSpacedProperty) {
+        // TODO Auto-generated method stub
+        
+    }	
+	// End of user code
+
+	// Start of user code for faultReasonExpression specific getters and setters implementation
+    @Override
+    public NamespacedProperty getFaultReasonExpression() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void setFaultReasonExpression(NamespacedProperty nameSpacedProperty) {
+        // TODO Auto-generated method stub
+        
+    }	
+	// End of user code
 
 	/**
 	 * {@inheritDoc}

@@ -1812,6 +1812,18 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v7nvJnEei6boXzpRIfnA" name="faultDetailValue" views="_E7wk8_JnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//FaultMediator/faultDetailValue"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_oUbTgCoEEemy5esktJhzvA" name="faultDetailExpression" views="_VpS0oCoFEemy5esktJhzvA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//FaultMediator/faultDetailExpression"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_KUSbECqQEemy5esktJhzvA" name="faultReasonExpression" views="_b3ajwCoFEemy5esktJhzvA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//FaultMediator/faultReasonExpression"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_Kd-ZYCrOEemy5esktJhzvA" name="faultCodeExpression" views="_NK0zgCoFEemy5esktJhzvA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//FaultMediator/faultCodeExpression"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_R0rhMCrOEemy5esktJhzvA" name="faultStringExpression" views="_f_hooCoFEemy5esktJhzvA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//FaultMediator/faultStringExpression"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//FaultMediator"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_E7v7n_JnEei6boXzpRIfnA" name="FaultMediatorInputConnector" views="_E7wk9PJnEei6boXzpRIfnA">
@@ -3362,6 +3374,12 @@
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_E7v9jPJnEei6boXzpRIfnA" name="ConditionalRouteBranch" views="_E7xJXfJnEei6boXzpRIfnA">
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v9jfJnEei6boXzpRIfnA" name="breakAfterRoute" views="_E7xJX_JnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//ConditionalRouteBranch/breakAfterRoute"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_l5A1MC0eEemjk7S8MNniUQ" name="targetSequence" views="_NdY_YC0UEemjk7S8MNniUQ">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//ConditionalRouteBranch/targetSequence"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_rgVDAC0eEemjk7S8MNniUQ" name="evaluatorExpression" views="_h0qP8C0TEemjk7S8MNniUQ">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//ConditionalRouteBranch/evaluatorExpression"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//ConditionalRouteBranch"/>
       </bindings>
@@ -7727,6 +7745,10 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wk8_JnEei6boXzpRIfnA" name="faultDetailValue">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_f_hooCoFEemy5esktJhzvA" name="faultStringExpression"/>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_NK0zgCoFEemy5esktJhzvA" name="faultCodeExpression"/>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_VpS0oCoFEemy5esktJhzvA" name="faultDetailExpression"/>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_b3ajwCoFEemy5esktJhzvA" name="faultReasonExpression"/>
         </elements>
       </views>
       <views xmi:id="_E7wk9PJnEei6boXzpRIfnA" name="FaultMediatorInputConnector">
@@ -9500,7 +9522,9 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xJX_JnEei6boXzpRIfnA" name="breakAfterRoute">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
           </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_NdY_YC0UEemjk7S8MNniUQ" name="targetSequence"/>
         </elements>
+        <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_h0qP8C0TEemjk7S8MNniUQ" name="evaluatorExpression"/>
       </views>
       <views xmi:id="_E7xJYPJnEei6boXzpRIfnA" name="ConditionalRouterMediator">
         <elements xsi:type="eef-views:Container" xmi:id="_E7xJYfJnEei6boXzpRIfnA" name="properties">

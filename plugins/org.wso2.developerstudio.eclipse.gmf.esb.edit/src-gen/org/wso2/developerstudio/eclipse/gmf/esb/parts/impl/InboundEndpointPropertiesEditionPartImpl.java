@@ -72,7 +72,7 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart;
 
@@ -18178,8 +18178,20 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 		return EsbMessages.InboundEndpoint_Part_Title;
 	}
 
+
+
 	// Start of user code additional methods
-	
+    @Override
+    public RegistryKeyProperty getRabbitMqConsumerQosKey() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void setRabbitMqConsumerQosKey(RegistryKeyProperty registryKeyProperty) {
+        // TODO Auto-generated method stub
+        
+    }
 	// End of user code
 
 

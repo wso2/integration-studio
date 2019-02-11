@@ -3184,6 +3184,22 @@ public class EsbViewsRepository {
 			
 			public static String faultDetailValue = "esb::FaultMediator::properties::faultDetailValue";
 			
+			// Start of user code for faultStringExpression ElementEditor key
+			public static String faultStringExpression = "esb::FaultMediator::properties::faultStringExpression";
+			// End of user code
+			
+			// Start of user code for faultCodeExpression ElementEditor key
+			public static String faultCodeExpression = "esb::FaultMediator::properties::faultCodeExpression";
+			// End of user code
+			
+			// Start of user code for faultDetailExpression ElementEditor key
+			public static String faultDetailExpression = "esb::FaultMediator::properties::faultDetailExpression";
+			// End of user code
+			
+			// Start of user code for faultReasonExpression ElementEditor key
+			public static String faultReasonExpression = "esb::FaultMediator::properties::faultReasonExpression";
+			// End of user code
+			
 	
 		}
 	
@@ -5920,8 +5936,16 @@ public class EsbViewsRepository {
 			
 			public static String breakAfterRoute = "esb::ConditionalRouteBranch::properties::breakAfterRoute";
 			
+			// Start of user code for targetSequence ElementEditor key
+			public static String targetSequence = "esb::ConditionalRouteBranch::properties::targetSequence";
+			// End of user code
+			
 	
 		}
+	
+	// Start of user code for evaluatorExpression ElementEditor key
+	public static String evaluatorExpression = "esb::ConditionalRouteBranch::evaluatorExpression";
+	// End of user code
 	
 	}
 

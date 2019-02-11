@@ -4705,6 +4705,18 @@ public class EsbMessages extends NLS {
 	public static String FaultMediatorPropertiesEditionPart_FaultDetailValueLabel;
 
 	
+	public static String FaultMediatorPropertiesEditionPart_FaultStringExpressionLabel;
+
+	
+	public static String FaultMediatorPropertiesEditionPart_FaultCodeExpressionLabel;
+
+	
+	public static String FaultMediatorPropertiesEditionPart_FaultDetailExpressionLabel;
+
+	
+	public static String FaultMediatorPropertiesEditionPart_FaultReasonExpressionLabel;
+
+	
 	public static String FaultMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;
 
 	
@@ -5894,6 +5906,12 @@ public class EsbMessages extends NLS {
 
 	
 	public static String ConditionalRouteBranchPropertiesEditionPart_BreakAfterRouteLabel;
+
+	
+	public static String ConditionalRouteBranchPropertiesEditionPart_TargetSequenceLabel;
+
+	
+	public static String ConditionalRouteBranchPropertiesEditionPart_EvaluatorExpressionLabel;
 
 	
 	public static String ConditionalRouterMediatorPropertiesEditionPart_DescriptionLabel;

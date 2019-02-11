@@ -779,7 +779,16 @@ public class EsbMessages extends NLS {
 	public static String DBLookupMediatorOutputConnectorPropertiesEditionPart_PropertiesGroupLabel;
 
 	
+	public static String DBReportMediatorPropertiesEditionPart_ConnectionGroupLabel;
+
+	
+	public static String DBReportMediatorPropertiesEditionPart_StatementsGroupLabel;
+
+	
 	public static String DBReportMediatorPropertiesEditionPart_PropertiesGroupLabel;
+
+	
+	public static String DBReportMediatorPropertiesEditionPart_MiscGroupLabel;
 
 	
 	public static String DBReportMediatorInputConnectorPropertiesEditionPart_PropertiesGroupLabel;
@@ -5530,15 +5539,6 @@ public class EsbMessages extends NLS {
 	public static String DBLookupMediatorOutputConnectorPropertiesEditionPart_CommentMediatorsLabel;
 
 	
-	public static String DBReportMediatorPropertiesEditionPart_DescriptionLabel;
-
-	
-	public static String DBReportMediatorPropertiesEditionPart_CommentsListLabel;
-
-	
-	public static String DBReportMediatorPropertiesEditionPart_ReverseLabel;
-
-	
 	public static String DBReportMediatorPropertiesEditionPart_ConnectionTypeLabel;
 
 	
@@ -5564,6 +5564,18 @@ public class EsbMessages extends NLS {
 
 	
 	public static String DBReportMediatorPropertiesEditionPart_ConnectionPasswordLabel;
+
+	
+	public static String DBReportMediatorPropertiesEditionPart_ConnectionUseTransactionLabel;
+
+	
+	public static String DBReportMediatorPropertiesEditionPart_SqlStatementsLabel;
+
+	
+	public static String DBReportMediatorPropertiesEditionPart_CommentsListLabel;
+
+	
+	public static String DBReportMediatorPropertiesEditionPart_ReverseLabel;
 
 	
 	public static String DBReportMediatorPropertiesEditionPart_PropertyAutocommitLabel;
@@ -5602,10 +5614,7 @@ public class EsbMessages extends NLS {
 	public static String DBReportMediatorPropertiesEditionPart_PropertyInitialsizeLabel;
 
 	
-	public static String DBReportMediatorPropertiesEditionPart_SqlStatementsLabel;
-
-	
-	public static String DBReportMediatorPropertiesEditionPart_ConnectionUseTransactionLabel;
+	public static String DBReportMediatorPropertiesEditionPart_DescriptionLabel;
 
 	
 	public static String DBReportMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;

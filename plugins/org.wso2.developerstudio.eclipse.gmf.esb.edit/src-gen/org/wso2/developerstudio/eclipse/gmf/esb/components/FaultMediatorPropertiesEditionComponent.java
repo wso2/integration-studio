@@ -535,13 +535,13 @@ public class FaultMediatorPropertiesEditionComponent extends SinglePartPropertie
 					// End of user code
 			
 					// Start of user code for faultStringExpression live update
-            if (EsbPackage.eINSTANCE.getFaultMediator_FaultCodeExpression().equals(msg.getFeature())
+            if (EsbPackage.eINSTANCE.getFaultMediator_FaultStringExpression().equals(msg.getFeature())
                     && msg.getNotifier().equals(semanticObject) && basePart != null
-                    && isAccessible(EsbViewsRepository.FaultMediator.Properties.faultCodeExpression)) {
+                    && isAccessible(EsbViewsRepository.FaultMediator.Properties.faultStringExpression)) {
                 if (msg.getNewValue() != null) {
-                    basePart.setFaultCodeExpression((NamespacedProperty) msg.getNewValue());
+                    basePart.setFaultStringExpression((NamespacedProperty) msg.getNewValue());
                 } else {
-                    basePart.setFaultCodeExpression(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+                    basePart.setFaultStringExpression(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
                 }
             }
 					// End of user code

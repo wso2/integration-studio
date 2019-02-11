@@ -108,7 +108,7 @@ public class DBLookupMediatorPropertiesEditionComponent extends SinglePartProper
 			final DBLookupMediator dBLookupMediator = (DBLookupMediator)elt;
 			final DBLookupMediatorPropertiesEditionPart basePart = (DBLookupMediatorPropertiesEditionPart)editingPart;
 			// init values
-			if (isAccessible(EsbViewsRepository.DBLookupMediator.Properties.description))
+			if (isAccessible(EsbViewsRepository.DBLookupMediator.Misc.description))
 				basePart.setDescription(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, dBLookupMediator.getDescription()));
 			
 			if (isAccessible(EsbViewsRepository.DBLookupMediator.Properties.commentsList))
@@ -117,31 +117,31 @@ public class DBLookupMediatorPropertiesEditionComponent extends SinglePartProper
 			if (isAccessible(EsbViewsRepository.DBLookupMediator.Properties.reverse)) {
 				basePart.setReverse(dBLookupMediator.isReverse());
 			}
-			if (isAccessible(EsbViewsRepository.DBLookupMediator.Properties.connectionType)) {
+			if (isAccessible(EsbViewsRepository.DBLookupMediator.Connection.connectionType)) {
 				basePart.initConnectionType(EEFUtils.choiceOfValues(dBLookupMediator, EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_ConnectionType()), dBLookupMediator.getConnectionType());
 			}
-			if (isAccessible(EsbViewsRepository.DBLookupMediator.Properties.connectionDsType)) {
+			if (isAccessible(EsbViewsRepository.DBLookupMediator.Connection.connectionDsType)) {
 				basePart.initConnectionDsType(EEFUtils.choiceOfValues(dBLookupMediator, EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_ConnectionDsType()), dBLookupMediator.getConnectionDsType());
 			}
-			if (isAccessible(EsbViewsRepository.DBLookupMediator.Properties.connectionDbType)) {
+			if (isAccessible(EsbViewsRepository.DBLookupMediator.Connection.connectionDbType)) {
 				basePart.initConnectionDbType(EEFUtils.choiceOfValues(dBLookupMediator, EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_ConnectionDbType()), dBLookupMediator.getConnectionDbType());
 			}
-			if (isAccessible(EsbViewsRepository.DBLookupMediator.Properties.connectionDbDriver))
+			if (isAccessible(EsbViewsRepository.DBLookupMediator.Connection.connectionDbDriver))
 				basePart.setConnectionDbDriver(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, dBLookupMediator.getConnectionDbDriver()));
 			
-			if (isAccessible(EsbViewsRepository.DBLookupMediator.Properties.connectionDsInitialContext))
+			if (isAccessible(EsbViewsRepository.DBLookupMediator.Connection.connectionDsInitialContext))
 				basePart.setConnectionDsInitialContext(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, dBLookupMediator.getConnectionDsInitialContext()));
 			
-			if (isAccessible(EsbViewsRepository.DBLookupMediator.Properties.connectionDsName))
+			if (isAccessible(EsbViewsRepository.DBLookupMediator.Connection.connectionDsName))
 				basePart.setConnectionDsName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, dBLookupMediator.getConnectionDsName()));
 			
-			if (isAccessible(EsbViewsRepository.DBLookupMediator.Properties.connectionURL))
+			if (isAccessible(EsbViewsRepository.DBLookupMediator.Connection.connectionURL))
 				basePart.setConnectionURL(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, dBLookupMediator.getConnectionURL()));
 			
-			if (isAccessible(EsbViewsRepository.DBLookupMediator.Properties.connectionUsername))
+			if (isAccessible(EsbViewsRepository.DBLookupMediator.Connection.connectionUsername))
 				basePart.setConnectionUsername(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, dBLookupMediator.getConnectionUsername()));
 			
-			if (isAccessible(EsbViewsRepository.DBLookupMediator.Properties.connectionPassword))
+			if (isAccessible(EsbViewsRepository.DBLookupMediator.Connection.connectionPassword))
 				basePart.setConnectionPassword(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, dBLookupMediator.getConnectionPassword()));
 			
 			if (isAccessible(EsbViewsRepository.DBLookupMediator.Properties.propertyAutocommit)) {
@@ -186,7 +186,7 @@ public class DBLookupMediatorPropertiesEditionComponent extends SinglePartProper
 				basePart.setPropertyInitialsize(EEFConverterUtil.convertToString(EcorePackage.Literals.EINT, dBLookupMediator.getPropertyInitialsize()));
 			}
 			
-			if (isAccessible(EsbViewsRepository.DBLookupMediator.Properties.sqlStatements)) {
+			if (isAccessible(EsbViewsRepository.DBLookupMediator.Statements.sqlStatements)) {
 				sqlStatementsSettings = new ReferencesTableSettings(dBLookupMediator, EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_SqlStatements());
 				basePart.initSqlStatements(sqlStatementsSettings);
 			}
@@ -215,7 +215,7 @@ public class DBLookupMediatorPropertiesEditionComponent extends SinglePartProper
 			
 			
 			
-			if (isAccessible(EsbViewsRepository.DBLookupMediator.Properties.sqlStatements)) {
+			if (isAccessible(EsbViewsRepository.DBLookupMediator.Statements.sqlStatements)) {
 				basePart.addFilterToSqlStatements(new ViewerFilter() {
 					/**
 					 * {@inheritDoc}
@@ -270,7 +270,7 @@ public class DBLookupMediatorPropertiesEditionComponent extends SinglePartProper
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
 	 */
 	public EStructuralFeature associatedFeature(Object editorKey) {
-		if (editorKey == EsbViewsRepository.DBLookupMediator.Properties.description) {
+		if (editorKey == EsbViewsRepository.DBLookupMediator.Misc.description) {
 			return EsbPackage.eINSTANCE.getEsbElement_Description();
 		}
 		if (editorKey == EsbViewsRepository.DBLookupMediator.Properties.commentsList) {
@@ -279,31 +279,31 @@ public class DBLookupMediatorPropertiesEditionComponent extends SinglePartProper
 		if (editorKey == EsbViewsRepository.DBLookupMediator.Properties.reverse) {
 			return EsbPackage.eINSTANCE.getMediator_Reverse();
 		}
-		if (editorKey == EsbViewsRepository.DBLookupMediator.Properties.connectionType) {
+		if (editorKey == EsbViewsRepository.DBLookupMediator.Connection.connectionType) {
 			return EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_ConnectionType();
 		}
-		if (editorKey == EsbViewsRepository.DBLookupMediator.Properties.connectionDsType) {
+		if (editorKey == EsbViewsRepository.DBLookupMediator.Connection.connectionDsType) {
 			return EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_ConnectionDsType();
 		}
-		if (editorKey == EsbViewsRepository.DBLookupMediator.Properties.connectionDbType) {
+		if (editorKey == EsbViewsRepository.DBLookupMediator.Connection.connectionDbType) {
 			return EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_ConnectionDbType();
 		}
-		if (editorKey == EsbViewsRepository.DBLookupMediator.Properties.connectionDbDriver) {
+		if (editorKey == EsbViewsRepository.DBLookupMediator.Connection.connectionDbDriver) {
 			return EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_ConnectionDbDriver();
 		}
-		if (editorKey == EsbViewsRepository.DBLookupMediator.Properties.connectionDsInitialContext) {
+		if (editorKey == EsbViewsRepository.DBLookupMediator.Connection.connectionDsInitialContext) {
 			return EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_ConnectionDsInitialContext();
 		}
-		if (editorKey == EsbViewsRepository.DBLookupMediator.Properties.connectionDsName) {
+		if (editorKey == EsbViewsRepository.DBLookupMediator.Connection.connectionDsName) {
 			return EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_ConnectionDsName();
 		}
-		if (editorKey == EsbViewsRepository.DBLookupMediator.Properties.connectionURL) {
+		if (editorKey == EsbViewsRepository.DBLookupMediator.Connection.connectionURL) {
 			return EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_ConnectionURL();
 		}
-		if (editorKey == EsbViewsRepository.DBLookupMediator.Properties.connectionUsername) {
+		if (editorKey == EsbViewsRepository.DBLookupMediator.Connection.connectionUsername) {
 			return EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_ConnectionUsername();
 		}
-		if (editorKey == EsbViewsRepository.DBLookupMediator.Properties.connectionPassword) {
+		if (editorKey == EsbViewsRepository.DBLookupMediator.Connection.connectionPassword) {
 			return EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_ConnectionPassword();
 		}
 		if (editorKey == EsbViewsRepository.DBLookupMediator.Properties.propertyAutocommit) {
@@ -342,7 +342,7 @@ public class DBLookupMediatorPropertiesEditionComponent extends SinglePartProper
 		if (editorKey == EsbViewsRepository.DBLookupMediator.Properties.propertyInitialsize) {
 			return EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_PropertyInitialsize();
 		}
-		if (editorKey == EsbViewsRepository.DBLookupMediator.Properties.sqlStatements) {
+		if (editorKey == EsbViewsRepository.DBLookupMediator.Statements.sqlStatements) {
 			return EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_SqlStatements();
 		}
 		return super.associatedFeature(editorKey);
@@ -355,7 +355,7 @@ public class DBLookupMediatorPropertiesEditionComponent extends SinglePartProper
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		DBLookupMediator dBLookupMediator = (DBLookupMediator)semanticObject;
-		if (EsbViewsRepository.DBLookupMediator.Properties.description == event.getAffectedEditor()) {
+		if (EsbViewsRepository.DBLookupMediator.Misc.description == event.getAffectedEditor()) {
 			dBLookupMediator.setDescription((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (EsbViewsRepository.DBLookupMediator.Properties.commentsList == event.getAffectedEditor()) {
@@ -367,31 +367,31 @@ public class DBLookupMediatorPropertiesEditionComponent extends SinglePartProper
 		if (EsbViewsRepository.DBLookupMediator.Properties.reverse == event.getAffectedEditor()) {
 			dBLookupMediator.setReverse((Boolean)event.getNewValue());
 		}
-		if (EsbViewsRepository.DBLookupMediator.Properties.connectionType == event.getAffectedEditor()) {
+		if (EsbViewsRepository.DBLookupMediator.Connection.connectionType == event.getAffectedEditor()) {
 			dBLookupMediator.setConnectionType((SqlExecutorConnectionType)event.getNewValue());
 		}
-		if (EsbViewsRepository.DBLookupMediator.Properties.connectionDsType == event.getAffectedEditor()) {
+		if (EsbViewsRepository.DBLookupMediator.Connection.connectionDsType == event.getAffectedEditor()) {
 			dBLookupMediator.setConnectionDsType((SqlExecutorDatasourceType)event.getNewValue());
 		}
-		if (EsbViewsRepository.DBLookupMediator.Properties.connectionDbType == event.getAffectedEditor()) {
+		if (EsbViewsRepository.DBLookupMediator.Connection.connectionDbType == event.getAffectedEditor()) {
 			dBLookupMediator.setConnectionDbType((SqlDatabaseType)event.getNewValue());
 		}
-		if (EsbViewsRepository.DBLookupMediator.Properties.connectionDbDriver == event.getAffectedEditor()) {
+		if (EsbViewsRepository.DBLookupMediator.Connection.connectionDbDriver == event.getAffectedEditor()) {
 			dBLookupMediator.setConnectionDbDriver((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
-		if (EsbViewsRepository.DBLookupMediator.Properties.connectionDsInitialContext == event.getAffectedEditor()) {
+		if (EsbViewsRepository.DBLookupMediator.Connection.connectionDsInitialContext == event.getAffectedEditor()) {
 			dBLookupMediator.setConnectionDsInitialContext((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
-		if (EsbViewsRepository.DBLookupMediator.Properties.connectionDsName == event.getAffectedEditor()) {
+		if (EsbViewsRepository.DBLookupMediator.Connection.connectionDsName == event.getAffectedEditor()) {
 			dBLookupMediator.setConnectionDsName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
-		if (EsbViewsRepository.DBLookupMediator.Properties.connectionURL == event.getAffectedEditor()) {
+		if (EsbViewsRepository.DBLookupMediator.Connection.connectionURL == event.getAffectedEditor()) {
 			dBLookupMediator.setConnectionURL((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
-		if (EsbViewsRepository.DBLookupMediator.Properties.connectionUsername == event.getAffectedEditor()) {
+		if (EsbViewsRepository.DBLookupMediator.Connection.connectionUsername == event.getAffectedEditor()) {
 			dBLookupMediator.setConnectionUsername((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
-		if (EsbViewsRepository.DBLookupMediator.Properties.connectionPassword == event.getAffectedEditor()) {
+		if (EsbViewsRepository.DBLookupMediator.Connection.connectionPassword == event.getAffectedEditor()) {
 			dBLookupMediator.setConnectionPassword((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (EsbViewsRepository.DBLookupMediator.Properties.propertyAutocommit == event.getAffectedEditor()) {
@@ -430,7 +430,7 @@ public class DBLookupMediatorPropertiesEditionComponent extends SinglePartProper
 		if (EsbViewsRepository.DBLookupMediator.Properties.propertyInitialsize == event.getAffectedEditor()) {
 			dBLookupMediator.setPropertyInitialsize((EEFConverterUtil.createIntFromString(EcorePackage.Literals.EINT, (String)event.getNewValue())));
 		}
-		if (EsbViewsRepository.DBLookupMediator.Properties.sqlStatements == event.getAffectedEditor()) {
+		if (EsbViewsRepository.DBLookupMediator.Statements.sqlStatements == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, sqlStatementsSettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
@@ -465,7 +465,7 @@ public class DBLookupMediatorPropertiesEditionComponent extends SinglePartProper
 		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			DBLookupMediatorPropertiesEditionPart basePart = (DBLookupMediatorPropertiesEditionPart)editingPart;
-			if (EsbPackage.eINSTANCE.getEsbElement_Description().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.DBLookupMediator.Properties.description)) {
+			if (EsbPackage.eINSTANCE.getEsbElement_Description().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.DBLookupMediator.Misc.description)) {
 				if (msg.getNewValue() != null) {
 					basePart.setDescription(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
@@ -487,51 +487,51 @@ public class DBLookupMediatorPropertiesEditionComponent extends SinglePartProper
 			if (EsbPackage.eINSTANCE.getMediator_Reverse().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.DBLookupMediator.Properties.reverse))
 				basePart.setReverse((Boolean)msg.getNewValue());
 			
-			if (EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_ConnectionType().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EsbViewsRepository.DBLookupMediator.Properties.connectionType))
+			if (EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_ConnectionType().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EsbViewsRepository.DBLookupMediator.Connection.connectionType))
 				basePart.setConnectionType((SqlExecutorConnectionType)msg.getNewValue());
 			
-			if (EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_ConnectionDsType().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EsbViewsRepository.DBLookupMediator.Properties.connectionDsType))
+			if (EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_ConnectionDsType().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EsbViewsRepository.DBLookupMediator.Connection.connectionDsType))
 				basePart.setConnectionDsType((SqlExecutorDatasourceType)msg.getNewValue());
 			
-			if (EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_ConnectionDbType().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EsbViewsRepository.DBLookupMediator.Properties.connectionDbType))
+			if (EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_ConnectionDbType().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EsbViewsRepository.DBLookupMediator.Connection.connectionDbType))
 				basePart.setConnectionDbType((SqlDatabaseType)msg.getNewValue());
 			
-			if (EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_ConnectionDbDriver().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.DBLookupMediator.Properties.connectionDbDriver)) {
+			if (EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_ConnectionDbDriver().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.DBLookupMediator.Connection.connectionDbDriver)) {
 				if (msg.getNewValue() != null) {
 					basePart.setConnectionDbDriver(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setConnectionDbDriver("");
 				}
 			}
-			if (EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_ConnectionDsInitialContext().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.DBLookupMediator.Properties.connectionDsInitialContext)) {
+			if (EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_ConnectionDsInitialContext().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.DBLookupMediator.Connection.connectionDsInitialContext)) {
 				if (msg.getNewValue() != null) {
 					basePart.setConnectionDsInitialContext(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setConnectionDsInitialContext("");
 				}
 			}
-			if (EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_ConnectionDsName().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.DBLookupMediator.Properties.connectionDsName)) {
+			if (EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_ConnectionDsName().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.DBLookupMediator.Connection.connectionDsName)) {
 				if (msg.getNewValue() != null) {
 					basePart.setConnectionDsName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setConnectionDsName("");
 				}
 			}
-			if (EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_ConnectionURL().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.DBLookupMediator.Properties.connectionURL)) {
+			if (EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_ConnectionURL().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.DBLookupMediator.Connection.connectionURL)) {
 				if (msg.getNewValue() != null) {
 					basePart.setConnectionURL(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setConnectionURL("");
 				}
 			}
-			if (EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_ConnectionUsername().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.DBLookupMediator.Properties.connectionUsername)) {
+			if (EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_ConnectionUsername().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.DBLookupMediator.Connection.connectionUsername)) {
 				if (msg.getNewValue() != null) {
 					basePart.setConnectionUsername(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setConnectionUsername("");
 				}
 			}
-			if (EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_ConnectionPassword().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.DBLookupMediator.Properties.connectionPassword)) {
+			if (EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_ConnectionPassword().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.DBLookupMediator.Connection.connectionPassword)) {
 				if (msg.getNewValue() != null) {
 					basePart.setConnectionPassword(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
@@ -602,7 +602,7 @@ public class DBLookupMediatorPropertiesEditionComponent extends SinglePartProper
 					basePart.setPropertyInitialsize("");
 				}
 			}
-			if (EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_SqlStatements().equals(msg.getFeature()) && isAccessible(EsbViewsRepository.DBLookupMediator.Properties.sqlStatements))
+			if (EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_SqlStatements().equals(msg.getFeature()) && isAccessible(EsbViewsRepository.DBLookupMediator.Statements.sqlStatements))
 				basePart.updateSqlStatements();
 			
 		}
@@ -652,7 +652,7 @@ public class DBLookupMediatorPropertiesEditionComponent extends SinglePartProper
 	 * 
 	 */
 	public String getHelpContent(Object key, int kind) {
-		if (key == EsbViewsRepository.DBLookupMediator.Properties.sqlStatements)
+		if (key == EsbViewsRepository.DBLookupMediator.Statements.sqlStatements)
 			return "SQL Statements"; //$NON-NLS-1$
 		return super.getHelpContent(key, kind);
 	}
@@ -667,7 +667,7 @@ public class DBLookupMediatorPropertiesEditionComponent extends SinglePartProper
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
 			try {
-				if (EsbViewsRepository.DBLookupMediator.Properties.description == event.getAffectedEditor()) {
+				if (EsbViewsRepository.DBLookupMediator.Misc.description == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getEsbElement_Description().getEAttributeType(), (String)newValue);
@@ -688,63 +688,63 @@ public class DBLookupMediatorPropertiesEditionComponent extends SinglePartProper
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getMediator_Reverse().getEAttributeType(), newValue);
 				}
-				if (EsbViewsRepository.DBLookupMediator.Properties.connectionType == event.getAffectedEditor()) {
+				if (EsbViewsRepository.DBLookupMediator.Connection.connectionType == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_ConnectionType().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_ConnectionType().getEAttributeType(), newValue);
 				}
-				if (EsbViewsRepository.DBLookupMediator.Properties.connectionDsType == event.getAffectedEditor()) {
+				if (EsbViewsRepository.DBLookupMediator.Connection.connectionDsType == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_ConnectionDsType().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_ConnectionDsType().getEAttributeType(), newValue);
 				}
-				if (EsbViewsRepository.DBLookupMediator.Properties.connectionDbType == event.getAffectedEditor()) {
+				if (EsbViewsRepository.DBLookupMediator.Connection.connectionDbType == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_ConnectionDbType().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_ConnectionDbType().getEAttributeType(), newValue);
 				}
-				if (EsbViewsRepository.DBLookupMediator.Properties.connectionDbDriver == event.getAffectedEditor()) {
+				if (EsbViewsRepository.DBLookupMediator.Connection.connectionDbDriver == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_ConnectionDbDriver().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_ConnectionDbDriver().getEAttributeType(), newValue);
 				}
-				if (EsbViewsRepository.DBLookupMediator.Properties.connectionDsInitialContext == event.getAffectedEditor()) {
+				if (EsbViewsRepository.DBLookupMediator.Connection.connectionDsInitialContext == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_ConnectionDsInitialContext().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_ConnectionDsInitialContext().getEAttributeType(), newValue);
 				}
-				if (EsbViewsRepository.DBLookupMediator.Properties.connectionDsName == event.getAffectedEditor()) {
+				if (EsbViewsRepository.DBLookupMediator.Connection.connectionDsName == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_ConnectionDsName().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_ConnectionDsName().getEAttributeType(), newValue);
 				}
-				if (EsbViewsRepository.DBLookupMediator.Properties.connectionURL == event.getAffectedEditor()) {
+				if (EsbViewsRepository.DBLookupMediator.Connection.connectionURL == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_ConnectionURL().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_ConnectionURL().getEAttributeType(), newValue);
 				}
-				if (EsbViewsRepository.DBLookupMediator.Properties.connectionUsername == event.getAffectedEditor()) {
+				if (EsbViewsRepository.DBLookupMediator.Connection.connectionUsername == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_ConnectionUsername().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_ConnectionUsername().getEAttributeType(), newValue);
 				}
-				if (EsbViewsRepository.DBLookupMediator.Properties.connectionPassword == event.getAffectedEditor()) {
+				if (EsbViewsRepository.DBLookupMediator.Connection.connectionPassword == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_ConnectionPassword().getEAttributeType(), (String)newValue);

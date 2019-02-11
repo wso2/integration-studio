@@ -23,20 +23,6 @@ import org.eclipse.jface.viewers.ViewerFilter;
 public interface DBLookupMediatorPropertiesEditionPart {
 
 	/**
-	 * @return the description
-	 * 
-	 */
-	public String getDescription();
-
-	/**
-	 * Defines a new description
-	 * @param newValue the new description to set
-	 * 
-	 */
-	public void setDescription(String newValue);
-
-
-	/**
 	 * @return the commentsList
 	 * 
 	 */
@@ -74,153 +60,6 @@ public interface DBLookupMediatorPropertiesEditionPart {
 	 * 
 	 */
 	public void setReverse(Boolean newValue);
-
-
-	/**
-	 * @return the connectionType
-	 * 
-	 */
-	public Enumerator getConnectionType();
-
-	/**
-	 * Init the connectionType
-	 * @param input the viewer input
-	 * @param current the current value
-	 */
-	public void initConnectionType(Object input, Enumerator current);
-
-	/**
-	 * Defines a new connectionType
-	 * @param newValue the new connectionType to set
-	 * 
-	 */
-	public void setConnectionType(Enumerator newValue);
-
-
-	/**
-	 * @return the connectionDsType
-	 * 
-	 */
-	public Enumerator getConnectionDsType();
-
-	/**
-	 * Init the connectionDsType
-	 * @param input the viewer input
-	 * @param current the current value
-	 */
-	public void initConnectionDsType(Object input, Enumerator current);
-
-	/**
-	 * Defines a new connectionDsType
-	 * @param newValue the new connectionDsType to set
-	 * 
-	 */
-	public void setConnectionDsType(Enumerator newValue);
-
-
-	/**
-	 * @return the connectionDbType
-	 * 
-	 */
-	public Enumerator getConnectionDbType();
-
-	/**
-	 * Init the connectionDbType
-	 * @param input the viewer input
-	 * @param current the current value
-	 */
-	public void initConnectionDbType(Object input, Enumerator current);
-
-	/**
-	 * Defines a new connectionDbType
-	 * @param newValue the new connectionDbType to set
-	 * 
-	 */
-	public void setConnectionDbType(Enumerator newValue);
-
-
-	/**
-	 * @return the connectionDbDriver
-	 * 
-	 */
-	public String getConnectionDbDriver();
-
-	/**
-	 * Defines a new connectionDbDriver
-	 * @param newValue the new connectionDbDriver to set
-	 * 
-	 */
-	public void setConnectionDbDriver(String newValue);
-
-
-	/**
-	 * @return the connectionDsInitialContext
-	 * 
-	 */
-	public String getConnectionDsInitialContext();
-
-	/**
-	 * Defines a new connectionDsInitialContext
-	 * @param newValue the new connectionDsInitialContext to set
-	 * 
-	 */
-	public void setConnectionDsInitialContext(String newValue);
-
-
-	/**
-	 * @return the connectionDsName
-	 * 
-	 */
-	public String getConnectionDsName();
-
-	/**
-	 * Defines a new connectionDsName
-	 * @param newValue the new connectionDsName to set
-	 * 
-	 */
-	public void setConnectionDsName(String newValue);
-
-
-	/**
-	 * @return the connectionURL
-	 * 
-	 */
-	public String getConnectionURL();
-
-	/**
-	 * Defines a new connectionURL
-	 * @param newValue the new connectionURL to set
-	 * 
-	 */
-	public void setConnectionURL(String newValue);
-
-
-	/**
-	 * @return the connectionUsername
-	 * 
-	 */
-	public String getConnectionUsername();
-
-	/**
-	 * Defines a new connectionUsername
-	 * @param newValue the new connectionUsername to set
-	 * 
-	 */
-	public void setConnectionUsername(String newValue);
-
-
-	/**
-	 * @return the connectionPassword
-	 * 
-	 */
-	public String getConnectionPassword();
-
-	/**
-	 * Defines a new connectionPassword
-	 * @param newValue the new connectionPassword to set
-	 * 
-	 */
-	public void setConnectionPassword(String newValue);
 
 
 	/**
@@ -424,6 +263,167 @@ public interface DBLookupMediatorPropertiesEditionPart {
 	 * 
 	 */
 	public void setPropertyInitialsize(String newValue);
+
+
+	/**
+	 * @return the description
+	 * 
+	 */
+	public String getDescription();
+
+	/**
+	 * Defines a new description
+	 * @param newValue the new description to set
+	 * 
+	 */
+	public void setDescription(String newValue);
+
+
+	/**
+	 * @return the connectionType
+	 * 
+	 */
+	public Enumerator getConnectionType();
+
+	/**
+	 * Init the connectionType
+	 * @param input the viewer input
+	 * @param current the current value
+	 */
+	public void initConnectionType(Object input, Enumerator current);
+
+	/**
+	 * Defines a new connectionType
+	 * @param newValue the new connectionType to set
+	 * 
+	 */
+	public void setConnectionType(Enumerator newValue);
+
+
+	/**
+	 * @return the connectionDsType
+	 * 
+	 */
+	public Enumerator getConnectionDsType();
+
+	/**
+	 * Init the connectionDsType
+	 * @param input the viewer input
+	 * @param current the current value
+	 */
+	public void initConnectionDsType(Object input, Enumerator current);
+
+	/**
+	 * Defines a new connectionDsType
+	 * @param newValue the new connectionDsType to set
+	 * 
+	 */
+	public void setConnectionDsType(Enumerator newValue);
+
+
+	/**
+	 * @return the connectionDsInitialContext
+	 * 
+	 */
+	public String getConnectionDsInitialContext();
+
+	/**
+	 * Defines a new connectionDsInitialContext
+	 * @param newValue the new connectionDsInitialContext to set
+	 * 
+	 */
+	public void setConnectionDsInitialContext(String newValue);
+
+
+	/**
+	 * @return the connectionDbType
+	 * 
+	 */
+	public Enumerator getConnectionDbType();
+
+	/**
+	 * Init the connectionDbType
+	 * @param input the viewer input
+	 * @param current the current value
+	 */
+	public void initConnectionDbType(Object input, Enumerator current);
+
+	/**
+	 * Defines a new connectionDbType
+	 * @param newValue the new connectionDbType to set
+	 * 
+	 */
+	public void setConnectionDbType(Enumerator newValue);
+
+
+	/**
+	 * @return the connectionDbDriver
+	 * 
+	 */
+	public String getConnectionDbDriver();
+
+	/**
+	 * Defines a new connectionDbDriver
+	 * @param newValue the new connectionDbDriver to set
+	 * 
+	 */
+	public void setConnectionDbDriver(String newValue);
+
+
+	/**
+	 * @return the connectionDsName
+	 * 
+	 */
+	public String getConnectionDsName();
+
+	/**
+	 * Defines a new connectionDsName
+	 * @param newValue the new connectionDsName to set
+	 * 
+	 */
+	public void setConnectionDsName(String newValue);
+
+
+	/**
+	 * @return the connectionURL
+	 * 
+	 */
+	public String getConnectionURL();
+
+	/**
+	 * Defines a new connectionURL
+	 * @param newValue the new connectionURL to set
+	 * 
+	 */
+	public void setConnectionURL(String newValue);
+
+
+	/**
+	 * @return the connectionUsername
+	 * 
+	 */
+	public String getConnectionUsername();
+
+	/**
+	 * Defines a new connectionUsername
+	 * @param newValue the new connectionUsername to set
+	 * 
+	 */
+	public void setConnectionUsername(String newValue);
+
+
+	/**
+	 * @return the connectionPassword
+	 * 
+	 */
+	public String getConnectionPassword();
+
+	/**
+	 * Defines a new connectionPassword
+	 * @param newValue the new connectionPassword to set
+	 * 
+	 */
+	public void setConnectionPassword(String newValue);
 
 
 

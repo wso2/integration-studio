@@ -52,16 +52,16 @@ public abstract class AbstractDBMediatorDeserializer
         executeSetValueCommand(ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DS_INITIAL_CONTEXT,
                 dbMediator.getDataSourceProps().get(ICCLASS_Q));
         
-        if (dbMediator.getDataSourceProps().get(DRIVER_Q).toLowerCase().contains(TXT_DATABASE_TYPE_MYSQL)) {
+        if (dbMediator.getDataSourceProps().get(DRIVER_Q) != null && dbMediator.getDataSourceProps().get(DRIVER_Q).toLowerCase().contains(TXT_DATABASE_TYPE_MYSQL)) {
             executeSetValueCommand(ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DB_TYPE, SqlDatabaseType.MYSQL);
         }
-        if (dbMediator.getDataSourceProps().get(DRIVER_Q).toLowerCase().contains(TXT_DATABASE_TYPE_ORACLE)) {
+        if (dbMediator.getDataSourceProps().get(DRIVER_Q) != null && dbMediator.getDataSourceProps().get(DRIVER_Q).toLowerCase().contains(TXT_DATABASE_TYPE_ORACLE)) {
             executeSetValueCommand(ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DB_TYPE, SqlDatabaseType.ORACLE);
         }
-        if (dbMediator.getDataSourceProps().get(DRIVER_Q).toLowerCase().contains(TXT_DATABASE_TYPE_MSSQL)) {
+        if (dbMediator.getDataSourceProps().get(DRIVER_Q) != null && dbMediator.getDataSourceProps().get(DRIVER_Q).toLowerCase().contains(TXT_DATABASE_TYPE_MSSQL)) {
             executeSetValueCommand(ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DB_TYPE, SqlDatabaseType.MSSQL);
         }
-        if (dbMediator.getDataSourceProps().get(DRIVER_Q).toLowerCase().contains(TXT_DATABASE_TYPE_POSTGRESQL)) {
+        if (dbMediator.getDataSourceProps().get(DRIVER_Q) != null && dbMediator.getDataSourceProps().get(DRIVER_Q).toLowerCase().contains(TXT_DATABASE_TYPE_POSTGRESQL)) {
             executeSetValueCommand(ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DB_TYPE, SqlDatabaseType.POSTGRESQL);
         }
 

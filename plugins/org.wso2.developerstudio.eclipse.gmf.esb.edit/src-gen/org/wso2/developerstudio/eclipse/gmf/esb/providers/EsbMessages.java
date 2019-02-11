@@ -764,6 +764,15 @@ public class EsbMessages extends NLS {
 	public static String DBLookupMediatorPropertiesEditionPart_PropertiesGroupLabel;
 
 	
+	public static String DBLookupMediatorPropertiesEditionPart_MiscGroupLabel;
+
+	
+	public static String DBLookupMediatorPropertiesEditionPart_ConnectionGroupLabel;
+
+	
+	public static String DBLookupMediatorPropertiesEditionPart_StatementsGroupLabel;
+
+	
 	public static String DBLookupMediatorInputConnectorPropertiesEditionPart_PropertiesGroupLabel;
 
 	
@@ -5425,40 +5434,10 @@ public class EsbMessages extends NLS {
 	public static String SqlResultMappingPropertiesEditionPart_ColumnIdLabel;
 
 	
-	public static String DBLookupMediatorPropertiesEditionPart_DescriptionLabel;
-
-	
 	public static String DBLookupMediatorPropertiesEditionPart_CommentsListLabel;
 
 	
 	public static String DBLookupMediatorPropertiesEditionPart_ReverseLabel;
-
-	
-	public static String DBLookupMediatorPropertiesEditionPart_ConnectionTypeLabel;
-
-	
-	public static String DBLookupMediatorPropertiesEditionPart_ConnectionDsTypeLabel;
-
-	
-	public static String DBLookupMediatorPropertiesEditionPart_ConnectionDbTypeLabel;
-
-	
-	public static String DBLookupMediatorPropertiesEditionPart_ConnectionDbDriverLabel;
-
-	
-	public static String DBLookupMediatorPropertiesEditionPart_ConnectionDsInitialContextLabel;
-
-	
-	public static String DBLookupMediatorPropertiesEditionPart_ConnectionDsNameLabel;
-
-	
-	public static String DBLookupMediatorPropertiesEditionPart_ConnectionURLLabel;
-
-	
-	public static String DBLookupMediatorPropertiesEditionPart_ConnectionUsernameLabel;
-
-	
-	public static String DBLookupMediatorPropertiesEditionPart_ConnectionPasswordLabel;
 
 	
 	public static String DBLookupMediatorPropertiesEditionPart_PropertyAutocommitLabel;
@@ -5495,6 +5474,36 @@ public class EsbMessages extends NLS {
 
 	
 	public static String DBLookupMediatorPropertiesEditionPart_PropertyInitialsizeLabel;
+
+	
+	public static String DBLookupMediatorPropertiesEditionPart_DescriptionLabel;
+
+	
+	public static String DBLookupMediatorPropertiesEditionPart_ConnectionTypeLabel;
+
+	
+	public static String DBLookupMediatorPropertiesEditionPart_ConnectionDsTypeLabel;
+
+	
+	public static String DBLookupMediatorPropertiesEditionPart_ConnectionDsInitialContextLabel;
+
+	
+	public static String DBLookupMediatorPropertiesEditionPart_ConnectionDbTypeLabel;
+
+	
+	public static String DBLookupMediatorPropertiesEditionPart_ConnectionDbDriverLabel;
+
+	
+	public static String DBLookupMediatorPropertiesEditionPart_ConnectionDsNameLabel;
+
+	
+	public static String DBLookupMediatorPropertiesEditionPart_ConnectionURLLabel;
+
+	
+	public static String DBLookupMediatorPropertiesEditionPart_ConnectionUsernameLabel;
+
+	
+	public static String DBLookupMediatorPropertiesEditionPart_ConnectionPasswordLabel;
 
 	
 	public static String DBLookupMediatorPropertiesEditionPart_SqlStatementsLabel;

@@ -4951,40 +4951,10 @@ public class EsbViewsRepository {
 		public static class Properties {
 	
 			
-			public static String description = "esb::DBLookupMediator::properties::description";
-			
-			
 			public static String commentsList = "esb::DBLookupMediator::properties::commentsList";
 			
 			
 			public static String reverse = "esb::DBLookupMediator::properties::Reverse";
-			
-			
-			public static String connectionType = "esb::DBLookupMediator::properties::connectionType";
-			
-			
-			public static String connectionDsType = "esb::DBLookupMediator::properties::connectionDsType";
-			
-			
-			public static String connectionDbType = "esb::DBLookupMediator::properties::connectionDbType";
-			
-			
-			public static String connectionDbDriver = "esb::DBLookupMediator::properties::connectionDbDriver";
-			
-			
-			public static String connectionDsInitialContext = "esb::DBLookupMediator::properties::connectionDsInitialContext";
-			
-			
-			public static String connectionDsName = "esb::DBLookupMediator::properties::connectionDsName";
-			
-			
-			public static String connectionURL = "esb::DBLookupMediator::properties::connectionURL";
-			
-			
-			public static String connectionUsername = "esb::DBLookupMediator::properties::connectionUsername";
-			
-			
-			public static String connectionPassword = "esb::DBLookupMediator::properties::connectionPassword";
 			
 			
 			public static String propertyAutocommit = "esb::DBLookupMediator::properties::propertyAutocommit";
@@ -5022,8 +4992,53 @@ public class EsbViewsRepository {
 			
 			public static String propertyInitialsize = "esb::DBLookupMediator::properties::propertyInitialsize";
 			
+	
+		}
+	
+		public static class Misc {
+	
 			
-			public static String sqlStatements = "esb::DBLookupMediator::properties::sqlStatements";
+			public static String description = "esb::DBLookupMediator::misc::description";
+			
+	
+		}
+	
+		public static class Connection {
+	
+			
+			public static String connectionType = "esb::DBLookupMediator::connection::connectionType";
+			
+			
+			public static String connectionDsType = "esb::DBLookupMediator::connection::connectionDsType";
+			
+			
+			public static String connectionDsInitialContext = "esb::DBLookupMediator::connection::connectionDsInitialContext";
+			
+			
+			public static String connectionDbType = "esb::DBLookupMediator::connection::connectionDbType";
+			
+			
+			public static String connectionDbDriver = "esb::DBLookupMediator::connection::connectionDbDriver";
+			
+			
+			public static String connectionDsName = "esb::DBLookupMediator::connection::connectionDsName";
+			
+			
+			public static String connectionURL = "esb::DBLookupMediator::connection::connectionURL";
+			
+			
+			public static String connectionUsername = "esb::DBLookupMediator::connection::connectionUsername";
+			
+			
+			public static String connectionPassword = "esb::DBLookupMediator::connection::connectionPassword";
+			
+	
+		}
+	
+		public static class Statements {
+	
+			
+			public static String sqlStatements = "esb::DBLookupMediator::statements::sqlStatements";
 			
 	
 		}

@@ -3,8 +3,6 @@
  */
 package org.wso2.developerstudio.eclipse.gmf.esb.parts.impl;
 
-import java.util.ArrayList;
-
 // Start of user code for imports
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 
@@ -25,6 +23,8 @@ import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+
+import java.util.ArrayList;
 
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;

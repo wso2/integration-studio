@@ -2879,6 +2879,10 @@ public class EsbViewsRepository {
 			
 			public static String priority = "esb::EnqueueMediator::properties::priority";
 			
+			// Start of user code for sequenceKey ElementEditor key
+			public static String sequenceKey = "esb::EnqueueMediator::properties::sequenceKey";
+			// End of user code
+			
 	
 		}
 	
@@ -3297,7 +3301,7 @@ public class EsbViewsRepository {
 			public static String sequenceType = "esb::AggregateMediator::onComplete::sequenceType";
 			
 			// Start of user code for sequenceKey ElementEditor key
-			public static String sequenceKey = "esb::CacheMediator::OnCacheHit::sequenceKey";
+			public static String sequenceKey = "esb::AggregateMediator::onComplete::sequenceKey";
 			// End of user code
 			
 	

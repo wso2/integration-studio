@@ -1626,6 +1626,9 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v7YvJnEei6boXzpRIfnA" name="priority" views="_E7wkqvJnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//EnqueueMediator/priority"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_Hvx5QC35EemFL4WMu9Ad-w" name="sequenceKey" views="_u2JGMC34EemFL4WMu9Ad-w">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//EnqueueMediator/sequenceKey"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//EnqueueMediator"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_E7v7Y_JnEei6boXzpRIfnA" name="EnqueueMediatorInputConnector" views="_E7wkq_JnEei6boXzpRIfnA">
@@ -7537,6 +7540,7 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wkqvJnEei6boXzpRIfnA" name="priority">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_u2JGMC34EemFL4WMu9Ad-w" name="sequenceKey"/>
         </elements>
       </views>
       <views xmi:id="_E7wkq_JnEei6boXzpRIfnA" name="EnqueueMediatorInputConnector">

@@ -4567,6 +4567,9 @@ public class EsbMessages extends NLS {
 	public static String EnqueueMediatorPropertiesEditionPart_PriorityLabel;
 
 	
+	public static String EnqueueMediatorPropertiesEditionPart_SequenceKeyLabel;
+
+	
 	public static String EnqueueMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;
 
 	

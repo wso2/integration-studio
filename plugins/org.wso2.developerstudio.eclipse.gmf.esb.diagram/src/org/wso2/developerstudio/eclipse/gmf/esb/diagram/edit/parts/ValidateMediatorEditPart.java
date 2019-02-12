@@ -142,8 +142,8 @@ public class ValidateMediatorEditPart extends SingleCompartmentComplexFiguredAbs
      * @generated NOT
      */
     protected IFigure createNodeShape() {
-        return primaryShape = new ValidateMediatorFigure(new Color(null, 247, 250, 245),
-                new Color(null, 104, 159, 56)) {
+        return primaryShape = new ValidateMediatorFigure(new Color(null, 26, 188, 156),
+                new Color(null, 255, 255, 255)) {
             public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
                 super.setBounds(rect);
                 if ((!connected) && (this.getBounds().getLocation().x != 0 && this.getBounds().getLocation().y != 0)) {

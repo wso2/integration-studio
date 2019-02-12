@@ -193,14 +193,14 @@ public class FastXSLTMediatorItemProvider extends MediatorItemProvider {
     }
 
     /**
-     * This returns FastXSLTMediator.gif.
+     * This returns FastXSLTMediator.png.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
+     * @generated NOT
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/FastXSLTMediator"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/FastXSLTMediator.png"));
     }
 
     /**

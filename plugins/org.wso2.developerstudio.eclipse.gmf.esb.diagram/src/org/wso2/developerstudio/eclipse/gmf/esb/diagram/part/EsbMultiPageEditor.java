@@ -669,7 +669,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
                     handleFormViewActivatedEvent(false);
                 } else {
                     handleDesignViewActivatedEvent(false);
-                    Display.getCurrent().asyncExec(new Runnable() {
+                    Display.getCurrent().syncExec(new Runnable() {
 
                         @Override
                         public void run() {

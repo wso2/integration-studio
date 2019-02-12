@@ -44,7 +44,7 @@ public class EsbGraphicalShapeWithLabel extends RoundedRectangle {
     public RoundedRectangle tempPropertyValueRectangle1;
     private WrappingLabel propertyNameLabel;
     private static int Image_PreferredWidth = 72;
-    private static int Image_PreferredHeight = 52;
+    private static int Image_PreferredHeight = 80;
     protected RoundedRectangle mainImageRectangle;
     private LayeredPane pane;
     protected Layer figureLayer;
@@ -77,14 +77,14 @@ public class EsbGraphicalShapeWithLabel extends RoundedRectangle {
         layoutThis.makeColumnsEqualWidth = true;
         layoutThis.horizontalSpacing = 0;
         layoutThis.verticalSpacing = -5;
-        layoutThis.marginHeight = 3;
+        layoutThis.marginHeight = 0;
         layoutThis.marginWidth = 0;
 
         this.setLayoutManager(layoutThis);
         this.setCornerDimensions(new Dimension(8, 8));
         this.setOutline(false);
 
-        RoundedRectangleBorder border = new RoundedRectangleBorder(8, 8);
+        RoundedRectangleBorder border = new RoundedRectangleBorder(0, 0);
         border.setColor(EditPartDrawingHelper.FigureNormalColor);
         this.setBorder(border);
 
@@ -220,7 +220,7 @@ public class EsbGraphicalShapeWithLabel extends RoundedRectangle {
         mainImageRectangle.setOutline(false);
         mainImageRectangle.setPreferredSize(new Dimension(Image_PreferredWidth, Image_PreferredHeight));
         mainImageRectangle.add(iconImageFigure);
-        RoundedRectangleBorder border = new RoundedRectangleBorder(8, 8);
+        RoundedRectangleBorder border = new RoundedRectangleBorder(0,0);
         border.setColor(borderColor);
         mainImageRectangle.setBorder(border);
         figureLayer.add(mainImageRectangle, constraintMainImageRectangle);
@@ -243,7 +243,7 @@ public class EsbGraphicalShapeWithLabel extends RoundedRectangle {
         // Label to display description.
         propertyNameLabel = new WrappingLabel();
         propertyNameLabel.setText("");
-        propertyNameLabel.setForegroundColor(new Color(null, 46, 46, 46));
+        propertyNameLabel.setForegroundColor(new Color(null, 126, 126, 126));
         propertyNameLabel.setFont(new Font(null, new FontData(PROPERTY_NAME_LABEL_FONT, 7, SWT.NONE)));
         propertyNameLabel.setAlignment(SWT.CENTER);
         propertyNameLabel.setPreferredSize(new Dimension(FixedSizedAbstractMediator.maxFigureWidth, 20));

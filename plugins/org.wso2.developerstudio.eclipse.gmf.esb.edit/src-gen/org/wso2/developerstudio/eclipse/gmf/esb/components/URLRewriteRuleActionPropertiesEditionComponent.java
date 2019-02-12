@@ -31,13 +31,16 @@ import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.RuleActionType;
 import org.wso2.developerstudio.eclipse.gmf.esb.RuleFragmentType;
 import org.wso2.developerstudio.eclipse.gmf.esb.RuleOptionType;
 import org.wso2.developerstudio.eclipse.gmf.esb.URLRewriteRuleAction;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.URLRewriteRuleActionPropertiesEditionPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.parts.impl.CloneTargetPropertiesEditionPartImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.parts.impl.URLRewriteRuleActionPropertiesEditionPartImpl;
 
 
 // End of user code
@@ -94,11 +97,21 @@ public class URLRewriteRuleActionPropertiesEditionComponent extends SinglePartPr
 			if (isAccessible(EsbViewsRepository.URLRewriteRuleAction.Properties.actionRegex))
 				basePart.setActionRegex(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, uRLRewriteRuleAction.getActionRegex()));
 			
+			// Start of user code  for actionExpression command update
+            if (isAccessible(EsbViewsRepository.URLRewriteRuleAction.Properties.actionExpression)) {
+                basePart.setActionExpression(uRLRewriteRuleAction.getActionExpression());
+            }
+			// End of user code
+			
 			// init filters
 			
 			
 			
 			
+			
+			// Start of user code  for actionExpression filter update
+            ((URLRewriteRuleActionPropertiesEditionPartImpl) editingPart).validate();
+			// End of user code
 			
 			// init values for referenced views
 			
@@ -107,6 +120,7 @@ public class URLRewriteRuleActionPropertiesEditionComponent extends SinglePartPr
 		}
 		setInitializing(false);
 	}
+
 
 
 
@@ -135,6 +149,9 @@ public class URLRewriteRuleActionPropertiesEditionComponent extends SinglePartPr
 		if (editorKey == EsbViewsRepository.URLRewriteRuleAction.Properties.actionRegex) {
 			return EsbPackage.eINSTANCE.getURLRewriteRuleAction_ActionRegex();
 		}
+		if (editorKey == EsbViewsRepository.URLRewriteRuleAction.Properties.actionExpression) {
+			return EsbPackage.eINSTANCE.getURLRewriteRuleAction_ActionExpression();
+		}
 		return super.associatedFeature(editorKey);
 	}
 
@@ -159,6 +176,17 @@ public class URLRewriteRuleActionPropertiesEditionComponent extends SinglePartPr
 		}
 		if (EsbViewsRepository.URLRewriteRuleAction.Properties.actionRegex == event.getAffectedEditor()) {
 			uRLRewriteRuleAction.setActionRegex((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
+		}
+		if (EsbViewsRepository.URLRewriteRuleAction.Properties.actionExpression == event.getAffectedEditor()) {
+			// Start of user code for updateActionExpression method body
+            if (event.getNewValue() != null) {
+                NamespacedProperty nsp = (NamespacedProperty) event.getNewValue();
+                uRLRewriteRuleAction.setActionExpression(nsp);
+            } else {
+                uRLRewriteRuleAction.setActionExpression(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+            }
+			// End of user code
+			
 		}
 	}
 
@@ -193,6 +221,16 @@ public class URLRewriteRuleActionPropertiesEditionComponent extends SinglePartPr
 					basePart.setActionRegex("");
 				}
 			}
+					// Start of user code for actionExpression live update
+	         if (EsbPackage.eINSTANCE.getURLRewriteRuleAction_ActionExpression().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.URLRewriteRuleAction.Properties.actionExpression)) {
+	                 if (msg.getNewValue() != null) {
+	                    basePart.setActionExpression((NamespacedProperty)msg.getNewValue());
+	                } else {
+	                    basePart.setActionExpression(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+	                }
+	            }		
+					// End of user code
+			
 			
 		}
 	}
@@ -209,7 +247,8 @@ public class URLRewriteRuleActionPropertiesEditionComponent extends SinglePartPr
 			EsbPackage.eINSTANCE.getURLRewriteRuleAction_RuleFragment(),
 			EsbPackage.eINSTANCE.getURLRewriteRuleAction_RuleOption(),
 			EsbPackage.eINSTANCE.getURLRewriteRuleAction_ActionValue(),
-			EsbPackage.eINSTANCE.getURLRewriteRuleAction_ActionRegex()		);
+			EsbPackage.eINSTANCE.getURLRewriteRuleAction_ActionRegex(),
+			EsbPackage.eINSTANCE.getURLRewriteRuleAction_ActionExpression()		);
 		return new NotificationFilter[] {filter,};
 	}
 

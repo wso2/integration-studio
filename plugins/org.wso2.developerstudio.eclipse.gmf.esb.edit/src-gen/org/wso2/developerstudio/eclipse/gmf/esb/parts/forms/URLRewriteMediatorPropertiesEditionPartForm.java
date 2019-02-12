@@ -59,6 +59,7 @@ import org.eclipse.swt.layout.GridLayout;
 
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Text;
 
 import org.eclipse.ui.forms.widgets.Form;
@@ -70,14 +71,14 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.URLRewriteMediatorPropertiesEditionPart;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
 /**
  * 
- * 
+ * @generated NOT
  */
 public class URLRewriteMediatorPropertiesEditionPartForm extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, URLRewriteMediatorPropertiesEditionPart {
 
@@ -91,6 +92,9 @@ public class URLRewriteMediatorPropertiesEditionPartForm extends SectionProperti
 	protected List<ViewerFilter> urlRewriteRulesFilters = new ArrayList<ViewerFilter>();
 	protected Text inProperty;
 	protected Text outProperty;
+    protected Control[] commentsElements;
+    protected Control[] reverseElements;
+    protected Composite propertiesGroup;
 
 
 
@@ -183,7 +187,7 @@ public class URLRewriteMediatorPropertiesEditionPartForm extends SectionProperti
 		GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
 		propertiesSectionData.horizontalSpan = 3;
 		propertiesSection.setLayoutData(propertiesSectionData);
-		Composite propertiesGroup = widgetFactory.createComposite(propertiesSection);
+		propertiesGroup = widgetFactory.createComposite(propertiesSection);
 		GridLayout propertiesGroupLayout = new GridLayout();
 		propertiesGroupLayout.numColumns = 3;
 		propertiesGroup.setLayout(propertiesGroupLayout);
@@ -263,6 +267,7 @@ public class URLRewriteMediatorPropertiesEditionPartForm extends SectionProperti
 	 * 
 	 */
 	protected Composite createCommentsListMultiValuedEditor(FormToolkit widgetFactory, Composite parent) {
+	    Control [] previousControls = propertiesGroup.getChildren();
 		commentsList = widgetFactory.createText(parent, "", SWT.READ_ONLY); //$NON-NLS-1$
 		GridData commentsListData = new GridData(GridData.FILL_HORIZONTAL);
 		commentsListData.horizontalSpan = 2;
@@ -300,13 +305,15 @@ public class URLRewriteMediatorPropertiesEditionPartForm extends SectionProperti
 		EditingUtils.setID(editCommentsList, EsbViewsRepository.URLRewriteMediator.Properties.commentsList);
 		EditingUtils.setEEFtype(editCommentsList, "eef::MultiValuedEditor::browsebutton"); //$NON-NLS-1$
 		// Start of user code for createCommentsListMultiValuedEditor
-
+        Control [] newControls = propertiesGroup.getChildren();
+        commentsElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
 		// End of user code
 		return parent;
 	}
 
 	
 	protected Composite createReverseCheckbox(FormToolkit widgetFactory, Composite parent) {
+	    Control [] previousControls = propertiesGroup.getChildren();
 		reverse = widgetFactory.createButton(parent, getDescription(EsbViewsRepository.URLRewriteMediator.Properties.reverse, EsbMessages.URLRewriteMediatorPropertiesEditionPart_ReverseLabel), SWT.CHECK);
 		reverse.addSelectionListener(new SelectionAdapter() {
 
@@ -329,7 +336,8 @@ public class URLRewriteMediatorPropertiesEditionPartForm extends SectionProperti
 		EditingUtils.setEEFtype(reverse, "eef::Checkbox"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.URLRewriteMediator.Properties.reverse, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createReverseCheckbox
-
+        Control [] newControls = propertiesGroup.getChildren();
+        reverseElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
 		// End of user code
 		return parent;
 	}
@@ -795,7 +803,18 @@ public class URLRewriteMediatorPropertiesEditionPartForm extends SectionProperti
 	}
 
 	// Start of user code additional methods
-	
+    @Override
+    public void refresh() {
+        super.refresh();
+        validate();
+    }
+
+    public void validate() {
+        EEFPropertyViewUtil epv = new EEFPropertyViewUtil(view);
+        epv.hideEntry(commentsElements, false);
+        epv.hideEntry(reverseElements, false);
+        view.layout(true, true);
+    }
 	// End of user code
 
 

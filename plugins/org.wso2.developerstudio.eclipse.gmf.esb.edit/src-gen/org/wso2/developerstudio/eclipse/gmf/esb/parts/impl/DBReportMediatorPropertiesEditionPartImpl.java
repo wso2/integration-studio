@@ -86,11 +86,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
  */
 public class DBReportMediatorPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, DBReportMediatorPropertiesEditionPart {
 
-	protected Text description;
-	protected Text commentsList;
-	protected Button editCommentsList;
-	protected EList commentsListList;
-	protected Button reverse;
 	protected EMFComboViewer connectionType;
 	protected EMFComboViewer connectionDsType;
 	protected EMFComboViewer connectionDbType;
@@ -100,6 +95,14 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	protected Text connectionURL;
 	protected Text connectionUsername;
 	protected Text connectionPassword;
+	protected Button connectionUseTransaction;
+	protected ReferencesTable sqlStatements;
+	protected List<ViewerFilter> sqlStatementsBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> sqlStatementsFilters = new ArrayList<ViewerFilter>();
+	protected Text commentsList;
+	protected Button editCommentsList;
+	protected EList commentsListList;
+	protected Button reverse;
 	protected EMFComboViewer propertyAutocommit;
 	protected EMFComboViewer propertyIsolation;
 	protected Text propertyMaxactive;
@@ -112,10 +115,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	protected EMFComboViewer propertyTestwhileidle;
 	protected Text propertyValidationquery;
 	protected Text propertyInitialsize;
-	protected ReferencesTable sqlStatements;
-	protected List<ViewerFilter> sqlStatementsBusinessFilters = new ArrayList<ViewerFilter>();
-	protected List<ViewerFilter> sqlStatementsFilters = new ArrayList<ViewerFilter>();
-	protected Button connectionUseTransaction;
+	protected Text description;
 
 
 
@@ -153,19 +153,25 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	 */
 	public void createControls(Composite view) { 
 		CompositionSequence dBReportMediatorStep = new BindingCompositionSequence(propertiesEditionComponent);
+		CompositionStep connectionStep = dBReportMediatorStep.addStep(EsbViewsRepository.DBReportMediator.Connection.class);
+		connectionStep.addStep(EsbViewsRepository.DBReportMediator.Connection.connectionType);
+		connectionStep.addStep(EsbViewsRepository.DBReportMediator.Connection.connectionDsType);
+		connectionStep.addStep(EsbViewsRepository.DBReportMediator.Connection.connectionDbType);
+		connectionStep.addStep(EsbViewsRepository.DBReportMediator.Connection.connectionDbDriver);
+		connectionStep.addStep(EsbViewsRepository.DBReportMediator.Connection.connectionDsInitialContext);
+		connectionStep.addStep(EsbViewsRepository.DBReportMediator.Connection.connectionDsName);
+		connectionStep.addStep(EsbViewsRepository.DBReportMediator.Connection.connectionURL);
+		connectionStep.addStep(EsbViewsRepository.DBReportMediator.Connection.connectionUsername);
+		connectionStep.addStep(EsbViewsRepository.DBReportMediator.Connection.connectionPassword);
+		connectionStep.addStep(EsbViewsRepository.DBReportMediator.Connection.connectionUseTransaction);
+		
+		dBReportMediatorStep
+			.addStep(EsbViewsRepository.DBReportMediator.Statements.class)
+			.addStep(EsbViewsRepository.DBReportMediator.Statements.sqlStatements);
+		
 		CompositionStep propertiesStep = dBReportMediatorStep.addStep(EsbViewsRepository.DBReportMediator.Properties.class);
-		propertiesStep.addStep(EsbViewsRepository.DBReportMediator.Properties.description);
 		propertiesStep.addStep(EsbViewsRepository.DBReportMediator.Properties.commentsList);
 		propertiesStep.addStep(EsbViewsRepository.DBReportMediator.Properties.reverse);
-		propertiesStep.addStep(EsbViewsRepository.DBReportMediator.Properties.connectionType);
-		propertiesStep.addStep(EsbViewsRepository.DBReportMediator.Properties.connectionDsType);
-		propertiesStep.addStep(EsbViewsRepository.DBReportMediator.Properties.connectionDbType);
-		propertiesStep.addStep(EsbViewsRepository.DBReportMediator.Properties.connectionDbDriver);
-		propertiesStep.addStep(EsbViewsRepository.DBReportMediator.Properties.connectionDsInitialContext);
-		propertiesStep.addStep(EsbViewsRepository.DBReportMediator.Properties.connectionDsName);
-		propertiesStep.addStep(EsbViewsRepository.DBReportMediator.Properties.connectionURL);
-		propertiesStep.addStep(EsbViewsRepository.DBReportMediator.Properties.connectionUsername);
-		propertiesStep.addStep(EsbViewsRepository.DBReportMediator.Properties.connectionPassword);
 		propertiesStep.addStep(EsbViewsRepository.DBReportMediator.Properties.propertyAutocommit);
 		propertiesStep.addStep(EsbViewsRepository.DBReportMediator.Properties.propertyIsolation);
 		propertiesStep.addStep(EsbViewsRepository.DBReportMediator.Properties.propertyMaxactive);
@@ -178,52 +184,63 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 		propertiesStep.addStep(EsbViewsRepository.DBReportMediator.Properties.propertyTestwhileidle);
 		propertiesStep.addStep(EsbViewsRepository.DBReportMediator.Properties.propertyValidationquery);
 		propertiesStep.addStep(EsbViewsRepository.DBReportMediator.Properties.propertyInitialsize);
-		propertiesStep.addStep(EsbViewsRepository.DBReportMediator.Properties.sqlStatements);
-		propertiesStep.addStep(EsbViewsRepository.DBReportMediator.Properties.connectionUseTransaction);
+		
+		dBReportMediatorStep
+			.addStep(EsbViewsRepository.DBReportMediator.Misc.class)
+			.addStep(EsbViewsRepository.DBReportMediator.Misc.description);
 		
 		
 		composer = new PartComposer(dBReportMediatorStep) {
 
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
+				if (key == EsbViewsRepository.DBReportMediator.Connection.class) {
+					return createConnectionGroup(parent);
+				}
+				if (key == EsbViewsRepository.DBReportMediator.Connection.connectionType) {
+					return createConnectionTypeEMFComboViewer(parent);
+				}
+				if (key == EsbViewsRepository.DBReportMediator.Connection.connectionDsType) {
+					return createConnectionDsTypeEMFComboViewer(parent);
+				}
+				if (key == EsbViewsRepository.DBReportMediator.Connection.connectionDbType) {
+					return createConnectionDbTypeEMFComboViewer(parent);
+				}
+				if (key == EsbViewsRepository.DBReportMediator.Connection.connectionDbDriver) {
+					return createConnectionDbDriverText(parent);
+				}
+				if (key == EsbViewsRepository.DBReportMediator.Connection.connectionDsInitialContext) {
+					return createConnectionDsInitialContextText(parent);
+				}
+				if (key == EsbViewsRepository.DBReportMediator.Connection.connectionDsName) {
+					return createConnectionDsNameText(parent);
+				}
+				if (key == EsbViewsRepository.DBReportMediator.Connection.connectionURL) {
+					return createConnectionURLText(parent);
+				}
+				if (key == EsbViewsRepository.DBReportMediator.Connection.connectionUsername) {
+					return createConnectionUsernameText(parent);
+				}
+				if (key == EsbViewsRepository.DBReportMediator.Connection.connectionPassword) {
+					return createConnectionPasswordText(parent);
+				}
+				if (key == EsbViewsRepository.DBReportMediator.Connection.connectionUseTransaction) {
+					return createConnectionUseTransactionCheckbox(parent);
+				}
+				if (key == EsbViewsRepository.DBReportMediator.Statements.class) {
+					return createStatementsGroup(parent);
+				}
+				if (key == EsbViewsRepository.DBReportMediator.Statements.sqlStatements) {
+					return createSqlStatementsAdvancedTableComposition(parent);
+				}
 				if (key == EsbViewsRepository.DBReportMediator.Properties.class) {
 					return createPropertiesGroup(parent);
-				}
-				if (key == EsbViewsRepository.DBReportMediator.Properties.description) {
-					return createDescriptionText(parent);
 				}
 				if (key == EsbViewsRepository.DBReportMediator.Properties.commentsList) {
 					return createCommentsListMultiValuedEditor(parent);
 				}
 				if (key == EsbViewsRepository.DBReportMediator.Properties.reverse) {
 					return createReverseCheckbox(parent);
-				}
-				if (key == EsbViewsRepository.DBReportMediator.Properties.connectionType) {
-					return createConnectionTypeEMFComboViewer(parent);
-				}
-				if (key == EsbViewsRepository.DBReportMediator.Properties.connectionDsType) {
-					return createConnectionDsTypeEMFComboViewer(parent);
-				}
-				if (key == EsbViewsRepository.DBReportMediator.Properties.connectionDbType) {
-					return createConnectionDbTypeEMFComboViewer(parent);
-				}
-				if (key == EsbViewsRepository.DBReportMediator.Properties.connectionDbDriver) {
-					return createConnectionDbDriverText(parent);
-				}
-				if (key == EsbViewsRepository.DBReportMediator.Properties.connectionDsInitialContext) {
-					return createConnectionDsInitialContextText(parent);
-				}
-				if (key == EsbViewsRepository.DBReportMediator.Properties.connectionDsName) {
-					return createConnectionDsNameText(parent);
-				}
-				if (key == EsbViewsRepository.DBReportMediator.Properties.connectionURL) {
-					return createConnectionURLText(parent);
-				}
-				if (key == EsbViewsRepository.DBReportMediator.Properties.connectionUsername) {
-					return createConnectionUsernameText(parent);
-				}
-				if (key == EsbViewsRepository.DBReportMediator.Properties.connectionPassword) {
-					return createConnectionPasswordText(parent);
 				}
 				if (key == EsbViewsRepository.DBReportMediator.Properties.propertyAutocommit) {
 					return createPropertyAutocommitEMFComboViewer(parent);
@@ -261,16 +278,511 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 				if (key == EsbViewsRepository.DBReportMediator.Properties.propertyInitialsize) {
 					return createPropertyInitialsizeText(parent);
 				}
-				if (key == EsbViewsRepository.DBReportMediator.Properties.sqlStatements) {
-					return createSqlStatementsAdvancedTableComposition(parent);
+				if (key == EsbViewsRepository.DBReportMediator.Misc.class) {
+					return createMiscGroup(parent);
 				}
-				if (key == EsbViewsRepository.DBReportMediator.Properties.connectionUseTransaction) {
-					return createConnectionUseTransactionCheckbox(parent);
+				if (key == EsbViewsRepository.DBReportMediator.Misc.description) {
+					return createDescriptionText(parent);
 				}
 				return parent;
 			}
 		};
 		composer.compose(view);
+	}
+
+	/**
+	 * 
+	 */
+	protected Composite createConnectionGroup(Composite parent) {
+		Group connectionGroup = new Group(parent, SWT.NONE);
+		connectionGroup.setText(EsbMessages.DBReportMediatorPropertiesEditionPart_ConnectionGroupLabel);
+		GridData connectionGroupData = new GridData(GridData.FILL_HORIZONTAL);
+		connectionGroupData.horizontalSpan = 3;
+		connectionGroup.setLayoutData(connectionGroupData);
+		GridLayout connectionGroupLayout = new GridLayout();
+		connectionGroupLayout.numColumns = 3;
+		connectionGroup.setLayout(connectionGroupLayout);
+		return connectionGroup;
+	}
+
+	
+	protected Composite createConnectionTypeEMFComboViewer(Composite parent) {
+		createDescription(parent, EsbViewsRepository.DBReportMediator.Connection.connectionType, EsbMessages.DBReportMediatorPropertiesEditionPart_ConnectionTypeLabel);
+		connectionType = new EMFComboViewer(parent);
+		connectionType.setContentProvider(new ArrayContentProvider());
+		connectionType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
+		GridData connectionTypeData = new GridData(GridData.FILL_HORIZONTAL);
+		connectionType.getCombo().setLayoutData(connectionTypeData);
+		connectionType.addSelectionChangedListener(new ISelectionChangedListener() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+			 * 	
+			 */
+			public void selectionChanged(SelectionChangedEvent event) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBReportMediator.Connection.connectionType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getConnectionType()));
+			}
+
+		});
+		connectionType.setID(EsbViewsRepository.DBReportMediator.Connection.connectionType);
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DBReportMediator.Connection.connectionType, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createConnectionTypeEMFComboViewer
+
+		// End of user code
+		return parent;
+	}
+
+	
+	protected Composite createConnectionDsTypeEMFComboViewer(Composite parent) {
+		createDescription(parent, EsbViewsRepository.DBReportMediator.Connection.connectionDsType, EsbMessages.DBReportMediatorPropertiesEditionPart_ConnectionDsTypeLabel);
+		connectionDsType = new EMFComboViewer(parent);
+		connectionDsType.setContentProvider(new ArrayContentProvider());
+		connectionDsType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
+		GridData connectionDsTypeData = new GridData(GridData.FILL_HORIZONTAL);
+		connectionDsType.getCombo().setLayoutData(connectionDsTypeData);
+		connectionDsType.addSelectionChangedListener(new ISelectionChangedListener() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+			 * 	
+			 */
+			public void selectionChanged(SelectionChangedEvent event) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBReportMediator.Connection.connectionDsType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getConnectionDsType()));
+			}
+
+		});
+		connectionDsType.setID(EsbViewsRepository.DBReportMediator.Connection.connectionDsType);
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DBReportMediator.Connection.connectionDsType, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createConnectionDsTypeEMFComboViewer
+
+		// End of user code
+		return parent;
+	}
+
+	
+	protected Composite createConnectionDbTypeEMFComboViewer(Composite parent) {
+		createDescription(parent, EsbViewsRepository.DBReportMediator.Connection.connectionDbType, EsbMessages.DBReportMediatorPropertiesEditionPart_ConnectionDbTypeLabel);
+		connectionDbType = new EMFComboViewer(parent);
+		connectionDbType.setContentProvider(new ArrayContentProvider());
+		connectionDbType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
+		GridData connectionDbTypeData = new GridData(GridData.FILL_HORIZONTAL);
+		connectionDbType.getCombo().setLayoutData(connectionDbTypeData);
+		connectionDbType.addSelectionChangedListener(new ISelectionChangedListener() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+			 * 	
+			 */
+			public void selectionChanged(SelectionChangedEvent event) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBReportMediator.Connection.connectionDbType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getConnectionDbType()));
+			}
+
+		});
+		connectionDbType.setID(EsbViewsRepository.DBReportMediator.Connection.connectionDbType);
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DBReportMediator.Connection.connectionDbType, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createConnectionDbTypeEMFComboViewer
+
+		// End of user code
+		return parent;
+	}
+
+	
+	protected Composite createConnectionDbDriverText(Composite parent) {
+		createDescription(parent, EsbViewsRepository.DBReportMediator.Connection.connectionDbDriver, EsbMessages.DBReportMediatorPropertiesEditionPart_ConnectionDbDriverLabel);
+		connectionDbDriver = SWTUtils.createScrollableText(parent, SWT.BORDER);
+		GridData connectionDbDriverData = new GridData(GridData.FILL_HORIZONTAL);
+		connectionDbDriver.setLayoutData(connectionDbDriverData);
+		connectionDbDriver.addFocusListener(new FocusAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void focusLost(FocusEvent e) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBReportMediator.Connection.connectionDbDriver, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, connectionDbDriver.getText()));
+			}
+
+		});
+		connectionDbDriver.addKeyListener(new KeyAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void keyPressed(KeyEvent e) {
+				if (e.character == SWT.CR) {
+					if (propertiesEditionComponent != null)
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBReportMediator.Connection.connectionDbDriver, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, connectionDbDriver.getText()));
+				}
+			}
+
+		});
+		EditingUtils.setID(connectionDbDriver, EsbViewsRepository.DBReportMediator.Connection.connectionDbDriver);
+		EditingUtils.setEEFtype(connectionDbDriver, "eef::Text"); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DBReportMediator.Connection.connectionDbDriver, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createConnectionDbDriverText
+
+		// End of user code
+		return parent;
+	}
+
+	
+	protected Composite createConnectionDsInitialContextText(Composite parent) {
+		createDescription(parent, EsbViewsRepository.DBReportMediator.Connection.connectionDsInitialContext, EsbMessages.DBReportMediatorPropertiesEditionPart_ConnectionDsInitialContextLabel);
+		connectionDsInitialContext = SWTUtils.createScrollableText(parent, SWT.BORDER);
+		GridData connectionDsInitialContextData = new GridData(GridData.FILL_HORIZONTAL);
+		connectionDsInitialContext.setLayoutData(connectionDsInitialContextData);
+		connectionDsInitialContext.addFocusListener(new FocusAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void focusLost(FocusEvent e) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBReportMediator.Connection.connectionDsInitialContext, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, connectionDsInitialContext.getText()));
+			}
+
+		});
+		connectionDsInitialContext.addKeyListener(new KeyAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void keyPressed(KeyEvent e) {
+				if (e.character == SWT.CR) {
+					if (propertiesEditionComponent != null)
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBReportMediator.Connection.connectionDsInitialContext, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, connectionDsInitialContext.getText()));
+				}
+			}
+
+		});
+		EditingUtils.setID(connectionDsInitialContext, EsbViewsRepository.DBReportMediator.Connection.connectionDsInitialContext);
+		EditingUtils.setEEFtype(connectionDsInitialContext, "eef::Text"); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DBReportMediator.Connection.connectionDsInitialContext, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createConnectionDsInitialContextText
+
+		// End of user code
+		return parent;
+	}
+
+	
+	protected Composite createConnectionDsNameText(Composite parent) {
+		createDescription(parent, EsbViewsRepository.DBReportMediator.Connection.connectionDsName, EsbMessages.DBReportMediatorPropertiesEditionPart_ConnectionDsNameLabel);
+		connectionDsName = SWTUtils.createScrollableText(parent, SWT.BORDER);
+		GridData connectionDsNameData = new GridData(GridData.FILL_HORIZONTAL);
+		connectionDsName.setLayoutData(connectionDsNameData);
+		connectionDsName.addFocusListener(new FocusAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void focusLost(FocusEvent e) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBReportMediator.Connection.connectionDsName, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, connectionDsName.getText()));
+			}
+
+		});
+		connectionDsName.addKeyListener(new KeyAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void keyPressed(KeyEvent e) {
+				if (e.character == SWT.CR) {
+					if (propertiesEditionComponent != null)
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBReportMediator.Connection.connectionDsName, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, connectionDsName.getText()));
+				}
+			}
+
+		});
+		EditingUtils.setID(connectionDsName, EsbViewsRepository.DBReportMediator.Connection.connectionDsName);
+		EditingUtils.setEEFtype(connectionDsName, "eef::Text"); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DBReportMediator.Connection.connectionDsName, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createConnectionDsNameText
+
+		// End of user code
+		return parent;
+	}
+
+	
+	protected Composite createConnectionURLText(Composite parent) {
+		createDescription(parent, EsbViewsRepository.DBReportMediator.Connection.connectionURL, EsbMessages.DBReportMediatorPropertiesEditionPart_ConnectionURLLabel);
+		connectionURL = SWTUtils.createScrollableText(parent, SWT.BORDER);
+		GridData connectionURLData = new GridData(GridData.FILL_HORIZONTAL);
+		connectionURL.setLayoutData(connectionURLData);
+		connectionURL.addFocusListener(new FocusAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void focusLost(FocusEvent e) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBReportMediator.Connection.connectionURL, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, connectionURL.getText()));
+			}
+
+		});
+		connectionURL.addKeyListener(new KeyAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void keyPressed(KeyEvent e) {
+				if (e.character == SWT.CR) {
+					if (propertiesEditionComponent != null)
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBReportMediator.Connection.connectionURL, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, connectionURL.getText()));
+				}
+			}
+
+		});
+		EditingUtils.setID(connectionURL, EsbViewsRepository.DBReportMediator.Connection.connectionURL);
+		EditingUtils.setEEFtype(connectionURL, "eef::Text"); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DBReportMediator.Connection.connectionURL, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createConnectionURLText
+
+		// End of user code
+		return parent;
+	}
+
+	
+	protected Composite createConnectionUsernameText(Composite parent) {
+		createDescription(parent, EsbViewsRepository.DBReportMediator.Connection.connectionUsername, EsbMessages.DBReportMediatorPropertiesEditionPart_ConnectionUsernameLabel);
+		connectionUsername = SWTUtils.createScrollableText(parent, SWT.BORDER);
+		GridData connectionUsernameData = new GridData(GridData.FILL_HORIZONTAL);
+		connectionUsername.setLayoutData(connectionUsernameData);
+		connectionUsername.addFocusListener(new FocusAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void focusLost(FocusEvent e) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBReportMediator.Connection.connectionUsername, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, connectionUsername.getText()));
+			}
+
+		});
+		connectionUsername.addKeyListener(new KeyAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void keyPressed(KeyEvent e) {
+				if (e.character == SWT.CR) {
+					if (propertiesEditionComponent != null)
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBReportMediator.Connection.connectionUsername, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, connectionUsername.getText()));
+				}
+			}
+
+		});
+		EditingUtils.setID(connectionUsername, EsbViewsRepository.DBReportMediator.Connection.connectionUsername);
+		EditingUtils.setEEFtype(connectionUsername, "eef::Text"); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DBReportMediator.Connection.connectionUsername, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createConnectionUsernameText
+
+		// End of user code
+		return parent;
+	}
+
+	
+	protected Composite createConnectionPasswordText(Composite parent) {
+		createDescription(parent, EsbViewsRepository.DBReportMediator.Connection.connectionPassword, EsbMessages.DBReportMediatorPropertiesEditionPart_ConnectionPasswordLabel);
+		connectionPassword = SWTUtils.createScrollableText(parent, SWT.BORDER);
+		GridData connectionPasswordData = new GridData(GridData.FILL_HORIZONTAL);
+		connectionPassword.setLayoutData(connectionPasswordData);
+		connectionPassword.addFocusListener(new FocusAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void focusLost(FocusEvent e) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBReportMediator.Connection.connectionPassword, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, connectionPassword.getText()));
+			}
+
+		});
+		connectionPassword.addKeyListener(new KeyAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void keyPressed(KeyEvent e) {
+				if (e.character == SWT.CR) {
+					if (propertiesEditionComponent != null)
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBReportMediator.Connection.connectionPassword, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, connectionPassword.getText()));
+				}
+			}
+
+		});
+		EditingUtils.setID(connectionPassword, EsbViewsRepository.DBReportMediator.Connection.connectionPassword);
+		EditingUtils.setEEFtype(connectionPassword, "eef::Text"); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DBReportMediator.Connection.connectionPassword, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createConnectionPasswordText
+
+		// End of user code
+		return parent;
+	}
+
+	
+	protected Composite createConnectionUseTransactionCheckbox(Composite parent) {
+		connectionUseTransaction = new Button(parent, SWT.CHECK);
+		connectionUseTransaction.setText(getDescription(EsbViewsRepository.DBReportMediator.Connection.connectionUseTransaction, EsbMessages.DBReportMediatorPropertiesEditionPart_ConnectionUseTransactionLabel));
+		connectionUseTransaction.addSelectionListener(new SelectionAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 *
+			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 * 	
+			 */
+			public void widgetSelected(SelectionEvent e) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBReportMediator.Connection.connectionUseTransaction, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(connectionUseTransaction.getSelection())));
+			}
+
+		});
+		GridData connectionUseTransactionData = new GridData(GridData.FILL_HORIZONTAL);
+		connectionUseTransactionData.horizontalSpan = 2;
+		connectionUseTransaction.setLayoutData(connectionUseTransactionData);
+		EditingUtils.setID(connectionUseTransaction, EsbViewsRepository.DBReportMediator.Connection.connectionUseTransaction);
+		EditingUtils.setEEFtype(connectionUseTransaction, "eef::Checkbox"); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DBReportMediator.Connection.connectionUseTransaction, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createConnectionUseTransactionCheckbox
+
+		// End of user code
+		return parent;
+	}
+
+	/**
+	 * 
+	 */
+	protected Composite createStatementsGroup(Composite parent) {
+		Group statementsGroup = new Group(parent, SWT.NONE);
+		statementsGroup.setText(EsbMessages.DBReportMediatorPropertiesEditionPart_StatementsGroupLabel);
+		GridData statementsGroupData = new GridData(GridData.FILL_HORIZONTAL);
+		statementsGroupData.horizontalSpan = 3;
+		statementsGroup.setLayoutData(statementsGroupData);
+		GridLayout statementsGroupLayout = new GridLayout();
+		statementsGroupLayout.numColumns = 3;
+		statementsGroup.setLayout(statementsGroupLayout);
+		return statementsGroup;
+	}
+
+	/**
+	 * @param container
+	 * 
+	 */
+	protected Composite createSqlStatementsAdvancedTableComposition(Composite parent) {
+		this.sqlStatements = new ReferencesTable(getDescription(EsbViewsRepository.DBReportMediator.Statements.sqlStatements, EsbMessages.DBReportMediatorPropertiesEditionPart_SqlStatementsLabel), new ReferencesTableListener() {
+			public void handleAdd() { 
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBReportMediator.Statements.sqlStatements, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
+				sqlStatements.refresh();
+			}
+			public void handleEdit(EObject element) {
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBReportMediator.Statements.sqlStatements, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
+				sqlStatements.refresh();
+			}
+			public void handleMove(EObject element, int oldIndex, int newIndex) { 
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBReportMediator.Statements.sqlStatements, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
+				sqlStatements.refresh();
+			}
+			public void handleRemove(EObject element) { 
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBReportMediator.Statements.sqlStatements, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+				sqlStatements.refresh();
+			}
+			public void navigateTo(EObject element) { }
+		});
+		for (ViewerFilter filter : this.sqlStatementsFilters) {
+			this.sqlStatements.addFilter(filter);
+		}
+		this.sqlStatements.setHelpText(propertiesEditionComponent.getHelpContent(EsbViewsRepository.DBReportMediator.Statements.sqlStatements, EsbViewsRepository.SWT_KIND));
+		this.sqlStatements.createControls(parent);
+		this.sqlStatements.addSelectionListener(new SelectionAdapter() {
+			
+			public void widgetSelected(SelectionEvent e) {
+				if (e.item != null && e.item.getData() instanceof EObject) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBReportMediator.Statements.sqlStatements, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+				}
+			}
+			
+		});
+		GridData sqlStatementsData = new GridData(GridData.FILL_HORIZONTAL);
+		sqlStatementsData.horizontalSpan = 3;
+		this.sqlStatements.setLayoutData(sqlStatementsData);
+		this.sqlStatements.setLowerBound(0);
+		this.sqlStatements.setUpperBound(-1);
+		sqlStatements.setID(EsbViewsRepository.DBReportMediator.Statements.sqlStatements);
+		sqlStatements.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
+		// Start of user code for createSqlStatementsAdvancedTableComposition
+
+		// End of user code
+		return parent;
 	}
 
 	/**
@@ -286,55 +798,6 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 		propertiesGroupLayout.numColumns = 3;
 		propertiesGroup.setLayout(propertiesGroupLayout);
 		return propertiesGroup;
-	}
-
-	
-	protected Composite createDescriptionText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.DBReportMediator.Properties.description, EsbMessages.DBReportMediatorPropertiesEditionPart_DescriptionLabel);
-		description = SWTUtils.createScrollableText(parent, SWT.BORDER);
-		GridData descriptionData = new GridData(GridData.FILL_HORIZONTAL);
-		description.setLayoutData(descriptionData);
-		description.addFocusListener(new FocusAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBReportMediator.Properties.description, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, description.getText()));
-			}
-
-		});
-		description.addKeyListener(new KeyAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBReportMediator.Properties.description, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, description.getText()));
-				}
-			}
-
-		});
-		EditingUtils.setID(description, EsbViewsRepository.DBReportMediator.Properties.description);
-		EditingUtils.setEEFtype(description, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DBReportMediator.Properties.description, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		// Start of user code for createDescriptionText
-
-		// End of user code
-		return parent;
 	}
 
 	protected Composite createCommentsListMultiValuedEditor(Composite parent) {
@@ -405,390 +868,6 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 		EditingUtils.setEEFtype(reverse, "eef::Checkbox"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DBReportMediator.Properties.reverse, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createReverseCheckbox
-
-		// End of user code
-		return parent;
-	}
-
-	
-	protected Composite createConnectionTypeEMFComboViewer(Composite parent) {
-		createDescription(parent, EsbViewsRepository.DBReportMediator.Properties.connectionType, EsbMessages.DBReportMediatorPropertiesEditionPart_ConnectionTypeLabel);
-		connectionType = new EMFComboViewer(parent);
-		connectionType.setContentProvider(new ArrayContentProvider());
-		connectionType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
-		GridData connectionTypeData = new GridData(GridData.FILL_HORIZONTAL);
-		connectionType.getCombo().setLayoutData(connectionTypeData);
-		connectionType.addSelectionChangedListener(new ISelectionChangedListener() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-			 * 	
-			 */
-			public void selectionChanged(SelectionChangedEvent event) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBReportMediator.Properties.connectionType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getConnectionType()));
-			}
-
-		});
-		connectionType.setID(EsbViewsRepository.DBReportMediator.Properties.connectionType);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DBReportMediator.Properties.connectionType, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		// Start of user code for createConnectionTypeEMFComboViewer
-
-		// End of user code
-		return parent;
-	}
-
-	
-	protected Composite createConnectionDsTypeEMFComboViewer(Composite parent) {
-		createDescription(parent, EsbViewsRepository.DBReportMediator.Properties.connectionDsType, EsbMessages.DBReportMediatorPropertiesEditionPart_ConnectionDsTypeLabel);
-		connectionDsType = new EMFComboViewer(parent);
-		connectionDsType.setContentProvider(new ArrayContentProvider());
-		connectionDsType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
-		GridData connectionDsTypeData = new GridData(GridData.FILL_HORIZONTAL);
-		connectionDsType.getCombo().setLayoutData(connectionDsTypeData);
-		connectionDsType.addSelectionChangedListener(new ISelectionChangedListener() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-			 * 	
-			 */
-			public void selectionChanged(SelectionChangedEvent event) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBReportMediator.Properties.connectionDsType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getConnectionDsType()));
-			}
-
-		});
-		connectionDsType.setID(EsbViewsRepository.DBReportMediator.Properties.connectionDsType);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DBReportMediator.Properties.connectionDsType, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		// Start of user code for createConnectionDsTypeEMFComboViewer
-
-		// End of user code
-		return parent;
-	}
-
-	
-	protected Composite createConnectionDbTypeEMFComboViewer(Composite parent) {
-		createDescription(parent, EsbViewsRepository.DBReportMediator.Properties.connectionDbType, EsbMessages.DBReportMediatorPropertiesEditionPart_ConnectionDbTypeLabel);
-		connectionDbType = new EMFComboViewer(parent);
-		connectionDbType.setContentProvider(new ArrayContentProvider());
-		connectionDbType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
-		GridData connectionDbTypeData = new GridData(GridData.FILL_HORIZONTAL);
-		connectionDbType.getCombo().setLayoutData(connectionDbTypeData);
-		connectionDbType.addSelectionChangedListener(new ISelectionChangedListener() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-			 * 	
-			 */
-			public void selectionChanged(SelectionChangedEvent event) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBReportMediator.Properties.connectionDbType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getConnectionDbType()));
-			}
-
-		});
-		connectionDbType.setID(EsbViewsRepository.DBReportMediator.Properties.connectionDbType);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DBReportMediator.Properties.connectionDbType, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		// Start of user code for createConnectionDbTypeEMFComboViewer
-
-		// End of user code
-		return parent;
-	}
-
-	
-	protected Composite createConnectionDbDriverText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.DBReportMediator.Properties.connectionDbDriver, EsbMessages.DBReportMediatorPropertiesEditionPart_ConnectionDbDriverLabel);
-		connectionDbDriver = SWTUtils.createScrollableText(parent, SWT.BORDER);
-		GridData connectionDbDriverData = new GridData(GridData.FILL_HORIZONTAL);
-		connectionDbDriver.setLayoutData(connectionDbDriverData);
-		connectionDbDriver.addFocusListener(new FocusAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBReportMediator.Properties.connectionDbDriver, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, connectionDbDriver.getText()));
-			}
-
-		});
-		connectionDbDriver.addKeyListener(new KeyAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBReportMediator.Properties.connectionDbDriver, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, connectionDbDriver.getText()));
-				}
-			}
-
-		});
-		EditingUtils.setID(connectionDbDriver, EsbViewsRepository.DBReportMediator.Properties.connectionDbDriver);
-		EditingUtils.setEEFtype(connectionDbDriver, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DBReportMediator.Properties.connectionDbDriver, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		// Start of user code for createConnectionDbDriverText
-
-		// End of user code
-		return parent;
-	}
-
-	
-	protected Composite createConnectionDsInitialContextText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.DBReportMediator.Properties.connectionDsInitialContext, EsbMessages.DBReportMediatorPropertiesEditionPart_ConnectionDsInitialContextLabel);
-		connectionDsInitialContext = SWTUtils.createScrollableText(parent, SWT.BORDER);
-		GridData connectionDsInitialContextData = new GridData(GridData.FILL_HORIZONTAL);
-		connectionDsInitialContext.setLayoutData(connectionDsInitialContextData);
-		connectionDsInitialContext.addFocusListener(new FocusAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBReportMediator.Properties.connectionDsInitialContext, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, connectionDsInitialContext.getText()));
-			}
-
-		});
-		connectionDsInitialContext.addKeyListener(new KeyAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBReportMediator.Properties.connectionDsInitialContext, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, connectionDsInitialContext.getText()));
-				}
-			}
-
-		});
-		EditingUtils.setID(connectionDsInitialContext, EsbViewsRepository.DBReportMediator.Properties.connectionDsInitialContext);
-		EditingUtils.setEEFtype(connectionDsInitialContext, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DBReportMediator.Properties.connectionDsInitialContext, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		// Start of user code for createConnectionDsInitialContextText
-
-		// End of user code
-		return parent;
-	}
-
-	
-	protected Composite createConnectionDsNameText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.DBReportMediator.Properties.connectionDsName, EsbMessages.DBReportMediatorPropertiesEditionPart_ConnectionDsNameLabel);
-		connectionDsName = SWTUtils.createScrollableText(parent, SWT.BORDER);
-		GridData connectionDsNameData = new GridData(GridData.FILL_HORIZONTAL);
-		connectionDsName.setLayoutData(connectionDsNameData);
-		connectionDsName.addFocusListener(new FocusAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBReportMediator.Properties.connectionDsName, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, connectionDsName.getText()));
-			}
-
-		});
-		connectionDsName.addKeyListener(new KeyAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBReportMediator.Properties.connectionDsName, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, connectionDsName.getText()));
-				}
-			}
-
-		});
-		EditingUtils.setID(connectionDsName, EsbViewsRepository.DBReportMediator.Properties.connectionDsName);
-		EditingUtils.setEEFtype(connectionDsName, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DBReportMediator.Properties.connectionDsName, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		// Start of user code for createConnectionDsNameText
-
-		// End of user code
-		return parent;
-	}
-
-	
-	protected Composite createConnectionURLText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.DBReportMediator.Properties.connectionURL, EsbMessages.DBReportMediatorPropertiesEditionPart_ConnectionURLLabel);
-		connectionURL = SWTUtils.createScrollableText(parent, SWT.BORDER);
-		GridData connectionURLData = new GridData(GridData.FILL_HORIZONTAL);
-		connectionURL.setLayoutData(connectionURLData);
-		connectionURL.addFocusListener(new FocusAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBReportMediator.Properties.connectionURL, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, connectionURL.getText()));
-			}
-
-		});
-		connectionURL.addKeyListener(new KeyAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBReportMediator.Properties.connectionURL, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, connectionURL.getText()));
-				}
-			}
-
-		});
-		EditingUtils.setID(connectionURL, EsbViewsRepository.DBReportMediator.Properties.connectionURL);
-		EditingUtils.setEEFtype(connectionURL, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DBReportMediator.Properties.connectionURL, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		// Start of user code for createConnectionURLText
-
-		// End of user code
-		return parent;
-	}
-
-	
-	protected Composite createConnectionUsernameText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.DBReportMediator.Properties.connectionUsername, EsbMessages.DBReportMediatorPropertiesEditionPart_ConnectionUsernameLabel);
-		connectionUsername = SWTUtils.createScrollableText(parent, SWT.BORDER);
-		GridData connectionUsernameData = new GridData(GridData.FILL_HORIZONTAL);
-		connectionUsername.setLayoutData(connectionUsernameData);
-		connectionUsername.addFocusListener(new FocusAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBReportMediator.Properties.connectionUsername, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, connectionUsername.getText()));
-			}
-
-		});
-		connectionUsername.addKeyListener(new KeyAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBReportMediator.Properties.connectionUsername, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, connectionUsername.getText()));
-				}
-			}
-
-		});
-		EditingUtils.setID(connectionUsername, EsbViewsRepository.DBReportMediator.Properties.connectionUsername);
-		EditingUtils.setEEFtype(connectionUsername, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DBReportMediator.Properties.connectionUsername, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		// Start of user code for createConnectionUsernameText
-
-		// End of user code
-		return parent;
-	}
-
-	
-	protected Composite createConnectionPasswordText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.DBReportMediator.Properties.connectionPassword, EsbMessages.DBReportMediatorPropertiesEditionPart_ConnectionPasswordLabel);
-		connectionPassword = SWTUtils.createScrollableText(parent, SWT.BORDER);
-		GridData connectionPasswordData = new GridData(GridData.FILL_HORIZONTAL);
-		connectionPassword.setLayoutData(connectionPasswordData);
-		connectionPassword.addFocusListener(new FocusAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBReportMediator.Properties.connectionPassword, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, connectionPassword.getText()));
-			}
-
-		});
-		connectionPassword.addKeyListener(new KeyAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBReportMediator.Properties.connectionPassword, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, connectionPassword.getText()));
-				}
-			}
-
-		});
-		EditingUtils.setID(connectionPassword, EsbViewsRepository.DBReportMediator.Properties.connectionPassword);
-		EditingUtils.setEEFtype(connectionPassword, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DBReportMediator.Properties.connectionPassword, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		// Start of user code for createConnectionPasswordText
 
 		// End of user code
 		return parent;
@@ -1288,81 +1367,64 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	}
 
 	/**
-	 * @param container
 	 * 
 	 */
-	protected Composite createSqlStatementsAdvancedTableComposition(Composite parent) {
-		this.sqlStatements = new ReferencesTable(getDescription(EsbViewsRepository.DBReportMediator.Properties.sqlStatements, EsbMessages.DBReportMediatorPropertiesEditionPart_SqlStatementsLabel), new ReferencesTableListener() {
-			public void handleAdd() { 
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBReportMediator.Properties.sqlStatements, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
-				sqlStatements.refresh();
-			}
-			public void handleEdit(EObject element) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBReportMediator.Properties.sqlStatements, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
-				sqlStatements.refresh();
-			}
-			public void handleMove(EObject element, int oldIndex, int newIndex) { 
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBReportMediator.Properties.sqlStatements, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
-				sqlStatements.refresh();
-			}
-			public void handleRemove(EObject element) { 
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBReportMediator.Properties.sqlStatements, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
-				sqlStatements.refresh();
-			}
-			public void navigateTo(EObject element) { }
-		});
-		for (ViewerFilter filter : this.sqlStatementsFilters) {
-			this.sqlStatements.addFilter(filter);
-		}
-		this.sqlStatements.setHelpText(propertiesEditionComponent.getHelpContent(EsbViewsRepository.DBReportMediator.Properties.sqlStatements, EsbViewsRepository.SWT_KIND));
-		this.sqlStatements.createControls(parent);
-		this.sqlStatements.addSelectionListener(new SelectionAdapter() {
-			
-			public void widgetSelected(SelectionEvent e) {
-				if (e.item != null && e.item.getData() instanceof EObject) {
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBReportMediator.Properties.sqlStatements, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
-				}
-			}
-			
-		});
-		GridData sqlStatementsData = new GridData(GridData.FILL_HORIZONTAL);
-		sqlStatementsData.horizontalSpan = 3;
-		this.sqlStatements.setLayoutData(sqlStatementsData);
-		this.sqlStatements.setLowerBound(0);
-		this.sqlStatements.setUpperBound(-1);
-		sqlStatements.setID(EsbViewsRepository.DBReportMediator.Properties.sqlStatements);
-		sqlStatements.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
-		// Start of user code for createSqlStatementsAdvancedTableComposition
-
-		// End of user code
-		return parent;
+	protected Composite createMiscGroup(Composite parent) {
+		Group miscGroup = new Group(parent, SWT.NONE);
+		miscGroup.setText(EsbMessages.DBReportMediatorPropertiesEditionPart_MiscGroupLabel);
+		GridData miscGroupData = new GridData(GridData.FILL_HORIZONTAL);
+		miscGroupData.horizontalSpan = 3;
+		miscGroup.setLayoutData(miscGroupData);
+		GridLayout miscGroupLayout = new GridLayout();
+		miscGroupLayout.numColumns = 3;
+		miscGroup.setLayout(miscGroupLayout);
+		return miscGroup;
 	}
 
 	
-	protected Composite createConnectionUseTransactionCheckbox(Composite parent) {
-		connectionUseTransaction = new Button(parent, SWT.CHECK);
-		connectionUseTransaction.setText(getDescription(EsbViewsRepository.DBReportMediator.Properties.connectionUseTransaction, EsbMessages.DBReportMediatorPropertiesEditionPart_ConnectionUseTransactionLabel));
-		connectionUseTransaction.addSelectionListener(new SelectionAdapter() {
+	protected Composite createDescriptionText(Composite parent) {
+		createDescription(parent, EsbViewsRepository.DBReportMediator.Misc.description, EsbMessages.DBReportMediatorPropertiesEditionPart_DescriptionLabel);
+		description = SWTUtils.createScrollableText(parent, SWT.BORDER);
+		GridData descriptionData = new GridData(GridData.FILL_HORIZONTAL);
+		description.setLayoutData(descriptionData);
+		description.addFocusListener(new FocusAdapter() {
 
 			/**
 			 * {@inheritDoc}
-			 *
-			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
-			 * 	
+			 * 
+			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
 			 */
-			public void widgetSelected(SelectionEvent e) {
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBReportMediator.Properties.connectionUseTransaction, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(connectionUseTransaction.getSelection())));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBReportMediator.Misc.description, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, description.getText()));
 			}
 
 		});
-		GridData connectionUseTransactionData = new GridData(GridData.FILL_HORIZONTAL);
-		connectionUseTransactionData.horizontalSpan = 2;
-		connectionUseTransaction.setLayoutData(connectionUseTransactionData);
-		EditingUtils.setID(connectionUseTransaction, EsbViewsRepository.DBReportMediator.Properties.connectionUseTransaction);
-		EditingUtils.setEEFtype(connectionUseTransaction, "eef::Checkbox"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DBReportMediator.Properties.connectionUseTransaction, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		// Start of user code for createConnectionUseTransactionCheckbox
+		description.addKeyListener(new KeyAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void keyPressed(KeyEvent e) {
+				if (e.character == SWT.CR) {
+					if (propertiesEditionComponent != null)
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBReportMediator.Misc.description, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, description.getText()));
+				}
+			}
+
+		});
+		EditingUtils.setID(description, EsbViewsRepository.DBReportMediator.Misc.description);
+		EditingUtils.setEEFtype(description, "eef::Text"); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DBReportMediator.Misc.description, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createDescriptionText
 
 		// End of user code
 		return parent;
@@ -1384,33 +1446,432 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getDescription()
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getConnectionType()
 	 * 
 	 */
-	public String getDescription() {
-		return description.getText();
+	public Enumerator getConnectionType() {
+		Enumerator selection = (Enumerator) ((StructuredSelection) connectionType.getSelection()).getFirstElement();
+		return selection;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setDescription(String newValue)
-	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#initConnectionType(Object input, Enumerator current)
 	 */
-	public void setDescription(String newValue) {
-		if (newValue != null) {
-			description.setText(newValue);
-		} else {
-			description.setText(""); //$NON-NLS-1$
-		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.DBReportMediator.Properties.description);
-		if (eefElementEditorReadOnlyState && description.isEnabled()) {
-			description.setEnabled(false);
-			description.setToolTipText(EsbMessages.DBReportMediator_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !description.isEnabled()) {
-			description.setEnabled(true);
+	public void initConnectionType(Object input, Enumerator current) {
+		connectionType.setInput(input);
+		connectionType.modelUpdating(new StructuredSelection(current));
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.DBReportMediator.Connection.connectionType);
+		if (eefElementEditorReadOnlyState && connectionType.isEnabled()) {
+			connectionType.setEnabled(false);
+			connectionType.setToolTipText(EsbMessages.DBReportMediator_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !connectionType.isEnabled()) {
+			connectionType.setEnabled(true);
 		}	
 		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setConnectionType(Enumerator newValue)
+	 * 
+	 */
+	public void setConnectionType(Enumerator newValue) {
+		connectionType.modelUpdating(new StructuredSelection(newValue));
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.DBReportMediator.Connection.connectionType);
+		if (eefElementEditorReadOnlyState && connectionType.isEnabled()) {
+			connectionType.setEnabled(false);
+			connectionType.setToolTipText(EsbMessages.DBReportMediator_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !connectionType.isEnabled()) {
+			connectionType.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getConnectionDsType()
+	 * 
+	 */
+	public Enumerator getConnectionDsType() {
+		Enumerator selection = (Enumerator) ((StructuredSelection) connectionDsType.getSelection()).getFirstElement();
+		return selection;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#initConnectionDsType(Object input, Enumerator current)
+	 */
+	public void initConnectionDsType(Object input, Enumerator current) {
+		connectionDsType.setInput(input);
+		connectionDsType.modelUpdating(new StructuredSelection(current));
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.DBReportMediator.Connection.connectionDsType);
+		if (eefElementEditorReadOnlyState && connectionDsType.isEnabled()) {
+			connectionDsType.setEnabled(false);
+			connectionDsType.setToolTipText(EsbMessages.DBReportMediator_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !connectionDsType.isEnabled()) {
+			connectionDsType.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setConnectionDsType(Enumerator newValue)
+	 * 
+	 */
+	public void setConnectionDsType(Enumerator newValue) {
+		connectionDsType.modelUpdating(new StructuredSelection(newValue));
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.DBReportMediator.Connection.connectionDsType);
+		if (eefElementEditorReadOnlyState && connectionDsType.isEnabled()) {
+			connectionDsType.setEnabled(false);
+			connectionDsType.setToolTipText(EsbMessages.DBReportMediator_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !connectionDsType.isEnabled()) {
+			connectionDsType.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getConnectionDbType()
+	 * 
+	 */
+	public Enumerator getConnectionDbType() {
+		Enumerator selection = (Enumerator) ((StructuredSelection) connectionDbType.getSelection()).getFirstElement();
+		return selection;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#initConnectionDbType(Object input, Enumerator current)
+	 */
+	public void initConnectionDbType(Object input, Enumerator current) {
+		connectionDbType.setInput(input);
+		connectionDbType.modelUpdating(new StructuredSelection(current));
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.DBReportMediator.Connection.connectionDbType);
+		if (eefElementEditorReadOnlyState && connectionDbType.isEnabled()) {
+			connectionDbType.setEnabled(false);
+			connectionDbType.setToolTipText(EsbMessages.DBReportMediator_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !connectionDbType.isEnabled()) {
+			connectionDbType.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setConnectionDbType(Enumerator newValue)
+	 * 
+	 */
+	public void setConnectionDbType(Enumerator newValue) {
+		connectionDbType.modelUpdating(new StructuredSelection(newValue));
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.DBReportMediator.Connection.connectionDbType);
+		if (eefElementEditorReadOnlyState && connectionDbType.isEnabled()) {
+			connectionDbType.setEnabled(false);
+			connectionDbType.setToolTipText(EsbMessages.DBReportMediator_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !connectionDbType.isEnabled()) {
+			connectionDbType.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getConnectionDbDriver()
+	 * 
+	 */
+	public String getConnectionDbDriver() {
+		return connectionDbDriver.getText();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setConnectionDbDriver(String newValue)
+	 * 
+	 */
+	public void setConnectionDbDriver(String newValue) {
+		if (newValue != null) {
+			connectionDbDriver.setText(newValue);
+		} else {
+			connectionDbDriver.setText(""); //$NON-NLS-1$
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.DBReportMediator.Connection.connectionDbDriver);
+		if (eefElementEditorReadOnlyState && connectionDbDriver.isEnabled()) {
+			connectionDbDriver.setEnabled(false);
+			connectionDbDriver.setToolTipText(EsbMessages.DBReportMediator_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !connectionDbDriver.isEnabled()) {
+			connectionDbDriver.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getConnectionDsInitialContext()
+	 * 
+	 */
+	public String getConnectionDsInitialContext() {
+		return connectionDsInitialContext.getText();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setConnectionDsInitialContext(String newValue)
+	 * 
+	 */
+	public void setConnectionDsInitialContext(String newValue) {
+		if (newValue != null) {
+			connectionDsInitialContext.setText(newValue);
+		} else {
+			connectionDsInitialContext.setText(""); //$NON-NLS-1$
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.DBReportMediator.Connection.connectionDsInitialContext);
+		if (eefElementEditorReadOnlyState && connectionDsInitialContext.isEnabled()) {
+			connectionDsInitialContext.setEnabled(false);
+			connectionDsInitialContext.setToolTipText(EsbMessages.DBReportMediator_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !connectionDsInitialContext.isEnabled()) {
+			connectionDsInitialContext.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getConnectionDsName()
+	 * 
+	 */
+	public String getConnectionDsName() {
+		return connectionDsName.getText();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setConnectionDsName(String newValue)
+	 * 
+	 */
+	public void setConnectionDsName(String newValue) {
+		if (newValue != null) {
+			connectionDsName.setText(newValue);
+		} else {
+			connectionDsName.setText(""); //$NON-NLS-1$
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.DBReportMediator.Connection.connectionDsName);
+		if (eefElementEditorReadOnlyState && connectionDsName.isEnabled()) {
+			connectionDsName.setEnabled(false);
+			connectionDsName.setToolTipText(EsbMessages.DBReportMediator_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !connectionDsName.isEnabled()) {
+			connectionDsName.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getConnectionURL()
+	 * 
+	 */
+	public String getConnectionURL() {
+		return connectionURL.getText();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setConnectionURL(String newValue)
+	 * 
+	 */
+	public void setConnectionURL(String newValue) {
+		if (newValue != null) {
+			connectionURL.setText(newValue);
+		} else {
+			connectionURL.setText(""); //$NON-NLS-1$
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.DBReportMediator.Connection.connectionURL);
+		if (eefElementEditorReadOnlyState && connectionURL.isEnabled()) {
+			connectionURL.setEnabled(false);
+			connectionURL.setToolTipText(EsbMessages.DBReportMediator_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !connectionURL.isEnabled()) {
+			connectionURL.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getConnectionUsername()
+	 * 
+	 */
+	public String getConnectionUsername() {
+		return connectionUsername.getText();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setConnectionUsername(String newValue)
+	 * 
+	 */
+	public void setConnectionUsername(String newValue) {
+		if (newValue != null) {
+			connectionUsername.setText(newValue);
+		} else {
+			connectionUsername.setText(""); //$NON-NLS-1$
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.DBReportMediator.Connection.connectionUsername);
+		if (eefElementEditorReadOnlyState && connectionUsername.isEnabled()) {
+			connectionUsername.setEnabled(false);
+			connectionUsername.setToolTipText(EsbMessages.DBReportMediator_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !connectionUsername.isEnabled()) {
+			connectionUsername.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getConnectionPassword()
+	 * 
+	 */
+	public String getConnectionPassword() {
+		return connectionPassword.getText();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setConnectionPassword(String newValue)
+	 * 
+	 */
+	public void setConnectionPassword(String newValue) {
+		if (newValue != null) {
+			connectionPassword.setText(newValue);
+		} else {
+			connectionPassword.setText(""); //$NON-NLS-1$
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.DBReportMediator.Connection.connectionPassword);
+		if (eefElementEditorReadOnlyState && connectionPassword.isEnabled()) {
+			connectionPassword.setEnabled(false);
+			connectionPassword.setToolTipText(EsbMessages.DBReportMediator_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !connectionPassword.isEnabled()) {
+			connectionPassword.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getConnectionUseTransaction()
+	 * 
+	 */
+	public Boolean getConnectionUseTransaction() {
+		return Boolean.valueOf(connectionUseTransaction.getSelection());
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setConnectionUseTransaction(Boolean newValue)
+	 * 
+	 */
+	public void setConnectionUseTransaction(Boolean newValue) {
+		if (newValue != null) {
+			connectionUseTransaction.setSelection(newValue.booleanValue());
+		} else {
+			connectionUseTransaction.setSelection(false);
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.DBReportMediator.Connection.connectionUseTransaction);
+		if (eefElementEditorReadOnlyState && connectionUseTransaction.isEnabled()) {
+			connectionUseTransaction.setEnabled(false);
+			connectionUseTransaction.setToolTipText(EsbMessages.DBReportMediator_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !connectionUseTransaction.isEnabled()) {
+			connectionUseTransaction.setEnabled(true);
+		}	
+		
+	}
+
+
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#initSqlStatements(EObject current, EReference containingFeature, EReference feature)
+	 */
+	public void initSqlStatements(ReferencesTableSettings settings) {
+		if (current.eResource() != null && current.eResource().getResourceSet() != null)
+			this.resourceSet = current.eResource().getResourceSet();
+		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
+		sqlStatements.setContentProvider(contentProvider);
+		sqlStatements.setInput(settings);
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.DBReportMediator.Statements.sqlStatements);
+		if (eefElementEditorReadOnlyState && sqlStatements.isEnabled()) {
+			sqlStatements.setEnabled(false);
+			sqlStatements.setToolTipText(EsbMessages.DBReportMediator_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !sqlStatements.isEnabled()) {
+			sqlStatements.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#updateSqlStatements()
+	 * 
+	 */
+	public void updateSqlStatements() {
+	sqlStatements.refresh();
+}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#addFilterSqlStatements(ViewerFilter filter)
+	 * 
+	 */
+	public void addFilterToSqlStatements(ViewerFilter filter) {
+		sqlStatementsFilters.add(filter);
+		if (this.sqlStatements != null) {
+			this.sqlStatements.addFilter(filter);
+		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#addBusinessFilterSqlStatements(ViewerFilter filter)
+	 * 
+	 */
+	public void addBusinessFilterToSqlStatements(ViewerFilter filter) {
+		sqlStatementsBusinessFilters.add(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#isContainedInSqlStatementsTable(EObject element)
+	 * 
+	 */
+	public boolean isContainedInSqlStatementsTable(EObject element) {
+		return ((ReferencesTableSettings)sqlStatements.getInput()).contains(element);
 	}
 
 	/**
@@ -1492,339 +1953,6 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 			reverse.setToolTipText(EsbMessages.DBReportMediator_ReadOnly);
 		} else if (!eefElementEditorReadOnlyState && !reverse.isEnabled()) {
 			reverse.setEnabled(true);
-		}	
-		
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getConnectionType()
-	 * 
-	 */
-	public Enumerator getConnectionType() {
-		Enumerator selection = (Enumerator) ((StructuredSelection) connectionType.getSelection()).getFirstElement();
-		return selection;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#initConnectionType(Object input, Enumerator current)
-	 */
-	public void initConnectionType(Object input, Enumerator current) {
-		connectionType.setInput(input);
-		connectionType.modelUpdating(new StructuredSelection(current));
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.DBReportMediator.Properties.connectionType);
-		if (eefElementEditorReadOnlyState && connectionType.isEnabled()) {
-			connectionType.setEnabled(false);
-			connectionType.setToolTipText(EsbMessages.DBReportMediator_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !connectionType.isEnabled()) {
-			connectionType.setEnabled(true);
-		}	
-		
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setConnectionType(Enumerator newValue)
-	 * 
-	 */
-	public void setConnectionType(Enumerator newValue) {
-		connectionType.modelUpdating(new StructuredSelection(newValue));
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.DBReportMediator.Properties.connectionType);
-		if (eefElementEditorReadOnlyState && connectionType.isEnabled()) {
-			connectionType.setEnabled(false);
-			connectionType.setToolTipText(EsbMessages.DBReportMediator_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !connectionType.isEnabled()) {
-			connectionType.setEnabled(true);
-		}	
-		
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getConnectionDsType()
-	 * 
-	 */
-	public Enumerator getConnectionDsType() {
-		Enumerator selection = (Enumerator) ((StructuredSelection) connectionDsType.getSelection()).getFirstElement();
-		return selection;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#initConnectionDsType(Object input, Enumerator current)
-	 */
-	public void initConnectionDsType(Object input, Enumerator current) {
-		connectionDsType.setInput(input);
-		connectionDsType.modelUpdating(new StructuredSelection(current));
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.DBReportMediator.Properties.connectionDsType);
-		if (eefElementEditorReadOnlyState && connectionDsType.isEnabled()) {
-			connectionDsType.setEnabled(false);
-			connectionDsType.setToolTipText(EsbMessages.DBReportMediator_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !connectionDsType.isEnabled()) {
-			connectionDsType.setEnabled(true);
-		}	
-		
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setConnectionDsType(Enumerator newValue)
-	 * 
-	 */
-	public void setConnectionDsType(Enumerator newValue) {
-		connectionDsType.modelUpdating(new StructuredSelection(newValue));
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.DBReportMediator.Properties.connectionDsType);
-		if (eefElementEditorReadOnlyState && connectionDsType.isEnabled()) {
-			connectionDsType.setEnabled(false);
-			connectionDsType.setToolTipText(EsbMessages.DBReportMediator_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !connectionDsType.isEnabled()) {
-			connectionDsType.setEnabled(true);
-		}	
-		
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getConnectionDbType()
-	 * 
-	 */
-	public Enumerator getConnectionDbType() {
-		Enumerator selection = (Enumerator) ((StructuredSelection) connectionDbType.getSelection()).getFirstElement();
-		return selection;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#initConnectionDbType(Object input, Enumerator current)
-	 */
-	public void initConnectionDbType(Object input, Enumerator current) {
-		connectionDbType.setInput(input);
-		connectionDbType.modelUpdating(new StructuredSelection(current));
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.DBReportMediator.Properties.connectionDbType);
-		if (eefElementEditorReadOnlyState && connectionDbType.isEnabled()) {
-			connectionDbType.setEnabled(false);
-			connectionDbType.setToolTipText(EsbMessages.DBReportMediator_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !connectionDbType.isEnabled()) {
-			connectionDbType.setEnabled(true);
-		}	
-		
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setConnectionDbType(Enumerator newValue)
-	 * 
-	 */
-	public void setConnectionDbType(Enumerator newValue) {
-		connectionDbType.modelUpdating(new StructuredSelection(newValue));
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.DBReportMediator.Properties.connectionDbType);
-		if (eefElementEditorReadOnlyState && connectionDbType.isEnabled()) {
-			connectionDbType.setEnabled(false);
-			connectionDbType.setToolTipText(EsbMessages.DBReportMediator_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !connectionDbType.isEnabled()) {
-			connectionDbType.setEnabled(true);
-		}	
-		
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getConnectionDbDriver()
-	 * 
-	 */
-	public String getConnectionDbDriver() {
-		return connectionDbDriver.getText();
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setConnectionDbDriver(String newValue)
-	 * 
-	 */
-	public void setConnectionDbDriver(String newValue) {
-		if (newValue != null) {
-			connectionDbDriver.setText(newValue);
-		} else {
-			connectionDbDriver.setText(""); //$NON-NLS-1$
-		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.DBReportMediator.Properties.connectionDbDriver);
-		if (eefElementEditorReadOnlyState && connectionDbDriver.isEnabled()) {
-			connectionDbDriver.setEnabled(false);
-			connectionDbDriver.setToolTipText(EsbMessages.DBReportMediator_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !connectionDbDriver.isEnabled()) {
-			connectionDbDriver.setEnabled(true);
-		}	
-		
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getConnectionDsInitialContext()
-	 * 
-	 */
-	public String getConnectionDsInitialContext() {
-		return connectionDsInitialContext.getText();
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setConnectionDsInitialContext(String newValue)
-	 * 
-	 */
-	public void setConnectionDsInitialContext(String newValue) {
-		if (newValue != null) {
-			connectionDsInitialContext.setText(newValue);
-		} else {
-			connectionDsInitialContext.setText(""); //$NON-NLS-1$
-		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.DBReportMediator.Properties.connectionDsInitialContext);
-		if (eefElementEditorReadOnlyState && connectionDsInitialContext.isEnabled()) {
-			connectionDsInitialContext.setEnabled(false);
-			connectionDsInitialContext.setToolTipText(EsbMessages.DBReportMediator_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !connectionDsInitialContext.isEnabled()) {
-			connectionDsInitialContext.setEnabled(true);
-		}	
-		
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getConnectionDsName()
-	 * 
-	 */
-	public String getConnectionDsName() {
-		return connectionDsName.getText();
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setConnectionDsName(String newValue)
-	 * 
-	 */
-	public void setConnectionDsName(String newValue) {
-		if (newValue != null) {
-			connectionDsName.setText(newValue);
-		} else {
-			connectionDsName.setText(""); //$NON-NLS-1$
-		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.DBReportMediator.Properties.connectionDsName);
-		if (eefElementEditorReadOnlyState && connectionDsName.isEnabled()) {
-			connectionDsName.setEnabled(false);
-			connectionDsName.setToolTipText(EsbMessages.DBReportMediator_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !connectionDsName.isEnabled()) {
-			connectionDsName.setEnabled(true);
-		}	
-		
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getConnectionURL()
-	 * 
-	 */
-	public String getConnectionURL() {
-		return connectionURL.getText();
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setConnectionURL(String newValue)
-	 * 
-	 */
-	public void setConnectionURL(String newValue) {
-		if (newValue != null) {
-			connectionURL.setText(newValue);
-		} else {
-			connectionURL.setText(""); //$NON-NLS-1$
-		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.DBReportMediator.Properties.connectionURL);
-		if (eefElementEditorReadOnlyState && connectionURL.isEnabled()) {
-			connectionURL.setEnabled(false);
-			connectionURL.setToolTipText(EsbMessages.DBReportMediator_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !connectionURL.isEnabled()) {
-			connectionURL.setEnabled(true);
-		}	
-		
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getConnectionUsername()
-	 * 
-	 */
-	public String getConnectionUsername() {
-		return connectionUsername.getText();
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setConnectionUsername(String newValue)
-	 * 
-	 */
-	public void setConnectionUsername(String newValue) {
-		if (newValue != null) {
-			connectionUsername.setText(newValue);
-		} else {
-			connectionUsername.setText(""); //$NON-NLS-1$
-		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.DBReportMediator.Properties.connectionUsername);
-		if (eefElementEditorReadOnlyState && connectionUsername.isEnabled()) {
-			connectionUsername.setEnabled(false);
-			connectionUsername.setToolTipText(EsbMessages.DBReportMediator_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !connectionUsername.isEnabled()) {
-			connectionUsername.setEnabled(true);
-		}	
-		
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getConnectionPassword()
-	 * 
-	 */
-	public String getConnectionPassword() {
-		return connectionPassword.getText();
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setConnectionPassword(String newValue)
-	 * 
-	 */
-	public void setConnectionPassword(String newValue) {
-		if (newValue != null) {
-			connectionPassword.setText(newValue);
-		} else {
-			connectionPassword.setText(""); //$NON-NLS-1$
-		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.DBReportMediator.Properties.connectionPassword);
-		if (eefElementEditorReadOnlyState && connectionPassword.isEnabled()) {
-			connectionPassword.setEnabled(false);
-			connectionPassword.setToolTipText(EsbMessages.DBReportMediator_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !connectionPassword.isEnabled()) {
-			connectionPassword.setEnabled(true);
 		}	
 		
 	}
@@ -2288,100 +2416,34 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 		
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#initSqlStatements(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getDescription()
+	 * 
 	 */
-	public void initSqlStatements(ReferencesTableSettings settings) {
-		if (current.eResource() != null && current.eResource().getResourceSet() != null)
-			this.resourceSet = current.eResource().getResourceSet();
-		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
-		sqlStatements.setContentProvider(contentProvider);
-		sqlStatements.setInput(settings);
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.DBReportMediator.Properties.sqlStatements);
-		if (eefElementEditorReadOnlyState && sqlStatements.isEnabled()) {
-			sqlStatements.setEnabled(false);
-			sqlStatements.setToolTipText(EsbMessages.DBReportMediator_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !sqlStatements.isEnabled()) {
-			sqlStatements.setEnabled(true);
-		}	
-		
+	public String getDescription() {
+		return description.getText();
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#updateSqlStatements()
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setDescription(String newValue)
 	 * 
 	 */
-	public void updateSqlStatements() {
-	sqlStatements.refresh();
-}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#addFilterSqlStatements(ViewerFilter filter)
-	 * 
-	 */
-	public void addFilterToSqlStatements(ViewerFilter filter) {
-		sqlStatementsFilters.add(filter);
-		if (this.sqlStatements != null) {
-			this.sqlStatements.addFilter(filter);
-		}
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#addBusinessFilterSqlStatements(ViewerFilter filter)
-	 * 
-	 */
-	public void addBusinessFilterToSqlStatements(ViewerFilter filter) {
-		sqlStatementsBusinessFilters.add(filter);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#isContainedInSqlStatementsTable(EObject element)
-	 * 
-	 */
-	public boolean isContainedInSqlStatementsTable(EObject element) {
-		return ((ReferencesTableSettings)sqlStatements.getInput()).contains(element);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getConnectionUseTransaction()
-	 * 
-	 */
-	public Boolean getConnectionUseTransaction() {
-		return Boolean.valueOf(connectionUseTransaction.getSelection());
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setConnectionUseTransaction(Boolean newValue)
-	 * 
-	 */
-	public void setConnectionUseTransaction(Boolean newValue) {
+	public void setDescription(String newValue) {
 		if (newValue != null) {
-			connectionUseTransaction.setSelection(newValue.booleanValue());
+			description.setText(newValue);
 		} else {
-			connectionUseTransaction.setSelection(false);
+			description.setText(""); //$NON-NLS-1$
 		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.DBReportMediator.Properties.connectionUseTransaction);
-		if (eefElementEditorReadOnlyState && connectionUseTransaction.isEnabled()) {
-			connectionUseTransaction.setEnabled(false);
-			connectionUseTransaction.setToolTipText(EsbMessages.DBReportMediator_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !connectionUseTransaction.isEnabled()) {
-			connectionUseTransaction.setEnabled(true);
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.DBReportMediator.Misc.description);
+		if (eefElementEditorReadOnlyState && description.isEnabled()) {
+			description.setEnabled(false);
+			description.setToolTipText(EsbMessages.DBReportMediator_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !description.isEnabled()) {
+			description.setEnabled(true);
 		}	
 		
 	}

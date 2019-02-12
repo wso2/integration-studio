@@ -5,6 +5,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb.parts;
 
 // Start of user code for imports
 import org.eclipse.emf.common.util.EList;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 
 
 // End of user code
@@ -99,6 +100,12 @@ public interface EnqueueMediatorPropertiesEditionPart {
 
 
 
+	// Start of user code for sequenceKey specific getters and setters declaration
+	public void setSequenceKey(RegistryKeyProperty registryKeyProperty);
+	
+	public RegistryKeyProperty getSequenceKey();
+	
+	// End of user code
 
 	/**
 	 * Returns the internationalized title text.

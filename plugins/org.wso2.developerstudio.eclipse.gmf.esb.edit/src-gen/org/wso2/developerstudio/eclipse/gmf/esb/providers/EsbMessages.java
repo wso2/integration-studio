@@ -779,7 +779,16 @@ public class EsbMessages extends NLS {
 	public static String DBLookupMediatorOutputConnectorPropertiesEditionPart_PropertiesGroupLabel;
 
 	
+	public static String DBReportMediatorPropertiesEditionPart_ConnectionGroupLabel;
+
+	
+	public static String DBReportMediatorPropertiesEditionPart_StatementsGroupLabel;
+
+	
 	public static String DBReportMediatorPropertiesEditionPart_PropertiesGroupLabel;
+
+	
+	public static String DBReportMediatorPropertiesEditionPart_MiscGroupLabel;
 
 	
 	public static String DBReportMediatorInputConnectorPropertiesEditionPart_PropertiesGroupLabel;
@@ -848,7 +857,19 @@ public class EsbMessages extends NLS {
 	public static String RespondMediatorOutputConnectorPropertiesEditionPart_PropertiesGroupLabel;
 
 	
+	public static String SmooksMediatorPropertiesEditionPart_InputGroupLabel;
+
+	
+	public static String SmooksMediatorPropertiesEditionPart_OutputGroupLabel;
+
+	
 	public static String SmooksMediatorPropertiesEditionPart_PropertiesGroupLabel;
+
+	
+	public static String SmooksMediatorPropertiesEditionPart_KeyGroupLabel;
+
+	
+	public static String SmooksMediatorPropertiesEditionPart_MiscGroupLabel;
 
 	
 	public static String SmooksMediatorInputConnectorPropertiesEditionPart_PropertiesGroupLabel;
@@ -4567,6 +4588,9 @@ public class EsbMessages extends NLS {
 	public static String EnqueueMediatorPropertiesEditionPart_PriorityLabel;
 
 	
+	public static String EnqueueMediatorPropertiesEditionPart_SequenceKeyLabel;
+
+	
 	public static String EnqueueMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;
 
 	
@@ -5539,15 +5563,6 @@ public class EsbMessages extends NLS {
 	public static String DBLookupMediatorOutputConnectorPropertiesEditionPart_CommentMediatorsLabel;
 
 	
-	public static String DBReportMediatorPropertiesEditionPart_DescriptionLabel;
-
-	
-	public static String DBReportMediatorPropertiesEditionPart_CommentsListLabel;
-
-	
-	public static String DBReportMediatorPropertiesEditionPart_ReverseLabel;
-
-	
 	public static String DBReportMediatorPropertiesEditionPart_ConnectionTypeLabel;
 
 	
@@ -5573,6 +5588,18 @@ public class EsbMessages extends NLS {
 
 	
 	public static String DBReportMediatorPropertiesEditionPart_ConnectionPasswordLabel;
+
+	
+	public static String DBReportMediatorPropertiesEditionPart_ConnectionUseTransactionLabel;
+
+	
+	public static String DBReportMediatorPropertiesEditionPart_SqlStatementsLabel;
+
+	
+	public static String DBReportMediatorPropertiesEditionPart_CommentsListLabel;
+
+	
+	public static String DBReportMediatorPropertiesEditionPart_ReverseLabel;
 
 	
 	public static String DBReportMediatorPropertiesEditionPart_PropertyAutocommitLabel;
@@ -5611,10 +5638,7 @@ public class EsbMessages extends NLS {
 	public static String DBReportMediatorPropertiesEditionPart_PropertyInitialsizeLabel;
 
 	
-	public static String DBReportMediatorPropertiesEditionPart_SqlStatementsLabel;
-
-	
-	public static String DBReportMediatorPropertiesEditionPart_ConnectionUseTransactionLabel;
+	public static String DBReportMediatorPropertiesEditionPart_DescriptionLabel;
 
 	
 	public static String DBReportMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;
@@ -5788,16 +5812,10 @@ public class EsbMessages extends NLS {
 	public static String RespondMediatorOutputConnectorPropertiesEditionPart_CommentMediatorsLabel;
 
 	
-	public static String SmooksMediatorPropertiesEditionPart_DescriptionLabel;
-
-	
-	public static String SmooksMediatorPropertiesEditionPart_CommentsListLabel;
-
-	
-	public static String SmooksMediatorPropertiesEditionPart_ReverseLabel;
-
-	
 	public static String SmooksMediatorPropertiesEditionPart_InputTypeLabel;
+
+	
+	public static String SmooksMediatorPropertiesEditionPart_InputExpresssionLabel;
 
 	
 	public static String SmooksMediatorPropertiesEditionPart_OutputTypeLabel;
@@ -5810,6 +5828,21 @@ public class EsbMessages extends NLS {
 
 	
 	public static String SmooksMediatorPropertiesEditionPart_OutputMethodLabel;
+
+	
+	public static String SmooksMediatorPropertiesEditionPart_OutputExpressionLabel;
+
+	
+	public static String SmooksMediatorPropertiesEditionPart_CommentsListLabel;
+
+	
+	public static String SmooksMediatorPropertiesEditionPart_ReverseLabel;
+
+	
+	public static String SmooksMediatorPropertiesEditionPart_ConfigurationKeyLabel;
+
+	
+	public static String SmooksMediatorPropertiesEditionPart_DescriptionLabel;
 
 	
 	public static String SmooksMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;

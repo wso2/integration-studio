@@ -23,60 +23,6 @@ import org.eclipse.jface.viewers.ViewerFilter;
 public interface DBReportMediatorPropertiesEditionPart {
 
 	/**
-	 * @return the description
-	 * 
-	 */
-	public String getDescription();
-
-	/**
-	 * Defines a new description
-	 * @param newValue the new description to set
-	 * 
-	 */
-	public void setDescription(String newValue);
-
-
-	/**
-	 * @return the commentsList
-	 * 
-	 */
-	public EList getCommentsList();
-
-	/**
-	 * Defines a new commentsList
-	 * @param newValue the new commentsList to set
-	 * 
-	 */
-	public void setCommentsList(EList newValue);
-
-	/**
-	 * Add a value to the commentsList multivalued attribute.
-	 * @param newValue the value to add
-	 */
-	public void addToCommentsList(Object newValue);
-
-	/**
-	 * Remove a value to the commentsList multivalued attribute.
-	 * @param newValue the value to remove
-	 */
-	public void removeToCommentsList(Object newValue);
-
-
-	/**
-	 * @return the Reverse
-	 * 
-	 */
-	public Boolean getReverse();
-
-	/**
-	 * Defines a new Reverse
-	 * @param newValue the new Reverse to set
-	 * 
-	 */
-	public void setReverse(Boolean newValue);
-
-
-	/**
 	 * @return the connectionType
 	 * 
 	 */
@@ -221,6 +167,104 @@ public interface DBReportMediatorPropertiesEditionPart {
 	 * 
 	 */
 	public void setConnectionPassword(String newValue);
+
+
+	/**
+	 * @return the connectionUseTransaction
+	 * 
+	 */
+	public Boolean getConnectionUseTransaction();
+
+	/**
+	 * Defines a new connectionUseTransaction
+	 * @param newValue the new connectionUseTransaction to set
+	 * 
+	 */
+	public void setConnectionUseTransaction(Boolean newValue);
+
+
+
+
+	/**
+	 * Init the sqlStatements
+	 * @param current the current value
+	 * @param containgFeature the feature where to navigate if necessary
+	 * @param feature the feature to manage
+	 */
+	public void initSqlStatements(ReferencesTableSettings settings);
+
+	/**
+	 * Update the sqlStatements
+	 * @param newValue the sqlStatements to update
+	 * 
+	 */
+	public void updateSqlStatements();
+
+	/**
+	 * Adds the given filter to the sqlStatements edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addFilterToSqlStatements(ViewerFilter filter);
+
+	/**
+	 * Adds the given filter to the sqlStatements edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addBusinessFilterToSqlStatements(ViewerFilter filter);
+
+	/**
+	 * @return true if the given element is contained inside the sqlStatements table
+	 * 
+	 */
+	public boolean isContainedInSqlStatementsTable(EObject element);
+
+
+	/**
+	 * @return the commentsList
+	 * 
+	 */
+	public EList getCommentsList();
+
+	/**
+	 * Defines a new commentsList
+	 * @param newValue the new commentsList to set
+	 * 
+	 */
+	public void setCommentsList(EList newValue);
+
+	/**
+	 * Add a value to the commentsList multivalued attribute.
+	 * @param newValue the value to add
+	 */
+	public void addToCommentsList(Object newValue);
+
+	/**
+	 * Remove a value to the commentsList multivalued attribute.
+	 * @param newValue the value to remove
+	 */
+	public void removeToCommentsList(Object newValue);
+
+
+	/**
+	 * @return the Reverse
+	 * 
+	 */
+	public Boolean getReverse();
+
+	/**
+	 * Defines a new Reverse
+	 * @param newValue the new Reverse to set
+	 * 
+	 */
+	public void setReverse(Boolean newValue);
 
 
 	/**
@@ -426,62 +470,18 @@ public interface DBReportMediatorPropertiesEditionPart {
 	public void setPropertyInitialsize(String newValue);
 
 
-
-
 	/**
-	 * Init the sqlStatements
-	 * @param current the current value
-	 * @param containgFeature the feature where to navigate if necessary
-	 * @param feature the feature to manage
-	 */
-	public void initSqlStatements(ReferencesTableSettings settings);
-
-	/**
-	 * Update the sqlStatements
-	 * @param newValue the sqlStatements to update
+	 * @return the description
 	 * 
 	 */
-	public void updateSqlStatements();
+	public String getDescription();
 
 	/**
-	 * Adds the given filter to the sqlStatements edition editor.
-	 * 
-	 * @param filter
-	 *            a viewer filter
-	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * Defines a new description
+	 * @param newValue the new description to set
 	 * 
 	 */
-	public void addFilterToSqlStatements(ViewerFilter filter);
-
-	/**
-	 * Adds the given filter to the sqlStatements edition editor.
-	 * 
-	 * @param filter
-	 *            a viewer filter
-	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
-	 */
-	public void addBusinessFilterToSqlStatements(ViewerFilter filter);
-
-	/**
-	 * @return true if the given element is contained inside the sqlStatements table
-	 * 
-	 */
-	public boolean isContainedInSqlStatementsTable(EObject element);
-
-
-	/**
-	 * @return the connectionUseTransaction
-	 * 
-	 */
-	public Boolean getConnectionUseTransaction();
-
-	/**
-	 * Defines a new connectionUseTransaction
-	 * @param newValue the new connectionUseTransaction to set
-	 * 
-	 */
-	public void setConnectionUseTransaction(Boolean newValue);
+	public void setDescription(String newValue);
 
 
 

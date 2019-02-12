@@ -51,6 +51,9 @@ import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.KeyListener;
+import org.eclipse.swt.events.MouseAdapter;
+import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 
@@ -1518,33 +1521,41 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
         widgetFactory.paintBordersFor(parent);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
         aggregationExpressionText.setLayoutData(valueData);
-        aggregationExpressionText.addFocusListener(new FocusAdapter() {
-            /**
-             * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-             * 
-             */
+        
+        aggregationExpressionText.addMouseListener(new MouseAdapter() {
+            
             @Override
-            @SuppressWarnings("synthetic-access")
-            public void focusLost(FocusEvent e) {
+            public void mouseDown( MouseEvent event ) {
+                openNamespacedPropertyEditor(parent);
             }
-
-            /**
-             * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
-             */
-            @Override
-            public void focusGained(FocusEvent e) {
-                EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL, aggregationExpression);
-                //valueExpression.setPropertyValue(valueExpressionText.getText());
-                nspd.open();
-                aggregationExpressionText.setText(aggregationExpression.getPropertyValue());
-                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AggregateMediatorPropertiesEditionPartForm.this, EsbViewsRepository.AggregateMediator.OnComplete.aggregationExpression, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getAggregationExpression()));
-            }
+            
         });
+        
+        aggregationExpressionText.addKeyListener(new KeyListener() {
+                        
+            @Override
+            public void keyPressed(KeyEvent e) {
+                openNamespacedPropertyEditor(parent);
+            }
+            
+            @Override
+            public void keyReleased(KeyEvent e) {}
+            
+        });;
+        
         EditingUtils.setID(aggregationExpressionText, EsbViewsRepository.AggregateMediator.OnComplete.aggregationExpression);
         EditingUtils.setEEFtype(aggregationExpressionText, "eef::Text");
         Control aggregationExpressionHelp =FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.AggregateMediator.OnComplete.aggregationExpression, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
         aggregationExpressionElements = new Control[] {aggregationExpressionLabel, aggregationExpressionText, aggregationExpressionHelp};
         return parent;
+    }
+    
+    private void openNamespacedPropertyEditor(final Composite parent) {
+        EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL, aggregationExpression);
+        //valueExpression.setPropertyValue(valueExpressionText.getText());
+        nspd.open();
+        aggregationExpressionText.setText(aggregationExpression.getPropertyValue());
+        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AggregateMediatorPropertiesEditionPartForm.this, EsbViewsRepository.AggregateMediator.OnComplete.aggregationExpression, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getAggregationExpression()));
     }
 
     protected Composite createCompletionMaxMessagesExpressionWidget(FormToolkit widgetFactory, final Composite parent) {
@@ -1559,28 +1570,28 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
         widgetFactory.paintBordersFor(parent);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
         completionMaxMessagesText.setLayoutData(valueData);
-        completionMaxMessagesText.addFocusListener(new FocusAdapter() {
-            /**
-             * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-             * 
-             */
+        
+        completionMaxMessagesText.addMouseListener(new MouseAdapter() {
+            
             @Override
-            @SuppressWarnings("synthetic-access")
-            public void focusLost(FocusEvent e) {
+            public void mouseDown( MouseEvent event ) {
+                openNamespacedPropertyEditor(parent);
             }
-
-            /**
-             * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
-             */
-            @Override
-            public void focusGained(FocusEvent e) {
-                EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL, completionMaxMessagesExpression);
-                //valueExpression.setPropertyValue(valueExpressionText.getText());
-                nspd.open();
-                completionMaxMessagesText.setText(completionMaxMessagesExpression.getPropertyValue());
-                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AggregateMediatorPropertiesEditionPartForm.this, EsbViewsRepository.AggregateMediator.Properties.completionMaxMessages, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getCompletionMaxMessagesExpression()));
-            }
+            
         });
+        
+        completionMaxMessagesText.addKeyListener(new KeyListener() {
+                        
+            @Override
+            public void keyPressed(KeyEvent e) {
+                openNamespacedPropertyEditor(parent);
+            }
+            
+            @Override
+            public void keyReleased(KeyEvent e) {}
+            
+        });;
+
         EditingUtils.setID(completionMaxMessagesText, EsbViewsRepository.AggregateMediator.Properties.completionMaxMessages);
         EditingUtils.setEEFtype(completionMaxMessagesText, "eef::Text");
         Control completionMaxMessagesHelp =FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.AggregateMediator.Properties.completionMaxMessages, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
@@ -1600,28 +1611,28 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
         widgetFactory.paintBordersFor(parent);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
         completionMinMessagesText.setLayoutData(valueData);
-        completionMinMessagesText.addFocusListener(new FocusAdapter() {
-            /**
-             * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-             * 
-             */
+        
+        completionMinMessagesText.addMouseListener(new MouseAdapter() {
+            
             @Override
-            @SuppressWarnings("synthetic-access")
-            public void focusLost(FocusEvent e) {
+            public void mouseDown( MouseEvent event ) {
+                openNamespacedPropertyEditor(parent);
             }
-
-            /**
-             * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
-             */
-            @Override
-            public void focusGained(FocusEvent e) {
-                EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL, completionMinMessagesExpression);
-                //valueExpression.setPropertyValue(valueExpressionText.getText());
-                nspd.open();
-                completionMinMessagesText.setText(completionMinMessagesExpression.getPropertyValue());
-                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AggregateMediatorPropertiesEditionPartForm.this, EsbViewsRepository.AggregateMediator.Properties.completionMinMessages, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getCompletionMinMessagesExpression()));
-            }
+            
         });
+        
+        completionMinMessagesText.addKeyListener(new KeyListener() {
+                        
+            @Override
+            public void keyPressed(KeyEvent e) {
+                openNamespacedPropertyEditor(parent);
+            }
+            
+            @Override
+            public void keyReleased(KeyEvent e) {}
+            
+        });;
+        
         EditingUtils.setID(completionMinMessagesText, EsbViewsRepository.AggregateMediator.Properties.completionMinMessages);
         EditingUtils.setEEFtype(completionMinMessagesText, "eef::Text");
         Control completionMinMessagesHelp =FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.AggregateMediator.Properties.completionMinMessages, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
@@ -1641,28 +1652,28 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
         widgetFactory.paintBordersFor(parent);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
         correlationExpressionText.setLayoutData(valueData);
-        correlationExpressionText.addFocusListener(new FocusAdapter() {
-            /**
-             * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-             * 
-             */
+        
+        correlationExpressionText.addMouseListener(new MouseAdapter() {
+            
             @Override
-            @SuppressWarnings("synthetic-access")
-            public void focusLost(FocusEvent e) {
+            public void mouseDown( MouseEvent event ) {
+                openNamespacedPropertyEditor(parent);
             }
-
-            /**
-             * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
-             */
-            @Override
-            public void focusGained(FocusEvent e) {
-                EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL, correlationExpression);
-                //valueExpression.setPropertyValue(valueExpressionText.getText());
-                nspd.open();
-                correlationExpressionText.setText(correlationExpression.getPropertyValue());
-                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AggregateMediatorPropertiesEditionPartForm.this, EsbViewsRepository.AggregateMediator.Properties.correlationExpression, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getCorrelationExpression()));
-            }
+            
         });
+        
+        correlationExpressionText.addKeyListener(new KeyListener() {
+                        
+            @Override
+            public void keyPressed(KeyEvent e) {
+                openNamespacedPropertyEditor(parent);
+            }
+            
+            @Override
+            public void keyReleased(KeyEvent e) {}
+            
+        });;
+        
         EditingUtils.setID(correlationExpressionText, EsbViewsRepository.AggregateMediator.Properties.correlationExpression);
         EditingUtils.setEEFtype(correlationExpressionText, "eef::Text");
         Control correlationExpressionHelp =FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.AggregateMediator.Properties.correlationExpression, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$

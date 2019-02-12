@@ -4528,9 +4528,6 @@ public class EsbMessages extends NLS {
 	public static String EventMediatorOutputConnectorPropertiesEditionPart_CommentMediatorsLabel;
 
 	
-	public static String EntitlementMediatorPropertiesEditionPart_DescriptionLabel;
-
-	
 	public static String EntitlementMediatorPropertiesEditionPart_CommentsListLabel;
 
 	
@@ -4544,6 +4541,9 @@ public class EsbMessages extends NLS {
 
 	
 	public static String EntitlementMediatorPropertiesEditionPart_PasswordLabel;
+
+	
+	public static String EntitlementMediatorPropertiesEditionPart_CallbackHandlerLabel;
 
 	
 	public static String EntitlementMediatorPropertiesEditionPart_CallbackClassNameLabel;
@@ -4561,16 +4561,28 @@ public class EsbMessages extends NLS {
 	public static String EntitlementMediatorPropertiesEditionPart_OnRejectSequenceTypeLabel;
 
 	
+	public static String EntitlementMediatorPropertiesEditionPart_OnRejectSequenceKeyLabel;
+
+	
 	public static String EntitlementMediatorPropertiesEditionPart_OnAcceptSequenceTypeLabel;
+
+	
+	public static String EntitlementMediatorPropertiesEditionPart_OnAcceptSequenceKeyLabel;
 
 	
 	public static String EntitlementMediatorPropertiesEditionPart_AdviceSequenceTypeLabel;
 
 	
+	public static String EntitlementMediatorPropertiesEditionPart_AdviceSequenceKeyLabel;
+
+	
 	public static String EntitlementMediatorPropertiesEditionPart_ObligationsSequenceTypeLabel;
 
 	
-	public static String EntitlementMediatorPropertiesEditionPart_CallbackHandlerLabel;
+	public static String EntitlementMediatorPropertiesEditionPart_ObligationsSequenceKeyLabel;
+
+	
+	public static String EntitlementMediatorPropertiesEditionPart_DescriptionLabel;
 
 	
 	public static String EntitlementMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;

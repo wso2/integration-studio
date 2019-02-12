@@ -586,15 +586,15 @@ public class RuleMediatorItemProvider extends MediatorItemProvider {
     }
 
     /**
-     * This returns RuleMediator.gif.
+     * This returns RuleMediator.png.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
+     * @generated NOT
      */
 
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/RuleMediator"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/RuleMediator.png"));
     }
 
     /**

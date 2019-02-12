@@ -501,9 +501,12 @@ public class ProxyServiceEditPart extends AbstractBaseFigureEditPart {
         public WrappingLabel getFigureProxyNamePropertyLabel() {
             return fFigureProxyNamePropertyLabel;
         }
-
+        
+        /**
+         * @generated NOT
+         */
         public String getIconPath() {
-            return "icons/ico20/proxy.gif";
+            return "icons/ico20/proxy.png";
         }
 
         public String getNodeName() {

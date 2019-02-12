@@ -25,7 +25,7 @@ public class EditPartConstants {
     public static final String SCRIPT_MEDIATOR_ICON_PATH = "icons/ico20/script-mediator.png";
     public static final String TRANSACTION_MEDIATOR_ICON_PATH = "icons/ico20/transaction-mediator.png";
     public static final String URLREWRITE_MEDIATOR_ICON_PATH = "icons/ico20/urlRewrite-mediator.png";
-    public static final String OAUTH_MEDIATOR_ICON_PATH = "icons/ico20/oauth-mediator.gif";
+    public static final String OAUTH_MEDIATOR_ICON_PATH = "icons/ico20/oauth-mediator.png";
     public static final String CALLTEMPLATE_MEDIATOR_ICON_PATH = "icons/ico20/callTemplate-mediator.png";
     public static final String PAYLOADFACTORY_MEDIATOR_ICON_PATH = "icons/ico20/payloadFactory-mediator.png";
     public static final String SEND_MEDIATOR_ICON_PATH = "icons/ico20/send-mediator.png";

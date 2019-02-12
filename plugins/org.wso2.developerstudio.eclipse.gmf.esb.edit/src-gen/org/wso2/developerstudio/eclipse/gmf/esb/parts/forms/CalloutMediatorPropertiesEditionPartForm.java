@@ -51,6 +51,9 @@ import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.KeyListener;
+import org.eclipse.swt.events.MouseAdapter;
+import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 
@@ -2047,32 +2050,29 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
 		widgetFactory.paintBordersFor(parent);
 		GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
 		payloadMessageXpathText.setLayoutData(valueData);
-		payloadMessageXpathText.addFocusListener(new FocusAdapter() {
-			/**
-			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void focusLost(FocusEvent e) {
-			}
+		
+        payloadMessageXpathText.addMouseListener(new MouseAdapter() {
 
-			/**
-			 * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
-			 */
-			@Override
-			public void focusGained(FocusEvent e) {
-				final EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
-						SWT.NULL, payloadMessageXpath);
-				// valueExpression.setPropertyValue(valueExpressionText.getText());
-				nspd.open();
-				payloadMessageXpathText.setText(payloadMessageXpath.getPropertyValue());
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
-						CalloutMediatorPropertiesEditionPartForm.this,
-						EsbViewsRepository.ScriptMediator.Properties.scriptDynamicKey,
-						PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getPayloadMessageXpath()));
-			}
-		});
+            @Override
+            public void mouseDown(MouseEvent event) {
+                openNamespacedPropertyEditor(parent);
+            }
+
+        });
+
+        payloadMessageXpathText.addKeyListener(new KeyListener() {
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                openNamespacedPropertyEditor(parent);
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+            }
+
+        });
+        
 		EditingUtils.setID(payloadMessageXpathText,
 				EsbViewsRepository.CalloutMediator.Source.payloadMessageXpath);
 		EditingUtils.setEEFtype(payloadMessageXpathText, "eef::Text");
@@ -2084,6 +2084,17 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
 		PayloadMessageXpathElements = new Control[] { payloadMessageXpathLabel, payloadMessageXpathText, payloadMessageXpathHelp };
 		return parent;
 	}
+	
+    private void openNamespacedPropertyEditor(final Composite parent) {
+        final EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
+                SWT.NULL, payloadMessageXpath);
+        nspd.open();
+        payloadMessageXpathText.setText(payloadMessageXpath.getPropertyValue());
+        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                CalloutMediatorPropertiesEditionPartForm.this,
+                EsbViewsRepository.ScriptMediator.Properties.scriptDynamicKey,
+                PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getPayloadMessageXpath()));
+    }
 	
 	protected Composite createResultMessageXpath(FormToolkit widgetFactory, final Composite parent) {
 		Control resultMessageXpathLabel = createDescription(parent,
@@ -2100,32 +2111,29 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
 		widgetFactory.paintBordersFor(parent);
 		GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
 		resultMessageXpathText.setLayoutData(valueData);
-		resultMessageXpathText.addFocusListener(new FocusAdapter() {
-			/**
-			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void focusLost(FocusEvent e) {
-			}
+		
+        resultMessageXpathText.addMouseListener(new MouseAdapter() {
 
-			/**
-			 * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
-			 */
-			@Override
-			public void focusGained(FocusEvent e) {
-				final EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
-						SWT.NULL, resultMessageXpath);
-				// valueExpression.setPropertyValue(valueExpressionText.getText());
-				nspd.open();
-				resultMessageXpathText.setText(resultMessageXpath.getPropertyValue());
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
-						CalloutMediatorPropertiesEditionPartForm.this,
-						EsbViewsRepository.CalloutMediator.Target.resultMessageXpath,
-						PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getResultMessageXpath()));
-			}
-		});
+            @Override
+            public void mouseDown(MouseEvent event) {
+                openNamespacedPropertyEditor(parent);
+            }
+
+        });
+
+        resultMessageXpathText.addKeyListener(new KeyListener() {
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                openNamespacedPropertyEditor(parent);
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+            }
+
+        });
+		
 		EditingUtils.setID(payloadMessageXpathText,
 				EsbViewsRepository.CalloutMediator.Target.resultMessageXpath);
 		EditingUtils.setEEFtype(resultMessageXpathText, "eef::Text");

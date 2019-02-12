@@ -864,15 +864,15 @@ public class ProxyServiceItemProvider extends EsbElementItemProvider {
     }
 
     /**
-     * This returns ProxyService.gif.
+     * This returns ProxyService.png.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
+     * @generated NOT
      */
 
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/ProxyService"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/ProxyService.png"));
     }
 
     /**

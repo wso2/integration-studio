@@ -61,6 +61,8 @@ import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.MouseEvent;
+import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 
@@ -69,6 +71,7 @@ import org.eclipse.swt.layout.GridLayout;
 
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Text;
 
 import org.eclipse.ui.forms.widgets.Form;
@@ -77,11 +80,16 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.NamedEndpointPropertiesEditionPart;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFNameSpacedPropertyEditorDialog;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.developerstudio.esb.form.editors.article.providers.NamedEntityDescriptor;
 
 // End of user code
 
@@ -126,6 +134,24 @@ public class NamedEndpointPropertiesEditionPartForm extends SectionPropertiesEdi
 	protected Button traceEnabled;
 	protected Text name;
 	protected EMFComboViewer referringEndpointType;
+	// Start of user code  for dynamicReferenceKey widgets declarations
+	protected NamespacedProperty dynamicReferenceKeyExpression;
+	protected Text dynamicReferenceKeyText;
+	protected Control [] dynamicReferenceKeyTexElements;
+	// End of user code
+
+	// Start of user code  for staticReferenceKey widgets declarations
+	protected RegistryKeyProperty staticReferenceKey;
+	protected Text staticReferenceKeyText;
+	protected Control [] staticReferenceKeyElements;
+	// End of user code
+	
+	// Start of user code 
+	protected Composite propertiesGroup;
+	protected Control [] inLineCheckBoxElements;
+	protected Control [] referringEndpointTypeElements;
+	// End of user code
+
 
 
 
@@ -200,6 +226,8 @@ public class NamedEndpointPropertiesEditionPartForm extends SectionPropertiesEdi
 		propertiesStep.addStep(EsbViewsRepository.NamedEndpoint.Properties.traceEnabled);
 		propertiesStep.addStep(EsbViewsRepository.NamedEndpoint.Properties.name);
 		propertiesStep.addStep(EsbViewsRepository.NamedEndpoint.Properties.referringEndpointType);
+		propertiesStep.addStep(EsbViewsRepository.NamedEndpoint.Properties.dynamicReferenceKey);
+		propertiesStep.addStep(EsbViewsRepository.NamedEndpoint.Properties.staticReferenceKey);
 		
 		
 		composer = new PartComposer(namedEndpointStep) {
@@ -296,6 +324,16 @@ public class NamedEndpointPropertiesEditionPartForm extends SectionPropertiesEdi
 				if (key == EsbViewsRepository.NamedEndpoint.Properties.referringEndpointType) {
 					return createReferringEndpointTypeEMFComboViewer(widgetFactory, parent);
 				}
+				// Start of user code for dynamicReferenceKey addToPart creation
+				if (key == EsbViewsRepository.NamedEndpoint.Properties.dynamicReferenceKey) {
+                    return createDynamicReferenceKeyText(widgetFactory, parent);
+                }
+				// End of user code
+				// Start of user code for staticReferenceKey addToPart creation
+				if (key == EsbViewsRepository.NamedEndpoint.Properties.staticReferenceKey) {
+                    return createStaticReferenceKeyText(widgetFactory, parent);
+                }
+				// End of user code
 				return parent;
 			}
 		};
@@ -310,7 +348,7 @@ public class NamedEndpointPropertiesEditionPartForm extends SectionPropertiesEdi
 		GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
 		propertiesSectionData.horizontalSpan = 3;
 		propertiesSection.setLayoutData(propertiesSectionData);
-		Composite propertiesGroup = widgetFactory.createComposite(propertiesSection);
+		propertiesGroup = widgetFactory.createComposite(propertiesSection);
 		GridLayout propertiesGroupLayout = new GridLayout();
 		propertiesGroupLayout.numColumns = 3;
 		propertiesGroup.setLayout(propertiesGroupLayout);
@@ -529,7 +567,9 @@ public class NamedEndpointPropertiesEditionPartForm extends SectionPropertiesEdi
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createInLineCheckbox(FormToolkit widgetFactory, Composite parent) {
 		inLine = widgetFactory.createButton(parent, getDescription(EsbViewsRepository.NamedEndpoint.Properties.inLine, EsbMessages.NamedEndpointPropertiesEditionPart_InLineLabel), SWT.CHECK);
 		inLine.addSelectionListener(new SelectionAdapter() {
@@ -551,9 +591,9 @@ public class NamedEndpointPropertiesEditionPartForm extends SectionPropertiesEdi
 		inLine.setLayoutData(inLineData);
 		EditingUtils.setID(inLine, EsbViewsRepository.NamedEndpoint.Properties.inLine);
 		EditingUtils.setEEFtype(inLine, "eef::Checkbox"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.NamedEndpoint.Properties.inLine, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		Control inLineHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.NamedEndpoint.Properties.inLine, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createInLineCheckbox
-
+		inLineCheckBoxElements = new Control [] {inLine, inLineHelp};
 		// End of user code
 		return parent;
 	}
@@ -1624,9 +1664,11 @@ public class NamedEndpointPropertiesEditionPartForm extends SectionPropertiesEdi
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createReferringEndpointTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EsbViewsRepository.NamedEndpoint.Properties.referringEndpointType, EsbMessages.NamedEndpointPropertiesEditionPart_ReferringEndpointTypeLabel);
+		Control referringEndpointTypeLabel = createDescription(parent, EsbViewsRepository.NamedEndpoint.Properties.referringEndpointType, EsbMessages.NamedEndpointPropertiesEditionPart_ReferringEndpointTypeLabel);
 		referringEndpointType = new EMFComboViewer(parent);
 		referringEndpointType.setContentProvider(new ArrayContentProvider());
 		referringEndpointType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -1647,9 +1689,22 @@ public class NamedEndpointPropertiesEditionPartForm extends SectionPropertiesEdi
 
 		});
 		referringEndpointType.setID(EsbViewsRepository.NamedEndpoint.Properties.referringEndpointType);
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.NamedEndpoint.Properties.referringEndpointType, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		Control referringEndpointTypeHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.NamedEndpoint.Properties.referringEndpointType, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createReferringEndpointTypeEMFComboViewer
+		referringEndpointTypeElements = new Control [] { referringEndpointTypeLabel, referringEndpointTypeHelp, referringEndpointType.getCombo()};
+		referringEndpointType.addSelectionChangedListener(new ISelectionChangedListener() {
 
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+             *  
+             */
+            public void selectionChanged(SelectionChangedEvent event) {
+                validate();
+            }
+
+        });
 		// End of user code
 		return parent;
 	}
@@ -2762,6 +2817,36 @@ public class NamedEndpointPropertiesEditionPartForm extends SectionPropertiesEdi
 
 
 
+	// Start of user code for dynamicReferenceKey specific getters and setters implementation
+    public NamespacedProperty getDynamicReferenceKey() {
+        return dynamicReferenceKeyExpression;
+    }
+
+    @Override
+    public void setDynamicReferenceKey(NamespacedProperty nameSpacedProperty) {
+        if (nameSpacedProperty != null) {
+            dynamicReferenceKeyText.setText(nameSpacedProperty.getPropertyValue());
+            dynamicReferenceKeyExpression = nameSpacedProperty;
+        }
+
+    }
+	// End of user code
+
+	// Start of user code for staticReferenceKey specific getters and setters implementation
+    @Override
+    public RegistryKeyProperty getStaticReferenceKey() {
+        return staticReferenceKey;
+    }
+
+    @Override
+    public void setStaticReferenceKey(RegistryKeyProperty registryKeyProperty) {
+        if (registryKeyProperty != null) {
+            staticReferenceKeyText.setText(registryKeyProperty.getKeyValue());
+            staticReferenceKey = registryKeyProperty;
+        }
+    }
+	// End of user code
+
 	/**
 	 * {@inheritDoc}
 	 *
@@ -2773,7 +2858,124 @@ public class NamedEndpointPropertiesEditionPartForm extends SectionPropertiesEdi
 	}
 
 	// Start of user code additional methods
-	
+    protected Composite createDynamicReferenceKeyText(FormToolkit widgetFactory, final Composite parent) {
+        Control dynamicReferenceKeyLabel = createDescription(parent, EsbViewsRepository.NamedEndpoint.Properties.dynamicReferenceKey,
+                EsbMessages.NamedEndpointPropertiesEditionPart_DynamicReferenceKeyLabel);
+        widgetFactory.paintBordersFor(parent);
+        if (dynamicReferenceKeyExpression == null) {
+            dynamicReferenceKeyExpression = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
+        }
+        String initValueExpression = dynamicReferenceKeyExpression.getPropertyValue().isEmpty() ? "" : dynamicReferenceKeyExpression.getPropertyValue();
+        dynamicReferenceKeyText = widgetFactory.createText(parent, initValueExpression);
+        dynamicReferenceKeyText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+        widgetFactory.paintBordersFor(parent);
+        GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
+        dynamicReferenceKeyText.setLayoutData(valueData);
+        dynamicReferenceKeyText.addMouseListener(new MouseListener() {
+
+            @Override
+            public void mouseUp(MouseEvent e) {
+                EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
+                        SWT.NULL, dynamicReferenceKeyExpression);
+                nspd.open();
+                dynamicReferenceKeyText.setText(dynamicReferenceKeyExpression.getPropertyValue());
+                propertiesEditionComponent
+                        .firePropertiesChanged(new PropertiesEditionEvent(NamedEndpointPropertiesEditionPartForm.this,
+                                EsbViewsRepository.NamedEndpoint.Properties.dynamicReferenceKey, PropertiesEditionEvent.COMMIT,
+                                PropertiesEditionEvent.SET, null, getDynamicReferenceKey()));
+
+            }
+
+            @Override
+            public void mouseDown(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseDoubleClick(MouseEvent e) {
+
+            }
+        });
+        EditingUtils.setID(dynamicReferenceKeyText, EsbViewsRepository.NamedEndpoint.Properties.dynamicReferenceKey);
+        EditingUtils.setEEFtype(dynamicReferenceKeyText, "eef::Text");
+        Control dynamicReferenceExpressionHelp = FormUtils
+                .createHelpButton(widgetFactory, parent,
+                        propertiesEditionComponent.getHelpContent(
+                                EsbViewsRepository.NamedEndpoint.Properties.dynamicReferenceKey, EsbViewsRepository.FORM_KIND),
+                        null); // $NON-NLS-1$
+        dynamicReferenceKeyTexElements = new Control[] { dynamicReferenceKeyLabel, dynamicReferenceKeyText, dynamicReferenceExpressionHelp };
+        return parent;
+    }
+    
+    protected Composite createStaticReferenceKeyText(FormToolkit widgetFactory, Composite parent) {
+        Control staticReferenceKeyLabel = createDescription(parent, EsbViewsRepository.NamedEndpoint.Properties.staticReferenceKey,
+                EsbMessages.NamedEndpointPropertiesEditionPart_StaticReferenceKeyLabel);
+        widgetFactory.paintBordersFor(parent);
+        if (staticReferenceKey == null) {
+            staticReferenceKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
+        }
+        String initValueExpression = staticReferenceKey.getKeyValue().isEmpty() ? "" : staticReferenceKey.getKeyValue();
+        staticReferenceKeyText = widgetFactory.createText(parent, initValueExpression);
+        staticReferenceKeyText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+        widgetFactory.paintBordersFor(parent);
+        GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
+        staticReferenceKeyText.setLayoutData(valueData);
+        staticReferenceKeyText.addMouseListener(new MouseListener() {
+
+            @Override
+            public void mouseUp(MouseEvent e) {
+                EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
+                        SWT.NULL, staticReferenceKey, new ArrayList<NamedEntityDescriptor>());
+                dialog.open();
+                staticReferenceKeyText.setText(staticReferenceKey.getKeyValue());
+                propertiesEditionComponent
+                        .firePropertiesChanged(new PropertiesEditionEvent(NamedEndpointPropertiesEditionPartForm.this,
+                                EsbViewsRepository.NamedEndpoint.Properties.staticReferenceKey,
+                                PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getStaticReferenceKey()));
+
+            }
+
+            @Override
+            public void mouseDown(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseDoubleClick(MouseEvent e) {
+
+            }
+        });
+
+        EditingUtils.setID(staticReferenceKeyText, EsbViewsRepository.NamedEndpoint.Properties.staticReferenceKey);
+        EditingUtils.setEEFtype(staticReferenceKeyText, "eef::Text");
+        Control sequenceKeyHelp = FormUtils.createHelpButton(widgetFactory, parent,
+                propertiesEditionComponent.getHelpContent(EsbViewsRepository.NamedEndpoint.Properties.staticReferenceKey,
+                        EsbViewsRepository.FORM_KIND),
+                null); // $NON-NLS-1$
+        staticReferenceKeyElements = new Control[] { staticReferenceKeyLabel, staticReferenceKeyText, sequenceKeyHelp };
+        return parent;
+    }
+    
+    @Override
+    public void refresh() {
+        super.refresh();
+        validate();
+    }
+
+    public void validate() {
+        EEFPropertyViewUtil eu = new EEFPropertyViewUtil(view);
+        eu.clearElements(new Composite[] { propertiesGroup });
+        eu.showEntry(inLineCheckBoxElements, false);
+        eu.showEntry(referringEndpointTypeElements, false);
+        
+        if (getReferringEndpointType().getName().equals("DYNAMIC")) {
+            eu.showEntry(dynamicReferenceKeyTexElements, false);
+        } else {
+            eu.showEntry(staticReferenceKeyElements, false);
+        }
+
+        view.layout(true, true);
+    }
 	// End of user code
 
 

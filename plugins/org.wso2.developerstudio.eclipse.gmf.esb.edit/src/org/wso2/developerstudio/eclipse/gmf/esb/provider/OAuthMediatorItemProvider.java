@@ -164,15 +164,15 @@ public class OAuthMediatorItemProvider extends MediatorItemProvider {
     }
 
     /**
-     * This returns OAuthMediator.gif.
+     * This returns OAuthMediator.png.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
+     * @generated NOT
      */
 
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/OAuthMediator"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/OAuthMediator.png"));
     }
 
     /**

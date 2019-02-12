@@ -148,7 +148,7 @@ public class ForEachMediatorEditPart extends SingleCompartmentComplexFiguredAbst
      * @generated NOT
      */
     protected IFigure createNodeShape() {
-        return primaryShape = new ForEachMediatorFigure(new Color(null, 255, 250, 251), new Color(null, 209, 52, 79)) {
+        return primaryShape = new ForEachMediatorFigure(new Color(null, 230, 76, 60), new Color(null, 255, 255, 255)) {
             public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
                 super.setBounds(rect);
                 if ((!connected) && (this.getBounds().getLocation().x != 0 && this.getBounds().getLocation().y != 0)) {

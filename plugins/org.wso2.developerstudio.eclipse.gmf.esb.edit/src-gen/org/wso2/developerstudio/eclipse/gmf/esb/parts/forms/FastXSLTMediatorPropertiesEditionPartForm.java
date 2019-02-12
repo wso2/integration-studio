@@ -51,6 +51,9 @@ import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.KeyListener;
+import org.eclipse.swt.events.MouseAdapter;
+import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 
@@ -775,33 +778,28 @@ public class FastXSLTMediatorPropertiesEditionPartForm extends SectionProperties
         widgetFactory.paintBordersFor(parent);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
         dynamicSchemaKeyText.setLayoutData(valueData);
-        dynamicSchemaKeyText.addFocusListener(new FocusAdapter() {
-            /**
-             * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-             * 
-             */
-            @Override
-            @SuppressWarnings("synthetic-access")
-            public void focusLost(FocusEvent e) {
-            }
 
-            /**
-             * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
-             */
+        dynamicSchemaKeyText.addMouseListener(new MouseAdapter() {
+            
             @Override
-            public void focusGained(FocusEvent e) {
-                EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
-                        SWT.NULL, fastXsltDynamicSchemaKey);
-                // valueExpression.setPropertyValue(valueExpressionText.getText());
-                nspd.open();
-                dynamicSchemaKeyText.setText(fastXsltDynamicSchemaKey.getPropertyValue());
-                propertiesEditionComponent.firePropertiesChanged(
-                        new PropertiesEditionEvent(FastXSLTMediatorPropertiesEditionPartForm.this,
-                                EsbViewsRepository.FastXSLTMediator.Basic.fastXsltDynamicSchemaKey,
-                                PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
-                                getFastXsltDynamicSchemaKey()));
+            public void mouseDown( MouseEvent event ) {
+                openNamespacedPropertyEditor(parent);
             }
+            
         });
+        
+        dynamicSchemaKeyText.addKeyListener(new KeyListener() {
+                        
+            @Override
+            public void keyPressed(KeyEvent e) {
+                openNamespacedPropertyEditor(parent);
+            }
+            
+            @Override
+            public void keyReleased(KeyEvent e) {}
+            
+        });
+        
         EditingUtils.setID(dynamicSchemaKeyText, EsbViewsRepository.FastXSLTMediator.Basic.fastXsltDynamicSchemaKey);
         EditingUtils.setEEFtype(dynamicSchemaKeyText, "eef::Text");
         Control dynamicSchemaKeyHelp = FormUtils.createHelpButton(widgetFactory, parent,
@@ -811,6 +809,19 @@ public class FastXSLTMediatorPropertiesEditionPartForm extends SectionProperties
                 null); // $NON-NLS-1$
         dynamicSchemaKeyElements = new Control[] { dynamicSchemaKeyLabel, dynamicSchemaKeyText, dynamicSchemaKeyHelp };
         return parent;
+    }
+    
+    private void openNamespacedPropertyEditor(final Composite parent) {
+        EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
+                SWT.NULL, fastXsltDynamicSchemaKey);
+        // valueExpression.setPropertyValue(valueExpressionText.getText());
+        nspd.open();
+        dynamicSchemaKeyText.setText(fastXsltDynamicSchemaKey.getPropertyValue());
+        propertiesEditionComponent.firePropertiesChanged(
+                new PropertiesEditionEvent(FastXSLTMediatorPropertiesEditionPartForm.this,
+                        EsbViewsRepository.FastXSLTMediator.Basic.fastXsltDynamicSchemaKey,
+                        PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+                        getFastXsltDynamicSchemaKey()));
     }
 
     @Override

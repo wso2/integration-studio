@@ -168,7 +168,9 @@ public class EsbViewsRepository {
 			public static String valueType = "esb::EndPointProperty::properties::valueType";
 			
 			// Start of user code for valueExpression ElementEditor key
+
 			public static String valueExpression = "esb::EndPointProperty::properties::valueExpression";
+
 			// End of user code
 			
 	
@@ -2900,7 +2902,7 @@ public class EsbViewsRepository {
 			public static String priority = "esb::EnqueueMediator::properties::priority";
 			
 			// Start of user code for sequenceKey ElementEditor key
-			public static String sequenceKey = "esb::EnqueueMediator::properties::sequenceKey";
+			public static String sequenceKey = "esb::CacheMediator::OnCacheHit::sequenceKey";
 			// End of user code
 			
 	
@@ -7130,6 +7132,14 @@ public class EsbViewsRepository {
 			
 			
 			public static String referringEndpointType = "esb::NamedEndpoint::properties::referringEndpointType";
+			
+			// Start of user code for dynamicReferenceKey ElementEditor key
+			public static String dynamicReferenceKey = "esb::NamedEndpoint::properties::dynamicReferenceKey";
+			// End of user code
+			
+			// Start of user code for staticReferenceKey ElementEditor key
+			public static String staticReferenceKey = "esb::NamedEndpoint::properties::staticReferenceKey";
+			// End of user code
 			
 	
 		}

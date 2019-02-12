@@ -242,14 +242,14 @@ public class LoadBalanceEndPointItemProvider extends ParentEndPointItemProvider 
     }
 
     /**
-     * This returns LoadBalanceEndPoint.gif.
+     * This returns LoadBalanceEndPoint.png.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
+     * @generated NOT
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/LoadBalanceEndPoint"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/LoadBalanceEndPoint.png"));
     }
 
     /**

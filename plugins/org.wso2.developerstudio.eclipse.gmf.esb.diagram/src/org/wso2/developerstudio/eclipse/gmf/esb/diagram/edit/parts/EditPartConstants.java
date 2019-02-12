@@ -19,7 +19,7 @@ public class EditPartConstants {
 
     public static final String DEFAULT_PROPERTY_VALUE_TEXT = "<...>";
     public static final String LOG_MEDIATOR_ICON_PATH = "icons/ico20/log-mediator.png";
-    public static final String RULE_MEDIATOR_ICON_PATH = "icons/ico20/rule-mediator.gif";
+    public static final String RULE_MEDIATOR_ICON_PATH = "icons/ico20/rule-mediator.png";
     public static final String THROTTLE_MEDIATOR_ICON_PATH = "icons/ico20/throttle-mediator.png";
     public static final String CALL_MEDIATOR_ICON_PATH = "icons/ico20/call-mediator.png";
     public static final String SCRIPT_MEDIATOR_ICON_PATH = "icons/ico20/script-mediator.png";

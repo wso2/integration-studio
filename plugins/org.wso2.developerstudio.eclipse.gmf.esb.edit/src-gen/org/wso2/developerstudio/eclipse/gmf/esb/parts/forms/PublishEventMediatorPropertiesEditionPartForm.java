@@ -143,14 +143,13 @@ public class PublishEventMediatorPropertiesEditionPartForm extends SectionProper
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
-	 * 
+	 *@generated NOT 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		CompositionSequence publishEventMediatorStep = new BindingCompositionSequence(propertiesEditionComponent);
 		CompositionStep propertiesStep = publishEventMediatorStep.addStep(EsbViewsRepository.PublishEventMediator.Properties.class);
-		propertiesStep.addStep(EsbViewsRepository.PublishEventMediator.Properties.description);
-		propertiesStep.addStep(EsbViewsRepository.PublishEventMediator.Properties.commentsList);
-		propertiesStep.addStep(EsbViewsRepository.PublishEventMediator.Properties.reverse);
+//		propertiesStep.addStep(EsbViewsRepository.PublishEventMediator.Properties.commentsList);
+//		propertiesStep.addStep(EsbViewsRepository.PublishEventMediator.Properties.reverse);
 		propertiesStep.addStep(EsbViewsRepository.PublishEventMediator.Properties.streamName);
 		propertiesStep.addStep(EsbViewsRepository.PublishEventMediator.Properties.streamVersion);
 		propertiesStep.addStep(EsbViewsRepository.PublishEventMediator.Properties.eventSink);
@@ -160,6 +159,7 @@ public class PublishEventMediatorPropertiesEditionPartForm extends SectionProper
 		propertiesStep.addStep(EsbViewsRepository.PublishEventMediator.Properties.arbitraryAttributes);
 		propertiesStep.addStep(EsbViewsRepository.PublishEventMediator.Properties.async);
 		propertiesStep.addStep(EsbViewsRepository.PublishEventMediator.Properties.asyncTimeout);
+		propertiesStep.addStep(EsbViewsRepository.PublishEventMediator.Properties.description);
 		
 		
 		composer = new PartComposer(publishEventMediatorStep) {

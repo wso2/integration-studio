@@ -69,6 +69,7 @@ import org.eclipse.swt.layout.GridLayout;
 
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Text;
 
 import org.eclipse.ui.forms.widgets.Form;
@@ -80,14 +81,14 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
 /**
  * 
- * 
+ * @generated NOT
  */
 public class TemplateEndpointPropertiesEditionPartForm extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, TemplateEndpointPropertiesEditionPart {
 
@@ -130,7 +131,11 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	protected List<ViewerFilter> parametersBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> parametersFilters = new ArrayList<ViewerFilter>();
 	protected Text availableTemplates;
-
+    protected Composite propertiesGroup;
+    protected Control[] descriptionElements;
+    protected Control[] parametersElements;
+    protected Control[] availableTemplateElements;
+    protected Control[] targetTemplateElements;
 
 
 	/**
@@ -322,7 +327,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 		GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
 		propertiesSectionData.horizontalSpan = 3;
 		propertiesSection.setLayoutData(propertiesSectionData);
-		Composite propertiesGroup = widgetFactory.createComposite(propertiesSection);
+		propertiesGroup = widgetFactory.createComposite(propertiesSection);
 		GridLayout propertiesGroupLayout = new GridLayout();
 		propertiesGroupLayout.numColumns = 3;
 		propertiesGroup.setLayout(propertiesGroupLayout);
@@ -330,8 +335,11 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 		return propertiesGroup;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createDescriptionText(FormToolkit widgetFactory, Composite parent) {
+	    Control[] previousControls = propertiesGroup.getChildren();
 		createDescription(parent, EsbViewsRepository.TemplateEndpoint.Properties.description, EsbMessages.TemplateEndpointPropertiesEditionPart_DescriptionLabel);
 		description = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		description.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
@@ -393,7 +401,8 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 		EditingUtils.setEEFtype(description, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.TemplateEndpoint.Properties.description, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createDescriptionText
-
+		Control[] newControls = propertiesGroup.getChildren();
+        descriptionElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
 		// End of user code
 		return parent;
 	}
@@ -1636,9 +1645,12 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createTargetTemplateText(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EsbViewsRepository.TemplateEndpoint.Properties.targetTemplate, EsbMessages.TemplateEndpointPropertiesEditionPart_TargetTemplateLabel);
+	    Control[] previousControls = propertiesGroup.getChildren();
+        createDescription(parent, EsbViewsRepository.TemplateEndpoint.Properties.targetTemplate, EsbMessages.TemplateEndpointPropertiesEditionPart_TargetTemplateLabel);
 		targetTemplate = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		targetTemplate.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -1699,16 +1711,18 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 		EditingUtils.setEEFtype(targetTemplate, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.TemplateEndpoint.Properties.targetTemplate, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createTargetTemplateText
-
+		Control[] newControls = propertiesGroup.getChildren();
+        targetTemplateElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
 		// End of user code
 		return parent;
 	}
 
 	/**
 	 * @param container
-	 * 
+	 * @generated NOT
 	 */
 	protected Composite createParametersTableComposition(FormToolkit widgetFactory, Composite parent) {
+	    Control[] previousControls = propertiesGroup.getChildren();
 		this.parameters = new ReferencesTable(getDescription(EsbViewsRepository.TemplateEndpoint.Properties.parameters, EsbMessages.TemplateEndpointPropertiesEditionPart_ParametersLabel), new ReferencesTableListener() {
 			public void handleAdd() {
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TemplateEndpointPropertiesEditionPartForm.this, EsbViewsRepository.TemplateEndpoint.Properties.parameters, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
@@ -1750,13 +1764,17 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 		parameters.setID(EsbViewsRepository.TemplateEndpoint.Properties.parameters);
 		parameters.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
 		// Start of user code for createParametersTableComposition
-
+        Control[] newControls = propertiesGroup.getChildren();
+        parametersElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
 		// End of user code
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createAvailableTemplatesText(FormToolkit widgetFactory, Composite parent) {
+	    Control[] previousControls = propertiesGroup.getChildren();
 		createDescription(parent, EsbViewsRepository.TemplateEndpoint.Properties.availableTemplates, EsbMessages.TemplateEndpointPropertiesEditionPart_AvailableTemplatesLabel);
 		availableTemplates = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		availableTemplates.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
@@ -1818,7 +1836,8 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 		EditingUtils.setEEFtype(availableTemplates, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.TemplateEndpoint.Properties.availableTemplates, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createAvailableTemplatesText
-
+        Control[] newControls = propertiesGroup.getChildren();
+        availableTemplateElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
 		// End of user code
 		return parent;
 	}
@@ -3025,7 +3044,23 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	}
 
 	// Start of user code additional methods
-	
+	   @Override
+	   public void refresh() {
+	       super.refresh();
+	       validate();
+	   }
+
+	   public void validate() {
+	       EEFPropertyViewUtil epv = new EEFPropertyViewUtil(view);
+	       epv.clearElements(new Composite[] { propertiesGroup });
+
+	       epv.showEntry(descriptionElements, false);
+	       epv.showEntry(availableTemplateElements, false);
+	       epv.showEntry(targetTemplateElements, false);
+	       epv.showEntry(parametersElements, false);
+	       //showTable(caseBranches, caseBranchesData);
+	       view.layout(true, true);
+	   }
 	// End of user code
 
 

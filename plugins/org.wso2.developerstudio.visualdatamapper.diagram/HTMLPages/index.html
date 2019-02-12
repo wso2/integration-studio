@@ -1,239 +1,232 @@
 <!doctype html>
 <html lang="">
-
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>DataMapper test window</title>
-
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/codemirror.css">
-
-  <script type='text/javascript' src="js/jquery.min-3.3.1.js"></script>
-  <script type='text/javascript' src='js/DataTypeConverter.js'></script>
-  <script type='text/javascript' src='js/SchemaToJson.js'></script>
-  <script type='text/javascript' src='js/codemirror-5.43.1.js'></script>  
-  <script type='text/javascript' src='js/xml.js'></script>
-  <script type='text/javascript' src='js/javascript.js'></script>
-  <script type='text/javascript' src='js/formatting.js'></script>
-  <script type='text/javascript' src='js/papaparse.min.js'></script>
-
-</head>
-
-<body>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-lg-5 box">
-        <h3 class="input-header header">Input data type</h3>
-        <div class="row no-gutter">
-          <div class="col-lg-5 custom">
-            <div class="container">
-              <div class="row" >
-                <div class="col-lg-12">
-               		<div class="input-radio">
-					  <label><input type="radio" class="inputTypeRadio" name="inputTypeRadio" checked value="JSON"> JSON</label>
-					</div>
-					<div class="input-radio">
-					  <label><input type="radio" class="inputTypeRadio"  name="inputTypeRadio" value="XML"> XML</label>
-					</div>
-					<div class="input-radio">
-					  <label><input type="radio" class="inputTypeRadio" name="inputTypeRadio" value="CSV"> CSV</label>
-					</div>
-                </div>
-              </div>
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      <title>DataMapper test window</title>
+      <link rel="stylesheet" href="css/bootstrap.min.css">
+      <link rel="stylesheet" href="css/main.css">
+      <link rel="stylesheet" href="css/codemirror.css">
+      <script type='text/javascript' src="js/jquery.min-3.3.1.js"></script>
+      <script type='text/javascript' src='js/DataTypeConverter.js'></script>
+      <script type='text/javascript' src='js/SchemaToJson.js'></script>
+      <script type='text/javascript' src='js/codemirror-5.43.1.js'></script>  
+      <script type='text/javascript' src='js/xml.js'></script>
+      <script type='text/javascript' src='js/javascript.js'></script>
+      <script type='text/javascript' src='js/formatting.js'></script>
+      <script type='text/javascript' src='js/papaparse.min.js'></script>
+   </head>
+   <body>
+      <div class="container-fluid">
+         <div class="row">
+            <div class="col-lg-5 box">
+               <h3 class="input-header header">Input data type</h3>
+               <div class="row no-gutter">
+                  <div class="col-lg-5 custom">
+                     <div class="container">
+                        <div class="row" >
+                           <div class="col-lg-12">
+                              <div class="input-radio">
+                                 <label><input type="radio" class="inputTypeRadio" name="inputTypeRadio" checked value="JSON"> JSON</label>
+                              </div>
+                              <div class="input-radio">
+                                 <label><input type="radio" class="inputTypeRadio"  name="inputTypeRadio" value="XML"> XML</label>
+                              </div>
+                              <div class="input-radio">
+                                 <label><input type="radio" class="inputTypeRadio" name="inputTypeRadio" value="CSV"> CSV</label>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <textarea id="inputTextArea" rows="7" ></textarea>
             </div>
-          </div>
-         
-        </div>
-        <textarea id="inputTextArea" rows="7" ></textarea>
-      </div>
-      <div class="col-lg-2 button-center">
-            <button type="button" class="btn" style="width:100%;" onclick="process()">
-              <img src="images/convert.png" />
-              <br/> Try Out
-            </button>
-          
-      </div>
-      <div class="col-lg-5 box">
-        <h3 class="output-header header">Output data type</h3>
-        <div class="col-lg-5 custom">
-            <div class="row">
-              <div class="col-lg-12">
-              		<div class="output-radio">
-					  <label><input type="radio" name="outputTypeRadio" checked value="JSON"> JSON</label>
-					</div>
-					<div class="output-radio">
-					  <label><input type="radio" name="outputTypeRadio" value="XML"> XML</label>
-					</div>
-					<div class="output-radio">
-					  <label><input type="radio" name="outputTypeRadio" value="CSV"> CSV</label>
-					</div>
-              </div>
+            <div class="col-lg-2 button-center">
+               <button type="button" class="btn" style="width:100%;" onclick="process()">
+               <img src="images/convert.png" />
+               <br/> Try Out
+               </button>
             </div>
-          </div>
-        <textarea id="outputTextArea" data-autogrow="false" rows="15" cols="40"></textarea>
+            <div class="col-lg-5 box">
+               <h3 class="output-header header">Output data type</h3>
+               <div class="col-lg-5 custom">
+                  <div class="row">
+                     <div class="col-lg-12">
+                        <div class="output-radio">
+                           <label><input type="radio" name="outputTypeRadio" checked value="JSON"> JSON</label>
+                        </div>
+                        <div class="output-radio">
+                           <label><input type="radio" name="outputTypeRadio" value="XML"> XML</label>
+                        </div>
+                        <div class="output-radio">
+                           <label><input type="radio" name="outputTypeRadio" value="CSV"> CSV</label>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <textarea id="outputTextArea" data-autogrow="false" rows="15" cols="40"></textarea>
+            </div>
+         </div>
       </div>
-    </div>
-  </div>
-</body>
-<script>
-
-// get the current port of the Jetty server.
-var portValue = resolveGetParam("port");
-
-//code edior instance
-var inputEditor;
-
-function getSelectedRange(editor) {
-    return { from: editor.getCursor(true), to: editor.getCursor(false) };
-  }
-  
-  function autoFormatSelection() {
-	CodeMirror.commands["selectAll"](inputEditor);
-    var range = getSelectedRange(inputEditor);
-    inputEditor.autoFormatRange(range.from, range.to);
-    inputEditor.focus();
-  }
-
-function resolveGetParam(param) {
-  var paramValue = null,
-    tmp = [];
-  location.search
-    .substr(1)
-    .split("&")
-    .forEach(function(item) {
-      tmp = item.split("=");
-      if (tmp[0] === param) paramValue = decodeURIComponent(tmp[1]);
-    });
-  return paramValue;
-}
-
-// input and output types
-var inputType = "JSON";
-var outputType = "JSON";
-var inputSchema = "";
-var jsonString = "";
-var xmlString = "";
-var csvString = "";
-
-// Configuration for JSON to CSV converter
-var configs = {
-  quotes: false,
-  quoteChar: '"',
-  escapeChar: '"',
-  delimiter: ",",
-  header: false,
-  newline: "\r\n"
-}
-
-// read input shema json from file
-getInputSchema(inputSchema);
-
-// generate examples once the input schema is available
-function ajaxCallBack(retString) {
-  inputSchema = retString;
-  generateExamples();
-  inputEditor = CodeMirror.fromTextArea(document.getElementById("inputTextArea"), {
-      mode: "text/javascript",
-      lineNumbers: true
-    });
-  outputEditor = CodeMirror.fromTextArea(document.getElementById("outputTextArea"), {
-      mode: "text/javascript",
-      lineNumbers: true
-    });
-  autoFormatSelection();
-}
-
-// Generate json / xml / csv examples from the json schema.  
-function generateExamples() {
-  var inputSchemaTitle = inputSchema["title"];
-
-  jsonString = convertSchemaToJson(inputSchema);
-  if (inputSchemaTitle != "root" && jsonString[inputSchemaTitle] != null) {
-    jsonString = jsonString[inputSchemaTitle];
-  }
-  jsonString = JSON.stringify(jsonString, null, "\t");
-  document.getElementById("inputTextArea").value = jsonString;
-
-  xmlString = json2xml(JSON.parse(jsonString), "\n");
-  xmlString = "<" + inputSchemaTitle + ">" + xmlString + "</" + inputSchemaTitle + ">";
-
-  csvString = '<text xmlns="http://ws.apache.org/commons/ns/payload">' + Papa.unparse(JSON.parse(jsonString), configs) + "</text>";
-}
-
-// Set appropiate data types depending on the input
-$('.inputTypeRadio').on('change', function(e) {
-  var selectedValue = $('.inputTypeRadio:checked').val();
-  inputType = selectedValue;
-  if (selectedValue == "XML") {
-	  inputEditor.setOption("mode", "text/html");
-	  inputEditor.setValue(xmlString);
-  } else if (selectedValue == "CSV") {
-	  inputEditor.setValue(csvString);
-  } else if (selectedValue == "JSON") {
-	  inputEditor.setOption("mode", "text/javascript");
-	  inputEditor.setValue(jsonString);
-  }
-  
-  autoFormatSelection();
-});
-
-$('input[name=outputTypeRadio]').on('change', function(e) {
-  outputType = $('input[name=outputTypeRadio]:checked').val();
-});
-
-// Call Datamapper.mediate() and take back the results
-function process() {
-  var input = inputEditor.getValue();
-  var arr = "process " + inputType + " " + outputType + " " + input;
-  var url = "http://localhost:" + portValue + "/dataMapper/getRegistryResources";
-  $.ajax({
-    url: url,
-    type: "POST",
-    data: arr,
-    success: function(data, status, xhr) {
-      var ct = xhr.getResponseHeader("content-type") || "";
-      var result = "";
-
-      if (ct.indexOf('application/json') > -1) {
-        result = JSON.stringify(data, null, '\t');
-        outputEditor.setOption("mode", "text/javascript");
-        outputEditor.setValue(result);
-      } else if (ct.indexOf('application/xml') > -1 || ct.indexOf('text/xml') > -1) {
-        result = new XMLSerializer().serializeToString(data);
-        outputEditor.setOption("mode", "text/html");
-        outputEditor.setValue(result);
-        CodeMirror.commands["selectAll"](outputEditor);
-        var range = getSelectedRange(outputEditor);
-        outputEditor.autoFormatRange(range.from, range.to);
-      } else {
-    	  outputEditor.setOption("mode", "text/javascript");
-    	  outputEditor.setValue(data);
-       
+   </body>
+   <script>
+      // get the current port of the Jetty server.
+      var portValue = resolveGetParam("port");
+      
+      //code edior instance
+      var inputEditor;
+      
+      function getSelectedRange(editor) {
+          return { from: editor.getCursor(true), to: editor.getCursor(false) };
+        }
+        
+        function autoFormatSelection() {
+      	CodeMirror.commands["selectAll"](inputEditor);
+          var range = getSelectedRange(inputEditor);
+          inputEditor.autoFormatRange(range.from, range.to);
+          inputEditor.focus();
+        }
+      
+      function resolveGetParam(param) {
+        var paramValue = null,
+          tmp = [];
+        location.search
+          .substr(1)
+          .split("&")
+          .forEach(function(item) {
+            tmp = item.split("=");
+            if (tmp[0] === param) paramValue = decodeURIComponent(tmp[1]);
+          });
+        return paramValue;
       }
       
-     /*  CodeMirror.commands["selectAll"](outputEditor);
-      var range = getSelectedRange();
-      outputEditor.autoFormatRange(range.from, range.to); */
-    }
-  });
-}
-
-// fetch input_schema.json by calling the servlet
-function getInputSchema(inputSchema) {
-
-  var url = "http://localhost:" + portValue + "/dataMapper/getRegistryResources";
-
-  $.ajax({
-    url: url,
-    type: "POST",
-    data: "getInputSchema",
-    success: function(data) {
-      ajaxCallBack(data);
-    }
-  });
-}
-    </script>
-  </body>
+      // input and output types
+      var inputType = "JSON";
+      var outputType = "JSON";
+      var inputSchema = "";
+      var jsonString = "";
+      var xmlString = "";
+      var csvString = "";
+      
+      // Configuration for JSON to CSV converter
+      var configs = {
+        quotes: false,
+        quoteChar: '"',
+        escapeChar: '"',
+        delimiter: ",",
+        header: false,
+        newline: "\r\n"
+      }
+      
+      // read input shema json from file
+      getInputSchema(inputSchema);
+      
+      // generate examples once the input schema is available
+      function ajaxCallBack(retString) {
+        inputSchema = retString;
+        generateExamples();
+        inputEditor = CodeMirror.fromTextArea(document.getElementById("inputTextArea"), {
+            mode: "text/javascript",
+            lineNumbers: true
+          });
+        outputEditor = CodeMirror.fromTextArea(document.getElementById("outputTextArea"), {
+            mode: "text/javascript",
+            lineNumbers: true
+          });
+        autoFormatSelection();
+      }
+      
+      // Generate json / xml / csv examples from the json schema.  
+      function generateExamples() {
+        var inputSchemaTitle = inputSchema["title"];
+      
+        jsonString = convertSchemaToJson(inputSchema);
+        if (inputSchemaTitle != "root" && jsonString[inputSchemaTitle] != null) {
+          jsonString = jsonString[inputSchemaTitle];
+        }
+        jsonString = JSON.stringify(jsonString, null, "\t");
+        document.getElementById("inputTextArea").value = jsonString;
+      
+        xmlString = json2xml(JSON.parse(jsonString), "\n");
+        xmlString = "<" + inputSchemaTitle + ">" + xmlString + "</" + inputSchemaTitle + ">";
+      
+        csvString = '<text xmlns="http://ws.apache.org/commons/ns/payload">' + Papa.unparse(JSON.parse(jsonString), configs) + "</text>";
+      }
+      
+      // Set appropiate data types depending on the input
+      $('.inputTypeRadio').on('change', function(e) {
+        var selectedValue = $('.inputTypeRadio:checked').val();
+        inputType = selectedValue;
+        if (selectedValue == "XML") {
+      	  inputEditor.setOption("mode", "text/html");
+      	  inputEditor.setValue(xmlString);
+        } else if (selectedValue == "CSV") {
+      	  inputEditor.setValue(csvString);
+        } else if (selectedValue == "JSON") {
+      	  inputEditor.setOption("mode", "text/javascript");
+      	  inputEditor.setValue(jsonString);
+        }
+        
+        autoFormatSelection();
+      });
+      
+      $('input[name=outputTypeRadio]').on('change', function(e) {
+        outputType = $('input[name=outputTypeRadio]:checked').val();
+      });
+      
+      // Call Datamapper.mediate() and take back the results
+      function process() {
+        var input = inputEditor.getValue();
+        var arr = "process " + inputType + " " + outputType + " " + input;
+        var url = "http://localhost:" + portValue + "/dataMapper/getRegistryResources";
+        $.ajax({
+          url: url,
+          type: "POST",
+          data: arr,
+          success: function(data, status, xhr) {
+            var ct = xhr.getResponseHeader("content-type") || "";
+            var result = "";
+      
+            if (ct.indexOf('application/json') > -1) {
+              result = JSON.stringify(data, null, '\t');
+              outputEditor.setOption("mode", "text/javascript");
+              outputEditor.setValue(result);
+            } else if (ct.indexOf('application/xml') > -1 || ct.indexOf('text/xml') > -1) {
+              result = new XMLSerializer().serializeToString(data);
+              outputEditor.setOption("mode", "text/html");
+              outputEditor.setValue(result);
+              CodeMirror.commands["selectAll"](outputEditor);
+              var range = getSelectedRange(outputEditor);
+              outputEditor.autoFormatRange(range.from, range.to);
+            } else {
+          	  outputEditor.setOption("mode", "text/javascript");
+          	  outputEditor.setValue(data);
+             
+            }
+            
+           /*  CodeMirror.commands["selectAll"](outputEditor);
+            var range = getSelectedRange();
+            outputEditor.autoFormatRange(range.from, range.to); */
+          }
+        });
+      }
+      
+      // fetch input_schema.json by calling the servlet
+      function getInputSchema(inputSchema) {
+      
+        var url = "http://localhost:" + portValue + "/dataMapper/getRegistryResources";
+      
+        $.ajax({
+          url: url,
+          type: "POST",
+          data: "getInputSchema",
+          success: function(data) {
+            ajaxCallBack(data);
+          }
+        });
+      }
+          
+   </script>
+   </body>
 </html>

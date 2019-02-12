@@ -49,6 +49,9 @@ import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.KeyListener;
+import org.eclipse.swt.events.MouseAdapter;
+import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 
@@ -747,32 +750,28 @@ public class FilterMediatorPropertiesEditionPartForm extends SectionPropertiesEd
         widgetFactory.paintBordersFor(parent);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
         sourceText.setLayoutData(valueData);
-        sourceText.addFocusListener(new FocusAdapter() {
-            /**
-             * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-             * 
-             */
+        
+        sourceText.addMouseListener(new MouseAdapter() {
+            
             @Override
-            @SuppressWarnings("synthetic-access")
-            public void focusLost(FocusEvent e) {
+            public void mouseDown( MouseEvent event ) {
+                openNamespacedPropertyEditor(parent);
             }
-
-            /**
-             * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
-             */
-            @Override
-            public void focusGained(FocusEvent e) {
-                EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
-                        SWT.NULL, source);
-                // valueExpression.setPropertyValue(valueExpressionText.getText());
-                nspd.open();
-                sourceText.setText(source.getPropertyValue());
-                propertiesEditionComponent
-                        .firePropertiesChanged(new PropertiesEditionEvent(FilterMediatorPropertiesEditionPartForm.this,
-                                EsbViewsRepository.FilterMediator.Properties.source, PropertiesEditionEvent.COMMIT,
-                                PropertiesEditionEvent.SET, null, getSource()));
-            }
+            
         });
+        
+        sourceText.addKeyListener(new KeyListener() {
+                        
+            @Override
+            public void keyPressed(KeyEvent e) {
+                openNamespacedPropertyEditor(parent);
+            }
+            
+            @Override
+            public void keyReleased(KeyEvent e) {}
+            
+        });
+        
         EditingUtils.setID(sourceText,  EsbViewsRepository.FilterMediator.Properties.source);
         EditingUtils.setEEFtype(sourceText, "eef::Text");
         Control itemHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent
@@ -782,6 +781,18 @@ public class FilterMediatorPropertiesEditionPartForm extends SectionPropertiesEd
         // aggregationExpressionHelp };
         sourceElements = new Control[] { itemLabel, sourceText, itemHelp };
         return parent;
+    }
+    
+    private void openNamespacedPropertyEditor(final Composite parent) {
+        EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
+                SWT.NULL, source);
+        // valueExpression.setPropertyValue(valueExpressionText.getText());
+        nspd.open();
+        sourceText.setText(source.getPropertyValue());
+        propertiesEditionComponent
+                .firePropertiesChanged(new PropertiesEditionEvent(FilterMediatorPropertiesEditionPartForm.this,
+                        EsbViewsRepository.FilterMediator.Properties.source, PropertiesEditionEvent.COMMIT,
+                        PropertiesEditionEvent.SET, null, getSource()));
     }
 
     protected Composite createXPathWidget(FormToolkit widgetFactory, final Composite parent) {
@@ -798,32 +809,28 @@ public class FilterMediatorPropertiesEditionPartForm extends SectionPropertiesEd
         widgetFactory.paintBordersFor(parent);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
         xPathText.setLayoutData(valueData);
-        xPathText.addFocusListener(new FocusAdapter() {
-            /**
-             * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-             * 
-             */
-            @Override
-            @SuppressWarnings("synthetic-access")
-            public void focusLost(FocusEvent e) {
-            }
 
-            /**
-             * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
-             */
+        xPathText.addMouseListener(new MouseAdapter() {
+            
             @Override
-            public void focusGained(FocusEvent e) {
-                EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
-                        SWT.NULL, xPath);
-                // valueExpression.setPropertyValue(valueExpressionText.getText());
-                nspd.open();
-                xPathText.setText(xPath.getPropertyValue());
-                propertiesEditionComponent
-                        .firePropertiesChanged(new PropertiesEditionEvent(FilterMediatorPropertiesEditionPartForm.this,
-                                EsbViewsRepository.FilterMediator.Properties.xPath, PropertiesEditionEvent.COMMIT,
-                                PropertiesEditionEvent.SET, null, getXPath()));
+            public void mouseDown( MouseEvent event ) {
+                openNamespacedPropertyEditor(parent);
             }
+            
         });
+        
+        xPathText.addKeyListener(new KeyListener() {
+                        
+            @Override
+            public void keyPressed(KeyEvent e) {
+                openNamespacedPropertyEditor(parent);
+            }
+            
+            @Override
+            public void keyReleased(KeyEvent e) {}
+            
+        });
+        
         EditingUtils.setID(xPathText,  EsbViewsRepository.FilterMediator.Properties.xPath);
         EditingUtils.setEEFtype(xPathText, "eef::Text");
         Control itemHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent

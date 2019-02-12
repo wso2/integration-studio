@@ -49,6 +49,8 @@ import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.KeyListener;
+import org.eclipse.swt.events.MouseAdapter;
 import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -60,7 +62,9 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
 import org.eclipse.ui.forms.widgets.Form;
@@ -1656,34 +1660,45 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
 	    widgetFactory.paintBordersFor(parent);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
         valueExpressionText.setLayoutData(valueData);
-        valueExpressionText.addFocusListener(new FocusAdapter() {
-            /**
-             * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-             * 
-             */
+        
+        valueExpressionText.addMouseListener(new MouseAdapter() {
+            
             @Override
-            @SuppressWarnings("synthetic-access")
-            public void focusLost(FocusEvent e) {
+            public void mouseDown( MouseEvent event ) {
+                openNamespacedPropertyEditor(parent);
             }
-
-            /**
-             * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
-             */
-            @Override
-            public void focusGained(FocusEvent e) {
-                EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL, valueExpression);
-                //valueExpression.setPropertyValue(valueExpressionText.getText());
-                nspd.open();
-                valueExpressionText.setText(valueExpression.getPropertyValue());
-                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertyMediatorPropertiesEditionPartForm.this, EsbViewsRepository.PropertyMediator.Properties.valueExpression, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getValueExpression()));
-            }
+            
         });
+        
+        valueExpressionText.addKeyListener(new KeyListener() {
+                        
+            @Override
+            public void keyPressed(KeyEvent e) {
+                openNamespacedPropertyEditor(parent);
+            }
+            
+            @Override
+            public void keyReleased(KeyEvent e) {}
+            
+        });;
+        
         EditingUtils.setID(valueExpressionText, EsbViewsRepository.PropertyMediator.Properties.valueExpression);
         EditingUtils.setEEFtype(valueExpressionText, "eef::Text");
         Control valueExpressionHelp =FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PropertyMediator.Properties.valueExpression, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
         valueExpressionElements = new Control[] {valueExpressionLabel, valueExpressionText, valueExpressionHelp};
         return parent;
 	}
+	
+    private void openNamespacedPropertyEditor(final Composite parent) {
+        EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL,
+                valueExpression);
+        nspd.open();
+        valueExpressionText.setText(valueExpression.getPropertyValue());
+        propertiesEditionComponent
+                .firePropertiesChanged(new PropertiesEditionEvent(PropertyMediatorPropertiesEditionPartForm.this,
+                        EsbViewsRepository.PropertyMediator.Properties.valueExpression, PropertiesEditionEvent.COMMIT,
+                        PropertiesEditionEvent.SET, null, getValueExpression()));
+    }
 	
 	public void validate() {
 	    clearElements();

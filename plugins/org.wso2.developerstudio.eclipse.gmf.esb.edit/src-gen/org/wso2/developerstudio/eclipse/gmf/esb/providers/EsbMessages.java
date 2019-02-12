@@ -702,7 +702,7 @@ public class EsbMessages extends NLS {
 
 	
 	public static String ThrottleMediatorPropertiesEditionPart_OnAcceptGroupLabel;
-
+	
 	
 	public static String ThrottleMediatorPropertiesEditionPart_ThrottlePolicyGroupLabel;
 
@@ -8006,7 +8006,7 @@ public class EsbMessages extends NLS {
 	public static String PropertiesEditionPart_RemoveListViewerLabel;
 
 	// Start of user code for additionnal NLS Constants
-	
+	public static String ThrottleMediatorPropertiesEditionPart_OnRejectGroupLabel;
 	// End of user code
 
 	static {

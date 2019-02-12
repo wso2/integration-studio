@@ -148,15 +148,15 @@ public class ConditionalRouterMediatorItemProvider extends MediatorItemProvider 
     }
 
     /**
-     * This returns ConditionalRouterMediator.gif.
+     * This returns ConditionalRouterMediator.png.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
+     * @generated NOT
      */
 
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/ConditionalRouterMediator"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/ConditionalRouterMediator.png"));
     }
 
     /**

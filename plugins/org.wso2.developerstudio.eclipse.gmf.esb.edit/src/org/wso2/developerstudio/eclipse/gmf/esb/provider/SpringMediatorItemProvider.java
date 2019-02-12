@@ -132,15 +132,15 @@ public class SpringMediatorItemProvider extends MediatorItemProvider {
     }
 
     /**
-     * This returns SpringMediator.gif.
+     * This returns SpringMediator.png.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
+     * @generated NOT
      */
 
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/SpringMediator"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/SpringMediator.png"));
     }
 
     /**

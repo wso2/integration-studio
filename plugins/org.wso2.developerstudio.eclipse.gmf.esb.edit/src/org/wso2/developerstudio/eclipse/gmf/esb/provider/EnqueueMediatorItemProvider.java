@@ -157,15 +157,15 @@ public class EnqueueMediatorItemProvider extends MediatorItemProvider {
     }
 
     /**
-     * This returns EnqueueMediator.gif.
+     * This returns EnqueueMediator.png.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
+     * @generated NOT
      */
 
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/EnqueueMediator"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/EnqueueMediator.png"));
     }
 
     /**

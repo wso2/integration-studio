@@ -72,7 +72,8 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.NamedEndpointPropertiesEditionPart;
 
@@ -121,6 +122,14 @@ public class NamedEndpointPropertiesEditionPartImpl extends CompositePropertiesE
 	protected Button traceEnabled;
 	protected Text name;
 	protected EMFComboViewer referringEndpointType;
+	// Start of user code  for dynamicReferenceKey widgets declarations
+	
+	// End of user code
+
+	// Start of user code  for staticReferenceKey widgets declarations
+	
+	// End of user code
+
 
 
 
@@ -188,6 +197,8 @@ public class NamedEndpointPropertiesEditionPartImpl extends CompositePropertiesE
 		propertiesStep.addStep(EsbViewsRepository.NamedEndpoint.Properties.traceEnabled);
 		propertiesStep.addStep(EsbViewsRepository.NamedEndpoint.Properties.name);
 		propertiesStep.addStep(EsbViewsRepository.NamedEndpoint.Properties.referringEndpointType);
+		propertiesStep.addStep(EsbViewsRepository.NamedEndpoint.Properties.dynamicReferenceKey);
+		propertiesStep.addStep(EsbViewsRepository.NamedEndpoint.Properties.staticReferenceKey);
 		
 		
 		composer = new PartComposer(namedEndpointStep) {
@@ -284,6 +295,12 @@ public class NamedEndpointPropertiesEditionPartImpl extends CompositePropertiesE
 				if (key == EsbViewsRepository.NamedEndpoint.Properties.referringEndpointType) {
 					return createReferringEndpointTypeEMFComboViewer(parent);
 				}
+				// Start of user code for dynamicReferenceKey addToPart creation
+				
+				// End of user code
+				// Start of user code for staticReferenceKey addToPart creation
+				
+				// End of user code
 				return parent;
 			}
 		};
@@ -2547,6 +2564,34 @@ public class NamedEndpointPropertiesEditionPartImpl extends CompositePropertiesE
 
 
 
+	// Start of user code for dynamicReferenceKey specific getters and setters implementation
+    @Override
+    public NamespacedProperty getDynamicReferenceKey() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void setDynamicReferenceKey(NamespacedProperty nameSpacedProperty) {
+        // TODO Auto-generated method stub
+        
+    }
+	// End of user code
+
+	// Start of user code for staticReferenceKey specific getters and setters implementation
+    @Override
+    public RegistryKeyProperty getStaticReferenceKey() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void setStaticReferenceKey(RegistryKeyProperty registryKeyProperty) {
+        // TODO Auto-generated method stub
+        
+    }
+	// End of user code
+
 	/**
 	 * {@inheritDoc}
 	 *
@@ -2556,6 +2601,8 @@ public class NamedEndpointPropertiesEditionPartImpl extends CompositePropertiesE
 	public String getTitle() {
 		return EsbMessages.NamedEndpoint_Part_Title;
 	}
+
+
 
 	// Start of user code additional methods
 	

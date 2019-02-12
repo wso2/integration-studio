@@ -4077,6 +4077,12 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v-a_JnEei6boXzpRIfnA" name="referringEndpointType" views="_E7xKZ_JnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//NamedEndpoint/referringEndpointType"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_ca0AAC7MEemTJOoZkUeYNg" name="staticReferenceKey" views="_hpicwC7OEemTJOoZkUeYNg">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//NamedEndpoint/staticReferenceKey"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_yfJH8C7OEemTJOoZkUeYNg" name="dynamicReferenceKey" views="_bv0QUC7OEemTJOoZkUeYNg">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//NamedEndpoint/dynamicReferenceKey"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//NamedEndpoint"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_E7v-bPJnEei6boXzpRIfnA" name="NamedEndpointInputConnector" views="_E7xKaPJnEei6boXzpRIfnA">
@@ -10322,6 +10328,8 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xKZ_JnEei6boXzpRIfnA" name="referringEndpointType">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
           </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_bv0QUC7OEemTJOoZkUeYNg" name="dynamicReferenceKey"/>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_hpicwC7OEemTJOoZkUeYNg" name="staticReferenceKey"/>
         </elements>
       </views>
       <views xmi:id="_E7xKaPJnEei6boXzpRIfnA" name="NamedEndpointInputConnector">

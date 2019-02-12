@@ -6511,6 +6511,12 @@ public class EsbMessages extends NLS {
 	public static String NamedEndpointPropertiesEditionPart_ReferringEndpointTypeLabel;
 
 	
+	public static String NamedEndpointPropertiesEditionPart_DynamicReferenceKeyLabel;
+
+	
+	public static String NamedEndpointPropertiesEditionPart_StaticReferenceKeyLabel;
+
+	
 	public static String NamedEndpointInputConnectorPropertiesEditionPart_IncomingLinksLabel;
 
 	

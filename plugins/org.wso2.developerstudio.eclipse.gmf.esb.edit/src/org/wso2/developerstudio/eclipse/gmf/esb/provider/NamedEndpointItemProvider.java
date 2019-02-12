@@ -195,14 +195,14 @@ public class NamedEndpointItemProvider extends AbstractEndPointItemProvider {
     }
 
     /**
-     * This returns NamedEndpoint.gif.
+     * This returns NamedEndpoint.png.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
+     * @generated NOT
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/NamedEndpoint"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/NamedEndpoint.png"));
     }
 
     /**

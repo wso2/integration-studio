@@ -120,7 +120,7 @@ public class FailoverEndPointEditPart extends ComplexFiguredAbstractEndpoint {
      * @generated NOT
      */
     protected IFigure createNodeShape() {
-        return primaryShape = new FailoverEndPointFigure(new Color(null, 141, 82, 161)) {
+        return primaryShape = new FailoverEndPointFigure(new Color(null, 255, 255, 255)) {
             public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
                 super.setBounds(rect);
                 if (this.getBounds().getLocation().x != 0 && this.getBounds().getLocation().y != 0) {
@@ -379,8 +379,11 @@ public class FailoverEndPointEditPart extends ComplexFiguredAbstractEndpoint {
             return endpointDescriptionLabel;
         }
 
+        /**
+         * @generated NOT
+         */
         public String getIconPath() {
-            return "icons/ico20/failover-endpoint.gif";
+            return "icons/ico20/failover-endpoint.png";
         }
 
         public String getNodeName() {

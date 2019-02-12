@@ -36,7 +36,7 @@ public class EditPartConstants {
     public static final String PROPERTY_MEDIATOR_ICON_PATH = "icons/ico20/property-mediator.png";
     public static final String ENRICH_MEDIATOR_ICON_PATH = "icons/ico20/enrich-mediator.png";
     public static final String BAM_MEDIATOR_ICON_PATH = "icons/ico20/bam-mediator.gif";
-    public static final String BUILDER_MEDIATOR_ICON_PATH = "icons/ico20/builder-mediator.gif";
+    public static final String BUILDER_MEDIATOR_ICON_PATH = "icons/ico20/builder-mediator.png";
     public static final String CACHE_MEDIATOR_ICON_PATH = "icons/ico20/cache-mediator.png";
     public static final String CALLOUT_MEDIATOR_ICON_PATH = "icons/ico20/callout-mediator.png";
     public static final String CLONE_MEDIATOR_ICON_PATH = "icons/ico20/clone-mediator.png";

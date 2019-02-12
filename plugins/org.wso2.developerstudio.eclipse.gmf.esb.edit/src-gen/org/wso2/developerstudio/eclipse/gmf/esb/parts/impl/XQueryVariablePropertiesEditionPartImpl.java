@@ -587,7 +587,7 @@ public class XQueryVariablePropertiesEditionPartImpl extends CompositeProperties
 
 
 	// Start of user code additional methods
-	protected Composite createValueKey(Composite parent) {
+	protected Composite createValueKey(final Composite parent) {
         Control valueKeyLabel = createDescription(parent, EsbViewsRepository.XQueryVariable.Properties.valueKey,
                 EsbMessages.XQueryVariablePropertiesEditionPart_ValueKeyLabel);
 
@@ -633,7 +633,7 @@ public class XQueryVariablePropertiesEditionPartImpl extends CompositeProperties
         return parent;
     }
 
-	protected Composite createValueExpression(Composite parent) {
+	protected Composite createValueExpression(final Composite parent) {
         Control valueExpressionLabel = createDescription(parent, EsbViewsRepository.XQueryVariable.Properties.valueExpression,
                 EsbMessages.XQueryVariablePropertiesEditionPart_ValueExpressionLabel);
         if (valueExpression == null) {

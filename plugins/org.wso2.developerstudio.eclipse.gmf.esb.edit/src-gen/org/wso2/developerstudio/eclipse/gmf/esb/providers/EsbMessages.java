@@ -857,7 +857,19 @@ public class EsbMessages extends NLS {
 	public static String RespondMediatorOutputConnectorPropertiesEditionPart_PropertiesGroupLabel;
 
 	
+	public static String SmooksMediatorPropertiesEditionPart_InputGroupLabel;
+
+	
+	public static String SmooksMediatorPropertiesEditionPart_OutputGroupLabel;
+
+	
 	public static String SmooksMediatorPropertiesEditionPart_PropertiesGroupLabel;
+
+	
+	public static String SmooksMediatorPropertiesEditionPart_KeyGroupLabel;
+
+	
+	public static String SmooksMediatorPropertiesEditionPart_MiscGroupLabel;
 
 	
 	public static String SmooksMediatorInputConnectorPropertiesEditionPart_PropertiesGroupLabel;
@@ -5791,16 +5803,10 @@ public class EsbMessages extends NLS {
 	public static String RespondMediatorOutputConnectorPropertiesEditionPart_CommentMediatorsLabel;
 
 	
-	public static String SmooksMediatorPropertiesEditionPart_DescriptionLabel;
-
-	
-	public static String SmooksMediatorPropertiesEditionPart_CommentsListLabel;
-
-	
-	public static String SmooksMediatorPropertiesEditionPart_ReverseLabel;
-
-	
 	public static String SmooksMediatorPropertiesEditionPart_InputTypeLabel;
+
+	
+	public static String SmooksMediatorPropertiesEditionPart_InputExpresssionLabel;
 
 	
 	public static String SmooksMediatorPropertiesEditionPart_OutputTypeLabel;
@@ -5813,6 +5819,21 @@ public class EsbMessages extends NLS {
 
 	
 	public static String SmooksMediatorPropertiesEditionPart_OutputMethodLabel;
+
+	
+	public static String SmooksMediatorPropertiesEditionPart_OutputExpressionLabel;
+
+	
+	public static String SmooksMediatorPropertiesEditionPart_CommentsListLabel;
+
+	
+	public static String SmooksMediatorPropertiesEditionPart_ReverseLabel;
+
+	
+	public static String SmooksMediatorPropertiesEditionPart_ConfigurationKeyLabel;
+
+	
+	public static String SmooksMediatorPropertiesEditionPart_DescriptionLabel;
 
 	
 	public static String SmooksMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;

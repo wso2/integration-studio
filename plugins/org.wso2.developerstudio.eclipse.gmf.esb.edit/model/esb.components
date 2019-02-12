@@ -3231,6 +3231,15 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v9XvJnEei6boXzpRIfnA" name="outputMethod" views="_E7xJIvJnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//SmooksMediator/outputMethod"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_T87agC4YEemN9u0XgKlnRA" name="inputExpression" views="_AijsgC4YEemN9u0XgKlnRA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//SmooksMediator/inputExpression"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_AUEvIC4ZEemN9u0XgKlnRA" name="configurationKey" views="_54UzsC4YEemN9u0XgKlnRA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//SmooksMediator/configurationKey"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_hkqdsC4nEemN9u0XgKlnRA" name="outputExpression" views="_Xwbr4C4ZEemN9u0XgKlnRA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//SmooksMediator/outputExpression"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//SmooksMediator"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_E7v9X_JnEei6boXzpRIfnA" name="SmooksMediatorInputConnector" views="_E7xJI_JnEei6boXzpRIfnA">
@@ -9342,20 +9351,15 @@
         </elements>
       </views>
       <views xmi:id="_E7wnEvJnEei6boXzpRIfnA" name="SmooksMediator">
-        <elements xsi:type="eef-views:Container" xmi:id="_E7wnE_JnEei6boXzpRIfnA" name="properties">
+        <elements xsi:type="eef-views:Container" xmi:id="_Jlb3sC4XEemN9u0XgKlnRA" name="input">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wnFPJnEei6boXzpRIfnA" name="description">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
-          </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wnFfJnEei6boXzpRIfnA" name="commentsList">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.3"/>
-          </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wnFvJnEei6boXzpRIfnA" name="Reverse">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
-          </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wnF_JnEei6boXzpRIfnA" name="inputType">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
           </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_AijsgC4YEemN9u0XgKlnRA" name="inputExpresssion"/>
+        </elements>
+        <elements xsi:type="eef-views:Container" xmi:id="_Owr0kC4XEemN9u0XgKlnRA" name="output">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wnGPJnEei6boXzpRIfnA" name="outputType">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
           </elements>
@@ -9367,6 +9371,26 @@
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xJIvJnEei6boXzpRIfnA" name="outputMethod">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
+          </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_Xwbr4C4ZEemN9u0XgKlnRA" name="outputExpression"/>
+        </elements>
+        <elements xsi:type="eef-views:Container" xmi:id="_E7wnE_JnEei6boXzpRIfnA" name="properties">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wnFfJnEei6boXzpRIfnA" name="commentsList">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.3"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wnFvJnEei6boXzpRIfnA" name="Reverse">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
+          </elements>
+        </elements>
+        <elements xsi:type="eef-views:Container" xmi:id="_tpsToC4YEemN9u0XgKlnRA" name="key">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_54UzsC4YEemN9u0XgKlnRA" name="configurationKey"/>
+        </elements>
+        <elements xsi:type="eef-views:Container" xmi:id="_LNls0C4NEemN9u0XgKlnRA" name="misc">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wnFPJnEei6boXzpRIfnA" name="description">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
         </elements>
       </views>

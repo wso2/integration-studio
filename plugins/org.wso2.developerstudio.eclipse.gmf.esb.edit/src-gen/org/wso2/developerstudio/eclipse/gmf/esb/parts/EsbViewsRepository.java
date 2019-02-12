@@ -5652,31 +5652,63 @@ public class EsbViewsRepository {
 	 * 
 	 */
 	public static class SmooksMediator {
-		public static class Properties {
+		public static class Input {
 	
 			
-			public static String description = "esb::SmooksMediator::properties::description";
+			public static String inputType = "esb::SmooksMediator::input::inputType";
 			
+			// Start of user code for inputExpresssion ElementEditor key
+			public static String inputExpresssion = "esb::SmooksMediator::input::inputExpresssion";
+			// End of user code
+			
+	
+		}
+	
+		public static class Output {
+	
+			
+			public static String outputType = "esb::SmooksMediator::output::outputType";
+			
+			
+			public static String outputProperty = "esb::SmooksMediator::output::outputProperty";
+			
+			
+			public static String outputAction = "esb::SmooksMediator::output::outputAction";
+			
+			
+			public static String outputMethod = "esb::SmooksMediator::output::outputMethod";
+			
+			// Start of user code for outputExpression ElementEditor key
+			public static String outputExpression = "esb::SmooksMediator::output::outputExpression";
+			// End of user code
+			
+	
+		}
+	
+		public static class Properties {
+	
 			
 			public static String commentsList = "esb::SmooksMediator::properties::commentsList";
 			
 			
 			public static String reverse = "esb::SmooksMediator::properties::Reverse";
 			
+	
+		}
+	
+		public static class Key {
+	
+			// Start of user code for configurationKey ElementEditor key
+			public static String configurationKey = "esb::SmooksMediator::key::configurationKey";
+			// End of user code
 			
-			public static String inputType = "esb::SmooksMediator::properties::inputType";
+	
+		}
+	
+		public static class Misc {
+	
 			
-			
-			public static String outputType = "esb::SmooksMediator::properties::outputType";
-			
-			
-			public static String outputProperty = "esb::SmooksMediator::properties::outputProperty";
-			
-			
-			public static String outputAction = "esb::SmooksMediator::properties::outputAction";
-			
-			
-			public static String outputMethod = "esb::SmooksMediator::properties::outputMethod";
+			public static String description = "esb::SmooksMediator::misc::description";
 			
 	
 		}

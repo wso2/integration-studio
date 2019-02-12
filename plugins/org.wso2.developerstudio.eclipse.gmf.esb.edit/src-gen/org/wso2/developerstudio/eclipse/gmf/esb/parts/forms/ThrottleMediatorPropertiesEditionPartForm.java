@@ -1427,7 +1427,7 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
 
     public void validate() {
         EEFPropertyViewUtil epv = new EEFPropertyViewUtil(view);
-        epv.clearElements(new Composite[] { generalGroup, miscGroup, onAcceptGroup, onRejectGroup });
+        epv.clearElements(new Composite[] { generalGroup, miscGroup, onAcceptGroup, onRejectGroup, throttlePolicyGroup });
         epv.showEntry(descriptionElements, false);
         epv.showEntry(groupIDElements, false);
         epv.showEntry(policyTypeElements, false);

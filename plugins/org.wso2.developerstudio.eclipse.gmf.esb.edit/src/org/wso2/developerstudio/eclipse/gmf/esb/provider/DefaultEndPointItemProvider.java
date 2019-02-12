@@ -94,15 +94,15 @@ public class DefaultEndPointItemProvider extends AbstractEndPointItemProvider {
     }
 
     /**
-     * This returns DefaultEndPoint.gif.
+     * This returns DefaultEndPoint.png.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
+     * @generated NOT
      */
 
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/DefaultEndPoint"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/DefaultEndPoint.png"));
     }
 
     /**

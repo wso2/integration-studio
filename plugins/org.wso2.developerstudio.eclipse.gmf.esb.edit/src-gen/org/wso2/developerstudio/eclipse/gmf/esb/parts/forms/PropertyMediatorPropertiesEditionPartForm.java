@@ -1680,7 +1680,7 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
             @Override
             public void keyReleased(KeyEvent e) {}
             
-        });;
+        });
         
         EditingUtils.setID(valueExpressionText, EsbViewsRepository.PropertyMediator.Properties.valueExpression);
         EditingUtils.setEEFtype(valueExpressionText, "eef::Text");

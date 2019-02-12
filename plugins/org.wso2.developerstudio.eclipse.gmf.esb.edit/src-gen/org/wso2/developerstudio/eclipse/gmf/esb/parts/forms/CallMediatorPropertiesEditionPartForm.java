@@ -71,6 +71,9 @@ import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.KeyListener;
+import org.eclipse.swt.events.MouseAdapter;
+import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 
@@ -921,28 +924,28 @@ public class CallMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
         widgetFactory.paintBordersFor(parent);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
         endpointXPathText.setLayoutData(valueData);
-        endpointXPathText.addFocusListener(new FocusAdapter() {
-            /**
-             * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-             * 
-             */
-            @Override
-            @SuppressWarnings("synthetic-access")
-            public void focusLost(FocusEvent e) {
-            }
 
-            /**
-             * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
-             */
+        endpointXPathText.addMouseListener(new MouseAdapter() {
+            
             @Override
-            public void focusGained(FocusEvent e) {
-                EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL, endpointXPath);
-                //valueExpression.setPropertyValue(valueExpressionText.getText());
-                nspd.open();
-                endpointXPathText.setText(endpointXPath.getPropertyValue());
-                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CallMediatorPropertiesEditionPartForm.this, EsbViewsRepository.CallMediator.Properties.endpointXpath, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getEndpointXPath()));
+            public void mouseDown( MouseEvent event ) {
+                openNamespacedPropertyEditor(parent);
             }
+            
         });
+        
+        endpointXPathText.addKeyListener(new KeyListener() {
+                        
+            @Override
+            public void keyPressed(KeyEvent e) {
+                openNamespacedPropertyEditor(parent);
+            }
+            
+            @Override
+            public void keyReleased(KeyEvent e) {}
+            
+        });;
+        
         EditingUtils.setID(endpointXPathText, EsbViewsRepository.AggregateMediator.OnComplete.aggregationExpression);
         EditingUtils.setEEFtype(endpointXPathText, "eef::Text");
         Control endpointXPathHelp =FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.CallMediator.Properties.endpointXpath, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
@@ -950,6 +953,14 @@ public class CallMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
         return parent;
     }
 	
+    private void openNamespacedPropertyEditor(final Composite parent) {
+        EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL, endpointXPath);
+        //valueExpression.setPropertyValue(valueExpressionText.getText());
+        nspd.open();
+        endpointXPathText.setText(endpointXPath.getPropertyValue());
+        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CallMediatorPropertiesEditionPartForm.this, EsbViewsRepository.CallMediator.Properties.endpointXpath, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getEndpointXPath()));
+    }
+    
 	@Override
     public void refresh() {
         super.refresh();

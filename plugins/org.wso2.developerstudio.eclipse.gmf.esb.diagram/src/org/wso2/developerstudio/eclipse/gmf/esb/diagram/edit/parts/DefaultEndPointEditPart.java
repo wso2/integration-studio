@@ -382,6 +382,9 @@ public class DefaultEndPointEditPart extends AbstractEndpoint {
             return endpointDescriptionLabel;
         }
 
+        /**
+         * @generated NOT
+         */
         public String getIconPath() {
             return "icons/ico20/default-endpoint.png";
         }

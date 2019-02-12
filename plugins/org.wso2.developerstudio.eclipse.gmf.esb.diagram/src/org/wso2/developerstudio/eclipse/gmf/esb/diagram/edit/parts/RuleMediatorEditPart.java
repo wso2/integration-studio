@@ -120,7 +120,7 @@ public class RuleMediatorEditPart extends SingleCompartmentComplexFiguredAbstrac
      * @generated NOT
      */
     protected IFigure createNodeShape() {
-        return primaryShape = new RuleMediatorFigure(new Color(null, 255, 246, 245), new Color(null, 121, 86, 73)) {
+        return primaryShape = new RuleMediatorFigure(new Color(null, 210, 86, 39), new Color(null, 255, 255, 255)) {
             public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
                 super.setBounds(rect);
                 if ((!connected) && (this.getBounds().getLocation().x != 0 && this.getBounds().getLocation().y != 0)) {

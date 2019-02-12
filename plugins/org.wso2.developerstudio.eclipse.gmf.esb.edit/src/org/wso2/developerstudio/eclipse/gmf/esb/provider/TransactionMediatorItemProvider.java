@@ -118,15 +118,15 @@ public class TransactionMediatorItemProvider extends MediatorItemProvider {
     }
 
     /**
-     * This returns TransactionMediator.gif.
+     * This returns TransactionMediator.png.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
+     * @generated NOT
      */
 
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/TransactionMediator"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/TransactionMediator.png"));
     }
 
     /**

@@ -232,15 +232,15 @@ public class XQueryMediatorItemProvider extends MediatorItemProvider {
     }
 
     /**
-     * This returns XQueryMediator.gif.
+     * This returns XQueryMediator.png.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
+     * @generated NOT
      */
 
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/XQueryMediator"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/XQueryMediator.png"));
     }
 
     /**

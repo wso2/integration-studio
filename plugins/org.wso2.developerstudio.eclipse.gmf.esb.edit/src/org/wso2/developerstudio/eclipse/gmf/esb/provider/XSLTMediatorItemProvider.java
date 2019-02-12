@@ -241,15 +241,15 @@ public class XSLTMediatorItemProvider extends MediatorItemProvider {
     }
 
     /**
-     * This returns XSLTMediator.gif.
+     * This returns XSLTMediator.png.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
+     * @generated NOT
      */
 
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/XSLTMediator"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/XSLTMediator.png"));
     }
 
     /**

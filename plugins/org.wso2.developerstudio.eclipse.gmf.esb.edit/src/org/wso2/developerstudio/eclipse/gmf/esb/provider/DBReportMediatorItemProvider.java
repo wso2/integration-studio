@@ -117,15 +117,15 @@ public class DBReportMediatorItemProvider extends AbstractSqlExecutorMediatorIte
     }
 
     /**
-     * This returns DBReportMediator.gif.
+     * This returns DBReportMediator.png.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
+     * @generated NOT
      */
 
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/DBReportMediator"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/DBReportMediator.png"));
     }
 
     /**

@@ -168,7 +168,8 @@ public class EsbViewsRepository {
 			public static String valueType = "esb::EndPointProperty::properties::valueType";
 			
 			// Start of user code for valueExpression ElementEditor key
-			public static String valueExpression = "esb::EndPointProperty::properties::valueExpression";
+			public static String valueExpression = "esb::PropertyMediator::properties::valueExpression";
+
 			// End of user code
 			
 	
@@ -2658,9 +2659,6 @@ public class EsbViewsRepository {
 		public static class Properties {
 	
 			
-			public static String description = "esb::EntitlementMediator::properties::description";
-			
-			
 			public static String commentsList = "esb::EntitlementMediator::properties::commentsList";
 			
 			
@@ -2674,6 +2672,9 @@ public class EsbViewsRepository {
 			
 			
 			public static String password = "esb::EntitlementMediator::properties::password";
+			
+			
+			public static String callbackHandler = "esb::EntitlementMediator::properties::callbackHandler";
 			
 			
 			public static String callbackClassName = "esb::EntitlementMediator::properties::callbackClassName";
@@ -2690,17 +2691,33 @@ public class EsbViewsRepository {
 			
 			public static String onRejectSequenceType = "esb::EntitlementMediator::properties::onRejectSequenceType";
 			
+			// Start of user code for onRejectSequenceKey ElementEditor key
+			public static String onRejectSequenceKey = "esb::EntitlementMediator::properties::onRejectSequenceKey";
+			// End of user code
+			
 			
 			public static String onAcceptSequenceType = "esb::EntitlementMediator::properties::onAcceptSequenceType";
+			
+			// Start of user code for onAcceptSequenceKey ElementEditor key
+			public static String onAcceptSequenceKey = "esb::EntitlementMediator::properties::onAcceptSequenceKey";
+			// End of user code
 			
 			
 			public static String adviceSequenceType = "esb::EntitlementMediator::properties::adviceSequenceType";
 			
+			// Start of user code for adviceSequenceKey ElementEditor key
+			public static String adviceSequenceKey = "esb::EntitlementMediator::properties::adviceSequenceKey";
+			// End of user code
+			
 			
 			public static String obligationsSequenceType = "esb::EntitlementMediator::properties::obligationsSequenceType";
 			
+			// Start of user code for obligationsSequenceKey ElementEditor key
+			public static String obligationsSequenceKey = "esb::EntitlementMediator::properties::obligationsSequenceKey";
+			// End of user code
 			
-			public static String callbackHandler = "esb::EntitlementMediator::properties::callbackHandler";
+			
+			public static String description = "esb::EntitlementMediator::properties::description";
 			
 	
 		}

@@ -429,7 +429,7 @@ public class APIResourceEditPart extends AbstractBaseFigureEditPart {
         }
 
         public String getIconPath() {
-            return "icons/ico20/apiResource.gif";
+            return "icons/ico20/apiResource.png";
         }
 
         public String getNodeName() {

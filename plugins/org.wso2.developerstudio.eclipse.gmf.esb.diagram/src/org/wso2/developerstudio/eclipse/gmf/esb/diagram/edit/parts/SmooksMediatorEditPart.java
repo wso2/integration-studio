@@ -138,7 +138,7 @@ public class SmooksMediatorEditPart extends FixedSizedAbstractMediator {
      * @generated NOT
      */
     protected IFigure createNodeShape() {
-        return primaryShape = new SmooksMediatorFigure(new Color(null, 243, 149, 0)) {
+        return primaryShape = new SmooksMediatorFigure(new Color(null, 255, 255, 255)) {
             public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
                 super.setBounds(rect);
                 if (this.getBounds().getLocation().x != 0 && this.getBounds().getLocation().y != 0) {

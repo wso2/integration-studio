@@ -377,14 +377,14 @@ public class SwitchMediatorEditPart extends MultipleCompartmentComplexFiguredAbs
          * @generated NOT
          */
         public SwitchMediatorFigure() {
-
+            
             ToolbarLayout layoutThis = new ToolbarLayout();
             layoutThis.setStretchMinorAxis(true);
             layoutThis.setMinorAlignment(ToolbarLayout.ALIGN_CENTER);
             layoutThis.setSpacing(0);
             layoutThis.setVertical(false);
             this.setLayoutManager(layoutThis);
-            this.setPreferredSize(new Dimension(getMapMode().DPtoLP(170), getMapMode().DPtoLP(100)));
+            this.setPreferredSize(new Dimension(getMapMode().DPtoLP(170), getMapMode().DPtoLP(130)));
             this.setOutline(false);
             this.setBackgroundColor(THIS_BACK);
             createContents();

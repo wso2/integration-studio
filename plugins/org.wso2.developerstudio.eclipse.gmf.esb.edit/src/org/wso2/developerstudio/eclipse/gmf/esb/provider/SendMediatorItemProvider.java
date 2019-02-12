@@ -224,15 +224,15 @@ public class SendMediatorItemProvider extends MediatorItemProvider {
     }
 
     /**
-     * This returns SendMediator.gif.
+     * This returns SendMediator.png.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
+     * @generated NOT
      */
 
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/SendMediator"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/SendMediator.png"));
     }
 
     /**

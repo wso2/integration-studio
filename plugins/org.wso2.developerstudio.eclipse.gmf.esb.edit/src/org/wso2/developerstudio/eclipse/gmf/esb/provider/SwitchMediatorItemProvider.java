@@ -204,15 +204,15 @@ public class SwitchMediatorItemProvider extends MediatorItemProvider {
     }
 
     /**
-     * This returns SwitchMediator.gif.
+     * This returns SwitchMediator.png.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
+     * @generated NOT
      */
 
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/SwitchMediator"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/SwitchMediator.png"));
     }
 
     /**

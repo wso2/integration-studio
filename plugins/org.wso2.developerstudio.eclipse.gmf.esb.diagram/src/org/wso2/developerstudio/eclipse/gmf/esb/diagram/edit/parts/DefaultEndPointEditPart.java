@@ -118,7 +118,7 @@ public class DefaultEndPointEditPart extends AbstractEndpoint {
      * @generated NOT
      */
     protected IFigure createNodeShape() {
-        return primaryShape = new DefaultEndPointFigure(new Color(null, 141, 82, 161)) {
+        return primaryShape = new DefaultEndPointFigure(new Color(null, 255, 255, 255)) {
             public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
                 super.setBounds(rect);
                 if (this.getBounds().getLocation().x != 0 && this.getBounds().getLocation().y != 0) {
@@ -383,7 +383,7 @@ public class DefaultEndPointEditPart extends AbstractEndpoint {
         }
 
         public String getIconPath() {
-            return "icons/ico20/defalut-endpoint.gif";
+            return "icons/ico20/default-endpoint.png";
         }
 
         public String getNodeName() {

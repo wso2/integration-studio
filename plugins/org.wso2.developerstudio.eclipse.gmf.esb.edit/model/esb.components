@@ -1560,6 +1560,18 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v7S_JnEei6boXzpRIfnA" name="callbackHandler" views="_E7wkh_JnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//EntitlementMediator/callbackHandler"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_sMRjIC4HEemnoZeu1qv1ww" name="onRejectSequenceKey" views="_NoGhEC4FEemnoZeu1qv1ww">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//EntitlementMediator/onRejectSequenceKey"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_0aHHQC4HEemnoZeu1qv1ww" name="onAcceptSequenceKey" views="_t3gAwC4FEemnoZeu1qv1ww">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//EntitlementMediator/onAcceptSequenceKey"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_6DZD8C4HEemnoZeu1qv1ww" name="adviceSequenceKey" views="_7miHIC4GEemnoZeu1qv1ww">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//EntitlementMediator/adviceSequenceKey"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_AysNgC4IEemnoZeu1qv1ww" name="obligationsSequenceKey" views="_DqnSUC4HEemnoZeu1qv1ww">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//EntitlementMediator/obligationsSequenceKey"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//EntitlementMediator"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_E7v7TPJnEei6boXzpRIfnA" name="EntitlementMediatorInputConnector" views="_E7wkiPJnEei6boXzpRIfnA">
@@ -7424,9 +7436,6 @@
       <views xmi:id="_E7wkd_JnEei6boXzpRIfnA" name="EntitlementMediator">
         <elements xsi:type="eef-views:Container" xmi:id="_E7wkePJnEei6boXzpRIfnA" name="properties">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wkefJnEei6boXzpRIfnA" name="description">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
-          </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wkevJnEei6boXzpRIfnA" name="commentsList">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.3"/>
           </elements>
@@ -7441,6 +7450,9 @@
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wkfvJnEei6boXzpRIfnA" name="password">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wkh_JnEei6boXzpRIfnA" name="callbackHandler">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wkf_JnEei6boXzpRIfnA" name="callbackClassName">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
@@ -7457,17 +7469,21 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wkg_JnEei6boXzpRIfnA" name="onRejectSequenceType">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
           </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_NoGhEC4FEemnoZeu1qv1ww" name="onRejectSequenceKey"/>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wkhPJnEei6boXzpRIfnA" name="onAcceptSequenceType">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
           </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_t3gAwC4FEemnoZeu1qv1ww" name="onAcceptSequenceKey"/>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wkhfJnEei6boXzpRIfnA" name="adviceSequenceType">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
           </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_7miHIC4GEemnoZeu1qv1ww" name="adviceSequenceKey"/>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wkhvJnEei6boXzpRIfnA" name="obligationsSequenceType">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
           </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wkh_JnEei6boXzpRIfnA" name="callbackHandler">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_DqnSUC4HEemnoZeu1qv1ww" name="obligationsSequenceKey"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wkefJnEei6boXzpRIfnA" name="description">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
         </elements>
       </views>

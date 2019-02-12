@@ -29,7 +29,7 @@ public class EditPartConstants {
     public static final String CALLTEMPLATE_MEDIATOR_ICON_PATH = "icons/ico20/callTemplate-mediator.png";
     public static final String PAYLOADFACTORY_MEDIATOR_ICON_PATH = "icons/ico20/payloadFactory-mediator.png";
     public static final String SEND_MEDIATOR_ICON_PATH = "icons/ico20/send-mediator.png";
-    public static final String FOREACH_MEDIATOR_ICON_PATH = "icons/ico20/foreach-mediator.gif";
+    public static final String FOREACH_MEDIATOR_ICON_PATH = "icons/ico20/foreach-mediator.png";
     public static final String ITERATE_MEDIATOR_ICON_PATH = "icons/ico20/iterate-mediator.png";
     public static final String BEAN_MEDIATOR_ICON_PATH = "icons/ico20/bean-mediator.png";
     public static final String DROP_MEDIATOR_ICON_PATH = "icons/ico20/drop-mediator.png";

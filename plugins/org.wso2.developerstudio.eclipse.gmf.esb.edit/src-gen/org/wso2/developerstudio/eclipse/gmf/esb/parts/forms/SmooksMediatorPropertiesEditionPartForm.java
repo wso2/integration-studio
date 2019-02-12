@@ -49,6 +49,8 @@ import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.KeyListener;
+import org.eclipse.swt.events.MouseAdapter;
 import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -1173,33 +1175,43 @@ public class SmooksMediatorPropertiesEditionPartForm extends SectionPropertiesEd
         widgetFactory.paintBordersFor(parent);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
         inputExpressionText.setLayoutData(valueData);
-        inputExpressionText.addFocusListener(new FocusAdapter() {
-            /**
-             * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-             * 
-             */
-            @Override
-            @SuppressWarnings("synthetic-access")
-            public void focusLost(FocusEvent e) {
-            }
 
-            /**
-             * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
-             */
+        inputExpressionText.addMouseListener(new MouseAdapter() {
+            
             @Override
-            public void focusGained(FocusEvent e) {
-                EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL, inputExpression);
-                nspd.open();
-                inputExpressionText.setText(inputExpression.getPropertyValue());
-                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SmooksMediatorPropertiesEditionPartForm.this, 
-                        EsbViewsRepository.SmooksMediator.Input.inputExpresssion, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getInputExpression()));
+            public void mouseDown( MouseEvent event ) {
+                openNamespacedPropertyEditor(parent);
             }
+            
         });
+        
+        inputExpressionText.addKeyListener(new KeyListener() {
+                        
+            @Override
+            public void keyPressed(KeyEvent e) {
+                openNamespacedPropertyEditor(parent);
+            }
+            
+            @Override
+            public void keyReleased(KeyEvent e) {}
+            
+        });
+        
         EditingUtils.setID(inputExpressionText, EsbViewsRepository.SmooksMediator.Input.inputExpresssion);
         EditingUtils.setEEFtype(inputExpressionText, "eef::Text");
         Control inputExpressionHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.SmooksMediator.Input.inputExpresssion, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
         inputExpressionElements = new Control[] {inputExpressionLabel, inputExpressionText, inputExpressionHelp};
         return parent;
+    }
+	
+    private void openNamespacedPropertyEditor(final Composite parent) {
+        EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL,
+                inputExpression);
+        nspd.open();
+        inputExpressionText.setText(inputExpression.getPropertyValue());
+        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                SmooksMediatorPropertiesEditionPartForm.this, EsbViewsRepository.SmooksMediator.Input.inputExpresssion,
+                PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getInputExpression()));
     }
 	
 	protected Composite createOutputExpression(FormToolkit widgetFactory, final Composite parent) {
@@ -1215,28 +1227,28 @@ public class SmooksMediatorPropertiesEditionPartForm extends SectionPropertiesEd
         widgetFactory.paintBordersFor(parent);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
         outputExpressionText.setLayoutData(valueData);
-        outputExpressionText.addFocusListener(new FocusAdapter() {
-            /**
-             * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-             * 
-             */
-            @Override
-            @SuppressWarnings("synthetic-access")
-            public void focusLost(FocusEvent e) {
-            }
 
-            /**
-             * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
-             */
+        outputExpressionText.addMouseListener(new MouseAdapter() {
+            
             @Override
-            public void focusGained(FocusEvent e) {
-                EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL, outputExpression);
-                nspd.open();
-                outputExpressionText.setText(outputExpression.getPropertyValue());
-                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SmooksMediatorPropertiesEditionPartForm.this, 
-                        EsbViewsRepository.SmooksMediator.Output.outputExpression, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getOutputExpression()));
+            public void mouseDown( MouseEvent event ) {
+                openNamespacedPropertyEditor(parent);
             }
+            
         });
+        
+        outputExpressionText.addKeyListener(new KeyListener() {
+                        
+            @Override
+            public void keyPressed(KeyEvent e) {
+                openNamespacedPropertyEditor(parent);
+            }
+            
+            @Override
+            public void keyReleased(KeyEvent e) {}
+            
+        });
+
         EditingUtils.setID(outputExpressionText, EsbViewsRepository.SmooksMediator.Output.outputExpression);
         EditingUtils.setEEFtype(outputExpressionText, "eef::Text");
         Control outputExpressionHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.SmooksMediator.Output.outputExpression, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$

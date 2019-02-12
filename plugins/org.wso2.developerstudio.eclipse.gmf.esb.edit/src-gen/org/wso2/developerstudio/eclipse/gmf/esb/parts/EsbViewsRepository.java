@@ -168,8 +168,7 @@ public class EsbViewsRepository {
 			public static String valueType = "esb::EndPointProperty::properties::valueType";
 			
 			// Start of user code for valueExpression ElementEditor key
-			public static String valueExpression = "esb::PropertyMediator::properties::valueExpression";
-
+			public static String valueExpression = "esb::EndPointProperty::properties::valueExpression";
 			// End of user code
 			
 	
@@ -6328,9 +6327,6 @@ public class EsbViewsRepository {
 		public static class Properties {
 	
 			
-			public static String description = "esb::WSDLEndPoint::properties::description";
-			
-			
 			public static String commentsList = "esb::WSDLEndPoint::properties::commentsList";
 			
 			
@@ -6340,82 +6336,131 @@ public class EsbViewsRepository {
 			public static String anonymous = "esb::WSDLEndPoint::properties::anonymous";
 			
 			
-			public static String inLine = "esb::WSDLEndPoint::properties::InLine";
-			
-			
 			public static String duplicate = "esb::WSDLEndPoint::properties::duplicate";
-			
-			
-			public static String properties_ = "esb::WSDLEndPoint::properties::properties_";
 			
 			
 			public static String reversed = "esb::WSDLEndPoint::properties::reversed";
 			
 			
-			public static String reliableMessagingEnabled = "esb::WSDLEndPoint::properties::reliableMessagingEnabled";
-			
-			
-			public static String securityEnabled = "esb::WSDLEndPoint::properties::securityEnabled";
-			
-			
-			public static String addressingEnabled = "esb::WSDLEndPoint::properties::addressingEnabled";
-			
-			
-			public static String addressingVersion = "esb::WSDLEndPoint::properties::addressingVersion";
-			
-			
-			public static String addressingSeparateListener = "esb::WSDLEndPoint::properties::addressingSeparateListener";
-			
-			
-			public static String timeOutDuration = "esb::WSDLEndPoint::properties::timeOutDuration";
-			
-			
-			public static String timeOutAction = "esb::WSDLEndPoint::properties::timeOutAction";
-			
-			
-			public static String retryErrorCodes = "esb::WSDLEndPoint::properties::retryErrorCodes";
-			
-			
-			public static String retryCount = "esb::WSDLEndPoint::properties::retryCount";
-			
-			
-			public static String retryDelay = "esb::WSDLEndPoint::properties::retryDelay";
-			
-			
-			public static String suspendErrorCodes = "esb::WSDLEndPoint::properties::suspendErrorCodes";
-			
-			
-			public static String suspendInitialDuration = "esb::WSDLEndPoint::properties::suspendInitialDuration";
-			
-			
-			public static String suspendMaximumDuration = "esb::WSDLEndPoint::properties::suspendMaximumDuration";
-			
-			
-			public static String suspendProgressionFactor = "esb::WSDLEndPoint::properties::suspendProgressionFactor";
-			
-			
-			public static String format = "esb::WSDLEndPoint::properties::format";
-			
-			
-			public static String optimize = "esb::WSDLEndPoint::properties::optimize";
-			
-			
 			public static String templateParameters = "esb::WSDLEndPoint::properties::templateParameters";
 			
+	
+		}
+	
+		public static class Basic {
+	
 			
-			public static String statisticsEnabled = "esb::WSDLEndPoint::properties::statisticsEnabled";
-			
-			
-			public static String traceEnabled = "esb::WSDLEndPoint::properties::traceEnabled";
-			
-			
-			public static String wsdlUri = "esb::WSDLEndPoint::properties::wsdlUri";
-			
-			
-			public static String service = "esb::WSDLEndPoint::properties::service";
+			public static String inLine = "esb::WSDLEndPoint::basic::InLine";
 			
 			
-			public static String port = "esb::WSDLEndPoint::properties::port";
+			public static String format = "esb::WSDLEndPoint::basic::format";
+			
+			
+			public static String traceEnabled = "esb::WSDLEndPoint::basic::traceEnabled";
+			
+			
+			public static String statisticsEnabled = "esb::WSDLEndPoint::basic::statisticsEnabled";
+			
+	
+		}
+	
+		public static class EndpointSuspendState {
+	
+			
+			public static String suspendErrorCodes = "esb::WSDLEndPoint::endpointSuspendState::suspendErrorCodes";
+			
+			
+			public static String suspendInitialDuration = "esb::WSDLEndPoint::endpointSuspendState::suspendInitialDuration";
+			
+			
+			public static String suspendMaximumDuration = "esb::WSDLEndPoint::endpointSuspendState::suspendMaximumDuration";
+			
+			
+			public static String suspendProgressionFactor = "esb::WSDLEndPoint::endpointSuspendState::suspendProgressionFactor";
+			
+	
+		}
+	
+		public static class EndpointTimeoutState {
+	
+			
+			public static String retryErrorCodes = "esb::WSDLEndPoint::endpointTimeoutState::retryErrorCodes";
+			
+			
+			public static String retryCount = "esb::WSDLEndPoint::endpointTimeoutState::retryCount";
+			
+			
+			public static String retryDelay = "esb::WSDLEndPoint::endpointTimeoutState::retryDelay";
+			
+	
+		}
+	
+		public static class Misc {
+	
+			
+			public static String properties = "esb::WSDLEndPoint::misc::properties";
+			
+			
+			public static String optimize = "esb::WSDLEndPoint::misc::optimize";
+			
+			
+			public static String description = "esb::WSDLEndPoint::misc::description";
+			
+			
+			public static String wsdlUri = "esb::WSDLEndPoint::misc::wsdlUri";
+			
+			
+			public static String service = "esb::WSDLEndPoint::misc::service";
+			
+			
+			public static String port = "esb::WSDLEndPoint::misc::port";
+			
+	
+		}
+	
+		public static class Qos {
+	
+			
+			public static String reliableMessagingEnabled = "esb::WSDLEndPoint::qos::reliableMessagingEnabled";
+			
+			
+			public static String securityEnabled = "esb::WSDLEndPoint::qos::securityEnabled";
+			
+			
+			public static String addressingEnabled = "esb::WSDLEndPoint::qos::addressingEnabled";
+			
+			// Start of user code for reliableMessagingPolicy ElementEditor key
+			public static String reliableMessagingPolicy = "esb::WSDLEndPoint::qos::reliableMessagingPolicy";
+			// End of user code
+			
+			// Start of user code for securityPolicy ElementEditor key
+			public static String securityPolicy = "esb::WSDLEndPoint::qos::securityPolicy";
+			// End of user code
+			
+			// Start of user code for inboundPolicy ElementEditor key
+			public static String inboundPolicy = "esb::WSDLEndPoint::qos::inboundPolicy";
+			// End of user code
+			
+			// Start of user code for outboundPolicy ElementEditor key
+			public static String outboundPolicy = "esb::WSDLEndPoint::qos::outboundPolicy";
+			// End of user code
+			
+			
+			public static String addressingVersion = "esb::WSDLEndPoint::qos::addressingVersion";
+			
+			
+			public static String addressingSeparateListener = "esb::WSDLEndPoint::qos::addressingSeparateListener";
+			
+	
+		}
+	
+		public static class Timeout {
+	
+			
+			public static String timeOutDuration = "esb::WSDLEndPoint::timeout::timeOutDuration";
+			
+			
+			public static String timeOutAction = "esb::WSDLEndPoint::timeout::timeOutAction";
 			
 	
 		}

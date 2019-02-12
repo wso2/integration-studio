@@ -959,6 +959,24 @@ public class EsbMessages extends NLS {
 	public static String WSDLEndPointPropertiesEditionPart_PropertiesGroupLabel;
 
 	
+	public static String WSDLEndPointPropertiesEditionPart_BasicGroupLabel;
+
+	
+	public static String WSDLEndPointPropertiesEditionPart_EndpointSuspendStateGroupLabel;
+
+	
+	public static String WSDLEndPointPropertiesEditionPart_EndpointTimeoutStateGroupLabel;
+
+	
+	public static String WSDLEndPointPropertiesEditionPart_MiscGroupLabel;
+
+	
+	public static String WSDLEndPointPropertiesEditionPart_QosGroupLabel;
+
+	
+	public static String WSDLEndPointPropertiesEditionPart_TimeoutGroupLabel;
+
+	
 	public static String WSDLEndPointInputConnectorPropertiesEditionPart_PropertiesGroupLabel;
 
 	
@@ -6097,9 +6115,6 @@ public class EsbMessages extends NLS {
 	public static String ParentEndPointPropertiesEditionPart_NameLabel;
 
 	
-	public static String WSDLEndPointPropertiesEditionPart_DescriptionLabel;
-
-	
 	public static String WSDLEndPointPropertiesEditionPart_CommentsListLabel;
 
 	
@@ -6109,46 +6124,25 @@ public class EsbMessages extends NLS {
 	public static String WSDLEndPointPropertiesEditionPart_AnonymousLabel;
 
 	
-	public static String WSDLEndPointPropertiesEditionPart_InLineLabel;
-
-	
 	public static String WSDLEndPointPropertiesEditionPart_DuplicateLabel;
-
-	
-	public static String WSDLEndPointPropertiesEditionPart_PropertiesLabel;
 
 	
 	public static String WSDLEndPointPropertiesEditionPart_ReversedLabel;
 
 	
-	public static String WSDLEndPointPropertiesEditionPart_ReliableMessagingEnabledLabel;
+	public static String WSDLEndPointPropertiesEditionPart_TemplateParametersLabel;
 
 	
-	public static String WSDLEndPointPropertiesEditionPart_SecurityEnabledLabel;
+	public static String WSDLEndPointPropertiesEditionPart_InLineLabel;
 
 	
-	public static String WSDLEndPointPropertiesEditionPart_AddressingEnabledLabel;
+	public static String WSDLEndPointPropertiesEditionPart_FormatLabel;
 
 	
-	public static String WSDLEndPointPropertiesEditionPart_AddressingVersionLabel;
+	public static String WSDLEndPointPropertiesEditionPart_TraceEnabledLabel;
 
 	
-	public static String WSDLEndPointPropertiesEditionPart_AddressingSeparateListenerLabel;
-
-	
-	public static String WSDLEndPointPropertiesEditionPart_TimeOutDurationLabel;
-
-	
-	public static String WSDLEndPointPropertiesEditionPart_TimeOutActionLabel;
-
-	
-	public static String WSDLEndPointPropertiesEditionPart_RetryErrorCodesLabel;
-
-	
-	public static String WSDLEndPointPropertiesEditionPart_RetryCountLabel;
-
-	
-	public static String WSDLEndPointPropertiesEditionPart_RetryDelayLabel;
+	public static String WSDLEndPointPropertiesEditionPart_StatisticsEnabledLabel;
 
 	
 	public static String WSDLEndPointPropertiesEditionPart_SuspendErrorCodesLabel;
@@ -6163,19 +6157,22 @@ public class EsbMessages extends NLS {
 	public static String WSDLEndPointPropertiesEditionPart_SuspendProgressionFactorLabel;
 
 	
-	public static String WSDLEndPointPropertiesEditionPart_FormatLabel;
+	public static String WSDLEndPointPropertiesEditionPart_RetryErrorCodesLabel;
+
+	
+	public static String WSDLEndPointPropertiesEditionPart_RetryCountLabel;
+
+	
+	public static String WSDLEndPointPropertiesEditionPart_RetryDelayLabel;
+
+	
+	public static String WSDLEndPointPropertiesEditionPart_PropertiesLabel;
 
 	
 	public static String WSDLEndPointPropertiesEditionPart_OptimizeLabel;
 
 	
-	public static String WSDLEndPointPropertiesEditionPart_TemplateParametersLabel;
-
-	
-	public static String WSDLEndPointPropertiesEditionPart_StatisticsEnabledLabel;
-
-	
-	public static String WSDLEndPointPropertiesEditionPart_TraceEnabledLabel;
+	public static String WSDLEndPointPropertiesEditionPart_DescriptionLabel;
 
 	
 	public static String WSDLEndPointPropertiesEditionPart_WsdlUriLabel;
@@ -6185,6 +6182,39 @@ public class EsbMessages extends NLS {
 
 	
 	public static String WSDLEndPointPropertiesEditionPart_PortLabel;
+
+	
+	public static String WSDLEndPointPropertiesEditionPart_ReliableMessagingEnabledLabel;
+
+	
+	public static String WSDLEndPointPropertiesEditionPart_SecurityEnabledLabel;
+
+	
+	public static String WSDLEndPointPropertiesEditionPart_AddressingEnabledLabel;
+
+	
+	public static String WSDLEndPointPropertiesEditionPart_ReliableMessagingPolicyLabel;
+
+	
+	public static String WSDLEndPointPropertiesEditionPart_SecurityPolicyLabel;
+
+	
+	public static String WSDLEndPointPropertiesEditionPart_InboundPolicyLabel;
+
+	
+	public static String WSDLEndPointPropertiesEditionPart_OutboundPolicyLabel;
+
+	
+	public static String WSDLEndPointPropertiesEditionPart_AddressingVersionLabel;
+
+	
+	public static String WSDLEndPointPropertiesEditionPart_AddressingSeparateListenerLabel;
+
+	
+	public static String WSDLEndPointPropertiesEditionPart_TimeOutDurationLabel;
+
+	
+	public static String WSDLEndPointPropertiesEditionPart_TimeOutActionLabel;
 
 	
 	public static String WSDLEndPointInputConnectorPropertiesEditionPart_IncomingLinksLabel;

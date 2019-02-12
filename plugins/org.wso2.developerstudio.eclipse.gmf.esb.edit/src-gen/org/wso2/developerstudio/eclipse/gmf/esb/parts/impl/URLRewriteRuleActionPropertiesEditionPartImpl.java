@@ -635,7 +635,7 @@ public class URLRewriteRuleActionPropertiesEditionPartImpl extends CompositeProp
 
 	// Start of user code additional methods
 
-    protected Composite createActionExpressionText(Composite parent) {
+    protected Composite createActionExpressionText(final Composite parent) {
         Control actionExpressionLabel = createDescription(parent,
                 EsbViewsRepository.URLRewriteRuleAction.Properties.actionExpression,
                 EsbMessages.URLRewriteRuleActionPropertiesEditionPart_ActionExpressionLabel);

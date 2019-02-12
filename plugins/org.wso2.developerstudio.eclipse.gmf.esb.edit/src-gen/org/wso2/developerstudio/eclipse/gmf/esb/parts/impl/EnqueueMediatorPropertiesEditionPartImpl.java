@@ -50,7 +50,7 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EnqueueMediatorPropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 
@@ -71,6 +71,10 @@ public class EnqueueMediatorPropertiesEditionPartImpl extends CompositePropertie
 	protected Button reverse;
 	protected Text executor;
 	protected Text priority;
+	// Start of user code  for sequenceKey widgets declarations
+	
+	// End of user code
+
 
 
 
@@ -114,6 +118,7 @@ public class EnqueueMediatorPropertiesEditionPartImpl extends CompositePropertie
 		propertiesStep.addStep(EsbViewsRepository.EnqueueMediator.Properties.reverse);
 		propertiesStep.addStep(EsbViewsRepository.EnqueueMediator.Properties.executor);
 		propertiesStep.addStep(EsbViewsRepository.EnqueueMediator.Properties.priority);
+		propertiesStep.addStep(EsbViewsRepository.EnqueueMediator.Properties.sequenceKey);
 		
 		
 		composer = new PartComposer(enqueueMediatorStep) {
@@ -138,6 +143,9 @@ public class EnqueueMediatorPropertiesEditionPartImpl extends CompositePropertie
 				if (key == EsbViewsRepository.EnqueueMediator.Properties.priority) {
 					return createPriorityText(parent);
 				}
+				// Start of user code for sequenceKey addToPart creation
+				
+				// End of user code
 				return parent;
 			}
 		};
@@ -575,6 +583,21 @@ public class EnqueueMediatorPropertiesEditionPartImpl extends CompositePropertie
 
 
 
+
+	// Start of user code for sequenceKey specific getters and setters implementation
+    @Override
+    public void setSequenceKey(RegistryKeyProperty registryKeyProperty) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public RegistryKeyProperty getSequenceKey() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+	
+	// End of user code
 
 	/**
 	 * {@inheritDoc}

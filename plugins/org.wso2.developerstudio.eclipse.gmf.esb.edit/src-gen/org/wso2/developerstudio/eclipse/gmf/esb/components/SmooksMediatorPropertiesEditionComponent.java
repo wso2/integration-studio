@@ -39,11 +39,13 @@ import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.ExpressionAction;
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.OutputMethod;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.SmooksIODataType;
 import org.wso2.developerstudio.eclipse.gmf.esb.SmooksMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.SmooksOutputDataType;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.SmooksMediatorPropertiesEditionPart;
 
@@ -87,7 +89,7 @@ public class SmooksMediatorPropertiesEditionComponent extends SinglePartProperti
 			final SmooksMediator smooksMediator = (SmooksMediator)elt;
 			final SmooksMediatorPropertiesEditionPart basePart = (SmooksMediatorPropertiesEditionPart)editingPart;
 			// init values
-			if (isAccessible(EsbViewsRepository.SmooksMediator.Properties.description))
+			if (isAccessible(EsbViewsRepository.SmooksMediator.Misc.description))
 				basePart.setDescription(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, smooksMediator.getDescription()));
 			
 			if (isAccessible(EsbViewsRepository.SmooksMediator.Properties.commentsList))
@@ -96,21 +98,39 @@ public class SmooksMediatorPropertiesEditionComponent extends SinglePartProperti
 			if (isAccessible(EsbViewsRepository.SmooksMediator.Properties.reverse)) {
 				basePart.setReverse(smooksMediator.isReverse());
 			}
-			if (isAccessible(EsbViewsRepository.SmooksMediator.Properties.inputType)) {
+			if (isAccessible(EsbViewsRepository.SmooksMediator.Input.inputType)) {
 				basePart.initInputType(EEFUtils.choiceOfValues(smooksMediator, EsbPackage.eINSTANCE.getSmooksMediator_InputType()), smooksMediator.getInputType());
 			}
-			if (isAccessible(EsbViewsRepository.SmooksMediator.Properties.outputType)) {
+			if (isAccessible(EsbViewsRepository.SmooksMediator.Output.outputType)) {
 				basePart.initOutputType(EEFUtils.choiceOfValues(smooksMediator, EsbPackage.eINSTANCE.getSmooksMediator_OutputType()), smooksMediator.getOutputType());
 			}
-			if (isAccessible(EsbViewsRepository.SmooksMediator.Properties.outputProperty))
+			if (isAccessible(EsbViewsRepository.SmooksMediator.Output.outputProperty))
 				basePart.setOutputProperty(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, smooksMediator.getOutputProperty()));
 			
-			if (isAccessible(EsbViewsRepository.SmooksMediator.Properties.outputAction)) {
+			if (isAccessible(EsbViewsRepository.SmooksMediator.Output.outputAction)) {
 				basePart.initOutputAction(EEFUtils.choiceOfValues(smooksMediator, EsbPackage.eINSTANCE.getSmooksMediator_OutputAction()), smooksMediator.getOutputAction());
 			}
-			if (isAccessible(EsbViewsRepository.SmooksMediator.Properties.outputMethod)) {
+			if (isAccessible(EsbViewsRepository.SmooksMediator.Output.outputMethod)) {
 				basePart.initOutputMethod(EEFUtils.choiceOfValues(smooksMediator, EsbPackage.eINSTANCE.getSmooksMediator_OutputMethod()), smooksMediator.getOutputMethod());
 			}
+			// Start of user code  for inputExpression command update
+			if (isAccessible(EsbViewsRepository.SmooksMediator.Input.inputExpresssion)) {
+                basePart.setInputExpression(smooksMediator.getInputExpression());
+            }
+			// End of user code
+			
+			// Start of user code  for configurationKey command update
+			if (isAccessible(EsbViewsRepository.SmooksMediator.Key.configurationKey)) {
+                basePart.setConfigurationKey(smooksMediator.getConfigurationKey());
+            }
+			// End of user code
+			
+			// Start of user code  for outputExpression command update
+			if (isAccessible(EsbViewsRepository.SmooksMediator.Output.outputExpression)) {
+                basePart.setOutputExpression(smooksMediator.getOutputExpression());
+            }
+			// End of user code
+			
 			// init filters
 			
 			
@@ -119,6 +139,15 @@ public class SmooksMediatorPropertiesEditionComponent extends SinglePartProperti
 			
 			
 			
+			
+			// Start of user code  for inputExpression filter update
+			// End of user code
+			
+			// Start of user code  for configurationKey filter update
+			// End of user code
+			
+			// Start of user code  for outputExpression filter update
+			// End of user code
 			
 			// init values for referenced views
 			
@@ -138,12 +167,15 @@ public class SmooksMediatorPropertiesEditionComponent extends SinglePartProperti
 
 
 
+
+
+
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
 	 */
 	public EStructuralFeature associatedFeature(Object editorKey) {
-		if (editorKey == EsbViewsRepository.SmooksMediator.Properties.description) {
+		if (editorKey == EsbViewsRepository.SmooksMediator.Misc.description) {
 			return EsbPackage.eINSTANCE.getEsbElement_Description();
 		}
 		if (editorKey == EsbViewsRepository.SmooksMediator.Properties.commentsList) {
@@ -152,20 +184,29 @@ public class SmooksMediatorPropertiesEditionComponent extends SinglePartProperti
 		if (editorKey == EsbViewsRepository.SmooksMediator.Properties.reverse) {
 			return EsbPackage.eINSTANCE.getMediator_Reverse();
 		}
-		if (editorKey == EsbViewsRepository.SmooksMediator.Properties.inputType) {
+		if (editorKey == EsbViewsRepository.SmooksMediator.Input.inputType) {
 			return EsbPackage.eINSTANCE.getSmooksMediator_InputType();
 		}
-		if (editorKey == EsbViewsRepository.SmooksMediator.Properties.outputType) {
+		if (editorKey == EsbViewsRepository.SmooksMediator.Output.outputType) {
 			return EsbPackage.eINSTANCE.getSmooksMediator_OutputType();
 		}
-		if (editorKey == EsbViewsRepository.SmooksMediator.Properties.outputProperty) {
+		if (editorKey == EsbViewsRepository.SmooksMediator.Output.outputProperty) {
 			return EsbPackage.eINSTANCE.getSmooksMediator_OutputProperty();
 		}
-		if (editorKey == EsbViewsRepository.SmooksMediator.Properties.outputAction) {
+		if (editorKey == EsbViewsRepository.SmooksMediator.Output.outputAction) {
 			return EsbPackage.eINSTANCE.getSmooksMediator_OutputAction();
 		}
-		if (editorKey == EsbViewsRepository.SmooksMediator.Properties.outputMethod) {
+		if (editorKey == EsbViewsRepository.SmooksMediator.Output.outputMethod) {
 			return EsbPackage.eINSTANCE.getSmooksMediator_OutputMethod();
+		}
+		if (editorKey == EsbViewsRepository.SmooksMediator.Input.inputExpresssion) {
+			return EsbPackage.eINSTANCE.getSmooksMediator_InputExpression();
+		}
+		if (editorKey == EsbViewsRepository.SmooksMediator.Key.configurationKey) {
+			return EsbPackage.eINSTANCE.getSmooksMediator_ConfigurationKey();
+		}
+		if (editorKey == EsbViewsRepository.SmooksMediator.Output.outputExpression) {
+			return EsbPackage.eINSTANCE.getSmooksMediator_OutputExpression();
 		}
 		return super.associatedFeature(editorKey);
 	}
@@ -177,7 +218,7 @@ public class SmooksMediatorPropertiesEditionComponent extends SinglePartProperti
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		SmooksMediator smooksMediator = (SmooksMediator)semanticObject;
-		if (EsbViewsRepository.SmooksMediator.Properties.description == event.getAffectedEditor()) {
+		if (EsbViewsRepository.SmooksMediator.Misc.description == event.getAffectedEditor()) {
 			smooksMediator.setDescription((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (EsbViewsRepository.SmooksMediator.Properties.commentsList == event.getAffectedEditor()) {
@@ -189,20 +230,53 @@ public class SmooksMediatorPropertiesEditionComponent extends SinglePartProperti
 		if (EsbViewsRepository.SmooksMediator.Properties.reverse == event.getAffectedEditor()) {
 			smooksMediator.setReverse((Boolean)event.getNewValue());
 		}
-		if (EsbViewsRepository.SmooksMediator.Properties.inputType == event.getAffectedEditor()) {
+		if (EsbViewsRepository.SmooksMediator.Input.inputType == event.getAffectedEditor()) {
 			smooksMediator.setInputType((SmooksIODataType)event.getNewValue());
 		}
-		if (EsbViewsRepository.SmooksMediator.Properties.outputType == event.getAffectedEditor()) {
+		if (EsbViewsRepository.SmooksMediator.Output.outputType == event.getAffectedEditor()) {
 			smooksMediator.setOutputType((SmooksOutputDataType)event.getNewValue());
 		}
-		if (EsbViewsRepository.SmooksMediator.Properties.outputProperty == event.getAffectedEditor()) {
+		if (EsbViewsRepository.SmooksMediator.Output.outputProperty == event.getAffectedEditor()) {
 			smooksMediator.setOutputProperty((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
-		if (EsbViewsRepository.SmooksMediator.Properties.outputAction == event.getAffectedEditor()) {
+		if (EsbViewsRepository.SmooksMediator.Output.outputAction == event.getAffectedEditor()) {
 			smooksMediator.setOutputAction((ExpressionAction)event.getNewValue());
 		}
-		if (EsbViewsRepository.SmooksMediator.Properties.outputMethod == event.getAffectedEditor()) {
+		if (EsbViewsRepository.SmooksMediator.Output.outputMethod == event.getAffectedEditor()) {
 			smooksMediator.setOutputMethod((OutputMethod)event.getNewValue());
+		}
+		if (EsbViewsRepository.SmooksMediator.Input.inputExpresssion == event.getAffectedEditor()) {
+			// Start of user code for updateInputExpression method body
+		    if (event.getNewValue() != null) {
+                NamespacedProperty nspHeaderName = (NamespacedProperty)event.getNewValue();
+                smooksMediator.setInputExpression(nspHeaderName);
+            } else {
+                smooksMediator.setInputExpression(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+            }
+			// End of user code
+			
+		}
+		if (EsbViewsRepository.SmooksMediator.Key.configurationKey == event.getAffectedEditor()) {
+			// Start of user code for updateConfigurationKey method body
+		    if (event.getNewValue() != null) {
+                RegistryKeyProperty rkp = (RegistryKeyProperty) event.getNewValue();
+                smooksMediator.setConfigurationKey(rkp);
+            } else {
+                smooksMediator.setConfigurationKey(EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty());
+            }
+			// End of user code
+			
+		}
+		if (EsbViewsRepository.SmooksMediator.Output.outputExpression == event.getAffectedEditor()) {
+			// Start of user code for updateOutputExpression method body
+		    if (event.getNewValue() != null) {
+                NamespacedProperty nspHeaderName = (NamespacedProperty)event.getNewValue();
+                smooksMediator.setOutputExpression(nspHeaderName);
+            } else {
+                smooksMediator.setOutputExpression(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+            }
+			// End of user code
+			
 		}
 	}
 
@@ -214,7 +288,7 @@ public class SmooksMediatorPropertiesEditionComponent extends SinglePartProperti
 		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			SmooksMediatorPropertiesEditionPart basePart = (SmooksMediatorPropertiesEditionPart)editingPart;
-			if (EsbPackage.eINSTANCE.getEsbElement_Description().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.SmooksMediator.Properties.description)) {
+			if (EsbPackage.eINSTANCE.getEsbElement_Description().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.SmooksMediator.Misc.description)) {
 				if (msg.getNewValue() != null) {
 					basePart.setDescription(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
@@ -236,24 +310,56 @@ public class SmooksMediatorPropertiesEditionComponent extends SinglePartProperti
 			if (EsbPackage.eINSTANCE.getMediator_Reverse().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.SmooksMediator.Properties.reverse))
 				basePart.setReverse((Boolean)msg.getNewValue());
 			
-			if (EsbPackage.eINSTANCE.getSmooksMediator_InputType().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EsbViewsRepository.SmooksMediator.Properties.inputType))
+			if (EsbPackage.eINSTANCE.getSmooksMediator_InputType().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EsbViewsRepository.SmooksMediator.Input.inputType))
 				basePart.setInputType((SmooksIODataType)msg.getNewValue());
 			
-			if (EsbPackage.eINSTANCE.getSmooksMediator_OutputType().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EsbViewsRepository.SmooksMediator.Properties.outputType))
+			if (EsbPackage.eINSTANCE.getSmooksMediator_OutputType().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EsbViewsRepository.SmooksMediator.Output.outputType))
 				basePart.setOutputType((SmooksOutputDataType)msg.getNewValue());
 			
-			if (EsbPackage.eINSTANCE.getSmooksMediator_OutputProperty().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.SmooksMediator.Properties.outputProperty)) {
+			if (EsbPackage.eINSTANCE.getSmooksMediator_OutputProperty().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.SmooksMediator.Output.outputProperty)) {
 				if (msg.getNewValue() != null) {
 					basePart.setOutputProperty(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setOutputProperty("");
 				}
 			}
-			if (EsbPackage.eINSTANCE.getSmooksMediator_OutputAction().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EsbViewsRepository.SmooksMediator.Properties.outputAction))
+			if (EsbPackage.eINSTANCE.getSmooksMediator_OutputAction().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EsbViewsRepository.SmooksMediator.Output.outputAction))
 				basePart.setOutputAction((ExpressionAction)msg.getNewValue());
 			
-			if (EsbPackage.eINSTANCE.getSmooksMediator_OutputMethod().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EsbViewsRepository.SmooksMediator.Properties.outputMethod))
+			if (EsbPackage.eINSTANCE.getSmooksMediator_OutputMethod().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EsbViewsRepository.SmooksMediator.Output.outputMethod))
 				basePart.setOutputMethod((OutputMethod)msg.getNewValue());
+			
+					// Start of user code for inputExpression live update
+			if (EsbPackage.eINSTANCE.getSmooksMediator_InputExpression().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.SmooksMediator.Input.inputExpresssion)) {
+                if (msg.getNewValue() != null) {
+                    basePart.setInputExpression((NamespacedProperty)msg.getNewValue());
+                } else {
+                    basePart.setInputExpression(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+                }
+            }
+					// End of user code
+			
+					// Start of user code for configurationKey live update
+			if (EsbPackage.eINSTANCE.getSmooksMediator_ConfigurationKey().equals(msg.getFeature())
+                    && msg.getNotifier().equals(semanticObject)
+                    && isAccessible(EsbViewsRepository.SmooksMediator.Key.configurationKey)) {
+                if (msg.getNewValue() != null) {
+                    basePart.setConfigurationKey((RegistryKeyProperty) msg.getNewValue());
+                } else {
+                    basePart.setConfigurationKey(EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty());
+                }
+            }
+					// End of user code
+			
+					// Start of user code for outputExpression live update
+			if (EsbPackage.eINSTANCE.getSmooksMediator_OutputExpression().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.SmooksMediator.Output.outputExpression)) {
+                if (msg.getNewValue() != null) {
+                    basePart.setOutputExpression((NamespacedProperty)msg.getNewValue());
+                } else {
+                    basePart.setOutputExpression(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+                }
+            }
+					// End of user code
 			
 			
 		}
@@ -274,7 +380,10 @@ public class SmooksMediatorPropertiesEditionComponent extends SinglePartProperti
 			EsbPackage.eINSTANCE.getSmooksMediator_OutputType(),
 			EsbPackage.eINSTANCE.getSmooksMediator_OutputProperty(),
 			EsbPackage.eINSTANCE.getSmooksMediator_OutputAction(),
-			EsbPackage.eINSTANCE.getSmooksMediator_OutputMethod()		);
+			EsbPackage.eINSTANCE.getSmooksMediator_OutputMethod(),
+			EsbPackage.eINSTANCE.getSmooksMediator_InputExpression(),
+			EsbPackage.eINSTANCE.getSmooksMediator_ConfigurationKey(),
+			EsbPackage.eINSTANCE.getSmooksMediator_OutputExpression()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -286,16 +395,22 @@ public class SmooksMediatorPropertiesEditionComponent extends SinglePartProperti
 	 * 
 	 */
 	public String getHelpContent(Object key, int kind) {
-		if (key == EsbViewsRepository.SmooksMediator.Properties.inputType)
+		if (key == EsbViewsRepository.SmooksMediator.Input.inputType)
 			return "Type"; //$NON-NLS-1$
-		if (key == EsbViewsRepository.SmooksMediator.Properties.outputType)
+		if (key == EsbViewsRepository.SmooksMediator.Output.outputType)
 			return "Type"; //$NON-NLS-1$
-		if (key == EsbViewsRepository.SmooksMediator.Properties.outputProperty)
+		if (key == EsbViewsRepository.SmooksMediator.Output.outputProperty)
 			return "Property"; //$NON-NLS-1$
-		if (key == EsbViewsRepository.SmooksMediator.Properties.outputAction)
+		if (key == EsbViewsRepository.SmooksMediator.Output.outputAction)
 			return "Action"; //$NON-NLS-1$
-		if (key == EsbViewsRepository.SmooksMediator.Properties.outputMethod)
+		if (key == EsbViewsRepository.SmooksMediator.Output.outputMethod)
 			return "Method"; //$NON-NLS-1$
+		if (key == EsbViewsRepository.SmooksMediator.Input.inputExpresssion)
+			return "Expression"; //$NON-NLS-1$
+		if (key == EsbViewsRepository.SmooksMediator.Key.configurationKey)
+			return "Key"; //$NON-NLS-1$
+		if (key == EsbViewsRepository.SmooksMediator.Output.outputExpression)
+			return "Expression"; //$NON-NLS-1$
 		return super.getHelpContent(key, kind);
 	}
 
@@ -309,7 +424,7 @@ public class SmooksMediatorPropertiesEditionComponent extends SinglePartProperti
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
 			try {
-				if (EsbViewsRepository.SmooksMediator.Properties.description == event.getAffectedEditor()) {
+				if (EsbViewsRepository.SmooksMediator.Misc.description == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getEsbElement_Description().getEAttributeType(), (String)newValue);
@@ -330,35 +445,35 @@ public class SmooksMediatorPropertiesEditionComponent extends SinglePartProperti
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getMediator_Reverse().getEAttributeType(), newValue);
 				}
-				if (EsbViewsRepository.SmooksMediator.Properties.inputType == event.getAffectedEditor()) {
+				if (EsbViewsRepository.SmooksMediator.Input.inputType == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getSmooksMediator_InputType().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getSmooksMediator_InputType().getEAttributeType(), newValue);
 				}
-				if (EsbViewsRepository.SmooksMediator.Properties.outputType == event.getAffectedEditor()) {
+				if (EsbViewsRepository.SmooksMediator.Output.outputType == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getSmooksMediator_OutputType().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getSmooksMediator_OutputType().getEAttributeType(), newValue);
 				}
-				if (EsbViewsRepository.SmooksMediator.Properties.outputProperty == event.getAffectedEditor()) {
+				if (EsbViewsRepository.SmooksMediator.Output.outputProperty == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getSmooksMediator_OutputProperty().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getSmooksMediator_OutputProperty().getEAttributeType(), newValue);
 				}
-				if (EsbViewsRepository.SmooksMediator.Properties.outputAction == event.getAffectedEditor()) {
+				if (EsbViewsRepository.SmooksMediator.Output.outputAction == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getSmooksMediator_OutputAction().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getSmooksMediator_OutputAction().getEAttributeType(), newValue);
 				}
-				if (EsbViewsRepository.SmooksMediator.Properties.outputMethod == event.getAffectedEditor()) {
+				if (EsbViewsRepository.SmooksMediator.Output.outputMethod == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getSmooksMediator_OutputMethod().getEAttributeType(), (String)newValue);

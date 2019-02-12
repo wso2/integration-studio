@@ -2883,6 +2883,10 @@ public class EsbViewsRepository {
 			
 			public static String priority = "esb::EnqueueMediator::properties::priority";
 			
+			// Start of user code for sequenceKey ElementEditor key
+			public static String sequenceKey = "esb::EnqueueMediator::properties::sequenceKey";
+			// End of user code
+			
 	
 		}
 	
@@ -3301,7 +3305,7 @@ public class EsbViewsRepository {
 			public static String sequenceType = "esb::AggregateMediator::onComplete::sequenceType";
 			
 			// Start of user code for sequenceKey ElementEditor key
-			public static String sequenceKey = "esb::CacheMediator::OnCacheHit::sequenceKey";
+			public static String sequenceKey = "esb::AggregateMediator::onComplete::sequenceKey";
 			// End of user code
 			
 	
@@ -5104,43 +5108,56 @@ public class EsbViewsRepository {
 	 * 
 	 */
 	public static class DBReportMediator {
-		public static class Properties {
+		public static class Connection {
 	
 			
-			public static String description = "esb::DBReportMediator::properties::description";
+			public static String connectionType = "esb::DBReportMediator::connection::connectionType";
 			
+			
+			public static String connectionDsType = "esb::DBReportMediator::connection::connectionDsType";
+			
+			
+			public static String connectionDbType = "esb::DBReportMediator::connection::connectionDbType";
+			
+			
+			public static String connectionDbDriver = "esb::DBReportMediator::connection::connectionDbDriver";
+			
+			
+			public static String connectionDsInitialContext = "esb::DBReportMediator::connection::connectionDsInitialContext";
+			
+			
+			public static String connectionDsName = "esb::DBReportMediator::connection::connectionDsName";
+			
+			
+			public static String connectionURL = "esb::DBReportMediator::connection::connectionURL";
+			
+			
+			public static String connectionUsername = "esb::DBReportMediator::connection::connectionUsername";
+			
+			
+			public static String connectionPassword = "esb::DBReportMediator::connection::connectionPassword";
+			
+			
+			public static String connectionUseTransaction = "esb::DBReportMediator::connection::connectionUseTransaction";
+			
+	
+		}
+	
+		public static class Statements {
+	
+			
+			public static String sqlStatements = "esb::DBReportMediator::statements::sqlStatements";
+			
+	
+		}
+	
+		public static class Properties {
+	
 			
 			public static String commentsList = "esb::DBReportMediator::properties::commentsList";
 			
 			
 			public static String reverse = "esb::DBReportMediator::properties::Reverse";
-			
-			
-			public static String connectionType = "esb::DBReportMediator::properties::connectionType";
-			
-			
-			public static String connectionDsType = "esb::DBReportMediator::properties::connectionDsType";
-			
-			
-			public static String connectionDbType = "esb::DBReportMediator::properties::connectionDbType";
-			
-			
-			public static String connectionDbDriver = "esb::DBReportMediator::properties::connectionDbDriver";
-			
-			
-			public static String connectionDsInitialContext = "esb::DBReportMediator::properties::connectionDsInitialContext";
-			
-			
-			public static String connectionDsName = "esb::DBReportMediator::properties::connectionDsName";
-			
-			
-			public static String connectionURL = "esb::DBReportMediator::properties::connectionURL";
-			
-			
-			public static String connectionUsername = "esb::DBReportMediator::properties::connectionUsername";
-			
-			
-			public static String connectionPassword = "esb::DBReportMediator::properties::connectionPassword";
 			
 			
 			public static String propertyAutocommit = "esb::DBReportMediator::properties::propertyAutocommit";
@@ -5178,11 +5195,13 @@ public class EsbViewsRepository {
 			
 			public static String propertyInitialsize = "esb::DBReportMediator::properties::propertyInitialsize";
 			
+	
+		}
+	
+		public static class Misc {
+	
 			
-			public static String sqlStatements = "esb::DBReportMediator::properties::sqlStatements";
-			
-			
-			public static String connectionUseTransaction = "esb::DBReportMediator::properties::connectionUseTransaction";
+			public static String description = "esb::DBReportMediator::misc::description";
 			
 	
 		}
@@ -5637,31 +5656,63 @@ public class EsbViewsRepository {
 	 * 
 	 */
 	public static class SmooksMediator {
-		public static class Properties {
+		public static class Input {
 	
 			
-			public static String description = "esb::SmooksMediator::properties::description";
+			public static String inputType = "esb::SmooksMediator::input::inputType";
 			
+			// Start of user code for inputExpresssion ElementEditor key
+			public static String inputExpresssion = "esb::SmooksMediator::input::inputExpresssion";
+			// End of user code
+			
+	
+		}
+	
+		public static class Output {
+	
+			
+			public static String outputType = "esb::SmooksMediator::output::outputType";
+			
+			
+			public static String outputProperty = "esb::SmooksMediator::output::outputProperty";
+			
+			
+			public static String outputAction = "esb::SmooksMediator::output::outputAction";
+			
+			
+			public static String outputMethod = "esb::SmooksMediator::output::outputMethod";
+			
+			// Start of user code for outputExpression ElementEditor key
+			public static String outputExpression = "esb::SmooksMediator::output::outputExpression";
+			// End of user code
+			
+	
+		}
+	
+		public static class Properties {
+	
 			
 			public static String commentsList = "esb::SmooksMediator::properties::commentsList";
 			
 			
 			public static String reverse = "esb::SmooksMediator::properties::Reverse";
 			
+	
+		}
+	
+		public static class Key {
+	
+			// Start of user code for configurationKey ElementEditor key
+			public static String configurationKey = "esb::SmooksMediator::key::configurationKey";
+			// End of user code
 			
-			public static String inputType = "esb::SmooksMediator::properties::inputType";
+	
+		}
+	
+		public static class Misc {
+	
 			
-			
-			public static String outputType = "esb::SmooksMediator::properties::outputType";
-			
-			
-			public static String outputProperty = "esb::SmooksMediator::properties::outputProperty";
-			
-			
-			public static String outputAction = "esb::SmooksMediator::properties::outputAction";
-			
-			
-			public static String outputMethod = "esb::SmooksMediator::properties::outputMethod";
+			public static String description = "esb::SmooksMediator::misc::description";
 			
 	
 		}

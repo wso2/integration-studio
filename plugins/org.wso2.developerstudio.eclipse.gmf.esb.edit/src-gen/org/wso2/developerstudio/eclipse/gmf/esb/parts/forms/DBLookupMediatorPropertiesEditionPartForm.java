@@ -1201,9 +1201,9 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 			 * 	
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
-			    validate();
 				if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartForm.this, EsbViewsRepository.DBLookupMediator.Connection.connectionType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getConnectionType()));
+				refresh();
 			}
 
 		});

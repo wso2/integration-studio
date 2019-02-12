@@ -55,7 +55,7 @@ import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.URLRewriteRuleActionPropertiesEditionPart;
 
@@ -74,6 +74,10 @@ public class URLRewriteRuleActionPropertiesEditionPartForm extends SectionProper
 	protected EMFComboViewer ruleOption;
 	protected Text actionValue;
 	protected Text actionRegex;
+	// Start of user code  for actionExpression widgets declarations
+	
+	// End of user code
+
 
 
 
@@ -124,6 +128,7 @@ public class URLRewriteRuleActionPropertiesEditionPartForm extends SectionProper
 		propertiesStep.addStep(EsbViewsRepository.URLRewriteRuleAction.Properties.ruleOption);
 		propertiesStep.addStep(EsbViewsRepository.URLRewriteRuleAction.Properties.actionValue);
 		propertiesStep.addStep(EsbViewsRepository.URLRewriteRuleAction.Properties.actionRegex);
+		propertiesStep.addStep(EsbViewsRepository.URLRewriteRuleAction.Properties.actionExpression);
 		
 		
 		composer = new PartComposer(uRLRewriteRuleActionStep) {
@@ -148,6 +153,9 @@ public class URLRewriteRuleActionPropertiesEditionPartForm extends SectionProper
 				if (key == EsbViewsRepository.URLRewriteRuleAction.Properties.actionRegex) {
 					return createActionRegexText(widgetFactory, parent);
 				}
+				// Start of user code for actionExpression addToPart creation
+				
+				// End of user code
 				return parent;
 			}
 		};
@@ -619,6 +627,10 @@ public class URLRewriteRuleActionPropertiesEditionPartForm extends SectionProper
 
 
 
+	// Start of user code for actionExpression specific getters and setters implementation
+	
+	// End of user code
+
 	/**
 	 * {@inheritDoc}
 	 *
@@ -629,8 +641,20 @@ public class URLRewriteRuleActionPropertiesEditionPartForm extends SectionProper
 		return EsbMessages.URLRewriteRuleAction_Part_Title;
 	}
 
+
+
 	// Start of user code additional methods
-	
+    @Override
+    public NamespacedProperty getActionExpression() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void setActionExpression(NamespacedProperty nameSpacedProperty) {
+        // TODO Auto-generated method stub
+        
+    }
 	// End of user code
 
 

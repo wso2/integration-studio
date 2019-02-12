@@ -5146,9 +5146,6 @@ public class EsbMessages extends NLS {
 	public static String CacheMediatorOnHitOutputConnectorPropertiesEditionPart_CommentMediatorsLabel;
 
 	
-	public static String XQueryMediatorPropertiesEditionPart_DescriptionLabel;
-
-	
 	public static String XQueryMediatorPropertiesEditionPart_CommentsListLabel;
 
 	
@@ -5159,6 +5156,18 @@ public class EsbMessages extends NLS {
 
 	
 	public static String XQueryMediatorPropertiesEditionPart_ScriptKeyTypeLabel;
+
+	
+	public static String XQueryMediatorPropertiesEditionPart_StaticScriptKeyLabel;
+
+	
+	public static String XQueryMediatorPropertiesEditionPart_TargetXPathLabel;
+
+	
+	public static String XQueryMediatorPropertiesEditionPart_DynamicScriptKeyLabel;
+
+	
+	public static String XQueryMediatorPropertiesEditionPart_DescriptionLabel;
 
 	
 	public static String XQueryMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;
@@ -5177,6 +5186,12 @@ public class EsbMessages extends NLS {
 
 	
 	public static String XQueryVariablePropertiesEditionPart_ValueLiteralLabel;
+
+	
+	public static String XQueryVariablePropertiesEditionPart_ValueExpressionLabel;
+
+	
+	public static String XQueryVariablePropertiesEditionPart_ValueKeyLabel;
 
 	
 	public static String CalloutMediatorPropertiesEditionPart_DescriptionLabel;

@@ -169,6 +169,7 @@ public class EsbViewsRepository {
 			
 			// Start of user code for valueExpression ElementEditor key
 			public static String valueExpression = "esb::PropertyMediator::properties::valueExpression";
+
 			// End of user code
 			
 	
@@ -6703,6 +6704,10 @@ public class EsbViewsRepository {
 			
 			
 			public static String actionRegex = "esb::URLRewriteRuleAction::properties::actionRegex";
+			
+			// Start of user code for actionExpression ElementEditor key
+			public static String actionExpression = "esb::URLRewriteRuleAction::properties::actionExpression";
+			// End of user code
 			
 	
 		}

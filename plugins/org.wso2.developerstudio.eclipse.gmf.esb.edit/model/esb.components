@@ -3846,6 +3846,9 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v-IvJnEei6boXzpRIfnA" name="actionRegex" views="_E7xKEPJnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//URLRewriteRuleAction/actionRegex"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_XFeeMC54EemDOYCQaAZmNg" name="actionExpression" views="_Sz7wgC54EemDOYCQaAZmNg">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//URLRewriteRuleAction/actionExpression"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//URLRewriteRuleAction"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_E7v-I_JnEei6boXzpRIfnA" name="URLRewriteRule" views="_E7xKEfJnEei6boXzpRIfnA">
@@ -10071,6 +10074,7 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xKEPJnEei6boXzpRIfnA" name="actionRegex">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_Sz7wgC54EemDOYCQaAZmNg" name="actionExpression"/>
         </elements>
       </views>
       <views xmi:id="_E7xKEfJnEei6boXzpRIfnA" name="URLRewriteRule">

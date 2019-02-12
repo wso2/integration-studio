@@ -56,7 +56,7 @@ public class EditPartConstants {
     public static final String FILTER_MEDIATOR_ICON_PATH = "icons/ico20/filter-mediator.png";
     public static final String HEADER_MEDIATOR_ICON_PATH = "icons/ico20/header-mediator.png";
     public static final String LOOPBACK_MEDIATOR_ICON_PATH = "icons/ico20/loopBack-mediator.png";
-    public static final String PUBLISHEVENT_MEDIATOR_ICON_PATH = "icons/ico20/publishevent-mediator.gif";
+    public static final String PUBLISHEVENT_MEDIATOR_ICON_PATH = "icons/ico20/publishevent-mediator.png";
     public static final String SWITCH_MEDIATOR_ICON_PATH = "icons/ico20/switch-mediator.png";
     public static final String VALIDATE_MEDIATOR_ICON_PATH = "icons/ico20/validate-mediator.png";
     public static final String STORE_MEDIATOR_ICON_PATH = "icons/ico20/store-mediator.png";

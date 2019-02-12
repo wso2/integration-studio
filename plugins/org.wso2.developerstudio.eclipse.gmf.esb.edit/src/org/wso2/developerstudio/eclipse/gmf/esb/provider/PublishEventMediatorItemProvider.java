@@ -307,14 +307,14 @@ public class PublishEventMediatorItemProvider extends MediatorItemProvider {
     }
 
     /**
-     * This returns PublishEventMediator.gif.
+     * This returns PublishEventMediator.png.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
+     * @generated NOT
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/PublishEventMediator"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/PublishEventMediator.png"));
     }
 
     /**

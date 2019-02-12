@@ -2320,7 +2320,7 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
     	}
     	
     	viewUtil.showEntry(resultTypeElements, false);
-    	if(getResultType().getLiteral().equals("XAPTH")) {
+    	if(getResultType().getLiteral().equals("XPATH")) {
     		viewUtil.showEntry(resultMessageXpathElements, false);
     	} else if(getResultType().getLiteral().equals("PROPERTY")) {
     		viewUtil.showEntry(resultContextPropertyElements, false);

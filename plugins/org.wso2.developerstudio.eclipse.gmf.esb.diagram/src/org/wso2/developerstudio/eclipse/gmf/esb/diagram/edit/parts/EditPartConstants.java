@@ -48,7 +48,7 @@ public class EditPartConstants {
     public static final String DBREPORT_MEDIATOR_ICON_PATH = "icons/ico20/dbreport-mediator.png";
     public static final String EJB_MEDIATOR_ICON_PATH = "icons/ico20/ejb-mediator.png";
     public static final String ENQUEUE_MEDIATOR_ICON_PATH = "icons/ico20/enqueue-mediator.png";
-    public static final String ENTITLEMENT_MEDIATOR_ICON_PATH = "icons/ico20/entitlement-mediator.gif";
+    public static final String ENTITLEMENT_MEDIATOR_ICON_PATH = "icons/ico20/entitlement-mediator.png";
     public static final String EVENT_MEDIATOR_ICON_PATH = "icons/ico20/event-mediator.png";
     public static final String XSLT_MEDIATOR_ICON_PATH = "icons/ico20/xslt-mediator.png";
     public static final String XQUERY_MEDIATOR_ICON_PATH = "icons/ico20/xquery-mediator.png";

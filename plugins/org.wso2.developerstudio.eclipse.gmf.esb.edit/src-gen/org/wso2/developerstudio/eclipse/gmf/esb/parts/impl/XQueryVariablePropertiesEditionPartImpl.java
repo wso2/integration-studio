@@ -3,6 +3,8 @@
  */
 package org.wso2.developerstudio.eclipse.gmf.esb.parts.impl;
 
+import java.util.ArrayList;
+
 // Start of user code for imports
 import org.eclipse.emf.common.util.Enumerator;
 
@@ -29,6 +31,7 @@ import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 
 import org.eclipse.emf.eef.runtime.ui.widgets.EMFComboViewer;
+import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 
 import org.eclipse.jface.viewers.ArrayContentProvider;
@@ -42,18 +45,30 @@ import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
-
+import org.eclipse.swt.events.MouseEvent;
+import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
-
+import org.eclipse.ui.forms.widgets.FormToolkit;
+import org.wso2.developerstudio.eclipse.gmf.esb.CacheType;
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.XQueryVariableValueType;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.XQueryVariablePropertiesEditionPart;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.parts.forms.CacheMediatorPropertiesEditionPartForm;
+import org.wso2.developerstudio.eclipse.gmf.esb.parts.forms.HeaderMediatorPropertiesEditionPartForm;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFNameSpacedPropertyEditorDialog;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.developerstudio.esb.form.editors.article.providers.NamedEntityDescriptor;
 
 // End of user code
 
@@ -67,6 +82,27 @@ public class XQueryVariablePropertiesEditionPartImpl extends CompositeProperties
 	protected EMFComboViewer variableType;
 	protected EMFComboViewer valueType;
 	protected Text valueLiteral;
+	// Start of user code  for valueExpression widgets declarations
+	protected NamespacedProperty valueExpression;
+	
+	protected Text valueExpressionText;
+	// End of user code
+
+	// Start of user code  for valueKey widgets declarations
+	protected RegistryKeyProperty valueKey;
+	
+	protected Text valueKeyText;
+	
+	protected Group propertiesGroup;
+	
+	protected Control[] variableNameElements;
+	protected Control[] variableTypeElements;
+	protected Control[] valueTypeElements;
+	protected Control[] valueLiteralElements;
+	protected Control[] valueKeyElements;
+	protected Control[] valueExpressionElements;
+	// End of user code
+
 
 
 
@@ -109,6 +145,8 @@ public class XQueryVariablePropertiesEditionPartImpl extends CompositeProperties
 		propertiesStep.addStep(EsbViewsRepository.XQueryVariable.Properties.variableType);
 		propertiesStep.addStep(EsbViewsRepository.XQueryVariable.Properties.valueType);
 		propertiesStep.addStep(EsbViewsRepository.XQueryVariable.Properties.valueLiteral);
+		propertiesStep.addStep(EsbViewsRepository.XQueryVariable.Properties.valueExpression);
+		propertiesStep.addStep(EsbViewsRepository.XQueryVariable.Properties.valueKey);
 		
 		
 		composer = new PartComposer(xQueryVariableStep) {
@@ -130,6 +168,16 @@ public class XQueryVariablePropertiesEditionPartImpl extends CompositeProperties
 				if (key == EsbViewsRepository.XQueryVariable.Properties.valueLiteral) {
 					return createValueLiteralText(parent);
 				}
+				// Start of user code for valueExpression addToPart creation
+				if (key == EsbViewsRepository.XQueryVariable.Properties.valueExpression) {
+                    return createValueExpression(parent);
+                }
+				// End of user code
+				// Start of user code for valueKey addToPart creation
+				if (key == EsbViewsRepository.XQueryVariable.Properties.valueKey) {
+                    return createValueKey(parent);
+                }
+				// End of user code
 				return parent;
 			}
 		};
@@ -137,10 +185,10 @@ public class XQueryVariablePropertiesEditionPartImpl extends CompositeProperties
 	}
 
 	/**
-	 * 
-	 */
+     * @generated NOT
+     */
 	protected Composite createPropertiesGroup(Composite parent) {
-		Group propertiesGroup = new Group(parent, SWT.NONE);
+		propertiesGroup = new Group(parent, SWT.NONE);
 		propertiesGroup.setText(EsbMessages.XQueryVariablePropertiesEditionPart_PropertiesGroupLabel);
 		GridData propertiesGroupData = new GridData(GridData.FILL_HORIZONTAL);
 		propertiesGroupData.horizontalSpan = 3;
@@ -151,9 +199,11 @@ public class XQueryVariablePropertiesEditionPartImpl extends CompositeProperties
 		return propertiesGroup;
 	}
 
-	
+	/**
+     * @generated NOT
+     */
 	protected Composite createVariableNameText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.XQueryVariable.Properties.variableName, EsbMessages.XQueryVariablePropertiesEditionPart_VariableNameLabel);
+		Control variableNameLabel = createDescription(parent, EsbViewsRepository.XQueryVariable.Properties.variableName, EsbMessages.XQueryVariablePropertiesEditionPart_VariableNameLabel);
 		variableName = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData variableNameData = new GridData(GridData.FILL_HORIZONTAL);
 		variableName.setLayoutData(variableNameData);
@@ -193,16 +243,18 @@ public class XQueryVariablePropertiesEditionPartImpl extends CompositeProperties
 		});
 		EditingUtils.setID(variableName, EsbViewsRepository.XQueryVariable.Properties.variableName);
 		EditingUtils.setEEFtype(variableName, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.XQueryVariable.Properties.variableName, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		Control variableNameHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.XQueryVariable.Properties.variableName, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createVariableNameText
-
+		variableNameElements = new Control[] {variableNameLabel, variableName, variableNameHelp};
 		// End of user code
 		return parent;
 	}
 
-	
+	/**
+     * @generated NOT
+     */
 	protected Composite createVariableTypeEMFComboViewer(Composite parent) {
-		createDescription(parent, EsbViewsRepository.XQueryVariable.Properties.variableType, EsbMessages.XQueryVariablePropertiesEditionPart_VariableTypeLabel);
+		Control variableTypeLabel = createDescription(parent, EsbViewsRepository.XQueryVariable.Properties.variableType, EsbMessages.XQueryVariablePropertiesEditionPart_VariableTypeLabel);
 		variableType = new EMFComboViewer(parent);
 		variableType.setContentProvider(new ArrayContentProvider());
 		variableType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -223,16 +275,18 @@ public class XQueryVariablePropertiesEditionPartImpl extends CompositeProperties
 
 		});
 		variableType.setID(EsbViewsRepository.XQueryVariable.Properties.variableType);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.XQueryVariable.Properties.variableType, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		Control variableTypeHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.XQueryVariable.Properties.variableType, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createVariableTypeEMFComboViewer
-
+		variableTypeElements = new Control[] {variableTypeLabel, variableType.getCombo(), variableTypeHelp};
 		// End of user code
 		return parent;
 	}
 
-	
+	/**
+     * @generated NOT
+     */
 	protected Composite createValueTypeEMFComboViewer(Composite parent) {
-		createDescription(parent, EsbViewsRepository.XQueryVariable.Properties.valueType, EsbMessages.XQueryVariablePropertiesEditionPart_ValueTypeLabel);
+		Control valueTypeLabel = createDescription(parent, EsbViewsRepository.XQueryVariable.Properties.valueType, EsbMessages.XQueryVariablePropertiesEditionPart_ValueTypeLabel);
 		valueType = new EMFComboViewer(parent);
 		valueType.setContentProvider(new ArrayContentProvider());
 		valueType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -249,20 +303,23 @@ public class XQueryVariablePropertiesEditionPartImpl extends CompositeProperties
 			public void selectionChanged(SelectionChangedEvent event) {
 				if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(XQueryVariablePropertiesEditionPartImpl.this, EsbViewsRepository.XQueryVariable.Properties.valueType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getValueType()));
+				validate();
 			}
 
 		});
 		valueType.setID(EsbViewsRepository.XQueryVariable.Properties.valueType);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.XQueryVariable.Properties.valueType, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		Control valueTypeHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.XQueryVariable.Properties.valueType, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createValueTypeEMFComboViewer
-
+		valueTypeElements = new Control[] {valueTypeLabel, valueType.getCombo(), valueTypeHelp};
 		// End of user code
 		return parent;
 	}
 
-	
+	/**
+     * @generated NOT
+     */
 	protected Composite createValueLiteralText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.XQueryVariable.Properties.valueLiteral, EsbMessages.XQueryVariablePropertiesEditionPart_ValueLiteralLabel);
+		Control valueLiteralLabel = createDescription(parent, EsbViewsRepository.XQueryVariable.Properties.valueLiteral, EsbMessages.XQueryVariablePropertiesEditionPart_ValueLiteralLabel);
 		valueLiteral = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData valueLiteralData = new GridData(GridData.FILL_HORIZONTAL);
 		valueLiteral.setLayoutData(valueLiteralData);
@@ -302,9 +359,9 @@ public class XQueryVariablePropertiesEditionPartImpl extends CompositeProperties
 		});
 		EditingUtils.setID(valueLiteral, EsbViewsRepository.XQueryVariable.Properties.valueLiteral);
 		EditingUtils.setEEFtype(valueLiteral, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.XQueryVariable.Properties.valueLiteral, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		Control valueLiteralHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.XQueryVariable.Properties.valueLiteral, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createValueLiteralText
-
+		valueLiteralElements = new Control[] {valueLiteralLabel, valueLiteral, valueLiteralHelp};
 		// End of user code
 		return parent;
 	}
@@ -485,6 +542,36 @@ public class XQueryVariablePropertiesEditionPartImpl extends CompositeProperties
 
 
 
+	// Start of user code for valueExpression specific getters and setters implementation
+    @Override
+    public void setValueExpression(NamespacedProperty namespacedProperty) {
+        if (namespacedProperty != null) {
+            valueExpression = namespacedProperty;
+            valueExpressionText.setText(namespacedProperty.getPropertyValue());
+        }
+    }
+
+    @Override
+    public NamespacedProperty getValueExpression() {
+        return valueExpression;
+    }
+	// End of user code
+
+	// Start of user code for valueKey specific getters and setters implementation
+    @Override
+    public void setValueKey(RegistryKeyProperty registryKeyProperty) {
+        if (valueKey != null) {
+            valueKey = registryKeyProperty;
+            valueKeyText.setText(registryKeyProperty.getKeyValue());
+        }
+    }
+
+    @Override
+    public RegistryKeyProperty getValueKey() {
+        return valueKey;
+    }
+	// End of user code
+
 	/**
 	 * {@inheritDoc}
 	 *
@@ -495,8 +582,124 @@ public class XQueryVariablePropertiesEditionPartImpl extends CompositeProperties
 		return EsbMessages.XQueryVariable_Part_Title;
 	}
 
+
+
+
+
 	// Start of user code additional methods
+	protected Composite createValueKey(Composite parent) {
+        Control valueKeyLabel = createDescription(parent, EsbViewsRepository.XQueryVariable.Properties.valueKey,
+                EsbMessages.XQueryVariablePropertiesEditionPart_ValueKeyLabel);
+
+        if (valueKey == null) {
+            valueKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
+        }
+        valueKeyText = SWTUtils.createScrollableText(parent, SWT.BORDER);
+        valueKeyText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+        GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
+        valueKeyText.setLayoutData(valueData);
+        valueKeyText.addMouseListener(new MouseListener() {
+
+            @Override
+            public void mouseUp(MouseEvent e) {
+                // TODO Auto-generated method stub
+            }
+
+            @Override
+            public void mouseDown(MouseEvent e) {
+                EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(parent.getShell(),
+                        SWT.NULL, valueKey, new ArrayList<NamedEntityDescriptor>());
+                dialog.open();
+                valueKeyText.setText(valueKey.getKeyValue());
+                propertiesEditionComponent
+                        .firePropertiesChanged(new PropertiesEditionEvent(XQueryVariablePropertiesEditionPartImpl.this,
+                                EsbViewsRepository.XQueryVariable.Properties.valueKey, PropertiesEditionEvent.COMMIT,
+                                PropertiesEditionEvent.SET, null, getValueKey()));
+            }
+
+            @Override
+            public void mouseDoubleClick(MouseEvent e) {
+                // TODO Auto-generated method stub
+
+            }
+        });
+        EditingUtils.setID(valueKeyText, EsbViewsRepository.XQueryVariable.Properties.valueKey);
+        EditingUtils.setEEFtype(valueKeyText, "eef::Text");
+        Control valueKeyHelp = SWTUtils.createHelpButton(parent,
+                        propertiesEditionComponent.getHelpContent(
+                                EsbViewsRepository.XQueryVariable.Properties.valueKey, EsbViewsRepository.FORM_KIND),
+                        null);
+        valueKeyElements = new Control[] { valueKeyLabel, valueKeyText, valueKeyHelp };
+        return parent;
+    }
+
+	protected Composite createValueExpression(Composite parent) {
+        Control valueExpressionLabel = createDescription(parent, EsbViewsRepository.XQueryVariable.Properties.valueExpression,
+                EsbMessages.XQueryVariablePropertiesEditionPart_ValueExpressionLabel);
+        if (valueExpression == null) {
+            valueExpression = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
+        } 
+        String initHeaderName = valueExpression.getPropertyValue().isEmpty() ? "" : valueExpression.getPropertyValue();
+        valueExpressionText = SWTUtils.createScrollableText(parent, SWT.BORDER);
+        valueExpressionText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+        
+        GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
+        valueExpressionText.setLayoutData(valueData);
+        valueExpressionText.addMouseListener(new MouseListener() {
+            
+            @Override
+            public void mouseUp(MouseEvent e) {
+                // TODO Auto-generated method stub
+                
+            }
+            
+            @Override
+            public void mouseDown(MouseEvent e) {
+                EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL, valueExpression);
+                nspd.open();
+                valueExpressionText.setText(valueExpression.getPropertyValue());
+                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(XQueryVariablePropertiesEditionPartImpl.this,
+                        EsbViewsRepository.XQueryVariable.Properties.valueExpression, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getValueExpression()));
+            }
+            
+            @Override
+            public void mouseDoubleClick(MouseEvent e) {
+                // TODO Auto-generated method stub
+                
+            }
+        });
+        EditingUtils.setID(valueExpressionText, EsbViewsRepository.XQueryVariable.Properties.valueExpression);
+        EditingUtils.setEEFtype(valueExpressionText, "eef::Text");
+        Control valueExpressionHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.XQueryVariable.Properties.valueExpression,
+                EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+        valueExpressionElements = new Control[] {valueExpressionLabel, valueExpressionText, valueExpressionHelp};
+        return parent;
+    }
 	
+    @Override
+    public void refresh() {
+        super.refresh();
+        validate();
+    }
+    
+    public void validate() {
+        EEFPropertyViewUtil eu = new EEFPropertyViewUtil(view);
+        eu.clearElements(new Composite[] { propertiesGroup });
+        
+        eu.showEntry(variableNameElements, false);
+        eu.showEntry(variableTypeElements, false);
+        eu.showEntry(valueTypeElements, false);
+        
+        if (getValueType() != null && getValueType().getName().equals(XQueryVariableValueType.LITERAL.getName())) {
+            eu.showEntry(valueLiteralElements, false);
+            
+        } else if (getValueType() != null && getValueType().getName().equals(XQueryVariableValueType.EXPRESSION.getName())) {
+            eu.showEntry(valueExpressionElements, false);
+        }
+        
+        eu.showEntry(valueKeyElements, false);
+        view.layout(true, true);
+    }
 	// End of user code
 
 

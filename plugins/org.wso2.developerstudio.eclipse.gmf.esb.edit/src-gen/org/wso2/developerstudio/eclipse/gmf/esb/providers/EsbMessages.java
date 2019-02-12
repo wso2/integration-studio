@@ -5176,6 +5176,12 @@ public class EsbMessages extends NLS {
 	public static String XQueryVariablePropertiesEditionPart_ValueLiteralLabel;
 
 	
+	public static String XQueryVariablePropertiesEditionPart_ValueExpressionLabel;
+
+	
+	public static String XQueryVariablePropertiesEditionPart_ValueKeyLabel;
+
+	
 	public static String CalloutMediatorPropertiesEditionPart_DescriptionLabel;
 
 	

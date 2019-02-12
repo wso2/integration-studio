@@ -709,12 +709,6 @@ public class XQueryMediatorPropertiesEditionPartImpl extends CompositeProperties
 		return EsbMessages.XQueryMediator_Part_Title;
 	}
 
-
-
-
-
-
-
 	// Start of user code additional methods
 	
 	// End of user code

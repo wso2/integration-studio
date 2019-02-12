@@ -4161,6 +4161,14 @@ public class EsbViewsRepository {
 			
 			public static String valueLiteral = "esb::XQueryVariable::properties::valueLiteral";
 			
+			// Start of user code for valueExpression ElementEditor key
+			public static String valueExpression = "esb::XQueryVariable::properties::valueExpression";
+			// End of user code
+			
+			// Start of user code for valueKey ElementEditor key
+			public static String valueKey = "esb::XQueryVariable::properties::valueKey";
+			// End of user code
+			
 	
 		}
 	

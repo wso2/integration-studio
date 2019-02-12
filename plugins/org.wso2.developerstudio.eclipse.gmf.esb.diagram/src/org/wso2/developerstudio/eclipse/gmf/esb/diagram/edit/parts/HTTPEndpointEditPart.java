@@ -123,7 +123,7 @@ public class HTTPEndpointEditPart extends AbstractEndpoint {
      * @generated NOT
      */
     protected IFigure createNodeShape() {
-        return primaryShape = new HTTPEndpointFigure(new Color(null, 141, 82, 161)) {
+        return primaryShape = new HTTPEndpointFigure(new Color(null, 255, 255, 255)) {
             public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
                 super.setBounds(rect);
                 if (this.getBounds().getLocation().x != 0 && this.getBounds().getLocation().y != 0) {
@@ -400,8 +400,11 @@ public class HTTPEndpointEditPart extends AbstractEndpoint {
             return endpointDescriptionLabel;
         }
 
+        /**
+         * @generated NOT
+         */
         public String getIconPath() {
-            return "icons/ico20/http-endpoint.gif";
+            return "icons/ico20/http-endpoint.png";
         }
 
         public String getNodeName() {

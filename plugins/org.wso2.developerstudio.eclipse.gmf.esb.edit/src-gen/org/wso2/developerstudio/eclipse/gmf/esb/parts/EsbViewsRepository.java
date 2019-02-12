@@ -4081,9 +4081,6 @@ public class EsbViewsRepository {
 		public static class Properties {
 	
 			
-			public static String description = "esb::XQueryMediator::properties::description";
-			
-			
 			public static String commentsList = "esb::XQueryMediator::properties::commentsList";
 			
 			
@@ -4094,6 +4091,21 @@ public class EsbViewsRepository {
 			
 			
 			public static String scriptKeyType = "esb::XQueryMediator::properties::scriptKeyType";
+			
+			// Start of user code for staticScriptKey ElementEditor key
+			public static String staticScriptKey = "esb::XQueryMediator::properties::staticScriptKey";
+			// End of user code
+			
+			// Start of user code for targetXPath ElementEditor key
+			public static String targetXPath = "esb::XQueryMediator::properties::targetXPath";
+			// End of user code
+			
+			// Start of user code for dynamicScriptKey ElementEditor key
+			public static String dynamicScriptKey = "esb::XQueryMediator::properties::dynamicScriptKey";
+			// End of user code
+			
+			
+			public static String description = "esb::XQueryMediator::properties::description";
 			
 	
 		}

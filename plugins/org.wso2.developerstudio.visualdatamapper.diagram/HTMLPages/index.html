@@ -8,100 +8,93 @@
 
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/jquery-linedtextarea.css">
+  <link rel="stylesheet" href="css/codemirror.css">
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type='text/javascript' src="js/jquery.min-3.3.1.js"></script>
   <script type='text/javascript' src='js/DataTypeConverter.js'></script>
   <script type='text/javascript' src='js/SchemaToJson.js'></script>
-  <script type='text/javascript' src='js/jquery-linedtextarea.js'></script>
+  <script type='text/javascript' src='js/codemirror-5.43.1.js'></script>  
+  <script type='text/javascript' src='js/xml.js'></script>
+  <script type='text/javascript' src='js/javascript.js'></script>
+  <script type='text/javascript' src='js/formatting.js'></script>
   <script type='text/javascript' src='js/papaparse.min.js'></script>
 
 </head>
 
 <body>
-  <br />
-  <div class="container" style="background-color:#16E9F3">
-    <h2>Datamapper Testbench</h2>
+  <div class="container-fluid">
     <div class="row">
-      <div class="col-lg-8 custom">
-        <h3>Input Data</h3>
+      <div class="col-lg-5 box">
+        <h3 class="input-header header">Input data type</h3>
         <div class="row no-gutter">
           <div class="col-lg-5 custom">
             <div class="container">
-              <div class="row" style="background-color:orange;">
-                <div clas="col-lg-12">
-                  <p class="lead">&nbsp;&nbsp;Input Data Type</p>
-                </div>
-                <div class="col-lg-12" style="background-color:#EACC0A;" name="radios1">
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio" name="inputTypeRadio" id="inputTypeRadio1" value="JSON" checked>
-                    <label class="form-check-label" for="exampleRadios1">
-                      JSON
-                    </label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio" name="inputTypeRadio" id="inputTypeRadio2" value="XML">
-                    <label class="form-check-label" for="exampleRadios2">
-                      XML
-                    </label>
-                  </div>
-                  <div class="form-check disabled">
-                    <input class="form-check-input" type="radio" name="inputTypeRadio" id="inputTypeRadio3" value="CSV">
-                    <label class="form-check-label" for="exampleRadios3">
-                      CSV
-                    </label>
-                  </div>
+              <div class="row" >
+                <div class="col-lg-12">
+               		<div class="input-radio">
+					  <label><input type="radio" class="inputTypeRadio" name="inputTypeRadio" checked value="JSON"> JSON</label>
+					</div>
+					<div class="input-radio">
+					  <label><input type="radio" class="inputTypeRadio"  name="inputTypeRadio" value="XML"> XML</label>
+					</div>
+					<div class="input-radio">
+					  <label><input type="radio" class="inputTypeRadio" name="inputTypeRadio" value="CSV"> CSV</label>
+					</div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-lg-5 custom">
-            <div class="row" style="background-color:green;">
-              <div clas="col-lg-12">
-                <p class="lead">&nbsp;&nbsp;Output Data Type</p>
-              </div>
-              <div class="col-lg-12" style="background-color:#71E64D;">
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="outputTypeRadio" id="outputTypeRadio1" value="JSON" checked>
-                  <label class="form-check-label" for="exampleRadios4">
-                    JSON
-                  </label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="outputTypeRadio" id="outputTypeRadio2" value="XML">
-                  <label class="form-check-label" for="exampleRadios5">
-                    XML
-                  </label>
-                </div>
-                <div class="form-check disabled">
-                  <input class="form-check-input" type="radio" name="outputTypeRadio" id="outputTypeRadio3" value="CSV">
-                  <label class="form-check-label" for="exampleRadios6">
-                    CSV
-                  </label>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-2 custom">
-            <button type="button" class="btn btn-success" style="width:100%; height:100%" onclick="process()">
-              <img src="images/play.png" style="width:50px; height:70px">
-            </button>
-          </div>
+         
         </div>
-        <textarea id="inputTextArea" rows="7" cols="90"></textarea>
+        <textarea id="inputTextArea" rows="7" ></textarea>
       </div>
-      <div class="col-lg-4 custom">
-        <h3>Output Data</h3>
+      <div class="col-lg-2 button-center">
+            <button type="button" class="btn" style="width:100%;" onclick="process()">
+              <img src="images/convert.png" />
+              <br/> Try Out
+            </button>
+          
+      </div>
+      <div class="col-lg-5 box">
+        <h3 class="output-header header">Output data type</h3>
+        <div class="col-lg-5 custom">
+            <div class="row">
+              <div class="col-lg-12">
+              		<div class="output-radio">
+					  <label><input type="radio" name="outputTypeRadio" checked value="JSON"> JSON</label>
+					</div>
+					<div class="output-radio">
+					  <label><input type="radio" name="outputTypeRadio" value="XML"> XML</label>
+					</div>
+					<div class="output-radio">
+					  <label><input type="radio" name="outputTypeRadio" value="CSV"> CSV</label>
+					</div>
+              </div>
+            </div>
+          </div>
         <textarea id="outputTextArea" data-autogrow="false" rows="15" cols="40"></textarea>
       </div>
     </div>
   </div>
-  <div class="alert-message"> </div>
 </body>
 <script>
 
 // get the current port of the Jetty server.
 var portValue = resolveGetParam("port");
+
+//code edior instance
+var inputEditor;
+
+function getSelectedRange(editor) {
+    return { from: editor.getCursor(true), to: editor.getCursor(false) };
+  }
+  
+  function autoFormatSelection() {
+	CodeMirror.commands["selectAll"](inputEditor);
+    var range = getSelectedRange(inputEditor);
+    inputEditor.autoFormatRange(range.from, range.to);
+    inputEditor.focus();
+  }
 
 function resolveGetParam(param) {
   var paramValue = null,
@@ -124,12 +117,6 @@ var jsonString = "";
 var xmlString = "";
 var csvString = "";
 
-// Adding line numbers to textarea
-$(function() {
-  $("#inputTextArea").linedtextarea();
-  $("#outputTextArea").linedtextarea();
-});
-
 // Configuration for JSON to CSV converter
 var configs = {
   quotes: false,
@@ -147,6 +134,15 @@ getInputSchema(inputSchema);
 function ajaxCallBack(retString) {
   inputSchema = retString;
   generateExamples();
+  inputEditor = CodeMirror.fromTextArea(document.getElementById("inputTextArea"), {
+      mode: "text/javascript",
+      lineNumbers: true
+    });
+  outputEditor = CodeMirror.fromTextArea(document.getElementById("outputTextArea"), {
+      mode: "text/javascript",
+      lineNumbers: true
+    });
+  autoFormatSelection();
 }
 
 // Generate json / xml / csv examples from the json schema.  
@@ -161,22 +157,26 @@ function generateExamples() {
   document.getElementById("inputTextArea").value = jsonString;
 
   xmlString = json2xml(JSON.parse(jsonString), "\n");
-  xmlString = formatXml("<" + inputSchemaTitle + ">" + xmlString + "</" + inputSchemaTitle + ">");
+  xmlString = "<" + inputSchemaTitle + ">" + xmlString + "</" + inputSchemaTitle + ">";
 
   csvString = '<text xmlns="http://ws.apache.org/commons/ns/payload">' + Papa.unparse(JSON.parse(jsonString), configs) + "</text>";
 }
 
 // Set appropiate data types depending on the input
-$('input[name=inputTypeRadio]').on('change', function(e) {
-  var selectedValue = $('input[name=inputTypeRadio]:checked').val();
+$('.inputTypeRadio').on('change', function(e) {
+  var selectedValue = $('.inputTypeRadio:checked').val();
   inputType = selectedValue;
   if (selectedValue == "XML") {
-    document.getElementById("inputTextArea").value = xmlString;
+	  inputEditor.setOption("mode", "text/html");
+	  inputEditor.setValue(xmlString);
   } else if (selectedValue == "CSV") {
-    document.getElementById("inputTextArea").value = csvString;
+	  inputEditor.setValue(csvString);
   } else if (selectedValue == "JSON") {
-    document.getElementById("inputTextArea").value = jsonString;
+	  inputEditor.setOption("mode", "text/javascript");
+	  inputEditor.setValue(jsonString);
   }
+  
+  autoFormatSelection();
 });
 
 $('input[name=outputTypeRadio]').on('change', function(e) {
@@ -185,7 +185,7 @@ $('input[name=outputTypeRadio]').on('change', function(e) {
 
 // Call Datamapper.mediate() and take back the results
 function process() {
-  var input = document.getElementById("inputTextArea").value;
+  var input = inputEditor.getValue();
   var arr = "process " + inputType + " " + outputType + " " + input;
   var url = "http://localhost:" + portValue + "/dataMapper/getRegistryResources";
   $.ajax({
@@ -198,13 +198,24 @@ function process() {
 
       if (ct.indexOf('application/json') > -1) {
         result = JSON.stringify(data, null, '\t');
-        document.getElementById("outputTextArea").value = result;
+        outputEditor.setOption("mode", "text/javascript");
+        outputEditor.setValue(result);
       } else if (ct.indexOf('application/xml') > -1 || ct.indexOf('text/xml') > -1) {
         result = new XMLSerializer().serializeToString(data);
-        document.getElementById("outputTextArea").value = formatXml(result);
+        outputEditor.setOption("mode", "text/html");
+        outputEditor.setValue(result);
+        CodeMirror.commands["selectAll"](outputEditor);
+        var range = getSelectedRange(outputEditor);
+        outputEditor.autoFormatRange(range.from, range.to);
       } else {
-        document.getElementById("outputTextArea").value = data;
+    	  outputEditor.setOption("mode", "text/javascript");
+    	  outputEditor.setValue(data);
+       
       }
+      
+     /*  CodeMirror.commands["selectAll"](outputEditor);
+      var range = getSelectedRange();
+      outputEditor.autoFormatRange(range.from, range.to); */
     }
   });
 }
@@ -222,39 +233,6 @@ function getInputSchema(inputSchema) {
       ajaxCallBack(data);
     }
   });
-
-}
-
-// Format a given xml with tabs and new lines
-function formatXml(xml) {
-  var formatted = '';
-  var reg = /(>)(<)(\/*)/g;
-  xml = xml.replace(reg, '$1\r\n$2$3');
-  var pad = 0;
-  jQuery.each(xml.split('\r\n'), function(index, node) {
-    var indent = 0;
-    if (node.match(/.+<\/\w[^>]*>$/)) {
-      indent = 0;
-    } else if (node.match(/^<\/\w/)) {
-      if (pad != 0) {
-        pad -= 1;
-      }
-    } else if (node.match(/^<\w[^>]*[^\/]>.*$/)) {
-      indent = 1;
-    } else {
-      indent = 0;
-    }
-
-    var padding = '';
-    for (var i = 0; i < pad; i++) {
-      padding += '  ';
-    }
-
-    formatted += padding + node + '\r\n';
-    pad += indent;
-  });
-
-  return formatted;
 }
     </script>
   </body>

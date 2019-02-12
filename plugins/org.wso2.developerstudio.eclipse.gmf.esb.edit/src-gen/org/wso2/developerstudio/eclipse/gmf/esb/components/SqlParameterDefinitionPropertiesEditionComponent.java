@@ -100,10 +100,11 @@ public class SqlParameterDefinitionPropertiesEditionComponent extends SinglePart
 			
 			
 			// Start of user code  for valueExpression filter update
+			((SqlParameterDefinitionPropertiesEditionPartImpl) editingPart).validate();
 			// End of user code
 			
 			// init values for referenced views
-			((SqlParameterDefinitionPropertiesEditionPartImpl) editingPart).validate();
+			
 			// init filters for referenced views
 			
 		}

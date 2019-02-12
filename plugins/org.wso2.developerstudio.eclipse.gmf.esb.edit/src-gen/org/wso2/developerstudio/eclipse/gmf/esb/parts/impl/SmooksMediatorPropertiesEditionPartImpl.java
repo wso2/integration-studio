@@ -59,7 +59,8 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.SmooksMediatorPropertiesEditionPart;
 
@@ -73,16 +74,28 @@ import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
  */
 public class SmooksMediatorPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, SmooksMediatorPropertiesEditionPart {
 
-	protected Text description;
-	protected Text commentsList;
-	protected Button editCommentsList;
-	protected EList commentsListList;
-	protected Button reverse;
 	protected EMFComboViewer inputType;
+	// Start of user code  for inputExpresssion widgets declarations
+	
+	// End of user code
+
 	protected EMFComboViewer outputType;
 	protected Text outputProperty;
 	protected EMFComboViewer outputAction;
 	protected EMFComboViewer outputMethod;
+	// Start of user code  for outputExpression widgets declarations
+	
+	// End of user code
+
+	protected Text commentsList;
+	protected Button editCommentsList;
+	protected EList commentsListList;
+	protected Button reverse;
+	// Start of user code  for configurationKey widgets declarations
+	
+	// End of user code
+
+	protected Text description;
 
 
 
@@ -120,26 +133,63 @@ public class SmooksMediatorPropertiesEditionPartImpl extends CompositeProperties
 	 */
 	public void createControls(Composite view) { 
 		CompositionSequence smooksMediatorStep = new BindingCompositionSequence(propertiesEditionComponent);
+		CompositionStep inputStep = smooksMediatorStep.addStep(EsbViewsRepository.SmooksMediator.Input.class);
+		inputStep.addStep(EsbViewsRepository.SmooksMediator.Input.inputType);
+		inputStep.addStep(EsbViewsRepository.SmooksMediator.Input.inputExpresssion);
+		
+		CompositionStep outputStep = smooksMediatorStep.addStep(EsbViewsRepository.SmooksMediator.Output.class);
+		outputStep.addStep(EsbViewsRepository.SmooksMediator.Output.outputType);
+		outputStep.addStep(EsbViewsRepository.SmooksMediator.Output.outputProperty);
+		outputStep.addStep(EsbViewsRepository.SmooksMediator.Output.outputAction);
+		outputStep.addStep(EsbViewsRepository.SmooksMediator.Output.outputMethod);
+		outputStep.addStep(EsbViewsRepository.SmooksMediator.Output.outputExpression);
+		
 		CompositionStep propertiesStep = smooksMediatorStep.addStep(EsbViewsRepository.SmooksMediator.Properties.class);
-		propertiesStep.addStep(EsbViewsRepository.SmooksMediator.Properties.description);
 		propertiesStep.addStep(EsbViewsRepository.SmooksMediator.Properties.commentsList);
 		propertiesStep.addStep(EsbViewsRepository.SmooksMediator.Properties.reverse);
-		propertiesStep.addStep(EsbViewsRepository.SmooksMediator.Properties.inputType);
-		propertiesStep.addStep(EsbViewsRepository.SmooksMediator.Properties.outputType);
-		propertiesStep.addStep(EsbViewsRepository.SmooksMediator.Properties.outputProperty);
-		propertiesStep.addStep(EsbViewsRepository.SmooksMediator.Properties.outputAction);
-		propertiesStep.addStep(EsbViewsRepository.SmooksMediator.Properties.outputMethod);
+		
+		smooksMediatorStep
+			.addStep(EsbViewsRepository.SmooksMediator.Key.class)
+			.addStep(EsbViewsRepository.SmooksMediator.Key.configurationKey);
+		
+		smooksMediatorStep
+			.addStep(EsbViewsRepository.SmooksMediator.Misc.class)
+			.addStep(EsbViewsRepository.SmooksMediator.Misc.description);
 		
 		
 		composer = new PartComposer(smooksMediatorStep) {
 
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
+				if (key == EsbViewsRepository.SmooksMediator.Input.class) {
+					return createInputGroup(parent);
+				}
+				if (key == EsbViewsRepository.SmooksMediator.Input.inputType) {
+					return createInputTypeEMFComboViewer(parent);
+				}
+				// Start of user code for inputExpresssion addToPart creation
+				
+				// End of user code
+				if (key == EsbViewsRepository.SmooksMediator.Output.class) {
+					return createOutputGroup(parent);
+				}
+				if (key == EsbViewsRepository.SmooksMediator.Output.outputType) {
+					return createOutputTypeEMFComboViewer(parent);
+				}
+				if (key == EsbViewsRepository.SmooksMediator.Output.outputProperty) {
+					return createOutputPropertyText(parent);
+				}
+				if (key == EsbViewsRepository.SmooksMediator.Output.outputAction) {
+					return createOutputActionEMFComboViewer(parent);
+				}
+				if (key == EsbViewsRepository.SmooksMediator.Output.outputMethod) {
+					return createOutputMethodEMFComboViewer(parent);
+				}
+				// Start of user code for outputExpression addToPart creation
+				
+				// End of user code
 				if (key == EsbViewsRepository.SmooksMediator.Properties.class) {
 					return createPropertiesGroup(parent);
-				}
-				if (key == EsbViewsRepository.SmooksMediator.Properties.description) {
-					return createDescriptionText(parent);
 				}
 				if (key == EsbViewsRepository.SmooksMediator.Properties.commentsList) {
 					return createCommentsListMultiValuedEditor(parent);
@@ -147,25 +197,221 @@ public class SmooksMediatorPropertiesEditionPartImpl extends CompositeProperties
 				if (key == EsbViewsRepository.SmooksMediator.Properties.reverse) {
 					return createReverseCheckbox(parent);
 				}
-				if (key == EsbViewsRepository.SmooksMediator.Properties.inputType) {
-					return createInputTypeEMFComboViewer(parent);
+				if (key == EsbViewsRepository.SmooksMediator.Key.class) {
+					return createKeyGroup(parent);
 				}
-				if (key == EsbViewsRepository.SmooksMediator.Properties.outputType) {
-					return createOutputTypeEMFComboViewer(parent);
+				// Start of user code for configurationKey addToPart creation
+				
+				// End of user code
+				if (key == EsbViewsRepository.SmooksMediator.Misc.class) {
+					return createMiscGroup(parent);
 				}
-				if (key == EsbViewsRepository.SmooksMediator.Properties.outputProperty) {
-					return createOutputPropertyText(parent);
-				}
-				if (key == EsbViewsRepository.SmooksMediator.Properties.outputAction) {
-					return createOutputActionEMFComboViewer(parent);
-				}
-				if (key == EsbViewsRepository.SmooksMediator.Properties.outputMethod) {
-					return createOutputMethodEMFComboViewer(parent);
+				if (key == EsbViewsRepository.SmooksMediator.Misc.description) {
+					return createDescriptionText(parent);
 				}
 				return parent;
 			}
 		};
 		composer.compose(view);
+	}
+
+	/**
+	 * 
+	 */
+	protected Composite createInputGroup(Composite parent) {
+		Group inputGroup = new Group(parent, SWT.NONE);
+		inputGroup.setText(EsbMessages.SmooksMediatorPropertiesEditionPart_InputGroupLabel);
+		GridData inputGroupData = new GridData(GridData.FILL_HORIZONTAL);
+		inputGroupData.horizontalSpan = 3;
+		inputGroup.setLayoutData(inputGroupData);
+		GridLayout inputGroupLayout = new GridLayout();
+		inputGroupLayout.numColumns = 3;
+		inputGroup.setLayout(inputGroupLayout);
+		return inputGroup;
+	}
+
+	
+	protected Composite createInputTypeEMFComboViewer(Composite parent) {
+		createDescription(parent, EsbViewsRepository.SmooksMediator.Input.inputType, EsbMessages.SmooksMediatorPropertiesEditionPart_InputTypeLabel);
+		inputType = new EMFComboViewer(parent);
+		inputType.setContentProvider(new ArrayContentProvider());
+		inputType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
+		GridData inputTypeData = new GridData(GridData.FILL_HORIZONTAL);
+		inputType.getCombo().setLayoutData(inputTypeData);
+		inputType.addSelectionChangedListener(new ISelectionChangedListener() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+			 * 	
+			 */
+			public void selectionChanged(SelectionChangedEvent event) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SmooksMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.SmooksMediator.Input.inputType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getInputType()));
+			}
+
+		});
+		inputType.setID(EsbViewsRepository.SmooksMediator.Input.inputType);
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.SmooksMediator.Input.inputType, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createInputTypeEMFComboViewer
+
+		// End of user code
+		return parent;
+	}
+
+	/**
+	 * 
+	 */
+	protected Composite createOutputGroup(Composite parent) {
+		Group outputGroup = new Group(parent, SWT.NONE);
+		outputGroup.setText(EsbMessages.SmooksMediatorPropertiesEditionPart_OutputGroupLabel);
+		GridData outputGroupData = new GridData(GridData.FILL_HORIZONTAL);
+		outputGroupData.horizontalSpan = 3;
+		outputGroup.setLayoutData(outputGroupData);
+		GridLayout outputGroupLayout = new GridLayout();
+		outputGroupLayout.numColumns = 3;
+		outputGroup.setLayout(outputGroupLayout);
+		return outputGroup;
+	}
+
+	
+	protected Composite createOutputTypeEMFComboViewer(Composite parent) {
+		createDescription(parent, EsbViewsRepository.SmooksMediator.Output.outputType, EsbMessages.SmooksMediatorPropertiesEditionPart_OutputTypeLabel);
+		outputType = new EMFComboViewer(parent);
+		outputType.setContentProvider(new ArrayContentProvider());
+		outputType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
+		GridData outputTypeData = new GridData(GridData.FILL_HORIZONTAL);
+		outputType.getCombo().setLayoutData(outputTypeData);
+		outputType.addSelectionChangedListener(new ISelectionChangedListener() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+			 * 	
+			 */
+			public void selectionChanged(SelectionChangedEvent event) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SmooksMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.SmooksMediator.Output.outputType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getOutputType()));
+			}
+
+		});
+		outputType.setID(EsbViewsRepository.SmooksMediator.Output.outputType);
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.SmooksMediator.Output.outputType, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createOutputTypeEMFComboViewer
+
+		// End of user code
+		return parent;
+	}
+
+	
+	protected Composite createOutputPropertyText(Composite parent) {
+		createDescription(parent, EsbViewsRepository.SmooksMediator.Output.outputProperty, EsbMessages.SmooksMediatorPropertiesEditionPart_OutputPropertyLabel);
+		outputProperty = SWTUtils.createScrollableText(parent, SWT.BORDER);
+		GridData outputPropertyData = new GridData(GridData.FILL_HORIZONTAL);
+		outputProperty.setLayoutData(outputPropertyData);
+		outputProperty.addFocusListener(new FocusAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void focusLost(FocusEvent e) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SmooksMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.SmooksMediator.Output.outputProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, outputProperty.getText()));
+			}
+
+		});
+		outputProperty.addKeyListener(new KeyAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void keyPressed(KeyEvent e) {
+				if (e.character == SWT.CR) {
+					if (propertiesEditionComponent != null)
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SmooksMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.SmooksMediator.Output.outputProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, outputProperty.getText()));
+				}
+			}
+
+		});
+		EditingUtils.setID(outputProperty, EsbViewsRepository.SmooksMediator.Output.outputProperty);
+		EditingUtils.setEEFtype(outputProperty, "eef::Text"); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.SmooksMediator.Output.outputProperty, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createOutputPropertyText
+
+		// End of user code
+		return parent;
+	}
+
+	
+	protected Composite createOutputActionEMFComboViewer(Composite parent) {
+		createDescription(parent, EsbViewsRepository.SmooksMediator.Output.outputAction, EsbMessages.SmooksMediatorPropertiesEditionPart_OutputActionLabel);
+		outputAction = new EMFComboViewer(parent);
+		outputAction.setContentProvider(new ArrayContentProvider());
+		outputAction.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
+		GridData outputActionData = new GridData(GridData.FILL_HORIZONTAL);
+		outputAction.getCombo().setLayoutData(outputActionData);
+		outputAction.addSelectionChangedListener(new ISelectionChangedListener() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+			 * 	
+			 */
+			public void selectionChanged(SelectionChangedEvent event) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SmooksMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.SmooksMediator.Output.outputAction, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getOutputAction()));
+			}
+
+		});
+		outputAction.setID(EsbViewsRepository.SmooksMediator.Output.outputAction);
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.SmooksMediator.Output.outputAction, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createOutputActionEMFComboViewer
+
+		// End of user code
+		return parent;
+	}
+
+	
+	protected Composite createOutputMethodEMFComboViewer(Composite parent) {
+		createDescription(parent, EsbViewsRepository.SmooksMediator.Output.outputMethod, EsbMessages.SmooksMediatorPropertiesEditionPart_OutputMethodLabel);
+		outputMethod = new EMFComboViewer(parent);
+		outputMethod.setContentProvider(new ArrayContentProvider());
+		outputMethod.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
+		GridData outputMethodData = new GridData(GridData.FILL_HORIZONTAL);
+		outputMethod.getCombo().setLayoutData(outputMethodData);
+		outputMethod.addSelectionChangedListener(new ISelectionChangedListener() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+			 * 	
+			 */
+			public void selectionChanged(SelectionChangedEvent event) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SmooksMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.SmooksMediator.Output.outputMethod, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getOutputMethod()));
+			}
+
+		});
+		outputMethod.setID(EsbViewsRepository.SmooksMediator.Output.outputMethod);
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.SmooksMediator.Output.outputMethod, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createOutputMethodEMFComboViewer
+
+		// End of user code
+		return parent;
 	}
 
 	/**
@@ -181,55 +427,6 @@ public class SmooksMediatorPropertiesEditionPartImpl extends CompositeProperties
 		propertiesGroupLayout.numColumns = 3;
 		propertiesGroup.setLayout(propertiesGroupLayout);
 		return propertiesGroup;
-	}
-
-	
-	protected Composite createDescriptionText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.SmooksMediator.Properties.description, EsbMessages.SmooksMediatorPropertiesEditionPart_DescriptionLabel);
-		description = SWTUtils.createScrollableText(parent, SWT.BORDER);
-		GridData descriptionData = new GridData(GridData.FILL_HORIZONTAL);
-		description.setLayoutData(descriptionData);
-		description.addFocusListener(new FocusAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SmooksMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.SmooksMediator.Properties.description, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, description.getText()));
-			}
-
-		});
-		description.addKeyListener(new KeyAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SmooksMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.SmooksMediator.Properties.description, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, description.getText()));
-				}
-			}
-
-		});
-		EditingUtils.setID(description, EsbViewsRepository.SmooksMediator.Properties.description);
-		EditingUtils.setEEFtype(description, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.SmooksMediator.Properties.description, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		// Start of user code for createDescriptionText
-
-		// End of user code
-		return parent;
 	}
 
 	protected Composite createCommentsListMultiValuedEditor(Composite parent) {
@@ -305,73 +502,43 @@ public class SmooksMediatorPropertiesEditionPartImpl extends CompositeProperties
 		return parent;
 	}
 
-	
-	protected Composite createInputTypeEMFComboViewer(Composite parent) {
-		createDescription(parent, EsbViewsRepository.SmooksMediator.Properties.inputType, EsbMessages.SmooksMediatorPropertiesEditionPart_InputTypeLabel);
-		inputType = new EMFComboViewer(parent);
-		inputType.setContentProvider(new ArrayContentProvider());
-		inputType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
-		GridData inputTypeData = new GridData(GridData.FILL_HORIZONTAL);
-		inputType.getCombo().setLayoutData(inputTypeData);
-		inputType.addSelectionChangedListener(new ISelectionChangedListener() {
+	/**
+	 * 
+	 */
+	protected Composite createKeyGroup(Composite parent) {
+		Group keyGroup = new Group(parent, SWT.NONE);
+		keyGroup.setText(EsbMessages.SmooksMediatorPropertiesEditionPart_KeyGroupLabel);
+		GridData keyGroupData = new GridData(GridData.FILL_HORIZONTAL);
+		keyGroupData.horizontalSpan = 3;
+		keyGroup.setLayoutData(keyGroupData);
+		GridLayout keyGroupLayout = new GridLayout();
+		keyGroupLayout.numColumns = 3;
+		keyGroup.setLayout(keyGroupLayout);
+		return keyGroup;
+	}
 
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-			 * 	
-			 */
-			public void selectionChanged(SelectionChangedEvent event) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SmooksMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.SmooksMediator.Properties.inputType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getInputType()));
-			}
-
-		});
-		inputType.setID(EsbViewsRepository.SmooksMediator.Properties.inputType);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.SmooksMediator.Properties.inputType, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		// Start of user code for createInputTypeEMFComboViewer
-
-		// End of user code
-		return parent;
+	/**
+	 * 
+	 */
+	protected Composite createMiscGroup(Composite parent) {
+		Group miscGroup = new Group(parent, SWT.NONE);
+		miscGroup.setText(EsbMessages.SmooksMediatorPropertiesEditionPart_MiscGroupLabel);
+		GridData miscGroupData = new GridData(GridData.FILL_HORIZONTAL);
+		miscGroupData.horizontalSpan = 3;
+		miscGroup.setLayoutData(miscGroupData);
+		GridLayout miscGroupLayout = new GridLayout();
+		miscGroupLayout.numColumns = 3;
+		miscGroup.setLayout(miscGroupLayout);
+		return miscGroup;
 	}
 
 	
-	protected Composite createOutputTypeEMFComboViewer(Composite parent) {
-		createDescription(parent, EsbViewsRepository.SmooksMediator.Properties.outputType, EsbMessages.SmooksMediatorPropertiesEditionPart_OutputTypeLabel);
-		outputType = new EMFComboViewer(parent);
-		outputType.setContentProvider(new ArrayContentProvider());
-		outputType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
-		GridData outputTypeData = new GridData(GridData.FILL_HORIZONTAL);
-		outputType.getCombo().setLayoutData(outputTypeData);
-		outputType.addSelectionChangedListener(new ISelectionChangedListener() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-			 * 	
-			 */
-			public void selectionChanged(SelectionChangedEvent event) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SmooksMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.SmooksMediator.Properties.outputType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getOutputType()));
-			}
-
-		});
-		outputType.setID(EsbViewsRepository.SmooksMediator.Properties.outputType);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.SmooksMediator.Properties.outputType, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		// Start of user code for createOutputTypeEMFComboViewer
-
-		// End of user code
-		return parent;
-	}
-
-	
-	protected Composite createOutputPropertyText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.SmooksMediator.Properties.outputProperty, EsbMessages.SmooksMediatorPropertiesEditionPart_OutputPropertyLabel);
-		outputProperty = SWTUtils.createScrollableText(parent, SWT.BORDER);
-		GridData outputPropertyData = new GridData(GridData.FILL_HORIZONTAL);
-		outputProperty.setLayoutData(outputPropertyData);
-		outputProperty.addFocusListener(new FocusAdapter() {
+	protected Composite createDescriptionText(Composite parent) {
+		createDescription(parent, EsbViewsRepository.SmooksMediator.Misc.description, EsbMessages.SmooksMediatorPropertiesEditionPart_DescriptionLabel);
+		description = SWTUtils.createScrollableText(parent, SWT.BORDER);
+		GridData descriptionData = new GridData(GridData.FILL_HORIZONTAL);
+		description.setLayoutData(descriptionData);
+		description.addFocusListener(new FocusAdapter() {
 
 			/**
 			 * {@inheritDoc}
@@ -383,11 +550,11 @@ public class SmooksMediatorPropertiesEditionPartImpl extends CompositeProperties
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SmooksMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.SmooksMediator.Properties.outputProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, outputProperty.getText()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SmooksMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.SmooksMediator.Misc.description, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, description.getText()));
 			}
 
 		});
-		outputProperty.addKeyListener(new KeyAdapter() {
+		description.addKeyListener(new KeyAdapter() {
 
 			/**
 			 * {@inheritDoc}
@@ -400,75 +567,15 @@ public class SmooksMediatorPropertiesEditionPartImpl extends CompositeProperties
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
 					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SmooksMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.SmooksMediator.Properties.outputProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, outputProperty.getText()));
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SmooksMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.SmooksMediator.Misc.description, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, description.getText()));
 				}
 			}
 
 		});
-		EditingUtils.setID(outputProperty, EsbViewsRepository.SmooksMediator.Properties.outputProperty);
-		EditingUtils.setEEFtype(outputProperty, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.SmooksMediator.Properties.outputProperty, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		// Start of user code for createOutputPropertyText
-
-		// End of user code
-		return parent;
-	}
-
-	
-	protected Composite createOutputActionEMFComboViewer(Composite parent) {
-		createDescription(parent, EsbViewsRepository.SmooksMediator.Properties.outputAction, EsbMessages.SmooksMediatorPropertiesEditionPart_OutputActionLabel);
-		outputAction = new EMFComboViewer(parent);
-		outputAction.setContentProvider(new ArrayContentProvider());
-		outputAction.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
-		GridData outputActionData = new GridData(GridData.FILL_HORIZONTAL);
-		outputAction.getCombo().setLayoutData(outputActionData);
-		outputAction.addSelectionChangedListener(new ISelectionChangedListener() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-			 * 	
-			 */
-			public void selectionChanged(SelectionChangedEvent event) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SmooksMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.SmooksMediator.Properties.outputAction, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getOutputAction()));
-			}
-
-		});
-		outputAction.setID(EsbViewsRepository.SmooksMediator.Properties.outputAction);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.SmooksMediator.Properties.outputAction, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		// Start of user code for createOutputActionEMFComboViewer
-
-		// End of user code
-		return parent;
-	}
-
-	
-	protected Composite createOutputMethodEMFComboViewer(Composite parent) {
-		createDescription(parent, EsbViewsRepository.SmooksMediator.Properties.outputMethod, EsbMessages.SmooksMediatorPropertiesEditionPart_OutputMethodLabel);
-		outputMethod = new EMFComboViewer(parent);
-		outputMethod.setContentProvider(new ArrayContentProvider());
-		outputMethod.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
-		GridData outputMethodData = new GridData(GridData.FILL_HORIZONTAL);
-		outputMethod.getCombo().setLayoutData(outputMethodData);
-		outputMethod.addSelectionChangedListener(new ISelectionChangedListener() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-			 * 	
-			 */
-			public void selectionChanged(SelectionChangedEvent event) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SmooksMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.SmooksMediator.Properties.outputMethod, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getOutputMethod()));
-			}
-
-		});
-		outputMethod.setID(EsbViewsRepository.SmooksMediator.Properties.outputMethod);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.SmooksMediator.Properties.outputMethod, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		// Start of user code for createOutputMethodEMFComboViewer
+		EditingUtils.setID(description, EsbViewsRepository.SmooksMediator.Misc.description);
+		EditingUtils.setEEFtype(description, "eef::Text"); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.SmooksMediator.Misc.description, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createDescriptionText
 
 		// End of user code
 		return parent;
@@ -490,31 +597,219 @@ public class SmooksMediatorPropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.SmooksMediatorPropertiesEditionPart#getDescription()
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.SmooksMediatorPropertiesEditionPart#getInputType()
 	 * 
 	 */
-	public String getDescription() {
-		return description.getText();
+	public Enumerator getInputType() {
+		Enumerator selection = (Enumerator) ((StructuredSelection) inputType.getSelection()).getFirstElement();
+		return selection;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.SmooksMediatorPropertiesEditionPart#setDescription(String newValue)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.SmooksMediatorPropertiesEditionPart#initInputType(Object input, Enumerator current)
+	 */
+	public void initInputType(Object input, Enumerator current) {
+		inputType.setInput(input);
+		inputType.modelUpdating(new StructuredSelection(current));
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.SmooksMediator.Input.inputType);
+		if (eefElementEditorReadOnlyState && inputType.isEnabled()) {
+			inputType.setEnabled(false);
+			inputType.setToolTipText(EsbMessages.SmooksMediator_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !inputType.isEnabled()) {
+			inputType.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.SmooksMediatorPropertiesEditionPart#setInputType(Enumerator newValue)
 	 * 
 	 */
-	public void setDescription(String newValue) {
+	public void setInputType(Enumerator newValue) {
+		inputType.modelUpdating(new StructuredSelection(newValue));
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.SmooksMediator.Input.inputType);
+		if (eefElementEditorReadOnlyState && inputType.isEnabled()) {
+			inputType.setEnabled(false);
+			inputType.setToolTipText(EsbMessages.SmooksMediator_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !inputType.isEnabled()) {
+			inputType.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.SmooksMediatorPropertiesEditionPart#getOutputType()
+	 * 
+	 */
+	public Enumerator getOutputType() {
+		Enumerator selection = (Enumerator) ((StructuredSelection) outputType.getSelection()).getFirstElement();
+		return selection;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.SmooksMediatorPropertiesEditionPart#initOutputType(Object input, Enumerator current)
+	 */
+	public void initOutputType(Object input, Enumerator current) {
+		outputType.setInput(input);
+		outputType.modelUpdating(new StructuredSelection(current));
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.SmooksMediator.Output.outputType);
+		if (eefElementEditorReadOnlyState && outputType.isEnabled()) {
+			outputType.setEnabled(false);
+			outputType.setToolTipText(EsbMessages.SmooksMediator_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !outputType.isEnabled()) {
+			outputType.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.SmooksMediatorPropertiesEditionPart#setOutputType(Enumerator newValue)
+	 * 
+	 */
+	public void setOutputType(Enumerator newValue) {
+		outputType.modelUpdating(new StructuredSelection(newValue));
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.SmooksMediator.Output.outputType);
+		if (eefElementEditorReadOnlyState && outputType.isEnabled()) {
+			outputType.setEnabled(false);
+			outputType.setToolTipText(EsbMessages.SmooksMediator_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !outputType.isEnabled()) {
+			outputType.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.SmooksMediatorPropertiesEditionPart#getOutputProperty()
+	 * 
+	 */
+	public String getOutputProperty() {
+		return outputProperty.getText();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.SmooksMediatorPropertiesEditionPart#setOutputProperty(String newValue)
+	 * 
+	 */
+	public void setOutputProperty(String newValue) {
 		if (newValue != null) {
-			description.setText(newValue);
+			outputProperty.setText(newValue);
 		} else {
-			description.setText(""); //$NON-NLS-1$
+			outputProperty.setText(""); //$NON-NLS-1$
 		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.SmooksMediator.Properties.description);
-		if (eefElementEditorReadOnlyState && description.isEnabled()) {
-			description.setEnabled(false);
-			description.setToolTipText(EsbMessages.SmooksMediator_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !description.isEnabled()) {
-			description.setEnabled(true);
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.SmooksMediator.Output.outputProperty);
+		if (eefElementEditorReadOnlyState && outputProperty.isEnabled()) {
+			outputProperty.setEnabled(false);
+			outputProperty.setToolTipText(EsbMessages.SmooksMediator_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !outputProperty.isEnabled()) {
+			outputProperty.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.SmooksMediatorPropertiesEditionPart#getOutputAction()
+	 * 
+	 */
+	public Enumerator getOutputAction() {
+		Enumerator selection = (Enumerator) ((StructuredSelection) outputAction.getSelection()).getFirstElement();
+		return selection;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.SmooksMediatorPropertiesEditionPart#initOutputAction(Object input, Enumerator current)
+	 */
+	public void initOutputAction(Object input, Enumerator current) {
+		outputAction.setInput(input);
+		outputAction.modelUpdating(new StructuredSelection(current));
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.SmooksMediator.Output.outputAction);
+		if (eefElementEditorReadOnlyState && outputAction.isEnabled()) {
+			outputAction.setEnabled(false);
+			outputAction.setToolTipText(EsbMessages.SmooksMediator_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !outputAction.isEnabled()) {
+			outputAction.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.SmooksMediatorPropertiesEditionPart#setOutputAction(Enumerator newValue)
+	 * 
+	 */
+	public void setOutputAction(Enumerator newValue) {
+		outputAction.modelUpdating(new StructuredSelection(newValue));
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.SmooksMediator.Output.outputAction);
+		if (eefElementEditorReadOnlyState && outputAction.isEnabled()) {
+			outputAction.setEnabled(false);
+			outputAction.setToolTipText(EsbMessages.SmooksMediator_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !outputAction.isEnabled()) {
+			outputAction.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.SmooksMediatorPropertiesEditionPart#getOutputMethod()
+	 * 
+	 */
+	public Enumerator getOutputMethod() {
+		Enumerator selection = (Enumerator) ((StructuredSelection) outputMethod.getSelection()).getFirstElement();
+		return selection;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.SmooksMediatorPropertiesEditionPart#initOutputMethod(Object input, Enumerator current)
+	 */
+	public void initOutputMethod(Object input, Enumerator current) {
+		outputMethod.setInput(input);
+		outputMethod.modelUpdating(new StructuredSelection(current));
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.SmooksMediator.Output.outputMethod);
+		if (eefElementEditorReadOnlyState && outputMethod.isEnabled()) {
+			outputMethod.setEnabled(false);
+			outputMethod.setToolTipText(EsbMessages.SmooksMediator_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !outputMethod.isEnabled()) {
+			outputMethod.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.SmooksMediatorPropertiesEditionPart#setOutputMethod(Enumerator newValue)
+	 * 
+	 */
+	public void setOutputMethod(Enumerator newValue) {
+		outputMethod.modelUpdating(new StructuredSelection(newValue));
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.SmooksMediator.Output.outputMethod);
+		if (eefElementEditorReadOnlyState && outputMethod.isEnabled()) {
+			outputMethod.setEnabled(false);
+			outputMethod.setToolTipText(EsbMessages.SmooksMediator_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !outputMethod.isEnabled()) {
+			outputMethod.setEnabled(true);
 		}	
 		
 	}
@@ -605,219 +900,31 @@ public class SmooksMediatorPropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.SmooksMediatorPropertiesEditionPart#getInputType()
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.SmooksMediatorPropertiesEditionPart#getDescription()
 	 * 
 	 */
-	public Enumerator getInputType() {
-		Enumerator selection = (Enumerator) ((StructuredSelection) inputType.getSelection()).getFirstElement();
-		return selection;
+	public String getDescription() {
+		return description.getText();
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.SmooksMediatorPropertiesEditionPart#initInputType(Object input, Enumerator current)
-	 */
-	public void initInputType(Object input, Enumerator current) {
-		inputType.setInput(input);
-		inputType.modelUpdating(new StructuredSelection(current));
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.SmooksMediator.Properties.inputType);
-		if (eefElementEditorReadOnlyState && inputType.isEnabled()) {
-			inputType.setEnabled(false);
-			inputType.setToolTipText(EsbMessages.SmooksMediator_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !inputType.isEnabled()) {
-			inputType.setEnabled(true);
-		}	
-		
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.SmooksMediatorPropertiesEditionPart#setInputType(Enumerator newValue)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.SmooksMediatorPropertiesEditionPart#setDescription(String newValue)
 	 * 
 	 */
-	public void setInputType(Enumerator newValue) {
-		inputType.modelUpdating(new StructuredSelection(newValue));
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.SmooksMediator.Properties.inputType);
-		if (eefElementEditorReadOnlyState && inputType.isEnabled()) {
-			inputType.setEnabled(false);
-			inputType.setToolTipText(EsbMessages.SmooksMediator_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !inputType.isEnabled()) {
-			inputType.setEnabled(true);
-		}	
-		
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.SmooksMediatorPropertiesEditionPart#getOutputType()
-	 * 
-	 */
-	public Enumerator getOutputType() {
-		Enumerator selection = (Enumerator) ((StructuredSelection) outputType.getSelection()).getFirstElement();
-		return selection;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.SmooksMediatorPropertiesEditionPart#initOutputType(Object input, Enumerator current)
-	 */
-	public void initOutputType(Object input, Enumerator current) {
-		outputType.setInput(input);
-		outputType.modelUpdating(new StructuredSelection(current));
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.SmooksMediator.Properties.outputType);
-		if (eefElementEditorReadOnlyState && outputType.isEnabled()) {
-			outputType.setEnabled(false);
-			outputType.setToolTipText(EsbMessages.SmooksMediator_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !outputType.isEnabled()) {
-			outputType.setEnabled(true);
-		}	
-		
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.SmooksMediatorPropertiesEditionPart#setOutputType(Enumerator newValue)
-	 * 
-	 */
-	public void setOutputType(Enumerator newValue) {
-		outputType.modelUpdating(new StructuredSelection(newValue));
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.SmooksMediator.Properties.outputType);
-		if (eefElementEditorReadOnlyState && outputType.isEnabled()) {
-			outputType.setEnabled(false);
-			outputType.setToolTipText(EsbMessages.SmooksMediator_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !outputType.isEnabled()) {
-			outputType.setEnabled(true);
-		}	
-		
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.SmooksMediatorPropertiesEditionPart#getOutputProperty()
-	 * 
-	 */
-	public String getOutputProperty() {
-		return outputProperty.getText();
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.SmooksMediatorPropertiesEditionPart#setOutputProperty(String newValue)
-	 * 
-	 */
-	public void setOutputProperty(String newValue) {
+	public void setDescription(String newValue) {
 		if (newValue != null) {
-			outputProperty.setText(newValue);
+			description.setText(newValue);
 		} else {
-			outputProperty.setText(""); //$NON-NLS-1$
+			description.setText(""); //$NON-NLS-1$
 		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.SmooksMediator.Properties.outputProperty);
-		if (eefElementEditorReadOnlyState && outputProperty.isEnabled()) {
-			outputProperty.setEnabled(false);
-			outputProperty.setToolTipText(EsbMessages.SmooksMediator_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !outputProperty.isEnabled()) {
-			outputProperty.setEnabled(true);
-		}	
-		
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.SmooksMediatorPropertiesEditionPart#getOutputAction()
-	 * 
-	 */
-	public Enumerator getOutputAction() {
-		Enumerator selection = (Enumerator) ((StructuredSelection) outputAction.getSelection()).getFirstElement();
-		return selection;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.SmooksMediatorPropertiesEditionPart#initOutputAction(Object input, Enumerator current)
-	 */
-	public void initOutputAction(Object input, Enumerator current) {
-		outputAction.setInput(input);
-		outputAction.modelUpdating(new StructuredSelection(current));
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.SmooksMediator.Properties.outputAction);
-		if (eefElementEditorReadOnlyState && outputAction.isEnabled()) {
-			outputAction.setEnabled(false);
-			outputAction.setToolTipText(EsbMessages.SmooksMediator_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !outputAction.isEnabled()) {
-			outputAction.setEnabled(true);
-		}	
-		
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.SmooksMediatorPropertiesEditionPart#setOutputAction(Enumerator newValue)
-	 * 
-	 */
-	public void setOutputAction(Enumerator newValue) {
-		outputAction.modelUpdating(new StructuredSelection(newValue));
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.SmooksMediator.Properties.outputAction);
-		if (eefElementEditorReadOnlyState && outputAction.isEnabled()) {
-			outputAction.setEnabled(false);
-			outputAction.setToolTipText(EsbMessages.SmooksMediator_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !outputAction.isEnabled()) {
-			outputAction.setEnabled(true);
-		}	
-		
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.SmooksMediatorPropertiesEditionPart#getOutputMethod()
-	 * 
-	 */
-	public Enumerator getOutputMethod() {
-		Enumerator selection = (Enumerator) ((StructuredSelection) outputMethod.getSelection()).getFirstElement();
-		return selection;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.SmooksMediatorPropertiesEditionPart#initOutputMethod(Object input, Enumerator current)
-	 */
-	public void initOutputMethod(Object input, Enumerator current) {
-		outputMethod.setInput(input);
-		outputMethod.modelUpdating(new StructuredSelection(current));
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.SmooksMediator.Properties.outputMethod);
-		if (eefElementEditorReadOnlyState && outputMethod.isEnabled()) {
-			outputMethod.setEnabled(false);
-			outputMethod.setToolTipText(EsbMessages.SmooksMediator_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !outputMethod.isEnabled()) {
-			outputMethod.setEnabled(true);
-		}	
-		
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.SmooksMediatorPropertiesEditionPart#setOutputMethod(Enumerator newValue)
-	 * 
-	 */
-	public void setOutputMethod(Enumerator newValue) {
-		outputMethod.modelUpdating(new StructuredSelection(newValue));
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.SmooksMediator.Properties.outputMethod);
-		if (eefElementEditorReadOnlyState && outputMethod.isEnabled()) {
-			outputMethod.setEnabled(false);
-			outputMethod.setToolTipText(EsbMessages.SmooksMediator_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !outputMethod.isEnabled()) {
-			outputMethod.setEnabled(true);
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.SmooksMediator.Misc.description);
+		if (eefElementEditorReadOnlyState && description.isEnabled()) {
+			description.setEnabled(false);
+			description.setToolTipText(EsbMessages.SmooksMediator_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !description.isEnabled()) {
+			description.setEnabled(true);
 		}	
 		
 	}
@@ -826,6 +933,48 @@ public class SmooksMediatorPropertiesEditionPartImpl extends CompositeProperties
 
 
 
+
+	// Start of user code for inputExpresssion specific getters and setters implementation
+    @Override
+    public void setInputExpression(NamespacedProperty namespacedProperty) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public NamespacedProperty getInputExpression() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+	// End of user code
+
+	// Start of user code for outputExpression specific getters and setters implementation
+    @Override
+    public void setOutputExpression(NamespacedProperty namespacedProperty) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public NamespacedProperty getOutputExpression() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+	// End of user code
+
+	// Start of user code for configurationKey specific getters and setters implementation
+    @Override
+    public void setConfigurationKey(RegistryKeyProperty registryKeyProperty) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public RegistryKeyProperty getConfigurationKey() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+	// End of user code
 
 	/**
 	 * {@inheritDoc}
@@ -836,6 +985,12 @@ public class SmooksMediatorPropertiesEditionPartImpl extends CompositeProperties
 	public String getTitle() {
 		return EsbMessages.SmooksMediator_Part_Title;
 	}
+
+
+
+
+
+
 
 	// Start of user code additional methods
 	

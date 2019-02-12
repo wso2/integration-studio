@@ -114,15 +114,15 @@ public class AddressEndPointItemProvider extends AbstractEndPointItemProvider {
     }
 
     /**
-     * This returns AddressEndPoint.gif.
+     * This returns AddressEndPoint.png.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
+     * @generated NOT
      */
 
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/AddressEndPoint"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/AddressEndPoint.png"));
     }
 
     /**

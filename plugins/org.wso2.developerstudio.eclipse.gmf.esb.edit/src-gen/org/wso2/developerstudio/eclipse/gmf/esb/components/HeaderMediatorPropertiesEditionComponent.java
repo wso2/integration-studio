@@ -4,11 +4,6 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.components;
 
 // Start of user code for imports
-import java.util.Iterator;
-import java.util.List;
-
-import javax.xml.namespace.QName;
-
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;

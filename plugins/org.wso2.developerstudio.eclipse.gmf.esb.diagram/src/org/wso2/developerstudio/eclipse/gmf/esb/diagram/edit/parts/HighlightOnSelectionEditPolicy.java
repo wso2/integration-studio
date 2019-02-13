@@ -43,9 +43,11 @@ public class HighlightOnSelectionEditPolicy extends SelectionEditPolicy {
 
         Color figureColor = EditPartDrawingHelper.FigureNormalColor;
         Color borderColor = EditPartDrawingHelper.FigureNormalColor;
+        Color figureColorComplex = EditPartDrawingHelper.FigureNormalColor;
         if (isselected) {
             figureColor = EditPartDrawingHelper.FigureSelectedColor;
             borderColor = EditPartDrawingHelper.FigureSelectedBorderColor;
+            figureColorComplex = EditPartDrawingHelper.ComplexFigureSelectedColor;
         }
 
         if (getHost() instanceof FixedSizedAbstractMediator) {
@@ -64,7 +66,7 @@ public class HighlightOnSelectionEditPolicy extends SelectionEditPolicy {
 
         if (getHost() instanceof complexFiguredAbstractMediator) {
             complexFiguredAbstractMediator mediator = (complexFiguredAbstractMediator) getHost();
-            mediator.getComplexFiguredPrimaryShape().setBackgroundColor(figureColor);
+            mediator.getComplexFiguredPrimaryShape().setBackgroundColor(figureColorComplex);
             if (mediator.isBreakpointHit()) {
                 LineBorder border = (LineBorder) mediator.getComplexFiguredPrimaryShape().getBorder();
                 border.setColor(EditPartDrawingHelper.FigureBreakpointHitColor);
@@ -78,7 +80,7 @@ public class HighlightOnSelectionEditPolicy extends SelectionEditPolicy {
 
         if (getHost() instanceof AbstractEndpoint) {
             AbstractEndpoint mediator = (AbstractEndpoint) getHost();
-            mediator.getEndPointPrimaryShape().setBackgroundColor(figureColor);
+            mediator.getEndPointPrimaryShape().setBackgroundColor(figureColorComplex);
             Border border = mediator.getEndPointPrimaryShape().getBorder();
             if (border instanceof RoundedRectangleBorder) {
                 RoundedRectangleBorder roundedRectangleBorder = (RoundedRectangleBorder) border;
@@ -88,7 +90,7 @@ public class HighlightOnSelectionEditPolicy extends SelectionEditPolicy {
 
         if (getHost() instanceof AbstractEndpoint2) {
             AbstractEndpoint2 mediator = (AbstractEndpoint2) getHost();
-            mediator.getEndPoint2PrimaryShape().setBackgroundColor(figureColor);
+            mediator.getEndPoint2PrimaryShape().setBackgroundColor(figureColorComplex);
             RoundedRectangleBorder border = (RoundedRectangleBorder) mediator.getEndPoint2PrimaryShape().getBorder();
             border.setColor(borderColor);
         }

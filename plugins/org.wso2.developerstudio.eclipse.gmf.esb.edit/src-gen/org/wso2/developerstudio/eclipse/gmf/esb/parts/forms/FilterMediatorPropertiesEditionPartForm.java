@@ -755,7 +755,14 @@ public class FilterMediatorPropertiesEditionPartForm extends SectionPropertiesEd
             
             @Override
             public void mouseDown( MouseEvent event ) {
-                openNamespacedPropertyEditor(parent);
+                EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
+                        SWT.NULL, source);
+                nspd.open();
+                sourceText.setText(source.getPropertyValue());
+                propertiesEditionComponent
+                        .firePropertiesChanged(new PropertiesEditionEvent(FilterMediatorPropertiesEditionPartForm.this,
+                                EsbViewsRepository.FilterMediator.Properties.source, PropertiesEditionEvent.COMMIT,
+                                PropertiesEditionEvent.SET, null, getSource()));
             }
             
         });
@@ -764,7 +771,14 @@ public class FilterMediatorPropertiesEditionPartForm extends SectionPropertiesEd
                         
             @Override
             public void keyPressed(KeyEvent e) {
-                openNamespacedPropertyEditor(parent);
+                EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
+                        SWT.NULL, source);
+                nspd.open();
+                sourceText.setText(source.getPropertyValue());
+                propertiesEditionComponent
+                        .firePropertiesChanged(new PropertiesEditionEvent(FilterMediatorPropertiesEditionPartForm.this,
+                                EsbViewsRepository.FilterMediator.Properties.source, PropertiesEditionEvent.COMMIT,
+                                PropertiesEditionEvent.SET, null, getSource()));
             }
             
             @Override
@@ -781,18 +795,6 @@ public class FilterMediatorPropertiesEditionPartForm extends SectionPropertiesEd
         // aggregationExpressionHelp };
         sourceElements = new Control[] { itemLabel, sourceText, itemHelp };
         return parent;
-    }
-    
-    private void openNamespacedPropertyEditor(final Composite parent) {
-        EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
-                SWT.NULL, source);
-        // valueExpression.setPropertyValue(valueExpressionText.getText());
-        nspd.open();
-        sourceText.setText(source.getPropertyValue());
-        propertiesEditionComponent
-                .firePropertiesChanged(new PropertiesEditionEvent(FilterMediatorPropertiesEditionPartForm.this,
-                        EsbViewsRepository.FilterMediator.Properties.source, PropertiesEditionEvent.COMMIT,
-                        PropertiesEditionEvent.SET, null, getSource()));
     }
 
     protected Composite createXPathWidget(FormToolkit widgetFactory, final Composite parent) {
@@ -814,7 +816,14 @@ public class FilterMediatorPropertiesEditionPartForm extends SectionPropertiesEd
             
             @Override
             public void mouseDown( MouseEvent event ) {
-                openNamespacedPropertyEditor(parent);
+                EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
+                        SWT.NULL, xPath);
+                nspd.open();
+                xPathText.setText(xPath.getPropertyValue());
+                propertiesEditionComponent
+                        .firePropertiesChanged(new PropertiesEditionEvent(FilterMediatorPropertiesEditionPartForm.this,
+                                EsbViewsRepository.FilterMediator.Properties.xPath, PropertiesEditionEvent.COMMIT,
+                                PropertiesEditionEvent.SET, null, getXPath()));
             }
             
         });
@@ -823,7 +832,14 @@ public class FilterMediatorPropertiesEditionPartForm extends SectionPropertiesEd
                         
             @Override
             public void keyPressed(KeyEvent e) {
-                openNamespacedPropertyEditor(parent);
+                EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
+                        SWT.NULL, xPath);
+                nspd.open();
+                xPathText.setText(xPath.getPropertyValue());
+                propertiesEditionComponent
+                        .firePropertiesChanged(new PropertiesEditionEvent(FilterMediatorPropertiesEditionPartForm.this,
+                                EsbViewsRepository.FilterMediator.Properties.xPath, PropertiesEditionEvent.COMMIT,
+                                PropertiesEditionEvent.SET, null, getXPath()));
             }
             
             @Override

@@ -1295,7 +1295,7 @@ public class SequencePropertiesEditionPartForm extends SectionPropertiesEditingP
             
             @Override
             public void mouseDown( MouseEvent event ) {
-                openNamespacedPropertyEditor(parent);
+                openDynamicReferenceKeyNamespacedPropertyEditor(parent);
             }
             
         });
@@ -1304,7 +1304,7 @@ public class SequencePropertiesEditionPartForm extends SectionPropertiesEditingP
                         
             @Override
             public void keyPressed(KeyEvent e) {
-                openNamespacedPropertyEditor(parent);
+                openDynamicReferenceKeyNamespacedPropertyEditor(parent);
             }
             
             @Override
@@ -1325,7 +1325,7 @@ public class SequencePropertiesEditionPartForm extends SectionPropertiesEditingP
 		return parent;
 	}
 	
-    private void openNamespacedPropertyEditor(final Composite parent) {
+    private void openDynamicReferenceKeyNamespacedPropertyEditor(final Composite parent) {
         EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
                 SWT.NULL, dynamicReferenceKey);
         // valueExpression.setPropertyValue(valueExpressionText.getText());

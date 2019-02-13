@@ -979,7 +979,7 @@ public class SwitchMediatorPropertiesEditionPartForm extends SectionPropertiesEd
            
            @Override
            public void mouseDown( MouseEvent event ) {
-               openNamespacedPropertyEditor(parent);
+               openSourceXPathWidgetNamespacedPropertyEditor(parent);
            }
            
        });
@@ -988,7 +988,7 @@ public class SwitchMediatorPropertiesEditionPartForm extends SectionPropertiesEd
                        
            @Override
            public void keyPressed(KeyEvent e) {
-               openNamespacedPropertyEditor(parent);
+               openSourceXPathWidgetNamespacedPropertyEditor(parent);
            }
            
            @Override
@@ -1003,10 +1003,9 @@ public class SwitchMediatorPropertiesEditionPartForm extends SectionPropertiesEd
        return parent;
     }
    
-    private void openNamespacedPropertyEditor(final Composite parent) {
+    private void openSourceXPathWidgetNamespacedPropertyEditor(final Composite parent) {
         EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL,
                 sourceXPath);
-        // valueExpression.setPropertyValue(valueExpressionText.getText());
         nspd.open();
         sourceXPathText.setText(sourceXPath.getPropertyValue());
         propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(

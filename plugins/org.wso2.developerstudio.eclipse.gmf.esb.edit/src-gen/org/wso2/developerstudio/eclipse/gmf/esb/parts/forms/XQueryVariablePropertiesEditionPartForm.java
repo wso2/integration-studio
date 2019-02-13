@@ -55,7 +55,8 @@ import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.XQueryVariablePropertiesEditionPart;
 
@@ -73,6 +74,14 @@ public class XQueryVariablePropertiesEditionPartForm extends SectionPropertiesEd
 	protected EMFComboViewer variableType;
 	protected EMFComboViewer valueType;
 	protected Text valueLiteral;
+	// Start of user code  for valueExpression widgets declarations
+	
+	// End of user code
+
+	// Start of user code  for valueKey widgets declarations
+	
+	// End of user code
+
 
 
 
@@ -122,6 +131,8 @@ public class XQueryVariablePropertiesEditionPartForm extends SectionPropertiesEd
 		propertiesStep.addStep(EsbViewsRepository.XQueryVariable.Properties.variableType);
 		propertiesStep.addStep(EsbViewsRepository.XQueryVariable.Properties.valueType);
 		propertiesStep.addStep(EsbViewsRepository.XQueryVariable.Properties.valueLiteral);
+		propertiesStep.addStep(EsbViewsRepository.XQueryVariable.Properties.valueExpression);
+		propertiesStep.addStep(EsbViewsRepository.XQueryVariable.Properties.valueKey);
 		
 		
 		composer = new PartComposer(xQueryVariableStep) {
@@ -143,6 +154,12 @@ public class XQueryVariablePropertiesEditionPartForm extends SectionPropertiesEd
 				if (key == EsbViewsRepository.XQueryVariable.Properties.valueLiteral) {
 					return createValueLiteralText(widgetFactory, parent);
 				}
+				// Start of user code for valueExpression addToPart creation
+				
+				// End of user code
+				// Start of user code for valueKey addToPart creation
+				
+				// End of user code
 				return parent;
 			}
 		};
@@ -537,6 +554,34 @@ public class XQueryVariablePropertiesEditionPartForm extends SectionPropertiesEd
 
 
 
+	// Start of user code for valueExpression specific getters and setters implementation
+    @Override
+    public void setValueExpression(NamespacedProperty namespacedProperty) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public NamespacedProperty getValueExpression() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+	// End of user code
+
+	// Start of user code for valueKey specific getters and setters implementation
+    @Override
+    public void setValueKey(RegistryKeyProperty registryKeyProperty) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public RegistryKeyProperty getValueKey() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+	// End of user code
+
 	/**
 	 * {@inheritDoc}
 	 *
@@ -546,6 +591,10 @@ public class XQueryVariablePropertiesEditionPartForm extends SectionPropertiesEd
 	public String getTitle() {
 		return EsbMessages.XQueryVariable_Part_Title;
 	}
+
+
+
+
 
 	// Start of user code additional methods
 	

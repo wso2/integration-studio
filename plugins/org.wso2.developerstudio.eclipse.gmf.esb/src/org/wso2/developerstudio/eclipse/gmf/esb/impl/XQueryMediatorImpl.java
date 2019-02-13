@@ -157,14 +157,14 @@ public class XQueryMediatorImpl extends MediatorImpl implements XQueryMediator {
         setQueryKey(queryKey);
 
         // Static script key.
-        staticScriptKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
+        RegistryKeyProperty staticScriptKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
         staticScriptKey.setPrettyName("Static Script Key");
         staticScriptKey.setKeyName("key");
         staticScriptKey.setKeyValue(DEFAULT_REGISTRY_KEY);
         setStaticScriptKey(staticScriptKey);
 
         // Dynamic script key
-        dynamicScriptKey = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
+        NamespacedProperty dynamicScriptKey = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
         dynamicScriptKey.setPrettyName("Dynamic Script Key");
         dynamicScriptKey.setPropertyName("key");
         dynamicScriptKey.setPropertyValue(DEFAULT_XPATH_PROPERTY_VALUE);

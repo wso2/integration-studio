@@ -2340,6 +2340,15 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v8OfJnEei6boXzpRIfnA" name="scriptKeyType" views="_E7wltPJnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//XQueryMediator/scriptKeyType"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_HWxJAC7NEemBksbW5Nm1wA" name="staticScriptKey" views="__SqIoC7MEemBksbW5Nm1wA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//XQueryMediator/staticScriptKey"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_w3axoC7NEemBksbW5Nm1wA" name="targetXPath" views="_sNIz0C7NEemBksbW5Nm1wA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//XQueryMediator/targetXPath"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_KdNgEC7OEemBksbW5Nm1wA" name="dynamicScriptKey" views="_Eow1MC7OEemBksbW5Nm1wA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//XQueryMediator/dynamicScriptKey"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//XQueryMediator"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_E7v8OvJnEei6boXzpRIfnA" name="XQueryMediatorInputConnector" views="_E7wltfJnEei6boXzpRIfnA">
@@ -2366,6 +2375,12 @@
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v8QvJnEei6boXzpRIfnA" name="valueLiteral" views="_E7wlwPJnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//XQueryVariable/valueLiteral"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_Q_ZyAC7fEemBksbW5Nm1wA" name="valueExpression" views="_G08wMC7fEemBksbW5Nm1wA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//XQueryVariable/valueExpression"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_vtw8wC7fEemBksbW5Nm1wA" name="valueKey" views="_rofwgC7fEemBksbW5Nm1wA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//XQueryVariable/valueKey"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//XQueryVariable"/>
       </bindings>
@@ -8358,9 +8373,6 @@
       <views xmi:id="_E7wlrvJnEei6boXzpRIfnA" name="XQueryMediator">
         <elements xsi:type="eef-views:Container" xmi:id="_E7wlr_JnEei6boXzpRIfnA" name="properties">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wlsPJnEei6boXzpRIfnA" name="description">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
-          </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wlsfJnEei6boXzpRIfnA" name="commentsList">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.3"/>
           </elements>
@@ -8372,6 +8384,12 @@
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wltPJnEei6boXzpRIfnA" name="scriptKeyType">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
+          </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="__SqIoC7MEemBksbW5Nm1wA" name="staticScriptKey"/>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_sNIz0C7NEemBksbW5Nm1wA" name="targetXPath"/>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_Eow1MC7OEemBksbW5Nm1wA" name="dynamicScriptKey"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wlsPJnEei6boXzpRIfnA" name="description">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
         </elements>
       </views>
@@ -8406,6 +8424,8 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wlwPJnEei6boXzpRIfnA" name="valueLiteral">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_G08wMC7fEemBksbW5Nm1wA" name="valueExpression"/>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_rofwgC7fEemBksbW5Nm1wA" name="valueKey"/>
         </elements>
       </views>
       <views xmi:id="_E7wlwfJnEei6boXzpRIfnA" name="CalloutMediator">

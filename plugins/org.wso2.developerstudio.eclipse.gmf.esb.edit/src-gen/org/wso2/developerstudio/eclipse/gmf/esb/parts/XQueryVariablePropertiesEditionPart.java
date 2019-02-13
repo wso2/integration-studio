@@ -5,6 +5,8 @@ package org.wso2.developerstudio.eclipse.gmf.esb.parts;
 
 // Start of user code for imports
 import org.eclipse.emf.common.util.Enumerator;
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 
 
 // End of user code
@@ -87,6 +89,16 @@ public interface XQueryVariablePropertiesEditionPart {
 
 
 
+	// Start of user code for valueExpression specific getters and setters declaration
+	public void setValueExpression(NamespacedProperty namespacedProperty);
+	
+	public NamespacedProperty getValueExpression();
+	// End of user code
+	// Start of user code for valueKey specific getters and setters declaration
+	public void setValueKey(RegistryKeyProperty registryKeyProperty);
+	
+	public RegistryKeyProperty getValueKey();
+	// End of user code
 
 	/**
 	 * Returns the internationalized title text.

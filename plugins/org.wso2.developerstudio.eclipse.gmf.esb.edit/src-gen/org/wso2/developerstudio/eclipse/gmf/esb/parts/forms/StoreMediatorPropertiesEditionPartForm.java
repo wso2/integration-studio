@@ -56,6 +56,8 @@ import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.KeyListener;
+import org.eclipse.swt.events.MouseAdapter;
 import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -884,27 +886,28 @@ public class StoreMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
         widgetFactory.paintBordersFor(parent);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
         expressionText.setLayoutData(valueData);
-        expressionText.addFocusListener(new FocusAdapter() {
-            /**
-             * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-             * 
-             */
-            @Override
-            @SuppressWarnings("synthetic-access")
-            public void focusLost(FocusEvent e) {
-            }
 
-            /**
-             * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
-             */
+        expressionText.addMouseListener(new MouseAdapter() {
+            
             @Override
-            public void focusGained(FocusEvent e) {
-                EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL, expression);
-                nspd.open();
-                expressionText.setText(expression.getPropertyValue());
-                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(StoreMediatorPropertiesEditionPartForm.this, EsbViewsRepository.StoreMediator.Properties.expression, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getExpression()));
+            public void mouseDown( MouseEvent event ) {
+                openNamespacedPropertyEditor(parent);
             }
+            
         });
+        
+        expressionText.addKeyListener(new KeyListener() {
+                        
+            @Override
+            public void keyPressed(KeyEvent e) {
+                openNamespacedPropertyEditor(parent);
+            }
+            
+            @Override
+            public void keyReleased(KeyEvent e) {}
+            
+        });
+        
         EditingUtils.setID(expressionText, EsbViewsRepository.StoreMediator.Properties.expression);
         EditingUtils.setEEFtype(expressionText, "eef::Text");
         Control expressionHelp = FormUtils
@@ -914,6 +917,16 @@ public class StoreMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
                         null); // $NON-NLS-1$
         exoressionElements = new Control[] { expressionPathLabel, expressionText, expressionHelp };
         return parent;
+    }
+    
+    private void openNamespacedPropertyEditor(final Composite parent) {
+        EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL,
+                expression);
+        nspd.open();
+        expressionText.setText(expression.getPropertyValue());
+        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                StoreMediatorPropertiesEditionPartForm.this, EsbViewsRepository.StoreMediator.Properties.expression,
+                PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getExpression()));
     }
     
     protected ArrayList<String> getAvailableArtifactListFromProject(Composite parent) {

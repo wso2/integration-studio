@@ -424,8 +424,7 @@ public class HeaderMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 							HeaderMediatorPropertiesEditionPartForm.this,
 							EsbViewsRepository.HeaderMediator.Properties.valueInline,
 							PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, valueInline.getText()));
-					propertiesEditionComponent
-							.firePropertiesChanged(new PropertiesEditionEvent(
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
 									HeaderMediatorPropertiesEditionPartForm.this,
 									EsbViewsRepository.HeaderMediator.Properties.valueInline,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
@@ -850,7 +849,7 @@ public class HeaderMediatorPropertiesEditionPartForm extends SectionPropertiesEd
             
             @Override
             public void mouseDown( MouseEvent event ) {
-                openNamespacedPropertyEditor(parent);
+                openNamespacedPropertyEditorHeaderName(parent);
             }
             
         });
@@ -859,7 +858,8 @@ public class HeaderMediatorPropertiesEditionPartForm extends SectionPropertiesEd
                         
             @Override
             public void keyPressed(KeyEvent e) {
-                openNamespacedPropertyEditor(parent);
+                openNamespacedPropertyEditorHeaderName(parent);
+                
             }
             
             @Override
@@ -869,12 +869,12 @@ public class HeaderMediatorPropertiesEditionPartForm extends SectionPropertiesEd
         
         EditingUtils.setID(headerNameText, EsbViewsRepository.HeaderMediator.Properties.headerName);
         EditingUtils.setEEFtype(headerNameText, "eef::Text");
-        Control headerNameHelp =FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.HeaderMediator.Properties.headerName, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+        Control headerNameHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.HeaderMediator.Properties.headerName, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
         headerNameElements = new Control[] {headerNameLabel, headerNameText, headerNameHelp};
         return parent;
 	}
 	
-    private void openNamespacedPropertyEditor(final Composite parent) {
+    private void openNamespacedPropertyEditorHeaderName(final Composite parent) {
         EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL,
                 headerName);
         nspd.open();
@@ -882,6 +882,16 @@ public class HeaderMediatorPropertiesEditionPartForm extends SectionPropertiesEd
         propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
                 HeaderMediatorPropertiesEditionPartForm.this, EsbViewsRepository.HeaderMediator.Properties.headerName,
                 PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getHeaderName()));
+    }
+    
+    private void openNamespacedPropertyEditorValueExpression(final Composite parent) {
+        EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL,
+                valueExpression);
+        nspd.open();
+        valueExpressionText.setText(valueExpression.getPropertyValue());
+        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                HeaderMediatorPropertiesEditionPartForm.this, EsbViewsRepository.HeaderMediator.Properties.valueExpression,
+                PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getValueExpression()));
     }
 	
 	protected Composite createValueExpression(FormToolkit widgetFactory, final Composite parent) {
@@ -901,7 +911,7 @@ public class HeaderMediatorPropertiesEditionPartForm extends SectionPropertiesEd
             
             @Override
             public void mouseDown( MouseEvent event ) {
-                openNamespacedPropertyEditor(parent);
+                openNamespacedPropertyEditorValueExpression(parent);
             }
             
         });
@@ -910,7 +920,7 @@ public class HeaderMediatorPropertiesEditionPartForm extends SectionPropertiesEd
                         
             @Override
             public void keyPressed(KeyEvent e) {
-                openNamespacedPropertyEditor(parent);
+                openNamespacedPropertyEditorValueExpression(parent);
             }
             
             @Override

@@ -1526,7 +1526,10 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
             
             @Override
             public void mouseDown( MouseEvent event ) {
-                openNamespacedPropertyEditor(parent);
+                EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL, aggregationExpression);
+                nspd.open();
+                aggregationExpressionText.setText(aggregationExpression.getPropertyValue());
+                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AggregateMediatorPropertiesEditionPartForm.this, EsbViewsRepository.AggregateMediator.OnComplete.aggregationExpression, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getAggregationExpression()));
             }
             
         });
@@ -1535,7 +1538,10 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
                         
             @Override
             public void keyPressed(KeyEvent e) {
-                openNamespacedPropertyEditor(parent);
+                EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL, aggregationExpression);
+                nspd.open();
+                aggregationExpressionText.setText(aggregationExpression.getPropertyValue());
+                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AggregateMediatorPropertiesEditionPartForm.this, EsbViewsRepository.AggregateMediator.OnComplete.aggregationExpression, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getAggregationExpression()));
             }
             
             @Override
@@ -1548,14 +1554,6 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
         Control aggregationExpressionHelp =FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.AggregateMediator.OnComplete.aggregationExpression, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
         aggregationExpressionElements = new Control[] {aggregationExpressionLabel, aggregationExpressionText, aggregationExpressionHelp};
         return parent;
-    }
-    
-    private void openNamespacedPropertyEditor(final Composite parent) {
-        EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL, aggregationExpression);
-        //valueExpression.setPropertyValue(valueExpressionText.getText());
-        nspd.open();
-        aggregationExpressionText.setText(aggregationExpression.getPropertyValue());
-        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AggregateMediatorPropertiesEditionPartForm.this, EsbViewsRepository.AggregateMediator.OnComplete.aggregationExpression, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getAggregationExpression()));
     }
 
     protected Composite createCompletionMaxMessagesExpressionWidget(FormToolkit widgetFactory, final Composite parent) {
@@ -1575,7 +1573,10 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
             
             @Override
             public void mouseDown( MouseEvent event ) {
-                openNamespacedPropertyEditor(parent);
+                EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL, completionMaxMessagesExpression);
+                nspd.open();
+                completionMaxMessagesText.setText(completionMaxMessagesExpression.getPropertyValue());
+                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AggregateMediatorPropertiesEditionPartForm.this, EsbViewsRepository.AggregateMediator.Properties.completionMaxMessages, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getCompletionMaxMessagesExpression()));
             }
             
         });
@@ -1584,7 +1585,10 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
                         
             @Override
             public void keyPressed(KeyEvent e) {
-                openNamespacedPropertyEditor(parent);
+                EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL, completionMaxMessagesExpression);
+                nspd.open();
+                completionMaxMessagesText.setText(completionMaxMessagesExpression.getPropertyValue());
+                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AggregateMediatorPropertiesEditionPartForm.this, EsbViewsRepository.AggregateMediator.Properties.completionMaxMessages, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getCompletionMaxMessagesExpression()));
             }
             
             @Override
@@ -1616,7 +1620,10 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
             
             @Override
             public void mouseDown( MouseEvent event ) {
-                openNamespacedPropertyEditor(parent);
+                EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL, completionMinMessagesExpression);
+                nspd.open();
+                completionMinMessagesText.setText(completionMinMessagesExpression.getPropertyValue());
+                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AggregateMediatorPropertiesEditionPartForm.this, EsbViewsRepository.AggregateMediator.Properties.completionMinMessages, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getCompletionMinMessagesExpression()));
             }
             
         });
@@ -1625,7 +1632,10 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
                         
             @Override
             public void keyPressed(KeyEvent e) {
-                openNamespacedPropertyEditor(parent);
+                EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL, completionMinMessagesExpression);
+                nspd.open();
+                completionMinMessagesText.setText(completionMinMessagesExpression.getPropertyValue());
+                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AggregateMediatorPropertiesEditionPartForm.this, EsbViewsRepository.AggregateMediator.Properties.completionMinMessages, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getCompletionMinMessagesExpression()));
             }
             
             @Override
@@ -1657,7 +1667,10 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
             
             @Override
             public void mouseDown( MouseEvent event ) {
-                openNamespacedPropertyEditor(parent);
+                EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL, correlationExpression);
+                nspd.open();
+                correlationExpressionText.setText(correlationExpression.getPropertyValue());
+                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AggregateMediatorPropertiesEditionPartForm.this, EsbViewsRepository.AggregateMediator.Properties.correlationExpression, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getCorrelationExpression()));
             }
             
         });
@@ -1666,7 +1679,10 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
                         
             @Override
             public void keyPressed(KeyEvent e) {
-                openNamespacedPropertyEditor(parent);
+                EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL, correlationExpression);
+                nspd.open();
+                correlationExpressionText.setText(correlationExpression.getPropertyValue());
+                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AggregateMediatorPropertiesEditionPartForm.this, EsbViewsRepository.AggregateMediator.Properties.correlationExpression, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getCorrelationExpression()));
             }
             
             @Override

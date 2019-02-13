@@ -292,6 +292,7 @@ public class CloneMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
      * @generated NOT
      */
     protected Composite createCommentsListMultiValuedEditor(FormToolkit widgetFactory, Composite parent) {
+        Control [] previousControls = propertiesGroup.getChildren();
         commentsList = widgetFactory.createText(parent, "", SWT.READ_ONLY); //$NON-NLS-1$
         GridData commentsListData = new GridData(GridData.FILL_HORIZONTAL);
         commentsListData.horizontalSpan = 2;
@@ -333,7 +334,8 @@ public class CloneMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
         EditingUtils.setID(editCommentsList, EsbViewsRepository.CloneMediator.Properties.commentsList);
         EditingUtils.setEEFtype(editCommentsList, "eef::MultiValuedEditor::browsebutton"); //$NON-NLS-1$
         // Start of user code for createCommentsListMultiValuedEditor
-        commentListElements = new Control [] {editCommentsList, commentsList};
+        Control [] newControls = propertiesGroup.getChildren();
+        commentListElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
         // End of user code
         return parent;
     }
@@ -513,10 +515,10 @@ public class CloneMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
         continueParent.setLayoutData(continueParentData);
         EditingUtils.setID(continueParent, EsbViewsRepository.CloneMediator.Properties.continueParent);
         EditingUtils.setEEFtype(continueParent, "eef::Checkbox"); //$NON-NLS-1$
-        FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(
+        Control continueHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(
                 EsbViewsRepository.CloneMediator.Properties.continueParent, EsbViewsRepository.FORM_KIND), null); // $NON-NLS-1$
         // Start of user code for createContinueParentCheckbox
-        continueParentElements = new Control [] {continueParent};
+        continueParentElements = new Control [] {continueParent,continueHelp};
         // End of user code
         return parent;
     }
@@ -527,6 +529,7 @@ public class CloneMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
      * @generated NOT
      */
     protected Composite createTargetsTableComposition(FormToolkit widgetFactory, Composite parent) {
+        Control[] previousControls = propertiesGroup.getChildren();
         this.targets = new ReferencesTable(getDescription(EsbViewsRepository.CloneMediator.Properties.targets,
                 EsbMessages.CloneMediatorPropertiesEditionPart_TargetsLabel), new ReferencesTableListener() {
                     public void handleAdd() {
@@ -590,7 +593,8 @@ public class CloneMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
         targets.setID(EsbViewsRepository.CloneMediator.Properties.targets);
         targets.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
         // Start of user code for createTargetsTableComposition
-        targetTableElements = new Control [] {targets.getTable()};
+        Control[] newControls = propertiesGroup.getChildren();
+        targetTableElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
         // End of user code
         return parent;
     }
@@ -1061,10 +1065,12 @@ public class CloneMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
 
     public void validate() {
         EEFPropertyViewUtil epv = new EEFPropertyViewUtil(view);
-       // epv.clearElements(new Composite[] {propertiesGroup});
-        epv.hideEntry(new Control[] {reverse}, false);
-        epv.hideEntry(commentListElements, false);
-        epv.hideEntry(targetOutputElements, false);
+        epv.clearElements(new Composite[] {propertiesGroup});
+        epv.showEntry(descriptionElements, false);
+        epv.showEntry(cloneIDElements, false);
+        epv.showEntry(sequencialMediationElements, false);
+        epv.showEntry(continueParentElements, false);
+        epv.showEntry(targetTableElements, false);
         view.layout(true, true);
     }
     // End of user code

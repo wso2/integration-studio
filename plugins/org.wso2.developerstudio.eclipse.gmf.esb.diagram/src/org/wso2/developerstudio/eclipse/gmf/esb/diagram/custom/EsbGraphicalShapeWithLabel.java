@@ -148,7 +148,7 @@ public class EsbGraphicalShapeWithLabel extends RoundedRectangle {
             validationMarkImageRectangle.setPreferredSize(new Dimension(15, 15));
             validationMarkImageRectangle.setAlpha(0);
             validationMarkImageRectangle.add(iconImageFigure);
-            iconImageFigure.translate((this.getSize().width - 20), 2);
+            iconImageFigure.translate((this.getSize().width - 20), 0);
             validationMarkLayer.add(validationMarkImageRectangle, constraintImageRectangle);
             pane.add(validationMarkLayer);
         }

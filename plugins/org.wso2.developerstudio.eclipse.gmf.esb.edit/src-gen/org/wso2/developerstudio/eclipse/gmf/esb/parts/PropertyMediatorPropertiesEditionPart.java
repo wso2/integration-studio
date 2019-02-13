@@ -248,6 +248,20 @@ public interface PropertyMediatorPropertiesEditionPart {
 	public void setNewPropertyName(String newValue);
 
 
+	/**
+	 * @return the description
+	 * 
+	 */
+	public String getDescription();
+
+	/**
+	 * Defines a new description
+	 * @param newValue the new description to set
+	 * 
+	 */
+	public void setDescription(String newValue);
+
+
 
 
 	// Start of user code for valueExpression specific getters and setters declaration

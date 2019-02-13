@@ -891,7 +891,7 @@ public class StoreMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
             
             @Override
             public void mouseDown( MouseEvent event ) {
-                openNamespacedPropertyEditor(parent);
+                openExpressionWidgetNamespacedPropertyEditor(parent);
             }
             
         });
@@ -900,7 +900,7 @@ public class StoreMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
                         
             @Override
             public void keyPressed(KeyEvent e) {
-                openNamespacedPropertyEditor(parent);
+                openExpressionWidgetNamespacedPropertyEditor(parent);
             }
             
             @Override
@@ -919,7 +919,7 @@ public class StoreMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
         return parent;
     }
     
-    private void openNamespacedPropertyEditor(final Composite parent) {
+    private void openExpressionWidgetNamespacedPropertyEditor(final Composite parent) {
         EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL,
                 expression);
         nspd.open();

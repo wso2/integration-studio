@@ -82,6 +82,19 @@ import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
 
+import static org.wso2.developerstudio.eclipse.gmf.esb.Constants.TXT_DATABASE_CONNECTION_URL_MSSQL;
+import static org.wso2.developerstudio.eclipse.gmf.esb.Constants.TXT_DATABASE_CONNECTION_URL_MYSQL;
+import static org.wso2.developerstudio.eclipse.gmf.esb.Constants.TXT_DATABASE_CONNECTION_URL_ORACLE;
+import static org.wso2.developerstudio.eclipse.gmf.esb.Constants.TXT_DATABASE_CONNECTION_URL_POSTGRESQL;
+import static org.wso2.developerstudio.eclipse.gmf.esb.Constants.TXT_DATABASE_DRIVER_MYSQL;
+import static org.wso2.developerstudio.eclipse.gmf.esb.Constants.TXT_DATABASE_DRIVER_MSSQL;
+import static org.wso2.developerstudio.eclipse.gmf.esb.Constants.TXT_DATABASE_DRIVER_ORACLE;
+import static org.wso2.developerstudio.eclipse.gmf.esb.Constants.TXT_DATABASE_DRIVER_POSTGRESQL;
+import static org.wso2.developerstudio.eclipse.gmf.esb.Constants.TXT_DATABASE_USER_MYSQL;
+import static org.wso2.developerstudio.eclipse.gmf.esb.Constants.TXT_DATABASE_USER_MSSQL;
+import static org.wso2.developerstudio.eclipse.gmf.esb.Constants.TXT_DATABASE_USER_ORACLE;
+import static org.wso2.developerstudio.eclipse.gmf.esb.Constants.TXT_DATABASE_USER_POSTGRESQL;
+
 // End of user code
 
 /**
@@ -1339,6 +1352,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 			public void selectionChanged(SelectionChangedEvent event) {
 				if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartForm.this, EsbViewsRepository.DBLookupMediator.Connection.connectionDbType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getConnectionDbType()));
+				fillDbConnectionDefaultValues();
 			}
 
 		});
@@ -2804,6 +2818,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
             }
             
         } else if (getConnectionType() != null && getConnectionType().getName().equals(SqlExecutorConnectionType.DB_CONNECTION.getName())) {
+            eu.showEntry(connectionDbTypeElements, false);
             eu.showEntry(connectionDbDriverElements, false);
             eu.showEntry(connectionURLElements, false);
             eu.showEntry(connectionUsernameElements, false);
@@ -2829,6 +2844,74 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	    eu.showEntry(propertyTestwhileidleElements, false);
 	    eu.showEntry(propertyValidationQueryElements, false);
 	    eu.showEntry(propertyInitializeElements, false);
+	}
+	
+	private void fillDbConnectionDefaultValues() {
+	    String dbDriver = "";
+	    String dbURL = "";
+	    String dbUsername = "";
+	    if (getConnectionDbType() != null) {
+	        switch (getConnectionDbType().getName()) {
+	        case "MYSQL":
+	            dbDriver = TXT_DATABASE_DRIVER_MYSQL;
+                dbURL = TXT_DATABASE_CONNECTION_URL_MYSQL;
+                dbUsername = TXT_DATABASE_USER_MYSQL;
+                break;
+	        case "ORACLE":
+	            dbDriver = TXT_DATABASE_DRIVER_ORACLE;
+                dbURL = TXT_DATABASE_CONNECTION_URL_ORACLE;
+                dbUsername = TXT_DATABASE_USER_ORACLE;
+                break;
+	        case "MSSQL":
+	            dbDriver = TXT_DATABASE_DRIVER_MSSQL;
+                dbURL = TXT_DATABASE_CONNECTION_URL_MSSQL;
+                dbUsername = TXT_DATABASE_USER_MSSQL;
+                break;
+	        case "POSTGRESQL":
+	            dbDriver = TXT_DATABASE_DRIVER_POSTGRESQL;
+                dbURL = TXT_DATABASE_CONNECTION_URL_POSTGRESQL;
+                dbUsername = TXT_DATABASE_USER_POSTGRESQL;
+                break;
+	        }
+	    }
+	    
+	    //db driver
+	    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                DBLookupMediatorPropertiesEditionPartForm.this,
+                EsbViewsRepository.DBLookupMediator.Connection.connectionDbDriver,
+                PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, dbDriver));
+        propertiesEditionComponent
+                .firePropertiesChanged(new PropertiesEditionEvent(
+                        DBLookupMediatorPropertiesEditionPartForm.this,
+                        EsbViewsRepository.DBLookupMediator.Connection.connectionDbDriver,
+                        PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
+                        null, dbDriver));
+        
+        //db url
+        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                DBLookupMediatorPropertiesEditionPartForm.this,
+                EsbViewsRepository.DBLookupMediator.Connection.connectionURL,
+                PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, dbURL));
+        propertiesEditionComponent
+                .firePropertiesChanged(new PropertiesEditionEvent(
+                        DBLookupMediatorPropertiesEditionPartForm.this,
+                        EsbViewsRepository.DBLookupMediator.Connection.connectionURL,
+                        PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
+                        null, dbURL));
+        
+        //db username
+        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                DBLookupMediatorPropertiesEditionPartForm.this,
+                EsbViewsRepository.DBLookupMediator.Connection.connectionUsername,
+                PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, dbUsername));
+        propertiesEditionComponent
+                .firePropertiesChanged(new PropertiesEditionEvent(
+                        DBLookupMediatorPropertiesEditionPartForm.this,
+                        EsbViewsRepository.DBLookupMediator.Connection.connectionUsername,
+                        PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
+                        null, dbUsername));
+        
+        
 	}
 	// End of user code
 

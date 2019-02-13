@@ -702,7 +702,7 @@ public class EsbMessages extends NLS {
 
 	
 	public static String ThrottleMediatorPropertiesEditionPart_OnAcceptGroupLabel;
-	
+
 	
 	public static String ThrottleMediatorPropertiesEditionPart_ThrottlePolicyGroupLabel;
 
@@ -4277,6 +4277,9 @@ public class EsbMessages extends NLS {
 
 	
 	public static String PropertyMediatorPropertiesEditionPart_ValueExpressionLabel;
+
+	
+	public static String PropertyMediatorPropertiesEditionPart_DescriptionLabel;
 
 	
 	public static String PropertyMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;

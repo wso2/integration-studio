@@ -1161,6 +1161,9 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_X9lZABjOEemBdI3RQ1zfLA" name="valueExpression" views="_gdPbABjQEemBdI3RQ1zfLA">
           <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//PropertyMediator/valueExpression"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_jLbGAC9tEemBksbW5Nm1wA" name="description" views="_WOLzgC9tEemBksbW5Nm1wA">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//EsbElement/description"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//PropertyMediator"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_E7vVYPJnEei6boXzpRIfnA" name="PropertyMediatorInputConnector" views="_E7wj6_JnEei6boXzpRIfnA">
@@ -7061,6 +7064,9 @@
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
           <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_gdPbABjQEemBdI3RQ1zfLA" name="valueExpression"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_WOLzgC9tEemBksbW5Nm1wA" name="description">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
         </elements>
       </views>
       <views xmi:id="_E7wj6_JnEei6boXzpRIfnA" name="PropertyMediatorInputConnector">

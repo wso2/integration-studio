@@ -1180,7 +1180,13 @@ public class SmooksMediatorPropertiesEditionPartForm extends SectionPropertiesEd
             
             @Override
             public void mouseDown( MouseEvent event ) {
-                openNamespacedPropertyEditor(parent);
+                EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL,
+                        inputExpression);
+                nspd.open();
+                inputExpressionText.setText(inputExpression.getPropertyValue());
+                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                        SmooksMediatorPropertiesEditionPartForm.this, EsbViewsRepository.SmooksMediator.Input.inputExpresssion,
+                        PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getInputExpression()));
             }
             
         });
@@ -1189,7 +1195,13 @@ public class SmooksMediatorPropertiesEditionPartForm extends SectionPropertiesEd
                         
             @Override
             public void keyPressed(KeyEvent e) {
-                openNamespacedPropertyEditor(parent);
+                EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL,
+                        inputExpression);
+                nspd.open();
+                inputExpressionText.setText(inputExpression.getPropertyValue());
+                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                        SmooksMediatorPropertiesEditionPartForm.this, EsbViewsRepository.SmooksMediator.Input.inputExpresssion,
+                        PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getInputExpression()));
             }
             
             @Override
@@ -1202,16 +1214,6 @@ public class SmooksMediatorPropertiesEditionPartForm extends SectionPropertiesEd
         Control inputExpressionHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.SmooksMediator.Input.inputExpresssion, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
         inputExpressionElements = new Control[] {inputExpressionLabel, inputExpressionText, inputExpressionHelp};
         return parent;
-    }
-	
-    private void openNamespacedPropertyEditor(final Composite parent) {
-        EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL,
-                inputExpression);
-        nspd.open();
-        inputExpressionText.setText(inputExpression.getPropertyValue());
-        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
-                SmooksMediatorPropertiesEditionPartForm.this, EsbViewsRepository.SmooksMediator.Input.inputExpresssion,
-                PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getInputExpression()));
     }
 	
 	protected Composite createOutputExpression(FormToolkit widgetFactory, final Composite parent) {
@@ -1232,7 +1234,13 @@ public class SmooksMediatorPropertiesEditionPartForm extends SectionPropertiesEd
             
             @Override
             public void mouseDown( MouseEvent event ) {
-                openNamespacedPropertyEditor(parent);
+                EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL,
+                        outputExpression);
+                nspd.open();
+                outputExpressionText.setText(outputExpression.getPropertyValue());
+                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                        SmooksMediatorPropertiesEditionPartForm.this, EsbViewsRepository.SmooksMediator.Output.outputExpression,
+                        PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getOutputExpression()));
             }
             
         });
@@ -1241,7 +1249,13 @@ public class SmooksMediatorPropertiesEditionPartForm extends SectionPropertiesEd
                         
             @Override
             public void keyPressed(KeyEvent e) {
-                openNamespacedPropertyEditor(parent);
+                EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL,
+                        outputExpression);
+                nspd.open();
+                outputExpressionText.setText(outputExpression.getPropertyValue());
+                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                        SmooksMediatorPropertiesEditionPartForm.this, EsbViewsRepository.SmooksMediator.Output.outputExpression,
+                        PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getOutputExpression()));
             }
             
             @Override

@@ -1221,7 +1221,7 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
             
             @Override
             public void mouseDown( MouseEvent event ) {
-                openNamespacedPropertyEditor(parent);
+                openScriptDynamicKeyNamespacedPropertyEditor(parent);
             }
             
         });
@@ -1230,7 +1230,7 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
                         
             @Override
             public void keyPressed(KeyEvent e) {
-                openNamespacedPropertyEditor(parent);
+                openScriptDynamicKeyNamespacedPropertyEditor(parent);
             }
             
             @Override
@@ -1250,7 +1250,7 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 		return parent;
 	}
 	
-    private void openNamespacedPropertyEditor(final Composite parent) {
+    private void openScriptDynamicKeyNamespacedPropertyEditor(final Composite parent) {
         EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
                 SWT.NULL, scriptDynamicKey);
         // valueExpression.setPropertyValue(valueExpressionText.getText());

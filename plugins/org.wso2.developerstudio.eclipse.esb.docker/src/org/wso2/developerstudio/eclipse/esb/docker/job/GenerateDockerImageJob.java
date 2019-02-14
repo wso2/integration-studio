@@ -136,7 +136,7 @@ public class GenerateDockerImageJob extends Job {
         } catch (Exception e) {
             log.error(DockerGenConstants.ErrorMessages.DOCKER_IMAGE_CREATION_FAILED_TITLE, e);
             showMessageBox(DockerGenConstants.ErrorMessages.DOCKER_IMAGE_CREATION_FAILED_TITLE,
-                    DockerGenConstants.ErrorMessages.DOCKER_IMAGE_CREATION_INTERNAL_ERROR_MSG, SWT.ICON_ERROR);
+                    DockerGenConstants.ErrorMessages.DOCKER_CONNECTION_FAIL_MSG, SWT.ICON_ERROR);
 
             operationText = e.getMessage();
             monitor.beginTask(operationText, 100);

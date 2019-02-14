@@ -852,7 +852,7 @@ public class SendMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
             
             @Override
             public void mouseDown( MouseEvent event ) {
-                openNamespacedPropertyEditor(parent);
+                openDynamicReceivingSequenceNamespacedPropertyEditor(parent);
             }
             
         });
@@ -861,7 +861,7 @@ public class SendMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
                         
             @Override
             public void keyPressed(KeyEvent e) {
-                openNamespacedPropertyEditor(parent);
+                openDynamicReceivingSequenceNamespacedPropertyEditor(parent);
             }
             
             @Override
@@ -935,7 +935,7 @@ public class SendMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 		return parent;
 	}
 	
-    private void openNamespacedPropertyEditor(final Composite parent) {
+    private void openDynamicReceivingSequenceNamespacedPropertyEditor(final Composite parent) {
         EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
                 SWT.NULL, dynamicReceivingSequence);
         nspd.open();

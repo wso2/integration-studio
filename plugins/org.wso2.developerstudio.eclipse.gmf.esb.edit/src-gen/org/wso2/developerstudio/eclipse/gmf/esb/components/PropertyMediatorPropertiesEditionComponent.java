@@ -138,6 +138,9 @@ public class PropertyMediatorPropertiesEditionComponent extends SinglePartProper
             }
 			// End of user code
 			
+			if (isAccessible(EsbViewsRepository.PropertyMediator.Properties.description))
+				basePart.setDescription(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, propertyMediator.getDescription()));
+			
 			// init filters
 			
 			
@@ -157,6 +160,7 @@ public class PropertyMediatorPropertiesEditionComponent extends SinglePartProper
 			
 			// End of user code
 			
+			
 			// init values for referenced views
 			
 			// init filters for referenced views
@@ -164,6 +168,7 @@ public class PropertyMediatorPropertiesEditionComponent extends SinglePartProper
 		}
 		setInitializing(false);
 	}
+
 
 
 
@@ -232,6 +237,9 @@ public class PropertyMediatorPropertiesEditionComponent extends SinglePartProper
 		if (editorKey == EsbViewsRepository.PropertyMediator.Properties.valueExpression) {
 			return EsbPackage.eINSTANCE.getPropertyMediator_ValueExpression();
 		}
+		if (editorKey == EsbViewsRepository.PropertyMediator.Properties.description) {
+			return EsbPackage.eINSTANCE.getEsbElement_Description();
+		}
 		return super.associatedFeature(editorKey);
 	}
 
@@ -294,6 +302,9 @@ public class PropertyMediatorPropertiesEditionComponent extends SinglePartProper
             }
 			// End of user code
 			
+		}
+		if (EsbViewsRepository.PropertyMediator.Properties.description == event.getAffectedEditor()) {
+			propertyMediator.setDescription((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 	}
 
@@ -389,6 +400,13 @@ public class PropertyMediatorPropertiesEditionComponent extends SinglePartProper
             }	
 					// End of user code
 			
+			if (EsbPackage.eINSTANCE.getEsbElement_Description().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.PropertyMediator.Properties.description)) {
+				if (msg.getNewValue() != null) {
+					basePart.setDescription(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
+				} else {
+					basePart.setDescription("");
+				}
+			}
 			
 		}
 	}
@@ -415,7 +433,8 @@ public class PropertyMediatorPropertiesEditionComponent extends SinglePartProper
 			EsbPackage.eINSTANCE.getPropertyMediator_ValueStringPattern(),
 			EsbPackage.eINSTANCE.getPropertyMediator_ValueStringCapturingGroup(),
 			EsbPackage.eINSTANCE.getPropertyMediator_NewPropertyName(),
-			EsbPackage.eINSTANCE.getPropertyMediator_ValueExpression()		);
+			EsbPackage.eINSTANCE.getPropertyMediator_ValueExpression(),
+			EsbPackage.eINSTANCE.getEsbElement_Description()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -527,6 +546,13 @@ public class PropertyMediatorPropertiesEditionComponent extends SinglePartProper
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getPropertyMediator_NewPropertyName().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getPropertyMediator_NewPropertyName().getEAttributeType(), newValue);
+				}
+				if (EsbViewsRepository.PropertyMediator.Properties.description == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getEsbElement_Description().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getEsbElement_Description().getEAttributeType(), newValue);
 				}
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);

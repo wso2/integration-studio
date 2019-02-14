@@ -168,9 +168,7 @@ public class EsbViewsRepository {
 			public static String valueType = "esb::EndPointProperty::properties::valueType";
 			
 			// Start of user code for valueExpression ElementEditor key
-
 			public static String valueExpression = "esb::EndPointProperty::properties::valueExpression";
-
 			// End of user code
 			
 	
@@ -1972,6 +1970,9 @@ public class EsbViewsRepository {
 			// Start of user code for valueExpression ElementEditor key
 			public static String valueExpression = "esb::PropertyMediator::properties::valueExpression";
 			// End of user code
+			
+			
+			public static String description = "esb::PropertyMediator::properties::description";
 			
 	
 		}

@@ -254,10 +254,12 @@ public class LogMediatorPropertiesEditionPartForm extends SectionPropertiesEditi
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createLogSeparatorText(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.LogMediator.Properties.logSeparator, EsbMessages.LogMediatorPropertiesEditionPart_LogSeparatorLabel);
-		logSeparator = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+		logSeparator = widgetFactory.createText(parent, ","); //$NON-NLS-1$
 		logSeparator.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData logSeparatorData = new GridData(GridData.FILL_HORIZONTAL);

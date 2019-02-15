@@ -2607,6 +2607,12 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v8f_JnEei6boXzpRIfnA" name="description" views="_E7wmDPJnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//EsbElement/description"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_rCjQ0DEOEemo6qC30gq9Xg" name="commentsList" views="_j-ZRkDEOEemo6qC30gq9Xg">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//EsbElement/commentsList"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_VokJkDEQEemo6qC30gq9Xg" name="Reverse" views="_QY8qEDEQEemo6qC30gq9Xg">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//Mediator/Reverse"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//HeaderMediator"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_E7v8h_JnEei6boXzpRIfnA" name="HeaderMediatorInputConnector" views="_E7wmFPJnEei6boXzpRIfnA">
@@ -8679,6 +8685,12 @@
           <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_Dk2oACPUEemagNadSZ2E_A" name="value Expression"/>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wmDPJnEei6boXzpRIfnA" name="description">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_j-ZRkDEOEemo6qC30gq9Xg" name="commentsList">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.3"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_QY8qEDEQEemo6qC30gq9Xg" name="Reverse">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
           </elements>
         </elements>
       </views>

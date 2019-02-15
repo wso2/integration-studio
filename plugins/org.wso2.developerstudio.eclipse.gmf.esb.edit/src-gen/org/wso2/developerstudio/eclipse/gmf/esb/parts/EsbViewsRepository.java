@@ -4573,6 +4573,12 @@ public class EsbViewsRepository {
 			
 			public static String description = "esb::HeaderMediator::properties::description";
 			
+			
+			public static String commentsList = "esb::HeaderMediator::properties::commentsList";
+			
+			
+			public static String reverse = "esb::HeaderMediator::properties::Reverse";
+			
 	
 		}
 	

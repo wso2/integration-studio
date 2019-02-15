@@ -3,6 +3,7 @@
  */
 package org.wso2.developerstudio.eclipse.gmf.esb.parts.forms;
 
+import org.eclipse.emf.common.util.EList;
 // Start of user code for imports
 import org.eclipse.emf.common.util.Enumerator;
 
@@ -47,7 +48,7 @@ import org.eclipse.swt.events.MouseAdapter;
 import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
-
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Text;
@@ -95,6 +96,12 @@ public class HeaderMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	protected Control[] valueInlineElements;
 	protected Control[] valueLiteralElements;
 	protected Control[] descriptionElements;
+	
+	protected Text commentsList;
+    protected Button editCommentsList;
+    protected EList commentsListList;
+    protected Button reverse;
+    
 	// End of user code
 
 	protected Text description;
@@ -831,6 +838,89 @@ public class HeaderMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	}
 	
 	// Start of user code additional methods
+	
+	/**
+     * {@inheritDoc}
+     * 
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.HeaderMediatorPropertiesEditionPart#getCommentsList()
+     * 
+     */
+    public EList getCommentsList() {
+        return commentsListList;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.HeaderMediatorPropertiesEditionPart#setCommentsList(EList newValue)
+     * 
+     */
+    public void setCommentsList(EList newValue) {
+        commentsListList = newValue;
+        if (newValue != null) {
+            commentsList.setText(commentsListList.toString());
+        } else {
+            commentsList.setText(""); //$NON-NLS-1$
+        }
+        boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.HeaderMediator.Properties.commentsList);
+        if (eefElementEditorReadOnlyState && commentsList.isEnabled()) {
+            commentsList.setEnabled(false);
+            commentsList.setToolTipText(EsbMessages.HeaderMediator_ReadOnly);
+        } else if (!eefElementEditorReadOnlyState && !commentsList.isEnabled()) {
+            commentsList.setEnabled(true);
+        }   
+        
+    }
+
+    public void addToCommentsList(Object newValue) {
+        commentsListList.add(newValue);
+        if (newValue != null) {
+            commentsList.setText(commentsListList.toString());
+        } else {
+            commentsList.setText(""); //$NON-NLS-1$
+        }
+    }
+
+    public void removeToCommentsList(Object newValue) {
+        commentsListList.remove(newValue);
+        if (newValue != null) {
+            commentsList.setText(commentsListList.toString());
+        } else {
+            commentsList.setText(""); //$NON-NLS-1$
+        }
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.HeaderMediatorPropertiesEditionPart#getReverse()
+     * 
+     */
+    public Boolean getReverse() {
+        return Boolean.valueOf(reverse.getSelection());
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.HeaderMediatorPropertiesEditionPart#setReverse(Boolean newValue)
+     * 
+     */
+    public void setReverse(Boolean newValue) {
+        if (newValue != null) {
+            reverse.setSelection(newValue.booleanValue());
+        } else {
+            reverse.setSelection(false);
+        }
+        boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.HeaderMediator.Properties.reverse);
+        if (eefElementEditorReadOnlyState && reverse.isEnabled()) {
+            reverse.setEnabled(false);
+            reverse.setToolTipText(EsbMessages.HeaderMediator_ReadOnly);
+        } else if (!eefElementEditorReadOnlyState && !reverse.isEnabled()) {
+            reverse.setEnabled(true);
+        }   
+        
+    }
 	
 	protected Composite createHeaderName(FormToolkit widgetFactory, final Composite parent) {
 		Control headerNameLabel = createDescription(parent, EsbViewsRepository.HeaderMediator.Properties.headerName, EsbMessages.HeaderMediatorPropertiesEditionPart_HeaderNameLabel);

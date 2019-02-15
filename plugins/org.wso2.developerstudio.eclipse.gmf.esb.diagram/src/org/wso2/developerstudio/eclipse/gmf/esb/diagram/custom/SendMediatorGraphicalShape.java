@@ -116,7 +116,7 @@ public class SendMediatorGraphicalShape extends RoundedRectangle {
     }
 
     public String getIconPath() {
-        return "icons/ico20/log-mediator.gif";
+        return "icons/ico20/log-mediator.png";
     }
 
     public String getNodeName() {

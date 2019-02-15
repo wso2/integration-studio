@@ -51,19 +51,20 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.SwitchCaseBranchOutputConnectorPropertiesEditionPart;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
 /**
  * 
- * 
+ * @generated NOT
  */
 public class SwitchCaseBranchOutputConnectorPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, SwitchCaseBranchOutputConnectorPropertiesEditionPart {
 
@@ -71,7 +72,8 @@ public class SwitchCaseBranchOutputConnectorPropertiesEditionPartImpl extends Co
 	protected List<ViewerFilter> commentMediatorsBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> commentMediatorsFilters = new ArrayList<ViewerFilter>();
 	protected Text caseRegex;
-
+   protected Control[] commentElements;
+   protected Group propertiesGroup;
 
 
 	/**
@@ -133,10 +135,10 @@ public class SwitchCaseBranchOutputConnectorPropertiesEditionPartImpl extends Co
 	}
 
 	/**
-	 * 
+	 * @generated NOT
 	 */
 	protected Composite createPropertiesGroup(Composite parent) {
-		Group propertiesGroup = new Group(parent, SWT.NONE);
+		propertiesGroup = new Group(parent, SWT.NONE);
 		propertiesGroup.setText(EsbMessages.SwitchCaseBranchOutputConnectorPropertiesEditionPart_PropertiesGroupLabel);
 		GridData propertiesGroupData = new GridData(GridData.FILL_HORIZONTAL);
 		propertiesGroupData.horizontalSpan = 3;
@@ -149,9 +151,10 @@ public class SwitchCaseBranchOutputConnectorPropertiesEditionPartImpl extends Co
 
 	/**
 	 * @param container
-	 * 
+	 * @generated NOT
 	 */
 	protected Composite createCommentMediatorsAdvancedTableComposition(Composite parent) {
+	   Control [] previousControls = propertiesGroup.getChildren();
 		this.commentMediators = new ReferencesTable(getDescription(EsbViewsRepository.SwitchCaseBranchOutputConnector.Properties.commentMediators, EsbMessages.SwitchCaseBranchOutputConnectorPropertiesEditionPart_CommentMediatorsLabel), new ReferencesTableListener() {
 			public void handleAdd() { 
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SwitchCaseBranchOutputConnectorPropertiesEditionPartImpl.this, EsbViewsRepository.SwitchCaseBranchOutputConnector.Properties.commentMediators, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
@@ -193,7 +196,8 @@ public class SwitchCaseBranchOutputConnectorPropertiesEditionPartImpl extends Co
 		commentMediators.setID(EsbViewsRepository.SwitchCaseBranchOutputConnector.Properties.commentMediators);
 		commentMediators.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
 		// Start of user code for createCommentMediatorsAdvancedTableComposition
-
+		Control [] newControls = propertiesGroup.getChildren();
+      commentElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
 		// End of user code
 		return parent;
 	}
@@ -374,7 +378,17 @@ public class SwitchCaseBranchOutputConnectorPropertiesEditionPartImpl extends Co
 	}
 
 	// Start of user code additional methods
-	
+    @Override
+    public void refresh() {
+        super.refresh();
+        validate();
+    }
+
+    public void validate() {
+        EEFPropertyViewUtil epv = new EEFPropertyViewUtil(view);
+        epv.hideEntry(commentElements, false);
+        view.layout(true, true);
+    }
 	// End of user code
 
 

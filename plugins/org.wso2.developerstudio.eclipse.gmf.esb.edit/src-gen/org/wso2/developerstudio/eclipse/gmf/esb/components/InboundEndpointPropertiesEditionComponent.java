@@ -134,9 +134,10 @@ public class InboundEndpointPropertiesEditionComponent extends SinglePartPropert
 			if (isAccessible(EsbViewsRepository.InboundEndpoint.Properties.type)) {
 				basePart.initType(EEFUtils.choiceOfValues(inboundEndpoint, EsbPackage.eINSTANCE.getInboundEndpoint_Type()), inboundEndpoint.getType());
 			}
+			// Start of user code for additional businessfilters for serviceParameters
 			if (isAccessible(EsbViewsRepository.InboundEndpoint.Properties.class_))
 				basePart.setClass_(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, inboundEndpoint.getClass().getName()));
-			
+			// End of user code
 			if (isAccessible(EsbViewsRepository.InboundEndpoint.Properties.protocol))
 				basePart.setProtocol(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, inboundEndpoint.getProtocol()));
 			

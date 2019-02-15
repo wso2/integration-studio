@@ -43,19 +43,19 @@ import org.eclipse.ui.forms.widgets.Section;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbDiagramPropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
 /**
  * 
- * 
+ * @generated NOT
  */
 public class EsbDiagramPropertiesEditionPartForm extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, EsbDiagramPropertiesEditionPart {
 
 	protected Text test;
-
+	protected Composite propertiesGroup;
 
 
 	/**
@@ -120,7 +120,7 @@ public class EsbDiagramPropertiesEditionPartForm extends SectionPropertiesEditin
 		composer.compose(view);
 	}
 	/**
-	 * 
+	 * @generated NOT
 	 */
 	protected Composite createPropertiesGroup(FormToolkit widgetFactory, final Composite parent) {
 		Section propertiesSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
@@ -128,7 +128,7 @@ public class EsbDiagramPropertiesEditionPartForm extends SectionPropertiesEditin
 		GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
 		propertiesSectionData.horizontalSpan = 3;
 		propertiesSection.setLayoutData(propertiesSectionData);
-		Composite propertiesGroup = widgetFactory.createComposite(propertiesSection);
+		propertiesGroup = widgetFactory.createComposite(propertiesSection);
 		GridLayout propertiesGroupLayout = new GridLayout();
 		propertiesGroupLayout.numColumns = 3;
 		propertiesGroup.setLayout(propertiesGroupLayout);
@@ -265,7 +265,17 @@ public class EsbDiagramPropertiesEditionPartForm extends SectionPropertiesEditin
 	}
 
 	// Start of user code additional methods
+    @Override
+    public void refresh() {
+        super.refresh();
+        validate();
+    }
 	
+    public void validate() {
+        EEFPropertyViewUtil epv = new EEFPropertyViewUtil(view);
+        epv.clearElements(new Composite[] {view});
+        view.layout(true, true);
+    }
 	// End of user code
 
 

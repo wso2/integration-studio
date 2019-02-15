@@ -42,6 +42,7 @@ import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.KeyListener;
 import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.layout.GridData;
@@ -201,7 +202,7 @@ public class LogPropertyPropertiesEditionPartImpl extends CompositePropertiesEdi
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
+			public void keyReleased(KeyEvent e) {
 				if (propertiesEditionComponent != null) {
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LogPropertyPropertiesEditionPartImpl.this, EsbViewsRepository.LogProperty.Properties.propertyName, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, propertyName.getText()));
 				}
@@ -285,7 +286,7 @@ public class LogPropertyPropertiesEditionPartImpl extends CompositePropertiesEdi
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
+			public void keyReleased(KeyEvent e) {
 				if (propertiesEditionComponent != null) {
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LogPropertyPropertiesEditionPartImpl.this, EsbViewsRepository.LogProperty.Properties.propertyValue, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, propertyValue.getText()));
 				}
@@ -507,31 +508,44 @@ public class LogPropertyPropertiesEditionPartImpl extends CompositePropertiesEdi
 		propertyExpressionTypeElements = new Control[] { propertyExpressionTextLabel, propertyExpressionText,
 				propertyExpressionHelp };// mouse
 		propertyExpressionText.addMouseListener(new MouseListener() {
+		    
+            @Override
+            public void mouseDown(MouseEvent e) {
+                openPropertyExpressionNSPEDialog(parent);
+            }		    
 
 			@Override
-			public void mouseUp(MouseEvent e) {
-				// TODO Auto-generated method stub
-
-			}
+			public void mouseUp(MouseEvent e) {}
 
 			@Override
-			public void mouseDown(MouseEvent e) {
-			    EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL, propertyExpression);
-                nspd.open();
-                propertyExpressionText.setText(propertyExpression.getPropertyValue());
-                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LogPropertyPropertiesEditionPartImpl.this, 
-                        EsbViewsRepository.LogProperty.Properties.propertyExpression, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET,
-                        null, getExpressionValue()));
-                
-			}
-
-			@Override
-			public void mouseDoubleClick(MouseEvent e) {
-				// TODO Auto-generated method stub
-
-			}
+			public void mouseDoubleClick(MouseEvent e) {}
+			
 		});
+		
+		propertyExpressionText.addKeyListener(new KeyListener() {
+            
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.character != SWT.CR) {
+                    openPropertyExpressionNSPEDialog(parent);
+                }
+            }
+		    
+            @Override
+            public void keyReleased(KeyEvent e) {}
+            
+        });
+		
 		return parent;
+	}
+	
+	public void openPropertyExpressionNSPEDialog(final Composite parent) {
+	    EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL, propertyExpression);
+        nspd.open();
+        propertyExpressionText.setText(propertyExpression.getPropertyValue());
+        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LogPropertyPropertiesEditionPartImpl.this, 
+                EsbViewsRepository.LogProperty.Properties.propertyExpression, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET,
+                null, getExpressionValue()));
 	}
 
 		// End of user code

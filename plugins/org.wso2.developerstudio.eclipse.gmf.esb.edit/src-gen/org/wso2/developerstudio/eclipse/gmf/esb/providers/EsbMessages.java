@@ -3961,6 +3961,12 @@ public class EsbMessages extends NLS {
 	public static String DropMediatorPropertiesEditionPart_DescriptionLabel;
 
 	
+	public static String DropMediatorPropertiesEditionPart_CommentsListLabel;
+
+	
+	public static String DropMediatorPropertiesEditionPart_ReverseLabel;
+
+	
 	public static String DropMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;
 
 	

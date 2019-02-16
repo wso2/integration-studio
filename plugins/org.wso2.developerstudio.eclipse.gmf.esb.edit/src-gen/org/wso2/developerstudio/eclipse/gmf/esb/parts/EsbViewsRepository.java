@@ -1252,6 +1252,12 @@ public class EsbViewsRepository {
 			
 			public static String description = "esb::DropMediator::properties::description";
 			
+			
+			public static String commentsList = "esb::DropMediator::properties::commentsList";
+			
+			
+			public static String reverse = "esb::DropMediator::properties::Reverse";
+			
 	
 		}
 	

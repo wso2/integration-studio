@@ -3,6 +3,8 @@ package org.wso2.developerstudio.eclipse.gmf.esb.presentation;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.layout.FormData;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
@@ -113,5 +115,34 @@ public class EEFPropertyViewUtil {
             //tableElements[i - previousControls.length] = newControls[i];
             arrayList.add(newControls[i]);
         }
+    }
+    
+    /**
+     * This method will check if a specific key combination matches a defined
+     * set of key combinations.
+     * 
+     * @param e KeyEvent instance.
+     * @return 'True' if matches, 'False' otherwise.
+     */
+    public static boolean isReservedKeyCombination(KeyEvent e) {
+        boolean isReserved = false;
+        
+        if (e.keyCode == SWT.CR) {
+            isReserved = true;
+        } else if (e.keyCode == SWT.COMMAND) {
+            isReserved = true;
+        } else if (e.keyCode == SWT.CTRL) {
+            isReserved = true;
+        } else if (e.keyCode == SWT.ALT) {
+            isReserved = true;
+        } else if (e.keyCode == SWT.SHIFT) {
+            isReserved = true;
+        } else if (e.stateMask == SWT.COMMAND && e.character == 's') {
+            isReserved = true;
+        } else if (e.stateMask == SWT.CTRL && e.character == 's') {
+            isReserved = true;
+        }
+        
+        return isReserved;
     }
 }

@@ -5107,6 +5107,12 @@ public class EsbMessages extends NLS {
 	public static String CacheMediatorPropertiesEditionPart_MaxMessageSizeLabel;
 
 	
+	public static String CacheMediatorPropertiesEditionPart_CommentsListLabel;
+
+	
+	public static String CacheMediatorPropertiesEditionPart_ReverseLabel;
+
+	
 	public static String CacheMediatorPropertiesEditionPart_MaxEntryCountLabel;
 
 	

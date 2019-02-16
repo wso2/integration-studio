@@ -4,11 +4,15 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.components;
 
 // Start of user code for imports
+import java.util.Iterator;
+import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
+import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.WrappedException;
 
 import org.eclipse.emf.ecore.EObject;
@@ -27,7 +31,7 @@ import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
-
+import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 
@@ -142,6 +146,12 @@ public class CacheMediatorPropertiesEditionComponent extends SinglePartPropertie
             }
             // End of user code
 
+            if (isAccessible(EsbViewsRepository.CacheMediator.Properties.commentsList))
+                basePart.setCommentsList(cacheMediator.getCommentsList());
+
+            if (isAccessible(EsbViewsRepository.CacheMediator.Properties.reverse)) {
+                basePart.setReverse(cacheMediator.isReverse());
+            }
             // init filters
 
             // Start of user code for sequenceKey filter update
@@ -202,6 +212,12 @@ public class CacheMediatorPropertiesEditionComponent extends SinglePartPropertie
         }
         if (editorKey == EsbViewsRepository.CacheMediator.OnCacheHit.sequenceKey) {
             return EsbPackage.eINSTANCE.getCacheMediator_SequenceKey();
+        }
+        if (editorKey == EsbViewsRepository.CacheMediator.Properties.commentsList) {
+            return EsbPackage.eINSTANCE.getEsbElement_CommentsList();
+        }
+        if (editorKey == EsbViewsRepository.CacheMediator.Properties.reverse) {
+            return EsbPackage.eINSTANCE.getMediator_Reverse();
         }
         return super.associatedFeature(editorKey);
     }
@@ -271,6 +287,15 @@ public class CacheMediatorPropertiesEditionComponent extends SinglePartPropertie
             }
             // End of user code
 
+        }
+        if (EsbViewsRepository.CacheMediator.Properties.commentsList == event.getAffectedEditor()) {
+            if (event.getKind() == PropertiesEditionEvent.SET) {
+                cacheMediator.getCommentsList().clear();
+                cacheMediator.getCommentsList().addAll(((EList) event.getNewValue()));
+            }
+        }
+        if (EsbViewsRepository.CacheMediator.Properties.reverse == event.getAffectedEditor()) {
+            cacheMediator.setReverse((Boolean) event.getNewValue());
         }
     }
 
@@ -398,6 +423,25 @@ public class CacheMediatorPropertiesEditionComponent extends SinglePartPropertie
             }
             // End of user code
 
+            if (EsbPackage.eINSTANCE.getEsbElement_CommentsList().equals(msg.getFeature())
+                    && msg.getNotifier().equals(semanticObject) && basePart != null
+                    && isAccessible(EsbViewsRepository.CacheMediator.Properties.commentsList)) {
+                if (msg.getNewValue() instanceof EList<?>) {
+                    basePart.setCommentsList((EList<?>) msg.getNewValue());
+                } else if (msg.getNewValue() == null) {
+                    basePart.setCommentsList(new BasicEList<Object>());
+                } else {
+                    BasicEList<Object> newValueAsList = new BasicEList<Object>();
+                    newValueAsList.add(msg.getNewValue());
+                    basePart.setCommentsList(newValueAsList);
+                }
+            }
+
+            if (EsbPackage.eINSTANCE.getMediator_Reverse().equals(msg.getFeature())
+                    && msg.getNotifier().equals(semanticObject) && basePart != null
+                    && isAccessible(EsbViewsRepository.CacheMediator.Properties.reverse))
+                basePart.setReverse((Boolean) msg.getNewValue());
+
         }
     }
 
@@ -422,7 +466,8 @@ public class CacheMediatorPropertiesEditionComponent extends SinglePartPropertie
                 EsbPackage.eINSTANCE.getCacheMediator_ResponseCodes(),
                 EsbPackage.eINSTANCE.getCacheMediator_EnableCacheControl(),
                 EsbPackage.eINSTANCE.getCacheMediator_IncludeAgeHeader(),
-                EsbPackage.eINSTANCE.getCacheMediator_SequenceKey());
+                EsbPackage.eINSTANCE.getCacheMediator_SequenceKey(), EsbPackage.eINSTANCE.getEsbElement_CommentsList(),
+                EsbPackage.eINSTANCE.getMediator_Reverse());
         return new NotificationFilter[] { filter, };
     }
 
@@ -566,6 +611,24 @@ public class CacheMediatorPropertiesEditionComponent extends SinglePartPropertie
                     }
                     ret = Diagnostician.INSTANCE.validate(
                             EsbPackage.eINSTANCE.getCacheMediator_IncludeAgeHeader().getEAttributeType(), newValue);
+                }
+                if (EsbViewsRepository.CacheMediator.Properties.commentsList == event.getAffectedEditor()) {
+                    BasicDiagnostic chain = new BasicDiagnostic();
+                    for (Iterator iterator = ((List) event.getNewValue()).iterator(); iterator.hasNext();) {
+                        chain.add(Diagnostician.INSTANCE.validate(
+                                EsbPackage.eINSTANCE.getEsbElement_CommentsList().getEAttributeType(),
+                                iterator.next()));
+                    }
+                    ret = chain;
+                }
+                if (EsbViewsRepository.CacheMediator.Properties.reverse == event.getAffectedEditor()) {
+                    Object newValue = event.getNewValue();
+                    if (newValue instanceof String) {
+                        newValue = EEFConverterUtil.createFromString(
+                                EsbPackage.eINSTANCE.getMediator_Reverse().getEAttributeType(), (String) newValue);
+                    }
+                    ret = Diagnostician.INSTANCE
+                            .validate(EsbPackage.eINSTANCE.getMediator_Reverse().getEAttributeType(), newValue);
                 }
             } catch (IllegalArgumentException iae) {
                 ret = BasicDiagnostic.toDiagnostic(iae);

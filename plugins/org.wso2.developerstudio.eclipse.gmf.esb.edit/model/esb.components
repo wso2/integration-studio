@@ -2304,6 +2304,12 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_nspJ8CcTEem3lJlzbKMBPg" name="sequenceKey" views="_yYgsMCcSEem3lJlzbKMBPg">
           <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//CacheMediator/sequenceKey"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_WW1eYDHMEemo6qC30gq9Xg" name="commentsList" views="_P4hXIDHMEemo6qC30gq9Xg">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//EsbElement/commentsList"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_f9SccDHmEemo6qC30gq9Xg" name="Reverse" views="_bhDhsDHmEemo6qC30gq9Xg">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//Mediator/Reverse"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//CacheMediator"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_E7v8LfJnEei6boXzpRIfnA" name="CacheMediatorInputConnector" views="_E7wlpPJnEei6boXzpRIfnA">
@@ -8323,6 +8329,12 @@
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wlnPJnEei6boXzpRIfnA" name="maxMessageSize">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_P4hXIDHMEemo6qC30gq9Xg" name="commentsList">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.3"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_bhDhsDHmEemo6qC30gq9Xg" name="Reverse">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
           </elements>
         </elements>
         <elements xsi:type="eef-views:Container" xmi:id="_kzMigCcREem3lJlzbKMBPg" name="Implementation">

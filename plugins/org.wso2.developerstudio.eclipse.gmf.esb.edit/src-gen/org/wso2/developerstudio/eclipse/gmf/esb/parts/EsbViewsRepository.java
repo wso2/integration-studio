@@ -3981,6 +3981,12 @@ public class EsbViewsRepository {
 			
 			public static String maxMessageSize = "esb::CacheMediator::properties::maxMessageSize";
 			
+			
+			public static String commentsList = "esb::CacheMediator::properties::commentsList";
+			
+			
+			public static String reverse = "esb::CacheMediator::properties::Reverse";
+			
 	
 		}
 	

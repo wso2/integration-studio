@@ -6157,6 +6157,12 @@ public class EsbViewsRepository {
 			
 			public static String description = "esb::SendMediator::properties::description";
 			
+			
+			public static String commentsList = "esb::SendMediator::properties::commentsList";
+			
+			
+			public static String reverse = "esb::SendMediator::properties::Reverse";
+			
 	
 		}
 	

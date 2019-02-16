@@ -6061,6 +6061,12 @@ public class EsbMessages extends NLS {
 	public static String SendMediatorPropertiesEditionPart_DescriptionLabel;
 
 	
+	public static String SendMediatorPropertiesEditionPart_CommentsListLabel;
+
+	
+	public static String SendMediatorPropertiesEditionPart_ReverseLabel;
+
+	
 	public static String SendMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;
 
 	

@@ -4,11 +4,15 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.components;
 
 // Start of user code for imports
+import java.util.Iterator;
+import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
+import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.WrappedException;
 
 import org.eclipse.emf.ecore.EObject;
@@ -119,6 +123,12 @@ public class SendMediatorPropertiesEditionComponent extends SinglePartProperties
 			if (isAccessible(EsbViewsRepository.SendMediator.Properties.description))
 				basePart.setDescription(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, sendMediator.getDescription()));
 			
+			if (isAccessible(EsbViewsRepository.SendMediator.Properties.commentsList))
+				basePart.setCommentsList(sendMediator.getCommentsList());
+			
+			if (isAccessible(EsbViewsRepository.SendMediator.Properties.reverse)) {
+				basePart.setReverse(sendMediator.isReverse());
+			}
 			// init filters
 			
 			if (isAccessible(EsbViewsRepository.SendMediator.Properties.endPoint)) {
@@ -135,6 +145,8 @@ public class SendMediatorPropertiesEditionComponent extends SinglePartProperties
 			// End of user code
 			
 			
+			
+			
 			// init values for referenced views
 			
 			// init filters for referenced views
@@ -142,6 +154,8 @@ public class SendMediatorPropertiesEditionComponent extends SinglePartProperties
 		}
 		setInitializing(false);
 	}
+
+
 
 
 
@@ -177,6 +191,12 @@ public class SendMediatorPropertiesEditionComponent extends SinglePartProperties
 		}
 		if (editorKey == EsbViewsRepository.SendMediator.Properties.description) {
 			return EsbPackage.eINSTANCE.getEsbElement_Description();
+		}
+		if (editorKey == EsbViewsRepository.SendMediator.Properties.commentsList) {
+			return EsbPackage.eINSTANCE.getEsbElement_CommentsList();
+		}
+		if (editorKey == EsbViewsRepository.SendMediator.Properties.reverse) {
+			return EsbPackage.eINSTANCE.getMediator_Reverse();
 		}
 		return super.associatedFeature(editorKey);
 	}
@@ -233,6 +253,15 @@ public class SendMediatorPropertiesEditionComponent extends SinglePartProperties
 		if (EsbViewsRepository.SendMediator.Properties.description == event.getAffectedEditor()) {
 			sendMediator.setDescription((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
+		if (EsbViewsRepository.SendMediator.Properties.commentsList == event.getAffectedEditor()) {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
+				sendMediator.getCommentsList().clear();
+				sendMediator.getCommentsList().addAll(((EList) event.getNewValue()));
+			}
+		}
+		if (EsbViewsRepository.SendMediator.Properties.reverse == event.getAffectedEditor()) {
+			sendMediator.setReverse((Boolean)event.getNewValue());
+		}
 	}
 
 	/**
@@ -286,6 +315,21 @@ public class SendMediatorPropertiesEditionComponent extends SinglePartProperties
 					basePart.setDescription("");
 				}
 			}
+			if (EsbPackage.eINSTANCE.getEsbElement_CommentsList().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.SendMediator.Properties.commentsList)) {
+				if (msg.getNewValue() instanceof EList<?>) {
+					basePart.setCommentsList((EList<?>)msg.getNewValue());
+				} else if (msg.getNewValue() == null) {
+					basePart.setCommentsList(new BasicEList<Object>());
+				} else {
+					BasicEList<Object> newValueAsList = new BasicEList<Object>();
+					newValueAsList.add(msg.getNewValue());
+					basePart.setCommentsList(newValueAsList);
+				}
+			}
+			
+			if (EsbPackage.eINSTANCE.getMediator_Reverse().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.SendMediator.Properties.reverse))
+				basePart.setReverse((Boolean)msg.getNewValue());
+			
 			
 		}
 	}
@@ -304,7 +348,9 @@ public class SendMediatorPropertiesEditionComponent extends SinglePartProperties
 			EsbPackage.eINSTANCE.getSendMediator_BuildMessageBeforeSending(),
 			EsbPackage.eINSTANCE.getSendMediator_StaticReceivingSequence(),
 			EsbPackage.eINSTANCE.getSendMediator_DynamicReceivingSequence(),
-			EsbPackage.eINSTANCE.getEsbElement_Description()		);
+			EsbPackage.eINSTANCE.getEsbElement_Description(),
+			EsbPackage.eINSTANCE.getEsbElement_CommentsList(),
+			EsbPackage.eINSTANCE.getMediator_Reverse()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -346,6 +392,20 @@ public class SendMediatorPropertiesEditionComponent extends SinglePartProperties
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getEsbElement_Description().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getEsbElement_Description().getEAttributeType(), newValue);
+				}
+				if (EsbViewsRepository.SendMediator.Properties.commentsList == event.getAffectedEditor()) {
+					BasicDiagnostic chain = new BasicDiagnostic();
+					for (Iterator iterator = ((List)event.getNewValue()).iterator(); iterator.hasNext();) {
+						chain.add(Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getEsbElement_CommentsList().getEAttributeType(), iterator.next()));
+					}
+					ret = chain;
+				}
+				if (EsbViewsRepository.SendMediator.Properties.reverse == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getMediator_Reverse().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getMediator_Reverse().getEAttributeType(), newValue);
 				}
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);

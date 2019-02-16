@@ -3498,6 +3498,12 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v9m_JnEei6boXzpRIfnA" name="description" views="_E7xJcvJnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//EsbElement/description"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_KjFZ8DHAEemo6qC30gq9Xg" name="commentsList" views="_FeVGoDHAEemo6qC30gq9Xg">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//EsbElement/commentsList"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_xNXYwDHIEemo6qC30gq9Xg" name="Reverse" views="_qVQ4gDHIEemo6qC30gq9Xg">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//Mediator/Reverse"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//SendMediator"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_E7v9ovJnEei6boXzpRIfnA" name="SendContainer" views="_E7xJefJnEei6boXzpRIfnA">
@@ -9723,6 +9729,12 @@
           <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_5nAukCYzEemmDY5PU6MPfg" name="DynamicReceivingSequence"/>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xJcvJnEei6boXzpRIfnA" name="description">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_FeVGoDHAEemo6qC30gq9Xg" name="commentsList">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.3"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_qVQ4gDHIEemo6qC30gq9Xg" name="Reverse">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
           </elements>
         </elements>
       </views>

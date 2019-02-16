@@ -133,6 +133,8 @@ public class CallMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
     protected Control[] endpointRegistryKeyElements;
     protected Control[] endpointXpathElements;
     protected Composite propertiesGroup;
+    
+    protected final EEFPropertyViewUtil epv = new EEFPropertyViewUtil(view);
 	// End of user code
 
 
@@ -930,7 +932,7 @@ public class CallMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
             
             @Override
             public void mouseDown( MouseEvent event ) {
-                openNamespacedPropertyEditor(parent);
+                openCreateEndpointNPE(parent);
             }
             
         });
@@ -939,13 +941,15 @@ public class CallMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
                         
             @Override
             public void keyPressed(KeyEvent e) {
-                openNamespacedPropertyEditor(parent);
+                if (!epv.isReservedKeyCombination(e)) {
+                    openCreateEndpointNPE(parent);
+                }
             }
             
             @Override
             public void keyReleased(KeyEvent e) {}
             
-        });;
+        });
         
         EditingUtils.setID(endpointXPathText, EsbViewsRepository.AggregateMediator.OnComplete.aggregationExpression);
         EditingUtils.setEEFtype(endpointXPathText, "eef::Text");
@@ -954,9 +958,8 @@ public class CallMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
         return parent;
     }
 	
-    private void openNamespacedPropertyEditor(final Composite parent) {
+    private void openCreateEndpointNPE(final Composite parent) {
         EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL, endpointXPath);
-        //valueExpression.setPropertyValue(valueExpressionText.getText());
         nspd.open();
         endpointXPathText.setText(endpointXPath.getPropertyValue());
         propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CallMediatorPropertiesEditionPartForm.this, EsbViewsRepository.CallMediator.Properties.endpointXpath, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getEndpointXPath()));
@@ -969,7 +972,6 @@ public class CallMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
     }
 
     public void validate() {
-        EEFPropertyViewUtil epv = new EEFPropertyViewUtil(view);
         epv.clearElements(new Composite[] {propertiesGroup});
         epv.showEntry(endpointTypeElements, false);
         epv.showEntry(enableBlockingCallsElements, false);

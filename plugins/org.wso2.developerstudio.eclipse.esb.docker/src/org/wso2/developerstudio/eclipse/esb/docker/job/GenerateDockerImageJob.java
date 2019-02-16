@@ -37,12 +37,16 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 import org.osgi.framework.Bundle;
 import org.wso2.developerstudio.eclipse.esb.docker.Activator;
+import org.wso2.developerstudio.eclipse.esb.docker.exceptions.DockerConnectionException;
+import org.wso2.developerstudio.eclipse.esb.docker.exceptions.DockerImageGenerationException;
 import org.wso2.developerstudio.eclipse.esb.docker.model.MicroIntegratorDockerModel;
 import org.wso2.developerstudio.eclipse.esb.docker.resources.DockerGenConstants;
 import org.wso2.developerstudio.eclipse.esb.docker.util.DockerImageGenerator;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
+
+import com.spotify.docker.client.exceptions.DockerException;
 
 /**
  * Represents a background job to generate the Docker image.
@@ -79,11 +83,13 @@ public class GenerateDockerImageJob extends Job {
         String operationText = "Preparing files... ";
         monitor.beginTask(operationText, 100);
 
-        try {
-            operationText = "Copying files...";
-            monitor.subTask(operationText);
-            monitor.worked(10);
+        String generatedImageId = null;
 
+        operationText = "Copying files...";
+        monitor.subTask(operationText);
+        monitor.worked(10);
+
+        try {
             // Copy MicroEI distribution to the docker directory
             FileUtils.copyDirectory(new File(getEiDistributionSource()), new File(getEiDistributionDestination()));
 
@@ -92,13 +98,9 @@ public class GenerateDockerImageJob extends Job {
             URL fileURL = bundle.getEntry(DockerGenConstants.ImageParamDefaults.INIT_FILE_PATH);
             File initFile = null;
 
-            try {
-                URL resolvedFileURL = FileLocator.toFileURL(fileURL);
-                URI resolvedURI = new URI(resolvedFileURL.getProtocol(), resolvedFileURL.getPath(), null);
-                initFile = new File(resolvedURI);
-            } catch (URISyntaxException | IOException e) {
-                log.error(DockerGenConstants.ErrorMessages.DOCKER_IMAGE_CREATION_FAILED_MSG, e);
-            }
+            URL resolvedFileURL = FileLocator.toFileURL(fileURL);
+            URI resolvedURI = new URI(resolvedFileURL.getProtocol(), resolvedFileURL.getPath(), null);
+            initFile = new File(resolvedURI);
 
             FileUtils.copy(initFile,
                     new File(dockerDirectory + File.separator + DockerGenConstants.ImageParamDefaults.INIT_FILE_NAME));
@@ -115,8 +117,14 @@ public class GenerateDockerImageJob extends Job {
             monitor.worked(20);
 
             // Copy CAR file to the deployment directory
-            FileUtils.copyFile(getCarbonFile().getAbsolutePath(),
-                    getDeploymentDirectory() + File.separator + getCarbonFile().getName());
+            try {
+                FileUtils.copyFile(getCarbonFile().getAbsolutePath(),
+                        getDeploymentDirectory() + File.separator + getCarbonFile().getName());
+            } catch (Exception e) {
+                log.error(DockerGenConstants.ErrorMessages.DOCKER_IMAGE_CREATION_FAILED_TITLE, e);
+                showMessageBox(DockerGenConstants.ErrorMessages.DOCKER_IMAGE_CREATION_FAILED_TITLE,
+                        DockerGenConstants.ErrorMessages.DOCKER_IMAGE_CREATION_FAILED_MSG, SWT.ICON_ERROR);
+            }
 
             // Remove temporary CAR file
             org.apache.commons.io.FileUtils.deleteQuietly(getCarbonFile());
@@ -127,13 +135,31 @@ public class GenerateDockerImageJob extends Job {
 
             // Generate the docker image
             DockerImageGenerator generator = new DockerImageGenerator(getDockerModel());
-            generator.generateDockerImage(getDockerDirectory(), getDestinationDirectory());
+
+            generatedImageId = generator.generateDockerImage(getDockerDirectory(), getDestinationDirectory());
 
             operationText = "Clearing temporary directories...";
             monitor.subTask(operationText);
             monitor.worked(20);
+        } catch (IOException | IllegalArgumentException | InterruptedException | URISyntaxException e) {
+            log.error(DockerGenConstants.ErrorMessages.DOCKER_IMAGE_CREATION_FAILED_TITLE, e);
+            showMessageBox(DockerGenConstants.ErrorMessages.DOCKER_IMAGE_CREATION_FAILED_TITLE,
+                    DockerGenConstants.ErrorMessages.DOCKER_IMAGE_CREATION_INTERNAL_ERROR_MSG, SWT.ICON_ERROR);
 
-        } catch (Exception e) {
+            operationText = e.getMessage();
+            monitor.beginTask(operationText, 100);
+            monitor.worked(0);
+            monitor.setCanceled(true);
+        } catch (DockerImageGenerationException e) {
+            log.error(DockerGenConstants.ErrorMessages.DOCKER_IMAGE_CREATION_FAILED_TITLE, e);
+            showMessageBox(DockerGenConstants.ErrorMessages.DOCKER_IMAGE_CREATION_FAILED_TITLE,
+                    DockerGenConstants.ErrorMessages.DOCKER_IMAGE_CREATION_FAILED_MSG, SWT.ICON_ERROR);
+
+            operationText = e.getMessage();
+            monitor.beginTask(operationText, 100);
+            monitor.worked(0);
+            monitor.setCanceled(true);
+        } catch (DockerConnectionException e) {
             log.error(DockerGenConstants.ErrorMessages.DOCKER_IMAGE_CREATION_FAILED_TITLE, e);
             showMessageBox(DockerGenConstants.ErrorMessages.DOCKER_IMAGE_CREATION_FAILED_TITLE,
                     DockerGenConstants.ErrorMessages.DOCKER_CONNECTION_FAIL_MSG, SWT.ICON_ERROR);
@@ -147,27 +173,28 @@ public class GenerateDockerImageJob extends Job {
         monitor.worked(100);
         monitor.done();
 
+        // Image generation successful
+        showMessageBox(DockerGenConstants.SuccessMessages.SUCCESSFUL_TITLE,
+                DockerGenConstants.SuccessMessages.DOCKER_IMAGE_GEN_SUCCESS_MESSAGE + generatedImageId,
+                SWT.ICON_INFORMATION);
+
         return Status.OK_STATUS;
     }
 
     private void showMessageBox(String title, String message, int style) {
 
-        new Thread(new Runnable() {
+        Display.getDefault().asyncExec(new Runnable() {
             public void run() {
-                Display.getDefault().asyncExec(new Runnable() {
-                    public void run() {
-                        Display display = PlatformUI.getWorkbench().getDisplay();
-                        Shell shell = display.getActiveShell();
+                Display display = PlatformUI.getWorkbench().getDisplay();
+                Shell shell = display.getActiveShell();
 
-                        MessageBox exportMsg = new MessageBox(shell, style);
-                        exportMsg.setText(title);
-                        exportMsg.setMessage(message);
+                MessageBox exportMsg = new MessageBox(shell, style);
+                exportMsg.setText(title);
+                exportMsg.setMessage(message);
 
-                        exportMsg.open();
-                    }
-                });
+                exportMsg.open();
             }
-        }).start();
+        });
     }
 
     public String getDockerDirectory() {

@@ -36,6 +36,8 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 import org.glassfish.jersey.internal.RuntimeDelegateImpl;
 import org.wso2.developerstudio.eclipse.esb.docker.Activator;
+import org.wso2.developerstudio.eclipse.esb.docker.exceptions.DockerConnectionException;
+import org.wso2.developerstudio.eclipse.esb.docker.exceptions.DockerImageGenerationException;
 import org.wso2.developerstudio.eclipse.esb.docker.model.MicroIntegratorDockerModel;
 import org.wso2.developerstudio.eclipse.esb.docker.resources.DockerGenConstants;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
@@ -186,19 +188,18 @@ public class DockerImageGenerator {
      * @param dockerDirectory Directory which contains the Dockerfile.
      * @param outputDir Destination directory.
      * @throws IOException I/O Exception.
+     * @throws DockerImageGenerationException Docker image generation exception.
+     * @throws InterruptedException Interrupted exception.
+     * @throws DockerConnectionException Docker connection exception.
      */
-    public void generateDockerImage(String dockerDirectory, String outputDir) throws IOException {
+    public String generateDockerImage(String dockerDirectory, String outputDir)
+            throws IOException, InterruptedException, DockerImageGenerationException, DockerConnectionException {
         // Write docker file
         String dockerFileContent = generateDockerFileContent();
         DockerGeneratorUtils.getInstance().writeToFile(dockerFileContent,
                 dockerDirectory + File.separator + DockerGenConstants.ImageParamDefaults.DOCKER_FILE_NAME);
 
-        try {
-            buildImage(dockerModel, dockerDirectory, outputDir);
-        } catch (InterruptedException | DockerException e) {
-            showMessageBox(DockerGenConstants.ErrorMessages.DOCKER_IMAGE_CREATION_FAILED_TITLE,
-                    DockerGenConstants.ErrorMessages.DOCKER_IMAGE_CREATION_FAILED_MSG, SWT.ICON_ERROR);
-        }
+        return buildImage(dockerModel, dockerDirectory, outputDir);
 
     }
 
@@ -209,15 +210,26 @@ public class DockerImageGenerator {
      * @param dockerDir Directory containing the Dockerfile.
      * @param outputDirectory Destination directory.
      * 
+     * @return Generated image's ID.
+     * 
      * @throws InterruptedException Thread Interrupted Exception.
      * @throws IOException I/O Exception.
-     * @throws DockerException Docker Exception.
+     * @throws DockerConnectionException Docker connection exception.
+     * @throws DockerImageGenerationException Docker image generation Exception.
      */
-    private void buildImage(MicroIntegratorDockerModel dockerModel, String dockerDir, String outputDirectory)
-            throws InterruptedException, IOException, DockerException {
+    private String buildImage(MicroIntegratorDockerModel dockerModel, String dockerDir, String outputDirectory)
+            throws InterruptedException, IOException, DockerImageGenerationException, DockerConnectionException {
 
         // Creating the docker client instance
         DockerClient docker = DefaultDockerClient.builder().uri(dockerModel.getDockerHost()).build();
+
+        // Test connection to Docker server
+        try {
+            docker.ping();
+        } catch (DockerException e1) {
+            log.error(DockerGenConstants.ErrorMessages.DOCKER_IMAGE_CREATION_FAILED_TITLE, e1);
+            throw new DockerConnectionException(DockerGenConstants.ErrorMessages.DOCKER_CONNECTION_FAIL_MSG, e1);
+        }
 
         // Atomic reference to store the generated docker image ID
         final AtomicReference<String> imageIdFromMessage = new AtomicReference<>();
@@ -244,24 +256,25 @@ public class DockerImageGenerator {
                         log.info(DockerGenConstants.SuccessMessages.DOCKER_IMAGE_GEN_SUCCESS_MESSAGE + imageId);
                         imageIdFromMessage.set(imageId);
 
+                        // Bundle the image
                         try {
                             bundleImage(docker, imageId, outputDirectory);
                         } catch (Exception e) {
                             log.error(DockerGenConstants.ErrorMessages.IMAGE_BUNDLE_CREATION_FAILED_MSG, e);
-                            throw new DockerException(DockerGenConstants.ErrorMessages.IMAGE_BUNDLE_CREATION_FAILED_MSG,
-                                    e);
+                            throw new DockerImageGenerationException(
+                                    DockerGenConstants.ErrorMessages.IMAGE_BUNDLE_CREATION_FAILED_MSG, e);
                         }
                     }
 
                 }
             }, DockerClient.BuildParam.noCache(), DockerClient.BuildParam.forceRm());
-        } catch (DockerException e) {
-            String msg = DockerGenConstants.ErrorMessages.DOCKER_CONNECTION_FAIL_MSG;
-            log.error(msg, e);
-            showMessageBox(DockerGenConstants.ErrorMessages.DOCKER_IMAGE_CREATION_FAILED_TITLE, msg, SWT.ICON_ERROR);
-            return;
+        } catch (DockerException e2) {
+            log.error(DockerGenConstants.ErrorMessages.IMAGE_BUNDLE_CREATION_FAILED_MSG, e2);
+            throw new DockerImageGenerationException(DockerGenConstants.ErrorMessages.IMAGE_BUNDLE_CREATION_FAILED_MSG,
+                    e2);
         }
 
+        return returnedImageId;
     }
 
     private void bundleImage(DockerClient docker, String imageId, String outputDirectory)
@@ -289,38 +302,14 @@ public class DockerImageGenerator {
                 while ((read = imageInput.read(buffer)) > -1) {
                     imageOutput.write(buffer, 0, read);
                 }
-
-                showMessageBox(DockerGenConstants.SuccessMessages.SUCCESSFUL_TITLE,
-                        DockerGenConstants.SuccessMessages.DOCKER_IMAGE_GEN_SUCCESS_MESSAGE + imageId,
-                        SWT.ICON_INFORMATION);
-
             } catch (DockerException e) {
                 log.error(DockerGenConstants.ErrorMessages.DOCKER_IMAGE_FILE_CREATION_FAIL_TITLE, e);
-                throw new DockerException(DockerGenConstants.ErrorMessages.DOCKER_IMAGE_FILE_CREATION_FAIL_TITLE, e);
+                throw new DockerImageGenerationException(
+                        DockerGenConstants.ErrorMessages.DOCKER_IMAGE_FILE_CREATION_FAIL_TITLE, e);
             } finally {
                 imageOutput.close();
             }
         }
-    }
-
-    private void showMessageBox(String title, String message, int style) {
-
-        new Thread(new Runnable() {
-            public void run() {
-                Display.getDefault().asyncExec(new Runnable() {
-                    public void run() {
-                        Display display = PlatformUI.getWorkbench().getDisplay();
-                        Shell shell = display.getActiveShell();
-
-                        MessageBox exportMsg = new MessageBox(shell, style);
-                        exportMsg.setText(title);
-                        exportMsg.setMessage(message);
-
-                        exportMsg.open();
-                    }
-                });
-            }
-        }).start();
     }
 
     public MicroIntegratorDockerModel getDockerModel() {

@@ -21,19 +21,19 @@ package org.wso2.developerstudio.eclipse.esb.docker.exceptions;
 import com.spotify.docker.client.exceptions.DockerException;
 
 /**
- * Custom exception class for Docker image generation errors.
+ * Custom exception class for Docker connection errors.
  *
  */
-public class DockerImageGenerationException extends DockerException {
-
-    private static final long serialVersionUID = -5342001668231321708L;
-
-    public DockerImageGenerationException(String msg) {
-        super(msg);
+public class DockerConnectionException extends DockerException {
+    
+    private static final long serialVersionUID = 7758064633146306924L;
+    
+    public DockerConnectionException(String msg, Throwable e) {
+        super(msg, e);
     }
 
-    public DockerImageGenerationException(String msg, Throwable e) {
-        super(msg, e);
+    public DockerConnectionException(String msg) {
+        super(msg);
     }
 
 }

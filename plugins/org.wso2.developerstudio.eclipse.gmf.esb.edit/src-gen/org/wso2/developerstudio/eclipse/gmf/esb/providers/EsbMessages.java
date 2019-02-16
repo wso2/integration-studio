@@ -5980,6 +5980,12 @@ public class EsbMessages extends NLS {
 	public static String PayloadFactoryMediatorPropertiesEditionPart_DescriptionLabel;
 
 	
+	public static String PayloadFactoryMediatorPropertiesEditionPart_CommentsListLabel;
+
+	
+	public static String PayloadFactoryMediatorPropertiesEditionPart_ReverseLabel;
+
+	
 	public static String PayloadFactoryMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;
 
 	

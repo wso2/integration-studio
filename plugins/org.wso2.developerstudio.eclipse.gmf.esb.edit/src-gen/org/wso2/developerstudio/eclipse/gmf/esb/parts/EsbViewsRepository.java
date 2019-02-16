@@ -5963,6 +5963,12 @@ public class EsbViewsRepository {
 			
 			public static String description = "esb::PayloadFactoryMediator::properties::description";
 			
+			
+			public static String commentsList = "esb::PayloadFactoryMediator::properties::commentsList";
+			
+			
+			public static String reverse = "esb::PayloadFactoryMediator::properties::Reverse";
+			
 	
 		}
 	

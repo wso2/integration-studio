@@ -3390,6 +3390,12 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v9fPJnEei6boXzpRIfnA" name="description" views="_E7xJSvJnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//EsbElement/description"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_nsq-EDGmEemo6qC30gq9Xg" name="commentsList" views="_WlYF8DGmEemo6qC30gq9Xg">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//EsbElement/commentsList"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_YMhNcDGnEemo6qC30gq9Xg" name="Reverse" views="_SRXdoDGnEemo6qC30gq9Xg">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//Mediator/Reverse"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//PayloadFactoryMediator"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_E7v9g_JnEei6boXzpRIfnA" name="PayloadFactoryMediatorInputConnector" views="_E7xJUfJnEei6boXzpRIfnA">
@@ -9601,6 +9607,12 @@
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xJSvJnEei6boXzpRIfnA" name="description">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_WlYF8DGmEemo6qC30gq9Xg" name="commentsList">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.3"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_SRXdoDGnEemo6qC30gq9Xg" name="Reverse">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
           </elements>
         </elements>
       </views>

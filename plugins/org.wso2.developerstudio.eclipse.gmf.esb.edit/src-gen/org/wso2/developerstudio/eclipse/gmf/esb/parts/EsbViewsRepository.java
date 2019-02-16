@@ -5616,6 +5616,12 @@ public class EsbViewsRepository {
 			
 			public static String description = "esb::LoopBackMediator::properties::description";
 			
+			
+			public static String commentsList = "esb::LoopBackMediator::properties::commentsList";
+			
+			
+			public static String reverse = "esb::LoopBackMediator::properties::Reverse";
+			
 	
 		}
 	

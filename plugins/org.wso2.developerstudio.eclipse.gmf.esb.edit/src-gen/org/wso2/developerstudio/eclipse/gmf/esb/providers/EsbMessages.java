@@ -5851,6 +5851,12 @@ public class EsbMessages extends NLS {
 	public static String LoopBackMediatorPropertiesEditionPart_DescriptionLabel;
 
 	
+	public static String LoopBackMediatorPropertiesEditionPart_CommentsListLabel;
+
+	
+	public static String LoopBackMediatorPropertiesEditionPart_ReverseLabel;
+
+	
 	public static String LoopBackMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;
 
 	

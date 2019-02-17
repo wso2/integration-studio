@@ -240,7 +240,7 @@ public class EsbPaletteFactory {
         paletteContainer.add(createBAMMediator40CreationTool());
         paletteContainer.add(createPublishEventMediator48CreationTool());
 
-        paletteContainer.setInitialState(INITIAL_STATE_CLOSED);
+        paletteContainer.setInitialState(INITIAL_STATE_PINNED_OPEN);
         return paletteContainer;
     }
 

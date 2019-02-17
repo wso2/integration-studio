@@ -7,7 +7,9 @@ package org.wso2.developerstudio.eclipse.gmf.esb.parts.forms;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.Enumerator;
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -33,6 +35,7 @@ import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
 
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 
+import org.eclipse.emf.eef.runtime.ui.widgets.EEFFeatureEditorDialog;
 import org.eclipse.emf.eef.runtime.ui.widgets.EMFComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
@@ -48,6 +51,8 @@ import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.ViewerFilter;
 
+import org.eclipse.jface.window.Window;
+
 import org.eclipse.swt.SWT;
 
 import org.eclipse.swt.events.FocusAdapter;
@@ -62,6 +67,7 @@ import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Text;
@@ -71,6 +77,7 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
+import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFormatType;
 import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
@@ -111,7 +118,17 @@ public class PayloadFactoryMediatorPropertiesEditionPartForm extends SectionProp
 
 
 
-	/**
+	protected Text commentsList;
+    protected Button editCommentsList;
+    protected EList commentsListList;
+
+
+
+  protected Button reverse;
+
+
+
+  /**
 	 * For {@link ISection} use only.
 	 */
 	public PayloadFactoryMediatorPropertiesEditionPartForm() { super(); }
@@ -477,6 +494,80 @@ public class PayloadFactoryMediatorPropertiesEditionPartForm extends SectionProp
 
 
 	/**
+   * 
+   */
+  protected Composite createCommentsListMultiValuedEditor(FormToolkit widgetFactory, Composite parent) {
+    commentsList = widgetFactory.createText(parent, "", SWT.READ_ONLY); //$NON-NLS-1$
+    GridData commentsListData = new GridData(GridData.FILL_HORIZONTAL);
+    commentsListData.horizontalSpan = 2;
+    commentsList.setLayoutData(commentsListData);
+    EditingUtils.setID(commentsList, EsbViewsRepository.PayloadFactoryMediator.Properties.commentsList);
+    EditingUtils.setEEFtype(commentsList, "eef::MultiValuedEditor::field"); //$NON-NLS-1$
+    editCommentsList = widgetFactory.createButton(parent, getDescription(EsbViewsRepository.PayloadFactoryMediator.Properties.commentsList, EsbMessages.PayloadFactoryMediatorPropertiesEditionPart_CommentsListLabel), SWT.NONE);
+    GridData editCommentsListData = new GridData();
+    editCommentsList.setLayoutData(editCommentsListData);
+    editCommentsList.addSelectionListener(new SelectionAdapter() {
+
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+       * 
+       */
+      public void widgetSelected(SelectionEvent e) {
+        EEFFeatureEditorDialog dialog = new EEFFeatureEditorDialog(
+            commentsList.getShell(), "PayloadFactoryMediator", new AdapterFactoryLabelProvider(adapterFactory), //$NON-NLS-1$
+            commentsListList, EsbPackage.eINSTANCE.getEsbElement_CommentsList().getEType(), null,
+            false, true, 
+            null, null);
+        if (dialog.open() == Window.OK) {
+          commentsListList = dialog.getResult();
+          if (commentsListList == null) {
+            commentsListList = new BasicEList();
+          }
+          commentsList.setText(commentsListList.toString());
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PayloadFactoryMediatorPropertiesEditionPartForm.this, EsbViewsRepository.PayloadFactoryMediator.Properties.commentsList, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new BasicEList(commentsListList)));
+          setHasChanged(true);
+        }
+      }
+    });
+    EditingUtils.setID(editCommentsList, EsbViewsRepository.PayloadFactoryMediator.Properties.commentsList);
+    EditingUtils.setEEFtype(editCommentsList, "eef::MultiValuedEditor::browsebutton"); //$NON-NLS-1$
+    // Start of user code for createCommentsListMultiValuedEditor
+
+    // End of user code
+    return parent;
+  }
+
+  protected Composite createReverseCheckbox(FormToolkit widgetFactory, Composite parent) {
+    reverse = widgetFactory.createButton(parent, getDescription(EsbViewsRepository.PayloadFactoryMediator.Properties.reverse, EsbMessages.PayloadFactoryMediatorPropertiesEditionPart_ReverseLabel), SWT.CHECK);
+    reverse.addSelectionListener(new SelectionAdapter() {
+
+      /**
+       * {@inheritDoc}
+       *
+       * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+       * 	
+       */
+      public void widgetSelected(SelectionEvent e) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PayloadFactoryMediatorPropertiesEditionPartForm.this, EsbViewsRepository.PayloadFactoryMediator.Properties.reverse, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(reverse.getSelection())));
+      }
+
+    });
+    GridData reverseData = new GridData(GridData.FILL_HORIZONTAL);
+    reverseData.horizontalSpan = 2;
+    reverse.setLayoutData(reverseData);
+    EditingUtils.setID(reverse, EsbViewsRepository.PayloadFactoryMediator.Properties.reverse);
+    EditingUtils.setEEFtype(reverse, "eef::Checkbox"); //$NON-NLS-1$
+    FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PayloadFactoryMediator.Properties.reverse, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+    // Start of user code for createReverseCheckbox
+
+    // End of user code
+    return parent;
+  }
+
+  /**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
@@ -717,7 +808,90 @@ public class PayloadFactoryMediatorPropertiesEditionPartForm extends SectionProp
 
 
 
-	// Start of user code for payloadKey specific getters and setters implementation
+	/**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.PayloadFactoryMediatorPropertiesEditionPart#getCommentsList()
+   * 
+   */
+  public EList getCommentsList() {
+    return commentsListList;
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.PayloadFactoryMediatorPropertiesEditionPart#setCommentsList(EList newValue)
+   * 
+   */
+  public void setCommentsList(EList newValue) {
+    commentsListList = newValue;
+    if (newValue != null) {
+      commentsList.setText(commentsListList.toString());
+    } else {
+      commentsList.setText(""); //$NON-NLS-1$
+    }
+    boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.PayloadFactoryMediator.Properties.commentsList);
+    if (eefElementEditorReadOnlyState && commentsList.isEnabled()) {
+      commentsList.setEnabled(false);
+      commentsList.setToolTipText(EsbMessages.PayloadFactoryMediator_ReadOnly);
+    } else if (!eefElementEditorReadOnlyState && !commentsList.isEnabled()) {
+      commentsList.setEnabled(true);
+    }	
+    
+  }
+
+  public void addToCommentsList(Object newValue) {
+    commentsListList.add(newValue);
+    if (newValue != null) {
+      commentsList.setText(commentsListList.toString());
+    } else {
+      commentsList.setText(""); //$NON-NLS-1$
+    }
+  }
+
+  public void removeToCommentsList(Object newValue) {
+    commentsListList.remove(newValue);
+    if (newValue != null) {
+      commentsList.setText(commentsListList.toString());
+    } else {
+      commentsList.setText(""); //$NON-NLS-1$
+    }
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.PayloadFactoryMediatorPropertiesEditionPart#getReverse()
+   * 
+   */
+  public Boolean getReverse() {
+    return Boolean.valueOf(reverse.getSelection());
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.PayloadFactoryMediatorPropertiesEditionPart#setReverse(Boolean newValue)
+   * 
+   */
+  public void setReverse(Boolean newValue) {
+    if (newValue != null) {
+      reverse.setSelection(newValue.booleanValue());
+    } else {
+      reverse.setSelection(false);
+    }
+    boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.PayloadFactoryMediator.Properties.reverse);
+    if (eefElementEditorReadOnlyState && reverse.isEnabled()) {
+      reverse.setEnabled(false);
+      reverse.setToolTipText(EsbMessages.PayloadFactoryMediator_ReadOnly);
+    } else if (!eefElementEditorReadOnlyState && !reverse.isEnabled()) {
+      reverse.setEnabled(true);
+    }	
+    
+  }
+
+  // Start of user code for payloadKey specific getters and setters implementation
 	@Override
 	public void setPayloadKey(RegistryKeyProperty registryKeyProperty) {
 		if (payloadKey != null) {

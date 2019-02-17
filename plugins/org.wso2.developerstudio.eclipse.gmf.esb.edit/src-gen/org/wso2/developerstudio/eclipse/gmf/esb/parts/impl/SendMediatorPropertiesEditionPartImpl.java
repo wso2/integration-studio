@@ -111,6 +111,10 @@ public class SendMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 	// End of user code
 
 	protected Text description;
+	protected Text commentsList;
+	protected Button editCommentsList;
+	protected EList commentsListList;
+	protected Button reverse;
 
 
 
@@ -156,6 +160,8 @@ public class SendMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 		propertiesStep.addStep(EsbViewsRepository.SendMediator.Properties.staticReceivingSequence);
 		propertiesStep.addStep(EsbViewsRepository.SendMediator.Properties.dynamicReceivingSequence);
 		propertiesStep.addStep(EsbViewsRepository.SendMediator.Properties.description);
+		propertiesStep.addStep(EsbViewsRepository.SendMediator.Properties.commentsList);
+		propertiesStep.addStep(EsbViewsRepository.SendMediator.Properties.reverse);
 		
 		
 		composer = new PartComposer(sendMediatorStep) {
@@ -185,6 +191,12 @@ public class SendMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 				// End of user code
 				if (key == EsbViewsRepository.SendMediator.Properties.description) {
 					return createDescriptionText(parent);
+				}
+				if (key == EsbViewsRepository.SendMediator.Properties.commentsList) {
+					return createCommentsListMultiValuedEditor(parent);
+				}
+				if (key == EsbViewsRepository.SendMediator.Properties.reverse) {
+					return createReverseCheckbox(parent);
 				}
 				return parent;
 			}
@@ -428,6 +440,79 @@ public class SendMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 		return parent;
 	}
 
+	protected Composite createCommentsListMultiValuedEditor(Composite parent) {
+		commentsList = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.READ_ONLY);
+		GridData commentsListData = new GridData(GridData.FILL_HORIZONTAL);
+		commentsListData.horizontalSpan = 2;
+		commentsList.setLayoutData(commentsListData);
+		EditingUtils.setID(commentsList, EsbViewsRepository.SendMediator.Properties.commentsList);
+		EditingUtils.setEEFtype(commentsList, "eef::MultiValuedEditor::field"); //$NON-NLS-1$
+		editCommentsList = new Button(parent, SWT.NONE);
+		editCommentsList.setText(getDescription(EsbViewsRepository.SendMediator.Properties.commentsList, EsbMessages.SendMediatorPropertiesEditionPart_CommentsListLabel));
+		GridData editCommentsListData = new GridData();
+		editCommentsList.setLayoutData(editCommentsListData);
+		editCommentsList.addSelectionListener(new SelectionAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 */
+			public void widgetSelected(SelectionEvent e) {
+				EEFFeatureEditorDialog dialog = new EEFFeatureEditorDialog(
+						commentsList.getShell(), "SendMediator", new AdapterFactoryLabelProvider(adapterFactory), //$NON-NLS-1$
+						commentsListList, EsbPackage.eINSTANCE.getEsbElement_CommentsList().getEType(), null,
+						false, true, 
+						null, null);
+				if (dialog.open() == Window.OK) {
+					commentsListList = dialog.getResult();
+					if (commentsListList == null) {
+						commentsListList = new BasicEList();
+					}
+					commentsList.setText(commentsListList.toString());
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SendMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.SendMediator.Properties.commentsList, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new BasicEList(commentsListList)));
+					setHasChanged(true);
+				}
+			}
+		});
+		EditingUtils.setID(editCommentsList, EsbViewsRepository.SendMediator.Properties.commentsList);
+		EditingUtils.setEEFtype(editCommentsList, "eef::MultiValuedEditor::browsebutton"); //$NON-NLS-1$
+		// Start of user code for createCommentsListMultiValuedEditor
+
+		// End of user code
+		return parent;
+	}
+
+	
+	protected Composite createReverseCheckbox(Composite parent) {
+		reverse = new Button(parent, SWT.CHECK);
+		reverse.setText(getDescription(EsbViewsRepository.SendMediator.Properties.reverse, EsbMessages.SendMediatorPropertiesEditionPart_ReverseLabel));
+		reverse.addSelectionListener(new SelectionAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 *
+			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 * 	
+			 */
+			public void widgetSelected(SelectionEvent e) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SendMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.SendMediator.Properties.reverse, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(reverse.getSelection())));
+			}
+
+		});
+		GridData reverseData = new GridData(GridData.FILL_HORIZONTAL);
+		reverseData.horizontalSpan = 2;
+		reverse.setLayoutData(reverseData);
+		EditingUtils.setID(reverse, EsbViewsRepository.SendMediator.Properties.reverse);
+		EditingUtils.setEEFtype(reverse, "eef::Checkbox"); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.SendMediator.Properties.reverse, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createReverseCheckbox
+
+		// End of user code
+		return parent;
+	}
+
 
 	/**
 	 * {@inheritDoc}
@@ -645,6 +730,89 @@ public class SendMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 			description.setToolTipText(EsbMessages.SendMediator_ReadOnly);
 		} else if (!eefElementEditorReadOnlyState && !description.isEnabled()) {
 			description.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.SendMediatorPropertiesEditionPart#getCommentsList()
+	 * 
+	 */
+	public EList getCommentsList() {
+		return commentsListList;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.SendMediatorPropertiesEditionPart#setCommentsList(EList newValue)
+	 * 
+	 */
+	public void setCommentsList(EList newValue) {
+		commentsListList = newValue;
+		if (newValue != null) {
+			commentsList.setText(commentsListList.toString());
+		} else {
+			commentsList.setText(""); //$NON-NLS-1$
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.SendMediator.Properties.commentsList);
+		if (eefElementEditorReadOnlyState && commentsList.isEnabled()) {
+			commentsList.setEnabled(false);
+			commentsList.setToolTipText(EsbMessages.SendMediator_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !commentsList.isEnabled()) {
+			commentsList.setEnabled(true);
+		}	
+		
+	}
+
+	public void addToCommentsList(Object newValue) {
+		commentsListList.add(newValue);
+		if (newValue != null) {
+			commentsList.setText(commentsListList.toString());
+		} else {
+			commentsList.setText(""); //$NON-NLS-1$
+		}
+	}
+
+	public void removeToCommentsList(Object newValue) {
+		commentsListList.remove(newValue);
+		if (newValue != null) {
+			commentsList.setText(commentsListList.toString());
+		} else {
+			commentsList.setText(""); //$NON-NLS-1$
+		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.SendMediatorPropertiesEditionPart#getReverse()
+	 * 
+	 */
+	public Boolean getReverse() {
+		return Boolean.valueOf(reverse.getSelection());
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.SendMediatorPropertiesEditionPart#setReverse(Boolean newValue)
+	 * 
+	 */
+	public void setReverse(Boolean newValue) {
+		if (newValue != null) {
+			reverse.setSelection(newValue.booleanValue());
+		} else {
+			reverse.setSelection(false);
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.SendMediator.Properties.reverse);
+		if (eefElementEditorReadOnlyState && reverse.isEnabled()) {
+			reverse.setEnabled(false);
+			reverse.setToolTipText(EsbMessages.SendMediator_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !reverse.isEnabled()) {
+			reverse.setEnabled(true);
 		}	
 		
 	}

@@ -3961,6 +3961,12 @@ public class EsbMessages extends NLS {
 	public static String DropMediatorPropertiesEditionPart_DescriptionLabel;
 
 	
+	public static String DropMediatorPropertiesEditionPart_CommentsListLabel;
+
+	
+	public static String DropMediatorPropertiesEditionPart_ReverseLabel;
+
+	
 	public static String DropMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;
 
 	
@@ -5107,6 +5113,12 @@ public class EsbMessages extends NLS {
 	public static String CacheMediatorPropertiesEditionPart_MaxMessageSizeLabel;
 
 	
+	public static String CacheMediatorPropertiesEditionPart_CommentsListLabel;
+
+	
+	public static String CacheMediatorPropertiesEditionPart_ReverseLabel;
+
+	
 	public static String CacheMediatorPropertiesEditionPart_MaxEntryCountLabel;
 
 	
@@ -5372,6 +5384,12 @@ public class EsbMessages extends NLS {
 
 	
 	public static String HeaderMediatorPropertiesEditionPart_DescriptionLabel;
+
+	
+	public static String HeaderMediatorPropertiesEditionPart_CommentsListLabel;
+
+	
+	public static String HeaderMediatorPropertiesEditionPart_ReverseLabel;
 
 	
 	public static String HeaderMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;
@@ -5839,6 +5857,12 @@ public class EsbMessages extends NLS {
 	public static String LoopBackMediatorPropertiesEditionPart_DescriptionLabel;
 
 	
+	public static String LoopBackMediatorPropertiesEditionPart_CommentsListLabel;
+
+	
+	public static String LoopBackMediatorPropertiesEditionPart_ReverseLabel;
+
+	
 	public static String LoopBackMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;
 
 	
@@ -5974,6 +5998,12 @@ public class EsbMessages extends NLS {
 	public static String PayloadFactoryMediatorPropertiesEditionPart_DescriptionLabel;
 
 	
+	public static String PayloadFactoryMediatorPropertiesEditionPart_CommentsListLabel;
+
+	
+	public static String PayloadFactoryMediatorPropertiesEditionPart_ReverseLabel;
+
+	
 	public static String PayloadFactoryMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;
 
 	
@@ -6047,6 +6077,12 @@ public class EsbMessages extends NLS {
 
 	
 	public static String SendMediatorPropertiesEditionPart_DescriptionLabel;
+
+	
+	public static String SendMediatorPropertiesEditionPart_CommentsListLabel;
+
+	
+	public static String SendMediatorPropertiesEditionPart_ReverseLabel;
 
 	
 	public static String SendMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;

@@ -27,7 +27,7 @@ import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
 
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
-
+import org.eclipse.emf.eef.runtime.ui.widgets.EEFFeatureEditorDialog;
 import org.eclipse.emf.eef.runtime.ui.widgets.EMFComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 
@@ -35,8 +35,10 @@ import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
-
+import org.eclipse.jface.window.Window;
 import org.eclipse.swt.SWT;
+import org.eclipse.emf.common.util.BasicEList;
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
@@ -52,7 +54,7 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.CacheMediatorPropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
@@ -70,6 +72,10 @@ public class CacheMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	protected EMFComboViewer cacheType;
 	protected Text cacheTimeout;
 	protected Text maxMessageSize;
+	protected Text commentsList;
+	protected Button editCommentsList;
+	protected EList commentsListList;
+	protected Button reverse;
 	protected Text maxEntryCount;
 	protected EMFComboViewer sequenceType;
 	// Start of user code  for sequenceKey widgets declarations
@@ -125,6 +131,8 @@ public class CacheMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 		propertiesStep.addStep(EsbViewsRepository.CacheMediator.Properties.cacheType);
 		propertiesStep.addStep(EsbViewsRepository.CacheMediator.Properties.cacheTimeout);
 		propertiesStep.addStep(EsbViewsRepository.CacheMediator.Properties.maxMessageSize);
+		propertiesStep.addStep(EsbViewsRepository.CacheMediator.Properties.commentsList);
+		propertiesStep.addStep(EsbViewsRepository.CacheMediator.Properties.reverse);
 		
 		cacheMediatorStep
 			.addStep(EsbViewsRepository.CacheMediator.Implementation.class)
@@ -163,6 +171,12 @@ public class CacheMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 				}
 				if (key == EsbViewsRepository.CacheMediator.Properties.maxMessageSize) {
 					return createMaxMessageSizeText(parent);
+				}
+				if (key == EsbViewsRepository.CacheMediator.Properties.commentsList) {
+					return createCommentsListMultiValuedEditor(parent);
+				}
+				if (key == EsbViewsRepository.CacheMediator.Properties.reverse) {
+					return createReverseCheckbox(parent);
 				}
 				if (key == EsbViewsRepository.CacheMediator.Implementation.class) {
 					return createImplementationGroup(parent);
@@ -353,6 +367,79 @@ public class CacheMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 		EditingUtils.setEEFtype(maxMessageSize, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.CacheMediator.Properties.maxMessageSize, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createMaxMessageSizeText
+
+		// End of user code
+		return parent;
+	}
+
+	protected Composite createCommentsListMultiValuedEditor(Composite parent) {
+		commentsList = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.READ_ONLY);
+		GridData commentsListData = new GridData(GridData.FILL_HORIZONTAL);
+		commentsListData.horizontalSpan = 2;
+		commentsList.setLayoutData(commentsListData);
+		EditingUtils.setID(commentsList, EsbViewsRepository.CacheMediator.Properties.commentsList);
+		EditingUtils.setEEFtype(commentsList, "eef::MultiValuedEditor::field"); //$NON-NLS-1$
+		editCommentsList = new Button(parent, SWT.NONE);
+		editCommentsList.setText(getDescription(EsbViewsRepository.CacheMediator.Properties.commentsList, EsbMessages.CacheMediatorPropertiesEditionPart_CommentsListLabel));
+		GridData editCommentsListData = new GridData();
+		editCommentsList.setLayoutData(editCommentsListData);
+		editCommentsList.addSelectionListener(new SelectionAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 */
+			public void widgetSelected(SelectionEvent e) {
+				EEFFeatureEditorDialog dialog = new EEFFeatureEditorDialog(
+						commentsList.getShell(), "CacheMediator", new AdapterFactoryLabelProvider(adapterFactory), //$NON-NLS-1$
+						commentsListList, EsbPackage.eINSTANCE.getEsbElement_CommentsList().getEType(), null,
+						false, true, 
+						null, null);
+				if (dialog.open() == Window.OK) {
+					commentsListList = dialog.getResult();
+					if (commentsListList == null) {
+						commentsListList = new BasicEList();
+					}
+					commentsList.setText(commentsListList.toString());
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CacheMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.CacheMediator.Properties.commentsList, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new BasicEList(commentsListList)));
+					setHasChanged(true);
+				}
+			}
+		});
+		EditingUtils.setID(editCommentsList, EsbViewsRepository.CacheMediator.Properties.commentsList);
+		EditingUtils.setEEFtype(editCommentsList, "eef::MultiValuedEditor::browsebutton"); //$NON-NLS-1$
+		// Start of user code for createCommentsListMultiValuedEditor
+
+		// End of user code
+		return parent;
+	}
+
+	
+	protected Composite createReverseCheckbox(Composite parent) {
+		reverse = new Button(parent, SWT.CHECK);
+		reverse.setText(getDescription(EsbViewsRepository.CacheMediator.Properties.reverse, EsbMessages.CacheMediatorPropertiesEditionPart_ReverseLabel));
+		reverse.addSelectionListener(new SelectionAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 *
+			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 * 	
+			 */
+			public void widgetSelected(SelectionEvent e) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CacheMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.CacheMediator.Properties.reverse, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(reverse.getSelection())));
+			}
+
+		});
+		GridData reverseData = new GridData(GridData.FILL_HORIZONTAL);
+		reverseData.horizontalSpan = 2;
+		reverse.setLayoutData(reverseData);
+		EditingUtils.setID(reverse, EsbViewsRepository.CacheMediator.Properties.reverse);
+		EditingUtils.setEEFtype(reverse, "eef::Checkbox"); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.CacheMediator.Properties.reverse, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createReverseCheckbox
 
 		// End of user code
 		return parent;
@@ -952,6 +1039,89 @@ public class CacheMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 			maxMessageSize.setToolTipText(EsbMessages.CacheMediator_ReadOnly);
 		} else if (!eefElementEditorReadOnlyState && !maxMessageSize.isEnabled()) {
 			maxMessageSize.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.CacheMediatorPropertiesEditionPart#getCommentsList()
+	 * 
+	 */
+	public EList getCommentsList() {
+		return commentsListList;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.CacheMediatorPropertiesEditionPart#setCommentsList(EList newValue)
+	 * 
+	 */
+	public void setCommentsList(EList newValue) {
+		commentsListList = newValue;
+		if (newValue != null) {
+			commentsList.setText(commentsListList.toString());
+		} else {
+			commentsList.setText(""); //$NON-NLS-1$
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.CacheMediator.Properties.commentsList);
+		if (eefElementEditorReadOnlyState && commentsList.isEnabled()) {
+			commentsList.setEnabled(false);
+			commentsList.setToolTipText(EsbMessages.CacheMediator_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !commentsList.isEnabled()) {
+			commentsList.setEnabled(true);
+		}	
+		
+	}
+
+	public void addToCommentsList(Object newValue) {
+		commentsListList.add(newValue);
+		if (newValue != null) {
+			commentsList.setText(commentsListList.toString());
+		} else {
+			commentsList.setText(""); //$NON-NLS-1$
+		}
+	}
+
+	public void removeToCommentsList(Object newValue) {
+		commentsListList.remove(newValue);
+		if (newValue != null) {
+			commentsList.setText(commentsListList.toString());
+		} else {
+			commentsList.setText(""); //$NON-NLS-1$
+		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.CacheMediatorPropertiesEditionPart#getReverse()
+	 * 
+	 */
+	public Boolean getReverse() {
+		return Boolean.valueOf(reverse.getSelection());
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.CacheMediatorPropertiesEditionPart#setReverse(Boolean newValue)
+	 * 
+	 */
+	public void setReverse(Boolean newValue) {
+		if (newValue != null) {
+			reverse.setSelection(newValue.booleanValue());
+		} else {
+			reverse.setSelection(false);
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.CacheMediator.Properties.reverse);
+		if (eefElementEditorReadOnlyState && reverse.isEnabled()) {
+			reverse.setEnabled(false);
+			reverse.setToolTipText(EsbMessages.CacheMediator_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !reverse.isEnabled()) {
+			reverse.setEnabled(true);
 		}	
 		
 	}

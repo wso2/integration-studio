@@ -97,6 +97,10 @@ public class PayloadFactoryMediatorPropertiesEditionPartImpl extends CompositePr
 	protected List<ViewerFilter> argsFilters = new ArrayList<ViewerFilter>();
 	protected EMFComboViewer mediaType;
 	protected Text description;
+	protected Text commentsList;
+	protected Button editCommentsList;
+	protected EList commentsListList;
+	protected Button reverse;
 
 
 
@@ -141,6 +145,8 @@ public class PayloadFactoryMediatorPropertiesEditionPartImpl extends CompositePr
 		propertiesStep.addStep(EsbViewsRepository.PayloadFactoryMediator.Properties.args);
 		propertiesStep.addStep(EsbViewsRepository.PayloadFactoryMediator.Properties.mediaType);
 		propertiesStep.addStep(EsbViewsRepository.PayloadFactoryMediator.Properties.description);
+		propertiesStep.addStep(EsbViewsRepository.PayloadFactoryMediator.Properties.commentsList);
+		propertiesStep.addStep(EsbViewsRepository.PayloadFactoryMediator.Properties.reverse);
 		
 		
 		composer = new PartComposer(payloadFactoryMediatorStep) {
@@ -167,6 +173,12 @@ public class PayloadFactoryMediatorPropertiesEditionPartImpl extends CompositePr
 				}
 				if (key == EsbViewsRepository.PayloadFactoryMediator.Properties.description) {
 					return createDescriptionText(parent);
+				}
+				if (key == EsbViewsRepository.PayloadFactoryMediator.Properties.commentsList) {
+					return createCommentsListMultiValuedEditor(parent);
+				}
+				if (key == EsbViewsRepository.PayloadFactoryMediator.Properties.reverse) {
+					return createReverseCheckbox(parent);
 				}
 				return parent;
 			}
@@ -393,6 +405,79 @@ public class PayloadFactoryMediatorPropertiesEditionPartImpl extends CompositePr
 		EditingUtils.setEEFtype(description, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PayloadFactoryMediator.Properties.description, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createDescriptionText
+
+		// End of user code
+		return parent;
+	}
+
+	protected Composite createCommentsListMultiValuedEditor(Composite parent) {
+		commentsList = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.READ_ONLY);
+		GridData commentsListData = new GridData(GridData.FILL_HORIZONTAL);
+		commentsListData.horizontalSpan = 2;
+		commentsList.setLayoutData(commentsListData);
+		EditingUtils.setID(commentsList, EsbViewsRepository.PayloadFactoryMediator.Properties.commentsList);
+		EditingUtils.setEEFtype(commentsList, "eef::MultiValuedEditor::field"); //$NON-NLS-1$
+		editCommentsList = new Button(parent, SWT.NONE);
+		editCommentsList.setText(getDescription(EsbViewsRepository.PayloadFactoryMediator.Properties.commentsList, EsbMessages.PayloadFactoryMediatorPropertiesEditionPart_CommentsListLabel));
+		GridData editCommentsListData = new GridData();
+		editCommentsList.setLayoutData(editCommentsListData);
+		editCommentsList.addSelectionListener(new SelectionAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 */
+			public void widgetSelected(SelectionEvent e) {
+				EEFFeatureEditorDialog dialog = new EEFFeatureEditorDialog(
+						commentsList.getShell(), "PayloadFactoryMediator", new AdapterFactoryLabelProvider(adapterFactory), //$NON-NLS-1$
+						commentsListList, EsbPackage.eINSTANCE.getEsbElement_CommentsList().getEType(), null,
+						false, true, 
+						null, null);
+				if (dialog.open() == Window.OK) {
+					commentsListList = dialog.getResult();
+					if (commentsListList == null) {
+						commentsListList = new BasicEList();
+					}
+					commentsList.setText(commentsListList.toString());
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PayloadFactoryMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.PayloadFactoryMediator.Properties.commentsList, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new BasicEList(commentsListList)));
+					setHasChanged(true);
+				}
+			}
+		});
+		EditingUtils.setID(editCommentsList, EsbViewsRepository.PayloadFactoryMediator.Properties.commentsList);
+		EditingUtils.setEEFtype(editCommentsList, "eef::MultiValuedEditor::browsebutton"); //$NON-NLS-1$
+		// Start of user code for createCommentsListMultiValuedEditor
+
+		// End of user code
+		return parent;
+	}
+
+	
+	protected Composite createReverseCheckbox(Composite parent) {
+		reverse = new Button(parent, SWT.CHECK);
+		reverse.setText(getDescription(EsbViewsRepository.PayloadFactoryMediator.Properties.reverse, EsbMessages.PayloadFactoryMediatorPropertiesEditionPart_ReverseLabel));
+		reverse.addSelectionListener(new SelectionAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 *
+			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 * 	
+			 */
+			public void widgetSelected(SelectionEvent e) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PayloadFactoryMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.PayloadFactoryMediator.Properties.reverse, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(reverse.getSelection())));
+			}
+
+		});
+		GridData reverseData = new GridData(GridData.FILL_HORIZONTAL);
+		reverseData.horizontalSpan = 2;
+		reverse.setLayoutData(reverseData);
+		EditingUtils.setID(reverse, EsbViewsRepository.PayloadFactoryMediator.Properties.reverse);
+		EditingUtils.setEEFtype(reverse, "eef::Checkbox"); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PayloadFactoryMediator.Properties.reverse, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createReverseCheckbox
 
 		// End of user code
 		return parent;
@@ -634,6 +719,94 @@ public class PayloadFactoryMediatorPropertiesEditionPartImpl extends CompositePr
 		}	
 		
 	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.PayloadFactoryMediatorPropertiesEditionPart#getCommentsList()
+	 * 
+	 */
+	public EList getCommentsList() {
+		return commentsListList;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.PayloadFactoryMediatorPropertiesEditionPart#setCommentsList(EList newValue)
+	 * 
+	 */
+	public void setCommentsList(EList newValue) {
+		commentsListList = newValue;
+		if (newValue != null) {
+			commentsList.setText(commentsListList.toString());
+		} else {
+			commentsList.setText(""); //$NON-NLS-1$
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.PayloadFactoryMediator.Properties.commentsList);
+		if (eefElementEditorReadOnlyState && commentsList.isEnabled()) {
+			commentsList.setEnabled(false);
+			commentsList.setToolTipText(EsbMessages.PayloadFactoryMediator_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !commentsList.isEnabled()) {
+			commentsList.setEnabled(true);
+		}	
+		
+	}
+
+	public void addToCommentsList(Object newValue) {
+		commentsListList.add(newValue);
+		if (newValue != null) {
+			commentsList.setText(commentsListList.toString());
+		} else {
+			commentsList.setText(""); //$NON-NLS-1$
+		}
+	}
+
+	public void removeToCommentsList(Object newValue) {
+		commentsListList.remove(newValue);
+		if (newValue != null) {
+			commentsList.setText(commentsListList.toString());
+		} else {
+			commentsList.setText(""); //$NON-NLS-1$
+		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.PayloadFactoryMediatorPropertiesEditionPart#getReverse()
+	 * 
+	 */
+	public Boolean getReverse() {
+		return Boolean.valueOf(reverse.getSelection());
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.PayloadFactoryMediatorPropertiesEditionPart#setReverse(Boolean newValue)
+	 * 
+	 */
+	public void setReverse(Boolean newValue) {
+		if (newValue != null) {
+			reverse.setSelection(newValue.booleanValue());
+		} else {
+			reverse.setSelection(false);
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.PayloadFactoryMediator.Properties.reverse);
+		if (eefElementEditorReadOnlyState && reverse.isEnabled()) {
+			reverse.setEnabled(false);
+			reverse.setToolTipText(EsbMessages.PayloadFactoryMediator_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !reverse.isEnabled()) {
+			reverse.setEnabled(true);
+		}	
+		
+	}
+
+
+
+
+
 
 	// Start of user code for payloadKey specific getters and setters implementation
 	@Override

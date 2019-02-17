@@ -744,6 +744,12 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7vU0vJnEei6boXzpRIfnA" name="description" views="_E7wjPPJnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//EsbElement/description"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_OzudMDIXEemo6qC30gq9Xg" name="commentsList" views="_KHpIkDIXEemo6qC30gq9Xg">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//EsbElement/commentsList"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_lPgGsDIXEemo6qC30gq9Xg" name="Reverse" views="_fQSWQDIXEemo6qC30gq9Xg">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//Mediator/Reverse"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//DropMediator"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_E7vU1fJnEei6boXzpRIfnA" name="DropMediatorInputConnector" views="_E7wjP_JnEei6boXzpRIfnA">
@@ -2304,6 +2310,12 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_nspJ8CcTEem3lJlzbKMBPg" name="sequenceKey" views="_yYgsMCcSEem3lJlzbKMBPg">
           <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//CacheMediator/sequenceKey"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_WW1eYDHMEemo6qC30gq9Xg" name="commentsList" views="_P4hXIDHMEemo6qC30gq9Xg">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//EsbElement/commentsList"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_f9SccDHmEemo6qC30gq9Xg" name="Reverse" views="_bhDhsDHmEemo6qC30gq9Xg">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//Mediator/Reverse"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//CacheMediator"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_E7v8LfJnEei6boXzpRIfnA" name="CacheMediatorInputConnector" views="_E7wlpPJnEei6boXzpRIfnA">
@@ -2606,6 +2618,12 @@
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v8f_JnEei6boXzpRIfnA" name="description" views="_E7wmDPJnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//EsbElement/description"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_rCjQ0DEOEemo6qC30gq9Xg" name="commentsList" views="_j-ZRkDEOEemo6qC30gq9Xg">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//EsbElement/commentsList"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_VokJkDEQEemo6qC30gq9Xg" name="Reverse" views="_QY8qEDEQEemo6qC30gq9Xg">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//Mediator/Reverse"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//HeaderMediator"/>
       </bindings>
@@ -3201,6 +3219,12 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v9R_JnEei6boXzpRIfnA" name="description" views="_E7wm_vJnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//EsbElement/description"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_YeaXoDIIEemo6qC30gq9Xg" name="commentsList" views="_QxyDIDIIEemo6qC30gq9Xg">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//EsbElement/commentsList"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_xZ3IkDIIEemo6qC30gq9Xg" name="Reverse" views="_tcetADIIEemo6qC30gq9Xg">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//Mediator/Reverse"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//LoopBackMediator"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_E7v9SvJnEei6boXzpRIfnA" name="LoopBackMediatorInputConnector" views="_E7wnAfJnEei6boXzpRIfnA">
@@ -3384,6 +3408,12 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v9fPJnEei6boXzpRIfnA" name="description" views="_E7xJSvJnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//EsbElement/description"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_nsq-EDGmEemo6qC30gq9Xg" name="commentsList" views="_WlYF8DGmEemo6qC30gq9Xg">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//EsbElement/commentsList"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_YMhNcDGnEemo6qC30gq9Xg" name="Reverse" views="_SRXdoDGnEemo6qC30gq9Xg">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//Mediator/Reverse"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//PayloadFactoryMediator"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_E7v9g_JnEei6boXzpRIfnA" name="PayloadFactoryMediatorInputConnector" views="_E7xJUfJnEei6boXzpRIfnA">
@@ -3485,6 +3515,12 @@
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v9m_JnEei6boXzpRIfnA" name="description" views="_E7xJcvJnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//EsbElement/description"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_KjFZ8DHAEemo6qC30gq9Xg" name="commentsList" views="_FeVGoDHAEemo6qC30gq9Xg">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//EsbElement/commentsList"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_xNXYwDHIEemo6qC30gq9Xg" name="Reverse" views="_qVQ4gDHIEemo6qC30gq9Xg">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//Mediator/Reverse"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//SendMediator"/>
       </bindings>
@@ -6591,6 +6627,12 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wjPPJnEei6boXzpRIfnA" name="description">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_KHpIkDIXEemo6qC30gq9Xg" name="commentsList">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.3"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_fQSWQDIXEemo6qC30gq9Xg" name="Reverse">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
+          </elements>
         </elements>
       </views>
       <views xmi:id="_E7wjP_JnEei6boXzpRIfnA" name="DropMediatorInputConnector">
@@ -8306,6 +8348,12 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wlnPJnEei6boXzpRIfnA" name="maxMessageSize">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_P4hXIDHMEemo6qC30gq9Xg" name="commentsList">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.3"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_bhDhsDHmEemo6qC30gq9Xg" name="Reverse">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
+          </elements>
         </elements>
         <elements xsi:type="eef-views:Container" xmi:id="_kzMigCcREem3lJlzbKMBPg" name="Implementation">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
@@ -8679,6 +8727,12 @@
           <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_Dk2oACPUEemagNadSZ2E_A" name="value Expression"/>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wmDPJnEei6boXzpRIfnA" name="description">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_j-ZRkDEOEemo6qC30gq9Xg" name="commentsList">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.3"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_QY8qEDEQEemo6qC30gq9Xg" name="Reverse">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
           </elements>
         </elements>
       </views>
@@ -9375,6 +9429,12 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wm_vJnEei6boXzpRIfnA" name="description">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_QxyDIDIIEemo6qC30gq9Xg" name="commentsList">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.3"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_tcetADIIEemo6qC30gq9Xg" name="Reverse">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
+          </elements>
         </elements>
       </views>
       <views xmi:id="_E7wnAfJnEei6boXzpRIfnA" name="LoopBackMediatorInputConnector">
@@ -9590,6 +9650,12 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xJSvJnEei6boXzpRIfnA" name="description">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_WlYF8DGmEemo6qC30gq9Xg" name="commentsList">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.3"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_SRXdoDGnEemo6qC30gq9Xg" name="Reverse">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
+          </elements>
         </elements>
       </views>
       <views xmi:id="_E7xJUfJnEei6boXzpRIfnA" name="PayloadFactoryMediatorInputConnector">
@@ -9699,6 +9765,12 @@
           <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_5nAukCYzEemmDY5PU6MPfg" name="DynamicReceivingSequence"/>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xJcvJnEei6boXzpRIfnA" name="description">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_FeVGoDHAEemo6qC30gq9Xg" name="commentsList">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.3"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_qVQ4gDHIEemo6qC30gq9Xg" name="Reverse">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
           </elements>
         </elements>
       </views>

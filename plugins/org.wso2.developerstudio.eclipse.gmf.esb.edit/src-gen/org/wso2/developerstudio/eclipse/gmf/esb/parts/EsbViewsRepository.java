@@ -1252,6 +1252,12 @@ public class EsbViewsRepository {
 			
 			public static String description = "esb::DropMediator::properties::description";
 			
+			
+			public static String commentsList = "esb::DropMediator::properties::commentsList";
+			
+			
+			public static String reverse = "esb::DropMediator::properties::Reverse";
+			
 	
 		}
 	
@@ -3981,6 +3987,12 @@ public class EsbViewsRepository {
 			
 			public static String maxMessageSize = "esb::CacheMediator::properties::maxMessageSize";
 			
+			
+			public static String commentsList = "esb::CacheMediator::properties::commentsList";
+			
+			
+			public static String reverse = "esb::CacheMediator::properties::Reverse";
+			
 	
 		}
 	
@@ -4572,6 +4584,12 @@ public class EsbViewsRepository {
 			
 			
 			public static String description = "esb::HeaderMediator::properties::description";
+			
+			
+			public static String commentsList = "esb::HeaderMediator::properties::commentsList";
+			
+			
+			public static String reverse = "esb::HeaderMediator::properties::Reverse";
 			
 	
 		}
@@ -5604,6 +5622,12 @@ public class EsbViewsRepository {
 			
 			public static String description = "esb::LoopBackMediator::properties::description";
 			
+			
+			public static String commentsList = "esb::LoopBackMediator::properties::commentsList";
+			
+			
+			public static String reverse = "esb::LoopBackMediator::properties::Reverse";
+			
 	
 		}
 	
@@ -5957,6 +5981,12 @@ public class EsbViewsRepository {
 			
 			public static String description = "esb::PayloadFactoryMediator::properties::description";
 			
+			
+			public static String commentsList = "esb::PayloadFactoryMediator::properties::commentsList";
+			
+			
+			public static String reverse = "esb::PayloadFactoryMediator::properties::Reverse";
+			
 	
 		}
 	
@@ -6144,6 +6174,12 @@ public class EsbViewsRepository {
 			
 			
 			public static String description = "esb::SendMediator::properties::description";
+			
+			
+			public static String commentsList = "esb::SendMediator::properties::commentsList";
+			
+			
+			public static String reverse = "esb::SendMediator::properties::Reverse";
 			
 	
 		}

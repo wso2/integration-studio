@@ -58,6 +58,15 @@ public class PlatformEarlyStartUpHandler implements IStartup {
             openGettingStartedPage();
         }
         removeWizardEntries();
+        setFileAssociations();
+    }
+
+    /**
+     * This method sets initial custom file associations.
+     * This setting can be overridden by user preference
+     */
+    private void setFileAssociations() {
+        PlatformUI.getWorkbench().getEditorRegistry().setDefaultEditor("*.html", "org.eclipse.ui.browser.editorSupport");
     }
 
     /**

@@ -45,9 +45,9 @@ import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.esb.cloud.Activator;
 import org.wso2.developerstudio.eclipse.esb.cloud.client.IntegrationCloudServiceClient;
+import org.wso2.developerstudio.eclipse.esb.cloud.resources.ExportImageWizardConstants;
 import org.wso2.developerstudio.eclipse.esb.cloud.util.UserSessionManager;
 import org.wso2.developerstudio.eclipse.esb.cloud.wizard.LoginWizardPage;
-import org.wso2.developerstudio.eclipse.esb.docker.resources.ExportImageWizardConstants;
 import org.wso2.developerstudio.eclipse.distribution.project.model.DependencyData;
 import org.wso2.developerstudio.eclipse.distribution.project.ui.wizard.DistributionProjectExportWizardPage;
 import org.wso2.developerstudio.eclipse.distribution.project.util.ArtifactTypeMapping;
@@ -126,6 +126,7 @@ public class DeployToCloudWizard extends Wizard implements IExportWizard {
 
             appDetailsPage.setName(parentPrj.getModel().getArtifactId());
             appDetailsPage.setVersion(parentPrj.getModel().getVersion());
+            appDetailsPage.setDescription("Test desc");
 
         } catch (Exception e) {
             initError = true;
@@ -155,42 +156,22 @@ public class DeployToCloudWizard extends Wizard implements IExportWizard {
         
 //        File destFileName = new File(deploymentFolderPath, finalFileName);
 
-        String dockerDirPath = getWorkingDirectory() + File.separator
-                + ExportImageWizardConstants.DOCKER_IMAGE_TEMPORARY_DIR_NAME;
-        String eiDistributionSourcePath = getWorkingDirectory() + File.separator
-                + ExportImageWizardConstants.MICRO_EI_DISTRIBUTION_REL_PATH;
-        String eiDistrubitionDestinationPath = getWorkingDirectory() + File.separator
-                + ExportImageWizardConstants.DOCKER_IMAGE_TEMPORARY_DIR_NAME + File.separator
-                + ExportImageWizardConstants.EI_DISTRIBUTION_NAME;
-        String eiHomePath = eiDistrubitionDestinationPath + File.separator
-                + ExportImageWizardConstants.MICRO_EI_HOME_REL_PATH;
-        String deploymentPath = eiHomePath + File.separator + ExportImageWizardConstants.DEPLOYMENT_DIR_REL_PATH;
+//        String dockerDirPath = getWorkingDirectory() + File.separator
+//                + ExportImageWizardConstants.DOCKER_IMAGE_TEMPORARY_DIR_NAME;
+//        String eiDistributionSourcePath = getWorkingDirectory() + File.separator
+//                + ExportImageWizardConstants.MICRO_EI_DISTRIBUTION_REL_PATH;
+//        String eiDistrubitionDestinationPath = getWorkingDirectory() + File.separator
+//                + ExportImageWizardConstants.DOCKER_IMAGE_TEMPORARY_DIR_NAME + File.separator
+//                + ExportImageWizardConstants.EI_DISTRIBUTION_NAME;
+//        String eiHomePath = eiDistrubitionDestinationPath + File.separator
+//                + ExportImageWizardConstants.MICRO_EI_HOME_REL_PATH;
+//        String deploymentPath = eiHomePath + File.separator + ExportImageWizardConstants.DEPLOYMENT_DIR_REL_PATH;
         
         IResource carbonArchive;
         try {
             carbonArchive = ExportUtil.buildCAppProject(selectedProject);
             
             client.createApplication(appDetailsPage.getName(), appDetailsPage.getDescription(), appDetailsPage.getVersion(), finalFileName, carbonArchive.getLocation().toFile().getAbsolutePath());
-
-        } catch (Exception e1) {
-            // TODO Auto-generated catch block
-            e1.printStackTrace();
-        }
-
-        try {
-            File dockerDir = new File(dockerDirPath);
-
-            if (dockerDir.exists()) {
-                // Clear the temporary docker directory if exists
-                org.apache.commons.io.FileUtils.cleanDirectory(new File(dockerDirPath));
-            } else {
-                // Create temporary docker directory
-                FileUtils.createDirectory(dockerDirPath);
-            }
-
-            if (mainPage.isPageDirty() || loginPage.isPageDirty()) {
-                savePOM();
-            }
 
         } catch (Exception e) {
             log.error(ExportImageWizardConstants.ERROR_CREATING_CAR_FILE_MSG, e);

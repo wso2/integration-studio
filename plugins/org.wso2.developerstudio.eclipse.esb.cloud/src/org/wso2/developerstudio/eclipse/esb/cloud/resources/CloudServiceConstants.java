@@ -1,4 +1,4 @@
-package org.wso2.developerstudio.eclipse.esb.docker.resources;
+package org.wso2.developerstudio.eclipse.esb.cloud.resources;
 
 public class CloudServiceConstants {
     

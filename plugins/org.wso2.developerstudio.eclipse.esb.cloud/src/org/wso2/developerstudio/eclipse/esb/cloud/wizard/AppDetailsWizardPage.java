@@ -1,5 +1,6 @@
 package org.wso2.developerstudio.eclipse.esb.cloud.wizard;
 
+import java.awt.image.ImageFilter;
 import java.io.File;
 
 import org.eclipse.core.resources.IProject;
@@ -13,11 +14,14 @@ import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.graphics.ImageLoader;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.layout.RowLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.DirectoryDialog;
+import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
@@ -30,20 +34,30 @@ public class AppDetailsWizardPage extends WizardPage{
     
     private static final String FILE_VERSION_LABEL_TEXT = "Application version";
     private static final String FILE_NAME_LABEL_TEXT = "Name of the application";
+    private static final String DESCRIPTION_LABEL_TEXT = "Description";
+    private static final String APP_ICON_LABEL_TEXT = "Application Icon";
+    private static final String BROWSE_LABEL_TEXT = "Browse";
     private static final String DIALOG_TITLE = "WSO2 Platform Distribution - Application Details";
     private static final String EMPTY_STRING = "";
 
-    private Text txtExportPath;
     private Text txtName;
     private Text txtVersion;
+    private Text txtDescription;
+    private Text txtBrowse;
     
     private String name = EMPTY_STRING;
     private String version = EMPTY_STRING;
-    private String imageName = EMPTY_STRING;
-    private String imageTag = EMPTY_STRING;
+    private String description = EMPTY_STRING;
+    private String appIcon = EMPTY_STRING;
+    
     private String initialName = EMPTY_STRING;
     private String initialVersion = EMPTY_STRING;
-    private String exportPath = EMPTY_STRING;
+    
+    private static final String[] FILTER_NAMES = {
+            "Images(*.jpg)","Images(*.jpeg)","Images(*.png)"};
+
+    // These filter extensions are used to filter which files are displayed.
+    private static final String[] FILTER_EXTS = { "*.jpg", "*.jpeg", "*.png"};
     
     private IProject selectedProject;
     private boolean isPageDirty = false;
@@ -63,8 +77,6 @@ public class AppDetailsWizardPage extends WizardPage{
             IProject project = getProject(selection);
             if (project != null) {
                 setSelectedProject(project);
-                exportPath = (String) getSelectedProject()
-                        .getSessionProperty(new QualifiedName(EMPTY_STRING, getSelectedProject().getName()));
             }
         } catch (CoreException e) {
             log.error("Error getting session properties", e);
@@ -147,6 +159,58 @@ public class AppDetailsWizardPage extends WizardPage{
 
         });
         
+        Label lblDescription = new Label(newAppContainer, SWT.NONE);
+        lblDescription.setText(DESCRIPTION_LABEL_TEXT);
+
+        txtDescription = new Text(newAppContainer, SWT.BORDER);
+        GridData txtDescriptionGridData = new GridData(SWT.FILL, SWT.CENTER, true, false, 2, 1);
+        txtDescriptionGridData.horizontalAlignment = SWT.FILL;
+        txtDescription.setLayoutData(txtDescriptionGridData);
+
+        txtDescription.addModifyListener(new ModifyListener() {
+
+            public void modifyText(ModifyEvent evt) {
+                setDescription(txtDescription.getText());
+                validate();
+            }
+
+        });
+        
+        Label lblAppIcon = new Label(newAppContainer, SWT.NONE);
+        lblAppIcon.setText(APP_ICON_LABEL_TEXT);
+
+        txtBrowse = new Text(newAppContainer, SWT.BORDER);
+        GridData txtBrowseGridData = new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1);
+        txtBrowseGridData.widthHint = 400;
+        txtBrowse.setLayoutData(txtBrowseGridData);
+
+        txtBrowse.addModifyListener(new ModifyListener() {
+
+            public void modifyText(ModifyEvent evt) {
+                setAppIcon(txtBrowse.getText());
+                validate();
+            }
+
+        });
+        
+        Button btnBrowse = new Button(newAppContainer, SWT.NONE);
+        btnBrowse.setText(BROWSE_LABEL_TEXT);
+
+        btnBrowse.addSelectionListener(new SelectionAdapter() {
+
+            public void widgetSelected(SelectionEvent e) {
+                FileDialog dialog = new FileDialog(getShell(), SWT.OPEN);
+                dialog.setFilterNames(FILTER_NAMES);
+                dialog.setFilterExtensions(FILTER_EXTS);
+                String result = dialog.open();
+                if (result != null) {
+                    txtBrowse.setText(result);
+                }
+                validate();
+            }
+
+        });
+        
         // Update existing application container
         
         Composite existingAppContainer = new Composite(container, SWT.NULL);
@@ -218,26 +282,6 @@ public class AppDetailsWizardPage extends WizardPage{
             setErrorMessage("Please specify a name and version to .car file.");
             setPageComplete(false);
             return;
-        } else if (getImageName() == null || getImageName().equals(EMPTY_STRING)) {
-            setErrorMessage("Please specify an image name.");
-            setPageComplete(false);
-            return;
-        } else if (!getImageName().matches("[a-zA-Z0-9][a-zA-Z0-9_.-]+")) {
-            setErrorMessage("The image name format is invalid.");
-            setPageComplete(false);
-            return;
-        } else if (!getName().matches("[_a-zA-Z0-9\\-\\.]+")) {
-            setErrorMessage("Could not create CAR files with special characters");
-            setPageComplete(false);
-            return;
-        } else if ((getExportPath() == null || getExportPath().equals(EMPTY_STRING))) {
-            setErrorMessage("Please specify the docker image export destination");
-            setPageComplete(false);
-            return;
-        } else if (getImageTag() == null || getImageTag().equals(EMPTY_STRING)) {
-            setErrorMessage("Please specify the image tag.");
-            setPageComplete(false);
-            return;
         } else {
             String version = txtVersion.getText();
             String[] versionParts = version.split("\\.");
@@ -253,16 +297,6 @@ public class AppDetailsWizardPage extends WizardPage{
             }
             if (!Character.isDigit(version.charAt(0))) {
                 setErrorMessage("File version should start with a numeric value.");
-                setPageComplete(false);
-                return;
-            }
-            if (!(new File(getExportPath())).exists()) {
-                setErrorMessage("Export destination must be a valid path.");
-                setPageComplete(false);
-                return;
-            }
-            if (!getImageTag().matches("[\\w][\\w.-]{0,127}")) {
-                setErrorMessage("The image tag is invalid.");
                 setPageComplete(false);
                 return;
             }
@@ -306,18 +340,6 @@ public class AppDetailsWizardPage extends WizardPage{
     public IProject getSelectedProject() {
         return selectedProject;
     }
-
-    public String getExportPath() {
-        return exportPath;
-    }
-
-    public void setExportPath(String path) {
-        this.exportPath = path;
-    }
-
-    public Text getTxtExportPathText() {
-        return txtExportPath;
-    }
     
     public void setName(String carName) {
         this.name = carName;
@@ -335,20 +357,21 @@ public class AppDetailsWizardPage extends WizardPage{
         return version;
     }
 
-    public String getImageName() {
-        return imageName;
+    public String getDescription() {
+        return description;
     }
 
-    public void setImageName(String imageName) {
-        this.imageName = imageName;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public String getImageTag() {
-        return imageTag;
+    public String getAppIcon() {
+        return appIcon;
     }
 
-    public void setImageTag(String imageTag) {
-        this.imageTag = imageTag;
+    public void setAppIcon(String appIcon) {
+        this.appIcon = appIcon;
     }
-
+    
+    
 }

@@ -3,8 +3,8 @@ package org.wso2.developerstudio.eclipse.esb.cloud.client;
 import org.apache.http.client.CookieStore;
 import org.apache.http.impl.client.BasicCookieStore;
 import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.NotFoundException;
+import org.wso2.developerstudio.eclipse.esb.cloud.resources.CloudServiceConstants;
 import org.wso2.developerstudio.eclipse.esb.cloud.util.HTTPClientUtil;
-import org.wso2.developerstudio.eclipse.esb.docker.resources.CloudServiceConstants;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;

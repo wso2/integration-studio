@@ -70,7 +70,9 @@ public class LoginWizardPage extends WizardPage {
         super(DIALOG_TITLE);
         client = IntegrationCloudServiceClient.getInstance();
         setTitle(DIALOG_TITLE);
-        setPageComplete(false);
+        
+        // TODO: Set false
+        setPageComplete(true);
     }
 
     public void createControl(Composite parent) {

@@ -16,7 +16,7 @@
  * under the License.
  */
 
-package org.wso2.developerstudio.eclipse.esb.docker.resources;
+package org.wso2.developerstudio.eclipse.esb.cloud.resources;
 
 import java.io.File;
 
@@ -28,7 +28,7 @@ public class ExportImageWizardConstants {
 
     public static final String DIALOG_TITLE_TEXT = "WSO2 Platform Distribution - Generate Docker Image";
     public static final String SELECT_VALID_CARBON_APP_MESSAGE = "Please select a valid carbon application project";
-    public static final String ERROR_CREATING_CAR_FILE_MSG = "An error occured while creating the carbon archive file";
+    public static final String ERROR_CREATING_CAR_FILE_MSG = "An error occured while deploying the application";
     public static final String EMPTY_STRING = "";
 
     public static final String EI_DISTRIBUTION_NAME = "wso2ei-6.4.0";

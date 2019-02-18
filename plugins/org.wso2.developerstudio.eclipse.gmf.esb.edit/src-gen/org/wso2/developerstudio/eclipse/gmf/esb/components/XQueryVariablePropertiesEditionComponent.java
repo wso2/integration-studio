@@ -31,12 +31,15 @@ import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.XQueryVariable;
 import org.wso2.developerstudio.eclipse.gmf.esb.XQueryVariableType;
 import org.wso2.developerstudio.eclipse.gmf.esb.XQueryVariableValueType;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.XQueryVariablePropertiesEditionPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.parts.impl.XQueryVariablePropertiesEditionPartImpl;
 
 
 // End of user code
@@ -90,10 +93,29 @@ public class XQueryVariablePropertiesEditionComponent extends SinglePartProperti
 			if (isAccessible(EsbViewsRepository.XQueryVariable.Properties.valueLiteral))
 				basePart.setValueLiteral(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, xQueryVariable.getValueLiteral()));
 			
+			// Start of user code  for valueExpression command update
+			if (isAccessible(EsbViewsRepository.XQueryVariable.Properties.valueExpression)) {
+                basePart.setValueExpression(xQueryVariable.getValueExpression());
+            }
+			// End of user code
+			
+			// Start of user code  for valueKey command update
+			if (isAccessible(EsbViewsRepository.XQueryVariable.Properties.valueKey)) {
+                basePart.setValueKey(xQueryVariable.getValueKey());
+            }
+			// End of user code
+			
 			// init filters
 			
 			
 			
+			
+			// Start of user code  for valueExpression filter update
+			((XQueryVariablePropertiesEditionPartImpl) editingPart).validate();
+			// End of user code
+			
+			// Start of user code  for valueKey filter update
+			// End of user code
 			
 			// init values for referenced views
 			
@@ -102,6 +124,8 @@ public class XQueryVariablePropertiesEditionComponent extends SinglePartProperti
 		}
 		setInitializing(false);
 	}
+
+
 
 
 
@@ -126,6 +150,12 @@ public class XQueryVariablePropertiesEditionComponent extends SinglePartProperti
 		if (editorKey == EsbViewsRepository.XQueryVariable.Properties.valueLiteral) {
 			return EsbPackage.eINSTANCE.getXQueryVariable_ValueLiteral();
 		}
+		if (editorKey == EsbViewsRepository.XQueryVariable.Properties.valueExpression) {
+			return EsbPackage.eINSTANCE.getXQueryVariable_ValueExpression();
+		}
+		if (editorKey == EsbViewsRepository.XQueryVariable.Properties.valueKey) {
+			return EsbPackage.eINSTANCE.getXQueryVariable_ValueKey();
+		}
 		return super.associatedFeature(editorKey);
 	}
 
@@ -147,6 +177,28 @@ public class XQueryVariablePropertiesEditionComponent extends SinglePartProperti
 		}
 		if (EsbViewsRepository.XQueryVariable.Properties.valueLiteral == event.getAffectedEditor()) {
 			xQueryVariable.setValueLiteral((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
+		}
+		if (EsbViewsRepository.XQueryVariable.Properties.valueExpression == event.getAffectedEditor()) {
+			// Start of user code for updateValueExpression method body
+		    if (event.getNewValue() != null) {
+                NamespacedProperty nspHeaderName = (NamespacedProperty)event.getNewValue();
+                xQueryVariable.setValueExpression(nspHeaderName);
+            } else {
+                xQueryVariable.setValueExpression(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+            }
+			// End of user code
+			
+		}
+		if (EsbViewsRepository.XQueryVariable.Properties.valueKey == event.getAffectedEditor()) {
+			// Start of user code for updateValueKey method body
+		    if (event.getNewValue() != null) {
+                RegistryKeyProperty rkp = (RegistryKeyProperty) event.getNewValue();
+                xQueryVariable.setValueKey(rkp);
+            } else {
+                xQueryVariable.setValueKey(EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty());
+            }
+			// End of user code
+			
 		}
 	}
 
@@ -178,6 +230,29 @@ public class XQueryVariablePropertiesEditionComponent extends SinglePartProperti
 					basePart.setValueLiteral("");
 				}
 			}
+					// Start of user code for valueExpression live update
+			if (EsbPackage.eINSTANCE.getXQueryVariable_ValueExpression().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null
+			        && isAccessible(EsbViewsRepository.XQueryVariable.Properties.valueExpression)) {
+                if (msg.getNewValue() != null) {
+                    basePart.setValueExpression((NamespacedProperty)msg.getNewValue());
+                } else {
+                    basePart.setValueExpression(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+                }
+            }
+					// End of user code
+			
+					// Start of user code for valueKey live update
+			if (EsbPackage.eINSTANCE.getXQueryVariable_ValueKey().equals(msg.getFeature())
+                    && msg.getNotifier().equals(semanticObject)
+                    && isAccessible(EsbViewsRepository.XQueryVariable.Properties.valueKey)) {
+                if (msg.getNewValue() != null) {
+                    basePart.setValueKey((RegistryKeyProperty) msg.getNewValue());
+                } else {
+                    basePart.setValueKey(EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty());
+                }
+            }
+					// End of user code
+			
 			
 		}
 	}
@@ -193,7 +268,9 @@ public class XQueryVariablePropertiesEditionComponent extends SinglePartProperti
 			EsbPackage.eINSTANCE.getXQueryVariable_VariableName(),
 			EsbPackage.eINSTANCE.getXQueryVariable_VariableType(),
 			EsbPackage.eINSTANCE.getXQueryVariable_ValueType(),
-			EsbPackage.eINSTANCE.getXQueryVariable_ValueLiteral()		);
+			EsbPackage.eINSTANCE.getXQueryVariable_ValueLiteral(),
+			EsbPackage.eINSTANCE.getXQueryVariable_ValueExpression(),
+			EsbPackage.eINSTANCE.getXQueryVariable_ValueKey()		);
 		return new NotificationFilter[] {filter,};
 	}
 

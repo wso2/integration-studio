@@ -71,7 +71,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.CallTemplateMediatorPropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
 
 // End of user code
@@ -95,6 +95,7 @@ public class CallTemplateMediatorPropertiesEditionPartForm extends SectionProper
     protected Control[] availableTemplatesElements;
     protected Control[] targetTemplateElements;
     protected Control[] parametersElements;
+    protected Control[] descriptionElements;
     protected Composite propertiesGroup;
     private Control[] templateParametersElements;
 
@@ -198,6 +199,7 @@ public class CallTemplateMediatorPropertiesEditionPartForm extends SectionProper
 
 	
 	protected Composite createDescriptionText(FormToolkit widgetFactory, Composite parent) {
+	    Control [] previousControls = propertiesGroup.getChildren();
 		createDescription(parent, EsbViewsRepository.CallTemplateMediator.Properties.description, EsbMessages.CallTemplateMediatorPropertiesEditionPart_DescriptionLabel);
 		description = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		description.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
@@ -259,16 +261,17 @@ public class CallTemplateMediatorPropertiesEditionPartForm extends SectionProper
 		EditingUtils.setEEFtype(description, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.CallTemplateMediator.Properties.description, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createDescriptionText
-
+		Control [] newControls = propertiesGroup.getChildren();
+		descriptionElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
 		// End of user code
 		return parent;
 	}
 
 	/**
-	 * 
+	 * @generated NOT
 	 */
 	protected Composite createCommentsListMultiValuedEditor(FormToolkit widgetFactory, Composite parent) {
-		commentsList = widgetFactory.createText(parent, "", SWT.READ_ONLY); //$NON-NLS-1$
+	    commentsList = widgetFactory.createText(parent, "", SWT.READ_ONLY); //$NON-NLS-1$
 		GridData commentsListData = new GridData(GridData.FILL_HORIZONTAL);
 		commentsListData.horizontalSpan = 2;
 		commentsList.setLayoutData(commentsListData);
@@ -305,14 +308,15 @@ public class CallTemplateMediatorPropertiesEditionPartForm extends SectionProper
 		EditingUtils.setID(editCommentsList, EsbViewsRepository.CallTemplateMediator.Properties.commentsList);
 		EditingUtils.setEEFtype(editCommentsList, "eef::MultiValuedEditor::browsebutton"); //$NON-NLS-1$
 		// Start of user code for createCommentsListMultiValuedEditor
-		hideEntry(new Control[]{commentsList, editCommentsList}, true);
 		// End of user code
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */	
 	protected Composite createReverseCheckbox(FormToolkit widgetFactory, Composite parent) {
-		reverse = widgetFactory.createButton(parent, getDescription(EsbViewsRepository.CallTemplateMediator.Properties.reverse, EsbMessages.CallTemplateMediatorPropertiesEditionPart_ReverseLabel), SWT.CHECK);
+	    reverse = widgetFactory.createButton(parent, getDescription(EsbViewsRepository.CallTemplateMediator.Properties.reverse, EsbMessages.CallTemplateMediatorPropertiesEditionPart_ReverseLabel), SWT.CHECK);
 		reverse.addSelectionListener(new SelectionAdapter() {
 
 			/**
@@ -332,9 +336,8 @@ public class CallTemplateMediatorPropertiesEditionPartForm extends SectionProper
 		reverse.setLayoutData(reverseData);
 		EditingUtils.setID(reverse, EsbViewsRepository.CallTemplateMediator.Properties.reverse);
 		EditingUtils.setEEFtype(reverse, "eef::Checkbox"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.CallTemplateMediator.Properties.reverse, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		Control reverseHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.CallTemplateMediator.Properties.reverse, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createReverseCheckbox
-		hideEntry(new Control[]{reverse}, true);
 		// End of user code
 		return parent;
 	}
@@ -414,6 +417,7 @@ public class CallTemplateMediatorPropertiesEditionPartForm extends SectionProper
 	 * @generated NOT
 	 */
 	protected Composite createTemplateParametersTableComposition(FormToolkit widgetFactory, Composite parent) {
+	    Control [] previousControls = propertiesGroup.getChildren();
 		this.templateParameters = new ReferencesTable(getDescription(EsbViewsRepository.CallTemplateMediator.Properties.templateParameters, EsbMessages.CallTemplateMediatorPropertiesEditionPart_TemplateParametersLabel), new ReferencesTableListener() {
 			public void handleAdd() {
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CallTemplateMediatorPropertiesEditionPartForm.this, EsbViewsRepository.CallTemplateMediator.Properties.templateParameters, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
@@ -455,7 +459,8 @@ public class CallTemplateMediatorPropertiesEditionPartForm extends SectionProper
 		templateParameters.setID(EsbViewsRepository.CallTemplateMediator.Properties.templateParameters);
 		templateParameters.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
 		// Start of user code for createTemplateParametersTableComposition
-		templateParametersElements = new Control[] {templateParameters.getTable()};
+		Control [] newControls = propertiesGroup.getChildren();
+		templateParametersElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
 		// End of user code
 		return parent;
 	}
@@ -811,43 +816,15 @@ public class CallTemplateMediatorPropertiesEditionPartForm extends SectionProper
     }
 
     public void validate() {
-        /*clearElements();
-        showEntry(availableTemplatesElements, false);
-        showEntry(templateParametersElements, false);
-        showEntry(targetTemplateElements, false);*/
+        EEFPropertyViewUtil epv = new EEFPropertyViewUtil(view);
+        epv.clearElements(new Composite[] {propertiesGroup});
+        epv.showEntry(descriptionElements, false);
+        epv.showEntry(availableTemplatesElements, false);
+        epv.showEntry(templateParametersElements, false);
+        epv.showEntry(targetTemplateElements, false);
         view.layout(true, true);
     }
 
-    public void clearElements() {
-        hideEntry(propertiesGroup.getChildren(), false);
-    }
-
-    public void hideEntry(Control controls[], boolean layout) {
-        // view.getChildren();
-        for (Control control : controls) {
-            // null check and type check
-            if (control.getLayoutData() != null && control.getLayoutData() instanceof GridData) {
-                ((GridData) control.getLayoutData()).exclude = true;
-                control.setVisible(false);
-            }
-        }
-        if (layout) {
-            view.layout(true, true);
-        }
-    }
-
-    public void showEntry(Control controls[], boolean layout) {
-        for (Control control : controls) {
-            // null check and type check
-            if (control.getLayoutData() != null && control.getLayoutData() instanceof GridData) {
-                ((GridData) control.getLayoutData()).exclude = false;
-                control.setVisible(true);
-            }
-        }
-        if (layout) {
-            view.layout(true, true);
-        }
-    }
 	// End of user code
 
 

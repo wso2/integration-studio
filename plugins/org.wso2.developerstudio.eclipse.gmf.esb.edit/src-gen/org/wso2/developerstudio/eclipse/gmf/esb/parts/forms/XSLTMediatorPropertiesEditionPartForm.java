@@ -61,6 +61,8 @@ import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.KeyListener;
+import org.eclipse.swt.events.MouseAdapter;
 import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -126,7 +128,7 @@ public class XSLTMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	// End of user code
 
 	// Start of user code  for XSLTDynamicSchemaKey widgets declarations
-	protected Text DynamicSchemaText;
+	protected Text dynamicSchemaText;
 	protected Control [] XSLTDynamicSchemaKeyElements;
 	// End of user code
 	
@@ -447,7 +449,7 @@ public class XSLTMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
              *  
              */
             public void selectionChanged(SelectionChangedEvent event) {
-                validate();
+                refresh();
             }
 
         });
@@ -1041,7 +1043,7 @@ public class XSLTMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
     @Override
     public void setXSLTDynamicSchemaKey(NamespacedProperty nameSpacedProperty) {
         if (nameSpacedProperty != null) {
-            DynamicSchemaText.setText(nameSpacedProperty.getPropertyValue());
+            dynamicSchemaText.setText(nameSpacedProperty.getPropertyValue());
             dynamicSchema = nameSpacedProperty;
         }
 
@@ -1120,27 +1122,34 @@ public class XSLTMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
         widgetFactory.paintBordersFor(parent);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
         sourceXpathText.setLayoutData(valueData);
-        sourceXpathText.addFocusListener(new FocusAdapter() {
-            /**
-             * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-             * 
-             */
-            @Override
-            @SuppressWarnings("synthetic-access")
-            public void focusLost(FocusEvent e) {
-            }
 
-            /**
-             * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
-             */
+        sourceXpathText.addMouseListener(new MouseAdapter() {
+            
             @Override
-            public void focusGained(FocusEvent e) {
+            public void mouseDown( MouseEvent event ) {
                 EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL, sourceXpath);
                 nspd.open();
                 sourceXpathText.setText(sourceXpath.getPropertyValue());
                 propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(XSLTMediatorPropertiesEditionPartForm.this, EsbViewsRepository.XSLTMediator.Properties.sourceXpath, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getSourceXpath()));
             }
+            
         });
+        
+        sourceXpathText.addKeyListener(new KeyListener() {
+                        
+            @Override
+            public void keyPressed(KeyEvent e) {
+                EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL, sourceXpath);
+                nspd.open();
+                sourceXpathText.setText(sourceXpath.getPropertyValue());
+                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(XSLTMediatorPropertiesEditionPartForm.this, EsbViewsRepository.XSLTMediator.Properties.sourceXpath, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getSourceXpath()));
+            }
+            
+            @Override
+            public void keyReleased(KeyEvent e) {}
+            
+        });
+        
         EditingUtils.setID(sourceXpathText, EsbViewsRepository.XSLTMediator.Properties.sourceXpath);
         EditingUtils.setEEFtype(sourceXpathText, "eef::Text");
         Control expressionHelp = FormUtils
@@ -1160,40 +1169,47 @@ public class XSLTMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
             dynamicSchema = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
         }
         String initValueExpression = dynamicSchema.getPropertyValue().isEmpty() ? "" : dynamicSchema.getPropertyValue();
-        DynamicSchemaText = widgetFactory.createText(parent, initValueExpression);
-        DynamicSchemaText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+        dynamicSchemaText = widgetFactory.createText(parent, initValueExpression);
+        dynamicSchemaText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
         widgetFactory.paintBordersFor(parent);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
-        DynamicSchemaText.setLayoutData(valueData);
-        DynamicSchemaText.addFocusListener(new FocusAdapter() {
-            /**
-             * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-             * 
-             */
+        dynamicSchemaText.setLayoutData(valueData);
+        
+        dynamicSchemaText.addMouseListener(new MouseAdapter() {
+            
             @Override
-            @SuppressWarnings("synthetic-access")
-            public void focusLost(FocusEvent e) {
-            }
-
-            /**
-             * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
-             */
-            @Override
-            public void focusGained(FocusEvent e) {
+            public void mouseDown( MouseEvent event ) {
                 EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL, dynamicSchema);
                 nspd.open();
-                DynamicSchemaText.setText(dynamicSchema.getPropertyValue());
+                dynamicSchemaText.setText(dynamicSchema.getPropertyValue());
                 propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(XSLTMediatorPropertiesEditionPartForm.this, EsbViewsRepository.XSLTMediator.Properties.xSLTDynamicSchemaKey, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getXSLTDynamicSchemaKey()));
             }
+            
         });
-        EditingUtils.setID(DynamicSchemaText, EsbViewsRepository.XSLTMediator.Properties.xSLTDynamicSchemaKey);
-        EditingUtils.setEEFtype(DynamicSchemaText, "eef::Text");
+        
+        dynamicSchemaText.addKeyListener(new KeyListener() {
+                        
+            @Override
+            public void keyPressed(KeyEvent e) {
+                EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL, dynamicSchema);
+                nspd.open();
+                dynamicSchemaText.setText(dynamicSchema.getPropertyValue());
+                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(XSLTMediatorPropertiesEditionPartForm.this, EsbViewsRepository.XSLTMediator.Properties.xSLTDynamicSchemaKey, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getXSLTDynamicSchemaKey()));
+            }
+            
+            @Override
+            public void keyReleased(KeyEvent e) {}
+            
+        });
+        
+        EditingUtils.setID(dynamicSchemaText, EsbViewsRepository.XSLTMediator.Properties.xSLTDynamicSchemaKey);
+        EditingUtils.setEEFtype(dynamicSchemaText, "eef::Text");
         Control expressionHelp = FormUtils
                 .createHelpButton(widgetFactory, parent,
                         propertiesEditionComponent.getHelpContent(
                                 EsbViewsRepository.XSLTMediator.Properties.xSLTDynamicSchemaKey, EsbViewsRepository.FORM_KIND),
                         null); // $NON-NLS-1$
-        XSLTDynamicSchemaKeyElements = new Control[] { expressionPathLabel, DynamicSchemaText, expressionHelp };
+        XSLTDynamicSchemaKeyElements = new Control[] { expressionPathLabel, dynamicSchemaText, expressionHelp };
         return parent;
     }
 
@@ -1219,7 +1235,6 @@ public class XSLTMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
         eu.showEntry(descriptionElements, false);
 
         view.layout(true, true);
-        view.pack();
     }
     
 	// End of user code

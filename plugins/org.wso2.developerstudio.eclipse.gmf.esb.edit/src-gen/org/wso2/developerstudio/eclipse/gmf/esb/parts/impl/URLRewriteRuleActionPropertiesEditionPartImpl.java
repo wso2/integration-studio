@@ -42,17 +42,22 @@ import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
-
+import org.eclipse.swt.events.MouseEvent;
+import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
-
+import org.eclipse.ui.forms.widgets.FormToolkit;
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.URLRewriteRuleActionPropertiesEditionPart;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFNameSpacedPropertyEditorDialog;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
 
 // End of user code
@@ -68,6 +73,18 @@ public class URLRewriteRuleActionPropertiesEditionPartImpl extends CompositeProp
 	protected EMFComboViewer ruleOption;
 	protected Text actionValue;
 	protected Text actionRegex;
+	// Start of user code  for actionExpression widgets declarations
+    protected Text actionExpressionText;
+    protected NamespacedProperty actionExpression;
+    protected Control [] ruleActionElements;
+    protected Control [] ruleFragmentElements;
+    protected Control [] ruleOptionTypeElements;
+    protected Control [] actionValueElements;
+    protected Control [] actionRegexElements;
+    protected Control [] actionExpressionElements;
+    protected Group propertiesGroup;
+	// End of user code
+
 
 
 
@@ -111,6 +128,7 @@ public class URLRewriteRuleActionPropertiesEditionPartImpl extends CompositeProp
 		propertiesStep.addStep(EsbViewsRepository.URLRewriteRuleAction.Properties.ruleOption);
 		propertiesStep.addStep(EsbViewsRepository.URLRewriteRuleAction.Properties.actionValue);
 		propertiesStep.addStep(EsbViewsRepository.URLRewriteRuleAction.Properties.actionRegex);
+		propertiesStep.addStep(EsbViewsRepository.URLRewriteRuleAction.Properties.actionExpression);
 		
 		
 		composer = new PartComposer(uRLRewriteRuleActionStep) {
@@ -135,17 +153,23 @@ public class URLRewriteRuleActionPropertiesEditionPartImpl extends CompositeProp
 				if (key == EsbViewsRepository.URLRewriteRuleAction.Properties.actionRegex) {
 					return createActionRegexText(parent);
 				}
+				// Start of user code for actionExpression addToPart creation
+                if (key == EsbViewsRepository.URLRewriteRuleAction.Properties.actionExpression) {
+                    return createActionExpressionText(parent);
+                }
+				// End of user code
 				return parent;
 			}
 		};
 		composer.compose(view);
 	}
 
-	/**
+
+    /**
 	 * 
 	 */
 	protected Composite createPropertiesGroup(Composite parent) {
-		Group propertiesGroup = new Group(parent, SWT.NONE);
+		propertiesGroup = new Group(parent, SWT.NONE);
 		propertiesGroup.setText(EsbMessages.URLRewriteRuleActionPropertiesEditionPart_PropertiesGroupLabel);
 		GridData propertiesGroupData = new GridData(GridData.FILL_HORIZONTAL);
 		propertiesGroupData.horizontalSpan = 3;
@@ -158,7 +182,7 @@ public class URLRewriteRuleActionPropertiesEditionPartImpl extends CompositeProp
 
 	
 	protected Composite createRuleActionEMFComboViewer(Composite parent) {
-		createDescription(parent, EsbViewsRepository.URLRewriteRuleAction.Properties.ruleAction, EsbMessages.URLRewriteRuleActionPropertiesEditionPart_RuleActionLabel);
+	    Control ruleActionLabel = createDescription(parent, EsbViewsRepository.URLRewriteRuleAction.Properties.ruleAction, EsbMessages.URLRewriteRuleActionPropertiesEditionPart_RuleActionLabel);
 		ruleAction = new EMFComboViewer(parent);
 		ruleAction.setContentProvider(new ArrayContentProvider());
 		ruleAction.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -179,16 +203,17 @@ public class URLRewriteRuleActionPropertiesEditionPartImpl extends CompositeProp
 
 		});
 		ruleAction.setID(EsbViewsRepository.URLRewriteRuleAction.Properties.ruleAction);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.URLRewriteRuleAction.Properties.ruleAction, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		Control ruleActionHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.URLRewriteRuleAction.Properties.ruleAction, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createRuleActionEMFComboViewer
-
+		ruleActionElements = new Control[] { ruleActionLabel, ruleActionHelp,
+		        ruleAction.getCombo() };
 		// End of user code
 		return parent;
 	}
 
 	
 	protected Composite createRuleFragmentEMFComboViewer(Composite parent) {
-		createDescription(parent, EsbViewsRepository.URLRewriteRuleAction.Properties.ruleFragment, EsbMessages.URLRewriteRuleActionPropertiesEditionPart_RuleFragmentLabel);
+	    Control ruleFragmentLabel = createDescription(parent, EsbViewsRepository.URLRewriteRuleAction.Properties.ruleFragment, EsbMessages.URLRewriteRuleActionPropertiesEditionPart_RuleFragmentLabel);
 		ruleFragment = new EMFComboViewer(parent);
 		ruleFragment.setContentProvider(new ArrayContentProvider());
 		ruleFragment.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -209,16 +234,17 @@ public class URLRewriteRuleActionPropertiesEditionPartImpl extends CompositeProp
 
 		});
 		ruleFragment.setID(EsbViewsRepository.URLRewriteRuleAction.Properties.ruleFragment);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.URLRewriteRuleAction.Properties.ruleFragment, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		Control ruleFragmentHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.URLRewriteRuleAction.Properties.ruleFragment, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createRuleFragmentEMFComboViewer
-
+		ruleFragmentElements = new Control[] { ruleFragmentLabel, ruleFragmentHelp,
+		        ruleFragment.getCombo() };
 		// End of user code
 		return parent;
 	}
 
 	
 	protected Composite createRuleOptionEMFComboViewer(Composite parent) {
-		createDescription(parent, EsbViewsRepository.URLRewriteRuleAction.Properties.ruleOption, EsbMessages.URLRewriteRuleActionPropertiesEditionPart_RuleOptionLabel);
+	    Control ruleOptionLabel = createDescription(parent, EsbViewsRepository.URLRewriteRuleAction.Properties.ruleOption, EsbMessages.URLRewriteRuleActionPropertiesEditionPart_RuleOptionLabel);
 		ruleOption = new EMFComboViewer(parent);
 		ruleOption.setContentProvider(new ArrayContentProvider());
 		ruleOption.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -239,16 +265,29 @@ public class URLRewriteRuleActionPropertiesEditionPartImpl extends CompositeProp
 
 		});
 		ruleOption.setID(EsbViewsRepository.URLRewriteRuleAction.Properties.ruleOption);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.URLRewriteRuleAction.Properties.ruleOption, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		Control ruleOptionHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.URLRewriteRuleAction.Properties.ruleOption, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createRuleOptionEMFComboViewer
+		ruleOptionTypeElements = new Control[] { ruleOptionLabel, ruleOptionHelp, ruleOption.getCombo() };
+		ruleOption.addSelectionChangedListener(new ISelectionChangedListener() {
 
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+             *  
+             */
+            public void selectionChanged(SelectionChangedEvent event) {
+                validate();
+            }
+
+        });
 		// End of user code
 		return parent;
 	}
 
 	
 	protected Composite createActionValueText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.URLRewriteRuleAction.Properties.actionValue, EsbMessages.URLRewriteRuleActionPropertiesEditionPart_ActionValueLabel);
+	    Control actionValueLabel = createDescription(parent, EsbViewsRepository.URLRewriteRuleAction.Properties.actionValue, EsbMessages.URLRewriteRuleActionPropertiesEditionPart_ActionValueLabel);
 		actionValue = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData actionValueData = new GridData(GridData.FILL_HORIZONTAL);
 		actionValue.setLayoutData(actionValueData);
@@ -288,16 +327,16 @@ public class URLRewriteRuleActionPropertiesEditionPartImpl extends CompositeProp
 		});
 		EditingUtils.setID(actionValue, EsbViewsRepository.URLRewriteRuleAction.Properties.actionValue);
 		EditingUtils.setEEFtype(actionValue, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.URLRewriteRuleAction.Properties.actionValue, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		Control actionValueHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.URLRewriteRuleAction.Properties.actionValue, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createActionValueText
-
+		actionValueElements = new Control[] { actionValueLabel, actionValue, actionValueHelp };
 		// End of user code
 		return parent;
 	}
 
 	
 	protected Composite createActionRegexText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.URLRewriteRuleAction.Properties.actionRegex, EsbMessages.URLRewriteRuleActionPropertiesEditionPart_ActionRegexLabel);
+	    Control actionRegexLabel = createDescription(parent, EsbViewsRepository.URLRewriteRuleAction.Properties.actionRegex, EsbMessages.URLRewriteRuleActionPropertiesEditionPart_ActionRegexLabel);
 		actionRegex = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData actionRegexData = new GridData(GridData.FILL_HORIZONTAL);
 		actionRegex.setLayoutData(actionRegexData);
@@ -337,9 +376,9 @@ public class URLRewriteRuleActionPropertiesEditionPartImpl extends CompositeProp
 		});
 		EditingUtils.setID(actionRegex, EsbViewsRepository.URLRewriteRuleAction.Properties.actionRegex);
 		EditingUtils.setEEFtype(actionRegex, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.URLRewriteRuleAction.Properties.actionRegex, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		Control actionRegexHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.URLRewriteRuleAction.Properties.actionRegex, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createActionRegexText
-
+		actionRegexElements = new Control[] { actionRegexLabel, actionRegex, actionRegexHelp };
 		// End of user code
 		return parent;
 	}
@@ -567,6 +606,21 @@ public class URLRewriteRuleActionPropertiesEditionPartImpl extends CompositeProp
 
 
 
+	// Start of user code for actionExpression specific getters and setters implementation
+    @Override
+    public NamespacedProperty getActionExpression() {
+        return actionExpression;
+    }
+
+    @Override
+    public void setActionExpression(NamespacedProperty nameSpacedProperty) {
+        if (nameSpacedProperty != null) {
+            actionExpressionText.setText(nameSpacedProperty.getPropertyValue());
+            actionExpression = nameSpacedProperty;
+        }
+    }
+	// End of user code
+
 	/**
 	 * {@inheritDoc}
 	 *
@@ -577,8 +631,126 @@ public class URLRewriteRuleActionPropertiesEditionPartImpl extends CompositeProp
 		return EsbMessages.URLRewriteRuleAction_Part_Title;
 	}
 
+
+
 	// Start of user code additional methods
-	
+
+    protected Composite createActionExpressionText(final Composite parent) {
+        Control actionExpressionLabel = createDescription(parent,
+                EsbViewsRepository.URLRewriteRuleAction.Properties.actionExpression,
+                EsbMessages.URLRewriteRuleActionPropertiesEditionPart_ActionExpressionLabel);
+        actionExpressionText = SWTUtils.createScrollableText(parent, SWT.BORDER); // $NON-NLS-1$
+        actionExpressionText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+        GridData propertyValueData = new GridData(GridData.FILL_HORIZONTAL);
+        actionExpressionText.setLayoutData(propertyValueData);
+        if(actionExpression == null) {
+            actionExpression = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
+        }
+        actionExpressionText.addFocusListener(new FocusAdapter() {
+            /**
+             * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+             * 
+             */
+            @Override
+            @SuppressWarnings("synthetic-access")
+            public void focusLost(FocusEvent e) {
+                if (propertiesEditionComponent != null) {
+                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                            URLRewriteRuleActionPropertiesEditionPartImpl.this,
+                            EsbViewsRepository.URLRewriteRuleAction.Properties.actionExpression, PropertiesEditionEvent.COMMIT,
+                            PropertiesEditionEvent.SET, null, getActionExpression()));
+                    propertiesEditionComponent
+                            .firePropertiesChanged(new PropertiesEditionEvent(URLRewriteRuleActionPropertiesEditionPartImpl.this,
+                                    EsbViewsRepository.URLRewriteRuleAction.Properties.actionExpression,
+                                    PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST, null,
+                                    getActionExpression()));
+                }
+            }
+
+            /**
+             * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+             */
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (propertiesEditionComponent != null) {
+                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                            URLRewriteRuleActionPropertiesEditionPartImpl.this, null, PropertiesEditionEvent.FOCUS_CHANGED,
+                            PropertiesEditionEvent.FOCUS_GAINED, null, null));
+                }
+            }
+        });
+        actionExpressionText.addKeyListener(new KeyAdapter() {
+            /**
+             * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+             * 
+             */
+            @Override
+            @SuppressWarnings("synthetic-access")
+            public void keyPressed(KeyEvent e) {
+                if (e.character == SWT.CR) {
+                    if (propertiesEditionComponent != null)
+                        propertiesEditionComponent.firePropertiesChanged(
+                                new PropertiesEditionEvent(URLRewriteRuleActionPropertiesEditionPartImpl.this,
+                                        EsbViewsRepository.URLRewriteRuleAction.Properties.actionExpression,
+                                        PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+                                        getActionExpression()));
+                }
+            }
+        });
+        EditingUtils.setID(actionExpressionText, EsbViewsRepository.URLRewriteRuleAction.Properties.actionExpression);
+        EditingUtils.setEEFtype(actionExpressionText, "eef::Text"); //$NON-NLS-1$
+        Control actionExpressionHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(
+                EsbViewsRepository.URLRewriteRuleAction.Properties.actionExpression, EsbViewsRepository.FORM_KIND), null); // $NON-NLS-1$
+        actionExpressionElements = new Control[] { actionExpressionLabel, actionExpressionText,
+                actionExpressionHelp };
+        actionExpressionText.addMouseListener(new MouseListener() {
+
+            @Override
+            public void mouseUp(MouseEvent e) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void mouseDown(MouseEvent e) {
+                // TODO Auto-generated method stub
+                EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
+                        SWT.NULL, actionExpression);
+                // valueExpression.setPropertyValue(valueExpressionText.getText());
+                nspd.open();
+                actionExpressionText.setText(actionExpression.getPropertyValue());
+
+            }
+            @Override
+            public void mouseDoubleClick(MouseEvent e) {
+                // TODO Auto-generated method stub
+
+            }
+        });
+        return parent;
+    }
+    
+    @Override
+    public void refresh() {
+        super.refresh();
+        validate();
+    }
+
+    public void validate() {
+        EEFPropertyViewUtil eu = new EEFPropertyViewUtil(view);
+        eu.clearElements(new Composite[] { propertiesGroup });
+        eu.showEntry(ruleActionElements, false);
+        eu.showEntry(ruleFragmentElements, false);
+        eu.showEntry(ruleOptionTypeElements, false);
+        eu.showEntry(actionRegexElements, false);
+
+        if (getRuleOption().getName().equals("EXPRESSION")) {
+            eu.showEntry(actionExpressionElements, false);
+        } else {
+            eu.showEntry(actionValueElements, false);
+        }        
+        view.layout(true, true);
+    }
 	// End of user code
 
 

@@ -33,10 +33,12 @@ import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 import org.wso2.developerstudio.eclipse.gmf.esb.AttributeType;
 import org.wso2.developerstudio.eclipse.gmf.esb.AttributeValueType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediatorAttribute;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.PublishEventMediatorAttributePropertiesEditionPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.parts.impl.PublishEventMediatorAttributePropertiesEditionPartImpl;
 
 
 // End of user code
@@ -93,19 +95,33 @@ public class PublishEventMediatorAttributePropertiesEditionComponent extends Sin
 			if (isAccessible(EsbViewsRepository.PublishEventMediatorAttribute.Properties.defaultValue))
 				basePart.setDefaultValue(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, publishEventMediatorAttribute.getDefaultValue()));
 			
+			// Start of user code  for attributeExpression command update
+	          if (isAccessible(EsbViewsRepository.PublishEventMediatorAttribute.Properties.attributeExpression)) {
+                  basePart.setAttributeExpression(publishEventMediatorAttribute.getAttributeExpression());
+              }
+			// End of user code
+			
 			// init filters
 			
 			
 			
 			
 			
+			// Start of user code  for attributeExpression filter update
+			// End of user code
+			
 			// init values for referenced views
+			
+			// Start of user code
+			((PublishEventMediatorAttributePropertiesEditionPartImpl) editingPart).validate();
+			// End of user code
 			
 			// init filters for referenced views
 			
 		}
 		setInitializing(false);
 	}
+
 
 
 
@@ -134,6 +150,9 @@ public class PublishEventMediatorAttributePropertiesEditionComponent extends Sin
 		if (editorKey == EsbViewsRepository.PublishEventMediatorAttribute.Properties.defaultValue) {
 			return EsbPackage.eINSTANCE.getPublishEventMediatorAttribute_DefaultValue();
 		}
+		if (editorKey == EsbViewsRepository.PublishEventMediatorAttribute.Properties.attributeExpression) {
+			return EsbPackage.eINSTANCE.getAbstractNameValueExpressionAttribute_AttributeExpression();
+		}
 		return super.associatedFeature(editorKey);
 	}
 
@@ -158,6 +177,17 @@ public class PublishEventMediatorAttributePropertiesEditionComponent extends Sin
 		}
 		if (EsbViewsRepository.PublishEventMediatorAttribute.Properties.defaultValue == event.getAffectedEditor()) {
 			publishEventMediatorAttribute.setDefaultValue((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
+		}
+		if (EsbViewsRepository.PublishEventMediatorAttribute.Properties.attributeExpression == event.getAffectedEditor()) {
+			// Start of user code for updateAttributeExpression method body
+		    if (event.getNewValue() != null) {
+                NamespacedProperty nsp = (NamespacedProperty) event.getNewValue();
+                publishEventMediatorAttribute.setAttributeExpression(nsp);
+            } else {
+                publishEventMediatorAttribute.setAttributeExpression(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+            }
+			// End of user code
+			
 		}
 	}
 
@@ -196,6 +226,18 @@ public class PublishEventMediatorAttributePropertiesEditionComponent extends Sin
 					basePart.setDefaultValue("");
 				}
 			}
+					// Start of user code for attributeExpression live update
+			if (EsbPackage.eINSTANCE.getAbstractNameValueExpressionProperty_PropertyExpression()
+                    .equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null
+                    && isAccessible(EsbViewsRepository.PublishEventMediatorAttribute.Properties.attributeExpression)) {
+                if (msg.getNewValue() != null) {
+                    basePart.setAttributeExpression((NamespacedProperty) msg.getNewValue());
+                } else {
+                    basePart.setAttributeExpression(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+                }
+            }
+					// End of user code
+			
 			
 		}
 	}
@@ -212,7 +254,8 @@ public class PublishEventMediatorAttributePropertiesEditionComponent extends Sin
 			EsbPackage.eINSTANCE.getAbstractNameValueExpressionAttribute_AttributeValueType(),
 			EsbPackage.eINSTANCE.getAbstractNameValueExpressionAttribute_AttributeValue(),
 			EsbPackage.eINSTANCE.getAbstractNameValueExpressionAttribute_AttributeType(),
-			EsbPackage.eINSTANCE.getPublishEventMediatorAttribute_DefaultValue()		);
+			EsbPackage.eINSTANCE.getPublishEventMediatorAttribute_DefaultValue(),
+			EsbPackage.eINSTANCE.getAbstractNameValueExpressionAttribute_AttributeExpression()		);
 		return new NotificationFilter[] {filter,};
 	}
 

@@ -71,6 +71,9 @@ import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.KeyListener;
+import org.eclipse.swt.events.MouseAdapter;
+import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 
@@ -94,6 +97,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.CallMediatorPropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFNameSpacedPropertyEditorDialog;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
 import org.wso2.developerstudio.esb.form.editors.article.providers.NamedEntityDescriptor;
@@ -129,6 +133,8 @@ public class CallMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
     protected Control[] endpointRegistryKeyElements;
     protected Control[] endpointXpathElements;
     protected Composite propertiesGroup;
+    
+    protected final EEFPropertyViewUtil epv = new EEFPropertyViewUtil(view);
 	// End of user code
 
 
@@ -509,7 +515,7 @@ public class CallMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
              *  
              */
             public void selectionChanged(SelectionChangedEvent event) {
-                validate();
+                refresh();
             }
         });
 		// End of user code
@@ -921,28 +927,30 @@ public class CallMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
         widgetFactory.paintBordersFor(parent);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
         endpointXPathText.setLayoutData(valueData);
-        endpointXPathText.addFocusListener(new FocusAdapter() {
-            /**
-             * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-             * 
-             */
-            @Override
-            @SuppressWarnings("synthetic-access")
-            public void focusLost(FocusEvent e) {
-            }
 
-            /**
-             * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
-             */
+        endpointXPathText.addMouseListener(new MouseAdapter() {
+            
             @Override
-            public void focusGained(FocusEvent e) {
-                EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL, endpointXPath);
-                //valueExpression.setPropertyValue(valueExpressionText.getText());
-                nspd.open();
-                endpointXPathText.setText(endpointXPath.getPropertyValue());
-                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CallMediatorPropertiesEditionPartForm.this, EsbViewsRepository.CallMediator.Properties.endpointXpath, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getEndpointXPath()));
+            public void mouseDown( MouseEvent event ) {
+                openCreateEndpointNPE(parent);
             }
+            
         });
+        
+        endpointXPathText.addKeyListener(new KeyListener() {
+                        
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (!epv.isReservedKeyCombination(e)) {
+                    openCreateEndpointNPE(parent);
+                }
+            }
+            
+            @Override
+            public void keyReleased(KeyEvent e) {}
+            
+        });
+        
         EditingUtils.setID(endpointXPathText, EsbViewsRepository.AggregateMediator.OnComplete.aggregationExpression);
         EditingUtils.setEEFtype(endpointXPathText, "eef::Text");
         Control endpointXPathHelp =FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.CallMediator.Properties.endpointXpath, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
@@ -950,6 +958,13 @@ public class CallMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
         return parent;
     }
 	
+    private void openCreateEndpointNPE(final Composite parent) {
+        EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL, endpointXPath);
+        nspd.open();
+        endpointXPathText.setText(endpointXPath.getPropertyValue());
+        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CallMediatorPropertiesEditionPartForm.this, EsbViewsRepository.CallMediator.Properties.endpointXpath, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getEndpointXPath()));
+    }
+    
 	@Override
     public void refresh() {
         super.refresh();
@@ -957,50 +972,21 @@ public class CallMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
     }
 
     public void validate() {
-        clearElements();
-        showEntry(endpointTypeElements, false);
-        showEntry(enableBlockingCallsElements, false);
+        epv.clearElements(new Composite[] {propertiesGroup});
+        epv.showEntry(endpointTypeElements, false);
+        epv.showEntry(enableBlockingCallsElements, false);
         switch (getEndpointType().getName()) {
         case "NONE":
         case "INLINE":
             break;
         case "REGISRTYKEY":
-            showEntry(endpointRegistryKeyElements, false);
+            epv.showEntry(endpointRegistryKeyElements, false);
             break;
         case "XPATH":
-            showEntry(endpointXpathElements, false);
+            epv.showEntry(endpointXpathElements, false);
             break;
         }
         view.layout(true, true);
-    }
-
-    public void clearElements() {
-        hideEntry(propertiesGroup.getChildren(), false);
-    }
-
-    public void hideEntry(Control controls[], boolean layout) {
-        // view.getChildren();
-        for (Control control : controls) {
-            // null check and type check
-            if (control.getLayoutData() != null && control.getLayoutData() instanceof GridData) {
-                ((GridData) control.getLayoutData()).exclude = true;
-                control.setVisible(false);
-            }
-        }
-        if (layout) {
-            view.layout(true, true);
-        }
-    }
-
-    public void showEntry(Control controls[], boolean layout) {
-        for (Control control : controls) {
-            // null check and type check
-            ((GridData) control.getLayoutData()).exclude = false;
-            control.setVisible(true);
-        }
-        if (layout) {
-            view.layout(true, true);
-        }
     }
 	// End of user code
 

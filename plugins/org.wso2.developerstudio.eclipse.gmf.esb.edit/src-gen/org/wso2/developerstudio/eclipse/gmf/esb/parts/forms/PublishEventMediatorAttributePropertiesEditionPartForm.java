@@ -55,7 +55,7 @@ import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.PublishEventMediatorAttributePropertiesEditionPart;
 
@@ -74,6 +74,10 @@ public class PublishEventMediatorAttributePropertiesEditionPartForm extends Sect
 	protected Text attributeValue;
 	protected EMFComboViewer attributeType;
 	protected Text defaultValue;
+	// Start of user code  for attributeExpression widgets declarations
+	
+	// End of user code
+
 
 
 
@@ -124,6 +128,7 @@ public class PublishEventMediatorAttributePropertiesEditionPartForm extends Sect
 		propertiesStep.addStep(EsbViewsRepository.PublishEventMediatorAttribute.Properties.attributeValue);
 		propertiesStep.addStep(EsbViewsRepository.PublishEventMediatorAttribute.Properties.attributeType);
 		propertiesStep.addStep(EsbViewsRepository.PublishEventMediatorAttribute.Properties.defaultValue);
+		propertiesStep.addStep(EsbViewsRepository.PublishEventMediatorAttribute.Properties.attributeExpression);
 		
 		
 		composer = new PartComposer(publishEventMediatorAttributeStep) {
@@ -148,6 +153,9 @@ public class PublishEventMediatorAttributePropertiesEditionPartForm extends Sect
 				if (key == EsbViewsRepository.PublishEventMediatorAttribute.Properties.defaultValue) {
 					return createDefaultValueText(widgetFactory, parent);
 				}
+				// Start of user code for attributeExpression addToPart creation
+				
+				// End of user code
 				return parent;
 			}
 		};
@@ -641,6 +649,20 @@ public class PublishEventMediatorAttributePropertiesEditionPartForm extends Sect
 
 
 
+
+	// Start of user code for attributeExpression specific getters and setters implementation
+    @Override
+    public NamespacedProperty getAttributeExpression() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void setAttributeExpression(NamespacedProperty nameSpacedProperty) {
+        // TODO Auto-generated method stub
+        
+    }
+	// End of user code
 
 	/**
 	 * {@inheritDoc}

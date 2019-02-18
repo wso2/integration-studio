@@ -489,15 +489,15 @@ public class EntitlementMediatorItemProvider extends MediatorItemProvider {
     }
 
     /**
-     * This returns EntitlementMediator.gif.
+     * This returns EntitlementMediator.png.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
+     * @generated NOT
      */
 
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/EntitlementMediator"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/EntitlementMediator.png"));
     }
 
     /**

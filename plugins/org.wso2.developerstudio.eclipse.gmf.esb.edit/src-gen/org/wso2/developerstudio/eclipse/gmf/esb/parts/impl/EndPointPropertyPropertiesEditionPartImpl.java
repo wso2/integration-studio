@@ -328,9 +328,9 @@ public class EndPointPropertyPropertiesEditionPartImpl extends CompositeProperti
 			 * 	
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
-			    validate();
-				if (propertiesEditionComponent != null)
+			    if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EndPointPropertyPropertiesEditionPartImpl.this, EsbViewsRepository.EndPointProperty.Properties.valueType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getValueType()));
+			    validate();
 			}
 
 		});

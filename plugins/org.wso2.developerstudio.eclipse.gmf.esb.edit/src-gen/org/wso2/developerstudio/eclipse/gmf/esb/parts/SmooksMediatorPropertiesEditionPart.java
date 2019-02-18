@@ -6,6 +6,8 @@ package org.wso2.developerstudio.eclipse.gmf.esb.parts;
 // Start of user code for imports
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.Enumerator;
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 
 
 // End of user code
@@ -15,60 +17,6 @@ import org.eclipse.emf.common.util.Enumerator;
  * 
  */
 public interface SmooksMediatorPropertiesEditionPart {
-
-	/**
-	 * @return the description
-	 * 
-	 */
-	public String getDescription();
-
-	/**
-	 * Defines a new description
-	 * @param newValue the new description to set
-	 * 
-	 */
-	public void setDescription(String newValue);
-
-
-	/**
-	 * @return the commentsList
-	 * 
-	 */
-	public EList getCommentsList();
-
-	/**
-	 * Defines a new commentsList
-	 * @param newValue the new commentsList to set
-	 * 
-	 */
-	public void setCommentsList(EList newValue);
-
-	/**
-	 * Add a value to the commentsList multivalued attribute.
-	 * @param newValue the value to add
-	 */
-	public void addToCommentsList(Object newValue);
-
-	/**
-	 * Remove a value to the commentsList multivalued attribute.
-	 * @param newValue the value to remove
-	 */
-	public void removeToCommentsList(Object newValue);
-
-
-	/**
-	 * @return the Reverse
-	 * 
-	 */
-	public Boolean getReverse();
-
-	/**
-	 * Defines a new Reverse
-	 * @param newValue the new Reverse to set
-	 * 
-	 */
-	public void setReverse(Boolean newValue);
-
 
 	/**
 	 * @return the inputType
@@ -168,8 +116,78 @@ public interface SmooksMediatorPropertiesEditionPart {
 	public void setOutputMethod(Enumerator newValue);
 
 
+	/**
+	 * @return the commentsList
+	 * 
+	 */
+	public EList getCommentsList();
+
+	/**
+	 * Defines a new commentsList
+	 * @param newValue the new commentsList to set
+	 * 
+	 */
+	public void setCommentsList(EList newValue);
+
+	/**
+	 * Add a value to the commentsList multivalued attribute.
+	 * @param newValue the value to add
+	 */
+	public void addToCommentsList(Object newValue);
+
+	/**
+	 * Remove a value to the commentsList multivalued attribute.
+	 * @param newValue the value to remove
+	 */
+	public void removeToCommentsList(Object newValue);
 
 
+	/**
+	 * @return the Reverse
+	 * 
+	 */
+	public Boolean getReverse();
+
+	/**
+	 * Defines a new Reverse
+	 * @param newValue the new Reverse to set
+	 * 
+	 */
+	public void setReverse(Boolean newValue);
+
+
+	/**
+	 * @return the description
+	 * 
+	 */
+	public String getDescription();
+
+	/**
+	 * Defines a new description
+	 * @param newValue the new description to set
+	 * 
+	 */
+	public void setDescription(String newValue);
+
+
+
+
+	// Start of user code for inputExpresssion specific getters and setters declaration
+	public void setInputExpression(NamespacedProperty namespacedProperty);
+	
+	public NamespacedProperty getInputExpression();
+	
+	// End of user code
+	// Start of user code for outputExpression specific getters and setters declaration
+	public void setOutputExpression(NamespacedProperty namespacedProperty);
+    
+    public NamespacedProperty getOutputExpression();
+	// End of user code
+	// Start of user code for configurationKey specific getters and setters declaration
+	public void setConfigurationKey(RegistryKeyProperty registryKeyProperty);
+	
+	public RegistryKeyProperty getConfigurationKey();
+	// End of user code
 
 	/**
 	 * Returns the internationalized title text.

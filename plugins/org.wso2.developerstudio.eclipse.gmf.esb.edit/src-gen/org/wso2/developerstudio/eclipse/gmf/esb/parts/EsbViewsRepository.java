@@ -1252,6 +1252,12 @@ public class EsbViewsRepository {
 			
 			public static String description = "esb::DropMediator::properties::description";
 			
+			
+			public static String commentsList = "esb::DropMediator::properties::commentsList";
+			
+			
+			public static String reverse = "esb::DropMediator::properties::Reverse";
+			
 	
 		}
 	
@@ -1651,6 +1657,10 @@ public class EsbViewsRepository {
 			
 			public static String defaultValue = "esb::PublishEventMediatorAttribute::properties::defaultValue";
 			
+			// Start of user code for attributeExpression ElementEditor key
+			public static String attributeExpression = "esb::PublishEventMediatorAttribute::properties::attributeExpression";
+			// End of user code
+			
 	
 		}
 	
@@ -1966,6 +1976,9 @@ public class EsbViewsRepository {
 			// Start of user code for valueExpression ElementEditor key
 			public static String valueExpression = "esb::PropertyMediator::properties::valueExpression";
 			// End of user code
+			
+			
+			public static String description = "esb::PropertyMediator::properties::description";
 			
 	
 		}
@@ -2658,9 +2671,6 @@ public class EsbViewsRepository {
 		public static class Properties {
 	
 			
-			public static String description = "esb::EntitlementMediator::properties::description";
-			
-			
 			public static String commentsList = "esb::EntitlementMediator::properties::commentsList";
 			
 			
@@ -2674,6 +2684,9 @@ public class EsbViewsRepository {
 			
 			
 			public static String password = "esb::EntitlementMediator::properties::password";
+			
+			
+			public static String callbackHandler = "esb::EntitlementMediator::properties::callbackHandler";
 			
 			
 			public static String callbackClassName = "esb::EntitlementMediator::properties::callbackClassName";
@@ -2690,17 +2703,33 @@ public class EsbViewsRepository {
 			
 			public static String onRejectSequenceType = "esb::EntitlementMediator::properties::onRejectSequenceType";
 			
+			// Start of user code for onRejectSequenceKey ElementEditor key
+			public static String onRejectSequenceKey = "esb::EntitlementMediator::properties::onRejectSequenceKey";
+			// End of user code
+			
 			
 			public static String onAcceptSequenceType = "esb::EntitlementMediator::properties::onAcceptSequenceType";
+			
+			// Start of user code for onAcceptSequenceKey ElementEditor key
+			public static String onAcceptSequenceKey = "esb::EntitlementMediator::properties::onAcceptSequenceKey";
+			// End of user code
 			
 			
 			public static String adviceSequenceType = "esb::EntitlementMediator::properties::adviceSequenceType";
 			
+			// Start of user code for adviceSequenceKey ElementEditor key
+			public static String adviceSequenceKey = "esb::EntitlementMediator::properties::adviceSequenceKey";
+			// End of user code
+			
 			
 			public static String obligationsSequenceType = "esb::EntitlementMediator::properties::obligationsSequenceType";
 			
+			// Start of user code for obligationsSequenceKey ElementEditor key
+			public static String obligationsSequenceKey = "esb::EntitlementMediator::properties::obligationsSequenceKey";
+			// End of user code
 			
-			public static String callbackHandler = "esb::EntitlementMediator::properties::callbackHandler";
+			
+			public static String description = "esb::EntitlementMediator::properties::description";
 			
 	
 		}
@@ -2878,6 +2907,10 @@ public class EsbViewsRepository {
 			
 			
 			public static String priority = "esb::EnqueueMediator::properties::priority";
+			
+			// Start of user code for sequenceKey ElementEditor key
+			public static String sequenceKey = "esb::CacheMediator::OnCacheHit::sequenceKey";
+			// End of user code
 			
 	
 		}
@@ -3184,6 +3217,22 @@ public class EsbViewsRepository {
 			
 			public static String faultDetailValue = "esb::FaultMediator::properties::faultDetailValue";
 			
+			// Start of user code for faultStringExpression ElementEditor key
+			public static String faultStringExpression = "esb::FaultMediator::properties::faultStringExpression";
+			// End of user code
+			
+			// Start of user code for faultCodeExpression ElementEditor key
+			public static String faultCodeExpression = "esb::FaultMediator::properties::faultCodeExpression";
+			// End of user code
+			
+			// Start of user code for faultDetailExpression ElementEditor key
+			public static String faultDetailExpression = "esb::FaultMediator::properties::faultDetailExpression";
+			// End of user code
+			
+			// Start of user code for faultReasonExpression ElementEditor key
+			public static String faultReasonExpression = "esb::FaultMediator::properties::faultReasonExpression";
+			// End of user code
+			
 	
 		}
 	
@@ -3281,7 +3330,7 @@ public class EsbViewsRepository {
 			public static String sequenceType = "esb::AggregateMediator::onComplete::sequenceType";
 			
 			// Start of user code for sequenceKey ElementEditor key
-			public static String sequenceKey = "esb::CacheMediator::OnCacheHit::sequenceKey";
+			public static String sequenceKey = "esb::AggregateMediator::onComplete::sequenceKey";
 			// End of user code
 			
 	
@@ -3938,6 +3987,12 @@ public class EsbViewsRepository {
 			
 			public static String maxMessageSize = "esb::CacheMediator::properties::maxMessageSize";
 			
+			
+			public static String commentsList = "esb::CacheMediator::properties::commentsList";
+			
+			
+			public static String reverse = "esb::CacheMediator::properties::Reverse";
+			
 	
 		}
 	
@@ -4057,9 +4112,6 @@ public class EsbViewsRepository {
 		public static class Properties {
 	
 			
-			public static String description = "esb::XQueryMediator::properties::description";
-			
-			
 			public static String commentsList = "esb::XQueryMediator::properties::commentsList";
 			
 			
@@ -4070,6 +4122,21 @@ public class EsbViewsRepository {
 			
 			
 			public static String scriptKeyType = "esb::XQueryMediator::properties::scriptKeyType";
+			
+			// Start of user code for staticScriptKey ElementEditor key
+			public static String staticScriptKey = "esb::XQueryMediator::properties::staticScriptKey";
+			// End of user code
+			
+			// Start of user code for targetXPath ElementEditor key
+			public static String targetXPath = "esb::XQueryMediator::properties::targetXPath";
+			// End of user code
+			
+			// Start of user code for dynamicScriptKey ElementEditor key
+			public static String dynamicScriptKey = "esb::XQueryMediator::properties::dynamicScriptKey";
+			// End of user code
+			
+			
+			public static String description = "esb::XQueryMediator::properties::description";
 			
 	
 		}
@@ -4124,6 +4191,14 @@ public class EsbViewsRepository {
 			
 			
 			public static String valueLiteral = "esb::XQueryVariable::properties::valueLiteral";
+			
+			// Start of user code for valueExpression ElementEditor key
+			public static String valueExpression = "esb::XQueryVariable::properties::valueExpression";
+			// End of user code
+			
+			// Start of user code for valueKey ElementEditor key
+			public static String valueKey = "esb::XQueryVariable::properties::valueKey";
+			// End of user code
 			
 	
 		}
@@ -4509,6 +4584,12 @@ public class EsbViewsRepository {
 			
 			
 			public static String description = "esb::HeaderMediator::properties::description";
+			
+			
+			public static String commentsList = "esb::HeaderMediator::properties::commentsList";
+			
+			
+			public static String reverse = "esb::HeaderMediator::properties::Reverse";
 			
 	
 		}
@@ -4920,6 +5001,10 @@ public class EsbViewsRepository {
 			
 			public static String valueLiteral = "esb::SqlParameterDefinition::properties::valueLiteral";
 			
+			// Start of user code for valueExpression ElementEditor key
+			public static String valueExpression = "esb::SqlParameterDefinition::properties::valueExpression";
+			// End of user code
+			
 	
 		}
 	
@@ -4951,40 +5036,10 @@ public class EsbViewsRepository {
 		public static class Properties {
 	
 			
-			public static String description = "esb::DBLookupMediator::properties::description";
-			
-			
 			public static String commentsList = "esb::DBLookupMediator::properties::commentsList";
 			
 			
 			public static String reverse = "esb::DBLookupMediator::properties::Reverse";
-			
-			
-			public static String connectionType = "esb::DBLookupMediator::properties::connectionType";
-			
-			
-			public static String connectionDsType = "esb::DBLookupMediator::properties::connectionDsType";
-			
-			
-			public static String connectionDbType = "esb::DBLookupMediator::properties::connectionDbType";
-			
-			
-			public static String connectionDbDriver = "esb::DBLookupMediator::properties::connectionDbDriver";
-			
-			
-			public static String connectionDsInitialContext = "esb::DBLookupMediator::properties::connectionDsInitialContext";
-			
-			
-			public static String connectionDsName = "esb::DBLookupMediator::properties::connectionDsName";
-			
-			
-			public static String connectionURL = "esb::DBLookupMediator::properties::connectionURL";
-			
-			
-			public static String connectionUsername = "esb::DBLookupMediator::properties::connectionUsername";
-			
-			
-			public static String connectionPassword = "esb::DBLookupMediator::properties::connectionPassword";
 			
 			
 			public static String propertyAutocommit = "esb::DBLookupMediator::properties::propertyAutocommit";
@@ -5022,8 +5077,53 @@ public class EsbViewsRepository {
 			
 			public static String propertyInitialsize = "esb::DBLookupMediator::properties::propertyInitialsize";
 			
+	
+		}
+	
+		public static class Misc {
+	
 			
-			public static String sqlStatements = "esb::DBLookupMediator::properties::sqlStatements";
+			public static String description = "esb::DBLookupMediator::misc::description";
+			
+	
+		}
+	
+		public static class Connection {
+	
+			
+			public static String connectionType = "esb::DBLookupMediator::connection::connectionType";
+			
+			
+			public static String connectionDsType = "esb::DBLookupMediator::connection::connectionDsType";
+			
+			
+			public static String connectionDsInitialContext = "esb::DBLookupMediator::connection::connectionDsInitialContext";
+			
+			
+			public static String connectionDbType = "esb::DBLookupMediator::connection::connectionDbType";
+			
+			
+			public static String connectionDbDriver = "esb::DBLookupMediator::connection::connectionDbDriver";
+			
+			
+			public static String connectionDsName = "esb::DBLookupMediator::connection::connectionDsName";
+			
+			
+			public static String connectionURL = "esb::DBLookupMediator::connection::connectionURL";
+			
+			
+			public static String connectionUsername = "esb::DBLookupMediator::connection::connectionUsername";
+			
+			
+			public static String connectionPassword = "esb::DBLookupMediator::connection::connectionPassword";
+			
+	
+		}
+	
+		public static class Statements {
+	
+			
+			public static String sqlStatements = "esb::DBLookupMediator::statements::sqlStatements";
 			
 	
 		}
@@ -5065,43 +5165,56 @@ public class EsbViewsRepository {
 	 * 
 	 */
 	public static class DBReportMediator {
-		public static class Properties {
+		public static class Connection {
 	
 			
-			public static String description = "esb::DBReportMediator::properties::description";
+			public static String connectionType = "esb::DBReportMediator::connection::connectionType";
 			
+			
+			public static String connectionDsType = "esb::DBReportMediator::connection::connectionDsType";
+			
+			
+			public static String connectionDbType = "esb::DBReportMediator::connection::connectionDbType";
+			
+			
+			public static String connectionDbDriver = "esb::DBReportMediator::connection::connectionDbDriver";
+			
+			
+			public static String connectionDsInitialContext = "esb::DBReportMediator::connection::connectionDsInitialContext";
+			
+			
+			public static String connectionDsName = "esb::DBReportMediator::connection::connectionDsName";
+			
+			
+			public static String connectionURL = "esb::DBReportMediator::connection::connectionURL";
+			
+			
+			public static String connectionUsername = "esb::DBReportMediator::connection::connectionUsername";
+			
+			
+			public static String connectionPassword = "esb::DBReportMediator::connection::connectionPassword";
+			
+			
+			public static String connectionUseTransaction = "esb::DBReportMediator::connection::connectionUseTransaction";
+			
+	
+		}
+	
+		public static class Statements {
+	
+			
+			public static String sqlStatements = "esb::DBReportMediator::statements::sqlStatements";
+			
+	
+		}
+	
+		public static class Properties {
+	
 			
 			public static String commentsList = "esb::DBReportMediator::properties::commentsList";
 			
 			
 			public static String reverse = "esb::DBReportMediator::properties::Reverse";
-			
-			
-			public static String connectionType = "esb::DBReportMediator::properties::connectionType";
-			
-			
-			public static String connectionDsType = "esb::DBReportMediator::properties::connectionDsType";
-			
-			
-			public static String connectionDbType = "esb::DBReportMediator::properties::connectionDbType";
-			
-			
-			public static String connectionDbDriver = "esb::DBReportMediator::properties::connectionDbDriver";
-			
-			
-			public static String connectionDsInitialContext = "esb::DBReportMediator::properties::connectionDsInitialContext";
-			
-			
-			public static String connectionDsName = "esb::DBReportMediator::properties::connectionDsName";
-			
-			
-			public static String connectionURL = "esb::DBReportMediator::properties::connectionURL";
-			
-			
-			public static String connectionUsername = "esb::DBReportMediator::properties::connectionUsername";
-			
-			
-			public static String connectionPassword = "esb::DBReportMediator::properties::connectionPassword";
 			
 			
 			public static String propertyAutocommit = "esb::DBReportMediator::properties::propertyAutocommit";
@@ -5139,11 +5252,13 @@ public class EsbViewsRepository {
 			
 			public static String propertyInitialsize = "esb::DBReportMediator::properties::propertyInitialsize";
 			
+	
+		}
+	
+		public static class Misc {
+	
 			
-			public static String sqlStatements = "esb::DBReportMediator::properties::sqlStatements";
-			
-			
-			public static String connectionUseTransaction = "esb::DBReportMediator::properties::connectionUseTransaction";
+			public static String description = "esb::DBReportMediator::misc::description";
 			
 	
 		}
@@ -5507,6 +5622,12 @@ public class EsbViewsRepository {
 			
 			public static String description = "esb::LoopBackMediator::properties::description";
 			
+			
+			public static String commentsList = "esb::LoopBackMediator::properties::commentsList";
+			
+			
+			public static String reverse = "esb::LoopBackMediator::properties::Reverse";
+			
 	
 		}
 	
@@ -5598,31 +5719,63 @@ public class EsbViewsRepository {
 	 * 
 	 */
 	public static class SmooksMediator {
-		public static class Properties {
+		public static class Input {
 	
 			
-			public static String description = "esb::SmooksMediator::properties::description";
+			public static String inputType = "esb::SmooksMediator::input::inputType";
 			
+			// Start of user code for inputExpresssion ElementEditor key
+			public static String inputExpresssion = "esb::SmooksMediator::input::inputExpresssion";
+			// End of user code
+			
+	
+		}
+	
+		public static class Output {
+	
+			
+			public static String outputType = "esb::SmooksMediator::output::outputType";
+			
+			
+			public static String outputProperty = "esb::SmooksMediator::output::outputProperty";
+			
+			
+			public static String outputAction = "esb::SmooksMediator::output::outputAction";
+			
+			
+			public static String outputMethod = "esb::SmooksMediator::output::outputMethod";
+			
+			// Start of user code for outputExpression ElementEditor key
+			public static String outputExpression = "esb::SmooksMediator::output::outputExpression";
+			// End of user code
+			
+	
+		}
+	
+		public static class Properties {
+	
 			
 			public static String commentsList = "esb::SmooksMediator::properties::commentsList";
 			
 			
 			public static String reverse = "esb::SmooksMediator::properties::Reverse";
 			
+	
+		}
+	
+		public static class Key {
+	
+			// Start of user code for configurationKey ElementEditor key
+			public static String configurationKey = "esb::SmooksMediator::key::configurationKey";
+			// End of user code
 			
-			public static String inputType = "esb::SmooksMediator::properties::inputType";
+	
+		}
+	
+		public static class Misc {
+	
 			
-			
-			public static String outputType = "esb::SmooksMediator::properties::outputType";
-			
-			
-			public static String outputProperty = "esb::SmooksMediator::properties::outputProperty";
-			
-			
-			public static String outputAction = "esb::SmooksMediator::properties::outputAction";
-			
-			
-			public static String outputMethod = "esb::SmooksMediator::properties::outputMethod";
+			public static String description = "esb::SmooksMediator::misc::description";
 			
 	
 		}
@@ -5828,6 +5981,12 @@ public class EsbViewsRepository {
 			
 			public static String description = "esb::PayloadFactoryMediator::properties::description";
 			
+			
+			public static String commentsList = "esb::PayloadFactoryMediator::properties::commentsList";
+			
+			
+			public static String reverse = "esb::PayloadFactoryMediator::properties::Reverse";
+			
 	
 		}
 	
@@ -5901,8 +6060,16 @@ public class EsbViewsRepository {
 			
 			public static String breakAfterRoute = "esb::ConditionalRouteBranch::properties::breakAfterRoute";
 			
+			// Start of user code for targetSequence ElementEditor key
+			public static String targetSequence = "esb::ConditionalRouteBranch::properties::targetSequence";
+			// End of user code
+			
 	
 		}
+	
+	// Start of user code for evaluatorExpression ElementEditor key
+	public static String evaluatorExpression = "esb::ConditionalRouteBranch::evaluatorExpression";
+	// End of user code
 	
 	}
 
@@ -6007,6 +6174,12 @@ public class EsbViewsRepository {
 			
 			
 			public static String description = "esb::SendMediator::properties::description";
+			
+			
+			public static String commentsList = "esb::SendMediator::properties::commentsList";
+			
+			
+			public static String reverse = "esb::SendMediator::properties::Reverse";
 			
 	
 		}
@@ -6213,9 +6386,6 @@ public class EsbViewsRepository {
 		public static class Properties {
 	
 			
-			public static String description = "esb::WSDLEndPoint::properties::description";
-			
-			
 			public static String commentsList = "esb::WSDLEndPoint::properties::commentsList";
 			
 			
@@ -6225,82 +6395,131 @@ public class EsbViewsRepository {
 			public static String anonymous = "esb::WSDLEndPoint::properties::anonymous";
 			
 			
-			public static String inLine = "esb::WSDLEndPoint::properties::InLine";
-			
-			
 			public static String duplicate = "esb::WSDLEndPoint::properties::duplicate";
-			
-			
-			public static String properties_ = "esb::WSDLEndPoint::properties::properties_";
 			
 			
 			public static String reversed = "esb::WSDLEndPoint::properties::reversed";
 			
 			
-			public static String reliableMessagingEnabled = "esb::WSDLEndPoint::properties::reliableMessagingEnabled";
-			
-			
-			public static String securityEnabled = "esb::WSDLEndPoint::properties::securityEnabled";
-			
-			
-			public static String addressingEnabled = "esb::WSDLEndPoint::properties::addressingEnabled";
-			
-			
-			public static String addressingVersion = "esb::WSDLEndPoint::properties::addressingVersion";
-			
-			
-			public static String addressingSeparateListener = "esb::WSDLEndPoint::properties::addressingSeparateListener";
-			
-			
-			public static String timeOutDuration = "esb::WSDLEndPoint::properties::timeOutDuration";
-			
-			
-			public static String timeOutAction = "esb::WSDLEndPoint::properties::timeOutAction";
-			
-			
-			public static String retryErrorCodes = "esb::WSDLEndPoint::properties::retryErrorCodes";
-			
-			
-			public static String retryCount = "esb::WSDLEndPoint::properties::retryCount";
-			
-			
-			public static String retryDelay = "esb::WSDLEndPoint::properties::retryDelay";
-			
-			
-			public static String suspendErrorCodes = "esb::WSDLEndPoint::properties::suspendErrorCodes";
-			
-			
-			public static String suspendInitialDuration = "esb::WSDLEndPoint::properties::suspendInitialDuration";
-			
-			
-			public static String suspendMaximumDuration = "esb::WSDLEndPoint::properties::suspendMaximumDuration";
-			
-			
-			public static String suspendProgressionFactor = "esb::WSDLEndPoint::properties::suspendProgressionFactor";
-			
-			
-			public static String format = "esb::WSDLEndPoint::properties::format";
-			
-			
-			public static String optimize = "esb::WSDLEndPoint::properties::optimize";
-			
-			
 			public static String templateParameters = "esb::WSDLEndPoint::properties::templateParameters";
 			
+	
+		}
+	
+		public static class Basic {
+	
 			
-			public static String statisticsEnabled = "esb::WSDLEndPoint::properties::statisticsEnabled";
-			
-			
-			public static String traceEnabled = "esb::WSDLEndPoint::properties::traceEnabled";
-			
-			
-			public static String wsdlUri = "esb::WSDLEndPoint::properties::wsdlUri";
-			
-			
-			public static String service = "esb::WSDLEndPoint::properties::service";
+			public static String inLine = "esb::WSDLEndPoint::basic::InLine";
 			
 			
-			public static String port = "esb::WSDLEndPoint::properties::port";
+			public static String format = "esb::WSDLEndPoint::basic::format";
+			
+			
+			public static String traceEnabled = "esb::WSDLEndPoint::basic::traceEnabled";
+			
+			
+			public static String statisticsEnabled = "esb::WSDLEndPoint::basic::statisticsEnabled";
+			
+	
+		}
+	
+		public static class EndpointSuspendState {
+	
+			
+			public static String suspendErrorCodes = "esb::WSDLEndPoint::endpointSuspendState::suspendErrorCodes";
+			
+			
+			public static String suspendInitialDuration = "esb::WSDLEndPoint::endpointSuspendState::suspendInitialDuration";
+			
+			
+			public static String suspendMaximumDuration = "esb::WSDLEndPoint::endpointSuspendState::suspendMaximumDuration";
+			
+			
+			public static String suspendProgressionFactor = "esb::WSDLEndPoint::endpointSuspendState::suspendProgressionFactor";
+			
+	
+		}
+	
+		public static class EndpointTimeoutState {
+	
+			
+			public static String retryErrorCodes = "esb::WSDLEndPoint::endpointTimeoutState::retryErrorCodes";
+			
+			
+			public static String retryCount = "esb::WSDLEndPoint::endpointTimeoutState::retryCount";
+			
+			
+			public static String retryDelay = "esb::WSDLEndPoint::endpointTimeoutState::retryDelay";
+			
+	
+		}
+	
+		public static class Misc {
+	
+			
+			public static String properties = "esb::WSDLEndPoint::misc::properties";
+			
+			
+			public static String optimize = "esb::WSDLEndPoint::misc::optimize";
+			
+			
+			public static String description = "esb::WSDLEndPoint::misc::description";
+			
+			
+			public static String wsdlUri = "esb::WSDLEndPoint::misc::wsdlUri";
+			
+			
+			public static String service = "esb::WSDLEndPoint::misc::service";
+			
+			
+			public static String port = "esb::WSDLEndPoint::misc::port";
+			
+	
+		}
+	
+		public static class Qos {
+	
+			
+			public static String reliableMessagingEnabled = "esb::WSDLEndPoint::qos::reliableMessagingEnabled";
+			
+			
+			public static String securityEnabled = "esb::WSDLEndPoint::qos::securityEnabled";
+			
+			
+			public static String addressingEnabled = "esb::WSDLEndPoint::qos::addressingEnabled";
+			
+			// Start of user code for reliableMessagingPolicy ElementEditor key
+			public static String reliableMessagingPolicy = "esb::WSDLEndPoint::qos::reliableMessagingPolicy";
+			// End of user code
+			
+			// Start of user code for securityPolicy ElementEditor key
+			public static String securityPolicy = "esb::WSDLEndPoint::qos::securityPolicy";
+			// End of user code
+			
+			// Start of user code for inboundPolicy ElementEditor key
+			public static String inboundPolicy = "esb::WSDLEndPoint::qos::inboundPolicy";
+			// End of user code
+			
+			// Start of user code for outboundPolicy ElementEditor key
+			public static String outboundPolicy = "esb::WSDLEndPoint::qos::outboundPolicy";
+			// End of user code
+			
+			
+			public static String addressingVersion = "esb::WSDLEndPoint::qos::addressingVersion";
+			
+			
+			public static String addressingSeparateListener = "esb::WSDLEndPoint::qos::addressingSeparateListener";
+			
+	
+		}
+	
+		public static class Timeout {
+	
+			
+			public static String timeOutDuration = "esb::WSDLEndPoint::timeout::timeOutDuration";
+			
+			
+			public static String timeOutAction = "esb::WSDLEndPoint::timeout::timeOutAction";
 			
 	
 		}
@@ -6605,6 +6824,10 @@ public class EsbViewsRepository {
 			
 			
 			public static String actionRegex = "esb::URLRewriteRuleAction::properties::actionRegex";
+			
+			// Start of user code for actionExpression ElementEditor key
+			public static String actionExpression = "esb::URLRewriteRuleAction::properties::actionExpression";
+			// End of user code
 			
 	
 		}
@@ -6966,6 +7189,14 @@ public class EsbViewsRepository {
 			
 			
 			public static String referringEndpointType = "esb::NamedEndpoint::properties::referringEndpointType";
+			
+			// Start of user code for dynamicReferenceKey ElementEditor key
+			public static String dynamicReferenceKey = "esb::NamedEndpoint::properties::dynamicReferenceKey";
+			// End of user code
+			
+			// Start of user code for staticReferenceKey ElementEditor key
+			public static String staticReferenceKey = "esb::NamedEndpoint::properties::staticReferenceKey";
+			// End of user code
 			
 	
 		}
@@ -8240,16 +8471,34 @@ public class EsbViewsRepository {
 		public static class Properties {
 	
 			
-			public static String description = "esb::FastXSLTMediator::properties::description";
-			
-			
 			public static String commentsList = "esb::FastXSLTMediator::properties::commentsList";
 			
 			
 			public static String reverse = "esb::FastXSLTMediator::properties::Reverse";
 			
+	
+		}
+	
+		public static class Basic {
+	
+			// Start of user code for fastXsltStaticSchemaKey ElementEditor key
+			public static String fastXsltStaticSchemaKey = "esb::FastXSLTMediator::Basic::fastXsltStaticSchemaKey";
+			// End of user code
 			
-			public static String fastXsltSchemaKeyType = "esb::FastXSLTMediator::properties::fastXsltSchemaKeyType";
+			// Start of user code for fastXsltDynamicSchemaKey ElementEditor key
+			public static String fastXsltDynamicSchemaKey = "esb::FastXSLTMediator::Basic::fastXsltDynamicSchemaKey";
+			// End of user code
+			
+	
+		}
+	
+		public static class Misc {
+	
+			
+			public static String fastXsltSchemaKeyType = "esb::FastXSLTMediator::Misc::fastXsltSchemaKeyType";
+			
+			
+			public static String description = "esb::FastXSLTMediator::Misc::description";
 			
 	
 		}

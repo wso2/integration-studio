@@ -61,6 +61,9 @@ import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.KeyListener;
+import org.eclipse.swt.events.MouseAdapter;
+import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 
@@ -434,7 +437,7 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 		scriptType.addSelectionChangedListener(new ISelectionChangedListener() {
 			@Override
 			public void selectionChanged(SelectionChangedEvent event) {
-				validate();
+			    refresh();
 			}
 		});
 		// End of user code
@@ -644,7 +647,7 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 		keyType.addSelectionChangedListener(new ISelectionChangedListener() {
 			@Override
 			public void selectionChanged(SelectionChangedEvent event) {
-				validate();
+			    refresh();
 				
 			}
 		});
@@ -1213,32 +1216,28 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 		widgetFactory.paintBordersFor(parent);
 		GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
 		scriptDynamicKeyText.setLayoutData(valueData);
-		scriptDynamicKeyText.addFocusListener(new FocusAdapter() {
-			/**
-			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void focusLost(FocusEvent e) {
-			}
 
-			/**
-			 * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
-			 */
-			@Override
-			public void focusGained(FocusEvent e) {
-				EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
-						SWT.NULL, scriptDynamicKey);
-				// valueExpression.setPropertyValue(valueExpressionText.getText());
-				nspd.open();
-				scriptDynamicKeyText.setText(scriptDynamicKey.getPropertyValue());
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
-						ScriptMediatorPropertiesEditionPartForm.this,
-						EsbViewsRepository.ScriptMediator.Properties.scriptDynamicKey,
-						PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getScriptDynamicKey()));
-			}
-		});
+		scriptDynamicKeyText.addMouseListener(new MouseAdapter() {
+            
+            @Override
+            public void mouseDown( MouseEvent event ) {
+                openScriptDynamicKeyNamespacedPropertyEditor(parent);
+            }
+            
+        });
+        
+		scriptDynamicKeyText.addKeyListener(new KeyListener() {
+                        
+            @Override
+            public void keyPressed(KeyEvent e) {
+                openScriptDynamicKeyNamespacedPropertyEditor(parent);
+            }
+            
+            @Override
+            public void keyReleased(KeyEvent e) {}
+            
+        });
+		
 		EditingUtils.setID(scriptDynamicKeyText,
 				EsbViewsRepository.ScriptMediator.Properties.scriptDynamicKey);
 		EditingUtils.setEEFtype(scriptDynamicKeyText, "eef::Text");
@@ -1250,6 +1249,18 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 		scriptDynamicKeyElements = new Control[] { scriptDynamicKeyLabel, scriptDynamicKeyText, scriptDynamicKeyHelp };
 		return parent;
 	}
+	
+    private void openScriptDynamicKeyNamespacedPropertyEditor(final Composite parent) {
+        EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
+                SWT.NULL, scriptDynamicKey);
+        // valueExpression.setPropertyValue(valueExpressionText.getText());
+        nspd.open();
+        scriptDynamicKeyText.setText(scriptDynamicKey.getPropertyValue());
+        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                ScriptMediatorPropertiesEditionPartForm.this,
+                EsbViewsRepository.ScriptMediator.Properties.scriptDynamicKey,
+                PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getScriptDynamicKey()));
+    }
 	
 	@Override
     public void refresh() {

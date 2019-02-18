@@ -42,17 +42,22 @@ import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
-
+import org.eclipse.swt.events.MouseEvent;
+import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
-
+import org.eclipse.ui.forms.widgets.FormToolkit;
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.PublishEventMediatorAttributePropertiesEditionPart;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFNameSpacedPropertyEditorDialog;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
 
 // End of user code
@@ -68,6 +73,18 @@ public class PublishEventMediatorAttributePropertiesEditionPartImpl extends Comp
 	protected Text attributeValue;
 	protected EMFComboViewer attributeType;
 	protected Text defaultValue;
+	// Start of user code  for attributeExpression widgets declarations
+	protected Text attributeExpressionText;
+	protected NamespacedProperty attributeExpression;
+	protected Control [] attributeExpressionElements;
+	protected Control [] attributeNameElements;
+	protected Control [] attributeValueTypeElements;
+	protected Control [] attributeValueElements;
+	protected Control [] attributeTypeElements;
+	protected Control [] defaultValueElements;
+	protected Group propertiesGroup;
+	// End of user code
+
 
 
 
@@ -101,15 +118,16 @@ public class PublishEventMediatorAttributePropertiesEditionPartImpl extends Comp
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
-	 * 
+	 * generated NOT
 	 */
 	public void createControls(Composite view) { 
 		CompositionSequence publishEventMediatorAttributeStep = new BindingCompositionSequence(propertiesEditionComponent);
 		CompositionStep propertiesStep = publishEventMediatorAttributeStep.addStep(EsbViewsRepository.PublishEventMediatorAttribute.Properties.class);
 		propertiesStep.addStep(EsbViewsRepository.PublishEventMediatorAttribute.Properties.attributeName);
 		propertiesStep.addStep(EsbViewsRepository.PublishEventMediatorAttribute.Properties.attributeValueType);
-		propertiesStep.addStep(EsbViewsRepository.PublishEventMediatorAttribute.Properties.attributeValue);
+		propertiesStep.addStep(EsbViewsRepository.PublishEventMediatorAttribute.Properties.attributeExpression);
 		propertiesStep.addStep(EsbViewsRepository.PublishEventMediatorAttribute.Properties.attributeType);
+		propertiesStep.addStep(EsbViewsRepository.PublishEventMediatorAttribute.Properties.attributeValue);
 		propertiesStep.addStep(EsbViewsRepository.PublishEventMediatorAttribute.Properties.defaultValue);
 		
 		
@@ -135,6 +153,11 @@ public class PublishEventMediatorAttributePropertiesEditionPartImpl extends Comp
 				if (key == EsbViewsRepository.PublishEventMediatorAttribute.Properties.defaultValue) {
 					return createDefaultValueText(parent);
 				}
+				// Start of user code for attributeExpression addToPart creation
+				if (key == EsbViewsRepository.PublishEventMediatorAttribute.Properties.attributeExpression) {
+                    return createAttributeExpressionText(parent);
+                }
+				// End of user code
 				return parent;
 			}
 		};
@@ -142,10 +165,10 @@ public class PublishEventMediatorAttributePropertiesEditionPartImpl extends Comp
 	}
 
 	/**
-	 * 
+	 * @generated NOT
 	 */
 	protected Composite createPropertiesGroup(Composite parent) {
-		Group propertiesGroup = new Group(parent, SWT.NONE);
+		propertiesGroup = new Group(parent, SWT.NONE);
 		propertiesGroup.setText(EsbMessages.PublishEventMediatorAttributePropertiesEditionPart_PropertiesGroupLabel);
 		GridData propertiesGroupData = new GridData(GridData.FILL_HORIZONTAL);
 		propertiesGroupData.horizontalSpan = 3;
@@ -156,9 +179,11 @@ public class PublishEventMediatorAttributePropertiesEditionPartImpl extends Comp
 		return propertiesGroup;
 	}
 
-	
+	/**
+     * @generated NOT
+     */
 	protected Composite createAttributeNameText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.PublishEventMediatorAttribute.Properties.attributeName, EsbMessages.PublishEventMediatorAttributePropertiesEditionPart_AttributeNameLabel);
+		Control attributeNameLabel = createDescription(parent, EsbViewsRepository.PublishEventMediatorAttribute.Properties.attributeName, EsbMessages.PublishEventMediatorAttributePropertiesEditionPart_AttributeNameLabel);
 		attributeName = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData attributeNameData = new GridData(GridData.FILL_HORIZONTAL);
 		attributeName.setLayoutData(attributeNameData);
@@ -198,16 +223,18 @@ public class PublishEventMediatorAttributePropertiesEditionPartImpl extends Comp
 		});
 		EditingUtils.setID(attributeName, EsbViewsRepository.PublishEventMediatorAttribute.Properties.attributeName);
 		EditingUtils.setEEFtype(attributeName, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PublishEventMediatorAttribute.Properties.attributeName, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		Control attributeNameHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PublishEventMediatorAttribute.Properties.attributeName, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createAttributeNameText
-
+		attributeNameElements = new Control [] {attributeNameLabel, attributeName, attributeNameHelp};
 		// End of user code
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */	
 	protected Composite createAttributeValueTypeEMFComboViewer(Composite parent) {
-		createDescription(parent, EsbViewsRepository.PublishEventMediatorAttribute.Properties.attributeValueType, EsbMessages.PublishEventMediatorAttributePropertiesEditionPart_AttributeValueTypeLabel);
+		Control attributeValueTypeLabel = createDescription(parent, EsbViewsRepository.PublishEventMediatorAttribute.Properties.attributeValueType, EsbMessages.PublishEventMediatorAttributePropertiesEditionPart_AttributeValueTypeLabel);
 		attributeValueType = new EMFComboViewer(parent);
 		attributeValueType.setContentProvider(new ArrayContentProvider());
 		attributeValueType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -228,16 +255,32 @@ public class PublishEventMediatorAttributePropertiesEditionPartImpl extends Comp
 
 		});
 		attributeValueType.setID(EsbViewsRepository.PublishEventMediatorAttribute.Properties.attributeValueType);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PublishEventMediatorAttribute.Properties.attributeValueType, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		Control attributeValeTypeHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PublishEventMediatorAttribute.Properties.attributeValueType, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createAttributeValueTypeEMFComboViewer
+        attributeValueTypeElements = new Control[] { attributeValueTypeLabel, attributeValeTypeHelp,
+                attributeValueType.getCombo() };
+        attributeValueType.addSelectionChangedListener(new ISelectionChangedListener() {
 
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+             *  
+             */
+            public void selectionChanged(SelectionChangedEvent event) {
+                validate();
+            }
+
+        });
 		// End of user code
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */ 
 	protected Composite createAttributeValueText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.PublishEventMediatorAttribute.Properties.attributeValue, EsbMessages.PublishEventMediatorAttributePropertiesEditionPart_AttributeValueLabel);
+		Control attributeValueLabel = createDescription(parent, EsbViewsRepository.PublishEventMediatorAttribute.Properties.attributeValue, EsbMessages.PublishEventMediatorAttributePropertiesEditionPart_AttributeValueLabel);
 		attributeValue = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData attributeValueData = new GridData(GridData.FILL_HORIZONTAL);
 		attributeValue.setLayoutData(attributeValueData);
@@ -277,16 +320,18 @@ public class PublishEventMediatorAttributePropertiesEditionPartImpl extends Comp
 		});
 		EditingUtils.setID(attributeValue, EsbViewsRepository.PublishEventMediatorAttribute.Properties.attributeValue);
 		EditingUtils.setEEFtype(attributeValue, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PublishEventMediatorAttribute.Properties.attributeValue, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		Control attributeValueHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PublishEventMediatorAttribute.Properties.attributeValue, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createAttributeValueText
-
+        attributeValueElements = new Control[] { attributeValueLabel, attributeValue, attributeValueHelp };
 		// End of user code
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createAttributeTypeEMFComboViewer(Composite parent) {
-		createDescription(parent, EsbViewsRepository.PublishEventMediatorAttribute.Properties.attributeType, EsbMessages.PublishEventMediatorAttributePropertiesEditionPart_AttributeTypeLabel);
+		Control attributeTypeLabel = createDescription(parent, EsbViewsRepository.PublishEventMediatorAttribute.Properties.attributeType, EsbMessages.PublishEventMediatorAttributePropertiesEditionPart_AttributeTypeLabel);
 		attributeType = new EMFComboViewer(parent);
 		attributeType.setContentProvider(new ArrayContentProvider());
 		attributeType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -307,16 +352,18 @@ public class PublishEventMediatorAttributePropertiesEditionPartImpl extends Comp
 
 		});
 		attributeType.setID(EsbViewsRepository.PublishEventMediatorAttribute.Properties.attributeType);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PublishEventMediatorAttribute.Properties.attributeType, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		Control attributeTypeHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PublishEventMediatorAttribute.Properties.attributeType, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createAttributeTypeEMFComboViewer
-
+        attributeTypeElements = new Control[] { attributeTypeLabel, attributeTypeHelp, attributeType.getCombo() };
 		// End of user code
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */	
 	protected Composite createDefaultValueText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.PublishEventMediatorAttribute.Properties.defaultValue, EsbMessages.PublishEventMediatorAttributePropertiesEditionPart_DefaultValueLabel);
+		Control defaultValueLabel = createDescription(parent, EsbViewsRepository.PublishEventMediatorAttribute.Properties.defaultValue, EsbMessages.PublishEventMediatorAttributePropertiesEditionPart_DefaultValueLabel);
 		defaultValue = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData defaultValueData = new GridData(GridData.FILL_HORIZONTAL);
 		defaultValue.setLayoutData(defaultValueData);
@@ -356,9 +403,9 @@ public class PublishEventMediatorAttributePropertiesEditionPartImpl extends Comp
 		});
 		EditingUtils.setID(defaultValue, EsbViewsRepository.PublishEventMediatorAttribute.Properties.defaultValue);
 		EditingUtils.setEEFtype(defaultValue, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PublishEventMediatorAttribute.Properties.defaultValue, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		Control defaultValueHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PublishEventMediatorAttribute.Properties.defaultValue, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createDefaultValueText
-
+        defaultValueElements = new Control[] { defaultValueLabel, defaultValueHelp, defaultValue };
 		// End of user code
 		return parent;
 	}
@@ -571,6 +618,21 @@ public class PublishEventMediatorAttributePropertiesEditionPartImpl extends Comp
 
 
 
+	// Start of user code for attributeExpression specific getters and setters implementation
+    @Override
+    public NamespacedProperty getAttributeExpression() {
+        return attributeExpression;
+    }
+
+    @Override
+    public void setAttributeExpression(NamespacedProperty nameSpacedProperty) {
+        if (nameSpacedProperty != null) {
+            attributeExpressionText.setText(nameSpacedProperty.getPropertyValue());
+            attributeExpression = nameSpacedProperty;
+        }
+    }
+	// End of user code
+
 	/**
 	 * {@inheritDoc}
 	 *
@@ -582,8 +644,129 @@ public class PublishEventMediatorAttributePropertiesEditionPartImpl extends Comp
 	}
 
 	// Start of user code additional methods
-	
-	// End of user code
+    protected Composite createAttributeExpressionText(final Composite parent) {
+        Control attributeExpressionTextLabel = createDescription(parent,
+                EsbViewsRepository.PublishEventMediatorAttribute.Properties.attributeExpression,
+                EsbMessages.PublishEventMediatorAttributePropertiesEditionPart_AttributeExpressionLabel);
+        attributeExpressionText = SWTUtils.createScrollableText(parent, SWT.BORDER); // $NON-NLS-1$
+        attributeExpressionText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+        GridData propertyValueData = new GridData(GridData.FILL_HORIZONTAL);
+        attributeExpressionText.setLayoutData(propertyValueData);
+        if(attributeExpression==null) {
+            attributeExpression = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
+        }
+        attributeExpressionText.addFocusListener(new FocusAdapter() {
+            /**
+             * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+             * 
+             */
+            @Override
+            @SuppressWarnings("synthetic-access")
+            public void focusLost(FocusEvent e) {
+                if (propertiesEditionComponent != null) {
+                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                            PublishEventMediatorAttributePropertiesEditionPartImpl.this,
+                            EsbViewsRepository.PublishEventMediatorAttribute.Properties.attributeExpression, PropertiesEditionEvent.COMMIT,
+                            PropertiesEditionEvent.SET, null, getAttributeExpression()));
+                    propertiesEditionComponent
+                            .firePropertiesChanged(new PropertiesEditionEvent(PublishEventMediatorAttributePropertiesEditionPartImpl.this,
+                                    EsbViewsRepository.PublishEventMediatorAttribute.Properties.attributeExpression,
+                                    PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST, null,
+                                    getAttributeExpression()));
+                }
+            }
 
+            /**
+             * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+             */
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (propertiesEditionComponent != null) {
+                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                            PublishEventMediatorAttributePropertiesEditionPartImpl.this, null, PropertiesEditionEvent.FOCUS_CHANGED,
+                            PropertiesEditionEvent.FOCUS_GAINED, null, null));
+                }
+            }
+        });
+        attributeExpressionText.addKeyListener(new KeyAdapter() {
+            /**
+             * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+             * 
+             */
+            @Override
+            @SuppressWarnings("synthetic-access")
+            public void keyPressed(KeyEvent e) {
+                if (e.character == SWT.CR) {
+                    if (propertiesEditionComponent != null)
+                        propertiesEditionComponent.firePropertiesChanged(
+                                new PropertiesEditionEvent(PublishEventMediatorAttributePropertiesEditionPartImpl.this,
+                                        EsbViewsRepository.PublishEventMediatorAttribute.Properties.attributeExpression,
+                                        PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+                                        getAttributeExpression()));
+                }
+            }
+        });
+        EditingUtils.setID(attributeExpressionText, EsbViewsRepository.PublishEventMediatorAttribute.Properties.attributeExpression);
+        EditingUtils.setEEFtype(attributeExpressionText, "eef::Text"); //$NON-NLS-1$
+        Control attributeExpressionHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(
+                EsbViewsRepository.PublishEventMediatorAttribute.Properties.attributeExpression, EsbViewsRepository.FORM_KIND), null); // $NON-NLS-1$
+        // Start of user code for createPropertyValueText
+        attributeExpressionElements = new Control[] { attributeExpressionTextLabel, attributeExpressionText,
+                attributeExpressionHelp };// mouse
+        attributeExpressionText.addMouseListener(new MouseListener() {
+
+            @Override
+            public void mouseUp(MouseEvent e) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void mouseDown(MouseEvent e) {
+                // TODO Auto-generated method stub
+                EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
+                        SWT.NULL, attributeExpression);
+                // valueExpression.setPropertyValue(valueExpressionText.getText());
+                nspd.open();
+                attributeExpressionText.setText(attributeExpression.getPropertyValue());
+
+                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                        PublishEventMediatorAttributePropertiesEditionPartImpl.this,
+                        EsbViewsRepository.PublishEventMediatorAttribute.Properties.attributeExpression, PropertiesEditionEvent.COMMIT,
+                        PropertiesEditionEvent.SET, null, getAttributeExpression()));
+            }
+
+            @Override
+            public void mouseDoubleClick(MouseEvent e) {
+                // TODO Auto-generated method stub
+
+            }
+        });
+        return parent;
+    }
+        @Override
+        public void refresh() {
+            super.refresh();
+            validate();
+        }
+    
+        public void validate() {
+            EEFPropertyViewUtil eu = new EEFPropertyViewUtil(view);
+            eu.clearElements(new Composite[] { propertiesGroup });
+            eu.showEntry(attributeNameElements, false);
+            eu.showEntry(attributeTypeElements, false);
+            eu.showEntry(attributeValueTypeElements, false);
+            eu.showEntry(defaultValueElements, false);
+
+            if (getAttributeValueType().getName().equals("EXPRESSION")) {
+                eu.showEntry(attributeExpressionElements, false);
+            } else {
+                eu.showEntry(attributeValueElements, false);
+            }
+            
+            view.layout(true, true);
+        }
+
+	// End of user code
 
 }

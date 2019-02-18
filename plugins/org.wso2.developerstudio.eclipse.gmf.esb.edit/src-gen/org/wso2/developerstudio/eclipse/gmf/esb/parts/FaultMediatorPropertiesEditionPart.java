@@ -6,6 +6,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb.parts;
 // Start of user code for imports
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.Enumerator;
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 
 
 // End of user code
@@ -331,6 +332,26 @@ public interface FaultMediatorPropertiesEditionPart {
 
 
 
+	// Start of user code for faultStringExpression specific getters and setters declaration
+    public NamespacedProperty getFaultStringExpression();
+    
+    public void setFaultStringExpression(NamespacedProperty nameSpacedProperty);    	
+	// End of user code
+	// Start of user code for faultCodeExpression specific getters and setters declaration
+    public NamespacedProperty getFaultCodeExpression();
+    
+    public void setFaultCodeExpression(NamespacedProperty nameSpacedProperty);
+	// End of user code
+	// Start of user code for faultDetailExpression specific getters and setters declaration
+    public NamespacedProperty getFaultDetailExpression();
+    
+    public void setFaultDetailExpression(NamespacedProperty nameSpacedProperty);	
+	// End of user code
+	// Start of user code for faultReasonExpression specific getters and setters declaration
+    public NamespacedProperty getFaultReasonExpression();
+    
+    public void setFaultReasonExpression(NamespacedProperty nameSpacedProperty);	
+	// End of user code
 
 	/**
 	 * Returns the internationalized title text.

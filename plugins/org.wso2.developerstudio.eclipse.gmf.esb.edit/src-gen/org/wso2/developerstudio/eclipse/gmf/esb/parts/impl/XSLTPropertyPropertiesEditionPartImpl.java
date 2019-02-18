@@ -254,7 +254,7 @@ public class XSLTPropertyPropertiesEditionPartImpl extends CompositePropertiesEd
              *  
              */
             public void selectionChanged(SelectionChangedEvent event) {
-                refresh();
+                validate();
             }
 
         });
@@ -591,7 +591,6 @@ public class XSLTPropertyPropertiesEditionPartImpl extends CompositePropertiesEd
             }
             
             view.layout(true, true);
-            view.pack();
         }
 
         // End of user code

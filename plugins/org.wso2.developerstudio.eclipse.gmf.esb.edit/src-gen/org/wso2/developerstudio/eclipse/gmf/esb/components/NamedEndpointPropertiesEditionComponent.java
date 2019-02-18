@@ -59,8 +59,10 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EndPointTimeOutAction;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.KeyType;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamedEndpoint;
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.TemplateParameter;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.NamedEndpointPropertiesEditionPart;
 
@@ -208,6 +210,18 @@ public class NamedEndpointPropertiesEditionComponent extends SinglePartPropertie
 			if (isAccessible(EsbViewsRepository.NamedEndpoint.Properties.referringEndpointType)) {
 				basePart.initReferringEndpointType(EEFUtils.choiceOfValues(namedEndpoint, EsbPackage.eINSTANCE.getNamedEndpoint_ReferringEndpointType()), namedEndpoint.getReferringEndpointType());
 			}
+			// Start of user code  for staticReferenceKey command update
+            if (isAccessible(EsbViewsRepository.NamedEndpoint.Properties.staticReferenceKey)) {
+                basePart.setStaticReferenceKey(namedEndpoint.getStaticReferenceKey());
+            }
+			// End of user code
+			
+			// Start of user code  for dynamicReferenceKey command update
+            if (isAccessible(EsbViewsRepository.NamedEndpoint.Properties.dynamicReferenceKey)) {
+                basePart.setDynamicReferenceKey(namedEndpoint.getDynamicReferenceKey());
+            }
+            // End of user code
+			
 			// init filters
 			
 			
@@ -266,6 +280,12 @@ public class NamedEndpointPropertiesEditionComponent extends SinglePartPropertie
 			
 			
 			
+			// Start of user code  for staticReferenceKey filter update
+			// End of user code
+			
+			// Start of user code  for dynamicReferenceKey filter update
+			// End of user code
+			
 			// init values for referenced views
 			
 			// init filters for referenced views
@@ -273,6 +293,8 @@ public class NamedEndpointPropertiesEditionComponent extends SinglePartPropertie
 		}
 		setInitializing(false);
 	}
+
+
 
 
 
@@ -396,6 +418,12 @@ public class NamedEndpointPropertiesEditionComponent extends SinglePartPropertie
 		}
 		if (editorKey == EsbViewsRepository.NamedEndpoint.Properties.referringEndpointType) {
 			return EsbPackage.eINSTANCE.getNamedEndpoint_ReferringEndpointType();
+		}
+		if (editorKey == EsbViewsRepository.NamedEndpoint.Properties.staticReferenceKey) {
+			return EsbPackage.eINSTANCE.getNamedEndpoint_StaticReferenceKey();
+		}
+		if (editorKey == EsbViewsRepository.NamedEndpoint.Properties.dynamicReferenceKey) {
+			return EsbPackage.eINSTANCE.getNamedEndpoint_DynamicReferenceKey();
 		}
 		return super.associatedFeature(editorKey);
 	}
@@ -540,6 +568,28 @@ public class NamedEndpointPropertiesEditionComponent extends SinglePartPropertie
 		}
 		if (EsbViewsRepository.NamedEndpoint.Properties.referringEndpointType == event.getAffectedEditor()) {
 			namedEndpoint.setReferringEndpointType((KeyType)event.getNewValue());
+		}
+		if (EsbViewsRepository.NamedEndpoint.Properties.staticReferenceKey == event.getAffectedEditor()) {
+			// Start of user code for updateStaticReferenceKey method body
+            if (event.getNewValue() != null) {
+                RegistryKeyProperty rkp = (RegistryKeyProperty) event.getNewValue();
+                namedEndpoint.setStaticReferenceKey(rkp);
+            } else {
+                namedEndpoint.setStaticReferenceKey(EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty());
+            }
+			// End of user code
+			
+		}
+		if (EsbViewsRepository.NamedEndpoint.Properties.dynamicReferenceKey == event.getAffectedEditor()) {
+			// Start of user code for updateDynamicReferenceKey method body
+            if (event.getNewValue() != null) {
+                NamespacedProperty nsp = (NamespacedProperty) event.getNewValue();
+                namedEndpoint.setDynamicReferenceKey(nsp);
+            } else {
+                namedEndpoint.setDynamicReferenceKey(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+            }
+			// End of user code
+			
 		}
 	}
 
@@ -689,6 +739,30 @@ public class NamedEndpointPropertiesEditionComponent extends SinglePartPropertie
 			if (EsbPackage.eINSTANCE.getNamedEndpoint_ReferringEndpointType().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EsbViewsRepository.NamedEndpoint.Properties.referringEndpointType))
 				basePart.setReferringEndpointType((KeyType)msg.getNewValue());
 			
+					// Start of user code for staticReferenceKey live update
+            if (EsbPackage.eINSTANCE.getAbstractCommonTarget_EndpointKey().equals(msg.getFeature())
+                    && msg.getNotifier().equals(semanticObject) && basePart != null
+                    && isAccessible(EsbViewsRepository.NamedEndpoint.Properties.staticReferenceKey)) {
+                if (msg.getNewValue() != null) {
+                    basePart.setStaticReferenceKey((RegistryKeyProperty) msg.getNewValue());
+                } else {
+                    basePart.setStaticReferenceKey(EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty());
+                }
+            }
+					// End of user code
+			
+					// Start of user code for dynamicReferenceKey live update
+            if (EsbPackage.eINSTANCE.getNamedEndpoint_DynamicReferenceKey().equals(msg.getFeature())
+                    && msg.getNotifier().equals(semanticObject) && basePart != null
+                    && isAccessible(EsbViewsRepository.NamedEndpoint.Properties.dynamicReferenceKey)) {
+                if (msg.getNewValue() != null) {
+                    basePart.setDynamicReferenceKey((NamespacedProperty) msg.getNewValue());
+                } else {
+                    basePart.setDynamicReferenceKey(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+                }
+            }
+					// End of user code
+			
 			
 		}
 	}
@@ -729,7 +803,9 @@ public class NamedEndpointPropertiesEditionComponent extends SinglePartPropertie
 			EsbPackage.eINSTANCE.getAbstractEndPoint_StatisticsEnabled(),
 			EsbPackage.eINSTANCE.getAbstractEndPoint_TraceEnabled(),
 			EsbPackage.eINSTANCE.getNamedEndpoint_Name(),
-			EsbPackage.eINSTANCE.getNamedEndpoint_ReferringEndpointType()		);
+			EsbPackage.eINSTANCE.getNamedEndpoint_ReferringEndpointType(),
+			EsbPackage.eINSTANCE.getNamedEndpoint_StaticReferenceKey(),
+			EsbPackage.eINSTANCE.getNamedEndpoint_DynamicReferenceKey()		);
 		return new NotificationFilter[] {filter,};
 	}
 

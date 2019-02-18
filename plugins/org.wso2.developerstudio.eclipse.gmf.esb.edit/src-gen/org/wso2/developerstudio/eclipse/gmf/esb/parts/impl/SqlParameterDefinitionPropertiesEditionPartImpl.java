@@ -42,17 +42,23 @@ import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
-
+import org.eclipse.swt.events.MouseEvent;
+import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
-
+import org.eclipse.ui.forms.widgets.FormToolkit;
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.SqlParameterValueType;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.SqlParameterDefinitionPropertiesEditionPart;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFNameSpacedPropertyEditorDialog;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
 
 // End of user code
@@ -66,6 +72,18 @@ public class SqlParameterDefinitionPropertiesEditionPartImpl extends CompositePr
 	protected EMFComboViewer dataType;
 	protected EMFComboViewer valueType;
 	protected Text valueLiteral;
+	// Start of user code  for valueExpression widgets declarations
+	protected NamespacedProperty valueExpression;
+	protected Text valueExpressionText;
+	
+	protected Control[] valueExpressionElements;
+	protected Control[] dbTypeElements;
+	protected Control[] valueTypeElements;
+	protected Control[] valueLiteralElements;
+	
+	protected Group propertiesGroup;
+	// End of user code
+
 
 
 
@@ -107,6 +125,7 @@ public class SqlParameterDefinitionPropertiesEditionPartImpl extends CompositePr
 		propertiesStep.addStep(EsbViewsRepository.SqlParameterDefinition.Properties.dataType);
 		propertiesStep.addStep(EsbViewsRepository.SqlParameterDefinition.Properties.valueType);
 		propertiesStep.addStep(EsbViewsRepository.SqlParameterDefinition.Properties.valueLiteral);
+		propertiesStep.addStep(EsbViewsRepository.SqlParameterDefinition.Properties.valueExpression);
 		
 		
 		composer = new PartComposer(sqlParameterDefinitionStep) {
@@ -125,6 +144,11 @@ public class SqlParameterDefinitionPropertiesEditionPartImpl extends CompositePr
 				if (key == EsbViewsRepository.SqlParameterDefinition.Properties.valueLiteral) {
 					return createValueLiteralText(parent);
 				}
+				// Start of user code for valueExpression addToPart creation
+				if (key == EsbViewsRepository.SqlParameterDefinition.Properties.valueExpression) {
+                    return createValueExpression(parent);
+                }
+				// End of user code
 				return parent;
 			}
 		};
@@ -132,10 +156,10 @@ public class SqlParameterDefinitionPropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
-	 */
+     * @generated NOT
+     */
 	protected Composite createPropertiesGroup(Composite parent) {
-		Group propertiesGroup = new Group(parent, SWT.NONE);
+		propertiesGroup = new Group(parent, SWT.NONE);
 		propertiesGroup.setText(EsbMessages.SqlParameterDefinitionPropertiesEditionPart_PropertiesGroupLabel);
 		GridData propertiesGroupData = new GridData(GridData.FILL_HORIZONTAL);
 		propertiesGroupData.horizontalSpan = 3;
@@ -146,9 +170,11 @@ public class SqlParameterDefinitionPropertiesEditionPartImpl extends CompositePr
 		return propertiesGroup;
 	}
 
-	
+	/**
+     * @generated NOT
+     */
 	protected Composite createDataTypeEMFComboViewer(Composite parent) {
-		createDescription(parent, EsbViewsRepository.SqlParameterDefinition.Properties.dataType, EsbMessages.SqlParameterDefinitionPropertiesEditionPart_DataTypeLabel);
+		Control dataTypeLabel = createDescription(parent, EsbViewsRepository.SqlParameterDefinition.Properties.dataType, EsbMessages.SqlParameterDefinitionPropertiesEditionPart_DataTypeLabel);
 		dataType = new EMFComboViewer(parent);
 		dataType.setContentProvider(new ArrayContentProvider());
 		dataType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -169,16 +195,18 @@ public class SqlParameterDefinitionPropertiesEditionPartImpl extends CompositePr
 
 		});
 		dataType.setID(EsbViewsRepository.SqlParameterDefinition.Properties.dataType);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.SqlParameterDefinition.Properties.dataType, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		Control dataTypeHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.SqlParameterDefinition.Properties.dataType, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createDataTypeEMFComboViewer
-
+		dbTypeElements = new Control[] {dataTypeLabel, dataType.getCombo(), dataTypeHelp};
 		// End of user code
 		return parent;
 	}
 
-	
+	/**
+     * @generated NOT
+     */
 	protected Composite createValueTypeEMFComboViewer(Composite parent) {
-		createDescription(parent, EsbViewsRepository.SqlParameterDefinition.Properties.valueType, EsbMessages.SqlParameterDefinitionPropertiesEditionPart_ValueTypeLabel);
+		Control valueTypeLabel = createDescription(parent, EsbViewsRepository.SqlParameterDefinition.Properties.valueType, EsbMessages.SqlParameterDefinitionPropertiesEditionPart_ValueTypeLabel);
 		valueType = new EMFComboViewer(parent);
 		valueType.setContentProvider(new ArrayContentProvider());
 		valueType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -193,22 +221,25 @@ public class SqlParameterDefinitionPropertiesEditionPartImpl extends CompositePr
 			 * 	
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
+			    validate();
 				if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SqlParameterDefinitionPropertiesEditionPartImpl.this, EsbViewsRepository.SqlParameterDefinition.Properties.valueType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getValueType()));
 			}
 
 		});
 		valueType.setID(EsbViewsRepository.SqlParameterDefinition.Properties.valueType);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.SqlParameterDefinition.Properties.valueType, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		Control valueTypeHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.SqlParameterDefinition.Properties.valueType, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createValueTypeEMFComboViewer
-
+		valueTypeElements = new Control[] {valueTypeLabel, valueType.getCombo(), valueTypeHelp};
 		// End of user code
 		return parent;
 	}
 
-	
+	/**
+     * @generated NOT
+     */
 	protected Composite createValueLiteralText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.SqlParameterDefinition.Properties.valueLiteral, EsbMessages.SqlParameterDefinitionPropertiesEditionPart_ValueLiteralLabel);
+		Control valueLiteralLabel = createDescription(parent, EsbViewsRepository.SqlParameterDefinition.Properties.valueLiteral, EsbMessages.SqlParameterDefinitionPropertiesEditionPart_ValueLiteralLabel);
 		valueLiteral = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData valueLiteralData = new GridData(GridData.FILL_HORIZONTAL);
 		valueLiteral.setLayoutData(valueLiteralData);
@@ -248,9 +279,9 @@ public class SqlParameterDefinitionPropertiesEditionPartImpl extends CompositePr
 		});
 		EditingUtils.setID(valueLiteral, EsbViewsRepository.SqlParameterDefinition.Properties.valueLiteral);
 		EditingUtils.setEEFtype(valueLiteral, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.SqlParameterDefinition.Properties.valueLiteral, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		Control valueLiteralHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.SqlParameterDefinition.Properties.valueLiteral, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createValueLiteralText
-
+		valueLiteralElements = new Control[] {valueLiteralLabel, valueLiteral, valueLiteralHelp};
 		// End of user code
 		return parent;
 	}
@@ -399,6 +430,21 @@ public class SqlParameterDefinitionPropertiesEditionPartImpl extends CompositePr
 
 
 
+	// Start of user code for valueExpression specific getters and setters implementation
+    @Override
+    public void setValueExpression(NamespacedProperty nameSpacedProperty) {
+        if(nameSpacedProperty != null) {
+            valueExpressionText.setText(nameSpacedProperty.getPropertyValue());
+            valueExpression = nameSpacedProperty;
+        }
+    }
+
+    @Override
+    public NamespacedProperty getValueExpression() {
+        return valueExpression;
+    }
+	// End of user code
+
 	/**
 	 * {@inheritDoc}
 	 *
@@ -410,6 +456,61 @@ public class SqlParameterDefinitionPropertiesEditionPartImpl extends CompositePr
 	}
 
 	// Start of user code additional methods
+	
+	protected Composite createValueExpression(final Composite parent) {
+        Control valueExpressionLabel = createDescription(parent, EsbViewsRepository.SqlParameterDefinition.Properties.valueExpression, EsbMessages.SqlParameterDefinitionPropertiesEditionPart_ValueExpressionLabel);
+        if(valueExpression == null) {
+            valueExpression = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
+        }
+        valueExpressionText = SWTUtils.createScrollableText(parent, SWT.BORDER);
+        valueExpressionText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+        GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
+        valueExpressionText.setLayoutData(valueData);
+        valueExpressionText.addMouseListener(new MouseListener() {
+            
+            @Override
+            public void mouseUp(MouseEvent e) {
+                // TODO Auto-generated method stub
+                
+            }
+            
+            @Override
+            public void mouseDown(MouseEvent e) {
+                EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL, valueExpression);
+                nspd.open();
+                valueExpressionText.setText(valueExpression.getPropertyValue());
+                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SqlParameterDefinitionPropertiesEditionPartImpl.this, EsbViewsRepository.SqlParameterDefinition.Properties.valueExpression, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getValueExpression()));
+           
+            }
+            
+            @Override
+            public void mouseDoubleClick(MouseEvent e) {
+                // TODO Auto-generated method stub
+                
+            }
+        });
+        EditingUtils.setID(valueExpressionText, EsbViewsRepository.SqlParameterDefinition.Properties.valueExpression);
+        EditingUtils.setEEFtype(valueExpressionText, "eef::Text");
+        Control valueExpressionHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.SqlParameterDefinition.Properties.valueExpression, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+        valueExpressionElements = new Control[] {valueExpressionLabel, valueExpressionText, valueExpressionHelp};
+        return parent;
+    }
+	
+	public void validate() {
+	    EEFPropertyViewUtil eu = new EEFPropertyViewUtil(view);
+        eu.clearElements(new Composite[] { propertiesGroup });
+        
+        eu.showEntry(dbTypeElements, false);
+        eu.showEntry(valueTypeElements, false);
+        
+        if (getValueType() != null && getValueType().getName().equals(SqlParameterValueType.LITERAL.getName())) {
+            eu.showEntry(valueLiteralElements, false);
+
+        } else if (getValueType() != null && getValueType().getName().equals(SqlParameterValueType.EXPRESSION.getName())) {
+            eu.showEntry(valueExpressionElements, false);
+        }
+        view.layout(true, true);
+	}
 	
 	// End of user code
 

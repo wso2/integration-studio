@@ -764,13 +764,31 @@ public class EsbMessages extends NLS {
 	public static String DBLookupMediatorPropertiesEditionPart_PropertiesGroupLabel;
 
 	
+	public static String DBLookupMediatorPropertiesEditionPart_MiscGroupLabel;
+
+	
+	public static String DBLookupMediatorPropertiesEditionPart_ConnectionGroupLabel;
+
+	
+	public static String DBLookupMediatorPropertiesEditionPart_StatementsGroupLabel;
+
+	
 	public static String DBLookupMediatorInputConnectorPropertiesEditionPart_PropertiesGroupLabel;
 
 	
 	public static String DBLookupMediatorOutputConnectorPropertiesEditionPart_PropertiesGroupLabel;
 
 	
+	public static String DBReportMediatorPropertiesEditionPart_ConnectionGroupLabel;
+
+	
+	public static String DBReportMediatorPropertiesEditionPart_StatementsGroupLabel;
+
+	
 	public static String DBReportMediatorPropertiesEditionPart_PropertiesGroupLabel;
+
+	
+	public static String DBReportMediatorPropertiesEditionPart_MiscGroupLabel;
 
 	
 	public static String DBReportMediatorInputConnectorPropertiesEditionPart_PropertiesGroupLabel;
@@ -839,7 +857,19 @@ public class EsbMessages extends NLS {
 	public static String RespondMediatorOutputConnectorPropertiesEditionPart_PropertiesGroupLabel;
 
 	
+	public static String SmooksMediatorPropertiesEditionPart_InputGroupLabel;
+
+	
+	public static String SmooksMediatorPropertiesEditionPart_OutputGroupLabel;
+
+	
 	public static String SmooksMediatorPropertiesEditionPart_PropertiesGroupLabel;
+
+	
+	public static String SmooksMediatorPropertiesEditionPart_KeyGroupLabel;
+
+	
+	public static String SmooksMediatorPropertiesEditionPart_MiscGroupLabel;
 
 	
 	public static String SmooksMediatorInputConnectorPropertiesEditionPart_PropertiesGroupLabel;
@@ -927,6 +957,24 @@ public class EsbMessages extends NLS {
 
 	
 	public static String WSDLEndPointPropertiesEditionPart_PropertiesGroupLabel;
+
+	
+	public static String WSDLEndPointPropertiesEditionPart_BasicGroupLabel;
+
+	
+	public static String WSDLEndPointPropertiesEditionPart_EndpointSuspendStateGroupLabel;
+
+	
+	public static String WSDLEndPointPropertiesEditionPart_EndpointTimeoutStateGroupLabel;
+
+	
+	public static String WSDLEndPointPropertiesEditionPart_MiscGroupLabel;
+
+	
+	public static String WSDLEndPointPropertiesEditionPart_QosGroupLabel;
+
+	
+	public static String WSDLEndPointPropertiesEditionPart_TimeoutGroupLabel;
 
 	
 	public static String WSDLEndPointInputConnectorPropertiesEditionPart_PropertiesGroupLabel;
@@ -1152,6 +1200,12 @@ public class EsbMessages extends NLS {
 
 	
 	public static String FastXSLTMediatorPropertiesEditionPart_PropertiesGroupLabel;
+
+	
+	public static String FastXSLTMediatorPropertiesEditionPart_BasicGroupLabel;
+
+	
+	public static String FastXSLTMediatorPropertiesEditionPart_MiscGroupLabel;
 
 	
 	public static String FastXSLTMediatorInputConnectorPropertiesEditionPart_PropertiesGroupLabel;
@@ -3907,6 +3961,12 @@ public class EsbMessages extends NLS {
 	public static String DropMediatorPropertiesEditionPart_DescriptionLabel;
 
 	
+	public static String DropMediatorPropertiesEditionPart_CommentsListLabel;
+
+	
+	public static String DropMediatorPropertiesEditionPart_ReverseLabel;
+
+	
 	public static String DropMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;
 
 	
@@ -4049,6 +4109,9 @@ public class EsbMessages extends NLS {
 
 	
 	public static String PublishEventMediatorAttributePropertiesEditionPart_DefaultValueLabel;
+
+	
+	public static String PublishEventMediatorAttributePropertiesEditionPart_AttributeExpressionLabel;
 
 	
 	public static String BAMMediatorPropertiesEditionPart_DescriptionLabel;
@@ -4220,6 +4283,9 @@ public class EsbMessages extends NLS {
 
 	
 	public static String PropertyMediatorPropertiesEditionPart_ValueExpressionLabel;
+
+	
+	public static String PropertyMediatorPropertiesEditionPart_DescriptionLabel;
 
 	
 	public static String PropertyMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;
@@ -4471,9 +4537,6 @@ public class EsbMessages extends NLS {
 	public static String EventMediatorOutputConnectorPropertiesEditionPart_CommentMediatorsLabel;
 
 	
-	public static String EntitlementMediatorPropertiesEditionPart_DescriptionLabel;
-
-	
 	public static String EntitlementMediatorPropertiesEditionPart_CommentsListLabel;
 
 	
@@ -4487,6 +4550,9 @@ public class EsbMessages extends NLS {
 
 	
 	public static String EntitlementMediatorPropertiesEditionPart_PasswordLabel;
+
+	
+	public static String EntitlementMediatorPropertiesEditionPart_CallbackHandlerLabel;
 
 	
 	public static String EntitlementMediatorPropertiesEditionPart_CallbackClassNameLabel;
@@ -4504,16 +4570,28 @@ public class EsbMessages extends NLS {
 	public static String EntitlementMediatorPropertiesEditionPart_OnRejectSequenceTypeLabel;
 
 	
+	public static String EntitlementMediatorPropertiesEditionPart_OnRejectSequenceKeyLabel;
+
+	
 	public static String EntitlementMediatorPropertiesEditionPart_OnAcceptSequenceTypeLabel;
+
+	
+	public static String EntitlementMediatorPropertiesEditionPart_OnAcceptSequenceKeyLabel;
 
 	
 	public static String EntitlementMediatorPropertiesEditionPart_AdviceSequenceTypeLabel;
 
 	
+	public static String EntitlementMediatorPropertiesEditionPart_AdviceSequenceKeyLabel;
+
+	
 	public static String EntitlementMediatorPropertiesEditionPart_ObligationsSequenceTypeLabel;
 
 	
-	public static String EntitlementMediatorPropertiesEditionPart_CallbackHandlerLabel;
+	public static String EntitlementMediatorPropertiesEditionPart_ObligationsSequenceKeyLabel;
+
+	
+	public static String EntitlementMediatorPropertiesEditionPart_DescriptionLabel;
 
 	
 	public static String EntitlementMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;
@@ -4547,6 +4625,9 @@ public class EsbMessages extends NLS {
 
 	
 	public static String EnqueueMediatorPropertiesEditionPart_PriorityLabel;
+
+	
+	public static String EnqueueMediatorPropertiesEditionPart_SequenceKeyLabel;
 
 	
 	public static String EnqueueMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;
@@ -4694,6 +4775,18 @@ public class EsbMessages extends NLS {
 
 	
 	public static String FaultMediatorPropertiesEditionPart_FaultDetailValueLabel;
+
+	
+	public static String FaultMediatorPropertiesEditionPart_FaultStringExpressionLabel;
+
+	
+	public static String FaultMediatorPropertiesEditionPart_FaultCodeExpressionLabel;
+
+	
+	public static String FaultMediatorPropertiesEditionPart_FaultDetailExpressionLabel;
+
+	
+	public static String FaultMediatorPropertiesEditionPart_FaultReasonExpressionLabel;
 
 	
 	public static String FaultMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;
@@ -5020,6 +5113,12 @@ public class EsbMessages extends NLS {
 	public static String CacheMediatorPropertiesEditionPart_MaxMessageSizeLabel;
 
 	
+	public static String CacheMediatorPropertiesEditionPart_CommentsListLabel;
+
+	
+	public static String CacheMediatorPropertiesEditionPart_ReverseLabel;
+
+	
 	public static String CacheMediatorPropertiesEditionPart_MaxEntryCountLabel;
 
 	
@@ -5062,9 +5161,6 @@ public class EsbMessages extends NLS {
 	public static String CacheMediatorOnHitOutputConnectorPropertiesEditionPart_CommentMediatorsLabel;
 
 	
-	public static String XQueryMediatorPropertiesEditionPart_DescriptionLabel;
-
-	
 	public static String XQueryMediatorPropertiesEditionPart_CommentsListLabel;
 
 	
@@ -5075,6 +5171,18 @@ public class EsbMessages extends NLS {
 
 	
 	public static String XQueryMediatorPropertiesEditionPart_ScriptKeyTypeLabel;
+
+	
+	public static String XQueryMediatorPropertiesEditionPart_StaticScriptKeyLabel;
+
+	
+	public static String XQueryMediatorPropertiesEditionPart_TargetXPathLabel;
+
+	
+	public static String XQueryMediatorPropertiesEditionPart_DynamicScriptKeyLabel;
+
+	
+	public static String XQueryMediatorPropertiesEditionPart_DescriptionLabel;
 
 	
 	public static String XQueryMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;
@@ -5093,6 +5201,12 @@ public class EsbMessages extends NLS {
 
 	
 	public static String XQueryVariablePropertiesEditionPart_ValueLiteralLabel;
+
+	
+	public static String XQueryVariablePropertiesEditionPart_ValueExpressionLabel;
+
+	
+	public static String XQueryVariablePropertiesEditionPart_ValueKeyLabel;
 
 	
 	public static String CalloutMediatorPropertiesEditionPart_DescriptionLabel;
@@ -5272,6 +5386,12 @@ public class EsbMessages extends NLS {
 	public static String HeaderMediatorPropertiesEditionPart_DescriptionLabel;
 
 	
+	public static String HeaderMediatorPropertiesEditionPart_CommentsListLabel;
+
+	
+	public static String HeaderMediatorPropertiesEditionPart_ReverseLabel;
+
+	
 	public static String HeaderMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;
 
 	
@@ -5419,46 +5539,19 @@ public class EsbMessages extends NLS {
 	public static String SqlParameterDefinitionPropertiesEditionPart_ValueLiteralLabel;
 
 	
+	public static String SqlParameterDefinitionPropertiesEditionPart_ValueExpressionLabel;
+
+	
 	public static String SqlResultMappingPropertiesEditionPart_PropertyNameLabel;
 
 	
 	public static String SqlResultMappingPropertiesEditionPart_ColumnIdLabel;
 
 	
-	public static String DBLookupMediatorPropertiesEditionPart_DescriptionLabel;
-
-	
 	public static String DBLookupMediatorPropertiesEditionPart_CommentsListLabel;
 
 	
 	public static String DBLookupMediatorPropertiesEditionPart_ReverseLabel;
-
-	
-	public static String DBLookupMediatorPropertiesEditionPart_ConnectionTypeLabel;
-
-	
-	public static String DBLookupMediatorPropertiesEditionPart_ConnectionDsTypeLabel;
-
-	
-	public static String DBLookupMediatorPropertiesEditionPart_ConnectionDbTypeLabel;
-
-	
-	public static String DBLookupMediatorPropertiesEditionPart_ConnectionDbDriverLabel;
-
-	
-	public static String DBLookupMediatorPropertiesEditionPart_ConnectionDsInitialContextLabel;
-
-	
-	public static String DBLookupMediatorPropertiesEditionPart_ConnectionDsNameLabel;
-
-	
-	public static String DBLookupMediatorPropertiesEditionPart_ConnectionURLLabel;
-
-	
-	public static String DBLookupMediatorPropertiesEditionPart_ConnectionUsernameLabel;
-
-	
-	public static String DBLookupMediatorPropertiesEditionPart_ConnectionPasswordLabel;
 
 	
 	public static String DBLookupMediatorPropertiesEditionPart_PropertyAutocommitLabel;
@@ -5497,6 +5590,36 @@ public class EsbMessages extends NLS {
 	public static String DBLookupMediatorPropertiesEditionPart_PropertyInitialsizeLabel;
 
 	
+	public static String DBLookupMediatorPropertiesEditionPart_DescriptionLabel;
+
+	
+	public static String DBLookupMediatorPropertiesEditionPart_ConnectionTypeLabel;
+
+	
+	public static String DBLookupMediatorPropertiesEditionPart_ConnectionDsTypeLabel;
+
+	
+	public static String DBLookupMediatorPropertiesEditionPart_ConnectionDsInitialContextLabel;
+
+	
+	public static String DBLookupMediatorPropertiesEditionPart_ConnectionDbTypeLabel;
+
+	
+	public static String DBLookupMediatorPropertiesEditionPart_ConnectionDbDriverLabel;
+
+	
+	public static String DBLookupMediatorPropertiesEditionPart_ConnectionDsNameLabel;
+
+	
+	public static String DBLookupMediatorPropertiesEditionPart_ConnectionURLLabel;
+
+	
+	public static String DBLookupMediatorPropertiesEditionPart_ConnectionUsernameLabel;
+
+	
+	public static String DBLookupMediatorPropertiesEditionPart_ConnectionPasswordLabel;
+
+	
 	public static String DBLookupMediatorPropertiesEditionPart_SqlStatementsLabel;
 
 	
@@ -5504,15 +5627,6 @@ public class EsbMessages extends NLS {
 
 	
 	public static String DBLookupMediatorOutputConnectorPropertiesEditionPart_CommentMediatorsLabel;
-
-	
-	public static String DBReportMediatorPropertiesEditionPart_DescriptionLabel;
-
-	
-	public static String DBReportMediatorPropertiesEditionPart_CommentsListLabel;
-
-	
-	public static String DBReportMediatorPropertiesEditionPart_ReverseLabel;
 
 	
 	public static String DBReportMediatorPropertiesEditionPart_ConnectionTypeLabel;
@@ -5540,6 +5654,18 @@ public class EsbMessages extends NLS {
 
 	
 	public static String DBReportMediatorPropertiesEditionPart_ConnectionPasswordLabel;
+
+	
+	public static String DBReportMediatorPropertiesEditionPart_ConnectionUseTransactionLabel;
+
+	
+	public static String DBReportMediatorPropertiesEditionPart_SqlStatementsLabel;
+
+	
+	public static String DBReportMediatorPropertiesEditionPart_CommentsListLabel;
+
+	
+	public static String DBReportMediatorPropertiesEditionPart_ReverseLabel;
 
 	
 	public static String DBReportMediatorPropertiesEditionPart_PropertyAutocommitLabel;
@@ -5578,10 +5704,7 @@ public class EsbMessages extends NLS {
 	public static String DBReportMediatorPropertiesEditionPart_PropertyInitialsizeLabel;
 
 	
-	public static String DBReportMediatorPropertiesEditionPart_SqlStatementsLabel;
-
-	
-	public static String DBReportMediatorPropertiesEditionPart_ConnectionUseTransactionLabel;
+	public static String DBReportMediatorPropertiesEditionPart_DescriptionLabel;
 
 	
 	public static String DBReportMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;
@@ -5734,6 +5857,12 @@ public class EsbMessages extends NLS {
 	public static String LoopBackMediatorPropertiesEditionPart_DescriptionLabel;
 
 	
+	public static String LoopBackMediatorPropertiesEditionPart_CommentsListLabel;
+
+	
+	public static String LoopBackMediatorPropertiesEditionPart_ReverseLabel;
+
+	
 	public static String LoopBackMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;
 
 	
@@ -5755,16 +5884,10 @@ public class EsbMessages extends NLS {
 	public static String RespondMediatorOutputConnectorPropertiesEditionPart_CommentMediatorsLabel;
 
 	
-	public static String SmooksMediatorPropertiesEditionPart_DescriptionLabel;
-
-	
-	public static String SmooksMediatorPropertiesEditionPart_CommentsListLabel;
-
-	
-	public static String SmooksMediatorPropertiesEditionPart_ReverseLabel;
-
-	
 	public static String SmooksMediatorPropertiesEditionPart_InputTypeLabel;
+
+	
+	public static String SmooksMediatorPropertiesEditionPart_InputExpresssionLabel;
 
 	
 	public static String SmooksMediatorPropertiesEditionPart_OutputTypeLabel;
@@ -5777,6 +5900,21 @@ public class EsbMessages extends NLS {
 
 	
 	public static String SmooksMediatorPropertiesEditionPart_OutputMethodLabel;
+
+	
+	public static String SmooksMediatorPropertiesEditionPart_OutputExpressionLabel;
+
+	
+	public static String SmooksMediatorPropertiesEditionPart_CommentsListLabel;
+
+	
+	public static String SmooksMediatorPropertiesEditionPart_ReverseLabel;
+
+	
+	public static String SmooksMediatorPropertiesEditionPart_ConfigurationKeyLabel;
+
+	
+	public static String SmooksMediatorPropertiesEditionPart_DescriptionLabel;
 
 	
 	public static String SmooksMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;
@@ -5860,6 +5998,12 @@ public class EsbMessages extends NLS {
 	public static String PayloadFactoryMediatorPropertiesEditionPart_DescriptionLabel;
 
 	
+	public static String PayloadFactoryMediatorPropertiesEditionPart_CommentsListLabel;
+
+	
+	public static String PayloadFactoryMediatorPropertiesEditionPart_ReverseLabel;
+
+	
 	public static String PayloadFactoryMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;
 
 	
@@ -5882,6 +6026,12 @@ public class EsbMessages extends NLS {
 
 	
 	public static String ConditionalRouteBranchPropertiesEditionPart_BreakAfterRouteLabel;
+
+	
+	public static String ConditionalRouteBranchPropertiesEditionPart_TargetSequenceLabel;
+
+	
+	public static String ConditionalRouteBranchPropertiesEditionPart_EvaluatorExpressionLabel;
 
 	
 	public static String ConditionalRouterMediatorPropertiesEditionPart_DescriptionLabel;
@@ -5927,6 +6077,12 @@ public class EsbMessages extends NLS {
 
 	
 	public static String SendMediatorPropertiesEditionPart_DescriptionLabel;
+
+	
+	public static String SendMediatorPropertiesEditionPart_CommentsListLabel;
+
+	
+	public static String SendMediatorPropertiesEditionPart_ReverseLabel;
 
 	
 	public static String SendMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;
@@ -6013,9 +6169,6 @@ public class EsbMessages extends NLS {
 	public static String ParentEndPointPropertiesEditionPart_NameLabel;
 
 	
-	public static String WSDLEndPointPropertiesEditionPart_DescriptionLabel;
-
-	
 	public static String WSDLEndPointPropertiesEditionPart_CommentsListLabel;
 
 	
@@ -6025,46 +6178,25 @@ public class EsbMessages extends NLS {
 	public static String WSDLEndPointPropertiesEditionPart_AnonymousLabel;
 
 	
-	public static String WSDLEndPointPropertiesEditionPart_InLineLabel;
-
-	
 	public static String WSDLEndPointPropertiesEditionPart_DuplicateLabel;
-
-	
-	public static String WSDLEndPointPropertiesEditionPart_PropertiesLabel;
 
 	
 	public static String WSDLEndPointPropertiesEditionPart_ReversedLabel;
 
 	
-	public static String WSDLEndPointPropertiesEditionPart_ReliableMessagingEnabledLabel;
+	public static String WSDLEndPointPropertiesEditionPart_TemplateParametersLabel;
 
 	
-	public static String WSDLEndPointPropertiesEditionPart_SecurityEnabledLabel;
+	public static String WSDLEndPointPropertiesEditionPart_InLineLabel;
 
 	
-	public static String WSDLEndPointPropertiesEditionPart_AddressingEnabledLabel;
+	public static String WSDLEndPointPropertiesEditionPart_FormatLabel;
 
 	
-	public static String WSDLEndPointPropertiesEditionPart_AddressingVersionLabel;
+	public static String WSDLEndPointPropertiesEditionPart_TraceEnabledLabel;
 
 	
-	public static String WSDLEndPointPropertiesEditionPart_AddressingSeparateListenerLabel;
-
-	
-	public static String WSDLEndPointPropertiesEditionPart_TimeOutDurationLabel;
-
-	
-	public static String WSDLEndPointPropertiesEditionPart_TimeOutActionLabel;
-
-	
-	public static String WSDLEndPointPropertiesEditionPart_RetryErrorCodesLabel;
-
-	
-	public static String WSDLEndPointPropertiesEditionPart_RetryCountLabel;
-
-	
-	public static String WSDLEndPointPropertiesEditionPart_RetryDelayLabel;
+	public static String WSDLEndPointPropertiesEditionPart_StatisticsEnabledLabel;
 
 	
 	public static String WSDLEndPointPropertiesEditionPart_SuspendErrorCodesLabel;
@@ -6079,19 +6211,22 @@ public class EsbMessages extends NLS {
 	public static String WSDLEndPointPropertiesEditionPart_SuspendProgressionFactorLabel;
 
 	
-	public static String WSDLEndPointPropertiesEditionPart_FormatLabel;
+	public static String WSDLEndPointPropertiesEditionPart_RetryErrorCodesLabel;
+
+	
+	public static String WSDLEndPointPropertiesEditionPart_RetryCountLabel;
+
+	
+	public static String WSDLEndPointPropertiesEditionPart_RetryDelayLabel;
+
+	
+	public static String WSDLEndPointPropertiesEditionPart_PropertiesLabel;
 
 	
 	public static String WSDLEndPointPropertiesEditionPart_OptimizeLabel;
 
 	
-	public static String WSDLEndPointPropertiesEditionPart_TemplateParametersLabel;
-
-	
-	public static String WSDLEndPointPropertiesEditionPart_StatisticsEnabledLabel;
-
-	
-	public static String WSDLEndPointPropertiesEditionPart_TraceEnabledLabel;
+	public static String WSDLEndPointPropertiesEditionPart_DescriptionLabel;
 
 	
 	public static String WSDLEndPointPropertiesEditionPart_WsdlUriLabel;
@@ -6101,6 +6236,39 @@ public class EsbMessages extends NLS {
 
 	
 	public static String WSDLEndPointPropertiesEditionPart_PortLabel;
+
+	
+	public static String WSDLEndPointPropertiesEditionPart_ReliableMessagingEnabledLabel;
+
+	
+	public static String WSDLEndPointPropertiesEditionPart_SecurityEnabledLabel;
+
+	
+	public static String WSDLEndPointPropertiesEditionPart_AddressingEnabledLabel;
+
+	
+	public static String WSDLEndPointPropertiesEditionPart_ReliableMessagingPolicyLabel;
+
+	
+	public static String WSDLEndPointPropertiesEditionPart_SecurityPolicyLabel;
+
+	
+	public static String WSDLEndPointPropertiesEditionPart_InboundPolicyLabel;
+
+	
+	public static String WSDLEndPointPropertiesEditionPart_OutboundPolicyLabel;
+
+	
+	public static String WSDLEndPointPropertiesEditionPart_AddressingVersionLabel;
+
+	
+	public static String WSDLEndPointPropertiesEditionPart_AddressingSeparateListenerLabel;
+
+	
+	public static String WSDLEndPointPropertiesEditionPart_TimeOutDurationLabel;
+
+	
+	public static String WSDLEndPointPropertiesEditionPart_TimeOutActionLabel;
 
 	
 	public static String WSDLEndPointInputConnectorPropertiesEditionPart_IncomingLinksLabel;
@@ -6248,6 +6416,9 @@ public class EsbMessages extends NLS {
 
 	
 	public static String URLRewriteRuleActionPropertiesEditionPart_ActionRegexLabel;
+
+	
+	public static String URLRewriteRuleActionPropertiesEditionPart_ActionExpressionLabel;
 
 	
 	public static String URLRewriteRulePropertiesEditionPart_RewriteRuleActionLabel;
@@ -6437,6 +6608,12 @@ public class EsbMessages extends NLS {
 
 	
 	public static String NamedEndpointPropertiesEditionPart_ReferringEndpointTypeLabel;
+
+	
+	public static String NamedEndpointPropertiesEditionPart_DynamicReferenceKeyLabel;
+
+	
+	public static String NamedEndpointPropertiesEditionPart_StaticReferenceKeyLabel;
 
 	
 	public static String NamedEndpointInputConnectorPropertiesEditionPart_IncomingLinksLabel;
@@ -7174,16 +7351,22 @@ public class EsbMessages extends NLS {
 	public static String DataMapperMediatorOutputConnectorPropertiesEditionPart_CommentMediatorsLabel;
 
 	
-	public static String FastXSLTMediatorPropertiesEditionPart_DescriptionLabel;
-
-	
 	public static String FastXSLTMediatorPropertiesEditionPart_CommentsListLabel;
 
 	
 	public static String FastXSLTMediatorPropertiesEditionPart_ReverseLabel;
 
 	
+	public static String FastXSLTMediatorPropertiesEditionPart_FastXsltStaticSchemaKeyLabel;
+
+	
+	public static String FastXSLTMediatorPropertiesEditionPart_FastXsltDynamicSchemaKeyLabel;
+
+	
 	public static String FastXSLTMediatorPropertiesEditionPart_FastXsltSchemaKeyTypeLabel;
+
+	
+	public static String FastXSLTMediatorPropertiesEditionPart_DescriptionLabel;
 
 	
 	public static String FastXSLTMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;
@@ -7925,7 +8108,7 @@ public class EsbMessages extends NLS {
 	public static String PropertiesEditionPart_RemoveListViewerLabel;
 
 	// Start of user code for additionnal NLS Constants
-	
+	public static String ThrottleMediatorPropertiesEditionPart_OnRejectGroupLabel;
 	// End of user code
 
 	static {

@@ -1,25 +1,27 @@
-.custom{
-  margin-bottom:10px;
-  margin-top:10px;
+.input-header {
+	background: #3498db;
 }
 
-.no-gutter > [class*='col-'] {
-    padding-right:0;
-    padding-left:5;
+.output-header {
+	background: #1abc9c;
 }
 
-.alert
-{
-position: relative;
-z-index: 10;
-padding-left: 250px;
-font-size: 14px;
+.header {
+	padding: 10px;
+	margin: 0 -15px 10px -15px;
+	color: #fff;
 }
 
-.alert h3,
-.alert .h3
-{
-margin-top:0;
-margin-bottom:0;
-font-size: 24px;
+.box {
+	-webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+	-moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+	box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
 }
+
+.button-center {
+	display: flex;
+	align-items: center;
+}
+
+.CodeMirror-empty.CodeMirror-focused { outline: none; }
+.CodeMirror pre.CodeMirror-placeholder { color: #999; }

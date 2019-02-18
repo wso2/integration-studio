@@ -49,6 +49,8 @@ import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.KeyListener;
+import org.eclipse.swt.events.MouseAdapter;
 import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -60,7 +62,9 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
 import org.eclipse.ui.forms.widgets.Form;
@@ -120,8 +124,11 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
 	protected Control[] valueStringCapturingGroupElements;
     protected Control[] newPropertyNameElements;
     protected Control[] valueExpressionElements;
+    protected Control[] descriptionElements;
+    
     protected Composite propertiesGroup;
-	// End of user code
+	protected Text description;
+  // End of user code
 
 
 
@@ -187,6 +194,7 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
 		propertiesStep.addStep(EsbViewsRepository.PropertyMediator.Properties.valueStringCapturingGroup);
 		propertiesStep.addStep(EsbViewsRepository.PropertyMediator.Properties.newPropertyName);
         propertiesStep.addStep(EsbViewsRepository.PropertyMediator.Properties.valueExpression);
+        propertiesStep.addStep(EsbViewsRepository.PropertyMediator.Properties.description);
 		
 		composer = new PartComposer(propertyMediatorStep) {
 
@@ -241,6 +249,9 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
 				if(key == EsbViewsRepository.PropertyMediator.Properties.valueExpression) {
 				    return createValueExpressionWidget(widgetFactory, parent);
 				}
+				if(key == EsbViewsRepository.PropertyMediator.Properties.description) {
+                    return createDescriptionText(widgetFactory, parent);
+                }
 		        // End of user code
 				return parent;
 			}
@@ -300,7 +311,7 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
              *  
              */
             public void selectionChanged(SelectionChangedEvent event) {
-                validate();
+                refresh();
             }
         });
 		// End of user code
@@ -344,7 +355,7 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
              *  
              */
             public void selectionChanged(SelectionChangedEvent event) {
-                validate();
+                refresh();
             }
         });
 		// End of user code
@@ -388,7 +399,7 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
              *  
              */
             public void selectionChanged(SelectionChangedEvent event) {
-               validate();
+                refresh();
             }
 
         });
@@ -433,7 +444,7 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
              *  
              */
             public void selectionChanged(SelectionChangedEvent event) {
-               validate();
+                refresh();
             }
 
         });
@@ -472,7 +483,7 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
         valueType.addSelectionChangedListener(new ISelectionChangedListener() {
 
             public void selectionChanged(SelectionChangedEvent event) {
-                validate();
+                refresh();
             }
         });
 
@@ -1071,8 +1082,77 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
 		return parent;
 	}
 
-
 	/**
+     * @generated NOT
+     */
+	protected Composite createDescriptionText(FormToolkit widgetFactory, Composite parent) {
+    Control descriptionLabel = createDescription(parent, EsbViewsRepository.PropertyMediator.Properties.description, EsbMessages.PropertyMediatorPropertiesEditionPart_DescriptionLabel);
+    description = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+    description.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+    widgetFactory.paintBordersFor(parent);
+    GridData descriptionData = new GridData(GridData.FILL_HORIZONTAL);
+    description.setLayoutData(descriptionData);
+    description.addFocusListener(new FocusAdapter() {
+      /**
+       * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+       * 
+       */
+      @Override
+      @SuppressWarnings("synthetic-access")
+      public void focusLost(FocusEvent e) {
+        if (propertiesEditionComponent != null) {
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+              PropertyMediatorPropertiesEditionPartForm.this,
+              EsbViewsRepository.PropertyMediator.Properties.description,
+              PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, description.getText()));
+          propertiesEditionComponent
+              .firePropertiesChanged(new PropertiesEditionEvent(
+                  PropertyMediatorPropertiesEditionPartForm.this,
+                  EsbViewsRepository.PropertyMediator.Properties.description,
+                  PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
+                  null, description.getText()));
+        }
+      }
+
+      /**
+       * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+       */
+      @Override
+      public void focusGained(FocusEvent e) {
+        if (propertiesEditionComponent != null) {
+          propertiesEditionComponent
+              .firePropertiesChanged(new PropertiesEditionEvent(
+                  PropertyMediatorPropertiesEditionPartForm.this,
+                  null,
+                  PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_GAINED,
+                  null, null));
+        }
+      }
+    });
+    description.addKeyListener(new KeyAdapter() {
+      /**
+       * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+       * 
+       */
+      @Override
+      @SuppressWarnings("synthetic-access")
+      public void keyPressed(KeyEvent e) {
+        if (e.character == SWT.CR) {
+          if (propertiesEditionComponent != null)
+            propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertyMediatorPropertiesEditionPartForm.this, EsbViewsRepository.PropertyMediator.Properties.description, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, description.getText()));
+        }
+      }
+    });
+    EditingUtils.setID(description, EsbViewsRepository.PropertyMediator.Properties.description);
+    EditingUtils.setEEFtype(description, "eef::Text"); //$NON-NLS-1$
+    Control descriptionHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PropertyMediator.Properties.description, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+    // Start of user code for createDescriptionText
+    descriptionElements = new Control[] {descriptionLabel, description, descriptionHelp};
+    // End of user code
+    return parent;
+  }
+
+  /**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
@@ -1611,7 +1691,39 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
 
 
 
-	// Start of user code for valueExpression specific getters and setters implementation
+	/**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.PropertyMediatorPropertiesEditionPart#getDescription()
+   * 
+   */
+  public String getDescription() {
+    return description.getText();
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.PropertyMediatorPropertiesEditionPart#setDescription(String newValue)
+   * 
+   */
+  public void setDescription(String newValue) {
+    if (newValue != null) {
+      description.setText(newValue);
+    } else {
+      description.setText(""); //$NON-NLS-1$
+    }
+    boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.PropertyMediator.Properties.description);
+    if (eefElementEditorReadOnlyState && description.isEnabled()) {
+      description.setEnabled(false);
+      description.setToolTipText(EsbMessages.PropertyMediator_ReadOnly);
+    } else if (!eefElementEditorReadOnlyState && !description.isEnabled()) {
+      description.setEnabled(true);
+    }	
+    
+  }
+
+    // Start of user code for valueExpression specific getters and setters implementation
     @Override
     public NamespacedProperty getValueExpression() {
         return valueExpression;
@@ -1650,40 +1762,51 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
         if(valueExpression == null) {
             valueExpression = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
         } 
-	    String initValueExpression = valueExpression.getPropertyValue().isEmpty() ? "/default/expression" : valueExpression.getPropertyValue();
+	    String initValueExpression = valueExpression.getPropertyValue().isEmpty() ? "" : valueExpression.getPropertyValue();
 	    valueExpressionText = widgetFactory.createText(parent, initValueExpression);
 	    valueExpressionText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 	    widgetFactory.paintBordersFor(parent);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
         valueExpressionText.setLayoutData(valueData);
-        valueExpressionText.addFocusListener(new FocusAdapter() {
-            /**
-             * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-             * 
-             */
+        
+        valueExpressionText.addMouseListener(new MouseAdapter() {
+            
             @Override
-            @SuppressWarnings("synthetic-access")
-            public void focusLost(FocusEvent e) {
+            public void mouseDown( MouseEvent event ) {
+                openValueExpressionWidgetNamespacedPropertyEditor(parent);
             }
-
-            /**
-             * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
-             */
-            @Override
-            public void focusGained(FocusEvent e) {
-                EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL, valueExpression);
-                //valueExpression.setPropertyValue(valueExpressionText.getText());
-                nspd.open();
-                valueExpressionText.setText(valueExpression.getPropertyValue());
-                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertyMediatorPropertiesEditionPartForm.this, EsbViewsRepository.PropertyMediator.Properties.valueExpression, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getValueExpression()));
-            }
+            
         });
+        
+        valueExpressionText.addKeyListener(new KeyListener() {
+                        
+            @Override
+            public void keyPressed(KeyEvent e) {
+                openValueExpressionWidgetNamespacedPropertyEditor(parent);
+            }
+            
+            @Override
+            public void keyReleased(KeyEvent e) {}
+            
+        });
+        
         EditingUtils.setID(valueExpressionText, EsbViewsRepository.PropertyMediator.Properties.valueExpression);
         EditingUtils.setEEFtype(valueExpressionText, "eef::Text");
         Control valueExpressionHelp =FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PropertyMediator.Properties.valueExpression, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
         valueExpressionElements = new Control[] {valueExpressionLabel, valueExpressionText, valueExpressionHelp};
         return parent;
 	}
+	
+    private void openValueExpressionWidgetNamespacedPropertyEditor(final Composite parent) {
+        EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL,
+                valueExpression);
+        nspd.open();
+        valueExpressionText.setText(valueExpression.getPropertyValue());
+        propertiesEditionComponent
+                .firePropertiesChanged(new PropertiesEditionEvent(PropertyMediatorPropertiesEditionPartForm.this,
+                        EsbViewsRepository.PropertyMediator.Properties.valueExpression, PropertiesEditionEvent.COMMIT,
+                        PropertiesEditionEvent.SET, null, getValueExpression()));
+    }
 	
 	public void validate() {
 	    clearElements();
@@ -1722,6 +1845,7 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
 	        }
 	    }
 	    showEntry(propertyScopeElements, false);
+	    showEntry(descriptionElements, false);
         view.layout(true,true);
 	}
 	

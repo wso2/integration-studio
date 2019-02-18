@@ -52,6 +52,9 @@ import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.KeyListener;
+import org.eclipse.swt.events.MouseAdapter;
+import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 
@@ -534,7 +537,7 @@ public class EnrichMediatorPropertiesEditionPartForm extends SectionPropertiesEd
              * 
              */
             public void selectionChanged(SelectionChangedEvent event) {
-                validate();
+                refresh();
             }
         });
         // End of user code
@@ -583,7 +586,7 @@ public class EnrichMediatorPropertiesEditionPartForm extends SectionPropertiesEd
              * 
              */
             public void selectionChanged(SelectionChangedEvent event) {
-                validate();
+                refresh();
             }
         });
         // End of user code
@@ -792,7 +795,7 @@ public class EnrichMediatorPropertiesEditionPartForm extends SectionPropertiesEd
              * 
              */
             public void selectionChanged(SelectionChangedEvent event) {
-                validate();
+                refresh();
             }
         });
         // End of user code
@@ -841,7 +844,7 @@ public class EnrichMediatorPropertiesEditionPartForm extends SectionPropertiesEd
              * 
              */
             public void selectionChanged(SelectionChangedEvent event) {
-                validate();
+                refresh();
             }
         });
         // End of user code
@@ -1452,39 +1455,33 @@ public class EnrichMediatorPropertiesEditionPartForm extends SectionPropertiesEd
         widgetFactory.paintBordersFor(parent);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
         sourceXPathText.setLayoutData(valueData);
-        sourceXPathText.addFocusListener(new FocusAdapter() {
-            /**
-             * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-             * 
-             */
-            @Override
-            @SuppressWarnings("synthetic-access")
-            public void focusLost(FocusEvent e) {
-            }
 
-            /**
-             * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
-             */
+        sourceXPathText.addMouseListener(new MouseAdapter() {
+            
             @Override
-            public void focusGained(FocusEvent e) {
-                EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
-                        SWT.NULL, sourceXPath);
-                // valueExpression.setPropertyValue(valueExpressionText.getText());
-                nspd.open();
-                sourceXPathText.setText(sourceXPath.getPropertyValue());
-                propertiesEditionComponent
-                        .firePropertiesChanged(new PropertiesEditionEvent(EnrichMediatorPropertiesEditionPartForm.this,
-                                EsbViewsRepository.EnrichMediator.Source.sourceXPath, PropertiesEditionEvent.COMMIT,
-                                PropertiesEditionEvent.SET, null, getSourceXPath()));
+            public void mouseDown( MouseEvent event ) {
+                openNamespacedPropertyEditor(parent);
             }
+            
         });
+        
+        sourceXPathText.addKeyListener(new KeyListener() {
+                        
+            @Override
+            public void keyPressed(KeyEvent e) {
+                openNamespacedPropertyEditor(parent);
+            }
+            
+            @Override
+            public void keyReleased(KeyEvent e) {}
+            
+        });
+        
         EditingUtils.setID(sourceXPathText, EsbViewsRepository.EnrichMediator.Source.sourceXPath);
         EditingUtils.setEEFtype(sourceXPathText, "eef::Text");
         Control sourceXPathHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent
                 .getHelpContent(EsbViewsRepository.EnrichMediator.Target.targetXPath, EsbViewsRepository.FORM_KIND),
                 null); // $NON-NLS-1$
-        // aggregationExpressionElements = new Control[] { aggregationExpressionLabel, aggregationExpressionText,
-        // aggregationExpressionHelp };
         sourceXPathElements = new Control[] { sourceXPathLabel, sourceXPathText, sourceXPathHelp };
         return parent;
     }
@@ -1534,7 +1531,6 @@ public class EnrichMediatorPropertiesEditionPartForm extends SectionPropertiesEd
                 propertiesEditionComponent.getHelpContent(EsbViewsRepository.EnrichMediator.Source.inlineRegistryKey,
                         EsbViewsRepository.FORM_KIND),
                 null); // $NON-NLS-1$
-        // sequenceKeyElements = new Control[] { sequenceKeyLabel, sequenceKeyText, sequenceKeyHelp };
         inlineRegistryElements = new Control[] { inlineRegistryKeyLabel, inlineRegistryKeyText, inlineRegistryKeyHelp };
         return parent;
     }
@@ -1553,41 +1549,47 @@ public class EnrichMediatorPropertiesEditionPartForm extends SectionPropertiesEd
         widgetFactory.paintBordersFor(parent);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
         targetXPathText.setLayoutData(valueData);
-        targetXPathText.addFocusListener(new FocusAdapter() {
-            /**
-             * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-             * 
-             */
+        
+        targetXPathText.addMouseListener(new MouseAdapter() {
+            
             @Override
-            @SuppressWarnings("synthetic-access")
-            public void focusLost(FocusEvent e) {
+            public void mouseDown( MouseEvent event ) {
+                openNamespacedPropertyEditor(parent);
             }
-
-            /**
-             * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
-             */
-            @Override
-            public void focusGained(FocusEvent e) {
-                EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
-                        SWT.NULL, targetXPath);
-                // valueExpression.setPropertyValue(valueExpressionText.getText());
-                nspd.open();
-                targetXPathText.setText(targetXPath.getPropertyValue());
-                propertiesEditionComponent
-                        .firePropertiesChanged(new PropertiesEditionEvent(EnrichMediatorPropertiesEditionPartForm.this,
-                                EsbViewsRepository.EnrichMediator.Target.targetXPath, PropertiesEditionEvent.COMMIT,
-                                PropertiesEditionEvent.SET, null, getTargetXPath()));
-            }
+            
         });
+        
+        targetXPathText.addKeyListener(new KeyListener() {
+                        
+            @Override
+            public void keyPressed(KeyEvent e) {
+                openNamespacedPropertyEditor(parent);
+            }
+            
+            @Override
+            public void keyReleased(KeyEvent e) {}
+            
+        });
+        
         EditingUtils.setID(targetXPathText, EsbViewsRepository.EnrichMediator.Target.targetXPath);
         EditingUtils.setEEFtype(targetXPathText, "eef::Text");
         Control targetXPathHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent
                 .getHelpContent(EsbViewsRepository.EnrichMediator.Target.targetXPath, EsbViewsRepository.FORM_KIND),
                 null); // $NON-NLS-1$
-        // aggregationExpressionElements = new Control[] { aggregationExpressionLabel, aggregationExpressionText,
-        // aggregationExpressionHelp };
         targetXPathElements = new Control[] { targetXPathLabel, targetXPathText, targetXPathHelp };
         return parent;
+    }
+    
+    private void openNamespacedPropertyEditor(final Composite parent) {
+        EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
+                SWT.NULL, targetXPath);
+        // valueExpression.setPropertyValue(valueExpressionText.getText());
+        nspd.open();
+        targetXPathText.setText(targetXPath.getPropertyValue());
+        propertiesEditionComponent
+                .firePropertiesChanged(new PropertiesEditionEvent(EnrichMediatorPropertiesEditionPartForm.this,
+                        EsbViewsRepository.EnrichMediator.Target.targetXPath, PropertiesEditionEvent.COMMIT,
+                        PropertiesEditionEvent.SET, null, getTargetXPath()));
     }
 
     @Override

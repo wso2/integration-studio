@@ -31,12 +31,14 @@ import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.SqlParameterDataType;
 import org.wso2.developerstudio.eclipse.gmf.esb.SqlParameterDefinition;
 import org.wso2.developerstudio.eclipse.gmf.esb.SqlParameterValueType;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.SqlParameterDefinitionPropertiesEditionPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.parts.impl.SqlParameterDefinitionPropertiesEditionPartImpl;
 
 
 // End of user code
@@ -87,9 +89,19 @@ public class SqlParameterDefinitionPropertiesEditionComponent extends SinglePart
 			if (isAccessible(EsbViewsRepository.SqlParameterDefinition.Properties.valueLiteral))
 				basePart.setValueLiteral(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, sqlParameterDefinition.getValueLiteral()));
 			
+			// Start of user code  for valueExpression command update
+			if (isAccessible(EsbViewsRepository.SqlParameterDefinition.Properties.valueExpression)) {
+                basePart.setValueExpression(sqlParameterDefinition.getValueExpression());
+            }
+			// End of user code
+			
 			// init filters
 			
 			
+			
+			// Start of user code  for valueExpression filter update
+			((SqlParameterDefinitionPropertiesEditionPartImpl) editingPart).validate();
+			// End of user code
 			
 			// init values for referenced views
 			
@@ -98,6 +110,7 @@ public class SqlParameterDefinitionPropertiesEditionComponent extends SinglePart
 		}
 		setInitializing(false);
 	}
+
 
 
 
@@ -118,6 +131,9 @@ public class SqlParameterDefinitionPropertiesEditionComponent extends SinglePart
 		if (editorKey == EsbViewsRepository.SqlParameterDefinition.Properties.valueLiteral) {
 			return EsbPackage.eINSTANCE.getSqlParameterDefinition_ValueLiteral();
 		}
+		if (editorKey == EsbViewsRepository.SqlParameterDefinition.Properties.valueExpression) {
+			return EsbPackage.eINSTANCE.getSqlParameterDefinition_ValueExpression();
+		}
 		return super.associatedFeature(editorKey);
 	}
 
@@ -136,6 +152,17 @@ public class SqlParameterDefinitionPropertiesEditionComponent extends SinglePart
 		}
 		if (EsbViewsRepository.SqlParameterDefinition.Properties.valueLiteral == event.getAffectedEditor()) {
 			sqlParameterDefinition.setValueLiteral((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
+		}
+		if (EsbViewsRepository.SqlParameterDefinition.Properties.valueExpression == event.getAffectedEditor()) {
+			// Start of user code for updateValueExpression method body
+		    if (event.getNewValue() != null) {
+                NamespacedProperty nsp = (NamespacedProperty) event.getNewValue();
+                sqlParameterDefinition.setValueExpression(nsp);
+            } else {
+                sqlParameterDefinition.setValueExpression(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+            }
+			// End of user code
+			
 		}
 	}
 
@@ -160,6 +187,17 @@ public class SqlParameterDefinitionPropertiesEditionComponent extends SinglePart
 					basePart.setValueLiteral("");
 				}
 			}
+					// Start of user code for valueExpression live update
+			if (EsbPackage.eINSTANCE.getSqlParameterDefinition_ValueExpression().equals(msg.getFeature()) && 
+			        msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.SqlParameterDefinition.Properties.valueExpression)) {
+                if (msg.getNewValue() != null) {
+                    basePart.setValueExpression((NamespacedProperty)msg.getNewValue());
+                } else {
+                    basePart.setValueExpression(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+                }
+            }
+					// End of user code
+			
 			
 		}
 	}
@@ -174,7 +212,8 @@ public class SqlParameterDefinitionPropertiesEditionComponent extends SinglePart
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			EsbPackage.eINSTANCE.getSqlParameterDefinition_DataType(),
 			EsbPackage.eINSTANCE.getSqlParameterDefinition_ValueType(),
-			EsbPackage.eINSTANCE.getSqlParameterDefinition_ValueLiteral()		);
+			EsbPackage.eINSTANCE.getSqlParameterDefinition_ValueLiteral(),
+			EsbPackage.eINSTANCE.getSqlParameterDefinition_ValueExpression()		);
 		return new NotificationFilter[] {filter,};
 	}
 

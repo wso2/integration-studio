@@ -247,7 +247,7 @@ public class NamedEndpointEditPart extends ComplexFiguredAbstractEndpoint {
      * @generated NOT
      */
     protected IFigure createNodeShape() {
-        return primaryShape = new NamedEndpointFigure(new Color(null, 141, 82, 161)) {
+        return primaryShape = new NamedEndpointFigure(new Color(null, 255, 255, 255)) {
             public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
                 super.setBounds(rect);
                 if (this.getBounds().getLocation().x != 0 && this.getBounds().getLocation().y != 0) {
@@ -794,8 +794,11 @@ public class NamedEndpointEditPart extends ComplexFiguredAbstractEndpoint {
             return fFigureNamedEndPointNamePropertyLabel;
         }
 
+        /**
+         * @generated NOT
+         */
         public String getIconPath() {
-            return "icons/ico20/named-endpoint.gif";
+            return "icons/ico20/named-endpoint.png";
         }
 
         public String getNodeName() {

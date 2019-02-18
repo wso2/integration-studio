@@ -80,6 +80,8 @@ import org.eclipse.ui.forms.widgets.Section;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.FilterMediatorConditionType;
 import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.ThrottlePolicyType;
+import org.wso2.developerstudio.eclipse.gmf.esb.ThrottleSequenceType;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.ThrottleMediatorPropertiesEditionPart;
@@ -241,7 +243,7 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
                 }
 				// End of user code
 				if (key == EsbViewsRepository.ThrottleMediator.OnReject.class) {
-					//FIXME INVALID CASE INTO template public implementation(editor : ViewElement) in Form Impl for ViewElement onReject
+				    return createOnRejectGroup(widgetFactory, parent);
 				}
 				if (key == EsbViewsRepository.ThrottleMediator.OnReject.onRejectBranchsequenceType) {
 					return createOnRejectBranchsequenceTypeEMFComboViewer(widgetFactory, parent);
@@ -446,7 +448,7 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
 		GridData miscSectionData = new GridData(GridData.FILL_HORIZONTAL);
 		miscSectionData.horizontalSpan = 3;
 		miscSection.setLayoutData(miscSectionData);
-		Composite miscGroup = widgetFactory.createComposite(miscSection);
+		miscGroup = widgetFactory.createComposite(miscSection);
 		GridLayout miscGroupLayout = new GridLayout();
 		miscGroupLayout.numColumns = 3;
 		miscGroup.setLayout(miscGroupLayout);
@@ -533,13 +535,30 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
 		GridData onAcceptSectionData = new GridData(GridData.FILL_HORIZONTAL);
 		onAcceptSectionData.horizontalSpan = 3;
 		onAcceptSection.setLayoutData(onAcceptSectionData);
-		Composite onAcceptGroup = widgetFactory.createComposite(onAcceptSection);
+		onAcceptGroup = widgetFactory.createComposite(onAcceptSection);
 		GridLayout onAcceptGroupLayout = new GridLayout();
 		onAcceptGroupLayout.numColumns = 3;
 		onAcceptGroup.setLayout(onAcceptGroupLayout);
 		onAcceptSection.setClient(onAcceptGroup);
 		return onAcceptGroup;
 	}
+	
+    /**
+     * @generated NOT
+     */
+    protected Composite createOnRejectGroup(FormToolkit widgetFactory, final Composite parent) {
+        Section onRejectsection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
+        onRejectsection.setText(EsbMessages.ThrottleMediatorPropertiesEditionPart_OnRejectGroupLabel);
+        GridData onRejectsectionData = new GridData(GridData.FILL_HORIZONTAL);
+        onRejectsectionData.horizontalSpan = 3;
+        onRejectsection.setLayoutData(onRejectsectionData);
+        onRejectGroup = widgetFactory.createComposite(onRejectsection);
+        GridLayout onRejectGroupLayout = new GridLayout();
+        onRejectGroupLayout.numColumns = 3;
+        onRejectGroup.setLayout(onRejectGroupLayout);
+        onRejectsection.setClient(onRejectGroup);
+        return onRejectGroup;
+    }
 
     /**
      * @generated NOT
@@ -578,7 +597,7 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
              *  
              */
             public void selectionChanged(SelectionChangedEvent event) {
-                validate();
+                refresh();
             }
         });
 		// End of user code
@@ -624,7 +643,7 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
              *  
              */
             public void selectionChanged(SelectionChangedEvent event) {
-                validate();
+                refresh();
             }
         });
 		// End of user code
@@ -640,7 +659,7 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
 		GridData throttlePolicySectionData = new GridData(GridData.FILL_HORIZONTAL);
 		throttlePolicySectionData.horizontalSpan = 3;
 		throttlePolicySection.setLayoutData(throttlePolicySectionData);
-		Composite throttlePolicyGroup = widgetFactory.createComposite(throttlePolicySection);
+		throttlePolicyGroup = widgetFactory.createComposite(throttlePolicySection);
 		GridLayout throttlePolicyGroupLayout = new GridLayout();
 		throttlePolicyGroupLayout.numColumns = 3;
 		throttlePolicyGroup.setLayout(throttlePolicyGroupLayout);
@@ -685,7 +704,7 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
              *  
              */
             public void selectionChanged(SelectionChangedEvent event) {
-                validate();
+                refresh();
             }
         });
 		// End of user code
@@ -769,6 +788,7 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
      * @generated NOT
      */
 	protected Composite createPolicyEntriesTableComposition(FormToolkit widgetFactory, Composite parent) {
+	    Control [] previousControls = throttlePolicyGroup.getChildren();
 		this.policyEntries = new ReferencesTable(getDescription(EsbViewsRepository.ThrottleMediator.ThrottlePolicy.policyEntries, EsbMessages.ThrottleMediatorPropertiesEditionPart_PolicyEntriesLabel), new ReferencesTableListener() {
 			public void handleAdd() {
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ThrottleMediatorPropertiesEditionPartForm.this, EsbViewsRepository.ThrottleMediator.ThrottlePolicy.policyEntries, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
@@ -810,7 +830,8 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
 		policyEntries.setID(EsbViewsRepository.ThrottleMediator.ThrottlePolicy.policyEntries);
 		policyEntries.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
 		// Start of user code for createPolicyEntriesTableComposition
-
+		Control [] newControls = throttlePolicyGroup.getChildren();
+		policyEntriesElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
 		// End of user code
 		return parent;
 	}
@@ -1406,10 +1427,28 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
 
     public void validate() {
         EEFPropertyViewUtil epv = new EEFPropertyViewUtil(view);
-        //epv.clearElements(new Composite[] { generalGroup, miscGroup, onAcceptGroup, onRejectGroup });
+        epv.clearElements(new Composite[] { generalGroup, miscGroup, onAcceptGroup, onRejectGroup, throttlePolicyGroup });
+        epv.showEntry(descriptionElements, false);
+        epv.showEntry(groupIDElements, false);
+        epv.showEntry(policyTypeElements, false);
+        epv.showEntry(onAcceptBranchSequenceTypeElements, false);
+        epv.showEntry(onRejectBranchSequenceTypeElements, false);
+        if (getPolicyType().getLiteral().equals(ThrottlePolicyType.INLINE.getLiteral())) {
+            epv.showEntry(policyEntriesElements, false);
+        } else {
+            epv.showEntry(policyKeyElements, false);
+        }
+
+        if (getOnAcceptBranchsequenceType().getLiteral().equals(ThrottleSequenceType.REGISTRY_REFERENCE.getLiteral())) {
+            epv.showEntry(onAcceptBranchSequenceKeyElements, false);
+        }
+
+        if (getOnRejectBranchsequenceType().getLiteral().equals(ThrottleSequenceType.REGISTRY_REFERENCE.getLiteral())) {
+            epv.showEntry(onRejectBranchSequenceKeyElements, false);
+        }
         view.layout(true, true);
     }
-	// End of user code
+	// End of user codeg
 
 
 }

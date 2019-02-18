@@ -61,6 +61,9 @@ import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.KeyListener;
+import org.eclipse.swt.events.MouseAdapter;
+import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 
@@ -733,8 +736,7 @@ public class SequencePropertiesEditionPartForm extends SectionPropertiesEditingP
 			
 			@Override
 			public void selectionChanged(SelectionChangedEvent event) {
-				// TODO Auto-generated method stub
-				validate();	
+			    refresh();
 			}
 		});
 		// End of user code
@@ -1288,32 +1290,28 @@ public class SequencePropertiesEditionPartForm extends SectionPropertiesEditingP
 		widgetFactory.paintBordersFor(parent);
 		GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
 		dynamicReferenceKeyText.setLayoutData(valueData);
-		dynamicReferenceKeyText.addFocusListener(new FocusAdapter() {
-			/**
-			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void focusLost(FocusEvent e) {
-			}
 
-			/**
-			 * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
-			 */
-			@Override
-			public void focusGained(FocusEvent e) {
-				EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
-						SWT.NULL, dynamicReferenceKey);
-				// valueExpression.setPropertyValue(valueExpressionText.getText());
-				nspd.open();
-				dynamicReferenceKeyText.setText(dynamicReferenceKey.getPropertyValue());
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
-						SequencePropertiesEditionPartForm.this,
-						EsbViewsRepository.Sequence.Properties.dynamicReferenceKey,
-						PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getdDynamicReferenceKey()));
-			}
-		});
+		dynamicReferenceKeyText.addMouseListener(new MouseAdapter() {
+            
+            @Override
+            public void mouseDown( MouseEvent event ) {
+                openDynamicReferenceKeyNamespacedPropertyEditor(parent);
+            }
+            
+        });
+        
+		dynamicReferenceKeyText.addKeyListener(new KeyListener() {
+                        
+            @Override
+            public void keyPressed(KeyEvent e) {
+                openDynamicReferenceKeyNamespacedPropertyEditor(parent);
+            }
+            
+            @Override
+            public void keyReleased(KeyEvent e) {}
+            
+        });
+		
 		EditingUtils.setID(dynamicReferenceKeyText,
 				EsbViewsRepository.Sequence.Properties.dynamicReferenceKey);
 		EditingUtils.setEEFtype(dynamicReferenceKeyText, "eef::Text");
@@ -1326,6 +1324,18 @@ public class SequencePropertiesEditionPartForm extends SectionPropertiesEditingP
 				dynamicReferenceKeyHelp };
 		return parent;
 	}
+	
+    private void openDynamicReferenceKeyNamespacedPropertyEditor(final Composite parent) {
+        EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
+                SWT.NULL, dynamicReferenceKey);
+        // valueExpression.setPropertyValue(valueExpressionText.getText());
+        nspd.open();
+        dynamicReferenceKeyText.setText(dynamicReferenceKey.getPropertyValue());
+        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                SequencePropertiesEditionPartForm.this,
+                EsbViewsRepository.Sequence.Properties.dynamicReferenceKey,
+                PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getdDynamicReferenceKey()));
+    }
 	
 	@Override
     public void refresh() {

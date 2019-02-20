@@ -931,7 +931,6 @@ public class CallMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
         widgetFactory.paintBordersFor(parent);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
         endpointXPathText.setLayoutData(valueData);
-        endpointXPathText.setEditable(false);
 
         endpointXPathText.addMouseListener(new MouseAdapter() {
             

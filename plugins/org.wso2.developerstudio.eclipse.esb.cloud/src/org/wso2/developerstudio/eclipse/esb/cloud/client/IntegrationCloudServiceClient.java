@@ -64,10 +64,12 @@ public class IntegrationCloudServiceClient {
         System.out.println(response);
     }
 
-    public void createApplication(String appName, String appDescription, String version, String fileName, String fileLocation) throws NotFoundException {
+    public void createApplication(String appName, String appDescription, String version, String fileName, String fileLocation, String iconLocation) throws NotFoundException {
 
-        List<String> files = new ArrayList<>();
-        files.add(fileLocation);
+//        List<String> files = new ArrayList<>();
+        Map<String, String> files = new HashMap<>();
+        files.put("fileupload", fileLocation);
+        files.put("appIcon", iconLocation);
 
         String createAppUrl = CloudServiceConstants.ServiceEndpoints.APPLICATION_URL;
 

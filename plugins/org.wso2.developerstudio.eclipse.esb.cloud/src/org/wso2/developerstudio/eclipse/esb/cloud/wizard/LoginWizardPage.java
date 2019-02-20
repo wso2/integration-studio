@@ -72,7 +72,7 @@ public class LoginWizardPage extends WizardPage {
         setTitle(DIALOG_TITLE);
         
         // TODO: Set false
-        setPageComplete(true);
+        setPageComplete(false);
     }
 
     public void createControl(Composite parent) {

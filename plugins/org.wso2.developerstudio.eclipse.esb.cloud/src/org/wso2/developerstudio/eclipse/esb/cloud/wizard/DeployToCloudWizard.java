@@ -59,7 +59,6 @@ import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
 import org.wso2.developerstudio.eclipse.platform.core.model.AbstractListDataProvider.ListData;
 import org.wso2.developerstudio.eclipse.platform.core.project.export.util.ExportUtil;
 import org.wso2.developerstudio.eclipse.platform.core.utils.Constants;
-import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 
 /**
  * Wizard for docker image generation.
@@ -126,7 +125,6 @@ public class DeployToCloudWizard extends Wizard implements IExportWizard {
 
             appDetailsPage.setName(parentPrj.getModel().getArtifactId());
             appDetailsPage.setVersion(parentPrj.getModel().getVersion());
-            appDetailsPage.setDescription("Test desc");
 
         } catch (Exception e) {
             initError = true;
@@ -154,24 +152,11 @@ public class DeployToCloudWizard extends Wizard implements IExportWizard {
                 .replaceAll(ExportImageWizardConstants.CAR_FILE_SUFFIX, ExportImageWizardConstants.EMPTY_STRING),
                 appDetailsPage.getVersion());
         
-//        File destFileName = new File(deploymentFolderPath, finalFileName);
-
-//        String dockerDirPath = getWorkingDirectory() + File.separator
-//                + ExportImageWizardConstants.DOCKER_IMAGE_TEMPORARY_DIR_NAME;
-//        String eiDistributionSourcePath = getWorkingDirectory() + File.separator
-//                + ExportImageWizardConstants.MICRO_EI_DISTRIBUTION_REL_PATH;
-//        String eiDistrubitionDestinationPath = getWorkingDirectory() + File.separator
-//                + ExportImageWizardConstants.DOCKER_IMAGE_TEMPORARY_DIR_NAME + File.separator
-//                + ExportImageWizardConstants.EI_DISTRIBUTION_NAME;
-//        String eiHomePath = eiDistrubitionDestinationPath + File.separator
-//                + ExportImageWizardConstants.MICRO_EI_HOME_REL_PATH;
-//        String deploymentPath = eiHomePath + File.separator + ExportImageWizardConstants.DEPLOYMENT_DIR_REL_PATH;
-        
         IResource carbonArchive;
         try {
             carbonArchive = ExportUtil.buildCAppProject(selectedProject);
             
-            client.createApplication(appDetailsPage.getName(), appDetailsPage.getDescription(), appDetailsPage.getVersion(), finalFileName, carbonArchive.getLocation().toFile().getAbsolutePath());
+            client.createApplication(appDetailsPage.getName(), appDetailsPage.getDescription(), appDetailsPage.getVersion(), finalFileName, carbonArchive.getLocation().toFile().getAbsolutePath(), appDetailsPage.getAppIcon());
 
         } catch (Exception e) {
             log.error(ExportImageWizardConstants.ERROR_CREATING_CAR_FILE_MSG, e);

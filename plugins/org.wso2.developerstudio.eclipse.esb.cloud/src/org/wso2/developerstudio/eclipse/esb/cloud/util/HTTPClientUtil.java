@@ -114,7 +114,7 @@ public class HTTPClientUtil {
         return result.toString();
     }
 
-    public static String sendPostWithMulipartFormData(String url, Map<String, String> params, List<String> files, CookieStore cookieStore){
+    public static String sendPostWithMulipartFormData(String url, Map<String, String> params, Map<String, String> files, CookieStore cookieStore){
 
         HttpClient client = HttpClientBuilder.create().build();
         HttpPost post = new HttpPost(url);
@@ -128,12 +128,16 @@ public class HTTPClientUtil {
             for (Map.Entry<String, String> param : params.entrySet()) {
                 builder.addTextBody(param.getKey(), param.getValue());
             }
-
-            for (String file : files) {
-                System.out.println(file);
-                builder.addPart("fileupload", new FileBody(new File(file)));
-//                builder.addBinaryBody("fileupload", new File(file));
+            
+            for (Map.Entry<String, String> file : files.entrySet()) {
+                builder.addPart(file.getKey(), new FileBody(new File(file.getValue())));
             }
+
+//            for (String file : files) {
+//                System.out.println(file);
+//                
+////                builder.addBinaryBody("fileupload", new File(file));
+//            }
 
             HttpEntity entity = builder.build();
             post.setEntity(entity);

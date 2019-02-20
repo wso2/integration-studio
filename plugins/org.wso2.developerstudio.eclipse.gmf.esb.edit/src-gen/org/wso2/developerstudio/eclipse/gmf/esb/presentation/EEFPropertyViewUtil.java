@@ -136,9 +136,9 @@ public class EEFPropertyViewUtil {
             return true;
         } else if (e.keyCode == SWT.SHIFT) {
             return true;
-        } else if (e.stateMask == SWT.COMMAND && e.character == 's') {
+        } else if (e.stateMask == SWT.COMMAND) {
             return true;
-        } else if (e.stateMask == SWT.CTRL && (e.character == 's' || e.keyCode == 115)) {
+        } else if (e.stateMask == SWT.CTRL) {
             return true;
         }
         

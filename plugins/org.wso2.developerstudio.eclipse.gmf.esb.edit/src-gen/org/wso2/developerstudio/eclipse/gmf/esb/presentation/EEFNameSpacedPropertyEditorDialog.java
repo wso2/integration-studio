@@ -28,6 +28,7 @@ import org.eclipse.swt.custom.LineStyleListener;
 import org.eclipse.swt.custom.ST;
 import org.eclipse.swt.custom.StyleRange;
 import org.eclipse.swt.custom.StyledText;
+import org.eclipse.swt.events.KeyListener;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.MouseEvent;
@@ -66,7 +67,6 @@ import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 //import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.utils.ImageHolder;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.Activator;
@@ -74,6 +74,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.util.XPathValidator;
 import org.wso2.developerstudio.eclipse.gmf.esb.util.XPathValidatorImpl;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
+
 
 /**
  * A SWT based editor dialog to be used for editing namespaced properties.
@@ -309,6 +310,11 @@ public class EEFNameSpacedPropertyEditorDialog extends Dialog {
      * A boolean to keep track of inline XML content validity.
      */
     private boolean isCurrentXMLContentValid = true;
+    
+    /**
+     * A boolean to check if inline XML text area is dirty.
+     */
+    private boolean isInlineXMLTextAreaDirty = false;
     
     /**
      * XPath validator object.
@@ -684,6 +690,7 @@ public class EEFNameSpacedPropertyEditorDialog extends Dialog {
             xmlTextAreaLayoutData.left = new FormAttachment(0);
             xmlTextAreaLayoutData.bottom = new FormAttachment(100);
             inlineXMLTextArea.setText(XML_CONTENT_PLACEHOLDER_TEXT);
+            inlineXMLTextArea.setCaretOffset(inlineXMLTextArea.getText().length());
             inlineXMLTextArea.setLayoutData(xmlTextAreaLayoutData);
         }
         
@@ -825,7 +832,6 @@ public class EEFNameSpacedPropertyEditorDialog extends Dialog {
             addNamespace(nsEntry.getKey(), nsEntry.getValue());
         }
         
-        xPathTextField.setFocus();
     }
 
     private void initActions() {
@@ -1053,7 +1059,6 @@ public class EEFNameSpacedPropertyEditorDialog extends Dialog {
                     filePathTextField.setText(EMPTY_STRING);
                     xPathTextField.setText(EMPTY_STRING);
                     outputXMLTextArea.setText(EMPTY_STRING);
-                    inlineXMLTextArea.setText(XML_CONTENT_PLACEHOLDER_TEXT);
                     infoLabel.setText(INFO_LABEL_DEFAULT_TEXT);
                     
                     browseButton.setEnabled(false);
@@ -1107,13 +1112,6 @@ public class EEFNameSpacedPropertyEditorDialog extends Dialog {
         
         inlineXMLTextArea.addFocusListener(new org.eclipse.swt.events.FocusListener() {
             
-            @Override
-            public void focusGained(org.eclipse.swt.events.FocusEvent e) {
-                if (XML_CONTENT_PLACEHOLDER_TEXT.equalsIgnoreCase(inlineXMLTextArea.getText())) {
-                    inlineXMLTextArea.setText(EMPTY_STRING);
-                }
-            }
-
             @Override
             public void focusLost(org.eclipse.swt.events.FocusEvent e) {
                 
@@ -1173,6 +1171,44 @@ public class EEFNameSpacedPropertyEditorDialog extends Dialog {
                 }
                 
             }
+            
+            @Override
+            public void focusGained(org.eclipse.swt.events.FocusEvent e) {}
+
+        });
+        
+        inlineXMLTextArea.addMouseListener(new MouseListener() {
+            
+            @Override
+            public void mouseDown(MouseEvent e) {
+                if (!isInlineXMLTextAreaDirty) {
+                    inlineXMLTextArea.setText(EMPTY_STRING);
+                }
+                isInlineXMLTextAreaDirty = true;
+            }
+            
+            @Override
+            public void mouseUp(MouseEvent e) {}
+            
+            @Override
+            public void mouseDoubleClick(MouseEvent e) {}
+            
+        });
+        
+        inlineXMLTextArea.addKeyListener(new KeyListener() {
+            
+            @Override
+            public void keyPressed(org.eclipse.swt.events.KeyEvent e) {
+                if (!isInlineXMLTextAreaDirty) {
+                    inlineXMLTextArea.setText(inlineXMLTextArea.getText().replaceFirst(XML_CONTENT_PLACEHOLDER_TEXT, EMPTY_STRING));
+                    inlineXMLTextArea.setCaretOffset(inlineXMLTextArea.getText().length());
+                }
+                isInlineXMLTextAreaDirty = true;
+            }
+            
+            @Override
+            public void keyReleased(org.eclipse.swt.events.KeyEvent e) {}
+           
         });
         
         // Modify listener for inline XML text area.

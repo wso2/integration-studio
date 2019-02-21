@@ -28,7 +28,11 @@ import org.apache.commons.lang.StringUtils;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.debug.core.DebugPlugin;
+import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.ILaunchManager;
+import org.eclipse.debug.internal.ui.DebugUIPlugin;
+import org.eclipse.debug.internal.ui.launchConfigurations.LaunchHistory;
 import org.eclipse.jst.server.generic.core.internal.GenericServer;
 import org.eclipse.wst.server.core.IRuntime;
 import org.eclipse.wst.server.core.IRuntimeType;
@@ -218,6 +222,7 @@ public class MicroIntegratorInstance {
 			log.error("Embedded Micro Integrator refused to stop within 20 seconds. "
 					+ "Please kill the process");
 		}
+		clearLauncherHistory();
 	}
 	
 	/**
@@ -285,4 +290,38 @@ public class MicroIntegratorInstance {
 		return isDebugMode;
 	}
 
+    /**
+     * This method will delete the launcher history for the micro integrater server
+     * 
+     */
+    private void clearLauncherHistory() {
+        new Thread() {
+            public void run() {
+                boolean isHistoryCleard = false;
+                while (!isHistoryCleard) {
+                    try {
+                        if (microIntegratorServer.getServerState() == IServer.STATE_STARTED) {
+                            ILaunchManager launchManager = DebugPlugin.getDefault().getLaunchManager();
+                            LaunchHistory runHistory = DebugUIPlugin.getDefault().getLaunchConfigurationManager()
+                                    .getLaunchHistory("org.eclipse.debug.ui.launchGroup.run");
+                            LaunchHistory debugHistory = DebugUIPlugin.getDefault().getLaunchConfigurationManager()
+                                    .getLaunchHistory("org.eclipse.debug.ui.launchGroup.debug");
+                            ILaunchConfiguration[] launchers = launchManager.getLaunchConfigurations();
+                            for (ILaunchConfiguration tmpLauncher : launchers) {
+                                if ("Micro Integrator Server".equals(tmpLauncher.getName())) {
+                                    runHistory.removeFromHistory(tmpLauncher);
+                                    debugHistory.removeFromHistory(tmpLauncher);
+                                }
+                            }
+                            isHistoryCleard = true;
+                        } else {
+                            Thread.sleep(1000);
+                        }
+                    } catch (Exception e) {
+                        // ignore
+                    }
+                }
+            }
+        }.start();
+    }
 }

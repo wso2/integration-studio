@@ -38,6 +38,7 @@ import org.wso2.developerstudio.eclipse.logging.core.Logger;
 public class PlatformEarlyStartUpHandler implements IStartup {
 
 	public static final String DEBUG_PROFILE_NAME = "Microei_Debug_Profile";
+	public static final String RUN_PROFILE_NAME = "Microei_Run_Profile";
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
 	@Override
@@ -46,6 +47,7 @@ public class PlatformEarlyStartUpHandler implements IStartup {
 		ILaunchManager launchManager = DebugPlugin.getDefault().getLaunchManager();
 		try {
 			createESBDebugProfile(launchManager);
+			createMicroIntegratorRunProfile(launchManager);
 		} catch (CoreException e) {
 			log.error("Exception occured while creating micro-integrator debug profile", e);
 		}
@@ -61,6 +63,16 @@ public class PlatformEarlyStartUpHandler implements IStartup {
 			debugESBLaunchConfig.doSave();
 		}
 	}
+	
+    private void createMicroIntegratorRunProfile(ILaunchManager launchManager) throws CoreException {
+        if (findLaunchConfigurationByName(launchManager, RUN_PROFILE_NAME) == null) {
+            ILaunchConfigurationType debugESBLaunchType = launchManager
+                    .getLaunchConfigurationType("org.wso2.developerstudio.eclipse.carbonserver44microei.launch");
+            ILaunchConfigurationWorkingCopy debugESBLaunchConfig = debugESBLaunchType.newInstance(null,
+                    DebugPlugin.getDefault().getLaunchManager().generateLaunchConfigurationName(RUN_PROFILE_NAME));
+            debugESBLaunchConfig.doSave();
+        }
+    }	
 
 	public static ILaunchConfiguration findLaunchConfigurationByName(ILaunchManager launchManager, String configName)
 			throws CoreException {

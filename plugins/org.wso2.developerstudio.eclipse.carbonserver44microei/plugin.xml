@@ -201,7 +201,7 @@
      <startup class="org.wso2.developerstudio.eclipse.carbonserver44microei.handlers.PlatformEarlyStartUpHandler"/>
    </extension>
    
-   <extension
+	<extension
 	    point="org.eclipse.debug.ui.launchShortcuts">
 	    <shortcut
 	        class="org.wso2.developerstudio.eclipse.carbonserver44microei.debug.DebugShortcut"
@@ -209,6 +209,58 @@
 	        id="org.wso2.developerstudio.eclipse.microei.debug.shortcut"
 	        label="Mediation Debug"
 	        modes="debug">
+	        <contextualLaunch>
+	            <enablement>
+	                <with
+	                    variable="selection">
+	                    <count
+	                        value="+">
+	                    </count>
+	                </with>
+	            </enablement>
+	        </contextualLaunch>
+	    </shortcut>
+	</extension>
+	
+   <extension
+         point="org.eclipse.debug.core.launchConfigurationTypes">
+      <launchConfigurationType
+            delegate="org.wso2.developerstudio.eclipse.carbonserver44microei.launch.MicroIntegratorRunLaunchDelegate"
+            id="org.wso2.developerstudio.eclipse.carbonserver44microei.launch"
+            modes="run"
+            name="Micro Integrator Runtime">
+      </launchConfigurationType>
+   </extension>
+   
+   <extension
+         point="org.eclipse.debug.ui.launchConfigurationTypeImages">
+      <launchConfigurationTypeImage
+            configTypeID="org.wso2.developerstudio.eclipse.carbonserver44microei.launch"
+            icon="icons/exportnrun.png"
+            id="org.wso2.developerstudio.eclipse.carbonserver44microei.launch.image">
+      </launchConfigurationTypeImage>
+   </extension>
+   
+   <extension
+         point="org.eclipse.debug.ui.launchConfigurationTabGroups">
+      <launchConfigurationTabGroup
+            class="org.wso2.developerstudio.eclipse.carbonserver44microei.launch.tabs.MicroIntegratorLaunchConfigurationTabGroup"
+            id="org.wso2.developerstudio.eclipse.carbonserver44microei.launch.tabgroup"
+            type="org.wso2.developerstudio.eclipse.carbonserver44microei.launch">
+         <launchMode
+               mode="run">
+         </launchMode>
+      </launchConfigurationTabGroup>
+   </extension>
+   
+	<extension
+	    point="org.eclipse.debug.ui.launchShortcuts">
+	    <shortcut
+	        class="org.wso2.developerstudio.eclipse.carbonserver44microei.debug.RunShortcut"
+	        icon="icons/exportnrun.png"
+	        id="org.wso2.developerstudio.eclipse.microei.run.shortcut"
+	        label="Run on Micro Integrator"
+	        modes="run">
 	        <contextualLaunch>
 	            <enablement>
 	                <with

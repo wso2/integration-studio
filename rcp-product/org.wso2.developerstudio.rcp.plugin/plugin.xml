@@ -55,7 +55,7 @@
    </property>
       </product>
    </extension>
-   <extension
+   <!--extension
          point="org.eclipse.ui.perspectives">
       <perspective
             name="WSO2"
@@ -63,7 +63,7 @@
             class="org.wso2.developerstudio.rcp.plugin.perspective.DeveloperStudioPerspective"
             id="org.wso2.developerstudio.eclipse.WSO2DeveloperStudioPerspective">
       </perspective>
-   </extension>
+   </extension-->
    <extension point="org.eclipse.ui.intro">
  		<introProductBinding
 			introId="org.eclipse.ui.intro.universal"

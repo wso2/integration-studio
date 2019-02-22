@@ -29,13 +29,16 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
 
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
-
+import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
+import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
-
+import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
+import org.eclipse.emf.eef.runtime.policies.impl.CreateEditingPolicy;
+import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 
 import org.eclipse.jface.viewers.Viewer;
@@ -44,7 +47,6 @@ import org.eclipse.jface.viewers.ViewerFilter;
 import org.wso2.developerstudio.eclipse.gmf.esb.ClassMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.ClassProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
-
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.ClassMediatorPropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 
@@ -189,6 +191,33 @@ public class ClassMediatorPropertiesEditionComponent extends SinglePartPropertie
 		if (EsbViewsRepository.ClassMediator.Properties.className == event.getAffectedEditor()) {
 			classMediator.setClassName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
+		// Start of user code for updateProperty method body
+		if (EsbViewsRepository.ClassMediator.Properties.properties_ == event.getAffectedEditor()) {
+            if (event.getKind() == PropertiesEditionEvent.ADD) {
+                EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, propertiesSettings, editingContext.getAdapterFactory());
+                PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
+                if (provider != null) {
+                    PropertiesEditingPolicy policy = provider.getPolicy(context);
+                    if (policy instanceof CreateEditingPolicy) {
+                        policy.execute();
+                    }
+                }
+            } else if (event.getKind() == PropertiesEditionEvent.EDIT) {
+                EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
+                PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
+                if (provider != null) {
+                    PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
+                    if (editionPolicy != null) {
+                        editionPolicy.execute();
+                    }
+                }
+            } else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+                propertiesSettings.removeFromReference((EObject) event.getNewValue());
+            } else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+                propertiesSettings.move(event.getNewIndex(), (ClassProperty) event.getNewValue());
+            }
+        }
+		// End of user code
 	}
 
 	/**

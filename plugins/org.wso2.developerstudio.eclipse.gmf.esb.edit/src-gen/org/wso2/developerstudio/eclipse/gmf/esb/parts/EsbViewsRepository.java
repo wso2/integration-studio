@@ -3020,6 +3020,9 @@ public class EsbViewsRepository {
 			
 			public static String propertyValue = "esb::ClassProperty::properties::propertyValue";
 			
+            // Start of user code for propertyExpression ElementEditor key
+            public static String propertyExpression = "esb::ClassProperty::properties::propertyExpression";
+            // End of user code
 	
 		}
 	

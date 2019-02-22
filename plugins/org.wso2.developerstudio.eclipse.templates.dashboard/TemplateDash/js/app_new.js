@@ -94,11 +94,28 @@ $("#BPELWorkFlowProject").click(function(){
 	openWizard(BPELProject);
 });
 
-/*var mavenWizard = "org.wso2.developerstudio.eclipse.platform.ui.mvn.wizard.MvnMultiModuleWizard";
+var mavenWizard = "org.wso2.developerstudio.eclipse.platform.ui.mvn.wizard.MvnMultiModuleWizard";
 var cappWizard = 'org.wso2.developerstudio.eclipse.distribution.project';
 var serverWizard = 'org.eclipse.wst.server.ui.new.server';
+var registryWizard = 'org.wso2.developerstudio.eclipse.general.project';
 
-if((GetWizardDescription(mavenWizard) != null)){
+$("#CompositeApplicationProject").click(function(){
+	openWizard(cappWizard);
+});
+
+$("#RegistryProject").click(function(){
+	openWizard(registryWizard);
+});
+
+$("#MavenMultiModuleProject").click(function(){
+	openWizard(mavenWizard);
+});
+
+$("#Server").click(function(){
+	openWizard(serverWizard);
+});
+
+/*if((GetWizardDescription(mavenWizard) != null)){
     welcomeNodeArray.push({title: "Maven", nodes: [
         {title: '', wizardID: mavenWizard}
     ]});

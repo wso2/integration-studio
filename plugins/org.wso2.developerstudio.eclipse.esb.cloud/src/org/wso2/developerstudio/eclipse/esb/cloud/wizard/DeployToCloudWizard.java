@@ -45,7 +45,8 @@ import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.esb.cloud.Activator;
 import org.wso2.developerstudio.eclipse.esb.cloud.client.IntegrationCloudServiceClient;
-import org.wso2.developerstudio.eclipse.esb.cloud.resources.ExportImageWizardConstants;
+import org.wso2.developerstudio.eclipse.esb.cloud.job.CloudDeploymentJob;
+import org.wso2.developerstudio.eclipse.esb.cloud.resources.CloudDeploymentWizardConstants;
 import org.wso2.developerstudio.eclipse.esb.cloud.util.UserSessionManager;
 import org.wso2.developerstudio.eclipse.esb.cloud.wizard.LoginWizardPage;
 import org.wso2.developerstudio.eclipse.distribution.project.model.DependencyData;
@@ -70,6 +71,9 @@ public class DeployToCloudWizard extends Wizard implements IExportWizard {
     private DistributionProjectExportWizardPage mainPage;
     private LoginWizardPage loginPage;
     private AppDetailsWizardPage appDetailsPage;
+    
+    // Cloud deployment job
+    CloudDeploymentJob cloudDeploymentJob;
     
     private IFile pomFileRes;
     private File pomFile;
@@ -127,12 +131,13 @@ public class DeployToCloudWizard extends Wizard implements IExportWizard {
             appDetailsPage.setVersion(parentPrj.getModel().getVersion());
 
         } catch (Exception e) {
+            System.out.println(e);
             initError = true;
             Display display = PlatformUI.getWorkbench().getDisplay();
 
             Shell shell = display.getActiveShell();
-            openMessageBox(shell, ExportImageWizardConstants.DIALOG_TITLE_TEXT,
-                    ExportImageWizardConstants.SELECT_VALID_CARBON_APP_MESSAGE, SWT.ICON_INFORMATION);
+            openMessageBox(shell, CloudDeploymentWizardConstants.DIALOG_TITLE_TEXT,
+                    CloudDeploymentWizardConstants.SELECT_VALID_CARBON_APP_MESSAGE, SWT.ICON_INFORMATION);
         }
     }
 
@@ -148,20 +153,22 @@ public class DeployToCloudWizard extends Wizard implements IExportWizard {
     @Override
     public boolean performFinish() {
 
-        String finalFileName = String.format(ExportImageWizardConstants.CAR_FILE_NAME_PLACEHOLDER, appDetailsPage.getName()
-                .replaceAll(ExportImageWizardConstants.CAR_FILE_SUFFIX, ExportImageWizardConstants.EMPTY_STRING),
+        String finalFileName = String.format(CloudDeploymentWizardConstants.CAR_FILE_NAME_PLACEHOLDER, appDetailsPage.getName()
+                .replaceAll(CloudDeploymentWizardConstants.CAR_FILE_SUFFIX, CloudDeploymentWizardConstants.EMPTY_STRING),
                 appDetailsPage.getVersion());
         
         IResource carbonArchive;
         try {
             carbonArchive = ExportUtil.buildCAppProject(selectedProject);
             
-            client.createApplication(appDetailsPage.getName(), appDetailsPage.getDescription(), appDetailsPage.getVersion(), finalFileName, carbonArchive.getLocation().toFile().getAbsolutePath(), appDetailsPage.getAppIcon());
-
+            // Create and schedule a background job to deploy the application
+            cloudDeploymentJob = new CloudDeploymentJob(appDetailsPage.getName(), appDetailsPage.getDescription(), appDetailsPage.getVersion(), finalFileName, carbonArchive.getLocation().toFile().getAbsolutePath(), appDetailsPage.getAppIcon(), appDetailsPage.getTags());
+            cloudDeploymentJob.schedule();
+            
         } catch (Exception e) {
-            log.error(ExportImageWizardConstants.ERROR_CREATING_CAR_FILE_MSG, e);
-            openMessageBox(getShell(), ExportImageWizardConstants.DIALOG_TITLE_TEXT,
-                    ExportImageWizardConstants.ERROR_CREATING_CAR_FILE_MSG + " For more details view the log.\n",
+            log.error(CloudDeploymentWizardConstants.ERROR_CREATING_CAR_FILE_MSG, e);
+            openMessageBox(getShell(), CloudDeploymentWizardConstants.DIALOG_TITLE_TEXT,
+                    CloudDeploymentWizardConstants.ERROR_CREATING_CAR_FILE_MSG + " For more details view the log.\n",
                     SWT.ICON_ERROR);
         }
 
@@ -228,9 +235,9 @@ public class DeployToCloudWizard extends Wizard implements IExportWizard {
 
     public void addPages() {
         if (!initError) {
-            if (UserSessionManager.getCurrentSession() == null) {
+//            if (UserSessionManager.getCurrentSession() == null) {
                 addPage(loginPage);
-            }
+//            }
             addPage(mainPage);
             addPage(appDetailsPage);
             super.addPages();
@@ -256,29 +263,29 @@ public class DeployToCloudWizard extends Wizard implements IExportWizard {
         return exportMsg.open();
     }
 
-    private String getWorkingDirectory() {
-        String workingDirectory = null;
-        String OS = System.getProperty(ExportImageWizardConstants.OS_NAME,
-                ExportImageWizardConstants.SYSTEM_PROPERTY_TYPE_GENERIC).toLowerCase(Locale.ENGLISH);
-
-        if ((OS.indexOf(ExportImageWizardConstants.OS_TYPE_MAC) >= 0)
-                || (OS.indexOf(ExportImageWizardConstants.OS_TYPE_DARWIN) >= 0)) {
-            String eiToolingHomeForMac = ExportImageWizardConstants.EI_TOOLING_HOME_MACOS;
-            File macOSEIToolingAppFile = new File(eiToolingHomeForMac);
-
-            if (macOSEIToolingAppFile.exists()) {
-                workingDirectory = eiToolingHomeForMac;
-            } else {
-                java.nio.file.Path path = Paths.get(ExportImageWizardConstants.EMPTY_STRING);
-                workingDirectory = (path).toAbsolutePath().toString();
-            }
-
-        } else {
-            java.nio.file.Path path = Paths.get(ExportImageWizardConstants.EMPTY_STRING);
-            workingDirectory = (path).toAbsolutePath().toString();
-        }
-
-        return workingDirectory;
-    }
+//    private String getWorkingDirectory() {
+//        String workingDirectory = null;
+//        String OS = System.getProperty(CloudDeploymentWizardConstants.OS_NAME,
+//                CloudDeploymentWizardConstants.SYSTEM_PROPERTY_TYPE_GENERIC).toLowerCase(Locale.ENGLISH);
+//
+//        if ((OS.indexOf(CloudDeploymentWizardConstants.OS_TYPE_MAC) >= 0)
+//                || (OS.indexOf(CloudDeploymentWizardConstants.OS_TYPE_DARWIN) >= 0)) {
+//            String eiToolingHomeForMac = CloudDeploymentWizardConstants.EI_TOOLING_HOME_MACOS;
+//            File macOSEIToolingAppFile = new File(eiToolingHomeForMac);
+//
+//            if (macOSEIToolingAppFile.exists()) {
+//                workingDirectory = eiToolingHomeForMac;
+//            } else {
+//                java.nio.file.Path path = Paths.get(CloudDeploymentWizardConstants.EMPTY_STRING);
+//                workingDirectory = (path).toAbsolutePath().toString();
+//            }
+//
+//        } else {
+//            java.nio.file.Path path = Paths.get(CloudDeploymentWizardConstants.EMPTY_STRING);
+//            workingDirectory = (path).toAbsolutePath().toString();
+//        }
+//
+//        return workingDirectory;
+//    }
 
 }

@@ -1,15 +1,34 @@
+/*
+ * Copyright (c) 2019, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+
+ * WSO2 Inc. licenses this file to you under the Apache License,
+ * Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License.
+ * You may obtain a copy of the License at
+
+ *      http://www.apache.org/licenses/LICENSE-2.0
+
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+
 package org.wso2.developerstudio.eclipse.esb.cloud.client;
 
 import org.apache.http.client.CookieStore;
 import org.apache.http.impl.client.BasicCookieStore;
 import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.NotFoundException;
+import org.wso2.developerstudio.eclipse.esb.cloud.model.Application;
 import org.wso2.developerstudio.eclipse.esb.cloud.resources.CloudServiceConstants;
 import org.wso2.developerstudio.eclipse.esb.cloud.util.HTTPClientUtil;
+import org.wso2.developerstudio.eclipse.esb.cloud.util.JsonUtils;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,19 +44,30 @@ public class IntegrationCloudServiceClient {
     }
     
     public static IntegrationCloudServiceClient getInstance() {
-        if (client == null) {
-            cookieStore = new BasicCookieStore();
-            client = new IntegrationCloudServiceClient();
+        System.out.println("Get instance");
+        if (null == client) {
+            System.out.println("Test");
+//            synchronized (client){
+//                if (null == client){
+                    System.out.println("Client NULL");
+                    cookieStore = new BasicCookieStore();
+                    client = new IntegrationCloudServiceClient();
+//                }
+//            }
+            
         } 
+        System.out.println("Client return");
         return client;
     }
 
-    public boolean login(String username, String password) throws NotFoundException {
+    public boolean login(String username, String password, String tenant) throws NotFoundException {
         String loginUrl = CloudServiceConstants.ServiceEndpoints.LOGIN_URL;
+        
+        String user = username + "@" + tenant;
 
         Map<String, String> data = new HashMap<>();
         data.put("action", "login");
-        data.put("userName", username);
+        data.put("userName", user);
         data.put("password", password);
 
         String response = HTTPClientUtil.sendPostWithFormData(loginUrl, new HashMap<String, String>(), data, cookieStore);
@@ -52,7 +82,7 @@ public class IntegrationCloudServiceClient {
         return message.equals("User successfully logged in");
     }
 
-    public void getApplication(String appName) throws NotFoundException {
+    public Application getApplication(String appName) throws NotFoundException {
         String getAppUrl = CloudServiceConstants.ServiceEndpoints.APPLICATION_URL;
 
         Map<String, String> data = new HashMap<>();
@@ -62,26 +92,53 @@ public class IntegrationCloudServiceClient {
         String response = HTTPClientUtil.sendPostWithFormData(getAppUrl, new HashMap<String, String>(), data, cookieStore);
 
         System.out.println(response);
+        
+        if (response == null) {
+            return null;
+        }
+        
+        return JsonUtils.getApplicationFromJson(response);
+    }
+    
+    public String getApplicationEndpoints(String appType, String deploymentURL, String versionId) throws NotFoundException {
+        String getAppUrl = CloudServiceConstants.ServiceEndpoints.APPLICATION_URL;
+
+        Map<String, String> data = new HashMap<>();
+        data.put("action", "loadEndpoints");
+        data.put("appType", appType);
+        data.put("deploymentURL", deploymentURL);
+        data.put("versionId", versionId);
+
+        String response = HTTPClientUtil.sendPostWithFormData(getAppUrl, new HashMap<String, String>(), data, cookieStore);
+
+        System.out.println(response);
+        
+        return response;
     }
 
-    public void createApplication(String appName, String appDescription, String version, String fileName, String fileLocation, String iconLocation) throws NotFoundException {
+    public void createApplication(String appName, String appDescription, String version, String fileName, String fileLocation, String iconLocation, List<Map<String, String>> tags) throws NotFoundException {
 
-//        List<String> files = new ArrayList<>();
         Map<String, String> files = new HashMap<>();
         files.put("fileupload", fileLocation);
-        files.put("appIcon", iconLocation);
-
+        
+        if (!iconLocation.isEmpty() && iconLocation != null) {
+            files.put("appIcon", iconLocation);
+        }
+        
         String createAppUrl = CloudServiceConstants.ServiceEndpoints.APPLICATION_URL;
 
         Map<String, String> data = new HashMap<>();
         data.put("action", "createApplication");
         data.put("applicationName", appName);
-        data.put("applicationDescription", appDescription);
+        if (!appDescription.isEmpty() && appDescription != null) {
+            data.put("applicationDescription", appDescription);
+        }
+        
         data.put("appTypeName", CloudServiceConstants.AppConfigs.ESB);
         data.put("applicationRevision", version);
         data.put("uploadedFileName", fileName);
         data.put("runtimeProperties", "[]");
-        data.put("tags", "[]");
+        data.put("tags", JsonUtils.getJsonArrayFromList(tags));
         data.put("isFileAttached", "true");
         data.put("conSpec", "5");
         data.put("isNewVersion", "false");

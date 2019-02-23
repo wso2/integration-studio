@@ -20,6 +20,7 @@ package org.wso2.developerstudio.eclipse.esb.cloud.wizard;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
+import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.WizardPage;
@@ -53,12 +54,15 @@ public class LoginWizardPage extends WizardPage {
 
     private Text txtUsername;
     private Text txtPassword;
-    private Button btnTestCredentialsButton;
+    private Text txtTenant;
+    private Button btnLogin;
 
     private String username = EMPTY_STRING;
     private String password = EMPTY_STRING;
+    private String tenant = EMPTY_STRING;
     private String initialUsername = EMPTY_STRING;
     private String initialPassword = EMPTY_STRING;
+    private String initialTenant = EMPTY_STRING;
     
     IntegrationCloudServiceClient client;
 
@@ -72,7 +76,7 @@ public class LoginWizardPage extends WizardPage {
         setTitle(DIALOG_TITLE);
         
         // TODO: Set false
-        setPageComplete(false);
+        setPageComplete(true);
     }
 
     public void createControl(Composite parent) {
@@ -87,10 +91,30 @@ public class LoginWizardPage extends WizardPage {
         container.setVisible(true);
 
         Group grpCredentials = new Group(container, SWT.NONE);
-        grpCredentials.setText("Credentials");
+        grpCredentials.setText("Enter Credentials for WSO2 Integration Cloud");
         grpCredentials.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false, 1, 1));
         grpCredentials.setLayout(new GridLayout(2, false));
+        
+        // Tenant
+        Label lblTenant = new Label(grpCredentials, SWT.NONE);
+        GridData gd_lblTenant = new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1);
+        gd_lblTenant.widthHint = 75;
+        lblTenant.setLayoutData(gd_lblTenant);
+        lblTenant.setText("Tenant");
 
+        txtTenant = new Text(grpCredentials, SWT.BORDER);
+        txtTenant.addModifyListener(new ModifyListener() {
+            public void modifyText(ModifyEvent arg0) {
+                setTenant(txtTenant.getText());
+                validate();
+            }
+        });
+        
+        GridData gd_txtTenant = new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1);
+        gd_txtTenant.widthHint = 600;
+        txtTenant.setLayoutData(gd_txtTenant);
+
+        // Username
         Label lblUsername = new Label(grpCredentials, SWT.NONE);
         GridData gd_lblUsername = new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1);
         gd_lblUsername.widthHint = 75;
@@ -104,10 +128,13 @@ public class LoginWizardPage extends WizardPage {
                 validate();
             }
         });
-        GridData gd_txtAdmin_1 = new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1);
-        gd_txtAdmin_1.widthHint = 600;
-        txtUsername.setLayoutData(gd_txtAdmin_1);
+        
+        GridData gd_txtUsername = new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1);
+        gd_txtUsername.widthHint = 600;
+        txtUsername.setLayoutData(gd_txtUsername);
 
+        // Password
+        
         Label lblPassword = new Label(grpCredentials, SWT.NONE);
         lblPassword.setText("Password");
 
@@ -121,15 +148,20 @@ public class LoginWizardPage extends WizardPage {
         txtPassword.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
         new Label(grpCredentials, SWT.NONE);
 
-        btnTestCredentialsButton = new Button(grpCredentials, SWT.NONE);
-        btnTestCredentialsButton.addSelectionListener(new SelectionAdapter() {
+        btnLogin = new Button(grpCredentials, SWT.NONE);
+        btnLogin.addSelectionListener(new SelectionAdapter() {
             public void widgetSelected(SelectionEvent e) {
                 String title = "Integration Cloud Credentials";
                 try {
                     if (validateCredentials()) {
                         UserSessionManager.createSession(getUsername(), client.getCookieStore().getCookies().get(0));
                         setPageComplete(true);
-                        MessageDialog.openInformation(getShell(), title, "User authentication was successful!");
+//                        MessageDialog.openInformation(getShell(), title, "User authentication was successful!");
+                        setMessage("User authentication was successful! Click 'Next' to continue.", IMessageProvider.INFORMATION);
+                        btnLogin.setEnabled(false);
+                        txtTenant.setEnabled(false);
+                        txtUsername.setEnabled(false);
+                        txtPassword.setEnabled(false);
                     } else {
                         MessageDialog.openError(getShell(), title, "Failed to authenticate user!");
                     }
@@ -139,17 +171,18 @@ public class LoginWizardPage extends WizardPage {
                 }
             }
         });
-        GridData gd_btnTestCredentialsButton = new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1);
-        gd_btnTestCredentialsButton.widthHint = 100;
-        btnTestCredentialsButton.setLayoutData(gd_btnTestCredentialsButton);
-        btnTestCredentialsButton.setText("Login...");
+        GridData gd_btnLogin = new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1);
+        gd_btnLogin.widthHint = 100;
+        btnLogin.setLayoutData(gd_btnLogin);
+        btnLogin.setText("Login...");
+        btnLogin.setEnabled(false);
 
     }
 
     private boolean validateCredentials() {
         
         try {
-            return (client.login(getUsername(), getPassword()));
+            return (client.login(getUsername(), getPassword(), getTenant()));
         } catch (NotFoundException e) {
             System.out.println("Not found");
         }
@@ -158,12 +191,13 @@ public class LoginWizardPage extends WizardPage {
 
     private void validate() {
         if ((getUsername() == null || getUsername().equals(EMPTY_STRING)) || getPassword() == null
-                || getPassword().equals(EMPTY_STRING)) {
+                || getPassword().equals(EMPTY_STRING) || (getTenant() == null || getTenant().equals(EMPTY_STRING))) {
             setErrorMessage("Please enter credentials.");
             setPageComplete(false);
             return;
         }
 
+        btnLogin.setEnabled(true);
         setPageDirtyState();
         setErrorMessage(null);
     }
@@ -209,4 +243,14 @@ public class LoginWizardPage extends WizardPage {
     public String getPassword() {
         return password;
     }
+
+    public String getTenant() {
+        return tenant;
+    }
+
+    public void setTenant(String tenant) {
+        this.tenant = tenant;
+    }
+    
+    
 }

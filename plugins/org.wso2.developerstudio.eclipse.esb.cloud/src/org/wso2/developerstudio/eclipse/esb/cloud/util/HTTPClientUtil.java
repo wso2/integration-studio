@@ -107,6 +107,8 @@ public class HTTPClientUtil {
             while ((line = rd.readLine()) != null) {
                 result.append(line);
             }
+            
+            System.out.println("Result" + result);
         } catch (IOException e) {
             e.printStackTrace();
         }

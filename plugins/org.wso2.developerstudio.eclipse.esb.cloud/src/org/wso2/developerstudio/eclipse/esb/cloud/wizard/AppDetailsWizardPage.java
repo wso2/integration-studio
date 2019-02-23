@@ -1,29 +1,61 @@
+/*
+ * Copyright (c) 2019, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+
+ * WSO2 Inc. licenses this file to you under the Apache License,
+ * Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License.
+ * You may obtain a copy of the License at
+
+ *      http://www.apache.org/licenses/LICENSE-2.0
+
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+
 package org.wso2.developerstudio.eclipse.esb.cloud.wizard;
 
-import java.awt.image.ImageFilter;
-import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.sound.midi.Soundbank;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.QualifiedName;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.custom.StyleRange;
+import org.eclipse.swt.custom.StyledText;
+import org.eclipse.swt.custom.TableEditor;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.graphics.ImageLoader;
+import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.graphics.Font;
+import org.eclipse.swt.graphics.FontData;
+import org.eclipse.swt.graphics.Point;
+import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.layout.RowLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.DirectoryDialog;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Listener;
+import org.eclipse.swt.widgets.Table;
+import org.eclipse.swt.widgets.TableColumn;
+import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IWorkbench;
 import org.wso2.developerstudio.eclipse.esb.cloud.Activator;
@@ -32,10 +64,11 @@ import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 public class AppDetailsWizardPage extends WizardPage{
     
-    private static final String FILE_VERSION_LABEL_TEXT = "Application version";
-    private static final String FILE_NAME_LABEL_TEXT = "Name of the application";
+    private static final String FILE_VERSION_LABEL_TEXT = "Application version *";
+    private static final String FILE_NAME_LABEL_TEXT = "Name of the application *";
     private static final String DESCRIPTION_LABEL_TEXT = "Description";
     private static final String APP_ICON_LABEL_TEXT = "Application Icon";
+    private static final String TAGS_LABEL_TEXT = "Tags";
     private static final String BROWSE_LABEL_TEXT = "Browse";
     private static final String DIALOG_TITLE = "WSO2 Platform Distribution - Application Details";
     private static final String EMPTY_STRING = "";
@@ -44,6 +77,7 @@ public class AppDetailsWizardPage extends WizardPage{
     private Text txtVersion;
     private Text txtDescription;
     private Text txtBrowse;
+    private Table tblTags;
     
     private String name = EMPTY_STRING;
     private String version = EMPTY_STRING;
@@ -87,9 +121,12 @@ public class AppDetailsWizardPage extends WizardPage{
 
     public void createControl(Composite parent) {
         Composite container = new Composite(parent, SWT.NULL);
+        Color red = Display.getCurrent().getSystemColor(SWT.COLOR_RED);
 
         setControl(container);
         container.setLayout(new GridLayout(1, false));
+        
+        // Application Type Options
         
         Group appTypeGroup = new Group(container, SWT.NONE);
         RowLayout rowLayout = new RowLayout(SWT.HORIZONTAL);
@@ -119,14 +156,21 @@ public class AppDetailsWizardPage extends WizardPage{
         newAppContainer.setLayout(new GridLayout(3, false));
         newAppContainer.setVisible(true);
        
-        Label lblName = new Label(newAppContainer, SWT.NONE);
+        // Application Name
+        StyledText lblName = new StyledText(newAppContainer, SWT.NONE);
+        FontData data = lblName.getFont().getFontData()[0];
+
         GridData lblNameGridData = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1);
-        lblNameGridData.widthHint = 140;
         lblName.setLayoutData(lblNameGridData);
         lblName.setText(FILE_NAME_LABEL_TEXT);
+        
+        StyleRange appNameRange = new StyleRange(lblName.getCharCount() - 1, 1, red, null);
+        lblName.setStyleRange(appNameRange);
+        lblName.setFont(new Font(parent.getDisplay(), data.getName(), 12, data.getStyle()));
 
         txtName = new Text(newAppContainer, SWT.BORDER);
-        GridData txtNameGridData = new GridData(SWT.FILL, SWT.CENTER, true, false, 2, 1);
+        GridData txtNameGridData = new GridData(SWT.LEFT, SWT.CENTER, false, false, 2, 1);
+        txtNameGridData.widthHint = 480;
         txtName.setLayoutData(txtNameGridData);
         initialName = getName();
         txtName.setText(initialName);
@@ -140,12 +184,17 @@ public class AppDetailsWizardPage extends WizardPage{
 
         });
         
-        Label lblVersion = new Label(newAppContainer, SWT.NONE);
+        // Application Version
+        StyledText lblVersion = new StyledText(newAppContainer, SWT.NONE);
         lblVersion.setText(FILE_VERSION_LABEL_TEXT);
 
+        StyleRange versionRange = new StyleRange(lblVersion.getCharCount() - 1, 1, red, null);
+        lblVersion.setStyleRange(versionRange);
+        lblVersion.setFont(new Font(parent.getDisplay(), data.getName(), 12, data.getStyle()));
+
         txtVersion = new Text(newAppContainer, SWT.BORDER);
-        GridData txtVersionGridData = new GridData(SWT.FILL, SWT.CENTER, true, false, 2, 1);
-        txtVersionGridData.horizontalAlignment = SWT.FILL;
+        GridData txtVersionGridData = new GridData(SWT.LEFT, SWT.CENTER, false, false, 2, 1);
+        txtVersionGridData.widthHint = 480;
         initialVersion = getVersion();
         txtVersion.setText(initialVersion);
         txtVersion.setLayoutData(txtVersionGridData);
@@ -159,12 +208,16 @@ public class AppDetailsWizardPage extends WizardPage{
 
         });
         
+        // Application Description
         Label lblDescription = new Label(newAppContainer, SWT.NONE);
+        GridData lblDescriptionGridData = new GridData(SWT.LEFT, SWT.TOP, false, false, 1, 1);
+        lblDescription.setLayoutData(lblDescriptionGridData);
         lblDescription.setText(DESCRIPTION_LABEL_TEXT);
 
-        txtDescription = new Text(newAppContainer, SWT.BORDER);
-        GridData txtDescriptionGridData = new GridData(SWT.FILL, SWT.CENTER, true, false, 2, 1);
-        txtDescriptionGridData.horizontalAlignment = SWT.FILL;
+        txtDescription = new Text(newAppContainer, SWT.MULTI | SWT.BORDER | SWT.V_SCROLL);
+        GridData txtDescriptionGridData = new GridData(SWT.LEFT, SWT.CENTER, false, false, 2, 1);
+        txtDescriptionGridData.widthHint = 465;
+        txtDescriptionGridData.heightHint = 80;
         txtDescription.setLayoutData(txtDescriptionGridData);
 
         txtDescription.addModifyListener(new ModifyListener() {
@@ -176,11 +229,29 @@ public class AppDetailsWizardPage extends WizardPage{
 
         });
         
+        // Application Icon
         Label lblAppIcon = new Label(newAppContainer, SWT.NONE);
         lblAppIcon.setText(APP_ICON_LABEL_TEXT);
+        GridData lblAppIconGridData = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1);
+        lblAppIcon.setLayoutData(lblAppIconGridData);
+        
+        Composite appIconContainer = new Composite(newAppContainer, SWT.NULL);
+        
+        GridData appIconGridData = new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1);
+        appIconGridData.exclude = false;
+        appIconContainer.setLayoutData(appIconGridData);
 
-        txtBrowse = new Text(newAppContainer, SWT.BORDER);
-        GridData txtBrowseGridData = new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1);
+        setControl(appIconContainer);
+        GridLayout browseLayout = new GridLayout(2, false);
+        browseLayout.marginLeft = 0;
+        browseLayout.marginHeight = 0;
+        browseLayout.marginWidth = 0;
+        browseLayout.marginRight = 0;
+        appIconContainer.setLayout(browseLayout);
+        appIconContainer.setVisible(true);
+
+        txtBrowse = new Text(appIconContainer, SWT.BORDER);
+        GridData txtBrowseGridData = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1);
         txtBrowseGridData.widthHint = 400;
         txtBrowse.setLayoutData(txtBrowseGridData);
 
@@ -193,7 +264,7 @@ public class AppDetailsWizardPage extends WizardPage{
 
         });
         
-        Button btnBrowse = new Button(newAppContainer, SWT.NONE);
+        Button btnBrowse = new Button(appIconContainer, SWT.NONE );
         btnBrowse.setText(BROWSE_LABEL_TEXT);
 
         btnBrowse.addSelectionListener(new SelectionAdapter() {
@@ -207,9 +278,145 @@ public class AppDetailsWizardPage extends WizardPage{
                     txtBrowse.setText(result);
                 }
                 validate();
+                
+                TableItem item3 = new TableItem(tblTags, SWT.NONE);
+                item3.setText(0, "Test2");
+                item3.setText(1, "Test 3");
             }
 
         });
+        new Label(newAppContainer, SWT.NONE);
+        
+        // Tags
+        
+        Label lblTags = new Label(newAppContainer, SWT.NONE);
+        lblTags.setText(TAGS_LABEL_TEXT);
+        GridData lblTagsGridData = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1);
+        lblTags.setLayoutData(lblTagsGridData);
+        
+        new Label(newAppContainer, SWT.NONE);
+        new Label(newAppContainer, SWT.NONE);
+        
+        // Tag table
+        
+        Composite tagsContainer = new Composite(newAppContainer, SWT.NULL);
+        
+        GridData tagsContainerGridData = new GridData(SWT.FILL, SWT.CENTER, false, false, 2, 1);
+        tagsContainerGridData.exclude = false;
+        tagsContainer.setLayoutData(tagsContainerGridData);
+
+        setControl(tagsContainer);
+        tagsContainer.setLayout(new GridLayout(2, false));
+        tagsContainer.setVisible(true);
+        
+        tblTags = new Table(tagsContainer, SWT.BORDER | SWT.FULL_SELECTION | SWT.V_SCROLL);
+        GridData tableGridData = new GridData(SWT.LEFT, SWT.TOP, true, false, 1, 1);
+        tableGridData.heightHint = 200;
+        tblTags.setLayoutData(tableGridData);
+        tblTags.setHeaderVisible(true);
+//        table.addListener (SWT.SetData, new Listener () {
+//            public void handleEvent (Event event) {
+//                TableItem item = (TableItem) event.item;
+//                int index = table.indexOf (item);
+//                item.setText ("Item " + index);
+//                System.out.println (item.getText ());
+//            }
+//        });
+        
+//        table.setBounds(250, 250, 1500, 1000);
+        
+        TableColumn column = new TableColumn(tblTags, SWT.NONE);
+        column.setText("Key");
+        column.setWidth(300);
+        column.setResizable(false);
+        
+        TableColumn column2 = new TableColumn(tblTags, SWT.NONE);
+        column2.setText("Value");
+        column2.setWidth(300);
+        column2.setResizable(false);
+        
+        final TableEditor editor = new TableEditor (tblTags);
+        editor.horizontalAlignment = SWT.LEFT;
+        editor.grabHorizontal = true;
+        tblTags.addListener (SWT.MouseDown, event -> {
+            Rectangle clientArea = tblTags.getClientArea ();
+            Point pt = new Point (event.x, event.y);
+            int index = tblTags.getTopIndex ();
+            while (index < tblTags.getItemCount ()) {
+                boolean visible = false;
+                final TableItem tblitem = tblTags.getItem (index);
+                tblitem.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_LIST_BACKGROUND));
+                for (int i=0; i<tblTags.getColumnCount (); i++) {
+                    Rectangle rect = tblitem.getBounds (i);
+                    if (rect.contains (pt)) {
+                        final int tblcolumn = i;
+                        final Text text = new Text (tblTags, SWT.NONE);
+                        Listener textListener = e -> {
+                            switch (e.type) {
+                                case SWT.FocusOut:
+                                    tblitem.setText (tblcolumn, text.getText ());
+                                    text.dispose ();
+                                    break;
+                                case SWT.Traverse:
+                                    switch (e.detail) {
+                                        case SWT.TRAVERSE_RETURN:
+                                            tblitem.setText (tblcolumn, text.getText ());
+                                            //FALL THROUGH
+                                        case SWT.TRAVERSE_ESCAPE:
+                                            text.dispose ();
+                                            e.doit = false;
+                                    }
+                                    break;
+                            }
+                        };
+                        text.addListener (SWT.FocusOut, textListener);
+                        text.addListener (SWT.Traverse, textListener);
+                        editor.setEditor (text, tblitem, i);
+                        text.setText (tblitem.getText (i));
+                        text.selectAll ();
+                        text.setFocus ();
+                        return;
+                    }
+                    if (!visible && rect.intersects (clientArea)) {
+                        visible = true;
+                    }
+                }
+                if (!visible) return;
+                index++;
+            }
+        });
+        
+        Group btnGroup = new Group(tagsContainer, SWT.NONE);
+        RowLayout btnRowLayout = new RowLayout(SWT.VERTICAL);
+//        btnRowLayout.marginLeft = 10;
+//        btnRowLayout.marginRight = 10;
+//        btnRowLayout.marginBottom = 10;
+//        btnRowLayout.marginTop = 10;
+        
+        btnGroup.setLayout(btnRowLayout);
+        
+        Button btnAdd = new Button(btnGroup, SWT.NONE);
+        btnAdd.setText("+");
+        
+//        GridData buttonAddGridData = new GridData(SWT.FILL, SWT.CENTER, true, false, 2, 1);
+//        btnAdd.setLayoutData(buttonAddGridData);
+        
+        Button btnRemove = new Button(btnGroup, SWT.NONE);
+        btnRemove.setText("-");
+        
+        btnAdd.addSelectionListener(new SelectionAdapter() {
+
+            public void widgetSelected(SelectionEvent e) {
+                TableItem item = new TableItem(tblTags, SWT.BORDER);
+//                item.setText(0, "Test");
+//                item.setText(1, "Test 2");
+                item.setBackground(new Color(Display.getCurrent(), 44, 96, 218));
+            }
+
+        });
+        
+//        GridData buttonRemoveGridData = new GridData(SWT.FILL, SWT.CENTER, true, false, 2, 1);
+//        btnRemove.setLayoutData(buttonRemoveGridData);
         
         // Update existing application container
         
@@ -274,6 +481,20 @@ public class AppDetailsWizardPage extends WizardPage{
             }
              
         });
+    }
+    
+    public List<Map<String, String>> getTags() {
+        List<Map<String, String>> tags = new ArrayList<>();
+        TableItem[] items = tblTags.getItems();
+        if (items != null && items.length > 0) {
+            for (TableItem item: items) {
+                Map<String, String> tag = new HashMap<>();
+                // Retrieve key and value column values from the table
+                tag.put(item.getText(0), item.getText(1));
+                tags.add(tag);
+            }
+        }
+        return tags;
     }
 
     private void validate() {

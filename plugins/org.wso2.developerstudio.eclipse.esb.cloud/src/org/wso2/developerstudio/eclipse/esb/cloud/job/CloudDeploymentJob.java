@@ -101,7 +101,6 @@ public class CloudDeploymentJob extends Job {
                     public void run(){
                         try {
                             Application app = client.getApplication(name);
-                            System.out.println("Returned" + app.getVersions());
                             
                             Map<String, Version> versions = app.getVersions();
                             
@@ -123,7 +122,6 @@ public class CloudDeploymentJob extends Job {
                 5,
                 TimeUnit.SECONDS);
 
-            System.out.println("result = " + response);
             scheduledExecutorService.awaitTermination(200, TimeUnit.SECONDS);
 
         } catch (CloudDeploymentException | InterruptedException e) {

@@ -45,19 +45,15 @@ public class IntegrationCloudServiceClient {
     }
     
     public static IntegrationCloudServiceClient getInstance() {
-        System.out.println("Get instance");
         if (null == client) {
-            System.out.println("Test");
 //            synchronized (client){
 //                if (null == client){
-                    System.out.println("Client NULL");
                     cookieStore = new BasicCookieStore();
                     client = new IntegrationCloudServiceClient();
 //                }
 //            }
             
         } 
-        System.out.println("Client return");
         return client;
     }
 
@@ -72,8 +68,6 @@ public class IntegrationCloudServiceClient {
         data.put("password", password);
 
         String response = HTTPClientUtil.sendPostWithFormData(loginUrl, new HashMap<String, String>(), data, cookieStore);
-        
-        System.out.println(response);
         
         JsonParser parser = new JsonParser();
         JsonElement jsonTree = parser.parse(response);
@@ -91,8 +85,6 @@ public class IntegrationCloudServiceClient {
         data.put("applicationName", appName);
 
         String response = HTTPClientUtil.sendPostWithFormData(getAppUrl, new HashMap<String, String>(), data, cookieStore);
-
-        System.out.println(response);
         
         if (response == null) {
             return null;
@@ -111,8 +103,6 @@ public class IntegrationCloudServiceClient {
         data.put("versionId", versionId);
 
         String response = HTTPClientUtil.sendPostWithFormData(getAppUrl, new HashMap<String, String>(), data, cookieStore);
-
-        System.out.println(response);
         
         return response;
     }
@@ -139,9 +129,7 @@ public class IntegrationCloudServiceClient {
         data.put("applicationRevision", version);
         data.put("uploadedFileName", fileName);
         data.put("runtimeProperties", "[]");
-        String tag = JsonUtils.getJsonArrayFromList(tags);
-        System.out.println("Tag-->"+ tag);
-        data.put("tags", tag);
+        data.put("tags", JsonUtils.getJsonArrayFromList(tags));
         data.put("isFileAttached", "true");
         data.put("conSpec", "5");
         data.put("isNewVersion", "false");
@@ -150,8 +138,6 @@ public class IntegrationCloudServiceClient {
         data.put("runtime", CloudServiceConstants.AppConfigs.RUNTIME);        
         
         String response = HTTPClientUtil.sendPostWithMulipartFormData(createAppUrl, data, files, cookieStore);
-
-        System.out.println(response);
     }
 
     public CookieStore getCookieStore() {

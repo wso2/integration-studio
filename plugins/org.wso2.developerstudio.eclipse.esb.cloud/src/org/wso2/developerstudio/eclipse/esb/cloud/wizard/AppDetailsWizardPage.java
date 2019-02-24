@@ -49,6 +49,7 @@ import org.eclipse.swt.layout.RowLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
@@ -73,11 +74,11 @@ public class AppDetailsWizardPage extends WizardPage{
     private static final String DIALOG_TITLE = "WSO2 Platform Distribution - Application Details";
     private static final String EMPTY_STRING = "";
 
-    private Text txtName;
-    private Text txtVersion;
-    private Text txtDescription;
-    private Text txtBrowse;
-    private Table tblTags;
+//    private Text txtName;
+//    private Text txtVersion;
+//    private Text txtDescription;
+//    private Text txtBrowse;
+//    private Table tblCreateAppTags;
     
     private Button btnNewApplication;
     private Button btnExistingApplication;
@@ -86,9 +87,15 @@ public class AppDetailsWizardPage extends WizardPage{
     private String version = EMPTY_STRING;
     private String description = EMPTY_STRING;
     private String appIcon = EMPTY_STRING;
+    private List<Map<String, String>> tags = new ArrayList<>();
     
     private String initialName = EMPTY_STRING;
     private String initialVersion = EMPTY_STRING;
+    private String initialDescription = EMPTY_STRING;
+    private String initialappIcon = EMPTY_STRING;
+    
+    private String fontName;
+    private int fontStyle;
     
     private static final String[] FILTER_NAMES = {
             "Images(*.jpg)","Images(*.jpeg)","Images(*.png)"};
@@ -98,6 +105,8 @@ public class AppDetailsWizardPage extends WizardPage{
     
     private IProject selectedProject;
     private boolean isPageDirty = false;
+    
+    private Color red = Display.getCurrent().getSystemColor(SWT.COLOR_RED);
 
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
@@ -124,7 +133,6 @@ public class AppDetailsWizardPage extends WizardPage{
 
     public void createControl(Composite parent) {
         Composite container = new Composite(parent, SWT.NULL);
-        Color red = Display.getCurrent().getSystemColor(SWT.COLOR_RED);
 
         setControl(container);
         container.setLayout(new GridLayout(1, false));
@@ -160,134 +168,88 @@ public class AppDetailsWizardPage extends WizardPage{
         newAppContainer.setVisible(true);
        
         // Application Name
-        StyledText lblName = new StyledText(newAppContainer, SWT.NONE);
-        FontData data = lblName.getFont().getFontData()[0];
-
-        GridData lblNameGridData = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1);
-        lblName.setLayoutData(lblNameGridData);
-        lblName.setText(FILE_NAME_LABEL_TEXT);
-        
-        StyleRange appNameRange = new StyleRange(lblName.getCharCount() - 1, 1, red, null);
-        lblName.setStyleRange(appNameRange);
-        lblName.setFont(new Font(parent.getDisplay(), data.getName(), 12, data.getStyle()));
-
-        txtName = new Text(newAppContainer, SWT.BORDER);
-        GridData txtNameGridData = new GridData(SWT.LEFT, SWT.CENTER, false, false, 2, 1);
-        txtNameGridData.widthHint = 480;
-        txtName.setLayoutData(txtNameGridData);
-        initialName = getName();
-        txtName.setText(initialName);
-
-        txtName.addModifyListener(new ModifyListener() {
-
-            public void modifyText(ModifyEvent evt) {
-                setName(txtName.getText());
-                validate();
-            }
-
-        });
+        createNameInput(parent, newAppContainer);
         
         // Application Version
-        StyledText lblVersion = new StyledText(newAppContainer, SWT.NONE);
-        lblVersion.setText(FILE_VERSION_LABEL_TEXT);
-
-        StyleRange versionRange = new StyleRange(lblVersion.getCharCount() - 1, 1, red, null);
-        lblVersion.setStyleRange(versionRange);
-        lblVersion.setFont(new Font(parent.getDisplay(), data.getName(), 12, data.getStyle()));
-
-        txtVersion = new Text(newAppContainer, SWT.BORDER);
-        GridData txtVersionGridData = new GridData(SWT.LEFT, SWT.CENTER, false, false, 2, 1);
-        txtVersionGridData.widthHint = 480;
-        initialVersion = getVersion();
-        txtVersion.setText(initialVersion);
-        txtVersion.setLayoutData(txtVersionGridData);
-
-        txtVersion.addModifyListener(new ModifyListener() {
-
-            public void modifyText(ModifyEvent evt) {
-                setVersion(txtVersion.getText());
-                validate();
-            }
-
-        });
+        createVersionInput(parent, newAppContainer);
         
         // Application Description
-        Label lblDescription = new Label(newAppContainer, SWT.NONE);
-        GridData lblDescriptionGridData = new GridData(SWT.LEFT, SWT.TOP, false, false, 1, 1);
-        lblDescription.setLayoutData(lblDescriptionGridData);
-        lblDescription.setText(DESCRIPTION_LABEL_TEXT);
-
-        txtDescription = new Text(newAppContainer, SWT.MULTI | SWT.BORDER | SWT.V_SCROLL);
-        GridData txtDescriptionGridData = new GridData(SWT.LEFT, SWT.CENTER, false, false, 2, 1);
-        txtDescriptionGridData.widthHint = 465;
-        txtDescriptionGridData.heightHint = 80;
-        txtDescription.setLayoutData(txtDescriptionGridData);
-
-        txtDescription.addModifyListener(new ModifyListener() {
-
-            public void modifyText(ModifyEvent evt) {
-                setDescription(txtDescription.getText());
-                validate();
-            }
-
-        });
+        createDescriptionInput(newAppContainer);
         
         // Application Icon
-        Label lblAppIcon = new Label(newAppContainer, SWT.NONE);
-        lblAppIcon.setText(APP_ICON_LABEL_TEXT);
-        GridData lblAppIconGridData = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1);
-        lblAppIcon.setLayoutData(lblAppIconGridData);
-        
-        Composite appIconContainer = new Composite(newAppContainer, SWT.NULL);
-        
-        GridData appIconGridData = new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1);
-        appIconGridData.exclude = false;
-        appIconContainer.setLayoutData(appIconGridData);
-
-        setControl(appIconContainer);
-        GridLayout browseLayout = new GridLayout(2, false);
-        browseLayout.marginLeft = 0;
-        browseLayout.marginHeight = 0;
-        browseLayout.marginWidth = 0;
-        browseLayout.marginRight = 0;
-        appIconContainer.setLayout(browseLayout);
-        appIconContainer.setVisible(true);
-
-        txtBrowse = new Text(appIconContainer, SWT.BORDER);
-        GridData txtBrowseGridData = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1);
-        txtBrowseGridData.widthHint = 400;
-        txtBrowse.setLayoutData(txtBrowseGridData);
-
-        txtBrowse.addModifyListener(new ModifyListener() {
-
-            public void modifyText(ModifyEvent evt) {
-                setAppIcon(txtBrowse.getText());
-                validate();
-            }
-
-        });
-        
-        Button btnBrowse = new Button(appIconContainer, SWT.NONE );
-        btnBrowse.setText(BROWSE_LABEL_TEXT);
-
-        btnBrowse.addSelectionListener(new SelectionAdapter() {
-
-            public void widgetSelected(SelectionEvent e) {
-                FileDialog dialog = new FileDialog(getShell(), SWT.OPEN);
-                dialog.setFilterNames(FILTER_NAMES);
-                dialog.setFilterExtensions(FILTER_EXTS);
-                String result = dialog.open();
-                if (result != null) {
-                    txtBrowse.setText(result);
-                }
-                validate();
-            }
-
-        });
-        new Label(newAppContainer, SWT.NONE);
+        createApplicationIconInput(newAppContainer);
         
         // Tags
+        createTagsInput(newAppContainer);
         
+        // Update existing application container
+        Composite existingAppContainer = new Composite(container, SWT.NULL);
+        GridData existingAppData = new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1);
+        existingAppData.exclude = true;
+        existingAppContainer.setLayoutData(existingAppData);
+
+        setControl(existingAppContainer);
+        existingAppContainer.setLayout(new GridLayout(3, false));
+        existingAppContainer.setVisible(false);
+        
+        setName(initialName);
+        setVersion(initialVersion);
+        setDescription(initialDescription);
+        setAppIcon(initialappIcon);
+        this.tags = new ArrayList<>();
+        
+        btnNewApplication.addSelectionListener(new SelectionAdapter()  {
+            
+            @Override
+            public void widgetSelected(SelectionEvent e) {
+                Button source=  (Button) e.getSource();
+                
+                if(source.getSelection())  {
+                    newAppGridData.exclude = false;
+                    existingAppData.exclude = true;
+                    newAppContainer.setVisible(true);
+                    existingAppContainer.setVisible(false);
+                    newAppContainer.getParent().pack();
+                }
+            }
+             
+        });
+        
+        btnExistingApplication.addSelectionListener(new SelectionAdapter()  {
+            
+            @Override
+            public void widgetSelected(SelectionEvent e) {
+                Button source=  (Button) e.getSource();
+                 
+                if(source.getSelection())  {
+                    newAppGridData.exclude = true;
+                    existingAppData.exclude = false;
+                    newAppContainer.setVisible(false);
+                    existingAppContainer.setVisible(true);
+                    existingAppContainer.getParent().pack();
+                }
+            }
+             
+        });
+        
+        // Application Name
+        createNameInput(parent, existingAppContainer);
+        
+        // Application Version
+        createVersionInput(parent, existingAppContainer);
+        
+        // Application Description
+        createDescriptionInput(existingAppContainer);
+        
+        // Application Icon
+        createApplicationIconInput(existingAppContainer);
+        
+        // Tags
+        createTagsInput(existingAppContainer);
+        
+    }
+
+    private void createTagsInput(Composite newAppContainer) {
         Label lblTags = new Label(newAppContainer, SWT.NONE);
         lblTags.setText(TAGS_LABEL_TEXT);
         GridData lblTagsGridData = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1);
@@ -308,7 +270,7 @@ public class AppDetailsWizardPage extends WizardPage{
         tagsContainer.setLayout(new GridLayout(2, false));
         tagsContainer.setVisible(true);
         
-        tblTags = new Table(tagsContainer, SWT.BORDER | SWT.FULL_SELECTION | SWT.V_SCROLL);
+        Table tblTags = new Table(tagsContainer, SWT.BORDER | SWT.FULL_SELECTION | SWT.V_SCROLL);
         GridData tableGridData = new GridData(SWT.LEFT, SWT.TOP, true, false, 1, 1);
         tableGridData.heightHint = 200;
         tblTags.setLayoutData(tableGridData);
@@ -356,14 +318,21 @@ public class AppDetailsWizardPage extends WizardPage{
                                             e.doit = false;
                                     }
                                     break;
+                                case SWT.Modify:
+                                    tblitem.setText (tblcolumn, text.getText ());
+                                    saveTags(tblTags);
+                                    break;
                             }
                         };
                         text.addListener (SWT.FocusOut, textListener);
                         text.addListener (SWT.Traverse, textListener);
+                        text.addListener (SWT.Modify, textListener);
+                        
                         editor.setEditor (text, tblitem, i);
                         text.setText (tblitem.getText (i));
                         text.selectAll ();
                         text.setFocus ();
+
                         return;
                     }
                     if (!visible && rect.intersects (clientArea)) {
@@ -395,31 +364,107 @@ public class AppDetailsWizardPage extends WizardPage{
 
         });
         
-        // Update existing application container
-        
-        createUpdateApplicationWindow(container, newAppGridData, newAppContainer);
-        
-        
+        btnRemove.addSelectionListener(new SelectionAdapter() {
+
+            public void widgetSelected(SelectionEvent e) {
+                int item = tblTags.getSelectionIndex();
+                tblTags.remove(item);
+            }
+
+        });
     }
-    
-    public void createUpdateApplicationWindow(Composite container, GridData newAppGridData, Composite newAppContainer) {
-        Composite existingAppContainer = new Composite(container, SWT.NULL);
-        GridData existingAppData = new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1);
-        existingAppData.exclude = true;
-        existingAppContainer.setLayoutData(existingAppData);
 
-        setControl(existingAppContainer);
-        existingAppContainer.setLayout(new GridLayout(3, false));
-        existingAppContainer.setVisible(false);
+    private void createApplicationIconInput(Composite newAppContainer) {
+        Label lblAppIcon = new Label(newAppContainer, SWT.NONE);
+        lblAppIcon.setText(APP_ICON_LABEL_TEXT);
+        GridData lblAppIconGridData = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1);
+        lblAppIcon.setLayoutData(lblAppIconGridData);
+        
+        Composite appIconContainer = new Composite(newAppContainer, SWT.NULL);
+        
+        GridData appIconGridData = new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1);
+        appIconGridData.exclude = false;
+        appIconContainer.setLayoutData(appIconGridData);
 
-        Label lblVersion1 = new Label(existingAppContainer, SWT.NONE);
-        lblVersion1.setText(FILE_VERSION_LABEL_TEXT);
+        setControl(appIconContainer);
+        GridLayout browseLayout = new GridLayout(2, false);
+        browseLayout.marginLeft = 0;
+        browseLayout.marginHeight = 0;
+        browseLayout.marginWidth = 0;
+        browseLayout.marginRight = 0;
+        appIconContainer.setLayout(browseLayout);
+        appIconContainer.setVisible(true);
 
-        txtVersion = new Text(existingAppContainer, SWT.BORDER);
-        GridData txtVersionGridData1 = new GridData(SWT.FILL, SWT.CENTER, true, false, 2, 1);
+        Text txtBrowse = new Text(appIconContainer, SWT.BORDER);
+        GridData txtBrowseGridData = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1);
+        txtBrowseGridData.widthHint = 400;
+        txtBrowse.setLayoutData(txtBrowseGridData);
+
+        txtBrowse.addModifyListener(new ModifyListener() {
+
+            public void modifyText(ModifyEvent evt) {
+                setAppIcon(txtBrowse.getText());
+                validate();
+            }
+
+        });
+        
+        Button btnBrowse = new Button(appIconContainer, SWT.NONE );
+        btnBrowse.setText(BROWSE_LABEL_TEXT);
+
+        btnBrowse.addSelectionListener(new SelectionAdapter() {
+
+            public void widgetSelected(SelectionEvent e) {
+                FileDialog dialog = new FileDialog(getShell(), SWT.OPEN);
+                dialog.setFilterNames(FILTER_NAMES);
+                dialog.setFilterExtensions(FILTER_EXTS);
+                String result = dialog.open();
+                if (result != null) {
+                    txtBrowse.setText(result);
+                }
+                validate();
+            }
+
+        });
+        new Label(newAppContainer, SWT.NONE);
+    }
+
+    private void createDescriptionInput(Composite newAppContainer) {
+        Label lblDescription = new Label(newAppContainer, SWT.NONE);
+        GridData lblDescriptionGridData = new GridData(SWT.LEFT, SWT.TOP, false, false, 1, 1);
+        lblDescription.setLayoutData(lblDescriptionGridData);
+        lblDescription.setText(DESCRIPTION_LABEL_TEXT);
+
+        Text txtDescription = new Text(newAppContainer, SWT.MULTI | SWT.BORDER | SWT.V_SCROLL);
+        GridData txtDescriptionGridData = new GridData(SWT.LEFT, SWT.CENTER, false, false, 2, 1);
+        txtDescriptionGridData.widthHint = 465;
+        txtDescriptionGridData.heightHint = 80;
+        txtDescription.setLayoutData(txtDescriptionGridData);
+
+        txtDescription.addModifyListener(new ModifyListener() {
+
+            public void modifyText(ModifyEvent evt) {
+                setDescription(txtDescription.getText());
+                validate();
+            }
+
+        });
+    }
+
+    private void createVersionInput(Composite parent, Composite newAppContainer) {
+        StyledText lblVersion = new StyledText(newAppContainer, SWT.NONE);
+        lblVersion.setText(FILE_VERSION_LABEL_TEXT);
+
+        StyleRange versionRange = new StyleRange(lblVersion.getCharCount() - 1, 1, red, null);
+        lblVersion.setStyleRange(versionRange);
+        lblVersion.setFont(new Font(parent.getDisplay(), fontName, 12, fontStyle));
+
+        Text txtVersion = new Text(newAppContainer, SWT.BORDER);
+        GridData txtVersionGridData = new GridData(SWT.LEFT, SWT.CENTER, false, false, 2, 1);
+        txtVersionGridData.widthHint = 480;
         initialVersion = getVersion();
         txtVersion.setText(initialVersion);
-        txtVersion.setLayoutData(txtVersionGridData1);
+        txtVersion.setLayoutData(txtVersionGridData);
 
         txtVersion.addModifyListener(new ModifyListener() {
 
@@ -429,55 +474,60 @@ public class AppDetailsWizardPage extends WizardPage{
             }
 
         });
+    }
+    
+    private void createNameInput(Composite parent, Composite container) {
+        StyledText lblName = new StyledText(container, SWT.NONE);
+        FontData data = lblName.getFont().getFontData()[0];
+        fontName = data.getName();
+        fontStyle = data.getStyle();
+
+        GridData lblNameGridData = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1);
+        lblName.setLayoutData(lblNameGridData);
+        lblName.setText(FILE_NAME_LABEL_TEXT);
         
-        btnNewApplication.addSelectionListener(new SelectionAdapter()  {
-            
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                Button source=  (Button) e.getSource();
-                
-                if(source.getSelection())  {
-                    newAppGridData.exclude = false;
-                    existingAppData.exclude = true;
-                    newAppContainer.setVisible(true);
-                    existingAppContainer.setVisible(false);
-                    newAppContainer.getParent().pack();
-                }
+        StyleRange appNameRange = new StyleRange(lblName.getCharCount() - 1, 1, red, null);
+        lblName.setStyleRange(appNameRange);
+        lblName.setFont(new Font(parent.getDisplay(), fontName, 12, fontStyle));
+
+        Text txtName = new Text(container, SWT.BORDER);
+        GridData txtNameGridData = new GridData(SWT.LEFT, SWT.CENTER, false, false, 2, 1);
+        txtNameGridData.widthHint = 480;
+        txtName.setLayoutData(txtNameGridData);
+        initialName = getName();
+        txtName.setText(initialName);
+
+        txtName.addModifyListener(new ModifyListener() {
+
+            public void modifyText(ModifyEvent evt) {
+                setName(txtName.getText());
+                validate();
             }
-             
-        });
-        
-        btnExistingApplication.addSelectionListener(new SelectionAdapter()  {
-            
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                Button source=  (Button) e.getSource();
-                 
-                if(source.getSelection())  {
-                    newAppGridData.exclude = true;
-                    existingAppData.exclude = false;
-                    newAppContainer.setVisible(false);
-                    existingAppContainer.setVisible(true);
-                    existingAppContainer.getParent().pack();
-                }
-            }
-             
+
         });
     }
     
-    public List<Map<String, String>> getTags() {
+    public void saveTags(Table tblTags){
         List<Map<String, String>> tags = new ArrayList<>();
         TableItem[] items = tblTags.getItems();
         if (items != null && items.length > 0) {
             for (TableItem item: items) {
                 Map<String, String> tag = new HashMap<>();
-                // Retrieve key and value column values from the table
-                tag.put("key", item.getText(0));
-                tag.put("value", item.getText(1));
-                tags.add(tag);
+
+                if (null != item.getText(0) && !item.getText(0).equals(EMPTY_STRING) && null != item.getText(1) && !item.getText(1).equals(EMPTY_STRING)) {
+                 // Retrieve key and value column values from the table
+                    tag.put("key", item.getText(0));
+                    tag.put("value", item.getText(1));
+                    tags.add(tag);
+                }
             }
         }
-        return tags;
+        this.tags = tags;
+//        return tags;
+    }
+    
+    public List<Map<String, String>> getTags() {
+        return this.tags;
     }
 
     private void validate() {
@@ -487,7 +537,7 @@ public class AppDetailsWizardPage extends WizardPage{
             setPageComplete(false);
             return;
         } else {
-            String version = txtVersion.getText();
+            String version = getVersion();
             String[] versionParts = version.split("\\.");
             if (version.endsWith(".")) {
                 setErrorMessage("File version cannot end with period.");

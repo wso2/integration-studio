@@ -20,9 +20,6 @@ package org.wso2.developerstudio.eclipse.esb.cloud.job;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Timer;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
@@ -37,12 +34,12 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
+import org.wso2.developerstudio.eclipse.esb.cloud.Activator;
 import org.wso2.developerstudio.eclipse.esb.cloud.client.IntegrationCloudServiceClient;
-import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.NotFoundException;
+import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.CloudDeploymentException;
 import org.wso2.developerstudio.eclipse.esb.cloud.model.Application;
 import org.wso2.developerstudio.eclipse.esb.cloud.model.Version;
 import org.wso2.developerstudio.eclipse.esb.cloud.resources.CloudServiceConstants;
-import org.wso2.developerstudio.eclipse.esb.cloud.Activator;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
@@ -60,6 +57,7 @@ public class CloudDeploymentJob extends Job {
     private String iconLocation;
     private List<Map<String, String>> tags;
     private IntegrationCloudServiceClient client;
+    private String response;
 
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
@@ -78,72 +76,57 @@ public class CloudDeploymentJob extends Job {
     @Override
     protected IStatus run(IProgressMonitor monitor) {
 
-        String operationText = "Preparing files... ";
+        String operationText = "Preparing to deploy the application... ";
         monitor.beginTask(operationText, 100);
 
-        operationText = "Copying files...";
+        operationText = "Sending application data...";
         monitor.subTask(operationText);
         monitor.worked(10);
 
         try {
-            
-            operationText = "Deploying the application to the Integration Cloud...";
-            monitor.subTask(operationText);
-            monitor.worked(20);
 
             client.createApplication(name, description, version, carbonFileName, carbonFileLocation, iconLocation, tags);
             
-//            if (client.getApplication("TestAppCarbonApplication")) {
-//                System.out.println("Returned");
-//            }
-            
-//            Application app = client.getApplication("TestAppCarbonApplication");
-//            
-//            System.out.println(app.getVersions());
-            
             operationText = "Fetching the endpoints...";
             monitor.subTask(operationText);
-            monitor.worked(50);
-            
-//           DeploymentStatusPoller te1=new DeploymentStatusPoller();
-//           Timer t=new Timer();
-//           t.scheduleAtFixedRate(te1, 0,5*1000);
-           
-            String[] response = {""};
+            monitor.worked(10);
             
             ScheduledExecutorService scheduledExecutorService =
                     Executors.newScheduledThreadPool(5);
 
             ScheduledFuture<?> scheduledFuture =
                 scheduledExecutorService.scheduleAtFixedRate(new Runnable() {
+                    int count = 0;
+                    
                     public void run(){
                         try {
-                        Application app = client.getApplication("TestAppCarbonApplication");
-                        System.out.println("Returned" + app.getVersions());
-                        
-                        Map<String, Version> versions = app.getVersions();
-                        
-                        for (Map.Entry<String, Version> version : versions.entrySet()) {
-                            response[0] = client.getApplicationEndpoints(app.getApplicationType(), version.getValue().getDeploymentURL(), version.getValue().getVersionId());
-                            if(null != response[0] &&  !"null".equals(response[0])) {
-//                                return response;
-                                scheduledExecutorService.shutdownNow();
+                            Application app = client.getApplication(name);
+                            System.out.println("Returned" + app.getVersions());
+                            
+                            Map<String, Version> versions = app.getVersions();
+                            
+                            for (Map.Entry<String, Version> version : versions.entrySet()) {
+                                response = client.getApplicationEndpoints(app.getApplicationType(), version.getValue().getDeploymentURL(), version.getValue().getVersionId());
+                                if (null != response &&  !"null".equals(response)) {
+                                    scheduledExecutorService.shutdown();
+                                } else if (count < 15){
+                                    monitor.subTask("Loading Endpoints...");
+                                    monitor.worked(5);
+                                }
                             }
+                        } catch(CloudDeploymentException e) {
+                            scheduledExecutorService.shutdown();
                         }
-                        } catch(Exception e) {
-                            e.printStackTrace();
-                        }
-//                        return null;
                     }
                 },
                 0,
                 5,
                 TimeUnit.SECONDS);
 
-            System.out.println("result = " + response[0]);
+            System.out.println("result = " + response);
             scheduledExecutorService.awaitTermination(200, TimeUnit.SECONDS);
 
-        } catch (NotFoundException | InterruptedException e) {
+        } catch (CloudDeploymentException | InterruptedException e) {
             log.error(CloudServiceConstants.ErrorMessages.DEPLOY_TO_CLOUD_FAILED_MESSAGE, e);
             showMessageBox(CloudServiceConstants.ErrorMessages.DEPLOY_TO_CLOUD_FAILED_TITLE,
                     CloudServiceConstants.ErrorMessages.DEPLOY_TO_CLOUD_INTERNAL_ERROR_MSG, SWT.ICON_ERROR);

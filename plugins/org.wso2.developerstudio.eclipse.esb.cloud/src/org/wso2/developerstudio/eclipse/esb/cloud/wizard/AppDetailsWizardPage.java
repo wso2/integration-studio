@@ -79,6 +79,9 @@ public class AppDetailsWizardPage extends WizardPage{
     private Text txtBrowse;
     private Table tblTags;
     
+    private Button btnNewApplication;
+    private Button btnExistingApplication;
+    
     private String name = EMPTY_STRING;
     private String version = EMPTY_STRING;
     private String description = EMPTY_STRING;
@@ -138,11 +141,11 @@ public class AppDetailsWizardPage extends WizardPage{
         
         appTypeGroup.setLayout(rowLayout);
         
-        Button btnNewApplication = new Button(appTypeGroup, SWT.RADIO);
+        btnNewApplication = new Button(appTypeGroup, SWT.RADIO);
         btnNewApplication.setText("Create New Application");
         btnNewApplication.setSelection(true);
         
-        Button btnExistingApplication = new Button(appTypeGroup, SWT.RADIO);
+        btnExistingApplication = new Button(appTypeGroup, SWT.RADIO);
         btnExistingApplication.setText("Update Existing Application");
         
         // Create new Application container
@@ -278,10 +281,6 @@ public class AppDetailsWizardPage extends WizardPage{
                     txtBrowse.setText(result);
                 }
                 validate();
-                
-                TableItem item3 = new TableItem(tblTags, SWT.NONE);
-                item3.setText(0, "Test2");
-                item3.setText(1, "Test 3");
             }
 
         });
@@ -314,16 +313,6 @@ public class AppDetailsWizardPage extends WizardPage{
         tableGridData.heightHint = 200;
         tblTags.setLayoutData(tableGridData);
         tblTags.setHeaderVisible(true);
-//        table.addListener (SWT.SetData, new Listener () {
-//            public void handleEvent (Event event) {
-//                TableItem item = (TableItem) event.item;
-//                int index = table.indexOf (item);
-//                item.setText ("Item " + index);
-//                System.out.println (item.getText ());
-//            }
-//        });
-        
-//        table.setBounds(250, 250, 1500, 1000);
         
         TableColumn column = new TableColumn(tblTags, SWT.NONE);
         column.setText("Key");
@@ -388,18 +377,11 @@ public class AppDetailsWizardPage extends WizardPage{
         
         Group btnGroup = new Group(tagsContainer, SWT.NONE);
         RowLayout btnRowLayout = new RowLayout(SWT.VERTICAL);
-//        btnRowLayout.marginLeft = 10;
-//        btnRowLayout.marginRight = 10;
-//        btnRowLayout.marginBottom = 10;
-//        btnRowLayout.marginTop = 10;
         
         btnGroup.setLayout(btnRowLayout);
         
         Button btnAdd = new Button(btnGroup, SWT.NONE);
         btnAdd.setText("+");
-        
-//        GridData buttonAddGridData = new GridData(SWT.FILL, SWT.CENTER, true, false, 2, 1);
-//        btnAdd.setLayoutData(buttonAddGridData);
         
         Button btnRemove = new Button(btnGroup, SWT.NONE);
         btnRemove.setText("-");
@@ -408,20 +390,20 @@ public class AppDetailsWizardPage extends WizardPage{
 
             public void widgetSelected(SelectionEvent e) {
                 TableItem item = new TableItem(tblTags, SWT.BORDER);
-//                item.setText(0, "Test");
-//                item.setText(1, "Test 2");
                 item.setBackground(new Color(Display.getCurrent(), 44, 96, 218));
             }
 
         });
         
-//        GridData buttonRemoveGridData = new GridData(SWT.FILL, SWT.CENTER, true, false, 2, 1);
-//        btnRemove.setLayoutData(buttonRemoveGridData);
-        
         // Update existing application container
         
-        Composite existingAppContainer = new Composite(container, SWT.NULL);
+        createUpdateApplicationWindow(container, newAppGridData, newAppContainer);
         
+        
+    }
+    
+    public void createUpdateApplicationWindow(Composite container, GridData newAppGridData, Composite newAppContainer) {
+        Composite existingAppContainer = new Composite(container, SWT.NULL);
         GridData existingAppData = new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1);
         existingAppData.exclude = true;
         existingAppContainer.setLayoutData(existingAppData);
@@ -490,7 +472,8 @@ public class AppDetailsWizardPage extends WizardPage{
             for (TableItem item: items) {
                 Map<String, String> tag = new HashMap<>();
                 // Retrieve key and value column values from the table
-                tag.put(item.getText(0), item.getText(1));
+                tag.put("key", item.getText(0));
+                tag.put("value", item.getText(1));
                 tags.add(tag);
             }
         }

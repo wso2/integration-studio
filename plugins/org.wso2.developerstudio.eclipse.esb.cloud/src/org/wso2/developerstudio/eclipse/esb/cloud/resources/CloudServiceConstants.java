@@ -39,6 +39,6 @@ public class CloudServiceConstants {
 
     public static class SuccessMessages {
         public static final String SUCCESSFUL_TITLE = "Successful";
-        public static final String DEPLOY_TO_CLOUD_SUCCESS_MESSAGE = "Application Deployed to Cloud Successfully!";
+        public static final String DEPLOY_TO_CLOUD_SUCCESS_MESSAGE = "Application Deployed to Cloud Successfully! \n Test";
     }
 }

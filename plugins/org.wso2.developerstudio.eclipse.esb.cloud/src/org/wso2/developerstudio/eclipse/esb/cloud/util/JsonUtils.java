@@ -23,13 +23,12 @@ import java.util.List;
 import java.util.Map;
 
 import org.wso2.developerstudio.eclipse.esb.cloud.model.Application;
+import org.wso2.developerstudio.eclipse.esb.cloud.model.EndpointData;
 
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
 
 public class JsonUtils {
-    
-    
     
     public static String getJsonArrayFromList(List<Map<String, String>> tags) {
         Gson gson = new Gson();
@@ -40,6 +39,12 @@ public class JsonUtils {
     public static Application getApplicationFromJson(String json) {
         Gson gson = new Gson();
         Type type = new TypeToken<Application>(){}.getType();
+        return gson.fromJson(json, type);
+    }
+    
+    public static EndpointData getEndpointDataFromJson(String json) {
+        Gson gson = new Gson();
+        Type type = new TypeToken<EndpointData>(){}.getType();
         return gson.fromJson(json, type);
     }
 }

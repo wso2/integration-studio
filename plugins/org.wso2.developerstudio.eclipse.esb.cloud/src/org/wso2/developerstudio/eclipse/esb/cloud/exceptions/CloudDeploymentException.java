@@ -18,24 +18,24 @@
 
 package org.wso2.developerstudio.eclipse.esb.cloud.exceptions;
 
-public class NotFoundException extends Exception {
-    public NotFoundException() {
+public class CloudDeploymentException extends Exception {
+    public CloudDeploymentException() {
         super();
     }
 
-    public NotFoundException(String message) {
+    public CloudDeploymentException(String message) {
         super(message);
     }
 
-    public NotFoundException(String message, Throwable cause) {
+    public CloudDeploymentException(String message, Throwable cause) {
         super(message, cause);
     }
 
-    public NotFoundException(Throwable cause) {
+    public CloudDeploymentException(Throwable cause) {
         super(cause);
     }
 
-    protected NotFoundException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+    protected CloudDeploymentException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
         super(message, cause, enableSuppression, writableStackTrace);
     }
 }

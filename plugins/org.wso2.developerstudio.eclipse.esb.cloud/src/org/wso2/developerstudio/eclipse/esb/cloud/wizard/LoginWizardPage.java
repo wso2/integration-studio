@@ -38,7 +38,7 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.wso2.developerstudio.eclipse.esb.cloud.Activator;
 import org.wso2.developerstudio.eclipse.esb.cloud.client.IntegrationCloudServiceClient;
-import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.NotFoundException;
+import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.CloudDeploymentException;
 import org.wso2.developerstudio.eclipse.esb.cloud.util.UserSessionManager;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
@@ -183,7 +183,7 @@ public class LoginWizardPage extends WizardPage {
         
         try {
             return (client.login(getUsername(), getPassword(), getTenant()));
-        } catch (NotFoundException e) {
+        } catch (CloudDeploymentException e) {
             System.out.println("Not found");
         }
         return false;

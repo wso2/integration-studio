@@ -20,8 +20,9 @@ package org.wso2.developerstudio.eclipse.esb.cloud.client;
 
 import org.apache.http.client.CookieStore;
 import org.apache.http.impl.client.BasicCookieStore;
-import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.NotFoundException;
+import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.CloudDeploymentException;
 import org.wso2.developerstudio.eclipse.esb.cloud.model.Application;
+import org.wso2.developerstudio.eclipse.esb.cloud.model.EndpointData;
 import org.wso2.developerstudio.eclipse.esb.cloud.resources.CloudServiceConstants;
 import org.wso2.developerstudio.eclipse.esb.cloud.util.HTTPClientUtil;
 import org.wso2.developerstudio.eclipse.esb.cloud.util.JsonUtils;
@@ -60,7 +61,7 @@ public class IntegrationCloudServiceClient {
         return client;
     }
 
-    public boolean login(String username, String password, String tenant) throws NotFoundException {
+    public boolean login(String username, String password, String tenant) throws CloudDeploymentException {
         String loginUrl = CloudServiceConstants.ServiceEndpoints.LOGIN_URL;
         
         String user = username + "@" + tenant;
@@ -82,7 +83,7 @@ public class IntegrationCloudServiceClient {
         return message.equals("User successfully logged in");
     }
 
-    public Application getApplication(String appName) throws NotFoundException {
+    public Application getApplication(String appName) throws CloudDeploymentException {
         String getAppUrl = CloudServiceConstants.ServiceEndpoints.APPLICATION_URL;
 
         Map<String, String> data = new HashMap<>();
@@ -100,7 +101,7 @@ public class IntegrationCloudServiceClient {
         return JsonUtils.getApplicationFromJson(response);
     }
     
-    public String getApplicationEndpoints(String appType, String deploymentURL, String versionId) throws NotFoundException {
+    public String getApplicationEndpoints(String appType, String deploymentURL, String versionId) throws CloudDeploymentException {
         String getAppUrl = CloudServiceConstants.ServiceEndpoints.APPLICATION_URL;
 
         Map<String, String> data = new HashMap<>();
@@ -116,7 +117,7 @@ public class IntegrationCloudServiceClient {
         return response;
     }
 
-    public void createApplication(String appName, String appDescription, String version, String fileName, String fileLocation, String iconLocation, List<Map<String, String>> tags) throws NotFoundException {
+    public void createApplication(String appName, String appDescription, String version, String fileName, String fileLocation, String iconLocation, List<Map<String, String>> tags) throws CloudDeploymentException {
 
         Map<String, String> files = new HashMap<>();
         files.put("fileupload", fileLocation);
@@ -138,7 +139,9 @@ public class IntegrationCloudServiceClient {
         data.put("applicationRevision", version);
         data.put("uploadedFileName", fileName);
         data.put("runtimeProperties", "[]");
-        data.put("tags", JsonUtils.getJsonArrayFromList(tags));
+        String tag = JsonUtils.getJsonArrayFromList(tags);
+        System.out.println("Tag-->"+ tag);
+        data.put("tags", tag);
         data.put("isFileAttached", "true");
         data.put("conSpec", "5");
         data.put("isNewVersion", "false");

@@ -24,7 +24,13 @@ import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.ILaunchConfigurationType;
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
 import org.eclipse.debug.core.ILaunchManager;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.IPerspectiveDescriptor;
 import org.eclipse.ui.IStartup;
+import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.PerspectiveAdapter;
+import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.carbonserver44microei.Activator;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
@@ -52,7 +58,28 @@ public class PlatformEarlyStartUpHandler implements IStartup {
 			log.error("Exception occured while creating micro-integrator debug profile", e);
 		}
 
-	}
+        // The following section will remove the unwanted
+        Display.getDefault().asyncExec(new Runnable() {
+            public void run() {
+                final IWorkbenchWindow workbenchWindow = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+                if (workbenchWindow != null) {
+
+                    workbenchWindow.addPerspectiveListener(new PerspectiveAdapter() {
+                        @Override
+                        public void perspectiveActivated(IWorkbenchPage page,
+                                IPerspectiveDescriptor perspectiveDescriptor) {
+                            super.perspectiveActivated(page, perspectiveDescriptor);
+                            PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+                                    .hideActionSet("org.eclipse.ui.externaltools.ExternalToolsSet");
+                        }
+                    });
+
+                    PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+                            .hideActionSet("org.eclipse.ui.externaltools.ExternalToolsSet");
+                }
+            }
+        });
+    }
 
 	private void createESBDebugProfile(ILaunchManager launchManager) throws CoreException {
 		if (findLaunchConfigurationByName(launchManager, DEBUG_PROFILE_NAME) == null) {

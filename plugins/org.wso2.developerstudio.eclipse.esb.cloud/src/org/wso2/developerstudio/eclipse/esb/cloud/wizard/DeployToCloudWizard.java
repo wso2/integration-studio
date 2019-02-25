@@ -151,7 +151,7 @@ public class DeployToCloudWizard extends Wizard implements IExportWizard {
             carbonArchive = ExportUtil.buildCAppProject(selectedProject);
             
             // Create and schedule a background job to deploy the application
-            cloudDeploymentJob = new CloudDeploymentJob(appDetailsPage.getName(), appDetailsPage.getDescription(), appDetailsPage.getVersion(), finalFileName, carbonArchive.getLocation().toFile().getAbsolutePath(), appDetailsPage.getAppIcon(), appDetailsPage.getTags());
+            cloudDeploymentJob = new CloudDeploymentJob(appDetailsPage.getName(), appDetailsPage.getDescription(), appDetailsPage.getVersion(), finalFileName, carbonArchive.getLocation().toFile().getAbsolutePath(), appDetailsPage.getAppIcon(), appDetailsPage.getTags(), appDetailsPage.isNewVersion());
             cloudDeploymentJob.schedule();
             
             openMessageBox(getShell(), CloudDeploymentWizardConstants.DIALOG_TITLE_TEXT,

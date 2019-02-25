@@ -23,8 +23,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.sound.midi.Soundbank;
-
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
@@ -47,9 +45,9 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.layout.RowLayout;
 import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
@@ -60,6 +58,9 @@ import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IWorkbench;
 import org.wso2.developerstudio.eclipse.esb.cloud.Activator;
+import org.wso2.developerstudio.eclipse.esb.cloud.client.IntegrationCloudServiceClient;
+import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.CloudDeploymentException;
+import org.wso2.developerstudio.eclipse.esb.cloud.model.Application;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
@@ -73,21 +74,23 @@ public class AppDetailsWizardPage extends WizardPage{
     private static final String BROWSE_LABEL_TEXT = "Browse";
     private static final String DIALOG_TITLE = "WSO2 Platform Distribution - Application Details";
     private static final String EMPTY_STRING = "";
+    
+    private static final String[] FILTER_NAMES = {
+            "Images(*.jpg)","Images(*.jpeg)","Images(*.png)"};
 
-//    private Text txtName;
-//    private Text txtVersion;
-//    private Text txtDescription;
-//    private Text txtBrowse;
-//    private Table tblCreateAppTags;
+    // These filter extensions are used to filter which files are displayed.
+    private static final String[] FILTER_EXTS = { "*.jpg", "*.jpeg", "*.png"};
     
     private Button btnNewApplication;
     private Button btnExistingApplication;
+    private Combo appNames;
     
     private String name = EMPTY_STRING;
     private String version = EMPTY_STRING;
     private String description = EMPTY_STRING;
     private String appIcon = EMPTY_STRING;
     private List<Map<String, String>> tags = new ArrayList<>();
+    private boolean isNewVersion;
     
     private String initialName = EMPTY_STRING;
     private String initialVersion = EMPTY_STRING;
@@ -97,14 +100,12 @@ public class AppDetailsWizardPage extends WizardPage{
     private String fontName;
     private int fontStyle;
     
-    private static final String[] FILTER_NAMES = {
-            "Images(*.jpg)","Images(*.jpeg)","Images(*.png)"};
-
-    // These filter extensions are used to filter which files are displayed.
-    private static final String[] FILTER_EXTS = { "*.jpg", "*.jpeg", "*.png"};
-    
     private IProject selectedProject;
     private boolean isPageDirty = false;
+    
+    private String[] applicationNames;
+    private List<Application> applicationList;
+    private IntegrationCloudServiceClient client;
     
     private Color red = Display.getCurrent().getSystemColor(SWT.COLOR_RED);
 
@@ -113,6 +114,7 @@ public class AppDetailsWizardPage extends WizardPage{
     protected AppDetailsWizardPage() {
         super(DIALOG_TITLE);
         setTitle(DIALOG_TITLE);
+        client = IntegrationCloudServiceClient.getInstance();
     }
 
     protected AppDetailsWizardPage(IWorkbench wb, IStructuredSelection selection) {
@@ -154,7 +156,7 @@ public class AppDetailsWizardPage extends WizardPage{
         btnNewApplication.setSelection(true);
         
         btnExistingApplication = new Button(appTypeGroup, SWT.RADIO);
-        btnExistingApplication.setText("Update Existing Application");
+        btnExistingApplication.setText("Create New Version");
         
         // Create new Application container
         Composite newAppContainer = new Composite(container, SWT.NULL);
@@ -193,7 +195,6 @@ public class AppDetailsWizardPage extends WizardPage{
         existingAppContainer.setVisible(false);
         
         setName(initialName);
-        setVersion(initialVersion);
         setDescription(initialDescription);
         setAppIcon(initialappIcon);
         this.tags = new ArrayList<>();
@@ -202,7 +203,7 @@ public class AppDetailsWizardPage extends WizardPage{
             
             @Override
             public void widgetSelected(SelectionEvent e) {
-                Button source=  (Button) e.getSource();
+                Button source = (Button) e.getSource();
                 
                 if(source.getSelection())  {
                     newAppGridData.exclude = false;
@@ -210,6 +211,9 @@ public class AppDetailsWizardPage extends WizardPage{
                     newAppContainer.setVisible(true);
                     existingAppContainer.setVisible(false);
                     newAppContainer.getParent().pack();
+                    
+                    setNewVersion(false);
+                    setVersion(initialVersion);
                 }
             }
              
@@ -227,26 +231,49 @@ public class AppDetailsWizardPage extends WizardPage{
                     newAppContainer.setVisible(false);
                     existingAppContainer.setVisible(true);
                     existingAppContainer.getParent().pack();
+                    
+                    setVersion("");
+                    setNewVersion(true);
+                }
+                
+                // Retrieve applicationlist
+                
+                if (null == applicationNames) {
+                    try {
+                        applicationList = client.getApplicationList();
+                        applicationNames = getApplicationNames(applicationList);
+                        appNames.setItems(applicationNames);
+                        
+                    } catch (CloudDeploymentException ex) {
+                        ex.printStackTrace();
+                    }
                 }
             }
-             
         });
         
         // Application Name
-        createNameInput(parent, existingAppContainer);
+        createNameSelectInput(parent, existingAppContainer);
         
         // Application Version
         createVersionInput(parent, existingAppContainer);
         
         // Application Description
-        createDescriptionInput(existingAppContainer);
+//        createDescriptionInput(existingAppContainer);
         
         // Application Icon
-        createApplicationIconInput(existingAppContainer);
+//        createApplicationIconInput(existingAppContainer);
         
         // Tags
         createTagsInput(existingAppContainer);
         
+    }
+    
+    private String[] getApplicationNames(List<Application> applications) {
+        String[] applicationNames = new String[applications.size()];
+        for(int i = 0; i < applications.size(); i++) {
+            applicationNames[i] = applications.get(i).getApplicationName();
+        }
+        return applicationNames;
     }
 
     private void createTagsInput(Composite newAppContainer) {
@@ -507,6 +534,53 @@ public class AppDetailsWizardPage extends WizardPage{
         });
     }
     
+    private void createNameSelectInput(Composite parent, Composite container) {
+        StyledText lblName = new StyledText(container, SWT.NONE);
+        FontData data = lblName.getFont().getFontData()[0];
+        fontName = data.getName();
+        fontStyle = data.getStyle();
+
+        GridData lblNameGridData = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1);
+        lblName.setLayoutData(lblNameGridData);
+        lblName.setText(FILE_NAME_LABEL_TEXT);
+        
+        StyleRange appNameRange = new StyleRange(lblName.getCharCount() - 1, 1, red, null);
+        lblName.setStyleRange(appNameRange);
+        lblName.setFont(new Font(parent.getDisplay(), fontName, 12, fontStyle));
+
+        appNames = new Combo(container, SWT.DROP_DOWN | SWT.READ_ONLY);
+        
+        String[] items = new String[] { "" };
+         
+        appNames.setItems(items);
+        
+        GridData txtNameGridData = new GridData(SWT.LEFT, SWT.CENTER, false, false, 2, 1);
+        txtNameGridData.widthHint = 480;
+        appNames.setLayoutData(txtNameGridData);
+
+        appNames.addSelectionListener(new SelectionAdapter() {
+            
+            @Override
+            public void widgetSelected(SelectionEvent e) {
+                int idx = appNames.getSelectionIndex();
+                String application = appNames.getItem(idx);
+                setName(application);
+//                for (Application app: applicationList){
+//                    if (app.getApplicationName().equals(application)) {
+                        
+//                        String response = client.getApplicationEndpoints(app.getApplicationType(), version.getValue().getDeploymentURL(), version.getValue().getVersionId());
+//                        if (response != null && !response.equals("null")) {
+//                            
+//                        }
+//                        System.out.println(app);
+//                        setDescription(application.getApplicationDescription());
+//                    }
+//                }
+                
+            }
+        });
+    }
+    
     public void saveTags(Table tblTags){
         List<Map<String, String>> tags = new ArrayList<>();
         TableItem[] items = tblTags.getItems();
@@ -626,6 +700,16 @@ public class AppDetailsWizardPage extends WizardPage{
     public void setAppIcon(String appIcon) {
         this.appIcon = appIcon;
     }
+
+    public boolean isNewVersion() {
+        return isNewVersion;
+    }
+
+    public void setNewVersion(boolean isNewVersion) {
+        this.isNewVersion = isNewVersion;
+    }
+    
+    
     
     
 }

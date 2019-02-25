@@ -57,12 +57,13 @@ public class CloudDeploymentJob extends Job {
     private String carbonFileLocation;
     private String iconLocation;
     private List<Map<String, String>> tags;
+    private boolean isNewVersion;
     private IntegrationCloudServiceClient client;
     private String response;
 
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
-    public CloudDeploymentJob(String name, String description, String version, String carbonFileName, String carbonFileLocation, String iconLocation, List<Map<String, String>> tags) {
+    public CloudDeploymentJob(String name, String description, String version, String carbonFileName, String carbonFileLocation, String iconLocation, List<Map<String, String>> tags, boolean isNewVersion) {
         super("Deploying to Integration Cloud...");
         client = IntegrationCloudServiceClient.getInstance();
         this.name = name;
@@ -72,6 +73,7 @@ public class CloudDeploymentJob extends Job {
         this.carbonFileLocation = carbonFileLocation;
         this.iconLocation = iconLocation;
         this.tags = tags;
+        this.isNewVersion = isNewVersion;
     }
 
     @Override
@@ -86,7 +88,7 @@ public class CloudDeploymentJob extends Job {
 
         try {
 
-            client.createApplication(name, description, version, carbonFileName, carbonFileLocation, iconLocation, tags);
+            client.createApplication(name, description, version, carbonFileName, carbonFileLocation, iconLocation, tags, isNewVersion);
             
             operationText = "Fetching the endpoints...";
             monitor.subTask(operationText);
@@ -94,6 +96,8 @@ public class CloudDeploymentJob extends Job {
             
             ScheduledExecutorService scheduledExecutorService =
                     Executors.newScheduledThreadPool(5);
+            
+            Application app = client.getApplication(name);
 
             ScheduledFuture<?> scheduledFuture =
                 scheduledExecutorService.scheduleAtFixedRate(new Runnable() {
@@ -101,8 +105,6 @@ public class CloudDeploymentJob extends Job {
                     
                     public void run(){
                         try {
-                            Application app = client.getApplication(name);
-                            
                             Map<String, Version> versions = app.getVersions();
                             
                             for (Map.Entry<String, Version> version : versions.entrySet()) {
@@ -115,6 +117,9 @@ public class CloudDeploymentJob extends Job {
                                 }
                             }
                         } catch(CloudDeploymentException e) {
+                            log.error(CloudDeploymentWizardConstants.ErrorMessages.DEPLOY_TO_CLOUD_FAILED_MESSAGE, e);
+                            showMessageBox(CloudDeploymentWizardConstants.ErrorMessages.DEPLOY_TO_CLOUD_FAILED_TITLE,
+                                    CloudDeploymentWizardConstants.ErrorMessages.DEPLOY_TO_CLOUD_REQUEST_ERROR_MSG, SWT.ICON_ERROR);
                             scheduledExecutorService.shutdown();
                         }
                     }
@@ -123,7 +128,7 @@ public class CloudDeploymentJob extends Job {
                 5,
                 TimeUnit.SECONDS);
 
-            scheduledExecutorService.awaitTermination(200, TimeUnit.SECONDS);
+            scheduledExecutorService.awaitTermination(120, TimeUnit.SECONDS);
 
         } catch (CloudDeploymentException | InterruptedException e) {
             log.error(CloudDeploymentWizardConstants.ErrorMessages.DEPLOY_TO_CLOUD_FAILED_MESSAGE, e);

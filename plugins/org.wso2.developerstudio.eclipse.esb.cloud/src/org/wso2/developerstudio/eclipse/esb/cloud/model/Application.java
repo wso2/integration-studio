@@ -1,11 +1,16 @@
 package org.wso2.developerstudio.eclipse.esb.cloud.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public class Application {
     
     private String applicationName;
     private String applicationType;
+    private String applicationDescription;
+    private List<Map<String, String>> tags = new ArrayList<>();
+    
     private String defaultURL;
     private Map<String, Version> versions;
     
@@ -32,6 +37,19 @@ public class Application {
     }
     public void setVersions(Map<String, Version> versions) {
         this.versions = versions;
+    }
+    
+    public String getApplicationDescription() {
+        return applicationDescription;
+    }
+    public void setApplicationDescription(String applicationDescription) {
+        this.applicationDescription = applicationDescription;
+    }
+    public List<Map<String, String>> getTags() {
+        return tags;
+    }
+    public void setTags(List<Map<String, String>> tags) {
+        this.tags = tags;
     }
     @Override
     public int hashCode() {

@@ -76,6 +76,21 @@ public class IntegrationCloudServiceClient {
         
         return message.equals("User successfully logged in");
     }
+    
+    public List<Application> getApplicationList() throws CloudDeploymentException {
+        String getAppListUrl = CloudServiceConstants.ServiceEndpoints.INDEX_URL;
+
+        Map<String, String> data = new HashMap<>();
+        data.put("action", "getApplicationList");
+
+        String response = HTTPClientUtil.sendPostWithFormData(getAppListUrl, new HashMap<String, String>(), data, cookieStore);
+        
+        if (response == null) {
+            return null;
+        }
+        
+        return JsonUtils.getApplicationListFromJson(response);
+    }
 
     public Application getApplication(String appName) throws CloudDeploymentException {
         String getAppUrl = CloudServiceConstants.ServiceEndpoints.APPLICATION_URL;
@@ -107,7 +122,7 @@ public class IntegrationCloudServiceClient {
         return response;
     }
 
-    public void createApplication(String appName, String appDescription, String version, String fileName, String fileLocation, String iconLocation, List<Map<String, String>> tags) throws CloudDeploymentException {
+    public void createApplication(String appName, String appDescription, String version, String fileName, String fileLocation, String iconLocation, List<Map<String, String>> tags, boolean isNewVersion) throws CloudDeploymentException {
 
         Map<String, String> files = new HashMap<>();
         files.put("fileupload", fileLocation);
@@ -132,7 +147,7 @@ public class IntegrationCloudServiceClient {
         data.put("tags", JsonUtils.getJsonArrayFromList(tags));
         data.put("isFileAttached", "true");
         data.put("conSpec", "5");
-        data.put("isNewVersion", "false");
+        data.put("isNewVersion", Boolean.toString(isNewVersion));
         data.put("appCreationMethod", "default");
         data.put("setDefaultVersion", "true");
         data.put("runtime", CloudServiceConstants.AppConfigs.RUNTIME);        

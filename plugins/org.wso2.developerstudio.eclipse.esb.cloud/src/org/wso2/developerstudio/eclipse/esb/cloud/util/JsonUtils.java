@@ -42,6 +42,12 @@ public class JsonUtils {
         return gson.fromJson(json, type);
     }
     
+    public static List<Application> getApplicationListFromJson(String json) {
+        Gson gson = new Gson();
+        Type type = new TypeToken<List<Application>>(){}.getType();
+        return gson.fromJson(json, type);
+    }
+    
     public static EndpointData getEndpointDataFromJson(String json) {
         Gson gson = new Gson();
         Type type = new TypeToken<EndpointData>(){}.getType();

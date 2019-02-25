@@ -23,6 +23,7 @@ public class CloudServiceConstants {
     public static class ServiceEndpoints {
         public static final String LOGIN_URL = "https://integration.cloud.wso2.com/appmgt/site/blocks/user/login/ajax/login.jag";
         public static final String APPLICATION_URL = "https://integration.cloud.wso2.com/appmgt/site/blocks/application/application.jag";
+        public static final String INDEX_URL = "https://integration.cloud.wso2.com/appmgt/site/blocks/index/ajax/index.jag";
     }
     
     public static class AppConfigs {

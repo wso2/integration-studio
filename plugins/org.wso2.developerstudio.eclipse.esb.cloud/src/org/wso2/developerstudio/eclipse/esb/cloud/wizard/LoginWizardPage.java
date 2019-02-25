@@ -66,6 +66,10 @@ public class LoginWizardPage extends WizardPage {
     private String initialPassword = EMPTY_STRING;
     private String initialTenant = EMPTY_STRING;
     
+    private static String LABEL_USERNAME_TEXT = "Username";
+    private static String LABEL_PASSWORD_TEXT = "Password";
+    private static String LABEL_TENANT_TEXT = "Organization Key";
+    
     IntegrationCloudServiceClient client;
 
     private boolean isPageDirty = false;
@@ -100,9 +104,9 @@ public class LoginWizardPage extends WizardPage {
         // Tenant
         Label lblTenant = new Label(grpCredentials, SWT.NONE);
         GridData gd_lblTenant = new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1);
-        gd_lblTenant.widthHint = 75;
+        gd_lblTenant.widthHint = 125;
         lblTenant.setLayoutData(gd_lblTenant);
-        lblTenant.setText("Tenant");
+        lblTenant.setText(LABEL_TENANT_TEXT);
 
         txtTenant = new Text(grpCredentials, SWT.BORDER);
         txtTenant.addModifyListener(new ModifyListener() {
@@ -113,15 +117,15 @@ public class LoginWizardPage extends WizardPage {
         });
         
         GridData gd_txtTenant = new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1);
-        gd_txtTenant.widthHint = 600;
+        gd_txtTenant.widthHint = 550;
         txtTenant.setLayoutData(gd_txtTenant);
 
         // Username
         Label lblUsername = new Label(grpCredentials, SWT.NONE);
         GridData gd_lblUsername = new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1);
-        gd_lblUsername.widthHint = 75;
+        gd_lblUsername.widthHint = 125;
         lblUsername.setLayoutData(gd_lblUsername);
-        lblUsername.setText("Username");
+        lblUsername.setText(LABEL_USERNAME_TEXT);
 
         txtUsername = new Text(grpCredentials, SWT.BORDER);
         txtUsername.addModifyListener(new ModifyListener() {
@@ -132,13 +136,13 @@ public class LoginWizardPage extends WizardPage {
         });
         
         GridData gd_txtUsername = new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1);
-        gd_txtUsername.widthHint = 600;
+        gd_txtUsername.widthHint = 550;
         txtUsername.setLayoutData(gd_txtUsername);
 
         // Password
         
         Label lblPassword = new Label(grpCredentials, SWT.NONE);
-        lblPassword.setText("Password");
+        lblPassword.setText(LABEL_PASSWORD_TEXT);
 
         txtPassword = new Text(grpCredentials, SWT.BORDER | SWT.PASSWORD);
         txtPassword.addModifyListener(new ModifyListener() {

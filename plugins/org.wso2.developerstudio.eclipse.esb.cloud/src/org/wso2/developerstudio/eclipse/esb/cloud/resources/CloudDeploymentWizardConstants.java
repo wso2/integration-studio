@@ -25,14 +25,24 @@ package org.wso2.developerstudio.eclipse.esb.cloud.resources;
  */
 public class CloudDeploymentWizardConstants {
 
-    public static final String DIALOG_TITLE_TEXT = "WSO2 Platform Distribution - Generate Docker Image";
-    public static final String SELECT_VALID_CARBON_APP_MESSAGE = "Please select a valid carbon application project";
-    public static final String ERROR_CREATING_CAR_FILE_MSG = "An error occured while deploying the application";
+    public static final String DIALOG_TITLE_TEXT = "WSO2 Platform Distribution - Deploy to Integration Cloud";
     public static final String EMPTY_STRING = "";
-
-    public static final String EI_TOOLING_HOME_MACOS = "/Applications/DeveloperStudio.app/Contents/MacOS";
-
+    
     public static final String CAR_FILE_SUFFIX = ".car$";
     public static final String CAR_FILE_NAME_PLACEHOLDER = "%s_%s.car";
+    
+    public static class ErrorMessages {
+        public static final String DEPLOY_TO_CLOUD_FAILED_MESSAGE = "Could not deploy the Application to the Integration Cloud.";
+        public static final String DEPLOY_TO_CLOUD_FAILED_TITLE = "Error deploying the application";
+        public static final String DEPLOY_TO_CLOUD_INTERNAL_ERROR_MSG = "Could not deploy application because of an internal error.";
+        public static final String ERROR_CREATING_CAR_FILE_MSG = "An error occured while deploying the application";
+        public static final String SELECT_VALID_CARBON_APP_MESSAGE = "Please select a valid carbon application project";
+   }
+
+    public static class SuccessMessages {
+        public static final String SUCCESSFUL_TITLE = "Successful";
+        public static final String DEPLOY_TO_CLOUD_SUCCESS_MESSAGE = "Application Deployed to Cloud Successfully!";
+        public static final String SUCCESS_CREATING_APPLICATION_MSG = "Please wait while your application is being deployed to the cloud. You will be notified once it is ready.";
+    }
 
 }

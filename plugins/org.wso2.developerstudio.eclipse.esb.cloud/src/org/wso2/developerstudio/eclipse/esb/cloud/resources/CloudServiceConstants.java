@@ -29,16 +29,4 @@ public class CloudServiceConstants {
         public static final String ESB = "wso2esb";
         public static final String RUNTIME = "24";
     }
-    
-    public static class ErrorMessages {
-        public static final String DEPLOY_TO_CLOUD_FAILED_MESSAGE = "Could not deploy the Application to the Integration Cloud.";
-        public static final String DEPLOY_TO_CLOUD_FAILED_TITLE = "Error deploying the application";
-        public static final String DEPLOY_TO_CLOUD_INTERNAL_ERROR_MSG = "Could not deploy application because of an internal error.";
-
-        }
-
-    public static class SuccessMessages {
-        public static final String SUCCESSFUL_TITLE = "Successful";
-        public static final String DEPLOY_TO_CLOUD_SUCCESS_MESSAGE = "Application Deployed to Cloud Successfully! \n Test";
-    }
 }

@@ -31,10 +31,12 @@ import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.program.Program;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Link;
 import org.eclipse.swt.widgets.Text;
 import org.wso2.developerstudio.eclipse.esb.cloud.Activator;
 import org.wso2.developerstudio.eclipse.esb.cloud.client.IntegrationCloudServiceClient;
@@ -156,7 +158,6 @@ public class LoginWizardPage extends WizardPage {
                     if (validateCredentials()) {
                         UserSessionManager.createSession(getUsername(), client.getCookieStore().getCookies().get(0));
                         setPageComplete(true);
-//                        MessageDialog.openInformation(getShell(), title, "User authentication was successful!");
                         setMessage("User authentication was successful! Click 'Next' to continue.", IMessageProvider.INFORMATION);
                         btnLogin.setEnabled(false);
                         txtTenant.setEnabled(false);
@@ -176,6 +177,26 @@ public class LoginWizardPage extends WizardPage {
         btnLogin.setLayoutData(gd_btnLogin);
         btnLogin.setText("Login...");
         btnLogin.setEnabled(false);
+        
+        // To fill the grid layout
+        new Label(container, SWT.NONE);
+        new Label(container, SWT.NONE);
+        
+        // Create a Link
+        Link signupLink = new Link(container, SWT.NONE);
+        signupLink.setText("Don't have an account? <a href=\"https://wso2.com/integration/cloud/\">Register now</a>");
+        GridData linkGridData = new GridData(SWT.CENTER, SWT.CENTER, false, false, 1, 1);
+        signupLink.setLayoutData(linkGridData);
+         
+        // Event handling when users click on link.
+        signupLink.addSelectionListener(new SelectionAdapter()  {
+         
+            @Override
+            public void widgetSelected(SelectionEvent e) {
+                Program.launch("https://wso2.com/integration/cloud/");
+            }
+             
+        });
 
     }
 

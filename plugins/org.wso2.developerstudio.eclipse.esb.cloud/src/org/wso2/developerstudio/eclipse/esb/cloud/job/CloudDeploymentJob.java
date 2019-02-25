@@ -39,6 +39,7 @@ import org.wso2.developerstudio.eclipse.esb.cloud.client.IntegrationCloudService
 import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.CloudDeploymentException;
 import org.wso2.developerstudio.eclipse.esb.cloud.model.Application;
 import org.wso2.developerstudio.eclipse.esb.cloud.model.Version;
+import org.wso2.developerstudio.eclipse.esb.cloud.resources.CloudDeploymentWizardConstants;
 import org.wso2.developerstudio.eclipse.esb.cloud.resources.CloudServiceConstants;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
@@ -125,9 +126,9 @@ public class CloudDeploymentJob extends Job {
             scheduledExecutorService.awaitTermination(200, TimeUnit.SECONDS);
 
         } catch (CloudDeploymentException | InterruptedException e) {
-            log.error(CloudServiceConstants.ErrorMessages.DEPLOY_TO_CLOUD_FAILED_MESSAGE, e);
-            showMessageBox(CloudServiceConstants.ErrorMessages.DEPLOY_TO_CLOUD_FAILED_TITLE,
-                    CloudServiceConstants.ErrorMessages.DEPLOY_TO_CLOUD_INTERNAL_ERROR_MSG, SWT.ICON_ERROR);
+            log.error(CloudDeploymentWizardConstants.ErrorMessages.DEPLOY_TO_CLOUD_FAILED_MESSAGE, e);
+            showMessageBox(CloudDeploymentWizardConstants.ErrorMessages.DEPLOY_TO_CLOUD_FAILED_TITLE,
+                    CloudDeploymentWizardConstants.ErrorMessages.DEPLOY_TO_CLOUD_INTERNAL_ERROR_MSG, SWT.ICON_ERROR);
            
             operationText = e.getMessage();
             monitor.beginTask(operationText, 100);
@@ -138,8 +139,8 @@ public class CloudDeploymentJob extends Job {
         monitor.worked(100);
         monitor.done();
 
-        showMessageBox(CloudServiceConstants.SuccessMessages.SUCCESSFUL_TITLE,
-                CloudServiceConstants.SuccessMessages.DEPLOY_TO_CLOUD_SUCCESS_MESSAGE,
+        showMessageBox(CloudDeploymentWizardConstants.SuccessMessages.SUCCESSFUL_TITLE,
+                CloudDeploymentWizardConstants.SuccessMessages.DEPLOY_TO_CLOUD_SUCCESS_MESSAGE,
                 SWT.ICON_INFORMATION);
 
         return Status.OK_STATUS;

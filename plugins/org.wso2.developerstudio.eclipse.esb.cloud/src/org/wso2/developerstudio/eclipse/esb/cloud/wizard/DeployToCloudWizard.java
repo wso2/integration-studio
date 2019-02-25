@@ -126,7 +126,7 @@ public class DeployToCloudWizard extends Wizard implements IExportWizard {
 
             Shell shell = display.getActiveShell();
             openMessageBox(shell, CloudDeploymentWizardConstants.DIALOG_TITLE_TEXT,
-                    CloudDeploymentWizardConstants.SELECT_VALID_CARBON_APP_MESSAGE, SWT.ICON_INFORMATION);
+                    CloudDeploymentWizardConstants.ErrorMessages.SELECT_VALID_CARBON_APP_MESSAGE, SWT.ICON_INFORMATION);
         }
     }
 
@@ -154,10 +154,14 @@ public class DeployToCloudWizard extends Wizard implements IExportWizard {
             cloudDeploymentJob = new CloudDeploymentJob(appDetailsPage.getName(), appDetailsPage.getDescription(), appDetailsPage.getVersion(), finalFileName, carbonArchive.getLocation().toFile().getAbsolutePath(), appDetailsPage.getAppIcon(), appDetailsPage.getTags());
             cloudDeploymentJob.schedule();
             
-        } catch (Exception e) {
-            log.error(CloudDeploymentWizardConstants.ERROR_CREATING_CAR_FILE_MSG, e);
             openMessageBox(getShell(), CloudDeploymentWizardConstants.DIALOG_TITLE_TEXT,
-                    CloudDeploymentWizardConstants.ERROR_CREATING_CAR_FILE_MSG + " For more details view the log.\n",
+                    CloudDeploymentWizardConstants.SuccessMessages.SUCCESS_CREATING_APPLICATION_MSG,
+                    SWT.ICON_INFORMATION);
+            
+        } catch (Exception e) {
+            log.error(CloudDeploymentWizardConstants.ErrorMessages.ERROR_CREATING_CAR_FILE_MSG, e);
+            openMessageBox(getShell(), CloudDeploymentWizardConstants.DIALOG_TITLE_TEXT,
+                    CloudDeploymentWizardConstants.ErrorMessages.ERROR_CREATING_CAR_FILE_MSG + " For more details view the log.\n",
                     SWT.ICON_ERROR);
         }
 

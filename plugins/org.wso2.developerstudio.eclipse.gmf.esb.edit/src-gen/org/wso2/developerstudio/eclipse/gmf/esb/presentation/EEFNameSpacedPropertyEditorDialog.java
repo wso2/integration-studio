@@ -67,7 +67,6 @@ import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 //import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.utils.ImageHolder;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.Activator;
@@ -76,7 +75,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.util.XPathValidatorImpl;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
-import com.sun.glass.events.KeyEvent;
 
 /**
  * A SWT based editor dialog to be used for editing namespaced properties.

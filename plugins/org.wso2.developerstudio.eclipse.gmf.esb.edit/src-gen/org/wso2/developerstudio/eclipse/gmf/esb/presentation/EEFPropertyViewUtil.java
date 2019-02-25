@@ -125,24 +125,23 @@ public class EEFPropertyViewUtil {
      * @return 'True' if matches, 'False' otherwise.
      */
     public static boolean isReservedKeyCombination(KeyEvent e) {
-        boolean isReserved = false;
         
         if (e.keyCode == SWT.CR) {
-            isReserved = true;
+            return true;
         } else if (e.keyCode == SWT.COMMAND) {
-            isReserved = true;
+            return true;
         } else if (e.keyCode == SWT.CTRL) {
-            isReserved = true;
+            return true;
         } else if (e.keyCode == SWT.ALT) {
-            isReserved = true;
+            return true;
         } else if (e.keyCode == SWT.SHIFT) {
-            isReserved = true;
-        } else if (e.stateMask == SWT.COMMAND && e.character == 's') {
-            isReserved = true;
-        } else if (e.stateMask == SWT.CTRL && e.character == 's') {
-            isReserved = true;
+            return true;
+        } else if (e.stateMask == SWT.COMMAND) {
+            return true;
+        } else if (e.stateMask == SWT.CTRL) {
+            return true;
         }
         
-        return isReserved;
+        return false;
     }
 }

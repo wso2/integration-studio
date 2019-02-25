@@ -4666,6 +4666,9 @@ public class EsbMessages extends NLS {
 	public static String ClassPropertyPropertiesEditionPart_PropertyValueLabel;
 
 	
+	public static String ClassPropertyPropertiesEditionPart_PropertyExpressionLabel;
+
+	
 	public static String SpringMediatorPropertiesEditionPart_DescriptionLabel;
 
 	

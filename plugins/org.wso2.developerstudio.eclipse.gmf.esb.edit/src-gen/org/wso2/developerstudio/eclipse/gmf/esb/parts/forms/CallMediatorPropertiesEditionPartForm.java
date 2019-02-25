@@ -69,6 +69,7 @@ import org.eclipse.swt.SWT;
 
 import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
+import org.eclipse.swt.events.FocusListener;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.KeyListener;
@@ -132,6 +133,7 @@ public class CallMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
     protected Control[] enableBlockingCallsElements;
     protected Control[] endpointRegistryKeyElements;
     protected Control[] endpointXpathElements;
+    protected Control[] descriptionElements;
     protected Composite propertiesGroup;
     
     protected final EEFPropertyViewUtil epv = new EEFPropertyViewUtil(view);
@@ -182,7 +184,6 @@ public class CallMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		CompositionSequence callMediatorStep = new BindingCompositionSequence(propertiesEditionComponent);
 		CompositionStep propertiesStep = callMediatorStep.addStep(EsbViewsRepository.CallMediator.Properties.class);
-		propertiesStep.addStep(EsbViewsRepository.CallMediator.Properties.description);
 		propertiesStep.addStep(EsbViewsRepository.CallMediator.Properties.commentsList);
 		propertiesStep.addStep(EsbViewsRepository.CallMediator.Properties.reverse);
 		propertiesStep.addStep(EsbViewsRepository.CallMediator.Properties.endpoint);
@@ -190,7 +191,7 @@ public class CallMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 		propertiesStep.addStep(EsbViewsRepository.CallMediator.Properties.enableBlockingCalls);
 		propertiesStep.addStep(EsbViewsRepository.CallMediator.Properties.endpointXpath);
 		propertiesStep.addStep(EsbViewsRepository.CallMediator.Properties.endpointRegistryKey);
-		
+		propertiesStep.addStep(EsbViewsRepository.CallMediator.Properties.description);
 		
 		composer = new PartComposer(callMediatorStep) {
 
@@ -251,9 +252,11 @@ public class CallMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 		return propertiesGroup;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createDescriptionText(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EsbViewsRepository.CallMediator.Properties.description, EsbMessages.CallMediatorPropertiesEditionPart_DescriptionLabel);
+		Control descriptionText = createDescription(parent, EsbViewsRepository.CallMediator.Properties.description, EsbMessages.CallMediatorPropertiesEditionPart_DescriptionLabel);
 		description = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		description.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -312,9 +315,10 @@ public class CallMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 		});
 		EditingUtils.setID(description, EsbViewsRepository.CallMediator.Properties.description);
 		EditingUtils.setEEFtype(description, "eef::Text"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.CallMediator.Properties.description, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		Control descriptionHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.CallMediator.Properties.description, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createDescriptionText
 
+		descriptionElements = new Control[] { descriptionText, description, descriptionHelp };
 		// End of user code
 		return parent;
 	}
@@ -922,7 +926,7 @@ public class CallMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
             endpointXPath = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
         } 
         String initValueExpression = endpointXPath.getPropertyValue().isEmpty() ? "/default/expression" : endpointXPath.getPropertyValue();
-        endpointXPathText = widgetFactory.createText(parent, initValueExpression);
+        endpointXPathText = widgetFactory.createText(parent, initValueExpression, 8);
         endpointXPathText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
         widgetFactory.paintBordersFor(parent);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
@@ -986,6 +990,9 @@ public class CallMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
             epv.showEntry(endpointXpathElements, false);
             break;
         }
+        
+        epv.showEntry(enableBlockingCallsElements, false);
+        epv.showEntry(descriptionElements, false);
         view.layout(true, true);
     }
 	// End of user code

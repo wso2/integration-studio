@@ -64,6 +64,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.HeaderMediatorPropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFNameSpacedPropertyEditorDialog;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
 
 // End of user code
@@ -101,7 +102,6 @@ public class HeaderMediatorPropertiesEditionPartForm extends SectionPropertiesEd
     protected Button editCommentsList;
     protected EList commentsListList;
     protected Button reverse;
-    
 	// End of user code
 
 	protected Text description;
@@ -922,6 +922,10 @@ public class HeaderMediatorPropertiesEditionPartForm extends SectionPropertiesEd
         
     }
 	
+    /**
+     * 
+     * @generated NOT
+     */
 	protected Composite createHeaderName(FormToolkit widgetFactory, final Composite parent) {
 		Control headerNameLabel = createDescription(parent, EsbViewsRepository.HeaderMediator.Properties.headerName, EsbMessages.HeaderMediatorPropertiesEditionPart_HeaderNameLabel);
         widgetFactory.paintBordersFor(parent);
@@ -929,12 +933,12 @@ public class HeaderMediatorPropertiesEditionPartForm extends SectionPropertiesEd
             headerName = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
         } 
         String initHeaderName = headerName.getPropertyValue().isEmpty() ? "" : headerName.getPropertyValue();
-        headerNameText = widgetFactory.createText(parent, initHeaderName);
+        headerNameText = widgetFactory.createText(parent, initHeaderName, 8);
         headerNameText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
         widgetFactory.paintBordersFor(parent);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
         headerNameText.setLayoutData(valueData);
-
+        
         headerNameText.addMouseListener(new MouseAdapter() {
             
             @Override
@@ -947,13 +951,14 @@ public class HeaderMediatorPropertiesEditionPartForm extends SectionPropertiesEd
         headerNameText.addKeyListener(new KeyListener() {
                         
             @Override
-            public void keyPressed(KeyEvent e) {
-                openNamespacedPropertyEditorHeaderName(parent);
-                
-            }
+            public void keyPressed(KeyEvent e) {}
             
             @Override
-            public void keyReleased(KeyEvent e) {}
+            public void keyReleased(KeyEvent e) {
+                if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                    openNamespacedPropertyEditorHeaderName(parent);
+                }
+            }
             
         });
         
@@ -984,6 +989,10 @@ public class HeaderMediatorPropertiesEditionPartForm extends SectionPropertiesEd
                 PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getValueExpression()));
     }
 	
+    /**
+     * 
+     * @generated NOT
+     */
 	protected Composite createValueExpression(FormToolkit widgetFactory, final Composite parent) {
 		Control valueExpressionLabel = createDescription(parent, EsbViewsRepository.HeaderMediator.Properties.valueExpression, EsbMessages.HeaderMediatorPropertiesEditionPart_ValueExpressionLabel);
         widgetFactory.paintBordersFor(parent);
@@ -991,7 +1000,7 @@ public class HeaderMediatorPropertiesEditionPartForm extends SectionPropertiesEd
             valueExpression = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
         } 
         String initValueExpression = valueExpression.getPropertyValue().isEmpty() ? "" : valueExpression.getPropertyValue();
-        valueExpressionText = widgetFactory.createText(parent, initValueExpression);
+        valueExpressionText = widgetFactory.createText(parent, initValueExpression, 8);
         valueExpressionText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
         widgetFactory.paintBordersFor(parent);
         GridData valueExpressionData = new GridData(GridData.FILL_HORIZONTAL);
@@ -1009,12 +1018,14 @@ public class HeaderMediatorPropertiesEditionPartForm extends SectionPropertiesEd
         valueExpressionText.addKeyListener(new KeyListener() {
                         
             @Override
-            public void keyPressed(KeyEvent e) {
-                openNamespacedPropertyEditorValueExpression(parent);
-            }
+            public void keyPressed(KeyEvent e) {}
             
             @Override
-            public void keyReleased(KeyEvent e) {}
+            public void keyReleased(KeyEvent e) {
+                if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                    openNamespacedPropertyEditorValueExpression(parent);
+                }
+            }
             
         });
         
@@ -1032,65 +1043,38 @@ public class HeaderMediatorPropertiesEditionPartForm extends SectionPropertiesEd
     }
 	
 	public void validate() {
-        clearElements();
-        
-        showEntry(headerActionElements, false);
-        showEntry(scopeElements, false);
+	    EEFPropertyViewUtil eu = new EEFPropertyViewUtil(view);
+	    eu.clearElements(new Composite[] { propertiesGroup });
+	    
+	    eu.showEntry(headerActionElements, false);
+	    eu.showEntry(scopeElements, false);
         
         if (getHeaderAction().getName().equals(HeaderAction.SET.getName())) {
-        	showEntry(valueTypeElements, false);
+            eu.showEntry(valueTypeElements, false);
             
             if (getValueType() != null && getValueType().getName().equals(HeaderValueType.INLINE.getName())) {
             	//inline
-            	showEntry(valueInlineElements, false);
+                eu.showEntry(valueInlineElements, false);
                 
             } else if (getValueType() != null && getValueType().getName().equals(HeaderValueType.EXPRESSION.getName())) {
             	//expression
-            	showEntry(headerNameElements, false);
-            	showEntry(valueExpressionElements, false);
+                eu.showEntry(headerNameElements, false);
+                eu.showEntry(valueExpressionElements, false);
                 
             } else {
             	//literal
-            	showEntry(headerNameElements, false);
-                showEntry(valueLiteralElements, false);
+                eu.showEntry(headerNameElements, false);
+                eu.showEntry(valueLiteralElements, false);
 
             }
             
         } else if (getHeaderAction().getName().equals(HeaderAction.REMOVE.getName())) {
-        	showEntry(headerNameElements, false);
+            eu.showEntry(headerNameElements, false);
         }
         
-        showEntry(descriptionElements, false);
+        eu.showEntry(descriptionElements, false);
+        
         view.layout(true, true);
-    }
-
-	public void clearElements() {
-        hideEntry(propertiesGroup.getChildren(), false);
-    }
-	
-    public void hideEntry(Control controls[], boolean layout) {
-        for (Control control : controls) {
-            // null check and type check
-            if (control.getLayoutData() != null && control.getLayoutData() instanceof GridData) {
-                ((GridData) control.getLayoutData()).exclude = true;
-                control.setVisible(false);
-            }
-        }
-        if (layout) {
-            view.layout(true, true);
-        }
-    }
-    
-    public void showEntry(Control controls[], boolean layout) {
-        for (Control control : controls) {
-            if (control.getLayoutData() != null && (control.getLayoutData() instanceof GridData)) {
-            	((GridData) control.getLayoutData()).exclude = false;
-            }
-            control.setVisible(true);
-        }
-        if (layout) {
-            view.layout(true, true);
-        }
     }
 	
 	// End of user code

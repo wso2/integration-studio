@@ -540,7 +540,7 @@ public class LogPropertyPropertiesEditionPartForm extends SectionPropertiesEditi
 		Control propertyExpressionTextLabel = createDescription(parent,
 				EsbViewsRepository.LogProperty.Properties.propertyExpression,
 				EsbMessages.LogPropertyPropertiesEditionPart_PropertyExpressionLabel);
-		propertyExpressionText = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+		propertyExpressionText = widgetFactory.createText(parent, "", 8); //$NON-NLS-1$
 		propertyExpressionText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData propertyValueData = new GridData(GridData.FILL_HORIZONTAL);

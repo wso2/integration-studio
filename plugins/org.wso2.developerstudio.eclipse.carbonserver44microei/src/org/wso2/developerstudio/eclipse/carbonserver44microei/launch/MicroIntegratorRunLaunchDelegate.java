@@ -36,6 +36,7 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.developerstudio.eclipse.platform.core.utils.Constants;
 import org.wso2.developerstudio.eclipse.carbonserver44microei.Activator;
 import org.wso2.developerstudio.eclipse.carbonserver44microei.register.product.servers.MicroIntegratorInstance;
 import org.wso2.developerstudio.eclipse.carbonserver44microei.wizard.CompositeApplicationArtifactUpdateWizard;
@@ -93,16 +94,18 @@ public class MicroIntegratorRunLaunchDelegate implements ILaunchConfigurationDel
         IWorkbenchPart viewpart = activePage.findView("org.eclipse.ui.navigator.ProjectExplorer");
         IStructuredSelection selection = (IStructuredSelection) viewpart.getSite().getSelectionProvider()
                 .getSelection();
-        String currentProjectName = ((IProject) ((IResource) selection.getFirstElement()).getProject()).getName();
+        IProject selectedProject = (IProject) ((IResource) selection.getFirstElement()).getProject();
+        String currentProjectName = selectedProject.getName();
         // Get the associated carbon application for the selected project from the
         // project explorer
-        IResource selectedCARAppResource = ((IResource) selection.getFirstElement()).getProject().getParent()
+        IResource selectedCARAppResource = selectedProject.getParent()
                 .findMember(currentProjectName + "CompositeApplication");
 
         // Create the wizard for creating CAPP with the user selected artifacts
         CompositeApplicationArtifactUpdateWizard wizard = new CompositeApplicationArtifactUpdateWizard();
 
-        if (currentProjectName != null && currentProjectName.contains("CompositeApplication")) {
+        if (currentProjectName != null && (currentProjectName.contains("CompositeApplication")
+                || selectedProject.hasNature(Constants.DISTRIBUTION_PROJECT_NATURE))) {
             // Initialize the CAPP creation wizard using the user selection as it is a
             // carbon application
             wizard.init(null, selection);

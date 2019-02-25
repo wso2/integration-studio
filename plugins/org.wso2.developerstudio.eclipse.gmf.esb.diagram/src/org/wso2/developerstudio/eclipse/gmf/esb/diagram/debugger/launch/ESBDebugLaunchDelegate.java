@@ -131,12 +131,12 @@ public class ESBDebugLaunchDelegate implements ILaunchConfigurationDelegate {
                 // Get the associated carbon application for the selected project from the
                 // project explorer
                 IResource selectedCARAppResource = ((IResource) selection.getFirstElement()).getProject().getParent()
-                        .findMember(currentProjectName + "CarbonApplication");
+                        .findMember(currentProjectName + "CompositeApplication");
 
                 // Create the wizard for creating CAPP with the user selected artifacts
                 CompositeApplicationArtifactUpdateWizard wizard = new CompositeApplicationArtifactUpdateWizard();
 
-                if (currentProjectName != null && currentProjectName.contains("CarbonApplication")) {
+                if (currentProjectName != null && currentProjectName.contains("CompositeApplication")) {
                     // Initialize the CAPP creation wizard using the user selection as it is a
                     // carbon application
                     wizard.init(null, selection);
@@ -147,7 +147,7 @@ public class ESBDebugLaunchDelegate implements ILaunchConfigurationDelegate {
                 } else {
                     // Throw an error if debug launcher cannot find a carbon application for the
                     // user selected name from the project explorer
-                    throw new Exception("Cannot find the carbon application for the name : " + currentProjectName);
+                    throw new Exception("Cannot find a Composite Application for the name : " + currentProjectName);
                 }
 
                 WizardDialog exportWizardDialog = new WizardDialog(activeWorkBenchWindow.getShell(), wizard);

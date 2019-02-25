@@ -135,7 +135,7 @@ public class FileTransferTeamplate extends Wizard implements INewWizard {
             project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 
             IProject cappProject = ProjectCreationUtil
-                    .carbonAppCreation(containerName + "CarbonApplication", containerName, groupId, sampleName);
+                    .carbonAppCreation(containerName + "CompositeApplication", containerName, groupId, sampleName);
             addCappDependencies(cappProject);
 
             // Open synapse application on sample creation.

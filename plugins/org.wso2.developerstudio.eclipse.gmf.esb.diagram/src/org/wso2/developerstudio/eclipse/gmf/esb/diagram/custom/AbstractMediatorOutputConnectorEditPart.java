@@ -124,7 +124,7 @@ public abstract class AbstractMediatorOutputConnectorEditPart extends AbstractOu
             this.setOutline(false);
             // this.setBackgroundColor(get);
             this.setPreferredSize(new Dimension(22, 18));
-            this.addMouseMotionListener(new MouseMotionListener() {
+/*            this.addMouseMotionListener(new MouseMotionListener() {
 
                 public void mouseMoved(MouseEvent arg0) {
                     // TODO Auto-generated method stub
@@ -139,7 +139,7 @@ public abstract class AbstractMediatorOutputConnectorEditPart extends AbstractOu
                 public void mouseExited(MouseEvent arg0) {
                     if (getEditDomain().getPaletteViewer().getActiveTool().getId()
                             .equals("createEsbLink1CreationTool")) {
-                        getEditDomain().getPaletteViewer().setActiveTool(null);
+                        //getEditDomain().getPaletteViewer().setActiveTool(null);
                     }
 
                 }
@@ -158,7 +158,7 @@ public abstract class AbstractMediatorOutputConnectorEditPart extends AbstractOu
                     // TODO Auto-generated method stub
 
                 }
-            });
+            });*/
             createContents();
         }
 
@@ -201,7 +201,7 @@ public abstract class AbstractMediatorOutputConnectorEditPart extends AbstractOu
             this.setOutline(false);
             // this.setBackgroundColor(get);
             this.setPreferredSize(new Dimension(22, 18));
-            this.addMouseMotionListener(new MouseMotionListener() {
+/*            this.addMouseMotionListener(new MouseMotionListener() {
 
                 public void mouseMoved(MouseEvent me) {
                     // TODO Auto-generated method stub
@@ -216,7 +216,7 @@ public abstract class AbstractMediatorOutputConnectorEditPart extends AbstractOu
                 public void mouseExited(MouseEvent me) {
                     if (getEditDomain().getPaletteViewer().getActiveTool().getId()
                             .equals("createEsbLink1CreationTool")) {
-                        getEditDomain().getPaletteViewer().setActiveTool(null);
+                        //getEditDomain().getPaletteViewer().setActiveTool(null);
                     }
 
                 }
@@ -235,7 +235,7 @@ public abstract class AbstractMediatorOutputConnectorEditPart extends AbstractOu
                     // TODO Auto-generated method stub
 
                 }
-            });
+            });*/
             createContents();
         }
 

@@ -27,7 +27,7 @@
         </category>
         <wizard
                 name="RabbitMQ Integration"
-                icon="icons/message-store-small.png"
+                icon="icons/template-default.png"
                 project="true"
                 category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.templates"
                 class="org.wso2.developerstudio.eclipse.esb.dashboard.templates.wizard.RabbitMQSampleTemplate"
@@ -35,7 +35,7 @@
         </wizard>
         <wizard
                 name="JMS Integration"
-                icon="icons/message-store-small.png"
+                icon="icons/template-default.png"
                 project="true"
                 category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.templates"
                 class="org.wso2.developerstudio.eclipse.esb.dashboard.templates.wizard.JMSProxyTemplate"
@@ -43,7 +43,7 @@
         </wizard>
         <wizard
                 name="Database Polling"
-                icon="icons/message-store-small.png"
+                icon="icons/template-default.png"
                 project="true"
                 category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.templates"
                 class="org.wso2.developerstudio.eclipse.esb.dashboard.templates.wizard.DatabasePolling"
@@ -51,7 +51,7 @@
         </wizard>
         <wizard
                 name="Hello World Service"
-                icon="icons/message-store-small.png"
+                icon="icons/template-default.png"
                 project="true"
                 category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.templates"
                 class="org.wso2.developerstudio.eclipse.esb.dashboard.templates.wizard.HelloWorldService"
@@ -59,7 +59,7 @@
         </wizard>
         <wizard
                 name="Proxying a SOAP Service"
-                icon="icons/server.png"
+                icon="icons/template-default.png"
                 project="true"
                 category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.templates"
                 class="org.wso2.developerstudio.eclipse.esb.dashboard.templates.wizard.ProxyingASoapService"
@@ -67,7 +67,7 @@
         </wizard>
         <wizard
                 name="Proxying a REST Service"
-                icon="icons/maven-24x24.png"
+                icon="icons/template-default.png"
                 project="true"
                 category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.templates"
                 class="org.wso2.developerstudio.eclipse.esb.dashboard.templates.wizard.ProxyingARESTAPI"
@@ -75,7 +75,7 @@
         </wizard>
         <wizard
                 name="Content Based Routing"
-                icon="icons/registry.png"
+                icon="icons/template-default.png"
                 project="true"
                 category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.templates"
                 class="org.wso2.developerstudio.eclipse.esb.dashboard.templates.wizard.ContentBasedRoutingTemplate"
@@ -83,7 +83,7 @@
         </wizard>
         <wizard
                 name="Header Based Routing"
-                icon="icons/server.png"
+                icon="icons/template-default.png"
                 project="true"
                 category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.templates"
                 class="org.wso2.developerstudio.eclipse.esb.dashboard.templates.wizard.HeaderBasedRoutingTemplate"
@@ -91,7 +91,7 @@
         </wizard>
         <wizard
                 name="Message Filtering"
-                icon="icons/message-store-small.png"
+                icon="icons/template-default.pngg"
                 project="true"
                 category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.templates"
                 class="org.wso2.developerstudio.eclipse.esb.dashboard.templates.wizard.MessageFilteringTemplate"
@@ -99,7 +99,7 @@
         </wizard>
         <wizard
                 name="Protocol Switching"
-                icon="icons/registry.png"
+                icon="icons/template-default.png"
                 project="true"
                 category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.templates"
                 class="org.wso2.developerstudio.eclipse.esb.dashboard.templates.wizard.ProtocolSwitchingTemplate"
@@ -107,7 +107,7 @@
         </wizard>
         <wizard
                 name="Scatter Gather Integration Pattern"
-                icon="icons/server.png"
+                icon="icons/template-default.png"
                 project="true"
                 category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.templates"
                 class="org.wso2.developerstudio.eclipse.esb.dashboard.templates.wizard.ScatterGatherTemplate"
@@ -115,7 +115,7 @@
         </wizard>
         <wizard
                 name="File Transfer"
-                icon="icons/server.png"
+                icon="icons/template-default.png"
                 project="true"
                 category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.templates"
                 class="org.wso2.developerstudio.eclipse.esb.dashboard.templates.wizard.FileTransferTeamplate"
@@ -123,7 +123,7 @@
         </wizard>
         <wizard
                 name="Guaranteed Delivery"
-                icon="icons/server.png"
+                icon="icons/template-default.png"
                 project="true"
                 category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.templates"
                 class="org.wso2.developerstudio.eclipse.esb.dashboard.templates.wizard.GuaranteedDeliveryTemplate"
@@ -131,7 +131,7 @@
         </wizard>
         <wizard
                 name="REST to SOAP Conversion"
-                icon="icons/server.png"
+                icon="icons/template-default.png"
                 project="true"
                 category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.templates"
                 class="org.wso2.developerstudio.eclipse.esb.dashboard.templates.wizard.RestToSoapTemplate"
@@ -139,7 +139,7 @@
         </wizard>
         <wizard
                 name="Exception Handling"
-                icon="icons/server.png"
+                icon="icons/template-default.png"
                 project="true"
                 category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.templates"
                 class="org.wso2.developerstudio.eclipse.esb.dashboard.templates.wizard.ExceptionHandlingTemplate"
@@ -147,7 +147,7 @@
         </wizard>
         <wizard
                 name="XML To JSON Transformation"
-                icon="icons/server.png"
+                icon="icons/template-default.png"
                 project="true"
                 category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.templates"
                 class="org.wso2.developerstudio.eclipse.esb.dashboard.templates.wizard.XmlToJsonTransformationTemplate"
@@ -155,7 +155,7 @@
         </wizard>
         <wizard
                 name="Periodical Scheduled Tasks"
-                icon="icons/server.png"
+                icon="icons/template-default.png"
                 project="true"
                 category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.templates"
                 class="org.wso2.developerstudio.eclipse.esb.dashboard.templates.wizard.ScheduleTaskTeamplate"
@@ -163,7 +163,7 @@
         </wizard>
         <wizard
                 name="Fetch SalesForce Account Information"
-                icon="icons/server.png"
+                icon="icons/template-default.png"
                 project="true"
                 category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.templates"
                 class="org.wso2.developerstudio.eclipse.esb.dashboard.templates.wizard.ReadSalesforceAccountsTemplate"
@@ -171,7 +171,7 @@
         </wizard>
         <wizard
                 name="JSON to XML Mapping"
-                icon="icons/message-store-small.png"
+                icon="icons/template-default.png"
                 project="true"
                 category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.templates"
                 class="org.wso2.developerstudio.eclipse.esb.dashboard.templates.wizard.JsonToXmlMappingTemplate"
@@ -179,7 +179,7 @@
         </wizard>
         <wizard
                 name="XML to JSON Mapping"
-                icon="icons/message-store-small.png"
+                icon="icons/template-default.png"
                 project="true"
                 category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.templates"
                 class="org.wso2.developerstudio.eclipse.esb.dashboard.templates.wizard.XmlToJsonMappingTemplate"
@@ -187,7 +187,7 @@
         </wizard>
         <wizard
                 name="Kafka Consumer and Producer"
-                icon="icons/message-store-small.png"
+                icon="icons/template-default.png"
                 project="true"
                 category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.templates"
                 class="org.wso2.developerstudio.eclipse.esb.dashboard.templates.wizard.KafkaTemplate"
@@ -204,117 +204,117 @@
         <wizardLink category="dashboard.category.esb.template" id="dashboard.wizardLink.esb.template.project"
                     wizard="org.wso2.developerstudio.wizards.esb.template"
                     description="Create a simple HTTP service"
-                    image="icons/server.png">
+                    image="icons/template-default.png">
         </wizardLink>
         <wizardLink category="dashboard.category.esb.template"
                     id="dashboard.wizardLink.esb.proxyingASoapService.project"
                     wizard="org.wso2.developerstudio.wizards.esb.proxyingASoapService"
                     description="Expose a virtual service which act as a proxy to an existing service that is exposed over a SOAP API"
-                    image="icons/server.png">
+                    image="icons/template-default.png">
         </wizardLink>
         <wizardLink category="dashboard.category.esb.template" id="dashboard.wizardLink.esb.proxyingARESTAPI.project"
                     wizard="org.wso2.developerstudio.wizards.esb.proxyingARESTAPI"
                     description="Expose a virtual service which act as a proxy to an existing service that is exposed over a RESTful API"
-                    image="icons/server.png">
+                    image="icons/template-default.png">
         </wizardLink>
         <wizardLink category="dashboard.category.esb.template"
                     id="dashboard.wizardLink.esb.contentBasedRoutingTemplate.project"
                     wizard="org.wso2.developerstudio.wizards.esb.contentBasedRoutingTemplate"
                     description="Demonstrates content-based message routing capability"
-                    image="icons/server.png">
+                    image="icons/template-default.png">
         </wizardLink>
         <wizardLink category="dashboard.category.esb.template"
                     id="dashboard.wizardLink.esb.headerBasedRoutingTemplate.project"
                     wizard="org.wso2.developerstudio.wizards.esb.headerBasedRoutingTemplate"
                     description="Demonstrates header-based message routing capability"
-                    image="icons/server.png">
+                    image="icons/template-default.png">
         </wizardLink>
         <wizardLink category="dashboard.category.esb.template"
                     id="dashboard.wizardLink.esb.messageFilteringTemplate.project"
                     wizard="org.wso2.developerstudio.wizards.esb.messageFilteringTemplate"
                     description="Demonstrates message filtering capability"
-                    image="icons/server.png">
+                    image="icons/template-default.png">
         </wizardLink>
         <wizardLink category="dashboard.category.esb.template" id="dashboard.wizardLink.esb.protocolSwitchingTemplate"
                     wizard="org.wso2.developerstudio.wizards.esb.protocolSwitchingTemplate"
                     description="Demonstrates protocol switching capability. Template contains a service which receive message over HTTP protocol and deliver over JMS protocol to a downstream service"
-                    image="icons/server.png">
+                    image="icons/template-default.png">
         </wizardLink>
         <wizardLink category="dashboard.category.esb.template" id="dashboard.wizardLink.esb.scatterGatherTemplate"
                     wizard="org.wso2.developerstudio.wizards.esb.scatterGatherTemplate"
                     description="Demonstrates how to implement Scatter-Gather enterprise integration pattern"
-                    image="icons/server.png">
+                    image="icons/template-default.png">
         </wizardLink>
         <wizardLink category="dashboard.category.esb.template" id="dashboard.wizardLink.esb.fileTransferTeamplate"
                     wizard="org.wso2.developerstudio.wizards.esb.fileTransferTeamplate"
                     description="Demonstrates some of the file handling capabilities"
-                    image="icons/server.png">
+                    image="icons/template-default.png">
         </wizardLink>
         <wizardLink category="dashboard.category.esb.template" id="dashboard.wizardLink.esb.guaranteedDeliveryTemplate"
                     wizard="org.wso2.developerstudio.wizards.esb.guaranteedDeliveryTemplate"
                     description="Demonstrates how to achieve guaranteed delivery using store and forward pattern"
-                    image="icons/server.png">
+                    image="icons/template-default.png">
         </wizardLink>
         <wizardLink category="dashboard.category.esb.template" id="dashboard.wizardLink.esb.restToSoapTemplate"
                     wizard="org.wso2.developerstudio.wizards.esb.restToSoapTemplate"
                     description="Exposes an existing SOAP service as a RESTful API"
-                    image="icons/server.png">
+                    image="icons/template-default.png">
         </wizardLink>
         <wizardLink category="dashboard.category.esb.template" id="dashboard.wizardLink.esb.exceptionHandlingTemplate"
                     wizard="org.wso2.developerstudio.wizards.esb.exceptionHandlingTemplate"
                     description="Demonstrates the exception handling capabilities"
-                    image="icons/server.png">
+                    image="icons/template-default.png">
         </wizardLink>
         <wizardLink category="dashboard.category.esb.template"
                     id="dashboard.wizardLink.esb.xmlToJsonTransformationTemplate"
                     wizard="org.wso2.developerstudio.wizards.esb.xmlToJsonTransformationTemplate"
                     description="Demonstrates some of the message transformation capabilities"
-                    image="icons/server.png">
+                    image="icons/template-default.png">
         </wizardLink>
         <wizardLink category="dashboard.category.esb.template" id="dashboard.wizardLink.esb.scheduleTaskTeamplate"
                     wizard="org.wso2.developerstudio.wizards.esb.scheduleTaskTeamplate"
                     description="Periodical scheduled tasks"
-                    image="icons/server.png">
+                    image="icons/template-default.png">
         </wizardLink>
         <wizardLink category="dashboard.category.esb.template"
                     id="dashboard.wizardLink.esb.readSalesforceAccountsTemplate"
                     wizard="org.wso2.developerstudio.wizards.esb.readSalesforceAccountsTemplate"
                     description="Fetch leads records from Salesforce system"
-                    image="icons/server.png">
+                    image="icons/template-default.png">
         </wizardLink>
         <wizardLink category="dashboard.category.esb.template" id="dashboard.wizardLink.esb.dataPolling.project"
                     wizard="org.wso2.developerstudio.wizards.esb.dataPolling"
                     description="Poll data from a database periodically and trigger a message flow"
-                    image="icons/server.png">
+                    image="icons/template-default.png">
         </wizardLink>
         <wizardLink category="dashboard.category.esb.template" id="dashboard.wizardLink.esb.jmsProxyTemplate.project"
                     wizard="org.wso2.developerstudio.wizards.esb.jmsProxyTemplate"
                     description="Demonstrates integration with JMS brokers"
-                    image="icons/server.png">
+                    image="icons/template-default.png">
         </wizardLink>
         <wizardLink category="dashboard.category.esb.template"
                     id="dashboard.wizardLink.esb.rabbitMQSampleTemplate.project"
                     wizard="org.wso2.developerstudio.wizards.esb.rabbitMQSampleTemplate"
                     description="A sample which demonstrates the integration with RabbitMQ"
-                    image="icons/server.png">
+                    image="icons/template-default.png">
         </wizardLink>
         <wizardLink category="dashboard.category.esb.template"
                     id="dashboard.wizardLink.esb.jsonToXmlMappingTemplate.project"
                     wizard="org.wso2.developerstudio.wizards.esb.jsonToXmlMappingTemplate"
                     description="This sample demonstrates JSON to XML Mapping"
-                    image="icons/server.png">
+                    image="icons/template-default.png">
         </wizardLink>
         <wizardLink category="dashboard.category.esb.template"
                     id="dashboard.wizardLink.esb.xmlToJsonMappingTemplate"
                     wizard="org.wso2.developerstudio.wizards.esb.xmlToJsonMappingTemplate"
                     description="This sample demonstrates XML to JSON Mapping"
-                    image="icons/server.png">
+                    image="icons/template-default.png">
         </wizardLink>
         <wizardLink category="dashboard.category.esb.template"
                     id="dashboard.wizardLink.esb.kafkaTemplate"
                     wizard="org.wso2.developerstudio.wizards.esb.kafkaTemplate"
                     description="This sample demonstrates Kafka Consumer and Producer Scenario with ESB Kafka Conenctor"
-                    image="icons/server.png">
+                    image="icons/template-default.png">
         </wizardLink>
     </extension>
 </plugin>

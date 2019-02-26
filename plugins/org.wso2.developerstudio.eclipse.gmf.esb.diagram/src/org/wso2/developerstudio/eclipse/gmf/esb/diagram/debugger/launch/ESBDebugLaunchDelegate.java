@@ -49,6 +49,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebugg
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.Messages;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.developerstudio.eclipse.platform.core.utils.Constants;
 
 /**
  * This class performs launching of the ESB Mediation Debugger launch
@@ -126,17 +127,18 @@ public class ESBDebugLaunchDelegate implements ILaunchConfigurationDelegate {
                 IWorkbenchPart viewpart = activePage.findView("org.eclipse.ui.navigator.ProjectExplorer");
                 IStructuredSelection selection = (IStructuredSelection) viewpart.getSite().getSelectionProvider()
                         .getSelection();
-                String currentProjectName = ((IProject) ((IResource) selection.getFirstElement()).getProject())
-                        .getName();
+                IProject selectedProject = (IProject) ((IResource) selection.getFirstElement()).getProject();
+                String currentProjectName = selectedProject.getName();
                 // Get the associated carbon application for the selected project from the
                 // project explorer
-                IResource selectedCARAppResource = ((IResource) selection.getFirstElement()).getProject().getParent()
-                        .findMember(currentProjectName + "CarbonApplication");
+                IResource selectedCARAppResource = selectedProject.getParent()
+                        .findMember(currentProjectName + "CompositeApplication");
 
                 // Create the wizard for creating CAPP with the user selected artifacts
                 CompositeApplicationArtifactUpdateWizard wizard = new CompositeApplicationArtifactUpdateWizard();
 
-                if (currentProjectName != null && currentProjectName.contains("CarbonApplication")) {
+                if (currentProjectName != null && (currentProjectName.contains("CompositeApplication")
+                        || selectedProject.hasNature(Constants.DISTRIBUTION_PROJECT_NATURE))) {
                     // Initialize the CAPP creation wizard using the user selection as it is a
                     // carbon application
                     wizard.init(null, selection);
@@ -147,7 +149,7 @@ public class ESBDebugLaunchDelegate implements ILaunchConfigurationDelegate {
                 } else {
                     // Throw an error if debug launcher cannot find a carbon application for the
                     // user selected name from the project explorer
-                    throw new Exception("Cannot find the carbon application for the name : " + currentProjectName);
+                    throw new Exception("Cannot find a Composite Application for the name : " + currentProjectName);
                 }
 
                 WizardDialog exportWizardDialog = new WizardDialog(activeWorkBenchWindow.getShell(), wizard);

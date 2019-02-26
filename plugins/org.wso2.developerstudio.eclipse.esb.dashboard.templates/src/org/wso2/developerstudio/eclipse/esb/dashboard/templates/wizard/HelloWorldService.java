@@ -136,9 +136,9 @@ public class HelloWorldService extends Wizard implements INewWizard {
             esbProjectArtifact.toFile();
             project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 
-            String cappGroupId = groupId + "CarbonApplication";
+            String cappGroupId = groupId + "CompositeApplication";
             IProject cappProject = ProjectCreationUtil
-                    .carbonAppCreation(containerName + "CarbonApplication", containerName, cappGroupId, sampleName);
+                    .carbonAppCreation(containerName + "CompositeApplication", containerName, cappGroupId, sampleName);
             addCappDependencies(cappProject);
 
             // Open synapse application on sample creation.

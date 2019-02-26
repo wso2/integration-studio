@@ -83,9 +83,9 @@ body{
     margin-top: 12px;
 }
 .section-one svg{
-    height: 40px;
+    height: 60px;
 }
-.section-two h2{
+h2{
     font-size: 28px;
     font-weight: 100;
     margin-bottom: 25px;

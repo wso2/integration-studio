@@ -797,7 +797,22 @@ public class EsbMessages extends NLS {
 	public static String DBReportMediatorOutputConnectorPropertiesEditionPart_PropertiesGroupLabel;
 
 	
-	public static String RuleMediatorPropertiesEditionPart_PropertiesGroupLabel;
+	public static String RuleMediatorPropertiesEditionPart_MiscGroupLabel;
+
+	
+	public static String RuleMediatorPropertiesEditionPart_InputFactsGroupLabel;
+
+	
+	public static String RuleMediatorPropertiesEditionPart_OutputFactsGroupLabel;
+
+	
+	public static String RuleMediatorPropertiesEditionPart_SourceGroupLabel;
+
+	
+	public static String RuleMediatorPropertiesEditionPart_TargetGroupLabel;
+
+	
+	public static String RuleMediatorPropertiesEditionPart_RuleSetGroupLabel;
 
 	
 	public static String RuleMediatorInputConnectorPropertiesEditionPart_PropertiesGroupLabel;
@@ -5725,6 +5740,51 @@ public class EsbMessages extends NLS {
 	public static String RuleMediatorPropertiesEditionPart_ReverseLabel;
 
 	
+	public static String RuleMediatorPropertiesEditionPart_StatefulSessionLabel;
+
+	
+	public static String RuleMediatorPropertiesEditionPart_RuleSessionPropertiesLabel;
+
+	
+	public static String RuleMediatorPropertiesEditionPart_InputWrapperNameLabel;
+
+	
+	public static String RuleMediatorPropertiesEditionPart_InputNameSpaceLabel;
+
+	
+	public static String RuleMediatorPropertiesEditionPart_RuleFactsConfigurationLabel;
+
+	
+	public static String RuleMediatorPropertiesEditionPart_OutputWrapperNameLabel;
+
+	
+	public static String RuleMediatorPropertiesEditionPart_OutputNameSpaceLabel;
+
+	
+	public static String RuleMediatorPropertiesEditionPart_RuleResultsConfigurationLabel;
+
+	
+	public static String RuleMediatorPropertiesEditionPart_SourceValueLabel;
+
+	
+	public static String RuleMediatorPropertiesEditionPart_SourceXPathLabel;
+
+	
+	public static String RuleMediatorPropertiesEditionPart_TargetValueLabel;
+
+	
+	public static String RuleMediatorPropertiesEditionPart_TargetActionLabel;
+
+	
+	public static String RuleMediatorPropertiesEditionPart_TargetXPathLabel;
+
+	
+	public static String RuleMediatorPropertiesEditionPart_TargetResultXPathLabel;
+
+	
+	public static String RuleMediatorPropertiesEditionPart_RuleSetTypeLabel;
+
+	
 	public static String RuleMediatorPropertiesEditionPart_RuleSetURLLabel;
 
 	
@@ -5734,34 +5794,7 @@ public class EsbMessages extends NLS {
 	public static String RuleMediatorPropertiesEditionPart_RuleSetSourceCodeLabel;
 
 	
-	public static String RuleMediatorPropertiesEditionPart_StatefulSessionLabel;
-
-	
-	public static String RuleMediatorPropertiesEditionPart_RuleSessionPropertiesLabel;
-
-	
-	public static String RuleMediatorPropertiesEditionPart_SourceValueLabel;
-
-	
-	public static String RuleMediatorPropertiesEditionPart_TargetValueLabel;
-
-	
-	public static String RuleMediatorPropertiesEditionPart_TargetActionLabel;
-
-	
-	public static String RuleMediatorPropertiesEditionPart_InputWrapperNameLabel;
-
-	
-	public static String RuleMediatorPropertiesEditionPart_InputNameSpaceLabel;
-
-	
-	public static String RuleMediatorPropertiesEditionPart_OutputWrapperNameLabel;
-
-	
-	public static String RuleMediatorPropertiesEditionPart_OutputNameSpaceLabel;
-
-	
-	public static String RuleMediatorPropertiesEditionPart_RuleSetTypeLabel;
+	public static String RuleMediatorPropertiesEditionPart_RuleSetSourceKeyLabel;
 
 	
 	public static String RuleMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;

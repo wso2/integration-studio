@@ -1,6 +1,5 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.presentation;
 
-import java.awt.GridLayout;
 import java.util.ArrayList;
 
 import org.eclipse.swt.SWT;
@@ -9,6 +8,9 @@ import org.eclipse.swt.layout.FormData;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.ui.forms.widgets.FormToolkit;
+import org.eclipse.ui.forms.widgets.Section;
+import org.eclipse.swt.layout.GridLayout;
 
 public class EEFPropertyViewUtil {
 
@@ -115,6 +117,21 @@ public class EEFPropertyViewUtil {
             //tableElements[i - previousControls.length] = newControls[i];
             arrayList.add(newControls[i]);
         }
+    }
+    
+    // This method will return a subSection group that can be use to group section inside a eef form
+    public static Composite createSubsectionGroup(FormToolkit widgetFactory, final Composite parent, String name) {
+        Section propertiesSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
+        propertiesSection.setText(name);
+        GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
+        propertiesSectionData.horizontalSpan = 3;
+        propertiesSection.setLayoutData(propertiesSectionData);
+        Composite subsectionGroup = widgetFactory.createComposite(propertiesSection);
+        GridLayout propertiesGroupLayout = new GridLayout();
+        propertiesGroupLayout.numColumns = 3;
+        subsectionGroup.setLayout(propertiesGroupLayout);
+        propertiesSection.setClient(subsectionGroup);
+        return subsectionGroup;
     }
     
     /**

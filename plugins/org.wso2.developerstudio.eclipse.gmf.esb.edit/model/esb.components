@@ -1725,6 +1725,9 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v7efJnEei6boXzpRIfnA" name="beanName" views="_E7wkyPJnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//SpringMediator/beanName"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_FKqY4Dp1Eem3Pe8kD-pHJA" name="configurationKey" views="__VhxgDp0Eem3Pe8kD-pHJA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//SpringMediator/configurationKey"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//SpringMediator"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_E7v7evJnEei6boXzpRIfnA" name="SpringMediatorInputConnector" views="_E7wkyfJnEei6boXzpRIfnA">
@@ -7765,6 +7768,7 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wkyPJnEei6boXzpRIfnA" name="beanName">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="__VhxgDp0Eem3Pe8kD-pHJA" name="configurationKey"/>
         </elements>
       </views>
       <views xmi:id="_E7wkyfJnEei6boXzpRIfnA" name="SpringMediatorInputConnector">

@@ -3048,6 +3048,10 @@ public class EsbViewsRepository {
 			
 			public static String beanName = "esb::SpringMediator::properties::beanName";
 			
+			// Start of user code for configurationKey ElementEditor key
+			public static String configurationKey = "esb::SpringMediator::key::configurationKey";
+			// End of user code
+
 	
 		}
 	

@@ -356,9 +356,9 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 		};
 		composer.compose(view);
 	}
-	/**
-	 * 
-	 */
+    /**
+     * @generated NOT
+     */
 	protected Composite createMiscGroup(FormToolkit widgetFactory, final Composite parent) {
 		Section miscSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		miscSection.setText(EsbMessages.RuleMediatorPropertiesEditionPart_MiscGroupLabel);
@@ -373,7 +373,9 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 		return miscGroup;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createDescriptionText(FormToolkit widgetFactory, Composite parent) {
 	    Control [] previousControls = miscGroup.getChildren();
         createDescription(parent, EsbViewsRepository.RuleMediator.Misc.description, EsbMessages.RuleMediatorPropertiesEditionPart_DescriptionLabel);
@@ -443,9 +445,9 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 		return parent;
 	}
 
-	/**
-	 * 
-	 */
+    /**
+     * @generated NOT
+     */
 	protected Composite createCommentsListMultiValuedEditor(FormToolkit widgetFactory, Composite parent) {
 		commentsList = widgetFactory.createText(parent, "", SWT.READ_ONLY); //$NON-NLS-1$
 		GridData commentsListData = new GridData(GridData.FILL_HORIZONTAL);
@@ -489,7 +491,9 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createReverseCheckbox(FormToolkit widgetFactory, Composite parent) {
 		reverse = widgetFactory.createButton(parent, getDescription(EsbViewsRepository.RuleMediator.Misc.reverse, EsbMessages.RuleMediatorPropertiesEditionPart_ReverseLabel), SWT.CHECK);
 		reverse.addSelectionListener(new SelectionAdapter() {
@@ -518,7 +522,9 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createStatefulSessionCheckbox(FormToolkit widgetFactory, Composite parent) {
 	    Control [] previousControls = miscGroup.getChildren();
         statefulSession = widgetFactory.createButton(parent, getDescription(EsbViewsRepository.RuleMediator.Misc.statefulSession, EsbMessages.RuleMediatorPropertiesEditionPart_StatefulSessionLabel), SWT.CHECK);
@@ -551,8 +557,8 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 
 	/**
 	 * @param container
-	 * 
-	 */
+	 * @generated NOT
+     */
 	protected Composite createRuleSessionPropertiesTableComposition(FormToolkit widgetFactory, Composite parent) {
 	    Control [] previousControls = miscGroup.getChildren();
         this.ruleSessionProperties = new ReferencesTable(getDescription(EsbViewsRepository.RuleMediator.Misc.ruleSessionProperties, EsbMessages.RuleMediatorPropertiesEditionPart_RuleSessionPropertiesLabel), new ReferencesTableListener() {
@@ -602,9 +608,9 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 		return parent;
 	}
 
-	/**
-	 * 
-	 */
+    /**
+     * @generated NOT
+     */
 	protected Composite createInputFactsGroup(FormToolkit widgetFactory, final Composite parent) {
 		Section inputFactsSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		inputFactsSection.setText(EsbMessages.RuleMediatorPropertiesEditionPart_InputFactsGroupLabel);
@@ -619,7 +625,9 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 		return inputFactsGroup;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createInputWrapperNameText(FormToolkit widgetFactory, Composite parent) {
 	    Control [] previousControls = inputFactsGroup.getChildren();
         createDescription(parent, EsbViewsRepository.RuleMediator.InputFacts.inputWrapperName, EsbMessages.RuleMediatorPropertiesEditionPart_InputWrapperNameLabel);
@@ -689,7 +697,9 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createInputNameSpaceText(FormToolkit widgetFactory, Composite parent) {
 	    Control [] previousControls = inputFactsGroup.getChildren();
         createDescription(parent, EsbViewsRepository.RuleMediator.InputFacts.inputNameSpace, EsbMessages.RuleMediatorPropertiesEditionPart_InputNameSpaceLabel);
@@ -761,7 +771,7 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 
 	/**
 	 * @param container
-	 * 
+	 * @generated NOT
 	 */
 	protected Composite createRuleFactsConfigurationTableComposition(FormToolkit widgetFactory, Composite parent) {
 	    Control [] previousControls = inputFactsGroup.getChildren();
@@ -812,9 +822,9 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 		return parent;
 	}
 
-	/**
-	 * 
-	 */
+    /**
+     * @generated NOT
+     */
 	protected Composite createOutputFactsGroup(FormToolkit widgetFactory, final Composite parent) {
 		Section outputFactsSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		outputFactsSection.setText(EsbMessages.RuleMediatorPropertiesEditionPart_OutputFactsGroupLabel);
@@ -829,7 +839,9 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 		return outputFactsGroup;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createOutputWrapperNameText(FormToolkit widgetFactory, Composite parent) {
 	    Control [] previousControls = outputFactsGroup.getChildren();
 		createDescription(parent, EsbViewsRepository.RuleMediator.OutputFacts.outputWrapperName, EsbMessages.RuleMediatorPropertiesEditionPart_OutputWrapperNameLabel);
@@ -899,7 +911,9 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createOutputNameSpaceText(FormToolkit widgetFactory, Composite parent) {
 	    Control [] previousControls = outputFactsGroup.getChildren();
 		createDescription(parent, EsbViewsRepository.RuleMediator.OutputFacts.outputNameSpace, EsbMessages.RuleMediatorPropertiesEditionPart_OutputNameSpaceLabel);
@@ -971,7 +985,7 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 
 	/**
 	 * @param container
-	 * 
+	 * @generated NOT
 	 */
 	protected Composite createRuleResultsConfigurationTableComposition(FormToolkit widgetFactory, Composite parent) {
 	    Control [] previousControls = outputFactsGroup.getChildren();
@@ -1022,9 +1036,9 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 		return parent;
 	}
 
-	/**
-	 * 
-	 */
+    /**
+     * @generated NOT
+     */
 	protected Composite createSourceGroup(FormToolkit widgetFactory, final Composite parent) {
 		Section sourceSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		sourceSection.setText(EsbMessages.RuleMediatorPropertiesEditionPart_SourceGroupLabel);
@@ -1039,7 +1053,9 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 		return sourceGroup;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createSourceValueText(FormToolkit widgetFactory, Composite parent) {
 	    Control [] previousControls = sourceGroup.getChildren();
 		createDescription(parent, EsbViewsRepository.RuleMediator.Source.sourceValue, EsbMessages.RuleMediatorPropertiesEditionPart_SourceValueLabel);
@@ -1109,9 +1125,9 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 		return parent;
 	}
 
-	/**
-	 * 
-	 */
+    /**
+     * @generated NOT
+     */
 	protected Composite createTargetGroup(FormToolkit widgetFactory, final Composite parent) {
 		Section targetSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		targetSection.setText(EsbMessages.RuleMediatorPropertiesEditionPart_TargetGroupLabel);
@@ -1126,7 +1142,9 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 		return targetGroup;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createTargetValueText(FormToolkit widgetFactory, Composite parent) {
 	    Control [] previousControls = targetGroup.getChildren();
 		createDescription(parent, EsbViewsRepository.RuleMediator.Target.targetValue, EsbMessages.RuleMediatorPropertiesEditionPart_TargetValueLabel);
@@ -1196,7 +1214,9 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createTargetActionEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 	    Control [] previousControls = targetGroup.getChildren();
 		createDescription(parent, EsbViewsRepository.RuleMediator.Target.targetAction, EsbMessages.RuleMediatorPropertiesEditionPart_TargetActionLabel);
@@ -1228,9 +1248,9 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 		return parent;
 	}
 
-	/**
-	 * 
-	 */
+    /**
+     * @generated NOT
+     */
 	protected Composite createRuleSetGroup(FormToolkit widgetFactory, final Composite parent) {
 		Section ruleSetSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		ruleSetSection.setText(EsbMessages.RuleMediatorPropertiesEditionPart_RuleSetGroupLabel);
@@ -1245,7 +1265,9 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 		return ruleSetGroup;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createRuleSetTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 	    Control [] previousControls = ruleSetGroup.getChildren();
 	    createDescription(parent, EsbViewsRepository.RuleMediator.RuleSet.ruleSetType, EsbMessages.RuleMediatorPropertiesEditionPart_RuleSetTypeLabel);
@@ -1277,7 +1299,9 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createRuleSetURLText(FormToolkit widgetFactory, Composite parent) {
 	    Control [] previousControls = ruleSetGroup.getChildren();
         createDescription(parent, EsbViewsRepository.RuleMediator.RuleSet.ruleSetURL, EsbMessages.RuleMediatorPropertiesEditionPart_RuleSetURLLabel);
@@ -1347,7 +1371,9 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createRuleSetSourceTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 	    Control [] previousControls = ruleSetGroup.getChildren();
         createDescription(parent, EsbViewsRepository.RuleMediator.RuleSet.ruleSetSourceType, EsbMessages.RuleMediatorPropertiesEditionPart_RuleSetSourceTypeLabel);
@@ -1391,7 +1417,9 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createRuleSetSourceCodeText(FormToolkit widgetFactory, Composite parent) {
 	    Control [] previousControls = ruleSetGroup.getChildren();
         createDescription(parent, EsbViewsRepository.RuleMediator.RuleSet.ruleSetSourceCode, EsbMessages.RuleMediatorPropertiesEditionPart_RuleSetSourceCodeLabel);

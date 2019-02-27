@@ -1029,6 +1029,12 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7vVL_JnEei6boXzpRIfnA" name="targetLiteral" views="_E7wjsvJnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//BeanMediator/targetLiteral"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_xYcw0DqvEem3Pe8kD-pHJA" name="valueExpression" views="_tKOc4DqvEem3Pe8kD-pHJA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//BeanMediator/valueExpression"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_0S-oQDqvEem3Pe8kD-pHJA" name="targetExpression" views="_rAHVwDqvEem3Pe8kD-pHJA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//BeanMediator/targetExpression"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//BeanMediator"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_E7vVMPJnEei6boXzpRIfnA" name="BeanMediatorInputConnector" views="_E7wjs_JnEei6boXzpRIfnA">
@@ -6978,6 +6984,8 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wjsvJnEei6boXzpRIfnA" name="targetLiteral">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_rAHVwDqvEem3Pe8kD-pHJA" name="targetExpression"/>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_tKOc4DqvEem3Pe8kD-pHJA" name="valueExpression"/>
         </elements>
       </views>
       <views xmi:id="_E7wjs_JnEei6boXzpRIfnA" name="BeanMediatorInputConnector">

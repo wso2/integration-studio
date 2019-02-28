@@ -1086,6 +1086,9 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7vVQPJnEei6boXzpRIfnA" name="methodArguments" views="_E7wjxvJnEei6boXzpRIfnA">
           <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//EJBMediator/methodArguments"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_3SSwsDq9Eem3Pe8kD-pHJA" name="sessionIdExpression" views="_t2PF8Dq9Eem3Pe8kD-pHJA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//EJBMediator/sessionIdExpression"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//EJBMediator"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_E7vVQfJnEei6boXzpRIfnA" name="EJBMediatorInputConnector" views="_E7wjx_JnEei6boXzpRIfnA">
@@ -1109,6 +1112,9 @@
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7vVSPJnEei6boXzpRIfnA" name="propertyValue" views="_E7wj0fJnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//AbstractNameValueExpressionProperty/propertyValue"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_6xs20Dq9Eem3Pe8kD-pHJA" name="propertyExpression" views="_x-mCcDq9Eem3Pe8kD-pHJA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//AbstractNameValueExpressionProperty/propertyExpression"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//MethodArgument"/>
       </bindings>
@@ -7043,6 +7049,7 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wjxvJnEei6boXzpRIfnA" name="methodArguments">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
           </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_t2PF8Dq9Eem3Pe8kD-pHJA" name="sessionIdExpression"/>
         </elements>
       </views>
       <views xmi:id="_E7wjx_JnEei6boXzpRIfnA" name="EJBMediatorInputConnector">
@@ -7073,6 +7080,7 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wj0fJnEei6boXzpRIfnA" name="propertyValue">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_x-mCcDq9Eem3Pe8kD-pHJA" name="propertyExpression"/>
         </elements>
       </views>
       <views xmi:id="_E7wj0vJnEei6boXzpRIfnA" name="RegistryKeyProperty">

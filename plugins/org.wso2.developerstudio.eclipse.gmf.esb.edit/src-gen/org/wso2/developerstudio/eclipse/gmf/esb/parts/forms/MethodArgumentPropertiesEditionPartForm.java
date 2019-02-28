@@ -55,7 +55,7 @@ import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.MethodArgumentPropertiesEditionPart;
 
@@ -72,6 +72,10 @@ public class MethodArgumentPropertiesEditionPartForm extends SectionPropertiesEd
 	protected Text propertyName;
 	protected EMFComboViewer propertyValueType;
 	protected Text propertyValue;
+	// Start of user code  for propertyExpression widgets declarations
+	
+	// End of user code
+
 
 
 
@@ -120,6 +124,7 @@ public class MethodArgumentPropertiesEditionPartForm extends SectionPropertiesEd
 		propertiesStep.addStep(EsbViewsRepository.MethodArgument.Properties.propertyName);
 		propertiesStep.addStep(EsbViewsRepository.MethodArgument.Properties.propertyValueType);
 		propertiesStep.addStep(EsbViewsRepository.MethodArgument.Properties.propertyValue);
+		propertiesStep.addStep(EsbViewsRepository.MethodArgument.Properties.propertyExpression);
 		
 		
 		composer = new PartComposer(methodArgumentStep) {
@@ -138,6 +143,9 @@ public class MethodArgumentPropertiesEditionPartForm extends SectionPropertiesEd
 				if (key == EsbViewsRepository.MethodArgument.Properties.propertyValue) {
 					return createPropertyValueText(widgetFactory, parent);
 				}
+				// Start of user code for propertyExpression addToPart creation
+				
+				// End of user code
 				return parent;
 			}
 		};
@@ -455,6 +463,20 @@ public class MethodArgumentPropertiesEditionPartForm extends SectionPropertiesEd
 
 
 
+	// Start of user code for propertyExpression specific getters and setters implementation
+    @Override
+    public NamespacedProperty getPropertyExpression() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void setPropertyExpression(NamespacedProperty nameSpacedProperty) {
+        // TODO Auto-generated method stub
+        
+    }
+	// End of user code
+
 	/**
 	 * {@inheritDoc}
 	 *
@@ -464,6 +486,8 @@ public class MethodArgumentPropertiesEditionPartForm extends SectionPropertiesEd
 	public String getTitle() {
 		return EsbMessages.MethodArgument_Part_Title;
 	}
+
+
 
 	// Start of user code additional methods
 	

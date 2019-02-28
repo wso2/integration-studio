@@ -4234,6 +4234,9 @@ public class EsbMessages extends NLS {
 	public static String EJBMediatorPropertiesEditionPart_MethodArgumentsLabel;
 
 	
+	public static String EJBMediatorPropertiesEditionPart_SessionIdExpressionLabel;
+
+	
 	public static String EJBMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;
 
 	
@@ -4247,6 +4250,9 @@ public class EsbMessages extends NLS {
 
 	
 	public static String MethodArgumentPropertiesEditionPart_PropertyValueLabel;
+
+	
+	public static String MethodArgumentPropertiesEditionPart_PropertyExpressionLabel;
 
 	
 	public static String RegistryKeyPropertyPropertiesEditionPart_PrettyNameLabel;

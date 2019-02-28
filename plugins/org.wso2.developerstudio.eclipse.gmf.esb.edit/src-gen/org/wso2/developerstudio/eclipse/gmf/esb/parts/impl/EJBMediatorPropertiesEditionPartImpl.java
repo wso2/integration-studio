@@ -72,7 +72,7 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EJBMediatorPropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 
@@ -102,6 +102,10 @@ public class EJBMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 	protected ReferencesTable methodArguments;
 	protected List<ViewerFilter> methodArgumentsBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> methodArgumentsFilters = new ArrayList<ViewerFilter>();
+	// Start of user code  for sessionIdExpression widgets declarations
+	
+	// End of user code
+
 
 
 
@@ -152,6 +156,7 @@ public class EJBMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 		propertiesStep.addStep(EsbViewsRepository.EJBMediator.Properties.target);
 		propertiesStep.addStep(EsbViewsRepository.EJBMediator.Properties.jNDIName);
 		propertiesStep.addStep(EsbViewsRepository.EJBMediator.Properties.methodArguments);
+		propertiesStep.addStep(EsbViewsRepository.EJBMediator.Properties.sessionIdExpression);
 		
 		
 		composer = new PartComposer(eJBMediatorStep) {
@@ -197,6 +202,9 @@ public class EJBMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 				if (key == EsbViewsRepository.EJBMediator.Properties.methodArguments) {
 					return createMethodArgumentsAdvancedTableComposition(parent);
 				}
+				// Start of user code for sessionIdExpression addToPart creation
+				
+				// End of user code
 				return parent;
 			}
 		};
@@ -1215,6 +1223,20 @@ public class EJBMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 
 
 
+	// Start of user code for sessionIdExpression specific getters and setters implementation
+    @Override
+    public NamespacedProperty getSessionIdExpression() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void setSessionIdExpression(NamespacedProperty nameSpacedProperty) {
+        // TODO Auto-generated method stub
+        
+    }
+	// End of user code
+
 	/**
 	 * {@inheritDoc}
 	 *
@@ -1224,6 +1246,8 @@ public class EJBMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 	public String getTitle() {
 		return EsbMessages.EJBMediator_Part_Title;
 	}
+
+
 
 	// Start of user code additional methods
 	

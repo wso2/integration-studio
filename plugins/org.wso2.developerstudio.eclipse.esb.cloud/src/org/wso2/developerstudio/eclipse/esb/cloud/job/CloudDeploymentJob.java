@@ -33,10 +33,13 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.internal.WorkbenchWindow;
 import org.wso2.developerstudio.eclipse.esb.cloud.Activator;
 import org.wso2.developerstudio.eclipse.esb.cloud.client.IntegrationCloudServiceClient;
 import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.CloudDeploymentException;
+import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.InvalidTokenException;
 import org.wso2.developerstudio.eclipse.esb.cloud.model.Application;
 import org.wso2.developerstudio.eclipse.esb.cloud.model.Version;
 import org.wso2.developerstudio.eclipse.esb.cloud.resources.CloudDeploymentWizardConstants;
@@ -87,6 +90,10 @@ public class CloudDeploymentJob extends Job {
         monitor.worked(10);
 
         try {
+            
+            showMessageBox(CloudDeploymentWizardConstants.DIALOG_TITLE_TEXT,
+                    CloudDeploymentWizardConstants.SuccessMessages.SUCCESS_CREATING_APPLICATION_MSG,
+                    SWT.ICON_INFORMATION);
 
             client.createApplication(name, description, version, carbonFileName, carbonFileLocation, iconLocation, tags, isNewVersion);
             
@@ -116,10 +123,11 @@ public class CloudDeploymentJob extends Job {
                                     monitor.worked(5);
                                 }
                             }
-                        } catch(CloudDeploymentException e) {
+                        } catch(CloudDeploymentException | InvalidTokenException e) {
                             log.error(CloudDeploymentWizardConstants.ErrorMessages.DEPLOY_TO_CLOUD_FAILED_MESSAGE, e);
-                            showMessageBox(CloudDeploymentWizardConstants.ErrorMessages.DEPLOY_TO_CLOUD_FAILED_TITLE,
-                                    CloudDeploymentWizardConstants.ErrorMessages.DEPLOY_TO_CLOUD_REQUEST_ERROR_MSG, SWT.ICON_ERROR);
+//                            showMessageBox(CloudDeploymentWizardConstants.ErrorMessages.DEPLOY_TO_CLOUD_FAILED_TITLE,
+//                                    CloudDeploymentWizardConstants.ErrorMessages.DEPLOY_TO_CLOUD_REQUEST_ERROR_MSG, SWT.ICON_ERROR);
+                            showStatusMessage(e.getMessage(), false);
                             scheduledExecutorService.shutdown();
                         }
                     }
@@ -130,7 +138,7 @@ public class CloudDeploymentJob extends Job {
 
             scheduledExecutorService.awaitTermination(120, TimeUnit.SECONDS);
 
-        } catch (CloudDeploymentException | InterruptedException e) {
+        } catch (CloudDeploymentException | InvalidTokenException | InterruptedException e) {
             log.error(CloudDeploymentWizardConstants.ErrorMessages.DEPLOY_TO_CLOUD_FAILED_MESSAGE, e);
             showMessageBox(CloudDeploymentWizardConstants.ErrorMessages.DEPLOY_TO_CLOUD_FAILED_TITLE,
                     CloudDeploymentWizardConstants.ErrorMessages.DEPLOY_TO_CLOUD_INTERNAL_ERROR_MSG, SWT.ICON_ERROR);
@@ -166,5 +174,23 @@ public class CloudDeploymentJob extends Job {
             }
         });
     }
+    
+    public static void showStatusMessage(final String message, final boolean isError) {
+        Display.getDefault().syncExec(new Runnable() {
+
+            public void run() {
+                IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+                if (window instanceof WorkbenchWindow) {
+                    WorkbenchWindow w = (WorkbenchWindow) window;
+                    if (isError) {
+                        w.getStatusLineManager().setErrorMessage(message);
+                    } else {
+                        w.getStatusLineManager().setMessage(message);
+                    }
+                }
+            }
+        });
+    }
+
 
 }

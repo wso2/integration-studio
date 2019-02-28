@@ -18,6 +18,9 @@
 
 package org.wso2.developerstudio.eclipse.esb.cloud.resources;
 
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.widgets.Display;
 
 /**
  * Constants related to Cloud deployment wizard.
@@ -44,6 +47,11 @@ public class CloudDeploymentWizardConstants {
         public static final String SUCCESSFUL_TITLE = "Successful";
         public static final String DEPLOY_TO_CLOUD_SUCCESS_MESSAGE = "Application Deployed to Cloud Successfully!";
         public static final String SUCCESS_CREATING_APPLICATION_MSG = "Please wait while your application is being deployed to the cloud. You will be notified once it is ready.";
+    }
+    
+    public static class Colors {
+        public static final Color red = Display.getCurrent().getSystemColor(SWT.COLOR_RED);
+        public static final Color blue = Display.getCurrent().getSystemColor(SWT.COLOR_DARK_BLUE);
     }
 
 }

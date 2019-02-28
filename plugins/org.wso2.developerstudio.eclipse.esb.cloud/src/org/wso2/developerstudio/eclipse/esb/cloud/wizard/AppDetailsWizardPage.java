@@ -60,7 +60,9 @@ import org.eclipse.ui.IWorkbench;
 import org.wso2.developerstudio.eclipse.esb.cloud.Activator;
 import org.wso2.developerstudio.eclipse.esb.cloud.client.IntegrationCloudServiceClient;
 import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.CloudDeploymentException;
+import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.InvalidTokenException;
 import org.wso2.developerstudio.eclipse.esb.cloud.model.Application;
+import org.wso2.developerstudio.eclipse.esb.cloud.resources.CloudDeploymentWizardConstants;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
@@ -106,8 +108,6 @@ public class AppDetailsWizardPage extends WizardPage{
     private String[] applicationNames;
     private List<Application> applicationList;
     private IntegrationCloudServiceClient client;
-    
-    private Color red = Display.getCurrent().getSystemColor(SWT.COLOR_RED);
 
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
@@ -244,7 +244,7 @@ public class AppDetailsWizardPage extends WizardPage{
                         applicationNames = getApplicationNames(applicationList);
                         appNames.setItems(applicationNames);
                         
-                    } catch (CloudDeploymentException ex) {
+                    } catch (CloudDeploymentException | InvalidTokenException ex) {
                         ex.printStackTrace();
                     }
                 }
@@ -482,7 +482,7 @@ public class AppDetailsWizardPage extends WizardPage{
         StyledText lblVersion = new StyledText(newAppContainer, SWT.NONE);
         lblVersion.setText(FILE_VERSION_LABEL_TEXT);
 
-        StyleRange versionRange = new StyleRange(lblVersion.getCharCount() - 1, 1, red, null);
+        StyleRange versionRange = new StyleRange(lblVersion.getCharCount() - 1, 1, CloudDeploymentWizardConstants.Colors.red, null);
         lblVersion.setStyleRange(versionRange);
         lblVersion.setFont(new Font(parent.getDisplay(), fontName, 12, fontStyle));
 
@@ -513,7 +513,7 @@ public class AppDetailsWizardPage extends WizardPage{
         lblName.setLayoutData(lblNameGridData);
         lblName.setText(FILE_NAME_LABEL_TEXT);
         
-        StyleRange appNameRange = new StyleRange(lblName.getCharCount() - 1, 1, red, null);
+        StyleRange appNameRange = new StyleRange(lblName.getCharCount() - 1, 1, CloudDeploymentWizardConstants.Colors.red, null);
         lblName.setStyleRange(appNameRange);
         lblName.setFont(new Font(parent.getDisplay(), fontName, 12, fontStyle));
 
@@ -544,7 +544,7 @@ public class AppDetailsWizardPage extends WizardPage{
         lblName.setLayoutData(lblNameGridData);
         lblName.setText(FILE_NAME_LABEL_TEXT);
         
-        StyleRange appNameRange = new StyleRange(lblName.getCharCount() - 1, 1, red, null);
+        StyleRange appNameRange = new StyleRange(lblName.getCharCount() - 1, 1, CloudDeploymentWizardConstants.Colors.red, null);
         lblName.setStyleRange(appNameRange);
         lblName.setFont(new Font(parent.getDisplay(), fontName, 12, fontStyle));
 

@@ -20,7 +20,6 @@ package org.wso2.developerstudio.eclipse.esb.cloud.wizard;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
-import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.WizardPage;
@@ -41,6 +40,8 @@ import org.eclipse.swt.widgets.Text;
 import org.wso2.developerstudio.eclipse.esb.cloud.Activator;
 import org.wso2.developerstudio.eclipse.esb.cloud.client.IntegrationCloudServiceClient;
 import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.CloudDeploymentException;
+import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.InvalidTokenException;
+import org.wso2.developerstudio.eclipse.esb.cloud.resources.CloudDeploymentWizardConstants;
 import org.wso2.developerstudio.eclipse.esb.cloud.util.UserSessionManager;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
@@ -51,24 +52,36 @@ import org.wso2.developerstudio.eclipse.logging.core.Logger;
  */
 public class LoginWizardPage extends WizardPage {
 
-    private static final String DIALOG_TITLE = "WSO2 Platform Distribution - Deploy application to Integration Cloud";
+    private static final String DIALOG_TITLE = "WSO2 Platform Distribution - Deploy application to WSO2 Integration Cloud";
+    
     private static final String EMPTY_STRING = "";
+    
+    // Label Texts
+    private static final String LOGIN_SUCCESSFUL_MSG = "User authentication was successful! Click 'Next' to continue.";
+    private static final String LOGIN_FAILED_MSG = "Failed to authenticate user - Incorrect Organization ID / Username / Password!";
+    private static final String INTEGRATION_CLOUD_SINGUP_LINK = "https://wso2.com/integration/cloud/"; 
+    private static final String LABEL_USERNAME_TEXT = "Username";
+    private static final String LABEL_PASSWORD_TEXT = "Password";
+    private static final String LABEL_TENANT_TEXT = "Organization Key";
+    
+    private static final String SIGN_UP_LABEL_TEXT = "Don't have an account? <a href=\"https://wso2.com/integration/cloud/\">Register now</a>";
+    
+    private static final String ORG_ID_TOOLTIP_TEXT = "NOTE: Organization_key can be obtained from the Manage page of the cloud.";
 
+    // Elements
     private Text txtUsername;
     private Text txtPassword;
     private Text txtTenant;
     private Button btnLogin;
+    private Label lblLoginStatus;
 
+    // Initial values
     private String username = EMPTY_STRING;
     private String password = EMPTY_STRING;
     private String tenant = EMPTY_STRING;
     private String initialUsername = EMPTY_STRING;
     private String initialPassword = EMPTY_STRING;
     private String initialTenant = EMPTY_STRING;
-    
-    private static String LABEL_USERNAME_TEXT = "Username";
-    private static String LABEL_PASSWORD_TEXT = "Password";
-    private static String LABEL_TENANT_TEXT = "Organization Key";
     
     IntegrationCloudServiceClient client;
 
@@ -97,17 +110,17 @@ public class LoginWizardPage extends WizardPage {
         container.setVisible(true);
 
         Group grpCredentials = new Group(container, SWT.NONE);
-        grpCredentials.setText("Enter Credentials for WSO2 Integration Cloud");
+        grpCredentials.setText("Enter credentials for WSO2 Integration Cloud");
         grpCredentials.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false, 1, 1));
         grpCredentials.setLayout(new GridLayout(2, false));
         
         // Tenant
+        
         Label lblTenant = new Label(grpCredentials, SWT.NONE);
         GridData gd_lblTenant = new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1);
         gd_lblTenant.widthHint = 125;
         lblTenant.setLayoutData(gd_lblTenant);
         lblTenant.setText(LABEL_TENANT_TEXT);
-
         txtTenant = new Text(grpCredentials, SWT.BORDER);
         txtTenant.addModifyListener(new ModifyListener() {
             public void modifyText(ModifyEvent arg0) {
@@ -119,7 +132,8 @@ public class LoginWizardPage extends WizardPage {
         GridData gd_txtTenant = new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1);
         gd_txtTenant.widthHint = 550;
         txtTenant.setLayoutData(gd_txtTenant);
-
+        txtTenant.setToolTipText(ORG_ID_TOOLTIP_TEXT);
+        
         // Username
         Label lblUsername = new Label(grpCredentials, SWT.NONE);
         GridData gd_lblUsername = new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1);
@@ -140,7 +154,6 @@ public class LoginWizardPage extends WizardPage {
         txtUsername.setLayoutData(gd_txtUsername);
 
         // Password
-        
         Label lblPassword = new Label(grpCredentials, SWT.NONE);
         lblPassword.setText(LABEL_PASSWORD_TEXT);
 
@@ -159,19 +172,27 @@ public class LoginWizardPage extends WizardPage {
             public void widgetSelected(SelectionEvent e) {
                 String title = "Integration Cloud Credentials";
                 try {
+                    
                     if (validateCredentials()) {
                         UserSessionManager.createSession(getUsername(), client.getCookieStore().getCookies().get(0));
                         setPageComplete(true);
-                        setMessage("User authentication was successful! Click 'Next' to continue.", IMessageProvider.INFORMATION);
+//                        setMessage(, IMessageProvider.INFORMATION);
+                        lblLoginStatus.setText(LOGIN_SUCCESSFUL_MSG);
+//                        Image image = new Image(Display.getCurrent(), SWT.ICON_INFORMATION);
+                        lblLoginStatus.setForeground(CloudDeploymentWizardConstants.Colors.blue);
                         btnLogin.setEnabled(false);
                         txtTenant.setEnabled(false);
                         txtUsername.setEnabled(false);
                         txtPassword.setEnabled(false);
                     } else {
-                        MessageDialog.openError(getShell(), title, "Failed to authenticate user!");
+                        lblLoginStatus.setText(LOGIN_FAILED_MSG);
+                        lblLoginStatus.setForeground(CloudDeploymentWizardConstants.Colors.red);
+//                        MessageDialog.openError(getShell(), title, "Failed to authenticate user - Incorrect Organization ID / Username / Password!");
                     }
+                    lblLoginStatus.getParent().layout();
                     
                 } catch (Exception e1) {
+                    e1.printStackTrace();
                     MessageDialog.openError(getShell(), title, e1.getMessage());
                 }
             }
@@ -188,16 +209,26 @@ public class LoginWizardPage extends WizardPage {
         
         // Create a Link
         Link signupLink = new Link(container, SWT.NONE);
-        signupLink.setText("Don't have an account? <a href=\"https://wso2.com/integration/cloud/\">Register now</a>");
+        signupLink.setText(SIGN_UP_LABEL_TEXT);
         GridData linkGridData = new GridData(SWT.CENTER, SWT.CENTER, false, false, 1, 1);
         signupLink.setLayoutData(linkGridData);
+        
+        // To fill the grid layout
+        new Label(container, SWT.NONE);
+        new Label(container, SWT.NONE);
+        
+        lblLoginStatus = new Label(container, SWT.NONE);
+        GridData loginStatusGridData = new GridData(SWT.CENTER, SWT.BOTTOM, false, true, 1, 1);
+        loginStatusGridData.heightHint = 200;
+        lblLoginStatus.setLayoutData(loginStatusGridData);
+        lblLoginStatus.setText("Test");
          
         // Event handling when users click on link.
         signupLink.addSelectionListener(new SelectionAdapter()  {
          
             @Override
             public void widgetSelected(SelectionEvent e) {
-                Program.launch("https://wso2.com/integration/cloud/");
+                Program.launch(INTEGRATION_CLOUD_SINGUP_LINK);
             }
              
         });
@@ -208,7 +239,7 @@ public class LoginWizardPage extends WizardPage {
         
         try {
             return (client.login(getUsername(), getPassword(), getTenant()));
-        } catch (CloudDeploymentException e) {
+        } catch (CloudDeploymentException | InvalidTokenException e) {
             System.out.println("Not found");
         }
         return false;
@@ -276,6 +307,5 @@ public class LoginWizardPage extends WizardPage {
     public void setTenant(String tenant) {
         this.tenant = tenant;
     }
-    
-    
+
 }

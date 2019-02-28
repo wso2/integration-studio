@@ -21,6 +21,7 @@ package org.wso2.developerstudio.eclipse.esb.cloud.client;
 import org.apache.http.client.CookieStore;
 import org.apache.http.impl.client.BasicCookieStore;
 import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.CloudDeploymentException;
+import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.InvalidTokenException;
 import org.wso2.developerstudio.eclipse.esb.cloud.model.Application;
 import org.wso2.developerstudio.eclipse.esb.cloud.model.EndpointData;
 import org.wso2.developerstudio.eclipse.esb.cloud.resources.CloudServiceConstants;
@@ -40,6 +41,8 @@ public class IntegrationCloudServiceClient {
     private static CookieStore cookieStore;
     private static IntegrationCloudServiceClient client;
     
+    private static final String NO_RESOURCES_ERROR = "Application creation request not accepted because no resources available to create new application/version";
+    
     private IntegrationCloudServiceClient() {
         
     }
@@ -57,7 +60,7 @@ public class IntegrationCloudServiceClient {
         return client;
     }
 
-    public boolean login(String username, String password, String tenant) throws CloudDeploymentException {
+    public boolean login(String username, String password, String tenant) throws CloudDeploymentException, InvalidTokenException {
         String loginUrl = CloudServiceConstants.ServiceEndpoints.LOGIN_URL;
         
         String user = username + "@" + tenant;
@@ -77,7 +80,7 @@ public class IntegrationCloudServiceClient {
         return message.equals("User successfully logged in");
     }
     
-    public List<Application> getApplicationList() throws CloudDeploymentException {
+    public List<Application> getApplicationList() throws CloudDeploymentException, InvalidTokenException {
         String getAppListUrl = CloudServiceConstants.ServiceEndpoints.INDEX_URL;
 
         Map<String, String> data = new HashMap<>();
@@ -92,7 +95,7 @@ public class IntegrationCloudServiceClient {
         return JsonUtils.getApplicationListFromJson(response);
     }
 
-    public Application getApplication(String appName) throws CloudDeploymentException {
+    public Application getApplication(String appName) throws CloudDeploymentException, InvalidTokenException {
         String getAppUrl = CloudServiceConstants.ServiceEndpoints.APPLICATION_URL;
 
         Map<String, String> data = new HashMap<>();
@@ -108,7 +111,7 @@ public class IntegrationCloudServiceClient {
         return JsonUtils.getApplicationFromJson(response);
     }
     
-    public String getApplicationEndpoints(String appType, String deploymentURL, String versionId) throws CloudDeploymentException {
+    public String getApplicationEndpoints(String appType, String deploymentURL, String versionId) throws CloudDeploymentException, InvalidTokenException {
         String getAppUrl = CloudServiceConstants.ServiceEndpoints.APPLICATION_URL;
 
         Map<String, String> data = new HashMap<>();
@@ -122,7 +125,7 @@ public class IntegrationCloudServiceClient {
         return response;
     }
 
-    public void createApplication(String appName, String appDescription, String version, String fileName, String fileLocation, String iconLocation, List<Map<String, String>> tags, boolean isNewVersion) throws CloudDeploymentException {
+    public void createApplication(String appName, String appDescription, String version, String fileName, String fileLocation, String iconLocation, List<Map<String, String>> tags, boolean isNewVersion) throws CloudDeploymentException, InvalidTokenException {
 
         Map<String, String> files = new HashMap<>();
         files.put("fileupload", fileLocation);
@@ -153,6 +156,10 @@ public class IntegrationCloudServiceClient {
         data.put("runtime", CloudServiceConstants.AppConfigs.RUNTIME);        
         
         String response = HTTPClientUtil.sendPostWithMulipartFormData(createAppUrl, data, files, cookieStore);
+        
+        if (response.equals(NO_RESOURCES_ERROR)) {
+            throw new CloudDeploymentException(NO_RESOURCES_ERROR);
+        }
     }
 
     public CookieStore getCookieStore() {

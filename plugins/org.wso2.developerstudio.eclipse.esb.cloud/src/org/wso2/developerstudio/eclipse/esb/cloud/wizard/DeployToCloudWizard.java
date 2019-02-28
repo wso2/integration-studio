@@ -44,6 +44,7 @@ import org.wso2.developerstudio.eclipse.distribution.project.validator.ProjectLi
 import org.wso2.developerstudio.eclipse.esb.cloud.Activator;
 import org.wso2.developerstudio.eclipse.esb.cloud.job.CloudDeploymentJob;
 import org.wso2.developerstudio.eclipse.esb.cloud.resources.CloudDeploymentWizardConstants;
+import org.wso2.developerstudio.eclipse.esb.cloud.util.UserSessionManager;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
@@ -61,10 +62,10 @@ public class DeployToCloudWizard extends Wizard implements IExportWizard {
     private DistributionProjectExportWizardPage mainPage;
     private LoginWizardPage loginPage;
     private AppDetailsWizardPage appDetailsPage;
-    
+
     // Cloud deployment job
     CloudDeploymentJob cloudDeploymentJob;
-    
+
     private IFile pomFileRes;
     private File pomFile;
     private IProject selectedProject;
@@ -76,7 +77,7 @@ public class DeployToCloudWizard extends Wizard implements IExportWizard {
     private Map<String, String> serverRoleList = new HashMap<String, String>();
 
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
-//    private IntegrationCloudServiceClient client;
+    // private IntegrationCloudServiceClient client;
 
     @Override
     public void init(IWorkbench workbench, IStructuredSelection selection) {
@@ -87,8 +88,8 @@ public class DeployToCloudWizard extends Wizard implements IExportWizard {
             selectedProject = getSelectedProject(selection);
             pomFileRes = selectedProject.getFile("pom.xml");
             pomFile = pomFileRes.getLocation().toFile();
-//            client = IntegrationCloudServiceClient.getInstance();
-            
+            // client = IntegrationCloudServiceClient.getInstance();
+
             if (!selectedProject.hasNature(Constants.DISTRIBUTION_PROJECT_NATURE)) {
                 throw new Exception();
             }
@@ -132,36 +133,32 @@ public class DeployToCloudWizard extends Wizard implements IExportWizard {
 
     @Override
     public boolean canFinish() {
-        if (dependencyMap.size() == 0) {
-            return false;
-        }
-
-        return super.canFinish();
+        return appDetailsPage.equals(getContainer().getCurrentPage());
     }
 
     @Override
     public boolean performFinish() {
 
-        String finalFileName = String.format(CloudDeploymentWizardConstants.CAR_FILE_NAME_PLACEHOLDER, appDetailsPage.getName()
-                .replaceAll(CloudDeploymentWizardConstants.CAR_FILE_SUFFIX, CloudDeploymentWizardConstants.EMPTY_STRING),
+        String finalFileName = String.format(CloudDeploymentWizardConstants.CAR_FILE_NAME_PLACEHOLDER,
+                appDetailsPage.getName().replaceAll(CloudDeploymentWizardConstants.CAR_FILE_SUFFIX,
+                        CloudDeploymentWizardConstants.EMPTY_STRING),
                 appDetailsPage.getVersion());
-        
+
         IResource carbonArchive;
         try {
             carbonArchive = ExportUtil.buildCAppProject(selectedProject);
-            
+
             // Create and schedule a background job to deploy the application
-            cloudDeploymentJob = new CloudDeploymentJob(appDetailsPage.getName(), appDetailsPage.getDescription(), appDetailsPage.getVersion(), finalFileName, carbonArchive.getLocation().toFile().getAbsolutePath(), appDetailsPage.getAppIcon(), appDetailsPage.getTags(), appDetailsPage.isNewVersion());
+            cloudDeploymentJob = new CloudDeploymentJob(appDetailsPage.getName(), appDetailsPage.getDescription(),
+                    appDetailsPage.getVersion(), finalFileName, carbonArchive.getLocation().toFile().getAbsolutePath(),
+                    appDetailsPage.getAppIcon(), appDetailsPage.getTags(), appDetailsPage.isNewVersion());
             cloudDeploymentJob.schedule();
-            
-            openMessageBox(getShell(), CloudDeploymentWizardConstants.DIALOG_TITLE_TEXT,
-                    CloudDeploymentWizardConstants.SuccessMessages.SUCCESS_CREATING_APPLICATION_MSG,
-                    SWT.ICON_INFORMATION);
-            
+
         } catch (Exception e) {
             log.error(CloudDeploymentWizardConstants.ErrorMessages.ERROR_CREATING_CAR_FILE_MSG, e);
             openMessageBox(getShell(), CloudDeploymentWizardConstants.DIALOG_TITLE_TEXT,
-                    CloudDeploymentWizardConstants.ErrorMessages.ERROR_CREATING_CAR_FILE_MSG + " For more details view the log.\n",
+                    CloudDeploymentWizardConstants.ErrorMessages.ERROR_CREATING_CAR_FILE_MSG
+                            + " For more details view the log.\n",
                     SWT.ICON_ERROR);
         }
 
@@ -186,9 +183,9 @@ public class DeployToCloudWizard extends Wizard implements IExportWizard {
 
     public void addPages() {
         if (!initError) {
-//            if (UserSessionManager.getCurrentSession() == null) {
+            if (UserSessionManager.getCurrentSession() == null) {
                 addPage(loginPage);
-//            }
+            }
             addPage(mainPage);
             addPage(appDetailsPage);
             super.addPages();
@@ -196,14 +193,14 @@ public class DeployToCloudWizard extends Wizard implements IExportWizard {
     }
 
     private void setSessionProperty() {
-//        try {
-//            detailsPage.getSelectedProject()
-//                    .setSessionProperty(
-//                            new QualifiedName(ExportImageWizardConstants.EMPTY_STRING,
-//                                    detailsPage.getSelectedProject().getName()));
-//        } catch (CoreException e) {
-//            log.error("Error geting session properties", e);
-//        }
+        // try {
+        // detailsPage.getSelectedProject()
+        // .setSessionProperty(
+        // new QualifiedName(ExportImageWizardConstants.EMPTY_STRING,
+        // detailsPage.getSelectedProject().getName()));
+        // } catch (CoreException e) {
+        // log.error("Error geting session properties", e);
+        // }
     }
 
     private int openMessageBox(Shell shell, String title, String message, int style) {

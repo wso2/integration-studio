@@ -16,6 +16,7 @@ import org.apache.http.entity.mime.content.FileBody;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.message.BasicNameValuePair;
 import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.CloudDeploymentException;
+import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.InvalidTokenException;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -54,7 +55,7 @@ public class HTTPClientUtil {
         return result.toString();
     }
 
-    public static String sendPostWithFormData(String url, Map<String, String> headers, Map<String, String> params, CookieStore cookieStore){
+    public static String sendPostWithFormData(String url, Map<String, String> headers, Map<String, String> params, CookieStore cookieStore) throws InvalidTokenException, CloudDeploymentException{
 
         HttpClient client = HttpClientBuilder.create().build();
         HttpPost post = new HttpPost(url);
@@ -82,6 +83,8 @@ public class HTTPClientUtil {
             HttpResponse response = client.execute(post, context);
 //            System.out.println("Response Code : "
 //                    + response.getStatusLine().getStatusCode());
+            
+            handleResponseStatus(response.getStatusLine().getStatusCode());
 
             BufferedReader rd = new BufferedReader(
                     new InputStreamReader(response.getEntity().getContent()));
@@ -99,7 +102,7 @@ public class HTTPClientUtil {
         return result.toString();
     }
 
-    public static String sendPostWithMulipartFormData(String url, Map<String, String> params, Map<String, String> files, CookieStore cookieStore) throws CloudDeploymentException{
+    public static String sendPostWithMulipartFormData(String url, Map<String, String> params, Map<String, String> files, CookieStore cookieStore) throws CloudDeploymentException, InvalidTokenException{
 
         HttpClient client = HttpClientBuilder.create().build();
         HttpPost post = new HttpPost(url);
@@ -134,9 +137,7 @@ public class HTTPClientUtil {
             System.out.println("Response Code : "
                     + response.getStatusLine().getStatusCode());
             
-            if (response.getStatusLine().getStatusCode() != 200) {
-                throw new CloudDeploymentException("Failed to complete request..!");
-            }
+            handleResponseStatus(response.getStatusLine().getStatusCode());
 
             BufferedReader rd1 = new BufferedReader(
                     new InputStreamReader(response.getEntity().getContent()));
@@ -150,5 +151,13 @@ public class HTTPClientUtil {
         }
 
         return result.toString();
+    }
+    
+    private static void handleResponseStatus(int status) throws InvalidTokenException, CloudDeploymentException {
+        if (status == 401) {
+            throw new InvalidTokenException("Invalid user session. Please log in again");
+        } else if (status != 200){
+            throw new CloudDeploymentException("Failed to complete request..!");
+        }
     }
 }

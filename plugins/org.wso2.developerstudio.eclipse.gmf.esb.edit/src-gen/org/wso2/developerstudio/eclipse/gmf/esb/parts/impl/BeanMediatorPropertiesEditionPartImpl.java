@@ -59,7 +59,7 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.BeanMediatorPropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 
@@ -86,6 +86,14 @@ public class BeanMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 	protected Text valueLiteral;
 	protected EMFComboViewer targetType;
 	protected Text targetLiteral;
+	// Start of user code  for targetExpression widgets declarations
+	
+	// End of user code
+
+	// Start of user code  for valueExpression widgets declarations
+	
+	// End of user code
+
 
 
 
@@ -135,6 +143,8 @@ public class BeanMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 		propertiesStep.addStep(EsbViewsRepository.BeanMediator.Properties.valueLiteral);
 		propertiesStep.addStep(EsbViewsRepository.BeanMediator.Properties.targetType);
 		propertiesStep.addStep(EsbViewsRepository.BeanMediator.Properties.targetLiteral);
+		propertiesStep.addStep(EsbViewsRepository.BeanMediator.Properties.targetExpression);
+		propertiesStep.addStep(EsbViewsRepository.BeanMediator.Properties.valueExpression);
 		
 		
 		composer = new PartComposer(beanMediatorStep) {
@@ -177,6 +187,12 @@ public class BeanMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 				if (key == EsbViewsRepository.BeanMediator.Properties.targetLiteral) {
 					return createTargetLiteralText(parent);
 				}
+				// Start of user code for targetExpression addToPart creation
+				
+				// End of user code
+				// Start of user code for valueExpression addToPart creation
+				
+				// End of user code
 				return parent;
 			}
 		};
@@ -1089,6 +1105,35 @@ public class BeanMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 
 
 
+	// Start of user code for targetExpression specific getters and setters implementation
+    @Override
+    public NamespacedProperty getTargetExpression() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void setTargetExpression(NamespacedProperty namespacedProperty) {
+        // TODO Auto-generated method stub
+        
+    }
+	// End of user code
+
+	// Start of user code for valueExpression specific getters and setters implementation
+
+    @Override
+    public NamespacedProperty getValueExpression() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void setValueExpression(NamespacedProperty namespacedProperty) {
+        // TODO Auto-generated method stub
+        
+    }
+	// End of user code
+
 	/**
 	 * {@inheritDoc}
 	 *
@@ -1098,6 +1143,9 @@ public class BeanMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 	public String getTitle() {
 		return EsbMessages.BeanMediator_Part_Title;
 	}
+
+
+
 
 	// Start of user code additional methods
 	

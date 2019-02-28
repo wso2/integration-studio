@@ -4186,6 +4186,12 @@ public class EsbMessages extends NLS {
 	public static String BeanMediatorPropertiesEditionPart_TargetLiteralLabel;
 
 	
+	public static String BeanMediatorPropertiesEditionPart_TargetExpressionLabel;
+
+	
+	public static String BeanMediatorPropertiesEditionPart_ValueExpressionLabel;
+
+	
 	public static String BeanMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;
 
 	
@@ -4694,6 +4700,9 @@ public class EsbMessages extends NLS {
 
 	
 	public static String SpringMediatorPropertiesEditionPart_BeanNameLabel;
+
+	
+	public static String SpringMediatorPropertiesEditionPart_ConfigurationKeyLabel;
 
 	
 	public static String SpringMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;

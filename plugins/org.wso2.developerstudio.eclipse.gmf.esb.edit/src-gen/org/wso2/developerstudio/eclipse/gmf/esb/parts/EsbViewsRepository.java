@@ -1766,6 +1766,14 @@ public class EsbViewsRepository {
 			
 			public static String targetLiteral = "esb::BeanMediator::properties::targetLiteral";
 			
+			// Start of user code for targetExpression ElementEditor key
+			public static String targetExpression = "esb::BeanMediator::properties::targetExpression";
+			// End of user code
+			
+			// Start of user code for valueExpression ElementEditor key
+			public static String valueExpression = "esb::BeanMediator::properties::valueExpression";
+			// End of user code
+			
 	
 		}
 	
@@ -3047,6 +3055,10 @@ public class EsbViewsRepository {
 			
 			
 			public static String beanName = "esb::SpringMediator::properties::beanName";
+			
+			// Start of user code for configurationKey ElementEditor key
+			public static String configurationKey = "esb::SpringMediator::key::configurationKey";
+			// End of user code
 			
 	
 		}

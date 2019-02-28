@@ -50,7 +50,7 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.SpringMediatorPropertiesEditionPart;
 
@@ -70,6 +70,10 @@ public class SpringMediatorPropertiesEditionPartImpl extends CompositeProperties
 	protected EList commentsListList;
 	protected Button reverse;
 	protected Text beanName;
+	// Start of user code  for configurationKey widgets declarations
+
+	// End of user code
+
 
 
 
@@ -112,6 +116,7 @@ public class SpringMediatorPropertiesEditionPartImpl extends CompositeProperties
 		propertiesStep.addStep(EsbViewsRepository.SpringMediator.Properties.commentsList);
 		propertiesStep.addStep(EsbViewsRepository.SpringMediator.Properties.reverse);
 		propertiesStep.addStep(EsbViewsRepository.SpringMediator.Properties.beanName);
+		propertiesStep.addStep(EsbViewsRepository.SpringMediator.Properties.configurationKey);
 		
 		
 		composer = new PartComposer(springMediatorStep) {
@@ -133,6 +138,9 @@ public class SpringMediatorPropertiesEditionPartImpl extends CompositeProperties
 				if (key == EsbViewsRepository.SpringMediator.Properties.beanName) {
 					return createBeanNameText(parent);
 				}
+				// Start of user code for configurationKey addToPart creation
+
+				// End of user code
 				return parent;
 			}
 		};
@@ -334,7 +342,7 @@ public class SpringMediatorPropertiesEditionPartImpl extends CompositeProperties
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-		
+
 		// End of user code
 	}
 
@@ -490,6 +498,20 @@ public class SpringMediatorPropertiesEditionPartImpl extends CompositeProperties
 
 
 
+	// Start of user code for configurationKey specific getters and setters implementation
+    @Override
+    public RegistryKeyProperty getConfigurationKey() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void setConfigurationKey(RegistryKeyProperty registryKeyProperty) {
+        // TODO Auto-generated method stub
+
+    }
+	// End of user code
+
 	/**
 	 * {@inheritDoc}
 	 *
@@ -500,8 +522,10 @@ public class SpringMediatorPropertiesEditionPartImpl extends CompositeProperties
 		return EsbMessages.SpringMediator_Part_Title;
 	}
 
+
+
 	// Start of user code additional methods
-	
+
 	// End of user code
 
 

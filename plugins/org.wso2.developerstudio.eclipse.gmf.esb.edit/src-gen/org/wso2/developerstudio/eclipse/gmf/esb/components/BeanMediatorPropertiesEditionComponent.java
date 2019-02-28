@@ -40,8 +40,9 @@ import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 import org.wso2.developerstudio.eclipse.gmf.esb.BeanMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.BeanMediatorAction;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.BeanMediatorPropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 
@@ -95,7 +96,7 @@ public class BeanMediatorPropertiesEditionComponent extends SinglePartProperties
 				basePart.setReverse(beanMediator.isReverse());
 			}
 			if (isAccessible(EsbViewsRepository.BeanMediator.Properties.class_))
-				basePart.setClass_(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, beanMediator.getClass()));
+				basePart.setClass_(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, beanMediator.getClass_()));
 			
 			if (isAccessible(EsbViewsRepository.BeanMediator.Properties.action)) {
 				basePart.initAction(EEFUtils.choiceOfValues(beanMediator, EsbPackage.eINSTANCE.getBeanMediator_Action()), beanMediator.getAction());
@@ -118,6 +119,18 @@ public class BeanMediatorPropertiesEditionComponent extends SinglePartProperties
 			if (isAccessible(EsbViewsRepository.BeanMediator.Properties.targetLiteral))
 				basePart.setTargetLiteral(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, beanMediator.getTargetLiteral()));
 			
+            // Start of user code for valueExpression command update
+            if (isAccessible(EsbViewsRepository.BeanMediator.Properties.valueExpression)) {
+                basePart.setValueExpression(beanMediator.getValueExpression());
+            }
+            // End of user code
+
+            // Start of user code for targetExpression command update
+            if (isAccessible(EsbViewsRepository.BeanMediator.Properties.targetExpression)) {
+                basePart.setTargetExpression(beanMediator.getTargetExpression());
+            }
+            // End of user code
+			
 			// init filters
 			
 			
@@ -130,6 +143,12 @@ public class BeanMediatorPropertiesEditionComponent extends SinglePartProperties
 			
 			
 			
+			// Start of user code  for valueExpression filter update
+			// End of user code
+			
+			// Start of user code  for targetExpression filter update
+			// End of user code
+			
 			// init values for referenced views
 			
 			// init filters for referenced views
@@ -137,6 +156,8 @@ public class BeanMediatorPropertiesEditionComponent extends SinglePartProperties
 		}
 		setInitializing(false);
 	}
+
+
 
 
 
@@ -189,6 +210,12 @@ public class BeanMediatorPropertiesEditionComponent extends SinglePartProperties
 		if (editorKey == EsbViewsRepository.BeanMediator.Properties.targetLiteral) {
 			return EsbPackage.eINSTANCE.getBeanMediator_TargetLiteral();
 		}
+		if (editorKey == EsbViewsRepository.BeanMediator.Properties.valueExpression) {
+			return EsbPackage.eINSTANCE.getBeanMediator_ValueExpression();
+		}
+		if (editorKey == EsbViewsRepository.BeanMediator.Properties.targetExpression) {
+			return EsbPackage.eINSTANCE.getBeanMediator_TargetExpression();
+		}
 		return super.associatedFeature(editorKey);
 	}
 
@@ -234,6 +261,28 @@ public class BeanMediatorPropertiesEditionComponent extends SinglePartProperties
 		}
 		if (EsbViewsRepository.BeanMediator.Properties.targetLiteral == event.getAffectedEditor()) {
 			beanMediator.setTargetLiteral((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
+		}
+		if (EsbViewsRepository.BeanMediator.Properties.valueExpression == event.getAffectedEditor()) {
+			// Start of user code for updateValueExpression method body
+            if (event.getNewValue() != null) {
+                NamespacedProperty nspValueExpression = (NamespacedProperty) event.getNewValue();
+                beanMediator.setValueExpression(nspValueExpression);
+            } else {
+                beanMediator.setValueExpression(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+            }
+			// End of user code
+			
+		}
+		if (EsbViewsRepository.BeanMediator.Properties.targetExpression == event.getAffectedEditor()) {
+			// Start of user code for updateTargetExpression method body
+            if (event.getNewValue() != null) {
+                NamespacedProperty nspValueExpression = (NamespacedProperty) event.getNewValue();
+                beanMediator.setTargetExpression(nspValueExpression);
+            } else {
+                beanMediator.setTargetExpression(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+            }
+			// End of user code
+			
 		}
 	}
 
@@ -311,6 +360,26 @@ public class BeanMediatorPropertiesEditionComponent extends SinglePartProperties
 					basePart.setTargetLiteral("");
 				}
 			}
+					// Start of user code for valueExpression live update
+            if (EsbPackage.eINSTANCE.getBeanMediator_TargetExpression().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.BeanMediator.Properties.targetExpression)) {
+                if (msg.getNewValue() != null) {
+                    basePart.setTargetExpression((NamespacedProperty)msg.getNewValue());
+                } else {
+                    basePart.setTargetExpression(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+                }
+            }
+					// End of user code
+			
+					// Start of user code for targetExpression live update
+	           if (EsbPackage.eINSTANCE.getBeanMediator_ValueExpression().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.BeanMediator.Properties.valueExpression)) {
+	                if (msg.getNewValue() != null) {
+	                    basePart.setValueExpression((NamespacedProperty)msg.getNewValue());
+	                } else {
+	                    basePart.setValueExpression(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+	                }
+	            }
+					// End of user code
+			
 			
 		}
 	}
@@ -333,7 +402,9 @@ public class BeanMediatorPropertiesEditionComponent extends SinglePartProperties
 			EsbPackage.eINSTANCE.getBeanMediator_ValueType(),
 			EsbPackage.eINSTANCE.getBeanMediator_ValueLiteral(),
 			EsbPackage.eINSTANCE.getBeanMediator_TargetType(),
-			EsbPackage.eINSTANCE.getBeanMediator_TargetLiteral()		);
+			EsbPackage.eINSTANCE.getBeanMediator_TargetLiteral(),
+			EsbPackage.eINSTANCE.getBeanMediator_ValueExpression(),
+			EsbPackage.eINSTANCE.getBeanMediator_TargetExpression()		);
 		return new NotificationFilter[] {filter,};
 	}
 

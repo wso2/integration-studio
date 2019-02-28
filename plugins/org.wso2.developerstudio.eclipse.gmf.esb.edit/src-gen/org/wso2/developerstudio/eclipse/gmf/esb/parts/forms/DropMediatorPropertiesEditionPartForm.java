@@ -148,9 +148,9 @@ public class DropMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 		};
 		composer.compose(view);
 	}
-	/**
-	 * 
-	 */
+    /**
+     * @generated NOT
+     */
 	protected Composite createPropertiesGroup(FormToolkit widgetFactory, final Composite parent) {
 		Section propertiesSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		propertiesSection.setText(EsbMessages.DropMediatorPropertiesEditionPart_PropertiesGroupLabel);
@@ -165,7 +165,9 @@ public class DropMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 		return propertiesGroup;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createDescriptionText(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.DropMediator.Properties.description, EsbMessages.DropMediatorPropertiesEditionPart_DescriptionLabel);
 		description = widgetFactory.createText(parent, ""); //$NON-NLS-1$
@@ -233,9 +235,9 @@ public class DropMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 		return parent;
 	}
 
-	/**
-	 * 
-	 */
+    /**
+     * @generated NOT
+     */
 	protected Composite createCommentsListMultiValuedEditor(FormToolkit widgetFactory, Composite parent) {
 	    Control [] previousControls = propertiesGroup.getChildren();
 	    commentsList = widgetFactory.createText(parent, "", SWT.READ_ONLY); //$NON-NLS-1$
@@ -281,7 +283,9 @@ public class DropMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createReverseCheckbox(FormToolkit widgetFactory, Composite parent) {
 	    Control [] previousControls = propertiesGroup.getChildren();
 	    reverse = widgetFactory.createButton(parent, getDescription(EsbViewsRepository.DropMediator.Properties.reverse, EsbMessages.DropMediatorPropertiesEditionPart_ReverseLabel), SWT.CHECK);

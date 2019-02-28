@@ -3,6 +3,8 @@
  */
 package org.wso2.developerstudio.eclipse.gmf.esb.parts.forms;
 
+import java.util.ArrayList;
+
 // Start of user code for imports
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
@@ -46,6 +48,7 @@ import org.eclipse.swt.layout.GridLayout;
 
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Text;
 
 import org.eclipse.ui.forms.widgets.Form;
@@ -54,11 +57,14 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.SpringMediatorPropertiesEditionPart;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.developerstudio.esb.form.editors.article.providers.NamedEntityDescriptor;
 
 // End of user code
 
@@ -74,6 +80,15 @@ public class SpringMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	protected EList commentsListList;
 	protected Button reverse;
 	protected Text beanName;
+	// Start of user code  for configurationKey widgets declarations
+    protected RegistryKeyProperty configurationKey;
+    protected Text configurationKeyText;
+	protected Control[] descriptionElements;
+	protected Control[] configurationKeyElements;
+    protected Control[] beanNameElements;
+    protected Composite propertiesGroup;
+	// End of user code
+
 
 
 
@@ -123,6 +138,7 @@ public class SpringMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 		propertiesStep.addStep(EsbViewsRepository.SpringMediator.Properties.commentsList);
 		propertiesStep.addStep(EsbViewsRepository.SpringMediator.Properties.reverse);
 		propertiesStep.addStep(EsbViewsRepository.SpringMediator.Properties.beanName);
+		propertiesStep.addStep(EsbViewsRepository.SpringMediator.Properties.configurationKey);
 		
 		
 		composer = new PartComposer(springMediatorStep) {
@@ -144,21 +160,28 @@ public class SpringMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 				if (key == EsbViewsRepository.SpringMediator.Properties.beanName) {
 					return createBeanNameText(widgetFactory, parent);
 				}
+				// Start of user code for configurationKey addToPart creation
+                if (key == EsbViewsRepository.SpringMediator.Properties.configurationKey) {
+                    return createConfigurationKeyWidget(widgetFactory, parent);
+                }
+				// End of user code
 				return parent;
 			}
 		};
 		composer.compose(view);
 	}
-	/**
-	 * 
-	 */
+
+
+    /**
+     * @generated NOT
+     */
 	protected Composite createPropertiesGroup(FormToolkit widgetFactory, final Composite parent) {
 		Section propertiesSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		propertiesSection.setText(EsbMessages.SpringMediatorPropertiesEditionPart_PropertiesGroupLabel);
 		GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
 		propertiesSectionData.horizontalSpan = 3;
 		propertiesSection.setLayoutData(propertiesSectionData);
-		Composite propertiesGroup = widgetFactory.createComposite(propertiesSection);
+		propertiesGroup = widgetFactory.createComposite(propertiesSection);
 		GridLayout propertiesGroupLayout = new GridLayout();
 		propertiesGroupLayout.numColumns = 3;
 		propertiesGroup.setLayout(propertiesGroupLayout);
@@ -166,9 +189,12 @@ public class SpringMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 		return propertiesGroup;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createDescriptionText(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EsbViewsRepository.SpringMediator.Properties.description, EsbMessages.SpringMediatorPropertiesEditionPart_DescriptionLabel);
+	    Control [] previousControls = propertiesGroup.getChildren();
+        createDescription(parent, EsbViewsRepository.SpringMediator.Properties.description, EsbMessages.SpringMediatorPropertiesEditionPart_DescriptionLabel);
 		description = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		description.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -229,7 +255,8 @@ public class SpringMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 		EditingUtils.setEEFtype(description, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.SpringMediator.Properties.description, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createDescriptionText
-
+		Control [] newControls = propertiesGroup.getChildren();
+		descriptionElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
 		// End of user code
 		return parent;
 	}
@@ -309,9 +336,12 @@ public class SpringMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createBeanNameText(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EsbViewsRepository.SpringMediator.Properties.beanName, EsbMessages.SpringMediatorPropertiesEditionPart_BeanNameLabel);
+	    Control [] previousControls = propertiesGroup.getChildren();
+        createDescription(parent, EsbViewsRepository.SpringMediator.Properties.beanName, EsbMessages.SpringMediatorPropertiesEditionPart_BeanNameLabel);
 		beanName = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		beanName.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -372,6 +402,8 @@ public class SpringMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 		EditingUtils.setEEFtype(beanName, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.SpringMediator.Properties.beanName, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createBeanNameText
+		Control [] newControls = propertiesGroup.getChildren();
+        beanNameElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
 
 		// End of user code
 		return parent;
@@ -542,6 +574,22 @@ public class SpringMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 
 
 
+	// Start of user code for configurationKey specific getters and setters implementation
+
+    @Override
+    public RegistryKeyProperty getConfigurationKey() {
+        return configurationKey;
+    }
+
+    @Override
+    public void setConfigurationKey(RegistryKeyProperty registryKeyProperty) {
+        if (registryKeyProperty != null) {
+            configurationKeyText.setText(registryKeyProperty.getKeyValue());
+            configurationKey = registryKeyProperty;
+        }
+     }
+	// End of user code
+
 	/**
 	 * {@inheritDoc}
 	 *
@@ -552,8 +600,71 @@ public class SpringMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 		return EsbMessages.SpringMediator_Part_Title;
 	}
 
+
 	// Start of user code additional methods
-	
+    protected Composite createConfigurationKeyWidget(FormToolkit widgetFactory, Composite parent) {
+        Control configurationKeyLabel = createDescription(parent,
+                EsbViewsRepository.SpringMediator.Properties.configurationKey,
+                EsbMessages.SpringMediatorPropertiesEditionPart_ConfigurationKeyLabel);
+        widgetFactory.paintBordersFor(parent);
+        if (configurationKey == null) {
+            configurationKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
+        }
+        String initValueExpression = configurationKey.getKeyValue().isEmpty() ? "" : configurationKey.getKeyValue();
+        configurationKeyText = widgetFactory.createText(parent, initValueExpression);
+        configurationKeyText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+        widgetFactory.paintBordersFor(parent);
+        GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
+        configurationKeyText.setLayoutData(valueData);
+        configurationKeyText.addFocusListener(new FocusAdapter() {
+            /**
+             * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+             * 
+             */
+            @Override
+            @SuppressWarnings("synthetic-access")
+            public void focusLost(FocusEvent e) {
+            }
+
+            /**
+             * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+             */
+            @Override
+            public void focusGained(FocusEvent e) {
+                EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
+                        SWT.NULL, configurationKey, new ArrayList<NamedEntityDescriptor>());
+                dialog.open();
+                configurationKeyText.setText(configurationKey.getKeyValue());
+                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                        SpringMediatorPropertiesEditionPartForm.this,
+                        EsbViewsRepository.SpringMediator.Properties.configurationKey, PropertiesEditionEvent.COMMIT,
+                        PropertiesEditionEvent.SET, null, getConfigurationKey()));
+            }
+        });
+        EditingUtils.setID(configurationKeyText, EsbViewsRepository.SpringMediator.Properties.configurationKey);
+        EditingUtils.setEEFtype(configurationKeyText, "eef::Text");
+        Control configurationKeyHelp = FormUtils.createHelpButton(widgetFactory, parent,
+                propertiesEditionComponent.getHelpContent(EsbViewsRepository.SpringMediator.Properties.configurationKey,
+                        EsbViewsRepository.FORM_KIND),
+                null); // $NON-NLS-1$
+        configurationKeyElements = new Control[] { configurationKeyLabel, configurationKeyText, configurationKeyHelp };
+        return parent;
+     }
+    
+    @Override
+    public void refresh() {
+        super.refresh();
+        validate();
+    }
+
+    public void validate() {
+        EEFPropertyViewUtil epv = new EEFPropertyViewUtil(view);
+        epv.clearElements(new Composite[] {propertiesGroup});
+        epv.showEntry(descriptionElements, false);
+        epv.showEntry(beanNameElements, false);
+        epv.showEntry(configurationKeyElements, false);
+        view.layout(true, true);
+    }
 	// End of user code
 
 

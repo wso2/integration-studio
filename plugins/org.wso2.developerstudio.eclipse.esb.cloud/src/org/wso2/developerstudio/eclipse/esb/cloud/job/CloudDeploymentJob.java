@@ -138,13 +138,12 @@ public class CloudDeploymentJob extends Job {
 
         } catch (CloudDeploymentException | InvalidTokenException | InterruptedException e) {
             log.error(CloudDeploymentWizardConstants.ErrorMessages.DEPLOY_TO_CLOUD_FAILED_MESSAGE, e);
-            showMessageBox(CloudDeploymentWizardConstants.ErrorMessages.DEPLOY_TO_CLOUD_FAILED_TITLE,
-                    CloudDeploymentWizardConstants.ErrorMessages.DEPLOY_TO_CLOUD_INTERNAL_ERROR_MSG, SWT.ICON_ERROR);
-           
+            showMessageBox(CloudDeploymentWizardConstants.ErrorMessages.DEPLOY_TO_CLOUD_FAILED_TITLE, e.getMessage(), SWT.ICON_ERROR);
             operationText = e.getMessage();
             monitor.beginTask(operationText, 100);
             monitor.worked(0);
             monitor.setCanceled(true);
+            return Status.CANCEL_STATUS;
         }
 
         monitor.worked(100);
@@ -159,7 +158,7 @@ public class CloudDeploymentJob extends Job {
 
     private void showMessageBox(String title, String message, int style) {
 
-        Display.getDefault().asyncExec(new Runnable() {
+        Display.getDefault().syncExec(new Runnable() {
             public void run() {
                 Display display = PlatformUI.getWorkbench().getDisplay();
                 Shell shell = display.getActiveShell();

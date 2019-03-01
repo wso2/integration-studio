@@ -1852,6 +1852,10 @@ public class EsbViewsRepository {
 			
 			public static String methodArguments = "esb::EJBMediator::properties::methodArguments";
 			
+			// Start of user code for sessionIdExpression ElementEditor key
+			public static String sessionIdExpression = "esb::EJBMediator::properties::sessionIdExpression";
+			// End of user code
+
 	
 		}
 	
@@ -1903,6 +1907,10 @@ public class EsbViewsRepository {
 			
 			public static String propertyValue = "esb::MethodArgument::properties::propertyValue";
 			
+			// Start of user code for propertyExpression ElementEditor key
+			public static String propertyExpression = "esb::MethodArgument::properties::propertyExpression";
+			// End of user code
+
 	
 		}
 	

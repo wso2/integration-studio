@@ -54,8 +54,9 @@ import org.eclipse.jface.viewers.ViewerFilter;
 import org.wso2.developerstudio.eclipse.gmf.esb.EJBMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.MethodArgument;
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EJBMediatorPropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 
@@ -117,7 +118,7 @@ public class EJBMediatorPropertiesEditionComponent extends SinglePartPropertiesE
 				basePart.setBeanstalk(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, eJBMediator.getBeanstalk()));
 			
 			if (isAccessible(EsbViewsRepository.EJBMediator.Properties.class_))
-				basePart.setClass_(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, eJBMediator.getClass()));
+				basePart.setClass_(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, eJBMediator.getClass_()));
 			
 			if (isAccessible(EsbViewsRepository.EJBMediator.Properties.method))
 				basePart.setMethod(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, eJBMediator.getMethod()));
@@ -141,6 +142,12 @@ public class EJBMediatorPropertiesEditionComponent extends SinglePartPropertiesE
 				methodArgumentsSettings = new ReferencesTableSettings(eJBMediator, EsbPackage.eINSTANCE.getEJBMediator_MethodArguments());
 				basePart.initMethodArguments(methodArgumentsSettings);
 			}
+			// Start of user code  for sessionIdExpression command update
+            if (isAccessible(EsbViewsRepository.EJBMediator.Properties.sessionIdExpression)) {
+                basePart.setSessionIdExpression(eJBMediator.getSessionIdExpression());
+            }
+			// End of user code
+			
 			// init filters
 			
 			
@@ -168,6 +175,9 @@ public class EJBMediatorPropertiesEditionComponent extends SinglePartPropertiesE
 				// Start of user code for additional businessfilters for methodArguments
 				// End of user code
 			}
+			// Start of user code  for sessionIdExpression filter update
+			// End of user code
+			
 			// init values for referenced views
 			
 			// init filters for referenced views
@@ -175,6 +185,7 @@ public class EJBMediatorPropertiesEditionComponent extends SinglePartPropertiesE
 		}
 		setInitializing(false);
 	}
+
 
 
 
@@ -230,6 +241,9 @@ public class EJBMediatorPropertiesEditionComponent extends SinglePartPropertiesE
 		}
 		if (editorKey == EsbViewsRepository.EJBMediator.Properties.methodArguments) {
 			return EsbPackage.eINSTANCE.getEJBMediator_MethodArguments();
+		}
+		if (editorKey == EsbViewsRepository.EJBMediator.Properties.sessionIdExpression) {
+			return EsbPackage.eINSTANCE.getEJBMediator_SessionIdExpression();
 		}
 		return super.associatedFeature(editorKey);
 	}
@@ -301,6 +315,17 @@ public class EJBMediatorPropertiesEditionComponent extends SinglePartPropertiesE
 			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
 				methodArgumentsSettings.move(event.getNewIndex(), (MethodArgument) event.getNewValue());
 			}
+		}
+		if (EsbViewsRepository.EJBMediator.Properties.sessionIdExpression == event.getAffectedEditor()) {
+			// Start of user code for updateSessionIdExpression method body
+            if (event.getNewValue() != null) {
+                NamespacedProperty nsp = (NamespacedProperty) event.getNewValue();
+                eJBMediator.setSessionIdExpression(nsp);
+            } else {
+                eJBMediator.setSessionIdExpression(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+            }
+			// End of user code
+			
 		}
 	}
 
@@ -384,6 +409,18 @@ public class EJBMediatorPropertiesEditionComponent extends SinglePartPropertiesE
 			}
 			if (EsbPackage.eINSTANCE.getEJBMediator_MethodArguments().equals(msg.getFeature()) && isAccessible(EsbViewsRepository.EJBMediator.Properties.methodArguments))
 				basePart.updateMethodArguments();
+					// Start of user code for sessionIdExpression live update
+            if (EsbPackage.eINSTANCE.getEJBMediator_SessionIdExpression().equals(msg.getFeature())
+                    && msg.getNotifier().equals(semanticObject) && basePart != null
+                    && isAccessible(EsbViewsRepository.EJBMediator.Properties.sessionIdExpression)) {
+                if (msg.getNewValue() != null) {
+                    basePart.setSessionIdExpression((NamespacedProperty) msg.getNewValue());
+                } else {
+                    basePart.setSessionIdExpression(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+                }
+            }
+					// End of user code
+			
 			
 		}
 	}
@@ -407,7 +444,8 @@ public class EJBMediatorPropertiesEditionComponent extends SinglePartPropertiesE
 			EsbPackage.eINSTANCE.getEJBMediator_Remove(),
 			EsbPackage.eINSTANCE.getEJBMediator_Target(),
 			EsbPackage.eINSTANCE.getEJBMediator_JNDIName(),
-			EsbPackage.eINSTANCE.getEJBMediator_MethodArguments()		);
+			EsbPackage.eINSTANCE.getEJBMediator_MethodArguments(),
+			EsbPackage.eINSTANCE.getEJBMediator_SessionIdExpression()		);
 		return new NotificationFilter[] {filter,};
 	}
 

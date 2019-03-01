@@ -257,12 +257,6 @@ public class AppDetailsWizardPage extends WizardPage{
         // Application Version
         createVersionInput(parent, existingAppContainer);
         
-        // Application Description
-//        createDescriptionInput(existingAppContainer);
-        
-        // Application Icon
-//        createApplicationIconInput(existingAppContainer);
-        
         // Tags
         createTagsInput(existingAppContainer);
         
@@ -565,18 +559,6 @@ public class AppDetailsWizardPage extends WizardPage{
                 int idx = appNames.getSelectionIndex();
                 String application = appNames.getItem(idx);
                 setName(application);
-//                for (Application app: applicationList){
-//                    if (app.getApplicationName().equals(application)) {
-                        
-//                        String response = client.getApplicationEndpoints(app.getApplicationType(), version.getValue().getDeploymentURL(), version.getValue().getVersionId());
-//                        if (response != null && !response.equals("null")) {
-//                            
-//                        }
-//                        System.out.println(app);
-//                        setDescription(application.getApplicationDescription());
-//                    }
-//                }
-                
             }
         });
     }

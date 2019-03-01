@@ -34,7 +34,8 @@ import com.google.gson.JsonParser;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 public class IntegrationCloudServiceClient {
     
@@ -42,6 +43,7 @@ public class IntegrationCloudServiceClient {
     private static IntegrationCloudServiceClient client;
     
     private static final String NO_RESOURCES_ERROR = "Application creation request not accepted because no resources available to create new application/version";
+    private static final String VERSION_EXISTS_ERROR = "applicationRevision is required!";
     
     private IntegrationCloudServiceClient() {
         
@@ -49,13 +51,8 @@ public class IntegrationCloudServiceClient {
     
     public static IntegrationCloudServiceClient getInstance() {
         if (null == client) {
-//            synchronized (client){
-//                if (null == client){
-                    cookieStore = new BasicCookieStore();
-                    client = new IntegrationCloudServiceClient();
-//                }
-//            }
-            
+            cookieStore = new BasicCookieStore();
+            client = new IntegrationCloudServiceClient();
         } 
         return client;
     }
@@ -92,7 +89,14 @@ public class IntegrationCloudServiceClient {
             return null;
         }
         
-        return JsonUtils.getApplicationListFromJson(response);
+        List<Application> applications = JsonUtils.getApplicationListFromJson(response);
+        
+        // Filter carbon apps
+        List<Application> carbonapps = applications.stream()
+                .filter(x -> CloudServiceConstants.AppConfigs.ESB.equals(x.getApplicationType()))
+                .collect(Collectors.toList());
+        
+        return carbonapps;
     }
 
     public Application getApplication(String appName) throws CloudDeploymentException, InvalidTokenException {
@@ -159,6 +163,8 @@ public class IntegrationCloudServiceClient {
         
         if (response.equals(NO_RESOURCES_ERROR)) {
             throw new CloudDeploymentException(NO_RESOURCES_ERROR);
+        } else if (response.equals(VERSION_EXISTS_ERROR)) {
+            throw new CloudDeploymentException(VERSION_EXISTS_ERROR);
         }
     }
 

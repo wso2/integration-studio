@@ -30,4 +30,8 @@ public class CloudServiceConstants {
         public static final String ESB = "wso2esb";
         public static final String RUNTIME = "24";
     }
+    
+    public static class ICONS {
+        public static final String ERROR_ICON = "/icons/error.png";
+    }
 }

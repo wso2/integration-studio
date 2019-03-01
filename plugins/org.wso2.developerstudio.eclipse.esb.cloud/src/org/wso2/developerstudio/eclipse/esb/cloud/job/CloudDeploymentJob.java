@@ -43,7 +43,6 @@ import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.InvalidTokenExcepti
 import org.wso2.developerstudio.eclipse.esb.cloud.model.Application;
 import org.wso2.developerstudio.eclipse.esb.cloud.model.Version;
 import org.wso2.developerstudio.eclipse.esb.cloud.resources.CloudDeploymentWizardConstants;
-import org.wso2.developerstudio.eclipse.esb.cloud.resources.CloudServiceConstants;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
@@ -125,9 +124,8 @@ public class CloudDeploymentJob extends Job {
                             }
                         } catch(CloudDeploymentException | InvalidTokenException e) {
                             log.error(CloudDeploymentWizardConstants.ErrorMessages.DEPLOY_TO_CLOUD_FAILED_MESSAGE, e);
-//                            showMessageBox(CloudDeploymentWizardConstants.ErrorMessages.DEPLOY_TO_CLOUD_FAILED_TITLE,
-//                                    CloudDeploymentWizardConstants.ErrorMessages.DEPLOY_TO_CLOUD_REQUEST_ERROR_MSG, SWT.ICON_ERROR);
-                            showStatusMessage(e.getMessage(), false);
+                            showMessageBox(CloudDeploymentWizardConstants.ErrorMessages.DEPLOY_TO_CLOUD_FAILED_TITLE,
+                                    e.getMessage(), SWT.ICON_ERROR);
                             scheduledExecutorService.shutdown();
                         }
                     }
@@ -171,23 +169,6 @@ public class CloudDeploymentJob extends Job {
                 exportMsg.setMessage(message);
 
                 exportMsg.open();
-            }
-        });
-    }
-    
-    public static void showStatusMessage(final String message, final boolean isError) {
-        Display.getDefault().syncExec(new Runnable() {
-
-            public void run() {
-                IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
-                if (window instanceof WorkbenchWindow) {
-                    WorkbenchWindow w = (WorkbenchWindow) window;
-                    if (isError) {
-                        w.getStatusLineManager().setErrorMessage(message);
-                    } else {
-                        w.getStatusLineManager().setMessage(message);
-                    }
-                }
             }
         });
     }

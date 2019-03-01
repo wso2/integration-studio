@@ -67,6 +67,8 @@ public class LoginWizardPage extends WizardPage {
     private static final String SIGN_UP_LABEL_TEXT = "Don't have an account? <a href=\"https://wso2.com/integration/cloud/\">Register now</a>";
     
     private static final String ORG_ID_TOOLTIP_TEXT = "NOTE: Organization_key can be obtained from the Manage page of the cloud.";
+    
+    private static final String title = "Integration Cloud Credentials";
 
     // Elements
     private Text txtUsername;
@@ -115,7 +117,6 @@ public class LoginWizardPage extends WizardPage {
         grpCredentials.setLayout(new GridLayout(2, false));
         
         // Tenant
-        
         Label lblTenant = new Label(grpCredentials, SWT.NONE);
         GridData gd_lblTenant = new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1);
         gd_lblTenant.widthHint = 125;
@@ -170,15 +171,11 @@ public class LoginWizardPage extends WizardPage {
         btnLogin = new Button(grpCredentials, SWT.NONE);
         btnLogin.addSelectionListener(new SelectionAdapter() {
             public void widgetSelected(SelectionEvent e) {
-                String title = "Integration Cloud Credentials";
                 try {
-                    
                     if (validateCredentials()) {
                         UserSessionManager.createSession(getUsername(), client.getCookieStore().getCookies().get(0));
                         setPageComplete(true);
-//                        setMessage(, IMessageProvider.INFORMATION);
                         lblLoginStatus.setText(LOGIN_SUCCESSFUL_MSG);
-//                        Image image = new Image(Display.getCurrent(), SWT.ICON_INFORMATION);
                         lblLoginStatus.setForeground(CloudDeploymentWizardConstants.Colors.blue);
                         btnLogin.setEnabled(false);
                         txtTenant.setEnabled(false);
@@ -187,20 +184,18 @@ public class LoginWizardPage extends WizardPage {
                     } else {
                         lblLoginStatus.setText(LOGIN_FAILED_MSG);
                         lblLoginStatus.setForeground(CloudDeploymentWizardConstants.Colors.red);
-//                        MessageDialog.openError(getShell(), title, "Failed to authenticate user - Incorrect Organization ID / Username / Password!");
                     }
                     lblLoginStatus.getParent().layout();
                     
                 } catch (Exception e1) {
-                    e1.printStackTrace();
-                    MessageDialog.openError(getShell(), title, e1.getMessage());
+                    MessageDialog.openError(getShell(), title, CloudDeploymentWizardConstants.ErrorMessages.DEPLOY_TO_CLOUD_INTERNAL_ERROR_MSG);
                 }
             }
         });
         GridData gd_btnLogin = new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1);
         gd_btnLogin.widthHint = 100;
         btnLogin.setLayoutData(gd_btnLogin);
-        btnLogin.setText("Login...");
+        btnLogin.setText("Login");
         btnLogin.setEnabled(false);
         
         // To fill the grid layout
@@ -221,7 +216,6 @@ public class LoginWizardPage extends WizardPage {
         GridData loginStatusGridData = new GridData(SWT.CENTER, SWT.BOTTOM, false, true, 1, 1);
         loginStatusGridData.heightHint = 200;
         lblLoginStatus.setLayoutData(loginStatusGridData);
-        lblLoginStatus.setText("Test");
          
         // Event handling when users click on link.
         signupLink.addSelectionListener(new SelectionAdapter()  {
@@ -240,7 +234,7 @@ public class LoginWizardPage extends WizardPage {
         try {
             return (client.login(getUsername(), getPassword(), getTenant()));
         } catch (CloudDeploymentException | InvalidTokenException e) {
-            System.out.println("Not found");
+            MessageDialog.openError(getShell(), title, e.getMessage());
         }
         return false;
     }

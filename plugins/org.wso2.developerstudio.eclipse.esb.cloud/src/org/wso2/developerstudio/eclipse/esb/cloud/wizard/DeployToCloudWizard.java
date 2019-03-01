@@ -36,7 +36,6 @@ import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IExportWizard;
 import org.eclipse.ui.IWorkbench;
-import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.distribution.project.model.DependencyData;
 import org.wso2.developerstudio.eclipse.distribution.project.ui.wizard.DistributionProjectExportWizardPage;
 import org.wso2.developerstudio.eclipse.distribution.project.util.DistProjectUtils;
@@ -75,20 +74,21 @@ public class DeployToCloudWizard extends Wizard implements IExportWizard {
     private Map<String, DependencyData> projectList = new HashMap<String, DependencyData>();
     private Map<String, Dependency> dependencyMap = new HashMap<String, Dependency>();
     private Map<String, String> serverRoleList = new HashMap<String, String>();
+    
+    private Display display;
 
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
-    // private IntegrationCloudServiceClient client;
 
     @Override
     public void init(IWorkbench workbench, IStructuredSelection selection) {
 
         try {
+            display = Display.getCurrent();
             loginPage = new LoginWizardPage();
             appDetailsPage = new AppDetailsWizardPage();
             selectedProject = getSelectedProject(selection);
             pomFileRes = selectedProject.getFile("pom.xml");
             pomFile = pomFileRes.getLocation().toFile();
-            // client = IntegrationCloudServiceClient.getInstance();
 
             if (!selectedProject.hasNature(Constants.DISTRIBUTION_PROJECT_NATURE)) {
                 throw new Exception();
@@ -121,10 +121,9 @@ public class DeployToCloudWizard extends Wizard implements IExportWizard {
             appDetailsPage.setVersion(parentPrj.getModel().getVersion());
 
         } catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
             initError = true;
-            Display display = PlatformUI.getWorkbench().getDisplay();
-
+            
             Shell shell = display.getActiveShell();
             openMessageBox(shell, CloudDeploymentWizardConstants.DIALOG_TITLE_TEXT,
                     CloudDeploymentWizardConstants.ErrorMessages.SELECT_VALID_CARBON_APP_MESSAGE, SWT.ICON_INFORMATION);
@@ -162,8 +161,6 @@ public class DeployToCloudWizard extends Wizard implements IExportWizard {
                     SWT.ICON_ERROR);
         }
 
-        setSessionProperty();
-
         return true;
     }
 
@@ -190,17 +187,6 @@ public class DeployToCloudWizard extends Wizard implements IExportWizard {
             addPage(appDetailsPage);
             super.addPages();
         }
-    }
-
-    private void setSessionProperty() {
-        // try {
-        // detailsPage.getSelectedProject()
-        // .setSessionProperty(
-        // new QualifiedName(ExportImageWizardConstants.EMPTY_STRING,
-        // detailsPage.getSelectedProject().getName()));
-        // } catch (CoreException e) {
-        // log.error("Error geting session properties", e);
-        // }
     }
 
     private int openMessageBox(Shell shell, String title, String message, int style) {

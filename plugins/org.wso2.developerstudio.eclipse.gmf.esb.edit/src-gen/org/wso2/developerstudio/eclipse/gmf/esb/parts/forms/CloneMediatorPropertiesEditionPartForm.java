@@ -153,7 +153,7 @@ public class CloneMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
     public void createControls(final FormToolkit widgetFactory, Composite view) {
         CompositionSequence cloneMediatorStep = new BindingCompositionSequence(propertiesEditionComponent);
         CompositionStep propertiesStep = cloneMediatorStep.addStep(EsbViewsRepository.CloneMediator.Properties.class);
-        propertiesStep.addStep(EsbViewsRepository.CloneMediator.Properties.description);
+        // Start of user code 
         propertiesStep.addStep(EsbViewsRepository.CloneMediator.Properties.commentsList);
         propertiesStep.addStep(EsbViewsRepository.CloneMediator.Properties.reverse);
         propertiesStep.addStep(EsbViewsRepository.CloneMediator.Properties.cloneID);
@@ -161,7 +161,8 @@ public class CloneMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
         propertiesStep.addStep(EsbViewsRepository.CloneMediator.Properties.continueParent);
         propertiesStep.addStep(EsbViewsRepository.CloneMediator.Properties.targets);
         propertiesStep.addStep(EsbViewsRepository.CloneMediator.Properties.targetsOutputConnector);
-
+        propertiesStep.addStep(EsbViewsRepository.CloneMediator.Properties.description);
+        // End of user code
         composer = new PartComposer(cloneMediatorStep) {
 
             @Override

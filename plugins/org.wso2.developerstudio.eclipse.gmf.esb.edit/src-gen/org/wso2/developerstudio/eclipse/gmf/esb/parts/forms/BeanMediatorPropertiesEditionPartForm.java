@@ -1385,7 +1385,7 @@ public class BeanMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 
 
 	// Start of user code additional methods
-    protected Composite createValueExpressionWidget(FormToolkit widgetFactory, Composite parent) {
+    protected Composite createValueExpressionWidget(FormToolkit widgetFactory,final Composite parent) {
         Control valueExpressionLabel = createDescription(parent, EsbViewsRepository.BeanMediator.Properties.valueExpression, EsbMessages.BeanMediatorPropertiesEditionPart_ValueExpressionLabel);
         widgetFactory.paintBordersFor(parent);
         if(valueExpression == null) {
@@ -1426,7 +1426,7 @@ public class BeanMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
         return parent;
     }
 
-    protected Composite createTargetExpressionWidget(FormToolkit widgetFactory, Composite parent) {
+    protected Composite createTargetExpressionWidget(FormToolkit widgetFactory,final Composite parent) {
         Control targetExpressionLabel = createDescription(parent, EsbViewsRepository.BeanMediator.Properties.targetExpression, EsbMessages.BeanMediatorPropertiesEditionPart_TargetExpressionLabel);
         widgetFactory.paintBordersFor(parent);
         if(targetExpression == null) {

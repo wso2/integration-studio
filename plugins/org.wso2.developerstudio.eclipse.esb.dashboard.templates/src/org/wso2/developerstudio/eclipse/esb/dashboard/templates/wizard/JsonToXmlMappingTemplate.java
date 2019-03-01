@@ -166,7 +166,7 @@ public class JsonToXmlMappingTemplate extends Wizard implements INewWizard {
 
             // Carbon Application Project Creation
             IProject cappProject = ProjectCreationUtil
-                    .carbonAppCreation(containerName + "CarbonApplication", containerName, groupId, sampleName);
+                    .carbonAppCreation(containerName + "CompositeApplication", containerName, groupId, sampleName);
             addCappDependencies(cappProject);
 
             // Open synapse application on sample creation.

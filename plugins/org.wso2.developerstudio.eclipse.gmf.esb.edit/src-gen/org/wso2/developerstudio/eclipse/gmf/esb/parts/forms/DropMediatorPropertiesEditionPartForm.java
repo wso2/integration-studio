@@ -46,6 +46,7 @@ import org.eclipse.swt.layout.GridLayout;
 
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Text;
 
 import org.eclipse.ui.forms.widgets.Form;
@@ -57,14 +58,14 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.DropMediatorPropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
 /**
  * 
- * 
+ * @generated NOT
  */
 public class DropMediatorPropertiesEditionPartForm extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, DropMediatorPropertiesEditionPart {
 
@@ -73,6 +74,9 @@ public class DropMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	protected Button editCommentsList;
 	protected EList commentsListList;
 	protected Button reverse;
+    protected Control[] commentsElements;
+    protected Control[] reverseElements;
+    protected Composite propertiesGroup;
 
 
 
@@ -144,16 +148,16 @@ public class DropMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 		};
 		composer.compose(view);
 	}
-	/**
-	 * 
-	 */
+    /**
+     * @generated NOT
+     */
 	protected Composite createPropertiesGroup(FormToolkit widgetFactory, final Composite parent) {
 		Section propertiesSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		propertiesSection.setText(EsbMessages.DropMediatorPropertiesEditionPart_PropertiesGroupLabel);
 		GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
 		propertiesSectionData.horizontalSpan = 3;
 		propertiesSection.setLayoutData(propertiesSectionData);
-		Composite propertiesGroup = widgetFactory.createComposite(propertiesSection);
+		propertiesGroup = widgetFactory.createComposite(propertiesSection);
 		GridLayout propertiesGroupLayout = new GridLayout();
 		propertiesGroupLayout.numColumns = 3;
 		propertiesGroup.setLayout(propertiesGroupLayout);
@@ -161,7 +165,9 @@ public class DropMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 		return propertiesGroup;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createDescriptionText(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.DropMediator.Properties.description, EsbMessages.DropMediatorPropertiesEditionPart_DescriptionLabel);
 		description = widgetFactory.createText(parent, ""); //$NON-NLS-1$
@@ -229,11 +235,12 @@ public class DropMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 		return parent;
 	}
 
-	/**
-	 * 
-	 */
+    /**
+     * @generated NOT
+     */
 	protected Composite createCommentsListMultiValuedEditor(FormToolkit widgetFactory, Composite parent) {
-		commentsList = widgetFactory.createText(parent, "", SWT.READ_ONLY); //$NON-NLS-1$
+	    Control [] previousControls = propertiesGroup.getChildren();
+	    commentsList = widgetFactory.createText(parent, "", SWT.READ_ONLY); //$NON-NLS-1$
 		GridData commentsListData = new GridData(GridData.FILL_HORIZONTAL);
 		commentsListData.horizontalSpan = 2;
 		commentsList.setLayoutData(commentsListData);
@@ -270,14 +277,18 @@ public class DropMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 		EditingUtils.setID(editCommentsList, EsbViewsRepository.DropMediator.Properties.commentsList);
 		EditingUtils.setEEFtype(editCommentsList, "eef::MultiValuedEditor::browsebutton"); //$NON-NLS-1$
 		// Start of user code for createCommentsListMultiValuedEditor
-
+		Control [] newControls = propertiesGroup.getChildren();
+		commentsElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
 		// End of user code
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createReverseCheckbox(FormToolkit widgetFactory, Composite parent) {
-		reverse = widgetFactory.createButton(parent, getDescription(EsbViewsRepository.DropMediator.Properties.reverse, EsbMessages.DropMediatorPropertiesEditionPart_ReverseLabel), SWT.CHECK);
+	    Control [] previousControls = propertiesGroup.getChildren();
+	    reverse = widgetFactory.createButton(parent, getDescription(EsbViewsRepository.DropMediator.Properties.reverse, EsbMessages.DropMediatorPropertiesEditionPart_ReverseLabel), SWT.CHECK);
 		reverse.addSelectionListener(new SelectionAdapter() {
 
 			/**
@@ -299,8 +310,9 @@ public class DropMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 		EditingUtils.setEEFtype(reverse, "eef::Checkbox"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DropMediator.Properties.reverse, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createReverseCheckbox
-
-		// End of user code
+		Control [] newControls = propertiesGroup.getChildren();
+        reverseElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
+        // End of user code
 		return parent;
 	}
 
@@ -448,7 +460,18 @@ public class DropMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	}
 
 	// Start of user code additional methods
-	
+    @Override
+    public void refresh() {
+        super.refresh();
+        validate();
+    }
+
+    public void validate() {
+        EEFPropertyViewUtil epv = new EEFPropertyViewUtil(view);
+        epv.hideEntry(commentsElements, false);
+        epv.hideEntry(reverseElements, false);
+        view.layout(true, true);
+    }
 	// End of user code
 
 

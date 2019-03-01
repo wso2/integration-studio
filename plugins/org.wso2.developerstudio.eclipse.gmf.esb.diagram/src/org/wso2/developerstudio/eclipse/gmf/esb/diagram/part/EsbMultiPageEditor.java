@@ -87,6 +87,7 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.WorkbenchException;
 import org.eclipse.ui.forms.editor.FormPage;
 import org.eclipse.ui.ide.FileStoreEditorInput;
 import org.eclipse.ui.ide.IDE;
@@ -176,6 +177,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 
     private static final String CONFIG_ERROR = "org.wso2.developerstudio.eclipse.gmf.esb.diagram.synapseerror";
 
+    private static final String ESB_GRAPHICAL_PERSPECTIVE_ID = "org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.perspective";
     /**
      * Used to hold temporary files.
      */
@@ -1441,4 +1443,14 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
         }
     }
 
+    @Override
+    public void setFocus() {
+        super.setFocus();
+        try {
+            PlatformUI.getWorkbench().showPerspective(ESB_GRAPHICAL_PERSPECTIVE_ID,
+                    PlatformUI.getWorkbench().getActiveWorkbenchWindow());
+        } catch (WorkbenchException e) {
+            log.error("Error occurred while switching to ESB perspective " + e.getMessage());
+        }
+    }
 }

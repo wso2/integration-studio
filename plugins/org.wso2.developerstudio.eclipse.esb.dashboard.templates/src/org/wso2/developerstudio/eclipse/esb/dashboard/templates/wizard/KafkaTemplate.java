@@ -150,7 +150,7 @@ public class KafkaTemplate extends Wizard implements INewWizard {
 
             // carbon application project creation
             IProject cappProject = ProjectCreationUtil
-                    .carbonAppCreation(containerName + "CarbonApplication", containerName, groupId, sampleName);
+                    .carbonAppCreation(containerName + "CompositeApplication", containerName, groupId, sampleName);
             addCappDependencies(cappProject);
 
             // Open synapse application on sample creation.

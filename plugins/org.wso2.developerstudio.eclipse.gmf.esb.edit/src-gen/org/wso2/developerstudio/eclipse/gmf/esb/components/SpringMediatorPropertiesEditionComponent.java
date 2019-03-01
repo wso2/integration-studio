@@ -37,8 +37,9 @@ import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.SpringMediator;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.SpringMediatorPropertiesEditionPart;
 
@@ -94,11 +95,20 @@ public class SpringMediatorPropertiesEditionComponent extends SinglePartProperti
 			if (isAccessible(EsbViewsRepository.SpringMediator.Properties.beanName))
 				basePart.setBeanName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, springMediator.getBeanName()));
 			
+			// Start of user code  for configurationKey command update
+            if (isAccessible(EsbViewsRepository.SpringMediator.Properties.configurationKey)) {
+                basePart.setConfigurationKey(springMediator.getConfigurationKey());
+            }
+			// End of user code
+
 			// init filters
 			
 			
 			
 			
+			// Start of user code  for configurationKey filter update
+			// End of user code
+
 			// init values for referenced views
 			
 			// init filters for referenced views
@@ -106,6 +116,7 @@ public class SpringMediatorPropertiesEditionComponent extends SinglePartProperti
 		}
 		setInitializing(false);
 	}
+
 
 
 
@@ -129,6 +140,9 @@ public class SpringMediatorPropertiesEditionComponent extends SinglePartProperti
 		}
 		if (editorKey == EsbViewsRepository.SpringMediator.Properties.beanName) {
 			return EsbPackage.eINSTANCE.getSpringMediator_BeanName();
+		}
+		if (editorKey == EsbViewsRepository.SpringMediator.Properties.configurationKey) {
+			return EsbPackage.eINSTANCE.getSpringMediator_ConfigurationKey();
 		}
 		return super.associatedFeature(editorKey);
 	}
@@ -154,6 +168,17 @@ public class SpringMediatorPropertiesEditionComponent extends SinglePartProperti
 		}
 		if (EsbViewsRepository.SpringMediator.Properties.beanName == event.getAffectedEditor()) {
 			springMediator.setBeanName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
+		}
+		if (EsbViewsRepository.SpringMediator.Properties.configurationKey == event.getAffectedEditor()) {
+			// Start of user code for updateConfigurationKey method body
+            if (event.getNewValue() != null) {
+                RegistryKeyProperty rkp = (RegistryKeyProperty) event.getNewValue();
+                springMediator.setConfigurationKey(rkp);
+            } else {
+                springMediator.setConfigurationKey(EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty());
+            }
+			// End of user code
+
 		}
 	}
 
@@ -194,6 +219,18 @@ public class SpringMediatorPropertiesEditionComponent extends SinglePartProperti
 					basePart.setBeanName("");
 				}
 			}
+					// Start of user code for configurationKey live update
+            if (EsbPackage.eINSTANCE.getSpringMediator_ConfigurationKey().equals(msg.getFeature())
+                    && msg.getNotifier().equals(semanticObject) && basePart != null
+                    && isAccessible(EsbViewsRepository.SpringMediator.Properties.configurationKey)) {
+                if (msg.getNewValue() != null) {
+                    basePart.setConfigurationKey((RegistryKeyProperty)msg.getNewValue());
+                } else {
+                    basePart.setConfigurationKey(EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty());
+                }
+            }
+					// End of user code
+
 			
 		}
 	}
@@ -209,7 +246,8 @@ public class SpringMediatorPropertiesEditionComponent extends SinglePartProperti
 			EsbPackage.eINSTANCE.getEsbElement_Description(),
 			EsbPackage.eINSTANCE.getEsbElement_CommentsList(),
 			EsbPackage.eINSTANCE.getMediator_Reverse(),
-			EsbPackage.eINSTANCE.getSpringMediator_BeanName()		);
+			EsbPackage.eINSTANCE.getSpringMediator_BeanName(),
+			EsbPackage.eINSTANCE.getSpringMediator_ConfigurationKey()		);
 		return new NotificationFilter[] {filter,};
 	}
 

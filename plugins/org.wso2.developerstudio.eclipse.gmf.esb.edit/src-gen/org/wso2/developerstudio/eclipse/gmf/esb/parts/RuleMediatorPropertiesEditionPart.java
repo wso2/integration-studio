@@ -12,6 +12,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 
 import org.eclipse.jface.viewers.ViewerFilter;
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 
 
 // End of user code
@@ -77,55 +79,6 @@ public interface RuleMediatorPropertiesEditionPart {
 
 
 	/**
-	 * @return the RuleSetURL
-	 * 
-	 */
-	public String getRuleSetURL();
-
-	/**
-	 * Defines a new RuleSetURL
-	 * @param newValue the new RuleSetURL to set
-	 * 
-	 */
-	public void setRuleSetURL(String newValue);
-
-
-	/**
-	 * @return the ruleSetSourceType
-	 * 
-	 */
-	public Enumerator getRuleSetSourceType();
-
-	/**
-	 * Init the ruleSetSourceType
-	 * @param input the viewer input
-	 * @param current the current value
-	 */
-	public void initRuleSetSourceType(Object input, Enumerator current);
-
-	/**
-	 * Defines a new ruleSetSourceType
-	 * @param newValue the new ruleSetSourceType to set
-	 * 
-	 */
-	public void setRuleSetSourceType(Enumerator newValue);
-
-
-	/**
-	 * @return the ruleSetSourceCode
-	 * 
-	 */
-	public String getRuleSetSourceCode();
-
-	/**
-	 * Defines a new ruleSetSourceCode
-	 * @param newValue the new ruleSetSourceCode to set
-	 * 
-	 */
-	public void setRuleSetSourceCode(String newValue);
-
-
-	/**
 	 * @return the statefulSession
 	 * 
 	 */
@@ -184,6 +137,150 @@ public interface RuleMediatorPropertiesEditionPart {
 
 
 	/**
+	 * @return the InputWrapperName
+	 * 
+	 */
+	public String getInputWrapperName();
+
+	/**
+	 * Defines a new InputWrapperName
+	 * @param newValue the new InputWrapperName to set
+	 * 
+	 */
+	public void setInputWrapperName(String newValue);
+
+
+	/**
+	 * @return the InputNameSpace
+	 * 
+	 */
+	public String getInputNameSpace();
+
+	/**
+	 * Defines a new InputNameSpace
+	 * @param newValue the new InputNameSpace to set
+	 * 
+	 */
+	public void setInputNameSpace(String newValue);
+
+
+
+
+	/**
+	 * Init the ruleFactsConfiguration
+	 * @param current the current value
+	 * @param containgFeature the feature where to navigate if necessary
+	 * @param feature the feature to manage
+	 */
+	public void initRuleFactsConfiguration(ReferencesTableSettings settings);
+
+	/**
+	 * Update the ruleFactsConfiguration
+	 * @param newValue the ruleFactsConfiguration to update
+	 * 
+	 */
+	public void updateRuleFactsConfiguration();
+
+	/**
+	 * Adds the given filter to the ruleFactsConfiguration edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addFilterToRuleFactsConfiguration(ViewerFilter filter);
+
+	/**
+	 * Adds the given filter to the ruleFactsConfiguration edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addBusinessFilterToRuleFactsConfiguration(ViewerFilter filter);
+
+	/**
+	 * @return true if the given element is contained inside the ruleFactsConfiguration table
+	 * 
+	 */
+	public boolean isContainedInRuleFactsConfigurationTable(EObject element);
+
+
+	/**
+	 * @return the OutputWrapperName
+	 * 
+	 */
+	public String getOutputWrapperName();
+
+	/**
+	 * Defines a new OutputWrapperName
+	 * @param newValue the new OutputWrapperName to set
+	 * 
+	 */
+	public void setOutputWrapperName(String newValue);
+
+
+	/**
+	 * @return the OutputNameSpace
+	 * 
+	 */
+	public String getOutputNameSpace();
+
+	/**
+	 * Defines a new OutputNameSpace
+	 * @param newValue the new OutputNameSpace to set
+	 * 
+	 */
+	public void setOutputNameSpace(String newValue);
+
+
+
+
+	/**
+	 * Init the ruleResultsConfiguration
+	 * @param current the current value
+	 * @param containgFeature the feature where to navigate if necessary
+	 * @param feature the feature to manage
+	 */
+	public void initRuleResultsConfiguration(ReferencesTableSettings settings);
+
+	/**
+	 * Update the ruleResultsConfiguration
+	 * @param newValue the ruleResultsConfiguration to update
+	 * 
+	 */
+	public void updateRuleResultsConfiguration();
+
+	/**
+	 * Adds the given filter to the ruleResultsConfiguration edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addFilterToRuleResultsConfiguration(ViewerFilter filter);
+
+	/**
+	 * Adds the given filter to the ruleResultsConfiguration edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addBusinessFilterToRuleResultsConfiguration(ViewerFilter filter);
+
+	/**
+	 * @return true if the given element is contained inside the ruleResultsConfiguration table
+	 * 
+	 */
+	public boolean isContainedInRuleResultsConfigurationTable(EObject element);
+
+
+	/**
 	 * @return the sourceValue
 	 * 
 	 */
@@ -233,62 +330,6 @@ public interface RuleMediatorPropertiesEditionPart {
 
 
 	/**
-	 * @return the InputWrapperName
-	 * 
-	 */
-	public String getInputWrapperName();
-
-	/**
-	 * Defines a new InputWrapperName
-	 * @param newValue the new InputWrapperName to set
-	 * 
-	 */
-	public void setInputWrapperName(String newValue);
-
-
-	/**
-	 * @return the InputNameSpace
-	 * 
-	 */
-	public String getInputNameSpace();
-
-	/**
-	 * Defines a new InputNameSpace
-	 * @param newValue the new InputNameSpace to set
-	 * 
-	 */
-	public void setInputNameSpace(String newValue);
-
-
-	/**
-	 * @return the OutputWrapperName
-	 * 
-	 */
-	public String getOutputWrapperName();
-
-	/**
-	 * Defines a new OutputWrapperName
-	 * @param newValue the new OutputWrapperName to set
-	 * 
-	 */
-	public void setOutputWrapperName(String newValue);
-
-
-	/**
-	 * @return the OutputNameSpace
-	 * 
-	 */
-	public String getOutputNameSpace();
-
-	/**
-	 * Defines a new OutputNameSpace
-	 * @param newValue the new OutputNameSpace to set
-	 * 
-	 */
-	public void setOutputNameSpace(String newValue);
-
-
-	/**
 	 * @return the RuleSetType
 	 * 
 	 */
@@ -309,8 +350,77 @@ public interface RuleMediatorPropertiesEditionPart {
 	public void setRuleSetType(Enumerator newValue);
 
 
+	/**
+	 * @return the RuleSetURL
+	 * 
+	 */
+	public String getRuleSetURL();
+
+	/**
+	 * Defines a new RuleSetURL
+	 * @param newValue the new RuleSetURL to set
+	 * 
+	 */
+	public void setRuleSetURL(String newValue);
 
 
+	/**
+	 * @return the ruleSetSourceType
+	 * 
+	 */
+	public Enumerator getRuleSetSourceType();
+
+	/**
+	 * Init the ruleSetSourceType
+	 * @param input the viewer input
+	 * @param current the current value
+	 */
+	public void initRuleSetSourceType(Object input, Enumerator current);
+
+	/**
+	 * Defines a new ruleSetSourceType
+	 * @param newValue the new ruleSetSourceType to set
+	 * 
+	 */
+	public void setRuleSetSourceType(Enumerator newValue);
+
+
+	/**
+	 * @return the ruleSetSourceCode
+	 * 
+	 */
+	public String getRuleSetSourceCode();
+
+	/**
+	 * Defines a new ruleSetSourceCode
+	 * @param newValue the new ruleSetSourceCode to set
+	 * 
+	 */
+	public void setRuleSetSourceCode(String newValue);
+
+
+
+
+	// Start of user code for sourceXPath specific getters and setters declaration
+    public NamespacedProperty getSourceXPath();
+
+    public void setSourceXPath(NamespacedProperty nameSpacedProperty);
+	// End of user code
+	// Start of user code for targetXPath specific getters and setters declaration
+    public NamespacedProperty getTargetXPath();
+    
+    public void setTargetXPath(NamespacedProperty nameSpacedProperty);
+	// End of user code
+	// Start of user code for targetResultXPath specific getters and setters declaration
+    public NamespacedProperty getTargetResultXPath();
+    
+    public void setTargetResultXPath(NamespacedProperty nameSpacedProperty);
+	// End of user code
+	// Start of user code for ruleSetSourceKey specific getters and setters declaration
+    public RegistryKeyProperty getRuleSetSourceKey();
+    
+    public void setRuleSetSourceKey(RegistryKeyProperty registryKeyProperty);
+	// End of user code
 
 	/**
 	 * Returns the internationalized title text.

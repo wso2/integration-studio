@@ -1549,7 +1549,7 @@ public class EsbViewsRepository {
 			public static String propertyValue = "esb::LogProperty::properties::propertyValue";
 			
 			// Start of user code for propertyExpression ElementEditor key
-			public static String propertyExpression = "esb::XSLTProperty::properties::propertyExpression";
+			public static String propertyExpression = "esb::LogProperty::properties::propertyExpression";
 			// End of user code
 			
 	
@@ -1766,6 +1766,14 @@ public class EsbViewsRepository {
 			
 			public static String targetLiteral = "esb::BeanMediator::properties::targetLiteral";
 			
+			// Start of user code for targetExpression ElementEditor key
+			public static String targetExpression = "esb::BeanMediator::properties::targetExpression";
+			// End of user code
+			
+			// Start of user code for valueExpression ElementEditor key
+			public static String valueExpression = "esb::BeanMediator::properties::valueExpression";
+			// End of user code
+			
 	
 		}
 	
@@ -1844,6 +1852,10 @@ public class EsbViewsRepository {
 			
 			public static String methodArguments = "esb::EJBMediator::properties::methodArguments";
 			
+			// Start of user code for sessionIdExpression ElementEditor key
+			public static String sessionIdExpression = "esb::EJBMediator::properties::sessionIdExpression";
+			// End of user code
+
 	
 		}
 	
@@ -1895,6 +1907,10 @@ public class EsbViewsRepository {
 			
 			public static String propertyValue = "esb::MethodArgument::properties::propertyValue";
 			
+			// Start of user code for propertyExpression ElementEditor key
+			public static String propertyExpression = "esb::MethodArgument::properties::propertyExpression";
+			// End of user code
+
 	
 		}
 	
@@ -2082,7 +2098,7 @@ public class EsbViewsRepository {
 			public static String sourceProperty = "esb::EnrichMediator::Source::sourceProperty";
 			
 			// Start of user code for sourceXPath ElementEditor key
-			public static String sourceXPath = "esb::SwitchMediator::properties::sourceXPath";
+			public static String sourceXPath = "esb::EnrichMediator::source::sourceXPath";
 			// End of user code
 			
 			// Start of user code for inlineRegistryKey ElementEditor key
@@ -2104,7 +2120,7 @@ public class EsbViewsRepository {
 			public static String targetProperty = "esb::EnrichMediator::Target::targetProperty";
 			
 			// Start of user code for targetXPath ElementEditor key
-			public static String targetXPath = "esb::EnrichMediator::Target::targetXPath";
+			public static String targetXPath = "esb::EnrichMediator::target::targetXPath";
 			// End of user code
 			
 	
@@ -3020,9 +3036,10 @@ public class EsbViewsRepository {
 			
 			public static String propertyValue = "esb::ClassProperty::properties::propertyValue";
 			
-            // Start of user code for propertyExpression ElementEditor key
-            public static String propertyExpression = "esb::ClassProperty::properties::propertyExpression";
-            // End of user code
+			// Start of user code for propertyExpression ElementEditor key
+			public static String propertyExpression = "esb::ClassProperty::properties::propertyExpression";
+			// End of user code
+			
 	
 		}
 	
@@ -3046,6 +3063,10 @@ public class EsbViewsRepository {
 			
 			
 			public static String beanName = "esb::SpringMediator::properties::beanName";
+			
+			// Start of user code for configurationKey ElementEditor key
+			public static String configurationKey = "esb::SpringMediator::key::configurationKey";
+			// End of user code
 			
 	
 		}
@@ -5303,55 +5324,102 @@ public class EsbViewsRepository {
 	 * 
 	 */
 	public static class RuleMediator {
-		public static class Properties {
+		public static class Misc {
 	
 			
-			public static String description = "esb::RuleMediator::properties::description";
+			public static String description = "esb::RuleMediator::misc::description";
 			
 			
-			public static String commentsList = "esb::RuleMediator::properties::commentsList";
+			public static String commentsList = "esb::RuleMediator::misc::commentsList";
 			
 			
-			public static String reverse = "esb::RuleMediator::properties::Reverse";
+			public static String reverse = "esb::RuleMediator::misc::Reverse";
 			
 			
-			public static String ruleSetURL = "esb::RuleMediator::properties::RuleSetURL";
+			public static String statefulSession = "esb::RuleMediator::misc::statefulSession";
 			
 			
-			public static String ruleSetSourceType = "esb::RuleMediator::properties::ruleSetSourceType";
+			public static String ruleSessionProperties = "esb::RuleMediator::misc::RuleSessionProperties";
+			
+	
+		}
+	
+		public static class InputFacts {
+	
+			
+			public static String inputWrapperName = "esb::RuleMediator::inputFacts::InputWrapperName";
 			
 			
-			public static String ruleSetSourceCode = "esb::RuleMediator::properties::ruleSetSourceCode";
+			public static String inputNameSpace = "esb::RuleMediator::inputFacts::InputNameSpace";
 			
 			
-			public static String statefulSession = "esb::RuleMediator::properties::statefulSession";
+			public static String ruleFactsConfiguration = "esb::RuleMediator::inputFacts::ruleFactsConfiguration";
+			
+	
+		}
+	
+		public static class OutputFacts {
+	
+			
+			public static String outputWrapperName = "esb::RuleMediator::outputFacts::OutputWrapperName";
 			
 			
-			public static String ruleSessionProperties = "esb::RuleMediator::properties::RuleSessionProperties";
+			public static String outputNameSpace = "esb::RuleMediator::outputFacts::OutputNameSpace";
 			
 			
-			public static String sourceValue = "esb::RuleMediator::properties::sourceValue";
+			public static String ruleResultsConfiguration = "esb::RuleMediator::outputFacts::ruleResultsConfiguration";
+			
+	
+		}
+	
+		public static class Source {
+	
+			
+			public static String sourceValue = "esb::RuleMediator::source::sourceValue";
+			
+			// Start of user code for sourceXPath ElementEditor key
+			public static String sourceXPath = "esb::RuleMediator::source::sourceXPath";
+			// End of user code
+			
+	
+		}
+	
+		public static class Target {
+	
+			
+			public static String targetValue = "esb::RuleMediator::target::targetValue";
 			
 			
-			public static String targetValue = "esb::RuleMediator::properties::targetValue";
+			public static String targetAction = "esb::RuleMediator::target::targetAction";
+			
+			// Start of user code for targetXPath ElementEditor key
+			public static String targetXPath = "esb::RuleMediator::target::targetXPath";
+			// End of user code
+			
+			// Start of user code for targetResultXPath ElementEditor key
+			public static String targetResultXPath = "esb::RuleMediator::target::targetResultXPath";
+			// End of user code
+			
+	
+		}
+	
+		public static class RuleSet {
+	
+			
+			public static String ruleSetType = "esb::RuleMediator::ruleSet::RuleSetType";
 			
 			
-			public static String targetAction = "esb::RuleMediator::properties::targetAction";
+			public static String ruleSetURL = "esb::RuleMediator::ruleSet::RuleSetURL";
 			
 			
-			public static String inputWrapperName = "esb::RuleMediator::properties::InputWrapperName";
+			public static String ruleSetSourceType = "esb::RuleMediator::ruleSet::ruleSetSourceType";
 			
 			
-			public static String inputNameSpace = "esb::RuleMediator::properties::InputNameSpace";
+			public static String ruleSetSourceCode = "esb::RuleMediator::ruleSet::ruleSetSourceCode";
 			
-			
-			public static String outputWrapperName = "esb::RuleMediator::properties::OutputWrapperName";
-			
-			
-			public static String outputNameSpace = "esb::RuleMediator::properties::OutputNameSpace";
-			
-			
-			public static String ruleSetType = "esb::RuleMediator::properties::RuleSetType";
+			// Start of user code for ruleSetSourceKey ElementEditor key
+			public static String ruleSetSourceKey = "esb::RuleMediator::ruleSet::ruleSetSourceKey";
+			// End of user code
 			
 	
 		}

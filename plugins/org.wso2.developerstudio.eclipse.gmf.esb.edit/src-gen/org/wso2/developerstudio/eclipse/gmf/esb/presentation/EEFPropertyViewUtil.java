@@ -153,6 +153,8 @@ public class EEFPropertyViewUtil {
             return true;
         } else if (e.keyCode == SWT.SHIFT) {
             return true;
+        } else if (e.keyCode == SWT.ESC) {
+            return true;
         } else if (e.stateMask == SWT.COMMAND) {
             return true;
         } else if (e.stateMask == SWT.CTRL) {

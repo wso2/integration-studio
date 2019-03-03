@@ -29,6 +29,7 @@ import org.eclipse.swt.widgets.Display;
 public class CloudDeploymentWizardConstants {
 
     public static final String DIALOG_TITLE_TEXT = "WSO2 Platform Distribution - Deploy to Integration Cloud";
+    public static final String SUCCESS_DIALOG_TITLE_TEXT = "Deployment Successful";
     public static final String EMPTY_STRING = "";
     
     public static final String CAR_FILE_SUFFIX = ".car$";
@@ -41,11 +42,12 @@ public class CloudDeploymentWizardConstants {
         public static final String DEPLOY_TO_CLOUD_REQUEST_ERROR_MSG = "Could not complete request.";
         public static final String ERROR_CREATING_CAR_FILE_MSG = "An error occured while deploying the application";
         public static final String SELECT_VALID_CARBON_APP_MESSAGE = "Please select a valid carbon application project";
+        public static final String AUTHENTICATION_EXCEPTION_MESSAGE = "Could not deploy application because of an internal error.";
    }
 
     public static class SuccessMessages {
         public static final String SUCCESSFUL_TITLE = "Successful";
-        public static final String DEPLOY_TO_CLOUD_SUCCESS_MESSAGE = "Application Deployed to Cloud Successfully!";
+        public static final String DEPLOY_TO_CLOUD_SUCCESS_MESSAGE = "Your application has been successfully deployed to WSO2 Intgeration Cloud. \nTry it out using the below endpoints!";
         public static final String SUCCESS_CREATING_APPLICATION_MSG = "Please wait while your application is being deployed to the cloud. You will be notified once it is ready.";
     }
     

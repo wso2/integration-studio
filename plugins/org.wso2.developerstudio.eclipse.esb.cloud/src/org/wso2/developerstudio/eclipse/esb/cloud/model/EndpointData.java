@@ -18,6 +18,7 @@
 
 package org.wso2.developerstudio.eclipse.esb.cloud.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class EndpointData {
@@ -26,6 +27,13 @@ public class EndpointData {
     List<Endpoint> webEndpoints;
     List<Endpoint> swaggerEndpoints;
     
+    public EndpointData() {
+        super();
+        restEndpoints = new ArrayList<>();
+        soapEndpoints = new ArrayList<>();
+        webEndpoints = new ArrayList<>();
+        swaggerEndpoints = new ArrayList<>();
+    }
     public List<Endpoint> getRestEndpoints() {
         return restEndpoints;
     }

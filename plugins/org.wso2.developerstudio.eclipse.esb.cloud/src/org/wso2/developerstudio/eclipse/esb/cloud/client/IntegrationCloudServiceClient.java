@@ -29,6 +29,7 @@ import org.wso2.developerstudio.eclipse.esb.cloud.util.HTTPClientUtil;
 import org.wso2.developerstudio.eclipse.esb.cloud.util.JsonUtils;
 
 import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import java.util.HashMap;
@@ -125,6 +126,12 @@ public class IntegrationCloudServiceClient {
         data.put("versionId", versionId);
 
         String response = HTTPClientUtil.sendPostWithFormData(getAppUrl, new HashMap<String, String>(), data, cookieStore);
+
+        if (null != response && !"null".equals(response)) {
+            JsonElement endpointData = new JsonParser().parse(response);
+            JsonObject dataJson = endpointData.getAsJsonObject().get("data").getAsJsonObject();
+            response = dataJson.toString();
+        }
         
         return response;
     }

@@ -172,6 +172,7 @@ public class LoginWizardPage extends WizardPage {
         btnLogin.addSelectionListener(new SelectionAdapter() {
             public void widgetSelected(SelectionEvent e) {
                 try {
+                    
                     if (validateCredentials()) {
                         UserSessionManager.createSession(getUsername(), client.getCookieStore().getCookies().get(0));
                         setPageComplete(true);
@@ -188,7 +189,8 @@ public class LoginWizardPage extends WizardPage {
                     lblLoginStatus.getParent().layout();
                     
                 } catch (Exception e1) {
-                    MessageDialog.openError(getShell(), title, CloudDeploymentWizardConstants.ErrorMessages.DEPLOY_TO_CLOUD_INTERNAL_ERROR_MSG);
+                    e1.printStackTrace();
+                    MessageDialog.openError(getShell(), title, CloudDeploymentWizardConstants.ErrorMessages.AUTHENTICATION_EXCEPTION_MESSAGE);
                 }
             }
         });

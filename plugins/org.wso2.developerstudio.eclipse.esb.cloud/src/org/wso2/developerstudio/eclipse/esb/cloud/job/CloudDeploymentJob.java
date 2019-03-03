@@ -18,12 +18,14 @@
 
 package org.wso2.developerstudio.eclipse.esb.cloud.job;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
@@ -41,8 +43,13 @@ import org.wso2.developerstudio.eclipse.esb.cloud.client.IntegrationCloudService
 import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.CloudDeploymentException;
 import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.InvalidTokenException;
 import org.wso2.developerstudio.eclipse.esb.cloud.model.Application;
+import org.wso2.developerstudio.eclipse.esb.cloud.model.Endpoint;
+import org.wso2.developerstudio.eclipse.esb.cloud.model.EndpointData;
 import org.wso2.developerstudio.eclipse.esb.cloud.model.Version;
 import org.wso2.developerstudio.eclipse.esb.cloud.resources.CloudDeploymentWizardConstants;
+import org.wso2.developerstudio.eclipse.esb.cloud.resources.MessageNotificationPopup;
+import org.wso2.developerstudio.eclipse.esb.cloud.util.JsonUtils;
+import org.wso2.developerstudio.eclipse.esb.cloud.wizard.DeploymentStatusDialog;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
@@ -62,6 +69,7 @@ public class CloudDeploymentJob extends Job {
     private boolean isNewVersion;
     private IntegrationCloudServiceClient client;
     private String response;
+    private EndpointData endpointData;
 
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
@@ -116,6 +124,7 @@ public class CloudDeploymentJob extends Job {
                             for (Map.Entry<String, Version> version : versions.entrySet()) {
                                 response = client.getApplicationEndpoints(app.getApplicationType(), version.getValue().getDeploymentURL(), version.getValue().getVersionId());
                                 if (null != response &&  !"null".equals(response)) {
+                                    endpointData = JsonUtils.getEndpointDataFromJson(response);
                                     scheduledExecutorService.shutdown();
                                 } else if (count < 15){
                                     monitor.subTask("Loading Endpoints...");
@@ -148,12 +157,34 @@ public class CloudDeploymentJob extends Job {
 
         monitor.worked(100);
         monitor.done();
+        
+        showDeploymentSuccessPopup();
 
-        showMessageBox(CloudDeploymentWizardConstants.SuccessMessages.SUCCESSFUL_TITLE,
-                CloudDeploymentWizardConstants.SuccessMessages.DEPLOY_TO_CLOUD_SUCCESS_MESSAGE,
-                SWT.ICON_INFORMATION);
+//        showMessageBox(CloudDeploymentWizardConstants.SuccessMessages.SUCCESSFUL_TITLE,
+//                CloudDeploymentWizardConstants.SuccessMessages.DEPLOY_TO_CLOUD_SUCCESS_MESSAGE,
+//                SWT.ICON_INFORMATION);
 
         return Status.OK_STATUS;
+    }
+    
+    private void showDeploymentSuccessPopup(){
+        Display.getDefault().syncExec(new Runnable() {
+            public void run() {
+                Display display = PlatformUI.getWorkbench().getDisplay();
+                Shell shell = display.getActiveShell();
+                
+                DeploymentStatusDialog dialog = new DeploymentStatusDialog(shell, endpointData);
+                dialog.open();
+
+//                MessageNotificationPopup pop = new MessageNotificationPopup(PlatformUI.getWorkbench().getActiveWorkbenchWindow(), shell);
+//                ArrayList<String> links = new ArrayList<>();
+//                links.add("Test Link");
+//                System.out.println(endpointData.getSoapEndpoints());
+////                links.addAll(endpointData.getSoapEndpoints().stream().map(Endpoint::getWsdl).collect(Collectors.toList()));
+//                pop.setContent("Deployment status", "Your application has been successfully deployed to WSO2 Intgeration Cloud. \n Try it out using the below endpoints.", links);
+//                pop.open();
+            }
+        });
     }
 
     private void showMessageBox(String title, String message, int style) {

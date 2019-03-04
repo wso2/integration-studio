@@ -43,7 +43,7 @@ import org.wso2.developerstudio.eclipse.esb.cloud.Activator;
 import org.wso2.developerstudio.eclipse.esb.cloud.client.IntegrationCloudServiceClient;
 import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.CloudDeploymentException;
 import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.InvalidTokenException;
-import org.wso2.developerstudio.eclipse.esb.cloud.notification.DeploymentStatusNotificationPopup;
+import org.wso2.developerstudio.eclipse.esb.cloud.notification.EndpointNotificationPopup;
 import org.wso2.developerstudio.eclipse.esb.cloud.resources.CloudDeploymentWizardConstants;
 import org.wso2.developerstudio.eclipse.esb.cloud.util.UserSessionManager;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;

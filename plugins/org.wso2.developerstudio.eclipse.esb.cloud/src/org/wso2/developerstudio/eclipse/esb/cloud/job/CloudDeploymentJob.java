@@ -43,7 +43,7 @@ import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.InvalidTokenExcepti
 import org.wso2.developerstudio.eclipse.esb.cloud.model.Application;
 import org.wso2.developerstudio.eclipse.esb.cloud.model.EndpointData;
 import org.wso2.developerstudio.eclipse.esb.cloud.model.Version;
-import org.wso2.developerstudio.eclipse.esb.cloud.notification.DeploymentStatusNotificationPopup;
+import org.wso2.developerstudio.eclipse.esb.cloud.notification.EndpointNotificationPopup;
 import org.wso2.developerstudio.eclipse.esb.cloud.resources.CloudDeploymentWizardConstants;
 import org.wso2.developerstudio.eclipse.esb.cloud.util.JsonUtils;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
@@ -172,7 +172,7 @@ public class CloudDeploymentJob extends Job {
         Display.getDefault().syncExec(new Runnable() {
             public void run() {
                 Display display = PlatformUI.getWorkbench().getDisplay();
-                final AbstractNotificationPopup popup = new DeploymentStatusNotificationPopup(display, endpointData);
+                final AbstractNotificationPopup popup = new EndpointNotificationPopup(display, endpointData);
                 popup.open();
             }
         });

@@ -19,7 +19,7 @@ import org.wso2.developerstudio.eclipse.esb.cloud.model.Endpoint;
 import org.wso2.developerstudio.eclipse.esb.cloud.model.EndpointData;
 import org.wso2.developerstudio.eclipse.esb.cloud.resources.CloudDeploymentWizardConstants;
 
-public class DeploymentStatusNotificationPopup extends AbstractNotificationPopup {
+public class EndpointNotificationPopup extends AbstractNotificationPopup {
 
     private EndpointData endpoints;
 
@@ -32,37 +32,9 @@ public class DeploymentStatusNotificationPopup extends AbstractNotificationPopup
 
     private static final String CLOSE_LABEL = "×";
 
-    public DeploymentStatusNotificationPopup(Display display, EndpointData endpoints) {
+    public EndpointNotificationPopup(Display display, EndpointData endpoints) {
         super(display, DELAY);
         this.endpoints = endpoints;
-    }
-
-    @Override
-    protected void createTitleArea(Composite parent) {
-        ((GridData) parent.getLayoutData()).heightHint = 24;
-
-        // Title
-        Label titleLabel = new Label(parent, SWT.NONE);
-        titleLabel.setText(DEPLOYMENT_SUCCESS_TITLE);
-        titleLabel.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, true));
-        titleLabel.setCursor(parent.getDisplay().getSystemCursor(SWT.CURSOR_HAND));
-        FontData fontData = titleLabel.getFont().getFontData()[0];
-        Font font = new Font(Display.getCurrent(),
-                new FontData(fontData.getName(), fontData.getHeight(), SWT.BOLD));
-        titleLabel.setFont(font);
-        titleLabel.setForeground(Display.getCurrent().getSystemColor(SWT.COLOR_DARK_GRAY));
-
-        // Close button
-        Label closeButton = new Label(parent, SWT.NONE);
-        closeButton.setText(CLOSE_LABEL);
-        closeButton.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_END));
-        closeButton.setCursor(parent.getDisplay().getSystemCursor(SWT.CURSOR_HAND));
-        closeButton.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseUp(MouseEvent e) {
-                close();
-            }
-        });
     }
 
     @Override

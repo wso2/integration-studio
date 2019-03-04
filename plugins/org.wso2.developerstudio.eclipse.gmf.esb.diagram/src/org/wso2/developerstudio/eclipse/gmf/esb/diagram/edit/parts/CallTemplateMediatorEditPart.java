@@ -635,10 +635,10 @@ public class CallTemplateMediatorEditPart extends FixedSizedAbstractMediator {
                             .createInvokeMediator(new TransformationInfo(), callTemplateMediatorDataModel);
 
                     InvokeMediatorSerializer invokeMediatorSerializer = new InvokeMediatorSerializer();
-                    OMElement omElement = invokeMediatorSerializer.serializeMediator(null , callTemplateMediator);
+                    OMElement omElement = invokeMediatorSerializer.serializeMediator(null, callTemplateMediator);
 
-                    if (StringUtils
-                            .isEmpty(MediatorValidationUtil.validateMediatorsFromOEMElement(omElement, "call-template"))) {
+                    if (StringUtils.isEmpty(
+                            MediatorValidationUtil.validateMediatorsFromOEMElement(omElement, "call-template"))) {
                         GraphicalValidatorUtil.removeValidationMark(this);
                     } else {
                         GraphicalValidatorUtil.addValidationMark(this);

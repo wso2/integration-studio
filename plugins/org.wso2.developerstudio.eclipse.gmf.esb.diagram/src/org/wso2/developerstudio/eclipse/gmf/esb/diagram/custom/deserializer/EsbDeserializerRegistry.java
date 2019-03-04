@@ -44,6 +44,7 @@ import org.apache.synapse.mediators.builtin.EnqueueMediator;
 import org.apache.synapse.mediators.builtin.ForEachMediator;
 import org.apache.synapse.mediators.builtin.LogMediator;
 import org.apache.synapse.mediators.builtin.LoopBackMediator;
+import org.apache.synapse.mediators.builtin.PropertyGroupMediator;
 import org.apache.synapse.mediators.builtin.PropertyMediator;
 import org.apache.synapse.mediators.builtin.RespondMediator;
 import org.apache.synapse.mediators.builtin.SendMediator;
@@ -126,6 +127,7 @@ public class EsbDeserializerRegistry {
         deserializersMap = new HashMap<Class<?>, IEsbNodeDeserializer>();
         addDeserializer(LogMediator.class, new LogMediatorDeserializer());
         addDeserializer(PropertyMediator.class, new PropertyMediatorDeserializer());
+        addDeserializer(PropertyGroupMediator.class, new PropertyGroupMediatorDeserializer());
         addDeserializer(ProxyService.class, new ProxyServiceDeserializer());
         addDeserializer(SendMediator.class, new SendMediatorDeserializer());
         addDeserializer(CloneMediator.class, new CloneMediatorDeserializer());

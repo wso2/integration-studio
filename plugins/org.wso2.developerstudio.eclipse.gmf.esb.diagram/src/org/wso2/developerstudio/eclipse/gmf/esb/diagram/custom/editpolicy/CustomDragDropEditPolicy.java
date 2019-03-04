@@ -160,6 +160,7 @@ public class CustomDragDropEditPolicy extends DragDropEditPolicy {
         mediators.add("org.wso2.developerstudio.eclipse.gmf.esb.diagram.LogMediator_3495");
         mediators.add("org.wso2.developerstudio.eclipse.gmf.esb.diagram.DropMediator_3491");
         mediators.add("org.wso2.developerstudio.eclipse.gmf.esb.diagram.PropertyMediator_3492");
+        mediators.add("org.wso2.developerstudio.eclipse.gmf.esb.diagram.PropertyMediator_3788");
         mediators.add("org.wso2.developerstudio.eclipse.gmf.esb.diagram.EnrichMediator_3496");
         mediators.add("org.wso2.developerstudio.eclipse.gmf.esb.diagram.EventMediator_3504");
         mediators.add("org.wso2.developerstudio.eclipse.gmf.esb.diagram.SendMediator_3515");

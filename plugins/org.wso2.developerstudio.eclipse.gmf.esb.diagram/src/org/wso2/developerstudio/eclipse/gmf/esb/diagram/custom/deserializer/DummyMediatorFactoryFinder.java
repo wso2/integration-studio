@@ -62,6 +62,7 @@ import org.apache.synapse.config.xml.MessageStoreMediatorFactory;
 import org.apache.synapse.config.xml.OutMediatorFactory;
 import org.apache.synapse.config.xml.POJOCommandMediatorFactory;
 import org.apache.synapse.config.xml.PayloadFactoryMediatorFactory;
+import org.apache.synapse.config.xml.PropertyGroupMediatorFactory;
 import org.apache.synapse.config.xml.PropertyMediatorFactory;
 import org.apache.synapse.config.xml.RespondMediatorFactory;
 import org.apache.synapse.config.xml.SamplingThrottleMediatorFactory;
@@ -102,7 +103,7 @@ public class DummyMediatorFactoryFinder {
     private static final Class[] mediatorFactories = { SequenceMediatorFactory.class, LogMediatorFactory.class,
             SendMediatorFactory.class, FilterMediatorFactory.class, SynapseMediatorFactory.class,
             DropMediatorFactory.class, HeaderMediatorFactory.class, FaultMediatorFactory.class,
-            PropertyMediatorFactory.class, SwitchMediatorFactory.class, InMediatorFactory.class,
+            PropertyMediatorFactory.class, PropertyGroupMediatorFactory.class, SwitchMediatorFactory.class, InMediatorFactory.class,
             OutMediatorFactory.class, ClassMediatorFactory.class, ValidateMediatorFactory.class,
             XSLTMediatorFactory.class, AnnotatedCommandMediatorFactory.class, POJOCommandMediatorFactory.class,
             CloneMediatorFactory.class, IterateMediatorFactory.class, AggregateMediatorFactory.class,

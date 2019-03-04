@@ -21,7 +21,7 @@ import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-
+import org.eclipse.emf.eef.runtime.ui.editors.pages.eefviewer.EEFPropertiesViewerMDFormPage;
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
@@ -32,6 +32,7 @@ import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 
 import org.eclipse.emf.eef.runtime.ui.widgets.EEFFeatureEditorDialog;
 import org.eclipse.emf.eef.runtime.ui.widgets.EMFComboViewer;
+import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 
 import org.eclipse.jface.viewers.ArrayContentProvider;
@@ -47,6 +48,9 @@ import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.KeyListener;
+import org.eclipse.swt.events.MouseAdapter;
+import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 
@@ -55,15 +59,21 @@ import org.eclipse.swt.layout.GridLayout;
 
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.PropertyAction;
+import org.wso2.developerstudio.eclipse.gmf.esb.PropertyName;
+import org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.PropertyMediatorPropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.forms.PropertyMediatorPropertiesEditionPartForm;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFNameSpacedPropertyEditorDialog;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
 import org.wso2.developerstudio.esb.form.editors.article.providers.NamespacedPropertyEditorDialog;
 
@@ -91,10 +101,25 @@ public class PropertyMediatorPropertiesEditionPartImpl extends CompositeProperti
 	protected Text newPropertyName;
 	// Start of user code  for valueExpression widgets declarations
 	protected NamespacedProperty valueExpression;
+	protected Text valueExpressionText;
+	protected Control[] propertyNameElements;
+	protected Control[] propertyDataTypeElements;
+	protected Control[] propertyActionElements;
+	protected Control[] propertyScopeElements;
+	protected Control[] valueTypeElements;
+	protected Control[] valueElements;
+	protected Control[] expressionElements;
+	protected Control[] booleanElements;
+	protected Control[] omTextElements;
+	protected Control[] valueStringPatternElements;
+	protected Control[] valueStringCapturingGroupElements;
+	protected Control[] newPropertyNameElements;
+	protected Control[] valueExpressionElements;
+	protected Control[] descriptionElements;
 	// End of user code
 
 	protected Text description;
-
+	protected Group propertiesGroup;
 
 
 	/**
@@ -214,10 +239,10 @@ public class PropertyMediatorPropertiesEditionPartImpl extends CompositeProperti
 	}
 
 	/**
-	 * 
+	 * @generated NOT
 	 */
 	protected Composite createPropertiesGroup(Composite parent) {
-		Group propertiesGroup = new Group(parent, SWT.NONE);
+	    propertiesGroup = new Group(parent, SWT.NONE);
 		propertiesGroup.setText(EsbMessages.PropertyMediatorPropertiesEditionPart_PropertiesGroupLabel);
 		GridData propertiesGroupData = new GridData(GridData.FILL_HORIZONTAL);
 		propertiesGroupData.horizontalSpan = 3;
@@ -226,11 +251,23 @@ public class PropertyMediatorPropertiesEditionPartImpl extends CompositeProperti
 		propertiesGroupLayout.numColumns = 3;
 		propertiesGroup.setLayout(propertiesGroupLayout);
 		return propertiesGroup;
+	    
+//        GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
+//        propertiesSectionData.horizontalSpan = 3;
+//        parent.setLayoutData(propertiesSectionData);
+//        propertiesGroup = new Group(parent, SWT.NONE);
+//        GridLayout propertiesGroupLayout = new GridLayout();
+//        propertiesGroupLayout.makeColumnsEqualWidth = true;
+//        propertiesGroupLayout.numColumns = 3;
+//        propertiesGroup.setLayout(propertiesGroupLayout);
+//        return propertiesGroup;	    
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createPropertyNameEMFComboViewer(Composite parent) {
-		createDescription(parent, EsbViewsRepository.PropertyMediator.Properties.propertyName, EsbMessages.PropertyMediatorPropertiesEditionPart_PropertyNameLabel);
+	    Control propertyNameLabel = createDescription(parent, EsbViewsRepository.PropertyMediator.Properties.propertyName, EsbMessages.PropertyMediatorPropertiesEditionPart_PropertyNameLabel);
 		propertyName = new EMFComboViewer(parent);
 		propertyName.setContentProvider(new ArrayContentProvider());
 		propertyName.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -251,16 +288,30 @@ public class PropertyMediatorPropertiesEditionPartImpl extends CompositeProperti
 
 		});
 		propertyName.setID(EsbViewsRepository.PropertyMediator.Properties.propertyName);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PropertyMediator.Properties.propertyName, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		Control propertyNameHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PropertyMediator.Properties.propertyName, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createPropertyNameEMFComboViewer
-
+        propertyNameElements = new Control[] {propertyNameLabel, propertyName.getCombo(), propertyNameHelp};
+        propertyName.addSelectionChangedListener(new ISelectionChangedListener() {
+                    
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+             *  
+             */
+            public void selectionChanged(SelectionChangedEvent event) {
+                validate();
+            }
+        });
 		// End of user code
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */ 
 	protected Composite createPropertyDataTypeEMFComboViewer(Composite parent) {
-		createDescription(parent, EsbViewsRepository.PropertyMediator.Properties.propertyDataType, EsbMessages.PropertyMediatorPropertiesEditionPart_PropertyDataTypeLabel);
+	    Control propertyDataTypeLabel = createDescription(parent, EsbViewsRepository.PropertyMediator.Properties.propertyDataType, EsbMessages.PropertyMediatorPropertiesEditionPart_PropertyDataTypeLabel);
 		propertyDataType = new EMFComboViewer(parent);
 		propertyDataType.setContentProvider(new ArrayContentProvider());
 		propertyDataType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -281,16 +332,30 @@ public class PropertyMediatorPropertiesEditionPartImpl extends CompositeProperti
 
 		});
 		propertyDataType.setID(EsbViewsRepository.PropertyMediator.Properties.propertyDataType);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PropertyMediator.Properties.propertyDataType, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		Control propertyDataTypeHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PropertyMediator.Properties.propertyDataType, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createPropertyDataTypeEMFComboViewer
+        propertyDataTypeElements = new Control[] {propertyDataTypeLabel, propertyDataType.getCombo(), propertyDataTypeHelp};
+        propertyDataType.addSelectionChangedListener(new ISelectionChangedListener() {
 
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+             *  
+             */
+            public void selectionChanged(SelectionChangedEvent event) {
+                validate();
+            }
+        });
 		// End of user code
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */ 	
 	protected Composite createPropertyActionEMFComboViewer(Composite parent) {
-		createDescription(parent, EsbViewsRepository.PropertyMediator.Properties.propertyAction, EsbMessages.PropertyMediatorPropertiesEditionPart_PropertyActionLabel);
+	    Control propertyActionLabel = createDescription(parent, EsbViewsRepository.PropertyMediator.Properties.propertyAction, EsbMessages.PropertyMediatorPropertiesEditionPart_PropertyActionLabel);
 		propertyAction = new EMFComboViewer(parent);
 		propertyAction.setContentProvider(new ArrayContentProvider());
 		propertyAction.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -311,16 +376,31 @@ public class PropertyMediatorPropertiesEditionPartImpl extends CompositeProperti
 
 		});
 		propertyAction.setID(EsbViewsRepository.PropertyMediator.Properties.propertyAction);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PropertyMediator.Properties.propertyAction, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		Control propertyActionHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PropertyMediator.Properties.propertyAction, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createPropertyActionEMFComboViewer
+        propertyActionElements = new Control[] {propertyActionLabel, propertyAction.getCombo(), propertyActionHelp};
+        propertyAction.addSelectionChangedListener(new ISelectionChangedListener() {
 
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+             *  
+             */
+            public void selectionChanged(SelectionChangedEvent event) {
+                validate();
+            }
+
+        });
 		// End of user code
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createPropertyScopeEMFComboViewer(Composite parent) {
-		createDescription(parent, EsbViewsRepository.PropertyMediator.Properties.propertyScope, EsbMessages.PropertyMediatorPropertiesEditionPart_PropertyScopeLabel);
+	    Control propertyScopeLabel = createDescription(parent, EsbViewsRepository.PropertyMediator.Properties.propertyScope, EsbMessages.PropertyMediatorPropertiesEditionPart_PropertyScopeLabel);
 		propertyScope = new EMFComboViewer(parent);
 		propertyScope.setContentProvider(new ArrayContentProvider());
 		propertyScope.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -341,16 +421,31 @@ public class PropertyMediatorPropertiesEditionPartImpl extends CompositeProperti
 
 		});
 		propertyScope.setID(EsbViewsRepository.PropertyMediator.Properties.propertyScope);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PropertyMediator.Properties.propertyScope, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		Control propertyScopeHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PropertyMediator.Properties.propertyScope, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createPropertyScopeEMFComboViewer
+        propertyScopeElements = new Control[] {propertyScopeLabel, propertyScope.getCombo(), propertyScopeHelp};
+        propertyScope.addSelectionChangedListener(new ISelectionChangedListener() {
 
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+             *  
+             */
+            public void selectionChanged(SelectionChangedEvent event) {
+                validate();
+            }
+
+        });
 		// End of user code
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */ 	
 	protected Composite createValueTypeEMFComboViewer(Composite parent) {
-		createDescription(parent, EsbViewsRepository.PropertyMediator.Properties.valueType, EsbMessages.PropertyMediatorPropertiesEditionPart_ValueTypeLabel);
+	    Control valueTypeLabel = createDescription(parent, EsbViewsRepository.PropertyMediator.Properties.valueType, EsbMessages.PropertyMediatorPropertiesEditionPart_ValueTypeLabel);
 		valueType = new EMFComboViewer(parent);
 		valueType.setContentProvider(new ArrayContentProvider());
 		valueType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -371,16 +466,24 @@ public class PropertyMediatorPropertiesEditionPartImpl extends CompositeProperti
 
 		});
 		valueType.setID(EsbViewsRepository.PropertyMediator.Properties.valueType);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PropertyMediator.Properties.valueType, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		Control valueTypeHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PropertyMediator.Properties.valueType, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createValueTypeEMFComboViewer
+        valueTypeElements  = new Control[] {valueTypeLabel, valueType.getCombo(), valueTypeHelp};
+        valueType.addSelectionChangedListener(new ISelectionChangedListener() {
 
+            public void selectionChanged(SelectionChangedEvent event) {
+                validate();
+            }
+        });
 		// End of user code
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */ 	
 	protected Composite createValueText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.PropertyMediator.Properties.value, EsbMessages.PropertyMediatorPropertiesEditionPart_ValueLabel);
+	    Control valueLabel = createDescription(parent, EsbViewsRepository.PropertyMediator.Properties.value, EsbMessages.PropertyMediatorPropertiesEditionPart_ValueLabel);
 		value = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
 		value.setLayoutData(valueData);
@@ -397,8 +500,28 @@ public class PropertyMediatorPropertiesEditionPartImpl extends CompositeProperti
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertyMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.PropertyMediator.Properties.value, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, value.getText()));
+                propertiesEditionComponent
+                .firePropertiesChanged(new PropertiesEditionEvent(
+                        PropertyMediatorPropertiesEditionPartImpl.this,
+                        EsbViewsRepository.PropertyMediator.Properties.value,
+                        PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
+                        null, value.getText()));
 			}
-
+			
+            /**
+             * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+             */
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (propertiesEditionComponent != null) {
+                    propertiesEditionComponent
+                            .firePropertiesChanged(new PropertiesEditionEvent(
+                                    PropertyMediatorPropertiesEditionPartImpl.this,
+                                    null,
+                                    PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_GAINED,
+                                    null, null));
+                }
+            }
 		});
 		value.addKeyListener(new KeyAdapter() {
 
@@ -420,16 +543,18 @@ public class PropertyMediatorPropertiesEditionPartImpl extends CompositeProperti
 		});
 		EditingUtils.setID(value, EsbViewsRepository.PropertyMediator.Properties.value);
 		EditingUtils.setEEFtype(value, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PropertyMediator.Properties.value, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		Control valueHelpButton = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PropertyMediator.Properties.value, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createValueText
-
+        valueElements = new Control[] {valueLabel, value, valueHelpButton};
 		// End of user code
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createExpressionText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.PropertyMediator.Properties.expression, EsbMessages.PropertyMediatorPropertiesEditionPart_ExpressionLabel);
+	    Control expressionLabel = createDescription(parent, EsbViewsRepository.PropertyMediator.Properties.expression, EsbMessages.PropertyMediatorPropertiesEditionPart_ExpressionLabel);
 		expression = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData expressionData = new GridData(GridData.FILL_HORIZONTAL);
 		expression.setLayoutData(expressionData);
@@ -444,13 +569,33 @@ public class PropertyMediatorPropertiesEditionPartImpl extends CompositeProperti
 			@Override
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null)
+				if (propertiesEditionComponent != null) {
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertyMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.PropertyMediator.Properties.expression, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, expression.getText()));
+                propertiesEditionComponent
+                .firePropertiesChanged(new PropertiesEditionEvent(
+                        PropertyMediatorPropertiesEditionPartImpl.this,
+                        EsbViewsRepository.PropertyMediator.Properties.expression,
+                        PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
+                        null, expression.getText()));				
 			}
+        }
 
+        /**
+         * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+         */
+        @Override
+        public void focusGained(FocusEvent e) {
+            if (propertiesEditionComponent != null) {
+                propertiesEditionComponent
+                        .firePropertiesChanged(new PropertiesEditionEvent(
+                                PropertyMediatorPropertiesEditionPartImpl.this,
+                                null,
+                                PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_GAINED,
+                                null, null));
+            }
+        }
 		});
 		expression.addKeyListener(new KeyAdapter() {
-
 			/**
 			 * {@inheritDoc}
 			 * 
@@ -469,14 +614,16 @@ public class PropertyMediatorPropertiesEditionPartImpl extends CompositeProperti
 		});
 		EditingUtils.setID(expression, EsbViewsRepository.PropertyMediator.Properties.expression);
 		EditingUtils.setEEFtype(expression, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PropertyMediator.Properties.expression, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		Control expressionHelpButton = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PropertyMediator.Properties.expression, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createExpressionText
-
+        expressionElements = new Control[] {expressionLabel, expression, expressionHelpButton};
 		// End of user code
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createNamespacePrefixText(Composite parent) {
 		createDescription(parent, EsbViewsRepository.PropertyMediator.Properties.namespacePrefix, EsbMessages.PropertyMediatorPropertiesEditionPart_NamespacePrefixLabel);
 		namespacePrefix = SWTUtils.createScrollableText(parent, SWT.BORDER);
@@ -493,10 +640,31 @@ public class PropertyMediatorPropertiesEditionPartImpl extends CompositeProperti
 			@Override
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null)
+				if (propertiesEditionComponent != null) {
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertyMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.PropertyMediator.Properties.namespacePrefix, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, namespacePrefix.getText()));
+                propertiesEditionComponent
+                .firePropertiesChanged(new PropertiesEditionEvent(
+                        PropertyMediatorPropertiesEditionPartImpl.this,
+                        EsbViewsRepository.PropertyMediator.Properties.namespacePrefix,
+                        PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
+                        null, namespacePrefix.getText()));
 			}
+        }
 
+        /**
+         * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+         */
+        @Override
+        public void focusGained(FocusEvent e) {
+            if (propertiesEditionComponent != null) {
+                propertiesEditionComponent
+                        .firePropertiesChanged(new PropertiesEditionEvent(
+                                PropertyMediatorPropertiesEditionPartImpl.this,
+                                null,
+                                PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_GAINED,
+                                null, null));
+            }
+        }
 		});
 		namespacePrefix.addKeyListener(new KeyAdapter() {
 
@@ -525,7 +693,9 @@ public class PropertyMediatorPropertiesEditionPartImpl extends CompositeProperti
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createNamespaceText(Composite parent) {
 		createDescription(parent, EsbViewsRepository.PropertyMediator.Properties.namespace, EsbMessages.PropertyMediatorPropertiesEditionPart_NamespaceLabel);
 		namespace = SWTUtils.createScrollableText(parent, SWT.BORDER);
@@ -542,10 +712,31 @@ public class PropertyMediatorPropertiesEditionPartImpl extends CompositeProperti
 			@Override
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null)
+				if (propertiesEditionComponent != null) {
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertyMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.PropertyMediator.Properties.namespace, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, namespace.getText()));
+                propertiesEditionComponent
+                .firePropertiesChanged(new PropertiesEditionEvent(
+                        PropertyMediatorPropertiesEditionPartImpl.this,
+                        EsbViewsRepository.PropertyMediator.Properties.namespace,
+                        PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
+                        null, namespace.getText()));
 			}
+        }
 
+        /**
+         * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+         */
+        @Override
+        public void focusGained(FocusEvent e) {
+            if (propertiesEditionComponent != null) {
+                propertiesEditionComponent
+                        .firePropertiesChanged(new PropertiesEditionEvent(
+                                PropertyMediatorPropertiesEditionPartImpl.this,
+                                null,
+                                PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_GAINED,
+                                null, null));
+            }
+        }
 		});
 		namespace.addKeyListener(new KeyAdapter() {
 
@@ -573,8 +764,10 @@ public class PropertyMediatorPropertiesEditionPartImpl extends CompositeProperti
 		// End of user code
 		return parent;
 	}
-
 	
+    /**
+     * @generated NOT
+     */
 	protected Composite createBoolean_Checkbox(Composite parent) {
 		boolean_ = new Button(parent, SWT.CHECK);
 		boolean_.setText(getDescription(EsbViewsRepository.PropertyMediator.Properties.boolean_, EsbMessages.PropertyMediatorPropertiesEditionPart_Boolean_Label));
@@ -597,16 +790,18 @@ public class PropertyMediatorPropertiesEditionPartImpl extends CompositeProperti
 		boolean_.setLayoutData(boolean_Data);
 		EditingUtils.setID(boolean_, EsbViewsRepository.PropertyMediator.Properties.boolean_);
 		EditingUtils.setEEFtype(boolean_, "eef::Checkbox"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PropertyMediator.Properties.boolean_, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		Control booleanHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PropertyMediator.Properties.boolean_, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createBoolean_Checkbox
-
+        booleanElements = new Control[] {boolean_, booleanHelp};
 		// End of user code
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */	
 	protected Composite createOMText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.PropertyMediator.Properties.oM, EsbMessages.PropertyMediatorPropertiesEditionPart_OMLabel);
+	    Control omTextLabel = createDescription(parent, EsbViewsRepository.PropertyMediator.Properties.oM, EsbMessages.PropertyMediatorPropertiesEditionPart_OMLabel);
 		oM = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData oMData = new GridData(GridData.FILL_HORIZONTAL);
 		oM.setLayoutData(oMData);
@@ -621,10 +816,31 @@ public class PropertyMediatorPropertiesEditionPartImpl extends CompositeProperti
 			@Override
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null)
+				if (propertiesEditionComponent != null) {
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertyMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.PropertyMediator.Properties.oM, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, oM.getText()));
+                propertiesEditionComponent
+                .firePropertiesChanged(new PropertiesEditionEvent(
+                        PropertyMediatorPropertiesEditionPartImpl.this,
+                        EsbViewsRepository.PropertyMediator.Properties.oM,
+                        PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
+                        null, oM.getText()));
 			}
+        }
 
+        /**
+         * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+         */
+        @Override
+        public void focusGained(FocusEvent e) {
+            if (propertiesEditionComponent != null) {
+                propertiesEditionComponent
+                        .firePropertiesChanged(new PropertiesEditionEvent(
+                                PropertyMediatorPropertiesEditionPartImpl.this,
+                                null,
+                                PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_GAINED,
+                                null, null));
+            }
+        }
 		});
 		oM.addKeyListener(new KeyAdapter() {
 
@@ -646,16 +862,18 @@ public class PropertyMediatorPropertiesEditionPartImpl extends CompositeProperti
 		});
 		EditingUtils.setID(oM, EsbViewsRepository.PropertyMediator.Properties.oM);
 		EditingUtils.setEEFtype(oM, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PropertyMediator.Properties.oM, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		Control omHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PropertyMediator.Properties.oM, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createOMText
-
+        omTextElements = new Control[] {omTextLabel, oM, omHelp};
 		// End of user code
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */	
 	protected Composite createValueStringPatternText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.PropertyMediator.Properties.valueStringPattern, EsbMessages.PropertyMediatorPropertiesEditionPart_ValueStringPatternLabel);
+	    Control valueStringPatternLabel = createDescription(parent, EsbViewsRepository.PropertyMediator.Properties.valueStringPattern, EsbMessages.PropertyMediatorPropertiesEditionPart_ValueStringPatternLabel);
 		valueStringPattern = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData valueStringPatternData = new GridData(GridData.FILL_HORIZONTAL);
 		valueStringPattern.setLayoutData(valueStringPatternData);
@@ -670,10 +888,31 @@ public class PropertyMediatorPropertiesEditionPartImpl extends CompositeProperti
 			@Override
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null)
+				if (propertiesEditionComponent != null) {
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertyMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.PropertyMediator.Properties.valueStringPattern, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, valueStringPattern.getText()));
+                propertiesEditionComponent
+                .firePropertiesChanged(new PropertiesEditionEvent(
+                        PropertyMediatorPropertiesEditionPartImpl.this,
+                        EsbViewsRepository.PropertyMediator.Properties.valueStringPattern,
+                        PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
+                        null, valueStringPattern.getText()));
 			}
+        }
 
+        /**
+         * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+         */
+        @Override
+        public void focusGained(FocusEvent e) {
+            if (propertiesEditionComponent != null) {
+                propertiesEditionComponent
+                        .firePropertiesChanged(new PropertiesEditionEvent(
+                                PropertyMediatorPropertiesEditionPartImpl.this,
+                                null,
+                                PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_GAINED,
+                                null, null));
+            }
+        }
 		});
 		valueStringPattern.addKeyListener(new KeyAdapter() {
 
@@ -695,16 +934,18 @@ public class PropertyMediatorPropertiesEditionPartImpl extends CompositeProperti
 		});
 		EditingUtils.setID(valueStringPattern, EsbViewsRepository.PropertyMediator.Properties.valueStringPattern);
 		EditingUtils.setEEFtype(valueStringPattern, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PropertyMediator.Properties.valueStringPattern, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		Control valueStringPatternHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PropertyMediator.Properties.valueStringPattern, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createValueStringPatternText
-
+        valueStringPatternElements = new Control[] {valueStringPatternLabel, valueStringPattern, valueStringPatternHelp};
 		// End of user code
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */	
 	protected Composite createValueStringCapturingGroupText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.PropertyMediator.Properties.valueStringCapturingGroup, EsbMessages.PropertyMediatorPropertiesEditionPart_ValueStringCapturingGroupLabel);
+	    Control valueStringCapturingGroupLabel = createDescription(parent, EsbViewsRepository.PropertyMediator.Properties.valueStringCapturingGroup, EsbMessages.PropertyMediatorPropertiesEditionPart_ValueStringCapturingGroupLabel);
 		valueStringCapturingGroup = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData valueStringCapturingGroupData = new GridData(GridData.FILL_HORIZONTAL);
 		valueStringCapturingGroup.setLayoutData(valueStringCapturingGroupData);
@@ -719,10 +960,31 @@ public class PropertyMediatorPropertiesEditionPartImpl extends CompositeProperti
 			@Override
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null)
+				if (propertiesEditionComponent != null) {
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertyMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.PropertyMediator.Properties.valueStringCapturingGroup, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, valueStringCapturingGroup.getText()));
+                propertiesEditionComponent
+                .firePropertiesChanged(new PropertiesEditionEvent(
+                        PropertyMediatorPropertiesEditionPartImpl.this,
+                        EsbViewsRepository.PropertyMediator.Properties.valueStringCapturingGroup,
+                        PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
+                        null, valueStringCapturingGroup.getText()));
 			}
+        }
 
+        /**
+         * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+         */
+        @Override
+        public void focusGained(FocusEvent e) {
+            if (propertiesEditionComponent != null) {
+                propertiesEditionComponent
+                        .firePropertiesChanged(new PropertiesEditionEvent(
+                                PropertyMediatorPropertiesEditionPartImpl.this,
+                                null,
+                                PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_GAINED,
+                                null, null));
+            }
+        }
 		});
 		valueStringCapturingGroup.addKeyListener(new KeyAdapter() {
 
@@ -744,16 +1006,18 @@ public class PropertyMediatorPropertiesEditionPartImpl extends CompositeProperti
 		});
 		EditingUtils.setID(valueStringCapturingGroup, EsbViewsRepository.PropertyMediator.Properties.valueStringCapturingGroup);
 		EditingUtils.setEEFtype(valueStringCapturingGroup, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PropertyMediator.Properties.valueStringCapturingGroup, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		Control valueStringCapturingGroupHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PropertyMediator.Properties.valueStringCapturingGroup, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createValueStringCapturingGroupText
-
+        valueStringCapturingGroupElements = new Control[] {valueStringCapturingGroupLabel, valueStringCapturingGroup, valueStringCapturingGroupHelp};
 		// End of user code
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */	
 	protected Composite createNewPropertyNameText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.PropertyMediator.Properties.newPropertyName, EsbMessages.PropertyMediatorPropertiesEditionPart_NewPropertyNameLabel);
+	    Control itemLabel = createDescription(parent, EsbViewsRepository.PropertyMediator.Properties.newPropertyName, EsbMessages.PropertyMediatorPropertiesEditionPart_NewPropertyNameLabel);
 		newPropertyName = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData newPropertyNameData = new GridData(GridData.FILL_HORIZONTAL);
 		newPropertyName.setLayoutData(newPropertyNameData);
@@ -768,10 +1032,32 @@ public class PropertyMediatorPropertiesEditionPartImpl extends CompositeProperti
 			@Override
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null)
+				if (propertiesEditionComponent != null) {
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertyMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.PropertyMediator.Properties.newPropertyName, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, newPropertyName.getText()));
+                propertiesEditionComponent
+                .firePropertiesChanged(new PropertiesEditionEvent(
+                        PropertyMediatorPropertiesEditionPartImpl.this,
+                        EsbViewsRepository.PropertyMediator.Properties.newPropertyName,
+                        PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
+                        null, newPropertyName.getText()));
 			}
+        }
 
+        /**
+         * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+         */
+        @Override
+        public void focusGained(FocusEvent e) {
+            if (propertiesEditionComponent != null) {
+                propertiesEditionComponent
+                        .firePropertiesChanged(new PropertiesEditionEvent(
+                                PropertyMediatorPropertiesEditionPartImpl.this,
+                                null,
+                                PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_GAINED,
+                                null, null));
+
+            }
+        }
 		});
 		newPropertyName.addKeyListener(new KeyAdapter() {
 
@@ -789,20 +1075,21 @@ public class PropertyMediatorPropertiesEditionPartImpl extends CompositeProperti
 						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertyMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.PropertyMediator.Properties.newPropertyName, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, newPropertyName.getText()));
 				}
 			}
-
 		});
 		EditingUtils.setID(newPropertyName, EsbViewsRepository.PropertyMediator.Properties.newPropertyName);
 		EditingUtils.setEEFtype(newPropertyName, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PropertyMediator.Properties.newPropertyName, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		Control itemHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PropertyMediator.Properties.newPropertyName, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createNewPropertyNameText
-
+        newPropertyNameElements = new Control[] {itemLabel, newPropertyName, itemHelp};
 		// End of user code
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */	
 	protected Composite createDescriptionText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.PropertyMediator.Properties.description, EsbMessages.PropertyMediatorPropertiesEditionPart_DescriptionLabel);
+	    Control descriptionLabel = createDescription(parent, EsbViewsRepository.PropertyMediator.Properties.description, EsbMessages.PropertyMediatorPropertiesEditionPart_DescriptionLabel);
 		description = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData descriptionData = new GridData(GridData.FILL_HORIZONTAL);
 		description.setLayoutData(descriptionData);
@@ -817,10 +1104,31 @@ public class PropertyMediatorPropertiesEditionPartImpl extends CompositeProperti
 			@Override
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null)
+				if (propertiesEditionComponent != null) {
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertyMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.PropertyMediator.Properties.description, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, description.getText()));
+		          propertiesEditionComponent
+	              .firePropertiesChanged(new PropertiesEditionEvent(
+	                  PropertyMediatorPropertiesEditionPartImpl.this,
+	                  EsbViewsRepository.PropertyMediator.Properties.description,
+	                  PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
+	                  null, description.getText()));
 			}
+	      }
 
+	      /**
+	       * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+	       */
+	      @Override
+	      public void focusGained(FocusEvent e) {
+	        if (propertiesEditionComponent != null) {
+	          propertiesEditionComponent
+	              .firePropertiesChanged(new PropertiesEditionEvent(
+	                  PropertyMediatorPropertiesEditionPartImpl.this,
+	                  null,
+	                  PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_GAINED,
+	                  null, null));
+	        }
+	      }
 		});
 		description.addKeyListener(new KeyAdapter() {
 
@@ -842,9 +1150,9 @@ public class PropertyMediatorPropertiesEditionPartImpl extends CompositeProperti
 		});
 		EditingUtils.setID(description, EsbViewsRepository.PropertyMediator.Properties.description);
 		EditingUtils.setEEFtype(description, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PropertyMediator.Properties.description, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		Control descriptionHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PropertyMediator.Properties.description, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createDescriptionText
-
+	    descriptionElements = new Control[] {descriptionLabel, description, descriptionHelp};
 		// End of user code
 		return parent;
 	}
@@ -1433,6 +1741,12 @@ public class PropertyMediatorPropertiesEditionPartImpl extends CompositeProperti
             NamespacedProperty nameSpacedProperty) {
         valueExpression = nameSpacedProperty;
     }
+    
+    @Override
+    public void refresh() {
+        super.refresh();
+        validate();
+    }
 	// End of user code
 
 	/**
@@ -1446,26 +1760,120 @@ public class PropertyMediatorPropertiesEditionPartImpl extends CompositeProperti
 	}
 
 	// Start of user code additional methods
-    protected Composite createValueExpressionWidget(Composite parent) {
-        createDescription(parent, EsbViewsRepository.PropertyMediator.Properties.valueExpression, EsbMessages.PropertyMediatorPropertiesEditionPart_ValueExpressionLabel);
-        Button button = new Button(parent, SWT.PUSH);
-        button.setLayoutData(new GridData(SWT.BEGINNING, SWT.CENTER, false, false));
-        button.setText("Open NameSpaced Editor");
-        final NamespacedPropertyEditorDialog nspd;
-        if ((getValueExpression() == null)) {
+//    protected Composite createValueExpressionWidget(Composite parent) {
+//        createDescription(parent, EsbViewsRepository.PropertyMediator.Properties.valueExpression, EsbMessages.PropertyMediatorPropertiesEditionPart_ValueExpressionLabel);
+//        Button button = new Button(parent, SWT.PUSH);
+//        button.setLayoutData(new GridData(SWT.BEGINNING, SWT.CENTER, false, false));
+//        button.setText("Open NameSpaced Editor");
+//        final NamespacedPropertyEditorDialog nspd;
+//        if ((getValueExpression() == null)) {
+//            valueExpression = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
+//        }
+//        nspd = new NamespacedPropertyEditorDialog(parent.getShell(), SWT.NONE, valueExpression);
+//        button.addSelectionListener(new SelectionAdapter() {
+//            @Override
+//            public void widgetSelected(SelectionEvent e) {
+//                nspd.open();
+//                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertyMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.PropertyMediator.Properties.valueExpression, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, valueExpression.getPropertyValue()));
+//                
+//            }
+//        });    
+//        return parent;
+//    }
+	
+    protected Composite createValueExpressionWidget(final Composite parent) {
+        Control valueExpressionLabel = createDescription(parent, EsbViewsRepository.PropertyMediator.Properties.valueExpression, EsbMessages.PropertyMediatorPropertiesEditionPart_ValueExpressionLabel);
+        if(valueExpression == null) {
             valueExpression = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
-        }
-        nspd = new NamespacedPropertyEditorDialog(parent.getShell(), SWT.NONE, valueExpression);
-        button.addSelectionListener(new SelectionAdapter() {
+        } 
+        String initValueExpression = valueExpression.getPropertyValue().isEmpty() ? "" : valueExpression.getPropertyValue();
+        valueExpressionText = SWTUtils.createScrollableText(parent, SWT.BORDER);
+        valueExpressionText.setText(initValueExpression);
+        valueExpressionText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+        GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
+        valueExpressionText.setLayoutData(valueData);
+        
+        valueExpressionText.addMouseListener(new MouseAdapter() {
+            
             @Override
-            public void widgetSelected(SelectionEvent e) {
-                nspd.open();
-                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertyMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.PropertyMediator.Properties.valueExpression, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, valueExpression.getPropertyValue()));
-                
+            public void mouseDown( MouseEvent event ) {
+                openValueExpressionWidgetNamespacedPropertyEditor(parent);
             }
-        });    
+            
+        });
+        
+        valueExpressionText.addKeyListener(new KeyListener() {
+                        
+            @Override
+            public void keyPressed(KeyEvent e) {
+                openValueExpressionWidgetNamespacedPropertyEditor(parent);
+            }
+            
+            @Override
+            public void keyReleased(KeyEvent e) {}
+            
+        });
+        
+        EditingUtils.setID(valueExpressionText, EsbViewsRepository.PropertyMediator.Properties.valueExpression);
+        EditingUtils.setEEFtype(valueExpressionText, "eef::Text");
+        Control valueExpressionHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PropertyMediator.Properties.valueExpression, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+        valueExpressionElements = new Control[] {valueExpressionLabel, valueExpressionText, valueExpressionHelp};
         return parent;
     }
+    
+    private void openValueExpressionWidgetNamespacedPropertyEditor(final Composite parent) {
+        EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL,
+                valueExpression);
+        nspd.open();
+        valueExpressionText.setText(valueExpression.getPropertyValue());
+        propertiesEditionComponent
+                .firePropertiesChanged(new PropertiesEditionEvent(PropertyMediatorPropertiesEditionPartImpl.this,
+                        EsbViewsRepository.PropertyMediator.Properties.valueExpression, PropertiesEditionEvent.COMMIT,
+                        PropertiesEditionEvent.SET, null, getValueExpression()));
+    }
+    
+    public void validate() {
+        EEFPropertyViewUtil epv = new EEFPropertyViewUtil(view);
+        epv.clearElements(new Composite[] {propertiesGroup});
+        epv.showEntry(propertyNameElements, false);
+        if(getPropertyName().getName().equals(PropertyName.NEW_PROPERTY_NAME.getName())) {
+            epv.showEntry(newPropertyNameElements, false);
+        }
+        epv.showEntry(propertyActionElements, false);
+        if(getPropertyAction().getName().equals(PropertyAction.SET.getName())) {
+            epv.showEntry(valueTypeElements, false);
+            epv.showEntry(propertyDataTypeElements, false);
+            if(getValueType().getName().equals(PropertyValueType.LITERAL.getName())) {
+                switch (getPropertyDataType().getName()) {
+                    case "STRING": {
+                        epv.showEntry(valueElements, false);
+                        epv.showEntry(valueStringPatternElements, false);
+                        epv.showEntry(valueStringCapturingGroupElements, false);
+                        break;
+                    }
+                    default: {
+                        epv.showEntry(valueElements, false);
+                    }
+                }
+            } else {
+                epv.showEntry(valueExpressionElements, false);
+                switch (getPropertyDataType().getName()) {
+                case "STRING": {
+                    epv.showEntry(valueStringPatternElements, false);
+                    epv.showEntry(valueStringCapturingGroupElements, false);
+                    break;
+                }
+                default:
+                    break;
+                }
+            }
+        }
+        epv.showEntry(propertyScopeElements, false);
+        epv.showEntry(descriptionElements, false);
+        view.layout(true,true);
+        view.pack();
+    }
+
 	// End of user code
 
 

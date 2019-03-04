@@ -84,7 +84,7 @@ public class DummyCreateMediator {
     static final QName ATT_COLUMN = new QName("column");
 
     private static Set<String> mediators = new HashSet<>(Arrays.asList("log", "call", "enqueue", "send", "loopback",
-	    "respond", "event", "drop", "enrich", "property", "filter", "call-template", "sequence", "store", "switch",
+	    "respond", "event", "drop", "enrich", "property", "propertyGroup", "filter", "call-template", "sequence", "store", "switch",
 	    "validate", "conditionalRouter", "bean", "class", "pojoCommand", "ejb", "script", "spring", "enrich",
 	    "makefault", "header", "payloadFactory", "smooks", "rewrite", "xquery", "xslt", "datamapper", "fastXSLT",
 	    "cache", "dbreport", "dblookup", "event", "throttle", "transaction", "aggregate", "callout", "clone",
@@ -124,6 +124,11 @@ public class DummyCreateMediator {
 
 	    PropertyMediatorExtFactory factory = PropertyMediatorExtFactory.getInstance();
 	    return factory.createSpecificMediator(omElement);
+	    
+        } else if ("propertyGroup".equals(localName)) {
+
+        PropertyGroupMediatorExtFactory factory = PropertyGroupMediatorExtFactory.getInstance();
+        return factory.createSpecificMediator(omElement);
 
         } else if ("validate".equals(localName)) {
 

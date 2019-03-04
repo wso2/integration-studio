@@ -732,6 +732,31 @@ public class EsbSwitch<T> extends Switch<T> {
                 if (result == null) result = defaultCase(theEObject);
                 return result;
             }
+            case EsbPackage.PROPERTY_GROUP_MEDIATOR: {
+                PropertyGroupMediator propertyGroupMediator = (PropertyGroupMediator)theEObject;
+                T result = casePropertyGroupMediator(propertyGroupMediator);
+                if (result == null) result = caseMediator(propertyGroupMediator);
+                if (result == null) result = caseEsbElement(propertyGroupMediator);
+                if (result == null) result = caseEsbNode(propertyGroupMediator);
+                if (result == null) result = defaultCase(theEObject);
+                return result;
+            }
+            case EsbPackage.PROPERTY_GROUP_MEDIATOR_INPUT_CONNECTOR: {
+                PropertyGroupMediatorInputConnector propertyGroupMediatorInputConnector = (PropertyGroupMediatorInputConnector)theEObject;
+                T result = casePropertyGroupMediatorInputConnector(propertyGroupMediatorInputConnector);
+                if (result == null) result = caseInputConnector(propertyGroupMediatorInputConnector);
+                if (result == null) result = caseEsbConnector(propertyGroupMediatorInputConnector);
+                if (result == null) result = defaultCase(theEObject);
+                return result;
+            }
+            case EsbPackage.PROPERTY_GROUP_MEDIATOR_OUTPUT_CONNECTOR: {
+                PropertyGroupMediatorOutputConnector propertyGroupMediatorOutputConnector = (PropertyGroupMediatorOutputConnector)theEObject;
+                T result = casePropertyGroupMediatorOutputConnector(propertyGroupMediatorOutputConnector);
+                if (result == null) result = caseOutputConnector(propertyGroupMediatorOutputConnector);
+                if (result == null) result = caseEsbConnector(propertyGroupMediatorOutputConnector);
+                if (result == null) result = defaultCase(theEObject);
+                return result;
+            }
             case EsbPackage.NAMESPACED_PROPERTY: {
                 NamespacedProperty namespacedProperty = (NamespacedProperty)theEObject;
                 T result = caseNamespacedProperty(namespacedProperty);
@@ -4204,6 +4229,51 @@ public class EsbSwitch<T> extends Switch<T> {
     }
 
     /**
+     * Returns the result of interpreting the object as an instance of '<em>Property Group Mediator</em>'.
+     * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Property Group Mediator</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+	public T casePropertyGroupMediator(PropertyGroupMediator object) {
+        return null;
+    }
+
+				/**
+     * Returns the result of interpreting the object as an instance of '<em>Property Group Mediator Input Connector</em>'.
+     * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Property Group Mediator Input Connector</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+	public T casePropertyGroupMediatorInputConnector(PropertyGroupMediatorInputConnector object) {
+        return null;
+    }
+
+				/**
+     * Returns the result of interpreting the object as an instance of '<em>Property Group Mediator Output Connector</em>'.
+     * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Property Group Mediator Output Connector</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+	public T casePropertyGroupMediatorOutputConnector(PropertyGroupMediatorOutputConnector object) {
+        return null;
+    }
+
+				/**
      * Returns the result of interpreting the object as an instance of '<em>Namespaced Property</em>'.
      * <!-- begin-user-doc -->
      * This implementation returns null;

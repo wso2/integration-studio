@@ -1142,6 +1142,13 @@
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//PropertyMediatorInputConnector"/>
     <genClasses ecoreClass="esb.ecore#//PropertyMediatorOutputConnector"/>
+    <genClasses ecoreClass="esb.ecore#//PropertyGroupMediator">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//PropertyGroupMediator/inputConnector"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//PropertyGroupMediator/outputConnector"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//PropertyGroupMediator/properties"/>
+    </genClasses>
+    <genClasses ecoreClass="esb.ecore#//PropertyGroupMediatorInputConnector"/>
+    <genClasses ecoreClass="esb.ecore#//PropertyGroupMediatorOutputConnector"/>
     <genClasses ecoreClass="esb.ecore#//NamespacedProperty">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//NamespacedProperty/prettyName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//NamespacedProperty/propertyName"/>

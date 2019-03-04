@@ -559,6 +559,22 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createPropertyGroupMediatorAdapter()
+	 * 
+	 */
+	public Adapter createPropertyGroupMediatorAdapter() {
+		return new PropertyGroupMediatorPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createPropertyGroupMediatorInputConnectorAdapter()
+	 * 
+	 */
+	public Adapter createPropertyGroupMediatorInputConnectorAdapter() {
+		return new PropertyGroupMediatorInputConnectorPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createNamespacedPropertyAdapter()
 	 * 
 	 */

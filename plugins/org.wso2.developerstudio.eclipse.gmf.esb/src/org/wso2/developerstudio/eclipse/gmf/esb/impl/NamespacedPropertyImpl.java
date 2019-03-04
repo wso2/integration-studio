@@ -32,7 +32,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.NamespacedPropertyImpl#getNamespaces <em>Namespaces</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.NamespacedPropertyImpl#isSupportsDynamicXPaths <em>Supports Dynamic XPaths</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.NamespacedPropertyImpl#isDynamic <em>Dynamic</em>}</li>
- *    *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.NamespacedPropertyImpl#isSupportJsonPaths <em>Support Json Paths</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.NamespacedPropertyImpl#isSupportJsonPaths <em>Support Json Paths</em>}</li>
  * </ul>
  *
  * @generated
@@ -150,23 +150,23 @@ public class NamespacedPropertyImpl extends EsbNodeImpl implements NamespacedPro
     protected boolean dynamic = DYNAMIC_EDEFAULT;
     
 	/**
-	 * The default value of the '{@link #isSupportJsonPaths() <em>Support Json Paths</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The default value of the '{@link #isSupportJsonPaths() <em>Support Json Paths</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isSupportJsonPaths()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #isSupportJsonPaths()
+     * @generated
+     * @ordered
+     */
 	protected static final boolean SUPPORT_JSON_PATHS_EDEFAULT = false;
 
  	/**
-	 * The cached value of the '{@link #isSupportJsonPaths() <em>Support Json Paths</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #isSupportJsonPaths() <em>Support Json Paths</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isSupportJsonPaths()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #isSupportJsonPaths()
+     * @generated
+     * @ordered
+     */
 	protected boolean supportJsonPaths = SUPPORT_JSON_PATHS_EDEFAULT;
 
     /**
@@ -318,25 +318,25 @@ public class NamespacedPropertyImpl extends EsbNodeImpl implements NamespacedPro
     }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public boolean isSupportJsonPaths() {
-		return supportJsonPaths;
-	}
+        return supportJsonPaths;
+    }
 
  	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public void setSupportJsonPaths(boolean newSupportJsonPaths) {
-		boolean oldSupportJsonPaths = supportJsonPaths;
-		supportJsonPaths = newSupportJsonPaths;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.NAMESPACED_PROPERTY__SUPPORT_JSON_PATHS, oldSupportJsonPaths, supportJsonPaths));
-	}
+        boolean oldSupportJsonPaths = supportJsonPaths;
+        supportJsonPaths = newSupportJsonPaths;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.NAMESPACED_PROPERTY__SUPPORT_JSON_PATHS, oldSupportJsonPaths, supportJsonPaths));
+    }
 	
     /**
      * <!-- begin-user-doc -->
@@ -359,8 +359,8 @@ public class NamespacedPropertyImpl extends EsbNodeImpl implements NamespacedPro
                 return isSupportsDynamicXPaths();
             case EsbPackage.NAMESPACED_PROPERTY__DYNAMIC:
                 return isDynamic();
-			case EsbPackage.NAMESPACED_PROPERTY__SUPPORT_JSON_PATHS:
-				return isSupportJsonPaths();
+            case EsbPackage.NAMESPACED_PROPERTY__SUPPORT_JSON_PATHS:
+                return isSupportJsonPaths();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -393,9 +393,9 @@ public class NamespacedPropertyImpl extends EsbNodeImpl implements NamespacedPro
             case EsbPackage.NAMESPACED_PROPERTY__DYNAMIC:
                 setDynamic((Boolean)newValue);
                 return;
-			case EsbPackage.NAMESPACED_PROPERTY__SUPPORT_JSON_PATHS:
-			setSupportJsonPaths((Boolean)newValue);
-			return;
+            case EsbPackage.NAMESPACED_PROPERTY__SUPPORT_JSON_PATHS:
+                setSupportJsonPaths((Boolean)newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
@@ -427,9 +427,9 @@ public class NamespacedPropertyImpl extends EsbNodeImpl implements NamespacedPro
             case EsbPackage.NAMESPACED_PROPERTY__DYNAMIC:
                 setDynamic(DYNAMIC_EDEFAULT);
                 return;
-			case EsbPackage.NAMESPACED_PROPERTY__SUPPORT_JSON_PATHS:
-				setSupportJsonPaths(SUPPORT_JSON_PATHS_EDEFAULT);
-				return;
+            case EsbPackage.NAMESPACED_PROPERTY__SUPPORT_JSON_PATHS:
+                setSupportJsonPaths(SUPPORT_JSON_PATHS_EDEFAULT);
+                return;
         }
         super.eUnset(featureID);
     }
@@ -455,8 +455,8 @@ public class NamespacedPropertyImpl extends EsbNodeImpl implements NamespacedPro
                 return supportsDynamicXPaths != SUPPORTS_DYNAMIC_XPATHS_EDEFAULT;
             case EsbPackage.NAMESPACED_PROPERTY__DYNAMIC:
                 return dynamic != DYNAMIC_EDEFAULT;
-			case EsbPackage.NAMESPACED_PROPERTY__SUPPORT_JSON_PATHS:
-			return supportJsonPaths != SUPPORT_JSON_PATHS_EDEFAULT;
+            case EsbPackage.NAMESPACED_PROPERTY__SUPPORT_JSON_PATHS:
+                return supportJsonPaths != SUPPORT_JSON_PATHS_EDEFAULT;
         }
         return super.eIsSet(featureID);
     }

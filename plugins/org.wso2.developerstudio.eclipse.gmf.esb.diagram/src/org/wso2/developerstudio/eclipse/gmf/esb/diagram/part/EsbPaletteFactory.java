@@ -50,6 +50,8 @@ import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditDomain;
 import org.eclipse.gmf.runtime.diagram.ui.tools.UnspecifiedTypeConnectionTool;
 import org.eclipse.gmf.runtime.diagram.ui.tools.UnspecifiedTypeCreationTool;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
+import org.eclipse.gmf.tooling.runtime.part.DefaultLinkToolEntry;
+import org.eclipse.gmf.tooling.runtime.part.DefaultNodeToolEntry;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.SWTException;
@@ -157,75 +159,76 @@ public class EsbPaletteFactory {
         PaletteDrawer paletteContainer = new PaletteDrawer(Messages.Mediators2Group_title);
         paletteContainer.setId("createMediators2Group"); //$NON-NLS-1$
 
-        paletteContainer.add(createCallMediator45CreationTool());
+        paletteContainer.add(createCallMediator46CreationTool());
         paletteContainer.add(createCallTemplateMediator33CreationTool());
         paletteContainer.add(createDropMediator1CreationTool());
         paletteContainer.add(createLogMediator3CreationTool());
-        paletteContainer.add(createLoopBackMediator43CreationTool());
+        paletteContainer.add(createLoopBackMediator44CreationTool());
         paletteContainer.add(createPropertyMediator4CreationTool());
-        paletteContainer.add(createRespondMediator44CreationTool());
-        paletteContainer.add(createSendMediator19CreationTool());
+        paletteContainer.add(createPropertyGroupMediator5CreationTool());
+        paletteContainer.add(createRespondMediator45CreationTool());
+        paletteContainer.add(createSendMediator20CreationTool());
         paletteContainer.add(createSequence4CreationTool());
         paletteContainer.add(createStoreMediator31CreationTool());
 
         // Core Mediator Category separator.
         paletteContainer.add(new PaletteSeparator("Core"));
 
-        paletteContainer.add(createConditionalRouterMediator39CreationTool());
+        paletteContainer.add(createConditionalRouterMediator40CreationTool());
         paletteContainer.add(createFilterMediator2CreationTool());
-        paletteContainer.add(createSwitchMediator7CreationTool());
-        paletteContainer.add(createValidateMediator37CreationTool());
+        paletteContainer.add(createSwitchMediator8CreationTool());
+        paletteContainer.add(createValidateMediator38CreationTool());
 
         // Filter Mediator Category separator.
         paletteContainer.add(new PaletteSeparator("Filter"));
 
-        paletteContainer.add(createBeanMediator41CreationTool());
-        paletteContainer.add(createClassMediator10CreationTool());
-        paletteContainer.add(createCommandMediator15CreationTool());
-        paletteContainer.add(createEJBMediator42CreationTool());
-        paletteContainer.add(createScriptMediator12CreationTool());
-        paletteContainer.add(createSpringMediator11CreationTool());
+        paletteContainer.add(createBeanMediator42CreationTool());
+        paletteContainer.add(createClassMediator11CreationTool());
+        paletteContainer.add(createCommandMediator16CreationTool());
+        paletteContainer.add(createEJBMediator43CreationTool());
+        paletteContainer.add(createScriptMediator13CreationTool());
+        paletteContainer.add(createSpringMediator12CreationTool());
 
         // Extension Mediator Category separator.
         paletteContainer.add(new PaletteSeparator("Extension"));
 
-        paletteContainer.add(createEnrichMediator5CreationTool());
-        paletteContainer.add(createFaultMediator13CreationTool());
-        paletteContainer.add(createHeaderMediator20CreationTool());
-        paletteContainer.add(createPayloadFactoryMediator34CreationTool());
-        paletteContainer.add(createSmooksMediator18CreationTool());
-        paletteContainer.add(createURLRewriteMediator36CreationTool());
-        paletteContainer.add(createXQueryMediator14CreationTool());
-        paletteContainer.add(createXSLTMediator6CreationTool());
-        paletteContainer.add(createDataMapperMediator46CreationTool()); // enabled
-        paletteContainer.add(createFastXSLTMediator47CreationTool());
+        paletteContainer.add(createEnrichMediator6CreationTool());
+        paletteContainer.add(createFaultMediator14CreationTool());
+        paletteContainer.add(createHeaderMediator21CreationTool());
+        paletteContainer.add(createPayloadFactoryMediator35CreationTool());
+        paletteContainer.add(createSmooksMediator19CreationTool());
+        paletteContainer.add(createURLRewriteMediator37CreationTool());
+        paletteContainer.add(createXQueryMediator15CreationTool());
+        paletteContainer.add(createXSLTMediator7CreationTool());
+        paletteContainer.add(createDataMapperMediator47CreationTool()); // enabled
+        paletteContainer.add(createFastXSLTMediator48CreationTool());
 
         // Transform Mediator Category separator.
         paletteContainer.add(new PaletteSeparator("Transform"));
 
-        paletteContainer.add(createCacheMediator23CreationTool());
-        paletteContainer.add(createDBLookupMediator16CreationTool());
-        paletteContainer.add(createDBReportMediator17CreationTool());
-        paletteContainer.add(createEnqueueMediator35CreationTool());
-        paletteContainer.add(createEventMediator8CreationTool());
+        paletteContainer.add(createCacheMediator24CreationTool());
+        paletteContainer.add(createDBLookupMediator17CreationTool());
+        paletteContainer.add(createDBReportMediator18CreationTool());
+        paletteContainer.add(createEnqueueMediator36CreationTool());
+        paletteContainer.add(createEventMediator9CreationTool());
         // paletteContainer.add(createRMSequenceMediator28CreationTool());
-        paletteContainer.add(createThrottleMediator27CreationTool());
-        paletteContainer.add(createTransactionMediator26CreationTool());
+        paletteContainer.add(createThrottleMediator28CreationTool());
+        paletteContainer.add(createTransactionMediator27CreationTool());
 
         // Advanced Mediator Category separator.
         paletteContainer.add(new PaletteSeparator("Advanced"));
 
-        paletteContainer.add(createAggregateMediator24CreationTool());
-        paletteContainer.add(createCalloutMediator25CreationTool());
-        paletteContainer.add(createCloneMediator21CreationTool());
-        paletteContainer.add(createIterateMediator22CreationTool());
+        paletteContainer.add(createAggregateMediator25CreationTool());
+        paletteContainer.add(createCalloutMediator26CreationTool());
+        paletteContainer.add(createCloneMediator22CreationTool());
+        paletteContainer.add(createIterateMediator23CreationTool());
         paletteContainer.add(createForEachMediator7CreationTool());
 
         // Advanced Mediator Category separator.
         paletteContainer.add(new PaletteSeparator("Advanced1"));
 
-        paletteContainer.add(createEntitlementMediator9CreationTool());
-        paletteContainer.add(createOAuthMediator29CreationTool());
+        paletteContainer.add(createEntitlementMediator10CreationTool());
+        paletteContainer.add(createOAuthMediator30CreationTool());
 
         // Advanced Mediator Category separator.
         paletteContainer.add(new PaletteSeparator("Advanced2"));
@@ -237,8 +240,8 @@ public class EsbPaletteFactory {
         // Agent Mediator Category separator.
         paletteContainer.add(new PaletteSeparator("Agent"));
 
-        paletteContainer.add(createBAMMediator40CreationTool());
-        paletteContainer.add(createPublishEventMediator48CreationTool());
+        paletteContainer.add(createBAMMediator41CreationTool());
+        paletteContainer.add(createPublishEventMediator49CreationTool());
 
         paletteContainer.setInitialState(INITIAL_STATE_PINNED_OPEN);
         return paletteContainer;
@@ -252,12 +255,13 @@ public class EsbPaletteFactory {
     private PaletteContainer createMediatorsAPIMGroup() {
         PaletteDrawer paletteContainer = new PaletteDrawer(Messages.Mediators2Group_title);
         paletteContainer.setId("createMediatorsAPIMGroup"); //$NON-NLS-1$
-        paletteContainer.add(createCallMediator45CreationTool());
+        paletteContainer.add(createCallMediator46CreationTool());
         // paletteContainer.add(createCallTemplateMediator33CreationTool());
         paletteContainer.add(createDropMediator1CreationTool());
         paletteContainer.add(createLogMediator3CreationTool());
         // paletteContainer.add(createLoopBackMediator43CreationTool());
         paletteContainer.add(createPropertyMediator4CreationTool());
+        paletteContainer.add(createPropertyGroupMediator5CreationTool());
         // paletteContainer.add(createRespondMediator44CreationTool());
         // paletteContainer.add(createSendMediator19CreationTool());
         paletteContainer.add(createSequence4CreationTool());
@@ -266,60 +270,60 @@ public class EsbPaletteFactory {
         // Core Mediator Category separator.
         paletteContainer.add(new PaletteSeparator("Core"));
 
-        paletteContainer.add(createConditionalRouterMediator39CreationTool());
+        paletteContainer.add(createConditionalRouterMediator40CreationTool());
         paletteContainer.add(createFilterMediator2CreationTool());
-        paletteContainer.add(createSwitchMediator7CreationTool());
-        paletteContainer.add(createValidateMediator37CreationTool());
+        paletteContainer.add(createSwitchMediator8CreationTool());
+        paletteContainer.add(createValidateMediator38CreationTool());
 
         // Filter Mediator Category separator.
         paletteContainer.add(new PaletteSeparator("Filter"));
 
         // paletteContainer.add(createBeanMediator41CreationTool());
-        paletteContainer.add(createClassMediator10CreationTool());
+        paletteContainer.add(createClassMediator11CreationTool());
         // paletteContainer.add(createCommandMediator15CreationTool());
         // paletteContainer.add(createEJBMediator42CreationTool());
-        paletteContainer.add(createScriptMediator12CreationTool());
+        paletteContainer.add(createScriptMediator13CreationTool());
         // paletteContainer.add(createSpringMediator11CreationTool());
 
         // Extension Mediator Category separator.
         paletteContainer.add(new PaletteSeparator("Extension"));
 
-        paletteContainer.add(createEnrichMediator5CreationTool());
-        paletteContainer.add(createFaultMediator13CreationTool());
-        paletteContainer.add(createHeaderMediator20CreationTool());
-        paletteContainer.add(createPayloadFactoryMediator34CreationTool());
+        paletteContainer.add(createEnrichMediator6CreationTool());
+        paletteContainer.add(createFaultMediator14CreationTool());
+        paletteContainer.add(createHeaderMediator21CreationTool());
+        paletteContainer.add(createPayloadFactoryMediator35CreationTool());
         // paletteContainer.add(createSmooksMediator18CreationTool());
-        paletteContainer.add(createURLRewriteMediator36CreationTool());
-        paletteContainer.add(createXQueryMediator14CreationTool());
-        paletteContainer.add(createXSLTMediator6CreationTool());
-        paletteContainer.add(createDataMapperMediator46CreationTool()); // enabled
-        paletteContainer.add(createFastXSLTMediator47CreationTool());
+        paletteContainer.add(createURLRewriteMediator37CreationTool());
+        paletteContainer.add(createXQueryMediator15CreationTool());
+        paletteContainer.add(createXSLTMediator7CreationTool());
+        paletteContainer.add(createDataMapperMediator47CreationTool()); // enabled
+        paletteContainer.add(createFastXSLTMediator48CreationTool());
 
         // Transform Mediator Category separator.
         paletteContainer.add(new PaletteSeparator("Transform"));
 
-        paletteContainer.add(createCacheMediator23CreationTool());
-        paletteContainer.add(createDBLookupMediator16CreationTool());
-        paletteContainer.add(createDBReportMediator17CreationTool());
-        paletteContainer.add(createEnqueueMediator35CreationTool());
-        paletteContainer.add(createEventMediator8CreationTool());
+        paletteContainer.add(createCacheMediator24CreationTool());
+        paletteContainer.add(createDBLookupMediator17CreationTool());
+        paletteContainer.add(createDBReportMediator18CreationTool());
+        paletteContainer.add(createEnqueueMediator36CreationTool());
+        paletteContainer.add(createEventMediator9CreationTool());
         // paletteContainer.add(createRMSequenceMediator28CreationTool());
-        paletteContainer.add(createThrottleMediator27CreationTool());
-        paletteContainer.add(createTransactionMediator26CreationTool());
+        paletteContainer.add(createThrottleMediator28CreationTool());
+        paletteContainer.add(createTransactionMediator27CreationTool());
 
         // Advanced Mediator Category separator.
         paletteContainer.add(new PaletteSeparator("Advanced"));
 
-        paletteContainer.add(createAggregateMediator24CreationTool());
-        paletteContainer.add(createCalloutMediator25CreationTool());
-        paletteContainer.add(createCloneMediator21CreationTool());
-        paletteContainer.add(createIterateMediator22CreationTool());
+        paletteContainer.add(createAggregateMediator25CreationTool());
+        paletteContainer.add(createCalloutMediator26CreationTool());
+        paletteContainer.add(createCloneMediator22CreationTool());
+        paletteContainer.add(createIterateMediator23CreationTool());
         paletteContainer.add(createForEachMediator7CreationTool());
 
         // Advanced Mediator Category separator.
         paletteContainer.add(new PaletteSeparator("Advanced1"));
 
-        paletteContainer.add(createEntitlementMediator9CreationTool());
+        paletteContainer.add(createEntitlementMediator10CreationTool());
         // paletteContainer.add(createOAuthMediator29CreationTool());
 
         // Advanced Mediator Category separator.
@@ -332,8 +336,8 @@ public class EsbPaletteFactory {
         // Agent Mediator Category separator.
         paletteContainer.add(new PaletteSeparator("Agent"));
 
-        paletteContainer.add(createBAMMediator40CreationTool());
-        paletteContainer.add(createPublishEventMediator48CreationTool());
+        paletteContainer.add(createBAMMediator41CreationTool());
+        paletteContainer.add(createPublishEventMediator49CreationTool());
 
         paletteContainer.setInitialState(INITIAL_STATE_CLOSED);
         return paletteContainer;
@@ -487,6 +491,28 @@ public class EsbPaletteFactory {
     }
 
     /**
+    * @generated
+    */
+    private ToolEntry createPublishEventMediatorInputConnector8CreationTool() {
+        ToolEntry entry = new ToolEntry(Messages.PublishEventMediatorInputConnector8CreationTool_title,
+                Messages.PublishEventMediatorInputConnector8CreationTool_desc, null, null) {
+        };
+        entry.setId("createPublishEventMediatorInputConnector8CreationTool"); //$NON-NLS-1$
+        return entry;
+    }
+
+    /**
+    * @generated
+    */
+    private ToolEntry createPublishEventMediatorOutputConnector9CreationTool() {
+        ToolEntry entry = new ToolEntry(Messages.PublishEventMediatorOutputConnector9CreationTool_title,
+                Messages.PublishEventMediatorOutputConnector9CreationTool_desc, null, null) {
+        };
+        entry.setId("createPublishEventMediatorOutputConnector9CreationTool"); //$NON-NLS-1$
+        return entry;
+    }
+
+    /**
      * @generated
      */
     private ToolEntry createDropMediator1CreationTool() {
@@ -537,336 +563,582 @@ public class EsbPaletteFactory {
     }
 
     /**
-     * @generated
-     */
-    private ToolEntry createEnrichMediator5CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.EnrichMediator5CreationTool_title,
-                Messages.EnrichMediator5CreationTool_desc,
+    * @generated
+    */
+    private ToolEntry createPropertyGroupMediator5CreationTool() {
+//        ArrayList<IElementType> types = new ArrayList<IElementType>(2);
+//        types.add(EsbElementTypes.PropertyGroupMediator_3788);
+//        types.add(EsbElementTypes.EnrichMediator_3496);
+        NodeToolEntry entry = new NodeToolEntry(Messages.PropertyGroupMediator5CreationTool_title,
+                Messages.PropertyGroupMediator5CreationTool_desc,
+                Collections.singletonList(EsbElementTypes.PropertyGroupMediator_3788));
+        entry.setId("createPropertyGroupMediator5CreationTool"); //$NON-NLS-1$
+        entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.PropertyMediator_3492));
+        entry.setLargeIcon(entry.getSmallIcon());
+        return entry;
+    }
+
+    /**
+    * @generated
+    */
+    private ToolEntry createEnrichMediator6CreationTool() {
+        NodeToolEntry entry = new NodeToolEntry(Messages.EnrichMediator6CreationTool_title,
+                Messages.EnrichMediator6CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.EnrichMediator_3496));
-        entry.setId("createEnrichMediator5CreationTool"); //$NON-NLS-1$
+        entry.setId("createEnrichMediator6CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.EnrichMediator_3496));
         entry.setLargeIcon(entry.getSmallIcon());
         return entry;
     }
 
     /**
-     * @generated
-     */
-    private ToolEntry createXSLTMediator6CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.XSLTMediator6CreationTool_title,
-                Messages.XSLTMediator6CreationTool_desc, Collections.singletonList(EsbElementTypes.XSLTMediator_3497));
-        entry.setId("createXSLTMediator6CreationTool"); //$NON-NLS-1$
+    * @generated
+    */
+    private ToolEntry createXSLTMediator7CreationTool() {
+        NodeToolEntry entry = new NodeToolEntry(Messages.XSLTMediator7CreationTool_title,
+                Messages.XSLTMediator7CreationTool_desc,
+                Collections.singletonList(EsbElementTypes.XSLTMediator_3497));
+        entry.setId("createXSLTMediator7CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.XSLTMediator_3497));
         entry.setLargeIcon(entry.getSmallIcon());
         return entry;
     }
 
     /**
-     * @generated
-     */
-    private ToolEntry createSwitchMediator7CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.SwitchMediator7CreationTool_title,
-                Messages.SwitchMediator7CreationTool_desc,
+    * @generated
+    */
+    private ToolEntry createSwitchMediator8CreationTool() {
+        NodeToolEntry entry = new NodeToolEntry(Messages.SwitchMediator8CreationTool_title,
+                Messages.SwitchMediator8CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.SwitchMediator_3498));
-        entry.setId("createSwitchMediator7CreationTool"); //$NON-NLS-1$
+        entry.setId("createSwitchMediator8CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.SwitchMediator_3498));
         entry.setLargeIcon(entry.getSmallIcon());
         return entry;
     }
 
     /**
-     * @generated
-     */
-    private ToolEntry createEventMediator8CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.EventMediator8CreationTool_title,
-                Messages.EventMediator8CreationTool_desc,
+    * @generated
+    */
+    private ToolEntry createEventMediator9CreationTool() {
+        NodeToolEntry entry = new NodeToolEntry(Messages.EventMediator9CreationTool_title,
+                Messages.EventMediator9CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.EventMediator_3504));
-        entry.setId("createEventMediator8CreationTool"); //$NON-NLS-1$
+        entry.setId("createEventMediator9CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.EventMediator_3504));
         entry.setLargeIcon(entry.getSmallIcon());
         return entry;
     }
 
     /**
-     * @generated
-     */
-    private ToolEntry createEntitlementMediator9CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.EntitlementMediator9CreationTool_title,
-                Messages.EntitlementMediator9CreationTool_desc,
+    * @generated
+    */
+    private ToolEntry createEntitlementMediator10CreationTool() {
+        NodeToolEntry entry = new NodeToolEntry(Messages.EntitlementMediator10CreationTool_title,
+                Messages.EntitlementMediator10CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.EntitlementMediator_3505));
-        entry.setId("createEntitlementMediator9CreationTool"); //$NON-NLS-1$
+        entry.setId("createEntitlementMediator10CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.EntitlementMediator_3505));
         entry.setLargeIcon(entry.getSmallIcon());
         return entry;
     }
 
     /**
-     * @generated
-     */
-    private ToolEntry createClassMediator10CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.ClassMediator10CreationTool_title,
-                Messages.ClassMediator10CreationTool_desc,
+    * @generated
+    */
+    private ToolEntry createClassMediator11CreationTool() {
+        NodeToolEntry entry = new NodeToolEntry(Messages.ClassMediator11CreationTool_title,
+                Messages.ClassMediator11CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.ClassMediator_3506));
-        entry.setId("createClassMediator10CreationTool"); //$NON-NLS-1$
+        entry.setId("createClassMediator11CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.ClassMediator_3506));
         entry.setLargeIcon(entry.getSmallIcon());
         return entry;
     }
 
     /**
-     * @generated
-     */
-    private ToolEntry createSpringMediator11CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.SpringMediator11CreationTool_title,
-                Messages.SpringMediator11CreationTool_desc,
+    * @generated
+    */
+    private ToolEntry createSpringMediator12CreationTool() {
+        NodeToolEntry entry = new NodeToolEntry(Messages.SpringMediator12CreationTool_title,
+                Messages.SpringMediator12CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.SpringMediator_3507));
-        entry.setId("createSpringMediator11CreationTool"); //$NON-NLS-1$
+        entry.setId("createSpringMediator12CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.SpringMediator_3507));
         entry.setLargeIcon(entry.getSmallIcon());
         return entry;
     }
 
     /**
-     * @generated
-     */
-    private ToolEntry createScriptMediator12CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.ScriptMediator12CreationTool_title,
-                Messages.ScriptMediator12CreationTool_desc,
+    * @generated
+    */
+    private ToolEntry createScriptMediator13CreationTool() {
+        NodeToolEntry entry = new NodeToolEntry(Messages.ScriptMediator13CreationTool_title,
+                Messages.ScriptMediator13CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.ScriptMediator_3508));
-        entry.setId("createScriptMediator12CreationTool"); //$NON-NLS-1$
+        entry.setId("createScriptMediator13CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.ScriptMediator_3508));
         entry.setLargeIcon(entry.getSmallIcon());
         return entry;
     }
 
     /**
-     * @generated
-     */
-    private ToolEntry createFaultMediator13CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.FaultMediator13CreationTool_title,
-                Messages.FaultMediator13CreationTool_desc,
+    * @generated
+    */
+    private ToolEntry createFaultMediator14CreationTool() {
+        NodeToolEntry entry = new NodeToolEntry(Messages.FaultMediator14CreationTool_title,
+                Messages.FaultMediator14CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.FaultMediator_3509));
-        entry.setId("createFaultMediator13CreationTool"); //$NON-NLS-1$
+        entry.setId("createFaultMediator14CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.FaultMediator_3509));
         entry.setLargeIcon(entry.getSmallIcon());
         return entry;
     }
 
     /**
-     * @generated
-     */
-    private ToolEntry createXQueryMediator14CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.XQueryMediator14CreationTool_title,
-                Messages.XQueryMediator14CreationTool_desc,
+    * @generated
+    */
+    private ToolEntry createXQueryMediator15CreationTool() {
+        NodeToolEntry entry = new NodeToolEntry(Messages.XQueryMediator15CreationTool_title,
+                Messages.XQueryMediator15CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.XQueryMediator_3510));
-        entry.setId("createXQueryMediator14CreationTool"); //$NON-NLS-1$
+        entry.setId("createXQueryMediator15CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.XQueryMediator_3510));
         entry.setLargeIcon(entry.getSmallIcon());
         return entry;
     }
 
     /**
-     * @generated
-     */
-    private ToolEntry createCommandMediator15CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.CommandMediator15CreationTool_title,
-                Messages.CommandMediator15CreationTool_desc,
+    * @generated
+    */
+    private ToolEntry createCommandMediator16CreationTool() {
+        NodeToolEntry entry = new NodeToolEntry(Messages.CommandMediator16CreationTool_title,
+                Messages.CommandMediator16CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.CommandMediator_3511));
-        entry.setId("createCommandMediator15CreationTool"); //$NON-NLS-1$
+        entry.setId("createCommandMediator16CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.CommandMediator_3511));
         entry.setLargeIcon(entry.getSmallIcon());
         return entry;
     }
 
     /**
-     * @generated
-     */
-    private ToolEntry createDBLookupMediator16CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.DBLookupMediator16CreationTool_title,
-                Messages.DBLookupMediator16CreationTool_desc,
+    * @generated
+    */
+    private ToolEntry createDBLookupMediator17CreationTool() {
+        NodeToolEntry entry = new NodeToolEntry(Messages.DBLookupMediator17CreationTool_title,
+                Messages.DBLookupMediator17CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.DBLookupMediator_3512));
-        entry.setId("createDBLookupMediator16CreationTool"); //$NON-NLS-1$
+        entry.setId("createDBLookupMediator17CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.DBLookupMediator_3512));
         entry.setLargeIcon(entry.getSmallIcon());
         return entry;
     }
 
     /**
-     * @generated
-     */
-    private ToolEntry createDBReportMediator17CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.DBReportMediator17CreationTool_title,
-                Messages.DBReportMediator17CreationTool_desc,
+    * @generated
+    */
+    private ToolEntry createDBReportMediator18CreationTool() {
+        NodeToolEntry entry = new NodeToolEntry(Messages.DBReportMediator18CreationTool_title,
+                Messages.DBReportMediator18CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.DBReportMediator_3513));
-        entry.setId("createDBReportMediator17CreationTool"); //$NON-NLS-1$
+        entry.setId("createDBReportMediator18CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.DBReportMediator_3513));
         entry.setLargeIcon(entry.getSmallIcon());
         return entry;
     }
 
     /**
-     * @generated
-     */
-    private ToolEntry createSmooksMediator18CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.SmooksMediator18CreationTool_title,
-                Messages.SmooksMediator18CreationTool_desc,
+    * @generated
+    */
+    private ToolEntry createSmooksMediator19CreationTool() {
+        NodeToolEntry entry = new NodeToolEntry(Messages.SmooksMediator19CreationTool_title,
+                Messages.SmooksMediator19CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.SmooksMediator_3514));
-        entry.setId("createSmooksMediator18CreationTool"); //$NON-NLS-1$
+        entry.setId("createSmooksMediator19CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.SmooksMediator_3514));
         entry.setLargeIcon(entry.getSmallIcon());
         return entry;
     }
 
     /**
-     * @generated
-     */
-    private ToolEntry createSendMediator19CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.SendMediator19CreationTool_title,
-                Messages.SendMediator19CreationTool_desc, Collections.singletonList(EsbElementTypes.SendMediator_3515));
-        entry.setId("createSendMediator19CreationTool"); //$NON-NLS-1$
+    * @generated
+    */
+    private ToolEntry createSendMediator20CreationTool() {
+        NodeToolEntry entry = new NodeToolEntry(Messages.SendMediator20CreationTool_title,
+                Messages.SendMediator20CreationTool_desc,
+                Collections.singletonList(EsbElementTypes.SendMediator_3515));
+        entry.setId("createSendMediator20CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.SendMediator_3515));
         entry.setLargeIcon(entry.getSmallIcon());
         return entry;
     }
 
     /**
-     * @generated
-     */
-    private ToolEntry createHeaderMediator20CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.HeaderMediator20CreationTool_title,
-                Messages.HeaderMediator20CreationTool_desc,
+    * @generated
+    */
+    private ToolEntry createHeaderMediator21CreationTool() {
+        NodeToolEntry entry = new NodeToolEntry(Messages.HeaderMediator21CreationTool_title,
+                Messages.HeaderMediator21CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.HeaderMediator_3516));
-        entry.setId("createHeaderMediator20CreationTool"); //$NON-NLS-1$
+        entry.setId("createHeaderMediator21CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.HeaderMediator_3516));
         entry.setLargeIcon(entry.getSmallIcon());
         return entry;
     }
 
     /**
-     * @generated
-     */
-    private ToolEntry createCloneMediator21CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.CloneMediator21CreationTool_title,
-                Messages.CloneMediator21CreationTool_desc,
+    * @generated
+    */
+    private ToolEntry createCloneMediator22CreationTool() {
+        NodeToolEntry entry = new NodeToolEntry(Messages.CloneMediator22CreationTool_title,
+                Messages.CloneMediator22CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.CloneMediator_3517));
-        entry.setId("createCloneMediator21CreationTool"); //$NON-NLS-1$
+        entry.setId("createCloneMediator22CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.CloneMediator_3517));
         entry.setLargeIcon(entry.getSmallIcon());
         return entry;
     }
 
     /**
-     * @generated
-     */
-    private ToolEntry createIterateMediator22CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.IterateMediator22CreationTool_title,
-                Messages.IterateMediator22CreationTool_desc,
+    * @generated
+    */
+    private ToolEntry createIterateMediator23CreationTool() {
+        NodeToolEntry entry = new NodeToolEntry(Messages.IterateMediator23CreationTool_title,
+                Messages.IterateMediator23CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.IterateMediator_3519));
-        entry.setId("createIterateMediator22CreationTool"); //$NON-NLS-1$
+        entry.setId("createIterateMediator23CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.IterateMediator_3519));
         entry.setLargeIcon(entry.getSmallIcon());
         return entry;
     }
 
     /**
-     * @generated
-     */
-    private ToolEntry createCacheMediator23CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.CacheMediator23CreationTool_title,
-                Messages.CacheMediator23CreationTool_desc,
+    * @generated
+    */
+    private ToolEntry createCacheMediator24CreationTool() {
+        NodeToolEntry entry = new NodeToolEntry(Messages.CacheMediator24CreationTool_title,
+                Messages.CacheMediator24CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.CacheMediator_3518));
-        entry.setId("createCacheMediator23CreationTool"); //$NON-NLS-1$
+        entry.setId("createCacheMediator24CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.CacheMediator_3518));
         entry.setLargeIcon(entry.getSmallIcon());
         return entry;
     }
 
     /**
-     * @generated
-     */
-    private ToolEntry createAggregateMediator24CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.AggregateMediator24CreationTool_title,
-                Messages.AggregateMediator24CreationTool_desc,
+    * @generated
+    */
+    private ToolEntry createAggregateMediator25CreationTool() {
+        NodeToolEntry entry = new NodeToolEntry(Messages.AggregateMediator25CreationTool_title,
+                Messages.AggregateMediator25CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.AggregateMediator_3525));
-        entry.setId("createAggregateMediator24CreationTool"); //$NON-NLS-1$
+        entry.setId("createAggregateMediator25CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.AggregateMediator_3525));
         entry.setLargeIcon(entry.getSmallIcon());
         return entry;
     }
 
     /**
-     * @generated
-     */
-    private ToolEntry createCalloutMediator25CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.CalloutMediator25CreationTool_title,
-                Messages.CalloutMediator25CreationTool_desc,
+    * @generated
+    */
+    private ToolEntry createCalloutMediator26CreationTool() {
+        NodeToolEntry entry = new NodeToolEntry(Messages.CalloutMediator26CreationTool_title,
+                Messages.CalloutMediator26CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.CalloutMediator_3520));
-        entry.setId("createCalloutMediator25CreationTool"); //$NON-NLS-1$
+        entry.setId("createCalloutMediator26CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.CalloutMediator_3520));
         entry.setLargeIcon(entry.getSmallIcon());
         return entry;
     }
 
     /**
-     * @generated
-     */
-    private ToolEntry createTransactionMediator26CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.TransactionMediator26CreationTool_title,
-                Messages.TransactionMediator26CreationTool_desc,
+    * @generated
+    */
+    private ToolEntry createTransactionMediator27CreationTool() {
+        NodeToolEntry entry = new NodeToolEntry(Messages.TransactionMediator27CreationTool_title,
+                Messages.TransactionMediator27CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.TransactionMediator_3521));
-        entry.setId("createTransactionMediator26CreationTool"); //$NON-NLS-1$
+        entry.setId("createTransactionMediator27CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.TransactionMediator_3521));
         entry.setLargeIcon(entry.getSmallIcon());
         return entry;
     }
 
     /**
-     * @generated
-     */
-    private ToolEntry createThrottleMediator27CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.ThrottleMediator27CreationTool_title,
-                Messages.ThrottleMediator27CreationTool_desc,
+    * @generated
+    */
+    private ToolEntry createThrottleMediator28CreationTool() {
+        NodeToolEntry entry = new NodeToolEntry(Messages.ThrottleMediator28CreationTool_title,
+                Messages.ThrottleMediator28CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.ThrottleMediator_3493));
-        entry.setId("createThrottleMediator27CreationTool"); //$NON-NLS-1$
+        entry.setId("createThrottleMediator28CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.ThrottleMediator_3493));
         entry.setLargeIcon(entry.getSmallIcon());
         return entry;
     }
 
     /**
-     * @generated
-     */
-    private ToolEntry createRMSequenceMediator28CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.RMSequenceMediator28CreationTool_title,
-                Messages.RMSequenceMediator28CreationTool_desc,
+    * @generated
+    */
+    private ToolEntry createRMSequenceMediator29CreationTool() {
+        NodeToolEntry entry = new NodeToolEntry(Messages.RMSequenceMediator29CreationTool_title,
+                Messages.RMSequenceMediator29CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.RMSequenceMediator_3522));
-        entry.setId("createRMSequenceMediator28CreationTool"); //$NON-NLS-1$
+        entry.setId("createRMSequenceMediator29CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.RMSequenceMediator_3522));
         entry.setLargeIcon(entry.getSmallIcon());
         return entry;
     }
 
     /**
-     * @generated
-     */
-    private ToolEntry createOAuthMediator29CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.OAuthMediator29CreationTool_title,
-                Messages.OAuthMediator29CreationTool_desc,
+    * @generated
+    */
+    private ToolEntry createOAuthMediator30CreationTool() {
+        NodeToolEntry entry = new NodeToolEntry(Messages.OAuthMediator30CreationTool_title,
+                Messages.OAuthMediator30CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.OAuthMediator_3524));
-        entry.setId("createOAuthMediator29CreationTool"); //$NON-NLS-1$
+        entry.setId("createOAuthMediator30CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.OAuthMediator_3524));
         entry.setLargeIcon(entry.getSmallIcon());
         return entry;
     }
 
     /**
-     * @generated
-     */
+    * @generated
+    */
     private ToolEntry createRuleMediator30CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.RuleMediator30CreationTool_title,
-                Messages.RuleMediator30CreationTool_desc, Collections.singletonList(EsbElementTypes.RuleMediator_3523));
+        NodeToolEntry entry = new NodeToolEntry(Messages.RuleMediator31CreationTool_title,
+                Messages.RuleMediator31CreationTool_desc, Collections.singletonList(EsbElementTypes.RuleMediator_3523));
         entry.setId("createRuleMediator30CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.RuleMediator_3523));
+        entry.setLargeIcon(entry.getSmallIcon());
+        return entry;
+    }
+
+//    /**
+//    * @generated
+//    */
+//    private ToolEntry createStoreMediator32CreationTool() {
+//        ToolEntry entry = new ToolEntry(Messages.StoreMediator32CreationTool_title,
+//                Messages.StoreMediator32CreationTool_desc, null, null) {
+//        };
+//        entry.setId("createStoreMediator32CreationTool"); //$NON-NLS-1$
+//        return entry;
+//    }
+//
+//    /**
+//    * @generated
+//    */
+//    private ToolEntry createBuilderMediator33CreationTool() {
+//        ToolEntry entry = new ToolEntry(Messages.BuilderMediator33CreationTool_title,
+//                Messages.BuilderMediator33CreationTool_desc, null, null) {
+//        };
+//        entry.setId("createBuilderMediator33CreationTool"); //$NON-NLS-1$
+//        return entry;
+//    }
+//
+//    /**
+//    * @generated
+//    */
+//    private ToolEntry createCallTemplateMediator34CreationTool() {
+//        NodeToolEntry entry = new NodeToolEntry(Messages.CallTemplateMediator34CreationTool_title,
+//                Messages.CallTemplateMediator34CreationTool_desc,
+//                Collections.singletonList(EsbElementTypes.PayloadFactoryMediator_3597));
+//        entry.setId("createCallTemplateMediator34CreationTool"); //$NON-NLS-1$
+//        entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.PayloadFactoryMediator_3597));
+//        entry.setLargeIcon(entry.getSmallIcon());
+//        return entry;
+//    }
+
+    /**
+    * @generated
+    */
+    private ToolEntry createPayloadFactoryMediator35CreationTool() {
+        NodeToolEntry entry = new NodeToolEntry(Messages.PayloadFactoryMediator35CreationTool_title,
+                Messages.PayloadFactoryMediator35CreationTool_desc,
+                Collections.singletonList(EsbElementTypes.PayloadFactoryMediator_3597));
+        entry.setId("createPayloadFactoryMediator35CreationTool"); //$NON-NLS-1$
+        entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.PayloadFactoryMediator_3597));
+        entry.setLargeIcon(entry.getSmallIcon());
+        return entry;
+    }
+
+    /**
+    * @generated
+    */
+    private ToolEntry createEnqueueMediator36CreationTool() {
+        NodeToolEntry entry = new NodeToolEntry(Messages.EnqueueMediator36CreationTool_title,
+                Messages.EnqueueMediator36CreationTool_desc,
+                Collections.singletonList(EsbElementTypes.EnqueueMediator_3600));
+        entry.setId("createEnqueueMediator36CreationTool"); //$NON-NLS-1$
+        entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.EnqueueMediator_3600));
+        entry.setLargeIcon(entry.getSmallIcon());
+        return entry;
+    }
+
+    /**
+    * @generated
+    */
+    private ToolEntry createURLRewriteMediator37CreationTool() {
+        NodeToolEntry entry = new NodeToolEntry(Messages.URLRewriteMediator37CreationTool_title,
+                Messages.URLRewriteMediator37CreationTool_desc,
+                Collections.singletonList(EsbElementTypes.URLRewriteMediator_3620));
+        entry.setId("createURLRewriteMediator37CreationTool"); //$NON-NLS-1$
+        entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.URLRewriteMediator_3620));
+        entry.setLargeIcon(entry.getSmallIcon());
+        return entry;
+    }
+
+    /**
+    * @generated
+    */
+    private ToolEntry createValidateMediator38CreationTool() {
+        NodeToolEntry entry = new NodeToolEntry(Messages.ValidateMediator38CreationTool_title,
+                Messages.ValidateMediator38CreationTool_desc,
+                Collections.singletonList(EsbElementTypes.ValidateMediator_3623));
+        entry.setId("createValidateMediator38CreationTool"); //$NON-NLS-1$
+        entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.ValidateMediator_3623));
+        entry.setLargeIcon(entry.getSmallIcon());
+        return entry;
+    }
+
+    /**
+    * @generated
+    */
+    private ToolEntry createRouterMediator39CreationTool() {
+        NodeToolEntry entry = new NodeToolEntry(Messages.RouterMediator39CreationTool_title,
+                Messages.RouterMediator39CreationTool_desc,
+                Collections.singletonList(EsbElementTypes.RouterMediator_3628));
+        entry.setId("createRouterMediator39CreationTool"); //$NON-NLS-1$
+        entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.RouterMediator_3628));
+        entry.setLargeIcon(entry.getSmallIcon());
+        return entry;
+    }
+
+    /**
+    * @generated
+    */
+    private ToolEntry createConditionalRouterMediator40CreationTool() {
+        NodeToolEntry entry = new NodeToolEntry(Messages.ConditionalRouterMediator40CreationTool_title,
+                Messages.ConditionalRouterMediator40CreationTool_desc,
+                Collections.singletonList(EsbElementTypes.ConditionalRouterMediator_3635));
+        entry.setId("createConditionalRouterMediator40CreationTool"); //$NON-NLS-1$
+        entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.ConditionalRouterMediator_3635));
+        entry.setLargeIcon(entry.getSmallIcon());
+        return entry;
+    }
+
+    /**
+    * @generated
+    */
+    private ToolEntry createBAMMediator41CreationTool() {
+        NodeToolEntry entry = new NodeToolEntry(Messages.BAMMediator41CreationTool_title,
+                Messages.BAMMediator41CreationTool_desc, Collections.singletonList(EsbElementTypes.BAMMediator_3680));
+        entry.setId("createBAMMediator41CreationTool"); //$NON-NLS-1$
+        entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.BAMMediator_3680));
+        entry.setLargeIcon(entry.getSmallIcon());
+        return entry;
+    }
+
+    /**
+    * @generated
+    */
+    private ToolEntry createBeanMediator42CreationTool() {
+        NodeToolEntry entry = new NodeToolEntry(Messages.BeanMediator42CreationTool_title,
+                Messages.BeanMediator42CreationTool_desc, Collections.singletonList(EsbElementTypes.BeanMediator_3683));
+        entry.setId("createBeanMediator42CreationTool"); //$NON-NLS-1$
+        entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.BeanMediator_3683));
+        entry.setLargeIcon(entry.getSmallIcon());
+        return entry;
+    }
+
+    /**
+    * @generated
+    */
+    private ToolEntry createEJBMediator43CreationTool() {
+        NodeToolEntry entry = new NodeToolEntry(Messages.EJBMediator43CreationTool_title,
+                Messages.EJBMediator43CreationTool_desc,
+                Collections.singletonList(EsbElementTypes.EJBMediator_3686));
+        entry.setId("createEJBMediator43CreationTool"); //$NON-NLS-1$
+        entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.EJBMediator_3686));
+        entry.setLargeIcon(entry.getSmallIcon());
+        return entry;
+    }
+
+    /**
+    * @generated
+    */
+    private ToolEntry createLoopBackMediator44CreationTool() {
+        NodeToolEntry entry = new NodeToolEntry(Messages.LoopBackMediator44CreationTool_title,
+                Messages.LoopBackMediator44CreationTool_desc,
+                Collections.singletonList(EsbElementTypes.LoopBackMediator_3736));
+        entry.setId("createLoopBackMediator44CreationTool"); //$NON-NLS-1$
+        entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.LoopBackMediator_3736));
+        entry.setLargeIcon(entry.getSmallIcon());
+        return entry;
+    }
+
+    /**
+    * @generated
+    */
+    private ToolEntry createRespondMediator45CreationTool() {
+        NodeToolEntry entry = new NodeToolEntry(Messages.RespondMediator45CreationTool_title,
+                Messages.RespondMediator45CreationTool_desc,
+                Collections.singletonList(EsbElementTypes.RespondMediator_3739));
+        entry.setId("createRespondMediator45CreationTool"); //$NON-NLS-1$
+        entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.RespondMediator_3739));
+        entry.setLargeIcon(entry.getSmallIcon());
+        return entry;
+    }
+
+    /**
+    * @generated
+    */
+    private ToolEntry createCallMediator46CreationTool() {
+        NodeToolEntry entry = new NodeToolEntry(Messages.CallMediator46CreationTool_title,
+                Messages.CallMediator46CreationTool_desc,
+                Collections.singletonList(EsbElementTypes.CallMediator_3742));
+        entry.setId("createCallMediator46CreationTool"); //$NON-NLS-1$
+        entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.CallMediator_3742));
+        entry.setLargeIcon(entry.getSmallIcon());
+        return entry;
+    }
+
+    /**
+    * @generated
+    */
+    private ToolEntry createDataMapperMediator47CreationTool() {
+        NodeToolEntry entry = new NodeToolEntry(Messages.DataMapperMediator47CreationTool_title,
+                Messages.DataMapperMediator47CreationTool_desc,
+                Collections.singletonList(EsbElementTypes.DataMapperMediator_3761));
+        entry.setId("createDataMapperMediator47CreationTool"); //$NON-NLS-1$
+        entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.DataMapperMediator_3761));
+        entry.setLargeIcon(entry.getSmallIcon());
+        return entry;
+    }
+
+    /**
+    * @generated
+    */
+    private ToolEntry createFastXSLTMediator48CreationTool() {
+        NodeToolEntry entry = new NodeToolEntry(Messages.FastXSLTMediator48CreationTool_title,
+                Messages.FastXSLTMediator48CreationTool_desc,
+                Collections.singletonList(EsbElementTypes.FastXSLTMediator_3764));
+        entry.setId("createFastXSLTMediator48CreationTool"); //$NON-NLS-1$
+        entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.FastXSLTMediator_3764));
+        entry.setLargeIcon(entry.getSmallIcon());
+        return entry;
+    }
+
+    /**
+    * @generated
+    */
+    private ToolEntry createPublishEventMediator49CreationTool() {
+        NodeToolEntry entry = new NodeToolEntry(Messages.PublishEventMediator49CreationTool_title,
+                Messages.PublishEventMediator49CreationTool_desc,
+                Collections.singletonList(EsbElementTypes.PublishEventMediator_3785));
+        entry.setId("createPublishEventMediator48CreationTool"); //$NON-NLS-1$
+        entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.PublishEventMediator_3785));
         entry.setLargeIcon(entry.getSmallIcon());
         return entry;
     }
@@ -875,8 +1147,8 @@ public class EsbPaletteFactory {
      * @generated NOT
      */
     private ToolEntry createStoreMediator31CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.StoreMediator31CreationTool_title,
-                Messages.StoreMediator31CreationTool_desc,
+        NodeToolEntry entry = new NodeToolEntry(Messages.StoreMediator32CreationTool_title,
+                Messages.StoreMediator32CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.StoreMediator_3588));
         entry.setId("createStoreMediator31CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.StoreMediator_3588));
@@ -888,8 +1160,8 @@ public class EsbPaletteFactory {
      * @generated NOT
      */
     private ToolEntry createBuilderMediator32CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.BuilderMediator32CreationTool_title,
-                Messages.BuilderMediator32CreationTool_desc,
+        NodeToolEntry entry = new NodeToolEntry(Messages.BuilderMediator33CreationTool_title,
+                Messages.BuilderMediator33CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.BuilderMediator_3591));
         entry.setId("createBuilderMediator32CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.BuilderMediator_3591));
@@ -901,202 +1173,11 @@ public class EsbPaletteFactory {
      * @generated NOT
      */
     private ToolEntry createCallTemplateMediator33CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.CallTemplateMediator33CreationTool_title,
-                Messages.CallTemplateMediator33CreationTool_desc,
+        NodeToolEntry entry = new NodeToolEntry(Messages.CallTemplateMediator34CreationTool_title,
+                Messages.CallTemplateMediator34CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.CallTemplateMediator_3594));
         entry.setId("createCallTemplateMediator33CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.CallTemplateMediator_3594));
-        entry.setLargeIcon(entry.getSmallIcon());
-        return entry;
-    }
-
-    /**
-     * @generated
-     */
-    private ToolEntry createPayloadFactoryMediator34CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.PayloadFactoryMediator34CreationTool_title,
-                Messages.PayloadFactoryMediator34CreationTool_desc,
-                Collections.singletonList(EsbElementTypes.PayloadFactoryMediator_3597));
-        entry.setId("createPayloadFactoryMediator34CreationTool"); //$NON-NLS-1$
-        entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.PayloadFactoryMediator_3597));
-        entry.setLargeIcon(entry.getSmallIcon());
-        return entry;
-    }
-
-    /**
-     * @generated
-     */
-    private ToolEntry createEnqueueMediator35CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.EnqueueMediator35CreationTool_title,
-                Messages.EnqueueMediator35CreationTool_desc,
-                Collections.singletonList(EsbElementTypes.EnqueueMediator_3600));
-        entry.setId("createEnqueueMediator35CreationTool"); //$NON-NLS-1$
-        entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.EnqueueMediator_3600));
-        entry.setLargeIcon(entry.getSmallIcon());
-        return entry;
-    }
-
-    /**
-     * @generated
-     */
-    private ToolEntry createURLRewriteMediator36CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.URLRewriteMediator36CreationTool_title,
-                Messages.URLRewriteMediator36CreationTool_desc,
-                Collections.singletonList(EsbElementTypes.URLRewriteMediator_3620));
-        entry.setId("createURLRewriteMediator36CreationTool"); //$NON-NLS-1$
-        entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.URLRewriteMediator_3620));
-        entry.setLargeIcon(entry.getSmallIcon());
-        return entry;
-    }
-
-    /**
-     * @generated
-     */
-    private ToolEntry createValidateMediator37CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.ValidateMediator37CreationTool_title,
-                Messages.ValidateMediator37CreationTool_desc,
-                Collections.singletonList(EsbElementTypes.ValidateMediator_3623));
-        entry.setId("createValidateMediator37CreationTool"); //$NON-NLS-1$
-        entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.ValidateMediator_3623));
-        entry.setLargeIcon(entry.getSmallIcon());
-        return entry;
-    }
-
-    /**
-     * @generated
-     */
-    private ToolEntry createRouterMediator38CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.RouterMediator38CreationTool_title,
-                Messages.RouterMediator38CreationTool_desc,
-                Collections.singletonList(EsbElementTypes.RouterMediator_3628));
-        entry.setId("createRouterMediator38CreationTool"); //$NON-NLS-1$
-        entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.RouterMediator_3628));
-        entry.setLargeIcon(entry.getSmallIcon());
-        return entry;
-    }
-
-    /**
-     * @generated
-     */
-    private ToolEntry createConditionalRouterMediator39CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.ConditionalRouterMediator39CreationTool_title,
-                Messages.ConditionalRouterMediator39CreationTool_desc,
-                Collections.singletonList(EsbElementTypes.ConditionalRouterMediator_3635));
-        entry.setId("createConditionalRouterMediator39CreationTool"); //$NON-NLS-1$
-        entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.ConditionalRouterMediator_3635));
-        entry.setLargeIcon(entry.getSmallIcon());
-        return entry;
-    }
-
-    /**
-     * @generated
-     */
-    private ToolEntry createBAMMediator40CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.BAMMediator40CreationTool_title,
-                Messages.BAMMediator40CreationTool_desc, Collections.singletonList(EsbElementTypes.BAMMediator_3680));
-        entry.setId("createBAMMediator40CreationTool"); //$NON-NLS-1$
-        entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.BAMMediator_3680));
-        entry.setLargeIcon(entry.getSmallIcon());
-        return entry;
-    }
-
-    /**
-     * @generated
-     */
-    private ToolEntry createBeanMediator41CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.BeanMediator41CreationTool_title,
-                Messages.BeanMediator41CreationTool_desc, Collections.singletonList(EsbElementTypes.BeanMediator_3683));
-        entry.setId("createBeanMediator41CreationTool"); //$NON-NLS-1$
-        entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.BeanMediator_3683));
-        entry.setLargeIcon(entry.getSmallIcon());
-        return entry;
-    }
-
-    /**
-     * @generated
-     */
-    private ToolEntry createEJBMediator42CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.EJBMediator42CreationTool_title,
-                Messages.EJBMediator42CreationTool_desc, Collections.singletonList(EsbElementTypes.EJBMediator_3686));
-        entry.setId("createEJBMediator42CreationTool"); //$NON-NLS-1$
-        entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.EJBMediator_3686));
-        entry.setLargeIcon(entry.getSmallIcon());
-        return entry;
-    }
-
-    /**
-     * @generated
-     */
-    private ToolEntry createLoopBackMediator43CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.LoopBackMediator43CreationTool_title,
-                Messages.LoopBackMediator43CreationTool_desc,
-                Collections.singletonList(EsbElementTypes.LoopBackMediator_3736));
-        entry.setId("createLoopBackMediator43CreationTool"); //$NON-NLS-1$
-        entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.LoopBackMediator_3736));
-        entry.setLargeIcon(entry.getSmallIcon());
-        return entry;
-    }
-
-    /**
-     * @generated
-     */
-    private ToolEntry createRespondMediator44CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.RespondMediator44CreationTool_title,
-                Messages.RespondMediator44CreationTool_desc,
-                Collections.singletonList(EsbElementTypes.RespondMediator_3739));
-        entry.setId("createRespondMediator44CreationTool"); //$NON-NLS-1$
-        entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.RespondMediator_3739));
-        entry.setLargeIcon(entry.getSmallIcon());
-        return entry;
-    }
-
-    /**
-     * @generated
-     */
-    private ToolEntry createCallMediator45CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.CallMediator45CreationTool_title,
-                Messages.CallMediator45CreationTool_desc, Collections.singletonList(EsbElementTypes.CallMediator_3742));
-        entry.setId("createCallMediator45CreationTool"); //$NON-NLS-1$
-        entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.CallMediator_3742));
-        entry.setLargeIcon(entry.getSmallIcon());
-        return entry;
-    }
-
-    /**
-     * @generated
-     */
-    private ToolEntry createDataMapperMediator46CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.DataMapperMediator46CreationTool_title,
-                Messages.DataMapperMediator46CreationTool_desc,
-                Collections.singletonList(EsbElementTypes.DataMapperMediator_3761));
-        entry.setId("createDataMapperMediator46CreationTool"); //$NON-NLS-1$
-        entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.DataMapperMediator_3761));
-        entry.setLargeIcon(entry.getSmallIcon());
-        return entry;
-    }
-
-    /**
-     * @generated
-     */
-    private ToolEntry createFastXSLTMediator47CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.FastXSLTMediator47CreationTool_title,
-                Messages.FastXSLTMediator47CreationTool_desc,
-                Collections.singletonList(EsbElementTypes.FastXSLTMediator_3764));
-        entry.setId("createFastXSLTMediator47CreationTool"); //$NON-NLS-1$
-        entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.FastXSLTMediator_3764));
-        entry.setLargeIcon(entry.getSmallIcon());
-        return entry;
-    }
-
-    /**
-     * @generated
-     */
-    private ToolEntry createPublishEventMediator48CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.PublishEventMediator48CreationTool_title,
-                Messages.PublishEventMediator48CreationTool_desc,
-                Collections.singletonList(EsbElementTypes.PublishEventMediator_3785));
-        entry.setId("createPublishEventMediator48CreationTool"); //$NON-NLS-1$
-        entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.PublishEventMediator_3785));
         entry.setLargeIcon(entry.getSmallIcon());
         return entry;
     }
@@ -1251,8 +1332,8 @@ public class EsbPaletteFactory {
      * @generated
      */
     private ToolEntry createEsbLink1CreationTool() {
-        LinkToolEntry entry = new LinkToolEntry(Messages.EsbLink1CreationTool_title, Messages.EsbLink1CreationTool_desc,
-                Collections.singletonList(EsbElementTypes.EsbLink_4001));
+        LinkToolEntry entry = new LinkToolEntry(Messages.EsbLink1CreationTool_title,
+                Messages.EsbLink1CreationTool_desc, Collections.singletonList(EsbElementTypes.EsbLink_4001));
         entry.setId("createEsbLink1CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.EsbLink_4001));
         entry.setLargeIcon(entry.getSmallIcon());

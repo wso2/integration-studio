@@ -260,6 +260,9 @@ public class ProxyOutputConnectorEditPart extends AbstractOutputConnectorEditPar
         if (targetEditPart instanceof PropertyMediatorInputConnectorEditPart) {
             types.add(EsbElementTypes.EsbLink_4001);
         }
+        if (targetEditPart instanceof PropertyGroupMediatorInputConnectorEditPart) {
+            types.add(EsbElementTypes.EsbLink_4001);
+        }
         if (targetEditPart instanceof EnrichMediatorInputConnectorEditPart) {
             types.add(EsbElementTypes.EsbLink_4001);
         }
@@ -327,6 +330,7 @@ public class ProxyOutputConnectorEditPart extends AbstractOutputConnectorEditPar
             types.add(EsbElementTypes.MergeNodeSecondInputConnector_3015);
             types.add(EsbElementTypes.LogMediatorInputConnector_3018);
             types.add(EsbElementTypes.PropertyMediatorInputConnector_3033);
+            types.add(EsbElementTypes.PropertyGroupMediatorInputConnector_3789);
             types.add(EsbElementTypes.EnrichMediatorInputConnector_3036);
             types.add(EsbElementTypes.XSLTMediatorInputConnector_3039);
             types.add(EsbElementTypes.SwitchMediatorInputConnector_3042);

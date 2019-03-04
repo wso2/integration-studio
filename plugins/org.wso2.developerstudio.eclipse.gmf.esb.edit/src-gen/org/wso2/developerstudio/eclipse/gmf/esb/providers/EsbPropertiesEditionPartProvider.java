@@ -222,6 +222,9 @@ import org.wso2.developerstudio.eclipse.gmf.esb.parts.forms.PayloadFactoryArgume
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.forms.PayloadFactoryMediatorInputConnectorPropertiesEditionPartForm;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.forms.PayloadFactoryMediatorOutputConnectorPropertiesEditionPartForm;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.forms.PayloadFactoryMediatorPropertiesEditionPartForm;
+import org.wso2.developerstudio.eclipse.gmf.esb.parts.forms.PropertyGroupMediatorInputConnectorPropertiesEditionPartForm;
+import org.wso2.developerstudio.eclipse.gmf.esb.parts.forms.PropertyGroupMediatorOutputConnectorPropertiesEditionPartForm;
+import org.wso2.developerstudio.eclipse.gmf.esb.parts.forms.PropertyGroupMediatorPropertiesEditionPartForm;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.forms.PropertyMediatorInputConnectorPropertiesEditionPartForm;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.forms.PropertyMediatorOutputConnectorPropertiesEditionPartForm;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.forms.PropertyMediatorPropertiesEditionPartForm;
@@ -569,6 +572,9 @@ import org.wso2.developerstudio.eclipse.gmf.esb.parts.impl.PayloadFactoryArgumen
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.impl.PayloadFactoryMediatorInputConnectorPropertiesEditionPartImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.impl.PayloadFactoryMediatorOutputConnectorPropertiesEditionPartImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.impl.PayloadFactoryMediatorPropertiesEditionPartImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.parts.impl.PropertyGroupMediatorInputConnectorPropertiesEditionPartImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.parts.impl.PropertyGroupMediatorOutputConnectorPropertiesEditionPartImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.parts.impl.PropertyGroupMediatorPropertiesEditionPartImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.impl.PropertyMediatorInputConnectorPropertiesEditionPartImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.impl.PropertyMediatorOutputConnectorPropertiesEditionPartImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.impl.PropertyMediatorPropertiesEditionPartImpl;
@@ -1169,6 +1175,24 @@ public class EsbPropertiesEditionPartProvider implements IPropertiesEditionPartP
 				return new PropertyMediatorOutputConnectorPropertiesEditionPartImpl(component);
 			if (kind == EsbViewsRepository.FORM_KIND)
 				return new PropertyMediatorOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.PropertyGroupMediator.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new PropertyGroupMediatorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new PropertyGroupMediatorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.PropertyGroupMediatorInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new PropertyGroupMediatorInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new PropertyGroupMediatorInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.PropertyGroupMediatorOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new PropertyGroupMediatorOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new PropertyGroupMediatorOutputConnectorPropertiesEditionPartForm(component);
 		}
 		if (key == EsbViewsRepository.NamespacedProperty.class) {
 			if (kind == EsbViewsRepository.SWT_KIND)

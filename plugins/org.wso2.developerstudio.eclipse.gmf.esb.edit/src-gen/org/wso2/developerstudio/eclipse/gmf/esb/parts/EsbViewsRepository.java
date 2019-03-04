@@ -168,7 +168,7 @@ public class EsbViewsRepository {
 			public static String valueType = "esb::EndPointProperty::properties::valueType";
 			
 			// Start of user code for valueExpression ElementEditor key
-			public static String valueExpression = "esb::EndPointProperty::properties::valueExpression";
+			public static String valueExpression = "esb::SqlParameterDefinition::properties::valueExpression";
 			// End of user code
 			
 	
@@ -2032,6 +2032,60 @@ public class EsbViewsRepository {
 	}
 
 	/**
+	 * PropertyGroupMediator view descriptor
+	 * 
+	 */
+	public static class PropertyGroupMediator {
+		public static class Properties {
+	
+			
+			public static String description = "esb::PropertyGroupMediator::properties::description";
+			
+			
+			public static String commentsList = "esb::PropertyGroupMediator::properties::commentsList";
+			
+			
+			public static String reverse = "esb::PropertyGroupMediator::properties::Reverse";
+			
+			
+			public static String properties_ = "esb::PropertyGroupMediator::properties::properties_";
+			
+	
+		}
+	
+	}
+
+	/**
+	 * PropertyGroupMediatorInputConnector view descriptor
+	 * 
+	 */
+	public static class PropertyGroupMediatorInputConnector {
+		public static class Properties {
+	
+			
+			public static String incomingLinks = "esb::PropertyGroupMediatorInputConnector::properties::incomingLinks";
+			
+	
+		}
+	
+	}
+
+	/**
+	 * PropertyGroupMediatorOutputConnector view descriptor
+	 * 
+	 */
+	public static class PropertyGroupMediatorOutputConnector {
+		public static class Properties {
+	
+			
+			public static String commentMediators = "esb::PropertyGroupMediatorOutputConnector::properties::commentMediators";
+			
+	
+		}
+	
+	}
+
+	/**
 	 * NamespacedProperty view descriptor
 	 * 
 	 */
@@ -2120,7 +2174,9 @@ public class EsbViewsRepository {
 			public static String targetProperty = "esb::EnrichMediator::Target::targetProperty";
 			
 			// Start of user code for targetXPath ElementEditor key
+
 			public static String targetXPath = "esb::EnrichMediator::target::targetXPath";
+
 			// End of user code
 			
 	
@@ -2580,11 +2636,11 @@ public class EsbViewsRepository {
 			public static String referringSequenceType = "esb::Sequence::properties::referringSequenceType";
 			
 			// Start of user code for staticReferenceKey ElementEditor key
-			public static String staticReferenceKey = "esb::Sequence::properties::staticReferenceKey";
+			public static String staticReferenceKey = "esb::NamedEndpoint::properties::staticReferenceKey";
 			// End of user code
 			
 			// Start of user code for dynamicReferenceKey ElementEditor key
-			public static String dynamicReferenceKey = "esb::Sequence::properties::dynamicReferenceKey";
+			public static String dynamicReferenceKey = "esb::NamedEndpoint::properties::dynamicReferenceKey";
 			// End of user code
 			
 	

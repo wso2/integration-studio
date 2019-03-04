@@ -624,6 +624,18 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PropertyMediatorInputConnector" eSuperTypes="#//InputConnector"/>
   <eClassifiers xsi:type="ecore:EClass" name="PropertyMediatorOutputConnector" eSuperTypes="#//OutputConnector"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PropertyGroupMediator" eSuperTypes="#//Mediator">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inputConnector" eType="#//PropertyGroupMediatorInputConnector"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outputConnector" eType="#//PropertyGroupMediatorOutputConnector"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
+        eType="#//PropertyMediator" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PropertyGroupMediatorInputConnector"
+      eSuperTypes="#//InputConnector"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PropertyGroupMediatorOutputConnector"
+      eSuperTypes="#//OutputConnector"/>
   <eClassifiers xsi:type="ecore:EEnum" name="PropertyDataType">
     <eLiterals name="STRING"/>
     <eLiterals name="INTEGER" value="1" literal="INTEGER"/>

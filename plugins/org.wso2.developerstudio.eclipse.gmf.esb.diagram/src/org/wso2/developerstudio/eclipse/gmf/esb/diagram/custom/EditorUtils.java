@@ -82,6 +82,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.LoopBackMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.OAuthMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.OutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.PropertyGroupMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.ProxyService;
 import org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediator;
@@ -269,6 +270,8 @@ public class EditorUtils {
             return ((PayloadFactoryMediator) mediator).getInputConnector();
         } else if (mediator instanceof PropertyMediator) {
             return ((PropertyMediator) mediator).getInputConnector();
+        } else if (mediator instanceof PropertyGroupMediator) {
+            return ((PropertyGroupMediator) mediator).getInputConnector();
         } else if (mediator instanceof RMSequenceMediator) {
             return ((RMSequenceMediator) mediator).getInputConnector();
         } else if (mediator instanceof RuleMediator) {
@@ -382,6 +385,8 @@ public class EditorUtils {
             return ((PayloadFactoryMediator) mediator).getOutputConnector();
         } else if (mediator instanceof PropertyMediator) {
             return ((PropertyMediator) mediator).getOutputConnector();
+        } else if (mediator instanceof PropertyGroupMediator) {
+            return ((PropertyGroupMediator) mediator).getOutputConnector();
         } else if (mediator instanceof RMSequenceMediator) {
             return ((RMSequenceMediator) mediator).getOutputConnector();
         } else if (mediator instanceof RuleMediator) {

@@ -54,13 +54,13 @@ public class NamespacedPropertyItemProvider extends EsbNodeItemProvider {
         if (itemPropertyDescriptors == null) {
             super.getPropertyDescriptors(object);
 
-			addPrettyNamePropertyDescriptor(object);
-			addPropertyNamePropertyDescriptor(object);
-			addPropertyValuePropertyDescriptor(object);
-			addNamespacesPropertyDescriptor(object);
-			addSupportsDynamicXPathsPropertyDescriptor(object);
-			addDynamicPropertyDescriptor(object);
-			addSupportJsonPathsPropertyDescriptor(object);
+            addPrettyNamePropertyDescriptor(object);
+            addPropertyNamePropertyDescriptor(object);
+            addPropertyValuePropertyDescriptor(object);
+            addNamespacesPropertyDescriptor(object);
+            addSupportsDynamicXPathsPropertyDescriptor(object);
+            addDynamicPropertyDescriptor(object);
+            addSupportJsonPathsPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
@@ -229,26 +229,26 @@ public class NamespacedPropertyItemProvider extends EsbNodeItemProvider {
     }
 
 	/**
-	 * This adds a property descriptor for the Support Json Paths feature.
-	 * <!-- begin-user-doc -->
+     * This adds a property descriptor for the Support Json Paths feature.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected void addSupportJsonPathsPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_NamespacedProperty_supportJsonPaths_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_NamespacedProperty_supportJsonPaths_feature", "_UI_NamespacedProperty_type"),
-				 EsbPackage.Literals.NAMESPACED_PROPERTY__SUPPORT_JSON_PATHS,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
-				 null));
-	}
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_NamespacedProperty_supportJsonPaths_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_NamespacedProperty_supportJsonPaths_feature", "_UI_NamespacedProperty_type"),
+                 EsbPackage.Literals.NAMESPACED_PROPERTY__SUPPORT_JSON_PATHS,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+                 null,
+                 null));
+    }
 
     @Override
     public void notifyChanged(Notification notification) {

@@ -35,7 +35,7 @@ public class PropertyMediatorExtFactory extends PropertyMediatorFactory {
     
     private static PropertyMediatorExtFactory instance;
     
-    private PropertyMediatorExtFactory() {
+    PropertyMediatorExtFactory() {
     }
     
     public static synchronized PropertyMediatorExtFactory getInstance() {

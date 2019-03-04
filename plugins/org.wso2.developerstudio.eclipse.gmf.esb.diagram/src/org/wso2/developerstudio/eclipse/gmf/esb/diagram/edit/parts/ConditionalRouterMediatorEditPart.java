@@ -375,7 +375,7 @@ public class ConditionalRouterMediatorEditPart extends FixedSizedAbstractMediato
         }
 
     }
-    
+
     @Override
     public void notifyChanged(Notification notification) {
         // this.getModel() will get EMF datamodel of the conditional router mediator datamodel
@@ -387,18 +387,20 @@ public class ConditionalRouterMediatorEditPart extends FixedSizedAbstractMediato
                         .getElement();
                 try {
                     org.apache.synapse.mediators.filters.router.ConditionalRouterMediator conditionalRouterMediator = ConditionalRouterMediatorTransformer
-                            .createConditionalRouterMediator(new TransformationInfo(),(EsbNode) conditionalRouterMediatorDataModel);
+                            .createConditionalRouterMediator(new TransformationInfo(),
+                                    (EsbNode) conditionalRouterMediatorDataModel);
 
                     ConditionalRouterMediatorSerializer conditionalRouterMediatorSerializer = new ConditionalRouterMediatorSerializer();
-                    OMElement omElement = conditionalRouterMediatorSerializer.serializeSpecificMediator(conditionalRouterMediator);
+                    OMElement omElement = conditionalRouterMediatorSerializer
+                            .serializeSpecificMediator(conditionalRouterMediator);
 
-                    if (StringUtils
-                            .isEmpty(MediatorValidationUtil.validateMediatorsFromOEMElement(omElement, "conditionalRouter"))) {
+                    if (StringUtils.isEmpty(
+                            MediatorValidationUtil.validateMediatorsFromOEMElement(omElement, "conditionalRouter"))) {
                         GraphicalValidatorUtil.removeValidationMark(this);
                     } else {
                         GraphicalValidatorUtil.addValidationMark(this);
                     }
-                } catch ( EvaluatorException | XMLStreamException | SynapseException e) {
+                } catch (EvaluatorException | XMLStreamException | SynapseException e) {
                     GraphicalValidatorUtil.addValidationMark(this);
                 }
             }

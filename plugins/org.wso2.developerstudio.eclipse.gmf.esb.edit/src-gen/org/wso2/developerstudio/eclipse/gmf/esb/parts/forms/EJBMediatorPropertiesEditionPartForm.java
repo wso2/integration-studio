@@ -1477,7 +1477,7 @@ public class EJBMediatorPropertiesEditionPartForm extends SectionPropertiesEditi
 
 
 	// Start of user code additional methods
-    protected Composite createSessionIDExpressionWidget(FormToolkit widgetFactory, Composite parent) {
+    protected Composite createSessionIDExpressionWidget(FormToolkit widgetFactory,final Composite parent) {
         Control sessionIdExpressionLabel = createDescription(parent, EsbViewsRepository.EJBMediator.Properties.sessionIdExpression,
                 EsbMessages.EJBMediatorPropertiesEditionPart_SessionIdExpressionLabel);
         widgetFactory.paintBordersFor(parent);

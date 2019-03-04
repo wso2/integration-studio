@@ -178,11 +178,8 @@ public class EnrichMediatorPropertiesEditionPartForm extends SectionPropertiesEd
      * 
      */
     public void createControls(final FormToolkit widgetFactory, Composite view) {
+        // Start of user code
         CompositionSequence enrichMediatorStep = new BindingCompositionSequence(propertiesEditionComponent);
-        CompositionStep miscStep = enrichMediatorStep.addStep(EsbViewsRepository.EnrichMediator.Misc.class);
-        miscStep.addStep(EsbViewsRepository.EnrichMediator.Misc.description);
-        miscStep.addStep(EsbViewsRepository.EnrichMediator.Misc.commentsList);
-        miscStep.addStep(EsbViewsRepository.EnrichMediator.Misc.reverse);
 
         CompositionStep sourceStep = enrichMediatorStep.addStep(EsbViewsRepository.EnrichMediator.Source.class);
         sourceStep.addStep(EsbViewsRepository.EnrichMediator.Source.cloneSource);
@@ -198,7 +195,12 @@ public class EnrichMediatorPropertiesEditionPartForm extends SectionPropertiesEd
         targetStep.addStep(EsbViewsRepository.EnrichMediator.Target.targetType);
         targetStep.addStep(EsbViewsRepository.EnrichMediator.Target.targetProperty);
         targetStep.addStep(EsbViewsRepository.EnrichMediator.Target.targetXPath);
-
+        
+        CompositionStep miscStep = enrichMediatorStep.addStep(EsbViewsRepository.EnrichMediator.Misc.class);
+        miscStep.addStep(EsbViewsRepository.EnrichMediator.Misc.description);
+        miscStep.addStep(EsbViewsRepository.EnrichMediator.Misc.commentsList);
+        miscStep.addStep(EsbViewsRepository.EnrichMediator.Misc.reverse);
+        // End of user code
         composer = new PartComposer(enrichMediatorStep) {
 
             @Override
@@ -599,10 +601,11 @@ public class EnrichMediatorPropertiesEditionPartForm extends SectionPropertiesEd
     protected Composite createSourceXMLText(FormToolkit widgetFactory, Composite parent) {
         Control itemLabel = createDescription(parent, EsbViewsRepository.EnrichMediator.Source.sourceXML,
                 EsbMessages.EnrichMediatorPropertiesEditionPart_SourceXMLLabel);
-        sourceXML = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+        sourceXML = widgetFactory.createText(parent, "", SWT.MULTI | SWT.BORDER | SWT.WRAP | SWT.V_SCROLL);
         sourceXML.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
         widgetFactory.paintBordersFor(parent);
         GridData sourceXMLData = new GridData(GridData.FILL_HORIZONTAL);
+        sourceXMLData.heightHint = sourceXML.getLineHeight()*4;
         sourceXML.setLayoutData(sourceXMLData);
         sourceXML.addFocusListener(new FocusAdapter() {
             /**
@@ -633,23 +636,6 @@ public class EnrichMediatorPropertiesEditionPartForm extends SectionPropertiesEd
                     propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
                             EnrichMediatorPropertiesEditionPartForm.this, null, PropertiesEditionEvent.FOCUS_CHANGED,
                             PropertiesEditionEvent.FOCUS_GAINED, null, null));
-                }
-            }
-        });
-        sourceXML.addKeyListener(new KeyAdapter() {
-            /**
-             * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-             * 
-             */
-            @Override
-            @SuppressWarnings("synthetic-access")
-            public void keyPressed(KeyEvent e) {
-                if (e.character == SWT.CR) {
-                    if (propertiesEditionComponent != null)
-                        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
-                                EnrichMediatorPropertiesEditionPartForm.this,
-                                EsbViewsRepository.EnrichMediator.Source.sourceXML, PropertiesEditionEvent.COMMIT,
-                                PropertiesEditionEvent.SET, null, sourceXML.getText()));
                 }
             }
         });
@@ -1448,9 +1434,9 @@ public class EnrichMediatorPropertiesEditionPartForm extends SectionPropertiesEd
         if (sourceXPath == null) {
             sourceXPath = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
         }
-        String initValueExpression = sourceXPath.getPropertyValue().isEmpty() ? "/default/expression"
+        String initValueExpression = sourceXPath.getPropertyValue().isEmpty() ? ""
                 : sourceXPath.getPropertyValue();
-        sourceXPathText = widgetFactory.createText(parent, initValueExpression);
+        sourceXPathText = widgetFactory.createText(parent, initValueExpression, SWT.READ_ONLY);
         sourceXPathText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
         widgetFactory.paintBordersFor(parent);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
@@ -1460,7 +1446,14 @@ public class EnrichMediatorPropertiesEditionPartForm extends SectionPropertiesEd
             
             @Override
             public void mouseDown( MouseEvent event ) {
-                openNamespacedPropertyEditor(parent);
+                EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
+                        SWT.NULL, sourceXPath);
+                nspd.open();
+                sourceXPathText.setText(sourceXPath.getPropertyValue());
+                propertiesEditionComponent
+                        .firePropertiesChanged(new PropertiesEditionEvent(EnrichMediatorPropertiesEditionPartForm.this,
+                                EsbViewsRepository.EnrichMediator.Source.sourceXPath, PropertiesEditionEvent.COMMIT,
+                                PropertiesEditionEvent.SET, null, getSourceXPath()));
             }
             
         });
@@ -1469,11 +1462,21 @@ public class EnrichMediatorPropertiesEditionPartForm extends SectionPropertiesEd
                         
             @Override
             public void keyPressed(KeyEvent e) {
-                openNamespacedPropertyEditor(parent);
             }
             
             @Override
-            public void keyReleased(KeyEvent e) {}
+            public void keyReleased(KeyEvent e) {
+                if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                    EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
+                            SWT.NULL, sourceXPath);
+                    nspd.open();
+                    sourceXPathText.setText(sourceXPath.getPropertyValue());
+                    propertiesEditionComponent
+                            .firePropertiesChanged(new PropertiesEditionEvent(EnrichMediatorPropertiesEditionPartForm.this,
+                                    EsbViewsRepository.EnrichMediator.Source.sourceXPath, PropertiesEditionEvent.COMMIT,
+                                    PropertiesEditionEvent.SET, null, getSourceXPath()));
+                }
+            }
             
         });
         
@@ -1495,26 +1498,16 @@ public class EnrichMediatorPropertiesEditionPartForm extends SectionPropertiesEd
             inlineRegistryKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
         }
         String initValueExpression = inlineRegistryKey.getKeyValue().isEmpty() ? "" : inlineRegistryKey.getKeyValue();
-        inlineRegistryKeyText = widgetFactory.createText(parent, initValueExpression);
+        inlineRegistryKeyText = widgetFactory.createText(parent, initValueExpression, SWT.READ_ONLY);
         inlineRegistryKeyText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
         widgetFactory.paintBordersFor(parent);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
         inlineRegistryKeyText.setLayoutData(valueData);
-        inlineRegistryKeyText.addFocusListener(new FocusAdapter() {
-            /**
-             * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-             * 
-             */
-            @Override
-            @SuppressWarnings("synthetic-access")
-            public void focusLost(FocusEvent e) {
-            }
+        
+        inlineRegistryKeyText.addMouseListener(new MouseAdapter() {
 
-            /**
-             * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
-             */
             @Override
-            public void focusGained(FocusEvent e) {
+            public void mouseDown(MouseEvent event) {
                 EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
                         SWT.NULL, inlineRegistryKey, new ArrayList<NamedEntityDescriptor>());
                 dialog.open();
@@ -1524,7 +1517,31 @@ public class EnrichMediatorPropertiesEditionPartForm extends SectionPropertiesEd
                         EsbViewsRepository.EnrichMediator.Source.inlineRegistryKey, PropertiesEditionEvent.COMMIT,
                         PropertiesEditionEvent.SET, null, getInlineRegistryKey()));
             }
+
         });
+
+        inlineRegistryKeyText.addKeyListener(new KeyListener() {
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                    EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
+                            SWT.NULL, inlineRegistryKey, new ArrayList<NamedEntityDescriptor>());
+                    dialog.open();
+                    inlineRegistryKeyText.setText(inlineRegistryKey.getKeyValue());
+                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                            EnrichMediatorPropertiesEditionPartForm.this,
+                            EsbViewsRepository.EnrichMediator.Source.inlineRegistryKey, PropertiesEditionEvent.COMMIT,
+                            PropertiesEditionEvent.SET, null, getInlineRegistryKey()));
+                }
+            }
+
+        });
+
         EditingUtils.setID(inlineRegistryKeyText, EsbViewsRepository.EnrichMediator.Source.inlineRegistryKey);
         EditingUtils.setEEFtype(inlineRegistryKeyText, "eef::Text");
         Control inlineRegistryKeyHelp = FormUtils.createHelpButton(widgetFactory, parent,
@@ -1544,7 +1561,7 @@ public class EnrichMediatorPropertiesEditionPartForm extends SectionPropertiesEd
         }
         String initValueExpression = targetXPath.getPropertyValue().isEmpty() ? "/default/expression"
                 : targetXPath.getPropertyValue();
-        targetXPathText = widgetFactory.createText(parent, initValueExpression);
+        targetXPathText = widgetFactory.createText(parent, initValueExpression, SWT.READ_ONLY);
         targetXPathText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
         widgetFactory.paintBordersFor(parent);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
@@ -1554,7 +1571,15 @@ public class EnrichMediatorPropertiesEditionPartForm extends SectionPropertiesEd
             
             @Override
             public void mouseDown( MouseEvent event ) {
-                openNamespacedPropertyEditor(parent);
+                EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
+                        SWT.NULL, targetXPath);
+                // valueExpression.setPropertyValue(valueExpressionText.getText());
+                nspd.open();
+                targetXPathText.setText(targetXPath.getPropertyValue());
+                propertiesEditionComponent
+                        .firePropertiesChanged(new PropertiesEditionEvent(EnrichMediatorPropertiesEditionPartForm.this,
+                                EsbViewsRepository.EnrichMediator.Target.targetXPath, PropertiesEditionEvent.COMMIT,
+                                PropertiesEditionEvent.SET, null, getTargetXPath()));
             }
             
         });
@@ -1563,11 +1588,22 @@ public class EnrichMediatorPropertiesEditionPartForm extends SectionPropertiesEd
                         
             @Override
             public void keyPressed(KeyEvent e) {
-                openNamespacedPropertyEditor(parent);
             }
             
             @Override
-            public void keyReleased(KeyEvent e) {}
+            public void keyReleased(KeyEvent e) {
+                if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                    EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
+                            SWT.NULL, targetXPath);
+                    // valueExpression.setPropertyValue(valueExpressionText.getText());
+                    nspd.open();
+                    targetXPathText.setText(targetXPath.getPropertyValue());
+                    propertiesEditionComponent.firePropertiesChanged(
+                            new PropertiesEditionEvent(EnrichMediatorPropertiesEditionPartForm.this,
+                                    EsbViewsRepository.EnrichMediator.Target.targetXPath, PropertiesEditionEvent.COMMIT,
+                                    PropertiesEditionEvent.SET, null, getTargetXPath()));
+                }
+            }
             
         });
         
@@ -1580,18 +1616,6 @@ public class EnrichMediatorPropertiesEditionPartForm extends SectionPropertiesEd
         return parent;
     }
     
-    private void openNamespacedPropertyEditor(final Composite parent) {
-        EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
-                SWT.NULL, targetXPath);
-        // valueExpression.setPropertyValue(valueExpressionText.getText());
-        nspd.open();
-        targetXPathText.setText(targetXPath.getPropertyValue());
-        propertiesEditionComponent
-                .firePropertiesChanged(new PropertiesEditionEvent(EnrichMediatorPropertiesEditionPartForm.this,
-                        EsbViewsRepository.EnrichMediator.Target.targetXPath, PropertiesEditionEvent.COMMIT,
-                        PropertiesEditionEvent.SET, null, getTargetXPath()));
-    }
-
     @Override
     public void refresh() {
         super.refresh();

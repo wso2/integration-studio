@@ -46,6 +46,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.AggregateMediatorPropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 
 
 // End of user code
@@ -521,18 +522,6 @@ public class AggregateMediatorPropertiesEditionComponent extends SinglePartPrope
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getHelpContent(java.lang.Object, int)
-	 * 
-	 */
-	public String getHelpContent(Object key, int kind) {
-		if (key == EsbViewsRepository.AggregateMediator.OnComplete.aggregationExpression)
-			return ""; //$NON-NLS-1$
-		return super.getHelpContent(key, kind);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
@@ -626,6 +615,13 @@ public class AggregateMediatorPropertiesEditionComponent extends SinglePartPrope
 		return ret;
 	}
 
+	/**
+     * @generated NOT
+     */
+    @Override
+    public String getHelpContent(Object key, int kind) {
+        return EEFPropertyViewUtil.getHelpContent(key);
+    }
 
 	
 

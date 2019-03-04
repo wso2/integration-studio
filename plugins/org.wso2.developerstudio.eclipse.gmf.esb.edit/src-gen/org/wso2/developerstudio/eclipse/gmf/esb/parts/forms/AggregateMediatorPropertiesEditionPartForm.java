@@ -522,7 +522,7 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
      */
 	protected Composite createCompletionTimeoutText(FormToolkit widgetFactory, Composite parent) {
 	    completeConditionSubGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent,
-                "Complete Condition");
+                "Complete Condition", true);
 	    Control completionTimeoutLabel = createDescription(completeConditionSubGroup, EsbViewsRepository.AggregateMediator.Properties.completionTimeout, EsbMessages.AggregateMediatorPropertiesEditionPart_CompletionTimeoutLabel);
 		completionTimeout = widgetFactory.createText(completeConditionSubGroup, ""); //$NON-NLS-1$
 		completionTimeout.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);

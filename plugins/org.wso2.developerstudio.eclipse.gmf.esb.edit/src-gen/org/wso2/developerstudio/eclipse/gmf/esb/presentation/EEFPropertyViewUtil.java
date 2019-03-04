@@ -1,6 +1,11 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.presentation;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.Properties;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.KeyEvent;
@@ -10,11 +15,27 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.Section;
+
 import org.eclipse.swt.layout.GridLayout;
 
 public class EEFPropertyViewUtil {
 
     Composite view;
+    static Properties properties = null;
+
+    static {
+        URL url;
+        try {
+            url = new URL("platform:/plugin/org.wso2.developerstudio.eclipse.gmf.esb.edit/src-gen/org/wso2/developerstudio/eclipse/gmf/esb/presentation/helpcontent.properties");
+            InputStream inputStream = url.openConnection().getInputStream();
+            properties = new Properties();
+            properties.load(inputStream);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public EEFPropertyViewUtil(Composite view) {
         this.view = view;
@@ -161,5 +182,19 @@ public class EEFPropertyViewUtil {
         }
         
         return false;
+    }
+
+    /**
+     * This returns help content assigned for each property (in helpContent.properties file)
+     * @param key property key
+     * @return property help content
+     */
+    public static String getHelpContent(Object key) {
+        String helpContent = "";
+        if(key instanceof String) {
+            //replacing :: to - since colon is a reserved char
+            helpContent = ((String)key).replaceAll("::", "-");
+        }
+        return properties.getProperty(helpContent);
     }
 }

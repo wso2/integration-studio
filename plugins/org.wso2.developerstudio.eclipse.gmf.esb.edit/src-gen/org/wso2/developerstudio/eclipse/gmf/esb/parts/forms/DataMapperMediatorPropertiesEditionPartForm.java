@@ -104,6 +104,8 @@ public class DataMapperMediatorPropertiesEditionPartForm extends SectionProperti
     protected Control[] outputSchemaElements;
     protected Control[] outputTypeElements;
     protected Composite propertiesGroup;
+    protected Composite inputTypePropertiesGroup;
+    protected Composite outputTypePropertiesGroup;
 
 
 	/**
@@ -151,11 +153,12 @@ public class DataMapperMediatorPropertiesEditionPartForm extends SectionProperti
 		propertiesStep.addStep(EsbViewsRepository.DataMapperMediator.Properties.description);
 		propertiesStep.addStep(EsbViewsRepository.DataMapperMediator.Properties.commentsList);
 		propertiesStep.addStep(EsbViewsRepository.DataMapperMediator.Properties.reverse);
-		propertiesStep.addStep(EsbViewsRepository.DataMapperMediator.Properties.inputType);
 		propertiesStep.addStep(EsbViewsRepository.DataMapperMediator.Properties.configurationLocalPath);
+        propertiesStep.addStep(EsbViewsRepository.DataMapperMediator.Properties.inputType);
 		propertiesStep.addStep(EsbViewsRepository.DataMapperMediator.Properties.inputSchemaLocalPath);
-		propertiesStep.addStep(EsbViewsRepository.DataMapperMediator.Properties.outputSchemaLocalPath);
 		propertiesStep.addStep(EsbViewsRepository.DataMapperMediator.Properties.outputType);
+		propertiesStep.addStep(EsbViewsRepository.DataMapperMediator.Properties.outputSchemaLocalPath);
+		
 		
 		
 		composer = new PartComposer(dataMapperMediatorStep) {
@@ -358,8 +361,10 @@ public class DataMapperMediatorPropertiesEditionPartForm extends SectionProperti
      * @generated NOT
      */
 	protected Composite createInputTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
-	    Control itemLabel = createDescription(parent, EsbViewsRepository.DataMapperMediator.Properties.inputType, EsbMessages.DataMapperMediatorPropertiesEditionPart_InputTypeLabel);
-		inputType = new EMFComboViewer(parent);
+        inputTypePropertiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent,
+                "Input Type", true);
+	    Control itemLabel = createDescription(inputTypePropertiesGroup, EsbViewsRepository.DataMapperMediator.Properties.inputType, EsbMessages.DataMapperMediatorPropertiesEditionPart_InputTypeLabel);
+		inputType = new EMFComboViewer(inputTypePropertiesGroup);
 		inputType.setContentProvider(new ArrayContentProvider());
 		inputType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData inputTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -379,7 +384,7 @@ public class DataMapperMediatorPropertiesEditionPartForm extends SectionProperti
 
 		});
 		inputType.setID(EsbViewsRepository.DataMapperMediator.Properties.inputType);
-		Control itemHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DataMapperMediator.Properties.inputType, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		Control itemHelp = FormUtils.createHelpButton(widgetFactory, inputTypePropertiesGroup, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DataMapperMediator.Properties.inputType, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createInputTypeEMFComboViewer
 		inputTypeElements = new Control [] {itemLabel, inputType.getCombo(), itemHelp};
 		// End of user code
@@ -486,10 +491,10 @@ public class DataMapperMediatorPropertiesEditionPartForm extends SectionProperti
      * @generated NOT
      */	
 	protected Composite createInputSchemaLocalPathText(FormToolkit widgetFactory, Composite parent) {
-		Control itemLabel = createDescription(parent, EsbViewsRepository.DataMapperMediator.Properties.inputSchemaLocalPath, EsbMessages.DataMapperMediatorPropertiesEditionPart_InputSchemaLocalPathLabel);
-		inputSchemaLocalPath = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+		Control itemLabel = createDescription(inputTypePropertiesGroup, EsbViewsRepository.DataMapperMediator.Properties.inputSchemaLocalPath, EsbMessages.DataMapperMediatorPropertiesEditionPart_InputSchemaLocalPathLabel);
+		inputSchemaLocalPath = widgetFactory.createText(inputTypePropertiesGroup, ""); //$NON-NLS-1$
 		inputSchemaLocalPath.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
-		widgetFactory.paintBordersFor(parent);
+		widgetFactory.paintBordersFor(inputTypePropertiesGroup);
 		GridData inputSchemaLocalPathData = new GridData(GridData.FILL_HORIZONTAL);
 		inputSchemaLocalPath.setLayoutData(inputSchemaLocalPathData);
 		inputSchemaLocalPath.addFocusListener(new FocusAdapter() {
@@ -545,7 +550,7 @@ public class DataMapperMediatorPropertiesEditionPartForm extends SectionProperti
 		});
 		EditingUtils.setID(inputSchemaLocalPath, EsbViewsRepository.DataMapperMediator.Properties.inputSchemaLocalPath);
 		EditingUtils.setEEFtype(inputSchemaLocalPath, "eef::Text"); //$NON-NLS-1$
-		Control itemHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DataMapperMediator.Properties.inputSchemaLocalPath, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		Control itemHelp = FormUtils.createHelpButton(widgetFactory, inputTypePropertiesGroup, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DataMapperMediator.Properties.inputSchemaLocalPath, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createInputSchemaLocalPathText
 		inputSchemaElements = new Control [] {itemLabel, inputSchemaLocalPath, itemHelp};
         if(inputSchemaLocalPathRegistryKey == null) {
@@ -582,10 +587,10 @@ public class DataMapperMediatorPropertiesEditionPartForm extends SectionProperti
      * @generated NOT
      */ 
 	protected Composite createOutputSchemaLocalPathText(FormToolkit widgetFactory, Composite parent) {
-		Control itemLabel = createDescription(parent, EsbViewsRepository.DataMapperMediator.Properties.outputSchemaLocalPath, EsbMessages.DataMapperMediatorPropertiesEditionPart_OutputSchemaLocalPathLabel);
-		outputSchemaLocalPath = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+		Control itemLabel = createDescription(outputTypePropertiesGroup, EsbViewsRepository.DataMapperMediator.Properties.outputSchemaLocalPath, EsbMessages.DataMapperMediatorPropertiesEditionPart_OutputSchemaLocalPathLabel);
+		outputSchemaLocalPath = widgetFactory.createText(outputTypePropertiesGroup, ""); //$NON-NLS-1$
 		outputSchemaLocalPath.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
-		widgetFactory.paintBordersFor(parent);
+		widgetFactory.paintBordersFor(outputTypePropertiesGroup);
 		GridData outputSchemaLocalPathData = new GridData(GridData.FILL_HORIZONTAL);
 		outputSchemaLocalPath.setLayoutData(outputSchemaLocalPathData);
 		outputSchemaLocalPath.addFocusListener(new FocusAdapter() {
@@ -641,7 +646,7 @@ public class DataMapperMediatorPropertiesEditionPartForm extends SectionProperti
 		});
 		EditingUtils.setID(outputSchemaLocalPath, EsbViewsRepository.DataMapperMediator.Properties.outputSchemaLocalPath);
 		EditingUtils.setEEFtype(outputSchemaLocalPath, "eef::Text"); //$NON-NLS-1$
-		Control  itemHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DataMapperMediator.Properties.outputSchemaLocalPath, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		Control  itemHelp = FormUtils.createHelpButton(widgetFactory, outputTypePropertiesGroup, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DataMapperMediator.Properties.outputSchemaLocalPath, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createOutputSchemaLocalPathText
 		outputSchemaElements = new Control [] {itemLabel, outputSchemaLocalPath, itemHelp};
         if(outputSchemaLocalPathRegistryKey == null) {
@@ -678,8 +683,10 @@ public class DataMapperMediatorPropertiesEditionPartForm extends SectionProperti
      * @generated NOT
      */ 
 	protected Composite createOutputTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
-		Control itemLabel = createDescription(parent, EsbViewsRepository.DataMapperMediator.Properties.outputType, EsbMessages.DataMapperMediatorPropertiesEditionPart_OutputTypeLabel);
-		outputType = new EMFComboViewer(parent);
+        outputTypePropertiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent,
+                "Output Type", true);
+		Control itemLabel = createDescription(outputTypePropertiesGroup, EsbViewsRepository.DataMapperMediator.Properties.outputType, EsbMessages.DataMapperMediatorPropertiesEditionPart_OutputTypeLabel);
+		outputType = new EMFComboViewer(outputTypePropertiesGroup);
 		outputType.setContentProvider(new ArrayContentProvider());
 		outputType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData outputTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -699,7 +706,7 @@ public class DataMapperMediatorPropertiesEditionPartForm extends SectionProperti
 
 		});
 		outputType.setID(EsbViewsRepository.DataMapperMediator.Properties.outputType);
-		Control itemHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DataMapperMediator.Properties.outputType, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		Control itemHelp = FormUtils.createHelpButton(widgetFactory, outputTypePropertiesGroup, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DataMapperMediator.Properties.outputType, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createOutputTypeEMFComboViewer
 		outputTypeElements = new Control [] {itemLabel, outputType.getCombo(), itemHelp};
 		// End of user code
@@ -1050,6 +1057,8 @@ public class DataMapperMediatorPropertiesEditionPartForm extends SectionProperti
     public void validate() {
         EEFPropertyViewUtil epv = new EEFPropertyViewUtil(view);
         epv.clearElements(new Composite[] {propertiesGroup});
+        epv.showEntry(new Control[] {inputTypePropertiesGroup.getParent()}, false);
+        epv.showEntry(new Control[] {outputTypePropertiesGroup.getParent()}, false);
         epv.showEntry(descriptionElements, false);
         epv.showEntry(configurationPathElements, false);
         epv.showEntry(inputSchemaElements, false);

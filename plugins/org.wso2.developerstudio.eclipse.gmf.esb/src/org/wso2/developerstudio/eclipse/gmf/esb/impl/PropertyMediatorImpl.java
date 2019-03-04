@@ -58,554 +58,556 @@ import org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType;
  * @generated
  */
 public class PropertyMediatorImpl extends MediatorImpl implements PropertyMediator {
-
-	/**
+    /**
      * The cached value of the '{@link #getInputConnector() <em>Input Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getInputConnector()
      * @generated
      * @ordered
      */
-	protected PropertyMediatorInputConnector inputConnector;
+    protected PropertyMediatorInputConnector inputConnector;
 
-	/**
+    /**
      * The cached value of the '{@link #getOutputConnector() <em>Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getOutputConnector()
      * @generated
      * @ordered
      */
-	protected PropertyMediatorOutputConnector outputConnector;
+    protected PropertyMediatorOutputConnector outputConnector;
 
-	/**
+    /**
      * The default value of the '{@link #getPropertyName() <em>Property Name</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getPropertyName()
      * @generated
      * @ordered
      */
-	protected static final PropertyName PROPERTY_NAME_EDEFAULT = PropertyName.NEW_PROPERTY_NAME;
+    protected static final PropertyName PROPERTY_NAME_EDEFAULT = PropertyName.NEW_PROPERTY_NAME;
 
-	/**
+    /**
      * The cached value of the '{@link #getPropertyName() <em>Property Name</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getPropertyName()
      * @generated
      * @ordered
      */
-	protected PropertyName propertyName = PROPERTY_NAME_EDEFAULT;
+    protected PropertyName propertyName = PROPERTY_NAME_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getPropertyDataType() <em>Property Data Type</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getPropertyDataType()
      * @generated
      * @ordered
      */
-	protected static final PropertyDataType PROPERTY_DATA_TYPE_EDEFAULT = PropertyDataType.STRING;
+    protected static final PropertyDataType PROPERTY_DATA_TYPE_EDEFAULT = PropertyDataType.STRING;
 
-	/**
+    /**
      * The cached value of the '{@link #getPropertyDataType() <em>Property Data Type</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getPropertyDataType()
      * @generated
      * @ordered
      */
-	protected PropertyDataType propertyDataType = PROPERTY_DATA_TYPE_EDEFAULT;
+    protected PropertyDataType propertyDataType = PROPERTY_DATA_TYPE_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getPropertyAction() <em>Property Action</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getPropertyAction()
      * @generated
      * @ordered
      */
-	protected static final PropertyAction PROPERTY_ACTION_EDEFAULT = PropertyAction.SET;
+    protected static final PropertyAction PROPERTY_ACTION_EDEFAULT = PropertyAction.SET;
 
-	/**
+    /**
      * The cached value of the '{@link #getPropertyAction() <em>Property Action</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getPropertyAction()
      * @generated
      * @ordered
      */
-	protected PropertyAction propertyAction = PROPERTY_ACTION_EDEFAULT;
+    protected PropertyAction propertyAction = PROPERTY_ACTION_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getPropertyScope() <em>Property Scope</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getPropertyScope()
      * @generated
      * @ordered
      */
-	protected static final PropertyScope PROPERTY_SCOPE_EDEFAULT = PropertyScope.SYNAPSE;
+    protected static final PropertyScope PROPERTY_SCOPE_EDEFAULT = PropertyScope.SYNAPSE;
 
-	/**
+    /**
      * The cached value of the '{@link #getPropertyScope() <em>Property Scope</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getPropertyScope()
      * @generated
      * @ordered
      */
-	protected PropertyScope propertyScope = PROPERTY_SCOPE_EDEFAULT;
+    protected PropertyScope propertyScope = PROPERTY_SCOPE_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getValueType() <em>Value Type</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getValueType()
      * @generated
      * @ordered
      */
-	protected static final PropertyValueType VALUE_TYPE_EDEFAULT = PropertyValueType.LITERAL;
+    protected static final PropertyValueType VALUE_TYPE_EDEFAULT = PropertyValueType.LITERAL;
 
-	/**
+    /**
      * The cached value of the '{@link #getValueType() <em>Value Type</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getValueType()
      * @generated
      * @ordered
      */
-	protected PropertyValueType valueType = VALUE_TYPE_EDEFAULT;
+    protected PropertyValueType valueType = VALUE_TYPE_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getValue()
      * @generated
      * @ordered
      */
-	protected static final String VALUE_EDEFAULT = "";
+    protected static final String VALUE_EDEFAULT = "";
 
-	/**
+    /**
      * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getValue()
      * @generated
      * @ordered
      */
-	protected String value = VALUE_EDEFAULT;
+    protected String value = VALUE_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getExpression() <em>Expression</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getExpression()
      * @generated
      * @ordered
      */
-	protected static final String EXPRESSION_EDEFAULT = null;
+    protected static final String EXPRESSION_EDEFAULT = null;
 
-	/**
+    /**
      * The cached value of the '{@link #getExpression() <em>Expression</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getExpression()
      * @generated
      * @ordered
      */
-	protected String expression = EXPRESSION_EDEFAULT;
+    protected String expression = EXPRESSION_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getNamespacePrefix() <em>Namespace Prefix</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getNamespacePrefix()
      * @generated
      * @ordered
      */
-	protected static final String NAMESPACE_PREFIX_EDEFAULT = null;
+    protected static final String NAMESPACE_PREFIX_EDEFAULT = null;
 
-	/**
+    /**
      * The cached value of the '{@link #getNamespacePrefix() <em>Namespace Prefix</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getNamespacePrefix()
      * @generated
      * @ordered
      */
-	protected String namespacePrefix = NAMESPACE_PREFIX_EDEFAULT;
+    protected String namespacePrefix = NAMESPACE_PREFIX_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getNamespace() <em>Namespace</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getNamespace()
      * @generated
      * @ordered
      */
-	protected static final String NAMESPACE_EDEFAULT = null;
+    protected static final String NAMESPACE_EDEFAULT = null;
 
-	/**
+    /**
      * The cached value of the '{@link #getNamespace() <em>Namespace</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getNamespace()
      * @generated
      * @ordered
      */
-	protected String namespace = NAMESPACE_EDEFAULT;
+    protected String namespace = NAMESPACE_EDEFAULT;
 
-	/**
+    /**
      * The cached value of the '{@link #getValueExpression() <em>Value Expression</em>}' containment reference.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getValueExpression()
      * @generated
      * @ordered
      */
-	protected NamespacedProperty valueExpression;
+    protected NamespacedProperty valueExpression;
 
-	/**
+    /**
      * The default value of the '{@link #isBoolean() <em>Boolean</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #isBoolean()
      * @generated
      * @ordered
      */
-	protected static final boolean BOOLEAN_EDEFAULT = false;
+    protected static final boolean BOOLEAN_EDEFAULT = false;
 
-	/**
+    /**
      * The cached value of the '{@link #isBoolean() <em>Boolean</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #isBoolean()
      * @generated
      * @ordered
      */
-	protected boolean boolean_ = BOOLEAN_EDEFAULT;
+    protected boolean boolean_ = BOOLEAN_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getOM() <em>OM</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getOM()
      * @generated
      * @ordered
      */
-	protected static final String OM_EDEFAULT = "<value/>";
+    protected static final String OM_EDEFAULT = "<value/>";
 
-	/**
+    /**
      * The cached value of the '{@link #getOM() <em>OM</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getOM()
      * @generated
      * @ordered
      */
-	protected String om = OM_EDEFAULT;
+    protected String om = OM_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getValueStringPattern() <em>Value String Pattern</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getValueStringPattern()
      * @generated
      * @ordered
      */
-	protected static final String VALUE_STRING_PATTERN_EDEFAULT = null;
+    protected static final String VALUE_STRING_PATTERN_EDEFAULT = null;
 
-	/**
+    /**
      * The cached value of the '{@link #getValueStringPattern() <em>Value String Pattern</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getValueStringPattern()
      * @generated
      * @ordered
      */
-	protected String valueStringPattern = VALUE_STRING_PATTERN_EDEFAULT;
+    protected String valueStringPattern = VALUE_STRING_PATTERN_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getValueStringCapturingGroup() <em>Value String Capturing Group</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getValueStringCapturingGroup()
      * @generated
      * @ordered
      */
-	protected static final int VALUE_STRING_CAPTURING_GROUP_EDEFAULT = 0;
+    protected static final int VALUE_STRING_CAPTURING_GROUP_EDEFAULT = 0;
 
-	/**
+    /**
      * The cached value of the '{@link #getValueStringCapturingGroup() <em>Value String Capturing Group</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getValueStringCapturingGroup()
      * @generated
      * @ordered
      */
-	protected int valueStringCapturingGroup = VALUE_STRING_CAPTURING_GROUP_EDEFAULT;
+    protected int valueStringCapturingGroup = VALUE_STRING_CAPTURING_GROUP_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getNewPropertyName() <em>New Property Name</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getNewPropertyName()
      * @generated
      * @ordered
      */
-	protected static final String NEW_PROPERTY_NAME_EDEFAULT = "";
+    protected static final String NEW_PROPERTY_NAME_EDEFAULT = "";
 
-	/**
+    /**
      * The cached value of the '{@link #getNewPropertyName() <em>New Property Name</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getNewPropertyName()
      * @generated
      * @ordered
      */
-	protected String newPropertyName = NEW_PROPERTY_NAME_EDEFAULT;
-	
-	private Map<String, PropertyScope> propertyNameScopeMap = new HashMap<String, PropertyScope>();
+    protected String newPropertyName = NEW_PROPERTY_NAME_EDEFAULT;
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	protected PropertyMediatorImpl() {
-		super();
-		// Value expression.
-		NamespacedProperty valueExpression = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
-		valueExpression.setPrettyName("Property Expression");
-		valueExpression.setPropertyName("expression");
-		valueExpression.setSupportJsonPaths(true);
-		valueExpression.setPropertyValue(DEFAULT_EXPRESSION_PROPERTY_VALUE);		
-		setValueExpression(valueExpression);
-		
-		populatePropertyNameScopeMap();
-	}
+    private Map<String, PropertyScope> propertyNameScopeMap = new HashMap<String, PropertyScope>();
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated NOT
+     */
+    protected PropertyMediatorImpl() {
+        super();
+        // Value expression.
+        NamespacedProperty valueExpression = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
+        valueExpression.setPrettyName("Property Expression");
+        valueExpression.setPropertyName("expression");
+        valueExpression.setSupportJsonPaths(true);
+        valueExpression.setPropertyValue(DEFAULT_EXPRESSION_PROPERTY_VALUE);
+        setValueExpression(valueExpression);
+
+        populatePropertyNameScopeMap();
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	
-	@Override
-	protected EClass eStaticClass() {
+
+    @Override
+    protected EClass eStaticClass() {
         return EsbPackage.Literals.PROPERTY_MEDIATOR;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public PropertyName getPropertyName() {
+    public PropertyName getPropertyName() {
         return propertyName;
     }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public void setPropertyName(PropertyName newPropertyName) {
-		PropertyName oldPropertyName = propertyName;
-		propertyName = newPropertyName == null ? PROPERTY_NAME_EDEFAULT : newPropertyName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PROPERTY_MEDIATOR__PROPERTY_NAME, oldPropertyName, propertyName));
-		//Fixing DEVTOOLESB-720
-		setPropertyScope(propertyNameScopeMap.get(newPropertyName.getName()));
-	}
-
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated NOT
+     */
+    public void setPropertyName(PropertyName newPropertyName) {
+        PropertyName oldPropertyName = propertyName;
+        propertyName = newPropertyName == null ? PROPERTY_NAME_EDEFAULT : newPropertyName;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PROPERTY_MEDIATOR__PROPERTY_NAME,
+                    oldPropertyName, propertyName));
+        // Fixing DEVTOOLESB-720
+        setPropertyScope(propertyNameScopeMap.get(newPropertyName.getName()));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public PropertyDataType getPropertyDataType() {
+    public PropertyDataType getPropertyDataType() {
         return propertyDataType;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setPropertyDataType(PropertyDataType newPropertyDataType) {
+    public void setPropertyDataType(PropertyDataType newPropertyDataType) {
         PropertyDataType oldPropertyDataType = propertyDataType;
         propertyDataType = newPropertyDataType == null ? PROPERTY_DATA_TYPE_EDEFAULT : newPropertyDataType;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PROPERTY_MEDIATOR__PROPERTY_DATA_TYPE, oldPropertyDataType, propertyDataType));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public PropertyAction getPropertyAction() {
+    public PropertyAction getPropertyAction() {
         return propertyAction;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setPropertyAction(PropertyAction newPropertyAction) {
+    public void setPropertyAction(PropertyAction newPropertyAction) {
         PropertyAction oldPropertyAction = propertyAction;
         propertyAction = newPropertyAction == null ? PROPERTY_ACTION_EDEFAULT : newPropertyAction;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PROPERTY_MEDIATOR__PROPERTY_ACTION, oldPropertyAction, propertyAction));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public PropertyScope getPropertyScope() {
+    public PropertyScope getPropertyScope() {
         return propertyScope;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setPropertyScope(PropertyScope newPropertyScope) {
+    public void setPropertyScope(PropertyScope newPropertyScope) {
         PropertyScope oldPropertyScope = propertyScope;
         propertyScope = newPropertyScope == null ? PROPERTY_SCOPE_EDEFAULT : newPropertyScope;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PROPERTY_MEDIATOR__PROPERTY_SCOPE, oldPropertyScope, propertyScope));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public PropertyValueType getValueType() {
+    public PropertyValueType getValueType() {
         return valueType;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setValueType(PropertyValueType newValueType) {
+    public void setValueType(PropertyValueType newValueType) {
         PropertyValueType oldValueType = valueType;
         valueType = newValueType == null ? VALUE_TYPE_EDEFAULT : newValueType;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PROPERTY_MEDIATOR__VALUE_TYPE, oldValueType, valueType));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public String getValue() {
+    public String getValue() {
         return value;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setValue(String newValue) {
+    public void setValue(String newValue) {
         String oldValue = value;
         value = newValue;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PROPERTY_MEDIATOR__VALUE, oldValue, value));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public String getExpression() {
+    public String getExpression() {
         return expression;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setExpression(String newExpression) {
+    public void setExpression(String newExpression) {
         String oldExpression = expression;
         expression = newExpression;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PROPERTY_MEDIATOR__EXPRESSION, oldExpression, expression));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public String getNamespacePrefix() {
+    public String getNamespacePrefix() {
         return namespacePrefix;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setNamespacePrefix(String newNamespacePrefix) {
+    public void setNamespacePrefix(String newNamespacePrefix) {
         String oldNamespacePrefix = namespacePrefix;
         namespacePrefix = newNamespacePrefix;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PROPERTY_MEDIATOR__NAMESPACE_PREFIX, oldNamespacePrefix, namespacePrefix));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public String getNamespace() {
+    public String getNamespace() {
         return namespace;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setNamespace(String newNamespace) {
+    public void setNamespace(String newNamespace) {
         String oldNamespace = namespace;
         namespace = newNamespace;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PROPERTY_MEDIATOR__NAMESPACE, oldNamespace, namespace));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public NamespacedProperty getValueExpression() {
+    public NamespacedProperty getValueExpression() {
         return valueExpression;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public NotificationChain basicSetValueExpression(NamespacedProperty newValueExpression, NotificationChain msgs) {
+    public NotificationChain basicSetValueExpression(NamespacedProperty newValueExpression, NotificationChain msgs) {
         NamespacedProperty oldValueExpression = valueExpression;
         valueExpression = newValueExpression;
         if (eNotificationRequired()) {
@@ -615,12 +617,12 @@ public class PropertyMediatorImpl extends MediatorImpl implements PropertyMediat
         return msgs;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setValueExpression(NamespacedProperty newValueExpression) {
+    public void setValueExpression(NamespacedProperty newValueExpression) {
         if (newValueExpression != valueExpression) {
             NotificationChain msgs = null;
             if (valueExpression != null)
@@ -634,126 +636,127 @@ public class PropertyMediatorImpl extends MediatorImpl implements PropertyMediat
             eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PROPERTY_MEDIATOR__VALUE_EXPRESSION, newValueExpression, newValueExpression));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public boolean isBoolean() {
+    public boolean isBoolean() {
         return boolean_;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setBoolean(boolean newBoolean) {
+    public void setBoolean(boolean newBoolean) {
         boolean oldBoolean = boolean_;
         boolean_ = newBoolean;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PROPERTY_MEDIATOR__BOOLEAN, oldBoolean, boolean_));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public String getOM() {
+    public String getOM() {
         return om;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setOM(String newOM) {
+    public void setOM(String newOM) {
         String oldOM = om;
         om = newOM;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PROPERTY_MEDIATOR__OM, oldOM, om));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public String getValueStringPattern() {
+    public String getValueStringPattern() {
         return valueStringPattern;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setValueStringPattern(String newValueStringPattern) {
+    public void setValueStringPattern(String newValueStringPattern) {
         String oldValueStringPattern = valueStringPattern;
         valueStringPattern = newValueStringPattern;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PROPERTY_MEDIATOR__VALUE_STRING_PATTERN, oldValueStringPattern, valueStringPattern));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public int getValueStringCapturingGroup() {
+    public int getValueStringCapturingGroup() {
         return valueStringCapturingGroup;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setValueStringCapturingGroup(int newValueStringCapturingGroup) {
+    public void setValueStringCapturingGroup(int newValueStringCapturingGroup) {
         int oldValueStringCapturingGroup = valueStringCapturingGroup;
         valueStringCapturingGroup = newValueStringCapturingGroup;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PROPERTY_MEDIATOR__VALUE_STRING_CAPTURING_GROUP, oldValueStringCapturingGroup, valueStringCapturingGroup));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public String getNewPropertyName() {
+    public String getNewPropertyName() {
         return newPropertyName;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setNewPropertyName(String newNewPropertyName) {
+    public void setNewPropertyName(String newNewPropertyName) {
         String oldNewPropertyName = newPropertyName;
         newPropertyName = newNewPropertyName;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PROPERTY_MEDIATOR__NEW_PROPERTY_NAME, oldNewPropertyName, newPropertyName));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public PropertyMediatorInputConnector getInputConnector() {
+    public PropertyMediatorInputConnector getInputConnector() {
         return inputConnector;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public NotificationChain basicSetInputConnector(PropertyMediatorInputConnector newInputConnector, NotificationChain msgs) {
+    public NotificationChain basicSetInputConnector(PropertyMediatorInputConnector newInputConnector,
+            NotificationChain msgs) {
         PropertyMediatorInputConnector oldInputConnector = inputConnector;
         inputConnector = newInputConnector;
         if (eNotificationRequired()) {
@@ -763,12 +766,12 @@ public class PropertyMediatorImpl extends MediatorImpl implements PropertyMediat
         return msgs;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setInputConnector(PropertyMediatorInputConnector newInputConnector) {
+    public void setInputConnector(PropertyMediatorInputConnector newInputConnector) {
         if (newInputConnector != inputConnector) {
             NotificationChain msgs = null;
             if (inputConnector != null)
@@ -782,21 +785,22 @@ public class PropertyMediatorImpl extends MediatorImpl implements PropertyMediat
             eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PROPERTY_MEDIATOR__INPUT_CONNECTOR, newInputConnector, newInputConnector));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public PropertyMediatorOutputConnector getOutputConnector() {
+    public PropertyMediatorOutputConnector getOutputConnector() {
         return outputConnector;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public NotificationChain basicSetOutputConnector(PropertyMediatorOutputConnector newOutputConnector, NotificationChain msgs) {
+    public NotificationChain basicSetOutputConnector(PropertyMediatorOutputConnector newOutputConnector,
+            NotificationChain msgs) {
         PropertyMediatorOutputConnector oldOutputConnector = outputConnector;
         outputConnector = newOutputConnector;
         if (eNotificationRequired()) {
@@ -806,12 +810,12 @@ public class PropertyMediatorImpl extends MediatorImpl implements PropertyMediat
         return msgs;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setOutputConnector(PropertyMediatorOutputConnector newOutputConnector) {
+    public void setOutputConnector(PropertyMediatorOutputConnector newOutputConnector) {
         if (newOutputConnector != outputConnector) {
             NotificationChain msgs = null;
             if (outputConnector != null)
@@ -825,14 +829,14 @@ public class PropertyMediatorImpl extends MediatorImpl implements PropertyMediat
             eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PROPERTY_MEDIATOR__OUTPUT_CONNECTOR, newOutputConnector, newOutputConnector));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+
+    @Override
+    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case EsbPackage.PROPERTY_MEDIATOR__INPUT_CONNECTOR:
                 return basicSetInputConnector(null, msgs);
@@ -844,14 +848,14 @@ public class PropertyMediatorImpl extends MediatorImpl implements PropertyMediat
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	
-	@Override
-	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+
+    @Override
+    public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
             case EsbPackage.PROPERTY_MEDIATOR__INPUT_CONNECTOR:
                 return getInputConnector();
@@ -891,14 +895,14 @@ public class PropertyMediatorImpl extends MediatorImpl implements PropertyMediat
         return super.eGet(featureID, resolve, coreType);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	
-	@Override
-	public void eSet(int featureID, Object newValue) {
+
+    @Override
+    public void eSet(int featureID, Object newValue) {
         switch (featureID) {
             case EsbPackage.PROPERTY_MEDIATOR__INPUT_CONNECTOR:
                 setInputConnector((PropertyMediatorInputConnector)newValue);
@@ -955,14 +959,14 @@ public class PropertyMediatorImpl extends MediatorImpl implements PropertyMediat
         super.eSet(featureID, newValue);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	
-	@Override
-	public void eUnset(int featureID) {
+
+    @Override
+    public void eUnset(int featureID) {
         switch (featureID) {
             case EsbPackage.PROPERTY_MEDIATOR__INPUT_CONNECTOR:
                 setInputConnector((PropertyMediatorInputConnector)null);
@@ -1019,14 +1023,14 @@ public class PropertyMediatorImpl extends MediatorImpl implements PropertyMediat
         super.eUnset(featureID);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	
-	@Override
-	public boolean eIsSet(int featureID) {
+
+    @Override
+    public boolean eIsSet(int featureID) {
         switch (featureID) {
             case EsbPackage.PROPERTY_MEDIATOR__INPUT_CONNECTOR:
                 return inputConnector != null;
@@ -1066,14 +1070,14 @@ public class PropertyMediatorImpl extends MediatorImpl implements PropertyMediat
         return super.eIsSet(featureID);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	
-	@Override
-	public String toString() {
+
+    @Override
+    public String toString() {
         if (eIsProxy()) return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());
@@ -1108,57 +1112,57 @@ public class PropertyMediatorImpl extends MediatorImpl implements PropertyMediat
         result.append(')');
         return result.toString();
     }
-	
-	private void populatePropertyNameScopeMap() {
-		propertyNameScopeMap.put("Action", PropertyScope.SYNAPSE);
-		propertyNameScopeMap.put("COPY_CONTENT_LENGTH_FROM_INCOMING", PropertyScope.AXIS2);
-		propertyNameScopeMap.put("CacheLevel", PropertyScope.AXIS2);
-		propertyNameScopeMap.put("ClientApiNonBlocking", PropertyScope.AXIS2);
-		propertyNameScopeMap.put("ConcurrentConsumers", PropertyScope.AXIS2);
-		propertyNameScopeMap.put("ContentType", PropertyScope.AXIS2);
-		propertyNameScopeMap.put("disableAddressingForOutMessages", PropertyScope.AXIS2);
-		propertyNameScopeMap.put("DISABLE_CHUNKING", PropertyScope.AXIS2);
-		propertyNameScopeMap.put("DISABLE_SMOOKS_RESULT_PAYLOAD", PropertyScope.SYNAPSE);
-		propertyNameScopeMap.put("ERROR_CODE", PropertyScope.SYNAPSE);
-		propertyNameScopeMap.put("ERROR_DETAIL", PropertyScope.SYNAPSE);
-		propertyNameScopeMap.put("ERROR_EXCEPTION", PropertyScope.SYNAPSE);
-		propertyNameScopeMap.put("ERROR_MESSAGE", PropertyScope.SYNAPSE);
-		propertyNameScopeMap.put("FAULTS_AS_HTTP_200", PropertyScope.AXIS2);
-		propertyNameScopeMap.put("FORCE_ERROR_ON_SOAP_FAULT", PropertyScope.SYNAPSE);
-		propertyNameScopeMap.put("FORCE_HTTP_1_0", PropertyScope.AXIS2_CLIENT);
-		propertyNameScopeMap.put("FORCE_HTTP_CONTENT_LENGTH", PropertyScope.AXIS2);
-		propertyNameScopeMap.put("FORCE_POST_PUT_NOBODY", PropertyScope.AXIS2);
-		propertyNameScopeMap.put("FORCE_SC_ACCEPTED", PropertyScope.AXIS2);
-		propertyNameScopeMap.put("FaultTo", PropertyScope.SYNAPSE);
-		propertyNameScopeMap.put("From", PropertyScope.SYNAPSE);
-		propertyNameScopeMap.put("HTTP_ETAG", PropertyScope.AXIS2);
-		propertyNameScopeMap.put("HTTP_SC", PropertyScope.AXIS2);
-		propertyNameScopeMap.put("JMS_COORELATION_ID", PropertyScope.AXIS2);
-		propertyNameScopeMap.put("messageType", PropertyScope.AXIS2);
-		propertyNameScopeMap.put("MESSAGE_FORMAT", PropertyScope.SYNAPSE);
-		propertyNameScopeMap.put("MaxConcurrentConsumers", PropertyScope.AXIS2);
-		propertyNameScopeMap.put("MercuryLastMessage", PropertyScope.AXIS2);
-		propertyNameScopeMap.put("MercurySequenceKey", PropertyScope.AXIS2);
-		propertyNameScopeMap.put("MessageID", PropertyScope.SYNAPSE);
-		propertyNameScopeMap.put("NO_ENTITY_BODY", PropertyScope.AXIS2);
-		propertyNameScopeMap.put("NO_KEEPALIVE", PropertyScope.AXIS2);
-		propertyNameScopeMap.put("OUT_ONLY", PropertyScope.SYNAPSE);
-		propertyNameScopeMap.put("OperationName", PropertyScope.SYNAPSE);
-		propertyNameScopeMap.put("POST_TO_URI", PropertyScope.AXIS2);
-		propertyNameScopeMap.put("preserveProcessedHeaders", PropertyScope.SYNAPSE);
-		propertyNameScopeMap.put("PRESERVE_WS_ADDRESSING", PropertyScope.SYNAPSE);
-		propertyNameScopeMap.put("REQUEST_HOST_HEADER", PropertyScope.SYNAPSE);
-		propertyNameScopeMap.put("RESPONSE", PropertyScope.SYNAPSE);
-		propertyNameScopeMap.put("REST_URL_POSTFIX", PropertyScope.SYNAPSE);
-		propertyNameScopeMap.put("RelatesTo", PropertyScope.SYNAPSE);
-		propertyNameScopeMap.put("ReplyTo", PropertyScope.SYNAPSE);
-		propertyNameScopeMap.put("SERVER_IP", PropertyScope.SYNAPSE);
-		propertyNameScopeMap.put("SYSTEM_DATE", PropertyScope.SYNAPSE);
-		propertyNameScopeMap.put("SYSTEM_TIME", PropertyScope.SYNAPSE);
-		propertyNameScopeMap.put("TRANSPORT_HEADERS", PropertyScope.SYNAPSE);
-		propertyNameScopeMap.put("TRANSPORT_IN_NAME", PropertyScope.SYNAPSE);
-		propertyNameScopeMap.put("To", PropertyScope.SYNAPSE);
-		propertyNameScopeMap.put("transportNonBlocking", PropertyScope.SYNAPSE);
-	}
 
-} //PropertyMediatorImpl
+    private void populatePropertyNameScopeMap() {
+        propertyNameScopeMap.put("Action", PropertyScope.SYNAPSE);
+        propertyNameScopeMap.put("COPY_CONTENT_LENGTH_FROM_INCOMING", PropertyScope.AXIS2);
+        propertyNameScopeMap.put("CacheLevel", PropertyScope.AXIS2);
+        propertyNameScopeMap.put("ClientApiNonBlocking", PropertyScope.AXIS2);
+        propertyNameScopeMap.put("ConcurrentConsumers", PropertyScope.AXIS2);
+        propertyNameScopeMap.put("ContentType", PropertyScope.AXIS2);
+        propertyNameScopeMap.put("disableAddressingForOutMessages", PropertyScope.AXIS2);
+        propertyNameScopeMap.put("DISABLE_CHUNKING", PropertyScope.AXIS2);
+        propertyNameScopeMap.put("DISABLE_SMOOKS_RESULT_PAYLOAD", PropertyScope.SYNAPSE);
+        propertyNameScopeMap.put("ERROR_CODE", PropertyScope.SYNAPSE);
+        propertyNameScopeMap.put("ERROR_DETAIL", PropertyScope.SYNAPSE);
+        propertyNameScopeMap.put("ERROR_EXCEPTION", PropertyScope.SYNAPSE);
+        propertyNameScopeMap.put("ERROR_MESSAGE", PropertyScope.SYNAPSE);
+        propertyNameScopeMap.put("FAULTS_AS_HTTP_200", PropertyScope.AXIS2);
+        propertyNameScopeMap.put("FORCE_ERROR_ON_SOAP_FAULT", PropertyScope.SYNAPSE);
+        propertyNameScopeMap.put("FORCE_HTTP_1_0", PropertyScope.AXIS2_CLIENT);
+        propertyNameScopeMap.put("FORCE_HTTP_CONTENT_LENGTH", PropertyScope.AXIS2);
+        propertyNameScopeMap.put("FORCE_POST_PUT_NOBODY", PropertyScope.AXIS2);
+        propertyNameScopeMap.put("FORCE_SC_ACCEPTED", PropertyScope.AXIS2);
+        propertyNameScopeMap.put("FaultTo", PropertyScope.SYNAPSE);
+        propertyNameScopeMap.put("From", PropertyScope.SYNAPSE);
+        propertyNameScopeMap.put("HTTP_ETAG", PropertyScope.AXIS2);
+        propertyNameScopeMap.put("HTTP_SC", PropertyScope.AXIS2);
+        propertyNameScopeMap.put("JMS_COORELATION_ID", PropertyScope.AXIS2);
+        propertyNameScopeMap.put("messageType", PropertyScope.AXIS2);
+        propertyNameScopeMap.put("MESSAGE_FORMAT", PropertyScope.SYNAPSE);
+        propertyNameScopeMap.put("MaxConcurrentConsumers", PropertyScope.AXIS2);
+        propertyNameScopeMap.put("MercuryLastMessage", PropertyScope.AXIS2);
+        propertyNameScopeMap.put("MercurySequenceKey", PropertyScope.AXIS2);
+        propertyNameScopeMap.put("MessageID", PropertyScope.SYNAPSE);
+        propertyNameScopeMap.put("NO_ENTITY_BODY", PropertyScope.AXIS2);
+        propertyNameScopeMap.put("NO_KEEPALIVE", PropertyScope.AXIS2);
+        propertyNameScopeMap.put("OUT_ONLY", PropertyScope.SYNAPSE);
+        propertyNameScopeMap.put("OperationName", PropertyScope.SYNAPSE);
+        propertyNameScopeMap.put("POST_TO_URI", PropertyScope.AXIS2);
+        propertyNameScopeMap.put("preserveProcessedHeaders", PropertyScope.SYNAPSE);
+        propertyNameScopeMap.put("PRESERVE_WS_ADDRESSING", PropertyScope.SYNAPSE);
+        propertyNameScopeMap.put("REQUEST_HOST_HEADER", PropertyScope.SYNAPSE);
+        propertyNameScopeMap.put("RESPONSE", PropertyScope.SYNAPSE);
+        propertyNameScopeMap.put("REST_URL_POSTFIX", PropertyScope.SYNAPSE);
+        propertyNameScopeMap.put("RelatesTo", PropertyScope.SYNAPSE);
+        propertyNameScopeMap.put("ReplyTo", PropertyScope.SYNAPSE);
+        propertyNameScopeMap.put("SERVER_IP", PropertyScope.SYNAPSE);
+        propertyNameScopeMap.put("SYSTEM_DATE", PropertyScope.SYNAPSE);
+        propertyNameScopeMap.put("SYSTEM_TIME", PropertyScope.SYNAPSE);
+        propertyNameScopeMap.put("TRANSPORT_HEADERS", PropertyScope.SYNAPSE);
+        propertyNameScopeMap.put("TRANSPORT_IN_NAME", PropertyScope.SYNAPSE);
+        propertyNameScopeMap.put("To", PropertyScope.SYNAPSE);
+        propertyNameScopeMap.put("transportNonBlocking", PropertyScope.SYNAPSE);
+    }
+
+} // PropertyMediatorImpl

@@ -4082,7 +4082,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         // Mark meta-data to indicate it can't be changed
         theEsbPackage.freeze();
 
-  
+
         // Update the registry and return the package
         EPackage.Registry.INSTANCE.put(EsbPackage.eNS_URI, theEsbPackage);
         return theEsbPackage;
@@ -10562,10 +10562,11 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     *
      * @generated
      */
     public EReference getDataMapperMediator_XsltStyleSheet() {
-        return (EReference)dataMapperMediatorEClass.getEStructuralFeatures().get(6);
+        return (EReference) dataMapperMediatorEClass.getEStructuralFeatures().get(6);
     }
 
     /**
@@ -10574,7 +10575,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * @generated
      */
     public EAttribute getDataMapperMediator_ConfigurationLocalPath() {
-        return (EAttribute)dataMapperMediatorEClass.getEStructuralFeatures().get(7);
+        return (EAttribute) dataMapperMediatorEClass.getEStructuralFeatures().get(7);
     }
 
     /**
@@ -10583,7 +10584,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * @generated
      */
     public EAttribute getDataMapperMediator_InputSchemaLocalPath() {
-        return (EAttribute)dataMapperMediatorEClass.getEStructuralFeatures().get(8);
+        return (EAttribute) dataMapperMediatorEClass.getEStructuralFeatures().get(8);
     }
 
     /**
@@ -10592,16 +10593,17 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * @generated
      */
     public EAttribute getDataMapperMediator_OutputSchemaLocalPath() {
-        return (EAttribute)dataMapperMediatorEClass.getEStructuralFeatures().get(9);
+        return (EAttribute) dataMapperMediatorEClass.getEStructuralFeatures().get(9);
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     *
      * @generated
      */
     public EAttribute getDataMapperMediator_XsltStyleSheetLocalPath() {
-        return (EAttribute)dataMapperMediatorEClass.getEStructuralFeatures().get(10);
+        return (EAttribute) dataMapperMediatorEClass.getEStructuralFeatures().get(10);
     }
 
     /**
@@ -10610,7 +10612,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * @generated
      */
     public EAttribute getDataMapperMediator_OutputType() {
-        return (EAttribute)dataMapperMediatorEClass.getEStructuralFeatures().get(11);
+        return (EAttribute) dataMapperMediatorEClass.getEStructuralFeatures().get(11);
     }
 
     /**

@@ -250,17 +250,7 @@ public class PropertyMediatorPropertiesEditionPartImpl extends CompositeProperti
 		GridLayout propertiesGroupLayout = new GridLayout();
 		propertiesGroupLayout.numColumns = 3;
 		propertiesGroup.setLayout(propertiesGroupLayout);
-		return propertiesGroup;
-	    
-//        GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
-//        propertiesSectionData.horizontalSpan = 3;
-//        parent.setLayoutData(propertiesSectionData);
-//        propertiesGroup = new Group(parent, SWT.NONE);
-//        GridLayout propertiesGroupLayout = new GridLayout();
-//        propertiesGroupLayout.makeColumnsEqualWidth = true;
-//        propertiesGroupLayout.numColumns = 3;
-//        propertiesGroup.setLayout(propertiesGroupLayout);
-//        return propertiesGroup;	    
+		return propertiesGroup;	    
 	}
 
     /**
@@ -1759,27 +1749,6 @@ public class PropertyMediatorPropertiesEditionPartImpl extends CompositeProperti
 		return EsbMessages.PropertyMediator_Part_Title;
 	}
 
-	// Start of user code additional methods
-//    protected Composite createValueExpressionWidget(Composite parent) {
-//        createDescription(parent, EsbViewsRepository.PropertyMediator.Properties.valueExpression, EsbMessages.PropertyMediatorPropertiesEditionPart_ValueExpressionLabel);
-//        Button button = new Button(parent, SWT.PUSH);
-//        button.setLayoutData(new GridData(SWT.BEGINNING, SWT.CENTER, false, false));
-//        button.setText("Open NameSpaced Editor");
-//        final NamespacedPropertyEditorDialog nspd;
-//        if ((getValueExpression() == null)) {
-//            valueExpression = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
-//        }
-//        nspd = new NamespacedPropertyEditorDialog(parent.getShell(), SWT.NONE, valueExpression);
-//        button.addSelectionListener(new SelectionAdapter() {
-//            @Override
-//            public void widgetSelected(SelectionEvent e) {
-//                nspd.open();
-//                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertyMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.PropertyMediator.Properties.valueExpression, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, valueExpression.getPropertyValue()));
-//                
-//            }
-//        });    
-//        return parent;
-//    }
 	
     protected Composite createValueExpressionWidget(final Composite parent) {
         Control valueExpressionLabel = createDescription(parent, EsbViewsRepository.PropertyMediator.Properties.valueExpression, EsbMessages.PropertyMediatorPropertiesEditionPart_ValueExpressionLabel);

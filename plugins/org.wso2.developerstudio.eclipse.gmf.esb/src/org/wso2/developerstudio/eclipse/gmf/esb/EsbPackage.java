@@ -51445,6 +51445,7 @@ public interface EsbPackage extends EPackage {
          * The meta object literal for the '<em><b>Xslt Style Sheet</b></em>' containment reference feature.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
+         *
          * @generated
          */
         EReference DATA_MAPPER_MEDIATOR__XSLT_STYLE_SHEET = eINSTANCE.getDataMapperMediator_XsltStyleSheet();
@@ -51477,9 +51478,11 @@ public interface EsbPackage extends EPackage {
          * The meta object literal for the '<em><b>Xslt Style Sheet Local Path</b></em>' attribute feature.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
+         *
          * @generated
          */
-        EAttribute DATA_MAPPER_MEDIATOR__XSLT_STYLE_SHEET_LOCAL_PATH = eINSTANCE.getDataMapperMediator_XsltStyleSheetLocalPath();
+        EAttribute DATA_MAPPER_MEDIATOR__XSLT_STYLE_SHEET_LOCAL_PATH = eINSTANCE
+                .getDataMapperMediator_XsltStyleSheetLocalPath();
 
         /**
          * The meta object literal for the '<em><b>Output Type</b></em>' attribute feature.

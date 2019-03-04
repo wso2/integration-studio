@@ -145,7 +145,6 @@ public class EnrichMediatorTransformer extends AbstractEsbNodeTransformer {
                     xPath = new SynapseXPath(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
                 }
                 else {
-//                    xPath = new SynapseXPath(visualSourceXPath.getPropertyValue());
                     xPath = (SynapseXPath) SynapseXPathExt.createSynapsePath(visualSourceXPath.getPropertyValue());
                 }
                 Map<String, String> map = visualSourceXPath.getNamespaces();
@@ -181,7 +180,6 @@ public class EnrichMediatorTransformer extends AbstractEsbNodeTransformer {
                     xPath = new SynapseXPath(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
                 }
                 else {
-//                    xPath = new SynapseXPath(visualTargetXPath.getPropertyValue());
                     xPath = (SynapseXPath) SynapseXPathExt.createSynapsePath(visualTargetXPath.getPropertyValue());
                 }
                 Map<String, String> map = visualTargetXPath.getNamespaces();

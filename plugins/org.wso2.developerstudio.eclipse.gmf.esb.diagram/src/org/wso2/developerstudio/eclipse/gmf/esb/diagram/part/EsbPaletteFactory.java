@@ -566,9 +566,6 @@ public class EsbPaletteFactory {
     * @generated
     */
     private ToolEntry createPropertyGroupMediator5CreationTool() {
-//        ArrayList<IElementType> types = new ArrayList<IElementType>(2);
-//        types.add(EsbElementTypes.PropertyGroupMediator_3788);
-//        types.add(EsbElementTypes.EnrichMediator_3496);
         NodeToolEntry entry = new NodeToolEntry(Messages.PropertyGroupMediator5CreationTool_title,
                 Messages.PropertyGroupMediator5CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.PropertyGroupMediator_3788));
@@ -914,41 +911,6 @@ public class EsbPaletteFactory {
         entry.setLargeIcon(entry.getSmallIcon());
         return entry;
     }
-
-//    /**
-//    * @generated
-//    */
-//    private ToolEntry createStoreMediator32CreationTool() {
-//        ToolEntry entry = new ToolEntry(Messages.StoreMediator32CreationTool_title,
-//                Messages.StoreMediator32CreationTool_desc, null, null) {
-//        };
-//        entry.setId("createStoreMediator32CreationTool"); //$NON-NLS-1$
-//        return entry;
-//    }
-//
-//    /**
-//    * @generated
-//    */
-//    private ToolEntry createBuilderMediator33CreationTool() {
-//        ToolEntry entry = new ToolEntry(Messages.BuilderMediator33CreationTool_title,
-//                Messages.BuilderMediator33CreationTool_desc, null, null) {
-//        };
-//        entry.setId("createBuilderMediator33CreationTool"); //$NON-NLS-1$
-//        return entry;
-//    }
-//
-//    /**
-//    * @generated
-//    */
-//    private ToolEntry createCallTemplateMediator34CreationTool() {
-//        NodeToolEntry entry = new NodeToolEntry(Messages.CallTemplateMediator34CreationTool_title,
-//                Messages.CallTemplateMediator34CreationTool_desc,
-//                Collections.singletonList(EsbElementTypes.PayloadFactoryMediator_3597));
-//        entry.setId("createCallTemplateMediator34CreationTool"); //$NON-NLS-1$
-//        entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.PayloadFactoryMediator_3597));
-//        entry.setLargeIcon(entry.getSmallIcon());
-//        return entry;
-//    }
 
     /**
     * @generated

@@ -71,7 +71,6 @@ public class PropertyMediatorTransformer extends AbstractEsbNodeTransformer {
         }
     }
 
-
     public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints) {
         // TODO Auto-generated method stub
     }
@@ -123,55 +122,49 @@ public class PropertyMediatorTransformer extends AbstractEsbNodeTransformer {
                 break;
 
             }
-			if(visualProp.getPropertyAction().equals(PropertyAction.REMOVE)) {
-				
-				propMediator.setExpression(null);
-				propMediator.setValue(null);
-				
-			} else {
-				if (visualProp.getValueType().getName().equals("LITERAL")) {
-					switch (visualProp.getPropertyDataType()) {
-					case BOOLEAN:
-						String value= null;
-						if(visualProp.isBoolean()){
-							value = "true";
-						}	
-						else {value ="false";}
-						propMediator.setValue(value,
-								XMLConfigConstants.DATA_TYPES.BOOLEAN.toString());
-						break;
-					case FLOAT:
-						propMediator.setValue(visualProp.getValue(),
-								XMLConfigConstants.DATA_TYPES.FLOAT.toString());
-						break;
-					case DOUBLE:
-						propMediator.setValue(visualProp.getValue(),
-								XMLConfigConstants.DATA_TYPES.DOUBLE.toString());
-						break;
-					case INTEGER:
-						propMediator.setValue(visualProp.getValue(),
-								XMLConfigConstants.DATA_TYPES.INTEGER.toString());
-						break;
-					case LONG:
-						propMediator.setValue(visualProp.getValue(),
-								XMLConfigConstants.DATA_TYPES.LONG.toString());
-						break;
-					case OM:
-						propMediator.setValueElement(AXIOMUtil.stringToOM(visualProp.getOM()));
-						break;
-					case SHORT:
-						propMediator.setValue(visualProp.getValue(),
-								XMLConfigConstants.DATA_TYPES.SHORT.toString());
-						break;
-					case STRING:
-						propMediator.setValue(visualProp.getValue(),
-								XMLConfigConstants.DATA_TYPES.STRING.toString());
-						break;
-					}
-				} else {
-					if (visualProp.getValueExpression() != null) {
-						SynapsePath xpath = SynapseXPathExt.createSynapsePath(visualProp
-								.getValueExpression().getPropertyValue());
+            if (visualProp.getPropertyAction().equals(PropertyAction.REMOVE)) {
+
+                propMediator.setExpression(null);
+                propMediator.setValue(null);
+
+            } else {
+                if (visualProp.getValueType().getName().equals("LITERAL")) {
+                    switch (visualProp.getPropertyDataType()) {
+                    case BOOLEAN:
+                        String value = null;
+                        if (visualProp.isBoolean()) {
+                            value = "true";
+                        } else {
+                            value = "false";
+                        }
+                        propMediator.setValue(value, XMLConfigConstants.DATA_TYPES.BOOLEAN.toString());
+                        break;
+                    case FLOAT:
+                        propMediator.setValue(visualProp.getValue(), XMLConfigConstants.DATA_TYPES.FLOAT.toString());
+                        break;
+                    case DOUBLE:
+                        propMediator.setValue(visualProp.getValue(), XMLConfigConstants.DATA_TYPES.DOUBLE.toString());
+                        break;
+                    case INTEGER:
+                        propMediator.setValue(visualProp.getValue(), XMLConfigConstants.DATA_TYPES.INTEGER.toString());
+                        break;
+                    case LONG:
+                        propMediator.setValue(visualProp.getValue(), XMLConfigConstants.DATA_TYPES.LONG.toString());
+                        break;
+                    case OM:
+                        propMediator.setValueElement(AXIOMUtil.stringToOM(visualProp.getOM()));
+                        break;
+                    case SHORT:
+                        propMediator.setValue(visualProp.getValue(), XMLConfigConstants.DATA_TYPES.SHORT.toString());
+                        break;
+                    case STRING:
+                        propMediator.setValue(visualProp.getValue(), XMLConfigConstants.DATA_TYPES.STRING.toString());
+                        break;
+                    }
+                } else {
+                    if (visualProp.getValueExpression() != null) {
+                        SynapsePath xpath = SynapseXPathExt.createSynapsePath(visualProp
+                                .getValueExpression().getPropertyValue());
 
                         // SynapseJsonPath doesn't allow namespaces
                         if (visualProp.getValueExpression().getNamespaces() != null

@@ -30,6 +30,7 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
+import org.eclipse.mylyn.commons.ui.dialogs.AbstractNotificationPopup;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.MessageBox;
@@ -42,6 +43,7 @@ import org.wso2.developerstudio.eclipse.distribution.project.util.DistProjectUti
 import org.wso2.developerstudio.eclipse.distribution.project.validator.ProjectList;
 import org.wso2.developerstudio.eclipse.esb.cloud.Activator;
 import org.wso2.developerstudio.eclipse.esb.cloud.job.CloudDeploymentJob;
+import org.wso2.developerstudio.eclipse.esb.cloud.notification.DeploymentStatusNotificationPopup;
 import org.wso2.developerstudio.eclipse.esb.cloud.resources.CloudDeploymentWizardConstants;
 import org.wso2.developerstudio.eclipse.esb.cloud.util.UserSessionManager;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
@@ -152,7 +154,7 @@ public class DeployToCloudWizard extends Wizard implements IExportWizard {
                     appDetailsPage.getVersion(), finalFileName, carbonArchive.getLocation().toFile().getAbsolutePath(),
                     appDetailsPage.getAppIcon(), appDetailsPage.getTags(), appDetailsPage.isNewVersion());
             cloudDeploymentJob.schedule();
-
+            
         } catch (Exception e) {
             log.error(CloudDeploymentWizardConstants.ErrorMessages.ERROR_CREATING_CAR_FILE_MSG, e);
             openMessageBox(getShell(), CloudDeploymentWizardConstants.DIALOG_TITLE_TEXT,

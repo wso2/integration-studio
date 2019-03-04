@@ -30,6 +30,7 @@ public class CloudDeploymentWizardConstants {
 
     public static final String DIALOG_TITLE_TEXT = "WSO2 Platform Distribution - Deploy to Integration Cloud";
     public static final String SUCCESS_DIALOG_TITLE_TEXT = "Deployment Successful";
+    public static final String IN_PROGRESS_DIALOG_TITLE_TEXT = "Deployment In Progress";
     public static final String EMPTY_STRING = "";
     
     public static final String CAR_FILE_SUFFIX = ".car$";
@@ -47,8 +48,8 @@ public class CloudDeploymentWizardConstants {
 
     public static class SuccessMessages {
         public static final String SUCCESSFUL_TITLE = "Successful";
-        public static final String DEPLOY_TO_CLOUD_SUCCESS_MESSAGE = "Your application has been successfully deployed to WSO2 Integeration Cloud. \nTry it out using the below endpoints!";
-        public static final String SUCCESS_CREATING_APPLICATION_MSG = "Please wait while your application is being deployed to the cloud. You will be notified once it is ready.";
+        public static final String DEPLOY_TO_CLOUD_SUCCESS_MESSAGE = "Your application has been successfully deployed to WSO2 \nIntegeration Cloud. \nTry it out using the below endpoints!";
+        public static final String SUCCESS_CREATING_APPLICATION_MSG = "Please wait while your application is being deployed to the cloud.\nYou will be notified once it is ready.";
     }
     
     public static class Colors {

@@ -43,6 +43,7 @@ import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.InvalidTokenExcepti
 import org.wso2.developerstudio.eclipse.esb.cloud.model.Application;
 import org.wso2.developerstudio.eclipse.esb.cloud.model.EndpointData;
 import org.wso2.developerstudio.eclipse.esb.cloud.model.Version;
+import org.wso2.developerstudio.eclipse.esb.cloud.notification.DeploymentStatusNotificationPopup;
 import org.wso2.developerstudio.eclipse.esb.cloud.notification.EndpointNotificationPopup;
 import org.wso2.developerstudio.eclipse.esb.cloud.resources.CloudDeploymentWizardConstants;
 import org.wso2.developerstudio.eclipse.esb.cloud.util.JsonUtils;
@@ -66,11 +67,13 @@ public class CloudDeploymentJob extends Job {
     private IntegrationCloudServiceClient client;
     private String response;
     private EndpointData endpointData;
+    private int status;
 
     private static final int POLLING_INTERVAL = 5;
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
-    public CloudDeploymentJob(String name, String description, String version, String carbonFileName, String carbonFileLocation, String iconLocation, List<Map<String, String>> tags, boolean isNewVersion) {
+    public CloudDeploymentJob(String name, String description, String version, String carbonFileName,
+            String carbonFileLocation, String iconLocation, List<Map<String, String>> tags, boolean isNewVersion) {
         super("Deploying to Integration Cloud...");
         client = IntegrationCloudServiceClient.getInstance();
         this.name = name;
@@ -87,68 +90,67 @@ public class CloudDeploymentJob extends Job {
     protected IStatus run(IProgressMonitor monitor) {
 
         String operationText = "Preparing to deploy the application... ";
-        monitor.beginTask(operationText, 100);
+        monitor.beginTask(operationText, 99);
 
         operationText = "Sending application data...";
         monitor.subTask(operationText);
         monitor.worked(10);
 
         try {
-            
-            showMessageBox(CloudDeploymentWizardConstants.DIALOG_TITLE_TEXT,
-                    CloudDeploymentWizardConstants.SuccessMessages.SUCCESS_CREATING_APPLICATION_MSG,
-                    SWT.ICON_INFORMATION);
+
+            showNotification();
 
             // Create new application / version. Response is returned once the application is created.
-            client.createApplication(name, description, version, carbonFileName, carbonFileLocation, iconLocation, tags, isNewVersion);
-            
+            client.createApplication(name, description, version, carbonFileName, carbonFileLocation, iconLocation, tags,
+                    isNewVersion);
+
             operationText = "Fetching the endpoints...";
             monitor.subTask(operationText);
             monitor.worked(10);
-            
-            ScheduledExecutorService scheduledExecutorService =
-                    Executors.newScheduledThreadPool(5);
-            
+            status = 20;
+
+            ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(5);
+
             Application app = client.getApplication(name);
 
             // Although the application is created, it takes time to create the endpoints.
             // we will poll every 5 seconds to see if the endpoints are ready.
-            ScheduledFuture<?> scheduledFuture =
-                scheduledExecutorService.scheduleAtFixedRate(new Runnable() {
-                    int count = 0;
-                    
-                    public void run(){
-                        try {
-                            Map<String, Version> versions = app.getVersions();
-                            
-                            for (Map.Entry<String, Version> version : versions.entrySet()) {
-                                response = client.getApplicationEndpoints(app.getApplicationType(), version.getValue().getDeploymentURL(), version.getValue().getVersionId());
-                                if (null != response &&  !"null".equals(response)) {
-                                    endpointData = JsonUtils.getEndpointDataFromJson(response);
-                                    scheduledExecutorService.shutdown();
-                                } else {
-                                    monitor.subTask("Loading Endpoints...");
-                                    Random random = new Random();
-                                    monitor.worked(random.nextInt(10));
-                                }
+            ScheduledFuture<?> scheduledFuture = scheduledExecutorService.scheduleAtFixedRate(new Runnable() {
+                int count = 0;
+
+                public void run() {
+                    try {
+                        Map<String, Version> versions = app.getVersions();
+
+                        for (Map.Entry<String, Version> version : versions.entrySet()) {
+                            response = client.getApplicationEndpoints(app.getApplicationType(),
+                                    version.getValue().getDeploymentURL(), version.getValue().getVersionId());
+                            if (null != response && !"null".equals(response)) {
+                                endpointData = JsonUtils.getEndpointDataFromJson(response);
+                                scheduledExecutorService.shutdown();
+                            } else {
+                                monitor.subTask("Loading Endpoints...");
+                                Random random = new Random();
+                                int value = random.nextInt(10);
+                                status += value;
+                                monitor.worked(value);
                             }
-                        } catch(CloudDeploymentException | InvalidTokenException e) {
-                            log.error(CloudDeploymentWizardConstants.ErrorMessages.DEPLOY_TO_CLOUD_FAILED_MESSAGE, e);
-                            showMessageBox(CloudDeploymentWizardConstants.ErrorMessages.DEPLOY_TO_CLOUD_FAILED_TITLE,
-                                    e.getMessage(), SWT.ICON_ERROR);
-                            scheduledExecutorService.shutdown();
                         }
+                    } catch (CloudDeploymentException | InvalidTokenException e) {
+                        log.error(CloudDeploymentWizardConstants.ErrorMessages.DEPLOY_TO_CLOUD_FAILED_MESSAGE, e);
+                        showMessageBox(CloudDeploymentWizardConstants.ErrorMessages.DEPLOY_TO_CLOUD_FAILED_TITLE,
+                                e.getMessage(), SWT.ICON_ERROR);
+                        scheduledExecutorService.shutdown();
                     }
-                },
-                0,
-                POLLING_INTERVAL,
-                TimeUnit.SECONDS);
+                }
+            }, 0, POLLING_INTERVAL, TimeUnit.SECONDS);
 
             scheduledExecutorService.awaitTermination(120, TimeUnit.SECONDS);
 
         } catch (CloudDeploymentException | InvalidTokenException | InterruptedException e) {
             log.error(CloudDeploymentWizardConstants.ErrorMessages.DEPLOY_TO_CLOUD_FAILED_MESSAGE, e);
-            showMessageBox(CloudDeploymentWizardConstants.ErrorMessages.DEPLOY_TO_CLOUD_FAILED_TITLE, e.getMessage(), SWT.ICON_ERROR);
+            showMessageBox(CloudDeploymentWizardConstants.ErrorMessages.DEPLOY_TO_CLOUD_FAILED_TITLE, e.getMessage(),
+                    SWT.ICON_ERROR);
             operationText = e.getMessage();
             monitor.beginTask(operationText, 100);
             monitor.worked(0);
@@ -158,25 +160,27 @@ public class CloudDeploymentJob extends Job {
 
         monitor.worked(100);
         monitor.done();
-        
+
         showDeploymentSuccessPopup();
 
         return Status.OK_STATUS;
     }
-    
+
     /**
      * Show deployment success window with endpoints
      * 
      */
-    private void showDeploymentSuccessPopup(){
+    private void showDeploymentSuccessPopup() {
         Display.getDefault().syncExec(new Runnable() {
             public void run() {
                 Display display = PlatformUI.getWorkbench().getDisplay();
                 final AbstractNotificationPopup popup = new EndpointNotificationPopup(display, endpointData);
+                popup.setFadingEnabled(false);
+                popup.setDelayClose(0L);
                 popup.open();
             }
         });
-        
+
     }
 
     /**
@@ -201,6 +205,29 @@ public class CloudDeploymentJob extends Job {
             }
         });
     }
+    
+    /**
+     * Show notification
+     * 
+     */
+    private void showNotification() {
+        Display.getDefault().syncExec(new Runnable() {
+            public void run() {
+                Display display = PlatformUI.getWorkbench().getDisplay();
+                DeploymentStatusNotificationPopup popup = new DeploymentStatusNotificationPopup(display, CloudDeploymentWizardConstants.IN_PROGRESS_DIALOG_TITLE_TEXT, CloudDeploymentWizardConstants.SuccessMessages.SUCCESS_CREATING_APPLICATION_MSG);
+                popup.open();
+            }
+        });
+    }
 
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+    
+    
 
 }

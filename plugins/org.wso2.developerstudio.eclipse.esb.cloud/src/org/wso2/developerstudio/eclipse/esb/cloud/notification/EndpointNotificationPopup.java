@@ -28,31 +28,30 @@ public class EndpointNotificationPopup extends AbstractNotificationPopup {
     private static final String SOAP_ENDPOINTS_LABEL_TEXT = "SOAP endpoints";
     private static final String SWAGGER_ENDPOINTS_LABEL_TEXT = "SWAGGER endpoints";
 
-    private static final int DELAY = 100 * 1000;
-
-    private static final String CLOSE_LABEL = "×";
-
     public EndpointNotificationPopup(Display display, EndpointData endpoints) {
-        super(display, DELAY);
+        super(display);
         this.endpoints = endpoints;
     }
 
     @Override
     protected void createContentArea(Composite parent) {
-        parent.setLayout(new GridLayout(1, false));
-        GridData layoutData = new GridData(SWT.FILL, SWT.BEGINNING, true, false);
-        layoutData.widthHint = 600;
-        parent.setLayoutData(layoutData);
         
-        Label successMsg = new Label(parent, SWT.NULL);
+        Composite container = new Composite(parent, SWT.NULL);
+        
+        GridData data = new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1);
+        container.setLayoutData(data);
+        
+        container.setLayout(new GridLayout(1, false));
+        
+        Label successMsg = new Label(container, SWT.NULL);
         successMsg.setText(CloudDeploymentWizardConstants.SuccessMessages.DEPLOY_TO_CLOUD_SUCCESS_MESSAGE);
 
         if (this.endpoints != null) {
 
             if (endpoints.getRestEndpoints() != null) {
                 // REST endpoints
-                new Label(parent, SWT.NONE);
-                Label lblRestEp = new Label(parent, SWT.NONE);
+                new Label(container, SWT.NONE);
+                Label lblRestEp = new Label(container, SWT.NONE);
                 lblRestEp.setText(REST_ENDPOINTS_LABEL_TEXT);
                 FontData fontData = lblRestEp.getFont().getFontData()[0];
                 Font font = new Font(Display.getCurrent(),
@@ -60,10 +59,10 @@ public class EndpointNotificationPopup extends AbstractNotificationPopup {
                 lblRestEp.setFont(font);
 
                 for (Endpoint endpoint : endpoints.getRestEndpoints()) {
-                    Link restEP = new Link(parent, SWT.WRAP | SWT.LEFT);
+                    Link restEP = new Link(container, SWT.WRAP | SWT.LEFT);
                     restEP.setText(createUrl(endpoint.getUrl()));
                     GridData linkData = new GridData();
-                    linkData.widthHint = 450;
+                    linkData.widthHint = 400;
                     restEP.setLayoutData(linkData);
                     restEP.addSelectionListener(new SelectionAdapter() {
 
@@ -76,8 +75,8 @@ public class EndpointNotificationPopup extends AbstractNotificationPopup {
                 }
             } else if (endpoints.getSoapEndpoints() != null) {
                 // SOAP endpoints
-                new Label(parent, SWT.NONE);
-                Label lblSoapEp = new Label(parent, SWT.BOLD);
+                new Label(container, SWT.NONE);
+                Label lblSoapEp = new Label(container, SWT.BOLD);
                 lblSoapEp.setText(SOAP_ENDPOINTS_LABEL_TEXT);
                 FontData fontData = lblSoapEp.getFont().getFontData()[0];
                 Font font = new Font(Display.getCurrent(),
@@ -85,10 +84,10 @@ public class EndpointNotificationPopup extends AbstractNotificationPopup {
                 lblSoapEp.setFont(font);
 
                 for (Endpoint endpoint : endpoints.getSoapEndpoints()) {
-                    Link soapEP = new Link(parent, SWT.WRAP | SWT.LEFT);
+                    Link soapEP = new Link(container, SWT.WRAP | SWT.LEFT);
                     soapEP.setText(createUrl(endpoint.getWsdl()));
                     GridData linkData = new GridData();
-                    linkData.widthHint = 450;
+                    linkData.widthHint = 400;
                     soapEP.setLayoutData(linkData);
 
                     soapEP.addSelectionListener(new SelectionAdapter() {
@@ -103,8 +102,8 @@ public class EndpointNotificationPopup extends AbstractNotificationPopup {
             }
             if (endpoints.getSwaggerEndpoints() != null) {
                 // Swagger endpoints
-                new Label(parent, SWT.NONE);
-                Label lblSwaggerEp = new Label(parent, SWT.BOLD);
+                new Label(container, SWT.NONE);
+                Label lblSwaggerEp = new Label(container, SWT.BOLD);
                 lblSwaggerEp.setText(SWAGGER_ENDPOINTS_LABEL_TEXT);
                 FontData fontData = lblSwaggerEp.getFont().getFontData()[0];
                 Font font = new Font(Display.getCurrent(),
@@ -112,10 +111,10 @@ public class EndpointNotificationPopup extends AbstractNotificationPopup {
                 lblSwaggerEp.setFont(font);
 
                 for (Endpoint endpoint : endpoints.getSwaggerEndpoints()) {
-                    Link swaggerEp = new Link(parent, SWT.WRAP | SWT.LEFT);
+                    Link swaggerEp = new Link(container, SWT.WRAP | SWT.LEFT);
                     swaggerEp.setText(createUrl(endpoint.getUrl()));
                     GridData linkData = new GridData();
-                    linkData.widthHint = 450;
+                    linkData.widthHint = 400;
                     swaggerEp.setLayoutData(linkData);
 
                     swaggerEp.addSelectionListener(new SelectionAdapter() {
@@ -128,7 +127,7 @@ public class EndpointNotificationPopup extends AbstractNotificationPopup {
                     });
                 }
             }
-            new Label(parent, SWT.NONE);
+            new Label(container, SWT.NONE);
         }
     }
 

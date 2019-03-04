@@ -93,11 +93,8 @@ public class RegistryKeyPropertyPropertiesEditionPartImpl extends CompositePrope
 	public void createControls(Composite view) { 
 		CompositionSequence registryKeyPropertyStep = new BindingCompositionSequence(propertiesEditionComponent);
 		CompositionStep propertiesStep = registryKeyPropertyStep.addStep(EsbViewsRepository.RegistryKeyProperty.Properties.class);
-		propertiesStep.addStep(EsbViewsRepository.RegistryKeyProperty.Properties.prettyName);
 		propertiesStep.addStep(EsbViewsRepository.RegistryKeyProperty.Properties.keyName);
 		propertiesStep.addStep(EsbViewsRepository.RegistryKeyProperty.Properties.keyValue);
-		propertiesStep.addStep(EsbViewsRepository.RegistryKeyProperty.Properties.filters);
-		
 		
 		composer = new PartComposer(registryKeyPropertyStep) {
 

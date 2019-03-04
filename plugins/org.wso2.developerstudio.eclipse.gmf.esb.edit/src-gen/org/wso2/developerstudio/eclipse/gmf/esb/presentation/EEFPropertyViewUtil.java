@@ -121,7 +121,11 @@ public class EEFPropertyViewUtil {
     
     // This method will return a subSection group that can be use to group section inside a eef form
     public static Composite createSubsectionGroup(FormToolkit widgetFactory, final Composite parent, String name, boolean expanded) {
-        Section propertiesSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
+        int style = Section.TITLE_BAR | Section.TWISTIE;
+        if(expanded) {
+            style = Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED;
+        }
+        Section propertiesSection = widgetFactory.createSection(parent, style);
         propertiesSection.setText(name);
         GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
         propertiesSectionData.horizontalSpan = 3;
@@ -131,7 +135,6 @@ public class EEFPropertyViewUtil {
         propertiesGroupLayout.numColumns = 3;
         subsectionGroup.setLayout(propertiesGroupLayout);
         propertiesSection.setClient(subsectionGroup);
-        propertiesSection.setExpanded(expanded);
         return subsectionGroup;
     }
     

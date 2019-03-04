@@ -12,7 +12,6 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.assistants;
 
 import java.util.ArrayList;
@@ -29,8 +28,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbModelingAss
 public class EsbModelingAssistantProviderOfPropertyGroupMediatorEditPart extends EsbModelingAssistantProvider {
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     @Override
 
     public List<IElementType> getTypesForPopupBar(IAdaptable host) {

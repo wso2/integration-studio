@@ -12,7 +12,6 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer;
 
 import java.util.ArrayList;

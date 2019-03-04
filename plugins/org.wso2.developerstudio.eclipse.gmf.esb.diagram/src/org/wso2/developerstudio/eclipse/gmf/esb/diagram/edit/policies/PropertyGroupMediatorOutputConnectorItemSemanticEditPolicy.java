@@ -12,7 +12,6 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies;
 
 import java.util.Iterator;
@@ -39,15 +38,15 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementType
 public class PropertyGroupMediatorOutputConnectorItemSemanticEditPolicy extends EsbBaseItemSemanticEditPolicy {
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public PropertyGroupMediatorOutputConnectorItemSemanticEditPolicy() {
         super(EsbElementTypes.PropertyGroupMediatorOutputConnector_3790);
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     protected Command getDestroyElementCommand(DestroyElementRequest req) {
         View view = (View) getHost().getModel();
         CompositeTransactionalCommand cmd = new CompositeTransactionalCommand(getEditingDomain(), null);
@@ -115,5 +114,4 @@ public class PropertyGroupMediatorOutputConnectorItemSemanticEditPolicy extends 
         }
         return super.getReorientRelationshipCommand(req);
     }
-
 }

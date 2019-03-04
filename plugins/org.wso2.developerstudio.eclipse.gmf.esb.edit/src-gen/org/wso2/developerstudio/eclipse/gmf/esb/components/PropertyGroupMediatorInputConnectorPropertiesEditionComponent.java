@@ -12,10 +12,8 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-
 package org.wso2.developerstudio.eclipse.gmf.esb.components;
 
-// Start of user code for imports
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;

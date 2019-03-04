@@ -12,8 +12,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
- 
-package org.wso2.developerstudio.eclipse.gmf.esb.parts;
+ package org.wso2.developerstudio.eclipse.gmf.esb.parts;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;

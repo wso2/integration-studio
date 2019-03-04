@@ -12,7 +12,6 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies;
 
 import java.util.Iterator;
@@ -42,15 +41,15 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementType
 public class PropertyGroupMediatorItemSemanticEditPolicy extends EsbBaseItemSemanticEditPolicy {
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public PropertyGroupMediatorItemSemanticEditPolicy() {
         super(EsbElementTypes.PropertyGroupMediator_3788);
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     protected Command getCreateCommand(CreateElementRequest req) {
         if (EsbElementTypes.PropertyGroupMediatorInputConnector_3789 == req.getElementType()) {
             return getGEFWrapper(new PropertyGroupMediatorInputConnectorCreateCommand(req));
@@ -62,8 +61,8 @@ public class PropertyGroupMediatorItemSemanticEditPolicy extends EsbBaseItemSema
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     protected Command getDestroyElementCommand(DestroyElementRequest req) {
         View view = (View) getHost().getModel();
         CompositeTransactionalCommand cmd = new CompositeTransactionalCommand(getEditingDomain(), null);
@@ -82,8 +81,8 @@ public class PropertyGroupMediatorItemSemanticEditPolicy extends EsbBaseItemSema
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     private void addDestroyChildNodesCommand(ICompositeCommand cmd) {
         View view = (View) getHost().getModel();
         for (Iterator<?> nit = view.getChildren().iterator(); nit.hasNext();) {
@@ -100,8 +99,9 @@ public class PropertyGroupMediatorItemSemanticEditPolicy extends EsbBaseItemSema
                     }
                 }
                 cmd.add(new DestroyElementCommand(
-                        new DestroyElementRequest(getEditingDomain(), node.getElement(), false))); // directlyOwned: true
-                // don't need explicit deletion of node as parent's view deletion would clean child views as well 
+                        new DestroyElementRequest(getEditingDomain(), node.getElement(), false))); // directlyOwned:
+                                                                                                   // true
+                // don't need explicit deletion of node as parent's view deletion would clean child views as well
                 // cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), node));
                 break;
             case PropertyGroupMediatorOutputConnectorEditPart.VISUAL_ID:
@@ -115,12 +115,12 @@ public class PropertyGroupMediatorItemSemanticEditPolicy extends EsbBaseItemSema
                     }
                 }
                 cmd.add(new DestroyElementCommand(
-                        new DestroyElementRequest(getEditingDomain(), node.getElement(), false))); // directlyOwned: true
-                // don't need explicit deletion of node as parent's view deletion would clean child views as well 
+                        new DestroyElementRequest(getEditingDomain(), node.getElement(), false))); // directlyOwned:
+                                                                                                   // true
+                // don't need explicit deletion of node as parent's view deletion would clean child views as well
                 // cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), node));
                 break;
             }
         }
     }
-
 }

@@ -12,7 +12,6 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.assistants;
 
 import java.util.ArrayList;
@@ -117,8 +116,8 @@ public class EsbModelingAssistantProviderOfPropertyGroupMediatorOutputConnectorE
         extends EsbModelingAssistantProvider {
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     @Override
 
     public List<IElementType> getRelTypesOnSource(IAdaptable source) {
@@ -127,8 +126,8 @@ public class EsbModelingAssistantProviderOfPropertyGroupMediatorOutputConnectorE
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public List<IElementType> doGetRelTypesOnSource(PropertyGroupMediatorOutputConnectorEditPart source) {
         List<IElementType> types = new ArrayList<IElementType>(1);
         types.add(EsbElementTypes.EsbLink_4001);
@@ -136,8 +135,8 @@ public class EsbModelingAssistantProviderOfPropertyGroupMediatorOutputConnectorE
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     @Override
 
     public List<IElementType> getRelTypesOnSourceAndTarget(IAdaptable source, IAdaptable target) {
@@ -148,8 +147,8 @@ public class EsbModelingAssistantProviderOfPropertyGroupMediatorOutputConnectorE
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public List<IElementType> doGetRelTypesOnSourceAndTarget(PropertyGroupMediatorOutputConnectorEditPart source,
             IGraphicalEditPart targetEditPart) {
         List<IElementType> types = new LinkedList<IElementType>();
@@ -409,8 +408,8 @@ public class EsbModelingAssistantProviderOfPropertyGroupMediatorOutputConnectorE
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     @Override
 
     public List<IElementType> getTypesForTarget(IAdaptable source, IElementType relationshipType) {
@@ -419,8 +418,8 @@ public class EsbModelingAssistantProviderOfPropertyGroupMediatorOutputConnectorE
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public List<IElementType> doGetTypesForTarget(PropertyGroupMediatorOutputConnectorEditPart source,
             IElementType relationshipType) {
         List<IElementType> types = new ArrayList<IElementType>();

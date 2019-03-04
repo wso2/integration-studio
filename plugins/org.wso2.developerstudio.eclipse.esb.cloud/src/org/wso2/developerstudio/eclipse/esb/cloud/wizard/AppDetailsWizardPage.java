@@ -66,6 +66,12 @@ import org.wso2.developerstudio.eclipse.esb.cloud.resources.CloudDeploymentWizar
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
+/**
+ * Wizard Page to enter application details
+ * 
+ * @author dinuksha
+ *
+ */
 public class AppDetailsWizardPage extends WizardPage{
     
     private static final String FILE_VERSION_LABEL_TEXT = "Application version *";
@@ -223,18 +229,21 @@ public class AppDetailsWizardPage extends WizardPage{
             
             @Override
             public void widgetSelected(SelectionEvent e) {
-                Button source=  (Button) e.getSource();
+                
+                Button source = (Button) e.getSource();
                  
-                if(source.getSelection())  {
+                if (source.getSelection())  {
                     newAppGridData.exclude = true;
                     existingAppData.exclude = false;
                     newAppContainer.setVisible(false);
                     existingAppContainer.setVisible(true);
                     existingAppContainer.getParent().pack();
                     
-                    setVersion("");
-                    setNewVersion(true);
                 }
+                
+                setNewVersion(true);
+                setVersion(initialVersion);
+                setName("");
                 
                 // Retrieve applicationlist
                 
@@ -248,6 +257,8 @@ public class AppDetailsWizardPage extends WizardPage{
                         log.error("Error getting application list", ex);
                     }
                 }
+                
+                validate();
             }
         });
         
@@ -262,6 +273,12 @@ public class AppDetailsWizardPage extends WizardPage{
         
     }
     
+    /**
+     * Retrieve the application names from a list of Application objects
+     * 
+     * @param applications
+     * @return
+     */
     private String[] getApplicationNames(List<Application> applications) {
         String[] applicationNames = new String[applications.size()];
         for(int i = 0; i < applications.size(); i++) {
@@ -270,6 +287,11 @@ public class AppDetailsWizardPage extends WizardPage{
         return applicationNames;
     }
 
+    /**
+     * Create the tag table
+     * 
+     * @param newAppContainer
+     */
     private void createTagsInput(Composite newAppContainer) {
         Label lblTags = new Label(newAppContainer, SWT.NONE);
         lblTags.setText(TAGS_LABEL_TEXT);
@@ -395,6 +417,11 @@ public class AppDetailsWizardPage extends WizardPage{
         });
     }
 
+    /**
+     * Create an input for application icon
+     * 
+     * @param newAppContainer
+     */
     private void createApplicationIconInput(Composite newAppContainer) {
         Label lblAppIcon = new Label(newAppContainer, SWT.NONE);
         lblAppIcon.setText(APP_ICON_LABEL_TEXT);
@@ -450,6 +477,11 @@ public class AppDetailsWizardPage extends WizardPage{
         new Label(newAppContainer, SWT.NONE);
     }
 
+    /**
+     * Create an input for description
+     * 
+     * @param newAppContainer
+     */
     private void createDescriptionInput(Composite newAppContainer) {
         Label lblDescription = new Label(newAppContainer, SWT.NONE);
         GridData lblDescriptionGridData = new GridData(SWT.LEFT, SWT.TOP, false, false, 1, 1);
@@ -472,6 +504,12 @@ public class AppDetailsWizardPage extends WizardPage{
         });
     }
 
+    /**
+     * Create an input for version
+     * 
+     * @param parent
+     * @param newAppContainer
+     */
     private void createVersionInput(Composite parent, Composite newAppContainer) {
         StyledText lblVersion = new StyledText(newAppContainer, SWT.NONE);
         lblVersion.setText(FILE_VERSION_LABEL_TEXT);
@@ -497,6 +535,12 @@ public class AppDetailsWizardPage extends WizardPage{
         });
     }
     
+    /**
+     * Create an input for name
+     * 
+     * @param parent
+     * @param container
+     */
     private void createNameInput(Composite parent, Composite container) {
         StyledText lblName = new StyledText(container, SWT.NONE);
         FontData data = lblName.getFont().getFontData()[0];
@@ -528,6 +572,12 @@ public class AppDetailsWizardPage extends WizardPage{
         });
     }
     
+    /**
+     * Create a select input for exisiting applications
+     * 
+     * @param parent
+     * @param container
+     */
     private void createNameSelectInput(Composite parent, Composite container) {
         StyledText lblName = new StyledText(container, SWT.NONE);
         FontData data = lblName.getFont().getFontData()[0];
@@ -563,6 +613,11 @@ public class AppDetailsWizardPage extends WizardPage{
         });
     }
     
+    /**
+     * Saves tags as user updates them
+     * 
+     * @param tblTags
+     */
     public void saveTags(Table tblTags){
         List<Map<String, String>> tags = new ArrayList<>();
         TableItem[] items = tblTags.getItems();
@@ -579,13 +634,15 @@ public class AppDetailsWizardPage extends WizardPage{
             }
         }
         this.tags = tags;
-//        return tags;
     }
     
     public List<Map<String, String>> getTags() {
         return this.tags;
     }
 
+    /**
+     *  Validates text field values
+     */
     private void validate() {
         if ((getName() == null || getName().equals(EMPTY_STRING)) || getVersion() == null
                 || getVersion().equals(EMPTY_STRING)) {

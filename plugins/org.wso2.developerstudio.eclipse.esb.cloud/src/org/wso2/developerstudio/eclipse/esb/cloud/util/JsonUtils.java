@@ -28,6 +28,12 @@ import org.wso2.developerstudio.eclipse.esb.cloud.model.EndpointData;
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
 
+/**
+ * Utils class for JSON conversions 
+ * 
+ * @author dinuksha
+ *
+ */
 public class JsonUtils {
     
     public static String getJsonArrayFromList(List<Map<String, String>> tags) {

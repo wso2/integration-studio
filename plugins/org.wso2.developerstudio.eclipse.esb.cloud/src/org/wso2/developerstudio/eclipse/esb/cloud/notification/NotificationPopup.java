@@ -6,14 +6,19 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
-import org.wso2.developerstudio.eclipse.esb.cloud.resources.CloudDeploymentWizardConstants;
 
-public class DeploymentStatusNotificationPopup extends AbstractNotificationPopup{
+/**
+ * Notification
+ * 
+ * @author dinuksha
+ *
+ */
+public class NotificationPopup extends AbstractNotificationPopup{
     
     private String message;
     private String title;
     
-    public DeploymentStatusNotificationPopup(Display display, String title, String message) {
+    public NotificationPopup(Display display, String title, String message) {
         super(display);
         this.message = message;
         this.title = title;

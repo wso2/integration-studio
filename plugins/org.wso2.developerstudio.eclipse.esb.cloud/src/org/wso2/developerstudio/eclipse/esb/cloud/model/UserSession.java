@@ -20,6 +20,12 @@ package org.wso2.developerstudio.eclipse.esb.cloud.model;
 
 import org.apache.http.cookie.Cookie;
 
+/**
+ * Represents a user session
+ * 
+ * @author dinuksha
+ *
+ */
 public class UserSession {
 
     private String username;

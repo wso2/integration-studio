@@ -18,6 +18,12 @@
 
 package org.wso2.developerstudio.eclipse.esb.cloud.exceptions;
 
+/**
+ * Exception thrown when an exception occurs in the application creation process
+ * 
+ * @author dinuksha
+ *
+ */
 public class CloudDeploymentException extends Exception {
     public CloudDeploymentException() {
         super();

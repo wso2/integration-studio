@@ -43,7 +43,7 @@ import org.wso2.developerstudio.eclipse.distribution.project.util.DistProjectUti
 import org.wso2.developerstudio.eclipse.distribution.project.validator.ProjectList;
 import org.wso2.developerstudio.eclipse.esb.cloud.Activator;
 import org.wso2.developerstudio.eclipse.esb.cloud.job.CloudDeploymentJob;
-import org.wso2.developerstudio.eclipse.esb.cloud.notification.DeploymentStatusNotificationPopup;
+import org.wso2.developerstudio.eclipse.esb.cloud.notification.NotificationPopup;
 import org.wso2.developerstudio.eclipse.esb.cloud.resources.CloudDeploymentWizardConstants;
 import org.wso2.developerstudio.eclipse.esb.cloud.util.UserSessionManager;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
@@ -54,7 +54,7 @@ import org.wso2.developerstudio.eclipse.platform.core.project.export.util.Export
 import org.wso2.developerstudio.eclipse.platform.core.utils.Constants;
 
 /**
- * Wizard for docker image generation.
+ * Wizard for cloud deployment
  *
  */
 public class DeployToCloudWizard extends Wizard implements IExportWizard {
@@ -182,6 +182,7 @@ public class DeployToCloudWizard extends Wizard implements IExportWizard {
 
     public void addPages() {
         if (!initError) {
+            // Check if there is an active user session
             if (UserSessionManager.getCurrentSession() == null) {
                 addPage(loginPage);
             }

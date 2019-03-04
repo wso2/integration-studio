@@ -24,6 +24,12 @@ import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.CloudDeploymentExce
 import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.InvalidTokenException;
 import org.wso2.developerstudio.eclipse.esb.cloud.model.UserSession;
 
+/**
+ * Manages the sessions. In this scenario, we will always maintain only one session
+ * 
+ * @author dinuksha
+ *
+ */
 public class UserSessionManager {
     private static UserSession session;
     private static IntegrationCloudServiceClient client;
@@ -44,9 +50,11 @@ public class UserSessionManager {
             }
             // To check if the token is valid, we call this endpoint
             // If it returns unauthorized, it is considered as an expired token
+            // This method will throw an InvalidTokenException if the user token is invalid
             client.getApplicationList();
             return session;
         } catch (CloudDeploymentException | InvalidTokenException e) {
+            // When user token is invalid
             return null;
         }
     }

@@ -21,6 +21,12 @@ package org.wso2.developerstudio.eclipse.esb.cloud.model;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Represents the response from retrieving all endpoints in an application 
+ * 
+ * @author dinuksha
+ *
+ */
 public class EndpointData {
     List<Endpoint> restEndpoints;
     List<Endpoint> soapEndpoints;

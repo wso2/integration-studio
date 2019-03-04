@@ -48,6 +48,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Handles HTTP calls 
+ * 
+ * @author dinuksha
+ *
+ */
 public class HTTPClientUtil {
     
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
@@ -202,9 +208,9 @@ public class HTTPClientUtil {
      */
     private static void handleResponseStatus(int status, String response) throws InvalidTokenException, CloudDeploymentException {
         if (status == 401) {
-            throw new InvalidTokenException("Failed to authenticate user - Please log in!");
+            throw new InvalidTokenException(ResponseMessageConstants.ErrorMessages.AUTHENTICATION_FAILURE);
         } else if (status != 200 && (response == "" || response == null)){
-            throw new CloudDeploymentException("Failed to complete request..!");
+            throw new CloudDeploymentException(ResponseMessageConstants.ErrorMessages.REQUEST_FAILURE);
         } 
     }
     

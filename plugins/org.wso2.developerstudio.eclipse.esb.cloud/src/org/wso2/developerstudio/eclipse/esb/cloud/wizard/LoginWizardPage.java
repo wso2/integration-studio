@@ -23,7 +23,6 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.WizardPage;
-import org.eclipse.mylyn.commons.ui.dialogs.AbstractNotificationPopup;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
@@ -34,7 +33,6 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.program.Program;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Link;
@@ -43,35 +41,32 @@ import org.wso2.developerstudio.eclipse.esb.cloud.Activator;
 import org.wso2.developerstudio.eclipse.esb.cloud.client.IntegrationCloudServiceClient;
 import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.CloudDeploymentException;
 import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.InvalidTokenException;
-import org.wso2.developerstudio.eclipse.esb.cloud.notification.EndpointNotificationPopup;
 import org.wso2.developerstudio.eclipse.esb.cloud.resources.CloudDeploymentWizardConstants;
 import org.wso2.developerstudio.eclipse.esb.cloud.util.UserSessionManager;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 /**
- * Wizard page for CAR file generation.
+ * Wizard page for Login.
  *
  */
 public class LoginWizardPage extends WizardPage {
 
     private static final String DIALOG_TITLE = "WSO2 Platform Distribution - Deploy application to WSO2 Integration Cloud";
+    private static final String TITLE = "Integration Cloud Credentials";
     
     private static final String EMPTY_STRING = "";
     
     // Label Texts
-    private static final String LOGIN_SUCCESSFUL_MSG = "User authentication was successful! Click 'Next' to continue.";
+    private static final String LOGIN_SUCCESSFUL_MSG = "You have been successfully logged in! Click 'Next' to continue.";
     private static final String LOGIN_FAILED_MSG = "Failed to authenticate user - Incorrect Organization ID / Username / Password!";
     private static final String INTEGRATION_CLOUD_SINGUP_LINK = "https://wso2.com/integration/cloud/"; 
     private static final String LABEL_USERNAME_TEXT = "Username";
     private static final String LABEL_PASSWORD_TEXT = "Password";
     private static final String LABEL_TENANT_TEXT = "Organization Key";
-    
     private static final String SIGN_UP_LABEL_TEXT = "Don't have an account? <a href=\"https://wso2.com/integration/cloud/\">Register now</a>";
     
     private static final String ORG_ID_TOOLTIP_TEXT = "NOTE: Organization_key can be obtained from the Manage page of the cloud.";
-    
-    private static final String title = "Integration Cloud Credentials";
 
     // Elements
     private Text txtUsername;
@@ -86,7 +81,6 @@ public class LoginWizardPage extends WizardPage {
     private String tenant = EMPTY_STRING;
     private String initialUsername = EMPTY_STRING;
     private String initialPassword = EMPTY_STRING;
-    private String initialTenant = EMPTY_STRING;
     
     IntegrationCloudServiceClient client;
 
@@ -98,9 +92,7 @@ public class LoginWizardPage extends WizardPage {
         super(DIALOG_TITLE);
         client = IntegrationCloudServiceClient.getInstance();
         setTitle(DIALOG_TITLE);
-        
-        // TODO: Set false
-        setPageComplete(true);
+        setPageComplete(false);
     }
 
     public void createControl(Composite parent) {
@@ -176,6 +168,7 @@ public class LoginWizardPage extends WizardPage {
             public void widgetSelected(SelectionEvent e) {
                 try {
                     if (validateCredentials()) {
+                        // Create new session for the logged in user
                         UserSessionManager.createSession(getUsername(), client.getCookieStore().getCookies().get(0));
                         setPageComplete(true);
                         lblLoginStatus.setText(LOGIN_SUCCESSFUL_MSG);
@@ -190,9 +183,9 @@ public class LoginWizardPage extends WizardPage {
                     }
                     lblLoginStatus.getParent().layout();
                     
-                } catch (Exception e1) {
-                    e1.printStackTrace();
-                    MessageDialog.openError(getShell(), title, CloudDeploymentWizardConstants.ErrorMessages.AUTHENTICATION_EXCEPTION_MESSAGE);
+                } catch (Exception ex) {
+                    log.error(ex);
+                    MessageDialog.openError(getShell(), TITLE, CloudDeploymentWizardConstants.ErrorMessages.AUTHENTICATION_EXCEPTION_MESSAGE);
                 }
             }
         });
@@ -233,16 +226,25 @@ public class LoginWizardPage extends WizardPage {
 
     }
 
+    /**
+     * Validates user credentials
+     * 
+     * @return
+     */
     private boolean validateCredentials() {
         
         try {
             return (client.login(getUsername(), getPassword(), getTenant()));
         } catch (CloudDeploymentException | InvalidTokenException e) {
-            MessageDialog.openError(getShell(), title, e.getMessage());
+            MessageDialog.openError(getShell(), TITLE, e.getMessage());
         }
         return false;
     }
 
+    /**
+     * Validate text values
+     * 
+     */
     private void validate() {
         if ((getUsername() == null || getUsername().equals(EMPTY_STRING)) || getPassword() == null
                 || getPassword().equals(EMPTY_STRING) || (getTenant() == null || getTenant().equals(EMPTY_STRING))) {

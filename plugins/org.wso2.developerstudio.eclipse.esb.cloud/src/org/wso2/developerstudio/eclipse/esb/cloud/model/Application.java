@@ -22,6 +22,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Represents an application in the cloud
+ * 
+ * @author dinuksha
+ *
+ */
 public class Application {
     
     private String applicationName;

@@ -18,6 +18,12 @@
 
 package org.wso2.developerstudio.eclipse.esb.cloud.model;
 
+/**
+ * Represents an endpoint in the deployed cloud application
+ * 
+ * @author dinuksha
+ *
+ */
 public class Endpoint {
     private String name;
     private String wsdl;

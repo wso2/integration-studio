@@ -18,14 +18,12 @@
 
 package org.wso2.developerstudio.eclipse.esb.cloud.job;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
-import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
@@ -35,19 +33,15 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Shell;
-import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.internal.WorkbenchWindow;
 import org.wso2.developerstudio.eclipse.esb.cloud.Activator;
 import org.wso2.developerstudio.eclipse.esb.cloud.client.IntegrationCloudServiceClient;
 import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.CloudDeploymentException;
 import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.InvalidTokenException;
 import org.wso2.developerstudio.eclipse.esb.cloud.model.Application;
-import org.wso2.developerstudio.eclipse.esb.cloud.model.Endpoint;
 import org.wso2.developerstudio.eclipse.esb.cloud.model.EndpointData;
 import org.wso2.developerstudio.eclipse.esb.cloud.model.Version;
 import org.wso2.developerstudio.eclipse.esb.cloud.resources.CloudDeploymentWizardConstants;
-import org.wso2.developerstudio.eclipse.esb.cloud.resources.MessageNotificationPopup;
 import org.wso2.developerstudio.eclipse.esb.cloud.util.JsonUtils;
 import org.wso2.developerstudio.eclipse.esb.cloud.wizard.DeploymentStatusDialog;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
@@ -167,6 +161,10 @@ public class CloudDeploymentJob extends Job {
         return Status.OK_STATUS;
     }
     
+    /**
+     * Show deployment success window with endpoints
+     * 
+     */
     private void showDeploymentSuccessPopup(){
         Display.getDefault().syncExec(new Runnable() {
             public void run() {
@@ -187,6 +185,13 @@ public class CloudDeploymentJob extends Job {
         });
     }
 
+    /**
+     * Show message box
+     * 
+     * @param title
+     * @param message
+     * @param style
+     */
     private void showMessageBox(String title, String message, int style) {
 
         Display.getDefault().syncExec(new Runnable() {

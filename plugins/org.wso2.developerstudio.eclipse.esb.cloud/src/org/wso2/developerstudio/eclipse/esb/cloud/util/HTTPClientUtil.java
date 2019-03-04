@@ -58,7 +58,6 @@ public class HTTPClientUtil {
         HttpGet request = new HttpGet(url);
         StringBuffer result = new StringBuffer();
 
-        // add request header
         HttpResponse response = null;
         try {
             response = client.execute(request);

@@ -409,7 +409,7 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
      * @generated NOT
      */
 	protected Composite createScriptTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
-	    filterScriptTypeSubPropertiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent, "Script Type");
+	    filterScriptTypeSubPropertiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent, "Script Type", true);
 		Control scriptTypeLabel = createDescription(filterScriptTypeSubPropertiesGroup, EsbViewsRepository.ScriptMediator.Properties.scriptType, EsbMessages.ScriptMediatorPropertiesEditionPart_ScriptTypeLabel);
 		scriptType = new EMFComboViewer(filterScriptTypeSubPropertiesGroup);
 		scriptType.setContentProvider(new ArrayContentProvider());

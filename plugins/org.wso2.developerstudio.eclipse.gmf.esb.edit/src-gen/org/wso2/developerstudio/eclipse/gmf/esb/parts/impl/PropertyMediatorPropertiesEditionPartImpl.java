@@ -21,7 +21,7 @@ import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.ui.editors.pages.eefviewer.EEFPropertiesViewerMDFormPage;
+
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
@@ -32,7 +32,6 @@ import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 
 import org.eclipse.emf.eef.runtime.ui.widgets.EEFFeatureEditorDialog;
 import org.eclipse.emf.eef.runtime.ui.widgets.EMFComboViewer;
-import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 
 import org.eclipse.jface.viewers.ArrayContentProvider;
@@ -285,9 +284,7 @@ public class PropertyMediatorPropertiesEditionPartImpl extends CompositeProperti
                     
             /**
              * {@inheritDoc}
-             * 
              * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-             *  
              */
             public void selectionChanged(SelectionChangedEvent event) {
                 validate();
@@ -329,9 +326,7 @@ public class PropertyMediatorPropertiesEditionPartImpl extends CompositeProperti
 
             /**
              * {@inheritDoc}
-             * 
-             * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-             *  
+             * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent) 
              */
             public void selectionChanged(SelectionChangedEvent event) {
                 validate();
@@ -373,9 +368,7 @@ public class PropertyMediatorPropertiesEditionPartImpl extends CompositeProperti
 
             /**
              * {@inheritDoc}
-             * 
              * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-             *  
              */
             public void selectionChanged(SelectionChangedEvent event) {
                 validate();
@@ -418,9 +411,7 @@ public class PropertyMediatorPropertiesEditionPartImpl extends CompositeProperti
 
             /**
              * {@inheritDoc}
-             * 
              * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-             *  
              */
             public void selectionChanged(SelectionChangedEvent event) {
                 validate();

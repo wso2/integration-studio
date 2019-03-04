@@ -1,61 +1,47 @@
-/**
- * Generated with Acceleo
+/*
+ * Copyright (c) 2019, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+  * WSO2 Inc. licenses this file to you under the Apache License,
+ * Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License.
+ * You may obtain a copy of the License at
+  *      http://www.apache.org/licenses/LICENSE-2.0
+  * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
  */
+
 package org.wso2.developerstudio.eclipse.gmf.esb.components;
 
-// Start of user code for imports
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.emf.ecore.resource.ResourceSet;
-
-import org.eclipse.emf.ecore.util.EcoreUtil;
-
 import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
-
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
-
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext;
-
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
-
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
-
-import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
-
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
-
 import org.eclipse.emf.eef.runtime.policies.impl.CreateEditingPolicy;
-
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
-
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
-
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
-
 import org.wso2.developerstudio.eclipse.gmf.esb.CommentMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediatorOutputConnector;
-
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.PropertyGroupMediatorOutputConnectorPropertiesEditionPart;
 
-// End of user code
-
-/**
- * 
- * 
- */
 public class PropertyGroupMediatorOutputConnectorPropertiesEditionComponent
         extends SinglePartPropertiesEditingComponent {
 
@@ -80,11 +66,9 @@ public class PropertyGroupMediatorOutputConnectorPropertiesEditionComponent
 
     /**
      * {@inheritDoc}
-     * 
      * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object, int,
      *      org.eclipse.emf.ecore.EObject,
      *      org.eclipse.emf.ecore.resource.ResourceSet)
-     * 
      */
     public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
         setInitializing(true);
@@ -112,7 +96,6 @@ public class PropertyGroupMediatorOutputConnectorPropertiesEditionComponent
                         return (element instanceof String && element.equals("")) //$NON-NLS-1$
                                 || (element instanceof CommentMediator);
                     }
-
                 });
                 // Start of user code for additional businessfilters for commentMediators
                 // End of user code
@@ -120,14 +103,13 @@ public class PropertyGroupMediatorOutputConnectorPropertiesEditionComponent
             // init values for referenced views
 
             // init filters for referenced views
-
+            
         }
         setInitializing(false);
     }
 
     /**
      * {@inheritDoc}
-     * 
      * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
      */
     public EStructuralFeature associatedFeature(Object editorKey) {
@@ -139,9 +121,7 @@ public class PropertyGroupMediatorOutputConnectorPropertiesEditionComponent
 
     /**
      * {@inheritDoc}
-     * 
      * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-     * 
      */
     public void updateSemanticModel(final IPropertiesEditionEvent event) {
         PropertyMediatorOutputConnector propertyMediatorOutputConnector = (PropertyMediatorOutputConnector) semanticObject;
@@ -179,7 +159,6 @@ public class PropertyGroupMediatorOutputConnectorPropertiesEditionComponent
 
     /**
      * {@inheritDoc}
-     * 
      * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
      */
     public void updatePart(Notification msg) {
@@ -189,13 +168,11 @@ public class PropertyGroupMediatorOutputConnectorPropertiesEditionComponent
             if (EsbPackage.eINSTANCE.getOutputConnector_CommentMediators().equals(msg.getFeature()) && isAccessible(
                     EsbViewsRepository.PropertyGroupMediatorOutputConnector.Properties.commentMediators))
                 basePart.updateCommentMediators();
-
         }
     }
 
     /**
      * {@inheritDoc}
-     * 
      * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
      */
     @Override
@@ -207,9 +184,7 @@ public class PropertyGroupMediatorOutputConnectorPropertiesEditionComponent
 
     /**
      * {@inheritDoc}
-     * 
      * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-     * 
      */
     public Diagnostic validateValue(IPropertiesEditionEvent event) {
         Diagnostic ret = Diagnostic.OK_INSTANCE;
@@ -223,5 +198,4 @@ public class PropertyGroupMediatorOutputConnectorPropertiesEditionComponent
         }
         return ret;
     }
-
 }

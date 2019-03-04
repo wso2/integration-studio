@@ -1,9 +1,20 @@
-/**
- * Generated with Acceleo
+/*
+ * Copyright (c) 2019, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+  * WSO2 Inc. licenses this file to you under the Apache License,
+ * Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License.
+ * You may obtain a copy of the License at
+  *      http://www.apache.org/licenses/LICENSE-2.0
+  * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
  */
+
 package org.wso2.developerstudio.eclipse.gmf.esb.parts.impl;
 
-// Start of user code for imports
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -59,12 +70,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.parts.PropertyGroupMediatorInput
 
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
 
-// End of user code
-
-/**
- * 
- * 
- */
 public class PropertyGroupMediatorInputConnectorPropertiesEditionPartImpl extends CompositePropertiesEditionPart
         implements ISWTPropertiesEditionPart, PropertyGroupMediatorInputConnectorPropertiesEditionPart {
 
@@ -74,9 +79,7 @@ public class PropertyGroupMediatorInputConnectorPropertiesEditionPartImpl extend
 
     /**
      * Default constructor
-     * 
      * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
-     * 
      */
     public PropertyGroupMediatorInputConnectorPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
         super(editionComponent);
@@ -84,10 +87,8 @@ public class PropertyGroupMediatorInputConnectorPropertiesEditionPartImpl extend
 
     /**
      * {@inheritDoc}
-     * 
      * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
      *      createFigure(org.eclipse.swt.widgets.Composite)
-     * 
      */
     public Composite createFigure(final Composite parent) {
         view = new Composite(parent, SWT.NONE);
@@ -100,10 +101,8 @@ public class PropertyGroupMediatorInputConnectorPropertiesEditionPartImpl extend
 
     /**
      * {@inheritDoc}
-     * 
      * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
      *      createControls(org.eclipse.swt.widgets.Composite)
-     * 
      */
     public void createControls(Composite view) {
         CompositionSequence propertyGroupMediatorInputConnectorStep = new BindingCompositionSequence(
@@ -129,7 +128,7 @@ public class PropertyGroupMediatorInputConnectorPropertiesEditionPartImpl extend
     }
 
     /**
-     * 
+     * @generated
      */
     protected Composite createPropertiesGroup(Composite parent) {
         Group propertiesGroup = new Group(parent, SWT.NONE);
@@ -145,7 +144,7 @@ public class PropertyGroupMediatorInputConnectorPropertiesEditionPartImpl extend
     }
 
     /**
-     * 
+     * @generated
      */
     protected Composite createIncomingLinksAdvancedReferencesTable(Composite parent) {
         String label = getDescription(EsbViewsRepository.PropertyGroupMediatorInputConnector.Properties.incomingLinks,
@@ -185,7 +184,6 @@ public class PropertyGroupMediatorInputConnectorPropertiesEditionPartImpl extend
                             e.item.getData()));
                 }
             }
-
         });
         GridData incomingLinksData = new GridData(GridData.FILL_HORIZONTAL);
         incomingLinksData.horizontalSpan = 3;
@@ -197,7 +195,7 @@ public class PropertyGroupMediatorInputConnectorPropertiesEditionPartImpl extend
     }
 
     /**
-     * 
+     * @generated
      */
     protected void addIncomingLinks() {
         TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(incomingLinks.getInput(),
@@ -219,7 +217,7 @@ public class PropertyGroupMediatorInputConnectorPropertiesEditionPartImpl extend
     }
 
     /**
-     * 
+     * @generated
      */
     protected void moveIncomingLinks(EObject element, int oldIndex, int newIndex) {
         propertiesEditionComponent.firePropertiesChanged(
@@ -230,7 +228,7 @@ public class PropertyGroupMediatorInputConnectorPropertiesEditionPartImpl extend
     }
 
     /**
-     * 
+     * @generated
      */
     protected void removeFromIncomingLinks(EObject element) {
         propertiesEditionComponent.firePropertiesChanged(
@@ -241,7 +239,7 @@ public class PropertyGroupMediatorInputConnectorPropertiesEditionPartImpl extend
     }
 
     /**
-     * 
+     * @generated
      */
     protected void editIncomingLinks(EObject element) {
         EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(
@@ -259,9 +257,7 @@ public class PropertyGroupMediatorInputConnectorPropertiesEditionPartImpl extend
 
     /**
      * {@inheritDoc}
-     * 
      * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-     * 
      */
     public void firePropertiesChanged(IPropertiesEditionEvent event) {
         // Start of user code for tab synchronization
@@ -271,7 +267,6 @@ public class PropertyGroupMediatorInputConnectorPropertiesEditionPartImpl extend
 
     /**
      * {@inheritDoc}
-     * 
      * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.PropertyGroupMediatorInputConnectorPropertiesEditionPart#initIncomingLinks(org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings)
      */
     public void initIncomingLinks(ReferencesTableSettings settings) {
@@ -290,14 +285,11 @@ public class PropertyGroupMediatorInputConnectorPropertiesEditionPartImpl extend
         } else if (!eefElementEditorReadOnlyState && !incomingLinks.getTable().isEnabled()) {
             incomingLinks.setEnabled(true);
         }
-
     }
 
     /**
      * {@inheritDoc}
-     * 
      * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.PropertyGroupMediatorInputConnectorPropertiesEditionPart#updateIncomingLinks()
-     * 
      */
     public void updateIncomingLinks() {
         incomingLinks.refresh();
@@ -305,10 +297,8 @@ public class PropertyGroupMediatorInputConnectorPropertiesEditionPartImpl extend
 
     /**
      * {@inheritDoc}
-     * 
      * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.PropertyGroupMediatorInputConnectorPropertiesEditionPart#addFilterIncomingLinks(ViewerFilter
      *      filter)
-     * 
      */
     public void addFilterToIncomingLinks(ViewerFilter filter) {
         incomingLinksFilters.add(filter);
@@ -316,10 +306,8 @@ public class PropertyGroupMediatorInputConnectorPropertiesEditionPartImpl extend
 
     /**
      * {@inheritDoc}
-     * 
      * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.PropertyGroupMediatorInputConnectorPropertiesEditionPart#addBusinessFilterIncomingLinks(ViewerFilter
-     *      filter)
-     * 
+     *      filter) 
      */
     public void addBusinessFilterToIncomingLinks(ViewerFilter filter) {
         incomingLinksBusinessFilters.add(filter);
@@ -327,10 +315,8 @@ public class PropertyGroupMediatorInputConnectorPropertiesEditionPartImpl extend
 
     /**
      * {@inheritDoc}
-     * 
      * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.PropertyGroupMediatorInputConnectorPropertiesEditionPart#isContainedInIncomingLinksTable(EObject
      *      element)
-     * 
      */
     public boolean isContainedInIncomingLinksTable(EObject element) {
         return ((ReferencesTableSettings) incomingLinks.getInput()).contains(element);
@@ -338,9 +324,7 @@ public class PropertyGroupMediatorInputConnectorPropertiesEditionPartImpl extend
 
     /**
      * {@inheritDoc}
-     *
      * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
-     * 
      */
     public String getTitle() {
         return EsbMessages.PropertyGroupMediatorInputConnector_Part_Title;
@@ -349,5 +333,4 @@ public class PropertyGroupMediatorInputConnectorPropertiesEditionPartImpl extend
     // Start of user code additional methods
 
     // End of user code
-
 }

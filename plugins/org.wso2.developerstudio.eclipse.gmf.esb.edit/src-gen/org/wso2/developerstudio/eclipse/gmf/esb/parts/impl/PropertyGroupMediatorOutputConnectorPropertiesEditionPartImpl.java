@@ -1,9 +1,20 @@
-/**
- * Generated with Acceleo
+/*
+ * Copyright (c) 2019, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+  * WSO2 Inc. licenses this file to you under the Apache License,
+ * Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License.
+ * You may obtain a copy of the License at
+  *      http://www.apache.org/licenses/LICENSE-2.0
+  * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
  */
+
 package org.wso2.developerstudio.eclipse.gmf.esb.parts.impl;
 
-// Start of user code for imports
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,12 +60,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.parts.PropertyGroupMediatorOutpu
 
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
 
-// End of user code
-
-/**
- * 
- * 
- */
 public class PropertyGroupMediatorOutputConnectorPropertiesEditionPartImpl extends CompositePropertiesEditionPart
         implements ISWTPropertiesEditionPart, PropertyGroupMediatorOutputConnectorPropertiesEditionPart {
 
@@ -64,9 +69,7 @@ public class PropertyGroupMediatorOutputConnectorPropertiesEditionPartImpl exten
 
     /**
      * Default constructor
-     * 
      * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
-     * 
      */
     public PropertyGroupMediatorOutputConnectorPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
         super(editionComponent);
@@ -74,10 +77,8 @@ public class PropertyGroupMediatorOutputConnectorPropertiesEditionPartImpl exten
 
     /**
      * {@inheritDoc}
-     * 
      * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
      *      createFigure(org.eclipse.swt.widgets.Composite)
-     * 
      */
     public Composite createFigure(final Composite parent) {
         view = new Composite(parent, SWT.NONE);
@@ -90,10 +91,8 @@ public class PropertyGroupMediatorOutputConnectorPropertiesEditionPartImpl exten
 
     /**
      * {@inheritDoc}
-     * 
      * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
      *      createControls(org.eclipse.swt.widgets.Composite)
-     * 
      */
     public void createControls(Composite view) {
         CompositionSequence propertyGroupMediatorOutputConnectorStep = new BindingCompositionSequence(
@@ -119,7 +118,7 @@ public class PropertyGroupMediatorOutputConnectorPropertiesEditionPartImpl exten
     }
 
     /**
-     * 
+     * @generated
      */
     protected Composite createPropertiesGroup(Composite parent) {
         Group propertiesGroup = new Group(parent, SWT.NONE);
@@ -136,7 +135,6 @@ public class PropertyGroupMediatorOutputConnectorPropertiesEditionPartImpl exten
 
     /**
      * @param container
-     * 
      */
     protected Composite createCommentMediatorsAdvancedTableComposition(Composite parent) {
         this.commentMediators = new ReferencesTable(
@@ -212,10 +210,8 @@ public class PropertyGroupMediatorOutputConnectorPropertiesEditionPartImpl exten
     }
 
     /**
-     * {@inheritDoc}
-     * 
+     * {@inheritDoc} 
      * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-     * 
      */
     public void firePropertiesChanged(IPropertiesEditionEvent event) {
         // Start of user code for tab synchronization
@@ -225,7 +221,6 @@ public class PropertyGroupMediatorOutputConnectorPropertiesEditionPartImpl exten
 
     /**
      * {@inheritDoc}
-     * 
      * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.PropertyGroupMediatorOutputConnectorPropertiesEditionPart#initCommentMediators(EObject
      *      current, EReference containingFeature, EReference feature)
      */
@@ -248,9 +243,7 @@ public class PropertyGroupMediatorOutputConnectorPropertiesEditionPartImpl exten
 
     /**
      * {@inheritDoc}
-     * 
      * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.PropertyGroupMediatorOutputConnectorPropertiesEditionPart#updateCommentMediators()
-     * 
      */
     public void updateCommentMediators() {
         commentMediators.refresh();
@@ -258,10 +251,8 @@ public class PropertyGroupMediatorOutputConnectorPropertiesEditionPartImpl exten
 
     /**
      * {@inheritDoc}
-     * 
      * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.PropertyGroupMediatorOutputConnectorPropertiesEditionPart#addFilterCommentMediators(ViewerFilter
      *      filter)
-     * 
      */
     public void addFilterToCommentMediators(ViewerFilter filter) {
         commentMediatorsFilters.add(filter);
@@ -272,10 +263,8 @@ public class PropertyGroupMediatorOutputConnectorPropertiesEditionPartImpl exten
 
     /**
      * {@inheritDoc}
-     * 
      * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.PropertyGroupMediatorOutputConnectorPropertiesEditionPart#addBusinessFilterCommentMediators(ViewerFilter
      *      filter)
-     * 
      */
     public void addBusinessFilterToCommentMediators(ViewerFilter filter) {
         commentMediatorsBusinessFilters.add(filter);
@@ -283,10 +272,8 @@ public class PropertyGroupMediatorOutputConnectorPropertiesEditionPartImpl exten
 
     /**
      * {@inheritDoc}
-     * 
      * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.PropertyGroupMediatorOutputConnectorPropertiesEditionPart#isContainedInCommentMediatorsTable(EObject
      *      element)
-     * 
      */
     public boolean isContainedInCommentMediatorsTable(EObject element) {
         return ((ReferencesTableSettings) commentMediators.getInput()).contains(element);
@@ -294,9 +281,7 @@ public class PropertyGroupMediatorOutputConnectorPropertiesEditionPartImpl exten
 
     /**
      * {@inheritDoc}
-     *
      * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
-     * 
      */
     public String getTitle() {
         return EsbMessages.PropertyGroupMediatorOutputConnector_Part_Title;
@@ -305,5 +290,4 @@ public class PropertyGroupMediatorOutputConnectorPropertiesEditionPartImpl exten
     // Start of user code additional methods
 
     // End of user code
-
 }

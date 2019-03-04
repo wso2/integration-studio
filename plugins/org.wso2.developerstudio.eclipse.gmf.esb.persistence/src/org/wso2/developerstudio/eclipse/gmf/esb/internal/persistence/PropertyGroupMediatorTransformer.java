@@ -1,3 +1,17 @@
+/*
+ * Copyright (c) 2019, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+  * WSO2 Inc. licenses this file to you under the Apache License,
+ * Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License.
+ * You may obtain a copy of the License at
+  *      http://www.apache.org/licenses/LICENSE-2.0
+  * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
 package org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence;
 
 import java.util.ArrayList;
@@ -25,14 +39,13 @@ public class PropertyGroupMediatorTransformer extends AbstractEsbNodeTransformer
             doTransform(info, ((PropertyGroupMediator) subject).getOutputConnector());
         } catch (JaxenException e) {
             throw new TransformerException(e);
-        }  
+        }
     }
 
     @Override
     public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints)
             throws TransformerException {
         // TODO Auto-generated method stub
-        
     }
 
     @Override
@@ -46,20 +59,21 @@ public class PropertyGroupMediatorTransformer extends AbstractEsbNodeTransformer
             throw new TransformerException(e);
         }
     }
-    
-    public static org.apache.synapse.mediators.builtin.PropertyGroupMediator createPropertyGroupMediator(EsbNode subject, boolean isForValidation)
-            throws JaxenException {
+
+    public static org.apache.synapse.mediators.builtin.PropertyGroupMediator createPropertyGroupMediator(
+            EsbNode subject, boolean isForValidation) throws JaxenException {
         Assert.isTrue(subject instanceof PropertyGroupMediator, "Invalid subject.");
         org.apache.synapse.mediators.builtin.PropertyGroupMediator propertyGroupMediator = new org.apache.synapse.mediators.builtin.PropertyGroupMediator();
         PropertyGroupMediator visualProp = (PropertyGroupMediator) subject;
         setCommonProperties(propertyGroupMediator, visualProp);
         List<org.apache.synapse.mediators.builtin.PropertyMediator> propertyList = new ArrayList<>();
         {
-            for(PropertyMediator propertyMediator : visualProp.getProperties()) {
+            for (PropertyMediator propertyMediator : visualProp.getProperties()) {
                 PropertyMediatorTransformer propertyMediatorTransformer = new PropertyMediatorTransformer();
                 org.apache.synapse.mediators.builtin.PropertyMediator synapseProperty;
                 try {
-                    synapseProperty = propertyMediatorTransformer.createPropertyMediator(propertyMediator, isForValidation);
+                    synapseProperty = propertyMediatorTransformer.createPropertyMediator(propertyMediator,
+                            isForValidation);
                     propertyList.add(synapseProperty);
                 } catch (XMLStreamException e) {
                     // TODO Auto-generated catch block
@@ -73,5 +87,4 @@ public class PropertyGroupMediatorTransformer extends AbstractEsbNodeTransformer
         }
         return propertyGroupMediator;
     }
-
 }

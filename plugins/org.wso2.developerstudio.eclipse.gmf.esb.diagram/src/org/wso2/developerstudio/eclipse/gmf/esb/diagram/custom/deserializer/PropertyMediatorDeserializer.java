@@ -180,4 +180,5 @@ public class PropertyMediatorDeserializer extends AbstractEsbNodeDeserializer<Ab
 
         return VisualPropertyMediator;
     }
+
 }

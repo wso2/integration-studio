@@ -153,7 +153,6 @@ public class NamespacedPropertyItemProvider extends EsbNodeItemProvider {
                  null));
     }
 
-
     /**
      * This adds a property descriptor for the Supports Dynamic XPaths feature.
      * <!-- begin-user-doc -->

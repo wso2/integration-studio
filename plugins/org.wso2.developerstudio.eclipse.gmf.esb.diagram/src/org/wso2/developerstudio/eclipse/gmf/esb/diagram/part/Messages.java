@@ -405,453 +405,453 @@ public class Messages extends NLS {
     public static String PropertyMediator4CreationTool_desc;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String PropertyGroupMediator5CreationTool_title;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String PropertyGroupMediator5CreationTool_desc;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String EnrichMediator6CreationTool_title;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String EnrichMediator6CreationTool_desc;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String XSLTMediator7CreationTool_title;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String XSLTMediator7CreationTool_desc;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String SwitchMediator8CreationTool_title;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String SwitchMediator8CreationTool_desc;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String EventMediator9CreationTool_title;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String EventMediator9CreationTool_desc;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String EntitlementMediator10CreationTool_title;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String EntitlementMediator10CreationTool_desc;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String ClassMediator11CreationTool_title;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String ClassMediator11CreationTool_desc;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String SpringMediator12CreationTool_title;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String SpringMediator12CreationTool_desc;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String ScriptMediator13CreationTool_title;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String ScriptMediator13CreationTool_desc;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String FaultMediator14CreationTool_title;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String FaultMediator14CreationTool_desc;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String XQueryMediator15CreationTool_title;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String XQueryMediator15CreationTool_desc;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String CommandMediator16CreationTool_title;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String CommandMediator16CreationTool_desc;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String DBLookupMediator17CreationTool_title;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String DBLookupMediator17CreationTool_desc;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String DBReportMediator18CreationTool_title;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String DBReportMediator18CreationTool_desc;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String SmooksMediator19CreationTool_title;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String SmooksMediator19CreationTool_desc;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String SendMediator20CreationTool_title;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String SendMediator20CreationTool_desc;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String HeaderMediator21CreationTool_title;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String HeaderMediator21CreationTool_desc;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String CloneMediator22CreationTool_title;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String CloneMediator22CreationTool_desc;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String IterateMediator23CreationTool_title;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String IterateMediator23CreationTool_desc;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String CacheMediator24CreationTool_title;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String CacheMediator24CreationTool_desc;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String AggregateMediator25CreationTool_title;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String AggregateMediator25CreationTool_desc;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String CalloutMediator26CreationTool_title;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String CalloutMediator26CreationTool_desc;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String TransactionMediator27CreationTool_title;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String TransactionMediator27CreationTool_desc;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String ThrottleMediator28CreationTool_title;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String ThrottleMediator28CreationTool_desc;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String RMSequenceMediator29CreationTool_title;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String RMSequenceMediator29CreationTool_desc;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String OAuthMediator30CreationTool_title;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String OAuthMediator30CreationTool_desc;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String RuleMediator31CreationTool_title;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String RuleMediator31CreationTool_desc;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String StoreMediator32CreationTool_title;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String StoreMediator32CreationTool_desc;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String BuilderMediator33CreationTool_title;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String BuilderMediator33CreationTool_desc;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String CallTemplateMediator34CreationTool_title;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String CallTemplateMediator34CreationTool_desc;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String PayloadFactoryMediator35CreationTool_title;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String PayloadFactoryMediator35CreationTool_desc;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String EnqueueMediator36CreationTool_title;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String EnqueueMediator36CreationTool_desc;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String URLRewriteMediator37CreationTool_title;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String URLRewriteMediator37CreationTool_desc;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String ValidateMediator38CreationTool_title;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String ValidateMediator38CreationTool_desc;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String RouterMediator39CreationTool_title;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String RouterMediator39CreationTool_desc;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String ConditionalRouterMediator40CreationTool_title;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String ConditionalRouterMediator40CreationTool_desc;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String BAMMediator41CreationTool_title;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String BAMMediator41CreationTool_desc;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String BeanMediator42CreationTool_title;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String BeanMediator42CreationTool_desc;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String EJBMediator43CreationTool_title;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String EJBMediator43CreationTool_desc;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String LoopBackMediator44CreationTool_title;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String LoopBackMediator44CreationTool_desc;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String RespondMediator45CreationTool_title;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String RespondMediator45CreationTool_desc;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String CallMediator46CreationTool_title;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String CallMediator46CreationTool_desc;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String DataMapperMediator47CreationTool_title;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String DataMapperMediator47CreationTool_desc;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String FastXSLTMediator48CreationTool_title;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String FastXSLTMediator48CreationTool_desc;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String PublishEventMediator49CreationTool_title;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String PublishEventMediator49CreationTool_desc;
 
     /**
@@ -1480,13 +1480,13 @@ public class Messages extends NLS {
     public static String NavigatorGroupName_PublishEventMediatorOutputConnector_3787_outgoinglinks;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String NavigatorGroupName_PropertyGroupMediatorInputConnector_3789_incominglinks;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static String NavigatorGroupName_PropertyGroupMediatorOutputConnector_3790_outgoinglinks;
 
     /**

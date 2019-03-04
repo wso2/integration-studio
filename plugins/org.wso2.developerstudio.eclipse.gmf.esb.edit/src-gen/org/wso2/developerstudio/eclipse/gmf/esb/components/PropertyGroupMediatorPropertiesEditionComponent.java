@@ -1,68 +1,55 @@
-/**
- * Generated with Acceleo
+/*
+ * Copyright (c) 2019, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+  * WSO2 Inc. licenses this file to you under the Apache License,
+ * Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License.
+ * You may obtain a copy of the License at
+  *      http://www.apache.org/licenses/LICENSE-2.0
+  * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
  */
+
 package org.wso2.developerstudio.eclipse.gmf.esb.components;
 
-// Start of user code for imports
 import java.util.Iterator;
 import java.util.List;
-
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.WrappedException;
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
-
 import org.eclipse.emf.ecore.resource.ResourceSet;
-
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-
 import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
-
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
-
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext;
-
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
-
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
-
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
-
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
-
 import org.eclipse.emf.eef.runtime.policies.impl.CreateEditingPolicy;
-
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
-
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
-
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
-
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyGroupMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator;
-
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.PropertyGroupMediatorPropertiesEditionPart;
 
-// End of user code
-
-/**
- * 
- * 
- */
 public class PropertyGroupMediatorPropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
 
     public static String BASE_PART = "Base"; //$NON-NLS-1$
@@ -74,7 +61,6 @@ public class PropertyGroupMediatorPropertiesEditionComponent extends SinglePartP
 
     /**
      * Default constructor
-     * 
      */
     public PropertyGroupMediatorPropertiesEditionComponent(PropertiesEditingContext editingContext,
             EObject propertyGroupMediator, String editing_mode) {
@@ -86,11 +72,9 @@ public class PropertyGroupMediatorPropertiesEditionComponent extends SinglePartP
 
     /**
      * {@inheritDoc}
-     * 
      * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object, int,
      *      org.eclipse.emf.ecore.EObject,
      *      org.eclipse.emf.ecore.resource.ResourceSet)
-     * 
      */
     public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
         setInitializing(true);
@@ -144,7 +128,6 @@ public class PropertyGroupMediatorPropertiesEditionComponent extends SinglePartP
 
     /**
      * {@inheritDoc}
-     * 
      * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
      */
     public EStructuralFeature associatedFeature(Object editorKey) {
@@ -165,9 +148,7 @@ public class PropertyGroupMediatorPropertiesEditionComponent extends SinglePartP
 
     /**
      * {@inheritDoc}
-     * 
      * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-     * 
      */
     public void updateSemanticModel(final IPropertiesEditionEvent event) {
         PropertyGroupMediator propertyGroupMediator = (PropertyGroupMediator) semanticObject;
@@ -217,7 +198,6 @@ public class PropertyGroupMediatorPropertiesEditionComponent extends SinglePartP
 
     /**
      * {@inheritDoc}
-     * 
      * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
      */
     public void updatePart(Notification msg) {
@@ -256,13 +236,11 @@ public class PropertyGroupMediatorPropertiesEditionComponent extends SinglePartP
             if (EsbPackage.eINSTANCE.getPropertyGroupMediator_Properties().equals(msg.getFeature())
                     && isAccessible(EsbViewsRepository.PropertyGroupMediator.Properties.properties_))
                 basePart.updateProperties();
-
         }
     }
 
     /**
      * {@inheritDoc}
-     * 
      * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
      */
     @Override
@@ -275,9 +253,7 @@ public class PropertyGroupMediatorPropertiesEditionComponent extends SinglePartP
 
     /**
      * {@inheritDoc}
-     * 
      * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-     * 
      */
     public Diagnostic validateValue(IPropertiesEditionEvent event) {
         Diagnostic ret = Diagnostic.OK_INSTANCE;
@@ -319,5 +295,4 @@ public class PropertyGroupMediatorPropertiesEditionComponent extends SinglePartP
         }
         return ret;
     }
-
 }

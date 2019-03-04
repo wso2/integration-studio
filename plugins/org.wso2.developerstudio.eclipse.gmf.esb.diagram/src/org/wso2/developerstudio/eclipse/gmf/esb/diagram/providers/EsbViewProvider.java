@@ -4972,7 +4972,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(PropertyMediatorOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -6276,7 +6276,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(SpringMediatorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -10080,6 +10080,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
                     IPreferenceConstants.PREF_FONT_COLOR);
             nodeFontStyle.setFontColor(FigureUtilities.RGBToInteger(fontRGB).intValue());
         }
+        Node label5145 = createLabel(node, EsbVisualIDRegistry.getType(CacheMediatorCacheIdEditPart.VISUAL_ID));
         return node;
     }
 

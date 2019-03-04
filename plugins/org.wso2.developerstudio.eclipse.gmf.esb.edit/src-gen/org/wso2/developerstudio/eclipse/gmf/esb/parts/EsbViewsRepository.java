@@ -2031,59 +2031,38 @@ public class EsbViewsRepository {
 	
 	}
 
-	/**
-	 * PropertyGroupMediator view descriptor
-	 * 
-	 */
-	public static class PropertyGroupMediator {
-		public static class Properties {
-	
-			
-			public static String description = "esb::PropertyGroupMediator::properties::description";
-			
-			
-			public static String commentsList = "esb::PropertyGroupMediator::properties::commentsList";
-			
-			
-			public static String reverse = "esb::PropertyGroupMediator::properties::Reverse";
-			
-			
-			public static String properties_ = "esb::PropertyGroupMediator::properties::properties_";
-			
-	
-		}
-	
-	}
+    /**
+     * PropertyGroupMediator view descriptor
+     * 
+     */
+    public static class PropertyGroupMediator {
+        public static class Properties {
+            public static String description = "esb::PropertyGroupMediator::properties::description";
+            public static String commentsList = "esb::PropertyGroupMediator::properties::commentsList";
+            public static String reverse = "esb::PropertyGroupMediator::properties::Reverse";
+            public static String properties_ = "esb::PropertyGroupMediator::properties::properties_";
+        }
+    }
 
-	/**
-	 * PropertyGroupMediatorInputConnector view descriptor
-	 * 
-	 */
-	public static class PropertyGroupMediatorInputConnector {
-		public static class Properties {
-	
-			
-			public static String incomingLinks = "esb::PropertyGroupMediatorInputConnector::properties::incomingLinks";
-			
-	
-		}
-	
-	}
+    /**
+     * PropertyGroupMediatorInputConnector view descriptor
+     * 
+     */
+    public static class PropertyGroupMediatorInputConnector {
+        public static class Properties {
+            public static String incomingLinks = "esb::PropertyGroupMediatorInputConnector::properties::incomingLinks";
+        }
+    }
 
-	/**
-	 * PropertyGroupMediatorOutputConnector view descriptor
-	 * 
-	 */
-	public static class PropertyGroupMediatorOutputConnector {
-		public static class Properties {
-	
-			
-			public static String commentMediators = "esb::PropertyGroupMediatorOutputConnector::properties::commentMediators";
-			
-	
-		}
-	
-	}
+    /**
+     * PropertyGroupMediatorOutputConnector view descriptor
+     * 
+     */
+    public static class PropertyGroupMediatorOutputConnector {
+        public static class Properties {
+            public static String commentMediators = "esb::PropertyGroupMediatorOutputConnector::properties::commentMediators";
+        }
+    }
 
 	/**
 	 * NamespacedProperty view descriptor

@@ -282,7 +282,6 @@ public class MediatorFlowMediatorFlowCompartment22CanonicalEditPolicy extends Ca
             SetViewMutabilityCommand.makeMutable(new EObjectAdapter(host().getNotationView())).execute();
             executeCommand(cmd);
             @SuppressWarnings("unchecked")
-
             List<IAdaptable> nl = (List<IAdaptable>) request.getNewObject();
             createdViews.addAll(nl);
         }

@@ -201,6 +201,7 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
+			    // Start of user code for components addToPart creation
 				if (key == EsbViewsRepository.ScriptMediator.Properties.class) {
 					return createPropertiesGroup(widgetFactory, parent);
 				}
@@ -231,12 +232,9 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 				if (key == EsbViewsRepository.ScriptMediator.Properties.scriptKeys) {
 					return createScriptKeysTableComposition(widgetFactory, filterScriptTypeSubPropertiesGroup);
 				}
-				// Start of user code for Script Static Key addToPart creation
 				if (key == EsbViewsRepository.ScriptMediator.Properties.scriptStaticKey) {
 					return createScriptStaticKey(widgetFactory, filterScriptTypeSubPropertiesGroup);
 				}
-				// End of user code
-				// Start of user code for Script Dynamic Key addToPart creation
 				if (key == EsbViewsRepository.ScriptMediator.Properties.scriptDynamicKey) {
 					return createScriptDynamicKey(widgetFactory, filterScriptTypeSubPropertiesGroup);
 				}

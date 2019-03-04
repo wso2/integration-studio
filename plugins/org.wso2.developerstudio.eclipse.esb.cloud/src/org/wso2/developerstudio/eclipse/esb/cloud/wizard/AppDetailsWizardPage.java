@@ -245,7 +245,7 @@ public class AppDetailsWizardPage extends WizardPage{
                         appNames.setItems(applicationNames);
                         
                     } catch (CloudDeploymentException | InvalidTokenException ex) {
-                        ex.printStackTrace();
+                        log.error("Error getting application list", ex);
                     }
                 }
             }

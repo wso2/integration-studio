@@ -374,7 +374,7 @@ public class FilterMediatorPropertiesEditionPartForm extends SectionPropertiesEd
      */
 	protected Composite createConditionTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
         filterConditionSubPropertiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent,
-                "Condition");
+                "Condition", true);
 		Control itemLabel = createDescription(filterConditionSubPropertiesGroup, EsbViewsRepository.FilterMediator.Properties.conditionType, EsbMessages.FilterMediatorPropertiesEditionPart_ConditionTypeLabel);
 		conditionType = new EMFComboViewer(filterConditionSubPropertiesGroup);
 		conditionType.setContentProvider(new ArrayContentProvider());

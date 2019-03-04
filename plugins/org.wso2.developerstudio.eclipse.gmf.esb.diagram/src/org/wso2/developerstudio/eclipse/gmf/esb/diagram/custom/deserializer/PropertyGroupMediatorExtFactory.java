@@ -13,17 +13,17 @@ import org.apache.synapse.mediators.builtin.PropertyMediator;
 public class PropertyGroupMediatorExtFactory extends PropertyMediatorFactory {
 
     private static PropertyGroupMediatorExtFactory instance;
-    
+
     PropertyGroupMediatorExtFactory() {
     }
-    
+
     public static synchronized PropertyGroupMediatorExtFactory getInstance() {
         if (instance == null) {
             instance = new PropertyGroupMediatorExtFactory();
         }
         return instance;
     }
-    
+
     protected Mediator createSpecificMediator(OMElement omElement) {
         PropertyGroupMediator propertyGroupMediator = new PropertyGroupMediator();
         PropertyMediatorExtFactory propertyMediatorExtFactory = new PropertyMediatorExtFactory();
@@ -36,6 +36,6 @@ public class PropertyGroupMediatorExtFactory extends PropertyMediatorFactory {
             propertyGroupList.add((PropertyMediator) propertyMediator);
         }
         propertyGroupMediator.setPropGroupList(propertyGroupList);
-        return propertyGroupMediator;        
+        return propertyGroupMediator;
     }
 }

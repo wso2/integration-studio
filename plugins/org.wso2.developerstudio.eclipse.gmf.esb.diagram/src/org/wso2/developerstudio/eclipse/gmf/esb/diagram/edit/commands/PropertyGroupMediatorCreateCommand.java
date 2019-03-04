@@ -21,16 +21,17 @@ import org.wso2.developerstudio.eclipse.gmf.esb.PropertyGroupMediator;
 public class PropertyGroupMediatorCreateCommand extends EditElementCommand {
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public PropertyGroupMediatorCreateCommand(CreateElementRequest req) {
         super(req.getLabel(), null, req);
     }
 
     /**
-    * FIXME: replace with setElementToEdit()
-    * @generated
-    */
+     * FIXME: replace with setElementToEdit()
+     * 
+     * @generated
+     */
     protected EObject getElementToEdit() {
         EObject container = ((CreateElementRequest) getRequest()).getContainer();
         if (container instanceof View) {
@@ -40,16 +41,16 @@ public class PropertyGroupMediatorCreateCommand extends EditElementCommand {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public boolean canExecute() {
         return true;
 
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
         PropertyGroupMediator newElement = EsbFactory.eINSTANCE.createPropertyGroupMediator();
 
@@ -63,8 +64,8 @@ public class PropertyGroupMediatorCreateCommand extends EditElementCommand {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     protected void doConfigure(PropertyGroupMediator newElement, IProgressMonitor monitor, IAdaptable info)
             throws ExecutionException {
         IElementType elementType = ((CreateElementRequest) getRequest()).getElementType();

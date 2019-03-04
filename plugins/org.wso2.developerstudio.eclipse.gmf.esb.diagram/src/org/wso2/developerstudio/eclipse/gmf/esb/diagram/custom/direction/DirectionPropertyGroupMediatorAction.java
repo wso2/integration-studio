@@ -5,7 +5,7 @@ import org.eclipse.gef.EditPart;
 import org.eclipse.ui.IWorkbenchPart;
 
 public class DirectionPropertyGroupMediatorAction extends DirectionEsbNodeAction {
-    
+
     EditPart editorPart;
 
     public DirectionPropertyGroupMediatorAction(IWorkbenchPart part) {
@@ -13,13 +13,12 @@ public class DirectionPropertyGroupMediatorAction extends DirectionEsbNodeAction
         setText("Reverse");
         setToolTipText("Set Direction PropertyGroup mediator.");
     }
-    
+
     public void setEditorPart(EditPart editorPart_) {
         editorPart = editorPart_;
     }
 
     protected void doRun(IProgressMonitor progressMonitor) {
-
         Reverse(editorPart);
     }
 }

@@ -417,7 +417,6 @@ public class DBReportMediatorEditPart extends FixedSizedAbstractMediator {
         }
         super.notifyChanged(notification);
     }
-
     /**
      * @generated
      */

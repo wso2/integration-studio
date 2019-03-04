@@ -21,16 +21,17 @@ import org.wso2.developerstudio.eclipse.gmf.esb.PropertyGroupMediatorInputConnec
 public class PropertyGroupMediatorInputConnectorCreateCommand extends EditElementCommand {
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public PropertyGroupMediatorInputConnectorCreateCommand(CreateElementRequest req) {
         super(req.getLabel(), null, req);
     }
 
     /**
-    * FIXME: replace with setElementToEdit()
-    * @generated
-    */
+     * FIXME: replace with setElementToEdit()
+     * 
+     * @generated
+     */
     protected EObject getElementToEdit() {
         EObject container = ((CreateElementRequest) getRequest()).getContainer();
         if (container instanceof View) {
@@ -40,8 +41,8 @@ public class PropertyGroupMediatorInputConnectorCreateCommand extends EditElemen
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public boolean canExecute() {
         PropertyGroupMediator container = (PropertyGroupMediator) getElementToEdit();
         if (container.getInputConnector() != null) {
@@ -52,8 +53,8 @@ public class PropertyGroupMediatorInputConnectorCreateCommand extends EditElemen
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
         PropertyGroupMediatorInputConnector newElement = EsbFactory.eINSTANCE
                 .createPropertyGroupMediatorInputConnector();
@@ -68,8 +69,8 @@ public class PropertyGroupMediatorInputConnectorCreateCommand extends EditElemen
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     protected void doConfigure(PropertyGroupMediatorInputConnector newElement, IProgressMonitor monitor,
             IAdaptable info) throws ExecutionException {
         IElementType elementType = ((CreateElementRequest) getRequest()).getElementType();

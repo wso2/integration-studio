@@ -28,7 +28,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.PropertyGr
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
 
 /**
- * @generated
+ * @generated NOT
  */
 public class PropertyGroupMediatorInputConnectorEditPart extends AbstractMediatorInputConnectorEditPart {
 

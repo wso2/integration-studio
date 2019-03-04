@@ -3945,29 +3945,26 @@ public class EsbElementTypes {
     public static final DiagramElementTypes TYPED_INSTANCE = new DiagramElementTypes(elementTypeImages) {
 
         /**
-        * @generated
-        */
+         * @generated
+         */
         @Override
-
         public boolean isKnownElementType(IElementType elementType) {
             return org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes
                     .isKnownElementType(elementType);
         }
 
         /**
-        * @generated
-        */
+         * @generated
+         */
         @Override
-
         public IElementType getElementTypeForVisualId(int visualID) {
             return org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes.getElementType(visualID);
         }
 
         /**
-        * @generated
-        */
+         * @generated
+         */
         @Override
-
         public ENamedElement getDefiningNamedElement(IAdaptable elementTypeAdapter) {
             return org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes
                     .getElement(elementTypeAdapter);

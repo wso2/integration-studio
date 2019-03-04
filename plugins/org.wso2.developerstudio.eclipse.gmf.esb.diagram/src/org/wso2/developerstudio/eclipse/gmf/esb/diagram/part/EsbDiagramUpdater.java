@@ -22305,32 +22305,32 @@ public class EsbDiagramUpdater {
      */
     public static final DiagramUpdater TYPED_INSTANCE = new DiagramUpdater() {
         /**
-        * @generated
-        */
+         * @generated
+         */
 
         public List<EsbNodeDescriptor> getSemanticChildren(View view) {
             return EsbDiagramUpdater.getSemanticChildren(view);
         }
 
         /**
-        * @generated
-        */
+         * @generated
+         */
 
         public List<EsbLinkDescriptor> getContainedLinks(View view) {
             return EsbDiagramUpdater.getContainedLinks(view);
         }
 
         /**
-        * @generated
-        */
+         * @generated
+         */
 
         public List<EsbLinkDescriptor> getIncomingLinks(View view) {
             return EsbDiagramUpdater.getIncomingLinks(view);
         }
 
         /**
-        * @generated
-        */
+         * @generated
+         */
 
         public List<EsbLinkDescriptor> getOutgoingLinks(View view) {
             return EsbDiagramUpdater.getOutgoingLinks(view);

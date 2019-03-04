@@ -72,11 +72,11 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
      */
     protected boolean provides(CreateViewForKindOperation op) {
         /*
-            if (op.getViewKind() == Node.class)
-              return getNodeViewClass(op.getSemanticAdapter(), op.getContainerView(), op.getSemanticHint()) != null;
-            if (op.getViewKind() == Edge.class)
-              return getEdgeViewClass(op.getSemanticAdapter(), op.getContainerView(), op.getSemanticHint()) != null;
-        */
+         * if (op.getViewKind() == Node.class)
+         * return getNodeViewClass(op.getSemanticAdapter(), op.getContainerView(), op.getSemanticHint()) != null;
+         * if (op.getViewKind() == Edge.class)
+         * return getEdgeViewClass(op.getSemanticAdapter(), op.getContainerView(), op.getSemanticHint()) != null;
+         */
         return true;
     }
 
@@ -1728,7 +1728,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
         stampShortcut(containerView, node);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -1764,7 +1764,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(ProxyServiceEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -1799,7 +1799,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(ProxyOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -1833,7 +1833,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(ProxyInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -1867,7 +1867,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(ProxyFaultInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -1901,7 +1901,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(ProxyInSequenceInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -1935,7 +1935,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(ProxyServiceContainerEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -1969,7 +1969,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(ProxyServiceSequenceAndEndpointContainerEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -2003,7 +2003,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(MediatorFlowEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -2039,7 +2039,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(DropMediatorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -2074,7 +2074,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(MessageMediatorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -2108,7 +2108,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(MessageInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -2142,7 +2142,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(MessageOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -2176,7 +2176,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(DropMediatorInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -2210,7 +2210,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(PropertyMediatorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -2245,7 +2245,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(FilterMediatorInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -2279,7 +2279,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(FilterMediatorOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -2313,7 +2313,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(FilterMediatorPassOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -2347,7 +2347,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(FilterMediatorFailOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -2381,7 +2381,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(FilterContainerEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -2415,7 +2415,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(FilterPassContainerEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -2449,7 +2449,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(MediatorFlow7EditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -2485,7 +2485,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(LogMediatorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -2517,7 +2517,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(MergeNodeEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -2555,7 +2555,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(MergeNodeFirstInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -2589,7 +2589,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(MergeNodeSecondInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -2623,7 +2623,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(MergeNodeOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -2657,7 +2657,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(SequencesEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -2691,7 +2691,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(MediatorFlow5EditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -2727,7 +2727,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(SequencesInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -2761,7 +2761,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(SequencesOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -2792,7 +2792,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(EndpointDiagramEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -2832,7 +2832,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(DefaultEndPoint2EditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -2867,7 +2867,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(DefaultEndPointInputConnector2EditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -2901,7 +2901,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(DefaultEndPointOutputConnector2EditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -2935,7 +2935,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(AddressEndPoint2EditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -2970,7 +2970,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(AddressEndPointInputConnector2EditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -3004,7 +3004,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(AddressEndPointOutputConnector2EditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -3038,7 +3038,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(FailoverEndPoint2EditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -3074,7 +3074,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(FailoverEndPointInputConnector2EditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -3108,7 +3108,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(FailoverEndPointOutputConnector2EditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -3142,7 +3142,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(FailoverEndPointWestOutputConnector2EditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -3176,7 +3176,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(MediatorFlow27EditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -3212,7 +3212,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(RecipientListEndPoint2EditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -3246,7 +3246,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(RecipientListEndPointInputConnector2EditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -3280,7 +3280,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(RecipientListEndPointOutputConnector2EditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -3314,7 +3314,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(RecipientListEndPointWestOutputConnector2EditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -3348,7 +3348,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(MediatorFlow28EditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -3384,7 +3384,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(WSDLEndPoint2EditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -3419,7 +3419,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(WSDLEndPointInputConnector2EditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -3453,7 +3453,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(WSDLEndPointOutputConnector2EditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -3487,7 +3487,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(LoadBalanceEndPoint2EditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -3523,7 +3523,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(LoadBalanceEndPointInputConnector2EditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -3557,7 +3557,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(LoadBalanceEndPointOutputConnector2EditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -3591,7 +3591,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(LoadBalanceEndPointWestOutputConnector2EditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -3625,7 +3625,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(MediatorFlow29EditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -3661,7 +3661,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(HTTPEndpoint2EditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -3695,7 +3695,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(HTTPEndPointInputConnector2EditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -3729,7 +3729,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(HTTPEndPointOutputConnector2EditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -3763,7 +3763,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(TemplateEndpoint2EditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -3797,7 +3797,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(TemplateEndpointInputConnector2EditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -3831,7 +3831,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(TemplateEndpointOutputConnector2EditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -3865,7 +3865,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(LocalEntryEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -3896,7 +3896,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(TemplateEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -3936,7 +3936,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(Sequences2EditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -3967,7 +3967,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(EndpointDiagram2EditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -4007,7 +4007,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(TaskEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -4038,7 +4038,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(SynapseAPIEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -4078,7 +4078,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(APIResourceEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -4112,7 +4112,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(APIResourceInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -4146,7 +4146,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(APIResourceOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -4180,7 +4180,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(APIResourceOutSequenceOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -4214,7 +4214,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(APIResourceFaultInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -4248,7 +4248,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(ProxyServiceContainer2EditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -4282,7 +4282,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(APIResourceInSequenceInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -4316,7 +4316,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(ComplexEndpointsEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -4350,7 +4350,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(MediatorFlow18EditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -4386,7 +4386,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(ComplexEndpointsOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -4420,7 +4420,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(MessageStoreEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -4454,7 +4454,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(MessageProcessorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -4488,7 +4488,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(InboundEndpointEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -4522,7 +4522,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(InboundEndpointSequenceInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -4556,7 +4556,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(InboundEndpointSequenceOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -4590,7 +4590,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(InboundEndpointOnErrorSequenceInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -4624,7 +4624,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(InboundEndpointOnErrorSequenceOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -4655,7 +4655,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(InboundEndpointContainerEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -4690,7 +4690,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(InboundEndpointSequenceContainerEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -4728,7 +4728,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(MediatorFlow25EditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -4761,7 +4761,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(InboundEndpointOnErrorSequenceContainerEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -4799,7 +4799,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(MediatorFlow26EditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -4835,7 +4835,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(LogMediatorInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -4869,7 +4869,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(LogMediatorOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -4903,7 +4903,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(EnrichMediatorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -4938,7 +4938,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(PropertyMediatorInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -5110,7 +5110,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(ThrottleMediatorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -5145,7 +5145,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(EnrichMediatorInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -5179,7 +5179,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(EnrichMediatorOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -5213,7 +5213,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(XSLTMediatorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -5248,7 +5248,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(XSLTMediatorInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -5282,7 +5282,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(XSLTMediatorOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -5316,7 +5316,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(SwitchMediatorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -5350,7 +5350,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(SwitchMediatorInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -5384,7 +5384,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(SwitchCaseBranchOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -5418,7 +5418,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(SwitchDefaultBranchOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -5452,7 +5452,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(SwitchMediatorOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -5486,7 +5486,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(SwitchMediatorContainerEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -5520,7 +5520,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(SwitchCaseParentContainerEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -5554,7 +5554,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(SwitchCaseContainerEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -5588,7 +5588,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(MediatorFlow2EditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -5624,7 +5624,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(SequenceEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -5659,7 +5659,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(SequenceInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -5693,7 +5693,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(SequenceOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -5727,7 +5727,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(EventMediatorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -5762,7 +5762,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(EventMediatorInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -5796,7 +5796,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(EventMediatorOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -5830,7 +5830,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(EntitlementMediatorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -5865,7 +5865,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(EntitlementMediatorInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -5899,7 +5899,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(EntitlementMediatorOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -5933,7 +5933,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(EntitlementMediatorOnRejectOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -5967,7 +5967,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(EntitlementMediatorOnAcceptOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -6001,7 +6001,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(EntitlementMediatorAdviceOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -6035,7 +6035,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(EntitlementMediatorObligationsOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -6069,7 +6069,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(EntitlementContainerEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -6103,7 +6103,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(EntitlementOnRejectContainerEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -6137,7 +6137,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(MediatorFlow21EditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -6173,7 +6173,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(ClassMediatorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -6208,7 +6208,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(ClassMediatorInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -6242,7 +6242,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(ClassMediatorOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -6311,7 +6311,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(SpringMediatorInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -6345,7 +6345,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(SpringMediatorOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -6379,7 +6379,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(ScriptMediatorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -6414,7 +6414,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(ScriptMediatorInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -6448,7 +6448,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(ScriptMediatorOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -6482,7 +6482,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(FaultMediatorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -6517,7 +6517,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(FaultMediatorInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -6551,7 +6551,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(FaultMediatorOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -6585,7 +6585,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(XQueryMediatorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -6620,7 +6620,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(XQueryMediatorInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -6654,7 +6654,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(XQueryMediatorOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -6688,7 +6688,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(CommandMediatorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -6723,7 +6723,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(CommandMediatorInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -6757,7 +6757,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(CommandMediatorOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -6791,7 +6791,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(DBLookupMediatorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -6826,7 +6826,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(DBLookupMediatorInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -6860,7 +6860,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(DBLookupMediatorOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -6894,7 +6894,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(DBReportMediatorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -6929,7 +6929,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(DBReportMediatorInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -6963,7 +6963,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(DBReportMediatorOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -6997,7 +6997,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(SmooksMediatorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -7032,7 +7032,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(SmooksMediatorInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -7066,7 +7066,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(SmooksMediatorOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -7100,7 +7100,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(SendMediatorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -7134,7 +7134,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(SendMediatorInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -7168,7 +7168,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(SendMediatorOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -7202,7 +7202,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(SendMediatorEndpointOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -7236,7 +7236,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(MediatorFlow19EditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -7272,7 +7272,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(HeaderMediatorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -7307,7 +7307,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(FailoverEndPointInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -7341,7 +7341,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(FailoverEndPointOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -7375,7 +7375,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(FailoverEndPointWestOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -7409,7 +7409,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(RecipientListEndPointEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -7445,7 +7445,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(RecipientListEndPointInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -7479,7 +7479,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(RecipientListEndPointOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -7513,7 +7513,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(RecipientListEndPointWestOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -7547,7 +7547,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(WSDLEndPointEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -7582,7 +7582,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(WSDLEndPointInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -7616,7 +7616,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(WSDLEndPointOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -7650,7 +7650,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(NamedEndpointEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -7685,7 +7685,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(NamedEndpointInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -7719,7 +7719,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(NamedEndpointOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -7753,7 +7753,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(LoadBalanceEndPointEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -7789,7 +7789,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(LoadBalanceEndPointInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -7823,7 +7823,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(LoadBalanceEndPointOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -7857,7 +7857,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(LoadBalanceEndPointWestOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -7891,7 +7891,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(APIResourceEndpointEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -7925,7 +7925,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(APIResourceEndpointInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -7959,7 +7959,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(APIResourceEndpointOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -7993,7 +7993,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(AddressingEndpointEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -8029,7 +8029,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(AddressingEndpointInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -8063,7 +8063,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(AddressingEndpointOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -8097,7 +8097,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(HTTPEndpointEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -8132,7 +8132,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(HTTPEndPointInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -8166,7 +8166,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(HTTPEndPointOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -8200,7 +8200,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(TemplateEndpointEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -8235,7 +8235,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(TemplateEndpointInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -8269,7 +8269,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(TemplateEndpointOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -8303,7 +8303,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(CloudConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -8338,7 +8338,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(CloudConnectorInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -8372,7 +8372,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(CloudConnectorOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -8406,7 +8406,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(CloudConnectorOperationEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -8442,7 +8442,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(CloudConnectorOperationInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -8476,7 +8476,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(CloudConnectorOperationOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -8510,7 +8510,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(LoopBackMediatorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -8545,7 +8545,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(LoopBackMediatorInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -8579,7 +8579,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(LoopBackMediatorOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -8613,7 +8613,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(RespondMediatorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -8648,7 +8648,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(RespondMediatorInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -8682,7 +8682,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(RespondMediatorOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -8716,7 +8716,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(CallMediatorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -8750,7 +8750,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(CallMediatorInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -8784,7 +8784,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(CallMediatorOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -8818,7 +8818,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(CallMediatorEndpointOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -8852,7 +8852,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(MediatorFlow20EditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -8888,7 +8888,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(DataMapperMediatorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -8924,7 +8924,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(DataMapperMediatorInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -8958,7 +8958,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(DataMapperMediatorOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -8992,7 +8992,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(FastXSLTMediatorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -9027,7 +9027,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(FastXSLTMediatorInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -9061,7 +9061,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(FastXSLTMediatorOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -9095,7 +9095,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(ForEachMediatorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -9130,7 +9130,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(ForEachMediatorInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -9164,7 +9164,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(ForEachMediatorOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -9198,7 +9198,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(ForEachMediatorTargetOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -9232,7 +9232,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(MediatorFlow30EditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -9268,7 +9268,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(PublishEventMediatorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
         FontStyle nodeFontStyle = (FontStyle) node.getStyle(NotationPackage.Literals.FONT_STYLE);
         if (nodeFontStyle != null) {
@@ -9303,7 +9303,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(PublishEventMediatorInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -9337,7 +9337,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(PublishEventMediatorOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -9371,7 +9371,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(EntitlementOnAcceptContainerEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -9405,7 +9405,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(MediatorFlow22EditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -9441,7 +9441,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(EntitlementAdviceContainerEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -9475,7 +9475,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(MediatorFlow23EditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -9511,7 +9511,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(EntitlementObligationsContainerEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -9545,7 +9545,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(MediatorFlow24EditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -9581,7 +9581,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(SwitchDefaultParentContainerEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -9615,7 +9615,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(SwitchDefaultContainerEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -9649,7 +9649,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(ProxyServiceFaultContainerEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -9683,7 +9683,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(MediatorFlow6EditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -9719,7 +9719,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(ProxyOutSequenceOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -9753,7 +9753,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(HeaderMediatorInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -9787,7 +9787,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(HeaderMediatorOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -9821,7 +9821,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(CloneMediatorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -9856,7 +9856,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(CloneMediatorInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -9890,7 +9890,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(CloneMediatorOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -9924,7 +9924,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(CloneMediatorTargetOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -9958,7 +9958,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(CloneMediatorContainerEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -9992,7 +9992,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(CloneTargetContainerEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -10026,7 +10026,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(MediatorFlow11EditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -10062,7 +10062,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(CacheMediatorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -10096,7 +10096,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(CacheMediatorInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -10130,7 +10130,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(CacheMediatorOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -10164,7 +10164,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(CacheMediatorOnHitOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -10198,7 +10198,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(MediatorFlow13EditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -10234,7 +10234,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(IterateMediatorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -10269,7 +10269,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(IterateMediatorInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -10303,7 +10303,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(IterateMediatorOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -10337,7 +10337,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(IterateMediatorTargetOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -10371,7 +10371,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(MediatorFlow12EditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -10407,7 +10407,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(CalloutMediatorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -10442,7 +10442,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(AggregateMediatorInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -10476,7 +10476,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(AggregateMediatorOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -10510,7 +10510,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(AggregateMediatorOnCompleteOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -10544,7 +10544,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(MediatorFlow3EditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -10580,7 +10580,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(StoreMediatorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -10615,7 +10615,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(StoreMediatorInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -10649,7 +10649,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(StoreMediatorOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -10683,7 +10683,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(BuilderMediatorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -10718,7 +10718,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(BuilderMediatorInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -10752,7 +10752,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(BuilderMediatorOutputConectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -10786,7 +10786,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(CallTemplateMediatorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -10822,7 +10822,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(CallTemplateMediatorInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -10856,7 +10856,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(CallTemplateMediatorOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -10890,7 +10890,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(PayloadFactoryMediatorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -10926,7 +10926,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(PayloadFactoryMediatorInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -10960,7 +10960,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(PayloadFactoryMediatorOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -10994,7 +10994,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(EnqueueMediatorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -11029,7 +11029,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(EnqueueMediatorInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -11063,7 +11063,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(EnqueueMediatorOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -11097,7 +11097,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(URLRewriteMediatorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -11133,7 +11133,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(URLRewriteMediatorInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -11167,7 +11167,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(URLRewriteMediatorOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -11201,7 +11201,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(ValidateMediatorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -11235,7 +11235,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(ValidateMediatorInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -11269,7 +11269,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(ValidateMediatorOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -11303,7 +11303,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(ValidateMediatorOnFailOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -11337,7 +11337,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(MediatorFlow14EditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -11373,7 +11373,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(RouterMediatorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -11407,7 +11407,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(RouterMediatorInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -11441,7 +11441,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(RouterMediatorOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -11475,7 +11475,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(RouterMediatorTargetOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -11509,7 +11509,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(RouterMediatorContainerEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -11543,7 +11543,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(RouterTargetContainerEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -11577,7 +11577,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(MediatorFlow15EditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -11613,7 +11613,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(ConditionalRouterMediatorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -11649,7 +11649,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(ConditionalRouterMediatorInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -11683,7 +11683,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(ConditionalRouterMediatorOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -11717,7 +11717,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(ConditionalRouterMediatorAdditionalOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -11751,7 +11751,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(MediatorFlow16EditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -11787,7 +11787,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(BAMMediatorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -11822,7 +11822,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(BAMMediatorInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -11856,7 +11856,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(BAMMediatorOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -11890,7 +11890,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(BeanMediatorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -11925,7 +11925,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(BeanMediatorInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -11959,7 +11959,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(BeanMediatorOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -11993,7 +11993,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(EJBMediatorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -12028,7 +12028,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(EJBMediatorInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -12062,7 +12062,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(EJBMediatorOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -12096,7 +12096,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(DefaultEndPointEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -12131,7 +12131,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(MediatorFlow4EditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -12167,7 +12167,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(FilterFailContainerEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -12201,7 +12201,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(MediatorFlow8EditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -12237,7 +12237,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(ThrottleOnRejectContainerEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -12271,7 +12271,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(MediatorFlow10EditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -12307,7 +12307,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(CalloutMediatorInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -12341,7 +12341,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(CalloutMediatorOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -12375,7 +12375,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(TransactionMediatorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -12411,7 +12411,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(TransactionMediatorInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -12445,7 +12445,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(TransactionMediatorOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -12479,7 +12479,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(RMSequenceMediatorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -12515,7 +12515,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(ThrottleMediatorInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -12549,7 +12549,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(ThrottleMediatorOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -12583,7 +12583,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(ThrottleMediatorOnAcceptOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -12617,7 +12617,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(ThrottleMediatorOnRejectOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -12651,7 +12651,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(ThrottleContainerEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -12685,7 +12685,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(ThrottleOnAcceptContainerEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -12719,7 +12719,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(MediatorFlow9EditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -12755,7 +12755,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(FilterMediatorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -12790,7 +12790,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(RMSequenceMediatorInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -12824,7 +12824,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(RMSequenceMediatorOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -12858,7 +12858,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(RuleMediatorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -12892,7 +12892,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(RuleMediatorInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -12926,7 +12926,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(RuleMediatorOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -12960,7 +12960,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(RuleMediatorChildMediatorsOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -12994,7 +12994,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(MediatorFlow17EditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -13030,7 +13030,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(OAuthMediatorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -13065,7 +13065,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(OAuthMediatorInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -13099,7 +13099,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(OAuthMediatorOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -13133,7 +13133,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(AggregateMediatorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -13168,7 +13168,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(DefaultEndPointInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -13202,7 +13202,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(DefaultEndPointOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -13236,7 +13236,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(AddressEndPointEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -13271,7 +13271,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(AddressEndPointInputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -13305,7 +13305,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(AddressEndPointOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -13339,7 +13339,7 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.setType(EsbVisualIDRegistry.getType(FailoverEndPointEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
-        // initializeFromPreferences 
+        // initializeFromPreferences
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
@@ -13429,9 +13429,9 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
      */
     private Node createCompartment(View owner, String hint, boolean canCollapse, boolean hasTitle, boolean canSort,
             boolean canFilter) {
-        //SemanticListCompartment rv = NotationFactory.eINSTANCE.createSemanticListCompartment();
-        //rv.setShowTitle(showTitle);
-        //rv.setCollapsed(isCollapsed);
+        // SemanticListCompartment rv = NotationFactory.eINSTANCE.createSemanticListCompartment();
+        // rv.setShowTitle(showTitle);
+        // rv.setCollapsed(isCollapsed);
         Node rv;
         if (canCollapse) {
             rv = NotationFactory.eINSTANCE.createBasicCompartment();

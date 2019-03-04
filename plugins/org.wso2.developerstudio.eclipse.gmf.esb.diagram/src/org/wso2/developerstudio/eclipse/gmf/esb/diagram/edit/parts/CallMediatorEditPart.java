@@ -68,7 +68,7 @@ import org.eclipse.papyrus.infra.gmfdiag.css.CSSNodeImpl;
  * @generated NOT
  */
 public class CallMediatorEditPart extends SingleCompartmentComplexFiguredAbstractMediator {
-
+    
     private static String CALL_MEDIATOR_QNAME = "call";
     public IFigure endpointOutputConnector;
     /**
@@ -348,7 +348,7 @@ public class CallMediatorEditPart extends SingleCompartmentComplexFiguredAbstrac
             return new CustomToolTip().getCustomToolTipShape(toolTipMessage);
         }
     }
-
+    
     /**
      * @generated NOT
      * 
@@ -368,8 +368,8 @@ public class CallMediatorEditPart extends SingleCompartmentComplexFiguredAbstrac
                     CallMediatorSerializer callMediatorSerializer = new CallMediatorSerializer();
                     OMElement omElement = callMediatorSerializer.serializeSpecificMediator(callMediator);
                     // This will add a marker in the visual view if the data model is incomplete
-                    if (StringUtils.isEmpty(
-                            MediatorValidationUtil.validateMediatorsFromOEMElement(omElement, CALL_MEDIATOR_QNAME))) {
+                    if (StringUtils
+                            .isEmpty(MediatorValidationUtil.validateMediatorsFromOEMElement(omElement, CALL_MEDIATOR_QNAME))) {
                         GraphicalValidatorUtil.removeValidationMark(this);
                     } else {
                         GraphicalValidatorUtil.addValidationMark(this);

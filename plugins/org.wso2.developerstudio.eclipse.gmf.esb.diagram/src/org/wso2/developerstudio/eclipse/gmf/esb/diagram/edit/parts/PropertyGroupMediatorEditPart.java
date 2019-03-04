@@ -51,25 +51,25 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry
 public class PropertyGroupMediatorEditPart extends FixedSizedAbstractMediator {
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static final int VISUAL_ID = 3788;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     protected IFigure contentPane;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public PropertyGroupMediatorEditPart(View view) {
         super(view);
     }
 
     /**
-    * @generated NOT
-    */
+     * @generated NOT
+     */
     protected void createDefaultEditPolicies() {
         installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicy());
         super.createDefaultEditPolicies();
@@ -80,13 +80,14 @@ public class PropertyGroupMediatorEditPart extends FixedSizedAbstractMediator {
         installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
         // For handle Double click Event.
         installEditPolicy(EditPolicyRoles.OPEN_ROLE, new ShowPropertyViewEditPolicy());
-        // XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
+        // XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable
+        // editpolicies
         // removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     protected LayoutEditPolicy createLayoutEditPolicy() {
         org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy lep = new org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy() {
 
@@ -116,8 +117,8 @@ public class PropertyGroupMediatorEditPart extends FixedSizedAbstractMediator {
     }
 
     /**
-    * @generated NOT
-    */
+     * @generated NOT
+     */
     protected IFigure createNodeShape() {
         return primaryShape = new PropertyGroupMediatorFigure(new Color(null, 41, 128, 185)) {
             public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
@@ -131,15 +132,15 @@ public class PropertyGroupMediatorEditPart extends FixedSizedAbstractMediator {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public PropertyGroupMediatorFigure getPrimaryShape() {
         return (PropertyGroupMediatorFigure) primaryShape;
     }
 
     /**
-    * @generated NOT
-    */
+     * @generated NOT
+     */
     protected boolean addFixedChild(EditPart childEditPart) {
         if (childEditPart instanceof PropertyGroupMediatorDescriptionEditPart) {
             ((PropertyGroupMediatorDescriptionEditPart) childEditPart)
@@ -164,8 +165,8 @@ public class PropertyGroupMediatorEditPart extends FixedSizedAbstractMediator {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     protected boolean removeFixedChild(EditPart childEditPart) {
         if (childEditPart instanceof PropertyGroupMediatorDescriptionEditPart) {
             return true;
@@ -184,8 +185,8 @@ public class PropertyGroupMediatorEditPart extends FixedSizedAbstractMediator {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     protected void addChildVisual(EditPart childEditPart, int index) {
         if (addFixedChild(childEditPart)) {
             return;
@@ -194,8 +195,8 @@ public class PropertyGroupMediatorEditPart extends FixedSizedAbstractMediator {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     protected void removeChildVisual(EditPart childEditPart) {
         if (removeFixedChild(childEditPart)) {
             return;
@@ -204,8 +205,8 @@ public class PropertyGroupMediatorEditPart extends FixedSizedAbstractMediator {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     protected IFigure getContentPaneFor(IGraphicalEditPart editPart) {
         if (editPart instanceof IBorderItemEditPart) {
             return getBorderedFigure().getBorderItemContainer();
@@ -214,21 +215,21 @@ public class PropertyGroupMediatorEditPart extends FixedSizedAbstractMediator {
     }
 
     /**
-    * @generated
-    */
-//    protected NodeFigure createNodePlate() {
-//        DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(40, 40);
-//        return result;
-//    }
+     * @generated
+     */
+    // protected NodeFigure createNodePlate() {
+    // DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(40, 40);
+    // return result;
+    // }
 
     /**
-    * Creates figure for this edit part.
-    * 
-    * Body of this method does not depend on settings in generation model
-    * so you may safely remove <i>generated</i> tag and modify it.
-    * 
-    * @generated NOT
-    */
+     * Creates figure for this edit part.
+     * 
+     * Body of this method does not depend on settings in generation model
+     * so you may safely remove <i>generated</i> tag and modify it.
+     * 
+     * @generated NOT
+     */
     protected NodeFigure createMainFigure() {
         NodeFigure figure = createNodePlate();
         figure.setLayoutManager(new ToolbarLayout(true));
@@ -239,11 +240,12 @@ public class PropertyGroupMediatorEditPart extends FixedSizedAbstractMediator {
     }
 
     /**
-    * Default implementation treats passed figure as content pane.
-    * Respects layout one may have set for generated figure.
-    * @param nodeShape instance of generated figure class
-    * @generated
-    */
+     * Default implementation treats passed figure as content pane.
+     * Respects layout one may have set for generated figure.
+     * 
+     * @param nodeShape instance of generated figure class
+     * @generated
+     */
     protected IFigure setupContentPane(IFigure nodeShape) {
         if (nodeShape.getLayoutManager() == null) {
             ConstrainedToolbarLayout layout = new ConstrainedToolbarLayout();
@@ -254,8 +256,8 @@ public class PropertyGroupMediatorEditPart extends FixedSizedAbstractMediator {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public IFigure getContentPane() {
         if (contentPane != null) {
             return contentPane;
@@ -264,8 +266,8 @@ public class PropertyGroupMediatorEditPart extends FixedSizedAbstractMediator {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     protected void setForegroundColor(Color color) {
         if (primaryShape != null) {
             primaryShape.setForegroundColor(color);
@@ -273,8 +275,8 @@ public class PropertyGroupMediatorEditPart extends FixedSizedAbstractMediator {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     protected void setBackgroundColor(Color color) {
         if (primaryShape != null) {
             primaryShape.setBackgroundColor(color);
@@ -282,8 +284,8 @@ public class PropertyGroupMediatorEditPart extends FixedSizedAbstractMediator {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     protected void setLineWidth(int width) {
         if (primaryShape instanceof Shape) {
             ((Shape) primaryShape).setLineWidth(width);
@@ -291,20 +293,20 @@ public class PropertyGroupMediatorEditPart extends FixedSizedAbstractMediator {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     protected void setLineType(int style) {
         if (primaryShape instanceof Shape) {
             ((Shape) primaryShape).setLineStyle(style);
         }
     }
 
-//    /**
-//    * @generated
-//    */
-//    public EditPart getPrimaryChildEditPart() {
-//        return getChildBySemanticHint(EsbVisualIDRegistry.getType(PropertyGroupMediatorDescriptionEditPart.VISUAL_ID));
-//    }
+    // /**
+    // * @generated
+    // */
+    // public EditPart getPrimaryChildEditPart() {
+    // return getChildBySemanticHint(EsbVisualIDRegistry.getType(PropertyGroupMediatorDescriptionEditPart.VISUAL_ID));
+    // }
 
     /**
      * @generated
@@ -325,19 +327,19 @@ public class PropertyGroupMediatorEditPart extends FixedSizedAbstractMediator {
          */
         public PropertyGroupMediatorFigure(Color borderColor) {
 
-//            FlowLayout layoutThis = new FlowLayout();
-//            layoutThis.setStretchMinorAxis(false);
-//            layoutThis.setMinorAlignment(FlowLayout.ALIGN_LEFTTOP);
-//
-//            layoutThis.setMajorAlignment(FlowLayout.ALIGN_LEFTTOP);
-//            layoutThis.setMajorSpacing(5);
-//            layoutThis.setMinorSpacing(5);
-//            layoutThis.setHorizontal(true);
-//
-//            this.setLayoutManager(layoutThis);
-//
-//            this.setBackgroundColor(THIS_BACK);
-//            createContents();
+            // FlowLayout layoutThis = new FlowLayout();
+            // layoutThis.setStretchMinorAxis(false);
+            // layoutThis.setMinorAlignment(FlowLayout.ALIGN_LEFTTOP);
+            //
+            // layoutThis.setMajorAlignment(FlowLayout.ALIGN_LEFTTOP);
+            // layoutThis.setMajorSpacing(5);
+            // layoutThis.setMinorSpacing(5);
+            // layoutThis.setHorizontal(true);
+            //
+            // this.setLayoutManager(layoutThis);
+            //
+            // this.setBackgroundColor(THIS_BACK);
+            // createContents();
             super(borderColor, false);
             this.setBackgroundColor(THIS_BACK);
             createContents();
@@ -367,7 +369,7 @@ public class PropertyGroupMediatorEditPart extends FixedSizedAbstractMediator {
         public WrappingLabel getFigurePropertyGroupMediatorDescriptionFigure() {
             return propertyMediatorDescriptionLabel;
         }
-        
+
         public String getIconPath() {
             return PROPERTY_MEDIATOR_ICON_PATH;
         }

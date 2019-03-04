@@ -14837,24 +14837,24 @@ public class EsbVisualIDRegistry {
      */
     public static final DiagramStructure TYPED_INSTANCE = new DiagramStructure() {
         /**
-        * @generated
-        */
+         * @generated
+         */
 
         public int getVisualID(View view) {
             return org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry.getVisualID(view);
         }
 
         /**
-        * @generated
-        */
+         * @generated
+         */
 
         public String getModelID(View view) {
             return org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry.getModelID(view);
         }
 
         /**
-        * @generated
-        */
+         * @generated
+         */
 
         public int getNodeVisualID(View containerView, EObject domainElement) {
             return org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry
@@ -14862,8 +14862,8 @@ public class EsbVisualIDRegistry {
         }
 
         /**
-        * @generated
-        */
+         * @generated
+         */
 
         public boolean checkNodeVisualID(View containerView, EObject domainElement, int candidate) {
             return org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry
@@ -14871,8 +14871,8 @@ public class EsbVisualIDRegistry {
         }
 
         /**
-        * @generated
-        */
+         * @generated
+         */
 
         public boolean isCompartmentVisualID(int visualID) {
             return org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry
@@ -14880,8 +14880,8 @@ public class EsbVisualIDRegistry {
         }
 
         /**
-        * @generated
-        */
+         * @generated
+         */
 
         public boolean isSemanticLeafVisualID(int visualID) {
             return org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry

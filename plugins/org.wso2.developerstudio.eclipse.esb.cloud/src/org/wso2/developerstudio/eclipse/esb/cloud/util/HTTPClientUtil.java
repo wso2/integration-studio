@@ -52,6 +52,12 @@ public class HTTPClientUtil {
     
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
+    /**
+     * Send HTTP GET request
+     * 
+     * @param url
+     * @return
+     */
     public String sendGet(String url){
 
         HttpClient client = HttpClientBuilder.create().build();
@@ -75,6 +81,17 @@ public class HTTPClientUtil {
         return result.toString();
     }
 
+    /**
+     * Send HTTP POST request with form data
+     * 
+     * @param url
+     * @param headers
+     * @param params
+     * @param cookieStore
+     * @return
+     * @throws InvalidTokenException
+     * @throws CloudDeploymentException
+     */
     public static String sendPostWithFormData(String url, Map<String, String> headers, Map<String, String> params, CookieStore cookieStore) throws InvalidTokenException, CloudDeploymentException{
 
         HttpClient client = HttpClientBuilder.create().build();
@@ -121,6 +138,17 @@ public class HTTPClientUtil {
         return result.toString();
     }
 
+    /**
+     * Send HTTP POST data with multipart form data
+     * 
+     * @param url
+     * @param params
+     * @param files
+     * @param cookieStore
+     * @return
+     * @throws CloudDeploymentException
+     * @throws InvalidTokenException
+     */
     public static String sendPostWithMulipartFormData(String url, Map<String, String> params, Map<String, String> files, CookieStore cookieStore) throws CloudDeploymentException, InvalidTokenException{
 
         HttpClient client = HttpClientBuilder.create().build();
@@ -164,28 +192,21 @@ public class HTTPClientUtil {
         return result.toString();
     }
     
+    /**
+     * Handles error statuses
+     * 
+     * @param status
+     * @param response
+     * @throws InvalidTokenException
+     * @throws CloudDeploymentException
+     */
     private static void handleResponseStatus(int status, String response) throws InvalidTokenException, CloudDeploymentException {
         if (status == 401) {
             throw new InvalidTokenException("Failed to authenticate user - Please log in!");
         } else if (status != 200 && (response == "" || response == null)){
             throw new CloudDeploymentException("Failed to complete request..!");
-        } else if (status != 200) {
-            throw new CloudDeploymentException(mapResponse(response));
-        }
+        } 
     }
     
-    private static String mapResponse(String response) {
-        String message;
-        switch(response) {
-        case "Bad request : applicationRevision is required!" :
-           message = ResponseMessageConstants.ErrorMessages.VERSION_EXISTS;
-           break; 
-        case "Bad request : Application with same name and version already exists!":
-            message = ResponseMessageConstants.ErrorMessages.APPLICATION_EXISTS;
-            break;
-        default :
-           message = response;
-        }
-        return message;
-    }
+
 }

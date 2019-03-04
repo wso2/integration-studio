@@ -47,7 +47,7 @@ public class CloudDeploymentWizardConstants {
 
     public static class SuccessMessages {
         public static final String SUCCESSFUL_TITLE = "Successful";
-        public static final String DEPLOY_TO_CLOUD_SUCCESS_MESSAGE = "Your application has been successfully deployed to WSO2 Intgeration Cloud. \nTry it out using the below endpoints!";
+        public static final String DEPLOY_TO_CLOUD_SUCCESS_MESSAGE = "Your application has been successfully deployed to WSO2 Integeration Cloud. \nTry it out using the below endpoints!";
         public static final String SUCCESS_CREATING_APPLICATION_MSG = "Please wait while your application is being deployed to the cloud. You will be notified once it is ready.";
     }
     

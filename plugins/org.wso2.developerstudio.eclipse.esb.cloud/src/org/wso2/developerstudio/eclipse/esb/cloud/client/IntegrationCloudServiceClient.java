@@ -29,6 +29,7 @@ import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.CloudDeploymentExce
 import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.InvalidTokenException;
 import org.wso2.developerstudio.eclipse.esb.cloud.model.Application;
 import org.wso2.developerstudio.eclipse.esb.cloud.resources.CloudServiceConstants;
+import org.wso2.developerstudio.eclipse.esb.cloud.resources.ResponseMessageConstants;
 import org.wso2.developerstudio.eclipse.esb.cloud.util.HTTPClientUtil;
 import org.wso2.developerstudio.eclipse.esb.cloud.util.JsonUtils;
 
@@ -124,7 +125,7 @@ public class IntegrationCloudServiceClient {
         data.put("versionId", versionId);
 
         String response = HTTPClientUtil.sendPostWithFormData(getAppUrl, new HashMap<String, String>(), data, cookieStore);
-
+        
         if (null != response && !"null".equals(response)) {
             JsonElement endpointData = new JsonParser().parse(response);
             JsonObject dataJson = endpointData.getAsJsonObject().get("data").getAsJsonObject();
@@ -166,6 +167,8 @@ public class IntegrationCloudServiceClient {
         
         String response = HTTPClientUtil.sendPostWithMulipartFormData(createAppUrl, data, files, cookieStore);
         
+        mapResponse(response);
+        
         if (response.equals(NO_RESOURCES_ERROR)) {
             throw new CloudDeploymentException(NO_RESOURCES_ERROR);
         } else if (response.equals(VERSION_EXISTS_ERROR)) {
@@ -176,7 +179,27 @@ public class IntegrationCloudServiceClient {
     public CookieStore getCookieStore() {
         return cookieStore;
     }
-
+    
+    /**
+     * Maps responses to exception messages
+     * 
+     * @param response
+     * @return
+     * @throws CloudDeploymentException 
+     */
+    private static String mapResponse(String response) throws CloudDeploymentException {
+        String message;
+        switch(response) {
+        case "Bad request : applicationRevision is required!" :
+           message = ResponseMessageConstants.ErrorMessages.VERSION_EXISTS;
+           throw new CloudDeploymentException(message);
+        case "Bad request : Application with same name and version already exists!":
+            message = ResponseMessageConstants.ErrorMessages.APPLICATION_EXISTS;
+            throw new CloudDeploymentException(message);
+        default :
+           return response;
+        }
+    }
 }
 
     

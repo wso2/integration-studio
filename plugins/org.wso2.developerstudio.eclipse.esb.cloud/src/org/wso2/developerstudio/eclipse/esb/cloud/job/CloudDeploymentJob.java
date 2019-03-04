@@ -20,6 +20,7 @@ package org.wso2.developerstudio.eclipse.esb.cloud.job;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
@@ -29,6 +30,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
+import org.eclipse.mylyn.commons.ui.dialogs.AbstractNotificationPopup;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.MessageBox;
@@ -41,9 +43,9 @@ import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.InvalidTokenExcepti
 import org.wso2.developerstudio.eclipse.esb.cloud.model.Application;
 import org.wso2.developerstudio.eclipse.esb.cloud.model.EndpointData;
 import org.wso2.developerstudio.eclipse.esb.cloud.model.Version;
+import org.wso2.developerstudio.eclipse.esb.cloud.notification.DeploymentStatusNotificationPopup;
 import org.wso2.developerstudio.eclipse.esb.cloud.resources.CloudDeploymentWizardConstants;
 import org.wso2.developerstudio.eclipse.esb.cloud.util.JsonUtils;
-import org.wso2.developerstudio.eclipse.esb.cloud.wizard.DeploymentStatusDialog;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
@@ -65,6 +67,7 @@ public class CloudDeploymentJob extends Job {
     private String response;
     private EndpointData endpointData;
 
+    private static final int POLLING_INTERVAL = 5;
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
     public CloudDeploymentJob(String name, String description, String version, String carbonFileName, String carbonFileLocation, String iconLocation, List<Map<String, String>> tags, boolean isNewVersion) {
@@ -96,6 +99,7 @@ public class CloudDeploymentJob extends Job {
                     CloudDeploymentWizardConstants.SuccessMessages.SUCCESS_CREATING_APPLICATION_MSG,
                     SWT.ICON_INFORMATION);
 
+            // Create new application / version. Response is returned once the application is created.
             client.createApplication(name, description, version, carbonFileName, carbonFileLocation, iconLocation, tags, isNewVersion);
             
             operationText = "Fetching the endpoints...";
@@ -107,6 +111,8 @@ public class CloudDeploymentJob extends Job {
             
             Application app = client.getApplication(name);
 
+            // Although the application is created, it takes time to create the endpoints.
+            // we will poll every 5 seconds to see if the endpoints are ready.
             ScheduledFuture<?> scheduledFuture =
                 scheduledExecutorService.scheduleAtFixedRate(new Runnable() {
                     int count = 0;
@@ -120,9 +126,10 @@ public class CloudDeploymentJob extends Job {
                                 if (null != response &&  !"null".equals(response)) {
                                     endpointData = JsonUtils.getEndpointDataFromJson(response);
                                     scheduledExecutorService.shutdown();
-                                } else if (count < 15){
+                                } else {
                                     monitor.subTask("Loading Endpoints...");
-                                    monitor.worked(5);
+                                    Random random = new Random();
+                                    monitor.worked(random.nextInt(10));
                                 }
                             }
                         } catch(CloudDeploymentException | InvalidTokenException e) {
@@ -134,7 +141,7 @@ public class CloudDeploymentJob extends Job {
                     }
                 },
                 0,
-                5,
+                POLLING_INTERVAL,
                 TimeUnit.SECONDS);
 
             scheduledExecutorService.awaitTermination(120, TimeUnit.SECONDS);
@@ -154,10 +161,6 @@ public class CloudDeploymentJob extends Job {
         
         showDeploymentSuccessPopup();
 
-//        showMessageBox(CloudDeploymentWizardConstants.SuccessMessages.SUCCESSFUL_TITLE,
-//                CloudDeploymentWizardConstants.SuccessMessages.DEPLOY_TO_CLOUD_SUCCESS_MESSAGE,
-//                SWT.ICON_INFORMATION);
-
         return Status.OK_STATUS;
     }
     
@@ -169,20 +172,11 @@ public class CloudDeploymentJob extends Job {
         Display.getDefault().syncExec(new Runnable() {
             public void run() {
                 Display display = PlatformUI.getWorkbench().getDisplay();
-                Shell shell = display.getActiveShell();
-                
-                DeploymentStatusDialog dialog = new DeploymentStatusDialog(shell, endpointData);
-                dialog.open();
-
-//                MessageNotificationPopup pop = new MessageNotificationPopup(PlatformUI.getWorkbench().getActiveWorkbenchWindow(), shell);
-//                ArrayList<String> links = new ArrayList<>();
-//                links.add("Test Link");
-//                System.out.println(endpointData.getSoapEndpoints());
-////                links.addAll(endpointData.getSoapEndpoints().stream().map(Endpoint::getWsdl).collect(Collectors.toList()));
-//                pop.setContent("Deployment status", "Your application has been successfully deployed to WSO2 Intgeration Cloud. \n Try it out using the below endpoints.", links);
-//                pop.open();
+                final AbstractNotificationPopup popup = new DeploymentStatusNotificationPopup(display, endpointData);
+                popup.open();
             }
         });
+        
     }
 
     /**

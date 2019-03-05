@@ -25,8 +25,6 @@ import java.util.Map;
 /**
  * Represents an application in the cloud
  * 
- * @author dinuksha
- *
  */
 public class Application {
     

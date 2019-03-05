@@ -24,8 +24,6 @@ import java.util.List;
 /**
  * Represents the response from retrieving all endpoints in an application 
  * 
- * @author dinuksha
- *
  */
 public class EndpointData {
     List<Endpoint> restEndpoints;

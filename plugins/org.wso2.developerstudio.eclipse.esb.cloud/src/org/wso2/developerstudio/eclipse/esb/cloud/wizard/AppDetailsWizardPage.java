@@ -70,20 +70,18 @@ import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 /**
  * Wizard Page to enter application details
- * 
- * @author dinuksha
  *
  */
 public class AppDetailsWizardPage extends WizardPage{
     
     // Dialog string values
-    private static final String DIALOG_TITLE = "WSO2 Platform Distribution - Application Details";
+    private static final String DIALOG_TITLE = "WSO2 Integration Cloud - Create new application";
     
     // Text field labels
     private static final String FILE_VERSION_LABEL_TEXT = "Application version *";
-    private static final String FILE_NAME_LABEL_TEXT = "Name of the application *";
+    private static final String FILE_NAME_LABEL_TEXT = "Application name *";
     private static final String DESCRIPTION_LABEL_TEXT = "Description";
-    private static final String APP_ICON_LABEL_TEXT = "Application Icon";
+    private static final String APP_ICON_LABEL_TEXT = "Icon";
     private static final String TAGS_LABEL_TEXT = "Tags";
     
     // Button / Radio Button Strings

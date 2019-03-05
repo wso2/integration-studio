@@ -18,6 +18,10 @@
 
 package org.wso2.developerstudio.eclipse.esb.cloud.resources;
 
+/**
+ * Contains string values used for Cloud API related tasks
+ *
+ */
 public class CloudServiceConstants {
     
     // Integration Cloud Endpoints
@@ -54,5 +58,25 @@ public class CloudServiceConstants {
         public static final String VERSION_EXISTS_ERROR = "applicationRevision is required!";
         public static final String APP_REVISION_ERROR = "Bad request : applicationRevision is required!";
         public static final String APP_EXISTS_ERROR = "Bad request : Application with same name and version already exists!";
+    }
+    
+    // Integration Cloud parameters
+    public static class Parameters {
+        public static final String PARAM_FILE = "fileupload";
+        public static final String PARAM_ICON = "appIcon";
+        public static final String PARAM_ACTION = "action";
+        public static final String PARAM_APP_NAME = "applicationName";
+        public static final String PARAM_APP_DESCRIPTION = "applicationDescription";
+        public static final String PARAM_APP_TYPE = "appTypeName";
+        public static final String PARAM_APP_REVISION = "applicationRevision";
+        public static final String PARAM_FILE_NAME = "uploadedFileName";
+        public static final String PARAM_RUNTIME_PROPERTIES = "runtimeProperties";
+        public static final String PARAM_TAGS = "tags";
+        public static final String PARAM_IS_FILE_ATTACHED = "isFileAttached";
+        public static final String PARAM_CON_SPEC = "conSpec";        
+        public static final String PARAM_IS_NEW_VERSION = "isNewVersion";
+        public static final String PARAM_APP_CREATION_METHOD = "appCreationMethod";
+        public static final String PARAM_SET_DEFAULT_VERSION = "setDefaultVersion";
+        public static final String PARAM_RUNTIME = "runtime";
     }
 }

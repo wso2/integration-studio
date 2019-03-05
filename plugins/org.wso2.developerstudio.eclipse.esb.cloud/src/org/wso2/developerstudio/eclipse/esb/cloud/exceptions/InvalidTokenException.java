@@ -20,8 +20,6 @@ package org.wso2.developerstudio.eclipse.esb.cloud.exceptions;
 
 /**
  * Exception thrown when the authentication token is invalid / expired
- * 
- * @author dinuksha
  *
  */
 public class InvalidTokenException extends Exception{

@@ -1,5 +1,9 @@
 package org.wso2.developerstudio.eclipse.esb.cloud.exceptions;
 
+/**
+ * Exception thrown when an error occurs during a HTTP call
+ *
+ */
 public class HttpClientException extends Exception{
     public HttpClientException() {
         super();

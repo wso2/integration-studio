@@ -8,9 +8,7 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 
 /**
- * Notification
- * 
- * @author dinuksha
+ * General Notification
  *
  */
 public class NotificationPopup extends AbstractNotificationPopup{

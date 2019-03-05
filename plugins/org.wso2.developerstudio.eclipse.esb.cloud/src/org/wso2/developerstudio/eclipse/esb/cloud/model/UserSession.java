@@ -23,8 +23,6 @@ import org.apache.http.cookie.Cookie;
 /**
  * Represents a user session
  * 
- * @author dinuksha
- *
  */
 public class UserSession {
 

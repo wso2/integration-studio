@@ -1,5 +1,9 @@
 package org.wso2.developerstudio.eclipse.esb.cloud.exceptions;
 
+/**
+ * Exception thrown when network is unavailable
+ *
+ */
 public class NetworkUnavailableException extends Exception{
     
     private static final String message = "No internet connection available!";

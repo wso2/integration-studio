@@ -54,21 +54,21 @@ import org.wso2.developerstudio.eclipse.logging.core.Logger;
  */
 public class LoginWizardPage extends WizardPage {
 
-    private static final String DIALOG_TITLE = "WSO2 Platform Distribution - Deploy application to WSO2 Integration Cloud";
+    private static final String DIALOG_TITLE = "WSO2 Integration Cloud - Authentication";
     private static final String TITLE = "Integration Cloud Credentials";
     
     private static final String EMPTY_STRING = "";
     
     // Label Texts
     private static final String LOGIN_SUCCESSFUL_MSG = "You have been successfully logged in! Click 'Next' to continue.";
-    private static final String LOGIN_FAILED_MSG = "Failed to authenticate user - Incorrect Organization ID / Username / Password!";
+    private static final String LOGIN_FAILED_MSG = "Failed to authenticate user - Invalid credentials!";
     private static final String INTEGRATION_CLOUD_SINGUP_LINK = "https://wso2.com/integration/cloud/"; 
-    private static final String LABEL_USERNAME_TEXT = "Username";
+    private static final String LABEL_USERNAME_TEXT = "Email";
     private static final String LABEL_PASSWORD_TEXT = "Password";
     private static final String LABEL_TENANT_TEXT = "Organization Key";
-    private static final String SIGN_UP_LABEL_TEXT = "Don't have an account? <a href=\"https://wso2.com/integration/cloud/\">Register now</a>";
+    private static final String SIGN_UP_LABEL_TEXT = "Don't have an account? <a href=\"https://wso2.com/integration/cloud/\">Sign up</a>";
     
-    private static final String ORG_ID_TOOLTIP_TEXT = "NOTE: Organization_key can be obtained from the Manage page of the cloud.";
+    private static final String ORG_ID_TOOLTIP_TEXT = "Organization key can be obtained from the Manage page of the WSO2 Integration Cloud.";
 
     // Elements
     private Text txtUsername;
@@ -169,9 +169,7 @@ public class LoginWizardPage extends WizardPage {
         btnLogin = new Button(grpCredentials, SWT.NONE);
         btnLogin.addSelectionListener(new SelectionAdapter() {
             public void widgetSelected(SelectionEvent e) {
-                try {
                     if (validateCredentials()) {
-                        // Create new session for the logged in user
                         UserSessionManager.createSession(getUsername(), client.getCookieStore().getCookies().get(0));
                         setPageComplete(true);
                         lblLoginStatus.setText(LOGIN_SUCCESSFUL_MSG);
@@ -185,11 +183,6 @@ public class LoginWizardPage extends WizardPage {
                         lblLoginStatus.setForeground(CloudDeploymentWizardConstants.Colors.red);
                     }
                     lblLoginStatus.getParent().layout();
-                    
-                } catch (Exception ex) {
-                    log.error(ex);
-                    MessageDialog.openError(getShell(), TITLE, CloudDeploymentWizardConstants.ErrorMessages.AUTHENTICATION_EXCEPTION_MESSAGE);
-                }
             }
         });
         GridData gd_btnLogin = new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1);
@@ -240,10 +233,10 @@ public class LoginWizardPage extends WizardPage {
         try {
             return (client.login(getUsername(), getPassword(), getTenant()));
         } catch (CloudDeploymentException | InvalidTokenException | HttpClientException e) {
-            log.error(e);
+            log.error(CloudDeploymentWizardConstants.ErrorMessages.AUTHENTICATION_EXCEPTION_MESSAGE, e);
             MessageDialog.openError(getShell(), TITLE, e.getMessage());
         } catch (NetworkUnavailableException e) {
-            log.error(e);
+            log.error(CloudDeploymentWizardConstants.ErrorMessages.NO_INTERNET_CONNECTION_MESSAGE, e);
             MessageDialog.openError(getShell(), TITLE, CloudDeploymentWizardConstants.ErrorMessages.NO_INTERNET_CONNECTION_MESSAGE);
         }
         return false;
@@ -258,6 +251,7 @@ public class LoginWizardPage extends WizardPage {
                 || getPassword().equals(EMPTY_STRING) || (getTenant() == null || getTenant().equals(EMPTY_STRING))) {
             setErrorMessage("Please enter credentials.");
             setPageComplete(false);
+            btnLogin.setEnabled(false);
             return;
         }
 

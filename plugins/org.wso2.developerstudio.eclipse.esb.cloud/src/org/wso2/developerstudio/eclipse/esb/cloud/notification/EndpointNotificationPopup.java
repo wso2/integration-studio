@@ -17,6 +17,10 @@ import org.wso2.developerstudio.eclipse.esb.cloud.model.Endpoint;
 import org.wso2.developerstudio.eclipse.esb.cloud.model.EndpointData;
 import org.wso2.developerstudio.eclipse.esb.cloud.resources.CloudDeploymentWizardConstants;
 
+/**
+ * Notification shown when application is successfully deployed
+ *
+ */
 public class EndpointNotificationPopup extends AbstractNotificationPopup {
 
     private EndpointData endpoints;

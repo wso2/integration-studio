@@ -41,8 +41,6 @@ import com.google.gson.JsonParser;
 
 /**
  * Handles WSO2 integration cloud service actions
- * 
- * @author dinuksha
  *
  */
 public class IntegrationCloudServiceClient {
@@ -204,32 +202,32 @@ public class IntegrationCloudServiceClient {
     public void createApplication(String appName, String appDescription, String version, String fileName, String fileLocation, String iconLocation, List<Map<String, String>> tags, boolean isNewVersion) throws CloudDeploymentException, InvalidTokenException, NetworkUnavailableException, HttpClientException {
 
         Map<String, String> files = new HashMap<>();
-        files.put("fileupload", fileLocation);
+        files.put(CloudServiceConstants.Parameters.PARAM_FILE, fileLocation);
         
         if (!iconLocation.isEmpty() && iconLocation != null) {
-            files.put("appIcon", iconLocation);
+            files.put(CloudServiceConstants.Parameters.PARAM_ICON, iconLocation);
         }
         
         String createAppUrl = CloudServiceConstants.ServiceEndpoints.APPLICATION_URL;
 
         Map<String, String> data = new HashMap<>();
-        data.put("action", CloudServiceConstants.Actions.CREATE_APPLICATION);
-        data.put("applicationName", appName);
+        data.put(CloudServiceConstants.Parameters.PARAM_ACTION, CloudServiceConstants.Actions.CREATE_APPLICATION);
+        data.put(CloudServiceConstants.Parameters.PARAM_APP_NAME, appName);
         if (!appDescription.isEmpty() && appDescription != null) {
-            data.put("applicationDescription", appDescription);
+            data.put(CloudServiceConstants.Parameters.PARAM_APP_DESCRIPTION, appDescription);
         }
         
-        data.put("appTypeName", CloudServiceConstants.AppConfigs.ESB);
-        data.put("applicationRevision", version);
-        data.put("uploadedFileName", fileName);
-        data.put("runtimeProperties", CloudServiceConstants.AppConfigs.RUNTIME_PROPERTIES);
-        data.put("tags", JsonUtils.getJsonArrayFromList(tags));
-        data.put("isFileAttached", CloudServiceConstants.AppConfigs.IS_FILE_ATTACHED);
-        data.put("conSpec", CloudServiceConstants.AppConfigs.CON_SPEC);
-        data.put("isNewVersion", Boolean.toString(isNewVersion));
-        data.put("appCreationMethod", CloudServiceConstants.AppConfigs.APP_CREATION_METHOD);
-        data.put("setDefaultVersion", CloudServiceConstants.AppConfigs.SET_DEFAULT_VERSION);
-        data.put("runtime", CloudServiceConstants.AppConfigs.RUNTIME);
+        data.put(CloudServiceConstants.Parameters.PARAM_APP_TYPE, CloudServiceConstants.AppConfigs.ESB);
+        data.put(CloudServiceConstants.Parameters.PARAM_APP_REVISION, version);
+        data.put(CloudServiceConstants.Parameters.PARAM_FILE_NAME, fileName);
+        data.put(CloudServiceConstants.Parameters.PARAM_RUNTIME_PROPERTIES, CloudServiceConstants.AppConfigs.RUNTIME_PROPERTIES);
+        data.put(CloudServiceConstants.Parameters.PARAM_TAGS, JsonUtils.getJsonArrayFromList(tags));
+        data.put(CloudServiceConstants.Parameters.PARAM_IS_FILE_ATTACHED, CloudServiceConstants.AppConfigs.IS_FILE_ATTACHED);
+        data.put(CloudServiceConstants.Parameters.PARAM_CON_SPEC, CloudServiceConstants.AppConfigs.CON_SPEC);
+        data.put(CloudServiceConstants.Parameters.PARAM_IS_NEW_VERSION, Boolean.toString(isNewVersion));
+        data.put(CloudServiceConstants.Parameters.PARAM_APP_CREATION_METHOD, CloudServiceConstants.AppConfigs.APP_CREATION_METHOD);
+        data.put(CloudServiceConstants.Parameters.PARAM_SET_DEFAULT_VERSION, CloudServiceConstants.AppConfigs.SET_DEFAULT_VERSION);
+        data.put(CloudServiceConstants.Parameters.PARAM_RUNTIME, CloudServiceConstants.AppConfigs.RUNTIME);
         
         String response = HTTPClientUtil.sendPostWithMulipartFormData(createAppUrl, data, files, cookieStore);
         

@@ -28,8 +28,6 @@ import org.wso2.developerstudio.eclipse.esb.cloud.model.UserSession;
 
 /**
  * Manages the sessions. In this scenario, we will always maintain only one session
- * 
- * @author dinuksha
  *
  */
 public class UserSessionManager {

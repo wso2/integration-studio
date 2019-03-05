@@ -21,8 +21,6 @@ package org.wso2.developerstudio.eclipse.esb.cloud.model;
 /**
  * Represents an application version
  * 
- * @author dinuksha
- *
  */
 public class Version {
     private String deploymentPrivateURL;

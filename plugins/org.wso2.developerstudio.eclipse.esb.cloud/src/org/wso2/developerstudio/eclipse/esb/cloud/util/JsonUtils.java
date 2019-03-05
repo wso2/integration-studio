@@ -31,8 +31,6 @@ import com.google.gson.Gson;
 /**
  * Utils class for JSON conversions 
  * 
- * @author dinuksha
- *
  */
 public class JsonUtils {
     

@@ -53,8 +53,6 @@ import java.util.Map;
 
 /**
  * Handles HTTP calls 
- * 
- * @author dinuksha
  *
  */
 public class HTTPClientUtil {

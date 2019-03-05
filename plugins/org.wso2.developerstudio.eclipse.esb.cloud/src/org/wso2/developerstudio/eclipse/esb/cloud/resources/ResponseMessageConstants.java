@@ -1,5 +1,9 @@
 package org.wso2.developerstudio.eclipse.esb.cloud.resources;
 
+/**
+ * Messages shown to the user
+ *
+ */
 public class ResponseMessageConstants {
     
     // Error messages returned by the WSO2 Integration Cloud API

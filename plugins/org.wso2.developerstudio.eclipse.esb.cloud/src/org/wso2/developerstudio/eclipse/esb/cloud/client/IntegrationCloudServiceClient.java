@@ -26,7 +26,9 @@ import java.util.stream.Collectors;
 import org.apache.http.client.CookieStore;
 import org.apache.http.impl.client.BasicCookieStore;
 import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.CloudDeploymentException;
+import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.HttpClientException;
 import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.InvalidTokenException;
+import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.NetworkUnavailableException;
 import org.wso2.developerstudio.eclipse.esb.cloud.model.Application;
 import org.wso2.developerstudio.eclipse.esb.cloud.resources.CloudServiceConstants;
 import org.wso2.developerstudio.eclipse.esb.cloud.resources.ResponseMessageConstants;
@@ -70,8 +72,10 @@ public class IntegrationCloudServiceClient {
      * @return
      * @throws CloudDeploymentException
      * @throws InvalidTokenException
+     * @throws HttpClientException 
+     * @throws NetworkUnavailableException 
      */
-    public boolean login(String username, String password, String tenant) throws CloudDeploymentException, InvalidTokenException {
+    public boolean login(String username, String password, String tenant) throws CloudDeploymentException, InvalidTokenException, NetworkUnavailableException, HttpClientException {
         String loginUrl = CloudServiceConstants.ServiceEndpoints.LOGIN_URL;
         
         // Integration Cloud expects the username to be in <email>@<organization_key> format
@@ -97,8 +101,10 @@ public class IntegrationCloudServiceClient {
      * @return
      * @throws CloudDeploymentException
      * @throws InvalidTokenException
+     * @throws HttpClientException 
+     * @throws NetworkUnavailableException 
      */
-    public List<Application> getApplicationList() throws CloudDeploymentException, InvalidTokenException {
+    public List<Application> getApplicationList() throws CloudDeploymentException, InvalidTokenException, NetworkUnavailableException, HttpClientException {
         String getAppListUrl = CloudServiceConstants.ServiceEndpoints.INDEX_URL;
 
         Map<String, String> data = new HashMap<>();
@@ -127,8 +133,10 @@ public class IntegrationCloudServiceClient {
      * @return
      * @throws CloudDeploymentException
      * @throws InvalidTokenException
+     * @throws HttpClientException 
+     * @throws NetworkUnavailableException 
      */
-    public Application getApplication(String appName) throws CloudDeploymentException, InvalidTokenException {
+    public Application getApplication(String appName) throws CloudDeploymentException, InvalidTokenException, NetworkUnavailableException, HttpClientException {
         String getAppUrl = CloudServiceConstants.ServiceEndpoints.APPLICATION_URL;
 
         Map<String, String> data = new HashMap<>();
@@ -153,8 +161,10 @@ public class IntegrationCloudServiceClient {
      * @return
      * @throws CloudDeploymentException
      * @throws InvalidTokenException
+     * @throws HttpClientException 
+     * @throws NetworkUnavailableException 
      */
-    public String getApplicationEndpoints(String appType, String deploymentURL, String versionId) throws CloudDeploymentException, InvalidTokenException {
+    public String getApplicationEndpoints(String appType, String deploymentURL, String versionId) throws CloudDeploymentException, InvalidTokenException, NetworkUnavailableException, HttpClientException {
         String getAppUrl = CloudServiceConstants.ServiceEndpoints.APPLICATION_URL;
 
         Map<String, String> data = new HashMap<>();
@@ -188,8 +198,10 @@ public class IntegrationCloudServiceClient {
      * @param isNewVersion
      * @throws CloudDeploymentException
      * @throws InvalidTokenException
+     * @throws HttpClientException 
+     * @throws NetworkUnavailableException 
      */
-    public void createApplication(String appName, String appDescription, String version, String fileName, String fileLocation, String iconLocation, List<Map<String, String>> tags, boolean isNewVersion) throws CloudDeploymentException, InvalidTokenException {
+    public void createApplication(String appName, String appDescription, String version, String fileName, String fileLocation, String iconLocation, List<Map<String, String>> tags, boolean isNewVersion) throws CloudDeploymentException, InvalidTokenException, NetworkUnavailableException, HttpClientException {
 
         Map<String, String> files = new HashMap<>();
         files.put("fileupload", fileLocation);

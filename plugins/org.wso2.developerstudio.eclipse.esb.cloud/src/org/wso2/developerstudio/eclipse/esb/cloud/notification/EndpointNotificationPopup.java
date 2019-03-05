@@ -45,6 +45,8 @@ public class EndpointNotificationPopup extends AbstractNotificationPopup {
         successMsg.setText(CloudDeploymentWizardConstants.SuccessMessages.DEPLOY_TO_CLOUD_SUCCESS_MESSAGE);
 
         if (this.endpoints != null) {
+            Label tryItMsg = new Label(container, SWT.NULL);
+            tryItMsg.setText(CloudDeploymentWizardConstants.SuccessMessages.TRY_IT_MESSAGE);
 
             if (endpoints.getRestEndpoints() != null) {
                 // REST endpoints

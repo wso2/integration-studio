@@ -40,7 +40,9 @@ import org.eclipse.swt.widgets.Text;
 import org.wso2.developerstudio.eclipse.esb.cloud.Activator;
 import org.wso2.developerstudio.eclipse.esb.cloud.client.IntegrationCloudServiceClient;
 import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.CloudDeploymentException;
+import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.HttpClientException;
 import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.InvalidTokenException;
+import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.NetworkUnavailableException;
 import org.wso2.developerstudio.eclipse.esb.cloud.resources.CloudDeploymentWizardConstants;
 import org.wso2.developerstudio.eclipse.esb.cloud.util.UserSessionManager;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
@@ -235,8 +237,12 @@ public class LoginWizardPage extends WizardPage {
         
         try {
             return (client.login(getUsername(), getPassword(), getTenant()));
-        } catch (CloudDeploymentException | InvalidTokenException e) {
+        } catch (CloudDeploymentException | InvalidTokenException | HttpClientException e) {
+            log.error(e);
             MessageDialog.openError(getShell(), TITLE, e.getMessage());
+        } catch (NetworkUnavailableException e) {
+            log.error(e);
+            MessageDialog.openError(getShell(), TITLE, CloudDeploymentWizardConstants.ErrorMessages.NO_INTERNET_CONNECTION_MESSAGE);
         }
         return false;
     }

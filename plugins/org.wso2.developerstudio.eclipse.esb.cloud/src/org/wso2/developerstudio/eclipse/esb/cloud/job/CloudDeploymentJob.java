@@ -39,7 +39,9 @@ import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.esb.cloud.Activator;
 import org.wso2.developerstudio.eclipse.esb.cloud.client.IntegrationCloudServiceClient;
 import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.CloudDeploymentException;
+import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.HttpClientException;
 import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.InvalidTokenException;
+import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.NetworkUnavailableException;
 import org.wso2.developerstudio.eclipse.esb.cloud.model.Application;
 import org.wso2.developerstudio.eclipse.esb.cloud.model.EndpointData;
 import org.wso2.developerstudio.eclipse.esb.cloud.model.Version;
@@ -136,9 +138,14 @@ public class CloudDeploymentJob extends Job {
                                 monitor.worked(value);
                             }
                         }
-                    } catch (CloudDeploymentException | InvalidTokenException e) {
+                    } catch (CloudDeploymentException | InvalidTokenException | HttpClientException e) {
                         log.error(CloudDeploymentWizardConstants.ErrorMessages.DEPLOY_TO_CLOUD_FAILED_MESSAGE, e);
                         showMessageBox(CloudDeploymentWizardConstants.ErrorMessages.DEPLOY_TO_CLOUD_FAILED_TITLE,
+                                e.getMessage(), SWT.ICON_ERROR);
+                        scheduledExecutorService.shutdown();
+                    } catch (NetworkUnavailableException e) {
+                        log.error(CloudDeploymentWizardConstants.ErrorMessages.DEPLOY_TO_CLOUD_FAILED_MESSAGE, e);
+                        showMessageBox(CloudDeploymentWizardConstants.ErrorMessages.NO_INTERNET_CONNECTION_MESSAGE,
                                 e.getMessage(), SWT.ICON_ERROR);
                         scheduledExecutorService.shutdown();
                     }
@@ -147,7 +154,7 @@ public class CloudDeploymentJob extends Job {
 
             scheduledExecutorService.awaitTermination(120, TimeUnit.SECONDS);
 
-        } catch (CloudDeploymentException | InvalidTokenException | InterruptedException e) {
+        } catch (CloudDeploymentException | InvalidTokenException | InterruptedException | HttpClientException e) {
             log.error(CloudDeploymentWizardConstants.ErrorMessages.DEPLOY_TO_CLOUD_FAILED_MESSAGE, e);
             showMessageBox(CloudDeploymentWizardConstants.ErrorMessages.DEPLOY_TO_CLOUD_FAILED_TITLE, e.getMessage(),
                     SWT.ICON_ERROR);
@@ -156,31 +163,18 @@ public class CloudDeploymentJob extends Job {
             monitor.worked(0);
             monitor.setCanceled(true);
             return Status.CANCEL_STATUS;
+        } catch (NetworkUnavailableException e1) {
+            log.error(CloudDeploymentWizardConstants.ErrorMessages.NO_INTERNET_CONNECTION_MESSAGE, e1);
+            showMessageBox(CloudDeploymentWizardConstants.ErrorMessages.DEPLOY_TO_CLOUD_FAILED_TITLE, CloudDeploymentWizardConstants.ErrorMessages.NO_INTERNET_CONNECTION_MESSAGE,
+                    SWT.ICON_ERROR);
         }
 
         monitor.worked(100);
         monitor.done();
 
-        showDeploymentSuccessPopup();
+        showDeploymentSuccessNotification();
 
         return Status.OK_STATUS;
-    }
-
-    /**
-     * Show deployment success window with endpoints
-     * 
-     */
-    private void showDeploymentSuccessPopup() {
-        Display.getDefault().syncExec(new Runnable() {
-            public void run() {
-                Display display = PlatformUI.getWorkbench().getDisplay();
-                final AbstractNotificationPopup popup = new EndpointNotificationPopup(display, endpointData);
-                popup.setFadingEnabled(false);
-                popup.setDelayClose(0L);
-                popup.open();
-            }
-        });
-
     }
 
     /**
@@ -207,7 +201,7 @@ public class CloudDeploymentJob extends Job {
     }
     
     /**
-     * Show notification
+     * Show general notification
      * 
      */
     private void showNotification() {
@@ -218,6 +212,23 @@ public class CloudDeploymentJob extends Job {
                 popup.open();
             }
         });
+    }
+    
+    /**
+     * Show deployment success window with endpoints
+     * 
+     */
+    private void showDeploymentSuccessNotification() {
+        Display.getDefault().syncExec(new Runnable() {
+            public void run() {
+                Display display = PlatformUI.getWorkbench().getDisplay();
+                final AbstractNotificationPopup popup = new EndpointNotificationPopup(display, endpointData);
+                popup.setFadingEnabled(false);
+                popup.setDelayClose(0L);
+                popup.open();
+            }
+        });
+
     }
 
     public int getStatus() {

@@ -60,7 +60,9 @@ import org.eclipse.ui.IWorkbench;
 import org.wso2.developerstudio.eclipse.esb.cloud.Activator;
 import org.wso2.developerstudio.eclipse.esb.cloud.client.IntegrationCloudServiceClient;
 import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.CloudDeploymentException;
+import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.HttpClientException;
 import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.InvalidTokenException;
+import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.NetworkUnavailableException;
 import org.wso2.developerstudio.eclipse.esb.cloud.model.Application;
 import org.wso2.developerstudio.eclipse.esb.cloud.resources.CloudDeploymentWizardConstants;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
@@ -253,8 +255,14 @@ public class AppDetailsWizardPage extends WizardPage{
                         applicationNames = getApplicationNames(applicationList);
                         appNames.setItems(applicationNames);
                         
-                    } catch (CloudDeploymentException | InvalidTokenException ex) {
-                        log.error("Error getting application list", ex);
+                    } catch (CloudDeploymentException | InvalidTokenException | HttpClientException ex) {
+                        log.error(CloudDeploymentWizardConstants.ErrorMessages.APPLICATION_RETRIEVAL_FAILED_MESSAGE, ex);
+                        setErrorMessage(CloudDeploymentWizardConstants.ErrorMessages.APPLICATION_RETRIEVAL_FAILED_MESSAGE);
+                        setPageComplete(false);
+                    } catch (NetworkUnavailableException ex) {
+                        log.error(CloudDeploymentWizardConstants.ErrorMessages.NO_INTERNET_CONNECTION_MESSAGE, ex);
+                        setErrorMessage(CloudDeploymentWizardConstants.ErrorMessages.NO_INTERNET_CONNECTION_MESSAGE);
+                        setPageComplete(false);
                     }
                 }
                 

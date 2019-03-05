@@ -44,14 +44,17 @@ public class CloudDeploymentWizardConstants {
         public static final String DEPLOY_TO_CLOUD_INTERNAL_ERROR_MSG = "Could not deploy application because of an internal error.";
         public static final String DEPLOY_TO_CLOUD_REQUEST_ERROR_MSG = "Could not complete request.";
         public static final String ERROR_CREATING_CAR_FILE_MSG = "An error occured while deploying the application";
-        public static final String SELECT_VALID_CARBON_APP_MESSAGE = "Please select a valid carbon application project";
+        public static final String SELECT_VALID_CARBON_APP_MESSAGE = "Please select a valid carbon application project!";
         public static final String AUTHENTICATION_EXCEPTION_MESSAGE = "Could not deploy application because of an internal error.";
+        public static final String NO_INTERNET_CONNECTION_MESSAGE = "Please connect to the internet!";
+        public static final String APPLICATION_RETRIEVAL_FAILED_MESSAGE = "An error occured while retrieving application list!";
     }
 
     // Success messages shown to the user
     public static class SuccessMessages {
         public static final String SUCCESSFUL_TITLE = "Successful";
-        public static final String DEPLOY_TO_CLOUD_SUCCESS_MESSAGE = "Your application has been successfully deployed to WSO2 \nIntegeration Cloud. \nTry it out using the below endpoints!";
+        public static final String DEPLOY_TO_CLOUD_SUCCESS_MESSAGE = "Your application has been successfully deployed to WSO2 \nIntegeration Cloud.";
+        public static final String TRY_IT_MESSAGE = "Try it out using the below endpoints!";
         public static final String SUCCESS_CREATING_APPLICATION_MSG = "Please wait while your application is being deployed to the cloud.\nYou will be notified once it is ready.";
     }
 

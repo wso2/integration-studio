@@ -30,7 +30,6 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
-import org.eclipse.mylyn.commons.ui.dialogs.AbstractNotificationPopup;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.MessageBox;
@@ -42,8 +41,10 @@ import org.wso2.developerstudio.eclipse.distribution.project.ui.wizard.Distribut
 import org.wso2.developerstudio.eclipse.distribution.project.util.DistProjectUtils;
 import org.wso2.developerstudio.eclipse.distribution.project.validator.ProjectList;
 import org.wso2.developerstudio.eclipse.esb.cloud.Activator;
+import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.HttpClientException;
+import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.NetworkUnavailableException;
 import org.wso2.developerstudio.eclipse.esb.cloud.job.CloudDeploymentJob;
-import org.wso2.developerstudio.eclipse.esb.cloud.notification.NotificationPopup;
+import org.wso2.developerstudio.eclipse.esb.cloud.model.UserSession;
 import org.wso2.developerstudio.eclipse.esb.cloud.resources.CloudDeploymentWizardConstants;
 import org.wso2.developerstudio.eclipse.esb.cloud.util.UserSessionManager;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
@@ -78,6 +79,10 @@ public class DeployToCloudWizard extends Wizard implements IExportWizard {
     private Map<String, String> serverRoleList = new HashMap<String, String>();
     
     private Display display;
+    private Shell shell;
+    
+    // stores current session
+    private UserSession session;
 
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
@@ -86,6 +91,10 @@ public class DeployToCloudWizard extends Wizard implements IExportWizard {
 
         try {
             display = Display.getCurrent();
+            shell = display.getActiveShell();
+            
+            session = UserSessionManager.getCurrentSession();
+            
             loginPage = new LoginWizardPage();
             appDetailsPage = new AppDetailsWizardPage();
             selectedProject = getSelectedProject(selection);
@@ -122,11 +131,19 @@ public class DeployToCloudWizard extends Wizard implements IExportWizard {
             appDetailsPage.setName(parentPrj.getModel().getArtifactId());
             appDetailsPage.setVersion(parentPrj.getModel().getVersion());
 
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (NetworkUnavailableException e) {
             initError = true;
-            
-            Shell shell = display.getActiveShell();
+            log.error(CloudDeploymentWizardConstants.ErrorMessages.NO_INTERNET_CONNECTION_MESSAGE, e);
+            openMessageBox(shell, CloudDeploymentWizardConstants.DIALOG_TITLE_TEXT,
+                    CloudDeploymentWizardConstants.ErrorMessages.NO_INTERNET_CONNECTION_MESSAGE, SWT.ICON_INFORMATION);
+        } catch (HttpClientException e) {
+            initError = true;
+            log.error(CloudDeploymentWizardConstants.ErrorMessages.DEPLOY_TO_CLOUD_REQUEST_ERROR_MSG, e);
+            openMessageBox(shell, CloudDeploymentWizardConstants.DIALOG_TITLE_TEXT,
+                    CloudDeploymentWizardConstants.ErrorMessages.DEPLOY_TO_CLOUD_REQUEST_ERROR_MSG, SWT.ICON_INFORMATION);
+        } catch (Exception e) {
+            initError = true;
+            log.error(CloudDeploymentWizardConstants.ErrorMessages.DEPLOY_TO_CLOUD_REQUEST_ERROR_MSG, e);
             openMessageBox(shell, CloudDeploymentWizardConstants.DIALOG_TITLE_TEXT,
                     CloudDeploymentWizardConstants.ErrorMessages.SELECT_VALID_CARBON_APP_MESSAGE, SWT.ICON_INFORMATION);
         }
@@ -183,7 +200,7 @@ public class DeployToCloudWizard extends Wizard implements IExportWizard {
     public void addPages() {
         if (!initError) {
             // Check if there is an active user session
-            if (UserSessionManager.getCurrentSession() == null) {
+            if (session == null) {
                 addPage(loginPage);
             }
             addPage(mainPage);

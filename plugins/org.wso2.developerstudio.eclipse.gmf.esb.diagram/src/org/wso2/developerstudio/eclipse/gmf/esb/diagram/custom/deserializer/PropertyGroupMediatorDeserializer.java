@@ -35,10 +35,10 @@ public class PropertyGroupMediatorDeserializer
 
         org.apache.synapse.mediators.builtin.PropertyGroupMediator propertyGroupMediator = (org.apache.synapse.mediators.builtin.PropertyGroupMediator) mediator;
 
-        org.wso2.developerstudio.eclipse.gmf.esb.PropertyGroupMediator visualLog = (org.wso2.developerstudio.eclipse.gmf.esb.PropertyGroupMediator) DeserializerUtils
+        org.wso2.developerstudio.eclipse.gmf.esb.PropertyGroupMediator visualPropertyGroup = (org.wso2.developerstudio.eclipse.gmf.esb.PropertyGroupMediator) DeserializerUtils
                 .createNode(part, EsbElementTypes.PropertyGroupMediator_3788);
-        setElementToEdit(visualLog);
-        setCommonProperties(propertyGroupMediator, visualLog);
+        setElementToEdit(visualPropertyGroup);
+        setCommonProperties(propertyGroupMediator, visualPropertyGroup);
 
         PropertyMediatorDeserializer propertyMediatorDeserializer = new PropertyMediatorDeserializer();
 
@@ -49,6 +49,6 @@ public class PropertyGroupMediatorDeserializer
             propertyList.add(propMediator);
         }
         executeSetValueCommand(PROPERTY_GROUP_MEDIATOR__PROPERTIES, propertyList);
-        return visualLog;
+        return visualPropertyGroup;
     }
 }

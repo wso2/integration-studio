@@ -36,7 +36,7 @@
 	</extension>
 	<extension point="org.eclipse.ui.ide.projectNatureImages">
 		<image id="org.wso2.developerstudio.eclipse.dist.project.natureImage"
-			natureId="org.wso2.developerstudio.eclipse.distribution.project.nature" icon="icons/distribution-project-12.png">
+			natureId="org.wso2.developerstudio.eclipse.distribution.project.nature" icon="icons/composite-folder.png">
 		</image>
 	</extension>
 	   <extension

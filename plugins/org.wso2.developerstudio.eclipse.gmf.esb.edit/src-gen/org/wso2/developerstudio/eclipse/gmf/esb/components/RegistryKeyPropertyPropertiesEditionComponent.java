@@ -34,6 +34,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.RegistryKeyPropertyPropertiesEditionPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 
 
 // End of user code
@@ -251,8 +252,16 @@ public class RegistryKeyPropertyPropertiesEditionComponent extends SinglePartPro
 	}
 
 
-	
+    // Start of user code for help compatibility
 
-	
+    /**
+     * @generated NOT
+     */
+    @Override
+    public String getHelpContent(Object key, int kind) {
+        return EEFPropertyViewUtil.getHelpContent(key);
+    }
+
+    // End of user code
 
 }

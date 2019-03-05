@@ -142,7 +142,7 @@
       <editor
          id="org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditorID"
          name="%editorName"
-         icon="icons/obj16/EsbDiagramFile.gif"
+         icon="icons/obj16/EsbDiagramFile.png"
          default="true"
          class="org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbMultiPageEditor"
          matchingStrategy="org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbMatchingStrategy"
@@ -5809,7 +5809,7 @@
             priority="normal" 
             contentProvider="org.wso2.developerstudio.eclipse.gmf.esb.diagram.navigator.EsbNavigatorContentProvider" 
             labelProvider="org.wso2.developerstudio.eclipse.gmf.esb.diagram.navigator.EsbNavigatorLabelProvider"
-            icon="icons/obj16/EsbDiagramFile.gif"
+            icon="icons/obj16/EsbDiagramFile.png"
             activeByDefault="true">
          <triggerPoints>
             <or>
@@ -5845,7 +5845,7 @@
             priority="normal" 
             contentProvider="org.wso2.developerstudio.eclipse.gmf.esb.diagram.navigator.EsbDomainNavigatorContentProvider" 
             labelProvider="org.wso2.developerstudio.eclipse.gmf.esb.diagram.navigator.EsbDomainNavigatorLabelProvider"
-            icon="icons/obj16/EsbDiagramFile.gif"
+            icon="icons/obj16/EsbDiagramFile.png"
             activeByDefault="true">
          <triggerPoints>
             <or>
@@ -6238,7 +6238,7 @@
       <?gmfgen generated="true"?>
   	  <wizard
   	     name="%newWizardName"
-  	     icon="icons/obj16/EsbDiagramFile.gif"
+  	     icon="icons/obj16/EsbDiagramFile.png"
   	     category="org.eclipse.ui.Examples"
   	     class="org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbCreationWizard"
   	     id="org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbCreationWizardID">

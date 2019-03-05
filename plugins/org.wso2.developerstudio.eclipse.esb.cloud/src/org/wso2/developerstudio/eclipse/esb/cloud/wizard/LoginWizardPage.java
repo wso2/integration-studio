@@ -165,6 +165,7 @@ public class LoginWizardPage extends WizardPage {
         txtPassword.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
         new Label(grpCredentials, SWT.NONE);
 
+        // Login button
         btnLogin = new Button(grpCredentials, SWT.NONE);
         btnLogin.addSelectionListener(new SelectionAdapter() {
             public void widgetSelected(SelectionEvent e) {
@@ -211,6 +212,7 @@ public class LoginWizardPage extends WizardPage {
         new Label(container, SWT.NONE);
         new Label(container, SWT.NONE);
         
+        // Label that shows whether the authentication was successful or not
         lblLoginStatus = new Label(container, SWT.NONE);
         GridData loginStatusGridData = new GridData(SWT.CENTER, SWT.BOTTOM, false, true, 1, 1);
         loginStatusGridData.heightHint = 200;

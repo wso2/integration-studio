@@ -67,7 +67,7 @@ public class EEFPropertyViewUtil {
                 // ((FormData) control.getLayoutData()). = true;
                 control.setVisible(false);
             } else {
-                control.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+                control.setLayoutData(new GridData());
                 ((GridData) control.getLayoutData()).exclude = true;
                 control.setVisible(false);
             }
@@ -88,7 +88,7 @@ public class EEFPropertyViewUtil {
             } else if (control.getLayoutData() != null && control.getLayoutData() instanceof FormData) {
                 control.setVisible(true);
             } else {
-                control.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+                control.setLayoutData(new GridData());
                 ((GridData) control.getLayoutData()).exclude = false;
                 control.setVisible(true);
             }
@@ -109,7 +109,7 @@ public class EEFPropertyViewUtil {
             } else if (control.getLayoutData() != null && control.getLayoutData() instanceof FormData) {
                 control.setVisible(true);
             } else {
-                control.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+                control.setLayoutData(new GridData());
                 ((GridData) control.getLayoutData()).exclude = false;
                 control.setVisible(true);
             }

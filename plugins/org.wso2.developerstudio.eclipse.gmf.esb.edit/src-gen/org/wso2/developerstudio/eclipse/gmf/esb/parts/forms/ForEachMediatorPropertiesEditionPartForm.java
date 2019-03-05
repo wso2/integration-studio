@@ -141,14 +141,13 @@ public class ForEachMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	 * 
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
-		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
-		Form form = scrolledForm.getForm();
+		Form form = widgetFactory.createForm(parent);
 		view = form.getBody();
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
 		createControls(widgetFactory, view);
-		return scrolledForm;
+		return form;
 	}
 
 	/**
@@ -161,11 +160,11 @@ public class ForEachMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		CompositionSequence forEachMediatorStep = new BindingCompositionSequence(propertiesEditionComponent);
 		CompositionStep propertiesStep = forEachMediatorStep.addStep(EsbViewsRepository.ForEachMediator.Properties.class);
-		propertiesStep.addStep(EsbViewsRepository.ForEachMediator.Properties.description);
 		propertiesStep.addStep(EsbViewsRepository.ForEachMediator.Properties.commentsList);
 		propertiesStep.addStep(EsbViewsRepository.ForEachMediator.Properties.reverse);
 		propertiesStep.addStep(EsbViewsRepository.ForEachMediator.Properties.forEachID);
 		propertiesStep.addStep(EsbViewsRepository.ForEachMediator.Properties.forEachExpression);
+		propertiesStep.addStep(EsbViewsRepository.ForEachMediator.Properties.description);
 		
 		CompositionStep sequenceStep = forEachMediatorStep.addStep(EsbViewsRepository.ForEachMediator.Sequence.class);
 		sequenceStep.addStep(EsbViewsRepository.ForEachMediator.Sequence.sequenceType);
@@ -880,33 +879,49 @@ public class ForEachMediatorPropertiesEditionPartForm extends SectionPropertiesE
            sequenceKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
        } 
        String initValueExpression = sequenceKey.getKeyValue().isEmpty() ? "" : sequenceKey.getKeyValue();
-       sequenceKeyText = widgetFactory.createText(parent, initValueExpression);
+       sequenceKeyText = widgetFactory.createText(parent, initValueExpression, SWT.READ_ONLY);
        sequenceKeyText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
        widgetFactory.paintBordersFor(parent);
        GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
        sequenceKeyText.setLayoutData(valueData);
-       sequenceKeyText.addFocusListener(new FocusAdapter() {
-           /**
-            * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-            * 
-            */
-           @Override
-           @SuppressWarnings("synthetic-access")
-           public void focusLost(FocusEvent e) {
-           }
+        sequenceKeyText.addMouseListener(new MouseAdapter() {
 
-           /**
-            * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
-            */
-           @Override
-           public void focusGained(FocusEvent e) {
-               EEFRegistryKeyPropertyEditorDialog dialog = new  EEFRegistryKeyPropertyEditorDialog(view.getShell(), SWT.NULL,
-                       sequenceKey, new ArrayList<NamedEntityDescriptor>());
-               dialog.open();
-               sequenceKeyText.setText(sequenceKey.getKeyValue());
-               propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ForEachMediatorPropertiesEditionPartForm.this, EsbViewsRepository.ForEachMediator.Sequence.sequenceKey, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getSequenceKey()));
-           }
-       });
+            @Override
+            public void mouseDown(MouseEvent event) {
+                EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
+                        SWT.NULL, sequenceKey, new ArrayList<NamedEntityDescriptor>());
+                dialog.open();
+                sequenceKeyText.setText(sequenceKey.getKeyValue());
+                propertiesEditionComponent
+                        .firePropertiesChanged(new PropertiesEditionEvent(ForEachMediatorPropertiesEditionPartForm.this,
+                                EsbViewsRepository.ForEachMediator.Sequence.sequenceKey, PropertiesEditionEvent.COMMIT,
+                                PropertiesEditionEvent.SET, null, getSequenceKey()));
+            }
+
+        });
+
+        sequenceKeyText.addKeyListener(new KeyListener() {
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                    EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
+                            SWT.NULL, sequenceKey, new ArrayList<NamedEntityDescriptor>());
+                    dialog.open();
+                    sequenceKeyText.setText(sequenceKey.getKeyValue());
+                    propertiesEditionComponent.firePropertiesChanged(
+                            new PropertiesEditionEvent(ForEachMediatorPropertiesEditionPartForm.this,
+                                    EsbViewsRepository.ForEachMediator.Sequence.sequenceKey,
+                                    PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getSequenceKey()));
+                }
+            }
+
+        });
+       
        EditingUtils.setID(sequenceKeyText, EsbViewsRepository.ForEachMediator.Sequence.sequenceKey);
        EditingUtils.setEEFtype(sequenceKeyText, "eef::Text");
        Control sequenceKeyHelp =FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.ForEachMediator.Sequence.sequenceKey, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
@@ -920,32 +935,47 @@ public class ForEachMediatorPropertiesEditionPartForm extends SectionPropertiesE
         if(forEachExpression == null) {
             forEachExpression = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
         } 
-        String initValueExpression = forEachExpression.getPropertyValue().isEmpty() ? "/default/expression" : forEachExpression.getPropertyValue();
-        forEachExpressionText = widgetFactory.createText(parent, initValueExpression);
+        String initValueExpression = forEachExpression.getPropertyValue().isEmpty() ? "" : forEachExpression.getPropertyValue();
+        forEachExpressionText = widgetFactory.createText(parent, initValueExpression, SWT.READ_ONLY);
         forEachExpressionText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
         widgetFactory.paintBordersFor(parent);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
         forEachExpressionText.setLayoutData(valueData);
-
         forEachExpressionText.addMouseListener(new MouseAdapter() {
-            
+
             @Override
-            public void mouseDown( MouseEvent event ) {
-                openForEachExpressionNamespacedPropertyEditor(parent);
+            public void mouseDown(MouseEvent event) {
+                EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
+                        SWT.NULL, forEachExpression);
+                nspd.open();
+                forEachExpressionText.setText(forEachExpression.getPropertyValue());
+                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                        ForEachMediatorPropertiesEditionPartForm.this,
+                        EsbViewsRepository.ForEachMediator.Properties.forEachExpression, PropertiesEditionEvent.COMMIT,
+                        PropertiesEditionEvent.SET, null, getForEachExpression()));
             }
-            
+
         });
-        
+
         forEachExpressionText.addKeyListener(new KeyListener() {
-                        
+
             @Override
             public void keyPressed(KeyEvent e) {
-                openForEachExpressionNamespacedPropertyEditor(parent);
             }
-            
+
             @Override
-            public void keyReleased(KeyEvent e) {}
-            
+            public void keyReleased(KeyEvent e) {
+                if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                    EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
+                            SWT.NULL, forEachExpression);
+                    nspd.open();
+                    forEachExpressionText.setText(forEachExpression.getPropertyValue());
+                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                            ForEachMediatorPropertiesEditionPartForm.this,
+                            EsbViewsRepository.ForEachMediator.Properties.forEachExpression,
+                            PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getForEachExpression()));
+                }
+            }
         });
         
         EditingUtils.setID(forEachExpressionText, EsbViewsRepository.ForEachMediator.Properties.forEachExpression);
@@ -953,17 +983,6 @@ public class ForEachMediatorPropertiesEditionPartForm extends SectionPropertiesE
         Control forEachExpressionHelp =FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.ForEachMediator.Properties.forEachExpression, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
         forEachExpressionElements = new Control[] {forEachExpressionLabel, forEachExpressionText, forEachExpressionHelp};
         return parent;
-    }
-    
-    private void openForEachExpressionNamespacedPropertyEditor(final Composite parent) {
-        EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL,
-                forEachExpression);
-        nspd.open();
-        forEachExpressionText.setText(forEachExpression.getPropertyValue());
-        propertiesEditionComponent
-                .firePropertiesChanged(new PropertiesEditionEvent(ForEachMediatorPropertiesEditionPartForm.this,
-                        EsbViewsRepository.ForEachMediator.Properties.forEachExpression, PropertiesEditionEvent.COMMIT,
-                        PropertiesEditionEvent.SET, null, getForEachExpression()));
     }
     
     @Override

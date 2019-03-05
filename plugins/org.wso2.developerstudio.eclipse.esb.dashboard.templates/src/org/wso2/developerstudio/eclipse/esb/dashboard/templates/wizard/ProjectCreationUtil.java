@@ -102,7 +102,7 @@ public class ProjectCreationUtil {
 
     public static void createCarbonAppPOM(File pomLocation, String groupId, String containerName) throws Exception {
 
-        String artifactID = containerName + "CarbonApplication";
+        String artifactID = containerName + "CompositeApplication";
 
         MavenProject mavenProject = MavenUtils.createMavenProject(groupId, artifactID, version, "carbon/application");
 

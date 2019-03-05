@@ -11,7 +11,7 @@
 	</extension>
 	<extension point="org.eclipse.ui.ide.projectNatureImages">
 		<image id="org.wso2.developerstudio.eclipse.esb.project.natureImage"
-			natureId="org.wso2.developerstudio.eclipse.esb.project.nature" icon="icons/esb-project-12.png">
+			natureId="org.wso2.developerstudio.eclipse.esb.project.nature" icon="icons/root-folder.png">
 		</image>
 	</extension>
 	

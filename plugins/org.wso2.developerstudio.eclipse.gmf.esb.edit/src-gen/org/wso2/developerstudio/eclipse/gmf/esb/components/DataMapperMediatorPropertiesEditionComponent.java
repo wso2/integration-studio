@@ -43,6 +43,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.DataMapperMediatorPropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 
 
 // End of user code
@@ -56,7 +57,6 @@ public class DataMapperMediatorPropertiesEditionComponent extends SinglePartProp
 	
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
 
-	
 	
 	/**
 	 * Default constructor
@@ -359,7 +359,13 @@ public class DataMapperMediatorPropertiesEditionComponent extends SinglePartProp
 		return ret;
 	}
 
-
+    /**
+     * @generated NOT
+     */
+    @Override
+    public String getHelpContent(Object key, int kind) {
+        return EEFPropertyViewUtil.getHelpContent(key);
+    }
 	
 
 	

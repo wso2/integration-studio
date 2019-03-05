@@ -292,11 +292,11 @@ public class EnrichMediatorImpl extends MediatorImpl implements EnrichMediator {
         setTargetXpath(targetXpath);
 
         // Inline Registry Key
-        inlineRegistryKey = EsbFactory.eINSTANCE.createRegistryKeyProperty();
-        inlineRegistryKey.setPrettyName("InlineKey");
-        inlineRegistryKey.setKeyName("key");
-        inlineRegistryKey.setKeyValue(DEFAULT_SEQUENCE_REFERENCE_REGISTRY_KEY);
-        setInlineRegistryKey(inlineRegistryKey);
+        RegistryKeyProperty inlineRegistryKeyTemp = EsbFactory.eINSTANCE.createRegistryKeyProperty();
+        inlineRegistryKeyTemp.setPrettyName("InlineKey");
+        inlineRegistryKeyTemp.setKeyName("key");
+        inlineRegistryKeyTemp.setKeyValue(DEFAULT_SEQUENCE_REFERENCE_REGISTRY_KEY);
+        setInlineRegistryKey(inlineRegistryKeyTemp);
     }
 
     /**

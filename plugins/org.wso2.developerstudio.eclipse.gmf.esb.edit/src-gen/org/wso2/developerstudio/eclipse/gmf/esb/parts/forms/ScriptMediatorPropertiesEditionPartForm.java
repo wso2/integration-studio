@@ -201,6 +201,7 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
+			    // Start of user code for components addToPart creation
 				if (key == EsbViewsRepository.ScriptMediator.Properties.class) {
 					return createPropertiesGroup(widgetFactory, parent);
 				}
@@ -220,25 +221,22 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 					return createScriptLanguageEMFComboViewer(widgetFactory, parent);
 				}
 				if (key == EsbViewsRepository.ScriptMediator.Properties.mediateFunction) {
-					return createMediateFunctionText(widgetFactory, parent);
+					return createMediateFunctionText(widgetFactory, filterScriptTypeSubPropertiesGroup);
 				}
 				if (key == EsbViewsRepository.ScriptMediator.Properties.scriptBody) {
-					return createScriptBodyText(widgetFactory, parent);
+					return createScriptBodyText(widgetFactory, filterScriptTypeSubPropertiesGroup);
 				}
 				if (key == EsbViewsRepository.ScriptMediator.Properties.keyType) {
-					return createKeyTypeEMFComboViewer(widgetFactory, parent);
+					return createKeyTypeEMFComboViewer(widgetFactory, filterScriptTypeSubPropertiesGroup);
 				}
 				if (key == EsbViewsRepository.ScriptMediator.Properties.scriptKeys) {
-					return createScriptKeysTableComposition(widgetFactory, parent);
+					return createScriptKeysTableComposition(widgetFactory, filterScriptTypeSubPropertiesGroup);
 				}
-				// Start of user code for Script Static Key addToPart creation
 				if (key == EsbViewsRepository.ScriptMediator.Properties.scriptStaticKey) {
-					return createScriptStaticKey(widgetFactory, parent);
+					return createScriptStaticKey(widgetFactory, filterScriptTypeSubPropertiesGroup);
 				}
-				// End of user code
-				// Start of user code for Script Dynamic Key addToPart creation
 				if (key == EsbViewsRepository.ScriptMediator.Properties.scriptDynamicKey) {
-					return createScriptDynamicKey(widgetFactory, parent);
+					return createScriptDynamicKey(widgetFactory, filterScriptTypeSubPropertiesGroup);
 				}
 				// End of user code
 				return parent;
@@ -411,7 +409,7 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
      * @generated NOT
      */
 	protected Composite createScriptTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
-	    filterScriptTypeSubPropertiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent, "Script Type");
+	    filterScriptTypeSubPropertiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent, "Script Type", true);
 		Control scriptTypeLabel = createDescription(filterScriptTypeSubPropertiesGroup, EsbViewsRepository.ScriptMediator.Properties.scriptType, EsbMessages.ScriptMediatorPropertiesEditionPart_ScriptTypeLabel);
 		scriptType = new EMFComboViewer(filterScriptTypeSubPropertiesGroup);
 		scriptType.setContentProvider(new ArrayContentProvider());
@@ -482,10 +480,10 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
      * @generated NOT
      */
 	protected Composite createMediateFunctionText(FormToolkit widgetFactory, Composite parent) {
-		Control mediateFunctionLabel = createDescription(filterScriptTypeSubPropertiesGroup, EsbViewsRepository.ScriptMediator.Properties.mediateFunction, EsbMessages.ScriptMediatorPropertiesEditionPart_MediateFunctionLabel);
-		mediateFunction = widgetFactory.createText(filterScriptTypeSubPropertiesGroup, ""); //$NON-NLS-1$
+		Control mediateFunctionLabel = createDescription(parent, EsbViewsRepository.ScriptMediator.Properties.mediateFunction, EsbMessages.ScriptMediatorPropertiesEditionPart_MediateFunctionLabel);
+		mediateFunction = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		mediateFunction.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
-		widgetFactory.paintBordersFor(filterScriptTypeSubPropertiesGroup);
+		widgetFactory.paintBordersFor(parent);
 		GridData mediateFunctionData = new GridData(GridData.FILL_HORIZONTAL);
 		mediateFunction.setLayoutData(mediateFunctionData);
 		mediateFunction.addFocusListener(new FocusAdapter() {
@@ -541,7 +539,7 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 		});
 		EditingUtils.setID(mediateFunction, EsbViewsRepository.ScriptMediator.Properties.mediateFunction);
 		EditingUtils.setEEFtype(mediateFunction, "eef::Text"); //$NON-NLS-1$
-		Control mediateFunctionHelp = FormUtils.createHelpButton(widgetFactory, filterScriptTypeSubPropertiesGroup, propertiesEditionComponent.getHelpContent(EsbViewsRepository.ScriptMediator.Properties.mediateFunction, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		Control mediateFunctionHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.ScriptMediator.Properties.mediateFunction, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createMediateFunctionText
 		mediateFuctionElements = new Control[] { mediateFunctionLabel, mediateFunction, mediateFunctionHelp };
 		// End of user code
@@ -552,10 +550,10 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
      * @generated NOT
      */
 	protected Composite createScriptBodyText(FormToolkit widgetFactory, Composite parent) {
-		Control scriptBodyLabel = createDescription(filterScriptTypeSubPropertiesGroup, EsbViewsRepository.ScriptMediator.Properties.scriptBody, EsbMessages.ScriptMediatorPropertiesEditionPart_ScriptBodyLabel);
-		scriptBody = widgetFactory.createText(filterScriptTypeSubPropertiesGroup, ""); //$NON-NLS-1$
+		Control scriptBodyLabel = createDescription(parent, EsbViewsRepository.ScriptMediator.Properties.scriptBody, EsbMessages.ScriptMediatorPropertiesEditionPart_ScriptBodyLabel);
+		scriptBody = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		scriptBody.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
-		widgetFactory.paintBordersFor(filterScriptTypeSubPropertiesGroup);
+		widgetFactory.paintBordersFor(parent);
 		GridData scriptBodyData = new GridData(GridData.FILL_HORIZONTAL);
 		scriptBody.setLayoutData(scriptBodyData);
 		scriptBody.addFocusListener(new FocusAdapter() {
@@ -611,7 +609,7 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 		});
 		EditingUtils.setID(scriptBody, EsbViewsRepository.ScriptMediator.Properties.scriptBody);
 		EditingUtils.setEEFtype(scriptBody, "eef::Text"); //$NON-NLS-1$
-		Control scriptBodyHelp = FormUtils.createHelpButton(widgetFactory, filterScriptTypeSubPropertiesGroup, propertiesEditionComponent.getHelpContent(EsbViewsRepository.ScriptMediator.Properties.scriptBody, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		Control scriptBodyHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.ScriptMediator.Properties.scriptBody, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createScriptBodyText
 		scriptBodyElements = new Control[] { scriptBodyLabel, scriptBody, scriptBodyHelp };
 		// End of user code
@@ -622,8 +620,8 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
      * @generated NOT
      */
 	protected Composite createKeyTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
-		Control keyTypeLabel = createDescription(filterScriptTypeSubPropertiesGroup, EsbViewsRepository.ScriptMediator.Properties.keyType, EsbMessages.ScriptMediatorPropertiesEditionPart_KeyTypeLabel);
-		keyType = new EMFComboViewer(filterScriptTypeSubPropertiesGroup);
+		Control keyTypeLabel = createDescription(parent, EsbViewsRepository.ScriptMediator.Properties.keyType, EsbMessages.ScriptMediatorPropertiesEditionPart_KeyTypeLabel);
+		keyType = new EMFComboViewer(parent);
 		keyType.setContentProvider(new ArrayContentProvider());
 		keyType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData keyTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -643,7 +641,7 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 
 		});
 		keyType.setID(EsbViewsRepository.ScriptMediator.Properties.keyType);
-		Control keyTypeHelp = FormUtils.createHelpButton(widgetFactory, filterScriptTypeSubPropertiesGroup, propertiesEditionComponent.getHelpContent(EsbViewsRepository.ScriptMediator.Properties.keyType, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		Control keyTypeHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.ScriptMediator.Properties.keyType, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createKeyTypeEMFComboViewer
 		keyTypeElements = new Control[] { keyTypeLabel, keyType.getCombo(), keyTypeHelp };
 		keyType.addSelectionChangedListener(new ISelectionChangedListener() {
@@ -661,7 +659,7 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
      * @generated NOT
      */
 	protected Composite createScriptKeysTableComposition(FormToolkit widgetFactory, Composite parent) {
-		Control[] previousControls = filterScriptTypeSubPropertiesGroup.getChildren();
+		Control[] previousControls = parent.getChildren();
 		this.scriptKeys = new ReferencesTable(getDescription(EsbViewsRepository.ScriptMediator.Properties.scriptKeys, EsbMessages.ScriptMediatorPropertiesEditionPart_ScriptKeysLabel), new ReferencesTableListener() {
 			public void handleAdd() {
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ScriptMediatorPropertiesEditionPartForm.this, EsbViewsRepository.ScriptMediator.Properties.scriptKeys, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
@@ -685,7 +683,7 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 			this.scriptKeys.addFilter(filter);
 		}
 		this.scriptKeys.setHelpText(propertiesEditionComponent.getHelpContent(EsbViewsRepository.ScriptMediator.Properties.scriptKeys, EsbViewsRepository.FORM_KIND));
-		this.scriptKeys.createControls(filterScriptTypeSubPropertiesGroup, widgetFactory);
+		this.scriptKeys.createControls(parent, widgetFactory);
 		this.scriptKeys.addSelectionListener(new SelectionAdapter() {
 			
 			public void widgetSelected(SelectionEvent e) {
@@ -703,7 +701,7 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 		scriptKeys.setID(EsbViewsRepository.ScriptMediator.Properties.scriptKeys);
 		scriptKeys.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
 		// Start of user code for createScriptKeysTableComposition
-		Control[] newControls = filterScriptTypeSubPropertiesGroup.getChildren();
+		Control[] newControls = parent.getChildren();
 		scriptKeysElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
 		// End of user code
 		return parent;
@@ -1156,17 +1154,17 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 
 	// Start of user code additional methods
 	protected Composite createScriptStaticKey(FormToolkit widgetFactory, Composite parent) {
-		Control scriptStaticKeyLabel = createDescription(filterScriptTypeSubPropertiesGroup,
+		Control scriptStaticKeyLabel = createDescription(parent,
 				EsbViewsRepository.ScriptMediator.Properties.scriptStaticKey,
 				EsbMessages.ScriptMediatorPropertiesEditionPart_ScriptStaticKeyLabel);
-		widgetFactory.paintBordersFor(filterScriptTypeSubPropertiesGroup);
+		widgetFactory.paintBordersFor(parent);
 		if (scriptStaticKey == null) {
 			scriptStaticKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
 		}
 		String initValueExpression = scriptStaticKey.getKeyValue().isEmpty() ? "" : scriptStaticKey.getKeyValue();
-		scriptStaticKeyText = widgetFactory.createText(filterScriptTypeSubPropertiesGroup, initValueExpression);
+		scriptStaticKeyText = widgetFactory.createText(parent, initValueExpression);
 		scriptStaticKeyText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
-		widgetFactory.paintBordersFor(filterScriptTypeSubPropertiesGroup);
+		widgetFactory.paintBordersFor(parent);
 		GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
 		scriptStaticKeyText.setLayoutData(valueData);
 		scriptStaticKeyText.addFocusListener(new FocusAdapter() {
@@ -1196,7 +1194,7 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 		});
 		EditingUtils.setID(scriptStaticKeyText, EsbViewsRepository.ScriptMediator.Properties.scriptStaticKey);
 		EditingUtils.setEEFtype(scriptStaticKeyText, "eef::Text");
-		Control scriptStaticKeyHelp = FormUtils.createHelpButton(widgetFactory, filterScriptTypeSubPropertiesGroup,
+		Control scriptStaticKeyHelp = FormUtils.createHelpButton(widgetFactory, parent,
 				propertiesEditionComponent.getHelpContent(EsbViewsRepository.ScriptMediator.Properties.scriptStaticKey,
 						EsbViewsRepository.FORM_KIND),null); // $NON-NLS-1$
 		scriptStaticKeyElements = new Control[] { scriptStaticKeyLabel, scriptStaticKeyText, scriptStaticKeyHelp };
@@ -1204,18 +1202,18 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	}
 	
 	protected Composite createScriptDynamicKey(FormToolkit widgetFactory, final Composite parent) {
-		Control scriptDynamicKeyLabel = createDescription(filterScriptTypeSubPropertiesGroup,
+		Control scriptDynamicKeyLabel = createDescription(parent,
 				EsbViewsRepository.ScriptMediator.Properties.scriptDynamicKey,
 				EsbMessages.ScriptMediatorPropertiesEditionPart_ScriptDynamicKeyLabel);
-		widgetFactory.paintBordersFor(filterScriptTypeSubPropertiesGroup);
+		widgetFactory.paintBordersFor(parent);
 		if (scriptDynamicKey == null) {
 			scriptDynamicKey = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
 		}
 		String initValueExpression = scriptDynamicKey.getPropertyValue().isEmpty() ? "/default/expression"
 				: scriptDynamicKey.getPropertyValue();
-		scriptDynamicKeyText = widgetFactory.createText(filterScriptTypeSubPropertiesGroup, initValueExpression, SWT.READ_ONLY);
+		scriptDynamicKeyText = widgetFactory.createText(parent, initValueExpression, SWT.READ_ONLY);
 		scriptDynamicKeyText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
-		widgetFactory.paintBordersFor(filterScriptTypeSubPropertiesGroup);
+		widgetFactory.paintBordersFor(parent);
 		GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
 		scriptDynamicKeyText.setLayoutData(valueData);
 
@@ -1223,7 +1221,7 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
             
             @Override
             public void mouseDown( MouseEvent event ) {
-                openScriptDynamicKeyNamespacedPropertyEditor(filterScriptTypeSubPropertiesGroup);
+                openScriptDynamicKeyNamespacedPropertyEditor(parent);
             }
             
         });
@@ -1233,7 +1231,7 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
             @Override
             public void keyPressed(KeyEvent e) {
                 if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
-                    openScriptDynamicKeyNamespacedPropertyEditor(filterScriptTypeSubPropertiesGroup);
+                    openScriptDynamicKeyNamespacedPropertyEditor(parent);
                 }
             }
             
@@ -1245,7 +1243,7 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 		EditingUtils.setID(scriptDynamicKeyText,
 				EsbViewsRepository.ScriptMediator.Properties.scriptDynamicKey);
 		EditingUtils.setEEFtype(scriptDynamicKeyText, "eef::Text");
-		Control scriptDynamicKeyHelp = FormUtils.createHelpButton(widgetFactory, filterScriptTypeSubPropertiesGroup,
+		Control scriptDynamicKeyHelp = FormUtils.createHelpButton(widgetFactory, parent,
 				propertiesEditionComponent.getHelpContent(
 						EsbViewsRepository.ScriptMediator.Properties.scriptDynamicKey,
 						EsbViewsRepository.FORM_KIND),

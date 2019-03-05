@@ -79,6 +79,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.AggregateMediatorPropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFNameSpacedPropertyEditorDialog;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
 import org.wso2.developerstudio.esb.form.editors.article.providers.NamedEntityDescriptor;
@@ -142,6 +143,8 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
     protected Control[] sequenceKeyElements;
     protected Composite propertiesGroup;
     protected Composite onCompleteGroup;
+    protected Composite completeConditionSubGroup;
+
 	// End of user code
 
 
@@ -189,25 +192,26 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		CompositionSequence aggregateMediatorStep = new BindingCompositionSequence(propertiesEditionComponent);
 		CompositionStep propertiesStep = aggregateMediatorStep.addStep(EsbViewsRepository.AggregateMediator.Properties.class);
-		propertiesStep.addStep(EsbViewsRepository.AggregateMediator.Properties.description);
+		// Start of user code 
 		propertiesStep.addStep(EsbViewsRepository.AggregateMediator.Properties.commentsList);
 		propertiesStep.addStep(EsbViewsRepository.AggregateMediator.Properties.reverse);
-		propertiesStep.addStep(EsbViewsRepository.AggregateMediator.Properties.aggregateID);
 		propertiesStep.addStep(EsbViewsRepository.AggregateMediator.Properties.completionTimeout);
 		propertiesStep.addStep(EsbViewsRepository.AggregateMediator.Properties.completionMinMessagesType);
-		propertiesStep.addStep(EsbViewsRepository.AggregateMediator.Properties.completionMaxMessagesType);
 		propertiesStep.addStep(EsbViewsRepository.AggregateMediator.Properties.completionMinMessagesValue);
+		propertiesStep.addStep(EsbViewsRepository.AggregateMediator.Properties.completionMinMessages);
+		propertiesStep.addStep(EsbViewsRepository.AggregateMediator.Properties.completionMaxMessagesType);
 		propertiesStep.addStep(EsbViewsRepository.AggregateMediator.Properties.completionMaxMessagesValue);
+		propertiesStep.addStep(EsbViewsRepository.AggregateMediator.Properties.completionMaxMessages);
+		propertiesStep.addStep(EsbViewsRepository.AggregateMediator.Properties.aggregateID);
 		propertiesStep.addStep(EsbViewsRepository.AggregateMediator.Properties.enclosingElementProperty);
 		propertiesStep.addStep(EsbViewsRepository.AggregateMediator.Properties.correlationExpression);
-		propertiesStep.addStep(EsbViewsRepository.AggregateMediator.Properties.completionMinMessages);
-		propertiesStep.addStep(EsbViewsRepository.AggregateMediator.Properties.completionMaxMessages);
         CompositionStep onCompleteStep = aggregateMediatorStep
                 .addStep(EsbViewsRepository.AggregateMediator.OnComplete.class);
         onCompleteStep.addStep(EsbViewsRepository.AggregateMediator.OnComplete.aggregationExpression);
         onCompleteStep.addStep(EsbViewsRepository.AggregateMediator.OnComplete.sequenceType);
         onCompleteStep.addStep(EsbViewsRepository.AggregateMediator.OnComplete.sequenceKey);
-		
+        propertiesStep.addStep(EsbViewsRepository.AggregateMediator.Properties.description);
+        // End of user code
 		composer = new PartComposer(aggregateMediatorStep) {
 
 			@Override
@@ -517,10 +521,12 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
      * @generated NOT
      */
 	protected Composite createCompletionTimeoutText(FormToolkit widgetFactory, Composite parent) {
-		Control completionTimeoutLabel = createDescription(parent, EsbViewsRepository.AggregateMediator.Properties.completionTimeout, EsbMessages.AggregateMediatorPropertiesEditionPart_CompletionTimeoutLabel);
-		completionTimeout = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+	    completeConditionSubGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent,
+                "Complete Condition", true);
+	    Control completionTimeoutLabel = createDescription(completeConditionSubGroup, EsbViewsRepository.AggregateMediator.Properties.completionTimeout, EsbMessages.AggregateMediatorPropertiesEditionPart_CompletionTimeoutLabel);
+		completionTimeout = widgetFactory.createText(completeConditionSubGroup, ""); //$NON-NLS-1$
 		completionTimeout.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
-		widgetFactory.paintBordersFor(parent);
+		widgetFactory.paintBordersFor(completeConditionSubGroup);
 		GridData completionTimeoutData = new GridData(GridData.FILL_HORIZONTAL);
 		completionTimeout.setLayoutData(completionTimeoutData);
 		completionTimeout.addFocusListener(new FocusAdapter() {
@@ -576,7 +582,7 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
 		});
 		EditingUtils.setID(completionTimeout, EsbViewsRepository.AggregateMediator.Properties.completionTimeout);
 		EditingUtils.setEEFtype(completionTimeout, "eef::Text"); //$NON-NLS-1$
-		Control completionTimeoutHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.AggregateMediator.Properties.completionTimeout, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		Control completionTimeoutHelp = FormUtils.createHelpButton(widgetFactory, completeConditionSubGroup, propertiesEditionComponent.getHelpContent(EsbViewsRepository.AggregateMediator.Properties.completionTimeout, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createCompletionTimeoutText
 		completionTimeoutElements = new Control[] {completionTimeoutLabel, completionTimeout, completionTimeoutHelp};
 		// End of user code
@@ -587,8 +593,8 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
      * @generated NOT
      */
 	protected Composite createCompletionMinMessagesTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
-		Control completionMinMessagesTypeLabel = createDescription(parent, EsbViewsRepository.AggregateMediator.Properties.completionMinMessagesType, EsbMessages.AggregateMediatorPropertiesEditionPart_CompletionMinMessagesTypeLabel);
-		completionMinMessagesType = new EMFComboViewer(parent);
+		Control completionMinMessagesTypeLabel = createDescription(completeConditionSubGroup, EsbViewsRepository.AggregateMediator.Properties.completionMinMessagesType, EsbMessages.AggregateMediatorPropertiesEditionPart_CompletionMinMessagesTypeLabel);
+		completionMinMessagesType = new EMFComboViewer(completeConditionSubGroup);
 		completionMinMessagesType.setContentProvider(new ArrayContentProvider());
 		completionMinMessagesType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData completionMinMessagesTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -608,7 +614,7 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
 
 		});
 		completionMinMessagesType.setID(EsbViewsRepository.AggregateMediator.Properties.completionMinMessagesType);
-		Control completionMinMessagesTypeHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.AggregateMediator.Properties.completionMinMessagesType, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		Control completionMinMessagesTypeHelp = FormUtils.createHelpButton(widgetFactory, completeConditionSubGroup, propertiesEditionComponent.getHelpContent(EsbViewsRepository.AggregateMediator.Properties.completionMinMessagesType, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createCompletionMinMessagesTypeEMFComboViewer
 		completionMinMessagesTypeElements = new Control[] {completionMinMessagesTypeLabel, completionMinMessagesType.getCombo(), completionMinMessagesTypeHelp};
 		completionMinMessagesType.addSelectionChangedListener(new ISelectionChangedListener() {
@@ -631,8 +637,8 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
      * @generated NOT
      */
 	protected Composite createCompletionMaxMessagesTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
-		Control completionMaxMessagesTypeLabel = createDescription(parent, EsbViewsRepository.AggregateMediator.Properties.completionMaxMessagesType, EsbMessages.AggregateMediatorPropertiesEditionPart_CompletionMaxMessagesTypeLabel);
-		completionMaxMessagesType = new EMFComboViewer(parent);
+		Control completionMaxMessagesTypeLabel = createDescription(completeConditionSubGroup, EsbViewsRepository.AggregateMediator.Properties.completionMaxMessagesType, EsbMessages.AggregateMediatorPropertiesEditionPart_CompletionMaxMessagesTypeLabel);
+		completionMaxMessagesType = new EMFComboViewer(completeConditionSubGroup);
 		completionMaxMessagesType.setContentProvider(new ArrayContentProvider());
 		completionMaxMessagesType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData completionMaxMessagesTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -652,7 +658,7 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
 
 		});
 		completionMaxMessagesType.setID(EsbViewsRepository.AggregateMediator.Properties.completionMaxMessagesType);
-		Control completionMaxMessagesTypeHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.AggregateMediator.Properties.completionMaxMessagesType, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		Control completionMaxMessagesTypeHelp = FormUtils.createHelpButton(widgetFactory, completeConditionSubGroup, propertiesEditionComponent.getHelpContent(EsbViewsRepository.AggregateMediator.Properties.completionMaxMessagesType, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createCompletionMaxMessagesTypeEMFComboViewer
         completionMaxMessagesTypeElements = new Control[] {completionMaxMessagesTypeLabel, completionMaxMessagesType.getCombo(), completionMaxMessagesTypeHelp};
         completionMaxMessagesType.addSelectionChangedListener(new ISelectionChangedListener() {
@@ -675,10 +681,10 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
      * @generated NOT
      */
 	protected Composite createCompletionMinMessagesValueText(FormToolkit widgetFactory, Composite parent) {
-		Control completionMinMessagesValueLabel = createDescription(parent, EsbViewsRepository.AggregateMediator.Properties.completionMinMessagesValue, EsbMessages.AggregateMediatorPropertiesEditionPart_CompletionMinMessagesValueLabel);
-		completionMinMessagesValue = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+		Control completionMinMessagesValueLabel = createDescription(completeConditionSubGroup, EsbViewsRepository.AggregateMediator.Properties.completionMinMessagesValue, "Completion Min Messages");
+		completionMinMessagesValue = widgetFactory.createText(completeConditionSubGroup, ""); //$NON-NLS-1$
 		completionMinMessagesValue.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
-		widgetFactory.paintBordersFor(parent);
+		widgetFactory.paintBordersFor(completeConditionSubGroup);
 		GridData completionMinMessagesValueData = new GridData(GridData.FILL_HORIZONTAL);
 		completionMinMessagesValue.setLayoutData(completionMinMessagesValueData);
 		completionMinMessagesValue.addFocusListener(new FocusAdapter() {
@@ -734,7 +740,7 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
 		});
 		EditingUtils.setID(completionMinMessagesValue, EsbViewsRepository.AggregateMediator.Properties.completionMinMessagesValue);
 		EditingUtils.setEEFtype(completionMinMessagesValue, "eef::Text"); //$NON-NLS-1$
-		Control completionMinMessagesValueHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.AggregateMediator.Properties.completionMinMessagesValue, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		Control completionMinMessagesValueHelp = FormUtils.createHelpButton(widgetFactory, completeConditionSubGroup, propertiesEditionComponent.getHelpContent(EsbViewsRepository.AggregateMediator.Properties.completionMinMessagesValue, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createCompletionMinMessagesValueText
 		completionMinMessagesValueElements = new Control[] {completionMinMessagesValueLabel, completionMinMessagesValue, completionMinMessagesValueHelp};
 		// End of user code
@@ -745,10 +751,10 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
      * @generated NOT
      */
 	protected Composite createCompletionMaxMessagesValueText(FormToolkit widgetFactory, Composite parent) {
-		Control completionMaxMessagesValueLabel = createDescription(parent, EsbViewsRepository.AggregateMediator.Properties.completionMaxMessagesValue, EsbMessages.AggregateMediatorPropertiesEditionPart_CompletionMaxMessagesValueLabel);
-		completionMaxMessagesValue = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+		Control completionMaxMessagesValueLabel = createDescription(completeConditionSubGroup, EsbViewsRepository.AggregateMediator.Properties.completionMaxMessagesValue, "Completion Max Messages");
+		completionMaxMessagesValue = widgetFactory.createText(completeConditionSubGroup, ""); //$NON-NLS-1$
 		completionMaxMessagesValue.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
-		widgetFactory.paintBordersFor(parent);
+		widgetFactory.paintBordersFor(completeConditionSubGroup);
 		GridData completionMaxMessagesValueData = new GridData(GridData.FILL_HORIZONTAL);
 		completionMaxMessagesValue.setLayoutData(completionMaxMessagesValueData);
 		completionMaxMessagesValue.addFocusListener(new FocusAdapter() {
@@ -804,7 +810,7 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
 		});
 		EditingUtils.setID(completionMaxMessagesValue, EsbViewsRepository.AggregateMediator.Properties.completionMaxMessagesValue);
 		EditingUtils.setEEFtype(completionMaxMessagesValue, "eef::Text"); //$NON-NLS-1$
-		Control completionMaxMessagesValueHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.AggregateMediator.Properties.completionMaxMessagesValue, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		Control completionMaxMessagesValueHelp = FormUtils.createHelpButton(widgetFactory, completeConditionSubGroup, propertiesEditionComponent.getHelpContent(EsbViewsRepository.AggregateMediator.Properties.completionMaxMessagesValue, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createCompletionMaxMessagesValueText
 		completionMaxMessagesValueElements = new Control[] {completionMaxMessagesValueLabel, completionMaxMessagesValue, completionMaxMessagesValueHelp};
 		// End of user code
@@ -1475,33 +1481,50 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
             sequenceKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
         } 
         String initValueExpression = sequenceKey.getKeyValue().isEmpty() ? "" : sequenceKey.getKeyValue();
-        sequenceKeyText = widgetFactory.createText(parent, initValueExpression);
+        sequenceKeyText = widgetFactory.createText(parent, initValueExpression, SWT.READ_ONLY);
         sequenceKeyText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
         widgetFactory.paintBordersFor(parent);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
         sequenceKeyText.setLayoutData(valueData);
-        sequenceKeyText.addFocusListener(new FocusAdapter() {
-            /**
-             * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-             * 
-             */
+        
+        sequenceKeyText.addMouseListener(new MouseAdapter() {
+            
             @Override
-            @SuppressWarnings("synthetic-access")
-            public void focusLost(FocusEvent e) {
-            }
-
-            /**
-             * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
-             */
-            @Override
-            public void focusGained(FocusEvent e) {
-                EEFRegistryKeyPropertyEditorDialog dialog = new  EEFRegistryKeyPropertyEditorDialog(view.getShell(), SWT.NULL,
-                        sequenceKey, new ArrayList<NamedEntityDescriptor>());
+            public void mouseDown( MouseEvent event ) {
+                EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
+                        SWT.NULL, sequenceKey, new ArrayList<NamedEntityDescriptor>());
                 dialog.open();
                 sequenceKeyText.setText(sequenceKey.getKeyValue());
-                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AggregateMediatorPropertiesEditionPartForm.this, EsbViewsRepository.AggregateMediator.OnComplete.sequenceKey, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getSequenceKey()));
+                propertiesEditionComponent.firePropertiesChanged(
+                        new PropertiesEditionEvent(AggregateMediatorPropertiesEditionPartForm.this,
+                                EsbViewsRepository.AggregateMediator.OnComplete.sequenceKey,
+                                PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getSequenceKey()));
             }
+            
         });
+        
+        sequenceKeyText.addKeyListener(new KeyListener() {
+                        
+            @Override
+            public void keyPressed(KeyEvent e) {
+            }
+            
+            @Override
+            public void keyReleased(KeyEvent e) {
+                if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                    EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
+                            SWT.NULL, sequenceKey, new ArrayList<NamedEntityDescriptor>());
+                    dialog.open();
+                    sequenceKeyText.setText(sequenceKey.getKeyValue());
+                    propertiesEditionComponent.firePropertiesChanged(
+                            new PropertiesEditionEvent(AggregateMediatorPropertiesEditionPartForm.this,
+                                    EsbViewsRepository.AggregateMediator.OnComplete.sequenceKey,
+                                    PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getSequenceKey()));
+                }
+            }
+            
+        });;
+        
         EditingUtils.setID(sequenceKeyText, EsbViewsRepository.AggregateMediator.OnComplete.sequenceKey);
         EditingUtils.setEEFtype(sequenceKeyText, "eef::Text");
         Control sequenceKeyHelp =FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.AggregateMediator.OnComplete.sequenceKey, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
@@ -1516,7 +1539,7 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
             aggregationExpression = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
         } 
         String initValueExpression = aggregationExpression.getPropertyValue().isEmpty() ? "/default/expression" : aggregationExpression.getPropertyValue();
-        aggregationExpressionText = widgetFactory.createText(parent, initValueExpression);
+        aggregationExpressionText = widgetFactory.createText(parent, initValueExpression, SWT.READ_ONLY);
         aggregationExpressionText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
         widgetFactory.paintBordersFor(parent);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
@@ -1535,17 +1558,25 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
         });
         
         aggregationExpressionText.addKeyListener(new KeyListener() {
-                        
+      
             @Override
             public void keyPressed(KeyEvent e) {
-                EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL, aggregationExpression);
-                nspd.open();
-                aggregationExpressionText.setText(aggregationExpression.getPropertyValue());
-                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AggregateMediatorPropertiesEditionPartForm.this, EsbViewsRepository.AggregateMediator.OnComplete.aggregationExpression, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getAggregationExpression()));
             }
             
             @Override
-            public void keyReleased(KeyEvent e) {}
+            public void keyReleased(KeyEvent e) {
+                if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                    EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
+                            SWT.NULL, aggregationExpression);
+                    nspd.open();
+                    aggregationExpressionText.setText(aggregationExpression.getPropertyValue());
+                    propertiesEditionComponent.firePropertiesChanged(
+                            new PropertiesEditionEvent(AggregateMediatorPropertiesEditionPartForm.this,
+                                    EsbViewsRepository.AggregateMediator.OnComplete.aggregationExpression,
+                                    PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+                                    getAggregationExpression()));
+                }
+            }
             
         });;
         
@@ -1557,15 +1588,15 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
     }
 
     protected Composite createCompletionMaxMessagesExpressionWidget(FormToolkit widgetFactory, final Composite parent) {
-        Control completionMaxMessagesExpressionLabel = createDescription(parent, EsbViewsRepository.AggregateMediator.Properties.completionMaxMessages, EsbMessages.AggregateMediatorPropertiesEditionPart_CompletionMaxMessagesLabel);
-        widgetFactory.paintBordersFor(parent);
+        Control completionMaxMessagesExpressionLabel = createDescription(completeConditionSubGroup, EsbViewsRepository.AggregateMediator.Properties.completionMaxMessages, "Completion Max Messages");
+        widgetFactory.paintBordersFor(completeConditionSubGroup);
         if(completionMaxMessagesExpression == null) {
             completionMaxMessagesExpression = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
         } 
         String initValueExpression = completionMaxMessagesExpression.getPropertyValue().isEmpty() ? "" : completionMaxMessagesExpression.getPropertyValue();
-        completionMaxMessagesText = widgetFactory.createText(parent, initValueExpression);
+        completionMaxMessagesText = widgetFactory.createText(completeConditionSubGroup, initValueExpression, SWT.READ_ONLY);
         completionMaxMessagesText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
-        widgetFactory.paintBordersFor(parent);
+        widgetFactory.paintBordersFor(completeConditionSubGroup);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
         completionMaxMessagesText.setLayoutData(valueData);
         
@@ -1585,34 +1616,41 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
                         
             @Override
             public void keyPressed(KeyEvent e) {
-                EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL, completionMaxMessagesExpression);
-                nspd.open();
-                completionMaxMessagesText.setText(completionMaxMessagesExpression.getPropertyValue());
-                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AggregateMediatorPropertiesEditionPartForm.this, EsbViewsRepository.AggregateMediator.Properties.completionMaxMessages, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getCompletionMaxMessagesExpression()));
-            }
-            
+            }            
             @Override
-            public void keyReleased(KeyEvent e) {}
+            public void keyReleased(KeyEvent e) {
+                if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                    EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
+                            SWT.NULL, completionMaxMessagesExpression);
+                    nspd.open();
+                    completionMaxMessagesText.setText(completionMaxMessagesExpression.getPropertyValue());
+                    propertiesEditionComponent.firePropertiesChanged(
+                            new PropertiesEditionEvent(AggregateMediatorPropertiesEditionPartForm.this,
+                                    EsbViewsRepository.AggregateMediator.Properties.completionMaxMessages,
+                                    PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+                                    getCompletionMaxMessagesExpression()));
+                }
+            }
             
         });;
 
         EditingUtils.setID(completionMaxMessagesText, EsbViewsRepository.AggregateMediator.Properties.completionMaxMessages);
         EditingUtils.setEEFtype(completionMaxMessagesText, "eef::Text");
-        Control completionMaxMessagesHelp =FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.AggregateMediator.Properties.completionMaxMessages, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+        Control completionMaxMessagesHelp =FormUtils.createHelpButton(widgetFactory, completeConditionSubGroup, propertiesEditionComponent.getHelpContent(EsbViewsRepository.AggregateMediator.Properties.completionMaxMessages, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
         completionMaxMessagesExpressionElements = new Control[] {completionMaxMessagesExpressionLabel, completionMaxMessagesText, completionMaxMessagesHelp};
         return parent;
     }
 
     protected Composite createCompletionMinMessagesExpressionWidget(FormToolkit widgetFactory, final Composite parent) {
-        Control completionMinMessagesExpressionLabel = createDescription(parent, EsbViewsRepository.AggregateMediator.Properties.completionMinMessages, EsbMessages.AggregateMediatorPropertiesEditionPart_CompletionMinMessagesLabel);
-        widgetFactory.paintBordersFor(parent);
+        Control completionMinMessagesExpressionLabel = createDescription(completeConditionSubGroup, EsbViewsRepository.AggregateMediator.Properties.completionMinMessages, "Completion Min Messages");
+        widgetFactory.paintBordersFor(completeConditionSubGroup);
         if(completionMinMessagesExpression == null) {
             completionMinMessagesExpression = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
         } 
         String initValueExpression = completionMinMessagesExpression.getPropertyValue().isEmpty() ? "" : completionMinMessagesExpression.getPropertyValue();
-        completionMinMessagesText = widgetFactory.createText(parent, initValueExpression);
+        completionMinMessagesText = widgetFactory.createText(completeConditionSubGroup, initValueExpression, SWT.READ_ONLY);
         completionMinMessagesText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
-        widgetFactory.paintBordersFor(parent);
+        widgetFactory.paintBordersFor(completeConditionSubGroup);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
         completionMinMessagesText.setLayoutData(valueData);
         
@@ -1632,20 +1670,28 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
                         
             @Override
             public void keyPressed(KeyEvent e) {
-                EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL, completionMinMessagesExpression);
-                nspd.open();
-                completionMinMessagesText.setText(completionMinMessagesExpression.getPropertyValue());
-                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AggregateMediatorPropertiesEditionPartForm.this, EsbViewsRepository.AggregateMediator.Properties.completionMinMessages, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getCompletionMinMessagesExpression()));
             }
-            
+
             @Override
-            public void keyReleased(KeyEvent e) {}
+            public void keyReleased(KeyEvent e) {
+                if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                    EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
+                            SWT.NULL, completionMinMessagesExpression);
+                    nspd.open();
+                    completionMinMessagesText.setText(completionMinMessagesExpression.getPropertyValue());
+                    propertiesEditionComponent.firePropertiesChanged(
+                            new PropertiesEditionEvent(AggregateMediatorPropertiesEditionPartForm.this,
+                                    EsbViewsRepository.AggregateMediator.Properties.completionMinMessages,
+                                    PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+                                    getCompletionMinMessagesExpression()));
+                }
+            }
             
         });;
         
         EditingUtils.setID(completionMinMessagesText, EsbViewsRepository.AggregateMediator.Properties.completionMinMessages);
         EditingUtils.setEEFtype(completionMinMessagesText, "eef::Text");
-        Control completionMinMessagesHelp =FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.AggregateMediator.Properties.completionMinMessages, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+        Control completionMinMessagesHelp =FormUtils.createHelpButton(widgetFactory, completeConditionSubGroup, propertiesEditionComponent.getHelpContent(EsbViewsRepository.AggregateMediator.Properties.completionMinMessages, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
         completionMinMessagesExpressionElements = new Control[] {completionMinMessagesExpressionLabel, completionMinMessagesText, completionMinMessagesHelp};
         return parent;
     }
@@ -1657,7 +1703,7 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
             correlationExpression = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
         } 
         String initValueExpression = correlationExpression.getPropertyValue().isEmpty() ? "" : correlationExpression.getPropertyValue();
-        correlationExpressionText = widgetFactory.createText(parent, initValueExpression);
+        correlationExpressionText = widgetFactory.createText(parent, initValueExpression, SWT.READ_ONLY);
         correlationExpressionText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
         widgetFactory.paintBordersFor(parent);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
@@ -1679,15 +1725,23 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
                         
             @Override
             public void keyPressed(KeyEvent e) {
-                EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL, correlationExpression);
-                nspd.open();
-                correlationExpressionText.setText(correlationExpression.getPropertyValue());
-                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AggregateMediatorPropertiesEditionPartForm.this, EsbViewsRepository.AggregateMediator.Properties.correlationExpression, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getCorrelationExpression()));
             }
-            
+
             @Override
-            public void keyReleased(KeyEvent e) {}
-            
+            public void keyReleased(KeyEvent e) {
+                if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                    EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
+                            SWT.NULL, correlationExpression);
+                    nspd.open();
+                    correlationExpressionText.setText(correlationExpression.getPropertyValue());
+                    propertiesEditionComponent.firePropertiesChanged(
+                            new PropertiesEditionEvent(AggregateMediatorPropertiesEditionPartForm.this,
+                                    EsbViewsRepository.AggregateMediator.Properties.correlationExpression,
+                                    PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+                                    getCorrelationExpression()));
+                }
+            }
+
         });;
         
         EditingUtils.setID(correlationExpressionText, EsbViewsRepository.AggregateMediator.Properties.correlationExpression);
@@ -1704,66 +1758,41 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
     }
 
     public void validate() {
-        clearElements();
-        showEntry(aggregateIDElements, false);
-        showEntry(correlationExpressionElements, false);
-        showEntry(completionTimeoutElements, false);
-        showEntry(completionMinMessagesTypeElements, false);
-        showEntry(completionMaxMessagesTypeElements, false);
+        EEFPropertyViewUtil epv = new EEFPropertyViewUtil(view);
+        epv.clearElements(new Composite[] { propertiesGroup });
+        epv.clearElements(new Composite[] { onCompleteGroup });
+        epv.showEntry(new Control[] {completeConditionSubGroup.getParent()}, false);
+        epv.clearElements(new Composite[] { completeConditionSubGroup });
+        epv.showEntry(aggregateIDElements, false);
+        epv.showEntry(correlationExpressionElements, false);
+        epv.showEntry(completionTimeoutElements, false);
+        epv.showEntry(completionMinMessagesTypeElements, false);
+        epv.showEntry(completionMaxMessagesTypeElements, false);
         if (getCompletionMinMessagesType().getName().equals(CompletionMessagesType.VALUE.getName())) {
 
-            showEntry(completionMinMessagesValueElements, false);
+            epv.showEntry(completionMinMessagesValueElements, false);
         } else {
 
-            showEntry(completionMinMessagesExpressionElements, false);
+            epv.showEntry(completionMinMessagesExpressionElements, false);
         }
 
         if (getCompletionMaxMessagesType().getName().equals(CompletionMessagesType.VALUE.getName())) {
 
-            showEntry(completionMaxMessagesValueElements, false);
+            epv.showEntry(completionMaxMessagesValueElements, false);
         } else {
 
-            showEntry(completionMaxMessagesExpressionElements, false);
+            epv.showEntry(completionMaxMessagesExpressionElements, false);
         }
-        showEntry(aggregationExpressionElements, false);
-        showEntry(sequenceTypeElements, false);
+        epv.showEntry(aggregationExpressionElements, false);
+        epv.showEntry(sequenceTypeElements, false);
         
         if (getSequenceType().getName().equals(AggregateSequenceType.REGISTRY_REFERENCE.getName())) {
-            showEntry(sequenceKeyElements, false);
+            epv.showEntry(sequenceKeyElements, false);
         }
 
-        showEntry(enclosingElementElements, false);
+        epv.showEntry(enclosingElementElements, false);
         view.layout(true, true);
     }
 
-    public void clearElements() {
-        hideEntry(propertiesGroup.getChildren(), false);
-        hideEntry(onCompleteGroup.getChildren(), false);
-    }
-
-    public void hideEntry(Control controls[], boolean layout) {
-        // view.getChildren();
-        for (Control control : controls) {
-            // null check and type check
-            if (control.getLayoutData() != null && control.getLayoutData() instanceof GridData) {
-                ((GridData) control.getLayoutData()).exclude = true;
-                control.setVisible(false);
-            }
-        }
-        if (layout) {
-            view.layout(true, true);
-        }
-    }
-
-    public void showEntry(Control controls[], boolean layout) {
-        for (Control control : controls) {
-            // null check and type check
-            ((GridData) control.getLayoutData()).exclude = false;
-            control.setVisible(true);
-        }
-        if (layout) {
-            view.layout(true, true);
-        }
-    }
 	// End of user code
 }

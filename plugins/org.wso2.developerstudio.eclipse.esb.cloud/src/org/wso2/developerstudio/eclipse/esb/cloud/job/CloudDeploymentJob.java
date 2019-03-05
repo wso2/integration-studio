@@ -69,7 +69,6 @@ public class CloudDeploymentJob extends Job {
     private IntegrationCloudServiceClient client;
     private String response;
     private EndpointData endpointData;
-    private int status;
 
     private static final int POLLING_INTERVAL = 5;
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
@@ -109,7 +108,6 @@ public class CloudDeploymentJob extends Job {
             operationText = "Fetching the endpoints...";
             monitor.subTask(operationText);
             monitor.worked(10);
-            status = 20;
 
             ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(5);
 
@@ -118,7 +116,6 @@ public class CloudDeploymentJob extends Job {
             // Although the application is created, it takes time to create the endpoints.
             // we will poll every 5 seconds to see if the endpoints are ready.
             ScheduledFuture<?> scheduledFuture = scheduledExecutorService.scheduleAtFixedRate(new Runnable() {
-                int count = 0;
 
                 public void run() {
                     try {
@@ -134,7 +131,6 @@ public class CloudDeploymentJob extends Job {
                                 monitor.subTask("Loading Endpoints...");
                                 Random random = new Random();
                                 int value = random.nextInt(10);
-                                status += value;
                                 monitor.worked(value);
                             }
                         }
@@ -158,8 +154,6 @@ public class CloudDeploymentJob extends Job {
             log.error(CloudDeploymentWizardConstants.ErrorMessages.DEPLOY_TO_CLOUD_FAILED_MESSAGE, e);
             showMessageBox(CloudDeploymentWizardConstants.ErrorMessages.DEPLOY_TO_CLOUD_FAILED_TITLE, e.getMessage(),
                     SWT.ICON_ERROR);
-            operationText = e.getMessage();
-            monitor.beginTask(operationText, 100);
             monitor.worked(0);
             monitor.setCanceled(true);
             return Status.CANCEL_STATUS;
@@ -167,6 +161,9 @@ public class CloudDeploymentJob extends Job {
             log.error(CloudDeploymentWizardConstants.ErrorMessages.NO_INTERNET_CONNECTION_MESSAGE, e1);
             showMessageBox(CloudDeploymentWizardConstants.ErrorMessages.DEPLOY_TO_CLOUD_FAILED_TITLE, CloudDeploymentWizardConstants.ErrorMessages.NO_INTERNET_CONNECTION_MESSAGE,
                     SWT.ICON_ERROR);
+            monitor.worked(0);
+            monitor.setCanceled(true);
+            return Status.CANCEL_STATUS;
         }
 
         monitor.worked(100);
@@ -230,15 +227,5 @@ public class CloudDeploymentJob extends Job {
         });
 
     }
-
-    public int getStatus() {
-        return status;
-    }
-
-    public void setStatus(int status) {
-        this.status = status;
-    }
-    
-    
 
 }

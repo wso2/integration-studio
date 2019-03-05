@@ -137,12 +137,12 @@ public class DeployToCloudWizard extends Wizard implements IExportWizard {
             initError = true;
             log.error(CloudDeploymentWizardConstants.ErrorMessages.NO_INTERNET_CONNECTION_MESSAGE, e);
             openMessageBox(shell, CloudDeploymentWizardConstants.DIALOG_TITLE_TEXT,
-                    CloudDeploymentWizardConstants.ErrorMessages.NO_INTERNET_CONNECTION_MESSAGE, SWT.ICON_INFORMATION);
+                    CloudDeploymentWizardConstants.ErrorMessages.NO_INTERNET_CONNECTION_MESSAGE, SWT.ICON_ERROR);
         } catch (HttpClientException e) {
             initError = true;
             log.error(CloudDeploymentWizardConstants.ErrorMessages.DEPLOY_TO_CLOUD_REQUEST_ERROR_MSG, e);
             openMessageBox(shell, CloudDeploymentWizardConstants.DIALOG_TITLE_TEXT,
-                    CloudDeploymentWizardConstants.ErrorMessages.DEPLOY_TO_CLOUD_REQUEST_ERROR_MSG, SWT.ICON_INFORMATION);
+                    CloudDeploymentWizardConstants.ErrorMessages.DEPLOY_TO_CLOUD_REQUEST_ERROR_MSG, SWT.ICON_ERROR);
         } catch (Exception e) {
             initError = true;
             log.error(CloudDeploymentWizardConstants.ErrorMessages.DEPLOY_TO_CLOUD_REQUEST_ERROR_MSG, e);

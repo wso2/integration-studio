@@ -213,7 +213,6 @@ public class AppDetailsWizardPage extends WizardPage{
         existingAppContainer.setLayout(new GridLayout(3, false));
         existingAppContainer.setVisible(false);
         
-//        setName(initialName);
         setDescription(initialDescription);
         setAppIcon(initialappIcon);
         this.tags = new ArrayList<>();

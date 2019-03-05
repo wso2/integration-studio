@@ -76,13 +76,21 @@ import org.wso2.developerstudio.eclipse.logging.core.Logger;
  */
 public class AppDetailsWizardPage extends WizardPage{
     
+    // Dialog string values
+    private static final String DIALOG_TITLE = "WSO2 Platform Distribution - Application Details";
+    
+    // Text field labels
     private static final String FILE_VERSION_LABEL_TEXT = "Application version *";
     private static final String FILE_NAME_LABEL_TEXT = "Name of the application *";
     private static final String DESCRIPTION_LABEL_TEXT = "Description";
     private static final String APP_ICON_LABEL_TEXT = "Application Icon";
     private static final String TAGS_LABEL_TEXT = "Tags";
+    
+    // Button / Radio Button Strings
     private static final String BROWSE_LABEL_TEXT = "Browse";
-    private static final String DIALOG_TITLE = "WSO2 Platform Distribution - Application Details";
+    private static final String CREATE_NEW_APPLICATION_TEXT = "Create New Application";
+    private static final String CREATE_NEW_VERSION_TEXT = "Create New Version";
+
     private static final String EMPTY_STRING = "";
     
     private static final String[] FILTER_NAMES = {
@@ -91,10 +99,13 @@ public class AppDetailsWizardPage extends WizardPage{
     // These filter extensions are used to filter which files are displayed.
     private static final String[] FILTER_EXTS = { "*.jpg", "*.jpeg", "*.png"};
     
+    // Elements
     private Button btnNewApplication;
     private Button btnExistingApplication;
     private Combo appNames;
+    private Text newVersion;
     
+    // Application values
     private String name = EMPTY_STRING;
     private String version = EMPTY_STRING;
     private String description = EMPTY_STRING;
@@ -160,13 +171,13 @@ public class AppDetailsWizardPage extends WizardPage{
         appTypeGroup.setLayout(rowLayout);
         
         btnNewApplication = new Button(appTypeGroup, SWT.RADIO);
-        btnNewApplication.setText("Create New Application");
+        btnNewApplication.setText(CREATE_NEW_APPLICATION_TEXT);
         btnNewApplication.setSelection(true);
         
         btnExistingApplication = new Button(appTypeGroup, SWT.RADIO);
-        btnExistingApplication.setText("Create New Version");
+        btnExistingApplication.setText(CREATE_NEW_VERSION_TEXT);
         
-        // Create new Application container
+        // =========== Create new Application container ======================
         Composite newAppContainer = new Composite(container, SWT.NULL);
         
         GridData newAppGridData = new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1);
@@ -192,7 +203,7 @@ public class AppDetailsWizardPage extends WizardPage{
         // Tags
         createTagsInput(newAppContainer);
         
-        // Update existing application container
+        // ============== Update existing application container ===============
         Composite existingAppContainer = new Composite(container, SWT.NULL);
         GridData existingAppData = new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1);
         existingAppData.exclude = true;
@@ -202,11 +213,12 @@ public class AppDetailsWizardPage extends WizardPage{
         existingAppContainer.setLayout(new GridLayout(3, false));
         existingAppContainer.setVisible(false);
         
-        setName(initialName);
+//        setName(initialName);
         setDescription(initialDescription);
         setAppIcon(initialappIcon);
         this.tags = new ArrayList<>();
         
+        // Create new application radio button listener
         btnNewApplication.addSelectionListener(new SelectionAdapter()  {
             
             @Override
@@ -221,12 +233,14 @@ public class AppDetailsWizardPage extends WizardPage{
                     newAppContainer.getParent().pack();
                     
                     setNewVersion(false);
-                    setVersion(initialVersion);
+                    setName(getInitialName());
+                    setVersion(getInitialVersion());
                 }
             }
              
         });
         
+        // Create new version radio button listener
         btnExistingApplication.addSelectionListener(new SelectionAdapter()  {
             
             @Override
@@ -244,8 +258,6 @@ public class AppDetailsWizardPage extends WizardPage{
                 }
                 
                 setNewVersion(true);
-                setVersion(initialVersion);
-                setName("");
                 
                 // Retrieve applicationlist
                 
@@ -274,7 +286,7 @@ public class AppDetailsWizardPage extends WizardPage{
         createNameSelectInput(parent, existingAppContainer);
         
         // Application Version
-        createVersionInput(parent, existingAppContainer);
+        newVersion = createVersionInput(parent, existingAppContainer);
         
         // Tags
         createTagsInput(existingAppContainer);
@@ -518,7 +530,7 @@ public class AppDetailsWizardPage extends WizardPage{
      * @param parent
      * @param newAppContainer
      */
-    private void createVersionInput(Composite parent, Composite newAppContainer) {
+    private Text createVersionInput(Composite parent, Composite newAppContainer) {
         StyledText lblVersion = new StyledText(newAppContainer, SWT.NONE);
         lblVersion.setText(FILE_VERSION_LABEL_TEXT);
 
@@ -541,6 +553,7 @@ public class AppDetailsWizardPage extends WizardPage{
             }
 
         });
+        return txtVersion;
     }
     
     /**
@@ -549,7 +562,7 @@ public class AppDetailsWizardPage extends WizardPage{
      * @param parent
      * @param container
      */
-    private void createNameInput(Composite parent, Composite container) {
+    private Text createNameInput(Composite parent, Composite container) {
         StyledText lblName = new StyledText(container, SWT.NONE);
         FontData data = lblName.getFont().getFontData()[0];
         fontName = data.getName();
@@ -578,6 +591,7 @@ public class AppDetailsWizardPage extends WizardPage{
             }
 
         });
+        return txtName;
     }
     
     /**
@@ -617,6 +631,7 @@ public class AppDetailsWizardPage extends WizardPage{
                 int idx = appNames.getSelectionIndex();
                 String application = appNames.getItem(idx);
                 setName(application);
+                validate();
             }
         });
     }
@@ -652,30 +667,57 @@ public class AppDetailsWizardPage extends WizardPage{
      *  Validates text field values
      */
     private void validate() {
-        if ((getName() == null || getName().equals(EMPTY_STRING)) || getVersion() == null
-                || getVersion().equals(EMPTY_STRING)) {
-            setErrorMessage("Please specify a name and version to .car file.");
-            setPageComplete(false);
-            return;
+        if (!isNewVersion) {
+            if ((getName() == null || getName().equals(EMPTY_STRING)) || getVersion() == null
+                    || getVersion().equals(EMPTY_STRING)) {
+                setErrorMessage("Please specify a name and version to .car file.");
+                setPageComplete(false);
+                return;
+            } else {
+                String version = getVersion();
+                String[] versionParts = version.split("\\.");
+                if (version.endsWith(".")) {
+                    setErrorMessage("File version cannot end with period.");
+                    setPageComplete(false);
+                    return;
+                }
+                if (versionParts.length > 4) {
+                    setErrorMessage("File version should be in the standared format.");
+                    setPageComplete(false);
+                    return;
+                }
+                if (!Character.isDigit(version.charAt(0))) {
+                    setErrorMessage("File version should start with a numeric value.");
+                    setPageComplete(false);
+                    return;
+                }
+            }
         } else {
-            String version = getVersion();
-            String[] versionParts = version.split("\\.");
-            if (version.endsWith(".")) {
-                setErrorMessage("File version cannot end with period.");
+            if (appNames.getText() == null || appNames.getText().equals(EMPTY_STRING)) {
+                setErrorMessage("Please select an application.");
                 setPageComplete(false);
                 return;
-            }
-            if (versionParts.length > 4) {
-                setErrorMessage("File version should be in the standared format.");
-                setPageComplete(false);
-                return;
-            }
-            if (!Character.isDigit(version.charAt(0))) {
-                setErrorMessage("File version should start with a numeric value.");
-                setPageComplete(false);
-                return;
+            } else {
+                String version = newVersion.getText();
+                String[] versionParts = version.split("\\.");
+                if (version.endsWith(".")) {
+                    setErrorMessage("File version cannot end with period.");
+                    setPageComplete(false);
+                    return;
+                }
+                if (versionParts.length > 4) {
+                    setErrorMessage("File version should be in the standared format.");
+                    setPageComplete(false);
+                    return;
+                }
+                if (!Character.isDigit(version.charAt(0))) {
+                    setErrorMessage("File version should start with a numeric value.");
+                    setPageComplete(false);
+                    return;
+                }
             }
         }
+        
 
         setPageDirtyState();
         setErrorMessage(null);
@@ -756,7 +798,20 @@ public class AppDetailsWizardPage extends WizardPage{
         this.isNewVersion = isNewVersion;
     }
     
+    public void setInitialName(String carName) {
+        this.initialName = carName;
+    }
+
+    public String getInitialName() {
+        return initialName;
+    }
     
-    
+    public void setInitialVersion(String version) {
+        this.initialVersion = version;
+    }
+
+    public String getInitialVersion() {
+        return initialVersion;
+    }
     
 }

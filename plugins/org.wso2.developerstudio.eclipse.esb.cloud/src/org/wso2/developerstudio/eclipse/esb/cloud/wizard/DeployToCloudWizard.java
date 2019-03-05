@@ -130,6 +130,8 @@ public class DeployToCloudWizard extends Wizard implements IExportWizard {
 
             appDetailsPage.setName(parentPrj.getModel().getArtifactId());
             appDetailsPage.setVersion(parentPrj.getModel().getVersion());
+            appDetailsPage.setInitialName(parentPrj.getModel().getArtifactId());
+            appDetailsPage.setInitialVersion(parentPrj.getModel().getVersion());
 
         } catch (NetworkUnavailableException e) {
             initError = true;

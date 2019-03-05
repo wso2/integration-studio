@@ -222,14 +222,14 @@ public class IntegrationCloudServiceClient {
         data.put("appTypeName", CloudServiceConstants.AppConfigs.ESB);
         data.put("applicationRevision", version);
         data.put("uploadedFileName", fileName);
-        data.put("runtimeProperties", "[]");
+        data.put("runtimeProperties", CloudServiceConstants.AppConfigs.RUNTIME_PROPERTIES);
         data.put("tags", JsonUtils.getJsonArrayFromList(tags));
-        data.put("isFileAttached", "true");
+        data.put("isFileAttached", CloudServiceConstants.AppConfigs.IS_FILE_ATTACHED);
         data.put("conSpec", CloudServiceConstants.AppConfigs.CON_SPEC);
         data.put("isNewVersion", Boolean.toString(isNewVersion));
-        data.put("appCreationMethod", "default");
-        data.put("setDefaultVersion", "true");
-        data.put("runtime", CloudServiceConstants.AppConfigs.RUNTIME);        
+        data.put("appCreationMethod", CloudServiceConstants.AppConfigs.APP_CREATION_METHOD);
+        data.put("setDefaultVersion", CloudServiceConstants.AppConfigs.SET_DEFAULT_VERSION);
+        data.put("runtime", CloudServiceConstants.AppConfigs.RUNTIME);
         
         String response = HTTPClientUtil.sendPostWithMulipartFormData(createAppUrl, data, files, cookieStore);
         
@@ -254,13 +254,17 @@ public class IntegrationCloudServiceClient {
      */
     private static String mapResponse(String response) throws CloudDeploymentException {
         String message;
+        
         switch(response) {
         case CloudServiceConstants.ResponseMessages.APP_REVISION_ERROR :
            message = ResponseMessageConstants.ErrorMessages.VERSION_EXISTS;
+           throw new CloudDeploymentException(message);
         case CloudServiceConstants.ResponseMessages.APP_EXISTS_ERROR:
             message = ResponseMessageConstants.ErrorMessages.APPLICATION_EXISTS;
+            throw new CloudDeploymentException(message);
         case CloudServiceConstants.ResponseMessages.NO_RESOURCES_ERROR :
             message = ResponseMessageConstants.ErrorMessages.NO_RESOURCES_ERROR;
+            throw new CloudDeploymentException(message);
         case CloudServiceConstants.ResponseMessages.VERSION_EXISTS_ERROR:
             message = ResponseMessageConstants.ErrorMessages.VERSION_EXISTS;
             throw new CloudDeploymentException(message);

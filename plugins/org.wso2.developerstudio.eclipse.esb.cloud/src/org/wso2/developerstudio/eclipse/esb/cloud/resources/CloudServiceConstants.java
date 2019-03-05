@@ -32,6 +32,10 @@ public class CloudServiceConstants {
         public static final String ESB = "wso2esb";
         public static final String RUNTIME = "24";
         public static final String CON_SPEC = "5";
+        public static final String APP_CREATION_METHOD = "default";
+        public static final String SET_DEFAULT_VERSION = "true"; 
+        public static final String IS_FILE_ATTACHED = "true";
+        public static final String RUNTIME_PROPERTIES = "[]";
     }
     
     // Integration Cloud API actions

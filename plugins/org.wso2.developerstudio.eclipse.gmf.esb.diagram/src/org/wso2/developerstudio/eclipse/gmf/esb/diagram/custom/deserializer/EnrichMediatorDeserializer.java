@@ -18,6 +18,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer;
 
 import java.util.Map;
 
+import org.apache.synapse.config.xml.SynapsePath;
 import org.apache.synapse.mediators.AbstractMediator;
 import org.apache.synapse.mediators.elementary.Source;
 import org.apache.synapse.mediators.elementary.Target;
@@ -111,11 +112,12 @@ public class EnrichMediatorDeserializer extends AbstractEsbNodeDeserializer<Abst
                 // vishualEnrich.setSourceType(EnrichSourceType.CUSTOM);
                 executeSetValueCommand(ENRICH_MEDIATOR__SOURCE_TYPE, EnrichSourceType.CUSTOM);
 
-                SynapseXPath xpath = source.getXpath();
+                SynapsePath xpath = source.getXpath();
 
                 NamespacedProperty nsp = EsbFactory.eINSTANCE.createNamespacedProperty();
 
                 nsp.setPropertyValue(xpath.toString());
+                nsp.setSupportJsonPaths(true);
 
                 if (xpath.getNamespaces() != null) {
 
@@ -175,11 +177,12 @@ public class EnrichMediatorDeserializer extends AbstractEsbNodeDeserializer<Abst
                 // vishualEnrich.setTargetType(EnrichTargetType.CUSTOM);
                 executeSetValueCommand(ENRICH_MEDIATOR__TARGET_TYPE, EnrichTargetType.CUSTOM);
 
-                SynapseXPath xpath = target.getXpath();
+                SynapsePath xpath = target.getXpath();
 
                 NamespacedProperty nsp = EsbFactory.eINSTANCE.createNamespacedProperty();
 
                 nsp.setPropertyValue(xpath.toString());
+                nsp.setSupportJsonPaths(true);
 
                 if (xpath.getNamespaces() != null) {
 

@@ -334,6 +334,9 @@ import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFormatType;
 import org.wso2.developerstudio.eclipse.gmf.esb.ProcessorState;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyAction;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyDataType;
+import org.wso2.developerstudio.eclipse.gmf.esb.PropertyGroupMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.PropertyGroupMediatorInputConnector;
+import org.wso2.developerstudio.eclipse.gmf.esb.PropertyGroupMediatorOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediatorInputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediatorOutputConnector;
@@ -1134,6 +1137,27 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
     private EClass propertyMediatorOutputConnectorEClass = null;
 
     /**
+     * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+     * @generated
+     */
+	private EClass propertyGroupMediatorEClass = null;
+
+				/**
+     * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+     * @generated
+     */
+	private EClass propertyGroupMediatorInputConnectorEClass = null;
+
+				/**
+     * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+     * @generated
+     */
+	private EClass propertyGroupMediatorOutputConnectorEClass = null;
+
+				/**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6766,6 +6790,60 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 
     /**
      * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+     * @generated
+     */
+	public EClass getPropertyGroupMediator() {
+        return propertyGroupMediatorEClass;
+    }
+
+				/**
+     * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+     * @generated
+     */
+	public EReference getPropertyGroupMediator_InputConnector() {
+        return (EReference)propertyGroupMediatorEClass.getEStructuralFeatures().get(0);
+    }
+
+				/**
+     * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+     * @generated
+     */
+	public EReference getPropertyGroupMediator_OutputConnector() {
+        return (EReference)propertyGroupMediatorEClass.getEStructuralFeatures().get(1);
+    }
+
+				/**
+     * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+     * @generated
+     */
+	public EReference getPropertyGroupMediator_Properties() {
+        return (EReference)propertyGroupMediatorEClass.getEStructuralFeatures().get(2);
+    }
+
+				/**
+     * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+     * @generated
+     */
+	public EClass getPropertyGroupMediatorInputConnector() {
+        return propertyGroupMediatorInputConnectorEClass;
+    }
+
+				/**
+     * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+     * @generated
+     */
+	public EClass getPropertyGroupMediatorOutputConnector() {
+        return propertyGroupMediatorOutputConnectorEClass;
+    }
+
+				/**
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
@@ -6825,6 +6903,15 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      */
     public EAttribute getNamespacedProperty_Dynamic() {
         return (EAttribute)namespacedPropertyEClass.getEStructuralFeatures().get(5);
+    }
+    
+	/**
+     * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+     * @generated
+     */
+	public EAttribute getNamespacedProperty_SupportJsonPaths() {
+        return (EAttribute)namespacedPropertyEClass.getEStructuralFeatures().get(6);
     }
 
     /**
@@ -19733,6 +19820,15 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 
         propertyMediatorOutputConnectorEClass = createEClass(PROPERTY_MEDIATOR_OUTPUT_CONNECTOR);
 
+        propertyGroupMediatorEClass = createEClass(PROPERTY_GROUP_MEDIATOR);
+        createEReference(propertyGroupMediatorEClass, PROPERTY_GROUP_MEDIATOR__INPUT_CONNECTOR);
+        createEReference(propertyGroupMediatorEClass, PROPERTY_GROUP_MEDIATOR__OUTPUT_CONNECTOR);
+        createEReference(propertyGroupMediatorEClass, PROPERTY_GROUP_MEDIATOR__PROPERTIES);
+
+        propertyGroupMediatorInputConnectorEClass = createEClass(PROPERTY_GROUP_MEDIATOR_INPUT_CONNECTOR);
+
+        propertyGroupMediatorOutputConnectorEClass = createEClass(PROPERTY_GROUP_MEDIATOR_OUTPUT_CONNECTOR);
+
         namespacedPropertyEClass = createEClass(NAMESPACED_PROPERTY);
         createEAttribute(namespacedPropertyEClass, NAMESPACED_PROPERTY__PRETTY_NAME);
         createEAttribute(namespacedPropertyEClass, NAMESPACED_PROPERTY__PROPERTY_NAME);
@@ -19740,6 +19836,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         createEAttribute(namespacedPropertyEClass, NAMESPACED_PROPERTY__NAMESPACES);
         createEAttribute(namespacedPropertyEClass, NAMESPACED_PROPERTY__SUPPORTS_DYNAMIC_XPATHS);
         createEAttribute(namespacedPropertyEClass, NAMESPACED_PROPERTY__DYNAMIC);
+        createEAttribute(namespacedPropertyEClass, NAMESPACED_PROPERTY__SUPPORT_JSON_PATHS);
 
         enrichMediatorEClass = createEClass(ENRICH_MEDIATOR);
         createEAttribute(enrichMediatorEClass, ENRICH_MEDIATOR__CLONE_SOURCE);
@@ -21518,6 +21615,9 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         propertyMediatorEClass.getESuperTypes().add(this.getMediator());
         propertyMediatorInputConnectorEClass.getESuperTypes().add(this.getInputConnector());
         propertyMediatorOutputConnectorEClass.getESuperTypes().add(this.getOutputConnector());
+        propertyGroupMediatorEClass.getESuperTypes().add(this.getMediator());
+        propertyGroupMediatorInputConnectorEClass.getESuperTypes().add(this.getInputConnector());
+        propertyGroupMediatorOutputConnectorEClass.getESuperTypes().add(this.getOutputConnector());
         namespacedPropertyEClass.getESuperTypes().add(this.getEsbNode());
         enrichMediatorEClass.getESuperTypes().add(this.getMediator());
         enrichMediatorInputConnectorEClass.getESuperTypes().add(this.getInputConnector());
@@ -22176,6 +22276,15 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 
         initEClass(propertyMediatorOutputConnectorEClass, PropertyMediatorOutputConnector.class, "PropertyMediatorOutputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
+        initEClass(propertyGroupMediatorEClass, PropertyGroupMediator.class, "PropertyGroupMediator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getPropertyGroupMediator_InputConnector(), this.getPropertyGroupMediatorInputConnector(), null, "inputConnector", null, 0, 1, PropertyGroupMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getPropertyGroupMediator_OutputConnector(), this.getPropertyGroupMediatorOutputConnector(), null, "outputConnector", null, 0, 1, PropertyGroupMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getPropertyGroupMediator_Properties(), this.getPropertyMediator(), null, "properties", null, 0, -1, PropertyGroupMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+        initEClass(propertyGroupMediatorInputConnectorEClass, PropertyGroupMediatorInputConnector.class, "PropertyGroupMediatorInputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+        initEClass(propertyGroupMediatorOutputConnectorEClass, PropertyGroupMediatorOutputConnector.class, "PropertyGroupMediatorOutputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
         initEClass(namespacedPropertyEClass, NamespacedProperty.class, "NamespacedProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getNamespacedProperty_PrettyName(), ecorePackage.getEString(), "prettyName", "Namespaced Property", 0, 1, NamespacedProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getNamespacedProperty_PropertyName(), ecorePackage.getEString(), "propertyName", "propertyName", 0, 1, NamespacedProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -22188,6 +22297,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         initEAttribute(getNamespacedProperty_Namespaces(), g1, "namespaces", null, 0, 1, NamespacedProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getNamespacedProperty_SupportsDynamicXPaths(), ecorePackage.getEBoolean(), "supportsDynamicXPaths", null, 0, 1, NamespacedProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getNamespacedProperty_Dynamic(), ecorePackage.getEBoolean(), "dynamic", null, 0, 1, NamespacedProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getNamespacedProperty_SupportJsonPaths(), ecorePackage.getEBoolean(), "supportJsonPaths", null, 0, 1, NamespacedProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(enrichMediatorEClass, EnrichMediator.class, "EnrichMediator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getEnrichMediator_CloneSource(), ecorePackage.getEBoolean(), "cloneSource", "true", 0, 1, EnrichMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -23449,44 +23559,19 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 
         initEClass(cloudConnectorOperationOutputConnectorEClass, CloudConnectorOperationOutputConnector.class, "CloudConnectorOperationOutputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-        initEClass(dataMapperMediatorEClass, DataMapperMediator.class, "DataMapperMediator", !IS_ABSTRACT,
-                !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getDataMapperMediator_InputConnector(), this.getDataMapperMediatorInputConnector(), null,
-                "inputConnector", null, 0, 1, DataMapperMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-                IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getDataMapperMediator_InputType(), this.getDataMapperMediatorDataTypes(), "inputType", null, 0,
-                1, DataMapperMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
-                IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getDataMapperMediator_OutputConnector(), this.getDataMapperMediatorOutputConnector(), null,
-                "outputConnector", null, 0, 1, DataMapperMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-                IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getDataMapperMediator_Configuration(), this.getRegistryKeyProperty(), null, "configuration",
-                null, 0, 1, DataMapperMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-                !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getDataMapperMediator_InputSchema(), this.getRegistryKeyProperty(), null, "InputSchema", null, 0,
-                1, DataMapperMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-                !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getDataMapperMediator_OutputSchema(), this.getRegistryKeyProperty(), null, "outputSchema", null,
-                0, 1, DataMapperMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-                !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getDataMapperMediator_XsltStyleSheet(), this.getRegistryKeyProperty(), null, "xsltStyleSheet",
-                null, 0, 1, DataMapperMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-                !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getDataMapperMediator_ConfigurationLocalPath(), ecorePackage.getEString(),
-                "configurationLocalPath", null, 0, 1, DataMapperMediator.class, !IS_TRANSIENT, !IS_VOLATILE,
-                IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getDataMapperMediator_InputSchemaLocalPath(), ecorePackage.getEString(), "inputSchemaLocalPath",
-                null, 0, 1, DataMapperMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
-                !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getDataMapperMediator_OutputSchemaLocalPath(), ecorePackage.getEString(),
-                "outputSchemaLocalPath", null, 0, 1, DataMapperMediator.class, !IS_TRANSIENT, !IS_VOLATILE,
-                IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getDataMapperMediator_XsltStyleSheetLocalPath(), ecorePackage.getEString(),
-                "xsltStyleSheetLocalPath", null, 0, 1, DataMapperMediator.class, !IS_TRANSIENT, !IS_VOLATILE,
-                IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getDataMapperMediator_OutputType(), this.getDataMapperMediatorDataTypes(), "outputType", null, 0,
-                1, DataMapperMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
-                IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(dataMapperMediatorEClass, DataMapperMediator.class, "DataMapperMediator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getDataMapperMediator_InputConnector(), this.getDataMapperMediatorInputConnector(), null, "inputConnector", null, 0, 1, DataMapperMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getDataMapperMediator_InputType(), this.getDataMapperMediatorDataTypes(), "inputType", null, 0, 1, DataMapperMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getDataMapperMediator_OutputConnector(), this.getDataMapperMediatorOutputConnector(), null, "outputConnector", null, 0, 1, DataMapperMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getDataMapperMediator_Configuration(), this.getRegistryKeyProperty(), null, "configuration", null, 0, 1, DataMapperMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getDataMapperMediator_InputSchema(), this.getRegistryKeyProperty(), null, "InputSchema", null, 0, 1, DataMapperMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getDataMapperMediator_OutputSchema(), this.getRegistryKeyProperty(), null, "outputSchema", null, 0, 1, DataMapperMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getDataMapperMediator_XsltStyleSheet(), this.getRegistryKeyProperty(), null, "xsltStyleSheet", null, 0, 1, DataMapperMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getDataMapperMediator_ConfigurationLocalPath(), ecorePackage.getEString(), "configurationLocalPath", null, 0, 1, DataMapperMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getDataMapperMediator_InputSchemaLocalPath(), ecorePackage.getEString(), "inputSchemaLocalPath", null, 0, 1, DataMapperMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getDataMapperMediator_OutputSchemaLocalPath(), ecorePackage.getEString(), "outputSchemaLocalPath", null, 0, 1, DataMapperMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getDataMapperMediator_XsltStyleSheetLocalPath(), ecorePackage.getEString(), "xsltStyleSheetLocalPath", null, 0, 1, DataMapperMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getDataMapperMediator_OutputType(), this.getDataMapperMediatorDataTypes(), "outputType", null, 0, 1, DataMapperMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(dataMapperMediatorInputConnectorEClass, DataMapperMediatorInputConnector.class, "DataMapperMediatorInputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

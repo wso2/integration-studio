@@ -32,6 +32,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.AggregateSequenceType;
 import org.wso2.developerstudio.eclipse.gmf.esb.CompletionMessagesType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.SynapseXPathExt;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.ValidationConstansts;
@@ -154,44 +155,75 @@ public class AggregateMediatorTransformer extends AbstractEsbNodeTransformer {
                 aggregateMediator.setId(visualAggregate.getAggregateID());
             }
 
+//            if (visualAggregate.getCorrelationExpression() != null
+//                    && visualAggregate.getCorrelationExpression().getPropertyValue() != null) {
+//                SynapseXPath correlationExpression;
+//                if (!isForValidation
+//                        && StringUtils.isEmpty(visualAggregate.getCorrelationExpression().getPropertyValue())) {
+//                    // Set default values for the property since we need to use synapse serializer
+//                    correlationExpression = new SynapseXPath(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
+//                } else {
+//                    correlationExpression = new SynapseXPath(
+//                            visualAggregate.getCorrelationExpression().getPropertyValue());
+//                }
+//                for (int i = 0; i < visualAggregate.getCorrelationExpression().getNamespaces().keySet().size(); ++i) {
+//                    String prefix = (String) visualAggregate.getCorrelationExpression().getNamespaces().keySet()
+//                            .toArray()[i];
+//                    String namespaceUri = visualAggregate.getCorrelationExpression().getNamespaces().get(prefix);
+//                    correlationExpression.addNamespace(prefix, namespaceUri);
+//                }
+//
+//                aggregateMediator.setCorrelateExpression(correlationExpression);
+//            }
+//            if (visualAggregate.getAggregationExpression() != null
+//                    && visualAggregate.getAggregationExpression().getPropertyValue() != null) {
+//                SynapseXPath aggregateExpression;
+//                if (!isForValidation && StringUtils.isEmpty(visualAggregate.getAggregationExpression().getPropertyValue())) {
+//                    // Set default values for the property since we need to use synapse serializer
+//                    aggregateExpression = new SynapseXPath(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
+//                } else {
+//                    aggregateExpression = new SynapseXPath(visualAggregate.getAggregationExpression().getPropertyValue());
+//                }
+//                for (int i = 0; i < visualAggregate.getAggregationExpression().getNamespaces().keySet().size(); ++i) {
+//                    String prefix = (String) visualAggregate.getAggregationExpression().getNamespaces().keySet()
+//                            .toArray()[i];
+//                    String namespaceUri = visualAggregate.getAggregationExpression().getNamespaces().get(prefix);
+//                    aggregateExpression.addNamespace(prefix, namespaceUri);
+//                }
+//
+//                aggregateMediator.setAggregationExpression(aggregateExpression);
+//            }
+            
             if (visualAggregate.getCorrelationExpression() != null
-                    && visualAggregate.getCorrelationExpression().getPropertyValue() != null) {
-                SynapseXPath correlationExpression;
-                if (!isForValidation
-                        && StringUtils.isEmpty(visualAggregate.getCorrelationExpression().getPropertyValue())) {
-                    // Set default values for the property since we need to use synapse serializer
-                    correlationExpression = new SynapseXPath(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
-                } else {
-                    correlationExpression = new SynapseXPath(
-                            visualAggregate.getCorrelationExpression().getPropertyValue());
-                }
-                for (int i = 0; i < visualAggregate.getCorrelationExpression().getNamespaces().keySet().size(); ++i) {
-                    String prefix = (String) visualAggregate.getCorrelationExpression().getNamespaces().keySet()
-                            .toArray()[i];
-                    String namespaceUri = visualAggregate.getCorrelationExpression().getNamespaces().get(prefix);
+                    && visualAggregate.getCorrelationExpression()
+                            .getPropertyValue() != null
+                    && !visualAggregate.getCorrelationExpression()
+                            .getPropertyValue().equals("")) {
+                SynapseXPath correlationExpression = (SynapseXPath) SynapseXPathExt.createSynapsePath(visualAggregate
+                        .getCorrelationExpression().getPropertyValue());
+                for(int i=0;i<visualAggregate.getCorrelationExpression().getNamespaces().keySet().size();++i){              
+                    String prefix=(String)visualAggregate.getCorrelationExpression().getNamespaces().keySet().toArray()[i];
+                    String namespaceUri=visualAggregate.getCorrelationExpression().getNamespaces().get(prefix);
                     correlationExpression.addNamespace(prefix, namespaceUri);
                 }
-
+                
                 aggregateMediator.setCorrelateExpression(correlationExpression);
             }
-            if (visualAggregate.getAggregationExpression() != null
-                    && visualAggregate.getAggregationExpression().getPropertyValue() != null) {
-                SynapseXPath aggregateExpression;
-                if (!isForValidation && StringUtils.isEmpty(visualAggregate.getAggregationExpression().getPropertyValue())) {
-                    // Set default values for the property since we need to use synapse serializer
-                    aggregateExpression = new SynapseXPath(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
-                } else {
-                    aggregateExpression = new SynapseXPath(visualAggregate.getAggregationExpression().getPropertyValue());
-                }
-                for (int i = 0; i < visualAggregate.getAggregationExpression().getNamespaces().keySet().size(); ++i) {
-                    String prefix = (String) visualAggregate.getAggregationExpression().getNamespaces().keySet()
-                            .toArray()[i];
-                    String namespaceUri = visualAggregate.getAggregationExpression().getNamespaces().get(prefix);
-                    aggregateExpression.addNamespace(prefix, namespaceUri);
-                }
-
-                aggregateMediator.setAggregationExpression(aggregateExpression);
+            SynapseXPath aggregateExpression = (SynapseXPath) SynapseXPathExt.createSynapsePath(visualAggregate.getAggregationExpression()
+                    .getPropertyValue());
+            for (int i = 0; i < visualAggregate.
+                    getAggregationExpression().getNamespaces().keySet().size(); ++i) {
+                String prefix = (String) visualAggregate
+                        .getAggregationExpression().getNamespaces().keySet()
+                        .toArray()[i];
+                String namespaceUri = visualAggregate
+                        .getAggregationExpression()
+                        .getNamespaces()
+                        .get(prefix);
+                aggregateExpression.addNamespace(prefix, namespaceUri);
             }
+
+            aggregateMediator.setAggregationExpression(aggregateExpression);
             if (visualAggregate.getSequenceType().equals(AggregateSequenceType.REGISTRY_REFERENCE)) {
                 aggregateMediator.setOnCompleteSequenceRef(visualAggregate.getSequenceKey().getKeyValue());
             } else {

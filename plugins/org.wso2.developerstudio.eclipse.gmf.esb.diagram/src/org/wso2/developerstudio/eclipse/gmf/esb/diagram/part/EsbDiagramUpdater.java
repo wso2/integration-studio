@@ -40,6 +40,8 @@ public class EsbDiagramUpdater {
             return getDropMediator_3491SemanticChildren(view);
         case PropertyMediatorEditPart.VISUAL_ID:
             return getPropertyMediator_3492SemanticChildren(view);
+        case PropertyGroupMediatorEditPart.VISUAL_ID:
+            return getPropertyGroupMediator_3788SemanticChildren(view);
         case ThrottleMediatorEditPart.VISUAL_ID:
             return getThrottleMediator_3493SemanticChildren(view);
         case ThrottleContainerEditPart.VISUAL_ID:
@@ -483,6 +485,32 @@ public class EsbDiagramUpdater {
             PropertyMediatorOutputConnector childElement = modelElement.getOutputConnector();
             int visualID = EsbVisualIDRegistry.getNodeVisualID(view, childElement);
             if (visualID == PropertyMediatorOutputConnectorEditPart.VISUAL_ID) {
+                result.add(new EsbNodeDescriptor(childElement, visualID));
+            }
+        }
+        return result;
+    }
+
+    /**
+    * @generated
+    */
+    public static List<EsbNodeDescriptor> getPropertyGroupMediator_3788SemanticChildren(View view) {
+        if (!view.isSetElement()) {
+            return Collections.emptyList();
+        }
+        PropertyGroupMediator modelElement = (PropertyGroupMediator) view.getElement();
+        LinkedList<EsbNodeDescriptor> result = new LinkedList<EsbNodeDescriptor>();
+        {
+            PropertyGroupMediatorInputConnector childElement = modelElement.getInputConnector();
+            int visualID = EsbVisualIDRegistry.getNodeVisualID(view, childElement);
+            if (visualID == PropertyGroupMediatorInputConnectorEditPart.VISUAL_ID) {
+                result.add(new EsbNodeDescriptor(childElement, visualID));
+            }
+        }
+        {
+            PropertyGroupMediatorOutputConnector childElement = modelElement.getOutputConnector();
+            int visualID = EsbVisualIDRegistry.getNodeVisualID(view, childElement);
+            if (visualID == PropertyGroupMediatorOutputConnectorEditPart.VISUAL_ID) {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
             }
         }
@@ -3487,6 +3515,10 @@ public class EsbDiagramUpdater {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
             }
+            if (visualID == PropertyGroupMediatorEditPart.VISUAL_ID) {
+                result.add(new EsbNodeDescriptor(childElement, visualID));
+                continue;
+            }
             if (visualID == ThrottleMediatorEditPart.VISUAL_ID) {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
@@ -3756,6 +3788,10 @@ public class EsbDiagramUpdater {
                 continue;
             }
             if (visualID == PropertyMediatorEditPart.VISUAL_ID) {
+                result.add(new EsbNodeDescriptor(childElement, visualID));
+                continue;
+            }
+            if (visualID == PropertyGroupMediatorEditPart.VISUAL_ID) {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
             }
@@ -4031,6 +4067,10 @@ public class EsbDiagramUpdater {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
             }
+            if (visualID == PropertyGroupMediatorEditPart.VISUAL_ID) {
+                result.add(new EsbNodeDescriptor(childElement, visualID));
+                continue;
+            }
             if (visualID == ThrottleMediatorEditPart.VISUAL_ID) {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
@@ -4300,6 +4340,10 @@ public class EsbDiagramUpdater {
                 continue;
             }
             if (visualID == PropertyMediatorEditPart.VISUAL_ID) {
+                result.add(new EsbNodeDescriptor(childElement, visualID));
+                continue;
+            }
+            if (visualID == PropertyGroupMediatorEditPart.VISUAL_ID) {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
             }
@@ -4575,6 +4619,10 @@ public class EsbDiagramUpdater {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
             }
+            if (visualID == PropertyGroupMediatorEditPart.VISUAL_ID) {
+                result.add(new EsbNodeDescriptor(childElement, visualID));
+                continue;
+            }
             if (visualID == ThrottleMediatorEditPart.VISUAL_ID) {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
@@ -4844,6 +4892,10 @@ public class EsbDiagramUpdater {
                 continue;
             }
             if (visualID == PropertyMediatorEditPart.VISUAL_ID) {
+                result.add(new EsbNodeDescriptor(childElement, visualID));
+                continue;
+            }
+            if (visualID == PropertyGroupMediatorEditPart.VISUAL_ID) {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
             }
@@ -5119,6 +5171,10 @@ public class EsbDiagramUpdater {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
             }
+            if (visualID == PropertyGroupMediatorEditPart.VISUAL_ID) {
+                result.add(new EsbNodeDescriptor(childElement, visualID));
+                continue;
+            }
             if (visualID == ThrottleMediatorEditPart.VISUAL_ID) {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
@@ -5388,6 +5444,10 @@ public class EsbDiagramUpdater {
                 continue;
             }
             if (visualID == PropertyMediatorEditPart.VISUAL_ID) {
+                result.add(new EsbNodeDescriptor(childElement, visualID));
+                continue;
+            }
+            if (visualID == PropertyGroupMediatorEditPart.VISUAL_ID) {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
             }
@@ -5663,6 +5723,10 @@ public class EsbDiagramUpdater {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
             }
+            if (visualID == PropertyGroupMediatorEditPart.VISUAL_ID) {
+                result.add(new EsbNodeDescriptor(childElement, visualID));
+                continue;
+            }
             if (visualID == ThrottleMediatorEditPart.VISUAL_ID) {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
@@ -5932,6 +5996,10 @@ public class EsbDiagramUpdater {
                 continue;
             }
             if (visualID == PropertyMediatorEditPart.VISUAL_ID) {
+                result.add(new EsbNodeDescriptor(childElement, visualID));
+                continue;
+            }
+            if (visualID == PropertyGroupMediatorEditPart.VISUAL_ID) {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
             }
@@ -6207,6 +6275,10 @@ public class EsbDiagramUpdater {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
             }
+            if (visualID == PropertyGroupMediatorEditPart.VISUAL_ID) {
+                result.add(new EsbNodeDescriptor(childElement, visualID));
+                continue;
+            }
             if (visualID == ThrottleMediatorEditPart.VISUAL_ID) {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
@@ -6476,6 +6548,10 @@ public class EsbDiagramUpdater {
                 continue;
             }
             if (visualID == PropertyMediatorEditPart.VISUAL_ID) {
+                result.add(new EsbNodeDescriptor(childElement, visualID));
+                continue;
+            }
+            if (visualID == PropertyGroupMediatorEditPart.VISUAL_ID) {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
             }
@@ -6751,6 +6827,10 @@ public class EsbDiagramUpdater {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
             }
+            if (visualID == PropertyGroupMediatorEditPart.VISUAL_ID) {
+                result.add(new EsbNodeDescriptor(childElement, visualID));
+                continue;
+            }
             if (visualID == ThrottleMediatorEditPart.VISUAL_ID) {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
@@ -7020,6 +7100,10 @@ public class EsbDiagramUpdater {
                 continue;
             }
             if (visualID == PropertyMediatorEditPart.VISUAL_ID) {
+                result.add(new EsbNodeDescriptor(childElement, visualID));
+                continue;
+            }
+            if (visualID == PropertyGroupMediatorEditPart.VISUAL_ID) {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
             }
@@ -7295,6 +7379,10 @@ public class EsbDiagramUpdater {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
             }
+            if (visualID == PropertyGroupMediatorEditPart.VISUAL_ID) {
+                result.add(new EsbNodeDescriptor(childElement, visualID));
+                continue;
+            }
             if (visualID == ThrottleMediatorEditPart.VISUAL_ID) {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
@@ -7564,6 +7652,10 @@ public class EsbDiagramUpdater {
                 continue;
             }
             if (visualID == PropertyMediatorEditPart.VISUAL_ID) {
+                result.add(new EsbNodeDescriptor(childElement, visualID));
+                continue;
+            }
+            if (visualID == PropertyGroupMediatorEditPart.VISUAL_ID) {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
             }
@@ -7839,6 +7931,10 @@ public class EsbDiagramUpdater {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
             }
+            if (visualID == PropertyGroupMediatorEditPart.VISUAL_ID) {
+                result.add(new EsbNodeDescriptor(childElement, visualID));
+                continue;
+            }
             if (visualID == ThrottleMediatorEditPart.VISUAL_ID) {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
@@ -8108,6 +8204,10 @@ public class EsbDiagramUpdater {
                 continue;
             }
             if (visualID == PropertyMediatorEditPart.VISUAL_ID) {
+                result.add(new EsbNodeDescriptor(childElement, visualID));
+                continue;
+            }
+            if (visualID == PropertyGroupMediatorEditPart.VISUAL_ID) {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
             }
@@ -8383,6 +8483,10 @@ public class EsbDiagramUpdater {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
             }
+            if (visualID == PropertyGroupMediatorEditPart.VISUAL_ID) {
+                result.add(new EsbNodeDescriptor(childElement, visualID));
+                continue;
+            }
             if (visualID == ThrottleMediatorEditPart.VISUAL_ID) {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
@@ -8652,6 +8756,10 @@ public class EsbDiagramUpdater {
                 continue;
             }
             if (visualID == PropertyMediatorEditPart.VISUAL_ID) {
+                result.add(new EsbNodeDescriptor(childElement, visualID));
+                continue;
+            }
+            if (visualID == PropertyGroupMediatorEditPart.VISUAL_ID) {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
             }
@@ -8927,6 +9035,10 @@ public class EsbDiagramUpdater {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
             }
+            if (visualID == PropertyGroupMediatorEditPart.VISUAL_ID) {
+                result.add(new EsbNodeDescriptor(childElement, visualID));
+                continue;
+            }
             if (visualID == ThrottleMediatorEditPart.VISUAL_ID) {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
@@ -9196,6 +9308,10 @@ public class EsbDiagramUpdater {
                 continue;
             }
             if (visualID == PropertyMediatorEditPart.VISUAL_ID) {
+                result.add(new EsbNodeDescriptor(childElement, visualID));
+                continue;
+            }
+            if (visualID == PropertyGroupMediatorEditPart.VISUAL_ID) {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
             }
@@ -9471,6 +9587,10 @@ public class EsbDiagramUpdater {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
             }
+            if (visualID == PropertyGroupMediatorEditPart.VISUAL_ID) {
+                result.add(new EsbNodeDescriptor(childElement, visualID));
+                continue;
+            }
             if (visualID == ThrottleMediatorEditPart.VISUAL_ID) {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
@@ -9740,6 +9860,10 @@ public class EsbDiagramUpdater {
                 continue;
             }
             if (visualID == PropertyMediatorEditPart.VISUAL_ID) {
+                result.add(new EsbNodeDescriptor(childElement, visualID));
+                continue;
+            }
+            if (visualID == PropertyGroupMediatorEditPart.VISUAL_ID) {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
             }
@@ -10059,6 +10183,10 @@ public class EsbDiagramUpdater {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
             }
+            if (visualID == PropertyGroupMediatorEditPart.VISUAL_ID) {
+                result.add(new EsbNodeDescriptor(childElement, visualID));
+                continue;
+            }
             if (visualID == ThrottleMediatorEditPart.VISUAL_ID) {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
@@ -10331,6 +10459,10 @@ public class EsbDiagramUpdater {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
             }
+            if (visualID == PropertyGroupMediatorEditPart.VISUAL_ID) {
+                result.add(new EsbNodeDescriptor(childElement, visualID));
+                continue;
+            }
             if (visualID == ThrottleMediatorEditPart.VISUAL_ID) {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
@@ -10600,6 +10732,10 @@ public class EsbDiagramUpdater {
                 continue;
             }
             if (visualID == PropertyMediatorEditPart.VISUAL_ID) {
+                result.add(new EsbNodeDescriptor(childElement, visualID));
+                continue;
+            }
+            if (visualID == PropertyGroupMediatorEditPart.VISUAL_ID) {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
             }
@@ -10969,6 +11105,10 @@ public class EsbDiagramUpdater {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
             }
+            if (visualID == PropertyGroupMediatorEditPart.VISUAL_ID) {
+                result.add(new EsbNodeDescriptor(childElement, visualID));
+                continue;
+            }
             if (visualID == ThrottleMediatorEditPart.VISUAL_ID) {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
@@ -11241,6 +11381,10 @@ public class EsbDiagramUpdater {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
             }
+            if (visualID == PropertyGroupMediatorEditPart.VISUAL_ID) {
+                result.add(new EsbNodeDescriptor(childElement, visualID));
+                continue;
+            }
             if (visualID == ThrottleMediatorEditPart.VISUAL_ID) {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
@@ -11510,6 +11654,10 @@ public class EsbDiagramUpdater {
                 continue;
             }
             if (visualID == PropertyMediatorEditPart.VISUAL_ID) {
+                result.add(new EsbNodeDescriptor(childElement, visualID));
+                continue;
+            }
+            if (visualID == PropertyGroupMediatorEditPart.VISUAL_ID) {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
             }
@@ -11815,6 +11963,12 @@ public class EsbDiagramUpdater {
             return getPropertyMediatorInputConnector_3033ContainedLinks(view);
         case PropertyMediatorOutputConnectorEditPart.VISUAL_ID:
             return getPropertyMediatorOutputConnector_3034ContainedLinks(view);
+        case PropertyGroupMediatorEditPart.VISUAL_ID:
+            return getPropertyGroupMediator_3788ContainedLinks(view);
+        case PropertyGroupMediatorInputConnectorEditPart.VISUAL_ID:
+            return getPropertyGroupMediatorInputConnector_3789ContainedLinks(view);
+        case PropertyGroupMediatorOutputConnectorEditPart.VISUAL_ID:
+            return getPropertyGroupMediatorOutputConnector_3790ContainedLinks(view);
         case ThrottleMediatorEditPart.VISUAL_ID:
             return getThrottleMediator_3493ContainedLinks(view);
         case ThrottleMediatorInputConnectorEditPart.VISUAL_ID:
@@ -12496,6 +12650,12 @@ public class EsbDiagramUpdater {
             return getPropertyMediatorInputConnector_3033IncomingLinks(view);
         case PropertyMediatorOutputConnectorEditPart.VISUAL_ID:
             return getPropertyMediatorOutputConnector_3034IncomingLinks(view);
+        case PropertyGroupMediatorEditPart.VISUAL_ID:
+            return getPropertyGroupMediator_3788IncomingLinks(view);
+        case PropertyGroupMediatorInputConnectorEditPart.VISUAL_ID:
+            return getPropertyGroupMediatorInputConnector_3789IncomingLinks(view);
+        case PropertyGroupMediatorOutputConnectorEditPart.VISUAL_ID:
+            return getPropertyGroupMediatorOutputConnector_3790IncomingLinks(view);
         case ThrottleMediatorEditPart.VISUAL_ID:
             return getThrottleMediator_3493IncomingLinks(view);
         case ThrottleMediatorInputConnectorEditPart.VISUAL_ID:
@@ -13177,6 +13337,12 @@ public class EsbDiagramUpdater {
             return getPropertyMediatorInputConnector_3033OutgoingLinks(view);
         case PropertyMediatorOutputConnectorEditPart.VISUAL_ID:
             return getPropertyMediatorOutputConnector_3034OutgoingLinks(view);
+        case PropertyGroupMediatorEditPart.VISUAL_ID:
+            return getPropertyGroupMediator_3788OutgoingLinks(view);
+        case PropertyGroupMediatorInputConnectorEditPart.VISUAL_ID:
+            return getPropertyGroupMediatorInputConnector_3789OutgoingLinks(view);
+        case PropertyGroupMediatorOutputConnectorEditPart.VISUAL_ID:
+            return getPropertyGroupMediatorOutputConnector_3790OutgoingLinks(view);
         case ThrottleMediatorEditPart.VISUAL_ID:
             return getThrottleMediator_3493OutgoingLinks(view);
         case ThrottleMediatorInputConnectorEditPart.VISUAL_ID:
@@ -14573,6 +14739,30 @@ public class EsbDiagramUpdater {
      */
     public static List<EsbLinkDescriptor> getPropertyMediatorOutputConnector_3034ContainedLinks(View view) {
         PropertyMediatorOutputConnector modelElement = (PropertyMediatorOutputConnector) view.getElement();
+        LinkedList<EsbLinkDescriptor> result = new LinkedList<EsbLinkDescriptor>();
+        result.addAll(getContainedTypeModelFacetLinks_EsbLink_4001(modelElement));
+        return result;
+    }
+
+    /**
+    * @generated
+    */
+    public static List<EsbLinkDescriptor> getPropertyGroupMediator_3788ContainedLinks(View view) {
+        return Collections.emptyList();
+    }
+
+    /**
+    * @generated
+    */
+    public static List<EsbLinkDescriptor> getPropertyGroupMediatorInputConnector_3789ContainedLinks(View view) {
+        return Collections.emptyList();
+    }
+
+    /**
+    * @generated
+    */
+    public static List<EsbLinkDescriptor> getPropertyGroupMediatorOutputConnector_3790ContainedLinks(View view) {
+        PropertyGroupMediatorOutputConnector modelElement = (PropertyGroupMediatorOutputConnector) view.getElement();
         LinkedList<EsbLinkDescriptor> result = new LinkedList<EsbLinkDescriptor>();
         result.addAll(getContainedTypeModelFacetLinks_EsbLink_4001(modelElement));
         return result;
@@ -17314,6 +17504,32 @@ public class EsbDiagramUpdater {
     }
 
     /**
+    * @generated
+    */
+    public static List<EsbLinkDescriptor> getPropertyGroupMediator_3788IncomingLinks(View view) {
+        return Collections.emptyList();
+    }
+
+    /**
+    * @generated
+    */
+    public static List<EsbLinkDescriptor> getPropertyGroupMediatorInputConnector_3789IncomingLinks(View view) {
+        PropertyGroupMediatorInputConnector modelElement = (PropertyGroupMediatorInputConnector) view.getElement();
+        Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
+                .find(view.eResource().getResourceSet().getResources());
+        LinkedList<EsbLinkDescriptor> result = new LinkedList<EsbLinkDescriptor>();
+        result.addAll(getIncomingTypeModelFacetLinks_EsbLink_4001(modelElement, crossReferences));
+        return result;
+    }
+
+    /**
+    * @generated
+    */
+    public static List<EsbLinkDescriptor> getPropertyGroupMediatorOutputConnector_3790IncomingLinks(View view) {
+        return Collections.emptyList();
+    }
+
+    /**
      * @generated
      */
     public static List<EsbLinkDescriptor> getThrottleMediator_3493IncomingLinks(View view) {
@@ -20038,6 +20254,30 @@ public class EsbDiagramUpdater {
      */
     public static List<EsbLinkDescriptor> getPropertyMediatorOutputConnector_3034OutgoingLinks(View view) {
         PropertyMediatorOutputConnector modelElement = (PropertyMediatorOutputConnector) view.getElement();
+        LinkedList<EsbLinkDescriptor> result = new LinkedList<EsbLinkDescriptor>();
+        result.addAll(getOutgoingTypeModelFacetLinks_EsbLink_4001(modelElement));
+        return result;
+    }
+
+    /**
+    * @generated
+    */
+    public static List<EsbLinkDescriptor> getPropertyGroupMediator_3788OutgoingLinks(View view) {
+        return Collections.emptyList();
+    }
+
+    /**
+    * @generated
+    */
+    public static List<EsbLinkDescriptor> getPropertyGroupMediatorInputConnector_3789OutgoingLinks(View view) {
+        return Collections.emptyList();
+    }
+
+    /**
+    * @generated
+    */
+    public static List<EsbLinkDescriptor> getPropertyGroupMediatorOutputConnector_3790OutgoingLinks(View view) {
+        PropertyGroupMediatorOutputConnector modelElement = (PropertyGroupMediatorOutputConnector) view.getElement();
         LinkedList<EsbLinkDescriptor> result = new LinkedList<EsbLinkDescriptor>();
         result.addAll(getOutgoingTypeModelFacetLinks_EsbLink_4001(modelElement));
         return result;

@@ -409,6 +409,18 @@ public class EsbAdapterFactory extends AdapterFactoryImpl {
                 return createPropertyMediatorOutputConnectorAdapter();
             }
             @Override
+            public Adapter casePropertyGroupMediator(PropertyGroupMediator object) {
+                return createPropertyGroupMediatorAdapter();
+            }
+            @Override
+            public Adapter casePropertyGroupMediatorInputConnector(PropertyGroupMediatorInputConnector object) {
+                return createPropertyGroupMediatorInputConnectorAdapter();
+            }
+            @Override
+            public Adapter casePropertyGroupMediatorOutputConnector(PropertyGroupMediatorOutputConnector object) {
+                return createPropertyGroupMediatorOutputConnectorAdapter();
+            }
+            @Override
             public Adapter caseNamespacedProperty(NamespacedProperty object) {
                 return createNamespacedPropertyAdapter();
             }
@@ -2721,6 +2733,48 @@ public class EsbAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
+     * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyGroupMediator <em>Property Group Mediator</em>}'.
+     * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.PropertyGroupMediator
+     * @generated
+     */
+	public Adapter createPropertyGroupMediatorAdapter() {
+        return null;
+    }
+
+				/**
+     * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyGroupMediatorInputConnector <em>Property Group Mediator Input Connector</em>}'.
+     * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.PropertyGroupMediatorInputConnector
+     * @generated
+     */
+	public Adapter createPropertyGroupMediatorInputConnectorAdapter() {
+        return null;
+    }
+
+				/**
+     * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyGroupMediatorOutputConnector <em>Property Group Mediator Output Connector</em>}'.
+     * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.PropertyGroupMediatorOutputConnector
+     * @generated
+     */
+	public Adapter createPropertyGroupMediatorOutputConnectorAdapter() {
+        return null;
+    }
+
+				/**
      * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty <em>Namespaced Property</em>}'.
      * <!-- begin-user-doc -->
      * This default implementation returns null so that we can easily ignore cases;

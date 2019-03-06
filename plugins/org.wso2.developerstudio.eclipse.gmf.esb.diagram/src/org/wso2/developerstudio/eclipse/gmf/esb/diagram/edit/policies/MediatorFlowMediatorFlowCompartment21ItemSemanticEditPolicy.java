@@ -43,6 +43,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.commands.LoopBackMe
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.commands.NamedEndpointCreateCommand;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.commands.OAuthMediatorCreateCommand;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.commands.PayloadFactoryMediatorCreateCommand;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.commands.PropertyGroupMediatorCreateCommand;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.commands.PropertyMediatorCreateCommand;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.commands.PublishEventMediatorCreateCommand;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.commands.RMSequenceMediatorCreateCommand;
@@ -88,6 +89,9 @@ public class MediatorFlowMediatorFlowCompartment21ItemSemanticEditPolicy extends
         }
         if (EsbElementTypes.PropertyMediator_3492 == req.getElementType()) {
             return getGEFWrapper(new PropertyMediatorCreateCommand(req));
+        }
+        if (EsbElementTypes.PropertyGroupMediator_3788 == req.getElementType()) {
+            return getGEFWrapper(new PropertyGroupMediatorCreateCommand(req));
         }
         if (EsbElementTypes.ThrottleMediator_3493 == req.getElementType()) {
             return getGEFWrapper(new ThrottleMediatorCreateCommand(req));

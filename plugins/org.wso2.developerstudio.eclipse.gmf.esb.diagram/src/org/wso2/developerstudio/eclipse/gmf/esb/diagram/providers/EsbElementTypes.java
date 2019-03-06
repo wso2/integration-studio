@@ -623,6 +623,24 @@ public class EsbElementTypes {
             "org.wso2.developerstudio.eclipse.gmf.esb.diagram.PropertyMediatorOutputConnector_3034"); //$NON-NLS-1$
 
     /**
+    * @generated
+    */
+    public static final IElementType PropertyGroupMediator_3788 = getElementType(
+            "org.wso2.developerstudio.eclipse.gmf.esb.diagram.PropertyGroupMediator_3788"); //$NON-NLS-1$
+
+    /**
+    * @generated
+    */
+    public static final IElementType PropertyGroupMediatorInputConnector_3789 = getElementType(
+            "org.wso2.developerstudio.eclipse.gmf.esb.diagram.PropertyGroupMediatorInputConnector_3789"); //$NON-NLS-1$
+
+    /**
+    * @generated
+    */
+    public static final IElementType PropertyGroupMediatorOutputConnector_3790 = getElementType(
+            "org.wso2.developerstudio.eclipse.gmf.esb.diagram.PropertyGroupMediatorOutputConnector_3790"); //$NON-NLS-1$
+
+    /**
      * @generated
      */
     public static final IElementType ThrottleMediator_3493 = getElementType(
@@ -2139,6 +2157,14 @@ public class EsbElementTypes {
             elements.put(PropertyMediatorOutputConnector_3034,
                     EsbPackage.eINSTANCE.getPropertyMediatorOutputConnector());
 
+            elements.put(PropertyGroupMediator_3788, EsbPackage.eINSTANCE.getPropertyGroupMediator());
+
+            elements.put(PropertyGroupMediatorInputConnector_3789,
+                    EsbPackage.eINSTANCE.getPropertyGroupMediatorInputConnector());
+
+            elements.put(PropertyGroupMediatorOutputConnector_3790,
+                    EsbPackage.eINSTANCE.getPropertyGroupMediatorOutputConnector());
+
             elements.put(ThrottleMediator_3493, EsbPackage.eINSTANCE.getThrottleMediator());
 
             elements.put(ThrottleMediatorInputConnector_3121, EsbPackage.eINSTANCE.getThrottleMediatorInputConnector());
@@ -2895,6 +2921,9 @@ public class EsbElementTypes {
             KNOWN_ELEMENT_TYPES.add(PropertyMediator_3492);
             KNOWN_ELEMENT_TYPES.add(PropertyMediatorInputConnector_3033);
             KNOWN_ELEMENT_TYPES.add(PropertyMediatorOutputConnector_3034);
+            KNOWN_ELEMENT_TYPES.add(PropertyGroupMediator_3788);
+            KNOWN_ELEMENT_TYPES.add(PropertyGroupMediatorInputConnector_3789);
+            KNOWN_ELEMENT_TYPES.add(PropertyGroupMediatorOutputConnector_3790);
             KNOWN_ELEMENT_TYPES.add(ThrottleMediator_3493);
             KNOWN_ELEMENT_TYPES.add(ThrottleMediatorInputConnector_3121);
             KNOWN_ELEMENT_TYPES.add(ThrottleMediatorOutputConnector_3122);
@@ -3256,6 +3285,12 @@ public class EsbElementTypes {
             return PropertyMediatorInputConnector_3033;
         case PropertyMediatorOutputConnectorEditPart.VISUAL_ID:
             return PropertyMediatorOutputConnector_3034;
+        case PropertyGroupMediatorEditPart.VISUAL_ID:
+            return PropertyGroupMediator_3788;
+        case PropertyGroupMediatorInputConnectorEditPart.VISUAL_ID:
+            return PropertyGroupMediatorInputConnector_3789;
+        case PropertyGroupMediatorOutputConnectorEditPart.VISUAL_ID:
+            return PropertyGroupMediatorOutputConnector_3790;
         case ThrottleMediatorEditPart.VISUAL_ID:
             return ThrottleMediator_3493;
         case ThrottleMediatorInputConnectorEditPart.VISUAL_ID:

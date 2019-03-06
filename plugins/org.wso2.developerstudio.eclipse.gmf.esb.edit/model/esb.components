@@ -1196,6 +1196,33 @@
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//PropertyMediatorOutputConnector"/>
       </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_4o3UgDX7Eemu76r8TrL5IQ" name="PropertyGroupMediator" views="_z7IzYDX2Eemu76r8TrL5IQ">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_jENDwDX8Eemu76r8TrL5IQ" name="description" views="_WaKukDZTEemu76r8TrL5IQ">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//EsbElement/description"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_IHlH0DZVEemu76r8TrL5IQ" name="commentsList" views="_eWvjkDZTEemu76r8TrL5IQ">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//EsbElement/commentsList"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_ReHZYDZVEemu76r8TrL5IQ" name="Reverse" views="_k2oYIDZTEemu76r8TrL5IQ">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//Mediator/Reverse"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_nwyxQDZVEemu76r8TrL5IQ" name="properties" views="_Usmo4DX4Eemu76r8TrL5IQ">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//PropertyGroupMediator/properties"/>
+        </properties>
+        <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//PropertyGroupMediator"/>
+      </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_6DrSwDZVEemu76r8TrL5IQ" name="PropertyGroupMediatorInputConnector" views="_rO9bgDX4Eemu76r8TrL5IQ">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_KrzioDZWEemu76r8TrL5IQ" name="incomingLinks" views="_Tufv8DX6Eemu76r8TrL5IQ">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//InputConnector/incomingLinks"/>
+        </properties>
+        <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//PropertyGroupMediatorInputConnector"/>
+      </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_WkVP0DZWEemu76r8TrL5IQ" name="PropertyGroupMediatorOutputConnector" views="_sitQcDX6Eemu76r8TrL5IQ">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_kQGcQDZWEemu76r8TrL5IQ" name="commentMediators" views="_Ar0TwDX7Eemu76r8TrL5IQ">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//OutputConnector/commentMediators"/>
+        </properties>
+        <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//PropertyMediatorOutputConnector"/>
+      </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_E7vVZPJnEei6boXzpRIfnA" name="NamespacedProperty" views="_E7wj8fJnEei6boXzpRIfnA">
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7vVZfJnEei6boXzpRIfnA" name="prettyName" views="_E7wj8_JnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//NamespacedProperty/prettyName"/>
@@ -7163,6 +7190,39 @@
         <elements xsi:type="eef-views:Container" xmi:id="_E7wj7_JnEei6boXzpRIfnA" name="properties">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wj8PJnEei6boXzpRIfnA" name="commentMediators">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
+          </elements>
+        </elements>
+      </views>
+      <views xmi:id="_z7IzYDX2Eemu76r8TrL5IQ" name="PropertyGroupMediator">
+        <elements xsi:type="eef-views:Container" xmi:id="_--w44DX2Eemu76r8TrL5IQ" name="properties">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_WaKukDZTEemu76r8TrL5IQ" name="description">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_eWvjkDZTEemu76r8TrL5IQ" name="commentsList">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.3"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_k2oYIDZTEemu76r8TrL5IQ" name="Reverse">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_Usmo4DX4Eemu76r8TrL5IQ" name="properties">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
+          </elements>
+        </elements>
+      </views>
+      <views xmi:id="_rO9bgDX4Eemu76r8TrL5IQ" name="PropertyGroupMediatorInputConnector">
+        <elements xsi:type="eef-views:Container" xmi:id="_LiohwDX6Eemu76r8TrL5IQ" name="properties">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_Tufv8DX6Eemu76r8TrL5IQ" name="incomingLinks">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.8"/>
+          </elements>
+        </elements>
+      </views>
+      <views xmi:id="_sitQcDX6Eemu76r8TrL5IQ" name="PropertyGroupMediatorOutputConnector">
+        <elements xsi:type="eef-views:Container" xmi:id="_0OsEsDX6Eemu76r8TrL5IQ" name="properties">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_Ar0TwDX7Eemu76r8TrL5IQ" name="commentMediators">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
           </elements>
         </elements>

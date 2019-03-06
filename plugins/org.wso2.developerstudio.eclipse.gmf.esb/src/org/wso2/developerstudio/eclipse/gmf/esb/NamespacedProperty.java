@@ -23,6 +23,7 @@ import java.util.Map;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty#getNamespaces <em>Namespaces</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty#isSupportsDynamicXPaths <em>Supports Dynamic XPaths</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty#isDynamic <em>Dynamic</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty#isSupportJsonPaths <em>Support Json Paths</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getNamespacedProperty()
@@ -187,5 +188,31 @@ public interface NamespacedProperty extends EsbNode {
      * @generated
      */
     void setDynamic(boolean value);
+
+	/**
+     * Returns the value of the '<em><b>Support Json Paths</b></em>' attribute.
+     * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Support Json Paths</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+     * @return the value of the '<em>Support Json Paths</em>' attribute.
+     * @see #setSupportJsonPaths(boolean)
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getNamespacedProperty_SupportJsonPaths()
+     * @model
+     * @generated
+     */
+	boolean isSupportJsonPaths();
+
+	/**
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty#isSupportJsonPaths <em>Support Json Paths</em>}' attribute.
+     * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Support Json Paths</em>' attribute.
+     * @see #isSupportJsonPaths()
+     * @generated
+     */
+	void setSupportJsonPaths(boolean value);
 
 } // NamespacedProperty

@@ -61,6 +61,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.MessageInputC
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.NamedEndpointInputConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.OAuthMediatorInputConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.PayloadFactoryMediatorInputConnectorEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.PropertyGroupMediatorInputConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.PropertyMediatorInputConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ProxyFaultInputConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ProxyInSequenceInputConnectorEditPart;
@@ -144,6 +145,9 @@ public class EsbModelingAssistantProviderOfProxyOutSequenceOutputConnectorEditPa
             types.add(EsbElementTypes.EsbLink_4001);
         }
         if (targetEditPart instanceof PropertyMediatorInputConnectorEditPart) {
+            types.add(EsbElementTypes.EsbLink_4001);
+        }
+        if (targetEditPart instanceof PropertyGroupMediatorInputConnectorEditPart) {
             types.add(EsbElementTypes.EsbLink_4001);
         }
         if (targetEditPart instanceof ThrottleMediatorInputConnectorEditPart) {
@@ -406,6 +410,7 @@ public class EsbModelingAssistantProviderOfProxyOutSequenceOutputConnectorEditPa
             types.add(EsbElementTypes.ProxyFaultInputConnector_3489);
             types.add(EsbElementTypes.DropMediatorInputConnector_3008);
             types.add(EsbElementTypes.PropertyMediatorInputConnector_3033);
+            types.add(EsbElementTypes.PropertyGroupMediatorInputConnector_3789);
             types.add(EsbElementTypes.ThrottleMediatorInputConnector_3121);
             types.add(EsbElementTypes.FilterMediatorInputConnector_3010);
             types.add(EsbElementTypes.LogMediatorInputConnector_3018);

@@ -311,6 +311,15 @@ public class EsbMessages extends NLS {
 	public static String PropertyMediatorOutputConnectorPropertiesEditionPart_PropertiesGroupLabel;
 
 	
+	public static String PropertyGroupMediatorPropertiesEditionPart_PropertiesGroupLabel;
+
+	
+	public static String PropertyGroupMediatorInputConnectorPropertiesEditionPart_PropertiesGroupLabel;
+
+	
+	public static String PropertyGroupMediatorOutputConnectorPropertiesEditionPart_PropertiesGroupLabel;
+
+	
 	public static String NamespacedPropertyPropertiesEditionPart_PropertiesGroupLabel;
 
 	
@@ -1702,6 +1711,24 @@ public class EsbMessages extends NLS {
 
 	
 	public static String PropertyMediatorOutputConnector_Part_Title;
+
+	
+	public static String PropertyGroupMediator_ReadOnly;
+
+	
+	public static String PropertyGroupMediator_Part_Title;
+
+	
+	public static String PropertyGroupMediatorInputConnector_ReadOnly;
+
+	
+	public static String PropertyGroupMediatorInputConnector_Part_Title;
+
+	
+	public static String PropertyGroupMediatorOutputConnector_ReadOnly;
+
+	
+	public static String PropertyGroupMediatorOutputConnector_Part_Title;
 
 	
 	public static String NamespacedProperty_ReadOnly;
@@ -4319,6 +4346,24 @@ public class EsbMessages extends NLS {
 
 	
 	public static String PropertyMediatorOutputConnectorPropertiesEditionPart_CommentMediatorsLabel;
+
+	
+	public static String PropertyGroupMediatorPropertiesEditionPart_DescriptionLabel;
+
+	
+	public static String PropertyGroupMediatorPropertiesEditionPart_CommentsListLabel;
+
+	
+	public static String PropertyGroupMediatorPropertiesEditionPart_ReverseLabel;
+
+	
+	public static String PropertyGroupMediatorPropertiesEditionPart_PropertiesLabel;
+
+	
+	public static String PropertyGroupMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;
+
+	
+	public static String PropertyGroupMediatorOutputConnectorPropertiesEditionPart_CommentMediatorsLabel;
 
 	
 	public static String NamespacedPropertyPropertiesEditionPart_PrettyNameLabel;

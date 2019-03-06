@@ -210,6 +210,7 @@ public class OAuthMediatorInputConnectorEditPart extends AbstractMediatorInputCo
         if (relationshipType == EsbElementTypes.EsbLink_4001) {
             types.add(EsbElementTypes.ProxyOutputConnector_3002);
             types.add(EsbElementTypes.PropertyMediatorOutputConnector_3034);
+            types.add(EsbElementTypes.PropertyGroupMediatorOutputConnector_3790);
             types.add(EsbElementTypes.ThrottleMediatorOutputConnector_3122);
             types.add(EsbElementTypes.FilterMediatorPassOutputConnector_3011);
             types.add(EsbElementTypes.FilterMediatorFailOutputConnector_3012);

@@ -70,6 +70,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.LogMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.LoopBackMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.OAuthMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.PropertyGroupMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.ProxyWSDLResource;
 import org.wso2.developerstudio.eclipse.gmf.esb.ProxyWsdlType;
@@ -221,6 +222,10 @@ public class ProxyServiceTransformer extends AbstractEsbNodeTransformer {
                 }
             } else if (children.get(i) instanceof PropertyMediator) {
                 if (((PropertyMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
+                    return children.get(i);
+                }
+            } else if (children.get(i) instanceof PropertyGroupMediator) {
+                if (((PropertyGroupMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
                     return children.get(i);
                 }
             } else if (children.get(i) instanceof RMSequenceMediator) {

@@ -157,6 +157,9 @@ public class MediatorFlowMediatorFlowCompartment29EditPart extends AbstractCompl
             if (type == EsbElementTypes.PropertyMediator_3492) {
                 return this;
             }
+            if (type == EsbElementTypes.PropertyGroupMediator_3788) {
+                return this;
+            }
             if (type == EsbElementTypes.ThrottleMediator_3493) {
                 return this;
             }

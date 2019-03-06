@@ -382,6 +382,7 @@ public class PropertyMediatorImpl extends MediatorImpl implements PropertyMediat
         NamespacedProperty valueExpression = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
         valueExpression.setPrettyName("Property Expression");
         valueExpression.setPropertyName("expression");
+        valueExpression.setSupportJsonPaths(true);
         valueExpression.setPropertyValue(DEFAULT_EXPRESSION_PROPERTY_VALUE);
         setValueExpression(valueExpression);
 

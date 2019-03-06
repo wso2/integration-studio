@@ -29,12 +29,13 @@ import org.apache.synapse.config.xml.PropertyMediatorFactory;
 import org.apache.synapse.config.xml.SynapsePathFactory;
 import org.apache.synapse.mediators.builtin.PropertyMediator;
 import org.jaxen.JaxenException;
+import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.SynapseXPathExt;
 
 public class PropertyMediatorExtFactory extends PropertyMediatorFactory {
     
     private static PropertyMediatorExtFactory instance;
-    
-    private PropertyMediatorExtFactory() {
+
+    PropertyMediatorExtFactory() {
     }
     
     public static synchronized PropertyMediatorExtFactory getInstance() {
@@ -85,7 +86,8 @@ public class PropertyMediatorExtFactory extends PropertyMediatorFactory {
                 ((PropertyMediator) mediator).setExpression(SynapsePathFactory.getSynapsePath(omElement, ATT_EXPRN),
                         dataType);
             } catch (JaxenException e) {
-                // ignore
+                ((PropertyMediator) mediator).setExpression(
+                        SynapseXPathExt.createSynapsePath(omElement.getAttribute(ATT_EXPRN).getAttributeValue()));
             }
         }
 

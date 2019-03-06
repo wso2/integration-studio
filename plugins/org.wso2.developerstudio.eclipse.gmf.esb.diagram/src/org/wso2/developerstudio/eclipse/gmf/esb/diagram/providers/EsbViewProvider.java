@@ -139,6 +139,9 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
                 case PropertyMediatorEditPart.VISUAL_ID:
                 case PropertyMediatorInputConnectorEditPart.VISUAL_ID:
                 case PropertyMediatorOutputConnectorEditPart.VISUAL_ID:
+                case PropertyGroupMediatorEditPart.VISUAL_ID:
+                case PropertyGroupMediatorInputConnectorEditPart.VISUAL_ID:
+                case PropertyGroupMediatorOutputConnectorEditPart.VISUAL_ID:
                 case ThrottleMediatorEditPart.VISUAL_ID:
                 case ThrottleMediatorInputConnectorEditPart.VISUAL_ID:
                 case ThrottleMediatorOutputConnectorEditPart.VISUAL_ID:
@@ -482,6 +485,9 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
                 || PropertyMediatorEditPart.VISUAL_ID == visualID
                 || PropertyMediatorInputConnectorEditPart.VISUAL_ID == visualID
                 || PropertyMediatorOutputConnectorEditPart.VISUAL_ID == visualID
+                || PropertyGroupMediatorEditPart.VISUAL_ID == visualID
+                || PropertyGroupMediatorInputConnectorEditPart.VISUAL_ID == visualID
+                || PropertyGroupMediatorOutputConnectorEditPart.VISUAL_ID == visualID
                 || ThrottleMediatorEditPart.VISUAL_ID == visualID
                 || ThrottleMediatorInputConnectorEditPart.VISUAL_ID == visualID
                 || ThrottleMediatorOutputConnectorEditPart.VISUAL_ID == visualID
@@ -848,6 +854,14 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
                     preferencesHint);
         case PropertyMediatorOutputConnectorEditPart.VISUAL_ID:
             return createPropertyMediatorOutputConnector_3034(domainElement, containerView, index, persisted,
+                    preferencesHint);
+        case PropertyGroupMediatorEditPart.VISUAL_ID:
+            return createPropertyGroupMediator_3788(domainElement, containerView, index, persisted, preferencesHint);
+        case PropertyGroupMediatorInputConnectorEditPart.VISUAL_ID:
+            return createPropertyGroupMediatorInputConnector_3789(domainElement, containerView, index, persisted,
+                    preferencesHint);
+        case PropertyGroupMediatorOutputConnectorEditPart.VISUAL_ID:
+            return createPropertyGroupMediatorOutputConnector_3790(domainElement, containerView, index, persisted,
                     preferencesHint);
         case ThrottleMediatorEditPart.VISUAL_ID:
             return createThrottleMediator_3493(domainElement, containerView, index, persisted, preferencesHint);
@@ -4959,6 +4973,110 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
         // initializeFromPreferences
+        final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
+
+        org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
+                IPreferenceConstants.PREF_LINE_COLOR);
+        ViewUtil.setStructuralFeatureValue(node, NotationPackage.eINSTANCE.getLineStyle_LineColor(),
+                FigureUtilities.RGBToInteger(lineRGB));
+        FontStyle nodeFontStyle = (FontStyle) node.getStyle(NotationPackage.Literals.FONT_STYLE);
+        if (nodeFontStyle != null) {
+            FontData fontData = PreferenceConverter.getFontData(prefStore, IPreferenceConstants.PREF_DEFAULT_FONT);
+            nodeFontStyle.setFontName(fontData.getName());
+            nodeFontStyle.setFontHeight(fontData.getHeight());
+            nodeFontStyle.setBold((fontData.getStyle() & SWT.BOLD) != 0);
+            nodeFontStyle.setItalic((fontData.getStyle() & SWT.ITALIC) != 0);
+            org.eclipse.swt.graphics.RGB fontRGB = PreferenceConverter.getColor(prefStore,
+                    IPreferenceConstants.PREF_FONT_COLOR);
+            nodeFontStyle.setFontColor(FigureUtilities.RGBToInteger(fontRGB).intValue());
+        }
+        return node;
+    }
+
+    /**
+    * @generated
+    */
+    public Node createPropertyGroupMediator_3788(EObject domainElement, View containerView, int index,
+            boolean persisted, PreferencesHint preferencesHint) {
+        Node node = NotationFactory.eINSTANCE.createNode();
+        node.getStyles().add(NotationFactory.eINSTANCE.createDescriptionStyle());
+        node.getStyles().add(NotationFactory.eINSTANCE.createFontStyle());
+        node.getStyles().add(NotationFactory.eINSTANCE.createLineStyle());
+        node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
+        node.setType(EsbVisualIDRegistry.getType(PropertyGroupMediatorEditPart.VISUAL_ID));
+        ViewUtil.insertChildView(containerView, node, index, persisted);
+        node.setElement(domainElement);
+        // initializeFromPreferences 
+        final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
+
+        org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
+                IPreferenceConstants.PREF_LINE_COLOR);
+        ViewUtil.setStructuralFeatureValue(node, NotationPackage.eINSTANCE.getLineStyle_LineColor(),
+                FigureUtilities.RGBToInteger(lineRGB));
+        FontStyle nodeFontStyle = (FontStyle) node.getStyle(NotationPackage.Literals.FONT_STYLE);
+        if (nodeFontStyle != null) {
+            FontData fontData = PreferenceConverter.getFontData(prefStore, IPreferenceConstants.PREF_DEFAULT_FONT);
+            nodeFontStyle.setFontName(fontData.getName());
+            nodeFontStyle.setFontHeight(fontData.getHeight());
+            nodeFontStyle.setBold((fontData.getStyle() & SWT.BOLD) != 0);
+            nodeFontStyle.setItalic((fontData.getStyle() & SWT.ITALIC) != 0);
+            org.eclipse.swt.graphics.RGB fontRGB = PreferenceConverter.getColor(prefStore,
+                    IPreferenceConstants.PREF_FONT_COLOR);
+            nodeFontStyle.setFontColor(FigureUtilities.RGBToInteger(fontRGB).intValue());
+        }
+        Node label5215 = createLabel(node,
+                EsbVisualIDRegistry.getType(PropertyGroupMediatorDescriptionEditPart.VISUAL_ID));
+        return node;
+    }
+
+    /**
+    * @generated
+    */
+    public Node createPropertyGroupMediatorInputConnector_3789(EObject domainElement, View containerView, int index,
+            boolean persisted, PreferencesHint preferencesHint) {
+        Node node = NotationFactory.eINSTANCE.createNode();
+        node.getStyles().add(NotationFactory.eINSTANCE.createDescriptionStyle());
+        node.getStyles().add(NotationFactory.eINSTANCE.createFontStyle());
+        node.getStyles().add(NotationFactory.eINSTANCE.createLineStyle());
+        node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
+        node.setType(EsbVisualIDRegistry.getType(PropertyGroupMediatorInputConnectorEditPart.VISUAL_ID));
+        ViewUtil.insertChildView(containerView, node, index, persisted);
+        node.setElement(domainElement);
+        // initializeFromPreferences 
+        final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
+
+        org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
+                IPreferenceConstants.PREF_LINE_COLOR);
+        ViewUtil.setStructuralFeatureValue(node, NotationPackage.eINSTANCE.getLineStyle_LineColor(),
+                FigureUtilities.RGBToInteger(lineRGB));
+        FontStyle nodeFontStyle = (FontStyle) node.getStyle(NotationPackage.Literals.FONT_STYLE);
+        if (nodeFontStyle != null) {
+            FontData fontData = PreferenceConverter.getFontData(prefStore, IPreferenceConstants.PREF_DEFAULT_FONT);
+            nodeFontStyle.setFontName(fontData.getName());
+            nodeFontStyle.setFontHeight(fontData.getHeight());
+            nodeFontStyle.setBold((fontData.getStyle() & SWT.BOLD) != 0);
+            nodeFontStyle.setItalic((fontData.getStyle() & SWT.ITALIC) != 0);
+            org.eclipse.swt.graphics.RGB fontRGB = PreferenceConverter.getColor(prefStore,
+                    IPreferenceConstants.PREF_FONT_COLOR);
+            nodeFontStyle.setFontColor(FigureUtilities.RGBToInteger(fontRGB).intValue());
+        }
+        return node;
+    }
+
+    /**
+    * @generated
+    */
+    public Node createPropertyGroupMediatorOutputConnector_3790(EObject domainElement, View containerView, int index,
+            boolean persisted, PreferencesHint preferencesHint) {
+        Node node = NotationFactory.eINSTANCE.createNode();
+        node.getStyles().add(NotationFactory.eINSTANCE.createDescriptionStyle());
+        node.getStyles().add(NotationFactory.eINSTANCE.createFontStyle());
+        node.getStyles().add(NotationFactory.eINSTANCE.createLineStyle());
+        node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
+        node.setType(EsbVisualIDRegistry.getType(PropertyGroupMediatorOutputConnectorEditPart.VISUAL_ID));
+        ViewUtil.insertChildView(containerView, node, index, persisted);
+        node.setElement(domainElement);
+        // initializeFromPreferences 
         final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
         org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,

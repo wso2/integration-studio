@@ -64,6 +64,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.LogMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.MessageMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.OAuthMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.PropertyGroupMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.ProxyService;
 import org.wso2.developerstudio.eclipse.gmf.esb.RMSequenceMediator;
@@ -126,6 +127,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.MessageMedi
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.NamedEndPointTransformer;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.OAuthMediatorTransformer;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.PayloadFactoryMediatorTransformer;
+import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.PropertyGroupMediatorTransformer;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.PropertyMediatorTransformer;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.ProxyServiceTransformer;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.PublishEventMediatorTransformer;
@@ -179,6 +181,7 @@ public class EsbTransformerRegistry {
         addTransformer(FilterMediator.class, new FilterMediatorTransformer());
         addTransformer(LogMediator.class, new LogMediatorTransformer());
         addTransformer(PropertyMediator.class, new PropertyMediatorTransformer());
+        addTransformer(PropertyGroupMediator.class, new PropertyGroupMediatorTransformer());
         addTransformer(EnrichMediator.class, new EnrichMediatorTransformer());
         addTransformer(XSLTMediator.class, new XSLTMediatorTransformer());
         addTransformer(FastXSLTMediator.class, new FastXSLTMediatorTransformer());

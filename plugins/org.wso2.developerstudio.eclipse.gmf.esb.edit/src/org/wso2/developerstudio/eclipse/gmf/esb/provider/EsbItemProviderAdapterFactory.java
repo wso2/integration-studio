@@ -1810,6 +1810,75 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
+     * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyGroupMediator} instances.
+     * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+     * @generated
+     */
+	protected PropertyGroupMediatorItemProvider propertyGroupMediatorItemProvider;
+
+				/**
+     * This creates an adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyGroupMediator}.
+     * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+     * @generated
+     */
+	@Override
+	public Adapter createPropertyGroupMediatorAdapter() {
+        if (propertyGroupMediatorItemProvider == null) {
+            propertyGroupMediatorItemProvider = new PropertyGroupMediatorItemProvider(this);
+        }
+
+        return propertyGroupMediatorItemProvider;
+    }
+
+				/**
+     * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyGroupMediatorInputConnector} instances.
+     * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+     * @generated
+     */
+	protected PropertyGroupMediatorInputConnectorItemProvider propertyGroupMediatorInputConnectorItemProvider;
+
+				/**
+     * This creates an adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyGroupMediatorInputConnector}.
+     * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+     * @generated
+     */
+	@Override
+	public Adapter createPropertyGroupMediatorInputConnectorAdapter() {
+        if (propertyGroupMediatorInputConnectorItemProvider == null) {
+            propertyGroupMediatorInputConnectorItemProvider = new PropertyGroupMediatorInputConnectorItemProvider(this);
+        }
+
+        return propertyGroupMediatorInputConnectorItemProvider;
+    }
+
+				/**
+     * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyGroupMediatorOutputConnector} instances.
+     * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+     * @generated
+     */
+	protected PropertyGroupMediatorOutputConnectorItemProvider propertyGroupMediatorOutputConnectorItemProvider;
+
+				/**
+     * This creates an adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyGroupMediatorOutputConnector}.
+     * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+     * @generated
+     */
+	@Override
+	public Adapter createPropertyGroupMediatorOutputConnectorAdapter() {
+        if (propertyGroupMediatorOutputConnectorItemProvider == null) {
+            propertyGroupMediatorOutputConnectorItemProvider = new PropertyGroupMediatorOutputConnectorItemProvider(this);
+        }
+
+        return propertyGroupMediatorOutputConnectorItemProvider;
+    }
+
+				/**
      * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -8387,6 +8456,9 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
         if (propertyMediatorItemProvider != null) propertyMediatorItemProvider.dispose();
         if (propertyMediatorInputConnectorItemProvider != null) propertyMediatorInputConnectorItemProvider.dispose();
         if (propertyMediatorOutputConnectorItemProvider != null) propertyMediatorOutputConnectorItemProvider.dispose();
+        if (propertyGroupMediatorItemProvider != null) propertyGroupMediatorItemProvider.dispose();
+        if (propertyGroupMediatorInputConnectorItemProvider != null) propertyGroupMediatorInputConnectorItemProvider.dispose();
+        if (propertyGroupMediatorOutputConnectorItemProvider != null) propertyGroupMediatorOutputConnectorItemProvider.dispose();
         if (namespacedPropertyItemProvider != null) namespacedPropertyItemProvider.dispose();
         if (enrichMediatorItemProvider != null) enrichMediatorItemProvider.dispose();
         if (enrichMediatorInputConnectorItemProvider != null) enrichMediatorInputConnectorItemProvider.dispose();

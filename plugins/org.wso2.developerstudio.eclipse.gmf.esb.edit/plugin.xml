@@ -468,6 +468,24 @@
                id="org.wso2.developerstudio.eclipse.gmf.esb.section.PropertyMediatorOutputConnector"
                tab="Base">
          </propertySection>
+                  <propertySection
+               class="org.wso2.developerstudio.eclipse.gmf.esb.parts.forms.PropertyGroupMediatorPropertiesEditionPartForm"
+               filter="org.wso2.developerstudio.eclipse.gmf.esb.providers.PropertyGroupMediatorPropertiesEditionProvider$EditionFilter"
+               id="org.wso2.developerstudio.eclipse.gmf.esb.section.PropertyGroupMediator"
+               tab="Base">
+         </propertySection>
+         <propertySection
+               class="org.wso2.developerstudio.eclipse.gmf.esb.parts.forms.PropertyGroupMediatorInputConnectorPropertiesEditionPartForm"
+               filter="org.wso2.developerstudio.eclipse.gmf.esb.providers.PropertyGroupMediatorInputConnectorPropertiesEditionProvider$EditionFilter"
+               id="org.wso2.developerstudio.eclipse.gmf.esb.section.PropertyGroupMediatorInputConnector"
+               tab="Base">
+         </propertySection>
+         <propertySection
+               class="org.wso2.developerstudio.eclipse.gmf.esb.parts.forms.PropertyGroupMediatorOutputConnectorPropertiesEditionPartForm"
+               filter="org.wso2.developerstudio.eclipse.gmf.esb.providers.PropertyGroupMediatorOutputConnectorPropertiesEditionProvider$EditionFilter"
+               id="org.wso2.developerstudio.eclipse.gmf.esb.section.PropertyMediatorOutputConnector"
+               tab="Base">
+         </propertySection>
          <propertySection
                class="org.wso2.developerstudio.eclipse.gmf.esb.parts.forms.NamespacedPropertyPropertiesEditionPartForm"
                filter="org.wso2.developerstudio.eclipse.gmf.esb.providers.NamespacedPropertyPropertiesEditionProvider$EditionFilter"

@@ -46,17 +46,18 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 /**
- * Handles HTTP calls 
+ * Handles HTTP calls
  *
  */
 public class HTTPClientUtil {
-    
+
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
     /**
@@ -64,10 +65,10 @@ public class HTTPClientUtil {
      * 
      * @param url
      * @return
-     * @throws NetworkUnavailableException 
-     * @throws HttpClientException 
+     * @throws NetworkUnavailableException
+     * @throws HttpClientException
      */
-    public String sendGet(String url) throws NetworkUnavailableException, HttpClientException{
+    public String sendGet(String url) throws NetworkUnavailableException, HttpClientException {
 
         HttpClient client = HttpClientBuilder.create().build();
         HttpGet request = new HttpGet(url);
@@ -77,14 +78,13 @@ public class HTTPClientUtil {
         try {
             response = client.execute(request);
 
-            BufferedReader rd = new BufferedReader(
-                    new InputStreamReader(response.getEntity().getContent()));
+            BufferedReader rd = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
 
             String line = "";
             while ((line = rd.readLine()) != null) {
                 result.append(line);
             }
-        } catch (UnknownHostException e) {
+        } catch (UnknownHostException | SocketException e) {
             log.error("No internet connection available!", e);
             throw new NetworkUnavailableException();
         } catch (IOException e) {
@@ -103,10 +103,12 @@ public class HTTPClientUtil {
      * @return
      * @throws InvalidTokenException
      * @throws CloudDeploymentException
-     * @throws NetworkUnavailableException 
-     * @throws HttpClientException 
+     * @throws NetworkUnavailableException
+     * @throws HttpClientException
      */
-    public static String sendPostWithFormData(String url, Map<String, String> headers, Map<String, String> params, CookieStore cookieStore) throws InvalidTokenException, CloudDeploymentException, NetworkUnavailableException, HttpClientException{
+    public static String sendPostWithFormData(String url, Map<String, String> headers, Map<String, String> params,
+            CookieStore cookieStore)
+            throws InvalidTokenException, CloudDeploymentException, NetworkUnavailableException, HttpClientException {
 
         HttpClient client = HttpClientBuilder.create().build();
         HttpPost post = new HttpPost(url);
@@ -120,10 +122,7 @@ public class HTTPClientUtil {
         for (Map.Entry<String, String> param : params.entrySet()) {
             urlParameters.add(new BasicNameValuePair(param.getKey(), param.getValue()));
         }
-        post.setConfig(RequestConfig
-                .custom()
-                .setCookieSpec(CookieSpecs.STANDARD)
-                .build());
+        post.setConfig(RequestConfig.custom().setCookieSpec(CookieSpecs.STANDARD).build());
         try {
             post.setEntity(new UrlEncodedFormEntity(urlParameters));
 
@@ -133,8 +132,7 @@ public class HTTPClientUtil {
 
             HttpResponse response = client.execute(post, context);
 
-            BufferedReader rd = new BufferedReader(
-                    new InputStreamReader(response.getEntity().getContent()));
+            BufferedReader rd = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
 
             cookieStore = context.getCookieStore();
 
@@ -142,16 +140,16 @@ public class HTTPClientUtil {
             while ((line = rd.readLine()) != null) {
                 result.append(line);
             }
-            
+
             handleResponseStatus(response.getStatusLine().getStatusCode(), result.toString());
-            
-        } catch (UnknownHostException e) {
+
+        } catch (UnknownHostException | SocketException e) {
             log.error("No internet connection available!", e);
             throw new NetworkUnavailableException();
         } catch (IOException e) {
-            throw new HttpClientException("An error occured while trying to send request!");
+            throw new HttpClientException("An error occured while trying to send request!", e);
         }
-        
+
         return result.toString();
     }
 
@@ -165,10 +163,12 @@ public class HTTPClientUtil {
      * @return
      * @throws CloudDeploymentException
      * @throws InvalidTokenException
-     * @throws NetworkUnavailableException 
-     * @throws HttpClientException 
+     * @throws NetworkUnavailableException
+     * @throws HttpClientException
      */
-    public static String sendPostWithMulipartFormData(String url, Map<String, String> params, Map<String, String> files, CookieStore cookieStore) throws CloudDeploymentException, InvalidTokenException, NetworkUnavailableException, HttpClientException{
+    public static String sendPostWithMulipartFormData(String url, Map<String, String> params, Map<String, String> files,
+            CookieStore cookieStore)
+            throws CloudDeploymentException, InvalidTokenException, NetworkUnavailableException, HttpClientException {
 
         HttpClient client = HttpClientBuilder.create().build();
         HttpPost post = new HttpPost(url);
@@ -181,7 +181,7 @@ public class HTTPClientUtil {
             for (Map.Entry<String, String> param : params.entrySet()) {
                 builder.addTextBody(param.getKey(), param.getValue());
             }
-            
+
             for (Map.Entry<String, String> file : files.entrySet()) {
                 builder.addPart(file.getKey(), new FileBody(new File(file.getValue())));
             }
@@ -194,17 +194,16 @@ public class HTTPClientUtil {
 
             HttpResponse response = client.execute(post, context);
 
-            BufferedReader rd1 = new BufferedReader(
-                    new InputStreamReader(response.getEntity().getContent()));
+            BufferedReader rd1 = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
 
             String line1 = "";
             while ((line1 = rd1.readLine()) != null) {
                 result.append(line1);
             }
-            
+
             handleResponseStatus(response.getStatusLine().getStatusCode(), result.toString());
-            
-        } catch (UnknownHostException e) {
+
+        } catch (UnknownHostException | SocketException e) {
             log.error("No internet connection available!", e);
             throw new NetworkUnavailableException();
         } catch (IOException e) {
@@ -213,7 +212,7 @@ public class HTTPClientUtil {
 
         return result.toString();
     }
-    
+
     /**
      * Handles error statuses
      * 
@@ -222,13 +221,13 @@ public class HTTPClientUtil {
      * @throws InvalidTokenException
      * @throws CloudDeploymentException
      */
-    private static void handleResponseStatus(int status, String response) throws InvalidTokenException, CloudDeploymentException {
+    private static void handleResponseStatus(int status, String response)
+            throws InvalidTokenException, CloudDeploymentException {
         if (status == 401) {
             throw new InvalidTokenException(ResponseMessageConstants.ErrorMessages.AUTHENTICATION_FAILURE);
-        } else if (status != 200 && (response == "" || response == null)){
+        } else if (status != 200 && (null == response || response == "")) {
             throw new CloudDeploymentException(ResponseMessageConstants.ErrorMessages.REQUEST_FAILURE);
-        } 
+        }
     }
-    
 
 }

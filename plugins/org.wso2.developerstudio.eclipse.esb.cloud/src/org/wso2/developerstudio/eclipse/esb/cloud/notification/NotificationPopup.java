@@ -11,26 +11,26 @@ import org.eclipse.swt.widgets.Label;
  * General Notification
  *
  */
-public class NotificationPopup extends AbstractNotificationPopup{
-    
+public class NotificationPopup extends AbstractNotificationPopup {
+
     private String message;
     private String title;
-    
+
     public NotificationPopup(Display display, String title, String message) {
         super(display);
         this.message = message;
         this.title = title;
     }
-    
+
     @Override
     protected void createContentArea(Composite parent) {
         parent.setLayout(new GridLayout(1, false));
-        
+
         Label successMsg = new Label(parent, SWT.NULL);
         successMsg.setText(this.message);
-        
+
     }
-    
+
     @Override
     protected String getPopupShellTitle() {
         return this.title;

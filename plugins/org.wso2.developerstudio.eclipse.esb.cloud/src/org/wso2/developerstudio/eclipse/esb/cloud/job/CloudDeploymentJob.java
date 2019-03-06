@@ -69,6 +69,7 @@ public class CloudDeploymentJob extends Job {
     private IntegrationCloudServiceClient client;
     private String response;
     private EndpointData endpointData;
+    private NotificationPopup popup;
 
     private static final int POLLING_INTERVAL = 5;
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
@@ -135,14 +136,10 @@ public class CloudDeploymentJob extends Job {
                             }
                         }
                     } catch (CloudDeploymentException | InvalidTokenException | HttpClientException e) {
-                        log.error(CloudDeploymentWizardConstants.ErrorMessages.DEPLOY_TO_CLOUD_FAILED_MESSAGE, e);
-                        showMessageBox(CloudDeploymentWizardConstants.ErrorMessages.DEPLOY_TO_CLOUD_FAILED_TITLE,
-                                e.getMessage(), SWT.ICON_ERROR);
+                        handleException(monitor, e, CloudDeploymentWizardConstants.ErrorMessages.DEPLOY_TO_CLOUD_FAILED_TITLE);
                         scheduledExecutorService.shutdown();
                     } catch (NetworkUnavailableException e) {
-                        log.error(CloudDeploymentWizardConstants.ErrorMessages.DEPLOY_TO_CLOUD_FAILED_MESSAGE, e);
-                        showMessageBox(CloudDeploymentWizardConstants.ErrorMessages.NO_INTERNET_CONNECTION_MESSAGE,
-                                e.getMessage(), SWT.ICON_ERROR);
+                        handleException(monitor, e, CloudDeploymentWizardConstants.ErrorMessages.NO_INTERNET_CONNECTION_MESSAGE);
                         scheduledExecutorService.shutdown();
                     }
                 }
@@ -150,21 +147,11 @@ public class CloudDeploymentJob extends Job {
 
             scheduledExecutorService.awaitTermination(120, TimeUnit.SECONDS);
 
+        } catch (NetworkUnavailableException e) {
+            return handleException(monitor, e, CloudDeploymentWizardConstants.ErrorMessages.NO_INTERNET_CONNECTION_MESSAGE);
         } catch (CloudDeploymentException | InvalidTokenException | InterruptedException | HttpClientException e) {
-            log.error(CloudDeploymentWizardConstants.ErrorMessages.DEPLOY_TO_CLOUD_FAILED_MESSAGE, e);
-            showMessageBox(CloudDeploymentWizardConstants.ErrorMessages.DEPLOY_TO_CLOUD_FAILED_TITLE, e.getMessage(),
-                    SWT.ICON_ERROR);
-            monitor.worked(0);
-            monitor.setCanceled(true);
-            return Status.CANCEL_STATUS;
-        } catch (NetworkUnavailableException e1) {
-            log.error(CloudDeploymentWizardConstants.ErrorMessages.NO_INTERNET_CONNECTION_MESSAGE, e1);
-            showMessageBox(CloudDeploymentWizardConstants.ErrorMessages.DEPLOY_TO_CLOUD_FAILED_TITLE, CloudDeploymentWizardConstants.ErrorMessages.NO_INTERNET_CONNECTION_MESSAGE,
-                    SWT.ICON_ERROR);
-            monitor.worked(0);
-            monitor.setCanceled(true);
-            return Status.CANCEL_STATUS;
-        }
+            return handleException(monitor, e, e.getMessage());
+        } 
 
         monitor.worked(100);
         monitor.done();
@@ -172,6 +159,24 @@ public class CloudDeploymentJob extends Job {
         showDeploymentSuccessNotification();
 
         return Status.OK_STATUS;
+    }
+
+    /**
+     * Handles progress monitor during an exception
+     * 
+     * @param monitor
+     * @param ex
+     * @param message
+     * @return status
+     */
+    private IStatus handleException(IProgressMonitor monitor, Exception ex, String message) {
+        log.error(message, ex);
+        showMessageBox(CloudDeploymentWizardConstants.ErrorMessages.DEPLOY_TO_CLOUD_FAILED_TITLE,
+                message, SWT.ICON_ERROR);
+        monitor.beginTask(ex.getMessage(), 100);
+        monitor.worked(0);
+        monitor.setCanceled(true);
+        return Status.CANCEL_STATUS;
     }
 
     /**
@@ -185,6 +190,7 @@ public class CloudDeploymentJob extends Job {
 
         Display.getDefault().syncExec(new Runnable() {
             public void run() {
+                popup.close();
                 Display display = PlatformUI.getWorkbench().getDisplay();
                 Shell shell = display.getActiveShell();
 
@@ -196,7 +202,7 @@ public class CloudDeploymentJob extends Job {
             }
         });
     }
-    
+
     /**
      * Show general notification
      * 
@@ -205,12 +211,14 @@ public class CloudDeploymentJob extends Job {
         Display.getDefault().syncExec(new Runnable() {
             public void run() {
                 Display display = PlatformUI.getWorkbench().getDisplay();
-                NotificationPopup popup = new NotificationPopup(display, CloudDeploymentWizardConstants.IN_PROGRESS_DIALOG_TITLE_TEXT, CloudDeploymentWizardConstants.SuccessMessages.SUCCESS_CREATING_APPLICATION_MSG);
+                popup = new NotificationPopup(display,
+                        CloudDeploymentWizardConstants.IN_PROGRESS_DIALOG_TITLE_TEXT,
+                        CloudDeploymentWizardConstants.SuccessMessages.SUCCESS_CREATING_APPLICATION_MSG);
                 popup.open();
             }
         });
     }
-    
+
     /**
      * Show deployment success window with endpoints
      * 

@@ -29,32 +29,35 @@ import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
 
 /**
- * Utils class for JSON conversions 
+ * Utils class for JSON conversions
  * 
  */
 public class JsonUtils {
-    
+
     public static String getJsonArrayFromList(List<Map<String, String>> tags) {
         Gson gson = new Gson();
         Type type = List.class;
         return gson.toJson(tags, type);
     }
-    
+
     public static Application getApplicationFromJson(String json) {
         Gson gson = new Gson();
-        Type type = new TypeToken<Application>(){}.getType();
+        Type type = new TypeToken<Application>() {
+        }.getType();
         return gson.fromJson(json, type);
     }
-    
+
     public static List<Application> getApplicationListFromJson(String json) {
         Gson gson = new Gson();
-        Type type = new TypeToken<List<Application>>(){}.getType();
+        Type type = new TypeToken<List<Application>>() {
+        }.getType();
         return gson.fromJson(json, type);
     }
-    
+
     public static EndpointData getEndpointDataFromJson(String json) {
         Gson gson = new Gson();
-        Type type = new TypeToken<EndpointData>(){}.getType();
+        Type type = new TypeToken<EndpointData>() {
+        }.getType();
         return gson.fromJson(json, type);
     }
 }

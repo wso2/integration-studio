@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Represents the response from retrieving all endpoints in an application 
+ * Represents the response from retrieving all endpoints in an application
  * 
  */
 public class EndpointData {
@@ -30,7 +30,7 @@ public class EndpointData {
     List<Endpoint> soapEndpoints;
     List<Endpoint> webEndpoints;
     List<Endpoint> swaggerEndpoints;
-    
+
     public EndpointData() {
         super();
         restEndpoints = new ArrayList<>();
@@ -38,31 +38,39 @@ public class EndpointData {
         webEndpoints = new ArrayList<>();
         swaggerEndpoints = new ArrayList<>();
     }
+
     public List<Endpoint> getRestEndpoints() {
         return restEndpoints;
     }
+
     public void setRestEndpoints(List<Endpoint> restEndpoints) {
         this.restEndpoints = restEndpoints;
     }
+
     public List<Endpoint> getSoapEndpoints() {
         return soapEndpoints;
     }
+
     public void setSoapEndpoints(List<Endpoint> soapEndpoints) {
         this.soapEndpoints = soapEndpoints;
     }
+
     public List<Endpoint> getWebEndpoints() {
         return webEndpoints;
     }
+
     public void setWebEndpoints(List<Endpoint> webEndpoints) {
         this.webEndpoints = webEndpoints;
     }
+
     public List<Endpoint> getSwaggerEndpoints() {
         return swaggerEndpoints;
     }
+
     public void setSwaggerEndpoints(List<Endpoint> swaggerEndpoints) {
         this.swaggerEndpoints = swaggerEndpoints;
     }
-    
+
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -73,6 +81,7 @@ public class EndpointData {
         result = prime * result + ((webEndpoints == null) ? 0 : webEndpoints.hashCode());
         return result;
     }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -104,12 +113,11 @@ public class EndpointData {
             return false;
         return true;
     }
+
     @Override
     public String toString() {
         return "EndpointData [restEndpoints=" + restEndpoints + ", soapEndpoints=" + soapEndpoints + ", webEndpoints="
                 + webEndpoints + ", swaggerEndpoints=" + swaggerEndpoints + "]";
     }
-    
-    
-    
+
 }

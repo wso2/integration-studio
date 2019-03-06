@@ -22,7 +22,7 @@ package org.wso2.developerstudio.eclipse.esb.cloud.exceptions;
  * Exception thrown when the authentication token is invalid / expired
  *
  */
-public class InvalidTokenException extends Exception{
+public class InvalidTokenException extends Exception {
     public InvalidTokenException() {
         super();
     }
@@ -39,7 +39,8 @@ public class InvalidTokenException extends Exception{
         super(cause);
     }
 
-    protected InvalidTokenException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+    protected InvalidTokenException(String message, Throwable cause, boolean enableSuppression,
+            boolean writableStackTrace) {
         super(message, cause, enableSuppression, writableStackTrace);
     }
 }

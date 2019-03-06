@@ -5,7 +5,7 @@ package org.wso2.developerstudio.eclipse.esb.cloud.resources;
  *
  */
 public class ResponseMessageConstants {
-    
+
     // Error messages returned by the WSO2 Integration Cloud API
     public static class ErrorMessages {
         public static final String VERSION_EXISTS = "This version already exists. Please create a new version.";

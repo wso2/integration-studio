@@ -27,30 +27,39 @@ public class Version {
     private String deploymentURL;
     private String versionId;
     private String versionName;
+
     public String getDeploymentPrivateURL() {
         return deploymentPrivateURL;
     }
+
     public void setDeploymentPrivateURL(String deploymentPrivateURL) {
         this.deploymentPrivateURL = deploymentPrivateURL;
     }
+
     public String getDeploymentURL() {
         return deploymentURL;
     }
+
     public void setDeploymentURL(String deploymentURL) {
         this.deploymentURL = deploymentURL;
     }
+
     public String getVersionId() {
         return versionId;
     }
+
     public void setVersionId(String versionId) {
         this.versionId = versionId;
     }
+
     public String getVersionName() {
         return versionName;
     }
+
     public void setVersionName(String versionName) {
         this.versionName = versionName;
     }
+
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -61,6 +70,7 @@ public class Version {
         result = prime * result + ((versionName == null) ? 0 : versionName.hashCode());
         return result;
     }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -92,12 +102,11 @@ public class Version {
             return false;
         return true;
     }
+
     @Override
     public String toString() {
         return "Version [deploymentPrivateURL=" + deploymentPrivateURL + ", deploymentURL=" + deploymentURL
                 + ", versionId=" + versionId + ", versionName=" + versionName + "]";
     }
-    
-    
-    
+
 }

@@ -27,11 +27,11 @@ import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.esb.cloud.wizard.DeployToCloudWizard;
 
 /**
- * Action delegate class for cloud deployment operation. 
+ * Action delegate class for cloud deployment operation.
  *
  */
 public class DeployToCloudAction implements IActionDelegate {
-    
+
     IStructuredSelection selection;
 
     @Override

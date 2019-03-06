@@ -77,10 +77,10 @@ public class DeployToCloudWizard extends Wizard implements IExportWizard {
     private Map<String, DependencyData> projectList = new HashMap<String, DependencyData>();
     private Map<String, Dependency> dependencyMap = new HashMap<String, Dependency>();
     private Map<String, String> serverRoleList = new HashMap<String, String>();
-    
+
     private Display display;
     private Shell shell;
-    
+
     // stores current session
     private UserSession session;
 
@@ -92,9 +92,9 @@ public class DeployToCloudWizard extends Wizard implements IExportWizard {
         try {
             display = Display.getCurrent();
             shell = display.getActiveShell();
-            
+
             session = UserSessionManager.getCurrentSession();
-            
+
             loginPage = new LoginWizardPage();
             appDetailsPage = new AppDetailsWizardPage();
             selectedProject = getSelectedProject(selection);
@@ -173,7 +173,7 @@ public class DeployToCloudWizard extends Wizard implements IExportWizard {
                     appDetailsPage.getVersion(), finalFileName, carbonArchive.getLocation().toFile().getAbsolutePath(),
                     appDetailsPage.getAppIcon(), appDetailsPage.getTags(), appDetailsPage.isNewVersion());
             cloudDeploymentJob.schedule();
-            
+
         } catch (Exception e) {
             log.error(CloudDeploymentWizardConstants.ErrorMessages.ERROR_CREATING_CAR_FILE_MSG, e);
             openMessageBox(getShell(), CloudDeploymentWizardConstants.DIALOG_TITLE_TEXT,

@@ -39,7 +39,8 @@ public class CloudDeploymentException extends Exception {
         super(cause);
     }
 
-    protected CloudDeploymentException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+    protected CloudDeploymentException(String message, Throwable cause, boolean enableSuppression,
+            boolean writableStackTrace) {
         super(message, cause, enableSuppression, writableStackTrace);
     }
 }

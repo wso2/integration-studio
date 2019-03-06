@@ -24,24 +24,27 @@ package org.wso2.developerstudio.eclipse.esb.cloud.resources;
  */
 public class CloudServiceConstants {
     
+    // Integration Cloud Domain
+    public static final String DOMAIN_URL = "https://integration.cloud.wso2.com/appmgt/site/blocks/";
+    
     // Integration Cloud Endpoints
     public static class ServiceEndpoints {
-        public static final String LOGIN_URL = "https://integration.cloud.wso2.com/appmgt/site/blocks/user/login/ajax/login.jag";
-        public static final String APPLICATION_URL = "https://integration.cloud.wso2.com/appmgt/site/blocks/application/application.jag";
-        public static final String INDEX_URL = "https://integration.cloud.wso2.com/appmgt/site/blocks/index/ajax/index.jag";
+        public static final String LOGIN_URL = DOMAIN_URL + "user/login/ajax/login.jag";
+        public static final String APPLICATION_URL = DOMAIN_URL + "application/application.jag";
+        public static final String INDEX_URL = DOMAIN_URL + "index/ajax/index.jag";
     }
-    
+
     // Integration Cloud Environment Configurations
     public static class AppConfigs {
         public static final String ESB = "wso2esb";
         public static final String RUNTIME = "24";
         public static final String CON_SPEC = "5";
         public static final String APP_CREATION_METHOD = "default";
-        public static final String SET_DEFAULT_VERSION = "true"; 
+        public static final String SET_DEFAULT_VERSION = "true";
         public static final String IS_FILE_ATTACHED = "true";
         public static final String RUNTIME_PROPERTIES = "[]";
     }
-    
+
     // Integration Cloud API actions
     public static class Actions {
         public static final String LOGIN = "login";
@@ -50,7 +53,7 @@ public class CloudServiceConstants {
         public static final String LOAD_ENDPOINTS = "loadEndpoints";
         public static final String CREATE_APPLICATION = "createApplication";
     }
-    
+
     // Integration Cloud response messages
     public static class ResponseMessages {
         public static final String USER_SUCCESSFULLY_LOGGED_IN = "User successfully logged in";
@@ -59,7 +62,7 @@ public class CloudServiceConstants {
         public static final String APP_REVISION_ERROR = "Bad request : applicationRevision is required!";
         public static final String APP_EXISTS_ERROR = "Bad request : Application with same name and version already exists!";
     }
-    
+
     // Integration Cloud parameters
     public static class Parameters {
         public static final String PARAM_FILE = "fileupload";
@@ -73,7 +76,7 @@ public class CloudServiceConstants {
         public static final String PARAM_RUNTIME_PROPERTIES = "runtimeProperties";
         public static final String PARAM_TAGS = "tags";
         public static final String PARAM_IS_FILE_ATTACHED = "isFileAttached";
-        public static final String PARAM_CON_SPEC = "conSpec";        
+        public static final String PARAM_CON_SPEC = "conSpec";
         public static final String PARAM_IS_NEW_VERSION = "isNewVersion";
         public static final String PARAM_APP_CREATION_METHOD = "appCreationMethod";
         public static final String PARAM_SET_DEFAULT_VERSION = "setDefaultVersion";

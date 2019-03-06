@@ -37,14 +37,14 @@ public class EndpointNotificationPopup extends AbstractNotificationPopup {
 
     @Override
     protected void createContentArea(Composite parent) {
-        
+
         Composite container = new Composite(parent, SWT.NULL);
-        
+
         GridData data = new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1);
         container.setLayoutData(data);
-        
+
         container.setLayout(new GridLayout(1, false));
-        
+
         Label successMsg = new Label(container, SWT.NULL);
         successMsg.setText(CloudDeploymentWizardConstants.SuccessMessages.DEPLOY_TO_CLOUD_SUCCESS_MESSAGE);
 

@@ -4,7 +4,7 @@ package org.wso2.developerstudio.eclipse.esb.cloud.exceptions;
  * Exception thrown when an error occurs during a HTTP call
  *
  */
-public class HttpClientException extends Exception{
+public class HttpClientException extends Exception {
     public HttpClientException() {
         super();
     }
@@ -21,7 +21,8 @@ public class HttpClientException extends Exception{
         super(cause);
     }
 
-    protected HttpClientException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+    protected HttpClientException(String message, Throwable cause, boolean enableSuppression,
+            boolean writableStackTrace) {
         super(message, cause, enableSuppression, writableStackTrace);
     }
 }

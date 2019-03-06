@@ -56,18 +56,18 @@ public class LoginWizardPage extends WizardPage {
 
     private static final String DIALOG_TITLE = "WSO2 Integration Cloud - Authentication";
     private static final String TITLE = "Integration Cloud Credentials";
-    
+
     private static final String EMPTY_STRING = "";
-    
+
     // Label Texts
     private static final String LOGIN_SUCCESSFUL_MSG = "You have been successfully logged in! Click 'Next' to continue.";
     private static final String LOGIN_FAILED_MSG = "Failed to authenticate user - Invalid credentials!";
-    private static final String INTEGRATION_CLOUD_SINGUP_LINK = "https://wso2.com/integration/cloud/"; 
+    private static final String INTEGRATION_CLOUD_SINGUP_LINK = "https://wso2.com/integration/cloud/";
     private static final String LABEL_USERNAME_TEXT = "Email";
     private static final String LABEL_PASSWORD_TEXT = "Password";
     private static final String LABEL_TENANT_TEXT = "Organization Key";
     private static final String SIGN_UP_LABEL_TEXT = "Don't have an account? <a href=\"https://wso2.com/integration/cloud/\">Sign up</a>";
-    
+
     private static final String ORG_ID_TOOLTIP_TEXT = "Organization key can be obtained from the Manage page of the WSO2 Integration Cloud.";
 
     // Elements
@@ -83,7 +83,7 @@ public class LoginWizardPage extends WizardPage {
     private String tenant = EMPTY_STRING;
     private String initialUsername = EMPTY_STRING;
     private String initialPassword = EMPTY_STRING;
-    
+
     IntegrationCloudServiceClient client;
 
     private boolean isPageDirty = false;
@@ -99,7 +99,7 @@ public class LoginWizardPage extends WizardPage {
 
     public void createControl(Composite parent) {
         Composite container = new Composite(parent, SWT.NULL);
-        
+
         GridData data = new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1);
         data.exclude = false;
         container.setLayoutData(data);
@@ -112,7 +112,7 @@ public class LoginWizardPage extends WizardPage {
         grpCredentials.setText("Enter credentials for WSO2 Integration Cloud");
         grpCredentials.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false, 1, 1));
         grpCredentials.setLayout(new GridLayout(2, false));
-        
+
         // Tenant
         Label lblTenant = new Label(grpCredentials, SWT.NONE);
         GridData gd_lblTenant = new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1);
@@ -126,12 +126,12 @@ public class LoginWizardPage extends WizardPage {
                 validate();
             }
         });
-        
+
         GridData gd_txtTenant = new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1);
         gd_txtTenant.widthHint = 550;
         txtTenant.setLayoutData(gd_txtTenant);
         txtTenant.setToolTipText(ORG_ID_TOOLTIP_TEXT);
-        
+
         // Username
         Label lblUsername = new Label(grpCredentials, SWT.NONE);
         GridData gd_lblUsername = new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1);
@@ -146,7 +146,7 @@ public class LoginWizardPage extends WizardPage {
                 validate();
             }
         });
-        
+
         GridData gd_txtUsername = new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1);
         gd_txtUsername.widthHint = 550;
         txtUsername.setLayoutData(gd_txtUsername);
@@ -169,20 +169,20 @@ public class LoginWizardPage extends WizardPage {
         btnLogin = new Button(grpCredentials, SWT.NONE);
         btnLogin.addSelectionListener(new SelectionAdapter() {
             public void widgetSelected(SelectionEvent e) {
-                    if (validateCredentials()) {
-                        UserSessionManager.createSession(getUsername(), client.getCookieStore().getCookies().get(0));
-                        setPageComplete(true);
-                        lblLoginStatus.setText(LOGIN_SUCCESSFUL_MSG);
-                        lblLoginStatus.setForeground(CloudDeploymentWizardConstants.Colors.blue);
-                        btnLogin.setEnabled(false);
-                        txtTenant.setEnabled(false);
-                        txtUsername.setEnabled(false);
-                        txtPassword.setEnabled(false);
-                    } else {
-                        lblLoginStatus.setText(LOGIN_FAILED_MSG);
-                        lblLoginStatus.setForeground(CloudDeploymentWizardConstants.Colors.red);
-                    }
-                    lblLoginStatus.getParent().layout();
+                if (validateCredentials()) {
+                    UserSessionManager.createSession(getUsername(), client.getCookieStore().getCookies().get(0));
+                    setPageComplete(true);
+                    lblLoginStatus.setText(LOGIN_SUCCESSFUL_MSG);
+                    lblLoginStatus.setForeground(CloudDeploymentWizardConstants.Colors.blue);
+                    btnLogin.setEnabled(false);
+                    txtTenant.setEnabled(false);
+                    txtUsername.setEnabled(false);
+                    txtPassword.setEnabled(false);
+                } else {
+                    lblLoginStatus.setText(LOGIN_FAILED_MSG);
+                    lblLoginStatus.setForeground(CloudDeploymentWizardConstants.Colors.red);
+                }
+                lblLoginStatus.getParent().layout();
             }
         });
         GridData gd_btnLogin = new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1);
@@ -190,35 +190,35 @@ public class LoginWizardPage extends WizardPage {
         btnLogin.setLayoutData(gd_btnLogin);
         btnLogin.setText("Login");
         btnLogin.setEnabled(false);
-        
+
         // To fill the grid layout
         new Label(container, SWT.NONE);
         new Label(container, SWT.NONE);
-        
+
         // Create a Link
         Link signupLink = new Link(container, SWT.NONE);
         signupLink.setText(SIGN_UP_LABEL_TEXT);
         GridData linkGridData = new GridData(SWT.CENTER, SWT.CENTER, false, false, 1, 1);
         signupLink.setLayoutData(linkGridData);
-        
+
         // To fill the grid layout
         new Label(container, SWT.NONE);
         new Label(container, SWT.NONE);
-        
+
         // Label that shows whether the authentication was successful or not
         lblLoginStatus = new Label(container, SWT.NONE);
         GridData loginStatusGridData = new GridData(SWT.CENTER, SWT.BOTTOM, false, true, 1, 1);
         loginStatusGridData.heightHint = 200;
         lblLoginStatus.setLayoutData(loginStatusGridData);
-         
+
         // Event handling when users click on link.
-        signupLink.addSelectionListener(new SelectionAdapter()  {
-         
+        signupLink.addSelectionListener(new SelectionAdapter() {
+
             @Override
             public void widgetSelected(SelectionEvent e) {
                 Program.launch(INTEGRATION_CLOUD_SINGUP_LINK);
             }
-             
+
         });
 
     }
@@ -229,7 +229,7 @@ public class LoginWizardPage extends WizardPage {
      * @return
      */
     private boolean validateCredentials() {
-        
+
         try {
             return (client.login(getUsername(), getPassword(), getTenant()));
         } catch (CloudDeploymentException | InvalidTokenException | HttpClientException e) {
@@ -237,7 +237,8 @@ public class LoginWizardPage extends WizardPage {
             MessageDialog.openError(getShell(), TITLE, e.getMessage());
         } catch (NetworkUnavailableException e) {
             log.error(CloudDeploymentWizardConstants.ErrorMessages.NO_INTERNET_CONNECTION_MESSAGE, e);
-            MessageDialog.openError(getShell(), TITLE, CloudDeploymentWizardConstants.ErrorMessages.NO_INTERNET_CONNECTION_MESSAGE);
+            MessageDialog.openError(getShell(), TITLE,
+                    CloudDeploymentWizardConstants.ErrorMessages.NO_INTERNET_CONNECTION_MESSAGE);
         }
         return false;
     }

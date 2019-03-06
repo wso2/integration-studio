@@ -29,7 +29,7 @@ import org.eclipse.swt.widgets.Display;
 public class CloudDeploymentWizardConstants {
 
     // Wizard Constants
-    public static final String DIALOG_TITLE_TEXT = "WSO2 Platform Distribution - Deploy to Integration Cloud";
+    public static final String DIALOG_TITLE_TEXT = "WSO2 Integration Cloud - Application Deployment";
     public static final String SUCCESS_DIALOG_TITLE_TEXT = "Deployment Successful";
     public static final String IN_PROGRESS_DIALOG_TITLE_TEXT = "Deployment In Progress";
     public static final String EMPTY_STRING = "";

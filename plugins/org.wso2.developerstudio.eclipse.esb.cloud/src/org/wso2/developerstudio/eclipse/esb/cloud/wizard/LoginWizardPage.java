@@ -178,6 +178,7 @@ public class LoginWizardPage extends WizardPage {
                     txtTenant.setEnabled(false);
                     txtUsername.setEnabled(false);
                     txtPassword.setEnabled(false);
+                    getContainer().showPage(getNextPage());
                 } else {
                     lblLoginStatus.setText(LOGIN_FAILED_MSG);
                     lblLoginStatus.setForeground(CloudDeploymentWizardConstants.Colors.red);

@@ -53,7 +53,7 @@ import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 /**
- * Represents a background job to generate the Docker image.
+ * Represents a background job to upload application to the cloud.
  *
  */
 public class CloudDeploymentJob extends Job {

@@ -179,7 +179,6 @@ public class PropertyGroupMediatorPropertiesEditionPartForm extends SectionPrope
         GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
         propertiesSectionData.horizontalSpan = 3;
         propertiesSection.setLayoutData(propertiesSectionData);
-        // Composite propertiesGroup = widgetFactory.createComposite(propertiesSection);
         propertiesGroup = widgetFactory.createComposite(propertiesSection);
         GridLayout propertiesGroupLayout = new GridLayout();
         propertiesGroupLayout.numColumns = 3;

@@ -157,6 +157,7 @@ public class PropertyMediatorPropertiesEditionPartImpl extends CompositeProperti
 		CompositionSequence propertyMediatorStep = new BindingCompositionSequence(propertiesEditionComponent);
 		CompositionStep propertiesStep = propertyMediatorStep.addStep(EsbViewsRepository.PropertyMediator.Properties.class);
 		propertiesStep.addStep(EsbViewsRepository.PropertyMediator.Properties.propertyName);
+		propertiesStep.addStep(EsbViewsRepository.PropertyMediator.Properties.newPropertyName);
 		propertiesStep.addStep(EsbViewsRepository.PropertyMediator.Properties.propertyDataType);
 		propertiesStep.addStep(EsbViewsRepository.PropertyMediator.Properties.propertyAction);
 		propertiesStep.addStep(EsbViewsRepository.PropertyMediator.Properties.propertyScope);
@@ -169,7 +170,6 @@ public class PropertyMediatorPropertiesEditionPartImpl extends CompositeProperti
 		propertiesStep.addStep(EsbViewsRepository.PropertyMediator.Properties.oM);
 		propertiesStep.addStep(EsbViewsRepository.PropertyMediator.Properties.valueStringPattern);
 		propertiesStep.addStep(EsbViewsRepository.PropertyMediator.Properties.valueStringCapturingGroup);
-		propertiesStep.addStep(EsbViewsRepository.PropertyMediator.Properties.newPropertyName);
 		propertiesStep.addStep(EsbViewsRepository.PropertyMediator.Properties.valueExpression);
 		propertiesStep.addStep(EsbViewsRepository.PropertyMediator.Properties.description);
 		

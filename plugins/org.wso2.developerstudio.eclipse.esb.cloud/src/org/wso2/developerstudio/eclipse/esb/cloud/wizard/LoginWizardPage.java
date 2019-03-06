@@ -28,6 +28,8 @@ import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.graphics.Font;
+import org.eclipse.swt.graphics.FontData;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.program.Program;
@@ -208,6 +210,8 @@ public class LoginWizardPage extends WizardPage {
 
         // Label that shows whether the authentication was successful or not
         lblLoginStatus = new Label(container, SWT.NONE);
+        FontData fontData = lblLoginStatus.getFont().getFontData()[0];
+        lblLoginStatus.setFont(new Font(parent.getDisplay(), fontData.getName(), 14, fontData.getStyle()));
         GridData loginStatusGridData = new GridData(SWT.CENTER, SWT.BOTTOM, false, true, 1, 1);
         loginStatusGridData.heightHint = 200;
         lblLoginStatus.setLayoutData(loginStatusGridData);

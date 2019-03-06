@@ -137,6 +137,8 @@ public class CallMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
     protected Composite propertiesGroup;
     
     protected final EEFPropertyViewUtil epv = new EEFPropertyViewUtil(view);
+    
+    protected Composite filterEndpointTypeSubPropertiesGroup;
 	// End of user code
 
 
@@ -164,14 +166,13 @@ public class CallMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	 * 
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
-		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
-		Form form = scrolledForm.getForm();
+		Form form = widgetFactory.createForm(parent);
 		view = form.getBody();
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
 		createControls(widgetFactory, view);
-		return scrolledForm;
+		return form;
 	}
 
 	/**
@@ -187,8 +188,8 @@ public class CallMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 		propertiesStep.addStep(EsbViewsRepository.CallMediator.Properties.commentsList);
 		propertiesStep.addStep(EsbViewsRepository.CallMediator.Properties.reverse);
 		propertiesStep.addStep(EsbViewsRepository.CallMediator.Properties.endpoint);
-		propertiesStep.addStep(EsbViewsRepository.CallMediator.Properties.endpointType);
 		propertiesStep.addStep(EsbViewsRepository.CallMediator.Properties.enableBlockingCalls);
+		propertiesStep.addStep(EsbViewsRepository.CallMediator.Properties.endpointType);
 		propertiesStep.addStep(EsbViewsRepository.CallMediator.Properties.endpointXpath);
 		propertiesStep.addStep(EsbViewsRepository.CallMediator.Properties.endpointRegistryKey);
 		propertiesStep.addStep(EsbViewsRepository.CallMediator.Properties.description);
@@ -197,6 +198,7 @@ public class CallMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
+			    // Start of user code for components addToPart creation
 				if (key == EsbViewsRepository.CallMediator.Properties.class) {
 					return createPropertiesGroup(widgetFactory, parent);
 				}
@@ -218,14 +220,11 @@ public class CallMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 				if (key == EsbViewsRepository.CallMediator.Properties.enableBlockingCalls) {
 					return createEnableBlockingCallsCheckbox(widgetFactory, parent);
 				}
-				// Start of user code for endpointXpath addToPart creation
                 if (key == EsbViewsRepository.CallMediator.Properties.endpointXpath) {
-                    return createEndpointXPathWidget(widgetFactory, parent);
+                    return createEndpointXPathWidget(widgetFactory, filterEndpointTypeSubPropertiesGroup);
                 }
-				// End of user code
-				// Start of user code for endpointRegistryKey addToPart creation
                 if (key == EsbViewsRepository.CallMediator.Properties.endpointRegistryKey) {
-                    return createEndpointRegistryKeyWidget(widgetFactory, parent);
+                    return createEndpointRegistryKeyWidget(widgetFactory, filterEndpointTypeSubPropertiesGroup);
                 }
 				// End of user code
 				return parent;
@@ -486,8 +485,10 @@ public class CallMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
      * @generated NOT
      */
 	protected Composite createEndpointTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
-		Control endpointTypeLabel = createDescription(parent, EsbViewsRepository.CallMediator.Properties.endpointType, EsbMessages.CallMediatorPropertiesEditionPart_EndpointTypeLabel);
-		endpointType = new EMFComboViewer(parent);
+        filterEndpointTypeSubPropertiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent,
+                "Endpoint Type", true);
+		Control endpointTypeLabel = createDescription(filterEndpointTypeSubPropertiesGroup, EsbViewsRepository.CallMediator.Properties.endpointType, EsbMessages.CallMediatorPropertiesEditionPart_EndpointTypeLabel);
+		endpointType = new EMFComboViewer(filterEndpointTypeSubPropertiesGroup);
 		endpointType.setContentProvider(new ArrayContentProvider());
 		endpointType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData endpointTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -507,7 +508,7 @@ public class CallMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 
 		});
 		endpointType.setID(EsbViewsRepository.CallMediator.Properties.endpointType);
-		Control endpointTypeHelp =FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.CallMediator.Properties.endpointType, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		Control endpointTypeHelp = FormUtils.createHelpButton(widgetFactory, filterEndpointTypeSubPropertiesGroup, propertiesEditionComponent.getHelpContent(EsbViewsRepository.CallMediator.Properties.endpointType, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createEndpointTypeEMFComboViewer
 		endpointTypeElements = new Control[] {endpointTypeLabel, endpointType.getCombo(), endpointTypeHelp};		
 		endpointType.addSelectionChangedListener(new ISelectionChangedListener() {
@@ -885,33 +886,35 @@ public class CallMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
             endpointRegistryKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
         } 
         String initValueExpression = endpointRegistryKey.getKeyValue().isEmpty() ? "" : endpointRegistryKey.getKeyValue();
-        endpointRegistryKeyText = widgetFactory.createText(parent, initValueExpression);
+        endpointRegistryKeyText = widgetFactory.createText(parent, initValueExpression, SWT.READ_ONLY);
         endpointRegistryKeyText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
         widgetFactory.paintBordersFor(parent);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
         endpointRegistryKeyText.setLayoutData(valueData);
-        endpointRegistryKeyText.addFocusListener(new FocusAdapter() {
-            /**
-             * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-             * 
-             */
+        
+        endpointRegistryKeyText.addMouseListener(new MouseAdapter() {
+
             @Override
-            @SuppressWarnings("synthetic-access")
-            public void focusLost(FocusEvent e) {
+            public void mouseDown(MouseEvent event) {
+                openCreateEndpointRegistryKeyNPE(parent);
             }
 
-            /**
-             * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
-             */
-            @Override
-            public void focusGained(FocusEvent e) {
-                EEFRegistryKeyPropertyEditorDialog dialog = new  EEFRegistryKeyPropertyEditorDialog(view.getShell(), SWT.NULL,
-                        endpointRegistryKey, new ArrayList<NamedEntityDescriptor>());
-                dialog.open();
-                endpointRegistryKeyText.setText(endpointRegistryKey.getKeyValue());
-                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CallMediatorPropertiesEditionPartForm.this, EsbViewsRepository.CallMediator.Properties.endpointRegistryKey, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getEndpointRegistryKey()));
-            }
         });
+
+        endpointRegistryKeyText.addKeyListener(new KeyListener() {
+
+            @Override
+            public void keyPressed(KeyEvent e) {}
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                if (!epv.isReservedKeyCombination(e)) {
+                    openCreateEndpointRegistryKeyNPE(parent);
+                }
+            }
+
+        });
+        
         EditingUtils.setID(endpointRegistryKeyText, EsbViewsRepository.CallMediator.Properties.endpointRegistryKey);
         EditingUtils.setEEFtype(endpointRegistryKeyText, "eef::Text");
         Control endpointRegistryKeyHelp =FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.CallMediator.Properties.endpointRegistryKey, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
@@ -926,7 +929,7 @@ public class CallMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
             endpointXPath = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
         } 
         String initValueExpression = endpointXPath.getPropertyValue().isEmpty() ? "/default/expression" : endpointXPath.getPropertyValue();
-        endpointXPathText = widgetFactory.createText(parent, initValueExpression, 8);
+        endpointXPathText = widgetFactory.createText(parent, initValueExpression, SWT.READ_ONLY);
         endpointXPathText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
         widgetFactory.paintBordersFor(parent);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
@@ -944,14 +947,14 @@ public class CallMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
         endpointXPathText.addKeyListener(new KeyListener() {
                         
             @Override
-            public void keyPressed(KeyEvent e) {
+            public void keyPressed(KeyEvent e) {}
+            
+            @Override
+            public void keyReleased(KeyEvent e) {
                 if (!epv.isReservedKeyCombination(e)) {
                     openCreateEndpointNPE(parent);
                 }
             }
-            
-            @Override
-            public void keyReleased(KeyEvent e) {}
             
         });
         
@@ -963,10 +966,24 @@ public class CallMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
     }
 	
     private void openCreateEndpointNPE(final Composite parent) {
-        EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL, endpointXPath);
+        EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL,
+                endpointXPath);
         nspd.open();
         endpointXPathText.setText(endpointXPath.getPropertyValue());
-        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CallMediatorPropertiesEditionPartForm.this, EsbViewsRepository.CallMediator.Properties.endpointXpath, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getEndpointXPath()));
+        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                CallMediatorPropertiesEditionPartForm.this, EsbViewsRepository.CallMediator.Properties.endpointXpath,
+                PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getEndpointXPath()));
+    }
+
+    private void openCreateEndpointRegistryKeyNPE(final Composite parent) {
+        EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(), SWT.NULL,
+                endpointRegistryKey, new ArrayList<NamedEntityDescriptor>());
+        dialog.open();
+        endpointRegistryKeyText.setText(endpointRegistryKey.getKeyValue());
+        propertiesEditionComponent
+                .firePropertiesChanged(new PropertiesEditionEvent(CallMediatorPropertiesEditionPartForm.this,
+                        EsbViewsRepository.CallMediator.Properties.endpointRegistryKey, PropertiesEditionEvent.COMMIT,
+                        PropertiesEditionEvent.SET, null, getEndpointRegistryKey()));
     }
     
 	@Override
@@ -977,8 +994,12 @@ public class CallMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 
     public void validate() {
         epv.clearElements(new Composite[] {propertiesGroup});
+        epv.showEntry(new Control[] {filterEndpointTypeSubPropertiesGroup.getParent()}, false);
+        epv.clearElements(new Composite[] { filterEndpointTypeSubPropertiesGroup });
+        
         epv.showEntry(endpointTypeElements, false);
         epv.showEntry(enableBlockingCallsElements, false);
+        
         switch (getEndpointType().getName()) {
         case "NONE":
         case "INLINE":

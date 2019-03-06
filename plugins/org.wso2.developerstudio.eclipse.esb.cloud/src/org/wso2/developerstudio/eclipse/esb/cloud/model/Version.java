@@ -73,33 +73,44 @@ public class Version {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
+        if (this == obj) {
             return true;
-        if (obj == null)
+        }
+        if (obj == null) {
             return false;
-        if (getClass() != obj.getClass())
+        }
+        if (getClass() != obj.getClass()) {
             return false;
+        }
         Version other = (Version) obj;
         if (deploymentPrivateURL == null) {
-            if (other.deploymentPrivateURL != null)
+            if (other.deploymentPrivateURL != null) {
                 return false;
-        } else if (!deploymentPrivateURL.equals(other.deploymentPrivateURL))
+            }
+        } else if (!deploymentPrivateURL.equals(other.deploymentPrivateURL)) {
             return false;
+        }
         if (deploymentURL == null) {
-            if (other.deploymentURL != null)
+            if (other.deploymentURL != null) {
                 return false;
-        } else if (!deploymentURL.equals(other.deploymentURL))
+            }
+        } else if (!deploymentURL.equals(other.deploymentURL)) {
             return false;
+        }
         if (versionId == null) {
-            if (other.versionId != null)
+            if (other.versionId != null) {
                 return false;
-        } else if (!versionId.equals(other.versionId))
+            }
+        } else if (!versionId.equals(other.versionId)) {
             return false;
+        }
         if (versionName == null) {
-            if (other.versionName != null)
+            if (other.versionName != null) {
                 return false;
-        } else if (!versionName.equals(other.versionName))
+            }
+        } else if (!versionName.equals(other.versionName)) {
             return false;
+        }
         return true;
     }
 

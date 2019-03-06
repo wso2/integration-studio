@@ -97,18 +97,22 @@ public class Application {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
+        if (this == obj) {
             return true;
-        if (obj == null)
+        }
+        if (obj == null) {
             return false;
-        if (getClass() != obj.getClass())
+        }
+        if (getClass() != obj.getClass()) {
             return false;
+        }
         Application other = (Application) obj;
         if (applicationName == null) {
             if (other.applicationName != null)
                 return false;
-        } else if (!applicationName.equals(other.applicationName))
+        } else if (!applicationName.equals(other.applicationName)) {
             return false;
+        }
         if (applicationType == null) {
             if (other.applicationType != null)
                 return false;
@@ -120,10 +124,12 @@ public class Application {
         } else if (!defaultURL.equals(other.defaultURL))
             return false;
         if (versions == null) {
-            if (other.versions != null)
+            if (other.versions != null) {
                 return false;
-        } else if (!versions.equals(other.versions))
+            }
+        } else if (!versions.equals(other.versions)) {
             return false;
+        }
         return true;
     }
 

@@ -84,33 +84,44 @@ public class EndpointData {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
+        if (this == obj) {
             return true;
-        if (obj == null)
+        }
+        if (obj == null) {
             return false;
-        if (getClass() != obj.getClass())
+        }
+        if (getClass() != obj.getClass()) {
             return false;
+        }
         EndpointData other = (EndpointData) obj;
         if (restEndpoints == null) {
-            if (other.restEndpoints != null)
+            if (other.restEndpoints != null) {
                 return false;
-        } else if (!restEndpoints.equals(other.restEndpoints))
+            }
+        } else if (!restEndpoints.equals(other.restEndpoints)) {
             return false;
+        }
         if (soapEndpoints == null) {
-            if (other.soapEndpoints != null)
+            if (other.soapEndpoints != null) {
                 return false;
-        } else if (!soapEndpoints.equals(other.soapEndpoints))
+            }
+        } else if (!soapEndpoints.equals(other.soapEndpoints)) {
             return false;
+        }
         if (swaggerEndpoints == null) {
-            if (other.swaggerEndpoints != null)
+            if (other.swaggerEndpoints != null) {
                 return false;
-        } else if (!swaggerEndpoints.equals(other.swaggerEndpoints))
+            }
+        } else if (!swaggerEndpoints.equals(other.swaggerEndpoints)) {
             return false;
+        }
         if (webEndpoints == null) {
-            if (other.webEndpoints != null)
+            if (other.webEndpoints != null) {
                 return false;
-        } else if (!webEndpoints.equals(other.webEndpoints))
+            }
+        } else if (!webEndpoints.equals(other.webEndpoints)) {
             return false;
+        }
         return true;
     }
 

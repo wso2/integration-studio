@@ -73,33 +73,43 @@ public class Endpoint {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
+        if (this == obj) {
             return true;
-        if (obj == null)
+        }
+        if (obj == null) {
             return false;
-        if (getClass() != obj.getClass())
+        }
+        if (getClass() != obj.getClass()) {
             return false;
+        }
         Endpoint other = (Endpoint) obj;
         if (context == null) {
             if (other.context != null)
                 return false;
-        } else if (!context.equals(other.context))
+        } else if (!context.equals(other.context)) {
             return false;
+        }
         if (name == null) {
-            if (other.name != null)
+            if (other.name != null) {
                 return false;
-        } else if (!name.equals(other.name))
+            }
+        } else if (!name.equals(other.name)) {
             return false;
+        }
         if (url == null) {
-            if (other.url != null)
+            if (other.url != null) {
                 return false;
-        } else if (!url.equals(other.url))
+            }
+        } else if (!url.equals(other.url)) {
             return false;
+        }
         if (wsdl == null) {
-            if (other.wsdl != null)
+            if (other.wsdl != null) {
                 return false;
-        } else if (!wsdl.equals(other.wsdl))
+            }
+        } else if (!wsdl.equals(other.wsdl)) {
             return false;
+        }
         return true;
     }
 

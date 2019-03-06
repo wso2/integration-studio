@@ -62,23 +62,30 @@ public class UserSession {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
+        if (this == obj) {
             return true;
-        if (obj == null)
+        }
+        if (obj == null) {
             return false;
-        if (getClass() != obj.getClass())
+        }
+        if (getClass() != obj.getClass()) {
             return false;
+        }
         UserSession other = (UserSession) obj;
         if (cookie == null) {
-            if (other.cookie != null)
+            if (other.cookie != null) {
                 return false;
-        } else if (!cookie.equals(other.cookie))
+            }
+        } else if (!cookie.equals(other.cookie)) {
             return false;
+        }
         if (username == null) {
-            if (other.username != null)
+            if (other.username != null) {
                 return false;
-        } else if (!username.equals(other.username))
+            }
+        } else if (!username.equals(other.username)) {
             return false;
+        }
         return true;
     }
 

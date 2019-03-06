@@ -92,7 +92,7 @@ public class CloudDeploymentJob extends Job {
     protected IStatus run(IProgressMonitor monitor) {
 
         String operationText = "Preparing to deploy the application... ";
-        monitor.beginTask(operationText, 99);
+        monitor.beginTask(operationText, 100);
 
         operationText = "Sending application data...";
         monitor.subTask(operationText);

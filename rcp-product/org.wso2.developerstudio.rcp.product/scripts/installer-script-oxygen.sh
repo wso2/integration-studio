@@ -12,6 +12,12 @@ PRODUCT_PATH_MACOS=$PRODUCT_PATH_ROOT/temp/macos
 PRODUCT_PATH_WIN_86=$PRODUCT_PATH_ROOT/temp/win-x86/DeveloperStudio
 PRODUCT_PATH_WIN_64=$PRODUCT_PATH_ROOT/temp/win-x86_64/DeveloperStudio
 
+PRODUCT_EXECUTABLE_NAME_DEFAULT=developerstudio
+PRODUCT_EXECUTABLE_NAME=DeveloperStudio
+PRODUCT_EXECUTABLE_CONFIG_FILE_NAME_DEFAULT=$PRODUCT_EXECUTABLE_NAME_DEFAULT.ini
+PRODUCT_EXECUTABLE_CONFIG_FILE_NAME=$PRODUCT_EXECUTABLE_NAME.ini
+
+
 # Temporary location of JDK distributions
 JDK_DISTRIBUTION_PATH=$BASE_DIR/target/jdk
 JDK_DEFAULT_DIRECTORY_NAME="jdk-home"
@@ -22,6 +28,7 @@ JDK_HOME_WINDOWS="$JDK_DEFAULT_DIRECTORY_NAME/bin"
 JDK_HOME_MACOS="..\/Eclipse/$JDK_DEFAULT_DIRECTORY_NAME/Contents/Home/bin"
 JDK_DISTRIBUTION_NAME="jdk-distibution"
 MACOS_ECLIPSE_CONFIG_PATH="$PRODUCT_PATH_MACOS/DeveloperStudio.app/Contents/Eclipse"
+MACOS_ECLIPSE_EXECUTABLE_PATH="$PRODUCT_PATH_MACOS/DeveloperStudio.app/Contents/MacOS"
 MACOS_JDK_LIB_PATH="$PRODUCT_PATH_MACOS/DeveloperStudio.app/Contents/Eclipse/$JDK_DEFAULT_DIRECTORY_NAME/Contents/Home/jre/lib"
 
 JDK_DISTRIBUTION_PATH_LINUX=$JDK_DISTRIBUTION_PATH/jdk-linux
@@ -78,33 +85,62 @@ popd
 
 pushd ${JDK_DISTRIBUTION_PATH_MACOS}
 mv $JDK_DISTRIBUTION_FILE_PREFIX* $JDK_DISTRIBUTION_NAME.tar.gz
-tar xzf $JDK_DISTRIBUTION_NAME.tar.gz -C $PRODUCT_PATH_MACOS/DeveloperStudio.app/Contents/Eclipse
+tar xzf $JDK_DISTRIBUTION_NAME.tar.gz -C $PRODUCT_PATH_MACOS/developerstudio.app/Contents/Eclipse
 popd
 
 # Configure JDKs
 pushd ${PRODUCT_PATH_LINUX_64}
 mv $JDK_DIRECTORY_PREFIX* $JDK_DEFAULT_DIRECTORY_NAME
-sed -e '/-vmargs/i\'$'\n''-vm' DeveloperStudio.ini > DeveloperStudio_temp.ini
-sed -e '/-vmargs/i\'$'\n'$JDK_HOME_LINUX DeveloperStudio_temp.ini > DeveloperStudio.ini
-rm -f DeveloperStudio_temp.ini
+sed -e '/-vmargs/i\'$'\n''-vm' developerstudio.ini > developerstudio_temp.ini
+sed -e '/-vmargs/i\'$'\n'$JDK_HOME_LINUX developerstudio_temp.ini > developerstudio.ini
+rm -f developerstudio_temp.ini
 popd
 
 pushd ${PRODUCT_PATH_WIN_64}
 mv $JDK_DIRECTORY_PREFIX* $JDK_DEFAULT_DIRECTORY_NAME
-sed -e '/-vmargs/i\'$'\n''-vm' DeveloperStudio.ini > DeveloperStudio_temp.ini
-sed -e '/-vmargs/i\'$'\n'$JDK_HOME_WINDOWS DeveloperStudio_temp.ini > DeveloperStudio.ini
-rm -f DeveloperStudio_temp.ini
+sed -e '/-vmargs/i\'$'\n''-vm' developerstudio.ini > developerstudio_temp.ini
+sed -e '/-vmargs/i\'$'\n'$JDK_HOME_WINDOWS developerstudio_temp.ini > developerstudio.ini
+rm -f developerstudio_temp.ini
 popd
 
 pushd ${MACOS_ECLIPSE_CONFIG_PATH}
 mv $JDK_DIRECTORY_PREFIX* $JDK_DEFAULT_DIRECTORY_NAME
-sed -e '/-vmargs/i\'$'\n''-vm' DeveloperStudio.ini > DeveloperStudio_temp.ini
-sed -e '/-vmargs/i\'$'\n'$JDK_HOME_MACOS DeveloperStudio_temp.ini > DeveloperStudio.ini
-rm -f DeveloperStudio_temp.ini
+sed -e '/-vmargs/i\'$'\n''-vm' developerstudio.ini > developerstudio_temp.ini
+sed -e '/-vmargs/i\'$'\n'$JDK_HOME_MACOS developerstudio_temp.ini > developerstudio.ini
+rm -f developerstudio_temp.ini
 popd
 
 pushd ${MACOS_JDK_LIB_PATH}
 cp libfreetype.dylib.6 libfreetype.6.dylib
+popd
+
+# Rename distribution executables and configuration files
+pushd ${PRODUCT_PATH_LINUX_86}
+mv $PRODUCT_EXECUTABLE_NAME_DEFAULT $PRODUCT_EXECUTABLE_NAME
+mv $PRODUCT_EXECUTABLE_CONFIG_FILE_NAME_DEFAULT $PRODUCT_EXECUTABLE_CONFIG_FILE_NAME
+popd
+
+pushd ${PRODUCT_PATH_LINUX_64}
+mv $PRODUCT_EXECUTABLE_NAME_DEFAULT $PRODUCT_EXECUTABLE_NAME
+mv $PRODUCT_EXECUTABLE_CONFIG_FILE_NAME_DEFAULT $PRODUCT_EXECUTABLE_CONFIG_FILE_NAME
+popd
+
+pushd ${MACOS_ECLIPSE_EXECUTABLE_PATH}
+mv $PRODUCT_EXECUTABLE_NAME_DEFAULT $PRODUCT_EXECUTABLE_NAME
+popd
+
+pushd ${MACOS_ECLIPSE_CONFIG_PATH}
+mv $PRODUCT_EXECUTABLE_CONFIG_FILE_NAME_DEFAULT $PRODUCT_EXECUTABLE_CONFIG_FILE_NAME
+popd
+
+pushd ${PRODUCT_PATH_WIN_86}
+mv $PRODUCT_EXECUTABLE_NAME_DEFAULT.exe $PRODUCT_EXECUTABLE_NAME.exe
+mv $PRODUCT_EXECUTABLE_CONFIG_FILE_NAME_DEFAULT $PRODUCT_EXECUTABLE_CONFIG_FILE_NAME
+popd
+
+pushd ${PRODUCT_PATH_WIN_64}
+mv $PRODUCT_EXECUTABLE_NAME_DEFAULT.exe $PRODUCT_EXECUTABLE_NAME.exe
+mv $PRODUCT_EXECUTABLE_CONFIG_FILE_NAME_DEFAULT $PRODUCT_EXECUTABLE_CONFIG_FILE_NAME
 popd
 
 # Zip the packages with microesb and JDK

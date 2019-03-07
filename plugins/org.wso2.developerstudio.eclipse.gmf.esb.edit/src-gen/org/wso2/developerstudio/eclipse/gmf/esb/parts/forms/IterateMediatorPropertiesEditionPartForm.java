@@ -10,8 +10,6 @@ import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.Enumerator;
 
-import org.eclipse.emf.ecore.util.EcoreAdapterFactory;
-
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
@@ -23,7 +21,6 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
 
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
-
 import org.eclipse.emf.eef.runtime.part.impl.SectionPropertiesEditingPart;
 
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
@@ -51,6 +48,7 @@ import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.KeyListener;
 import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -70,9 +68,6 @@ import org.eclipse.ui.forms.widgets.Section;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.developerstudio.eclipse.gmf.esb.PropertyAction;
-import org.wso2.developerstudio.eclipse.gmf.esb.PropertyName;
-import org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType;
 import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
@@ -126,6 +121,7 @@ public class IterateMediatorPropertiesEditionPartForm extends SectionPropertiesE
     protected Text attachPathText;
 
     protected Composite propertiesGroup;
+    protected Composite sequenceSubsection;
     // End of user code
 
     /**
@@ -153,14 +149,13 @@ public class IterateMediatorPropertiesEditionPartForm extends SectionPropertiesE
      * 
      */
     public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
-        scrolledForm = widgetFactory.createScrolledForm(parent);
-        Form form = scrolledForm.getForm();
+        Form form = widgetFactory.createForm(parent);
         view = form.getBody();
         GridLayout layout = new GridLayout();
         layout.numColumns = 3;
         view.setLayout(layout);
         createControls(widgetFactory, view);
-        return scrolledForm;
+        return form;
     }
 
     /**
@@ -220,7 +215,7 @@ public class IterateMediatorPropertiesEditionPartForm extends SectionPropertiesE
                     return createSequenceTypeEMFComboViewer(widgetFactory, parent);
                 }
                 if (key == EsbViewsRepository.IterateMediator.Properties.sequenceName) {
-                    return createSequenceNameText(widgetFactory, parent);
+                    return createSequenceNameText(widgetFactory, sequenceSubsection);
                 }
                 // Start of user code for iterateExpression addToPart creation
                 if (key == EsbViewsRepository.IterateMediator.Properties.iterateExpression) {
@@ -229,7 +224,7 @@ public class IterateMediatorPropertiesEditionPartForm extends SectionPropertiesE
                 // End of upropertiesGroupser code
                 // Start of user code for sequenceKey addToPart creation
                 if (key == EsbViewsRepository.IterateMediator.Properties.sequenceKey) {
-                    return createSequenceKeyWidget(widgetFactory, parent);
+                    return createSequenceKeyWidget(widgetFactory, sequenceSubsection);
                 }
                 // End of user code
                 // Start of user code for attachPath createIterateMediatorWidgetaddToPart creation
@@ -639,10 +634,11 @@ public class IterateMediatorPropertiesEditionPartForm extends SectionPropertiesE
      * @generated NOT
      */
     protected Composite createSequenceTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
-        Control sequenceTypeLabel = createDescription(parent,
+        sequenceSubsection = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent, "Sequence", true);
+        Control sequenceTypeLabel = createDescription(sequenceSubsection,
                 EsbViewsRepository.IterateMediator.Properties.sequenceType,
                 EsbMessages.IterateMediatorPropertiesEditionPart_SequenceTypeLabel);
-        sequenceType = new EMFComboViewer(parent);
+        sequenceType = new EMFComboViewer(sequenceSubsection);
         sequenceType.setContentProvider(new ArrayContentProvider());
         sequenceType
                 .setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -666,7 +662,7 @@ public class IterateMediatorPropertiesEditionPartForm extends SectionPropertiesE
 
         });
         sequenceType.setID(EsbViewsRepository.IterateMediator.Properties.sequenceType);
-        Control sequenceTypeHelp = FormUtils.createHelpButton(widgetFactory, parent,
+        Control sequenceTypeHelp = FormUtils.createHelpButton(widgetFactory, sequenceSubsection,
                 propertiesEditionComponent.getHelpContent(EsbViewsRepository.IterateMediator.Properties.sequenceType,
                         EsbViewsRepository.FORM_KIND),
                 null); // $NON-NLS-1$
@@ -1178,7 +1174,7 @@ public class IterateMediatorPropertiesEditionPartForm extends SectionPropertiesE
         }
         String initValueExpression = iterateExpression.getPropertyValue().isEmpty() ? ""
                 : iterateExpression.getPropertyValue();
-        iterateExpressionText = widgetFactory.createText(parent, initValueExpression);
+        iterateExpressionText = widgetFactory.createText(parent, initValueExpression, SWT.READ_ONLY);
         iterateExpressionText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
         widgetFactory.paintBordersFor(parent);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
@@ -1187,6 +1183,10 @@ public class IterateMediatorPropertiesEditionPartForm extends SectionPropertiesE
 
             @Override
             public void mouseUp(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseDown(MouseEvent e) {
                 EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
                         SWT.NULL, iterateExpression);
                 nspd.open();
@@ -1195,18 +1195,34 @@ public class IterateMediatorPropertiesEditionPartForm extends SectionPropertiesE
                         IterateMediatorPropertiesEditionPartForm.this,
                         EsbViewsRepository.IterateMediator.Properties.iterateExpression, PropertiesEditionEvent.COMMIT,
                         PropertiesEditionEvent.SET, null, getIterateExpression()));
-
-            }
-
-            @Override
-            public void mouseDown(MouseEvent e) {
-
             }
 
             @Override
             public void mouseDoubleClick(MouseEvent e) {
 
             }
+        });
+        
+        iterateExpressionText.addKeyListener(new KeyListener() {
+            
+            @Override
+            public void keyPressed(KeyEvent e) {
+            }
+            
+            @Override
+            public void keyReleased(KeyEvent e) {
+                if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                    EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
+                            SWT.NULL, iterateExpression);
+                    nspd.open();
+                    iterateExpressionText.setText(iterateExpression.getPropertyValue());
+                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                            IterateMediatorPropertiesEditionPartForm.this,
+                            EsbViewsRepository.IterateMediator.Properties.iterateExpression, PropertiesEditionEvent.COMMIT,
+                            PropertiesEditionEvent.SET, null, getIterateExpression()));
+                }
+            }
+            
         });
 
         EditingUtils.setID(iterateExpressionText, EsbViewsRepository.IterateMediator.Properties.iterateExpression);
@@ -1222,13 +1238,13 @@ public class IterateMediatorPropertiesEditionPartForm extends SectionPropertiesE
 
     protected Composite createSequenceKeyWidget(FormToolkit widgetFactory, Composite parent) {
         Control sequenceKeyLabel = createDescription(parent, EsbViewsRepository.IterateMediator.Properties.sequenceKey,
-                EsbMessages.IterateMediatorPropertiesEditionPart_SequenceKeyLabel);
+                "Sequence Key");
         widgetFactory.paintBordersFor(parent);
         if (sequenceKey == null) {
             sequenceKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
         }
         String initValueExpression = sequenceKey.getKeyValue().isEmpty() ? "" : sequenceKey.getKeyValue();
-        sequenceKeyText = widgetFactory.createText(parent, initValueExpression);
+        sequenceKeyText = widgetFactory.createText(parent, initValueExpression, SWT.READ_ONLY);
         sequenceKeyText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
         widgetFactory.paintBordersFor(parent);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
@@ -1237,6 +1253,10 @@ public class IterateMediatorPropertiesEditionPartForm extends SectionPropertiesE
 
             @Override
             public void mouseUp(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseDown(MouseEvent e) {
                 EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
                         SWT.NULL, sequenceKey, new ArrayList<NamedEntityDescriptor>());
                 dialog.open();
@@ -1245,18 +1265,34 @@ public class IterateMediatorPropertiesEditionPartForm extends SectionPropertiesE
                         .firePropertiesChanged(new PropertiesEditionEvent(IterateMediatorPropertiesEditionPartForm.this,
                                 EsbViewsRepository.IterateMediator.Properties.sequenceKey,
                                 PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getSequenceKey()));
-
-            }
-
-            @Override
-            public void mouseDown(MouseEvent e) {
-
             }
 
             @Override
             public void mouseDoubleClick(MouseEvent e) {
 
             }
+        });
+        
+        sequenceKeyText.addKeyListener(new KeyListener() {
+            
+            @Override
+            public void keyPressed(KeyEvent e) {
+            }
+            
+            @Override
+            public void keyReleased(KeyEvent e) {
+                if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                    EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
+                            SWT.NULL, sequenceKey, new ArrayList<NamedEntityDescriptor>());
+                    dialog.open();
+                    sequenceKeyText.setText(sequenceKey.getKeyValue());
+                    propertiesEditionComponent
+                            .firePropertiesChanged(new PropertiesEditionEvent(IterateMediatorPropertiesEditionPartForm.this,
+                                    EsbViewsRepository.IterateMediator.Properties.sequenceKey,
+                                    PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getSequenceKey()));
+                }
+            }
+            
         });
 
         EditingUtils.setID(sequenceKeyText, EsbViewsRepository.IterateMediator.Properties.sequenceKey);
@@ -1271,13 +1307,13 @@ public class IterateMediatorPropertiesEditionPartForm extends SectionPropertiesE
 
     protected Composite createAttachPathWidget(FormToolkit widgetFactory, final Composite parent) {
         Control attachPathLabel = createDescription(parent, EsbViewsRepository.IterateMediator.Properties.attachPath,
-                EsbMessages.IterateMediatorPropertiesEditionPart_AttachPathLabel);
+                "Attach Path");
         widgetFactory.paintBordersFor(parent);
         if (attachPath == null) {
             attachPath = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
         }
         String initValueExpression = attachPath.getPropertyValue().isEmpty() ? "" : attachPath.getPropertyValue();
-        attachPathText = widgetFactory.createText(parent, initValueExpression);
+        attachPathText = widgetFactory.createText(parent, initValueExpression, SWT.READ_ONLY);
         attachPathText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
         widgetFactory.paintBordersFor(parent);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
@@ -1307,6 +1343,29 @@ public class IterateMediatorPropertiesEditionPartForm extends SectionPropertiesE
 
             }
         });
+        
+        attachPathText.addKeyListener(new KeyListener() {
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                    EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
+                            SWT.NULL, attachPath);
+                    nspd.open();
+                    attachPathText.setText(attachPath.getPropertyValue());
+                    propertiesEditionComponent.firePropertiesChanged(
+                            new PropertiesEditionEvent(IterateMediatorPropertiesEditionPartForm.this,
+                                    EsbViewsRepository.IterateMediator.Properties.attachPath,
+                                    PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getAttachPath()));
+                }
+            }
+
+        });
+
         EditingUtils.setID(attachPathText, EsbViewsRepository.IterateMediator.Properties.attachPath);
         EditingUtils.setEEFtype(attachPathText, "eef::Text");
         Control attachExpressionHelp = FormUtils
@@ -1327,10 +1386,13 @@ public class IterateMediatorPropertiesEditionPartForm extends SectionPropertiesE
     public void validate() {
         EEFPropertyViewUtil eu = new EEFPropertyViewUtil(view);
         eu.clearElements(new Composite[] { propertiesGroup });
+        eu.showEntry(new Control[] {sequenceSubsection.getParent()}, false);
+        eu.clearElements(new Composite[] { sequenceSubsection });
         eu.showEntry(iterateIDElements, false);
         eu.showEntry(sequentialMediationElements, false);
         eu.showEntry(continueParentElements, false);
         eu.showEntry(preservePayloadElements, false);
+        eu.showEntry(descriptionElements, false);
 
         if (getPreservePayload()) {
             eu.showEntry(attachPathElements, false);

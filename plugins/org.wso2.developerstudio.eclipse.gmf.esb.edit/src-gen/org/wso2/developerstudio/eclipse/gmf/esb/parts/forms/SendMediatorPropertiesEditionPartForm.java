@@ -121,7 +121,8 @@ public class SendMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
   protected EList commentsListList;
   protected Button reverse;
   // Start of user code for StaticReceivingSequence widgets declarations
-	protected Composite propertiesGroup;
+    protected Composite propertiesGroup;
+    protected Composite receivingSequenceSubsection;
 
 	protected Control[] skipSerializationElements;
 	protected Control[] receivingSequenceTypeElements;
@@ -166,14 +167,13 @@ public class SendMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	 * 
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
-		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
-		Form form = scrolledForm.getForm();
+		Form form = widgetFactory.createForm(parent);
 		view = form.getBody();
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
 		createControls(widgetFactory, view);
-		return scrolledForm;
+		return form;
 	}
 
 	/**
@@ -188,12 +188,12 @@ public class SendMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 		CompositionSequence sendMediatorStep = new BindingCompositionSequence(propertiesEditionComponent);
 		CompositionStep propertiesStep = sendMediatorStep.addStep(EsbViewsRepository.SendMediator.Properties.class);
 		propertiesStep.addStep(EsbViewsRepository.SendMediator.Properties.skipSerialization);
-		propertiesStep.addStep(EsbViewsRepository.SendMediator.Properties.endPoint);
-		propertiesStep.addStep(EsbViewsRepository.SendMediator.Properties.receivingSequenceType);
 		propertiesStep.addStep(EsbViewsRepository.SendMediator.Properties.buildMessageBeforeSending);
+		propertiesStep.addStep(EsbViewsRepository.SendMediator.Properties.receivingSequenceType);
 		propertiesStep.addStep(EsbViewsRepository.SendMediator.Properties.staticReceivingSequence);
 		propertiesStep.addStep(EsbViewsRepository.SendMediator.Properties.dynamicReceivingSequence);
 		propertiesStep.addStep(EsbViewsRepository.SendMediator.Properties.description);
+		propertiesStep.addStep(EsbViewsRepository.SendMediator.Properties.endPoint);
 
 		composer = new PartComposer(sendMediatorStep) {
 
@@ -219,12 +219,12 @@ public class SendMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 				}
 				// Start of user code for StaticReceivingSequence addToPart creation
 				if (key == EsbViewsRepository.SendMediator.Properties.staticReceivingSequence) {
-					return createStaticReceivingSequence(widgetFactory, parent);
+					return createStaticReceivingSequence(widgetFactory, receivingSequenceSubsection);
 				}
 				// End of user code
 				// Start of user code for DynamicReceivingSequence addToPart creation
 				if (key == EsbViewsRepository.SendMediator.Properties.dynamicReceivingSequence) {
-					return createDynamicReceivingSequence(widgetFactory, parent);
+                    return createDynamicReceivingSequence(widgetFactory, receivingSequenceSubsection);
 				}
 				// End of user code
 				return parent;
@@ -408,10 +408,11 @@ public class SendMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	 * @generated NOT
 	 */
 	protected Composite createReceivingSequenceTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
-		Control receivingSequenceTypeLabel = createDescription(parent,
+	    receivingSequenceSubsection = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent, "Receiving Sequence", true);
+		Control receivingSequenceTypeLabel = createDescription(receivingSequenceSubsection,
 				EsbViewsRepository.SendMediator.Properties.receivingSequenceType,
 				EsbMessages.SendMediatorPropertiesEditionPart_ReceivingSequenceTypeLabel);
-		receivingSequenceType = new EMFComboViewer(parent);
+		receivingSequenceType = new EMFComboViewer(receivingSequenceSubsection);
 		receivingSequenceType.setContentProvider(new ArrayContentProvider());
 		receivingSequenceType
 				.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -437,7 +438,7 @@ public class SendMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 
 		});
 		receivingSequenceType.setID(EsbViewsRepository.SendMediator.Properties.receivingSequenceType);
-		Control receivingSequenceTypeHelp = FormUtils.createHelpButton(widgetFactory, parent,
+		Control receivingSequenceTypeHelp = FormUtils.createHelpButton(widgetFactory, receivingSequenceSubsection,
 				propertiesEditionComponent.getHelpContent(
 						EsbViewsRepository.SendMediator.Properties.receivingSequenceType, EsbViewsRepository.FORM_KIND),
 				null); // $NON-NLS-1$
@@ -1000,14 +1001,14 @@ public class SendMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	protected Composite createDynamicReceivingSequence(FormToolkit widgetFactory, final Composite parent) {
 		Control dynamicReceivingSequenceLabel = createDescription(parent,
 				EsbViewsRepository.SendMediator.Properties.dynamicReceivingSequence,
-				EsbMessages.SendMediatorPropertiesEditionPart_DynamicReceivingSequenceLabel);
+				"Dynamic Receiving Sequence");
 		widgetFactory.paintBordersFor(parent);
 		if (dynamicReceivingSequence == null) {
 			dynamicReceivingSequence = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
 		}
 		String initDynamicReceivingSequence = dynamicReceivingSequence.getPropertyValue().isEmpty() ? ""
 				: dynamicReceivingSequence.getPropertyValue();
-		dynamicReceivingSequenceText = widgetFactory.createText(parent, initDynamicReceivingSequence);
+		dynamicReceivingSequenceText = widgetFactory.createText(parent, initDynamicReceivingSequence, SWT.READ_ONLY);
 		dynamicReceivingSequenceText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
@@ -1026,11 +1027,14 @@ public class SendMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
                         
             @Override
             public void keyPressed(KeyEvent e) {
-                openDynamicReceivingSequenceNamespacedPropertyEditor(parent);
             }
             
             @Override
-            public void keyReleased(KeyEvent e) {}
+            public void keyReleased(KeyEvent e) {
+                if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                    openDynamicReceivingSequenceNamespacedPropertyEditor(parent);
+                }
+            }
             
         });
 		
@@ -1050,14 +1054,14 @@ public class SendMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	protected Composite createStaticReceivingSequence(FormToolkit widgetFactory, final Composite parent) {
 		Control staticReceivingSequenceLabel = createDescription(parent,
 				EsbViewsRepository.SendMediator.Properties.staticReceivingSequence,
-				EsbMessages.SendMediatorPropertiesEditionPart_StaticReceivingSequenceLabel);
+				"Static Receiving Sequence");
 		widgetFactory.paintBordersFor(parent);
 		if (staticReceivingSequence == null) {
 			staticReceivingSequence = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
 		}
 		String initStaticReceivingSequence = staticReceivingSequence.getKeyValue().isEmpty() ? ""
 				: staticReceivingSequence.getKeyValue();
-		staticReceivingSequenceText = widgetFactory.createText(parent, initStaticReceivingSequence);
+		staticReceivingSequenceText = widgetFactory.createText(parent, initStaticReceivingSequence, SWT.READ_ONLY);
 		staticReceivingSequenceText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
@@ -1087,6 +1091,28 @@ public class SendMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 
 			}
 		});
+		
+		staticReceivingSequenceText.addKeyListener(new KeyListener() {
+            
+            @Override
+            public void keyPressed(KeyEvent e) {
+            }
+            
+            @Override
+            public void keyReleased(KeyEvent e) {
+                if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                    EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(parent.getShell(),
+                            SWT.NULL, staticReceivingSequence, new ArrayList<NamedEntityDescriptor>());
+                    dialog.open();
+                    staticReceivingSequenceText.setText(staticReceivingSequence.getKeyValue());
+                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                            SendMediatorPropertiesEditionPartForm.this,
+                            EsbViewsRepository.SendMediator.Properties.staticReceivingSequence,
+                            PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getStaticReceivingSequence()));
+                }
+            }
+            
+        });
 		EditingUtils.setID(staticReceivingSequenceText,
 				EsbViewsRepository.SendMediator.Properties.staticReceivingSequence);
 		EditingUtils.setEEFtype(staticReceivingSequenceText, "eef::Text");
@@ -1125,6 +1151,8 @@ public class SendMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 		eu.showEntry(skipSerializationElements, false);
 
 		if (!getSkipSerialization()) {
+		    eu.showEntry(new Control[] {receivingSequenceSubsection.getParent()}, false);
+	        eu.clearElements(new Composite[] { receivingSequenceSubsection });
 			eu.showEntry(receivingSequenceTypeElements, false);
 			eu.showEntry(buildMessageBeforeSendingElements, false);
 

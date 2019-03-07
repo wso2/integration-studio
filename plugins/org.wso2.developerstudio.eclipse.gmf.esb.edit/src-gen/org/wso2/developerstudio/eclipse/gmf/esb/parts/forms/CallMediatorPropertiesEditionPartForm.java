@@ -879,7 +879,7 @@ public class CallMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 
 
 	// Start of user code additional methods
-    protected Composite createEndpointRegistryKeyWidget(FormToolkit widgetFactory, Composite parent) {
+    protected Composite createEndpointRegistryKeyWidget(FormToolkit widgetFactory, final Composite parent) {
         Control endpointRegistryKeyLabel = createDescription(parent, EsbViewsRepository.CallMediator.Properties.endpointRegistryKey, EsbMessages.CallMediatorPropertiesEditionPart_EndpointRegistryKeyLabel);
         widgetFactory.paintBordersFor(parent);
         if(endpointRegistryKey == null) {

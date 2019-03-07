@@ -19,7 +19,7 @@
       <editor
          id="org.wso2.developerstudio.datamapper.diagram.part.DataMapperDiagramEditorID"
          name="%editorName"
-         icon="icons/obj16/DataMapperDiagramFile.gif"
+         icon="icons/obj16/DataMapperDiagramFile.png"
          extensions="datamapper_diagram"
          default="true"
          class="org.wso2.developerstudio.datamapper.diagram.part.DataMapperDiagramEditor"
@@ -42,7 +42,7 @@
       <?gmfgen generated="true"?>
   	  <wizard
   	     name="%newWizardName"
-  	     icon="icons/obj16/DataMapperDiagramFile.gif"
+  	     icon="icons/obj16/DataMapperDiagramFile.png"
   	     category="org.eclipse.ui.Examples"
   	     class="org.wso2.developerstudio.datamapper.diagram.part.DataMapperCreationWizard"
   	     id="org.wso2.developerstudio.datamapper.diagram.part.DataMapperCreationWizardID">
@@ -1367,7 +1367,7 @@
             priority="normal" 
             contentProvider="org.wso2.developerstudio.datamapper.diagram.navigator.DataMapperNavigatorContentProvider" 
             labelProvider="org.wso2.developerstudio.datamapper.diagram.navigator.DataMapperNavigatorLabelProvider"
-            icon="icons/obj16/DataMapperDiagramFile.gif"
+            icon="icons/obj16/DataMapperDiagramFile.png"
             activeByDefault="true">
          <triggerPoints>
             <or>
@@ -1403,7 +1403,7 @@
             priority="normal" 
             contentProvider="org.wso2.developerstudio.datamapper.diagram.navigator.DataMapperDomainNavigatorContentProvider" 
             labelProvider="org.wso2.developerstudio.datamapper.diagram.navigator.DataMapperDomainNavigatorLabelProvider"
-            icon="icons/obj16/DataMapperDiagramFile.gif"
+            icon="icons/obj16/DataMapperDiagramFile.png"
             activeByDefault="true">
          <triggerPoints>
             <or>

@@ -49,6 +49,7 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.browser.Browser;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -184,29 +185,29 @@ public class ImportCloudConnectorWizardPage extends WizardPage {
 		gridData.heightHint = 400;
 		gridData.widthHint = 250;
 
-		table = new Table(container, SWT.CHECK | SWT.BORDER | SWT.V_SCROLL | SWT.H_SCROLL);
-		table.setEnabled(false);
-		table.addListener(SWT.Selection, new Listener() {
-			public void handleEvent(Event e) {
-				setErrorMessage(null);
-				((CloudConnectorImportWizard) getWizard()).getRemoveWizardPage().setPageComplete(true);
-				setPageComplete(true);
-			}
-		});
-		TableColumn tc1 = new TableColumn(table, SWT.LEFT);
-		TableColumn tc2 = new TableColumn(table, SWT.CENTER);
-		tc1.setText("Name");
-		tc2.setText("Version");
-		tc1.setWidth(390);
-		tc2.setWidth(120);
-		table.setHeaderVisible(true);
-		table.setLayoutData(gridData);
-		btnBrowse.addSelectionListener(new SelectionAdapter() {
-			public void widgetSelected(SelectionEvent e) {
-				listConnectors();
-				container.forceFocus();
-			}
-		});
+//		table = new Table(container, SWT.CHECK | SWT.BORDER | SWT.V_SCROLL | SWT.H_SCROLL);
+//		table.setEnabled(false);
+//		table.addListener(SWT.Selection, new Listener() {
+//			public void handleEvent(Event e) {
+//				setErrorMessage(null);
+//				((CloudConnectorImportWizard) getWizard()).getRemoveWizardPage().setPageComplete(true);
+//				setPageComplete(true);
+//			}
+//		});
+//		TableColumn tc1 = new TableColumn(table, SWT.LEFT);
+//		TableColumn tc2 = new TableColumn(table, SWT.CENTER);
+//		tc1.setText("Name");
+//		tc2.setText("Version");
+//		tc1.setWidth(390);
+//		tc2.setWidth(120);
+//		table.setHeaderVisible(true);
+//		table.setLayoutData(gridData);
+//		btnBrowse.addSelectionListener(new SelectionAdapter() {
+//			public void widgetSelected(SelectionEvent e) {
+//				listConnectors();
+//				container.forceFocus();
+//			}
+//		});
 		btnBrowse.setText("Connect");
 
 		fileSystem.addSelectionListener(new SelectionAdapter() {
@@ -232,6 +233,22 @@ public class ImportCloudConnectorWizardPage extends WizardPage {
 				btnBrowse1.setEnabled(false);
 			}
 		});
+		
+        Browser browser;
+        GridLayout gridLayout = new GridLayout();
+        gridLayout.numColumns = 1;
+        parent.setLayout(gridLayout);
+        browser = new Browser(container, SWT.NONE);
+        GridData data = new GridData();
+        data.horizontalAlignment = GridData.FILL;
+        data.horizontalSpan = 1;
+        data.grabExcessHorizontalSpace = true;
+        data.grabExcessVerticalSpace = false;
+        data.horizontalSpan = 3;
+//        data.verticalSpan = 7;
+        data.heightHint = 400;
+        browser.setLayoutData(data);
+        browser.setUrl("http://localhost:7774/welcome/store/test.html");
 	}
 
 	public static IProject getProject(Object obj){

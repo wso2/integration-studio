@@ -117,6 +117,8 @@ public class StoreMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
     protected Control[] availableMessageStoreElements;
     protected Control[] messageStoreElements;
     protected Control[] descriptionElements;
+    protected Composite messageStoreSubsection;
+
 	// End of user code 
 
 	// Start of user code  for onStoreSequence widgets declarations
@@ -154,14 +156,13 @@ public class StoreMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
 	 * 
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
-		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
-		Form form = scrolledForm.getForm();
+		Form form = widgetFactory.createForm(parent);
 		view = form.getBody();
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
 		createControls(widgetFactory, view);
-		return scrolledForm;
+		return form;
 	}
 
 	/**
@@ -175,9 +176,9 @@ public class StoreMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
 		CompositionSequence storeMediatorStep = new BindingCompositionSequence(propertiesEditionComponent);
 		CompositionStep propertiesStep = storeMediatorStep.addStep(EsbViewsRepository.StoreMediator.Properties.class);
 		propertiesStep.addStep(EsbViewsRepository.StoreMediator.Properties.specifyAs);
+		propertiesStep.addStep(EsbViewsRepository.StoreMediator.Properties.expression);
 		propertiesStep.addStep(EsbViewsRepository.StoreMediator.Properties.availableMessageStores);
 		propertiesStep.addStep(EsbViewsRepository.StoreMediator.Properties.messageStore);
-		propertiesStep.addStep(EsbViewsRepository.StoreMediator.Properties.expression);
 		propertiesStep.addStep(EsbViewsRepository.StoreMediator.Properties.onStoreSequence);
 		propertiesStep.addStep(EsbViewsRepository.StoreMediator.Properties.description);
 		propertiesStep.addStep(EsbViewsRepository.StoreMediator.Properties.commentsList);
@@ -201,10 +202,10 @@ public class StoreMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
 					return createReverseCheckbox(widgetFactory, parent);
 				}
 				if (key == EsbViewsRepository.StoreMediator.Properties.messageStore) {
-					return createMessageStoreText(widgetFactory, parent);
+					return createMessageStoreText(widgetFactory, messageStoreSubsection);
 				}
 				if (key == EsbViewsRepository.StoreMediator.Properties.availableMessageStores) {
-					return createAvailableMessageStoresText(widgetFactory, parent);
+					return createAvailableMessageStoresText(widgetFactory, messageStoreSubsection);
 				}
 				if (key == EsbViewsRepository.StoreMediator.Properties.specifyAs) {
 					return createSpecifyAsEMFComboViewer(widgetFactory, parent);
@@ -216,7 +217,7 @@ public class StoreMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
 				// End of user code
 				// Start of user code for expression addToPart creation
                 if (key == EsbViewsRepository.StoreMediator.Properties.expression) {
-                    return createExpressionWidget(widgetFactory, parent);
+                    return createExpressionWidget(widgetFactory, messageStoreSubsection);
                 }
 				// End of user code
 				return parent;
@@ -503,8 +504,9 @@ public class StoreMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
      * @generated NOT
      */
 	protected Composite createSpecifyAsEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
-		Control specifyAsLabel = createDescription(parent, EsbViewsRepository.StoreMediator.Properties.specifyAs, EsbMessages.StoreMediatorPropertiesEditionPart_SpecifyAsLabel);
-		specifyAs = new EMFComboViewer(parent);
+	    messageStoreSubsection = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent, "Message Store", true);
+		Control specifyAsLabel = createDescription(messageStoreSubsection, EsbViewsRepository.StoreMediator.Properties.specifyAs, EsbMessages.StoreMediatorPropertiesEditionPart_SpecifyAsLabel);
+		specifyAs = new EMFComboViewer(messageStoreSubsection);
 		specifyAs.setContentProvider(new ArrayContentProvider());
 		specifyAs.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData specifyAsData = new GridData(GridData.FILL_HORIZONTAL);
@@ -524,7 +526,7 @@ public class StoreMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
 
 		});
 		specifyAs.setID(EsbViewsRepository.StoreMediator.Properties.specifyAs);
-		Control specifyAsHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.StoreMediator.Properties.specifyAs, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		Control specifyAsHelp = FormUtils.createHelpButton(widgetFactory, messageStoreSubsection, propertiesEditionComponent.getHelpContent(EsbViewsRepository.StoreMediator.Properties.specifyAs, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createSpecifyAsEMFComboViewer
 		specifyAs.addSelectionChangedListener(new ISelectionChangedListener() {
 
@@ -832,26 +834,15 @@ public class StoreMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
             sequenceKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
         }
         String initValueExpression = sequenceKey.getKeyValue().isEmpty() ? "" : sequenceKey.getKeyValue();
-        onSequenceKeyText = widgetFactory.createText(parent, initValueExpression);
+        onSequenceKeyText = widgetFactory.createText(parent, initValueExpression, SWT.READ_ONLY);
         onSequenceKeyText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
         widgetFactory.paintBordersFor(parent);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
         onSequenceKeyText.setLayoutData(valueData);
-        onSequenceKeyText.addFocusListener(new FocusAdapter() {
-            /**
-             * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-             * 
-             */
+        onSequenceKeyText.addMouseListener(new MouseAdapter() {
+            
             @Override
-            @SuppressWarnings("synthetic-access")
-            public void focusLost(FocusEvent e) {
-            }
-
-            /**
-             * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
-             */
-            @Override
-            public void focusGained(FocusEvent e) {
+            public void mouseDown( MouseEvent event ) {
                 EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
                         SWT.NULL, sequenceKey, new ArrayList<NamedEntityDescriptor>());
                 dialog.open();
@@ -861,6 +852,29 @@ public class StoreMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
                                 EsbViewsRepository.StoreMediator.Properties.onStoreSequence,
                                 PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getOnStoreSequence()));
             }
+
+        });
+        
+        onSequenceKeyText.addKeyListener(new KeyListener() {
+                        
+            @Override
+            public void keyPressed(KeyEvent e) {
+            }
+            
+            @Override
+            public void keyReleased(KeyEvent e) {
+                if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                    EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
+                            SWT.NULL, sequenceKey, new ArrayList<NamedEntityDescriptor>());
+                    dialog.open();
+                    onSequenceKeyText.setText(sequenceKey.getKeyValue());
+                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                            StoreMediatorPropertiesEditionPartForm.this,
+                            EsbViewsRepository.StoreMediator.Properties.onStoreSequence, PropertiesEditionEvent.COMMIT,
+                            PropertiesEditionEvent.SET, null, getOnStoreSequence()));
+                }
+            }
+
         });
 
         EditingUtils.setID(onSequenceKeyText, EsbViewsRepository.StoreMediator.Properties.onStoreSequence);
@@ -881,7 +895,7 @@ public class StoreMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
             expression = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
         }
         String initValueExpression = expression.getPropertyValue().isEmpty() ? "" : expression.getPropertyValue();
-        expressionText = widgetFactory.createText(parent, initValueExpression);
+        expressionText = widgetFactory.createText(parent, initValueExpression, SWT.READ_ONLY);
         expressionText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
         widgetFactory.paintBordersFor(parent);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
@@ -900,11 +914,14 @@ public class StoreMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
                         
             @Override
             public void keyPressed(KeyEvent e) {
-                openExpressionWidgetNamespacedPropertyEditor(parent);
             }
             
             @Override
-            public void keyReleased(KeyEvent e) {}
+            public void keyReleased(KeyEvent e) {
+                if(!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                    openExpressionWidgetNamespacedPropertyEditor(parent);
+                }
+            }
             
         });
         
@@ -983,6 +1000,8 @@ public class StoreMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
     public void validate() {
         EEFPropertyViewUtil eu = new EEFPropertyViewUtil(view);
         eu.clearElements(new Composite[] {propertiesGroup});
+        eu.showEntry(new Control[] {messageStoreSubsection.getParent()}, false);
+        eu.clearElements(new Composite[] { messageStoreSubsection });
         eu.showEntry(specifyAsElements, false);
         switch (getSpecifyAs().getName()) {
         case "Value": {

@@ -141,6 +141,7 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
     protected Control[] completionMaxMessagesExpressionElements;
     protected Control[] aggregationExpressionElements;
     protected Control[] sequenceKeyElements;
+    protected Control[] descriptionElements;
     protected Composite propertiesGroup;
     protected Composite onCompleteGroup;
     protected Composite completeConditionSubGroup;
@@ -204,12 +205,12 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
 		propertiesStep.addStep(EsbViewsRepository.AggregateMediator.Properties.aggregateID);
 		propertiesStep.addStep(EsbViewsRepository.AggregateMediator.Properties.enclosingElementProperty);
 		propertiesStep.addStep(EsbViewsRepository.AggregateMediator.Properties.correlationExpression);
-        CompositionStep onCompleteStep = aggregateMediatorStep
-                .addStep(EsbViewsRepository.AggregateMediator.OnComplete.class);
-        onCompleteStep.addStep(EsbViewsRepository.AggregateMediator.OnComplete.aggregationExpression);
-        onCompleteStep.addStep(EsbViewsRepository.AggregateMediator.OnComplete.sequenceType);
-        onCompleteStep.addStep(EsbViewsRepository.AggregateMediator.OnComplete.sequenceKey);
-        propertiesStep.addStep(EsbViewsRepository.AggregateMediator.Properties.description);
+//        CompositionStep onCompleteStep = aggregateMediatorStep
+//                .addStep(EsbViewsRepository.AggregateMediator.OnComplete.class);
+		propertiesStep.addStep(EsbViewsRepository.AggregateMediator.OnComplete.aggregationExpression);
+		propertiesStep.addStep(EsbViewsRepository.AggregateMediator.OnComplete.sequenceType);
+		propertiesStep.addStep(EsbViewsRepository.AggregateMediator.OnComplete.sequenceKey);
+		propertiesStep.addStep(EsbViewsRepository.AggregateMediator.Properties.description);
         // End of user code
 		composer = new PartComposer(aggregateMediatorStep) {
 
@@ -249,7 +250,7 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
 					return createCompletionMaxMessagesValueText(widgetFactory, parent);
 				}
 				if (key == EsbViewsRepository.AggregateMediator.OnComplete.sequenceType) {
-					return createSequenceTypeEMFComboViewer(widgetFactory, parent);
+					return createSequenceTypeEMFComboViewer(widgetFactory, onCompleteGroup);
 				}
 				if (key == EsbViewsRepository.AggregateMediator.Properties.enclosingElementProperty) {
 					return createEnclosingElementPropertyText(widgetFactory, parent);
@@ -276,7 +277,7 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
 				// End of user code
 				// Start of user code for sequenceKey addToPart creation
                 if(key == EsbViewsRepository.AggregateMediator.OnComplete.sequenceKey) {
-                    return createsequenceKeyWidget(widgetFactory, parent);
+                    return createsequenceKeyWidget(widgetFactory, onCompleteGroup);
                 }
 
 				// End of user code
@@ -305,7 +306,7 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
 
 	
 	protected Composite createDescriptionText(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EsbViewsRepository.AggregateMediator.Properties.description, EsbMessages.AggregateMediatorPropertiesEditionPart_DescriptionLabel);
+		Control descriptionLabel = createDescription(parent, EsbViewsRepository.AggregateMediator.Properties.description, EsbMessages.AggregateMediatorPropertiesEditionPart_DescriptionLabel);
 		description = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		description.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -366,7 +367,7 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
 		EditingUtils.setEEFtype(description, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.AggregateMediator.Properties.description, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createDescriptionText
-
+        descriptionElements = new Control[] { descriptionLabel, description };
 		// End of user code
 		return parent;
 	}
@@ -1532,15 +1533,16 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
     }
 
     protected Composite createAggregationExpressionWidget(FormToolkit widgetFactory, final Composite parent) {
-        Control aggregationExpressionLabel = createDescription(parent, EsbViewsRepository.AggregateMediator.OnComplete.aggregationExpression, EsbMessages.AggregateMediatorPropertiesEditionPart_AggregationExpressionLabel);
-        widgetFactory.paintBordersFor(parent);
+        onCompleteGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent, "On Complete", true);
+        Control aggregationExpressionLabel = createDescription(onCompleteGroup, EsbViewsRepository.AggregateMediator.OnComplete.aggregationExpression, EsbMessages.AggregateMediatorPropertiesEditionPart_AggregationExpressionLabel);
+        widgetFactory.paintBordersFor(onCompleteGroup);
         if(aggregationExpression == null) {
             aggregationExpression = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
         } 
         String initValueExpression = aggregationExpression.getPropertyValue().isEmpty() ? "/default/expression" : aggregationExpression.getPropertyValue();
-        aggregationExpressionText = widgetFactory.createText(parent, initValueExpression, SWT.READ_ONLY);
+        aggregationExpressionText = widgetFactory.createText(onCompleteGroup, initValueExpression, SWT.READ_ONLY);
         aggregationExpressionText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
-        widgetFactory.paintBordersFor(parent);
+        widgetFactory.paintBordersFor(onCompleteGroup);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
         aggregationExpressionText.setLayoutData(valueData);
         
@@ -1581,7 +1583,7 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
         
         EditingUtils.setID(aggregationExpressionText, EsbViewsRepository.AggregateMediator.OnComplete.aggregationExpression);
         EditingUtils.setEEFtype(aggregationExpressionText, "eef::Text");
-        Control aggregationExpressionHelp =FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.AggregateMediator.OnComplete.aggregationExpression, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+        Control aggregationExpressionHelp =FormUtils.createHelpButton(widgetFactory, onCompleteGroup, propertiesEditionComponent.getHelpContent(EsbViewsRepository.AggregateMediator.OnComplete.aggregationExpression, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
         aggregationExpressionElements = new Control[] {aggregationExpressionLabel, aggregationExpressionText, aggregationExpressionHelp};
         return parent;
     }
@@ -1762,11 +1764,14 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
         epv.clearElements(new Composite[] { onCompleteGroup });
         epv.showEntry(new Control[] {completeConditionSubGroup.getParent()}, false);
         epv.clearElements(new Composite[] { completeConditionSubGroup });
+        epv.showEntry(new Control[] {onCompleteGroup.getParent()}, false);
+        epv.clearElements(new Composite[] { onCompleteGroup });
         epv.showEntry(aggregateIDElements, false);
         epv.showEntry(correlationExpressionElements, false);
         epv.showEntry(completionTimeoutElements, false);
         epv.showEntry(completionMinMessagesTypeElements, false);
         epv.showEntry(completionMaxMessagesTypeElements, false);
+        epv.showEntry(descriptionElements, false);
         if (getCompletionMinMessagesType().getName().equals(CompletionMessagesType.VALUE.getName())) {
 
             epv.showEntry(completionMinMessagesValueElements, false);

@@ -172,13 +172,14 @@ public class PayloadFactoryMediatorPropertiesEditionPartForm extends SectionProp
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		CompositionSequence payloadFactoryMediatorStep = new BindingCompositionSequence(propertiesEditionComponent);
 		CompositionStep propertiesStep = payloadFactoryMediatorStep.addStep(EsbViewsRepository.PayloadFactoryMediator.Properties.class);
+		// Start of user code
 		propertiesStep.addStep(EsbViewsRepository.PayloadFactoryMediator.Properties.payloadFormat);
 		propertiesStep.addStep(EsbViewsRepository.PayloadFactoryMediator.Properties.mediaType);
 		propertiesStep.addStep(EsbViewsRepository.PayloadFactoryMediator.Properties.payloadKey);
 		propertiesStep.addStep(EsbViewsRepository.PayloadFactoryMediator.Properties.payload);
 		propertiesStep.addStep(EsbViewsRepository.PayloadFactoryMediator.Properties.args);
 		propertiesStep.addStep(EsbViewsRepository.PayloadFactoryMediator.Properties.description);
-		
+		// End of user code
 		
 		composer = new PartComposer(payloadFactoryMediatorStep) {
 

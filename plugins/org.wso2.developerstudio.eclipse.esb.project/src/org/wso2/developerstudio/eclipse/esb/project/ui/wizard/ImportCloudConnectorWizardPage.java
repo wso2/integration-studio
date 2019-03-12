@@ -91,6 +91,7 @@ public class ImportCloudConnectorWizardPage extends WizardPage {
 	private static final String CONNECTOR_STORE_URL = "https://store.wso2.com";
 	private static final int TIMEOUT = 180000;
 	private static final String HTTP_SOCKET_TIMEOUT = "http.socket.timeout";
+	private static final String LOAD_CONNECTORS_PAGE = "http://localhost:7774/project/index.html";
 	
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
@@ -235,20 +236,19 @@ public class ImportCloudConnectorWizardPage extends WizardPage {
 		});
 		
         Browser browser;
-        GridLayout gridLayout = new GridLayout();
-        gridLayout.numColumns = 1;
-        parent.setLayout(gridLayout);
+//        GridLayout gridLayout = new GridLayout(1, false);
+//        browser.setLayout(gridLayout);
         browser = new Browser(container, SWT.NONE);
         GridData data = new GridData();
         data.horizontalAlignment = GridData.FILL;
-        data.horizontalSpan = 1;
+        data.verticalAlignment = SWT.TOP;
         data.grabExcessHorizontalSpace = true;
         data.grabExcessVerticalSpace = false;
         data.horizontalSpan = 3;
 //        data.verticalSpan = 7;
         data.heightHint = 400;
         browser.setLayoutData(data);
-        browser.setUrl("http://localhost:7774/welcome/store/test.html");
+        browser.setUrl(LOAD_CONNECTORS_PAGE);
 	}
 
 	public static IProject getProject(Object obj){

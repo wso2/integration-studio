@@ -18,8 +18,7 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: .,
  lib/gson-2.2.4.jar
-Export-Package: com.google.gson,
- org.wso2.developerstudio.eclipse.webui.core.composite;version="6.5.0",
+Export-Package: org.wso2.developerstudio.eclipse.webui.core.composite;version="6.5.0",
  org.wso2.developerstudio.eclipse.webui.core.editor;version="6.5.0",
  org.wso2.developerstudio.eclipse.webui.core.exception;version="6.5.0",
  org.wso2.developerstudio.eclipse.webui.core.util;version="6.5.0"

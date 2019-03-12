@@ -29,7 +29,6 @@ import org.eclipse.jetty.servlet.FilterHolder;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
-import org.wso2.developerstudio.eclipse.store.web.function.server.ConnectorFunctionServlet;
 import org.wso2.developerstudio.eclipse.templates.dashboard.Activator;
 import org.wso2.developerstudio.eclipse.templates.dashboard.web.function.server.FunctionServerConstants;
 import org.wso2.developerstudio.eclipse.templates.dashboard.web.function.server.GetWizardsFunctionServlet;
@@ -145,6 +144,5 @@ public class JettyServerHandler {
         // be
         wsContext.addServlet(OpenIDEFunctionServlet.class, "/openide");
         wsContext.addServlet(GetWizardsFunctionServlet.class, "/getwizards");
-        wsContext.addServlet(ConnectorFunctionServlet.class, "/connectors");
     }
 }

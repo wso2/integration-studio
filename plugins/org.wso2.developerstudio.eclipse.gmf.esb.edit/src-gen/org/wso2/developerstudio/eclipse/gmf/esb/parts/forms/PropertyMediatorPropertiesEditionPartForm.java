@@ -82,6 +82,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.PropertyMediatorPropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFNameSpacedPropertyEditorDialog;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
 import org.wso2.developerstudio.esb.form.editors.article.providers.NamespacedPropertyEditorDialog;
 
@@ -128,7 +129,9 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
     
     protected Composite propertiesGroup;
 	protected Text description;
-  // End of user code
+
+	protected Composite filterValuesSubPropertiesGroup;
+	// End of user code
 
 
 
@@ -159,14 +162,13 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
 	 * 
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
-		scrolledForm = widgetFactory.createScrolledForm(parent);
-		Form form = scrolledForm.getForm();
+		Form form = widgetFactory.createForm(parent);
 		view = form.getBody();
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
 		createControls(widgetFactory, view);
-		return scrolledForm;
+		return form;
 	}
 
 	/**
@@ -179,7 +181,9 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		CompositionSequence propertyMediatorStep = new BindingCompositionSequence(propertiesEditionComponent);
 		CompositionStep propertiesStep = propertyMediatorStep.addStep(EsbViewsRepository.PropertyMediator.Properties.class);
+		// Start of user code 
 		propertiesStep.addStep(EsbViewsRepository.PropertyMediator.Properties.propertyName);
+		propertiesStep.addStep(EsbViewsRepository.PropertyMediator.Properties.newPropertyName);
 		propertiesStep.addStep(EsbViewsRepository.PropertyMediator.Properties.propertyDataType);
 		propertiesStep.addStep(EsbViewsRepository.PropertyMediator.Properties.propertyAction);
 		propertiesStep.addStep(EsbViewsRepository.PropertyMediator.Properties.propertyScope);
@@ -192,14 +196,15 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
 		propertiesStep.addStep(EsbViewsRepository.PropertyMediator.Properties.oM);
 		propertiesStep.addStep(EsbViewsRepository.PropertyMediator.Properties.valueStringPattern);
 		propertiesStep.addStep(EsbViewsRepository.PropertyMediator.Properties.valueStringCapturingGroup);
-		propertiesStep.addStep(EsbViewsRepository.PropertyMediator.Properties.newPropertyName);
         propertiesStep.addStep(EsbViewsRepository.PropertyMediator.Properties.valueExpression);
         propertiesStep.addStep(EsbViewsRepository.PropertyMediator.Properties.description);
+        // End of user code
 		
 		composer = new PartComposer(propertyMediatorStep) {
 
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
+			    // Start of user code for components addToPart creation
 				if (key == EsbViewsRepository.PropertyMediator.Properties.class) {
 					return createPropertiesGroup(widgetFactory, parent);
 				}
@@ -219,35 +224,34 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
 					return createValueTypeEMFComboViewer(widgetFactory, parent);
 				}
 				if (key == EsbViewsRepository.PropertyMediator.Properties.value) {
-					return createValueText(widgetFactory, parent);
+					return createValueText(widgetFactory, filterValuesSubPropertiesGroup);
 				}
 				if (key == EsbViewsRepository.PropertyMediator.Properties.expression) {
-					return createExpressionText(widgetFactory, parent);
+					return createExpressionText(widgetFactory, filterValuesSubPropertiesGroup);
 				}
 				if (key == EsbViewsRepository.PropertyMediator.Properties.namespacePrefix) {
-					return createNamespacePrefixText(widgetFactory, parent);
+					return createNamespacePrefixText(widgetFactory, filterValuesSubPropertiesGroup);
 				}
 				if (key == EsbViewsRepository.PropertyMediator.Properties.namespace) {
-					return createNamespaceText(widgetFactory, parent);
+					return createNamespaceText(widgetFactory, filterValuesSubPropertiesGroup);
 				}
 				if (key == EsbViewsRepository.PropertyMediator.Properties.boolean_) {
-					return createBoolean_Checkbox(widgetFactory, parent);
+					return createBoolean_Checkbox(widgetFactory, filterValuesSubPropertiesGroup);
 				}
 				if (key == EsbViewsRepository.PropertyMediator.Properties.oM) {
-					return createOMText(widgetFactory, parent);
+					return createOMText(widgetFactory, filterValuesSubPropertiesGroup);
 				}
 				if (key == EsbViewsRepository.PropertyMediator.Properties.valueStringPattern) {
-					return createValueStringPatternText(widgetFactory, parent);
+					return createValueStringPatternText(widgetFactory, filterValuesSubPropertiesGroup);
 				}
 				if (key == EsbViewsRepository.PropertyMediator.Properties.valueStringCapturingGroup) {
-					return createValueStringCapturingGroupText(widgetFactory, parent);
+					return createValueStringCapturingGroupText(widgetFactory, filterValuesSubPropertiesGroup);
 				}
 				if (key == EsbViewsRepository.PropertyMediator.Properties.newPropertyName) {
 					return createNewPropertyNameText(widgetFactory, parent);
 				}
-				// Start of user code for valueExpression addToPart creation
 				if(key == EsbViewsRepository.PropertyMediator.Properties.valueExpression) {
-				    return createValueExpressionWidget(widgetFactory, parent);
+				    return createValueExpressionWidget(widgetFactory, filterValuesSubPropertiesGroup);
 				}
 				if(key == EsbViewsRepository.PropertyMediator.Properties.description) {
                     return createDescriptionText(widgetFactory, parent);
@@ -263,15 +267,18 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
 	 * @generated NOT
 	 */
 	protected Composite createPropertiesGroup(FormToolkit widgetFactory, final Composite parent) {
-		GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
-		propertiesSectionData.horizontalSpan = 3;
-		parent.setLayoutData(propertiesSectionData);
-		propertiesGroup = widgetFactory.createComposite(parent);
-		GridLayout propertiesGroupLayout = new GridLayout();
-		propertiesGroupLayout.makeColumnsEqualWidth = true;
-		propertiesGroupLayout.numColumns = 3;
-		propertiesGroup.setLayout(propertiesGroupLayout);
-		return propertiesGroup;
+	    Section propertiesSection = widgetFactory.createSection(parent,
+                Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
+	    propertiesSection.setText(EsbMessages.PropertyMediatorPropertiesEditionPart_PropertiesGroupLabel);
+	    GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
+	    propertiesSectionData.horizontalSpan = 3;
+	    propertiesSection.setLayoutData(propertiesSectionData);
+	    propertiesGroup = widgetFactory.createComposite(propertiesSection);
+	    GridLayout propertiesGroupLayout = new GridLayout();
+	    propertiesGroupLayout.numColumns = 3;
+	    propertiesGroup.setLayout(propertiesGroupLayout);
+	    propertiesSection.setClient(propertiesGroup);
+	    return propertiesGroup;
 	}
 
 	/**
@@ -456,8 +463,9 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
      * @generated NOT
      */	
 	protected Composite createValueTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
-		Control valueTypeLabel = createDescription(parent, EsbViewsRepository.PropertyMediator.Properties.valueType, EsbMessages.PropertyMediatorPropertiesEditionPart_ValueTypeLabel);
-		valueType = new EMFComboViewer(parent);
+	    filterValuesSubPropertiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent, "Value", true);
+		Control valueTypeLabel = createDescription(filterValuesSubPropertiesGroup, EsbViewsRepository.PropertyMediator.Properties.valueType, EsbMessages.PropertyMediatorPropertiesEditionPart_ValueTypeLabel);
+		valueType = new EMFComboViewer(filterValuesSubPropertiesGroup);
 		valueType.setContentProvider(new ArrayContentProvider());
 		valueType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData valueTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -477,7 +485,7 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
 
 		});
 		valueType.setID(EsbViewsRepository.PropertyMediator.Properties.valueType);
-		Control valueTypeHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PropertyMediator.Properties.valueType, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		Control valueTypeHelp = FormUtils.createHelpButton(widgetFactory, filterValuesSubPropertiesGroup, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PropertyMediator.Properties.valueType, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createValueTypeEMFComboViewer
 		valueTypeElements  = new Control[] {valueTypeLabel, valueType.getCombo(), valueTypeHelp};
         valueType.addSelectionChangedListener(new ISelectionChangedListener() {
@@ -1763,7 +1771,7 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
             valueExpression = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
         } 
 	    String initValueExpression = valueExpression.getPropertyValue().isEmpty() ? "" : valueExpression.getPropertyValue();
-	    valueExpressionText = widgetFactory.createText(parent, initValueExpression);
+	    valueExpressionText = widgetFactory.createText(parent, initValueExpression, SWT.READ_ONLY);
 	    valueExpressionText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 	    widgetFactory.paintBordersFor(parent);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
@@ -1779,14 +1787,16 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
         });
         
         valueExpressionText.addKeyListener(new KeyListener() {
-                        
-            @Override
-            public void keyPressed(KeyEvent e) {
-                openValueExpressionWidgetNamespacedPropertyEditor(parent);
-            }
             
             @Override
-            public void keyReleased(KeyEvent e) {}
+            public void keyReleased(KeyEvent e) {
+                if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                    openValueExpressionWidgetNamespacedPropertyEditor(parent);
+                }
+            }
+                        
+            @Override
+            public void keyPressed(KeyEvent e) {}
             
         });
         
@@ -1809,34 +1819,39 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
     }
 	
 	public void validate() {
-	    clearElements();
-	    showEntry(propertyNameElements, false);
-	    //System.out.println("ADoooooooo " + getPropertyName().getName());
+	    EEFPropertyViewUtil viewUtil = new EEFPropertyViewUtil(view);
+	    
+	    viewUtil.clearElements(new Composite[] { propertiesGroup });
+        
+        viewUtil.showEntry(new Control[] { filterValuesSubPropertiesGroup.getParent() }, false);
+        viewUtil.clearElements(new Composite[] { filterValuesSubPropertiesGroup });
+
+        viewUtil.showEntry(propertyNameElements, false);
 	    if(getPropertyName().getName().equals(PropertyName.NEW_PROPERTY_NAME.getName())) {
-	        showEntry(newPropertyNameElements, false);
+	        viewUtil.showEntry(newPropertyNameElements, false);
 	    }
-	    showEntry(propertyActionElements, false);
+	    viewUtil.showEntry(propertyActionElements, false);
 	    if(getPropertyAction().getName().equals(PropertyAction.SET.getName())) {
-	        showEntry(valueTypeElements, false);
-	        showEntry(propertyDataTypeElements, false);
+	        viewUtil.showEntry(valueTypeElements, false);
+	        viewUtil.showEntry(propertyDataTypeElements, false);
 	        if(getValueType().getName().equals(PropertyValueType.LITERAL.getName())) {
 	            switch (getPropertyDataType().getName()) {
                     case "STRING": {
-                        showEntry(valueElements, false);
-                        showEntry(valueStringPatternElements, false);
-                        showEntry(valueStringCapturingGroupElements, false);
+                        viewUtil.showEntry(valueElements, false);
+                        viewUtil.showEntry(valueStringPatternElements, false);
+                        viewUtil.showEntry(valueStringCapturingGroupElements, false);
                         break;
                     }
                     default: {
-                        showEntry(valueElements, false);
+                        viewUtil.showEntry(valueElements, false);
                     }
 	            }
 	        } else {
-	            showEntry(valueExpressionElements, false);
+	            viewUtil.showEntry(valueExpressionElements, false);
                 switch (getPropertyDataType().getName()) {
                 case "STRING": {
-                    showEntry(valueStringPatternElements, false);
-                    showEntry(valueStringCapturingGroupElements, false);
+                    viewUtil.showEntry(valueStringPatternElements, false);
+                    viewUtil.showEntry(valueStringCapturingGroupElements, false);
                     break;
                 }
                 default:
@@ -1844,42 +1859,11 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
                 }
 	        }
 	    }
-	    showEntry(propertyScopeElements, false);
-	    showEntry(descriptionElements, false);
+	    viewUtil.showEntry(propertyScopeElements, false);
+	    viewUtil.showEntry(descriptionElements, false);
         view.layout(true,true);
 	}
-	
-	public void clearElements() {
-	    hideEntry(propertiesGroup.getChildren(), true);
-	}
-	
-	
-	
-	public void hideEntry(Control controls[], boolean layout) {
-	    //view.getChildren();
-	    for(Control control : controls) {
-	        //null check and type check
-	        if(control.getLayoutData()!= null && control.getLayoutData() instanceof GridData) {
-    	        ((GridData)control.getLayoutData()).exclude=true;
-    	        control.setVisible(false);
-	        }
-	    }
-	    if(layout) {
-	        view.layout(true,true);
-	    }
-	}
-	
-	   
-    public void showEntry(Control controls[], boolean layout) {
-        for(Control control : controls) {
-          //null check and type check
-            ((GridData)control.getLayoutData()).exclude=false;
-            control.setVisible(true);
-        }
-        if(layout) {
-            view.layout(true,true);
-        }
-    }
+
 	// End of user code
 
 

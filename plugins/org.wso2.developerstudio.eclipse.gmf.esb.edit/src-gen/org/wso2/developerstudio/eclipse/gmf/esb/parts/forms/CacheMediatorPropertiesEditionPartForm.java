@@ -44,6 +44,7 @@ import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.KeyListener;
 import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -158,14 +159,13 @@ public class CacheMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
      * 
      */
     public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
-        ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
-        Form form = scrolledForm.getForm();
+        Form form = widgetFactory.createForm(parent);
         view = form.getBody();
         GridLayout layout = new GridLayout();
         layout.numColumns = 3;
         view.setLayout(layout);
         createControls(widgetFactory, view);
-        return scrolledForm;
+        return form;
     }
 
     /**
@@ -1837,13 +1837,13 @@ public class CacheMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
     // Start of user code additional methods
     protected Composite createSequenceKey(FormToolkit widgetFactory, final Composite parent) {
         Control sequenceKeyLabel = createDescription(parent, EsbViewsRepository.CacheMediator.OnCacheHit.sequenceKey,
-                EsbMessages.CacheMediatorPropertiesEditionPart_SequenceTypeLabel);
+                EsbMessages.CacheMediatorPropertiesEditionPart_SequenceKeyLabel);
         widgetFactory.paintBordersFor(parent);
         if (sequenceKey == null) {
             sequenceKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
         }
         String initSequenceKey = sequenceKey.getKeyValue().isEmpty() ? "" : sequenceKey.getKeyValue();
-        sequenceKeyText = widgetFactory.createText(parent, initSequenceKey);
+        sequenceKeyText = widgetFactory.createText(parent, initSequenceKey, SWT.READ_ONLY);
         sequenceKeyText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
         widgetFactory.paintBordersFor(parent);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
@@ -1873,6 +1873,28 @@ public class CacheMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
 
             }
         });
+        
+        sequenceKeyText.addKeyListener(new KeyListener() {
+            
+            @Override
+            public void keyReleased(KeyEvent e) {
+                if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                    EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(parent.getShell(),
+                            SWT.NULL, sequenceKey, new ArrayList<NamedEntityDescriptor>());
+                    dialog.open();
+                    sequenceKeyText.setText(sequenceKey.getKeyValue());
+                    propertiesEditionComponent
+                            .firePropertiesChanged(new PropertiesEditionEvent(CacheMediatorPropertiesEditionPartForm.this,
+                                    EsbViewsRepository.CacheMediator.OnCacheHit.sequenceKey, PropertiesEditionEvent.COMMIT,
+                                    PropertiesEditionEvent.SET, null, getSequenceKey()));
+                }
+            }
+            
+            @Override
+            public void keyPressed(KeyEvent e) {}
+            
+        });
+        
         EditingUtils.setID(sequenceKeyText, EsbViewsRepository.CacheMediator.OnCacheHit.sequenceKey);
         EditingUtils.setEEFtype(sequenceKeyText, "eef::Text");
         Control sequenceKeyHelp = FormUtils
@@ -1928,6 +1950,10 @@ public class CacheMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
             eu.showEntry(enableCacheControlElements, false);
             eu.showEntry(includeAgeHeaderElements, false);
             eu.showEntry(hashGeneratorElements, false);
+            
+            ((GridData) implementationSection.getLayoutData()).exclude = false;
+            ((GridData) onCacheHitSection.getLayoutData()).exclude = false;
+            ((GridData) protocolSection.getLayoutData()).exclude = false;
 
         } else {
             implementationSection.setVisible(false);
@@ -1936,7 +1962,6 @@ public class CacheMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
             ((GridData) onCacheHitSection.getLayoutData()).exclude = true;
             protocolSection.setVisible(false);
             ((GridData) protocolSection.getLayoutData()).exclude = true;
-
         }
 
         eu.showEntry(descriptionElements, false);

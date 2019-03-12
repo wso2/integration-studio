@@ -1,5 +1,5 @@
 /*
-*  Copyright (c) 2018, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+*  Copyright (c) 2019, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
 *
 *  WSO2 Inc. licenses this file to you under the Apache License,
 *  Version 2.0 (the "License"); you may not use this file except
@@ -30,26 +30,32 @@ import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.ui.IStartup;
 import org.osgi.framework.Bundle;
 import org.wso2.developerstudio.eclipse.esb.project.Activator;
-import org.wso2.developerstudio.eclipse.esb.project.servlets.ConnectorFunctionServlet;
+import org.wso2.developerstudio.eclipse.esb.project.servlets.ConnectorServlet;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.templates.dashboard.handlers.JettyServerHandler;
 
+/**
+ * Binds new servlets to paths of the jetty server
+ * 
+ */
 public class ConnectorStoreEarlyStartupHandler implements IStartup {
 
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
     private static final String CONTEXT_PATH = "/project";
     private static final String SERVLET_PATH = "/connectors";
     private static final String WEB_APP_LOCATION = "HTMLPages";
-    
-    /* (non-Javadoc)
+
+    /*
+     * (non-Javadoc)
+     * 
      * @see org.eclipse.ui.IStartup#earlyStartup()
      */
     @Override
     public void earlyStartup() {
         JettyServerHandler jettyServerHandler = JettyServerHandler.getInstance();
 
-        // Registering servlet context handler of datamapper test window
+        // Registering servlet context handler of store connectors window
         ServletContextHandler connectorsContext = new ServletContextHandler();
 
         // Context path where static webpages are hosted
@@ -64,22 +70,23 @@ public class ConnectorStoreEarlyStartupHandler implements IStartup {
         }
         connectorsContext.setContextPath(CONTEXT_PATH);
 
-        // Adding Default servlet and Registry reader servlet
-        connectorsContext.addServlet(ConnectorFunctionServlet.class, SERVLET_PATH);
+        // Adding Default servlet and Connector servlet
+        connectorsContext.addServlet(ConnectorServlet.class, SERVLET_PATH);
         connectorsContext.addServlet(DefaultServlet.class, "/");
         connectorsContext.setResourceBase(webAppPath);
+        
         // Registering the handler in the jetty server
         jettyServerHandler.getHandlerCollection().addHandler(connectorsContext);
         try {
             connectorsContext.start();
         } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            log.error("Failed to start connectors context", e);
         }
     }
-    
+
     /**
      * This method returns the current web app path(Which is inside the bundle)
+     * 
      * @return web app folder absolute path
      * @throws URISyntaxException
      * @throws IOException

@@ -58,12 +58,13 @@ import net.lingala.zip4j.exception.ZipException;
 /**
  * Handles functions related to connectors
  */
-public class ConnectorFunctionServletUtil {
-    
+public class ConnectorServletUtil {
+
     private static final int BUFFER_SIZE = 4096;
     private static final String DIR_DOT_METADATA = ".metadata";
     private static final String DIR_CONNECTORS = ".Connectors";
-    
+    private static final String STORE_URL = "https://store.wso2.com";
+
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
     /**
@@ -76,8 +77,7 @@ public class ConnectorFunctionServletUtil {
         List<Connector> connectorList = new ArrayList<>();
         Object connectorInfo;
         try {
-            connectorInfo = ConnectorStore.getConnectorInfo(getHttpClient(),
-                    "https://store.wso2.com", page);
+            connectorInfo = ConnectorStore.getConnectorInfo(getHttpClient(), STORE_URL, page);
             if (connectorInfo instanceof List<?>) {
                 List<Connector> tmpList = (List<Connector>) connectorInfo;
                 while (tmpList != null && !tmpList.isEmpty()) {
@@ -93,48 +93,25 @@ public class ConnectorFunctionServletUtil {
         } catch (KeyManagementException | IOException | NoSuchAlgorithmException e) {
             log.error("Error while listing connectors : ", e);
         }
-        
+
         return new Gson().toJson(connectorList);
     }
-    
-    private HttpClient getHttpClient() throws NoSuchAlgorithmException, KeyManagementException {
-        HttpClient httpclient = new HttpClient();
-        httpclient.getParams().setIntParameter("http.socket.timeout", 180000);
-        SSLContext ctx;
-        ctx = SSLContext.getInstance("TLS");
-        ctx.init(new KeyManager[0], new TrustManager[] { new DefaultTrustManager() }, new SecureRandom());
-        SSLContext.setDefault(ctx);
-        return httpclient;
-    }
-    
-    private static class DefaultTrustManager implements X509TrustManager {
 
-        @Override
-        public void checkClientTrusted(X509Certificate[] arg0, String arg1) throws CertificateException {
-        }
-
-        @Override
-        public void checkServerTrusted(X509Certificate[] arg0, String arg1) throws CertificateException {
-        }
-
-        @Override
-        public X509Certificate[] getAcceptedIssuers() {
-            return null;
-        }
-    }
-    
+    /**
+     * Download the specified connector and update the project
+     * 
+     * @param downloadLink - where to locate the connector
+     * @return true if the connector was successfully downloaded and false if not
+     * 
+     */
     public boolean downloadConnectorAndUpdateProjects(String downloadLink) {
         String zipDestination = null;
-        System.out.println("Download Link");
-        System.out.println(downloadLink);
         try {
             URL url = new URL(downloadLink);
             String[] segments = downloadLink.split("/");
             String zipFileName = segments[segments.length - 1];
             String parentDirectoryPath = ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString()
                     + File.separator + DIR_DOT_METADATA + File.separator + DIR_CONNECTORS;
-            System.out.println("Parent Directory Path");
-            System.out.println(parentDirectoryPath);
             File parentDirectory = new File(parentDirectoryPath);
             if (!parentDirectory.exists()) {
                 parentDirectory.mkdir();
@@ -165,6 +142,13 @@ public class ConnectorFunctionServletUtil {
         return false;
     }
 
+    /**
+     * Extract the connector and update the project
+     * 
+     * @param source
+     * @throws ZipException
+     * @throws CoreException
+     */
     private void updateProjects(String source) throws ZipException, CoreException {
         ZipFile zipFile = new ZipFile(source);
         String[] segments = source.split(Pattern.quote(File.separator));
@@ -182,9 +166,42 @@ public class ConnectorFunctionServletUtil {
         if (updateGMFPlugin != null) {
             updateGMFPlugin.updateOpenedEditors();
         }
-        /*
-         * Refresh the project.
-         */
-        // storeWizardPage.getSelectedProject().refreshLocal(IResource.DEPTH_INFINITE, null);
     }
+
+    /**
+     * Get HTTP Client instance
+     * 
+     * @return
+     * @throws NoSuchAlgorithmException
+     * @throws KeyManagementException
+     */
+    private HttpClient getHttpClient() throws NoSuchAlgorithmException, KeyManagementException {
+        HttpClient httpclient = new HttpClient();
+        httpclient.getParams().setIntParameter("http.socket.timeout", 180000);
+        SSLContext ctx;
+        ctx = SSLContext.getInstance("TLS");
+        ctx.init(new KeyManager[0], new TrustManager[] { new DefaultTrustManager() }, new SecureRandom());
+        SSLContext.setDefault(ctx);
+        return httpclient;
+    }
+
+    /**
+     * Trust Manager class
+     */
+    private static class DefaultTrustManager implements X509TrustManager {
+
+        @Override
+        public void checkClientTrusted(X509Certificate[] arg0, String arg1) throws CertificateException {
+        }
+
+        @Override
+        public void checkServerTrusted(X509Certificate[] arg0, String arg1) throws CertificateException {
+        }
+
+        @Override
+        public X509Certificate[] getAcceptedIssuers() {
+            return null;
+        }
+    }
+
 }

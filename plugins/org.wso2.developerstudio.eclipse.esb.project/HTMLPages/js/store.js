@@ -13,7 +13,6 @@ var connectorNodeArray;
 getConnectors();
 function loadConnectorNodes(connectorsString) {
 	var connectors = JSON.parse(connectorsString);
-	console.log(connectors);
 	var connectorNodes = [];
 	connectorNodeArray = connectors;
 	drawConnectorNodes();
@@ -22,7 +21,7 @@ function loadConnectorNodes(connectorsString) {
 function drawConnectorNodes() {
 	connectorNodeArray.forEach(function(connector) {
 		templateNode = createTemplateNode(connector.id, connector.attributes.overview_version,
-				connector.attributes.overview_name, connector.attributes.overview_downloadlink,
+				connector.attributes.overview_name, connector.attributes.overview_description,
 				connector.image);
 		$("#connector-nodes").append(templateNode);
 		$("#" + connector.id).click(function() {

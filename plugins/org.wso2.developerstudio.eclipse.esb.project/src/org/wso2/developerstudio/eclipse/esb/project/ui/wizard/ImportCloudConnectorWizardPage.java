@@ -111,72 +111,37 @@ public class ImportCloudConnectorWizardPage extends WizardPage {
 		final Composite container = new Composite(parent, SWT.NULL);
 		setControl(container);
 		container.setLayout(new GridLayout(3, false));
-		fileSystem = new Button(container, SWT.RADIO);
-		fileSystem.setText("Connector location");
-		fileSystem.setSelection(true);
+		
 
-		txtCloudConnectorPath = new Text(container, SWT.BORDER);
-		GridData gd_txtPath1 = new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1);
-		gd_txtPath1.widthHint = 300;
-		txtCloudConnectorPath.setLayoutData(gd_txtPath1);
-		txtCloudConnectorPath.addModifyListener(new ModifyListener() {
-
-			public void modifyText(ModifyEvent evt) {
-				setCloudConnectorPath(txtCloudConnectorPath.getText());
-				txtCloudConnectorPath.setFocus();
-				int charcount = txtCloudConnectorPath.getCharCount();
-				txtCloudConnectorPath.setSelection(charcount);
-				validate();
-			}
-		});
-		if (cloudConnectorPath != null) {
-			txtCloudConnectorPath.setText(cloudConnectorPath);
-		} else {
-			setPageComplete(false);
-		}
-
-		final Button btnBrowse1 = new Button(container, SWT.NONE);
-		btnBrowse1.addSelectionListener(new SelectionAdapter() {
-
-			public void widgetSelected(SelectionEvent e) {
-				FileDialog fileDlg = new FileDialog(getShell());
-				String fileName = fileDlg.open();
-				if (fileName != null) {
-					txtCloudConnectorPath.setText(fileName);
-				}
-				validate();
-			}
-		});
-		btnBrowse1.setText("Browse..");
-
-		connectorStore = new Button(container, SWT.RADIO);
-		connectorStore.setText("Connector Store location");
-		txtConnectorStoreURL = new Text(container, SWT.BORDER);
-		GridData gd_txtPath = new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1);
-		gd_txtPath.widthHint = 300;
-		txtConnectorStoreURL.setLayoutData(gd_txtPath);
-		txtConnectorStoreURL.addModifyListener(new ModifyListener() {
-
-			public void modifyText(ModifyEvent evt) {
-				setCloudConnectorPath(txtConnectorStoreURL.getText());
-				txtConnectorStoreURL.setFocus();
-				int charcount = txtConnectorStoreURL.getCharCount();
-				txtConnectorStoreURL.setSelection(charcount);
-				setErrorMessage(null);
-				((CloudConnectorImportWizard) getWizard()).getRemoveWizardPage().setPageComplete(true);
-				setPageComplete(true);
-				// validate();
-			}
-		});
-		if (cloudConnectorPath != null) {
-			txtConnectorStoreURL.setText(cloudConnectorPath);
-		} else {
-			// setPageComplete(false);
-		}
-		txtConnectorStoreURL.setEnabled(false);
-
-		final Button btnBrowse = new Button(container, SWT.NONE);
-		btnBrowse.setEnabled(false);
+//		connectorStore = new Button(container, SWT.RADIO);
+//		connectorStore.setText("Connector Store location");
+//		txtConnectorStoreURL = new Text(container, SWT.BORDER);
+//		GridData gd_txtPath = new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1);
+//		gd_txtPath.widthHint = 300;
+//		txtConnectorStoreURL.setLayoutData(gd_txtPath);
+//		txtConnectorStoreURL.addModifyListener(new ModifyListener() {
+//
+//			public void modifyText(ModifyEvent evt) {
+//				setCloudConnectorPath(txtConnectorStoreURL.getText());
+//				txtConnectorStoreURL.setFocus();
+//				int charcount = txtConnectorStoreURL.getCharCount();
+//				txtConnectorStoreURL.setSelection(charcount);
+//				setErrorMessage(null);
+//				((CloudConnectorImportWizard) getWizard()).getRemoveWizardPage().setPageComplete(true);
+//				setPageComplete(true);
+//				// validate();
+//			}
+//		});
+//		if (cloudConnectorPath != null) {
+//			txtConnectorStoreURL.setText(cloudConnectorPath);
+//		} else {
+//			// setPageComplete(false);
+//		}
+//		txtConnectorStoreURL.setEnabled(false);
+//
+//		final Button btnBrowse = new Button(container, SWT.NONE);
+//		btnBrowse.setEnabled(false);
+		
 		GridData gridData = new GridData();
 		gridData.horizontalAlignment = GridData.FILL;
 		gridData.verticalAlignment = GridData.FILL;
@@ -185,55 +150,23 @@ public class ImportCloudConnectorWizardPage extends WizardPage {
 		gridData.grabExcessVerticalSpace = true;
 		gridData.heightHint = 400;
 		gridData.widthHint = 250;
+		
+		
+//		btnBrowse.setText("Connect");
 
-//		table = new Table(container, SWT.CHECK | SWT.BORDER | SWT.V_SCROLL | SWT.H_SCROLL);
-//		table.setEnabled(false);
-//		table.addListener(SWT.Selection, new Listener() {
-//			public void handleEvent(Event e) {
-//				setErrorMessage(null);
-//				((CloudConnectorImportWizard) getWizard()).getRemoveWizardPage().setPageComplete(true);
-//				setPageComplete(true);
-//			}
-//		});
-//		TableColumn tc1 = new TableColumn(table, SWT.LEFT);
-//		TableColumn tc2 = new TableColumn(table, SWT.CENTER);
-//		tc1.setText("Name");
-//		tc2.setText("Version");
-//		tc1.setWidth(390);
-//		tc2.setWidth(120);
-//		table.setHeaderVisible(true);
-//		table.setLayoutData(gridData);
-//		btnBrowse.addSelectionListener(new SelectionAdapter() {
+
+
+//		connectorStore.addSelectionListener(new SelectionAdapter() {
 //			public void widgetSelected(SelectionEvent e) {
-//				listConnectors();
-//				container.forceFocus();
+//				txtConnectorStoreURL.setText(CONNECTOR_STORE_URL);
+//				txtConnectorStoreURL.setEnabled(true);
+//				btnBrowse.setEnabled(true);
+//				table.setEnabled(true);
+//
+//				txtCloudConnectorPath.setEnabled(false);
+//				btnBrowse1.setEnabled(false);
 //			}
 //		});
-		btnBrowse.setText("Connect");
-
-		fileSystem.addSelectionListener(new SelectionAdapter() {
-			public void widgetSelected(SelectionEvent e) {
-				txtCloudConnectorPath.setEnabled(true);
-				btnBrowse1.setEnabled(true);
-
-				txtConnectorStoreURL.setText("");
-				txtConnectorStoreURL.setEnabled(false);
-				btnBrowse.setEnabled(false);
-				table.setEnabled(false);
-			}
-		});
-
-		connectorStore.addSelectionListener(new SelectionAdapter() {
-			public void widgetSelected(SelectionEvent e) {
-				txtConnectorStoreURL.setText(CONNECTOR_STORE_URL);
-				txtConnectorStoreURL.setEnabled(true);
-				btnBrowse.setEnabled(true);
-				table.setEnabled(true);
-
-				txtCloudConnectorPath.setEnabled(false);
-				btnBrowse1.setEnabled(false);
-			}
-		});
 		
         Browser browser;
 //        GridLayout gridLayout = new GridLayout(1, false);
@@ -249,6 +182,56 @@ public class ImportCloudConnectorWizardPage extends WizardPage {
         data.heightHint = 400;
         browser.setLayoutData(data);
         browser.setUrl(LOAD_CONNECTORS_PAGE);
+        
+        fileSystem = new Button(container, SWT.RADIO);
+        fileSystem.setText("Connector location");
+        fileSystem.setSelection(true);
+
+        txtCloudConnectorPath = new Text(container, SWT.BORDER);
+        GridData gd_txtPath1 = new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1);
+        gd_txtPath1.widthHint = 300;
+        txtCloudConnectorPath.setLayoutData(gd_txtPath1);
+        txtCloudConnectorPath.addModifyListener(new ModifyListener() {
+
+            public void modifyText(ModifyEvent evt) {
+                setCloudConnectorPath(txtCloudConnectorPath.getText());
+                txtCloudConnectorPath.setFocus();
+                int charcount = txtCloudConnectorPath.getCharCount();
+                txtCloudConnectorPath.setSelection(charcount);
+                validate();
+            }
+        });
+        if (cloudConnectorPath != null) {
+            txtCloudConnectorPath.setText(cloudConnectorPath);
+        } else {
+            setPageComplete(false);
+        }
+
+        final Button btnBrowse1 = new Button(container, SWT.NONE);
+        btnBrowse1.addSelectionListener(new SelectionAdapter() {
+
+            public void widgetSelected(SelectionEvent e) {
+                FileDialog fileDlg = new FileDialog(getShell());
+                String fileName = fileDlg.open();
+                if (fileName != null) {
+                    txtCloudConnectorPath.setText(fileName);
+                }
+                validate();
+            }
+        });
+        btnBrowse1.setText("Browse..");
+        
+        fileSystem.addSelectionListener(new SelectionAdapter() {
+            public void widgetSelected(SelectionEvent e) {
+                txtCloudConnectorPath.setEnabled(true);
+                btnBrowse1.setEnabled(true);
+
+                txtConnectorStoreURL.setText("");
+                txtConnectorStoreURL.setEnabled(false);
+//                btnBrowse.setEnabled(false);
+                table.setEnabled(false);
+            }
+        });
 	}
 
 	public static IProject getProject(Object obj){

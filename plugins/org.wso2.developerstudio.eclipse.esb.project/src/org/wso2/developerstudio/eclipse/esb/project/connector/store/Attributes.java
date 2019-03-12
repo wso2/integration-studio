@@ -21,6 +21,7 @@ public class Attributes {
 	private String overview_version;
 	private String overview_downloadlink;
 	private String images_thumbnail;
+	private String overview_description;
 
 	public String getImages_thumbnail() {
 		return images_thumbnail;
@@ -54,4 +55,14 @@ public class Attributes {
 		this.overview_downloadlink = overview_downloadlink;
 	}
 
+    public String getOverview_description() {
+        return overview_description;
+    }
+
+    public void setOverview_description(String overview_description) {
+        this.overview_description = overview_description;
+    }
+
+	
+	
 }

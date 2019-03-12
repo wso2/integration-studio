@@ -38,22 +38,31 @@ import org.wso2.developerstudio.eclipse.platform.ui.Activator;
 import com.google.gson.Gson;
 
 /**
- *
+ * Servlet that contains connector related actions
  */
-public class ConnectorFunctionServlet extends HttpServlet {
+public class ConnectorServlet extends HttpServlet {
 
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
+    /**
+     * Retrieves all connectors
+     * 
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String responseString = "{}";
         response.setContentType("application/json");
         response.setStatus(HttpServletResponse.SC_OK);
-        ConnectorFunctionServletUtil jsf = new ConnectorFunctionServletUtil();
-        response.getWriter().println(jsf.getConnectorsList());
+        ConnectorServletUtil connectorFunctionServletUtil = new ConnectorServletUtil();
+        response.getWriter().println(connectorFunctionServletUtil.getConnectorsList());
     }
 
+    /**
+     * Downloads the specified connector
+     * 
+     * Response contains the container to be downloaded as {"data":{"id": "xx", "attributes": []}}
+     * 
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -67,19 +76,19 @@ public class ConnectorFunctionServlet extends HttpServlet {
             public void run() {
                 Display.getDefault().asyncExec(new Runnable() {
                     public void run() {
-                        ConnectorFunctionServletUtil jsf = new ConnectorFunctionServletUtil();
+                        ConnectorServletUtil connectorFunctionServletUtil = new ConnectorServletUtil();
                         Job downloadJob = new Job("Downloading Connectors") {
                             @Override
                             protected IStatus run(IProgressMonitor monitor) {
                                 monitor.beginTask("Downloading connector", 100);
                                 monitor.subTask(connector.getAttributes().getOverview_name() + " connector");
                                 String downloadLink = connector.getAttributes().getOverview_downloadlink();
-                                if(jsf.downloadConnectorAndUpdateProjects(downloadLink)) {
+                                if (connectorFunctionServletUtil.downloadConnectorAndUpdateProjects(downloadLink)) {
                                     monitor.worked(100);
                                     monitor.done();
                                     return Status.OK_STATUS;
                                 } else {
-                                    
+
                                 }
                                 monitor.worked(100);
                                 monitor.done();

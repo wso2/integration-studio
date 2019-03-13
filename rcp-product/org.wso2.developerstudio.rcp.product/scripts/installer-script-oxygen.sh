@@ -85,7 +85,7 @@ popd
 
 pushd ${JDK_DISTRIBUTION_PATH_MACOS}
 mv $JDK_DISTRIBUTION_FILE_PREFIX* $JDK_DISTRIBUTION_NAME.tar.gz
-tar xzf $JDK_DISTRIBUTION_NAME.tar.gz -C $PRODUCT_PATH_MACOS/developerstudio.app/Contents/Eclipse
+tar xzf $JDK_DISTRIBUTION_NAME.tar.gz -C $PRODUCT_PATH_MACOS/DeveloperStudio.app/Contents/Eclipse
 popd
 
 # Configure JDKs

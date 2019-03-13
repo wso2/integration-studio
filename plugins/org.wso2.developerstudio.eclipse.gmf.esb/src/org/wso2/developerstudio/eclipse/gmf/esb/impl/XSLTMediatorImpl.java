@@ -193,11 +193,11 @@ public class XSLTMediatorImpl extends MediatorImpl implements XSLTMediator {
         setXsltStaticSchemaKey(xsltStaticSchemaKeyNew);
 
         // XSLT Dynamic Schema Key
-        NamespacedProperty xsltDynamicSchemaKeyTemp = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
-        xsltDynamicSchemaKeyTemp.setPrettyName("XSLT Dynamic Key");
-        xsltDynamicSchemaKeyTemp.setPropertyName("key");
-        xsltDynamicSchemaKeyTemp.setPropertyValue(DEFAULT_XPATH_PROPERTY_VALUE);
-        setXsltDynamicSchemaKey(xsltDynamicSchemaKeyTemp);
+        xsltDynamicSchemaKey = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
+        xsltDynamicSchemaKey.setPrettyName("XSLT Dynamic Key");
+        xsltDynamicSchemaKey.setPropertyName("key");
+        xsltDynamicSchemaKey.setPropertyValue(DEFAULT_XPATH_PROPERTY_VALUE);
+        setXsltDynamicSchemaKey(xsltDynamicSchemaKey);
 
         // Source XPath.
         NamespacedProperty sourceXPath = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();

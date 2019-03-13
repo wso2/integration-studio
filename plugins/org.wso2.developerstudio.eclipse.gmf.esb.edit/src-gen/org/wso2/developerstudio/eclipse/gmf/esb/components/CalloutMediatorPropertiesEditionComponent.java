@@ -49,6 +49,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.CalloutMediatorPropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 
 
 // End of user code
@@ -647,15 +648,18 @@ public class CalloutMediatorPropertiesEditionComponent extends SinglePartPropert
 	/**
 	 * {@inheritDoc}
 	 * 
+	 * @generated NOT
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getHelpContent(java.lang.Object, int)
 	 * 
 	 */
 	public String getHelpContent(Object key, int kind) {
-		if (key == EsbViewsRepository.CalloutMediator.Service.pathToAxis2xml)
-			return ""; //$NON-NLS-1$
-		if (key == EsbViewsRepository.CalloutMediator.Service.addressEndpoint)
-			return ""; //$NON-NLS-1$
-		return super.getHelpContent(key, kind);
+//		if (key == EsbViewsRepository.CalloutMediator.Service.pathToAxis2xml)
+//			return ""; //$NON-NLS-1$
+//		if (key == EsbViewsRepository.CalloutMediator.Service.addressEndpoint)
+//			return ""; //$NON-NLS-1$
+//		return super.getHelpContent(key, kind);
+	    return EEFPropertyViewUtil.getHelpContent(key);
 	}
 
 	/**

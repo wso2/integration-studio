@@ -66,6 +66,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyAction;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyName;
+import org.wso2.developerstudio.eclipse.gmf.esb.PropertyScope;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
@@ -76,6 +77,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
 import org.wso2.developerstudio.esb.form.editors.article.providers.NamespacedPropertyEditorDialog;
 
+import java.util.HashMap;
+import java.util.Map;
 // End of user code
 
 /**
@@ -115,19 +118,21 @@ public class PropertyMediatorPropertiesEditionPartImpl extends CompositeProperti
 	protected Control[] newPropertyNameElements;
 	protected Control[] valueExpressionElements;
 	protected Control[] descriptionElements;
+	protected Group propertiesGroup;
+
+	private Map<String, PropertyScope> propertyNameScopeMap = new HashMap<String, PropertyScope>();
 	// End of user code
 
 	protected Text description;
-	protected Group propertiesGroup;
-
 
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
-	 * 
+	 * @generated NOT
 	 */
 	public PropertyMediatorPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
+		populatePropertyNameScopeMap();
 	}
 
 	/**
@@ -273,6 +278,7 @@ public class PropertyMediatorPropertiesEditionPartImpl extends CompositeProperti
 			public void selectionChanged(SelectionChangedEvent event) {
 				if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertyMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.PropertyMediator.Properties.propertyName, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getPropertyName()));
+				    refresh();
 			}
 
 		});
@@ -1725,7 +1731,7 @@ public class PropertyMediatorPropertiesEditionPartImpl extends CompositeProperti
     
     @Override
     public void refresh() {
-        super.refresh();
+        setPropertyScope(propertyNameScopeMap.get(getPropertyName().getName()));
         validate();
     }
 	// End of user code
@@ -1832,6 +1838,77 @@ public class PropertyMediatorPropertiesEditionPartImpl extends CompositeProperti
         epv.showEntry(descriptionElements, false);
         view.layout(true,true);
         view.pack();
+    }
+
+    private void populatePropertyNameScopeMap() {
+        propertyNameScopeMap.put("newPropertyName", PropertyScope.SYNAPSE);
+        propertyNameScopeMap.put("Action", PropertyScope.SYNAPSE);
+        propertyNameScopeMap.put("COPY_CONTENT_LENGTH_FROM_INCOMING", PropertyScope.AXIS2);
+        propertyNameScopeMap.put("CacheLevel", PropertyScope.AXIS2);
+        propertyNameScopeMap.put("ClientApiNonBlocking", PropertyScope.AXIS2);
+        propertyNameScopeMap.put("ConcurrentConsumers", PropertyScope.AXIS2);
+        propertyNameScopeMap.put("ContentType", PropertyScope.AXIS2);
+        propertyNameScopeMap.put("disableAddressingForOutMessages", PropertyScope.AXIS2);
+        propertyNameScopeMap.put("DISABLE_CHUNKING", PropertyScope.AXIS2);
+        propertyNameScopeMap.put("DISABLE_SMOOKS_RESULT_PAYLOAD", PropertyScope.SYNAPSE);
+        propertyNameScopeMap.put("ERROR_CODE", PropertyScope.SYNAPSE);
+        propertyNameScopeMap.put("ERROR_DETAIL", PropertyScope.SYNAPSE);
+        propertyNameScopeMap.put("ERROR_EXCEPTION", PropertyScope.SYNAPSE);
+        propertyNameScopeMap.put("ERROR_MESSAGE", PropertyScope.SYNAPSE);
+        propertyNameScopeMap.put("FAULTS_AS_HTTP_200", PropertyScope.AXIS2);
+        propertyNameScopeMap.put("FORCE_ERROR_ON_SOAP_FAULT", PropertyScope.SYNAPSE);
+        propertyNameScopeMap.put("FORCE_HTTP_1.0", PropertyScope.AXIS2_CLIENT);
+        propertyNameScopeMap.put("FORCE_HTTP_CONTENT_LENGTH", PropertyScope.AXIS2);
+        propertyNameScopeMap.put("FORCE_POST_PUT_NOBODY", PropertyScope.AXIS2);
+        propertyNameScopeMap.put("FORCE_SC_ACCEPTED", PropertyScope.AXIS2);
+        propertyNameScopeMap.put("FaultTo", PropertyScope.SYNAPSE);
+        propertyNameScopeMap.put("From", PropertyScope.SYNAPSE);
+        propertyNameScopeMap.put("HTTP_ETAG", PropertyScope.AXIS2);
+        propertyNameScopeMap.put("HTTP_SC", PropertyScope.AXIS2);
+        propertyNameScopeMap.put("JMS_COORELATION_ID", PropertyScope.AXIS2);
+        propertyNameScopeMap.put("messageType", PropertyScope.AXIS2);
+        propertyNameScopeMap.put("MESSAGE_FORMAT", PropertyScope.SYNAPSE);
+        propertyNameScopeMap.put("MaxConcurrentConsumers", PropertyScope.AXIS2);
+        propertyNameScopeMap.put("MercuryLastMessage", PropertyScope.AXIS2);
+        propertyNameScopeMap.put("MercurySequenceKey", PropertyScope.AXIS2);
+        propertyNameScopeMap.put("MessageID", PropertyScope.SYNAPSE);
+        propertyNameScopeMap.put("NO_ENTITY_BODY", PropertyScope.AXIS2);
+        propertyNameScopeMap.put("NO_KEEPALIVE", PropertyScope.AXIS2);
+        propertyNameScopeMap.put("OUT_ONLY", PropertyScope.SYNAPSE);
+        propertyNameScopeMap.put("OperationName", PropertyScope.SYNAPSE);
+        propertyNameScopeMap.put("POST_TO_URI", PropertyScope.AXIS2);
+        propertyNameScopeMap.put("preserveProcessedHeaders", PropertyScope.SYNAPSE);
+        propertyNameScopeMap.put("PRESERVE_WS_ADDRESSING", PropertyScope.SYNAPSE);
+        propertyNameScopeMap.put("REQUEST_HOST_HEADER", PropertyScope.SYNAPSE);
+        propertyNameScopeMap.put("RESPONSE", PropertyScope.SYNAPSE);
+        propertyNameScopeMap.put("REST_URL_POSTFIX", PropertyScope.SYNAPSE);
+        propertyNameScopeMap.put("RelatesTo", PropertyScope.SYNAPSE);
+        propertyNameScopeMap.put("ReplyTo", PropertyScope.SYNAPSE);
+        propertyNameScopeMap.put("SERVER_IP", PropertyScope.SYNAPSE);
+        propertyNameScopeMap.put("SYSTEM_DATE", PropertyScope.SYNAPSE);
+        propertyNameScopeMap.put("SYSTEM_TIME", PropertyScope.SYNAPSE);
+        propertyNameScopeMap.put("TRANSPORT_HEADERS", PropertyScope.SYNAPSE);
+        propertyNameScopeMap.put("TRANSPORT_IN_NAME", PropertyScope.SYNAPSE);
+        propertyNameScopeMap.put("To", PropertyScope.SYNAPSE);
+        propertyNameScopeMap.put("transportNonBlocking", PropertyScope.SYNAPSE);
+        propertyNameScopeMap.put("JMS_CONNECTION_FACTORY", PropertyScope.SYNAPSE);
+        propertyNameScopeMap.put("JMS_DESTINATION", PropertyScope.SYNAPSE);
+        propertyNameScopeMap.put("JMS_DESTINATION_TYPE", PropertyScope.SYNAPSE);
+        propertyNameScopeMap.put("JMS_REPLY_DESTINATION", PropertyScope.SYNAPSE);
+        propertyNameScopeMap.put("JMS_WRAPPER", PropertyScope.SYNAPSE);
+        propertyNameScopeMap.put("VFS_FILE_URI", PropertyScope.SYNAPSE);
+        propertyNameScopeMap.put("VFS_CONTENT_TYPE", PropertyScope.SYNAPSE);
+        propertyNameScopeMap.put("VFS_FILENAME_PATTERN", PropertyScope.SYNAPSE);
+        propertyNameScopeMap.put("POLL_INTERVAL", PropertyScope.SYNAPSE);
+        propertyNameScopeMap.put("VFS_ACTION_AFTER_PROCESS", PropertyScope.SYNAPSE);
+        propertyNameScopeMap.put("VFS_MOVE_AFTER_PROCESS", PropertyScope.SYNAPSE);
+        propertyNameScopeMap.put("VFS_ACTION_AFTER_ERRORS", PropertyScope.SYNAPSE);
+        propertyNameScopeMap.put("VFS_MOVE_AFTER_ERRORS", PropertyScope.SYNAPSE);
+        propertyNameScopeMap.put("VFS_ACTION_AFTER_FAILURE", PropertyScope.SYNAPSE);
+        propertyNameScopeMap.put("VFS_MOVE_AFTER_FAILURE", PropertyScope.SYNAPSE);
+        propertyNameScopeMap.put("VFS_REPLY_FILE_URI", PropertyScope.SYNAPSE);
+        propertyNameScopeMap.put("VFS_REPLY_FILENAME", PropertyScope.SYNAPSE);
+        propertyNameScopeMap.put("VFS_MOVE_TIMESTAMP_FORMAT", PropertyScope.SYNAPSE);
     }
 
 	// End of user code

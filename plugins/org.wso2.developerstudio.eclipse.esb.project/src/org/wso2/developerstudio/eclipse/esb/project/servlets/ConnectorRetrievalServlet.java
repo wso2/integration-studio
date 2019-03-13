@@ -25,17 +25,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Status;
-import org.eclipse.core.runtime.jobs.Job;
-import org.eclipse.swt.widgets.Display;
-import org.wso2.developerstudio.eclipse.esb.project.connector.store.Connector;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.ui.Activator;
-
-import com.google.gson.Gson;
 
 /**
  * Servlet that retrieves connectors
@@ -54,7 +46,7 @@ public class ConnectorRetrievalServlet extends HttpServlet {
         response.setContentType("application/json");
         response.setStatus(HttpServletResponse.SC_OK);
         ConnectorServletUtil connectorFunctionServletUtil = new ConnectorServletUtil();
-        response.getWriter().println(connectorFunctionServletUtil.getConnectorsList(0, 2));
+        response.getWriter().println(connectorFunctionServletUtil.getConnectorsList(0, 100));
     }
 
 }

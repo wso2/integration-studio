@@ -508,14 +508,23 @@ public class PropertyMediatorItemProvider extends MediatorItemProvider {
     public String getText(Object object) {
         PropertyName labelValue = ((PropertyMediator)object).getPropertyName();
         String newPropertyName = ((PropertyMediator)object).getNewPropertyName();
-        PropertyScope scope = ((PropertyMediator)object).getPropertyScope();
         String label = labelValue == null ? null : labelValue.toString();
         String value = ((PropertyMediator)object).getValue();
         String newLabel = label == "New Property..." ? newPropertyName : label ;
         String propertyName = WordUtils.abbreviate(newLabel.toString(), 8, 10, " ...");
+
         return newLabel == null || label.length() == 0 ?
             getString("_UI_PropertyMediator_type") :
-            "Property" + "\t\t\t" + scope.toString() + "\t\t\t" + propertyName + "\t\t\t" + value;
+            trim("Property") + trim(propertyName) + trim(value);
+    }
+
+    public String trim(String str) {
+        int maxLength = 30;
+        int tabSpace = (maxLength - str.length()) / 4;
+        for (int i = 0; i < tabSpace; i++) {
+            str = str.concat("\t");
+        }
+        return str;
     }
 
     /**

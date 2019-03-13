@@ -27,17 +27,14 @@ import org.apache.synapse.util.xpath.SynapseXPath;
 
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
-import org.eclipse.ui.forms.editor.FormEditor;
 import org.wso2.developerstudio.eclipse.gmf.esb.EnrichMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.EnrichSourceInlineType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EnrichSourceType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EnrichTargetAction;
 import org.wso2.developerstudio.eclipse.gmf.esb.EnrichTargetType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.developerstudio.eclipse.gmf.esb.LogMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
-
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
 
 public class EnrichMediatorDeserializer extends AbstractEsbNodeDeserializer<AbstractMediator, EnrichMediator> {
@@ -185,10 +182,15 @@ public class EnrichMediatorDeserializer extends AbstractEsbNodeDeserializer<Abst
                 SynapseXPath xpath = target.getXpath();
 
                 NamespacedProperty nsp = EsbFactory.eINSTANCE.createNamespacedProperty();
+                
+                if (xpath == null) {
+                    nsp.setPropertyValue("");
+                } else {
 
-                nsp.setPropertyValue(xpath.toString());
+                    nsp.setPropertyValue(xpath.toString());
+                }
 
-                if (xpath.getNamespaces() != null) {
+                if (xpath != null && xpath.getNamespaces() != null) {
 
                     @SuppressWarnings("unchecked")
                     Map<String, String> map = xpath.getNamespaces();

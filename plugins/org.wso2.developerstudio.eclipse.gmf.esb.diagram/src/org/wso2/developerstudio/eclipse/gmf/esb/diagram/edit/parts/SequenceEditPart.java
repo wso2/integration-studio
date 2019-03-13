@@ -742,7 +742,7 @@ public class SequenceEditPart extends FixedSizedAbstractMediator {
 
             };
             String defaultName = calculateDefaultName();
-            final InputDialog sequenceNameInput = new InputDialog(new Shell(), "Enter Sequence Name", "Sequence Name",
+            final InputDialog sequenceNameInput = new InputDialog(Display.getCurrent().getActiveShell(), "Enter Sequence Name", "Sequence Name",
                     defaultName, validator) {
                 protected Control createDialogArea(Composite parent) {
                     Composite composite = (Composite) super.createDialogArea(parent);

@@ -91,7 +91,7 @@ public class ImportCloudConnectorWizardPage extends WizardPage {
 	private static final String CONNECTOR_STORE_URL = "https://store.wso2.com";
 	private static final int TIMEOUT = 180000;
 	private static final String HTTP_SOCKET_TIMEOUT = "http.socket.timeout";
-	private static final String LOAD_CONNECTORS_PAGE = "http://localhost:7774/project/index.html";
+	private static final String LOAD_CONNECTORS_PAGE = "http://localhost:7774/project/connectors/index.html";
 	
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
@@ -112,36 +112,6 @@ public class ImportCloudConnectorWizardPage extends WizardPage {
 		setControl(container);
 		container.setLayout(new GridLayout(3, false));
 		
-
-//		connectorStore = new Button(container, SWT.RADIO);
-//		connectorStore.setText("Connector Store location");
-//		txtConnectorStoreURL = new Text(container, SWT.BORDER);
-//		GridData gd_txtPath = new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1);
-//		gd_txtPath.widthHint = 300;
-//		txtConnectorStoreURL.setLayoutData(gd_txtPath);
-//		txtConnectorStoreURL.addModifyListener(new ModifyListener() {
-//
-//			public void modifyText(ModifyEvent evt) {
-//				setCloudConnectorPath(txtConnectorStoreURL.getText());
-//				txtConnectorStoreURL.setFocus();
-//				int charcount = txtConnectorStoreURL.getCharCount();
-//				txtConnectorStoreURL.setSelection(charcount);
-//				setErrorMessage(null);
-//				((CloudConnectorImportWizard) getWizard()).getRemoveWizardPage().setPageComplete(true);
-//				setPageComplete(true);
-//				// validate();
-//			}
-//		});
-//		if (cloudConnectorPath != null) {
-//			txtConnectorStoreURL.setText(cloudConnectorPath);
-//		} else {
-//			// setPageComplete(false);
-//		}
-//		txtConnectorStoreURL.setEnabled(false);
-//
-//		final Button btnBrowse = new Button(container, SWT.NONE);
-//		btnBrowse.setEnabled(false);
-		
 		GridData gridData = new GridData();
 		gridData.horizontalAlignment = GridData.FILL;
 		gridData.verticalAlignment = GridData.FILL;
@@ -151,26 +121,7 @@ public class ImportCloudConnectorWizardPage extends WizardPage {
 		gridData.heightHint = 400;
 		gridData.widthHint = 250;
 		
-		
-//		btnBrowse.setText("Connect");
-
-
-
-//		connectorStore.addSelectionListener(new SelectionAdapter() {
-//			public void widgetSelected(SelectionEvent e) {
-//				txtConnectorStoreURL.setText(CONNECTOR_STORE_URL);
-//				txtConnectorStoreURL.setEnabled(true);
-//				btnBrowse.setEnabled(true);
-//				table.setEnabled(true);
-//
-//				txtCloudConnectorPath.setEnabled(false);
-//				btnBrowse1.setEnabled(false);
-//			}
-//		});
-		
         Browser browser;
-//        GridLayout gridLayout = new GridLayout(1, false);
-//        browser.setLayout(gridLayout);
         browser = new Browser(container, SWT.NONE);
         GridData data = new GridData();
         data.horizontalAlignment = GridData.FILL;
@@ -178,7 +129,6 @@ public class ImportCloudConnectorWizardPage extends WizardPage {
         data.grabExcessHorizontalSpace = true;
         data.grabExcessVerticalSpace = false;
         data.horizontalSpan = 3;
-//        data.verticalSpan = 7;
         data.heightHint = 400;
         browser.setLayoutData(data);
         browser.setUrl(LOAD_CONNECTORS_PAGE);
@@ -228,7 +178,6 @@ public class ImportCloudConnectorWizardPage extends WizardPage {
 
                 txtConnectorStoreURL.setText("");
                 txtConnectorStoreURL.setEnabled(false);
-//                btnBrowse.setEnabled(false);
                 table.setEnabled(false);
             }
         });
@@ -247,11 +196,11 @@ public class ImportCloudConnectorWizardPage extends WizardPage {
 	}
 
 	private void validate() {
-		if ((getCloudConnectorPath() == null || getCloudConnectorPath().equals(""))) {
-			setErrorMessage("Please specify a connector path");
-			setPageComplete(false);
-			return;
-		}
+//		if ((getCloudConnectorPath() == null || getCloudConnectorPath().equals(""))) {
+//			setErrorMessage("Please specify a connector path");
+//			setPageComplete(false);
+//			return;
+//		}
 		setErrorMessage(null);
 		((CloudConnectorImportWizard) getWizard()).getRemoveWizardPage().setPageComplete(true);
 		setPageComplete(true);

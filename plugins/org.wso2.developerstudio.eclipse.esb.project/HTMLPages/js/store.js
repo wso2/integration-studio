@@ -1,9 +1,11 @@
 var ENDPOINTS = {
-		connector_endpoint: "http://localhost:7774/project/connectors"
+		connector_endpoint: "http://localhost:7774/project/connectors",
+		list_connector_endpoint: "http://localhost:7774/project/connectors/list",
+		download_connector_endpoint: "http://localhost:7774/project/connectors/download",
 };
 
 function getConnectors() {
-	$.get(ENDPOINTS.connector_endpoint, function(data,
+	$.post(ENDPOINTS.list_connector_endpoint, function(data,
 			status) {
 		loadConnectorNodes(JSON.stringify(data));
 	});
@@ -32,8 +34,7 @@ function drawConnectorNodes() {
 };
 
 function downloadConnector(connector) {
-	console.log(connector);
-	$.post(ENDPOINTS.connector_endpoint, {
+	$.post(ENDPOINTS.download_connector_endpoint, {
 		data : JSON.stringify(connector)
 	}, function(data, status) {
 	});

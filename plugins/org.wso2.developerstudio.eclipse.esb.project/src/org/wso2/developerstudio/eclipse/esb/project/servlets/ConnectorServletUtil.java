@@ -72,20 +72,19 @@ public class ConnectorServletUtil {
      * 
      * @return connector objects
      */
-    public String getConnectorsList() {
-        int page = 1;
+    public String getConnectorsList(int start, int count) {
         List<Connector> connectorList = new ArrayList<>();
         Object connectorInfo;
         try {
-            connectorInfo = ConnectorStore.getConnectorInfo(getHttpClient(), STORE_URL, page);
+            connectorInfo = ConnectorStore.getConnectorInfo_es210(getHttpClient(), STORE_URL, start, count);
             if (connectorInfo instanceof List<?>) {
                 List<Connector> tmpList = (List<Connector>) connectorInfo;
-                while (tmpList != null && !tmpList.isEmpty()) {
+//                while (tmpList != null && !tmpList.isEmpty()) {
                     connectorList.addAll(tmpList);
-                    ++page;
-                    tmpList = (List<Connector>) ConnectorStore.getConnectorInfo(getHttpClient(),
-                            "https://store.wso2.com", page);
-                }
+//                    ++page;
+//                    tmpList = (List<Connector>) ConnectorStore.getConnectorInfo_es210(getHttpClient(),
+//                            "https://store.wso2.com", start, count);
+//                }
             } else if (connectorInfo instanceof ConnectorData) {
                 List<Connector> tmpList = ((ConnectorData) connectorInfo).getConnector();
                 connectorList.addAll(tmpList);

@@ -54,6 +54,7 @@ import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.KeyListener;
 import org.eclipse.swt.events.MouseAdapter;
 import org.eclipse.swt.events.MouseEvent;
+import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 
@@ -191,14 +192,13 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	 * 
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
-		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
-		Form form = scrolledForm.getForm();
+		Form form = widgetFactory.createForm(parent);
 		view = form.getBody();
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
 		createControls(widgetFactory, view);
-		return scrolledForm;
+		return form;
 	}
 
 	/**
@@ -210,11 +210,6 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		CompositionSequence calloutMediatorStep = new BindingCompositionSequence(propertiesEditionComponent);
-		CompositionStep miscStep = calloutMediatorStep.addStep(EsbViewsRepository.CalloutMediator.Misc.class);
-		miscStep.addStep(EsbViewsRepository.CalloutMediator.Misc.description);
-		miscStep.addStep(EsbViewsRepository.CalloutMediator.Misc.commentsList);
-		miscStep.addStep(EsbViewsRepository.CalloutMediator.Misc.reverse);
-		miscStep.addStep(EsbViewsRepository.CalloutMediator.Misc.passHeaders);
 		
 		CompositionStep serviceStep = calloutMediatorStep.addStep(EsbViewsRepository.CalloutMediator.Service.class);
 		serviceStep.addStep(EsbViewsRepository.CalloutMediator.Service.endpointType);
@@ -236,12 +231,17 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
 		targetStep.addStep(EsbViewsRepository.CalloutMediator.Target.resultMessageXpath);
 		
 		CompositionStep wSStep = calloutMediatorStep.addStep(EsbViewsRepository.CalloutMediator.WS.class);
-		wSStep.addStep(EsbViewsRepository.CalloutMediator.WS.policies);
 		wSStep.addStep(EsbViewsRepository.CalloutMediator.WS.securityType);
+        wSStep.addStep(EsbViewsRepository.CalloutMediator.WS.policies);
 		wSStep.addStep(EsbViewsRepository.CalloutMediator.WS.policyKey);
 		wSStep.addStep(EsbViewsRepository.CalloutMediator.WS.outboundPolicyKey);
 		wSStep.addStep(EsbViewsRepository.CalloutMediator.WS.inboundPolicyKey);
 		
+        CompositionStep miscStep = calloutMediatorStep.addStep(EsbViewsRepository.CalloutMediator.Misc.class);
+        miscStep.addStep(EsbViewsRepository.CalloutMediator.Misc.description);
+        miscStep.addStep(EsbViewsRepository.CalloutMediator.Misc.commentsList);
+        miscStep.addStep(EsbViewsRepository.CalloutMediator.Misc.reverse);
+        miscStep.addStep(EsbViewsRepository.CalloutMediator.Misc.passHeaders);
 		
 		composer = new PartComposer(calloutMediatorStep) {
 
@@ -1995,36 +1995,56 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
 			addressEndpoint = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
 		}
 		String initValueExpression = addressEndpoint.getKeyValue().isEmpty() ? "" : addressEndpoint.getKeyValue();
-		addressEndpointText = widgetFactory.createText(parent, initValueExpression);
+		addressEndpointText = widgetFactory.createText(parent, initValueExpression, SWT.READ_ONLY);
 		addressEndpointText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
 		addressEndpointText.setLayoutData(valueData);
-		addressEndpointText.addFocusListener(new FocusAdapter() {
-			/**
-			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void focusLost(FocusEvent e) {
-			}
+		
+        addressEndpointText.addMouseListener(new MouseListener() {
 
-			/**
-			 * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
-			 */
-			@Override
-			public void focusGained(FocusEvent e) {
-				EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
-						SWT.NULL, addressEndpoint, new ArrayList<NamedEntityDescriptor>());
-				dialog.open();
-				addressEndpointText.setText(addressEndpoint.getKeyValue());
-				propertiesEditionComponent
-						.firePropertiesChanged(new PropertiesEditionEvent(CalloutMediatorPropertiesEditionPartForm.this,
-								EsbViewsRepository.CalloutMediator.Service.addressEndpoint,
-								PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getAddressEndpoint()));
-			}
-		});
+            @Override
+            public void mouseDown(MouseEvent e) {
+                EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
+                        SWT.NULL, addressEndpoint, new ArrayList<NamedEntityDescriptor>());
+                dialog.open();
+                addressEndpointText.setText(addressEndpoint.getKeyValue());
+                propertiesEditionComponent
+                        .firePropertiesChanged(new PropertiesEditionEvent(CalloutMediatorPropertiesEditionPartForm.this,
+                                EsbViewsRepository.CalloutMediator.Service.addressEndpoint,
+                                PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getAddressEndpoint()));
+            }
+
+            @Override
+            public void mouseUp(MouseEvent e) {}
+
+            @Override
+            public void mouseDoubleClick(MouseEvent e) {}
+
+        });
+
+        addressEndpointText.addKeyListener(new KeyListener() {
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                    EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
+                            SWT.NULL, addressEndpoint, new ArrayList<NamedEntityDescriptor>());
+                    dialog.open();
+                    addressEndpointText.setText(addressEndpoint.getKeyValue());
+                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                            CalloutMediatorPropertiesEditionPartForm.this,
+                            EsbViewsRepository.CalloutMediator.Service.addressEndpoint, PropertiesEditionEvent.COMMIT,
+                            PropertiesEditionEvent.SET, null, getAddressEndpoint()));
+                }
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+            }
+
+        });
+		
 		EditingUtils.setID(addressEndpointText, EsbViewsRepository.CalloutMediator.Service.addressEndpoint);
 		EditingUtils.setEEFtype(addressEndpointText, "eef::Text");
 		Control addressEndpointHelp = FormUtils.createHelpButton(widgetFactory, parent,
@@ -2045,7 +2065,7 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
 		}
 		String initValueExpression = payloadMessageXpath.getPropertyValue().isEmpty() ? "/default/expression"
 				: payloadMessageXpath.getPropertyValue();
-		payloadMessageXpathText = widgetFactory.createText(parent, initValueExpression);
+		payloadMessageXpathText = widgetFactory.createText(parent, initValueExpression, SWT.READ_ONLY);
 		payloadMessageXpathText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
@@ -2055,7 +2075,7 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
 
             @Override
             public void mouseDown(MouseEvent event) {
-                openNamespacedPropertyEditor(parent);
+                openPayloadMessageNamespacedPropertyEditor(parent);
             }
 
         });
@@ -2063,13 +2083,14 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
         payloadMessageXpathText.addKeyListener(new KeyListener() {
 
             @Override
-            public void keyPressed(KeyEvent e) {
-                openNamespacedPropertyEditor(parent);
+            public void keyReleased(KeyEvent e) {
+                if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                    openPayloadMessageNamespacedPropertyEditor(parent);
+                }
             }
 
             @Override
-            public void keyReleased(KeyEvent e) {
-            }
+            public void keyPressed(KeyEvent e) {}
 
         });
         
@@ -2085,15 +2106,26 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
 		return parent;
 	}
 	
-    private void openNamespacedPropertyEditor(final Composite parent) {
+    private void openResultMessageNamespacedPropertyEditor(final Composite parent) {
+        final EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
+                SWT.NULL, resultMessageXpath);
+        nspd.open();
+        resultMessageXpathText.setText(resultMessageXpath.getPropertyValue());
+        propertiesEditionComponent
+                .firePropertiesChanged(new PropertiesEditionEvent(CalloutMediatorPropertiesEditionPartForm.this,
+                        EsbViewsRepository.CalloutMediator.Target.resultMessageXpath, PropertiesEditionEvent.COMMIT,
+                        PropertiesEditionEvent.SET, null, getResultMessageXpath()));
+    }
+
+    private void openPayloadMessageNamespacedPropertyEditor(final Composite parent) {
         final EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
                 SWT.NULL, payloadMessageXpath);
         nspd.open();
         payloadMessageXpathText.setText(payloadMessageXpath.getPropertyValue());
-        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
-                CalloutMediatorPropertiesEditionPartForm.this,
-                EsbViewsRepository.ScriptMediator.Properties.scriptDynamicKey,
-                PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getPayloadMessageXpath()));
+        propertiesEditionComponent
+                .firePropertiesChanged(new PropertiesEditionEvent(CalloutMediatorPropertiesEditionPartForm.this,
+                        EsbViewsRepository.CalloutMediator.Source.payloadMessageXpath, PropertiesEditionEvent.COMMIT,
+                        PropertiesEditionEvent.SET, null, getPayloadMessageXpath()));
     }
 	
 	protected Composite createResultMessageXpath(FormToolkit widgetFactory, final Composite parent) {
@@ -2106,7 +2138,7 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
 		}
 		String initValueExpression = resultMessageXpath.getPropertyValue().isEmpty() ? "/default/expression"
 				: resultMessageXpath.getPropertyValue();
-		resultMessageXpathText = widgetFactory.createText(parent, initValueExpression);
+		resultMessageXpathText = widgetFactory.createText(parent, initValueExpression, SWT.READ_ONLY);
 		resultMessageXpathText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
@@ -2116,7 +2148,7 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
 
             @Override
             public void mouseDown(MouseEvent event) {
-                openNamespacedPropertyEditor(parent);
+                openResultMessageNamespacedPropertyEditor(parent);
             }
 
         });
@@ -2124,13 +2156,14 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
         resultMessageXpathText.addKeyListener(new KeyListener() {
 
             @Override
-            public void keyPressed(KeyEvent e) {
-                openNamespacedPropertyEditor(parent);
+            public void keyReleased(KeyEvent e) {
+                if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                    openResultMessageNamespacedPropertyEditor(parent);
+                }
             }
 
             @Override
-            public void keyReleased(KeyEvent e) {
-            }
+            public void keyPressed(KeyEvent e) {}
 
         });
 		
@@ -2155,36 +2188,54 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
 			policyKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
 		}
 		String initValueExpression = policyKey.getKeyValue().isEmpty() ? "" : policyKey.getKeyValue();
-		policyKeyText = widgetFactory.createText(parent, initValueExpression);
+		policyKeyText = widgetFactory.createText(parent, initValueExpression, SWT.READ_ONLY);
 		policyKeyText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
 		policyKeyText.setLayoutData(valueData);
-		policyKeyText.addFocusListener(new FocusAdapter() {
-			/**
-			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void focusLost(FocusEvent e) {
-			}
+		
+        policyKeyText.addMouseListener(new MouseListener() {
 
-			/**
-			 * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
-			 */
-			@Override
-			public void focusGained(FocusEvent e) {
-				EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
-						SWT.NULL, policyKey, new ArrayList<NamedEntityDescriptor>());
-				dialog.open();
-				policyKeyText.setText(policyKey.getKeyValue());
-				propertiesEditionComponent
-						.firePropertiesChanged(new PropertiesEditionEvent(CalloutMediatorPropertiesEditionPartForm.this,
-								EsbViewsRepository.CalloutMediator.WS.policyKey,
-								PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getPolicyKey()));
-			}
-		});
+            @Override
+            public void mouseDown(MouseEvent e) {
+                EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
+                        SWT.NULL, policyKey, new ArrayList<NamedEntityDescriptor>());
+                dialog.open();
+                policyKeyText.setText(policyKey.getKeyValue());
+                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                        CalloutMediatorPropertiesEditionPartForm.this, EsbViewsRepository.CalloutMediator.WS.policyKey,
+                        PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getPolicyKey()));
+            }
+
+            @Override
+            public void mouseUp(MouseEvent e) {}
+
+            @Override
+            public void mouseDoubleClick(MouseEvent e) {}
+
+        });
+
+        policyKeyText.addKeyListener(new KeyListener() {
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                    EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
+                            SWT.NULL, policyKey, new ArrayList<NamedEntityDescriptor>());
+                    dialog.open();
+                    policyKeyText.setText(policyKey.getKeyValue());
+                    propertiesEditionComponent.firePropertiesChanged(
+                            new PropertiesEditionEvent(CalloutMediatorPropertiesEditionPartForm.this,
+                                    EsbViewsRepository.CalloutMediator.WS.policyKey, PropertiesEditionEvent.COMMIT,
+                                    PropertiesEditionEvent.SET, null, getPolicyKey()));
+                }
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {}
+
+        });
+		
 		EditingUtils.setID(policyKeyText, EsbViewsRepository.CalloutMediator.WS.policyKey);
 		EditingUtils.setEEFtype(policyKeyText, "eef::Text");
 		Control policyKeyHelp = FormUtils.createHelpButton(widgetFactory, parent,
@@ -2200,40 +2251,59 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
 				EsbViewsRepository.CalloutMediator.WS.inboundPolicyKey,
 				EsbMessages.CalloutMediatorPropertiesEditionPart_InboundPolicyKeyLabel);
 		widgetFactory.paintBordersFor(parent);
-		if (policyKey == null) {
-			policyKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
+		if (inboundPolicyKey == null) {
+		    inboundPolicyKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
 		}
-		String initValueExpression = policyKey.getKeyValue().isEmpty() ? "" : policyKey.getKeyValue();
-		inboundPolicyKeyText = widgetFactory.createText(parent, initValueExpression);
+		String initValueExpression = inboundPolicyKey.getKeyValue().isEmpty() ? "" : inboundPolicyKey.getKeyValue();
+		inboundPolicyKeyText = widgetFactory.createText(parent, initValueExpression, SWT.READ_ONLY);
 		inboundPolicyKeyText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
 		inboundPolicyKeyText.setLayoutData(valueData);
-		inboundPolicyKeyText.addFocusListener(new FocusAdapter() {
-			/**
-			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void focusLost(FocusEvent e) {
-			}
-
-			/**
-			 * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
-			 */
-			@Override
-			public void focusGained(FocusEvent e) {
-				EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
-						SWT.NULL, policyKey, new ArrayList<NamedEntityDescriptor>());
-				dialog.open();
-				inboundPolicyKeyText.setText(inboundPolicyKey.getKeyValue());
-				propertiesEditionComponent
-						.firePropertiesChanged(new PropertiesEditionEvent(CalloutMediatorPropertiesEditionPartForm.this,
-								EsbViewsRepository.CalloutMediator.WS.inboundPolicyKey,
-								PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getInboundPolicyKey()));
-			}
-		});
+		
+		inboundPolicyKeyText.addMouseListener(new MouseListener() {
+		    
+            @Override
+            public void mouseDown(MouseEvent e) {
+                EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
+                        SWT.NULL, inboundPolicyKey, new ArrayList<NamedEntityDescriptor>());
+                dialog.open();
+                inboundPolicyKeyText.setText(inboundPolicyKey.getKeyValue());
+                propertiesEditionComponent
+                        .firePropertiesChanged(new PropertiesEditionEvent(CalloutMediatorPropertiesEditionPartForm.this,
+                                EsbViewsRepository.CalloutMediator.WS.inboundPolicyKey,
+                                PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getInboundPolicyKey()));
+            }
+            
+            @Override
+            public void mouseUp(MouseEvent e) {}
+            
+            @Override
+            public void mouseDoubleClick(MouseEvent e) {}
+            
+        });
+		
+		inboundPolicyKeyText.addKeyListener(new KeyListener() {
+            
+            @Override
+            public void keyReleased(KeyEvent e) {
+                if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                    EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
+                            SWT.NULL, inboundPolicyKey, new ArrayList<NamedEntityDescriptor>());
+                    dialog.open();
+                    inboundPolicyKeyText.setText(inboundPolicyKey.getKeyValue());
+                    propertiesEditionComponent
+                            .firePropertiesChanged(new PropertiesEditionEvent(CalloutMediatorPropertiesEditionPartForm.this,
+                                    EsbViewsRepository.CalloutMediator.WS.inboundPolicyKey,
+                                    PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getInboundPolicyKey()));
+                }
+            }
+            
+            @Override
+            public void keyPressed(KeyEvent e) {}
+            
+        });
+		
 		EditingUtils.setID(inboundPolicyKeyText, EsbViewsRepository.CalloutMediator.WS.inboundPolicyKey);
 		EditingUtils.setEEFtype(inboundPolicyKeyText, "eef::Text");
 		Control inboundPolicyKeyHelp = FormUtils.createHelpButton(widgetFactory, parent,
@@ -2249,40 +2319,59 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
 				EsbViewsRepository.CalloutMediator.WS.outboundPolicyKey,
 				EsbMessages.CalloutMediatorPropertiesEditionPart_OutboundPolicyKeyLabel);
 		widgetFactory.paintBordersFor(parent);
-		if (policyKey == null) {
-			policyKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
+		if (outboundPolicyKey == null) {
+		    outboundPolicyKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
 		}
-		String initValueExpression = policyKey.getKeyValue().isEmpty() ? "" : policyKey.getKeyValue();
-		outboundPolicyKeyText = widgetFactory.createText(parent, initValueExpression);
+		String initValueExpression = outboundPolicyKey.getKeyValue().isEmpty() ? "" : outboundPolicyKey.getKeyValue();
+		outboundPolicyKeyText = widgetFactory.createText(parent, initValueExpression, SWT.READ_ONLY);
 		outboundPolicyKeyText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
 		outboundPolicyKeyText.setLayoutData(valueData);
-		outboundPolicyKeyText.addFocusListener(new FocusAdapter() {
-			/**
-			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void focusLost(FocusEvent e) {
-			}
+		
+        outboundPolicyKeyText.addMouseListener(new MouseListener() {
 
-			/**
-			 * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
-			 */
-			@Override
-			public void focusGained(FocusEvent e) {
-				EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
-						SWT.NULL, policyKey, new ArrayList<NamedEntityDescriptor>());
-				dialog.open();
-				outboundPolicyKeyText.setText(outboundPolicyKey.getKeyValue());
-				propertiesEditionComponent
-						.firePropertiesChanged(new PropertiesEditionEvent(CalloutMediatorPropertiesEditionPartForm.this,
-								EsbViewsRepository.CalloutMediator.WS.outboundPolicyKey,
-								PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getOutboundPolicyKey()));
-			}
-		});
+            @Override
+            public void mouseDown(MouseEvent e) {
+                EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
+                        SWT.NULL, outboundPolicyKey, new ArrayList<NamedEntityDescriptor>());
+                dialog.open();
+                outboundPolicyKeyText.setText(outboundPolicyKey.getKeyValue());
+                propertiesEditionComponent
+                        .firePropertiesChanged(new PropertiesEditionEvent(CalloutMediatorPropertiesEditionPartForm.this,
+                                EsbViewsRepository.CalloutMediator.WS.outboundPolicyKey, PropertiesEditionEvent.COMMIT,
+                                PropertiesEditionEvent.SET, null, getOutboundPolicyKey()));
+            }
+
+            @Override
+            public void mouseUp(MouseEvent e) {}
+
+            @Override
+            public void mouseDoubleClick(MouseEvent e) {}
+
+        });
+
+        outboundPolicyKeyText.addKeyListener(new KeyListener() {
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                    EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
+                            SWT.NULL, outboundPolicyKey, new ArrayList<NamedEntityDescriptor>());
+                    dialog.open();
+                    outboundPolicyKeyText.setText(outboundPolicyKey.getKeyValue());
+                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                            CalloutMediatorPropertiesEditionPartForm.this,
+                            EsbViewsRepository.CalloutMediator.WS.outboundPolicyKey, PropertiesEditionEvent.COMMIT,
+                            PropertiesEditionEvent.SET, null, getOutboundPolicyKey()));
+                }
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {}
+
+        });
+		
 		EditingUtils.setID(outboundPolicyKeyText, EsbViewsRepository.CalloutMediator.WS.outboundPolicyKey);
 		EditingUtils.setEEFtype(outboundPolicyKeyText, "eef::Text");
 		Control outboundPolicyKeyHelp = FormUtils.createHelpButton(widgetFactory, parent,

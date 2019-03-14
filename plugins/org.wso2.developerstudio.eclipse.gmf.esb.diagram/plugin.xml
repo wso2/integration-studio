@@ -258,9 +258,9 @@
          <Priority name="Lowest"/>
          <ViewId id="org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditorID">
             <ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
-               <GlobalActionId actionId="cut"/>
+               <!--<GlobalActionId actionId="cut"/>
                <GlobalActionId actionId="copy"/>
-               <GlobalActionId actionId="paste"/>
+               <GlobalActionId actionId="paste"/>-->
             </ElementType>
          </ViewId>
       </GlobalActionHandlerProvider>

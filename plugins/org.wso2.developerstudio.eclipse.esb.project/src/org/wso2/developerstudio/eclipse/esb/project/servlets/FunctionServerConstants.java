@@ -23,8 +23,4 @@ public class FunctionServerConstants {
     //Initial server port for embedded jetty server 
     public static final int EMBEDDED_SERVER_PORT = 7774; 
 
-    public static final String WELCOME_PERSPECTIVE_ID = "WELCOME_PERSPECTIVE";
-
-    public static final String TEMPLATE_DASHBOARD_EDITOR_ID = "org.wso2.developerstudio.eclipse.templates.dashboard";
-
 }

@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.lang.reflect.Type;
+import java.net.URLEncoder;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
@@ -43,7 +44,7 @@ public class ConnectorStore {
     // context path to get assets in Ascending order with ES 2.1.0
     private static final String ASSETS_ES210_ASC = ASSETS_ES210 + "&sort=+overview_name";
     // context path to search assets in ES 2.1.0, sorted in Ascending order 
-    private static final String ASSETS_ES210_SEARCH = ASSETS_ES210 + "&q=\"overview_name\":";
+    private static final String ASSETS_ES210_SEARCH = ASSETS_ES210_ASC + "&q=";
 
     /**
      * This will connect to connector store using provided URL and retrieve information for available connectors in the
@@ -124,7 +125,7 @@ public class ConnectorStore {
      */
     public static ConnectorData searchConnector(HttpClient httpclient, String url, String searchQuery)
             throws HttpException, IOException {
-        GetMethod get = new GetMethod(url + ASSETS_ES210_SEARCH + "\"" + searchQuery + "\"");
+        GetMethod get = new GetMethod(url + ASSETS_ES210_SEARCH + URLEncoder.encode("\"overview_name\":" + "\"" + searchQuery + "\"", "UTF-8"));
         return getResponse(httpclient, get);
     }
 

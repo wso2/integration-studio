@@ -57,14 +57,13 @@ public class ConnectorDownloadServlet extends HttpServlet {
             public void run() {
                 Display.getDefault().asyncExec(new Runnable() {
                     public void run() {
-                        ConnectorServletUtil connectorFunctionServletUtil = new ConnectorServletUtil();
                         Job downloadJob = new Job("Downloading Connectors") {
                             @Override
                             protected IStatus run(IProgressMonitor monitor) {
                                 monitor.beginTask("Downloading connector", 100);
                                 monitor.subTask(connector.getAttributes().getOverview_name() + " connector");
                                 String downloadLink = connector.getAttributes().getOverview_downloadlink();
-                                if (connectorFunctionServletUtil.downloadConnectorAndUpdateProjects(downloadLink)) {
+                                if (ConnectorServletUtil.downloadConnectorAndUpdateProjects(downloadLink)) {
                                     monitor.worked(100);
                                     monitor.done();
                                     return Status.OK_STATUS;

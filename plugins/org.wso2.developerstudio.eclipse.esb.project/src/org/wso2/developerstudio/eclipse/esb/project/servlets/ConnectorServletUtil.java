@@ -72,22 +72,37 @@ public class ConnectorServletUtil {
      * 
      * @return connector objects
      */
-    public String getConnectorsList(int start, int count) {
+    public static String getConnectorsList(int start, int count) {
         List<Connector> connectorList = new ArrayList<>();
         Object connectorInfo;
         try {
             connectorInfo = ConnectorStore.getConnectorInfo_es210(getHttpClient(), STORE_URL, start, count);
             if (connectorInfo instanceof List<?>) {
-                List<Connector> tmpList = (List<Connector>) connectorInfo;
-//                while (tmpList != null && !tmpList.isEmpty()) {
-                    connectorList.addAll(tmpList);
-//                    ++page;
-//                    tmpList = (List<Connector>) ConnectorStore.getConnectorInfo_es210(getHttpClient(),
-//                            "https://store.wso2.com", start, count);
-//                }
+                connectorList.addAll((List<Connector>) connectorInfo);
             } else if (connectorInfo instanceof ConnectorData) {
-                List<Connector> tmpList = ((ConnectorData) connectorInfo).getConnector();
-                connectorList.addAll(tmpList);
+                connectorList.addAll(((ConnectorData) connectorInfo).getConnector());
+            }
+        } catch (KeyManagementException | IOException | NoSuchAlgorithmException e) {
+            log.error("Error while listing connectors : ", e);
+        }
+
+        return new Gson().toJson(connectorList);
+    }
+    
+    /**
+     * Search for the connectors that match the query string
+     * 
+     * @return connector objects
+     */
+    public static String searchConnectors(String queryString) {
+        List<Connector> connectorList = new ArrayList<>();
+        Object connectorInfo;
+        try {
+            connectorInfo = ConnectorStore.searchConnector(getHttpClient(), STORE_URL, queryString);
+            if (connectorInfo instanceof List<?>) {
+                connectorList.addAll((List<Connector>) connectorInfo);
+            } else if (connectorInfo instanceof ConnectorData) {
+                connectorList.addAll(((ConnectorData) connectorInfo).getConnector());
             }
         } catch (KeyManagementException | IOException | NoSuchAlgorithmException e) {
             log.error("Error while listing connectors : ", e);
@@ -103,7 +118,7 @@ public class ConnectorServletUtil {
      * @return true if the connector was successfully downloaded and false if not
      * 
      */
-    public boolean downloadConnectorAndUpdateProjects(String downloadLink) {
+    public static boolean downloadConnectorAndUpdateProjects(String downloadLink) {
         String zipDestination = null;
         try {
             URL url = new URL(downloadLink);
@@ -148,7 +163,7 @@ public class ConnectorServletUtil {
      * @throws ZipException
      * @throws CoreException
      */
-    private void updateProjects(String source) throws ZipException, CoreException {
+    private static void updateProjects(String source) throws ZipException, CoreException {
         ZipFile zipFile = new ZipFile(source);
         String[] segments = source.split(Pattern.quote(File.separator));
         String zipFileName = segments[segments.length - 1].split(".zip")[0];
@@ -174,7 +189,7 @@ public class ConnectorServletUtil {
      * @throws NoSuchAlgorithmException
      * @throws KeyManagementException
      */
-    private HttpClient getHttpClient() throws NoSuchAlgorithmException, KeyManagementException {
+    private static HttpClient getHttpClient() throws NoSuchAlgorithmException, KeyManagementException {
         HttpClient httpclient = new HttpClient();
         httpclient.getParams().setIntParameter("http.socket.timeout", 180000);
         SSLContext ctx;

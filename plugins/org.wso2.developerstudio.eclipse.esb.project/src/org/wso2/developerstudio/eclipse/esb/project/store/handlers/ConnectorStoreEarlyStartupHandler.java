@@ -32,6 +32,7 @@ import org.osgi.framework.Bundle;
 import org.wso2.developerstudio.eclipse.esb.project.Activator;
 import org.wso2.developerstudio.eclipse.esb.project.servlets.ConnectorDownloadServlet;
 import org.wso2.developerstudio.eclipse.esb.project.servlets.ConnectorRetrievalServlet;
+import org.wso2.developerstudio.eclipse.esb.project.servlets.ConnectorSearchServlet;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.templates.dashboard.handlers.JettyServerHandler;
@@ -46,6 +47,7 @@ public class ConnectorStoreEarlyStartupHandler implements IStartup {
     private static final String CONTEXT_PATH = "/project/connectors";
     private static final String CONNECTOR_RETRIEVAL_SERVLET_PATH = "/list";
     private static final String CONNECTOR_DOWNLOAD_SERVLET_PATH = "/download";
+    private static final String CONNECTOR_SEARCH_SERVLET_PATH = "/search";
     private static final String WEB_APP_LOCATION = "HTMLPages";
 
     /*
@@ -75,9 +77,10 @@ public class ConnectorStoreEarlyStartupHandler implements IStartup {
         // Adding Default servlet and Connector servlet
         connectorsContext.addServlet(ConnectorRetrievalServlet.class, CONNECTOR_RETRIEVAL_SERVLET_PATH);
         connectorsContext.addServlet(ConnectorDownloadServlet.class, CONNECTOR_DOWNLOAD_SERVLET_PATH);
+        connectorsContext.addServlet(ConnectorSearchServlet.class, CONNECTOR_SEARCH_SERVLET_PATH);
         connectorsContext.addServlet(DefaultServlet.class, "/");
         connectorsContext.setResourceBase(webAppPath);
-        
+
         // Registering the handler in the jetty server
         jettyServerHandler.getHandlerCollection().addHandler(connectorsContext);
         try {

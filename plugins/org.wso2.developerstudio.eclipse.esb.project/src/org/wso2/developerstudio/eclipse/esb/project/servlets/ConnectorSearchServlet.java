@@ -30,24 +30,23 @@ import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.ui.Activator;
 
 /**
- * Servlet that retrieves connectors
+ * Servlets that allows the ability to search for connectors
  */
-public class ConnectorRetrievalServlet extends HttpServlet {
+public class ConnectorSearchServlet extends HttpServlet {
 
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
     /**
-     * Retrieves all connectors
+     * Search the connectors that match the query
      * 
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        final int start = Integer.parseInt(request.getParameter("start"));
-        final int count = Integer.parseInt(request.getParameter("count"));
+        final String queryString = request.getParameter("query");
         response.setContentType("application/json");
         response.setStatus(HttpServletResponse.SC_OK);
-        response.getWriter().println(ConnectorServletUtil.getConnectorsList(start, count));
+        response.getWriter().println(ConnectorServletUtil.searchConnectors(queryString));
     }
 
 }

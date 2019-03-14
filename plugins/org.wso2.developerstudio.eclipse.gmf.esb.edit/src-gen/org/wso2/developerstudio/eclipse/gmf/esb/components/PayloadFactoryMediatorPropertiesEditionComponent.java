@@ -60,6 +60,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.PayloadFactoryMediatorPropertiesEditionPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 
 
 // End of user code
@@ -357,13 +358,16 @@ public class PayloadFactoryMediatorPropertiesEditionComponent extends SinglePart
 	/**
 	 * {@inheritDoc}
 	 * 
+	 * @generated NOT
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getHelpContent(java.lang.Object, int)
 	 * 
 	 */
 	public String getHelpContent(Object key, int kind) {
-		if (key == EsbViewsRepository.PayloadFactoryMediator.Properties.args)
-			return "Arguments"; //$NON-NLS-1$
-		return super.getHelpContent(key, kind);
+//		if (key == EsbViewsRepository.PayloadFactoryMediator.Properties.args)
+//			return "Arguments"; //$NON-NLS-1$
+//		return super.getHelpContent(key, kind);
+		return EEFPropertyViewUtil.getHelpContent(key);
 	}
 
 	/**
@@ -426,10 +430,5 @@ public class PayloadFactoryMediatorPropertiesEditionComponent extends SinglePart
 		}
 		return ret;
 	}
-
-
-	
-
-	
 
 }

@@ -21,6 +21,7 @@ import java.util.Map;
 
 import javax.xml.stream.XMLStreamException;
 
+import org.apache.axiom.om.OMAbstractFactory;
 import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.util.AXIOMUtil;
 import org.apache.synapse.endpoints.Endpoint;
@@ -126,9 +127,11 @@ public class EnrichMediatorTransformer extends AbstractEsbNodeTransformer {
                 switch (visualEnrich.getInlineType()) {
                 case CONTENT:
                     String str = visualEnrich.getSourceXML();
-                    OMElement payload = AXIOMUtil.stringToOM(str);
-                    if (str != null)
-                        source.setInlineOMNode(payload);
+                    if (str != null && str.trim().startsWith("<") && str.trim().endsWith(">")) {
+                        source.setInlineOMNode(AXIOMUtil.stringToOM(str));
+                    } else {
+                        source.setInlineOMNode(OMAbstractFactory.getOMFactory().createOMText(str));
+                    }
                     break;
                 case KEY:
                     source.setInlineKey(visualEnrich.getInlineRegistryKey().getKeyValue());

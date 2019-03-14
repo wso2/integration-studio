@@ -19,6 +19,8 @@ package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer;
 import java.util.Map;
 
 import org.apache.synapse.config.xml.SynapsePath;
+import org.apache.axiom.om.OMElement;
+import org.apache.axiom.om.OMText;
 import org.apache.synapse.mediators.AbstractMediator;
 import org.apache.synapse.mediators.elementary.Source;
 import org.apache.synapse.mediators.elementary.Target;
@@ -26,17 +28,14 @@ import org.apache.synapse.util.xpath.SynapseXPath;
 
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
-import org.eclipse.ui.forms.editor.FormEditor;
 import org.wso2.developerstudio.eclipse.gmf.esb.EnrichMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.EnrichSourceInlineType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EnrichSourceType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EnrichTargetAction;
 import org.wso2.developerstudio.eclipse.gmf.esb.EnrichTargetType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.developerstudio.eclipse.gmf.esb.LogMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
-
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
 
 public class EnrichMediatorDeserializer extends AbstractEsbNodeDeserializer<AbstractMediator, EnrichMediator> {
@@ -98,7 +97,12 @@ public class EnrichMediatorDeserializer extends AbstractEsbNodeDeserializer<Abst
                 if (source.getInlineOMNode() != null) {
 
                     // vishualEnrich.setSourceXML(source.getInlineOMNode().toString());
-                    executeSetValueCommand(ENRICH_MEDIATOR__SOURCE_XML, source.getInlineOMNode().toString());
+                    if (source.getInlineOMNode() instanceof OMElement) {
+                        executeSetValueCommand(ENRICH_MEDIATOR__SOURCE_XML, source.getInlineOMNode().toString());
+                    } else if (source.getInlineOMNode() instanceof OMText) {
+                        executeSetValueCommand(ENRICH_MEDIATOR__SOURCE_XML,
+                                ((OMText) source.getInlineOMNode()).getText());
+                    }
                     executeSetValueCommand(ENRICH_MEDIATOR__INLINE_TYPE, EnrichSourceInlineType.CONTENT);
                 } else if (source.getInlineKey() != null) {
                     executeSetValueCommand(visualEnrichMediator.getInlineRegistryKey(),
@@ -180,11 +184,15 @@ public class EnrichMediatorDeserializer extends AbstractEsbNodeDeserializer<Abst
                 SynapsePath xpath = target.getXpath();
 
                 NamespacedProperty nsp = EsbFactory.eINSTANCE.createNamespacedProperty();
+                
+                if (xpath == null) {
+                    nsp.setPropertyValue("");
+                } else {
+                    nsp.setPropertyValue(xpath.toString());
+                    nsp.setSupportJsonPaths(true);
+                }
 
-                nsp.setPropertyValue(xpath.toString());
-                nsp.setSupportJsonPaths(true);
-
-                if (xpath.getNamespaces() != null) {
+                if (xpath != null && xpath.getNamespaces() != null) {
 
                     @SuppressWarnings("unchecked")
                     Map<String, String> map = xpath.getNamespaces();

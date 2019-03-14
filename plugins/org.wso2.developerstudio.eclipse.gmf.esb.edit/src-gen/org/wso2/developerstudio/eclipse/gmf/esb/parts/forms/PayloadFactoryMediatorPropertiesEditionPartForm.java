@@ -63,7 +63,7 @@ import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
-
+import org.eclipse.swt.layout.FormData;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 
@@ -103,10 +103,13 @@ public class PayloadFactoryMediatorPropertiesEditionPartForm extends SectionProp
 	protected Control[] mediaTypeElements;
 	protected Control[] descriptionElements;
 	protected Control[] payloadKeyElements;
+	protected Control[] argsTableElements;
 	
 	protected RegistryKeyProperty payloadKey;
 	protected Text payloadKeyText;
 	protected Composite propertiesGroup;
+	
+	protected Composite filterPayloadSubPropertiesGroup;
 	// End of user code
 
 	protected Text payload;
@@ -150,14 +153,13 @@ public class PayloadFactoryMediatorPropertiesEditionPartForm extends SectionProp
 	 * 
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
-		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
-		Form form = scrolledForm.getForm();
+		Form form = widgetFactory.createForm(parent);
 		view = form.getBody();
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
 		createControls(widgetFactory, view);
-		return scrolledForm;
+		return form;
 	}
 
 	/**
@@ -170,34 +172,34 @@ public class PayloadFactoryMediatorPropertiesEditionPartForm extends SectionProp
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		CompositionSequence payloadFactoryMediatorStep = new BindingCompositionSequence(propertiesEditionComponent);
 		CompositionStep propertiesStep = payloadFactoryMediatorStep.addStep(EsbViewsRepository.PayloadFactoryMediator.Properties.class);
+		// Start of user code
 		propertiesStep.addStep(EsbViewsRepository.PayloadFactoryMediator.Properties.payloadFormat);
+		propertiesStep.addStep(EsbViewsRepository.PayloadFactoryMediator.Properties.mediaType);
 		propertiesStep.addStep(EsbViewsRepository.PayloadFactoryMediator.Properties.payloadKey);
 		propertiesStep.addStep(EsbViewsRepository.PayloadFactoryMediator.Properties.payload);
 		propertiesStep.addStep(EsbViewsRepository.PayloadFactoryMediator.Properties.args);
-		propertiesStep.addStep(EsbViewsRepository.PayloadFactoryMediator.Properties.mediaType);
 		propertiesStep.addStep(EsbViewsRepository.PayloadFactoryMediator.Properties.description);
-		
+		// End of user code
 		
 		composer = new PartComposer(payloadFactoryMediatorStep) {
 
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
+			    // Start of user code for components addToPart creation
 				if (key == EsbViewsRepository.PayloadFactoryMediator.Properties.class) {
 					return createPropertiesGroup(widgetFactory, parent);
 				}
 				if (key == EsbViewsRepository.PayloadFactoryMediator.Properties.payloadFormat) {
 					return createPayloadFormatEMFComboViewer(widgetFactory, parent);
 				}
-				// Start of user code for payloadKey addToPart creation
 				if (key == EsbViewsRepository.PayloadFactoryMediator.Properties.payloadKey) {
 					return createPayloadKey(widgetFactory, parent);
 				}
-				// End of user code
 				if (key == EsbViewsRepository.PayloadFactoryMediator.Properties.payload) {
 					return createPayloadText(widgetFactory, parent);
 				}
 				if (key == EsbViewsRepository.PayloadFactoryMediator.Properties.args) {
-					return createArgsTableComposition(widgetFactory, parent);
+					return createArgsTableComposition(widgetFactory, filterPayloadSubPropertiesGroup);
 				}
 				if (key == EsbViewsRepository.PayloadFactoryMediator.Properties.mediaType) {
 					return createMediaTypeEMFComboViewer(widgetFactory, parent);
@@ -205,6 +207,7 @@ public class PayloadFactoryMediatorPropertiesEditionPartForm extends SectionProp
 				if (key == EsbViewsRepository.PayloadFactoryMediator.Properties.description) {
 					return createDescriptionText(widgetFactory, parent);
 				}
+				// End of user code
 				return parent;
 			}
 		};
@@ -275,11 +278,14 @@ public class PayloadFactoryMediatorPropertiesEditionPartForm extends SectionProp
      * @generated NOT
      */
 	protected Composite createPayloadText(FormToolkit widgetFactory, Composite parent) {
-		Control payloadLabel = createDescription(parent, EsbViewsRepository.PayloadFactoryMediator.Properties.payload, EsbMessages.PayloadFactoryMediatorPropertiesEditionPart_PayloadLabel);
-		payload = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+        filterPayloadSubPropertiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent, "Payload",
+                true);
+		Control payloadLabel = createDescription(filterPayloadSubPropertiesGroup, EsbViewsRepository.PayloadFactoryMediator.Properties.payload, EsbMessages.PayloadFactoryMediatorPropertiesEditionPart_PayloadLabel);
+		payload = widgetFactory.createText(filterPayloadSubPropertiesGroup, "", SWT.MULTI | SWT.BORDER | SWT.WRAP | SWT.V_SCROLL); //$NON-NLS-1$
 		payload.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
-		widgetFactory.paintBordersFor(parent);
+		widgetFactory.paintBordersFor(filterPayloadSubPropertiesGroup);
 		GridData payloadData = new GridData(GridData.FILL_HORIZONTAL);
+		payloadData.heightHint = payload.getLineHeight()*4;
 		payload.setLayoutData(payloadData);
 		payload.addFocusListener(new FocusAdapter() {
 			/**
@@ -318,23 +324,10 @@ public class PayloadFactoryMediatorPropertiesEditionPartForm extends SectionProp
 				}
 			}
 		});
-		payload.addKeyListener(new KeyAdapter() {
-			/**
-			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PayloadFactoryMediatorPropertiesEditionPartForm.this, EsbViewsRepository.PayloadFactoryMediator.Properties.payload, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, payload.getText()));
-				}
-			}
-		});
+
 		EditingUtils.setID(payload, EsbViewsRepository.PayloadFactoryMediator.Properties.payload);
 		EditingUtils.setEEFtype(payload, "eef::Text"); //$NON-NLS-1$
-		Control payloadHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PayloadFactoryMediator.Properties.payload, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		Control payloadHelp = FormUtils.createHelpButton(widgetFactory, filterPayloadSubPropertiesGroup, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PayloadFactoryMediator.Properties.payload, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createPayloadText
 		payloadElements = new Control[] {payloadLabel, payload, payloadHelp};
 		// End of user code
@@ -345,6 +338,7 @@ public class PayloadFactoryMediatorPropertiesEditionPartForm extends SectionProp
      * @generated NOT
      */
 	protected Composite createArgsTableComposition(FormToolkit widgetFactory, Composite parent) {
+	    Control[] previousControls = filterPayloadSubPropertiesGroup.getChildren();
 		this.args = new ReferencesTable(getDescription(EsbViewsRepository.PayloadFactoryMediator.Properties.args, EsbMessages.PayloadFactoryMediatorPropertiesEditionPart_ArgsLabel), new ReferencesTableListener() {
 			public void handleAdd() {
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PayloadFactoryMediatorPropertiesEditionPartForm.this, EsbViewsRepository.PayloadFactoryMediator.Properties.args, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
@@ -386,6 +380,8 @@ public class PayloadFactoryMediatorPropertiesEditionPartForm extends SectionProp
 		args.setID(EsbViewsRepository.PayloadFactoryMediator.Properties.args);
 		args.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
 		// Start of user code for createArgsTableComposition
+        Control[] newControls = filterPayloadSubPropertiesGroup.getChildren();
+        argsTableElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
 		// End of user code
 		return parent;
 	}
@@ -966,22 +962,22 @@ public class PayloadFactoryMediatorPropertiesEditionPartForm extends SectionProp
     }
     
     public void validate() {
-    	EEFPropertyViewUtil eu = new EEFPropertyViewUtil(view);
-    	for (Control control : propertiesGroup.getChildren()) {
-    		if (!(control instanceof Composite)) {
-    			eu.clearElement(control);
-    		}
-    	}
+        EEFPropertyViewUtil eu = new EEFPropertyViewUtil(view);
+        eu.clearElements(new Composite[] { propertiesGroup });
+
+        eu.showEntry(new Control[] { filterPayloadSubPropertiesGroup.getParent() }, false);
+        eu.clearElements(new Composite[] { filterPayloadSubPropertiesGroup });
 
         eu.showEntry(payloadFormatElements, false);
+        eu.showEntry(argsTableElements, false);
 
         if (getPayloadFormat().getName().equals(PayloadFormatType.INLINE.getName())) {
-        	eu.showEntry(payloadElements, false);
+            eu.showEntry(payloadElements, false);
 
         } else if (getPayloadFormat().getName().equals(PayloadFormatType.REGISTRY_REFERENCE.getName())) {
-        	eu.showEntry(payloadKeyElements, false);
+            eu.showEntry(payloadKeyElements, false);
         }
-        
+
         eu.showEntry(mediaTypeElements, false);
         eu.showEntry(descriptionElements, false);
         view.layout(true, true);

@@ -475,7 +475,7 @@
             priority="normal" 
             contentProvider="dataMapper.diagram.navigator.DataMapperNavigatorContentProvider" 
             labelProvider="dataMapper.diagram.navigator.DataMapperNavigatorLabelProvider"
-            icon="icons/obj16/DataMapperDiagramFile.gif"
+            icon="icons/obj16/DataMapperDiagramFile.png"
             activeByDefault="true">
          <triggerPoints>
             <or>
@@ -511,7 +511,7 @@
             priority="normal" 
             contentProvider="dataMapper.diagram.navigator.DataMapperDomainNavigatorContentProvider" 
             labelProvider="dataMapper.diagram.navigator.DataMapperDomainNavigatorLabelProvider"
-            icon="icons/obj16/DataMapperDiagramFile.gif"
+            icon="icons/obj16/DataMapperDiagramFile.png"
             activeByDefault="true">
          <triggerPoints>
             <or>

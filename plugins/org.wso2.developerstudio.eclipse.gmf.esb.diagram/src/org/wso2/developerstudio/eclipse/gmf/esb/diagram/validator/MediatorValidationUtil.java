@@ -127,7 +127,7 @@ public class MediatorValidationUtil {
         try {
             OMElement omElement = AXIOMUtil.stringToOM(mediator);
             return validateMediatorsFromOEMElement(omElement, qTag);
-        } catch (XMLStreamException e) {
+        } catch (Exception e) {
             // ignore
         }
         return "";

@@ -102,6 +102,8 @@ public class HeaderMediatorPropertiesEditionPartForm extends SectionPropertiesEd
     protected Button editCommentsList;
     protected EList commentsListList;
     protected Button reverse;
+    
+    protected Composite headerValueSubsectionGroup;
 	// End of user code
 
 	protected Text description;
@@ -130,14 +132,13 @@ public class HeaderMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	 * 
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
-		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
-		Form form = scrolledForm.getForm();
+		Form form = widgetFactory.createForm(parent);
 		view = form.getBody();
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
 		createControls(widgetFactory, view);
-		return scrolledForm;
+		return form;
 	}
 
 	/**
@@ -148,17 +149,18 @@ public class HeaderMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
+        // Start of user code
 		CompositionSequence headerMediatorStep = new BindingCompositionSequence(propertiesEditionComponent);
 		CompositionStep propertiesStep = headerMediatorStep.addStep(EsbViewsRepository.HeaderMediator.Properties.class);
+		propertiesStep.addStep(EsbViewsRepository.HeaderMediator.Properties.headerName);
 		propertiesStep.addStep(EsbViewsRepository.HeaderMediator.Properties.headerAction);
-		propertiesStep.addStep(EsbViewsRepository.HeaderMediator.Properties.valueType);
 		propertiesStep.addStep(EsbViewsRepository.HeaderMediator.Properties.scope);
+		propertiesStep.addStep(EsbViewsRepository.HeaderMediator.Properties.valueType);
 		propertiesStep.addStep(EsbViewsRepository.HeaderMediator.Properties.valueLiteral);
 		propertiesStep.addStep(EsbViewsRepository.HeaderMediator.Properties.valueInline);
-		propertiesStep.addStep(EsbViewsRepository.HeaderMediator.Properties.headerName);
 		propertiesStep.addStep(EsbViewsRepository.HeaderMediator.Properties.valueExpression);
 		propertiesStep.addStep(EsbViewsRepository.HeaderMediator.Properties.description);
-		
+        // End of user code
 		
 		composer = new PartComposer(headerMediatorStep) {
 
@@ -177,10 +179,10 @@ public class HeaderMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 					return createScopeEMFComboViewer(widgetFactory, parent);
 				}
 				if (key == EsbViewsRepository.HeaderMediator.Properties.valueLiteral) {
-					return createValueLiteralText(widgetFactory, parent);
+					return createValueLiteralText(widgetFactory, headerValueSubsectionGroup);
 				}
 				if (key == EsbViewsRepository.HeaderMediator.Properties.valueInline) {
-					return createValueInlineText(widgetFactory, parent);
+					return createValueInlineText(widgetFactory, headerValueSubsectionGroup);
 				}
 				// Start of user code for headerName addToPart creation
 				if ( key == EsbViewsRepository.HeaderMediator.Properties.headerName) {
@@ -189,7 +191,7 @@ public class HeaderMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 				// End of user code
 				// Start of user code for valueExpression addToPart creation
 				if ( key == EsbViewsRepository.HeaderMediator.Properties.valueExpression) {
-					return createValueExpression(widgetFactory, parent);
+					return createValueExpression(widgetFactory, headerValueSubsectionGroup);
 				}
 				// End of user code
 				if (key == EsbViewsRepository.HeaderMediator.Properties.description) {
@@ -266,8 +268,9 @@ public class HeaderMediatorPropertiesEditionPartForm extends SectionPropertiesEd
      * @generated NOT
      */
 	protected Composite createValueTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
-		Control valueTypeLabel = createDescription(parent, EsbViewsRepository.HeaderMediator.Properties.valueType, EsbMessages.HeaderMediatorPropertiesEditionPart_ValueTypeLabel);
-		valueType = new EMFComboViewer(parent);
+	    headerValueSubsectionGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent, "Header Value", true);
+		Control valueTypeLabel = createDescription(headerValueSubsectionGroup, EsbViewsRepository.HeaderMediator.Properties.valueType, EsbMessages.HeaderMediatorPropertiesEditionPart_ValueTypeLabel);
+		valueType = new EMFComboViewer(headerValueSubsectionGroup);
 		valueType.setContentProvider(new ArrayContentProvider());
 		valueType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData valueTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -287,7 +290,7 @@ public class HeaderMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 
 		});
 		valueType.setID(EsbViewsRepository.HeaderMediator.Properties.valueType);
-		Control valueTypeHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.HeaderMediator.Properties.valueType, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		Control valueTypeHelp = FormUtils.createHelpButton(widgetFactory, headerValueSubsectionGroup, propertiesEditionComponent.getHelpContent(EsbViewsRepository.HeaderMediator.Properties.valueType, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createValueTypeEMFComboViewer
 		valueTypeElements = new Control[] {valueTypeLabel, valueType.getCombo(), valueTypeHelp};
 		valueType.addSelectionChangedListener(new ISelectionChangedListener() {
@@ -922,10 +925,7 @@ public class HeaderMediatorPropertiesEditionPartForm extends SectionPropertiesEd
         
     }
 	
-    /**
-     * 
-     * @generated NOT
-     */
+    // Start of user code additional methods
 	protected Composite createHeaderName(FormToolkit widgetFactory, final Composite parent) {
 		Control headerNameLabel = createDescription(parent, EsbViewsRepository.HeaderMediator.Properties.headerName, EsbMessages.HeaderMediatorPropertiesEditionPart_HeaderNameLabel);
         widgetFactory.paintBordersFor(parent);
@@ -1045,11 +1045,12 @@ public class HeaderMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	public void validate() {
 	    EEFPropertyViewUtil eu = new EEFPropertyViewUtil(view);
 	    eu.clearElements(new Composite[] { propertiesGroup });
-	    
 	    eu.showEntry(headerActionElements, false);
 	    eu.showEntry(scopeElements, false);
         
         if (getHeaderAction().getName().equals(HeaderAction.SET.getName())) {
+            eu.showEntry(new Control[] {headerValueSubsectionGroup.getParent()}, false);
+            eu.clearElements(new Composite[] { headerValueSubsectionGroup });
             eu.showEntry(valueTypeElements, false);
             
             if (getValueType() != null && getValueType().getName().equals(HeaderValueType.INLINE.getName())) {
@@ -1076,7 +1077,6 @@ public class HeaderMediatorPropertiesEditionPartForm extends SectionPropertiesEd
         
         view.layout(true, true);
     }
-	
 	// End of user code
 
 

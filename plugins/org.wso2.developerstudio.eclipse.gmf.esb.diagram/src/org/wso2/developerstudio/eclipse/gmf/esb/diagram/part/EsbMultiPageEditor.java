@@ -252,7 +252,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 
                 addPage(DESIGN_VIEW_PAGE_INDEX, graphicalEditor, editorInput);
 
-                Display.getDefault().syncExec(new Runnable() {
+                Display.getDefault().asyncExec(new Runnable() {
                     @Override
                     public void run() {
                         ESBDebuggerUtil.setPageCreateOperationActivated(true);
@@ -671,7 +671,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
                     handleFormViewActivatedEvent(false);
                 } else {
                     handleDesignViewActivatedEvent(false);
-                    Display.getCurrent().syncExec(new Runnable() {
+                    Display.getCurrent().asyncExec(new Runnable() {
 
                         @Override
                         public void run() {
@@ -717,47 +717,54 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
             break;
         }
         case SOURCE_VIEW_PAGE_INDEX: {
-            try {
-                if (isFormEditor) {
-                    if (currArtifactType != null) {
-                        sourceEditor.update(formEditor.getFormPageForArtifact(currArtifactType), currArtifactType);
-                        sourceDirty = false;
-                        firePropertyChange(PROP_DIRTY);
-                    }
-                } else {
-                    deleteMarkers();
-                    updateSequenceDetails();
-                    handleSourceViewActivatedEvent();
-                    String source = sourceEditor.getDocument().get();
-                    SourceError tempError = ProcessSourceView.validateSynapseContent(source);
-                    if (tempError != null) {
-                        addMarker(tempError);
+            Display.getDefault().asyncExec(new Runnable() {
+
+                @Override
+                public void run() {
+                    try {
+                        if (isFormEditor) {
+                            if (currArtifactType != null) {
+                                sourceEditor.update(formEditor.getFormPageForArtifact(currArtifactType),
+                                        currArtifactType);
+                                sourceDirty = false;
+                                firePropertyChange(PROP_DIRTY);
+                            }
+                        } else {
+                            deleteMarkers();
+                            updateSequenceDetails();
+                            handleSourceViewActivatedEvent();
+                            String source = sourceEditor.getDocument().get();
+                            SourceError tempError = ProcessSourceView.validateSynapseContent(source);
+                            if (tempError != null) {
+                                addMarker(tempError);
+                                sourceDirty = true;
+                            }
+                        }
+                    } catch (NumberFormatException nfe) {
+                        log.error("Cannot update source view", nfe);
+                        String simpleMessage = ExceptionMessageMapper.getNonTechnicalMessage(nfe.getMessage());
+                        handleSourceUpdateError(simpleMessage, nfe);
+                        setActivePage(DESIGN_VIEW_PAGE_INDEX);
+                    } catch (TransformerException te) {
                         sourceDirty = true;
+                        log.error("Error while saving the diagram", te);
+                        String errorMsgHeader = "Save failed. Following error(s) have been detected."
+                                + " Please see the error log for more details";
+                        handleSourceUpdateError(errorMsgHeader, te);
+                    } catch (DeserializerException de) {
+                        sourceDirty = true;
+                        log.error("Error while saving the diagram", de);
+                        String errorMsgHeader = "Save failed. Following error(s) have been detected."
+                                + " Please see the error log for more details.";
+                        handleSourceUpdateError(errorMsgHeader, de);
+                    } catch (Exception e) {
+                        log.error("Cannot update source view", e);
+                        String simpleMessage = ExceptionMessageMapper.getNonTechnicalMessage(e.getMessage());
+                        handleSourceUpdateError(simpleMessage, e);
+                        setActivePage(DESIGN_VIEW_PAGE_INDEX);
                     }
                 }
-            } catch (NumberFormatException nfe) {
-                log.error("Cannot update source view", nfe);
-                String simpleMessage = ExceptionMessageMapper.getNonTechnicalMessage(nfe.getMessage());
-                handleSourceUpdateError(simpleMessage, nfe);
-                setActivePage(DESIGN_VIEW_PAGE_INDEX);
-            } catch (TransformerException te) {
-                sourceDirty = true;
-                log.error("Error while saving the diagram", te);
-                String errorMsgHeader = "Save failed. Following error(s) have been detected."
-                        + " Please see the error log for more details";
-                handleSourceUpdateError(errorMsgHeader, te);
-            } catch (DeserializerException de) {
-                sourceDirty = true;
-                log.error("Error while saving the diagram", de);
-                String errorMsgHeader = "Save failed. Following error(s) have been detected."
-                        + " Please see the error log for more details.";
-                handleSourceUpdateError(errorMsgHeader, de);
-            } catch (Exception e) {
-                log.error("Cannot update source view", e);
-                String simpleMessage = ExceptionMessageMapper.getNonTechnicalMessage(e.getMessage());
-                handleSourceUpdateError(simpleMessage, e);
-                setActivePage(DESIGN_VIEW_PAGE_INDEX);
-            }
+            });
             break;
         }
         }

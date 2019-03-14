@@ -86,6 +86,8 @@ public class RegistryKeyPropertyPropertiesEditionPartImpl extends CompositePrope
 	/**
 	 * {@inheritDoc}
 	 * 
+	 * @generated NOT
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
 	 * 
@@ -93,11 +95,8 @@ public class RegistryKeyPropertyPropertiesEditionPartImpl extends CompositePrope
 	public void createControls(Composite view) { 
 		CompositionSequence registryKeyPropertyStep = new BindingCompositionSequence(propertiesEditionComponent);
 		CompositionStep propertiesStep = registryKeyPropertyStep.addStep(EsbViewsRepository.RegistryKeyProperty.Properties.class);
-		propertiesStep.addStep(EsbViewsRepository.RegistryKeyProperty.Properties.prettyName);
 		propertiesStep.addStep(EsbViewsRepository.RegistryKeyProperty.Properties.keyName);
 		propertiesStep.addStep(EsbViewsRepository.RegistryKeyProperty.Properties.keyValue);
-		propertiesStep.addStep(EsbViewsRepository.RegistryKeyProperty.Properties.filters);
-		
 		
 		composer = new PartComposer(registryKeyPropertyStep) {
 
@@ -212,20 +211,22 @@ public class RegistryKeyPropertyPropertiesEditionPartImpl extends CompositePrope
 		});
 		keyName.addKeyListener(new KeyAdapter() {
 
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(RegistryKeyPropertyPropertiesEditionPartImpl.this, EsbViewsRepository.RegistryKeyProperty.Properties.keyName, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, keyName.getText()));
-				}
-			}
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+             * 
+             */
+            @Override
+            @SuppressWarnings("synthetic-access")
+            public void keyReleased(KeyEvent e) {
+                if (propertiesEditionComponent != null) {
+                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                            RegistryKeyPropertyPropertiesEditionPartImpl.this,
+                            EsbViewsRepository.RegistryKeyProperty.Properties.keyName, PropertiesEditionEvent.COMMIT,
+                            PropertiesEditionEvent.SET, null, keyName.getText()));
+                }
+            }
 
 		});
 		EditingUtils.setID(keyName, EsbViewsRepository.RegistryKeyProperty.Properties.keyName);
@@ -261,20 +262,22 @@ public class RegistryKeyPropertyPropertiesEditionPartImpl extends CompositePrope
 		});
 		keyValue.addKeyListener(new KeyAdapter() {
 
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(RegistryKeyPropertyPropertiesEditionPartImpl.this, EsbViewsRepository.RegistryKeyProperty.Properties.keyValue, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, keyValue.getText()));
-				}
-			}
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+             * 
+             */
+            @Override
+            @SuppressWarnings("synthetic-access")
+            public void keyReleased(KeyEvent e) {
+                if (propertiesEditionComponent != null) {
+                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                            RegistryKeyPropertyPropertiesEditionPartImpl.this,
+                            EsbViewsRepository.RegistryKeyProperty.Properties.keyValue, PropertiesEditionEvent.COMMIT,
+                            PropertiesEditionEvent.SET, null, keyValue.getText()));
+                }
+            }
 
 		});
 		EditingUtils.setID(keyValue, EsbViewsRepository.RegistryKeyProperty.Properties.keyValue);

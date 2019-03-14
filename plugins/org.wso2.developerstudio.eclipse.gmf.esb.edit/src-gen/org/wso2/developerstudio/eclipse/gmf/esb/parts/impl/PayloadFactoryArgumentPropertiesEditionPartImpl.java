@@ -252,10 +252,11 @@ public class PayloadFactoryArgumentPropertiesEditionPartImpl extends CompositePr
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PayloadFactoryArgumentPropertiesEditionPartImpl.this, EsbViewsRepository.PayloadFactoryArgument.Properties.argumentValue, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, argumentValue.getText()));
+			public void keyReleased(KeyEvent e) {
+				if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+				    if (propertiesEditionComponent != null) {
+				        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PayloadFactoryArgumentPropertiesEditionPartImpl.this, EsbViewsRepository.PayloadFactoryArgument.Properties.argumentValue, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, argumentValue.getText()));
+				    }
 				}
 			}
 
@@ -561,7 +562,7 @@ public class PayloadFactoryArgumentPropertiesEditionPartImpl extends CompositePr
         	argumentExpression = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
         }
         
-        argumentExpressionText = SWTUtils.createScrollableText(parent, SWT.BORDER);
+        argumentExpressionText = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.READ_ONLY);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
         argumentExpressionText.setLayoutData(valueData);
         argumentExpressionText.addMouseListener(new MouseListener() {

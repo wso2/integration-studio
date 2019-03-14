@@ -52,4 +52,19 @@
       	disabledIcon="icons/full/dtool16/saveall_edit.png" 
       	/>
    </extension>
+   <extension point="org.eclipse.ui.decorators">
+		<decorator
+        adaptable="true"
+        icon="icons/source-folder.png"
+        id="org.wso2.developerstudio.eclipse.esb.theme.SourceFolderDecorator"
+        label="Source Folder Decorator"
+        lightweight="true"
+        location="TOP_LEFT"
+        objectClass="org.eclipse.core.resources.IFolder"
+        state="true">
+		    <description>
+		      Source Folder Decorator
+		    </description>
+		  </decorator>
+	</extension>
 </plugin>

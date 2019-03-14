@@ -10,7 +10,7 @@ var search_connector_endpoint = "http://localhost:" + portValue
 
 // Pagination constants
 var counter = 0;
-var count = 10;
+var count = 50;
 
 /**
  * Load more connectors on scrolling
@@ -19,13 +19,15 @@ var count = 10;
  * @returns
  */
 $("#connector-nodes").scroll(function(event) {
-	setTimeout(function() {
-		counter += 10;
-		getConnectors(counter, count);
-	}, 1000);
+	if ($(window).scrollTop() + $(window).height() == $(document).height()) {
+		setTimeout(function() {
+			counter += 50;
+			getConnectors(counter, count);
+		}, 1000);
+	}
 });
 
-$("#search").keydown(function() {
+$("#search").keyup(function() {
 	searchConnectors($('#search').val());
 });
 
@@ -43,7 +45,7 @@ function getConnectors(start, count) {
 		start : start,
 		count : count
 	}, function(data, status) {
-		loadConnectorNodes(JSON.stringify(data));
+		drawConnectorNodes(data);
 	});
 }
 
@@ -64,20 +66,9 @@ function searchConnectors(queryString) {
 	$.post(search_connector_endpoint, {
 		query : queryString
 	}, function(data, status) {
-		reDrawConnectorNodes(data);
+		redrawConnectorNodes(data);
 	});
 }
-
-/**
- * Parses the connectors from JSON
- * 
- * @param connectorsString
- * @returns
- */
-function loadConnectorNodes(connectorsString) {
-	var connectors = JSON.parse(connectorsString);
-	drawConnectorNodes(connectors);
-};
 
 /**
  * Render connectors and append them to the div
@@ -99,18 +90,9 @@ function drawConnectorNodes(connectors) {
 	});
 };
 
-function reDrawConnectorNodes(connectors) {
+function redrawConnectorNodes(connectors) {
 	$(".template").remove();
-	connectors.forEach(function(connector) {
-		connectorNode = createConnectorNode(connector.id,
-				connector.attributes.overview_version,
-				connector.attributes.overview_name,
-				connector.attributes.overview_description, connector.image);
-		$("#connector-nodes").append(connectorNode);
-		$("#" + connector.id).click(function() {
-			downloadConnector(connector);
-		});
-	});
+	drawConnectorNodes(connectors);
 };
 
 /**

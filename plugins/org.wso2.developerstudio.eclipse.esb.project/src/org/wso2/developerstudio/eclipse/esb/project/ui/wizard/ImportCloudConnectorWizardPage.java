@@ -37,6 +37,7 @@ import javax.net.ssl.KeyManager;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
+
 import org.apache.commons.httpclient.HttpClient;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
@@ -61,11 +62,8 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.FileDialog;
-import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Table;
-import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.PlatformUI;
@@ -74,6 +72,7 @@ import org.wso2.developerstudio.eclipse.esb.project.Activator;
 import org.wso2.developerstudio.eclipse.esb.project.connector.store.Connector;
 import org.wso2.developerstudio.eclipse.esb.project.connector.store.ConnectorData;
 import org.wso2.developerstudio.eclipse.esb.project.connector.store.ConnectorStore;
+import org.wso2.developerstudio.eclipse.esb.project.servlets.FunctionServerConstants;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
@@ -91,7 +90,7 @@ public class ImportCloudConnectorWizardPage extends WizardPage {
 	private static final String CONNECTOR_STORE_URL = "https://store.wso2.com";
 	private static final int TIMEOUT = 180000;
 	private static final String HTTP_SOCKET_TIMEOUT = "http.socket.timeout";
-	private static final String LOAD_CONNECTORS_PAGE = "http://localhost:7774/project/connectors/index.html";
+	private static final String LOAD_CONNECTORS_PAGE = "http://localhost:" + FunctionServerConstants.EMBEDDED_SERVER_PORT + "/project/connectors/index.html";
 	
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
@@ -225,7 +224,7 @@ public class ImportCloudConnectorWizardPage extends WizardPage {
 						monitor.beginTask("Fetching list of connectors", 1000);
 						monitor.subTask("Searching connectors in store : page " + page);
 						Object connectorInfo = ConnectorStore.getConnectorInfo(getHttpClient(),
-								txtConnectorStoreURL.getText(), page);
+						        CONNECTOR_STORE_URL, page);
 						if (connectorInfo instanceof List<?>) {
 							List<Connector> tmpList = (List<Connector>) connectorInfo;
 							while (tmpList != null && !tmpList.isEmpty()) {
@@ -234,7 +233,7 @@ public class ImportCloudConnectorWizardPage extends WizardPage {
 								++page;
 								monitor.subTask("Searching connectors in store : page " + page);
 								tmpList = (List<Connector>) ConnectorStore.getConnectorInfo(getHttpClient(),
-										txtConnectorStoreURL.getText(), page);
+								        CONNECTOR_STORE_URL, page);
 							}
 							addConnectorsToTable(page, iconCacheDir, monitor);
 						} else if (connectorInfo instanceof ConnectorData) {

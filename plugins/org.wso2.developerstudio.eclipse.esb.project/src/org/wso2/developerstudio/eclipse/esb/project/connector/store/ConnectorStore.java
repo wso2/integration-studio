@@ -35,15 +35,15 @@ import com.google.gson.reflect.TypeToken;
 public class ConnectorStore {
 
     private static final String ASSETS = "/store/apis/assets/esbconnector";
-    
+
     // ES 2.1.0 API endpoints
-    
+
     // context path to get assets with ES 2.1.0
     private static final String ASSETS_ES210 = "/store/apis/assets?type=esbconnector";
     private static final String ASSETS_ES210_WITH_PAGINATION = ASSETS_ES210 + "&sort=+overview_name&start=%d&count=%d";
     // context path to get assets in Ascending order with ES 2.1.0
     private static final String ASSETS_ES210_ASC = ASSETS_ES210 + "&sort=+overview_name";
-    // context path to search assets in ES 2.1.0, sorted in Ascending order 
+    // context path to search assets in ES 2.1.0, sorted in Ascending order
     private static final String ASSETS_ES210_SEARCH = ASSETS_ES210_ASC + "&q=";
 
     /**
@@ -111,10 +111,10 @@ public class ConnectorStore {
         GetMethod get = new GetMethod(url + ASSETS_ES210_ASC);
         return getResponse(httpclient, get);
     }
-    
+
     /**
      * This will connect to connector store - ES 2.1.0 using provided URL and
-     * search for assets that match the given name 
+     * search for assets that match the given name
      * 
      * @param httpclient
      * @param url
@@ -125,7 +125,8 @@ public class ConnectorStore {
      */
     public static ConnectorData searchConnector(HttpClient httpclient, String url, String searchQuery)
             throws HttpException, IOException {
-        GetMethod get = new GetMethod(url + ASSETS_ES210_SEARCH + URLEncoder.encode("\"overview_name\":" + "\"" + searchQuery + "\"", "UTF-8"));
+        GetMethod get = new GetMethod(url + ASSETS_ES210_SEARCH
+                + URLEncoder.encode("\"overview_name\":" + "\"" + searchQuery + "\"", "UTF-8"));
         return getResponse(httpclient, get);
     }
 

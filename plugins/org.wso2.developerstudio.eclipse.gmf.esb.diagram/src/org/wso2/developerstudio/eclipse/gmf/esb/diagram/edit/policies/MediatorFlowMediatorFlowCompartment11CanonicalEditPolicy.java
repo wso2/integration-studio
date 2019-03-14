@@ -62,6 +62,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.LoopBackMedia
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.NamedEndpointEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.OAuthMediatorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.PayloadFactoryMediatorEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.PropertyGroupMediatorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.PropertyMediatorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.PublishEventMediatorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.RMSequenceMediatorEditPart;
@@ -142,6 +143,7 @@ public class MediatorFlowMediatorFlowCompartment11CanonicalEditPolicy extends Ca
         switch (visualID) {
         case DropMediatorEditPart.VISUAL_ID:
         case PropertyMediatorEditPart.VISUAL_ID:
+        case PropertyGroupMediatorEditPart.VISUAL_ID:
         case ThrottleMediatorEditPart.VISUAL_ID:
         case FilterMediatorEditPart.VISUAL_ID:
         case LogMediatorEditPart.VISUAL_ID:

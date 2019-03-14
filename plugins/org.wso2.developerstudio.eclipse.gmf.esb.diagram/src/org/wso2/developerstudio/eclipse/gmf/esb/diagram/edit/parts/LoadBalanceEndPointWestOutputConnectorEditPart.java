@@ -225,6 +225,9 @@ public class LoadBalanceEndPointWestOutputConnectorEditPart extends AbstractEndp
         if (targetEditPart instanceof PropertyMediatorInputConnectorEditPart) {
             types.add(EsbElementTypes.EsbLink_4001);
         }
+        if (targetEditPart instanceof PropertyGroupMediatorInputConnectorEditPart) {
+            types.add(EsbElementTypes.EsbLink_4001);
+        }
         if (targetEditPart instanceof ThrottleMediatorInputConnectorEditPart) {
             types.add(EsbElementTypes.EsbLink_4001);
         }
@@ -349,6 +352,7 @@ public class LoadBalanceEndPointWestOutputConnectorEditPart extends AbstractEndp
             types.add(EsbElementTypes.ProxyFaultInputConnector_3489);
             types.add(EsbElementTypes.DropMediatorInputConnector_3008);
             types.add(EsbElementTypes.PropertyMediatorInputConnector_3033);
+            types.add(EsbElementTypes.PropertyGroupMediatorInputConnector_3789);
             types.add(EsbElementTypes.ThrottleMediatorInputConnector_3121);
             types.add(EsbElementTypes.FilterMediatorInputConnector_3010);
             types.add(EsbElementTypes.LogMediatorInputConnector_3018);

@@ -72,6 +72,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.NamedEndpoint
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.OAuthMediatorDescriptionEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.OAuthMediatorRemoteServiceUrlEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.PayloadFactoryMediatorDescriptionEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.PropertyGroupMediatorDescriptionEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.PropertyMediatorDescriptionEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.PropertyMediatorPropertyNameEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ProxyServiceNameEditPart;
@@ -154,6 +155,23 @@ public class EsbParserProvider extends AbstractProvider implements IParserProvid
             propertyMediatorDescription_5167Parser = parser;
         }
         return propertyMediatorDescription_5167Parser;
+    }
+
+    /**
+    * @generated
+    */
+    private IParser propertyGroupMediatorDescription_5215Parser;
+
+    /**
+    * @generated
+    */
+    private IParser getPropertyGroupMediatorDescription_5215Parser() {
+        if (propertyGroupMediatorDescription_5215Parser == null) {
+            EAttribute[] features = new EAttribute[] { EsbPackage.eINSTANCE.getEsbElement_Description() };
+            MessageFormatParser parser = new MessageFormatParser(features);
+            propertyGroupMediatorDescription_5215Parser = parser;
+        }
+        return propertyGroupMediatorDescription_5215Parser;
     }
 
     /**
@@ -1155,6 +1173,8 @@ public class EsbParserProvider extends AbstractProvider implements IParserProvid
             return getDropMediatorDescription_5166Parser();
         case PropertyMediatorDescriptionEditPart.VISUAL_ID:
             return getPropertyMediatorDescription_5167Parser();
+        case PropertyGroupMediatorDescriptionEditPart.VISUAL_ID:
+            return getPropertyGroupMediatorDescription_5215Parser();
         case ThrottleMediatorGroupIdEditPart.VISUAL_ID:
             return getThrottleMediatorGroupId_5128Parser();
 

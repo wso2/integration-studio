@@ -1142,6 +1142,13 @@
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//PropertyMediatorInputConnector"/>
     <genClasses ecoreClass="esb.ecore#//PropertyMediatorOutputConnector"/>
+    <genClasses ecoreClass="esb.ecore#//PropertyGroupMediator">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//PropertyGroupMediator/inputConnector"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//PropertyGroupMediator/outputConnector"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//PropertyGroupMediator/properties"/>
+    </genClasses>
+    <genClasses ecoreClass="esb.ecore#//PropertyGroupMediatorInputConnector"/>
+    <genClasses ecoreClass="esb.ecore#//PropertyGroupMediatorOutputConnector"/>
     <genClasses ecoreClass="esb.ecore#//NamespacedProperty">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//NamespacedProperty/prettyName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//NamespacedProperty/propertyName"/>
@@ -1149,6 +1156,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//NamespacedProperty/namespaces"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//NamespacedProperty/supportsDynamicXPaths"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//NamespacedProperty/dynamic"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//NamespacedProperty/supportJsonPaths"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//EnrichMediator">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//EnrichMediator/cloneSource"/>

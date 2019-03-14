@@ -31,6 +31,7 @@ import org.apache.synapse.config.xml.XMLConfigConstants;
 import org.apache.synapse.mediators.elementary.EnrichMediator;
 import org.apache.synapse.mediators.elementary.Source;
 import org.jaxen.JaxenException;
+import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.SynapseXPathExt;
 
 public class EnrichMediatorExtFactory extends EnrichMediatorFactory {
 
@@ -70,13 +71,13 @@ public class EnrichMediatorExtFactory extends EnrichMediatorFactory {
         org.apache.synapse.mediators.elementary.Target target = new org.apache.synapse.mediators.elementary.Target();
         ((EnrichMediator) mediator).setTarget(target);
 
-        populateSource(source, sourceEle);
-        populateTarget(target, targetEle);
+        populateSource(source, sourceEle, mediator);
+        populateTarget(target, targetEle, mediator);
 
         return mediator;
     }
 
-    private void populateSource(Source source, OMElement sourceEle) {
+    private void populateSource(Source source, OMElement sourceEle, Mediator mediator) {
 
         OMAttribute typeAttr = sourceEle.getAttribute(ATT_TYPE);
         if (typeAttr != null && typeAttr.getAttributeValue() != null) {
@@ -94,7 +95,8 @@ public class EnrichMediatorExtFactory extends EnrichMediatorFactory {
                 try {
                     source.setXpath(SynapseXPathFactory.getSynapseXPath(sourceEle, ATT_XPATH));
                 } catch (JaxenException e) {
-                    // ignore
+                    // If the xPath is not a valid synapse xpath this will add the invalid xpath to the model
+                    source.setXpath(SynapseXPathExt.createSynapsePath(xpathAttr.getAttributeValue()));
                 }
             }
 
@@ -120,7 +122,8 @@ public class EnrichMediatorExtFactory extends EnrichMediatorFactory {
         }
     }
 
-    private void populateTarget(org.apache.synapse.mediators.elementary.Target target, OMElement sourceEle) {
+    private void populateTarget(org.apache.synapse.mediators.elementary.Target target, OMElement sourceEle,
+            Mediator mediator) {
 
         OMAttribute typeAttr = sourceEle.getAttribute(ATT_TYPE);
         OMAttribute actionAttr = sourceEle.getAttribute(ATT_ACTION);
@@ -144,7 +147,8 @@ public class EnrichMediatorExtFactory extends EnrichMediatorFactory {
                 try {
                     target.setXpath(SynapseXPathFactory.getSynapseXPath(sourceEle, ATT_XPATH));
                 } catch (JaxenException e) {
-                    // ignore
+                    // If the xPath is not a valid synapse xpath this will add the invalid xpath to the model
+                    target.setXpath(SynapseXPathExt.createSynapsePath(xpathAttr.getAttributeValue()));
                 }
             }
         } else if (target.getTargetType() == EnrichMediator.PROPERTY) {

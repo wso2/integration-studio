@@ -249,6 +249,7 @@ public class ProxyInputConnectorEditPart extends AbstractBaseFigureInputConnecto
             types.add(EsbElementTypes.MergeNodeOutputConnector_3016);
             types.add(EsbElementTypes.LogMediatorOutputConnector_3019);
             types.add(EsbElementTypes.PropertyMediatorOutputConnector_3034);
+            types.add(EsbElementTypes.PropertyGroupMediatorOutputConnector_3790);
             types.add(EsbElementTypes.EnrichMediatorOutputConnector_3037);
             types.add(EsbElementTypes.XSLTMediatorOutputConnector_3040);
             types.add(EsbElementTypes.SwitchCaseBranchOutputConnector_3043);

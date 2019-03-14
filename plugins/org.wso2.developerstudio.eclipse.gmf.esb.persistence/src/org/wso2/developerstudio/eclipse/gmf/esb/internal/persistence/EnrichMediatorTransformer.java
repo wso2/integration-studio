@@ -34,6 +34,7 @@ import org.jaxen.JaxenException;
 import org.wso2.developerstudio.eclipse.gmf.esb.EnrichMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.SynapseXPathExt;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.EsbNodeTransformer;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
@@ -147,7 +148,7 @@ public class EnrichMediatorTransformer extends AbstractEsbNodeTransformer {
                     xPath = new SynapseXPath(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
                 }
                 else {
-                    xPath = new SynapseXPath(visualSourceXPath.getPropertyValue());
+                    xPath = (SynapseXPath) SynapseXPathExt.createSynapsePath(visualSourceXPath.getPropertyValue());
                 }
                 Map<String, String> map = visualSourceXPath.getNamespaces();
                 Iterator<Map.Entry<String, String>> entries = map.entrySet().iterator();
@@ -182,7 +183,7 @@ public class EnrichMediatorTransformer extends AbstractEsbNodeTransformer {
                     xPath = new SynapseXPath(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
                 }
                 else {
-                    xPath = new SynapseXPath(visualTargetXPath.getPropertyValue());
+                    xPath = (SynapseXPath) SynapseXPathExt.createSynapsePath(visualTargetXPath.getPropertyValue());
                 }
                 Map<String, String> map = visualTargetXPath.getNamespaces();
                 Iterator<Map.Entry<String, String>> entries = map.entrySet().iterator();
@@ -215,3 +216,4 @@ public class EnrichMediatorTransformer extends AbstractEsbNodeTransformer {
     }
 
 }
+

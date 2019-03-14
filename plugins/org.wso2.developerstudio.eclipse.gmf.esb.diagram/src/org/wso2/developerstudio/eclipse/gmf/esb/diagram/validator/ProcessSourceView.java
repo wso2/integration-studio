@@ -60,6 +60,7 @@ import org.apache.synapse.config.xml.LogMediatorFactory;
 import org.apache.synapse.config.xml.LoopBackMediatorFactory;
 import org.apache.synapse.config.xml.MessageStoreMediatorFactory;
 import org.apache.synapse.config.xml.PayloadFactoryMediatorFactory;
+import org.apache.synapse.config.xml.PropertyGroupMediatorFactory;
 import org.apache.synapse.config.xml.PropertyMediatorFactory;
 import org.apache.synapse.config.xml.ProxyServiceFactory;
 import org.apache.synapse.config.xml.RespondMediatorFactory;
@@ -155,6 +156,7 @@ public class ProcessSourceView {
     private static DropMediatorFactory dropMediatorFactory;
     private static EnrichMediatorFactory enrichMediatorFactory;
     private static PropertyMediatorFactory propertyMediatorFactory;
+    private static PropertyGroupMediatorFactory propertyGroupMediatorFactory;
     private static FilterMediatorFactory filterMediatorFactory;
     private static InvokeMediatorFactory invokeMediatorFactory;
     private static MessageStoreMediatorFactory messageStoreMediatorFactory;

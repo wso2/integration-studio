@@ -210,6 +210,7 @@ public class EnqueueMediatorInputConnectorEditPart extends AbstractMediatorInput
         if (relationshipType == EsbElementTypes.EsbLink_4001) {
             types.add(EsbElementTypes.ProxyOutputConnector_3002);
             types.add(EsbElementTypes.PropertyMediatorOutputConnector_3034);
+            types.add(EsbElementTypes.PropertyGroupMediatorOutputConnector_3790);
             types.add(EsbElementTypes.ThrottleMediatorOutputConnector_3122);
             types.add(EsbElementTypes.ThrottleMediatorOnAcceptOutputConnector_3581);
             types.add(EsbElementTypes.ThrottleMediatorOnRejectOutputConnector_3582);

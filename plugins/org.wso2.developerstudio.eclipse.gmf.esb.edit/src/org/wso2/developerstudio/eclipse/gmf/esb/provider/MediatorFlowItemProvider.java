@@ -223,6 +223,11 @@ public class MediatorFlowItemProvider extends EsbNodeItemProvider {
         newChildDescriptors.add
             (createChildParameter
                 (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createPropertyGroupMediator()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
                  EsbFactory.eINSTANCE.createEnrichMediator()));
 
         newChildDescriptors.add

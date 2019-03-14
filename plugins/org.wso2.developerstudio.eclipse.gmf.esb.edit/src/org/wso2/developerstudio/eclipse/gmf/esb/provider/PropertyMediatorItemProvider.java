@@ -9,6 +9,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb.provider;
 import java.util.Collection;
 import java.util.List;
 
+import org.apache.commons.lang.WordUtils;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -21,7 +22,9 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyAction;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyName;
+import org.wso2.developerstudio.eclipse.gmf.esb.PropertyScope;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType;
+import java.lang.Object;
 
 /**
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator} object.
@@ -498,16 +501,30 @@ public class PropertyMediatorItemProvider extends MediatorItemProvider {
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
+     * @generated NOT
      */
 
     @Override
     public String getText(Object object) {
         PropertyName labelValue = ((PropertyMediator)object).getPropertyName();
+        String newPropertyName = ((PropertyMediator)object).getNewPropertyName();
         String label = labelValue == null ? null : labelValue.toString();
-        return label == null || label.length() == 0 ?
+        String value = ((PropertyMediator)object).getValue();
+        String newLabel = label == "New Property..." ? newPropertyName : label ;
+        String propertyName = WordUtils.abbreviate(newLabel.toString(), 8, 10, " ...");
+
+        return newLabel == null || label.length() == 0 ?
             getString("_UI_PropertyMediator_type") :
-            getString("_UI_PropertyMediator_type") + " " + label;
+            trim("Property") + trim(propertyName) + trim(value);
+    }
+
+    public String trim(String str) {
+        int maxLength = 30;
+        int tabSpace = (maxLength - str.length()) / 4;
+        for (int i = 0; i < tabSpace; i++) {
+            str = str.concat("\t");
+        }
+        return str;
     }
 
     /**

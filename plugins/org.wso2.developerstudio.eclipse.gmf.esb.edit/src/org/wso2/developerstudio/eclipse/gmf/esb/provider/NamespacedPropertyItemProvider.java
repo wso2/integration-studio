@@ -60,6 +60,7 @@ public class NamespacedPropertyItemProvider extends EsbNodeItemProvider {
             addNamespacesPropertyDescriptor(object);
             addSupportsDynamicXPathsPropertyDescriptor(object);
             addDynamicPropertyDescriptor(object);
+            addSupportJsonPathsPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
@@ -233,23 +234,39 @@ public class NamespacedPropertyItemProvider extends EsbNodeItemProvider {
      * <!-- end-user-doc -->
      * @generated
      */
+	protected void addSupportJsonPathsPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_NamespacedProperty_supportJsonPaths_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_NamespacedProperty_supportJsonPaths_feature", "_UI_NamespacedProperty_type"),
+                 EsbPackage.Literals.NAMESPACED_PROPERTY__SUPPORT_JSON_PATHS,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+                 null,
+                 null));
+    }
 
     @Override
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
 
-        switch (notification.getFeatureID(NamespacedProperty.class)) {
-            case EsbPackage.NAMESPACED_PROPERTY__PRETTY_NAME:
-            case EsbPackage.NAMESPACED_PROPERTY__PROPERTY_NAME:
-            case EsbPackage.NAMESPACED_PROPERTY__PROPERTY_VALUE:
-            case EsbPackage.NAMESPACED_PROPERTY__NAMESPACES:
-            case EsbPackage.NAMESPACED_PROPERTY__SUPPORTS_DYNAMIC_XPATHS:
-            case EsbPackage.NAMESPACED_PROPERTY__DYNAMIC:
-                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-                return;
-        }
-        super.notifyChanged(notification);
-    }
+		switch (notification.getFeatureID(NamespacedProperty.class)) {
+			case EsbPackage.NAMESPACED_PROPERTY__PRETTY_NAME:
+			case EsbPackage.NAMESPACED_PROPERTY__PROPERTY_NAME:
+			case EsbPackage.NAMESPACED_PROPERTY__PROPERTY_VALUE:
+			case EsbPackage.NAMESPACED_PROPERTY__NAMESPACES:
+			case EsbPackage.NAMESPACED_PROPERTY__SUPPORTS_DYNAMIC_XPATHS:
+			case EsbPackage.NAMESPACED_PROPERTY__DYNAMIC:
+			case EsbPackage.NAMESPACED_PROPERTY__SUPPORT_JSON_PATHS:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
+		}
+		super.notifyChanged(notification);
+	}
 
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children

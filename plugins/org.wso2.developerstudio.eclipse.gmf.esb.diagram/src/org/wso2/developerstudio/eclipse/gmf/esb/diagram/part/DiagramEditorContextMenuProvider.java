@@ -40,6 +40,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.LoadBalanceEndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.LogMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.OAuthMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.PropertyGroupMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.ProxyService;
 import org.wso2.developerstudio.eclipse.gmf.esb.RMSequenceMediator;
@@ -94,6 +95,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.direction.Directi
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.direction.DirectionIterateMediatorAction;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.direction.DirectionLogMediatorAction;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.direction.DirectionOAuthMediatorAction;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.direction.DirectionPropertyGroupMediatorAction;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.direction.DirectionPropertyMediatorAction;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.direction.DirectionRMSequenceMediatorAction;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.direction.DirectionRuleMediatorAction;
@@ -211,6 +213,9 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
         contextActionsDirection.put(FilterMediator.class, new DirectionFilterMediatorAction(part));
 
         contextActionsDirection.put(PropertyMediator.class, new DirectionPropertyMediatorAction(part));
+        
+        contextActionsDirection.put(PropertyGroupMediator.class, new DirectionPropertyGroupMediatorAction(part));
+
 
         contextActionsDirection.put(EnrichMediator.class, new DirectionEnrichMediatorAction(part));
 

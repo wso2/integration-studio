@@ -694,6 +694,33 @@ public interface EsbFactory extends EFactory {
     PropertyMediatorOutputConnector createPropertyMediatorOutputConnector();
 
     /**
+     * Returns a new object of class '<em>Property Group Mediator</em>'.
+     * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+     * @return a new object of class '<em>Property Group Mediator</em>'.
+     * @generated
+     */
+	PropertyGroupMediator createPropertyGroupMediator();
+
+				/**
+     * Returns a new object of class '<em>Property Group Mediator Input Connector</em>'.
+     * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+     * @return a new object of class '<em>Property Group Mediator Input Connector</em>'.
+     * @generated
+     */
+	PropertyGroupMediatorInputConnector createPropertyGroupMediatorInputConnector();
+
+				/**
+     * Returns a new object of class '<em>Property Group Mediator Output Connector</em>'.
+     * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+     * @return a new object of class '<em>Property Group Mediator Output Connector</em>'.
+     * @generated
+     */
+	PropertyGroupMediatorOutputConnector createPropertyGroupMediatorOutputConnector();
+
+				/**
      * Returns a new object of class '<em>Namespaced Property</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->

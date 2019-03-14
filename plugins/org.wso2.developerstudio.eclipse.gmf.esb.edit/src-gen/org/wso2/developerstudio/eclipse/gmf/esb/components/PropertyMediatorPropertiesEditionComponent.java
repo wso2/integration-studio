@@ -48,6 +48,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.PropertyMediatorPropertiesEditionPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.parts.impl.PropertyMediatorPropertiesEditionPartImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 
 
@@ -158,7 +159,9 @@ public class PropertyMediatorPropertiesEditionComponent extends SinglePartProper
 			
 			
 			// Start of user code  for valueExpression filter update
-			
+            if (editingPart instanceof PropertyMediatorPropertiesEditionPartImpl) {
+                ((PropertyMediatorPropertiesEditionPartImpl) editingPart).validate();
+            }
 			// End of user code
 			
 			

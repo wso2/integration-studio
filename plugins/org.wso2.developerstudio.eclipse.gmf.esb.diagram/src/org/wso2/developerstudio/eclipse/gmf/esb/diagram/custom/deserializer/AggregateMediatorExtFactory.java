@@ -89,8 +89,8 @@ public class AggregateMediatorExtFactory extends AggregateMediatorFactory {
                     // If the xPath is not a valid synapse xpath this will add the invalid xpath to the model.
                     // This is useful when we use this extended class for create dummy synapse mediators with
                     // empty string properties for create model class objects for generating the design view
-                    ((AggregateMediator) mediator).setCorrelateExpression((SynapseXPath) SynapseXPathExt
-                            .createSynapsePath(corelateOn.getAttribute(EXPRESSION_Q).getAttributeValue()));
+                    ((AggregateMediator) mediator).setCorrelateExpression(SynapseXPathExt
+                            .createSynapsePath(corelateOn.getAttribute(EXPRESSION_Q).getAttributeValue()));                  
                 }
             }
         }
@@ -131,7 +131,7 @@ public class AggregateMediatorExtFactory extends AggregateMediatorFactory {
                     // If the xPath is not a valid synapse xpath this will add the invalid xpath to the model.
                     // This is useful when we use this extended class for create dummy synapse mediators with
                     // empty string properties for create model class objects for generating the design view
-                    ((AggregateMediator) mediator).setAggregationExpression((SynapseXPath) SynapseXPathExt
+                    ((AggregateMediator) mediator).setAggregationExpression(SynapseXPathExt
                             .createSynapsePath(onComplete.getAttribute(EXPRESSION_Q).getAttributeValue()));
                 }
             }

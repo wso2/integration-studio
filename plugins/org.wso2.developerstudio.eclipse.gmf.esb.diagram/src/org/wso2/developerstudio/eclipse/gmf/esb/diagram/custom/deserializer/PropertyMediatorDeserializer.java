@@ -104,6 +104,7 @@ public class PropertyMediatorDeserializer extends AbstractEsbNodeDeserializer<Ab
             if (propertyMediator.getExpression() != null) {
                 SynapsePath xpath = propertyMediator.getExpression();
                 NamespacedProperty namespaceProp = createNamespacedProperty(xpath);
+                namespaceProp.setSupportJsonPaths(true);
                 // vishualProp.setValueExpression(namespaceProp);
                 executeSetValueCommand(PROPERTY_MEDIATOR__VALUE_TYPE, PropertyValueType.EXPRESSION);
                 executeSetValueCommand(PROPERTY_MEDIATOR__VALUE_EXPRESSION, namespaceProp);

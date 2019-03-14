@@ -137,6 +137,15 @@
       </tools>
       <tools
           xsi:type="gmftool:CreationTool"
+          title="PropertyGroupMediator"
+          description="Create new PropertyGroupMediator">
+        <smallIcon
+            xsi:type="gmftool:DefaultImage"/>
+        <largeIcon
+            xsi:type="gmftool:DefaultImage"/>
+      </tools>
+      <tools
+          xsi:type="gmftool:CreationTool"
           title="EnrichMediator"
           description="Create new EnrichMediator">
         <smallIcon

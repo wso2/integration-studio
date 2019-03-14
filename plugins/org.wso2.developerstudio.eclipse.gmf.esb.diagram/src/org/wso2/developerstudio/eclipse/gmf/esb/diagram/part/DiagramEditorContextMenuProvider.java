@@ -297,7 +297,7 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
                             menu.remove(ActionIds.ACTION_DELETE_FROM_MODEL);
                             menu.remove(ActionIds.ACTION_ADD_NOTELINK);
                             menu.remove(ActionIds.MENU_DIAGRAM_ADD);
-                            // menu.remove(ActionIds.MENU_EDIT);
+                            menu.remove(ActionIds.MENU_EDIT);
                             menu.remove(ActionIds.MENU_NAVIGATE);
                             menu.remove(ActionIds.MENU_VIEW);
                             menu.remove(ActionIds.MENU_SELECT);

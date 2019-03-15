@@ -1072,6 +1072,7 @@ public class CloneMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
         epv.showEntry(sequencialMediationElements, false);
         epv.showEntry(continueParentElements, false);
         epv.showEntry(targetTableElements, false);
+        epv.clearTableButtons(targetTableElements);
         view.layout(true, true);
     }
     // End of user code

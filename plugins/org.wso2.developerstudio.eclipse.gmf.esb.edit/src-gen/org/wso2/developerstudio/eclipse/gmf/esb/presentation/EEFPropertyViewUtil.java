@@ -47,6 +47,14 @@ public class EEFPropertyViewUtil {
         }
     }
 
+    public void clearTableButtons(Control[] controls) {
+        for (Control control : ((Composite)controls[0]).getChildren()) {
+          if (control instanceof org.eclipse.swt.widgets.Button) {
+              control.setVisible(false);
+          }
+        }
+    }
+
     public void clearElement(Control control) {
         if (control.getLayoutData() != null && control.getLayoutData() instanceof GridData) {
             ((GridData) control.getLayoutData()).exclude = true;

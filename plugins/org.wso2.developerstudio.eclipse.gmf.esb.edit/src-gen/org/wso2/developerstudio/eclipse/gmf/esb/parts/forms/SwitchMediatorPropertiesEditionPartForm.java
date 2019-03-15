@@ -1026,6 +1026,7 @@ public class SwitchMediatorPropertiesEditionPartForm extends SectionPropertiesEd
        epv.showEntry(descriptionElements, false);
        epv.showEntry(sourceXPathElements, false);
        epv.showEntry(caseBranchesElements, false);
+       epv.clearTableButtons(caseBranchesElements);
        //showTable(caseBranches, caseBranchesData);
        view.layout(true, true);
    }

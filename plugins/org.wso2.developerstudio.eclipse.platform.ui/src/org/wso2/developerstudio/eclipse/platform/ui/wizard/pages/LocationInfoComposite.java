@@ -78,6 +78,13 @@ public class LocationInfoComposite extends Composite implements Observer {
 	private static final String ERR_MESSAGE_VALID_LOCATION = "Enter a valid location for the project";
 	private static final String DATA_FIELD_VALIDATOR_METHOD = "doPostFieldModificationAction";
 
+    ModifyListener modifyListener = new ModifyListener() {
+
+        public void modifyText(ModifyEvent evt) {
+            validateAndUpdateLocation();
+        }
+
+    };
 	/**
 	 * Constructor that creates composite ui for project location selector and
 	 * adding necessary listeners.
@@ -144,6 +151,10 @@ public class LocationInfoComposite extends Composite implements Observer {
 
 					updateDefaultProjectLocation();
 					getProjectModel().setIsUserDefine(false);
+					
+                    // remove a modify listener to 'locationHolder' Text field
+                    locationHolder.removeModifyListener(modifyListener);
+                    
 				} else {
 					getProjectModel().setIsUserDefine(true);
 					if (lastUserSelectedLocation == null) {
@@ -154,21 +165,15 @@ public class LocationInfoComposite extends Composite implements Observer {
 						getProjectModel().setLocation(new File(lastUserSelectedLocation));
 
 					}
+                    // Adding a modify listener to 'locationHolder' Text field
+                    locationHolder.addModifyListener(modifyListener);
+
 				}
 			}
 
 			public void widgetDefaultSelected(SelectionEvent arg0) {
 				// No implementation, because need to handle only user selected
 				// values, not the platform specific default selections
-			}
-
-		});
-
-		// Adding a modify listener to 'locationHolder' Text field
-		locationHolder.addModifyListener(new ModifyListener() {
-
-			public void modifyText(ModifyEvent evt) {
-				validateAndUpdateLocation();
 			}
 
 		});

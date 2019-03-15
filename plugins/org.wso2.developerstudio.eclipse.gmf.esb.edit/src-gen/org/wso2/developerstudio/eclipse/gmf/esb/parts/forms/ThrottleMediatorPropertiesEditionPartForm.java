@@ -61,6 +61,9 @@ import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.KeyListener;
+import org.eclipse.swt.events.MouseEvent;
+import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 
@@ -166,14 +169,13 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
 	 * 
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
-		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
-		Form form = scrolledForm.getForm();
+		Form form = widgetFactory.createForm(parent);
 		view = form.getBody();
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
 		createControls(widgetFactory, view);
-		return scrolledForm;
+		return form;
 	}
 
 	/**
@@ -190,10 +192,6 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
 		generalStep.addStep(EsbViewsRepository.ThrottleMediator.General.reverse);
 		generalStep.addStep(EsbViewsRepository.ThrottleMediator.General.groupId);
 		
-		throttleMediatorStep
-			.addStep(EsbViewsRepository.ThrottleMediator.Misc.class)
-			.addStep(EsbViewsRepository.ThrottleMediator.Misc.description);
-		
 		CompositionStep onAcceptStep = throttleMediatorStep.addStep(EsbViewsRepository.ThrottleMediator.OnAccept.class);
 		onAcceptStep.addStep(EsbViewsRepository.ThrottleMediator.OnAccept.onAcceptBranchsequenceType);
 		onAcceptStep.addStep(EsbViewsRepository.ThrottleMediator.OnAccept.onAcceptBranchSequenceKey);
@@ -208,6 +206,8 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
 		throttlePolicyStep.addStep(EsbViewsRepository.ThrottleMediator.ThrottlePolicy.policyEntries);
 		throttlePolicyStep.addStep(EsbViewsRepository.ThrottleMediator.ThrottlePolicy.policyKey);
 		
+        throttleMediatorStep.addStep(EsbViewsRepository.ThrottleMediator.Misc.class)
+                .addStep(EsbViewsRepository.ThrottleMediator.Misc.description);
 		
 		composer = new PartComposer(throttleMediatorStep) {
 
@@ -1303,33 +1303,56 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
            policyKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
        } 
        String initValueExpression = policyKey.getKeyValue().isEmpty() ? "" : policyKey.getKeyValue();
-       policyKeyText = widgetFactory.createText(parent, initValueExpression);
+       policyKeyText = widgetFactory.createText(parent, initValueExpression, SWT.READ_ONLY);
        policyKeyText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
        widgetFactory.paintBordersFor(parent);
        GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
        policyKeyText.setLayoutData(valueData);
-       policyKeyText.addFocusListener(new FocusAdapter() {
-           /**
-            * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-            * 
-            */
-           @Override
-           @SuppressWarnings("synthetic-access")
-           public void focusLost(FocusEvent e) {
-           }
+       
+        policyKeyText.addMouseListener(new MouseListener() {
 
-           /**
-            * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
-            */
-           @Override
-           public void focusGained(FocusEvent e) {
-               EEFRegistryKeyPropertyEditorDialog dialog = new  EEFRegistryKeyPropertyEditorDialog(view.getShell(), SWT.NULL,
-                       policyKey, new ArrayList<NamedEntityDescriptor>());
-               dialog.open();
-               policyKeyText.setText(policyKey.getKeyValue());
-               propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ThrottleMediatorPropertiesEditionPartForm.this, EsbViewsRepository.ThrottleMediator.ThrottlePolicy.policyKey, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getPolicyKey()));
-           }
-       });
+            @Override
+            public void mouseDown(MouseEvent e) {
+                EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
+                        SWT.NULL, policyKey, new ArrayList<NamedEntityDescriptor>());
+                dialog.open();
+                policyKeyText.setText(policyKey.getKeyValue());
+                propertiesEditionComponent.firePropertiesChanged(
+                        new PropertiesEditionEvent(ThrottleMediatorPropertiesEditionPartForm.this,
+                                EsbViewsRepository.ThrottleMediator.ThrottlePolicy.policyKey,
+                                PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getPolicyKey()));
+            }
+
+            @Override
+            public void mouseUp(MouseEvent e) {}
+
+            @Override
+            public void mouseDoubleClick(MouseEvent e) {}
+
+        });
+        
+        policyKeyText.addKeyListener(new KeyListener() {
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                    EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
+                            SWT.NULL, policyKey, new ArrayList<NamedEntityDescriptor>());
+                    dialog.open();
+                    policyKeyText.setText(policyKey.getKeyValue());
+                    propertiesEditionComponent.firePropertiesChanged(
+                            new PropertiesEditionEvent(ThrottleMediatorPropertiesEditionPartForm.this,
+                                    EsbViewsRepository.ThrottleMediator.ThrottlePolicy.policyKey,
+                                    PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getPolicyKey()));
+                }
+
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {}
+
+        });
+       
        EditingUtils.setID(policyKeyText, EsbViewsRepository.ThrottleMediator.ThrottlePolicy.policyKey);
        EditingUtils.setEEFtype(policyKeyText, "eef::Text");
        Control sequenceKeyHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.ThrottleMediator.ThrottlePolicy.policyKey, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
@@ -1344,33 +1367,57 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
             onRejectBranchSequenceKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
         } 
         String initValueExpression = onRejectBranchSequenceKey.getKeyValue().isEmpty() ? "" : onRejectBranchSequenceKey.getKeyValue();
-        onRejectBranchSequenceKeyText = widgetFactory.createText(parent, initValueExpression);
+        onRejectBranchSequenceKeyText = widgetFactory.createText(parent, initValueExpression, SWT.READ_ONLY);
         onRejectBranchSequenceKeyText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
         widgetFactory.paintBordersFor(parent);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
         onRejectBranchSequenceKeyText.setLayoutData(valueData);
-        onRejectBranchSequenceKeyText.addFocusListener(new FocusAdapter() {
-            /**
-             * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-             * 
-             */
+        
+        onRejectBranchSequenceKeyText.addMouseListener(new MouseListener() {
+            
             @Override
-            @SuppressWarnings("synthetic-access")
-            public void focusLost(FocusEvent e) {
-            }
-
-            /**
-             * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
-             */
-            @Override
-            public void focusGained(FocusEvent e) {
-                EEFRegistryKeyPropertyEditorDialog dialog = new  EEFRegistryKeyPropertyEditorDialog(view.getShell(), SWT.NULL,
-                        onRejectBranchSequenceKey, new ArrayList<NamedEntityDescriptor>());
+            public void mouseDown(MouseEvent e) {
+                EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
+                        SWT.NULL, onRejectBranchSequenceKey, new ArrayList<NamedEntityDescriptor>());
                 dialog.open();
                 onRejectBranchSequenceKeyText.setText(onRejectBranchSequenceKey.getKeyValue());
-                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ThrottleMediatorPropertiesEditionPartForm.this, EsbViewsRepository.ThrottleMediator.OnReject.onRejectBranchSequenceKey, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getOnRejectBranchSequenceKey()));
+                propertiesEditionComponent.firePropertiesChanged(
+                        new PropertiesEditionEvent(ThrottleMediatorPropertiesEditionPartForm.this,
+                                EsbViewsRepository.ThrottleMediator.OnReject.onRejectBranchSequenceKey,
+                                PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+                                getOnRejectBranchSequenceKey()));
             }
+            
+            @Override
+            public void mouseUp(MouseEvent e) {}
+            
+            @Override
+            public void mouseDoubleClick(MouseEvent e) {}
+            
         });
+        
+        onRejectBranchSequenceKeyText.addKeyListener(new KeyListener() {
+            
+            @Override
+            public void keyReleased(KeyEvent e) {
+                if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                    EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
+                            SWT.NULL, onRejectBranchSequenceKey, new ArrayList<NamedEntityDescriptor>());
+                    dialog.open();
+                    onRejectBranchSequenceKeyText.setText(onRejectBranchSequenceKey.getKeyValue());
+                    propertiesEditionComponent.firePropertiesChanged(
+                            new PropertiesEditionEvent(ThrottleMediatorPropertiesEditionPartForm.this,
+                                    EsbViewsRepository.ThrottleMediator.OnReject.onRejectBranchSequenceKey,
+                                    PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+                                    getOnRejectBranchSequenceKey()));
+                }
+            }
+            
+            @Override
+            public void keyPressed(KeyEvent e) {}
+            
+        });
+        
         EditingUtils.setID(onRejectBranchSequenceKeyText, EsbViewsRepository.ThrottleMediator.OnReject.onRejectBranchSequenceKey);
         EditingUtils.setEEFtype(onRejectBranchSequenceKeyText, "eef::Text");
         Control itemHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.ThrottleMediator.OnReject.onRejectBranchSequenceKey, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
@@ -1385,33 +1432,57 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
             onAcceptBranchSequenceKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
         } 
         String initValueExpression = onAcceptBranchSequenceKey.getKeyValue().isEmpty() ? "" : onAcceptBranchSequenceKey.getKeyValue();
-        onAcceptBranchSequenceKeyText = widgetFactory.createText(parent, initValueExpression);
+        onAcceptBranchSequenceKeyText = widgetFactory.createText(parent, initValueExpression, SWT.READ_ONLY);
         onAcceptBranchSequenceKeyText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
         widgetFactory.paintBordersFor(parent);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
         onAcceptBranchSequenceKeyText.setLayoutData(valueData);
-        onAcceptBranchSequenceKeyText.addFocusListener(new FocusAdapter() {
-            /**
-             * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-             * 
-             */
+        
+        onAcceptBranchSequenceKeyText.addMouseListener(new MouseListener() {
+            
             @Override
-            @SuppressWarnings("synthetic-access")
-            public void focusLost(FocusEvent e) {
-            }
-
-            /**
-             * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
-             */
-            @Override
-            public void focusGained(FocusEvent e) {
-                EEFRegistryKeyPropertyEditorDialog dialog = new  EEFRegistryKeyPropertyEditorDialog(view.getShell(), SWT.NULL,
-                        onAcceptBranchSequenceKey, new ArrayList<NamedEntityDescriptor>());
+            public void mouseDown(MouseEvent e) {
+                EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
+                        SWT.NULL, onAcceptBranchSequenceKey, new ArrayList<NamedEntityDescriptor>());
                 dialog.open();
                 onAcceptBranchSequenceKeyText.setText(onAcceptBranchSequenceKey.getKeyValue());
-                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ThrottleMediatorPropertiesEditionPartForm.this, EsbViewsRepository.ThrottleMediator.OnAccept.onAcceptBranchSequenceKey, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getOnAcceptBranchSequenceKey()));
+                propertiesEditionComponent.firePropertiesChanged(
+                        new PropertiesEditionEvent(ThrottleMediatorPropertiesEditionPartForm.this,
+                                EsbViewsRepository.ThrottleMediator.OnAccept.onAcceptBranchSequenceKey,
+                                PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+                                getOnAcceptBranchSequenceKey()));
             }
+            
+            @Override
+            public void mouseDoubleClick(MouseEvent e) {}
+            
+            @Override
+            public void mouseUp(MouseEvent e) {}
+            
         });
+        
+        onAcceptBranchSequenceKeyText.addKeyListener(new KeyListener() {
+            
+            @Override
+            public void keyReleased(KeyEvent e) {
+                if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                    EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
+                            SWT.NULL, onAcceptBranchSequenceKey, new ArrayList<NamedEntityDescriptor>());
+                    dialog.open();
+                    onAcceptBranchSequenceKeyText.setText(onAcceptBranchSequenceKey.getKeyValue());
+                    propertiesEditionComponent.firePropertiesChanged(
+                            new PropertiesEditionEvent(ThrottleMediatorPropertiesEditionPartForm.this,
+                                    EsbViewsRepository.ThrottleMediator.OnAccept.onAcceptBranchSequenceKey,
+                                    PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+                                    getOnAcceptBranchSequenceKey()));
+                } 
+            }
+            
+            @Override
+            public void keyPressed(KeyEvent e) {}
+            
+        });
+        
         EditingUtils.setID(onAcceptBranchSequenceKeyText, EsbViewsRepository.ThrottleMediator.OnAccept.onAcceptBranchSequenceKey);
         EditingUtils.setEEFtype(onAcceptBranchSequenceKeyText, "eef::Text");
         Control itemHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.ThrottleMediator.OnAccept.onAcceptBranchSequenceKey, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$

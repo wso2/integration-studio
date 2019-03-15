@@ -43,7 +43,7 @@ import org.eclipse.swt.widgets.Text;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.ValidateFeaturePropertiesEditionPart;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
 
 // End of user code
@@ -138,22 +138,7 @@ public class ValidateFeaturePropertiesEditionPartImpl extends CompositePropertie
 		featureName = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData featureNameData = new GridData(GridData.FILL_HORIZONTAL);
 		featureName.setLayoutData(featureNameData);
-		featureName.addFocusListener(new FocusAdapter() {
 
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ValidateFeaturePropertiesEditionPartImpl.this, EsbViewsRepository.ValidateFeature.Properties.featureName, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, featureName.getText()));
-			}
-
-		});
 		featureName.addKeyListener(new KeyAdapter() {
 
 			/**
@@ -164,11 +149,16 @@ public class ValidateFeaturePropertiesEditionPartImpl extends CompositePropertie
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ValidateFeaturePropertiesEditionPartImpl.this, EsbViewsRepository.ValidateFeature.Properties.featureName, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, featureName.getText()));
-				}
+			public void keyReleased(KeyEvent e) {
+                if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                    if (propertiesEditionComponent != null) {
+                        propertiesEditionComponent.firePropertiesChanged(
+                                new PropertiesEditionEvent(ValidateFeaturePropertiesEditionPartImpl.this,
+                                        EsbViewsRepository.ValidateFeature.Properties.featureName,
+                                        PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+                                        featureName.getText()));
+                    }
+                }
 			}
 
 		});

@@ -31,6 +31,7 @@ import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.KeyListener;
 import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.layout.GridData;
@@ -47,6 +48,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.ValidateResourcePropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.forms.EnrichMediatorPropertiesEditionPartForm;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFNameSpacedPropertyEditorDialog;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
 import org.wso2.developerstudio.esb.form.editors.article.providers.NamedEntityDescriptor;
@@ -152,22 +154,7 @@ public class ValidateResourcePropertiesEditionPartImpl extends CompositeProperti
 		location = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData locationData = new GridData(GridData.FILL_HORIZONTAL);
 		location.setLayoutData(locationData);
-		location.addFocusListener(new FocusAdapter() {
 
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ValidateResourcePropertiesEditionPartImpl.this, EsbViewsRepository.ValidateResource.Properties.location, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, location.getText()));
-			}
-
-		});
 		location.addKeyListener(new KeyAdapter() {
 
 			/**
@@ -178,11 +165,15 @@ public class ValidateResourcePropertiesEditionPartImpl extends CompositeProperti
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ValidateResourcePropertiesEditionPartImpl.this, EsbViewsRepository.ValidateResource.Properties.location, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, location.getText()));
-				}
+			public void keyReleased(KeyEvent e) {
+                if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                    if (propertiesEditionComponent != null) {
+                        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                                ValidateResourcePropertiesEditionPartImpl.this,
+                                EsbViewsRepository.ValidateResource.Properties.location, PropertiesEditionEvent.COMMIT,
+                                PropertiesEditionEvent.SET, null, location.getText()));
+                    }
+                }
 			}
 
 		});
@@ -281,7 +272,7 @@ public class ValidateResourcePropertiesEditionPartImpl extends CompositeProperti
 	            locationKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
 	        }
 	        String initValueExpression = locationKey.getKeyValue().isEmpty() ? "" : locationKey.getKeyValue();
-	        locationKeyText = SWTUtils.createScrollableText(parent, SWT.BORDER);
+	        locationKeyText = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.READ_ONLY);
 	        locationKeyText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 	        GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
 	        locationKeyText.setLayoutData(valueData);
@@ -301,7 +292,7 @@ public class ValidateResourcePropertiesEditionPartImpl extends CompositeProperti
                     locationKeyText.setText(locationKey.getKeyValue());
                     propertiesEditionComponent.firePropertiesChanged(
                             new PropertiesEditionEvent(ValidateResourcePropertiesEditionPartImpl.this,
-                                    EsbViewsRepository.EnrichMediator.Source.inlineRegistryKey,
+                                    EsbViewsRepository.ValidateResource.Properties.locationKey,
                                     PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getLocationKey()));
 	            }
 
@@ -312,7 +303,29 @@ public class ValidateResourcePropertiesEditionPartImpl extends CompositeProperti
 	            }
 	            
 	        });
-	        EditingUtils.setID(locationKeyText, EsbViewsRepository.EnrichMediator.Source.inlineRegistryKey);
+	        
+	        locationKeyText.addKeyListener(new KeyListener() {
+                
+                @Override
+                public void keyReleased(KeyEvent e) {
+                    if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                        EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
+                                SWT.NULL, locationKey, new ArrayList<NamedEntityDescriptor>());
+                        dialog.open();
+                        locationKeyText.setText(locationKey.getKeyValue());
+                        propertiesEditionComponent.firePropertiesChanged(
+                                new PropertiesEditionEvent(ValidateResourcePropertiesEditionPartImpl.this,
+                                        EsbViewsRepository.ValidateResource.Properties.locationKey,
+                                        PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getLocationKey()));
+                    }
+                }
+                
+                @Override
+                public void keyPressed(KeyEvent e) {}
+                
+            });
+	        
+	        EditingUtils.setID(locationKeyText, EsbViewsRepository.ValidateResource.Properties.locationKey);
 	        EditingUtils.setEEFtype(locationKeyText, "eef::Text");
 	        SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.ValidateResource.Properties.locationKey, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	       

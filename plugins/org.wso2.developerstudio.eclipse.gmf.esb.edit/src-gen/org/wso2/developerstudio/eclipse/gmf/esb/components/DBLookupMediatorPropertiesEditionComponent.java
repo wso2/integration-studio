@@ -190,6 +190,9 @@ public class DBLookupMediatorPropertiesEditionComponent extends SinglePartProper
 				sqlStatementsSettings = new ReferencesTableSettings(dBLookupMediator, EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_SqlStatements());
 				basePart.initSqlStatements(sqlStatementsSettings);
 			}
+			// Start of user code  for DatabaseConfiguration command update
+			// End of user code
+			
 			// init filters
 			
 			
@@ -230,6 +233,9 @@ public class DBLookupMediatorPropertiesEditionComponent extends SinglePartProper
 				// Start of user code for additional businessfilters for sqlStatements
 				// End of user code
 			}
+			// Start of user code  for DatabaseConfiguration filter update
+			// End of user code
+			
 			// init values for referenced views
 			
 			// init filters for referenced views
@@ -237,6 +243,7 @@ public class DBLookupMediatorPropertiesEditionComponent extends SinglePartProper
 		}
 		setInitializing(false);
 	}
+
 
 
 
@@ -344,6 +351,9 @@ public class DBLookupMediatorPropertiesEditionComponent extends SinglePartProper
 		}
 		if (editorKey == EsbViewsRepository.DBLookupMediator.Statements.sqlStatements) {
 			return EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_SqlStatements();
+		}
+		if (editorKey == EsbViewsRepository.DBLookupMediator.Connection.databaseConfiguration) {
+			return EsbPackage.eINSTANCE.getMediator_Reverse();
 		}
 		return super.associatedFeature(editorKey);
 	}
@@ -454,6 +464,11 @@ public class DBLookupMediatorPropertiesEditionComponent extends SinglePartProper
 			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
 				sqlStatementsSettings.move(event.getNewIndex(), (SqlStatement) event.getNewValue());
 			}
+		}
+		if (EsbViewsRepository.DBLookupMediator.Connection.databaseConfiguration == event.getAffectedEditor()) {
+			// Start of user code for updateDatabaseConfiguration method body
+			// End of user code
+			
 		}
 	}
 
@@ -604,6 +619,10 @@ public class DBLookupMediatorPropertiesEditionComponent extends SinglePartProper
 			}
 			if (EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_SqlStatements().equals(msg.getFeature()) && isAccessible(EsbViewsRepository.DBLookupMediator.Statements.sqlStatements))
 				basePart.updateSqlStatements();
+					// Start of user code for DatabaseConfiguration live update
+					
+					// End of user code
+			
 			
 		}
 	}
@@ -640,7 +659,8 @@ public class DBLookupMediatorPropertiesEditionComponent extends SinglePartProper
 			EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_PropertyTestwhileidle(),
 			EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_PropertyValidationquery(),
 			EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_PropertyInitialsize(),
-			EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_SqlStatements()		);
+			EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_SqlStatements(),
+			EsbPackage.eINSTANCE.getMediator_Reverse()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -834,6 +854,13 @@ public class DBLookupMediatorPropertiesEditionComponent extends SinglePartProper
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_PropertyInitialsize().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_PropertyInitialsize().getEAttributeType(), newValue);
+				}
+				if (EsbViewsRepository.DBLookupMediator.Connection.databaseConfiguration == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getMediator_Reverse().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getMediator_Reverse().getEAttributeType(), newValue);
 				}
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);

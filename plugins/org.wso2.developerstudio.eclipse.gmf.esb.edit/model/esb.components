@@ -2967,6 +2967,9 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v85fJnEei6boXzpRIfnA" name="sqlStatements" views="_E7wmiPJnEei6boXzpRIfnA">
           <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//AbstractSqlExecutorMediator/sqlStatements"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_XWSS8EWFEemGk-SzClwBXw" name="DatabaseConfiguration" views="_OZJ_4EWFEemGk-SzClwBXw">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//Mediator/Reverse"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//DBLookupMediator"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_E7v85vJnEei6boXzpRIfnA" name="DBLookupMediatorInputConnector" views="_E7wmifJnEei6boXzpRIfnA">
@@ -9183,6 +9186,7 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wme_JnEei6boXzpRIfnA" name="connectionPassword">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_OZJ_4EWFEemGk-SzClwBXw" name="Database Configuration"/>
         </elements>
         <elements xsi:type="eef-views:Container" xmi:id="_OBVYECuiEemMpuboh5FIQg" name="statements">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>

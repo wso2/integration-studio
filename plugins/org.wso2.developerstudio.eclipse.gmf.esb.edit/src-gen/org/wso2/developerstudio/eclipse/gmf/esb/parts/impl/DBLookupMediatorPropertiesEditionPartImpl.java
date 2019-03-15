@@ -112,6 +112,10 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 	protected Text connectionURL;
 	protected Text connectionUsername;
 	protected Text connectionPassword;
+	// Start of user code  for Database Configuration widgets declarations
+	
+	// End of user code
+
 	protected ReferencesTable sqlStatements;
 	protected List<ViewerFilter> sqlStatementsBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> sqlStatementsFilters = new ArrayList<ViewerFilter>();
@@ -182,6 +186,7 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 		connectionStep.addStep(EsbViewsRepository.DBLookupMediator.Connection.connectionURL);
 		connectionStep.addStep(EsbViewsRepository.DBLookupMediator.Connection.connectionUsername);
 		connectionStep.addStep(EsbViewsRepository.DBLookupMediator.Connection.connectionPassword);
+		connectionStep.addStep(EsbViewsRepository.DBLookupMediator.Connection.databaseConfiguration);
 		
 		dBLookupMediatorStep
 			.addStep(EsbViewsRepository.DBLookupMediator.Statements.class)
@@ -273,6 +278,9 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 				if (key == EsbViewsRepository.DBLookupMediator.Connection.connectionPassword) {
 					return createConnectionPasswordText(parent);
 				}
+				// Start of user code for Database Configuration addToPart creation
+				
+				// End of user code
 				if (key == EsbViewsRepository.DBLookupMediator.Statements.class) {
 					return createStatementsGroup(parent);
 				}
@@ -2385,6 +2393,10 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 
 
 
+
+	// Start of user code for Database Configuration specific getters and setters implementation
+	
+	// End of user code
 
 	/**
 	 * {@inheritDoc}

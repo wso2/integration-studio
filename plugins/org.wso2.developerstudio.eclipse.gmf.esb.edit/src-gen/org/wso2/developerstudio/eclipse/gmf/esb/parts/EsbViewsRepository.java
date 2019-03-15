@@ -1549,7 +1549,7 @@ public class EsbViewsRepository {
 			public static String propertyValue = "esb::LogProperty::properties::propertyValue";
 			
 			// Start of user code for propertyExpression ElementEditor key
-			public static String propertyExpression = "esb::LogProperty::properties::propertyExpression";
+			public static String propertyExpression = "esb::ClassProperty::properties::propertyExpression";
 			// End of user code
 			
 	
@@ -1855,7 +1855,7 @@ public class EsbViewsRepository {
 			// Start of user code for sessionIdExpression ElementEditor key
 			public static String sessionIdExpression = "esb::EJBMediator::properties::sessionIdExpression";
 			// End of user code
-
+			
 	
 		}
 	
@@ -1910,7 +1910,7 @@ public class EsbViewsRepository {
 			// Start of user code for propertyExpression ElementEditor key
 			public static String propertyExpression = "esb::MethodArgument::properties::propertyExpression";
 			// End of user code
-
+			
 	
 		}
 	
@@ -2131,7 +2131,7 @@ public class EsbViewsRepository {
 			public static String sourceProperty = "esb::EnrichMediator::Source::sourceProperty";
 			
 			// Start of user code for sourceXPath ElementEditor key
-			public static String sourceXPath = "esb::EnrichMediator::source::sourceXPath";
+			public static String sourceXPath = "esb::RuleMediator::source::sourceXPath";
 			// End of user code
 			
 			// Start of user code for inlineRegistryKey ElementEditor key
@@ -2157,7 +2157,7 @@ public class EsbViewsRepository {
 			public static String targetXPath = "esb::EnrichMediator::target::targetXPath";
 
 			// End of user code
-			
+		
 	
 		}
 	
@@ -3100,7 +3100,7 @@ public class EsbViewsRepository {
 			public static String beanName = "esb::SpringMediator::properties::beanName";
 			
 			// Start of user code for configurationKey ElementEditor key
-			public static String configurationKey = "esb::SpringMediator::key::configurationKey";
+			public static String configurationKey = "esb::SmooksMediator::key::configurationKey";
 			// End of user code
 			
 	
@@ -5175,6 +5175,10 @@ public class EsbViewsRepository {
 			
 			
 			public static String connectionPassword = "esb::DBLookupMediator::connection::connectionPassword";
+			
+			// Start of user code for Database Configuration ElementEditor key
+			public static String databaseConfiguration = "esb::DBLookupMediator::connection::Database Configuration";
+			// End of user code
 			
 	
 		}

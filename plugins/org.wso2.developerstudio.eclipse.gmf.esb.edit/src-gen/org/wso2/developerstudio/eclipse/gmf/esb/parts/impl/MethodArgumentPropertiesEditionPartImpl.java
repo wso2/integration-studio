@@ -482,7 +482,7 @@ public class MethodArgumentPropertiesEditionPartImpl extends CompositeProperties
         if (propertyExpression == null) {
             propertyExpression = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
         }
-        propertyExpressionText = SWTUtils.createScrollableText(parent, SWT.BORDER); // $NON-NLS-1$
+        propertyExpressionText = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.READ_ONLY); // $NON-NLS-1$
         GridData propertyValueData = new GridData(GridData.FILL_HORIZONTAL);
         propertyExpressionText.setLayoutData(propertyValueData);
 
@@ -516,13 +516,13 @@ public class MethodArgumentPropertiesEditionPartImpl extends CompositeProperties
 
             @Override
             public void keyPressed(KeyEvent e) {
-                if (e.character != SWT.CR) {
-                    openPropertyExpressionNSPEDialog(parent);
-                }
             }
 
             @Override
             public void keyReleased(KeyEvent e) {
+                if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                    openPropertyExpressionNSPEDialog(parent);
+                }
             }
 
         });

@@ -128,6 +128,8 @@ public class EJBMediatorPropertiesEditionPartForm extends SectionPropertiesEditi
     protected Control[] jndiNameElements;
     protected Control[] methodArgumentsElements;
     protected Composite propertiesGroup;
+
+    protected Composite filterSessionSubPropertiesGroup;
 	// End of user code
 
 
@@ -155,14 +157,13 @@ public class EJBMediatorPropertiesEditionPartForm extends SectionPropertiesEditi
 	 * 
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
-		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
-		Form form = scrolledForm.getForm();
+        Form form = widgetFactory.createForm(parent);
 		view = form.getBody();
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
 		createControls(widgetFactory, view);
-		return scrolledForm;
+        return form;
 	}
 
 	/**
@@ -175,20 +176,19 @@ public class EJBMediatorPropertiesEditionPartForm extends SectionPropertiesEditi
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		CompositionSequence eJBMediatorStep = new BindingCompositionSequence(propertiesEditionComponent);
 		CompositionStep propertiesStep = eJBMediatorStep.addStep(EsbViewsRepository.EJBMediator.Properties.class);
-		propertiesStep.addStep(EsbViewsRepository.EJBMediator.Properties.description);
 		propertiesStep.addStep(EsbViewsRepository.EJBMediator.Properties.commentsList);
 		propertiesStep.addStep(EsbViewsRepository.EJBMediator.Properties.reverse);
 		propertiesStep.addStep(EsbViewsRepository.EJBMediator.Properties.beanstalk);
 		propertiesStep.addStep(EsbViewsRepository.EJBMediator.Properties.class_);
 		propertiesStep.addStep(EsbViewsRepository.EJBMediator.Properties.method);
-		propertiesStep.addStep(EsbViewsRepository.EJBMediator.Properties.sessionIdType);
-		propertiesStep.addStep(EsbViewsRepository.EJBMediator.Properties.sessionIdLiteral);
 		propertiesStep.addStep(EsbViewsRepository.EJBMediator.Properties.remove);
 		propertiesStep.addStep(EsbViewsRepository.EJBMediator.Properties.target);
 		propertiesStep.addStep(EsbViewsRepository.EJBMediator.Properties.jNDIName);
 		propertiesStep.addStep(EsbViewsRepository.EJBMediator.Properties.methodArguments);
-		propertiesStep.addStep(EsbViewsRepository.EJBMediator.Properties.sessionIdExpression);
-		
+        propertiesStep.addStep(EsbViewsRepository.EJBMediator.Properties.sessionIdType);
+        propertiesStep.addStep(EsbViewsRepository.EJBMediator.Properties.sessionIdLiteral);
+        propertiesStep.addStep(EsbViewsRepository.EJBMediator.Properties.sessionIdExpression);
+        propertiesStep.addStep(EsbViewsRepository.EJBMediator.Properties.description);
 		
 		composer = new PartComposer(eJBMediatorStep) {
 
@@ -219,7 +219,7 @@ public class EJBMediatorPropertiesEditionPartForm extends SectionPropertiesEditi
 					return createSessionIdTypeEMFComboViewer(widgetFactory, parent);
 				}
 				if (key == EsbViewsRepository.EJBMediator.Properties.sessionIdLiteral) {
-					return createSessionIdLiteralText(widgetFactory, parent);
+					return createSessionIdLiteralText(widgetFactory, filterSessionSubPropertiesGroup);
 				}
 				if (key == EsbViewsRepository.EJBMediator.Properties.remove) {
 					return createRemoveCheckbox(widgetFactory, parent);
@@ -235,7 +235,7 @@ public class EJBMediatorPropertiesEditionPartForm extends SectionPropertiesEditi
 				}
 				// Start of user code for sessionIdExpression addToPart creation
                 if (key == EsbViewsRepository.EJBMediator.Properties.sessionIdExpression) {
-                    return createSessionIDExpressionWidget(widgetFactory, parent);
+                    return createSessionIDExpressionWidget(widgetFactory, filterSessionSubPropertiesGroup);
                 }
 				// End of user code
 				return parent;
@@ -632,9 +632,12 @@ public class EJBMediatorPropertiesEditionPartForm extends SectionPropertiesEditi
      * @generated NOT
      */
 	protected Composite createSessionIdTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
-	    Control [] previousControls = propertiesGroup.getChildren();
-	    createDescription(parent, EsbViewsRepository.EJBMediator.Properties.sessionIdType, EsbMessages.EJBMediatorPropertiesEditionPart_SessionIdTypeLabel);
-		sessionIdType = new EMFComboViewer(parent);
+        filterSessionSubPropertiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent, "Session",
+                true);
+        Control[] previousControls = filterSessionSubPropertiesGroup.getChildren();
+        createDescription(filterSessionSubPropertiesGroup, EsbViewsRepository.EJBMediator.Properties.sessionIdType,
+                EsbMessages.EJBMediatorPropertiesEditionPart_SessionIdTypeLabel);
+		sessionIdType = new EMFComboViewer(filterSessionSubPropertiesGroup);
 		sessionIdType.setContentProvider(new ArrayContentProvider());
 		sessionIdType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData sessionIdTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -654,9 +657,9 @@ public class EJBMediatorPropertiesEditionPartForm extends SectionPropertiesEditi
 
 		});
 		sessionIdType.setID(EsbViewsRepository.EJBMediator.Properties.sessionIdType);
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.EJBMediator.Properties.sessionIdType, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, filterSessionSubPropertiesGroup, propertiesEditionComponent.getHelpContent(EsbViewsRepository.EJBMediator.Properties.sessionIdType, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createSessionIdTypeEMFComboViewer
-       Control [] newControls = propertiesGroup.getChildren();
+       Control [] newControls = filterSessionSubPropertiesGroup.getChildren();
        sessionIDTypeElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
        sessionIdType.addSelectionChangedListener(new ISelectionChangedListener() {
 
@@ -678,7 +681,7 @@ public class EJBMediatorPropertiesEditionPartForm extends SectionPropertiesEditi
      * @generated NOT
      */
 	protected Composite createSessionIdLiteralText(FormToolkit widgetFactory, Composite parent) {
-	    Control [] previousControls = propertiesGroup.getChildren();
+	    Control [] previousControls = filterSessionSubPropertiesGroup.getChildren();
 	    createDescription(parent, EsbViewsRepository.EJBMediator.Properties.sessionIdLiteral, EsbMessages.EJBMediatorPropertiesEditionPart_SessionIdLiteralLabel);
 		sessionIdLiteral = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		sessionIdLiteral.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
@@ -740,7 +743,7 @@ public class EJBMediatorPropertiesEditionPartForm extends SectionPropertiesEditi
 		EditingUtils.setEEFtype(sessionIdLiteral, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.EJBMediator.Properties.sessionIdLiteral, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createSessionIdLiteralText
-       Control [] newControls = propertiesGroup.getChildren();
+       Control [] newControls = filterSessionSubPropertiesGroup.getChildren();
        sessionIDLiteralElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
 		// End of user code
 		return parent;
@@ -1486,7 +1489,7 @@ public class EJBMediatorPropertiesEditionPartForm extends SectionPropertiesEditi
         }
         String initValueExpression = sessionIdExpression.getPropertyValue().isEmpty() ? "/default/expression"
                 : sessionIdExpression.getPropertyValue();
-        sessionIdExpressionText = widgetFactory.createText(parent, initValueExpression);
+        sessionIdExpressionText = widgetFactory.createText(parent, initValueExpression, SWT.READ_ONLY);
         sessionIdExpressionText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
         widgetFactory.paintBordersFor(parent);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
@@ -1504,12 +1507,15 @@ public class EJBMediatorPropertiesEditionPartForm extends SectionPropertiesEditi
         sessionIdExpressionText.addKeyListener(new KeyListener() {
                         
             @Override
-            public void keyPressed(KeyEvent e) {
-                openNamespacedPropertyEditor(parent);
+            public void keyPressed(KeyEvent e) { 
             }
             
             @Override
-            public void keyReleased(KeyEvent e) {}
+            public void keyReleased(KeyEvent e) {
+                if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                    openNamespacedPropertyEditor(parent);
+                }
+            }
             
         });
         
@@ -1544,6 +1550,9 @@ public class EJBMediatorPropertiesEditionPartForm extends SectionPropertiesEditi
     public void validate() {
         EEFPropertyViewUtil epv = new EEFPropertyViewUtil(view);
         epv.clearElements(new Composite[] {propertiesGroup});
+
+        epv.showEntry(new Control[] { filterSessionSubPropertiesGroup.getParent() }, false);
+        epv.clearElements(new Composite[] { filterSessionSubPropertiesGroup });
         
         epv.showEntry(beanstalkElements, false);
         epv.showEntry(classElements, false);

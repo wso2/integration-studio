@@ -128,7 +128,6 @@ public class EJBMediatorPropertiesEditionPartForm extends SectionPropertiesEditi
     protected Control[] jndiNameElements;
     protected Control[] methodArgumentsElements;
     protected Composite propertiesGroup;
-
     protected Composite filterSessionSubPropertiesGroup;
 	// End of user code
 
@@ -157,13 +156,13 @@ public class EJBMediatorPropertiesEditionPartForm extends SectionPropertiesEditi
 	 * 
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
-        Form form = widgetFactory.createForm(parent);
+                Form form = widgetFactory.createForm(parent);
 		view = form.getBody();
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
 		createControls(widgetFactory, view);
-        return form;
+		return form;
 	}
 
 	/**
@@ -185,10 +184,10 @@ public class EJBMediatorPropertiesEditionPartForm extends SectionPropertiesEditi
 		propertiesStep.addStep(EsbViewsRepository.EJBMediator.Properties.target);
 		propertiesStep.addStep(EsbViewsRepository.EJBMediator.Properties.jNDIName);
 		propertiesStep.addStep(EsbViewsRepository.EJBMediator.Properties.methodArguments);
-        propertiesStep.addStep(EsbViewsRepository.EJBMediator.Properties.sessionIdType);
-        propertiesStep.addStep(EsbViewsRepository.EJBMediator.Properties.sessionIdLiteral);
-        propertiesStep.addStep(EsbViewsRepository.EJBMediator.Properties.sessionIdExpression);
-        propertiesStep.addStep(EsbViewsRepository.EJBMediator.Properties.description);
+                propertiesStep.addStep(EsbViewsRepository.EJBMediator.Properties.sessionIdType);
+                propertiesStep.addStep(EsbViewsRepository.EJBMediator.Properties.sessionIdLiteral);
+                propertiesStep.addStep(EsbViewsRepository.EJBMediator.Properties.sessionIdExpression);
+                propertiesStep.addStep(EsbViewsRepository.EJBMediator.Properties.description);
 		
 		composer = new PartComposer(eJBMediatorStep) {
 
@@ -632,11 +631,10 @@ public class EJBMediatorPropertiesEditionPartForm extends SectionPropertiesEditi
      * @generated NOT
      */
 	protected Composite createSessionIdTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
-        filterSessionSubPropertiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent, "Session",
-                true);
-        Control[] previousControls = filterSessionSubPropertiesGroup.getChildren();
-        createDescription(filterSessionSubPropertiesGroup, EsbViewsRepository.EJBMediator.Properties.sessionIdType,
-                EsbMessages.EJBMediatorPropertiesEditionPart_SessionIdTypeLabel);
+            filterSessionSubPropertiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent, "Session",
+                    true);
+	    Control [] previousControls = filterSessionSubPropertiesGroup.getChildren();
+	    createDescription(filterSessionSubPropertiesGroup, EsbViewsRepository.EJBMediator.Properties.sessionIdType, EsbMessages.EJBMediatorPropertiesEditionPart_SessionIdTypeLabel);
 		sessionIdType = new EMFComboViewer(filterSessionSubPropertiesGroup);
 		sessionIdType.setContentProvider(new ArrayContentProvider());
 		sessionIdType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));

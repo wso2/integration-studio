@@ -13,6 +13,8 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.Constants.TXT_DATABASE_US
 import static org.wso2.developerstudio.eclipse.gmf.esb.Constants.TXT_DATABASE_USER_ORACLE;
 import static org.wso2.developerstudio.eclipse.gmf.esb.Constants.TXT_DATABASE_USER_POSTGRESQL;
 
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
@@ -47,6 +49,7 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.ListenerList;
 import org.eclipse.core.runtime.MultiStatus;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
@@ -60,6 +63,9 @@ import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
+import org.eclipse.swt.events.KeyListener;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Color;
@@ -99,6 +105,8 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.wso2.carbon.tools.converter.BundleGeneratorTool;
 import org.xml.sax.SAXException;
+
+import sun.tools.jar.resources.jar;
 
 public class DependancyProvider extends Dialog {
 
@@ -160,8 +168,12 @@ public class DependancyProvider extends Dialog {
 
 	private ProgressMonitorDialog progressMonitorDialog;
 
-	private String databaseArr[]= new String[] { "MYSQL", "MSSQL", "ORACLE", "POSTGRESQL", "OTHER"};
-	
+	static ArrayList<Dependency> dependencyList;
+
+	private String databaseArr[] = new String[] { "MYSQL", "MSSQL", "ORACLE", "POSTGRESQL", "OTHER" };
+	private String mysqlVersionArr[] = new String[] { "8.0.15", "8.0.14", "5.1.47", "5.1.46" };
+	private static final String microesbLibPath = "runtime" + File.separator + "microesb" + File.separator + "lib";
+
 	public DependancyProvider(Shell parent) {
 		super(parent);
 		// TODO Auto-generated constructor stub
@@ -262,8 +274,7 @@ public class DependancyProvider extends Dialog {
 		lblVersionValidate.setLayoutData(gridData);
 
 		version = new Combo(client, SWT.READ_ONLY);
-		version.setItems(new String[] {"Select Version"});
-		
+		version.setItems(new String[] { "Select Version" });
 
 		gridData = new GridData();
 		gridData.horizontalAlignment = SWT.FILL;
@@ -469,20 +480,20 @@ public class DependancyProvider extends Dialog {
 		cancelBtn.setText("Cancel");
 		gridData3 = new GridData(GridData.END, GridData.END, false, false);
 		cancelBtn.setLayoutData(gridData3);
- 
+
 		connectiontype.addSelectionListener(new SelectionListener() {
 			public void widgetSelected(SelectionEvent e) {
 				clearRequiredFeilds();
 				btnDownload.setEnabled(true);
 				System.out.println(connectiontype.getText());
 
-				//userNameText.setText(connectiontype.getText());
+				// userNameText.setText(connectiontype.getText());
 
 				String contype = connectiontype.getText();
 
 				switch (contype) {
 				case "MYSQL":
-					version.setItems(new String[] { "8.0.15", "8.0.14", "5.1.47", "5.1.46" });
+					version.setItems(mysqlVersionArr);
 					groupId = "mysql";
 					artifactId = "mysql-connector-java";
 					jdbcDriver = "com.mysql.jdbc.Driver";
@@ -551,43 +562,81 @@ public class DependancyProvider extends Dialog {
 			}
 		});
 
+		ModifyListener listener = new ModifyListener() {
+		    /** {@inheritDoc} */
+		    public void modifyText(ModifyEvent e) {
+		        // Handle event
+		    	if(jarLocationText.getText()!=null || !jarLocationText.getText().equals("")) {
+		    		btnDownload.setEnabled(false);
+		    	}
+		    	if(jarLocationText.getText()==null || jarLocationText.getText().equals("")) {
+		    		btnDownload.setEnabled(true);
+		    	}
+		    }
+		};
+		
+		jarLocationText.addKeyListener(new KeyListener() {
+			
+			@Override
+			public void keyReleased(org.eclipse.swt.events.KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+				
+				
+			}
+			
+			@Override
+			public void keyPressed(org.eclipse.swt.events.KeyEvent e) {
+				// TODO Auto-generated method stub
+
+				if(validate()) {
+				
+				if(jarLocationText.getText() != null && !jarLocationText.getText().equals("")) {
+					if(e.keyCode == SWT.CR){
+
+							System.out.println("works");
+							creatBundleFromJar(jarLocationText.getText());
+						}
+						
+						}	
+				}
+			}
+		}); 
+//		jarLocationText.setEnabled(false);
+		
+		
+//		btnDownload.addListener(SWT.Selection,new Listener() {
+//			
+//			@Override
+//			public void handleEvent(Event event) {
+//				// TODO Auto-generated method stub
+//				while() {
+//					
+//				}
+//			}
+//		} );
+
+		jarLocationText.addModifyListener(listener);
+//		jarLocationText.addListener(SWT.Activate, new Listener() {
+//			public void handleEvent(Event e) {
+//				btnDownload.setEnabled(false);
+//			}
+//		});
+		
 		btnLocate.addListener(SWT.Selection, new Listener() {
 			@Override
 			public void handleEvent(org.eclipse.swt.widgets.Event event) {
 				FileDialog dialog = new FileDialog(shell, SWT.NULL);
 				String path = dialog.open();
-				if (path != null) {
-
-					userNameText.setText(connectiontype.getText());
-					File file = new File(path);
-					if (file.isFile()) {
-
-						String fileName = file.getName().replaceAll("-", "_");
-						String pluginName = fileName.substring(0, fileName.length() - 4) + "_1.0.0.jar";
-
-						jarLocationText.setText(path);
-						System.out.println(file.toString());
-
-						BundleGeneratorTool bcg = new BundleGeneratorTool();
-						// System.out.println(eclipseWorkspace + "/" + activeProjectName +
-						// "/dependancies");
-						String p[] = { path, eclipseWorkspace + "/" + activeProjectName + "/dependancies",
-								eclipseWorkspace + "/" + activeProjectName + "/dependancies" };
-						bcg.execute(p);
-
-						jdbcConnectivityJar = eclipseWorkspace + "/" + activeProjectName + "/dependancies/"
-								+ pluginName;
-						System.out.println(jdbcConnectivityJar);
-						isJarProvided = true;
-					}
-				}
+				creatBundleFromJar(path);
+				
 			}
 		});
 
 		btnDownload.addListener(SWT.Selection, new Listener() {
 			@Override
 			public void handleEvent(org.eclipse.swt.widgets.Event event) {
-				cleanDirectory(eclipseWorkspace + "/" + activeProjectName + "/dependancies");
+				// cleanDirectory(eclipseWorkspace + "/" + activeProjectName + "/dependancies");
 				List<Dependency> denpendency = new ArrayList<Dependency>();
 				denpendency.add(new Dependency(groupId, artifactId, version.getText()));
 				createPOM(denpendency);
@@ -640,28 +689,51 @@ public class DependancyProvider extends Dialog {
 				connectionObj.setHost(hostText.getText());
 				connectionObj.setPort(portText.getText());
 				connectionObj.setVersion(version.getText());
-				
-//				if (databaseURL == null ||databaseURL.equals("")) {
-//					switch (connectiontype.getText()) {
-//					case "MYSQL":
-//						databaseURL = TXT_DATABASE_CONNECTION_URL_MYSQL;
-//						break;
-//					case "ORACLE":
-//						databaseURL = TXT_DATABASE_CONNECTION_URL_ORACLE;
-//						break;
-//					case "MSSQL":
-//						databaseURL = TXT_DATABASE_CONNECTION_URL_MSSQL;
-//						break;
-//					case "POSTGRESQL":
-//						databaseURL = TXT_DATABASE_CONNECTION_URL_POSTGRESQL;
-//						break;
-//					}
-//				}
+
+				// if (databaseURL == null ||databaseURL.equals("")) {
+				// switch (connectiontype.getText()) {
+				// case "MYSQL":
+				// databaseURL = TXT_DATABASE_CONNECTION_URL_MYSQL;
+				// break;
+				// case "ORACLE":
+				// databaseURL = TXT_DATABASE_CONNECTION_URL_ORACLE;
+				// break;
+				// case "MSSQL":
+				// databaseURL = TXT_DATABASE_CONNECTION_URL_MSSQL;
+				// break;
+				// case "POSTGRESQL":
+				// databaseURL = TXT_DATABASE_CONNECTION_URL_POSTGRESQL;
+				// break;
+				// }
+				// }
 
 				databaseURL = generateDbUrl(connectiontype.getText());
 				connectionObj.setUrl(databaseURL);
 
 				System.out.println("database URL = " + connectionObj.toString());
+
+				java.nio.file.Path path = Paths.get("");
+				String microInteratorPath = (path).toAbsolutePath().toString() + File.separator + microesbLibPath;
+				System.out.println(path + "   " + microInteratorPath);
+
+				try {
+					File afile = new File(eclipseWorkspace + "/" + activeProjectName + "/dependancies/"
+							+ getDownlodedJarByName(connectiontype.getText(), version.getText()));
+
+					if (afile.exists()) {
+						FileUtils.copyFile(afile, new File(microInteratorPath + File.separator + afile.getName()));
+					}
+					// if(afile.renameTo(new File(microInteratorPath+ File.separator +
+					// afile.getName()))){
+					// System.out.println("File is moved successful!");
+					// }else{
+					// System.out.println("File is failed to move!");
+					// }
+
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+
 				shell.dispose();
 				// }
 			}
@@ -673,6 +745,7 @@ public class DependancyProvider extends Dialog {
 				if (!validate()) {
 					testConnecton();
 				}
+
 			}
 		});
 
@@ -693,19 +766,19 @@ public class DependancyProvider extends Dialog {
 		shell.addDisposeListener(new DisposeListener() {
 			@Override
 			public void widgetDisposed(DisposeEvent e) {
-				//cleanDirectory(eclipseWorkspace + "/" + activeProjectName + "/dependancies");
+				// cleanDirectory(eclipseWorkspace + "/" + activeProjectName + "/dependancies");
 			}
 		});
-		
+
 		connectiontype.select(getDatabaseIndex(databaseArr, connectionObj.getDbType()));
 		userNameText.setText(connectionObj.getUserName());
 		passwordText.setText(connectionObj.getPassword());
 		hostText.setText(connectionObj.getHost());
 		portText.setText(connectionObj.getPort());
 		databaseText.setText(connectionObj.getDatabase());
-		
-		version.setItems(new String [] {connectionObj.getVersion()});
-		version.select(0);
+
+		version.select(getDatabaseIndex(mysqlVersionArr, connectionObj.getVersion()));
+		// version.select(0);
 
 		shell.setSize(450, 400);
 		shell.pack();
@@ -749,15 +822,43 @@ public class DependancyProvider extends Dialog {
 		lblDatabaseValidate.setText("");
 	}
 
+	
+	void creatBundleFromJar(String path) {
+		if (path != null) {
+
+			///	userNameText.setText(connectiontype.getText());
+				File file = new File(path);
+				if (file.isFile()) {
+
+					String fileName = file.getName().replaceAll("-", "_");
+					String pluginName = fileName.substring(0, fileName.length() - 4) + "_1.0.0.jar";
+
+					jarLocationText.setText(path);
+					System.out.println(file.toString());
+
+					BundleGeneratorTool bcg = new BundleGeneratorTool();
+					// System.out.println(eclipseWorkspace + "/" + activeProjectName +
+					// "/dependancies");
+					String p[] = { path, eclipseWorkspace + "/" + activeProjectName + "/dependancies",
+							eclipseWorkspace + "/" + activeProjectName + "/dependancies" };
+					bcg.execute(p);
+
+					jdbcConnectivityJar = eclipseWorkspace + "/" + activeProjectName + "/dependancies/"
+							+ pluginName;
+					System.out.println(jdbcConnectivityJar);
+					isJarProvided = true;
+				}
+			}
+	}
 	boolean validate() {
 		final Color redColor = new Color(display, 255, 0, 0);
 
 		boolean hasErrors = false;
 
-		if (connectiontype.getText().equals("")) {
+		if (connectiontype.getText().equals("") || connectiontype.getText().equals("")) {
 			hasErrors = changeLabelColor(lblConnectionzValidate, redColor, " *");
 		}
-		if (version.getText().equals("")) {
+		if (version.getText().equals("") || version.getText().equals("Select Version")) {
 			hasErrors = changeLabelColor(lblVersionValidate, redColor, " *");
 		}
 		if (jarLocationText.getText().equals("") && !btnDownload.isEnabled()) {
@@ -782,13 +883,21 @@ public class DependancyProvider extends Dialog {
 		return hasErrors;
 	}
 
+	void copyJars() {
+		
+	}
+	
 	void cleanDirectory(String path) {
 
-		File dir = new File(eclipseWorkspace + "/" + activeProjectName + "/dependancies");
+		// File dir = new File(eclipseWorkspace + "/" + activeProjectName +
+		// "/dependancies");
+		File dir = new File(path);
 
 		if (dir.exists()) {
 			try {
-				FileUtils.cleanDirectory(new File(eclipseWorkspace + "/" + activeProjectName + "/dependancies"));
+				// FileUtils.cleanDirectory(new File(eclipseWorkspace + "/" + activeProjectName
+				// + "/dependancies"));
+				FileUtils.forceDelete(new File(path));
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -804,6 +913,21 @@ public class DependancyProvider extends Dialog {
 		databaseText.setText(database);
 	}
 
+	String getDownlodedJarByName(String connectionType, String version) {
+
+		switch (connectionType) {
+		case "MYSQL":
+			return "mysql-connector-java-" + version + ".jar";
+
+		case "MSSQL":
+			return "mssql-jdbc-" + version + ".jar";
+
+		case "POSTGRESQL":
+			return "postgresql-" + version + ".jar";
+		}
+		return null;
+	}
+
 	String getDownlodedJar() {
 
 		File files[] = new File(eclipseWorkspace + "/" + activeProjectName + "/dependancies").listFiles();
@@ -814,8 +938,7 @@ public class DependancyProvider extends Dialog {
 		}
 		return null;
 	}
-	
-	
+
 	String generateDbUrl(String dbType) {
 		if (dbType.equals("MSSQL")) {
 			return databaseProtocol + hostText.getText() + ":" + portText.getText() + ";databaseName="
@@ -899,20 +1022,26 @@ public class DependancyProvider extends Dialog {
 			databaseURL = generateDbUrl(connectiontype.getText());
 			switch (connectiontype.getText()) {
 			case "MYSQL":
-				
-//				databaseURL = databaseProtocol + hostText.getText() + ":" + portText.getText() + "/"
-//						+ databaseText.getText();
+
+				// databaseURL = databaseProtocol + hostText.getText() + ":" +
+				// portText.getText() + "/"
+				// + databaseText.getText();
 				// path =
 				// "file:///home/sangeeth/runtime-eclipse/MysqlDbconnection/dependancies/mysql_connector_java_8.0.15_1.0.0.jar";
 				newBundle = bundle.getBundleContext().installBundle(path);
 				newBundle.start();
-				Class.forName("com.mysql.cj.jdbc.Driver");
+				if (version.getText().equals("8.0.15") || version.getText().equals("8.0.14")) {
+					Class.forName("com.mysql.cj.jdbc.Driver");
+				} else {
+					Class.forName("com.mysql.jdbc.Driver");
+				}
 				break;
 			case "MSSQL":
 				// path =
 				// "file:///home/sangeeth/Desktop/lib/mssql-jdbc-"+version.getText()+".jar";
-//				databaseURL = databaseProtocol + hostText.getText() + ":" + portText.getText() + ";databaseName="
-//						+ databaseText.getText() + ";";
+				// databaseURL = databaseProtocol + hostText.getText() + ":" +
+				// portText.getText() + ";databaseName="
+				// + databaseText.getText() + ";";
 				newBundle = bundle.getBundleContext().installBundle(path);
 				newBundle.start();
 				Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
@@ -920,8 +1049,9 @@ public class DependancyProvider extends Dialog {
 			case "POSTGRESQL":
 				// path =
 				// "file:///home/sangeeth/Desktop/lib/postgresql-"+version.getText()+".jar";
-//				databaseURL = databaseProtocol + hostText.getText() + ":" + portText.getText() + "/"
-//						+ databaseText.getText();
+				// databaseURL = databaseProtocol + hostText.getText() + ":" +
+				// portText.getText() + "/"
+				// + databaseText.getText();
 				newBundle = bundle.getBundleContext().installBundle(path);
 				newBundle.start();
 				Class.forName("org.postgresql.Driver");
@@ -929,8 +1059,9 @@ public class DependancyProvider extends Dialog {
 			case "ORACLE":
 				// path =
 				// "file:///home/sangeeth/Desktop/lib/mysql-connector-java-"+version.getText()+".jar";
-//				databaseURL = databaseProtocol + hostText.getText() + ":" + portText.getText() + "/"
-//						+ databaseText.getText();
+				// databaseURL = databaseProtocol + hostText.getText() + ":" +
+				// portText.getText() + "/"
+				// + databaseText.getText();
 				newBundle = bundle.getBundleContext().installBundle(path);
 				newBundle.start();
 				Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -1283,6 +1414,7 @@ public class DependancyProvider extends Dialog {
 	}
 
 	private void addDepencisToPOM(List<Dependency> dependencyList, Node node, Document document) {
+
 		for (Dependency d : dependencyList) {
 
 			Element dependency = document.createElement("dependency");
@@ -1557,6 +1689,7 @@ public class DependancyProvider extends Dialog {
 			monitor.done();
 
 			if (downloadSuccess) {
+				cleanDirectory(eclipseWorkspace + "/" + activeProjectName + "/dependancies/pom.xml");
 				Display.getDefault().syncExec(new Runnable() {
 					public void run() {
 						MessageDialog.openInformation(shell, "Success", "JDBC driver was downloaded sucessfuly");
@@ -1567,12 +1700,12 @@ public class DependancyProvider extends Dialog {
 		}
 	}
 
-	public int getDatabaseIndex(String arr[], String dbType) {		
-		for(int i=0; i<arr.length; i++) {
-			if(arr[i].equals(dbType)) {
+	public int getDatabaseIndex(String arr[], String dbType) {
+		for (int i = 0; i < arr.length; i++) {
+			if (arr[i].equals(dbType)) {
 				return i;
 			}
-		}	
+		}
 		return 0;
 	}
 }

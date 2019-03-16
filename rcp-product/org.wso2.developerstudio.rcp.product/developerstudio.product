@@ -33,7 +33,7 @@ Please visit : http://wso2.com/products/developer-studio/
       startupProgressRect="5,275,440,10"
       startupMessageRect="7,252,445,20"
       startupForegroundColor="729FCF" />
-   <launcher name="DeveloperStudio">
+   <launcher name="developerstudio">
       <linux icon="./icons/icon-linux.xpm"/>
       <macosx icon="/icons/DeveloperStudio.icns"/>
       <win useIco="false">

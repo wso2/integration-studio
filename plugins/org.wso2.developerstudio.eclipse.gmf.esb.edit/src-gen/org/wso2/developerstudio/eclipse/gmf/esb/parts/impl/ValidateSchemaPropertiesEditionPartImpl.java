@@ -44,6 +44,8 @@ import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.ViewerFilter;
 
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.KeyListener;
 import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.layout.GridData;
@@ -452,7 +454,7 @@ public class ValidateSchemaPropertiesEditionPartImpl extends CompositeProperties
 	// Start of user code additional methods
     protected Composite createDynamicSchemaKeyWidget(final Composite parent) {
         Control itemLabel = createDescription(parent, EsbViewsRepository.ValidateSchema.Properties.dynamicSchemaKey, EsbMessages.ValidateSchemaPropertiesEditionPart_DynamicSchemaKeyLabel);
-        dynamicSchemaKeyText = SWTUtils.createScrollableText(parent, SWT.BORDER);
+        dynamicSchemaKeyText = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.READ_ONLY);
         GridData parameterExpressionData = new GridData(GridData.FILL_HORIZONTAL);
         dynamicSchemaKeyText.setLayoutData(parameterExpressionData);
         if(dynamicSchemaKey == null) {
@@ -487,6 +489,23 @@ public class ValidateSchemaPropertiesEditionPartImpl extends CompositeProperties
             
         });
         
+        dynamicSchemaKeyText.addKeyListener(new KeyListener() {
+            
+            @Override
+            public void keyReleased(KeyEvent e) {
+               if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                   EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL, dynamicSchemaKey);
+                   nspd.open();
+                   dynamicSchemaKeyText.setText(dynamicSchemaKey.getPropertyValue());
+                   propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ValidateSchemaPropertiesEditionPartImpl.this, EsbViewsRepository.ValidateSchema.Properties.dynamicSchemaKey, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getDynamicSchemaKey()));
+               }
+            }
+            
+            @Override
+            public void keyPressed(KeyEvent e) {}
+            
+        });
+        
         EditingUtils.setID(dynamicSchemaKeyText, EsbViewsRepository.ValidateSchema.Properties.dynamicSchemaKey);
         EditingUtils.setEEFtype(dynamicSchemaKeyText, "eef::Text");
         Control itemHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.ValidateSchema.Properties.dynamicSchemaKey, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
@@ -496,7 +515,7 @@ public class ValidateSchemaPropertiesEditionPartImpl extends CompositeProperties
 
     protected Composite createStaticSchemaKeyWidget(Composite parent) {
         Control itemLabel = createDescription(parent, EsbViewsRepository.ValidateSchema.Properties.staticSchemaKey, EsbMessages.ValidateSchemaPropertiesEditionPart_StaticSchemaKeyLabel);
-        staticSchemaKeyText = SWTUtils.createScrollableText(parent, SWT.BORDER);
+        staticSchemaKeyText = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.READ_ONLY);
         GridData parameterExpressionData = new GridData(GridData.FILL_HORIZONTAL);
         staticSchemaKeyText.setLayoutData(parameterExpressionData);
         if(staticSchemaKey == null) {
@@ -521,7 +540,7 @@ public class ValidateSchemaPropertiesEditionPartImpl extends CompositeProperties
                 staticSchemaKeyText.setText(staticSchemaKey.getKeyValue());
                 propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
                         ValidateSchemaPropertiesEditionPartImpl.this,
-                        EsbViewsRepository.EnrichMediator.Source.inlineRegistryKey, PropertiesEditionEvent.COMMIT,
+                        EsbViewsRepository.ValidateSchema.Properties.staticSchemaKey, PropertiesEditionEvent.COMMIT,
                         PropertiesEditionEvent.SET, null, getStaticSchemaKey()));
 
                 
@@ -535,9 +554,31 @@ public class ValidateSchemaPropertiesEditionPartImpl extends CompositeProperties
             
         });
         
+        staticSchemaKeyText.addKeyListener(new KeyListener() {
+            
+            @Override
+            public void keyReleased(KeyEvent e) {
+                if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                    EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
+                            SWT.NULL, staticSchemaKey, new ArrayList<NamedEntityDescriptor>());
+                    dialog.open();
+                    staticSchemaKeyText.setText(staticSchemaKey.getKeyValue());
+                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                            ValidateSchemaPropertiesEditionPartImpl.this,
+                            EsbViewsRepository.ValidateSchema.Properties.staticSchemaKey, PropertiesEditionEvent.COMMIT,
+                            PropertiesEditionEvent.SET, null, getStaticSchemaKey()));
+                }
+                
+            }
+            
+            @Override
+            public void keyPressed(KeyEvent e) {}
+            
+        });
+        
         EditingUtils.setID(staticSchemaKeyText, EsbViewsRepository.ValidateSchema.Properties.staticSchemaKey);
         EditingUtils.setEEFtype(staticSchemaKeyText, "eef::Text");
-        Control itemHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.ValidateSchema.Properties.dynamicSchemaKey, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+        Control itemHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.ValidateSchema.Properties.staticSchemaKey, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
         staticSchemaKeyElements = new Control[] {itemLabel, staticSchemaKeyText, itemHelp};
         return parent;
     }

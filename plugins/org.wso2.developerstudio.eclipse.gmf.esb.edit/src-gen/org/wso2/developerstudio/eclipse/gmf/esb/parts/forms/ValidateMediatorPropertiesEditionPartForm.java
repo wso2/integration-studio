@@ -108,6 +108,17 @@ public class ValidateMediatorPropertiesEditionPartForm extends SectionProperties
     protected Control[] reverseElements;
     protected Control[] commentListElements;
     protected Composite propertiesGroup;
+    
+    protected Composite filterFeaturesSubPropertiesGroup;
+    protected Composite filterSchemasSubPropertiesGroup;
+    protected Composite filterResourcesSubPropertiesGroup;
+    
+    protected Control[] featuresTableElements;
+    protected Control[] schemasTableElements;
+    protected Control[] resourcesTableElements;
+    protected Control[] descriptionElements;
+    protected Control[] enableCacheSchemaElements;
+    protected Control[] sourceElements;
 	// End of user code
 
 
@@ -135,14 +146,13 @@ public class ValidateMediatorPropertiesEditionPartForm extends SectionProperties
 	 * 
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
-		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
-		Form form = scrolledForm.getForm();
+		Form form = widgetFactory.createForm(parent);
 		view = form.getBody();
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
 		createControls(widgetFactory, view);
-		return scrolledForm;
+		return form;
 	}
 
 	/**
@@ -155,15 +165,12 @@ public class ValidateMediatorPropertiesEditionPartForm extends SectionProperties
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		CompositionSequence validateMediatorStep = new BindingCompositionSequence(propertiesEditionComponent);
 		CompositionStep propertiesStep = validateMediatorStep.addStep(EsbViewsRepository.ValidateMediator.Properties.class);
-		propertiesStep.addStep(EsbViewsRepository.ValidateMediator.Properties.description);
-		propertiesStep.addStep(EsbViewsRepository.ValidateMediator.Properties.commentsList);
-		propertiesStep.addStep(EsbViewsRepository.ValidateMediator.Properties.reverse);
-		propertiesStep.addStep(EsbViewsRepository.ValidateMediator.Properties.features);
-		propertiesStep.addStep(EsbViewsRepository.ValidateMediator.Properties.schemas);
-		propertiesStep.addStep(EsbViewsRepository.ValidateMediator.Properties.resources);
-		propertiesStep.addStep(EsbViewsRepository.ValidateMediator.Properties.enableCacheSchema);
-		propertiesStep.addStep(EsbViewsRepository.ValidateMediator.Properties.source);
-		
+        propertiesStep.addStep(EsbViewsRepository.ValidateMediator.Properties.source);
+        propertiesStep.addStep(EsbViewsRepository.ValidateMediator.Properties.enableCacheSchema);
+        propertiesStep.addStep(EsbViewsRepository.ValidateMediator.Properties.schemas);
+        propertiesStep.addStep(EsbViewsRepository.ValidateMediator.Properties.features);
+        propertiesStep.addStep(EsbViewsRepository.ValidateMediator.Properties.resources);
+        propertiesStep.addStep(EsbViewsRepository.ValidateMediator.Properties.description);
 		
 		composer = new PartComposer(validateMediatorStep) {
 
@@ -226,7 +233,7 @@ public class ValidateMediatorPropertiesEditionPartForm extends SectionProperties
      * @generated NOT
      */
 	protected Composite createDescriptionText(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EsbViewsRepository.ValidateMediator.Properties.description, EsbMessages.ValidateMediatorPropertiesEditionPart_DescriptionLabel);
+		Control descriptionLabel = createDescription(parent, EsbViewsRepository.ValidateMediator.Properties.description, EsbMessages.ValidateMediatorPropertiesEditionPart_DescriptionLabel);
 		description = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		description.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -285,9 +292,9 @@ public class ValidateMediatorPropertiesEditionPartForm extends SectionProperties
 		});
 		EditingUtils.setID(description, EsbViewsRepository.ValidateMediator.Properties.description);
 		EditingUtils.setEEFtype(description, "eef::Text"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.ValidateMediator.Properties.description, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		Control descriptionHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.ValidateMediator.Properties.description, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createDescriptionText
-
+		descriptionElements = new Control[] { descriptionLabel, description, descriptionHelp };
 		// End of user code
 		return parent;
 	}
@@ -375,6 +382,8 @@ public class ValidateMediatorPropertiesEditionPartForm extends SectionProperties
      *
 	 */
 	protected Composite createFeaturesTableComposition(FormToolkit widgetFactory, Composite parent) {
+        filterFeaturesSubPropertiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent, "Features", true);
+        Control[] previousControls = filterFeaturesSubPropertiesGroup.getChildren();
 		this.features = new ReferencesTable(getDescription(EsbViewsRepository.ValidateMediator.Properties.features, EsbMessages.ValidateMediatorPropertiesEditionPart_FeaturesLabel), new ReferencesTableListener() {
 			public void handleAdd() {
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ValidateMediatorPropertiesEditionPartForm.this, EsbViewsRepository.ValidateMediator.Properties.features, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
@@ -398,7 +407,7 @@ public class ValidateMediatorPropertiesEditionPartForm extends SectionProperties
 			this.features.addFilter(filter);
 		}
 		this.features.setHelpText(propertiesEditionComponent.getHelpContent(EsbViewsRepository.ValidateMediator.Properties.features, EsbViewsRepository.FORM_KIND));
-		this.features.createControls(parent, widgetFactory);
+		this.features.createControls(filterFeaturesSubPropertiesGroup, widgetFactory);
 		this.features.addSelectionListener(new SelectionAdapter() {
 			
 			public void widgetSelected(SelectionEvent e) {
@@ -416,7 +425,8 @@ public class ValidateMediatorPropertiesEditionPartForm extends SectionProperties
 		features.setID(EsbViewsRepository.ValidateMediator.Properties.features);
 		features.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
 		// Start of user code for createFeaturesTableComposition
-
+        Control[] newControls = filterFeaturesSubPropertiesGroup.getChildren();
+        featuresTableElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
 		// End of user code
 		return parent;
 	}
@@ -427,6 +437,8 @@ public class ValidateMediatorPropertiesEditionPartForm extends SectionProperties
      * @generated NOT
      */
 	protected Composite createSchemasTableComposition(FormToolkit widgetFactory, Composite parent) {
+        filterSchemasSubPropertiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent, "Schemas", true);
+        Control[] previousControls = filterSchemasSubPropertiesGroup.getChildren();
 		this.schemas = new ReferencesTable(getDescription(EsbViewsRepository.ValidateMediator.Properties.schemas, EsbMessages.ValidateMediatorPropertiesEditionPart_SchemasLabel), new ReferencesTableListener() {
 			public void handleAdd() {
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ValidateMediatorPropertiesEditionPartForm.this, EsbViewsRepository.ValidateMediator.Properties.schemas, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
@@ -450,7 +462,7 @@ public class ValidateMediatorPropertiesEditionPartForm extends SectionProperties
 			this.schemas.addFilter(filter);
 		}
 		this.schemas.setHelpText(propertiesEditionComponent.getHelpContent(EsbViewsRepository.ValidateMediator.Properties.schemas, EsbViewsRepository.FORM_KIND));
-		this.schemas.createControls(parent, widgetFactory);
+		this.schemas.createControls(filterSchemasSubPropertiesGroup, widgetFactory);
 		this.schemas.addSelectionListener(new SelectionAdapter() {
 			
 			public void widgetSelected(SelectionEvent e) {
@@ -468,7 +480,8 @@ public class ValidateMediatorPropertiesEditionPartForm extends SectionProperties
 		schemas.setID(EsbViewsRepository.ValidateMediator.Properties.schemas);
 		schemas.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
 		// Start of user code for createSchemasTableComposition
-
+        Control[] newControls = filterSchemasSubPropertiesGroup.getChildren();
+        schemasTableElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
 		// End of user code
 		return parent;
 	}
@@ -479,6 +492,8 @@ public class ValidateMediatorPropertiesEditionPartForm extends SectionProperties
      * @generated NOT
      */
 	protected Composite createResourcesTableComposition(FormToolkit widgetFactory, Composite parent) {
+        filterResourcesSubPropertiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent, "Resources", true);
+        Control[] previousControls = filterResourcesSubPropertiesGroup.getChildren();
 		this.resources = new ReferencesTable(getDescription(EsbViewsRepository.ValidateMediator.Properties.resources, EsbMessages.ValidateMediatorPropertiesEditionPart_ResourcesLabel), new ReferencesTableListener() {
 			public void handleAdd() {
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ValidateMediatorPropertiesEditionPartForm.this, EsbViewsRepository.ValidateMediator.Properties.resources, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
@@ -502,7 +517,7 @@ public class ValidateMediatorPropertiesEditionPartForm extends SectionProperties
 			this.resources.addFilter(filter);
 		}
 		this.resources.setHelpText(propertiesEditionComponent.getHelpContent(EsbViewsRepository.ValidateMediator.Properties.resources, EsbViewsRepository.FORM_KIND));
-		this.resources.createControls(parent, widgetFactory);
+		this.resources.createControls(filterResourcesSubPropertiesGroup, widgetFactory);
 		this.resources.addSelectionListener(new SelectionAdapter() {
 			
 			public void widgetSelected(SelectionEvent e) {
@@ -520,7 +535,8 @@ public class ValidateMediatorPropertiesEditionPartForm extends SectionProperties
 		resources.setID(EsbViewsRepository.ValidateMediator.Properties.resources);
 		resources.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
 		// Start of user code for createResourcesTableComposition
-
+        Control[] newControls = filterResourcesSubPropertiesGroup.getChildren();
+        resourcesTableElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
 		// End of user code
 		return parent;
 	}
@@ -1012,8 +1028,6 @@ public class ValidateMediatorPropertiesEditionPartForm extends SectionProperties
 
     public void validate() {
         EEFPropertyViewUtil epv = new EEFPropertyViewUtil(view);
-        epv.hideEntry(commentListElements, false);
-        epv.hideEntry(reverseElements, false);
 
         view.layout(true, true);
     }

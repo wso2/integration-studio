@@ -122,14 +122,13 @@ public class EnqueueMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	 * 
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
-		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
-		Form form = scrolledForm.getForm();
+		Form form = widgetFactory.createForm(parent);
 		view = form.getBody();
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
 		createControls(widgetFactory, view);
-		return scrolledForm;
+		return form;
 	}
 
 	/**
@@ -720,7 +719,7 @@ public class EnqueueMediatorPropertiesEditionPartForm extends SectionPropertiesE
             sequenceKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
         }
         String initSequenceKey = sequenceKey.getKeyValue().isEmpty() ? "" : sequenceKey.getKeyValue();
-        sequenceKeyText = widgetFactory.createText(parent, initSequenceKey);
+        sequenceKeyText = widgetFactory.createText(parent, initSequenceKey, SWT.READ_ONLY);
         sequenceKeyText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
         widgetFactory.paintBordersFor(parent);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);

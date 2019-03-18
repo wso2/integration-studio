@@ -25,8 +25,8 @@ public class ESBSolutionProjectModel extends ESBProjectModel {
 	private String registryProjectName;
 	private String connectorExporterProjectName;
 	private String compositeApplicationProjectName;
-	private boolean registryProjectChecked = true;
-	private boolean connectorExporterProjectChecked = true;
+	private boolean registryProjectChecked = false;
+	private boolean connectorExporterProjectChecked = false;
 
 	public boolean isConnectorExporterProjectChecked() {
 		return connectorExporterProjectChecked;

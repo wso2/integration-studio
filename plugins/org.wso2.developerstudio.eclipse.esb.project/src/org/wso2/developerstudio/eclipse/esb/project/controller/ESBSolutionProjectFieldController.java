@@ -33,8 +33,6 @@ public class ESBSolutionProjectFieldController extends ESBProjectFieldController
 	public List<String> getUpdateFields(String modelProperty, ProjectDataModel model) {
 		List<String> updateFields = super.getUpdateFields(modelProperty, model);
 		if (modelProperty.equals(ESB_PROJECT_NAME)) {
-			updateFields.add(REGISTRY_RESOURCES_PROJECT_NAME);
-			updateFields.add(CONNECTOR_EXPORTER_PROJECT_NAME);
 			updateFields.add(COMPOSITE_APPLICATION_PROJECT_NAME);
 		} else if (modelProperty.equals(REGISTRY_PROJECT_CHECKED)) {
 			updateFields.add(REGISTRY_RESOURCES_PROJECT_NAME);

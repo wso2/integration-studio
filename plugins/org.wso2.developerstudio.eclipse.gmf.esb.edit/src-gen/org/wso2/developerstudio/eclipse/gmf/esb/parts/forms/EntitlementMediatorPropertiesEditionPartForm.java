@@ -144,6 +144,10 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
     protected Control[] adviceSequenceKeyElements;
     protected Control[] obligationsSequenceKeyElements;
     protected Control[] descriptionElements;
+    protected Composite filterOnAcceptanceSubPropertiesGroup;
+    protected Composite filterOnRejectionSubPropertiesGroup;
+    protected Composite filterObligationsSubPropertiesGroup;
+    protected Composite filterAdviceSubPropertiesGroup;
     // End of user code
 
     protected Text description;
@@ -173,14 +177,13 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
      * 
      */
     public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
-        ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
-        Form form = scrolledForm.getForm();
+        Form form = widgetFactory.createForm(parent);
         view = form.getBody();
         GridLayout layout = new GridLayout();
         layout.numColumns = 3;
         view.setLayout(layout);
         createControls(widgetFactory, view);
-        return scrolledForm;
+        return form;
     }
 
     /**
@@ -204,14 +207,14 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
         propertiesStep.addStep(EsbViewsRepository.EntitlementMediator.Properties.entitlementClientType);
         propertiesStep.addStep(EsbViewsRepository.EntitlementMediator.Properties.thriftHost);
         propertiesStep.addStep(EsbViewsRepository.EntitlementMediator.Properties.thriftPort);
-        propertiesStep.addStep(EsbViewsRepository.EntitlementMediator.Properties.onRejectSequenceType);
-        propertiesStep.addStep(EsbViewsRepository.EntitlementMediator.Properties.onRejectSequenceKey);
         propertiesStep.addStep(EsbViewsRepository.EntitlementMediator.Properties.onAcceptSequenceType);
         propertiesStep.addStep(EsbViewsRepository.EntitlementMediator.Properties.onAcceptSequenceKey);
-        propertiesStep.addStep(EsbViewsRepository.EntitlementMediator.Properties.adviceSequenceType);
-        propertiesStep.addStep(EsbViewsRepository.EntitlementMediator.Properties.adviceSequenceKey);
+        propertiesStep.addStep(EsbViewsRepository.EntitlementMediator.Properties.onRejectSequenceType);
+        propertiesStep.addStep(EsbViewsRepository.EntitlementMediator.Properties.onRejectSequenceKey);
         propertiesStep.addStep(EsbViewsRepository.EntitlementMediator.Properties.obligationsSequenceType);
         propertiesStep.addStep(EsbViewsRepository.EntitlementMediator.Properties.obligationsSequenceKey);
+        propertiesStep.addStep(EsbViewsRepository.EntitlementMediator.Properties.adviceSequenceType);
+        propertiesStep.addStep(EsbViewsRepository.EntitlementMediator.Properties.adviceSequenceKey);
         propertiesStep.addStep(EsbViewsRepository.EntitlementMediator.Properties.description);
 
         composer = new PartComposer(entitlementMediatorStep) {
@@ -256,7 +259,7 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
                 }
                 // Start of user code for onRejectSequenceKey addToPart creation
                 if (key == EsbViewsRepository.EntitlementMediator.Properties.onRejectSequenceKey) {
-                    return createOnRejectSequenceKeyWidget(widgetFactory, parent);
+                    return createOnRejectSequenceKeyWidget(widgetFactory, filterOnRejectionSubPropertiesGroup);
                 }
                 // End of user code
                 if (key == EsbViewsRepository.EntitlementMediator.Properties.onAcceptSequenceType) {
@@ -264,7 +267,7 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
                 }
                 // Start of user code for onAcceptSequenceKey addToPart creation
                 if (key == EsbViewsRepository.EntitlementMediator.Properties.onAcceptSequenceKey) {
-                    return createOnAcceptSequenceKeyWidget(widgetFactory, parent);
+                    return createOnAcceptSequenceKeyWidget(widgetFactory, filterOnAcceptanceSubPropertiesGroup);
                 }
                 // End of user code
                 if (key == EsbViewsRepository.EntitlementMediator.Properties.adviceSequenceType) {
@@ -272,7 +275,7 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
                 }
                 // Start of user code for adviceSequenceKey addToPart creation
                 if (key == EsbViewsRepository.EntitlementMediator.Properties.adviceSequenceKey) {
-                    return createAdviceSequenceKeyWidget(widgetFactory, parent);
+                    return createAdviceSequenceKeyWidget(widgetFactory, filterAdviceSubPropertiesGroup);
                 }
                 // End of user code
                 if (key == EsbViewsRepository.EntitlementMediator.Properties.obligationsSequenceType) {
@@ -280,7 +283,7 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
                 }
                 // Start of user code for obligationsSequenceKey addToPart creation
                 if (key == EsbViewsRepository.EntitlementMediator.Properties.obligationsSequenceKey) {
-                    return createObligationsSequenceKeyWidget(widgetFactory, parent);
+                    return createObligationsSequenceKeyWidget(widgetFactory, filterObligationsSubPropertiesGroup);
                 }
                 // End of user code
                 if (key == EsbViewsRepository.EntitlementMediator.Properties.description) {
@@ -970,10 +973,12 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
      * @generated NOT
      */
     protected Composite createOnRejectSequenceTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
-        Control onRejectSequenceTypeLabel = createDescription(parent,
+        filterOnRejectionSubPropertiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent, "On Rejection",
+                true);
+        Control onRejectSequenceTypeLabel = createDescription(filterOnRejectionSubPropertiesGroup,
                 EsbViewsRepository.EntitlementMediator.Properties.onRejectSequenceType,
                 EsbMessages.EntitlementMediatorPropertiesEditionPart_OnRejectSequenceTypeLabel);
-        onRejectSequenceType = new EMFComboViewer(parent);
+        onRejectSequenceType = new EMFComboViewer(filterOnRejectionSubPropertiesGroup);
         onRejectSequenceType.setContentProvider(new ArrayContentProvider());
         onRejectSequenceType
                 .setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -998,7 +1003,7 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
 
         });
         onRejectSequenceType.setID(EsbViewsRepository.EntitlementMediator.Properties.onRejectSequenceType);
-        Control onRejectSequenceTypeHelp = FormUtils.createHelpButton(widgetFactory, parent,
+        Control onRejectSequenceTypeHelp = FormUtils.createHelpButton(widgetFactory, filterOnRejectionSubPropertiesGroup,
                 propertiesEditionComponent.getHelpContent(
                         EsbViewsRepository.EntitlementMediator.Properties.onRejectSequenceType,
                         EsbViewsRepository.FORM_KIND),
@@ -1027,10 +1032,12 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
      * @generated NOT
      */
     protected Composite createOnAcceptSequenceTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
-        Control onAcceptSequenceTypeLabel = createDescription(parent,
+        filterOnAcceptanceSubPropertiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent, "On Acceptance",
+                true);
+        Control onAcceptSequenceTypeLabel = createDescription(filterOnAcceptanceSubPropertiesGroup,
                 EsbViewsRepository.EntitlementMediator.Properties.onAcceptSequenceType,
                 EsbMessages.EntitlementMediatorPropertiesEditionPart_OnAcceptSequenceTypeLabel);
-        onAcceptSequenceType = new EMFComboViewer(parent);
+        onAcceptSequenceType = new EMFComboViewer(filterOnAcceptanceSubPropertiesGroup);
         onAcceptSequenceType.setContentProvider(new ArrayContentProvider());
         onAcceptSequenceType
                 .setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -1055,7 +1062,7 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
 
         });
         onAcceptSequenceType.setID(EsbViewsRepository.EntitlementMediator.Properties.onAcceptSequenceType);
-        Control onAcceptSequenceTypeHelp = FormUtils.createHelpButton(widgetFactory, parent,
+        Control onAcceptSequenceTypeHelp = FormUtils.createHelpButton(widgetFactory, filterOnAcceptanceSubPropertiesGroup,
                 propertiesEditionComponent.getHelpContent(
                         EsbViewsRepository.EntitlementMediator.Properties.onAcceptSequenceType,
                         EsbViewsRepository.FORM_KIND),
@@ -1084,10 +1091,12 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
      * @generated NOT
      */
     protected Composite createAdviceSequenceTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
-        Control adviceSequenceTypeLabel = createDescription(parent,
+        filterAdviceSubPropertiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent, "Advice",
+                true);
+        Control adviceSequenceTypeLabel = createDescription(filterAdviceSubPropertiesGroup,
                 EsbViewsRepository.EntitlementMediator.Properties.adviceSequenceType,
                 EsbMessages.EntitlementMediatorPropertiesEditionPart_AdviceSequenceTypeLabel);
-        adviceSequenceType = new EMFComboViewer(parent);
+        adviceSequenceType = new EMFComboViewer(filterAdviceSubPropertiesGroup);
         adviceSequenceType.setContentProvider(new ArrayContentProvider());
         adviceSequenceType
                 .setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -1111,7 +1120,7 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
 
         });
         adviceSequenceType.setID(EsbViewsRepository.EntitlementMediator.Properties.adviceSequenceType);
-        Control adviceSequenceTypeHelp = FormUtils.createHelpButton(widgetFactory, parent,
+        Control adviceSequenceTypeHelp = FormUtils.createHelpButton(widgetFactory, filterAdviceSubPropertiesGroup,
                 propertiesEditionComponent.getHelpContent(
                         EsbViewsRepository.EntitlementMediator.Properties.adviceSequenceType,
                         EsbViewsRepository.FORM_KIND),
@@ -1140,10 +1149,12 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
      * @generated NOT
      */
     protected Composite createObligationsSequenceTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
-        Control obligationSequenceTypeLabel = createDescription(parent,
+        filterObligationsSubPropertiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent, "Obligation",
+                true);
+        Control obligationSequenceTypeLabel = createDescription(filterObligationsSubPropertiesGroup,
                 EsbViewsRepository.EntitlementMediator.Properties.obligationsSequenceType,
                 EsbMessages.EntitlementMediatorPropertiesEditionPart_ObligationsSequenceTypeLabel);
-        obligationsSequenceType = new EMFComboViewer(parent);
+        obligationsSequenceType = new EMFComboViewer(filterObligationsSubPropertiesGroup);
         obligationsSequenceType.setContentProvider(new ArrayContentProvider());
         obligationsSequenceType
                 .setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -1168,7 +1179,7 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
 
         });
         obligationsSequenceType.setID(EsbViewsRepository.EntitlementMediator.Properties.obligationsSequenceType);
-        Control obligationSequenceTypeHelp = FormUtils.createHelpButton(widgetFactory, parent,
+        Control obligationSequenceTypeHelp = FormUtils.createHelpButton(widgetFactory, filterObligationsSubPropertiesGroup,
                 propertiesEditionComponent.getHelpContent(
                         EsbViewsRepository.EntitlementMediator.Properties.obligationsSequenceType,
                         EsbViewsRepository.FORM_KIND),
@@ -1994,7 +2005,7 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
 
         String initValueExpression = onRejectSequenceKey.getKeyValue().isEmpty() ? ""
                 : onRejectSequenceKey.getKeyValue();
-        onRejectSequenceKeyText = widgetFactory.createText(parent, initValueExpression);
+        onRejectSequenceKeyText = widgetFactory.createText(parent, initValueExpression, SWT.READ_ONLY);
         onRejectSequenceKeyText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
         widgetFactory.paintBordersFor(parent);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
@@ -2048,7 +2059,7 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
 
         String initValueExpression = onAcceptSequenceKey.getKeyValue().isEmpty() ? ""
                 : onAcceptSequenceKey.getKeyValue();
-        onAcceptSequenceKeyText = widgetFactory.createText(parent, initValueExpression);
+        onAcceptSequenceKeyText = widgetFactory.createText(parent, initValueExpression, SWT.READ_ONLY);
         onAcceptSequenceKeyText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
         widgetFactory.paintBordersFor(parent);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
@@ -2101,7 +2112,7 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
         }
 
         String initValueExpression = adviceSequenceKey.getKeyValue().isEmpty() ? "" : adviceSequenceKey.getKeyValue();
-        adviceSequenceKeyText = widgetFactory.createText(parent, initValueExpression);
+        adviceSequenceKeyText = widgetFactory.createText(parent, initValueExpression, SWT.READ_ONLY);
         adviceSequenceKeyText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
         widgetFactory.paintBordersFor(parent);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
@@ -2155,7 +2166,7 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
 
         String initValueExpression = obligationsSequenceKey.getKeyValue().isEmpty() ? ""
                 : obligationsSequenceKey.getKeyValue();
-        obligationsSequenceKeyText = widgetFactory.createText(parent, initValueExpression);
+        obligationsSequenceKeyText = widgetFactory.createText(parent, initValueExpression, SWT.READ_ONLY);
         obligationsSequenceKeyText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
         widgetFactory.paintBordersFor(parent);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
@@ -2208,6 +2219,15 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
         EEFPropertyViewUtil epv = new EEFPropertyViewUtil(view);
         epv.hideEntry(reverseElements, false);
         epv.hideEntry(commentListElements, false);
+        
+        epv.showEntry(new Control[] { filterOnAcceptanceSubPropertiesGroup.getParent() }, false);
+        epv.clearElements(new Composite[] { filterOnAcceptanceSubPropertiesGroup });
+        epv.showEntry(new Control[] { filterOnRejectionSubPropertiesGroup.getParent() }, false);
+        epv.clearElements(new Composite[] { filterOnRejectionSubPropertiesGroup });
+        epv.showEntry(new Control[] { filterObligationsSubPropertiesGroup.getParent() }, false);
+        epv.clearElements(new Composite[] { filterObligationsSubPropertiesGroup });
+        epv.showEntry(new Control[] { filterAdviceSubPropertiesGroup.getParent() }, false);
+        epv.clearElements(new Composite[] { filterAdviceSubPropertiesGroup });
 
         epv.showEntry(entitlementServerURLElements, false);
         epv.showEntry(usernameElements, false);

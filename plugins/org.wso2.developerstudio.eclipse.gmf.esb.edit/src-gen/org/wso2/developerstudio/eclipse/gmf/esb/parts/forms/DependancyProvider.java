@@ -1,27 +1,10 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.parts.forms;
 
-import static org.wso2.developerstudio.eclipse.gmf.esb.Constants.TXT_DATABASE_CONNECTION_URL_MSSQL;
-import static org.wso2.developerstudio.eclipse.gmf.esb.Constants.TXT_DATABASE_CONNECTION_URL_MYSQL;
-import static org.wso2.developerstudio.eclipse.gmf.esb.Constants.TXT_DATABASE_CONNECTION_URL_ORACLE;
-import static org.wso2.developerstudio.eclipse.gmf.esb.Constants.TXT_DATABASE_CONNECTION_URL_POSTGRESQL;
-import static org.wso2.developerstudio.eclipse.gmf.esb.Constants.TXT_DATABASE_DRIVER_MSSQL;
-import static org.wso2.developerstudio.eclipse.gmf.esb.Constants.TXT_DATABASE_DRIVER_MYSQL;
-import static org.wso2.developerstudio.eclipse.gmf.esb.Constants.TXT_DATABASE_DRIVER_ORACLE;
-import static org.wso2.developerstudio.eclipse.gmf.esb.Constants.TXT_DATABASE_DRIVER_POSTGRESQL;
-import static org.wso2.developerstudio.eclipse.gmf.esb.Constants.TXT_DATABASE_USER_MSSQL;
-import static org.wso2.developerstudio.eclipse.gmf.esb.Constants.TXT_DATABASE_USER_MYSQL;
-import static org.wso2.developerstudio.eclipse.gmf.esb.Constants.TXT_DATABASE_USER_ORACLE;
-import static org.wso2.developerstudio.eclipse.gmf.esb.Constants.TXT_DATABASE_USER_POSTGRESQL;
-
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.lang.reflect.InvocationTargetException;
-import java.nio.file.Files;
-import java.nio.file.LinkOption;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.sql.Connection;
@@ -30,12 +13,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import java.util.Random;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.ScheduledFuture;
-import java.util.concurrent.TimeUnit;
-
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -46,19 +23,14 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.FilenameUtils;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.ListenerList;
 import org.eclipse.core.runtime.MultiStatus;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.core.runtime.jobs.Job;
-
-import org.eclipse.emf.transaction.util.Adaptable;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
@@ -94,11 +66,9 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IFileEditorInput;
-import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
-import org.eclipse.ui.progress.IJobRunnable;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleException;
 import org.w3c.dom.Attr;
@@ -109,16 +79,12 @@ import org.w3c.dom.NodeList;
 import org.wso2.carbon.tools.converter.BundleGeneratorTool;
 import org.xml.sax.SAXException;
 
-import sun.tools.jar.resources.jar;
-
 public class DependancyProvider extends Dialog {
 
 	public static final String OS_NAME = "os.name";
 	public static final String SYSTEM_PROPERTY_TYPE_GENERIC = "generic";
-
 	public static final String OS_TYPE_MAC = "mac";
 	public static final String OS_TYPE_DARWIN = "darwin";
-
 	public static final String EI_TOOLING_HOME_MACOS = "/Applications/DeveloperStudio.app/Contents/MacOS";
 	public static final String EMPTY_STRING = "";
 
@@ -150,7 +116,6 @@ public class DependancyProvider extends Dialog {
 	private String connectionType;
 	private String jdbcConnectivityJar;
 	private String dependencyDir;
-
 
 	private Label lblConnectionValidate;
 	private Label lblVersionValidate;
@@ -189,19 +154,18 @@ public class DependancyProvider extends Dialog {
 		}
 		jarOutputPath = eclipseWorkspace + File.separator + activeProjectName + File.separator + "dependancies";
 		dependencyDir = eclipseWorkspace + File.separator + activeProjectName + File.separator + "dependancies";
-		System.out.println("rrrrrrrrrrrr"+getWorkingDirectory());
 	}
 
 	void open(final ConnectionObj connectionObj) {
 		this.connectionObj = connectionObj;
 		databaseProtocol = connectionObj.getJdbcProtocol();
 		jdbcDriver = connectionObj.getDbDriver();
-		
+
 		display = PlatformUI.getWorkbench().getDisplay();
 		shell = new Shell(getParent(), SWT.DIALOG_TRIM | SWT.APPLICATION_MODAL);
 		shell.setText("Database Configuration");
 		shell.setLayout(new FillLayout());
-		
+
 		FormToolkit toolkit = new FormToolkit(display);
 		Form form = toolkit.createForm(shell);
 		toolkit.decorateFormHeading(form);
@@ -210,7 +174,7 @@ public class DependancyProvider extends Dialog {
 		form.setBackground(new Color(display, 237, 237, 237));
 		form.getBody().setLayout(new GridLayout());
 		form.getBody().setForeground(new Color(display, 0, 0, 0));
-		
+
 		GridData gridData = new GridData();
 		Composite client = new Composite(form.getBody(), SWT.BORDER);
 		GridLayout gLayout = new GridLayout(9, false);
@@ -247,7 +211,7 @@ public class DependancyProvider extends Dialog {
 		lblVersionValidate.setLayoutData(gridData);
 
 		version = new Combo(client, SWT.READ_ONLY);
-		version.setItems(new String[] {"Select Version"});
+		version.setItems(new String[] { "Select Version" });
 
 		gridData = new GridData();
 		gridData.horizontalAlignment = SWT.FILL;
@@ -279,7 +243,6 @@ public class DependancyProvider extends Dialog {
 		gridData = new GridData();
 		btnLocate.setLayoutData(gridData);
 
-		
 		btnDownload = new Button(client, SWT.NULL);
 		btnDownload.setText("Download");
 		btnDownload.setLocation(new Point(400, 0));
@@ -362,7 +325,7 @@ public class DependancyProvider extends Dialog {
 
 		Label passwordLabel = new Label(outerGroup, SWT.NONE);
 		passwordLabel.setText("password:");
-		
+
 		lblPasswordValidate = new Label(outerGroup, SWT.NONE);
 		gridData = new GridData();
 		gridData.widthHint = 10;
@@ -393,7 +356,8 @@ public class DependancyProvider extends Dialog {
 		Composite client3 = new Composite(form.getBody(), SWT.APPLICATION_MODAL);
 		GridLayout gridd = new GridLayout(3, false);
 		gridd.horizontalSpacing = 1;
-		gridd.marginLeft = 420;
+		gridd.marginLeft = 390;
+		gridd.marginRight = -5;
 		client3.setLayout(gridd);
 		client3.setBackground(new Color(display, 237, 237, 237));
 
@@ -403,7 +367,7 @@ public class DependancyProvider extends Dialog {
 		testConnectionBtn.setLayoutData(gridData3);
 
 		Button okBtn = new Button(client3, SWT.NULL);
-		okBtn.setText("OK");
+		okBtn.setText("  Save  ");
 		gridData3 = new GridData(GridData.END, GridData.END, false, false);
 		okBtn.setLayoutData(gridData3);
 
@@ -415,10 +379,8 @@ public class DependancyProvider extends Dialog {
 		connectiontype.addSelectionListener(new SelectionListener() {
 			public void widgetSelected(SelectionEvent e) {
 				clearRequiredFeilds();
-				if(jdbcConnectivityJar != null) {
-					remove(jdbcConnectivityJar);
-				}
 				version.setEnabled(true);
+				remove(jdbcConnectivityJar);
 				remove(jarLocationText.getText());
 				switch (connectiontype.getText()) {
 				case "MYSQL":
@@ -438,7 +400,7 @@ public class DependancyProvider extends Dialog {
 					setDefaults("localhost", "1433", "root", "password", "database");
 					databaseProtocol = "jdbc:sqlserver://";
 					break;
-					
+
 				case "ORACLE":
 					btnDownload.setEnabled(false);
 					version.setItems(oracleVersionArr);
@@ -447,7 +409,7 @@ public class DependancyProvider extends Dialog {
 					jdbcDriver = "com.oracle.jdbc.Driver";
 					databaseProtocol = "jdbc:oracle:thin:@";
 					break;
-					
+
 				case "POSTGRESQL":
 					version.setItems(postgresSqlVersionArr);
 					groupId = "org.postgresql";
@@ -456,7 +418,7 @@ public class DependancyProvider extends Dialog {
 					setDefaults("localhost", "5432", "root", "password", "database");
 					databaseProtocol = "jdbc:postgresql://";
 					break;
-					
+
 				case "OTHER":
 
 					break;
@@ -464,7 +426,6 @@ public class DependancyProvider extends Dialog {
 
 				jarLocationText.setText("");
 				File dir = new File(dependencyDir);
-
 				if (!dir.exists()) {
 					dir.mkdirs();
 				}
@@ -480,11 +441,9 @@ public class DependancyProvider extends Dialog {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				if(jdbcConnectivityJar != null) {
-					remove(jdbcConnectivityJar);
-				}
+				remove(jdbcConnectivityJar);
 				remove(jarLocationText.getText());
-				if((connectionObj.getDbType()!= null && connectionObj.getVersion()!= null)) {
+				if ((connectionObj.getDbType() != null && connectionObj.getVersion() != null)) {
 					remove(getDownlodedJarByName(connectionObj.getDbType(), connectionObj.getVersion()));
 				}
 				jarLocationText.setText("");
@@ -499,7 +458,6 @@ public class DependancyProvider extends Dialog {
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
 				// TODO Auto-generated method stub
-
 			}
 
 		});
@@ -521,7 +479,7 @@ public class DependancyProvider extends Dialog {
 				}
 			}
 		};
-		
+
 		jarLocationText.addModifyListener(listener);
 		jarLocationText.addKeyListener(new KeyListener() {
 			@Override
@@ -562,7 +520,7 @@ public class DependancyProvider extends Dialog {
 			@Override
 			public void handleEvent(org.eclipse.swt.widgets.Event event) {
 				List<Dependency> denpendency = new ArrayList<Dependency>();
-				System.out.println("groupId"+groupId);
+				System.out.println("groupId" + groupId);
 				System.out.println(artifactId);
 				System.out.println(version.getText());
 				denpendency.add(new Dependency(groupId, artifactId, version.getText()));
@@ -592,13 +550,13 @@ public class DependancyProvider extends Dialog {
 					if (file.exists()) {
 						FileUtils.copyFile(file, new File(microInteratorPath + File.separator + file.getName()));
 					}
-					
+
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-				if(jdbcConnectivityJar != null) {
-					remove(jdbcConnectivityJar);
-				}
+
+				remove(jdbcConnectivityJar);
+
 				shell.dispose();
 			}
 		});
@@ -614,13 +572,11 @@ public class DependancyProvider extends Dialog {
 
 		cancelBtn.addListener(SWT.Selection, new Listener() {
 			@Override
-			public void handleEvent(org.eclipse.swt.widgets.Event event) {
-				if(jdbcConnectivityJar != null) {
-					remove(jdbcConnectivityJar);
-				}
+			public void handleEvent(org.eclipse.swt.widgets.Event event) {	
+				remove(jdbcConnectivityJar);
 				remove(getDownlodedJarByName(connectiontype.getText(), version.getText()));
-				remove(dependencyDir+"/target");
-				remove(dependencyDir+"/pom.xml");
+				remove(dependencyDir + "/target");
+				remove(dependencyDir + "/pom.xml");
 				shell.dispose();
 			}
 		});
@@ -628,26 +584,25 @@ public class DependancyProvider extends Dialog {
 		shell.addDisposeListener(new DisposeListener() {
 			@Override
 			public void widgetDisposed(DisposeEvent e) {
-				if(jdbcConnectivityJar != null) {
-					remove(jdbcConnectivityJar);
-				}
+				remove(jdbcConnectivityJar);
 				remove(getDownlodedJarByName(connectiontype.getText(), version.getText()));
 			}
 		});
 
 		connectiontype.select(getDatabaseIndex(databaseArr, connectionObj.getDbType()));
 
-		
-		userNameText.setText(connectionObj.getUserName());
-		passwordText.setText(connectionObj.getPassword());
 		hostText.setText(connectionObj.getHost());
 		portText.setText(connectionObj.getPort());
+		userNameText.setText(connectionObj.getUserName());
+		passwordText.setText(connectionObj.getPassword());
 		databaseText.setText(connectionObj.getDatabase());
 		jarLocationText.setText(connectionObj.getJarPath());
-		if(connectionObj.getVersion()!=null || !connectionObj.getVersion().equals("")) {
+
+		if (connectionObj.getVersion() != null || !connectionObj.getVersion().equals("")) {
 			version.setEnabled(false);
 		}
-		version.setItems(new String []{connectionObj.getVersion()});
+
+		version.setItems(new String[] { connectionObj.getVersion() });
 		version.select(0);
 		shell.setSize(450, 400);
 		shell.pack();
@@ -707,7 +662,7 @@ public class DependancyProvider extends Dialog {
 
 	void creatBundleFromJar(String path) {
 		if (path != null) {
-			
+
 			File file = new File(path);
 			if (file.isFile()) {
 
@@ -715,7 +670,7 @@ public class DependancyProvider extends Dialog {
 				String pluginName = fileName.substring(0, fileName.length() - 4) + "_1.0.0.jar";
 
 				jarLocationText.setText(path);
-				
+
 				BundleGeneratorTool bcg = new BundleGeneratorTool();
 				String p[] = { path, dependencyDir, dependencyDir };
 				bcg.execute(p);
@@ -728,7 +683,7 @@ public class DependancyProvider extends Dialog {
 	boolean validate() {
 		final Color redColor = new Color(display, 255, 0, 0);
 		boolean hasErrors = false;
-		
+
 		if (connectiontype.getText().equals("") || connectiontype.getText().equals("")) {
 			hasErrors = changeLabelColor(lblConnectionValidate, redColor, " *");
 		}
@@ -755,11 +710,13 @@ public class DependancyProvider extends Dialog {
 	}
 
 	void remove(String path) {
-	 System.out.println(path);
- 	 //if(Files.exists(Paths.get(path), new LinkOption[]{ LinkOption.NOFOLLOW_LINKS})) {
-			
-	 //if(Files.notExists(Paths.get(path), new LinkOption[]{ LinkOption.NOFOLLOW_LINKS})) {
-	 if(path!= null ) {
+		System.out.println(path);
+		// if(Files.exists(Paths.get(path), new LinkOption[]{
+		// LinkOption.NOFOLLOW_LINKS})) {
+
+		// if(Files.notExists(Paths.get(path), new LinkOption[]{
+		// LinkOption.NOFOLLOW_LINKS})) {
+		if (path != null) {
 			File dir = new File(path);
 			if (dir.exists()) {
 				try {
@@ -807,8 +764,8 @@ public class DependancyProvider extends Dialog {
 	}
 
 	void testConnecton() {
-		creatBundleFromJar(dependencyDir + File.separator
-				+ getDownlodedJarByName(connectiontype.getText(), version.getText()));
+		creatBundleFromJar(
+				dependencyDir + File.separator + getDownlodedJarByName(connectiontype.getText(), version.getText()));
 		String path = "file://" + jdbcConnectivityJar;
 		Connection conn = null;
 		try {
@@ -847,7 +804,7 @@ public class DependancyProvider extends Dialog {
 			if (conn != null) {
 				showMessage("Connection Successful");
 			}
-			
+
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 			ErrorDialog.openError(shell, "Error", "This is an error", createMultiStatus(e.getLocalizedMessage(), e));
@@ -861,7 +818,7 @@ public class DependancyProvider extends Dialog {
 		} catch (Exception e) {
 			e.printStackTrace();
 			ErrorDialog.openError(shell, "Error", "This is an error", createMultiStatus(e.getLocalizedMessage(), e));
-		}finally {
+		} finally {
 			if (conn != null) {
 				try {
 					conn.close();
@@ -903,7 +860,7 @@ public class DependancyProvider extends Dialog {
 	}
 
 	public BufferedReader buildPOM() {
-	
+
 		try {
 			File dir = new File(dependencyDir);
 			Process p = Runtime.getRuntime().exec("mvn install clean", null, dir);
@@ -925,15 +882,15 @@ public class DependancyProvider extends Dialog {
 			DocumentBuilderFactory documentFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder documentBuilder = documentFactory.newDocumentBuilder();
 			Document document = documentBuilder.newDocument();
-			
+
 			File dir = new File(dependencyDir);
-			
+
 			if (!dir.exists()) {
 				dir.mkdirs();
 			}
-			
+
 			File pomXML = new File(dependencyDir + File.separator + "pom.xml");
-			
+
 			if (pomXML.exists()) {
 				document = documentBuilder.parse(pomXML);
 				document.getDocumentElement().normalize();
@@ -1078,7 +1035,7 @@ public class DependancyProvider extends Dialog {
 				Element followSymlinks = document.createElement("followSymlinks");
 				followSymlinks.appendChild(document.createTextNode("false"));
 				fileset.appendChild(followSymlinks);
-				
+
 			}
 
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
@@ -1364,8 +1321,8 @@ public class DependancyProvider extends Dialog {
 						Display.getDefault().syncExec(new Runnable() {
 							public void run() {
 								downloadSuccess = false;
-								remove(dependencyDir+"/target");
-								remove(dependencyDir+"/pom.xml");
+								remove(dependencyDir + "/target");
+								remove(dependencyDir + "/pom.xml");
 								MessageDialog.openInformation(shell, "Cancelled",
 										"JDBC driver download operation was cancelled");
 								// cleanDirectory(eclipseWorkspace + "/" + activeProjectName + "/dependancies");

@@ -26,7 +26,7 @@ public class EsbEditor extends InteractiveEEFEditor {
 	 * @see org.eclipse.emf.eef.runtime.ui.editor.InteractiveEEFEditor#contributePages()
 	 */
 	protected void contributePages() {
-
+	 
 	}
 	
 	

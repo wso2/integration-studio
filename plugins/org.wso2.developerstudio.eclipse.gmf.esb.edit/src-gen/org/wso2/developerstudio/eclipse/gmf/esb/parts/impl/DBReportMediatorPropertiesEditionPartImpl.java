@@ -96,6 +96,10 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	protected Text connectionUsername;
 	protected Text connectionPassword;
 	protected Button connectionUseTransaction;
+	// Start of user code  for Database Configuration widgets declarations
+	
+	// End of user code
+
 	protected ReferencesTable sqlStatements;
 	protected List<ViewerFilter> sqlStatementsBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> sqlStatementsFilters = new ArrayList<ViewerFilter>();
@@ -164,6 +168,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 		connectionStep.addStep(EsbViewsRepository.DBReportMediator.Connection.connectionUsername);
 		connectionStep.addStep(EsbViewsRepository.DBReportMediator.Connection.connectionPassword);
 		connectionStep.addStep(EsbViewsRepository.DBReportMediator.Connection.connectionUseTransaction);
+		connectionStep.addStep(EsbViewsRepository.DBReportMediator.Connection.databaseConfiguration);
 		
 		dBReportMediatorStep
 			.addStep(EsbViewsRepository.DBReportMediator.Statements.class)
@@ -227,6 +232,9 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 				if (key == EsbViewsRepository.DBReportMediator.Connection.connectionUseTransaction) {
 					return createConnectionUseTransactionCheckbox(parent);
 				}
+				// Start of user code for Database Configuration addToPart creation
+				
+				// End of user code
 				if (key == EsbViewsRepository.DBReportMediator.Statements.class) {
 					return createStatementsGroup(parent);
 				}
@@ -2452,6 +2460,10 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 
 
 
+
+	// Start of user code for Database Configuration specific getters and setters implementation
+	
+	// End of user code
 
 	/**
 	 * {@inheritDoc}

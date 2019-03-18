@@ -657,10 +657,10 @@ public class AbstractSqlExecutorMediatorItemProvider extends MediatorItemProvide
      * @param dbType Database Type
      */
     private void updateDatabaseTypeDefaults(AbstractSqlExecutorMediator sqlMediator, SqlDatabaseType dbType) {
-        TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain(sqlMediator);
+        /*TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain(sqlMediator);
         updateSQLDbDriver(sqlMediator, dbType, editingDomain);
         updateSQLDbUrl(sqlMediator, dbType, editingDomain);
-        updateSQLDbUsername(sqlMediator, dbType, editingDomain);
+        updateSQLDbUsername(sqlMediator, dbType, editingDomain);*/
     }
 
     /**

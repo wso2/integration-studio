@@ -203,11 +203,15 @@ public class MethodArgumentPropertiesEditionPartImpl extends CompositeProperties
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(MethodArgumentPropertiesEditionPartImpl.this, EsbViewsRepository.MethodArgument.Properties.propertyName, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, propertyName.getText()));
-				}
+			public void keyReleased(KeyEvent e) {
+			    if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+			        if (propertiesEditionComponent != null)
+                        propertiesEditionComponent.firePropertiesChanged(
+                                new PropertiesEditionEvent(MethodArgumentPropertiesEditionPartImpl.this,
+                                        EsbViewsRepository.MethodArgument.Properties.propertyName,
+                                        PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+                                        propertyName.getText()));
+			    }
 			}
 
 		});
@@ -300,8 +304,8 @@ public class MethodArgumentPropertiesEditionPartImpl extends CompositeProperties
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
+			public void keyReleased(KeyEvent e) {
+				if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
 					if (propertiesEditionComponent != null)
 						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(MethodArgumentPropertiesEditionPartImpl.this, EsbViewsRepository.MethodArgument.Properties.propertyValue, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, propertyValue.getText()));
 				}

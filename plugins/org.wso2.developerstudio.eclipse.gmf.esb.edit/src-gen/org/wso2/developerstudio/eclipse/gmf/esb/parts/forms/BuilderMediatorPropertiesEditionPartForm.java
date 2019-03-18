@@ -90,9 +90,11 @@ public class BuilderMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	protected List<ViewerFilter> messageBuildersBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> messageBuildersFilters = new ArrayList<ViewerFilter>();
 
+    // Start of user code
     protected Control[] reverseElements;
     protected Control[] commentListElements;
     protected Composite propertiesGroup;
+    // End of user code
 
 	/**
 	 * For {@link ISection} use only.
@@ -111,23 +113,26 @@ public class BuilderMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
+	 * @generated NOT
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
 	 * 
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
-		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
-		Form form = scrolledForm.getForm();
+		Form form = widgetFactory.createForm(parent);
 		view = form.getBody();
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
 		createControls(widgetFactory, view);
-		return scrolledForm;
+		return form;
 	}
 
 	/**
 	 * {@inheritDoc}
+	 * 
+	 * @generated NOT
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
@@ -136,11 +141,10 @@ public class BuilderMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		CompositionSequence builderMediatorStep = new BindingCompositionSequence(propertiesEditionComponent);
 		CompositionStep propertiesStep = builderMediatorStep.addStep(EsbViewsRepository.BuilderMediator.Properties.class);
-		propertiesStep.addStep(EsbViewsRepository.BuilderMediator.Properties.description);
 		propertiesStep.addStep(EsbViewsRepository.BuilderMediator.Properties.commentsList);
 		propertiesStep.addStep(EsbViewsRepository.BuilderMediator.Properties.reverse);
 		propertiesStep.addStep(EsbViewsRepository.BuilderMediator.Properties.messageBuilders);
-		
+        propertiesStep.addStep(EsbViewsRepository.BuilderMediator.Properties.description);
 		
 		composer = new PartComposer(builderMediatorStep) {
 

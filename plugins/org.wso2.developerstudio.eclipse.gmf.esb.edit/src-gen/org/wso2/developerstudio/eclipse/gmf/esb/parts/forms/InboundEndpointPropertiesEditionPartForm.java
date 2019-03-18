@@ -24141,7 +24141,7 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
             }
             case "JMS": {
                 epv.showEntry(jmsPropertyIDs, false);
-                switch (getTransportJMSBrokerType().getLiteral()) {
+                /*switch (getTransportJMSBrokerType().getLiteral()) {
                     case "WSO2_BROKER_PROFILE":
                         setJavaNamingFactoryInitial(JAVA_NAMING_FACTORY_INITIAL_WSO2_BROKER);
                         setJavaNamingProviderUrl(JAVA_NAMING_PROVIDER_URL_WSO2_BROKER);
@@ -24160,7 +24160,7 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
                         setTransportJMSDestination("");
                         setTransportJMSConnectionFactoryJNDIName(""); 
                     break;
-                }
+                }*/
                 break;
             }
             case "Custom": {

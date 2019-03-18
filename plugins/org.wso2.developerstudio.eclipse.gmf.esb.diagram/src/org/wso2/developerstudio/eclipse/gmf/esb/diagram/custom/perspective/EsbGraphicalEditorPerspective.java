@@ -3,14 +3,15 @@ package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.perspective;
 import org.eclipse.ui.IFolderLayout;
 import org.eclipse.ui.IPageLayout;
 import org.eclipse.ui.IPerspectiveFactory;
-import org.eclipse.ui.IPlaceholderFolderLayout;
+import org.eclipse.ui.console.IConsoleConstants;
 
 /**
  * Responsible for generating the "WSO2 ESB Graphical" perspective.
  */
 public class EsbGraphicalEditorPerspective implements IPerspectiveFactory {
 
-    private static final String TEMPLATE_GUIDE_VIEW = "org.wso2.developerstudio.eclipse.esb.templates.view";
+	private static final String TEMPLATE_GUIDE_VIEW = "org.wso2.developerstudio.eclipse.esb.templates.view";
+    
     // private static final String PROPERTIES_VIEW_ID =
     // "org.eclipse.ui.views.PropertySheet";
 
@@ -47,5 +48,8 @@ public class EsbGraphicalEditorPerspective implements IPerspectiveFactory {
 
         IFolderLayout rightArea = layout.createFolder("bottom", IPageLayout.BOTTOM, 0.65f, editorArea);
         rightArea.addView(IPageLayout.ID_PROP_SHEET);
+        rightArea.addView(IConsoleConstants.ID_CONSOLE_VIEW);
+        
+        
     }
 }

@@ -123,6 +123,18 @@ import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 public abstract class AbstractMediator extends AbstractBorderedShapeEditPart implements DroppableElement {
 
+    private static final String SEND_ERROR_MESSAGE = " is used to send messages out of synapse to an endpoint. The response will be processed in the outSequence or receive sequence." 
+            + "\n" + "Therefore, mediators defined after the send mediator within the same sequence, will not be considered.";
+    
+    private static final String DROP_ERROR_MESSAGE = " represents the end of the mediation flow where the current message will be stopped processing." 
+            + "\n" + "Therefore, mediators defined after the drop mediator will not be considered.";
+    
+    private static final String RESPOND_ERROR_MESSAGE = " stops the processing on the current message and sends the message back to the client as a response." 
+            + "\n" + "Therefore, mediators defined after the respond mediator will not be considered.";
+    
+    private static final String LOOPBACK_ERROR_MESSAGE = " moves messages from the in-flow to the out-flow."
+    		+ "\n" + "Therefore, mediators defined after the loopback within the in-flow mediator will not be considered.";
+    		
     public boolean isForward = true;
     private int i = 0;
 
@@ -138,10 +150,6 @@ public abstract class AbstractMediator extends AbstractBorderedShapeEditPart imp
     public int y = 0;
 
     private String mediatorType = "";
-    private String warningAddingMediatorsAfter = "Not allow to add mediators after a ";
-    private String warningAddingMediatorsAlreadyAvailableBegin = " Not allow to add a ";
-    private String warningAddingMediatorsAlreadyAvailableEnd = " inside this mediator since there is a send/drop/respond/loopback mediator already presents in the mediator flow";
-    private String warningAddingMiddleOfAMediatorFlow = " is not allowed to add in the middle of the mediator flow.";
 
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
     /*
@@ -583,7 +591,7 @@ public abstract class AbstractMediator extends AbstractBorderedShapeEditPart imp
                 if (this instanceof DropMediatorEditPart
                         && compartment instanceof MediatorFlowMediatorFlowCompartment6EditPart) {
                     mediatorRestricted = true;
-                    deleteNewlyAddedMediator("Drop Mediator is not allowed to add in the fault sequence.");
+                    deleteNewlyAddedMediator("Drop Mediator" + DROP_ERROR_MESSAGE);
                     return;
                 }
             }
@@ -593,19 +601,19 @@ public abstract class AbstractMediator extends AbstractBorderedShapeEditPart imp
                     mediatorRestricted = true;
                     if (this instanceof SendMediatorEditPart) {
                         mediatorType = "Send Mediator";
-                        deleteNewlyAddedMediator(mediatorType + warningAddingMiddleOfAMediatorFlow);
+                        deleteNewlyAddedMediator(mediatorType + SEND_ERROR_MESSAGE);
                         return;
                     } else if (this instanceof DropMediatorEditPart) {
                         mediatorType = "Drop Mediator";
-                        deleteNewlyAddedMediator(mediatorType + warningAddingMiddleOfAMediatorFlow);
+                        deleteNewlyAddedMediator(mediatorType + DROP_ERROR_MESSAGE);
                         return;
                     } else if (this instanceof RespondMediatorEditPart) {
                         mediatorType = "Respond Mediator";
-                        deleteNewlyAddedMediator(mediatorType + warningAddingMiddleOfAMediatorFlow);
+                        deleteNewlyAddedMediator(mediatorType + RESPOND_ERROR_MESSAGE);
                         return;
                     } else if (this instanceof LoopBackMediatorEditPart) {
                         mediatorType = "LoopBack Mediator";
-                        deleteNewlyAddedMediator(mediatorType + warningAddingMiddleOfAMediatorFlow);
+                        deleteNewlyAddedMediator(mediatorType + LOOPBACK_ERROR_MESSAGE);
                         return;
                     }
 
@@ -621,18 +629,18 @@ public abstract class AbstractMediator extends AbstractBorderedShapeEditPart imp
                 mediatorRestricted = true;
                 if (mediator instanceof SendMediatorEditPart) {
                     mediatorType = "Send Mediator";
-                    deleteNewlyAddedMediator(warningAddingMediatorsAfter + mediatorType);
+                    deleteNewlyAddedMediator(mediatorType + SEND_ERROR_MESSAGE);
                     return;
                 } else if (mediator instanceof RespondMediatorEditPart) {
                     EditPart compartment = mediator.getParent();
                     if (!isComplexCompartment(compartment)) {
                         mediatorType = "Respond Mediator";
-                        deleteNewlyAddedMediator(warningAddingMediatorsAfter + mediatorType);
+                        deleteNewlyAddedMediator(mediatorType + RESPOND_ERROR_MESSAGE);
                         return;
                     }
                 } else if (mediator instanceof LoopBackMediatorEditPart) {
                     mediatorType = "LoopBack Mediator";
-                    deleteNewlyAddedMediator(warningAddingMediatorsAfter + mediatorType);
+                    deleteNewlyAddedMediator(mediatorType + LOOPBACK_ERROR_MESSAGE);
                     return;
                 }
             }

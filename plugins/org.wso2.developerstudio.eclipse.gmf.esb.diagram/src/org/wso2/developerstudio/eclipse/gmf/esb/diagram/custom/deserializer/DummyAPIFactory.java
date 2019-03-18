@@ -125,14 +125,14 @@ public class DummyAPIFactory {
                     .getChildrenWithName(new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "handler"));
             while (handlers.hasNext()) {
                 OMElement handlerElt = (OMElement) handlers.next();
-                defineHandler(api, handlerElt);
+                defineHandler(api, handlerElt, withSynapse);
             }
         }
 
         return api;
     }
 
-    private static void defineHandler(API api, OMElement handlerElt) {
+    private static void defineHandler(API api, OMElement handlerElt, boolean withSynapse) {
         String handlerClass = handlerElt.getAttributeValue(new QName("class"));
         if (handlerClass == null || "".equals(handlerClass)) {
             handleException("A handler element must have a class attribute");
@@ -158,15 +158,19 @@ public class DummyAPIFactory {
                         if (omElt != null) {
                             dummyHandler.addProperty(propName, omElt);
                         } else {
-                            handleException("A Class mediator property must specify "
-                                    + "name and value attributes, or a name and a child XML fragment");
+                        	if (withSynapse) {
+                        		handleException("A Class mediator property must specify "
+                        				+ "name and value attributes, or a name and a child XML fragment");
+                        	}
                         }
                     }
                 }
             }
 
         } catch (Exception e) {
-            handleException("Error initializing API handler: " + handlerClass, e);
+        	if (withSynapse) {
+        		handleException("Error initializing API handler: " + handlerClass, e);
+        	}
         }
     }
 

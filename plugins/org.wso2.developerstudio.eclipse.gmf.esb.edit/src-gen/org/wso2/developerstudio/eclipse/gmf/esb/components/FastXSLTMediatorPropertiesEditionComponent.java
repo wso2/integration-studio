@@ -43,6 +43,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.KeyType;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.FastXSLTMediatorPropertiesEditionPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 
 // End of user code
 
@@ -260,9 +261,10 @@ public class FastXSLTMediatorPropertiesEditionComponent extends SinglePartProper
      * 
      */
     public String getHelpContent(Object key, int kind) {
-        if (key == EsbViewsRepository.FastXSLTMediator.Basic.fastXsltStaticSchemaKey)
-            return ""; //$NON-NLS-1$
-        return super.getHelpContent(key, kind);
+//        if (key == EsbViewsRepository.FastXSLTMediator.Basic.fastXsltStaticSchemaKey)
+//            return ""; //$NON-NLS-1$
+//        return super.getHelpContent(key, kind);
+        return EEFPropertyViewUtil.getHelpContent(key);
     }
 
     /**

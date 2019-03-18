@@ -38,6 +38,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.XSLTPropertyPropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.impl.XSLTPropertyPropertiesEditionPartImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 
 
 // End of user code
@@ -262,6 +263,13 @@ public class XSLTPropertyPropertiesEditionComponent extends SinglePartProperties
 		return ret;
 	}
 
+    /**
+     * @generated NOT
+     */
+    @Override
+    public String getHelpContent(Object key, int kind) {
+        return EEFPropertyViewUtil.getHelpContent(key);
+    }
 
 	
 

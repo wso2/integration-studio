@@ -181,8 +181,8 @@ public class XSLTResourcePropertiesEditionPartImpl extends CompositePropertiesEd
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
+			public void keyReleased(KeyEvent e) {
+				if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
 					if (propertiesEditionComponent != null)
 						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(XSLTResourcePropertiesEditionPartImpl.this, EsbViewsRepository.XSLTResource.Properties.location, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, location.getText()));
 				}
@@ -281,7 +281,7 @@ public class XSLTResourcePropertiesEditionPartImpl extends CompositePropertiesEd
         Control registryTextLabel = createDescription(parent,
                 EsbViewsRepository.XSLTResource.Properties.resourceRegistryKey,
                 EsbMessages.XSLTResourcePropertiesEditionPart_ResourceRegistryKeyLabel);
-        resourceRegistryKeyText = SWTUtils.createScrollableText(parent, SWT.BORDER); // $NON-NLS-1$
+        resourceRegistryKeyText = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.READ_ONLY); // $NON-NLS-1$
         resourceRegistryKeyText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
         GridData propertyValueData = new GridData(GridData.FILL_HORIZONTAL);
         resourceRegistryKeyText.setLayoutData(propertyValueData);
@@ -328,14 +328,17 @@ public class XSLTResourcePropertiesEditionPartImpl extends CompositePropertiesEd
              */
             @Override
             @SuppressWarnings("synthetic-access")
-            public void keyPressed(KeyEvent e) {
-                if (e.character == SWT.CR) {
-                    if (propertiesEditionComponent != null)
-                        propertiesEditionComponent.firePropertiesChanged(
-                                new PropertiesEditionEvent(XSLTResourcePropertiesEditionPartImpl.this,
-                                        EsbViewsRepository.XSLTResource.Properties.resourceRegistryKey,
-                                        PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
-                                        getResourceRegistryKey()));
+            public void keyReleased(KeyEvent e) {
+                if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                    EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
+                            SWT.NULL, registryKey, new ArrayList<NamedEntityDescriptor>());
+                    dialog.open();
+                    resourceRegistryKeyText.setText(registryKey.getKeyValue());
+
+                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                            XSLTResourcePropertiesEditionPartImpl.this,
+                            EsbViewsRepository.XSLTResource.Properties.resourceRegistryKey, PropertiesEditionEvent.COMMIT,
+                            PropertiesEditionEvent.SET, null, getResourceRegistryKey()));
                 }
             }
         });

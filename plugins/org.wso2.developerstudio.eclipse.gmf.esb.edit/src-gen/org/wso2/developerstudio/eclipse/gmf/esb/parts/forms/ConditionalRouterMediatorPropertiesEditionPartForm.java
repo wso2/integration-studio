@@ -117,14 +117,13 @@ public class ConditionalRouterMediatorPropertiesEditionPartForm extends SectionP
 	 * 
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
-		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
-		Form form = scrolledForm.getForm();
+		Form form = widgetFactory.createForm(parent);
 		view = form.getBody();
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
 		createControls(widgetFactory, view);
-		return scrolledForm;
+		return form;
 	}
 
 	/**
@@ -137,12 +136,11 @@ public class ConditionalRouterMediatorPropertiesEditionPartForm extends SectionP
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		CompositionSequence conditionalRouterMediatorStep = new BindingCompositionSequence(propertiesEditionComponent);
 		CompositionStep propertiesStep = conditionalRouterMediatorStep.addStep(EsbViewsRepository.ConditionalRouterMediator.Properties.class);
-		propertiesStep.addStep(EsbViewsRepository.ConditionalRouterMediator.Properties.description);
 		propertiesStep.addStep(EsbViewsRepository.ConditionalRouterMediator.Properties.commentsList);
 		propertiesStep.addStep(EsbViewsRepository.ConditionalRouterMediator.Properties.reverse);
 		propertiesStep.addStep(EsbViewsRepository.ConditionalRouterMediator.Properties.continueAfterRoute);
 		propertiesStep.addStep(EsbViewsRepository.ConditionalRouterMediator.Properties.conditionalRouteBranches);
-		
+        propertiesStep.addStep(EsbViewsRepository.ConditionalRouterMediator.Properties.description);
 		
 		composer = new PartComposer(conditionalRouterMediatorStep) {
 

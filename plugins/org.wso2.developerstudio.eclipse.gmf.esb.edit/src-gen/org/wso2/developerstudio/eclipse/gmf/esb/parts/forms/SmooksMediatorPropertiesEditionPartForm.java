@@ -1182,7 +1182,7 @@ public class SmooksMediatorPropertiesEditionPartForm extends SectionPropertiesEd
             public void mouseDown( MouseEvent event ) {
                 EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL,
                         inputExpression);
-                nspd.open();
+                inputExpression = nspd.open();
                 inputExpressionText.setText(inputExpression.getPropertyValue());
                 propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
                         SmooksMediatorPropertiesEditionPartForm.this, EsbViewsRepository.SmooksMediator.Input.inputExpresssion,
@@ -1197,7 +1197,7 @@ public class SmooksMediatorPropertiesEditionPartForm extends SectionPropertiesEd
             public void keyPressed(KeyEvent e) {
                 EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL,
                         inputExpression);
-                nspd.open();
+                inputExpression = nspd.open();
                 inputExpressionText.setText(inputExpression.getPropertyValue());
                 propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
                         SmooksMediatorPropertiesEditionPartForm.this, EsbViewsRepository.SmooksMediator.Input.inputExpresssion,
@@ -1236,7 +1236,7 @@ public class SmooksMediatorPropertiesEditionPartForm extends SectionPropertiesEd
             public void mouseDown( MouseEvent event ) {
                 EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL,
                         outputExpression);
-                nspd.open();
+                outputExpression = nspd.open();
                 outputExpressionText.setText(outputExpression.getPropertyValue());
                 propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
                         SmooksMediatorPropertiesEditionPartForm.this, EsbViewsRepository.SmooksMediator.Output.outputExpression,
@@ -1251,7 +1251,7 @@ public class SmooksMediatorPropertiesEditionPartForm extends SectionPropertiesEd
             public void keyPressed(KeyEvent e) {
                 EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL,
                         outputExpression);
-                nspd.open();
+                outputExpression = nspd.open();
                 outputExpressionText.setText(outputExpression.getPropertyValue());
                 propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
                         SmooksMediatorPropertiesEditionPartForm.this, EsbViewsRepository.SmooksMediator.Output.outputExpression,

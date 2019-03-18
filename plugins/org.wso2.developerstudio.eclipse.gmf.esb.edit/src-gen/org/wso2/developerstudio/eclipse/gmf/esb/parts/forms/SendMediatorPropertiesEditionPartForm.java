@@ -1129,7 +1129,7 @@ public class SendMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
     private void openDynamicReceivingSequenceNamespacedPropertyEditor(final Composite parent) {
         EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
                 SWT.NULL, dynamicReceivingSequence);
-        nspd.open();
+        dynamicReceivingSequence = nspd.open();
         dynamicReceivingSequenceText.setText(dynamicReceivingSequence.getPropertyValue());
         propertiesEditionComponent
                 .firePropertiesChanged(new PropertiesEditionEvent(SendMediatorPropertiesEditionPartForm.this,

@@ -2061,7 +2061,7 @@ public class FaultMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
             public void mouseUp(MouseEvent e) {
                 EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
                         SWT.NULL, faultDetailExpression);
-                nspd.open();
+                faultDetailExpression = nspd.open();
                 faultDetailExpressionText.setText(faultDetailExpression.getPropertyValue());
                 propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
                         FaultMediatorPropertiesEditionPartForm.this,
@@ -2111,7 +2111,7 @@ public class FaultMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
 	            public void mouseUp(MouseEvent e) {
 	                EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
 	                        SWT.NULL, faultReasonExpression);
-	                nspd.open();
+	                faultReasonExpression = nspd.open();
 	                faultReasonExpressionText.setText(faultReasonExpression.getPropertyValue());
 	                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
 	                        FaultMediatorPropertiesEditionPartForm.this,
@@ -2161,7 +2161,7 @@ public class FaultMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
                public void mouseUp(MouseEvent e) {
                    EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
                            SWT.NULL, faultStringExpression);
-                   nspd.open();
+                   faultStringExpression = nspd.open();
                    faultStringExpressionText.setText(faultStringExpression.getPropertyValue());
                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
                            FaultMediatorPropertiesEditionPartForm.this,
@@ -2211,7 +2211,7 @@ public class FaultMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
                public void mouseUp(MouseEvent e) {
                    EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
                            SWT.NULL, faultCodeExpression);
-                   nspd.open();
+                   faultCodeExpression = nspd.open();
                    faultCodeExpressionText.setText(faultCodeExpression.getPropertyValue());
                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
                            FaultMediatorPropertiesEditionPartForm.this,

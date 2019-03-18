@@ -1009,7 +1009,7 @@ public class SwitchMediatorPropertiesEditionPartForm extends SectionPropertiesEd
     private void openSourceXPathWidgetNamespacedPropertyEditor(final Composite parent) {
         EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL,
                 sourceXPath);
-        nspd.open();
+        sourceXPath = nspd.open();
         sourceXPathText.setText(sourceXPath.getPropertyValue());
         propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
                 SwitchMediatorPropertiesEditionPartForm.this, EsbViewsRepository.SwitchMediator.Properties.sourceXPath,

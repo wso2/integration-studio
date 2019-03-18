@@ -37,6 +37,7 @@ import javax.net.ssl.KeyManager;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
+
 import org.apache.commons.httpclient.HttpClient;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
@@ -49,6 +50,7 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.browser.Browser;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -60,11 +62,8 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.FileDialog;
-import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Table;
-import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.PlatformUI;
@@ -73,6 +72,7 @@ import org.wso2.developerstudio.eclipse.esb.project.Activator;
 import org.wso2.developerstudio.eclipse.esb.project.connector.store.Connector;
 import org.wso2.developerstudio.eclipse.esb.project.connector.store.ConnectorData;
 import org.wso2.developerstudio.eclipse.esb.project.connector.store.ConnectorStore;
+import org.wso2.developerstudio.eclipse.esb.project.servlets.FunctionServerConstants;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
@@ -90,6 +90,7 @@ public class ImportCloudConnectorWizardPage extends WizardPage {
 	private static final String CONNECTOR_STORE_URL = "https://store.wso2.com";
 	private static final int TIMEOUT = 180000;
 	private static final String HTTP_SOCKET_TIMEOUT = "http.socket.timeout";
+	private static final String LOAD_CONNECTORS_PAGE = "http://localhost:" + FunctionServerConstants.EMBEDDED_SERVER_PORT + "/project/connectors/index.html";
 	
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
@@ -109,72 +110,7 @@ public class ImportCloudConnectorWizardPage extends WizardPage {
 		final Composite container = new Composite(parent, SWT.NULL);
 		setControl(container);
 		container.setLayout(new GridLayout(3, false));
-		fileSystem = new Button(container, SWT.RADIO);
-		fileSystem.setText("Connector location");
-		fileSystem.setSelection(true);
-
-		txtCloudConnectorPath = new Text(container, SWT.BORDER);
-		GridData gd_txtPath1 = new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1);
-		gd_txtPath1.widthHint = 300;
-		txtCloudConnectorPath.setLayoutData(gd_txtPath1);
-		txtCloudConnectorPath.addModifyListener(new ModifyListener() {
-
-			public void modifyText(ModifyEvent evt) {
-				setCloudConnectorPath(txtCloudConnectorPath.getText());
-				txtCloudConnectorPath.setFocus();
-				int charcount = txtCloudConnectorPath.getCharCount();
-				txtCloudConnectorPath.setSelection(charcount);
-				validate();
-			}
-		});
-		if (cloudConnectorPath != null) {
-			txtCloudConnectorPath.setText(cloudConnectorPath);
-		} else {
-			setPageComplete(false);
-		}
-
-		final Button btnBrowse1 = new Button(container, SWT.NONE);
-		btnBrowse1.addSelectionListener(new SelectionAdapter() {
-
-			public void widgetSelected(SelectionEvent e) {
-				FileDialog fileDlg = new FileDialog(getShell());
-				String fileName = fileDlg.open();
-				if (fileName != null) {
-					txtCloudConnectorPath.setText(fileName);
-				}
-				validate();
-			}
-		});
-		btnBrowse1.setText("Browse..");
-
-		connectorStore = new Button(container, SWT.RADIO);
-		connectorStore.setText("Connector Store location");
-		txtConnectorStoreURL = new Text(container, SWT.BORDER);
-		GridData gd_txtPath = new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1);
-		gd_txtPath.widthHint = 300;
-		txtConnectorStoreURL.setLayoutData(gd_txtPath);
-		txtConnectorStoreURL.addModifyListener(new ModifyListener() {
-
-			public void modifyText(ModifyEvent evt) {
-				setCloudConnectorPath(txtConnectorStoreURL.getText());
-				txtConnectorStoreURL.setFocus();
-				int charcount = txtConnectorStoreURL.getCharCount();
-				txtConnectorStoreURL.setSelection(charcount);
-				setErrorMessage(null);
-				((CloudConnectorImportWizard) getWizard()).getRemoveWizardPage().setPageComplete(true);
-				setPageComplete(true);
-				// validate();
-			}
-		});
-		if (cloudConnectorPath != null) {
-			txtConnectorStoreURL.setText(cloudConnectorPath);
-		} else {
-			// setPageComplete(false);
-		}
-		txtConnectorStoreURL.setEnabled(false);
-
-		final Button btnBrowse = new Button(container, SWT.NONE);
-		btnBrowse.setEnabled(false);
+		
 		GridData gridData = new GridData();
 		gridData.horizontalAlignment = GridData.FILL;
 		gridData.verticalAlignment = GridData.FILL;
@@ -183,55 +119,67 @@ public class ImportCloudConnectorWizardPage extends WizardPage {
 		gridData.grabExcessVerticalSpace = true;
 		gridData.heightHint = 400;
 		gridData.widthHint = 250;
+		
+        Browser browser;
+        browser = new Browser(container, SWT.NONE);
+        GridData data = new GridData();
+        data.horizontalAlignment = GridData.FILL;
+        data.verticalAlignment = SWT.TOP;
+        data.grabExcessHorizontalSpace = true;
+        data.grabExcessVerticalSpace = false;
+        data.horizontalSpan = 3;
+        data.heightHint = 400;
+        browser.setLayoutData(data);
+        browser.setUrl(LOAD_CONNECTORS_PAGE);
+        
+        fileSystem = new Button(container, SWT.RADIO);
+        fileSystem.setText("Connector location");
+        fileSystem.setSelection(true);
 
-		table = new Table(container, SWT.CHECK | SWT.BORDER | SWT.V_SCROLL | SWT.H_SCROLL);
-		table.setEnabled(false);
-		table.addListener(SWT.Selection, new Listener() {
-			public void handleEvent(Event e) {
-				setErrorMessage(null);
-				((CloudConnectorImportWizard) getWizard()).getRemoveWizardPage().setPageComplete(true);
-				setPageComplete(true);
-			}
-		});
-		TableColumn tc1 = new TableColumn(table, SWT.LEFT);
-		TableColumn tc2 = new TableColumn(table, SWT.CENTER);
-		tc1.setText("Name");
-		tc2.setText("Version");
-		tc1.setWidth(390);
-		tc2.setWidth(120);
-		table.setHeaderVisible(true);
-		table.setLayoutData(gridData);
-		btnBrowse.addSelectionListener(new SelectionAdapter() {
-			public void widgetSelected(SelectionEvent e) {
-				listConnectors();
-				container.forceFocus();
-			}
-		});
-		btnBrowse.setText("Connect");
+        txtCloudConnectorPath = new Text(container, SWT.BORDER);
+        GridData gd_txtPath1 = new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1);
+        gd_txtPath1.widthHint = 300;
+        txtCloudConnectorPath.setLayoutData(gd_txtPath1);
+        txtCloudConnectorPath.addModifyListener(new ModifyListener() {
 
-		fileSystem.addSelectionListener(new SelectionAdapter() {
-			public void widgetSelected(SelectionEvent e) {
-				txtCloudConnectorPath.setEnabled(true);
-				btnBrowse1.setEnabled(true);
+            public void modifyText(ModifyEvent evt) {
+                setCloudConnectorPath(txtCloudConnectorPath.getText());
+                txtCloudConnectorPath.setFocus();
+                int charcount = txtCloudConnectorPath.getCharCount();
+                txtCloudConnectorPath.setSelection(charcount);
+                validate();
+            }
+        });
+        if (cloudConnectorPath != null) {
+            txtCloudConnectorPath.setText(cloudConnectorPath);
+        } else {
+            setPageComplete(false);
+        }
 
-				txtConnectorStoreURL.setText("");
-				txtConnectorStoreURL.setEnabled(false);
-				btnBrowse.setEnabled(false);
-				table.setEnabled(false);
-			}
-		});
+        final Button btnBrowse1 = new Button(container, SWT.NONE);
+        btnBrowse1.addSelectionListener(new SelectionAdapter() {
 
-		connectorStore.addSelectionListener(new SelectionAdapter() {
-			public void widgetSelected(SelectionEvent e) {
-				txtConnectorStoreURL.setText(CONNECTOR_STORE_URL);
-				txtConnectorStoreURL.setEnabled(true);
-				btnBrowse.setEnabled(true);
-				table.setEnabled(true);
+            public void widgetSelected(SelectionEvent e) {
+                FileDialog fileDlg = new FileDialog(getShell());
+                String fileName = fileDlg.open();
+                if (fileName != null) {
+                    txtCloudConnectorPath.setText(fileName);
+                }
+                validate();
+            }
+        });
+        btnBrowse1.setText("Browse..");
+        
+        fileSystem.addSelectionListener(new SelectionAdapter() {
+            public void widgetSelected(SelectionEvent e) {
+                txtCloudConnectorPath.setEnabled(true);
+                btnBrowse1.setEnabled(true);
 
-				txtCloudConnectorPath.setEnabled(false);
-				btnBrowse1.setEnabled(false);
-			}
-		});
+                txtConnectorStoreURL.setText("");
+                txtConnectorStoreURL.setEnabled(false);
+                table.setEnabled(false);
+            }
+        });
 	}
 
 	public static IProject getProject(Object obj){
@@ -247,11 +195,11 @@ public class ImportCloudConnectorWizardPage extends WizardPage {
 	}
 
 	private void validate() {
-		if ((getCloudConnectorPath() == null || getCloudConnectorPath().equals(""))) {
-			setErrorMessage("Please specify a connector path");
-			setPageComplete(false);
-			return;
-		}
+//		if ((getCloudConnectorPath() == null || getCloudConnectorPath().equals(""))) {
+//			setErrorMessage("Please specify a connector path");
+//			setPageComplete(false);
+//			return;
+//		}
 		setErrorMessage(null);
 		((CloudConnectorImportWizard) getWizard()).getRemoveWizardPage().setPageComplete(true);
 		setPageComplete(true);
@@ -276,7 +224,7 @@ public class ImportCloudConnectorWizardPage extends WizardPage {
 						monitor.beginTask("Fetching list of connectors", 1000);
 						monitor.subTask("Searching connectors in store : page " + page);
 						Object connectorInfo = ConnectorStore.getConnectorInfo(getHttpClient(),
-								txtConnectorStoreURL.getText(), page);
+						        CONNECTOR_STORE_URL, page);
 						if (connectorInfo instanceof List<?>) {
 							List<Connector> tmpList = (List<Connector>) connectorInfo;
 							while (tmpList != null && !tmpList.isEmpty()) {
@@ -285,7 +233,7 @@ public class ImportCloudConnectorWizardPage extends WizardPage {
 								++page;
 								monitor.subTask("Searching connectors in store : page " + page);
 								tmpList = (List<Connector>) ConnectorStore.getConnectorInfo(getHttpClient(),
-										txtConnectorStoreURL.getText(), page);
+								        CONNECTOR_STORE_URL, page);
 							}
 							addConnectorsToTable(page, iconCacheDir, monitor);
 						} else if (connectorInfo instanceof ConnectorData) {

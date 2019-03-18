@@ -8,12 +8,20 @@ Require-Bundle: org.eclipse.ltk.core.refactoring,
  org.wso2.developerstudio.eclipse.kernel.libraries;bundle-version="[4.1.0,7.0.0)",
  org.wso2.developerstudio.eclipse.platform.core;bundle-version="[4.1.0,7.0.0)",
  org.wso2.developerstudio.eclipse.platform.ui;bundle-version="[4.1.0,7.0.0)",
- org.wso2.developerstudio.eclipse.esb.libraries;bundle-version="[6.0.0,7.0.0)"
+ org.wso2.developerstudio.eclipse.esb.libraries;bundle-version="[6.0.0,7.0.0)",
+ org.eclipse.jetty.server;bundle-version="9.4.8",
+ org.eclipse.jetty.servlet;bundle-version="9.4.8",
+ org.eclipse.jetty.util;bundle-version="9.4.8"
 Bundle-ActivationPolicy: lazy
-Import-Package: org.eclipse.core.expressions,
+Import-Package: javax.servlet;version="3.1.0",
+ javax.servlet.annotation;version="3.1.0",
+ javax.servlet.http;version="3.1.0",
+ org.eclipse.core.expressions,
  org.eclipse.core.resources,
  org.eclipse.e4.ui.di,
  org.eclipse.emf.common.util,
+ org.eclipse.jetty.server;version="9.4.8",
+ org.eclipse.jetty.server.handler;version="9.4.8",
  org.eclipse.jface.text,
  org.eclipse.text.edits,
  org.eclipse.ui.ide,
@@ -35,9 +43,12 @@ Import-Package: org.eclipse.core.expressions,
  org.wso2.developerstudio.eclipse.general.project.artifact.bean;version="[6.0.0,7.0.0)",
  org.wso2.developerstudio.eclipse.general.project.model;version="[4.1.0,7.0.0)",
  org.wso2.developerstudio.eclipse.general.project.ui.wizard;version="[4.1.0,7.0.0)",
- org.wso2.developerstudio.eclipse.gmf.esb
+ org.wso2.developerstudio.eclipse.gmf.esb,
+ org.wso2.developerstudio.eclipse.templates.dashboard.handlers;version="6.5.0"
 Export-Package: org.wso2.developerstudio.eclipse.esb.project.artifact,
+ org.wso2.developerstudio.eclipse.esb.project.connector.store,
  org.wso2.developerstudio.eclipse.esb.project.control.graphicalproject,
  org.wso2.developerstudio.eclipse.esb.project.filter,
+ org.wso2.developerstudio.eclipse.esb.project.servlets,
  org.wso2.developerstudio.eclipse.esb.project.utils
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8

@@ -29,7 +29,6 @@ import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 
 import org.eclipse.emf.eef.runtime.ui.widgets.EMFComboViewer;
-import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 
 import org.eclipse.jface.viewers.ArrayContentProvider;
@@ -43,6 +42,7 @@ import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.KeyListener;
 import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.layout.GridData;
@@ -57,7 +57,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.CallTemplateParameterPropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.developerstudio.eclipse.gmf.esb.parts.forms.CallMediatorPropertiesEditionPartForm;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFNameSpacedPropertyEditorDialog;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
@@ -205,9 +204,13 @@ public class CallTemplateParameterPropertiesEditionPartImpl extends CompositePro
 			@Override
 			@SuppressWarnings("synthetic-access")
 			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CallTemplateParameterPropertiesEditionPartImpl.this, EsbViewsRepository.CallTemplateParameter.Properties.parameterName, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, parameterName.getText()));
+				
+			}
+			
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CallTemplateParameterPropertiesEditionPartImpl.this, EsbViewsRepository.CallTemplateParameter.Properties.parameterName, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, parameterName.getText()));
 				}
 			}
 
@@ -300,9 +303,13 @@ public class CallTemplateParameterPropertiesEditionPartImpl extends CompositePro
 			@Override
 			@SuppressWarnings("synthetic-access")
 			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CallTemplateParameterPropertiesEditionPartImpl.this, EsbViewsRepository.CallTemplateParameter.Properties.parameterValue, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, parameterValue.getText()));
+				
+			}
+			
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CallTemplateParameterPropertiesEditionPartImpl.this, EsbViewsRepository.CallTemplateParameter.Properties.parameterValue, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, parameterValue.getText()));
 				}
 			}
 
@@ -476,7 +483,7 @@ public class CallTemplateParameterPropertiesEditionPartImpl extends CompositePro
 	// Start of user code additional methods
 	protected Composite createParameterExpressionWidget(final Composite parent) {
         Control parameterExpressionLabel = createDescription(parent, EsbViewsRepository.CallTemplateParameter.Properties.parameterExpression, EsbMessages.CallTemplateParameterPropertiesEditionPart_ParameterExpressionLabel);
-        parameterExpressionText = SWTUtils.createScrollableText(parent, SWT.BORDER);
+        parameterExpressionText = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.READ_ONLY);
         GridData parameterExpressionData = new GridData(GridData.FILL_HORIZONTAL);
         parameterExpressionText.setLayoutData(parameterExpressionData);
 	    if(parameterExpression == null) {
@@ -511,6 +518,25 @@ public class CallTemplateParameterPropertiesEditionPartImpl extends CompositePro
             
         });
         
+        parameterExpressionText.addKeyListener(new KeyListener() {
+			
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+					EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL, parameterExpression);
+	                nspd.open();
+	                parameterExpressionText.setText(parameterExpression.getPropertyValue());
+	                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CallTemplateParameterPropertiesEditionPartImpl.this, EsbViewsRepository.CallTemplateParameter.Properties.parameterExpression, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getParameterExpression()));
+
+				}
+			}
+			
+			@Override
+			public void keyPressed(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
         EditingUtils.setID(parameterExpressionText, EsbViewsRepository.AggregateMediator.OnComplete.aggregationExpression);
         EditingUtils.setEEFtype(parameterExpressionText, "eef::Text");
         Control parameterExpressionHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.CallTemplateParameter.Properties.parameterExpression, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$

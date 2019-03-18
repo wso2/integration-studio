@@ -1734,6 +1734,8 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
     // Start of user code for valueExpression specific getters and setters implementation
     @Override
     public NamespacedProperty getValueExpression() {
+        //Creating a new name spaced property object since properties change event won't
+        //fire if new value is the same object
         return valueExpression;
     }
 
@@ -1810,7 +1812,7 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
     private void openValueExpressionWidgetNamespacedPropertyEditor(final Composite parent) {
         EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL,
                 valueExpression);
-        nspd.open();
+        valueExpression = nspd.open();
         valueExpressionText.setText(valueExpression.getPropertyValue());
         propertiesEditionComponent
                 .firePropertiesChanged(new PropertiesEditionEvent(PropertyMediatorPropertiesEditionPartForm.this,

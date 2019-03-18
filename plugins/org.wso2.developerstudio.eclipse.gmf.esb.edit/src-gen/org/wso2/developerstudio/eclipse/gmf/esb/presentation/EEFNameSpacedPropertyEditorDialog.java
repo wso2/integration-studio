@@ -68,6 +68,7 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 //import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.utils.ImageHolder;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.Activator;
 import org.wso2.developerstudio.eclipse.gmf.esb.util.XPathValidator;
@@ -429,7 +430,7 @@ public class EEFNameSpacedPropertyEditorDialog extends Dialog {
     /**
      * Creates ui components and opens the dialog.
      */
-    public void open() {
+    public NamespacedProperty open() {
         Shell parentShell = getParent();
         dialogShell = new Shell(parentShell, SWT.DIALOG_TRIM | SWT.APPLICATION_MODAL);
 
@@ -819,6 +820,11 @@ public class EEFNameSpacedPropertyEditorDialog extends Dialog {
             if (!display.readAndDispatch())
                 display.sleep();
         }
+        NamespacedProperty nsp = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
+        nsp.setPropertyValue(nsProperty.getPropertyValue());
+        nsp.setPropertyName(nsProperty.getPropertyName());
+        nsp.setNamespaces(nsProperty.getNamespaces());
+        return nsp;
     }
 
     private void loadConfiguration() {

@@ -26,7 +26,6 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Properties;
 import java.util.Queue;
 import java.util.Set;
 import java.util.Stack;
@@ -73,7 +72,6 @@ import org.apache.synapse.config.xml.URLRewriteMediatorFactory;
 import org.apache.synapse.config.xml.ValidateMediatorFactory;
 import org.apache.synapse.config.xml.XSLTMediatorFactory;
 import org.apache.synapse.config.xml.endpoints.EndpointFactory;
-import org.apache.synapse.config.xml.rest.APIFactory;
 import org.apache.synapse.mediators.bsf.ScriptMediatorFactory;
 import org.apache.synapse.mediators.spring.SpringMediatorFactory;
 import org.apache.synapse.mediators.throttle.ThrottleMediatorFactory;
@@ -93,6 +91,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.BamM
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.BeanMediatorExtFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.BuilderMediatorExtFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.ClassMediatorExtFactory;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.DummyAPIFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.DummyInboundEndpointFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.DummyMediatorFactoryFinder;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.DummyMessageProcessorFactory;
@@ -142,7 +141,7 @@ public class ProcessSourceView {
             "code", "reason", "equal", "condition", "include", "detail", "input", "output", "rewriterule", "variable",
             "result", "messageCount", "correlateOn", "completeCondition", "onComplete", "configuration", "source",
             "messageBuilder", "target", "ruleSet", "properties", "input", "output", "attribute", "arg", "fact",
-            "trigger", "in", "out"));
+            "trigger", "in", "out", "handlers", "handler"));
     
     private static SequenceMediatorFactory sequenceMediatorFactory;
     private static TemplateMediatorFactory templateMediatorFactory;
@@ -779,7 +778,7 @@ public class ProcessSourceView {
             OMElement omElement = AXIOMUtil.stringToOM(mediator);
 
             if (qTag.equals("api")) {
-                APIFactory.createAPI(omElement);
+                DummyAPIFactory.createAPI(omElement, true);
 
             } else if (qTag.equals("proxy")) {
                 ProxyServiceFactory.createProxy(omElement, null);

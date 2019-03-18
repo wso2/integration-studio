@@ -418,7 +418,8 @@ public class DependancyProvider extends Dialog {
 				if(jdbcConnectivityJar != null) {
 					remove(jdbcConnectivityJar);
 				}
-				remove(getDownlodedJarByName(connectiontype.getText(), version.getText()));
+				version.setEnabled(true);
+				remove(jarLocationText.getText());
 				switch (connectiontype.getText()) {
 				case "MYSQL":
 					version.setItems(mysqlVersionArr);
@@ -482,6 +483,7 @@ public class DependancyProvider extends Dialog {
 				if(jdbcConnectivityJar != null) {
 					remove(jdbcConnectivityJar);
 				}
+				remove(jarLocationText.getText());
 				if((connectionObj.getDbType()!= null && connectionObj.getVersion()!= null)) {
 					remove(getDownlodedJarByName(connectionObj.getDbType(), connectionObj.getVersion()));
 				}
@@ -635,30 +637,18 @@ public class DependancyProvider extends Dialog {
 
 		connectiontype.select(getDatabaseIndex(databaseArr, connectionObj.getDbType()));
 
-		switch (connectionObj.getDbType()) {
-		case "MYSQL":
-			version.setItems(mysqlVersionArr);
-			break;
-		case "MSSQL":
-			version.setItems(mssqlVersionArr);
-			break;
-		case "ORACLE":
-			btnDownload.setEnabled(false);
-			version.setItems(oracleVersionArr);
-			break;
-		case "POSTGRESQL":
-			version.setItems(postgresSqlVersionArr);
-			break;
-		}
-
+		
 		userNameText.setText(connectionObj.getUserName());
 		passwordText.setText(connectionObj.getPassword());
 		hostText.setText(connectionObj.getHost());
 		portText.setText(connectionObj.getPort());
 		databaseText.setText(connectionObj.getDatabase());
 		jarLocationText.setText(connectionObj.getJarPath());
-		version.select(getDatabaseIndex(version.getItems(), connectionObj.getVersion()));
-
+		if(connectionObj.getVersion()!=null || !connectionObj.getVersion().equals("")) {
+			version.setEnabled(false);
+		}
+		version.setItems(new String []{connectionObj.getVersion()});
+		version.select(0);
 		shell.setSize(450, 400);
 		shell.pack();
 
@@ -765,7 +755,7 @@ public class DependancyProvider extends Dialog {
 	}
 
 	void remove(String path) {
-	 System.out.println("dddd"+path);
+	 System.out.println(path);
  	 //if(Files.exists(Paths.get(path), new LinkOption[]{ LinkOption.NOFOLLOW_LINKS})) {
 			
 	 //if(Files.notExists(Paths.get(path), new LinkOption[]{ LinkOption.NOFOLLOW_LINKS})) {

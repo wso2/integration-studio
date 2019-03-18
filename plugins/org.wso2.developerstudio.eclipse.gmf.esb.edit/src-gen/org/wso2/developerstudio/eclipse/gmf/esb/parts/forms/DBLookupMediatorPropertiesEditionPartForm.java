@@ -181,6 +181,8 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	String host = "";
 	String port = "";
 	String version = "";
+	String jarPath = "";
+	String jdbcProtocol = "";
 	DependancyProvider dp;
 	// End of user code
 
@@ -605,7 +607,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 		dependencyProvider = new Button(parent, SWT.NULL);
 
 		GridData dependencyProviderData = new GridData();
-		dependencyProvider.setText("Configure DataSource");
+		dependencyProvider.setText("Configure");
 		dependencyProviderData.grabExcessHorizontalSpace = false;
 		// dependencyProviderData.horizontalAlignment = SWT.BEGINNING;
 		dependencyProvider.setLayoutData(dependencyProviderData);
@@ -632,27 +634,21 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 								obj.setPassword(getConnectionPassword().isEmpty() ? "" : getConnectionPassword());
 								obj.setUrl(getConnectionURL().isEmpty() ? "" : getConnectionURL());
 								obj.setUserName(getConnectionUsername());
-
-								
-
 								obj.setDatabase(database);
 								obj.setHost(host);
 								obj.setPort(port);
 								obj.setVersion(version);
-
+								obj.setJarPath(jarPath);
+								obj.setJdbcProtocol(jdbcProtocol);
 								dp.open(obj);
 								System.out.println("gdsdfsdsfsfs"+obj.toString());
 								database = obj.getDatabase();
 								port = obj.getPort();
 								host = obj.getHost();
 								version = obj.getVersion();
-								//
-								// setConnectionDbType(SqlDatabaseType.getByName(obj.getDbType()));
-								// setConnectionDbDriver(obj.getDbDriver());
-								// setConnectionURL(obj.getUrl());
-								// setConnectionUsername(obj.getUserName());
-								// setConnectionPassword(obj.getPassword());
-								// refresh();
+								jarPath =obj.getJarPath();
+								jdbcProtocol = obj.getJdbcProtocol();
+					 
 								propertiesEditionComponent.firePropertiesChanged(
 										new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartForm.this,
 												EsbViewsRepository.DBLookupMediator.Connection.connectionDbType,

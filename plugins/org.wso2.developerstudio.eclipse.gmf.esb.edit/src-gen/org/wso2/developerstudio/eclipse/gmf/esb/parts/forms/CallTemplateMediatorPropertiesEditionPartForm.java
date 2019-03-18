@@ -64,7 +64,6 @@ import org.eclipse.swt.widgets.Text;
 
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
-import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
@@ -119,17 +118,18 @@ public class CallTemplateMediatorPropertiesEditionPartForm extends SectionProper
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
+	 *  
+	 *  @generated NOT
 	 * 
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
-		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
-		Form form = scrolledForm.getForm();
+		Form form = widgetFactory.createForm(parent);
 		view = form.getBody();
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
 		createControls(widgetFactory, view);
-		return scrolledForm;
+		return form;
 	}
 
 	/**
@@ -142,13 +142,12 @@ public class CallTemplateMediatorPropertiesEditionPartForm extends SectionProper
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		CompositionSequence callTemplateMediatorStep = new BindingCompositionSequence(propertiesEditionComponent);
 		CompositionStep propertiesStep = callTemplateMediatorStep.addStep(EsbViewsRepository.CallTemplateMediator.Properties.class);
-		propertiesStep.addStep(EsbViewsRepository.CallTemplateMediator.Properties.description);
 		propertiesStep.addStep(EsbViewsRepository.CallTemplateMediator.Properties.commentsList);
 		propertiesStep.addStep(EsbViewsRepository.CallTemplateMediator.Properties.reverse);
 		propertiesStep.addStep(EsbViewsRepository.CallTemplateMediator.Properties.availableTemplates);
 		propertiesStep.addStep(EsbViewsRepository.CallTemplateMediator.Properties.templateParameters);
 		propertiesStep.addStep(EsbViewsRepository.CallTemplateMediator.Properties.targetTemplate);
-		
+		propertiesStep.addStep(EsbViewsRepository.CallTemplateMediator.Properties.description);
 		
 		composer = new PartComposer(callTemplateMediatorStep) {
 
@@ -156,9 +155,6 @@ public class CallTemplateMediatorPropertiesEditionPartForm extends SectionProper
 			public Composite addToPart(Composite parent, Object key) {
 				if (key == EsbViewsRepository.CallTemplateMediator.Properties.class) {
 					return createPropertiesGroup(widgetFactory, parent);
-				}
-				if (key == EsbViewsRepository.CallTemplateMediator.Properties.description) {
-					return createDescriptionText(widgetFactory, parent);
 				}
 				if (key == EsbViewsRepository.CallTemplateMediator.Properties.commentsList) {
 					return createCommentsListMultiValuedEditor(widgetFactory, parent);
@@ -174,6 +170,9 @@ public class CallTemplateMediatorPropertiesEditionPartForm extends SectionProper
 				}
 				if (key == EsbViewsRepository.CallTemplateMediator.Properties.targetTemplate) {
 					return createTargetTemplateText(widgetFactory, parent);
+				}
+				if (key == EsbViewsRepository.CallTemplateMediator.Properties.description) {
+					return createDescriptionText(widgetFactory, parent);
 				}
 				return parent;
 			}

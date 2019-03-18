@@ -847,6 +847,20 @@ public class FastXSLTMediatorPropertiesEditionPartForm extends SectionProperties
         dynamicSchemaKeyElements = new Control[] { dynamicSchemaKeyLabel, dynamicSchemaKeyText, dynamicSchemaKeyHelp };
         return parent;
     }
+    
+    private void openNamespacedPropertyEditor(final Composite parent) {
+        EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
+                SWT.NULL, fastXsltDynamicSchemaKey);
+        // valueExpression.setPropertyValue(valueExpressionText.getText());
+        fastXsltDynamicSchemaKey = nspd.open();
+        dynamicSchemaKeyText.setText(fastXsltDynamicSchemaKey.getPropertyValue());
+        propertiesEditionComponent.firePropertiesChanged(
+                new PropertiesEditionEvent(FastXSLTMediatorPropertiesEditionPartForm.this,
+                        EsbViewsRepository.FastXSLTMediator.Basic.fastXsltDynamicSchemaKey,
+                        PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+                        getFastXsltDynamicSchemaKey()));
+    }
+
 
     @Override
     public void refresh() {

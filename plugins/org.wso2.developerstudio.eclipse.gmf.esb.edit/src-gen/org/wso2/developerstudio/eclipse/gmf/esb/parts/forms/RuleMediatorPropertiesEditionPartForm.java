@@ -2343,14 +2343,14 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
             @Override
             public void mouseDown( MouseEvent event ) {
                 EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
-                        SWT.NULL, targetXPath);
+                        SWT.NULL, sourceXPath);
                 // valueExpression.setPropertyValue(valueExpressionText.getText());
-                nspd.open();
-                targetXPathText.setText(targetXPath.getPropertyValue());
+                sourceXPath = nspd.open();
+                sourceXPathText.setText(sourceXPath.getPropertyValue());
                 propertiesEditionComponent
                         .firePropertiesChanged(new PropertiesEditionEvent(RuleMediatorPropertiesEditionPartForm.this,
                                 EsbViewsRepository.RuleMediator.Source.sourceXPath, PropertiesEditionEvent.COMMIT,
-                                PropertiesEditionEvent.SET, null, getTargetXPath()));
+                                PropertiesEditionEvent.SET, null, getSourceXPath()));
             }
             
         });
@@ -2360,14 +2360,14 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
             @Override
             public void keyPressed(KeyEvent e) {
                 EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
-                        SWT.NULL, targetXPath);
+                        SWT.NULL, sourceXPath);
                 // valueExpression.setPropertyValue(valueExpressionText.getText());
-                nspd.open();
-                targetXPathText.setText(targetXPath.getPropertyValue());
+                sourceXPath = nspd.open();
+                sourceXPathText.setText(sourceXPath.getPropertyValue());
                 propertiesEditionComponent
                         .firePropertiesChanged(new PropertiesEditionEvent(RuleMediatorPropertiesEditionPartForm.this,
                                 EsbViewsRepository.RuleMediator.Source.sourceXPath, PropertiesEditionEvent.COMMIT,
-                                PropertiesEditionEvent.SET, null, getTargetXPath()));
+                                PropertiesEditionEvent.SET, null, getSourceXPath()));
             }
             
             @Override
@@ -2406,7 +2406,7 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	                EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
 	                        SWT.NULL, targetXPath);
 	                // valueExpression.setPropertyValue(valueExpressionText.getText());
-	                nspd.open();
+	                targetXPath = nspd.open();
 	                targetXPathText.setText(targetXPath.getPropertyValue());
 	                propertiesEditionComponent
 	                        .firePropertiesChanged(new PropertiesEditionEvent(RuleMediatorPropertiesEditionPartForm.this,
@@ -2423,7 +2423,7 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	                EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
 	                        SWT.NULL, targetXPath);
 	                // valueExpression.setPropertyValue(valueExpressionText.getText());
-	                nspd.open();
+	                targetXPath = nspd.open();
 	                targetXPathText.setText(targetXPath.getPropertyValue());
 	                propertiesEditionComponent
 	                        .firePropertiesChanged(new PropertiesEditionEvent(RuleMediatorPropertiesEditionPartForm.this,
@@ -2467,7 +2467,7 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
                  EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
                          SWT.NULL, targetResultXPath);
                  // valueExpression.setPropertyValue(valueExpressionText.getText());
-                 nspd.open();
+                 targetResultXPath = nspd.open();
                  targetResultXPathText.setText(targetResultXPath.getPropertyValue());
                  propertiesEditionComponent
                          .firePropertiesChanged(new PropertiesEditionEvent(RuleMediatorPropertiesEditionPartForm.this,
@@ -2484,7 +2484,7 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
                  EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
                          SWT.NULL, targetResultXPath);
                  // valueExpression.setPropertyValue(valueExpressionText.getText());
-                 nspd.open();
+                 targetResultXPath = nspd.open();
                  targetResultXPathText.setText(targetResultXPath.getPropertyValue());
                  propertiesEditionComponent
                          .firePropertiesChanged(new PropertiesEditionEvent(RuleMediatorPropertiesEditionPartForm.this,

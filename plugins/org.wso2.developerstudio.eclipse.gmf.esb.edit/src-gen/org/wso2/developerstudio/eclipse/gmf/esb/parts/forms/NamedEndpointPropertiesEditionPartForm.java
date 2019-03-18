@@ -2877,7 +2877,7 @@ public class NamedEndpointPropertiesEditionPartForm extends SectionPropertiesEdi
             public void mouseUp(MouseEvent e) {
                 EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
                         SWT.NULL, dynamicReferenceKeyExpression);
-                nspd.open();
+                dynamicReferenceKeyExpression = nspd.open();
                 dynamicReferenceKeyText.setText(dynamicReferenceKeyExpression.getPropertyValue());
                 propertiesEditionComponent
                         .firePropertiesChanged(new PropertiesEditionEvent(NamedEndpointPropertiesEditionPartForm.this,

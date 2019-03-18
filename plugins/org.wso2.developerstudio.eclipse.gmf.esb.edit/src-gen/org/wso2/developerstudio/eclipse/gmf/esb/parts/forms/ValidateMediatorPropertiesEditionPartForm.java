@@ -1012,7 +1012,7 @@ public class ValidateMediatorPropertiesEditionPartForm extends SectionProperties
     private void openSourceWidgetNamespacedPropertyEditor(final Composite parent) {
         EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
                 SWT.NULL, source);
-        nspd.open();
+        source = nspd.open();
         sourceText.setText(source.getPropertyValue());
         propertiesEditionComponent
                 .firePropertiesChanged(new PropertiesEditionEvent(ValidateMediatorPropertiesEditionPartForm.this,

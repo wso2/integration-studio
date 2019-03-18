@@ -1189,7 +1189,7 @@ public class IterateMediatorPropertiesEditionPartForm extends SectionPropertiesE
             public void mouseDown(MouseEvent e) {
                 EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
                         SWT.NULL, iterateExpression);
-                nspd.open();
+                iterateExpression = nspd.open();
                 iterateExpressionText.setText(iterateExpression.getPropertyValue());
                 propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
                         IterateMediatorPropertiesEditionPartForm.this,
@@ -1214,7 +1214,7 @@ public class IterateMediatorPropertiesEditionPartForm extends SectionPropertiesE
                 if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
                     EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
                             SWT.NULL, iterateExpression);
-                    nspd.open();
+                    iterateExpression = nspd.open();
                     iterateExpressionText.setText(iterateExpression.getPropertyValue());
                     propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
                             IterateMediatorPropertiesEditionPartForm.this,
@@ -1324,7 +1324,7 @@ public class IterateMediatorPropertiesEditionPartForm extends SectionPropertiesE
             public void mouseUp(MouseEvent e) {
                 EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
                         SWT.NULL, attachPath);
-                nspd.open();
+                attachPath = nspd.open();
                 attachPathText.setText(attachPath.getPropertyValue());
                 propertiesEditionComponent
                         .firePropertiesChanged(new PropertiesEditionEvent(IterateMediatorPropertiesEditionPartForm.this,
@@ -1355,7 +1355,7 @@ public class IterateMediatorPropertiesEditionPartForm extends SectionPropertiesE
                 if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
                     EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
                             SWT.NULL, attachPath);
-                    nspd.open();
+                    attachPath = nspd.open();
                     attachPathText.setText(attachPath.getPropertyValue());
                     propertiesEditionComponent.firePropertiesChanged(
                             new PropertiesEditionEvent(IterateMediatorPropertiesEditionPartForm.this,

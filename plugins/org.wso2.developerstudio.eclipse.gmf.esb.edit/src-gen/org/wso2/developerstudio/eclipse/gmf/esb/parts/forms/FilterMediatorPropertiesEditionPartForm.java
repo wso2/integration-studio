@@ -762,7 +762,7 @@ public class FilterMediatorPropertiesEditionPartForm extends SectionPropertiesEd
             public void mouseDown( MouseEvent event ) {
                 EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
                         SWT.NULL, source);
-                nspd.open();
+                source = nspd.open();
                 sourceText.setText(source.getPropertyValue());
                 propertiesEditionComponent
                         .firePropertiesChanged(new PropertiesEditionEvent(FilterMediatorPropertiesEditionPartForm.this,
@@ -783,7 +783,7 @@ public class FilterMediatorPropertiesEditionPartForm extends SectionPropertiesEd
                 if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
                     EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
                             SWT.NULL, source);
-                    nspd.open();
+                    source = nspd.open();
                     sourceText.setText(source.getPropertyValue());
                     propertiesEditionComponent.firePropertiesChanged(
                             new PropertiesEditionEvent(FilterMediatorPropertiesEditionPartForm.this,
@@ -826,7 +826,7 @@ public class FilterMediatorPropertiesEditionPartForm extends SectionPropertiesEd
             public void mouseDown( MouseEvent event ) {
                 EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
                         SWT.NULL, xPath);
-                nspd.open();
+                xPath = nspd.open();
                 xPathText.setText(xPath.getPropertyValue());
                 propertiesEditionComponent
                         .firePropertiesChanged(new PropertiesEditionEvent(FilterMediatorPropertiesEditionPartForm.this,
@@ -847,7 +847,7 @@ public class FilterMediatorPropertiesEditionPartForm extends SectionPropertiesEd
                 if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
                     EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
                             SWT.NULL, xPath);
-                    nspd.open();
+                    xPath = nspd.open();
                     xPathText.setText(xPath.getPropertyValue());
                     propertiesEditionComponent
                             .firePropertiesChanged(new PropertiesEditionEvent(FilterMediatorPropertiesEditionPartForm.this,

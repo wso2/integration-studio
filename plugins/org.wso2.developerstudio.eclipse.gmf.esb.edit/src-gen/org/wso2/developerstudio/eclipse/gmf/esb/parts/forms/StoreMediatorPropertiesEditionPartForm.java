@@ -939,7 +939,7 @@ public class StoreMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
     private void openExpressionWidgetNamespacedPropertyEditor(final Composite parent) {
         EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL,
                 expression);
-        nspd.open();
+        expression = nspd.open();
         expressionText.setText(expression.getPropertyValue());
         propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
                 StoreMediatorPropertiesEditionPartForm.this, EsbViewsRepository.StoreMediator.Properties.expression,

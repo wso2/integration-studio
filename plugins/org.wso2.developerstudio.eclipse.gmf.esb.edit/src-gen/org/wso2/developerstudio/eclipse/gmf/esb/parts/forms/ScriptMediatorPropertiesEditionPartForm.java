@@ -1255,7 +1255,7 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
         EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
                 SWT.NULL, scriptDynamicKey);
         // valueExpression.setPropertyValue(valueExpressionText.getText());
-        nspd.open();
+        scriptDynamicKey = nspd.open();
         scriptDynamicKeyText.setText(scriptDynamicKey.getPropertyValue());
         propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
                 ScriptMediatorPropertiesEditionPartForm.this,

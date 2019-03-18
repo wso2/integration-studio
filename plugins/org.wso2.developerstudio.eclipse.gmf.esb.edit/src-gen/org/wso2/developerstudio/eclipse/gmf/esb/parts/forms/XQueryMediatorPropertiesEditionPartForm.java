@@ -866,7 +866,7 @@ public class XQueryMediatorPropertiesEditionPartForm extends SectionPropertiesEd
             @Override
             public void focusGained(FocusEvent e) {
                 EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL, targetXPath);
-                nspd.open();
+                targetXPath = nspd.open();
                 targetXPathText.setText(targetXPath.getPropertyValue());
                 propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(XQueryMediatorPropertiesEditionPartForm.this,
                         EsbViewsRepository.XQueryMediator.Properties.targetXPath, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getTargetXpath()));
@@ -909,7 +909,7 @@ public class XQueryMediatorPropertiesEditionPartForm extends SectionPropertiesEd
             @Override
             public void focusGained(FocusEvent e) {
                 EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL, dynamicScriptKey);
-                nspd.open();
+                dynamicScriptKey = nspd.open();
                 dynamicScriptKeyText.setText(dynamicScriptKey.getPropertyValue());
                 propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(XQueryMediatorPropertiesEditionPartForm.this,
                         EsbViewsRepository.XQueryMediator.Properties.dynamicScriptKey, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getDynamicScriptKey()));

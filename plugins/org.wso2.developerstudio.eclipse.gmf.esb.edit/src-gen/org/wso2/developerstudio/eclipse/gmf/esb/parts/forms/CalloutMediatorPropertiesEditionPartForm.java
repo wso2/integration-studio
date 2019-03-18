@@ -2109,7 +2109,7 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
     private void openResultMessageNamespacedPropertyEditor(final Composite parent) {
         final EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
                 SWT.NULL, resultMessageXpath);
-        nspd.open();
+        resultMessageXpath = nspd.open();
         resultMessageXpathText.setText(resultMessageXpath.getPropertyValue());
         propertiesEditionComponent
                 .firePropertiesChanged(new PropertiesEditionEvent(CalloutMediatorPropertiesEditionPartForm.this,
@@ -2120,7 +2120,7 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
     private void openPayloadMessageNamespacedPropertyEditor(final Composite parent) {
         final EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
                 SWT.NULL, payloadMessageXpath);
-        nspd.open();
+        payloadMessageXpath = nspd.open();
         payloadMessageXpathText.setText(payloadMessageXpath.getPropertyValue());
         propertiesEditionComponent
                 .firePropertiesChanged(new PropertiesEditionEvent(CalloutMediatorPropertiesEditionPartForm.this,

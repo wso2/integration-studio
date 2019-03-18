@@ -947,7 +947,7 @@ public class ForEachMediatorPropertiesEditionPartForm extends SectionPropertiesE
             public void mouseDown(MouseEvent event) {
                 EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
                         SWT.NULL, forEachExpression);
-                nspd.open();
+                forEachExpression = nspd.open();
                 forEachExpressionText.setText(forEachExpression.getPropertyValue());
                 propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
                         ForEachMediatorPropertiesEditionPartForm.this,
@@ -968,7 +968,7 @@ public class ForEachMediatorPropertiesEditionPartForm extends SectionPropertiesE
                 if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
                     EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
                             SWT.NULL, forEachExpression);
-                    nspd.open();
+                    forEachExpression = nspd.open();
                     forEachExpressionText.setText(forEachExpression.getPropertyValue());
                     propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
                             ForEachMediatorPropertiesEditionPartForm.this,

@@ -1,0 +1,49 @@
+<html>
+<head>
+<!-- Bootstrap -->
+<link href="./libs/bootstrap_3.3.6/css/bootstrap.min.css"
+	rel="stylesheet">
+<link href="./libs/jquery.scrollbar_0.2.11/jquery.scrollbar.css"
+	rel="stylesheet">
+<link href="./css/style.css" rel="stylesheet">
+</head>
+<body>
+	<div class="row container-body">
+		<div class="section-two col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<h2>WSO2 Connector Store</h2>
+			<div class="form-group">
+				<div class="input-group temp-input-group col-md-6 col-sm-12">
+					<input type="text" class="form-control"
+						placeholder="Search connector" id="search"> <span
+						class="input-group-addon"> <svg version="1.1"
+							xmlns="http://www.w3.org/2000/svg" viewBox="0 0 129 129"
+							xmlns:xlink="http://www.w3.org/1999/xlink"
+							enable-background="new 0 0 129 129">
+                                     <g>
+                                     	<path style="fill: #7f8c8d"
+								d="M51.6,96.7c11,0,21-3.9,28.8-10.5l35,35c0.8,
+                                            0.8,1.8,1.2,2.9,1.2s2.1-0.4,2.9-1.2c1.6-1.6,1.6-4.2,
+                                            0-5.8l-35-35   c6.5-7.8,10.5-17.9,10.5-28.8c0-24.9-20.2-45.1-45.1-45.1C26.8,
+                                            6.5,6.5,26.8,6.5,51.6C6.5,76.5,26.8,96.7,51.6,96.7z M51.6,
+                                            14.7   c20.4,0,36.9,16.6,36.9,36.9C88.5,72,72,88.5,51.6,88.5c-20.4,
+                                            0-36.9-16.6-36.9-36.9C14.7,31.3,31.3,14.7,51.6,14.7z" />
+                                    </g>
+                                </svg>
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="section-two col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<div class="row template-list scrollbar-macosx" id="connector-nodes">
+			</div>
+		</div>
+	</div>
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="./libs/jquery_1.11.3/jquery.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="./libs/bootstrap_3.3.6/js/bootstrap.min.js"></script>
+	<script src="./libs/jquery.scrollbar_0.2.11/jquery.scrollbar.min.js"></script>
+	<script src="./serverproperties.js"></script>
+	<script src="./js/store.js"></script>
+</body>
+</html>

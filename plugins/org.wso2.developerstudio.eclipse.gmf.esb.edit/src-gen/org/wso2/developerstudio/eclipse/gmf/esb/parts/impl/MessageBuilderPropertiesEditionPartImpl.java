@@ -40,7 +40,7 @@ import org.eclipse.swt.widgets.Text;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.MessageBuilderPropertiesEditionPart;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
 
 // End of user code
@@ -140,40 +140,48 @@ public class MessageBuilderPropertiesEditionPartImpl extends CompositeProperties
 		contentType = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData contentTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		contentType.setLayoutData(contentTypeData);
-		contentType.addFocusListener(new FocusAdapter() {
+		
+        contentType.addFocusListener(new FocusAdapter() {
 
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(MessageBuilderPropertiesEditionPartImpl.this, EsbViewsRepository.MessageBuilder.Properties.contentType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, contentType.getText()));
-			}
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+             * 
+             */
+            @Override
+            @SuppressWarnings("synthetic-access")
+            public void focusLost(FocusEvent e) {
+                if (propertiesEditionComponent != null)
+                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                            MessageBuilderPropertiesEditionPartImpl.this,
+                            EsbViewsRepository.MessageBuilder.Properties.contentType, PropertiesEditionEvent.COMMIT,
+                            PropertiesEditionEvent.SET, null, contentType.getText()));
+            }
+
+        });
+        contentType.addKeyListener(new KeyAdapter() {
+
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+             * 
+             */
+            @Override
+            @SuppressWarnings("synthetic-access")
+            public void keyReleased(KeyEvent e) {
+                if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                    if (propertiesEditionComponent != null)
+                        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                                MessageBuilderPropertiesEditionPartImpl.this,
+                                EsbViewsRepository.MessageBuilder.Properties.contentType, PropertiesEditionEvent.COMMIT,
+                                PropertiesEditionEvent.SET, null, contentType.getText()));
+                }
+            }
 
 		});
-		contentType.addKeyListener(new KeyAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(MessageBuilderPropertiesEditionPartImpl.this, EsbViewsRepository.MessageBuilder.Properties.contentType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, contentType.getText()));
-				}
-			}
-
-		});
+        
 		EditingUtils.setID(contentType, EsbViewsRepository.MessageBuilder.Properties.contentType);
 		EditingUtils.setEEFtype(contentType, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.MessageBuilder.Properties.contentType, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
@@ -189,40 +197,49 @@ public class MessageBuilderPropertiesEditionPartImpl extends CompositeProperties
 		builderClass = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData builderClassData = new GridData(GridData.FILL_HORIZONTAL);
 		builderClass.setLayoutData(builderClassData);
-		builderClass.addFocusListener(new FocusAdapter() {
+		
+        builderClass.addFocusListener(new FocusAdapter() {
 
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(MessageBuilderPropertiesEditionPartImpl.this, EsbViewsRepository.MessageBuilder.Properties.builderClass, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, builderClass.getText()));
-			}
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+             * 
+             */
+            @Override
+            @SuppressWarnings("synthetic-access")
+            public void focusLost(FocusEvent e) {
+                if (propertiesEditionComponent != null)
+                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                            MessageBuilderPropertiesEditionPartImpl.this,
+                            EsbViewsRepository.MessageBuilder.Properties.builderClass, PropertiesEditionEvent.COMMIT,
+                            PropertiesEditionEvent.SET, null, builderClass.getText()));
+            }
 
-		});
-		builderClass.addKeyListener(new KeyAdapter() {
+        });
+        builderClass.addKeyListener(new KeyAdapter() {
 
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(MessageBuilderPropertiesEditionPartImpl.this, EsbViewsRepository.MessageBuilder.Properties.builderClass, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, builderClass.getText()));
-				}
-			}
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+             * 
+             */
+            @Override
+            @SuppressWarnings("synthetic-access")
+            public void keyReleased(KeyEvent e) {
+                if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                    if (propertiesEditionComponent != null)
+                        propertiesEditionComponent.firePropertiesChanged(
+                                new PropertiesEditionEvent(MessageBuilderPropertiesEditionPartImpl.this,
+                                        EsbViewsRepository.MessageBuilder.Properties.builderClass,
+                                        PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+                                        builderClass.getText()));
+                }
+            }
 
-		});
+        });
+		
 		EditingUtils.setID(builderClass, EsbViewsRepository.MessageBuilder.Properties.builderClass);
 		EditingUtils.setEEFtype(builderClass, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.MessageBuilder.Properties.builderClass, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
@@ -238,40 +255,49 @@ public class MessageBuilderPropertiesEditionPartImpl extends CompositeProperties
 		formatterClass = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData formatterClassData = new GridData(GridData.FILL_HORIZONTAL);
 		formatterClass.setLayoutData(formatterClassData);
-		formatterClass.addFocusListener(new FocusAdapter() {
+		
+        formatterClass.addFocusListener(new FocusAdapter() {
 
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(MessageBuilderPropertiesEditionPartImpl.this, EsbViewsRepository.MessageBuilder.Properties.formatterClass, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, formatterClass.getText()));
-			}
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+             * 
+             */
+            @Override
+            @SuppressWarnings("synthetic-access")
+            public void focusLost(FocusEvent e) {
+                if (propertiesEditionComponent != null)
+                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                            MessageBuilderPropertiesEditionPartImpl.this,
+                            EsbViewsRepository.MessageBuilder.Properties.formatterClass, PropertiesEditionEvent.COMMIT,
+                            PropertiesEditionEvent.SET, null, formatterClass.getText()));
+            }
 
-		});
-		formatterClass.addKeyListener(new KeyAdapter() {
+        });
+        formatterClass.addKeyListener(new KeyAdapter() {
 
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(MessageBuilderPropertiesEditionPartImpl.this, EsbViewsRepository.MessageBuilder.Properties.formatterClass, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, formatterClass.getText()));
-				}
-			}
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+             * 
+             */
+            @Override
+            @SuppressWarnings("synthetic-access")
+            public void keyReleased(KeyEvent e) {
+                if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                    if (propertiesEditionComponent != null)
+                        propertiesEditionComponent.firePropertiesChanged(
+                                new PropertiesEditionEvent(MessageBuilderPropertiesEditionPartImpl.this,
+                                        EsbViewsRepository.MessageBuilder.Properties.formatterClass,
+                                        PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+                                        formatterClass.getText()));
+                }
+            }
 
-		});
+        });
+		
 		EditingUtils.setID(formatterClass, EsbViewsRepository.MessageBuilder.Properties.formatterClass);
 		EditingUtils.setEEFtype(formatterClass, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.MessageBuilder.Properties.formatterClass, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$

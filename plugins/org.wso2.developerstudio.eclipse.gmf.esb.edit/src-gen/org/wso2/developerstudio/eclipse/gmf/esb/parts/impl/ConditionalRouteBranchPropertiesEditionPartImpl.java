@@ -26,6 +26,8 @@ import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.KeyListener;
 import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -291,7 +293,7 @@ public class ConditionalRouteBranchPropertiesEditionPartImpl extends CompositePr
             evaluatorExpression = EsbFactoryImpl.eINSTANCE.createEvaluatorExpressionProperty();
         }
         String initValueExpression = (evaluatorExpression.getEvaluatorValue() == null || evaluatorExpression.getEvaluatorValue().isEmpty()) ? "" : evaluatorExpression.getEvaluatorValue();
-        evaluatorExpressionText = SWTUtils.createScrollableText(parent, SWT.BORDER);
+        evaluatorExpressionText = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.READ_ONLY);
         evaluatorExpressionText.setText(initValueExpression);
         evaluatorExpressionText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
@@ -321,6 +323,28 @@ public class ConditionalRouteBranchPropertiesEditionPartImpl extends CompositePr
                 
             }
         });
+        
+        evaluatorExpressionText.addKeyListener(new KeyListener() {
+            
+            @Override
+            public void keyReleased(KeyEvent e) {
+                if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                    EEFEvaluatorExpressionEditorDialog dialog = new EEFEvaluatorExpressionEditorDialog(view.getShell(),
+                            evaluatorExpression);
+                   dialog.open();
+                   evaluatorExpressionText.setText(evaluatorExpression.getEvaluatorValue());
+                   propertiesEditionComponent
+                           .firePropertiesChanged(new PropertiesEditionEvent(ConditionalRouteBranchPropertiesEditionPartImpl.this,
+                                   EsbViewsRepository.ConditionalRouteBranch.evaluatorExpression,
+                                   PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getEvaluatorExpression()));
+                }
+            }
+            
+            @Override
+            public void keyPressed(KeyEvent e) {}
+            
+        });
+        
         EditingUtils.setID(evaluatorExpressionText, EsbViewsRepository.ConditionalRouteBranch.evaluatorExpression);
         EditingUtils.setEEFtype(evaluatorExpressionText, "eef::Text");
         Control evaluatorExpressionHelp = SWTUtils.createHelpButton(parent,
@@ -339,7 +363,7 @@ public class ConditionalRouteBranchPropertiesEditionPartImpl extends CompositePr
             targetSequence = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
         }
         String initValueExpression = targetSequence.getKeyValue().isEmpty() ? "" : targetSequence.getKeyValue();
-        targetSequenceText = SWTUtils.createScrollableText(parent, SWT.BORDER);
+        targetSequenceText = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.READ_ONLY);
         targetSequenceText.setText(initValueExpression);
         targetSequenceText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
@@ -370,6 +394,28 @@ public class ConditionalRouteBranchPropertiesEditionPartImpl extends CompositePr
                 
             }
         });
+        
+        targetSequenceText.addKeyListener(new KeyListener() {
+            
+            @Override
+            public void keyReleased(KeyEvent e) {
+                if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                    EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
+                            SWT.NULL, targetSequence, new ArrayList<NamedEntityDescriptor>());
+                    dialog.open();
+                    targetSequenceText.setText(targetSequence.getKeyValue());
+                    propertiesEditionComponent
+                            .firePropertiesChanged(new PropertiesEditionEvent(ConditionalRouteBranchPropertiesEditionPartImpl.this,
+                                    EsbViewsRepository.ConditionalRouteBranch.Properties.targetSequence,
+                                    PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getTargetSequence()));
+                }
+            }
+            
+            @Override
+            public void keyPressed(KeyEvent e) {}
+            
+        });
+        
         EditingUtils.setID(targetSequenceText, EsbViewsRepository.ConditionalRouteBranch.Properties.targetSequence);
         EditingUtils.setEEFtype(targetSequenceText, "eef::Text");
         Control targetSequenceTextHelp = SWTUtils.createHelpButton(parent,

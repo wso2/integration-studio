@@ -136,6 +136,19 @@ public class AddTargetBranchDialog extends Dialog {
 
                 targetBranches.remove(lastTargetContainer);
 
+                CloneTarget lastCloneTarget = cloneMediator.getTargets().get(cloneMediator.getTargets().size() - 1);
+
+                cloneTargets.add(lastCloneTarget);
+
+                DeleteCommand deleteTarget = new DeleteCommand(editingDomain, cloneTargets);
+
+                if (deleteTarget.canExecute()) {
+
+                    editingDomain.getCommandStack().execute(deleteTarget);
+                }
+
+                cloneTargets.remove(lastCloneTarget);
+
                 CloneMediatorTargetOutputConnector lastTargetOutputConnector = cloneMediator.getTargetsOutputConnector()
                         .get(cloneMediator.getTargetsOutputConnector().size() - 1);
 
@@ -150,18 +163,7 @@ public class AddTargetBranchDialog extends Dialog {
 
                 targetOutputConnectors.remove(lastTargetOutputConnector);
 
-                CloneTarget lastCloneTarget = cloneMediator.getTargets().get(cloneMediator.getTargets().size() - 1);
 
-                cloneTargets.add(lastCloneTarget);
-
-                DeleteCommand deleteTarget = new DeleteCommand(editingDomain, cloneTargets);
-
-                if (deleteTarget.canExecute()) {
-
-                    editingDomain.getCommandStack().execute(deleteTarget);
-                }
-
-                cloneTargets.remove(lastCloneTarget);
 
             }
         }

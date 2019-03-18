@@ -77,9 +77,13 @@ public class BAMMediatorPropertiesEditionPartForm extends SectionPropertiesEditi
 	protected Text streamName;
 	protected Text streamVersion;
 
+	// Start of user code
     protected Control[] reverseElements;
     protected Control[] commentListElements;
     protected Composite propertiesGroup;
+    
+    protected Composite filterStreamSubPropertiesGroup;
+    // End of user code
     
 
 	/**
@@ -99,19 +103,20 @@ public class BAMMediatorPropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
+	 * @generated NOT
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
 	 * 
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
-		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
-		Form form = scrolledForm.getForm();
+		Form form = widgetFactory.createForm(parent);
 		view = form.getBody();
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
 		createControls(widgetFactory, view);
-		return scrolledForm;
+		return form;
 	}
 
 	/**
@@ -124,13 +129,12 @@ public class BAMMediatorPropertiesEditionPartForm extends SectionPropertiesEditi
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		CompositionSequence bAMMediatorStep = new BindingCompositionSequence(propertiesEditionComponent);
 		CompositionStep propertiesStep = bAMMediatorStep.addStep(EsbViewsRepository.BAMMediator.Properties.class);
-		propertiesStep.addStep(EsbViewsRepository.BAMMediator.Properties.description);
 		propertiesStep.addStep(EsbViewsRepository.BAMMediator.Properties.commentsList);
 		propertiesStep.addStep(EsbViewsRepository.BAMMediator.Properties.reverse);
 		propertiesStep.addStep(EsbViewsRepository.BAMMediator.Properties.serverProfile);
 		propertiesStep.addStep(EsbViewsRepository.BAMMediator.Properties.streamName);
 		propertiesStep.addStep(EsbViewsRepository.BAMMediator.Properties.streamVersion);
-		
+        propertiesStep.addStep(EsbViewsRepository.BAMMediator.Properties.description);
 		
 		composer = new PartComposer(bAMMediatorStep) {
 
@@ -155,7 +159,7 @@ public class BAMMediatorPropertiesEditionPartForm extends SectionPropertiesEditi
 					return createStreamNameText(widgetFactory, parent);
 				}
 				if (key == EsbViewsRepository.BAMMediator.Properties.streamVersion) {
-					return createStreamVersionText(widgetFactory, parent);
+					return createStreamVersionText(widgetFactory, filterStreamSubPropertiesGroup);
 				}
 				return parent;
 			}
@@ -398,10 +402,11 @@ public class BAMMediatorPropertiesEditionPartForm extends SectionPropertiesEditi
 
 	
 	protected Composite createStreamNameText(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EsbViewsRepository.BAMMediator.Properties.streamName, EsbMessages.BAMMediatorPropertiesEditionPart_StreamNameLabel);
-		streamName = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+	    filterStreamSubPropertiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent, "Stream", true);
+		createDescription(filterStreamSubPropertiesGroup, EsbViewsRepository.BAMMediator.Properties.streamName, EsbMessages.BAMMediatorPropertiesEditionPart_StreamNameLabel);
+		streamName = widgetFactory.createText(filterStreamSubPropertiesGroup, ""); //$NON-NLS-1$
 		streamName.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
-		widgetFactory.paintBordersFor(parent);
+		widgetFactory.paintBordersFor(filterStreamSubPropertiesGroup);
 		GridData streamNameData = new GridData(GridData.FILL_HORIZONTAL);
 		streamName.setLayoutData(streamNameData);
 		streamName.addFocusListener(new FocusAdapter() {
@@ -457,7 +462,7 @@ public class BAMMediatorPropertiesEditionPartForm extends SectionPropertiesEditi
 		});
 		EditingUtils.setID(streamName, EsbViewsRepository.BAMMediator.Properties.streamName);
 		EditingUtils.setEEFtype(streamName, "eef::Text"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.BAMMediator.Properties.streamName, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, filterStreamSubPropertiesGroup, propertiesEditionComponent.getHelpContent(EsbViewsRepository.BAMMediator.Properties.streamName, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createStreamNameText
 
 		// End of user code

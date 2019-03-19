@@ -686,8 +686,8 @@ public class PublishEventMediatorPropertiesEditionPartForm extends SectionProper
 	 * 
 	 */
 	protected Composite createPayloadAttributesTableComposition(FormToolkit widgetFactory, Composite parent) {
-            filterPayloadAttribiutesSubPropertiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent,
-                    "Payload Attributes", true);
+                filterPayloadAttribiutesSubPropertiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent,
+                        "Payload Attributes", true);
 		this.payloadAttributes = new ReferencesTable(getDescription(EsbViewsRepository.PublishEventMediator.Properties.payloadAttributes, EsbMessages.PublishEventMediatorPropertiesEditionPart_PayloadAttributesLabel), new ReferencesTableListener() {
 			public void handleAdd() {
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PublishEventMediatorPropertiesEditionPartForm.this, EsbViewsRepository.PublishEventMediator.Properties.payloadAttributes, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
@@ -739,8 +739,8 @@ public class PublishEventMediatorPropertiesEditionPartForm extends SectionProper
 	 * 
 	 */
 	protected Composite createArbitraryAttributesTableComposition(FormToolkit widgetFactory, Composite parent) {
-	    filterArbitraryAttribiutesSubPropertiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent, "Arbitrary Attributes",
-                true);
+                filterArbitraryAttribiutesSubPropertiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent,
+                        "Arbitrary Attributes", true);
 		this.arbitraryAttributes = new ReferencesTable(getDescription(EsbViewsRepository.PublishEventMediator.Properties.arbitraryAttributes, EsbMessages.PublishEventMediatorPropertiesEditionPart_ArbitraryAttributesLabel), new ReferencesTableListener() {
 			public void handleAdd() {
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PublishEventMediatorPropertiesEditionPartForm.this, EsbViewsRepository.PublishEventMediator.Properties.arbitraryAttributes, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));

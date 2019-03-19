@@ -49,6 +49,7 @@ import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.KeyListener;
 import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -150,6 +151,9 @@ public class FaultMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
     protected Control[] serializeResponseElements;
     protected Control[] soapVersionElements;
     protected Control[] descriptionElements;
+    
+    protected Composite filterDetailSubPropertiesGroup;
+    protected Composite filterReasonSubPropertiesGroup;
     // End of user code
 
 	/**
@@ -169,23 +173,26 @@ public class FaultMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
+	 * @generated NOT
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
 	 * 
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
-		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
-		Form form = scrolledForm.getForm();
+		Form form = widgetFactory.createForm(parent);
 		view = form.getBody();
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
 		createControls(widgetFactory, view);
-		return scrolledForm;
+		return form;
 	}
 
 	/**
 	 * {@inheritDoc}
+	 * 
+	 * @generated NOT
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
@@ -195,22 +202,22 @@ public class FaultMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
 		CompositionSequence faultMediatorStep = new BindingCompositionSequence(propertiesEditionComponent);
 		CompositionStep propertiesStep = faultMediatorStep.addStep(EsbViewsRepository.FaultMediator.Properties.class);
 		propertiesStep.addStep(EsbViewsRepository.FaultMediator.Properties.soapVersion);
+        propertiesStep.addStep(EsbViewsRepository.FaultMediator.Properties.faultCodeSoap11);
+        propertiesStep.addStep(EsbViewsRepository.FaultMediator.Properties.faultCodeSoap12);
+        propertiesStep.addStep(EsbViewsRepository.FaultMediator.Properties.faultActor);
 		propertiesStep.addStep(EsbViewsRepository.FaultMediator.Properties.serializeResponse);
 		propertiesStep.addStep(EsbViewsRepository.FaultMediator.Properties.markAsResponse);
-		propertiesStep.addStep(EsbViewsRepository.FaultMediator.Properties.faultCodeSoap11);
-		propertiesStep.addStep(EsbViewsRepository.FaultMediator.Properties.faultCodeSoap12);
+        propertiesStep.addStep(EsbViewsRepository.FaultMediator.Properties.roleName);
+        propertiesStep.addStep(EsbViewsRepository.FaultMediator.Properties.nodeName);
 		propertiesStep.addStep(EsbViewsRepository.FaultMediator.Properties.faultDetailType);
 		propertiesStep.addStep(EsbViewsRepository.FaultMediator.Properties.faultDetailExpression);
 		propertiesStep.addStep(EsbViewsRepository.FaultMediator.Properties.faultDetailValue);
-		propertiesStep.addStep(EsbViewsRepository.FaultMediator.Properties.faultStringType);
-		propertiesStep.addStep(EsbViewsRepository.FaultMediator.Properties.faultStringValue);
-		propertiesStep.addStep(EsbViewsRepository.FaultMediator.Properties.faultStringExpression);
-		propertiesStep.addStep(EsbViewsRepository.FaultMediator.Properties.faultActor);
 		propertiesStep.addStep(EsbViewsRepository.FaultMediator.Properties.faultReasonType);
 		propertiesStep.addStep(EsbViewsRepository.FaultMediator.Properties.faultReasonValue);
 		propertiesStep.addStep(EsbViewsRepository.FaultMediator.Properties.faultReasonExpression);
-		propertiesStep.addStep(EsbViewsRepository.FaultMediator.Properties.roleName);
-		propertiesStep.addStep(EsbViewsRepository.FaultMediator.Properties.nodeName);
+        propertiesStep.addStep(EsbViewsRepository.FaultMediator.Properties.faultStringType);
+        propertiesStep.addStep(EsbViewsRepository.FaultMediator.Properties.faultStringValue);
+        propertiesStep.addStep(EsbViewsRepository.FaultMediator.Properties.faultStringExpression);
 		propertiesStep.addStep(EsbViewsRepository.FaultMediator.Properties.faultCodeType);
 		propertiesStep.addStep(EsbViewsRepository.FaultMediator.Properties.faultCodeExpression);
 		propertiesStep.addStep(EsbViewsRepository.FaultMediator.Properties.description);
@@ -222,6 +229,7 @@ public class FaultMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
 
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
+			    // Start of user code
 				if (key == EsbViewsRepository.FaultMediator.Properties.class) {
 					return createPropertiesGroup(widgetFactory, parent);
 				}
@@ -250,10 +258,10 @@ public class FaultMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
 					return createFaultCodeTypeEMFComboViewer(widgetFactory, parent);
 				}
 				if (key == EsbViewsRepository.FaultMediator.Properties.faultStringType) {
-					return createFaultStringTypeEMFComboViewer(widgetFactory, parent);
+					return createFaultStringTypeEMFComboViewer(widgetFactory, filterReasonSubPropertiesGroup);
 				}
 				if (key == EsbViewsRepository.FaultMediator.Properties.faultStringValue) {
-					return createFaultStringValueText(widgetFactory, parent);
+					return createFaultStringValueText(widgetFactory, filterReasonSubPropertiesGroup);
 				}
 				if (key == EsbViewsRepository.FaultMediator.Properties.faultActor) {
 					return createFaultActorText(widgetFactory, parent);
@@ -265,7 +273,7 @@ public class FaultMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
 					return createFaultReasonTypeEMFComboViewer(widgetFactory, parent);
 				}
 				if (key == EsbViewsRepository.FaultMediator.Properties.faultReasonValue) {
-					return createFaultReasonValueText(widgetFactory, parent);
+					return createFaultReasonValueText(widgetFactory, filterReasonSubPropertiesGroup);
 				}
 				if (key == EsbViewsRepository.FaultMediator.Properties.roleName) {
 					return createRoleNameText(widgetFactory, parent);
@@ -277,26 +285,19 @@ public class FaultMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
 					return createFaultDetailTypeEMFComboViewer(widgetFactory, parent);
 				}
 				if (key == EsbViewsRepository.FaultMediator.Properties.faultDetailValue) {
-					return createFaultDetailValueText(widgetFactory, parent);
+					return createFaultDetailValueText(widgetFactory, filterDetailSubPropertiesGroup);
 				}
-				// Start of user code for faultStringExpression addToPart creation
                 if (key == EsbViewsRepository.FaultMediator.Properties.faultStringExpression) {
-                    return createFaultStringExpressionText(widgetFactory, parent);
+                    return createFaultStringExpressionText(widgetFactory, filterReasonSubPropertiesGroup);
                 }
-				// End of user code
-				// Start of user code for faultCodeExpression addToPart creation
                 if (key == EsbViewsRepository.FaultMediator.Properties.faultCodeExpression) {
                     return createFaultCodeExpressionText(widgetFactory, parent);
                 }
-				// End of user code
-				// Start of user code for faultDetailExpression addToPart creation
 				if (key == EsbViewsRepository.FaultMediator.Properties.faultDetailExpression) {
-                    return createFaultDetailExpressionText(widgetFactory, parent);
+                    return createFaultDetailExpressionText(widgetFactory, filterDetailSubPropertiesGroup);
                 }
-				// End of user code
-				// Start of user code for faultReasonExpression addToPart creation
 				if (key == EsbViewsRepository.FaultMediator.Properties.faultReasonExpression) {
-                    return createFaultReasonExpressionText(widgetFactory, parent);
+                    return createFaultReasonExpressionText(widgetFactory, filterReasonSubPropertiesGroup);
                 }
 				// End of user code
 				return parent;
@@ -495,7 +496,7 @@ public class FaultMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
 		soapVersion.setID(EsbViewsRepository.FaultMediator.Properties.soapVersion);
 		Control soapVersionHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.FaultMediator.Properties.soapVersion, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createSoapVersionEMFComboViewer
-		soapVersionElements = new Control [] {soapVersionLabel, soapVersionLabel, soapVersion.getCombo()};
+		soapVersionElements = new Control [] { soapVersionLabel, soapVersion.getCombo(), soapVersionHelp };
         soapVersion.addSelectionChangedListener(new ISelectionChangedListener() {
 
             /**
@@ -669,7 +670,7 @@ public class FaultMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
      * @generated NOT
      */
 	protected Composite createFaultStringTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
-	    Control faultStringTypeLabel = createDescription(parent, null, "Fault String Type");
+	    Control faultStringTypeLabel = createDescription(parent, null, "Type");
 		faultStringType = new EMFComboViewer(parent);
 		faultStringType.setContentProvider(new ArrayContentProvider());
 		faultStringType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -714,7 +715,7 @@ public class FaultMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
      * @generated NOT
      */	
 	protected Composite createFaultStringValueText(FormToolkit widgetFactory, Composite parent) {
-	    Control faultStringValueLabel = createDescription(parent, null, "Fault String Value");
+	    Control faultStringValueLabel = createDescription(parent, null, "Value");
 		faultStringValue = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		faultStringValue.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -887,8 +888,9 @@ public class FaultMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
      * @generated NOT
      */
 	protected Composite createFaultReasonTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
-	    Control faultReasonTypeLabel = createDescription(parent, null, "Reason Type");
-		faultReasonType = new EMFComboViewer(parent);
+	    filterReasonSubPropertiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent, "Reason", true);
+	    Control faultReasonTypeLabel = createDescription(filterReasonSubPropertiesGroup, null, "Type");
+		faultReasonType = new EMFComboViewer(filterReasonSubPropertiesGroup);
 		faultReasonType.setContentProvider(new ArrayContentProvider());
 		faultReasonType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData faultReasonTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -908,7 +910,7 @@ public class FaultMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
 
 		});
 		faultReasonType.setID(EsbViewsRepository.FaultMediator.Properties.faultReasonType);
-		Control faultReasonTypeHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.FaultMediator.Properties.faultReasonType, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		Control faultReasonTypeHelp = FormUtils.createHelpButton(widgetFactory, filterReasonSubPropertiesGroup, propertiesEditionComponent.getHelpContent(EsbViewsRepository.FaultMediator.Properties.faultReasonType, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createFaultReasonTypeEMFComboViewer
 		faultReasonTypeElements = new Control[] {faultReasonTypeLabel, faultReasonTypeHelp, faultReasonType.getCombo()};
         faultReasonType.addSelectionChangedListener(new ISelectionChangedListener() {
@@ -932,7 +934,7 @@ public class FaultMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
      * @generated NOT
      */
 	protected Composite createFaultReasonValueText(FormToolkit widgetFactory, Composite parent) {
-	    Control faultReasonValueLabel = createDescription(parent, null, "Fault Reason Value");
+	    Control faultReasonValueLabel = createDescription(parent, null, "Value");
 		faultReasonValue = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		faultReasonValue.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -1142,8 +1144,9 @@ public class FaultMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
      * @generated NOT
      */
 	protected Composite createFaultDetailTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
-	    Control faultDetailTypeLabel = createDescription(parent, null, "Detail Type");
-		faultDetailType = new EMFComboViewer(parent);
+	    filterDetailSubPropertiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent, "Detail", true);
+	    Control faultDetailTypeLabel = createDescription(filterDetailSubPropertiesGroup, null, "Type");
+		faultDetailType = new EMFComboViewer(filterDetailSubPropertiesGroup);
 		faultDetailType.setContentProvider(new ArrayContentProvider());
 		faultDetailType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData faultDetailTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -1163,7 +1166,7 @@ public class FaultMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
 
 		});
 		faultDetailType.setID(EsbViewsRepository.FaultMediator.Properties.faultDetailType);
-		Control faultDetailTypeHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.FaultMediator.Properties.faultDetailType, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		Control faultDetailTypeHelp = FormUtils.createHelpButton(widgetFactory, filterDetailSubPropertiesGroup, propertiesEditionComponent.getHelpContent(EsbViewsRepository.FaultMediator.Properties.faultDetailType, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createFaultDetailTypeEMFComboViewer
 		faultDetailTypeElements = new Control [] {faultDetailTypeLabel, faultDetailTypeHelp, faultDetailType.getCombo()};
 	      faultDetailType.addSelectionChangedListener(new ISelectionChangedListener() {
@@ -1187,7 +1190,7 @@ public class FaultMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
      * @generated NOT
      */
 	protected Composite createFaultDetailValueText(FormToolkit widgetFactory, Composite parent) {
-		Control FaultDetailValueLabel = createDescription(parent, null, "Detail Value");
+		Control FaultDetailValueLabel = createDescription(parent, null, "Value");
 		faultDetailValue = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		faultDetailValue.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -2043,14 +2046,14 @@ public class FaultMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
 
 	// Start of user code additional methods
 	protected Composite createFaultDetailExpressionText(FormToolkit widgetFactory, final Composite parent) {
-        Control faultDetailExpressionLabel = createDescription(parent, null, "Detail Expression");
+        Control faultDetailExpressionLabel = createDescription(parent, null, "Expression");
         widgetFactory.paintBordersFor(parent);
         if (faultDetailExpression== null) {
             faultDetailExpression = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
         }
         String initValueExpression = faultDetailExpression.getPropertyValue().isEmpty() ? ""
                 : faultDetailExpression.getPropertyValue();
-        faultDetailExpressionText = widgetFactory.createText(parent, initValueExpression);
+        faultDetailExpressionText = widgetFactory.createText(parent, initValueExpression, SWT.READ_ONLY);
         faultDetailExpressionText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
         widgetFactory.paintBordersFor(parent);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
@@ -2058,7 +2061,7 @@ public class FaultMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
         faultDetailExpressionText.addMouseListener(new MouseListener() {
 
             @Override
-            public void mouseUp(MouseEvent e) {
+            public void mouseDown(MouseEvent e) {
                 EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
                         SWT.NULL, faultDetailExpression);
                 faultDetailExpression = nspd.open();
@@ -2067,18 +2070,35 @@ public class FaultMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
                         FaultMediatorPropertiesEditionPartForm.this,
                         EsbViewsRepository.FaultMediator.Properties.faultDetailExpression, PropertiesEditionEvent.COMMIT,
                         PropertiesEditionEvent.SET, null, getFaultDetailExpression()));
-
             }
 
             @Override
-            public void mouseDown(MouseEvent e) {
-
-            }
-
+            public void mouseDoubleClick(MouseEvent e) {}
+            
             @Override
-            public void mouseDoubleClick(MouseEvent e) {
-
+            public void mouseUp(MouseEvent e) {}
+            
+        });
+        
+        faultDetailExpressionText.addKeyListener(new KeyListener() {
+            
+            @Override
+            public void keyReleased(KeyEvent e) {
+                 if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                     EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
+                             SWT.NULL, faultDetailExpression);
+                     nspd.open();
+                     faultDetailExpressionText.setText(faultDetailExpression.getPropertyValue());
+                     propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                             FaultMediatorPropertiesEditionPartForm.this,
+                             EsbViewsRepository.FaultMediator.Properties.faultDetailExpression, PropertiesEditionEvent.COMMIT,
+                             PropertiesEditionEvent.SET, null, getFaultDetailExpression()));
+                 }
             }
+            
+            @Override
+            public void keyPressed(KeyEvent e) {}
+            
         });
 
         EditingUtils.setID(faultDetailExpressionText, EsbViewsRepository.FaultMediator.Properties.faultDetailExpression);
@@ -2093,14 +2113,14 @@ public class FaultMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
     }
 	
 	   protected Composite createFaultReasonExpressionText(FormToolkit widgetFactory, final Composite parent) {
-        Control faultReasonExpressionLabel = createDescription(parent, null, "Fault Reason Expression");
+        Control faultReasonExpressionLabel = createDescription(parent, null, "Expression");
 	        widgetFactory.paintBordersFor(parent);
 	        if (faultReasonExpression== null) {
 	            faultReasonExpression = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
 	        }
 	        String initValueExpression = faultReasonExpression.getPropertyValue().isEmpty() ? ""
 	                : faultReasonExpression.getPropertyValue();
-	        faultReasonExpressionText = widgetFactory.createText(parent, initValueExpression);
+	        faultReasonExpressionText = widgetFactory.createText(parent, initValueExpression, SWT.READ_ONLY);
 	        faultReasonExpressionText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 	        widgetFactory.paintBordersFor(parent);
 	        GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
@@ -2108,27 +2128,44 @@ public class FaultMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
 	        faultReasonExpressionText.addMouseListener(new MouseListener() {
 
 	            @Override
-	            public void mouseUp(MouseEvent e) {
-	                EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
-	                        SWT.NULL, faultReasonExpression);
-	                faultReasonExpression = nspd.open();
-	                faultReasonExpressionText.setText(faultReasonExpression.getPropertyValue());
-	                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
-	                        FaultMediatorPropertiesEditionPartForm.this,
-	                        EsbViewsRepository.FaultMediator.Properties.faultReasonExpression, PropertiesEditionEvent.COMMIT,
-	                        PropertiesEditionEvent.SET, null, getFaultReasonExpression()));
-
-	            }
-
-	            @Override
 	            public void mouseDown(MouseEvent e) {
-
+                    EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
+                            SWT.NULL, faultReasonExpression);
+                    nspd.open();
+                    faultReasonExpressionText.setText(faultReasonExpression.getPropertyValue());
+                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                            FaultMediatorPropertiesEditionPartForm.this,
+                            EsbViewsRepository.FaultMediator.Properties.faultReasonExpression, PropertiesEditionEvent.COMMIT,
+                            PropertiesEditionEvent.SET, null, getFaultReasonExpression()));
 	            }
 
 	            @Override
-	            public void mouseDoubleClick(MouseEvent e) {
-
+	            public void mouseDoubleClick(MouseEvent e) {}
+	            
+	            @Override
+                public void mouseUp(MouseEvent e) {}
+	            
+	        });
+	        
+	        faultReasonExpressionText.addKeyListener(new KeyListener() {
+	            
+	            @Override
+	            public void keyReleased(KeyEvent e) {
+	                 if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+	                     EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
+	                             SWT.NULL, faultReasonExpression);
+	                     nspd.open();
+	                     faultReasonExpressionText.setText(faultReasonExpression.getPropertyValue());
+	                     propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+	                             FaultMediatorPropertiesEditionPartForm.this,
+	                             EsbViewsRepository.FaultMediator.Properties.faultReasonExpression, PropertiesEditionEvent.COMMIT,
+	                             PropertiesEditionEvent.SET, null, getFaultReasonExpression()));
+	                 }
 	            }
+	            
+	            @Override
+	            public void keyPressed(KeyEvent e) {}
+	            
 	        });
 
 	        EditingUtils.setID(faultReasonExpressionText, EsbViewsRepository.FaultMediator.Properties.faultReasonExpression);
@@ -2143,22 +2180,23 @@ public class FaultMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
 	    }
 	   
     protected Composite createFaultStringExpressionText(FormToolkit widgetFactory, final Composite parent) {
-        Control faultStringExpressionLabel = createDescription(parent, null, "Fault String Expression");
+        Control faultStringExpressionLabel = createDescription(parent, null, "Expression");
            widgetFactory.paintBordersFor(parent);
            if (faultStringExpression== null) {
                faultStringExpression = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
            }
            String initValueExpression = faultStringExpression.getPropertyValue().isEmpty() ? ""
                    : faultStringExpression.getPropertyValue();
-           faultStringExpressionText = widgetFactory.createText(parent, initValueExpression);
+           faultStringExpressionText = widgetFactory.createText(parent, initValueExpression, SWT.READ_ONLY);
            faultStringExpressionText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
            widgetFactory.paintBordersFor(parent);
            GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
            faultStringExpressionText.setLayoutData(valueData);
+           
            faultStringExpressionText.addMouseListener(new MouseListener() {
 
                @Override
-               public void mouseUp(MouseEvent e) {
+               public void mouseDown(MouseEvent e) {
                    EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
                            SWT.NULL, faultStringExpression);
                    faultStringExpression = nspd.open();
@@ -2167,18 +2205,35 @@ public class FaultMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
                            FaultMediatorPropertiesEditionPartForm.this,
                            EsbViewsRepository.FaultMediator.Properties.faultStringExpression, PropertiesEditionEvent.COMMIT,
                            PropertiesEditionEvent.SET, null, getFaultStringExpression()));
-
                }
 
                @Override
-               public void mouseDown(MouseEvent e) {
-
-               }
-
+               public void mouseDoubleClick(MouseEvent e) {}
+               
                @Override
-               public void mouseDoubleClick(MouseEvent e) {
-
+               public void mouseUp(MouseEvent e) {}
+               
+           });
+           
+           faultStringExpressionText.addKeyListener(new KeyListener() {
+               
+               @Override
+               public void keyReleased(KeyEvent e) {
+                    if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                        EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
+                                SWT.NULL, faultStringExpression);
+                        nspd.open();
+                        faultStringExpressionText.setText(faultStringExpression.getPropertyValue());
+                        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                                FaultMediatorPropertiesEditionPartForm.this,
+                                EsbViewsRepository.FaultMediator.Properties.faultStringExpression, PropertiesEditionEvent.COMMIT,
+                                PropertiesEditionEvent.SET, null, getFaultStringExpression()));
+                    }
                }
+               
+               @Override
+               public void keyPressed(KeyEvent e) {}
+               
            });
 
            EditingUtils.setID(faultStringExpressionText, EsbViewsRepository.FaultMediator.Properties.faultStringExpression);
@@ -2193,22 +2248,23 @@ public class FaultMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
        }
 	   
 	   protected Composite createFaultCodeExpressionText(FormToolkit widgetFactory, final Composite parent) {
-        Control faultCodeExpressionLabel = createDescription(parent, null, "Fault Code Expression");
+        Control faultCodeExpressionLabel = createDescription(parent, null, "Expression");
            widgetFactory.paintBordersFor(parent);
            if (faultCodeExpression== null) {
                faultCodeExpression = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
            }
            String initValueExpression = faultCodeExpression.getPropertyValue().isEmpty() ? ""
                    : faultCodeExpression.getPropertyValue();
-           faultCodeExpressionText = widgetFactory.createText(parent, initValueExpression);
+           faultCodeExpressionText = widgetFactory.createText(parent, initValueExpression, SWT.READ_ONLY);
            faultCodeExpressionText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
            widgetFactory.paintBordersFor(parent);
            GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
            faultCodeExpressionText.setLayoutData(valueData);
+           
            faultCodeExpressionText.addMouseListener(new MouseListener() {
 
                @Override
-               public void mouseUp(MouseEvent e) {
+               public void mouseDown(MouseEvent e) {
                    EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
                            SWT.NULL, faultCodeExpression);
                    faultCodeExpression = nspd.open();
@@ -2217,18 +2273,35 @@ public class FaultMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
                            FaultMediatorPropertiesEditionPartForm.this,
                            EsbViewsRepository.FaultMediator.Properties.faultCodeExpression, PropertiesEditionEvent.COMMIT,
                            PropertiesEditionEvent.SET, null, getFaultCodeExpression()));
-
                }
 
                @Override
-               public void mouseDown(MouseEvent e) {
-
-               }
-
+               public void mouseDoubleClick(MouseEvent e) {}
+               
                @Override
-               public void mouseDoubleClick(MouseEvent e) {
-
+               public void mouseUp(MouseEvent e) {}
+               
+           });
+           
+           faultCodeExpressionText.addKeyListener(new KeyListener() {
+               
+               @Override
+               public void keyReleased(KeyEvent e) {
+                    if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                        EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
+                                SWT.NULL, faultCodeExpression);
+                        nspd.open();
+                        faultCodeExpressionText.setText(faultCodeExpression.getPropertyValue());
+                        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                                FaultMediatorPropertiesEditionPartForm.this,
+                                EsbViewsRepository.FaultMediator.Properties.faultCodeExpression, PropertiesEditionEvent.COMMIT,
+                                PropertiesEditionEvent.SET, null, getFaultCodeExpression()));
+                    }
                }
+               
+               @Override
+               public void keyPressed(KeyEvent e) {}
+               
            });
 
            EditingUtils.setID(faultCodeExpressionText, EsbViewsRepository.FaultMediator.Properties.faultCodeExpression);
@@ -2253,6 +2326,12 @@ public class FaultMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
         EEFPropertyViewUtil eu = new EEFPropertyViewUtil(view);
         eu.clearElements(new Composite[] { propertiesGroup });
         eu.showEntry(soapVersionElements, false);
+        
+        eu.showEntry(new Control[] { filterDetailSubPropertiesGroup.getParent() }, false);
+        eu.clearElements(new Composite[] { filterDetailSubPropertiesGroup });
+
+        eu.showEntry(new Control[] { filterReasonSubPropertiesGroup.getParent() }, false);
+        eu.clearElements(new Composite[] { filterReasonSubPropertiesGroup });
 
         switch (getSoapVersion().getName()) {
         case "SOAP_1_1": {
@@ -2260,9 +2339,9 @@ public class FaultMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
             eu.showEntry(faultStringTypeElements, false);
             eu.showEntry(faultActorElements, false);
             if (getFaultStringType().getName().equals("EXPRESSION")) {
-                eu.showEntry(faultStringValueElements, false);
-            } else {
                 eu.showEntry(faultStringElements, false);
+            } else {
+                eu.showEntry(faultStringValueElements, false);
             }
             break;
         }

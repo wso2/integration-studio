@@ -139,14 +139,13 @@ public class SwitchMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	 * 
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
-		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
-		Form form = scrolledForm.getForm();
+		Form form = widgetFactory.createForm(parent);
 		view = form.getBody();
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
 		createControls(widgetFactory, view);
-		return scrolledForm;
+		return form;
 	}
 
 	/**
@@ -159,15 +158,16 @@ public class SwitchMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		CompositionSequence switchMediatorStep = new BindingCompositionSequence(propertiesEditionComponent);
 		CompositionStep propertiesStep = switchMediatorStep.addStep(EsbViewsRepository.SwitchMediator.Properties.class);
-		propertiesStep.addStep(EsbViewsRepository.SwitchMediator.Properties.description);
+		// Start of user code  
+		propertiesStep.addStep(EsbViewsRepository.SwitchMediator.Properties.sourceXPath);
 		propertiesStep.addStep(EsbViewsRepository.SwitchMediator.Properties.commentsList);
 		propertiesStep.addStep(EsbViewsRepository.SwitchMediator.Properties.reverse);
 		propertiesStep.addStep(EsbViewsRepository.SwitchMediator.Properties.source);
 		propertiesStep.addStep(EsbViewsRepository.SwitchMediator.Properties.namespace);
 		propertiesStep.addStep(EsbViewsRepository.SwitchMediator.Properties.namespacePrefix);
 		propertiesStep.addStep(EsbViewsRepository.SwitchMediator.Properties.caseBranches);
-		propertiesStep.addStep(EsbViewsRepository.SwitchMediator.Properties.sourceXPath);
-		
+		propertiesStep.addStep(EsbViewsRepository.SwitchMediator.Properties.description);
+        // End of user code
 		
 		composer = new PartComposer(switchMediatorStep) {
 
@@ -969,7 +969,7 @@ public class SwitchMediatorPropertiesEditionPartForm extends SectionPropertiesEd
            sourceXPath = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
        } 
        String initValueExpression = sourceXPath.getPropertyValue().isEmpty() ? "/default/expression" : sourceXPath.getPropertyValue();
-       sourceXPathText = widgetFactory.createText(parent, initValueExpression);
+       sourceXPathText = widgetFactory.createText(parent, initValueExpression, SWT.READ_ONLY);
        sourceXPathText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
        widgetFactory.paintBordersFor(parent);
        GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
@@ -988,11 +988,14 @@ public class SwitchMediatorPropertiesEditionPartForm extends SectionPropertiesEd
                        
            @Override
            public void keyPressed(KeyEvent e) {
-               openSourceXPathWidgetNamespacedPropertyEditor(parent);
            }
            
            @Override
-           public void keyReleased(KeyEvent e) {}
+           public void keyReleased(KeyEvent e) {
+               if(!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                   openSourceXPathWidgetNamespacedPropertyEditor(parent);
+               }
+           }
            
        });
        
@@ -1006,7 +1009,7 @@ public class SwitchMediatorPropertiesEditionPartForm extends SectionPropertiesEd
     private void openSourceXPathWidgetNamespacedPropertyEditor(final Composite parent) {
         EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL,
                 sourceXPath);
-        nspd.open();
+        sourceXPath = nspd.open();
         sourceXPathText.setText(sourceXPath.getPropertyValue());
         propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
                 SwitchMediatorPropertiesEditionPartForm.this, EsbViewsRepository.SwitchMediator.Properties.sourceXPath,

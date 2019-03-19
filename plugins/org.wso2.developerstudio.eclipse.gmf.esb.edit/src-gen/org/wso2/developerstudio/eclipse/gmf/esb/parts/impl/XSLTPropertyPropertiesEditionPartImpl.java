@@ -19,7 +19,7 @@ import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-
+import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
@@ -201,8 +201,8 @@ public class XSLTPropertyPropertiesEditionPartImpl extends CompositePropertiesEd
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
+			public void keyReleased(KeyEvent e) {
+				if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
 					if (propertiesEditionComponent != null)
 						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(XSLTPropertyPropertiesEditionPartImpl.this, EsbViewsRepository.XSLTProperty.Properties.propertyName, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, propertyName.getText()));
 				}
@@ -297,8 +297,8 @@ public class XSLTPropertyPropertiesEditionPartImpl extends CompositePropertiesEd
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
+			public void keyReleased(KeyEvent e) {
+				if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
 					if (propertiesEditionComponent != null)
 						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(XSLTPropertyPropertiesEditionPartImpl.this, EsbViewsRepository.XSLTProperty.Properties.propertyValue, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, propertyValue.getText()));
 				}
@@ -477,7 +477,7 @@ public class XSLTPropertyPropertiesEditionPartImpl extends CompositePropertiesEd
         Control propertyExpressionTextLabel = createDescription(parent,
                 EsbViewsRepository.XSLTProperty.Properties.propertyExpression,
                 EsbMessages.XSLTPropertyPropertiesEditionPart_PropertyExpressionLabel);
-        propertyExpressionText = SWTUtils.createScrollableText(parent, SWT.BORDER); // $NON-NLS-1$
+        propertyExpressionText = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.READ_ONLY); // $NON-NLS-1$
         propertyExpressionText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
         GridData propertyValueData = new GridData(GridData.FILL_HORIZONTAL);
         propertyExpressionText.setLayoutData(propertyValueData);
@@ -524,14 +524,18 @@ public class XSLTPropertyPropertiesEditionPartImpl extends CompositePropertiesEd
              */
             @Override
             @SuppressWarnings("synthetic-access")
-            public void keyPressed(KeyEvent e) {
-                if (e.character == SWT.CR) {
-                    if (propertiesEditionComponent != null)
-                        propertiesEditionComponent.firePropertiesChanged(
-                                new PropertiesEditionEvent(XSLTPropertyPropertiesEditionPartImpl.this,
-                                        EsbViewsRepository.XSLTProperty.Properties.propertyExpression,
-                                        PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
-                                        propertyExpressionText.getText()));
+            public void keyReleased(KeyEvent e) {
+                if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                    EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
+                            SWT.NULL, propertyExpression);
+                    // valueExpression.setPropertyValue(valueExpressionText.getText());
+                    nspd.open();
+                    propertyExpressionText.setText(propertyExpression.getPropertyValue());
+
+                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                            XSLTPropertyPropertiesEditionPartImpl.this,
+                            EsbViewsRepository.XSLTProperty.Properties.propertyExpression,
+                            PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getExpressionValue()));
                 }
             }
         });
@@ -552,7 +556,6 @@ public class XSLTPropertyPropertiesEditionPartImpl extends CompositePropertiesEd
 
             @Override
             public void mouseDown(MouseEvent e) {
-                // TODO Auto-generated method stub
                 EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
                         SWT.NULL, propertyExpression);
                 // valueExpression.setPropertyValue(valueExpressionText.getText());
@@ -562,7 +565,7 @@ public class XSLTPropertyPropertiesEditionPartImpl extends CompositePropertiesEd
                 propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
                         XSLTPropertyPropertiesEditionPartImpl.this,
                         EsbViewsRepository.XSLTProperty.Properties.propertyExpression, PropertiesEditionEvent.COMMIT,
-                        PropertiesEditionEvent.SET, null, propertyExpressionText.getText()));
+                        PropertiesEditionEvent.SET, null, getExpressionValue()));
             }
 
             @Override

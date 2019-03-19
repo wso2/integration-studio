@@ -1531,7 +1531,7 @@ public class EJBMediatorPropertiesEditionPartForm extends SectionPropertiesEditi
         EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
                 SWT.NULL, sessionIdExpression);
         // valueExpression.setPropertyValue(valueExpressionText.getText());
-        nspd.open();
+        sessionIdExpression = nspd.open();
         sessionIdExpressionText.setText(sessionIdExpression.getPropertyValue());
         propertiesEditionComponent
                 .firePropertiesChanged(new PropertiesEditionEvent(EJBMediatorPropertiesEditionPartForm.this,

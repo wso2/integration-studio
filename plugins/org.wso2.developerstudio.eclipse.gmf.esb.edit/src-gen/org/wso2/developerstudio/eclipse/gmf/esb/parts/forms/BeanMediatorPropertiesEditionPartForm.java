@@ -1479,7 +1479,7 @@ public class BeanMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
     private void openValueExpressionWidgetNamespacedPropertyEditor(final Composite parent) {
         EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL,
                 valueExpression);
-        nspd.open();
+        valueExpression = nspd.open();
         valueExpressionText.setText(valueExpression.getPropertyValue());
         propertiesEditionComponent
                 .firePropertiesChanged(new PropertiesEditionEvent(BeanMediatorPropertiesEditionPartForm.this,
@@ -1490,7 +1490,7 @@ public class BeanMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
     private void openTargetExpressionWidgetNamespacedPropertyEditor(final Composite parent) {
         EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL,
                 targetExpression);
-        nspd.open();
+        targetExpression = nspd.open();
         targetExpressionText.setText(targetExpression.getPropertyValue());
         propertiesEditionComponent
                 .firePropertiesChanged(new PropertiesEditionEvent(BeanMediatorPropertiesEditionPartForm.this,

@@ -968,7 +968,7 @@ public class CallMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
     private void openCreateEndpointNPE(final Composite parent) {
         EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL,
                 endpointXPath);
-        nspd.open();
+        endpointXPath = nspd.open();
         endpointXPathText.setText(endpointXPath.getPropertyValue());
         propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
                 CallMediatorPropertiesEditionPartForm.this, EsbViewsRepository.CallMediator.Properties.endpointXpath,

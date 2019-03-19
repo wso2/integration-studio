@@ -1346,7 +1346,7 @@ public class SequencePropertiesEditionPartForm extends SectionPropertiesEditingP
         EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
                 SWT.NULL, dynamicReferenceKey);
         // valueExpression.setPropertyValue(valueExpressionText.getText());
-        nspd.open();
+        dynamicReferenceKey = nspd.open();
         dynamicReferenceKeyText.setText(dynamicReferenceKey.getPropertyValue());
         propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
                 SequencePropertiesEditionPartForm.this,

@@ -224,7 +224,7 @@ public class RegistryKeyPropertyEditorDialog extends Dialog {
 			}
 		});
 		FormData fd_link_1 = new FormData();
-		fd_link_1.top = new FormAttachment(rkTextField, 6);
+		fd_link_1.top = new FormAttachment(rkTextField, 100);
 		fd_link_1.right = new FormAttachment(rkTextField, 0, SWT.RIGHT);
 		link_1.setLayoutData(fd_link_1);
 		link_1.setText("<a>Create && point to a new resource...</a>");

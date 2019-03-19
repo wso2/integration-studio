@@ -70,7 +70,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
 
 // End of user code
@@ -103,8 +103,10 @@ public class PublishEventMediatorPropertiesEditionPartForm extends SectionProper
 	protected List<ViewerFilter> arbitraryAttributesFilters = new ArrayList<ViewerFilter>();
 	protected Button async;
 	protected Text asyncTimeout;
-
-
+	protected Composite filterMetaAttribiutesSubPropertiesGroup;
+	protected Composite filterCorrelatedAttribiutesSubPropertiesGroup;
+	protected Composite filterPayloadAttribiutesSubPropertiesGroup;
+	protected Composite filterArbitraryAttribiutesSubPropertiesGroup;
 
 	/**
 	 * For {@link ISection} use only.
@@ -128,14 +130,13 @@ public class PublishEventMediatorPropertiesEditionPartForm extends SectionProper
 	 * 
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
-		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
-		Form form = scrolledForm.getForm();
+		Form form = widgetFactory.createForm(parent);
 		view = form.getBody();
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
 		createControls(widgetFactory, view);
-		return scrolledForm;
+		return form;
 	}
 
 	/**
@@ -153,12 +154,12 @@ public class PublishEventMediatorPropertiesEditionPartForm extends SectionProper
 		propertiesStep.addStep(EsbViewsRepository.PublishEventMediator.Properties.streamName);
 		propertiesStep.addStep(EsbViewsRepository.PublishEventMediator.Properties.streamVersion);
 		propertiesStep.addStep(EsbViewsRepository.PublishEventMediator.Properties.eventSink);
+		propertiesStep.addStep(EsbViewsRepository.PublishEventMediator.Properties.async);
+		propertiesStep.addStep(EsbViewsRepository.PublishEventMediator.Properties.asyncTimeout);
 		propertiesStep.addStep(EsbViewsRepository.PublishEventMediator.Properties.metaAttributes);
 		propertiesStep.addStep(EsbViewsRepository.PublishEventMediator.Properties.correlationAttributes);
 		propertiesStep.addStep(EsbViewsRepository.PublishEventMediator.Properties.payloadAttributes);
 		propertiesStep.addStep(EsbViewsRepository.PublishEventMediator.Properties.arbitraryAttributes);
-		propertiesStep.addStep(EsbViewsRepository.PublishEventMediator.Properties.async);
-		propertiesStep.addStep(EsbViewsRepository.PublishEventMediator.Properties.asyncTimeout);
 		propertiesStep.addStep(EsbViewsRepository.PublishEventMediator.Properties.description);
 		
 		
@@ -579,6 +580,8 @@ public class PublishEventMediatorPropertiesEditionPartForm extends SectionProper
 	 * 
 	 */
 	protected Composite createMetaAttributesTableComposition(FormToolkit widgetFactory, Composite parent) {
+	        filterMetaAttribiutesSubPropertiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent,
+	                "Meta Attributes", true);
 		this.metaAttributes = new ReferencesTable(getDescription(EsbViewsRepository.PublishEventMediator.Properties.metaAttributes, EsbMessages.PublishEventMediatorPropertiesEditionPart_MetaAttributesLabel), new ReferencesTableListener() {
 			public void handleAdd() {
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PublishEventMediatorPropertiesEditionPartForm.this, EsbViewsRepository.PublishEventMediator.Properties.metaAttributes, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
@@ -602,7 +605,7 @@ public class PublishEventMediatorPropertiesEditionPartForm extends SectionProper
 			this.metaAttributes.addFilter(filter);
 		}
 		this.metaAttributes.setHelpText(propertiesEditionComponent.getHelpContent(EsbViewsRepository.PublishEventMediator.Properties.metaAttributes, EsbViewsRepository.FORM_KIND));
-		this.metaAttributes.createControls(parent, widgetFactory);
+		this.metaAttributes.createControls(filterMetaAttribiutesSubPropertiesGroup, widgetFactory);
 		this.metaAttributes.addSelectionListener(new SelectionAdapter() {
 			
 			public void widgetSelected(SelectionEvent e) {
@@ -630,6 +633,8 @@ public class PublishEventMediatorPropertiesEditionPartForm extends SectionProper
 	 * 
 	 */
 	protected Composite createCorrelationAttributesTableComposition(FormToolkit widgetFactory, Composite parent) {
+                filterCorrelatedAttribiutesSubPropertiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent,
+                        "Correlation Attributes", true);
 		this.correlationAttributes = new ReferencesTable(getDescription(EsbViewsRepository.PublishEventMediator.Properties.correlationAttributes, EsbMessages.PublishEventMediatorPropertiesEditionPart_CorrelationAttributesLabel), new ReferencesTableListener() {
 			public void handleAdd() {
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PublishEventMediatorPropertiesEditionPartForm.this, EsbViewsRepository.PublishEventMediator.Properties.correlationAttributes, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
@@ -653,7 +658,7 @@ public class PublishEventMediatorPropertiesEditionPartForm extends SectionProper
 			this.correlationAttributes.addFilter(filter);
 		}
 		this.correlationAttributes.setHelpText(propertiesEditionComponent.getHelpContent(EsbViewsRepository.PublishEventMediator.Properties.correlationAttributes, EsbViewsRepository.FORM_KIND));
-		this.correlationAttributes.createControls(parent, widgetFactory);
+		this.correlationAttributes.createControls(filterCorrelatedAttribiutesSubPropertiesGroup, widgetFactory);
 		this.correlationAttributes.addSelectionListener(new SelectionAdapter() {
 			
 			public void widgetSelected(SelectionEvent e) {
@@ -681,6 +686,8 @@ public class PublishEventMediatorPropertiesEditionPartForm extends SectionProper
 	 * 
 	 */
 	protected Composite createPayloadAttributesTableComposition(FormToolkit widgetFactory, Composite parent) {
+                filterPayloadAttribiutesSubPropertiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent,
+                        "Payload Attributes", true);
 		this.payloadAttributes = new ReferencesTable(getDescription(EsbViewsRepository.PublishEventMediator.Properties.payloadAttributes, EsbMessages.PublishEventMediatorPropertiesEditionPart_PayloadAttributesLabel), new ReferencesTableListener() {
 			public void handleAdd() {
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PublishEventMediatorPropertiesEditionPartForm.this, EsbViewsRepository.PublishEventMediator.Properties.payloadAttributes, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
@@ -704,7 +711,7 @@ public class PublishEventMediatorPropertiesEditionPartForm extends SectionProper
 			this.payloadAttributes.addFilter(filter);
 		}
 		this.payloadAttributes.setHelpText(propertiesEditionComponent.getHelpContent(EsbViewsRepository.PublishEventMediator.Properties.payloadAttributes, EsbViewsRepository.FORM_KIND));
-		this.payloadAttributes.createControls(parent, widgetFactory);
+		this.payloadAttributes.createControls(filterPayloadAttribiutesSubPropertiesGroup, widgetFactory);
 		this.payloadAttributes.addSelectionListener(new SelectionAdapter() {
 			
 			public void widgetSelected(SelectionEvent e) {
@@ -732,6 +739,8 @@ public class PublishEventMediatorPropertiesEditionPartForm extends SectionProper
 	 * 
 	 */
 	protected Composite createArbitraryAttributesTableComposition(FormToolkit widgetFactory, Composite parent) {
+                filterArbitraryAttribiutesSubPropertiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent,
+                        "Arbitrary Attributes", true);
 		this.arbitraryAttributes = new ReferencesTable(getDescription(EsbViewsRepository.PublishEventMediator.Properties.arbitraryAttributes, EsbMessages.PublishEventMediatorPropertiesEditionPart_ArbitraryAttributesLabel), new ReferencesTableListener() {
 			public void handleAdd() {
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PublishEventMediatorPropertiesEditionPartForm.this, EsbViewsRepository.PublishEventMediator.Properties.arbitraryAttributes, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
@@ -755,7 +764,7 @@ public class PublishEventMediatorPropertiesEditionPartForm extends SectionProper
 			this.arbitraryAttributes.addFilter(filter);
 		}
 		this.arbitraryAttributes.setHelpText(propertiesEditionComponent.getHelpContent(EsbViewsRepository.PublishEventMediator.Properties.arbitraryAttributes, EsbViewsRepository.FORM_KIND));
-		this.arbitraryAttributes.createControls(parent, widgetFactory);
+		this.arbitraryAttributes.createControls(filterArbitraryAttribiutesSubPropertiesGroup, widgetFactory);
 		this.arbitraryAttributes.addSelectionListener(new SelectionAdapter() {
 			
 			public void widgetSelected(SelectionEvent e) {

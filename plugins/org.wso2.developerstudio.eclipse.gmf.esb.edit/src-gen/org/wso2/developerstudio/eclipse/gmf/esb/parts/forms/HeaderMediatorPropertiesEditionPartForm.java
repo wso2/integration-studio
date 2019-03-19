@@ -972,7 +972,7 @@ public class HeaderMediatorPropertiesEditionPartForm extends SectionPropertiesEd
     private void openNamespacedPropertyEditorHeaderName(final Composite parent) {
         EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL,
                 headerName);
-        nspd.open();
+        headerName = nspd.open();
         headerNameText.setText(headerName.getPropertyValue());
         propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
                 HeaderMediatorPropertiesEditionPartForm.this, EsbViewsRepository.HeaderMediator.Properties.headerName,
@@ -982,7 +982,7 @@ public class HeaderMediatorPropertiesEditionPartForm extends SectionPropertiesEd
     private void openNamespacedPropertyEditorValueExpression(final Composite parent) {
         EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL,
                 valueExpression);
-        nspd.open();
+        valueExpression = nspd.open();
         valueExpressionText.setText(valueExpression.getPropertyValue());
         propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
                 HeaderMediatorPropertiesEditionPartForm.this, EsbViewsRepository.HeaderMediator.Properties.valueExpression,

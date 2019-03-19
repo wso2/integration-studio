@@ -213,8 +213,8 @@ public class PublishEventMediatorAttributePropertiesEditionPartImpl extends Comp
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
+			public void keyReleased(KeyEvent e) {
+				if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
 					if (propertiesEditionComponent != null)
 						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PublishEventMediatorAttributePropertiesEditionPartImpl.this, EsbViewsRepository.PublishEventMediatorAttribute.Properties.attributeName, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, attributeName.getText()));
 				}
@@ -310,8 +310,8 @@ public class PublishEventMediatorAttributePropertiesEditionPartImpl extends Comp
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
+			public void keyReleased(KeyEvent e) {
+				if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
 					if (propertiesEditionComponent != null)
 						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PublishEventMediatorAttributePropertiesEditionPartImpl.this, EsbViewsRepository.PublishEventMediatorAttribute.Properties.attributeValue, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, attributeValue.getText()));
 				}
@@ -393,8 +393,8 @@ public class PublishEventMediatorAttributePropertiesEditionPartImpl extends Comp
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
+			public void keyReleased(KeyEvent e) {
+				if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
 					if (propertiesEditionComponent != null)
 						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PublishEventMediatorAttributePropertiesEditionPartImpl.this, EsbViewsRepository.PublishEventMediatorAttribute.Properties.defaultValue, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, defaultValue.getText()));
 				}
@@ -648,7 +648,7 @@ public class PublishEventMediatorAttributePropertiesEditionPartImpl extends Comp
         Control attributeExpressionTextLabel = createDescription(parent,
                 EsbViewsRepository.PublishEventMediatorAttribute.Properties.attributeExpression,
                 EsbMessages.PublishEventMediatorAttributePropertiesEditionPart_AttributeExpressionLabel);
-        attributeExpressionText = SWTUtils.createScrollableText(parent, SWT.BORDER); // $NON-NLS-1$
+        attributeExpressionText = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.READ_ONLY); // $NON-NLS-1$
         attributeExpressionText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
         GridData propertyValueData = new GridData(GridData.FILL_HORIZONTAL);
         attributeExpressionText.setLayoutData(propertyValueData);

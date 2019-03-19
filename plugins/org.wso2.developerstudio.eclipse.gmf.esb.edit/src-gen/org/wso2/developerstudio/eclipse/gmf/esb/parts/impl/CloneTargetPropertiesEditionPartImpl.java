@@ -35,7 +35,6 @@ import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EMFComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
-import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
@@ -52,6 +51,7 @@ import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.KeyListener;
 import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.layout.GridData;
@@ -62,12 +62,10 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.widgets.FormToolkit;
-import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.CloneTargetPropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.developerstudio.eclipse.gmf.esb.parts.forms.CloneTargetPropertiesEditionPartForm;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
@@ -354,12 +352,16 @@ public class CloneTargetPropertiesEditionPartImpl extends CompositePropertiesEdi
 			@Override
 			@SuppressWarnings("synthetic-access")
 			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
+				
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
 					if (propertiesEditionComponent != null)
 						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CloneTargetPropertiesEditionPartImpl.this, EsbViewsRepository.CloneTarget.Properties.soapAction, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, soapAction.getText()));
 				}
 			}
-
 		});
 		EditingUtils.setID(soapAction, EsbViewsRepository.CloneTarget.Properties.soapAction);
 		EditingUtils.setEEFtype(soapAction, "eef::Text"); //$NON-NLS-1$
@@ -406,12 +408,16 @@ public class CloneTargetPropertiesEditionPartImpl extends CompositePropertiesEdi
 			@Override
 			@SuppressWarnings("synthetic-access")
 			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
+
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
 					if (propertiesEditionComponent != null)
 						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CloneTargetPropertiesEditionPartImpl.this, EsbViewsRepository.CloneTarget.Properties.toAddress, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, toAddress.getText()));
 				}
 			}
-
 		});
 		EditingUtils.setID(toAddress, EsbViewsRepository.CloneTarget.Properties.toAddress);
 		EditingUtils.setEEFtype(toAddress, "eef::Text"); //$NON-NLS-1$
@@ -736,7 +742,7 @@ public class CloneTargetPropertiesEditionPartImpl extends CompositePropertiesEdi
 	            endpointKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
 	        }
 	        String initValueExpression = endpointKey.getKeyValue().isEmpty() ? "" : endpointKey.getKeyValue();
-	        endpointKeyText = SWTUtils.createScrollableText(parent, SWT.BORDER);
+	        endpointKeyText = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.READ_ONLY);
 	        endpointKeyText.setText(initValueExpression);
             endpointKeyText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 	        GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
@@ -766,6 +772,28 @@ public class CloneTargetPropertiesEditionPartImpl extends CompositePropertiesEdi
                     
                 }
 	        });
+	        endpointKeyText.addKeyListener(new KeyListener() {
+				
+				@Override
+				public void keyReleased(KeyEvent e) {
+					if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+						EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
+		                        SWT.NULL, endpointKey, new ArrayList<NamedEntityDescriptor>());
+		                dialog.open();
+		                endpointKeyText.setText(endpointKey.getKeyValue());
+		                propertiesEditionComponent
+		                        .firePropertiesChanged(new PropertiesEditionEvent(CloneTargetPropertiesEditionPartImpl.this,
+		                                EsbViewsRepository.CloneTarget.Properties.endpointRegistryKey,
+		                                PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getEndpointKey()));
+					}
+				}
+				
+				@Override
+				public void keyPressed(KeyEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+			});
 	        EditingUtils.setID(endpointKeyText, EsbViewsRepository.AggregateMediator.OnComplete.sequenceKey);
 	        EditingUtils.setEEFtype(endpointKeyText, "eef::Text");
 	        Control endpointKeyHelp = SWTUtils.createHelpButton(parent,
@@ -784,7 +812,7 @@ public class CloneTargetPropertiesEditionPartImpl extends CompositePropertiesEdi
 	            sequenceKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
 	        }
 	        String initValueExpression = sequenceKey.getKeyValue().isEmpty() ? "" : sequenceKey.getKeyValue();
-	        sequenceKeyText = SWTUtils.createScrollableText(parent, SWT.BORDER);
+	        sequenceKeyText = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.READ_ONLY);
 	        sequenceKeyText.setText(initValueExpression);
 	        sequenceKeyText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 	        GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
@@ -815,6 +843,28 @@ public class CloneTargetPropertiesEditionPartImpl extends CompositePropertiesEdi
                     
                 }
 	        });
+	        sequenceKeyText.addKeyListener(new KeyListener() {
+				
+				@Override
+				public void keyReleased(KeyEvent e) {
+					if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+						EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
+		                        SWT.NULL, sequenceKey, new ArrayList<NamedEntityDescriptor>());
+		                dialog.open();
+		                sequenceKeyText.setText(sequenceKey.getKeyValue());
+		                propertiesEditionComponent
+		                        .firePropertiesChanged(new PropertiesEditionEvent(CloneTargetPropertiesEditionPartImpl.this,
+		                                EsbViewsRepository.CloneTarget.Properties.sequenceRegistryKey,
+		                                PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getSequenceKey()));
+					}
+				}
+				
+				@Override
+				public void keyPressed(KeyEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+			});
 	        EditingUtils.setID(sequenceKeyText, EsbViewsRepository.AggregateMediator.OnComplete.sequenceKey);
 	        EditingUtils.setEEFtype(sequenceKeyText, "eef::Text");
 	        Control sequenceKeyHelp = SWTUtils.createHelpButton(parent,

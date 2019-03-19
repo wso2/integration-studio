@@ -142,6 +142,7 @@ public class CallTemplateMediatorPropertiesEditionPartForm extends SectionProper
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		CompositionSequence callTemplateMediatorStep = new BindingCompositionSequence(propertiesEditionComponent);
 		CompositionStep propertiesStep = callTemplateMediatorStep.addStep(EsbViewsRepository.CallTemplateMediator.Properties.class);
+		// Start of user code
 		propertiesStep.addStep(EsbViewsRepository.CallTemplateMediator.Properties.commentsList);
 		propertiesStep.addStep(EsbViewsRepository.CallTemplateMediator.Properties.reverse);
 		propertiesStep.addStep(EsbViewsRepository.CallTemplateMediator.Properties.availableTemplates);
@@ -174,6 +175,7 @@ public class CallTemplateMediatorPropertiesEditionPartForm extends SectionProper
 				if (key == EsbViewsRepository.CallTemplateMediator.Properties.description) {
 					return createDescriptionText(widgetFactory, parent);
 				}
+				// End of user code
 				return parent;
 			}
 		};

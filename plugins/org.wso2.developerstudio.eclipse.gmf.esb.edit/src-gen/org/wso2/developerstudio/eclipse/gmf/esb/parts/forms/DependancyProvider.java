@@ -176,23 +176,23 @@ public class DependancyProvider extends Dialog {
 		form.getBody().setForeground(new Color(display, 0, 0, 0));
 
 		GridData gridData = new GridData();
-		Composite client = new Composite(form.getBody(), SWT.BORDER);
-		GridLayout gLayout = new GridLayout(9, false);
-		gLayout.horizontalSpacing = -3;
-		client.setLayout(gLayout);
+		Composite composite = new Composite(form.getBody(), SWT.BORDER);
+		GridLayout gridLayout = new GridLayout(9, false);
+		gridLayout.horizontalSpacing = -3;
+		composite.setLayout(gridLayout);
 
-		Label connectionLabel = new Label(client, SWT.NONE);
+		Label connectionLabel = new Label(composite, SWT.NONE);
 		connectionLabel.setText("Connection Type: ");
 		gridData = new GridData();
 		gridData.widthHint = 150;
 		connectionLabel.setLayoutData(gridData);
 
-		lblConnectionValidate = new Label(client, SWT.NONE);
+		lblConnectionValidate = new Label(composite, SWT.NONE);
 		gridData = new GridData();
 		gridData.widthHint = 15;
 		lblConnectionValidate.setLayoutData(gridData);
 
-		connectiontype = new Combo(client, SWT.READ_ONLY);
+		connectiontype = new Combo(composite, SWT.READ_ONLY);
 		connectiontype.setItems(databaseArr);
 		connectiontype.setText("Select Connection Type");
 		gridData = new GridData();
@@ -201,16 +201,16 @@ public class DependancyProvider extends Dialog {
 		gridData.grabExcessHorizontalSpace = true;
 		connectiontype.setLayoutData(gridData);
 
-		Label versionLabel = new Label(client, SWT.NONE);
+		Label versionLabel = new Label(composite, SWT.NONE);
 		versionLabel.setText("Verison:");
 		gridData = new GridData();
 		versionLabel.setLayoutData(gridData);
-		lblVersionValidate = new Label(client, SWT.NONE);
+		lblVersionValidate = new Label(composite, SWT.NONE);
 		gridData = new GridData();
 		gridData.widthHint = 15;
 		lblVersionValidate.setLayoutData(gridData);
 
-		version = new Combo(client, SWT.READ_ONLY);
+		version = new Combo(composite, SWT.READ_ONLY);
 		version.setItems(new String[] { "Select Version" });
 
 		gridData = new GridData();
@@ -219,17 +219,17 @@ public class DependancyProvider extends Dialog {
 		gridData.grabExcessHorizontalSpace = true;
 		version.setLayoutData(gridData);
 
-		Label browseLabel = new Label(client, SWT.NONE);
+		Label browseLabel = new Label(composite, SWT.NONE);
 		browseLabel.setText("Browse:");
 		gridData = new GridData();
 		browseLabel.setLayoutData(gridData);
 
-		lblBrowseValidate = new Label(client, SWT.NONE);
+		lblBrowseValidate = new Label(composite, SWT.NONE);
 		gridData = new GridData();
 		gridData.widthHint = 15;
 		lblBrowseValidate.setLayoutData(gridData);
 
-		jarLocationText = new Text(client, SWT.BORDER);
+		jarLocationText = new Text(composite, SWT.BORDER);
 		jarLocationText.setText("");
 		gridData = new GridData();
 		gridData.horizontalSpan = 6;
@@ -238,12 +238,12 @@ public class DependancyProvider extends Dialog {
 		gridData.minimumWidth = 485;
 		jarLocationText.setLayoutData(gridData);
 
-		Button btnLocate = new Button(client, SWT.NULL);
+		Button btnLocate = new Button(composite, SWT.NULL);
 		btnLocate.setText("...");
 		gridData = new GridData();
 		btnLocate.setLayoutData(gridData);
 
-		btnDownload = new Button(client, SWT.NULL);
+		btnDownload = new Button(composite, SWT.NULL);
 		btnDownload.setText("Download");
 		btnDownload.setLocation(new Point(400, 0));
 		gridData = new GridData();
@@ -251,18 +251,18 @@ public class DependancyProvider extends Dialog {
 		gridData.horizontalAlignment = SWT.END;
 		btnDownload.setLayoutData(gridData);
 
-		Composite client2 = new Composite(form.getBody(), SWT.BORDER);
-		GridLayout gd = new GridLayout(2, false);
-		gd.marginLeft = 5;
-		gd.marginBottom = 10;
-		client2.setLayout(gd);
+		composite = new Composite(form.getBody(), SWT.BORDER);
+		gridLayout = new GridLayout(2, false);
+		gridLayout.marginLeft = 5;
+		gridLayout.marginBottom = 10;
+		composite.setLayout(gridLayout);
 
-		Group outerGroup = new Group(client2, SWT.NULL);
-		GridData gridData2 = new GridData(SWT.FILL, SWT.FILL, true, true);
+		Group outerGroup = new Group(composite, SWT.NULL);
+		gridData = new GridData(SWT.FILL, SWT.FILL, true, true);
 
-		outerGroup.setLayoutData(gridData2);
+		outerGroup.setLayoutData(gridData);
 
-		GridLayout gridLayout = new GridLayout(3, false);
+		gridLayout = new GridLayout(3, false);
 		gridLayout.marginRight = -3;
 		gridLayout.marginBottom = 5;
 		outerGroup.setLayout(gridLayout);
@@ -353,28 +353,28 @@ public class DependancyProvider extends Dialog {
 		databaseText.setLayoutData(gridData);
 		databaseText.setText("");
 
-		Composite client3 = new Composite(form.getBody(), SWT.APPLICATION_MODAL);
-		GridLayout gridd = new GridLayout(3, false);
-		gridd.horizontalSpacing = 1;
-		gridd.marginLeft = 390;
-		gridd.marginRight = -5;
-		client3.setLayout(gridd);
-		client3.setBackground(new Color(display, 237, 237, 237));
+		composite = new Composite(form.getBody(), SWT.APPLICATION_MODAL);
+		gridLayout = new GridLayout(3, false);
+		gridLayout.horizontalSpacing = 1;
+		gridLayout.marginLeft = 390;
+		gridLayout.marginRight = -5;
+		composite.setLayout(gridLayout);
+		composite.setBackground(new Color(display, 237, 237, 237));
 
-		GridData gridData3 = new GridData(GridData.END, GridData.END, false, false);
-		Button testConnectionBtn = new Button(client3, SWT.NULL);
+		gridData = new GridData(GridData.END, GridData.END, false, false);
+		Button testConnectionBtn = new Button(composite, SWT.NULL);
 		testConnectionBtn.setText("Test Connection");
-		testConnectionBtn.setLayoutData(gridData3);
+		testConnectionBtn.setLayoutData(gridData);
 
-		Button okBtn = new Button(client3, SWT.NULL);
+		Button okBtn = new Button(composite, SWT.NULL);
 		okBtn.setText("  Save  ");
-		gridData3 = new GridData(GridData.END, GridData.END, false, false);
-		okBtn.setLayoutData(gridData3);
+		gridData = new GridData(GridData.END, GridData.END, false, false);
+		okBtn.setLayoutData(gridData);
 
-		Button cancelBtn = new Button(client3, SWT.NULL);
+		Button cancelBtn = new Button(composite, SWT.NULL);
 		cancelBtn.setText("Cancel");
-		gridData3 = new GridData(GridData.END, GridData.END, false, false);
-		cancelBtn.setLayoutData(gridData3);
+		gridData = new GridData(GridData.END, GridData.END, false, false);
+		cancelBtn.setLayoutData(gridData);
 
 		connectiontype.addSelectionListener(new SelectionListener() {
 			public void widgetSelected(SelectionEvent e) {
@@ -447,10 +447,10 @@ public class DependancyProvider extends Dialog {
 					remove(getDownlodedJarByName(connectionObj.getDbType(), connectionObj.getVersion()));
 				}
 				jarLocationText.setText("");
-				if ((jarLocationText.getText() == null || jarLocationText.getText().equals(""))
+				if (!connectiontype.getText().equals("ORACLE") && (jarLocationText.getText() == null || jarLocationText.getText().equals(""))
 						&& !version.getText().equals("Select Version") && !version.getText().isEmpty()
 						&& version.getText() != null && !connectiontype.getText().equals("")
-						&& connectiontype.getText() != null) {
+						&& connectiontype.getText() != null ) {
 					btnDownload.setEnabled(true);
 				}
 			}
@@ -466,7 +466,7 @@ public class DependancyProvider extends Dialog {
 			/** {@inheritDoc} */
 			public void modifyText(ModifyEvent e) {
 				// Handle event
-				if (jarLocationText.getText() != null || !jarLocationText.getText().equals("")
+				if (connectiontype.getText().equals("ORACLE") || jarLocationText.getText() != null
 						|| version.getText().equals("Select Version") || version.getText().equals("")
 						|| version.getText() == null) {
 					btnDownload.setEnabled(false);
@@ -474,7 +474,7 @@ public class DependancyProvider extends Dialog {
 				if ((jarLocationText.getText() == null || jarLocationText.getText().equals(""))
 						&& !version.getText().equals("Select Version") && !version.getText().isEmpty()
 						&& version.getText() != null && !connectiontype.getText().equals("")
-						&& connectiontype.getText() != null) {
+						&& connectiontype.getText() != null && !connectiontype.getText().equals("ORACLE")) {
 					btnDownload.setEnabled(true);
 				}
 			}
@@ -501,8 +501,8 @@ public class DependancyProvider extends Dialog {
 		});
 		jarLocationText.addListener(SWT.Activate, new Listener() {
 			public void handleEvent(Event e) {
-				if (jarLocationText.getText() != null || !jarLocationText.getText().equals(" ")) {
-					btnDownload.setEnabled(false);
+				if (connectiontype.getText().equals("ORACLE")) {
+				   btnDownload.setEnabled(false);
 				}
 			}
 		});
@@ -668,9 +668,7 @@ public class DependancyProvider extends Dialog {
 
 				String fileName = file.getName().replaceAll("-", "_");
 				String pluginName = fileName.substring(0, fileName.length() - 4) + "_1.0.0.jar";
-
 				jarLocationText.setText(path);
-
 				BundleGeneratorTool bcg = new BundleGeneratorTool();
 				String p[] = { path, dependencyDir, dependencyDir };
 				bcg.execute(p);
@@ -710,12 +708,6 @@ public class DependancyProvider extends Dialog {
 	}
 
 	void remove(String path) {
-		System.out.println(path);
-		// if(Files.exists(Paths.get(path), new LinkOption[]{
-		// LinkOption.NOFOLLOW_LINKS})) {
-
-		// if(Files.notExists(Paths.get(path), new LinkOption[]{
-		// LinkOption.NOFOLLOW_LINKS})) {
 		if (path != null) {
 			File dir = new File(path);
 			if (dir.exists()) {
@@ -807,17 +799,17 @@ public class DependancyProvider extends Dialog {
 
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
-			ErrorDialog.openError(shell, "Error", "This is an error", createMultiStatus(e.getLocalizedMessage(), e));
+			ErrorDialog.openError(shell, "Error", "Error!", createMultiStatus(e.getLocalizedMessage(), e));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			ErrorDialog.openError(shell, "Error", "This is an error", createMultiStatus(e.getLocalizedMessage(), e));
+			ErrorDialog.openError(shell, "Error", "Error!", createMultiStatus(e.getLocalizedMessage(), e));
 		} catch (BundleException e) {
 			e.printStackTrace();
-			ErrorDialog.openError(shell, "Error", "This is an error", createMultiStatus(e.getLocalizedMessage(), e));
+			ErrorDialog.openError(shell, "Error", "Error!", createMultiStatus(e.getLocalizedMessage(), e));
 		} catch (Exception e) {
 			e.printStackTrace();
-			ErrorDialog.openError(shell, "Error", "This is an error", createMultiStatus(e.getLocalizedMessage(), e));
+			ErrorDialog.openError(shell, "Error", "Error!", createMultiStatus(e.getLocalizedMessage(), e));
 		} finally {
 			if (conn != null) {
 				try {

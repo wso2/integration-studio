@@ -5260,6 +5260,10 @@ public class EsbViewsRepository {
 			
 			public static String connectionUseTransaction = "esb::DBReportMediator::connection::connectionUseTransaction";
 			
+			// Start of user code for Database Configuration ElementEditor key
+			public static String databaseConfiguration = "esb::DBReportMediator::connection::Database Configuration";
+			// End of user code
+			
 	
 		}
 	

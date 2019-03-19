@@ -194,30 +194,6 @@ public class DBLookupMediatorPropertiesEditionComponent extends SinglePartProper
 			// End of user code
 			
 			// init filters
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
 			if (isAccessible(EsbViewsRepository.DBLookupMediator.Statements.sqlStatements)) {
 				basePart.addFilterToSqlStatements(new ViewerFilter() {
 					/**
@@ -243,34 +219,6 @@ public class DBLookupMediatorPropertiesEditionComponent extends SinglePartProper
 		}
 		setInitializing(false);
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 	/**
 	 * {@inheritDoc}

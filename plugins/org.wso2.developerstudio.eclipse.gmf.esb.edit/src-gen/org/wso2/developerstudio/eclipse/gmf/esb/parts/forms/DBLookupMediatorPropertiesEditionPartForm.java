@@ -82,7 +82,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.SqlExecutorConnectionType;
 import org.wso2.developerstudio.eclipse.gmf.esb.SqlExecutorDatasourceType;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.developerstudio.eclipse.gmf.esb.parts.forms.DependancyProvider.ConnectionObj;
+import org.wso2.developerstudio.eclipse.gmf.esb.parts.forms.ConnectionObj;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
 
@@ -183,7 +183,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	String version = "";
 	String jarPath = "";
 	String jdbcProtocol = "";
-	DependancyProvider dp;
+	DependencyProvider dp;
 	// End of user code
 
 	/**
@@ -226,13 +226,13 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-	 
+	// Start of user code for loading
 	    CompositionSequence dBLookupMediatorStep = new BindingCompositionSequence(propertiesEditionComponent);
 	    
-	    CompositionStep connectionStep = dBLookupMediatorStep.addStep(EsbViewsRepository.DBLookupMediator.Connection.class);
-	    connectionStep.addStep(EsbViewsRepository.DBLookupMediator.Connection.connectionType);
-	    connectionStep.addStep(EsbViewsRepository.DBLookupMediator.Connection.databaseConfiguration);
-	    connectionStep.addStep(EsbViewsRepository.DBLookupMediator.Connection.connectionDsType);
+        CompositionStep connectionStep = dBLookupMediatorStep.addStep(EsbViewsRepository.DBLookupMediator.Connection.class);
+        connectionStep.addStep(EsbViewsRepository.DBLookupMediator.Connection.connectionType);
+        connectionStep.addStep(EsbViewsRepository.DBLookupMediator.Connection.databaseConfiguration);
+        connectionStep.addStep(EsbViewsRepository.DBLookupMediator.Connection.connectionDsType);
         connectionStep.addStep(EsbViewsRepository.DBLookupMediator.Connection.connectionDsInitialContext);
         connectionStep.addStep(EsbViewsRepository.DBLookupMediator.Connection.connectionDbType);
         connectionStep.addStep(EsbViewsRepository.DBLookupMediator.Connection.connectionDbDriver);
@@ -363,10 +363,10 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 				return parent;
 			}
 		};
-	 
+	// End of user code
 		composer.compose(view);
 	}
-	
+
 	/**
      * @generated NOT
      */
@@ -594,109 +594,99 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 		// End of user code
 		return parent;
 	}
-	
-	
+
 	/**
      * @generated NOT
      */
+    protected Composite createDbConfiguration(FormToolkit widgetFactory, Composite parent) {
+        Control propertyInitializeLabel = createDescription(parent,
+                EsbViewsRepository.DBLookupMediator.Connection.databaseConfiguration,
+                EsbMessages.DBLookupMediatorPropertiesEditionPart_DatabaseConfigurationLabel);
+        dependencyProvider = new Button(parent, SWT.NULL);
 
-	protected Composite createDbConfiguration(FormToolkit widgetFactory, Composite parent) {
-		Control propertyInitializeLabel = createDescription(parent,
-				EsbViewsRepository.DBLookupMediator.Connection.databaseConfiguration,
-				EsbMessages.DBLookupMediatorPropertiesEditionPart_DatabaseConfigurationLabel);
-		dependencyProvider = new Button(parent, SWT.NULL);
+        GridData dependencyProviderData = new GridData();
+        dependencyProvider.setText("Configure");
+        dependencyProviderData.grabExcessHorizontalSpace = false;
+        dependencyProvider.setLayoutData(dependencyProviderData);
+        dependencyProvider.addListener(SWT.Selection, new Listener() {
 
-		GridData dependencyProviderData = new GridData();
-		dependencyProvider.setText("Configure");
-		dependencyProviderData.grabExcessHorizontalSpace = false;
-		// dependencyProviderData.horizontalAlignment = SWT.BEGINNING;
-		dependencyProvider.setLayoutData(dependencyProviderData);
+            @Override
+            public void handleEvent(org.eclipse.swt.widgets.Event event) {
+                // TODO Auto-generated method stub
+                new Thread(new Runnable() {
+                    public void run() {
+                        Display.getDefault().asyncExec(new Runnable() {
+                            public void run() {
+                                Display display = PlatformUI.getWorkbench().getDisplay();
+                                Shell shell = display.getActiveShell();
+                                dp = new DependencyProvider(shell);
+                                ConnectionObj obj = new ConnectionObj();
+                                obj.setDbDriver(getConnectionDbDriver().isEmpty() ? "" : getConnectionDbDriver());
+                                obj.setDbType(getConnectionDbType().getName().isEmpty() ? ""
+                                        : getConnectionDbType().getName());
+                                obj.setPassword(getConnectionPassword().isEmpty() ? "" : getConnectionPassword());
+                                obj.setUrl(getConnectionURL().isEmpty() ? "" : getConnectionURL());
+                                obj.setUserName(getConnectionUsername());
+                                obj.setDatabase(database);
+                                obj.setHost(host);
+                                obj.setPort(port);
+                                obj.setVersion(version);
+                                obj.setJarPath(jarPath);
+                                obj.setJdbcProtocol(jdbcProtocol);
+                                
+                                dp.open(obj);
+                                
+                                database = obj.getDatabase();
+                                port = obj.getPort();
+                                host = obj.getHost();
+                                version = obj.getVersion();
+                                jarPath = obj.getJarPath();
+                                jdbcProtocol = obj.getJdbcProtocol();
 
-		dependencyProvider.addListener(SWT.Selection, new Listener() {
+                                propertiesEditionComponent.firePropertiesChanged(
+                                        new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartForm.this,
+                                                EsbViewsRepository.DBLookupMediator.Connection.connectionDbType,
+                                                PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+                                                SqlDatabaseType.getByName(obj.getDbType())));
+                                propertiesEditionComponent.firePropertiesChanged(
+                                        new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartForm.this,
+                                                EsbViewsRepository.DBLookupMediator.Connection.connectionDbDriver,
+                                                PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+                                                obj.getDbDriver()));
+                                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                                        DBLookupMediatorPropertiesEditionPartForm.this,
+                                        EsbViewsRepository.DBLookupMediator.Connection.connectionURL,
+                                        PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, obj.getUrl()));
+                                propertiesEditionComponent.firePropertiesChanged(
+                                        new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartForm.this,
+                                                EsbViewsRepository.DBLookupMediator.Connection.connectionUsername,
+                                                PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+                                                obj.getUserName()));
+                                propertiesEditionComponent.firePropertiesChanged(
+                                        new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartForm.this,
+                                                EsbViewsRepository.DBLookupMediator.Connection.connectionPassword,
+                                                PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+                                                obj.getPassword()));
 
-			@Override
-			public void handleEvent(org.eclipse.swt.widgets.Event event) {
-				// TODO Auto-generated method stub
+                            }
+                        });
+                    }
+                }).start();
+            }
+        });
 
-				new Thread(new Runnable() {
-					public void run() {
-						Display.getDefault().asyncExec(new Runnable() {
-							public void run() {
-								Display display = PlatformUI.getWorkbench().getDisplay();
-								Shell shell = display.getActiveShell();
+        Control propertyInitializeHelp = FormUtils.createHelpButton(widgetFactory, parent,
+                propertiesEditionComponent.getHelpContent(
+                        EsbViewsRepository.DBLookupMediator.Connection.databaseConfiguration,
+                        EsbViewsRepository.FORM_KIND),
+                null); // $NON-NLS-1$
 
-								dp = new DependancyProvider(shell);// ?
-								ConnectionObj obj = dp.new ConnectionObj();
-
-								obj.setDbDriver(getConnectionDbDriver().isEmpty() ? "" : getConnectionDbDriver());
-								obj.setDbType(getConnectionDbType().getName().isEmpty() ? ""
-										: getConnectionDbType().getName());
-								obj.setPassword(getConnectionPassword().isEmpty() ? "" : getConnectionPassword());
-								obj.setUrl(getConnectionURL().isEmpty() ? "" : getConnectionURL());
-								obj.setUserName(getConnectionUsername());
-								obj.setDatabase(database);
-								obj.setHost(host);
-								obj.setPort(port);
-								obj.setVersion(version);
-								obj.setJarPath(jarPath);
-								obj.setJdbcProtocol(jdbcProtocol);
-								dp.open(obj);
-								System.out.println("gdsdfsdsfsfs"+obj.toString());
-								database = obj.getDatabase();
-								port = obj.getPort();
-								host = obj.getHost();
-								version = obj.getVersion();
-								jarPath =obj.getJarPath();
-								jdbcProtocol = obj.getJdbcProtocol();
-					 
-								propertiesEditionComponent.firePropertiesChanged(
-										new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartForm.this,
-												EsbViewsRepository.DBLookupMediator.Connection.connectionDbType,
-												PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
-												SqlDatabaseType.getByName(obj.getDbType())));
-								propertiesEditionComponent.firePropertiesChanged(
-										new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartForm.this,
-												EsbViewsRepository.DBLookupMediator.Connection.connectionDbDriver,
-												PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
-												obj.getDbDriver()));
-								propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
-										DBLookupMediatorPropertiesEditionPartForm.this,
-										EsbViewsRepository.DBLookupMediator.Connection.connectionURL,
-										PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, obj.getUrl()));
-								propertiesEditionComponent.firePropertiesChanged(
-										new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartForm.this,
-												EsbViewsRepository.DBLookupMediator.Connection.connectionUsername,
-												PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
-												obj.getUserName()));
-								propertiesEditionComponent.firePropertiesChanged(
-										new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartForm.this,
-												EsbViewsRepository.DBLookupMediator.Connection.connectionPassword,
-												PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
-												obj.getPassword()));
-
-							}
-						});
-					}
-				}).start();
-
-				// db driver
-
-			}
-
-		});
-
-		Control propertyInitializeHelp = FormUtils.createHelpButton(widgetFactory, parent,
-				propertiesEditionComponent.getHelpContent(
-						EsbViewsRepository.DBLookupMediator.Connection.databaseConfiguration,
-						EsbViewsRepository.FORM_KIND),
-				null); // $NON-NLS-1$
-
-		// Start of user code for createDependencyProviderEMFComboViewer
-		connectionDbConfiguration = new Control[] { propertyInitializeLabel, dependencyProvider,
-				propertyInitializeHelp };
-		// End of user code
-		return parent;
-	}
+        // Start of user code for createDependencyProviderEMFComboViewer
+        connectionDbConfiguration = new Control[] { propertyInitializeLabel, dependencyProvider,
+                propertyInitializeHelp };
+        // End of user code
+        return parent;
+    }
 
 
 	/**
@@ -1474,9 +1464,9 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 			 * 	
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
-//				if (propertiesEditionComponent != null)
-//					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartForm.this, EsbViewsRepository.DBLookupMediator.Connection.connectionDbType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getConnectionDbType()));
-//				fillDbConnectionDefaultValues();
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartForm.this, EsbViewsRepository.DBLookupMediator.Connection.connectionDbType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getConnectionDbType()));
+				fillDbConnectionDefaultValues();
 			}
 
 		});
@@ -2476,7 +2466,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setDescription(String newValue)
 	 * 
 	 */
-	public void  setDescription(String newValue) {
+	public void setDescription(String newValue) {
 		if (newValue != null) {
 			description.setText(newValue);
 		} else {

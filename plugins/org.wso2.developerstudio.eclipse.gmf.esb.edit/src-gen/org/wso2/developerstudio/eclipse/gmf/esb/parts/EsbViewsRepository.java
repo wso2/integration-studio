@@ -2131,7 +2131,7 @@ public class EsbViewsRepository {
 			public static String sourceProperty = "esb::EnrichMediator::Source::sourceProperty";
 			
 			// Start of user code for sourceXPath ElementEditor key
-			public static String sourceXPath = "esb::RuleMediator::source::sourceXPath";
+			public static String sourceXPath = "esb::EnrichMediator::source::sourceXPath";
 			// End of user code
 			
 			// Start of user code for inlineRegistryKey ElementEditor key

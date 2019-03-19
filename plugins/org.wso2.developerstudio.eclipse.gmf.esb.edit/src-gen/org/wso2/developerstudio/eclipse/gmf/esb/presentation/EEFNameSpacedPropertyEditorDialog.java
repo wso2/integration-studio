@@ -28,6 +28,7 @@ import org.eclipse.swt.custom.LineStyleListener;
 import org.eclipse.swt.custom.ST;
 import org.eclipse.swt.custom.StyleRange;
 import org.eclipse.swt.custom.StyledText;
+import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.KeyListener;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
@@ -753,6 +754,27 @@ public class EEFNameSpacedPropertyEditorDialog extends Dialog {
             xPathTextField.setLayoutData(xpathTextFieldLayoutData);
         }
         
+        xPathTextField.addKeyListener(new KeyListener() {
+            @Override
+            public void keyReleased(KeyEvent e) {
+            }
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.keyCode == SWT.CR) {
+                    if (EEFXpathValidator.isValidConfiguration(dialogShell, xPathTextField.getText(),
+                            collectedNamespaces)) {
+                        try {
+                            saveConfiguration();
+                            setSaved(true);
+                        } catch (Exception ex) {
+                            log.error("Error while saving namespace property", ex);
+                        }
+                        dialogShell.dispose();
+                    }
+                }
+            }
+        });
+ 
         Label outputLabel = new Label(dialogShell, SWT.NONE);
         {
             outputLabel.setText(OUTPUT_LABEL_TEXT);

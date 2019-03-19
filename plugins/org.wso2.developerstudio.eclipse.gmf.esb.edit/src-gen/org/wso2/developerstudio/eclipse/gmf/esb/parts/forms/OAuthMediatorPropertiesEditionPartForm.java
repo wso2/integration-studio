@@ -79,6 +79,8 @@ public class OAuthMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
     protected Control[] reverseElements;
     protected Control[] commentListElements;
     protected Composite propertiesGroup;
+    
+    protected Composite filterCredentialsSubPropertiesGroup;
 
 
 	/**
@@ -98,19 +100,20 @@ public class OAuthMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
+	 * @generated NOT
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
 	 * 
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
-		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
-		Form form = scrolledForm.getForm();
+		Form form = widgetFactory.createForm(parent);
 		view = form.getBody();
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
 		createControls(widgetFactory, view);
-		return scrolledForm;
+		return form;
 	}
 
 	/**
@@ -123,13 +126,12 @@ public class OAuthMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		CompositionSequence oAuthMediatorStep = new BindingCompositionSequence(propertiesEditionComponent);
 		CompositionStep propertiesStep = oAuthMediatorStep.addStep(EsbViewsRepository.OAuthMediator.Properties.class);
-		propertiesStep.addStep(EsbViewsRepository.OAuthMediator.Properties.description);
 		propertiesStep.addStep(EsbViewsRepository.OAuthMediator.Properties.commentsList);
 		propertiesStep.addStep(EsbViewsRepository.OAuthMediator.Properties.reverse);
 		propertiesStep.addStep(EsbViewsRepository.OAuthMediator.Properties.remoteServiceUrl);
 		propertiesStep.addStep(EsbViewsRepository.OAuthMediator.Properties.username);
 		propertiesStep.addStep(EsbViewsRepository.OAuthMediator.Properties.password);
-		
+        propertiesStep.addStep(EsbViewsRepository.OAuthMediator.Properties.description);
 		
 		composer = new PartComposer(oAuthMediatorStep) {
 
@@ -154,7 +156,7 @@ public class OAuthMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
 					return createUsernameText(widgetFactory, parent);
 				}
 				if (key == EsbViewsRepository.OAuthMediator.Properties.password) {
-					return createPasswordText(widgetFactory, parent);
+					return createPasswordText(widgetFactory, filterCredentialsSubPropertiesGroup);
 				}
 				return parent;
 			}
@@ -397,10 +399,11 @@ public class OAuthMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
 
 	
 	protected Composite createUsernameText(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EsbViewsRepository.OAuthMediator.Properties.username, EsbMessages.OAuthMediatorPropertiesEditionPart_UsernameLabel);
-		username = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+	    filterCredentialsSubPropertiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent, "Credentials", true);
+		createDescription(filterCredentialsSubPropertiesGroup, EsbViewsRepository.OAuthMediator.Properties.username, EsbMessages.OAuthMediatorPropertiesEditionPart_UsernameLabel);
+		username = widgetFactory.createText(filterCredentialsSubPropertiesGroup, ""); //$NON-NLS-1$
 		username.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
-		widgetFactory.paintBordersFor(parent);
+		widgetFactory.paintBordersFor(filterCredentialsSubPropertiesGroup);
 		GridData usernameData = new GridData(GridData.FILL_HORIZONTAL);
 		username.setLayoutData(usernameData);
 		username.addFocusListener(new FocusAdapter() {
@@ -456,7 +459,7 @@ public class OAuthMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
 		});
 		EditingUtils.setID(username, EsbViewsRepository.OAuthMediator.Properties.username);
 		EditingUtils.setEEFtype(username, "eef::Text"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.OAuthMediator.Properties.username, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, filterCredentialsSubPropertiesGroup, propertiesEditionComponent.getHelpContent(EsbViewsRepository.OAuthMediator.Properties.username, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createUsernameText
 
 		// End of user code

@@ -124,7 +124,8 @@ public class CloneMediatorTransformer extends AbstractEsbNodeTransformer {
                     target.setToAddress(null);
                 }
 
-                if (visualTarget.getSequenceType().equals(TargetSequenceType.ANONYMOUS)) { // handle if target sequence
+                if (visualTarget.getSequenceType().equals(TargetSequenceType.ANONYMOUS) 
+                		&& visualClone.getTargetsOutputConnector().size() -1 >= i) { // handle if target sequence
                                                                                            // type anonymous.
 
                     CloneMediatorTargetOutputConnector outputConnector = visualClone.getTargetsOutputConnector().get(i);
@@ -151,7 +152,8 @@ public class CloneMediatorTransformer extends AbstractEsbNodeTransformer {
                     target.setSequenceRef(visualTarget.getSequenceKey().getKeyValue());
                 }
 
-                if (visualTarget.getEndpointType().equals(TargetEndpointType.ANONYMOUS)) {
+                if (visualTarget.getEndpointType().equals(TargetEndpointType.ANONYMOUS) 
+                		&& visualClone.getTargetsOutputConnector().size() -1 >= i) {
 
                     EObject endpoint = null;
                     CloneMediatorTargetOutputConnector outputConnector = visualClone.getTargetsOutputConnector().get(i);

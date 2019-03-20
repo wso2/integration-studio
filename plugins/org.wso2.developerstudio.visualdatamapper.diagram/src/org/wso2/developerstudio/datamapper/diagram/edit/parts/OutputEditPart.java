@@ -145,9 +145,7 @@ public class OutputEditPart extends ShapeNodeEditPart {
 
 	public void resetOutputTreeFromFile(String filePath) {
 		Figure fig = (Figure) primaryShape;
-		if (fig.getChildren() != null && !fig.getChildren().isEmpty()) {
-			fig.remove((IFigure) fig.getChildren().get(0));
-		}
+
 		EObject parentContainer = ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) (this).getModel()).getElement();
 		Output iip = (Output) parentContainer;
 
@@ -155,6 +153,10 @@ public class OutputEditPart extends ShapeNodeEditPart {
 		if (deleteComand.canExecute()) {
 			getEditingDomain().getCommandStack().execute(deleteComand);
 		}
+
+	    if (fig.getChildren() != null && !fig.getChildren().isEmpty()) {
+	            fig.remove((IFigure) fig.getChildren().get(0));
+	    }
 
 		outputRootTreeNode = DataMapperFactory.eINSTANCE.createTreeNode();
 		ISchemaTransformer schemaTransformer;

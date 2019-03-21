@@ -44,6 +44,16 @@ public class PayloadFactoryMediatorDeserializer
         setElementToEdit(visualPayloadFactoryMediator);
         setCommonProperties(payloadFactoryMediator, visualPayloadFactoryMediator);
 
+        if (payloadFactoryMediator.getType() != null) {
+            if (payloadFactoryMediator.getType().equals(XML_LITERAL)) {
+                executeSetValueCommand(PAYLOAD_FACTORY_MEDIATOR__MEDIA_TYPE, MediaType.XML);
+            } else if (payloadFactoryMediator.getType().equals(JSON_LITERAL)) {
+                executeSetValueCommand(PAYLOAD_FACTORY_MEDIATOR__MEDIA_TYPE, MediaType.JSON);
+            } else if (payloadFactoryMediator.getType().equals(TEXT_LITERAL)) {
+                executeSetValueCommand(PAYLOAD_FACTORY_MEDIATOR__MEDIA_TYPE, MediaType.TEXT);
+            }
+        }
+        
         if (payloadFactoryMediator.getFormatKey() != null) {
             executeSetValueCommand(PAYLOAD_FACTORY_MEDIATOR__PAYLOAD_FORMAT, PayloadFormatType.REGISTRY_REFERENCE);
             RegistryKeyProperty payloadFormatKey = EsbFactory.eINSTANCE.createRegistryKeyProperty();
@@ -54,16 +64,6 @@ public class PayloadFactoryMediatorDeserializer
         } else {
             executeSetValueCommand(PAYLOAD_FACTORY_MEDIATOR__PAYLOAD_FORMAT, PayloadFormatType.INLINE);
             executeSetValueCommand(PAYLOAD_FACTORY_MEDIATOR__PAYLOAD, payloadFactoryMediator.getFormat());
-        }
-
-        if (payloadFactoryMediator.getType() != null) {
-            if (payloadFactoryMediator.getType().equals(XML_LITERAL)) {
-                executeSetValueCommand(PAYLOAD_FACTORY_MEDIATOR__MEDIA_TYPE, MediaType.XML);
-            } else if (payloadFactoryMediator.getType().equals(JSON_LITERAL)) {
-                executeSetValueCommand(PAYLOAD_FACTORY_MEDIATOR__MEDIA_TYPE, MediaType.JSON);
-            } else if (payloadFactoryMediator.getType().equals(TEXT_LITERAL)) {
-                executeSetValueCommand(PAYLOAD_FACTORY_MEDIATOR__MEDIA_TYPE, MediaType.TEXT);
-            }
         }
 
         EList<PayloadFactoryArgument> arguments = new BasicEList<PayloadFactoryArgument>();

@@ -95,8 +95,7 @@ public class URLRewriteMediatorPropertiesEditionPartForm extends SectionProperti
     protected Control[] commentsElements;
     protected Control[] reverseElements;
     protected Composite propertiesGroup;
-
-
+    protected Composite filterInOutSubPropertiesGroup;
 
 	/**
 	 * For {@link ISection} use only.
@@ -120,14 +119,13 @@ public class URLRewriteMediatorPropertiesEditionPartForm extends SectionProperti
 	 * 
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
-		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
-		Form form = scrolledForm.getForm();
+		Form form = widgetFactory.createForm(parent);
 		view = form.getBody();
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
 		createControls(widgetFactory, view);
-		return scrolledForm;
+		return form;
 	}
 
 	/**
@@ -140,13 +138,12 @@ public class URLRewriteMediatorPropertiesEditionPartForm extends SectionProperti
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		CompositionSequence uRLRewriteMediatorStep = new BindingCompositionSequence(propertiesEditionComponent);
 		CompositionStep propertiesStep = uRLRewriteMediatorStep.addStep(EsbViewsRepository.URLRewriteMediator.Properties.class);
-		propertiesStep.addStep(EsbViewsRepository.URLRewriteMediator.Properties.description);
 		propertiesStep.addStep(EsbViewsRepository.URLRewriteMediator.Properties.commentsList);
 		propertiesStep.addStep(EsbViewsRepository.URLRewriteMediator.Properties.reverse);
 		propertiesStep.addStep(EsbViewsRepository.URLRewriteMediator.Properties.urlRewriteRules);
 		propertiesStep.addStep(EsbViewsRepository.URLRewriteMediator.Properties.inProperty);
 		propertiesStep.addStep(EsbViewsRepository.URLRewriteMediator.Properties.outProperty);
-		
+        propertiesStep.addStep(EsbViewsRepository.URLRewriteMediator.Properties.description);
 		
 		composer = new PartComposer(uRLRewriteMediatorStep) {
 
@@ -171,7 +168,7 @@ public class URLRewriteMediatorPropertiesEditionPartForm extends SectionProperti
 					return createInPropertyText(widgetFactory, parent);
 				}
 				if (key == EsbViewsRepository.URLRewriteMediator.Properties.outProperty) {
-					return createOutPropertyText(widgetFactory, parent);
+					return createOutPropertyText(widgetFactory, filterInOutSubPropertiesGroup);
 				}
 				return parent;
 			}
@@ -395,10 +392,11 @@ public class URLRewriteMediatorPropertiesEditionPartForm extends SectionProperti
 
 	
 	protected Composite createInPropertyText(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EsbViewsRepository.URLRewriteMediator.Properties.inProperty, EsbMessages.URLRewriteMediatorPropertiesEditionPart_InPropertyLabel);
-		inProperty = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+	    filterInOutSubPropertiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent, "In-Out Properties", true);
+		createDescription(filterInOutSubPropertiesGroup, EsbViewsRepository.URLRewriteMediator.Properties.inProperty, EsbMessages.URLRewriteMediatorPropertiesEditionPart_InPropertyLabel);
+		inProperty = widgetFactory.createText(filterInOutSubPropertiesGroup, ""); //$NON-NLS-1$
 		inProperty.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
-		widgetFactory.paintBordersFor(parent);
+		widgetFactory.paintBordersFor(filterInOutSubPropertiesGroup);
 		GridData inPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		inProperty.setLayoutData(inPropertyData);
 		inProperty.addFocusListener(new FocusAdapter() {
@@ -454,7 +452,7 @@ public class URLRewriteMediatorPropertiesEditionPartForm extends SectionProperti
 		});
 		EditingUtils.setID(inProperty, EsbViewsRepository.URLRewriteMediator.Properties.inProperty);
 		EditingUtils.setEEFtype(inProperty, "eef::Text"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.URLRewriteMediator.Properties.inProperty, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, filterInOutSubPropertiesGroup, propertiesEditionComponent.getHelpContent(EsbViewsRepository.URLRewriteMediator.Properties.inProperty, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createInPropertyText
 
 		// End of user code

@@ -44,6 +44,8 @@ public class CacheMediatorExtFactory extends CacheMediatorFactory {
     private static final QName IMPLEMENTATION_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "implementation");
     private static final QName PROTOCOL_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "protocol");
     private static final long DEFAULT_TIMEOUT = 5000L;
+    private static final QName ATT_SCOPE = new QName("scope");
+    private static final QName ATT_HASH_GENERATOR = new QName("hashGenerator");
 
     public Mediator createSpecificMediator(OMElement elem, Properties properties) {
 
@@ -53,6 +55,11 @@ public class CacheMediatorExtFactory extends CacheMediatorFactory {
         if (collectorAttr != null && collectorAttr.getAttributeValue() != null
                 && "true".equals(collectorAttr.getAttributeValue())) {
             cacheMediator.setCollector(true);
+            OMAttribute scopeAttribute = elem.getAttribute(ATT_SCOPE);
+            if (scopeAttribute != null && scopeAttribute.getAttributeValue() != null) {
+                cacheMediator.setScope(scopeAttribute.getAttributeValue().trim());
+                cacheMediator.setPreviousCacheImplementation(true);
+            }
 
         } else {
             cacheMediator.setCollector(false);
@@ -68,7 +75,26 @@ public class CacheMediatorExtFactory extends CacheMediatorFactory {
                 cacheMediator.setMaxMessageSize(Integer.parseInt(maxMessageSizeAttr.getAttributeValue()));
             }
 
-            for (Iterator itr = elem.getChildrenWithName(PROTOCOL_Q); itr.hasNext();) {
+            OMAttribute idAttribute = elem.getAttribute(ATT_ID);
+            if (idAttribute != null && idAttribute.getAttributeValue() != null) {
+                cacheMediator.setId(idAttribute.getAttributeValue().trim());
+            }
+
+            OMAttribute hashGeneratorAttribute = elem.getAttribute(ATT_HASH_GENERATOR);
+            if (hashGeneratorAttribute != null && hashGeneratorAttribute.getAttributeValue() != null) {
+                cacheMediator.setHashGenerator(hashGeneratorAttribute.getAttributeValue().trim());
+            }
+
+            OMAttribute scopeAttribute = elem.getAttribute(ATT_SCOPE);
+            if (scopeAttribute != null && scopeAttribute.getAttributeValue() != null) {
+                cacheMediator.setScope(scopeAttribute.getAttributeValue().trim());
+            }
+
+            Iterator protocolElements = elem.getChildrenWithName(PROTOCOL_Q);
+            if (!protocolElements.hasNext()) {
+                cacheMediator.setPreviousCacheImplementation(true);
+            }
+            for (Iterator itr = protocolElements; itr.hasNext();) {
                 OMElement implElem = (OMElement) itr.next();
                 OMAttribute typeAttr = implElem.getAttribute(ATT_TYPE);
                 if (typeAttr != null && typeAttr.getAttributeValue() != null) {
@@ -147,6 +173,10 @@ public class CacheMediatorExtFactory extends CacheMediatorFactory {
                     cacheMediator.setInMemoryCacheSize(Integer.parseInt(sizeAttr.getAttributeValue()));
                 } else {
                     cacheMediator.setInMemoryCacheSize(-1);
+                }
+                OMAttribute typeAttribute = implElem.getAttribute(ATT_TYPE);
+                if (typeAttribute != null && typeAttribute.getAttributeValue() != null) {
+                    cacheMediator.setImplementationType(typeAttribute.getAttributeValue().trim());
                 }
             }
         }

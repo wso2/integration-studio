@@ -3,7 +3,6 @@ package org.wso2.developerstudio.datamapper.diagram.custom.perspective;
 import org.eclipse.ui.IFolderLayout;
 import org.eclipse.ui.IPageLayout;
 import org.eclipse.ui.IPerspectiveFactory;
-import org.eclipse.ui.IPlaceholderFolderLayout;
 
 public class EsbDataMapperEditorPerspective implements IPerspectiveFactory {
 

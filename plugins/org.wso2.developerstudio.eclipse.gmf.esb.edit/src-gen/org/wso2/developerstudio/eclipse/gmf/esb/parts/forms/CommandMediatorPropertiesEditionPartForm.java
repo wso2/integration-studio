@@ -138,12 +138,11 @@ public class CommandMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		CompositionSequence commandMediatorStep = new BindingCompositionSequence(propertiesEditionComponent);
 		CompositionStep propertiesStep = commandMediatorStep.addStep(EsbViewsRepository.CommandMediator.Properties.class);
-		propertiesStep.addStep(EsbViewsRepository.CommandMediator.Properties.description);
 		propertiesStep.addStep(EsbViewsRepository.CommandMediator.Properties.commentsList);
 		propertiesStep.addStep(EsbViewsRepository.CommandMediator.Properties.reverse);
 		propertiesStep.addStep(EsbViewsRepository.CommandMediator.Properties.className);
 		propertiesStep.addStep(EsbViewsRepository.CommandMediator.Properties.properties_);
-		
+        propertiesStep.addStep(EsbViewsRepository.CommandMediator.Properties.description);
 		
 		composer = new PartComposer(commandMediatorStep) {
 

@@ -160,14 +160,13 @@ public class SmooksMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	 * 
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
-		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
-		Form form = scrolledForm.getForm();
+		Form form = widgetFactory.createForm(parent);
 		view = form.getBody();
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
 		createControls(widgetFactory, view);
-		return scrolledForm;
+		return form;
 	}
 
 	/**
@@ -183,20 +182,19 @@ public class SmooksMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 		inputStep.addStep(EsbViewsRepository.SmooksMediator.Input.inputType);
 		inputStep.addStep(EsbViewsRepository.SmooksMediator.Input.inputExpresssion);
 		
+        smooksMediatorStep.addStep(EsbViewsRepository.SmooksMediator.Key.class)
+                .addStep(EsbViewsRepository.SmooksMediator.Key.configurationKey);
+		
 		CompositionStep outputStep = smooksMediatorStep.addStep(EsbViewsRepository.SmooksMediator.Output.class);
 		outputStep.addStep(EsbViewsRepository.SmooksMediator.Output.outputType);
+        outputStep.addStep(EsbViewsRepository.SmooksMediator.Output.outputMethod);
 		outputStep.addStep(EsbViewsRepository.SmooksMediator.Output.outputProperty);
 		outputStep.addStep(EsbViewsRepository.SmooksMediator.Output.outputAction);
-		outputStep.addStep(EsbViewsRepository.SmooksMediator.Output.outputMethod);
 		outputStep.addStep(EsbViewsRepository.SmooksMediator.Output.outputExpression);
 		
 		CompositionStep propertiesStep = smooksMediatorStep.addStep(EsbViewsRepository.SmooksMediator.Properties.class);
 		propertiesStep.addStep(EsbViewsRepository.SmooksMediator.Properties.commentsList);
 		propertiesStep.addStep(EsbViewsRepository.SmooksMediator.Properties.reverse);
-		
-		smooksMediatorStep
-			.addStep(EsbViewsRepository.SmooksMediator.Key.class)
-			.addStep(EsbViewsRepository.SmooksMediator.Key.configurationKey);
 		
 		smooksMediatorStep
 			.addStep(EsbViewsRepository.SmooksMediator.Misc.class)
@@ -1121,7 +1119,7 @@ public class SmooksMediatorPropertiesEditionPartForm extends SectionPropertiesEd
             configurationKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
         }
         String initconfigurationKey = configurationKey.getKeyValue().isEmpty() ? "" : configurationKey.getKeyValue();
-        configurationKeyText = widgetFactory.createText(parent, initconfigurationKey);
+        configurationKeyText = widgetFactory.createText(parent, initconfigurationKey, SWT.READ_ONLY);
         configurationKeyText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
         widgetFactory.paintBordersFor(parent);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
@@ -1151,6 +1149,28 @@ public class SmooksMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 
             }
         });
+        
+        configurationKeyText.addKeyListener(new KeyListener() {
+            
+            @Override
+            public void keyReleased(KeyEvent e) {
+                if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                    EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(parent.getShell(),
+                            SWT.NULL, configurationKey, new ArrayList<NamedEntityDescriptor>());
+                    dialog.open();
+                    configurationKeyText.setText(configurationKey.getKeyValue());
+                    propertiesEditionComponent
+                            .firePropertiesChanged(new PropertiesEditionEvent(SmooksMediatorPropertiesEditionPartForm.this,
+                                    EsbViewsRepository.SmooksMediator.Key.configurationKey, PropertiesEditionEvent.COMMIT,
+                                    PropertiesEditionEvent.SET, null, getConfigurationKey()));
+                }
+            }
+            
+            @Override
+            public void keyPressed(KeyEvent e) {}
+            
+        });
+        
         EditingUtils.setID(configurationKeyText, EsbViewsRepository.SmooksMediator.Key.configurationKey);
         EditingUtils.setEEFtype(configurationKeyText, "eef::Text");
         Control sequenceKeyHelp = FormUtils
@@ -1170,7 +1190,7 @@ public class SmooksMediatorPropertiesEditionPartForm extends SectionPropertiesEd
             inputExpression = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
         } 
         String initInputExpression = inputExpression.getPropertyValue().isEmpty() ? "" : inputExpression.getPropertyValue();
-        inputExpressionText = widgetFactory.createText(parent, initInputExpression);
+        inputExpressionText = widgetFactory.createText(parent, initInputExpression, SWT.READ_ONLY);
         inputExpressionText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
         widgetFactory.paintBordersFor(parent);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
@@ -1194,18 +1214,20 @@ public class SmooksMediatorPropertiesEditionPartForm extends SectionPropertiesEd
         inputExpressionText.addKeyListener(new KeyListener() {
                         
             @Override
-            public void keyPressed(KeyEvent e) {
-                EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL,
-                        inputExpression);
-                inputExpression = nspd.open();
-                inputExpressionText.setText(inputExpression.getPropertyValue());
-                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
-                        SmooksMediatorPropertiesEditionPartForm.this, EsbViewsRepository.SmooksMediator.Input.inputExpresssion,
-                        PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getInputExpression()));
+            public void keyReleased(KeyEvent e) {
+                if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                    EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL,
+                            inputExpression);
+                    inputExpression = nspd.open();
+                    inputExpressionText.setText(inputExpression.getPropertyValue());
+                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                            SmooksMediatorPropertiesEditionPartForm.this, EsbViewsRepository.SmooksMediator.Input.inputExpresssion,
+                            PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getInputExpression()));
+                }
             }
             
             @Override
-            public void keyReleased(KeyEvent e) {}
+            public void keyPressed(KeyEvent e) {}
             
         });
         
@@ -1224,7 +1246,7 @@ public class SmooksMediatorPropertiesEditionPartForm extends SectionPropertiesEd
             outputExpression = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
         } 
         String initOutputExpression = outputExpression.getPropertyValue().isEmpty() ? "" : outputExpression.getPropertyValue();
-        outputExpressionText = widgetFactory.createText(parent, initOutputExpression);
+        outputExpressionText = widgetFactory.createText(parent, initOutputExpression, SWT.READ_ONLY);
         outputExpressionText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
         widgetFactory.paintBordersFor(parent);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
@@ -1248,18 +1270,20 @@ public class SmooksMediatorPropertiesEditionPartForm extends SectionPropertiesEd
         outputExpressionText.addKeyListener(new KeyListener() {
                         
             @Override
-            public void keyPressed(KeyEvent e) {
-                EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL,
-                        outputExpression);
-                outputExpression = nspd.open();
-                outputExpressionText.setText(outputExpression.getPropertyValue());
-                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
-                        SmooksMediatorPropertiesEditionPartForm.this, EsbViewsRepository.SmooksMediator.Output.outputExpression,
-                        PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getOutputExpression()));
+            public void keyReleased(KeyEvent e) {
+                if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                    EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL,
+                            outputExpression);
+                    outputExpression = nspd.open();
+                    outputExpressionText.setText(outputExpression.getPropertyValue());
+                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                            SmooksMediatorPropertiesEditionPartForm.this, EsbViewsRepository.SmooksMediator.Output.outputExpression,
+                            PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getOutputExpression()));
+                }
             }
             
             @Override
-            public void keyReleased(KeyEvent e) {}
+            public void keyPressed(KeyEvent e) {}
             
         });
 

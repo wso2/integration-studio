@@ -114,14 +114,13 @@ public class TransactionMediatorPropertiesEditionPartForm extends SectionPropert
 	 * 
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
-		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
-		Form form = scrolledForm.getForm();
+		Form form = widgetFactory.createForm(parent);
 		view = form.getBody();
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
 		createControls(widgetFactory, view);
-		return scrolledForm;
+		return form;
 	}
 
 	/**
@@ -134,11 +133,10 @@ public class TransactionMediatorPropertiesEditionPartForm extends SectionPropert
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		CompositionSequence transactionMediatorStep = new BindingCompositionSequence(propertiesEditionComponent);
 		CompositionStep propertiesStep = transactionMediatorStep.addStep(EsbViewsRepository.TransactionMediator.Properties.class);
-		propertiesStep.addStep(EsbViewsRepository.TransactionMediator.Properties.description);
 		propertiesStep.addStep(EsbViewsRepository.TransactionMediator.Properties.commentsList);
 		propertiesStep.addStep(EsbViewsRepository.TransactionMediator.Properties.reverse);
 		propertiesStep.addStep(EsbViewsRepository.TransactionMediator.Properties.action);
-		
+        propertiesStep.addStep(EsbViewsRepository.TransactionMediator.Properties.description);
 		
 		composer = new PartComposer(transactionMediatorStep) {
 

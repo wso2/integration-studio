@@ -42,6 +42,7 @@ import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.KeyListener;
 import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.layout.GridData;
@@ -325,8 +326,8 @@ public class URLRewriteRuleActionPropertiesEditionPartImpl extends CompositeProp
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
+			public void keyReleased(KeyEvent e) {
+				if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
 					if (propertiesEditionComponent != null)
 						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(URLRewriteRuleActionPropertiesEditionPartImpl.this, EsbViewsRepository.URLRewriteRuleAction.Properties.actionValue, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, actionValue.getText()));
 				}
@@ -376,8 +377,8 @@ public class URLRewriteRuleActionPropertiesEditionPartImpl extends CompositeProp
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
+			public void keyReleased(KeyEvent e) {
+				if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
 					if (propertiesEditionComponent != null)
 						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(URLRewriteRuleActionPropertiesEditionPartImpl.this, EsbViewsRepository.URLRewriteRuleAction.Properties.actionRegex, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, actionRegex.getText()));
 				}
@@ -649,7 +650,7 @@ public class URLRewriteRuleActionPropertiesEditionPartImpl extends CompositeProp
         Control actionExpressionLabel = createDescription(parent,
                 EsbViewsRepository.URLRewriteRuleAction.Properties.actionExpression,
                 EsbMessages.URLRewriteRuleActionPropertiesEditionPart_ActionExpressionLabel);
-        actionExpressionText = SWTUtils.createScrollableText(parent, SWT.BORDER); // $NON-NLS-1$
+        actionExpressionText = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.READ_ONLY); // $NON-NLS-1$
         actionExpressionText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
         GridData propertyValueData = new GridData(GridData.FILL_HORIZONTAL);
         actionExpressionText.setLayoutData(propertyValueData);
@@ -689,24 +690,7 @@ public class URLRewriteRuleActionPropertiesEditionPartImpl extends CompositeProp
                 }
             }
         });
-        actionExpressionText.addKeyListener(new KeyAdapter() {
-            /**
-             * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-             * 
-             */
-            @Override
-            @SuppressWarnings("synthetic-access")
-            public void keyPressed(KeyEvent e) {
-                if (e.character == SWT.CR) {
-                    if (propertiesEditionComponent != null)
-                        propertiesEditionComponent.firePropertiesChanged(
-                                new PropertiesEditionEvent(URLRewriteRuleActionPropertiesEditionPartImpl.this,
-                                        EsbViewsRepository.URLRewriteRuleAction.Properties.actionExpression,
-                                        PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
-                                        getActionExpression()));
-                }
-            }
-        });
+
         EditingUtils.setID(actionExpressionText, EsbViewsRepository.URLRewriteRuleAction.Properties.actionExpression);
         EditingUtils.setEEFtype(actionExpressionText, "eef::Text"); //$NON-NLS-1$
         Control actionExpressionHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(
@@ -723,20 +707,34 @@ public class URLRewriteRuleActionPropertiesEditionPartImpl extends CompositeProp
 
             @Override
             public void mouseDown(MouseEvent e) {
-                // TODO Auto-generated method stub
                 EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
                         SWT.NULL, actionExpression);
-                // valueExpression.setPropertyValue(valueExpressionText.getText());
                 nspd.open();
                 actionExpressionText.setText(actionExpression.getPropertyValue());
-
             }
+            
             @Override
-            public void mouseDoubleClick(MouseEvent e) {
-                // TODO Auto-generated method stub
-
-            }
+            public void mouseDoubleClick(MouseEvent e) {}
+            
         });
+        
+        actionExpressionText.addKeyListener(new KeyListener() {
+            
+            @Override
+            public void keyReleased(KeyEvent e) {
+                if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                    EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
+                            SWT.NULL, actionExpression);
+                    nspd.open();
+                    actionExpressionText.setText(actionExpression.getPropertyValue());
+                }
+            }
+            
+            @Override
+            public void keyPressed(KeyEvent e) {}
+            
+        });
+        
         return parent;
     }
     

@@ -48,6 +48,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.SmooksOutputDataType;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.SmooksMediatorPropertiesEditionPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 
 
 // End of user code
@@ -395,23 +396,25 @@ public class SmooksMediatorPropertiesEditionComponent extends SinglePartProperti
 	 * 
 	 */
 	public String getHelpContent(Object key, int kind) {
-		if (key == EsbViewsRepository.SmooksMediator.Input.inputType)
-			return "Type"; //$NON-NLS-1$
-		if (key == EsbViewsRepository.SmooksMediator.Output.outputType)
-			return "Type"; //$NON-NLS-1$
-		if (key == EsbViewsRepository.SmooksMediator.Output.outputProperty)
-			return "Property"; //$NON-NLS-1$
-		if (key == EsbViewsRepository.SmooksMediator.Output.outputAction)
-			return "Action"; //$NON-NLS-1$
-		if (key == EsbViewsRepository.SmooksMediator.Output.outputMethod)
-			return "Method"; //$NON-NLS-1$
-		if (key == EsbViewsRepository.SmooksMediator.Input.inputExpresssion)
-			return "Expression"; //$NON-NLS-1$
-		if (key == EsbViewsRepository.SmooksMediator.Key.configurationKey)
-			return "Key"; //$NON-NLS-1$
-		if (key == EsbViewsRepository.SmooksMediator.Output.outputExpression)
-			return "Expression"; //$NON-NLS-1$
-		return super.getHelpContent(key, kind);
+//		if (key == EsbViewsRepository.SmooksMediator.Input.inputType)
+//			return "Type"; //$NON-NLS-1$
+//		if (key == EsbViewsRepository.SmooksMediator.Output.outputType)
+//			return "Type"; //$NON-NLS-1$
+//		if (key == EsbViewsRepository.SmooksMediator.Output.outputProperty)
+//			return "Property"; //$NON-NLS-1$
+//		if (key == EsbViewsRepository.SmooksMediator.Output.outputAction)
+//			return "Action"; //$NON-NLS-1$
+//		if (key == EsbViewsRepository.SmooksMediator.Output.outputMethod)
+//			return "Method"; //$NON-NLS-1$
+//		if (key == EsbViewsRepository.SmooksMediator.Input.inputExpresssion)
+//			return "Expression"; //$NON-NLS-1$
+//		if (key == EsbViewsRepository.SmooksMediator.Key.configurationKey)
+//			return "Key"; //$NON-NLS-1$
+//		if (key == EsbViewsRepository.SmooksMediator.Output.outputExpression)
+//			return "Expression"; //$NON-NLS-1$
+//		return super.getHelpContent(key, kind);
+		
+		return EEFPropertyViewUtil.getHelpContent(key);
 	}
 
 	/**
@@ -488,10 +491,5 @@ public class SmooksMediatorPropertiesEditionComponent extends SinglePartProperti
 		}
 		return ret;
 	}
-
-
 	
-
-	
-
 }

@@ -31,6 +31,7 @@ import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.KeyListener;
 import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.layout.GridData;
@@ -44,6 +45,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.ProxyWSDLResourcePropertiesEditionPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
 import org.wso2.developerstudio.esb.form.editors.article.providers.NamedEntityDescriptor;
@@ -173,8 +175,8 @@ public class ProxyWSDLResourcePropertiesEditionPartImpl extends CompositePropert
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
+			public void keyReleased(KeyEvent e) {
+				if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
 					if (propertiesEditionComponent != null)
 						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ProxyWSDLResourcePropertiesEditionPartImpl.this, EsbViewsRepository.ProxyWSDLResource.Properties.location, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, location.getText()));
 				}
@@ -243,8 +245,10 @@ public class ProxyWSDLResourcePropertiesEditionPartImpl extends CompositePropert
 	// Start of user code for key specific getters and setters implementation
 	@Override
     public void setKey(RegistryKeyProperty registryKeyProperty) {
-        // TODO Auto-generated method stub
-        
+        if (registryKeyProperty != null) {
+            key = registryKeyProperty;
+            keyText.setText(registryKeyProperty.getKeyValue());
+        }
     }
 
     @Override
@@ -272,7 +276,7 @@ public class ProxyWSDLResourcePropertiesEditionPartImpl extends CompositePropert
             key = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
         }
         
-        keyText = SWTUtils.createScrollableText(parent, SWT.BORDER);
+        keyText = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.READ_ONLY);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
         keyText.setLayoutData(valueData);
         keyText.addMouseListener(new MouseListener() {
@@ -300,6 +304,28 @@ public class ProxyWSDLResourcePropertiesEditionPartImpl extends CompositePropert
 
             }
         });
+        
+        keyText.addKeyListener(new KeyListener() {
+            
+            @Override
+            public void keyReleased(KeyEvent e) {
+                   if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                       EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(parent.getShell(),
+                               SWT.NULL, key, new ArrayList<NamedEntityDescriptor>());
+                       dialog.open();
+                       keyText.setText(key.getKeyValue());
+                       propertiesEditionComponent
+                               .firePropertiesChanged(new PropertiesEditionEvent(ProxyWSDLResourcePropertiesEditionPartImpl.this,
+                                       EsbViewsRepository.ProxyWSDLResource.Properties.key, PropertiesEditionEvent.COMMIT,
+                                       PropertiesEditionEvent.SET, null, getKey()));
+                   }
+            }
+            
+            @Override
+            public void keyPressed(KeyEvent e) {}
+            
+        });
+        
         EditingUtils.setID(keyText, EsbViewsRepository.ProxyWSDLResource.Properties.key);
         EditingUtils.setEEFtype(keyText, "eef::Text");
         Control keyHelp = SWTUtils

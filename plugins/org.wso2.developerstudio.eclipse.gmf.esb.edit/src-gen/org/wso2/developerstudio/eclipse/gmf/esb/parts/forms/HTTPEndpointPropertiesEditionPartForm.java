@@ -155,14 +155,13 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
 	 * 
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
-		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
-		Form form = scrolledForm.getForm();
+		Form form = widgetFactory.createForm(parent);
 		view = form.getBody();
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
 		createControls(widgetFactory, view);
-		return scrolledForm;
+		return form;
 	}
 
 	/**
@@ -197,10 +196,6 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
 		basicStep.addStep(EsbViewsRepository.HTTPEndpoint.Basic.httpMethod);
 		
 		hTTPEndpointStep
-			.addStep(EsbViewsRepository.HTTPEndpoint.EndpointDescription.class)
-			.addStep(EsbViewsRepository.HTTPEndpoint.EndpointDescription.description);
-		
-		hTTPEndpointStep
 			.addStep(EsbViewsRepository.HTTPEndpoint.EndpointProperties.class)
 			.addStep(EsbViewsRepository.HTTPEndpoint.EndpointProperties.properties);
 		
@@ -219,6 +214,8 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
 		timeoutStep.addStep(EsbViewsRepository.HTTPEndpoint.Timeout.timeOutDuration);
 		timeoutStep.addStep(EsbViewsRepository.HTTPEndpoint.Timeout.timeOutAction);
 		
+        hTTPEndpointStep.addStep(EsbViewsRepository.HTTPEndpoint.EndpointDescription.class)
+                .addStep(EsbViewsRepository.HTTPEndpoint.EndpointDescription.description);
 		
 		composer = new PartComposer(hTTPEndpointStep) {
 

@@ -618,7 +618,6 @@ public class SpringMediatorPropertiesEditionPartForm extends SectionPropertiesEd
         widgetFactory.paintBordersFor(parent);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
         configurationKeyText.setLayoutData(valueData);
-
         configurationKeyText.addMouseListener(new MouseAdapter() {
 
             @Override

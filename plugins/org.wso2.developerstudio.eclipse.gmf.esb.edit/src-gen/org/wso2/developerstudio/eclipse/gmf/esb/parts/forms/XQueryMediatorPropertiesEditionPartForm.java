@@ -329,7 +329,8 @@ public class XQueryMediatorPropertiesEditionPartForm extends SectionPropertiesEd
      * @generated NOT
      */
 	protected Composite createVariablesTableComposition(FormToolkit widgetFactory, Composite parent) {
-	    filterVariablesSubPropetiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent, "Variables", true);
+	    filterVariablesSubPropetiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent,
+	            "Variables", true);
 	    Control [] previousControls = filterVariablesSubPropetiesGroup.getChildren();
 	    
 		this.variables = new ReferencesTable(getDescription(EsbViewsRepository.XQueryMediator.Properties.variables, EsbMessages.XQueryMediatorPropertiesEditionPart_VariablesLabel), new ReferencesTableListener() {
@@ -925,11 +926,13 @@ public class XQueryMediatorPropertiesEditionPartForm extends SectionPropertiesEd
     }
 
     private void openTargetXPathWidgetNamespacedPropertyEditor(final Composite parent) {
-        EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL, targetXPath);
+        EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL,
+                targetXPath);
         targetXPath = nspd.open();
         targetXPathText.setText(targetXPath.getPropertyValue());
-        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(XQueryMediatorPropertiesEditionPartForm.this,
-                EsbViewsRepository.XQueryMediator.Properties.targetXPath, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getTargetXpath()));
+        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                XQueryMediatorPropertiesEditionPartForm.this, EsbViewsRepository.XQueryMediator.Properties.targetXPath,
+                PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getTargetXpath()));
     }
 
     @Override

@@ -40,6 +40,9 @@ import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.KeyListener;
+import org.eclipse.swt.events.MouseAdapter;
+import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 
@@ -61,6 +64,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.SpringMediatorPropertiesEditionPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFNameSpacedPropertyEditorDialog;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
@@ -114,14 +118,13 @@ public class SpringMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	 * 
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
-		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
-		Form form = scrolledForm.getForm();
+		Form form = widgetFactory.createForm(parent);
 		view = form.getBody();
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
 		createControls(widgetFactory, view);
-		return scrolledForm;
+		return form;
 	}
 
 	/**
@@ -134,12 +137,11 @@ public class SpringMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		CompositionSequence springMediatorStep = new BindingCompositionSequence(propertiesEditionComponent);
 		CompositionStep propertiesStep = springMediatorStep.addStep(EsbViewsRepository.SpringMediator.Properties.class);
-		propertiesStep.addStep(EsbViewsRepository.SpringMediator.Properties.description);
 		propertiesStep.addStep(EsbViewsRepository.SpringMediator.Properties.commentsList);
 		propertiesStep.addStep(EsbViewsRepository.SpringMediator.Properties.reverse);
 		propertiesStep.addStep(EsbViewsRepository.SpringMediator.Properties.beanName);
 		propertiesStep.addStep(EsbViewsRepository.SpringMediator.Properties.configurationKey);
-		
+		propertiesStep.addStep(EsbViewsRepository.SpringMediator.Properties.description);
 		
 		composer = new PartComposer(springMediatorStep) {
 
@@ -602,7 +604,7 @@ public class SpringMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 
 
 	// Start of user code additional methods
-    protected Composite createConfigurationKeyWidget(FormToolkit widgetFactory, Composite parent) {
+    protected Composite createConfigurationKeyWidget(FormToolkit widgetFactory, final Composite parent) {
         Control configurationKeyLabel = createDescription(parent,
                 EsbViewsRepository.SpringMediator.Properties.configurationKey,
                 EsbMessages.SpringMediatorPropertiesEditionPart_ConfigurationKeyLabel);
@@ -611,35 +613,31 @@ public class SpringMediatorPropertiesEditionPartForm extends SectionPropertiesEd
             configurationKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
         }
         String initValueExpression = configurationKey.getKeyValue().isEmpty() ? "" : configurationKey.getKeyValue();
-        configurationKeyText = widgetFactory.createText(parent, initValueExpression);
+        configurationKeyText = widgetFactory.createText(parent, initValueExpression, SWT.READ_ONLY);
         configurationKeyText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
         widgetFactory.paintBordersFor(parent);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
         configurationKeyText.setLayoutData(valueData);
-        configurationKeyText.addFocusListener(new FocusAdapter() {
-            /**
-             * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-             * 
-             */
+
+        configurationKeyText.addMouseListener(new MouseAdapter() {
+
             @Override
-            @SuppressWarnings("synthetic-access")
-            public void focusLost(FocusEvent e) {
+            public void mouseDown( MouseEvent event ) {
+                openConfigurationKeyWidgetNamespacedPropertyEditor(parent);
             }
 
-            /**
-             * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
-             */
+        });
+        configurationKeyText.addKeyListener(new KeyListener() {
+
             @Override
-            public void focusGained(FocusEvent e) {
-                EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
-                        SWT.NULL, configurationKey, new ArrayList<NamedEntityDescriptor>());
-                dialog.open();
-                configurationKeyText.setText(configurationKey.getKeyValue());
-                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
-                        SpringMediatorPropertiesEditionPartForm.this,
-                        EsbViewsRepository.SpringMediator.Properties.configurationKey, PropertiesEditionEvent.COMMIT,
-                        PropertiesEditionEvent.SET, null, getConfigurationKey()));
+            public void keyReleased(KeyEvent e) {
+                if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                    openConfigurationKeyWidgetNamespacedPropertyEditor(parent);
+                }
             }
+
+            @Override
+            public void keyPressed(KeyEvent e) {}
         });
         EditingUtils.setID(configurationKeyText, EsbViewsRepository.SpringMediator.Properties.configurationKey);
         EditingUtils.setEEFtype(configurationKeyText, "eef::Text");
@@ -651,6 +649,17 @@ public class SpringMediatorPropertiesEditionPartForm extends SectionPropertiesEd
         return parent;
      }
     
+    private void openConfigurationKeyWidgetNamespacedPropertyEditor(final Composite parent) {
+        EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
+                SWT.NULL, configurationKey, new ArrayList<NamedEntityDescriptor>());
+        dialog.open();
+        configurationKeyText.setText(configurationKey.getKeyValue());
+        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                SpringMediatorPropertiesEditionPartForm.this,
+                EsbViewsRepository.SpringMediator.Properties.configurationKey, PropertiesEditionEvent.COMMIT,
+                PropertiesEditionEvent.SET, null, getConfigurationKey()));
+    }
+
     @Override
     public void refresh() {
         super.refresh();

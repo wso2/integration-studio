@@ -857,7 +857,7 @@ public class XQueryMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 
             @Override
             public void mouseDown( MouseEvent event ) {
-                openTargetXPathyWidgetNamespacedPropertyEditor(parent);
+                openTargetXPathWidgetNamespacedPropertyEditor(parent);
             }
 
         });
@@ -866,7 +866,7 @@ public class XQueryMediatorPropertiesEditionPartForm extends SectionPropertiesEd
             @Override
             public void keyReleased(KeyEvent e) {
                 if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
-                    openTargetXPathyWidgetNamespacedPropertyEditor(parent);
+                    openTargetXPathWidgetNamespacedPropertyEditor(parent);
                 }
             }
 
@@ -924,7 +924,7 @@ public class XQueryMediatorPropertiesEditionPartForm extends SectionPropertiesEd
         return parent;
     }
 
-    private void openTargetXPathyWidgetNamespacedPropertyEditor(final Composite parent) {
+    private void openTargetXPathWidgetNamespacedPropertyEditor(final Composite parent) {
         EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL, targetXPath);
         targetXPath = nspd.open();
         targetXPathText.setText(targetXPath.getPropertyValue());

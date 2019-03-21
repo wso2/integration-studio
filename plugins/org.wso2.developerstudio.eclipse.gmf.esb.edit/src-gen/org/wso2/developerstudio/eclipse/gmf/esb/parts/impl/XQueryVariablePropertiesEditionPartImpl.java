@@ -675,7 +675,7 @@ public class XQueryVariablePropertiesEditionPartImpl extends CompositeProperties
         valueExpressionElements = new Control[] {valueExpressionLabel, valueExpressionText, valueExpressionHelp};
         return parent;
     }
-
+	
     @Override
     public void refresh() {
         super.refresh();

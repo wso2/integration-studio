@@ -42,6 +42,7 @@ import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.KeyListener;
 import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.layout.GridData;
@@ -209,8 +210,8 @@ public class EndPointPropertyPropertiesEditionPartImpl extends CompositeProperti
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
+			public void keyReleased(KeyEvent e) {
+				if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
 					if (propertiesEditionComponent != null)
 						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EndPointPropertyPropertiesEditionPartImpl.this, EsbViewsRepository.EndPointProperty.Properties.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
 				}
@@ -260,8 +261,8 @@ public class EndPointPropertyPropertiesEditionPartImpl extends CompositeProperti
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
+			public void keyReleased(KeyEvent e) {
+				if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
 					if (propertiesEditionComponent != null)
 						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EndPointPropertyPropertiesEditionPartImpl.this, EsbViewsRepository.EndPointProperty.Properties.value, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, value.getText()));
 				}
@@ -577,7 +578,7 @@ public class EndPointPropertyPropertiesEditionPartImpl extends CompositeProperti
             valueExpression = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
         }
 
-        valueExpressionText = SWTUtils.createScrollableText(parent, SWT.BORDER);
+        valueExpressionText = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.READ_ONLY);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
         valueExpressionText.setLayoutData(valueData);
         valueExpressionText.addMouseListener(new MouseListener() {
@@ -603,6 +604,25 @@ public class EndPointPropertyPropertiesEditionPartImpl extends CompositeProperti
                 // TODO Auto-generated method stub
                 
             }
+        });
+        
+        valueExpressionText.addKeyListener(new KeyListener() {
+            
+            @Override
+            public void keyReleased(KeyEvent e) {
+                EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
+                        SWT.NULL, valueExpression);
+                nspd.open();
+                valueExpressionText.setText(valueExpression.getPropertyValue());
+                propertiesEditionComponent.firePropertiesChanged(
+                        new PropertiesEditionEvent(EndPointPropertyPropertiesEditionPartImpl.this,
+                                EsbViewsRepository.EndPointProperty.Properties.valueExpression,
+                                PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getValueExpression()));
+            }
+            
+            @Override
+            public void keyPressed(KeyEvent e) {}
+            
         });
 
         EditingUtils.setID(valueExpressionText, EsbViewsRepository.EndPointProperty.Properties.valueExpression);

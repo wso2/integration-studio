@@ -212,14 +212,13 @@ public class AddressEndPointPropertiesEditionPartForm extends SectionPropertiesE
 	 * 
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
-		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
-		Form form = scrolledForm.getForm();
+		Form form = widgetFactory.createForm(parent);
 		view = form.getBody();
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
 		createControls(widgetFactory, view);
-		return scrolledForm;
+		return form;
 	}
 
 	/**
@@ -255,11 +254,6 @@ public class AddressEndPointPropertiesEditionPartForm extends SectionPropertiesE
 		endpointTimeoutStateStep.addStep(EsbViewsRepository.AddressEndPoint.EndpointTimeoutState.retryCount);
 		endpointTimeoutStateStep.addStep(EsbViewsRepository.AddressEndPoint.EndpointTimeoutState.retryDelay);
 		
-		CompositionStep miscStep = addressEndPointStep.addStep(EsbViewsRepository.AddressEndPoint.Misc.class);
-		miscStep.addStep(EsbViewsRepository.AddressEndPoint.Misc.properties);
-		miscStep.addStep(EsbViewsRepository.AddressEndPoint.Misc.optimize);
-		miscStep.addStep(EsbViewsRepository.AddressEndPoint.Misc.description);
-		
 		CompositionStep qoSStep = addressEndPointStep.addStep(EsbViewsRepository.AddressEndPoint.QoS.class);
 		qoSStep.addStep(EsbViewsRepository.AddressEndPoint.QoS.reliableMessagingEnabled);
 		qoSStep.addStep(EsbViewsRepository.AddressEndPoint.QoS.securityEnabled);
@@ -274,6 +268,11 @@ public class AddressEndPointPropertiesEditionPartForm extends SectionPropertiesE
 		CompositionStep timeoutStep = addressEndPointStep.addStep(EsbViewsRepository.AddressEndPoint.Timeout.class);
 		timeoutStep.addStep(EsbViewsRepository.AddressEndPoint.Timeout.timeOutDuration);
 		timeoutStep.addStep(EsbViewsRepository.AddressEndPoint.Timeout.timeOutAction);
+		
+        CompositionStep miscStep = addressEndPointStep.addStep(EsbViewsRepository.AddressEndPoint.Misc.class);
+        miscStep.addStep(EsbViewsRepository.AddressEndPoint.Misc.properties);
+        miscStep.addStep(EsbViewsRepository.AddressEndPoint.Misc.optimize);
+        miscStep.addStep(EsbViewsRepository.AddressEndPoint.Misc.description);
 		
 		
 		composer = new PartComposer(addressEndPointStep) {

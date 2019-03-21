@@ -129,7 +129,10 @@ public class ProxyServiceParameterPropertiesEditionPartImpl extends CompositePro
 		return propertiesGroup;
 	}
 
-	
+    /**
+     * @generated NOT
+     * 
+     */
 	protected Composite createNameText(Composite parent) {
 		createDescription(parent, EsbViewsRepository.ProxyServiceParameter.Properties.name, EsbMessages.ProxyServiceParameterPropertiesEditionPart_NameLabel);
 		name = SWTUtils.createScrollableText(parent, SWT.BORDER);
@@ -178,7 +181,10 @@ public class ProxyServiceParameterPropertiesEditionPartImpl extends CompositePro
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     * 
+     */
 	protected Composite createValueText(Composite parent) {
 		createDescription(parent, EsbViewsRepository.ProxyServiceParameter.Properties.value, EsbMessages.ProxyServiceParameterPropertiesEditionPart_ValueLabel);
 		value = SWTUtils.createScrollableText(parent, SWT.BORDER);

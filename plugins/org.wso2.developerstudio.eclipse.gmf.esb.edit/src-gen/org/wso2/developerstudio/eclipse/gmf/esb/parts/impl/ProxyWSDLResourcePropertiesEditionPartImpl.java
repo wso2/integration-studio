@@ -143,7 +143,10 @@ public class ProxyWSDLResourcePropertiesEditionPartImpl extends CompositePropert
 		return propertiesGroup;
 	}
 
-	
+    /**
+     * @generated NOT
+     * 
+     */
 	protected Composite createLocationText(Composite parent) {
 		createDescription(parent, EsbViewsRepository.ProxyWSDLResource.Properties.location, EsbMessages.ProxyWSDLResourcePropertiesEditionPart_LocationLabel);
 		location = SWTUtils.createScrollableText(parent, SWT.BORDER);

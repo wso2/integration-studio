@@ -281,6 +281,7 @@ public class AddressEndPointPropertiesEditionPartForm extends SectionPropertiesE
 
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
+			    // Start of user code
 				if (key == EsbViewsRepository.AddressEndPoint.Basic.class) {
 					return createBasicGroup(widgetFactory, parent);
 				}
@@ -374,26 +375,18 @@ public class AddressEndPointPropertiesEditionPartForm extends SectionPropertiesE
 				if (key == EsbViewsRepository.AddressEndPoint.QoS.addressingSeparateListener) {
 					return createAddressingSeparateListenerCheckbox(widgetFactory, parent);
 				}
-				// Start of user code for Reliable Messaging Policy addToPart creation
 				if (key == EsbViewsRepository.AddressEndPoint.QoS.reliableMessagingPolicy) {
 					return createReliableMessagingPolicy(widgetFactory, parent);
 				}
-				// End of user code
-				// Start of user code for Inbound Policy addToPart creation
 				if (key == EsbViewsRepository.AddressEndPoint.QoS.inboundPolicy) {
 					return createInboundPolicy(widgetFactory, parent);
 				}
-				// End of user code
-				// Start of user code for Outbound Policy addToPart creation
 				if (key == EsbViewsRepository.AddressEndPoint.QoS.outboundPolicy) {
 					return createOutboundPolicy(widgetFactory, parent);
 				}
-				// End of user code
-				// Start of user code for Security Policy addToPart creation
 				if (key == EsbViewsRepository.AddressEndPoint.QoS.securityPolicy) {
 					return createSecurityPolicy(widgetFactory, parent);
 				}
-				// End of user code
 				if (key == EsbViewsRepository.AddressEndPoint.Timeout.class) {
 					return createTimeoutGroup(widgetFactory, filterAdvancedSubPropertiesGroup);
 				}
@@ -403,6 +396,7 @@ public class AddressEndPointPropertiesEditionPartForm extends SectionPropertiesE
 				if (key == EsbViewsRepository.AddressEndPoint.Timeout.timeOutAction) {
 					return createTimeOutActionEMFComboViewer(widgetFactory, parent);
 				}
+				// End of user code
 				return parent;
 			}
 		};

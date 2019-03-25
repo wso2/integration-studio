@@ -44,6 +44,10 @@ import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
+import org.eclipse.swt.events.MouseEvent;
+import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 
@@ -208,22 +212,7 @@ public class SwitchCaseBranchOutputConnectorPropertiesEditionPartImpl extends Co
 		caseRegex = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData caseRegexData = new GridData(GridData.FILL_HORIZONTAL);
 		caseRegex.setLayoutData(caseRegexData);
-		caseRegex.addFocusListener(new FocusAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SwitchCaseBranchOutputConnectorPropertiesEditionPartImpl.this, EsbViewsRepository.SwitchCaseBranchOutputConnector.Properties.caseRegex, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, caseRegex.getText()));
-			}
-
-		});
+		
 		caseRegex.addKeyListener(new KeyAdapter() {
 
 			/**
@@ -234,12 +223,13 @@ public class SwitchCaseBranchOutputConnectorPropertiesEditionPartImpl extends Co
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
+			public void keyReleased(KeyEvent e) {
+				if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
 					if (propertiesEditionComponent != null)
 						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SwitchCaseBranchOutputConnectorPropertiesEditionPartImpl.this, EsbViewsRepository.SwitchCaseBranchOutputConnector.Properties.caseRegex, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, caseRegex.getText()));
 				}
 			}
+			
 
 		});
 		EditingUtils.setID(caseRegex, EsbViewsRepository.SwitchCaseBranchOutputConnector.Properties.caseRegex);

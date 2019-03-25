@@ -411,9 +411,11 @@ public class PayloadFactoryMediatorPropertiesEditionPartForm extends SectionProp
 			 * 	
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
-				if (propertiesEditionComponent != null)
+				if (propertiesEditionComponent != null) {
 				    validate();
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PayloadFactoryMediatorPropertiesEditionPartForm.this, EsbViewsRepository.PayloadFactoryMediator.Properties.mediaType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getMediaType()));
+			
+				}
 			}
 
 		});

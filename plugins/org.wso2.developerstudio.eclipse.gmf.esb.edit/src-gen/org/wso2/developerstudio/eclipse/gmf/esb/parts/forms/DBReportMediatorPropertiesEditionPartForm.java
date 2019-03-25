@@ -174,12 +174,8 @@ public class DBReportMediatorPropertiesEditionPartForm extends SectionProperties
 	protected Control[] propertyMaxActiveElements;
 	protected Control[] connectionDbConfiguration;
 	
-	String database = "";
-	String host = "";
-	String port = "";
-	String version = "";
 	String jarPath = "";
-	String jdbcProtocol = "";
+
 	DependencyProvider dp;
 	// End of user code
 
@@ -397,23 +393,12 @@ public class DBReportMediatorPropertiesEditionPartForm extends SectionProperties
                                         : getConnectionDbType().getName());
                                 obj.setPassword(getConnectionPassword().isEmpty() ? "" : getConnectionPassword());
                                 obj.setUrl(getConnectionURL().isEmpty() ? "" : getConnectionURL());
-                                obj.setUserName(getConnectionUsername());
-                                obj.setDatabase(database);
-                                obj.setHost(host);
-                                obj.setPort(port);
-                                obj.setVersion(version);
+                                obj.setUserName(getConnectionUsername().isEmpty() ? "" : getConnectionUsername());
                                 obj.setJarPath(jarPath);
-                                obj.setJdbcProtocol(jdbcProtocol);
-                                
+
                                 dp.open(obj);
-                                
-                                System.out.println("gdsdfsdsfsfs" + obj.toString());
-                                database = obj.getDatabase();
-                                port = obj.getPort();
-                                host = obj.getHost();
-                                version = obj.getVersion();
+                               
                                 jarPath = obj.getJarPath();
-                                jdbcProtocol = obj.getJdbcProtocol();
 
                                 propertiesEditionComponent.firePropertiesChanged(
                                         new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartForm.this,

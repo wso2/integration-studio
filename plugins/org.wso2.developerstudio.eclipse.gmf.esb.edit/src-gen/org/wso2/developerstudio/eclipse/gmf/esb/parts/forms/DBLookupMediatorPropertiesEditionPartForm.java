@@ -177,12 +177,8 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	protected Control[] sqlStatementsElements;
 	protected Control[] connectionDbConfiguration;
 	
-	String database = "";
-	String host = "";
-	String port = "";
-	String version = "";
 	String jarPath = "";
-	String jdbcProtocol = "";
+
 	DependencyProvider dp;
 	// End of user code
 
@@ -626,22 +622,12 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
                                         : getConnectionDbType().getName());
                                 obj.setPassword(getConnectionPassword().isEmpty() ? "" : getConnectionPassword());
                                 obj.setUrl(getConnectionURL().isEmpty() ? "" : getConnectionURL());
-                                obj.setUserName(getConnectionUsername());
-                                obj.setDatabase(database);
-                                obj.setHost(host);
-                                obj.setPort(port);
-                                obj.setVersion(version);
+                                obj.setUserName(getConnectionUsername().isEmpty() ? "" : getConnectionUsername());
                                 obj.setJarPath(jarPath);
-                                obj.setJdbcProtocol(jdbcProtocol);
-                                
+                   
                                 dp.open(obj);
                                 
-                                database = obj.getDatabase();
-                                port = obj.getPort();
-                                host = obj.getHost();
-                                version = obj.getVersion();
                                 jarPath = obj.getJarPath();
-                                jdbcProtocol = obj.getJdbcProtocol();
 
                                 propertiesEditionComponent.firePropertiesChanged(
                                         new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartForm.this,

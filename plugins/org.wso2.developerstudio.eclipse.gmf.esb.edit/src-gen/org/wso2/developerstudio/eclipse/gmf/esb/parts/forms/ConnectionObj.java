@@ -32,8 +32,7 @@ public class ConnectionObj {
 	private String database;
 	private String version;
 	private String jarPath;
-	private String jdbcProtocol;
-
+	
 	public String getDbType() {
 		return dbType;
 	}
@@ -114,20 +113,11 @@ public class ConnectionObj {
 		this.jarPath = jarPath;
 	}
 
-	public String getJdbcProtocol() {
-		return jdbcProtocol;
-	}
-
-	public void setJdbcProtocol(String jdbcProtocol) {
-		this.jdbcProtocol = jdbcProtocol;
-	}
-
 	@Override
 	public String toString() {
 		return "ConnectionObj [dbType=" + dbType + ", dbDriver=" + dbDriver + ", url=" + url + ", userName="
 				+ userName + ", password=" + password + ", host=" + host + ", port=" + port + ", database="
-				+ database + ", version=" + version + ", jarPath=" + jarPath + ", jdbcProtocol=" + jdbcProtocol
-				+ "]";
+				+ database + ", version=" + version + ", jarPath=" + jarPath + "]";
 	}
 
 }

@@ -63,7 +63,6 @@ import org.eclipse.swt.widgets.Text;
 
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
-import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
@@ -137,9 +136,9 @@ public class ClassMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
 		CompositionSequence classMediatorStep = new BindingCompositionSequence(propertiesEditionComponent);
 		CompositionStep propertiesStep = classMediatorStep.addStep(EsbViewsRepository.ClassMediator.Properties.class);
         // Start of user code
-        propertiesStep.addStep(EsbViewsRepository.ClassMediator.Properties.description);
         propertiesStep.addStep(EsbViewsRepository.ClassMediator.Properties.className);
         propertiesStep.addStep(EsbViewsRepository.ClassMediator.Properties.properties_);
+        propertiesStep.addStep(EsbViewsRepository.ClassMediator.Properties.description);
         // End of user code
 		
 		composer = new PartComposer(classMediatorStep) {

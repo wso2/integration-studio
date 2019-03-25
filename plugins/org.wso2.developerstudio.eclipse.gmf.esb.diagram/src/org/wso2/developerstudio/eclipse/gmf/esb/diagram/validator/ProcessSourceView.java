@@ -145,54 +145,6 @@ public class ProcessSourceView {
     
     private static SequenceMediatorFactory sequenceMediatorFactory;
     private static TemplateMediatorFactory templateMediatorFactory;
-    private static LogMediatorFactory logMediatorFactory;
-    private static EnqueueMediatorFactory enqueueMediatorFactory;
-    private static SendMediatorFactory sendMediatorFactory;
-    private static LoopBackMediatorFactory loopBackMediatorFactory;
-    private static CallMediatorFactory callMediatorFactory;
-    private static RespondMediatorFactory respondMediatorFactory;
-    private static EventMediatorFactory eventMediatorFactory;
-    private static DropMediatorFactory dropMediatorFactory;
-    private static EnrichMediatorFactory enrichMediatorFactory;
-    private static PropertyMediatorFactory propertyMediatorFactory;
-    private static PropertyGroupMediatorFactory propertyGroupMediatorFactory;
-    private static FilterMediatorFactory filterMediatorFactory;
-    private static InvokeMediatorFactory invokeMediatorFactory;
-    private static MessageStoreMediatorFactory messageStoreMediatorFactory;
-    private static SwitchMediatorFactory switchMediatorFactory;
-    private static ValidateMediatorFactory validateMediatorFactory;
-    private static ConditionalRouterMediatorFactory conditionalRouterMediatorFactory;
-    private static ScriptMediatorFactory scriptMediatorFactory;
-    private static SpringMediatorFactory springMediatorFactory;
-    private static FaultMediatorFactory faultMediatorFactory;
-    private static HeaderMediatorFactory headerMediatorFactory;
-    private static PayloadFactoryMediatorFactory payloadFactoryMediatorFactory;
-    private static SmooksMediatorFactory smooksMediatorFactory;
-    private static URLRewriteMediatorFactory urlRewriteMediatorFactory;
-    private static XQueryMediatorFactory xQueryMediatorFactory;
-    private static XSLTMediatorFactory xsltMediatorFactory;
-    private static DataMapperMediatorFactory dataMapperMediatorFactory;
-    private static FastXSLTMediatorFactory fastXSLTMediatorFactory;
-    private static CacheMediatorFactory cacheMediatorFactory;
-    private static DBReportMediatorFactory dbReportMediatorFactory;
-    private static DBLookupMediatorFactory dbLookupMediatorFactory;
-    private static ThrottleMediatorFactory throttleMediatorFactory;
-    private static TransactionMediatorFactory transactionMediatorFactory;
-    private static AggregateMediatorFactory aggregateMediatorFactory;
-    private static CalloutMediatorFactory calloutMediatorFactory;
-    private static CloneMediatorFactory cloneMediatorFactory;
-    private static IterateMediatorFactory iterateMediatorFactory;
-    private static ForEachMediatorFactory forEachMediatorFactory;
-    private static EntitlementMediatorFactory entitlementMediatorFactory;
-    private static OAuthMediatorFactory oAuthMediatorFactory;
-    private static RuleMediatorFactory ruleMediatorFactory;
-    private static PublishEventMediatorFactory publishEventMediatorFactory;
-    private static ClassMediatorExtFactory classMediatorExtFactory;
-    private static BeanMediatorExtFactory beanMediatorExtFactory;
-    private static POJOCommandMediatorExtFactory pojoCommandMediatorExtFactory;
-    private static EJBMediatorExtFactory ejbMediatorExtFactory;
-    private static BuilderMediatorExtFactory builderMediatorExtFactory;
-    private static BamMediatorExtFactory bamMediatorExtFactory;
 
     public ProcessSourceView() {
 

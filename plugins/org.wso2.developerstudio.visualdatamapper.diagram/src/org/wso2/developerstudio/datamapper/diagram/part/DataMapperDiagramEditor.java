@@ -77,6 +77,7 @@ import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.IPageListener;
 import org.eclipse.ui.IPartListener2;
 import org.eclipse.ui.ISelectionService;
+import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
@@ -124,7 +125,9 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
         // TODO Auto-generated method stub
         super.dispose();
         // Closing the datamapper test view when editor view is closed.
-        PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().hideView(realtimeDatamapperView);
+        IWorkbenchPage wp = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
+        IViewPart myView = wp.findView(DATA_MAPPER_TEST_VIEW);
+        wp.hideView(myView);
     }
 	   
 	/**

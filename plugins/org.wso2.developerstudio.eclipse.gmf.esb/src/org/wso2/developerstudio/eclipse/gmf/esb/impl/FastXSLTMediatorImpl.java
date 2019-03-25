@@ -122,7 +122,7 @@ public class FastXSLTMediatorImpl extends MediatorImpl implements FastXSLTMediat
     protected FastXSLTMediatorImpl() {
         super();
         // Fast XSLT Static Schema Key
-        fastXsltStaticSchemaKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
+        RegistryKeyProperty fastXsltStaticSchemaKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
         // Set filter properties to filter in only fast xslt media type
         DeveloperStudioProviderUtils.addFilter((Map<String, List<String>>) fastXsltStaticSchemaKey.getFilters(),
                 CSProviderConstants.FILTER_MEDIA_TYPE, PlatformMediaTypeConstants.MEDIA_TYPE_XSLT);
@@ -133,7 +133,7 @@ public class FastXSLTMediatorImpl extends MediatorImpl implements FastXSLTMediat
         setFastXsltStaticSchemaKey(fastXsltStaticSchemaKey);
 
         // Fast XSLT Dynamic Schema Key
-        fastXsltDynamicSchemaKey = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
+        NamespacedProperty fastXsltDynamicSchemaKey = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
         fastXsltDynamicSchemaKey.setPrettyName("XSLT Dynamic Key");
         fastXsltDynamicSchemaKey.setPropertyName("key");
         fastXsltDynamicSchemaKey.setPropertyValue(DEFAULT_XPATH_PROPERTY_VALUE);

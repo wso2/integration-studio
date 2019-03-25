@@ -40,7 +40,9 @@ import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.FastXSLTMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.KeyType;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.FastXSLTMediatorPropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
@@ -100,9 +102,15 @@ public class FastXSLTMediatorPropertiesEditionComponent extends SinglePartProper
                         fastXSLTMediator.getFastXsltSchemaKeyType());
             }
             // Start of user code for fastXsltStaticSchemaKey command update
+            if (isAccessible(EsbViewsRepository.FastXSLTMediator.Basic.fastXsltStaticSchemaKey)) {
+                basePart.setFastXsltStaticSchemaKey(fastXSLTMediator.getFastXsltStaticSchemaKey());
+            }
             // End of user code
 
             // Start of user code for fastXsltDynamicSchemaKey command update
+            if (isAccessible(EsbViewsRepository.FastXSLTMediator.Basic.fastXsltStaticSchemaKey)) {
+                basePart.setFastXsltDynamicSchemaKey(fastXSLTMediator.getFastXsltDynamicSchemaKey());
+            }
             // End of user code
 
             // init filters
@@ -174,11 +182,23 @@ public class FastXSLTMediatorPropertiesEditionComponent extends SinglePartProper
         }
         if (EsbViewsRepository.FastXSLTMediator.Basic.fastXsltStaticSchemaKey == event.getAffectedEditor()) {
             // Start of user code for updateFastXsltStaticSchemaKey method body
+            if (event.getNewValue() != null) {
+                RegistryKeyProperty rkp = (RegistryKeyProperty) event.getNewValue();
+                fastXSLTMediator.setFastXsltStaticSchemaKey(rkp);
+            } else {
+                fastXSLTMediator.setFastXsltStaticSchemaKey(EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty());
+            }
             // End of user code
 
         }
         if (EsbViewsRepository.FastXSLTMediator.Basic.fastXsltDynamicSchemaKey == event.getAffectedEditor()) {
             // Start of user code for updateFastXsltDynamicSchemaKey method body
+            if (event.getNewValue() != null) {
+                NamespacedProperty nsp = (NamespacedProperty) event.getNewValue();
+                fastXSLTMediator.setFastXsltDynamicSchemaKey(nsp);
+            } else {
+                fastXSLTMediator.setFastXsltDynamicSchemaKey(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+            }
             // End of user code
 
         }
@@ -228,11 +248,27 @@ public class FastXSLTMediatorPropertiesEditionComponent extends SinglePartProper
                 basePart.setFastXsltSchemaKeyType((KeyType) msg.getNewValue());
 
             // Start of user code for fastXsltStaticSchemaKey live update
-
+            if (EsbPackage.eINSTANCE.getFastXSLTMediator_FastXsltStaticSchemaKey().equals(msg.getFeature())
+                    && msg.getNotifier().equals(semanticObject) && basePart != null
+                    && isAccessible(EsbViewsRepository.FastXSLTMediator.Basic.fastXsltStaticSchemaKey)) {
+                if (msg.getNewValue() != null) {
+                    basePart.setFastXsltStaticSchemaKey((RegistryKeyProperty)msg.getNewValue());
+                } else {
+                    basePart.setFastXsltStaticSchemaKey(EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty());
+                }
+            }
             // End of user code
 
             // Start of user code for fastXsltDynamicSchemaKey live update
-
+            if (EsbPackage.eINSTANCE.getFastXSLTMediator_FastXsltDynamicSchemaKey().equals(msg.getFeature())
+                    && msg.getNotifier().equals(semanticObject) && basePart != null
+                    && isAccessible(EsbViewsRepository.FastXSLTMediator.Basic.fastXsltDynamicSchemaKey)) {
+                if (msg.getNewValue() != null) {
+                    basePart.setFastXsltDynamicSchemaKey((NamespacedProperty)msg.getNewValue());
+                } else {
+                    basePart.setFastXsltDynamicSchemaKey(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+                }
+            }
             // End of user code
         }
     }

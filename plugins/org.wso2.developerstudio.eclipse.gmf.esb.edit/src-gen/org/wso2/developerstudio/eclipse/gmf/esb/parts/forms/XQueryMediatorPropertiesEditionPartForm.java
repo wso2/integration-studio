@@ -61,6 +61,8 @@ import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.KeyListener;
+import org.eclipse.swt.events.MouseAdapter;
 import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -130,6 +132,7 @@ public class XQueryMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	protected Control[] dynamicScriptKeyElements;
 	
 	protected Composite propertiesGroup;
+	protected Composite filterVariablesSubPropetiesGroup;
 	// End of user code
 
 	protected Text description;
@@ -158,14 +161,13 @@ public class XQueryMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	 * 
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
-		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
-		Form form = scrolledForm.getForm();
+		Form form = widgetFactory.createForm(parent);
 		view = form.getBody();
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
 		createControls(widgetFactory, view);
-		return scrolledForm;
+		return form;
 	}
 
 	/**
@@ -180,11 +182,11 @@ public class XQueryMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 		CompositionStep propertiesStep = xQueryMediatorStep.addStep(EsbViewsRepository.XQueryMediator.Properties.class);
 		propertiesStep.addStep(EsbViewsRepository.XQueryMediator.Properties.commentsList);
 		propertiesStep.addStep(EsbViewsRepository.XQueryMediator.Properties.reverse);
-		propertiesStep.addStep(EsbViewsRepository.XQueryMediator.Properties.variables);
 		propertiesStep.addStep(EsbViewsRepository.XQueryMediator.Properties.scriptKeyType);
 		propertiesStep.addStep(EsbViewsRepository.XQueryMediator.Properties.staticScriptKey);
 		propertiesStep.addStep(EsbViewsRepository.XQueryMediator.Properties.targetXPath);
 		propertiesStep.addStep(EsbViewsRepository.XQueryMediator.Properties.dynamicScriptKey);
+		propertiesStep.addStep(EsbViewsRepository.XQueryMediator.Properties.variables);
 		propertiesStep.addStep(EsbViewsRepository.XQueryMediator.Properties.description);
 		
 		
@@ -327,7 +329,9 @@ public class XQueryMediatorPropertiesEditionPartForm extends SectionPropertiesEd
      * @generated NOT
      */
 	protected Composite createVariablesTableComposition(FormToolkit widgetFactory, Composite parent) {
-	    Control [] previousControls = propertiesGroup.getChildren();
+	    filterVariablesSubPropetiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent,
+	            "Variables", true);
+	    Control [] previousControls = filterVariablesSubPropetiesGroup.getChildren();
 	    
 		this.variables = new ReferencesTable(getDescription(EsbViewsRepository.XQueryMediator.Properties.variables, EsbMessages.XQueryMediatorPropertiesEditionPart_VariablesLabel), new ReferencesTableListener() {
 			public void handleAdd() {
@@ -352,7 +356,7 @@ public class XQueryMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 			this.variables.addFilter(filter);
 		}
 		this.variables.setHelpText(propertiesEditionComponent.getHelpContent(EsbViewsRepository.XQueryMediator.Properties.variables, EsbViewsRepository.FORM_KIND));
-		this.variables.createControls(parent, widgetFactory);
+		this.variables.createControls(filterVariablesSubPropetiesGroup, widgetFactory);
 		this.variables.addSelectionListener(new SelectionAdapter() {
 			
 			public void widgetSelected(SelectionEvent e) {
@@ -370,7 +374,7 @@ public class XQueryMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 		variables.setID(EsbViewsRepository.XQueryMediator.Properties.variables);
 		variables.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
 		// Start of user code for createVariablesTableComposition
-		Control [] newControls = propertiesGroup.getChildren();
+		Control [] newControls = filterVariablesSubPropetiesGroup.getChildren();
 		variablesElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
 		// End of user code
 		return parent;
@@ -796,7 +800,7 @@ public class XQueryMediatorPropertiesEditionPartForm extends SectionPropertiesEd
             staticScriptKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
         }
         String initStaticScriptKey = staticScriptKey.getKeyValue().isEmpty() ? "" : staticScriptKey.getKeyValue();
-        staticScriptKeyText = widgetFactory.createText(parent, initStaticScriptKey);
+        staticScriptKeyText = widgetFactory.createText(parent, initStaticScriptKey, SWT.READ_ONLY);
         staticScriptKeyText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
         widgetFactory.paintBordersFor(parent);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
@@ -845,32 +849,30 @@ public class XQueryMediatorPropertiesEditionPartForm extends SectionPropertiesEd
             targetXPath = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
         } 
         String initTargetXPath = targetXPath.getPropertyValue().isEmpty() ? "" : targetXPath.getPropertyValue();
-        targetXPathText = widgetFactory.createText(parent, initTargetXPath);
+        targetXPathText = widgetFactory.createText(parent, initTargetXPath, SWT.READ_ONLY);
         targetXPathText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
         widgetFactory.paintBordersFor(parent);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
         targetXPathText.setLayoutData(valueData);
-        targetXPathText.addFocusListener(new FocusAdapter() {
-            /**
-             * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-             * 
-             */
+        targetXPathText.addMouseListener(new MouseAdapter() {
+
             @Override
-            @SuppressWarnings("synthetic-access")
-            public void focusLost(FocusEvent e) {
+            public void mouseDown( MouseEvent event ) {
+                openTargetXPathWidgetNamespacedPropertyEditor(parent);
             }
 
-            /**
-             * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
-             */
+        });
+        targetXPathText.addKeyListener(new KeyListener() {
+
             @Override
-            public void focusGained(FocusEvent e) {
-                EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL, targetXPath);
-                targetXPath = nspd.open();
-                targetXPathText.setText(targetXPath.getPropertyValue());
-                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(XQueryMediatorPropertiesEditionPartForm.this,
-                        EsbViewsRepository.XQueryMediator.Properties.targetXPath, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getTargetXpath()));
+            public void keyReleased(KeyEvent e) {
+                if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                    openTargetXPathWidgetNamespacedPropertyEditor(parent);
+                }
             }
+
+            @Override
+            public void keyPressed(KeyEvent e) {}
         });
         EditingUtils.setID(targetXPathText, EsbViewsRepository.XQueryMediator.Properties.targetXPath);
         EditingUtils.setEEFtype(targetXPathText, "eef::Text");
@@ -923,6 +925,16 @@ public class XQueryMediatorPropertiesEditionPartForm extends SectionPropertiesEd
         return parent;
     }
 
+    private void openTargetXPathWidgetNamespacedPropertyEditor(final Composite parent) {
+        EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL,
+                targetXPath);
+        targetXPath = nspd.open();
+        targetXPathText.setText(targetXPath.getPropertyValue());
+        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                XQueryMediatorPropertiesEditionPartForm.this, EsbViewsRepository.XQueryMediator.Properties.targetXPath,
+                PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getTargetXpath()));
+    }
+
     @Override
     public void refresh() {
         super.refresh();
@@ -940,6 +952,8 @@ public class XQueryMediatorPropertiesEditionPartForm extends SectionPropertiesEd
         } else if (getScriptKeyType() != null && getScriptKeyType().getName().equals(KeyType.DYNAMIC.getName())) {
             eu.showEntry(dynamicScriptKeyElements, false);
         }
+        eu.showEntry(new Control[] { filterVariablesSubPropetiesGroup.getParent() }, false);
+        eu.clearElements(new Composite[] { filterVariablesSubPropetiesGroup });
         eu.showEntry(targetXPathElements, false);
         eu.showEntry(variablesElements, false);
         eu.showEntry(descriptionElements, false);

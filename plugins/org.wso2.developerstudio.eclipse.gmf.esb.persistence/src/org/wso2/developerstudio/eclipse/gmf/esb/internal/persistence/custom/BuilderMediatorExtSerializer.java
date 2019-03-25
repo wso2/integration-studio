@@ -6,7 +6,6 @@ import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.OMNamespace;
 import org.apache.synapse.Mediator;
 import org.apache.synapse.config.xml.AbstractMediatorSerializer;
-import org.wso2.carbon.identity.entitlement.mediator.EntitlementMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.MessageBuilder;
 
 public class BuilderMediatorExtSerializer extends AbstractMediatorSerializer {
@@ -55,8 +54,6 @@ public class BuilderMediatorExtSerializer extends AbstractMediatorSerializer {
             }
         }
 
-        serializeComments(builder, builderMediatorExt.getCommentsList());
-        
         return builder;
     }
 

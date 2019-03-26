@@ -61,8 +61,8 @@ import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
-import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
+import org.wso2.developerstudio.eclipse.gmf.esb.CacheMediatorType;
 import org.wso2.developerstudio.eclipse.gmf.esb.CacheSequenceType;
 import org.wso2.developerstudio.eclipse.gmf.esb.CacheType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
@@ -84,7 +84,11 @@ import org.wso2.developerstudio.esb.form.editors.article.providers.NamedEntityDe
 public class CacheMediatorPropertiesEditionPartForm extends SectionPropertiesEditingPart
         implements IFormPropertiesEditionPart, CacheMediatorPropertiesEditionPart {
 
+    protected EMFComboViewer cacheMediatorImplementation;
+    protected Text id;
     protected EMFComboViewer cacheType;
+    protected EMFComboViewer scope;
+    protected Text hashGeneratorAttribute;
     protected Text cacheTimeout;
     protected Text maxMessageSize;
     protected Text commentsList;
@@ -92,6 +96,7 @@ public class CacheMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
     protected EList commentsListList;
     protected Button reverse;
     protected Text maxEntryCount;
+    protected EMFComboViewer implementationType;
     protected Text description;
     protected EMFComboViewer sequenceType;
     // Start of user code for sequenceKey widgets declarations
@@ -102,6 +107,7 @@ public class CacheMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
     protected Composite miscGroup;
     protected Composite onCacheHitGroup;
     protected Composite protocolGroup;
+    protected Composite typeGroup;
 
     protected Control[] cacheTypeElements;
     protected Control[] cacheTimeoutElements;
@@ -117,6 +123,11 @@ public class CacheMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
     protected Control[] includeAgeHeaderElements;
     protected Control[] hashGeneratorElements;
     protected Control[] sequenceKeyElements;
+    protected Control[] cacheMediatorImplementationElements;
+    protected Control[] idElements;
+    protected Control[] scopeElements;
+    protected Control[] hashGeneratorAttributeElements;
+    protected Control[] implementationTypeElements;
 
     protected Text sequenceKeyText;
 
@@ -177,13 +188,21 @@ public class CacheMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
      */
     public void createControls(final FormToolkit widgetFactory, Composite view) {
         CompositionSequence cacheMediatorStep = new BindingCompositionSequence(propertiesEditionComponent);
+        
+        CompositionStep cacheTypeStep = cacheMediatorStep.addStep(EsbViewsRepository.CacheMediator.Type.class);
+        cacheTypeStep.addStep(EsbViewsRepository.CacheMediator.Type.cacheMediatorImplementation);
+        
         CompositionStep propertiesStep = cacheMediatorStep.addStep(EsbViewsRepository.CacheMediator.Properties.class);
         propertiesStep.addStep(EsbViewsRepository.CacheMediator.Properties.cacheType);
+        propertiesStep.addStep(EsbViewsRepository.CacheMediator.Properties.id);
         propertiesStep.addStep(EsbViewsRepository.CacheMediator.Properties.cacheTimeout);
         propertiesStep.addStep(EsbViewsRepository.CacheMediator.Properties.maxMessageSize);
+        propertiesStep.addStep(EsbViewsRepository.CacheMediator.Properties.scope);
+        propertiesStep.addStep(EsbViewsRepository.CacheMediator.Properties.hashGeneratorAttribute);
 
-        cacheMediatorStep.addStep(EsbViewsRepository.CacheMediator.Implementation.class)
-                .addStep(EsbViewsRepository.CacheMediator.Implementation.maxEntryCount);
+        CompositionStep implementationStep = cacheMediatorStep.addStep(EsbViewsRepository.CacheMediator.Implementation.class);
+        implementationStep.addStep(EsbViewsRepository.CacheMediator.Implementation.maxEntryCount);
+        implementationStep.addStep(EsbViewsRepository.CacheMediator.Implementation.implementationType);
 
         CompositionStep onCacheHitStep = cacheMediatorStep.addStep(EsbViewsRepository.CacheMediator.OnCacheHit.class);
         onCacheHitStep.addStep(EsbViewsRepository.CacheMediator.OnCacheHit.sequenceType);
@@ -264,11 +283,76 @@ public class CacheMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
                 if (key == EsbViewsRepository.CacheMediator.Protocol.hashGenerator) {
                     return createHashGeneratorText(widgetFactory, parent);
                 }
+                if (key == EsbViewsRepository.CacheMediator.Type.class) {
+                    return createTypeGroup(widgetFactory, parent);
+                }
+                if (key == EsbViewsRepository.CacheMediator.Type.cacheMediatorImplementation) {
+                    return createCacheMediatorImplementationEMFComboViewer(widgetFactory, parent);
+                }
+                if (key == EsbViewsRepository.CacheMediator.Properties.id) {
+                    return createIdText(widgetFactory, parent);
+                }
+                if (key == EsbViewsRepository.CacheMediator.Properties.scope) {
+                    return createScopeEMFComboViewer(widgetFactory, parent);
+                }
+                if (key == EsbViewsRepository.CacheMediator.Properties.hashGeneratorAttribute) {
+                    return createHashGeneratorAttributeText(widgetFactory, parent);
+                }
+                if (key == EsbViewsRepository.CacheMediator.Implementation.implementationType) {
+                    return createImplementationTypeEMFComboViewer(widgetFactory, parent);
+                }
                 return parent;
             }
         };
         composer.compose(view);
     }
+
+    /**
+     * @generated NOT
+     */
+  protected Composite createTypeGroup(FormToolkit widgetFactory, final Composite parent) {
+    Section typeSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
+    typeSection.setText(EsbMessages.CacheMediatorPropertiesEditionPart_TypeGroupLabel);
+    GridData typeSectionData = new GridData(GridData.FILL_HORIZONTAL);
+    typeSectionData.horizontalSpan = 3;
+    typeSection.setLayoutData(typeSectionData);
+    typeGroup = widgetFactory.createComposite(typeSection);
+    GridLayout typeGroupLayout = new GridLayout();
+    typeGroupLayout.numColumns = 3;
+    typeGroup.setLayout(typeGroupLayout);
+    typeSection.setClient(typeGroup);
+    return typeGroup;
+  }
+
+    protected Composite createCacheMediatorImplementationEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
+    Control cacheTypeDescription = createDescription(parent, EsbViewsRepository.CacheMediator.Type.cacheMediatorImplementation, EsbMessages.CacheMediatorPropertiesEditionPart_CacheMediatorImplementationLabel);
+    cacheMediatorImplementation = new EMFComboViewer(parent);
+    cacheMediatorImplementation.setContentProvider(new ArrayContentProvider());
+    cacheMediatorImplementation.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
+    GridData cacheMediatorImplementationData = new GridData(GridData.FILL_HORIZONTAL);
+    cacheMediatorImplementation.getCombo().setLayoutData(cacheMediatorImplementationData);
+    cacheMediatorImplementation.addSelectionChangedListener(new ISelectionChangedListener() {
+
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+       * 	
+       */
+      public void selectionChanged(SelectionChangedEvent event) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CacheMediatorPropertiesEditionPartForm.this, EsbViewsRepository.CacheMediator.Type.cacheMediatorImplementation, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getCacheMediatorImplementation()));
+        refresh();
+      }
+
+    });
+    cacheMediatorImplementation.setID(EsbViewsRepository.CacheMediator.Type.cacheMediatorImplementation);
+    Control cacheTypeHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.CacheMediator.Type.cacheMediatorImplementation, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+    // Start of user code for createCacheMediatorImplementationEMFComboViewer
+    cacheMediatorImplementationElements = new Control[] {cacheTypeDescription, cacheMediatorImplementation.getCombo(), cacheTypeHelp};
+    // End of user code
+    return parent;
+  }
 
     /**
      * @generated NOT
@@ -287,6 +371,73 @@ public class CacheMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
         propertiesSection.setClient(propertiesGroup);
         return propertiesGroup;
     }
+
+    protected Composite createIdText(FormToolkit widgetFactory, Composite parent) {
+    Control idDescription = createDescription(parent, EsbViewsRepository.CacheMediator.Properties.id, EsbMessages.CacheMediatorPropertiesEditionPart_IdLabel);
+    id = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+    id.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+    widgetFactory.paintBordersFor(parent);
+    GridData idData = new GridData(GridData.FILL_HORIZONTAL);
+    id.setLayoutData(idData);
+    id.addFocusListener(new FocusAdapter() {
+      /**
+       * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+       * 
+       */
+      @Override
+      @SuppressWarnings("synthetic-access")
+      public void focusLost(FocusEvent e) {
+        if (propertiesEditionComponent != null) {
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+              CacheMediatorPropertiesEditionPartForm.this,
+              EsbViewsRepository.CacheMediator.Properties.id,
+              PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, id.getText()));
+          propertiesEditionComponent
+              .firePropertiesChanged(new PropertiesEditionEvent(
+                  CacheMediatorPropertiesEditionPartForm.this,
+                  EsbViewsRepository.CacheMediator.Properties.id,
+                  PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
+                  null, id.getText()));
+        }
+      }
+
+      /**
+       * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+       */
+      @Override
+      public void focusGained(FocusEvent e) {
+        if (propertiesEditionComponent != null) {
+          propertiesEditionComponent
+              .firePropertiesChanged(new PropertiesEditionEvent(
+                  CacheMediatorPropertiesEditionPartForm.this,
+                  null,
+                  PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_GAINED,
+                  null, null));
+        }
+      }
+    });
+    id.addKeyListener(new KeyAdapter() {
+      /**
+       * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+       * 
+       */
+      @Override
+      @SuppressWarnings("synthetic-access")
+      public void keyPressed(KeyEvent e) {
+        if (e.character == SWT.CR) {
+          if (propertiesEditionComponent != null)
+            propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CacheMediatorPropertiesEditionPartForm.this, EsbViewsRepository.CacheMediator.Properties.id, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, id.getText()));
+        }
+      }
+    });
+    EditingUtils.setID(id, EsbViewsRepository.CacheMediator.Properties.id);
+    EditingUtils.setEEFtype(id, "eef::Text"); //$NON-NLS-1$
+    Control idHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.CacheMediator.Properties.id, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+    // Start of user code for createIdText
+    idElements = new Control[] {idDescription, id, idHelp};
+    // End of user code
+    return parent;
+  }
 
     /**
      * @generated NOT
@@ -326,6 +477,103 @@ public class CacheMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
         // End of user code
         return parent;
     }
+
+    protected Composite createScopeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
+    Control scopeDescription = createDescription(parent, EsbViewsRepository.CacheMediator.Properties.scope, EsbMessages.CacheMediatorPropertiesEditionPart_ScopeLabel);
+    scope = new EMFComboViewer(parent);
+    scope.setContentProvider(new ArrayContentProvider());
+    scope.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
+    GridData scopeData = new GridData(GridData.FILL_HORIZONTAL);
+    scope.getCombo().setLayoutData(scopeData);
+    scope.addSelectionChangedListener(new ISelectionChangedListener() {
+
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+       * 	
+       */
+      public void selectionChanged(SelectionChangedEvent event) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CacheMediatorPropertiesEditionPartForm.this, EsbViewsRepository.CacheMediator.Properties.scope, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getScope()));
+        refresh();
+      }
+
+    });
+    scope.setID(EsbViewsRepository.CacheMediator.Properties.scope);
+    Control scopeHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.CacheMediator.Properties.scope, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+    // Start of user code for createScopeEMFComboViewer
+    scopeElements = new Control[] {scopeDescription, scope.getCombo(), scopeHelp};
+    // End of user code
+    return parent;
+  }
+
+    protected Composite createHashGeneratorAttributeText(FormToolkit widgetFactory, Composite parent) {
+    Control hashGeneratorDescription = createDescription(parent, EsbViewsRepository.CacheMediator.Properties.hashGeneratorAttribute, EsbMessages.CacheMediatorPropertiesEditionPart_HashGeneratorAttributeLabel);
+    hashGeneratorAttribute = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+    hashGeneratorAttribute.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+    widgetFactory.paintBordersFor(parent);
+    GridData hashGeneratorAttributeData = new GridData(GridData.FILL_HORIZONTAL);
+    hashGeneratorAttribute.setLayoutData(hashGeneratorAttributeData);
+    hashGeneratorAttribute.addFocusListener(new FocusAdapter() {
+      /**
+       * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+       * 
+       */
+      @Override
+      @SuppressWarnings("synthetic-access")
+      public void focusLost(FocusEvent e) {
+        if (propertiesEditionComponent != null) {
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+              CacheMediatorPropertiesEditionPartForm.this,
+              EsbViewsRepository.CacheMediator.Properties.hashGeneratorAttribute,
+              PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, hashGeneratorAttribute.getText()));
+          propertiesEditionComponent
+              .firePropertiesChanged(new PropertiesEditionEvent(
+                  CacheMediatorPropertiesEditionPartForm.this,
+                  EsbViewsRepository.CacheMediator.Properties.hashGeneratorAttribute,
+                  PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
+                  null, hashGeneratorAttribute.getText()));
+        }
+      }
+
+      /**
+       * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+       */
+      @Override
+      public void focusGained(FocusEvent e) {
+        if (propertiesEditionComponent != null) {
+          propertiesEditionComponent
+              .firePropertiesChanged(new PropertiesEditionEvent(
+                  CacheMediatorPropertiesEditionPartForm.this,
+                  null,
+                  PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_GAINED,
+                  null, null));
+        }
+      }
+    });
+    hashGeneratorAttribute.addKeyListener(new KeyAdapter() {
+      /**
+       * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+       * 
+       */
+      @Override
+      @SuppressWarnings("synthetic-access")
+      public void keyPressed(KeyEvent e) {
+        if (e.character == SWT.CR) {
+          if (propertiesEditionComponent != null)
+            propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CacheMediatorPropertiesEditionPartForm.this, EsbViewsRepository.CacheMediator.Properties.hashGeneratorAttribute, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, hashGeneratorAttribute.getText()));
+        }
+      }
+    });
+    EditingUtils.setID(hashGeneratorAttribute, EsbViewsRepository.CacheMediator.Properties.hashGeneratorAttribute);
+    EditingUtils.setEEFtype(hashGeneratorAttribute, "eef::Text"); //$NON-NLS-1$
+    Control hashGeneratorHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.CacheMediator.Properties.hashGeneratorAttribute, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+    // Start of user code for createHashGeneratorAttributeText
+    hashGeneratorAttributeElements = new Control[] {hashGeneratorDescription, hashGeneratorAttribute, hashGeneratorHelp};
+    // End of user code
+    return parent;
+  }
 
     /**
      * @generated NOT
@@ -642,6 +890,36 @@ public class CacheMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
         // End of user code
         return parent;
     }
+
+    protected Composite createImplementationTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
+    Control implementationTypeDescription = createDescription(parent, EsbViewsRepository.CacheMediator.Implementation.implementationType, EsbMessages.CacheMediatorPropertiesEditionPart_ImplementationTypeLabel);
+    implementationType = new EMFComboViewer(parent);
+    implementationType.setContentProvider(new ArrayContentProvider());
+    implementationType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
+    GridData implementationTypeData = new GridData(GridData.FILL_HORIZONTAL);
+    implementationType.getCombo().setLayoutData(implementationTypeData);
+    implementationType.addSelectionChangedListener(new ISelectionChangedListener() {
+
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+       * 	
+       */
+      public void selectionChanged(SelectionChangedEvent event) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CacheMediatorPropertiesEditionPartForm.this, EsbViewsRepository.CacheMediator.Implementation.implementationType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getImplementationType()));
+        refresh();
+      }
+
+    });
+    implementationType.setID(EsbViewsRepository.CacheMediator.Implementation.implementationType);
+    Control implementationTypeHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.CacheMediator.Implementation.implementationType, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+    // Start of user code for createImplementationTypeEMFComboViewer
+    implementationTypeElements = new Control[] {implementationTypeDescription, implementationType.getCombo(), implementationTypeHelp};
+    // End of user code
+    return parent;
+  }
 
     /**
      * @generated NOT
@@ -1245,6 +1523,85 @@ public class CacheMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
     }
 
     /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.CacheMediatorPropertiesEditionPart#getCacheMediatorImplementation()
+   * 
+   */
+  public Enumerator getCacheMediatorImplementation() {
+    Enumerator selection = (Enumerator) ((StructuredSelection) cacheMediatorImplementation.getSelection()).getFirstElement();
+    return selection;
+  }
+
+    /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.CacheMediatorPropertiesEditionPart#initCacheMediatorImplementation(Object input, Enumerator current)
+   */
+  public void initCacheMediatorImplementation(Object input, Enumerator current) {
+    cacheMediatorImplementation.setInput(input);
+    cacheMediatorImplementation.modelUpdating(new StructuredSelection(current));
+    boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.CacheMediator.Type.cacheMediatorImplementation);
+    if (eefElementEditorReadOnlyState && cacheMediatorImplementation.isEnabled()) {
+      cacheMediatorImplementation.setEnabled(false);
+      cacheMediatorImplementation.setToolTipText(EsbMessages.CacheMediator_ReadOnly);
+    } else if (!eefElementEditorReadOnlyState && !cacheMediatorImplementation.isEnabled()) {
+      cacheMediatorImplementation.setEnabled(true);
+    }	
+    
+  }
+
+    /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.CacheMediatorPropertiesEditionPart#setCacheMediatorImplementation(Enumerator newValue)
+   * 
+   */
+  public void setCacheMediatorImplementation(Enumerator newValue) {
+    cacheMediatorImplementation.modelUpdating(new StructuredSelection(newValue));
+    boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.CacheMediator.Type.cacheMediatorImplementation);
+    if (eefElementEditorReadOnlyState && cacheMediatorImplementation.isEnabled()) {
+      cacheMediatorImplementation.setEnabled(false);
+      cacheMediatorImplementation.setToolTipText(EsbMessages.CacheMediator_ReadOnly);
+    } else if (!eefElementEditorReadOnlyState && !cacheMediatorImplementation.isEnabled()) {
+      cacheMediatorImplementation.setEnabled(true);
+    }	
+    
+  }
+
+    /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.CacheMediatorPropertiesEditionPart#getId()
+   * 
+   */
+  public String getId() {
+    return id.getText();
+  }
+
+    /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.CacheMediatorPropertiesEditionPart#setId(String newValue)
+   * 
+   */
+  public void setId(String newValue) {
+    if (newValue != null) {
+      id.setText(newValue);
+    } else {
+      id.setText(""); //$NON-NLS-1$
+    }
+    boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.CacheMediator.Properties.id);
+    if (eefElementEditorReadOnlyState && id.isEnabled()) {
+      id.setEnabled(false);
+      id.setToolTipText(EsbMessages.CacheMediator_ReadOnly);
+    } else if (!eefElementEditorReadOnlyState && !id.isEnabled()) {
+      id.setEnabled(true);
+    }	
+    
+  }
+
+    /**
      * {@inheritDoc}
      * 
      * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.CacheMediatorPropertiesEditionPart#getCacheType()
@@ -1292,6 +1649,85 @@ public class CacheMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
         }
 
     }
+
+    /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.CacheMediatorPropertiesEditionPart#getScope()
+   * 
+   */
+  public Enumerator getScope() {
+    Enumerator selection = (Enumerator) ((StructuredSelection) scope.getSelection()).getFirstElement();
+    return selection;
+  }
+
+    /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.CacheMediatorPropertiesEditionPart#initScope(Object input, Enumerator current)
+   */
+  public void initScope(Object input, Enumerator current) {
+    scope.setInput(input);
+    scope.modelUpdating(new StructuredSelection(current));
+    boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.CacheMediator.Properties.scope);
+    if (eefElementEditorReadOnlyState && scope.isEnabled()) {
+      scope.setEnabled(false);
+      scope.setToolTipText(EsbMessages.CacheMediator_ReadOnly);
+    } else if (!eefElementEditorReadOnlyState && !scope.isEnabled()) {
+      scope.setEnabled(true);
+    }	
+    
+  }
+
+    /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.CacheMediatorPropertiesEditionPart#setScope(Enumerator newValue)
+   * 
+   */
+  public void setScope(Enumerator newValue) {
+    scope.modelUpdating(new StructuredSelection(newValue));
+    boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.CacheMediator.Properties.scope);
+    if (eefElementEditorReadOnlyState && scope.isEnabled()) {
+      scope.setEnabled(false);
+      scope.setToolTipText(EsbMessages.CacheMediator_ReadOnly);
+    } else if (!eefElementEditorReadOnlyState && !scope.isEnabled()) {
+      scope.setEnabled(true);
+    }	
+    
+  }
+
+    /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.CacheMediatorPropertiesEditionPart#getHashGeneratorAttribute()
+   * 
+   */
+  public String getHashGeneratorAttribute() {
+    return hashGeneratorAttribute.getText();
+  }
+
+    /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.CacheMediatorPropertiesEditionPart#setHashGeneratorAttribute(String newValue)
+   * 
+   */
+  public void setHashGeneratorAttribute(String newValue) {
+    if (newValue != null) {
+      hashGeneratorAttribute.setText(newValue);
+    } else {
+      hashGeneratorAttribute.setText(""); //$NON-NLS-1$
+    }
+    boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.CacheMediator.Properties.hashGeneratorAttribute);
+    if (eefElementEditorReadOnlyState && hashGeneratorAttribute.isEnabled()) {
+      hashGeneratorAttribute.setEnabled(false);
+      hashGeneratorAttribute.setToolTipText(EsbMessages.CacheMediator_ReadOnly);
+    } else if (!eefElementEditorReadOnlyState && !hashGeneratorAttribute.isEnabled()) {
+      hashGeneratorAttribute.setEnabled(true);
+    }	
+    
+  }
 
     /**
      * {@inheritDoc}
@@ -1475,6 +1911,53 @@ public class CacheMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
         }
 
     }
+
+    /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.CacheMediatorPropertiesEditionPart#getImplementationType()
+   * 
+   */
+  public Enumerator getImplementationType() {
+    Enumerator selection = (Enumerator) ((StructuredSelection) implementationType.getSelection()).getFirstElement();
+    return selection;
+  }
+
+    /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.CacheMediatorPropertiesEditionPart#initImplementationType(Object input, Enumerator current)
+   */
+  public void initImplementationType(Object input, Enumerator current) {
+    implementationType.setInput(input);
+    implementationType.modelUpdating(new StructuredSelection(current));
+    boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.CacheMediator.Implementation.implementationType);
+    if (eefElementEditorReadOnlyState && implementationType.isEnabled()) {
+      implementationType.setEnabled(false);
+      implementationType.setToolTipText(EsbMessages.CacheMediator_ReadOnly);
+    } else if (!eefElementEditorReadOnlyState && !implementationType.isEnabled()) {
+      implementationType.setEnabled(true);
+    }	
+    
+  }
+
+    /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.CacheMediatorPropertiesEditionPart#setImplementationType(Enumerator newValue)
+   * 
+   */
+  public void setImplementationType(Enumerator newValue) {
+    implementationType.modelUpdating(new StructuredSelection(newValue));
+    boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.CacheMediator.Implementation.implementationType);
+    if (eefElementEditorReadOnlyState && implementationType.isEnabled()) {
+      implementationType.setEnabled(false);
+      implementationType.setToolTipText(EsbMessages.CacheMediator_ReadOnly);
+    } else if (!eefElementEditorReadOnlyState && !implementationType.isEnabled()) {
+      implementationType.setEnabled(true);
+    }	
+    
+  }
 
     /**
      * {@inheritDoc}
@@ -1914,23 +2397,51 @@ public class CacheMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
 
     public void validate() {
         EEFPropertyViewUtil eu = new EEFPropertyViewUtil(view);
+        eu.clearElements(new Composite[] { typeGroup });
         eu.clearElements(new Composite[] { propertiesGroup });
         eu.clearElements(new Composite[] { implementationGroup });
         eu.clearElements(new Composite[] { miscGroup });
         eu.clearElements(new Composite[] { onCacheHitGroup });
         eu.clearElements(new Composite[] { protocolGroup });
 
+        eu.showEntry(cacheMediatorImplementationElements, false);
+        
+        
+        boolean previousCacheImplementation = false;
+        if (getCacheMediatorImplementation() != null) {
+            previousCacheImplementation = getCacheMediatorImplementation().getName().equals(CacheMediatorType.PREVIOUS_IMPLEMENTATION.getName());
+        }
+        
         eu.showEntry(cacheTypeElements, false);
 
         if (getCacheType() != null && getCacheType().getName().equals(CacheType.FINDER.getName())) {
+            
             if (!implementationSection.isVisible()) {
                 implementationSection.setVisible(true);
             }
             if (!onCacheHitSection.isVisible()) {
                 onCacheHitSection.setVisible(true);
             }
-            if (!protocolSection.isVisible()) {
-                protocolSection.setVisible(true);
+            
+            if (!previousCacheImplementation) {
+                if (!protocolSection.isVisible()) {
+                    protocolSection.setVisible(true);
+                }
+                
+                eu.showEntry(cacheProtocolTypeElements, false);
+                eu.showEntry(cacheProtocolMethodsElements, false);
+                eu.showEntry(headersToExcludeInHashElements, false);
+                eu.showEntry(responseCodesElements, false);
+                eu.showEntry(enableCacheControlElements, false);
+                eu.showEntry(includeAgeHeaderElements, false);
+                eu.showEntry(hashGeneratorElements, false);
+                
+                ((GridData) protocolSection.getLayoutData()).exclude = false;
+            } else {
+                eu.showEntry(idElements, false);
+                eu.showEntry(scopeElements, false);
+                eu.showEntry(hashGeneratorAttributeElements, false);
+                eu.showEntry(implementationTypeElements, false);
             }
 
             eu.showEntry(cacheTimeoutElements, false);
@@ -1943,19 +2454,13 @@ public class CacheMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
                 eu.showEntry(sequenceKeyElements, false);
             }
 
-            eu.showEntry(cacheProtocolTypeElements, false);
-            eu.showEntry(cacheProtocolMethodsElements, false);
-            eu.showEntry(headersToExcludeInHashElements, false);
-            eu.showEntry(responseCodesElements, false);
-            eu.showEntry(enableCacheControlElements, false);
-            eu.showEntry(includeAgeHeaderElements, false);
-            eu.showEntry(hashGeneratorElements, false);
-            
             ((GridData) implementationSection.getLayoutData()).exclude = false;
             ((GridData) onCacheHitSection.getLayoutData()).exclude = false;
-            ((GridData) protocolSection.getLayoutData()).exclude = false;
 
         } else {
+            if (previousCacheImplementation) {
+                eu.showEntry(scopeElements, false);
+            }
             implementationSection.setVisible(false);
             ((GridData) implementationSection.getLayoutData()).exclude = true;
             onCacheHitSection.setVisible(false);
@@ -1964,6 +2469,10 @@ public class CacheMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
             ((GridData) protocolSection.getLayoutData()).exclude = true;
         }
 
+        if (previousCacheImplementation) {
+            protocolSection.setVisible(false);
+            ((GridData) protocolSection.getLayoutData()).exclude = true;
+        }
         eu.showEntry(descriptionElements, false);
         view.layout(true, true);
     }

@@ -127,12 +127,18 @@ public class CacheMediatorTransformer extends AbstractEsbNodeTransformer {
 
             } else {
                 // previous implementation of cache mediator
-                cacheMediator.setId(visualCache.getId().trim());
+                cacheMediator.setId("");
+                if (visualCache.getId() != null) {
+                    cacheMediator.setId(visualCache.getId().trim());
+                }
 
                 if (visualCache.getScope().equals(CacheScopeType.PER_HOST)) {
                     cacheMediator.setScope("per-host");
                 } else {
                     cacheMediator.setScope("per-mediator");
+                    if (cacheMediator.getId().equals("")) {
+                        throw new TransformerException("Cache ID cannot be empty since the cache scope is per-mediator.");
+                    }
                 }
 
                 if (!visualCache.getHashGenerator().isEmpty()) {

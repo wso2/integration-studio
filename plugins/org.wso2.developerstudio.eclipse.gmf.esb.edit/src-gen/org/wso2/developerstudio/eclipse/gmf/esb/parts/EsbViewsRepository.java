@@ -1855,7 +1855,7 @@ public class EsbViewsRepository {
 			// Start of user code for sessionIdExpression ElementEditor key
 			public static String sessionIdExpression = "esb::EJBMediator::properties::sessionIdExpression";
 			// End of user code
-
+			
 	
 		}
 	
@@ -1910,7 +1910,7 @@ public class EsbViewsRepository {
 			// Start of user code for propertyExpression ElementEditor key
 			public static String propertyExpression = "esb::MethodArgument::properties::propertyExpression";
 			// End of user code
-
+			
 	
 		}
 	
@@ -2031,38 +2031,59 @@ public class EsbViewsRepository {
 	
 	}
 
-    /**
-     * PropertyGroupMediator view descriptor
-     * 
-     */
-    public static class PropertyGroupMediator {
-        public static class Properties {
-            public static String description = "esb::PropertyGroupMediator::properties::description";
-            public static String commentsList = "esb::PropertyGroupMediator::properties::commentsList";
-            public static String reverse = "esb::PropertyGroupMediator::properties::Reverse";
-            public static String properties_ = "esb::PropertyGroupMediator::properties::properties_";
-        }
-    }
+	/**
+	 * PropertyGroupMediator view descriptor
+	 * 
+	 */
+	public static class PropertyGroupMediator {
+		public static class Properties {
+	
+			
+			public static String description = "esb::PropertyGroupMediator::properties::description";
+			
+			
+			public static String commentsList = "esb::PropertyGroupMediator::properties::commentsList";
+			
+			
+			public static String reverse = "esb::PropertyGroupMediator::properties::Reverse";
+			
+			
+			public static String properties_ = "esb::PropertyGroupMediator::properties::properties_";
+			
+	
+		}
+	
+	}
 
-    /**
-     * PropertyGroupMediatorInputConnector view descriptor
-     * 
-     */
-    public static class PropertyGroupMediatorInputConnector {
-        public static class Properties {
-            public static String incomingLinks = "esb::PropertyGroupMediatorInputConnector::properties::incomingLinks";
-        }
-    }
+	/**
+	 * PropertyGroupMediatorInputConnector view descriptor
+	 * 
+	 */
+	public static class PropertyGroupMediatorInputConnector {
+		public static class Properties {
+	
+			
+			public static String incomingLinks = "esb::PropertyGroupMediatorInputConnector::properties::incomingLinks";
+			
+	
+		}
+	
+	}
 
-    /**
-     * PropertyGroupMediatorOutputConnector view descriptor
-     * 
-     */
-    public static class PropertyGroupMediatorOutputConnector {
-        public static class Properties {
-            public static String commentMediators = "esb::PropertyGroupMediatorOutputConnector::properties::commentMediators";
-        }
-    }
+	/**
+	 * PropertyGroupMediatorOutputConnector view descriptor
+	 * 
+	 */
+	public static class PropertyGroupMediatorOutputConnector {
+		public static class Properties {
+	
+			
+			public static String commentMediators = "esb::PropertyGroupMediatorOutputConnector::properties::commentMediators";
+			
+	
+		}
+	
+	}
 
 	/**
 	 * NamespacedProperty view descriptor
@@ -2153,9 +2174,7 @@ public class EsbViewsRepository {
 			public static String targetProperty = "esb::EnrichMediator::Target::targetProperty";
 			
 			// Start of user code for targetXPath ElementEditor key
-
 			public static String targetXPath = "esb::EnrichMediator::target::targetXPath";
-
 			// End of user code
 			
 	
@@ -4035,10 +4054,27 @@ public class EsbViewsRepository {
 	 * 
 	 */
 	public static class CacheMediator {
+		public static class Type {
+	
+			
+			public static String cacheMediatorImplementation = "esb::CacheMediator::Type::cacheMediatorImplementation";
+			
+	
+		}
+	
 		public static class Properties {
 	
 			
+			public static String id = "esb::CacheMediator::properties::id";
+			
+			
 			public static String cacheType = "esb::CacheMediator::properties::cacheType";
+			
+			
+			public static String scope = "esb::CacheMediator::properties::scope";
+			
+			
+			public static String hashGeneratorAttribute = "esb::CacheMediator::properties::hashGeneratorAttribute";
 			
 			
 			public static String cacheTimeout = "esb::CacheMediator::properties::cacheTimeout";
@@ -4059,6 +4095,9 @@ public class EsbViewsRepository {
 	
 			
 			public static String maxEntryCount = "esb::CacheMediator::Implementation::maxEntryCount";
+			
+			
+			public static String implementationType = "esb::CacheMediator::Implementation::implementationType";
 			
 	
 		}

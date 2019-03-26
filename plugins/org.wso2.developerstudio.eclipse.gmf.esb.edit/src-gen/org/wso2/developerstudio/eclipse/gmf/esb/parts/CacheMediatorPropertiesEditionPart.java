@@ -18,6 +18,41 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 public interface CacheMediatorPropertiesEditionPart {
 
 	/**
+	 * @return the cacheMediatorImplementation
+	 * 
+	 */
+	public Enumerator getCacheMediatorImplementation();
+
+	/**
+	 * Init the cacheMediatorImplementation
+	 * @param input the viewer input
+	 * @param current the current value
+	 */
+	public void initCacheMediatorImplementation(Object input, Enumerator current);
+
+	/**
+	 * Defines a new cacheMediatorImplementation
+	 * @param newValue the new cacheMediatorImplementation to set
+	 * 
+	 */
+	public void setCacheMediatorImplementation(Enumerator newValue);
+
+
+	/**
+	 * @return the id
+	 * 
+	 */
+	public String getId();
+
+	/**
+	 * Defines a new id
+	 * @param newValue the new id to set
+	 * 
+	 */
+	public void setId(String newValue);
+
+
+	/**
 	 * @return the cacheType
 	 * 
 	 */
@@ -36,6 +71,41 @@ public interface CacheMediatorPropertiesEditionPart {
 	 * 
 	 */
 	public void setCacheType(Enumerator newValue);
+
+
+	/**
+	 * @return the scope
+	 * 
+	 */
+	public Enumerator getScope();
+
+	/**
+	 * Init the scope
+	 * @param input the viewer input
+	 * @param current the current value
+	 */
+	public void initScope(Object input, Enumerator current);
+
+	/**
+	 * Defines a new scope
+	 * @param newValue the new scope to set
+	 * 
+	 */
+	public void setScope(Enumerator newValue);
+
+
+	/**
+	 * @return the hashGeneratorAttribute
+	 * 
+	 */
+	public String getHashGeneratorAttribute();
+
+	/**
+	 * Defines a new hashGeneratorAttribute
+	 * @param newValue the new hashGeneratorAttribute to set
+	 * 
+	 */
+	public void setHashGeneratorAttribute(String newValue);
 
 
 	/**
@@ -118,6 +188,27 @@ public interface CacheMediatorPropertiesEditionPart {
 	 * 
 	 */
 	public void setMaxEntryCount(String newValue);
+
+
+	/**
+	 * @return the implementationType
+	 * 
+	 */
+	public Enumerator getImplementationType();
+
+	/**
+	 * Init the implementationType
+	 * @param input the viewer input
+	 * @param current the current value
+	 */
+	public void initImplementationType(Object input, Enumerator current);
+
+	/**
+	 * Defines a new implementationType
+	 * @param newValue the new implementationType to set
+	 * 
+	 */
+	public void setImplementationType(Enumerator newValue);
 
 
 	/**

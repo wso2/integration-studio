@@ -34,9 +34,11 @@ import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingCo
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.CacheImplementationType;
 import org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.CacheMediatorType;
 import org.wso2.developerstudio.eclipse.gmf.esb.CacheProtocolType;
+import org.wso2.developerstudio.eclipse.gmf.esb.CacheScopeType;
 import org.wso2.developerstudio.eclipse.gmf.esb.CacheSequenceType;
 import org.wso2.developerstudio.eclipse.gmf.esb.CacheType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
@@ -153,6 +155,32 @@ public class CacheMediatorPropertiesEditionComponent extends SinglePartPropertie
             if (isAccessible(EsbViewsRepository.CacheMediator.Properties.reverse)) {
                 basePart.setReverse(cacheMediator.isReverse());
             }
+            
+            if (isAccessible(EsbViewsRepository.CacheMediator.Type.cacheMediatorImplementation)) {
+                basePart.initCacheMediatorImplementation(
+                        EEFUtils.choiceOfValues(cacheMediator, EsbPackage.eINSTANCE.getCacheMediator_CacheMediatorImplementation()),
+                        cacheMediator.getCacheMediatorImplementation());
+            }
+            
+            if (isAccessible(EsbViewsRepository.CacheMediator.Properties.id)) {
+                basePart.setId(cacheMediator.getId());
+            }
+            
+            if (isAccessible(EsbViewsRepository.CacheMediator.Properties.scope)) {
+                basePart.initScope(
+                        EEFUtils.choiceOfValues(cacheMediator, EsbPackage.eINSTANCE.getCacheMediator_Scope()),
+                        cacheMediator.getScope());
+            }
+            
+            if (isAccessible(EsbViewsRepository.CacheMediator.Properties.hashGeneratorAttribute)) {
+                basePart.setHashGeneratorAttribute(cacheMediator.getHashGeneratorAttribute());
+            }
+            
+            if (isAccessible(EsbViewsRepository.CacheMediator.Implementation.implementationType)) {
+                basePart.initImplementationType(
+                        EEFUtils.choiceOfValues(cacheMediator, EsbPackage.eINSTANCE.getCacheMediator_ImplementationType()),
+                        cacheMediator.getImplementationType());
+            }
             // init filters
 
             // Start of user code for sequenceKey filter update
@@ -219,6 +247,21 @@ public class CacheMediatorPropertiesEditionComponent extends SinglePartPropertie
         }
         if (editorKey == EsbViewsRepository.CacheMediator.Properties.reverse) {
             return EsbPackage.eINSTANCE.getMediator_Reverse();
+        }
+        if (editorKey == EsbViewsRepository.CacheMediator.Type.cacheMediatorImplementation) {
+            return EsbPackage.eINSTANCE.getCacheMediator_CacheMediatorImplementation();
+        }
+        if (editorKey == EsbViewsRepository.CacheMediator.Properties.id) {
+            return EsbPackage.eINSTANCE.getCacheMediator_Id();
+        }
+        if (editorKey == EsbViewsRepository.CacheMediator.Properties.scope) {
+            return EsbPackage.eINSTANCE.getCacheMediator_Scope();
+        }
+        if (editorKey == EsbViewsRepository.CacheMediator.Properties.hashGeneratorAttribute) {
+            return EsbPackage.eINSTANCE.getCacheMediator_HashGeneratorAttribute();
+        }
+        if (editorKey == EsbViewsRepository.CacheMediator.Implementation.implementationType) {
+            return EsbPackage.eINSTANCE.getCacheMediator_ImplementationType();
         }
         return super.associatedFeature(editorKey);
     }
@@ -297,6 +340,23 @@ public class CacheMediatorPropertiesEditionComponent extends SinglePartPropertie
         }
         if (EsbViewsRepository.CacheMediator.Properties.reverse == event.getAffectedEditor()) {
             cacheMediator.setReverse((Boolean) event.getNewValue());
+        }
+        if (EsbViewsRepository.CacheMediator.Type.cacheMediatorImplementation == event.getAffectedEditor()) {
+            cacheMediator.setCacheMediatorImplementation((CacheMediatorType)event.getNewValue());
+        }
+        if (EsbViewsRepository.CacheMediator.Properties.id == event.getAffectedEditor()) {
+            cacheMediator.setId((java.lang.String) EEFConverterUtil
+                    .createFromString(EcorePackage.Literals.ESTRING, (String) event.getNewValue()));
+        }
+        if (EsbViewsRepository.CacheMediator.Properties.scope == event.getAffectedEditor()) {
+            cacheMediator.setScope((CacheScopeType)event.getNewValue());
+        }
+        if (EsbViewsRepository.CacheMediator.Properties.hashGeneratorAttribute == event.getAffectedEditor()) {
+            cacheMediator.setHashGeneratorAttribute((java.lang.String) EEFConverterUtil
+                    .createFromString(EcorePackage.Literals.ESTRING, (String) event.getNewValue()));
+        }
+        if (EsbViewsRepository.CacheMediator.Implementation.implementationType == event.getAffectedEditor()) {
+            cacheMediator.setImplementationType((CacheImplementationType)event.getNewValue());
         }
     }
 
@@ -443,6 +503,45 @@ public class CacheMediatorPropertiesEditionComponent extends SinglePartPropertie
                     && isAccessible(EsbViewsRepository.CacheMediator.Properties.reverse))
                 basePart.setReverse((Boolean) msg.getNewValue());
 
+            if (EsbPackage.eINSTANCE.getCacheMediator_CacheMediatorImplementation().equals(msg.getFeature())
+                    && msg.getNotifier().equals(semanticObject) && basePart != null
+                    && isAccessible(EsbViewsRepository.CacheMediator.Type.cacheMediatorImplementation)) {
+                if (msg.getNewValue() instanceof CacheImplementationType) {
+                    basePart.setCacheMediatorImplementation((CacheImplementationType)msg.getNewValue());
+                }
+            }
+            
+            if (EsbPackage.eINSTANCE.getCacheMediator_Id().equals(msg.getFeature())
+                    && msg.getNotifier().equals(semanticObject) && basePart != null
+                    && isAccessible(EsbViewsRepository.CacheMediator.Properties.id)) {
+                if (msg.getNewValue() != null) {
+                    basePart.setId(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
+                } else {
+                    basePart.setId("");
+                }
+            }
+            
+            if (EsbPackage.eINSTANCE.getCacheMediator_Scope().equals(msg.getFeature())
+                    && msg.getNotifier().equals(semanticObject) && basePart != null
+                    && isAccessible(EsbViewsRepository.CacheMediator.Properties.scope)) {
+                basePart.setScope((CacheScopeType)msg.getNewValue());
+            }
+            
+            if (EsbPackage.eINSTANCE.getCacheMediator_HashGeneratorAttribute().equals(msg.getFeature())
+                    && msg.getNotifier().equals(semanticObject) && basePart != null
+                    && isAccessible(EsbViewsRepository.CacheMediator.Properties.hashGeneratorAttribute)) {
+                if (msg.getNewValue() != null) {
+                    basePart.setHashGeneratorAttribute(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
+                } else {
+                    basePart.setHashGeneratorAttribute("");
+                }
+            }
+            
+            if (EsbPackage.eINSTANCE.getCacheMediator_ImplementationType().equals(msg.getFeature())
+                    && msg.getNotifier().equals(semanticObject) && basePart != null
+                    && isAccessible(EsbViewsRepository.CacheMediator.Implementation.implementationType)) {
+                basePart.setImplementationType((CacheImplementationType)msg.getNewValue());
+            }
         }
     }
 
@@ -467,7 +566,13 @@ public class CacheMediatorPropertiesEditionComponent extends SinglePartPropertie
                 EsbPackage.eINSTANCE.getCacheMediator_ResponseCodes(),
                 EsbPackage.eINSTANCE.getCacheMediator_EnableCacheControl(),
                 EsbPackage.eINSTANCE.getCacheMediator_IncludeAgeHeader(),
-                EsbPackage.eINSTANCE.getCacheMediator_SequenceKey(), EsbPackage.eINSTANCE.getEsbElement_CommentsList(),
+                EsbPackage.eINSTANCE.getCacheMediator_SequenceKey(),
+                EsbPackage.eINSTANCE.getEsbElement_CommentsList(),
+                EsbPackage.eINSTANCE.getCacheMediator_CacheMediatorImplementation(),
+                EsbPackage.eINSTANCE.getCacheMediator_Id(),
+                EsbPackage.eINSTANCE.getCacheMediator_Scope(),
+                EsbPackage.eINSTANCE.getCacheMediator_HashGeneratorAttribute(),
+                EsbPackage.eINSTANCE.getCacheMediator_ImplementationType(),
                 EsbPackage.eINSTANCE.getMediator_Reverse());
         return new NotificationFilter[] { filter, };
     }

@@ -78,6 +78,8 @@ public class CacheMediatorExtFactory extends CacheMediatorFactory {
             OMAttribute idAttribute = elem.getAttribute(ATT_ID);
             if (idAttribute != null && idAttribute.getAttributeValue() != null) {
                 cacheMediator.setId(idAttribute.getAttributeValue().trim());
+            } else {
+                cacheMediator.setId("");
             }
 
             OMAttribute hashGeneratorAttribute = elem.getAttribute(ATT_HASH_GENERATOR);

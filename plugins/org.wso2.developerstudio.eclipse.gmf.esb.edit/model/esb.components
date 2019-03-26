@@ -2361,6 +2361,21 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_f9SccDHmEemo6qC30gq9Xg" name="Reverse" views="_bhDhsDHmEemo6qC30gq9Xg">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//Mediator/Reverse"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_ux-ScEv1EemCVabDpQrwfQ" name="id" views="_wXjicEvwEemCVabDpQrwfQ">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//CacheMediator/id"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_zWb8IEv1EemCVabDpQrwfQ" name="hashGeneratorAttribute" views="_33h7AEvwEemCVabDpQrwfQ">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//CacheMediator/hashGeneratorAttribute"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_6u3iQEv1EemCVabDpQrwfQ" name="scope" views="_-bO4kEvwEemCVabDpQrwfQ">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//CacheMediator/scope"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="__XDOUEv1EemCVabDpQrwfQ" name="implementationType" views="_mB258EvwEemCVabDpQrwfQ">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//CacheMediator/implementationType"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_FjBBUEv2EemCVabDpQrwfQ" name="cacheMediatorImplementation" views="_KvNBEEvwEemCVabDpQrwfQ">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//CacheMediator/cacheMediatorImplementation"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//CacheMediator"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_E7v8LfJnEei6boXzpRIfnA" name="CacheMediatorInputConnector" views="_E7wlpPJnEei6boXzpRIfnA">
@@ -8439,10 +8454,25 @@
         </elements>
       </views>
       <views xmi:id="_E7wlk_JnEei6boXzpRIfnA" name="CacheMediator">
+        <elements xsi:type="eef-views:Container" xmi:id="_u-4UwEvvEemCVabDpQrwfQ" name="Type">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_KvNBEEvwEemCVabDpQrwfQ" name="cacheMediatorImplementation">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
+          </elements>
+        </elements>
         <elements xsi:type="eef-views:Container" xmi:id="_E7wllPJnEei6boXzpRIfnA" name="properties">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_wXjicEvwEemCVabDpQrwfQ" name="id">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wlmfJnEei6boXzpRIfnA" name="cacheType">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_-bO4kEvwEemCVabDpQrwfQ" name="scope">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_33h7AEvwEemCVabDpQrwfQ" name="hashGeneratorAttribute">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wlm_JnEei6boXzpRIfnA" name="cacheTimeout">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
@@ -8461,6 +8491,9 @@
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wlnvJnEei6boXzpRIfnA" name="maxEntryCount">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_mB258EvwEemCVabDpQrwfQ" name="implementationType">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
           </elements>
         </elements>
         <elements xsi:type="eef-views:Container" xmi:id="_Sw4XICcSEem3lJlzbKMBPg" name="OnCacheHit">

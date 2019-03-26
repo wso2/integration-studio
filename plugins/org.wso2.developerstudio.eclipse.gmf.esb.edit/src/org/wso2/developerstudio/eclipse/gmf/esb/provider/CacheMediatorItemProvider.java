@@ -17,6 +17,7 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.CacheMediatorType;
 import org.wso2.developerstudio.eclipse.gmf.esb.CacheSequenceType;
 import org.wso2.developerstudio.eclipse.gmf.esb.CacheType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
@@ -55,25 +56,41 @@ public class CacheMediatorItemProvider extends MediatorItemProvider {
             itemPropertyDescriptors.clear();
         }
         super.getPropertyDescriptors(object);
+        addCacheMediatorImplementationPropertyDescriptor(object);
+//        addScopePropertyDescriptor(object);
+        
+        boolean previousCache = cacheMediator.getCacheMediatorImplementation().equals(CacheMediatorType.PREVIOUS_IMPLEMENTATION);
+        
         addCacheTypePropertyDescriptor(object);
         if (cacheMediator.getCacheType().equals(CacheType.FINDER)) {
             addCacheTimeoutPropertyDescriptor(object);
             addMaxMessageSizePropertyDescriptor(object);
             addMaxEntryCountPropertyDescriptor(object);
             addSequenceTypePropertyDescriptor(object);
-            addCacheProtocolTypePropertyDescriptor(object);
-            if (PROTOCOL_TYPE_HTTP.equals(cacheMediator.getCacheProtocolType().getLiteral())) {
-                addCacheProtocolMethodsPropertyDescriptor(object);
-                addHeadersToExcludeInHashPropertyDescriptor(object);
-                addResponseCodesPropertyDescriptor(object);
-                addEnableCacheControlPropertyDescriptor(object);
-                addIncludeAgeHeaderPropertyDescriptor(object);
+            if (!previousCache) {
+                addCacheProtocolTypePropertyDescriptor(object);
+                if (PROTOCOL_TYPE_HTTP.equals(cacheMediator.getCacheProtocolType().getLiteral())) {
+                    addCacheProtocolMethodsPropertyDescriptor(object);
+                    addHeadersToExcludeInHashPropertyDescriptor(object);
+                    addResponseCodesPropertyDescriptor(object);
+                    addEnableCacheControlPropertyDescriptor(object);
+                    addIncludeAgeHeaderPropertyDescriptor(object);
+                }
+                addHashGeneratorPropertyDescriptor(object);
+                
+            } else {
+                addIdPropertyDescriptor(object);
+                addScopePropertyDescriptor(object);
+                addHashGeneratorAttributePropertyDescriptor(object);
+                addImplementationTypePropertyDescriptor(object);
             }
-            addHashGeneratorPropertyDescriptor(object);
+            
             if (cacheMediator.getSequenceType().equals(CacheSequenceType.REGISTRY_REFERENCE)) {
                 // adding cache on hit property descriptor.
                 addSequenceKeyPropertyDescriptor(object);
             }
+        } else if (previousCache) {
+            addScopePropertyDescriptor(object);
         }
         addDescriptionPropertyDescriptor(object);
         return itemPropertyDescriptors;
@@ -304,7 +321,7 @@ public class CacheMediatorItemProvider extends MediatorItemProvider {
      * This adds a property descriptor for the Id feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
+     * @generated NOT
      */
     protected void addIdPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add
@@ -318,7 +335,7 @@ public class CacheMediatorItemProvider extends MediatorItemProvider {
                  false,
                  false,
                  ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                 null,
+                 "General",
                  null));
     }
 
@@ -326,7 +343,7 @@ public class CacheMediatorItemProvider extends MediatorItemProvider {
      * This adds a property descriptor for the Hash Generator Attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
+     * @generated NOT
      */
     protected void addHashGeneratorAttributePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add
@@ -340,7 +357,7 @@ public class CacheMediatorItemProvider extends MediatorItemProvider {
                  false,
                  false,
                  ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                 null,
+                 "General",
                  null));
     }
 
@@ -348,7 +365,7 @@ public class CacheMediatorItemProvider extends MediatorItemProvider {
      * This adds a property descriptor for the Scope feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
+     * @generated NOT
      */
     protected void addScopePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add
@@ -362,7 +379,7 @@ public class CacheMediatorItemProvider extends MediatorItemProvider {
                  false,
                  false,
                  ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                 null,
+                 "General",
                  null));
     }
 
@@ -370,7 +387,7 @@ public class CacheMediatorItemProvider extends MediatorItemProvider {
      * This adds a property descriptor for the Implementation Type feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
+     * @generated NOT
      */
     protected void addImplementationTypePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add
@@ -384,7 +401,7 @@ public class CacheMediatorItemProvider extends MediatorItemProvider {
                  false,
                  false,
                  ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                 null,
+                 "Implementation",
                  null));
     }
 
@@ -392,7 +409,7 @@ public class CacheMediatorItemProvider extends MediatorItemProvider {
      * This adds a property descriptor for the Cache Mediator Implementation feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
+     * @generated NOT
      */
     protected void addCacheMediatorImplementationPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add
@@ -406,7 +423,7 @@ public class CacheMediatorItemProvider extends MediatorItemProvider {
                  false,
                  false,
                  ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                 null,
+                 "Type",
                  null));
     }
 

@@ -32,6 +32,11 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator#getResponseCodes <em>Response Codes</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator#isEnableCacheControl <em>Enable Cache Control</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator#isIncludeAgeHeader <em>Include Age Header</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator#getId <em>Id</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator#getHashGeneratorAttribute <em>Hash Generator Attribute</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator#getScope <em>Scope</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator#getImplementationType <em>Implementation Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator#getCacheMediatorImplementation <em>Cache Mediator Implementation</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCacheMediator()
@@ -499,5 +504,149 @@ public interface CacheMediator extends Mediator {
      * @generated
      */
     void setIncludeAgeHeader(boolean value);
+
+    /**
+     * Returns the value of the '<em><b>Id</b></em>' attribute.
+     * The default value is <code>""</code>.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Id</em>' attribute isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Id</em>' attribute.
+     * @see #setId(String)
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCacheMediator_Id()
+     * @model default=""
+     * @generated
+     */
+    String getId();
+
+    /**
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator#getId <em>Id</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Id</em>' attribute.
+     * @see #getId()
+     * @generated
+     */
+    void setId(String value);
+
+    /**
+     * Returns the value of the '<em><b>Hash Generator Attribute</b></em>' attribute.
+     * The default value is <code>"org.wso2.carbon.mediator.cache.digest.DOMHASHGenerator"</code>.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Hash Generator Attribute</em>' attribute isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Hash Generator Attribute</em>' attribute.
+     * @see #setHashGeneratorAttribute(String)
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCacheMediator_HashGeneratorAttribute()
+     * @model default="org.wso2.carbon.mediator.cache.digest.DOMHASHGenerator"
+     * @generated
+     */
+    String getHashGeneratorAttribute();
+
+    /**
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator#getHashGeneratorAttribute <em>Hash Generator Attribute</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Hash Generator Attribute</em>' attribute.
+     * @see #getHashGeneratorAttribute()
+     * @generated
+     */
+    void setHashGeneratorAttribute(String value);
+
+    /**
+     * Returns the value of the '<em><b>Scope</b></em>' attribute.
+     * The default value is <code>"Per_Host"</code>.
+     * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.CacheScopeType}.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Scope</em>' attribute isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Scope</em>' attribute.
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.CacheScopeType
+     * @see #setScope(CacheScopeType)
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCacheMediator_Scope()
+     * @model default="Per_Host"
+     * @generated
+     */
+    CacheScopeType getScope();
+
+    /**
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator#getScope <em>Scope</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Scope</em>' attribute.
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.CacheScopeType
+     * @see #getScope()
+     * @generated
+     */
+    void setScope(CacheScopeType value);
+
+    /**
+     * Returns the value of the '<em><b>Implementation Type</b></em>' attribute.
+     * The default value is <code>"memory"</code>.
+     * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.CacheImplementationType}.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Implementation Type</em>' attribute isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Implementation Type</em>' attribute.
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.CacheImplementationType
+     * @see #setImplementationType(CacheImplementationType)
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCacheMediator_ImplementationType()
+     * @model default="memory"
+     * @generated
+     */
+    CacheImplementationType getImplementationType();
+
+    /**
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator#getImplementationType <em>Implementation Type</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Implementation Type</em>' attribute.
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.CacheImplementationType
+     * @see #getImplementationType()
+     * @generated
+     */
+    void setImplementationType(CacheImplementationType value);
+
+    /**
+     * Returns the value of the '<em><b>Cache Mediator Implementation</b></em>' attribute.
+     * The default value is <code>"New_implementation"</code>.
+     * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.CacheMediatorType}.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Cache Mediator Implementation</em>' attribute isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Cache Mediator Implementation</em>' attribute.
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.CacheMediatorType
+     * @see #setCacheMediatorImplementation(CacheMediatorType)
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCacheMediator_CacheMediatorImplementation()
+     * @model default="New_implementation"
+     * @generated
+     */
+    CacheMediatorType getCacheMediatorImplementation();
+
+    /**
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator#getCacheMediatorImplementation <em>Cache Mediator Implementation</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Cache Mediator Implementation</em>' attribute.
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.CacheMediatorType
+     * @see #getCacheMediatorImplementation()
+     * @generated
+     */
+    void setCacheMediatorImplementation(CacheMediatorType value);
 
 } // CacheMediator

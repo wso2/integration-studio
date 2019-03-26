@@ -689,6 +689,12 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
                 return createEnableDisableStateFromString(eDataType, initialValue);
             case EsbPackage.API_VERSION_TYPE:
                 return createAPIVersionTypeFromString(eDataType, initialValue);
+            case EsbPackage.CACHE_SCOPE_TYPE:
+                return createCacheScopeTypeFromString(eDataType, initialValue);
+            case EsbPackage.CACHE_IMPLEMENTATION_TYPE:
+                return createCacheImplementationTypeFromString(eDataType, initialValue);
+            case EsbPackage.CACHE_MEDIATOR_TYPE:
+                return createCacheMediatorTypeFromString(eDataType, initialValue);
             case EsbPackage.MAP:
                 return createMapFromString(eDataType, initialValue);
             default:
@@ -965,6 +971,12 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
                 return convertEnableDisableStateToString(eDataType, instanceValue);
             case EsbPackage.API_VERSION_TYPE:
                 return convertAPIVersionTypeToString(eDataType, instanceValue);
+            case EsbPackage.CACHE_SCOPE_TYPE:
+                return convertCacheScopeTypeToString(eDataType, instanceValue);
+            case EsbPackage.CACHE_IMPLEMENTATION_TYPE:
+                return convertCacheImplementationTypeToString(eDataType, instanceValue);
+            case EsbPackage.CACHE_MEDIATOR_TYPE:
+                return convertCacheMediatorTypeToString(eDataType, instanceValue);
             case EsbPackage.MAP:
                 return convertMapToString(eDataType, instanceValue);
             default:
@@ -1815,8 +1827,6 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
      */
 	public PropertyGroupMediator createPropertyGroupMediator() {
         PropertyGroupMediatorImpl propertyGroupMediator = new PropertyGroupMediatorImpl();
-        propertyGroupMediator.setInputConnector(createPropertyGroupMediatorInputConnector());
-        propertyGroupMediator.setOutputConnector(createPropertyGroupMediatorOutputConnector());
         return propertyGroupMediator;
     }
 
@@ -7482,6 +7492,66 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
      * @generated
      */
     public String convertAPIVersionTypeToString(EDataType eDataType, Object instanceValue) {
+        return instanceValue == null ? null : instanceValue.toString();
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public CacheScopeType createCacheScopeTypeFromString(EDataType eDataType, String initialValue) {
+        CacheScopeType result = CacheScopeType.get(initialValue);
+        if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+        return result;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public String convertCacheScopeTypeToString(EDataType eDataType, Object instanceValue) {
+        return instanceValue == null ? null : instanceValue.toString();
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public CacheImplementationType createCacheImplementationTypeFromString(EDataType eDataType, String initialValue) {
+        CacheImplementationType result = CacheImplementationType.get(initialValue);
+        if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+        return result;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public String convertCacheImplementationTypeToString(EDataType eDataType, Object instanceValue) {
+        return instanceValue == null ? null : instanceValue.toString();
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public CacheMediatorType createCacheMediatorTypeFromString(EDataType eDataType, String initialValue) {
+        CacheMediatorType result = CacheMediatorType.get(initialValue);
+        if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+        return result;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public String convertCacheMediatorTypeToString(EDataType eDataType, Object instanceValue) {
         return instanceValue == null ? null : instanceValue.toString();
     }
 

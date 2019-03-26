@@ -27,6 +27,8 @@ import org.wso2.carbon.mediator.cache.CacheManager;
 import org.wso2.carbon.mediator.cache.CachingConstants;
 import org.wso2.carbon.mediator.cache.digest.DigestGenerator;
 import org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.CacheMediatorType;
+import org.wso2.developerstudio.eclipse.gmf.esb.CacheScopeType;
 import org.wso2.developerstudio.eclipse.gmf.esb.CacheSequenceType;
 import org.wso2.developerstudio.eclipse.gmf.esb.CacheType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
@@ -77,9 +79,19 @@ public class CacheMediatorTransformer extends AbstractEsbNodeTransformer {
         org.wso2.carbon.mediator.cache.CacheMediator cacheMediator = new org.wso2.carbon.mediator.cache.CacheMediator(
                 new CacheManager());
         setCommonProperties(cacheMediator, visualCache);
-        {
-            if (visualCache.getCacheType().equals(CacheType.FINDER)) {
-                cacheMediator.setCollector(false);
+
+        boolean isPreviousCacheImplementation = visualCache.getCacheMediatorImplementation()
+                .equals(CacheMediatorType.PREVIOUS_IMPLEMENTATION);
+
+        if (isPreviousCacheImplementation) {
+            cacheMediator.setPreviousCacheImplementation(true);
+        }
+
+        if (visualCache.getCacheType().equals(CacheType.FINDER)) {
+            cacheMediator.setCollector(false);
+
+            if (!isPreviousCacheImplementation) {
+                // new implementation of cache mediator
                 cacheMediator.setProtocolType(visualCache.getCacheProtocolType().getLiteral());
                 if (CachingConstants.HTTP_PROTOCOL_TYPE.equals(visualCache.getCacheProtocolType().getLiteral())) {
                     if (StringUtils.isNotBlank(visualCache.getCacheProtocolMethods())) {
@@ -93,15 +105,16 @@ public class CacheMediatorTransformer extends AbstractEsbNodeTransformer {
                         cacheMediator.setResponseCodes(".*");
                     }
                     cacheMediator.setCacheControlEnabled(visualCache.isEnableCacheControl());
+
                     cacheMediator.setAddAgeHeaderEnabled(visualCache.isIncludeAgeHeader());
                     if (StringUtils.isNotBlank(visualCache.getHeadersToExcludeInHash())) {
                         cacheMediator.setHeadersToExcludeInHash(visualCache.getHeadersToExcludeInHash().split(","));
                     }
                 }
-                cacheMediator.setMaxMessageSize(visualCache.getMaxMessageSize());
-                cacheMediator.setTimeout(visualCache.getCacheTimeout());
+
                 DigestGenerator httpRequestHashGenerator = null;
-                if (visualCache.getHashGenerator().equals("org.wso2.carbon.mediator.cache.digest.HttpRequestHashGenerator")) {
+                if (visualCache.getHashGenerator()
+                        .equals("org.wso2.carbon.mediator.cache.digest.HttpRequestHashGenerator")) {
                     httpRequestHashGenerator = new org.wso2.carbon.mediator.cache.digest.HttpRequestHashGenerator();
                 } else if (visualCache.getHashGenerator().toLowerCase().contains("requesthashgenerator")) {
                     httpRequestHashGenerator = new org.wso2.carbon.mediator.cache.digest.REQUESTHASHGenerator();
@@ -111,32 +124,67 @@ public class CacheMediatorTransformer extends AbstractEsbNodeTransformer {
                     throw new TransformerException("Digest generator not found");
                 }
                 cacheMediator.setDigestGenerator(httpRequestHashGenerator);
-                cacheMediator.setInMemoryCacheSize(visualCache.getMaxEntryCount());
+
             } else {
-                cacheMediator.setCollector(true);
-            }
-
-            if (visualCache.getSequenceType().equals(CacheSequenceType.REGISTRY_REFERENCE)) {
-                if (visualCache.getSequenceKey() != null) {
-
-                    RegistryKeyProperty regKeyProperty = visualCache.getSequenceKey();
-                    cacheMediator.setOnCacheHitRef(regKeyProperty.getKeyValue());
+                // previous implementation of cache mediator
+                cacheMediator.setId("");
+                if (visualCache.getId() != null) {
+                    cacheMediator.setId(visualCache.getId().trim());
                 }
 
-            } else {
-                SequenceMediator onCacheHitSequence = new SequenceMediator();
-                TransformationInfo newOnCacheHitInfo = new TransformationInfo();
-                newOnCacheHitInfo.setTraversalDirection(info.getTraversalDirection());
-                newOnCacheHitInfo.setSynapseConfiguration(info.getSynapseConfiguration());
-                newOnCacheHitInfo.setOriginInSequence(info.getOriginInSequence());
-                newOnCacheHitInfo.setOriginOutSequence(info.getOriginOutSequence());
-                newOnCacheHitInfo.setCurrentProxy(info.getCurrentProxy());
-                newOnCacheHitInfo.setParentSequence(onCacheHitSequence);
-                doTransform(newOnCacheHitInfo, visualCache.getOnHitOutputConnector());
-                cacheMediator.setOnCacheHitSequence(onCacheHitSequence);
+                if (visualCache.getScope().equals(CacheScopeType.PER_HOST)) {
+                    cacheMediator.setScope("per-host");
+                } else {
+                    cacheMediator.setScope("per-mediator");
+                    if (cacheMediator.getId().equals("")) {
+                        throw new TransformerException("Cache ID cannot be empty since the cache scope is per-mediator.");
+                    }
+                }
+
+                if (!visualCache.getHashGenerator().isEmpty()) {
+                    cacheMediator.setHashGenerator(visualCache.getHashGeneratorAttribute());
+                } else {
+                    cacheMediator.setHashGenerator("org.wso2.carbon.mediator.cache.digest.DOMHASHGenerator");
+                }
+
+                cacheMediator.setImplementationType(visualCache.getImplementationType().getName());
             }
 
+            cacheMediator.setMaxMessageSize(visualCache.getMaxMessageSize());
+            cacheMediator.setTimeout(visualCache.getCacheTimeout());
+            cacheMediator.setInMemoryCacheSize(visualCache.getMaxEntryCount());
+
+        } else {
+            cacheMediator.setCollector(true);
+            if (isPreviousCacheImplementation) {
+                if (visualCache.getScope().equals(CacheScopeType.PER_HOST)) {
+                    cacheMediator.setScope("per-host");
+                } else {
+                    cacheMediator.setScope("per-mediator");
+                }
+            }
         }
+
+        if (visualCache.getSequenceType().equals(CacheSequenceType.REGISTRY_REFERENCE)) {
+            if (visualCache.getSequenceKey() != null) {
+
+                RegistryKeyProperty regKeyProperty = visualCache.getSequenceKey();
+                cacheMediator.setOnCacheHitRef(regKeyProperty.getKeyValue());
+            }
+
+        } else {
+            SequenceMediator onCacheHitSequence = new SequenceMediator();
+            TransformationInfo newOnCacheHitInfo = new TransformationInfo();
+            newOnCacheHitInfo.setTraversalDirection(info.getTraversalDirection());
+            newOnCacheHitInfo.setSynapseConfiguration(info.getSynapseConfiguration());
+            newOnCacheHitInfo.setOriginInSequence(info.getOriginInSequence());
+            newOnCacheHitInfo.setOriginOutSequence(info.getOriginOutSequence());
+            newOnCacheHitInfo.setCurrentProxy(info.getCurrentProxy());
+            newOnCacheHitInfo.setParentSequence(onCacheHitSequence);
+            doTransform(newOnCacheHitInfo, visualCache.getOnHitOutputConnector());
+            cacheMediator.setOnCacheHitSequence(onCacheHitSequence);
+        }
+
         return cacheMediator;
     }
 }

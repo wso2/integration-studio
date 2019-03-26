@@ -378,14 +378,13 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
      * 
      */
     public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
-        ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
-        Form form = scrolledForm.getForm();
+        Form form = widgetFactory.createForm(parent);
         view = form.getBody();
         GridLayout layout = new GridLayout();
         layout.numColumns = 3;
         view.setLayout(layout);
         createControls(widgetFactory, view);
-        return scrolledForm;
+        return form;
     }
 
     /**
@@ -399,10 +398,12 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
         CompositionSequence inboundEndpointStep = new BindingCompositionSequence(propertiesEditionComponent);
         CompositionStep propertiesStep = inboundEndpointStep
                 .addStep(EsbViewsRepository.InboundEndpoint.Properties.class);
-        propertiesStep.addStep(EsbViewsRepository.InboundEndpoint.Properties.description);
         propertiesStep.addStep(EsbViewsRepository.InboundEndpoint.Properties.commentsList);
         propertiesStep.addStep(EsbViewsRepository.InboundEndpoint.Properties.name);
         propertiesStep.addStep(EsbViewsRepository.InboundEndpoint.Properties.type);
+        propertiesStep.addStep(EsbViewsRepository.InboundEndpoint.Properties.suspend);
+        propertiesStep.addStep(EsbViewsRepository.InboundEndpoint.Properties.traceEnabled);
+        propertiesStep.addStep(EsbViewsRepository.InboundEndpoint.Properties.statisticsEnabled);        
         propertiesStep.addStep(EsbViewsRepository.InboundEndpoint.Properties.class_);
         propertiesStep.addStep(EsbViewsRepository.InboundEndpoint.Properties.protocol);
         propertiesStep.addStep(EsbViewsRepository.InboundEndpoint.Properties.inboundEndpointBehaviour);
@@ -548,7 +549,6 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
         propertiesStep.addStep(EsbViewsRepository.InboundEndpoint.Properties.inboundCxfRmConfigFile);
         propertiesStep.addStep(EsbViewsRepository.InboundEndpoint.Properties.enableSSL);
         propertiesStep.addStep(EsbViewsRepository.InboundEndpoint.Properties.serviceParameters);
-        propertiesStep.addStep(EsbViewsRepository.InboundEndpoint.Properties.suspend);
         propertiesStep.addStep(EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqConnectionFactory);
         propertiesStep.addStep(EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqServerHostName);
         propertiesStep.addStep(EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqServerPort);
@@ -595,8 +595,6 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
         propertiesStep.addStep(EsbViewsRepository.InboundEndpoint.Properties.wsPipelineHandlerClass);
         propertiesStep.addStep(EsbViewsRepository.InboundEndpoint.Properties.transportFeedURL);
         propertiesStep.addStep(EsbViewsRepository.InboundEndpoint.Properties.transportFeedType);
-        propertiesStep.addStep(EsbViewsRepository.InboundEndpoint.Properties.traceEnabled);
-        propertiesStep.addStep(EsbViewsRepository.InboundEndpoint.Properties.statisticsEnabled);
         propertiesStep.addStep(EsbViewsRepository.InboundEndpoint.Properties.transportJMSRetriesBeforeSuspension);
         propertiesStep
                 .addStep(EsbViewsRepository.InboundEndpoint.Properties.transportJMSResetConnectionOnPollingSuspension);
@@ -623,6 +621,7 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
         propertiesStep.addStep(EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqConsumerQosKey);
         propertiesStep.addStep(EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqConsumerQosType);
         propertiesStep.addStep(EsbViewsRepository.InboundEndpoint.Properties.transportJMSDBUrl);
+        propertiesStep.addStep(EsbViewsRepository.InboundEndpoint.Properties.description);        
 
         composer = new PartComposer(inboundEndpointStep) {
 

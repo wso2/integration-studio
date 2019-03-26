@@ -77,6 +77,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.WSClientSideBroadcastLevel;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 
 // End of user code
 
@@ -4160,9 +4161,10 @@ public class InboundEndpointPropertiesEditionComponent extends SinglePartPropert
 	 * 
 	 */
 	public String getHelpContent(Object key, int kind) {
-		if (key == EsbViewsRepository.InboundEndpoint.Properties.serviceParameters)
-			return ""; //$NON-NLS-1$
-		return super.getHelpContent(key, kind);
+//		if (key == EsbViewsRepository.InboundEndpoint.Properties.serviceParameters)
+//			return ""; //$NON-NLS-1$
+//		return super.getHelpContent(key, kind);
+	    return EEFPropertyViewUtil.getHelpContent(key);
 	}
 
 	/**
@@ -5681,10 +5683,5 @@ public class InboundEndpointPropertiesEditionComponent extends SinglePartPropert
 		}
 		return ret;
 	}
-
-
 	
-
-	
-
 }

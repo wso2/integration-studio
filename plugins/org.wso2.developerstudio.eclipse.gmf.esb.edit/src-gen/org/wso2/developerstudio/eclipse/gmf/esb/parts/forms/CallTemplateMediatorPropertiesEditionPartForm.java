@@ -5,6 +5,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb.parts.forms;
 
 // Start of user code for imports
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.eclipse.emf.common.util.BasicEList;
@@ -13,7 +14,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-
+import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
@@ -33,6 +34,7 @@ import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 
 import org.eclipse.emf.eef.runtime.ui.widgets.EEFFeatureEditorDialog;
+import org.eclipse.emf.eef.runtime.ui.widgets.EMFComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
 
@@ -40,7 +42,9 @@ import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableLis
 
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableContentProvider;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
-
+import org.eclipse.jface.viewers.ArrayContentProvider;
+import org.eclipse.jface.viewers.ISelectionChangedListener;
+import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.ViewerFilter;
 
 import org.eclipse.jface.window.Window;
@@ -65,7 +69,6 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.Section;
-
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.CallTemplateMediatorPropertiesEditionPart;
@@ -86,7 +89,7 @@ public class CallTemplateMediatorPropertiesEditionPartForm extends SectionProper
 	protected Button editCommentsList;
 	protected EList commentsListList;
 	protected Button reverse;
-	protected Text availableTemplates;
+	protected EMFComboViewer availableTemplates;
 	protected ReferencesTable templateParameters;
 	protected List<ViewerFilter> templateParametersBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> templateParametersFilters = new ArrayList<ViewerFilter>();
@@ -97,7 +100,6 @@ public class CallTemplateMediatorPropertiesEditionPartForm extends SectionProper
     protected Control[] descriptionElements;
     protected Composite propertiesGroup;
     private Control[] templateParametersElements;
-
 
 	/**
 	 * For {@link ISection} use only.
@@ -348,67 +350,36 @@ public class CallTemplateMediatorPropertiesEditionPartForm extends SectionProper
      */
 	protected Composite createAvailableTemplatesText(FormToolkit widgetFactory, Composite parent) {
 		Control availableTemplatesLabel = createDescription(parent, EsbViewsRepository.CallTemplateMediator.Properties.availableTemplates, EsbMessages.CallTemplateMediatorPropertiesEditionPart_AvailableTemplatesLabel);
-		availableTemplates = widgetFactory.createText(parent, ""); //$NON-NLS-1$
-		availableTemplates.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
-		widgetFactory.paintBordersFor(parent);
-		GridData availableTemplatesData = new GridData(GridData.FILL_HORIZONTAL);
-		availableTemplates.setLayoutData(availableTemplatesData);
-		availableTemplates.addFocusListener(new FocusAdapter() {
-			/**
-			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null) {
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
-							CallTemplateMediatorPropertiesEditionPartForm.this,
-							EsbViewsRepository.CallTemplateMediator.Properties.availableTemplates,
-							PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, availableTemplates.getText()));
-					propertiesEditionComponent
-							.firePropertiesChanged(new PropertiesEditionEvent(
-									CallTemplateMediatorPropertiesEditionPartForm.this,
-									EsbViewsRepository.CallTemplateMediator.Properties.availableTemplates,
-									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, availableTemplates.getText()));
-				}
-			}
+		availableTemplates = new EMFComboViewer(parent);
+		availableTemplates.setContentProvider(new ArrayContentProvider());
+		availableTemplates.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
+        GridData valueTypeData = new GridData(GridData.FILL_HORIZONTAL);
+        availableTemplates.getCombo().setLayoutData(valueTypeData);
+        Object [] availableTemplateList = EEFPropertyViewUtil.getAvailableTemplateList().toArray();
+        String [] availableTemplateNameList = Arrays.copyOf(availableTemplateList, availableTemplateList.length, String[].class);
+        availableTemplates.getCombo().setItems(availableTemplateNameList);
+        availableTemplates.getCombo().select(0);
+        availableTemplates.addSelectionChangedListener(new ISelectionChangedListener() {
 
-			/**
-			 * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
-			 */
-			@Override
-			public void focusGained(FocusEvent e) {
-				if (propertiesEditionComponent != null) {
-					propertiesEditionComponent
-							.firePropertiesChanged(new PropertiesEditionEvent(
-									CallTemplateMediatorPropertiesEditionPartForm.this,
-									null,
-									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_GAINED,
-									null, null));
-				}
-			}
-		});
-		availableTemplates.addKeyListener(new KeyAdapter() {
-			/**
-			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CallTemplateMediatorPropertiesEditionPartForm.this, EsbViewsRepository.CallTemplateMediator.Properties.availableTemplates, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, availableTemplates.getText()));
-				}
-			}
-		});
-		EditingUtils.setID(availableTemplates, EsbViewsRepository.CallTemplateMediator.Properties.availableTemplates);
-		EditingUtils.setEEFtype(availableTemplates, "eef::Text"); //$NON-NLS-1$
-		Control availableTemplatesHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.CallTemplateMediator.Properties.availableTemplates, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+            /**
+             * {@inheritDoc}
+             *
+             * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+             *
+             */
+            public void selectionChanged(SelectionChangedEvent event) {
+                if (propertiesEditionComponent != null)
+                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CallTemplateMediatorPropertiesEditionPartForm.this,
+                            EsbViewsRepository.CallTemplateMediator.Properties.availableTemplates, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET,
+                            null, getAvailableTemplates()));
+            }
+
+        });
+        availableTemplates.setID(EsbViewsRepository.CallTemplateMediator.Properties.availableTemplates);
+		Control availableTemplatesHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(
+		        EsbViewsRepository.CallTemplateMediator.Properties.availableTemplates, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createAvailableTemplatesText
-		availableTemplatesElements = new Control[] {availableTemplatesLabel, availableTemplates, availableTemplatesHelp};
+		availableTemplatesElements = new Control[] {availableTemplatesLabel, availableTemplates.getCombo(), availableTemplatesHelp};
 		// End of user code
 		return parent;
 	}
@@ -471,7 +442,7 @@ public class CallTemplateMediatorPropertiesEditionPartForm extends SectionProper
      */
 	protected Composite createTargetTemplateText(FormToolkit widgetFactory, Composite parent) {
 		Control targeTemplateLabel = createDescription(parent, EsbViewsRepository.CallTemplateMediator.Properties.targetTemplate, EsbMessages.CallTemplateMediatorPropertiesEditionPart_TargetTemplateLabel);
-		targetTemplate = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+		targetTemplate = widgetFactory.createText(parent, "",  SWT.READ_ONLY); //$NON-NLS-1$
 		targetTemplate.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData targetTemplateData = new GridData(GridData.FILL_HORIZONTAL);
@@ -671,7 +642,7 @@ public class CallTemplateMediatorPropertiesEditionPartForm extends SectionProper
 	 * 
 	 */
 	public String getAvailableTemplates() {
-		return availableTemplates.getText();
+		return availableTemplates.getCombo().getText();
 	}
 
 	/**
@@ -682,10 +653,21 @@ public class CallTemplateMediatorPropertiesEditionPartForm extends SectionProper
 	 */
 	public void setAvailableTemplates(String newValue) {
 		if (newValue != null) {
-			availableTemplates.setText(newValue);
+		    selectAvailableTemplateComboBox(newValue);
 		} else {
-			availableTemplates.setText(""); //$NON-NLS-1$
+			availableTemplates.getCombo().select(0); //$NON-NLS-1$
 		}
+		//update target template
+		if(availableTemplates.getCombo().getSelectionIndex() != 0) {
+		    setTargetTemplate(availableTemplates.getCombo().getText());
+		} else {
+		    setTargetTemplate("");
+		}
+		if (propertiesEditionComponent != null) {
+            propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CallTemplateMediatorPropertiesEditionPartForm.this,
+                    EsbViewsRepository.CallTemplateMediator.Properties.targetTemplate, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET,
+                    null, targetTemplate.getText()));
+        }
 		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.CallTemplateMediator.Properties.availableTemplates);
 		if (eefElementEditorReadOnlyState && availableTemplates.isEnabled()) {
 			availableTemplates.setEnabled(false);
@@ -781,9 +763,11 @@ public class CallTemplateMediatorPropertiesEditionPartForm extends SectionProper
 	public void setTargetTemplate(String newValue) {
 		if (newValue != null) {
 			targetTemplate.setText(newValue);
+			selectAvailableTemplateComboBox(newValue);
 		} else {
 			targetTemplate.setText(""); //$NON-NLS-1$
 		}
+
 		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.CallTemplateMediator.Properties.targetTemplate);
 		if (eefElementEditorReadOnlyState && targetTemplate.isEnabled()) {
 			targetTemplate.setEnabled(false);
@@ -824,6 +808,16 @@ public class CallTemplateMediatorPropertiesEditionPartForm extends SectionProper
         epv.showEntry(templateParametersElements, false);
         epv.showEntry(targetTemplateElements, false);
         view.layout(true, true);
+    }
+
+    public void selectAvailableTemplateComboBox(String newValue) {
+        String [] availableTempaltesList = availableTemplates.getCombo().getItems();
+        for(int i=0;i < availableTempaltesList.length;i++) {
+            String availableTemplate = availableTempaltesList[i];
+            if(availableTemplate.equals(newValue)) {
+               availableTemplates.getCombo().select(i);
+            }
+        }
     }
 
 	// End of user code

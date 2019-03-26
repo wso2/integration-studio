@@ -8,53 +8,34 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
-
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
-
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
-
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
-
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
-
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
-
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
-
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
-
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
-
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableContentProvider;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
-
 import org.eclipse.jface.viewers.ViewerFilter;
-
 import org.eclipse.swt.SWT;
-
-import org.eclipse.swt.events.FocusAdapter;
-import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
-
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
-
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
-
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.SwitchCaseBranchOutputConnectorPropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
@@ -208,22 +189,7 @@ public class SwitchCaseBranchOutputConnectorPropertiesEditionPartImpl extends Co
 		caseRegex = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData caseRegexData = new GridData(GridData.FILL_HORIZONTAL);
 		caseRegex.setLayoutData(caseRegexData);
-		caseRegex.addFocusListener(new FocusAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SwitchCaseBranchOutputConnectorPropertiesEditionPartImpl.this, EsbViewsRepository.SwitchCaseBranchOutputConnector.Properties.caseRegex, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, caseRegex.getText()));
-			}
-
-		});
+		
 		caseRegex.addKeyListener(new KeyAdapter() {
 
 			/**
@@ -234,12 +200,13 @@ public class SwitchCaseBranchOutputConnectorPropertiesEditionPartImpl extends Co
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
+			public void keyReleased(KeyEvent e) {
+				if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
 					if (propertiesEditionComponent != null)
 						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SwitchCaseBranchOutputConnectorPropertiesEditionPartImpl.this, EsbViewsRepository.SwitchCaseBranchOutputConnector.Properties.caseRegex, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, caseRegex.getText()));
 				}
 			}
+			
 
 		});
 		EditingUtils.setID(caseRegex, EsbViewsRepository.SwitchCaseBranchOutputConnector.Properties.caseRegex);

@@ -20,6 +20,8 @@ import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.KeyListener;
 import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.layout.GridData;
@@ -35,6 +37,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.ProxyServicePolicyPropertiesEditionPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
 import org.wso2.developerstudio.esb.form.editors.article.providers.NamedEntityDescriptor;
@@ -209,6 +212,28 @@ public class ProxyServicePolicyPropertiesEditionPartImpl extends CompositeProper
 
             }
         });
+        
+        policyKeyText.addKeyListener(new KeyListener() {
+            
+            @Override
+            public void keyReleased(KeyEvent e) {
+                if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                    EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(parent.getShell(),
+                            SWT.NULL, policyKey, new ArrayList<NamedEntityDescriptor>());
+                    dialog.open();
+                    policyKeyText.setText(policyKey.getKeyValue());
+                    propertiesEditionComponent
+                            .firePropertiesChanged(new PropertiesEditionEvent(ProxyServicePolicyPropertiesEditionPartImpl.this,
+                                    EsbViewsRepository.ProxyServicePolicy.Properties.policyKey, PropertiesEditionEvent.COMMIT,
+                                    PropertiesEditionEvent.SET, null, getPolicyKey()));
+                }
+            }
+            
+            @Override
+            public void keyPressed(KeyEvent e) {}
+            
+        });
+        
         EditingUtils.setID(policyKeyText, EsbViewsRepository.ProxyServicePolicy.Properties.policyKey);
         EditingUtils.setEEFtype(policyKeyText, "eef::Text");
         Control policyKeyHelp = SWTUtils

@@ -177,14 +177,13 @@ public class NamedEndpointPropertiesEditionPartForm extends SectionPropertiesEdi
 	 * 
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
-		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
-		Form form = scrolledForm.getForm();
+		Form form = widgetFactory.createForm(parent);
 		view = form.getBody();
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
 		createControls(widgetFactory, view);
-		return scrolledForm;
+		return form;
 	}
 
 	/**
@@ -2866,7 +2865,7 @@ public class NamedEndpointPropertiesEditionPartForm extends SectionPropertiesEdi
             dynamicReferenceKeyExpression = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
         }
         String initValueExpression = dynamicReferenceKeyExpression.getPropertyValue().isEmpty() ? "" : dynamicReferenceKeyExpression.getPropertyValue();
-        dynamicReferenceKeyText = widgetFactory.createText(parent, initValueExpression);
+        dynamicReferenceKeyText = widgetFactory.createText(parent, initValueExpression, SWT.READ_ONLY);
         dynamicReferenceKeyText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
         widgetFactory.paintBordersFor(parent);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
@@ -2915,7 +2914,7 @@ public class NamedEndpointPropertiesEditionPartForm extends SectionPropertiesEdi
             staticReferenceKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
         }
         String initValueExpression = staticReferenceKey.getKeyValue().isEmpty() ? "" : staticReferenceKey.getKeyValue();
-        staticReferenceKeyText = widgetFactory.createText(parent, initValueExpression);
+        staticReferenceKeyText = widgetFactory.createText(parent, initValueExpression, SWT.READ_ONLY);
         staticReferenceKeyText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
         widgetFactory.paintBordersFor(parent);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);

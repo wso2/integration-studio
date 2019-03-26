@@ -1,12 +1,17 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.presentation;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.layout.FormData;
@@ -15,13 +20,21 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.Section;
-
+import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBArtifact;
+import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.Activator;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.eclipse.swt.layout.GridLayout;
 
 public class EEFPropertyViewUtil {
 
     Composite view;
     static Properties properties = null;
+    private static final String TYPE_TEMPLATE_SEQ = "synapse/sequenceTemplate";
+    private static final String TYPE_TEMPLATE_EPT = "synapse/endpointTemplate";
+    private static final String AVAILABLE_TEMPLATE_LIST_DEFAULT_VALUE = "Select From Templates";
+    private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
     static {
         URL url;
@@ -209,5 +222,40 @@ public class EEFPropertyViewUtil {
             helpContent = ((String)key).replaceAll("::", "-");
         }
         return properties.getProperty(helpContent);
+    }
+
+    public static ArrayList<String> getAvailableTemplateList() {
+        ArrayList<String> definedTemplates = new ArrayList<String>();
+        definedTemplates.add(AVAILABLE_TEMPLATE_LIST_DEFAULT_VALUE);
+        File projectPath = null;
+        IProject[] projects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
+        for (IProject activeProject : projects) {
+            if (activeProject != null) {
+                try {
+                    if (activeProject.hasNature("org.wso2.developerstudio.eclipse.esb.project.nature")) {
+                        ESBProjectArtifact esbProjectArtifact = new ESBProjectArtifact();
+                        projectPath = activeProject.getLocation().toFile();
+                        try {
+                            esbProjectArtifact.fromFile(activeProject.getFile("artifact.xml").getLocation().toFile());
+                            List<ESBArtifact> allESBArtifacts = esbProjectArtifact.getAllESBArtifacts();
+                            for (ESBArtifact esbArtifact : allESBArtifacts) {
+                                if (TYPE_TEMPLATE_SEQ.equals(esbArtifact.getType())) {
+                                    File artifact = new File(projectPath, esbArtifact.getFile());
+                                    definedTemplates.add(artifact.getName().replaceAll("[.]xml$", ""));
+                                } else if (TYPE_TEMPLATE_EPT.equals(esbArtifact.getType())) {
+                                    File artifact = new File(projectPath, esbArtifact.getFile());
+                                    definedTemplates.add(artifact.getName().replaceAll("[.]xml$", ""));
+                                }
+                            }
+                        } catch (Exception e) {
+                            log.error("Error occured while scanning the project for artifacts", e);
+                        }
+                    }
+                } catch (CoreException e) {
+                    log.error("Error occured while scanning the project", e);
+                }
+            }
+        }
+        return definedTemplates;
     }
 }

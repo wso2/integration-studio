@@ -27,6 +27,8 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.IWorkbench;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.WorkbenchException;
 import org.eclipse.ui.wizards.datatransfer.ExternalProjectImportWizard;
 import org.wso2.developerstudio.eclipse.distribution.project.Activator;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
@@ -39,6 +41,7 @@ public class ProjectImportWizard extends ExternalProjectImportWizard {
 	private static final String ESB_FILE_EXTENSION = "esb";
 	private static final String ESB_DIAGRAM_FILE_EXTENSION = "esb_diagram";
 	private String PROJECT_WIZARD_TITLE = "Open Existing Project";
+	private static final String JAVA_EE_PERSPECTIVE_ID = "org.eclipse.jst.j2ee.J2EEPerspective";
 	
 	public ProjectImportWizard() {
 	    setWindowTitle(PROJECT_WIZARD_TITLE);
@@ -56,6 +59,12 @@ public class ProjectImportWizard extends ExternalProjectImportWizard {
 		for (IProject resource : createdProjects) {
 			searchAndRemoveGraphicalSynapseCongif(resource);
 		}
+        try {
+            PlatformUI.getWorkbench().showPerspective(JAVA_EE_PERSPECTIVE_ID,
+                    PlatformUI.getWorkbench().getActiveWorkbenchWindow());
+        } catch (WorkbenchException e) {
+            log.error("Error occurred while switching to ESB perspective " + e.getMessage());
+        }
 		return created;
 	}
 

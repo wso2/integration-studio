@@ -68,7 +68,7 @@ public class CustomSynapsePathFactory {
                 }
             }
         } else {
-            handleException("Invalid path expression");
+            path = SynapseXPathExt.createSynapsePath("");
         }
         return path;
     }

@@ -345,6 +345,12 @@ public class MediatorValidationUtil {
                     formatElement.setNamespace(new OMNamespaceImpl("http://ws.apache.org/ns/synapse", ""));
                 }
 
+                Iterator agrs = omElement.getChildrenWithLocalName("args");
+                if (agrs.hasNext()) {
+                    OMElement argElement = (OMElement) agrs.next();
+                    argElement.setNamespace(new OMNamespaceImpl("http://ws.apache.org/ns/synapse", ""));
+                }
+                
                 payloadFactoryMediatorFactory.createMediator(omElement, null);
 
             } else if (qTag.equals("smooks")) {

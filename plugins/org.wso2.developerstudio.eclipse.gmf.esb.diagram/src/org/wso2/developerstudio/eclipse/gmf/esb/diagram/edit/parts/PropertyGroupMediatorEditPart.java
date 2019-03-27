@@ -15,7 +15,7 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts;
 
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EditPartConstants.DEFAULT_PROPERTY_VALUE_TEXT;
-import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EditPartConstants.PROPERTY_MEDIATOR_ICON_PATH;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EditPartConstants.PROPERTYGROUP_MEDIATOR_ICON_PATH;
 
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.draw2d.IFigure;
@@ -127,7 +127,7 @@ public class PropertyGroupMediatorEditPart extends FixedSizedAbstractMediator {
      * @generated NOT
      */
     protected IFigure createNodeShape() {
-        return primaryShape = new PropertyGroupMediatorFigure(new Color(null, 41, 128, 185)) {
+        return primaryShape = new PropertyGroupMediatorFigure(new Color(null, 255, 255, 255)) {
             public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
                 super.setBounds(rect);
                 if (this.getBounds().getLocation().x != 0 && this.getBounds().getLocation().y != 0) {
@@ -364,7 +364,7 @@ public class PropertyGroupMediatorEditPart extends FixedSizedAbstractMediator {
         }
 
         public String getIconPath() {
-            return PROPERTY_MEDIATOR_ICON_PATH;
+            return PROPERTYGROUP_MEDIATOR_ICON_PATH;
         }
 
         public String getNodeName() {

@@ -563,14 +563,14 @@ public class EsbPaletteFactory {
     }
 
     /**
-    * @generated
+    * @generated NOT
     */
     private ToolEntry createPropertyGroupMediator5CreationTool() {
         NodeToolEntry entry = new NodeToolEntry(Messages.PropertyGroupMediator5CreationTool_title,
                 Messages.PropertyGroupMediator5CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.PropertyGroupMediator_3788));
         entry.setId("createPropertyGroupMediator5CreationTool"); //$NON-NLS-1$
-        entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.PropertyMediator_3492));
+        entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.PropertyGroupMediator_3788));
         entry.setLargeIcon(entry.getSmallIcon());
         return entry;
     }

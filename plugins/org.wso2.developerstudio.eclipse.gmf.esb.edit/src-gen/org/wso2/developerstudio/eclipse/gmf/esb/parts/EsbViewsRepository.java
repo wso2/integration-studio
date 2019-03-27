@@ -4346,7 +4346,7 @@ public class EsbViewsRepository {
 			public static String serviceURL = "esb::CalloutMediator::Service::serviceURL";
 			
 			// Start of user code for Address Endpoint ElementEditor key
-			public static String addressEndpoint = "esb::CalloutMediator::Service::Address Endpoint";
+			public static String addressEndpoint = "esb::CalloutMediator::Service::AddressEndpoint";
 			// End of user code
 			
 	
@@ -4361,7 +4361,7 @@ public class EsbViewsRepository {
 			public static String payloadProperty = "esb::CalloutMediator::Source::payloadProperty";
 			
 			// Start of user code for Payload Message Xpath ElementEditor key
-			public static String payloadMessageXpath = "esb::CalloutMediator::Source::Payload Message Xpath";
+			public static String payloadMessageXpath = "esb::CalloutMediator::Source::PayloadMessageXpath";
 			// End of user code
 			
 	
@@ -4376,7 +4376,7 @@ public class EsbViewsRepository {
 			public static String resultContextProperty = "esb::CalloutMediator::Target::resultContextProperty";
 			
 			// Start of user code for Result Message Xpath ElementEditor key
-			public static String resultMessageXpath = "esb::CalloutMediator::Target::Result Message Xpath";
+			public static String resultMessageXpath = "esb::CalloutMediator::Target::ResultMessageXpath";
 			// End of user code
 			
 	
@@ -4391,15 +4391,15 @@ public class EsbViewsRepository {
 			public static String securityType = "esb::CalloutMediator::WS::securityType";
 			
 			// Start of user code for Policy Key ElementEditor key
-			public static String policyKey = "esb::CalloutMediator::WS::Policy Key";
+			public static String policyKey = "esb::CalloutMediator::WS::PolicyKey";
 			// End of user code
 			
 			// Start of user code for Outbound Policy Key ElementEditor key
-			public static String outboundPolicyKey = "esb::CalloutMediator::WS::Outbound Policy Key";
+			public static String outboundPolicyKey = "esb::CalloutMediator::WS::OutboundPolicyKey";
 			// End of user code
 			
 			// Start of user code for Inbound Policy Key ElementEditor key
-			public static String inboundPolicyKey = "esb::CalloutMediator::WS::Inbound Policy Key";
+			public static String inboundPolicyKey = "esb::CalloutMediator::WS::InboundPolicyKey";
 			// End of user code
 			
 	
@@ -4670,14 +4670,14 @@ public class EsbViewsRepository {
 			public static String valueLiteral = "esb::HeaderMediator::properties::valueLiteral";
 			
 			
-			public static String valueInline = "esb::HeaderMediator::properties::value Inline";
+			public static String valueInline = "esb::HeaderMediator::properties::valueInline";
 			
 			// Start of user code for header Name ElementEditor key
-			public static String headerName = "esb::HeaderMediator::properties::header Name";
+			public static String headerName = "esb::HeaderMediator::properties::headerName";
 			// End of user code
 			
 			// Start of user code for value Expression ElementEditor key
-			public static String valueExpression = "esb::HeaderMediator::properties::value Expression";
+			public static String valueExpression = "esb::HeaderMediator::properties::valueExpression";
 			// End of user code
 			
 			

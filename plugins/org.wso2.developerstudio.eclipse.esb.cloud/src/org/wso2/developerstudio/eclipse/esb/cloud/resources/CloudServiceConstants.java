@@ -57,7 +57,7 @@ public class CloudServiceConstants {
     // Integration Cloud response messages
     public static class ResponseMessages {
         public static final String USER_SUCCESSFULLY_LOGGED_IN = "User successfully logged in";
-        public static final String NO_RESOURCES_ERROR = "Application creation request not accepted because no resources available to create new application/version";
+        public static final String NO_RESOURCES_ERROR = "Application creation request not accepted as there are no resources available to create a new application/version";
         public static final String VERSION_EXISTS_ERROR = "applicationRevision is required!";
         public static final String APP_REVISION_ERROR = "Bad request : applicationRevision is required!";
         public static final String APP_EXISTS_ERROR = "Bad request : Application with same name and version already exists!";

@@ -25,6 +25,7 @@ import java.util.stream.Collectors;
 
 import org.apache.http.client.CookieStore;
 import org.apache.http.impl.client.BasicCookieStore;
+import org.wso2.developerstudio.eclipse.esb.cloud.Activator;
 import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.CloudDeploymentException;
 import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.HttpClientException;
 import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.InvalidTokenException;
@@ -34,6 +35,8 @@ import org.wso2.developerstudio.eclipse.esb.cloud.resources.CloudServiceConstant
 import org.wso2.developerstudio.eclipse.esb.cloud.resources.ResponseMessageConstants;
 import org.wso2.developerstudio.eclipse.esb.cloud.util.HTTPClientUtil;
 import org.wso2.developerstudio.eclipse.esb.cloud.util.JsonUtils;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -47,7 +50,10 @@ public class IntegrationCloudServiceClient {
 
     // maintains cookies that are required for authentication
     private static CookieStore cookieStore;
+
     private static IntegrationCloudServiceClient client;
+
+    private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
     private IntegrationCloudServiceClient() {
 
@@ -74,7 +80,7 @@ public class IntegrationCloudServiceClient {
      * @throws NetworkUnavailableException
      */
     public boolean login(String username, String password, String tenant)
-            throws CloudDeploymentException, InvalidTokenException, NetworkUnavailableException, HttpClientException {
+            throws CloudDeploymentException, NetworkUnavailableException, HttpClientException {
         String loginUrl = CloudServiceConstants.ServiceEndpoints.LOGIN_URL;
 
         // Integration Cloud expects the username to be in <email>@<organization_key> format
@@ -85,14 +91,18 @@ public class IntegrationCloudServiceClient {
         data.put("userName", user);
         data.put("password", password);
 
-        String response = HTTPClientUtil.sendPostWithFormData(loginUrl, new HashMap<String, String>(), data,
-                cookieStore);
+        try {
+            String response = HTTPClientUtil.sendPostWithFormData(loginUrl, new HashMap<String, String>(), data,
+                    cookieStore);
+            JsonParser parser = new JsonParser();
+            JsonElement jsonResponse = parser.parse(response);
+            String message = jsonResponse.getAsJsonObject().get("message").getAsString();
+            return message.equals(CloudServiceConstants.ResponseMessages.USER_SUCCESSFULLY_LOGGED_IN);
+        } catch (InvalidTokenException e) {
+            log.error("Failed to authenticate user!", e);
+        }
+        return false;
 
-        JsonParser parser = new JsonParser();
-        JsonElement jsonResponse = parser.parse(response);
-
-        String message = jsonResponse.getAsJsonObject().get("message").getAsString();
-        return message.equals(CloudServiceConstants.ResponseMessages.USER_SUCCESSFULLY_LOGGED_IN);
     }
 
     /**
@@ -182,7 +192,7 @@ public class IntegrationCloudServiceClient {
                 cookieStore);
 
         // If the application endpoints are not yet ready, it will return null
-        if (null != response && !"null".equals(response)) {
+        if (null != response && !"".equals(response)) {
             JsonElement endpointData = new JsonParser().parse(response);
             JsonObject dataJson = endpointData.getAsJsonObject().get("data").getAsJsonObject();
             response = dataJson.toString();
@@ -223,7 +233,7 @@ public class IntegrationCloudServiceClient {
         Map<String, String> data = new HashMap<>();
         data.put(CloudServiceConstants.Parameters.PARAM_ACTION, CloudServiceConstants.Actions.CREATE_APPLICATION);
         data.put(CloudServiceConstants.Parameters.PARAM_APP_NAME, appName);
-        
+
         if (null != appDescription && !appDescription.isEmpty()) {
             data.put(CloudServiceConstants.Parameters.PARAM_APP_DESCRIPTION, appDescription);
         }
@@ -244,9 +254,8 @@ public class IntegrationCloudServiceClient {
                 CloudServiceConstants.AppConfigs.SET_DEFAULT_VERSION);
         data.put(CloudServiceConstants.Parameters.PARAM_RUNTIME, CloudServiceConstants.AppConfigs.RUNTIME);
 
-        String response = HTTPClientUtil.sendPostWithMulipartFormData(createAppUrl, data, files, cookieStore);
+        HTTPClientUtil.sendPostWithMulipartFormData(createAppUrl, data, files, cookieStore);
 
-        mapResponse(response);
     }
 
     /**
@@ -258,31 +267,6 @@ public class IntegrationCloudServiceClient {
         return cookieStore;
     }
 
-    /**
-     * Maps responses with status code 200 but indicates errors, to exception messages
-     * 
-     * @param response
-     * @return response if there are no errors
-     * @throws CloudDeploymentException
-     */
-    private static String mapResponse(String response) throws CloudDeploymentException {
-        String message;
 
-        switch (response) {
-        case CloudServiceConstants.ResponseMessages.APP_REVISION_ERROR:
-            message = ResponseMessageConstants.ErrorMessages.VERSION_EXISTS;
-            throw new CloudDeploymentException(message);
-        case CloudServiceConstants.ResponseMessages.APP_EXISTS_ERROR:
-            message = ResponseMessageConstants.ErrorMessages.APPLICATION_EXISTS;
-            throw new CloudDeploymentException(message);
-        case CloudServiceConstants.ResponseMessages.NO_RESOURCES_ERROR:
-            message = ResponseMessageConstants.ErrorMessages.NO_RESOURCES_ERROR;
-            throw new CloudDeploymentException(message);
-        case CloudServiceConstants.ResponseMessages.VERSION_EXISTS_ERROR:
-            message = ResponseMessageConstants.ErrorMessages.VERSION_EXISTS;
-            throw new CloudDeploymentException(message);
-        default:
-            return response;
-        }
-    }
+
 }

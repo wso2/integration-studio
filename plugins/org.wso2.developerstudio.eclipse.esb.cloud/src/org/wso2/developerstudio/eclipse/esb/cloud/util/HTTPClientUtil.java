@@ -42,6 +42,9 @@ import org.wso2.developerstudio.eclipse.esb.cloud.resources.ResponseMessageConst
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
@@ -225,9 +228,41 @@ public class HTTPClientUtil {
             throws InvalidTokenException, CloudDeploymentException {
         if (status == 401) {
             throw new InvalidTokenException(ResponseMessageConstants.ErrorMessages.AUTHENTICATION_FAILURE);
-        } else if (status != 200 && (null == response || response == "")) {
-            throw new CloudDeploymentException(ResponseMessageConstants.ErrorMessages.REQUEST_FAILURE);
+        } else if (status != 200) {
+            throw new CloudDeploymentException(mapResponse(response));
         }
+    }
+
+    /**
+     * Maps responses with status code 200 but indicates errors, to exception messages
+     * 
+     * @param response
+     * @return response if there are no errors
+     * @throws CloudDeploymentException
+     */
+    private static String mapResponse(String response) throws CloudDeploymentException {
+        // String message;
+
+        JsonParser parser = new JsonParser();
+        JsonElement jsonResponse = parser.parse(response);
+        return jsonResponse.getAsJsonObject().get("message").getAsString();
+
+        // switch (response) {
+        // case CloudServiceConstants.ResponseMessages.APP_REVISION_ERROR:
+        // message = ResponseMessageConstants.ErrorMessages.VERSION_EXISTS;
+        // throw new CloudDeploymentException(message);
+        // case CloudServiceConstants.ResponseMessages.APP_EXISTS_ERROR:
+        // message = ResponseMessageConstants.ErrorMessages.APPLICATION_EXISTS;
+        // throw new CloudDeploymentException(message);
+        // case CloudServiceConstants.ResponseMessages.NO_RESOURCES_ERROR:
+        // message = ResponseMessageConstants.ErrorMessages.NO_RESOURCES_ERROR;
+        // throw new CloudDeploymentException(message);
+        // case CloudServiceConstants.ResponseMessages.VERSION_EXISTS_ERROR:
+        // message = ResponseMessageConstants.ErrorMessages.VERSION_EXISTS;
+        // throw new CloudDeploymentException(message);
+        // default:
+        // return response;
+        // }
     }
 
 }

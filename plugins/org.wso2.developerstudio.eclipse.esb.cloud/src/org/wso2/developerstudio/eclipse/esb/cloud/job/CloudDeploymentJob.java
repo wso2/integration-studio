@@ -125,7 +125,7 @@ public class CloudDeploymentJob extends Job {
                         for (Map.Entry<String, Version> version : versions.entrySet()) {
                             response = client.getApplicationEndpoints(app.getApplicationType(),
                                     version.getValue().getDeploymentURL(), version.getValue().getVersionId());
-                            if (null != response && !"null".equals(response)) {
+                            if (null != response && !"".equals(response)) {
                                 endpointData = JsonUtils.getEndpointDataFromJson(response);
                                 scheduledExecutorService.shutdown();
                             } else {

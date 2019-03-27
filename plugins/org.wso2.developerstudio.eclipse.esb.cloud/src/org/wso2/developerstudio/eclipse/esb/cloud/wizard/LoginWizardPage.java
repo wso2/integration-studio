@@ -237,7 +237,7 @@ public class LoginWizardPage extends WizardPage {
 
         try {
             return (client.login(getUsername(), getPassword(), getTenant()));
-        } catch (CloudDeploymentException | InvalidTokenException | HttpClientException e) {
+        } catch (CloudDeploymentException | HttpClientException e) {
             log.error(CloudDeploymentWizardConstants.ErrorMessages.AUTHENTICATION_EXCEPTION_MESSAGE, e);
             MessageDialog.openError(getShell(), TITLE, e.getMessage());
         } catch (NetworkUnavailableException e) {

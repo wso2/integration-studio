@@ -74,6 +74,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbServer;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EsbServerEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditor;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.validator.ProcessSourceView;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.ui.utils.UnrecogizedArtifactTypeException;
@@ -489,9 +490,12 @@ public class Deserializer {
         return mediatorFlowContainerList;
     }
 
-    public DeserializeStatus isValidSynapseConfig(String source, boolean withSyanpse) {
+    public DeserializeStatus isValidSynapseConfig(String source, boolean withSyanpse, boolean validatePositioning) {
         try {
             getArtifacts(source, withSyanpse);
+            if (validatePositioning) {
+                ProcessSourceView.validateMediatorPosition(source);
+            }
             return new DeserializeStatus(true, null, source);
         } catch (Exception e) {
             return new DeserializeStatus(false, e, source);

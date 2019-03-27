@@ -241,28 +241,9 @@ public class HTTPClientUtil {
      * @throws CloudDeploymentException
      */
     private static String mapResponse(String response) throws CloudDeploymentException {
-        // String message;
-
         JsonParser parser = new JsonParser();
         JsonElement jsonResponse = parser.parse(response);
         return jsonResponse.getAsJsonObject().get("message").getAsString();
-
-        // switch (response) {
-        // case CloudServiceConstants.ResponseMessages.APP_REVISION_ERROR:
-        // message = ResponseMessageConstants.ErrorMessages.VERSION_EXISTS;
-        // throw new CloudDeploymentException(message);
-        // case CloudServiceConstants.ResponseMessages.APP_EXISTS_ERROR:
-        // message = ResponseMessageConstants.ErrorMessages.APPLICATION_EXISTS;
-        // throw new CloudDeploymentException(message);
-        // case CloudServiceConstants.ResponseMessages.NO_RESOURCES_ERROR:
-        // message = ResponseMessageConstants.ErrorMessages.NO_RESOURCES_ERROR;
-        // throw new CloudDeploymentException(message);
-        // case CloudServiceConstants.ResponseMessages.VERSION_EXISTS_ERROR:
-        // message = ResponseMessageConstants.ErrorMessages.VERSION_EXISTS;
-        // throw new CloudDeploymentException(message);
-        // default:
-        // return response;
-        // }
     }
 
 }

@@ -129,7 +129,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EndPointProperty">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="scope" lowerBound="1" eType="#//EndPointPropertyScope"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueType" eType="#//PropertyValueType"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="valueExpression" eType="#//NamespacedProperty"

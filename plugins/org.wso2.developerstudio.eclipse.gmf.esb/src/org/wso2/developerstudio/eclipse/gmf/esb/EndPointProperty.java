@@ -75,7 +75,7 @@ public interface EndPointProperty extends EObject {
      * @return the value of the '<em>Value</em>' attribute.
      * @see #setValue(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEndPointProperty_Value()
-     * @model required="true"
+     * @model
      * @generated
      */
     String getValue();

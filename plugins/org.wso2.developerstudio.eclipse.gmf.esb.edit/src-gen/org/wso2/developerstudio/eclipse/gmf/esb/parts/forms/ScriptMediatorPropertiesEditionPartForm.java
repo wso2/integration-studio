@@ -550,10 +550,11 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
      */
 	protected Composite createScriptBodyText(FormToolkit widgetFactory, Composite parent) {
 		Control scriptBodyLabel = createDescription(parent, EsbViewsRepository.ScriptMediator.Properties.scriptBody, EsbMessages.ScriptMediatorPropertiesEditionPart_ScriptBodyLabel);
-		scriptBody = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+		scriptBody = widgetFactory.createText(parent, "", SWT.MULTI | SWT.BORDER | SWT.WRAP | SWT.V_SCROLL); //$NON-NLS-1$
 		scriptBody.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData scriptBodyData = new GridData(GridData.FILL_HORIZONTAL);
+		scriptBodyData.heightHint = scriptBody.getLineHeight()*4;
 		scriptBody.setLayoutData(scriptBodyData);
 		scriptBody.addFocusListener(new FocusAdapter() {
 			/**
@@ -592,20 +593,7 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 				}
 			}
 		});
-		scriptBody.addKeyListener(new KeyAdapter() {
-			/**
-			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ScriptMediatorPropertiesEditionPartForm.this, EsbViewsRepository.ScriptMediator.Properties.scriptBody, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, scriptBody.getText()));
-				}
-			}
-		});
+
 		EditingUtils.setID(scriptBody, EsbViewsRepository.ScriptMediator.Properties.scriptBody);
 		EditingUtils.setEEFtype(scriptBody, "eef::Text"); //$NON-NLS-1$
 		Control scriptBodyHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.ScriptMediator.Properties.scriptBody, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$

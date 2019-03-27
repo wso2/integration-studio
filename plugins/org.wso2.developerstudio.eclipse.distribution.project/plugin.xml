@@ -146,7 +146,7 @@
 	
 	
 	<extension point="org.eclipse.ui.importWizards">
-		<wizard id="org.wso2.developerstudio.eclipse.distribution.exportAsArtifact" name="Existing WSO2 Projects into workspace"
+		<wizard id="org.wso2.developerstudio.eclipse.distribution.importAsArtifact" name="Existing WSO2 Projects into workspace"
 			class="org.wso2.developerstudio.eclipse.distribution.project.ui.wizard.ProjectImportWizard" icon="icons/car.png"
 			category="org.wso2.developerstudio.eclipse.import">
 			<description>

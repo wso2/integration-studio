@@ -63,7 +63,7 @@ function loadWelcomeNodes(contributionsString) {
 
 
 var esbNewProjectWizard = "org.wso2.developerstudio.eclipse.artifact.newesbsolutionproject";
-var projectExportWizard = "org.wso2.developerstudio.eclipse.distribution.exportAsArtifact";
+var projectExportWizard = "org.wso2.developerstudio.eclipse.distribution.importAsArtifact";
 
 var dataSourceProject = "org.wso2.developerstudio.eclipse.artifact.newdatasourceproject";
 var dataServiceProject = "org.wso2.developerstudio.eclipse.artifact.newdsproject";

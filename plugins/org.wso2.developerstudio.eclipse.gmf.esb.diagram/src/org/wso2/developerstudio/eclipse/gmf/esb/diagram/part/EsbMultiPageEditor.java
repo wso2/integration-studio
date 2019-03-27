@@ -257,7 +257,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
                     public void run() {
                         ESBDebuggerUtil.setPageCreateOperationActivated(true);
                         try {
-                            DeserializeStatus deserializeStatus = deserializer.isValidSynapseConfig(source, true);
+                            DeserializeStatus deserializeStatus = deserializer.isValidSynapseConfig(source, true, false);
                             deleteMarkers();
                             if (deserializeStatus.isValid()
                                     || deserializeStatus.getExecption() instanceof SynapseException
@@ -466,7 +466,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
                         public void run() {
                             ESBDebuggerUtil.setPageCreateOperationActivated(true);
                             try {
-                                DeserializeStatus deserializeStatus = deserializer.isValidSynapseConfig(source, true);
+                                DeserializeStatus deserializeStatus = deserializer.isValidSynapseConfig(source, true, false);
 
                                 if (deserializeStatus.isValid()) {
                                     deserializer.updateDesign(source, formEditor, currArtifactType, true);
@@ -625,7 +625,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 
             final Deserializer deserializer = Deserializer.getInstance();
             if (!source.isEmpty()) {
-                DeserializeStatus deserializeStatus = deserializer.isValidSynapseConfig(source, false);
+                DeserializeStatus deserializeStatus = deserializer.isValidSynapseConfig(source, false, true);
 
                 if (!deserializeStatus.isValid()) {
 
@@ -644,7 +644,8 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
                         } catch (ValidationException e) {
                             // ignore
                         }
-                    } else if (deserializeStatus.getExecption() instanceof NullPointerException) {
+                    } else if (deserializeStatus.getExecption() instanceof NullPointerException
+                            || deserializeStatus.getExecption() instanceof TransformerException) {
                         addMarker(new SourceError(
                                 "Invalid mediator configuration: " + deserializeStatus.getExecption().getMessage(), 0,
                                 0, 2));
@@ -707,7 +708,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
                 setActivePage(SOURCE_VIEW_PAGE_INDEX);
 
                 sourceEditor.getDocument().set(source);
-                printHandleDesignViewActivatedEventErrorMessage(e);
+                //printHandleDesignViewActivatedEventErrorMessage(e);
             } finally {
                 AbstractEsbNodeDeserializer.cleanupData();
                 firePropertyChange(PROP_DIRTY);
@@ -1003,7 +1004,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
             try {
                 String xmlSource = sourceEditor.getDocument().get();
                 final Deserializer deserializer = Deserializer.getInstance();
-                DeserializeStatus deserializeStatus = deserializer.isValidSynapseConfig(xmlSource, true);
+                DeserializeStatus deserializeStatus = deserializer.isValidSynapseConfig(xmlSource, true, true);
 
                 deleteMarkers();
                 if (deserializeStatus.isValid()) {
@@ -1026,12 +1027,14 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
                     if (!(deserializeStatus.getExecption() instanceof SynapseException
                             || deserializeStatus.getExecption() instanceof MediatorException
                             || deserializeStatus.getExecption() instanceof NullPointerException
-                            || deserializeStatus.getExecption() instanceof SynapseTaskException)) {
+                            || deserializeStatus.getExecption() instanceof SynapseTaskException
+                            || deserializeStatus.getExecption() instanceof TransformerException)) {
 
                         addMarker(ProcessSourceView.validateXMLContent(xmlSource));
                         return;
 
-                    } else if (deserializeStatus.getExecption() instanceof NullPointerException) {
+                    } else if (deserializeStatus.getExecption() instanceof NullPointerException
+                            || deserializeStatus.getExecption() instanceof TransformerException) {
                         addMarker(new SourceError(
                                 "Invalid mediator configuration: " + deserializeStatus.getExecption().getMessage(), 0,
                                 0, 2));

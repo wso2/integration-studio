@@ -444,7 +444,7 @@ public class FailoverEndPointPropertiesEditionPartForm extends SectionProperties
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.FailoverEndPoint.Properties.anonymous, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createAnonymousCheckbox
 		Control[] newControls = propertiesGroup.getChildren();
-            anonymousElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
+                anonymousElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
 		// End of user code
 		return parent;
 	}
@@ -475,7 +475,7 @@ public class FailoverEndPointPropertiesEditionPartForm extends SectionProperties
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.FailoverEndPoint.Properties.inLine, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createInLineCheckbox
 		Control[] newControls = propertiesGroup.getChildren();
-            inLineElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
+                inLineElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
 		// End of user code
 		return parent;
 	}
@@ -506,7 +506,7 @@ public class FailoverEndPointPropertiesEditionPartForm extends SectionProperties
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.FailoverEndPoint.Properties.duplicate, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createDuplicateCheckbox
 		Control[] newControls = propertiesGroup.getChildren();
-            duplicateElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
+                duplicateElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
 		// End of user code
 		return parent;
 	}
@@ -590,7 +590,7 @@ public class FailoverEndPointPropertiesEditionPartForm extends SectionProperties
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.FailoverEndPoint.Properties.reversed, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createReversedCheckbox
 		Control[] newControls = propertiesGroup.getChildren();
-            reverseElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
+                reverseElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
 		// End of user code
 		return parent;
 	}
@@ -643,7 +643,7 @@ public class FailoverEndPointPropertiesEditionPartForm extends SectionProperties
 		children.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
 		// Start of user code for createChildrenTableComposition
 		Control[] newControls = propertiesGroup.getChildren();
-            childrenElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
+                childrenElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
 		// End of user code
 		return parent;
 	}
@@ -713,7 +713,7 @@ public class FailoverEndPointPropertiesEditionPartForm extends SectionProperties
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.FailoverEndPoint.Properties.name, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createNameText
 		Control[] newControls = propertiesGroup.getChildren();
-            nameElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
+                nameElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
 		// End of user code
 		return parent;
 	}
@@ -766,7 +766,7 @@ public class FailoverEndPointPropertiesEditionPartForm extends SectionProperties
 		outputConnector.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
 		// Start of user code for createOutputConnectorTableComposition
 		Control[] newControls = propertiesGroup.getChildren();
-            outputConnectorElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
+                outputConnectorElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
 		// End of user code
 		return parent;
 	}

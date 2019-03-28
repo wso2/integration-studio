@@ -236,7 +236,7 @@ public class FileDecorator extends LabelProvider implements ILightweightLabelDec
         if (deserializer == null) {
             deserializer = Deserializer.getInstance();
         }
-        DeserializeStatus deserializeStatus = deserializer.isValidSynapseConfig(source, true);
+        DeserializeStatus deserializeStatus = deserializer.isValidSynapseConfig(source, true, false);
 
         if (deserializeStatus.isValid()) {
             return true;

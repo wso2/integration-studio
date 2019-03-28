@@ -591,7 +591,7 @@ public abstract class AbstractMediator extends AbstractBorderedShapeEditPart imp
                 if (this instanceof DropMediatorEditPart
                         && compartment instanceof MediatorFlowMediatorFlowCompartment6EditPart) {
                     mediatorRestricted = true;
-                    deleteNewlyAddedMediator("Drop Mediator" + DROP_ERROR_MESSAGE);
+                    deleteNewlyAddedMediator("Drop Mediator is not allowed to add in the fault sequence.");
                     return;
                 }
             }

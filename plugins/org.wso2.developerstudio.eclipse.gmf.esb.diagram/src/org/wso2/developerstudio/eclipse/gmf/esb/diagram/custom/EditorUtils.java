@@ -1160,9 +1160,11 @@ public class EditorUtils {
                 IGraphicalEditPart mediatorFlowCompartment = (IGraphicalEditPart) mediatorFlow.getChildren().get(0);
                 if (mediatorFlowCompartment.getChildren().size() >= 1) {
                     for (int i = 0; i < mediatorFlowCompartment.getChildren().size(); ++i) {
-                        AbstractMediator gep = (AbstractMediator) mediatorFlowCompartment.getChildren().get(i);
-                        if (gep.equals(thisMediator)) {
-                            return true;
+                        if (mediatorFlowCompartment.getChildren().get(i) instanceof AbstractMediator) {
+                            AbstractMediator gep = (AbstractMediator) mediatorFlowCompartment.getChildren().get(i);
+                            if (gep.equals(thisMediator)) {
+                                return true;
+                            }
                         }
                     }
                 }

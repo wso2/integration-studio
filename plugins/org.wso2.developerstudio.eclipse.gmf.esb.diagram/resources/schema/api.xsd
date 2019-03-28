@@ -36,9 +36,9 @@
                 This is the element type representing the REST API in the Synapse Configuration
             </xs:documentation>
         </xs:annotation>
-        <xs:choice maxOccurs="unbounded" minOccurs="1">
+        <xs:sequence>
             <xs:element name="resource" type="APIResource" minOccurs="1" maxOccurs="unbounded"/>
-        </xs:choice>
+        </xs:sequence>
         <xs:attributeGroup ref="monitoringAspect"/>
         <xs:attribute name="name" type="xs:string" use="required"/>
         <xs:attribute name="context" type="xs:string" use="required"/>

@@ -58,7 +58,7 @@
             <xs:attribute name="remoteServiceUrl" type="xs:string" use="required"/>
             <xs:attribute name="remoteServiceUserName" type="xs:string" use="optional"/>
             <xs:attribute name="remoteServicePassword" type="xs:string" use="optional"/>
-            <xs:attribute name="callbackClass" type="xs:string" use="required">
+            <xs:attribute name="callbackClass" use="required">
                 <xs:simpleType>
                     <xs:restriction base="xs:string">
                         <xs:enumeration
@@ -72,7 +72,7 @@
                     </xs:restriction>
                 </xs:simpleType>
             </xs:attribute>
-            <xs:attribute name="client" type="xs:string" use="required">
+            <xs:attribute name="client" use="required">
                 <xs:simpleType>
                     <xs:restriction base="xs:string">
                         <xs:enumeration value="soap"/>

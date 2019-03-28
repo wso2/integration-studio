@@ -135,6 +135,7 @@ public class FailoverEndPointPropertiesEditionPartForm extends SectionProperties
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
 	 * 
+	 * @generated NOT
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 		Form form = widgetFactory.createForm(parent);
@@ -303,7 +304,7 @@ public class FailoverEndPointPropertiesEditionPartForm extends SectionProperties
 	}
 
 	/**
-	 * 
+	 * @generated NOT
 	 */
 	protected Composite createCommentsListMultiValuedEditor(FormToolkit widgetFactory, Composite parent) {
 	        Control[] previousControls = propertiesGroup.getChildren();
@@ -418,7 +419,9 @@ public class FailoverEndPointPropertiesEditionPartForm extends SectionProperties
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createAnonymousCheckbox(FormToolkit widgetFactory, Composite parent) {
 	        Control[] previousControls = propertiesGroup.getChildren();
 		anonymous = widgetFactory.createButton(parent, getDescription(EsbViewsRepository.FailoverEndPoint.Properties.anonymous, EsbMessages.FailoverEndPointPropertiesEditionPart_AnonymousLabel), SWT.CHECK);
@@ -449,7 +452,9 @@ public class FailoverEndPointPropertiesEditionPartForm extends SectionProperties
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createInLineCheckbox(FormToolkit widgetFactory, Composite parent) {
 	        Control[] previousControls = propertiesGroup.getChildren();
 		inLine = widgetFactory.createButton(parent, getDescription(EsbViewsRepository.FailoverEndPoint.Properties.inLine, EsbMessages.FailoverEndPointPropertiesEditionPart_InLineLabel), SWT.CHECK);
@@ -480,7 +485,9 @@ public class FailoverEndPointPropertiesEditionPartForm extends SectionProperties
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createDuplicateCheckbox(FormToolkit widgetFactory, Composite parent) {
 	        Control[] previousControls = propertiesGroup.getChildren();
 		duplicate = widgetFactory.createButton(parent, getDescription(EsbViewsRepository.FailoverEndPoint.Properties.duplicate, EsbMessages.FailoverEndPointPropertiesEditionPart_DuplicateLabel), SWT.CHECK);
@@ -598,6 +605,8 @@ public class FailoverEndPointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * @param container
 	 * 
+	 * @generated NOT
+	 *
 	 */
 	protected Composite createChildrenTableComposition(FormToolkit widgetFactory, Composite parent) {
 	        Control[] previousControls = propertiesGroup.getChildren();
@@ -648,7 +657,9 @@ public class FailoverEndPointPropertiesEditionPartForm extends SectionProperties
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createNameText(FormToolkit widgetFactory, Composite parent) {
 	        Control[] previousControls = propertiesGroup.getChildren();
 		createDescription(parent, EsbViewsRepository.FailoverEndPoint.Properties.name, EsbMessages.FailoverEndPointPropertiesEditionPart_NameLabel);
@@ -721,6 +732,8 @@ public class FailoverEndPointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * @param container
 	 * 
+	 * @generated NOT
+	 *
 	 */
 	protected Composite createOutputConnectorTableComposition(FormToolkit widgetFactory, Composite parent) {
 	        Control[] previousControls = propertiesGroup.getChildren();

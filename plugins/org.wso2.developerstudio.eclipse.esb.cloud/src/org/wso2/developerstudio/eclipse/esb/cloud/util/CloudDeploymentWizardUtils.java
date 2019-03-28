@@ -57,7 +57,7 @@ public class CloudDeploymentWizardUtils {
      * @param runtimes
      * @return
      */
-    private static String[] getRuntimeNames(List<org.wso2.developerstudio.eclipse.esb.cloud.model.Runtime> runtimes) {
+    public static String[] getRuntimeNames(List<org.wso2.developerstudio.eclipse.esb.cloud.model.Runtime> runtimes) {
         String[] runtimeNames = new String[runtimes.size()];
         for (int i = 0; i < runtimes.size(); i++) {
             runtimeNames[i] = runtimes.get(i).getRuntimeName();

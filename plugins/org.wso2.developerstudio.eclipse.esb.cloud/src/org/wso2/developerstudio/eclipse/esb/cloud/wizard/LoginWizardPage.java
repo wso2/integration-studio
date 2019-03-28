@@ -47,6 +47,7 @@ import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.HttpClientException
 import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.InvalidTokenException;
 import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.NetworkUnavailableException;
 import org.wso2.developerstudio.eclipse.esb.cloud.resources.CloudDeploymentWizardConstants;
+import org.wso2.developerstudio.eclipse.esb.cloud.resources.CloudServiceConstants;
 import org.wso2.developerstudio.eclipse.esb.cloud.util.CloudDeploymentWizardUtils;
 import org.wso2.developerstudio.eclipse.esb.cloud.util.UserSessionManager;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
@@ -304,7 +305,8 @@ public class LoginWizardPage extends WizardPage {
         AppDetailsWizardPage appPage = (AppDetailsWizardPage) nextPage.getNextPage();
 
         try {
-            CloudDeploymentWizardUtils.fetchRuntimeData(client, appPage);
+            appPage.runtimeList = client.getApplicationRuntimes(CloudServiceConstants.AppConfigs.ESB);
+            appPage.getRuntimeCombo().setItems(CloudDeploymentWizardUtils.getRuntimeNames(appPage.runtimeList));
 
         } catch (CloudDeploymentException | InvalidTokenException | HttpClientException ex) {
             log.error(CloudDeploymentWizardConstants.ErrorMessages.RUNTIME_RETRIEVAL_FAILED_MESSAGE, ex);

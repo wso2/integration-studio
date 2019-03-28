@@ -121,7 +121,7 @@ public class CacheMediatorDeserializer extends AbstractEsbNodeDeserializer<Abstr
                     // previous implementation of cache mediator
                     executeSetValueCommand(CACHE_MEDIATOR__ID, mediator.getId());
                     executeSetValueCommand(CACHE_MEDIATOR__HASH_GENERATOR_ATTRIBUTE, mediator.getHashGenerator());
-                    if (mediator.getScope().equals("per-host")) {
+                    if (mediator.getScope() != null && mediator.getScope().equals("per-host")) {
                         executeSetValueCommand(CACHE_MEDIATOR__SCOPE, CacheScopeType.PER_HOST);
                     } else {
                         executeSetValueCommand(CACHE_MEDIATOR__SCOPE, CacheScopeType.PER_MEDIATOR);

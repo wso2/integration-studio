@@ -48,6 +48,7 @@ public class CloudDeploymentWizardConstants {
         public static final String AUTHENTICATION_EXCEPTION_MESSAGE = "Could not authenticate user because of an internal error.";
         public static final String NO_INTERNET_CONNECTION_MESSAGE = "Please connect to the internet!";
         public static final String APPLICATION_RETRIEVAL_FAILED_MESSAGE = "An error occured while retrieving application list!";
+        public static final String RUNTIME_RETRIEVAL_FAILED_MESSAGE = "An error occured while retrieving runtimes!";
     }
 
     // Success messages shown to the user

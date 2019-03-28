@@ -18,6 +18,7 @@
 
 package org.wso2.developerstudio.eclipse.esb.cloud.client;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -32,7 +33,6 @@ import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.InvalidTokenExcepti
 import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.NetworkUnavailableException;
 import org.wso2.developerstudio.eclipse.esb.cloud.model.Application;
 import org.wso2.developerstudio.eclipse.esb.cloud.resources.CloudServiceConstants;
-import org.wso2.developerstudio.eclipse.esb.cloud.resources.ResponseMessageConstants;
 import org.wso2.developerstudio.eclipse.esb.cloud.util.HTTPClientUtil;
 import org.wso2.developerstudio.eclipse.esb.cloud.util.JsonUtils;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
@@ -87,9 +87,9 @@ public class IntegrationCloudServiceClient {
         String user = username + "@" + tenant;
 
         Map<String, String> data = new HashMap<>();
-        data.put("action", CloudServiceConstants.Actions.LOGIN);
-        data.put("userName", user);
-        data.put("password", password);
+        data.put(CloudServiceConstants.Parameters.PARAM_ACTION, CloudServiceConstants.Actions.LOGIN);
+        data.put(CloudServiceConstants.Parameters.PARAM_USERNAME, user);
+        data.put(CloudServiceConstants.Parameters.PARAM_PASSWORD, password);
 
         try {
             String response = HTTPClientUtil.sendPostWithFormData(loginUrl, new HashMap<String, String>(), data,
@@ -119,7 +119,7 @@ public class IntegrationCloudServiceClient {
         String getAppListUrl = CloudServiceConstants.ServiceEndpoints.INDEX_URL;
 
         Map<String, String> data = new HashMap<>();
-        data.put("action", CloudServiceConstants.Actions.GET_APPLICATION_LIST);
+        data.put(CloudServiceConstants.Parameters.PARAM_ACTION, CloudServiceConstants.Actions.GET_APPLICATION_LIST);
 
         String response = HTTPClientUtil.sendPostWithFormData(getAppListUrl, new HashMap<String, String>(), data,
                 cookieStore);
@@ -153,8 +153,8 @@ public class IntegrationCloudServiceClient {
         String getAppUrl = CloudServiceConstants.ServiceEndpoints.APPLICATION_URL;
 
         Map<String, String> data = new HashMap<>();
-        data.put("action", CloudServiceConstants.Actions.GET_APPLICATION);
-        data.put("applicationName", appName);
+        data.put(CloudServiceConstants.Parameters.PARAM_ACTION, CloudServiceConstants.Actions.GET_APPLICATION);
+        data.put(CloudServiceConstants.Parameters.PARAM_APP_NAME, appName);
 
         String response = HTTPClientUtil.sendPostWithFormData(getAppUrl, new HashMap<String, String>(), data,
                 cookieStore);
@@ -183,19 +183,23 @@ public class IntegrationCloudServiceClient {
         String getAppUrl = CloudServiceConstants.ServiceEndpoints.APPLICATION_URL;
 
         Map<String, String> data = new HashMap<>();
-        data.put("action", CloudServiceConstants.Actions.LOAD_ENDPOINTS);
-        data.put("appType", appType);
-        data.put("deploymentURL", deploymentURL);
-        data.put("versionId", versionId);
+        data.put(CloudServiceConstants.Parameters.PARAM_ACTION, CloudServiceConstants.Actions.LOAD_ENDPOINTS);
+        data.put(CloudServiceConstants.Parameters.PARAM_APP_TYPE, appType);
+        data.put(CloudServiceConstants.Parameters.PARAM_DEPLOYMENT_URL, deploymentURL);
+        data.put(CloudServiceConstants.Parameters.PARAM_VERSION_ID, versionId);
 
         String response = HTTPClientUtil.sendPostWithFormData(getAppUrl, new HashMap<String, String>(), data,
                 cookieStore);
 
         // If the application endpoints are not yet ready, it will return null
-        if (null != response && !"".equals(response)) {
+        if (null != response && !"null".equals(response)) {
             JsonElement endpointData = new JsonParser().parse(response);
-            JsonObject dataJson = endpointData.getAsJsonObject().get("data").getAsJsonObject();
-            response = dataJson.toString();
+            if (null != endpointData.getAsJsonObject().get("data")) {
+                JsonObject dataJson = endpointData.getAsJsonObject().get("data").getAsJsonObject();
+                response = dataJson.toString();
+            } else if (null != endpointData.getAsJsonObject().get("message")){
+                response = endpointData.getAsJsonObject().get("message").getAsString();
+            }
         }
 
         return response;
@@ -238,7 +242,7 @@ public class IntegrationCloudServiceClient {
             data.put(CloudServiceConstants.Parameters.PARAM_APP_DESCRIPTION, appDescription);
         }
 
-        data.put(CloudServiceConstants.Parameters.PARAM_APP_TYPE, CloudServiceConstants.AppConfigs.ESB);
+        data.put(CloudServiceConstants.Parameters.PARAM_APP_TYPE_NAME, CloudServiceConstants.AppConfigs.ESB);
         data.put(CloudServiceConstants.Parameters.PARAM_APP_REVISION, version);
         data.put(CloudServiceConstants.Parameters.PARAM_FILE_NAME, fileName);
         data.put(CloudServiceConstants.Parameters.PARAM_RUNTIME_PROPERTIES,
@@ -256,6 +260,24 @@ public class IntegrationCloudServiceClient {
 
         HTTPClientUtil.sendPostWithMulipartFormData(createAppUrl, data, files, cookieStore);
 
+    }
+    
+    public List<String> getApplicationRuntimes(String appType) throws InvalidTokenException, CloudDeploymentException, NetworkUnavailableException, HttpClientException {
+        String getAppUrl = CloudServiceConstants.ServiceEndpoints.APPLICATION_URL;
+
+        Map<String, String> data = new HashMap<>();
+        data.put(CloudServiceConstants.Parameters.PARAM_ACTION, CloudServiceConstants.Actions.GET_RUNTIMES);
+        data.put(CloudServiceConstants.Parameters.PARAM_APP_TYPE, appType);
+
+        String response = HTTPClientUtil.sendPostWithFormData(getAppUrl, new HashMap<String, String>(), data,
+                cookieStore);
+
+        if (null == response) {
+            return null;
+        }
+
+        // TODO: map response
+        return new ArrayList<>();
     }
 
     /**

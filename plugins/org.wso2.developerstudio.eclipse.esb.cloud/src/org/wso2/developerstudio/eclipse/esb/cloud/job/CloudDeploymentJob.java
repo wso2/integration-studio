@@ -48,9 +48,12 @@ import org.wso2.developerstudio.eclipse.esb.cloud.model.Version;
 import org.wso2.developerstudio.eclipse.esb.cloud.notification.NotificationPopup;
 import org.wso2.developerstudio.eclipse.esb.cloud.notification.EndpointNotificationPopup;
 import org.wso2.developerstudio.eclipse.esb.cloud.resources.CloudDeploymentWizardConstants;
+import org.wso2.developerstudio.eclipse.esb.cloud.resources.ResponseMessageConstants;
 import org.wso2.developerstudio.eclipse.esb.cloud.util.JsonUtils;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
+
+import io.takari.aether.client.Response;
 
 /**
  * Represents a background job to upload application to the cloud.
@@ -125,7 +128,7 @@ public class CloudDeploymentJob extends Job {
                         for (Map.Entry<String, Version> version : versions.entrySet()) {
                             response = client.getApplicationEndpoints(app.getApplicationType(),
                                     version.getValue().getDeploymentURL(), version.getValue().getVersionId());
-                            if (null != response && !"".equals(response)) {
+                            if (null != response && !"null".equals(response) && !response.equals(ResponseMessageConstants.ErrorMessages.ENDPOINTS_ARE_LOADING)) {
                                 endpointData = JsonUtils.getEndpointDataFromJson(response);
                                 scheduledExecutorService.shutdown();
                             } else {

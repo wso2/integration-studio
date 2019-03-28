@@ -52,6 +52,7 @@ public class CloudServiceConstants {
         public static final String GET_APPLICATION = "getApplication";
         public static final String LOAD_ENDPOINTS = "loadEndpoints";
         public static final String CREATE_APPLICATION = "createApplication";
+        public static final String GET_RUNTIMES = "getRuntimesForAppType";
     }
 
     // Integration Cloud response messages
@@ -70,7 +71,7 @@ public class CloudServiceConstants {
         public static final String PARAM_ACTION = "action";
         public static final String PARAM_APP_NAME = "applicationName";
         public static final String PARAM_APP_DESCRIPTION = "applicationDescription";
-        public static final String PARAM_APP_TYPE = "appTypeName";
+        public static final String PARAM_APP_TYPE_NAME = "appTypeName";
         public static final String PARAM_APP_REVISION = "applicationRevision";
         public static final String PARAM_FILE_NAME = "uploadedFileName";
         public static final String PARAM_RUNTIME_PROPERTIES = "runtimeProperties";
@@ -81,5 +82,10 @@ public class CloudServiceConstants {
         public static final String PARAM_APP_CREATION_METHOD = "appCreationMethod";
         public static final String PARAM_SET_DEFAULT_VERSION = "setDefaultVersion";
         public static final String PARAM_RUNTIME = "runtime";
+        public static final String PARAM_APP_TYPE = "appType";
+        public static final String PARAM_DEPLOYMENT_URL = "deploymentURL";
+        public static final String PARAM_VERSION_ID = "versionId";
+        public static final String PARAM_USERNAME = "userName";
+        public static final String PARAM_PASSWORD = "password";
     }
 }

@@ -22049,7 +22049,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 
         initEClass(endPointPropertyEClass, EndPointProperty.class, "EndPointProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getEndPointProperty_Name(), ecorePackage.getEString(), "name", null, 1, 1, EndPointProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getEndPointProperty_Value(), ecorePackage.getEString(), "value", null, 1, 1, EndPointProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getEndPointProperty_Value(), ecorePackage.getEString(), "value", null, 0, 1, EndPointProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getEndPointProperty_Scope(), this.getEndPointPropertyScope(), "scope", null, 1, 1, EndPointProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getEndPointProperty_ValueType(), this.getPropertyValueType(), "valueType", null, 0, 1, EndPointProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getEndPointProperty_ValueExpression(), this.getNamespacedProperty(), null, "valueExpression", null, 0, 1, EndPointProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

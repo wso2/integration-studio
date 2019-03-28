@@ -125,9 +125,9 @@ public class EndPointPropertyPropertiesEditionPartImpl extends CompositeProperti
 		CompositionSequence endPointPropertyStep = new BindingCompositionSequence(propertiesEditionComponent);
 		CompositionStep propertiesStep = endPointPropertyStep.addStep(EsbViewsRepository.EndPointProperty.Properties.class);
 		propertiesStep.addStep(EsbViewsRepository.EndPointProperty.Properties.name);
-		propertiesStep.addStep(EsbViewsRepository.EndPointProperty.Properties.value);
 		propertiesStep.addStep(EsbViewsRepository.EndPointProperty.Properties.scope);
 		propertiesStep.addStep(EsbViewsRepository.EndPointProperty.Properties.valueType);
+		propertiesStep.addStep(EsbViewsRepository.EndPointProperty.Properties.value);
 		propertiesStep.addStep(EsbViewsRepository.EndPointProperty.Properties.valueExpression);
 		
 		
@@ -564,7 +564,6 @@ public class EndPointPropertyPropertiesEditionPartImpl extends CompositeProperti
             eu.showEntry(valueElements, false);
         } else if (getValueType() != null && getValueType().getName().equals(PropertyValueType.EXPRESSION.getName())) {
             eu.showEntry(valueExpressionElements, false);
-            eu.showEntry(valueElements, false);
         }
         
         view.layout(true, true);

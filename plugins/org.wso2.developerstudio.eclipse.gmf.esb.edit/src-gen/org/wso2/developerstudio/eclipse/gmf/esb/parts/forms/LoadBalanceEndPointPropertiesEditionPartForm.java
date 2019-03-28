@@ -69,6 +69,7 @@ import org.eclipse.swt.layout.GridLayout;
 
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Text;
 
 import org.eclipse.ui.forms.widgets.Form;
@@ -80,7 +81,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
 
 // End of user code
@@ -117,6 +118,22 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 	protected Text sessionTimeout;
 	protected Button buildMessage;
 
+	// Start of user code
+    protected Composite propertiesGroup;
+    protected Control[] commentsElements;
+    protected Control[] anonymousElements;
+    protected Control[] inLineElements;
+    protected Control[] duplicateElements;
+    protected Control[] reverseElements;
+    protected Control[] childrenElements;
+    protected Control[] nameElements;
+    protected Control[] failoverElements;
+    protected Control[] policyElements;
+    protected Control[] outputConnectorElements;
+    protected Control[] sessionTypeElements;
+    protected Control[] sessionTimeOutElements;
+    protected Composite filterSessionSubPropertiesGroup;
+    // End of user code
 
 
 	/**
@@ -128,6 +145,7 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
 	 * 
+	 * @generated NOT
 	 */
 	public LoadBalanceEndPointPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -139,16 +157,16 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
 	 * 
+	 * @generated NOT
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
-		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
-		Form form = scrolledForm.getForm();
+		Form form = widgetFactory.createForm(parent);
 		view = form.getBody();
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
 		createControls(widgetFactory, view);
-		return scrolledForm;
+		return form;
 	}
 
 	/**
@@ -161,9 +179,12 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		CompositionSequence loadBalanceEndPointStep = new BindingCompositionSequence(propertiesEditionComponent);
 		CompositionStep propertiesStep = loadBalanceEndPointStep.addStep(EsbViewsRepository.LoadBalanceEndPoint.Properties.class);
-		propertiesStep.addStep(EsbViewsRepository.LoadBalanceEndPoint.Properties.description);
-		propertiesStep.addStep(EsbViewsRepository.LoadBalanceEndPoint.Properties.commentsList);
 		propertiesStep.addStep(EsbViewsRepository.LoadBalanceEndPoint.Properties.endPointName);
+		propertiesStep.addStep(EsbViewsRepository.LoadBalanceEndPoint.Properties.algorithm);
+		propertiesStep.addStep(EsbViewsRepository.LoadBalanceEndPoint.Properties.buildMessage);
+		propertiesStep.addStep(EsbViewsRepository.LoadBalanceEndPoint.Properties.sessionType);
+		propertiesStep.addStep(EsbViewsRepository.LoadBalanceEndPoint.Properties.sessionTimeout);
+		propertiesStep.addStep(EsbViewsRepository.LoadBalanceEndPoint.Properties.commentsList);
 		propertiesStep.addStep(EsbViewsRepository.LoadBalanceEndPoint.Properties.anonymous);
 		propertiesStep.addStep(EsbViewsRepository.LoadBalanceEndPoint.Properties.inLine);
 		propertiesStep.addStep(EsbViewsRepository.LoadBalanceEndPoint.Properties.duplicate);
@@ -174,11 +195,7 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 		propertiesStep.addStep(EsbViewsRepository.LoadBalanceEndPoint.Properties.failover);
 		propertiesStep.addStep(EsbViewsRepository.LoadBalanceEndPoint.Properties.policy);
 		propertiesStep.addStep(EsbViewsRepository.LoadBalanceEndPoint.Properties.outputConnector);
-		propertiesStep.addStep(EsbViewsRepository.LoadBalanceEndPoint.Properties.sessionType);
-		propertiesStep.addStep(EsbViewsRepository.LoadBalanceEndPoint.Properties.algorithm);
-		propertiesStep.addStep(EsbViewsRepository.LoadBalanceEndPoint.Properties.sessionTimeout);
-		propertiesStep.addStep(EsbViewsRepository.LoadBalanceEndPoint.Properties.buildMessage);
-		
+		propertiesStep.addStep(EsbViewsRepository.LoadBalanceEndPoint.Properties.description);
 		
 		composer = new PartComposer(loadBalanceEndPointStep) {
 
@@ -233,7 +250,7 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 					return createAlgorithmText(widgetFactory, parent);
 				}
 				if (key == EsbViewsRepository.LoadBalanceEndPoint.Properties.sessionTimeout) {
-					return createSessionTimeoutText(widgetFactory, parent);
+					return createSessionTimeoutText(widgetFactory, filterSessionSubPropertiesGroup);
 				}
 				if (key == EsbViewsRepository.LoadBalanceEndPoint.Properties.buildMessage) {
 					return createBuildMessageCheckbox(widgetFactory, parent);
@@ -244,7 +261,7 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 		composer.compose(view);
 	}
 	/**
-	 * 
+	 * @generated NOT
 	 */
 	protected Composite createPropertiesGroup(FormToolkit widgetFactory, final Composite parent) {
 		Section propertiesSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
@@ -252,7 +269,7 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 		GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
 		propertiesSectionData.horizontalSpan = 3;
 		propertiesSection.setLayoutData(propertiesSectionData);
-		Composite propertiesGroup = widgetFactory.createComposite(propertiesSection);
+		propertiesGroup = widgetFactory.createComposite(propertiesSection);
 		GridLayout propertiesGroupLayout = new GridLayout();
 		propertiesGroupLayout.numColumns = 3;
 		propertiesGroup.setLayout(propertiesGroupLayout);
@@ -329,9 +346,10 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 	}
 
 	/**
-	 * 
+	 * @generated NOT
 	 */
 	protected Composite createCommentsListMultiValuedEditor(FormToolkit widgetFactory, Composite parent) {
+	        Control[] previousControls = propertiesGroup.getChildren();
 		commentsList = widgetFactory.createText(parent, "", SWT.READ_ONLY); //$NON-NLS-1$
 		GridData commentsListData = new GridData(GridData.FILL_HORIZONTAL);
 		commentsListData.horizontalSpan = 2;
@@ -369,7 +387,8 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 		EditingUtils.setID(editCommentsList, EsbViewsRepository.LoadBalanceEndPoint.Properties.commentsList);
 		EditingUtils.setEEFtype(editCommentsList, "eef::MultiValuedEditor::browsebutton"); //$NON-NLS-1$
 		// Start of user code for createCommentsListMultiValuedEditor
-
+                Control[] newControls = propertiesGroup.getChildren();
+                commentsElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
 		// End of user code
 		return parent;
 	}
@@ -442,8 +461,11 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createAnonymousCheckbox(FormToolkit widgetFactory, Composite parent) {
+	        Control[] previousControls = propertiesGroup.getChildren();
 		anonymous = widgetFactory.createButton(parent, getDescription(EsbViewsRepository.LoadBalanceEndPoint.Properties.anonymous, EsbMessages.LoadBalanceEndPointPropertiesEditionPart_AnonymousLabel), SWT.CHECK);
 		anonymous.addSelectionListener(new SelectionAdapter() {
 
@@ -466,13 +488,17 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 		EditingUtils.setEEFtype(anonymous, "eef::Checkbox"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.LoadBalanceEndPoint.Properties.anonymous, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createAnonymousCheckbox
-
+                Control[] newControls = propertiesGroup.getChildren();
+                anonymousElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
 		// End of user code
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createInLineCheckbox(FormToolkit widgetFactory, Composite parent) {
+	        Control[] previousControls = propertiesGroup.getChildren();
 		inLine = widgetFactory.createButton(parent, getDescription(EsbViewsRepository.LoadBalanceEndPoint.Properties.inLine, EsbMessages.LoadBalanceEndPointPropertiesEditionPart_InLineLabel), SWT.CHECK);
 		inLine.addSelectionListener(new SelectionAdapter() {
 
@@ -495,13 +521,17 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 		EditingUtils.setEEFtype(inLine, "eef::Checkbox"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.LoadBalanceEndPoint.Properties.inLine, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createInLineCheckbox
-
+                Control[] newControls = propertiesGroup.getChildren();
+                inLineElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
 		// End of user code
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createDuplicateCheckbox(FormToolkit widgetFactory, Composite parent) {
+	        Control[] previousControls = propertiesGroup.getChildren();
 		duplicate = widgetFactory.createButton(parent, getDescription(EsbViewsRepository.LoadBalanceEndPoint.Properties.duplicate, EsbMessages.LoadBalanceEndPointPropertiesEditionPart_DuplicateLabel), SWT.CHECK);
 		duplicate.addSelectionListener(new SelectionAdapter() {
 
@@ -524,7 +554,8 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 		EditingUtils.setEEFtype(duplicate, "eef::Checkbox"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.LoadBalanceEndPoint.Properties.duplicate, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createDuplicateCheckbox
-
+                Control[] newControls = propertiesGroup.getChildren();
+                duplicateElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
 		// End of user code
 		return parent;
 	}
@@ -580,8 +611,11 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createReversedCheckbox(FormToolkit widgetFactory, Composite parent) {
+	        Control[] previousControls = propertiesGroup.getChildren();
 		reversed = widgetFactory.createButton(parent, getDescription(EsbViewsRepository.LoadBalanceEndPoint.Properties.reversed, EsbMessages.LoadBalanceEndPointPropertiesEditionPart_ReversedLabel), SWT.CHECK);
 		reversed.addSelectionListener(new SelectionAdapter() {
 
@@ -604,7 +638,8 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 		EditingUtils.setEEFtype(reversed, "eef::Checkbox"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.LoadBalanceEndPoint.Properties.reversed, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createReversedCheckbox
-
+                Control[] newControls = propertiesGroup.getChildren();
+                reverseElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
 		// End of user code
 		return parent;
 	}
@@ -612,8 +647,10 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * @param container
 	 * 
+	 * @ generated NOT
 	 */
 	protected Composite createChildrenTableComposition(FormToolkit widgetFactory, Composite parent) {
+	        Control[] previousControls = propertiesGroup.getChildren();
 		this.children = new ReferencesTable(getDescription(EsbViewsRepository.LoadBalanceEndPoint.Properties.children, EsbMessages.LoadBalanceEndPointPropertiesEditionPart_ChildrenLabel), new ReferencesTableListener() {
 			public void handleAdd() {
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LoadBalanceEndPointPropertiesEditionPartForm.this, EsbViewsRepository.LoadBalanceEndPoint.Properties.children, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
@@ -655,13 +692,17 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 		children.setID(EsbViewsRepository.LoadBalanceEndPoint.Properties.children);
 		children.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
 		// Start of user code for createChildrenTableComposition
-
+                Control[] newControls = propertiesGroup.getChildren();
+                childrenElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
 		// End of user code
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createNameText(FormToolkit widgetFactory, Composite parent) {
+	        Control[] previousControls = propertiesGroup.getChildren();
 		createDescription(parent, EsbViewsRepository.LoadBalanceEndPoint.Properties.name, EsbMessages.LoadBalanceEndPointPropertiesEditionPart_NameLabel);
 		name = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		name.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
@@ -723,13 +764,17 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.LoadBalanceEndPoint.Properties.name, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createNameText
-
+                Control[] newControls = propertiesGroup.getChildren();
+                nameElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
 		// End of user code
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createFailoverCheckbox(FormToolkit widgetFactory, Composite parent) {
+	        Control[] previousControls = propertiesGroup.getChildren();
 		failover = widgetFactory.createButton(parent, getDescription(EsbViewsRepository.LoadBalanceEndPoint.Properties.failover, EsbMessages.LoadBalanceEndPointPropertiesEditionPart_FailoverLabel), SWT.CHECK);
 		failover.addSelectionListener(new SelectionAdapter() {
 
@@ -752,13 +797,17 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 		EditingUtils.setEEFtype(failover, "eef::Checkbox"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.LoadBalanceEndPoint.Properties.failover, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createFailoverCheckbox
-
+                Control[] newControls = propertiesGroup.getChildren();
+                failoverElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
 		// End of user code
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createPolicyText(FormToolkit widgetFactory, Composite parent) {
+	        Control[] previousControls = propertiesGroup.getChildren();
 		createDescription(parent, EsbViewsRepository.LoadBalanceEndPoint.Properties.policy, EsbMessages.LoadBalanceEndPointPropertiesEditionPart_PolicyLabel);
 		policy = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		policy.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
@@ -820,7 +869,8 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 		EditingUtils.setEEFtype(policy, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.LoadBalanceEndPoint.Properties.policy, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createPolicyText
-
+                Control[] newControls = propertiesGroup.getChildren();
+                policyElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
 		// End of user code
 		return parent;
 	}
@@ -828,8 +878,10 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * @param container
 	 * 
+	 * @generated NOT
 	 */
 	protected Composite createOutputConnectorTableComposition(FormToolkit widgetFactory, Composite parent) {
+	        Control[] previousControls = propertiesGroup.getChildren();
 		this.outputConnector = new ReferencesTable(getDescription(EsbViewsRepository.LoadBalanceEndPoint.Properties.outputConnector, EsbMessages.LoadBalanceEndPointPropertiesEditionPart_OutputConnectorLabel), new ReferencesTableListener() {
 			public void handleAdd() {
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LoadBalanceEndPointPropertiesEditionPartForm.this, EsbViewsRepository.LoadBalanceEndPoint.Properties.outputConnector, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
@@ -871,15 +923,21 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 		outputConnector.setID(EsbViewsRepository.LoadBalanceEndPoint.Properties.outputConnector);
 		outputConnector.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
 		// Start of user code for createOutputConnectorTableComposition
-
+                Control[] newControls = propertiesGroup.getChildren();
+                outputConnectorElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
 		// End of user code
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createSessionTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EsbViewsRepository.LoadBalanceEndPoint.Properties.sessionType, EsbMessages.LoadBalanceEndPointPropertiesEditionPart_SessionTypeLabel);
-		sessionType = new EMFComboViewer(parent);
+	        filterSessionSubPropertiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent, "Session",
+	                true);
+	        Control [] previousControls = filterSessionSubPropertiesGroup.getChildren();
+		createDescription(filterSessionSubPropertiesGroup, EsbViewsRepository.LoadBalanceEndPoint.Properties.sessionType, EsbMessages.LoadBalanceEndPointPropertiesEditionPart_SessionTypeLabel);
+		sessionType = new EMFComboViewer(filterSessionSubPropertiesGroup);
 		sessionType.setContentProvider(new ArrayContentProvider());
 		sessionType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData sessionTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -899,9 +957,10 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 
 		});
 		sessionType.setID(EsbViewsRepository.LoadBalanceEndPoint.Properties.sessionType);
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.LoadBalanceEndPoint.Properties.sessionType, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, filterSessionSubPropertiesGroup, propertiesEditionComponent.getHelpContent(EsbViewsRepository.LoadBalanceEndPoint.Properties.sessionType, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createSessionTypeEMFComboViewer
-
+                Control[] newControls = filterSessionSubPropertiesGroup.getChildren();
+                sessionTypeElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
 		// End of user code
 		return parent;
 	}
@@ -974,12 +1033,15 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createSessionTimeoutText(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EsbViewsRepository.LoadBalanceEndPoint.Properties.sessionTimeout, EsbMessages.LoadBalanceEndPointPropertiesEditionPart_SessionTimeoutLabel);
-		sessionTimeout = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+	        Control[] previousControls = filterSessionSubPropertiesGroup.getChildren();
+		createDescription(filterSessionSubPropertiesGroup, EsbViewsRepository.LoadBalanceEndPoint.Properties.sessionTimeout, EsbMessages.LoadBalanceEndPointPropertiesEditionPart_SessionTimeoutLabel);
+		sessionTimeout = widgetFactory.createText(filterSessionSubPropertiesGroup, ""); //$NON-NLS-1$
 		sessionTimeout.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
-		widgetFactory.paintBordersFor(parent);
+		widgetFactory.paintBordersFor(filterSessionSubPropertiesGroup);
 		GridData sessionTimeoutData = new GridData(GridData.FILL_HORIZONTAL);
 		sessionTimeout.setLayoutData(sessionTimeoutData);
 		sessionTimeout.addFocusListener(new FocusAdapter() {
@@ -1035,9 +1097,10 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 		});
 		EditingUtils.setID(sessionTimeout, EsbViewsRepository.LoadBalanceEndPoint.Properties.sessionTimeout);
 		EditingUtils.setEEFtype(sessionTimeout, "eef::Text"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.LoadBalanceEndPoint.Properties.sessionTimeout, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, filterSessionSubPropertiesGroup, propertiesEditionComponent.getHelpContent(EsbViewsRepository.LoadBalanceEndPoint.Properties.sessionTimeout, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createSessionTimeoutText
-
+                Control[] newControls = filterSessionSubPropertiesGroup.getChildren();
+                sessionTimeOutElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
 		// End of user code
 		return parent;
 	}
@@ -1780,7 +1843,32 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 	}
 
 	// Start of user code additional methods
-	
+    @Override
+    public void refresh() {
+        super.refresh();
+        validate();
+    }
+
+    public void validate() {
+        EEFPropertyViewUtil epv = new EEFPropertyViewUtil(view);
+
+        epv.showEntry(new Control[] { filterSessionSubPropertiesGroup.getParent() }, false);
+        epv.clearElements(new Composite[] { filterSessionSubPropertiesGroup });
+
+        epv.showEntry(sessionTypeElements, false);
+        epv.showEntry(sessionTimeOutElements , false);
+        epv.hideEntry(commentsElements, false);
+        epv.hideEntry(anonymousElements, false);
+        epv.hideEntry(inLineElements, false);
+        epv.hideEntry(duplicateElements, false);
+        epv.hideEntry(reverseElements, false);
+        epv.hideEntry(childrenElements, false);
+        epv.hideEntry(nameElements, false);
+        epv.hideEntry(failoverElements, false);
+        epv.hideEntry(policyElements, false);
+        epv.hideEntry(outputConnectorElements, false);
+        view.layout(true, true);
+    }
 	// End of user code
 
 

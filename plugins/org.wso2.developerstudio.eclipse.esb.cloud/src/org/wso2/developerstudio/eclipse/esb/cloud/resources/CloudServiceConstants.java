@@ -23,10 +23,10 @@ package org.wso2.developerstudio.eclipse.esb.cloud.resources;
  *
  */
 public class CloudServiceConstants {
-    
+
     // Integration Cloud Domain
     public static final String DOMAIN_URL = "https://integration.cloud.wso2.com/appmgt/site/blocks/";
-    
+
     // Integration Cloud Endpoints
     public static class ServiceEndpoints {
         public static final String LOGIN_URL = DOMAIN_URL + "user/login/ajax/login.jag";

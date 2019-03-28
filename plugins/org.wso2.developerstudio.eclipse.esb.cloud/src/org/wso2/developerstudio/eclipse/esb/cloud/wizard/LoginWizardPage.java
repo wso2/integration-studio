@@ -22,6 +22,7 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
@@ -46,6 +47,7 @@ import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.HttpClientException
 import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.InvalidTokenException;
 import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.NetworkUnavailableException;
 import org.wso2.developerstudio.eclipse.esb.cloud.resources.CloudDeploymentWizardConstants;
+import org.wso2.developerstudio.eclipse.esb.cloud.util.CloudDeploymentWizardUtils;
 import org.wso2.developerstudio.eclipse.esb.cloud.util.UserSessionManager;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
@@ -86,7 +88,7 @@ public class LoginWizardPage extends WizardPage {
     private String initialUsername = EMPTY_STRING;
     private String initialPassword = EMPTY_STRING;
 
-    IntegrationCloudServiceClient client;
+    private IntegrationCloudServiceClient client;
 
     private boolean isPageDirty = false;
 
@@ -180,6 +182,7 @@ public class LoginWizardPage extends WizardPage {
                     txtTenant.setEnabled(false);
                     txtUsername.setEnabled(false);
                     txtPassword.setEnabled(false);
+                    fetchRuntimeData();
                     getContainer().showPage(getNextPage());
                 } else {
                     lblLoginStatus.setText(LOGIN_FAILED_MSG);
@@ -290,6 +293,29 @@ public class LoginWizardPage extends WizardPage {
         }
 
         return null;
+    }
+
+    /**
+     * Retrieves runtime data and sets it in the AppDetailsWizardPage combo
+     */
+    private void fetchRuntimeData() {
+
+        IWizardPage nextPage = getWizard().getNextPage(this);
+        AppDetailsWizardPage appPage = (AppDetailsWizardPage) nextPage.getNextPage();
+
+        try {
+            CloudDeploymentWizardUtils.fetchRuntimeData(client, appPage);
+
+        } catch (CloudDeploymentException | InvalidTokenException | HttpClientException ex) {
+            log.error(CloudDeploymentWizardConstants.ErrorMessages.RUNTIME_RETRIEVAL_FAILED_MESSAGE, ex);
+            setErrorMessage(CloudDeploymentWizardConstants.ErrorMessages.RUNTIME_RETRIEVAL_FAILED_MESSAGE);
+            setPageComplete(false);
+        } catch (NetworkUnavailableException ex) {
+            log.error(CloudDeploymentWizardConstants.ErrorMessages.NO_INTERNET_CONNECTION_MESSAGE, ex);
+            setErrorMessage(CloudDeploymentWizardConstants.ErrorMessages.NO_INTERNET_CONNECTION_MESSAGE);
+            setPageComplete(false);
+        }
+
     }
 
     public void setUsername(String username) {

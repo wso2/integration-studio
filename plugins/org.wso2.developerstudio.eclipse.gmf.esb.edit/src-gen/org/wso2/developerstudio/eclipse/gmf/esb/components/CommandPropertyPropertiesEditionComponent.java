@@ -38,6 +38,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.CommandPropertyPropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.developerstudio.eclipse.gmf.esb.parts.impl.CommandPropertyPropertiesEditionPartImpl;
 
 
 // End of user code
@@ -100,10 +101,11 @@ public class CommandPropertyPropertiesEditionComponent extends SinglePartPropert
 			// init filters
 			
 			
+			// Start of user code for CommandProperty filter update
+			((CommandPropertyPropertiesEditionPartImpl)editingPart).validate();
+			// End of user code
 			
-			
-			
-			
+
 			// init values for referenced views
 			
 			// init filters for referenced views

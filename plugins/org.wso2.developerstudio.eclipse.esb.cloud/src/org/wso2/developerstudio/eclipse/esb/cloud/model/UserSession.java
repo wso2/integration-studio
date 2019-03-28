@@ -18,8 +18,6 @@
 
 package org.wso2.developerstudio.eclipse.esb.cloud.model;
 
-import java.util.List;
-
 import org.apache.http.cookie.Cookie;
 
 /**

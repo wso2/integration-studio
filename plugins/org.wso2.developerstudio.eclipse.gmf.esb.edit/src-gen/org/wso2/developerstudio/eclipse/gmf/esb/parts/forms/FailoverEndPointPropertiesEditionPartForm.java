@@ -306,7 +306,7 @@ public class FailoverEndPointPropertiesEditionPartForm extends SectionProperties
 	 * 
 	 */
 	protected Composite createCommentsListMultiValuedEditor(FormToolkit widgetFactory, Composite parent) {
-	    Control[] previousControls = propertiesGroup.getChildren();
+	        Control[] previousControls = propertiesGroup.getChildren();
 		commentsList = widgetFactory.createText(parent, "", SWT.READ_ONLY); //$NON-NLS-1$
 		GridData commentsListData = new GridData(GridData.FILL_HORIZONTAL);
 		commentsListData.horizontalSpan = 2;
@@ -345,7 +345,7 @@ public class FailoverEndPointPropertiesEditionPartForm extends SectionProperties
 		EditingUtils.setEEFtype(editCommentsList, "eef::MultiValuedEditor::browsebutton"); //$NON-NLS-1$
 		// Start of user code for createCommentsListMultiValuedEditor
 		Control[] newControls = propertiesGroup.getChildren();
-        commentsElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
+		commentsElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
 		// End of user code
 		return parent;
 	}
@@ -420,7 +420,7 @@ public class FailoverEndPointPropertiesEditionPartForm extends SectionProperties
 
 	
 	protected Composite createAnonymousCheckbox(FormToolkit widgetFactory, Composite parent) {
-	    Control[] previousControls = propertiesGroup.getChildren();
+	        Control[] previousControls = propertiesGroup.getChildren();
 		anonymous = widgetFactory.createButton(parent, getDescription(EsbViewsRepository.FailoverEndPoint.Properties.anonymous, EsbMessages.FailoverEndPointPropertiesEditionPart_AnonymousLabel), SWT.CHECK);
 		anonymous.addSelectionListener(new SelectionAdapter() {
 
@@ -444,14 +444,14 @@ public class FailoverEndPointPropertiesEditionPartForm extends SectionProperties
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.FailoverEndPoint.Properties.anonymous, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createAnonymousCheckbox
 		Control[] newControls = propertiesGroup.getChildren();
-        anonymousElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
+            anonymousElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
 		// End of user code
 		return parent;
 	}
 
 	
 	protected Composite createInLineCheckbox(FormToolkit widgetFactory, Composite parent) {
-	    Control[] previousControls = propertiesGroup.getChildren();
+	        Control[] previousControls = propertiesGroup.getChildren();
 		inLine = widgetFactory.createButton(parent, getDescription(EsbViewsRepository.FailoverEndPoint.Properties.inLine, EsbMessages.FailoverEndPointPropertiesEditionPart_InLineLabel), SWT.CHECK);
 		inLine.addSelectionListener(new SelectionAdapter() {
 
@@ -475,14 +475,14 @@ public class FailoverEndPointPropertiesEditionPartForm extends SectionProperties
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.FailoverEndPoint.Properties.inLine, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createInLineCheckbox
 		Control[] newControls = propertiesGroup.getChildren();
-        inLineElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
+            inLineElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
 		// End of user code
 		return parent;
 	}
 
 	
 	protected Composite createDuplicateCheckbox(FormToolkit widgetFactory, Composite parent) {
-	    Control[] previousControls = propertiesGroup.getChildren();
+	        Control[] previousControls = propertiesGroup.getChildren();
 		duplicate = widgetFactory.createButton(parent, getDescription(EsbViewsRepository.FailoverEndPoint.Properties.duplicate, EsbMessages.FailoverEndPointPropertiesEditionPart_DuplicateLabel), SWT.CHECK);
 		duplicate.addSelectionListener(new SelectionAdapter() {
 
@@ -506,7 +506,7 @@ public class FailoverEndPointPropertiesEditionPartForm extends SectionProperties
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.FailoverEndPoint.Properties.duplicate, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createDuplicateCheckbox
 		Control[] newControls = propertiesGroup.getChildren();
-        duplicateElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
+            duplicateElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
 		// End of user code
 		return parent;
 	}
@@ -566,7 +566,7 @@ public class FailoverEndPointPropertiesEditionPartForm extends SectionProperties
      * @generated NOT
      */
 	protected Composite createReversedCheckbox(FormToolkit widgetFactory, Composite parent) {
-	    Control[] previousControls = propertiesGroup.getChildren();
+	        Control[] previousControls = propertiesGroup.getChildren();
 		reversed = widgetFactory.createButton(parent, getDescription(EsbViewsRepository.FailoverEndPoint.Properties.reversed, EsbMessages.FailoverEndPointPropertiesEditionPart_ReversedLabel), SWT.CHECK);
 		reversed.addSelectionListener(new SelectionAdapter() {
 
@@ -590,7 +590,7 @@ public class FailoverEndPointPropertiesEditionPartForm extends SectionProperties
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.FailoverEndPoint.Properties.reversed, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createReversedCheckbox
 		Control[] newControls = propertiesGroup.getChildren();
-        reverseElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
+            reverseElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
 		// End of user code
 		return parent;
 	}
@@ -600,7 +600,7 @@ public class FailoverEndPointPropertiesEditionPartForm extends SectionProperties
 	 * 
 	 */
 	protected Composite createChildrenTableComposition(FormToolkit widgetFactory, Composite parent) {
-	    Control[] previousControls = propertiesGroup.getChildren();
+	        Control[] previousControls = propertiesGroup.getChildren();
 		this.children = new ReferencesTable(getDescription(EsbViewsRepository.FailoverEndPoint.Properties.children, EsbMessages.FailoverEndPointPropertiesEditionPart_ChildrenLabel), new ReferencesTableListener() {
 			public void handleAdd() {
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FailoverEndPointPropertiesEditionPartForm.this, EsbViewsRepository.FailoverEndPoint.Properties.children, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
@@ -643,14 +643,14 @@ public class FailoverEndPointPropertiesEditionPartForm extends SectionProperties
 		children.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
 		// Start of user code for createChildrenTableComposition
 		Control[] newControls = propertiesGroup.getChildren();
-        childrenElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
+            childrenElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
 		// End of user code
 		return parent;
 	}
 
 	
 	protected Composite createNameText(FormToolkit widgetFactory, Composite parent) {
-	    Control[] previousControls = propertiesGroup.getChildren();
+	        Control[] previousControls = propertiesGroup.getChildren();
 		createDescription(parent, EsbViewsRepository.FailoverEndPoint.Properties.name, EsbMessages.FailoverEndPointPropertiesEditionPart_NameLabel);
 		name = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		name.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
@@ -713,7 +713,7 @@ public class FailoverEndPointPropertiesEditionPartForm extends SectionProperties
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.FailoverEndPoint.Properties.name, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createNameText
 		Control[] newControls = propertiesGroup.getChildren();
-        nameElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
+            nameElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
 		// End of user code
 		return parent;
 	}
@@ -723,7 +723,7 @@ public class FailoverEndPointPropertiesEditionPartForm extends SectionProperties
 	 * 
 	 */
 	protected Composite createOutputConnectorTableComposition(FormToolkit widgetFactory, Composite parent) {
-	    Control[] previousControls = propertiesGroup.getChildren();
+	        Control[] previousControls = propertiesGroup.getChildren();
 		this.outputConnector = new ReferencesTable(getDescription(EsbViewsRepository.FailoverEndPoint.Properties.outputConnector, EsbMessages.FailoverEndPointPropertiesEditionPart_OutputConnectorLabel), new ReferencesTableListener() {
 			public void handleAdd() {
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FailoverEndPointPropertiesEditionPartForm.this, EsbViewsRepository.FailoverEndPoint.Properties.outputConnector, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
@@ -766,7 +766,7 @@ public class FailoverEndPointPropertiesEditionPartForm extends SectionProperties
 		outputConnector.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
 		// Start of user code for createOutputConnectorTableComposition
 		Control[] newControls = propertiesGroup.getChildren();
-        outputConnectorElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
+            outputConnectorElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
 		// End of user code
 		return parent;
 	}

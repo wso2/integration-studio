@@ -24,6 +24,7 @@ import java.util.Map;
 
 import org.wso2.developerstudio.eclipse.esb.cloud.model.Application;
 import org.wso2.developerstudio.eclipse.esb.cloud.model.EndpointData;
+import org.wso2.developerstudio.eclipse.esb.cloud.model.Runtime;
 
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
@@ -34,12 +35,24 @@ import com.google.gson.Gson;
  */
 public class JsonUtils {
 
+    /**
+     * Converts a list to JSON array
+     * 
+     * @param tags
+     * @return
+     */
     public static String getJsonArrayFromList(List<Map<String, String>> tags) {
         Gson gson = new Gson();
         Type type = List.class;
         return gson.toJson(tags, type);
     }
 
+    /**
+     * Convert JSON to application object
+     * 
+     * @param json
+     * @return
+     */
     public static Application getApplicationFromJson(String json) {
         Gson gson = new Gson();
         Type type = new TypeToken<Application>() {
@@ -47,6 +60,12 @@ public class JsonUtils {
         return gson.fromJson(json, type);
     }
 
+    /**
+     * Convert JSON to application list
+     * 
+     * @param json
+     * @return
+     */
     public static List<Application> getApplicationListFromJson(String json) {
         Gson gson = new Gson();
         Type type = new TypeToken<List<Application>>() {
@@ -54,9 +73,28 @@ public class JsonUtils {
         return gson.fromJson(json, type);
     }
 
+    /**
+     * Convert JSON to endpoint data
+     * 
+     * @param json
+     * @return
+     */
     public static EndpointData getEndpointDataFromJson(String json) {
         Gson gson = new Gson();
         Type type = new TypeToken<EndpointData>() {
+        }.getType();
+        return gson.fromJson(json, type);
+    }
+
+    /**
+     * Convert JSON to runtime data
+     * 
+     * @param response
+     * @return
+     */
+    public static List<Runtime> getRuntimesFromJson(String json) {
+        Gson gson = new Gson();
+        Type type = new TypeToken<List<org.wso2.developerstudio.eclipse.esb.cloud.model.Runtime>>() {
         }.getType();
         return gson.fromJson(json, type);
     }

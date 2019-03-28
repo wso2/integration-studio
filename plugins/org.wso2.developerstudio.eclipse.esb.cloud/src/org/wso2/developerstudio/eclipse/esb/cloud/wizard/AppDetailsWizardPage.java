@@ -64,8 +64,9 @@ import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.HttpClientException
 import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.InvalidTokenException;
 import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.NetworkUnavailableException;
 import org.wso2.developerstudio.eclipse.esb.cloud.model.Application;
+import org.wso2.developerstudio.eclipse.esb.cloud.model.Runtime;
+import org.wso2.developerstudio.eclipse.esb.cloud.model.Version;
 import org.wso2.developerstudio.eclipse.esb.cloud.resources.CloudDeploymentWizardConstants;
-import org.wso2.developerstudio.eclipse.esb.cloud.resources.CloudServiceConstants;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
@@ -112,7 +113,7 @@ public class AppDetailsWizardPage extends WizardPage {
     private String appIcon = EMPTY_STRING;
     private List<Map<String, String>> tags = new ArrayList<>();
     private boolean isNewVersion;
-    private String runtime = EMPTY_STRING;
+    private int runtime;
 
     private String initialName = EMPTY_STRING;
     private String initialVersion = EMPTY_STRING;
@@ -127,8 +128,11 @@ public class AppDetailsWizardPage extends WizardPage {
 
     private String[] applicationNames;
     private List<Application> applicationList;
-    private List<String> runtimesList;
+    public List<Runtime> runtimeList;
+
     private IntegrationCloudServiceClient client;
+
+    private String[] runtimeNames;
 
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
@@ -136,11 +140,14 @@ public class AppDetailsWizardPage extends WizardPage {
         super(DIALOG_TITLE);
         setTitle(DIALOG_TITLE);
         client = IntegrationCloudServiceClient.getInstance();
+        runtimeList = new ArrayList<>();
+        runtimeNames = new String[] { "" };
     }
 
     protected AppDetailsWizardPage(IWorkbench wb, IStructuredSelection selection) {
         super(DIALOG_TITLE);
         setTitle(DIALOG_TITLE);
+        runtimeList = new ArrayList<>();
 
         try {
             IProject project = getProject(selection);
@@ -239,28 +246,6 @@ public class AppDetailsWizardPage extends WizardPage {
                     setNewVersion(false);
                     setName(getInitialName());
                     setVersion(getInitialVersion());
-
-                    // Retrieve runtimes
-
-                    if (null == runtimesList) {
-                        try {
-                            runtimesList = client.getApplicationRuntimes(CloudServiceConstants.AppConfigs.ESB);
-                            runtimeCombo.setItems((String[]) runtimesList.toArray());
-
-                        } catch (CloudDeploymentException | InvalidTokenException | HttpClientException ex) {
-                            log.error(CloudDeploymentWizardConstants.ErrorMessages.RUNTIME_RETRIEVAL_FAILED_MESSAGE,
-                                    ex);
-                            setErrorMessage(
-                                    CloudDeploymentWizardConstants.ErrorMessages.RUNTIME_RETRIEVAL_FAILED_MESSAGE);
-                            setPageComplete(false);
-                        } catch (NetworkUnavailableException ex) {
-                            log.error(CloudDeploymentWizardConstants.ErrorMessages.NO_INTERNET_CONNECTION_MESSAGE, ex);
-                            setErrorMessage(
-                                    CloudDeploymentWizardConstants.ErrorMessages.NO_INTERNET_CONNECTION_MESSAGE);
-                            setPageComplete(false);
-                        }
-                    }
-
                 }
             }
 
@@ -294,10 +279,11 @@ public class AppDetailsWizardPage extends WizardPage {
                         appNames.setItems(applicationNames);
 
                     } catch (CloudDeploymentException | InvalidTokenException | HttpClientException ex) {
-                        log.error(CloudDeploymentWizardConstants.ErrorMessages.APPLICATION_RETRIEVAL_FAILED_MESSAGE,
+                        log.error(
+                                CloudDeploymentWizardConstants.ErrorMessages.APPLICATION_LIST_RETRIEVAL_FAILED_MESSAGE,
                                 ex);
                         setErrorMessage(
-                                CloudDeploymentWizardConstants.ErrorMessages.APPLICATION_RETRIEVAL_FAILED_MESSAGE);
+                                CloudDeploymentWizardConstants.ErrorMessages.APPLICATION_LIST_RETRIEVAL_FAILED_MESSAGE);
                         setPageComplete(false);
                     } catch (NetworkUnavailableException ex) {
                         log.error(CloudDeploymentWizardConstants.ErrorMessages.NO_INTERNET_CONNECTION_MESSAGE, ex);
@@ -648,7 +634,7 @@ public class AppDetailsWizardPage extends WizardPage {
 
         runtimeCombo = new Combo(container, SWT.DROP_DOWN | SWT.READ_ONLY);
 
-        String[] items = new String[] { "" };
+        String[] items = runtimeNames;
 
         runtimeCombo.setItems(items);
 
@@ -662,10 +648,19 @@ public class AppDetailsWizardPage extends WizardPage {
             public void widgetSelected(SelectionEvent e) {
                 int idx = runtimeCombo.getSelectionIndex();
                 String runtime = runtimeCombo.getItem(idx);
-                setRuntime(runtime);
+                setRuntime(getRuntimeId(runtime));
                 validate();
             }
         });
+    }
+
+    private int getRuntimeId(String runtimeName) {
+        for (Runtime runtime : runtimeList) {
+            if (runtime.getRuntimeName().equals(runtimeName)) {
+                return runtime.getId();
+            }
+        }
+        return -1;
     }
 
     /**
@@ -706,6 +701,14 @@ public class AppDetailsWizardPage extends WizardPage {
                 int idx = appNames.getSelectionIndex();
                 String application = appNames.getItem(idx);
                 setName(application);
+                try {
+                    Application app = client.getApplication(application);
+                    Version version = app.getVersions().values().iterator().next();
+                    setRuntime(version.getRuntimeId());
+                } catch (CloudDeploymentException | InvalidTokenException | NetworkUnavailableException
+                        | HttpClientException ex) {
+                    log.error(CloudDeploymentWizardConstants.ErrorMessages.APPLICATION_RETRIEVAL_FAILED_MESSAGE, ex);
+                }
                 validate();
             }
         });
@@ -747,6 +750,10 @@ public class AppDetailsWizardPage extends WizardPage {
             if ((getName() == null || getName().equals(EMPTY_STRING)) || getVersion() == null
                     || getVersion().equals(EMPTY_STRING)) {
                 setErrorMessage("Please specify a name and version to .car file.");
+                setPageComplete(false);
+                return;
+            } else if (getRuntime() == 0) {
+                setErrorMessage("Please specify a runtime.");
                 setPageComplete(false);
                 return;
             } else {
@@ -889,12 +896,20 @@ public class AppDetailsWizardPage extends WizardPage {
         return initialVersion;
     }
 
-    public String getRuntime() {
+    public int getRuntime() {
         return runtime;
     }
 
-    public void setRuntime(String runtime) {
+    public void setRuntime(int runtime) {
         this.runtime = runtime;
+    }
+
+    public Combo getRuntimeCombo() {
+        return runtimeCombo;
+    }
+
+    public void setRuntimes(String[] runtimeNames) {
+        this.runtimeNames = runtimeNames;
     }
 
 }

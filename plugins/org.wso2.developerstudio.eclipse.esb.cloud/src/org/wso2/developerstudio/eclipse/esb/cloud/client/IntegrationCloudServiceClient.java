@@ -18,7 +18,6 @@
 
 package org.wso2.developerstudio.eclipse.esb.cloud.client;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -32,6 +31,7 @@ import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.HttpClientException
 import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.InvalidTokenException;
 import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.NetworkUnavailableException;
 import org.wso2.developerstudio.eclipse.esb.cloud.model.Application;
+import org.wso2.developerstudio.eclipse.esb.cloud.model.Runtime;
 import org.wso2.developerstudio.eclipse.esb.cloud.resources.CloudServiceConstants;
 import org.wso2.developerstudio.eclipse.esb.cloud.util.HTTPClientUtil;
 import org.wso2.developerstudio.eclipse.esb.cloud.util.JsonUtils;
@@ -197,7 +197,7 @@ public class IntegrationCloudServiceClient {
             if (null != endpointData.getAsJsonObject().get("data")) {
                 JsonObject dataJson = endpointData.getAsJsonObject().get("data").getAsJsonObject();
                 response = dataJson.toString();
-            } else if (null != endpointData.getAsJsonObject().get("message")){
+            } else if (null != endpointData.getAsJsonObject().get("message")) {
                 response = endpointData.getAsJsonObject().get("message").getAsString();
             }
         }
@@ -222,7 +222,7 @@ public class IntegrationCloudServiceClient {
      * @throws NetworkUnavailableException
      */
     public void createApplication(String appName, String appDescription, String version, String fileName,
-            String fileLocation, String iconLocation, List<Map<String, String>> tags, boolean isNewVersion)
+            String fileLocation, String iconLocation, List<Map<String, String>> tags, boolean isNewVersion, int runtime)
             throws CloudDeploymentException, InvalidTokenException, NetworkUnavailableException, HttpClientException {
 
         Map<String, String> files = new HashMap<>();
@@ -256,18 +256,21 @@ public class IntegrationCloudServiceClient {
                 CloudServiceConstants.AppConfigs.APP_CREATION_METHOD);
         data.put(CloudServiceConstants.Parameters.PARAM_SET_DEFAULT_VERSION,
                 CloudServiceConstants.AppConfigs.SET_DEFAULT_VERSION);
-        data.put(CloudServiceConstants.Parameters.PARAM_RUNTIME, CloudServiceConstants.AppConfigs.RUNTIME);
+        if (runtime != 0) {
+            data.put(CloudServiceConstants.Parameters.PARAM_RUNTIME, Integer.toString(runtime));
+        }
 
         HTTPClientUtil.sendPostWithMulipartFormData(createAppUrl, data, files, cookieStore);
 
     }
-    
-    public List<String> getApplicationRuntimes(String appType) throws InvalidTokenException, CloudDeploymentException, NetworkUnavailableException, HttpClientException {
+
+    public List<Runtime> getApplicationRuntimes(String appType)
+            throws InvalidTokenException, CloudDeploymentException, NetworkUnavailableException, HttpClientException {
         String getAppUrl = CloudServiceConstants.ServiceEndpoints.APPLICATION_URL;
 
         Map<String, String> data = new HashMap<>();
         data.put(CloudServiceConstants.Parameters.PARAM_ACTION, CloudServiceConstants.Actions.GET_RUNTIMES);
-        data.put(CloudServiceConstants.Parameters.PARAM_APP_TYPE, appType);
+        data.put(CloudServiceConstants.Parameters.PARAM_APP_TYPE_NAME, appType);
 
         String response = HTTPClientUtil.sendPostWithFormData(getAppUrl, new HashMap<String, String>(), data,
                 cookieStore);
@@ -276,8 +279,7 @@ public class IntegrationCloudServiceClient {
             return null;
         }
 
-        // TODO: map response
-        return new ArrayList<>();
+        return JsonUtils.getRuntimesFromJson(response);
     }
 
     /**
@@ -288,7 +290,5 @@ public class IntegrationCloudServiceClient {
     public CookieStore getCookieStore() {
         return cookieStore;
     }
-
-
 
 }

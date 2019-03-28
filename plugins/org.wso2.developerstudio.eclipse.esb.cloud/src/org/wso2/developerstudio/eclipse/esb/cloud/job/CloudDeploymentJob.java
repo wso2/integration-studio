@@ -53,8 +53,6 @@ import org.wso2.developerstudio.eclipse.esb.cloud.util.JsonUtils;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
-import io.takari.aether.client.Response;
-
 /**
  * Represents a background job to upload application to the cloud.
  *
@@ -73,12 +71,13 @@ public class CloudDeploymentJob extends Job {
     private String response;
     private EndpointData endpointData;
     private NotificationPopup popup;
+    private int runtime;
 
     private static final int POLLING_INTERVAL = 5;
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
     public CloudDeploymentJob(String name, String description, String version, String carbonFileName,
-            String carbonFileLocation, String iconLocation, List<Map<String, String>> tags, boolean isNewVersion) {
+            String carbonFileLocation, String iconLocation, List<Map<String, String>> tags, boolean isNewVersion, int runtime) {
         super("Deploying to Integration Cloud...");
         client = IntegrationCloudServiceClient.getInstance();
         this.name = name;
@@ -89,6 +88,7 @@ public class CloudDeploymentJob extends Job {
         this.iconLocation = iconLocation;
         this.tags = tags;
         this.isNewVersion = isNewVersion;
+        this.runtime = runtime;
     }
 
     @Override
@@ -107,7 +107,7 @@ public class CloudDeploymentJob extends Job {
 
             // Create new application / version. Response is returned once the application is created.
             client.createApplication(name, description, version, carbonFileName, carbonFileLocation, iconLocation, tags,
-                    isNewVersion);
+                    isNewVersion,runtime);
 
             operationText = "Fetching the endpoints...";
             monitor.subTask(operationText);

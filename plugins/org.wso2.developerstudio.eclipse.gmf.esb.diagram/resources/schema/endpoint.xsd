@@ -57,7 +57,6 @@
             <xs:group ref="lbEndpoints" minOccurs="0" maxOccurs="1"/>
             <xs:group ref="otherEndpoints" minOccurs="0" maxOccurs="1"/>
         </xs:choice>
-        <xs:attribute name="name" type="xs:string" use="optional"/>
         <xs:attribute name="key" type="xs:string" use="optional"/>
         <xs:attribute name="template" type="xs:string" use="optional"/>
         <xs:attribute name="uri" type="xs:string" use="optional"/>
@@ -114,8 +113,8 @@
             </xs:documentation>
         </xs:annotation>
         <xs:choice>
-            <xs:group ref="lbEndpoints"/>
-            <xs:group ref="failoverEndpoints"/>
+            <xs:group ref="lbEndpoints" minOccurs="1" maxOccurs="1"/>
+            <xs:group ref="failoverEndpoints" minOccurs="1" maxOccurs="1"/>
         </xs:choice>
     </xs:group>
 
@@ -126,7 +125,7 @@
             </xs:documentation>
         </xs:annotation>
         <xs:all>
-            <xs:element name="session" minOccurs="0" maxOccurs="1">
+            <xs:element name="session" minOccurs="1" maxOccurs="1">
                 <xs:complexType>
                     <xs:attribute name="type" use="optional" default="http">
                         <xs:simpleType>

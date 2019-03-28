@@ -51,7 +51,7 @@
                 configuration
             </xs:documentation>
         </xs:annotation>
-        <xs:choice maxOccurs="unbounded" minOccurs="1">
+        <xs:choice minOccurs="1" maxOccurs="unbounded">
             <xs:element ref="registry" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="api" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="proxy" minOccurs="0" maxOccurs="unbounded"/>

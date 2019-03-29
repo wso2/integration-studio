@@ -975,6 +975,10 @@ public class SequencesPropertiesEditionPartForm extends SectionPropertiesEditing
 	}
 
 	// Start of user code additional methods
+
+    /**
+     * @generated NOT
+     */
 	protected Composite createOnError(FormToolkit widgetFactory, Composite parent) {
 		Control onErrorLabel = createDescription(parent,
 				EsbViewsRepository.Sequences.Properties.onError,

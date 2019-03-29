@@ -75,6 +75,10 @@ public class CommandPropertyPropertiesEditionPartForm extends SectionPropertiesE
 	protected Text valueContextPropertyName;
 	protected EMFComboViewer contextAction;
 	protected EMFComboViewer messageAction;
+	// Start of user code  for valueMessageElementXpath widgets declarations
+	
+	// End of user code
+
 
 
 
@@ -126,6 +130,7 @@ public class CommandPropertyPropertiesEditionPartForm extends SectionPropertiesE
 		propertiesStep.addStep(EsbViewsRepository.CommandProperty.Properties.valueContextPropertyName);
 		propertiesStep.addStep(EsbViewsRepository.CommandProperty.Properties.contextAction);
 		propertiesStep.addStep(EsbViewsRepository.CommandProperty.Properties.messageAction);
+		propertiesStep.addStep(EsbViewsRepository.CommandProperty.Properties.valueMessageElementXpath);
 		
 		
 		composer = new PartComposer(commandPropertyStep) {
@@ -153,6 +158,9 @@ public class CommandPropertyPropertiesEditionPartForm extends SectionPropertiesE
 				if (key == EsbViewsRepository.CommandProperty.Properties.messageAction) {
 					return createMessageActionEMFComboViewer(widgetFactory, parent);
 				}
+				// Start of user code for valueMessageElementXpath addToPart creation
+				
+				// End of user code
 				return parent;
 			}
 		};
@@ -723,6 +731,10 @@ public class CommandPropertyPropertiesEditionPartForm extends SectionPropertiesE
 
 
 
+
+	// Start of user code for valueMessageElementXpath specific getters and setters implementation
+	
+	// End of user code
 
 	/**
 	 * {@inheritDoc}

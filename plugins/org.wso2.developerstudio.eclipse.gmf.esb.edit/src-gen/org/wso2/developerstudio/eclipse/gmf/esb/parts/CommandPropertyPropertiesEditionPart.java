@@ -122,6 +122,9 @@ public interface CommandPropertyPropertiesEditionPart {
 
 
 
+	// Start of user code for valueMessageElementXpath specific getters and setters declaration
+	
+	// End of user code
 
 	/**
 	 * Returns the internationalized title text.

@@ -98,14 +98,19 @@ public class CommandPropertyPropertiesEditionComponent extends SinglePartPropert
 			if (isAccessible(EsbViewsRepository.CommandProperty.Properties.messageAction)) {
 				basePart.initMessageAction(EEFUtils.choiceOfValues(commandProperty, EsbPackage.eINSTANCE.getCommandProperty_MessageAction()), commandProperty.getMessageAction());
 			}
+			// Start of user code  for valueMessageElementXpath command update
+			// End of user code
+			
 			// init filters
 			
 			
-			// Start of user code for CommandProperty filter update
-			((CommandPropertyPropertiesEditionPartImpl)editingPart).validate();
+			
+			
+			
+			
+			// Start of user code  for valueMessageElementXpath filter update
 			// End of user code
 			
-
 			// init values for referenced views
 			
 			// init filters for referenced views
@@ -113,6 +118,7 @@ public class CommandPropertyPropertiesEditionComponent extends SinglePartPropert
 		}
 		setInitializing(false);
 	}
+
 
 
 
@@ -145,6 +151,9 @@ public class CommandPropertyPropertiesEditionComponent extends SinglePartPropert
 		if (editorKey == EsbViewsRepository.CommandProperty.Properties.messageAction) {
 			return EsbPackage.eINSTANCE.getCommandProperty_MessageAction();
 		}
+		if (editorKey == EsbViewsRepository.CommandProperty.Properties.valueMessageElementXpath) {
+			return EsbPackage.eINSTANCE.getCommandProperty_ValueMessageElementXpath();
+		}
 		return super.associatedFeature(editorKey);
 	}
 
@@ -172,6 +181,11 @@ public class CommandPropertyPropertiesEditionComponent extends SinglePartPropert
 		}
 		if (EsbViewsRepository.CommandProperty.Properties.messageAction == event.getAffectedEditor()) {
 			commandProperty.setMessageAction((CommandPropertyMessageAction)event.getNewValue());
+		}
+		if (EsbViewsRepository.CommandProperty.Properties.valueMessageElementXpath == event.getAffectedEditor()) {
+			// Start of user code for updateValueMessageElementXpath method body
+			// End of user code
+			
 		}
 	}
 
@@ -213,6 +227,10 @@ public class CommandPropertyPropertiesEditionComponent extends SinglePartPropert
 			if (EsbPackage.eINSTANCE.getCommandProperty_MessageAction().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EsbViewsRepository.CommandProperty.Properties.messageAction))
 				basePart.setMessageAction((CommandPropertyMessageAction)msg.getNewValue());
 			
+					// Start of user code for valueMessageElementXpath live update
+					
+					// End of user code
+			
 			
 		}
 	}
@@ -230,7 +248,8 @@ public class CommandPropertyPropertiesEditionComponent extends SinglePartPropert
 			EsbPackage.eINSTANCE.getCommandProperty_ValueLiteral(),
 			EsbPackage.eINSTANCE.getCommandProperty_ValueContextPropertyName(),
 			EsbPackage.eINSTANCE.getCommandProperty_ContextAction(),
-			EsbPackage.eINSTANCE.getCommandProperty_MessageAction()		);
+			EsbPackage.eINSTANCE.getCommandProperty_MessageAction(),
+			EsbPackage.eINSTANCE.getCommandProperty_ValueMessageElementXpath()		);
 		return new NotificationFilter[] {filter,};
 	}
 

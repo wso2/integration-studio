@@ -139,7 +139,8 @@ public class SequencesPropertiesEditionPartForm extends SectionPropertiesEditing
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
-	 * 
+	 *
+	 * @generated NOT
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 		Form form = widgetFactory.createForm(parent);

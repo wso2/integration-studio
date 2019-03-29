@@ -103,8 +103,9 @@ public class AppDetailsWizardPage extends WizardPage {
     private Button btnNewApplication;
     private Button btnExistingApplication;
     private Combo appNames;
-    private Combo runtimeCombo;
     private Text newVersion;
+    Combo createAppRuntimeCombo = null;
+    Combo createVersionRuntimeCombo = null;
 
     // Application values
     private String name = EMPTY_STRING;
@@ -205,9 +206,9 @@ public class AppDetailsWizardPage extends WizardPage {
 
         // Application Description
         createDescriptionInput(newAppContainer);
-
+        
         // Application Runtimes
-        createRuntimeSelectInput(parent, newAppContainer);
+        createRuntimeSelectInputForCreateApp(parent, newAppContainer);
 
         // Application Icon
         createApplicationIconInput(newAppContainer);
@@ -247,6 +248,8 @@ public class AppDetailsWizardPage extends WizardPage {
                     setName(getInitialName());
                     setVersion(getInitialVersion());
                 }
+                
+                validate();
             }
 
         });
@@ -301,6 +304,9 @@ public class AppDetailsWizardPage extends WizardPage {
 
         // Application Version
         newVersion = createVersionInput(parent, existingAppContainer);
+        
+        // Application Runtimes
+        createRuntimeSelectInputForVersionCreation(parent, existingAppContainer);
 
         // Tags
         createTagsInput(existingAppContainer);
@@ -612,12 +618,12 @@ public class AppDetailsWizardPage extends WizardPage {
     }
 
     /**
-     * Create a select input for runtimes
+     * Create a select input for runtimes for app creation
      * 
      * @param parent
      * @param container
      */
-    private void createRuntimeSelectInput(Composite parent, Composite container) {
+    private void createRuntimeSelectInputForCreateApp(Composite parent, Composite container) {
         StyledText lblName = new StyledText(container, SWT.NONE);
         FontData data = lblName.getFont().getFontData()[0];
         fontName = data.getName();
@@ -632,22 +638,65 @@ public class AppDetailsWizardPage extends WizardPage {
         lblName.setStyleRange(appNameRange);
         lblName.setFont(new Font(parent.getDisplay(), fontName, 12, fontStyle));
 
-        runtimeCombo = new Combo(container, SWT.DROP_DOWN | SWT.READ_ONLY);
+        createAppRuntimeCombo = new Combo(container, SWT.DROP_DOWN | SWT.READ_ONLY);
 
         String[] items = runtimeNames;
 
-        runtimeCombo.setItems(items);
+        createAppRuntimeCombo.setItems(items);
 
         GridData txtNameGridData = new GridData(SWT.LEFT, SWT.CENTER, false, false, 2, 1);
         txtNameGridData.widthHint = 480;
-        runtimeCombo.setLayoutData(txtNameGridData);
+        createAppRuntimeCombo.setLayoutData(txtNameGridData);
 
-        runtimeCombo.addSelectionListener(new SelectionAdapter() {
+        createAppRuntimeCombo.addSelectionListener(new SelectionAdapter() {
 
             @Override
             public void widgetSelected(SelectionEvent e) {
-                int idx = runtimeCombo.getSelectionIndex();
-                String runtime = runtimeCombo.getItem(idx);
+                int idx = createAppRuntimeCombo.getSelectionIndex();
+                String runtime = createAppRuntimeCombo.getItem(idx);
+                setRuntime(getRuntimeId(runtime));
+                validate();
+            }
+        });
+    }
+    
+    /**
+     * Create a select input for runtimes for version creation
+     * 
+     * @param parent
+     * @param container
+     */
+    private void createRuntimeSelectInputForVersionCreation(Composite parent, Composite container) {
+        StyledText lblName = new StyledText(container, SWT.NONE);
+        FontData data = lblName.getFont().getFontData()[0];
+        fontName = data.getName();
+        fontStyle = data.getStyle();
+
+        GridData lblNameGridData = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1);
+        lblName.setLayoutData(lblNameGridData);
+        lblName.setText(APPLICATION_RUNTIME_LABEL_TEXT);
+
+        StyleRange appNameRange = new StyleRange(lblName.getCharCount() - 1, 1,
+                CloudDeploymentWizardConstants.Colors.red, null);
+        lblName.setStyleRange(appNameRange);
+        lblName.setFont(new Font(parent.getDisplay(), fontName, 12, fontStyle));
+
+        createVersionRuntimeCombo = new Combo(container, SWT.DROP_DOWN | SWT.READ_ONLY);
+
+        String[] items = runtimeNames;
+
+        createVersionRuntimeCombo.setItems(items);
+
+        GridData txtNameGridData = new GridData(SWT.LEFT, SWT.CENTER, false, false, 2, 1);
+        txtNameGridData.widthHint = 480;
+        createVersionRuntimeCombo.setLayoutData(txtNameGridData);
+
+        createVersionRuntimeCombo.addSelectionListener(new SelectionAdapter() {
+
+            @Override
+            public void widgetSelected(SelectionEvent e) {
+                int idx = createVersionRuntimeCombo.getSelectionIndex();
+                String runtime = createVersionRuntimeCombo.getItem(idx);
                 setRuntime(getRuntimeId(runtime));
                 validate();
             }
@@ -701,14 +750,6 @@ public class AppDetailsWizardPage extends WizardPage {
                 int idx = appNames.getSelectionIndex();
                 String application = appNames.getItem(idx);
                 setName(application);
-                try {
-                    Application app = client.getApplication(application);
-                    Version version = app.getVersions().values().iterator().next();
-                    setRuntime(version.getRuntimeId());
-                } catch (CloudDeploymentException | InvalidTokenException | NetworkUnavailableException
-                        | HttpClientException ex) {
-                    log.error(CloudDeploymentWizardConstants.ErrorMessages.APPLICATION_RETRIEVAL_FAILED_MESSAGE, ex);
-                }
                 validate();
             }
         });
@@ -753,7 +794,7 @@ public class AppDetailsWizardPage extends WizardPage {
                 setPageComplete(false);
                 return;
             } else if (getRuntime() == 0) {
-                setErrorMessage("Please specify a runtime.");
+                setErrorMessage("Please select a runtime.");
                 setPageComplete(false);
                 return;
             } else {
@@ -778,6 +819,10 @@ public class AppDetailsWizardPage extends WizardPage {
         } else {
             if (appNames.getText() == null || appNames.getText().equals(EMPTY_STRING)) {
                 setErrorMessage("Please select an application.");
+                setPageComplete(false);
+                return;
+            } else if (getRuntime() == 0) {
+                setErrorMessage("Please select a runtime.");
                 setPageComplete(false);
                 return;
             } else {
@@ -904,8 +949,12 @@ public class AppDetailsWizardPage extends WizardPage {
         this.runtime = runtime;
     }
 
-    public Combo getRuntimeCombo() {
-        return runtimeCombo;
+    public Combo getCreateAppRuntimeCombo() {
+        return createAppRuntimeCombo;
+    }
+    
+    public Combo getCreateVersionRuntimeCombo() {
+        return createVersionRuntimeCombo;
     }
 
     public void setRuntimes(String[] runtimeNames) {

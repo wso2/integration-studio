@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 WSO2, Inc. (http://wso2.com)
+ * Copyright 2019 WSO2, Inc. (http://wso2.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,13 +22,14 @@ import java.util.Properties;
 import org.apache.axiom.om.OMAttribute;
 import org.apache.axiom.om.OMElement;
 import org.apache.synapse.Mediator;
+import org.apache.synapse.SynapseException;
 import org.apache.synapse.config.xml.POJOCommandMediatorFactory;
 import org.apache.synapse.config.xml.SynapseXPathFactory;
 import org.apache.synapse.util.xpath.SynapseXPath;
 import org.jaxen.JaxenException;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.POJOCommandMediatorExt;
 
-public class POJOCommandMediatorExtFactory extends POJOCommandMediatorFactory {
+public class DummyPOJOCommandMediatorFactory extends POJOCommandMediatorFactory {
 
     public Mediator createSpecificMediator(OMElement elem, Properties properties) {
         POJOCommandMediatorExt pojoMediator = null;
@@ -38,6 +39,17 @@ public class POJOCommandMediatorExtFactory extends POJOCommandMediatorFactory {
         if (name != null) {
             // load the class for the command object
             pojoMediator = new POJOCommandMediatorExt(name.getAttributeValue());
+        } else {
+            String msg = "The name of the actual POJO command implementation class" + " is a required attribute";
+            throw new SynapseException(msg);
+        }
+
+        if ("".equals(name.getAttributeValue())) {
+            String msg = "The name attribute of the actual POJO command implementation class" + " cannot be empty";
+            throw new SynapseException(msg);
+        } else if ("".equals(name.getAttributeValue())) {
+            String msg = "The name of the actual POJO command implementation class" + " cannot be empty";
+            throw new SynapseException(msg);
         }
 
         // setting the properties to the command. these properties will be instantiated
@@ -52,7 +64,7 @@ public class POJOCommandMediatorExtFactory extends POJOCommandMediatorFactory {
 
                     handlePropertyAction(nameAttr.getAttributeValue(), child, pojoMediator);
                 } else {
-                    handlePropertyAction("", child, pojoMediator);
+                    handleException("A POJO command mediator " + "property must specify the name attribute");
                 }
             }
         }
@@ -76,11 +88,11 @@ public class POJOCommandMediatorExtFactory extends POJOCommandMediatorFactory {
             // ignore
         }
 
-        // if there is a value attribute there is no action (action is implied as read
+        // if there is a value attribute there is no action (action is implied as a read
         // value)
         if (valueAttr != null) {
             String value = valueAttr.getAttributeValue();
-            // all other three attributes can not co-exists
+            // all other three attributes cannot co-exist
             m.addStaticSetterProperty(name, value);
             if (exprAttr != null) {
                 // action ==> ReadValueAndUpdateMesssage
@@ -91,7 +103,7 @@ public class POJOCommandMediatorExtFactory extends POJOCommandMediatorFactory {
             } // else the action ==> ReadValue
 
         } else if (propElem.getFirstElement() != null) {
-            // all other two attributes can not co-exists
+            // all other two attributes can not co-exist
 
             m.addStaticSetterProperty(name, propElem.getFirstElement());
             if (exprAttr != null) {
@@ -161,4 +173,5 @@ public class POJOCommandMediatorExtFactory extends POJOCommandMediatorFactory {
             }
         }
     }
+
 }

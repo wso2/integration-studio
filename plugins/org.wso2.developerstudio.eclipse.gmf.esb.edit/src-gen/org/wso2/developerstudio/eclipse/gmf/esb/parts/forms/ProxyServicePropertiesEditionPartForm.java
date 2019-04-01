@@ -1624,7 +1624,6 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
      */
 	protected Composite createWsdlXMLText(FormToolkit widgetFactory, Composite parent) {
 		Control wsdlXMLLabel = createDescription(parent, EsbViewsRepository.ProxyService.Wsdl.wsdlXML, EsbMessages.ProxyServicePropertiesEditionPart_WsdlXMLLabel);
-//		wsdlXML = widgetFactory.createText(parent, "", SWT.V_SCROLL); //$NON-NLS-1$
 		wsdlXML = new Text(parent, SWT.MULTI | SWT.V_SCROLL | SWT.BORDER);
 		wsdlXML.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);

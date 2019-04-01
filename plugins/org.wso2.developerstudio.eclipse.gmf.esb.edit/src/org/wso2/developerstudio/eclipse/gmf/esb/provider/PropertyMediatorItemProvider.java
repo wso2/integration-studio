@@ -515,7 +515,7 @@ public class PropertyMediatorItemProvider extends MediatorItemProvider {
 
         return newLabel == null || label.length() == 0 ?
             getString("_UI_PropertyMediator_type") :
-            trim("Property") + trim(propertyName);
+            trim("Property");
     }
 
     public String trim(String str) {

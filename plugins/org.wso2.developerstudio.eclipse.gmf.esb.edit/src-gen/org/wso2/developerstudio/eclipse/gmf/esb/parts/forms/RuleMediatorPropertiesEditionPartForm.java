@@ -201,14 +201,13 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	 * 
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
-		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
-		Form form = scrolledForm.getForm();
+		Form form = widgetFactory.createForm(parent);
 		view = form.getBody();
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
 		createControls(widgetFactory, view);
-		return scrolledForm;
+		return form;
 	}
 
 	/**
@@ -220,12 +219,22 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		CompositionSequence ruleMediatorStep = new BindingCompositionSequence(propertiesEditionComponent);
-		CompositionStep miscStep = ruleMediatorStep.addStep(EsbViewsRepository.RuleMediator.Misc.class);
-		miscStep.addStep(EsbViewsRepository.RuleMediator.Misc.description);
-		miscStep.addStep(EsbViewsRepository.RuleMediator.Misc.commentsList);
-		miscStep.addStep(EsbViewsRepository.RuleMediator.Misc.reverse);
-		miscStep.addStep(EsbViewsRepository.RuleMediator.Misc.statefulSession);
-		miscStep.addStep(EsbViewsRepository.RuleMediator.Misc.ruleSessionProperties);
+		CompositionStep sourceStep = ruleMediatorStep.addStep(EsbViewsRepository.RuleMediator.Source.class);
+		sourceStep.addStep(EsbViewsRepository.RuleMediator.Source.sourceValue);
+		sourceStep.addStep(EsbViewsRepository.RuleMediator.Source.sourceXPath);
+
+		CompositionStep targetStep = ruleMediatorStep.addStep(EsbViewsRepository.RuleMediator.Target.class);
+		targetStep.addStep(EsbViewsRepository.RuleMediator.Target.targetValue);
+		targetStep.addStep(EsbViewsRepository.RuleMediator.Target.targetAction);
+		targetStep.addStep(EsbViewsRepository.RuleMediator.Target.targetXPath);
+		targetStep.addStep(EsbViewsRepository.RuleMediator.Target.targetResultXPath);
+
+		CompositionStep ruleSetStep = ruleMediatorStep.addStep(EsbViewsRepository.RuleMediator.RuleSet.class);
+		ruleSetStep.addStep(EsbViewsRepository.RuleMediator.RuleSet.ruleSetType);
+		ruleSetStep.addStep(EsbViewsRepository.RuleMediator.RuleSet.ruleSetSourceType);
+		ruleSetStep.addStep(EsbViewsRepository.RuleMediator.RuleSet.ruleSetURL);
+		ruleSetStep.addStep(EsbViewsRepository.RuleMediator.RuleSet.ruleSetSourceCode);
+		ruleSetStep.addStep(EsbViewsRepository.RuleMediator.RuleSet.ruleSetSourceKey);
 		
 		CompositionStep inputFactsStep = ruleMediatorStep.addStep(EsbViewsRepository.RuleMediator.InputFacts.class);
 		inputFactsStep.addStep(EsbViewsRepository.RuleMediator.InputFacts.inputWrapperName);
@@ -236,25 +245,14 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 		outputFactsStep.addStep(EsbViewsRepository.RuleMediator.OutputFacts.outputWrapperName);
 		outputFactsStep.addStep(EsbViewsRepository.RuleMediator.OutputFacts.outputNameSpace);
 		outputFactsStep.addStep(EsbViewsRepository.RuleMediator.OutputFacts.ruleResultsConfiguration);
-		
-		CompositionStep sourceStep = ruleMediatorStep.addStep(EsbViewsRepository.RuleMediator.Source.class);
-		sourceStep.addStep(EsbViewsRepository.RuleMediator.Source.sourceValue);
-		sourceStep.addStep(EsbViewsRepository.RuleMediator.Source.sourceXPath);
-		
-		CompositionStep targetStep = ruleMediatorStep.addStep(EsbViewsRepository.RuleMediator.Target.class);
-		targetStep.addStep(EsbViewsRepository.RuleMediator.Target.targetValue);
-		targetStep.addStep(EsbViewsRepository.RuleMediator.Target.targetAction);
-		targetStep.addStep(EsbViewsRepository.RuleMediator.Target.targetXPath);
-		targetStep.addStep(EsbViewsRepository.RuleMediator.Target.targetResultXPath);
-		
-		CompositionStep ruleSetStep = ruleMediatorStep.addStep(EsbViewsRepository.RuleMediator.RuleSet.class);
-		ruleSetStep.addStep(EsbViewsRepository.RuleMediator.RuleSet.ruleSetType);
-		ruleSetStep.addStep(EsbViewsRepository.RuleMediator.RuleSet.ruleSetURL);
-		ruleSetStep.addStep(EsbViewsRepository.RuleMediator.RuleSet.ruleSetSourceType);
-		ruleSetStep.addStep(EsbViewsRepository.RuleMediator.RuleSet.ruleSetSourceCode);
-		ruleSetStep.addStep(EsbViewsRepository.RuleMediator.RuleSet.ruleSetSourceKey);
-		
-		
+
+		CompositionStep miscStep = ruleMediatorStep.addStep(EsbViewsRepository.RuleMediator.Misc.class);
+		miscStep.addStep(EsbViewsRepository.RuleMediator.Misc.description);
+		miscStep.addStep(EsbViewsRepository.RuleMediator.Misc.commentsList);
+		miscStep.addStep(EsbViewsRepository.RuleMediator.Misc.reverse);
+		miscStep.addStep(EsbViewsRepository.RuleMediator.Misc.statefulSession);
+		miscStep.addStep(EsbViewsRepository.RuleMediator.Misc.ruleSessionProperties);
+
 		composer = new PartComposer(ruleMediatorStep) {
 
 			@Override
@@ -2323,6 +2321,10 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	}
 
 	// Start of user code additional methods
+	
+    /**
+     * @generated NOT
+     */	
 	protected Composite createsourceXPathWidget(FormToolkit widgetFactory, final Composite parent) {
 	    Control sourceXPathLabel = createDescription(parent, EsbViewsRepository.RuleMediator.Source.sourceXPath,
                 EsbMessages.RuleMediatorPropertiesEditionPart_SourceXPathLabel);
@@ -2332,7 +2334,7 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
         }
         String initValueExpression = sourceXPath.getPropertyValue().isEmpty() ? "/default/expression"
                 : sourceXPath.getPropertyValue();
-        sourceXPathText = widgetFactory.createText(parent, initValueExpression);
+        sourceXPathText = widgetFactory.createText(parent, initValueExpression, SWT.READ_ONLY);
         sourceXPathText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
         widgetFactory.paintBordersFor(parent);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
@@ -2384,6 +2386,9 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
         return parent;
     }
 	
+    /**
+     * @generated NOT
+     */
 	 protected Composite createtargetXPathWidget(FormToolkit widgetFactory, final Composite parent) {
 	        Control targetXPathLabel = createDescription(parent, EsbViewsRepository.RuleMediator.Target.targetXPath,
 	                EsbMessages.EnrichMediatorPropertiesEditionPart_TargetXPathLabel);
@@ -2393,7 +2398,7 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	        }
 	        String initValueExpression = targetXPath.getPropertyValue().isEmpty() ? "/default/expression"
 	                : targetXPath.getPropertyValue();
-	        targetXPathText = widgetFactory.createText(parent, initValueExpression);
+	        targetXPathText = widgetFactory.createText(parent, initValueExpression, SWT.READ_ONLY);
 	        targetXPathText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 	        widgetFactory.paintBordersFor(parent);
 	        GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
@@ -2444,7 +2449,10 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	        targetXPathElements = new Control[] { targetXPathLabel, targetXPathText, targetXPathHelp };
 	        return parent;
 	    }
-	 
+	
+	 /*
+	  * @generated NOT
+	  */
 	 protected Composite createtargetResultXPathWidget(FormToolkit widgetFactory, final Composite parent) {
          Control targetResultXPathLabel = createDescription(parent, EsbViewsRepository.RuleMediator.Target.targetResultXPath,
                  EsbMessages.RuleMediatorPropertiesEditionPart_TargetResultXPathLabel);
@@ -2454,7 +2462,7 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
          }
          String initValueExpression = targetResultXPath.getPropertyValue().isEmpty() ? "/default/expression"
                  : targetResultXPath.getPropertyValue();
-         targetResultXPathText = widgetFactory.createText(parent, initValueExpression);
+         targetResultXPathText = widgetFactory.createText(parent, initValueExpression, SWT.READ_ONLY);
          targetResultXPathText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
          widgetFactory.paintBordersFor(parent);
          GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
@@ -2515,7 +2523,7 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	            ruleSetSourceKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
 	        }
 	        String initValueExpression = ruleSetSourceKey.getKeyValue().isEmpty() ? "" : ruleSetSourceKey.getKeyValue();
-	        ruleSetSourceKeyText = widgetFactory.createText(parent, initValueExpression);
+	        ruleSetSourceKeyText = widgetFactory.createText(parent, initValueExpression, SWT.READ_ONLY);
 	        ruleSetSourceKeyText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 	        widgetFactory.paintBordersFor(parent);
 	        GridData valueData = new GridData(GridData.FILL_HORIZONTAL);

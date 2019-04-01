@@ -55,7 +55,7 @@ import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.RuleFactPropertiesEditionPart;
 
@@ -74,6 +74,10 @@ public class RuleFactPropertiesEditionPartForm extends SectionPropertiesEditingP
 	protected Text factName;
 	protected EMFComboViewer valueType;
 	protected Text valueLiteral;
+	// Start of user code  for propertyExpression widgets declarations
+	
+	// End of user code
+
 
 
 
@@ -124,6 +128,7 @@ public class RuleFactPropertiesEditionPartForm extends SectionPropertiesEditingP
 		propertiesStep.addStep(EsbViewsRepository.RuleFact.Properties.factName);
 		propertiesStep.addStep(EsbViewsRepository.RuleFact.Properties.valueType);
 		propertiesStep.addStep(EsbViewsRepository.RuleFact.Properties.valueLiteral);
+		propertiesStep.addStep(EsbViewsRepository.RuleFact.Properties.propertyExpression);
 		
 		
 		composer = new PartComposer(ruleFactStep) {
@@ -148,6 +153,9 @@ public class RuleFactPropertiesEditionPartForm extends SectionPropertiesEditingP
 				if (key == EsbViewsRepository.RuleFact.Properties.valueLiteral) {
 					return createValueLiteralText(widgetFactory, parent);
 				}
+				// Start of user code for propertyExpression addToPart creation
+				
+				// End of user code
 				return parent;
 			}
 		};
@@ -642,6 +650,10 @@ public class RuleFactPropertiesEditionPartForm extends SectionPropertiesEditingP
 
 
 
+	// Start of user code for propertyExpression specific getters and setters implementation
+	
+	// End of user code
+
 	/**
 	 * {@inheritDoc}
 	 *
@@ -651,6 +663,18 @@ public class RuleFactPropertiesEditionPartForm extends SectionPropertiesEditingP
 	public String getTitle() {
 		return EsbMessages.RuleFact_Part_Title;
 	}
+
+    @Override
+    public NamespacedProperty getPropertyExpression() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void setPropertyExpression(NamespacedProperty nameSpacedProperty) {
+        // TODO Auto-generated method stub
+        
+    }
 
 	// Start of user code additional methods
 	

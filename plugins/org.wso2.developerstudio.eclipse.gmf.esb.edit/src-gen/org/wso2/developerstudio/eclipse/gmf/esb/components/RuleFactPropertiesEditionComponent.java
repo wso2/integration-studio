@@ -31,13 +31,15 @@ import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.RuleFact;
 import org.wso2.developerstudio.eclipse.gmf.esb.RuleFactType;
 import org.wso2.developerstudio.eclipse.gmf.esb.RuleFactValueType;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.RuleFactPropertiesEditionPart;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.parts.impl.ClassPropertyPropertiesEditionPartImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.parts.impl.RuleFactPropertiesEditionPartImpl;
 
 // End of user code
 
@@ -90,14 +92,24 @@ public class RuleFactPropertiesEditionComponent extends SinglePartPropertiesEdit
 			if (isAccessible(EsbViewsRepository.RuleFact.Properties.valueType)) {
 				basePart.initValueType(EEFUtils.choiceOfValues(ruleFact, EsbPackage.eINSTANCE.getRuleFact_ValueType()), ruleFact.getValueType());
 			}
-			if (isAccessible(EsbViewsRepository.RuleFact.Properties.valueLiteral))
+			if (isAccessible(EsbViewsRepository.RuleFact.Properties.valueLiteral)) {
 				basePart.setValueLiteral(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, ruleFact.getValueLiteral()));
+			}
+			// Start of user code  for propertyExpression command update
+	         if (isAccessible(EsbViewsRepository.RuleFact.Properties.propertyExpression)) {
+	                basePart.setPropertyExpression(ruleFact.getValueExpression());
+	            }
+			// End of user code
 			
 			// init filters
 			
 			
 			
 			
+			
+			// Start of user code  for propertyExpression filter update
+			((RuleFactPropertiesEditionPartImpl) editingPart).validate();
+			// End of user code
 			
 			// init values for referenced views
 			
@@ -106,6 +118,7 @@ public class RuleFactPropertiesEditionComponent extends SinglePartPropertiesEdit
 		}
 		setInitializing(false);
 	}
+
 
 
 
@@ -134,6 +147,9 @@ public class RuleFactPropertiesEditionComponent extends SinglePartPropertiesEdit
 		if (editorKey == EsbViewsRepository.RuleFact.Properties.valueLiteral) {
 			return EsbPackage.eINSTANCE.getRuleFact_ValueLiteral();
 		}
+		if (editorKey == EsbViewsRepository.RuleFact.Properties.propertyExpression) {
+			return EsbPackage.eINSTANCE.getRuleFact_ValueExpression();
+		}
 		return super.associatedFeature(editorKey);
 	}
 
@@ -158,6 +174,20 @@ public class RuleFactPropertiesEditionComponent extends SinglePartPropertiesEdit
 		}
 		if (EsbViewsRepository.RuleFact.Properties.valueLiteral == event.getAffectedEditor()) {
 			ruleFact.setValueLiteral((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
+		}
+		if (EsbViewsRepository.RuleFact.Properties.propertyExpression == event.getAffectedEditor()) {
+		
+		// Start of user code for updatePropertyExpression method body
+            if (event.getNewValue() != null) {
+                NamespacedProperty nsp = (NamespacedProperty) event.getNewValue();
+//                propertyMediator.setValueExpression(nsp);
+                ruleFact.setValueExpression(nsp);
+            } else {
+//                propertyMediator.setValueExpression(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+                ruleFact.setValueExpression(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+            }		  
+		// End of user code
+			
 		}
 	}
 
@@ -196,6 +226,10 @@ public class RuleFactPropertiesEditionComponent extends SinglePartPropertiesEdit
 					basePart.setValueLiteral("");
 				}
 			}
+					// Start of user code for propertyExpression live update
+					
+					// End of user code
+			
 			
 		}
 	}
@@ -212,7 +246,8 @@ public class RuleFactPropertiesEditionComponent extends SinglePartPropertiesEdit
 			EsbPackage.eINSTANCE.getRuleFact_FactCustomType(),
 			EsbPackage.eINSTANCE.getRuleFact_FactName(),
 			EsbPackage.eINSTANCE.getRuleFact_ValueType(),
-			EsbPackage.eINSTANCE.getRuleFact_ValueLiteral()		);
+			EsbPackage.eINSTANCE.getRuleFact_ValueLiteral(),
+			EsbPackage.eINSTANCE.getRuleFact_ValueExpression()		);
 		return new NotificationFilter[] {filter,};
 	}
 

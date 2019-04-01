@@ -3219,6 +3219,9 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v9LfJnEei6boXzpRIfnA" name="valueLiteral" views="_E7wm3fJnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//RuleFact/valueLiteral"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_eGhA4FQ8Eem7ZpR7QdrxKg" name="propertyExpression" views="_9slsMFQ7Eem7ZpR7QdrxKg">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//RuleFact/valueExpression"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//RuleFact"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_E7v9LvJnEei6boXzpRIfnA" name="RuleResultsConfiguration" views="_E7wm3vJnEei6boXzpRIfnA">
@@ -9502,6 +9505,7 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wm3fJnEei6boXzpRIfnA" name="valueLiteral">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_9slsMFQ7Eem7ZpR7QdrxKg" name="propertyExpression"/>
         </elements>
       </views>
       <views xmi:id="_E7wm3vJnEei6boXzpRIfnA" name="RuleResultsConfiguration">

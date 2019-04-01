@@ -1855,7 +1855,7 @@ public class EsbViewsRepository {
 			// Start of user code for sessionIdExpression ElementEditor key
 			public static String sessionIdExpression = "esb::EJBMediator::properties::sessionIdExpression";
 			// End of user code
-			
+
 	
 		}
 	
@@ -1910,7 +1910,7 @@ public class EsbViewsRepository {
 			// Start of user code for propertyExpression ElementEditor key
 			public static String propertyExpression = "esb::MethodArgument::properties::propertyExpression";
 			// End of user code
-			
+
 	
 		}
 	
@@ -2174,7 +2174,9 @@ public class EsbViewsRepository {
 			public static String targetProperty = "esb::EnrichMediator::Target::targetProperty";
 			
 			// Start of user code for targetXPath ElementEditor key
-			public static String targetXPath = "esb::RuleMediator::target::targetXPath";
+
+			public static String targetXPath = "esb::EnrichMediator::target::targetXPath";
+
 			// End of user code
 			
 	
@@ -5621,6 +5623,10 @@ public class EsbViewsRepository {
 			
 			
 			public static String valueLiteral = "esb::RuleFact::properties::valueLiteral";
+			
+			// Start of user code for propertyExpression ElementEditor key
+			public static String propertyExpression = "esb::RuleFact::properties::propertyExpression";
+			// End of user code
 			
 	
 		}

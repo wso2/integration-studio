@@ -583,6 +583,7 @@ public class ProcessSourceView {
         boolean insideRuleSet = false;
         String artifactType = "";
         boolean insideGraphicalEp = false;
+        boolean graphicalEpInsideArtifact = false;
 
         while (!xmlTagsQueue.isEmpty()) {
             XMLTag tempTag = xmlTagsQueue.remove();
@@ -597,6 +598,9 @@ public class ProcessSourceView {
                 if (artifactType.equals("endpoint") && (tempTag.getqName().equals("loadbalance")
                         || tempTag.getqName().equals("failover") || tempTag.getqName().equals("recipientlist"))) {
                     insideGraphicalEp = true;
+                } else if (!artifactType.equals("") && (tempTag.getqName().equals("loadbalance")
+                        || tempTag.getqName().equals("failover") || tempTag.getqName().equals("recipientlist"))) {
+                    graphicalEpInsideArtifact = true;
                 }
 
                 if (tempTag.getqName().equals("ruleSet")) {
@@ -633,7 +637,7 @@ public class ProcessSourceView {
                         }
                     }
                 } else if (tempTag.getqName().equals("endpoint")) {
-                    if (!insideGraphicalEp) {
+                    if (!insideGraphicalEp || !graphicalEpInsideArtifact) {
                         intermediaryStack.push(tempTag);
                     }
                 }
@@ -647,6 +651,11 @@ public class ProcessSourceView {
                 if (artifactType.equals("endpoint") && insideGraphicalEp && (tempTag.getqName().equals("loadbalance")
                         || tempTag.getqName().equals("failover") || tempTag.getqName().equals("recipientlist"))) {
                     insideGraphicalEp = false;
+                }
+                
+                if (graphicalEpInsideArtifact && (tempTag.getqName().equals("loadbalance")
+                        || tempTag.getqName().equals("failover") || tempTag.getqName().equals("recipientlist"))) {
+                    graphicalEpInsideArtifact = false;
                 }
 
                 if (prev != null && prev.getTagType() != 8) {
@@ -735,7 +744,7 @@ public class ProcessSourceView {
                                             || (artifacts.contains(tempTag.getqName())
                                                     && !artifactType.equals("localEntry"))))) {
                                 if ((!tempTag.getqName().equals("endpoint")
-                                        || (tempTag.getqName().equals("endpoint") && !insideGraphicalEp))) {
+                                        || (tempTag.getqName().equals("endpoint") && !insideGraphicalEp && !graphicalEpInsideArtifact))) {
                                     sourceError = mediatorValidation();
                                     if (sourceError != null) {
                                         return sourceError;

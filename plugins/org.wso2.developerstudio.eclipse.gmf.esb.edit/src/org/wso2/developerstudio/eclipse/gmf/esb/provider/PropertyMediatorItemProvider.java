@@ -509,9 +509,7 @@ public class PropertyMediatorItemProvider extends MediatorItemProvider {
         PropertyName labelValue = ((PropertyMediator)object).getPropertyName();
         String newPropertyName = ((PropertyMediator)object).getNewPropertyName();
         String label = labelValue == null ? null : labelValue.toString();
-        String value = ((PropertyMediator)object).getValue();
         String newLabel = label == "New Property..." ? newPropertyName : label ;
-        String propertyName = WordUtils.abbreviate(newLabel.toString(), 8, 30, " ...");
 
         return newLabel == null || label.length() == 0 ?
             getString("_UI_PropertyMediator_type") :

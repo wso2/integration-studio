@@ -38,6 +38,7 @@ import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.util.AXIOMUtil;
 import org.apache.commons.io.IOUtils;
 import org.apache.synapse.SynapseException;
+import org.apache.synapse.commons.SynapseCommonsException;
 import org.apache.synapse.mediators.builtin.LogMediator;
 import org.apache.synapse.task.SynapseTaskException;
 import org.eclipse.core.resources.IFile;
@@ -1028,7 +1029,8 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
                             || deserializeStatus.getExecption() instanceof MediatorException
                             || deserializeStatus.getExecption() instanceof NullPointerException
                             || deserializeStatus.getExecption() instanceof SynapseTaskException
-                            || deserializeStatus.getExecption() instanceof TransformerException)) {
+                            || deserializeStatus.getExecption() instanceof TransformerException
+                            || deserializeStatus.getExecption() instanceof SynapseCommonsException)) {
 
                         addMarker(ProcessSourceView.validateXMLContent(xmlSource));
                         return;

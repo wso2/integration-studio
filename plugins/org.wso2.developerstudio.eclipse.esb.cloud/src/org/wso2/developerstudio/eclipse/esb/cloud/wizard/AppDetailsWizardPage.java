@@ -64,6 +64,8 @@ import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.HttpClientException
 import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.InvalidTokenException;
 import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.NetworkUnavailableException;
 import org.wso2.developerstudio.eclipse.esb.cloud.model.Application;
+import org.wso2.developerstudio.eclipse.esb.cloud.model.Runtime;
+import org.wso2.developerstudio.eclipse.esb.cloud.model.Version;
 import org.wso2.developerstudio.eclipse.esb.cloud.resources.CloudDeploymentWizardConstants;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
@@ -78,8 +80,9 @@ public class AppDetailsWizardPage extends WizardPage {
     private static final String DIALOG_TITLE = "WSO2 Integration Cloud - Create new application";
 
     // Text field labels
-    private static final String FILE_VERSION_LABEL_TEXT = "Application version *";
-    private static final String FILE_NAME_LABEL_TEXT = "Application name *";
+    private static final String APPLICATION_VERSION_LABEL_TEXT = "Application version *";
+    private static final String APPLICATION_NAME_LABEL_TEXT = "Application name *";
+    private static final String APPLICATION_RUNTIME_LABEL_TEXT = "Application runtime *";
     private static final String DESCRIPTION_LABEL_TEXT = "Description";
     private static final String APP_ICON_LABEL_TEXT = "Icon";
     private static final String TAGS_LABEL_TEXT = "Tags";
@@ -101,6 +104,8 @@ public class AppDetailsWizardPage extends WizardPage {
     private Button btnExistingApplication;
     private Combo appNames;
     private Text newVersion;
+    Combo createAppRuntimeCombo = null;
+    Combo createVersionRuntimeCombo = null;
 
     // Application values
     private String name = EMPTY_STRING;
@@ -109,6 +114,7 @@ public class AppDetailsWizardPage extends WizardPage {
     private String appIcon = EMPTY_STRING;
     private List<Map<String, String>> tags = new ArrayList<>();
     private boolean isNewVersion;
+    private int runtime;
 
     private String initialName = EMPTY_STRING;
     private String initialVersion = EMPTY_STRING;
@@ -123,7 +129,11 @@ public class AppDetailsWizardPage extends WizardPage {
 
     private String[] applicationNames;
     private List<Application> applicationList;
+    public List<Runtime> runtimeList;
+
     private IntegrationCloudServiceClient client;
+
+    private String[] runtimeNames;
 
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
@@ -131,11 +141,14 @@ public class AppDetailsWizardPage extends WizardPage {
         super(DIALOG_TITLE);
         setTitle(DIALOG_TITLE);
         client = IntegrationCloudServiceClient.getInstance();
+        runtimeList = new ArrayList<>();
+        runtimeNames = new String[] { "" };
     }
 
     protected AppDetailsWizardPage(IWorkbench wb, IStructuredSelection selection) {
         super(DIALOG_TITLE);
         setTitle(DIALOG_TITLE);
+        runtimeList = new ArrayList<>();
 
         try {
             IProject project = getProject(selection);
@@ -193,6 +206,9 @@ public class AppDetailsWizardPage extends WizardPage {
 
         // Application Description
         createDescriptionInput(newAppContainer);
+        
+        // Application Runtimes
+        createRuntimeSelectInputForCreateApp(parent, newAppContainer);
 
         // Application Icon
         createApplicationIconInput(newAppContainer);
@@ -232,6 +248,8 @@ public class AppDetailsWizardPage extends WizardPage {
                     setName(getInitialName());
                     setVersion(getInitialVersion());
                 }
+                
+                validate();
             }
 
         });
@@ -264,10 +282,11 @@ public class AppDetailsWizardPage extends WizardPage {
                         appNames.setItems(applicationNames);
 
                     } catch (CloudDeploymentException | InvalidTokenException | HttpClientException ex) {
-                        log.error(CloudDeploymentWizardConstants.ErrorMessages.APPLICATION_RETRIEVAL_FAILED_MESSAGE,
+                        log.error(
+                                CloudDeploymentWizardConstants.ErrorMessages.APPLICATION_LIST_RETRIEVAL_FAILED_MESSAGE,
                                 ex);
                         setErrorMessage(
-                                CloudDeploymentWizardConstants.ErrorMessages.APPLICATION_RETRIEVAL_FAILED_MESSAGE);
+                                CloudDeploymentWizardConstants.ErrorMessages.APPLICATION_LIST_RETRIEVAL_FAILED_MESSAGE);
                         setPageComplete(false);
                     } catch (NetworkUnavailableException ex) {
                         log.error(CloudDeploymentWizardConstants.ErrorMessages.NO_INTERNET_CONNECTION_MESSAGE, ex);
@@ -285,6 +304,9 @@ public class AppDetailsWizardPage extends WizardPage {
 
         // Application Version
         newVersion = createVersionInput(parent, existingAppContainer);
+        
+        // Application Runtimes
+        createRuntimeSelectInputForVersionCreation(parent, existingAppContainer);
 
         // Tags
         createTagsInput(existingAppContainer);
@@ -531,7 +553,7 @@ public class AppDetailsWizardPage extends WizardPage {
      */
     private Text createVersionInput(Composite parent, Composite newAppContainer) {
         StyledText lblVersion = new StyledText(newAppContainer, SWT.NONE);
-        lblVersion.setText(FILE_VERSION_LABEL_TEXT);
+        lblVersion.setText(APPLICATION_VERSION_LABEL_TEXT);
 
         StyleRange versionRange = new StyleRange(lblVersion.getCharCount() - 1, 1,
                 CloudDeploymentWizardConstants.Colors.red, null);
@@ -570,7 +592,7 @@ public class AppDetailsWizardPage extends WizardPage {
 
         GridData lblNameGridData = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1);
         lblName.setLayoutData(lblNameGridData);
-        lblName.setText(FILE_NAME_LABEL_TEXT);
+        lblName.setText(APPLICATION_NAME_LABEL_TEXT);
 
         StyleRange appNameRange = new StyleRange(lblName.getCharCount() - 1, 1,
                 CloudDeploymentWizardConstants.Colors.red, null);
@@ -596,6 +618,101 @@ public class AppDetailsWizardPage extends WizardPage {
     }
 
     /**
+     * Create a select input for runtimes for app creation
+     * 
+     * @param parent
+     * @param container
+     */
+    private void createRuntimeSelectInputForCreateApp(Composite parent, Composite container) {
+        StyledText lblName = new StyledText(container, SWT.NONE);
+        FontData data = lblName.getFont().getFontData()[0];
+        fontName = data.getName();
+        fontStyle = data.getStyle();
+
+        GridData lblNameGridData = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1);
+        lblName.setLayoutData(lblNameGridData);
+        lblName.setText(APPLICATION_RUNTIME_LABEL_TEXT);
+
+        StyleRange appNameRange = new StyleRange(lblName.getCharCount() - 1, 1,
+                CloudDeploymentWizardConstants.Colors.red, null);
+        lblName.setStyleRange(appNameRange);
+        lblName.setFont(new Font(parent.getDisplay(), fontName, 12, fontStyle));
+
+        createAppRuntimeCombo = new Combo(container, SWT.DROP_DOWN | SWT.READ_ONLY);
+
+        String[] items = runtimeNames;
+
+        createAppRuntimeCombo.setItems(items);
+
+        GridData txtNameGridData = new GridData(SWT.LEFT, SWT.CENTER, false, false, 2, 1);
+        txtNameGridData.widthHint = 480;
+        createAppRuntimeCombo.setLayoutData(txtNameGridData);
+
+        createAppRuntimeCombo.addSelectionListener(new SelectionAdapter() {
+
+            @Override
+            public void widgetSelected(SelectionEvent e) {
+                int idx = createAppRuntimeCombo.getSelectionIndex();
+                String runtime = createAppRuntimeCombo.getItem(idx);
+                setRuntime(getRuntimeId(runtime));
+                validate();
+            }
+        });
+    }
+    
+    /**
+     * Create a select input for runtimes for version creation
+     * 
+     * @param parent
+     * @param container
+     */
+    private void createRuntimeSelectInputForVersionCreation(Composite parent, Composite container) {
+        StyledText lblName = new StyledText(container, SWT.NONE);
+        FontData data = lblName.getFont().getFontData()[0];
+        fontName = data.getName();
+        fontStyle = data.getStyle();
+
+        GridData lblNameGridData = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1);
+        lblName.setLayoutData(lblNameGridData);
+        lblName.setText(APPLICATION_RUNTIME_LABEL_TEXT);
+
+        StyleRange appNameRange = new StyleRange(lblName.getCharCount() - 1, 1,
+                CloudDeploymentWizardConstants.Colors.red, null);
+        lblName.setStyleRange(appNameRange);
+        lblName.setFont(new Font(parent.getDisplay(), fontName, 12, fontStyle));
+
+        createVersionRuntimeCombo = new Combo(container, SWT.DROP_DOWN | SWT.READ_ONLY);
+
+        String[] items = runtimeNames;
+
+        createVersionRuntimeCombo.setItems(items);
+
+        GridData txtNameGridData = new GridData(SWT.LEFT, SWT.CENTER, false, false, 2, 1);
+        txtNameGridData.widthHint = 480;
+        createVersionRuntimeCombo.setLayoutData(txtNameGridData);
+
+        createVersionRuntimeCombo.addSelectionListener(new SelectionAdapter() {
+
+            @Override
+            public void widgetSelected(SelectionEvent e) {
+                int idx = createVersionRuntimeCombo.getSelectionIndex();
+                String runtime = createVersionRuntimeCombo.getItem(idx);
+                setRuntime(getRuntimeId(runtime));
+                validate();
+            }
+        });
+    }
+
+    private int getRuntimeId(String runtimeName) {
+        for (Runtime runtime : runtimeList) {
+            if (runtime.getRuntimeName().equals(runtimeName)) {
+                return runtime.getId();
+            }
+        }
+        return -1;
+    }
+
+    /**
      * Create a select input for exisiting applications
      * 
      * @param parent
@@ -609,7 +726,7 @@ public class AppDetailsWizardPage extends WizardPage {
 
         GridData lblNameGridData = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1);
         lblName.setLayoutData(lblNameGridData);
-        lblName.setText(FILE_NAME_LABEL_TEXT);
+        lblName.setText(APPLICATION_NAME_LABEL_TEXT);
 
         StyleRange appNameRange = new StyleRange(lblName.getCharCount() - 1, 1,
                 CloudDeploymentWizardConstants.Colors.red, null);
@@ -676,21 +793,25 @@ public class AppDetailsWizardPage extends WizardPage {
                 setErrorMessage("Please specify a name and version to .car file.");
                 setPageComplete(false);
                 return;
+            } else if (getRuntime() == 0) {
+                setErrorMessage("Please select a runtime.");
+                setPageComplete(false);
+                return;
             } else {
                 String version = getVersion();
                 String[] versionParts = version.split("\\.");
                 if (version.endsWith(".")) {
-                    setErrorMessage("File version cannot end with period.");
+                    setErrorMessage("Application version cannot end with period.");
                     setPageComplete(false);
                     return;
                 }
                 if (versionParts.length > 4) {
-                    setErrorMessage("File version should be in the standared format.");
+                    setErrorMessage("Application version should be in the standared format.");
                     setPageComplete(false);
                     return;
                 }
                 if (!Character.isDigit(version.charAt(0))) {
-                    setErrorMessage("File version should start with a numeric value.");
+                    setErrorMessage("Application version should start with a numeric value.");
                     setPageComplete(false);
                     return;
                 }
@@ -700,21 +821,25 @@ public class AppDetailsWizardPage extends WizardPage {
                 setErrorMessage("Please select an application.");
                 setPageComplete(false);
                 return;
+            } else if (getRuntime() == 0) {
+                setErrorMessage("Please select a runtime.");
+                setPageComplete(false);
+                return;
             } else {
                 String version = newVersion.getText();
                 String[] versionParts = version.split("\\.");
                 if (version.endsWith(".")) {
-                    setErrorMessage("File version cannot end with period.");
+                    setErrorMessage("Application version cannot end with period.");
                     setPageComplete(false);
                     return;
                 }
                 if (versionParts.length > 4) {
-                    setErrorMessage("File version should be in the standared format.");
+                    setErrorMessage("Application version should be in the standared format.");
                     setPageComplete(false);
                     return;
                 }
                 if (!Character.isDigit(version.charAt(0))) {
-                    setErrorMessage("File version should start with a numeric value.");
+                    setErrorMessage("Application version should start with a numeric value.");
                     setPageComplete(false);
                     return;
                 }
@@ -814,6 +939,26 @@ public class AppDetailsWizardPage extends WizardPage {
 
     public String getInitialVersion() {
         return initialVersion;
+    }
+
+    public int getRuntime() {
+        return runtime;
+    }
+
+    public void setRuntime(int runtime) {
+        this.runtime = runtime;
+    }
+
+    public Combo getCreateAppRuntimeCombo() {
+        return createAppRuntimeCombo;
+    }
+    
+    public Combo getCreateVersionRuntimeCombo() {
+        return createVersionRuntimeCombo;
+    }
+
+    public void setRuntimes(String[] runtimeNames) {
+        this.runtimeNames = runtimeNames;
     }
 
 }

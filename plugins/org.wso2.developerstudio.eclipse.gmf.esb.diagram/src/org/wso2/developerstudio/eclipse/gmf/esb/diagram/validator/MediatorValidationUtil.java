@@ -29,6 +29,7 @@ import org.apache.synapse.config.xml.IterateMediatorFactory;
 import org.apache.synapse.config.xml.LogMediatorFactory;
 import org.apache.synapse.config.xml.LoopBackMediatorFactory;
 import org.apache.synapse.config.xml.MessageStoreMediatorFactory;
+import org.apache.synapse.config.xml.POJOCommandMediatorFactory;
 import org.apache.synapse.config.xml.PayloadFactoryMediatorFactory;
 import org.apache.synapse.config.xml.PropertyGroupMediatorFactory;
 import org.apache.synapse.config.xml.PropertyMediatorFactory;
@@ -59,6 +60,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.BamM
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.BeanMediatorExtFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.BuilderMediatorExtFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.ClassMediatorExtFactory;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.DummyPOJOCommandMediatorFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.EJBMediatorExtFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.POJOCommandMediatorExtFactory;
 
@@ -108,7 +110,7 @@ public class MediatorValidationUtil {
     private static PublishEventMediatorFactory publishEventMediatorFactory;
     private static ClassMediatorExtFactory classMediatorExtFactory;
     private static BeanMediatorExtFactory beanMediatorExtFactory;
-    private static POJOCommandMediatorExtFactory pojoCommandMediatorExtFactory;
+    private static DummyPOJOCommandMediatorFactory pojoCommandMediatorFactory;
     private static EJBMediatorExtFactory ejbMediatorExtFactory;
     private static BuilderMediatorExtFactory builderMediatorExtFactory;
     private static BamMediatorExtFactory bamMediatorExtFactory;
@@ -281,10 +283,17 @@ public class MediatorValidationUtil {
                 classMediatorExtFactory.createMediator(omElement, null);
 
             } else if (qTag.equals("pojoCommand")) {
-                if (pojoCommandMediatorExtFactory == null) {
-                    pojoCommandMediatorExtFactory = new POJOCommandMediatorExtFactory();
+                if (pojoCommandMediatorFactory == null) {
+                    pojoCommandMediatorFactory = new DummyPOJOCommandMediatorFactory();
                 }
-                pojoCommandMediatorExtFactory.createMediator(omElement, null);
+                
+                Iterator children = omElement.getChildrenWithLocalName("property");
+                if (children.hasNext()) {
+                    OMElement codeElement = (OMElement) children.next();
+                    codeElement.setNamespace(new OMNamespaceImpl("http://ws.apache.org/ns/synapse", ""));
+                }
+                
+                pojoCommandMediatorFactory.createMediator(omElement, null);
 
             } else if (qTag.equals("ejb")) {
                 if (ejbMediatorExtFactory == null) {

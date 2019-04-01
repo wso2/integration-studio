@@ -5614,6 +5614,9 @@ public class EsbMessages extends NLS {
 	public static String CommandPropertyPropertiesEditionPart_MessageActionLabel;
 
 	
+	public static String CommandPropertyPropertiesEditionPart_ValueMessageElementXpathLabel;
+
+	
 	public static String SqlStatementPropertiesEditionPart_QueryStringLabel;
 
 	

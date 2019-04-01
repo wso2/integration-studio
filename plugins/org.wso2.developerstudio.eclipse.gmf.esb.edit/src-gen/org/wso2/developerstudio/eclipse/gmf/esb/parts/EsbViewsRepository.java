@@ -1549,7 +1549,7 @@ public class EsbViewsRepository {
 			public static String propertyValue = "esb::LogProperty::properties::propertyValue";
 			
 			// Start of user code for propertyExpression ElementEditor key
-			public static String propertyExpression = "esb::LogProperty::properties::propertyExpression";
+			public static String propertyExpression = "esb::ClassProperty::properties::propertyExpression";
 			// End of user code
 			
 	
@@ -2152,7 +2152,7 @@ public class EsbViewsRepository {
 			public static String sourceProperty = "esb::EnrichMediator::Source::sourceProperty";
 			
 			// Start of user code for sourceXPath ElementEditor key
-			public static String sourceXPath = "esb::EnrichMediator::source::sourceXPath";
+			public static String sourceXPath = "esb::RuleMediator::source::sourceXPath";
 			// End of user code
 			
 			// Start of user code for inlineRegistryKey ElementEditor key
@@ -2174,7 +2174,7 @@ public class EsbViewsRepository {
 			public static String targetProperty = "esb::EnrichMediator::Target::targetProperty";
 			
 			// Start of user code for targetXPath ElementEditor key
-			public static String targetXPath = "esb::EnrichMediator::target::targetXPath";
+			public static String targetXPath = "esb::RuleMediator::target::targetXPath";
 			// End of user code
 			
 	
@@ -3119,7 +3119,7 @@ public class EsbViewsRepository {
 			public static String beanName = "esb::SpringMediator::properties::beanName";
 			
 			// Start of user code for configurationKey ElementEditor key
-			public static String configurationKey = "esb::SpringMediator::key::configurationKey";
+			public static String configurationKey = "esb::SmooksMediator::key::configurationKey";
 			// End of user code
 			
 	
@@ -4670,7 +4670,7 @@ public class EsbViewsRepository {
 			public static String valueLiteral = "esb::HeaderMediator::properties::valueLiteral";
 			
 			
-			public static String valueInline = "esb::HeaderMediator::properties::valueInline";
+			public static String valueInline = "esb::HeaderMediator::properties::value Inline";
 			
 			// Start of user code for header Name ElementEditor key
 			public static String headerName = "esb::HeaderMediator::properties::headerName";
@@ -5053,6 +5053,10 @@ public class EsbViewsRepository {
 			
 			
 			public static String messageAction = "esb::CommandProperty::properties::messageAction";
+			
+			// Start of user code for valueMessageElementXpath ElementEditor key
+			public static String valueMessageElementXpath = "esb::CommandProperty::properties::valueMessageElementXpath";
+			// End of user code
 			
 	
 		}

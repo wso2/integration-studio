@@ -317,9 +317,9 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 		wsdlStep.addStep(EsbViewsRepository.ProxyService.Wsdl.wsdlType);
 		wsdlStep.addStep(EsbViewsRepository.ProxyService.Wsdl.wsdlXML);
 		wsdlStep.addStep(EsbViewsRepository.ProxyService.Wsdl.wsdlURL);
+		wsdlStep.addStep(EsbViewsRepository.ProxyService.Wsdl.wsdlKey);
 		wsdlStep.addStep(EsbViewsRepository.ProxyService.Wsdl.wsdlResources);
 		wsdlStep.addStep(EsbViewsRepository.ProxyService.Wsdl.preservePolicy);
-		wsdlStep.addStep(EsbViewsRepository.ProxyService.Wsdl.wsdlKey);
 		wsdlStep.addStep(EsbViewsRepository.ProxyService.Wsdl.wsdlEndpoint);
 		
 		CompositionStep propertiesStep = proxyServiceStep.addStep(EsbViewsRepository.ProxyService.Properties.class);
@@ -1624,10 +1624,12 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
      */
 	protected Composite createWsdlXMLText(FormToolkit widgetFactory, Composite parent) {
 		Control wsdlXMLLabel = createDescription(parent, EsbViewsRepository.ProxyService.Wsdl.wsdlXML, EsbMessages.ProxyServicePropertiesEditionPart_WsdlXMLLabel);
-		wsdlXML = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+//		wsdlXML = widgetFactory.createText(parent, "", SWT.V_SCROLL); //$NON-NLS-1$
+		wsdlXML = new Text(parent, SWT.MULTI | SWT.V_SCROLL | SWT.BORDER);
 		wsdlXML.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData wsdlXMLData = new GridData(GridData.FILL_HORIZONTAL);
+		wsdlXMLData.heightHint = 80;
 		wsdlXML.setLayoutData(wsdlXMLData);
 		wsdlXML.addFocusListener(new FocusAdapter() {
 			/**
@@ -1666,20 +1668,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 				}
 			}
 		});
-		wsdlXML.addKeyListener(new KeyAdapter() {
-			/**
-			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ProxyServicePropertiesEditionPartForm.this, EsbViewsRepository.ProxyService.Wsdl.wsdlXML, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, wsdlXML.getText()));
-				}
-			}
-		});
+
 		EditingUtils.setID(wsdlXML, EsbViewsRepository.ProxyService.Wsdl.wsdlXML);
 		EditingUtils.setEEFtype(wsdlXML, "eef::Text"); //$NON-NLS-1$
 		Control wsdlXMLHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.ProxyService.Wsdl.wsdlXML, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$

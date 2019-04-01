@@ -226,7 +226,7 @@ public class LogMediatorPropertiesEditionPartForm extends SectionPropertiesEditi
 	
 	protected Composite createLogLevelEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.LogMediator.Properties.logLevel, EsbMessages.LogMediatorPropertiesEditionPart_LogLevelLabel);
-		logLevel = new EMFComboViewer(parent);
+		logLevel = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		logLevel.setContentProvider(new ArrayContentProvider());
 		logLevel.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData logLevelData = new GridData(GridData.FILL_HORIZONTAL);

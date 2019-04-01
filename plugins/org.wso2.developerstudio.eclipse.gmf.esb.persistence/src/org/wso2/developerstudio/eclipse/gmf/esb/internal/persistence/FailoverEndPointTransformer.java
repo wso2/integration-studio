@@ -184,9 +184,11 @@ public class FailoverEndPointTransformer extends AbstractEndpointTransformer {
                     element = AXIOMUtil.stringToOM(source);
                 }
 
-                Properties properties = new Properties();
-                properties.put(WSDLEndpointFactory.SKIP_WSDL_PARSING, "true");
-                synapseFailEP = (FailoverEndpoint) EndpointFactory.getEndpointFromElement(element, false, properties);
+                if (element != null) {
+                    Properties properties = new Properties();
+                    properties.put(WSDLEndpointFactory.SKIP_WSDL_PARSING, "true");
+                    synapseFailEP = (FailoverEndpoint) EndpointFactory.getEndpointFromElement(element, false, properties);
+                }
 
             }
 

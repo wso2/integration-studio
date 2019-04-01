@@ -42,7 +42,9 @@ import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
-
+import org.eclipse.swt.events.KeyListener;
+import org.eclipse.swt.events.MouseEvent;
+import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 
@@ -50,9 +52,11 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.CommandPropertyPropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFNameSpacedPropertyEditorDialog;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
 
@@ -74,12 +78,16 @@ public class CommandPropertyPropertiesEditionPartImpl extends CompositePropertie
 	// Start of user code
 	protected Group propertiesGroup;
 	
-	protected Control[] propertyNameControls;
+	protected NamespacedProperty valueMessageElementXpath;
+	protected Text valueMessageElementXpathText;
+
+    protected Control[] propertyNameControls;
 	protected Control[] valueTypeControls;
 	protected Control[] valueLiteralControls;
 	protected Control[] valueContextPropertyNameControls;
 	protected Control[] contextActionControls;
 	protected Control[] messageActionControls;
+	protected Control[] valueMessageElementXpathControls;
 	// End of user code
 
 
@@ -124,7 +132,7 @@ public class CommandPropertyPropertiesEditionPartImpl extends CompositePropertie
 		propertiesStep.addStep(EsbViewsRepository.CommandProperty.Properties.valueContextPropertyName);
 		propertiesStep.addStep(EsbViewsRepository.CommandProperty.Properties.contextAction);
 		propertiesStep.addStep(EsbViewsRepository.CommandProperty.Properties.messageAction);
-		
+		propertiesStep.addStep(EsbViewsRepository.CommandProperty.Properties.valueMessageElementXpath);
 		
 		composer = new PartComposer(commandPropertyStep) {
 
@@ -151,6 +159,11 @@ public class CommandPropertyPropertiesEditionPartImpl extends CompositePropertie
 				if (key == EsbViewsRepository.CommandProperty.Properties.messageAction) {
 					return createMessageActionEMFComboViewer(parent);
 				}
+				// Start of user code for valueMessageContextXPath
+				if (key == EsbViewsRepository.CommandProperty.Properties.valueMessageElementXpath) {
+                    return createValueMessageElementXpathText(parent);
+                }
+				// End of user code
 				return parent;
 			}
 		};
@@ -687,8 +700,87 @@ public class CommandPropertyPropertiesEditionPartImpl extends CompositePropertie
 	public String getTitle() {
 		return EsbMessages.CommandProperty_Part_Title;
 	}
+	
+	// Start of user code for valueMessageElementXpath specific getters and setters implementation
+	@Override
+    public NamespacedProperty getValueMessageElementXpath() {
+        return valueMessageElementXpath;
+    }
+	
+	@Override
+    public void setValueMessageElementXpath(NamespacedProperty valueMessageElementXpath) {
+        if (valueMessageElementXpath != null) {
+            valueMessageElementXpathText.setText(valueMessageElementXpath.getPropertyValue());
+            this.valueMessageElementXpath = valueMessageElementXpath;
+        }
+    }
+    // End of user code
 
 	// Start of user code additional method
+	
+    protected Composite createValueMessageElementXpathText(final Composite parent) {
+        Control valueMessageElementXpathLabel = createDescription(parent,
+                EsbViewsRepository.CommandProperty.Properties.valueMessageElementXpath,
+                EsbMessages.CommandPropertyPropertiesEditionPart_ValueMessageElementXpathLabel);
+        if (valueMessageElementXpath == null) {
+            valueMessageElementXpath = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
+        }
+        valueMessageElementXpathText = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.READ_ONLY); // $NON-NLS-1$
+        GridData propertyValueData = new GridData(GridData.FILL_HORIZONTAL);
+        valueMessageElementXpathText.setLayoutData(propertyValueData);
+
+        EditingUtils.setID(valueMessageElementXpathText,
+                EsbViewsRepository.CommandProperty.Properties.valueMessageElementXpath);
+        EditingUtils.setEEFtype(valueMessageElementXpathText, "eef::Text"); //$NON-NLS-1$
+        Control valueMessageElementXpathHelp = SWTUtils.createHelpButton(parent,
+                propertiesEditionComponent.getHelpContent(
+                        EsbViewsRepository.CommandProperty.Properties.valueMessageElementXpath,
+                        EsbViewsRepository.FORM_KIND),
+                null); // $NON-NLS-1$
+        // Start of user code for valueMessageElementXpathText
+        valueMessageElementXpathControls = new Control[] { valueMessageElementXpathLabel, valueMessageElementXpathText,
+                valueMessageElementXpathHelp };
+        // End of user code
+
+        valueMessageElementXpathText.addMouseListener(new MouseListener() {
+
+            @Override
+            public void mouseDown(MouseEvent e) {
+                EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL, valueMessageElementXpath);
+                nspd.open();
+                valueMessageElementXpathText.setText(valueMessageElementXpath.getPropertyValue());
+                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CommandPropertyPropertiesEditionPartImpl.this, 
+                        EsbViewsRepository.CommandProperty.Properties.valueMessageElementXpath, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET,
+                        null, getValueMessageElementXpath()));
+            }
+
+            @Override
+            public void mouseUp(MouseEvent e) {}
+
+            @Override
+            public void mouseDoubleClick(MouseEvent e) {}
+
+        });
+
+        valueMessageElementXpathText.addKeyListener(new KeyListener() {
+            
+            @Override
+            public void keyReleased(KeyEvent e) {
+                EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL, valueMessageElementXpath);
+                nspd.open();
+                valueMessageElementXpathText.setText(valueMessageElementXpath.getPropertyValue());
+                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CommandPropertyPropertiesEditionPartImpl.this, 
+                        EsbViewsRepository.CommandProperty.Properties.valueMessageElementXpath, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET,
+                        null, getValueMessageElementXpath()));
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {}
+
+        });
+
+        return parent;
+    }
 
     public void validate() {
         EEFPropertyViewUtil eu = new EEFPropertyViewUtil(view);
@@ -700,8 +792,8 @@ public class CommandPropertyPropertiesEditionPartImpl extends CompositePropertie
         if (getValueType().getName().equals("LITERAL")) {
             eu.showEntry(valueLiteralControls, false);
         } else if (getValueType().getName().equals("MESSAGE_ELEMENT")) {
-            eu.showEntry(valueLiteralControls, false);
             eu.showEntry(messageActionControls, false);
+            eu.showEntry(valueMessageElementXpathControls, false);
         } else if (getValueType().getName().equals("CONTEXT_PROPERTY")) {
             eu.showEntry(valueContextPropertyNameControls, false);
             eu.showEntry(contextActionControls, false);

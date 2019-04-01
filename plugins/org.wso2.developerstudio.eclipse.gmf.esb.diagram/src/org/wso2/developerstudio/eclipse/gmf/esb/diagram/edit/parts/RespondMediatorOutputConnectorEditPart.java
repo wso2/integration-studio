@@ -25,6 +25,8 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.swt.graphics.Color;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractMediatorOutputConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EastPointerShape;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractMediatorOutputConnectorEditPart.EastPointerFigure;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractMediatorOutputConnectorEditPart.WestPointerFigure;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.RespondMediatorOutputConnectorItemSemanticEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
 
@@ -55,6 +57,15 @@ public class RespondMediatorOutputConnectorEditPart extends AbstractMediatorOutp
         super(view);
     }
 
+    @Override
+    public IFigure createNodeShapeReverse() {
+        return primaryShapeReverse = new WestPointerFigure(false);
+    }
+
+    @Override
+    public IFigure createNodeShapeForward() {
+        return primaryShapeForward = new EastPointerFigure(false);
+    }
     /**
      * @generated
      */
@@ -525,21 +536,6 @@ public class RespondMediatorOutputConnectorEditPart extends AbstractMediatorOutp
             types.add(EsbElementTypes.APIResourceFaultInputConnector_3672);
         }
         return types;
-    }
-
-    /**
-     * @generated
-     */
-    public class EastPointerFigure extends EastPointerShape {
-
-        /**
-         * @generated
-         */
-        public EastPointerFigure() {
-            this.setBackgroundColor(THIS_BACK);
-            this.setPreferredSize(new Dimension(getMapMode().DPtoLP(12), getMapMode().DPtoLP(10)));
-        }
-
     }
 
     /**

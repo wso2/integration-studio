@@ -41,11 +41,15 @@ import org.wso2.developerstudio.eclipse.distribution.project.ui.wizard.Distribut
 import org.wso2.developerstudio.eclipse.distribution.project.util.DistProjectUtils;
 import org.wso2.developerstudio.eclipse.distribution.project.validator.ProjectList;
 import org.wso2.developerstudio.eclipse.esb.cloud.Activator;
+import org.wso2.developerstudio.eclipse.esb.cloud.client.IntegrationCloudServiceClient;
+import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.CloudDeploymentException;
 import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.HttpClientException;
+import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.InvalidTokenException;
 import org.wso2.developerstudio.eclipse.esb.cloud.exceptions.NetworkUnavailableException;
 import org.wso2.developerstudio.eclipse.esb.cloud.job.CloudDeploymentJob;
 import org.wso2.developerstudio.eclipse.esb.cloud.model.UserSession;
 import org.wso2.developerstudio.eclipse.esb.cloud.resources.CloudDeploymentWizardConstants;
+import org.wso2.developerstudio.eclipse.esb.cloud.util.CloudDeploymentWizardUtils;
 import org.wso2.developerstudio.eclipse.esb.cloud.util.UserSessionManager;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
@@ -84,6 +88,8 @@ public class DeployToCloudWizard extends Wizard implements IExportWizard {
     // stores current session
     private UserSession session;
 
+    private IntegrationCloudServiceClient client;
+
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
     @Override
@@ -92,6 +98,7 @@ public class DeployToCloudWizard extends Wizard implements IExportWizard {
         try {
             display = Display.getCurrent();
             shell = display.getActiveShell();
+            client = IntegrationCloudServiceClient.getInstance();
 
             session = UserSessionManager.getCurrentSession();
 
@@ -133,6 +140,11 @@ public class DeployToCloudWizard extends Wizard implements IExportWizard {
             appDetailsPage.setInitialName(parentPrj.getModel().getArtifactId());
             appDetailsPage.setInitialVersion(parentPrj.getModel().getVersion());
 
+            // Should be checked after the pages are added
+            if (session != null) {
+                fetchRuntimeData();
+            }
+
         } catch (NetworkUnavailableException e) {
             initError = true;
             log.error(CloudDeploymentWizardConstants.ErrorMessages.NO_INTERNET_CONNECTION_MESSAGE, e);
@@ -171,7 +183,8 @@ public class DeployToCloudWizard extends Wizard implements IExportWizard {
             // Create and schedule a background job to deploy the application
             cloudDeploymentJob = new CloudDeploymentJob(appDetailsPage.getName(), appDetailsPage.getDescription(),
                     appDetailsPage.getVersion(), finalFileName, carbonArchive.getLocation().toFile().getAbsolutePath(),
-                    appDetailsPage.getAppIcon(), appDetailsPage.getTags(), appDetailsPage.isNewVersion());
+                    appDetailsPage.getAppIcon(), appDetailsPage.getTags(), appDetailsPage.isNewVersion(),
+                    appDetailsPage.getRuntime());
             cloudDeploymentJob.schedule();
 
         } catch (Exception e) {
@@ -217,6 +230,25 @@ public class DeployToCloudWizard extends Wizard implements IExportWizard {
         exportMsg.setMessage(message);
 
         return exportMsg.open();
+    }
+
+    /**
+     * Retrieves runtime data and sets it in the AppDetailsWizardPage combo
+     */
+    private void fetchRuntimeData() {
+
+        try {
+            CloudDeploymentWizardUtils.fetchRuntimeData(client, appDetailsPage);
+        } catch (CloudDeploymentException | InvalidTokenException | HttpClientException ex) {
+            log.error(CloudDeploymentWizardConstants.ErrorMessages.RUNTIME_RETRIEVAL_FAILED_MESSAGE, ex);
+            openMessageBox(shell, CloudDeploymentWizardConstants.DIALOG_TITLE_TEXT,
+                    CloudDeploymentWizardConstants.ErrorMessages.RUNTIME_RETRIEVAL_FAILED_MESSAGE, SWT.ICON_ERROR);
+        } catch (NetworkUnavailableException ex) {
+            log.error(CloudDeploymentWizardConstants.ErrorMessages.NO_INTERNET_CONNECTION_MESSAGE, ex);
+            openMessageBox(shell, CloudDeploymentWizardConstants.DIALOG_TITLE_TEXT,
+                    CloudDeploymentWizardConstants.ErrorMessages.NO_INTERNET_CONNECTION_MESSAGE, SWT.ICON_ERROR);
+        }
+
     }
 
 }

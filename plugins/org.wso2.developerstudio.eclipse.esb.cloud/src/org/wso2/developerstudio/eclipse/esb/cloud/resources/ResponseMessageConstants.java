@@ -13,5 +13,6 @@ public class ResponseMessageConstants {
         public static final String NO_RESOURCES_ERROR = "There are no resources available in the cloud to deploy the application!";
         public static final String AUTHENTICATION_FAILURE = "Failed to authenticate user - Please log in!";
         public static final String REQUEST_FAILURE = "Failed to complete request..!";
+        public static final String ENDPOINTS_ARE_LOADING = "Endpoints are still loading, please try again later";
     }
 }

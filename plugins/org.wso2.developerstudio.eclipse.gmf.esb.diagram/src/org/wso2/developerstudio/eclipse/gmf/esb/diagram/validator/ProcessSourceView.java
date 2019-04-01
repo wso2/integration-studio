@@ -673,9 +673,9 @@ public class ProcessSourceView {
                         if (tempTag.getTagType() == 3 && currentMediator != null
                                 && ((currentMediator.getqName().equals("payloadFactory")
                                         && !tempTag.getqName().equals("payloadFactory"))
-                                        || (currentMediator.getqName().equals("throttle")
-                                                && !tempTag.getqName().equals("throttle")) || (currentMediator.getqName().equals("pojoCommand")
-                                                        && !tempTag.getqName().equals("pojoCommand")) )) {
+                                        || (currentMediator.getqName().equals("throttle") && !tempTag.getqName().equals("throttle")) 
+                                        || (currentMediator.getqName().equals("pojoCommand") && !tempTag.getqName().equals("pojoCommand")) 
+                                        || (currentMediator.getqName().equals("validate") && !tempTag.getqName().equals("validate")))) {
                             intermediaryStack.push(currentMediator);
 
                         } else if (currentMediator != null && currentMediator.getqName().equals("rule")) {

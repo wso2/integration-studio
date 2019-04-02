@@ -531,6 +531,72 @@ public class AbstractEndPointItemProvider extends EndPointItemProvider {
     }
 
     /**
+     * This adds a property descriptor for the Failover Retry Type feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addFailoverRetryTypePropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_AbstractEndPoint_failoverRetryType_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_AbstractEndPoint_failoverRetryType_feature", "_UI_AbstractEndPoint_type"),
+                 EsbPackage.Literals.ABSTRACT_END_POINT__FAILOVER_RETRY_TYPE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the Failover Retry Error Codes feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addFailoverRetryErrorCodesPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_AbstractEndPoint_failoverRetryErrorCodes_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_AbstractEndPoint_failoverRetryErrorCodes_feature", "_UI_AbstractEndPoint_type"),
+                 EsbPackage.Literals.ABSTRACT_END_POINT__FAILOVER_RETRY_ERROR_CODES,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the Failover Non Retry Error Codes feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addFailoverNonRetryErrorCodesPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_AbstractEndPoint_failoverNonRetryErrorCodes_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_AbstractEndPoint_failoverNonRetryErrorCodes_feature", "_UI_AbstractEndPoint_type"),
+                 EsbPackage.Literals.ABSTRACT_END_POINT__FAILOVER_NON_RETRY_ERROR_CODES,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
      * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
      * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -608,6 +674,9 @@ public class AbstractEndPointItemProvider extends EndPointItemProvider {
             case EsbPackage.ABSTRACT_END_POINT__OPTIMIZE:
             case EsbPackage.ABSTRACT_END_POINT__STATISTICS_ENABLED:
             case EsbPackage.ABSTRACT_END_POINT__TRACE_ENABLED:
+            case EsbPackage.ABSTRACT_END_POINT__FAILOVER_RETRY_TYPE:
+            case EsbPackage.ABSTRACT_END_POINT__FAILOVER_RETRY_ERROR_CODES:
+            case EsbPackage.ABSTRACT_END_POINT__FAILOVER_NON_RETRY_ERROR_CODES:
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
                 return;
             case EsbPackage.ABSTRACT_END_POINT__TEMPLATE_PARAMETERS:

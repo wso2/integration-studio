@@ -7,7 +7,7 @@ wget http://product-dist.wso2.com/p2/developer-studio-kernel/eclipse/oxygen3a/ec
 wget http://product-dist.wso2.com/p2/developer-studio-kernel/eclipse/oxygen3a/eclipse-jee-oxygen-3a-macosx-cocoa-x86_64.tar.gz
 wget http://product-dist.wso2.com/p2/developer-studio-kernel/eclipse/oxygen3a/eclipse-jee-oxygen-3a-win32-x86_64.zip
 wget http://product-dist.wso2.com/p2/developer-studio-kernel/eclipse/oxygen3a/eclipse-jee-oxygen-3a-win32.zip
-wget http://atuwa.private.wso2.com/WSO2-Products/enterprise-integrator/6.4.0/wso2ei-6.4.0.zip
+wget http://product-dist.wso2.com/tools/developerstudio/wso2ei-6.5.0.zip
 
 mvn install:install-file \
   -DgroupId=org.eclipse \

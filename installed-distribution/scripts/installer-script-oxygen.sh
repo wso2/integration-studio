@@ -1,6 +1,6 @@
 #! /bin/bash
 
-PRODUCT_VERSION=6.4.0
+PRODUCT_VERSION=6.5.0
 
 wget http://product-dist.wso2.com/p2/developer-studio-kernel/eclipse/oxygen3a/eclipse-jee-oxygen-3a-linux-gtk-x86_64.tar.gz
 wget http://product-dist.wso2.com/p2/developer-studio-kernel/eclipse/oxygen3a/eclipse-jee-oxygen-3a-linux-gtk.tar.gz

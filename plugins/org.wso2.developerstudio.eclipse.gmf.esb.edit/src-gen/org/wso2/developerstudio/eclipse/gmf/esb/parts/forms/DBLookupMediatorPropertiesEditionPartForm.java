@@ -639,10 +639,12 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
                                             EsbViewsRepository.DBLookupMediator.Connection.connectionDbDriver,
                                             PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
                                             obj.getDbDriver()));
-                                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
-                                    DBLookupMediatorPropertiesEditionPartForm.this,
-                                    EsbViewsRepository.DBLookupMediator.Connection.connectionURL,
-                                    PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, obj.getUrl()));
+                                propertiesEditionComponent.firePropertiesChanged(
+                                    new PropertiesEditionEvent(
+                                            DBLookupMediatorPropertiesEditionPartForm.this,
+                                            EsbViewsRepository.DBLookupMediator.Connection.connectionURL,
+                                            PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+                                            obj.getUrl()));
                                 propertiesEditionComponent.firePropertiesChanged(
                                     new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartForm.this,
                                             EsbViewsRepository.DBLookupMediator.Connection.connectionUsername,

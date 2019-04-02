@@ -397,40 +397,41 @@ public class DBReportMediatorPropertiesEditionPartForm extends SectionProperties
                                 obj.setJarPath(jarPath);
 
                                 dp.open(obj);
-                               
+
                                 jarPath = obj.getJarPath();
 
                                 propertiesEditionComponent.firePropertiesChanged(
-                                        new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartForm.this,
-                                                EsbViewsRepository.DBReportMediator.Connection.connectionDbType,
-                                                PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
-                                                SqlDatabaseType.getByName(obj.getDbType())));
+                                    new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartForm.this,
+                                            EsbViewsRepository.DBReportMediator.Connection.connectionDbType,
+                                            PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+                                            SqlDatabaseType.getByName(obj.getDbType())));
                                 propertiesEditionComponent.firePropertiesChanged(
-                                        new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartForm.this,
-                                                EsbViewsRepository.DBReportMediator.Connection.connectionDbDriver,
-                                                PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
-                                                obj.getDbDriver()));
-                                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
-                                        DBReportMediatorPropertiesEditionPartForm.this,
-                                        EsbViewsRepository.DBReportMediator.Connection.connectionURL,
-                                        PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, obj.getUrl()));
+                                    new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartForm.this,
+                                            EsbViewsRepository.DBReportMediator.Connection.connectionDbDriver,
+                                            PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+                                            obj.getDbDriver()));
                                 propertiesEditionComponent.firePropertiesChanged(
-                                        new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartForm.this,
-                                                EsbViewsRepository.DBReportMediator.Connection.connectionUsername,
-                                                PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
-                                                obj.getUserName()));
+                                    new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartForm.this,
+                                            EsbViewsRepository.DBReportMediator.Connection.connectionURL,
+                                            PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+                                            obj.getUrl()));
                                 propertiesEditionComponent.firePropertiesChanged(
-                                        new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartForm.this,
-                                                EsbViewsRepository.DBReportMediator.Connection.connectionPassword,
-                                                PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
-                                                obj.getPassword()));
+                                    new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartForm.this,
+                                            EsbViewsRepository.DBReportMediator.Connection.connectionUsername,
+                                            PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+                                            obj.getUserName()));
+                                propertiesEditionComponent.firePropertiesChanged(
+                                    new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartForm.this,
+                                            EsbViewsRepository.DBReportMediator.Connection.connectionPassword,
+                                            PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+                                            obj.getPassword()));
                             }
                         });
                     }
                 }).start();
             }
         });
-        
+
         Control propertyInitializeHelp = FormUtils.createHelpButton(widgetFactory, parent,
                 propertiesEditionComponent.getHelpContent(
                         EsbViewsRepository.DBLookupMediator.Connection.databaseConfiguration,

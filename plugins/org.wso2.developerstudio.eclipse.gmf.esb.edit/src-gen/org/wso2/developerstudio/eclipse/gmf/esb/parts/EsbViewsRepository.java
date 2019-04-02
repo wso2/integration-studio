@@ -1549,7 +1549,7 @@ public class EsbViewsRepository {
 			public static String propertyValue = "esb::LogProperty::properties::propertyValue";
 			
 			// Start of user code for propertyExpression ElementEditor key
-			public static String propertyExpression = "esb::ClassProperty::properties::propertyExpression";
+			public static String propertyExpression = "esb::LogProperty::properties::propertyExpression";
 			// End of user code
 			
 	
@@ -3100,7 +3100,7 @@ public class EsbViewsRepository {
 			public static String beanName = "esb::SpringMediator::properties::beanName";
 			
 			// Start of user code for configurationKey ElementEditor key
-			public static String configurationKey = "esb::SmooksMediator::key::configurationKey";
+			public static String configurationKey = "esb::SpringMediator::key::configurationKey";
 			// End of user code
 			
 	

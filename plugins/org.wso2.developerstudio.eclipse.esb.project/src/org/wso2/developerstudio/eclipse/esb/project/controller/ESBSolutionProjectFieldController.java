@@ -32,8 +32,21 @@ public class ESBSolutionProjectFieldController extends ESBProjectFieldController
 	@Override
 	public List<String> getUpdateFields(String modelProperty, ProjectDataModel model) {
 		List<String> updateFields = super.getUpdateFields(modelProperty, model);
-		if (modelProperty.equals(ESB_PROJECT_NAME)) {
-			updateFields.add(COMPOSITE_APPLICATION_PROJECT_NAME);
+        if (modelProperty.equals(ESB_PROJECT_NAME)) {
+
+            if (model instanceof ESBSolutionProjectModel) {
+                ESBSolutionProjectModel esbSolutionModel = (ESBSolutionProjectModel) model;
+
+                if (esbSolutionModel.isCappProjectChecked()) {
+                    updateFields.add(COMPOSITE_APPLICATION_PROJECT_NAME);
+                }
+                if (esbSolutionModel.isConnectorExporterProjectChecked()) {
+                    updateFields.add(CONNECTOR_EXPORTER_PROJECT_NAME);
+                }
+                if (esbSolutionModel.isRegistryProjectChecked()) {
+                    updateFields.add(REGISTRY_RESOURCES_PROJECT_NAME);
+                }
+            }
 		} else if (modelProperty.equals(REGISTRY_PROJECT_CHECKED)) {
 			updateFields.add(REGISTRY_RESOURCES_PROJECT_NAME);
 		} else if (modelProperty.equals(CONNECTOR_EXPORTER_PROJECT_CHECKED)) {

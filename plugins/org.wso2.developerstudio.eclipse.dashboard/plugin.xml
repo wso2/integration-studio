@@ -27,13 +27,13 @@
                         icon="icons/getting-started.png"
                         id="org.wso2.developerstudio.eclipse.platform.ui.toolbars.opentemplatedashboard"
                         label="Getting Started"
-                        tooltip="Open Developer Studio Template Dashboard">
+                        tooltip="Open Developer Studio Dashboard">
                  </command>
                  <separator
                         name="separator-id-dashboard-middle"
                         visible="true">
                  </separator>
-                 <command
+                 <!--command
                         commandId="org.wso2.developerstudio.eclipse.platform.ui.commands.opendashboard"
                         icon="icons/carbon-normal.png"
                         id="org.wso2.developerstudio.eclipse.platform.ui.toolbars.opendashboard"
@@ -43,7 +43,7 @@
                  <separator
                         name="separator-id-dashboard-down"
                         visible="true">
-                 </separator>
+                 </separator -->
             </menu>
         </menuContribution>
     </extension>

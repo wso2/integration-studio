@@ -624,35 +624,35 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
                                 obj.setUrl(getConnectionURL().isEmpty() ? "" : getConnectionURL());
                                 obj.setUserName(getConnectionUsername().isEmpty() ? "" : getConnectionUsername());
                                 obj.setJarPath(jarPath);
-                   
+
                                 dp.open(obj);
-                                
+
                                 jarPath = obj.getJarPath();
 
                                 propertiesEditionComponent.firePropertiesChanged(
-                                        new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartForm.this,
-                                                EsbViewsRepository.DBLookupMediator.Connection.connectionDbType,
-                                                PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
-                                                SqlDatabaseType.getByName(obj.getDbType())));
+                                    new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartForm.this,
+                                            EsbViewsRepository.DBLookupMediator.Connection.connectionDbType,
+                                            PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+                                            SqlDatabaseType.getByName(obj.getDbType())));
                                 propertiesEditionComponent.firePropertiesChanged(
-                                        new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartForm.this,
-                                                EsbViewsRepository.DBLookupMediator.Connection.connectionDbDriver,
-                                                PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
-                                                obj.getDbDriver()));
+                                    new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartForm.this,
+                                            EsbViewsRepository.DBLookupMediator.Connection.connectionDbDriver,
+                                            PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+                                            obj.getDbDriver()));
                                 propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
-                                        DBLookupMediatorPropertiesEditionPartForm.this,
-                                        EsbViewsRepository.DBLookupMediator.Connection.connectionURL,
-                                        PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, obj.getUrl()));
+                                    DBLookupMediatorPropertiesEditionPartForm.this,
+                                    EsbViewsRepository.DBLookupMediator.Connection.connectionURL,
+                                    PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, obj.getUrl()));
                                 propertiesEditionComponent.firePropertiesChanged(
-                                        new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartForm.this,
-                                                EsbViewsRepository.DBLookupMediator.Connection.connectionUsername,
-                                                PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
-                                                obj.getUserName()));
+                                    new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartForm.this,
+                                            EsbViewsRepository.DBLookupMediator.Connection.connectionUsername,
+                                            PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+                                            obj.getUserName()));
                                 propertiesEditionComponent.firePropertiesChanged(
-                                        new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartForm.this,
-                                                EsbViewsRepository.DBLookupMediator.Connection.connectionPassword,
-                                                PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
-                                                obj.getPassword()));
+                                    new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartForm.this,
+                                            EsbViewsRepository.DBLookupMediator.Connection.connectionPassword,
+                                            PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+                                            obj.getPassword()));
 
                             }
                         });

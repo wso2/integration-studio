@@ -98,14 +98,13 @@ public class LoopBackMediatorPropertiesEditionPartForm extends SectionProperties
 	 * 
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
-		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
-		Form form = scrolledForm.getForm();
+	    Form form = widgetFactory.createForm(parent);
 		view = form.getBody();
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
 		createControls(widgetFactory, view);
-		return scrolledForm;
+		return form;
 	}
 
 	/**
@@ -119,9 +118,6 @@ public class LoopBackMediatorPropertiesEditionPartForm extends SectionProperties
 		CompositionSequence loopBackMediatorStep = new BindingCompositionSequence(propertiesEditionComponent);
 		CompositionStep propertiesStep = loopBackMediatorStep.addStep(EsbViewsRepository.LoopBackMediator.Properties.class);
 		propertiesStep.addStep(EsbViewsRepository.LoopBackMediator.Properties.description);
-		propertiesStep.addStep(EsbViewsRepository.LoopBackMediator.Properties.commentsList);
-		propertiesStep.addStep(EsbViewsRepository.LoopBackMediator.Properties.reverse);
-		
 		
 		composer = new PartComposer(loopBackMediatorStep) {
 

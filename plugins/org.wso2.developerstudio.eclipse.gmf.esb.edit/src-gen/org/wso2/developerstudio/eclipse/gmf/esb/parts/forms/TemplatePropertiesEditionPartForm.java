@@ -145,12 +145,10 @@ public class TemplatePropertiesEditionPartForm extends SectionPropertiesEditingP
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		CompositionSequence templateStep = new BindingCompositionSequence(propertiesEditionComponent);
 		CompositionStep propertiesStep = templateStep.addStep(EsbViewsRepository.Template.Properties.class);
-		propertiesStep.addStep(EsbViewsRepository.Template.Properties.description);
-		propertiesStep.addStep(EsbViewsRepository.Template.Properties.commentsList);
 		propertiesStep.addStep(EsbViewsRepository.Template.Properties.name);
 		propertiesStep.addStep(EsbViewsRepository.Template.Properties.templateType);
 		propertiesStep.addStep(EsbViewsRepository.Template.Properties.parameters);
-		
+        propertiesStep.addStep(EsbViewsRepository.Template.Properties.description);
 		
 		composer = new PartComposer(templateStep) {
 

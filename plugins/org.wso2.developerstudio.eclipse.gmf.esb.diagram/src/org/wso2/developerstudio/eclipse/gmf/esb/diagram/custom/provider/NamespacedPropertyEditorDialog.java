@@ -1222,7 +1222,7 @@ public class NamespacedPropertyEditorDialog extends Dialog {
                 
                 if (xPathValidator.isValidXML(inlineXMLTextArea.getText().trim())) {
                     String outputStr = xPathValidator.getEvaluatedResult(inlineXMLTextArea.getText().trim(),
-                            xPathTextField.getText().trim());
+                            xPathTextField.getText().trim(), nameSpaces);
                     
                     if (EMPTY_STRING.equalsIgnoreCase(outputStr)) {
                         outputXMLTextArea.setText(INVALID_XPATH_EXPRESSION_TEXT);

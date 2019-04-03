@@ -83,51 +83,50 @@ public class CallTemplateMediatorTransformer extends AbstractEsbNodeTransformer 
         invokeMediator.setTargetTemplate(obj.getTargetTemplate());
 
         for (CallTemplateParameter param : obj.getTemplateParameters()) {
+            String parameterName = "";
             if (param.getParameterName() != null && !param.getParameterName().isEmpty()) {
-                if (param.getTemplateParameterType().equals(RuleOptionType.EXPRESSION)) {
-
-                    NamespacedProperty namespacedExpression = param.getParameterExpression();
-                    String xpathValue = namespacedExpression.getPropertyValue();
-                    Boolean dynamic = namespacedExpression.isDynamic();
-
-                    if (dynamic) {
-
-                        xpathValue = "{" + xpathValue + "}";
-                        Value value = new Value(xpathValue);
-
-                        if (namespacedExpression.getNamespaces().size() > 0) {
-                            OMFactory factory = OMAbstractFactory.getOMFactory();
-                            OMElement root = null;
-                            int i = 0;
-                            for (Entry<String, String> entry : namespacedExpression.getNamespaces().entrySet()) {
-                                if (i == 0) {
-                                    OMNamespace firstNameSpace = factory.createOMNamespace(entry.getValue(),
-                                            entry.getKey());
-                                    root = factory.createOMElement("root", firstNameSpace);
-                                } else {
-                                    root.declareNamespace(entry.getValue(), entry.getKey());
-                                }
-                                i++;
-                            }
-                            value.setNamespaces(root);
-                        }
-                        invokeMediator.getpName2ExpressionMap().put(param.getParameterName(), value);
-                    } else if (StringUtils.isBlank(xpathValue)){
-                        String xpathValueTemp = ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION;
-                        SynapsePath paramExpression = getParamExpression(namespacedExpression, xpathValueTemp);
-                        invokeMediator.getpName2ExpressionMap().put(param.getParameterName(),
-                                new Value(paramExpression));
-                    }
-                    else {
-                        SynapsePath paramExpression = getParamExpression(namespacedExpression, xpathValue);
-                        invokeMediator.getpName2ExpressionMap().put(param.getParameterName(),
-                                new Value(paramExpression));
-                    }
-                } else {
-                    invokeMediator.getpName2ExpressionMap().put(param.getParameterName(),
-                            new Value(param.getParameterValue()));
-                }
+                parameterName = param.getParameterName();
             }
+            if (param.getTemplateParameterType().equals(RuleOptionType.EXPRESSION)) {
+
+                NamespacedProperty namespacedExpression = param.getParameterExpression();
+                String xpathValue = namespacedExpression.getPropertyValue();
+                Boolean dynamic = namespacedExpression.isDynamic();
+
+                if (dynamic) {
+
+                    xpathValue = "{" + xpathValue + "}";
+                    Value value = new Value(xpathValue);
+
+                    if (namespacedExpression.getNamespaces().size() > 0) {
+                        OMFactory factory = OMAbstractFactory.getOMFactory();
+                        OMElement root = null;
+                        int i = 0;
+                        for (Entry<String, String> entry : namespacedExpression.getNamespaces().entrySet()) {
+                            if (i == 0) {
+                                OMNamespace firstNameSpace = factory.createOMNamespace(entry.getValue(),
+                                        entry.getKey());
+                                root = factory.createOMElement("root", firstNameSpace);
+                            } else {
+                                root.declareNamespace(entry.getValue(), entry.getKey());
+                            }
+                            i++;
+                        }
+                        value.setNamespaces(root);
+                    }
+                    invokeMediator.getpName2ExpressionMap().put(parameterName, value);
+                } else if (StringUtils.isBlank(xpathValue)) {
+                    String xpathValueTemp = ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION;
+                    SynapsePath paramExpression = getParamExpression(namespacedExpression, xpathValueTemp);
+                    invokeMediator.getpName2ExpressionMap().put(parameterName, new Value(paramExpression));
+                } else {
+                    SynapsePath paramExpression = getParamExpression(namespacedExpression, xpathValue);
+                    invokeMediator.getpName2ExpressionMap().put(parameterName, new Value(paramExpression));
+                }
+            } else {
+                invokeMediator.getpName2ExpressionMap().put(parameterName, new Value(param.getParameterValue()));
+            }
+            
         }
         return invokeMediator;
     }

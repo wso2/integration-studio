@@ -17,6 +17,7 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.util;
 
 import java.io.File;
+import java.util.Map;
 
 import org.w3c.dom.Document;
 
@@ -33,7 +34,7 @@ public interface XPathValidator {
      * @param xpath XPath expression
      * @return Evaluated output as a string
      */
-    String getEvaluatedResult(File file, String xpath);
+    String getEvaluatedResult(File file, String xpath, Map<String, String> namespaces);
     
     /**
      * Returns the output of an evaluated XPath expression on a given XML string.
@@ -42,7 +43,7 @@ public interface XPathValidator {
      * @param xpath XPath expression
      * @return Evaluated output as a string
      */
-    String getEvaluatedResult(String xml, String xpath);
+    String getEvaluatedResult(String xml, String xpath, Map<String, String> namespaces);
     
     /**
      * Checks the validity of an XML syntax.
@@ -83,6 +84,6 @@ public interface XPathValidator {
      * @param xpath XPath expression
      * @return True if valid, False otherwise
      */
-    boolean isValidExpression(File file, String xpath);
+    boolean isValidExpression(File file, String xpath, Map<String, String> namespaces);
 
 }

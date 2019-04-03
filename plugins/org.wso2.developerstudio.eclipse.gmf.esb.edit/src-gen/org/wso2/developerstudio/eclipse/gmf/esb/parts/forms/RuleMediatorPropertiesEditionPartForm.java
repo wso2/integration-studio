@@ -2442,7 +2442,7 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	        targetXPathElements = new Control[] { targetXPathLabel, targetXPathText, targetXPathHelp };
 	        return parent;
 	    }
-
+	 
 	 protected Composite createtargetResultXPathWidget(FormToolkit widgetFactory, final Composite parent) {
          Control targetResultXPathLabel = createDescription(parent, EsbViewsRepository.RuleMediator.Target.targetResultXPath,
                  EsbMessages.RuleMediatorPropertiesEditionPart_TargetResultXPathLabel);

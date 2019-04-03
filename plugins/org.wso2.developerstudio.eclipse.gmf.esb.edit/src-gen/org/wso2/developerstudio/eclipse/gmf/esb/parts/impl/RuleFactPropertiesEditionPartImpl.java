@@ -5,7 +5,6 @@ package org.wso2.developerstudio.eclipse.gmf.esb.parts.impl;
 
 // Start of user code for imports
 import java.util.ArrayList;
-
 import org.eclipse.emf.common.util.Enumerator;
 
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
@@ -678,119 +677,94 @@ public class RuleFactPropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	// Start of user code additional methods
-    protected Composite createPropertyExpressionText(final Composite parent) {
-        Control propertyExpressionTextLabel = createDescription(parent,
-                EsbViewsRepository.RuleFact.Properties.propertyExpression,
-                EsbMessages.RuleFactPropertiesEditionPart_PropertyExpressionLabel);
-        if (propertyExpression == null) {
-            propertyExpression = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
-        }
-        propertyExpressionText = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.READ_ONLY); // $NON-NLS-1$
-        GridData propertyValueData = new GridData(GridData.FILL_HORIZONTAL);
-        propertyExpressionText.setLayoutData(propertyValueData);
-
-        EditingUtils.setID(propertyExpressionText, EsbViewsRepository.RuleFact.Properties.propertyExpression);
-        EditingUtils.setEEFtype(propertyExpressionText, "eef::Text"); //$NON-NLS-1$
-        Control propertyExpressionHelp = SWTUtils.createHelpButton(parent,
-                propertiesEditionComponent.getHelpContent(
-                        EsbViewsRepository.RuleFact.Properties.propertyExpression, EsbViewsRepository.FORM_KIND),
-                null); // $NON-NLS-1$
-        // Start of user code for createPropertyValueText
-        propertyExpressionTypeElements = new Control[] { propertyExpressionTextLabel, propertyExpressionText,
-                propertyExpressionHelp };// mouse
-        propertyExpressionText.addMouseListener(new MouseListener() {
-
-            @Override
-            public void mouseDown(MouseEvent e) {
-                openPropertyExpressionNSPEDialog(parent);
+        protected Composite createPropertyExpressionText(final Composite parent) {
+            Control propertyExpressionTextLabel = createDescription(parent,
+                    EsbViewsRepository.RuleFact.Properties.propertyExpression,
+                    EsbMessages.RuleFactPropertiesEditionPart_PropertyExpressionLabel);
+            if (propertyExpression == null) {
+                propertyExpression = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
             }
-
-            @Override
-            public void mouseUp(MouseEvent e) {
-            }
-
-            @Override
-            public void mouseDoubleClick(MouseEvent e) {
-            }
-
-        });
-
-        propertyExpressionText.addKeyListener(new KeyListener() {
-
-            @Override
-            public void keyPressed(KeyEvent e) {
-                
-            }
-
-            @Override
-            public void keyReleased(KeyEvent e) {
-                if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+            propertyExpressionText = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.READ_ONLY); // $NON-NLS-1$
+            GridData propertyValueData = new GridData(GridData.FILL_HORIZONTAL);
+            propertyExpressionText.setLayoutData(propertyValueData);
+    
+            EditingUtils.setID(propertyExpressionText, EsbViewsRepository.RuleFact.Properties.propertyExpression);
+            EditingUtils.setEEFtype(propertyExpressionText, "eef::Text"); //$NON-NLS-1$
+            Control propertyExpressionHelp = SWTUtils.createHelpButton(parent,
+                    propertiesEditionComponent.getHelpContent(
+                            EsbViewsRepository.RuleFact.Properties.propertyExpression, EsbViewsRepository.FORM_KIND),
+                    null); // $NON-NLS-1$
+            // Start of user code for createPropertyValueText
+            propertyExpressionTypeElements = new Control[] { propertyExpressionTextLabel, propertyExpressionText,
+                    propertyExpressionHelp };// mouse
+            propertyExpressionText.addMouseListener(new MouseListener() {
+    
+                @Override
+                public void mouseDown(MouseEvent e) {
                     openPropertyExpressionNSPEDialog(parent);
                 }
-            }
-
-        });
-
-        return parent;
-    }
-
-    public void openPropertyExpressionNSPEDialog(final Composite parent) {
-        EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL,
-                propertyExpression);
-        nspd.open();
-        propertyExpressionText.setText(propertyExpression.getPropertyValue());
-        propertiesEditionComponent
-                .firePropertiesChanged(new PropertiesEditionEvent(RuleFactPropertiesEditionPartImpl.this,
-                        EsbViewsRepository.RuleFact.Properties.propertyExpression, PropertiesEditionEvent.COMMIT,
-                        PropertiesEditionEvent.SET, null, getPropertyExpression()));
-    }
     
-    protected Composite createValueReferenceKeyWidget(Composite parent) {
-        Control itemLabel = createDescription(parent, EsbViewsRepository.RuleFact.Properties.valueReferenceKey, EsbMessages.RuleFactPropertiesEditionPart_ValueReferenceKeyLabel);
-        valueReferenceKeyText = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.READ_ONLY);
-        GridData parameterExpressionData = new GridData(GridData.FILL_HORIZONTAL);
-        valueReferenceKeyText.setLayoutData(parameterExpressionData);
-        if(valueReferenceKey == null) {
-            valueReferenceKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
-        } 
-        String initValueExpression = valueReferenceKey.getKeyValue().isEmpty() ? "" : valueReferenceKey.getKeyValue();
-        valueReferenceKeyText.setText(initValueExpression);
-        valueReferenceKeyText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
-        valueReferenceKeyText.addMouseListener(new MouseListener(){
-
-            @Override
-            public void mouseDoubleClick(MouseEvent e) {
-                // TODO Auto-generated method stub
-                
-            }
-
-            @Override
-            public void mouseDown(MouseEvent e) {
-                EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
-                        SWT.NULL, valueReferenceKey, new ArrayList<NamedEntityDescriptor>());
-                dialog.open();
-                valueReferenceKeyText.setText(valueReferenceKey.getKeyValue());
-                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
-                        RuleFactPropertiesEditionPartImpl.this,
-                        EsbViewsRepository.RuleFact.Properties.valueReferenceKey, PropertiesEditionEvent.COMMIT,
-                        PropertiesEditionEvent.SET, null, getValueReferenceKey()));
-
-                
-            }
-
-            @Override
-            public void mouseUp(MouseEvent e) {
-                // TODO Auto-generated method stub
-                
-            }
-            
-        });
+                @Override
+                public void mouseUp(MouseEvent e) {
+                }
+    
+                @Override
+                public void mouseDoubleClick(MouseEvent e) {
+                }
+    
+            });
+    
+            propertyExpressionText.addKeyListener(new KeyListener() {
+    
+                @Override
+                public void keyPressed(KeyEvent e) {
+                    
+                }
+    
+                @Override
+                public void keyReleased(KeyEvent e) {
+                    if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                        openPropertyExpressionNSPEDialog(parent);
+                    }
+                }
+    
+            });
+    
+            return parent;
+        }
+    
+        public void openPropertyExpressionNSPEDialog(final Composite parent) {
+            EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL,
+                    propertyExpression);
+            nspd.open();
+            propertyExpressionText.setText(propertyExpression.getPropertyValue());
+            propertiesEditionComponent
+                    .firePropertiesChanged(new PropertiesEditionEvent(RuleFactPropertiesEditionPartImpl.this,
+                            EsbViewsRepository.RuleFact.Properties.propertyExpression, PropertiesEditionEvent.COMMIT,
+                            PropertiesEditionEvent.SET, null, getPropertyExpression()));
+        }
         
-        valueReferenceKeyText.addKeyListener(new KeyListener() {
-            
-            @Override
-            public void keyReleased(KeyEvent e) {
-                if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+        protected Composite createValueReferenceKeyWidget(Composite parent) {
+            Control itemLabel = createDescription(parent, EsbViewsRepository.RuleFact.Properties.valueReferenceKey, EsbMessages.RuleFactPropertiesEditionPart_ValueReferenceKeyLabel);
+            valueReferenceKeyText = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.READ_ONLY);
+            GridData parameterExpressionData = new GridData(GridData.FILL_HORIZONTAL);
+            valueReferenceKeyText.setLayoutData(parameterExpressionData);
+            if(valueReferenceKey == null) {
+                valueReferenceKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
+            } 
+            String initValueExpression = valueReferenceKey.getKeyValue().isEmpty() ? "" : valueReferenceKey.getKeyValue();
+            valueReferenceKeyText.setText(initValueExpression);
+            valueReferenceKeyText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+            valueReferenceKeyText.addMouseListener(new MouseListener(){
+    
+                @Override
+                public void mouseDoubleClick(MouseEvent e) {
+                    // TODO Auto-generated method stub
+                    
+                }
+    
+                @Override
+                public void mouseDown(MouseEvent e) {
                     EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
                             SWT.NULL, valueReferenceKey, new ArrayList<NamedEntityDescriptor>());
                     dialog.open();
@@ -799,21 +773,46 @@ public class RuleFactPropertiesEditionPartImpl extends CompositePropertiesEditio
                             RuleFactPropertiesEditionPartImpl.this,
                             EsbViewsRepository.RuleFact.Properties.valueReferenceKey, PropertiesEditionEvent.COMMIT,
                             PropertiesEditionEvent.SET, null, getValueReferenceKey()));
+    
+                    
+                }
+    
+                @Override
+                public void mouseUp(MouseEvent e) {
+                    // TODO Auto-generated method stub
+                    
                 }
                 
-            }
+            });
             
-            @Override
-            public void keyPressed(KeyEvent e) {}
+            valueReferenceKeyText.addKeyListener(new KeyListener() {
+                
+                @Override
+                public void keyReleased(KeyEvent e) {
+                    if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                        EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
+                                SWT.NULL, valueReferenceKey, new ArrayList<NamedEntityDescriptor>());
+                        dialog.open();
+                        valueReferenceKeyText.setText(valueReferenceKey.getKeyValue());
+                        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                                RuleFactPropertiesEditionPartImpl.this,
+                                EsbViewsRepository.RuleFact.Properties.valueReferenceKey, PropertiesEditionEvent.COMMIT,
+                                PropertiesEditionEvent.SET, null, getValueReferenceKey()));
+                    }
+                    
+                }
+                
+                @Override
+                public void keyPressed(KeyEvent e) {}
+                
+            });
             
-        });
-        
-        EditingUtils.setID(valueReferenceKeyText, EsbViewsRepository.RuleFact.Properties.valueReferenceKey);
-        EditingUtils.setEEFtype(valueReferenceKeyText, "eef::Text");
-        Control itemHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.RuleFact.Properties.valueReferenceKey, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-        valueReferenceKeyElements = new Control[] {itemLabel, valueReferenceKeyText, itemHelp};
-        return parent;
-    }
+            EditingUtils.setID(valueReferenceKeyText, EsbViewsRepository.RuleFact.Properties.valueReferenceKey);
+            EditingUtils.setEEFtype(valueReferenceKeyText, "eef::Text");
+            Control itemHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.RuleFact.Properties.valueReferenceKey, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+            valueReferenceKeyElements = new Control[] {itemLabel, valueReferenceKeyText, itemHelp};
+            return parent;
+        }
 	
     @Override
     public void refresh() {

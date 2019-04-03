@@ -677,29 +677,29 @@ public class RuleFactPropertiesEditionPartForm extends SectionPropertiesEditingP
 		return EsbMessages.RuleFact_Part_Title;
 	}
 
-    @Override
-    public NamespacedProperty getPropertyExpression() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public void setPropertyExpression(NamespacedProperty nameSpacedProperty) {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
-    public RegistryKeyProperty getValueReferenceKey() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public void setValueReferenceKey(RegistryKeyProperty registryKeyProperty) {
-        // TODO Auto-generated method stub
-        
-    }
+        @Override
+        public NamespacedProperty getPropertyExpression() {
+            // TODO Auto-generated method stub
+            return null;
+        }
+    
+        @Override
+        public void setPropertyExpression(NamespacedProperty nameSpacedProperty) {
+            // TODO Auto-generated method stub
+            
+        }
+    
+        @Override
+        public RegistryKeyProperty getValueReferenceKey() {
+            // TODO Auto-generated method stub
+            return null;
+        }
+    
+        @Override
+        public void setValueReferenceKey(RegistryKeyProperty registryKeyProperty) {
+            // TODO Auto-generated method stub
+            
+        }
 
 	// Start of user code additional methods
 	

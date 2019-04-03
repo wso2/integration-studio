@@ -5622,6 +5622,14 @@ public class EsbViewsRepository {
 			
 			public static String valueLiteral = "esb::RuleFact::properties::valueLiteral";
 			
+			// Start of user code for propertyExpression ElementEditor key
+			public static String propertyExpression = "esb::RuleFact::properties::propertyExpression";
+			// End of user code
+			
+			// Start of user code for valueReferenceKey ElementEditor key
+			public static String valueReferenceKey = "esb::RuleFact::properties::valueReferenceKey";
+			// End of user code
+			
 	
 		}
 	

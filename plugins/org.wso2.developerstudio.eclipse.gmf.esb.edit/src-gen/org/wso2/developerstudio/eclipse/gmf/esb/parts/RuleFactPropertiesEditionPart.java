@@ -104,12 +104,9 @@ public interface RuleFactPropertiesEditionPart {
 
 
 	// Start of user code for propertyExpression specific getters and setters declaration
-    NamespacedProperty getPropertyExpression();
+	NamespacedProperty getPropertyExpression();
 
-    void setPropertyExpression(NamespacedProperty nameSpacedProperty);	
-	// End of user code
-	// Start of user code for valueReferenceKey specific getters and setters declaration
-	
+	void setPropertyExpression(NamespacedProperty nameSpacedProperty);
 	// End of user code
 
 	/**
@@ -120,11 +117,11 @@ public interface RuleFactPropertiesEditionPart {
 	 */
 	public String getTitle();
 
-    // Start of user code for valueReferenceKey specific getters and setters declaration	
-    RegistryKeyProperty getValueReferenceKey();
+        // Start of user code for valueReferenceKey specific getters and setters declaration
+        RegistryKeyProperty getValueReferenceKey();
 
-    void setValueReferenceKey(RegistryKeyProperty registryKeyProperty);
-    // End of user code
+        void setValueReferenceKey(RegistryKeyProperty registryKeyProperty);
+        // End of user code
 
 	// Start of user code for additional methods
 	

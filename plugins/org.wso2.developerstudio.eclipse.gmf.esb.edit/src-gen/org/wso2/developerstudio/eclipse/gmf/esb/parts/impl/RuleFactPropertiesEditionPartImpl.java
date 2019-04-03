@@ -3,9 +3,9 @@
  */
 package org.wso2.developerstudio.eclipse.gmf.esb.parts.impl;
 
+// Start of user code for imports
 import java.util.ArrayList;
 
-// Start of user code for imports
 import org.eclipse.emf.common.util.Enumerator;
 
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
@@ -84,21 +84,21 @@ public class RuleFactPropertiesEditionPartImpl extends CompositePropertiesEditio
 	protected EMFComboViewer valueType;
 	protected Text valueLiteral;
 	// Start of user code  for propertyExpression widgets declarations
-    protected NamespacedProperty propertyExpression;
-    protected Text propertyExpressionText;
-    protected Control[] propertyExpressionTypeElements;
+	protected NamespacedProperty propertyExpression;
+	protected Text propertyExpressionText;
+	protected Control[] propertyExpressionTypeElements;
 	protected Control[] factTypeElements;
 	protected Control[] factCustomTypeElements;
 	protected Control[] factNameElements;
 	protected Control[] valueTypeElements;
 	protected Control[] valueLiteralElements;
-    Group propertiesGroup;	
+	Group propertiesGroup;
 	// End of user code
 
 	// Start of user code  for valueReferenceKey widgets declarations
-    protected Text valueReferenceKeyText;
-    protected RegistryKeyProperty valueReferenceKey;
-    protected Control[] valueReferenceKeyElements;
+	protected Text valueReferenceKeyText;
+	protected RegistryKeyProperty valueReferenceKey;
+	protected Control[] valueReferenceKeyElements;
 	// End of user code
 
 
@@ -171,14 +171,14 @@ public class RuleFactPropertiesEditionPartImpl extends CompositePropertiesEditio
 					return createValueLiteralText(parent);
 				}
 				// Start of user code for propertyExpression addToPart creation
-                if (key == EsbViewsRepository.RuleFact.Properties.propertyExpression) {
-                    return createPropertyExpressionText(parent);
-                }				
+				if (key == EsbViewsRepository.RuleFact.Properties.propertyExpression) {
+				    return createPropertyExpressionText(parent);
+				}
 				// End of user code
 				// Start of user code for valueReferenceKey addToPart creation
-                if (key == EsbViewsRepository.RuleFact.Properties.valueReferenceKey) {
-                    return createValueReferenceKeyWidget(parent);
-                }				
+				if (key == EsbViewsRepository.RuleFact.Properties.valueReferenceKey) {
+				    return createValueReferenceKeyWidget(parent);
+				}
 				// End of user code
 				return parent;
 			}
@@ -230,15 +230,11 @@ public class RuleFactPropertiesEditionPartImpl extends CompositePropertiesEditio
 		// Start of user code for createFactTypeEMFComboViewer
 		factTypeElements = new Control[] {factTypeLabel, factType.getCombo(), factTypeHelp};
 		factType.addSelectionChangedListener(new ISelectionChangedListener() {
-                    
-            /**
-             * {@inheritDoc}
-             * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-             */
-            public void selectionChanged(SelectionChangedEvent event) {
-                validate();
-            }
-        });
+
+		    public void selectionChanged(SelectionChangedEvent event) {
+		        validate();
+		    }
+		});
 		// End of user code
 		return parent;
 	}
@@ -374,15 +370,11 @@ public class RuleFactPropertiesEditionPartImpl extends CompositePropertiesEditio
 		// Start of user code for createValueTypeEMFComboViewer
 		valueTypeElements = new Control[] {valueTypeLabel, valueType.getCombo(), valueTypeHelp};
 		valueType.addSelectionChangedListener(new ISelectionChangedListener() {
-                    
-            /**
-             * {@inheritDoc}
-             * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-             */
-            public void selectionChanged(SelectionChangedEvent event) {
-                validate();
-            }
-        });
+
+		    public void selectionChanged(SelectionChangedEvent event) {
+		        validate();
+		    }
+		});
 		// End of user code
 		return parent;
 	}
@@ -645,36 +637,34 @@ public class RuleFactPropertiesEditionPartImpl extends CompositePropertiesEditio
 
 
 	// Start of user code for propertyExpression specific getters and setters implementation
-    @Override
-    public NamespacedProperty getPropertyExpression() {
-        return propertyExpression;
-    }
+	@Override
+	public NamespacedProperty getPropertyExpression() {
+	    return propertyExpression;
+	}
 
-    @Override
-    public void setPropertyExpression(NamespacedProperty nameSpacedProperty) {
-        if (nameSpacedProperty != null) {
-            propertyExpressionText.setText(nameSpacedProperty.getPropertyValue());
-            propertyExpression = nameSpacedProperty;
-        }
-        
-    }	
+	@Override
+	public void setPropertyExpression(NamespacedProperty nameSpacedProperty) {
+	    if (nameSpacedProperty != null) {
+	        propertyExpressionText.setText(nameSpacedProperty.getPropertyValue());
+	        propertyExpression = nameSpacedProperty;
+	    }
+	}
 	// End of user code
 
 	// Start of user code for valueReferenceKey specific getters and setters implementation
-    @Override
-    public RegistryKeyProperty getValueReferenceKey() {
+	@Override
+	public RegistryKeyProperty getValueReferenceKey() {
         // TODO Auto-generated method stub
-        return valueReferenceKey;
-    }
+	    return valueReferenceKey;
+	}
 
-    @Override
-    public void setValueReferenceKey(RegistryKeyProperty registryKeyProperty) {
-        if (registryKeyProperty != null) {
-            valueReferenceKeyText.setText(registryKeyProperty.getKeyValue());
-            valueReferenceKey = registryKeyProperty;
-        }
-        
-    }	
+	@Override
+	public void setValueReferenceKey(RegistryKeyProperty registryKeyProperty) {
+	    if (registryKeyProperty != null) {
+	        valueReferenceKeyText.setText(registryKeyProperty.getKeyValue());
+	        valueReferenceKey = registryKeyProperty;
+	    }
+	}
 	// End of user code
 
 	/**

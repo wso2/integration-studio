@@ -2321,10 +2321,6 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	}
 
 	// Start of user code additional methods
-	
-    /**
-     * @generated NOT
-     */	
 	protected Composite createsourceXPathWidget(FormToolkit widgetFactory, final Composite parent) {
 	    Control sourceXPathLabel = createDescription(parent, EsbViewsRepository.RuleMediator.Source.sourceXPath,
                 EsbMessages.RuleMediatorPropertiesEditionPart_SourceXPathLabel);
@@ -2386,9 +2382,6 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
         return parent;
     }
 	
-    /**
-     * @generated NOT
-     */
 	 protected Composite createtargetXPathWidget(FormToolkit widgetFactory, final Composite parent) {
 	        Control targetXPathLabel = createDescription(parent, EsbViewsRepository.RuleMediator.Target.targetXPath,
 	                EsbMessages.EnrichMediatorPropertiesEditionPart_TargetXPathLabel);
@@ -2449,10 +2442,7 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	        targetXPathElements = new Control[] { targetXPathLabel, targetXPathText, targetXPathHelp };
 	        return parent;
 	    }
-	
-	 /*
-	  * @generated NOT
-	  */
+
 	 protected Composite createtargetResultXPathWidget(FormToolkit widgetFactory, final Composite parent) {
          Control targetResultXPathLabel = createDescription(parent, EsbViewsRepository.RuleMediator.Target.targetResultXPath,
                  EsbMessages.RuleMediatorPropertiesEditionPart_TargetResultXPathLabel);

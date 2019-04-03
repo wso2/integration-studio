@@ -243,29 +243,29 @@ public class RuleFactPropertiesEditionComponent extends SinglePartPropertiesEdit
 					basePart.setValueLiteral("");
 				}
 			}
-                    // Start of user code for propertyExpression live update
-                    if (EsbPackage.eINSTANCE.getRuleFact_ValueExpression().equals(msg.getFeature())
-                            && msg.getNotifier().equals(semanticObject) && basePart != null
-                            && isAccessible(EsbViewsRepository.RuleFact.Properties.propertyExpression)) {
-                        if (msg.getNewValue() != null) {
-                            basePart.setPropertyExpression((NamespacedProperty)msg.getNewValue());
-                        } else {
-                            basePart.setPropertyExpression(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+                        // Start of user code for propertyExpression live update
+                        if (EsbPackage.eINSTANCE.getRuleFact_ValueExpression().equals(msg.getFeature())
+                                && msg.getNotifier().equals(semanticObject) && basePart != null
+                                && isAccessible(EsbViewsRepository.RuleFact.Properties.propertyExpression)) {
+                            if (msg.getNewValue() != null) {
+                                basePart.setPropertyExpression((NamespacedProperty)msg.getNewValue());
+                            } else {
+                                basePart.setPropertyExpression(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+                            }
                         }
-                    }
-                    // End of user code
-        
-                    // Start of user code for valueReferenceKey live update
-                    if (EsbPackage.eINSTANCE.getRuleFact_ValueKey().equals(msg.getFeature())
-                            && msg.getNotifier().equals(semanticObject) && basePart != null
-                            && isAccessible(EsbViewsRepository.RuleFact.Properties.valueReferenceKey)) {
-                        if (msg.getNewValue() != null) {
-                            basePart.setValueReferenceKey((RegistryKeyProperty)msg.getNewValue());
-                        } else {
-                            basePart.setValueReferenceKey(EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty());
+                        // End of user code
+            
+                        // Start of user code for valueReferenceKey live update
+                        if (EsbPackage.eINSTANCE.getRuleFact_ValueKey().equals(msg.getFeature())
+                                && msg.getNotifier().equals(semanticObject) && basePart != null
+                                && isAccessible(EsbViewsRepository.RuleFact.Properties.valueReferenceKey)) {
+                            if (msg.getNewValue() != null) {
+                                basePart.setValueReferenceKey((RegistryKeyProperty)msg.getNewValue());
+                            } else {
+                                basePart.setValueReferenceKey(EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty());
+                            }
                         }
-                    }
-                    // End of user code
+                        // End of user code
 			
 		}
 	}

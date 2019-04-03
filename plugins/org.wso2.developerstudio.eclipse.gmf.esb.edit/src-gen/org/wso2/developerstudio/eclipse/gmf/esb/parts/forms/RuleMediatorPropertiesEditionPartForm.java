@@ -222,13 +222,13 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 		CompositionStep sourceStep = ruleMediatorStep.addStep(EsbViewsRepository.RuleMediator.Source.class);
 		sourceStep.addStep(EsbViewsRepository.RuleMediator.Source.sourceValue);
 		sourceStep.addStep(EsbViewsRepository.RuleMediator.Source.sourceXPath);
-
+		
 		CompositionStep targetStep = ruleMediatorStep.addStep(EsbViewsRepository.RuleMediator.Target.class);
 		targetStep.addStep(EsbViewsRepository.RuleMediator.Target.targetValue);
 		targetStep.addStep(EsbViewsRepository.RuleMediator.Target.targetAction);
 		targetStep.addStep(EsbViewsRepository.RuleMediator.Target.targetXPath);
 		targetStep.addStep(EsbViewsRepository.RuleMediator.Target.targetResultXPath);
-
+		
 		CompositionStep ruleSetStep = ruleMediatorStep.addStep(EsbViewsRepository.RuleMediator.RuleSet.class);
 		ruleSetStep.addStep(EsbViewsRepository.RuleMediator.RuleSet.ruleSetType);
 		ruleSetStep.addStep(EsbViewsRepository.RuleMediator.RuleSet.ruleSetSourceType);

@@ -814,36 +814,36 @@ public class RuleFactPropertiesEditionPartImpl extends CompositePropertiesEditio
             return parent;
         }
 	
-    @Override
-    public void refresh() {
-        super.refresh();
-        validate();
-    }
-
-    public void validate() {
-        EEFPropertyViewUtil epv = new EEFPropertyViewUtil(view);
-        epv.clearElements(new Composite[] {propertiesGroup});
-        
-        epv.showEntry(factNameElements, false);
-        epv.showEntry(factCustomTypeElements, false);
-        epv.showEntry(factTypeElements, false);
-        epv.showEntry(valueTypeElements, false);
-        
-        if (getValueType() != null
-                && getValueType().getName().equals(PropertyValueType.LITERAL.getName())) {
-            epv.showEntry(valueLiteralElements, false);
-        } else if (getValueType() != null
-                && getValueType().getName().equals(PropertyValueType.EXPRESSION.getName())) {
-            epv.showEntry(propertyExpressionTypeElements, false);
-
-        } else if (getValueType() != null
-                && getValueType().getName().equals("REGISTRY_REFERENCE")) {
-            epv.showEntry(valueReferenceKeyElements, false);
-
+        @Override
+        public void refresh() {
+            super.refresh();
+            validate();
         }
-        
-        view.layout(true, true);
-    }
+
+        public void validate() {
+            EEFPropertyViewUtil epv = new EEFPropertyViewUtil(view);
+            epv.clearElements(new Composite[] {propertiesGroup});
+
+            epv.showEntry(factNameElements, false);
+            epv.showEntry(factCustomTypeElements, false);
+            epv.showEntry(factTypeElements, false);
+            epv.showEntry(valueTypeElements, false);
+
+            if (getValueType() != null
+                    && getValueType().getName().equals(PropertyValueType.LITERAL.getName())) {
+                epv.showEntry(valueLiteralElements, false);
+            } else if (getValueType() != null
+                    && getValueType().getName().equals(PropertyValueType.EXPRESSION.getName())) {
+                epv.showEntry(propertyExpressionTypeElements, false);
+
+            } else if (getValueType() != null
+                    && getValueType().getName().equals("REGISTRY_REFERENCE")) {
+                epv.showEntry(valueReferenceKeyElements, false);
+
+            }
+
+            view.layout(true, true);
+        }
 	// End of user code
 
 

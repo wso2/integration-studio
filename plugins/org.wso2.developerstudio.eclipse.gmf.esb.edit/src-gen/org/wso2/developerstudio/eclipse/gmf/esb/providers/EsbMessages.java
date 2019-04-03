@@ -5920,6 +5920,9 @@ public class EsbMessages extends NLS {
 	public static String RuleFactPropertiesEditionPart_PropertyExpressionLabel;
 
 	
+	public static String RuleFactPropertiesEditionPart_ValueReferenceKeyLabel;
+
+	
 	public static String RuleResultsConfigurationPropertiesEditionPart_ResultsLabel;
 
 	

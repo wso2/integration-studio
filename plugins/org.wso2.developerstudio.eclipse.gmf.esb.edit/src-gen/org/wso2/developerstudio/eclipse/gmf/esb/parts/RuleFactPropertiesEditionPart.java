@@ -6,6 +6,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb.parts;
 // Start of user code for imports
 import org.eclipse.emf.common.util.Enumerator;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 
 
 // End of user code
@@ -107,6 +108,9 @@ public interface RuleFactPropertiesEditionPart {
 
     void setPropertyExpression(NamespacedProperty nameSpacedProperty);	
 	// End of user code
+	// Start of user code for valueReferenceKey specific getters and setters declaration
+	
+	// End of user code
 
 	/**
 	 * Returns the internationalized title text.
@@ -116,6 +120,11 @@ public interface RuleFactPropertiesEditionPart {
 	 */
 	public String getTitle();
 
+    // Start of user code for valueReferenceKey specific getters and setters declaration	
+    RegistryKeyProperty getValueReferenceKey();
+
+    void setValueReferenceKey(RegistryKeyProperty registryKeyProperty);
+    // End of user code
 
 	// Start of user code for additional methods
 	

@@ -53,7 +53,7 @@
                             <goal>wget</goal>
                         </goals>
                         <configuration>
-                            <url>http://product-dist.wso2.com/tools/developerstudio/wso2ei-${ei.product.version}.zip</url>
+                            <url>http://product-dist.wso2.com/tools/developerstudio/wso2ei-6.5.0.zip</url>
                             <unpack>true</unpack>
                             <outputDirectory>${project.build.directory}/products</outputDirectory>
                         </configuration>

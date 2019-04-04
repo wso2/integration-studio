@@ -36,10 +36,10 @@ public enum Protocol implements Enumerator {
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @see #HTTP_HTTPS_VALUE
-     * @generated
+     * @generated NOT
      * @ordered
      */
-    HTTP_HTTPS(0, "http_https", "http_https"),
+    HTTP_HTTPS(0, "http_https", "http,https"),
     /**
      * The '<em><b>Https</b></em>' literal object.
      * <!-- begin-user-doc -->

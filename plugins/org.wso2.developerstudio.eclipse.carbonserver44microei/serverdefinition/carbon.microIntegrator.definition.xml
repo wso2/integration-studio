@@ -16,7 +16,7 @@
             label="CARBON_HOME"
             type="directory"
             context="runtime"
-            default="runtime/wso2ei-6.4.0/wso2/micro-integrator" />
+            default="runtime/wso2ei-6.5.0/wso2/micro-integrator" />
 
     <property
             id="carbon.http"

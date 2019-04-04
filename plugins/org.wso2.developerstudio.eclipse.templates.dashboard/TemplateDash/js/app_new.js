@@ -63,7 +63,7 @@ function loadWelcomeNodes(contributionsString) {
 
 
 var esbNewProjectWizard = "org.wso2.developerstudio.eclipse.artifact.newesbsolutionproject";
-var projectExportWizard = "org.wso2.developerstudio.eclipse.distribution.exportAsArtifact";
+var projectExportWizard = "org.wso2.developerstudio.eclipse.distribution.importAsArtifact";
 
 var dataSourceProject = "org.wso2.developerstudio.eclipse.artifact.newdatasourceproject";
 var dataServiceProject = "org.wso2.developerstudio.eclipse.artifact.newdsproject";
@@ -98,6 +98,7 @@ var mavenWizard = "org.wso2.developerstudio.eclipse.platform.ui.mvn.wizard.MvnMu
 var cappWizard = 'org.wso2.developerstudio.eclipse.distribution.project';
 var serverWizard = 'org.eclipse.wst.server.ui.new.server';
 var registryWizard = 'org.wso2.developerstudio.eclipse.general.project';
+var configWizard = 'org.wso2.developerstudio.eclipse.artifact.newesbproject'
 
 $("#CompositeApplicationProject").click(function(){
 	openWizard(cappWizard);
@@ -113,6 +114,10 @@ $("#MavenMultiModuleProject").click(function(){
 
 $("#Server").click(function(){
 	openWizard(serverWizard);
+});
+
+$("#ConfigProject").click(function(){
+	openWizard(configWizard);
 });
 
 /*if((GetWizardDescription(mavenWizard) != null)){

@@ -42,7 +42,7 @@ import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.ViewerFilter;
-
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 
@@ -172,7 +172,7 @@ public class ValidateSchemaPropertiesEditionPartForm extends SectionPropertiesEd
 	
 	protected Composite createValidateSchemaKeyTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.ValidateSchema.Properties.validateSchemaKeyType, EsbMessages.ValidateSchemaPropertiesEditionPart_ValidateSchemaKeyTypeLabel);
-		validateSchemaKeyType = new EMFComboViewer(parent);
+		validateSchemaKeyType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		validateSchemaKeyType.setContentProvider(new ArrayContentProvider());
 		validateSchemaKeyType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData validateSchemaKeyTypeData = new GridData(GridData.FILL_HORIZONTAL);

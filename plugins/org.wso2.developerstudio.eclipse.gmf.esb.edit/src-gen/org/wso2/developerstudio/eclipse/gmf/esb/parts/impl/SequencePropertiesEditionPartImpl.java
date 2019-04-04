@@ -615,7 +615,7 @@ public class SequencePropertiesEditionPartImpl extends CompositePropertiesEditio
 	
 	protected Composite createReferringSequenceTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.Sequence.Properties.referringSequenceType, EsbMessages.SequencePropertiesEditionPart_ReferringSequenceTypeLabel);
-		referringSequenceType = new EMFComboViewer(parent);
+		referringSequenceType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		referringSequenceType.setContentProvider(new ArrayContentProvider());
 		referringSequenceType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData referringSequenceTypeData = new GridData(GridData.FILL_HORIZONTAL);

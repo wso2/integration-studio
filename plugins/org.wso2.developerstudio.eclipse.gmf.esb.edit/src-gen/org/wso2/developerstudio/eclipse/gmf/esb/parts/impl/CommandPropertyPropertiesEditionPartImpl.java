@@ -241,7 +241,7 @@ public class CommandPropertyPropertiesEditionPartImpl extends CompositePropertie
 	 */
 	protected Composite createValueTypeEMFComboViewer(Composite parent) {
 		Control valueTypeLabel = createDescription(parent, EsbViewsRepository.CommandProperty.Properties.valueType, EsbMessages.CommandPropertyPropertiesEditionPart_ValueTypeLabel);
-		valueType = new EMFComboViewer(parent);
+		valueType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		valueType.setContentProvider(new ArrayContentProvider());
 		valueType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData valueTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -377,7 +377,7 @@ public class CommandPropertyPropertiesEditionPartImpl extends CompositePropertie
 	 */
 	protected Composite createContextActionEMFComboViewer(Composite parent) {
 		Control contextActionLabel = createDescription(parent, EsbViewsRepository.CommandProperty.Properties.contextAction, EsbMessages.CommandPropertyPropertiesEditionPart_ContextActionLabel);
-		contextAction = new EMFComboViewer(parent);
+		contextAction = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		contextAction.setContentProvider(new ArrayContentProvider());
 		contextAction.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData contextActionData = new GridData(GridData.FILL_HORIZONTAL);
@@ -409,7 +409,7 @@ public class CommandPropertyPropertiesEditionPartImpl extends CompositePropertie
 	 */
 	protected Composite createMessageActionEMFComboViewer(Composite parent) {
 		Control messageActionLabel = createDescription(parent, EsbViewsRepository.CommandProperty.Properties.messageAction, EsbMessages.CommandPropertyPropertiesEditionPart_MessageActionLabel);
-		messageAction = new EMFComboViewer(parent);
+		messageAction = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		messageAction.setContentProvider(new ArrayContentProvider());
 		messageAction.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData messageActionData = new GridData(GridData.FILL_HORIZONTAL);

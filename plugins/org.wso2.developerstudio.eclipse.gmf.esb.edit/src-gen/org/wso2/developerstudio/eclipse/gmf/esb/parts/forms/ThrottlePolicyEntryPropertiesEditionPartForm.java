@@ -178,7 +178,7 @@ public class ThrottlePolicyEntryPropertiesEditionPartForm extends SectionPropert
 	
 	protected Composite createThrottleTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.ThrottlePolicyEntry.Properties.throttleType, EsbMessages.ThrottlePolicyEntryPropertiesEditionPart_ThrottleTypeLabel);
-		throttleType = new EMFComboViewer(parent);
+		throttleType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		throttleType.setContentProvider(new ArrayContentProvider());
 		throttleType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData throttleTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -276,7 +276,7 @@ public class ThrottlePolicyEntryPropertiesEditionPartForm extends SectionPropert
 	
 	protected Composite createAccessTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.ThrottlePolicyEntry.Properties.accessType, EsbMessages.ThrottlePolicyEntryPropertiesEditionPart_AccessTypeLabel);
-		accessType = new EMFComboViewer(parent);
+		accessType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		accessType.setContentProvider(new ArrayContentProvider());
 		accessType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData accessTypeData = new GridData(GridData.FILL_HORIZONTAL);

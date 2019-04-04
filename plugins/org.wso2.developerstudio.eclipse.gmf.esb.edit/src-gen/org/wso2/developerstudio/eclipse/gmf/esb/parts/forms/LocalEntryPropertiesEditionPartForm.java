@@ -377,7 +377,7 @@ public class LocalEntryPropertiesEditionPartForm extends SectionPropertiesEditin
 	
 	protected Composite createLocalEntryTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.LocalEntry.Properties.localEntryType, EsbMessages.LocalEntryPropertiesEditionPart_LocalEntryTypeLabel);
-		localEntryType = new EMFComboViewer(parent);
+		localEntryType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		localEntryType.setContentProvider(new ArrayContentProvider());
 		localEntryType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData localEntryTypeData = new GridData(GridData.FILL_HORIZONTAL);

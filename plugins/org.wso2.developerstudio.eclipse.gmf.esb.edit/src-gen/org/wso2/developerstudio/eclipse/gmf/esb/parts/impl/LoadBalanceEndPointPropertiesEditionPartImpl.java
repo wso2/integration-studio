@@ -792,7 +792,7 @@ public class LoadBalanceEndPointPropertiesEditionPartImpl extends CompositePrope
 	
 	protected Composite createSessionTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.LoadBalanceEndPoint.Properties.sessionType, EsbMessages.LoadBalanceEndPointPropertiesEditionPart_SessionTypeLabel);
-		sessionType = new EMFComboViewer(parent);
+		sessionType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		sessionType.setContentProvider(new ArrayContentProvider());
 		sessionType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData sessionTypeData = new GridData(GridData.FILL_HORIZONTAL);

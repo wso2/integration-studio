@@ -364,7 +364,7 @@ public class FastXSLTMediatorPropertiesEditionPartForm extends SectionProperties
         Control schemaTypeLabel = createDescription(parent,
                 EsbViewsRepository.FastXSLTMediator.Misc.fastXsltSchemaKeyType,
                 EsbMessages.FastXSLTMediatorPropertiesEditionPart_FastXsltSchemaKeyTypeLabel);
-        fastXsltSchemaKeyType = new EMFComboViewer(parent);
+        fastXsltSchemaKeyType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
         fastXsltSchemaKeyType.setContentProvider(new ArrayContentProvider());
         fastXsltSchemaKeyType
                 .setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));

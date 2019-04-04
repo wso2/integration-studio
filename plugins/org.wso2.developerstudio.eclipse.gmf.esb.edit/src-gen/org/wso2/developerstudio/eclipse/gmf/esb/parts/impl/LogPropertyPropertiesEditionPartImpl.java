@@ -223,7 +223,7 @@ public class LogPropertyPropertiesEditionPartImpl extends CompositePropertiesEdi
      */
 	protected Composite createPropertyValueTypeEMFComboViewer(Composite parent) {
 		Control propertyValueTypeLabel = createDescription(parent, EsbViewsRepository.LogProperty.Properties.propertyValueType, EsbMessages.LogPropertyPropertiesEditionPart_PropertyValueTypeLabel);
-		propertyValueType = new EMFComboViewer(parent);
+		propertyValueType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		propertyValueType.setContentProvider(new ArrayContentProvider());
 		propertyValueType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData propertyValueTypeData = new GridData(GridData.FILL_HORIZONTAL);

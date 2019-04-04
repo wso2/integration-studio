@@ -1218,7 +1218,7 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	protected Composite createTargetActionEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 	    Control [] previousControls = targetGroup.getChildren();
 		createDescription(parent, EsbViewsRepository.RuleMediator.Target.targetAction, EsbMessages.RuleMediatorPropertiesEditionPart_TargetActionLabel);
-		targetAction = new EMFComboViewer(parent);
+		targetAction = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		targetAction.setContentProvider(new ArrayContentProvider());
 		targetAction.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData targetActionData = new GridData(GridData.FILL_HORIZONTAL);
@@ -1269,7 +1269,7 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	protected Composite createRuleSetTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 	    Control [] previousControls = ruleSetGroup.getChildren();
 	    createDescription(parent, EsbViewsRepository.RuleMediator.RuleSet.ruleSetType, EsbMessages.RuleMediatorPropertiesEditionPart_RuleSetTypeLabel);
-		ruleSetType = new EMFComboViewer(parent);
+		ruleSetType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		ruleSetType.setContentProvider(new ArrayContentProvider());
 		ruleSetType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData ruleSetTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -1375,7 +1375,7 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	protected Composite createRuleSetSourceTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 	    Control [] previousControls = ruleSetGroup.getChildren();
         createDescription(parent, EsbViewsRepository.RuleMediator.RuleSet.ruleSetSourceType, EsbMessages.RuleMediatorPropertiesEditionPart_RuleSetSourceTypeLabel);
-		ruleSetSourceType = new EMFComboViewer(parent);
+		ruleSetSourceType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		ruleSetSourceType.setContentProvider(new ArrayContentProvider());
 		ruleSetSourceType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData ruleSetSourceTypeData = new GridData(GridData.FILL_HORIZONTAL);

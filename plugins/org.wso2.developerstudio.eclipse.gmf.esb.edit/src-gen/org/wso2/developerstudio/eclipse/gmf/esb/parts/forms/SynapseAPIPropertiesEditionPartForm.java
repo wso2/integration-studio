@@ -703,7 +703,7 @@ public class SynapseAPIPropertiesEditionPartForm extends SectionPropertiesEditin
      */	
 	protected Composite createVersionTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control versionTypeLabel = createDescription(parent, EsbViewsRepository.SynapseAPI.Handler.Properties.versionType, EsbMessages.SynapseAPIPropertiesEditionPart_VersionTypeLabel);
-		versionType = new EMFComboViewer(parent);
+		versionType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		versionType.setContentProvider(new ArrayContentProvider());
 		versionType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData versionTypeData = new GridData(GridData.FILL_HORIZONTAL);

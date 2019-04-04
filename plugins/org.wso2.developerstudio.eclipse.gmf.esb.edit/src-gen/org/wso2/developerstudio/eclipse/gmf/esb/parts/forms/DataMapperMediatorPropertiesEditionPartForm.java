@@ -363,7 +363,7 @@ public class DataMapperMediatorPropertiesEditionPartForm extends SectionProperti
         inputTypePropertiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent,
                 "Input Type", true);
 	    Control itemLabel = createDescription(inputTypePropertiesGroup, EsbViewsRepository.DataMapperMediator.Properties.inputType, EsbMessages.DataMapperMediatorPropertiesEditionPart_InputTypeLabel);
-		inputType = new EMFComboViewer(inputTypePropertiesGroup);
+		inputType = new EMFComboViewer(inputTypePropertiesGroup, SWT.SCROLL_LOCK);
 		inputType.setContentProvider(new ArrayContentProvider());
 		inputType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData inputTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -685,7 +685,7 @@ public class DataMapperMediatorPropertiesEditionPartForm extends SectionProperti
         outputTypePropertiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent,
                 "Output Type", true);
 		Control itemLabel = createDescription(outputTypePropertiesGroup, EsbViewsRepository.DataMapperMediator.Properties.outputType, EsbMessages.DataMapperMediatorPropertiesEditionPart_OutputTypeLabel);
-		outputType = new EMFComboViewer(outputTypePropertiesGroup);
+		outputType = new EMFComboViewer(outputTypePropertiesGroup, SWT.SCROLL_LOCK);
 		outputType.setContentProvider(new ArrayContentProvider());
 		outputType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData outputTypeData = new GridData(GridData.FILL_HORIZONTAL);

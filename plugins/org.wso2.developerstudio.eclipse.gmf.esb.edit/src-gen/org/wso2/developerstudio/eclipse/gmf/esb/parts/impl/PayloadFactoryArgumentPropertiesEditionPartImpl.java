@@ -188,7 +188,7 @@ public class PayloadFactoryArgumentPropertiesEditionPartImpl extends CompositePr
      */
 	protected Composite createArgumentTypeEMFComboViewer(Composite parent) {
 		Control argumentTypeLabel = createDescription(parent, EsbViewsRepository.PayloadFactoryArgument.Properties.argumentType, EsbMessages.PayloadFactoryArgumentPropertiesEditionPart_ArgumentTypeLabel);
-		argumentType = new EMFComboViewer(parent);
+		argumentType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		argumentType.setContentProvider(new ArrayContentProvider());
 		argumentType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData argumentTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -275,7 +275,7 @@ public class PayloadFactoryArgumentPropertiesEditionPartImpl extends CompositePr
      */
 	protected Composite createEvaluatorEMFComboViewer(Composite parent) {
 		Control evaluatorLabel = createDescription(parent, EsbViewsRepository.PayloadFactoryArgument.Properties.evaluator, EsbMessages.PayloadFactoryArgumentPropertiesEditionPart_EvaluatorLabel);
-		evaluator = new EMFComboViewer(parent);
+		evaluator = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		evaluator.setContentProvider(new ArrayContentProvider());
 		evaluator.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData evaluatorData = new GridData(GridData.FILL_HORIZONTAL);

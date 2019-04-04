@@ -379,7 +379,7 @@ public class TemplatePropertiesEditionPartForm extends SectionPropertiesEditingP
 	
 	protected Composite createTemplateTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.Template.Properties.templateType, EsbMessages.TemplatePropertiesEditionPart_TemplateTypeLabel);
-		templateType = new EMFComboViewer(parent);
+		templateType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		templateType.setContentProvider(new ArrayContentProvider());
 		templateType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData templateTypeData = new GridData(GridData.FILL_HORIZONTAL);

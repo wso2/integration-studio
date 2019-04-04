@@ -204,7 +204,7 @@ public class HeaderMediatorPropertiesEditionPartImpl extends CompositeProperties
 	
 	protected Composite createHeaderActionEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.HeaderMediator.Properties.headerAction, EsbMessages.HeaderMediatorPropertiesEditionPart_HeaderActionLabel);
-		headerAction = new EMFComboViewer(parent);
+		headerAction = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		headerAction.setContentProvider(new ArrayContentProvider());
 		headerAction.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData headerActionData = new GridData(GridData.FILL_HORIZONTAL);
@@ -234,7 +234,7 @@ public class HeaderMediatorPropertiesEditionPartImpl extends CompositeProperties
 	
 	protected Composite createValueTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.HeaderMediator.Properties.valueType, EsbMessages.HeaderMediatorPropertiesEditionPart_ValueTypeLabel);
-		valueType = new EMFComboViewer(parent);
+		valueType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		valueType.setContentProvider(new ArrayContentProvider());
 		valueType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData valueTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -264,7 +264,7 @@ public class HeaderMediatorPropertiesEditionPartImpl extends CompositeProperties
 	
 	protected Composite createScopeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.HeaderMediator.Properties.scope, EsbMessages.HeaderMediatorPropertiesEditionPart_ScopeLabel);
-		scope = new EMFComboViewer(parent);
+		scope = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		scope.setContentProvider(new ArrayContentProvider());
 		scope.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData scopeData = new GridData(GridData.FILL_HORIZONTAL);

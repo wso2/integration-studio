@@ -255,7 +255,7 @@ public class CommandPropertyPropertiesEditionPartForm extends SectionPropertiesE
 	
 	protected Composite createValueTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.CommandProperty.Properties.valueType, EsbMessages.CommandPropertyPropertiesEditionPart_ValueTypeLabel);
-		valueType = new EMFComboViewer(parent);
+		valueType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		valueType.setContentProvider(new ArrayContentProvider());
 		valueType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData valueTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -421,7 +421,7 @@ public class CommandPropertyPropertiesEditionPartForm extends SectionPropertiesE
 	
 	protected Composite createContextActionEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.CommandProperty.Properties.contextAction, EsbMessages.CommandPropertyPropertiesEditionPart_ContextActionLabel);
-		contextAction = new EMFComboViewer(parent);
+		contextAction = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		contextAction.setContentProvider(new ArrayContentProvider());
 		contextAction.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData contextActionData = new GridData(GridData.FILL_HORIZONTAL);
@@ -451,7 +451,7 @@ public class CommandPropertyPropertiesEditionPartForm extends SectionPropertiesE
 	
 	protected Composite createMessageActionEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.CommandProperty.Properties.messageAction, EsbMessages.CommandPropertyPropertiesEditionPart_MessageActionLabel);
-		messageAction = new EMFComboViewer(parent);
+		messageAction = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		messageAction.setContentProvider(new ArrayContentProvider());
 		messageAction.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData messageActionData = new GridData(GridData.FILL_HORIZONTAL);

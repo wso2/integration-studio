@@ -567,7 +567,7 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
      */
 	protected Composite createOnAcceptBranchsequenceTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control itemLabel = createDescription(parent, EsbViewsRepository.ThrottleMediator.OnAccept.onAcceptBranchsequenceType, EsbMessages.ThrottleMediatorPropertiesEditionPart_OnAcceptBranchsequenceTypeLabel);
-		onAcceptBranchsequenceType = new EMFComboViewer(parent);
+		onAcceptBranchsequenceType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		onAcceptBranchsequenceType.setContentProvider(new ArrayContentProvider());
 		onAcceptBranchsequenceType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData onAcceptBranchsequenceTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -613,7 +613,7 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
      */
 	protected Composite createOnRejectBranchsequenceTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control itemLabel = createDescription(parent, EsbViewsRepository.ThrottleMediator.OnReject.onRejectBranchsequenceType, EsbMessages.ThrottleMediatorPropertiesEditionPart_OnRejectBranchsequenceTypeLabel);
-		onRejectBranchsequenceType = new EMFComboViewer(parent);
+		onRejectBranchsequenceType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		onRejectBranchsequenceType.setContentProvider(new ArrayContentProvider());
 		onRejectBranchsequenceType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData onRejectBranchsequenceTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -674,7 +674,7 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
      */
 	protected Composite createPolicyTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control itemLabel = createDescription(parent, EsbViewsRepository.ThrottleMediator.ThrottlePolicy.policyType, EsbMessages.ThrottleMediatorPropertiesEditionPart_PolicyTypeLabel);
-		policyType = new EMFComboViewer(parent);
+		policyType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		policyType.setContentProvider(new ArrayContentProvider());
 		policyType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData policyTypeData = new GridData(GridData.FILL_HORIZONTAL);

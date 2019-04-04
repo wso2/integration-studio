@@ -308,7 +308,7 @@ public class DataMapperMediatorPropertiesEditionPartImpl extends CompositeProper
 	
 	protected Composite createInputTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.DataMapperMediator.Properties.inputType, EsbMessages.DataMapperMediatorPropertiesEditionPart_InputTypeLabel);
-		inputType = new EMFComboViewer(parent);
+		inputType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		inputType.setContentProvider(new ArrayContentProvider());
 		inputType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData inputTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -485,7 +485,7 @@ public class DataMapperMediatorPropertiesEditionPartImpl extends CompositeProper
 	
 	protected Composite createOutputTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.DataMapperMediator.Properties.outputType, EsbMessages.DataMapperMediatorPropertiesEditionPart_OutputTypeLabel);
-		outputType = new EMFComboViewer(parent);
+		outputType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		outputType.setContentProvider(new ArrayContentProvider());
 		outputType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData outputTypeData = new GridData(GridData.FILL_HORIZONTAL);

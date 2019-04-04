@@ -498,7 +498,7 @@ public class EJBMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 	
 	protected Composite createSessionIdTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.EJBMediator.Properties.sessionIdType, EsbMessages.EJBMediatorPropertiesEditionPart_SessionIdTypeLabel);
-		sessionIdType = new EMFComboViewer(parent);
+		sessionIdType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		sessionIdType.setContentProvider(new ArrayContentProvider());
 		sessionIdType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData sessionIdTypeData = new GridData(GridData.FILL_HORIZONTAL);

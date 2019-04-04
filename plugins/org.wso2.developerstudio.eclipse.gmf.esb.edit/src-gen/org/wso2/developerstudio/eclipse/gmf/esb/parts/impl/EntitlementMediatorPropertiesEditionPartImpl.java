@@ -508,7 +508,7 @@ public class EntitlementMediatorPropertiesEditionPartImpl extends CompositePrope
     protected Composite createCallbackHandlerEMFComboViewer(Composite parent) {
         createDescription(parent, EsbViewsRepository.EntitlementMediator.Properties.callbackHandler,
                 EsbMessages.EntitlementMediatorPropertiesEditionPart_CallbackHandlerLabel);
-        callbackHandler = new EMFComboViewer(parent);
+        callbackHandler = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
         callbackHandler.setContentProvider(new ArrayContentProvider());
         callbackHandler
                 .setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -718,7 +718,7 @@ public class EntitlementMediatorPropertiesEditionPartImpl extends CompositePrope
     protected Composite createEntitlementClientTypeEMFComboViewer(Composite parent) {
         createDescription(parent, EsbViewsRepository.EntitlementMediator.Properties.entitlementClientType,
                 EsbMessages.EntitlementMediatorPropertiesEditionPart_EntitlementClientTypeLabel);
-        entitlementClientType = new EMFComboViewer(parent);
+        entitlementClientType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
         entitlementClientType.setContentProvider(new ArrayContentProvider());
         entitlementClientType
                 .setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -757,7 +757,7 @@ public class EntitlementMediatorPropertiesEditionPartImpl extends CompositePrope
     protected Composite createOnRejectSequenceTypeEMFComboViewer(Composite parent) {
         createDescription(parent, EsbViewsRepository.EntitlementMediator.Properties.onRejectSequenceType,
                 EsbMessages.EntitlementMediatorPropertiesEditionPart_OnRejectSequenceTypeLabel);
-        onRejectSequenceType = new EMFComboViewer(parent);
+        onRejectSequenceType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
         onRejectSequenceType.setContentProvider(new ArrayContentProvider());
         onRejectSequenceType
                 .setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -796,7 +796,7 @@ public class EntitlementMediatorPropertiesEditionPartImpl extends CompositePrope
     protected Composite createOnAcceptSequenceTypeEMFComboViewer(Composite parent) {
         createDescription(parent, EsbViewsRepository.EntitlementMediator.Properties.onAcceptSequenceType,
                 EsbMessages.EntitlementMediatorPropertiesEditionPart_OnAcceptSequenceTypeLabel);
-        onAcceptSequenceType = new EMFComboViewer(parent);
+        onAcceptSequenceType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
         onAcceptSequenceType.setContentProvider(new ArrayContentProvider());
         onAcceptSequenceType
                 .setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -835,7 +835,7 @@ public class EntitlementMediatorPropertiesEditionPartImpl extends CompositePrope
     protected Composite createAdviceSequenceTypeEMFComboViewer(Composite parent) {
         createDescription(parent, EsbViewsRepository.EntitlementMediator.Properties.adviceSequenceType,
                 EsbMessages.EntitlementMediatorPropertiesEditionPart_AdviceSequenceTypeLabel);
-        adviceSequenceType = new EMFComboViewer(parent);
+        adviceSequenceType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
         adviceSequenceType.setContentProvider(new ArrayContentProvider());
         adviceSequenceType
                 .setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -873,7 +873,7 @@ public class EntitlementMediatorPropertiesEditionPartImpl extends CompositePrope
     protected Composite createObligationsSequenceTypeEMFComboViewer(Composite parent) {
         createDescription(parent, EsbViewsRepository.EntitlementMediator.Properties.obligationsSequenceType,
                 EsbMessages.EntitlementMediatorPropertiesEditionPart_ObligationsSequenceTypeLabel);
-        obligationsSequenceType = new EMFComboViewer(parent);
+        obligationsSequenceType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
         obligationsSequenceType.setContentProvider(new ArrayContentProvider());
         obligationsSequenceType
                 .setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));

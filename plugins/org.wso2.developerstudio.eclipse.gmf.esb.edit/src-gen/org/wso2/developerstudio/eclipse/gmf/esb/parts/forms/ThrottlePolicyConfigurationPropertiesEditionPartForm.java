@@ -179,7 +179,7 @@ public class ThrottlePolicyConfigurationPropertiesEditionPartForm extends Sectio
 	
 	protected Composite createPolicyTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.ThrottlePolicyConfiguration.Properties.policyType, EsbMessages.ThrottlePolicyConfigurationPropertiesEditionPart_PolicyTypeLabel);
-		policyType = new EMFComboViewer(parent);
+		policyType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		policyType.setContentProvider(new ArrayContentProvider());
 		policyType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData policyTypeData = new GridData(GridData.FILL_HORIZONTAL);

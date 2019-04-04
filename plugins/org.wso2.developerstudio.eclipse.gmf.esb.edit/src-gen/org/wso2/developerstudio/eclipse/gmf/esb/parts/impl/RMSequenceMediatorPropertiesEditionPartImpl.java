@@ -293,7 +293,7 @@ public class RMSequenceMediatorPropertiesEditionPartImpl extends CompositeProper
 	
 	protected Composite createRmSpecVersionEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.RMSequenceMediator.Properties.rmSpecVersion, EsbMessages.RMSequenceMediatorPropertiesEditionPart_RmSpecVersionLabel);
-		rmSpecVersion = new EMFComboViewer(parent);
+		rmSpecVersion = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		rmSpecVersion.setContentProvider(new ArrayContentProvider());
 		rmSpecVersion.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData rmSpecVersionData = new GridData(GridData.FILL_HORIZONTAL);
@@ -323,7 +323,7 @@ public class RMSequenceMediatorPropertiesEditionPartImpl extends CompositeProper
 	
 	protected Composite createSequenceTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.RMSequenceMediator.Properties.sequenceType, EsbMessages.RMSequenceMediatorPropertiesEditionPart_SequenceTypeLabel);
-		sequenceType = new EMFComboViewer(parent);
+		sequenceType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		sequenceType.setContentProvider(new ArrayContentProvider());
 		sequenceType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData sequenceTypeData = new GridData(GridData.FILL_HORIZONTAL);

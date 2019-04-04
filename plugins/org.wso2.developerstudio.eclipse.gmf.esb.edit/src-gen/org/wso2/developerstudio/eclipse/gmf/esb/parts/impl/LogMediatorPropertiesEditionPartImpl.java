@@ -184,7 +184,7 @@ public class LogMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 	
 	protected Composite createLogCategoryEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.LogMediator.Properties.logCategory, EsbMessages.LogMediatorPropertiesEditionPart_LogCategoryLabel);
-		logCategory = new EMFComboViewer(parent);
+		logCategory = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		logCategory.setContentProvider(new ArrayContentProvider());
 		logCategory.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData logCategoryData = new GridData(GridData.FILL_HORIZONTAL);
@@ -214,7 +214,7 @@ public class LogMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 	
 	protected Composite createLogLevelEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.LogMediator.Properties.logLevel, EsbMessages.LogMediatorPropertiesEditionPart_LogLevelLabel);
-		logLevel = new EMFComboViewer(parent);
+		logLevel = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		logLevel.setContentProvider(new ArrayContentProvider());
 		logLevel.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData logLevelData = new GridData(GridData.FILL_HORIZONTAL);

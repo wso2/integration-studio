@@ -288,7 +288,7 @@ public class TransactionMediatorPropertiesEditionPartImpl extends CompositePrope
 	
 	protected Composite createActionEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.TransactionMediator.Properties.action, EsbMessages.TransactionMediatorPropertiesEditionPart_ActionLabel);
-		action = new EMFComboViewer(parent);
+		action = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		action.setContentProvider(new ArrayContentProvider());
 		action.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData actionData = new GridData(GridData.FILL_HORIZONTAL);

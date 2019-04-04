@@ -898,6 +898,20 @@ public class EsbViewsRepository {
 	
 		}
 	
+		public static class FailoverErrorCodes {
+	
+			
+			public static String failoverType = "esb::AddressEndPoint::Failover Error Codes::failoverType";
+			
+			
+			public static String failoverRetryErrorCodes = "esb::AddressEndPoint::Failover Error Codes::failoverRetryErrorCodes";
+			
+			
+			public static String failoverNonRetryErrorCodes = "esb::AddressEndPoint::Failover Error Codes::failoverNonRetryErrorCodes";
+			
+	
+		}
+	
 	}
 
 	/**

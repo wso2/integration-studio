@@ -158,6 +158,9 @@ public class EsbMessages extends NLS {
 	public static String AddressEndPointPropertiesEditionPart_TimeoutGroupLabel;
 
 	
+	public static String AddressEndPointPropertiesEditionPart_FailoverErrorCodesGroupLabel;
+
+	
 	public static String AddressEndPointInputConnectorPropertiesEditionPart_PropertiesGroupLabel;
 
 	
@@ -3797,6 +3800,15 @@ public class EsbMessages extends NLS {
 
 	
 	public static String AddressEndPointPropertiesEditionPart_TimeOutActionLabel;
+
+	
+	public static String AddressEndPointPropertiesEditionPart_FailoverTypeLabel;
+
+	
+	public static String AddressEndPointPropertiesEditionPart_FailoverRetryErrorCodesLabel;
+
+	
+	public static String AddressEndPointPropertiesEditionPart_FailoverNonRetryErrorCodesLabel;
 
 	
 	public static String AddressEndPointInputConnectorPropertiesEditionPart_IncomingLinksLabel;

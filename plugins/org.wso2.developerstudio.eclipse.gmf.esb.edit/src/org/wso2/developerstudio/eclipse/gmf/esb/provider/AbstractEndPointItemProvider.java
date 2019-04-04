@@ -128,6 +128,10 @@ public class AbstractEndPointItemProvider extends EndPointItemProvider {
                 }
             }
         }
+        
+        addFailoverRetryTypePropertyDescriptor(object);
+        addFailoverRetryErrorCodesPropertyDescriptor(object);
+        addFailoverNonRetryErrorCodesPropertyDescriptor(object);
 
         return itemPropertyDescriptors;
     }

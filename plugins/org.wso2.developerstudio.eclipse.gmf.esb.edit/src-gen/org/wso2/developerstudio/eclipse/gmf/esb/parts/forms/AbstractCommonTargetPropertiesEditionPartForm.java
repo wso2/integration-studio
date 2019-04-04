@@ -42,7 +42,7 @@ import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.ViewerFilter;
-
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 
@@ -160,7 +160,7 @@ public class AbstractCommonTargetPropertiesEditionPartForm extends SectionProper
 	
 	protected Composite createSequenceTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.AbstractCommonTarget.Properties.sequenceType, EsbMessages.AbstractCommonTargetPropertiesEditionPart_SequenceTypeLabel);
-		sequenceType = new EMFComboViewer(parent);
+		sequenceType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		sequenceType.setContentProvider(new ArrayContentProvider());
 		sequenceType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData sequenceTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -223,7 +223,7 @@ public class AbstractCommonTargetPropertiesEditionPartForm extends SectionProper
 	
 	protected Composite createEndpointTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.AbstractCommonTarget.Properties.endpointType, EsbMessages.AbstractCommonTargetPropertiesEditionPart_EndpointTypeLabel);
-		endpointType = new EMFComboViewer(parent);
+		endpointType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		endpointType.setContentProvider(new ArrayContentProvider());
 		endpointType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData endpointTypeData = new GridData(GridData.FILL_HORIZONTAL);

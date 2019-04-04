@@ -233,7 +233,7 @@ public class SmooksMediatorPropertiesEditionPartImpl extends CompositeProperties
 	
 	protected Composite createInputTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.SmooksMediator.Input.inputType, EsbMessages.SmooksMediatorPropertiesEditionPart_InputTypeLabel);
-		inputType = new EMFComboViewer(parent);
+		inputType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		inputType.setContentProvider(new ArrayContentProvider());
 		inputType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData inputTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -278,7 +278,7 @@ public class SmooksMediatorPropertiesEditionPartImpl extends CompositeProperties
 	
 	protected Composite createOutputTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.SmooksMediator.Output.outputType, EsbMessages.SmooksMediatorPropertiesEditionPart_OutputTypeLabel);
-		outputType = new EMFComboViewer(parent);
+		outputType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		outputType.setContentProvider(new ArrayContentProvider());
 		outputType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData outputTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -357,7 +357,7 @@ public class SmooksMediatorPropertiesEditionPartImpl extends CompositeProperties
 	
 	protected Composite createOutputActionEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.SmooksMediator.Output.outputAction, EsbMessages.SmooksMediatorPropertiesEditionPart_OutputActionLabel);
-		outputAction = new EMFComboViewer(parent);
+		outputAction = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		outputAction.setContentProvider(new ArrayContentProvider());
 		outputAction.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData outputActionData = new GridData(GridData.FILL_HORIZONTAL);
@@ -387,7 +387,7 @@ public class SmooksMediatorPropertiesEditionPartImpl extends CompositeProperties
 	
 	protected Composite createOutputMethodEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.SmooksMediator.Output.outputMethod, EsbMessages.SmooksMediatorPropertiesEditionPart_OutputMethodLabel);
-		outputMethod = new EMFComboViewer(parent);
+		outputMethod = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		outputMethod.setContentProvider(new ArrayContentProvider());
 		outputMethod.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData outputMethodData = new GridData(GridData.FILL_HORIZONTAL);

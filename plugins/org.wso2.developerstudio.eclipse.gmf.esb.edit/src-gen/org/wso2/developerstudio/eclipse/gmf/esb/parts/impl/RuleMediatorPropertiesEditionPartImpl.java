@@ -975,7 +975,7 @@ public class RuleMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 	
 	protected Composite createTargetActionEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.RuleMediator.Target.targetAction, EsbMessages.RuleMediatorPropertiesEditionPart_TargetActionLabel);
-		targetAction = new EMFComboViewer(parent);
+		targetAction = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		targetAction.setContentProvider(new ArrayContentProvider());
 		targetAction.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData targetActionData = new GridData(GridData.FILL_HORIZONTAL);
@@ -1020,7 +1020,7 @@ public class RuleMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 	
 	protected Composite createRuleSetTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.RuleMediator.RuleSet.ruleSetType, EsbMessages.RuleMediatorPropertiesEditionPart_RuleSetTypeLabel);
-		ruleSetType = new EMFComboViewer(parent);
+		ruleSetType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		ruleSetType.setContentProvider(new ArrayContentProvider());
 		ruleSetType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData ruleSetTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -1099,7 +1099,7 @@ public class RuleMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 	
 	protected Composite createRuleSetSourceTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.RuleMediator.RuleSet.ruleSetSourceType, EsbMessages.RuleMediatorPropertiesEditionPart_RuleSetSourceTypeLabel);
-		ruleSetSourceType = new EMFComboViewer(parent);
+		ruleSetSourceType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		ruleSetSourceType.setContentProvider(new ArrayContentProvider());
 		ruleSetSourceType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData ruleSetSourceTypeData = new GridData(GridData.FILL_HORIZONTAL);

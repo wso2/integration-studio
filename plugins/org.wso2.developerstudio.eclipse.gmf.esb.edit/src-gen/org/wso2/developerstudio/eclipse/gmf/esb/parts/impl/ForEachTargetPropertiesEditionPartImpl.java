@@ -166,7 +166,7 @@ public class ForEachTargetPropertiesEditionPartImpl extends CompositePropertiesE
 	
 	protected Composite createSequenceTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.ForEachTarget.Properties.sequenceType, EsbMessages.ForEachTargetPropertiesEditionPart_SequenceTypeLabel);
-		sequenceType = new EMFComboViewer(parent);
+		sequenceType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		sequenceType.setContentProvider(new ArrayContentProvider());
 		sequenceType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData sequenceTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -222,7 +222,7 @@ public class ForEachTargetPropertiesEditionPartImpl extends CompositePropertiesE
 	
 	protected Composite createEndpointTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.ForEachTarget.Properties.endpointType, EsbMessages.ForEachTargetPropertiesEditionPart_EndpointTypeLabel);
-		endpointType = new EMFComboViewer(parent);
+		endpointType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		endpointType.setContentProvider(new ArrayContentProvider());
 		endpointType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData endpointTypeData = new GridData(GridData.FILL_HORIZONTAL);

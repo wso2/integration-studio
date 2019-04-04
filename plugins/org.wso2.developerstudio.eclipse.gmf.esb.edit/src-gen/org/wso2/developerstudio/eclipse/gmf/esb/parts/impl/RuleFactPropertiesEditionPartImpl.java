@@ -205,7 +205,7 @@ public class RuleFactPropertiesEditionPartImpl extends CompositePropertiesEditio
 	 */
 	protected Composite createFactTypeEMFComboViewer(Composite parent) {
 		Control factTypeLabel = createDescription(parent, EsbViewsRepository.RuleFact.Properties.factType, EsbMessages.RuleFactPropertiesEditionPart_FactTypeLabel);
-		factType = new EMFComboViewer(parent);
+		factType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		factType.setContentProvider(new ArrayContentProvider());
 		factType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData factTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -345,7 +345,7 @@ public class RuleFactPropertiesEditionPartImpl extends CompositePropertiesEditio
 	 */
 	protected Composite createValueTypeEMFComboViewer(Composite parent) {
 		Control valueTypeLabel = createDescription(parent, EsbViewsRepository.RuleFact.Properties.valueType, EsbMessages.RuleFactPropertiesEditionPart_ValueTypeLabel);
-		valueType = new EMFComboViewer(parent);
+		valueType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		valueType.setContentProvider(new ArrayContentProvider());
 		valueType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData valueTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -772,9 +772,7 @@ public class RuleFactPropertiesEditionPartImpl extends CompositePropertiesEditio
                     propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
                             RuleFactPropertiesEditionPartImpl.this,
                             EsbViewsRepository.RuleFact.Properties.valueReferenceKey, PropertiesEditionEvent.COMMIT,
-                            PropertiesEditionEvent.SET, null, getValueReferenceKey()));
-    
-                    
+                            PropertiesEditionEvent.SET, null, getValueReferenceKey()));                    
                 }
     
                 @Override

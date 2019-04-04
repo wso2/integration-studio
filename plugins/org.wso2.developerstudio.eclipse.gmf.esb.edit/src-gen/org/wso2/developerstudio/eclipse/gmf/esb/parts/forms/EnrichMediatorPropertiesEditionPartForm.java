@@ -502,7 +502,7 @@ public class EnrichMediatorPropertiesEditionPartForm extends SectionPropertiesEd
     protected Composite createSourceTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
         Control itemLabel = createDescription(parent, EsbViewsRepository.EnrichMediator.Source.sourceType,
                 EsbMessages.EnrichMediatorPropertiesEditionPart_SourceTypeLabel);
-        sourceType = new EMFComboViewer(parent);
+        sourceType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
         sourceType.setContentProvider(new ArrayContentProvider());
         sourceType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
         GridData sourceTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -551,7 +551,7 @@ public class EnrichMediatorPropertiesEditionPartForm extends SectionPropertiesEd
     protected Composite createInlineTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
         Control itemLabel = createDescription(parent, EsbViewsRepository.EnrichMediator.Source.inlineType,
                 EsbMessages.EnrichMediatorPropertiesEditionPart_InlineTypeLabel);
-        inlineType = new EMFComboViewer(parent);
+        inlineType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
         inlineType.setContentProvider(new ArrayContentProvider());
         inlineType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
         GridData inlineTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -743,7 +743,7 @@ public class EnrichMediatorPropertiesEditionPartForm extends SectionPropertiesEd
     protected Composite createTargetActionEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
         Control itemLabel = createDescription(parent, EsbViewsRepository.EnrichMediator.Target.targetAction,
                 EsbMessages.EnrichMediatorPropertiesEditionPart_TargetActionLabel);
-        targetAction = new EMFComboViewer(parent);
+        targetAction = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
         targetAction.setContentProvider(new ArrayContentProvider());
         targetAction
                 .setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -793,7 +793,7 @@ public class EnrichMediatorPropertiesEditionPartForm extends SectionPropertiesEd
     protected Composite createTargetTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
         Control itemLabel = createDescription(parent, EsbViewsRepository.EnrichMediator.Target.targetType,
                 EsbMessages.EnrichMediatorPropertiesEditionPart_TargetTypeLabel);
-        targetType = new EMFComboViewer(parent);
+        targetType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
         targetType.setContentProvider(new ArrayContentProvider());
         targetType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
         GridData targetTypeData = new GridData(GridData.FILL_HORIZONTAL);

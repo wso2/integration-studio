@@ -488,7 +488,7 @@ public class CallMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
         filterEndpointTypeSubPropertiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent,
                 "Endpoint Type", true);
 		Control endpointTypeLabel = createDescription(filterEndpointTypeSubPropertiesGroup, EsbViewsRepository.CallMediator.Properties.endpointType, EsbMessages.CallMediatorPropertiesEditionPart_EndpointTypeLabel);
-		endpointType = new EMFComboViewer(filterEndpointTypeSubPropertiesGroup);
+		endpointType = new EMFComboViewer(filterEndpointTypeSubPropertiesGroup, SWT.SCROLL_LOCK);
 		endpointType.setContentProvider(new ArrayContentProvider());
 		endpointType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData endpointTypeData = new GridData(GridData.FILL_HORIZONTAL);

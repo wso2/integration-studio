@@ -462,7 +462,7 @@ public class CalloutMediatorPropertiesEditionPartImpl extends CompositePropertie
 	
 	protected Composite createEndpointTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.CalloutMediator.Service.endpointType, EsbMessages.CalloutMediatorPropertiesEditionPart_EndpointTypeLabel);
-		endpointType = new EMFComboViewer(parent);
+		endpointType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		endpointType.setContentProvider(new ArrayContentProvider());
 		endpointType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData endpointTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -733,7 +733,7 @@ public class CalloutMediatorPropertiesEditionPartImpl extends CompositePropertie
 	
 	protected Composite createPayloadTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.CalloutMediator.Source.payloadType, EsbMessages.CalloutMediatorPropertiesEditionPart_PayloadTypeLabel);
-		payloadType = new EMFComboViewer(parent);
+		payloadType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		payloadType.setContentProvider(new ArrayContentProvider());
 		payloadType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData payloadTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -827,7 +827,7 @@ public class CalloutMediatorPropertiesEditionPartImpl extends CompositePropertie
 	
 	protected Composite createResultTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.CalloutMediator.Target.resultType, EsbMessages.CalloutMediatorPropertiesEditionPart_ResultTypeLabel);
-		resultType = new EMFComboViewer(parent);
+		resultType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		resultType.setContentProvider(new ArrayContentProvider());
 		resultType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData resultTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -921,7 +921,7 @@ public class CalloutMediatorPropertiesEditionPartImpl extends CompositePropertie
 	
 	protected Composite createPoliciesEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.CalloutMediator.WS.policies, EsbMessages.CalloutMediatorPropertiesEditionPart_PoliciesLabel);
-		policies = new EMFComboViewer(parent);
+		policies = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		policies.setContentProvider(new ArrayContentProvider());
 		policies.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData policiesData = new GridData(GridData.FILL_HORIZONTAL);
@@ -951,7 +951,7 @@ public class CalloutMediatorPropertiesEditionPartImpl extends CompositePropertie
 	
 	protected Composite createSecurityTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.CalloutMediator.WS.securityType, EsbMessages.CalloutMediatorPropertiesEditionPart_SecurityTypeLabel);
-		securityType = new EMFComboViewer(parent);
+		securityType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		securityType.setContentProvider(new ArrayContentProvider());
 		securityType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData securityTypeData = new GridData(GridData.FILL_HORIZONTAL);

@@ -406,7 +406,7 @@ public class TaskPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	
 	protected Composite createTriggerTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.Task.Properties.triggerType, EsbMessages.TaskPropertiesEditionPart_TriggerTypeLabel);
-		triggerType = new EMFComboViewer(parent);
+		triggerType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		triggerType.setContentProvider(new ArrayContentProvider());
 		triggerType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData triggerTypeData = new GridData(GridData.FILL_HORIZONTAL);

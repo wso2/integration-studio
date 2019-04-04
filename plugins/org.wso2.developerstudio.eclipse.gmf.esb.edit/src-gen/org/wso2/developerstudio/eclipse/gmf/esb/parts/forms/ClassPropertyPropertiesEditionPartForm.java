@@ -239,7 +239,7 @@ public class ClassPropertyPropertiesEditionPartForm extends SectionPropertiesEdi
 	
 	protected Composite createPropertyValueTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.ClassProperty.Properties.propertyValueType, EsbMessages.ClassPropertyPropertiesEditionPart_PropertyValueTypeLabel);
-		propertyValueType = new EMFComboViewer(parent);
+		propertyValueType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		propertyValueType.setContentProvider(new ArrayContentProvider());
 		propertyValueType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData propertyValueTypeData = new GridData(GridData.FILL_HORIZONTAL);

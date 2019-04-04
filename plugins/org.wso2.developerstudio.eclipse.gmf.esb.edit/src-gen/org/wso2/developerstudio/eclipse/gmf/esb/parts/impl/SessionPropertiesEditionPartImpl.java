@@ -131,7 +131,7 @@ public class SessionPropertiesEditionPartImpl extends CompositePropertiesEdition
 	
 	protected Composite createTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.Session.Properties.type, EsbMessages.SessionPropertiesEditionPart_TypeLabel);
-		type = new EMFComboViewer(parent);
+		type = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		type.setContentProvider(new ArrayContentProvider());
 		type.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData typeData = new GridData(GridData.FILL_HORIZONTAL);

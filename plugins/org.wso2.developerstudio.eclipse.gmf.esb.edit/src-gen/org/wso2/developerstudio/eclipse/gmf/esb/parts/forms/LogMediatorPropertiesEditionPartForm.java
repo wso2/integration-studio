@@ -196,7 +196,7 @@ public class LogMediatorPropertiesEditionPartForm extends SectionPropertiesEditi
 	
 	protected Composite createLogCategoryEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.LogMediator.Properties.logCategory, EsbMessages.LogMediatorPropertiesEditionPart_LogCategoryLabel);
-		logCategory = new EMFComboViewer(parent);
+		logCategory = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		logCategory.setContentProvider(new ArrayContentProvider());
 		logCategory.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData logCategoryData = new GridData(GridData.FILL_HORIZONTAL);

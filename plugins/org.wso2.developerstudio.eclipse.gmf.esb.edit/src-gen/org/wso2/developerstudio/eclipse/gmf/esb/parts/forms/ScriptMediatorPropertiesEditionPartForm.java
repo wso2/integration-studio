@@ -410,7 +410,7 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	protected Composite createScriptTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 	    filterScriptTypeSubPropertiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent, "Script Type", true);
 		Control scriptTypeLabel = createDescription(filterScriptTypeSubPropertiesGroup, EsbViewsRepository.ScriptMediator.Properties.scriptType, EsbMessages.ScriptMediatorPropertiesEditionPart_ScriptTypeLabel);
-		scriptType = new EMFComboViewer(filterScriptTypeSubPropertiesGroup);
+		scriptType = new EMFComboViewer(filterScriptTypeSubPropertiesGroup, SWT.SCROLL_LOCK);
 		scriptType.setContentProvider(new ArrayContentProvider());
 		scriptType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData scriptTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -448,7 +448,7 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
      */
 	protected Composite createScriptLanguageEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control scriptLanguageLabel = createDescription(parent, EsbViewsRepository.ScriptMediator.Properties.scriptLanguage, EsbMessages.ScriptMediatorPropertiesEditionPart_ScriptLanguageLabel);
-		scriptLanguage = new EMFComboViewer(parent);
+		scriptLanguage = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		scriptLanguage.setContentProvider(new ArrayContentProvider());
 		scriptLanguage.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData scriptLanguageData = new GridData(GridData.FILL_HORIZONTAL);
@@ -608,7 +608,7 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
      */
 	protected Composite createKeyTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control keyTypeLabel = createDescription(parent, EsbViewsRepository.ScriptMediator.Properties.keyType, EsbMessages.ScriptMediatorPropertiesEditionPart_KeyTypeLabel);
-		keyType = new EMFComboViewer(parent);
+		keyType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		keyType.setContentProvider(new ArrayContentProvider());
 		keyType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData keyTypeData = new GridData(GridData.FILL_HORIZONTAL);

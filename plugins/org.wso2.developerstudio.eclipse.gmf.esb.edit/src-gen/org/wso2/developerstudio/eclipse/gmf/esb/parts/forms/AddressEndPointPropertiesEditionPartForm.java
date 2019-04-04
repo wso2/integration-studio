@@ -657,7 +657,7 @@ public class AddressEndPointPropertiesEditionPartForm extends SectionPropertiesE
      */
 	protected Composite createFormatEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control formatLabel = createDescription(parent, EsbViewsRepository.AddressEndPoint.Basic.format, EsbMessages.AddressEndPointPropertiesEditionPart_FormatLabel);
-		format = new EMFComboViewer(parent);
+		format = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		format.setContentProvider(new ArrayContentProvider());
 		format.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData formatData = new GridData(GridData.FILL_HORIZONTAL);
@@ -1470,7 +1470,7 @@ public class AddressEndPointPropertiesEditionPartForm extends SectionPropertiesE
      */
 	protected Composite createOptimizeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control optimizeLabel = createDescription(parent, EsbViewsRepository.AddressEndPoint.Misc.optimize, EsbMessages.AddressEndPointPropertiesEditionPart_OptimizeLabel);
-		optimize = new EMFComboViewer(parent);
+		optimize = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		optimize.setContentProvider(new ArrayContentProvider());
 		optimize.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData optimizeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -1697,7 +1697,7 @@ public class AddressEndPointPropertiesEditionPartForm extends SectionPropertiesE
      */
 	protected Composite createAddressingVersionEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control addressingVersionLabel = createDescription(parent, EsbViewsRepository.AddressEndPoint.QoS.addressingVersion, EsbMessages.AddressEndPointPropertiesEditionPart_AddressingVersionLabel);
-		addressingVersion = new EMFComboViewer(parent);
+		addressingVersion = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		addressingVersion.setContentProvider(new ArrayContentProvider());
 		addressingVersion.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData addressingVersionData = new GridData(GridData.FILL_HORIZONTAL);
@@ -1849,7 +1849,7 @@ public class AddressEndPointPropertiesEditionPartForm extends SectionPropertiesE
      */
 	protected Composite createTimeOutActionEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control timeOutActionLabel = createDescription(parent, EsbViewsRepository.AddressEndPoint.Timeout.timeOutAction, EsbMessages.AddressEndPointPropertiesEditionPart_TimeOutActionLabel);
-		timeOutAction = new EMFComboViewer(parent);
+		timeOutAction = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		timeOutAction.setContentProvider(new ArrayContentProvider());
 		timeOutAction.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData timeOutActionData = new GridData(GridData.FILL_HORIZONTAL);

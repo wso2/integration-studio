@@ -350,7 +350,7 @@ public class CallTemplateMediatorPropertiesEditionPartForm extends SectionProper
      */
 	protected Composite createAvailableTemplatesText(FormToolkit widgetFactory, Composite parent) {
 		Control availableTemplatesLabel = createDescription(parent, EsbViewsRepository.CallTemplateMediator.Properties.availableTemplates, EsbMessages.CallTemplateMediatorPropertiesEditionPart_AvailableTemplatesLabel);
-		availableTemplates = new EMFComboViewer(parent);
+		availableTemplates = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		availableTemplates.setContentProvider(new ArrayContentProvider());
 		availableTemplates.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
         GridData valueTypeData = new GridData(GridData.FILL_HORIZONTAL);

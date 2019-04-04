@@ -937,7 +937,7 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 	                true);
 	        Control [] previousControls = filterSessionSubPropertiesGroup.getChildren();
 		createDescription(filterSessionSubPropertiesGroup, EsbViewsRepository.LoadBalanceEndPoint.Properties.sessionType, EsbMessages.LoadBalanceEndPointPropertiesEditionPart_SessionTypeLabel);
-		sessionType = new EMFComboViewer(filterSessionSubPropertiesGroup);
+		sessionType = new EMFComboViewer(filterSessionSubPropertiesGroup, SWT.SCROLL_LOCK);
 		sessionType.setContentProvider(new ArrayContentProvider());
 		sessionType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData sessionTypeData = new GridData(GridData.FILL_HORIZONTAL);

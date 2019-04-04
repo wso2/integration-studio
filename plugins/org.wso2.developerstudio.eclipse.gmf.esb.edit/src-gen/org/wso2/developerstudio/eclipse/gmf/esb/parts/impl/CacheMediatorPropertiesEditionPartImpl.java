@@ -277,7 +277,7 @@ public class CacheMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	
 	protected Composite createCacheMediatorImplementationEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.CacheMediator.Type.cacheMediatorImplementation, EsbMessages.CacheMediatorPropertiesEditionPart_CacheMediatorImplementationLabel);
-		cacheMediatorImplementation = new EMFComboViewer(parent);
+		cacheMediatorImplementation = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		cacheMediatorImplementation.setContentProvider(new ArrayContentProvider());
 		cacheMediatorImplementation.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData cacheMediatorImplementationData = new GridData(GridData.FILL_HORIZONTAL);
@@ -371,7 +371,7 @@ public class CacheMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	
 	protected Composite createCacheTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.CacheMediator.Properties.cacheType, EsbMessages.CacheMediatorPropertiesEditionPart_CacheTypeLabel);
-		cacheType = new EMFComboViewer(parent);
+		cacheType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		cacheType.setContentProvider(new ArrayContentProvider());
 		cacheType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData cacheTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -401,7 +401,7 @@ public class CacheMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	
 	protected Composite createScopeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.CacheMediator.Properties.scope, EsbMessages.CacheMediatorPropertiesEditionPart_ScopeLabel);
-		scope = new EMFComboViewer(parent);
+		scope = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		scope.setContentProvider(new ArrayContentProvider());
 		scope.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData scopeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -715,7 +715,7 @@ public class CacheMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	
 	protected Composite createImplementationTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.CacheMediator.Implementation.implementationType, EsbMessages.CacheMediatorPropertiesEditionPart_ImplementationTypeLabel);
-		implementationType = new EMFComboViewer(parent);
+		implementationType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		implementationType.setContentProvider(new ArrayContentProvider());
 		implementationType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData implementationTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -760,7 +760,7 @@ public class CacheMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	
 	protected Composite createSequenceTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.CacheMediator.OnCacheHit.sequenceType, EsbMessages.CacheMediatorPropertiesEditionPart_SequenceTypeLabel);
-		sequenceType = new EMFComboViewer(parent);
+		sequenceType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		sequenceType.setContentProvider(new ArrayContentProvider());
 		sequenceType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData sequenceTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -805,7 +805,7 @@ public class CacheMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	
 	protected Composite createCacheProtocolTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.CacheMediator.Protocol.cacheProtocolType, EsbMessages.CacheMediatorPropertiesEditionPart_CacheProtocolTypeLabel);
-		cacheProtocolType = new EMFComboViewer(parent);
+		cacheProtocolType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		cacheProtocolType.setContentProvider(new ArrayContentProvider());
 		cacheProtocolType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData cacheProtocolTypeData = new GridData(GridData.FILL_HORIZONTAL);

@@ -181,7 +181,7 @@ public class URLRewriteRuleActionPropertiesEditionPartForm extends SectionProper
 	
 	protected Composite createRuleActionEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.URLRewriteRuleAction.Properties.ruleAction, EsbMessages.URLRewriteRuleActionPropertiesEditionPart_RuleActionLabel);
-		ruleAction = new EMFComboViewer(parent);
+		ruleAction = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		ruleAction.setContentProvider(new ArrayContentProvider());
 		ruleAction.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData ruleActionData = new GridData(GridData.FILL_HORIZONTAL);
@@ -211,7 +211,7 @@ public class URLRewriteRuleActionPropertiesEditionPartForm extends SectionProper
 	
 	protected Composite createRuleFragmentEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.URLRewriteRuleAction.Properties.ruleFragment, EsbMessages.URLRewriteRuleActionPropertiesEditionPart_RuleFragmentLabel);
-		ruleFragment = new EMFComboViewer(parent);
+		ruleFragment = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		ruleFragment.setContentProvider(new ArrayContentProvider());
 		ruleFragment.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData ruleFragmentData = new GridData(GridData.FILL_HORIZONTAL);
@@ -241,7 +241,7 @@ public class URLRewriteRuleActionPropertiesEditionPartForm extends SectionProper
 	
 	protected Composite createRuleOptionEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.URLRewriteRuleAction.Properties.ruleOption, EsbMessages.URLRewriteRuleActionPropertiesEditionPart_RuleOptionLabel);
-		ruleOption = new EMFComboViewer(parent);
+		ruleOption = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		ruleOption.setContentProvider(new ArrayContentProvider());
 		ruleOption.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData ruleOptionData = new GridData(GridData.FILL_HORIZONTAL);

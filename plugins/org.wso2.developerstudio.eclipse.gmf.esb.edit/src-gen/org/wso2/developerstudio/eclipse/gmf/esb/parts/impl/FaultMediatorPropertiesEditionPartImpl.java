@@ -390,7 +390,7 @@ public class FaultMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	
 	protected Composite createSoapVersionEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.FaultMediator.Properties.soapVersion, EsbMessages.FaultMediatorPropertiesEditionPart_SoapVersionLabel);
-		soapVersion = new EMFComboViewer(parent);
+		soapVersion = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		soapVersion.setContentProvider(new ArrayContentProvider());
 		soapVersion.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData soapVersionData = new GridData(GridData.FILL_HORIZONTAL);
@@ -480,7 +480,7 @@ public class FaultMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	
 	protected Composite createFaultCodeSoap11EMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.FaultMediator.Properties.faultCodeSoap11, EsbMessages.FaultMediatorPropertiesEditionPart_FaultCodeSoap11Label);
-		faultCodeSoap11 = new EMFComboViewer(parent);
+		faultCodeSoap11 = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		faultCodeSoap11.setContentProvider(new ArrayContentProvider());
 		faultCodeSoap11.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData faultCodeSoap11Data = new GridData(GridData.FILL_HORIZONTAL);
@@ -510,7 +510,7 @@ public class FaultMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	
 	protected Composite createFaultCodeTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.FaultMediator.Properties.faultCodeType, EsbMessages.FaultMediatorPropertiesEditionPart_FaultCodeTypeLabel);
-		faultCodeType = new EMFComboViewer(parent);
+		faultCodeType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		faultCodeType.setContentProvider(new ArrayContentProvider());
 		faultCodeType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData faultCodeTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -540,7 +540,7 @@ public class FaultMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	
 	protected Composite createFaultStringTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.FaultMediator.Properties.faultStringType, EsbMessages.FaultMediatorPropertiesEditionPart_FaultStringTypeLabel);
-		faultStringType = new EMFComboViewer(parent);
+		faultStringType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		faultStringType.setContentProvider(new ArrayContentProvider());
 		faultStringType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData faultStringTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -668,7 +668,7 @@ public class FaultMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	
 	protected Composite createFaultCodeSoap12EMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.FaultMediator.Properties.faultCodeSoap12, EsbMessages.FaultMediatorPropertiesEditionPart_FaultCodeSoap12Label);
-		faultCodeSoap12 = new EMFComboViewer(parent);
+		faultCodeSoap12 = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		faultCodeSoap12.setContentProvider(new ArrayContentProvider());
 		faultCodeSoap12.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData faultCodeSoap12Data = new GridData(GridData.FILL_HORIZONTAL);
@@ -698,7 +698,7 @@ public class FaultMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	
 	protected Composite createFaultReasonTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.FaultMediator.Properties.faultReasonType, EsbMessages.FaultMediatorPropertiesEditionPart_FaultReasonTypeLabel);
-		faultReasonType = new EMFComboViewer(parent);
+		faultReasonType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		faultReasonType.setContentProvider(new ArrayContentProvider());
 		faultReasonType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData faultReasonTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -875,7 +875,7 @@ public class FaultMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	
 	protected Composite createFaultDetailTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.FaultMediator.Properties.faultDetailType, EsbMessages.FaultMediatorPropertiesEditionPart_FaultDetailTypeLabel);
-		faultDetailType = new EMFComboViewer(parent);
+		faultDetailType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		faultDetailType.setContentProvider(new ArrayContentProvider());
 		faultDetailType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData faultDetailTypeData = new GridData(GridData.FILL_HORIZONTAL);

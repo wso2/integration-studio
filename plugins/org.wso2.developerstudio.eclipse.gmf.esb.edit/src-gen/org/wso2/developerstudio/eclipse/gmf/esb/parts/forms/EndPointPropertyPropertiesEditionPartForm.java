@@ -312,7 +312,7 @@ public class EndPointPropertyPropertiesEditionPartForm extends SectionProperties
 	
 	protected Composite createScopeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.EndPointProperty.Properties.scope, EsbMessages.EndPointPropertyPropertiesEditionPart_ScopeLabel);
-		scope = new EMFComboViewer(parent);
+		scope = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		scope.setContentProvider(new ArrayContentProvider());
 		scope.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData scopeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -342,7 +342,7 @@ public class EndPointPropertyPropertiesEditionPartForm extends SectionProperties
 	
 	protected Composite createValueTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.EndPointProperty.Properties.valueType, EsbMessages.EndPointPropertyPropertiesEditionPart_ValueTypeLabel);
-		valueType = new EMFComboViewer(parent);
+		valueType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		valueType.setContentProvider(new ArrayContentProvider());
 		valueType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData valueTypeData = new GridData(GridData.FILL_HORIZONTAL);

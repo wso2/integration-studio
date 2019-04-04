@@ -567,7 +567,7 @@ public class DefaultEndPointPropertiesEditionPartImpl extends CompositePropertie
 	
 	protected Composite createFormatEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.DefaultEndPoint.Basic.format, EsbMessages.DefaultEndPointPropertiesEditionPart_FormatLabel);
-		format = new EMFComboViewer(parent);
+		format = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		format.setContentProvider(new ArrayContentProvider());
 		format.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData formatData = new GridData(GridData.FILL_HORIZONTAL);
@@ -1147,7 +1147,7 @@ public class DefaultEndPointPropertiesEditionPartImpl extends CompositePropertie
 	
 	protected Composite createOptimizeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.DefaultEndPoint.Misc.optimize, EsbMessages.DefaultEndPointPropertiesEditionPart_OptimizeLabel);
-		optimize = new EMFComboViewer(parent);
+		optimize = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		optimize.setContentProvider(new ArrayContentProvider());
 		optimize.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData optimizeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -1361,7 +1361,7 @@ public class DefaultEndPointPropertiesEditionPartImpl extends CompositePropertie
 	
 	protected Composite createAddressingVersionEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.DefaultEndPoint.QoS.addressingVersion, EsbMessages.DefaultEndPointPropertiesEditionPart_AddressingVersionLabel);
-		addressingVersion = new EMFComboViewer(parent);
+		addressingVersion = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		addressingVersion.setContentProvider(new ArrayContentProvider());
 		addressingVersion.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData addressingVersionData = new GridData(GridData.FILL_HORIZONTAL);
@@ -1455,7 +1455,7 @@ public class DefaultEndPointPropertiesEditionPartImpl extends CompositePropertie
 	
 	protected Composite createTimeOutActionEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.DefaultEndPoint.Timeout.timeOutAction, EsbMessages.DefaultEndPointPropertiesEditionPart_TimeOutActionLabel);
-		timeOutAction = new EMFComboViewer(parent);
+		timeOutAction = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		timeOutAction.setContentProvider(new ArrayContentProvider());
 		timeOutAction.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData timeOutActionData = new GridData(GridData.FILL_HORIZONTAL);

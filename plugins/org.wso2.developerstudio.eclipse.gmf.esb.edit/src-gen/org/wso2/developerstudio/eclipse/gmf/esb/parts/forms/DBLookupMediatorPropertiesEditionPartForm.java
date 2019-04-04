@@ -445,7 +445,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
      */
 	protected Composite createPropertyAutocommitEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control propertyAutoCommit = createDescription(parent, EsbViewsRepository.DBLookupMediator.Properties.propertyAutocommit, EsbMessages.DBLookupMediatorPropertiesEditionPart_PropertyAutocommitLabel);
-		propertyAutocommit = new EMFComboViewer(parent);
+		propertyAutocommit = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		propertyAutocommit.setContentProvider(new ArrayContentProvider());
 		propertyAutocommit.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData propertyAutocommitData = new GridData(GridData.FILL_HORIZONTAL);
@@ -477,7 +477,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
      */
 	protected Composite createPropertyIsolationEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control propertyIsolationLabel = createDescription(parent, EsbViewsRepository.DBLookupMediator.Properties.propertyIsolation, EsbMessages.DBLookupMediatorPropertiesEditionPart_PropertyIsolationLabel);
-		propertyIsolation = new EMFComboViewer(parent);
+		propertyIsolation = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		propertyIsolation.setContentProvider(new ArrayContentProvider());
 		propertyIsolation.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData propertyIsolationData = new GridData(GridData.FILL_HORIZONTAL);
@@ -859,7 +859,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
      */
 	protected Composite createPropertyPoolstatementsEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control propertyPoolStatementsLabel = createDescription(parent, EsbViewsRepository.DBLookupMediator.Properties.propertyPoolstatements, EsbMessages.DBLookupMediatorPropertiesEditionPart_PropertyPoolstatementsLabel);
-		propertyPoolstatements = new EMFComboViewer(parent);
+		propertyPoolstatements = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		propertyPoolstatements.setContentProvider(new ArrayContentProvider());
 		propertyPoolstatements.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData propertyPoolstatementsData = new GridData(GridData.FILL_HORIZONTAL);
@@ -891,7 +891,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
      */
 	protected Composite createPropertyTestonborrowEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control propertyTestonborrowLabel = createDescription(parent, EsbViewsRepository.DBLookupMediator.Properties.propertyTestonborrow, EsbMessages.DBLookupMediatorPropertiesEditionPart_PropertyTestonborrowLabel);
-		propertyTestonborrow = new EMFComboViewer(parent);
+		propertyTestonborrow = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		propertyTestonborrow.setContentProvider(new ArrayContentProvider());
 		propertyTestonborrow.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData propertyTestonborrowData = new GridData(GridData.FILL_HORIZONTAL);
@@ -923,7 +923,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
      */
 	protected Composite createPropertyTestwhileidleEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control propertyTestwhileidleLabel = createDescription(parent, EsbViewsRepository.DBLookupMediator.Properties.propertyTestwhileidle, EsbMessages.DBLookupMediatorPropertiesEditionPart_PropertyTestwhileidleLabel);
-		propertyTestwhileidle = new EMFComboViewer(parent);
+		propertyTestwhileidle = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		propertyTestwhileidle.setContentProvider(new ArrayContentProvider());
 		propertyTestwhileidle.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData propertyTestwhileidleData = new GridData(GridData.FILL_HORIZONTAL);
@@ -1199,7 +1199,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
      */
 	protected Composite createConnectionTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control connectionTypeLabel = createDescription(parent, EsbViewsRepository.DBLookupMediator.Connection.connectionType, EsbMessages.DBLookupMediatorPropertiesEditionPart_ConnectionTypeLabel);
-		connectionType = new EMFComboViewer(parent);
+		connectionType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		connectionType.setContentProvider(new ArrayContentProvider());
 		connectionType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData connectionTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -1232,7 +1232,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
      */
 	protected Composite createConnectionDsTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control connectionDsTypeLabel = createDescription(parent, EsbViewsRepository.DBLookupMediator.Connection.connectionDsType, EsbMessages.DBLookupMediatorPropertiesEditionPart_ConnectionDsTypeLabel);
-		connectionDsType = new EMFComboViewer(parent);
+		connectionDsType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		connectionDsType.setContentProvider(new ArrayContentProvider());
 		connectionDsType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData connectionDsTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -1335,7 +1335,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
      */
 	protected Composite createConnectionDbTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control connectionDbTypeLabel = createDescription(parent, EsbViewsRepository.DBLookupMediator.Connection.connectionDbType, EsbMessages.DBLookupMediatorPropertiesEditionPart_ConnectionDbTypeLabel);
-		connectionDbType = new EMFComboViewer(parent);
+		connectionDbType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		connectionDbType.setContentProvider(new ArrayContentProvider());
 		connectionDbType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData connectionDbTypeData = new GridData(GridData.FILL_HORIZONTAL);

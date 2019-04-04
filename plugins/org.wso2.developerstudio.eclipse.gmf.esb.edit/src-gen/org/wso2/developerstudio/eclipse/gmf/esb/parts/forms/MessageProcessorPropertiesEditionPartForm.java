@@ -481,7 +481,7 @@ public class MessageProcessorPropertiesEditionPartForm extends SectionProperties
 	
 	protected Composite createProcessorTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.MessageProcessor.Properties.processorType, EsbMessages.MessageProcessorPropertiesEditionPart_ProcessorTypeLabel);
-		processorType = new EMFComboViewer(parent);
+		processorType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		processorType.setContentProvider(new ArrayContentProvider());
 		processorType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData processorTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -783,7 +783,7 @@ public class MessageProcessorPropertiesEditionPartForm extends SectionProperties
 	
 	protected Composite createProcessorStateEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.MessageProcessor.Properties.processorState, EsbMessages.MessageProcessorPropertiesEditionPart_ProcessorStateLabel);
-		processorState = new EMFComboViewer(parent);
+		processorState = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		processorState.setContentProvider(new ArrayContentProvider());
 		processorState.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData processorStateData = new GridData(GridData.FILL_HORIZONTAL);
@@ -1153,7 +1153,7 @@ public class MessageProcessorPropertiesEditionPartForm extends SectionProperties
 	
 	protected Composite createDropMessageAfterMaximumDeliveryAttemptsEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.MessageProcessor.Properties.dropMessageAfterMaximumDeliveryAttempts, EsbMessages.MessageProcessorPropertiesEditionPart_DropMessageAfterMaximumDeliveryAttemptsLabel);
-		dropMessageAfterMaximumDeliveryAttempts = new EMFComboViewer(parent);
+		dropMessageAfterMaximumDeliveryAttempts = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		dropMessageAfterMaximumDeliveryAttempts.setContentProvider(new ArrayContentProvider());
 		dropMessageAfterMaximumDeliveryAttempts.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData dropMessageAfterMaximumDeliveryAttemptsData = new GridData(GridData.FILL_HORIZONTAL);

@@ -772,7 +772,9 @@ public class RuleFactPropertiesEditionPartImpl extends CompositePropertiesEditio
                     propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
                             RuleFactPropertiesEditionPartImpl.this,
                             EsbViewsRepository.RuleFact.Properties.valueReferenceKey, PropertiesEditionEvent.COMMIT,
-                            PropertiesEditionEvent.SET, null, getValueReferenceKey()));                    
+                            PropertiesEditionEvent.SET, null, getValueReferenceKey()));
+    
+                    
                 }
     
                 @Override

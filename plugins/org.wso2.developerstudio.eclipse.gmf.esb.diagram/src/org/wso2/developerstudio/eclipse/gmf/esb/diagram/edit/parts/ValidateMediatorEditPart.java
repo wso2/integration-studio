@@ -376,6 +376,8 @@ public class ValidateMediatorEditPart extends SingleCompartmentComplexFiguredAbs
 
     @Override
     public void notifyChanged(Notification notification) {
+        // Since the on-fail sequence is not passed with the datamodel from the source view, need to skip this warning 
+        String validateInvalidChildWarning = "A non-empty <on-fail> child element is required for the <validate> mediator";
         // this.getModel() will get EMF data model of the validate mediator data model
         if (this.getModel() instanceof CSSNodeImpl) {
             // The following part will check for validation issues with the current data in the model
@@ -390,7 +392,9 @@ public class ValidateMediatorEditPart extends SingleCompartmentComplexFiguredAbs
                     OMElement omElement = validateMediatorSerializer.serializeSpecificMediator(validateMediator);
 
                     if (StringUtils
-                            .isEmpty(MediatorValidationUtil.validateMediatorsFromOEMElement(omElement, "validate"))) {
+                            .isEmpty(MediatorValidationUtil.validateMediatorsFromOEMElement(omElement, "validate"))
+                            || validateInvalidChildWarning.equals(
+                                    MediatorValidationUtil.validateMediatorsFromOEMElement(omElement, "validate"))) {
                         GraphicalValidatorUtil.removeValidationMark(this);
                     } else {
                         GraphicalValidatorUtil.addValidationMark(this);

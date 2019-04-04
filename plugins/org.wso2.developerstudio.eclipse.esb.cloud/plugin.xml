@@ -23,7 +23,7 @@
         id="org.wso2.developerstudio.eclipse.esb.cloud.deploytocloud">
             <action
                 label="Deploy to Integration Cloud"
-                icon="icons/car.png"
+                icon="icons/clouddeploy.png"
                 class="org.wso2.developerstudio.eclipse.esb.cloud.action.DeployToCloudAction"
                 id="org.wso2.developerstudio.eclipse.esb.cloud.deploytocloud">
             </action>

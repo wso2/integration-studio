@@ -98,7 +98,8 @@ var mavenWizard = "org.wso2.developerstudio.eclipse.platform.ui.mvn.wizard.MvnMu
 var cappWizard = 'org.wso2.developerstudio.eclipse.distribution.project';
 var serverWizard = 'org.eclipse.wst.server.ui.new.server';
 var registryWizard = 'org.wso2.developerstudio.eclipse.general.project';
-var configWizard = 'org.wso2.developerstudio.eclipse.artifact.newesbproject'
+var configWizard = 'org.wso2.developerstudio.eclipse.artifact.newesbproject';
+var mediatorWizard = 'org.wso2.developerstudio.eclipse.artifact.newmediatorartifact';
 
 $("#CompositeApplicationProject").click(function(){
 	openWizard(cappWizard);
@@ -118,6 +119,10 @@ $("#Server").click(function(){
 
 $("#ConfigProject").click(function(){
 	openWizard(configWizard);
+});
+
+$("#MediatorProject").click(function(){
+	openWizard(mediatorWizard);
 });
 
 /*if((GetWizardDescription(mavenWizard) != null)){

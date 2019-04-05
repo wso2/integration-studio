@@ -9,6 +9,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb.provider;
 import java.util.Collection;
 import java.util.List;
 
+import org.apache.commons.lang.WordUtils;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
@@ -24,6 +25,7 @@ import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.LogProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType;
 
 /**
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.LogProperty} object.
@@ -74,15 +76,37 @@ public class LogPropertyItemProvider extends AbstractNameValueExpressionProperty
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
+     * @generated NOT
      */
 
     @Override
     public String getText(Object object) {
-        String label = ((LogProperty)object).getPropertyName();
-        return label == null || label.length() == 0 ?
-            getString("_UI_LogProperty_type") :
-            getString("_UI_LogProperty_type") + " " + label;
+        String propertyName = ((LogProperty)object).getPropertyName();
+        String propertyNameLabel = WordUtils.abbreviate(propertyName.toString(), 8, 10, " ...");
+        String propertyValueType = ((LogProperty)object).getPropertyValueType().toString();
+        String propertyValueLabel = ((LogProperty)object).getPropertyValue();
+        String propertyExpressionLabel = ((LogProperty)object).getPropertyExpression().toString();
+
+        if (propertyValueType == PropertyValueType.LITERAL.getName()) {
+            return propertyNameLabel == null || propertyNameLabel.length() == 0 ?
+                getString("_UI_LogProperty_type") :
+                    formatPropertyString(getString("_UI_LogProperty_type")) + formatPropertyString(propertyNameLabel) +
+                    formatPropertyString(propertyValueLabel);
+        } else {
+            return propertyNameLabel == null || propertyNameLabel.length() == 0 ?
+                    getString("_UI_LogProperty_type") :
+                        formatPropertyString(getString("_UI_LogProperty_type")) +
+                        formatPropertyString(propertyNameLabel) + formatPropertyString(propertyExpressionLabel);
+        }
+    }
+
+    public String formatPropertyString(String str) {
+        int maxLength = 30;
+        int tabSpace = (maxLength - str.length()) / 4;
+        for (int i = 0; i < tabSpace; i++) {
+            str = str.concat("\t");
+        }
+        return str;
     }
 
     /**

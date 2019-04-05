@@ -184,39 +184,56 @@ public class SwitchCaseBranchOutputConnectorPropertiesEditionPartImpl extends Co
 	}
 
 	
-	protected Composite createCaseRegexText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.SwitchCaseBranchOutputConnector.Properties.caseRegex, EsbMessages.SwitchCaseBranchOutputConnectorPropertiesEditionPart_CaseRegexLabel);
-		caseRegex = SWTUtils.createScrollableText(parent, SWT.BORDER);
-		GridData caseRegexData = new GridData(GridData.FILL_HORIZONTAL);
-		caseRegex.setLayoutData(caseRegexData);
-		
-		caseRegex.addKeyListener(new KeyAdapter() {
+    protected Composite createCaseRegexText(Composite parent) {
+        createDescription(parent, EsbViewsRepository.SwitchCaseBranchOutputConnector.Properties.caseRegex,
+                EsbMessages.SwitchCaseBranchOutputConnectorPropertiesEditionPart_CaseRegexLabel);
+        caseRegex = SWTUtils.createScrollableText(parent, SWT.BORDER);
+        GridData caseRegexData = new GridData(GridData.FILL_HORIZONTAL);
+        caseRegex.setLayoutData(caseRegexData);
 
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void keyReleased(KeyEvent e) {
-				if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SwitchCaseBranchOutputConnectorPropertiesEditionPartImpl.this, EsbViewsRepository.SwitchCaseBranchOutputConnector.Properties.caseRegex, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, caseRegex.getText()));
-				}
-			}
-			
+        caseRegex.addKeyListener(new KeyAdapter() {
 
-		});
-		EditingUtils.setID(caseRegex, EsbViewsRepository.SwitchCaseBranchOutputConnector.Properties.caseRegex);
-		EditingUtils.setEEFtype(caseRegex, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.SwitchCaseBranchOutputConnector.Properties.caseRegex, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		// Start of user code for createCaseRegexText
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+             * 
+             */
+            @Override
+            @SuppressWarnings("synthetic-access")
+            public void keyReleased(KeyEvent e) {
+                if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                    if (propertiesEditionComponent != null)
+                        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                                SwitchCaseBranchOutputConnectorPropertiesEditionPartImpl.this,
+                                EsbViewsRepository.SwitchCaseBranchOutputConnector.Properties.caseRegex,
+                                PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, caseRegex.getText()));
+                }
+            }
 
-		// End of user code
-		return parent;
-	}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.keyCode == SWT.TRAVERSE_RETURN) {
+                    if (propertiesEditionComponent != null)
+                        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                                SwitchCaseBranchOutputConnectorPropertiesEditionPartImpl.this,
+                                EsbViewsRepository.SwitchCaseBranchOutputConnector.Properties.caseRegex,
+                                PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, caseRegex.getText()));
+                }
+            }
+        });
+        EditingUtils.setID(caseRegex, EsbViewsRepository.SwitchCaseBranchOutputConnector.Properties.caseRegex);
+        EditingUtils.setEEFtype(caseRegex, "eef::Text"); //$NON-NLS-1$
+        SWTUtils.createHelpButton(parent,
+                propertiesEditionComponent.getHelpContent(
+                        EsbViewsRepository.SwitchCaseBranchOutputConnector.Properties.caseRegex,
+                        EsbViewsRepository.SWT_KIND),
+                null); // $NON-NLS-1$
+        // Start of user code for createCaseRegexText
+
+        // End of user code
+        return parent;
+    }
 
 
 	/**

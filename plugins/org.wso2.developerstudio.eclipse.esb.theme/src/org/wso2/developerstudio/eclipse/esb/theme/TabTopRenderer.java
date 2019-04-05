@@ -21,6 +21,7 @@ package org.wso2.developerstudio.eclipse.esb.theme;
 import org.eclipse.e4.ui.workbench.renderers.swt.CTabRendering;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CTabFolder;
+import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.Rectangle;
 
@@ -43,8 +44,8 @@ public class TabTopRenderer extends CTabRendering {
             int y = bounds.y;
             int width = bounds.width;
 
-            gc.setBackground(gc.getDevice().getSystemColor(SWT.COLOR_BLUE));
-            gc.fillRectangle(x, y , width , 2);
+            gc.setBackground(new Color(null, 52, 152, 219));
+            gc.fillRectangle(x, y , width , 3);
         }
     }
 }

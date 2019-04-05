@@ -105,7 +105,7 @@ public class SwitchCaseBranchOutputConnectorItemProvider extends OutputConnector
         String label = ((SwitchCaseBranchOutputConnector)object).getCaseRegex();
         return label == null || label.length() == 0 ?
             getString("_UI_SwitchCaseBranchOutputConnector_type") :
-            getString("_UI_SwitchCaseBranchOutputConnector_type") + " " + label;
+            getString("_UI_SwitchCaseBranchOutputConnector_type") + "\t\t" + label;
     }
 
     /**

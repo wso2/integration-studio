@@ -207,6 +207,14 @@ public class SwitchCaseBranchOutputConnectorPropertiesEditionPartImpl extends Co
 				}
 			}
 			
+			@Override
+			public void keyPressed(KeyEvent e) {
+			    if (e.keyCode == SWT.TRAVERSE_RETURN){
+			        if (propertiesEditionComponent != null)
+                        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SwitchCaseBranchOutputConnectorPropertiesEditionPartImpl.this, EsbViewsRepository.SwitchCaseBranchOutputConnector.Properties.caseRegex, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, caseRegex.getText()));
+			    }
+			}
+			
 
 		});
 		EditingUtils.setID(caseRegex, EsbViewsRepository.SwitchCaseBranchOutputConnector.Properties.caseRegex);

@@ -232,7 +232,7 @@ public class PayloadFactoryArgumentItemProvider extends EsbNodeItemProvider {
         String argumentValue = ((PayloadFactoryArgument)object).getArgumentValue().toString();
         String argumentExpression = ((PayloadFactoryArgument)object).getArgumentExpression().toString();
 
-        if (argumentTypeLabel == "Value") {
+        if (argumentTypeLabel.equalsIgnoreCase(PayloadFactoryArgumentType.VALUE.getName())) {
             return argumentTypeLabel == null || argumentTypeLabel.length() == 0 ?
                 getString("_UI_PayloadFactoryArgument_type") :
                 getString("_UI_PayloadFactoryArgument_type") + "\t\t\t" + argumentTypeLabel + "\t\t\t" +

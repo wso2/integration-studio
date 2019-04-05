@@ -87,7 +87,7 @@ public class LogPropertyItemProvider extends AbstractNameValueExpressionProperty
         String propertyValueLabel = ((LogProperty)object).getPropertyValue();
         String propertyExpressionLabel = ((LogProperty)object).getPropertyExpression().toString();
 
-        if (propertyValueType == PropertyValueType.LITERAL.getName()) {
+        if (propertyValueType.equals(PropertyValueType.LITERAL.getName())) {
             return propertyNameLabel == null || propertyNameLabel.length() == 0 ?
                 getString("_UI_LogProperty_type") :
                     formatPropertyString(getString("_UI_LogProperty_type")) + formatPropertyString(propertyNameLabel) +

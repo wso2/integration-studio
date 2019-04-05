@@ -190,32 +190,36 @@ public class SwitchCaseBranchOutputConnectorPropertiesEditionPartImpl extends Co
 		GridData caseRegexData = new GridData(GridData.FILL_HORIZONTAL);
 		caseRegex.setLayoutData(caseRegexData);
 		
-		caseRegex.addKeyListener(new KeyAdapter() {
+        caseRegex.addKeyListener(new KeyAdapter() {
 
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void keyReleased(KeyEvent e) {
-				if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SwitchCaseBranchOutputConnectorPropertiesEditionPartImpl.this, EsbViewsRepository.SwitchCaseBranchOutputConnector.Properties.caseRegex, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, caseRegex.getText()));
-				}
-			}
-			
-			@Override
-			public void keyPressed(KeyEvent e) {
-			    if (e.keyCode == SWT.TRAVERSE_RETURN){
-			        if (propertiesEditionComponent != null)
-                        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SwitchCaseBranchOutputConnectorPropertiesEditionPartImpl.this, EsbViewsRepository.SwitchCaseBranchOutputConnector.Properties.caseRegex, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, caseRegex.getText()));
-			    }
-			}
-			
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+             * 
+             */
+            @Override
+            @SuppressWarnings("synthetic-access")
+            public void keyReleased(KeyEvent e) {
+                if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                    if (propertiesEditionComponent != null)
+                        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                                SwitchCaseBranchOutputConnectorPropertiesEditionPartImpl.this,
+                                EsbViewsRepository.SwitchCaseBranchOutputConnector.Properties.caseRegex,
+                                PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, caseRegex.getText()));
+                }
+            }
 
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.keyCode == SWT.TRAVERSE_RETURN) {
+                    if (propertiesEditionComponent != null)
+                        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                                SwitchCaseBranchOutputConnectorPropertiesEditionPartImpl.this,
+                                EsbViewsRepository.SwitchCaseBranchOutputConnector.Properties.caseRegex,
+                                PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, caseRegex.getText()));
+                }
+            }
 		});
 		EditingUtils.setID(caseRegex, EsbViewsRepository.SwitchCaseBranchOutputConnector.Properties.caseRegex);
 		EditingUtils.setEEFtype(caseRegex, "eef::Text"); //$NON-NLS-1$

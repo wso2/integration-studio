@@ -615,7 +615,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
                             public void run() {
                                 Display display = PlatformUI.getWorkbench().getDisplay();
                                 Shell shell = display.getActiveShell();
-                                dp = new DependencyProvider(shell);
+                                dp = new DependencyProvider(shell,SWT.NONE);
                                 ConnectionObj obj = new ConnectionObj();
                                 obj.setDbDriver(getConnectionDbDriver().isEmpty() ? "" : getConnectionDbDriver());
                                 obj.setDbType(getConnectionDbType().getName().isEmpty() ? ""

@@ -9,6 +9,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb.provider;
 import java.util.Collection;
 import java.util.List;
 
+import org.apache.commons.lang.WordUtils;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
@@ -20,6 +21,9 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.ClassProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.LogProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 
 /**
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.ClassProperty} object.
@@ -70,15 +74,30 @@ public class ClassPropertyItemProvider extends AbstractNameValueExpressionProper
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
+     * @generated NOT
      */
 
     @Override
     public String getText(Object object) {
-        String label = ((ClassProperty)object).getPropertyName();
-        return label == null || label.length() == 0 ?
-            getString("_UI_ClassProperty_type") :
-            getString("_UI_ClassProperty_type") + " " + label;
+        String propertyName = ((ClassProperty)object).getPropertyName();
+        String propertyNameLabel = WordUtils.abbreviate(propertyName.toString(), 8, 10, " ...");
+        String propertyValueType = ((ClassProperty)object).getPropertyValueType().toString();
+        String propertyValueLabel = ((ClassProperty)object).getPropertyValue();
+        String propertyExpressionLabel = ((ClassProperty)object).getPropertyExpression().toString();
+
+        if (propertyValueType.equals(PropertyValueType.LITERAL.getName())) {
+            return propertyName == null || propertyName.length() == 0 ?
+                getString("_UI_ClassProperty_type") :
+                    EEFPropertyViewUtil.spaceFormat(getString("_UI_ClassProperty_type")) +
+                    EEFPropertyViewUtil.spaceFormat(propertyNameLabel) +
+                    EEFPropertyViewUtil.spaceFormat(propertyValueLabel);
+        } else {
+            return propertyName == null || propertyName.length() == 0 ?
+                getString("_UI_ClassProperty_type") :
+                    EEFPropertyViewUtil.spaceFormat(getString("_UI_ClassProperty_type")) +
+                    EEFPropertyViewUtil.spaceFormat(propertyNameLabel) +
+                    EEFPropertyViewUtil.spaceFormat(propertyExpressionLabel);
+        }
     }
 
     /**

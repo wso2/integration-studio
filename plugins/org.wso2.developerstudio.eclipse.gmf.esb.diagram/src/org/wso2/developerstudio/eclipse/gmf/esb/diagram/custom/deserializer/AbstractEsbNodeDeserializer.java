@@ -1125,10 +1125,6 @@ public abstract class AbstractEsbNodeDeserializer<T, R extends EsbNode> implemen
         executeSetValueCommand(visualElement, ESB_ELEMENT__DESCRIPTION, mediator.getShortDescription());
         executeAddAllCommand(visualElement.getCommentsList(), ((AbstractMediator) mediator).getCommentsList());
     }
-    
-    protected void setCommentsForNonMediators(org.apache.synapse.core.axis2.ProxyService proxyService, ProxyService visualElement) {
-        executeAddAllCommand(visualElement.getCommentsList(), proxyService.getCommentsList());
-    }
 
     public void createNode(FormEditor formEditor, T task) {
         // TODO Auto-generated method stub

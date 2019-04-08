@@ -131,15 +131,6 @@ public abstract class AbstractEsbNodeTransformer implements EsbNodeTransformer {
         }
 
     }
-    
-    private List<String> getUniqueComments(List<String> comments, List<CommentMediator> commentMediators) {
-        List<String> commentMediatorValues = new ArrayList<>();
-        for (CommentMediator commentMediator : commentMediators) {
-            commentMediatorValues.add(commentMediator.getCommentText());
-        }
-        comments.removeAll(commentMediatorValues);
-        return comments;
-    }
 
     protected void doTransformFaultSequence(TransformationInfo info, EsbNode originNode) throws TransformerException {
         if (originNode != null) {

@@ -321,7 +321,8 @@ public class ProxyServiceDeserializer
         return proxy;
     }
     
-    protected void setComments(org.apache.synapse.core.axis2.ProxyService proxyService, org.wso2.developerstudio.eclipse.gmf.esb.ProxyService visualElement) {
+    protected void setComments(org.apache.synapse.core.axis2.ProxyService proxyService,
+            org.wso2.developerstudio.eclipse.gmf.esb.ProxyService visualElement) {
         executeAddAllCommand(visualElement.getCommentsList(), proxyService.getCommentsList());
     }
 

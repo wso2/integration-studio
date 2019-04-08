@@ -34,6 +34,7 @@ import org.apache.synapse.mediators.ListMediator;
 import org.apache.synapse.mediators.Value;
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.apache.synapse.mediators.builtin.CommentMediator;
+import org.apache.synapse.util.CommentListUtil;
 import org.apache.synapse.config.xml.ValueFactory;
 
 import javax.xml.namespace.QName;
@@ -109,6 +110,9 @@ public class DummySequenceMediatorFactory {
 
             }
         }
+        
+        CommentListUtil.populateComments(elem, seqMediator.getCommentsList());
+        
         return seqMediator;
     }
 

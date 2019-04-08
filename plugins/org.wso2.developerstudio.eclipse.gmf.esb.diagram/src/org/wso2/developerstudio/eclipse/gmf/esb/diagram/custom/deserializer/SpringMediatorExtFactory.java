@@ -50,6 +50,8 @@ public class SpringMediatorExtFactory extends SpringMediatorFactory {
         processAuditStatus(mediator, omElement);
         ((SpringMediator) mediator).setBeanName(bean.getAttributeValue());
         ((SpringMediator) mediator).setConfigKey(key.getAttributeValue());
+        
+        addAllCommentChildrenToList(omElement, ((SpringMediator) mediator).getCommentsList());
 
         return mediator;
     }

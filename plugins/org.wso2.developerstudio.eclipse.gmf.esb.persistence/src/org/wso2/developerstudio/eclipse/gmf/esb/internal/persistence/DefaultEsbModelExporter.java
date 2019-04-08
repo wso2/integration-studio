@@ -55,6 +55,7 @@ import org.apache.synapse.config.xml.endpoints.TemplateSerializer;
 import org.apache.synapse.config.xml.inbound.InboundEndpointSerializer;
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.mediators.base.SequenceMediator;
+import org.apache.synapse.mediators.builtin.CommentMediator;
 import org.apache.synapse.mediators.template.TemplateMediator;
 import org.apache.synapse.rest.API;
 import org.apache.synapse.task.TaskDescriptionSerializer;

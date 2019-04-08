@@ -115,6 +115,8 @@ public class HeaderMediatorExtFactory extends HeaderMediatorFactory {
                 }
             }
         }
+        
+        addAllCommentChildrenToList(omElement, ((HeaderMediator) mediator).getCommentsList());
 
         return mediator;
     }

@@ -26,6 +26,7 @@ import org.apache.synapse.core.axis2.ProxyService;
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.endpoints.IndirectEndpoint;
 import org.apache.synapse.mediators.base.SequenceMediator;
+import org.apache.synapse.util.CommentListUtil;
 import org.apache.synapse.util.PolicyInfo;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
@@ -58,6 +59,7 @@ public class ProxyServiceDeserializer
                 .createNode(editPart, EsbElementTypes.ProxyService_3001);
 
         setElementToEdit(proxy);
+        setComments(object, proxy);
         refreshEditPartMap();
 
         executeSetValueCommand(PROXY_SERVICE__NAME, object.getName());
@@ -317,6 +319,10 @@ public class ProxyServiceDeserializer
         // TODO : deserialize other properties
 
         return proxy;
+    }
+    
+    protected void setComments(org.apache.synapse.core.axis2.ProxyService proxyService, org.wso2.developerstudio.eclipse.gmf.esb.ProxyService visualElement) {
+        executeAddAllCommand(visualElement.getCommentsList(), proxyService.getCommentsList());
     }
 
 }

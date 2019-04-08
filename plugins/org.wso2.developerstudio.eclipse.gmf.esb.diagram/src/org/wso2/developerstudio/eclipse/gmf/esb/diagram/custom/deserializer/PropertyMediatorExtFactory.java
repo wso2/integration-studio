@@ -110,6 +110,9 @@ public class PropertyMediatorExtFactory extends PropertyMediatorFactory {
         }
 
         processAuditStatus(mediator, omElement);
+        
+        addAllCommentChildrenToList(omElement, ((PropertyMediator) mediator).getCommentsList());
+        
         return mediator;
     }
 }

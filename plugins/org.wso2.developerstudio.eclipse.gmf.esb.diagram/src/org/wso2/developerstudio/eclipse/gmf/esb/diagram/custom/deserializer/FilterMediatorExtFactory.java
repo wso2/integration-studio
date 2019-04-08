@@ -124,6 +124,8 @@ public class FilterMediatorExtFactory extends FilterMediatorFactory {
             addChildren(omElement, (FilterMediator) mediator, null);
         }
 
+        addAllCommentChildrenToList(omElement, ((FilterMediator) mediator).getCommentsList());
+        
         return mediator;
     }
 

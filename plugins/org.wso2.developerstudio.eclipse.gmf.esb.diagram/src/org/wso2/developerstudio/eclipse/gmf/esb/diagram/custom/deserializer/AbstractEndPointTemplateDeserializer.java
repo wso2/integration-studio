@@ -50,6 +50,7 @@ public abstract class AbstractEndPointTemplateDeserializer
             }
         }
         setTextValue(endpointPage.getTemplateName(), template.getName());
+        endpointPage.setTemplateCommentList(template.getCommentsList());
 
         Endpoint endpoint = DummyTemplateEndpointFactory.getEndpointFromElement(template.getElement(), false,
                 new Properties());

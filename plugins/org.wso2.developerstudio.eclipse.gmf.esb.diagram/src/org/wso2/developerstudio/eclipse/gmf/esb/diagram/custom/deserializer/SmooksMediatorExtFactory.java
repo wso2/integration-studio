@@ -32,12 +32,12 @@ import org.wso2.carbon.mediator.transform.SmooksMediator;
 import org.wso2.carbon.mediator.transform.xml.SmooksMediatorFactory;
 
 public class SmooksMediatorExtFactory extends SmooksMediatorFactory {
-    
+
     private static SmooksMediatorExtFactory instance;
-    
+
     private SmooksMediatorExtFactory() {
     }
-    
+
     public static synchronized SmooksMediatorExtFactory getInstance() {
         if (instance == null) {
             instance = new SmooksMediatorExtFactory();
@@ -78,6 +78,8 @@ public class SmooksMediatorExtFactory extends SmooksMediatorFactory {
         } else {
             ((SmooksMediator) mediator).setOutput(new Output());
         }
+
+        addAllCommentChildrenToList(omElement, ((SmooksMediator) mediator).getCommentsList());
 
         return mediator;
     }

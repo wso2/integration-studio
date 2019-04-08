@@ -64,6 +64,8 @@ public class EventMediatorExtFactory extends EventMediatorFactory {
                 // ignore
             }
         }
+        
+        addAllCommentChildrenToList(omElement, ((EventMediator) mediator).getCommentsList());
 
         return mediator;
     }

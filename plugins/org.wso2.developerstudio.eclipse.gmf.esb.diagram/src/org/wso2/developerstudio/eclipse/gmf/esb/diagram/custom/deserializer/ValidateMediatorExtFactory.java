@@ -126,6 +126,8 @@ public class ValidateMediatorExtFactory extends ValidateMediatorFactory {
             }
         }
 
+        addAllCommentChildrenToList(omElement, ((ValidateMediator) mediator).getCommentsList());
+        
         return mediator;
     }
 

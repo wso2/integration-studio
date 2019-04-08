@@ -24,6 +24,7 @@ import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.impl.llom.util.AXIOMUtil;
 import org.apache.synapse.aspects.AspectConfiguration;
 import org.apache.synapse.config.xml.rest.VersionStrategyFactory;
+import org.apache.synapse.core.axis2.ProxyService;
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.apache.synapse.rest.API;
@@ -79,6 +80,8 @@ public class APITransformer extends AbstractEsbNodeTransformer {
         }
 
         information.getSynapseConfiguration().addAPI(visualAPI.getApiName(), api);
+        
+        setComments(api, visualAPI);
     }
 
     public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints) {
@@ -123,6 +126,10 @@ public class APITransformer extends AbstractEsbNodeTransformer {
         }
         api.configure(new AspectConfiguration(visualAPI.getApiName()));
         return api;
+    }
+    
+    private static void setComments(API api, SynapseAPI visualElement) {
+        api.getCommentsList().addAll(visualElement.getCommentsList());
     }
 
 }

@@ -33,6 +33,7 @@ import org.apache.synapse.config.xml.rest.ResourceFactory;
 import org.apache.synapse.config.xml.rest.VersionStrategyFactory;
 import org.apache.synapse.rest.API;
 import org.apache.synapse.rest.version.VersionStrategy;
+import org.apache.synapse.util.CommentListUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.DummyHandler;
 
 /**
@@ -128,6 +129,8 @@ public class DummyAPIFactory {
                 defineHandler(api, handlerElt, withSynapse);
             }
         }
+        
+        CommentListUtil.populateComments(apiElt, api.getCommentsList());
 
         return api;
     }

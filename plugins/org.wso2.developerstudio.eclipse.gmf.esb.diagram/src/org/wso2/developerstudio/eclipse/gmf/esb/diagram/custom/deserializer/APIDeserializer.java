@@ -88,6 +88,8 @@ public class APIDeserializer extends AbstractEsbNodeDeserializer<API, SynapseAPI
     public SynapseAPI createNode(IGraphicalEditPart part, API api) throws DeserializerException {
         SynapseAPI synapseAPI = (SynapseAPI) DeserializerUtils.createNode(part, EsbElementTypes.SynapseAPI_3668);
         setElementToEdit(synapseAPI);
+        // Set comments
+        executeAddAllCommand(synapseAPI.getCommentsList(), api.getCommentsList());
         refreshEditPartMap();
         // api.configure(new AspectConfiguration(synapseAPI.getApiName()));
         if (api.getAspectConfiguration().isStatisticsEnable()) {

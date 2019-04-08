@@ -32,6 +32,7 @@ import org.apache.synapse.config.xml.ValueFactory;
 import org.apache.synapse.config.xml.XMLConfigConstants;
 import org.apache.synapse.config.xml.XSLTMediatorFactory;
 import org.apache.synapse.mediators.Value;
+import org.apache.synapse.mediators.builtin.LogMediator;
 import org.apache.synapse.mediators.transform.XSLTMediator;
 import org.jaxen.JaxenException;
 
@@ -103,6 +104,8 @@ public class XSLTMediatorExtFactory extends XSLTMediatorFactory {
         ((XSLTMediator) mediator).addAllProperties(MediatorPropertyFactory.getMediatorProperties(omElement));
 
         ((XSLTMediator) mediator).setResourceMap(ResourceMapFactory.createResourceMap(omElement));
+        
+        addAllCommentChildrenToList(omElement, mediator.getCommentsList());
 
         return mediator;
     }

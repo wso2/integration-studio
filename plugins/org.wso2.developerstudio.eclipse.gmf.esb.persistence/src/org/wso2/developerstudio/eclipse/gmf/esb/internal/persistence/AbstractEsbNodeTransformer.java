@@ -15,7 +15,12 @@
  */
 package org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 import org.apache.synapse.Mediator;
+import org.apache.synapse.core.axis2.ProxyService;
 import org.apache.synapse.mediators.AbstractMediator;
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.eclipse.core.runtime.Assert;
@@ -105,23 +110,35 @@ public abstract class AbstractEsbNodeTransformer implements EsbNodeTransformer {
             EsbNodeTransformer transformer = EsbTransformerRegistry.getInstance().getTransformer(esbNode);
             Assert.isNotNull(transformer, "No registered transformer for given node.");
 
-            if (inputConnector instanceof SequencesInputConnector) {
+            if (inputConnector instanceof SequencesInputConnector ) {
                 info.setParentSequence(sequence);
                 // Adding XML comments into synapse config.
-                addXMLCommnets(info, outgoingLink.getSource().getCommentMediators());
+                addXMLCommnets(info, outgoingLink.getSource().getCommentMediators(), sequence);
                 transformer.transform(info, esbNode);
             } else {
                 // Adding XML comments into synapse config.
                 CommentMediatorTransformer commentMediatorTransformer = new CommentMediatorTransformer();
+                
                 for (CommentMediator mediator : outgoingLink.getSource().getCommentMediators()) {
                     commentMediatorTransformer.transformWithinSequence(info, mediator, sequence);
+                    sequence.getCommentsList().remove(mediator.getCommentText());
                 }
                 transformer.transformWithinSequence(info, esbNode, sequence);
             }
+            
         } else {
             // TODO: Might be better to automatically log the message before dropping.
         }
 
+    }
+    
+    private List<String> getUniqueComments(List<String> comments, List<CommentMediator> commentMediators) {
+        List<String> commentMediatorValues = new ArrayList<>();
+        for (CommentMediator commentMediator : commentMediators) {
+            commentMediatorValues.add(commentMediator.getCommentText());
+        }
+        comments.removeAll(commentMediatorValues);
+        return comments;
     }
 
     protected void doTransformFaultSequence(TransformationInfo info, EsbNode originNode) throws TransformerException {
@@ -141,6 +158,14 @@ public abstract class AbstractEsbNodeTransformer implements EsbNodeTransformer {
         ((AbstractMediator) mediator).getCommentsList().addAll(visualElement.getCommentsList());
     }
 
+    private static void addXMLCommnets(TransformationInfo info, EList<CommentMediator> commentMediators, SequenceMediator sequence) {
+        CommentMediatorTransformer commentMediatorTransformer = new CommentMediatorTransformer();
+        for (CommentMediator mediator : commentMediators) {
+            commentMediatorTransformer.transform(info, mediator);
+            sequence.getCommentsList().remove(mediator.getCommentText());
+        }
+    }
+    
     private static void addXMLCommnets(TransformationInfo info, EList<CommentMediator> commentMediators) {
         CommentMediatorTransformer commentMediatorTransformer = new CommentMediatorTransformer();
         for (CommentMediator mediator : commentMediators) {

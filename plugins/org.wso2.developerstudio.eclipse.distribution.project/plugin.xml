@@ -107,7 +107,7 @@
                     id="org.wso2.developerstudio.eclipse.distribution.project.popup.export">
                <action
                         label="Export Composite Application Project"
-                        icon="icons/car.png"
+                        icon="icons/carexport.png"
                    class="org.wso2.developerstudio.eclipse.distribution.project.ui.action.ExportDistributionAction"
                         id="org.wso2.developerstudio.eclipse.distribution.project.ui.action.export">
                </action>

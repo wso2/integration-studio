@@ -139,9 +139,9 @@
         <debugPort>${carbon.debug}</debugPort>
     </start>
     <classpath id="carbon.libs">
-        <archive path="${carbon.home}/bin/org.wso2.carbon.bootstrap-4.4.36.jar"/>
+        <archive path="${carbon.home}/bin/org.wso2.carbon.bootstrap-4.4.38.jar"/>
         <archive path="${carbon.home}/bin/tcpmon-1.0.jar"/>
-        <archive path="${carbon.home}/bin/tomcat-juli-7.0.85.jar"/>
+        <archive path="${carbon.home}/bin/tomcat-juli-7.0.93.jar"/>
         <archive path="${carbon.home}/../lib/commons-lang-2.6.0.wso2v1.jar" /> 
     </classpath> 
 </tns:ServerRuntime>

@@ -148,7 +148,7 @@ public class MessageBuilderItemProvider extends EsbNodeItemProvider {
     @Override
     public String getText(Object object) {
         String contentType = ((MessageBuilder) object).getContentType();
-        String contentTypeLabel = WordUtils.abbreviate(contentType.toString(), 8, 10, " ...");
+        String contentTypeLabel = WordUtils.abbreviate(contentType, 8, 10, " ...");
         String builderClass = ((MessageBuilder) object).getBuilderClass();
 
         return contentType == null || contentType.length() == 0 ? getString("_UI_MessageBuilder_type")

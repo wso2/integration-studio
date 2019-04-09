@@ -28,10 +28,10 @@
 				fieldController="org.wso2.developerstudio.eclipse.artifact.synapse.api.validator.ProjectFieldController">Name*</data>
 			<data modelProperty="api.context" type="string"
 				fieldController="org.wso2.developerstudio.eclipse.artifact.synapse.api.validator.ProjectFieldController">Context*</data>
-			<data modelProperty="api.hostname" type="string"
+			<!-- <data modelProperty="api.hostname" type="string"
 				fieldController="org.wso2.developerstudio.eclipse.artifact.synapse.api.validator.ProjectFieldController">Hostname</data>
 			<data modelProperty="api.port" type="string"
-				fieldController="org.wso2.developerstudio.eclipse.artifact.synapse.api.validator.ProjectFieldController">Port</data>
+				fieldController="org.wso2.developerstudio.eclipse.artifact.synapse.api.validator.ProjectFieldController">Port</data> -->
 			<data modelProperty="api.versiontype" type="list"
 				fieldController="org.wso2.developerstudio.eclipse.artifact.synapse.api.validator.ProjectFieldController"
 				controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.synapse.api.validator.APIVersionTypes">Version Type</data>	

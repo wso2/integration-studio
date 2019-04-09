@@ -62,6 +62,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.SqlStatement;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 
 
 // End of user code
@@ -620,9 +621,10 @@ public class DBLookupMediatorPropertiesEditionComponent extends SinglePartProper
 	 * 
 	 */
 	public String getHelpContent(Object key, int kind) {
-		if (key == EsbViewsRepository.DBLookupMediator.Statements.sqlStatements)
-			return "SQL Statements"; //$NON-NLS-1$
-		return super.getHelpContent(key, kind);
+//		if (key == EsbViewsRepository.DBLookupMediator.Statements.sqlStatements)
+//			return "SQL Statements"; //$NON-NLS-1$
+//		return super.getHelpContent(key, kind);
+	    return EEFPropertyViewUtil.getHelpContent(key);
 	}
 
 	/**
@@ -818,10 +820,5 @@ public class DBLookupMediatorPropertiesEditionComponent extends SinglePartProper
 		}
 		return ret;
 	}
-
-
 	
-
-	
-
 }

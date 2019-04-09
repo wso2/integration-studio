@@ -605,6 +605,9 @@ public class EsbMessages extends NLS {
 	public static String MediatorSequencePropertiesEditionPart_PropertiesGroupLabel;
 
 	
+	public static String CacheMediatorPropertiesEditionPart_TypeGroupLabel;
+
+	
 	public static String CacheMediatorPropertiesEditionPart_PropertiesGroupLabel;
 
 	
@@ -5182,7 +5185,19 @@ public class EsbMessages extends NLS {
 	public static String MediatorSequencePropertiesEditionPart_DescriptionLabel;
 
 	
+	public static String CacheMediatorPropertiesEditionPart_CacheMediatorImplementationLabel;
+
+	
+	public static String CacheMediatorPropertiesEditionPart_IdLabel;
+
+	
 	public static String CacheMediatorPropertiesEditionPart_CacheTypeLabel;
+
+	
+	public static String CacheMediatorPropertiesEditionPart_ScopeLabel;
+
+	
+	public static String CacheMediatorPropertiesEditionPart_HashGeneratorAttributeLabel;
 
 	
 	public static String CacheMediatorPropertiesEditionPart_CacheTimeoutLabel;
@@ -5198,6 +5213,9 @@ public class EsbMessages extends NLS {
 
 	
 	public static String CacheMediatorPropertiesEditionPart_MaxEntryCountLabel;
+
+	
+	public static String CacheMediatorPropertiesEditionPart_ImplementationTypeLabel;
 
 	
 	public static String CacheMediatorPropertiesEditionPart_SequenceTypeLabel;
@@ -5596,6 +5614,9 @@ public class EsbMessages extends NLS {
 	public static String CommandPropertyPropertiesEditionPart_MessageActionLabel;
 
 	
+	public static String CommandPropertyPropertiesEditionPart_ValueMessageElementXpathLabel;
+
+	
 	public static String SqlStatementPropertiesEditionPart_QueryStringLabel;
 
 	
@@ -5900,6 +5921,12 @@ public class EsbMessages extends NLS {
 
 	
 	public static String RuleFactPropertiesEditionPart_ValueLiteralLabel;
+
+	
+	public static String RuleFactPropertiesEditionPart_PropertyExpressionLabel;
+
+	
+	public static String RuleFactPropertiesEditionPart_ValueReferenceKeyLabel;
 
 	
 	public static String RuleResultsConfigurationPropertiesEditionPart_ResultsLabel;

@@ -403,7 +403,7 @@ public class EnrichMediatorPropertiesEditionPartImpl extends CompositeProperties
 	
 	protected Composite createSourceTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.EnrichMediator.Source.sourceType, EsbMessages.EnrichMediatorPropertiesEditionPart_SourceTypeLabel);
-		sourceType = new EMFComboViewer(parent);
+		sourceType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		sourceType.setContentProvider(new ArrayContentProvider());
 		sourceType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData sourceTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -433,7 +433,7 @@ public class EnrichMediatorPropertiesEditionPartImpl extends CompositeProperties
 	
 	protected Composite createInlineTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.EnrichMediator.Source.inlineType, EsbMessages.EnrichMediatorPropertiesEditionPart_InlineTypeLabel);
-		inlineType = new EMFComboViewer(parent);
+		inlineType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		inlineType.setContentProvider(new ArrayContentProvider());
 		inlineType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData inlineTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -576,7 +576,7 @@ public class EnrichMediatorPropertiesEditionPartImpl extends CompositeProperties
 	
 	protected Composite createTargetActionEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.EnrichMediator.Target.targetAction, EsbMessages.EnrichMediatorPropertiesEditionPart_TargetActionLabel);
-		targetAction = new EMFComboViewer(parent);
+		targetAction = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		targetAction.setContentProvider(new ArrayContentProvider());
 		targetAction.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData targetActionData = new GridData(GridData.FILL_HORIZONTAL);
@@ -606,7 +606,7 @@ public class EnrichMediatorPropertiesEditionPartImpl extends CompositeProperties
 	
 	protected Composite createTargetTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.EnrichMediator.Target.targetType, EsbMessages.EnrichMediatorPropertiesEditionPart_TargetTypeLabel);
-		targetType = new EMFComboViewer(parent);
+		targetType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		targetType.setContentProvider(new ArrayContentProvider());
 		targetType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData targetTypeData = new GridData(GridData.FILL_HORIZONTAL);

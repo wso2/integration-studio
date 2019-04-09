@@ -177,14 +177,13 @@ public class NamedEndpointPropertiesEditionPartForm extends SectionPropertiesEdi
 	 * 
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
-		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
-		Form form = scrolledForm.getForm();
+		Form form = widgetFactory.createForm(parent);
 		view = form.getBody();
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
 		createControls(widgetFactory, view);
-		return scrolledForm;
+		return form;
 	}
 
 	/**
@@ -797,7 +796,7 @@ public class NamedEndpointPropertiesEditionPartForm extends SectionPropertiesEdi
 	
 	protected Composite createAddressingVersionEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.NamedEndpoint.Properties.addressingVersion, EsbMessages.NamedEndpointPropertiesEditionPart_AddressingVersionLabel);
-		addressingVersion = new EMFComboViewer(parent);
+		addressingVersion = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		addressingVersion.setContentProvider(new ArrayContentProvider());
 		addressingVersion.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData addressingVersionData = new GridData(GridData.FILL_HORIZONTAL);
@@ -924,7 +923,7 @@ public class NamedEndpointPropertiesEditionPartForm extends SectionPropertiesEdi
 	
 	protected Composite createTimeOutActionEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.NamedEndpoint.Properties.timeOutAction, EsbMessages.NamedEndpointPropertiesEditionPart_TimeOutActionLabel);
-		timeOutAction = new EMFComboViewer(parent);
+		timeOutAction = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		timeOutAction.setContentProvider(new ArrayContentProvider());
 		timeOutAction.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData timeOutActionData = new GridData(GridData.FILL_HORIZONTAL);
@@ -1430,7 +1429,7 @@ public class NamedEndpointPropertiesEditionPartForm extends SectionPropertiesEdi
 	
 	protected Composite createFormatEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.NamedEndpoint.Properties.format, EsbMessages.NamedEndpointPropertiesEditionPart_FormatLabel);
-		format = new EMFComboViewer(parent);
+		format = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		format.setContentProvider(new ArrayContentProvider());
 		format.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData formatData = new GridData(GridData.FILL_HORIZONTAL);
@@ -1460,7 +1459,7 @@ public class NamedEndpointPropertiesEditionPartForm extends SectionPropertiesEdi
 	
 	protected Composite createOptimizeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.NamedEndpoint.Properties.optimize, EsbMessages.NamedEndpointPropertiesEditionPart_OptimizeLabel);
-		optimize = new EMFComboViewer(parent);
+		optimize = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		optimize.setContentProvider(new ArrayContentProvider());
 		optimize.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData optimizeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -1669,7 +1668,7 @@ public class NamedEndpointPropertiesEditionPartForm extends SectionPropertiesEdi
      */
 	protected Composite createReferringEndpointTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control referringEndpointTypeLabel = createDescription(parent, EsbViewsRepository.NamedEndpoint.Properties.referringEndpointType, EsbMessages.NamedEndpointPropertiesEditionPart_ReferringEndpointTypeLabel);
-		referringEndpointType = new EMFComboViewer(parent);
+		referringEndpointType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		referringEndpointType.setContentProvider(new ArrayContentProvider());
 		referringEndpointType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData referringEndpointTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -2866,7 +2865,7 @@ public class NamedEndpointPropertiesEditionPartForm extends SectionPropertiesEdi
             dynamicReferenceKeyExpression = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
         }
         String initValueExpression = dynamicReferenceKeyExpression.getPropertyValue().isEmpty() ? "" : dynamicReferenceKeyExpression.getPropertyValue();
-        dynamicReferenceKeyText = widgetFactory.createText(parent, initValueExpression);
+        dynamicReferenceKeyText = widgetFactory.createText(parent, initValueExpression, SWT.READ_ONLY);
         dynamicReferenceKeyText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
         widgetFactory.paintBordersFor(parent);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
@@ -2915,7 +2914,7 @@ public class NamedEndpointPropertiesEditionPartForm extends SectionPropertiesEdi
             staticReferenceKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
         }
         String initValueExpression = staticReferenceKey.getKeyValue().isEmpty() ? "" : staticReferenceKey.getKeyValue();
-        staticReferenceKeyText = widgetFactory.createText(parent, initValueExpression);
+        staticReferenceKeyText = widgetFactory.createText(parent, initValueExpression, SWT.READ_ONLY);
         staticReferenceKeyText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
         widgetFactory.paintBordersFor(parent);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);

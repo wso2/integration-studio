@@ -638,7 +638,7 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
         Control callbackHandlerLabel = createDescription(parent,
                 EsbViewsRepository.EntitlementMediator.Properties.callbackHandler,
                 EsbMessages.EntitlementMediatorPropertiesEditionPart_CallbackHandlerLabel);
-        callbackHandler = new EMFComboViewer(parent);
+        callbackHandler = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
         callbackHandler.setContentProvider(new ArrayContentProvider());
         callbackHandler
                 .setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -919,7 +919,7 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
         Control entitlementClientTypeLabel = createDescription(parent,
                 EsbViewsRepository.EntitlementMediator.Properties.entitlementClientType,
                 EsbMessages.EntitlementMediatorPropertiesEditionPart_EntitlementClientTypeLabel);
-        entitlementClientType = new EMFComboViewer(parent);
+        entitlementClientType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
         entitlementClientType.setContentProvider(new ArrayContentProvider());
         entitlementClientType
                 .setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -978,7 +978,7 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
         Control onRejectSequenceTypeLabel = createDescription(filterOnRejectionSubPropertiesGroup,
                 EsbViewsRepository.EntitlementMediator.Properties.onRejectSequenceType,
                 EsbMessages.EntitlementMediatorPropertiesEditionPart_OnRejectSequenceTypeLabel);
-        onRejectSequenceType = new EMFComboViewer(filterOnRejectionSubPropertiesGroup);
+        onRejectSequenceType = new EMFComboViewer(filterOnRejectionSubPropertiesGroup, SWT.SCROLL_LOCK);
         onRejectSequenceType.setContentProvider(new ArrayContentProvider());
         onRejectSequenceType
                 .setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -1037,7 +1037,7 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
         Control onAcceptSequenceTypeLabel = createDescription(filterOnAcceptanceSubPropertiesGroup,
                 EsbViewsRepository.EntitlementMediator.Properties.onAcceptSequenceType,
                 EsbMessages.EntitlementMediatorPropertiesEditionPart_OnAcceptSequenceTypeLabel);
-        onAcceptSequenceType = new EMFComboViewer(filterOnAcceptanceSubPropertiesGroup);
+        onAcceptSequenceType = new EMFComboViewer(filterOnAcceptanceSubPropertiesGroup, SWT.SCROLL_LOCK);
         onAcceptSequenceType.setContentProvider(new ArrayContentProvider());
         onAcceptSequenceType
                 .setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -1096,7 +1096,7 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
         Control adviceSequenceTypeLabel = createDescription(filterAdviceSubPropertiesGroup,
                 EsbViewsRepository.EntitlementMediator.Properties.adviceSequenceType,
                 EsbMessages.EntitlementMediatorPropertiesEditionPart_AdviceSequenceTypeLabel);
-        adviceSequenceType = new EMFComboViewer(filterAdviceSubPropertiesGroup);
+        adviceSequenceType = new EMFComboViewer(filterAdviceSubPropertiesGroup, SWT.SCROLL_LOCK);
         adviceSequenceType.setContentProvider(new ArrayContentProvider());
         adviceSequenceType
                 .setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -1154,7 +1154,7 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
         Control obligationSequenceTypeLabel = createDescription(filterObligationsSubPropertiesGroup,
                 EsbViewsRepository.EntitlementMediator.Properties.obligationsSequenceType,
                 EsbMessages.EntitlementMediatorPropertiesEditionPart_ObligationsSequenceTypeLabel);
-        obligationsSequenceType = new EMFComboViewer(filterObligationsSubPropertiesGroup);
+        obligationsSequenceType = new EMFComboViewer(filterObligationsSubPropertiesGroup, SWT.SCROLL_LOCK);
         obligationsSequenceType.setContentProvider(new ArrayContentProvider());
         obligationsSequenceType
                 .setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));

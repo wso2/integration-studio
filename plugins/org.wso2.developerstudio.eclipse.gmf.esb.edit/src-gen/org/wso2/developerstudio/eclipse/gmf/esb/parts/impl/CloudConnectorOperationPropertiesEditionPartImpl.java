@@ -629,7 +629,7 @@ public class CloudConnectorOperationPropertiesEditionPartImpl extends CompositeP
 	
 	protected Composite createParameterEditorTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.CloudConnectorOperation.Properties.parameterEditorType, EsbMessages.CloudConnectorOperationPropertiesEditionPart_ParameterEditorTypeLabel);
-		parameterEditorType = new EMFComboViewer(parent);
+		parameterEditorType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		parameterEditorType.setContentProvider(new ArrayContentProvider());
 		parameterEditorType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData parameterEditorTypeData = new GridData(GridData.FILL_HORIZONTAL);

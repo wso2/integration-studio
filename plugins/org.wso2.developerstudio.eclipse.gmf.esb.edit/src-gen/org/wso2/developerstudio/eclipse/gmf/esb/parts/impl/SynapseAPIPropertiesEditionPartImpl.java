@@ -584,7 +584,7 @@ public class SynapseAPIPropertiesEditionPartImpl extends CompositePropertiesEdit
 	
 	protected Composite createVersionTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.SynapseAPI.Handler.Properties.versionType, EsbMessages.SynapseAPIPropertiesEditionPart_VersionTypeLabel);
-		versionType = new EMFComboViewer(parent);
+		versionType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		versionType.setContentProvider(new ArrayContentProvider());
 		versionType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData versionTypeData = new GridData(GridData.FILL_HORIZONTAL);

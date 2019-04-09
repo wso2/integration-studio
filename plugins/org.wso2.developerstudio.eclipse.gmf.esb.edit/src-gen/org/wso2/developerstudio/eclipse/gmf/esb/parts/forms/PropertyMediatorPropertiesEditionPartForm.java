@@ -286,7 +286,7 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
      */
 	protected Composite createPropertyNameEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control propertyNameLabel = createDescription(parent, EsbViewsRepository.PropertyMediator.Properties.propertyName, EsbMessages.PropertyMediatorPropertiesEditionPart_PropertyNameLabel);
-		propertyName = new EMFComboViewer(parent);
+		propertyName = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		propertyName.setContentProvider(new ArrayContentProvider());
 		propertyName.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData propertyNameData = new GridData(GridData.FILL_HORIZONTAL);
@@ -330,7 +330,7 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
      */	
 	protected Composite createPropertyDataTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control propertyDataTypeLabel = createDescription(parent, EsbViewsRepository.PropertyMediator.Properties.propertyDataType, EsbMessages.PropertyMediatorPropertiesEditionPart_PropertyDataTypeLabel);
-		propertyDataType = new EMFComboViewer(parent);
+		propertyDataType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		propertyDataType.setContentProvider(new ArrayContentProvider());
 		propertyDataType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData propertyDataTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -374,7 +374,7 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
      */	
 	protected Composite createPropertyActionEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control propertyActionLabel = createDescription(parent, EsbViewsRepository.PropertyMediator.Properties.propertyAction, EsbMessages.PropertyMediatorPropertiesEditionPart_PropertyActionLabel);
-		propertyAction = new EMFComboViewer(parent);
+		propertyAction = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		propertyAction.setContentProvider(new ArrayContentProvider());
 		propertyAction.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData propertyActionData = new GridData(GridData.FILL_HORIZONTAL);
@@ -419,7 +419,7 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
      */
 	protected Composite createPropertyScopeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control propertyScopeLabel = createDescription(parent, EsbViewsRepository.PropertyMediator.Properties.propertyScope, EsbMessages.PropertyMediatorPropertiesEditionPart_PropertyScopeLabel);
-		propertyScope = new EMFComboViewer(parent);
+		propertyScope = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		propertyScope.setContentProvider(new ArrayContentProvider());
 		propertyScope.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData propertyScopeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -465,7 +465,7 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
 	protected Composite createValueTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 	    filterValuesSubPropertiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent, "Value", true);
 		Control valueTypeLabel = createDescription(filterValuesSubPropertiesGroup, EsbViewsRepository.PropertyMediator.Properties.valueType, EsbMessages.PropertyMediatorPropertiesEditionPart_ValueTypeLabel);
-		valueType = new EMFComboViewer(filterValuesSubPropertiesGroup);
+		valueType = new EMFComboViewer(filterValuesSubPropertiesGroup, SWT.SCROLL_LOCK);
 		valueType.setContentProvider(new ArrayContentProvider());
 		valueType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData valueTypeData = new GridData(GridData.FILL_HORIZONTAL);

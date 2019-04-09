@@ -23,9 +23,11 @@ import org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.CacheMediatorInputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.CacheMediatorOnHitOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.CacheMediatorOutputConnector;
+import org.wso2.developerstudio.eclipse.gmf.esb.CacheMediatorType;
 import org.wso2.developerstudio.eclipse.gmf.esb.CacheOnHitBranch;
 import org.wso2.developerstudio.eclipse.gmf.esb.CacheProtocolType;
 import org.wso2.developerstudio.eclipse.gmf.esb.CacheScope;
+import org.wso2.developerstudio.eclipse.gmf.esb.CacheScopeType;
 import org.wso2.developerstudio.eclipse.gmf.esb.CacheSequenceType;
 import org.wso2.developerstudio.eclipse.gmf.esb.CacheType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
@@ -61,6 +63,11 @@ import org.wso2.developerstudio.eclipse.platform.core.utils.DeveloperStudioProvi
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CacheMediatorImpl#getResponseCodes <em>Response Codes</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CacheMediatorImpl#isEnableCacheControl <em>Enable Cache Control</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CacheMediatorImpl#isIncludeAgeHeader <em>Include Age Header</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CacheMediatorImpl#getId <em>Id</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CacheMediatorImpl#getHashGeneratorAttribute <em>Hash Generator Attribute</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CacheMediatorImpl#getScope <em>Scope</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CacheMediatorImpl#getImplementationType <em>Implementation Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CacheMediatorImpl#getCacheMediatorImplementation <em>Cache Mediator Implementation</em>}</li>
  * </ul>
  *
  * @generated
@@ -356,6 +363,106 @@ public class CacheMediatorImpl extends MediatorImpl implements CacheMediator {
      * @ordered
      */
     protected boolean includeAgeHeader = INCLUDE_AGE_HEADER_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getId() <em>Id</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getId()
+     * @generated
+     * @ordered
+     */
+    protected static final String ID_EDEFAULT = "";
+
+    /**
+     * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getId()
+     * @generated
+     * @ordered
+     */
+    protected String id = ID_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getHashGeneratorAttribute() <em>Hash Generator Attribute</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getHashGeneratorAttribute()
+     * @generated
+     * @ordered
+     */
+    protected static final String HASH_GENERATOR_ATTRIBUTE_EDEFAULT = "org.wso2.carbon.mediator.cache.digest.DOMHASHGenerator";
+
+    /**
+     * The cached value of the '{@link #getHashGeneratorAttribute() <em>Hash Generator Attribute</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getHashGeneratorAttribute()
+     * @generated
+     * @ordered
+     */
+    protected String hashGeneratorAttribute = HASH_GENERATOR_ATTRIBUTE_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getScope() <em>Scope</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getScope()
+     * @generated
+     * @ordered
+     */
+    protected static final CacheScopeType SCOPE_EDEFAULT = CacheScopeType.PER_HOST;
+
+    /**
+     * The cached value of the '{@link #getScope() <em>Scope</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getScope()
+     * @generated
+     * @ordered
+     */
+    protected CacheScopeType scope = SCOPE_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getImplementationType() <em>Implementation Type</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getImplementationType()
+     * @generated
+     * @ordered
+     */
+    protected static final CacheImplementationType IMPLEMENTATION_TYPE_EDEFAULT = CacheImplementationType.MEMORY;
+
+    /**
+     * The cached value of the '{@link #getImplementationType() <em>Implementation Type</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getImplementationType()
+     * @generated
+     * @ordered
+     */
+    protected CacheImplementationType implementationType = IMPLEMENTATION_TYPE_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getCacheMediatorImplementation() <em>Cache Mediator Implementation</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getCacheMediatorImplementation()
+     * @generated
+     * @ordered
+     */
+    protected static final CacheMediatorType CACHE_MEDIATOR_IMPLEMENTATION_EDEFAULT = CacheMediatorType.NEW_IMPLEMENTATION;
+
+    /**
+     * The cached value of the '{@link #getCacheMediatorImplementation() <em>Cache Mediator Implementation</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getCacheMediatorImplementation()
+     * @generated
+     * @ordered
+     */
+    protected CacheMediatorType cacheMediatorImplementation = CACHE_MEDIATOR_IMPLEMENTATION_EDEFAULT;
 
     /**
      * <!-- begin-user-doc -->
@@ -860,6 +967,111 @@ public class CacheMediatorImpl extends MediatorImpl implements CacheMediator {
      * <!-- end-user-doc -->
      * @generated
      */
+    public String getId() {
+        return id;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setId(String newId) {
+        String oldId = id;
+        id = newId;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.CACHE_MEDIATOR__ID, oldId, id));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public String getHashGeneratorAttribute() {
+        return hashGeneratorAttribute;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setHashGeneratorAttribute(String newHashGeneratorAttribute) {
+        String oldHashGeneratorAttribute = hashGeneratorAttribute;
+        hashGeneratorAttribute = newHashGeneratorAttribute;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.CACHE_MEDIATOR__HASH_GENERATOR_ATTRIBUTE, oldHashGeneratorAttribute, hashGeneratorAttribute));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public CacheScopeType getScope() {
+        return scope;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setScope(CacheScopeType newScope) {
+        CacheScopeType oldScope = scope;
+        scope = newScope == null ? SCOPE_EDEFAULT : newScope;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.CACHE_MEDIATOR__SCOPE, oldScope, scope));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public CacheImplementationType getImplementationType() {
+        return implementationType;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setImplementationType(CacheImplementationType newImplementationType) {
+        CacheImplementationType oldImplementationType = implementationType;
+        implementationType = newImplementationType == null ? IMPLEMENTATION_TYPE_EDEFAULT : newImplementationType;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.CACHE_MEDIATOR__IMPLEMENTATION_TYPE, oldImplementationType, implementationType));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public CacheMediatorType getCacheMediatorImplementation() {
+        return cacheMediatorImplementation;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setCacheMediatorImplementation(CacheMediatorType newCacheMediatorImplementation) {
+        CacheMediatorType oldCacheMediatorImplementation = cacheMediatorImplementation;
+        cacheMediatorImplementation = newCacheMediatorImplementation == null ? CACHE_MEDIATOR_IMPLEMENTATION_EDEFAULT : newCacheMediatorImplementation;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.CACHE_MEDIATOR__CACHE_MEDIATOR_IMPLEMENTATION, oldCacheMediatorImplementation, cacheMediatorImplementation));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
 
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -921,6 +1133,16 @@ public class CacheMediatorImpl extends MediatorImpl implements CacheMediator {
                 return isEnableCacheControl();
             case EsbPackage.CACHE_MEDIATOR__INCLUDE_AGE_HEADER:
                 return isIncludeAgeHeader();
+            case EsbPackage.CACHE_MEDIATOR__ID:
+                return getId();
+            case EsbPackage.CACHE_MEDIATOR__HASH_GENERATOR_ATTRIBUTE:
+                return getHashGeneratorAttribute();
+            case EsbPackage.CACHE_MEDIATOR__SCOPE:
+                return getScope();
+            case EsbPackage.CACHE_MEDIATOR__IMPLEMENTATION_TYPE:
+                return getImplementationType();
+            case EsbPackage.CACHE_MEDIATOR__CACHE_MEDIATOR_IMPLEMENTATION:
+                return getCacheMediatorImplementation();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -984,6 +1206,21 @@ public class CacheMediatorImpl extends MediatorImpl implements CacheMediator {
                 return;
             case EsbPackage.CACHE_MEDIATOR__INCLUDE_AGE_HEADER:
                 setIncludeAgeHeader((Boolean)newValue);
+                return;
+            case EsbPackage.CACHE_MEDIATOR__ID:
+                setId((String)newValue);
+                return;
+            case EsbPackage.CACHE_MEDIATOR__HASH_GENERATOR_ATTRIBUTE:
+                setHashGeneratorAttribute((String)newValue);
+                return;
+            case EsbPackage.CACHE_MEDIATOR__SCOPE:
+                setScope((CacheScopeType)newValue);
+                return;
+            case EsbPackage.CACHE_MEDIATOR__IMPLEMENTATION_TYPE:
+                setImplementationType((CacheImplementationType)newValue);
+                return;
+            case EsbPackage.CACHE_MEDIATOR__CACHE_MEDIATOR_IMPLEMENTATION:
+                setCacheMediatorImplementation((CacheMediatorType)newValue);
                 return;
         }
         super.eSet(featureID, newValue);
@@ -1049,6 +1286,21 @@ public class CacheMediatorImpl extends MediatorImpl implements CacheMediator {
             case EsbPackage.CACHE_MEDIATOR__INCLUDE_AGE_HEADER:
                 setIncludeAgeHeader(INCLUDE_AGE_HEADER_EDEFAULT);
                 return;
+            case EsbPackage.CACHE_MEDIATOR__ID:
+                setId(ID_EDEFAULT);
+                return;
+            case EsbPackage.CACHE_MEDIATOR__HASH_GENERATOR_ATTRIBUTE:
+                setHashGeneratorAttribute(HASH_GENERATOR_ATTRIBUTE_EDEFAULT);
+                return;
+            case EsbPackage.CACHE_MEDIATOR__SCOPE:
+                setScope(SCOPE_EDEFAULT);
+                return;
+            case EsbPackage.CACHE_MEDIATOR__IMPLEMENTATION_TYPE:
+                setImplementationType(IMPLEMENTATION_TYPE_EDEFAULT);
+                return;
+            case EsbPackage.CACHE_MEDIATOR__CACHE_MEDIATOR_IMPLEMENTATION:
+                setCacheMediatorImplementation(CACHE_MEDIATOR_IMPLEMENTATION_EDEFAULT);
+                return;
         }
         super.eUnset(featureID);
     }
@@ -1096,6 +1348,16 @@ public class CacheMediatorImpl extends MediatorImpl implements CacheMediator {
                 return enableCacheControl != ENABLE_CACHE_CONTROL_EDEFAULT;
             case EsbPackage.CACHE_MEDIATOR__INCLUDE_AGE_HEADER:
                 return includeAgeHeader != INCLUDE_AGE_HEADER_EDEFAULT;
+            case EsbPackage.CACHE_MEDIATOR__ID:
+                return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
+            case EsbPackage.CACHE_MEDIATOR__HASH_GENERATOR_ATTRIBUTE:
+                return HASH_GENERATOR_ATTRIBUTE_EDEFAULT == null ? hashGeneratorAttribute != null : !HASH_GENERATOR_ATTRIBUTE_EDEFAULT.equals(hashGeneratorAttribute);
+            case EsbPackage.CACHE_MEDIATOR__SCOPE:
+                return scope != SCOPE_EDEFAULT;
+            case EsbPackage.CACHE_MEDIATOR__IMPLEMENTATION_TYPE:
+                return implementationType != IMPLEMENTATION_TYPE_EDEFAULT;
+            case EsbPackage.CACHE_MEDIATOR__CACHE_MEDIATOR_IMPLEMENTATION:
+                return cacheMediatorImplementation != CACHE_MEDIATOR_IMPLEMENTATION_EDEFAULT;
         }
         return super.eIsSet(featureID);
     }
@@ -1135,6 +1397,16 @@ public class CacheMediatorImpl extends MediatorImpl implements CacheMediator {
         result.append(enableCacheControl);
         result.append(", includeAgeHeader: ");
         result.append(includeAgeHeader);
+        result.append(", id: ");
+        result.append(id);
+        result.append(", hashGeneratorAttribute: ");
+        result.append(hashGeneratorAttribute);
+        result.append(", scope: ");
+        result.append(scope);
+        result.append(", implementationType: ");
+        result.append(implementationType);
+        result.append(", cacheMediatorImplementation: ");
+        result.append(cacheMediatorImplementation);
         result.append(')');
         return result.toString();
     }

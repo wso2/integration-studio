@@ -59,6 +59,7 @@ import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.KeyListener;
 import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -169,6 +170,8 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	protected Control[] securityPolicyElements;
 	protected Control[] inboundPolicyElements;
 	protected Control[] outboundPolicyElements;
+	
+	protected Composite filterAdvancedSubPropertiesGroup;
 	// End of user code
 
 	protected EMFComboViewer addressingVersion;
@@ -200,14 +203,13 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	 * 
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
-		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
-		Form form = scrolledForm.getForm();
+		Form form = widgetFactory.createForm(parent);
 		view = form.getBody();
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
 		createControls(widgetFactory, view);
-		return scrolledForm;
+		return form;
 	}
 
 	/**
@@ -238,19 +240,11 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 		endpointSuspendStateStep.addStep(EsbViewsRepository.WSDLEndPoint.EndpointSuspendState.suspendInitialDuration);
 		endpointSuspendStateStep.addStep(EsbViewsRepository.WSDLEndPoint.EndpointSuspendState.suspendMaximumDuration);
 		endpointSuspendStateStep.addStep(EsbViewsRepository.WSDLEndPoint.EndpointSuspendState.suspendProgressionFactor);
-		
+				
 		CompositionStep endpointTimeoutStateStep = wSDLEndPointStep.addStep(EsbViewsRepository.WSDLEndPoint.EndpointTimeoutState.class);
 		endpointTimeoutStateStep.addStep(EsbViewsRepository.WSDLEndPoint.EndpointTimeoutState.retryErrorCodes);
 		endpointTimeoutStateStep.addStep(EsbViewsRepository.WSDLEndPoint.EndpointTimeoutState.retryCount);
-		endpointTimeoutStateStep.addStep(EsbViewsRepository.WSDLEndPoint.EndpointTimeoutState.retryDelay);
-		
-		CompositionStep miscStep = wSDLEndPointStep.addStep(EsbViewsRepository.WSDLEndPoint.Misc.class);
-		miscStep.addStep(EsbViewsRepository.WSDLEndPoint.Misc.properties);
-		miscStep.addStep(EsbViewsRepository.WSDLEndPoint.Misc.optimize);
-		miscStep.addStep(EsbViewsRepository.WSDLEndPoint.Misc.description);
-		miscStep.addStep(EsbViewsRepository.WSDLEndPoint.Misc.wsdlUri);
-		miscStep.addStep(EsbViewsRepository.WSDLEndPoint.Misc.service);
-		miscStep.addStep(EsbViewsRepository.WSDLEndPoint.Misc.port);
+		endpointTimeoutStateStep.addStep(EsbViewsRepository.WSDLEndPoint.EndpointTimeoutState.retryDelay);	
 		
 		CompositionStep qosStep = wSDLEndPointStep.addStep(EsbViewsRepository.WSDLEndPoint.Qos.class);
 		qosStep.addStep(EsbViewsRepository.WSDLEndPoint.Qos.reliableMessagingEnabled);
@@ -266,12 +260,20 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 		CompositionStep timeoutStep = wSDLEndPointStep.addStep(EsbViewsRepository.WSDLEndPoint.Timeout.class);
 		timeoutStep.addStep(EsbViewsRepository.WSDLEndPoint.Timeout.timeOutDuration);
 		timeoutStep.addStep(EsbViewsRepository.WSDLEndPoint.Timeout.timeOutAction);
-		
+
+        CompositionStep miscStep = wSDLEndPointStep.addStep(EsbViewsRepository.WSDLEndPoint.Misc.class);
+        miscStep.addStep(EsbViewsRepository.WSDLEndPoint.Misc.properties);
+        miscStep.addStep(EsbViewsRepository.WSDLEndPoint.Misc.description); 
+        miscStep.addStep(EsbViewsRepository.WSDLEndPoint.Misc.optimize);
+        miscStep.addStep(EsbViewsRepository.WSDLEndPoint.Misc.wsdlUri);
+        miscStep.addStep(EsbViewsRepository.WSDLEndPoint.Misc.service);
+        miscStep.addStep(EsbViewsRepository.WSDLEndPoint.Misc.port);		
 		
 		composer = new PartComposer(wSDLEndPointStep) {
 
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
+			    // Start of user code
 				if (key == EsbViewsRepository.WSDLEndPoint.Properties.class) {
 					return createPropertiesGroup(widgetFactory, parent);
 				}
@@ -324,7 +326,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 					return createSuspendProgressionFactorText(widgetFactory, parent);
 				}
 				if (key == EsbViewsRepository.WSDLEndPoint.EndpointTimeoutState.class) {
-					return createEndpointTimeoutStateGroup(widgetFactory, parent);
+					return createEndpointTimeoutStateGroup(widgetFactory, filterAdvancedSubPropertiesGroup);
 				}
 				if (key == EsbViewsRepository.WSDLEndPoint.EndpointTimeoutState.retryErrorCodes) {
 					return createRetryErrorCodesText(widgetFactory, parent);
@@ -342,22 +344,22 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 					return createPropertiesTableComposition(widgetFactory, parent);
 				}
 				if (key == EsbViewsRepository.WSDLEndPoint.Misc.optimize) {
-					return createOptimizeEMFComboViewer(widgetFactory, parent);
+					return createOptimizeEMFComboViewer(widgetFactory, filterAdvancedSubPropertiesGroup);
 				}
 				if (key == EsbViewsRepository.WSDLEndPoint.Misc.description) {
 					return createDescriptionText(widgetFactory, parent);
 				}
 				if (key == EsbViewsRepository.WSDLEndPoint.Misc.wsdlUri) {
-					return createWsdlUriText(widgetFactory, parent);
+					return createWsdlUriText(widgetFactory, filterAdvancedSubPropertiesGroup);
 				}
 				if (key == EsbViewsRepository.WSDLEndPoint.Misc.service) {
-					return createServiceText(widgetFactory, parent);
+					return createServiceText(widgetFactory, filterAdvancedSubPropertiesGroup);
 				}
 				if (key == EsbViewsRepository.WSDLEndPoint.Misc.port) {
-					return createPortText(widgetFactory, parent);
+					return createPortText(widgetFactory, filterAdvancedSubPropertiesGroup);
 				}
 				if (key == EsbViewsRepository.WSDLEndPoint.Qos.class) {
-					return createQosGroup(widgetFactory, parent);
+					return createQosGroup(widgetFactory, filterAdvancedSubPropertiesGroup);
 				}
 				if (key == EsbViewsRepository.WSDLEndPoint.Qos.reliableMessagingEnabled) {
 					return createReliableMessagingEnabledCheckbox(widgetFactory, parent);
@@ -368,26 +370,18 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 				if (key == EsbViewsRepository.WSDLEndPoint.Qos.addressingEnabled) {
 					return createAddressingEnabledCheckbox(widgetFactory, parent);
 				}
-				// Start of user code for reliableMessagingPolicy addToPart creation
 				if (key == EsbViewsRepository.WSDLEndPoint.Qos.reliableMessagingPolicy) {
                     return createReliableMessagingPolicy(widgetFactory, parent);
                 }
-				// End of user code
-				// Start of user code for securityPolicy addToPart creation
 				if (key == EsbViewsRepository.WSDLEndPoint.Qos.securityPolicy) {
                     return createSecurityPolicy(widgetFactory, parent);
                 }
-				// End of user code
-				// Start of user code for inboundPolicy addToPart creation
 				if (key == EsbViewsRepository.WSDLEndPoint.Qos.inboundPolicy) {
                     return createInboundPolicy(widgetFactory, parent);
                 }
-				// End of user code
-				// Start of user code for outboundPolicy addToPart creation
 				if (key == EsbViewsRepository.WSDLEndPoint.Qos.outboundPolicy) {
                     return createOutboundPolicy(widgetFactory, parent);
                 }
-				// End of user code
 				if (key == EsbViewsRepository.WSDLEndPoint.Qos.addressingVersion) {
 					return createAddressingVersionEMFComboViewer(widgetFactory, parent);
 				}
@@ -395,7 +389,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 					return createAddressingSeparateListenerCheckbox(widgetFactory, parent);
 				}
 				if (key == EsbViewsRepository.WSDLEndPoint.Timeout.class) {
-					return createTimeoutGroup(widgetFactory, parent);
+					return createTimeoutGroup(widgetFactory, filterAdvancedSubPropertiesGroup);
 				}
 				if (key == EsbViewsRepository.WSDLEndPoint.Timeout.timeOutDuration) {
 					return createTimeOutDurationText(widgetFactory, parent);
@@ -403,6 +397,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 				if (key == EsbViewsRepository.WSDLEndPoint.Timeout.timeOutAction) {
 					return createTimeOutActionEMFComboViewer(widgetFactory, parent);
 				}
+				// End of user code
 				return parent;
 			}
 		};
@@ -724,7 +719,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
      */
 	protected Composite createFormatEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control formatLabel = createDescription(parent, EsbViewsRepository.WSDLEndPoint.Basic.format, EsbMessages.WSDLEndPointPropertiesEditionPart_FormatLabel);
-		format = new EMFComboViewer(parent);
+		format = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		format.setContentProvider(new ArrayContentProvider());
 		format.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData formatData = new GridData(GridData.FILL_HORIZONTAL);
@@ -814,7 +809,9 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	}
 
 	protected Composite createEndpointSuspendStateGroup(FormToolkit widgetFactory, final Composite parent) {
-		Section endpointSuspendStateSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
+	    filterAdvancedSubPropertiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent, "Advanced", false);
+	    
+		Section endpointSuspendStateSection = widgetFactory.createSection(filterAdvancedSubPropertiesGroup, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		endpointSuspendStateSection.setText(EsbMessages.WSDLEndPointPropertiesEditionPart_EndpointSuspendStateGroupLabel);
 		GridData endpointSuspendStateSectionData = new GridData(GridData.FILL_HORIZONTAL);
 		endpointSuspendStateSectionData.horizontalSpan = 3;
@@ -1376,7 +1373,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
      */
 	protected Composite createOptimizeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control optimizeLable = createDescription(parent, EsbViewsRepository.WSDLEndPoint.Misc.optimize, EsbMessages.WSDLEndPointPropertiesEditionPart_OptimizeLabel);
-		optimize = new EMFComboViewer(parent);
+		optimize = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		optimize.setContentProvider(new ArrayContentProvider());
 		optimize.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData optimizeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -1801,7 +1798,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
      */
 	protected Composite createAddressingVersionEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control addressingVersionLabel = createDescription(parent, EsbViewsRepository.WSDLEndPoint.Qos.addressingVersion, EsbMessages.WSDLEndPointPropertiesEditionPart_AddressingVersionLabel);
-		addressingVersion = new EMFComboViewer(parent);
+		addressingVersion = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		addressingVersion.setContentProvider(new ArrayContentProvider());
 		addressingVersion.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData addressingVersionData = new GridData(GridData.FILL_HORIZONTAL);
@@ -1942,7 +1939,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 
 	protected Composite createTimeOutActionEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.WSDLEndPoint.Timeout.timeOutAction, EsbMessages.WSDLEndPointPropertiesEditionPart_TimeOutActionLabel);
-		timeOutAction = new EMFComboViewer(parent);
+		timeOutAction = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		timeOutAction.setContentProvider(new ArrayContentProvider());
 		timeOutAction.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData timeOutActionData = new GridData(GridData.FILL_HORIZONTAL);
@@ -3181,7 +3178,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
             reliableMessagingPolicy = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
         }
         String initReliableMessagingPolicy = reliableMessagingPolicy.getKeyValue().isEmpty() ? "" : reliableMessagingPolicy.getKeyValue();
-        reliableMessagingPolicyText = widgetFactory.createText(parent, initReliableMessagingPolicy);
+        reliableMessagingPolicyText = widgetFactory.createText(parent, initReliableMessagingPolicy, SWT.READ_ONLY);
         reliableMessagingPolicyText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
         widgetFactory.paintBordersFor(parent);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
@@ -3211,6 +3208,28 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 
             }
         });
+        
+        reliableMessagingPolicyText.addKeyListener(new KeyListener() {
+            
+            @Override
+            public void keyReleased(KeyEvent e) {
+                if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                    EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(parent.getShell(),
+                            SWT.NULL, reliableMessagingPolicy, new ArrayList<NamedEntityDescriptor>());
+                    dialog.open();
+                    reliableMessagingPolicyText.setText(reliableMessagingPolicy.getKeyValue());
+                    propertiesEditionComponent
+                            .firePropertiesChanged(new PropertiesEditionEvent(WSDLEndPointPropertiesEditionPartForm.this,
+                                    EsbViewsRepository.WSDLEndPoint.Qos.reliableMessagingPolicy, PropertiesEditionEvent.COMMIT,
+                                    PropertiesEditionEvent.SET, null, getReliableMessagingPolicy()));
+                }
+            }
+            
+            @Override
+            public void keyPressed(KeyEvent e) {}
+            
+        });
+        
         EditingUtils.setID(reliableMessagingPolicyText, EsbViewsRepository.WSDLEndPoint.Qos.reliableMessagingPolicy);
         EditingUtils.setEEFtype(reliableMessagingPolicyText, "eef::Text");
         Control reliableMessagingPolicyHelp = FormUtils
@@ -3230,7 +3249,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
             securityPolicy = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
         }
         String initSecurityPolicy = securityPolicy.getKeyValue().isEmpty() ? "" : securityPolicy.getKeyValue();
-        securityPolicyText = widgetFactory.createText(parent, initSecurityPolicy);
+        securityPolicyText = widgetFactory.createText(parent, initSecurityPolicy, SWT.READ_ONLY);
         securityPolicyText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
         widgetFactory.paintBordersFor(parent);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
@@ -3260,6 +3279,28 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 
             }
         });
+        
+        securityPolicyText.addKeyListener(new KeyListener() {
+            
+            @Override
+            public void keyReleased(KeyEvent e) {
+                if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                    EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(parent.getShell(),
+                            SWT.NULL, securityPolicy, new ArrayList<NamedEntityDescriptor>());
+                    dialog.open();
+                    securityPolicyText.setText(securityPolicy.getKeyValue());
+                    propertiesEditionComponent
+                            .firePropertiesChanged(new PropertiesEditionEvent(WSDLEndPointPropertiesEditionPartForm.this,
+                                    EsbViewsRepository.WSDLEndPoint.Qos.securityPolicy, PropertiesEditionEvent.COMMIT,
+                                    PropertiesEditionEvent.SET, null, getSecurityPolicy()));
+                }
+            }
+            
+            @Override
+            public void keyPressed(KeyEvent e) {}
+            
+        });
+        
         EditingUtils.setID(securityPolicyText, EsbViewsRepository.WSDLEndPoint.Qos.securityPolicy);
         EditingUtils.setEEFtype(securityPolicyText, "eef::Text");
         Control securityPolicyHelp = FormUtils
@@ -3279,7 +3320,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
             inboundPolicy = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
         }
         String initInboundPolicy = inboundPolicy.getKeyValue().isEmpty() ? "" : inboundPolicy.getKeyValue();
-        inboundPolicyText = widgetFactory.createText(parent, initInboundPolicy);
+        inboundPolicyText = widgetFactory.createText(parent, initInboundPolicy, SWT.READ_ONLY);
         inboundPolicyText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
         widgetFactory.paintBordersFor(parent);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
@@ -3309,6 +3350,28 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 
             }
         });
+        
+        inboundPolicyText.addKeyListener(new KeyListener() {
+            
+            @Override
+            public void keyReleased(KeyEvent e) {
+                if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                    EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(parent.getShell(),
+                            SWT.NULL, inboundPolicy, new ArrayList<NamedEntityDescriptor>());
+                    dialog.open();
+                    inboundPolicyText.setText(inboundPolicy.getKeyValue());
+                    propertiesEditionComponent
+                            .firePropertiesChanged(new PropertiesEditionEvent(WSDLEndPointPropertiesEditionPartForm.this,
+                                    EsbViewsRepository.WSDLEndPoint.Qos.inboundPolicy, PropertiesEditionEvent.COMMIT,
+                                    PropertiesEditionEvent.SET, null, getInboundPolicy()));
+                }
+            }
+            
+            @Override
+            public void keyPressed(KeyEvent e) {}
+            
+        });
+        
         EditingUtils.setID(inboundPolicyText, EsbViewsRepository.WSDLEndPoint.Qos.inboundPolicy);
         EditingUtils.setEEFtype(inboundPolicyText, "eef::Text");
         Control inboundPolicyHelp = FormUtils
@@ -3328,7 +3391,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
             outboundPolicy = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
         }
         String initOutboundPolicy = outboundPolicy.getKeyValue().isEmpty() ? "" : outboundPolicy.getKeyValue();
-        outboundPolicyText = widgetFactory.createText(parent, initOutboundPolicy);
+        outboundPolicyText = widgetFactory.createText(parent, initOutboundPolicy, SWT.READ_ONLY);
         outboundPolicyText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
         widgetFactory.paintBordersFor(parent);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
@@ -3358,6 +3421,28 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 
             }
         });
+        
+        outboundPolicyText.addKeyListener(new KeyListener() {
+            
+            @Override
+            public void keyReleased(KeyEvent e) {
+                if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                    EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(parent.getShell(),
+                            SWT.NULL, outboundPolicy, new ArrayList<NamedEntityDescriptor>());
+                    dialog.open();
+                    outboundPolicyText.setText(outboundPolicy.getKeyValue());
+                    propertiesEditionComponent
+                            .firePropertiesChanged(new PropertiesEditionEvent(WSDLEndPointPropertiesEditionPartForm.this,
+                                    EsbViewsRepository.WSDLEndPoint.Qos.outboundPolicy, PropertiesEditionEvent.COMMIT,
+                                    PropertiesEditionEvent.SET, null, getOutboundPolicy()));
+                }
+            }
+            
+            @Override
+            public void keyPressed(KeyEvent e) {}
+            
+        });
+        
         EditingUtils.setID(outboundPolicyText, EsbViewsRepository.WSDLEndPoint.Qos.outboundPolicy);
         EditingUtils.setEEFtype(outboundPolicyText, "eef::Text");
         Control outboundPolicyHelp = FormUtils

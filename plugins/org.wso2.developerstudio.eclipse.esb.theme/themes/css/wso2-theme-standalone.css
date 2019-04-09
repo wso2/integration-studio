@@ -109,3 +109,8 @@ Section {
 Section Label{
  	font-weight: lighter;
 }
+
+CTabFolder#org-eclipse-e4-primaryDataStack,
+CTabFolder#topLeft,CTabFolder#right ,CTabFolder#bottomLeft,CTabFolder#bottom {
+  swt-outer-keyline-color: rgb(189, 195, 199);
+}

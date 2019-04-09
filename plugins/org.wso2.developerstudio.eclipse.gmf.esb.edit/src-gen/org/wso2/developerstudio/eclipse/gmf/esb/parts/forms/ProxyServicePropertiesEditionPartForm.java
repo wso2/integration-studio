@@ -61,6 +61,7 @@ import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.KeyListener;
 import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -316,9 +317,9 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 		wsdlStep.addStep(EsbViewsRepository.ProxyService.Wsdl.wsdlType);
 		wsdlStep.addStep(EsbViewsRepository.ProxyService.Wsdl.wsdlXML);
 		wsdlStep.addStep(EsbViewsRepository.ProxyService.Wsdl.wsdlURL);
+		wsdlStep.addStep(EsbViewsRepository.ProxyService.Wsdl.wsdlKey);
 		wsdlStep.addStep(EsbViewsRepository.ProxyService.Wsdl.wsdlResources);
 		wsdlStep.addStep(EsbViewsRepository.ProxyService.Wsdl.preservePolicy);
-		wsdlStep.addStep(EsbViewsRepository.ProxyService.Wsdl.wsdlKey);
 		wsdlStep.addStep(EsbViewsRepository.ProxyService.Wsdl.wsdlEndpoint);
 		
 		CompositionStep propertiesStep = proxyServiceStep.addStep(EsbViewsRepository.ProxyService.Properties.class);
@@ -899,7 +900,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
      */
 	protected Composite createEndpointTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control endpointTypeLabel = createDescription(parent, EsbViewsRepository.ProxyService.Endpoint.endpointType, EsbMessages.ProxyServicePropertiesEditionPart_EndpointTypeLabel);
-		endpointType = new EMFComboViewer(parent);
+		endpointType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		endpointType.setContentProvider(new ArrayContentProvider());
 		endpointType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData endpointTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -1019,7 +1020,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
      */
 	protected Composite createFaultSequenceTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control faultSequenceTypeLabel = createDescription(parent, EsbViewsRepository.ProxyService.FaultSequence.faultSequenceType, EsbMessages.ProxyServicePropertiesEditionPart_FaultSequenceTypeLabel);
-		faultSequenceType = new EMFComboViewer(parent);
+		faultSequenceType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		faultSequenceType.setContentProvider(new ArrayContentProvider());
 		faultSequenceType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData faultSequenceTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -1139,7 +1140,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
      */
 	protected Composite createInSequenceTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control inSeqTypeLabel = createDescription(parent, EsbViewsRepository.ProxyService.InSequence.inSequenceType, EsbMessages.ProxyServicePropertiesEditionPart_InSequenceTypeLabel);
-		inSequenceType = new EMFComboViewer(parent);
+		inSequenceType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		inSequenceType.setContentProvider(new ArrayContentProvider());
 		inSequenceType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData inSequenceTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -1259,7 +1260,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
      */
 	protected Composite createOutSequenceTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control outSeqTypeLabel = createDescription(parent, EsbViewsRepository.ProxyService.OutSequence.outSequenceType, EsbMessages.ProxyServicePropertiesEditionPart_OutSequenceTypeLabel);
-		outSequenceType = new EMFComboViewer(parent);
+		outSequenceType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		outSequenceType.setContentProvider(new ArrayContentProvider());
 		outSequenceType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData outSequenceTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -1590,7 +1591,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
      */
 	protected Composite createWsdlTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control wsdlTypeLabel = createDescription(parent, EsbViewsRepository.ProxyService.Wsdl.wsdlType, EsbMessages.ProxyServicePropertiesEditionPart_WsdlTypeLabel);
-		wsdlType = new EMFComboViewer(parent);
+		wsdlType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		wsdlType.setContentProvider(new ArrayContentProvider());
 		wsdlType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData wsdlTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -1623,10 +1624,11 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
      */
 	protected Composite createWsdlXMLText(FormToolkit widgetFactory, Composite parent) {
 		Control wsdlXMLLabel = createDescription(parent, EsbViewsRepository.ProxyService.Wsdl.wsdlXML, EsbMessages.ProxyServicePropertiesEditionPart_WsdlXMLLabel);
-		wsdlXML = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+		wsdlXML = new Text(parent, SWT.MULTI | SWT.V_SCROLL | SWT.BORDER);
 		wsdlXML.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData wsdlXMLData = new GridData(GridData.FILL_HORIZONTAL);
+		wsdlXMLData.heightHint = 80;
 		wsdlXML.setLayoutData(wsdlXMLData);
 		wsdlXML.addFocusListener(new FocusAdapter() {
 			/**
@@ -1665,20 +1667,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 				}
 			}
 		});
-		wsdlXML.addKeyListener(new KeyAdapter() {
-			/**
-			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ProxyServicePropertiesEditionPartForm.this, EsbViewsRepository.ProxyService.Wsdl.wsdlXML, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, wsdlXML.getText()));
-				}
-			}
-		});
+
 		EditingUtils.setID(wsdlXML, EsbViewsRepository.ProxyService.Wsdl.wsdlXML);
 		EditingUtils.setEEFtype(wsdlXML, "eef::Text"); //$NON-NLS-1$
 		Control wsdlXMLHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.ProxyService.Wsdl.wsdlXML, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
@@ -3497,7 +3486,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
             onError = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
         }
         String initOnError = onError.getKeyValue().isEmpty() ? "" : onError.getKeyValue();
-        onErrorText = widgetFactory.createText(parent, initOnError);
+        onErrorText = widgetFactory.createText(parent, initOnError, SWT.READ_ONLY);
         onErrorText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
         widgetFactory.paintBordersFor(parent);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
@@ -3527,6 +3516,28 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 
             }
         });
+        
+        onErrorText.addKeyListener(new KeyListener() {
+            
+            @Override
+            public void keyReleased(KeyEvent e) {
+                 if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                     EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(parent.getShell(),
+                             SWT.NULL, onError, new ArrayList<NamedEntityDescriptor>());
+                     dialog.open();
+                     onErrorText.setText(onError.getKeyValue());
+                     propertiesEditionComponent
+                             .firePropertiesChanged(new PropertiesEditionEvent(ProxyServicePropertiesEditionPartForm.this,
+                                     EsbViewsRepository.ProxyService.Basic.onError, PropertiesEditionEvent.COMMIT,
+                                     PropertiesEditionEvent.SET, null, getOnError()));
+                 }
+            }
+            
+            @Override
+            public void keyPressed(KeyEvent e) {}
+            
+        });
+        
         EditingUtils.setID(onErrorText, EsbViewsRepository.ProxyService.Basic.onError);
         EditingUtils.setEEFtype(onErrorText, "eef::Text");
         Control onErrorHelp = FormUtils
@@ -3546,7 +3557,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	            faultSequenceKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
 	        }
 	        String initSequenceKey = faultSequenceKey.getKeyValue().isEmpty() ? "" : faultSequenceKey.getKeyValue();
-	        faultSequenceKeyText = widgetFactory.createText(parent, initSequenceKey);
+	        faultSequenceKeyText = widgetFactory.createText(parent, initSequenceKey, SWT.READ_ONLY);
 	        faultSequenceKeyText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 	        widgetFactory.paintBordersFor(parent);
 	        GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
@@ -3576,6 +3587,28 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 
 	            }
 	        });
+	        
+	        faultSequenceKeyText.addKeyListener(new KeyListener() {
+                
+                @Override
+                public void keyReleased(KeyEvent e) {
+                    if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                        EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(parent.getShell(),
+                                SWT.NULL, faultSequenceKey, new ArrayList<NamedEntityDescriptor>());
+                        dialog.open();
+                        faultSequenceKeyText.setText(faultSequenceKey.getKeyValue());
+                        propertiesEditionComponent
+                                .firePropertiesChanged(new PropertiesEditionEvent(ProxyServicePropertiesEditionPartForm.this,
+                                        EsbViewsRepository.ProxyService.FaultSequence.faultSequenceKey, PropertiesEditionEvent.COMMIT,
+                                        PropertiesEditionEvent.SET, null, getFaultSequenceKey()));
+                    }
+                }
+                
+                @Override
+                public void keyPressed(KeyEvent e) {}
+                
+            });
+	        
 	        EditingUtils.setID(faultSequenceKeyText, EsbViewsRepository.ProxyService.FaultSequence.faultSequenceKey);
 	        EditingUtils.setEEFtype(faultSequenceKeyText, "eef::Text");
 	        Control sequenceKeyHelp = FormUtils
@@ -3625,6 +3658,28 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 
 	            }
 	        });
+	        
+	        faultSequenceOnErrorText.addKeyListener(new KeyListener() {
+                
+                @Override
+                public void keyReleased(KeyEvent e) {
+                    if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                        EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(parent.getShell(),
+                                SWT.NULL, faultSequenceOnError, new ArrayList<NamedEntityDescriptor>());
+                        dialog.open();
+                        faultSequenceOnErrorText.setText(faultSequenceOnError.getKeyValue());
+                        propertiesEditionComponent
+                                .firePropertiesChanged(new PropertiesEditionEvent(ProxyServicePropertiesEditionPartForm.this,
+                                        EsbViewsRepository.ProxyService.FaultSequence.faultSequenceOnError, PropertiesEditionEvent.COMMIT,
+                                        PropertiesEditionEvent.SET, null, getFaultSequenceOnError()));
+                    }
+                }
+                
+                @Override
+                public void keyPressed(KeyEvent e) {}
+                
+            });
+	        
 	        EditingUtils.setID(faultSequenceOnErrorText, EsbViewsRepository.ProxyService.FaultSequence.faultSequenceOnError);
 	        EditingUtils.setEEFtype(faultSequenceOnErrorText, "eef::Text");
 	        Control onErrorHelp = FormUtils
@@ -3644,7 +3699,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	            endpointKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
 	        }
 	        String initEndpointKey = endpointKey.getKeyValue().isEmpty() ? "" : endpointKey.getKeyValue();
-	        endpointKeyText = widgetFactory.createText(parent, initEndpointKey);
+	        endpointKeyText = widgetFactory.createText(parent, initEndpointKey, SWT.READ_ONLY);
 	        endpointKeyText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 	        widgetFactory.paintBordersFor(parent);
 	        GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
@@ -3674,6 +3729,28 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 
 	            }
 	        });
+	        
+	        endpointKeyText.addKeyListener(new KeyListener() {
+                
+                @Override
+                public void keyReleased(KeyEvent e) {
+                      if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                          EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(parent.getShell(),
+                                  SWT.NULL, endpointKey, new ArrayList<NamedEntityDescriptor>());
+                          dialog.open();
+                          endpointKeyText.setText(endpointKey.getKeyValue());
+                          propertiesEditionComponent
+                                  .firePropertiesChanged(new PropertiesEditionEvent(ProxyServicePropertiesEditionPartForm.this,
+                                          EsbViewsRepository.ProxyService.Endpoint.endpointKey, PropertiesEditionEvent.COMMIT,
+                                          PropertiesEditionEvent.SET, null, getEndpointKey()));
+                      }
+                }
+                
+                @Override
+                public void keyPressed(KeyEvent e) {}
+                
+            });
+	        
 	        EditingUtils.setID(endpointKeyText, EsbViewsRepository.ProxyService.Endpoint.endpointKey);
 	        EditingUtils.setEEFtype(endpointKeyText, "eef::Text");
 	        Control endpointKeyHelp = FormUtils
@@ -3693,7 +3770,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	            inSequenceKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
 	        }
 	        String initSequenceKey = inSequenceKey.getKeyValue().isEmpty() ? "" : inSequenceKey.getKeyValue();
-	        inSequenceKeyText = widgetFactory.createText(parent, initSequenceKey);
+	        inSequenceKeyText = widgetFactory.createText(parent, initSequenceKey, SWT.READ_ONLY);
 	        inSequenceKeyText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 	        widgetFactory.paintBordersFor(parent);
 	        GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
@@ -3723,6 +3800,28 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 
 	            }
 	        });
+	        
+	        inSequenceKeyText.addKeyListener(new KeyListener() {
+                
+                @Override
+                public void keyReleased(KeyEvent e) {
+                      if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                          EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(parent.getShell(),
+                                  SWT.NULL, inSequenceKey, new ArrayList<NamedEntityDescriptor>());
+                          dialog.open();
+                          inSequenceKeyText.setText(inSequenceKey.getKeyValue());
+                          propertiesEditionComponent
+                                  .firePropertiesChanged(new PropertiesEditionEvent(ProxyServicePropertiesEditionPartForm.this,
+                                          EsbViewsRepository.ProxyService.InSequence.inSequenceKey, PropertiesEditionEvent.COMMIT,
+                                          PropertiesEditionEvent.SET, null, getInSequenceKey()));
+                      }
+                }
+                
+                @Override
+                public void keyPressed(KeyEvent e) {}
+                
+            });
+	        
 	        EditingUtils.setID(inSequenceKeyText, EsbViewsRepository.ProxyService.InSequence.inSequenceKey);
 	        EditingUtils.setEEFtype(inSequenceKeyText, "eef::Text");
 	        Control sequenceKeyHelp = FormUtils
@@ -3742,7 +3841,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	            inSequenceOnError = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
 	        }
 	        String initSequenceOnError = inSequenceOnError.getKeyValue().isEmpty() ? "" : inSequenceOnError.getKeyValue();
-	        inSequenceOnErrorText = widgetFactory.createText(parent, initSequenceOnError);
+	        inSequenceOnErrorText = widgetFactory.createText(parent, initSequenceOnError, SWT.READ_ONLY);
 	        inSequenceOnErrorText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 	        widgetFactory.paintBordersFor(parent);
 	        GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
@@ -3772,6 +3871,28 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 
 	            }
 	        });
+	        
+	        inSequenceOnErrorText.addKeyListener(new KeyListener() {
+                
+                @Override
+                public void keyReleased(KeyEvent e) {
+                    if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                        EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(parent.getShell(),
+                                SWT.NULL, inSequenceOnError, new ArrayList<NamedEntityDescriptor>());
+                        dialog.open();
+                        inSequenceOnErrorText.setText(inSequenceOnError.getKeyValue());
+                        propertiesEditionComponent
+                                .firePropertiesChanged(new PropertiesEditionEvent(ProxyServicePropertiesEditionPartForm.this,
+                                        EsbViewsRepository.ProxyService.InSequence.inSequenceOnError, PropertiesEditionEvent.COMMIT,
+                                        PropertiesEditionEvent.SET, null, getInSequenceOnError()));
+                    }
+                }
+                
+                @Override
+                public void keyPressed(KeyEvent e) {}
+                
+            });
+	        
 	        EditingUtils.setID(inSequenceOnErrorText, EsbViewsRepository.ProxyService.InSequence.inSequenceOnError);
 	        EditingUtils.setEEFtype(inSequenceOnErrorText, "eef::Text");
 	        Control sinSequenceOnErrorHelp = FormUtils
@@ -3791,7 +3912,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	            outSequenceKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
 	        }
 	        String initSequenceKey = outSequenceKey.getKeyValue().isEmpty() ? "" : outSequenceKey.getKeyValue();
-	        outSequenceKeyText = widgetFactory.createText(parent, initSequenceKey);
+	        outSequenceKeyText = widgetFactory.createText(parent, initSequenceKey, SWT.READ_ONLY);
 	        outSequenceKeyText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 	        widgetFactory.paintBordersFor(parent);
 	        GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
@@ -3821,6 +3942,28 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 
 	            }
 	        });
+	        
+	        outSequenceKeyText.addKeyListener(new KeyListener() {
+                
+                @Override
+                public void keyReleased(KeyEvent e) {
+                    if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                        EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(parent.getShell(),
+                                SWT.NULL, outSequenceKey, new ArrayList<NamedEntityDescriptor>());
+                        dialog.open();
+                        outSequenceKeyText.setText(outSequenceKey.getKeyValue());
+                        propertiesEditionComponent
+                                .firePropertiesChanged(new PropertiesEditionEvent(ProxyServicePropertiesEditionPartForm.this,
+                                        EsbViewsRepository.ProxyService.OutSequence.outSequenceKey, PropertiesEditionEvent.COMMIT,
+                                        PropertiesEditionEvent.SET, null, getOutSequenceKey()));
+                    }
+                }
+                
+                @Override
+                public void keyPressed(KeyEvent e) {}
+                
+            });
+	        
 	        EditingUtils.setID(outSequenceKeyText, EsbViewsRepository.ProxyService.OutSequence.outSequenceKey);
 	        EditingUtils.setEEFtype(outSequenceKeyText, "eef::Text");
 	        Control sequenceKeyHelp = FormUtils
@@ -3840,7 +3983,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	            outSequenceOnError = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
 	        }
 	        String initSequenceKey = outSequenceOnError.getKeyValue().isEmpty() ? "" : outSequenceOnError.getKeyValue();
-	        outSequenceOnErrorText = widgetFactory.createText(parent, initSequenceKey);
+	        outSequenceOnErrorText = widgetFactory.createText(parent, initSequenceKey, SWT.READ_ONLY);
 	        outSequenceOnErrorText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 	        widgetFactory.paintBordersFor(parent);
 	        GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
@@ -3870,6 +4013,28 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 
 	            }
 	        });
+	        
+	        outSequenceOnErrorText.addKeyListener(new KeyListener() {
+                
+                @Override
+                public void keyReleased(KeyEvent e) {
+                    if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                        EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(parent.getShell(),
+                                SWT.NULL, outSequenceOnError, new ArrayList<NamedEntityDescriptor>());
+                        dialog.open();
+                        outSequenceOnErrorText.setText(outSequenceOnError.getKeyValue());
+                        propertiesEditionComponent
+                                .firePropertiesChanged(new PropertiesEditionEvent(ProxyServicePropertiesEditionPartForm.this,
+                                        EsbViewsRepository.ProxyService.OutSequence.outSequenceOnError, PropertiesEditionEvent.COMMIT,
+                                        PropertiesEditionEvent.SET, null, getOutSequenceOnError()));
+                    }
+                }
+                
+                @Override
+                public void keyPressed(KeyEvent e) {}
+                
+            });
+	        
 	        EditingUtils.setID(outSequenceOnErrorText, EsbViewsRepository.ProxyService.OutSequence.outSequenceOnError);
 	        EditingUtils.setEEFtype(outSequenceOnErrorText, "eef::Text");
 	        Control sequenceKeyHelp = FormUtils
@@ -3919,6 +4084,28 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 
 	            }
 	        });
+	        
+	        wsdlKeyText.addKeyListener(new KeyListener() {
+                
+                @Override
+                public void keyReleased(KeyEvent e) {
+                    if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                        EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(parent.getShell(),
+                                SWT.NULL, wsdlKey, new ArrayList<NamedEntityDescriptor>());
+                        dialog.open();
+                        wsdlKeyText.setText(wsdlKey.getKeyValue());
+                        propertiesEditionComponent
+                                .firePropertiesChanged(new PropertiesEditionEvent(ProxyServicePropertiesEditionPartForm.this,
+                                        EsbViewsRepository.ProxyService.Wsdl.wsdlKey, PropertiesEditionEvent.COMMIT,
+                                        PropertiesEditionEvent.SET, null, getWsdlKey()));
+                    }
+                }
+                
+                @Override
+                public void keyPressed(KeyEvent e) {}
+                
+            });
+	        
 	        EditingUtils.setID(wsdlKeyText, EsbViewsRepository.ProxyService.Wsdl.wsdlKey);
 	        EditingUtils.setEEFtype(wsdlKeyText, "eef::Text");
 	        Control sequenceKeyHelp = FormUtils
@@ -3938,7 +4125,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	            wsdlEndpoint = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
 	        }
 	        String initSequenceKey = wsdlEndpoint.getKeyValue().isEmpty() ? "" : wsdlEndpoint.getKeyValue();
-	        wsdlEndpointText = widgetFactory.createText(parent, initSequenceKey);
+	        wsdlEndpointText = widgetFactory.createText(parent, initSequenceKey, SWT.READ_ONLY);
 	        wsdlEndpointText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 	        widgetFactory.paintBordersFor(parent);
 	        GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
@@ -3968,6 +4155,28 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 
 	            }
 	        });
+	        
+	        wsdlEndpointText.addKeyListener(new KeyListener() {
+                
+                @Override
+                public void keyReleased(KeyEvent e) {
+                     if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                         EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(parent.getShell(),
+                                 SWT.NULL, wsdlEndpoint, new ArrayList<NamedEntityDescriptor>());
+                         dialog.open();
+                         wsdlEndpointText.setText(wsdlEndpoint.getKeyValue());
+                         propertiesEditionComponent
+                                 .firePropertiesChanged(new PropertiesEditionEvent(ProxyServicePropertiesEditionPartForm.this,
+                                         EsbViewsRepository.ProxyService.Wsdl.wsdlEndpoint, PropertiesEditionEvent.COMMIT,
+                                         PropertiesEditionEvent.SET, null, getWsdlEndpoint()));
+                     }
+                }
+                
+                @Override
+                public void keyPressed(KeyEvent e) {}
+                
+            });
+	        
 	        EditingUtils.setID(wsdlEndpointText, EsbViewsRepository.ProxyService.Wsdl.wsdlEndpoint);
 	        EditingUtils.setEEFtype(wsdlEndpointText, "eef::Text");
 	        Control sequenceKeyHelp = FormUtils

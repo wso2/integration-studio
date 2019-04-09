@@ -28,6 +28,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.KeyType;
 import org.wso2.developerstudio.eclipse.gmf.esb.ValidateSchema;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 
 /**
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.ValidateSchema} object.
@@ -170,16 +171,27 @@ public class ValidateSchemaItemProvider extends EsbNodeItemProvider {
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
+     * @generated NOT
      */
 
     @Override
     public String getText(Object object) {
-        KeyType labelValue = ((ValidateSchema)object).getValidateSchemaKeyType();
-        String label = labelValue == null ? null : labelValue.toString();
-        return label == null || label.length() == 0 ?
-            getString("_UI_ValidateSchema_type") :
-            getString("_UI_ValidateSchema_type") + " " + label;
+        KeyType keyType = ((ValidateSchema) object).getValidateSchemaKeyType();
+        String keyTypeLabel = keyType == null ? null : keyType.toString();
+        String staticKeyValue = ((ValidateSchema) object).getValidateStaticSchemaKey().toString();
+        String dynamicKeyValue = ((ValidateSchema) object).getValidateDynamicSchemaKey().toString();
+
+        if (keyTypeLabel.equalsIgnoreCase(KeyType.STATIC.getName())) {
+            return keyTypeLabel == null || keyTypeLabel.length() == 0 ? getString("_UI_ValidateSchema_type")
+                    : EEFPropertyViewUtil.spaceFormat(getString("_UI_ValidateSchema_type"))
+                            + EEFPropertyViewUtil.spaceFormat(keyTypeLabel)
+                            + EEFPropertyViewUtil.spaceFormat(staticKeyValue);
+        } else {
+            return keyTypeLabel == null || keyTypeLabel.length() == 0 ? getString("_UI_ValidateSchema_type")
+                    : EEFPropertyViewUtil.spaceFormat(getString("_UI_ValidateSchema_type"))
+                            + EEFPropertyViewUtil.spaceFormat(keyTypeLabel)
+                            + EEFPropertyViewUtil.spaceFormat(dynamicKeyValue);
+        }
     }
 
     /**

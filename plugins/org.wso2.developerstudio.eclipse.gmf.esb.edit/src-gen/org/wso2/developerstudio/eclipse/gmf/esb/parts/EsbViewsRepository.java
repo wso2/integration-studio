@@ -1549,7 +1549,7 @@ public class EsbViewsRepository {
 			public static String propertyValue = "esb::LogProperty::properties::propertyValue";
 			
 			// Start of user code for propertyExpression ElementEditor key
-			public static String propertyExpression = "esb::LogProperty::properties::propertyExpression";
+			public static String propertyExpression = "esb::ClassProperty::properties::propertyExpression";
 			// End of user code
 			
 	
@@ -2031,38 +2031,59 @@ public class EsbViewsRepository {
 	
 	}
 
-    /**
-     * PropertyGroupMediator view descriptor
-     * 
-     */
-    public static class PropertyGroupMediator {
-        public static class Properties {
-            public static String description = "esb::PropertyGroupMediator::properties::description";
-            public static String commentsList = "esb::PropertyGroupMediator::properties::commentsList";
-            public static String reverse = "esb::PropertyGroupMediator::properties::Reverse";
-            public static String properties_ = "esb::PropertyGroupMediator::properties::properties_";
-        }
-    }
+	/**
+	 * PropertyGroupMediator view descriptor
+	 * 
+	 */
+	public static class PropertyGroupMediator {
+		public static class Properties {
+	
+			
+			public static String description = "esb::PropertyGroupMediator::properties::description";
+			
+			
+			public static String commentsList = "esb::PropertyGroupMediator::properties::commentsList";
+			
+			
+			public static String reverse = "esb::PropertyGroupMediator::properties::Reverse";
+			
+			
+			public static String properties_ = "esb::PropertyGroupMediator::properties::properties_";
+			
+	
+		}
+	
+	}
 
-    /**
-     * PropertyGroupMediatorInputConnector view descriptor
-     * 
-     */
-    public static class PropertyGroupMediatorInputConnector {
-        public static class Properties {
-            public static String incomingLinks = "esb::PropertyGroupMediatorInputConnector::properties::incomingLinks";
-        }
-    }
+	/**
+	 * PropertyGroupMediatorInputConnector view descriptor
+	 * 
+	 */
+	public static class PropertyGroupMediatorInputConnector {
+		public static class Properties {
+	
+			
+			public static String incomingLinks = "esb::PropertyGroupMediatorInputConnector::properties::incomingLinks";
+			
+	
+		}
+	
+	}
 
-    /**
-     * PropertyGroupMediatorOutputConnector view descriptor
-     * 
-     */
-    public static class PropertyGroupMediatorOutputConnector {
-        public static class Properties {
-            public static String commentMediators = "esb::PropertyGroupMediatorOutputConnector::properties::commentMediators";
-        }
-    }
+	/**
+	 * PropertyGroupMediatorOutputConnector view descriptor
+	 * 
+	 */
+	public static class PropertyGroupMediatorOutputConnector {
+		public static class Properties {
+	
+			
+			public static String commentMediators = "esb::PropertyGroupMediatorOutputConnector::properties::commentMediators";
+			
+	
+		}
+	
+	}
 
 	/**
 	 * NamespacedProperty view descriptor
@@ -2131,7 +2152,7 @@ public class EsbViewsRepository {
 			public static String sourceProperty = "esb::EnrichMediator::Source::sourceProperty";
 			
 			// Start of user code for sourceXPath ElementEditor key
-			public static String sourceXPath = "esb::EnrichMediator::source::sourceXPath";
+			public static String sourceXPath = "esb::RuleMediator::source::sourceXPath";
 			// End of user code
 			
 			// Start of user code for inlineRegistryKey ElementEditor key
@@ -2153,9 +2174,7 @@ public class EsbViewsRepository {
 			public static String targetProperty = "esb::EnrichMediator::Target::targetProperty";
 			
 			// Start of user code for targetXPath ElementEditor key
-
-			public static String targetXPath = "esb::EnrichMediator::target::targetXPath";
-
+			public static String targetXPath = "esb::RuleMediator::target::targetXPath";
 			// End of user code
 		
 	
@@ -3100,7 +3119,7 @@ public class EsbViewsRepository {
 			public static String beanName = "esb::SpringMediator::properties::beanName";
 			
 			// Start of user code for configurationKey ElementEditor key
-			public static String configurationKey = "esb::SpringMediator::key::configurationKey";
+			public static String configurationKey = "esb::SmooksMediator::key::configurationKey";
 			// End of user code
 			
 	
@@ -4035,10 +4054,27 @@ public class EsbViewsRepository {
 	 * 
 	 */
 	public static class CacheMediator {
+		public static class Type {
+	
+			
+			public static String cacheMediatorImplementation = "esb::CacheMediator::Type::cacheMediatorImplementation";
+			
+	
+		}
+	
 		public static class Properties {
 	
 			
+			public static String id = "esb::CacheMediator::properties::id";
+			
+			
 			public static String cacheType = "esb::CacheMediator::properties::cacheType";
+			
+			
+			public static String scope = "esb::CacheMediator::properties::scope";
+			
+			
+			public static String hashGeneratorAttribute = "esb::CacheMediator::properties::hashGeneratorAttribute";
 			
 			
 			public static String cacheTimeout = "esb::CacheMediator::properties::cacheTimeout";
@@ -4059,6 +4095,9 @@ public class EsbViewsRepository {
 	
 			
 			public static String maxEntryCount = "esb::CacheMediator::Implementation::maxEntryCount";
+			
+			
+			public static String implementationType = "esb::CacheMediator::Implementation::implementationType";
 			
 	
 		}
@@ -4307,7 +4346,7 @@ public class EsbViewsRepository {
 			public static String serviceURL = "esb::CalloutMediator::Service::serviceURL";
 			
 			// Start of user code for Address Endpoint ElementEditor key
-			public static String addressEndpoint = "esb::CalloutMediator::Service::Address Endpoint";
+			public static String addressEndpoint = "esb::CalloutMediator::Service::AddressEndpoint";
 			// End of user code
 			
 	
@@ -4322,7 +4361,7 @@ public class EsbViewsRepository {
 			public static String payloadProperty = "esb::CalloutMediator::Source::payloadProperty";
 			
 			// Start of user code for Payload Message Xpath ElementEditor key
-			public static String payloadMessageXpath = "esb::CalloutMediator::Source::Payload Message Xpath";
+			public static String payloadMessageXpath = "esb::CalloutMediator::Source::PayloadMessageXpath";
 			// End of user code
 			
 	
@@ -4337,7 +4376,7 @@ public class EsbViewsRepository {
 			public static String resultContextProperty = "esb::CalloutMediator::Target::resultContextProperty";
 			
 			// Start of user code for Result Message Xpath ElementEditor key
-			public static String resultMessageXpath = "esb::CalloutMediator::Target::Result Message Xpath";
+			public static String resultMessageXpath = "esb::CalloutMediator::Target::ResultMessageXpath";
 			// End of user code
 			
 	
@@ -4352,15 +4391,15 @@ public class EsbViewsRepository {
 			public static String securityType = "esb::CalloutMediator::WS::securityType";
 			
 			// Start of user code for Policy Key ElementEditor key
-			public static String policyKey = "esb::CalloutMediator::WS::Policy Key";
+			public static String policyKey = "esb::CalloutMediator::WS::PolicyKey";
 			// End of user code
 			
 			// Start of user code for Outbound Policy Key ElementEditor key
-			public static String outboundPolicyKey = "esb::CalloutMediator::WS::Outbound Policy Key";
+			public static String outboundPolicyKey = "esb::CalloutMediator::WS::OutboundPolicyKey";
 			// End of user code
 			
 			// Start of user code for Inbound Policy Key ElementEditor key
-			public static String inboundPolicyKey = "esb::CalloutMediator::WS::Inbound Policy Key";
+			public static String inboundPolicyKey = "esb::CalloutMediator::WS::InboundPolicyKey";
 			// End of user code
 			
 	
@@ -4634,11 +4673,11 @@ public class EsbViewsRepository {
 			public static String valueInline = "esb::HeaderMediator::properties::value Inline";
 			
 			// Start of user code for header Name ElementEditor key
-			public static String headerName = "esb::HeaderMediator::properties::header Name";
+			public static String headerName = "esb::HeaderMediator::properties::headerName";
 			// End of user code
 			
 			// Start of user code for value Expression ElementEditor key
-			public static String valueExpression = "esb::HeaderMediator::properties::value Expression";
+			public static String valueExpression = "esb::HeaderMediator::properties::valueExpression";
 			// End of user code
 			
 			
@@ -5014,6 +5053,10 @@ public class EsbViewsRepository {
 			
 			
 			public static String messageAction = "esb::CommandProperty::properties::messageAction";
+			
+			// Start of user code for valueMessageElementXpath ElementEditor key
+			public static String valueMessageElementXpath = "esb::CommandProperty::properties::valueMessageElementXpath";
+			// End of user code
 			
 	
 		}
@@ -5586,6 +5629,14 @@ public class EsbViewsRepository {
 			
 			
 			public static String valueLiteral = "esb::RuleFact::properties::valueLiteral";
+			
+			// Start of user code for propertyExpression ElementEditor key
+			public static String propertyExpression = "esb::RuleFact::properties::propertyExpression";
+			// End of user code
+			
+			// Start of user code for valueReferenceKey ElementEditor key
+			public static String valueReferenceKey = "esb::RuleFact::properties::valueReferenceKey";
+			// End of user code
 			
 	
 		}

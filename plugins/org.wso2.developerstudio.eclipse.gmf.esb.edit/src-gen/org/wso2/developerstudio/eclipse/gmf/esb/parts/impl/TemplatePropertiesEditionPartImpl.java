@@ -327,7 +327,7 @@ public class TemplatePropertiesEditionPartImpl extends CompositePropertiesEditio
 	
 	protected Composite createTemplateTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.Template.Properties.templateType, EsbMessages.TemplatePropertiesEditionPart_TemplateTypeLabel);
-		templateType = new EMFComboViewer(parent);
+		templateType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		templateType.setContentProvider(new ArrayContentProvider());
 		templateType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData templateTypeData = new GridData(GridData.FILL_HORIZONTAL);

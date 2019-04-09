@@ -159,10 +159,26 @@ public abstract class AbstractMediatorOutputConnectorEditPart extends AbstractOu
 
                 }
             });*/
-            createContents();
+            createContents(true);
         }
 
-        public void createContents() {
+        public EastPointerFigure(boolean visible) {
+
+            GridLayout layoutThis = new GridLayout();
+            layoutThis.numColumns = 1;
+            layoutThis.makeColumnsEqualWidth = true;
+            layoutThis.marginHeight = 0;
+            layoutThis.marginWidth = 0;
+            this.setLayoutManager(layoutThis);
+
+            this.setCornerDimensions(new Dimension(1, 1));
+            this.setFill(false);
+            this.setOutline(false);
+            this.setPreferredSize(new Dimension(22, 18));
+            createContents(visible);
+        }
+        
+        public void createContents(boolean visible) {
             GridData constraintImageRectangle11 = new GridData();
             constraintImageRectangle11.verticalAlignment = GridData.FILL;
             constraintImageRectangle11.horizontalAlignment = GridData.FILL;
@@ -171,8 +187,8 @@ public abstract class AbstractMediatorOutputConnectorEditPart extends AbstractOu
             constraintImageRectangle11.verticalSpan = 2;
             constraintImageRectangle11.grabExcessHorizontalSpace = true;
             constraintImageRectangle11.grabExcessVerticalSpace = true;
-
             ImageFigure img1 = EditPartDrawingHelper.getEastArrowIcon(22, 18);
+            img1.setVisible(visible);
             this.add(img1, constraintImageRectangle11);
 
         }
@@ -236,10 +252,26 @@ public abstract class AbstractMediatorOutputConnectorEditPart extends AbstractOu
 
                 }
             });*/
-            createContents();
+            createContents(true);
+        }
+        
+        public WestPointerFigure(boolean visible) {
+
+            GridLayout layoutThis = new GridLayout();
+            layoutThis.numColumns = 1;
+            layoutThis.makeColumnsEqualWidth = true;
+            layoutThis.marginHeight = 0;
+            layoutThis.marginWidth = 0;
+            this.setLayoutManager(layoutThis);
+
+            this.setCornerDimensions(new Dimension(1, 1));
+            this.setFill(false);
+            this.setOutline(false);
+            this.setPreferredSize(new Dimension(22, 18));
+            createContents(visible);
         }
 
-        public void createContents() {
+        public void createContents(boolean visible) {
             GridData constraintImageRectangle11 = new GridData();
             constraintImageRectangle11.verticalAlignment = GridData.FILL;
             constraintImageRectangle11.horizontalAlignment = GridData.FILL;
@@ -248,13 +280,14 @@ public abstract class AbstractMediatorOutputConnectorEditPart extends AbstractOu
             constraintImageRectangle11.verticalSpan = 2;
             constraintImageRectangle11.grabExcessHorizontalSpace = true;
             constraintImageRectangle11.grabExcessVerticalSpace = true;
-
             ImageFigure img1 = EditPartDrawingHelper.getWestArrowIcon(22, 18);
+            img1.setVisible(visible);
             this.add(img1, constraintImageRectangle11);
 
         }
 
     }
+    
 
     static final Color THIS_BACK = new Color(null, 50, 50, 50);
 

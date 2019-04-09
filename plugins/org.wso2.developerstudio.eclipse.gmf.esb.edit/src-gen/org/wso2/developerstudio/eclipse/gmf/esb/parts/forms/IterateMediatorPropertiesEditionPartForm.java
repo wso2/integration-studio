@@ -638,7 +638,7 @@ public class IterateMediatorPropertiesEditionPartForm extends SectionPropertiesE
         Control sequenceTypeLabel = createDescription(sequenceSubsection,
                 EsbViewsRepository.IterateMediator.Properties.sequenceType,
                 EsbMessages.IterateMediatorPropertiesEditionPart_SequenceTypeLabel);
-        sequenceType = new EMFComboViewer(sequenceSubsection);
+        sequenceType = new EMFComboViewer(sequenceSubsection, SWT.SCROLL_LOCK);
         sequenceType.setContentProvider(new ArrayContentProvider());
         sequenceType
                 .setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));

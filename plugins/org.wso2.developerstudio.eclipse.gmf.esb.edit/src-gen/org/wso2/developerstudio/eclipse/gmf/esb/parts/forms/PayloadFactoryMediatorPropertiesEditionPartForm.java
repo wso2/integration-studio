@@ -78,6 +78,7 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.developerstudio.eclipse.gmf.esb.MediaType;
 import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFormatType;
 import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
@@ -96,6 +97,11 @@ import org.wso2.developerstudio.esb.form.editors.article.providers.NamedEntityDe
  */
 public class PayloadFactoryMediatorPropertiesEditionPartForm extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, PayloadFactoryMediatorPropertiesEditionPart {
 
+    /**
+     * Default payload value for XML media type
+     */
+    private final static String INITIAL_XML_PAYLOAD = "<inline/>";
+    
 	protected EMFComboViewer payloadFormat;
 	// Start of user code  for payloadKey widgets declarations
 	protected Control[] payloadFormatElements;
@@ -235,7 +241,7 @@ public class PayloadFactoryMediatorPropertiesEditionPartForm extends SectionProp
      */
 	protected Composite createPayloadFormatEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control payloadFormatLabel = createDescription(parent, EsbViewsRepository.PayloadFactoryMediator.Properties.payloadFormat, EsbMessages.PayloadFactoryMediatorPropertiesEditionPart_PayloadFormatLabel);
-		payloadFormat = new EMFComboViewer(parent);
+		payloadFormat = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		payloadFormat.setContentProvider(new ArrayContentProvider());
 		payloadFormat.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData payloadFormatData = new GridData(GridData.FILL_HORIZONTAL);
@@ -391,7 +397,7 @@ public class PayloadFactoryMediatorPropertiesEditionPartForm extends SectionProp
      */
 	protected Composite createMediaTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control mediaTypeLabel = createDescription(parent, EsbViewsRepository.PayloadFactoryMediator.Properties.mediaType, EsbMessages.PayloadFactoryMediatorPropertiesEditionPart_MediaTypeLabel);
-		mediaType = new EMFComboViewer(parent);
+		mediaType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		mediaType.setContentProvider(new ArrayContentProvider());
 		mediaType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData mediaTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -405,8 +411,11 @@ public class PayloadFactoryMediatorPropertiesEditionPartForm extends SectionProp
 			 * 	
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
-				if (propertiesEditionComponent != null)
+				if (propertiesEditionComponent != null) {
+				    validate();
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PayloadFactoryMediatorPropertiesEditionPartForm.this, EsbViewsRepository.PayloadFactoryMediator.Properties.mediaType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getMediaType()));
+			
+				}
 			}
 
 		});
@@ -970,6 +979,15 @@ public class PayloadFactoryMediatorPropertiesEditionPartForm extends SectionProp
 
         eu.showEntry(payloadFormatElements, false);
         eu.showEntry(argsTableElements, false);
+        
+        // Sets a default XML value. If not, parsing to XML fails and is unable to load the source view
+        if (getMediaType().getName().equals(MediaType.XML.getName())) {
+            setPayload(INITIAL_XML_PAYLOAD);
+            propertiesEditionComponent.firePropertiesChanged(
+                    new PropertiesEditionEvent(PayloadFactoryMediatorPropertiesEditionPartForm.this,
+                            EsbViewsRepository.PayloadFactoryMediator.Properties.payload, PropertiesEditionEvent.COMMIT,
+                            PropertiesEditionEvent.SET, null, INITIAL_XML_PAYLOAD));
+        }
 
         if (getPayloadFormat().getName().equals(PayloadFormatType.INLINE.getName())) {
             eu.showEntry(payloadElements, false);

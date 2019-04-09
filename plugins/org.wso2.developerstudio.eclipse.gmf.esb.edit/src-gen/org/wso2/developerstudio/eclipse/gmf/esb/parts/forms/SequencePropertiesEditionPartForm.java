@@ -710,7 +710,7 @@ public class SequencePropertiesEditionPartForm extends SectionPropertiesEditingP
 	protected Composite createReferringSequenceTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 	    referingSequenceSubsection = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent, "Refering Sequence", true);
 		Control referringSequenceTypeLable = createDescription(referingSequenceSubsection, EsbViewsRepository.Sequence.Properties.referringSequenceType, EsbMessages.SequencePropertiesEditionPart_ReferringSequenceTypeLabel);
-		referringSequenceType = new EMFComboViewer(referingSequenceSubsection);
+		referringSequenceType = new EMFComboViewer(referingSequenceSubsection, SWT.SCROLL_LOCK);
 		referringSequenceType.setContentProvider(new ArrayContentProvider());
 		referringSequenceType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData referringSequenceTypeData = new GridData(GridData.FILL_HORIZONTAL);

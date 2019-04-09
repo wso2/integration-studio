@@ -39,6 +39,7 @@ import org.apache.synapse.mediators.transform.Argument;
 import org.apache.synapse.mediators.transform.PayloadFactoryMediator;
 import org.apache.synapse.util.xpath.SynapseXPath;
 import org.jaxen.JaxenException;
+import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.SynapseXPathExt;
 
 public class PayloadFactoryMediatorExtFactory extends PayloadFactoryMediatorFactory {
     
@@ -109,27 +110,27 @@ public class PayloadFactoryMediatorExtFactory extends PayloadFactoryMediatorFact
             Iterator itr = argumentsElem.getChildElements();
 
             while (itr.hasNext()) {
-                OMElement argElem = (OMElement) itr.next();
-                Argument arg = new Argument();
-                String value;
+                Object argObj = itr.next();
+                if (argObj instanceof OMElement) {
+                    OMElement argElem = (OMElement) argObj;
+                    Argument arg = new Argument();
+                    String value;
 
-                boolean isLiteral = false;
-                String isLiteralString = argElem.getAttributeValue(ATT_LITERAL);
-                if (isLiteralString != null) {
-                    isLiteral = Boolean.parseBoolean(isLiteralString);
+                    boolean isLiteral = false;
+                    String isLiteralString = argElem.getAttributeValue(ATT_LITERAL);
+                    if (isLiteralString != null) {
+                        isLiteral = Boolean.parseBoolean(isLiteralString);
 
-                }
-                arg.setLiteral(isLiteral);
+                    }
+                    arg.setLiteral(isLiteral);
 
-                if ((value = argElem.getAttributeValue(ATT_VALUE)) != null) {
+                    if ((value = argElem.getAttributeValue(ATT_VALUE)) != null) {
 
-                    arg.setValue(value);
-                    arg.setExpression(null);
-                    ((PayloadFactoryMediator) mediator).addPathArgument(arg);
+                        arg.setValue(value);
+                        arg.setExpression(null);
+                        ((PayloadFactoryMediator) mediator).addPathArgument(arg);
 
-                } else if ((value = argElem.getAttributeValue(ATT_EXPRN)) != null) {
-
-                    if (value.trim().length() > 0) {
+                    } else if ((value = argElem.getAttributeValue(ATT_EXPRN)) != null) {
 
                         try {
 
@@ -143,7 +144,12 @@ public class PayloadFactoryMediatorExtFactory extends PayloadFactoryMediatorFact
                                 arg.getExpression().setPathType(SynapsePath.JSON_PATH);
                                 ((PayloadFactoryMediator) mediator).addPathArgument(arg);
                             } else {
-                                SynapseXPath sxp = SynapseXPathFactory.getSynapseXPath(argElem, ATT_EXPRN);
+                                SynapseXPath sxp = null;
+                                if (value.trim().length() > 0) {
+                                    sxp = SynapseXPathFactory.getSynapseXPath(argElem, ATT_EXPRN);
+                                } else {
+                                    sxp = (SynapseXPath) SynapseXPathExt.createSynapsePath("");
+                                }
                                 sxp.setForceDisableStreamXpath(Boolean.TRUE);
                                 arg.setExpression(sxp);
                                 arg.getExpression().setPathType(SynapsePath.X_PATH);
@@ -152,7 +158,6 @@ public class PayloadFactoryMediatorExtFactory extends PayloadFactoryMediatorFact
                         } catch (JaxenException e) {
                             // ignore
                         }
-
                     }
                 }
             }

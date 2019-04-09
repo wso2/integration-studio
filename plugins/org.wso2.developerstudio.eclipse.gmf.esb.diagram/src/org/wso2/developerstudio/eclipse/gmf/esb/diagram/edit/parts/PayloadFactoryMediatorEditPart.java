@@ -19,6 +19,7 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EditPa
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EditPartConstants.PAYLOADFACTORY_MEDIATOR_ICON_PATH;
 
 import org.apache.axiom.om.OMElement;
+import org.apache.axiom.om.OMException;
 import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.SynapseException;
 import org.apache.synapse.config.xml.PayloadFactoryMediatorSerializer;
@@ -380,7 +381,7 @@ public class PayloadFactoryMediatorEditPart extends FixedSizedAbstractMediator {
                     } else {
                         GraphicalValidatorUtil.addValidationMark(this);
                     }
-                } catch (JaxenException | SynapseException e) {
+                } catch (JaxenException | SynapseException | OMException e) {
                     GraphicalValidatorUtil.addValidationMark(this);
                 }
             }

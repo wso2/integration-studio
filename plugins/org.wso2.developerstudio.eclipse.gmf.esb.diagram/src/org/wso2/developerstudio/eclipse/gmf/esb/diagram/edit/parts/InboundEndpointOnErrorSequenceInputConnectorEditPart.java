@@ -246,7 +246,7 @@ public class InboundEndpointOnErrorSequenceInputConnectorEditPart extends Abstra
             layoutThis.numColumns = 1;
             layoutThis.makeColumnsEqualWidth = true;
             layoutThis.marginHeight = 0;
-            layoutThis.marginWidth = 0;
+            layoutThis.marginWidth = 1;
             this.setLayoutManager(layoutThis);
 
             this.setCornerDimensions(new Dimension(1, 1));

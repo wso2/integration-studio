@@ -188,7 +188,7 @@ public class ValidateSchemaPropertiesEditionPartImpl extends CompositeProperties
      */
 	protected Composite createValidateSchemaKeyTypeEMFComboViewer(Composite parent) {
 		Control itemLabel = createDescription(parent, EsbViewsRepository.ValidateSchema.Properties.validateSchemaKeyType, EsbMessages.ValidateSchemaPropertiesEditionPart_ValidateSchemaKeyTypeLabel);
-		validateSchemaKeyType = new EMFComboViewer(parent);
+		validateSchemaKeyType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		validateSchemaKeyType.setContentProvider(new ArrayContentProvider());
 		validateSchemaKeyType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData validateSchemaKeyTypeData = new GridData(GridData.FILL_HORIZONTAL);

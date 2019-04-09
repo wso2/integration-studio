@@ -58,9 +58,12 @@ import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.WorkbenchException;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EsbGraphicalShapeWithLabel;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedBorderItemLocator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedSizedAbstractMediator;
@@ -73,6 +76,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.DataMapper
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.DataMapperMediatorItemSemanticEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.DataMapperMediatorImpl;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.core.interfaces.IDeveloperStudioElement;
 import org.wso2.developerstudio.eclipse.platform.core.interfaces.IDeveloperStudioProvider;
 import org.wso2.developerstudio.eclipse.platform.core.interfaces.IDeveloperStudioProviderData;
@@ -97,6 +102,8 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
     private static final String WARNING_TITLE = "Information";
     private static final String WARNING_MESSAGE_1 = "The resource ";
     private static final String WARNING_MESSAGE_2 = " could not be found in the workspace. Do you like to create a new configuration?";
+    private static final String DATAMAPPER_PERSPECTIVE = "org.wso2.developerstudio.datamapper.diagram.custom.perspective";
+    private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
     private Class<?>[] type;
     private Map<String, IDeveloperStudioElement> importListMap;
 
@@ -626,6 +633,12 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
         Path path = new Path(localPath);
         IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(path);
         DataMapperEditor.open(file);
+        try {
+            PlatformUI.getWorkbench().showPerspective(DATAMAPPER_PERSPECTIVE,
+                    PlatformUI.getWorkbench().getActiveWorkbenchWindow());
+        } catch (WorkbenchException e) {
+            log.error("Error occurred while switching to ESB perspective " + e.getMessage());
+        }
     }
 
 }

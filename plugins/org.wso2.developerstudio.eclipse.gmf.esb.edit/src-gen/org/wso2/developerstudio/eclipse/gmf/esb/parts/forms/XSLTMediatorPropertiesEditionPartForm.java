@@ -419,7 +419,7 @@ public class XSLTMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	protected Composite createXsltSchemaKeyTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 	    xsltSchemaKeySubsection = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent, "XSLT Schema Key", true);
 		Control XSLTSchemaTypeLabel = createDescription(xsltSchemaKeySubsection, EsbViewsRepository.XSLTMediator.Properties.xsltSchemaKeyType, EsbMessages.XSLTMediatorPropertiesEditionPart_XsltSchemaKeyTypeLabel);
-		xsltSchemaKeyType = new EMFComboViewer(xsltSchemaKeySubsection);
+		xsltSchemaKeyType = new EMFComboViewer(xsltSchemaKeySubsection, SWT.SCROLL_LOCK);
 		xsltSchemaKeyType.setContentProvider(new ArrayContentProvider());
 		xsltSchemaKeyType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData xsltSchemaKeyTypeData = new GridData(GridData.FILL_HORIZONTAL);

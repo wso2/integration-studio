@@ -309,7 +309,7 @@ public class FilterMediatorPropertiesEditionPartImpl extends CompositeProperties
 	
 	protected Composite createConditionTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.FilterMediator.Properties.conditionType, EsbMessages.FilterMediatorPropertiesEditionPart_ConditionTypeLabel);
-		conditionType = new EMFComboViewer(parent);
+		conditionType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		conditionType.setContentProvider(new ArrayContentProvider());
 		conditionType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData conditionTypeData = new GridData(GridData.FILL_HORIZONTAL);

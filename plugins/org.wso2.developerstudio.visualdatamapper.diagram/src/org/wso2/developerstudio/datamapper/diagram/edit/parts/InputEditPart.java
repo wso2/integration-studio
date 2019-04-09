@@ -156,9 +156,7 @@ public class InputEditPart extends ShapeNodeEditPart {
 
 	public void resetInputTreeFromFile(String filePath) {
 		Figure fig = (Figure) primaryShape;
-		if (fig.getChildren() != null && !fig.getChildren().isEmpty()) {
-			fig.remove((IFigure) fig.getChildren().get(0));
-		}
+
 		EObject parentContainer = ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) (this).getModel()).getElement();
 		InputImpl iip = (InputImpl) parentContainer;
 
@@ -167,6 +165,9 @@ public class InputEditPart extends ShapeNodeEditPart {
 			getEditingDomain().getCommandStack().execute(deleteComand);
 		}
 
+        if (fig.getChildren() != null && !fig.getChildren().isEmpty()) {
+            fig.remove((IFigure) fig.getChildren().get(0));
+        }
 		inputRootTreeNode = DataMapperFactory.eINSTANCE.createTreeNode();
 		ISchemaTransformer schemaTransformer;
 		try {

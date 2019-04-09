@@ -35,9 +35,11 @@ import org.wso2.developerstudio.eclipse.gmf.esb.CommandPropertyContextAction;
 import org.wso2.developerstudio.eclipse.gmf.esb.CommandPropertyMessageAction;
 import org.wso2.developerstudio.eclipse.gmf.esb.CommandPropertyValueType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.CommandPropertyPropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.developerstudio.eclipse.gmf.esb.parts.impl.CommandPropertyPropertiesEditionPartImpl;
 
 
 // End of user code
@@ -97,20 +99,22 @@ public class CommandPropertyPropertiesEditionComponent extends SinglePartPropert
 			if (isAccessible(EsbViewsRepository.CommandProperty.Properties.messageAction)) {
 				basePart.initMessageAction(EEFUtils.choiceOfValues(commandProperty, EsbPackage.eINSTANCE.getCommandProperty_MessageAction()), commandProperty.getMessageAction());
 			}
+			// Start of user code  for valueMessageElementXpath command update
+			if (isAccessible(EsbViewsRepository.CommandProperty.Properties.valueMessageElementXpath)) {
+                basePart.setValueMessageElementXpath(commandProperty.getValueMessageElementXpath());
+            }
+			// End of user code
+			
 			// init filters
 			
-			
-			
-			
-			
-			
-			// init values for referenced views
-			
-			// init filters for referenced views
+            // Start of user code for CommandProperty filter update
+            ((CommandPropertyPropertiesEditionPartImpl) editingPart).validate();
+            // End of user code
 			
 		}
 		setInitializing(false);
 	}
+
 
 
 
@@ -143,6 +147,9 @@ public class CommandPropertyPropertiesEditionComponent extends SinglePartPropert
 		if (editorKey == EsbViewsRepository.CommandProperty.Properties.messageAction) {
 			return EsbPackage.eINSTANCE.getCommandProperty_MessageAction();
 		}
+		if (editorKey == EsbViewsRepository.CommandProperty.Properties.valueMessageElementXpath) {
+			return EsbPackage.eINSTANCE.getCommandProperty_ValueMessageElementXpath();
+		}
 		return super.associatedFeature(editorKey);
 	}
 
@@ -170,6 +177,16 @@ public class CommandPropertyPropertiesEditionComponent extends SinglePartPropert
 		}
 		if (EsbViewsRepository.CommandProperty.Properties.messageAction == event.getAffectedEditor()) {
 			commandProperty.setMessageAction((CommandPropertyMessageAction)event.getNewValue());
+		}
+		if (EsbViewsRepository.CommandProperty.Properties.valueMessageElementXpath == event.getAffectedEditor()) {
+			// Start of user code for updateValueMessageElementXpath method body
+	          if (event.getNewValue() != null) {
+	                NamespacedProperty nsp = (NamespacedProperty) event.getNewValue();
+	                commandProperty.setValueMessageElementXpath(nsp);
+	            } else {
+	                commandProperty.setValueMessageElementXpath(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+	            }
+			// End of user code
 		}
 	}
 
@@ -211,6 +228,18 @@ public class CommandPropertyPropertiesEditionComponent extends SinglePartPropert
 			if (EsbPackage.eINSTANCE.getCommandProperty_MessageAction().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EsbViewsRepository.CommandProperty.Properties.messageAction))
 				basePart.setMessageAction((CommandPropertyMessageAction)msg.getNewValue());
 			
+					// Start of user code for valueMessageElementXpath live update
+	         if (EsbPackage.eINSTANCE.getCommandProperty_ValueMessageElementXpath()
+	                    .equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null
+	                    && isAccessible(EsbViewsRepository.CommandProperty.Properties.valueMessageElementXpath)) {
+	                if (msg.getNewValue() != null) {
+	                    basePart.setValueMessageElementXpath((NamespacedProperty) msg.getNewValue());
+	                } else {
+	                    basePart.setValueMessageElementXpath(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
+	                }
+	            }
+					// End of user code
+			
 			
 		}
 	}
@@ -228,7 +257,8 @@ public class CommandPropertyPropertiesEditionComponent extends SinglePartPropert
 			EsbPackage.eINSTANCE.getCommandProperty_ValueLiteral(),
 			EsbPackage.eINSTANCE.getCommandProperty_ValueContextPropertyName(),
 			EsbPackage.eINSTANCE.getCommandProperty_ContextAction(),
-			EsbPackage.eINSTANCE.getCommandProperty_MessageAction()		);
+			EsbPackage.eINSTANCE.getCommandProperty_MessageAction(),
+			EsbPackage.eINSTANCE.getCommandProperty_ValueMessageElementXpath()		);
 		return new NotificationFilter[] {filter,};
 	}
 

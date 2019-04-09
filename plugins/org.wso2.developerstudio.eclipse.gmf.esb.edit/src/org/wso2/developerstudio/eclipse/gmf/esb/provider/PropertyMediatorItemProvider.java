@@ -24,6 +24,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyName;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyScope;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.PropertyGroupMediatorImpl;
+
 import java.lang.Object;
 
 /**
@@ -506,16 +508,19 @@ public class PropertyMediatorItemProvider extends MediatorItemProvider {
 
     @Override
     public String getText(Object object) {
-        PropertyName labelValue = ((PropertyMediator)object).getPropertyName();
-        String newPropertyName = ((PropertyMediator)object).getNewPropertyName();
+        PropertyName labelValue = ((PropertyMediator) object).getPropertyName();
+        String newPropertyName = ((PropertyMediator) object).getNewPropertyName();
         String label = labelValue == null ? null : labelValue.toString();
-        String value = ((PropertyMediator)object).getValue();
-        String newLabel = label == "New Property..." ? newPropertyName : label ;
+        String value = ((PropertyMediator) object).getValue();
+        String newLabel = label == "New Property..." ? newPropertyName : label;
         String propertyName = WordUtils.abbreviate(newLabel.toString(), 8, 10, " ...");
 
-        return newLabel == null || label.length() == 0 ?
-            getString("_UI_PropertyMediator_type") :
-            trim("Property") + trim(propertyName) + trim(value);
+        if (!(((PropertyMediator) object).eContainer() instanceof PropertyGroupMediatorImpl)) {
+            return newLabel == null || label.length() == 0 ? getString("_UI_PropertyMediator_type") : trim("Property");
+        } else {
+            return newLabel == null || label.length() == 0 ? getString("_UI_PropertyMediator_type")
+                    : trim("Property") + trim(propertyName) + trim(value);
+        }
     }
 
     public String trim(String str) {

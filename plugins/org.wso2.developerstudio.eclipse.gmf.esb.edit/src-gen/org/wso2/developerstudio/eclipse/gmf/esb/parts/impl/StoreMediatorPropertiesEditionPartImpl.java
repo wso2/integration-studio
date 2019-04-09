@@ -413,7 +413,7 @@ public class StoreMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	
 	protected Composite createSpecifyAsEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.StoreMediator.Properties.specifyAs, EsbMessages.StoreMediatorPropertiesEditionPart_SpecifyAsLabel);
-		specifyAs = new EMFComboViewer(parent);
+		specifyAs = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		specifyAs.setContentProvider(new ArrayContentProvider());
 		specifyAs.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData specifyAsData = new GridData(GridData.FILL_HORIZONTAL);

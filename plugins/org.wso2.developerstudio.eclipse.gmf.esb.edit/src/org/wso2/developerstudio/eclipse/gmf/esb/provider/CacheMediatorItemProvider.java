@@ -17,6 +17,7 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.CacheMediatorType;
 import org.wso2.developerstudio.eclipse.gmf.esb.CacheSequenceType;
 import org.wso2.developerstudio.eclipse.gmf.esb.CacheType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
@@ -55,25 +56,41 @@ public class CacheMediatorItemProvider extends MediatorItemProvider {
             itemPropertyDescriptors.clear();
         }
         super.getPropertyDescriptors(object);
+        addCacheMediatorImplementationPropertyDescriptor(object);
+//        addScopePropertyDescriptor(object);
+        
+        boolean previousCache = cacheMediator.getCacheMediatorImplementation().equals(CacheMediatorType.PREVIOUS_IMPLEMENTATION);
+        
         addCacheTypePropertyDescriptor(object);
         if (cacheMediator.getCacheType().equals(CacheType.FINDER)) {
             addCacheTimeoutPropertyDescriptor(object);
             addMaxMessageSizePropertyDescriptor(object);
             addMaxEntryCountPropertyDescriptor(object);
             addSequenceTypePropertyDescriptor(object);
-            addCacheProtocolTypePropertyDescriptor(object);
-            if (PROTOCOL_TYPE_HTTP.equals(cacheMediator.getCacheProtocolType().getLiteral())) {
-                addCacheProtocolMethodsPropertyDescriptor(object);
-                addHeadersToExcludeInHashPropertyDescriptor(object);
-                addResponseCodesPropertyDescriptor(object);
-                addEnableCacheControlPropertyDescriptor(object);
-                addIncludeAgeHeaderPropertyDescriptor(object);
+            if (!previousCache) {
+                addCacheProtocolTypePropertyDescriptor(object);
+                if (PROTOCOL_TYPE_HTTP.equals(cacheMediator.getCacheProtocolType().getLiteral())) {
+                    addCacheProtocolMethodsPropertyDescriptor(object);
+                    addHeadersToExcludeInHashPropertyDescriptor(object);
+                    addResponseCodesPropertyDescriptor(object);
+                    addEnableCacheControlPropertyDescriptor(object);
+                    addIncludeAgeHeaderPropertyDescriptor(object);
+                }
+                addHashGeneratorPropertyDescriptor(object);
+                
+            } else {
+                addIdPropertyDescriptor(object);
+                addScopePropertyDescriptor(object);
+                addHashGeneratorAttributePropertyDescriptor(object);
+                addImplementationTypePropertyDescriptor(object);
             }
-            addHashGeneratorPropertyDescriptor(object);
+            
             if (cacheMediator.getSequenceType().equals(CacheSequenceType.REGISTRY_REFERENCE)) {
                 // adding cache on hit property descriptor.
                 addSequenceKeyPropertyDescriptor(object);
             }
+        } else if (previousCache) {
+            addScopePropertyDescriptor(object);
         }
         addDescriptionPropertyDescriptor(object);
         return itemPropertyDescriptors;
@@ -301,6 +318,116 @@ public class CacheMediatorItemProvider extends MediatorItemProvider {
     }
 
     /**
+     * This adds a property descriptor for the Id feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated NOT
+     */
+    protected void addIdPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_CacheMediator_id_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_CacheMediator_id_feature", "_UI_CacheMediator_type"),
+                 EsbPackage.Literals.CACHE_MEDIATOR__ID,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 "General",
+                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the Hash Generator Attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated NOT
+     */
+    protected void addHashGeneratorAttributePropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_CacheMediator_hashGeneratorAttribute_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_CacheMediator_hashGeneratorAttribute_feature", "_UI_CacheMediator_type"),
+                 EsbPackage.Literals.CACHE_MEDIATOR__HASH_GENERATOR_ATTRIBUTE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 "General",
+                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the Scope feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated NOT
+     */
+    protected void addScopePropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_CacheMediator_scope_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_CacheMediator_scope_feature", "_UI_CacheMediator_type"),
+                 EsbPackage.Literals.CACHE_MEDIATOR__SCOPE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 "General",
+                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the Implementation Type feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated NOT
+     */
+    protected void addImplementationTypePropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_CacheMediator_implementationType_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_CacheMediator_implementationType_feature", "_UI_CacheMediator_type"),
+                 EsbPackage.Literals.CACHE_MEDIATOR__IMPLEMENTATION_TYPE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 "Implementation",
+                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the Cache Mediator Implementation feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated NOT
+     */
+    protected void addCacheMediatorImplementationPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_CacheMediator_cacheMediatorImplementation_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_CacheMediator_cacheMediatorImplementation_feature", "_UI_CacheMediator_type"),
+                 EsbPackage.Literals.CACHE_MEDIATOR__CACHE_MEDIATOR_IMPLEMENTATION,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 "Type",
+                 null));
+    }
+
+    /**
      * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
      * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -356,7 +483,7 @@ public class CacheMediatorItemProvider extends MediatorItemProvider {
 
     @Override
     public String getText(Object object) {
-        String label = ((CacheMediator)object).getDescription();
+        String label = ((CacheMediator)object).getId();
         return label == null || label.length() == 0 ?
             getString("_UI_CacheMediator_type") :
             getString("_UI_CacheMediator_type") + " " + label;
@@ -387,6 +514,11 @@ public class CacheMediatorItemProvider extends MediatorItemProvider {
             case EsbPackage.CACHE_MEDIATOR__RESPONSE_CODES:
             case EsbPackage.CACHE_MEDIATOR__ENABLE_CACHE_CONTROL:
             case EsbPackage.CACHE_MEDIATOR__INCLUDE_AGE_HEADER:
+            case EsbPackage.CACHE_MEDIATOR__ID:
+            case EsbPackage.CACHE_MEDIATOR__HASH_GENERATOR_ATTRIBUTE:
+            case EsbPackage.CACHE_MEDIATOR__SCOPE:
+            case EsbPackage.CACHE_MEDIATOR__IMPLEMENTATION_TYPE:
+            case EsbPackage.CACHE_MEDIATOR__CACHE_MEDIATOR_IMPLEMENTATION:
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
                 return;
             case EsbPackage.CACHE_MEDIATOR__INPUT_CONNECTOR:

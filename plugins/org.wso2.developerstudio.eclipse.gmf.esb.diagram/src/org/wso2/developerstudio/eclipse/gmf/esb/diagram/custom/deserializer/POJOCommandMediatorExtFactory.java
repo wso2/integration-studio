@@ -51,6 +51,8 @@ public class POJOCommandMediatorExtFactory extends POJOCommandMediatorFactory {
                         && !"".equals(nameAttr.getAttributeValue())) {
 
                     handlePropertyAction(nameAttr.getAttributeValue(), child, pojoMediator);
+                } else {
+                    handlePropertyAction("", child, pojoMediator);
                 }
             }
         }

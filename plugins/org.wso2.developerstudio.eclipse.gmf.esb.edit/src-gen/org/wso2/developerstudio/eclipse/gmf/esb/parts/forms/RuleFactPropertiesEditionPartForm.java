@@ -55,7 +55,8 @@ import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.RuleFactPropertiesEditionPart;
 
@@ -74,6 +75,14 @@ public class RuleFactPropertiesEditionPartForm extends SectionPropertiesEditingP
 	protected Text factName;
 	protected EMFComboViewer valueType;
 	protected Text valueLiteral;
+	// Start of user code  for propertyExpression widgets declarations
+	
+	// End of user code
+
+	// Start of user code  for valueReferenceKey widgets declarations
+	
+	// End of user code
+
 
 
 
@@ -97,6 +106,7 @@ public class RuleFactPropertiesEditionPartForm extends SectionPropertiesEditingP
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
 	 * 
+	 * @generated NOT
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
@@ -124,6 +134,8 @@ public class RuleFactPropertiesEditionPartForm extends SectionPropertiesEditingP
 		propertiesStep.addStep(EsbViewsRepository.RuleFact.Properties.factName);
 		propertiesStep.addStep(EsbViewsRepository.RuleFact.Properties.valueType);
 		propertiesStep.addStep(EsbViewsRepository.RuleFact.Properties.valueLiteral);
+		propertiesStep.addStep(EsbViewsRepository.RuleFact.Properties.propertyExpression);
+		propertiesStep.addStep(EsbViewsRepository.RuleFact.Properties.valueReferenceKey);
 		
 		
 		composer = new PartComposer(ruleFactStep) {
@@ -148,6 +160,12 @@ public class RuleFactPropertiesEditionPartForm extends SectionPropertiesEditingP
 				if (key == EsbViewsRepository.RuleFact.Properties.valueLiteral) {
 					return createValueLiteralText(widgetFactory, parent);
 				}
+				// Start of user code for propertyExpression addToPart creation
+				
+				// End of user code
+				// Start of user code for valueReferenceKey addToPart creation
+				
+				// End of user code
 				return parent;
 			}
 		};
@@ -173,7 +191,7 @@ public class RuleFactPropertiesEditionPartForm extends SectionPropertiesEditingP
 	
 	protected Composite createFactTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.RuleFact.Properties.factType, EsbMessages.RuleFactPropertiesEditionPart_FactTypeLabel);
-		factType = new EMFComboViewer(parent);
+		factType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		factType.setContentProvider(new ArrayContentProvider());
 		factType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData factTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -339,7 +357,7 @@ public class RuleFactPropertiesEditionPartForm extends SectionPropertiesEditingP
 	
 	protected Composite createValueTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.RuleFact.Properties.valueType, EsbMessages.RuleFactPropertiesEditionPart_ValueTypeLabel);
-		valueType = new EMFComboViewer(parent);
+		valueType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		valueType.setContentProvider(new ArrayContentProvider());
 		valueType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData valueTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -642,6 +660,14 @@ public class RuleFactPropertiesEditionPartForm extends SectionPropertiesEditingP
 
 
 
+	// Start of user code for propertyExpression specific getters and setters implementation
+	
+	// End of user code
+
+	// Start of user code for valueReferenceKey specific getters and setters implementation
+	
+	// End of user code
+
 	/**
 	 * {@inheritDoc}
 	 *
@@ -651,6 +677,30 @@ public class RuleFactPropertiesEditionPartForm extends SectionPropertiesEditingP
 	public String getTitle() {
 		return EsbMessages.RuleFact_Part_Title;
 	}
+
+        @Override
+        public NamespacedProperty getPropertyExpression() {
+            // TODO Auto-generated method stub
+            return null;
+        }
+    
+        @Override
+        public void setPropertyExpression(NamespacedProperty nameSpacedProperty) {
+            // TODO Auto-generated method stub
+            
+        }
+    
+        @Override
+        public RegistryKeyProperty getValueReferenceKey() {
+            // TODO Auto-generated method stub
+            return null;
+        }
+    
+        @Override
+        public void setValueReferenceKey(RegistryKeyProperty registryKeyProperty) {
+            // TODO Auto-generated method stub
+            
+        }
 
 	// Start of user code additional methods
 	

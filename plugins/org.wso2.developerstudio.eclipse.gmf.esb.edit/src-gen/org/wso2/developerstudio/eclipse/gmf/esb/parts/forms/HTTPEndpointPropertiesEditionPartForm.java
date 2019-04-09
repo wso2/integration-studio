@@ -80,7 +80,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.HTTPEndpointPropertiesEditionPart;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
 
 // End of user code
@@ -129,6 +129,7 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
 	
 	// Start of user code for
 	protected Section propertiesSection;
+	protected Composite filterAdvancedSubPropertiesGroup;
 	// End of user code
 
 
@@ -155,14 +156,13 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
 	 * 
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
-		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
-		Form form = scrolledForm.getForm();
+		Form form = widgetFactory.createForm(parent);
 		view = form.getBody();
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
 		createControls(widgetFactory, view);
-		return scrolledForm;
+		return form;
 	}
 
 	/**
@@ -197,10 +197,6 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
 		basicStep.addStep(EsbViewsRepository.HTTPEndpoint.Basic.httpMethod);
 		
 		hTTPEndpointStep
-			.addStep(EsbViewsRepository.HTTPEndpoint.EndpointDescription.class)
-			.addStep(EsbViewsRepository.HTTPEndpoint.EndpointDescription.description);
-		
-		hTTPEndpointStep
 			.addStep(EsbViewsRepository.HTTPEndpoint.EndpointProperties.class)
 			.addStep(EsbViewsRepository.HTTPEndpoint.EndpointProperties.properties);
 		
@@ -219,11 +215,14 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
 		timeoutStep.addStep(EsbViewsRepository.HTTPEndpoint.Timeout.timeOutDuration);
 		timeoutStep.addStep(EsbViewsRepository.HTTPEndpoint.Timeout.timeOutAction);
 		
+        hTTPEndpointStep.addStep(EsbViewsRepository.HTTPEndpoint.EndpointDescription.class)
+                .addStep(EsbViewsRepository.HTTPEndpoint.EndpointDescription.description);
 		
 		composer = new PartComposer(hTTPEndpointStep) {
 
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
+			    // Start of user code
 				if (key == EsbViewsRepository.HTTPEndpoint.Properties.class) {
 					return createPropertiesGroup(widgetFactory, parent);
 				}
@@ -297,7 +296,7 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
 					return createPropertiesTableComposition(widgetFactory, parent);
 				}
 				if (key == EsbViewsRepository.HTTPEndpoint.EndpointSuspendState.class) {
-					return createEndpointSuspendStateGroup(widgetFactory, parent);
+					return createEndpointSuspendStateGroup(widgetFactory, filterAdvancedSubPropertiesGroup);
 				}
 				if (key == EsbViewsRepository.HTTPEndpoint.EndpointSuspendState.suspendErrorCodes) {
 					return createSuspendErrorCodesText(widgetFactory, parent);
@@ -312,7 +311,7 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
 					return createSuspendProgressionFactorText(widgetFactory, parent);
 				}
 				if (key == EsbViewsRepository.HTTPEndpoint.EndpointTimeoutState.class) {
-					return createEndpointTimeoutStateGroup(widgetFactory, parent);
+					return createEndpointTimeoutStateGroup(widgetFactory, filterAdvancedSubPropertiesGroup);
 				}
 				if (key == EsbViewsRepository.HTTPEndpoint.EndpointTimeoutState.retryErrorCodes) {
 					return createRetryErrorCodesText(widgetFactory, parent);
@@ -324,7 +323,7 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
 					return createRetryDelayText(widgetFactory, parent);
 				}
 				if (key == EsbViewsRepository.HTTPEndpoint.Timeout.class) {
-					return createTimeoutGroup(widgetFactory, parent);
+					return createTimeoutGroup(widgetFactory, filterAdvancedSubPropertiesGroup);
 				}
 				if (key == EsbViewsRepository.HTTPEndpoint.Timeout.timeOutDuration) {
 					return createTimeOutDurationText(widgetFactory, parent);
@@ -332,6 +331,7 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
 				if (key == EsbViewsRepository.HTTPEndpoint.Timeout.timeOutAction) {
 					return createTimeOutActionEMFComboViewer(widgetFactory, parent);
 				}
+				// End of user code
 				return parent;
 			}
 		};
@@ -675,7 +675,7 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
 	
 	protected Composite createAddressingVersionEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.HTTPEndpoint.Properties.addressingVersion, EsbMessages.HTTPEndpointPropertiesEditionPart_AddressingVersionLabel);
-		addressingVersion = new EMFComboViewer(parent);
+		addressingVersion = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		addressingVersion.setContentProvider(new ArrayContentProvider());
 		addressingVersion.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData addressingVersionData = new GridData(GridData.FILL_HORIZONTAL);
@@ -734,7 +734,7 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
 	
 	protected Composite createFormatEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.HTTPEndpoint.Properties.format, EsbMessages.HTTPEndpointPropertiesEditionPart_FormatLabel);
-		format = new EMFComboViewer(parent);
+		format = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		format.setContentProvider(new ArrayContentProvider());
 		format.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData formatData = new GridData(GridData.FILL_HORIZONTAL);
@@ -764,7 +764,7 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
 	
 	protected Composite createOptimizeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.HTTPEndpoint.Properties.optimize, EsbMessages.HTTPEndpointPropertiesEditionPart_OptimizeLabel);
-		optimize = new EMFComboViewer(parent);
+		optimize = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		optimize.setContentProvider(new ArrayContentProvider());
 		optimize.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData optimizeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -793,6 +793,8 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
 
 	/**
 	 * @param container
+	 * 
+	 * @generated NOT
 	 * 
 	 */
 	protected Composite createTemplateParametersTableComposition(FormToolkit widgetFactory, Composite parent) {
@@ -988,7 +990,7 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
 	
 	protected Composite createHttpMethodEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.HTTPEndpoint.Basic.httpMethod, EsbMessages.HTTPEndpointPropertiesEditionPart_HttpMethodLabel);
-		httpMethod = new EMFComboViewer(parent);
+		httpMethod = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		httpMethod.setContentProvider(new ArrayContentProvider());
 		httpMethod.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData httpMethodData = new GridData(GridData.FILL_HORIZONTAL);
@@ -1104,7 +1106,9 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
 	 * 
 	 */
 	protected Composite createEndpointPropertiesGroup(FormToolkit widgetFactory, final Composite parent) {
-		Section endpointPropertiesSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
+	    filterAdvancedSubPropertiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent, "Advanced", false);
+	    
+		Section endpointPropertiesSection = widgetFactory.createSection(filterAdvancedSubPropertiesGroup, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		endpointPropertiesSection.setText(EsbMessages.HTTPEndpointPropertiesEditionPart_EndpointPropertiesGroupLabel);
 		GridData endpointPropertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
 		endpointPropertiesSectionData.horizontalSpan = 3;
@@ -1766,7 +1770,7 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
 	
 	protected Composite createTimeOutActionEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.HTTPEndpoint.Timeout.timeOutAction, EsbMessages.HTTPEndpointPropertiesEditionPart_TimeOutActionLabel);
-		timeOutAction = new EMFComboViewer(parent);
+		timeOutAction = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		timeOutAction.setContentProvider(new ArrayContentProvider());
 		timeOutAction.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData timeOutActionData = new GridData(GridData.FILL_HORIZONTAL);

@@ -375,7 +375,7 @@ public class FilterMediatorPropertiesEditionPartForm extends SectionPropertiesEd
         filterConditionSubPropertiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent,
                 "Condition", true);
 		Control itemLabel = createDescription(filterConditionSubPropertiesGroup, EsbViewsRepository.FilterMediator.Properties.conditionType, EsbMessages.FilterMediatorPropertiesEditionPart_ConditionTypeLabel);
-		conditionType = new EMFComboViewer(filterConditionSubPropertiesGroup);
+		conditionType = new EMFComboViewer(filterConditionSubPropertiesGroup, SWT.SCROLL_LOCK);
 		conditionType.setContentProvider(new ArrayContentProvider());
 		conditionType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData conditionTypeData = new GridData(GridData.FILL_HORIZONTAL);

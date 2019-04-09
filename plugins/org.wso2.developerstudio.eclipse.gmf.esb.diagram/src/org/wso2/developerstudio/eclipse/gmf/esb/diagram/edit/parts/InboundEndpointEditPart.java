@@ -409,7 +409,7 @@ public class InboundEndpointEditPart extends AbstractBorderedShapeEditPart {
         }
 
         public String getIconPath() {
-            return "icons/ico20/inbound-endpoint.gif";
+            return "icons/ico20/inbound-endpoint.png";
         }
 
         public String getNodeName() {

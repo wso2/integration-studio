@@ -6014,10 +6014,13 @@
    	<extension point="org.eclipse.wst.xml.core.catalogContributions"> 
   		<catalogContribution
 			id="org.wso2.carbonstudio.eclipse.esb.presentation.EsbDiagramEditor"> 
-  		<public 
- 	 		publicId="http://ws.apache.org/ns/synapse" 
- 	 		uri="http://product-dist.wso2.com/p2/synapse-schema/synapse_config.xsd"> 
-  		</public> 
+			<uri
+	 	 		name="http://ws.apache.org/ns/synapse"
+	 	 		uri="platform:/plugin/org.wso2.developerstudio.eclipse.gmf.esb.diagram/resources/schema/synapse_config.xsd" />
+	  		<system 
+	 	 		systemId="http://ws.apache.org/ns/synapse" 
+	 	 		uri="platform:/plugin/org.wso2.developerstudio.eclipse.gmf.esb.diagram/resources/schema/synapse_config.xsd"> 
+	  		</system> 
  	 	</catalogContribution> 
  	</extension>
  	

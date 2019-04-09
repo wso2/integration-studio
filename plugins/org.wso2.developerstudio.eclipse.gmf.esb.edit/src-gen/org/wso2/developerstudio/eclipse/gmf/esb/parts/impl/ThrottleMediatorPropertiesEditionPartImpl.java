@@ -452,7 +452,7 @@ public class ThrottleMediatorPropertiesEditionPartImpl extends CompositeProperti
 	
 	protected Composite createOnAcceptBranchsequenceTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.ThrottleMediator.OnAccept.onAcceptBranchsequenceType, EsbMessages.ThrottleMediatorPropertiesEditionPart_OnAcceptBranchsequenceTypeLabel);
-		onAcceptBranchsequenceType = new EMFComboViewer(parent);
+		onAcceptBranchsequenceType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		onAcceptBranchsequenceType.setContentProvider(new ArrayContentProvider());
 		onAcceptBranchsequenceType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData onAcceptBranchsequenceTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -484,7 +484,7 @@ public class ThrottleMediatorPropertiesEditionPartImpl extends CompositeProperti
 	
 	protected Composite createOnRejectBranchsequenceTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.ThrottleMediator.OnReject.onRejectBranchsequenceType, EsbMessages.ThrottleMediatorPropertiesEditionPart_OnRejectBranchsequenceTypeLabel);
-		onRejectBranchsequenceType = new EMFComboViewer(parent);
+		onRejectBranchsequenceType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		onRejectBranchsequenceType.setContentProvider(new ArrayContentProvider());
 		onRejectBranchsequenceType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData onRejectBranchsequenceTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -529,7 +529,7 @@ public class ThrottleMediatorPropertiesEditionPartImpl extends CompositeProperti
 	
 	protected Composite createPolicyTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.ThrottleMediator.ThrottlePolicy.policyType, EsbMessages.ThrottleMediatorPropertiesEditionPart_PolicyTypeLabel);
-		policyType = new EMFComboViewer(parent);
+		policyType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		policyType.setContentProvider(new ArrayContentProvider());
 		policyType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData policyTypeData = new GridData(GridData.FILL_HORIZONTAL);

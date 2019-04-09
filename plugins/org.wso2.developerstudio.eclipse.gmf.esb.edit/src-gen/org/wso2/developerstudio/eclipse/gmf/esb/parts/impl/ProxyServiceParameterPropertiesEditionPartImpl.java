@@ -40,7 +40,7 @@ import org.eclipse.swt.widgets.Text;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.ProxyServiceParameterPropertiesEditionPart;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
 
 // End of user code
@@ -129,7 +129,10 @@ public class ProxyServiceParameterPropertiesEditionPartImpl extends CompositePro
 		return propertiesGroup;
 	}
 
-	
+    /**
+     * @generated NOT
+     * 
+     */
 	protected Composite createNameText(Composite parent) {
 		createDescription(parent, EsbViewsRepository.ProxyServiceParameter.Properties.name, EsbMessages.ProxyServiceParameterPropertiesEditionPart_NameLabel);
 		name = SWTUtils.createScrollableText(parent, SWT.BORDER);
@@ -161,8 +164,8 @@ public class ProxyServiceParameterPropertiesEditionPartImpl extends CompositePro
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
+			public void keyReleased(KeyEvent e) {
+				if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
 					if (propertiesEditionComponent != null)
 						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ProxyServiceParameterPropertiesEditionPartImpl.this, EsbViewsRepository.ProxyServiceParameter.Properties.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
 				}
@@ -178,7 +181,10 @@ public class ProxyServiceParameterPropertiesEditionPartImpl extends CompositePro
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     * 
+     */
 	protected Composite createValueText(Composite parent) {
 		createDescription(parent, EsbViewsRepository.ProxyServiceParameter.Properties.value, EsbMessages.ProxyServiceParameterPropertiesEditionPart_ValueLabel);
 		value = SWTUtils.createScrollableText(parent, SWT.BORDER);
@@ -210,8 +216,8 @@ public class ProxyServiceParameterPropertiesEditionPartImpl extends CompositePro
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
+			public void keyReleased(KeyEvent e) {
+				if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
 					if (propertiesEditionComponent != null)
 						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ProxyServiceParameterPropertiesEditionPartImpl.this, EsbViewsRepository.ProxyServiceParameter.Properties.value, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, value.getText()));
 				}

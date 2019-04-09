@@ -295,7 +295,7 @@ public class FastXSLTMediatorPropertiesEditionPartImpl extends CompositeProperti
 	
 	protected Composite createFastXsltSchemaKeyTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.FastXSLTMediator.Misc.fastXsltSchemaKeyType, EsbMessages.FastXSLTMediatorPropertiesEditionPart_FastXsltSchemaKeyTypeLabel);
-		fastXsltSchemaKeyType = new EMFComboViewer(parent);
+		fastXsltSchemaKeyType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		fastXsltSchemaKeyType.setContentProvider(new ArrayContentProvider());
 		fastXsltSchemaKeyType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData fastXsltSchemaKeyTypeData = new GridData(GridData.FILL_HORIZONTAL);

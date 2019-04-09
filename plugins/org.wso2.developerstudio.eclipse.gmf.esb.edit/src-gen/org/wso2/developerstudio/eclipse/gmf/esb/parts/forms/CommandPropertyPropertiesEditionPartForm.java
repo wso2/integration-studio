@@ -55,7 +55,7 @@ import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.CommandPropertyPropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 
@@ -75,6 +75,11 @@ public class CommandPropertyPropertiesEditionPartForm extends SectionPropertiesE
 	protected Text valueContextPropertyName;
 	protected EMFComboViewer contextAction;
 	protected EMFComboViewer messageAction;
+	// Start of user code  for valueMessageElementXpath widgets declarations
+	protected NamespacedProperty valueMessageElementXpath;
+	protected Text valueMessageElementXpathText;
+	// End of user code
+
 
 
 
@@ -126,6 +131,7 @@ public class CommandPropertyPropertiesEditionPartForm extends SectionPropertiesE
 		propertiesStep.addStep(EsbViewsRepository.CommandProperty.Properties.valueContextPropertyName);
 		propertiesStep.addStep(EsbViewsRepository.CommandProperty.Properties.contextAction);
 		propertiesStep.addStep(EsbViewsRepository.CommandProperty.Properties.messageAction);
+		propertiesStep.addStep(EsbViewsRepository.CommandProperty.Properties.valueMessageElementXpath);
 		
 		
 		composer = new PartComposer(commandPropertyStep) {
@@ -153,6 +159,9 @@ public class CommandPropertyPropertiesEditionPartForm extends SectionPropertiesE
 				if (key == EsbViewsRepository.CommandProperty.Properties.messageAction) {
 					return createMessageActionEMFComboViewer(widgetFactory, parent);
 				}
+				// Start of user code for valueMessageElementXpath addToPart creation
+				
+				// End of user code
 				return parent;
 			}
 		};
@@ -246,7 +255,7 @@ public class CommandPropertyPropertiesEditionPartForm extends SectionPropertiesE
 	
 	protected Composite createValueTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.CommandProperty.Properties.valueType, EsbMessages.CommandPropertyPropertiesEditionPart_ValueTypeLabel);
-		valueType = new EMFComboViewer(parent);
+		valueType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		valueType.setContentProvider(new ArrayContentProvider());
 		valueType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData valueTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -412,7 +421,7 @@ public class CommandPropertyPropertiesEditionPartForm extends SectionPropertiesE
 	
 	protected Composite createContextActionEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.CommandProperty.Properties.contextAction, EsbMessages.CommandPropertyPropertiesEditionPart_ContextActionLabel);
-		contextAction = new EMFComboViewer(parent);
+		contextAction = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		contextAction.setContentProvider(new ArrayContentProvider());
 		contextAction.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData contextActionData = new GridData(GridData.FILL_HORIZONTAL);
@@ -442,7 +451,7 @@ public class CommandPropertyPropertiesEditionPartForm extends SectionPropertiesE
 	
 	protected Composite createMessageActionEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.CommandProperty.Properties.messageAction, EsbMessages.CommandPropertyPropertiesEditionPart_MessageActionLabel);
-		messageAction = new EMFComboViewer(parent);
+		messageAction = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		messageAction.setContentProvider(new ArrayContentProvider());
 		messageAction.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData messageActionData = new GridData(GridData.FILL_HORIZONTAL);
@@ -723,6 +732,21 @@ public class CommandPropertyPropertiesEditionPartForm extends SectionPropertiesE
 
 
 
+
+	// Start of user code for valueMessageElementXpath specific getters and setters implementation
+    @Override
+    public NamespacedProperty getValueMessageElementXpath() {
+        return valueMessageElementXpath;
+    }
+    
+    @Override
+    public void setValueMessageElementXpath(NamespacedProperty valueMessageElementXpath) {
+        if (valueMessageElementXpath != null) {
+            valueMessageElementXpathText.setText(valueMessageElementXpath.getPropertyValue());
+            this.valueMessageElementXpath = valueMessageElementXpath;
+        }
+    }
+	// End of user code
 
 	/**
 	 * {@inheritDoc}

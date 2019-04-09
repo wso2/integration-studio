@@ -30,77 +30,33 @@ import java.util.Queue;
 import java.util.Set;
 import java.util.Stack;
 
+import javax.xml.namespace.QName;
 import javax.xml.stream.XMLStreamException;
 
 import org.apache.axiom.om.OMAbstractFactory;
 import org.apache.axiom.om.OMElement;
+import org.apache.axiom.om.OMNode;
+import org.apache.axiom.om.OMText;
 import org.apache.axiom.om.impl.OMNamespaceImpl;
 import org.apache.axiom.om.impl.llom.OMElementImpl;
 import org.apache.axiom.om.util.AXIOMUtil;
 import org.apache.synapse.SynapseConstants;
 import org.apache.synapse.SynapseException;
-import org.apache.synapse.config.xml.AggregateMediatorFactory;
-import org.apache.synapse.config.xml.CallMediatorFactory;
-import org.apache.synapse.config.xml.CalloutMediatorFactory;
-import org.apache.synapse.config.xml.CloneMediatorFactory;
-import org.apache.synapse.config.xml.ConditionalRouterMediatorFactory;
-import org.apache.synapse.config.xml.DBLookupMediatorFactory;
-import org.apache.synapse.config.xml.DBReportMediatorFactory;
-import org.apache.synapse.config.xml.DropMediatorFactory;
-import org.apache.synapse.config.xml.EnqueueMediatorFactory;
-import org.apache.synapse.config.xml.EnrichMediatorFactory;
-import org.apache.synapse.config.xml.FaultMediatorFactory;
-import org.apache.synapse.config.xml.FilterMediatorFactory;
-import org.apache.synapse.config.xml.ForEachMediatorFactory;
-import org.apache.synapse.config.xml.HeaderMediatorFactory;
-import org.apache.synapse.config.xml.InvokeMediatorFactory;
-import org.apache.synapse.config.xml.IterateMediatorFactory;
-import org.apache.synapse.config.xml.LogMediatorFactory;
-import org.apache.synapse.config.xml.LoopBackMediatorFactory;
-import org.apache.synapse.config.xml.MessageStoreMediatorFactory;
-import org.apache.synapse.config.xml.PayloadFactoryMediatorFactory;
-import org.apache.synapse.config.xml.PropertyGroupMediatorFactory;
-import org.apache.synapse.config.xml.PropertyMediatorFactory;
 import org.apache.synapse.config.xml.ProxyServiceFactory;
-import org.apache.synapse.config.xml.RespondMediatorFactory;
-import org.apache.synapse.config.xml.SendMediatorFactory;
 import org.apache.synapse.config.xml.SequenceMediatorFactory;
-import org.apache.synapse.config.xml.SwitchMediatorFactory;
 import org.apache.synapse.config.xml.TemplateMediatorFactory;
-import org.apache.synapse.config.xml.TransactionMediatorFactory;
-import org.apache.synapse.config.xml.URLRewriteMediatorFactory;
-import org.apache.synapse.config.xml.ValidateMediatorFactory;
-import org.apache.synapse.config.xml.XSLTMediatorFactory;
 import org.apache.synapse.config.xml.endpoints.EndpointFactory;
-import org.apache.synapse.mediators.bsf.ScriptMediatorFactory;
-import org.apache.synapse.mediators.spring.SpringMediatorFactory;
-import org.apache.synapse.mediators.throttle.ThrottleMediatorFactory;
-import org.apache.synapse.mediators.xquery.XQueryMediatorFactory;
 import org.apache.synapse.task.SynapseTaskException;
-import org.wso2.carbon.identity.entitlement.mediator.config.xml.EntitlementMediatorFactory;
-import org.wso2.carbon.identity.oauth.mediator.config.xml.OAuthMediatorFactory;
-import org.wso2.carbon.mediator.cache.CacheMediatorFactory;
-import org.wso2.carbon.mediator.datamapper.config.xml.DataMapperMediatorFactory;
-import org.wso2.carbon.mediator.event.xml.EventMediatorFactory;
-import org.wso2.carbon.mediator.fastXSLT.config.xml.FastXSLTMediatorFactory;
-import org.wso2.carbon.mediator.publishevent.PublishEventMediatorFactory;
 import org.wso2.carbon.mediator.service.MediatorException;
-import org.wso2.carbon.mediator.transform.xml.SmooksMediatorFactory;
-import org.wso2.carbon.rule.mediator.RuleMediatorFactory;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.BamMediatorExtFactory;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.BeanMediatorExtFactory;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.BuilderMediatorExtFactory;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.ClassMediatorExtFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.DummyAPIFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.DummyInboundEndpointFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.DummyMediatorFactoryFinder;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.DummyMessageProcessorFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.DummyMessageStoreFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.DummyTaskDescriptionFactory;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.EJBMediatorExtFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.EntryExtFactory;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.POJOCommandMediatorExtFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.sheet.XMLTag;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
@@ -114,6 +70,14 @@ import org.xml.sax.helpers.XMLReaderFactory;
  */
 public class ProcessSourceView {
 
+    private static final String PARSER_CLASS = "org.apache.xerces.parsers.SAXParser";
+    private static final String VALIDATION_FEATURE = "http://xml.org/sax/features/validation";
+    private static final String SCHEMA_FEATURE = "http://apache.org/xml/features/validation/schema";
+    private static final String SYNAPSE_NAMESPACE = "http://ws.apache.org/ns/synapse";
+    private static final String IN_SEQUENCE = "inSequence";
+    private static final String OUT_SEQUENCE = "outSequence";
+    private static final String FAULT_SEQUENCE = "faultSequence";
+    
     private static SourceError sourceError = new SourceError();
     private static Stack<XMLTag> xmlTags;
     private static Queue<XMLTag> xmlTagsQueue = new LinkedList<>();
@@ -145,54 +109,6 @@ public class ProcessSourceView {
     
     private static SequenceMediatorFactory sequenceMediatorFactory;
     private static TemplateMediatorFactory templateMediatorFactory;
-    private static LogMediatorFactory logMediatorFactory;
-    private static EnqueueMediatorFactory enqueueMediatorFactory;
-    private static SendMediatorFactory sendMediatorFactory;
-    private static LoopBackMediatorFactory loopBackMediatorFactory;
-    private static CallMediatorFactory callMediatorFactory;
-    private static RespondMediatorFactory respondMediatorFactory;
-    private static EventMediatorFactory eventMediatorFactory;
-    private static DropMediatorFactory dropMediatorFactory;
-    private static EnrichMediatorFactory enrichMediatorFactory;
-    private static PropertyMediatorFactory propertyMediatorFactory;
-    private static PropertyGroupMediatorFactory propertyGroupMediatorFactory;
-    private static FilterMediatorFactory filterMediatorFactory;
-    private static InvokeMediatorFactory invokeMediatorFactory;
-    private static MessageStoreMediatorFactory messageStoreMediatorFactory;
-    private static SwitchMediatorFactory switchMediatorFactory;
-    private static ValidateMediatorFactory validateMediatorFactory;
-    private static ConditionalRouterMediatorFactory conditionalRouterMediatorFactory;
-    private static ScriptMediatorFactory scriptMediatorFactory;
-    private static SpringMediatorFactory springMediatorFactory;
-    private static FaultMediatorFactory faultMediatorFactory;
-    private static HeaderMediatorFactory headerMediatorFactory;
-    private static PayloadFactoryMediatorFactory payloadFactoryMediatorFactory;
-    private static SmooksMediatorFactory smooksMediatorFactory;
-    private static URLRewriteMediatorFactory urlRewriteMediatorFactory;
-    private static XQueryMediatorFactory xQueryMediatorFactory;
-    private static XSLTMediatorFactory xsltMediatorFactory;
-    private static DataMapperMediatorFactory dataMapperMediatorFactory;
-    private static FastXSLTMediatorFactory fastXSLTMediatorFactory;
-    private static CacheMediatorFactory cacheMediatorFactory;
-    private static DBReportMediatorFactory dbReportMediatorFactory;
-    private static DBLookupMediatorFactory dbLookupMediatorFactory;
-    private static ThrottleMediatorFactory throttleMediatorFactory;
-    private static TransactionMediatorFactory transactionMediatorFactory;
-    private static AggregateMediatorFactory aggregateMediatorFactory;
-    private static CalloutMediatorFactory calloutMediatorFactory;
-    private static CloneMediatorFactory cloneMediatorFactory;
-    private static IterateMediatorFactory iterateMediatorFactory;
-    private static ForEachMediatorFactory forEachMediatorFactory;
-    private static EntitlementMediatorFactory entitlementMediatorFactory;
-    private static OAuthMediatorFactory oAuthMediatorFactory;
-    private static RuleMediatorFactory ruleMediatorFactory;
-    private static PublishEventMediatorFactory publishEventMediatorFactory;
-    private static ClassMediatorExtFactory classMediatorExtFactory;
-    private static BeanMediatorExtFactory beanMediatorExtFactory;
-    private static POJOCommandMediatorExtFactory pojoCommandMediatorExtFactory;
-    private static EJBMediatorExtFactory ejbMediatorExtFactory;
-    private static BuilderMediatorExtFactory builderMediatorExtFactory;
-    private static BamMediatorExtFactory bamMediatorExtFactory;
 
     public ProcessSourceView() {
 
@@ -227,6 +143,241 @@ public class ProcessSourceView {
     }
 
     /**
+     * This method is to validate the mediator positions with drop, loopback, send, and respond mediators.
+     * 
+     * @param xmlContent source view content
+     * @throws TransformerException
+     */
+    public static void validateMediatorPosition(String xmlContent) throws TransformerException {
+
+        String erroneousMediator = "";
+
+        try {
+            OMElement element = AXIOMUtil.stringToOM(xmlContent);
+
+            String localName = element.getLocalName();
+
+            if (localName.equals("proxy")) {
+
+                OMElement target = (OMElement) element.getFirstChildWithName(new QName(SYNAPSE_NAMESPACE, "target"));
+                OMElement inSequence = target.getFirstChildWithName(new QName(SYNAPSE_NAMESPACE, IN_SEQUENCE));
+                if (inSequence != null) {
+                    erroneousMediator = processSequence(inSequence, IN_SEQUENCE);
+                }
+                if (erroneousMediator.equals("")) {
+                    OMElement outSequence = target.getFirstChildWithName(new QName(SYNAPSE_NAMESPACE, OUT_SEQUENCE));
+                    if (outSequence != null) {
+                        erroneousMediator = processSequence(outSequence, OUT_SEQUENCE);
+                    }
+                }
+
+                if (erroneousMediator.equals("")) {
+                    OMElement faultSequence = target
+                            .getFirstChildWithName(new QName(SYNAPSE_NAMESPACE, FAULT_SEQUENCE));
+                    if (faultSequence != null) {
+                        erroneousMediator = processSequence(faultSequence, FAULT_SEQUENCE);
+                    }
+                }
+
+            } else if (localName.equals("api")) {
+                Iterator resources = element.getChildrenWithName(new QName(SYNAPSE_NAMESPACE, "resource"));
+                while (resources.hasNext()) {
+                    Object resourceObj = resources.next();
+                    if (resourceObj instanceof OMElement) {
+
+                        OMElement resource = (OMElement) resourceObj;
+                        if (erroneousMediator.equals("")) {
+                            OMElement inSequence = resource
+                                    .getFirstChildWithName(new QName(SYNAPSE_NAMESPACE, IN_SEQUENCE));
+                            if (inSequence != null) {
+                                erroneousMediator = processSequence(inSequence, IN_SEQUENCE);
+                            }
+                        }
+                        if (erroneousMediator.equals("")) {
+                            OMElement outSequence = resource
+                                    .getFirstChildWithName(new QName(SYNAPSE_NAMESPACE, OUT_SEQUENCE));
+                            if (outSequence != null) {
+                                erroneousMediator = processSequence(outSequence, OUT_SEQUENCE);
+                            }
+                        }
+
+                        if (erroneousMediator.equals("")) {
+                            OMElement faultSequence = resource
+                                    .getFirstChildWithName(new QName(SYNAPSE_NAMESPACE, FAULT_SEQUENCE));
+                            if (faultSequence != null) {
+                                erroneousMediator = processSequence(faultSequence, FAULT_SEQUENCE);
+                            }
+                        }
+                    }
+                }
+
+            } else if (localName.equals("sequence")) {
+                erroneousMediator = processSequence(element, "sequence");
+
+            } else if (localName.equals("template") && xmlContent.contains("sequence")) {
+                OMElement sequence = (OMElement) element
+                        .getFirstChildWithName(new QName(SYNAPSE_NAMESPACE, "sequence"));
+                if (sequence != null) {
+                    erroneousMediator = processSequence(sequence, "sequence");
+                }
+            }
+
+        } catch (XMLStreamException e) {
+            return;
+        }
+
+        if (!erroneousMediator.equals("")) {
+            throw new TransformerException(erroneousMediator);
+        }
+    }
+
+    private static String processSequence(OMElement element, String seqName) {
+        boolean isError = false;
+
+        Iterator dropElements = element.getChildrenWithName(new QName(SYNAPSE_NAMESPACE, "drop"));
+        if (dropElements.hasNext()) {
+            // has drop mediators
+            Object drop = dropElements.next();
+
+            if (drop instanceof OMElement) {
+                OMElement dropElement = (OMElement) drop;
+                isError = processSiblings(dropElement);
+            }
+
+            while (!isError && dropElements.hasNext()) {
+                Object dropTemp = dropElements.next();
+                if (dropTemp instanceof OMElement) {
+                    OMElement dropElement = (OMElement) dropTemp;
+                    isError = processSiblings(dropElement);
+                }
+            }
+
+            if (isError) {
+                return "Cannot add mediators after the Drop mediator, as it represents the end of the mediation flow "
+                        + "where the current message will be stopped processing.";
+            }
+        }
+
+        Iterator sendElements = element.getChildrenWithName(new QName(SYNAPSE_NAMESPACE, "send"));
+        if (sendElements.hasNext()) {
+            // has send mediators
+            Object send = sendElements.next();
+
+            if (send instanceof OMElement) {
+                OMElement sendElement = (OMElement) send;
+                isError = processSiblings(sendElement);
+            }
+
+            while (!isError && sendElements.hasNext()) {
+                Object sendTemp = sendElements.next();
+                if (sendTemp instanceof OMElement) {
+                    OMElement sendElement = (OMElement) sendTemp;
+                    isError = processSiblings(sendElement);
+                }
+            }
+
+            if (isError) {
+                return "Cannot add mediators after the Send mediator, as it is used to send messages out of synapse to an endpoint.";
+            }
+        }
+
+        Iterator loopbackElements = element.getChildrenWithName(new QName(SYNAPSE_NAMESPACE, "loopback"));
+        if (loopbackElements.hasNext()) {
+            // has loopback mediators
+            if (seqName.equals(OUT_SEQUENCE) || seqName.equals(FAULT_SEQUENCE)) {
+                return "Loopback mediator is not allowed to be added in " + seqName
+                        + ", as it is used to move the message from" + " inSequence to outSequence.";
+            }
+
+            Object loopback = loopbackElements.next();
+            if (loopback instanceof OMElement) {
+                OMElement loopbackElement = (OMElement) loopback;
+                isError = processSiblings(loopbackElement);
+            }
+
+            while (!isError && loopbackElements.hasNext()) {
+                Object loopbackTemp = loopbackElements.next();
+                if (loopbackTemp instanceof OMElement) {
+                    OMElement loopbackElement = (OMElement) loopbackTemp;
+                    isError = processSiblings(loopbackElement);
+                }
+            }
+
+            if (isError) {
+                return "Cannot add mediators after the Loopback mediator, as it is used to move the message from inSequence to outSequence.";
+            }
+        }
+
+        Iterator respondElements = element.getChildrenWithName(new QName(SYNAPSE_NAMESPACE, "respond"));
+        if (respondElements.hasNext()) {
+            // has respond mediators
+            Object respond = respondElements.next();
+
+            if (respond instanceof OMElement) {
+                OMElement respondElement = (OMElement) respond;
+                isError = processSiblings(respondElement);
+            }
+
+            while (!isError && respondElements.hasNext()) {
+                Object respondTemp = respondElements.next();
+                if (respondTemp instanceof OMElement) {
+                    OMElement resondElement = (OMElement) respondTemp;
+                    isError = processSiblings(resondElement);
+                }
+            }
+
+            if (isError) {
+                return "Cannot add mediators after the Respond mediator, as it stops the processing on the current message and"
+                        + " sends the message back to the client as a response.";
+            }
+        }
+
+        return "";
+    }
+
+    /**
+     * Processes the siblings of a given OMNode and returns true if there are any other mediator related OMElements
+     * afterward. Else, returns false.
+     * 
+     * @param omElement current mediator OMElement
+     * @return
+     */
+    private static boolean processSiblings(OMElement omElement) {
+        OMNode nextSibling = omElement.getNextOMSibling();
+        if (nextSibling != null) {
+            if (nextSibling instanceof OMElement) {
+                return true;
+            } else if (nextSibling instanceof OMText) {
+                if (getNextOMElement((OMText) nextSibling) != null) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Returns with the next OMElement sibling
+     * 
+     * @param text current text node
+     * @return
+     */
+    private static OMElement getNextOMElement(OMText text) {
+        OMNode nextNode = text.getNextOMSibling();
+        if (nextNode instanceof OMElement) {
+            return (OMElement) nextNode;
+
+        } else if (nextNode != null && nextNode instanceof OMText) {
+            return getNextOMElement((OMText) nextNode);
+
+        } else {
+            return null;
+        }
+    }
+    
+    /**
      * Validate for the xml parser errors in the source content
      * 
      * @param xmlContent
@@ -236,14 +387,11 @@ public class ProcessSourceView {
      */
     public static SourceError validateXMLContent(String xmlContent) throws ValidationException {
 
-        String parserClass = "org.apache.xerces.parsers.SAXParser";
-        String validationFeature = "http://xml.org/sax/features/validation";
-        String schemaFeature = "http://apache.org/xml/features/validation/schema";
         try {
 
-            XMLReader r = XMLReaderFactory.createXMLReader(parserClass);
-            r.setFeature(validationFeature, true);
-            r.setFeature(schemaFeature, true);
+            XMLReader r = XMLReaderFactory.createXMLReader(PARSER_CLASS);
+            r.setFeature(VALIDATION_FEATURE, true);
+            r.setFeature(SCHEMA_FEATURE, true);
             r.setErrorHandler(new MyErrorHandler());
             InputSource inputSource = new InputSource(new StringReader(xmlContent));
             r.parse(inputSource);
@@ -435,6 +583,7 @@ public class ProcessSourceView {
         boolean insideRuleSet = false;
         String artifactType = "";
         boolean insideGraphicalEp = false;
+        boolean graphicalEpInsideArtifact = false;
 
         while (!xmlTagsQueue.isEmpty()) {
             XMLTag tempTag = xmlTagsQueue.remove();
@@ -449,6 +598,9 @@ public class ProcessSourceView {
                 if (artifactType.equals("endpoint") && (tempTag.getqName().equals("loadbalance")
                         || tempTag.getqName().equals("failover") || tempTag.getqName().equals("recipientlist"))) {
                     insideGraphicalEp = true;
+                } else if (!artifactType.equals("") && (tempTag.getqName().equals("loadbalance")
+                        || tempTag.getqName().equals("failover") || tempTag.getqName().equals("recipientlist"))) {
+                    graphicalEpInsideArtifact = true;
                 }
 
                 if (tempTag.getqName().equals("ruleSet")) {
@@ -485,7 +637,7 @@ public class ProcessSourceView {
                         }
                     }
                 } else if (tempTag.getqName().equals("endpoint")) {
-                    if (!insideGraphicalEp) {
+                    if (!insideGraphicalEp || !graphicalEpInsideArtifact) {
                         intermediaryStack.push(tempTag);
                     }
                 }
@@ -499,6 +651,11 @@ public class ProcessSourceView {
                 if (artifactType.equals("endpoint") && insideGraphicalEp && (tempTag.getqName().equals("loadbalance")
                         || tempTag.getqName().equals("failover") || tempTag.getqName().equals("recipientlist"))) {
                     insideGraphicalEp = false;
+                }
+                
+                if (graphicalEpInsideArtifact && (tempTag.getqName().equals("loadbalance")
+                        || tempTag.getqName().equals("failover") || tempTag.getqName().equals("recipientlist"))) {
+                    graphicalEpInsideArtifact = false;
                 }
 
                 if (prev != null && prev.getTagType() != 8) {
@@ -516,8 +673,9 @@ public class ProcessSourceView {
                         if (tempTag.getTagType() == 3 && currentMediator != null
                                 && ((currentMediator.getqName().equals("payloadFactory")
                                         && !tempTag.getqName().equals("payloadFactory"))
-                                        || (currentMediator.getqName().equals("throttle")
-                                                && !tempTag.getqName().equals("throttle")))) {
+                                        || (currentMediator.getqName().equals("throttle") && !tempTag.getqName().equals("throttle")) 
+                                        || (currentMediator.getqName().equals("pojoCommand") && !tempTag.getqName().equals("pojoCommand")) 
+                                        || (currentMediator.getqName().equals("validate") && !tempTag.getqName().equals("validate")))) {
                             intermediaryStack.push(currentMediator);
 
                         } else if (currentMediator != null && currentMediator.getqName().equals("rule")) {
@@ -587,7 +745,7 @@ public class ProcessSourceView {
                                             || (artifacts.contains(tempTag.getqName())
                                                     && !artifactType.equals("localEntry"))))) {
                                 if ((!tempTag.getqName().equals("endpoint")
-                                        || (tempTag.getqName().equals("endpoint") && !insideGraphicalEp))) {
+                                        || (tempTag.getqName().equals("endpoint") && !insideGraphicalEp && !graphicalEpInsideArtifact))) {
                                     sourceError = mediatorValidation();
                                     if (sourceError != null) {
                                         return sourceError;

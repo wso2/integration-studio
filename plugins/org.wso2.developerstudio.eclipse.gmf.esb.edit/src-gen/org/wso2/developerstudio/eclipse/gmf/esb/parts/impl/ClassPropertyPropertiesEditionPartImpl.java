@@ -203,8 +203,11 @@ public class ClassPropertyPropertiesEditionPartImpl extends CompositePropertiesE
 			@Override
 			@SuppressWarnings("synthetic-access")
 			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
+				
+			}
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if (!EEFPropertyViewUtil.isReservedKeyCombination(e) && propertiesEditionComponent != null) {
 						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ClassPropertyPropertiesEditionPartImpl.this, EsbViewsRepository.ClassProperty.Properties.propertyName, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, propertyName.getText()));
 				}
 			}
@@ -224,7 +227,7 @@ public class ClassPropertyPropertiesEditionPartImpl extends CompositePropertiesE
      */	
 	protected Composite createPropertyValueTypeEMFComboViewer(Composite parent) {
 	    Control propertyValueTypeLabel = createDescription(parent, EsbViewsRepository.ClassProperty.Properties.propertyValueType, EsbMessages.ClassPropertyPropertiesEditionPart_PropertyValueTypeLabel);
-		propertyValueType = new EMFComboViewer(parent);
+		propertyValueType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		propertyValueType.setContentProvider(new ArrayContentProvider());
 		propertyValueType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData propertyValueTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -288,12 +291,15 @@ public class ClassPropertyPropertiesEditionPartImpl extends CompositePropertiesE
 			@Override
 			@SuppressWarnings("synthetic-access")
 			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ClassPropertyPropertiesEditionPartImpl.this, EsbViewsRepository.ClassProperty.Properties.propertyValue, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, propertyValue.getText()));
-				}
+			
 			}
 
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if (!EEFPropertyViewUtil.isReservedKeyCombination(e) && propertiesEditionComponent != null) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ClassPropertyPropertiesEditionPartImpl.this, EsbViewsRepository.ClassProperty.Properties.propertyValue, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, propertyValue.getText()));
+				}
+			}
 		});
 		EditingUtils.setID(propertyValue, EsbViewsRepository.ClassProperty.Properties.propertyValue);
 		EditingUtils.setEEFtype(propertyValue, "eef::Text"); //$NON-NLS-1$
@@ -469,7 +475,7 @@ public class ClassPropertyPropertiesEditionPartImpl extends CompositePropertiesE
         if (propertyExpression == null) {
             propertyExpression = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
         }
-        propertyExpressionText = SWTUtils.createScrollableText(parent, SWT.BORDER); // $NON-NLS-1$
+        propertyExpressionText = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.READ_ONLY); // $NON-NLS-1$
         GridData propertyValueData = new GridData(GridData.FILL_HORIZONTAL);
         propertyExpressionText.setLayoutData(propertyValueData);
 
@@ -503,13 +509,14 @@ public class ClassPropertyPropertiesEditionPartImpl extends CompositePropertiesE
 
             @Override
             public void keyPressed(KeyEvent e) {
-                if (e.character != SWT.CR) {
-                    openPropertyExpressionNSPEDialog(parent);
-                }
+                
             }
 
             @Override
             public void keyReleased(KeyEvent e) {
+            	if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+            		openPropertyExpressionNSPEDialog(parent);
+            	}
             }
 
         });

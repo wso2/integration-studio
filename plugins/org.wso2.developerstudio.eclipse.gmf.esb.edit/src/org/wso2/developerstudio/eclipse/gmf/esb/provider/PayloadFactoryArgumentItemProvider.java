@@ -28,6 +28,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryArgument;
 import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryArgumentType;
+import org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 
 /**
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryArgument} object.
@@ -221,15 +223,26 @@ public class PayloadFactoryArgumentItemProvider extends EsbNodeItemProvider {
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
+     * @generated NOT
      */
     @Override
     public String getText(Object object) {
-        PayloadFactoryArgumentType labelValue = ((PayloadFactoryArgument)object).getArgumentType();
-        String label = labelValue == null ? null : labelValue.toString();
-        return label == null || label.length() == 0 ?
-            getString("_UI_PayloadFactoryArgument_type") :
-            getString("_UI_PayloadFactoryArgument_type") + " " + label;
+        PayloadFactoryArgumentType argumentType = ((PayloadFactoryArgument)object).getArgumentType();
+        String argumentTypeLabel = argumentType == null ? null : argumentType.toString();
+        String argumentValue = ((PayloadFactoryArgument)object).getArgumentValue().toString();
+        String argumentExpression = ((PayloadFactoryArgument)object).getArgumentExpression().toString();
+
+        if (argumentTypeLabel.equalsIgnoreCase(PayloadFactoryArgumentType.VALUE.getName())) {
+            return argumentTypeLabel == null || argumentTypeLabel.length() == 0 ?
+                getString("_UI_PayloadFactoryArgument_type") :
+                getString("_UI_PayloadFactoryArgument_type") + "\t\t\t" + argumentTypeLabel + "\t\t\t" +
+                argumentValue;
+        } else {
+            return argumentTypeLabel == null || argumentTypeLabel.length() == 0 ?
+                getString("_UI_PayloadFactoryArgument_type") :
+                getString("_UI_PayloadFactoryArgument_type") + "\t\t\t " + argumentTypeLabel + "\t\t\t" +
+                argumentExpression;
+        }
     }
 
     /**

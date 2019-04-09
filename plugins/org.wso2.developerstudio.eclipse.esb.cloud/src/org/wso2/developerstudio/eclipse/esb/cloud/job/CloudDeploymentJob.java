@@ -48,6 +48,7 @@ import org.wso2.developerstudio.eclipse.esb.cloud.model.Version;
 import org.wso2.developerstudio.eclipse.esb.cloud.notification.NotificationPopup;
 import org.wso2.developerstudio.eclipse.esb.cloud.notification.EndpointNotificationPopup;
 import org.wso2.developerstudio.eclipse.esb.cloud.resources.CloudDeploymentWizardConstants;
+import org.wso2.developerstudio.eclipse.esb.cloud.resources.ResponseMessageConstants;
 import org.wso2.developerstudio.eclipse.esb.cloud.util.JsonUtils;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
@@ -70,12 +71,14 @@ public class CloudDeploymentJob extends Job {
     private String response;
     private EndpointData endpointData;
     private NotificationPopup popup;
+    private int runtime;
 
     private static final int POLLING_INTERVAL = 5;
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
     public CloudDeploymentJob(String name, String description, String version, String carbonFileName,
-            String carbonFileLocation, String iconLocation, List<Map<String, String>> tags, boolean isNewVersion) {
+            String carbonFileLocation, String iconLocation, List<Map<String, String>> tags, boolean isNewVersion,
+            int runtime) {
         super("Deploying to Integration Cloud...");
         client = IntegrationCloudServiceClient.getInstance();
         this.name = name;
@@ -86,6 +89,7 @@ public class CloudDeploymentJob extends Job {
         this.iconLocation = iconLocation;
         this.tags = tags;
         this.isNewVersion = isNewVersion;
+        this.runtime = runtime;
     }
 
     @Override
@@ -104,7 +108,7 @@ public class CloudDeploymentJob extends Job {
 
             // Create new application / version. Response is returned once the application is created.
             client.createApplication(name, description, version, carbonFileName, carbonFileLocation, iconLocation, tags,
-                    isNewVersion);
+                    isNewVersion, runtime);
 
             operationText = "Fetching the endpoints...";
             monitor.subTask(operationText);
@@ -125,7 +129,8 @@ public class CloudDeploymentJob extends Job {
                         for (Map.Entry<String, Version> version : versions.entrySet()) {
                             response = client.getApplicationEndpoints(app.getApplicationType(),
                                     version.getValue().getDeploymentURL(), version.getValue().getVersionId());
-                            if (null != response && !"null".equals(response)) {
+                            if (null != response && !"null".equals(response)
+                                    && !response.equals(ResponseMessageConstants.ErrorMessages.ENDPOINTS_ARE_LOADING)) {
                                 endpointData = JsonUtils.getEndpointDataFromJson(response);
                                 scheduledExecutorService.shutdown();
                             } else {
@@ -136,10 +141,12 @@ public class CloudDeploymentJob extends Job {
                             }
                         }
                     } catch (CloudDeploymentException | InvalidTokenException | HttpClientException e) {
-                        handleException(monitor, e, CloudDeploymentWizardConstants.ErrorMessages.DEPLOY_TO_CLOUD_FAILED_TITLE);
+                        handleException(monitor, e,
+                                CloudDeploymentWizardConstants.ErrorMessages.DEPLOY_TO_CLOUD_FAILED_TITLE);
                         scheduledExecutorService.shutdown();
                     } catch (NetworkUnavailableException e) {
-                        handleException(monitor, e, CloudDeploymentWizardConstants.ErrorMessages.NO_INTERNET_CONNECTION_MESSAGE);
+                        handleException(monitor, e,
+                                CloudDeploymentWizardConstants.ErrorMessages.NO_INTERNET_CONNECTION_MESSAGE);
                         scheduledExecutorService.shutdown();
                     }
                 }
@@ -148,10 +155,11 @@ public class CloudDeploymentJob extends Job {
             scheduledExecutorService.awaitTermination(120, TimeUnit.SECONDS);
 
         } catch (NetworkUnavailableException e) {
-            return handleException(monitor, e, CloudDeploymentWizardConstants.ErrorMessages.NO_INTERNET_CONNECTION_MESSAGE);
+            return handleException(monitor, e,
+                    CloudDeploymentWizardConstants.ErrorMessages.NO_INTERNET_CONNECTION_MESSAGE);
         } catch (CloudDeploymentException | InvalidTokenException | InterruptedException | HttpClientException e) {
             return handleException(monitor, e, e.getMessage());
-        } 
+        }
 
         monitor.worked(100);
         monitor.done();
@@ -171,8 +179,8 @@ public class CloudDeploymentJob extends Job {
      */
     private IStatus handleException(IProgressMonitor monitor, Exception ex, String message) {
         log.error(message, ex);
-        showMessageBox(CloudDeploymentWizardConstants.ErrorMessages.DEPLOY_TO_CLOUD_FAILED_TITLE,
-                message, SWT.ICON_ERROR);
+        showMessageBox(CloudDeploymentWizardConstants.ErrorMessages.DEPLOY_TO_CLOUD_FAILED_TITLE, message,
+                SWT.ICON_ERROR);
         monitor.beginTask(ex.getMessage(), 100);
         monitor.worked(0);
         monitor.setCanceled(true);
@@ -211,8 +219,7 @@ public class CloudDeploymentJob extends Job {
         Display.getDefault().syncExec(new Runnable() {
             public void run() {
                 Display display = PlatformUI.getWorkbench().getDisplay();
-                popup = new NotificationPopup(display,
-                        CloudDeploymentWizardConstants.IN_PROGRESS_DIALOG_TITLE_TEXT,
+                popup = new NotificationPopup(display, CloudDeploymentWizardConstants.IN_PROGRESS_DIALOG_TITLE_TEXT,
                         CloudDeploymentWizardConstants.SuccessMessages.SUCCESS_CREATING_APPLICATION_MSG);
                 popup.open();
             }

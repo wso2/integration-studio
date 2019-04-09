@@ -27,6 +27,7 @@ public class Version {
     private String deploymentURL;
     private String versionId;
     private String versionName;
+    private int runtimeId;
 
     public String getDeploymentPrivateURL() {
         return deploymentPrivateURL;
@@ -58,6 +59,14 @@ public class Version {
 
     public void setVersionName(String versionName) {
         this.versionName = versionName;
+    }
+
+    public int getRuntimeId() {
+        return runtimeId;
+    }
+
+    public void setRuntimeName(int runtimeId) {
+        this.runtimeId = runtimeId;
     }
 
     @Override

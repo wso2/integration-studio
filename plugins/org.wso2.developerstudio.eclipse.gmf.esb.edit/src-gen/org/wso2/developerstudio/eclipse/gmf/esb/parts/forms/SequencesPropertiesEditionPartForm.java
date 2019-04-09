@@ -51,6 +51,9 @@ import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.KeyListener;
+import org.eclipse.swt.events.MouseAdapter;
+import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 
@@ -136,17 +139,17 @@ public class SequencesPropertiesEditionPartForm extends SectionPropertiesEditing
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
-	 * 
+	 *
+	 * @generated NOT
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
-		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
-		Form form = scrolledForm.getForm();
+		Form form = widgetFactory.createForm(parent);
 		view = form.getBody();
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
 		createControls(widgetFactory, view);
-		return scrolledForm;
+		return form;
 	}
 
 	/**
@@ -973,6 +976,10 @@ public class SequencesPropertiesEditionPartForm extends SectionPropertiesEditing
 	}
 
 	// Start of user code additional methods
+
+    /**
+     * @generated NOT
+     */
 	protected Composite createOnError(FormToolkit widgetFactory, Composite parent) {
 		Control onErrorLabel = createDescription(parent,
 				EsbViewsRepository.Sequences.Properties.onError,
@@ -982,36 +989,47 @@ public class SequencesPropertiesEditionPartForm extends SectionPropertiesEditing
 			onError = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
 		}
 		String initValueExpression = onError.getKeyValue().isEmpty() ? "" : onError.getKeyValue();
-		onErrorText = widgetFactory.createText(parent, initValueExpression);
+		onErrorText = widgetFactory.createText(parent, initValueExpression, SWT.READ_ONLY);
 		onErrorText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
 		onErrorText.setLayoutData(valueData);
-		onErrorText.addFocusListener(new FocusAdapter() {
-			/**
-			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void focusLost(FocusEvent e) {
-			}
+		onErrorText.addMouseListener(new MouseAdapter() {
 
-			/**
-			 * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
-			 */
-			@Override
-			public void focusGained(FocusEvent e) {
-				EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
-						SWT.NULL, onError, new ArrayList<NamedEntityDescriptor>());
-				dialog.open();
-				onErrorText.setText(onError.getKeyValue());
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
-						SequencesPropertiesEditionPartForm.this,
-						EsbViewsRepository.Sequences.Properties.onError, PropertiesEditionEvent.COMMIT,
-						PropertiesEditionEvent.SET, null, getOnError()));
-			}
-		});
+            @Override
+            public void mouseDown( MouseEvent event ) {
+                EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
+                        SWT.NULL, onError, new ArrayList<NamedEntityDescriptor>());
+                dialog.open();
+                onErrorText.setText(onError.getKeyValue());
+                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                        SequencesPropertiesEditionPartForm.this,
+                        EsbViewsRepository.Sequences.Properties.onError, PropertiesEditionEvent.COMMIT,
+                        PropertiesEditionEvent.SET, null, getOnError()));
+            }
+
+        });
+
+		onErrorText.addKeyListener(new KeyListener() {
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                    EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
+                            SWT.NULL, onError, new ArrayList<NamedEntityDescriptor>());
+                    dialog.open();
+                    onErrorText.setText(onError.getKeyValue());
+                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                            SequencesPropertiesEditionPartForm.this,
+                            EsbViewsRepository.Sequences.Properties.onError, PropertiesEditionEvent.COMMIT,
+                            PropertiesEditionEvent.SET, null, getOnError()));
+                }
+            }
+        });
 		EditingUtils.setID(onErrorText, EsbViewsRepository.Sequences.Properties.onError);
 		EditingUtils.setEEFtype(onErrorText, "eef::Text");
 		Control onErrorHelp = FormUtils.createHelpButton(widgetFactory, parent,

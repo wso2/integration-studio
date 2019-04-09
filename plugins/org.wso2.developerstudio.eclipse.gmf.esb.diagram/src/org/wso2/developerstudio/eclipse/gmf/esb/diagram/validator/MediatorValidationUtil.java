@@ -3,8 +3,6 @@ package org.wso2.developerstudio.eclipse.gmf.esb.diagram.validator;
 import java.util.Iterator;
 import java.util.Properties;
 
-import javax.xml.stream.XMLStreamException;
-
 import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.impl.OMNamespaceImpl;
 import org.apache.axiom.om.impl.llom.OMElementImpl;
@@ -36,7 +34,6 @@ import org.apache.synapse.config.xml.RespondMediatorFactory;
 import org.apache.synapse.config.xml.SendMediatorFactory;
 import org.apache.synapse.config.xml.SequenceMediatorFactory;
 import org.apache.synapse.config.xml.SwitchMediatorFactory;
-import org.apache.synapse.config.xml.TemplateMediatorFactory;
 import org.apache.synapse.config.xml.TransactionMediatorFactory;
 import org.apache.synapse.config.xml.URLRewriteMediatorFactory;
 import org.apache.synapse.config.xml.ValidateMediatorFactory;
@@ -59,10 +56,13 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.BamM
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.BeanMediatorExtFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.BuilderMediatorExtFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.ClassMediatorExtFactory;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.DummyPOJOCommandMediatorFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.EJBMediatorExtFactory;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.POJOCommandMediatorExtFactory;
 
 public class MediatorValidationUtil {
+    
+    private static final String SYNAPSE_NAMESPACE = "http://ws.apache.org/ns/synapse";
+    
     private static SequenceMediatorFactory sequenceMediatorFactory;
     private static LogMediatorFactory logMediatorFactory;
     private static EnqueueMediatorFactory enqueueMediatorFactory;
@@ -108,7 +108,7 @@ public class MediatorValidationUtil {
     private static PublishEventMediatorFactory publishEventMediatorFactory;
     private static ClassMediatorExtFactory classMediatorExtFactory;
     private static BeanMediatorExtFactory beanMediatorExtFactory;
-    private static POJOCommandMediatorExtFactory pojoCommandMediatorExtFactory;
+    private static DummyPOJOCommandMediatorFactory pojoCommandMediatorFactory;
     private static EJBMediatorExtFactory ejbMediatorExtFactory;
     private static BuilderMediatorExtFactory builderMediatorExtFactory;
     private static BamMediatorExtFactory bamMediatorExtFactory;
@@ -197,18 +197,18 @@ public class MediatorValidationUtil {
                 if (enrichMediatorFactory == null) {
                     enrichMediatorFactory = new EnrichMediatorFactory();
                 }
-                omElement.setNamespace(new OMNamespaceImpl("http://ws.apache.org/ns/synapse", ""));
+                omElement.setNamespace(new OMNamespaceImpl(SYNAPSE_NAMESPACE, ""));
 
                 Iterator iterator = omElement.getChildrenWithLocalName("source");
                 if (iterator.hasNext()) {
                     OMElement source = (OMElement) iterator.next();
-                    source.setNamespace(new OMNamespaceImpl("http://ws.apache.org/ns/synapse", ""));
+                    source.setNamespace(new OMNamespaceImpl(SYNAPSE_NAMESPACE, ""));
                 }
 
                 iterator = omElement.getChildrenWithLocalName("target");
                 if (iterator.hasNext()) {
                     OMElement target = (OMElement) iterator.next();
-                    target.setNamespace(new OMNamespaceImpl("http://ws.apache.org/ns/synapse", ""));
+                    target.setNamespace(new OMNamespaceImpl(SYNAPSE_NAMESPACE, ""));
                 }
                 enrichMediatorFactory.createMediator(omElement, null);
 
@@ -234,6 +234,11 @@ public class MediatorValidationUtil {
             } else if (qTag.equals("call-template")) {
                 if (invokeMediatorFactory == null) {
                     invokeMediatorFactory = new InvokeMediatorFactory();
+                }
+                Iterator children = omElement.getChildrenWithLocalName("with-param");
+                while (children.hasNext()) {
+                    OMElement paramElement = (OMElement) children.next();
+                    paramElement.setNamespace(new OMNamespaceImpl(SYNAPSE_NAMESPACE, ""));
                 }
                 invokeMediatorFactory.createMediator(omElement, null);
 
@@ -281,10 +286,17 @@ public class MediatorValidationUtil {
                 classMediatorExtFactory.createMediator(omElement, null);
 
             } else if (qTag.equals("pojoCommand")) {
-                if (pojoCommandMediatorExtFactory == null) {
-                    pojoCommandMediatorExtFactory = new POJOCommandMediatorExtFactory();
+                if (pojoCommandMediatorFactory == null) {
+                    pojoCommandMediatorFactory = new DummyPOJOCommandMediatorFactory();
                 }
-                pojoCommandMediatorExtFactory.createMediator(omElement, null);
+                
+                Iterator children = omElement.getChildrenWithLocalName("property");
+                if (children.hasNext()) {
+                    OMElement codeElement = (OMElement) children.next();
+                    codeElement.setNamespace(new OMNamespaceImpl(SYNAPSE_NAMESPACE, ""));
+                }
+                
+                pojoCommandMediatorFactory.createMediator(omElement, null);
 
             } else if (qTag.equals("ejb")) {
                 if (ejbMediatorExtFactory == null) {
@@ -306,7 +318,7 @@ public class MediatorValidationUtil {
                 Iterator children = omElement.getChildrenWithLocalName("spring");
                 if (children.hasNext()) {
                     OMElement codeElement = (OMElement) children.next();
-                    codeElement.setNamespace(new OMNamespaceImpl("http://ws.apache.org/ns/synapse", "spring"));
+                    codeElement.setNamespace(new OMNamespaceImpl(SYNAPSE_NAMESPACE, "spring"));
                 }
                 springMediatorFactory.createMediator(omElement, null);
 
@@ -317,13 +329,13 @@ public class MediatorValidationUtil {
                 Iterator children = omElement.getChildrenWithLocalName("code");
                 if (children.hasNext()) {
                     OMElement codeElement = (OMElement) children.next();
-                    codeElement.setNamespace(new OMNamespaceImpl("http://ws.apache.org/ns/synapse", ""));
+                    codeElement.setNamespace(new OMNamespaceImpl(SYNAPSE_NAMESPACE, ""));
                 }
 
                 children = omElement.getChildrenWithLocalName("reason");
                 if (children.hasNext()) {
                     OMElement reasonElement = (OMElement) children.next();
-                    reasonElement.setNamespace(new OMNamespaceImpl("http://ws.apache.org/ns/synapse", ""));
+                    reasonElement.setNamespace(new OMNamespaceImpl(SYNAPSE_NAMESPACE, ""));
                 }
 
                 faultMediatorFactory.createMediator(omElement, null);
@@ -338,13 +350,19 @@ public class MediatorValidationUtil {
                 if (payloadFactoryMediatorFactory == null) {
                     payloadFactoryMediatorFactory = new PayloadFactoryMediatorFactory();
                 }
-                omElement.setNamespace(new OMNamespaceImpl("http://ws.apache.org/ns/synapse", ""));
+                omElement.setNamespace(new OMNamespaceImpl(SYNAPSE_NAMESPACE, ""));
                 Iterator children = omElement.getChildrenWithLocalName("format");
                 if (children.hasNext()) {
                     OMElement formatElement = (OMElement) children.next();
-                    formatElement.setNamespace(new OMNamespaceImpl("http://ws.apache.org/ns/synapse", ""));
+                    formatElement.setNamespace(new OMNamespaceImpl(SYNAPSE_NAMESPACE, ""));
                 }
 
+                Iterator agrs = omElement.getChildrenWithLocalName("args");
+                if (agrs.hasNext()) {
+                    OMElement argElement = (OMElement) agrs.next();
+                    argElement.setNamespace(new OMNamespaceImpl(SYNAPSE_NAMESPACE, ""));
+                }
+                
                 payloadFactoryMediatorFactory.createMediator(omElement, null);
 
             } else if (qTag.equals("smooks")) {
@@ -387,7 +405,7 @@ public class MediatorValidationUtil {
                 if (cacheMediatorFactory == null) {
                     cacheMediatorFactory = new CacheMediatorFactory();
                 }
-                omElement.setNamespace(new OMNamespaceImpl("http://ws.apache.org/ns/synapse", ""));
+                omElement.setNamespace(new OMNamespaceImpl(SYNAPSE_NAMESPACE, ""));
                 cacheMediatorFactory.createMediator(omElement, null);
 
             } else if (qTag.equals("dbreport")) {
@@ -442,7 +460,7 @@ public class MediatorValidationUtil {
                 Iterator iterator = omElement.getChildrenWithLocalName("target");
                 if (iterator.hasNext()) {
                     OMElement source = (OMElement) iterator.next();
-                    source.setNamespace(new OMNamespaceImpl("http://ws.apache.org/ns/synapse", ""));
+                    source.setNamespace(new OMNamespaceImpl(SYNAPSE_NAMESPACE, ""));
                 }
                 iterateMediatorFactory.createMediator(omElement, null);
 
@@ -456,14 +474,14 @@ public class MediatorValidationUtil {
                 if (entitlementMediatorFactory == null) {
                     entitlementMediatorFactory = new EntitlementMediatorFactory();
                 }
-                omElement.setNamespace(new OMNamespaceImpl("http://ws.apache.org/ns/synapse", ""));
+                omElement.setNamespace(new OMNamespaceImpl(SYNAPSE_NAMESPACE, ""));
                 entitlementMediatorFactory.createMediator(omElement, null);
 
             } else if (qTag.equals("oauthService")) {
                 if (oAuthMediatorFactory == null) {
                     oAuthMediatorFactory = new OAuthMediatorFactory();
                 }
-                omElement.setNamespace(new OMNamespaceImpl("http://ws.apache.org/ns/synapse", ""));
+                omElement.setNamespace(new OMNamespaceImpl(SYNAPSE_NAMESPACE, ""));
                 oAuthMediatorFactory.createMediator(omElement, null);
 
             } else if (qTag.equals("builder")) {
@@ -511,7 +529,7 @@ public class MediatorValidationUtil {
             Object child = childern.next();
             if (child instanceof OMElementImpl) {
                 currentElement = (OMElement) child;
-                currentElement.setNamespace(new OMNamespaceImpl("http://ws.apache.org/ns/synapse", ""));
+                currentElement.setNamespace(new OMNamespaceImpl(SYNAPSE_NAMESPACE, ""));
                 if (currentElement.getChildren().hasNext()) {
                     setNamespaceForChildren(currentElement);
                 }

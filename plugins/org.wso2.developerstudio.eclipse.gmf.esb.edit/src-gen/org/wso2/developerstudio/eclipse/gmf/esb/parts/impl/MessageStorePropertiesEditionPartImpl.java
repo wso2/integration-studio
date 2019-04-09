@@ -516,7 +516,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	
 	protected Composite createStoreTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.MessageStore.Properties.storeType, EsbMessages.MessageStorePropertiesEditionPart_StoreTypeLabel);
-		storeType = new EMFComboViewer(parent);
+		storeType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		storeType.setContentProvider(new ArrayContentProvider());
 		storeType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData storeTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -870,7 +870,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	
 	protected Composite createJmsSpecVersionEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.MessageStore.Properties.jmsSpecVersion, EsbMessages.MessageStorePropertiesEditionPart_JmsSpecVersionLabel);
-		jmsSpecVersion = new EMFComboViewer(parent);
+		jmsSpecVersion = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		jmsSpecVersion.setContentProvider(new ArrayContentProvider());
 		jmsSpecVersion.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData jmsSpecVersionData = new GridData(GridData.FILL_HORIZONTAL);
@@ -1420,7 +1420,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	
 	protected Composite createJdbcConnectionInformationEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.MessageStore.Properties.jdbcConnectionInformation, EsbMessages.MessageStorePropertiesEditionPart_JdbcConnectionInformationLabel);
-		jdbcConnectionInformation = new EMFComboViewer(parent);
+		jdbcConnectionInformation = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		jdbcConnectionInformation.setContentProvider(new ArrayContentProvider());
 		jdbcConnectionInformation.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData jdbcConnectionInformationData = new GridData(GridData.FILL_HORIZONTAL);
@@ -1923,7 +1923,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	
 	protected Composite createResequenceConnectionInformationEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.MessageStore.Properties.resequenceConnectionInformation, EsbMessages.MessageStorePropertiesEditionPart_ResequenceConnectionInformationLabel);
-		resequenceConnectionInformation = new EMFComboViewer(parent);
+		resequenceConnectionInformation = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		resequenceConnectionInformation.setContentProvider(new ArrayContentProvider());
 		resequenceConnectionInformation.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData resequenceConnectionInformationData = new GridData(GridData.FILL_HORIZONTAL);

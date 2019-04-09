@@ -642,7 +642,7 @@ public class HTTPEndpointPropertiesEditionPartImpl extends CompositePropertiesEd
 	
 	protected Composite createAddressingVersionEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.HTTPEndpoint.Properties.addressingVersion, EsbMessages.HTTPEndpointPropertiesEditionPart_AddressingVersionLabel);
-		addressingVersion = new EMFComboViewer(parent);
+		addressingVersion = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		addressingVersion.setContentProvider(new ArrayContentProvider());
 		addressingVersion.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData addressingVersionData = new GridData(GridData.FILL_HORIZONTAL);
@@ -702,7 +702,7 @@ public class HTTPEndpointPropertiesEditionPartImpl extends CompositePropertiesEd
 	
 	protected Composite createFormatEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.HTTPEndpoint.Properties.format, EsbMessages.HTTPEndpointPropertiesEditionPart_FormatLabel);
-		format = new EMFComboViewer(parent);
+		format = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		format.setContentProvider(new ArrayContentProvider());
 		format.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData formatData = new GridData(GridData.FILL_HORIZONTAL);
@@ -732,7 +732,7 @@ public class HTTPEndpointPropertiesEditionPartImpl extends CompositePropertiesEd
 	
 	protected Composite createOptimizeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.HTTPEndpoint.Properties.optimize, EsbMessages.HTTPEndpointPropertiesEditionPart_OptimizeLabel);
-		optimize = new EMFComboViewer(parent);
+		optimize = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		optimize.setContentProvider(new ArrayContentProvider());
 		optimize.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData optimizeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -937,7 +937,7 @@ public class HTTPEndpointPropertiesEditionPartImpl extends CompositePropertiesEd
 	
 	protected Composite createHttpMethodEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.HTTPEndpoint.Basic.httpMethod, EsbMessages.HTTPEndpointPropertiesEditionPart_HttpMethodLabel);
-		httpMethod = new EMFComboViewer(parent);
+		httpMethod = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		httpMethod.setContentProvider(new ArrayContentProvider());
 		httpMethod.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData httpMethodData = new GridData(GridData.FILL_HORIZONTAL);
@@ -1534,7 +1534,7 @@ public class HTTPEndpointPropertiesEditionPartImpl extends CompositePropertiesEd
 	
 	protected Composite createTimeOutActionEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.HTTPEndpoint.Timeout.timeOutAction, EsbMessages.HTTPEndpointPropertiesEditionPart_TimeOutActionLabel);
-		timeOutAction = new EMFComboViewer(parent);
+		timeOutAction = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		timeOutAction.setContentProvider(new ArrayContentProvider());
 		timeOutAction.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData timeOutActionData = new GridData(GridData.FILL_HORIZONTAL);

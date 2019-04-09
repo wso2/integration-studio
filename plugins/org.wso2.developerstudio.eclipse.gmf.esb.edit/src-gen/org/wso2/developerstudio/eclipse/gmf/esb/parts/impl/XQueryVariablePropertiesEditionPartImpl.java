@@ -233,8 +233,8 @@ public class XQueryVariablePropertiesEditionPartImpl extends CompositeProperties
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
+			public void keyReleased(KeyEvent e) {
+				if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
 					if (propertiesEditionComponent != null)
 						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(XQueryVariablePropertiesEditionPartImpl.this, EsbViewsRepository.XQueryVariable.Properties.variableName, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, variableName.getText()));
 				}
@@ -255,7 +255,7 @@ public class XQueryVariablePropertiesEditionPartImpl extends CompositeProperties
      */
 	protected Composite createVariableTypeEMFComboViewer(Composite parent) {
 		Control variableTypeLabel = createDescription(parent, EsbViewsRepository.XQueryVariable.Properties.variableType, EsbMessages.XQueryVariablePropertiesEditionPart_VariableTypeLabel);
-		variableType = new EMFComboViewer(parent);
+		variableType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		variableType.setContentProvider(new ArrayContentProvider());
 		variableType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData variableTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -287,7 +287,7 @@ public class XQueryVariablePropertiesEditionPartImpl extends CompositeProperties
      */
 	protected Composite createValueTypeEMFComboViewer(Composite parent) {
 		Control valueTypeLabel = createDescription(parent, EsbViewsRepository.XQueryVariable.Properties.valueType, EsbMessages.XQueryVariablePropertiesEditionPart_ValueTypeLabel);
-		valueType = new EMFComboViewer(parent);
+		valueType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		valueType.setContentProvider(new ArrayContentProvider());
 		valueType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData valueTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -349,8 +349,8 @@ public class XQueryVariablePropertiesEditionPartImpl extends CompositeProperties
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
+			public void keyReleased(KeyEvent e) {
+				if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
 					if (propertiesEditionComponent != null)
 						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(XQueryVariablePropertiesEditionPartImpl.this, EsbViewsRepository.XQueryVariable.Properties.valueLiteral, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, valueLiteral.getText()));
 				}
@@ -594,7 +594,7 @@ public class XQueryVariablePropertiesEditionPartImpl extends CompositeProperties
         if (valueKey == null) {
             valueKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
         }
-        valueKeyText = SWTUtils.createScrollableText(parent, SWT.BORDER);
+        valueKeyText = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.READ_ONLY);
         valueKeyText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
         valueKeyText.setLayoutData(valueData);
@@ -640,7 +640,7 @@ public class XQueryVariablePropertiesEditionPartImpl extends CompositeProperties
             valueExpression = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
         } 
         String initHeaderName = valueExpression.getPropertyValue().isEmpty() ? "" : valueExpression.getPropertyValue();
-        valueExpressionText = SWTUtils.createScrollableText(parent, SWT.BORDER);
+        valueExpressionText = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.READ_ONLY);
         valueExpressionText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
         
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);

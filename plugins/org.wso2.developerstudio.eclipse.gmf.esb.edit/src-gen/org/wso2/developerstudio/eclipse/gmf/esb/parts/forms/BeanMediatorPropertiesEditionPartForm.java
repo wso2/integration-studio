@@ -483,7 +483,7 @@ public class BeanMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	protected Composite createActionEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 	    Control [] previousControls = propertiesGroup.getChildren();
 		createDescription(parent, EsbViewsRepository.BeanMediator.Properties.action, EsbMessages.BeanMediatorPropertiesEditionPart_ActionLabel);
-		action = new EMFComboViewer(parent);
+		action = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		action.setContentProvider(new ArrayContentProvider());
 		action.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData actionData = new GridData(GridData.FILL_HORIZONTAL);
@@ -676,7 +676,7 @@ public class BeanMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	    filterValueSubPropertiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent, "Value", true);
 	    Control [] previousControls = filterValueSubPropertiesGroup.getChildren();
 		createDescription(filterValueSubPropertiesGroup, EsbViewsRepository.BeanMediator.Properties.valueType, EsbMessages.BeanMediatorPropertiesEditionPart_ValueTypeLabel);
-		valueType = new EMFComboViewer(filterValueSubPropertiesGroup);
+		valueType = new EMFComboViewer(filterValueSubPropertiesGroup, SWT.SCROLL_LOCK);
 		valueType.setContentProvider(new ArrayContentProvider());
 		valueType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData valueTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -796,7 +796,7 @@ public class BeanMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	    filterTargetSubPropertiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent, "Target", true);
 	    Control [] previousControls = filterTargetSubPropertiesGroup.getChildren();
 		createDescription(filterTargetSubPropertiesGroup, EsbViewsRepository.BeanMediator.Properties.targetType, EsbMessages.BeanMediatorPropertiesEditionPart_TargetTypeLabel);
-		targetType = new EMFComboViewer(filterTargetSubPropertiesGroup);
+		targetType = new EMFComboViewer(filterTargetSubPropertiesGroup, SWT.SCROLL_LOCK);
 		targetType.setContentProvider(new ArrayContentProvider());
 		targetType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData targetTypeData = new GridData(GridData.FILL_HORIZONTAL);

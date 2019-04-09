@@ -2176,7 +2176,7 @@ public class EsbViewsRepository {
 			// Start of user code for targetXPath ElementEditor key
 			public static String targetXPath = "esb::RuleMediator::target::targetXPath";
 			// End of user code
-			
+		
 	
 		}
 	
@@ -5219,6 +5219,10 @@ public class EsbViewsRepository {
 			
 			public static String connectionPassword = "esb::DBLookupMediator::connection::connectionPassword";
 			
+			// Start of user code for Database Configuration ElementEditor key
+			public static String databaseConfiguration = "esb::DBLookupMediator::connection::Database Configuration";
+			// End of user code
+			
 	
 		}
 	
@@ -5298,6 +5302,10 @@ public class EsbViewsRepository {
 			
 			
 			public static String connectionUseTransaction = "esb::DBReportMediator::connection::connectionUseTransaction";
+			
+			// Start of user code for Database Configuration ElementEditor key
+			public static String databaseConfiguration = "esb::DBReportMediator::connection::Database Configuration";
+			// End of user code
 			
 	
 		}

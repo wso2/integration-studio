@@ -19,8 +19,16 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.eef.runtime.extended;bundle-version="1.5.1",
  org.eclipse.ui.ide;bundle-version="3.13.1"
 Bundle-ActivationPolicy: lazy
-Import-Package: org.apache.commons.lang,
+DynamicImport-Package: com.mysql.jdbc,
+ com.mysql.cj.jdbc,
+ oracle.jdbc.driver,
+ org.postgresql,
+ com.microsoft.sqlserver.jdbc
+Import-Package: org.apache.commons.io;version="2.0.0.wso2v1",
+ org.apache.commons.lang,
  org.eclipse.wst.xml.xpath.core.util,
+ org.wso2.carbon.core.util,
+ org.wso2.carbon.tools.converter,
  org.wso2.developerstudio.eclipse.esb.project.artifact,
  org.wso2.developerstudio.eclipse.gmf.esb.persistence,
  org.wso2.developerstudio.eclipse.logging.core,

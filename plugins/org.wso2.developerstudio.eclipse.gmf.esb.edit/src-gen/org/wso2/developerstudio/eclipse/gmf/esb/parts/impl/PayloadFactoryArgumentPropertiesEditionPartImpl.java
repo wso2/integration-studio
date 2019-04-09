@@ -253,11 +253,11 @@ public class PayloadFactoryArgumentPropertiesEditionPartImpl extends CompositePr
 			@Override
 			@SuppressWarnings("synthetic-access")
 			public void keyReleased(KeyEvent e) {
-				if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
-				    if (propertiesEditionComponent != null) {
-				        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PayloadFactoryArgumentPropertiesEditionPartImpl.this, EsbViewsRepository.PayloadFactoryArgument.Properties.argumentValue, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, argumentValue.getText()));
-				    }
-				}
+				
+			    if (propertiesEditionComponent != null) {
+			        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PayloadFactoryArgumentPropertiesEditionPartImpl.this, EsbViewsRepository.PayloadFactoryArgument.Properties.argumentValue, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, argumentValue.getText()));
+			    }
+				
 			}
 
 		});

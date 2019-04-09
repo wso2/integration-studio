@@ -76,6 +76,7 @@ import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Dialog;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
@@ -156,11 +157,10 @@ public class DependencyProvider extends Dialog {
     private Button cancelButton;
     private Text userNameTextField;
     private ProgressMonitorDialog progressMonitorDialog;
-    private String databaseArr[] = new String[] { "MYSQL", "MSSQL", "ORACLE", "POSTGRESQL" };
+    private String databaseArr[] = new String[] { "Select Connection Type", "MYSQL", "MSSQL", "ORACLE", "POSTGRESQL" };
     private String mysqlVersionArr[] = new String[] { "Select Version", "8.0.15", "8.0.14", "5.1.47", "5.1.46" };
     private String mssqlVersionArr[] = new String[] { "Select Version", "6.4.0.jre8", "7.2.0.jre8" };
     private String postgresSqlVersionArr[] = new String[] { "Select Version", "42.2.5" };
-    private String oracleVersionArr[] = new String[] { "Select Version", "10.2.0.4.0" };
     private Shell dialogShell;
     private String OS_TYPE;
     private String[] connectionURLArray;
@@ -237,7 +237,7 @@ public class DependencyProvider extends Dialog {
                 connectiontypeComboBox.setLayoutData(xPathLabelLayoutData);
             }
 
-            // XML input type radio button group
+            // input type radio button group
             selectDriverGroup = new Group(connectionTypeGroup, SWT.NONE);
             {
                 FormLayout inputTypeRadioGroupRowLayout1 = new FormLayout();
@@ -274,6 +274,7 @@ public class DependencyProvider extends Dialog {
                 }
 
             }
+            
             serverComposite = new Composite(selectDriverGroup, SWT.NONE);
             {
 
@@ -299,9 +300,7 @@ public class DependencyProvider extends Dialog {
 
                 versionComboBox = new Combo(serverComposite, SWT.READ_ONLY);
                 {
-                    versionComboBox.setItems(new String[] { "Select Connection Type" });
-                    versionComboBox.setText("Select Connection Type");
-                    versionComboBox.setItems(databaseArr);
+                    versionComboBox.setItems(new String[] { "Select Version" });
 
                     FormData filePathTextFieldLayoutData = new FormData();
                     filePathTextFieldLayoutData.top = new FormAttachment(selectDriverGroup, offSet);
@@ -471,7 +470,7 @@ public class DependencyProvider extends Dialog {
 
                 passwordLabel = new Label(inputTypeRadioGroup1, SWT.NONE);
                 {
-                    passwordLabel.setText("Password: *");
+                    passwordLabel.setText("Password: ");
 
                     FormData xPathLabelLayoutData = new FormData();
                     xPathLabelLayoutData.top = new FormAttachment(portTextField, 10);
@@ -567,11 +566,7 @@ public class DependencyProvider extends Dialog {
                     jarLocationText.setText("");
 
                     jarProvided = false;
-                    hostTextField.setEnabled(false);
-                    passwordTextField.setEnabled(false);
-                    hostTextField.setEnabled(false);
-                    portTextField.setEnabled(false);
-                    databaseTextField.setEnabled(false);
+                    inputFeildsSetEnabled(false);
 
                 }
             }
@@ -593,11 +588,7 @@ public class DependencyProvider extends Dialog {
                     versionComboBox.select(0);
 
                     jarProvided = true;
-                    hostTextField.setEnabled(false);
-                    passwordTextField.setEnabled(false);
-                    hostTextField.setEnabled(false);
-                    portTextField.setEnabled(false);
-                    databaseTextField.setEnabled(false);
+                    inputFeildsSetEnabled(false);
                 }
             }
         });
@@ -607,20 +598,32 @@ public class DependencyProvider extends Dialog {
                 versionComboBox.setEnabled(true);
                 jarLocationText.setEnabled(true);
                 browseButton.setEnabled(true);
+
+                serverRadioButton.setSelection(true);
                 serverRadioButton.setEnabled(true);
                 browseFileRadioButton.setEnabled(true);
+                browseFileRadioButton.setSelection(false);
+                serverComposite.setVisible(true);
+                browseLocalComposite.setVisible(false);
 
                 testConnectionButton.setEnabled(false);
                 okButton.setEnabled(false);
 
                 switch (connectiontypeComboBox.getText()) {
+
+                case "Select Connection Type":
+                    versionComboBox.setEnabled(false);
+                    browseButton.setEnabled(false);
+                    jarLocationText.setEnabled(false);
+                    break;
+
                 case "MYSQL":
                     versionComboBox.setItems(mysqlVersionArr);
                     groupId = "mysql";
                     artifactId = "mysql-connector-java";
                     jdbcDriver = "com.mysql.jdbc.Driver";
-                    setDefaults("localhost", "3306", "root", "password", "database");
                     databaseConnectionPrefix = "jdbc:mysql://";
+                    setDefaults("localhost", "3306");
                     break;
 
                 case "MSSQL":
@@ -628,28 +631,25 @@ public class DependencyProvider extends Dialog {
                     groupId = "com.microsoft.sqlserver";
                     artifactId = "mssql-jdbc";
                     jdbcDriver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-                    setDefaults("localhost", "1433", "root", "password", "database");
                     databaseConnectionPrefix = "jdbc:sqlserver://";
+                    setDefaults("localhost", "1433");
                     break;
 
                 case "ORACLE":
                     downloadButton.setEnabled(false);
-                    versionComboBox.setItems(oracleVersionArr);
-                    groupId = "com.oracle";
-                    artifactId = "ojdbc14";
                     jdbcDriver = "com.oracle.jdbc.Driver";
-                    setDefaults("SERVER_NAME", "PORT", "root", "password", "SID");
+                    setDefaults("SERVER_NAME", "PORT");
                     databaseConnectionPrefix = "jdbc:oracle:thin:@";
 
                     browseFileRadioButton.setSelection(true);
                     serverRadioButton.setSelection(false);
+
+                    serverComposite.setVisible(false);
+                    browseLocalComposite.setVisible(true);
+
                     jarProvided = true;
 
-                    hostTextField.setEnabled(false);
-                    passwordTextField.setEnabled(false);
-                    hostTextField.setEnabled(false);
-                    portTextField.setEnabled(false);
-                    databaseTextField.setEnabled(false);
+                    inputFeildsSetEnabled(false);
 
                     versionComboBox.setEnabled(false);
                     downloadButton.setEnabled(false);
@@ -661,8 +661,8 @@ public class DependencyProvider extends Dialog {
                     groupId = "org.postgresql";
                     artifactId = "postgresql";
                     jdbcDriver = "com.postgres.jdbc.Driver";
-                    setDefaults("localhost", "5432", "root", "password", "database");
                     databaseConnectionPrefix = "jdbc:postgresql://";
+                    setDefaults("localhost", "5432");
                     break;
 
                 }
@@ -679,11 +679,7 @@ public class DependencyProvider extends Dialog {
             public void widgetSelected(SelectionEvent e) {
                 infoLabel.setVisible(false);
                 if (versionComboBox.getText() != null || !versionComboBox.getText().isEmpty()) {
-                    userNameTextField.setEnabled(true);
-                    passwordTextField.setEnabled(true);
-                    hostTextField.setEnabled(true);
-                    portTextField.setEnabled(true);
-                    databaseTextField.setEnabled(true);
+                    inputFeildsSetEnabled(true);
                     downloadButton.setEnabled(true);
 
                     File file = new File(dependencyDir + File.separator
@@ -701,15 +697,14 @@ public class DependencyProvider extends Dialog {
 
                 if (versionComboBox.getText().equals("Select Version")) {
                     infoLabel.setVisible(false);
-                    userNameTextField.setEnabled(false);
-                    passwordTextField.setEnabled(false);
-                    hostTextField.setEnabled(false);
-                    portTextField.setEnabled(false);
-                    databaseTextField.setEnabled(false);
+                    inputFeildsSetEnabled(false);
+
                     downloadButton.setEnabled(false);
                     testConnectionButton.setEnabled(false);
                     okButton.setEnabled(false);
                 }
+
+                enableButtonsIfDataIsAvailable();
             }
 
             @Override
@@ -724,20 +719,13 @@ public class DependencyProvider extends Dialog {
             public void modifyText(ModifyEvent e) {
                 if (jarLocationText.getText() != null && !jarLocationText.getText().isEmpty()
                         && !jarLocationText.getText().equals("")) {
-                    hostTextField.setEnabled(true);
-                    userNameTextField.setEnabled(true);
-                    passwordTextField.setEnabled(true);
-                    hostTextField.setEnabled(true);
-                    portTextField.setEnabled(true);
-                    databaseTextField.setEnabled(true);
+
+                    inputFeildsSetEnabled(true);
+                    enableButtonsIfDataIsAvailable();
+
                 } else {
                     if (jarLocationText.getText() == "" || jarLocationText.getText().isEmpty()) {
-                        userNameTextField.setEnabled(false);
-                        hostTextField.setEnabled(false);
-                        passwordTextField.setEnabled(false);
-                        hostTextField.setEnabled(false);
-                        portTextField.setEnabled(false);
-                        databaseTextField.setEnabled(false);
+                        inputFeildsSetEnabled(false);
                     }
                 }
             }
@@ -837,34 +825,35 @@ public class DependencyProvider extends Dialog {
         });
 
         {
-            connectiontypeComboBox.select(getDatabaseIndex(databaseArr, connectionObj.getDbType()));
-            userNameTextField.setText(connectionObj.getUserName());
-            passwordTextField.setText(connectionObj.getPassword());
-            jarLocationText.setText(connectionObj.getJarPath());
-        }
-
-        {
             testConnectionButton.setEnabled(false);
             okButton.setEnabled(false);
 
-            browseLocalComposite.setVisible(false);
-            infoLabel.setVisible(false);
-            userNameTextField.setEnabled(false);
-            passwordTextField.setEnabled(false);
-            hostTextField.setEnabled(false);
-            portTextField.setEnabled(false);
-            databaseTextField.setEnabled(false);
-
-            versionComboBox.setEnabled(false);
             jarLocationText.setEnabled(false);
-            downloadButton.setEnabled(false);
-            browseFileRadioButton.setEnabled(false);
-            serverRadioButton.setEnabled(false);
+            browseFileRadioButton.setEnabled(true);
+            browseFileRadioButton.setSelection(false);
+            browseLocalComposite.setVisible(false);
 
+            serverRadioButton.setEnabled(true);
             serverRadioButton.setSelection(true);
 
             versionComboBox.select(0);
+            downloadButton.setEnabled(false);
+
+            infoLabel.setVisible(false);
+
+            if (connectiontypeComboBox.getText().equals("")) {
+                versionComboBox.setEnabled(false);
+                browseButton.setEnabled(false);
+                jarLocationText.setEnabled(false);
+            }
+
         }
+
+        setDataFromConnectionObj(connectionObj);
+
+        inputFeildsSetEnabled(false);
+
+        setDefaultsToVersionComboBox();
 
         setDataFromConnectionURL();
 
@@ -873,7 +862,7 @@ public class DependencyProvider extends Dialog {
         dialogShell.pack();
 
         if (OS_TYPE.indexOf(OS_TYPE_WINDOWS) >= 0) {
-            dialogShell.setSize(480, 340);
+            dialogShell.setSize(480, 330);
         }
         if (OS_TYPE.indexOf(OS_TYPE_LINUX) >= 0) {
             dialogShell.setSize(720, 430);
@@ -900,6 +889,83 @@ public class DependencyProvider extends Dialog {
         while (!dialogShell.isDisposed()) {
             if (!display.readAndDispatch())
                 display.sleep();
+        }
+    }
+
+    private void setDataFromConnectionObj(ConnectionObj connectionObj) {
+        connectiontypeComboBox.select(getDatabaseIndex(databaseArr, connectionObj.getDbType()));
+        userNameTextField.setText(connectionObj.getUserName());
+        passwordTextField.setText(connectionObj.getPassword());
+        jarLocationText.setText(connectionObj.getJarPath());
+    }
+
+    private void inputFeildsSetEnabled(boolean isVisible) {
+        hostTextField.setEnabled(isVisible);
+        portTextField.setEnabled(isVisible);
+        userNameTextField.setEnabled(isVisible);
+        passwordTextField.setEnabled(isVisible);
+        databaseTextField.setEnabled(isVisible);
+    }
+
+    private void setDefaultsToVersionComboBox() {
+
+        switch (connectiontypeComboBox.getText()) {
+        case "MYSQL":
+            versionComboBox.setItems(mysqlVersionArr);
+            groupId = "mysql";
+            artifactId = "mysql-connector-java";
+            jdbcDriver = "com.mysql.jdbc.Driver";
+            databaseConnectionPrefix = "jdbc:mysql://";
+            break;
+
+        case "MSSQL":
+            versionComboBox.setItems(mssqlVersionArr);
+            groupId = "com.microsoft.sqlserver";
+            artifactId = "mssql-jdbc";
+            jdbcDriver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
+            databaseConnectionPrefix = "jdbc:sqlserver://";
+            break;
+
+        case "POSTGRESQL":
+            versionComboBox.setItems(postgresSqlVersionArr);
+            groupId = "org.postgresql";
+            artifactId = "postgresql";
+            jdbcDriver = "com.postgres.jdbc.Driver";
+            databaseConnectionPrefix = "jdbc:postgresql://";
+            break;
+
+        case "ORACLE":
+            databaseConnectionPrefix = "jdbc:postgresql://";
+            jdbcDriver = "com.oracle.jdbc.Driver";
+
+            jarLocationText.setEnabled(true);
+            browseFileRadioButton.setEnabled(true);
+            browseFileRadioButton.setSelection(true);
+            browseLocalComposite.setVisible(true);
+
+            serverRadioButton.setEnabled(true);
+            serverRadioButton.setSelection(false);
+            serverComposite.setVisible(false);
+
+            versionComboBox.setEnabled(false);
+            downloadButton.setEnabled(false);
+            break;
+        }
+    }
+
+    private void enableButtonsIfDataIsAvailable() {
+        if (hostTextField.getText() != null && !hostTextField.getText().equals("") && portTextField.getText() != null
+                && !portTextField.getText().equals("") && databaseTextField.getText() != null
+                && !databaseTextField.getText().equals("")) {
+            testConnectionButton.setEnabled(true);
+            okButton.setEnabled(true);
+        }
+
+        if (hostTextField.getText() == null || hostTextField.getText().equals("") && portTextField.getText() == null
+                || portTextField.getText().equals("") && databaseTextField.getText() == null
+                || databaseTextField.getText().equals("")) {
+            testConnectionButton.setEnabled(false);
+            okButton.setEnabled(false);
         }
     }
 
@@ -982,16 +1048,15 @@ public class DependencyProvider extends Dialog {
 
     }
 
-    private void setDefaults(String host, String port, String user, String password, String database) {
+    private void setDefaults(String host, String port) {
         hostTextField.setText(host);
         portTextField.setText(port);
-        userNameTextField.setText(user);
-        passwordTextField.setText(password);
-        databaseTextField.setText(database);
+        userNameTextField.setText("");
+        passwordTextField.setText("");
+        databaseTextField.setText("");
     }
 
     private String getDownlodedJarByName(String connectionType, String version) {
-
         switch (connectionType) {
         case "MYSQL":
             return "mysql-connector-java-" + version + ".jar";
@@ -1016,7 +1081,6 @@ public class DependencyProvider extends Dialog {
     }
 
     private void testConnecton() {
-
         boolean jarCreated = false;
         if (jarProvided) {
             jarCreated = creatBundleFromJar(jarLocationText.getText());
@@ -1090,7 +1154,6 @@ public class DependencyProvider extends Dialog {
     }
 
     private void showMessage(String msg) {
-
         int style = SWT.ICON_INFORMATION | SWT.OK;
         MessageBox dia = new MessageBox(this.getParent(), style);
         dia.setText("Information");
@@ -1099,8 +1162,9 @@ public class DependencyProvider extends Dialog {
 
     }
 
-    public void buildPOM(String dependencyDir) {
+    public void buildPOM(String dependencyDirectory) {
         Process p = null;
+        dependencyDir = dependencyDirectory;
         try {
             File dir = new File(dependencyDir);
             p = Runtime.getRuntime().exec("mvn install clean", null, dir);
@@ -1359,7 +1423,6 @@ public class DependencyProvider extends Dialog {
     }
 
     private static MultiStatus createMultiStatus(String msg, Throwable t) {
-
         List<Status> childStatuses = new ArrayList<>();
         StackTraceElement[] stackTraces = Thread.currentThread().getStackTrace();
 

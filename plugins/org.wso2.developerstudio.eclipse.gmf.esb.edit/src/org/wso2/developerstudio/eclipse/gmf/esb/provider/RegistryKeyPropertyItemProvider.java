@@ -178,10 +178,11 @@ public class RegistryKeyPropertyItemProvider extends ItemProviderAdapter impleme
     public String getText(Object object) {
         String keyValue = "";
         RegistryKeyProperty property = (RegistryKeyProperty) object;
+        String keyName = property.getKeyName();
         if (null != property) {
             keyValue = property.getKeyValue();
         }
-        return keyValue;
+        return keyName + "\t\t\t\t\t" + keyValue;
     }
 
     /**

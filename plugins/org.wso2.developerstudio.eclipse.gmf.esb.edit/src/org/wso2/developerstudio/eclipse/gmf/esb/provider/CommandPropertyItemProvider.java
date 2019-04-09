@@ -9,6 +9,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb.provider;
 import java.util.Collection;
 import java.util.List;
 
+import org.apache.commons.lang.WordUtils;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
@@ -259,6 +260,7 @@ public class CommandPropertyItemProvider extends ItemProviderAdapter implements 
     @Override
     public String getText(Object object) {
         String propertyName = ((CommandProperty) object).getPropertyName();
+        String propertyNameLabel = WordUtils.abbreviate(propertyName.toString(), 8, 10, " ...");
         String valueType = ((CommandProperty) object).getValueType().toString();
         String valueLiteral = ((CommandProperty) object).getValueLiteral();
         String valueContextProperty = ((CommandProperty) object).getValueContextPropertyName().toString();
@@ -266,14 +268,14 @@ public class CommandPropertyItemProvider extends ItemProviderAdapter implements 
         if (valueType.equalsIgnoreCase(CommandPropertyValueType.LITERAL.getName())) {
             return propertyName == null || propertyName.length() == 0 ? getString("_UI_CommandProperty_type")
                     : EEFPropertyViewUtil.spaceFormat(getString("_UI_CommandProperty_type"))
-                            + EEFPropertyViewUtil.spaceFormat(propertyName)
+                            + EEFPropertyViewUtil.spaceFormat(propertyNameLabel)
                             + EEFPropertyViewUtil.spaceFormat(valueLiteral);
         } else if (valueType.equalsIgnoreCase(CommandPropertyValueType.MESSAGE_ELEMENT.getName())) {
             if (((CommandProperty) object).getValueMessageElementXpath() != null) {
                 String valueMessageXpath = ((CommandProperty) object).getValueMessageElementXpath().toString();
                 return propertyName == null || propertyName.length() == 0 ? getString("_UI_CommandProperty_type")
                         : EEFPropertyViewUtil.spaceFormat(getString("_UI_CommandProperty_type"))
-                                + EEFPropertyViewUtil.spaceFormat(propertyName)
+                                + EEFPropertyViewUtil.spaceFormat(propertyNameLabel)
                                 + EEFPropertyViewUtil.spaceFormat(valueMessageXpath);
             } else
                 return propertyName == null || propertyName.length() == 0 ? getString("_UI_CommandProperty_type")
@@ -282,7 +284,7 @@ public class CommandPropertyItemProvider extends ItemProviderAdapter implements 
         } else
             return propertyName == null || propertyName.length() == 0 ? getString("_UI_CommandProperty_type")
                     : EEFPropertyViewUtil.spaceFormat(getString("_UI_CommandProperty_type"))
-                            + EEFPropertyViewUtil.spaceFormat(propertyName)
+                            + EEFPropertyViewUtil.spaceFormat(propertyNameLabel)
                             + EEFPropertyViewUtil.spaceFormat(valueContextProperty);
     }
 

@@ -20,6 +20,7 @@ package org.wso2.developerstudio.eclipse.esb.docker.wizard;
 
 import java.io.File;
 import java.nio.file.Paths;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -69,6 +70,10 @@ import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
  *
  */
 public class ExportAndGenerateDockerImageWizard extends Wizard implements IExportWizard {
+    
+    protected static final String CAPP_APPLICATION_SERVER = "capp/ApplicationServer";
+    protected static final String ARTIFACT_TYPES = "capp/ApplicationServer";
+    protected static final String POM_FILE_NAME = "pom.xml";
 
     private DistributionProjectExportWizardPage mainPage;
     private CarExportDetailsWizardPage detailsPage;
@@ -83,7 +88,7 @@ public class ExportAndGenerateDockerImageWizard extends Wizard implements IExpor
     private Map<String, Dependency> dependencyMap = new HashMap<String, Dependency>();
     private Map<String, String> serverRoleList = new HashMap<String, String>();
     private ArtifactTypeMapping artifactTypeMapping = new ArtifactTypeMapping();
-
+    
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
     @Override
@@ -92,7 +97,7 @@ public class ExportAndGenerateDockerImageWizard extends Wizard implements IExpor
         try {
             detailsPage = new CarExportDetailsWizardPage(workbench, selection);
             selectedProject = getSelectedProject(selection);
-            pomFileRes = selectedProject.getFile("pom.xml");
+            pomFileRes = selectedProject.getFile(POM_FILE_NAME);
             pomFile = pomFileRes.getLocation().toFile();
 
             if (!selectedProject.hasNature(Constants.DISTRIBUTION_PROJECT_NATURE)) {
@@ -238,14 +243,14 @@ public class ExportAndGenerateDockerImageWizard extends Wizard implements IExpor
             if (mainPage.getServerRoleList().containsKey(artifactInfo)) {
                 properties.put(artifactInfo, serverRoleList.get(artifactInfo));
             } else {
-                properties.put(artifactInfo, "capp/ApplicationServer");
+                properties.put(artifactInfo, CAPP_APPLICATION_SERVER);
             }
         }
 
-        properties.put("artifact.types", artifactTypeMapping.getArtifactTypes());
+        properties.put(ARTIFACT_TYPES, artifactTypeMapping.getArtifactTypes());
         parentPrj.getModel().setProperties(properties);
     }
-
+    
     private Properties identifyNonProjectProperties(Properties properties) {
         Map<String, DependencyData> dependencies = projectList;
 
@@ -259,7 +264,7 @@ public class ExportAndGenerateDockerImageWizard extends Wizard implements IExpor
         }
 
         // Removing the artifact.type
-        properties.remove("artifact.types");
+        properties.remove(ARTIFACT_TYPES);
 
         return properties;
     }
@@ -305,7 +310,7 @@ public class ExportAndGenerateDockerImageWizard extends Wizard implements IExpor
             if (macOSEIToolingAppFile.exists()) {
                 workingDirectory = eiToolingHomeForMac;
             } else {
-                java.nio.file.Path path = Paths.get(ExportImageWizardConstants.EMPTY_STRING);
+                Path path = Paths.get(ExportImageWizardConstants.EMPTY_STRING);
                 workingDirectory = (path).toAbsolutePath().toString();
             }
 

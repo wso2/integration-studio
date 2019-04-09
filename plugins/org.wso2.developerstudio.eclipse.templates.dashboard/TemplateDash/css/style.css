@@ -192,3 +192,10 @@ figcaption a:hover {
 button {
     margin: 15px;
 }
+
+#ellipsis {
+    white-space: nowrap;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

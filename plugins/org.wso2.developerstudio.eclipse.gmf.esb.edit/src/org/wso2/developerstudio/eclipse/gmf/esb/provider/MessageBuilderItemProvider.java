@@ -9,6 +9,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb.provider;
 import java.util.Collection;
 import java.util.List;
 
+import org.apache.commons.lang.WordUtils;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
@@ -24,6 +25,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.MessageBuilder;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 
 /**
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.MessageBuilder} object.
@@ -141,14 +143,18 @@ public class MessageBuilderItemProvider extends EsbNodeItemProvider {
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
+     * @generated NOT
      */
     @Override
     public String getText(Object object) {
-        String label = ((MessageBuilder)object).getContentType();
-        return label == null || label.length() == 0 ?
-            getString("_UI_MessageBuilder_type") :
-            getString("_UI_MessageBuilder_type") + " " + label;
+        String contentType = ((MessageBuilder) object).getContentType();
+        String contentTypeLabel = WordUtils.abbreviate(contentType.toString(), 8, 10, " ...");
+        String builderClass = ((MessageBuilder) object).getBuilderClass();
+
+        return contentType == null || contentType.length() == 0 ? getString("_UI_MessageBuilder_type")
+                : EEFPropertyViewUtil.spaceFormat(getString("_UI_MessageBuilder_type"))
+                        + EEFPropertyViewUtil.spaceFormat(contentTypeLabel)
+                        + EEFPropertyViewUtil.spaceFormat(builderClass);
     }
 
     /**

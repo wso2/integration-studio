@@ -23,14 +23,17 @@
     </div>
     <div class="row container-body">
         <ul class="nav nav-pills nav-stacked col-xs-3 col-sm-2 col-md-2 col-lg-2">
-            <li class="active">
+            <li class="active" data-toggle="tooltip" title="Enterprise Service Bus Project">
                 <a href="#1" data-toggle="tab">ESB Project</a>
             </li>
-            <li><a href="#2" data-toggle="tab">DSS Project</a>
+            <li data-toggle="tooltip" title="Data Service Project">
+            	<a href="#2" data-toggle="tab">DS Project</a>
             </li>
-            <li><a href="#3" data-toggle="tab">BPS Project</a>
+            <li data-toggle="tooltip" title="Business Process Project">
+            	<a href="#3" data-toggle="tab">BP Project</a>
             </li>
-            <li><a href="#4" data-toggle="tab">Miscellaneous</a>
+            <li data-toggle="tooltip" title="Miscellaneous">
+            	<a href="#4" data-toggle="tab" id="ellipsis">Miscellaneous</a>
             </li>
         </ul>
         <div class="tab-content col-xs-9 col-sm-10 col-md-10 col-lg-10">
@@ -131,7 +134,7 @@
             <div class="tab-pane" id="2">
                 <div class="project-actions col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <div class="section-one">
-                        <div class="create-project actions col-md-6">
+                        <div class="create-project actions col-xs-12 col-sm-12 col-md-6 col-lg-6">
                             <a href="#" id="DataServiceProject">
                                 <div class="icon">
                                 	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34.28 36.87">
@@ -197,7 +200,7 @@
                                 </div>
                             </a>
                         </div>
-                        <div class="open-project actions col-md-6">
+                        <div class="open-project actions col-xs-12 col-sm-12 col-md-6 col-lg-6">
                             <a href="#" id="DataSourceProject">
                                 <div class="icon">
                                 	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34.28 36.87">
@@ -271,7 +274,7 @@
             <div class="tab-pane" id="3">
                 <div class="project-actions col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <div class="section-one">
-                        <div class="create-project actions col-md-4">
+                        <div class="create-project actions col-xs-12 col-sm-6 col-md-4 col-lg-4">
                             <a href="#" id="BPELWorkFlowProject">
                                 <div class="icon">
                                 	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33.68 39.65">
@@ -290,7 +293,7 @@
                                 </div>
                             </a>
                         </div>
-                        <div class="create-project actions col-md-4">
+                        <div class="create-project actions col-xs-12 col-sm-6 col-md-4 col-lg-4">
                             <a href="#" id="HumanTaskProject">
                                 <div class="icon">
                                 	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33.68 39.65">
@@ -338,7 +341,7 @@
                                 </div>
                             </a>
                         </div>
-                        <div class="create-project actions col-md-4">
+                        <div class="create-project actions col-xs-12 col-sm-6 col-md-4 col-lg-4">
                             <a href="#" id="BPMNProject">
                                 <div class="icon">
                                 	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33.68 39.65">

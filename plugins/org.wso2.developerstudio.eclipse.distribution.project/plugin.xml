@@ -106,10 +106,10 @@
               objectClass="org.eclipse.core.resources.IProject"
                     id="org.wso2.developerstudio.eclipse.distribution.project.popup.export">
                <action
-                        label="Export Composite Application Project"
-                        icon="icons/carexport.png"
-                   class="org.wso2.developerstudio.eclipse.distribution.project.ui.action.ExportDistributionAction"
-                        id="org.wso2.developerstudio.eclipse.distribution.project.ui.action.export">
+                     class="org.wso2.developerstudio.eclipse.distribution.project.ui.action.ExportDistributionAction"
+                     icon="icons/carexport.png"
+                     id="org.wso2.developerstudio.eclipse.distribution.project.ui.action.export"
+                     label="Export Composite Application Project">
                </action>
                <enablement>
 						<adapt type="org.eclipse.core.resources.IProject">

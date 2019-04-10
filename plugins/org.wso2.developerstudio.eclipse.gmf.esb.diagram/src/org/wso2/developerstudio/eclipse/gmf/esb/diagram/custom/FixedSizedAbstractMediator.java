@@ -27,7 +27,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.HighlightOnSe
 public abstract class FixedSizedAbstractMediator extends AbstractMediator {
 
     public static int FigureWidth = 75;
-    public static int FigureHeight = 100;
+    public static int FigureHeight = 115;
     protected static final int maxFigureWidth = 10000;
     protected IFigure primaryShape;
     private boolean selected;
@@ -42,6 +42,7 @@ public abstract class FixedSizedAbstractMediator extends AbstractMediator {
     public IFigure getFigure() {
         IFigure figure = super.getFigure();
         figure.setMaximumSize(new Dimension(maxFigureWidth, FigureHeight));
+        figure.getBounds().width = FigureWidth;
         return figure;
     }
 

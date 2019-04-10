@@ -258,4 +258,13 @@ public class EEFPropertyViewUtil {
         }
         return definedTemplates;
     }
+
+    public static String spaceFormat(String str) {
+        int maxLength = 30;
+        int tabSpace = (maxLength - str.length()) / 4;
+        for (int i = 0; i < tabSpace; i++) {
+            str = str.concat("\t");
+        }
+        return str;
+    }
 }

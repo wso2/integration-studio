@@ -467,7 +467,7 @@ public class AggregateMediatorPropertiesEditionPartImpl extends CompositePropert
 	
 	protected Composite createCompletionMinMessagesTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.AggregateMediator.Properties.completionMinMessagesType, EsbMessages.AggregateMediatorPropertiesEditionPart_CompletionMinMessagesTypeLabel);
-		completionMinMessagesType = new EMFComboViewer(parent);
+		completionMinMessagesType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		completionMinMessagesType.setContentProvider(new ArrayContentProvider());
 		completionMinMessagesType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData completionMinMessagesTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -497,7 +497,7 @@ public class AggregateMediatorPropertiesEditionPartImpl extends CompositePropert
 	
 	protected Composite createCompletionMaxMessagesTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.AggregateMediator.Properties.completionMaxMessagesType, EsbMessages.AggregateMediatorPropertiesEditionPart_CompletionMaxMessagesTypeLabel);
-		completionMaxMessagesType = new EMFComboViewer(parent);
+		completionMaxMessagesType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		completionMaxMessagesType.setContentProvider(new ArrayContentProvider());
 		completionMaxMessagesType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData completionMaxMessagesTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -689,7 +689,7 @@ public class AggregateMediatorPropertiesEditionPartImpl extends CompositePropert
 	
 	protected Composite createSequenceTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.AggregateMediator.OnComplete.sequenceType, EsbMessages.AggregateMediatorPropertiesEditionPart_SequenceTypeLabel);
-		sequenceType = new EMFComboViewer(parent);
+		sequenceType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		sequenceType.setContentProvider(new ArrayContentProvider());
 		sequenceType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData sequenceTypeData = new GridData(GridData.FILL_HORIZONTAL);

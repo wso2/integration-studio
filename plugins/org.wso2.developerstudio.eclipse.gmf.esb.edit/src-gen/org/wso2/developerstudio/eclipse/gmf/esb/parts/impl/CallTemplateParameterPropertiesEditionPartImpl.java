@@ -229,7 +229,7 @@ public class CallTemplateParameterPropertiesEditionPartImpl extends CompositePro
      */
 	protected Composite createTemplateParameterTypeEMFComboViewer(Composite parent) {
 		Control parameterTypeLabel = createDescription(parent, EsbViewsRepository.CallTemplateParameter.Properties.templateParameterType, EsbMessages.CallTemplateParameterPropertiesEditionPart_TemplateParameterTypeLabel);
-		templateParameterType = new EMFComboViewer(parent);
+		templateParameterType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		templateParameterType.setContentProvider(new ArrayContentProvider());
 		templateParameterType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData templateParameterTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -307,11 +307,12 @@ public class CallTemplateParameterPropertiesEditionPartImpl extends CompositePro
 			}
 			
 			@Override
-			public void keyReleased(KeyEvent e) {
-				if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CallTemplateParameterPropertiesEditionPartImpl.this, EsbViewsRepository.CallTemplateParameter.Properties.parameterValue, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, parameterValue.getText()));
-				}
-			}
+                        public void keyReleased(KeyEvent e) {
+                            propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                                    CallTemplateParameterPropertiesEditionPartImpl.this,
+                                    EsbViewsRepository.CallTemplateParameter.Properties.parameterValue,
+                                    PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, parameterValue.getText()));
+                        }
 
 		});
 		EditingUtils.setID(parameterValue, EsbViewsRepository.CallTemplateParameter.Properties.parameterValue);

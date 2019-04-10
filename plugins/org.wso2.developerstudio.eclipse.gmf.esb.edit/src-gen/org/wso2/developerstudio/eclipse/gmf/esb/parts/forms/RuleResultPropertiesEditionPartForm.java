@@ -173,7 +173,7 @@ public class RuleResultPropertiesEditionPartForm extends SectionPropertiesEditin
 	
 	protected Composite createResultTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.RuleResult.Properties.resultType, EsbMessages.RuleResultPropertiesEditionPart_ResultTypeLabel);
-		resultType = new EMFComboViewer(parent);
+		resultType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		resultType.setContentProvider(new ArrayContentProvider());
 		resultType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData resultTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -339,7 +339,7 @@ public class RuleResultPropertiesEditionPartForm extends SectionPropertiesEditin
 	
 	protected Composite createValueTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.RuleResult.Properties.valueType, EsbMessages.RuleResultPropertiesEditionPart_ValueTypeLabel);
-		valueType = new EMFComboViewer(parent);
+		valueType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		valueType.setContentProvider(new ArrayContentProvider());
 		valueType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData valueTypeData = new GridData(GridData.FILL_HORIZONTAL);

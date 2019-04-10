@@ -463,7 +463,7 @@ public class StoreMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
     protected Composite createAvailableMessageStoresText(FormToolkit widgetFactory, Composite parent) {
         Control availableMessageStoresLabel = createDescription(parent, EsbViewsRepository.StoreMediator.Properties.availableMessageStores, EsbMessages.StoreMediatorPropertiesEditionPart_AvailableMessageStoresLabel);
         
-        availableMessageStores = new EMFComboViewer(parent);
+        availableMessageStores = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
         availableMessageStores.setContentProvider(new ArrayContentProvider());
         availableMessageStores.setInput(getAvailableArtifactListFromProject(parent));
         availableMessageStores.getCombo().select(0);
@@ -506,7 +506,7 @@ public class StoreMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
 	protected Composite createSpecifyAsEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 	    messageStoreSubsection = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent, "Message Store", true);
 		Control specifyAsLabel = createDescription(messageStoreSubsection, EsbViewsRepository.StoreMediator.Properties.specifyAs, EsbMessages.StoreMediatorPropertiesEditionPart_SpecifyAsLabel);
-		specifyAs = new EMFComboViewer(messageStoreSubsection);
+		specifyAs = new EMFComboViewer(messageStoreSubsection, SWT.SCROLL_LOCK);
 		specifyAs.setContentProvider(new ArrayContentProvider());
 		specifyAs.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData specifyAsData = new GridData(GridData.FILL_HORIZONTAL);

@@ -249,7 +249,7 @@ public class PublishEventMediatorAttributePropertiesEditionPartForm extends Sect
 	
 	protected Composite createAttributeValueTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.PublishEventMediatorAttribute.Properties.attributeValueType, EsbMessages.PublishEventMediatorAttributePropertiesEditionPart_AttributeValueTypeLabel);
-		attributeValueType = new EMFComboViewer(parent);
+		attributeValueType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		attributeValueType.setContentProvider(new ArrayContentProvider());
 		attributeValueType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData attributeValueTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -347,7 +347,7 @@ public class PublishEventMediatorAttributePropertiesEditionPartForm extends Sect
 	
 	protected Composite createAttributeTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.PublishEventMediatorAttribute.Properties.attributeType, EsbMessages.PublishEventMediatorAttributePropertiesEditionPart_AttributeTypeLabel);
-		attributeType = new EMFComboViewer(parent);
+		attributeType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		attributeType.setContentProvider(new ArrayContentProvider());
 		attributeType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData attributeTypeData = new GridData(GridData.FILL_HORIZONTAL);

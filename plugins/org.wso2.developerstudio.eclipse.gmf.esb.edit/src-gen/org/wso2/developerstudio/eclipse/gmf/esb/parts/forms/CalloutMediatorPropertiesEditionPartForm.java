@@ -559,7 +559,7 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
      */
 	protected Composite createEndpointTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control endpointTypeLabel = createDescription(parent, EsbViewsRepository.CalloutMediator.Service.endpointType, EsbMessages.CalloutMediatorPropertiesEditionPart_EndpointTypeLabel);
-		endpointType = new EMFComboViewer(parent);
+		endpointType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		endpointType.setContentProvider(new ArrayContentProvider());
 		endpointType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData endpointTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -928,7 +928,7 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
      */
 	protected Composite createPayloadTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control payloadTypeLabel = createDescription(parent, EsbViewsRepository.CalloutMediator.Source.payloadType, EsbMessages.CalloutMediatorPropertiesEditionPart_PayloadTypeLabel);
-		payloadType = new EMFComboViewer(parent);
+		payloadType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		payloadType.setContentProvider(new ArrayContentProvider());
 		payloadType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData payloadTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -1055,7 +1055,7 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
      */
 	protected Composite createResultTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control resultTypeLabel = createDescription(parent, EsbViewsRepository.CalloutMediator.Target.resultType, EsbMessages.CalloutMediatorPropertiesEditionPart_ResultTypeLabel);
-		resultType = new EMFComboViewer(parent);
+		resultType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		resultType.setContentProvider(new ArrayContentProvider());
 		resultType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData resultTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -1183,7 +1183,7 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
      */
 	protected Composite createPoliciesEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control policiesLabel = createDescription(parent, EsbViewsRepository.CalloutMediator.WS.policies, EsbMessages.CalloutMediatorPropertiesEditionPart_PoliciesLabel);
-		policies = new EMFComboViewer(parent);
+		policies = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		policies.setContentProvider(new ArrayContentProvider());
 		policies.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData policiesData = new GridData(GridData.FILL_HORIZONTAL);
@@ -1223,7 +1223,7 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
      */
 	protected Composite createSecurityTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control securityTypeLabel = createDescription(parent, EsbViewsRepository.CalloutMediator.WS.securityType, EsbMessages.CalloutMediatorPropertiesEditionPart_SecurityTypeLabel);
-		securityType = new EMFComboViewer(parent);
+		securityType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		securityType.setContentProvider(new ArrayContentProvider());
 		securityType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData securityTypeData = new GridData(GridData.FILL_HORIZONTAL);

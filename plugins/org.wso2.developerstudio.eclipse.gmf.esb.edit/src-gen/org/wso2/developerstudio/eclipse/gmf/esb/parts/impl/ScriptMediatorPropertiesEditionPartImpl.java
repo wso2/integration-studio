@@ -345,7 +345,7 @@ public class ScriptMediatorPropertiesEditionPartImpl extends CompositeProperties
 	
 	protected Composite createScriptTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.ScriptMediator.Properties.scriptType, EsbMessages.ScriptMediatorPropertiesEditionPart_ScriptTypeLabel);
-		scriptType = new EMFComboViewer(parent);
+		scriptType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		scriptType.setContentProvider(new ArrayContentProvider());
 		scriptType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData scriptTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -375,7 +375,7 @@ public class ScriptMediatorPropertiesEditionPartImpl extends CompositeProperties
 	
 	protected Composite createScriptLanguageEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.ScriptMediator.Properties.scriptLanguage, EsbMessages.ScriptMediatorPropertiesEditionPart_ScriptLanguageLabel);
-		scriptLanguage = new EMFComboViewer(parent);
+		scriptLanguage = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		scriptLanguage.setContentProvider(new ArrayContentProvider());
 		scriptLanguage.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData scriptLanguageData = new GridData(GridData.FILL_HORIZONTAL);
@@ -503,7 +503,7 @@ public class ScriptMediatorPropertiesEditionPartImpl extends CompositeProperties
 	
 	protected Composite createKeyTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.ScriptMediator.Properties.keyType, EsbMessages.ScriptMediatorPropertiesEditionPart_KeyTypeLabel);
-		keyType = new EMFComboViewer(parent);
+		keyType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		keyType.setContentProvider(new ArrayContentProvider());
 		keyType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData keyTypeData = new GridData(GridData.FILL_HORIZONTAL);

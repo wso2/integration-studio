@@ -194,6 +194,9 @@ public class DBReportMediatorPropertiesEditionComponent extends SinglePartProper
 			if (isAccessible(EsbViewsRepository.DBReportMediator.Connection.connectionUseTransaction)) {
 				basePart.setConnectionUseTransaction(dBReportMediator.isConnectionUseTransaction());
 			}
+			// Start of user code  for Database Configuration command update
+			// End of user code
+			
 			// init filters
 			
 			
@@ -235,6 +238,9 @@ public class DBReportMediatorPropertiesEditionComponent extends SinglePartProper
 				// End of user code
 			}
 			
+			// Start of user code  for Database Configuration filter update
+			// End of user code
+			
 			// init values for referenced views
 			
 			// init filters for referenced views
@@ -242,6 +248,7 @@ public class DBReportMediatorPropertiesEditionComponent extends SinglePartProper
 		}
 		setInitializing(false);
 	}
+
 
 
 
@@ -353,6 +360,9 @@ public class DBReportMediatorPropertiesEditionComponent extends SinglePartProper
 		}
 		if (editorKey == EsbViewsRepository.DBReportMediator.Connection.connectionUseTransaction) {
 			return EsbPackage.eINSTANCE.getDBReportMediator_ConnectionUseTransaction();
+		}
+		if (editorKey == EsbViewsRepository.DBReportMediator.Connection.databaseConfiguration) {
+			return EsbPackage.eINSTANCE.getMediator_Reverse();
 		}
 		return super.associatedFeature(editorKey);
 	}
@@ -466,6 +476,11 @@ public class DBReportMediatorPropertiesEditionComponent extends SinglePartProper
 		}
 		if (EsbViewsRepository.DBReportMediator.Connection.connectionUseTransaction == event.getAffectedEditor()) {
 			dBReportMediator.setConnectionUseTransaction((Boolean)event.getNewValue());
+		}
+		if (EsbViewsRepository.DBReportMediator.Connection.databaseConfiguration == event.getAffectedEditor()) {
+			// Start of user code for updateDatabaseConfiguration method body
+			// End of user code
+			
 		}
 	}
 
@@ -619,6 +634,10 @@ public class DBReportMediatorPropertiesEditionComponent extends SinglePartProper
 			if (EsbPackage.eINSTANCE.getDBReportMediator_ConnectionUseTransaction().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.DBReportMediator.Connection.connectionUseTransaction))
 				basePart.setConnectionUseTransaction((Boolean)msg.getNewValue());
 			
+					// Start of user code for Database Configuration live update
+					
+					// End of user code
+			
 			
 		}
 	}
@@ -656,7 +675,8 @@ public class DBReportMediatorPropertiesEditionComponent extends SinglePartProper
 			EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_PropertyValidationquery(),
 			EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_PropertyInitialsize(),
 			EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_SqlStatements(),
-			EsbPackage.eINSTANCE.getDBReportMediator_ConnectionUseTransaction()		);
+			EsbPackage.eINSTANCE.getDBReportMediator_ConnectionUseTransaction(),
+			EsbPackage.eINSTANCE.getMediator_Reverse()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -668,9 +688,6 @@ public class DBReportMediatorPropertiesEditionComponent extends SinglePartProper
 	 * 
 	 */
 	public String getHelpContent(Object key, int kind) {
-//		if (key == EsbViewsRepository.DBReportMediator.Statements.sqlStatements)
-//			return "SQL Statements"; //$NON-NLS-1$
-//		return super.getHelpContent(key, kind);
 	    return EEFPropertyViewUtil.getHelpContent(key);
 	}
 
@@ -858,6 +875,13 @@ public class DBReportMediatorPropertiesEditionComponent extends SinglePartProper
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getDBReportMediator_ConnectionUseTransaction().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getDBReportMediator_ConnectionUseTransaction().getEAttributeType(), newValue);
+				}
+				if (EsbViewsRepository.DBReportMediator.Connection.databaseConfiguration == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getMediator_Reverse().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getMediator_Reverse().getEAttributeType(), newValue);
 				}
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);

@@ -68,18 +68,23 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Listener;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
-
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.developerstudio.eclipse.gmf.esb.SqlDatabaseType;
 import org.wso2.developerstudio.eclipse.gmf.esb.SqlExecutorConnectionType;
 import org.wso2.developerstudio.eclipse.gmf.esb.SqlExecutorDatasourceType;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.developerstudio.eclipse.gmf.esb.parts.forms.ConnectionObj;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
 
@@ -113,6 +118,7 @@ public class DBReportMediatorPropertiesEditionPartForm extends SectionProperties
 	protected Text connectionURL;
 	protected Text connectionUsername;
 	protected Text connectionPassword;
+	protected Button dependencyProvider;
 	protected Button connectionUseTransaction;
 	protected ReferencesTable sqlStatements;
 	protected List<ViewerFilter> sqlStatementsBusinessFilters = new ArrayList<ViewerFilter>();
@@ -166,7 +172,11 @@ public class DBReportMediatorPropertiesEditionPartForm extends SectionProperties
 	protected Control[] propertyMaxOpenStatementsElements;
 	protected Control[] propertyMaxIdleElements;
 	protected Control[] propertyMaxActiveElements;
+	protected Control[] connectionDbConfiguration;
 	
+	String jarPath = "";
+
+	DependencyProvider dp;
 	// End of user code
 
 	/**
@@ -211,6 +221,7 @@ public class DBReportMediatorPropertiesEditionPartForm extends SectionProperties
 		CompositionSequence dBReportMediatorStep = new BindingCompositionSequence(propertiesEditionComponent);
 		CompositionStep connectionStep = dBReportMediatorStep.addStep(EsbViewsRepository.DBReportMediator.Connection.class);
 		connectionStep.addStep(EsbViewsRepository.DBReportMediator.Connection.connectionType);
+		connectionStep.addStep(EsbViewsRepository.DBLookupMediator.Connection.databaseConfiguration);
 		connectionStep.addStep(EsbViewsRepository.DBReportMediator.Connection.connectionDsType);
 		connectionStep.addStep(EsbViewsRepository.DBReportMediator.Connection.connectionDbType);
 		connectionStep.addStep(EsbViewsRepository.DBReportMediator.Connection.connectionDbDriver);
@@ -339,6 +350,9 @@ public class DBReportMediatorPropertiesEditionPartForm extends SectionProperties
 				}
 				if (key == EsbViewsRepository.DBReportMediator.Misc.description) {
 					return createDescriptionText(widgetFactory, parent);
+				}				
+				if (key == EsbViewsRepository.DBLookupMediator.Connection.databaseConfiguration) {
+					return createDbConfiguration(widgetFactory, parent);
 				}
 				return parent;
 			}
@@ -346,6 +360,91 @@ public class DBReportMediatorPropertiesEditionPartForm extends SectionProperties
 		composer.compose(view);
 	}
 	
+	/**
+     * @generated NOT
+     */
+
+    protected Composite createDbConfiguration(FormToolkit widgetFactory, Composite parent) {
+        Control propertyInitializeLabel = createDescription(parent,
+                EsbViewsRepository.DBLookupMediator.Connection.databaseConfiguration,
+                EsbMessages.DBLookupMediatorPropertiesEditionPart_DatabaseConfigurationLabel);
+        dependencyProvider = new Button(parent, SWT.NULL);
+
+        GridData dependencyProviderData = new GridData();
+        dependencyProvider.setText("Configure");
+        dependencyProviderData.grabExcessHorizontalSpace = false;
+        dependencyProvider.setLayoutData(dependencyProviderData);
+        dependencyProvider.addListener(SWT.Selection, new Listener() {
+
+            @Override
+            public void handleEvent(org.eclipse.swt.widgets.Event event) {
+                // TODO Auto-generated method stub
+                new Thread(new Runnable() {
+                    public void run() {
+                        Display.getDefault().asyncExec(new Runnable() {
+                            public void run() {
+                                Display display = PlatformUI.getWorkbench().getDisplay();
+                                Shell shell = display.getActiveShell();
+                                dp = new DependencyProvider(shell,SWT.NONE);
+                                ConnectionObj obj = new ConnectionObj();
+                                obj.setDbDriver(getConnectionDbDriver().isEmpty() ? "" : getConnectionDbDriver());
+                                obj.setDbType(getConnectionDbType().getName().isEmpty() ? ""
+                                        : getConnectionDbType().getName());
+                                obj.setPassword(getConnectionPassword().isEmpty() ? "" : getConnectionPassword());
+                                obj.setUrl(getConnectionURL().isEmpty() ? "" : getConnectionURL());
+                                obj.setUserName(getConnectionUsername().isEmpty() ? "" : getConnectionUsername());
+                                obj.setJarPath(jarPath);
+
+                                dp.open(obj);
+
+                                jarPath = obj.getJarPath();
+
+                                propertiesEditionComponent.firePropertiesChanged(
+                                    new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartForm.this,
+                                            EsbViewsRepository.DBReportMediator.Connection.connectionDbType,
+                                            PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+                                            SqlDatabaseType.getByName(obj.getDbType())));
+                                propertiesEditionComponent.firePropertiesChanged(
+                                    new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartForm.this,
+                                            EsbViewsRepository.DBReportMediator.Connection.connectionDbDriver,
+                                            PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+                                            obj.getDbDriver()));
+                                propertiesEditionComponent.firePropertiesChanged(
+                                    new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartForm.this,
+                                            EsbViewsRepository.DBReportMediator.Connection.connectionURL,
+                                            PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+                                            obj.getUrl()));
+                                propertiesEditionComponent.firePropertiesChanged(
+                                    new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartForm.this,
+                                            EsbViewsRepository.DBReportMediator.Connection.connectionUsername,
+                                            PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+                                            obj.getUserName()));
+                                propertiesEditionComponent.firePropertiesChanged(
+                                    new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartForm.this,
+                                            EsbViewsRepository.DBReportMediator.Connection.connectionPassword,
+                                            PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+                                            obj.getPassword()));
+                            }
+                        });
+                    }
+                }).start();
+            }
+        });
+
+        Control propertyInitializeHelp = FormUtils.createHelpButton(widgetFactory, parent,
+                propertiesEditionComponent.getHelpContent(
+                        EsbViewsRepository.DBLookupMediator.Connection.databaseConfiguration,
+                        EsbViewsRepository.FORM_KIND),
+                null); // $NON-NLS-1$
+
+        // Start of user code for createDependencyProviderEMFComboViewer
+        connectionDbConfiguration = new Control[] { propertyInitializeLabel, dependencyProvider,
+                propertyInitializeHelp };
+        // End of user code
+        return parent;
+    }
+
+
 	/**
      * @generated NOT
      */
@@ -368,7 +467,7 @@ public class DBReportMediatorPropertiesEditionPartForm extends SectionProperties
      */
 	protected Composite createConnectionTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control connectionTypeLabel = createDescription(parent, EsbViewsRepository.DBReportMediator.Connection.connectionType, EsbMessages.DBReportMediatorPropertiesEditionPart_ConnectionTypeLabel);
-		connectionType = new EMFComboViewer(parent);
+		connectionType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		connectionType.setContentProvider(new ArrayContentProvider());
 		connectionType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData connectionTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -401,7 +500,7 @@ public class DBReportMediatorPropertiesEditionPartForm extends SectionProperties
      */
 	protected Composite createConnectionDsTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control connectionDsTypeLabel = createDescription(parent, EsbViewsRepository.DBReportMediator.Connection.connectionDsType, EsbMessages.DBReportMediatorPropertiesEditionPart_ConnectionDsTypeLabel);
-		connectionDsType = new EMFComboViewer(parent);
+		connectionDsType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		connectionDsType.setContentProvider(new ArrayContentProvider());
 		connectionDsType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData connectionDsTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -434,7 +533,7 @@ public class DBReportMediatorPropertiesEditionPartForm extends SectionProperties
      */	
 	protected Composite createConnectionDbTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control connectionDbTypeLabel = createDescription(parent, EsbViewsRepository.DBReportMediator.Connection.connectionDbType, EsbMessages.DBReportMediatorPropertiesEditionPart_ConnectionDbTypeLabel);
-		connectionDbType = new EMFComboViewer(parent);
+		connectionDbType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		connectionDbType.setContentProvider(new ArrayContentProvider());
 		connectionDbType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData connectionDbTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -1080,7 +1179,7 @@ public class DBReportMediatorPropertiesEditionPartForm extends SectionProperties
      */
 	protected Composite createPropertyAutocommitEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control propertyAutoCommitLabel = createDescription(parent, EsbViewsRepository.DBReportMediator.Properties.propertyAutocommit, EsbMessages.DBReportMediatorPropertiesEditionPart_PropertyAutocommitLabel);
-		propertyAutocommit = new EMFComboViewer(parent);
+		propertyAutocommit = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		propertyAutocommit.setContentProvider(new ArrayContentProvider());
 		propertyAutocommit.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData propertyAutocommitData = new GridData(GridData.FILL_HORIZONTAL);
@@ -1112,7 +1211,7 @@ public class DBReportMediatorPropertiesEditionPartForm extends SectionProperties
      */
 	protected Composite createPropertyIsolationEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control propertyIsolationLabel = createDescription(parent, EsbViewsRepository.DBReportMediator.Properties.propertyIsolation, EsbMessages.DBReportMediatorPropertiesEditionPart_PropertyIsolationLabel);
-		propertyIsolation = new EMFComboViewer(parent);
+		propertyIsolation = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		propertyIsolation.setContentProvider(new ArrayContentProvider());
 		propertyIsolation.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData propertyIsolationData = new GridData(GridData.FILL_HORIZONTAL);
@@ -1494,7 +1593,7 @@ public class DBReportMediatorPropertiesEditionPartForm extends SectionProperties
      */
 	protected Composite createPropertyPoolstatementsEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control propertyPoolstatementsLabel = createDescription(parent, EsbViewsRepository.DBReportMediator.Properties.propertyPoolstatements, EsbMessages.DBReportMediatorPropertiesEditionPart_PropertyPoolstatementsLabel);
-		propertyPoolstatements = new EMFComboViewer(parent);
+		propertyPoolstatements = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		propertyPoolstatements.setContentProvider(new ArrayContentProvider());
 		propertyPoolstatements.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData propertyPoolstatementsData = new GridData(GridData.FILL_HORIZONTAL);
@@ -1526,7 +1625,7 @@ public class DBReportMediatorPropertiesEditionPartForm extends SectionProperties
      */
 	protected Composite createPropertyTestonborrowEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control propertyTestOnBorrowLabel = createDescription(parent, EsbViewsRepository.DBReportMediator.Properties.propertyTestonborrow, EsbMessages.DBReportMediatorPropertiesEditionPart_PropertyTestonborrowLabel);
-		propertyTestonborrow = new EMFComboViewer(parent);
+		propertyTestonborrow = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		propertyTestonborrow.setContentProvider(new ArrayContentProvider());
 		propertyTestonborrow.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData propertyTestonborrowData = new GridData(GridData.FILL_HORIZONTAL);
@@ -1558,7 +1657,7 @@ public class DBReportMediatorPropertiesEditionPartForm extends SectionProperties
      */
 	protected Composite createPropertyTestwhileidleEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control propertyTestWhileIdelLabel = createDescription(parent, EsbViewsRepository.DBReportMediator.Properties.propertyTestwhileidle, EsbMessages.DBReportMediatorPropertiesEditionPart_PropertyTestwhileidleLabel);
-		propertyTestwhileidle = new EMFComboViewer(parent);
+		propertyTestwhileidle = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		propertyTestwhileidle.setContentProvider(new ArrayContentProvider());
 		propertyTestwhileidle.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData propertyTestwhileidleData = new GridData(GridData.FILL_HORIZONTAL);
@@ -2886,6 +2985,7 @@ public class DBReportMediatorPropertiesEditionPartForm extends SectionProperties
             eu.showEntry(connectionURLElements, false);
             eu.showEntry(connectionUsernameElements, false);
             eu.showEntry(connectionPasswordElements, false);
+            eu.showEntry(connectionDbConfiguration, false);
             
             enablePropertiesElements(eu);
         }

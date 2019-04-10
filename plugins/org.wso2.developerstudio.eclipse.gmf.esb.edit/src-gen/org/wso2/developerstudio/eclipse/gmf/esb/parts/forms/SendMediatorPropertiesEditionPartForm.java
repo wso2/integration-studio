@@ -412,7 +412,7 @@ public class SendMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 		Control receivingSequenceTypeLabel = createDescription(receivingSequenceSubsection,
 				EsbViewsRepository.SendMediator.Properties.receivingSequenceType,
 				EsbMessages.SendMediatorPropertiesEditionPart_ReceivingSequenceTypeLabel);
-		receivingSequenceType = new EMFComboViewer(receivingSequenceSubsection);
+		receivingSequenceType = new EMFComboViewer(receivingSequenceSubsection, SWT.SCROLL_LOCK);
 		receivingSequenceType.setContentProvider(new ArrayContentProvider());
 		receivingSequenceType
 				.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -1017,7 +1017,7 @@ public class SendMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 		dynamicReceivingSequenceText.addMouseListener(new MouseAdapter() {
             
             @Override
-            public void mouseDown( MouseEvent event ) {
+            public void mouseDown(MouseEvent event) {
                 openDynamicReceivingSequenceNamespacedPropertyEditor(parent);
             }
             

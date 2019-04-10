@@ -2985,6 +2985,9 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v85fJnEei6boXzpRIfnA" name="sqlStatements" views="_E7wmiPJnEei6boXzpRIfnA">
           <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//AbstractSqlExecutorMediator/sqlStatements"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_XWSS8EWFEemGk-SzClwBXw" name="DatabaseConfiguration" views="_OZJ_4EWFEemGk-SzClwBXw">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//Mediator/Reverse"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//DBLookupMediator"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_E7v85vJnEei6boXzpRIfnA" name="DBLookupMediatorInputConnector" views="_E7wmifJnEei6boXzpRIfnA">
@@ -3077,6 +3080,9 @@
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v9BPJnEei6boXzpRIfnA" name="connectionUseTransaction" views="_E7wmqvJnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//DBReportMediator/connectionUseTransaction"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_J1ZgsEl-Eemnn8nn1IFR-w" name="Database Configuration" views="_pIsZ8El9Eemnn8nn1IFR-w">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//Mediator/Reverse"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//DBReportMediator"/>
       </bindings>
@@ -3218,6 +3224,12 @@
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v9LfJnEei6boXzpRIfnA" name="valueLiteral" views="_E7wm3fJnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//RuleFact/valueLiteral"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_eGhA4FQ8Eem7ZpR7QdrxKg" name="propertyExpression" views="_9slsMFQ7Eem7ZpR7QdrxKg">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//RuleFact/valueExpression"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_lwgkYFR5Eem7ZpR7QdrxKg" name="valueReferenceKey" views="_Ivu80FR5Eem7ZpR7QdrxKg">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//RuleFact/valueKey"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//RuleFact"/>
       </bindings>
@@ -9220,6 +9232,7 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wme_JnEei6boXzpRIfnA" name="connectionPassword">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_OZJ_4EWFEemGk-SzClwBXw" name="Database Configuration"/>
         </elements>
         <elements xsi:type="eef-views:Container" xmi:id="_OBVYECuiEemMpuboh5FIQg" name="statements">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
@@ -9277,6 +9290,7 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wmqvJnEei6boXzpRIfnA" name="connectionUseTransaction">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
           </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_pIsZ8El9Eemnn8nn1IFR-w" name="Database Configuration"/>
         </elements>
         <elements xsi:type="eef-views:Container" xmi:id="_-bARIC3KEemFL4WMu9Ad-w" name="statements">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
@@ -9502,6 +9516,8 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wm3fJnEei6boXzpRIfnA" name="valueLiteral">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_9slsMFQ7Eem7ZpR7QdrxKg" name="propertyExpression"/>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_Ivu80FR5Eem7ZpR7QdrxKg" name="valueReferenceKey"/>
         </elements>
       </views>
       <views xmi:id="_E7wm3vJnEei6boXzpRIfnA" name="RuleResultsConfiguration">

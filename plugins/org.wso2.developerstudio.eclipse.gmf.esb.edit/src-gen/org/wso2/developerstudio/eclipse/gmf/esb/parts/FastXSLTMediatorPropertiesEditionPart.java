@@ -95,13 +95,13 @@ public interface FastXSLTMediatorPropertiesEditionPart {
 	// Start of user code for fastXsltStaticSchemaKey specific getters and setters declaration
 	public RegistryKeyProperty getFastXsltStaticSchemaKey();
 
-    public void setFastXsltStaticSchemaKey(RegistryKeyProperty fastXsltStaticSchemaKey);
+    public void setFastXsltStaticSchemaKey (RegistryKeyProperty fastXsltStaticSchemaKey);
 	// End of user code
     
 	// Start of user code for fastXsltDynamicSchemaKey specific getters and setters declaration
     public NamespacedProperty getFastXsltDynamicSchemaKey();
 
-    public void setFastXsltDynamicSchemaKey(NamespacedProperty fastXsltDynamicSchemaKey);
+    public void setFastXsltDynamicSchemaKey (NamespacedProperty fastXsltDynamicSchemaKey);
 	// End of user code
 
 	/**

@@ -175,7 +175,7 @@ public class SqlParameterDefinitionPropertiesEditionPartImpl extends CompositePr
      */
 	protected Composite createDataTypeEMFComboViewer(Composite parent) {
 		Control dataTypeLabel = createDescription(parent, EsbViewsRepository.SqlParameterDefinition.Properties.dataType, EsbMessages.SqlParameterDefinitionPropertiesEditionPart_DataTypeLabel);
-		dataType = new EMFComboViewer(parent);
+		dataType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		dataType.setContentProvider(new ArrayContentProvider());
 		dataType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData dataTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -207,7 +207,7 @@ public class SqlParameterDefinitionPropertiesEditionPartImpl extends CompositePr
      */
 	protected Composite createValueTypeEMFComboViewer(Composite parent) {
 		Control valueTypeLabel = createDescription(parent, EsbViewsRepository.SqlParameterDefinition.Properties.valueType, EsbMessages.SqlParameterDefinitionPropertiesEditionPart_ValueTypeLabel);
-		valueType = new EMFComboViewer(parent);
+		valueType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		valueType.setContentProvider(new ArrayContentProvider());
 		valueType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData valueTypeData = new GridData(GridData.FILL_HORIZONTAL);

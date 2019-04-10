@@ -269,7 +269,7 @@ public class LogPropertyPropertiesEditionPartForm extends SectionPropertiesEditi
 		Control propertyValueTypeLabel = createDescription(parent,
 				EsbViewsRepository.LogProperty.Properties.propertyValueType,
 				EsbMessages.LogPropertyPropertiesEditionPart_PropertyValueTypeLabel);
-		propertyValueType = new EMFComboViewer(parent);
+		propertyValueType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		propertyValueType.setContentProvider(new ArrayContentProvider());
 		propertyValueType
 				.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -540,7 +540,7 @@ public class LogPropertyPropertiesEditionPartForm extends SectionPropertiesEditi
 		Control propertyExpressionTextLabel = createDescription(parent,
 				EsbViewsRepository.LogProperty.Properties.propertyExpression,
 				EsbMessages.LogPropertyPropertiesEditionPart_PropertyExpressionLabel);
-		propertyExpressionText = widgetFactory.createText(parent, "", 8); //$NON-NLS-1$
+		propertyExpressionText = widgetFactory.createText(parent, "", 8);
 		propertyExpressionText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData propertyValueData = new GridData(GridData.FILL_HORIZONTAL);

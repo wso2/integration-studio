@@ -593,7 +593,7 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
      */
 	protected Composite createCompletionMinMessagesTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control completionMinMessagesTypeLabel = createDescription(completeConditionSubGroup, EsbViewsRepository.AggregateMediator.Properties.completionMinMessagesType, EsbMessages.AggregateMediatorPropertiesEditionPart_CompletionMinMessagesTypeLabel);
-		completionMinMessagesType = new EMFComboViewer(completeConditionSubGroup);
+		completionMinMessagesType = new EMFComboViewer(completeConditionSubGroup, SWT.SCROLL_LOCK);
 		completionMinMessagesType.setContentProvider(new ArrayContentProvider());
 		completionMinMessagesType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData completionMinMessagesTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -637,7 +637,7 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
      */
 	protected Composite createCompletionMaxMessagesTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control completionMaxMessagesTypeLabel = createDescription(completeConditionSubGroup, EsbViewsRepository.AggregateMediator.Properties.completionMaxMessagesType, EsbMessages.AggregateMediatorPropertiesEditionPart_CompletionMaxMessagesTypeLabel);
-		completionMaxMessagesType = new EMFComboViewer(completeConditionSubGroup);
+		completionMaxMessagesType = new EMFComboViewer(completeConditionSubGroup, SWT.SCROLL_LOCK);
 		completionMaxMessagesType.setContentProvider(new ArrayContentProvider());
 		completionMaxMessagesType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData completionMaxMessagesTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -821,7 +821,7 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
      */
 	protected Composite createSequenceTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control sequenceTypeLabel = createDescription(parent, EsbViewsRepository.AggregateMediator.OnComplete.sequenceType, EsbMessages.AggregateMediatorPropertiesEditionPart_SequenceTypeLabel);
-		sequenceType = new EMFComboViewer(parent);
+		sequenceType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		sequenceType.setContentProvider(new ArrayContentProvider());
 		sequenceType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData sequenceTypeData = new GridData(GridData.FILL_HORIZONTAL);

@@ -2395,7 +2395,7 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
     protected Composite createTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
         createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.type,
                 EsbMessages.InboundEndpointPropertiesEditionPart_TypeLabel);
-        type = new EMFComboViewer(parent);
+        type = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
         type.setContentProvider(new ArrayContentProvider());
         type.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
         GridData typeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -2576,7 +2576,7 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
     protected Composite createInboundEndpointBehaviourEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
         createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.inboundEndpointBehaviour,
                 EsbMessages.InboundEndpointPropertiesEditionPart_InboundEndpointBehaviourLabel);
-        inboundEndpointBehaviour = new EMFComboViewer(parent);
+        inboundEndpointBehaviour = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
         inboundEndpointBehaviour.setContentProvider(new ArrayContentProvider());
         inboundEndpointBehaviour
                 .setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -3771,7 +3771,7 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
     protected Composite createTransportVFSLockingEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
         createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.transportVFSLocking,
                 EsbMessages.InboundEndpointPropertiesEditionPart_TransportVFSLockingLabel);
-        transportVFSLocking = new EMFComboViewer(parent);
+        transportVFSLocking = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
         transportVFSLocking.setContentProvider(new ArrayContentProvider());
         transportVFSLocking
                 .setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -4217,7 +4217,7 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
             Composite parent) {
         createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.transportVFSActionAfterProcess,
                 EsbMessages.InboundEndpointPropertiesEditionPart_TransportVFSActionAfterProcessLabel);
-        transportVFSActionAfterProcess = new EMFComboViewer(parent);
+        transportVFSActionAfterProcess = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
         transportVFSActionAfterProcess.setContentProvider(new ArrayContentProvider());
         transportVFSActionAfterProcess
                 .setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -4331,7 +4331,7 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
     protected Composite createTransportVFSActionAfterErrorsEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
         createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.transportVFSActionAfterErrors,
                 EsbMessages.InboundEndpointPropertiesEditionPart_TransportVFSActionAfterErrorsLabel);
-        transportVFSActionAfterErrors = new EMFComboViewer(parent);
+        transportVFSActionAfterErrors = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
         transportVFSActionAfterErrors.setContentProvider(new ArrayContentProvider());
         transportVFSActionAfterErrors
                 .setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -4748,7 +4748,7 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
             Composite parent) {
         createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.transportVFSActionAfterFailure,
                 EsbMessages.InboundEndpointPropertiesEditionPart_TransportVFSActionAfterFailureLabel);
-        transportVFSActionAfterFailure = new EMFComboViewer(parent);
+        transportVFSActionAfterFailure = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
         transportVFSActionAfterFailure.setContentProvider(new ArrayContentProvider());
         transportVFSActionAfterFailure
                 .setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -5580,7 +5580,7 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
             Composite parent) {
         createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.transportJMSConnectionFactoryType,
                 EsbMessages.InboundEndpointPropertiesEditionPart_TransportJMSConnectionFactoryTypeLabel);
-        transportJMSConnectionFactoryType = new EMFComboViewer(parent);
+        transportJMSConnectionFactoryType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
         transportJMSConnectionFactoryType.setContentProvider(new ArrayContentProvider());
         transportJMSConnectionFactoryType
                 .setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -5809,7 +5809,7 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
             Composite parent) {
         createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.transportJMSSessionAcknowledgement,
                 EsbMessages.InboundEndpointPropertiesEditionPart_TransportJMSSessionAcknowledgementLabel);
-        transportJMSSessionAcknowledgement = new EMFComboViewer(parent);
+        transportJMSSessionAcknowledgement = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
         transportJMSSessionAcknowledgement.setContentProvider(new ArrayContentProvider());
         transportJMSSessionAcknowledgement
                 .setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -5849,7 +5849,7 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
     protected Composite createTransportJMSCacheLevelEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
         createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.transportJMSCacheLevel,
                 EsbMessages.InboundEndpointPropertiesEditionPart_TransportJMSCacheLevelLabel);
-        transportJMSCacheLevel = new EMFComboViewer(parent);
+        transportJMSCacheLevel = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
         transportJMSCacheLevel.setContentProvider(new ArrayContentProvider());
         transportJMSCacheLevel
                 .setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -6478,7 +6478,7 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
     protected Composite createTransportVFSFileSortAttributeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
         createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.transportVFSFileSortAttribute,
                 EsbMessages.InboundEndpointPropertiesEditionPart_TransportVFSFileSortAttributeLabel);
-        transportVFSFileSortAttribute = new EMFComboViewer(parent);
+        transportVFSFileSortAttribute = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
         transportVFSFileSortAttribute.setContentProvider(new ArrayContentProvider());
         transportVFSFileSortAttribute
                 .setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -7117,7 +7117,7 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
     protected Composite createTransportJMSBrokerTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
         createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.transportJMSBrokerType,
                 EsbMessages.InboundEndpointPropertiesEditionPart_TransportJMSBrokerTypeLabel);
-        transportJMSBrokerType = new EMFComboViewer(parent);
+        transportJMSBrokerType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
         transportJMSBrokerType.setContentProvider(new ArrayContentProvider());
         transportJMSBrokerType
                 .setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -7464,7 +7464,7 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
     protected Composite createTransportMQTTSubscriptionQOSEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
         createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.transportMQTTSubscriptionQOS,
                 EsbMessages.InboundEndpointPropertiesEditionPart_TransportMQTTSubscriptionQOSLabel);
-        transportMQTTSubscriptionQOS = new EMFComboViewer(parent);
+        transportMQTTSubscriptionQOS = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
         transportMQTTSubscriptionQOS.setContentProvider(new ArrayContentProvider());
         transportMQTTSubscriptionQOS
                 .setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -8986,7 +8986,7 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
     protected Composite createConsumerTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
         createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.consumerType,
                 EsbMessages.InboundEndpointPropertiesEditionPart_ConsumerTypeLabel);
-        consumerType = new EMFComboViewer(parent);
+        consumerType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
         consumerType.setContentProvider(new ArrayContentProvider());
         consumerType
                 .setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -9021,7 +9021,7 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
     protected Composite createTopicsOrTopicFilterEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
         createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.topicsOrTopicFilter,
                 EsbMessages.InboundEndpointPropertiesEditionPart_TopicsOrTopicFilterLabel);
-        topicsOrTopicFilter = new EMFComboViewer(parent);
+        topicsOrTopicFilter = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
         topicsOrTopicFilter.setContentProvider(new ArrayContentProvider());
         topicsOrTopicFilter
                 .setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -9124,7 +9124,7 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
     protected Composite createTopicFilterFromEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
         createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.topicFilterFrom,
                 EsbMessages.InboundEndpointPropertiesEditionPart_TopicFilterFromLabel);
-        topicFilterFrom = new EMFComboViewer(parent);
+        topicFilterFrom = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
         topicFilterFrom.setContentProvider(new ArrayContentProvider());
         topicFilterFrom
                 .setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -10557,7 +10557,7 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
     protected Composite createAutoOffsetResetEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
         createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.autoOffsetReset,
                 EsbMessages.InboundEndpointPropertiesEditionPart_AutoOffsetResetLabel);
-        autoOffsetReset = new EMFComboViewer(parent);
+        autoOffsetReset = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
         autoOffsetReset.setContentProvider(new ArrayContentProvider());
         autoOffsetReset
                 .setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -10704,7 +10704,7 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
     protected Composite createPartitionAssignmentStrategyEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
         createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.partitionAssignmentStrategy,
                 EsbMessages.InboundEndpointPropertiesEditionPart_PartitionAssignmentStrategyLabel);
-        partitionAssignmentStrategy = new EMFComboViewer(parent);
+        partitionAssignmentStrategy = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
         partitionAssignmentStrategy.setContentProvider(new ArrayContentProvider());
         partitionAssignmentStrategy
                 .setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -11029,7 +11029,7 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
     protected Composite createOffsetsStorageEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
         createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.offsetsStorage,
                 EsbMessages.InboundEndpointPropertiesEditionPart_OffsetsStorageLabel);
-        offsetsStorage = new EMFComboViewer(parent);
+        offsetsStorage = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
         offsetsStorage.setContentProvider(new ArrayContentProvider());
         offsetsStorage
                 .setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -13995,7 +13995,7 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
     protected Composite createWsClientSideBroadcastLevelEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
         createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.wsClientSideBroadcastLevel,
                 EsbMessages.InboundEndpointPropertiesEditionPart_WsClientSideBroadcastLevelLabel);
-        wsClientSideBroadcastLevel = new EMFComboViewer(parent);
+        wsClientSideBroadcastLevel = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
         wsClientSideBroadcastLevel.setContentProvider(new ArrayContentProvider());
         wsClientSideBroadcastLevel
                 .setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -14549,7 +14549,7 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
     protected Composite createTransportFeedTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
         createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.transportFeedType,
                 EsbMessages.InboundEndpointPropertiesEditionPart_TransportFeedTypeLabel);
-        transportFeedType = new EMFComboViewer(parent);
+        transportFeedType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
         transportFeedType.setContentProvider(new ArrayContentProvider());
         transportFeedType
                 .setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -16199,7 +16199,7 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
             Composite parent) {
         createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqConsumerQosType,
                 EsbMessages.InboundEndpointPropertiesEditionPart_TransportRabbitMqConsumerQosTypeLabel);
-        transportRabbitMqConsumerQosType = new EMFComboViewer(parent);
+        transportRabbitMqConsumerQosType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
         transportRabbitMqConsumerQosType.setContentProvider(new ArrayContentProvider());
         transportRabbitMqConsumerQosType
                 .setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));

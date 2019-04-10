@@ -88,6 +88,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.util.XPathValidator;
 import org.wso2.developerstudio.eclipse.gmf.esb.util.XPathValidatorImpl;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.eclipse.swt.events.FocusListener;
+import org.eclipse.swt.events.FocusEvent;
 
 /**
  * A SWT based editor dialog to be used for editing namespaced properties.
@@ -1071,7 +1073,7 @@ public class NamespacedPropertyEditorDialog extends Dialog {
             @Override
             public void widgetSelected(SelectionEvent e) {
                 Button source = (Button) e.getSource();
-                if(source.getSelection())  {
+                if (source.getSelection()) {
                     filePathTextField.setText(EMPTY_STRING);
                     xPathTextField.setText(EMPTY_STRING);
                     outputXMLTextArea.setText(EMPTY_STRING);
@@ -1094,7 +1096,7 @@ public class NamespacedPropertyEditorDialog extends Dialog {
             @Override
             public void widgetSelected(SelectionEvent e) {
                 Button source = (Button) e.getSource();
-                if(source.getSelection())  {
+                if (source.getSelection()) {
                     browseButton.setEnabled(true);
                     infoLabel.setText(INFO_LABEL_DEFAULT_TEXT);
                     
@@ -1127,7 +1129,7 @@ public class NamespacedPropertyEditorDialog extends Dialog {
             }
         });
         
-        inlineXMLTextArea.addFocusListener(new org.eclipse.swt.events.FocusListener() {
+        inlineXMLTextArea.addFocusListener(new FocusListener() {
             
             @Override
             public void focusGained(org.eclipse.swt.events.FocusEvent e) {
@@ -1137,7 +1139,7 @@ public class NamespacedPropertyEditorDialog extends Dialog {
             }
 
             @Override
-            public void focusLost(org.eclipse.swt.events.FocusEvent e) {
+            public void focusLost(FocusEvent e) {
                 
                 String xmlText = inlineXMLTextArea.getText().trim();
                 
@@ -1222,7 +1224,7 @@ public class NamespacedPropertyEditorDialog extends Dialog {
                 
                 if (xPathValidator.isValidXML(inlineXMLTextArea.getText().trim())) {
                     String outputStr = xPathValidator.getEvaluatedResult(inlineXMLTextArea.getText().trim(),
-                            xPathTextField.getText().trim());
+                            xPathTextField.getText().trim(), nameSpaces);
                     
                     if (EMPTY_STRING.equalsIgnoreCase(outputStr)) {
                         outputXMLTextArea.setText(INVALID_XPATH_EXPRESSION_TEXT);

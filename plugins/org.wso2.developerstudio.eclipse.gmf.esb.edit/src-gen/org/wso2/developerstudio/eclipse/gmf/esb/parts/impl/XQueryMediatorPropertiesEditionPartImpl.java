@@ -335,7 +335,7 @@ public class XQueryMediatorPropertiesEditionPartImpl extends CompositeProperties
 	
 	protected Composite createScriptKeyTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.XQueryMediator.Properties.scriptKeyType, EsbMessages.XQueryMediatorPropertiesEditionPart_ScriptKeyTypeLabel);
-		scriptKeyType = new EMFComboViewer(parent);
+		scriptKeyType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		scriptKeyType.setContentProvider(new ArrayContentProvider());
 		scriptKeyType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData scriptKeyTypeData = new GridData(GridData.FILL_HORIZONTAL);

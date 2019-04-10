@@ -900,7 +900,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
      */
 	protected Composite createEndpointTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control endpointTypeLabel = createDescription(parent, EsbViewsRepository.ProxyService.Endpoint.endpointType, EsbMessages.ProxyServicePropertiesEditionPart_EndpointTypeLabel);
-		endpointType = new EMFComboViewer(parent);
+		endpointType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		endpointType.setContentProvider(new ArrayContentProvider());
 		endpointType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData endpointTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -1020,7 +1020,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
      */
 	protected Composite createFaultSequenceTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control faultSequenceTypeLabel = createDescription(parent, EsbViewsRepository.ProxyService.FaultSequence.faultSequenceType, EsbMessages.ProxyServicePropertiesEditionPart_FaultSequenceTypeLabel);
-		faultSequenceType = new EMFComboViewer(parent);
+		faultSequenceType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		faultSequenceType.setContentProvider(new ArrayContentProvider());
 		faultSequenceType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData faultSequenceTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -1140,7 +1140,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
      */
 	protected Composite createInSequenceTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control inSeqTypeLabel = createDescription(parent, EsbViewsRepository.ProxyService.InSequence.inSequenceType, EsbMessages.ProxyServicePropertiesEditionPart_InSequenceTypeLabel);
-		inSequenceType = new EMFComboViewer(parent);
+		inSequenceType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		inSequenceType.setContentProvider(new ArrayContentProvider());
 		inSequenceType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData inSequenceTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -1260,7 +1260,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
      */
 	protected Composite createOutSequenceTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control outSeqTypeLabel = createDescription(parent, EsbViewsRepository.ProxyService.OutSequence.outSequenceType, EsbMessages.ProxyServicePropertiesEditionPart_OutSequenceTypeLabel);
-		outSequenceType = new EMFComboViewer(parent);
+		outSequenceType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		outSequenceType.setContentProvider(new ArrayContentProvider());
 		outSequenceType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData outSequenceTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -1591,7 +1591,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
      */
 	protected Composite createWsdlTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control wsdlTypeLabel = createDescription(parent, EsbViewsRepository.ProxyService.Wsdl.wsdlType, EsbMessages.ProxyServicePropertiesEditionPart_WsdlTypeLabel);
-		wsdlType = new EMFComboViewer(parent);
+		wsdlType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		wsdlType.setContentProvider(new ArrayContentProvider());
 		wsdlType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData wsdlTypeData = new GridData(GridData.FILL_HORIZONTAL);

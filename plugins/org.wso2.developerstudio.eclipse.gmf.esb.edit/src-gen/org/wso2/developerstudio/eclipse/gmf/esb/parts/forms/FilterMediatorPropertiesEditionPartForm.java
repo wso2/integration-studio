@@ -375,7 +375,7 @@ public class FilterMediatorPropertiesEditionPartForm extends SectionPropertiesEd
         filterConditionSubPropertiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent,
                 "Condition", true);
 		Control itemLabel = createDescription(filterConditionSubPropertiesGroup, EsbViewsRepository.FilterMediator.Properties.conditionType, EsbMessages.FilterMediatorPropertiesEditionPart_ConditionTypeLabel);
-		conditionType = new EMFComboViewer(filterConditionSubPropertiesGroup);
+		conditionType = new EMFComboViewer(filterConditionSubPropertiesGroup, SWT.SCROLL_LOCK);
 		conditionType.setContentProvider(new ArrayContentProvider());
 		conditionType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData conditionTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -799,8 +799,6 @@ public class FilterMediatorPropertiesEditionPartForm extends SectionPropertiesEd
         Control itemHelp = FormUtils.createHelpButton(widgetFactory, filterConditionSubPropertiesGroup, propertiesEditionComponent
                 .getHelpContent( EsbViewsRepository.FilterMediator.Properties.source, EsbViewsRepository.FORM_KIND),
                 null); // $NON-NLS-1$
-        // aggregationExpressionElements = new Control[] { aggregationExpressionLabel, aggregationExpressionText,
-        // aggregationExpressionHelp };
         sourceElements = new Control[] { itemLabel, sourceText, itemHelp };
         return parent;
     }

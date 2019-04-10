@@ -472,6 +472,9 @@ public interface DBLookupMediatorPropertiesEditionPart {
 
 
 
+	// Start of user code for Database Configuration specific getters and setters declaration
+	
+	// End of user code
 
 	/**
 	 * Returns the internationalized title text.

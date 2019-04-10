@@ -253,7 +253,7 @@ public class XQueryVariablePropertiesEditionPartForm extends SectionPropertiesEd
 	
 	protected Composite createVariableTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.XQueryVariable.Properties.variableType, EsbMessages.XQueryVariablePropertiesEditionPart_VariableTypeLabel);
-		variableType = new EMFComboViewer(parent);
+		variableType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		variableType.setContentProvider(new ArrayContentProvider());
 		variableType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData variableTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -283,7 +283,7 @@ public class XQueryVariablePropertiesEditionPartForm extends SectionPropertiesEd
 	
 	protected Composite createValueTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.XQueryVariable.Properties.valueType, EsbMessages.XQueryVariablePropertiesEditionPart_ValueTypeLabel);
-		valueType = new EMFComboViewer(parent);
+		valueType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		valueType.setContentProvider(new ArrayContentProvider());
 		valueType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData valueTypeData = new GridData(GridData.FILL_HORIZONTAL);

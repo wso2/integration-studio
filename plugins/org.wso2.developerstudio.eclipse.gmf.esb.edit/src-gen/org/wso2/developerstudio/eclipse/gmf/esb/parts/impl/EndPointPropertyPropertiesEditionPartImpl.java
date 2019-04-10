@@ -283,7 +283,7 @@ public class EndPointPropertyPropertiesEditionPartImpl extends CompositeProperti
      */
 	protected Composite createScopeEMFComboViewer(Composite parent) {
 		Control scopeLabel = createDescription(parent, EsbViewsRepository.EndPointProperty.Properties.scope, EsbMessages.EndPointPropertyPropertiesEditionPart_ScopeLabel);
-		scope = new EMFComboViewer(parent);
+		scope = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		scope.setContentProvider(new ArrayContentProvider());
 		scope.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData scopeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -315,7 +315,7 @@ public class EndPointPropertyPropertiesEditionPartImpl extends CompositeProperti
      */
 	protected Composite createValueTypeEMFComboViewer(Composite parent) {
 		Control valueTypeLabel = createDescription(parent, EsbViewsRepository.EndPointProperty.Properties.valueType, EsbMessages.EndPointPropertyPropertiesEditionPart_ValueTypeLabel);
-		valueType = new EMFComboViewer(parent);
+		valueType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		valueType.setContentProvider(new ArrayContentProvider());
 		valueType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData valueTypeData = new GridData(GridData.FILL_HORIZONTAL);

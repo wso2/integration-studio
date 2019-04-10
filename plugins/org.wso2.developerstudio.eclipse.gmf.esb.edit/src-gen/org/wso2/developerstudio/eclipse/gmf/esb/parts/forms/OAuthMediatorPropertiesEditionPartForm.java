@@ -131,7 +131,7 @@ public class OAuthMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
 		propertiesStep.addStep(EsbViewsRepository.OAuthMediator.Properties.remoteServiceUrl);
 		propertiesStep.addStep(EsbViewsRepository.OAuthMediator.Properties.username);
 		propertiesStep.addStep(EsbViewsRepository.OAuthMediator.Properties.password);
-        propertiesStep.addStep(EsbViewsRepository.OAuthMediator.Properties.description);
+		propertiesStep.addStep(EsbViewsRepository.OAuthMediator.Properties.description);
 		
 		composer = new PartComposer(oAuthMediatorStep) {
 
@@ -399,7 +399,8 @@ public class OAuthMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
 
 	
 	protected Composite createUsernameText(FormToolkit widgetFactory, Composite parent) {
-	    filterCredentialsSubPropertiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent, "Credentials", true);
+		filterCredentialsSubPropertiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent,
+		        "Credentials", true);
 		createDescription(filterCredentialsSubPropertiesGroup, EsbViewsRepository.OAuthMediator.Properties.username, EsbMessages.OAuthMediatorPropertiesEditionPart_UsernameLabel);
 		username = widgetFactory.createText(filterCredentialsSubPropertiesGroup, ""); //$NON-NLS-1$
 		username.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
@@ -459,7 +460,9 @@ public class OAuthMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
 		});
 		EditingUtils.setID(username, EsbViewsRepository.OAuthMediator.Properties.username);
 		EditingUtils.setEEFtype(username, "eef::Text"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, filterCredentialsSubPropertiesGroup, propertiesEditionComponent.getHelpContent(EsbViewsRepository.OAuthMediator.Properties.username, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, filterCredentialsSubPropertiesGroup, propertiesEditionComponent
+		        .getHelpContent(EsbViewsRepository.OAuthMediator.Properties.username, EsbViewsRepository.FORM_KIND),
+		        null); // $NON-NLS-1$
 		// Start of user code for createUsernameText
 
 		// End of user code

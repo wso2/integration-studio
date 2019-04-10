@@ -204,7 +204,7 @@ public class PayloadFactoryMediatorPropertiesEditionPartImpl extends CompositePr
 	
 	protected Composite createPayloadFormatEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.PayloadFactoryMediator.Properties.payloadFormat, EsbMessages.PayloadFactoryMediatorPropertiesEditionPart_PayloadFormatLabel);
-		payloadFormat = new EMFComboViewer(parent);
+		payloadFormat = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		payloadFormat.setContentProvider(new ArrayContentProvider());
 		payloadFormat.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData payloadFormatData = new GridData(GridData.FILL_HORIZONTAL);
@@ -334,7 +334,7 @@ public class PayloadFactoryMediatorPropertiesEditionPartImpl extends CompositePr
 	
 	protected Composite createMediaTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.PayloadFactoryMediator.Properties.mediaType, EsbMessages.PayloadFactoryMediatorPropertiesEditionPart_MediaTypeLabel);
-		mediaType = new EMFComboViewer(parent);
+		mediaType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		mediaType.setContentProvider(new ArrayContentProvider());
 		mediaType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData mediaTypeData = new GridData(GridData.FILL_HORIZONTAL);

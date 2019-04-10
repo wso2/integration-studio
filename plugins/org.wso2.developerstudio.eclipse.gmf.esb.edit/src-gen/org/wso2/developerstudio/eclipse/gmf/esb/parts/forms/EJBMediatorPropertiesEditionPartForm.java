@@ -635,7 +635,7 @@ public class EJBMediatorPropertiesEditionPartForm extends SectionPropertiesEditi
                     true);
 	    Control [] previousControls = filterSessionSubPropertiesGroup.getChildren();
 	    createDescription(filterSessionSubPropertiesGroup, EsbViewsRepository.EJBMediator.Properties.sessionIdType, EsbMessages.EJBMediatorPropertiesEditionPart_SessionIdTypeLabel);
-		sessionIdType = new EMFComboViewer(filterSessionSubPropertiesGroup);
+		sessionIdType = new EMFComboViewer(filterSessionSubPropertiesGroup, SWT.SCROLL_LOCK);
 		sessionIdType.setContentProvider(new ArrayContentProvider());
 		sessionIdType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData sessionIdTypeData = new GridData(GridData.FILL_HORIZONTAL);

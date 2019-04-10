@@ -22,6 +22,7 @@ import java.io.StringReader;
 import java.io.StringWriter;
 import java.nio.charset.StandardCharsets;
 import java.util.Iterator;
+import java.util.Map;
 
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -67,20 +68,20 @@ public class XPathValidatorImpl implements XPathValidator {
     }
 
     @Override
-    public String getEvaluatedResult(File file, String xpath) {
-        Iterable<XdmItem> itemListItr = evaluate(file, xpath);
+    public String getEvaluatedResult(File file, String xpath, Map<String, String> namespaces) {
+        Iterable<XdmItem> itemListItr = evaluate(file, xpath, namespaces);
 
         return getItemListAsString(itemListItr);
     }
     
     @Override
-    public String getEvaluatedResult(String xml, String xpath) {
-        return getItemListAsString(getIterableXpathResult(xml, xpath));
+    public String getEvaluatedResult(String xml, String xpath, Map<String, String> namespaces) {
+        return getItemListAsString(getIterableXpathResult(xml, xpath, namespaces));
     }
 
     @Override
-    public boolean isValidExpression(File file, String xpath) {
-        Iterable<XdmItem> itemListItr = evaluate(file, xpath);
+    public boolean isValidExpression(File file, String xpath, Map<String, String> namespaces) {
+        Iterable<XdmItem> itemListItr = evaluate(file, xpath, namespaces);
         if (itemListItr != null) {
             return true;
         }
@@ -176,10 +177,14 @@ public class XPathValidatorImpl implements XPathValidator {
         }
     }
 
-    private Iterable<XdmItem> evaluate(File file, String xpath) {
+    private Iterable<XdmItem> evaluate(File file, String xpath, Map<String, String> namespaces) {
         Processor processor = new Processor(false);
         XPathCompiler compiler = processor.newXPathCompiler();
         Iterable<XdmItem> itemListItr = null;
+        
+        for (String nsURI : namespaces.keySet()) {
+            compiler.declareNamespace(nsURI, namespaces.get(nsURI));
+        }
 
         try {
             XdmNode document = processor.newDocumentBuilder().build(file);
@@ -207,9 +212,15 @@ public class XPathValidatorImpl implements XPathValidator {
         return outputStr;
     }
 
-    private Iterable<XdmItem> getIterableXpathResult(String xmlString, String xpathExpression) {
+    private Iterable<XdmItem> getIterableXpathResult(String xmlString, String xpathExpression,
+            Map<String, String> namespaces) {
         Processor proc = new Processor(false);
         XPathCompiler compiler = proc.newXPathCompiler();
+
+        for (String nsURI : namespaces.keySet()) {
+            compiler.declareNamespace(nsURI, namespaces.get(nsURI));
+        }
+
         DocumentBuilder documentBuilder = proc.newDocumentBuilder();
         StringReader reader = new StringReader(xmlString);
         XPathSelector selector = null;
@@ -220,7 +231,7 @@ public class XPathValidatorImpl implements XPathValidator {
         } catch (SaxonApiException e) {
             log.error("Could not evaluate XPath expression", e);
         }
-        
+
         return selector;
     }
 

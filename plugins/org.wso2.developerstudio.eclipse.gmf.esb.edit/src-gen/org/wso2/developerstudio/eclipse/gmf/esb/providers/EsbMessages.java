@@ -5719,6 +5719,9 @@ public class EsbMessages extends NLS {
 	public static String DBLookupMediatorPropertiesEditionPart_ConnectionPasswordLabel;
 
 	
+	public static String DBLookupMediatorPropertiesEditionPart_DatabaseConfigurationLabel;
+
+	
 	public static String DBLookupMediatorPropertiesEditionPart_SqlStatementsLabel;
 
 	
@@ -5756,6 +5759,9 @@ public class EsbMessages extends NLS {
 
 	
 	public static String DBReportMediatorPropertiesEditionPart_ConnectionUseTransactionLabel;
+
+	
+	public static String DBReportMediatorPropertiesEditionPart_DatabaseConfigurationLabel;
 
 	
 	public static String DBReportMediatorPropertiesEditionPart_SqlStatementsLabel;
@@ -5915,6 +5921,12 @@ public class EsbMessages extends NLS {
 
 	
 	public static String RuleFactPropertiesEditionPart_ValueLiteralLabel;
+
+	
+	public static String RuleFactPropertiesEditionPart_PropertyExpressionLabel;
+
+	
+	public static String RuleFactPropertiesEditionPart_ValueReferenceKeyLabel;
 
 	
 	public static String RuleResultsConfigurationPropertiesEditionPart_ResultsLabel;

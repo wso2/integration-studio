@@ -239,7 +239,7 @@ public class CallTemplateParameterPropertiesEditionPartForm extends SectionPrope
 	
 	protected Composite createTemplateParameterTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.CallTemplateParameter.Properties.templateParameterType, EsbMessages.CallTemplateParameterPropertiesEditionPart_TemplateParameterTypeLabel);
-		templateParameterType = new EMFComboViewer(parent);
+		templateParameterType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		templateParameterType.setContentProvider(new ArrayContentProvider());
 		templateParameterType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData templateParameterTypeData = new GridData(GridData.FILL_HORIZONTAL);

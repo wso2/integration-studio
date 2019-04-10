@@ -34,7 +34,7 @@ import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
-
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 
@@ -143,7 +143,7 @@ public class SessionPropertiesEditionPartForm extends SectionPropertiesEditingPa
 	
 	protected Composite createTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.Session.Properties.type, EsbMessages.SessionPropertiesEditionPart_TypeLabel);
-		type = new EMFComboViewer(parent);
+		type = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		type.setContentProvider(new ArrayContentProvider());
 		type.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData typeData = new GridData(GridData.FILL_HORIZONTAL);

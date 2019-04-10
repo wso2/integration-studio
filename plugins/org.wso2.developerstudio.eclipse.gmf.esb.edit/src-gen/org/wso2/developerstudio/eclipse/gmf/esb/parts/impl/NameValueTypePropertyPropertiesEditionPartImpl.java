@@ -247,7 +247,7 @@ public class NameValueTypePropertyPropertiesEditionPartImpl extends CompositePro
 	
 	protected Composite createPropertyTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.NameValueTypeProperty.Properties.propertyType, EsbMessages.NameValueTypePropertyPropertiesEditionPart_PropertyTypeLabel);
-		propertyType = new EMFComboViewer(parent);
+		propertyType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		propertyType.setContentProvider(new ArrayContentProvider());
 		propertyType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData propertyTypeData = new GridData(GridData.FILL_HORIZONTAL);

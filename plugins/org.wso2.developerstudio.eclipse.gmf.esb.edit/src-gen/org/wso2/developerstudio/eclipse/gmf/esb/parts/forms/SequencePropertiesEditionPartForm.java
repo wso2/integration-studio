@@ -710,7 +710,7 @@ public class SequencePropertiesEditionPartForm extends SectionPropertiesEditingP
 	protected Composite createReferringSequenceTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 	    referingSequenceSubsection = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent, "Refering Sequence", true);
 		Control referringSequenceTypeLable = createDescription(referingSequenceSubsection, EsbViewsRepository.Sequence.Properties.referringSequenceType, EsbMessages.SequencePropertiesEditionPart_ReferringSequenceTypeLabel);
-		referringSequenceType = new EMFComboViewer(referingSequenceSubsection);
+		referringSequenceType = new EMFComboViewer(referingSequenceSubsection, SWT.SCROLL_LOCK);
 		referringSequenceType.setContentProvider(new ArrayContentProvider());
 		referringSequenceType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData referringSequenceTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -1308,7 +1308,7 @@ public class SequencePropertiesEditionPartForm extends SectionPropertiesEditingP
 		dynamicReferenceKeyText.addMouseListener(new MouseAdapter() {
             
             @Override
-            public void mouseDown( MouseEvent event ) {
+            public void mouseDown(MouseEvent event) {
                 openDynamicReferenceKeyNamespacedPropertyEditor(parent);
             }
             
@@ -1345,7 +1345,6 @@ public class SequencePropertiesEditionPartForm extends SectionPropertiesEditingP
     private void openDynamicReferenceKeyNamespacedPropertyEditor(final Composite parent) {
         EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
                 SWT.NULL, dynamicReferenceKey);
-        // valueExpression.setPropertyValue(valueExpressionText.getText());
         dynamicReferenceKey = nspd.open();
         dynamicReferenceKeyText.setText(dynamicReferenceKey.getPropertyValue());
         propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(

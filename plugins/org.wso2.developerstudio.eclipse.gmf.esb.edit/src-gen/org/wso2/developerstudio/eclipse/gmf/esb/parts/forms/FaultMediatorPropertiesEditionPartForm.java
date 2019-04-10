@@ -474,7 +474,7 @@ public class FaultMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
      */
 	protected Composite createSoapVersionEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control soapVersionLabel = createDescription(parent, EsbViewsRepository.FaultMediator.Properties.soapVersion, EsbMessages.FaultMediatorPropertiesEditionPart_SoapVersionLabel);
-		soapVersion = new EMFComboViewer(parent);
+		soapVersion = new EMFComboViewer(parent,SWT.SCROLL_LOCK);
 		soapVersion.setContentProvider(new ArrayContentProvider());
 		soapVersion.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData soapVersionData = new GridData(GridData.FILL_HORIZONTAL);
@@ -607,7 +607,7 @@ public class FaultMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
      */
 	protected Composite createFaultCodeSoap11EMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control faultCodeSoapLabel = createDescription(parent, EsbViewsRepository.FaultMediator.Properties.faultCodeSoap11, EsbMessages.FaultMediatorPropertiesEditionPart_FaultCodeSoap11Label);
-		faultCodeSoap11 = new EMFComboViewer(parent);
+		faultCodeSoap11 = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		faultCodeSoap11.setContentProvider(new ArrayContentProvider());
 		faultCodeSoap11.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData faultCodeSoap11Data = new GridData(GridData.FILL_HORIZONTAL);
@@ -639,7 +639,7 @@ public class FaultMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
      */
 	protected Composite createFaultCodeTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control faultCodeTypeLabel = createDescription(parent, null, "Fault CodeType");
-		faultCodeType = new EMFComboViewer(parent);
+		faultCodeType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		faultCodeType.setContentProvider(new ArrayContentProvider());
 		faultCodeType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData faultCodeTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -671,7 +671,7 @@ public class FaultMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
      */
 	protected Composite createFaultStringTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 	    Control faultStringTypeLabel = createDescription(parent, null, "Type");
-		faultStringType = new EMFComboViewer(parent);
+		faultStringType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		faultStringType.setContentProvider(new ArrayContentProvider());
 		faultStringType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData faultStringTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -857,7 +857,7 @@ public class FaultMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
      */
 	protected Composite createFaultCodeSoap12EMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 	    Control faultCodeSoap12Label = createDescription(parent, EsbViewsRepository.FaultMediator.Properties.faultCodeSoap12, EsbMessages.FaultMediatorPropertiesEditionPart_FaultCodeSoap12Label);
-		faultCodeSoap12 = new EMFComboViewer(parent);
+		faultCodeSoap12 = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		faultCodeSoap12.setContentProvider(new ArrayContentProvider());
 		faultCodeSoap12.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData faultCodeSoap12Data = new GridData(GridData.FILL_HORIZONTAL);
@@ -890,7 +890,7 @@ public class FaultMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
 	protected Composite createFaultReasonTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 	    filterReasonSubPropertiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent, "Reason", true);
 	    Control faultReasonTypeLabel = createDescription(filterReasonSubPropertiesGroup, null, "Type");
-		faultReasonType = new EMFComboViewer(filterReasonSubPropertiesGroup);
+		faultReasonType = new EMFComboViewer(filterReasonSubPropertiesGroup, SWT.SCROLL_LOCK);
 		faultReasonType.setContentProvider(new ArrayContentProvider());
 		faultReasonType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData faultReasonTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -1146,7 +1146,7 @@ public class FaultMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
 	protected Composite createFaultDetailTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 	    filterDetailSubPropertiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent, "Detail", true);
 	    Control faultDetailTypeLabel = createDescription(filterDetailSubPropertiesGroup, null, "Type");
-		faultDetailType = new EMFComboViewer(filterDetailSubPropertiesGroup);
+		faultDetailType = new EMFComboViewer(filterDetailSubPropertiesGroup, SWT.SCROLL_LOCK);
 		faultDetailType.setContentProvider(new ArrayContentProvider());
 		faultDetailType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData faultDetailTypeData = new GridData(GridData.FILL_HORIZONTAL);

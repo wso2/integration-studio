@@ -20,11 +20,11 @@
    <extension point="org.eclipse.ui.newWizards">
 		<primaryWizard id="org.wso2.developerstudio.eclipse.distribution.project" />
 	</extension>
-   	<extension point="org.eclipse.ui.perspectiveExtensions">
+	<!--extension point="org.eclipse.ui.perspectiveExtensions">
 		<perspectiveExtension targetID="*">
       		<newWizardShortcut id="org.wso2.developerstudio.eclipse.distribution.project"/>
 		</perspectiveExtension>
-	</extension>	
+	</extension-->
    
    <extension point="org.eclipse.core.resources.natures"
 		id="org.wso2.developerstudio.eclipse.distribution.project.nature" name="Composite Application Project Nature">

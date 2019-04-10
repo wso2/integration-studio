@@ -77,7 +77,6 @@ import org.eclipse.gmf.runtime.diagram.ui.editpolicies.CreationEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.DragDropEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.diagram.ui.figures.BorderItemLocator;
-import org.eclipse.gmf.runtime.diagram.ui.internal.services.palette.PaletteToolEntry;
 import org.eclipse.gmf.runtime.diagram.ui.tools.UnspecifiedTypeCreationTool;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
@@ -106,7 +105,6 @@ import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.FileEditorInput;
 import org.jaxen.JaxenException;
-//import org.wso2.developerstudio.eclipse.artifact.sequence.validators.SequenceTemplate;
 import org.wso2.developerstudio.eclipse.esb.core.ESBMavenConstants;
 import org.wso2.developerstudio.eclipse.esb.core.utils.ESBMediaTypeConstants;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBArtifact;
@@ -156,6 +154,7 @@ import org.wso2.developerstudio.eclipse.platform.ui.startup.ESBGraphicalEditor;
 import org.wso2.developerstudio.eclipse.project.extensions.templates.ArtifactTemplate;
 import org.wso2.developerstudio.eclipse.project.extensions.templates.ArtifactTemplateHandler;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
+import org.eclipse.gmf.runtime.diagram.ui.internal.services.palette.PaletteToolEntry;
 
 /**
  * @generated NOT

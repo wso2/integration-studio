@@ -372,7 +372,7 @@ public class AddressEndPoint2EditPart extends AbstractEndpoint2 {
         }
 
         public String getIconPath() {
-            return "icons/ico20/address-endpoint.gif";
+            return "icons/ico20/address-endpoint.png";
         }
 
         public String getNodeName() {

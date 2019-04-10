@@ -280,7 +280,7 @@ public class Deserializer {
                         artifactType = ArtifactType.ENDPOINT_WSDL;
                     } else if ("failover".equals(child1LocalName)) {
                         artifactType = ArtifactType.COMPLEX_ENDPOINT;
-                    } else if ("loadbalance".equals(child1LocalName)) {
+                    } else if ("loadbalance".equals(child1LocalName) || "session".equals(child1LocalName)) {
                         artifactType = ArtifactType.COMPLEX_ENDPOINT;
                     } else if ("recipientlist".equals(child1LocalName)) {
                         artifactType = ArtifactType.COMPLEX_ENDPOINT;

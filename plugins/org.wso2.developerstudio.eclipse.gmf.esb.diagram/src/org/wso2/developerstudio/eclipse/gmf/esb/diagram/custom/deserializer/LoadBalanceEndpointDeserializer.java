@@ -94,8 +94,10 @@ public class LoadBalanceEndpointDeserializer extends AbstractComplexEndPointDese
         }
 
         executeSetValueCommand(LOAD_BALANCE_END_POINT__BUILD_MESSAGE, loadbalanceEndpoint.isBuildMessageAtt());
-        executeSetValueCommand(LOAD_BALANCE_END_POINT__ALGORITHM,
+        if (loadbalanceEndpoint.getAlgorithm() != null) {
+            executeSetValueCommand(LOAD_BALANCE_END_POINT__ALGORITHM,
                 loadbalanceEndpoint.getAlgorithm().getClass().getName());
+        }
         if (loadbalanceEndpoint.getChildren() != null && !loadbalanceEndpoint.getChildren().isEmpty()) {
             deserializeComplexEndpoint(loadbalanceEndpoint, part);
 

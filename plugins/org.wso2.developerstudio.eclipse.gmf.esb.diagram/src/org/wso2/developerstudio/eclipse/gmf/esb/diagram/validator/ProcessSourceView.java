@@ -105,7 +105,9 @@ public class ProcessSourceView {
             "code", "reason", "equal", "condition", "include", "detail", "input", "output", "rewriterule", "variable",
             "result", "messageCount", "correlateOn", "completeCondition", "onComplete", "configuration", "source",
             "messageBuilder", "target", "ruleSet", "properties", "input", "output", "attribute", "arg", "fact",
-            "trigger", "in", "out", "handlers", "handler"));
+            "trigger", "in", "out", "handlers", "handler", "session"));
+    
+    private static Set<String> graphicalEndpoint = new HashSet<>(Arrays.asList("loadbalance", "failover", "recipientlist"));
     
     private static SequenceMediatorFactory sequenceMediatorFactory;
     private static TemplateMediatorFactory templateMediatorFactory;
@@ -595,11 +597,9 @@ public class ProcessSourceView {
                     artifactType = tempTag.getqName();
                 }
 
-                if (artifactType.equals("endpoint") && (tempTag.getqName().equals("loadbalance")
-                        || tempTag.getqName().equals("failover") || tempTag.getqName().equals("recipientlist"))) {
+                if (artifactType.equals("endpoint") && graphicalEndpoint.contains(tempTag.getqName())) {
                     insideGraphicalEp = true;
-                } else if (!artifactType.equals("") && (tempTag.getqName().equals("loadbalance")
-                        || tempTag.getqName().equals("failover") || tempTag.getqName().equals("recipientlist"))) {
+                } else if (!artifactType.equals("") && graphicalEndpoint.contains(tempTag.getqName())) {
                     graphicalEpInsideArtifact = true;
                 }
 
@@ -648,13 +648,11 @@ public class ProcessSourceView {
                     insideRuleSet = false;
                 }
 
-                if (artifactType.equals("endpoint") && insideGraphicalEp && (tempTag.getqName().equals("loadbalance")
-                        || tempTag.getqName().equals("failover") || tempTag.getqName().equals("recipientlist"))) {
+                if (artifactType.equals("endpoint") && insideGraphicalEp && graphicalEndpoint.contains(tempTag.getqName())) {
                     insideGraphicalEp = false;
                 }
                 
-                if (graphicalEpInsideArtifact && (tempTag.getqName().equals("loadbalance")
-                        || tempTag.getqName().equals("failover") || tempTag.getqName().equals("recipientlist"))) {
+                if (graphicalEpInsideArtifact && graphicalEndpoint.contains(tempTag.getqName())) {
                     graphicalEpInsideArtifact = false;
                 }
 
@@ -744,7 +742,7 @@ public class ProcessSourceView {
                                             && tempTag.getqName().equals(currentMediator.getqName())
                                             || (artifacts.contains(tempTag.getqName())
                                                     && !artifactType.equals("localEntry"))))) {
-                                if ((!tempTag.getqName().equals("endpoint")
+                                if (((!tempTag.getqName().equals("endpoint") && !isGraphicalEP(tempTag.getqName()))
                                         || (tempTag.getqName().equals("endpoint") && !insideGraphicalEp && !graphicalEpInsideArtifact))) {
                                     sourceError = mediatorValidation();
                                     if (sourceError != null) {
@@ -816,6 +814,7 @@ public class ProcessSourceView {
         boolean insideTag = true;
         String firstMediatorQTag = "";
         boolean insideRuleSet = false;
+        boolean insideGraphiclEP = false;
 
         if (xmlTags.size() > 0) {
 
@@ -853,8 +852,11 @@ public class ProcessSourceView {
 
                             } else if (xmlTag.getqName().equals("ruleSet")) {
                                 insideRuleSet = false;
-
-                            } else {
+                                
+                            } else if (insideGraphiclEP && graphicalEndpoint.contains(xmlTag.getqName())) {
+                                insideGraphiclEP = false;
+                                
+                            } else if (!insideGraphiclEP) {
 
                                 error = validate(mediatorVal, xmlTag.getqName());
 
@@ -868,6 +870,8 @@ public class ProcessSourceView {
                         } else {
                             if (xmlTag.isEndTag() && xmlTag.getqName().equals("ruleSet")) {
                                 insideRuleSet = true;
+                            } else if (xmlTag.isEndTag() && graphicalEndpoint.contains(xmlTag.getqName())) {
+                                insideGraphiclEP = true;
                             }
                             insideTag = true;
                         }
@@ -948,6 +952,25 @@ public class ProcessSourceView {
                 } else {
                     omElement.setNamespace(new OMNamespaceImpl(SynapseConstants.SYNAPSE_NAMESPACE, ""));
                 }
+                
+                //This is to skip validation if there are no children within the graphical endpoint.
+                Iterator graphicalEp =  omElement.getChildrenWithLocalName("loadbalance");
+                if (graphicalEp == null) {
+                    graphicalEp = omElement.getChildrenWithLocalName("failover");
+                }
+                if (graphicalEp == null) {
+                    graphicalEp = omElement.getChildrenWithLocalName("recipientlist");
+                }
+                if (graphicalEp.hasNext()) {
+                    OMNode ep = (OMNode) graphicalEp.next();
+                    if (ep instanceof OMElement) {
+                        Iterator children = ((OMElement)ep).getChildren();
+                        if (!children.hasNext()) {
+                            return "";
+                        }
+                    }
+                }
+
                 EndpointFactory.getEndpointFromElement(omElement, false, null);
 
             } else if (qTag.equals("inboundEndpoint")) {
@@ -1055,6 +1078,13 @@ public class ProcessSourceView {
         return false;
     }
 
+    public static boolean isGraphicalEP(String qName) {
+        if (qName.equals("loadbalance") || qName.equals("failover") || qName.equals("recipientlist")) {
+            return true;
+        }
+        return false;
+    }
+    
     /**
      * Calculate the current length of the source view.
      * 

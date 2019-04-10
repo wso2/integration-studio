@@ -5,6 +5,7 @@ import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.StackLayout;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.Request;
@@ -12,6 +13,7 @@ import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.editpolicies.LayoutEditPolicy;
 import org.eclipse.gef.editpolicies.NonResizableEditPolicy;
 import org.eclipse.gef.requests.CreateRequest;
+import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IBorderItemEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.BorderItemSelectionEditPolicy;
@@ -21,15 +23,21 @@ import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.diagram.ui.figures.BorderItemLocator;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
+import org.eclipse.gmf.runtime.emf.type.core.commands.SetValueCommand;
+import org.eclipse.gmf.runtime.emf.type.core.requests.SetRequest;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.jface.dialogs.Dialog;
+import org.eclipse.jface.dialogs.IInputValidator;
+import org.eclipse.jface.dialogs.InputDialog;
 import org.eclipse.swt.graphics.Color;
-import org.wso2.developerstudio.eclipse.gmf.esb.ComplexEndpoints;
-import org.wso2.developerstudio.eclipse.gmf.esb.Sequences;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Display;
+import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractSequencesEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.ComplexFiguredAbstractEndpoint;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EsbGraphicalShape;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EsbGraphicalShapeWithLabel;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedBorderItemLocator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.OpenSeparatelyEditPolicy;
@@ -343,6 +351,62 @@ public class RecipientListEndPointEditPart extends ComplexFiguredAbstractEndpoin
             return "Recipient List";
         }
 
+    }
+    
+    public void createDialogBox(ComplexFiguredAbstractEndpoint abstractEP) throws Exception {
+
+        final EObject recipientEP = (RecipientListEndPoint) ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) getModel()).getElement();
+
+        if (((RecipientListEndPoint) recipientEP).getName() == null || ((RecipientListEndPoint) recipientEP).getName().trim().equals("")) {
+            IInputValidator validator = new IInputValidator() {
+
+                public String isValid(String str) {
+                    if (str.trim().isEmpty()) {
+                        return "Endpoint name cannot be empty";
+                    } else if (str.indexOf(0x20) != -1) {
+                        return "Endpoint name cannot contain spaces";
+                    }
+                    return null;
+                }
+
+            };
+            String defaultName = "recipientList-endpoint";
+            final InputDialog recipientEPNameInput = new InputDialog(Display.getCurrent().getActiveShell(), 
+                    "Enter RecipientList Endpoint Name", "Endpoint Name",
+                    defaultName, validator) {
+                protected Control createDialogArea(Composite parent) {
+                    Composite composite = (Composite) super.createDialogArea(parent);
+                    return composite;
+                }
+            };
+            int open = recipientEPNameInput.open();
+            if (open == Dialog.OK) {
+                Display.getDefault().asyncExec(new Runnable() {
+
+                    public void run() {
+                        String recipientEPName = recipientEPNameInput.getValue();
+                        TransactionalEditingDomain editingDomain = getEditingDomain();
+                        SetRequest setRequest = new SetRequest(editingDomain, recipientEP,
+                                EsbPackage.eINSTANCE.getEndPoint_EndPointName(), recipientEPName);
+                        SetValueCommand operation = new SetValueCommand(setRequest) {
+
+                            public boolean canUndo() {
+                                return true;
+                            }
+
+                            public boolean canRedo() {
+                                return true;
+                            }
+                        };
+                        
+                        getEditDomain().getCommandStack().execute(new ICommandProxy(operation));
+                        abstractEP.openPage(recipientEPName);
+                    }
+                });
+            }
+        } else {
+            abstractEP.openPage("");
+        }
     }
 
     /**

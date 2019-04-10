@@ -46,6 +46,7 @@ import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Link;
 import org.eclipse.swt.widgets.Monitor;
@@ -1033,6 +1034,7 @@ public class ProjectOptionsDataPage extends WizardPage implements Observer {
 				chkButton.setSelection(modelPropertyValue);
                 if (optionData.getDefaultValue() != null && !optionData.getDefaultValue().isEmpty()) {
                     chkButton.setSelection(Boolean.parseBoolean(optionData.getDefaultValue()));
+                    chkButton.notifyListeners(SWT.Selection, new Event());
                 }
 			}
 		};

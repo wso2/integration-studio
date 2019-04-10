@@ -183,7 +183,7 @@ public class CallTemplateParameterItemProvider extends EsbNodeItemProvider {
     @Override
     public String getText(Object object) {
         String parameterName = ((CallTemplateParameter) object).getParameterName();
-        String parameterNameLabel = WordUtils.abbreviate(parameterName.toString(), 8, 10, " ...");
+        String parameterNameLabel = WordUtils.abbreviate(parameterName, 8, 10, " ...");
         String parameterType = ((CallTemplateParameter) object).getTemplateParameterType().toString();
         String parameterValue = ((CallTemplateParameter) object).getParameterValue();
         String parameterExpression = ((CallTemplateParameter) object).getParameterExpression().toString();

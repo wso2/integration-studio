@@ -177,6 +177,7 @@ public class ProjectWizardSettings extends AbstractXMLDoc {
 					String modelPropertyAttr = getAttribute(dataElement, "modelProperty");
 					String typeAttr = getAttribute(dataElement, "type");
 					String filterAttr = getAttribute(dataElement, "filter");
+					String defaultValueAttr = getAttribute(dataElement, "defaultValue");
 					String fieldControllerAttr = getAttribute(dataElement, "fieldController");
 					AbstractFieldController fieldControllerObj = null;
 					if (fieldControllerAttr != null && !fieldControllerAttr.equals("")) {
@@ -226,6 +227,7 @@ public class ProjectWizardSettings extends AbstractXMLDoc {
 					projectOptionData.setGroup(groupAttr);
 					projectOptionData.setCaption(captionAttr);
 					projectOptionData.setFieldController(fieldControllerObj);
+					projectOptionData.setDefaultValue(defaultValueAttr);
 					optionInfo.getProjectOptionsData().add(projectOptionData);
 				}
 				List<OMElement> projectNaturesElement =

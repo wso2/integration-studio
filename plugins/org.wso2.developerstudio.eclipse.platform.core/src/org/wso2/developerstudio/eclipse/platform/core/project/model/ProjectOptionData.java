@@ -30,6 +30,7 @@ public class ProjectOptionData {
 	private String group;
 	private AbstractFieldController fieldController;
 	private ProjectOptionDataType type;
+	private String defaultValue;
 
 	// indent information
 	private Integer verticalIndent;
@@ -261,4 +262,12 @@ public class ProjectOptionData {
 	public int getTextboxHeight() {
 		return height;
 	}
+
+    public String getDefaultValue() {
+        return defaultValue;
+    }
+
+    public void setDefaultValue(String defaultValue) {
+        this.defaultValue = defaultValue;
+    }
 }

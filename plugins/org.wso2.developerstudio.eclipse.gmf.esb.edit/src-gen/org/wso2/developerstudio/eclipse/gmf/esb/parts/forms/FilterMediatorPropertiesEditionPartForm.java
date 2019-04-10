@@ -799,8 +799,6 @@ public class FilterMediatorPropertiesEditionPartForm extends SectionPropertiesEd
         Control itemHelp = FormUtils.createHelpButton(widgetFactory, filterConditionSubPropertiesGroup, propertiesEditionComponent
                 .getHelpContent( EsbViewsRepository.FilterMediator.Properties.source, EsbViewsRepository.FORM_KIND),
                 null); // $NON-NLS-1$
-        // aggregationExpressionElements = new Control[] { aggregationExpressionLabel, aggregationExpressionText,
-        // aggregationExpressionHelp };
         sourceElements = new Control[] { itemLabel, sourceText, itemHelp };
         return parent;
     }

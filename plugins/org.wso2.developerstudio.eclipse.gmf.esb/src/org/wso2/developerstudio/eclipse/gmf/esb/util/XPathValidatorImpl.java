@@ -212,14 +212,15 @@ public class XPathValidatorImpl implements XPathValidator {
         return outputStr;
     }
 
-    private Iterable<XdmItem> getIterableXpathResult(String xmlString, String xpathExpression, Map<String, String> namespaces) {
+    private Iterable<XdmItem> getIterableXpathResult(String xmlString, String xpathExpression,
+            Map<String, String> namespaces) {
         Processor proc = new Processor(false);
         XPathCompiler compiler = proc.newXPathCompiler();
-        
+
         for (String nsURI : namespaces.keySet()) {
             compiler.declareNamespace(nsURI, namespaces.get(nsURI));
         }
-        
+
         DocumentBuilder documentBuilder = proc.newDocumentBuilder();
         StringReader reader = new StringReader(xmlString);
         XPathSelector selector = null;
@@ -230,7 +231,7 @@ public class XPathValidatorImpl implements XPathValidator {
         } catch (SaxonApiException e) {
             log.error("Could not evaluate XPath expression", e);
         }
-        
+
         return selector;
     }
 

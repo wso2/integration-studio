@@ -178,7 +178,7 @@ public class CallTemplateParameterItemProvider extends EsbNodeItemProvider {
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated   NOT
+     * @generated NOT
      */
     @Override
     public String getText(Object object) {

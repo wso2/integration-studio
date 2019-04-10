@@ -27,7 +27,9 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.developerstudio.eclipse.gmf.esb.ProxyServiceParameter;
 import org.wso2.developerstudio.eclipse.gmf.esb.ProxyServicePolicy;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 
 /**
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.ProxyServicePolicy} object.
@@ -107,11 +109,13 @@ public class ProxyServicePolicyItemProvider extends ItemProviderAdapter implemen
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
+     * @generated NOT
      */
     @Override
     public String getText(Object object) {
-        return getString("_UI_ProxyServicePolicy_type");
+        String policyKey = ((ProxyServicePolicy) object).getPolicyKey().toString();
+        return EEFPropertyViewUtil.spaceFormat(getString("_UI_ProxyServicePolicy_type"))
+                + EEFPropertyViewUtil.spaceFormat(policyKey);
     }
 
     /**

@@ -140,7 +140,7 @@ public class ConditionalRouterMediatorPropertiesEditionPartForm extends SectionP
 		propertiesStep.addStep(EsbViewsRepository.ConditionalRouterMediator.Properties.reverse);
 		propertiesStep.addStep(EsbViewsRepository.ConditionalRouterMediator.Properties.continueAfterRoute);
 		propertiesStep.addStep(EsbViewsRepository.ConditionalRouterMediator.Properties.conditionalRouteBranches);
-        propertiesStep.addStep(EsbViewsRepository.ConditionalRouterMediator.Properties.description);
+		propertiesStep.addStep(EsbViewsRepository.ConditionalRouterMediator.Properties.description);
 		
 		composer = new PartComposer(conditionalRouterMediatorStep) {
 

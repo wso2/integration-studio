@@ -1017,7 +1017,7 @@ public class SendMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 		dynamicReceivingSequenceText.addMouseListener(new MouseAdapter() {
             
             @Override
-            public void mouseDown( MouseEvent event ) {
+            public void mouseDown(MouseEvent event) {
                 openDynamicReceivingSequenceNamespacedPropertyEditor(parent);
             }
             

@@ -621,9 +621,6 @@ public class DBLookupMediatorPropertiesEditionComponent extends SinglePartProper
 	 * 
 	 */
 	public String getHelpContent(Object key, int kind) {
-//		if (key == EsbViewsRepository.DBLookupMediator.Statements.sqlStatements)
-//			return "SQL Statements"; //$NON-NLS-1$
-//		return super.getHelpContent(key, kind);
 	    return EEFPropertyViewUtil.getHelpContent(key);
 	}
 

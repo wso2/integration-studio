@@ -22,8 +22,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.SqlParameterDefinition;
 import org.wso2.developerstudio.eclipse.gmf.esb.SqlParameterValueType;
 import org.wso2.developerstudio.eclipse.gmf.esb.SqlResultMapping;
 import org.wso2.developerstudio.eclipse.gmf.esb.SqlStatement;
-import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
-import static org.wso2.developerstudio.eclipse.gmf.esb.Constants.*;
+import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals;
+import org.wso2.developerstudio.eclipse.gmf.esb.Constants;
 
 public abstract class AbstractDBMediatorDeserializer
         extends AbstractEsbNodeDeserializer<AbstractMediator, AbstractSqlExecutorMediator> {
@@ -39,45 +39,49 @@ public abstract class AbstractDBMediatorDeserializer
             AbstractSqlExecutorMediator sqlExecutor) {
         setCommonProperties(dbMediator, sqlExecutor);
 
-        executeSetValueCommand(ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DS_NAME,
+        executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DS_NAME,
                 dbMediator.getDataSourceProps().get(DSNAME_Q));
-        executeSetValueCommand(ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_URL,
+        executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_URL,
                 dbMediator.getDataSourceProps().get(URL_Q));
-        executeSetValueCommand(ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_USERNAME,
+        executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_USERNAME,
                 dbMediator.getDataSourceProps().get(USER_Q));
-        executeSetValueCommand(ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_PASSWORD,
+        executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_PASSWORD,
                 dbMediator.getDataSourceProps().get(PASS_Q));
-        executeSetValueCommand(ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DB_DRIVER,
+        executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DB_DRIVER,
                 dbMediator.getDataSourceProps().get(DRIVER_Q));
-        executeSetValueCommand(ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DS_INITIAL_CONTEXT,
+        executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DS_INITIAL_CONTEXT,
                 dbMediator.getDataSourceProps().get(ICCLASS_Q));
         
-        if (dbMediator.getDataSourceProps().get(DRIVER_Q) != null && dbMediator.getDataSourceProps().get(DRIVER_Q).toLowerCase().contains(TXT_DATABASE_TYPE_MYSQL)) {
-            executeSetValueCommand(ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DB_TYPE, SqlDatabaseType.MYSQL);
+        if (dbMediator.getDataSourceProps().get(DRIVER_Q) != null && dbMediator.getDataSourceProps().get(DRIVER_Q)
+                .toLowerCase().contains(Constants.TXT_DATABASE_TYPE_MYSQL)) {
+            executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DB_TYPE, SqlDatabaseType.MYSQL);
         }
-        if (dbMediator.getDataSourceProps().get(DRIVER_Q) != null && dbMediator.getDataSourceProps().get(DRIVER_Q).toLowerCase().contains(TXT_DATABASE_TYPE_ORACLE)) {
-            executeSetValueCommand(ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DB_TYPE, SqlDatabaseType.ORACLE);
+        if (dbMediator.getDataSourceProps().get(DRIVER_Q) != null && dbMediator.getDataSourceProps().get(DRIVER_Q)
+                .toLowerCase().contains(Constants.TXT_DATABASE_TYPE_ORACLE)) {
+            executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DB_TYPE, SqlDatabaseType.ORACLE);
         }
-        if (dbMediator.getDataSourceProps().get(DRIVER_Q) != null && dbMediator.getDataSourceProps().get(DRIVER_Q).toLowerCase().contains(TXT_DATABASE_TYPE_MSSQL)) {
-            executeSetValueCommand(ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DB_TYPE, SqlDatabaseType.MSSQL);
+        if (dbMediator.getDataSourceProps().get(DRIVER_Q) != null && dbMediator.getDataSourceProps().get(DRIVER_Q)
+                .toLowerCase().contains(Constants.TXT_DATABASE_TYPE_MSSQL)) {
+            executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DB_TYPE, SqlDatabaseType.MSSQL);
         }
-        if (dbMediator.getDataSourceProps().get(DRIVER_Q) != null && dbMediator.getDataSourceProps().get(DRIVER_Q).toLowerCase().contains(TXT_DATABASE_TYPE_POSTGRESQL)) {
-            executeSetValueCommand(ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DB_TYPE, SqlDatabaseType.POSTGRESQL);
+        if (dbMediator.getDataSourceProps().get(DRIVER_Q) != null && dbMediator.getDataSourceProps().get(DRIVER_Q)
+                .toLowerCase().contains(Constants.TXT_DATABASE_TYPE_POSTGRESQL)) {
+            executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DB_TYPE, SqlDatabaseType.POSTGRESQL);
         }
 
         if (dbMediator.getDataSourceProps().get(DRIVER_Q) != null) {
-            executeSetValueCommand(ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_TYPE,
+            executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_TYPE,
                     SqlExecutorConnectionType.DB_CONNECTION);
             addDataSourceProperties(dbMediator, sqlExecutor);
         } else {
-            executeSetValueCommand(ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_TYPE,
+            executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_TYPE,
                     SqlExecutorConnectionType.DATA_SOURCE);
             if (dbMediator.getDataSourceProps().get(ICCLASS_Q) != null) {
-                executeSetValueCommand(ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DS_TYPE,
+                executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DS_TYPE,
                         SqlExecutorDatasourceType.EXTERNAL);
                 addDataSourceProperties(dbMediator, sqlExecutor);
             } else {
-                executeSetValueCommand(ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DS_TYPE,
+                executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DS_TYPE,
                         SqlExecutorDatasourceType.CARBON);
             }
         }
@@ -144,115 +148,115 @@ public abstract class AbstractDBMediatorDeserializer
             sqlStatements.add(sqlStatement);
         }
 
-        executeSetValueCommand(ABSTRACT_SQL_EXECUTOR_MEDIATOR__SQL_STATEMENTS, sqlStatements);
+        executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__SQL_STATEMENTS, sqlStatements);
     }
 
     private <T extends AbstractDBMediator> void addDataSourceProperties(T dbMediator,
             AbstractSqlExecutorMediator sqlExecutor) {
 
         if (dbMediator.getDataSourceProps().get("autocommit") == null) {
-            executeSetValueCommand(ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_AUTOCOMMIT,
+            executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_AUTOCOMMIT,
                     SqlExecutorBooleanValue.DEFAULT);
         } else if (SqlExecutorBooleanValue.FALSE.getLiteral()
                 .equals(dbMediator.getDataSourceProps().get("autocommit"))) {
-            executeSetValueCommand(ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_AUTOCOMMIT, SqlExecutorBooleanValue.FALSE);
+            executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_AUTOCOMMIT, SqlExecutorBooleanValue.FALSE);
         } else if (SqlExecutorBooleanValue.TRUE.getLiteral()
                 .equals(dbMediator.getDataSourceProps().get("autocommit"))) {
-            executeSetValueCommand(ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_AUTOCOMMIT, SqlExecutorBooleanValue.TRUE);
+            executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_AUTOCOMMIT, SqlExecutorBooleanValue.TRUE);
         }
 
         if (dbMediator.getDataSourceProps().get("isolation") == null) {
-            executeSetValueCommand(ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_ISOLATION,
+            executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_ISOLATION,
                     SqlExecutorIsolationLevel.DEFAULT);
         } else if (SqlExecutorIsolationLevel.TRANSACTION_NONE.getLiteral()
                 .equals(dbMediator.getDataSourceProps().get("isolation"))) {
-            executeSetValueCommand(ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_ISOLATION,
+            executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_ISOLATION,
                     SqlExecutorIsolationLevel.TRANSACTION_NONE);
         } else if (SqlExecutorIsolationLevel.TRANSACTION_READ_COMMITTED.getLiteral()
                 .equals(dbMediator.getDataSourceProps().get("isolation"))) {
-            executeSetValueCommand(ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_ISOLATION,
+            executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_ISOLATION,
                     SqlExecutorIsolationLevel.TRANSACTION_READ_COMMITTED);
         } else if (SqlExecutorIsolationLevel.TRANSACTION_READ_UNCOMMITTED.getLiteral()
                 .equals(dbMediator.getDataSourceProps().get("isolation"))) {
-            executeSetValueCommand(ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_ISOLATION,
+            executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_ISOLATION,
                     SqlExecutorIsolationLevel.TRANSACTION_READ_UNCOMMITTED);
         } else if (SqlExecutorIsolationLevel.TRANSACTION_READ_UNCOMMITTED.getLiteral()
                 .equals(dbMediator.getDataSourceProps().get("isolation"))) {
-            executeSetValueCommand(ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_ISOLATION,
+            executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_ISOLATION,
                     SqlExecutorIsolationLevel.TRANSACTION_READ_UNCOMMITTED);
         } else if (SqlExecutorIsolationLevel.TRANSACTION_REPEATABLE_READ.getLiteral()
                 .equals(dbMediator.getDataSourceProps().get("isolation"))) {
-            executeSetValueCommand(ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_ISOLATION,
+            executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_ISOLATION,
                     SqlExecutorIsolationLevel.TRANSACTION_REPEATABLE_READ);
         } else if (SqlExecutorIsolationLevel.TRANSACTION_SERIALIZABLE.getLiteral()
                 .equals(dbMediator.getDataSourceProps().get("isolation"))) {
-            executeSetValueCommand(ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_ISOLATION,
+            executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_ISOLATION,
                     SqlExecutorIsolationLevel.TRANSACTION_SERIALIZABLE);
         }
 
         if (dbMediator.getDataSourceProps().get("maxactive") != null) {
-            executeSetValueCommand(ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_MAXACTIVE,
+            executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_MAXACTIVE,
                     Integer.parseInt(dbMediator.getDataSourceProps().get("maxactive")));
         }
         if (dbMediator.getDataSourceProps().get("maxidle") != null) {
-            executeSetValueCommand(ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_MAXIDLE,
+            executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_MAXIDLE,
                     Integer.parseInt(dbMediator.getDataSourceProps().get("maxidle")));
         }
         if (dbMediator.getDataSourceProps().get("maxopenstatements") != null) {
-            executeSetValueCommand(ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_MAXOPENSTATEMENTS,
+            executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_MAXOPENSTATEMENTS,
                     Integer.parseInt(dbMediator.getDataSourceProps().get("maxopenstatements")));
         }
         if (dbMediator.getDataSourceProps().get("maxwait") != null) {
-            executeSetValueCommand(ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_MAXWAIT,
+            executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_MAXWAIT,
                     Integer.parseInt(dbMediator.getDataSourceProps().get("maxwait")));
         }
         if (dbMediator.getDataSourceProps().get("minidle") != null) {
-            executeSetValueCommand(ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_MINIDLE,
+            executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_MINIDLE,
                     Integer.parseInt(dbMediator.getDataSourceProps().get("minidle")));
         }
 
         if (dbMediator.getDataSourceProps().get("poolstatements") == null) {
-            executeSetValueCommand(ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_POOLSTATEMENTS,
+            executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_POOLSTATEMENTS,
                     SqlExecutorBooleanValue.DEFAULT);
         } else if (SqlExecutorBooleanValue.FALSE.getLiteral()
                 .equals(dbMediator.getDataSourceProps().get("poolstatements"))) {
-            executeSetValueCommand(ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_POOLSTATEMENTS,
+            executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_POOLSTATEMENTS,
                     SqlExecutorBooleanValue.FALSE);
         } else if (SqlExecutorBooleanValue.TRUE.getLiteral()
                 .equals(dbMediator.getDataSourceProps().get("poolstatements"))) {
-            executeSetValueCommand(ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_POOLSTATEMENTS,
+            executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_POOLSTATEMENTS,
                     SqlExecutorBooleanValue.TRUE);
         }
 
         if (dbMediator.getDataSourceProps().get("testonborrow") == null) {
-            executeSetValueCommand(ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_TESTONBORROW,
+            executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_TESTONBORROW,
                     SqlExecutorBooleanValue.DEFAULT);
         } else if (SqlExecutorBooleanValue.FALSE.getLiteral()
                 .equals(dbMediator.getDataSourceProps().get("testonborrow"))) {
-            executeSetValueCommand(ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_TESTONBORROW,
+            executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_TESTONBORROW,
                     SqlExecutorBooleanValue.FALSE);
         } else if (SqlExecutorBooleanValue.TRUE.getLiteral()
                 .equals(dbMediator.getDataSourceProps().get("testonborrow"))) {
-            executeSetValueCommand(ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_TESTONBORROW, SqlExecutorBooleanValue.TRUE);
+            executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_TESTONBORROW, SqlExecutorBooleanValue.TRUE);
         }
 
         if (dbMediator.getDataSourceProps().get("testwhileidle") == null) {
-            executeSetValueCommand(ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_TESTWHILEIDLE,
+            executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_TESTWHILEIDLE,
                     SqlExecutorBooleanValue.DEFAULT);
         } else if (SqlExecutorBooleanValue.FALSE.getLiteral()
                 .equals(dbMediator.getDataSourceProps().get("testwhileidle"))) {
-            executeSetValueCommand(ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_TESTWHILEIDLE,
+            executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_TESTWHILEIDLE,
                     SqlExecutorBooleanValue.FALSE);
         } else if (SqlExecutorBooleanValue.TRUE.getLiteral()
                 .equals(dbMediator.getDataSourceProps().get("testwhileidle"))) {
-            executeSetValueCommand(ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_TESTWHILEIDLE,
+            executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_TESTWHILEIDLE,
                     SqlExecutorBooleanValue.TRUE);
         }
 
-        executeSetValueCommand(ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_VALIDATIONQUERY,
+        executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_VALIDATIONQUERY,
                 dbMediator.getDataSourceProps().get("validationquery"));
         if (dbMediator.getDataSourceProps().get("initialsize") != null) {
-            executeSetValueCommand(ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_INITIALSIZE,
+            executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_INITIALSIZE,
                     Integer.parseInt(dbMediator.getDataSourceProps().get("initialsize")));
         }
 

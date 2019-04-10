@@ -1031,6 +1031,9 @@ public class ProjectOptionsDataPage extends WizardPage implements Observer {
 					modelPropertyValue = (Boolean) modelPropertyValueObj;
 				}
 				chkButton.setSelection(modelPropertyValue);
+                if (optionData.getDefaultValue() != null && !optionData.getDefaultValue().isEmpty()) {
+                    chkButton.setSelection(Boolean.parseBoolean(optionData.getDefaultValue()));
+                }
 			}
 		};
 		fieldControllers.put(optionData.getModelProperty(), fieldExecutor);

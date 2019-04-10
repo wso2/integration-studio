@@ -307,11 +307,12 @@ public class CallTemplateParameterPropertiesEditionPartImpl extends CompositePro
 			}
 			
 			@Override
-			public void keyReleased(KeyEvent e) {
-				if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CallTemplateParameterPropertiesEditionPartImpl.this, EsbViewsRepository.CallTemplateParameter.Properties.parameterValue, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, parameterValue.getText()));
-				}
-			}
+                        public void keyReleased(KeyEvent e) {
+                            propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                                    CallTemplateParameterPropertiesEditionPartImpl.this,
+                                    EsbViewsRepository.CallTemplateParameter.Properties.parameterValue,
+                                    PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, parameterValue.getText()));
+                        }
 
 		});
 		EditingUtils.setID(parameterValue, EsbViewsRepository.CallTemplateParameter.Properties.parameterValue);

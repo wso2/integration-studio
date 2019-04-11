@@ -396,13 +396,7 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_0jGSoCm-Eem3mqG1om_1aA" name="outboundPolicy" views="_b-vzECm-Eem3mqG1om_1aA">
           <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//AbstractEndPoint/outboundPolicy"/>
         </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_K_zUEFbAEemlmqQcA1xgMA" name="failoverRetryType" views="_iBshMFamEemEgeAY4NrYiw">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//AbstractEndPoint/failoverRetryType"/>
-        </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_K_zUEVbAEemlmqQcA1xgMA" name="failoverRetryErrorCodes" views="_rq9hgFamEemEgeAY4NrYiw">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//AbstractEndPoint/failoverRetryErrorCodes"/>
-        </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_K_zUElbAEemlmqQcA1xgMA" name="failoverNonRetryErrorCodes" views="_-H_dgFamEemEgeAY4NrYiw">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_owvf8Fw0EemiZdIEHfVl3g" name="failoverNonRetryErrorCodes" views="_dMf2IFwzEemiZdIEHfVl3g">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//AbstractEndPoint/failoverNonRetryErrorCodes"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//DefaultEndPoint"/>
@@ -744,13 +738,7 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7vUzPJnEei6boXzpRIfnA" name="HttpMethod" views="_E7wjM_JnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//HTTPEndpoint/HttpMethod"/>
         </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_4S6MkFa-EemlmqQcA1xgMA" name="failoverRetryType" views="_iBshMFamEemEgeAY4NrYiw">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//AbstractEndPoint/failoverRetryType"/>
-        </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_4S6MkVa-EemlmqQcA1xgMA" name="failoverRetryErrorCodes" views="_rq9hgFamEemEgeAY4NrYiw">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//AbstractEndPoint/failoverRetryErrorCodes"/>
-        </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_4S6Mkla-EemlmqQcA1xgMA" name="failoverNonRetryErrorCodes" views="_-H_dgFamEemEgeAY4NrYiw">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_gY98sFw0EemiZdIEHfVl3g" name="failoverNonRetryErrorCodes" views="_7DhlsFwyEemiZdIEHfVl3g">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//AbstractEndPoint/failoverNonRetryErrorCodes"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//HTTPEndpoint"/>
@@ -3858,13 +3846,7 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_H68P4C6HEemN9u0XgKlnRA" name="outboundPolicy" views="_32y20C6GEemN9u0XgKlnRA">
           <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//AbstractEndPoint/outboundPolicy"/>
         </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_agCu0FbAEemlmqQcA1xgMA" name="failoverRetryType" views="_iBshMFamEemEgeAY4NrYiw">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//AbstractEndPoint/failoverRetryType"/>
-        </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_agCu0VbAEemlmqQcA1xgMA" name="failoverRetryErrorCodes" views="_rq9hgFamEemEgeAY4NrYiw">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//AbstractEndPoint/failoverRetryErrorCodes"/>
-        </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_agCu0lbAEemlmqQcA1xgMA" name="failoverNonRetryErrorCodes" views="_-H_dgFamEemEgeAY4NrYiw">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_VNC20Fw0EemiZdIEHfVl3g" name="failoverNonRetryErrorCodes" views="_noqTAFwzEemiZdIEHfVl3g">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//AbstractEndPoint/failoverNonRetryErrorCodes"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//WSDLEndPoint"/>
@@ -6358,15 +6340,9 @@
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
           </elements>
         </elements>
-        <elements xsi:type="eef-views:Container" xmi:id="_-MhO0Fa_EemlmqQcA1xgMA" name="Failover Error Codes">
+        <elements xsi:type="eef-views:Container" xmi:id="_Z2VyoFwzEemiZdIEHfVl3g" name="Failover Error Codes">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_-MhO0Va_EemlmqQcA1xgMA" name="failoverType">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
-          </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_-MhO0la_EemlmqQcA1xgMA" name="failoverRetryErrorCodes">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
-          </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_-MhO01a_EemlmqQcA1xgMA" name="failoverNonRetryErrorCodes">
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_dMf2IFwzEemiZdIEHfVl3g" name="failoverNonRetryErrorCodes">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
         </elements>
@@ -6757,15 +6733,9 @@
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
           </elements>
         </elements>
-        <elements xsi:type="eef-views:Container" xmi:id="_ymxwMFa-EemlmqQcA1xgMA" name="Failover Error Codes">
+        <elements xsi:type="eef-views:Container" xmi:id="_eySksFwyEemiZdIEHfVl3g" name="Failover Error Codes">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_ymxwMVa-EemlmqQcA1xgMA" name="failoverType">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
-          </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_ymxwMla-EemlmqQcA1xgMA" name="failoverRetryErrorCodes">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
-          </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_ymxwM1a-EemlmqQcA1xgMA" name="failoverNonRetryErrorCodes">
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_7DhlsFwyEemiZdIEHfVl3g" name="failoverNonRetryErrorCodes">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
         </elements>
@@ -10271,15 +10241,9 @@
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
           </elements>
         </elements>
-        <elements xsi:type="eef-views:Container" xmi:id="_UAUSUFbAEemlmqQcA1xgMA" name="Failover Error Codes">
+        <elements xsi:type="eef-views:Container" xmi:id="_kW7cgFwzEemiZdIEHfVl3g" name="Failover Error Codes">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_UAUSUVbAEemlmqQcA1xgMA" name="failoverType">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
-          </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_UAUSUlbAEemlmqQcA1xgMA" name="failoverRetryErrorCodes">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
-          </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_UAUSU1bAEemlmqQcA1xgMA" name="failoverNonRetryErrorCodes">
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_noqTAFwzEemiZdIEHfVl3g" name="failoverNonRetryErrorCodes">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
         </elements>

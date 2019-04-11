@@ -731,6 +731,14 @@ public class EsbViewsRepository {
 	
 		}
 	
+		public static class FailoverErrorCodes {
+	
+			
+			public static String failoverNonRetryErrorCodes = "esb::DefaultEndPoint::Failover Error Codes::failoverNonRetryErrorCodes";
+			
+	
+		}
+	
 	}
 
 	/**
@@ -1220,6 +1228,14 @@ public class EsbViewsRepository {
 			
 			
 			public static String timeOutAction = "esb::HTTPEndpoint::timeout::timeOutAction";
+			
+	
+		}
+	
+		public static class FailoverErrorCodes {
+	
+			
+			public static String failoverNonRetryErrorCodes = "esb::HTTPEndpoint::Failover Error Codes::failoverNonRetryErrorCodes";
 			
 	
 		}
@@ -2190,7 +2206,7 @@ public class EsbViewsRepository {
 			// Start of user code for targetXPath ElementEditor key
 			public static String targetXPath = "esb::RuleMediator::target::targetXPath";
 			// End of user code
-		
+			
 	
 		}
 	
@@ -6699,6 +6715,14 @@ public class EsbViewsRepository {
 			
 			
 			public static String timeOutAction = "esb::WSDLEndPoint::timeout::timeOutAction";
+			
+	
+		}
+	
+		public static class FailoverErrorCodes {
+	
+			
+			public static String failoverNonRetryErrorCodes = "esb::WSDLEndPoint::Failover Error Codes::failoverNonRetryErrorCodes";
 			
 	
 		}

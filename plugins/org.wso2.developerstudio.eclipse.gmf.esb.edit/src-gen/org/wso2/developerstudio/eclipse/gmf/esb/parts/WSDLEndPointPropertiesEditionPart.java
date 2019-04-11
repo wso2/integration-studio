@@ -543,6 +543,20 @@ public interface WSDLEndPointPropertiesEditionPart {
 	public void setTimeOutAction(Enumerator newValue);
 
 
+	/**
+	 * @return the failoverNonRetryErrorCodes
+	 * 
+	 */
+	public String getFailoverNonRetryErrorCodes();
+
+	/**
+	 * Defines a new failoverNonRetryErrorCodes
+	 * @param newValue the new failoverNonRetryErrorCodes to set
+	 * 
+	 */
+	public void setFailoverNonRetryErrorCodes(String newValue);
+
+
 
 
 	// Start of user code for reliableMessagingPolicy specific getters and setters declaration

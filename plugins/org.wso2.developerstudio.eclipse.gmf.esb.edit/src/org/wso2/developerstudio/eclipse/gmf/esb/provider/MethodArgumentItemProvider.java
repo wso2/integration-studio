@@ -85,16 +85,19 @@ public class MethodArgumentItemProvider extends AbstractNameValueExpressionPrope
     @Override
     public String getText(Object object) {
         String propertyName = ((MethodArgument) object).getPropertyName();
-        String propertyNameLabel = WordUtils.abbreviate(propertyName.toString(), 18, 20, " ...");
+        String propertyNameLabel = WordUtils.abbreviate(propertyName, 18, 20, " ...");
         String propertyValueType = ((MethodArgument) object).getPropertyValueType().toString();
         String propertyValue = ((MethodArgument) object).getPropertyValue();
         String propertyExpression = ((MethodArgument) object).getPropertyExpression().toString();
 
         if (propertyValueType.equalsIgnoreCase(PropertyValueType.LITERAL.getName())) {
             return propertyName == null || propertyName.length() == 0 ? getString("_UI_MethodArgument_type")
-                    : EEFPropertyViewUtil.spaceFormat(getString("_UI_MethodArgument_type"))
-                            + EEFPropertyViewUtil.spaceFormat(propertyNameLabel)
-                            + EEFPropertyViewUtil.spaceFormat(propertyValue);
+                    : propertyValue != null
+                            ? EEFPropertyViewUtil.spaceFormat(getString("_UI_MethodArgument_type"))
+                                    + EEFPropertyViewUtil.spaceFormat(propertyNameLabel)
+                                    + EEFPropertyViewUtil.spaceFormat(propertyValue)
+                            : EEFPropertyViewUtil.spaceFormat(getString("_UI_MethodArgument_type"))
+                                    + EEFPropertyViewUtil.spaceFormat(propertyNameLabel);
         } else
             return propertyName == null || propertyName.length() == 0 ? getString("_UI_MethodArgument_type")
                     : EEFPropertyViewUtil.spaceFormat(getString("_UI_MethodArgument_type"))

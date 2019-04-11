@@ -30,6 +30,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
+import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.datamapper.servlets.Utils.DatamapperUtils;
 
 /**
@@ -42,14 +46,18 @@ public class RegistryReaderServlet extends HttpServlet {
 
     private static final String OPERATION_PROCESS = "process";
     private static final String OPERATION_GET_INPUT_SCHEMA = "getInputSchema";
+    private static final String DATAMAPPER_DIAGRAM_FILE_EXTENSION = "datamapper_diagram";
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        // Save schema changes
+        saveChanges();
 
         String payload = IOUtils.toString(request.getInputStream());
         String[] strArray = payload.split(" ");
-
         String operation = strArray[0];
+        
         // "process" operation will do the Datamaper mediation and return the results.
         if (operation.equals(OPERATION_PROCESS)) {
             response.setStatus(HttpServletResponse.SC_OK);
@@ -101,5 +109,30 @@ public class RegistryReaderServlet extends HttpServlet {
             String result = IOUtils.toString(inputSchema);
             response.getWriter().println(result);
         }
+        
     }
+
+    /**
+     * Saves schema changes to file in the datamapper editor
+     * 
+     */
+    private void saveChanges() {
+        Display.getDefault().syncExec(new Runnable() {
+            @Override
+            public void run() {
+                // Retrieves all unsaved editors
+                IEditorPart[] editors = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+                        .getDirtyEditors();
+
+                for (int i = 0; i < editors.length; i++) {
+                    // Check if the editor is a datamapper editor
+                    if (editors[i].getEditorInput().getName().contains(DATAMAPPER_DIAGRAM_FILE_EXTENSION)) {
+                        editors[i].doSave(new NullProgressMonitor());
+                        break;
+                    }
+                }
+            }
+        });
+    }
+        
 }

@@ -108,7 +108,7 @@ public class PublishEventMediatorAttributeItemProvider extends AbstractNameValue
     @Override
     public String getText(Object object) {
         String propertyName = ((PublishEventMediatorAttribute) object).getAttributeName();
-        String propertyNameLabel = WordUtils.abbreviate(propertyName.toString(), 8, 10, " ...");
+        String propertyNameLabel = WordUtils.abbreviate(propertyName, 8, 10, " ...");
         String propertyValueType = ((PublishEventMediatorAttribute) object).getAttributeValueType().toString();
         String propertyValue = ((PublishEventMediatorAttribute) object).getAttributeValue();
         String propertyExpression = ((PublishEventMediatorAttribute) object).getAttributeExpression().toString();
@@ -117,9 +117,12 @@ public class PublishEventMediatorAttributeItemProvider extends AbstractNameValue
         if (propertyValueType.equalsIgnoreCase(AttributeValueType.VALUE.getName())) {
             return propertyName == null || propertyName.length() == 0
                     ? getString("_UI_PublishEventMediatorAttribute_type")
-                    : EEFPropertyViewUtil.spaceFormat(getString("_UI_PublishEventMediatorAttribute_type")) + labelSpace
-                            + EEFPropertyViewUtil.spaceFormat(propertyNameLabel) + labelSpace
-                            + EEFPropertyViewUtil.spaceFormat(propertyValue);
+                    : propertyValue != null
+                            ? EEFPropertyViewUtil.spaceFormat(getString("_UI_PublishEventMediatorAttribute_type"))
+                                    + labelSpace + EEFPropertyViewUtil.spaceFormat(propertyNameLabel) + labelSpace
+                                    + EEFPropertyViewUtil.spaceFormat(propertyValue)
+                            : EEFPropertyViewUtil.spaceFormat(getString("_UI_PublishEventMediatorAttribute_type"))
+                                    + labelSpace + EEFPropertyViewUtil.spaceFormat(propertyNameLabel) + labelSpace;
         } else
             return propertyName == null || propertyName.length() == 0
                     ? getString("_UI_PublishEventMediatorAttribute_type")

@@ -40,6 +40,9 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#isTraceEnabled <em>Trace Enabled</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getInboundPolicy <em>Inbound Policy</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getOutboundPolicy <em>Outbound Policy</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getFailoverRetryType <em>Failover Retry Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getFailoverRetryErrorCodes <em>Failover Retry Error Codes</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getFailoverNonRetryErrorCodes <em>Failover Non Retry Error Codes</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractEndPoint()
@@ -658,5 +661,88 @@ public interface AbstractEndPoint extends EndPoint {
      * @generated
      */
     void setOutboundPolicy(RegistryKeyProperty value);
+
+    /**
+     * Returns the value of the '<em><b>Failover Retry Type</b></em>' attribute.
+     * The default value is <code>"NON_RETRY_ERROR_CODES"</code>.
+     * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.EndPointFailoverRetryType}.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Failover Retry Type</em>' attribute isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Failover Retry Type</em>' attribute.
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.EndPointFailoverRetryType
+     * @see #setFailoverRetryType(EndPointFailoverRetryType)
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractEndPoint_FailoverRetryType()
+     * @model default="NON_RETRY_ERROR_CODES"
+     * @generated
+     */
+    EndPointFailoverRetryType getFailoverRetryType();
+
+    /**
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getFailoverRetryType <em>Failover Retry Type</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Failover Retry Type</em>' attribute.
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.EndPointFailoverRetryType
+     * @see #getFailoverRetryType()
+     * @generated
+     */
+    void setFailoverRetryType(EndPointFailoverRetryType value);
+
+    /**
+     * Returns the value of the '<em><b>Failover Retry Error Codes</b></em>' attribute.
+     * The default value is <code>""</code>.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Failover Retry Error Codes</em>' attribute isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Failover Retry Error Codes</em>' attribute.
+     * @see #setFailoverRetryErrorCodes(String)
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractEndPoint_FailoverRetryErrorCodes()
+     * @model default=""
+     * @generated
+     */
+    String getFailoverRetryErrorCodes();
+
+    /**
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getFailoverRetryErrorCodes <em>Failover Retry Error Codes</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Failover Retry Error Codes</em>' attribute.
+     * @see #getFailoverRetryErrorCodes()
+     * @generated
+     */
+    void setFailoverRetryErrorCodes(String value);
+
+    /**
+     * Returns the value of the '<em><b>Failover Non Retry Error Codes</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Failover Non Retry Error Codes</em>' attribute isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Failover Non Retry Error Codes</em>' attribute.
+     * @see #setFailoverNonRetryErrorCodes(String)
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractEndPoint_FailoverNonRetryErrorCodes()
+     * @model
+     * @generated
+     */
+    String getFailoverNonRetryErrorCodes();
+
+    /**
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getFailoverNonRetryErrorCodes <em>Failover Non Retry Error Codes</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Failover Non Retry Error Codes</em>' attribute.
+     * @see #getFailoverNonRetryErrorCodes()
+     * @generated
+     */
+    void setFailoverNonRetryErrorCodes(String value);
 
 } // AbstractEndPoint

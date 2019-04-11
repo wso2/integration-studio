@@ -9,6 +9,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb.provider;
 import java.util.Collection;
 import java.util.List;
 
+import org.apache.commons.lang.WordUtils;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
@@ -27,6 +28,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.ProxyServiceParameter;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 
 /**
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.ProxyServiceParameter} object.
@@ -122,14 +124,17 @@ public class ProxyServiceParameterItemProvider extends ItemProviderAdapter imple
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
+     * @generated NOT
      */
     @Override
     public String getText(Object object) {
-        String label = ((ProxyServiceParameter)object).getName();
-        return label == null || label.length() == 0 ?
-            getString("_UI_ProxyServiceParameter_type") :
-            getString("_UI_ProxyServiceParameter_type") + " " + label;
+        String propertyName = ((ProxyServiceParameter) object).getName();
+        String propertyNameLabel = WordUtils.abbreviate(propertyName.toString(), 8, 10, " ...");
+        String propertyValue = ((ProxyServiceParameter) object).getValue();
+        return propertyName == null || propertyName.length() == 0 ? getString("_UI_ProxyServiceParameter_type")
+                : EEFPropertyViewUtil.spaceFormat(getString("_UI_ProxyServiceParameter_type")) + "\t"
+                        + EEFPropertyViewUtil.spaceFormat(propertyNameLabel)
+                        + EEFPropertyViewUtil.spaceFormat(propertyValue);
     }
 
     /**

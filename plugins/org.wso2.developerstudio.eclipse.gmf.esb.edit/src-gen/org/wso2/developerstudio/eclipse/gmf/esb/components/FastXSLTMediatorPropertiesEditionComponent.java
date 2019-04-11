@@ -297,9 +297,6 @@ public class FastXSLTMediatorPropertiesEditionComponent extends SinglePartProper
      * 
      */
     public String getHelpContent(Object key, int kind) {
-//        if (key == EsbViewsRepository.FastXSLTMediator.Basic.fastXsltStaticSchemaKey)
-//            return ""; //$NON-NLS-1$
-//        return super.getHelpContent(key, kind);
         return EEFPropertyViewUtil.getHelpContent(key);
     }
 

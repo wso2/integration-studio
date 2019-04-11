@@ -69,6 +69,7 @@ import org.eclipse.swt.layout.GridLayout;
 
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Text;
 
 import org.eclipse.ui.forms.widgets.Form;
@@ -127,7 +128,14 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
 	protected Text timeOutDuration;
 	protected EMFComboViewer timeOutAction;
 	
+
+	
+	
 	// Start of user code for
+	protected Text failoverNonRetryErrorCodes;
+	protected Composite failoverErrorCodesGroup;
+	protected Control[] failoverNonRetryErrorCodesElements;
+	
 	protected Section propertiesSection;
 	protected Composite filterAdvancedSubPropertiesGroup;
 	// End of user code
@@ -214,6 +222,10 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
 		CompositionStep timeoutStep = hTTPEndpointStep.addStep(EsbViewsRepository.HTTPEndpoint.Timeout.class);
 		timeoutStep.addStep(EsbViewsRepository.HTTPEndpoint.Timeout.timeOutDuration);
 		timeoutStep.addStep(EsbViewsRepository.HTTPEndpoint.Timeout.timeOutAction);
+		
+		CompositionStep failoverStep = hTTPEndpointStep.addStep(EsbViewsRepository.HTTPEndpoint.FailoverErrorCodes.class);
+        failoverStep.addStep(EsbViewsRepository.HTTPEndpoint.FailoverErrorCodes.failoverNonRetryErrorCodes);
+
 		
         hTTPEndpointStep.addStep(EsbViewsRepository.HTTPEndpoint.EndpointDescription.class)
                 .addStep(EsbViewsRepository.HTTPEndpoint.EndpointDescription.description);
@@ -331,6 +343,12 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
 				if (key == EsbViewsRepository.HTTPEndpoint.Timeout.timeOutAction) {
 					return createTimeOutActionEMFComboViewer(widgetFactory, parent);
 				}
+				if (key == EsbViewsRepository.HTTPEndpoint.FailoverErrorCodes.class) {
+                    return createFailoverErrorCodesGroup(widgetFactory, filterAdvancedSubPropertiesGroup);
+                }
+				if (key == EsbViewsRepository.HTTPEndpoint.FailoverErrorCodes.failoverNonRetryErrorCodes) {
+                    return createFailoverNonRetryErrorCodesText(widgetFactory, parent);
+                }
 				// End of user code
 				return parent;
 			}
@@ -1799,6 +1817,90 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
 
 
 	/**
+   * 
+   */
+  protected Composite createFailoverErrorCodesGroup(FormToolkit widgetFactory, final Composite parent) {
+    Section failoverErrorCodesSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
+    failoverErrorCodesSection.setText(EsbMessages.HTTPEndpointPropertiesEditionPart_FailoverErrorCodesGroupLabel);
+    GridData failoverErrorCodesSectionData = new GridData(GridData.FILL_HORIZONTAL);
+    failoverErrorCodesSectionData.horizontalSpan = 3;
+    failoverErrorCodesSection.setLayoutData(failoverErrorCodesSectionData);
+    failoverErrorCodesGroup = widgetFactory.createComposite(failoverErrorCodesSection);
+    GridLayout failoverErrorCodesGroupLayout = new GridLayout();
+    failoverErrorCodesGroupLayout.numColumns = 3;
+    failoverErrorCodesGroup.setLayout(failoverErrorCodesGroupLayout);
+    failoverErrorCodesSection.setClient(failoverErrorCodesGroup);
+    return failoverErrorCodesGroup;
+  }
+
+  protected Composite createFailoverNonRetryErrorCodesText(FormToolkit widgetFactory, Composite parent) {
+	Control failoverNonRetryErrorCodesLabel = createDescription(parent, EsbViewsRepository.HTTPEndpoint.FailoverErrorCodes.failoverNonRetryErrorCodes, EsbMessages.HTTPEndpointPropertiesEditionPart_FailoverNonRetryErrorCodesLabel);
+    failoverNonRetryErrorCodes = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+    failoverNonRetryErrorCodes.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+    widgetFactory.paintBordersFor(parent);
+    GridData failoverNonRetryErrorCodesData = new GridData(GridData.FILL_HORIZONTAL);
+    failoverNonRetryErrorCodes.setLayoutData(failoverNonRetryErrorCodesData);
+    failoverNonRetryErrorCodes.addFocusListener(new FocusAdapter() {
+      /**
+       * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+       * 
+       */
+      @Override
+      @SuppressWarnings("synthetic-access")
+      public void focusLost(FocusEvent e) {
+        if (propertiesEditionComponent != null) {
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+              HTTPEndpointPropertiesEditionPartForm.this,
+              EsbViewsRepository.HTTPEndpoint.FailoverErrorCodes.failoverNonRetryErrorCodes,
+              PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, failoverNonRetryErrorCodes.getText()));
+          propertiesEditionComponent
+              .firePropertiesChanged(new PropertiesEditionEvent(
+                  HTTPEndpointPropertiesEditionPartForm.this,
+                  EsbViewsRepository.HTTPEndpoint.FailoverErrorCodes.failoverNonRetryErrorCodes,
+                  PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
+                  null, failoverNonRetryErrorCodes.getText()));
+        }
+      }
+
+      /**
+       * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+       */
+      @Override
+      public void focusGained(FocusEvent e) {
+        if (propertiesEditionComponent != null) {
+          propertiesEditionComponent
+              .firePropertiesChanged(new PropertiesEditionEvent(
+                  HTTPEndpointPropertiesEditionPartForm.this,
+                  null,
+                  PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_GAINED,
+                  null, null));
+        }
+      }
+    });
+    failoverNonRetryErrorCodes.addKeyListener(new KeyAdapter() {
+      /**
+       * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+       * 
+       */
+      @Override
+      @SuppressWarnings("synthetic-access")
+      public void keyPressed(KeyEvent e) {
+        if (e.character == SWT.CR) {
+          if (propertiesEditionComponent != null)
+            propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartForm.this, EsbViewsRepository.HTTPEndpoint.FailoverErrorCodes.failoverNonRetryErrorCodes, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, failoverNonRetryErrorCodes.getText()));
+        }
+      }
+    });
+    EditingUtils.setID(failoverNonRetryErrorCodes, EsbViewsRepository.HTTPEndpoint.FailoverErrorCodes.failoverNonRetryErrorCodes);
+    EditingUtils.setEEFtype(failoverNonRetryErrorCodes, "eef::Text"); //$NON-NLS-1$
+    Control failoverNonRetryErrorCodesHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.HTTPEndpoint.FailoverErrorCodes.failoverNonRetryErrorCodes, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+    // Start of user code for createFailoverNonRetryErrorCodesText
+    failoverNonRetryErrorCodesElements = new Control[] { failoverNonRetryErrorCodesLabel, failoverNonRetryErrorCodes, failoverNonRetryErrorCodesHelp };
+    // End of user code
+    return parent;
+  }
+
+  /**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
@@ -2906,6 +3008,38 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
 
 
 	/**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.HTTPEndpointPropertiesEditionPart#getFailoverNonRetryErrorCodes()
+   * 
+   */
+  public String getFailoverNonRetryErrorCodes() {
+    return failoverNonRetryErrorCodes.getText();
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.HTTPEndpointPropertiesEditionPart#setFailoverNonRetryErrorCodes(String newValue)
+   * 
+   */
+  public void setFailoverNonRetryErrorCodes(String newValue) {
+    if (newValue != null) {
+      failoverNonRetryErrorCodes.setText(newValue);
+    } else {
+      failoverNonRetryErrorCodes.setText(""); //$NON-NLS-1$
+    }
+    boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.HTTPEndpoint.FailoverErrorCodes.failoverNonRetryErrorCodes);
+    if (eefElementEditorReadOnlyState && failoverNonRetryErrorCodes.isEnabled()) {
+      failoverNonRetryErrorCodes.setEnabled(false);
+      failoverNonRetryErrorCodes.setToolTipText(EsbMessages.HTTPEndpoint_ReadOnly);
+    } else if (!eefElementEditorReadOnlyState && !failoverNonRetryErrorCodes.isEnabled()) {
+      failoverNonRetryErrorCodes.setEnabled(true);
+    }	
+    
+  }
+
+  /**
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()

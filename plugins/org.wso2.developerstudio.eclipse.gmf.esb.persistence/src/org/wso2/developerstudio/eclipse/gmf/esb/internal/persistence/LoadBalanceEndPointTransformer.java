@@ -132,10 +132,11 @@ public class LoadBalanceEndPointTransformer extends AbstractEndpointTransformer 
     public LoadbalanceEndpoint create(TransformationInfo info, LoadBalanceEndPoint visualEndPoint, String name,
             List<Endpoint> endPoints) throws TransformerException {
 
-        if (StringUtils.isEmpty(visualEndPoint.getName())) {
+        if (StringUtils.isEmpty(visualEndPoint.getName()) && StringUtils.isEmpty(visualEndPoint.getEndPointName())) {
             throw new TransformerException(
                     "Load-BalanceEndPoint should be configured. Double click on endpoint to configure.");
         }
+
         IEditorPart editorPart = null;
         IProject activeProject = null;
         List<Endpoint> endPointsList = new ArrayList<Endpoint>();
@@ -154,8 +155,10 @@ public class LoadBalanceEndPointTransformer extends AbstractEndpointTransformer 
             }
         }
         synapseLBEP.setBuildMessageAtt(visualEndPoint.isBuildMessage());
-        if (StringUtils.isNotBlank(name)) {
+        if (StringUtils.isNotBlank(name) && !name.equals("{ep.name}")) {
             synapseLBEP.setName(name);
+        } else {
+            synapseLBEP.setName(getSynapseEndpointName(visualEndPoint));
         }
 
         /*
@@ -240,16 +243,18 @@ public class LoadBalanceEndPointTransformer extends AbstractEndpointTransformer 
                     }
                 }
 
-                String endpointName = (String) visualEndPoint.getName();
+                String endpointName = getSynapseEndpointName(visualEndPoint);
                 IPath location = new Path("src/main/synapse-config/complex-endpoints" + "/" + endpointName + ".xml");
                 IFile file = activeProject.getFile(location);
 
-                final String source = FileUtils.getContentAsString(file.getContents());
+                if (file.exists()) {
+                    final String source = FileUtils.getContentAsString(file.getContents());
+                    OMElement element = AXIOMUtil.stringToOM(source);
+                }
 
-                OMElement element = AXIOMUtil.stringToOM(source);
                 Properties properties = new Properties();
                 properties.put(WSDLEndpointFactory.SKIP_WSDL_PARSING, "true");
-                synapseLBEP = (LoadbalanceEndpoint) EndpointFactory.getEndpointFromElement(element, false, properties);
+//                synapseLBEP = (LoadbalanceEndpoint) EndpointFactory.getEndpointFromElement(element, false, properties);
 
             }
 
@@ -284,4 +289,13 @@ public class LoadBalanceEndPointTransformer extends AbstractEndpointTransformer 
         return synapseLBEP;
     }
 
+    private String getSynapseEndpointName(LoadBalanceEndPoint visualEndPoint) {
+        if (StringUtils.isNotBlank(visualEndPoint.getName()) && !visualEndPoint.getName().equals("{ep.name}")) {
+            return visualEndPoint.getName();
+        } else if (StringUtils.isNotBlank(visualEndPoint.getEndPointName()) && !visualEndPoint.getEndPointName().equals("{ep.name}")) {
+            return visualEndPoint.getEndPointName();
+        } else {
+            return "{ep.name}";
+        }
+    }
 }

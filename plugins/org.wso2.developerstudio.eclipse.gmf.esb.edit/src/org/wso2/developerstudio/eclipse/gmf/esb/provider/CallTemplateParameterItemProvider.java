@@ -9,6 +9,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb.provider;
 import java.util.Collection;
 import java.util.List;
 
+import org.apache.commons.lang.WordUtils;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
@@ -27,6 +28,9 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateParameter;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType;
+import org.wso2.developerstudio.eclipse.gmf.esb.RuleOptionType;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 
 /**
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateParameter} object.
@@ -174,14 +178,36 @@ public class CallTemplateParameterItemProvider extends EsbNodeItemProvider {
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
+     * @generated NOT
      */
     @Override
     public String getText(Object object) {
-        String label = ((CallTemplateParameter)object).getParameterName();
-        return label == null || label.length() == 0 ?
-            getString("_UI_CallTemplateParameter_type") :
-            getString("_UI_CallTemplateParameter_type") + " " + label;
+        String parameterName = ((CallTemplateParameter) object).getParameterName();
+        String parameterNameLabel = WordUtils.abbreviate(parameterName, 8, 10, " ...");
+        String parameterType = ((CallTemplateParameter) object).getTemplateParameterType().toString();
+        String parameterValue = ((CallTemplateParameter) object).getParameterValue();
+        String parameterExpression = ((CallTemplateParameter) object).getParameterExpression().toString();
+        String labelSpace = "\t\t";
+
+        if (parameterType.equalsIgnoreCase(RuleOptionType.VALUE.getName())) {
+            if (parameterValue != null) {
+                return parameterName == null || parameterName.length() == 0
+                        ? getString("_UI_CallTemplateParameter_type")
+                        : EEFPropertyViewUtil.spaceFormat(getString("_UI_CallTemplateParameter_type")) + labelSpace
+                                + EEFPropertyViewUtil.spaceFormat(parameterNameLabel) + labelSpace
+                                + EEFPropertyViewUtil.spaceFormat(parameterValue);
+            } else {
+                return parameterName == null || parameterName.length() == 0
+                        ? getString("_UI_CallTemplateParameter_type")
+                        : EEFPropertyViewUtil.spaceFormat(getString("_UI_CallTemplateParameter_type")) + labelSpace
+                                + EEFPropertyViewUtil.spaceFormat(parameterNameLabel);
+            }
+        } else {
+            return parameterName == null || parameterName.length() == 0 ? getString("_UI_CallTemplateParameter_type")
+                    : EEFPropertyViewUtil.spaceFormat(getString("_UI_CallTemplateParameter_type")) + labelSpace
+                            + EEFPropertyViewUtil.spaceFormat(parameterNameLabel) + labelSpace
+                            + EEFPropertyViewUtil.spaceFormat(parameterExpression);
+        }
     }
 
     /**

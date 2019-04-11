@@ -224,13 +224,14 @@ public class RecipientListEndPointTransformer extends AbstractEndpointTransforme
                             "src/main/synapse-config/complex-endpoints" + "/" + endpointName + ".xml");
                     IFile file = activeProject.getFile(location);
 
-                    final String source = FileUtils.getContentAsString(file.getContents());
-
-                    OMElement element = AXIOMUtil.stringToOM(source);
+                    if (file.exists()) {
+                        final String source = FileUtils.getContentAsString(file.getContents());
+                        OMElement element = AXIOMUtil.stringToOM(source);
+                    }
                     Properties properties = new Properties();
                     properties.put(WSDLEndpointFactory.SKIP_WSDL_PARSING, "true");
-                    recipientList = (RecipientListEndpoint) EndpointFactory.getEndpointFromElement(element, false,
-                            properties);
+//                    recipientList = (RecipientListEndpoint) EndpointFactory.getEndpointFromElement(element, false,
+//                            properties);
 
                 }
             } catch (Exception e) {

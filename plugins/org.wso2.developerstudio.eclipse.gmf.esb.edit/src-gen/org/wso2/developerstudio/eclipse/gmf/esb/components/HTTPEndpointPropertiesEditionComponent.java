@@ -211,7 +211,12 @@ public class HTTPEndpointPropertiesEditionComponent extends SinglePartProperties
 			}
 			// init filters
 			
-			
+			// Start of user code for failover retry error codes
+			if (isAccessible(EsbViewsRepository.HTTPEndpoint.FailoverErrorCodes.failoverNonRetryErrorCodes)) {
+				basePart.setFailoverNonRetryErrorCodes(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING,
+						hTTPEndpoint.getFailoverNonRetryErrorCodes()));
+			}
+			// End of user code
 			
 			
 			
@@ -398,6 +403,11 @@ public class HTTPEndpointPropertiesEditionComponent extends SinglePartProperties
 		if (editorKey == EsbViewsRepository.HTTPEndpoint.Basic.httpMethod) {
 			return EsbPackage.eINSTANCE.getHTTPEndpoint_HttpMethod();
 		}
+		// Start of user code for failover error codes
+		if (editorKey == EsbViewsRepository.HTTPEndpoint.FailoverErrorCodes.failoverNonRetryErrorCodes) {
+			return EsbPackage.eINSTANCE.getAbstractEndPoint_FailoverNonRetryErrorCodes();
+		}
+		// End of user code
 		return super.associatedFeature(editorKey);
 	}
 
@@ -542,6 +552,13 @@ public class HTTPEndpointPropertiesEditionComponent extends SinglePartProperties
 		if (EsbViewsRepository.HTTPEndpoint.Basic.httpMethod == event.getAffectedEditor()) {
 			hTTPEndpoint.setHttpMethod((HttpMethodType)event.getNewValue());
 		}
+		// Start of user code for failover error codes
+		if (EsbViewsRepository.HTTPEndpoint.FailoverErrorCodes.failoverNonRetryErrorCodes == event
+		        .getAffectedEditor()) {
+			hTTPEndpoint.setFailoverNonRetryErrorCodes((java.lang.String) EEFConverterUtil
+			        .createFromString(EcorePackage.Literals.ESTRING, (String) event.getNewValue()));
+		}
+		// End of user code
 	}
 
 	/**
@@ -690,7 +707,18 @@ public class HTTPEndpointPropertiesEditionComponent extends SinglePartProperties
 			if (EsbPackage.eINSTANCE.getHTTPEndpoint_HttpMethod().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EsbViewsRepository.HTTPEndpoint.Basic.httpMethod))
 				basePart.setHttpMethod((HttpMethodType)msg.getNewValue());
 			
-			
+			// Start of user code for failover error codes
+			if (EsbPackage.eINSTANCE.getAbstractEndPoint_FailoverNonRetryErrorCodes().equals(msg.getFeature())
+			        && msg.getNotifier().equals(semanticObject) && basePart != null
+			        && isAccessible(EsbViewsRepository.HTTPEndpoint.FailoverErrorCodes.failoverNonRetryErrorCodes)) {
+				if (msg.getNewValue() != null) {
+					basePart.setFailoverNonRetryErrorCodes(
+					        EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
+				} else {
+					basePart.setFailoverNonRetryErrorCodes("");
+				}
+			}
+			// End of user code
 		}
 	}
 
@@ -730,7 +758,8 @@ public class HTTPEndpointPropertiesEditionComponent extends SinglePartProperties
 			EsbPackage.eINSTANCE.getAbstractEndPoint_StatisticsEnabled(),
 			EsbPackage.eINSTANCE.getAbstractEndPoint_TraceEnabled(),
 			EsbPackage.eINSTANCE.getHTTPEndpoint_URITemplate(),
-			EsbPackage.eINSTANCE.getHTTPEndpoint_HttpMethod()		);
+			EsbPackage.eINSTANCE.getHTTPEndpoint_HttpMethod(),
+			EsbPackage.eINSTANCE.getAbstractEndPoint_FailoverNonRetryErrorCodes());
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -934,6 +963,15 @@ public class HTTPEndpointPropertiesEditionComponent extends SinglePartProperties
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getHTTPEndpoint_HttpMethod().getEAttributeType(), newValue);
 				}
+				// Start of user code for failover error codes
+				if (EsbViewsRepository.HTTPEndpoint.FailoverErrorCodes.failoverNonRetryErrorCodes == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getAbstractEndPoint_FailoverNonRetryErrorCodes().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getAbstractEndPoint_FailoverNonRetryErrorCodes().getEAttributeType(), newValue);
+				}
+				// End of user code
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);
 			} catch (WrappedException we) {

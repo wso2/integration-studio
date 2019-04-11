@@ -535,6 +535,20 @@ public interface HTTPEndpointPropertiesEditionPart {
 	public void setTimeOutAction(Enumerator newValue);
 
 
+	/**
+	 * @return the failoverNonRetryErrorCodes
+	 * 
+	 */
+	public String getFailoverNonRetryErrorCodes();
+
+	/**
+	 * Defines a new failoverNonRetryErrorCodes
+	 * @param newValue the new failoverNonRetryErrorCodes to set
+	 * 
+	 */
+	public void setFailoverNonRetryErrorCodes(String newValue);
+
+
 
 
 

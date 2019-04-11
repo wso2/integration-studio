@@ -215,16 +215,19 @@ public class XQueryVariableItemProvider extends ItemProviderAdapter implements I
     @Override
     public String getText(Object object) {
         String propertyName = ((XQueryVariable) object).getVariableName();
-        String propertyNameLabel = WordUtils.abbreviate(propertyName.toString(), 8, 10, " ...");
+        String propertyNameLabel = WordUtils.abbreviate(propertyName, 8, 10, " ...");
         String valueType = ((XQueryVariable) object).getValueType().toString();
         String valueLiteral = ((XQueryVariable) object).getValueLiteral();
         String valueExpresiion = ((XQueryVariable) object).getValueExpression().toString();
 
         if (valueType.equalsIgnoreCase(PropertyValueType.LITERAL.getName())) {
             return propertyName == null || propertyName.length() == 0 ? getString("_UI_XQueryVariable_type")
-                    : EEFPropertyViewUtil.spaceFormat(getString("_UI_XQueryVariable_type"))
-                            + EEFPropertyViewUtil.spaceFormat(propertyNameLabel)
-                            + EEFPropertyViewUtil.spaceFormat(valueLiteral);
+                    : valueLiteral != null
+                            ? EEFPropertyViewUtil.spaceFormat(getString("_UI_XQueryVariable_type"))
+                                    + EEFPropertyViewUtil.spaceFormat(propertyNameLabel)
+                                    + EEFPropertyViewUtil.spaceFormat(valueLiteral)
+                            : EEFPropertyViewUtil.spaceFormat(getString("_UI_XQueryVariable_type"))
+                                    + EEFPropertyViewUtil.spaceFormat(propertyNameLabel);
         } else
             return propertyName == null || propertyName.length() == 0 ? getString("_UI_XQueryVariable_type")
                     : EEFPropertyViewUtil.spaceFormat(getString("_UI_XQueryVariable_type"))

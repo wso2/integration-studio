@@ -112,7 +112,7 @@ public abstract class AbstractComplexEndPointDeserializer
             OMElement configOM = EndpointSerializer.getElementFromEndpoint(endpoint);
 
             try {
-                IFolder iFolder = currentProject.getFolder(SYNAPSE_CONFIG_DIR + "/complex-endpoints/");
+                IFolder iFolder = currentProject.getFolder(SYNAPSE_CONFIG_DIR + "/endpoints/");
                 if (!iFolder.exists()) {
                     iFolder.create(IResource.NONE, true, null);
                 }

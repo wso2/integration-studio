@@ -221,7 +221,7 @@ public class RecipientListEndPointTransformer extends AbstractEndpointTransforme
 
                     String endpointName = (String) model.getName();
                     IPath location = new Path(
-                            "src/main/synapse-config/complex-endpoints" + "/" + endpointName + ".xml");
+                            "src/main/synapse-config/endpoints" + "/" + endpointName + ".xml");
                     IFile file = activeProject.getFile(location);
 
                     if (file.exists()) {

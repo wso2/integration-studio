@@ -244,7 +244,7 @@ public class LoadBalanceEndPointTransformer extends AbstractEndpointTransformer 
                 }
 
                 String endpointName = getSynapseEndpointName(visualEndPoint);
-                IPath location = new Path("src/main/synapse-config/complex-endpoints" + "/" + endpointName + ".xml");
+                IPath location = new Path("src/main/synapse-config/endpoints" + "/" + endpointName + ".xml");
                 IFile file = activeProject.getFile(location);
 
                 if (file.exists()) {

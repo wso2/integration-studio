@@ -179,7 +179,7 @@ public class FailoverEndPointTransformer extends AbstractEndpointTransformer {
                 String endpointName = getSynapseEndpointName(visualEndPoint);
                 if (!StringUtils.isEmpty(endpointName)) {
                     IPath location = new Path(
-                            "src/main/synapse-config/complex-endpoints" + "/" + endpointName + ".xml");
+                            "src/main/synapse-config/endpoints" + "/" + endpointName + ".xml");
                     IFile file = activeProject.getFile(location);
                     if (file.exists()) {
                         final String source = FileUtils.getContentAsString(file.getContents());

@@ -240,8 +240,7 @@ public abstract class AbstractWSO2ProjectCreationWizard extends Wizard implement
 		String name = getModel().getProjectName();
 		File location = getModel().getLocation();
 		String rootWorkspaceLocation =
-		                               ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString() +
-		                                       File.separator + name;
+		                               ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString();
 
 		if (rootWorkspaceLocation.equals(location.getPath())) {
 			project = createProjectInDefaultWorkspace(name);

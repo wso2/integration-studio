@@ -138,6 +138,7 @@ public class WSDLEndPointPropertiesEditionPartImpl extends CompositePropertiesEd
 	protected Button addressingSeparateListener;
 	protected Text timeOutDuration;
 	protected EMFComboViewer timeOutAction;
+	protected Text failoverNonRetryErrorCodes;
 
 
 
@@ -222,6 +223,10 @@ public class WSDLEndPointPropertiesEditionPartImpl extends CompositePropertiesEd
 		CompositionStep timeoutStep = wSDLEndPointStep.addStep(EsbViewsRepository.WSDLEndPoint.Timeout.class);
 		timeoutStep.addStep(EsbViewsRepository.WSDLEndPoint.Timeout.timeOutDuration);
 		timeoutStep.addStep(EsbViewsRepository.WSDLEndPoint.Timeout.timeOutAction);
+		
+		wSDLEndPointStep
+			.addStep(EsbViewsRepository.WSDLEndPoint.FailoverErrorCodes.class)
+			.addStep(EsbViewsRepository.WSDLEndPoint.FailoverErrorCodes.failoverNonRetryErrorCodes);
 		
 		
 		composer = new PartComposer(wSDLEndPointStep) {
@@ -350,6 +355,12 @@ public class WSDLEndPointPropertiesEditionPartImpl extends CompositePropertiesEd
 				}
 				if (key == EsbViewsRepository.WSDLEndPoint.Timeout.timeOutAction) {
 					return createTimeOutActionEMFComboViewer(parent);
+				}
+				if (key == EsbViewsRepository.WSDLEndPoint.FailoverErrorCodes.class) {
+					return createFailoverErrorCodesGroup(parent);
+				}
+				if (key == EsbViewsRepository.WSDLEndPoint.FailoverErrorCodes.failoverNonRetryErrorCodes) {
+					return createFailoverNonRetryErrorCodesText(parent);
 				}
 				return parent;
 			}
@@ -653,7 +664,7 @@ public class WSDLEndPointPropertiesEditionPartImpl extends CompositePropertiesEd
 	
 	protected Composite createFormatEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.WSDLEndPoint.Basic.format, EsbMessages.WSDLEndPointPropertiesEditionPart_FormatLabel);
-		format = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		format = new EMFComboViewer(parent);
 		format.setContentProvider(new ArrayContentProvider());
 		format.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData formatData = new GridData(GridData.FILL_HORIZONTAL);
@@ -1182,7 +1193,7 @@ public class WSDLEndPointPropertiesEditionPartImpl extends CompositePropertiesEd
 	
 	protected Composite createOptimizeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.WSDLEndPoint.Misc.optimize, EsbMessages.WSDLEndPointPropertiesEditionPart_OptimizeLabel);
-		optimize = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		optimize = new EMFComboViewer(parent);
 		optimize.setContentProvider(new ArrayContentProvider());
 		optimize.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData optimizeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -1513,7 +1524,7 @@ public class WSDLEndPointPropertiesEditionPartImpl extends CompositePropertiesEd
 	
 	protected Composite createAddressingVersionEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.WSDLEndPoint.Qos.addressingVersion, EsbMessages.WSDLEndPointPropertiesEditionPart_AddressingVersionLabel);
-		addressingVersion = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		addressingVersion = new EMFComboViewer(parent);
 		addressingVersion.setContentProvider(new ArrayContentProvider());
 		addressingVersion.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData addressingVersionData = new GridData(GridData.FILL_HORIZONTAL);
@@ -1637,7 +1648,7 @@ public class WSDLEndPointPropertiesEditionPartImpl extends CompositePropertiesEd
 	
 	protected Composite createTimeOutActionEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.WSDLEndPoint.Timeout.timeOutAction, EsbMessages.WSDLEndPointPropertiesEditionPart_TimeOutActionLabel);
-		timeOutAction = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		timeOutAction = new EMFComboViewer(parent);
 		timeOutAction.setContentProvider(new ArrayContentProvider());
 		timeOutAction.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData timeOutActionData = new GridData(GridData.FILL_HORIZONTAL);
@@ -1659,6 +1670,70 @@ public class WSDLEndPointPropertiesEditionPartImpl extends CompositePropertiesEd
 		timeOutAction.setID(EsbViewsRepository.WSDLEndPoint.Timeout.timeOutAction);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.WSDLEndPoint.Timeout.timeOutAction, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createTimeOutActionEMFComboViewer
+
+		// End of user code
+		return parent;
+	}
+
+	/**
+	 * 
+	 */
+	protected Composite createFailoverErrorCodesGroup(Composite parent) {
+		Group failoverErrorCodesGroup = new Group(parent, SWT.NONE);
+		failoverErrorCodesGroup.setText(EsbMessages.WSDLEndPointPropertiesEditionPart_FailoverErrorCodesGroupLabel);
+		GridData failoverErrorCodesGroupData = new GridData(GridData.FILL_HORIZONTAL);
+		failoverErrorCodesGroupData.horizontalSpan = 3;
+		failoverErrorCodesGroup.setLayoutData(failoverErrorCodesGroupData);
+		GridLayout failoverErrorCodesGroupLayout = new GridLayout();
+		failoverErrorCodesGroupLayout.numColumns = 3;
+		failoverErrorCodesGroup.setLayout(failoverErrorCodesGroupLayout);
+		return failoverErrorCodesGroup;
+	}
+
+	
+	protected Composite createFailoverNonRetryErrorCodesText(Composite parent) {
+		createDescription(parent, EsbViewsRepository.WSDLEndPoint.FailoverErrorCodes.failoverNonRetryErrorCodes, EsbMessages.WSDLEndPointPropertiesEditionPart_FailoverNonRetryErrorCodesLabel);
+		failoverNonRetryErrorCodes = SWTUtils.createScrollableText(parent, SWT.BORDER);
+		GridData failoverNonRetryErrorCodesData = new GridData(GridData.FILL_HORIZONTAL);
+		failoverNonRetryErrorCodes.setLayoutData(failoverNonRetryErrorCodesData);
+		failoverNonRetryErrorCodes.addFocusListener(new FocusAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void focusLost(FocusEvent e) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(WSDLEndPointPropertiesEditionPartImpl.this, EsbViewsRepository.WSDLEndPoint.FailoverErrorCodes.failoverNonRetryErrorCodes, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, failoverNonRetryErrorCodes.getText()));
+			}
+
+		});
+		failoverNonRetryErrorCodes.addKeyListener(new KeyAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void keyPressed(KeyEvent e) {
+				if (e.character == SWT.CR) {
+					if (propertiesEditionComponent != null)
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(WSDLEndPointPropertiesEditionPartImpl.this, EsbViewsRepository.WSDLEndPoint.FailoverErrorCodes.failoverNonRetryErrorCodes, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, failoverNonRetryErrorCodes.getText()));
+				}
+			}
+
+		});
+		EditingUtils.setID(failoverNonRetryErrorCodes, EsbViewsRepository.WSDLEndPoint.FailoverErrorCodes.failoverNonRetryErrorCodes);
+		EditingUtils.setEEFtype(failoverNonRetryErrorCodes, "eef::Text"); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.WSDLEndPoint.FailoverErrorCodes.failoverNonRetryErrorCodes, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createFailoverNonRetryErrorCodesText
 
 		// End of user code
 		return parent;
@@ -2784,6 +2859,38 @@ public class WSDLEndPointPropertiesEditionPartImpl extends CompositePropertiesEd
 		
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#getFailoverNonRetryErrorCodes()
+	 * 
+	 */
+	public String getFailoverNonRetryErrorCodes() {
+		return failoverNonRetryErrorCodes.getText();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#setFailoverNonRetryErrorCodes(String newValue)
+	 * 
+	 */
+	public void setFailoverNonRetryErrorCodes(String newValue) {
+		if (newValue != null) {
+			failoverNonRetryErrorCodes.setText(newValue);
+		} else {
+			failoverNonRetryErrorCodes.setText(""); //$NON-NLS-1$
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.WSDLEndPoint.FailoverErrorCodes.failoverNonRetryErrorCodes);
+		if (eefElementEditorReadOnlyState && failoverNonRetryErrorCodes.isEnabled()) {
+			failoverNonRetryErrorCodes.setEnabled(false);
+			failoverNonRetryErrorCodes.setToolTipText(EsbMessages.WSDLEndPoint_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !failoverNonRetryErrorCodes.isEnabled()) {
+			failoverNonRetryErrorCodes.setEnabled(true);
+		}	
+		
+	}
+
 
 
 
@@ -2854,14 +2961,6 @@ public class WSDLEndPointPropertiesEditionPartImpl extends CompositePropertiesEd
 	public String getTitle() {
 		return EsbMessages.WSDLEndPoint_Part_Title;
 	}
-
-
-
-
-
-
-
-
 
 	// Start of user code additional methods
 	

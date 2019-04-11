@@ -238,7 +238,12 @@ public class WSDLEndPointPropertiesEditionComponent extends SinglePartProperties
 			
 			// init filters
 			
-			
+			// Start of user code for failover retry error codes
+			if (isAccessible(EsbViewsRepository.WSDLEndPoint.FailoverErrorCodes.failoverNonRetryErrorCodes)) {
+				basePart.setFailoverNonRetryErrorCodes(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING,
+						wSDLEndPoint.getFailoverNonRetryErrorCodes()));
+			}
+			// End of user code
 			
 			
 			
@@ -458,6 +463,11 @@ public class WSDLEndPointPropertiesEditionComponent extends SinglePartProperties
 		if (editorKey == EsbViewsRepository.WSDLEndPoint.Qos.outboundPolicy) {
 			return EsbPackage.eINSTANCE.getAbstractEndPoint_OutboundPolicy();
 		}
+		// Start of user code for failover error codes
+		if (editorKey == EsbViewsRepository.WSDLEndPoint.FailoverErrorCodes.failoverNonRetryErrorCodes) {
+			return EsbPackage.eINSTANCE.getAbstractEndPoint_FailoverNonRetryErrorCodes();
+		}
+		// End of user code
 		return super.associatedFeature(editorKey);
 	}
 
@@ -649,6 +659,13 @@ public class WSDLEndPointPropertiesEditionComponent extends SinglePartProperties
 			// End of user code
 			
 		}
+		// Start of user code for failover error codes
+		if (EsbViewsRepository.WSDLEndPoint.FailoverErrorCodes.failoverNonRetryErrorCodes == event
+		        .getAffectedEditor()) {
+			wSDLEndPoint.setFailoverNonRetryErrorCodes((java.lang.String) EEFConverterUtil
+			        .createFromString(EcorePackage.Literals.ESTRING, (String) event.getNewValue()));
+		}
+		// End of user code
 	}
 
 	/**
@@ -856,7 +873,19 @@ public class WSDLEndPointPropertiesEditionComponent extends SinglePartProperties
             }
 					// End of user code
 			
-			
+			// Start of user code for failover error codes
+			if (EsbPackage.eINSTANCE.getAbstractEndPoint_FailoverNonRetryErrorCodes().equals(msg.getFeature())
+			        && msg.getNotifier().equals(semanticObject) && basePart != null
+			        && isAccessible(EsbViewsRepository.WSDLEndPoint.FailoverErrorCodes.failoverNonRetryErrorCodes)) {
+				if (msg.getNewValue() != null) {
+					basePart.setFailoverNonRetryErrorCodes(
+					        EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
+				} else {
+					basePart.setFailoverNonRetryErrorCodes("");
+				}
+			}
+			// End of user code
+
 		}
 	}
 
@@ -901,7 +930,8 @@ public class WSDLEndPointPropertiesEditionComponent extends SinglePartProperties
 			EsbPackage.eINSTANCE.getAbstractEndPoint_ReliableMessagingPolicy(),
 			EsbPackage.eINSTANCE.getAbstractEndPoint_SecurityPolicy(),
 			EsbPackage.eINSTANCE.getAbstractEndPoint_InboundPolicy(),
-			EsbPackage.eINSTANCE.getAbstractEndPoint_OutboundPolicy()		);
+			EsbPackage.eINSTANCE.getAbstractEndPoint_OutboundPolicy(),
+			EsbPackage.eINSTANCE.getAbstractEndPoint_FailoverNonRetryErrorCodes());
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -1112,6 +1142,15 @@ public class WSDLEndPointPropertiesEditionComponent extends SinglePartProperties
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getWSDLEndPoint_Port().getEAttributeType(), newValue);
 				}
+				// Start of user code for failover error codes
+				if (EsbViewsRepository.WSDLEndPoint.FailoverErrorCodes.failoverNonRetryErrorCodes == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getAbstractEndPoint_FailoverNonRetryErrorCodes().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getAbstractEndPoint_FailoverNonRetryErrorCodes().getEAttributeType(), newValue);
+				}
+				// End of user code
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);
 			} catch (WrappedException we) {

@@ -461,6 +461,8 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
                 return createEndPointMessageFormatFromString(eDataType, initialValue);
             case EsbPackage.END_POINT_ATTACHMENT_OPTIMIZATION:
                 return createEndPointAttachmentOptimizationFromString(eDataType, initialValue);
+            case EsbPackage.END_POINT_FAILOVER_RETRY_TYPE:
+                return createEndPointFailoverRetryTypeFromString(eDataType, initialValue);
             case EsbPackage.PROPERTY_DATA_TYPE:
                 return createPropertyDataTypeFromString(eDataType, initialValue);
             case EsbPackage.PROPERTY_ACTION:
@@ -743,6 +745,8 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
                 return convertEndPointMessageFormatToString(eDataType, instanceValue);
             case EsbPackage.END_POINT_ATTACHMENT_OPTIMIZATION:
                 return convertEndPointAttachmentOptimizationToString(eDataType, instanceValue);
+            case EsbPackage.END_POINT_FAILOVER_RETRY_TYPE:
+                return convertEndPointFailoverRetryTypeToString(eDataType, instanceValue);
             case EsbPackage.PROPERTY_DATA_TYPE:
                 return convertPropertyDataTypeToString(eDataType, instanceValue);
             case EsbPackage.PROPERTY_ACTION:
@@ -5199,6 +5203,26 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
      * @generated
      */
     public String convertEndPointAttachmentOptimizationToString(EDataType eDataType, Object instanceValue) {
+        return instanceValue == null ? null : instanceValue.toString();
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EndPointFailoverRetryType createEndPointFailoverRetryTypeFromString(EDataType eDataType, String initialValue) {
+        EndPointFailoverRetryType result = EndPointFailoverRetryType.get(initialValue);
+        if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+        return result;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public String convertEndPointFailoverRetryTypeToString(EDataType eDataType, Object instanceValue) {
         return instanceValue == null ? null : instanceValue.toString();
     }
 

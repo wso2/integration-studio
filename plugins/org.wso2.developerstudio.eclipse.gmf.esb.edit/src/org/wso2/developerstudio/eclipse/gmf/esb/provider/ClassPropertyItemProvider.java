@@ -80,7 +80,7 @@ public class ClassPropertyItemProvider extends AbstractNameValueExpressionProper
     @Override
     public String getText(Object object) {
         String propertyName = ((ClassProperty) object).getPropertyName();
-        String propertyNameLabel = WordUtils.abbreviate(propertyName, 8, 10, " ...");
+        String propertyNameLabel = WordUtils.abbreviate(propertyName, 40, 45, " ...");
         String propertyValueType = ((ClassProperty) object).getPropertyValueType().toString();
         String propertyValueLabel = ((ClassProperty) object).getPropertyValue();
         String propertyExpressionLabel = ((ClassProperty) object).getPropertyExpression().toString();
@@ -88,10 +88,10 @@ public class ClassPropertyItemProvider extends AbstractNameValueExpressionProper
         if (propertyValueType.equals(PropertyValueType.LITERAL.getName())) {
             return propertyName == null || propertyName.length() == 0 ? getString("_UI_ClassProperty_type")
                     : propertyValueLabel != null
-                            ? EEFPropertyViewUtil.spaceFormat(getString("_UI_ClassProperty_type"))
+                            ? getString("_UI_ClassProperty_type") + "  -  "
                                     + EEFPropertyViewUtil.spaceFormat(propertyNameLabel)
                                     + EEFPropertyViewUtil.spaceFormat(propertyValueLabel)
-                            : EEFPropertyViewUtil.spaceFormat(getString("_UI_ClassProperty_type"))
+                            : getString("_UI_ClassProperty_type") + "  -  "
                                     + EEFPropertyViewUtil.spaceFormat(propertyNameLabel);
         } else {
             return propertyName == null || propertyName.length() == 0 ? getString("_UI_ClassProperty_type")

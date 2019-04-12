@@ -36,7 +36,7 @@ public class AvailableMessageStoreList extends AbstractListDataProvider {
 	public List<ListData> getListData(String modelProperty,ProjectDataModel model) {
 		
 		List<ListData> availableMessageStoreList = new ArrayList<ListData>();
-		
+		availableMessageStoreList.add(createListData("",""));
 		IProject[] projects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
 		for (IProject workspaceProject : projects) {
 			

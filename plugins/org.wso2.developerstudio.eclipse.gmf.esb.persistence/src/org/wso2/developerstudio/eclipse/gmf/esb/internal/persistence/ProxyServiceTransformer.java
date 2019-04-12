@@ -369,7 +369,7 @@ public class ProxyServiceTransformer extends AbstractEsbNodeTransformer {
             ProxyService proxyService = new ProxyService(proxyName);
             info.setCurrentProxy(proxyService);
             
-            setComments(proxyService, visualService);
+            proxyService.getCommentsList().addAll(visualService.getCommentsList());
 
             if (visualService.getServiceGroup() != null) {
                 proxyService.setServiceGroup(visualService.getServiceGroup());
@@ -610,10 +610,4 @@ public class ProxyServiceTransformer extends AbstractEsbNodeTransformer {
             doTransform(info, visualService.getOutSequenceOutputConnector());
         }
     }
-    
-    private static void setComments(ProxyService proxyService,
-            org.wso2.developerstudio.eclipse.gmf.esb.ProxyService visualElement) {
-        proxyService.getCommentsList().addAll(visualElement.getCommentsList());
-    }
-
 }

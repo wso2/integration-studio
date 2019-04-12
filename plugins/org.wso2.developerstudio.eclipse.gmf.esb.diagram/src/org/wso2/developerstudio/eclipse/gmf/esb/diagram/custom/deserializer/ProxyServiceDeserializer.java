@@ -59,7 +59,7 @@ public class ProxyServiceDeserializer
                 .createNode(editPart, EsbElementTypes.ProxyService_3001);
 
         setElementToEdit(proxy);
-        setComments(object, proxy);
+        executeAddAllCommand(proxy.getCommentsList(), object.getCommentsList());
         refreshEditPartMap();
 
         executeSetValueCommand(PROXY_SERVICE__NAME, object.getName());
@@ -320,10 +320,4 @@ public class ProxyServiceDeserializer
 
         return proxy;
     }
-    
-    protected void setComments(org.apache.synapse.core.axis2.ProxyService proxyService,
-            org.wso2.developerstudio.eclipse.gmf.esb.ProxyService visualElement) {
-        executeAddAllCommand(visualElement.getCommentsList(), proxyService.getCommentsList());
-    }
-
 }

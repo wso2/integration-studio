@@ -113,7 +113,7 @@ public abstract class AbstractEsbNodeTransformer implements EsbNodeTransformer {
             if (inputConnector instanceof SequencesInputConnector ) {
                 info.setParentSequence(sequence);
                 // Adding XML comments into synapse config.
-                addXMLCommnets(info, outgoingLink.getSource().getCommentMediators(), sequence);
+                addXMLComments(info, outgoingLink.getSource().getCommentMediators(), sequence);
                 transformer.transform(info, esbNode);
             } else {
                 // Adding XML comments into synapse config.
@@ -149,7 +149,8 @@ public abstract class AbstractEsbNodeTransformer implements EsbNodeTransformer {
         ((AbstractMediator) mediator).getCommentsList().addAll(visualElement.getCommentsList());
     }
 
-    private static void addXMLCommnets(TransformationInfo info, EList<CommentMediator> commentMediators, SequenceMediator sequence) {
+    private static void addXMLComments(TransformationInfo info, EList<CommentMediator> commentMediators,
+            SequenceMediator sequence) {
         CommentMediatorTransformer commentMediatorTransformer = new CommentMediatorTransformer();
         for (CommentMediator mediator : commentMediators) {
             commentMediatorTransformer.transform(info, mediator);

@@ -302,6 +302,7 @@ Export-Package: com.damnhandy.uri.template;version="2.1.6.wso2v2",
  org.apache.synapse.util.xpath.ext,
  org.wso2.caching,
  org.wso2.caching.digest,
+ org.wso2.carbon.core.util,
  org.wso2.carbon.identity.entitlement.mediator,
  org.wso2.carbon.identity.entitlement.mediator.config.xml,
  org.wso2.carbon.identity.oauth.mediator,
@@ -330,6 +331,8 @@ Export-Package: com.damnhandy.uri.template;version="2.1.6.wso2v2",
  org.wso2.carbon.rule.mediator,
  org.wso2.carbon.rule.mediator.config,
  org.wso2.carbon.rule.mediator.internal.config,
+ org.wso2.carbon.tools.converter,	
+ org.wso2.carbon.utils,
  org.wso2.developerstudio.eclipse.esb.libraries.utils
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 

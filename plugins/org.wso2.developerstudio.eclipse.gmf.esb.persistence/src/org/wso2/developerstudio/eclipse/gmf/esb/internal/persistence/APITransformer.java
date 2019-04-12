@@ -80,8 +80,8 @@ public class APITransformer extends AbstractEsbNodeTransformer {
         }
 
         information.getSynapseConfiguration().addAPI(visualAPI.getApiName(), api);
-        
-        setComments(api, visualAPI);
+
+        api.getCommentsList().addAll(visualAPI.getCommentsList());
     }
 
     public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints) {
@@ -126,10 +126,6 @@ public class APITransformer extends AbstractEsbNodeTransformer {
         }
         api.configure(new AspectConfiguration(visualAPI.getApiName()));
         return api;
-    }
-    
-    private static void setComments(API api, SynapseAPI visualElement) {
-        api.getCommentsList().addAll(visualElement.getCommentsList());
     }
 
 }

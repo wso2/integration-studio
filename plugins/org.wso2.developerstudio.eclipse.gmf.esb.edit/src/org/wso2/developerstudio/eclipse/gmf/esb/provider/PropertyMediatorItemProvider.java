@@ -514,7 +514,7 @@ public class PropertyMediatorItemProvider extends MediatorItemProvider {
         String label = labelValue == null ? null : labelValue.toString();
         String value = ((PropertyMediator) object).getValue();
         String newLabel = label == "New Property..." ? newPropertyName : label;
-        String propertyName = WordUtils.abbreviate(newLabel.toString(), 8, 10, " ...");
+        String propertyName = WordUtils.abbreviate(newLabel, 40, 45, " ...");
         String valueType = ((PropertyMediator) object).getValueType().toString();
         String valueExpression = ((PropertyMediator) object).getValueExpression().toString();
 
@@ -523,11 +523,12 @@ public class PropertyMediatorItemProvider extends MediatorItemProvider {
                     : EEFPropertyViewUtil.spaceFormat("Property");
         } else if (valueType.equalsIgnoreCase(PropertyValueType.LITERAL.getName())) {
             return newLabel == null || label.length() == 0 ? getString("_UI_PropertyMediator_type")
-                    : EEFPropertyViewUtil.spaceFormat("Property") + EEFPropertyViewUtil.spaceFormat(propertyName)
-                            + EEFPropertyViewUtil.spaceFormat(value);
+                    : value != null ? "Property  -  " + EEFPropertyViewUtil.spaceFormat(propertyName) + 
+                            EEFPropertyViewUtil.spaceFormat(value) : "Property  -  " + 
+                            EEFPropertyViewUtil.spaceFormat(propertyName);
         } else {
             return newLabel == null || label.length() == 0 ? getString("_UI_PropertyMediator_type")
-                    : EEFPropertyViewUtil.spaceFormat("Property") + EEFPropertyViewUtil.spaceFormat(propertyName)
+                    : "Property  -  " + EEFPropertyViewUtil.spaceFormat(propertyName)
                             + EEFPropertyViewUtil.spaceFormat(valueExpression);
         }
     }

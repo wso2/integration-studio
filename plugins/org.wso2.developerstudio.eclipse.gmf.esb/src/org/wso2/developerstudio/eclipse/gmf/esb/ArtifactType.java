@@ -187,7 +187,15 @@ public enum ArtifactType implements Enumerator {
      * @generated
      * @ordered
      */
-    ENDPOINT_WSDL(22, "ENDPOINT_WSDL", "ENDPOINT_WSDL");
+    ENDPOINT_WSDL(22, "ENDPOINT_WSDL", "ENDPOINT_WSDL"), /**
+     * The '<em><b>ENDPOINT LOADBALANCE</b></em>' literal object.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #ENDPOINT_LOADBALANCE_VALUE
+     * @generated
+     * @ordered
+     */
+    ENDPOINT_LOADBALANCE(23, "ENDPOINT_LOADBALANCE", "ENDPOINT_LOADBALANCE");
 
     /**
      * The '<em><b>SYNAPSE CONFIG</b></em>' literal value.
@@ -535,6 +543,21 @@ public enum ArtifactType implements Enumerator {
     public static final int ENDPOINT_WSDL_VALUE = 22;
 
     /**
+     * The '<em><b>ENDPOINT LOADBALANCE</b></em>' literal value.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of '<em><b>ENDPOINT LOADBALANCE</b></em>' literal object isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @see #ENDPOINT_LOADBALANCE
+     * @model
+     * @generated
+     * @ordered
+     */
+    public static final int ENDPOINT_LOADBALANCE_VALUE = 23;
+
+    /**
      * An array of all the '<em><b>Artifact Type</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -564,6 +587,7 @@ public enum ArtifactType implements Enumerator {
             ENDPOINT_DEFAULT,
             ENDPOINT_HTTP,
             ENDPOINT_WSDL,
+            ENDPOINT_LOADBALANCE,
         };
 
     /**
@@ -643,6 +667,7 @@ public enum ArtifactType implements Enumerator {
             case ENDPOINT_DEFAULT_VALUE: return ENDPOINT_DEFAULT;
             case ENDPOINT_HTTP_VALUE: return ENDPOINT_HTTP;
             case ENDPOINT_WSDL_VALUE: return ENDPOINT_WSDL;
+            case ENDPOINT_LOADBALANCE_VALUE: return ENDPOINT_LOADBALANCE;
         }
         return null;
     }

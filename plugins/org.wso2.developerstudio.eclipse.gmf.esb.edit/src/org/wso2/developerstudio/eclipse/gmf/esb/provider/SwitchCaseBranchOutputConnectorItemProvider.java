@@ -97,7 +97,7 @@ public class SwitchCaseBranchOutputConnectorItemProvider extends OutputConnector
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
+     * @generated NOT
      */
 
     @Override
@@ -105,7 +105,7 @@ public class SwitchCaseBranchOutputConnectorItemProvider extends OutputConnector
         String label = ((SwitchCaseBranchOutputConnector)object).getCaseRegex();
         return label == null || label.length() == 0 ?
             getString("_UI_SwitchCaseBranchOutputConnector_type") :
-            getString("_UI_SwitchCaseBranchOutputConnector_type") + "\t\t" + label;
+                getString("_UI_SwitchCaseBranchOutputConnector_type") + "\t\t" + label;
     }
 
     /**

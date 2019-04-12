@@ -16,7 +16,6 @@
 
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer;
 
-import org.apache.synapse.endpoints.AddressEndpoint;
 import org.apache.synapse.endpoints.Endpoint;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
@@ -26,17 +25,11 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.ui.forms.editor.FormEditor;
-import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndpointDiagram;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
-import org.wso2.developerstudio.esb.form.editors.article.rcp.ESBFormEditor;
-import org.wso2.developerstudio.esb.form.editors.article.rcp.MessageProcessorFormPage;
-import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.AddressEndpointFormPage;
-import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.EndpointFormPage;
-import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.EndpointCommons;
 
-import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.ENDPOINT_DIAGRAM__NAME;
 
 /**
  * Endpoint deserializer

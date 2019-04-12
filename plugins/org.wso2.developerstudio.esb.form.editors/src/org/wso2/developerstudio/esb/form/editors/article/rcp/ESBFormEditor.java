@@ -26,7 +26,6 @@ import org.eclipse.ui.forms.editor.FormPage;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
 import org.wso2.developerstudio.esb.forgm.editors.article.FormArticlePlugin;
-import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.EndpointFormPage;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.AddressEndpointFormPage;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.DefaultEndpointFormPage;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.HttpEndpointFormPage;
@@ -69,7 +68,7 @@ public class ESBFormEditor extends FormEditor {
 	protected void addPages() {
 		try {
 			if (currFormPage == null) {
-				assignCurrPage();
+				assignCurrPage();//get page
 			}
 			addPage(currFormPage);
 		} catch (PartInitException e) {
@@ -104,6 +103,8 @@ public class ESBFormEditor extends FormEditor {
             currFormPage = new WsdlEndpointFormPage(this, false);
         } else if (artifactType == ArtifactType.TEMPLATE_ENDPOINT) {
             currFormPage = new TemplateEndPointFormPage(this);
+        } else if (artifactType == ArtifactType.ENDPOINT_LOADBALANCE) {
+            currFormPage = new LoadbalanceEndpointFormPage(this);
         } else if (artifactType == ArtifactType.COMPLEX_ENDPOINT) {
             currFormPage = new LoadbalanceEndpointFormPage(this);
         }
@@ -148,7 +149,7 @@ public class ESBFormEditor extends FormEditor {
 
 	@Override
 	protected void createPages() {
-		super.createPages();
+		super.createPages();//
 		if (getPageCount() == 1 && getContainer() instanceof CTabFolder) {
 			((CTabFolder) getContainer()).setTabHeight(0);
 		}

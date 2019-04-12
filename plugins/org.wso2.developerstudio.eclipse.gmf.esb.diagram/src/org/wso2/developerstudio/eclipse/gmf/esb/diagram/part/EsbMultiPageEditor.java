@@ -577,6 +577,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
         initialPageLoad = true;
         switch (currArtifactType) {
         case COMPLEX_ENDPOINT:
+            System.out.println("#######-----");
             break;
         case LOCAL_ENTRY:
         case MESSAGE_PROCESSOR:
@@ -592,6 +593,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
         case ENDPOINT_DEFAULT:
         case ENDPOINT_HTTP:
         case ENDPOINT_WSDL:
+        case ENDPOINT_LOADBALANCE:
             createPageForm(currArtifactType);
             break;
         default:

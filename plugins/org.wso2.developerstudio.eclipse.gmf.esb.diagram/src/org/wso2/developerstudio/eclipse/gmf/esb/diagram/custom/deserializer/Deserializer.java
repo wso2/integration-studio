@@ -281,7 +281,7 @@ public class Deserializer {
                     } else if ("failover".equals(child1LocalName)) {
                         artifactType = ArtifactType.COMPLEX_ENDPOINT;
                     } else if ("loadbalance".equals(child1LocalName) || "session".equals(child1LocalName)) {
-                        artifactType = ArtifactType.COMPLEX_ENDPOINT;
+                        artifactType = ArtifactType.ENDPOINT_LOADBALANCE;
                     } else if ("recipientlist".equals(child1LocalName)) {
                         artifactType = ArtifactType.COMPLEX_ENDPOINT;
                     }
@@ -378,6 +378,8 @@ public class Deserializer {
         case ENDPOINT_DEFAULT:
         case ENDPOINT_HTTP:
         case ENDPOINT_WSDL:
+        case ENDPOINT_LOADBALANCE:
+//            System.out.println("######### ------");
         case TEMPLATE_ENDPOINT:
             Endpoint endpoint;
             if (withSynapse) {

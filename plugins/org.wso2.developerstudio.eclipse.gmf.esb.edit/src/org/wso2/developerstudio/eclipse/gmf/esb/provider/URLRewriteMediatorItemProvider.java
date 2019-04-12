@@ -168,7 +168,7 @@ public class URLRewriteMediatorItemProvider extends MediatorItemProvider {
      * This returns URLRewriteMediator.png.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
+     * @generated NOT
      */
     @Override
     public Object getImage(Object object) {

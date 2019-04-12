@@ -228,8 +228,7 @@ public class NamespacedPropertyItemProvider extends EsbNodeItemProvider {
     }
 
     /**
-     * This handles model notifications by calling {@link #updateChildren} to update any cached
-     * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+     * This adds a property descriptor for the Support Json Paths feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated

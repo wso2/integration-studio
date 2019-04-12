@@ -42,11 +42,9 @@ import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.OMNamespace;
 import org.apache.axis2.util.XMLPrettyPrinter;
 import org.apache.synapse.SynapseArtifact;
-import org.apache.synapse.config.Entry;
 import org.apache.synapse.config.SynapseConfiguration;
 import org.apache.synapse.config.xml.EntrySerializer;
 import org.apache.synapse.config.xml.MediatorSerializerFinder;
-import org.apache.synapse.config.xml.MessageProcessorSerializer;
 import org.apache.synapse.config.xml.ProxyServiceSerializer;
 import org.apache.synapse.config.xml.SequenceMediatorSerializer;
 import org.apache.synapse.config.xml.SynapseXMLConfigurationSerializer;
@@ -96,6 +94,7 @@ import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.AddressEn
 import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.DefaultEndpointFormPage;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.EndpointFormPage;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.HttpEndpointFormPage;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.LoadbalanceEndpointFormPage;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.TemplateEndPointFormPage;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.WsdlEndpointFormPage;
 import org.xml.sax.InputSource;
@@ -276,6 +275,9 @@ public class DefaultEsbModelExporter implements EsbModelTransformer {
         } else if ((FormPage) endpointFormPage instanceof TemplateEndPointFormPage) {
             TemplateEndPointTransformer transformer = new TemplateEndPointTransformer();
             return transformer.create((TemplateEndPointFormPage) endpointFormPage);
+        } else if ((FormPage) endpointFormPage instanceof LoadbalanceEndpointFormPage) {
+            LoadBalanceEndPointTransformer transformer = new LoadBalanceEndPointTransformer();
+            return transformer.create((LoadbalanceEndpointFormPage) endpointFormPage);
         } else {
             return null;
         }
@@ -437,6 +439,8 @@ public class DefaultEsbModelExporter implements EsbModelTransformer {
                     configOM = ProxyServiceSerializer.serializeProxy(null, transformProxyService((ProxyService) child));
                 }
                 break;
+            case ENDPOINT_LOADBALANCE:
+                System.out.println("**********" + child.getClass());
             case ENDPOINT:
             case COMPLEX_ENDPOINT:
                 if (child instanceof EndpointDiagram) {

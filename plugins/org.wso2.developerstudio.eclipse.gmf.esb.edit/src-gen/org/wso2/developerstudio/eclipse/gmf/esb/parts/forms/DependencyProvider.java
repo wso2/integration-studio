@@ -274,7 +274,7 @@ public class DependencyProvider extends Dialog {
                 }
 
             }
-            
+
             serverComposite = new Composite(selectDriverGroup, SWT.NONE);
             {
 
@@ -579,6 +579,8 @@ public class DependencyProvider extends Dialog {
                 if (source.getSelection()) {
                     infoLabel.setVisible(false);
                     browseLocalComposite.setVisible(true);
+                    jarLocationText.setEnabled(true);
+                    browseButton.setEnabled(true);
                     serverComposite.setVisible(false);
                     serverRadioButton.setEnabled(true);
 
@@ -702,9 +704,9 @@ public class DependencyProvider extends Dialog {
                     downloadButton.setEnabled(false);
                     testConnectionButton.setEnabled(false);
                     okButton.setEnabled(false);
+                } else {
+                    enableButtonsIfDataIsAvailable();
                 }
-
-                enableButtonsIfDataIsAvailable();
             }
 
             @Override
@@ -870,7 +872,7 @@ public class DependencyProvider extends Dialog {
 
         Display display = dialogShell.getDisplay();
 
-        Monitor primary = display.getPrimaryMonitor();
+        Monitor primary = display.getActiveShell().getMonitor();
 
         /** get the size of the screen */
         Rectangle bounds = primary.getBounds();
@@ -908,6 +910,8 @@ public class DependencyProvider extends Dialog {
     }
 
     private void setDefaultsToVersionComboBox() {
+        versionComboBox.setEnabled(true);
+        downloadButton.setEnabled(true);
 
         switch (connectiontypeComboBox.getText()) {
         case "MYSQL":

@@ -65,6 +65,8 @@ public class SequenceDeserializer extends AbstractEsbNodeDeserializer<SequenceMe
             } else {
                 executeSetValueCommand(sequenceModel, SEQUENCE__NAME, sequence.getKey().getKeyValue());
             }
+            
+            executeAddAllCommand(sequenceModel.getCommentsList(), sequence.getCommentsList());
 
             return sequenceModel;
         } else if (sequence.getName() != null) {
@@ -103,11 +105,13 @@ public class SequenceDeserializer extends AbstractEsbNodeDeserializer<SequenceMe
                 deserializeSequence(compartment, sequence, sequenceModel.getOutputConnector());
                 deserializeSequence(compartment, new SequenceMediator(), sequenceModel.getInputConnector());
                 addPairMediatorFlow(sequenceModel.getOutputConnector(), sequenceModel.getInputConnector());
+                executeAddAllCommand(sequenceModel.getCommentsList(), sequence.getCommentsList());
                 return sequenceModel;
             }
         } else {
             Sequence sequenceModel = (Sequence) DeserializerUtils.createNode(part, EsbElementTypes.Sequence_3503);
             executeSetValueCommand(sequenceModel, SEQUENCE__NAME, "SEQ_NAME");
+            executeAddAllCommand(sequenceModel.getCommentsList(), sequence.getCommentsList());
             return sequenceModel;
 
         }

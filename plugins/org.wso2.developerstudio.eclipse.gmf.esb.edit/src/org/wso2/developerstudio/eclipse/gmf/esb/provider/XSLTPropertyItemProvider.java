@@ -9,6 +9,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb.provider;
 import java.util.Collection;
 import java.util.List;
 
+import org.apache.commons.lang.WordUtils;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
@@ -18,8 +19,9 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType;
 import org.wso2.developerstudio.eclipse.gmf.esb.XSLTProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 
 /**
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.XSLTProperty} object.
@@ -70,15 +72,32 @@ public class XSLTPropertyItemProvider extends AbstractNameValueExpressionPropert
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
+     * @generated NOT
      */
 
     @Override
     public String getText(Object object) {
-        String label = ((XSLTProperty)object).getPropertyName();
-        return label == null || label.length() == 0 ?
-            getString("_UI_XSLTProperty_type") :
-            getString("_UI_XSLTProperty_type") + " " + label;
+        String propertyName = ((XSLTProperty) object).getPropertyName();
+        String propertyNameLabel = WordUtils.abbreviate(propertyName, 40, 45, " ...");
+        String propertyValueType = ((XSLTProperty) object).getPropertyValueType().toString();
+        String propertyValue = ((XSLTProperty) object).getPropertyValue();
+
+        if (propertyValueType.equalsIgnoreCase(PropertyValueType.LITERAL.getName())) {
+            return propertyName == null || propertyName.length() == 0 ? getString("_UI_XSLTProperty_type")
+                    : propertyValue != null
+                            ? getString("_UI_XSLTProperty_type") + "  -  "
+                                    + EEFPropertyViewUtil.spaceFormat(propertyNameLabel)
+                                    + EEFPropertyViewUtil.spaceFormat(propertyValue)
+                            : getString("_UI_XSLTProperty_type") + "  -  "
+                                    + EEFPropertyViewUtil.spaceFormat(propertyNameLabel);
+        } else if (((XSLTProperty) object).getPropertyExpression() != null) {
+            String propertyExpression = ((XSLTProperty) object).getPropertyExpression().toString();
+            return propertyName == null || propertyName.length() == 0 ? getString("_UI_XSLTProperty_type")
+                    : getString("_UI_XSLTProperty_type") + "  -  " + EEFPropertyViewUtil.spaceFormat(propertyNameLabel)
+                            + EEFPropertyViewUtil.spaceFormat(propertyExpression);
+        } else
+            return propertyName == null || propertyName.length() == 0 ? getString("_UI_XSLTProperty_type")
+                    : getString("_UI_XSLTProperty_type") + "  -  " + EEFPropertyViewUtil.spaceFormat(propertyNameLabel);
     }
 
     /**

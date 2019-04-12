@@ -26,6 +26,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.LogProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 
 /**
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.LogProperty} object.
@@ -81,32 +82,25 @@ public class LogPropertyItemProvider extends AbstractNameValueExpressionProperty
 
     @Override
     public String getText(Object object) {
-        String propertyName = ((LogProperty)object).getPropertyName();
-        String propertyNameLabel = WordUtils.abbreviate(propertyName.toString(), 8, 10, " ...");
-        String propertyValueType = ((LogProperty)object).getPropertyValueType().toString();
-        String propertyValueLabel = ((LogProperty)object).getPropertyValue();
-        String propertyExpressionLabel = ((LogProperty)object).getPropertyExpression().toString();
+        String propertyName = ((LogProperty) object).getPropertyName();
+        String propertyNameLabel = WordUtils.abbreviate(propertyName, 40, 45, " ...");
+        String propertyValueType = ((LogProperty) object).getPropertyValueType().toString();
+        String propertyValueLabel = ((LogProperty) object).getPropertyValue();
+        String propertyExpressionLabel = ((LogProperty) object).getPropertyExpression().toString();
 
         if (propertyValueType.equals(PropertyValueType.LITERAL.getName())) {
-            return propertyNameLabel == null || propertyNameLabel.length() == 0 ?
-                getString("_UI_LogProperty_type") :
-                    formatPropertyString(getString("_UI_LogProperty_type")) + formatPropertyString(propertyNameLabel) +
-                    formatPropertyString(propertyValueLabel);
+            return propertyNameLabel == null || propertyNameLabel.length() == 0 ? getString("_UI_LogProperty_type")
+                    : propertyValueLabel != null
+                            ? getString("_UI_LogProperty_type") + "  -  "
+                                    + EEFPropertyViewUtil.spaceFormat(propertyNameLabel)
+                                    + EEFPropertyViewUtil.spaceFormat(propertyValueLabel)
+                            : getString("_UI_LogProperty_type") + "  -  "
+                                    + EEFPropertyViewUtil.spaceFormat(propertyNameLabel);
         } else {
-            return propertyNameLabel == null || propertyNameLabel.length() == 0 ?
-                    getString("_UI_LogProperty_type") :
-                        formatPropertyString(getString("_UI_LogProperty_type")) +
-                        formatPropertyString(propertyNameLabel) + formatPropertyString(propertyExpressionLabel);
+            return propertyNameLabel == null || propertyNameLabel.length() == 0 ? getString("_UI_LogProperty_type")
+                    : getString("_UI_LogProperty_type") + "  -  " + EEFPropertyViewUtil.spaceFormat(propertyNameLabel)
+                            + EEFPropertyViewUtil.spaceFormat(propertyExpressionLabel);
         }
-    }
-
-    public String formatPropertyString(String str) {
-        int maxLength = 30;
-        int tabSpace = (maxLength - str.length()) / 4;
-        for (int i = 0; i < tabSpace; i++) {
-            str = str.concat("\t");
-        }
-        return str;
     }
 
     /**

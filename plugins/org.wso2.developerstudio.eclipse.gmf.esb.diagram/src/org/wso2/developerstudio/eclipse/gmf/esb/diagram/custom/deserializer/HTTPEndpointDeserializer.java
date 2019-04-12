@@ -102,6 +102,7 @@ public class HTTPEndpointDeserializer extends AbstractEndpointDeserializer {
         deserializeEndpoint(formEditor, endpointObject);
         // setTextValue(httpEndpointPage.httpEP_Properties, endpoint.getDefinition().get);
         setTextValue(httpEndpointPage.getEP_Description(), endpoint.getDescription());
+        httpEndpointPage.setEndpointCommentList(endpoint.getCommentsList());
         if (endpoint.getUriTemplate() != null) {
             setTextValue(httpEndpointPage.httpEP_UriTemplate, endpoint.getUriTemplate().getTemplate());
         } else {

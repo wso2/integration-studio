@@ -9,6 +9,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb.provider;
 import java.util.Collection;
 import java.util.List;
 
+import org.apache.commons.lang.WordUtils;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
@@ -29,7 +30,9 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType;
 import org.wso2.developerstudio.eclipse.gmf.esb.XQueryVariable;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 
 /**
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.XQueryVariable} object.
@@ -206,15 +209,30 @@ public class XQueryVariableItemProvider extends ItemProviderAdapter implements I
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
+     * @generated NOT
      */
 
     @Override
     public String getText(Object object) {
-        String label = ((XQueryVariable)object).getVariableName();
-        return label == null || label.length() == 0 ?
-            getString("_UI_XQueryVariable_type") :
-            getString("_UI_XQueryVariable_type") + " " + label;
+        String propertyName = ((XQueryVariable) object).getVariableName();
+        String propertyNameLabel = WordUtils.abbreviate(propertyName, 40, 45, " ...");
+        String valueType = ((XQueryVariable) object).getValueType().toString();
+        String valueLiteral = ((XQueryVariable) object).getValueLiteral();
+        String valueExpresiion = ((XQueryVariable) object).getValueExpression().toString();
+
+        if (valueType.equalsIgnoreCase(PropertyValueType.LITERAL.getName())) {
+            return propertyName == null || propertyName.length() == 0 ? getString("_UI_XQueryVariable_type")
+                    : valueLiteral != null
+                            ? getString("_UI_XQueryVariable_type") + "  -  "
+                                    + EEFPropertyViewUtil.spaceFormat(propertyNameLabel)
+                                    + EEFPropertyViewUtil.spaceFormat(valueLiteral)
+                            : getString("_UI_XQueryVariable_type") + "  -  "
+                                    + EEFPropertyViewUtil.spaceFormat(propertyNameLabel);
+        } else
+            return propertyName == null || propertyName.length() == 0 ? getString("_UI_XQueryVariable_type")
+                    : getString("_UI_XQueryVariable_type") + "  -  "
+                            + EEFPropertyViewUtil.spaceFormat(propertyNameLabel)
+                            + EEFPropertyViewUtil.spaceFormat(valueExpresiion);
     }
 
     /**

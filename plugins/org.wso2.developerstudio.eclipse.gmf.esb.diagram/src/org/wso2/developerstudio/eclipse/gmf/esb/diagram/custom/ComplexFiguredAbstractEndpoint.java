@@ -16,40 +16,35 @@
 
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom;
 
-import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditorUtils.COMPLEX_ENDPOINT_RESOURCE_DIR;
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditorUtils.SYNAPSE_CONFIG_DIR;
 
-import java.io.IOException;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.text.MessageFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 
-import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
 import org.eclipse.gmf.runtime.emf.type.core.commands.SetValueCommand;
 import org.eclipse.gmf.runtime.emf.type.core.requests.SetRequest;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.ui.IEditorDescriptor;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorReference;
-import org.eclipse.ui.IWorkbenchPage;
-import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.FileEditorInput;
-//import org.wso2.developerstudio.eclipse.artifact.endpoint.validators.EndPointTemplateList;
-//import org.wso2.developerstudio.eclipse.artifact.sequence.validators.SequenceTemplate;
 import org.wso2.developerstudio.eclipse.esb.core.utils.ESBMediaTypeConstants;
 import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
@@ -57,6 +52,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.FailoverEndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.LoadBalanceEndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.ParentEndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.RecipientListEndPoint;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.Deserializer;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.utils.OpenEditorUtils;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbEditorInput;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
@@ -80,14 +76,20 @@ public class ComplexFiguredAbstractEndpoint extends AbstractEndpoint {
         return null;
     }
 
-    public void openPage() {
+    public void openPage(String epName) {
 
         final EObject endpoint = (ParentEndPoint) ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) getModel())
                 .getElement();
         String name;
 
         long lDateTime = new Date().getTime();
-        final String endpointName = String.valueOf(lDateTime);
+        
+        final String endpointName;
+        if (epName == null || epName.isEmpty()) {
+            endpointName = String.valueOf(lDateTime);
+        } else {
+            endpointName = epName;
+        }
 
         if ((((ParentEndPoint) endpoint).getName() == null)
                 || ((ParentEndPoint) endpoint).getName().trim().equals("")) {
@@ -121,6 +123,12 @@ public class ComplexFiguredAbstractEndpoint extends AbstractEndpoint {
         }
     }
 
+    public String getName() {
+        EObject tempEP = (ParentEndPoint) ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) getModel())
+                .getElement();
+        return ((ParentEndPoint) tempEP).getName();
+    }
+    
     public boolean createFiles(EObject endpoint, String name, String fileURI1, String fileURI2) {
         /*
          * Resource diagram;
@@ -164,6 +172,14 @@ public class ComplexFiguredAbstractEndpoint extends AbstractEndpoint {
                 source = source.replaceAll("\\{", "<").replaceAll("\\}", ">");
                 source = StringUtils.replace(source, "<ep.name>", name);
                 source = MessageFormat.format(source, name);
+                
+                InputStream is = new ByteArrayInputStream(source.getBytes());
+                if (fileTobeOpened.exists()) {
+                    fileTobeOpened.setContents(is, true, true, null);
+                } else {
+                    fileTobeOpened.create(is, true, null);
+                }
+                
                 Openable openable = ESBGraphicalEditor.getOpenable();
                 openable.editorOpen(fileTobeOpened.getName(), ArtifactType.ENDPOINT.getLiteral(), path, source);
             }

@@ -183,7 +183,6 @@ public class SwitchCaseBranchOutputConnectorPropertiesEditionPartImpl extends Co
 		return parent;
 	}
 
-	
     protected Composite createCaseRegexText(Composite parent) {
         createDescription(parent, EsbViewsRepository.SwitchCaseBranchOutputConnector.Properties.caseRegex,
                 EsbMessages.SwitchCaseBranchOutputConnectorPropertiesEditionPart_CaseRegexLabel);
@@ -202,13 +201,13 @@ public class SwitchCaseBranchOutputConnectorPropertiesEditionPartImpl extends Co
             @Override
             @SuppressWarnings("synthetic-access")
             public void keyReleased(KeyEvent e) {
-                if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
-                    if (propertiesEditionComponent != null)
-                        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
-                                SwitchCaseBranchOutputConnectorPropertiesEditionPartImpl.this,
-                                EsbViewsRepository.SwitchCaseBranchOutputConnector.Properties.caseRegex,
-                                PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, caseRegex.getText()));
-                }
+              
+                if (propertiesEditionComponent != null)
+                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                            SwitchCaseBranchOutputConnectorPropertiesEditionPartImpl.this,
+                            EsbViewsRepository.SwitchCaseBranchOutputConnector.Properties.caseRegex,
+                            PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, caseRegex.getText()));
+                
             }
 
             @Override

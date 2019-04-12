@@ -22,6 +22,7 @@ import java.util.Properties;
 import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.config.xml.endpoints.TemplateEndpointFactory;
 import org.apache.synapse.endpoints.Endpoint;
+import org.apache.synapse.util.CommentListUtil;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
@@ -98,7 +99,9 @@ public class EndPointTemplateDeserializer extends AbstractEndPointTemplateDeseri
             }
 
         }
-
+        
+        executeAddAllCommand(templateModel.getCommentsList(), template.getCommentsList());
+        
         return templateModel;
     }
 

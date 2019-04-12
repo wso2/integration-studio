@@ -79,6 +79,8 @@ public class APITransformer extends AbstractEsbNodeTransformer {
         }
 
         information.getSynapseConfiguration().addAPI(visualAPI.getApiName(), api);
+
+        api.getCommentsList().addAll(visualAPI.getCommentsList());
     }
 
     public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints) {

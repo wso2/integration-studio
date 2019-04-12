@@ -14,8 +14,8 @@
             <data modelProperty="ps.name" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.proxyservice.validators.ProxyServiceProjectFieldController">Proxy Service Name</data>
 			<data modelProperty="ps.type" type="list" fieldController="org.wso2.developerstudio.eclipse.artifact.proxyservice.validators.ProxyServiceProjectFieldController"  controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.proxyservice.validators.ProxyServiceTemplateList">Proxy Service Type</data>
 			<data modelProperty="transports" type="link">Select the transports:</data>
-			<data modelProperty="transport.http.choice" type="choice">http</data>
-			<data modelProperty="transport.https.choice" type="choice">https</data>
+			<data modelProperty="transport.http.choice" type="choice" defaultValue="true">http</data>
+			<data modelProperty="transport.https.choice" type="choice" defaultValue="true">https</data>
 			<data modelProperty="transport.jms.choice" type="choice">jms</data>
 			<data modelProperty="transport.vfs.choice" type="choice">vfs</data>
 			<data modelProperty="transport.local.choice" type="choice">local</data>

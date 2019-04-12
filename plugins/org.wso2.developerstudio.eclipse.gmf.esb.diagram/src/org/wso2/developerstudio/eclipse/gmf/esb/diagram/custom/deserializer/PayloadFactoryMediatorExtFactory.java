@@ -163,6 +163,8 @@ public class PayloadFactoryMediatorExtFactory extends PayloadFactoryMediatorFact
             }
 
         }
+        
+        addAllCommentChildrenToList(omElement, ((PayloadFactoryMediator) mediator).getCommentsList());
 
         return mediator;
     }

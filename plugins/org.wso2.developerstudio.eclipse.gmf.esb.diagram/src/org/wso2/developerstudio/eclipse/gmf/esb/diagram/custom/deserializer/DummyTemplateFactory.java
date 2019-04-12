@@ -23,6 +23,7 @@ import org.apache.axiom.om.OMElement;
 import org.apache.synapse.SynapseConstants;
 import org.apache.synapse.config.xml.XMLConfigConstants;
 import org.apache.synapse.endpoints.Template;
+import org.apache.synapse.util.CommentListUtil;
 
 import javax.xml.namespace.QName;
 import java.util.Iterator;
@@ -62,6 +63,8 @@ public class DummyTemplateFactory {
         if (endpointElement != null) {
             template.setElement(endpointElement);
         }
+        
+        CommentListUtil.populateComments(element, template.getCommentsList());
 
         return template;
     }

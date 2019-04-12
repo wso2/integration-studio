@@ -31,6 +31,7 @@ import org.apache.synapse.config.xml.XMLConfigConstants;
 import org.apache.synapse.config.xml.endpoints.EndpointFactory;
 import org.apache.synapse.core.axis2.ProxyService;
 import org.apache.synapse.mediators.base.SequenceMediator;
+import org.apache.synapse.util.CommentListUtil;
 import org.apache.synapse.util.PolicyInfo;
 
 import javax.xml.namespace.QName;
@@ -319,6 +320,8 @@ public class DummyProxyServiceFactory {
         if (elem.getFirstChildWithName(new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "enableSec")) != null) {
             proxy.setWsSecEnabled(true);
         }
+        
+        CommentListUtil.populateComments(elem, proxy.getCommentsList());
 
         return proxy;
     }

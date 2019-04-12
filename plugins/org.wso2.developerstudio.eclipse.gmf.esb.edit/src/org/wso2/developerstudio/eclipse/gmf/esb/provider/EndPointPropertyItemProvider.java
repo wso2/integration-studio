@@ -18,6 +18,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb.provider;
 import java.util.Collection;
 import java.util.List;
 
+import org.apache.commons.lang.WordUtils;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
@@ -38,6 +39,8 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPointProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 
 /**
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.EndPointProperty} object.
@@ -209,14 +212,33 @@ public class EndPointPropertyItemProvider extends ItemProviderAdapter implements
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
+     * @generated NOT
      */
     @Override
     public String getText(Object object) {
-        String label = ((EndPointProperty)object).getName();
-        return label == null || label.length() == 0 ?
-            getString("_UI_EndPointProperty_type") :
-            getString("_UI_EndPointProperty_type") + " " + label;
+        String propertyName = ((EndPointProperty) object).getName();
+        String propertyNameLabel = WordUtils.abbreviate(propertyName, 40, 45, " ...");
+        String propertyValueType = ((EndPointProperty) object).getValueType().toString();
+        String propertyValue = ((EndPointProperty) object).getValue();
+        String valueExpression = ((EndPointProperty) object).getValueExpression().toString();
+
+        if (propertyValueType.equalsIgnoreCase(PropertyValueType.LITERAL.getName())) {
+            if (((EndPointProperty) object).getValue() != null) {
+                return propertyName == null || propertyName.length() == 0 ? getString("_UI_EndPointProperty_type")
+                        : getString("_UI_EndPointProperty_type") + "  -  "
+                                + EEFPropertyViewUtil.spaceFormat(propertyNameLabel)
+                                + EEFPropertyViewUtil.spaceFormat(propertyValue);
+            } else {
+                return propertyName == null || propertyName.length() == 0 ? getString("_UI_EndPointProperty_type")
+                        : getString("_UI_EndPointProperty_type") + "  -  "
+                                + EEFPropertyViewUtil.spaceFormat(propertyNameLabel);
+            }
+        } else {
+            return propertyName == null || propertyName.length() == 0 ? getString("_UI_EndPointProperty_type")
+                    : getString("_UI_EndPointProperty_type") + "  -  "
+                            + EEFPropertyViewUtil.spaceFormat(propertyNameLabel)
+                            + EEFPropertyViewUtil.spaceFormat(valueExpression);
+        }
     }
 
     /**

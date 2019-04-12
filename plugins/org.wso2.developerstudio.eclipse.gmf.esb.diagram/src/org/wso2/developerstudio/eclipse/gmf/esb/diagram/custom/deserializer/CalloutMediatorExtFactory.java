@@ -132,6 +132,8 @@ public class CalloutMediatorExtFactory extends AbstractMediatorFactory {
                 callout.setSecurityOn(false);
             }
         }
+        
+        addAllCommentChildrenToList(elem, callout.getCommentsList());
 
         return callout;
     }

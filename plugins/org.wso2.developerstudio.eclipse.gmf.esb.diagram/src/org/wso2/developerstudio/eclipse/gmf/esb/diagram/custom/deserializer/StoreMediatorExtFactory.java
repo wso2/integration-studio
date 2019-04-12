@@ -80,6 +80,8 @@ public class StoreMediatorExtFactory extends MessageStoreMediatorFactory {
         if (sequenceAtt != null) {
             ((MessageStoreMediator) mediator).setOnStoreSequence(sequenceAtt.getAttributeValue());
         }
+        
+        addAllCommentChildrenToList(omElement, ((MessageStoreMediator) mediator).getCommentsList());
 
         return mediator;
     }

@@ -550,7 +550,7 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
      */
 	protected Composite createScriptBodyText(FormToolkit widgetFactory, Composite parent) {
 		Control scriptBodyLabel = createDescription(parent, EsbViewsRepository.ScriptMediator.Properties.scriptBody, EsbMessages.ScriptMediatorPropertiesEditionPart_ScriptBodyLabel);
-		scriptBody = widgetFactory.createText(parent, "", SWT.MULTI | SWT.BORDER | SWT.WRAP | SWT.V_SCROLL); //$NON-NLS-1$
+		scriptBody = widgetFactory.createText(parent, "", SWT.MULTI | SWT.BORDER | SWT.WRAP | SWT.V_SCROLL);
 		scriptBody.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData scriptBodyData = new GridData(GridData.FILL_HORIZONTAL);
@@ -1242,7 +1242,6 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
     private void openScriptDynamicKeyNamespacedPropertyEditor(final Composite parent) {
         EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
                 SWT.NULL, scriptDynamicKey);
-        // valueExpression.setPropertyValue(valueExpressionText.getText());
         scriptDynamicKey = nspd.open();
         scriptDynamicKeyText.setText(scriptDynamicKey.getPropertyValue());
         propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(

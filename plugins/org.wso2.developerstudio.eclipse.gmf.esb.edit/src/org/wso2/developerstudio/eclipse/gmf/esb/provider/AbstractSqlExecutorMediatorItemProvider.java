@@ -31,7 +31,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.SqlExecutorDatasourceType;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
-import static org.wso2.developerstudio.eclipse.gmf.esb.Constants.*;
+import org.wso2.developerstudio.eclipse.gmf.esb.Constants;
 
 /**
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator} object.
@@ -677,24 +677,24 @@ public class AbstractSqlExecutorMediatorItemProvider extends MediatorItemProvide
                 @Override
                 protected void doExecute() {
                     if (dbType == SqlDatabaseType.MYSQL) {
-                        if (!sqlMediator.getConnectionDbDriver().equals(TXT_DATABASE_DRIVER_MYSQL)) {
-                            sqlMediator.setConnectionDbDriver(TXT_DATABASE_DRIVER_MYSQL);
+                        if (!sqlMediator.getConnectionDbDriver().equals(Constants.TXT_DATABASE_DRIVER_MYSQL)) {
+                            sqlMediator.setConnectionDbDriver(Constants.TXT_DATABASE_DRIVER_MYSQL);
                         }
                     } else if (dbType == SqlDatabaseType.ORACLE) {
-                        if (!sqlMediator.getConnectionDbDriver().equals(TXT_DATABASE_DRIVER_ORACLE)) {
-                            sqlMediator.setConnectionDbDriver(TXT_DATABASE_DRIVER_ORACLE);
+                        if (!sqlMediator.getConnectionDbDriver().equals(Constants.TXT_DATABASE_DRIVER_ORACLE)) {
+                            sqlMediator.setConnectionDbDriver(Constants.TXT_DATABASE_DRIVER_ORACLE);
                         }
                     } else if (dbType == SqlDatabaseType.MSSQL) {
-                        if (!sqlMediator.getConnectionDbDriver().equals(TXT_DATABASE_DRIVER_MSSQL)) {
-                            sqlMediator.setConnectionDbDriver(TXT_DATABASE_DRIVER_MSSQL);
+                        if (!sqlMediator.getConnectionDbDriver().equals(Constants.TXT_DATABASE_DRIVER_MSSQL)) {
+                            sqlMediator.setConnectionDbDriver(Constants.TXT_DATABASE_DRIVER_MSSQL);
                         }
                     } else if (dbType == SqlDatabaseType.POSTGRESQL) {
-                        if (!sqlMediator.getConnectionDbDriver().equals(TXT_DATABASE_DRIVER_POSTGRESQL)) {
-                            sqlMediator.setConnectionDbDriver(TXT_DATABASE_DRIVER_POSTGRESQL);
+                        if (!sqlMediator.getConnectionDbDriver().equals(Constants.TXT_DATABASE_DRIVER_POSTGRESQL)) {
+                            sqlMediator.setConnectionDbDriver(Constants.TXT_DATABASE_DRIVER_POSTGRESQL);
                         }
                     } else if (dbType == SqlDatabaseType.OTHER) {
-                        if (!sqlMediator.getConnectionDbDriver().equals(TXT_EMPTY)) {
-                            sqlMediator.setConnectionDbDriver(TXT_EMPTY);
+                        if (!sqlMediator.getConnectionDbDriver().equals(Constants.TXT_EMPTY)) {
+                            sqlMediator.setConnectionDbDriver(Constants.TXT_EMPTY);
                         }
                     }
                 }
@@ -719,24 +719,24 @@ public class AbstractSqlExecutorMediatorItemProvider extends MediatorItemProvide
                 @Override
                 protected void doExecute() {
                     if (dbType == SqlDatabaseType.MYSQL) {
-                        if (!sqlMediator.getConnectionURL().equals(TXT_DATABASE_CONNECTION_URL_MYSQL)) {
-                            sqlMediator.setConnectionURL(TXT_DATABASE_CONNECTION_URL_MYSQL);
+                        if (!sqlMediator.getConnectionURL().equals(Constants.TXT_DATABASE_CONNECTION_URL_MYSQL)) {
+                            sqlMediator.setConnectionURL(Constants.TXT_DATABASE_CONNECTION_URL_MYSQL);
                         }
                     } else if (dbType == SqlDatabaseType.ORACLE) {
-                        if (!sqlMediator.getConnectionURL().equals(TXT_DATABASE_CONNECTION_URL_ORACLE)) {
-                            sqlMediator.setConnectionURL(TXT_DATABASE_CONNECTION_URL_ORACLE);
+                        if (!sqlMediator.getConnectionURL().equals(Constants.TXT_DATABASE_CONNECTION_URL_ORACLE)) {
+                            sqlMediator.setConnectionURL(Constants.TXT_DATABASE_CONNECTION_URL_ORACLE);
                         }
                     } else if (dbType == SqlDatabaseType.MSSQL) {
-                        if (!sqlMediator.getConnectionURL().equals(TXT_DATABASE_CONNECTION_URL_MSSQL)) {
-                            sqlMediator.setConnectionURL(TXT_DATABASE_CONNECTION_URL_MSSQL);
+                        if (!sqlMediator.getConnectionURL().equals(Constants.TXT_DATABASE_CONNECTION_URL_MSSQL)) {
+                            sqlMediator.setConnectionURL(Constants.TXT_DATABASE_CONNECTION_URL_MSSQL);
                         }
                     } else if (dbType == SqlDatabaseType.POSTGRESQL) {
-                        if (!sqlMediator.getConnectionURL().equals(TXT_DATABASE_CONNECTION_URL_POSTGRESQL)) {
-                            sqlMediator.setConnectionURL(TXT_DATABASE_CONNECTION_URL_POSTGRESQL);
+                        if (!sqlMediator.getConnectionURL().equals(Constants.TXT_DATABASE_CONNECTION_URL_POSTGRESQL)) {
+                            sqlMediator.setConnectionURL(Constants.TXT_DATABASE_CONNECTION_URL_POSTGRESQL);
                         }
                     } else if (dbType == SqlDatabaseType.OTHER) {
-                        if (!sqlMediator.getConnectionURL().equals(TXT_EMPTY)) {
-                            sqlMediator.setConnectionURL(TXT_EMPTY);
+                        if (!sqlMediator.getConnectionURL().equals(Constants.TXT_EMPTY)) {
+                            sqlMediator.setConnectionURL(Constants.TXT_EMPTY);
                         }
                     }
                 }
@@ -760,24 +760,24 @@ public class AbstractSqlExecutorMediatorItemProvider extends MediatorItemProvide
                 @Override
                 protected void doExecute() {
                     if (dbType == SqlDatabaseType.MYSQL) {
-                        if (!sqlMediator.getConnectionUsername().equals(TXT_DATABASE_USER_MYSQL)) {
-                            sqlMediator.setConnectionUsername(TXT_DATABASE_USER_MYSQL);
+                        if (!sqlMediator.getConnectionUsername().equals(Constants.TXT_DATABASE_USER_MYSQL)) {
+                            sqlMediator.setConnectionUsername(Constants.TXT_DATABASE_USER_MYSQL);
                         }
                     } else if (dbType == SqlDatabaseType.ORACLE) {
-                        if (!sqlMediator.getConnectionUsername().equals(TXT_DATABASE_USER_ORACLE)) {
-                            sqlMediator.setConnectionUsername(TXT_DATABASE_USER_ORACLE);
+                        if (!sqlMediator.getConnectionUsername().equals(Constants.TXT_DATABASE_USER_ORACLE)) {
+                            sqlMediator.setConnectionUsername(Constants.TXT_DATABASE_USER_ORACLE);
                         }
                     } else if (dbType == SqlDatabaseType.MSSQL) {
-                        if (!sqlMediator.getConnectionUsername().equals(TXT_DATABASE_USER_MSSQL)) {
-                            sqlMediator.setConnectionUsername(TXT_DATABASE_USER_MSSQL);
+                        if (!sqlMediator.getConnectionUsername().equals(Constants.TXT_DATABASE_USER_MSSQL)) {
+                            sqlMediator.setConnectionUsername(Constants.TXT_DATABASE_USER_MSSQL);
                         }
                     } else if (dbType == SqlDatabaseType.POSTGRESQL) {
-                        if (!sqlMediator.getConnectionUsername().equals(TXT_DATABASE_USER_POSTGRESQL)) {
-                            sqlMediator.setConnectionUsername(TXT_DATABASE_USER_POSTGRESQL);
+                        if (!sqlMediator.getConnectionUsername().equals(Constants.TXT_DATABASE_USER_POSTGRESQL)) {
+                            sqlMediator.setConnectionUsername(Constants.TXT_DATABASE_USER_POSTGRESQL);
                         }
                     } else if (dbType == SqlDatabaseType.OTHER) {
-                        if (!sqlMediator.getConnectionUsername().equals(TXT_EMPTY)) {
-                            sqlMediator.setConnectionUsername(TXT_EMPTY);
+                        if (!sqlMediator.getConnectionUsername().equals(Constants.TXT_EMPTY)) {
+                            sqlMediator.setConnectionUsername(Constants.TXT_EMPTY);
                         }
                     }
                 }

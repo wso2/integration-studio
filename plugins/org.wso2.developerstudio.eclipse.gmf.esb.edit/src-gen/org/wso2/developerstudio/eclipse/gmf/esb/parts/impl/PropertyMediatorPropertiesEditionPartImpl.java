@@ -1724,9 +1724,11 @@ public class PropertyMediatorPropertiesEditionPartImpl extends CompositeProperti
     }
 
     @Override
-    public void setValueExpression(
-            NamespacedProperty nameSpacedProperty) {
-        valueExpression = nameSpacedProperty;
+    public void setValueExpression(NamespacedProperty nameSpacedProperty) {
+        if (nameSpacedProperty != null) {
+            valueExpressionText.setText(nameSpacedProperty.getPropertyValue());
+            valueExpression = nameSpacedProperty;
+        }
     }
     
     @Override

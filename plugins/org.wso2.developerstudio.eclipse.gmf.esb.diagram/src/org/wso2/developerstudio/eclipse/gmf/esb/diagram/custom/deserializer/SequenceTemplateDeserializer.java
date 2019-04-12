@@ -78,6 +78,9 @@ public class SequenceTemplateDeserializer extends AbstractEsbNodeDeserializer<Te
                 }
             }
         }
+        
+        executeAddAllCommand(templateModel.getCommentsList(), template.getCommentsList());
+        
         return templateModel;
     }
 

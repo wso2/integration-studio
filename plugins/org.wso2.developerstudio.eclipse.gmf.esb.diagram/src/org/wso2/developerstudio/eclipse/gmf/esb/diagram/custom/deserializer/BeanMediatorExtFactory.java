@@ -67,6 +67,9 @@ public class BeanMediatorExtFactory extends AbstractMediatorFactory {
                 // ignore
             }
         }
+        
+        addAllCommentChildrenToList(elem, mediator.getCommentsList());
+        
         return mediator;
     }
 

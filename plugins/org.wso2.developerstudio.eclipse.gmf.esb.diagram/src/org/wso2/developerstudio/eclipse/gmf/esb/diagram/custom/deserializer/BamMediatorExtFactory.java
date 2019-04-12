@@ -41,6 +41,8 @@ public class BamMediatorExtFactory extends AbstractMediatorFactory {
         bam.getStream().getStreamConfiguration().setName(this.getStreamName(omElement));
         bam.getStream().getStreamConfiguration().setVersion(this.getStreamVersion(omElement));
 
+        addAllCommentChildrenToList(omElement, bam.getCommentsList());
+        
         return bam;
     }
 

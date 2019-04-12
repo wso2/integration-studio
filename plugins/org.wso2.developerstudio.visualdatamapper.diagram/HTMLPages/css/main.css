@@ -7,9 +7,11 @@
 }
 
 .header {
-	padding: 10px;
+	padding: 5px 10px;
 	margin: 0 -15px 10px -15px;
 	color: #fff;
+	font-size: 20px;
+	font-weight: 400;
 }
 
 .box {
@@ -21,6 +23,10 @@
 .button-center {
 	display: flex;
 	align-items: center;
+}
+
+.input-radio, .output-radio {
+	text-align: center;
 }
 
 .CodeMirror-empty.CodeMirror-focused { outline: none; }

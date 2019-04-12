@@ -227,6 +227,13 @@ public class DefaultEndPointPropertiesEditionComponent extends SinglePartPropert
 			}
 			// End of user code
 			
+			// Start of user code for failover retry error codes
+			if (isAccessible(EsbViewsRepository.DefaultEndPoint.FailoverErrorCodes.failoverNonRetryErrorCodes)) {
+				basePart.setFailoverNonRetryErrorCodes(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING,
+						defaultEndPoint.getFailoverNonRetryErrorCodes()));
+			}
+			// End of user code
+			
 			// init filters
 			
 			
@@ -434,6 +441,11 @@ public class DefaultEndPointPropertiesEditionComponent extends SinglePartPropert
 		if (editorKey == EsbViewsRepository.DefaultEndPoint.QoS.outboundPolicy) {
 			return EsbPackage.eINSTANCE.getAbstractEndPoint_OutboundPolicy();
 		}
+		// Start of user code for failover error codes
+		if (editorKey == EsbViewsRepository.DefaultEndPoint.FailoverErrorCodes.failoverNonRetryErrorCodes) {
+			return EsbPackage.eINSTANCE.getAbstractEndPoint_FailoverNonRetryErrorCodes();
+		}
+		// End of user code
 		return super.associatedFeature(editorKey);
 	}
 
@@ -616,6 +628,14 @@ public class DefaultEndPointPropertiesEditionComponent extends SinglePartPropert
 			// End of user code
 			
 		}
+		
+		// Start of user code for failover error codes
+		if (EsbViewsRepository.DefaultEndPoint.FailoverErrorCodes.failoverNonRetryErrorCodes == event
+		        .getAffectedEditor()) {
+			defaultEndPoint.setFailoverNonRetryErrorCodes((java.lang.String) EEFConverterUtil
+			        .createFromString(EcorePackage.Literals.ESTRING, (String) event.getNewValue()));
+		}
+		// End of user code
 	}
 
 	/**
@@ -757,7 +777,7 @@ public class DefaultEndPointPropertiesEditionComponent extends SinglePartPropert
 					// Start of user code for reliableMessagingPolicy live update
 			if (EsbPackage.eINSTANCE.getAbstractEndPoint_ReliableMessagingPolicy().equals(msg.getFeature())
 					&& msg.getNotifier().equals(semanticObject) && basePart != null
-					&& isAccessible(EsbViewsRepository.AddressEndPoint.QoS.reliableMessagingPolicy)) {
+					&& isAccessible(EsbViewsRepository.DefaultEndPoint.QoS.reliableMessagingPolicy)) {
 				if (msg.getNewValue() != null) {
 					basePart.setReliableMessagingPolicy((RegistryKeyProperty) msg.getNewValue());
 				} else {
@@ -769,7 +789,7 @@ public class DefaultEndPointPropertiesEditionComponent extends SinglePartPropert
 					// Start of user code for securityPolicy live update
 			if (EsbPackage.eINSTANCE.getAbstractEndPoint_SecurityPolicy().equals(msg.getFeature())
 					&& msg.getNotifier().equals(semanticObject) && basePart != null
-					&& isAccessible(EsbViewsRepository.AddressEndPoint.QoS.securityPolicy)) {
+					&& isAccessible(EsbViewsRepository.DefaultEndPoint.QoS.securityPolicy)) {
 				if (msg.getNewValue() != null) {
 					basePart.setSecurityPolicy((RegistryKeyProperty) msg.getNewValue());
 				} else {
@@ -781,7 +801,7 @@ public class DefaultEndPointPropertiesEditionComponent extends SinglePartPropert
 					// Start of user code for inboundPolicy live update
 			if (EsbPackage.eINSTANCE.getAbstractEndPoint_InboundPolicy().equals(msg.getFeature())
 					&& msg.getNotifier().equals(semanticObject) && basePart != null
-					&& isAccessible(EsbViewsRepository.AddressEndPoint.QoS.inboundPolicy)) {
+					&& isAccessible(EsbViewsRepository.DefaultEndPoint.QoS.inboundPolicy)) {
 				if (msg.getNewValue() != null) {
 					basePart.setInboundPolicy((RegistryKeyProperty) msg.getNewValue());
 				} else {
@@ -793,7 +813,7 @@ public class DefaultEndPointPropertiesEditionComponent extends SinglePartPropert
 					// Start of user code for outboundPolicy live update
 			if (EsbPackage.eINSTANCE.getAbstractEndPoint_OutboundPolicy().equals(msg.getFeature())
 					&& msg.getNotifier().equals(semanticObject) && basePart != null
-					&& isAccessible(EsbViewsRepository.AddressEndPoint.QoS.outboundPolicy)) {
+					&& isAccessible(EsbViewsRepository.DefaultEndPoint.QoS.outboundPolicy)) {
 				if (msg.getNewValue() != null) {
 					basePart.setOutboundPolicy((RegistryKeyProperty) msg.getNewValue());
 				} else {
@@ -802,6 +822,18 @@ public class DefaultEndPointPropertiesEditionComponent extends SinglePartPropert
 			}
 					// End of user code
 			
+			// Start of user code for failover error codes
+			if (EsbPackage.eINSTANCE.getAbstractEndPoint_FailoverNonRetryErrorCodes().equals(msg.getFeature())
+			        && msg.getNotifier().equals(semanticObject) && basePart != null
+			        && isAccessible(EsbViewsRepository.DefaultEndPoint.FailoverErrorCodes.failoverNonRetryErrorCodes)) {
+				if (msg.getNewValue() != null) {
+					basePart.setFailoverNonRetryErrorCodes(
+					        EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
+				} else {
+					basePart.setFailoverNonRetryErrorCodes("");
+				}
+			}
+			// End of user code
 			
 		}
 	}
@@ -844,7 +876,8 @@ public class DefaultEndPointPropertiesEditionComponent extends SinglePartPropert
 			EsbPackage.eINSTANCE.getAbstractEndPoint_ReliableMessagingPolicy(),
 			EsbPackage.eINSTANCE.getAbstractEndPoint_SecurityPolicy(),
 			EsbPackage.eINSTANCE.getAbstractEndPoint_InboundPolicy(),
-			EsbPackage.eINSTANCE.getAbstractEndPoint_OutboundPolicy()		);
+			EsbPackage.eINSTANCE.getAbstractEndPoint_OutboundPolicy(),
+			EsbPackage.eINSTANCE.getAbstractEndPoint_FailoverNonRetryErrorCodes());
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -1034,6 +1067,15 @@ public class DefaultEndPointPropertiesEditionComponent extends SinglePartPropert
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getAbstractEndPoint_TraceEnabled().getEAttributeType(), newValue);
 				}
+				// Start of user code for failover error codes
+				if (EsbViewsRepository.DefaultEndPoint.FailoverErrorCodes.failoverNonRetryErrorCodes == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getAbstractEndPoint_FailoverNonRetryErrorCodes().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getAbstractEndPoint_FailoverNonRetryErrorCodes().getEAttributeType(), newValue);
+				}
+				// End of user code
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);
 			} catch (WrappedException we) {

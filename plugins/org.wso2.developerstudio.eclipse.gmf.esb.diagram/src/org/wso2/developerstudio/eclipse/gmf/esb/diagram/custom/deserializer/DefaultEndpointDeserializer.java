@@ -72,6 +72,8 @@ public class DefaultEndpointDeserializer extends AbstractEndpointDeserializer {
 
         DefaultEndpointFormPage defaultEndpointPage = (DefaultEndpointFormPage) endpointPage;
         deserializeEndpoint(formEditor, endpointObject);
+        defaultEndpointPage.setEndpointCommentList(endpoint.getCommentsList());
+        
         if (StringUtils.isNotEmpty(defaultEndpointPage.getEP_Description().getText())) {
             setTextValue(defaultEndpointPage.getEP_Description(), endpoint.getDescription());
         }

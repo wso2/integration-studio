@@ -208,8 +208,7 @@
 				controlData="filterClass=org.wso2.developerstudio.eclipse.artifact.messagestore.filter.ESBProjectFilter">Save location:</data>
 			<data modelProperty="create.esb.prj" type="link"
 				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController"
-				group="location" controlData="align=right">&lt;a&gt;Create a new ESB
-				project...&lt;/a&gt;</data>
+				group="location" controlData="align=right">&lt;a&gt;Create a new ESB project...&lt;/a&gt;</data>
 
 		</settings>
 		<settings optionId="import.store"

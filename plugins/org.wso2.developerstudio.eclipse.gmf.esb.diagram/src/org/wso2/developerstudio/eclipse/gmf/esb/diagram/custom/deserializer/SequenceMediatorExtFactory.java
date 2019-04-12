@@ -23,7 +23,6 @@ import org.apache.axiom.om.OMElement;
 import org.apache.synapse.Mediator;
 import org.apache.synapse.SequenceType;
 import org.apache.synapse.config.xml.SequenceMediatorFactory;
-import org.apache.synapse.config.xml.ValueFactory;
 import org.apache.synapse.config.xml.XMLConfigConstants;
 import org.apache.synapse.mediators.Value;
 import org.apache.synapse.mediators.base.SequenceMediator;
@@ -73,6 +72,8 @@ public class SequenceMediatorExtFactory extends SequenceMediatorFactory {
 
             }
         }
+        
+        addAllCommentChildrenToList(omElement, ((SequenceMediator) mediator).getCommentsList());
 
         return mediator;
     }

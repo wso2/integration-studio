@@ -913,6 +913,9 @@ public class DependencyProvider extends Dialog {
         versionComboBox.setEnabled(true);
         downloadButton.setEnabled(true);
 
+        versionComboBox.setEnabled(true);
+        downloadButton.setEnabled(true);
+        
         switch (connectiontypeComboBox.getText()) {
         case "MYSQL":
             versionComboBox.setItems(mysqlVersionArr);

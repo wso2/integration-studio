@@ -523,10 +523,9 @@ public class PropertyMediatorItemProvider extends MediatorItemProvider {
                     : EEFPropertyViewUtil.spaceFormat("Property");
         } else if (valueType.equalsIgnoreCase(PropertyValueType.LITERAL.getName())) {
             return newLabel == null || label.length() == 0 ? getString("_UI_PropertyMediator_type")
-                    : value != null
-                            ? "Property  -  " + EEFPropertyViewUtil.spaceFormat(propertyName)
-                                    + EEFPropertyViewUtil.spaceFormat(value)
-                            : "Property  -  " + EEFPropertyViewUtil.spaceFormat(propertyName);
+                    : value != null ? "Property  -  " + EEFPropertyViewUtil.spaceFormat(propertyName) + 
+                            EEFPropertyViewUtil.spaceFormat(value) : "Property  -  " + 
+                            EEFPropertyViewUtil.spaceFormat(propertyName);
         } else {
             return newLabel == null || label.length() == 0 ? getString("_UI_PropertyMediator_type")
                     : "Property  -  " + EEFPropertyViewUtil.spaceFormat(propertyName)

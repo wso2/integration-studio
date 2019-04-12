@@ -260,7 +260,7 @@ public class EEFPropertyViewUtil {
     }
 
     public static String spaceFormat(String str) {
-        int maxLength = 30;
+        int maxLength = 100;
         int tabSpace = (maxLength - str.length()) / 4;
         for (int i = 0; i < tabSpace; i++) {
             str = str.concat("\t");

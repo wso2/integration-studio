@@ -181,7 +181,7 @@ public class RegistryKeyPropertyItemProvider extends ItemProviderAdapter impleme
         String keyValue = "";
         RegistryKeyProperty property = (RegistryKeyProperty) object;
         String keyName = property.getKeyName();
-        String keyNameLabel = WordUtils.abbreviate(keyName, 12, 15, " ...");
+        String keyNameLabel = WordUtils.abbreviate(keyName, 40, 45, " ...");
 
         if (null != property) {
             keyValue = property.getKeyValue();

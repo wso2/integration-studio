@@ -183,13 +183,11 @@ public class ValidateSchemaItemProvider extends EsbNodeItemProvider {
 
         if (keyTypeLabel.equalsIgnoreCase(KeyType.STATIC.getName())) {
             return keyTypeLabel == null || keyTypeLabel.length() == 0 ? getString("_UI_ValidateSchema_type")
-                    : EEFPropertyViewUtil.spaceFormat(getString("_UI_ValidateSchema_type"))
-                            + EEFPropertyViewUtil.spaceFormat(keyTypeLabel)
+                    : getString("_UI_ValidateSchema_type") + "  -  " + EEFPropertyViewUtil.spaceFormat(keyTypeLabel)
                             + EEFPropertyViewUtil.spaceFormat(staticKeyValue);
         } else {
             return keyTypeLabel == null || keyTypeLabel.length() == 0 ? getString("_UI_ValidateSchema_type")
-                    : EEFPropertyViewUtil.spaceFormat(getString("_UI_ValidateSchema_type"))
-                            + EEFPropertyViewUtil.spaceFormat(keyTypeLabel)
+                    : getString("_UI_ValidateSchema_type") + "  -  " + EEFPropertyViewUtil.spaceFormat(keyTypeLabel)
                             + EEFPropertyViewUtil.spaceFormat(dynamicKeyValue);
         }
     }

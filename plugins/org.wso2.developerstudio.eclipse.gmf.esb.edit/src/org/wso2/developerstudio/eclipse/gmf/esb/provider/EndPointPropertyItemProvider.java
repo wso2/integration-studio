@@ -217,7 +217,7 @@ public class EndPointPropertyItemProvider extends ItemProviderAdapter implements
     @Override
     public String getText(Object object) {
         String propertyName = ((EndPointProperty) object).getName();
-        String propertyNameLabel = WordUtils.abbreviate(propertyName, 8, 10, " ...");
+        String propertyNameLabel = WordUtils.abbreviate(propertyName, 40, 45, " ...");
         String propertyValueType = ((EndPointProperty) object).getValueType().toString();
         String propertyValue = ((EndPointProperty) object).getValue();
         String valueExpression = ((EndPointProperty) object).getValueExpression().toString();
@@ -225,17 +225,17 @@ public class EndPointPropertyItemProvider extends ItemProviderAdapter implements
         if (propertyValueType.equalsIgnoreCase(PropertyValueType.LITERAL.getName())) {
             if (((EndPointProperty) object).getValue() != null) {
                 return propertyName == null || propertyName.length() == 0 ? getString("_UI_EndPointProperty_type")
-                        : EEFPropertyViewUtil.spaceFormat(getString("_UI_EndPointProperty_type"))
+                        : getString("_UI_EndPointProperty_type") + "  -  "
                                 + EEFPropertyViewUtil.spaceFormat(propertyNameLabel)
                                 + EEFPropertyViewUtil.spaceFormat(propertyValue);
             } else {
                 return propertyName == null || propertyName.length() == 0 ? getString("_UI_EndPointProperty_type")
-                        : EEFPropertyViewUtil.spaceFormat(getString("_UI_EndPointProperty_type"))
+                        : getString("_UI_EndPointProperty_type") + "  -  "
                                 + EEFPropertyViewUtil.spaceFormat(propertyNameLabel);
             }
         } else {
             return propertyName == null || propertyName.length() == 0 ? getString("_UI_EndPointProperty_type")
-                    : EEFPropertyViewUtil.spaceFormat(getString("_UI_EndPointProperty_type"))
+                    : getString("_UI_EndPointProperty_type") + "  -  "
                             + EEFPropertyViewUtil.spaceFormat(propertyNameLabel)
                             + EEFPropertyViewUtil.spaceFormat(valueExpression);
         }

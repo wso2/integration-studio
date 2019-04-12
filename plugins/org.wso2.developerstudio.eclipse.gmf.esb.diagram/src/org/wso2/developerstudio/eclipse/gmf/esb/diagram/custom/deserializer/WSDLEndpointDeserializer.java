@@ -87,6 +87,7 @@ public class WSDLEndpointDeserializer extends AbstractEndpointDeserializer {
         setTextValue(wsdlEndpointPage.getWsdlEP_Port(), endpoint.getPortName());
         setTextValue(wsdlEndpointPage.getEndpointName(), endpoint.getName());
         setTextValue(wsdlEndpointPage.getEP_Description(), endpoint.getDescription());
+        wsdlEndpointPage.setEndpointCommentList(endpoint.getCommentsList());
 
         if (endpoint.getProperties().size() > 0) {
             List<EndPointProperty> existingProperties = wsdlEndpointPage.endpointPropertyList;

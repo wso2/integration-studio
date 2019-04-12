@@ -30,7 +30,6 @@ import org.apache.synapse.Mediator;
 import org.apache.synapse.config.xml.MediatorPropertyFactory;
 import org.apache.synapse.config.xml.OMElementUtils;
 import org.apache.synapse.config.xml.SynapseXPathFactory;
-import org.apache.synapse.config.xml.ValueFactory;
 import org.apache.synapse.config.xml.XMLConfigConstants;
 import org.apache.synapse.mediators.Value;
 import org.apache.synapse.mediators.xquery.MediatorBaseVariable;
@@ -159,6 +158,8 @@ public class XQueryMediatorExtFactory extends XQueryMediatorFactory {
                 }
             }
         }
+        
+        addAllCommentChildrenToList(omElement, ((XQueryMediator) mediator).getCommentsList());
 
         return mediator;
     }

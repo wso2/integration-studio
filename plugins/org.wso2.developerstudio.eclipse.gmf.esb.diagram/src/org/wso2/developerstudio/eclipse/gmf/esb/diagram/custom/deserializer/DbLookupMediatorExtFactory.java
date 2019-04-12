@@ -43,6 +43,8 @@ public class DbLookupMediatorExtFactory extends DBLookupMediatorFactory {
         processAuditStatus(mediator, omElement);
         buildDataSource(omElement, (DBLookupMediator) mediator);
         processStatements(omElement, (DBLookupMediator) mediator);
+        
+        addAllCommentChildrenToList(omElement, ((DBLookupMediator) mediator).getCommentsList());
 
         return mediator;
     }

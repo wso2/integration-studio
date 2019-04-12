@@ -92,6 +92,8 @@ public class SwitchMediatorExtFactory extends SwitchMediatorFactory {
             ((SwitchMediator) mediator).setDefaultCase(aCase);
             break;
         }
+        
+        addAllCommentChildrenToList(omElement, ((SwitchMediator) mediator).getCommentsList());
 
         return mediator;
 

@@ -110,6 +110,8 @@ public class ConditionalRouterMediatorExtFactory extends ConditionalRouterMediat
             ((ConditionalRouterMediator) mediator).addRoute(conditionalRoute);
 
         }
+        
+        addAllCommentChildrenToList(omElement, ((ConditionalRouterMediator) mediator).getCommentsList());
 
         return mediator;
     }

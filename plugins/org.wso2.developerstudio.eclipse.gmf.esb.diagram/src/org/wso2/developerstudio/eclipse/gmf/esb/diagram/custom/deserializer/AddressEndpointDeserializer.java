@@ -63,6 +63,8 @@ public class AddressEndpointDeserializer extends AbstractEndpointDeserializer {
         if (addressEndpoint.getDefinition() != null) {
             executeSetValueCommand(ADDRESS_END_POINT__URI, addressEndpoint.getDefinition().getAddress());
         }
+        
+        executeAddAllCommand(endPoint.getCommentsList(), object.getCommentsList());
 
         return endPoint;
     }
@@ -81,6 +83,7 @@ public class AddressEndpointDeserializer extends AbstractEndpointDeserializer {
         setTextValue(addressEndpointPage.getAddressEP_URI(), endpoint.getDefinition().getAddress());
         setTextValue(addressEndpointPage.getEP_Description(), endpoint.getDescription());
         deserializeEndpoint(addressEPFormEditor, endpointObject);
+        addressEndpointPage.setEndpointCommentList(endpoint.getCommentsList());
 
         if (endpoint.getProperties().size() > 0) {
             List<EndPointProperty> existingProperties = addressEndpointPage.endpointPropertyList;

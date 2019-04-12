@@ -73,6 +73,8 @@ public class EnrichMediatorExtFactory extends EnrichMediatorFactory {
 
         populateSource(source, sourceEle, mediator);
         populateTarget(target, targetEle, mediator);
+        
+        addAllCommentChildrenToList(omElement, ((EnrichMediator) mediator).getCommentsList());
 
         return mediator;
     }

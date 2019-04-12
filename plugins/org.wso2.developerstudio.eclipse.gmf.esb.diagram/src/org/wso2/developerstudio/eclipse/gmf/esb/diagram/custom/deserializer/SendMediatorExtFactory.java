@@ -24,7 +24,6 @@ import org.apache.axiom.om.OMElement;
 import org.apache.synapse.Mediator;
 import org.apache.synapse.SynapseConstants;
 import org.apache.synapse.config.xml.SendMediatorFactory;
-import org.apache.synapse.config.xml.ValueFactory;
 import org.apache.synapse.config.xml.XMLConfigConstants;
 import org.apache.synapse.config.xml.endpoints.EndpointFactory;
 import org.apache.synapse.endpoints.AddressEndpoint;
@@ -168,6 +167,8 @@ public class SendMediatorExtFactory extends SendMediatorFactory {
         if ("true".equals(buildMessage)) {
             ((SendMediator) mediator).setBuildMessage(true);
         }
+        
+        addAllCommentChildrenToList(omElement, ((SendMediator) mediator).getCommentsList());
 
         return mediator;
     }

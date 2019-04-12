@@ -32,6 +32,7 @@ import org.apache.synapse.endpoints.IndirectEndpoint;
 import org.apache.synapse.endpoints.EndpointDefinition;
 import org.apache.synapse.PropertyInclude;
 import org.apache.synapse.mediators.MediatorProperty;
+import org.apache.synapse.util.CommentListUtil;
 import org.apache.synapse.endpoints.AbstractEndpoint;
 import org.apache.synapse.endpoints.AddressEndpoint;
 
@@ -96,6 +97,9 @@ public abstract class DummyEndpointFactory {
         if (onFaultAtt != null) {
             ep.setErrorHandler(onFaultAtt.getAttributeValue());
         }
+        
+        CommentListUtil.populateComments(epConfig, ((AbstractEndpoint)ep).getCommentsList());
+        
         return ep;
     }
 

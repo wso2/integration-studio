@@ -69,8 +69,10 @@ public abstract class EndpointFormPage extends AbstractEsbFormPage {
     
     protected Button template_parameters;
     protected boolean isTemplate;
-	Section templateEndpointSection;
-	public List<TemplateParameter> templateParameterList;
+    Section templateEndpointSection;
+    public List<TemplateParameter> templateParameterList;
+    private List<String> endpointCommentList;
+    private List<String> templateCommentList;
     
     public boolean isTemplate() {
 		return isTemplate;
@@ -160,7 +162,23 @@ public abstract class EndpointFormPage extends AbstractEsbFormPage {
 		this.templateName = templateName;
 	}
 
-	public EndpointFormPage(FormEditor editor) {
+    public List<String> getEndpointCommentList() {
+        return endpointCommentList;
+    }
+
+    public void setEndpointCommentList(List<String> commentList) {
+        this.endpointCommentList = commentList;
+    }
+
+    public List<String> getTemplateCommentList() {
+        return templateCommentList;
+    }
+
+    public void setTemplateCommentList(List<String> templateCommentList) {
+        this.templateCommentList = templateCommentList;
+    }
+
+    public EndpointFormPage(FormEditor editor) {
 		super(editor, "endpointForm", Messages.getString("EndpointPage.sectionMainTitle"));
 		
 		endpointCommons = new EndpointCommons(this);

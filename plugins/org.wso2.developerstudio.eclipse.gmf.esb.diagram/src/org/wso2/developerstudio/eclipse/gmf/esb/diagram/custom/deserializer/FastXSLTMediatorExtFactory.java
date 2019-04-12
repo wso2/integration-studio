@@ -56,6 +56,8 @@ public class FastXSLTMediatorExtFactory extends FastXSLTMediatorFactory {
 
         processAuditStatus(mediator, omElement);
 
+        addAllCommentChildrenToList(omElement, ((FastXSLTMediator) mediator).getCommentsList());
+        
         return mediator;
     }
 

@@ -633,6 +633,7 @@ public abstract class AbstractEndpointTransformer extends AbstractEsbNodeTransfo
             AbstractEndpoint synapseEP) {
         org.apache.synapse.endpoints.Template endpointTemplate = new org.apache.synapse.endpoints.Template();
         endpointTemplate.setName(formPage.getTemplateName().getText());
+        endpointTemplate.setCommentsList(formPage.getTemplateCommentList());
         for (TemplateParameter parameter : formPage.getTemplateParameterList()) {
             endpointTemplate.addParameter(parameter.getName());
         }

@@ -82,6 +82,8 @@ public class DataMapperMediatorExtFactory extends DataMapperMediatorFactory {
 
         processAuditStatus(mediator, omElement);
 
+        addAllCommentChildrenToList(omElement, ((DataMapperMediator) mediator).getCommentsList());
+
         return mediator;
 
     }

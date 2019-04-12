@@ -9,6 +9,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb.provider;
 import java.util.Collection;
 import java.util.List;
 
+import org.apache.commons.lang.WordUtils;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
@@ -27,6 +28,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 
 /**
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty} object.
@@ -178,10 +180,13 @@ public class RegistryKeyPropertyItemProvider extends ItemProviderAdapter impleme
     public String getText(Object object) {
         String keyValue = "";
         RegistryKeyProperty property = (RegistryKeyProperty) object;
+        String keyName = property.getKeyName();
+        String keyNameLabel = WordUtils.abbreviate(keyName, 12, 15, " ...");
+
         if (null != property) {
             keyValue = property.getKeyValue();
         }
-        return keyValue;
+        return EEFPropertyViewUtil.spaceFormat(keyNameLabel) + EEFPropertyViewUtil.spaceFormat(keyValue);
     }
 
     /**

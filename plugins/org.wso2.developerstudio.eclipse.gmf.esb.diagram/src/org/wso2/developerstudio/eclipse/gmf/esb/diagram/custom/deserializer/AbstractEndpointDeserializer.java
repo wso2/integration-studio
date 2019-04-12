@@ -53,6 +53,9 @@ public abstract class AbstractEndpointDeserializer
     protected <T extends AbstractEndpoint> void deserializeEndpoint(T endpoint, AbstractEndPoint visualEndpoint) {
         String suspendErrorCodes = null;
         String retryErrorCodes = null;
+        
+        String failoverRetryEnabledErrorCodes = null;
+        String failoverRetryDisabledErrorCodes = null;
 
         if (StringUtils.isNotBlank(endpoint.getName())) {
             executeSetValueCommand(END_POINT__END_POINT_NAME, endpoint.getName());
@@ -210,6 +213,24 @@ public abstract class AbstractEndpointDeserializer
 
             executeAddValueCommand(visualEndpoint.getProperties(), property, false);
         }
+        
+        for (Integer code : endpoint.getDefinition().getRetryEnableErrorCodes()) {
+            if (failoverRetryEnabledErrorCodes == null) {
+                failoverRetryEnabledErrorCodes = code.toString();
+            } else {
+                failoverRetryEnabledErrorCodes = failoverRetryEnabledErrorCodes + "," + code.toString();
+            }
+        }
+        executeSetValueCommand(ABSTRACT_END_POINT__FAILOVER_RETRY_ERROR_CODES, failoverRetryEnabledErrorCodes);
+        
+        for (Integer code : endpoint.getDefinition().getRetryDisabledErrorCodes()) {
+            if (failoverRetryDisabledErrorCodes == null) {
+                failoverRetryDisabledErrorCodes = code.toString();
+            } else {
+                failoverRetryDisabledErrorCodes = failoverRetryDisabledErrorCodes + "," + code.toString();
+            }
+        }
+        executeSetValueCommand(ABSTRACT_END_POINT__FAILOVER_NON_RETRY_ERROR_CODES, failoverRetryDisabledErrorCodes);
 
     }
 
@@ -368,6 +389,12 @@ public abstract class AbstractEndpointDeserializer
                 endpointCommons.getEndpointTimeoutAction().select(2);
             }
         }
+        
+        setTextValue(endpointCommons.getEndpointSuspendErrorCodes(),
+                definition.getSuspendErrorCodes().toString().replace("[", "").replace("]", "").replace(", ", ","));
+        
+        setTextValue(endpointCommons.getEndpointSuspendErrorCodes(),
+                definition.getSuspendErrorCodes().toString().replace("[", "").replace("]", "").replace(", ", ","));
 
     }
 

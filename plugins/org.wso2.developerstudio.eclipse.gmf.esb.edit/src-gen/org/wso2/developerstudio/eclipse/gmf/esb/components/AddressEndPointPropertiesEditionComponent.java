@@ -54,6 +54,7 @@ import org.eclipse.jface.viewers.ViewerFilter;
 import org.wso2.developerstudio.eclipse.gmf.esb.AddressEndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPointAddressingVersion;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPointAttachmentOptimization;
+import org.wso2.developerstudio.eclipse.gmf.esb.EndPointFailoverRetryType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPointMessageFormat;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPointProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPointTimeOutAction;
@@ -227,6 +228,18 @@ public class AddressEndPointPropertiesEditionComponent extends SinglePartPropert
 			// Start of user code  for outboundPolicy command update
 			if (isAccessible(EsbViewsRepository.AddressEndPoint.QoS.outboundPolicy)) {
 				basePart.setOutboundPolicy(addressEndPoint.getOutboundPolicy());
+			}
+			// End of user code
+			
+			// Start of user code  for failover retry error codes
+			if (isAccessible(EsbViewsRepository.AddressEndPoint.FailoverErrorCodes.failoverType)) {
+				basePart.initFailoverType(EEFUtils.choiceOfValues(addressEndPoint, EsbPackage.eINSTANCE.getAbstractEndPoint_FailoverRetryType()), addressEndPoint.getFailoverRetryType());
+			}
+			if (isAccessible(EsbViewsRepository.AddressEndPoint.FailoverErrorCodes.failoverRetryErrorCodes)) {
+				basePart.setFailoverRetryErrorCodes(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, addressEndPoint.getFailoverRetryErrorCodes()));
+			}
+			if (isAccessible(EsbViewsRepository.AddressEndPoint.FailoverErrorCodes.failoverNonRetryErrorCodes)) {
+				basePart.setFailoverNonRetryErrorCodes(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, addressEndPoint.getFailoverNonRetryErrorCodes()));
 			}
 			// End of user code
 			
@@ -442,6 +455,18 @@ public class AddressEndPointPropertiesEditionComponent extends SinglePartPropert
 		if (editorKey == EsbViewsRepository.AddressEndPoint.QoS.outboundPolicy) {
 			return EsbPackage.eINSTANCE.getAbstractEndPoint_OutboundPolicy();
 		}
+		
+		// Start of user code for failover error codes
+		if (editorKey == EsbViewsRepository.AddressEndPoint.FailoverErrorCodes.failoverType) {
+			return EsbPackage.eINSTANCE.getAbstractEndPoint_FailoverRetryType();
+		}
+		if (editorKey == EsbViewsRepository.AddressEndPoint.FailoverErrorCodes.failoverRetryErrorCodes) {
+			return EsbPackage.eINSTANCE.getAbstractEndPoint_FailoverRetryErrorCodes();
+		}
+		if (editorKey == EsbViewsRepository.AddressEndPoint.FailoverErrorCodes.failoverNonRetryErrorCodes) {
+			return EsbPackage.eINSTANCE.getAbstractEndPoint_FailoverNonRetryErrorCodes();
+		}
+		// End of user code
 		return super.associatedFeature(editorKey);
 	}
 
@@ -627,6 +652,18 @@ public class AddressEndPointPropertiesEditionComponent extends SinglePartPropert
 			// End of user code
 			
 		}
+		
+		// Start of user code for failover error codes
+		if (EsbViewsRepository.AddressEndPoint.FailoverErrorCodes.failoverType == event.getAffectedEditor()) {
+			addressEndPoint.setFailoverRetryType((EndPointFailoverRetryType)event.getNewValue());
+		}
+		if (EsbViewsRepository.AddressEndPoint.FailoverErrorCodes.failoverRetryErrorCodes == event.getAffectedEditor()) {
+			addressEndPoint.setFailoverRetryErrorCodes((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
+		}
+		if (EsbViewsRepository.AddressEndPoint.FailoverErrorCodes.failoverNonRetryErrorCodes == event.getAffectedEditor()) {
+			addressEndPoint.setFailoverNonRetryErrorCodes((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
+		}
+		// End of user code
 	}
 
 	/**
@@ -820,7 +857,27 @@ public class AddressEndPointPropertiesEditionComponent extends SinglePartPropert
 			}
 					// End of user code
 			
+			// Start of user code for failover error codes
+			if (EsbPackage.eINSTANCE.getAbstractEndPoint_FailoverRetryType().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EsbViewsRepository.AddressEndPoint.FailoverErrorCodes.failoverType)) {
+				basePart.setFailoverType((EndPointFailoverRetryType) msg.getNewValue());
+			}
 			
+			if (EsbPackage.eINSTANCE.getAbstractEndPoint_FailoverRetryErrorCodes().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.AddressEndPoint.FailoverErrorCodes.failoverRetryErrorCodes)) {
+				if (msg.getNewValue() != null) {
+					basePart.setFailoverRetryErrorCodes(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
+				} else {
+					basePart.setFailoverRetryErrorCodes("");
+				}
+			}
+			
+			if (EsbPackage.eINSTANCE.getAbstractEndPoint_FailoverNonRetryErrorCodes().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.AddressEndPoint.FailoverErrorCodes.failoverNonRetryErrorCodes)) {
+				if (msg.getNewValue() != null) {
+					basePart.setFailoverNonRetryErrorCodes(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
+				} else {
+					basePart.setFailoverNonRetryErrorCodes("");
+				}
+			}
+			// End of user code
 		}
 	}
 
@@ -863,7 +920,10 @@ public class AddressEndPointPropertiesEditionComponent extends SinglePartPropert
 			EsbPackage.eINSTANCE.getAbstractEndPoint_ReliableMessagingPolicy(),
 			EsbPackage.eINSTANCE.getAbstractEndPoint_SecurityPolicy(),
 			EsbPackage.eINSTANCE.getAbstractEndPoint_InboundPolicy(),
-			EsbPackage.eINSTANCE.getAbstractEndPoint_OutboundPolicy()		);
+			EsbPackage.eINSTANCE.getAbstractEndPoint_OutboundPolicy(),
+			EsbPackage.eINSTANCE.getAbstractEndPoint_FailoverRetryType(),
+			EsbPackage.eINSTANCE.getAbstractEndPoint_FailoverRetryErrorCodes(),
+			EsbPackage.eINSTANCE.getAbstractEndPoint_FailoverNonRetryErrorCodes() );
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -1060,6 +1120,31 @@ public class AddressEndPointPropertiesEditionComponent extends SinglePartPropert
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getAddressEndPoint_URI().getEAttributeType(), newValue);
 				}
+				// Start of user code for failover error codes
+				if (EsbViewsRepository.AddressEndPoint.FailoverErrorCodes.failoverType == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getAbstractEndPoint_FailoverRetryType().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getAbstractEndPoint_FailoverRetryType().getEAttributeType(), newValue);
+				}
+				
+				if (EsbViewsRepository.AddressEndPoint.FailoverErrorCodes.failoverRetryErrorCodes == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getAbstractEndPoint_FailoverRetryErrorCodes().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getAbstractEndPoint_FailoverRetryErrorCodes().getEAttributeType(), newValue);
+				}
+				
+				if (EsbViewsRepository.AddressEndPoint.FailoverErrorCodes.failoverNonRetryErrorCodes == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getAbstractEndPoint_FailoverNonRetryErrorCodes().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getAbstractEndPoint_FailoverNonRetryErrorCodes().getEAttributeType(), newValue);
+				}
+				// End of user code
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);
 			} catch (WrappedException we) {

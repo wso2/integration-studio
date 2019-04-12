@@ -18,6 +18,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb.provider;
 import java.util.Collection;
 import java.util.List;
 
+import org.apache.commons.lang.WordUtils;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
@@ -26,8 +27,11 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.wso2.developerstudio.eclipse.gmf.esb.AttributeValueType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType;
 import org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediatorAttribute;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 
 /**
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediatorAttribute} object.
@@ -99,14 +103,32 @@ public class PublishEventMediatorAttributeItemProvider extends AbstractNameValue
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
+     * @generated NOT
      */
     @Override
     public String getText(Object object) {
-        String label = ((PublishEventMediatorAttribute)object).getAttributeName();
-        return label == null || label.length() == 0 ?
-            getString("_UI_PublishEventMediatorAttribute_type") :
-            getString("_UI_PublishEventMediatorAttribute_type") + " " + label;
+        String propertyName = ((PublishEventMediatorAttribute) object).getAttributeName();
+        String propertyNameLabel = WordUtils.abbreviate(propertyName, 8, 10, " ...");
+        String propertyValueType = ((PublishEventMediatorAttribute) object).getAttributeValueType().toString();
+        String propertyValue = ((PublishEventMediatorAttribute) object).getAttributeValue();
+        String propertyExpression = ((PublishEventMediatorAttribute) object).getAttributeExpression().toString();
+        String labelSpace = "\t\t\t";
+
+        if (propertyValueType.equalsIgnoreCase(AttributeValueType.VALUE.getName())) {
+            return propertyName == null || propertyName.length() == 0
+                    ? getString("_UI_PublishEventMediatorAttribute_type")
+                    : propertyValue != null
+                            ? EEFPropertyViewUtil.spaceFormat(getString("_UI_PublishEventMediatorAttribute_type"))
+                                    + labelSpace + EEFPropertyViewUtil.spaceFormat(propertyNameLabel) + labelSpace
+                                    + EEFPropertyViewUtil.spaceFormat(propertyValue)
+                            : EEFPropertyViewUtil.spaceFormat(getString("_UI_PublishEventMediatorAttribute_type"))
+                                    + labelSpace + EEFPropertyViewUtil.spaceFormat(propertyNameLabel) + labelSpace;
+        } else
+            return propertyName == null || propertyName.length() == 0
+                    ? getString("_UI_PublishEventMediatorAttribute_type")
+                    : EEFPropertyViewUtil.spaceFormat(getString("_UI_PublishEventMediatorAttribute_type")) + labelSpace
+                            + EEFPropertyViewUtil.spaceFormat(propertyNameLabel) + labelSpace
+                            + EEFPropertyViewUtil.spaceFormat(propertyExpression);
     }
 
     /**

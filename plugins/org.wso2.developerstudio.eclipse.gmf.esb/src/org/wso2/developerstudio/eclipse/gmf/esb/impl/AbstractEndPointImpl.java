@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPointAddressingVersion;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPointAttachmentOptimization;
+import org.wso2.developerstudio.eclipse.gmf.esb.EndPointFailoverRetryType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPointMessageFormat;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPointTimeOutAction;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
@@ -58,6 +59,9 @@ import org.wso2.developerstudio.eclipse.gmf.esb.TemplateParameter;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AbstractEndPointImpl#isTraceEnabled <em>Trace Enabled</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AbstractEndPointImpl#getInboundPolicy <em>Inbound Policy</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AbstractEndPointImpl#getOutboundPolicy <em>Outbound Policy</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AbstractEndPointImpl#getFailoverRetryType <em>Failover Retry Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AbstractEndPointImpl#getFailoverRetryErrorCodes <em>Failover Retry Error Codes</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AbstractEndPointImpl#getFailoverNonRetryErrorCodes <em>Failover Non Retry Error Codes</em>}</li>
  * </ul>
  *
  * @generated
@@ -472,6 +476,66 @@ public abstract class AbstractEndPointImpl extends EndPointImpl implements Abstr
      * @ordered
      */
     protected RegistryKeyProperty outboundPolicy;
+
+    /**
+     * The default value of the '{@link #getFailoverRetryType() <em>Failover Retry Type</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getFailoverRetryType()
+     * @generated
+     * @ordered
+     */
+    protected static final EndPointFailoverRetryType FAILOVER_RETRY_TYPE_EDEFAULT = EndPointFailoverRetryType.NON_RETRY_ERROR_CODES;
+
+    /**
+     * The cached value of the '{@link #getFailoverRetryType() <em>Failover Retry Type</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getFailoverRetryType()
+     * @generated
+     * @ordered
+     */
+    protected EndPointFailoverRetryType failoverRetryType = FAILOVER_RETRY_TYPE_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getFailoverRetryErrorCodes() <em>Failover Retry Error Codes</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getFailoverRetryErrorCodes()
+     * @generated
+     * @ordered
+     */
+    protected static final String FAILOVER_RETRY_ERROR_CODES_EDEFAULT = "";
+
+    /**
+     * The cached value of the '{@link #getFailoverRetryErrorCodes() <em>Failover Retry Error Codes</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getFailoverRetryErrorCodes()
+     * @generated
+     * @ordered
+     */
+    protected String failoverRetryErrorCodes = FAILOVER_RETRY_ERROR_CODES_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getFailoverNonRetryErrorCodes() <em>Failover Non Retry Error Codes</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getFailoverNonRetryErrorCodes()
+     * @generated
+     * @ordered
+     */
+    protected static final String FAILOVER_NON_RETRY_ERROR_CODES_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getFailoverNonRetryErrorCodes() <em>Failover Non Retry Error Codes</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getFailoverNonRetryErrorCodes()
+     * @generated
+     * @ordered
+     */
+    protected String failoverNonRetryErrorCodes = FAILOVER_NON_RETRY_ERROR_CODES_EDEFAULT;
 
     /**
      * <!-- begin-user-doc -->
@@ -1092,6 +1156,69 @@ public abstract class AbstractEndPointImpl extends EndPointImpl implements Abstr
      * <!-- end-user-doc -->
      * @generated
      */
+    public EndPointFailoverRetryType getFailoverRetryType() {
+        return failoverRetryType;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setFailoverRetryType(EndPointFailoverRetryType newFailoverRetryType) {
+        EndPointFailoverRetryType oldFailoverRetryType = failoverRetryType;
+        failoverRetryType = newFailoverRetryType == null ? FAILOVER_RETRY_TYPE_EDEFAULT : newFailoverRetryType;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ABSTRACT_END_POINT__FAILOVER_RETRY_TYPE, oldFailoverRetryType, failoverRetryType));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public String getFailoverRetryErrorCodes() {
+        return failoverRetryErrorCodes;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setFailoverRetryErrorCodes(String newFailoverRetryErrorCodes) {
+        String oldFailoverRetryErrorCodes = failoverRetryErrorCodes;
+        failoverRetryErrorCodes = newFailoverRetryErrorCodes;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ABSTRACT_END_POINT__FAILOVER_RETRY_ERROR_CODES, oldFailoverRetryErrorCodes, failoverRetryErrorCodes));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public String getFailoverNonRetryErrorCodes() {
+        return failoverNonRetryErrorCodes;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setFailoverNonRetryErrorCodes(String newFailoverNonRetryErrorCodes) {
+        String oldFailoverNonRetryErrorCodes = failoverNonRetryErrorCodes;
+        failoverNonRetryErrorCodes = newFailoverNonRetryErrorCodes;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ABSTRACT_END_POINT__FAILOVER_NON_RETRY_ERROR_CODES, oldFailoverNonRetryErrorCodes, failoverNonRetryErrorCodes));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
@@ -1164,6 +1291,12 @@ public abstract class AbstractEndPointImpl extends EndPointImpl implements Abstr
                 return getInboundPolicy();
             case EsbPackage.ABSTRACT_END_POINT__OUTBOUND_POLICY:
                 return getOutboundPolicy();
+            case EsbPackage.ABSTRACT_END_POINT__FAILOVER_RETRY_TYPE:
+                return getFailoverRetryType();
+            case EsbPackage.ABSTRACT_END_POINT__FAILOVER_RETRY_ERROR_CODES:
+                return getFailoverRetryErrorCodes();
+            case EsbPackage.ABSTRACT_END_POINT__FAILOVER_NON_RETRY_ERROR_CODES:
+                return getFailoverNonRetryErrorCodes();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -1248,6 +1381,15 @@ public abstract class AbstractEndPointImpl extends EndPointImpl implements Abstr
             case EsbPackage.ABSTRACT_END_POINT__OUTBOUND_POLICY:
                 setOutboundPolicy((RegistryKeyProperty)newValue);
                 return;
+            case EsbPackage.ABSTRACT_END_POINT__FAILOVER_RETRY_TYPE:
+                setFailoverRetryType((EndPointFailoverRetryType)newValue);
+                return;
+            case EsbPackage.ABSTRACT_END_POINT__FAILOVER_RETRY_ERROR_CODES:
+                setFailoverRetryErrorCodes((String)newValue);
+                return;
+            case EsbPackage.ABSTRACT_END_POINT__FAILOVER_NON_RETRY_ERROR_CODES:
+                setFailoverNonRetryErrorCodes((String)newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
@@ -1330,6 +1472,15 @@ public abstract class AbstractEndPointImpl extends EndPointImpl implements Abstr
             case EsbPackage.ABSTRACT_END_POINT__OUTBOUND_POLICY:
                 setOutboundPolicy((RegistryKeyProperty)null);
                 return;
+            case EsbPackage.ABSTRACT_END_POINT__FAILOVER_RETRY_TYPE:
+                setFailoverRetryType(FAILOVER_RETRY_TYPE_EDEFAULT);
+                return;
+            case EsbPackage.ABSTRACT_END_POINT__FAILOVER_RETRY_ERROR_CODES:
+                setFailoverRetryErrorCodes(FAILOVER_RETRY_ERROR_CODES_EDEFAULT);
+                return;
+            case EsbPackage.ABSTRACT_END_POINT__FAILOVER_NON_RETRY_ERROR_CODES:
+                setFailoverNonRetryErrorCodes(FAILOVER_NON_RETRY_ERROR_CODES_EDEFAULT);
+                return;
         }
         super.eUnset(featureID);
     }
@@ -1389,6 +1540,12 @@ public abstract class AbstractEndPointImpl extends EndPointImpl implements Abstr
                 return inboundPolicy != null;
             case EsbPackage.ABSTRACT_END_POINT__OUTBOUND_POLICY:
                 return outboundPolicy != null;
+            case EsbPackage.ABSTRACT_END_POINT__FAILOVER_RETRY_TYPE:
+                return failoverRetryType != FAILOVER_RETRY_TYPE_EDEFAULT;
+            case EsbPackage.ABSTRACT_END_POINT__FAILOVER_RETRY_ERROR_CODES:
+                return FAILOVER_RETRY_ERROR_CODES_EDEFAULT == null ? failoverRetryErrorCodes != null : !FAILOVER_RETRY_ERROR_CODES_EDEFAULT.equals(failoverRetryErrorCodes);
+            case EsbPackage.ABSTRACT_END_POINT__FAILOVER_NON_RETRY_ERROR_CODES:
+                return FAILOVER_NON_RETRY_ERROR_CODES_EDEFAULT == null ? failoverNonRetryErrorCodes != null : !FAILOVER_NON_RETRY_ERROR_CODES_EDEFAULT.equals(failoverNonRetryErrorCodes);
         }
         return super.eIsSet(featureID);
     }
@@ -1440,6 +1597,12 @@ public abstract class AbstractEndPointImpl extends EndPointImpl implements Abstr
         result.append(statisticsEnabled);
         result.append(", traceEnabled: ");
         result.append(traceEnabled);
+        result.append(", failoverRetryType: ");
+        result.append(failoverRetryType);
+        result.append(", failoverRetryErrorCodes: ");
+        result.append(failoverRetryErrorCodes);
+        result.append(", failoverNonRetryErrorCodes: ");
+        result.append(failoverNonRetryErrorCodes);
         result.append(')');
         return result.toString();
     }

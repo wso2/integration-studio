@@ -731,6 +731,14 @@ public class EsbViewsRepository {
 	
 		}
 	
+		public static class FailoverErrorCodes {
+	
+			
+			public static String failoverNonRetryErrorCodes = "esb::DefaultEndPoint::Failover Error Codes::failoverNonRetryErrorCodes";
+			
+	
+		}
+	
 	}
 
 	/**
@@ -894,6 +902,20 @@ public class EsbViewsRepository {
 			
 			
 			public static String timeOutAction = "esb::AddressEndPoint::Timeout::timeOutAction";
+			
+	
+		}
+	
+		public static class FailoverErrorCodes {
+	
+			
+			public static String failoverType = "esb::AddressEndPoint::Failover Error Codes::failoverType";
+			
+			
+			public static String failoverRetryErrorCodes = "esb::AddressEndPoint::Failover Error Codes::failoverRetryErrorCodes";
+			
+			
+			public static String failoverNonRetryErrorCodes = "esb::AddressEndPoint::Failover Error Codes::failoverNonRetryErrorCodes";
 			
 	
 		}
@@ -1206,6 +1228,14 @@ public class EsbViewsRepository {
 			
 			
 			public static String timeOutAction = "esb::HTTPEndpoint::timeout::timeOutAction";
+			
+	
+		}
+	
+		public static class FailoverErrorCodes {
+	
+			
+			public static String failoverNonRetryErrorCodes = "esb::HTTPEndpoint::Failover Error Codes::failoverNonRetryErrorCodes";
 			
 	
 		}
@@ -5219,6 +5249,10 @@ public class EsbViewsRepository {
 			
 			public static String connectionPassword = "esb::DBLookupMediator::connection::connectionPassword";
 			
+			// Start of user code for Database Configuration ElementEditor key
+			public static String databaseConfiguration = "esb::DBLookupMediator::connection::Database Configuration";
+			// End of user code
+			
 	
 		}
 	
@@ -5298,6 +5332,10 @@ public class EsbViewsRepository {
 			
 			
 			public static String connectionUseTransaction = "esb::DBReportMediator::connection::connectionUseTransaction";
+			
+			// Start of user code for Database Configuration ElementEditor key
+			public static String databaseConfiguration = "esb::DBReportMediator::connection::Database Configuration";
+			// End of user code
 			
 	
 		}
@@ -6677,6 +6715,14 @@ public class EsbViewsRepository {
 			
 			
 			public static String timeOutAction = "esb::WSDLEndPoint::timeout::timeOutAction";
+			
+	
+		}
+	
+		public static class FailoverErrorCodes {
+	
+			
+			public static String failoverNonRetryErrorCodes = "esb::WSDLEndPoint::Failover Error Codes::failoverNonRetryErrorCodes";
 			
 	
 		}

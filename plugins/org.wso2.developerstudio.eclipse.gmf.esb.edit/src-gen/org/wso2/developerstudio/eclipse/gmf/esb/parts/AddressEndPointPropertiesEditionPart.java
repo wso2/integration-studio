@@ -515,6 +515,55 @@ public interface AddressEndPointPropertiesEditionPart {
 	public void setTimeOutAction(Enumerator newValue);
 
 
+	/**
+	 * @return the failoverType
+	 * 
+	 */
+	public Enumerator getFailoverType();
+
+	/**
+	 * Init the failoverType
+	 * @param input the viewer input
+	 * @param current the current value
+	 */
+	public void initFailoverType(Object input, Enumerator current);
+
+	/**
+	 * Defines a new failoverType
+	 * @param newValue the new failoverType to set
+	 * 
+	 */
+	public void setFailoverType(Enumerator newValue);
+
+
+	/**
+	 * @return the failoverRetryErrorCodes
+	 * 
+	 */
+	public String getFailoverRetryErrorCodes();
+
+	/**
+	 * Defines a new failoverRetryErrorCodes
+	 * @param newValue the new failoverRetryErrorCodes to set
+	 * 
+	 */
+	public void setFailoverRetryErrorCodes(String newValue);
+
+
+	/**
+	 * @return the failoverNonRetryErrorCodes
+	 * 
+	 */
+	public String getFailoverNonRetryErrorCodes();
+
+	/**
+	 * Defines a new failoverNonRetryErrorCodes
+	 * @param newValue the new failoverNonRetryErrorCodes to set
+	 * 
+	 */
+	public void setFailoverNonRetryErrorCodes(String newValue);
+
+
 
 
 	// Start of user code for Reliable Messaging Policy specific getters and setters declaration

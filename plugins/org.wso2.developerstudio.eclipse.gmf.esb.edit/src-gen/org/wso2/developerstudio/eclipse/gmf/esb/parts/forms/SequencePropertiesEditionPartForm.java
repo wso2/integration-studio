@@ -1308,7 +1308,7 @@ public class SequencePropertiesEditionPartForm extends SectionPropertiesEditingP
 		dynamicReferenceKeyText.addMouseListener(new MouseAdapter() {
             
             @Override
-            public void mouseDown( MouseEvent event ) {
+            public void mouseDown(MouseEvent event) {
                 openDynamicReferenceKeyNamespacedPropertyEditor(parent);
             }
             
@@ -1345,7 +1345,6 @@ public class SequencePropertiesEditionPartForm extends SectionPropertiesEditingP
     private void openDynamicReferenceKeyNamespacedPropertyEditor(final Composite parent) {
         EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
                 SWT.NULL, dynamicReferenceKey);
-        // valueExpression.setPropertyValue(valueExpressionText.getText());
         dynamicReferenceKey = nspd.open();
         dynamicReferenceKeyText.setText(dynamicReferenceKey.getPropertyValue());
         propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(

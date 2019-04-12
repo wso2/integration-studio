@@ -134,6 +134,9 @@ public class EsbMessages extends NLS {
 	public static String DefaultEndPointPropertiesEditionPart_TimeoutGroupLabel;
 
 	
+	public static String DefaultEndPointPropertiesEditionPart_FailoverErrorCodesGroupLabel;
+
+	
 	public static String DefaultEndPointInputConnectorPropertiesEditionPart_PropertiesGroupLabel;
 
 	
@@ -156,6 +159,9 @@ public class EsbMessages extends NLS {
 
 	
 	public static String AddressEndPointPropertiesEditionPart_TimeoutGroupLabel;
+
+	
+	public static String AddressEndPointPropertiesEditionPart_FailoverErrorCodesGroupLabel;
 
 	
 	public static String AddressEndPointInputConnectorPropertiesEditionPart_PropertiesGroupLabel;
@@ -195,6 +201,9 @@ public class EsbMessages extends NLS {
 
 	
 	public static String HTTPEndpointPropertiesEditionPart_TimeoutGroupLabel;
+
+	
+	public static String HTTPEndpointPropertiesEditionPart_FailoverErrorCodesGroupLabel;
 
 	
 	public static String HTTPEndPointInputConnectorPropertiesEditionPart_PropertiesGroupLabel;
@@ -1002,6 +1011,9 @@ public class EsbMessages extends NLS {
 
 	
 	public static String WSDLEndPointPropertiesEditionPart_TimeoutGroupLabel;
+
+	
+	public static String WSDLEndPointPropertiesEditionPart_FailoverErrorCodesGroupLabel;
 
 	
 	public static String WSDLEndPointInputConnectorPropertiesEditionPart_PropertiesGroupLabel;
@@ -3697,6 +3709,9 @@ public class EsbMessages extends NLS {
 	public static String DefaultEndPointPropertiesEditionPart_TimeOutActionLabel;
 
 	
+	public static String DefaultEndPointPropertiesEditionPart_FailoverNonRetryErrorCodesLabel;
+
+	
 	public static String DefaultEndPointInputConnectorPropertiesEditionPart_IncomingLinksLabel;
 
 	
@@ -3797,6 +3812,15 @@ public class EsbMessages extends NLS {
 
 	
 	public static String AddressEndPointPropertiesEditionPart_TimeOutActionLabel;
+
+	
+	public static String AddressEndPointPropertiesEditionPart_FailoverTypeLabel;
+
+	
+	public static String AddressEndPointPropertiesEditionPart_FailoverRetryErrorCodesLabel;
+
+	
+	public static String AddressEndPointPropertiesEditionPart_FailoverNonRetryErrorCodesLabel;
 
 	
 	public static String AddressEndPointInputConnectorPropertiesEditionPart_IncomingLinksLabel;
@@ -3995,6 +4019,9 @@ public class EsbMessages extends NLS {
 
 	
 	public static String HTTPEndpointPropertiesEditionPart_TimeOutActionLabel;
+
+	
+	public static String HTTPEndpointPropertiesEditionPart_FailoverNonRetryErrorCodesLabel;
 
 	
 	public static String HTTPEndPointInputConnectorPropertiesEditionPart_IncomingLinksLabel;
@@ -5719,6 +5746,9 @@ public class EsbMessages extends NLS {
 	public static String DBLookupMediatorPropertiesEditionPart_ConnectionPasswordLabel;
 
 	
+	public static String DBLookupMediatorPropertiesEditionPart_DatabaseConfigurationLabel;
+
+	
 	public static String DBLookupMediatorPropertiesEditionPart_SqlStatementsLabel;
 
 	
@@ -5756,6 +5786,9 @@ public class EsbMessages extends NLS {
 
 	
 	public static String DBReportMediatorPropertiesEditionPart_ConnectionUseTransactionLabel;
+
+	
+	public static String DBReportMediatorPropertiesEditionPart_DatabaseConfigurationLabel;
 
 	
 	public static String DBReportMediatorPropertiesEditionPart_SqlStatementsLabel;
@@ -6392,6 +6425,9 @@ public class EsbMessages extends NLS {
 
 	
 	public static String WSDLEndPointPropertiesEditionPart_TimeOutActionLabel;
+
+	
+	public static String WSDLEndPointPropertiesEditionPart_FailoverNonRetryErrorCodesLabel;
 
 	
 	public static String WSDLEndPointInputConnectorPropertiesEditionPart_IncomingLinksLabel;

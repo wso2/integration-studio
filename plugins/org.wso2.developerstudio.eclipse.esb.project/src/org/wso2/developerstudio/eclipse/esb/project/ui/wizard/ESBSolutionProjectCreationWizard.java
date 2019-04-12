@@ -80,11 +80,12 @@ public class ESBSolutionProjectCreationWizard extends AbstractWSO2ProjectCreatio
 			String registryProjectName = esbSolutionProjectModel.getRegistryProjectName();
 			try {
 				generalProjectModel.setProjectName(registryProjectName);
-				generalProjectModel.setLocation(new File(location, registryProjectName));
+				generalProjectModel.setLocation(location);
 				updateMavenInformation(pomFile,REGISTRY_ARTIFACT_ID);
 				generalProjectModel.setGroupId(esbSolutionProjectModel.getGroupId());
 				generalProjectModel.setMavenInfo(esbSolutionProjectModel.getMavenInfo());
-
+				generalProjectModel.setIsUserDefine(esbSolutionProjectModel.isUserSet());
+				generalProjectModel.setSelectedWorkingSets(esbSolutionProjectModel.getSelectedWorkingSets());
 			} catch (ObserverFailedException e1) {
 				log.error("Failed to set project name : " + registryProjectName, e1);
 			}
@@ -99,10 +100,12 @@ public class ESBSolutionProjectCreationWizard extends AbstractWSO2ProjectCreatio
 			String connectorProjectName = esbSolutionProjectModel.getConnectorExporterProjectName();
 			try {
 				connectorModel.setProjectName(connectorProjectName);
-				connectorModel.setLocation(new File(location, connectorProjectName));
+				connectorModel.setLocation(location);
 				updateMavenInformation(pomFile,CONNECTOR_ARTIFACT_ID);
 				connectorModel.setGroupId(esbSolutionProjectModel.getGroupId());
 				connectorModel.setMavenInfo(esbSolutionProjectModel.getMavenInfo());
+				connectorModel.setIsUserDefine(esbSolutionProjectModel.isUserSet());
+				connectorModel.setSelectedWorkingSets(esbSolutionProjectModel.getSelectedWorkingSets());
 			} catch (ObserverFailedException e1) {
 				log.error("Failed to set project name : " + connectorProjectName, e1);
 			}
@@ -117,7 +120,7 @@ public class ESBSolutionProjectCreationWizard extends AbstractWSO2ProjectCreatio
 			String distributionProjectName = esbSolutionProjectModel.getCompositeApplicationProjectName();
 			try {
 				esbSolutionProjectModel.setProjectName(distributionProjectName);
-				esbSolutionProjectModel.setLocation(new File(location, distributionProjectName));
+				esbSolutionProjectModel.setLocation(location);
 				distributionModel.setProjectName(distributionProjectName);
 				distributionModel.setLocation(esbSolutionProjectModel.getLocation());
 				distributionModel.setIsUserDefine(esbSolutionProjectModel.isUserSet());

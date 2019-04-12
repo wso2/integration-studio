@@ -32,8 +32,8 @@ public class EditPartDrawingHelper {
     public static Color FigureBreakpointHitColor = new Color(null, 231, 76, 60);
     public static Color FigureSelectedColor = new Color(null, 255, 255, 255);
     public static Color FigureNormalColor = new Color(null, 255, 255, 255);
-    public static Color FigureSelectedBorderColor = new Color(null, 127, 140, 141);
-    public static Color ComplexFigureSelectedBorderColor = new Color(null, 127, 140, 141);
+    public static Color FigureSelectedBorderColor = new Color(null, 189, 195, 199);
+    public static Color ComplexFigureSelectedBorderColor = new Color(null, 189, 195, 199);
     public static Color ComplexFigureSelectedColor = new Color(null, 232, 232, 232);
 
     public static Image getImage(String iconPath, int width, int height) {

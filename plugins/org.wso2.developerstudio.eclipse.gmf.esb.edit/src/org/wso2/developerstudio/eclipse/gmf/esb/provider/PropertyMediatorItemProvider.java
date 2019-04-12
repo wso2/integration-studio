@@ -25,6 +25,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.PropertyName;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyScope;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.PropertyGroupMediatorImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 
 import java.lang.Object;
 
@@ -514,22 +515,21 @@ public class PropertyMediatorItemProvider extends MediatorItemProvider {
         String value = ((PropertyMediator) object).getValue();
         String newLabel = label == "New Property..." ? newPropertyName : label;
         String propertyName = WordUtils.abbreviate(newLabel.toString(), 8, 10, " ...");
+        String valueType = ((PropertyMediator) object).getValueType().toString();
+        String valueExpression = ((PropertyMediator) object).getValueExpression().toString();
 
         if (!(((PropertyMediator) object).eContainer() instanceof PropertyGroupMediatorImpl)) {
-            return newLabel == null || label.length() == 0 ? getString("_UI_PropertyMediator_type") : trim("Property");
+            return newLabel == null || label.length() == 0 ? getString("_UI_PropertyMediator_type")
+                    : EEFPropertyViewUtil.spaceFormat("Property");
+        } else if (valueType.equalsIgnoreCase(PropertyValueType.LITERAL.getName())) {
+            return newLabel == null || label.length() == 0 ? getString("_UI_PropertyMediator_type")
+                    : EEFPropertyViewUtil.spaceFormat("Property") + EEFPropertyViewUtil.spaceFormat(propertyName)
+                            + EEFPropertyViewUtil.spaceFormat(value);
         } else {
             return newLabel == null || label.length() == 0 ? getString("_UI_PropertyMediator_type")
-                    : trim("Property") + trim(propertyName) + trim(value);
+                    : EEFPropertyViewUtil.spaceFormat("Property") + EEFPropertyViewUtil.spaceFormat(propertyName)
+                            + EEFPropertyViewUtil.spaceFormat(valueExpression);
         }
-    }
-
-    public String trim(String str) {
-        int maxLength = 30;
-        int tabSpace = (maxLength - str.length()) / 4;
-        for (int i = 0; i < tabSpace; i++) {
-            str = str.concat("\t");
-        }
-        return str;
     }
 
     /**

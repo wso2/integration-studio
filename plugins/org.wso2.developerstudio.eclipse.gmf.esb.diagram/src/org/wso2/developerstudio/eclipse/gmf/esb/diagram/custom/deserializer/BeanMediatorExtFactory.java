@@ -27,7 +27,6 @@ import org.apache.synapse.config.xml.ValueFactory;
 import org.apache.synapse.config.xml.XMLConfigConstants;
 import org.apache.synapse.mediators.bean.BeanConstants;
 import org.apache.synapse.mediators.bean.BeanMediator.Action;
-import org.apache.synapse.mediators.builtin.LogMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.BeanMediatorExt;
 
 public class BeanMediatorExtFactory extends AbstractMediatorFactory {

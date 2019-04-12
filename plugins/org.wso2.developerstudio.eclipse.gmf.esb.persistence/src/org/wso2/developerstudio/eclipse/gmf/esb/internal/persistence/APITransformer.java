@@ -24,7 +24,6 @@ import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.impl.llom.util.AXIOMUtil;
 import org.apache.synapse.aspects.AspectConfiguration;
 import org.apache.synapse.config.xml.rest.VersionStrategyFactory;
-import org.apache.synapse.core.axis2.ProxyService;
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.apache.synapse.rest.API;

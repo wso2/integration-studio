@@ -17,10 +17,8 @@
 */
 package org.wso2.developerstudio.eclipse.gmf.esb.parts.forms;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.lang.reflect.InvocationTargetException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -28,6 +26,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 import javax.xml.parsers.DocumentBuilder;
@@ -40,43 +39,48 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import org.apache.commons.io.FileUtils;
+import org.apache.maven.execution.MavenExecutionRequest;
+import org.apache.maven.execution.MavenExecutionResult;
+import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.MultiStatus;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
+import org.eclipse.m2e.core.MavenPlugin;
+import org.eclipse.m2e.core.embedder.IMaven;
+import org.eclipse.m2e.core.internal.MavenPluginActivator;
+import org.eclipse.m2e.core.internal.project.registry.MavenProjectManager;
+import org.eclipse.m2e.core.project.IMavenProjectFacade;
+import org.eclipse.m2e.core.project.ResolverConfiguration;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
-import org.eclipse.swt.events.FocusEvent;
-import org.eclipse.swt.events.FocusListener;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
-import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.Rectangle;
-import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.FormAttachment;
 import org.eclipse.swt.layout.FormData;
 import org.eclipse.swt.layout.FormLayout;
-import org.eclipse.swt.layout.GridData;
-import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Dialog;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
@@ -88,8 +92,6 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.forms.widgets.Form;
-import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleException;
 import org.w3c.dom.Attr;
@@ -582,6 +584,10 @@ public class DependencyProvider extends Dialog {
                     serverComposite.setVisible(false);
                     serverRadioButton.setEnabled(true);
 
+                    jarLocationText.setEnabled(true);
+                    jarLocationText.setText("");
+                    browseButton.setEnabled(true);
+
                     testConnectionButton.setEnabled(false);
                     okButton.setEnabled(false);
 
@@ -589,6 +595,7 @@ public class DependencyProvider extends Dialog {
 
                     jarProvided = true;
                     inputFeildsSetEnabled(false);
+
                 }
             }
         });
@@ -643,6 +650,7 @@ public class DependencyProvider extends Dialog {
 
                     browseFileRadioButton.setSelection(true);
                     serverRadioButton.setSelection(false);
+                    serverRadioButton.setEnabled(false);
 
                     serverComposite.setVisible(false);
                     browseLocalComposite.setVisible(true);
@@ -667,6 +675,7 @@ public class DependencyProvider extends Dialog {
 
                 }
                 jarLocationText.setText("");
+                versionComboBox.select(0);
             }
 
             public void widgetDefaultSelected(SelectionEvent e) {
@@ -838,7 +847,6 @@ public class DependencyProvider extends Dialog {
             serverRadioButton.setEnabled(true);
             serverRadioButton.setSelection(true);
 
-            versionComboBox.select(0);
             downloadButton.setEnabled(false);
 
             infoLabel.setVisible(false);
@@ -859,7 +867,8 @@ public class DependencyProvider extends Dialog {
 
         setDataFromConnectionURL();
 
-        // Open dialog.
+        versionComboBox.select(0);
+
         dialogShell.layout();
         dialogShell.pack();
 
@@ -872,7 +881,7 @@ public class DependencyProvider extends Dialog {
 
         Display display = dialogShell.getDisplay();
 
-        Monitor primary = display.getPrimaryMonitor();
+        Monitor primary = display.getActiveShell().getMonitor();
 
         /** get the size of the screen */
         Rectangle bounds = primary.getBounds();
@@ -911,7 +920,6 @@ public class DependencyProvider extends Dialog {
 
     private void setDefaultsToVersionComboBox() {
         versionComboBox.setEnabled(true);
-        downloadButton.setEnabled(true);
 
         switch (connectiontypeComboBox.getText()) {
         case "MYSQL":
@@ -1166,39 +1174,71 @@ public class DependencyProvider extends Dialog {
 
     }
 
-    public void buildPOM(String dependencyDirectory) {
-        Process p = null;
-        dependencyDir = dependencyDirectory;
+    public static MavenExecutionResult runMavenExecution(IFile pomFile, List<String> goals, IProgressMonitor monitor)
+            throws Exception {
+
+        if (monitor == null) {
+            monitor = new NullProgressMonitor();
+        }
+        MavenExecutionResult result = null;
         try {
-            File dir = new File(dependencyDir);
-            p = Runtime.getRuntime().exec("mvn install clean", null, dir);
-            File sourceDirectory = new File(dependencyDir);
+            MavenPluginActivator.getDefault().setDebugging(true);
+            monitor.beginTask("Building: " + pomFile.getName(), 3);
+            MavenProjectManager projectManager = MavenPluginActivator.getDefault().getMavenProjectManager();
+            IMaven maven = MavenPlugin.getDefault().getMaven();
 
-            remove(dependencyDir + File.separator + "pom.xml");
-            File[] sourceFiles = sourceDirectory.listFiles();
+            IMavenProjectFacade facade = projectManager.create(pomFile, true, new SubProgressMonitor(monitor, 1));
+            ResolverConfiguration config = facade.getResolverConfiguration();
+            MavenExecutionRequest request = projectManager.createExecutionRequest(pomFile, config,
+                    new SubProgressMonitor(monitor, 1));
+            request.setGoals(goals);
+            request.setShowErrors(true);
+            request.setUpdateSnapshots(true);
+            result = maven.execute(request, new SubProgressMonitor(monitor, 1));
 
-            for (File file : sourceFiles) {
-                if (file.getName().endsWith(".jar")) {
-                    FileUtils.copyFile(file, new File(getWorkingDirectory() + File.separator + microesbLibPath
-                            + File.separator + file.getName()));
+            return result;
+
+        } catch (Throwable e) {
+            e.printStackTrace();
+        } finally {
+            monitor.done();
+        }
+        return result;
+    }
+
+    public void buildPOM(String dependencyDirectory) {
+        dependencyDir = dependencyDirectory;
+
+        IPath ResourcePath = new org.eclipse.core.runtime.Path(dependencyDir);
+        IContainer container = ResourcesPlugin.getWorkspace().getRoot().getContainerForLocation(ResourcePath);
+
+        IFile pomFile = container.getFile(new org.eclipse.core.runtime.Path("pom.xml"));
+        try {
+            MavenExecutionResult mvn = runMavenExecution(pomFile,
+                    Arrays.asList("org.apache.maven.plugins:maven-dependency-plugin:2.8:copy-dependencies"), null);
+
+            if (mvn.hasExceptions()) {// throw errors if exists
+                List<Throwable> rr = mvn.getExceptions();
+                for (Throwable t : rr) {
+                    throw t;
+                }
+            } else {// when download of dependencies is success, copy .jars to MicroESB/lib directory
+                remove(dependencyDir + File.separator + "pom.xml");
+                File[] sourceFiles = new File(dependencyDir).listFiles();
+                for (File file : sourceFiles) {
+                    if (file.getName().endsWith(".jar")) {
+                        FileUtils.copyFile(file, new File(getWorkingDirectory() + File.separator + microesbLibPath
+                                + File.separator + file.getName()));
+                    }
                 }
             }
 
+        } catch (java.net.UnknownHostException e1) {
+            e1.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-            if (p == null) {
-                Display.getDefault().syncExec(new Runnable() {
-                    public void run() {
-                        remove(dependencyDir + "/target");
-                        remove(dependencyDir + "/pom.xml");
-                        MessageDialog.openInformation(dialogShell, "An Error has occoured",
-                                "An error has occured while downloading the Driver"
-                                        + "\nMake sure maven is install in your computer");
-                    }
-                });
-            }
-        } finally {
-            p.destroy();
+        } catch (Throwable e) {
+            e.printStackTrace();
         }
     }
 
@@ -1282,29 +1322,8 @@ public class DependencyProvider extends Dialog {
                 pVersion.appendChild(document.createTextNode("3.1.1"));
                 plugin.appendChild(pVersion);
 
-                Element executions = document.createElement("executions");
-                plugin.appendChild(executions);
-
-                Element execution = document.createElement("execution");
-                executions.appendChild(execution);
-
-                Element eId = document.createElement("id");
-                eId.appendChild(document.createTextNode("copy-dependencies"));
-                execution.appendChild(eId);
-
-                Element phase = document.createElement("phase");
-                phase.appendChild(document.createTextNode("package"));
-                execution.appendChild(phase);
-
-                Element goals = document.createElement("goals");
-                execution.appendChild(goals);
-
-                Element goal = document.createElement("goal");
-                goal.appendChild(document.createTextNode("copy-dependencies"));
-                goals.appendChild(goal);
-
                 Element configuration = document.createElement("configuration");
-                execution.appendChild(configuration);
+                plugin.appendChild(configuration);
 
                 Element excludeArtifactIds = document.createElement("excludeArtifactIds");
                 excludeArtifactIds.appendChild(document.createTextNode("protobuf-java"));
@@ -1376,7 +1395,6 @@ public class DependencyProvider extends Dialog {
         } catch (TransformerException tfe) {
             tfe.printStackTrace();
         } catch (SAXException | IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
@@ -1454,7 +1472,6 @@ public class DependencyProvider extends Dialog {
         private static final int TOTAL_TIME = 1000000000;
         private boolean indeterminate;
         private Shell shell;
-        protected boolean downloadSuccess = true;;
 
         public LongRunningOperation(boolean indeterminate, Shell shell) {
             this.indeterminate = indeterminate;
@@ -1467,61 +1484,49 @@ public class DependencyProvider extends Dialog {
             monitor.beginTask("Downloading Required Dependency JAR",
                     indeterminate ? IProgressMonitor.UNKNOWN : TOTAL_TIME);
             Thread.sleep(500);
-            Process p = null;
+
+            IPath ResourcePath = new org.eclipse.core.runtime.Path(dependencyDir);
+            IContainer container = ResourcesPlugin.getWorkspace().getRoot().getContainerForLocation(ResourcePath);
+
+            IFile pomFile = container.getFile(new org.eclipse.core.runtime.Path("pom.xml"));
             try {
-                File dir = new File(dependencyDir);
-
-                p = Runtime.getRuntime().exec("mvn install clean", null, dir);
-
-                BufferedReader stdInput = new BufferedReader(new InputStreamReader(p.getInputStream()));
-
-                while ((stdInput.readLine()) != null) {
-                    if (monitor.isCanceled()) {
-                        p.destroy();
-                        Display.getDefault().syncExec(new Runnable() {
-                            public void run() {
-                                downloadSuccess = false;
-                                remove(dependencyDir + "/target");
-                                remove(dependencyDir + "/pom.xml");
-                                MessageDialog.openInformation(shell, "Cancelled",
-                                        "JDBC driver download operation was cancelled");
-                            }
-                        });
-                        throw new InterruptedException("JDBC driver download operation was cancelled");
-                    }
-                    monitor.worked(100);
+                MavenExecutionResult mvn = runMavenExecution(pomFile,
+                        Arrays.asList("org.apache.maven.plugins:maven-dependency-plugin:2.8:copy-dependencies"), null);
+                if (monitor.isCanceled()) {
+                    remove(dependencyDir + File.separator + "pom.xml");
+                    throw new InterruptedException("The download process was canceled");
                 }
 
-            } catch (Exception e) {
-                downloadSuccess = false;
-                e.printStackTrace();
+                if (mvn.hasExceptions()) {
+                    List<Throwable> rr = mvn.getExceptions();
+                    for (Throwable t : rr) {
+                        throw t;
+                    }
 
-                if (p == null) {
+                } else {
+                    remove(dependencyDir + File.separator + "pom.xml");
                     Display.getDefault().syncExec(new Runnable() {
                         public void run() {
-                            remove(dependencyDir + "/target");
-                            remove(dependencyDir + "/pom.xml");
-                            MessageDialog.openInformation(shell, "An Error has occoured",
-                                    "An error occurred when downloading the driver."
-                                            + "\nMake sure that you have installed Apache Maven.");
+                            MessageDialog.openInformation(shell, "Success",
+                                    "You have successfully downloaded the driver."
+                                            + "\n\nThe downloaded driver is located in the dependencies directory."
+                                            + "\nNote that downloaded drivers are not deployed with the CApp.");
                         }
                     });
                 }
-            } finally {
-                p.destroy();
-            }
-            monitor.done();
-
-            if (downloadSuccess) {
-                remove(dependencyDir + File.separator + "pom.xml");
+            } catch (java.net.UnknownHostException e1) {
                 Display.getDefault().syncExec(new Runnable() {
                     public void run() {
-                        MessageDialog.openInformation(shell, "Success",
-                                "You have successfully downloaded the driver."
-                                        + "\n\nThe downloaded driver is located in the dependencies directory."
-                                        + "\nNote that downloaded drivers are not deployed with the CApp.");
+                        remove(dependencyDir + File.separator + "target");
+                        remove(dependencyDir + File.separator + "pom.xml");
+                        MessageDialog.openInformation(shell, "An Error has occoured",
+                                "An error occurred when downloading the driver."
+                                        + "\nMake sure that you are connected to the internet.");
                     }
                 });
+            } catch (InterruptedException e) {
+            } catch (Throwable e) {
+                e.printStackTrace();
             }
         }
     }

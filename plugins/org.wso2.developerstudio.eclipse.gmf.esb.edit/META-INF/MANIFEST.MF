@@ -17,7 +17,9 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.transaction,
  org.eclipse.emf.eef.runtime;bundle-version="1.5.1",
  org.eclipse.emf.eef.runtime.extended;bundle-version="1.5.1",
- org.eclipse.ui.ide;bundle-version="3.13.1"
+ org.eclipse.ui.ide;bundle-version="3.13.1",
+ org.eclipse.m2e.core;bundle-version="[1.8.3,1.9.0)",
+ org.eclipse.m2e.maven.runtime
 Bundle-ActivationPolicy: lazy
 DynamicImport-Package: com.mysql.jdbc,
  com.mysql.cj.jdbc,

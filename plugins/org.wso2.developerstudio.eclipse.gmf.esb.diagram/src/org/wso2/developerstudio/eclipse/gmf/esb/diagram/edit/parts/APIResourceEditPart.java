@@ -65,7 +65,11 @@ public class APIResourceEditPart extends AbstractBaseFigureEditPart {
      * @generated
      */
     protected IFigure primaryShape;
-
+    
+    private final int HORIZONTAL_OFFSET = 500;
+    
+    private final int VERTICAL_OFFSET = 200;
+    
     /**
      * @generated
      */
@@ -172,6 +176,8 @@ public class APIResourceEditPart extends AbstractBaseFigureEditPart {
      * @param rectangle
      */
     private void arrangeAPIResources(Rectangle rectangle) {
+        int maxWidth = 0;
+        int maxHeight = 0;
         int noOfResources = getParent().getChildren().size();
         if (noOfResources > 1) {
             for (int i = 0; i < (noOfResources - 1); i++) {
@@ -189,8 +195,33 @@ public class APIResourceEditPart extends AbstractBaseFigureEditPart {
             }
 
         }
-    }
 
+        // The following code segment is for resizing the API figure outer compartments according to
+        // the sizes of inner API resource size
+        if (noOfResources > 0) {
+
+            for (int i = 0; i < noOfResources; i++) {
+                IFigure currentFigure = ((GraphicalEditPart) getParent().getChildren().get(i)).getFigure();
+                Rectangle currentFigureBounds = currentFigure.getBounds();
+                int currentResourceBottomMargin = currentFigureBounds.y + currentFigureBounds.height;
+
+                if (maxWidth < currentFigureBounds.width) {
+                    maxWidth = currentFigureBounds.width;
+                }
+                if (maxHeight < currentResourceBottomMargin) {
+                    maxHeight = currentResourceBottomMargin;
+                }
+            }
+
+            if (getParent().getParent() != null && getParent().getParent() instanceof SynapseAPIEditPart) {
+                SynapseAPIEditPart synapseAPIEditpart = (SynapseAPIEditPart) getParent().getParent();
+                DefaultSizeNodeFigure synapseAPIFigure = (DefaultSizeNodeFigure) synapseAPIEditpart.getFigure();
+                IFigure synapseAPIContentPane = synapseAPIEditpart.getContentPane();
+                synapseAPIFigure.setMinimumSize(new Dimension(maxWidth + HORIZONTAL_OFFSET, maxHeight + VERTICAL_OFFSET));
+                synapseAPIContentPane.setPreferredSize(new Dimension(maxWidth + HORIZONTAL_OFFSET, maxHeight + VERTICAL_OFFSET));
+            }
+        }
+    }
     /**
      * @generated
      */

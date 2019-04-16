@@ -23,38 +23,18 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
-import java.security.KeyManagementException;
-import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
-import java.security.cert.CertificateException;
-import java.security.cert.X509Certificate;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.net.ssl.KeyManager;
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.TrustManager;
-import javax.net.ssl.X509TrustManager;
-
-import org.apache.commons.httpclient.HttpClient;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Status;
-import org.eclipse.jface.dialogs.ErrorDialog;
-import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.browser.Browser;
-import org.eclipse.swt.events.ModifyEvent;
-import org.eclipse.swt.events.ModifyListener;
-import org.eclipse.swt.events.SelectionAdapter;
-import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.GridData;
@@ -62,64 +42,58 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.FileDialog;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.Text;
-import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.progress.IProgressService;
 import org.wso2.developerstudio.eclipse.esb.project.Activator;
 import org.wso2.developerstudio.eclipse.esb.project.connector.store.Connector;
-import org.wso2.developerstudio.eclipse.esb.project.connector.store.ConnectorData;
-import org.wso2.developerstudio.eclipse.esb.project.connector.store.ConnectorStore;
 import org.wso2.developerstudio.eclipse.esb.project.servlets.FunctionServerConstants;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 public class ImportCloudConnectorWizardPage extends WizardPage {
-	private Text txtCloudConnectorPath;
-	private Text txtConnectorStoreURL;
-	private String cloudConnectorPath;
-	private IProject selectedProject;
-	private List<Connector> connectorList;
-	private Table table;
-	private Button connectorStore;
-	private Button fileSystem;	
-	private static final String DIR_DOT_METADATA = ".metadata";
-	private static final String DIR_CACHE = ".cache";
-	private static final String CONNECTOR_STORE_URL = "https://store.wso2.com";
-	private static final int TIMEOUT = 180000;
-	private static final String HTTP_SOCKET_TIMEOUT = "http.socket.timeout";
-	private static final String LOAD_CONNECTORS_PAGE = "http://localhost:" + FunctionServerConstants.EMBEDDED_SERVER_PORT + "/project/connectors/index.html";
-	
-	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+    private Text txtConnectorStoreURL;
+    private String cloudConnectorPath;
+    private IProject selectedProject;
+    private List<Connector> connectorList;
+    private Table table;
+    private Button connectorStore;
+    private Button fileSystem;
+    private static final String LOAD_CONNECTORS_PAGE = "http://localhost:"
+            + FunctionServerConstants.EMBEDDED_SERVER_PORT + "/project/connectors/index.html";
 
-	protected ImportCloudConnectorWizardPage(IStructuredSelection selection) {
-		super("import");
-		setTitle("Import connector");
-		setDescription("Import a connector from connector store or file system.");
-		IProject project = getProject(selection);
-		if (project != null) {
-			setSelectedProject(project);
-		}
-		connectorList = new ArrayList<>();
-	}
+    private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+    private static ImportCloudConnectorWizardPage wizard;
 
-	@Override
-	public void createControl(Composite parent) {
-		final Composite container = new Composite(parent, SWT.NULL);
-		setControl(container);
-		container.setLayout(new GridLayout(3, false));
-		
-		GridData gridData = new GridData();
-		gridData.horizontalAlignment = GridData.FILL;
-		gridData.verticalAlignment = GridData.FILL;
-		gridData.horizontalSpan = 3;
-		gridData.verticalSpan = 7;
-		gridData.grabExcessVerticalSpace = true;
-		gridData.heightHint = 400;
-		gridData.widthHint = 250;
-		
+    protected ImportCloudConnectorWizardPage(IStructuredSelection selection) {
+        super("import");
+        setTitle("Import connector");
+        setDescription("Import a connector from connector store or file system.");
+        IProject project = getProject(selection);
+        if (project != null) {
+            setSelectedProject(project);
+        }
+        connectorList = new ArrayList<>();
+        wizard = this;
+    }
+
+    @Override
+    public void createControl(Composite parent) {
+        final Composite container = new Composite(parent, SWT.NULL);
+        setControl(container);
+        container.setLayout(new GridLayout(3, false));
+
+        GridData gridData = new GridData();
+        gridData.horizontalAlignment = GridData.FILL;
+        gridData.verticalAlignment = GridData.FILL;
+        gridData.horizontalSpan = 3;
+        gridData.verticalSpan = 7;
+        gridData.grabExcessVerticalSpace = true;
+        gridData.heightHint = 400;
+        gridData.widthHint = 250;
+
         Browser browser;
         browser = new Browser(container, SWT.NONE);
         GridData data = new GridData();
@@ -131,259 +105,134 @@ public class ImportCloudConnectorWizardPage extends WizardPage {
         data.heightHint = 400;
         browser.setLayoutData(data);
         browser.setUrl(LOAD_CONNECTORS_PAGE);
-        
-        fileSystem = new Button(container, SWT.RADIO);
-        fileSystem.setText("Connector location");
-        fileSystem.setSelection(true);
 
-        txtCloudConnectorPath = new Text(container, SWT.BORDER);
-        GridData gd_txtPath1 = new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1);
-        gd_txtPath1.widthHint = 300;
-        txtCloudConnectorPath.setLayoutData(gd_txtPath1);
-        txtCloudConnectorPath.addModifyListener(new ModifyListener() {
-
-            public void modifyText(ModifyEvent evt) {
-                setCloudConnectorPath(txtCloudConnectorPath.getText());
-                txtCloudConnectorPath.setFocus();
-                int charcount = txtCloudConnectorPath.getCharCount();
-                txtCloudConnectorPath.setSelection(charcount);
-                validate();
+        fileSystem = new Button(container, SWT.NONE);
+        fileSystem.setText("Add from File System");
+        fileSystem.addListener(SWT.Selection, new Listener() {
+            @Override
+            public void handleEvent(Event event) {
+                ConnectorFromFileSystemDialog dialog = new ConnectorFromFileSystemDialog(
+                        Display.getDefault().getActiveShell(), wizard);
+                dialog.create();
+                dialog.open();
             }
         });
-        if (cloudConnectorPath != null) {
-            txtCloudConnectorPath.setText(cloudConnectorPath);
-        } else {
-            setPageComplete(false);
+    }
+
+    public static IProject getProject(Object obj) {
+        if (obj == null) {
+            return null;
         }
+        if (obj instanceof IResource) {
+            return ((IResource) obj).getProject();
+        } else if (obj instanceof IStructuredSelection) {
+            return getProject(((IStructuredSelection) obj).getFirstElement());
+        }
+        return null;
+    }
 
-        final Button btnBrowse1 = new Button(container, SWT.NONE);
-        btnBrowse1.addSelectionListener(new SelectionAdapter() {
-
-            public void widgetSelected(SelectionEvent e) {
-                FileDialog fileDlg = new FileDialog(getShell());
-                String fileName = fileDlg.open();
-                if (fileName != null) {
-                    txtCloudConnectorPath.setText(fileName);
+    protected void addConnectorsToTable(int page, File iconCacheDir, IProgressMonitor monitor) {
+        int workUnit = (1000 - (25 * page)) / connectorList.size();
+        for (Connector connector : connectorList) {
+            monitor.subTask("Fetching details of " + connector.getAttributes().getOverview_name() + " connector.");
+            String imageLocation = null;
+            TableItem item = new TableItem(table, SWT.NONE);
+            imageLocation = txtConnectorStoreURL.getText() + connector.getAttributes().getImages_thumbnail();
+            String[] segments = imageLocation.split("/");
+            String imageFileName = segments[segments.length - 1];
+            try {
+                String imageFilePath = iconCacheDir + File.separator + imageFileName;
+                File imageFile = new File(imageFilePath);
+                if (!imageFile.exists()) {
+                    // Download the thumbnail image if it is not there in the
+                    // filesystem.
+                    downloadThumbnailImage(imageLocation, imageFilePath);
                 }
-                validate();
+                Image image = new Image(Display.getDefault(), imageFilePath);
+                Image scaled = new Image(Display.getDefault(), 55, 50);
+                GC gc = new GC(scaled);
+                gc.setAntialias(SWT.ON);
+                gc.setInterpolation(SWT.HIGH);
+                gc.drawImage(image, 0, 0, image.getBounds().width, image.getBounds().height, 0, 0, 55, 50);
+                gc.dispose();
+                image.dispose();
+                item.setImage(scaled);
+            } catch (IOException e) {
+                log.error("Error while downloading " + imageFileName, e);
             }
-        });
-        btnBrowse1.setText("Browse..");
-        
-        fileSystem.addSelectionListener(new SelectionAdapter() {
-            public void widgetSelected(SelectionEvent e) {
-                txtCloudConnectorPath.setEnabled(true);
-                btnBrowse1.setEnabled(true);
+            item.setText(new String[] { connector.getAttributes().getOverview_name(),
+                    connector.getAttributes().getOverview_version() });
+            item.setData(connector);
+            monitor.worked(workUnit);
+        }
+        monitor.done();
+    }
 
-                txtConnectorStoreURL.setText("");
-                txtConnectorStoreURL.setEnabled(false);
-                table.setEnabled(false);
-            }
-        });
-	}
+    /*
+     * Download the thumbnail image from the provided URL.
+     */
+    private void downloadThumbnailImage(String location, String file) throws IOException {
+        URL url = new URL(location);
+        InputStream in = new BufferedInputStream(url.openStream());
+        OutputStream out = new BufferedOutputStream(new FileOutputStream(file));
 
-	public static IProject getProject(Object obj){
-		if (obj == null) {
-			return null;
-		}
-		if (obj instanceof IResource) {
-			return ((IResource) obj).getProject();
-		} else if (obj instanceof IStructuredSelection) {
-			return getProject(((IStructuredSelection) obj).getFirstElement());
-		}
-		return null;
-	}
+        for (int i; (i = in.read()) != -1;) {
+            out.write(i);
+        }
+        in.close();
+        out.close();
+    }
 
-	private void validate() {
-//		if ((getCloudConnectorPath() == null || getCloudConnectorPath().equals(""))) {
-//			setErrorMessage("Please specify a connector path");
-//			setPageComplete(false);
-//			return;
-//		}
-		setErrorMessage(null);
-		((CloudConnectorImportWizard) getWizard()).getRemoveWizardPage().setPageComplete(true);
-		setPageComplete(true);
-	}
-		
-	/*
-	 * List available connectors
-	 */
-	private void listConnectors() {
-		IProgressService progressService = PlatformUI.getWorkbench().getProgressService();
-		try {
-			progressService.runInUI(PlatformUI.getWorkbench().getProgressService(), new IRunnableWithProgress() {
-				public void run(IProgressMonitor monitor) {					
-					try {
-						String iconCacheDirPath = getSelectedProject().getWorkspace().getRoot().getLocation()
-								.toOSString() + File.separator + DIR_DOT_METADATA + File.separator + DIR_CACHE;
-						File iconCacheDir = new File(iconCacheDirPath);
-						if (!iconCacheDir.exists()) {
-							iconCacheDir.mkdir();
-						}
-						int page = 1;
-						monitor.beginTask("Fetching list of connectors", 1000);
-						monitor.subTask("Searching connectors in store : page " + page);
-						Object connectorInfo = ConnectorStore.getConnectorInfo(getHttpClient(),
-						        CONNECTOR_STORE_URL, page);
-						if (connectorInfo instanceof List<?>) {
-							List<Connector> tmpList = (List<Connector>) connectorInfo;
-							while (tmpList != null && !tmpList.isEmpty()) {
-								connectorList.addAll(tmpList);
-								monitor.worked(25);
-								++page;
-								monitor.subTask("Searching connectors in store : page " + page);
-								tmpList = (List<Connector>) ConnectorStore.getConnectorInfo(getHttpClient(),
-								        CONNECTOR_STORE_URL, page);
-							}
-							addConnectorsToTable(page, iconCacheDir, monitor);
-						} else if (connectorInfo instanceof ConnectorData) {
-							List<Connector> tmpList = ((ConnectorData) connectorInfo).getConnector();
-							connectorList.addAll(tmpList);
-							addConnectorsToTable(page, iconCacheDir, monitor);
-						}
+    @Override
+    public IWizardPage getNextPage() {
+        return null;
+    }
 
-					} catch (KeyManagementException | NoSuchAlgorithmException | IOException e1) {
-						log.error("Error while listing connectors", e1);
-						IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e1.getMessage());
-						ErrorDialog.openError(Display.getCurrent().getActiveShell(), "Error while listing connectors",
-								e1.getMessage(), editorStatus);
-						monitor.done();
-					}
-				}
-			}, getSelectedProject().getWorkspace().getRoot());
-		} catch (InvocationTargetException | InterruptedException e) {
-			log.error("Error while listing connectors", e);
-		}
-	}
-	
-	protected void addConnectorsToTable(int page, File iconCacheDir, IProgressMonitor monitor) {
-		int workUnit = (1000 - (25 * page)) / connectorList.size();
-		for (Connector connector : connectorList) {
-			monitor.subTask("Fetching details of " + connector.getAttributes().getOverview_name() + " connector.");
-			String imageLocation = null;
-			TableItem item = new TableItem(table, SWT.NONE);
-			imageLocation = txtConnectorStoreURL.getText() + connector.getAttributes().getImages_thumbnail();
-			String[] segments = imageLocation.split("/");
-			String imageFileName = segments[segments.length - 1];
-			try {
-				String imageFilePath = iconCacheDir + File.separator + imageFileName;
-				File imageFile = new File(imageFilePath);
-				if (!imageFile.exists()) {
-					// Download the thumbnail image if it is not there in the
-					// filesystem.
-					downloadThumbnailImage(imageLocation, imageFilePath);
-				}
-				Image image = new Image(Display.getDefault(), imageFilePath);
-				Image scaled = new Image(Display.getDefault(), 55, 50);
-				GC gc = new GC(scaled);
-				gc.setAntialias(SWT.ON);
-				gc.setInterpolation(SWT.HIGH);
-				gc.drawImage(image, 0, 0, image.getBounds().width, image.getBounds().height, 0, 0, 55, 50);
-				gc.dispose();
-				image.dispose();
-				item.setImage(scaled);
-			} catch (IOException e) {
-				log.error("Error while downloading " + imageFileName, e);
-			}
-			item.setText(new String[] { connector.getAttributes().getOverview_name(),
-					connector.getAttributes().getOverview_version() });
-			item.setData(connector);
-			monitor.worked(workUnit);
-		}
-		monitor.done();
-	}
+    public String getCloudConnectorPath() {
+        return cloudConnectorPath;
+    }
 
-	/*
-	 * Download the thumbnail image from the provided URL.
-	 */
-	private void downloadThumbnailImage(String location, String file) throws IOException {
-		URL url = new URL(location);
-		InputStream in = new BufferedInputStream(url.openStream());
-		OutputStream out = new BufferedOutputStream(new FileOutputStream(file));
+    public void setCloudConnectorPath(String cloudConnectorPath) {
+        this.cloudConnectorPath = cloudConnectorPath;
+    }
 
-		for (int i; (i = in.read()) != -1;) {
-			out.write(i);
-		}
-		in.close();
-		out.close();
-	}
+    public IProject getSelectedProject() {
+        return selectedProject;
+    }
 
-	private HttpClient getHttpClient() throws NoSuchAlgorithmException, KeyManagementException {
-		HttpClient httpclient = new HttpClient();
-		httpclient.getParams().setIntParameter(HTTP_SOCKET_TIMEOUT, TIMEOUT);
-		SSLContext ctx;
-		ctx = SSLContext.getInstance("TLS");
-		ctx.init(new KeyManager[0], new TrustManager[] { new DefaultTrustManager() }, new SecureRandom());
-		SSLContext.setDefault(ctx);
-		return httpclient;
-	}
+    public void setSelectedProject(IProject selectedProject) {
+        this.selectedProject = selectedProject;
+    }
 
-	private static class DefaultTrustManager implements X509TrustManager {
+    public Table getTable() {
+        return table;
+    }
 
-		@Override
-		public void checkClientTrusted(X509Certificate[] arg0, String arg1) throws CertificateException {
-		}
+    public void setTable(Table table) {
+        this.table = table;
+    }
 
-		@Override
-		public void checkServerTrusted(X509Certificate[] arg0, String arg1) throws CertificateException {
-		}
+    public Button getConnectorStore() {
+        return connectorStore;
+    }
 
-		@Override
-		public X509Certificate[] getAcceptedIssuers() {
-			return null;
-		}
-	}
+    public void setConnectorStore(Button connectorStore) {
+        this.connectorStore = connectorStore;
+    }
 
-	@Override
-	public IWizardPage getNextPage() {
-		return null;
-	}
+    public Button getFileSystem() {
+        return fileSystem;
+    }
 
-	public String getCloudConnectorPath() {
-		return cloudConnectorPath;
-	}
+    public void setFileSystem(Button fileSystem) {
+        this.fileSystem = fileSystem;
+    }
 
-	public void setCloudConnectorPath(String cloudConnectorPath) {
-		this.cloudConnectorPath = cloudConnectorPath;
-	}
+    public List<Connector> getConnectorList() {
+        return connectorList;
+    }
 
-	public IProject getSelectedProject() {
-		return selectedProject;
-	}
-
-	public void setSelectedProject(IProject selectedProject) {
-		this.selectedProject = selectedProject;
-	}
-
-	public Table getTable() {
-		return table;
-	}
-
-	public void setTable(Table table) {
-		this.table = table;
-	}
-
-	public Button getConnectorStore() {
-		return connectorStore;
-	}
-
-	public void setConnectorStore(Button connectorStore) {
-		this.connectorStore = connectorStore;
-	}
-
-	public Button getFileSystem() {
-		return fileSystem;
-	}
-
-	public void setFileSystem(Button fileSystem) {
-		this.fileSystem = fileSystem;
-	}
-	
-	public List<Connector> getConnectorList() {
-		return connectorList;
-	}
-
-	public void setConnectorList(List<Connector> connectorList) {
-		this.connectorList = connectorList;
-	}
+    public void setConnectorList(List<Connector> connectorList) {
+        this.connectorList = connectorList;
+    }
 }

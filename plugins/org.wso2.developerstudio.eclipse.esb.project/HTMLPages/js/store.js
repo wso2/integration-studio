@@ -27,9 +27,19 @@ $("#connector-nodes").scroll(function(event) {
 	}
 });
 
-$("#search").keyup(function() {
-	searchConnectors($('#search').val());
+$('#search').on('keypress', function (e) {
+    if(e.which === 13){
+       $(this).attr("disabled", "disabled");
+       searchConnectors($('#search').val());
+       $(this).removeAttr("disabled");
+    }
 });
+
+window.addEventListener('keypress', function (e) {
+    if (e.keyCode !== 13) {
+        chars.push(e.key);
+    }
+}, false);
 
 /**
  * Retrieves the connectors with the specified offset and limit

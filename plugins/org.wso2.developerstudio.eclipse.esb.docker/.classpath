@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+	<classpathentry exported="true" kind="lib" path="lib/ui-3.8.2-v20120916-1200.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/activation-1.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/asm-5.0.3.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/asm-analysis-5.0.3.jar"/>

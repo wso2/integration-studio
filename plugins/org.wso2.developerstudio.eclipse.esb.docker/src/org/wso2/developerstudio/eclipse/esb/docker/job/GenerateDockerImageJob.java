@@ -30,6 +30,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
+import org.eclipse.mylyn.commons.ui.dialogs.AbstractNotificationPopup;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.MessageBox;
@@ -40,6 +41,7 @@ import org.wso2.developerstudio.eclipse.esb.docker.Activator;
 import org.wso2.developerstudio.eclipse.esb.docker.exceptions.DockerConnectionException;
 import org.wso2.developerstudio.eclipse.esb.docker.exceptions.DockerImageGenerationException;
 import org.wso2.developerstudio.eclipse.esb.docker.model.MicroIntegratorDockerModel;
+import org.wso2.developerstudio.eclipse.esb.docker.notification.ImageCreationSuccessNotificationPopUp;
 import org.wso2.developerstudio.eclipse.esb.docker.resources.DockerGenConstants;
 import org.wso2.developerstudio.eclipse.esb.docker.util.DockerImageGenerator;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
@@ -174,16 +176,32 @@ public class GenerateDockerImageJob extends Job {
         monitor.done();
 
         // Image generation successful
-        showMessageBox(DockerGenConstants.SuccessMessages.SUCCESSFUL_TITLE,
-                DockerGenConstants.SuccessMessages.DOCKER_IMAGE_GEN_SUCCESS_MESSAGE + generatedImageId,
-                SWT.ICON_INFORMATION);
+        if (null != generatedImageId) {
+        	showSuccessNotification(generatedImageId);
+        } else {
+            showMessageBox(DockerGenConstants.ErrorMessages.DOCKER_IMAGE_CREATION_FAILED_TITLE,
+                    DockerGenConstants.ErrorMessages.DOCKER_IMAGE_CREATION_FAILED_MSG, SWT.ICON_ERROR);
+        }
 
         return Status.OK_STATUS;
     }
 
+    private void showSuccessNotification(String imageId) {
+    	
+    	Display.getDefault().syncExec(new Runnable() {
+            public void run() {
+                Display display = PlatformUI.getWorkbench().getDisplay();
+                final AbstractNotificationPopup popup = new ImageCreationSuccessNotificationPopUp(display, imageId);
+                popup.setFadingEnabled(false);
+                popup.setDelayClose(0L);
+                popup.open();
+            }
+        });
+    }
+    
     private void showMessageBox(String title, String message, int style) {
 
-        Display.getDefault().asyncExec(new Runnable() {
+        Display.getDefault().syncExec(new Runnable() {
             public void run() {
                 Display display = PlatformUI.getWorkbench().getDisplay();
                 Shell shell = display.getActiveShell();

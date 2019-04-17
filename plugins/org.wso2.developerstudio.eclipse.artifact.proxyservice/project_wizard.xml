@@ -21,6 +21,7 @@
 			<data modelProperty="transport.local.choice" type="choice">local</data>
 			<data modelProperty="transport.mailto.choice" type="choice">mailto</data>
 			<data modelProperty="transport.fix.choice" type="choice">fix</data>
+			<data modelProperty="transport.rabbitmq.choice" type="choice">rabbitmq</data>
 			<data modelProperty="transport.hl7.choice" type="choice">hl7</data>
 			<data modelProperty="save.file" type="workspacefolder" fieldController="org.wso2.developerstudio.eclipse.artifact.proxyservice.validators.ProxyServiceProjectFieldController" controlData="filterClass=org.wso2.developerstudio.eclipse.artifact.proxyservice.validators.ESBProjectFilter">Save in:</data>
 			<data modelProperty="create.esb.prj" type="link" fieldController="org.wso2.developerstudio.eclipse.artifact.proxyservice.validators.ProxyServiceProjectFieldController" controlData="align=right">&lt;a&gt;Create new ESB Project...&lt;/a&gt;</data> 

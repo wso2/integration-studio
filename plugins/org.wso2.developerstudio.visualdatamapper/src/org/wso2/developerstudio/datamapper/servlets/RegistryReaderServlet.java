@@ -50,14 +50,16 @@ public class RegistryReaderServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        // Save schema changes
-        saveChanges();
 
+        // Save schema changes only if the output schema is available
+        if (checkForSchema()) {
+            saveChanges();
+        }
+        
         String payload = IOUtils.toString(request.getInputStream());
         String[] strArray = payload.split(" ");
         String operation = strArray[0];
-        
+
         // "process" operation will do the Datamaper mediation and return the results.
         if (operation.equals(OPERATION_PROCESS)) {
             response.setStatus(HttpServletResponse.SC_OK);
@@ -110,6 +112,17 @@ public class RegistryReaderServlet extends HttpServlet {
             response.getWriter().println(result);
         }
         
+    }
+
+    /**
+     * Checks if the schema are available
+     * 
+     * @return true if the input and output schema is available, else returns false
+     */
+    private boolean checkForSchema() {
+        File inputFile = new File(DataMapperConfigHolder.getInstance().getInputSchemaPath());
+        File outputFile = new File(DataMapperConfigHolder.getInstance().getOutputSchemaPath());
+        return (inputFile.length() != 0 && outputFile.length() != 0);
     }
 
     /**

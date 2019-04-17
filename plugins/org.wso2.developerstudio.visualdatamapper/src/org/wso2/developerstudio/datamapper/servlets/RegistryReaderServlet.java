@@ -52,7 +52,7 @@ public class RegistryReaderServlet extends HttpServlet {
             throws ServletException, IOException {
 
         // Save schema changes only if the output schema is available
-        if (checkForOutputSchema()) {
+        if (checkForSchema()) {
             saveChanges();
         }
         
@@ -115,13 +115,14 @@ public class RegistryReaderServlet extends HttpServlet {
     }
 
     /**
-     * Checks if the output schema is available
+     * Checks if the schema are available
      * 
-     * @return true if the output schema is available, else returns false
+     * @return true if the input and output schema is available, else returns false
      */
-    private boolean checkForOutputSchema() {
-        File file = new File(DataMapperConfigHolder.getInstance().getOutputSchemaPath());
-        return file.length() != 0;
+    private boolean checkForSchema() {
+        File inputFile = new File(DataMapperConfigHolder.getInstance().getInputSchemaPath());
+        File outputFile = new File(DataMapperConfigHolder.getInstance().getOutputSchemaPath());
+        return (inputFile.length() != 0 && outputFile.length() != 0);
     }
 
     /**

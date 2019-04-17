@@ -15,11 +15,12 @@
 * specific language governing permissions and limitations
 * under the License.
 */
-package org.wso2.developerstudio.eclipse.gmf.esb.parts.forms;
+package org.wso2.developerstudio.eclipse.gmf.esb.presentation;
 
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.net.UnknownHostException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.sql.Connection;
@@ -29,6 +30,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -39,8 +44,11 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.apache.maven.execution.MavenExecutionRequest;
 import org.apache.maven.execution.MavenExecutionResult;
+import org.apache.maven.lifecycle.LifecycleExecutionException;
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
@@ -100,6 +108,9 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.wso2.carbon.tools.converter.BundleGeneratorTool;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.Activator;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.xml.sax.SAXException;
 
 public class DependencyProvider extends Dialog {
@@ -114,6 +125,13 @@ public class DependencyProvider extends Dialog {
     private static final String microesbLibPath = "runtime" + File.separator + "microesb" + File.separator + "lib";
     public static final String EI_TOOLING_HOME_MACOS = File.separator + "Applications" + File.separator
             + "DeveloperStudio.app" + File.separator + "Contents" + File.separator + "MacOS";
+    public static final String POM_XML = "pom.xml";
+    public static final String TARGET = "target";
+    public static final String MYSQL = "MYSQL";
+    public static final String MSSQL = "MSSQL";
+    public static final String POSTGRESQL = "POSTGRESQL";
+    public static final String ORACLE = "ORACLE";
+    public static final String DEPENDENCIES = "dependencies";
     private Font font;
     private Combo versionComboBox;
     private String groupId;
@@ -166,23 +184,25 @@ public class DependencyProvider extends Dialog {
     private Shell dialogShell;
     private String OS_TYPE;
     private String[] connectionURLArray;
+    private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
     public DependencyProvider(Shell parent, int style) {
         super(parent, style);
         eclipseWorkspace = ResourcesPlugin.getWorkspace().getRoot().getLocation().toString();
-        IEditorPart editorPart = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
+        IEditorPart editorPart = PlatformUI.getWorkbench().getActiveWorkbenchWindow()
+                .getActivePage().getActiveEditor();
         if (editorPart != null) {
             IFileEditorInput input = (IFileEditorInput) editorPart.getEditorInput();
             IFile file = input.getFile();
             IProject activeProject = file.getProject();
             activeProjectName = activeProject.getName();
         }
-        jarOutputPath = eclipseWorkspace + File.separator + activeProjectName + File.separator + "dependancies";
-        dependencyDir = eclipseWorkspace + File.separator + activeProjectName + File.separator + "dependancies";
+        jarOutputPath = eclipseWorkspace + File.separator + activeProjectName + File.separator + DEPENDENCIES;
+        dependencyDir = eclipseWorkspace + File.separator + activeProjectName + File.separator + DEPENDENCIES;
         OS_TYPE = System.getProperty(OS_NAME, SYSTEM_PROPERTY_TYPE_GENERIC).toLowerCase(Locale.ENGLISH);
     }
 
-    void open(ConnectionObj connectionObj) {
+    public void open(ConnectionObj connectionObj) {
         this.connectionObj = connectionObj;
 
         dialogShell = new Shell(getParent(), SWT.DIALOG_TRIM | SWT.APPLICATION_MODAL);
@@ -624,7 +644,7 @@ public class DependencyProvider extends Dialog {
                     jarLocationText.setEnabled(false);
                     break;
 
-                case "MYSQL":
+                case MYSQL:
                     versionComboBox.setItems(mysqlVersionArr);
                     groupId = "mysql";
                     artifactId = "mysql-connector-java";
@@ -633,7 +653,7 @@ public class DependencyProvider extends Dialog {
                     setDefaults("localhost", "3306");
                     break;
 
-                case "MSSQL":
+                case MSSQL:
                     versionComboBox.setItems(mssqlVersionArr);
                     groupId = "com.microsoft.sqlserver";
                     artifactId = "mssql-jdbc";
@@ -642,7 +662,7 @@ public class DependencyProvider extends Dialog {
                     setDefaults("localhost", "1433");
                     break;
 
-                case "ORACLE":
+                case ORACLE:
                     downloadButton.setEnabled(false);
                     jdbcDriver = "com.oracle.jdbc.Driver";
                     setDefaults("SERVER_NAME", "PORT");
@@ -664,7 +684,7 @@ public class DependencyProvider extends Dialog {
 
                     break;
 
-                case "POSTGRESQL":
+                case POSTGRESQL:
                     versionComboBox.setItems(postgresSqlVersionArr);
                     groupId = "org.postgresql";
                     artifactId = "postgresql";
@@ -786,8 +806,7 @@ public class DependencyProvider extends Dialog {
                 try {
                     progressMonitorDialog.run(true, true, new LongRunningOperation(true, dialogShell));
                 } catch (Exception e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
+                    log.error("Exception", e);
                 }
             }
         });
@@ -798,7 +817,7 @@ public class DependencyProvider extends Dialog {
                 fillConnectionObj();
                 try {
                     File file = new File(eclipseWorkspace + File.separator + activeProjectName + File.separator
-                            + "dependancies" + File.separator
+                            + DEPENDENCIES + File.separator
                             + getDownlodedJarByName(connectiontypeComboBox.getText(), versionComboBox.getText()));
 
                     if (file.exists()) {
@@ -806,7 +825,7 @@ public class DependencyProvider extends Dialog {
                                 + File.separator + file.getName()));
                     }
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    log.error("Exception while copying files", e);
                 }
                 dialogShell.dispose();
             }
@@ -822,8 +841,8 @@ public class DependencyProvider extends Dialog {
         cancelButton.addListener(SWT.Selection, new Listener() {
             @Override
             public void handleEvent(org.eclipse.swt.widgets.Event event) {
-                remove(dependencyDir + "/target");
-                remove(dependencyDir + "/pom.xml");
+                remove(dependencyDir + File.separator + TARGET);
+                remove(dependencyDir + File.separator + POM_XML);
                 dialogShell.dispose();
             }
         });
@@ -922,7 +941,7 @@ public class DependencyProvider extends Dialog {
         versionComboBox.setEnabled(true);
 
         switch (connectiontypeComboBox.getText()) {
-        case "MYSQL":
+        case MYSQL:
             versionComboBox.setItems(mysqlVersionArr);
             groupId = "mysql";
             artifactId = "mysql-connector-java";
@@ -930,7 +949,7 @@ public class DependencyProvider extends Dialog {
             databaseConnectionPrefix = "jdbc:mysql://";
             break;
 
-        case "MSSQL":
+        case MSSQL:
             versionComboBox.setItems(mssqlVersionArr);
             groupId = "com.microsoft.sqlserver";
             artifactId = "mssql-jdbc";
@@ -938,7 +957,7 @@ public class DependencyProvider extends Dialog {
             databaseConnectionPrefix = "jdbc:sqlserver://";
             break;
 
-        case "POSTGRESQL":
+        case POSTGRESQL:
             versionComboBox.setItems(postgresSqlVersionArr);
             groupId = "org.postgresql";
             artifactId = "postgresql";
@@ -946,7 +965,7 @@ public class DependencyProvider extends Dialog {
             databaseConnectionPrefix = "jdbc:postgresql://";
             break;
 
-        case "ORACLE":
+        case ORACLE:
             databaseConnectionPrefix = "jdbc:postgresql://";
             jdbcDriver = "com.oracle.jdbc.Driver";
 
@@ -1052,8 +1071,7 @@ public class DependencyProvider extends Dialog {
                 try {
                     FileUtils.forceDelete(new File(path));
                 } catch (IOException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
+                    log.error("Exception while deleting file", e);
                 }
             }
         }
@@ -1070,22 +1088,22 @@ public class DependencyProvider extends Dialog {
 
     private String getDownlodedJarByName(String connectionType, String version) {
         switch (connectionType) {
-        case "MYSQL":
+        case MYSQL:
             return "mysql-connector-java-" + version + ".jar";
 
-        case "MSSQL":
+        case MSSQL:
             return "mssql-jdbc-" + version + ".jar";
 
-        case "POSTGRESQL":
+        case POSTGRESQL:
             return "postgresql-" + version + ".jar";
         }
         return null;
     }
 
     private String generateDbUrl(String dbType) {
-        if (dbType.equals("MSSQL")) {
-            return databaseConnectionPrefix + hostTextField.getText() + ":" + portTextField.getText() + ";databaseName="
-                    + databaseTextField.getText() + ";";
+        if (dbType.equals(MSSQL)) {
+            return databaseConnectionPrefix + hostTextField.getText() + ":" + portTextField.getText() 
+            + ";databaseName="+ databaseTextField.getText() + ";";
         } else {
             return databaseConnectionPrefix + hostTextField.getText() + ":" + portTextField.getText() + "/"
                     + databaseTextField.getText();
@@ -1109,7 +1127,7 @@ public class DependencyProvider extends Dialog {
                 Bundle newBundle;
                 databaseURL = generateDbUrl(connectiontypeComboBox.getText());
                 switch (connectiontypeComboBox.getText()) {
-                case "MYSQL":
+                case MYSQL:
                     newBundle = bundle.getBundleContext().installBundle(path);
                     newBundle.start();
                     if (versionComboBox.getText().equals("8.0.15") || versionComboBox.getText().equals("8.0.14")) {
@@ -1118,17 +1136,17 @@ public class DependencyProvider extends Dialog {
                         Class.forName("com.mysql.jdbc.Driver");
                     }
                     break;
-                case "MSSQL":
+                case MSSQL:
                     newBundle = bundle.getBundleContext().installBundle(path);
                     newBundle.start();
                     Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
                     break;
-                case "POSTGRESQL":
+                case POSTGRESQL:
                     newBundle = bundle.getBundleContext().installBundle(path);
                     newBundle.start();
                     Class.forName("org.postgresql.Driver");
                     break;
-                case "ORACLE":
+                case ORACLE:
                     newBundle = bundle.getBundleContext().installBundle(path);
                     newBundle.start();
                     Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -1140,25 +1158,24 @@ public class DependencyProvider extends Dialog {
                     showMessage("Connection Successful");
                 }
             } catch (ClassNotFoundException e) {
-                e.printStackTrace();
                 ErrorDialog.openError(dialogShell, "Error", "Error!", createMultiStatus(e.getLocalizedMessage(), e));
+                log.error("ClassNotFoundException", e);
             } catch (SQLException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
                 ErrorDialog.openError(dialogShell, "Error", "Error!", createMultiStatus(e.getLocalizedMessage(), e));
+                log.error("SQLException", e);
             } catch (BundleException e) {
-                e.printStackTrace();
                 ErrorDialog.openError(dialogShell, "Error", "Error!", createMultiStatus(e.getLocalizedMessage(), e));
+                log.error("BundleException", e);
             } catch (Exception e) {
-                e.printStackTrace();
                 ErrorDialog.openError(dialogShell, "Error", "Error!", createMultiStatus(e.getLocalizedMessage(), e));
+                log.error("Exception", e);
             } finally {
                 remove(jdbcBundledConnectivityJar);
                 if (conn != null) {
                     try {
                         conn.close();
                     } catch (SQLException ex) {
-                        ex.printStackTrace();
+                        log.error("Exception while closing JDBC connection", ex);
                     }
                 }
             }
@@ -1199,7 +1216,7 @@ public class DependencyProvider extends Dialog {
             return result;
 
         } catch (Throwable e) {
-            e.printStackTrace();
+            log.error("Exception while executing maven task", e);
         } finally {
             monitor.done();
         }
@@ -1212,7 +1229,7 @@ public class DependencyProvider extends Dialog {
         IPath ResourcePath = new org.eclipse.core.runtime.Path(dependencyDir);
         IContainer container = ResourcesPlugin.getWorkspace().getRoot().getContainerForLocation(ResourcePath);
 
-        IFile pomFile = container.getFile(new org.eclipse.core.runtime.Path("pom.xml"));
+        IFile pomFile = container.getFile(new org.eclipse.core.runtime.Path(POM_XML));
         try {
             MavenExecutionResult mvn = runMavenExecution(pomFile,
                     Arrays.asList("org.apache.maven.plugins:maven-dependency-plugin:2.8:copy-dependencies"), null);
@@ -1223,7 +1240,7 @@ public class DependencyProvider extends Dialog {
                     throw t;
                 }
             } else {// when download of dependencies is success, copy .jars to MicroESB/lib directory
-                remove(dependencyDir + File.separator + "pom.xml");
+                remove(dependencyDir + File.separator + POM_XML);
                 File[] sourceFiles = new File(dependencyDir).listFiles();
                 for (File file : sourceFiles) {
                     if (file.getName().endsWith(".jar")) {
@@ -1233,12 +1250,12 @@ public class DependencyProvider extends Dialog {
                 }
             }
 
-        } catch (java.net.UnknownHostException e1) {
-            e1.printStackTrace();
+        } catch (LifecycleExecutionException e) {
+            log.error("Failed to download dependency from maven check for internet connection", e);
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error("Error while copying files", e);
         } catch (Throwable e) {
-            e.printStackTrace();
+            log.error("Exception", e);
         }
     }
 
@@ -1254,7 +1271,7 @@ public class DependencyProvider extends Dialog {
                 dir.mkdirs();
             }
 
-            File pomXML = new File(dependencyDir + File.separator + "pom.xml");
+            File pomXML = new File(dependencyDir + File.separator + POM_XML);
 
             if (pomXML.exists()) {
                 document = documentBuilder.parse(pomXML);
@@ -1373,7 +1390,7 @@ public class DependencyProvider extends Dialog {
                 fileset.appendChild(includes);
 
                 Element include = document.createElement("include");
-                include.appendChild(document.createTextNode(dependencyDir + File.separator + "pom.xml"));
+                include.appendChild(document.createTextNode(dependencyDir + File.separator + POM_XML));
                 includes.appendChild(include);
 
                 Element followSymlinks = document.createElement("followSymlinks");
@@ -1387,15 +1404,15 @@ public class DependencyProvider extends Dialog {
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
             transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "3");
             DOMSource domSource = new DOMSource(document);
-            StreamResult streamResult = new StreamResult(new File(dependencyDir + File.separator + "pom.xml"));
+            StreamResult streamResult = new StreamResult(new File(dependencyDir + File.separator + POM_XML));
             transformer.transform(domSource, streamResult);
 
         } catch (ParserConfigurationException pce) {
-            pce.printStackTrace();
+            log.error("Could not parse XML String", pce);
         } catch (TransformerException tfe) {
-            tfe.printStackTrace();
+            log.error("Could not transform XML", tfe);
         } catch (SAXException | IOException e) {
-            e.printStackTrace();
+            log.error("Could not parse XML String", e);
         }
 
     }
@@ -1459,7 +1476,7 @@ public class DependencyProvider extends Dialog {
         return ms;
     }
 
-    public int getDatabaseIndex(String arr[], String dbType) {
+    private int getDatabaseIndex(String arr[], String dbType) {
         for (int i = 0; i < arr.length; i++) {
             if (arr[i].equals(dbType)) {
                 return i;
@@ -1469,9 +1486,13 @@ public class DependencyProvider extends Dialog {
     }
 
     class LongRunningOperation implements IRunnableWithProgress {
-        private static final int TOTAL_TIME = 1000000000;
+
+        private static final int TOTAL_TIME = 100000;
         private boolean indeterminate;
         private Shell shell;
+        private int TIME_INTERVAL = 1;
+        private IProgressMonitor monitor;
+        private ScheduledExecutorService scheduledExecutorService;
 
         public LongRunningOperation(boolean indeterminate, Shell shell) {
             this.indeterminate = indeterminate;
@@ -1479,55 +1500,80 @@ public class DependencyProvider extends Dialog {
         }
 
         @Override
-        public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
-
+        public void run(IProgressMonitor mon) throws InvocationTargetException, InterruptedException {
+            monitor = mon;
             monitor.beginTask("Downloading Required Dependency JAR",
                     indeterminate ? IProgressMonitor.UNKNOWN : TOTAL_TIME);
             Thread.sleep(500);
 
-            IPath ResourcePath = new org.eclipse.core.runtime.Path(dependencyDir);
-            IContainer container = ResourcesPlugin.getWorkspace().getRoot().getContainerForLocation(ResourcePath);
+            scheduledExecutorService = Executors.newScheduledThreadPool(1);
 
-            IFile pomFile = container.getFile(new org.eclipse.core.runtime.Path("pom.xml"));
-            try {
-                MavenExecutionResult mvn = runMavenExecution(pomFile,
-                        Arrays.asList("org.apache.maven.plugins:maven-dependency-plugin:2.8:copy-dependencies"), null);
-                if (monitor.isCanceled()) {
-                    remove(dependencyDir + File.separator + "pom.xml");
-                    throw new InterruptedException("The download process was canceled");
-                }
+            ScheduledFuture<?> scheduledFuture = scheduledExecutorService.scheduleAtFixedRate(new Runnable() {
 
-                if (mvn.hasExceptions()) {
-                    List<Throwable> rr = mvn.getExceptions();
-                    for (Throwable t : rr) {
-                        throw t;
-                    }
+                public void run() {
 
-                } else {
-                    remove(dependencyDir + File.separator + "pom.xml");
-                    Display.getDefault().syncExec(new Runnable() {
-                        public void run() {
-                            MessageDialog.openInformation(shell, "Success",
-                                    "You have successfully downloaded the driver."
-                                            + "\n\nThe downloaded driver is located in the dependencies directory."
-                                            + "\nNote that downloaded drivers are not deployed with the CApp.");
+                    IPath ResourcePath = new org.eclipse.core.runtime.Path(dependencyDir);
+                    IContainer container = ResourcesPlugin.getWorkspace().getRoot()
+                            .getContainerForLocation(ResourcePath);
+
+                    IFile pomFile = container.getFile(new org.eclipse.core.runtime.Path(POM_XML));
+                    try {
+                        MavenExecutionResult mvn = runMavenExecution(pomFile,
+                            Arrays.asList("org.apache.maven.plugins:maven-dependency-plugin:2.8:copy-dependencies"),
+                            null);
+                        if (monitor.isCanceled()) {
+                            remove(dependencyDir + File.separator + POM_XML);
+                            throw new InterruptedException("The download process was canceled");
                         }
-                    });
-                }
-            } catch (java.net.UnknownHostException e1) {
-                Display.getDefault().syncExec(new Runnable() {
-                    public void run() {
-                        remove(dependencyDir + File.separator + "target");
-                        remove(dependencyDir + File.separator + "pom.xml");
-                        MessageDialog.openInformation(shell, "An Error has occoured",
-                                "An error occurred when downloading the driver."
-                                        + "\nMake sure that you are connected to the internet.");
+
+                        if (mvn.hasExceptions()) {
+                            List<Throwable> rr = mvn.getExceptions();
+                            for (Throwable t : rr) {
+                                throw t;
+                            }
+
+                        } else {
+                            remove(dependencyDir + File.separator + POM_XML);
+                            Display.getDefault().syncExec(new Runnable() {
+                                public void run() {
+                                    MessageDialog.openInformation(shell, "Success",
+                                            "You have successfully downloaded the driver ("
+                                                    + getDownlodedJarByName(connectiontypeComboBox.getText(),
+                                                            versionComboBox.getText())
+                                                    + ")." + "\n\nNote that the driver will not get deployed with "
+                                                    + "other artifacts (in your CApp)."
+                                                    + "\nBe sure to manually copy the driver from the \"dependencies\" "
+                                                    + "directory to \"<PRODUCT_HOME>/lib/\"");
+
+                                }
+                            });
+                            scheduledExecutorService.shutdown();
+                        }
+                    } catch (LifecycleExecutionException e) {
+                        Display.getDefault().syncExec(new Runnable() {
+                            public void run() {
+                                remove(dependencyDir + File.separator + TARGET);
+                                MessageDialog.openInformation(shell, "An Error has occoured",
+                                        "An error occurred when downloading the driver."
+                                                + "\nMake sure that you are connected to the internet.");
+                            }
+                        });
+                        log.info("Error while downloading depenency", e);
+                        scheduledExecutorService.shutdown();
+                    } catch (InterruptedException e) {
+                        remove(dependencyDir + File.separator + TARGET);
+                        remove(dependencyDir + File.separator + POM_XML);
+                        scheduledExecutorService.shutdown();
+                        log.error("Download was interrupted", e);
+                    } catch (Throwable e) {
+                        remove(dependencyDir + File.separator + TARGET);
+                        remove(dependencyDir + File.separator + POM_XML);
+                        scheduledExecutorService.shutdown();
+                        log.error("Exception", e);
                     }
-                });
-            } catch (InterruptedException e) {
-            } catch (Throwable e) {
-                e.printStackTrace();
-            }
-        }
+                }
+            }, 0, TIME_INTERVAL, TimeUnit.SECONDS);
+            scheduledExecutorService.awaitTermination(120, TimeUnit.SECONDS);
+        };
     }
 }

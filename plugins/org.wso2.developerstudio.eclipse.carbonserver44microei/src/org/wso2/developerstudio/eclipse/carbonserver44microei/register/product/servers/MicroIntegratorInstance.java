@@ -324,4 +324,13 @@ public class MicroIntegratorInstance {
             }
         }.start();
     }
+    
+    /**
+     * This method return the server state
+     * 
+     */
+    public int getServerState() {
+        return microIntegratorServer.getServerState();
+    }
+    
 }

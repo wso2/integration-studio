@@ -148,7 +148,7 @@ public class DependencyProvider extends Dialog {
     private Button downloadButton;
     private boolean jarProvided;
     private ConnectionObj connectionObj;
-    private Composite connectionTypeGroup;
+    private Composite connectionComposite;
     private Label conectionTypeLabel;
     private Combo connectiontypeComboBox;
     private Group selectDriverGroup;
@@ -160,8 +160,8 @@ public class DependencyProvider extends Dialog {
     private Composite browseLocalComposite;
     private Label browseLabel;
     private Button browseButton;
-    private Composite connectionGroup;
-    private Group inputTypeRadioGroup1;
+    private Composite connectionDetailsComposite;
+    private Group connectionDetailsGroup;
     private Label hostLabel;
     private Text hostTextField;
     private Label portLabel;
@@ -225,74 +225,74 @@ public class DependencyProvider extends Dialog {
             connectionTypeOffset = 7;
         }
 
-        connectionTypeGroup = new Composite(dialogShell, SWT.NONE);
+        connectionComposite = new Composite(dialogShell, SWT.NONE);
         {
-            FormLayout inputTypeRadioGroupRowLayout = new FormLayout();
-            connectionTypeGroup.setLayout(inputTypeRadioGroupRowLayout);
+            FormLayout connectionTypeGroupLayout = new FormLayout();
+            connectionComposite.setLayout(connectionTypeGroupLayout);
 
-            FormData inputTypeRadioGroupLayout = new FormData();
-            inputTypeRadioGroupLayout.top = new FormAttachment(0);
-            inputTypeRadioGroupLayout.left = new FormAttachment(1);
-            inputTypeRadioGroupLayout.right = new FormAttachment(100);
-            connectionTypeGroup.setLayoutData(inputTypeRadioGroupLayout);
+            FormData connectionTypeGroupLayoutData = new FormData();
+            connectionTypeGroupLayoutData.top = new FormAttachment(0);
+            connectionTypeGroupLayoutData.left = new FormAttachment(1);
+            connectionTypeGroupLayoutData.right = new FormAttachment(100);
+            connectionComposite.setLayoutData(connectionTypeGroupLayoutData);
 
-            conectionTypeLabel = new Label(connectionTypeGroup, SWT.NONE);
+            conectionTypeLabel = new Label(connectionComposite, SWT.NONE);
             {
                 conectionTypeLabel.setText("Connection Type : *");
 
-                FormData xPathLabelLayoutData = new FormData();
-                xPathLabelLayoutData.top = new FormAttachment(10);
-                xPathLabelLayoutData.left = new FormAttachment(0);
-                conectionTypeLabel.setLayoutData(xPathLabelLayoutData);
+                FormData layoutData = new FormData();
+                layoutData.top = new FormAttachment(10);
+                layoutData.left = new FormAttachment(0);
+                conectionTypeLabel.setLayoutData(layoutData);
             }
 
-            connectiontypeComboBox = new Combo(connectionTypeGroup, SWT.READ_ONLY);
+            connectiontypeComboBox = new Combo(connectionComposite, SWT.READ_ONLY);
             {
                 connectiontypeComboBox.setItems(new String[] { "Select Connection Type" });
                 connectiontypeComboBox.setText("Select Connection Type");
                 connectiontypeComboBox.setItems(databaseArr);
 
-                FormData xPathLabelLayoutData = new FormData();
-                xPathLabelLayoutData.top = new FormAttachment(connectionTypeOffset);
-                xPathLabelLayoutData.right = new FormAttachment(99);
-                xPathLabelLayoutData.left = new FormAttachment(conectionTypeLabel, 10);
-                connectiontypeComboBox.setLayoutData(xPathLabelLayoutData);
+                FormData layoutData = new FormData();
+                layoutData.top = new FormAttachment(connectionTypeOffset);
+                layoutData.right = new FormAttachment(99);
+                layoutData.left = new FormAttachment(conectionTypeLabel, 10);
+                connectiontypeComboBox.setLayoutData(layoutData);
             }
 
             // input type radio button group
-            selectDriverGroup = new Group(connectionTypeGroup, SWT.NONE);
+            selectDriverGroup = new Group(connectionComposite, SWT.NONE);
             {
-                FormLayout inputTypeRadioGroupRowLayout1 = new FormLayout();
-                selectDriverGroup.setLayout(inputTypeRadioGroupRowLayout1);
+                FormLayout groupLayout = new FormLayout();
+                selectDriverGroup.setLayout(groupLayout);
 
-                FormData inputTypeRadioGroupLayout1 = new FormData();
-                inputTypeRadioGroupLayout1.top = new FormAttachment(conectionTypeLabel, 10);
-                inputTypeRadioGroupLayout1.left = new FormAttachment(0);
-                inputTypeRadioGroupLayout1.right = new FormAttachment(99);
+                FormData groupData = new FormData();
+                groupData.top = new FormAttachment(conectionTypeLabel, 10);
+                groupData.left = new FormAttachment(0);
+                groupData.right = new FormAttachment(99);
                 selectDriverGroup.setText("Select driver");
-                selectDriverGroup.setLayoutData(inputTypeRadioGroupLayout1);
+                selectDriverGroup.setLayoutData(groupData);
 
                 serverRadioButton = new Button(selectDriverGroup, SWT.RADIO);
                 {
-                    FormData xPathLabelLayoutData = new FormData();
-                    xPathLabelLayoutData.top = new FormAttachment(selectDriverGroup, 10);
-                    xPathLabelLayoutData.left = new FormAttachment(3);
+                    FormData layoutData = new FormData();
+                    layoutData.top = new FormAttachment(selectDriverGroup, 10);
+                    layoutData.left = new FormAttachment(3);
 
                     serverRadioButton.setText("Get from the server");
                     serverRadioButton.setSelection(true);
-                    serverRadioButton.setLayoutData(xPathLabelLayoutData);
+                    serverRadioButton.setLayoutData(layoutData);
 
                 }
                 browseFileRadioButton = new Button(selectDriverGroup, SWT.RADIO);
                 {
 
-                    FormData xPathLabelLayoutData = new FormData();
-                    xPathLabelLayoutData.top = new FormAttachment(selectDriverGroup, 10);
-                    xPathLabelLayoutData.left = new FormAttachment(60);
-                    xPathLabelLayoutData.right = new FormAttachment(90);
+                    FormData layoutData = new FormData();
+                    layoutData.top = new FormAttachment(selectDriverGroup, 10);
+                    layoutData.left = new FormAttachment(60);
+                    layoutData.right = new FormAttachment(90);
 
                     browseFileRadioButton.setText("Browse local");
-                    browseFileRadioButton.setLayoutData(xPathLabelLayoutData);
+                    browseFileRadioButton.setLayoutData(layoutData);
                 }
 
             }
@@ -300,55 +300,57 @@ public class DependencyProvider extends Dialog {
             serverComposite = new Composite(selectDriverGroup, SWT.NONE);
             {
 
-                FormLayout inputTypeRadioGroupRowLayout2 = new FormLayout();
-                serverComposite.setLayout(inputTypeRadioGroupRowLayout2);
+                FormLayout groupLayout = new FormLayout();
+                serverComposite.setLayout(groupLayout);
 
-                FormData inputTypeRadioGroupLayout2 = new FormData();
-                inputTypeRadioGroupLayout2.top = new FormAttachment(selectDriverGroup, 10);
-                inputTypeRadioGroupLayout2.left = new FormAttachment(0);
-                inputTypeRadioGroupLayout2.right = new FormAttachment(100);
+                FormData groupData = new FormData();
+                groupData.top = new FormAttachment(selectDriverGroup, 10);
+                groupData.left = new FormAttachment(0);
+                groupData.right = new FormAttachment(100);
 
-                serverComposite.setLayoutData(inputTypeRadioGroupLayout2);
+                serverComposite.setLayoutData(groupData);
 
                 versionLabel = new Label(serverComposite, SWT.NONE);
                 {
                     versionLabel.setText("Version");
 
-                    FormData xPathLabelLayoutData = new FormData();
-                    xPathLabelLayoutData.top = new FormAttachment(selectDriverGroup, offSet + 5);
-                    xPathLabelLayoutData.left = new FormAttachment(4);
-                    versionLabel.setLayoutData(xPathLabelLayoutData);
+                    FormData layoutData = new FormData();
+                    layoutData.top = new FormAttachment(selectDriverGroup, offSet + 5);
+                    layoutData.left = new FormAttachment(4);
+                    versionLabel.setLayoutData(layoutData);
                 }
 
                 versionComboBox = new Combo(serverComposite, SWT.READ_ONLY);
                 {
                     versionComboBox.setItems(new String[] { "Select Version" });
 
-                    FormData filePathTextFieldLayoutData = new FormData();
-                    filePathTextFieldLayoutData.top = new FormAttachment(selectDriverGroup, offSet);
-                    filePathTextFieldLayoutData.left = new FormAttachment(versionLabel, 10);
-                    filePathTextFieldLayoutData.right = new FormAttachment(70);
-                    versionComboBox.setLayoutData(filePathTextFieldLayoutData);
+                    FormData layoutData = new FormData();
+                    layoutData.top = new FormAttachment(selectDriverGroup, offSet);
+                    layoutData.left = new FormAttachment(versionLabel, 10);
+                    layoutData.right = new FormAttachment(70);
+                    versionComboBox.setLayoutData(layoutData);
                 }
 
                 downloadButton = new Button(serverComposite, SWT.NONE);
                 {
                     downloadButton.setText("Download");
-                    FormData browseButtonLayoutData = new FormData();
-                    browseButtonLayoutData.top = new FormAttachment(selectDriverGroup, offSet);
-                    browseButtonLayoutData.left = new FormAttachment(versionComboBox, 10);
-                    browseButtonLayoutData.right = new FormAttachment(99);
-                    downloadButton.setLayoutData(browseButtonLayoutData);
+
+                    FormData layoutData = new FormData();
+                    layoutData.top = new FormAttachment(selectDriverGroup, offSet);
+                    layoutData.left = new FormAttachment(versionComboBox, 10);
+                    layoutData.right = new FormAttachment(99);
+                    downloadButton.setLayoutData(layoutData);
                 }
 
                 infoLabel = new Label(serverComposite, SWT.NONE);
                 {
                     infoLabel.setText("* Selected driver is already downloaded");
                     infoLabel.setFont(font);
-                    FormData xPathLabelLayoutData = new FormData();
-                    xPathLabelLayoutData.top = new FormAttachment(versionLabel, offSet - 20);
-                    xPathLabelLayoutData.left = new FormAttachment(4);
-                    infoLabel.setLayoutData(xPathLabelLayoutData);
+
+                    FormData layoutData = new FormData();
+                    layoutData.top = new FormAttachment(versionLabel, offSet - 20);
+                    layoutData.left = new FormAttachment(4);
+                    infoLabel.setLayoutData(layoutData);
                 }
 
             }
@@ -356,187 +358,187 @@ public class DependencyProvider extends Dialog {
             browseLocalComposite = new Composite(selectDriverGroup, SWT.NONE);
             {
 
-                FormLayout inputTypeRadioGroupRowLayout2 = new FormLayout();
-                browseLocalComposite.setLayout(inputTypeRadioGroupRowLayout2);
+                FormLayout groupLayout = new FormLayout();
+                browseLocalComposite.setLayout(groupLayout);
 
-                FormData inputTypeRadioGroupLayout2 = new FormData();
-                inputTypeRadioGroupLayout2.top = new FormAttachment(connectionTypeGroup, 10);
-                inputTypeRadioGroupLayout2.left = new FormAttachment(0);
-                inputTypeRadioGroupLayout2.right = new FormAttachment(100);
-
-                browseLocalComposite.setLayoutData(inputTypeRadioGroupLayout2);
+                FormData groupLayoutData = new FormData();
+                groupLayoutData.top = new FormAttachment(connectionComposite, 10);
+                groupLayoutData.left = new FormAttachment(0);
+                groupLayoutData.right = new FormAttachment(100);
+                browseLocalComposite.setLayoutData(groupLayoutData);
 
                 browseLabel = new Label(browseLocalComposite, SWT.NONE);
                 {
                     browseLabel.setText("Browse");
 
-                    FormData xPathLabelLayoutData = new FormData();
-                    xPathLabelLayoutData.top = new FormAttachment(selectDriverGroup, offSet + 5);
-                    xPathLabelLayoutData.left = new FormAttachment(4);
+                    FormData layoutData = new FormData();
+                    layoutData.top = new FormAttachment(selectDriverGroup, offSet + 5);
+                    layoutData.left = new FormAttachment(4);
 
-                    browseLabel.setLayoutData(xPathLabelLayoutData);
+                    browseLabel.setLayoutData(layoutData);
                 }
 
                 jarLocationText = new Text(browseLocalComposite, SWT.BORDER);
                 {
 
-                    FormData filePathTextFieldLayoutData = new FormData();
-                    filePathTextFieldLayoutData.top = new FormAttachment(selectDriverGroup, offSet);
-                    filePathTextFieldLayoutData.left = new FormAttachment(browseLabel, 10);
-                    filePathTextFieldLayoutData.right = new FormAttachment(70);
-                    jarLocationText.setLayoutData(filePathTextFieldLayoutData);
+                    FormData layoutData = new FormData();
+                    layoutData.top = new FormAttachment(selectDriverGroup, offSet);
+                    layoutData.left = new FormAttachment(browseLabel, 10);
+                    layoutData.right = new FormAttachment(70);
+                    jarLocationText.setLayoutData(layoutData);
                 }
 
                 browseButton = new Button(browseLocalComposite, SWT.NONE);
                 {
                     browseButton.setText("Browse File");
-                    FormData browseButtonLayoutData = new FormData();
-                    browseButtonLayoutData.top = new FormAttachment(selectDriverGroup, offSet);
-                    browseButtonLayoutData.left = new FormAttachment(jarLocationText, 10);
-                    browseButtonLayoutData.right = new FormAttachment(99);
-                    browseButton.setLayoutData(browseButtonLayoutData);
+
+                    FormData layoutData = new FormData();
+                    layoutData.top = new FormAttachment(selectDriverGroup, offSet);
+                    layoutData.left = new FormAttachment(jarLocationText, 10);
+                    layoutData.right = new FormAttachment(99);
+                    browseButton.setLayoutData(layoutData);
                 }
 
             }
 
         }
 
-        connectionGroup = new Composite(dialogShell, SWT.NONE);
+        connectionDetailsComposite = new Composite(dialogShell, SWT.NONE);
         {
-            FormLayout inputTypeRadioGroupRowLayout = new FormLayout();
-            connectionGroup.setLayout(inputTypeRadioGroupRowLayout);
+            FormLayout connectionDetailsCompositeLayout = new FormLayout();
+            connectionDetailsComposite.setLayout(connectionDetailsCompositeLayout);
 
-            FormData inputTypeRadioGroupLayout = new FormData();
-            inputTypeRadioGroupLayout.top = new FormAttachment(connectionTypeGroup, 0);
-            inputTypeRadioGroupLayout.left = new FormAttachment(1);
-            inputTypeRadioGroupLayout.right = new FormAttachment(100);
-            connectionGroup.setLayoutData(inputTypeRadioGroupLayout);
+            FormData connectionDetailsCompositeLayoutData = new FormData();
+            connectionDetailsCompositeLayoutData.top = new FormAttachment(connectionComposite, 0);
+            connectionDetailsCompositeLayoutData.left = new FormAttachment(1);
+            connectionDetailsCompositeLayoutData.right = new FormAttachment(100);
+            connectionDetailsComposite.setLayoutData(connectionDetailsCompositeLayoutData);
 
-            inputTypeRadioGroup1 = new Group(connectionGroup, SWT.NONE);
+            connectionDetailsGroup = new Group(connectionDetailsComposite, SWT.NONE);
             {
-                FormLayout inputTypeRadioGroupRowLayout1 = new FormLayout();
-                inputTypeRadioGroup1.setLayout(inputTypeRadioGroupRowLayout1);
+                FormLayout connectionDetailsGroupLayout = new FormLayout();
+                connectionDetailsGroup.setLayout(connectionDetailsGroupLayout);
 
-                FormData inputTypeRadioGroupLayout1 = new FormData();
-                inputTypeRadioGroupLayout1.top = new FormAttachment(conectionTypeLabel, 10);
-                inputTypeRadioGroupLayout1.left = new FormAttachment(0);
-                inputTypeRadioGroupLayout1.right = new FormAttachment(99);
+                FormData connectionDetailsGroupLayoutData = new FormData();
+                connectionDetailsGroupLayoutData.top = new FormAttachment(conectionTypeLabel, 10);
+                connectionDetailsGroupLayoutData.left = new FormAttachment(0);
+                connectionDetailsGroupLayoutData.right = new FormAttachment(99);
 
-                inputTypeRadioGroup1.setText("Connection");
-                inputTypeRadioGroup1.setLayoutData(inputTypeRadioGroupLayout1);
+                connectionDetailsGroup.setText("Connection");
+                connectionDetailsGroup.setLayoutData(connectionDetailsGroupLayoutData);
 
-                hostLabel = new Label(inputTypeRadioGroup1, SWT.NONE);
+                hostLabel = new Label(connectionDetailsGroup, SWT.NONE);
                 {
                     hostLabel.setText("Host: * ");
 
-                    FormData xPathLabelLayoutData = new FormData();
-                    xPathLabelLayoutData.top = new FormAttachment(conectionTypeLabel, 10);
-                    xPathLabelLayoutData.left = new FormAttachment(4);
-                    xPathLabelLayoutData.right = new FormAttachment(20);
-                    hostLabel.setLayoutData(xPathLabelLayoutData);
+                    FormData layoutData = new FormData();
+                    layoutData.top = new FormAttachment(conectionTypeLabel, 10);
+                    layoutData.left = new FormAttachment(4);
+                    layoutData.right = new FormAttachment(20);
+                    hostLabel.setLayoutData(layoutData);
                 }
 
-                hostTextField = new Text(inputTypeRadioGroup1, SWT.BORDER);
+                hostTextField = new Text(connectionDetailsGroup, SWT.BORDER);
                 {
 
-                    FormData filePathTextFieldLayoutData = new FormData();
-                    filePathTextFieldLayoutData.top = new FormAttachment(conectionTypeLabel, 5);
-                    filePathTextFieldLayoutData.left = new FormAttachment(hostLabel, 5);
-                    filePathTextFieldLayoutData.right = new FormAttachment(50);
-                    hostTextField.setLayoutData(filePathTextFieldLayoutData);
+                    FormData layoutData = new FormData();
+                    layoutData.top = new FormAttachment(conectionTypeLabel, 5);
+                    layoutData.left = new FormAttachment(hostLabel, 5);
+                    layoutData.right = new FormAttachment(50);
+                    hostTextField.setLayoutData(layoutData);
 
                 }
 
-                portLabel = new Label(inputTypeRadioGroup1, SWT.NONE);
+                portLabel = new Label(connectionDetailsGroup, SWT.NONE);
                 {
                     portLabel.setText("Port: *");
 
-                    FormData xPathLabelLayoutData = new FormData();
-                    xPathLabelLayoutData.top = new FormAttachment(conectionTypeLabel, 10);
-                    xPathLabelLayoutData.left = new FormAttachment(hostTextField, 6);
-                    portLabel.setLayoutData(xPathLabelLayoutData);
+                    FormData layoutData = new FormData();
+                    layoutData.top = new FormAttachment(conectionTypeLabel, 10);
+                    layoutData.left = new FormAttachment(hostTextField, 6);
+                    portLabel.setLayoutData(layoutData);
                 }
 
-                portTextField = new Text(inputTypeRadioGroup1, SWT.BORDER);
+                portTextField = new Text(connectionDetailsGroup, SWT.BORDER);
                 {
 
-                    FormData filePathTextFieldLayoutData = new FormData();
-                    filePathTextFieldLayoutData.top = new FormAttachment(conectionTypeLabel, 5);
-                    filePathTextFieldLayoutData.left = new FormAttachment(65);
-                    filePathTextFieldLayoutData.right = new FormAttachment(99);
-                    portTextField.setLayoutData(filePathTextFieldLayoutData);
+                    FormData layoutData = new FormData();
+                    layoutData.top = new FormAttachment(conectionTypeLabel, 5);
+                    layoutData.left = new FormAttachment(65);
+                    layoutData.right = new FormAttachment(99);
+                    portTextField.setLayoutData(layoutData);
 
                 }
 
-                userNameLabel = new Label(inputTypeRadioGroup1, SWT.NONE);
+                userNameLabel = new Label(connectionDetailsGroup, SWT.NONE);
                 {
                     userNameLabel.setText("UserName :");
 
-                    FormData xPathLabelLayoutData = new FormData();
-                    xPathLabelLayoutData.top = new FormAttachment(hostTextField, 10);
-                    xPathLabelLayoutData.left = new FormAttachment(4);
-                    xPathLabelLayoutData.right = new FormAttachment(20);
-                    userNameLabel.setLayoutData(xPathLabelLayoutData);
+                    FormData layoutData = new FormData();
+                    layoutData.top = new FormAttachment(hostTextField, 10);
+                    layoutData.left = new FormAttachment(4);
+                    layoutData.right = new FormAttachment(20);
+                    userNameLabel.setLayoutData(layoutData);
                 }
 
-                userNameTextField = new Text(inputTypeRadioGroup1, SWT.BORDER);
+                userNameTextField = new Text(connectionDetailsGroup, SWT.BORDER);
                 {
 
-                    FormData filePathTextFieldLayoutData = new FormData();
-                    filePathTextFieldLayoutData.top = new FormAttachment(hostTextField, 5);
-                    filePathTextFieldLayoutData.left = new FormAttachment(userNameLabel, 5);
-                    filePathTextFieldLayoutData.right = new FormAttachment(50);
-                    userNameTextField.setLayoutData(filePathTextFieldLayoutData);
+                    FormData layoutData = new FormData();
+                    layoutData.top = new FormAttachment(hostTextField, 5);
+                    layoutData.left = new FormAttachment(userNameLabel, 5);
+                    layoutData.right = new FormAttachment(50);
+                    userNameTextField.setLayoutData(layoutData);
 
                 }
 
-                passwordLabel = new Label(inputTypeRadioGroup1, SWT.NONE);
+                passwordLabel = new Label(connectionDetailsGroup, SWT.NONE);
                 {
                     passwordLabel.setText("Password: ");
 
-                    FormData xPathLabelLayoutData = new FormData();
-                    xPathLabelLayoutData.top = new FormAttachment(portTextField, 10);
-                    xPathLabelLayoutData.left = new FormAttachment(hostTextField, 4);
+                    FormData layoutData = new FormData();
+                    layoutData.top = new FormAttachment(portTextField, 10);
+                    layoutData.left = new FormAttachment(hostTextField, 4);
 
-                    passwordLabel.setLayoutData(xPathLabelLayoutData);
+                    passwordLabel.setLayoutData(layoutData);
                 }
 
-                passwordTextField = new Text(inputTypeRadioGroup1, SWT.BORDER);
+                passwordTextField = new Text(connectionDetailsGroup, SWT.BORDER);
                 {
 
-                    FormData filePathTextFieldLayoutData = new FormData();
-                    filePathTextFieldLayoutData.top = new FormAttachment(portTextField, 5);
-                    filePathTextFieldLayoutData.left = new FormAttachment(65);
-                    filePathTextFieldLayoutData.right = new FormAttachment(99);
-                    passwordTextField.setLayoutData(filePathTextFieldLayoutData);
+                    FormData layoutData = new FormData();
+                    layoutData.top = new FormAttachment(portTextField, 5);
+                    layoutData.left = new FormAttachment(65);
+                    layoutData.right = new FormAttachment(99);
+                    passwordTextField.setLayoutData(layoutData);
 
                 }
-                databaseLabel = new Label(inputTypeRadioGroup1, SWT.NONE);
+                databaseLabel = new Label(connectionDetailsGroup, SWT.NONE);
                 {
                     databaseLabel.setText("Dastabase: *");
 
-                    FormData xPathLabelLayoutData = new FormData();
-                    xPathLabelLayoutData.top = new FormAttachment(userNameLabel, 10);
-                    xPathLabelLayoutData.left = new FormAttachment(4);
-                    xPathLabelLayoutData.right = new FormAttachment(20);
-                    databaseLabel.setLayoutData(xPathLabelLayoutData);
+                    FormData layoutData = new FormData();
+                    layoutData.top = new FormAttachment(userNameLabel, 10);
+                    layoutData.left = new FormAttachment(4);
+                    layoutData.right = new FormAttachment(20);
+                    databaseLabel.setLayoutData(layoutData);
                 }
 
-                databaseTextField = new Text(inputTypeRadioGroup1, SWT.BORDER);
+                databaseTextField = new Text(connectionDetailsGroup, SWT.BORDER);
                 {
-                    FormData filePathTextFieldLayoutData = new FormData();
-                    filePathTextFieldLayoutData.top = new FormAttachment(userNameTextField, 05);
-                    filePathTextFieldLayoutData.left = new FormAttachment(databaseLabel, 5);
-                    filePathTextFieldLayoutData.right = new FormAttachment(50);
+                    FormData layoutData = new FormData();
+                    layoutData.top = new FormAttachment(userNameTextField, 05);
+                    layoutData.left = new FormAttachment(databaseLabel, 5);
+                    layoutData.right = new FormAttachment(50);
 
-                    databaseTextField.setLayoutData(filePathTextFieldLayoutData);
+                    databaseTextField.setLayoutData(layoutData);
 
                 }
-                emptyLabel = new Label(inputTypeRadioGroup1, SWT.NONE);// browseLabel
+                emptyLabel = new Label(connectionDetailsGroup, SWT.NONE);// browseLabel
                 {
-                    FormData xPathLabelLayoutData = new FormData();
-                    xPathLabelLayoutData.top = new FormAttachment(databaseTextField);
-                    emptyLabel.setLayoutData(xPathLabelLayoutData);
+                    FormData layoutData = new FormData();
+                    layoutData.top = new FormAttachment(databaseTextField);
+                    emptyLabel.setLayoutData(layoutData);
                 }
             }
         }
@@ -544,32 +546,32 @@ public class DependencyProvider extends Dialog {
         testConnectionButton = new Button(dialogShell, SWT.BUTTON1);
         {
 
-            FormData xPathLabelLayoutData = new FormData();
-            xPathLabelLayoutData.top = new FormAttachment(connectionGroup, 10);
-            xPathLabelLayoutData.left = new FormAttachment(50);
-            xPathLabelLayoutData.right = new FormAttachment(75);
+            FormData layoutData = new FormData();
+            layoutData.top = new FormAttachment(connectionDetailsComposite, 10);
+            layoutData.left = new FormAttachment(50);
+            layoutData.right = new FormAttachment(75);
             testConnectionButton.setText("Test Connection");
-            testConnectionButton.setLayoutData(xPathLabelLayoutData);
+            testConnectionButton.setLayoutData(layoutData);
         }
         okButton = new Button(dialogShell, SWT.BUTTON1);
         {
 
-            FormData xPathLabelLayoutData = new FormData();
-            xPathLabelLayoutData.top = new FormAttachment(connectionGroup, 10);
-            xPathLabelLayoutData.left = new FormAttachment(testConnectionButton, 4);
-            xPathLabelLayoutData.right = new FormAttachment(85);
+            FormData layoutData = new FormData();
+            layoutData.top = new FormAttachment(connectionDetailsComposite, 10);
+            layoutData.left = new FormAttachment(testConnectionButton, 4);
+            layoutData.right = new FormAttachment(85);
             okButton.setText("Save");
-            okButton.setLayoutData(xPathLabelLayoutData);
+            okButton.setLayoutData(layoutData);
         }
         cancelButton = new Button(dialogShell, SWT.BUTTON1);
         {
 
-            FormData xPathLabelLayoutData = new FormData();
-            xPathLabelLayoutData.top = new FormAttachment(connectionGroup, 10);
-            xPathLabelLayoutData.left = new FormAttachment(okButton, 4);
-            xPathLabelLayoutData.right = new FormAttachment(99);
+            FormData layoutData = new FormData();
+            layoutData.top = new FormAttachment(connectionDetailsComposite, 10);
+            layoutData.left = new FormAttachment(okButton, 4);
+            layoutData.right = new FormAttachment(99);
             cancelButton.setText("Cancel");
-            cancelButton.setLayoutData(xPathLabelLayoutData);
+            cancelButton.setLayoutData(layoutData);
         }
 
         serverRadioButton.addSelectionListener(new SelectionAdapter() {
@@ -804,7 +806,7 @@ public class DependencyProvider extends Dialog {
                 createPOM(denpendency, dependencyDir, jarOutputPath);
                 progressMonitorDialog = new ProgressMonitorDialog(dialogShell);
                 try {
-                    progressMonitorDialog.run(true, true, new LongRunningOperation(true, dialogShell));
+                    progressMonitorDialog.run(true, true, new DownloadProgress(true, dialogShell));
                 } catch (Exception e) {
                     log.error("Exception", e);
                 }
@@ -1002,7 +1004,7 @@ public class DependencyProvider extends Dialog {
 
     private void setDataFromConnectionURL() {
         if (connectionObj.getUrl() != null && !connectionObj.getUrl().equals("")) {
-            if (connectionObj.getDbType().equals("MYSQL") || connectionObj.getDbType().equals("POSTGRESQL")) {
+            if (connectionObj.getDbType().equals(MYSQL) || connectionObj.getDbType().equals(POSTGRESQL)) {
 
                 connectionURLArray = connectionObj.getUrl().split("/");
 
@@ -1010,7 +1012,7 @@ public class DependencyProvider extends Dialog {
                 portTextField.setText(connectionURLArray[2].split(":")[1]);
                 databaseTextField.setText(connectionURLArray[3]);
 
-            } else if (connectionObj.getDbType().equals("MSSQL")) {
+            } else if (connectionObj.getDbType().equals(MSSQL)) {
 
                 connectionURLArray = connectionObj.getUrl().split("/");
 
@@ -1018,7 +1020,7 @@ public class DependencyProvider extends Dialog {
                 portTextField.setText(connectionURLArray[2].split(":")[1].split(";")[0]);
                 databaseTextField.setText(connectionURLArray[2].split(":")[1].split(";")[1].split("=")[1]);
 
-            } else if (connectionObj.getDbType().equals("ORACLE")) {
+            } else if (connectionObj.getDbType().equals(ORACLE)) {
 
                 connectionURLArray = connectionObj.getUrl().split("@");
 
@@ -1103,7 +1105,7 @@ public class DependencyProvider extends Dialog {
     private String generateDbUrl(String dbType) {
         if (dbType.equals(MSSQL)) {
             return databaseConnectionPrefix + hostTextField.getText() + ":" + portTextField.getText() 
-            + ";databaseName="+ databaseTextField.getText() + ";";
+                    + ";databaseName="+ databaseTextField.getText() + ";";
         } else {
             return databaseConnectionPrefix + hostTextField.getText() + ":" + portTextField.getText() + "/"
                     + databaseTextField.getText();
@@ -1485,7 +1487,7 @@ public class DependencyProvider extends Dialog {
         return 0;
     }
 
-    class LongRunningOperation implements IRunnableWithProgress {
+    class DownloadProgress implements IRunnableWithProgress {
 
         private static final int TOTAL_TIME = 100000;
         private boolean indeterminate;
@@ -1494,7 +1496,7 @@ public class DependencyProvider extends Dialog {
         private IProgressMonitor monitor;
         private ScheduledExecutorService scheduledExecutorService;
 
-        public LongRunningOperation(boolean indeterminate, Shell shell) {
+        public DownloadProgress(boolean indeterminate, Shell shell) {
             this.indeterminate = indeterminate;
             this.shell = shell;
         }
@@ -1519,8 +1521,8 @@ public class DependencyProvider extends Dialog {
                     IFile pomFile = container.getFile(new org.eclipse.core.runtime.Path(POM_XML));
                     try {
                         MavenExecutionResult mvn = runMavenExecution(pomFile,
-                            Arrays.asList("org.apache.maven.plugins:maven-dependency-plugin:2.8:copy-dependencies"),
-                            null);
+                                Arrays.asList("org.apache.maven.plugins:maven-dependency-plugin:2.8:copy-dependencies"),
+                                null);
                         if (monitor.isCanceled()) {
                             remove(dependencyDir + File.separator + POM_XML);
                             throw new InterruptedException("The download process was canceled");
@@ -1542,8 +1544,8 @@ public class DependencyProvider extends Dialog {
                                                             versionComboBox.getText())
                                                     + ")." + "\n\nNote that the driver will not get deployed with "
                                                     + "other artifacts (in your CApp)."
-                                                    + "\nBe sure to manually copy the driver from the \"dependencies\" "
-                                                    + "directory to \"<PRODUCT_HOME>/lib/\"");
+                                                    + "\nBe sure to manually copy the driver from the \"dependencies\""
+                                                    + " directory to \"<PRODUCT_HOME>/lib/\"");
 
                                 }
                             });
@@ -1558,7 +1560,7 @@ public class DependencyProvider extends Dialog {
                                                 + "\nMake sure that you are connected to the internet.");
                             }
                         });
-                        log.info("Error while downloading depenency", e);
+                        log.error("Error while downloading depenency", e);
                         scheduledExecutorService.shutdown();
                     } catch (InterruptedException e) {
                         remove(dependencyDir + File.separator + TARGET);

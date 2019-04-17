@@ -50,15 +50,15 @@ public class RegistryReaderServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        String payload = IOUtils.toString(request.getInputStream());
-        String[] strArray = payload.split(" ");
-        String operation = strArray[0];
-        
+
         // Save schema changes only if the output schema is available
         if (checkForOutputSchema()) {
             saveChanges();
         }
+        
+        String payload = IOUtils.toString(request.getInputStream());
+        String[] strArray = payload.split(" ");
+        String operation = strArray[0];
 
         // "process" operation will do the Datamaper mediation and return the results.
         if (operation.equals(OPERATION_PROCESS)) {

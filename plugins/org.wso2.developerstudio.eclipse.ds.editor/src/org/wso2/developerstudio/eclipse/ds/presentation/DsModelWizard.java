@@ -90,6 +90,7 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PartInitException;
+import org.eclipse.ui.PlatformUI;
 
 /**
  * This is a simple wizard for creating a new model file.
@@ -171,6 +172,8 @@ public class DsModelWizard extends Wizard implements INewWizard {
 	 * @generated
 	 */
 	protected List<String> initialObjectNames;
+
+	private static final String JAVAEE_PERSPECTIVE = "org.eclipse.jst.j2ee.J2EEPerspective";
 
 	/**
 	 * This just records the information.
@@ -307,7 +310,12 @@ public class DsModelWizard extends Wizard implements INewWizard {
 				MessageDialog.openError(workbenchWindow.getShell(), DsEditorPlugin.INSTANCE.getString("_UI_OpenEditorError_label"), exception.getMessage());
 				return false;
 			}
-
+            try {
+                IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+                PlatformUI.getWorkbench().showPerspective(JAVAEE_PERSPECTIVE, window);
+            } catch (Exception e) {
+                MessageDialog.openError(workbenchWindow.getShell(), DsEditorPlugin.INSTANCE.getString("_UI_OpenEditorError_label"), e.getMessage());
+            }
 			return true;
 		}
 		catch (Exception exception) {

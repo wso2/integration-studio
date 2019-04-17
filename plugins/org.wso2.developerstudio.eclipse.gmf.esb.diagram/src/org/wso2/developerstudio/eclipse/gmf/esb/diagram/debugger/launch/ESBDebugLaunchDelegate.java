@@ -39,6 +39,7 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.wst.server.core.IServer;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
 import org.wso2.developerstudio.eclipse.carbonserver44microei.register.product.servers.MicroIntegratorInstance;
 import org.wso2.developerstudio.eclipse.carbonserver44microei.wizard.CompositeApplicationArtifactUpdateWizard;
@@ -93,6 +94,7 @@ public class ESBDebugLaunchDelegate implements ILaunchConfigurationDelegate {
     private static int commandPort ;
     private static int eventPort;
     private static String hostName;
+    private static final int MAX_RETRY_COUNT = 30;
     @Override
     public void launch(final ILaunchConfiguration configuration, final String mode, final ILaunch launch,
             final IProgressMonitor monitor) throws CoreException {
@@ -185,6 +187,29 @@ public class ESBDebugLaunchDelegate implements ILaunchConfigurationDelegate {
                             } catch (Exception e) {
                                 ESBDebuggerUtil.popUpErrorDialogAndLogException(e,
                                         "Error occured while listninig to the debug port");
+                            }
+
+                        }
+                    }.start();
+                    
+                    // The following thread will re-send the existing debug points to the server once the server
+                    // is up and running
+                    new Thread() {
+                        public void run() {
+                            int retryCount = 0;
+                            try {
+                                while (retryCount < MAX_RETRY_COUNT) {
+                                    Thread.sleep(2000);
+                                    if (MicroIntegratorInstance.getInstance()
+                                            .getServerState() == IServer.STATE_STARTED) {
+                                        ESBDebuggerUtil.repopulateESBServerBreakpoints();
+                                        break;
+                                    }
+                                    retryCount++;
+                                }
+                            } catch (Exception e) {
+                                ESBDebuggerUtil.popUpErrorDialogAndLogException(e,
+                                        "Error occured resending existing debug points to the server runtime");
                             }
 
                         }

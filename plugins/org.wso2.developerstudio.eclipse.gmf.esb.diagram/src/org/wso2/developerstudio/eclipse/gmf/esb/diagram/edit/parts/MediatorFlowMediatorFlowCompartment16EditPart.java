@@ -66,6 +66,8 @@ public class MediatorFlowMediatorFlowCompartment16EditPart extends AbstractMedia
         installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new FeedbackIndicateDragDropEditPolicy());
         installEditPolicy(EditPolicyRoles.CANONICAL_ROLE,
                 new MediatorFlowMediatorFlowCompartment16CanonicalEditPolicy());
+        removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
+
     }
 
     public boolean isSelectable() {

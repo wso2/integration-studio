@@ -53,7 +53,7 @@ public class PropertyGroupMediatorTransformer extends AbstractEsbNodeTransformer
             throws TransformerException {
         try {
             sequence.addChild(createPropertyGroupMediator(subject, false));
-            doTransformWithinSequence(information, ((PropertyMediator) subject).getOutputConnector().getOutgoingLink(),
+            doTransformWithinSequence(information, ((PropertyGroupMediator) subject).getOutputConnector().getOutgoingLink(),
                     sequence);
         } catch (JaxenException e) {
             throw new TransformerException(e);

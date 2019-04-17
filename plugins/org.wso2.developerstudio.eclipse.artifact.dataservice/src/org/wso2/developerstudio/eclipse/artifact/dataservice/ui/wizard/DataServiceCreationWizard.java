@@ -43,6 +43,7 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.wizard.IWizardPage;
+import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
 import org.wso2.developerstudio.eclipse.artifact.dataservice.Activator;
@@ -83,6 +84,8 @@ public class DataServiceCreationWizard extends AbstractWSO2ProjectCreationWizard
 	private static final String DATASERVICE_TEMPLATE = "templates/Dataservice1.dbs";
 	private static final String DATASERVICE_TEMPLATE_SECRETALIAS = "templates/Dataservice2.dbs";
 	private String version = "1.0.0";
+	private static final String JAVAEE_PERSPECTIVE = "org.eclipse.jst.j2ee.J2EEPerspective";
+
 
 	private final DataServiceModel dsModel;
 	private DSSProjectArtifact dssProjectArtifact;
@@ -155,6 +158,12 @@ public class DataServiceCreationWizard extends AbstractWSO2ProjectCreationWizard
 			} catch (Exception e) {
 				log.error(DataServiceArtifactConstants.ERROR_MESSAGE_FILE_OPEN, e);
 			}
+            try {
+                IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+                PlatformUI.getWorkbench().showPerspective(JAVAEE_PERSPECTIVE, window);
+            } catch (Exception e) {
+                log.error(DataServiceArtifactConstants.ERROR_MESSAGE_FILE_OPEN, e);
+            }
 		} catch (CoreException e) {
 			log.error(DataServiceArtifactConstants.ERROR_MESSAGE_CORE_EXCEPTION, e);
 		} catch (Exception e) {

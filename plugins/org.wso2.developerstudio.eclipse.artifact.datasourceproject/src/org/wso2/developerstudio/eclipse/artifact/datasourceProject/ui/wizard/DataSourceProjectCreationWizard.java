@@ -29,6 +29,8 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.jface.wizard.IWizardPage;
+import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.artifact.datasourceProject.Activator;
 import org.wso2.developerstudio.eclipse.artifact.datasourceProject.artifact.DataSourceProjectArtifact;
 import org.wso2.developerstudio.eclipse.artifact.datasourceProject.model.DataSourceModel;
@@ -50,6 +52,7 @@ public class DataSourceProjectCreationWizard extends AbstractWSO2ProjectCreation
 	private static final String ARTIFACT_FILE = "artifact.xml";
 	private static final String PACKAGE_NAME = "pom";
 	private static final String CAPP_TYPE = "bpel/workflow=zip,lib/registry/filter=jar,webapp/jaxws=war,lib/library/bundle=jar,service/dataservice=dbs,datasource/datasource=xml,synapse/local-entry=xml,synapse/proxy-service=xml,carbon/application=car,registry/resource=zip,lib/dataservice/validator=jar,synapse/endpoint=xml,web/application=war,lib/carbon/ui=jar,service/axis2=aar,synapse/sequence=xml,synapse/configuration=xml,wso2/gadget=dar,lib/registry/handlers=jar,lib/synapse/mediator=jar,synapse/task=xml,synapse/api=xml,synapse/template=xml,synapse/message-store=xml,synapse/message-processors=xml,synapse/inbound-endpoint=xml";
+	private static final String JAVAEE_PERSPECTIVE = "org.eclipse.jst.j2ee.J2EEPerspective";
 	private IProject project;
 	private final DataSourceModel dsModel;
 
@@ -86,7 +89,12 @@ public class DataSourceProjectCreationWizard extends AbstractWSO2ProjectCreation
 
 			// creates the artifact.xml file
 			createArtifactXMLFile();
-
+            try {
+                IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+                PlatformUI.getWorkbench().showPerspective(JAVAEE_PERSPECTIVE, window);
+            } catch (Exception e) {
+                log.error(DataSourceProjectConstants.ERROR_MESSAGE_CORE_EXCEPTION, e);
+            }
 		} catch (CoreException e) {
 			log.error(DataSourceProjectConstants.ERROR_MESSAGE_CORE_EXCEPTION, e);
 		} catch (Exception e) {

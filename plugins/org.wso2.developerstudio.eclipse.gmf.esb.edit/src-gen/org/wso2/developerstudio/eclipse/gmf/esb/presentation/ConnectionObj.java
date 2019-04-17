@@ -15,7 +15,7 @@
 * specific language governing permissions and limitations
 * under the License.
 */
-package org.wso2.developerstudio.eclipse.gmf.esb.parts.forms;
+package org.wso2.developerstudio.eclipse.gmf.esb.presentation;
 
 public class ConnectionObj {
 

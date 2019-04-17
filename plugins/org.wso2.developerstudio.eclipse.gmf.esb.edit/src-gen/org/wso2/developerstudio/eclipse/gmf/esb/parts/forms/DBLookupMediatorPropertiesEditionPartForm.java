@@ -82,7 +82,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.SqlExecutorConnectionType;
 import org.wso2.developerstudio.eclipse.gmf.esb.SqlExecutorDatasourceType;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.developerstudio.eclipse.gmf.esb.parts.forms.ConnectionObj;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.ConnectionObj;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.DependencyProvider;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
 

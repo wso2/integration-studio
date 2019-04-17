@@ -128,6 +128,8 @@ public class MediatorFlowMediatorFlowCompartment27EditPart extends AbstractCompl
         installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
         installEditPolicy(EditPolicyRoles.CANONICAL_ROLE,
                 new MediatorFlowMediatorFlowCompartment27CanonicalEditPolicy());
+        removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
+
     }
 
     /**

@@ -496,8 +496,8 @@ public class CloudConnectorOperationPropertiesEditionPartForm extends SectionPro
 		EditingUtils.setEEFtype(configRef, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, filterConfigSubPropertiesGroup, propertiesEditionComponent.getHelpContent(EsbViewsRepository.CloudConnectorOperation.Properties.configRef, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createConfigRefText
-	       Control [] newControls = filterConfigSubPropertiesGroup.getChildren();
-	       configRefElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
+	        Control [] newControls = filterConfigSubPropertiesGroup.getChildren();
+	        configRefElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
 		// End of user code
 		return parent;
 	}
@@ -770,8 +770,8 @@ public class CloudConnectorOperationPropertiesEditionPartForm extends SectionPro
 		EditingUtils.setEEFtype(availableConfigs, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.CloudConnectorOperation.Properties.availableConfigs, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createAvailableConfigsText
-	       Control [] newControls = filterConfigSubPropertiesGroup.getChildren();
-	       availableConfigsElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
+	        Control [] newControls = filterConfigSubPropertiesGroup.getChildren();
+	        availableConfigsElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
 		// End of user code
 		return parent;
 	}

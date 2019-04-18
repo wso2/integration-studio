@@ -19,12 +19,17 @@ package org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence;
 import java.util.List;
 import java.util.Map.Entry;
 
+import org.apache.axiom.om.OMAbstractFactory;
+import org.apache.axiom.om.OMElement;
+import org.apache.axiom.om.OMFactory;
+import org.apache.axiom.om.OMNamespace;
 import org.apache.synapse.config.xml.SynapsePath;
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.mediators.Value;
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.apache.synapse.util.xpath.SynapseJsonPath;
 import org.apache.synapse.util.xpath.SynapseXPath;
+import org.codehaus.plexus.util.StringUtils;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.ecore.EObject;
 import org.jaxen.JaxenException;
@@ -33,11 +38,15 @@ import org.wso2.developerstudio.eclipse.gmf.esb.CloudConnectorOperation;
 import org.wso2.developerstudio.eclipse.gmf.esb.CloudConnectorOperationParamEditorType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.RuleOptionType;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.CloudConnectorOperationExt;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.ValidationConstansts;
 
 public class CloudConnectorOperationTransformer extends AbstractEsbNodeTransformer {
+
+    private static final String JSON_EVAL = "json-eval(";
 
     public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
         Assert.isTrue(subject instanceof CloudConnectorOperation, "Invalid subject.");
@@ -79,28 +88,43 @@ public class CloudConnectorOperationTransformer extends AbstractEsbNodeTransform
         cloudConnectorOperation.setConfigRef(visuaCloudConnectorOperation.getConfigRef());
 
         for (CallTemplateParameter param : visuaCloudConnectorOperation.getConnectorParameters()) {
+            String parameterName = "";
             if (param.getParameterName() != null && !param.getParameterName().isEmpty()) {
-                if (visuaCloudConnectorOperation.getParameterEditorType()
-                        .equals(CloudConnectorOperationParamEditorType.NAMESPACED_PROPERTY_EDITOR)) {
+                parameterName = param.getParameterName();
+
+                if (param.getTemplateParameterType().equals(RuleOptionType.EXPRESSION)) {
                     NamespacedProperty namespacedExpression = param.getParameterExpression();
                     String xpathValue = namespacedExpression.getPropertyValue();
+                    Boolean dynamic = namespacedExpression.isDynamic();
 
-                    if (xpathValue.startsWith("{") && xpathValue.endsWith("}")) {
-                        xpathValue = xpathValue.substring(1, xpathValue.length() - 1);
-                        SynapsePath paramExpression = null;
-                        if (xpathValue.startsWith("json-eval")) {
-                            paramExpression = new SynapseJsonPath(xpathValue.substring(10, xpathValue.length() - 1));
-                        } else {
-                            paramExpression = new SynapseXPath(xpathValue);
+                    if (dynamic) {
+                        xpathValue = "{" + xpathValue + "}";
+                        Value value = new Value(xpathValue);
+
+                        if (namespacedExpression.getNamespaces().size() > 0) {
+                            OMFactory factory = OMAbstractFactory.getOMFactory();
+                            OMElement root = null;
+                            int i = 0;
+                            for (Entry<String, String> entry : namespacedExpression.getNamespaces().entrySet()) {
+                                if (i == 0) {
+                                    OMNamespace firstNameSpace = factory.createOMNamespace(entry.getValue(),
+                                            entry.getKey());
+                                    root = factory.createOMElement("root", firstNameSpace);
+                                } else {
+                                    root.declareNamespace(entry.getValue(), entry.getKey());
+                                }
+                                i++;
+                            }
+                            value.setNamespaces(root);
                         }
-                        for (Entry<String, String> entry : namespacedExpression.getNamespaces().entrySet()) {
-                            paramExpression.addNamespace(entry.getKey(), entry.getValue());
-                        }
-                        cloudConnectorOperation.getpName2ExpressionMap().put(param.getParameterName(),
-                                new Value(paramExpression));
+                        cloudConnectorOperation.getpName2ExpressionMap().put(parameterName, value);
+                    } else if (StringUtils.isBlank(xpathValue)) {
+                        String xpathValueTemp = ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION;
+                        SynapsePath paramExpression = getParamExpression(namespacedExpression, xpathValueTemp);
+                        cloudConnectorOperation.getpName2ExpressionMap().put(parameterName, new Value(paramExpression));
                     } else {
-                        cloudConnectorOperation.getpName2ExpressionMap().put(param.getParameterName(),
-                                new Value(xpathValue));
+                        SynapsePath paramExpression = getParamExpression(namespacedExpression, xpathValue);
+                        cloudConnectorOperation.getpName2ExpressionMap().put(parameterName, new Value(paramExpression));
                     }
                 } else {
                     String paramValue = param.getParameterValue();
@@ -119,4 +143,22 @@ public class CloudConnectorOperationTransformer extends AbstractEsbNodeTransform
         return cloudConnectorOperation;
     }
 
+    private static SynapsePath getParamExpression(NamespacedProperty namespacedExpression, String xpathValue)
+            throws JaxenException {
+        if (xpathValue.startsWith(JSON_EVAL)) {
+            SynapseJsonPath paramExpression = new SynapseJsonPath(xpathValue.substring(10, xpathValue.length() - 1));
+            return addNamespaceToParam(namespacedExpression, paramExpression);
+        } else {
+            SynapseXPath paramExpression = new SynapseXPath(xpathValue);
+            return addNamespaceToParam(namespacedExpression, paramExpression);
+        }
+    }
+
+    private static SynapsePath addNamespaceToParam(NamespacedProperty namespacedExpression, SynapsePath paramExpression)
+            throws JaxenException {
+        for (Entry<String, String> entry : namespacedExpression.getNamespaces().entrySet()) {
+            paramExpression.addNamespace(entry.getKey(), entry.getValue());
+        }
+        return paramExpression;
+    }
 }

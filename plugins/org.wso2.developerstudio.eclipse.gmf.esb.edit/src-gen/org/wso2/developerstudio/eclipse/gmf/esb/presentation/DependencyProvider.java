@@ -17,8 +17,11 @@
 */
 package org.wso2.developerstudio.eclipse.gmf.esb.presentation;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Writer;
 import java.lang.reflect.InvocationTargetException;
 import java.net.UnknownHostException;
 import java.nio.file.Path;
@@ -1487,6 +1490,36 @@ public class DependencyProvider extends Dialog {
         return 0;
     }
 
+    private void createReadME() {
+
+        File readMe = new File(dependencyDir + File.separator + "README.txt");
+        if (!readMe.exists()) {
+            Writer output = null;
+            try {
+                readMe.createNewFile();
+
+                String content = "README" + "\n"
+                        + "\n===============================================================================\n" + "\n"
+                        + "\nThis directory contains downloaded drivers.\n"
+                        + "\nDrivers will not get deployed with other artifacts (in your CApp).\n"
+                        + "\nBe sure to manually copy the drivers from this directory to <PRODUCT_HOME>/lib/.";
+
+                output = new BufferedWriter(new FileWriter(readMe));
+                output.write(content);
+
+            } catch (IOException e) {
+                log.error("Error while reading README.txt", e);
+            } finally {
+                if (output != null)
+                    try {
+                        output.close();
+                    } catch (IOException e) {
+                        log.error("Error while closing output stream", e);
+                    }
+            }
+        }
+    }
+
     class DownloadProgress implements IRunnableWithProgress {
 
         private static final int TOTAL_TIME = 100000;
@@ -1536,6 +1569,7 @@ public class DependencyProvider extends Dialog {
 
                         } else {
                             remove(dependencyDir + File.separator + POM_XML);
+                            createReadME();
                             Display.getDefault().syncExec(new Runnable() {
                                 public void run() {
                                     MessageDialog.openInformation(shell, "Success",

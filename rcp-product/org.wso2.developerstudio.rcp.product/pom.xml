@@ -54,7 +54,7 @@
                         </goals>
                         <configuration>
                             <url>http://product-dist.wso2.com/tools/developerstudio/wso2mi-${mi.product.version}.zip</url>
-                            <unpack>true</unpack>
+                            <unpack>false</unpack>
                             <outputDirectory>${project.build.directory}/products</outputDirectory>
                         </configuration>
                     </execution>

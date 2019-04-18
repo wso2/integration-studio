@@ -171,7 +171,7 @@ zip -r $PRODUCT_PATH_ROOT/WSO2-Developer-Studio-win32.win32.x86_64.zip *
 popd
 
 # Cleanup
-rm -rf $PRODUCT_PATH_ROOT/wso2mi-$PRODUCT_VERSION
+rm $PRODUCT_PATH_ROOT/wso2mi-$PRODUCT_VERSION.zip
 rm -rf $PRODUCT_PATH_ROOT/temp
 rm -fr $PRODUCT_PATH_ROOT/DeveloperStudio
 rm -rf $JDK_DISTRIBUTION_PATH

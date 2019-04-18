@@ -148,6 +148,8 @@ tar -czf WSO2-Developer-Studio-linux.gtk.x86.tar.gz DeveloperStudio
 mv WSO2-Developer-Studio-linux.gtk.x86.tar.gz $PRODUCT_PATH_ROOT/WSO2-Developer-Studio-linux.gtk.x86.tar.gz
 popd
 
+rm -rf $PRODUCT_PATH_ROOT/DeveloperStudio
+
 pushd ${PRODUCT_PATH_LINUX_64}
 cd ../
 mv linux-x86_64 DeveloperStudio
@@ -173,7 +175,7 @@ popd
 # Cleanup
 rm $PRODUCT_PATH_ROOT/wso2mi-$PRODUCT_VERSION.zip
 rm -rf $PRODUCT_PATH_ROOT/temp
-rm -fr $PRODUCT_PATH_ROOT/DeveloperStudio
+rm -rf $PRODUCT_PATH_ROOT/DeveloperStudio
 rm -rf $JDK_DISTRIBUTION_PATH
 
 rm -rf $PRODUCT_PATH_ROOT/WSO2-Developer-Studio-linux.gtk.x86.zip

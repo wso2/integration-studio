@@ -69,6 +69,7 @@ import org.eclipse.swt.layout.GridLayout;
 
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Text;
 
 import org.eclipse.ui.forms.widgets.Form;
@@ -80,7 +81,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.CloudConnectorOperationPropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
 
 // End of user code
@@ -106,7 +107,14 @@ public class CloudConnectorOperationPropertiesEditionPartForm extends SectionPro
 	protected Text availableConfigs;
 	protected EMFComboViewer parameterEditorType;
 
-
+    // Start of user code
+    protected Composite propertiesGroup;
+    protected Control[] reverseElements;
+    protected Control[] commentsElements;
+    protected Control[] configRefElements;
+    protected Control[] availableConfigsElements;
+    protected Composite filterConfigSubPropertiesGroup;
+    // End of user code
 
 	/**
 	 * For {@link ISection} use only.
@@ -128,16 +136,16 @@ public class CloudConnectorOperationPropertiesEditionPartForm extends SectionPro
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
 	 * 
+	 * @generated NOT
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
-		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
-		Form form = scrolledForm.getForm();
+		Form form = widgetFactory.createForm(parent);
 		view = form.getBody();
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
 		createControls(widgetFactory, view);
-		return scrolledForm;
+		return form;
 	}
 
 	/**
@@ -150,17 +158,16 @@ public class CloudConnectorOperationPropertiesEditionPartForm extends SectionPro
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		CompositionSequence cloudConnectorOperationStep = new BindingCompositionSequence(propertiesEditionComponent);
 		CompositionStep propertiesStep = cloudConnectorOperationStep.addStep(EsbViewsRepository.CloudConnectorOperation.Properties.class);
-		propertiesStep.addStep(EsbViewsRepository.CloudConnectorOperation.Properties.description);
 		propertiesStep.addStep(EsbViewsRepository.CloudConnectorOperation.Properties.commentsList);
 		propertiesStep.addStep(EsbViewsRepository.CloudConnectorOperation.Properties.reverse);
-		propertiesStep.addStep(EsbViewsRepository.CloudConnectorOperation.Properties.connectorParameters);
-		propertiesStep.addStep(EsbViewsRepository.CloudConnectorOperation.Properties.configRef);
 		propertiesStep.addStep(EsbViewsRepository.CloudConnectorOperation.Properties.connectorName);
 		propertiesStep.addStep(EsbViewsRepository.CloudConnectorOperation.Properties.operationName);
 		propertiesStep.addStep(EsbViewsRepository.CloudConnectorOperation.Properties.cloudConnectorName);
-		propertiesStep.addStep(EsbViewsRepository.CloudConnectorOperation.Properties.availableConfigs);
 		propertiesStep.addStep(EsbViewsRepository.CloudConnectorOperation.Properties.parameterEditorType);
-		
+		propertiesStep.addStep(EsbViewsRepository.CloudConnectorOperation.Properties.configRef);
+		propertiesStep.addStep(EsbViewsRepository.CloudConnectorOperation.Properties.availableConfigs);
+		propertiesStep.addStep(EsbViewsRepository.CloudConnectorOperation.Properties.connectorParameters);
+		propertiesStep.addStep(EsbViewsRepository.CloudConnectorOperation.Properties.description);
 		
 		composer = new PartComposer(cloudConnectorOperationStep) {
 
@@ -194,7 +201,7 @@ public class CloudConnectorOperationPropertiesEditionPartForm extends SectionPro
 					return createCloudConnectorNameText(widgetFactory, parent);
 				}
 				if (key == EsbViewsRepository.CloudConnectorOperation.Properties.availableConfigs) {
-					return createAvailableConfigsText(widgetFactory, parent);
+					return createAvailableConfigsText(widgetFactory, filterConfigSubPropertiesGroup);
 				}
 				if (key == EsbViewsRepository.CloudConnectorOperation.Properties.parameterEditorType) {
 					return createParameterEditorTypeEMFComboViewer(widgetFactory, parent);
@@ -205,7 +212,7 @@ public class CloudConnectorOperationPropertiesEditionPartForm extends SectionPro
 		composer.compose(view);
 	}
 	/**
-	 * 
+	 * @generated NOT
 	 */
 	protected Composite createPropertiesGroup(FormToolkit widgetFactory, final Composite parent) {
 		Section propertiesSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
@@ -213,7 +220,7 @@ public class CloudConnectorOperationPropertiesEditionPartForm extends SectionPro
 		GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
 		propertiesSectionData.horizontalSpan = 3;
 		propertiesSection.setLayoutData(propertiesSectionData);
-		Composite propertiesGroup = widgetFactory.createComposite(propertiesSection);
+		propertiesGroup = widgetFactory.createComposite(propertiesSection);
 		GridLayout propertiesGroupLayout = new GridLayout();
 		propertiesGroupLayout.numColumns = 3;
 		propertiesGroup.setLayout(propertiesGroupLayout);
@@ -290,9 +297,10 @@ public class CloudConnectorOperationPropertiesEditionPartForm extends SectionPro
 	}
 
 	/**
-	 * 
+	 * @generated NOT
 	 */
 	protected Composite createCommentsListMultiValuedEditor(FormToolkit widgetFactory, Composite parent) {
+	        Control[] previousControls = propertiesGroup.getChildren();
 		commentsList = widgetFactory.createText(parent, "", SWT.READ_ONLY); //$NON-NLS-1$
 		GridData commentsListData = new GridData(GridData.FILL_HORIZONTAL);
 		commentsListData.horizontalSpan = 2;
@@ -330,13 +338,17 @@ public class CloudConnectorOperationPropertiesEditionPartForm extends SectionPro
 		EditingUtils.setID(editCommentsList, EsbViewsRepository.CloudConnectorOperation.Properties.commentsList);
 		EditingUtils.setEEFtype(editCommentsList, "eef::MultiValuedEditor::browsebutton"); //$NON-NLS-1$
 		// Start of user code for createCommentsListMultiValuedEditor
-
+		Control[] newControls = propertiesGroup.getChildren();
+		commentsElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
 		// End of user code
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createReverseCheckbox(FormToolkit widgetFactory, Composite parent) {
+	        Control[] previousControls = propertiesGroup.getChildren();
 		reverse = widgetFactory.createButton(parent, getDescription(EsbViewsRepository.CloudConnectorOperation.Properties.reverse, EsbMessages.CloudConnectorOperationPropertiesEditionPart_ReverseLabel), SWT.CHECK);
 		reverse.addSelectionListener(new SelectionAdapter() {
 
@@ -359,7 +371,8 @@ public class CloudConnectorOperationPropertiesEditionPartForm extends SectionPro
 		EditingUtils.setEEFtype(reverse, "eef::Checkbox"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.CloudConnectorOperation.Properties.reverse, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createReverseCheckbox
-
+		Control[] newControls = propertiesGroup.getChildren();
+		reverseElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
 		// End of user code
 		return parent;
 	}
@@ -415,10 +428,15 @@ public class CloudConnectorOperationPropertiesEditionPartForm extends SectionPro
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createConfigRefText(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EsbViewsRepository.CloudConnectorOperation.Properties.configRef, EsbMessages.CloudConnectorOperationPropertiesEditionPart_ConfigRefLabel);
-		configRef = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+	        filterConfigSubPropertiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent, "Session",
+	                true);
+	        Control [] previousControls = filterConfigSubPropertiesGroup.getChildren();
+		createDescription(filterConfigSubPropertiesGroup, EsbViewsRepository.CloudConnectorOperation.Properties.configRef, EsbMessages.CloudConnectorOperationPropertiesEditionPart_ConfigRefLabel);
+		configRef = widgetFactory.createText(filterConfigSubPropertiesGroup, ""); //$NON-NLS-1$
 		configRef.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData configRefData = new GridData(GridData.FILL_HORIZONTAL);
@@ -476,9 +494,10 @@ public class CloudConnectorOperationPropertiesEditionPartForm extends SectionPro
 		});
 		EditingUtils.setID(configRef, EsbViewsRepository.CloudConnectorOperation.Properties.configRef);
 		EditingUtils.setEEFtype(configRef, "eef::Text"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.CloudConnectorOperation.Properties.configRef, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, filterConfigSubPropertiesGroup, propertiesEditionComponent.getHelpContent(EsbViewsRepository.CloudConnectorOperation.Properties.configRef, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createConfigRefText
-
+	       Control [] newControls = filterConfigSubPropertiesGroup.getChildren();
+	       configRefElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
 		// End of user code
 		return parent;
 	}
@@ -689,6 +708,7 @@ public class CloudConnectorOperationPropertiesEditionPartForm extends SectionPro
 
 	
 	protected Composite createAvailableConfigsText(FormToolkit widgetFactory, Composite parent) {
+	        Control [] previousControls = filterConfigSubPropertiesGroup.getChildren();
 		createDescription(parent, EsbViewsRepository.CloudConnectorOperation.Properties.availableConfigs, EsbMessages.CloudConnectorOperationPropertiesEditionPart_AvailableConfigsLabel);
 		availableConfigs = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		availableConfigs.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
@@ -750,7 +770,8 @@ public class CloudConnectorOperationPropertiesEditionPartForm extends SectionPro
 		EditingUtils.setEEFtype(availableConfigs, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.CloudConnectorOperation.Properties.availableConfigs, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createAvailableConfigsText
-
+	       Control [] newControls = filterConfigSubPropertiesGroup.getChildren();
+	       availableConfigsElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
 		// End of user code
 		return parent;
 	}
@@ -1202,7 +1223,24 @@ public class CloudConnectorOperationPropertiesEditionPartForm extends SectionPro
 	}
 
 	// Start of user code additional methods
-	
+    @Override
+    public void refresh() {
+        super.refresh();
+        validate();
+    }
+
+    public void validate() {
+        EEFPropertyViewUtil epv = new EEFPropertyViewUtil(view);
+
+        epv.showEntry(new Control[] { filterConfigSubPropertiesGroup.getParent() }, false);
+        epv.clearElements(new Composite[] { filterConfigSubPropertiesGroup });
+
+        epv.showEntry(configRefElements, false);
+        epv.showEntry(availableConfigsElements, false);
+        epv.hideEntry(commentsElements, false);
+        epv.hideEntry(reverseElements, false);
+        view.layout(true, true);
+    }
 	// End of user code
 
 

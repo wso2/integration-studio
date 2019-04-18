@@ -53,7 +53,7 @@
                             <goal>wget</goal>
                         </goals>
                         <configuration>
-                            <url>https://github.com/wso2/micro-integrator/releases/download/v1.0.0-m5/wso2mi-${mi.product.version}.zip</url>
+                            <url>http://product-dist.wso2.com/tools/developerstudio/wso2mi-${mi.product.version}.zip</url>
                             <unpack>true</unpack>
                             <outputDirectory>${project.build.directory}/products</outputDirectory>
                         </configuration>

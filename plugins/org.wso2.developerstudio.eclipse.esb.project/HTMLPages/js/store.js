@@ -159,7 +159,9 @@ function createConnectorNode(appId, version, templateName, templateDescription,
 			+ templateName
 			+ "'>"
 			+ templateName
-			+ "</a></figcaption>"
+			+ "</a><div class='version'> V: "
+			+ version
+			+ "</div></figcaption>"
 			+ "<img class='download' data-toggle='tooltip' data-placement='right' "
 			+ "title='Download Connector' data-link='" +
 			downloadLink

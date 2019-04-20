@@ -227,6 +227,11 @@ button {
 	margin: 1em;
 }
 
+.version {
+    font-size: 11px;
+    color: #a9a5a5;
+}
+
 /* spinner Styles */
 .spinner {
   -webkit-animation: rotate 2s linear infinite;

@@ -58,7 +58,7 @@ public class ConnectorDownloadServlet extends HttpServlet {
         Connector connector = new Gson().fromJson(function, Connector.class);
         
         WizardDialogUtils.showSuccessMessage(connector.getAttributes().getOverview_name()
-                + " connector is being downloaded", DOWNLOADING_CONNECTOR_MSG);
+                + " connector is being downloaded. Click 'Finish' to close the store view.", DOWNLOADING_CONNECTOR_MSG);
 
         response.setContentType("application/json");
         response.setStatus(HttpServletResponse.SC_OK);
@@ -78,7 +78,7 @@ public class ConnectorDownloadServlet extends HttpServlet {
                                         monitor.worked(100);
                                         monitor.done();
                                         WizardDialogUtils.showSuccessMessage(connector.getAttributes().getOverview_name()
-                                                + " connector is downloaded", DOWNLOADING_CONNECTOR_MSG);
+                                                + " connector is downloaded Successfully.", DOWNLOADING_CONNECTOR_MSG);
                                         return Status.OK_STATUS;
                                     }
                                 } catch (ConnectorException e) {

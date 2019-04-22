@@ -175,6 +175,7 @@ public class DistributionProjectExportWizardPage extends WizardPage {
 		                handleTreeItemChecked(item);
 					}
                 }
+				validate();
 			}
 		});
 		
@@ -189,6 +190,7 @@ public class DistributionProjectExportWizardPage extends WizardPage {
 	                item.setChecked(false);
 	                handleTreeItemChecked(item);
                 }
+				validate();
 			}
 		});
 		
@@ -419,7 +421,7 @@ public class DistributionProjectExportWizardPage extends WizardPage {
 					}
 				}
 				if(conflict){
-					MessageDialog.openWarning(new Shell(), "Add dependencies","Cannot add multiple dependencies with same identity");
+					MessageDialog.openWarning(getShell(), "Add dependencies","Cannot add multiple dependencies with same identity");
 				}
 			} else {
 				for (TreeItem subitem : subItems) {
@@ -438,7 +440,7 @@ public class DistributionProjectExportWizardPage extends WizardPage {
 					addDependency(nodeData);
 				} else{
 					item.setChecked(false);
-					MessageDialog.openWarning(new Shell(), "Add dependencies","Cannot add multiple dependencies with same identity");
+					MessageDialog.openWarning(getShell(), "Add dependencies","Cannot add multiple dependencies with same identity");
 				}
 			} else {
 				removeDependency(nodeData);

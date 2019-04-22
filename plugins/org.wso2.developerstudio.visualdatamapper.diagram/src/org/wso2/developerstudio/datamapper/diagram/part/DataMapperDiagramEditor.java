@@ -139,6 +139,11 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
 	 * @generated NOT
 	 */
 	private static final String OUTPUT_SCHEMA_ID = "Output-Schema"; //$NON-NLS-1$
+	
+    /**
+     * @generated NOT
+     */
+    private static final String INPUT_SAMPLE_ID = "Input-Sample"; //$NON-NLS-1$
 
 	/**
 	 * @generated
@@ -253,6 +258,8 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
         DataMapperConfigHolder.getInstance().setInputSchemaPath(inputSchemaFile.getAbsolutePath());
         File outputSchemaFile = createSchemaFile(OUTPUT_SCHEMA_ID);
         DataMapperConfigHolder.getInstance().setOutputSchemaPath(outputSchemaFile.getAbsolutePath());
+        File inputSampleFile = createSchemaFile(INPUT_SAMPLE_ID);
+        DataMapperConfigHolder.getInstance().setInputFile(inputSampleFile.getAbsolutePath());
 
         IEditorInput editorInput = this.getEditorInput();
 
@@ -586,6 +593,10 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
 			newFilePath = graphicalFileDirPath + configName + EditorUtils.INPUT_SCHEMA_FILE_SUFFIX
 					+ EditorUtils.AVRO_SCHEMA_FILE_EXTENSION;
 			newSchemaIFile = graphicalFile.getProject().getFile(newFilePath);
+		} else if (INPUT_SAMPLE_ID.equals(schemaType)){
+		    newFilePath = graphicalFileDirPath + configName + EditorUtils.INPUT_SAMPLE_FILE_SUFFIX
+                    + EditorUtils.TEXT_FILE_EXTENSION;
+		    newSchemaIFile = graphicalFile.getProject().getFile(newFilePath);
 		} else {
 			newFilePath = graphicalFileDirPath + configName + EditorUtils.OUTPUT_SCHEMA_FILE_SUFFIX
 					+ EditorUtils.AVRO_SCHEMA_FILE_EXTENSION;

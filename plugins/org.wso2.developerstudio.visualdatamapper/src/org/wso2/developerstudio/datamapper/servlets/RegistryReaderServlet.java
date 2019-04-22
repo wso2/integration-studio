@@ -36,6 +36,9 @@ import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.datamapper.servlets.Utils.DatamapperUtils;
 
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
 /**
  * This is the servlet used to serve requests coming from Datamapper test window.
  * 
@@ -109,7 +112,12 @@ public class RegistryReaderServlet extends HttpServlet {
             File inputSchemaFile = new File(DataMapperConfigHolder.getInstance().getInputSchemaPath());
             InputStream inputSchema = FileUtils.openInputStream(inputSchemaFile);
             String result = IOUtils.toString(inputSchema);
-            response.getWriter().println(result);
+            JsonObject obj = new JsonObject();
+            obj.addProperty("schema", result);
+            File inputSampleFile = new File(DataMapperConfigHolder.getInstance().getInputFile());
+            InputStream inputSample = FileUtils.openInputStream(inputSampleFile);
+            obj.addProperty("sample", IOUtils.toString(inputSample));
+            response.getWriter().println(obj.toString());
         }
         
     }

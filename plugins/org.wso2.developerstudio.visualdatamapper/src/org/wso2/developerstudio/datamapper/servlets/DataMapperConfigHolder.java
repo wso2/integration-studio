@@ -32,6 +32,7 @@ public class DataMapperConfigHolder {
     private String dmcPath;
     private String inputType;
     private String outputType;
+    private String inputFile;
 
     public String getInputType() {
         return inputType;
@@ -47,6 +48,14 @@ public class DataMapperConfigHolder {
 
     public void setOutputType(String outputType) {
         this.outputType = outputType;
+    }
+    
+    public String getInputFile() {
+        return inputFile;
+    }
+
+    public void setInputFile(String inputFile) {
+        this.inputFile = inputFile;
     }
 
     private static DataMapperConfigHolder dataHolderInstance = null;

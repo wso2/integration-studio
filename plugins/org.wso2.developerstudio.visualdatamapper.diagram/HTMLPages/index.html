@@ -27,13 +27,13 @@
                      <div class="container">
                         <div class="row" >
                             <div class="col-lg-4 input-radio">
-                               <label><input type="radio" class="inputTypeRadio" name="inputTypeRadio" checked value="JSON"> JSON</label>
+                               <label><input type="radio" class="inputTypeRadio" name="inputTypeRadio" checked value="JSON" id="jsonInputTypeRadio"> JSON</label>
                             </div>
                             <div class="col-lg-4 input-radio">
-                               <label><input type="radio" class="inputTypeRadio"  name="inputTypeRadio" value="XML"> XML</label>
+                               <label><input type="radio" class="inputTypeRadio"  name="inputTypeRadio" value="XML" id="xmlInputTypeRadio"> XML</label>
                             </div>
                             <div class="col-lg-4 input-radio">
-                               <label><input type="radio" class="inputTypeRadio" name="inputTypeRadio" value="CSV"> CSV</label>
+                               <label><input type="radio" class="inputTypeRadio" name="inputTypeRadio" value="CSV" id="csvInputTypeRadio"> CSV</label>
                             </div>
                         </div>
                      </div>
@@ -133,7 +133,7 @@
       
       // generate examples once the input schema is available
       function ajaxCallBack(retString) {
-        inputSchema = retString;
+        inputSchema = retString["sample"];
         generateExamples();
         autoFormatSelection();
         // Get output schema for the example
@@ -142,21 +142,90 @@
       
       // Generate json / xml / csv examples from the json schema.  
       function generateExamples() {
-        var inputSchemaTitle = inputSchema["title"];
+    	  if (isJson(inputSchema)){
+    		  var inputSchemaTitle = inputSchema["title"];
+    		  jsonString = inputSchema;
+    		  xmlString = json2xml(JSON.parse(jsonString), "\n");
+    	      /* xmlString = "<" + inputSchemaTitle + ">" + xmlString + "</" + inputSchemaTitle + ">"; */
+    	      csvString = '<text xmlns="http://ws.apache.org/commons/ns/payload">' + Papa.unparse(JSON.parse(jsonString), configs) + "</text>";
+    	      
+    	      inputEditor.setOption("mode", "text/javascript");
+  	  	  	  inputEditor.setValue(inputSchema);
+    	  } else {
+    		  jsonString = "";
+    		  xmlString = inputSchema;
+    		  document.getElementById("xmlInputTypeRadio").checked = true;
+    		  
+    		  inputEditor.setOption("mode", "text/html");
+      	  	  inputEditor.setValue(xmlString);
+      	  	
+      	  	  inputType = $('.inputTypeRadio:checked').val();
+      	  	autoFormatSelection();
+            process();
+    	  } 
+    	  /* else {
+    		  jsonString = inputSchema;
+    		  inputEditor.setOption("mode", "text/html");
+      	  	  inputEditor.setValue(jsonString);
+    	  } */
+  	  	/* var inputSchemaTitle = inputSchema["title"];
+  	  	jsonString = inputSchema;
+  	  	
+        xmlString = json2xml(JSON.parse(jsonString), "\n");
+        xmlString = "<" + inputSchemaTitle + ">" + xmlString + "</" + inputSchemaTitle + ">";
       
+        csvString = '<text xmlns="http://ws.apache.org/commons/ns/payload">' + Papa.unparse(JSON.parse(jsonString), configs) + "</text>";
+  	  	
+        //document.getElementById("xmlInputTypeRadio").checked = true;
+        $("#xmlInputTypeRadio").attr('checked', 'checked').change();
+  	  	if (isJson(inputSchema)){
+	        inputEditor.setOption("mode", "text/javascript");
+	  	  	inputEditor.setValue(inputSchema);
+  	  	} else {
+  	  		//$('.inputTypeRadio')[1].checked = true;
+  	  		inputEditor.setOption("mode", "text/html");
+    	  	inputEditor.setValue(jsonString);
+  	  	}
+        
         jsonString = convertSchemaToJson(inputSchema);
         if (inputSchemaTitle != "root" && jsonString[inputSchemaTitle] != null) {
           jsonString = jsonString[inputSchemaTitle];
         }
         jsonString = JSON.stringify(jsonString, null, "\t");
         inputEditor.setOption("mode", "text/javascript");
-    	  inputEditor.setValue(jsonString);
-      
-        xmlString = json2xml(JSON.parse(jsonString), "\n");
-        xmlString = "<" + inputSchemaTitle + ">" + xmlString + "</" + inputSchemaTitle + ">";
-      
-        csvString = '<text xmlns="http://ws.apache.org/commons/ns/payload">' + Papa.unparse(JSON.parse(jsonString), configs) + "</text>";
+    	inputEditor.setValue(jsonString); */
+    	
+    	///////// ORIGINAL
+    	  /* var inputSchemaTitle = inputSchema["title"];
+          
+          jsonString = convertSchemaToJson(inputSchema);
+          if (inputSchemaTitle != "root" && jsonString[inputSchemaTitle] != null) {
+            jsonString = jsonString[inputSchemaTitle];
+          }
+          jsonString = JSON.stringify(jsonString, null, "\t");
+          inputEditor.setOption("mode", "text/javascript");
+      	  inputEditor.setValue(jsonString);
+        
+          xmlString = json2xml(JSON.parse(jsonString), "\n");
+          xmlString = "<" + inputSchemaTitle + ">" + xmlString + "</" + inputSchemaTitle + ">";
+        
+          csvString = '<text xmlns="http://ws.apache.org/commons/ns/payload">' + Papa.unparse(JSON.parse(jsonString), configs) + "</text>"; */
       }
+      
+      function isJson(str) {
+    	    try {
+    	        JSON.parse(str);
+    	    } catch (e) {
+    	        return false;
+    	    }
+    	    return true;
+    	};
+    	
+		function isXML(str) {
+			var oParser = new DOMParser();
+			var oDOM = oParser.parseFromString(str, "application/xml");
+			oDOM.documentElement.nodeName == "parsererror" ? oDOM.documentElement.nodeName : str;
+		};
       
       // Set appropiate data types depending on the input
       $('.inputTypeRadio').on('change', function(e) {

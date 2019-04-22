@@ -59,8 +59,7 @@ public class MicroIntegratorInstance {
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	private IServerWorkingCopy server = null;
 	//static relative path to where micro-ESB is packaged
-	private static final String microesbPath = "runtime" + File.separator + "microesb"
-			+ File.separator + "wso2" + File.separator + "micro-integrator";
+	private static final String microesbPath = "runtime" + File.separator + "microesb";
 	//static path for DeveloperStudio for MAC when it is on Application folder
 	private static final String eiToolingHomeForMac = "/Applications/DeveloperStudio.app/Contents/MacOS";
 	private static boolean isDebugMode = false;
@@ -324,4 +323,13 @@ public class MicroIntegratorInstance {
             }
         }.start();
     }
+    
+    /**
+     * This method return the server state
+     * 
+     */
+    public int getServerState() {
+        return microIntegratorServer.getServerState();
+    }
+    
 }

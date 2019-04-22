@@ -210,11 +210,6 @@ public class EEFNameSpacedPropertyEditorDialog extends Dialog {
     private Button browseButton;
     
     /**
-     * Selected file path text filed.
-     */
-    private Text filePathTextField;
-    
-    /**
      * Tree viewer.
      */
     private Tree treeViewWidget;
@@ -248,11 +243,6 @@ public class EEFNameSpacedPropertyEditorDialog extends Dialog {
      * Text area for inline XML content.
      */
     private StyledText inlineXMLTextArea;
-    
-    /**
-     * Group box for file browse components.
-     */
-    private Group browseFileGroupBox;
     
     /**
      * Tab view for XML content.
@@ -359,6 +349,10 @@ public class EEFNameSpacedPropertyEditorDialog extends Dialog {
      */
     private XPathValidator xPathValidator;
     
+    /**
+     * Group for XML evaluator elements.
+     */
+    private Group xmlEvaluatorGroup;    
     
     private static final String EMPTY_STRING = "";
     private static final String SOURCE_VIEW_INFO_LABEL_TEXT = "Switch to 'Visual' tab to see a graphical "
@@ -497,7 +491,7 @@ public class EEFNameSpacedPropertyEditorDialog extends Dialog {
         expressionGroup = new Group(dialogShell, SWT.NONE);
         {   
         	FormData expressionGroupBoxLayoutData = new FormData();
-        	expressionGroupBoxLayoutData.top = new FormAttachment(inputTypeRadioGroup, 0);
+        	expressionGroupBoxLayoutData.top = new FormAttachment(0);
         	expressionGroupBoxLayoutData.left = new FormAttachment(1);
         	expressionGroupBoxLayoutData.right = new FormAttachment(99);
         	expressionGroup.setLayoutData(expressionGroupBoxLayoutData);
@@ -533,7 +527,6 @@ public class EEFNameSpacedPropertyEditorDialog extends Dialog {
             	evalTypeComboBoxLayoutData.right = new FormAttachment(99);
             	evalTypeComboBoxLayoutData.width = 80;
             	evalTypeComboBox.setLayoutData(evalTypeComboBoxLayoutData);
-            	
             }
             
             // XPath text field
@@ -569,23 +562,39 @@ public class EEFNameSpacedPropertyEditorDialog extends Dialog {
             }
         });
         
-        xmlInputLabel = new Label(dialogShell, SWT.NONE);
+        xmlEvaluatorGroup = new Group(dialogShell, SWT.NONE);
+        {   
+        	FormData xmlEvaluatorGroupBoxLayoutData = new FormData();
+        	xmlEvaluatorGroupBoxLayoutData.top = new FormAttachment(expressionGroup, 2);
+        	xmlEvaluatorGroupBoxLayoutData.left = new FormAttachment(1);
+        	xmlEvaluatorGroupBoxLayoutData.right = new FormAttachment(99);
+        	xmlEvaluatorGroup.setLayoutData(xmlEvaluatorGroupBoxLayoutData);
+            
+            // Configure group box internal layout.
+            FormLayout xmlEvaluatorGroupBoxLayout = new FormLayout();
+            xmlEvaluatorGroupBoxLayout.marginWidth = 5;
+            xmlEvaluatorGroupBoxLayout.marginHeight = 5;
+            xmlEvaluatorGroup.setLayout(xmlEvaluatorGroupBoxLayout);
+            
+            xmlEvaluatorGroup.setText("Evaluate");
+        }
+        
+        xmlInputLabel = new Label(xmlEvaluatorGroup, SWT.NONE);
         {
         	xmlInputLabel.setText(INPUT_LABEL_TEXT);
             FormData inputLabelLayoutData = new FormData();
-            inputLabelLayoutData.top = new FormAttachment(expressionGroup, 5);
+            inputLabelLayoutData.top = new FormAttachment(0);
             inputLabelLayoutData.left = new FormAttachment(1);
             inputLabelLayoutData.right = new FormAttachment(99);
             xmlInputLabel.setLayoutData(inputLabelLayoutData);
             
             FontData fontData = xmlInputLabel.getFont().getFontData()[0];
             Font font = new Font(Display.getCurrent(), new FontData(fontData.getName(),
-            		fontData.getHeight(), SWT.BOLD));
+            		16, SWT.BOLD));
             xmlInputLabel.setFont(font);
-            xmlInputLabel.setBackground(new Color(Display.getCurrent(), new RGB(220, 220, 220)));
         }
         
-        jsonInputLabel = new Label(dialogShell, SWT.WRAP | SWT.BORDER);
+        jsonInputLabel = new Label(xmlEvaluatorGroup, SWT.WRAP | SWT.BORDER);
         {
         	jsonInputLabel.setText("JSON expression evaluation capabilities are not supported yet."
         			+ " However, you can still use JSON expressions in the integration flow.");
@@ -604,12 +613,13 @@ public class EEFNameSpacedPropertyEditorDialog extends Dialog {
         }
         
         // XML input type radio button group
-        inputTypeRadioGroup = new Group(dialogShell, SWT.NONE);
+        inputTypeRadioGroup = new Group(xmlEvaluatorGroup, SWT.NONE);
         {   
             RowLayout inputTypeRadioGroupRowLayout = new RowLayout(SWT.HORIZONTAL);
             inputTypeRadioGroupRowLayout.wrap = true;
+            inputTypeRadioGroupRowLayout.center = true;
             inputTypeRadioGroupRowLayout.marginRight = 0;
-            inputTypeRadioGroupRowLayout.spacing = 30;
+            inputTypeRadioGroupRowLayout.spacing = 40;
             inputTypeRadioGroup.setLayout(inputTypeRadioGroupRowLayout);
             
             FormData inputTypeRadioGroupLayout = new FormData();
@@ -624,55 +634,22 @@ public class EEFNameSpacedPropertyEditorDialog extends Dialog {
             
             browseFileRadioButton = new Button(inputTypeRadioGroup, SWT.RADIO);
             browseFileRadioButton.setText(FILE_RADIO_BUTTON_TEXT);
-        }
-        
-        browseFileGroupBox = new Group(dialogShell, SWT.NONE);
-        {   
-            FormData browseFileGroupBoxLayoutData = new FormData();
-            browseFileGroupBoxLayoutData.top = new FormAttachment(inputTypeRadioGroup, 0);
-            browseFileGroupBoxLayoutData.left = new FormAttachment(1);
-            browseFileGroupBoxLayoutData.right = new FormAttachment(99);
-            browseFileGroupBox.setLayoutData(browseFileGroupBoxLayoutData);
-            
-            // Configure group box internal layout.
-            FormLayout browseFileGroupBoxLayout = new FormLayout();
-            browseFileGroupBoxLayout.marginWidth = 5;
-            browseFileGroupBoxLayout.marginHeight = 5;
-            browseFileGroupBox.setLayout(browseFileGroupBoxLayout);
-            
-            // File path text field.
-            filePathTextField = new Text(browseFileGroupBox, SWT.BORDER);
-            {
-                filePathTextField.setEnabled(false);
-                FormData filePathTextFieldLayoutData = new FormData();
-                filePathTextFieldLayoutData.top = new FormAttachment(browseFileGroupBox, 5);
-                filePathTextFieldLayoutData.left = new FormAttachment(0);
-                filePathTextFieldLayoutData.right = new FormAttachment(80);
-                filePathTextField.setLayoutData(filePathTextFieldLayoutData);
-                filePathTextField.setEnabled(false);
-            }
             
             // Browse button.
-            browseButton = new Button(browseFileGroupBox, SWT.BORDER);
+            browseButton = new Button(inputTypeRadioGroup, SWT.BORDER);
             {
-                browseButton.setText("Browse");
-                FormData browseButtonLayoutData = new FormData();
-                browseButtonLayoutData.top = new FormAttachment(browseFileGroupBox, 1);
-                browseButtonLayoutData.left = new FormAttachment(filePathTextField, 5);
-                browseButtonLayoutData.right = new FormAttachment(100);
-                browseButtonLayoutData.width = 80;
-                browseButton.setLayoutData(browseButtonLayoutData);
-                browseButton.setEnabled(false);
+                browseButton.setText("Browse File");
+                browseButton.setVisible(false);
             }
         }
         
         // Initialising main tab layout
-        mainTabFolder = new TabFolder(dialogShell, SWT.NONE);
+        mainTabFolder = new TabFolder(xmlEvaluatorGroup, SWT.NONE);
         FormData tabFolderLayoutData = new FormData();
-        tabFolderLayoutData.top = new FormAttachment(browseFileGroupBox, 0);
+        tabFolderLayoutData.top = new FormAttachment(inputTypeRadioGroup, 0);
         tabFolderLayoutData.left = new FormAttachment(0);
         tabFolderLayoutData.right = new FormAttachment(100);
-        tabFolderLayoutData.height = 350;
+        tabFolderLayoutData.height = 330;
         mainTabFolder.setLayoutData(tabFolderLayoutData);
         
         // First Tab
@@ -884,7 +861,7 @@ public class EEFNameSpacedPropertyEditorDialog extends Dialog {
             }
         }
  
-        xmlOutputLabel = new Label(dialogShell, SWT.NONE);
+        xmlOutputLabel = new Label(xmlEvaluatorGroup, SWT.NONE);
         {
             xmlOutputLabel.setText(OUTPUT_LABEL_TEXT);
             FormData outputLabelLayoutData = new FormData();
@@ -895,13 +872,12 @@ public class EEFNameSpacedPropertyEditorDialog extends Dialog {
             
             FontData fontData = xmlInputLabel.getFont().getFontData()[0];
             Font font = new Font(Display.getCurrent(), new FontData(fontData.getName(),
-            		fontData.getHeight(), SWT.BOLD));
+            		16, SWT.BOLD));
             xmlOutputLabel.setFont(font);
-            xmlOutputLabel.setBackground(new Color(Display.getCurrent(), new RGB(220, 220, 220)));
         }
         
         // Evaluated output text area 
-        outputXMLTextArea = new StyledText(dialogShell, SWT.MULTI | SWT.BORDER | 
+        outputXMLTextArea = new StyledText(xmlEvaluatorGroup, SWT.MULTI | SWT.BORDER | 
         		SWT.H_SCROLL | SWT.V_SCROLL);
         {
             FormData xmlTextAreaLayoutData = new FormData();
@@ -916,13 +892,14 @@ public class EEFNameSpacedPropertyEditorDialog extends Dialog {
         }
         
         // Evaluate XPath button
-        evaluateExpressionButton = new Button(dialogShell, SWT.NONE);
+        evaluateExpressionButton = new Button(xmlEvaluatorGroup, SWT.NONE);
         {
             evaluateExpressionButton.setText(EVALUATE_LABEL_TEXT);
             FormData evaluateXPathButtonLayoutData = new FormData();
-            evaluateXPathButtonLayoutData.top = new FormAttachment(outputXMLTextArea, 2);
+            evaluateXPathButtonLayoutData.top = new FormAttachment(outputXMLTextArea, 5);
             evaluateXPathButtonLayoutData.right = new FormAttachment(99);
-            evaluateXPathButtonLayoutData.width = 80;
+            evaluateXPathButtonLayoutData.width = 100;
+            evaluateXPathButtonLayoutData.height = 50;
             evaluateExpressionButton.setLayoutData(evaluateXPathButtonLayoutData);
         }
         
@@ -1091,9 +1068,6 @@ public class EEFNameSpacedPropertyEditorDialog extends Dialog {
                     // Clear tree view.
                     treeViewWidget.removeAll();
 
-                    // Update the selected path
-                    filePathTextField.setText(filePath);
-
                     final File selectedFile = new File(filePath);
                     if (selectedFile.exists() && selectedFile.canRead()) {
                         currentFile = selectedFile;
@@ -1236,13 +1210,11 @@ public class EEFNameSpacedPropertyEditorDialog extends Dialog {
             public void widgetSelected(SelectionEvent e) {
                 Button source = (Button) e.getSource();
                 if(source.getSelection())  {
-                    filePathTextField.setText(EMPTY_STRING);
                     expressionTextField.setText(EMPTY_STRING);
                     outputXMLTextArea.setText(EMPTY_STRING);
                     infoLabel.setText(INFO_LABEL_DEFAULT_TEXT);
                     
-                    browseButton.setEnabled(false);
-                    filePathTextField.setEnabled(false);
+                    browseButton.setVisible(false);
                     
                     xmlContentTabFolder.setSelection(0);
                     xmlContentTabFolder.getTabList()[0].setEnabled(true);
@@ -1265,7 +1237,7 @@ public class EEFNameSpacedPropertyEditorDialog extends Dialog {
             public void widgetSelected(SelectionEvent e) {
                 Button source = (Button) e.getSource();
                 if(source.getSelection())  {
-                    browseButton.setEnabled(true);
+                    browseButton.setVisible(true);
                     infoLabel.setText(INFO_LABEL_DEFAULT_TEXT);
                     
                     xmlContentTabFolder.setSelection(1);
@@ -1607,7 +1579,6 @@ public class EEFNameSpacedPropertyEditorDialog extends Dialog {
     private void setXMLEvaluatorElementsVisibility(boolean isVisible) {
     	xmlInputLabel.setVisible(isVisible);
     	inputTypeRadioGroup.setVisible(isVisible);
-    	browseFileGroupBox.setVisible(isVisible);
     	mainTabFolder.setVisible(isVisible);
     	xmlOutputLabel.setVisible(isVisible);
     	outputXMLTextArea.setVisible(isVisible);

@@ -27,11 +27,14 @@ import org.apache.commons.logging.LogFactory;
 import org.apache.synapse.Mediator;
 import org.apache.synapse.config.xml.IterateMediatorFactory;
 import org.apache.synapse.config.xml.OMElementUtils;
+import org.apache.synapse.config.xml.SynapsePath;
+import org.apache.synapse.config.xml.SynapsePathFactory;
 import org.apache.synapse.config.xml.SynapseXPathFactory;
 import org.apache.synapse.config.xml.TargetFactory;
 import org.apache.synapse.config.xml.XMLConfigConstants;
 import org.apache.synapse.mediators.eip.Target;
 import org.apache.synapse.mediators.eip.splitter.IterateMediator;
+import org.apache.synapse.util.xpath.SynapseJsonPath;
 import org.apache.synapse.util.xpath.SynapseXPath;
 import org.jaxen.JaxenException;
 
@@ -58,6 +61,9 @@ public class IterateMediatorExtFactory extends IterateMediatorFactory {
         QName ATT_ATTACHPATH = new QName("attachPath");
         QName ATT_SEQUENCIAL = new QName("sequential");
         QName ID_Q = new QName(XMLConfigConstants.NULL_NAMESPACE, "id");
+        
+        final String DEFAULT_JSON_ATTACHPATH = "$";
+        final String DEFAULT_XML_ATTACHPATH = ".";
 
         processAuditStatus(mediator, omElement);
 
@@ -79,23 +85,34 @@ public class IterateMediatorExtFactory extends IterateMediatorFactory {
         OMAttribute expression = omElement.getAttribute(ATT_EXPRN);
         if (expression != null) {
             try {
-                ((IterateMediator) mediator).setExpression(SynapseXPathFactory.getSynapseXPath(omElement, ATT_EXPRN));
+                ((IterateMediator) mediator).setExpression(SynapsePathFactory.getSynapsePath(omElement, ATT_EXPRN));
             } catch (JaxenException e) {
                 // ignore
             }
         }
 
         OMAttribute attachPath = omElement.getAttribute(ATT_ATTACHPATH);
-        String attachPathValue = ".";
-        if (attachPath != null) {
-            attachPathValue = attachPath.getAttributeValue();
-        }
 
         try {
-            SynapseXPath xp = new SynapseXPath(attachPathValue);
+        	SynapsePath attachSynapsePath;
+
+            if (attachPath != null) {
+                attachSynapsePath = SynapsePathFactory.getSynapsePath(omElement, ATT_ATTACHPATH);
+                ((IterateMediator)mediator).setAttachPathPresent(true);
+
+            } else {
+                if (((IterateMediator)mediator).getExpression() instanceof  SynapseJsonPath){
+                    attachSynapsePath = new SynapseJsonPath(DEFAULT_JSON_ATTACHPATH);
+                } else {
+                    attachSynapsePath = new SynapseXPath(DEFAULT_XML_ATTACHPATH);
+                }
+                ((IterateMediator)mediator).setAttachPathPresent(false);
+            }
+
             Log log = LogFactory.getLog(IterateMediatorFactory.class);
-            OMElementUtils.addNameSpaces(xp, omElement, log);
-            ((IterateMediator) mediator).setAttachPath(xp);
+            OMElementUtils.addNameSpaces(attachSynapsePath, omElement, log);
+            ((IterateMediator) mediator).setAttachPath(attachSynapsePath);
+            
         } catch (JaxenException e) {
             // ignore
         }

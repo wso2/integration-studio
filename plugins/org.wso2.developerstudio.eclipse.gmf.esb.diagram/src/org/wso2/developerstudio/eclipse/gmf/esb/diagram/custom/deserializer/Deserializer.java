@@ -379,6 +379,8 @@ public class Deserializer {
         case ENDPOINT_HTTP:
         case ENDPOINT_WSDL:
         case ENDPOINT_LOADBALANCE:
+        case ENDPOINT_RECIPIENTLIST:
+        case ENDPOINT_FAILOVER:
         case TEMPLATE_ENDPOINT:
             Endpoint endpoint;
             if (withSynapse) {

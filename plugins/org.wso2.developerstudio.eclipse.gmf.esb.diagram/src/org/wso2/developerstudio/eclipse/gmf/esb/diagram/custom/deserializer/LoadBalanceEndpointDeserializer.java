@@ -29,12 +29,21 @@ import java.util.Map;
 
 import org.apache.axiom.om.OMElement;
 import org.apache.commons.lang.StringUtils;
-import org.apache.synapse.config.xml.endpoints.AddressEndpointFactory;
 import org.apache.synapse.config.xml.endpoints.AddressEndpointSerializer;
+import org.apache.synapse.config.xml.endpoints.DefaultEndpointSerializer;
+import org.apache.synapse.config.xml.endpoints.FailoverEndpointSerializer;
+import org.apache.synapse.config.xml.endpoints.HTTPEndpointSerializer;
+import org.apache.synapse.config.xml.endpoints.LoadbalanceEndpointSerializer;
+import org.apache.synapse.config.xml.endpoints.WSDLEndpointSerializer;
 import org.apache.synapse.endpoints.AbstractEndpoint;
 import org.apache.synapse.endpoints.AddressEndpoint;
+import org.apache.synapse.endpoints.DefaultEndpoint;
 import org.apache.synapse.endpoints.Endpoint;
+import org.apache.synapse.endpoints.FailoverEndpoint;
+import org.apache.synapse.endpoints.HTTPEndpoint;
 import org.apache.synapse.endpoints.LoadbalanceEndpoint;
+import org.apache.synapse.endpoints.RecipientListEndpoint;
+import org.apache.synapse.endpoints.WSDLEndpoint;
 import org.apache.synapse.endpoints.dispatch.Dispatcher;
 import org.apache.synapse.endpoints.dispatch.HttpSessionDispatcher;
 import org.apache.synapse.endpoints.dispatch.SimpleClientSessionDispatcher;
@@ -155,30 +164,30 @@ public class LoadBalanceEndpointDeserializer extends AbstractEndpointDeserialize
         EndpointFormPage endpointPage = (EndpointFormPage) loadEPFormEditor
                 .getFormPageForArtifact(ArtifactType.ENDPOINT);
 
-        LoadbalanceEndpoint endpoint = (LoadbalanceEndpoint)endpointObject;
+        LoadbalanceEndpoint endpoint = (LoadbalanceEndpoint) endpointObject;
 
         LoadbalanceEndpointFormPage loadEndpointPage = (LoadbalanceEndpointFormPage) endpointPage;
 
         setTextValue(loadEndpointPage.getEndpointName(), endpoint.getName());
-        
+
         if (endpoint.getAlgorithm() instanceof org.apache.synapse.endpoints.algorithms.RoundRobin) {
             loadEndpointPage.getEndpointAlgorithmn().select(0);
         } else {
             loadEndpointPage.getEndpointAlgorithmn().select(1);
         }
-        
+
         if (endpoint.isFailover()) {
             loadEndpointPage.getEndpointFailover().select(0);
         } else {
             loadEndpointPage.getEndpointFailover().select(1);
         }
-        
+
         if (endpoint.isBuildMessageAtt()) {
             loadEndpointPage.getEndpointBuildMessage().select(0);
         } else {
             loadEndpointPage.getEndpointBuildMessage().select(1);
         }
-        
+
         setTextValue(loadEndpointPage.getEP_Description(), endpoint.getDescription());
 
         if (endpoint.getProperties().size() > 0) {
@@ -188,15 +197,45 @@ public class LoadBalanceEndpointDeserializer extends AbstractEndpointDeserialize
         } else {
             loadEndpointPage.setEndPointPropertyList(null);
         }
-        
+
         if (endpoint.getChildren() != null && !endpoint.getChildren().isEmpty()) {
             List<EndpointTableEntry> endpointTableEntries = new ArrayList<>();
             List<Endpoint> childern = endpoint.getChildren();
             for (int i = 0; i < childern.size(); i++) {
                 Endpoint child = childern.get(i);
+                
+                OMElement omElement = null;
                 if (child instanceof AddressEndpoint) {
-                    AddressEndpoint addressEndpoint = (AddressEndpoint)child;
-                    OMElement omElement = AddressEndpointSerializer.getElementFromEndpoint(addressEndpoint);
+                    AddressEndpoint addressEndpoint = (AddressEndpoint) child;
+                    omElement = AddressEndpointSerializer.getElementFromEndpoint(addressEndpoint);
+
+                } else if (child instanceof HTTPEndpoint) {
+                    HTTPEndpoint httpEndpoint = (HTTPEndpoint) child;
+                    omElement = HTTPEndpointSerializer.getElementFromEndpoint(httpEndpoint);
+
+                } else if (child instanceof DefaultEndpoint) {
+                    DefaultEndpoint defaultEndpoint = (DefaultEndpoint) child;
+                    omElement = DefaultEndpointSerializer.getElementFromEndpoint(defaultEndpoint);
+
+                } else if (child instanceof WSDLEndpoint) {
+                    WSDLEndpoint wsdlEndpoint = (WSDLEndpoint) child;
+                    omElement = WSDLEndpointSerializer.getElementFromEndpoint(wsdlEndpoint);
+
+                } else if (child instanceof LoadbalanceEndpoint) {
+                    LoadbalanceEndpoint lbEndpoint = (LoadbalanceEndpoint) child;
+                    omElement = LoadbalanceEndpointSerializer.getElementFromEndpoint(lbEndpoint);
+
+                } else if (child instanceof RecipientListEndpoint) {
+                    RecipientListEndpoint rlEndpoint = (RecipientListEndpoint) child;
+                    omElement = LoadbalanceEndpointSerializer.getElementFromEndpoint(rlEndpoint);
+
+                } else if (child instanceof FailoverEndpoint) {
+                    FailoverEndpoint foEndpoint = (FailoverEndpoint) child;
+                    omElement = FailoverEndpointSerializer.getElementFromEndpoint(foEndpoint);
+
+                }
+                
+                if (omElement != null) {
                     ConfigureEndpointsWizard.removeIndentations(omElement);
                     EndpointTableEntry tempEntry = new EndpointTableEntry(true, omElement.toString());
                     endpointTableEntries.add(tempEntry);
@@ -204,8 +243,7 @@ public class LoadBalanceEndpointDeserializer extends AbstractEndpointDeserialize
             }
             loadEndpointPage.setEndpointList(endpointTableEntries);
         }
-        
-        
+
         if (endpoint.getMembers() != null && endpoint.getMembers().size() > 0) {
             List<Member> existingMembers = loadEndpointPage.getMemberList();
             loadEndpointPage.setMemberList(getMembers(endpoint, existingMembers));
@@ -226,7 +264,7 @@ public class LoadBalanceEndpointDeserializer extends AbstractEndpointDeserialize
             member.setHostName(next.getHostName());
             member.setHttpPort(Integer.toString(next.getHttpPort()));
             member.setHttpsPort(Integer.toString(next.getHttpsPort()));
-            
+
             if (existingMembers != null) {
                 for (Member memberItem : existingMembers) {
                     if (memberItem.getHostName().equals(next.getHostName())) {
@@ -273,7 +311,8 @@ public class LoadBalanceEndpointDeserializer extends AbstractEndpointDeserialize
      * @return
      */
     @SuppressWarnings("unchecked")
-    public List<EndPointProperty> getProperties(LoadbalanceEndpoint endpoint, List<EndPointProperty> existingProperties) {
+    public List<EndPointProperty> getProperties(LoadbalanceEndpoint endpoint,
+            List<EndPointProperty> existingProperties) {
 
         List<EndPointProperty> newlyAddedProperties = new ArrayList<EndPointProperty>();
         List<EndPointProperty> removedProperties = new ArrayList<EndPointProperty>();

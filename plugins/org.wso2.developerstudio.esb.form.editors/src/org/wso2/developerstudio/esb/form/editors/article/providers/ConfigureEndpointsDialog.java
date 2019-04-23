@@ -1,3 +1,21 @@
+/*
+ * Copyright (c) 2019 WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ *
+ * WSO2 Inc. licenses this file to you under the Apache License,
+ * Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+
 package org.wso2.developerstudio.esb.form.editors.article.providers;
 
 import java.util.ArrayList;
@@ -32,7 +50,7 @@ import org.eclipse.ui.PlatformUI;
 public class ConfigureEndpointsDialog extends TitleAreaDialog {
 
     /**
-     * UI widgets 
+     * UI widgets
      */
     private Table tblEndpoints;
     private Button cmdAddEndpoint;
@@ -41,17 +59,17 @@ public class ConfigureEndpointsDialog extends TitleAreaDialog {
 
     private Text txtEndpointValue;
     private Combo cmbEndpointType;
-    
+
     private boolean isOk = false;
 
     /**
      * Table editors
-     * */
+     */
     private TableEditor endpointTypeEditor;
     private TableEditor endpointValueEditor;
-    
+
     private List<EndpointTableEntry> endpointsList = new ArrayList<EndpointTableEntry>();
-    
+
     public ConfigureEndpointsDialog(Shell parentShell, List<EndpointTableEntry> list) {
         super(parentShell);
         if (list != null) {
@@ -63,6 +81,7 @@ public class ConfigureEndpointsDialog extends TitleAreaDialog {
 
     /**
      * Create contents of the *dialog.
+     * 
      * @param parent
      */
     @Override
@@ -72,7 +91,7 @@ public class ConfigureEndpointsDialog extends TitleAreaDialog {
         Composite area = (Composite) super.createDialogArea(parent);
         Composite container = new Composite(area, SWT.NONE);
         container.setLayoutData(new GridData(GridData.FILL_BOTH));
-        
+
         tblEndpoints = new Table(container, SWT.BORDER | SWT.FULL_SELECTION);
         tblEndpoints.setBounds(10, 10, 610, 222);
         tblEndpoints.setHeaderVisible(true);
@@ -87,101 +106,96 @@ public class ConfigureEndpointsDialog extends TitleAreaDialog {
                         cmdRemoveEndpoint.setEnabled(true);
                         cmdEditEndpoint.setEnabled(true);
                     }
-                } else{
+                } else {
                     cmdRemoveEndpoint.setEnabled(false);
                     cmdEditEndpoint.setEnabled(false);
                 }
             }
         });
-        
+
         TableColumn tblclmnName = new TableColumn(tblEndpoints, SWT.NONE);
         tblclmnName.setWidth(200);
         tblclmnName.setText("Endpoint Type");
-        
+
         TableColumn tblclmnType = new TableColumn(tblEndpoints, SWT.NONE);
         tblclmnType.setWidth(250);
         tblclmnType.setText("Endpoint Value");
-        
+
         if (endpointsList != null && endpointsList.size() > 0) {
-            for ( int i = 0; i < endpointsList.size(); i++) {
+            for (int i = 0; i < endpointsList.size(); i++) {
                 EndpointTableEntry endpointTableEntry = endpointsList.get(i);
                 bindEndpoint(endpointTableEntry);
             }
         }
-        
+
         cmdAddEndpoint = new Button(container, SWT.NONE);
         cmdAddEndpoint.setBounds(627, 10, 86, 29);
         cmdAddEndpoint.setText("Add");
         cmdAddEndpoint.addSelectionListener(new SelectionListener() {
-            
+
             public void widgetSelected(SelectionEvent event) {
-                
+
                 Shell shell = Display.getDefault().getActiveShell();
                 ConfigureEndpointsWizard wizard = new ConfigureEndpointsWizard(shell);
-//                ExportAndGenerateDockerImageWizard wizard = new ExportAndGenerateDockerImageWizard();
                 wizard.init(PlatformUI.getWorkbench(), null);
                 WizardDialog exportWizardDialog = new WizardDialog(shell, wizard);
-//                        PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), wizard);
                 exportWizardDialog.open();
-//                addEndpointsDialog.setBlockOnOpen(true);
-//                addEndpointsDialog.open();
-//                endpointsList = addEndpointsDialog.getEndpointPropertyList();
+
                 if (wizard.isFinish()) {
                     EndpointTableEntry endpointTableEntry = wizard.getEndpointTableEntry();
                     TableItem item = bindEndpoint(endpointTableEntry);
                     endpointsList.add(endpointTableEntry);
                     tblEndpoints.select(tblEndpoints.indexOf(item));
                 }
-//                EndPoint property = EsbFactory.eINSTANCE.createAddressEndPoint();
-//                property.setName("property_name");
-//                property.setValueType(PropertyValueType.LITERAL);
-//                property.setValue("property_value");        
-//                property.setScope(EndPointPropertyScope.SYNAPSE);
             }
-            
-            public void widgetDefaultSelected(SelectionEvent event) {}
+
+            public void widgetDefaultSelected(SelectionEvent event) {
+
+            }
         });
-        
+
         cmdEditEndpoint = new Button(container, SWT.NONE);
         cmdEditEndpoint.setBounds(626, 45, 86, 29);
         cmdEditEndpoint.setText("Edit");
         cmdEditEndpoint.setEnabled(false);
         cmdEditEndpoint.addSelectionListener(new SelectionListener() {
-            
+
             public void widgetSelected(SelectionEvent event) {
-                
+
                 Shell shell = Display.getDefault().getActiveShell();
                 ConfigureEndpointsWizard wizard = new ConfigureEndpointsWizard(shell);
                 wizard.setIsEdit();
-                
+
                 int index = tblEndpoints.getSelectionIndex();
                 if (index != -1) {
                     TableItem item = tblEndpoints.getItem(index);
                     EndpointTableEntry tableEntry = (EndpointTableEntry) item.getData();
                     wizard.setEndpointTableEntry(tableEntry);
-                    
+
                     wizard.init(PlatformUI.getWorkbench(), null);
                     WizardDialog exportWizardDialog = new WizardDialog(shell, wizard);
 
                     exportWizardDialog.open();
-                    
+
                     if (wizard.isFinish()) {
                         editEndpoint(wizard.getEndpointTableEntry(), index);
                         tblEndpoints.select(index);
                     }
                 }
             }
-            
-            public void widgetDefaultSelected(SelectionEvent event) {}
+
+            public void widgetDefaultSelected(SelectionEvent event) {
+            }
         });
-        
+
         cmdRemoveEndpoint = new Button(container, SWT.NONE);
         cmdRemoveEndpoint.setBounds(625, 80, 86, 29);
         cmdRemoveEndpoint.setText("Remove");
         cmdRemoveEndpoint.setEnabled(false);
         cmdRemoveEndpoint.addSelectionListener(new SelectionListener() {
-            
+
             public void widgetSelected(SelectionEvent arg0) {
+
                 if (tblEndpoints.getSelectionIndex() != -1) {
                     unbindProperty(tblEndpoints.getSelectionIndex());
                 }
@@ -189,18 +203,12 @@ public class ConfigureEndpointsDialog extends TitleAreaDialog {
                 initTableEditor(endpointTypeEditor, tblEndpoints);
                 cmdRemoveEndpoint.setEnabled(false);
             }
-            
-            public void widgetDefaultSelected(SelectionEvent arg0) {}
-        });
-        
-        
-        // When updating an existing property
-        if (endpointsList.size() > 0) {
-            for (EndpointTableEntry property : endpointsList) {
-//                bindEndpoint(property);
+
+            public void widgetDefaultSelected(SelectionEvent arg0) {
+
             }
-        } 
-        
+        });
+
         return area;
     }
 
@@ -214,7 +222,7 @@ public class ConfigureEndpointsDialog extends TitleAreaDialog {
         item.setText(1, endpointTableEntry.getEndpointValue());
         item.setData(endpointTableEntry);
     }
-    
+
     /**
      * @param endpoint
      */
@@ -229,7 +237,7 @@ public class ConfigureEndpointsDialog extends TitleAreaDialog {
         item.setData(endpoint);
         return item;
     }
-    
+
     /**
      * @param property
      */
@@ -238,13 +246,14 @@ public class ConfigureEndpointsDialog extends TitleAreaDialog {
         EndpointTableEntry tableEntry = (EndpointTableEntry) item.getData();
         removeTaskProperty(tableEntry);
         tblEndpoints.remove(tblEndpoints.indexOf(item));
-    
+
     }
 
     private void removeTaskProperty(EndpointTableEntry param) {
         if (param != null) {
             for (EndpointTableEntry propertyItem : endpointsList) {
-                if (!(propertyItem.isInline() ^ param.isInline()) && propertyItem.getEndpointValue().equals(param.getEndpointValue())) {
+                if (!(propertyItem.isInline() ^ param.isInline())
+                        && propertyItem.getEndpointValue().equals(param.getEndpointValue())) {
                     endpointsList.remove(propertyItem);
                     break;
                 }
@@ -252,17 +261,15 @@ public class ConfigureEndpointsDialog extends TitleAreaDialog {
         }
     }
 
-
     /**
      * Create contents of the button bar.
+     * 
      * @param parent
      */
     @Override
     protected void createButtonsForButtonBar(Composite parent) {
-        createButton(parent, IDialogConstants.OK_ID, IDialogConstants.OK_LABEL,
-                true);
-        createButton(parent, IDialogConstants.CANCEL_ID,
-                IDialogConstants.CANCEL_LABEL, false);
+        createButton(parent, IDialogConstants.OK_ID, IDialogConstants.OK_LABEL, true);
+        createButton(parent, IDialogConstants.CANCEL_ID, IDialogConstants.CANCEL_LABEL, false);
     }
 
     /**
@@ -272,7 +279,7 @@ public class ConfigureEndpointsDialog extends TitleAreaDialog {
     protected Point getInitialSize() {
         return new Point(731, 400);
     }
-    
+
     /**
      * {@inheritDoc}
      */
@@ -281,23 +288,9 @@ public class ConfigureEndpointsDialog extends TitleAreaDialog {
 
         newShell.setText("Properties");
     }
-    
-    
+
     private void editProperty(final TableItem item) {
-        
-//        propertyValueEditor = initTableEditor(propertyValueEditor, item.getParent());
-//        txtPropertyRM = new Text(item.getParent(), SWT.NONE);
-//        txtPropertyRM.setText(item.getText(1));
-//        propertyValueEditor.setEditor(txtPropertyRM, item, 1);
-//        item.getParent().redraw();
-//        item.getParent().layout();
-//        txtPropertyRM.addModifyListener(new ModifyListener() {
-//
-//            public void modifyText(ModifyEvent e) {
-//                item.setText(1, txtPropertyRM.getText());
-//            }
-//        });     
-        
+
         endpointTypeEditor = initTableEditor(endpointTypeEditor, item.getParent());
         cmbEndpointType = new Combo(item.getParent(), SWT.READ_ONLY);
         cmbEndpointType.setItems(new String[] { "INLINE", "STATIC" });
@@ -305,18 +298,20 @@ public class ConfigureEndpointsDialog extends TitleAreaDialog {
         endpointTypeEditor.setEditor(cmbEndpointType, item, 0);
         item.getParent().redraw();
         item.getParent().layout();
+
         cmbEndpointType.addListener(SWT.Selection, new Listener() {
             public void handleEvent(Event evt) {
                 item.setText(0, cmbEndpointType.getText());
             }
-        });   
-        
+        });
+
         endpointValueEditor = initTableEditor(endpointValueEditor, item.getParent());
         txtEndpointValue = new Text(item.getParent(), SWT.NONE);
         txtEndpointValue.setText(item.getText(1));
         endpointValueEditor.setEditor(txtEndpointValue, item, 1);
         item.getParent().redraw();
         item.getParent().layout();
+
         txtEndpointValue.addModifyListener(new ModifyListener() {
 
             public void modifyText(ModifyEvent e) {
@@ -324,10 +319,9 @@ public class ConfigureEndpointsDialog extends TitleAreaDialog {
             }
         });
     }
-    
 
     private TableEditor initTableEditor(TableEditor editor, Table table) {
-        if (null != editor) {
+        if (editor != null) {
             Control lastCtrl = editor.getEditor();
             if (null != lastCtrl) {
                 lastCtrl.dispose();
@@ -338,44 +332,14 @@ public class ConfigureEndpointsDialog extends TitleAreaDialog {
         editor.grabHorizontal = true;
         return editor;
     }
-    
+
     @Override
     protected void okPressed() {
-        // parameters.
-                for (TableItem item : tblEndpoints.getItems()) {
-
-                    EndpointTableEntry parameter = null;
-
-                    if (item.getData() == null) {
-//                        parameter = EsbFactory.eINSTANCE.createEndPointProperty();
-//                        parameter.setName(item.getText(0));
-//                        parameter.setValue(item.getText(1));
-//                        parameter.setScope(EndPointPropertyScope.get(item.getText(2)));                     
-
-//                    } else {
-//                        parameter = (EndPointProperty) item.getData();
-//                        parameter.setName(item.getText(0));
-//                        parameter.setValue(item.getText(1));
-//                        parameter.setScope(EndPointPropertyScope.get(item.getText(2)));
-
-                    }
-
-                    for (EndpointTableEntry propertyItem : endpointsList) {
-                        // When updating the existing properties, remove the old
-                        // property
-//                        if (propertyItem.getName().equals(parameter.getName())) {
-//                            endpointsList.remove(propertyItem);
-//                            break;
-//                        }
-                    }
-                   // endpointsList.add(parameter);
-                }
-                setEndpointPropertyList(endpointsList);
+        setEndpointPropertyList(endpointsList);
         this.isOk = true;
         super.okPressed();
     }
 
-    
     public void setEndpointPropertyList(List<EndpointTableEntry> endpointPropertyList) {
         this.endpointsList = endpointPropertyList;
 
@@ -384,9 +348,9 @@ public class ConfigureEndpointsDialog extends TitleAreaDialog {
     public List<EndpointTableEntry> getEndpointsList() {
         return endpointsList;
     }
-    
+
     public boolean isOk() {
         return this.isOk;
     }
-    
+
 }

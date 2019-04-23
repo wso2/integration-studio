@@ -236,12 +236,12 @@ public class FileDecorator extends LabelProvider implements ILightweightLabelDec
         if (deserializer == null) {
             deserializer = Deserializer.getInstance();
         }
-//        DeserializeStatus deserializeStatus = deserializer.isValidSynapseConfig(source, true, false);
+        DeserializeStatus deserializeStatus = deserializer.isValidSynapseConfig(source, true, false);
 
-//        if (deserializeStatus.isValid()) {
+        if (deserializeStatus.isValid()) {
             return true;
-//        }
-//        return false;
+        }
+        return false;
     }
 
     private boolean isValid(String source, IFile iFile) {

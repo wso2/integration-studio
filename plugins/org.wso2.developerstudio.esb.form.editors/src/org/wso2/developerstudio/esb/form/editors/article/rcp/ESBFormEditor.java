@@ -70,7 +70,7 @@ public class ESBFormEditor extends FormEditor {
 	protected void addPages() {
 		try {
 			if (currFormPage == null) {
-				assignCurrPage();//get page
+				assignCurrPage();
 			}
 			addPage(currFormPage);
 		} catch (PartInitException e) {
@@ -153,7 +153,7 @@ public class ESBFormEditor extends FormEditor {
 
 	@Override
 	protected void createPages() {
-		super.createPages();//
+		super.createPages();
 		if (getPageCount() == 1 && getContainer() instanceof CTabFolder) {
 			((CTabFolder) getContainer()).setTabHeight(0);
 		}

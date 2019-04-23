@@ -1,3 +1,21 @@
+/*
+ * Copyright (c) 2019 WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ *
+ * WSO2 Inc. licenses this file to you under the Apache License,
+ * Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+
 package org.wso2.developerstudio.esb.form.editors.article.providers;
 
 import java.util.ArrayList;
@@ -50,6 +68,7 @@ public class ConfigureMembersDialog extends TitleAreaDialog {
 
     public ConfigureMembersDialog(Shell parentShell, List<Member> list) {
         super(parentShell);
+
         if (list != null) {
             memberPropertyList = list;
         } else {
@@ -109,12 +128,11 @@ public class ConfigureMembersDialog extends TitleAreaDialog {
 
             public void widgetSelected(SelectionEvent event) {
 
-                Member property = EsbFactory.eINSTANCE.createMember();
-                property.setHostName("localhost");
-                // property.setValueType(PropertyValueType.LITERAL);
-                property.setHttpPort("8080");
-                property.setHttpsPort("8043");
-                TableItem item = bindMember(property);
+                Member member = EsbFactory.eINSTANCE.createMember();
+                member.setHostName("localhost");
+                member.setHttpPort("8080");
+                member.setHttpsPort("8043");
+                TableItem item = bindMember(member);
                 tblMembers.select(tblMembers.indexOf(item));
 
             }
@@ -269,7 +287,7 @@ public class ConfigureMembersDialog extends TitleAreaDialog {
 
     @Override
     protected void okPressed() {
-        
+
         for (TableItem item : tblMembers.getItems()) {
 
             Member parameter = null;
@@ -289,8 +307,7 @@ public class ConfigureMembersDialog extends TitleAreaDialog {
             }
 
             for (Member propertyItem : memberPropertyList) {
-                // When updating the existing properties, remove the old
-                // property
+                // When updating the existing members, remove the old member
                 if (propertyItem.getHostName().equals(parameter.getHostName())) {
                     memberPropertyList.remove(propertyItem);
                     break;

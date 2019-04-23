@@ -66,7 +66,7 @@ public class ConfigureEndpointsWizard extends Wizard implements IExportWizard {
             OMElement element = null;
             try {
                 element = AXIOMUtil.stringToOM(endpointConfig);
-                removeIndentations(element);
+                ComplexEndpointWizardUtils.removeIndentations(element);
                 // TODO Add validation for inline endpoint
 
             } catch (XMLStreamException e) {
@@ -108,39 +108,4 @@ public class ConfigureEndpointsWizard extends Wizard implements IExportWizard {
         this.isEdit = true;
     }
 
-    /**
-     * Helper function to remove indentations.
-     * 
-     * @param element
-     */
-    public static void removeIndentations(OMElement element) {
-        List<OMText> removables = new ArrayList<OMText>();
-        removeIndentations(element, removables);
-        for (OMText node : removables) {
-            node.detach();
-        }
-    }
-
-    /**
-     * Helper function to remove indentations.
-     * 
-     * @param element
-     * @param removables
-     */
-    private static void removeIndentations(OMElement element, List<OMText> removables) {
-
-        Iterator children = element.getChildren();
-        while (children.hasNext()) {
-            Object next = children.next();
-            if (next instanceof OMText) {
-                OMText text = (OMText) next;
-                if (text.getText().trim().equals("")) {
-                    removables.add(text);
-                }
-            } else if (next instanceof OMElement) {
-                removeIndentations((OMElement) next, removables);
-            }
-        }
-
-    }
 }

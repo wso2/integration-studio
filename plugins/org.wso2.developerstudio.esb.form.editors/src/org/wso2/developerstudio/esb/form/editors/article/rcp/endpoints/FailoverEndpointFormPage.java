@@ -20,6 +20,7 @@ package org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints;
 
 import java.util.List;
 
+import org.apache.synapse.endpoints.Endpoint;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
@@ -34,76 +35,84 @@ import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
-import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.IManagedForm;
 import org.eclipse.ui.forms.editor.FormEditor;
 import org.eclipse.ui.forms.widgets.Section;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPointProperty;
+import org.wso2.developerstudio.esb.forgm.editors.article.FormArticlePlugin;
+import org.wso2.developerstudio.esb.form.editors.article.providers.ComplexEndpointWizardUtils;
 import org.wso2.developerstudio.esb.form.editors.article.providers.ConfigureEndPointPropertiesDialog;
+import org.wso2.developerstudio.esb.form.editors.article.providers.ConfigureEndpointsDialog;
+import org.wso2.developerstudio.esb.form.editors.article.providers.EndpointTableEntry;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.Messages;
 
 public class FailoverEndpointFormPage extends EndpointFormPage {
-    protected Text loadBalanceEP_URI;
+    
+    protected Combo endpointBuildMessage;
 
-    protected Button loadbalanceEP_Properties;
+    protected Button failoverEP_Properties;
+    protected Button failoverEP_Endpoints;
+    protected Button failoverEP_Members;
 
-    public List<EndPointProperty> endpointPropertyList;
-    Section basicSection;
-    Section miscSection;
+    private List<EndPointProperty> endpointPropertyList;
+    private List<EndpointTableEntry> endpointsList;
+    private List<Endpoint> synapseEndpointList;
+
+    private Section basicSection;
+    private Section miscSection;
 
     public FailoverEndpointFormPage(FormEditor editor) {
         super(editor);
     }
 
-    public Text getAddressEP_URI() {
-        return loadBalanceEP_URI;
-    }
-
-    public void setAddressEP_URI(Text addressEP_URI) {
-        this.loadBalanceEP_URI = addressEP_URI;
-    }
-
-    public Button getAddressEP_Properties() {
-        return loadbalanceEP_Properties;
-    }
-
-    public void setAddressEP_Properties(Button addressEP_Properties) {
-        this.loadbalanceEP_Properties = addressEP_Properties;
-    }
-
     protected void createFormContent(IManagedForm managedForm) {
+        form = managedForm.getForm();
+        toolkit = managedForm.getToolkit();
+        form.setText(Messages.getString("EndpointPage.sectionMainTitle"));
+        form.setBackgroundImage(FormArticlePlugin.getDefault().getImage(FormArticlePlugin.IMG_FORM_BG));
 
-        super.createFormContent(managedForm);
+        GridLayout layout = new GridLayout();
+        layout.marginLeft = 20;
+        layout.marginRight = 20;
+        layout.marginTop = 10;
+        layout.numColumns = 1;
+        layout.makeColumnsEqualWidth = true;
+
+        form.getBody().setLayout(layout);
+        GridData formGridData = new GridData();
+        formGridData.horizontalSpan = 6;
+        formGridData.grabExcessHorizontalSpace = true;
+        form.setLayoutData(formGridData);
+
+        createFailoverFormBasicSection();
+        createFailoverFormMiscSection();
+
         form.setText(Messages.getString("FailoverEndpointPage.sectionMainTitle"));
     }
 
-    public void createFormMiscSection() {
+    public void createFailoverFormBasicSection() {
+        basicSection = endpointCommons.createSection(form, toolkit, Messages.getString("EndpointPage.section.basic"));
 
-        /* Misc Section */
-        miscSection = endpointCommons.createSection(form, toolkit, Messages.getString("EndpointPage.section.misc"));
+        GridData samplegridData = new GridData();
+        samplegridData.horizontalSpan = 3;
+        samplegridData.horizontalAlignment = SWT.FILL;
+        samplegridData.grabExcessHorizontalSpace = true;
+        basicSection.setLayoutData(samplegridData);
 
-        GridData miscSectionGridData = new GridData();
-        miscSectionGridData.horizontalSpan = 3;
-        miscSectionGridData.horizontalAlignment = GridData.FILL;
-        miscSectionGridData.grabExcessHorizontalSpace = true;
-        miscSection.setLayoutData(miscSectionGridData);
-        // miscSection.setLayoutData(new TableWrapData(TableWrapData.FILL));
+        Composite basicSectionClient = toolkit.createComposite(basicSection);
+        basicSectionClient.setLayout(new GridLayout());
+        basicSection.setClient(basicSectionClient);
 
-        Composite miscSectionClient = toolkit.createComposite(miscSection);
-        miscSectionClient.setLayout(new GridLayout());
-        miscSection.setClient(miscSectionClient);
+        toolkit.createLabel(basicSectionClient, "Name :");
+        endpointName = toolkit.createText(basicSectionClient, "");
+        endpointName.setBackground(new Color(null, 229, 236, 253));
+        GridData endpointNameGridData = new GridData();
+        endpointNameGridData.horizontalSpan = 3;
+        endpointNameGridData.horizontalAlignment = GridData.FILL;
+        endpointNameGridData.grabExcessHorizontalSpace = true;
+        endpointName.setLayoutData(endpointNameGridData);
 
-        toolkit.createLabel(miscSectionClient, "URI :");
-        loadBalanceEP_URI = toolkit.createText(miscSectionClient, "");
-        loadBalanceEP_URI.setBackground(new Color(null, 229, 236, 253));
-        // addressEP_URI.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
-        GridData addressEPUriGridData = new GridData();
-        addressEPUriGridData.horizontalSpan = 3;
-        addressEPUriGridData.horizontalAlignment = GridData.FILL;
-        addressEPUriGridData.grabExcessHorizontalSpace = true;
-        loadBalanceEP_URI.setLayoutData(addressEPUriGridData);
-
-        loadBalanceEP_URI.addModifyListener(new ModifyListener() {
+        endpointName.addModifyListener(new ModifyListener() {
             @Override
             public void modifyText(ModifyEvent e) {
                 setSave(true);
@@ -111,28 +120,70 @@ public class FailoverEndpointFormPage extends EndpointFormPage {
             }
         });
 
-        toolkit.createLabel(miscSectionClient, "Optimize :");
-        eP_Optimize = new Combo(miscSectionClient, SWT.DROP_DOWN);
-        // addressEP_Optimize.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
-        String[] formats = { "LEAVE_AS_IS", "MTOM", "SWA" };
-        eP_Optimize.setItems(formats);
-        GridData addressEPOptimizeGridData = new GridData();
-        addressEPOptimizeGridData.horizontalSpan = 3;
-        addressEPOptimizeGridData.horizontalAlignment = GridData.FILL;
-        addressEPOptimizeGridData.grabExcessHorizontalSpace = true;
-        eP_Optimize.setLayoutData(addressEPOptimizeGridData);
+        toolkit.createLabel(basicSectionClient, "Build Message :");
+        endpointBuildMessage = new Combo(basicSectionClient, SWT.DROP_DOWN);
+        String[] buildMessageStates = { "True", "False" };
+        endpointBuildMessage.setItems(buildMessageStates);
+        GridData endpointBuildMessageGridData = new GridData();
+        endpointBuildMessageGridData.horizontalSpan = 3;
+        endpointBuildMessageGridData.horizontalAlignment = GridData.FILL;
+        endpointBuildMessageGridData.grabExcessHorizontalSpace = true;
+        endpointBuildMessage.setLayoutData(endpointBuildMessageGridData);
 
-        eP_Optimize.addSelectionListener(new SelectionAdapter() {
+        endpointBuildMessage.addSelectionListener(new SelectionAdapter() {
+            @Override
             public void widgetSelected(SelectionEvent e) {
+                if (Boolean.parseBoolean(endpointBuildMessage.getText())) {
+                    endpointBuildMessage.select(0);
+                }
                 setSave(true);
                 updateDirtyState();
             }
         });
 
+        toolkit.createLabel(basicSectionClient, "Endpoints :");
+
+        failoverEP_Endpoints = toolkit.createButton(basicSectionClient, "Add Endpoints", SWT.PUSH);
+        failoverEP_Endpoints.setBackground(new Color(null, 229, 236, 253));
+        failoverEP_Endpoints.addSelectionListener(new SelectionListener() {
+
+            @Override
+            public void widgetSelected(SelectionEvent e) {
+                Shell shell = Display.getDefault().getActiveShell();
+                ConfigureEndpointsDialog endpointsDialog = new ConfigureEndpointsDialog(shell, endpointsList);
+                endpointsDialog.setBlockOnOpen(true);
+                endpointsDialog.open();
+                if (endpointsDialog.isOk()) {
+                    endpointsList = endpointsDialog.getEndpointsList();
+                    setSave(true);
+                    updateDirtyState();
+                }
+            }
+
+            @Override
+            public void widgetDefaultSelected(SelectionEvent e) {
+                // TODO Auto-generated method stub
+            }
+        });
+    }
+
+    public void createFailoverFormMiscSection() {
+
+        miscSection = endpointCommons.createSection(form, toolkit, Messages.getString("EndpointPage.section.misc"));
+
+        GridData miscSectionGridData = new GridData();
+        miscSectionGridData.horizontalSpan = 3;
+        miscSectionGridData.horizontalAlignment = GridData.FILL;
+        miscSectionGridData.grabExcessHorizontalSpace = true;
+        miscSection.setLayoutData(miscSectionGridData);
+
+        Composite miscSectionClient = toolkit.createComposite(miscSection);
+        miscSectionClient.setLayout(new GridLayout());
+        miscSection.setClient(miscSectionClient);
+
         toolkit.createLabel(miscSectionClient, "Description :");
         eP_Description = toolkit.createText(miscSectionClient, "");
         eP_Description.setBackground(new Color(null, 229, 236, 253));
-        // addressEP_Description.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
         GridData addressEPDescriptionGridData = new GridData();
         addressEPDescriptionGridData.horizontalSpan = 3;
         addressEPDescriptionGridData.horizontalAlignment = GridData.FILL;
@@ -148,20 +199,10 @@ public class FailoverEndpointFormPage extends EndpointFormPage {
         });
 
         toolkit.createLabel(miscSectionClient, "Properties :");
-        /*
-         * eP_Properties = toolkit.createText(miscSectionClient, "");
-         * eP_Properties.setBackground(new Color(null, 229,236,253));
-         * //eP_Properties.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
-         * GridData epPropertiesGridData = new GridData();
-         * epPropertiesGridData.horizontalSpan = 3;
-         * epPropertiesGridData.horizontalAlignment = GridData.FILL;
-         * epPropertiesGridData.grabExcessHorizontalSpace = true;
-         * eP_Properties.setLayoutData(epPropertiesGridData);
-         */
 
-        loadbalanceEP_Properties = toolkit.createButton(miscSectionClient, "Add Properties", SWT.PUSH);
-        loadbalanceEP_Properties.setBackground(new Color(null, 229, 236, 253));
-        loadbalanceEP_Properties.addSelectionListener(new SelectionListener() {
+        failoverEP_Properties = toolkit.createButton(miscSectionClient, "Add Properties", SWT.PUSH);
+        failoverEP_Properties.setBackground(new Color(null, 229, 236, 253));
+        failoverEP_Properties.addSelectionListener(new SelectionListener() {
 
             @Override
             public void widgetSelected(SelectionEvent e) {
@@ -172,8 +213,10 @@ public class FailoverEndpointFormPage extends EndpointFormPage {
                 paramDialog.open();
                 endpointPropertyList = paramDialog.getEndpointPropertyList();
 
-                setSave(true);
-                updateDirtyState();
+                if (paramDialog.isOk()) {
+                    setSave(true);
+                    updateDirtyState();
+                }
             }
 
             @Override
@@ -185,12 +228,40 @@ public class FailoverEndpointFormPage extends EndpointFormPage {
 
     }
 
-    public void createFormQosSection() {
-        endpointCommons.createFormQosSection(form, toolkit);
+    public Combo getEndpointBuildMessage() {
+        return endpointBuildMessage;
     }
 
-    public void createFormErrorHandlingSection() {
-        endpointCommons.createFormErrorHandlingSection(form, toolkit);
+    public void setEndpointBuildMessage(Combo endpointBuildMessage) {
+        this.endpointBuildMessage = endpointBuildMessage;
     }
 
+    public List<EndpointTableEntry> getEndpointList() {
+        return this.endpointsList;
+    }
+
+    public void setEndpointList(List<EndpointTableEntry> list) {
+        this.endpointsList = list;
+    }
+
+    public List<EndPointProperty> getEndPointPropertyList() {
+        return this.endpointPropertyList;
+    }
+
+    public void setEndPointPropertyList(List<EndPointProperty> propList) {
+        this.endpointPropertyList = propList;
+    }
+
+    public Button getFailoverEP_Properties() {
+        return failoverEP_Properties;
+    }
+
+    public void setFailoverEP_Properties(Button addressEP_Properties) {
+        this.failoverEP_Properties = addressEP_Properties;
+    }
+
+    public List<Endpoint> getSynapseEndpointList() {
+        this.synapseEndpointList = ComplexEndpointWizardUtils.getEndpointList(this.endpointsList);
+        return this.synapseEndpointList;
+    }
 }

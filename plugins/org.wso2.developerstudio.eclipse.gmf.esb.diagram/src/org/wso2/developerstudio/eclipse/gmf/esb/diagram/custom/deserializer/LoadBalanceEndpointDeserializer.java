@@ -25,25 +25,10 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.LOAD_
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
-import org.apache.axiom.om.OMElement;
 import org.apache.commons.lang.StringUtils;
-import org.apache.synapse.config.xml.endpoints.AddressEndpointSerializer;
-import org.apache.synapse.config.xml.endpoints.DefaultEndpointSerializer;
-import org.apache.synapse.config.xml.endpoints.FailoverEndpointSerializer;
-import org.apache.synapse.config.xml.endpoints.HTTPEndpointSerializer;
-import org.apache.synapse.config.xml.endpoints.LoadbalanceEndpointSerializer;
-import org.apache.synapse.config.xml.endpoints.WSDLEndpointSerializer;
 import org.apache.synapse.endpoints.AbstractEndpoint;
-import org.apache.synapse.endpoints.AddressEndpoint;
-import org.apache.synapse.endpoints.DefaultEndpoint;
-import org.apache.synapse.endpoints.Endpoint;
-import org.apache.synapse.endpoints.FailoverEndpoint;
-import org.apache.synapse.endpoints.HTTPEndpoint;
 import org.apache.synapse.endpoints.LoadbalanceEndpoint;
-import org.apache.synapse.endpoints.RecipientListEndpoint;
-import org.apache.synapse.endpoints.WSDLEndpoint;
 import org.apache.synapse.endpoints.dispatch.Dispatcher;
 import org.apache.synapse.endpoints.dispatch.HttpSessionDispatcher;
 import org.apache.synapse.endpoints.dispatch.SimpleClientSessionDispatcher;
@@ -60,13 +45,10 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EndPointPropertyScope;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.LoadBalanceSessionType;
 import org.wso2.developerstudio.eclipse.gmf.esb.Member;
-import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.utils.ComplexEndpointDeserializerUtils;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EndpointDiagramEndpointCompartment2EditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EndpointDiagramEndpointCompartmentEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
-import org.wso2.developerstudio.esb.form.editors.article.providers.ConfigureEndpointsWizard;
-import org.wso2.developerstudio.esb.form.editors.article.providers.EndpointTableEntry;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.ESBFormEditor;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.EndpointFormPage;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.LoadbalanceEndpointFormPage;
@@ -192,197 +174,24 @@ public class LoadBalanceEndpointDeserializer extends AbstractEndpointDeserialize
 
         if (endpoint.getProperties().size() > 0) {
             List<EndPointProperty> existingProperties = loadEndpointPage.getEndPointPropertyList();
-            loadEndpointPage.setEndPointPropertyList(getProperties(endpoint, existingProperties));
+            loadEndpointPage.setEndPointPropertyList(
+                    ComplexEndpointDeserializerUtils.getProperties(endpoint, existingProperties));
 
         } else {
             loadEndpointPage.setEndPointPropertyList(null);
         }
 
         if (endpoint.getChildren() != null && !endpoint.getChildren().isEmpty()) {
-            List<EndpointTableEntry> endpointTableEntries = new ArrayList<>();
-            List<Endpoint> childern = endpoint.getChildren();
-            for (int i = 0; i < childern.size(); i++) {
-                Endpoint child = childern.get(i);
-                
-                OMElement omElement = null;
-                if (child instanceof AddressEndpoint) {
-                    AddressEndpoint addressEndpoint = (AddressEndpoint) child;
-                    omElement = AddressEndpointSerializer.getElementFromEndpoint(addressEndpoint);
-
-                } else if (child instanceof HTTPEndpoint) {
-                    HTTPEndpoint httpEndpoint = (HTTPEndpoint) child;
-                    omElement = HTTPEndpointSerializer.getElementFromEndpoint(httpEndpoint);
-
-                } else if (child instanceof DefaultEndpoint) {
-                    DefaultEndpoint defaultEndpoint = (DefaultEndpoint) child;
-                    omElement = DefaultEndpointSerializer.getElementFromEndpoint(defaultEndpoint);
-
-                } else if (child instanceof WSDLEndpoint) {
-                    WSDLEndpoint wsdlEndpoint = (WSDLEndpoint) child;
-                    omElement = WSDLEndpointSerializer.getElementFromEndpoint(wsdlEndpoint);
-
-                } else if (child instanceof LoadbalanceEndpoint) {
-                    LoadbalanceEndpoint lbEndpoint = (LoadbalanceEndpoint) child;
-                    omElement = LoadbalanceEndpointSerializer.getElementFromEndpoint(lbEndpoint);
-
-                } else if (child instanceof RecipientListEndpoint) {
-                    RecipientListEndpoint rlEndpoint = (RecipientListEndpoint) child;
-                    omElement = LoadbalanceEndpointSerializer.getElementFromEndpoint(rlEndpoint);
-
-                } else if (child instanceof FailoverEndpoint) {
-                    FailoverEndpoint foEndpoint = (FailoverEndpoint) child;
-                    omElement = FailoverEndpointSerializer.getElementFromEndpoint(foEndpoint);
-
-                }
-                
-                if (omElement != null) {
-                    ConfigureEndpointsWizard.removeIndentations(omElement);
-                    EndpointTableEntry tempEntry = new EndpointTableEntry(true, omElement.toString());
-                    endpointTableEntries.add(tempEntry);
-                }
-            }
-            loadEndpointPage.setEndpointList(endpointTableEntries);
+            loadEndpointPage.setEndpointList(ComplexEndpointDeserializerUtils.getTableEntries(endpoint));
         }
 
         if (endpoint.getMembers() != null && endpoint.getMembers().size() > 0) {
             List<Member> existingMembers = loadEndpointPage.getMemberList();
-            loadEndpointPage.setMemberList(getMembers(endpoint, existingMembers));
+            loadEndpointPage.setMemberList(ComplexEndpointDeserializerUtils.getMembers(endpoint, existingMembers));
         } else {
             loadEndpointPage.setMemberList(null);
         }
         super.createNode(formEditor, endpointObject);
     }
 
-    private List<Member> getMembers(LoadbalanceEndpoint endpoint, List<Member> existingMembers) {
-        List<Member> newlyAddedMembers = new ArrayList<Member>();
-        List<Member> removedMembers = new ArrayList<Member>();
-        List<Member> newMembers = new ArrayList<Member>();
-
-        for (Iterator<org.apache.axis2.clustering.Member> i = endpoint.getMembers().iterator(); i.hasNext();) {
-            org.apache.axis2.clustering.Member next = i.next();
-            Member member = EsbFactory.eINSTANCE.createMember();
-            member.setHostName(next.getHostName());
-            member.setHttpPort(Integer.toString(next.getHttpPort()));
-            member.setHttpsPort(Integer.toString(next.getHttpsPort()));
-
-            if (existingMembers != null) {
-                for (Member memberItem : existingMembers) {
-                    if (memberItem.getHostName().equals(next.getHostName())) {
-                        existingMembers.remove(memberItem);
-                        newlyAddedMembers.add(member);
-                        break;
-                    }
-                }
-            }
-
-            if (!newlyAddedMembers.contains(member)) {
-                newlyAddedMembers.add(member);
-            }
-        }
-
-        if (existingMembers != null) {
-            for (Member mem : existingMembers) {
-                String value = mem.getHostName();
-                if (StringUtils.isNotEmpty(value)) {
-                    removedMembers.add(mem);
-                }
-            }
-        }
-
-        if (removedMembers.size() > 0) {
-            existingMembers.removeAll(removedMembers);
-        }
-
-        if (newMembers.size() > 0) {
-            newlyAddedMembers.addAll(newMembers);
-        }
-
-        if (existingMembers != null) {
-            newlyAddedMembers.addAll(existingMembers);
-        }
-        return newlyAddedMembers;
-    }
-
-    /**
-     * Get properties
-     * 
-     * @param endpoint endpoint
-     * @param existingProperties existing properties
-     * @return
-     */
-    @SuppressWarnings("unchecked")
-    public List<EndPointProperty> getProperties(LoadbalanceEndpoint endpoint,
-            List<EndPointProperty> existingProperties) {
-
-        List<EndPointProperty> newlyAddedProperties = new ArrayList<EndPointProperty>();
-        List<EndPointProperty> removedProperties = new ArrayList<EndPointProperty>();
-        List<EndPointProperty> newProperties = new ArrayList<EndPointProperty>();
-
-        for (Iterator<MediatorProperty> i = endpoint.getProperties().iterator(); i.hasNext();) {
-            MediatorProperty next = i.next();
-            EndPointProperty property = EsbFactory.eINSTANCE.createEndPointProperty();
-            property.setName(next.getName());
-
-            if (next.getExpression() != null) {
-                property.setValueType(PropertyValueType.EXPRESSION);
-                NamespacedProperty valueXPath = EsbFactory.eINSTANCE.createNamespacedProperty();
-                valueXPath.setPropertyValue(next.getExpression().toString());
-                Map<String, String> namespaces = (Map<String, String>) next.getExpression().getNamespaces();
-                valueXPath.setNamespaces(namespaces);
-                property.setValueExpression(valueXPath);
-            } else if (next.getValue() != null) {
-                property.setValueType(PropertyValueType.LITERAL);
-                property.setValue(next.getValue());
-            }
-
-            if (next.getScope() != null) {
-                property.setScope(EndPointPropertyScope.get(next.getScope().toLowerCase()));
-            } else {
-                property.setScope(EndPointPropertyScope.SYNAPSE);
-            }
-
-            if (existingProperties != null) {
-                for (EndPointProperty propertyItem : existingProperties) {
-                    // When updating the existing properties from source view, then remove the property
-                    // from old list and add to new list
-                    if (propertyItem.getName().equals(next.getName())) {
-                        existingProperties.remove(propertyItem);
-                        newlyAddedProperties.add(property);
-                        break;
-                    }
-                }
-            }
-            // When adding a new property from source then add it to the new list
-            if (!newlyAddedProperties.contains(property)) {
-                newlyAddedProperties.add(property);
-            }
-        }
-        // If old properties contain any property values, then remove the value and add the property to the
-        // new
-        // list, DEVTOOLESB-505
-        if (existingProperties != null) {
-            for (EndPointProperty prop : existingProperties) {
-                String value = prop.getName();
-                if (StringUtils.isNotEmpty(value)) {
-                    // Add the property to removed list
-                    removedProperties.add(prop);
-                }
-            }
-        }
-        // First remove the removed properties from existing properties
-        if (removedProperties.size() > 0) {
-            existingProperties.removeAll(removedProperties);
-        }
-        // Adds the new properties
-        if (newProperties.size() > 0) {
-            newlyAddedProperties.addAll(newProperties);
-        }
-        // Adds the existing old properties (which didn't get updated)
-        // to the new list
-        if (existingProperties != null) {
-            newlyAddedProperties.addAll(existingProperties);
-        }
-        return newlyAddedProperties;
-
-    }
 }

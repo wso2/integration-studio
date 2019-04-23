@@ -28,7 +28,7 @@ import org.apache.synapse.config.xml.endpoints.WSDLEndpointFactory;
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.endpoints.EndpointDefinition;
 import org.apache.synapse.endpoints.FailoverEndpoint;
-import org.apache.synapse.endpoints.LoadbalanceEndpoint;
+import org.apache.synapse.mediators.MediatorProperty;
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
@@ -42,6 +42,7 @@ import org.eclipse.ui.PlatformUI;
 import org.jaxen.JaxenException;
 import org.wso2.developerstudio.eclipse.esb.core.interfaces.IEsbEditorInput;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPoint;
+import org.wso2.developerstudio.eclipse.gmf.esb.EndPointProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndpointDiagram;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.FailoverEndPoint;
@@ -205,22 +206,45 @@ public class FailoverEndPointTransformer extends AbstractEndpointTransformer {
     }
     
     public SynapseArtifact create(FailoverEndpointFormPage formPage) throws NumberFormatException, JaxenException {
-        LoadbalanceEndpoint synapseLoadbalanceEP = new LoadbalanceEndpoint();
+
+        FailoverEndpoint synapseFailoverEP = new FailoverEndpoint();
         if (StringUtils.isNotBlank(formPage.getEndpointName().getText())) {
-            synapseLoadbalanceEP.setName(formPage.getEndpointName().getText());
-        }
-        createAdvanceOptions(formPage, synapseLoadbalanceEP);
-        synapseLoadbalanceEP.getDefinition().setAddress(formPage.getAddressEP_URI().getText());
-
-        if (formPage.endpointPropertyList != null && formPage.endpointPropertyList.size() > 0) {
-            // saveProperties(formPage, synapseLoadbalanceEP);
+            synapseFailoverEP.setName(formPage.getEndpointName().getText());
         }
 
-        if (formPage.isTemplate()) {
-            return createTemplate(formPage, synapseLoadbalanceEP);
+        if (formPage.getEndpointBuildMessage().getText().equals("True")) {
+            synapseFailoverEP.setBuildMessageAtt(true);
         } else {
-            return synapseLoadbalanceEP;
+            synapseFailoverEP.setBuildMessageAtt(false);
         }
+
+        // set endPointsList
+        if (formPage.getSynapseEndpointList().size() > 0) {
+            synapseFailoverEP.setChildren(formPage.getSynapseEndpointList());
+
+        }
+        
+        synapseFailoverEP.setDescription(formPage.getEP_Description().getText());
+
+        List<MediatorProperty> mediatorProperties = new ArrayList<>();
+        List<EndPointProperty> endpointProp = formPage.getEndPointPropertyList();
+        if (endpointProp != null) {
+            for (int i = 0; i < endpointProp.size(); i++) {
+                EndPointProperty uiMediatorProp = endpointProp.get(i);
+                MediatorProperty tempMediatorProperty = new MediatorProperty();
+                tempMediatorProperty.setName(uiMediatorProp.getName());
+                tempMediatorProperty.setScope(uiMediatorProp.getScope().getLiteral());
+                if (uiMediatorProp.getValue() != null && !uiMediatorProp.getValue().isEmpty()) {
+                    tempMediatorProperty.setValue(uiMediatorProp.getValue());
+                } else {
+                    // add expression support
+                }
+                mediatorProperties.add(tempMediatorProperty);
+            }
+        }
+        synapseFailoverEP.addProperties(mediatorProperties);
+
+        return synapseFailoverEP;
     }
     
     private String getSynapseEndpointName(FailoverEndPoint visualEndPoint) {

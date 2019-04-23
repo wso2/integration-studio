@@ -19,6 +19,7 @@
 package org.wso2.developerstudio.esb.form.editors.article.providers;
 
 public class EndpointTableEntry {
+    
     private boolean isInline;
     private String endpointValue;
 

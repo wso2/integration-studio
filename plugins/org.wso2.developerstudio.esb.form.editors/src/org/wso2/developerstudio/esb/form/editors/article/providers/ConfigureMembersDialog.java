@@ -63,6 +63,8 @@ public class ConfigureMembersDialog extends TitleAreaDialog {
     private TableEditor hostNameEditor;
     private TableEditor httpPortEditor;
     private TableEditor httpsPortEditor;
+    
+    private boolean isOk = false;
 
     private List<Member> memberPropertyList = new ArrayList<Member>();
 
@@ -316,7 +318,9 @@ public class ConfigureMembersDialog extends TitleAreaDialog {
             memberPropertyList.add(parameter);
         }
         setEndpointMemberList(memberPropertyList);
-
+        
+        this.isOk = true;
+        
         super.okPressed();
     }
 
@@ -327,5 +331,9 @@ public class ConfigureMembersDialog extends TitleAreaDialog {
 
     public List<Member> getEndpointMemberList() {
         return memberPropertyList;
+    }
+    
+    public boolean isOk() {
+        return this.isOk;
     }
 }

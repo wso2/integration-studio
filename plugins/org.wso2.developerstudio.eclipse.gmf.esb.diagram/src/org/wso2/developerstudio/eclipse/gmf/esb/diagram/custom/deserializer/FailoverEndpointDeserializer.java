@@ -20,27 +20,32 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.END_P
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.FAILOVER_END_POINT__BUILD_MESSAGE;
 
 import java.util.Iterator;
+import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.endpoints.AbstractEndpoint;
-import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.mediators.MediatorProperty;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.ui.forms.editor.FormEditor;
+import org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint;
+import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPointProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPointPropertyScope;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.FailoverEndPoint;
-import org.wso2.developerstudio.eclipse.gmf.esb.ParentEndPoint;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.utils.ComplexEndpointDeserializerUtils;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EndpointDiagramEndpointCompartment2EditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EndpointDiagramEndpointCompartmentEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.ESBFormEditor;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.EndpointFormPage;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.FailoverEndpointFormPage;
 
-public class FailoverEndpointDeserializer extends AbstractComplexEndPointDeserializer {
+public class FailoverEndpointDeserializer extends AbstractEndpointDeserializer {
 
-    public FailoverEndPoint createNode(IGraphicalEditPart part, AbstractEndpoint object) throws DeserializerException {
+    public AbstractEndPoint createNode(IGraphicalEditPart part, AbstractEndpoint object) throws DeserializerException {
         Assert.isTrue(object instanceof org.apache.synapse.endpoints.FailoverEndpoint,
                 "Unsupported endpoint passed in for deserialization at " + this.getClass());
 
@@ -64,13 +69,51 @@ public class FailoverEndpointDeserializer extends AbstractComplexEndPointDeseria
             executeAddValueCommand(endPoint.getProperties(), property, false);
         }
 
-        deserializeComplexEndpoint(failoverEndpoint, part);
+        // deserializeComplexEndpoint(failoverEndpoint, part);
 
         if (StringUtils.isNotBlank(failoverEndpoint.getName())) {
             executeSetValueCommand(END_POINT__END_POINT_NAME, failoverEndpoint.getName());
         }
         executeSetValueCommand(FAILOVER_END_POINT__BUILD_MESSAGE, failoverEndpoint.isBuildMessageAtt());
-        return endPoint;
+        return (AbstractEndPoint) failoverEndpoint;
+    }
+
+    @Override
+    public void createNode(FormEditor formEditor, AbstractEndpoint endpointObject) {
+
+        ESBFormEditor failoverEPFormEditor = (ESBFormEditor) formEditor;
+        EndpointFormPage endpointPage = (EndpointFormPage) failoverEPFormEditor
+                .getFormPageForArtifact(ArtifactType.ENDPOINT);
+
+        FailoverEndPoint endpoint = (FailoverEndPoint) endpointObject;
+
+        FailoverEndpointFormPage failoverEndpointPage = (FailoverEndpointFormPage) endpointPage;
+
+        setTextValue(failoverEndpointPage.getEndpointName(), endpoint.getName());
+
+        if (endpoint.isBuildMessage()) {
+            failoverEndpointPage.getEndpointBuildMessage().select(0);
+        } else {
+            failoverEndpointPage.getEndpointBuildMessage().select(1);
+        }
+
+        setTextValue(failoverEndpointPage.getEP_Description(), endpoint.getDescription());
+
+        if (endpoint.getProperties().size() > 0) {
+            List<EndPointProperty> existingProperties = failoverEndpointPage.getEndPointPropertyList();
+            failoverEndpointPage.setEndPointPropertyList(
+                    ComplexEndpointDeserializerUtils.getProperties((AbstractEndpoint) endpoint, existingProperties));
+
+        } else {
+            failoverEndpointPage.setEndPointPropertyList(null);
+        }
+
+        if (endpoint.getChildren() != null && !endpoint.getChildren().isEmpty()) {
+            failoverEndpointPage
+                    .setEndpointList(ComplexEndpointDeserializerUtils.getTableEntries((AbstractEndpoint) endpoint));
+        }
+
+        super.createNode(formEditor, endpointObject);
     }
 
 }

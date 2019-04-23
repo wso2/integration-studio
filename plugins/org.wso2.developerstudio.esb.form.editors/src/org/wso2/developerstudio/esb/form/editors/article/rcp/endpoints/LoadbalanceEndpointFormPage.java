@@ -18,31 +18,9 @@
 
 package org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints;
 
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
-import javax.xml.namespace.QName;
-import javax.xml.stream.XMLStreamException;
-
-import org.apache.axiom.om.OMElement;
-import org.apache.axiom.om.impl.OMNamespaceImpl;
-import org.apache.axiom.om.util.AXIOMUtil;
-import org.apache.synapse.config.xml.endpoints.AddressEndpointFactory;
-import org.apache.synapse.config.xml.endpoints.DefaultEndpointFactory;
-import org.apache.synapse.config.xml.endpoints.FailoverEndpointFactory;
-import org.apache.synapse.config.xml.endpoints.HTTPEndpointFactory;
-import org.apache.synapse.config.xml.endpoints.LoadbalanceEndpointFactory;
-import org.apache.synapse.config.xml.endpoints.RecipientListEndpointFactory;
-import org.apache.synapse.config.xml.endpoints.WSDLEndpointFactory;
-import org.apache.synapse.endpoints.AddressEndpoint;
-import org.apache.synapse.endpoints.DefaultEndpoint;
 import org.apache.synapse.endpoints.Endpoint;
-import org.apache.synapse.endpoints.FailoverEndpoint;
-import org.apache.synapse.endpoints.HTTPEndpoint;
-import org.apache.synapse.endpoints.LoadbalanceEndpoint;
-import org.apache.synapse.endpoints.RecipientListEndpoint;
-import org.apache.synapse.endpoints.WSDLEndpoint;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
@@ -64,6 +42,7 @@ import org.eclipse.ui.forms.widgets.Section;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPointProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.Member;
 import org.wso2.developerstudio.esb.forgm.editors.article.FormArticlePlugin;
+import org.wso2.developerstudio.esb.form.editors.article.providers.ComplexEndpointWizardUtils;
 import org.wso2.developerstudio.esb.form.editors.article.providers.ConfigureEndPointPropertiesDialog;
 import org.wso2.developerstudio.esb.form.editors.article.providers.ConfigureEndpointsDialog;
 import org.wso2.developerstudio.esb.form.editors.article.providers.ConfigureMembersDialog;
@@ -71,7 +50,6 @@ import org.wso2.developerstudio.esb.form.editors.article.providers.EndpointTable
 import org.wso2.developerstudio.esb.form.editors.article.rcp.Messages;
 
 public class LoadbalanceEndpointFormPage extends EndpointFormPage {
-    private final static String SYNAPSE_NS = "http://ws.apache.org/ns/synapse";
 
     protected Text sessionTimeout;
 
@@ -98,14 +76,6 @@ public class LoadbalanceEndpointFormPage extends EndpointFormPage {
         super(editor);
     }
 
-    public Button getLoadBalanceEP_Properties() {
-        return loadbalanceEP_Properties;
-    }
-
-    public void setLoadBalanceEP_Properties(Button addressEP_Properties) {
-        this.loadbalanceEP_Properties = addressEP_Properties;
-    }
-
     protected void createFormContent(IManagedForm managedForm) {
         form = managedForm.getForm();
         toolkit = managedForm.getToolkit();
@@ -126,9 +96,9 @@ public class LoadbalanceEndpointFormPage extends EndpointFormPage {
         form.setLayoutData(formGridData);
 
         createLoadBalanceFormBasicSection();
-        createFormSessionSection();
-        createFormMemberSection();
-        createFormMiscSection();
+        createLoadbalanceFormSessionSection();
+        createLoadbalanceFormMemberSection();
+        createLoadbalanceFormMiscSection();
 
         form.setText(Messages.getString("LoadbalanceEndpointPage.sectionMainTitle"));
     }
@@ -237,10 +207,10 @@ public class LoadbalanceEndpointFormPage extends EndpointFormPage {
                 endpointsDialog.open();
                 if (endpointsDialog.isOk()) {
                     endpointsList = endpointsDialog.getEndpointsList();
+                    setSave(true);
+                    updateDirtyState();
                 }
 
-                setSave(true);
-                updateDirtyState();
             }
 
             @Override
@@ -250,7 +220,7 @@ public class LoadbalanceEndpointFormPage extends EndpointFormPage {
         });
     }
 
-    public void createFormSessionSection() {
+    public void createLoadbalanceFormSessionSection() {
         sessionSection = endpointCommons.createSection(form, toolkit,
                 Messages.getString("EndpointPage.section.session"));
 
@@ -302,7 +272,7 @@ public class LoadbalanceEndpointFormPage extends EndpointFormPage {
         });
     }
 
-    public void createFormMemberSection() {
+    public void createLoadbalanceFormMemberSection() {
         memberSection = endpointCommons.createSection(form, toolkit, Messages.getString("EndpointPage.section.member"));
 
         GridData samplegridData = new GridData();
@@ -330,8 +300,10 @@ public class LoadbalanceEndpointFormPage extends EndpointFormPage {
                 paramDialog.open();
                 memberList = paramDialog.getEndpointMemberList();
 
-                setSave(true);
-                updateDirtyState();
+                if (paramDialog.isOk()) {
+                    setSave(true);
+                    updateDirtyState();
+                }
             }
 
             @Override
@@ -343,7 +315,7 @@ public class LoadbalanceEndpointFormPage extends EndpointFormPage {
 
     }
 
-    public void createFormMiscSection() {
+    public void createLoadbalanceFormMiscSection() {
 
         miscSection = endpointCommons.createSection(form, toolkit, Messages.getString("EndpointPage.section.misc"));
 
@@ -389,8 +361,10 @@ public class LoadbalanceEndpointFormPage extends EndpointFormPage {
                 paramDialog.open();
                 endpointPropertyList = paramDialog.getEndpointPropertyList();
 
-                setSave(true);
-                updateDirtyState();
+                if (paramDialog.isOk()) {
+                    setSave(true);
+                    updateDirtyState();
+                }
             }
 
             @Override
@@ -462,141 +436,16 @@ public class LoadbalanceEndpointFormPage extends EndpointFormPage {
         return this.endpointSessionType;
     }
 
-    public List<Endpoint> getSynapseEndpointList() {
-        synapseEndpointList = new ArrayList<>();
-        for (int i = 0; i < endpointsList.size(); i++) {
-            EndpointTableEntry endpointTableEntry = endpointsList.get(i);
-            if (endpointTableEntry.isInline()) {
-                String endpointContent = endpointTableEntry.getEndpointValue();
-                try {
-                    OMElement element = AXIOMUtil.stringToOM(endpointContent);
-                    if (element.getChildrenWithLocalName("address") != null) {
-                        if (!element.getChildrenWithName(new QName(SYNAPSE_NS, "address")).hasNext()) {
-                            Iterator children = element.getChildrenWithLocalName("address");
-                            while (children.hasNext()) {
-                                OMElement child = (OMElement) children.next();
-                                child.setNamespace(new OMNamespaceImpl(SYNAPSE_NS, ""));
-                                setNamespaceForChildren(child);
-                            }
-                        }
-
-                        AddressEndpoint addressEndpoint = (AddressEndpoint) AddressEndpointFactory
-                                .getEndpointFromElement(element, false, null);
-                        synapseEndpointList.add(addressEndpoint);
-
-                    } else if (element.getChildrenWithLocalName("http") != null) {
-                        if (!element.getChildrenWithName(new QName(SYNAPSE_NS, "http")).hasNext()) {
-                            Iterator children = element.getChildrenWithLocalName("http");
-                            while (children.hasNext()) {
-                                OMElement child = (OMElement) children.next();
-                                child.setNamespace(new OMNamespaceImpl(SYNAPSE_NS, ""));
-                                setNamespaceForChildren(child);
-                            }
-                        }
-
-                        HTTPEndpoint httpEndpoint = (HTTPEndpoint) HTTPEndpointFactory.getEndpointFromElement(element,
-                                false, null);
-                        synapseEndpointList.add(httpEndpoint);
-
-                    } else if (element.getChildrenWithLocalName("default") != null) {
-                        if (!element.getChildrenWithName(new QName(SYNAPSE_NS, "default")).hasNext()) {
-                            Iterator children = element.getChildrenWithLocalName("default");
-                            while (children.hasNext()) {
-                                OMElement child = (OMElement) children.next();
-                                child.setNamespace(new OMNamespaceImpl(SYNAPSE_NS, ""));
-                                setNamespaceForChildren(child);
-                            }
-                        }
-
-                        DefaultEndpoint defaultEndpoint = (DefaultEndpoint) DefaultEndpointFactory
-                                .getEndpointFromElement(element, false, null);
-                        synapseEndpointList.add(defaultEndpoint);
-
-                    } else if (element.getChildrenWithLocalName("wsdl") != null) {
-                        if (!element.getChildrenWithName(new QName(SYNAPSE_NS, "wsdl")).hasNext()) {
-                            Iterator children = element.getChildrenWithLocalName("wsdl");
-                            while (children.hasNext()) {
-                                OMElement child = (OMElement) children.next();
-                                child.setNamespace(new OMNamespaceImpl(SYNAPSE_NS, ""));
-                                setNamespaceForChildren(child);
-                            }
-                        }
-
-                        WSDLEndpoint wsdlEndpoint = (WSDLEndpoint) WSDLEndpointFactory.getEndpointFromElement(element,
-                                false, null);
-                        synapseEndpointList.add(wsdlEndpoint);
-
-                    } else if (element.getChildrenWithLocalName("loadbalance") != null) {
-                        if (!element.getChildrenWithName(new QName(SYNAPSE_NS, "loadbalance")).hasNext()) {
-                            Iterator children = element.getChildrenWithLocalName("loadbalance");
-                            while (children.hasNext()) {
-                                OMElement child = (OMElement) children.next();
-                                child.setNamespace(new OMNamespaceImpl(SYNAPSE_NS, ""));
-                                setNamespaceForChildren(child);
-                            }
-                        }
-
-                        LoadbalanceEndpoint lbEndpoint = (LoadbalanceEndpoint) LoadbalanceEndpointFactory
-                                .getEndpointFromElement(element, false, null);
-                        synapseEndpointList.add(lbEndpoint);
-
-                    } else if (element.getChildrenWithLocalName("failover") != null) {
-                        if (!element.getChildrenWithName(new QName(SYNAPSE_NS, "failover")).hasNext()) {
-                            Iterator children = element.getChildrenWithLocalName("failover");
-                            while (children.hasNext()) {
-                                OMElement child = (OMElement) children.next();
-                                child.setNamespace(new OMNamespaceImpl(SYNAPSE_NS, ""));
-                                setNamespaceForChildren(child);
-                            }
-                        }
-
-                        FailoverEndpoint foEndpoint = (FailoverEndpoint) FailoverEndpointFactory
-                                .getEndpointFromElement(element, false, null);
-                        synapseEndpointList.add(foEndpoint);
-
-                    } else if (element.getChildrenWithLocalName("recipientlist") != null) {
-                        if (!element.getChildrenWithName(new QName(SYNAPSE_NS, "recipientlist")).hasNext()) {
-                            Iterator children = element.getChildrenWithLocalName("recipientlist");
-                            while (children.hasNext()) {
-                                OMElement child = (OMElement) children.next();
-                                child.setNamespace(new OMNamespaceImpl(SYNAPSE_NS, ""));
-                                setNamespaceForChildren(child);
-                            }
-                        }
-
-                        RecipientListEndpoint rlEndpoint = (RecipientListEndpoint) RecipientListEndpointFactory
-                                .getEndpointFromElement(element, false, null);
-                        synapseEndpointList.add(rlEndpoint);
-
-                    } else {
-                        // refer endpoint as key
-
-                    }
-                } catch (XMLStreamException e) {
-                    // TODO Auto-generated catch block
-                }
-
-            } else {
-
-            }
-
-        }
-        return this.synapseEndpointList;
+    public Button getLoadBalanceEP_Properties() {
+        return loadbalanceEP_Properties;
     }
 
-    private static void setNamespaceForChildren(OMElement omElement) {
-        Iterator childern = omElement.getChildren();
-        OMElement currentElement = null;
-        while (childern.hasNext()) {
-            Object child = childern.next();
-            if (child instanceof OMElement) {
-                currentElement = (OMElement) child;
-                currentElement.setNamespace(new OMNamespaceImpl("http://ws.apache.org/ns/synapse", ""));
-                if (currentElement.getChildren().hasNext()) {
-                    setNamespaceForChildren(currentElement);
-                }
+    public void setLoadBalanceEP_Properties(Button addressEP_Properties) {
+        this.loadbalanceEP_Properties = addressEP_Properties;
+    }
 
-            }
-        }
+    public List<Endpoint> getSynapseEndpointList() {
+        this.synapseEndpointList = ComplexEndpointWizardUtils.getEndpointList(this.endpointsList);
+        return this.synapseEndpointList;
     }
 }

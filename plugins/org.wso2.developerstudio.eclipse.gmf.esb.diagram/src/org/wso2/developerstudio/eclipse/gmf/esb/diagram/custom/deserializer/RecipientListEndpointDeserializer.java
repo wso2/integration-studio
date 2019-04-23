@@ -23,41 +23,47 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.RECIP
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.RECIPIENT_LIST_END_POINT__MAX_CACHE;
 
 import java.util.Iterator;
+import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.config.xml.SynapsePath;
 import org.apache.synapse.endpoints.AbstractEndpoint;
 import org.apache.synapse.endpoints.RecipientListEndpoint;
 import org.apache.synapse.mediators.MediatorProperty;
-import org.apache.synapse.util.xpath.SynapseXPath;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.ui.forms.editor.FormEditor;
+import org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint;
+import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPointProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPointPropertyScope;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
+import org.wso2.developerstudio.eclipse.gmf.esb.Member;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.developerstudio.eclipse.gmf.esb.ParentEndPoint;
-import org.wso2.developerstudio.eclipse.gmf.esb.RecipientListEndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.RecipientListEndpointType;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.utils.ComplexEndpointDeserializerUtils;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EndpointDiagramEndpointCompartment2EditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EndpointDiagramEndpointCompartmentEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.ESBFormEditor;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.EndpointFormPage;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.RecipientListEndpointFormPage;
 
-public class RecipientListEndpointDeserializer extends AbstractComplexEndPointDeserializer {
+public class RecipientListEndpointDeserializer extends AbstractEndpointDeserializer {
 
-    public RecipientListEndPoint createNode(IGraphicalEditPart part, AbstractEndpoint object)
+    public AbstractEndPoint createNode(IGraphicalEditPart part, AbstractEndpoint object)
             throws DeserializerException {
-        Assert.isTrue(object instanceof RecipientListEndpoint,
+        Assert.isTrue(object instanceof org.apache.synapse.endpoints.RecipientListEndpoint,
                 "Unsupported endpoint passed in for deserialization at " + this.getClass());
 
-        RecipientListEndpoint endpoint = (RecipientListEndpoint) object;
+        org.apache.synapse.endpoints.RecipientListEndpoint endpoint = (org.apache.synapse.endpoints.RecipientListEndpoint) object;
         IElementType endpointType = (part instanceof EndpointDiagramEndpointCompartment2EditPart
                 || part instanceof EndpointDiagramEndpointCompartmentEditPart)
                         ? EsbElementTypes.RecipientListEndPoint_3696
                         : EsbElementTypes.RecipientListEndPoint_3692;
-        RecipientListEndPoint model = (RecipientListEndPoint) DeserializerUtils.createNode(part, endpointType);
+        org.wso2.developerstudio.eclipse.gmf.esb.RecipientListEndPoint model = (org.wso2.developerstudio.eclipse.gmf.esb.RecipientListEndPoint) DeserializerUtils
+                .createNode(part, endpointType);
         setElementToEdit(model);
 
         for (Iterator<MediatorProperty> i = endpoint.getProperties().iterator(); i.hasNext();) {
@@ -88,14 +94,58 @@ public class RecipientListEndpointDeserializer extends AbstractComplexEndPointDe
             }
         } else {
             executeSetValueCommand(RECIPIENT_LIST_END_POINT__ENDPOINT_TYPE, RecipientListEndpointType.INLINE);
-            deserializeComplexEndpoint(endpoint, part);
+//            deserializeComplexEndpoint(endpoint, part);
         }
 
         if (StringUtils.isNotBlank(endpoint.getName())) {
             executeSetValueCommand(END_POINT__END_POINT_NAME, endpoint.getName());
         }
 
-        return model;
+        return (AbstractEndPoint) endpoint;
     }
 
+    @Override
+    public void createNode(FormEditor formEditor, AbstractEndpoint endpointObject) {
+
+        ESBFormEditor recipientListEPFormEditor = (ESBFormEditor) formEditor;
+        EndpointFormPage endpointPage = (EndpointFormPage) recipientListEPFormEditor
+                .getFormPageForArtifact(ArtifactType.ENDPOINT);
+
+        RecipientListEndpoint endpoint = (RecipientListEndpoint) endpointObject;
+
+        RecipientListEndpointFormPage recipientListEndpointPage = (RecipientListEndpointFormPage) endpointPage;
+
+        setTextValue(recipientListEndpointPage.getEndpointName(), endpoint.getName());
+
+        if (endpoint.isFailover()) {
+            recipientListEndpointPage.getEndpointFailover().select(0);
+        } else {
+            recipientListEndpointPage.getEndpointFailover().select(1);
+        }
+
+        setTextValue(recipientListEndpointPage.getEP_Description(), endpoint.getDescription());
+
+        if (endpoint.getProperties().size() > 0) {
+            List<EndPointProperty> existingProperties = recipientListEndpointPage.getEndPointPropertyList();
+            recipientListEndpointPage.setEndPointPropertyList(
+                    ComplexEndpointDeserializerUtils.getProperties(endpoint, existingProperties));
+
+        } else {
+            recipientListEndpointPage.setEndPointPropertyList(null);
+        }
+
+        if (endpoint.getChildren() != null && !endpoint.getChildren().isEmpty()) {
+            recipientListEndpointPage.setEndpointList(ComplexEndpointDeserializerUtils.getTableEntries(endpoint));
+        }
+
+        if (endpoint.getMembers() != null && endpoint.getMembers().size() > 0) {
+            List<Member> existingMembers = recipientListEndpointPage.getMemberList();
+            recipientListEndpointPage
+                    .setMemberList(ComplexEndpointDeserializerUtils.getMembers(endpoint, existingMembers));
+        } else {
+            recipientListEndpointPage.setMemberList(null);
+        }
+        super.createNode(formEditor, endpointObject);
+    }
+    
 }

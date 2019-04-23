@@ -84,20 +84,27 @@ public class LogPropertyItemProvider extends AbstractNameValueExpressionProperty
     public String getText(Object object) {
         String propertyName = StringUtils.rightPad(((LogProperty) object).getPropertyName(), 40);
         String propertyValueType = ((LogProperty) object).getPropertyValueType().toString();
-        String propertyValueLabel = StringUtils.rightPad(((LogProperty) object).getPropertyValue(), 40);
-        String propertyExpressionLabel = StringUtils.rightPad((
-                (LogProperty) object).getPropertyExpression().toString(),20);
+        String propertyValue = StringUtils.rightPad(((LogProperty) object).getPropertyValue(), 40);
+        String propertyExpression = StringUtils.rightPad((
+                (LogProperty) object).getPropertyExpression().toString(), 20);
+
         String formattedString = null;
+        if (((LogProperty) object).getPropertyName() == null || ((LogProperty) object).getPropertyName().isEmpty()) {
+            propertyName = StringUtils.rightPad("", 40);
+        }
+        if (((LogProperty) object).getPropertyValue() == null || ((LogProperty) object).getPropertyValue().isEmpty()) {
+            propertyValue = StringUtils.rightPad("", 40);
+        }
         if (propertyValueType.equals(PropertyValueType.LITERAL.getName())) {
             formattedString = StringUtils.abbreviate((getString("_UI_LogProperty_type") + " - "), 15)
                     + StringUtils.abbreviate(propertyName, 40) + StringUtils.rightPad("", 8)
                     + StringUtils.abbreviate(StringUtils.rightPad(propertyValueType, 15), 15)
-                    + StringUtils.abbreviate(propertyValueLabel, 40);
+                    + StringUtils.abbreviate(propertyValue, 40);
         } else {
             formattedString = StringUtils.abbreviate((getString("_UI_LogProperty_type") + " - "), 15)
                     + StringUtils.abbreviate(propertyName, 40) + StringUtils.rightPad("", 8)
                     + StringUtils.abbreviate(StringUtils.rightPad(propertyValueType, 15), 15)
-                    + StringUtils.abbreviate(propertyExpressionLabel, 40);
+                    + StringUtils.abbreviate(propertyExpression, 40);
         }
         return formattedString;
     }

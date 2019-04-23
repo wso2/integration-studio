@@ -16,6 +16,7 @@
 
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer;
 
+import org.apache.synapse.config.xml.SynapsePath;
 import org.apache.synapse.mediators.AbstractMediator;
 import org.apache.synapse.mediators.eip.Target;
 import org.eclipse.core.runtime.Assert;
@@ -24,12 +25,15 @@ import org.eclipse.ui.forms.editor.FormEditor;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.IterateMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.IterateTarget;
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.SequenceType;
 import org.wso2.developerstudio.eclipse.gmf.esb.TargetEndpointType;
 import org.wso2.developerstudio.eclipse.gmf.esb.TargetSequenceType;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
+
+import java.util.Map;
 
 public class IterateMediatorDeserializer extends AbstractEsbNodeDeserializer<AbstractMediator, IterateMediator> {
 
@@ -45,8 +49,8 @@ public class IterateMediatorDeserializer extends AbstractEsbNodeDeserializer<Abs
         setCommonProperties(mediator, mediatorModel);
 
         executeSetValueCommand(ITERATE_MEDIATOR__ITERATE_EXPRESSION,
-                createNamespacedProperty(mediator.getExpression()));
-        executeSetValueCommand(ITERATE_MEDIATOR__ATTACH_PATH, createNamespacedProperty(mediator.getAttachPath()));
+        		createNamespacedPropertyWithJsonPathSupport(mediator.getExpression()));
+        executeSetValueCommand(ITERATE_MEDIATOR__ATTACH_PATH, createNamespacedPropertyWithJsonPathSupport(mediator.getAttachPath()));
         executeSetValueCommand(ITERATE_MEDIATOR__PRESERVE_PAYLOAD, mediator.isPreservePayload());
         executeSetValueCommand(ITERATE_MEDIATOR__CONTINUE_PARENT, mediator.isContinueParent());
         executeSetValueCommand(ITERATE_MEDIATOR__ITERATE_ID, mediator.getId());
@@ -90,5 +94,19 @@ public class IterateMediatorDeserializer extends AbstractEsbNodeDeserializer<Abs
 
         return mediatorModel;
     }
+    
+    private NamespacedProperty createNamespacedPropertyWithJsonPathSupport(SynapsePath path) {
+		NamespacedProperty nsp = EsbFactory.eINSTANCE.createNamespacedProperty();
+		nsp.setPropertyValue(path.toString());
+		nsp.setSupportJsonPaths(true);
+		if (path.getPathType() == SynapsePath.X_PATH) {
+			if (path.getNamespaces() != null) {
+				@SuppressWarnings("unchecked")
+				Map<String, String> map = path.getNamespaces();
+				nsp.setNamespaces(map);
+			}
+		}
+		return nsp;
+	}
 
 }

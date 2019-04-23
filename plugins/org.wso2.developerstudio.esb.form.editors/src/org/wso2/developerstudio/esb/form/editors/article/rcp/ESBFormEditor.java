@@ -28,8 +28,10 @@ import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
 import org.wso2.developerstudio.esb.forgm.editors.article.FormArticlePlugin;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.AddressEndpointFormPage;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.DefaultEndpointFormPage;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.FailoverEndpointFormPage;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.HttpEndpointFormPage;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.LoadbalanceEndpointFormPage;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.RecipientListEndpointFormPage;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.TemplateEndPointFormPage;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.WsdlEndpointFormPage;
 
@@ -105,8 +107,10 @@ public class ESBFormEditor extends FormEditor {
             currFormPage = new TemplateEndPointFormPage(this);
         } else if (artifactType == ArtifactType.ENDPOINT_LOADBALANCE) {
             currFormPage = new LoadbalanceEndpointFormPage(this);
-        } else if (artifactType == ArtifactType.COMPLEX_ENDPOINT) {
-            currFormPage = new LoadbalanceEndpointFormPage(this);
+        } else if (artifactType == ArtifactType.ENDPOINT_FAILOVER) {
+            currFormPage = new FailoverEndpointFormPage(this);
+        } else if (artifactType == ArtifactType.ENDPOINT_RECIPIENTLIST) {
+            currFormPage = new RecipientListEndpointFormPage(this);
         }
 	}
 

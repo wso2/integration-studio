@@ -54,22 +54,24 @@ public abstract class EndpointFormPage extends AbstractEsbFormPage {
 	
 	protected ScrolledForm form;
     protected FormToolkit toolkit;
+    
 	protected Text endpointName;
 	protected Text templateName;
+    protected Text eP_Description;
+    protected Text eP_Properties;
 
 	protected Combo endpointTrace;
 	protected Combo endpointStatistics;
-	
-    protected Text eP_Properties;
     protected Combo eP_Optimize;
-    protected Text eP_Description;
-
-    protected Combo eP_Format;
-    Section basicSection;
+    protected Combo endpointSesssionType;
+    
+    private Section basicSection;
+    private Section templateEndpointSection;
     
     protected Button template_parameters;
+    
     protected boolean isTemplate;
-	Section templateEndpointSection;
+
 	public List<TemplateParameter> templateParameterList;
     
     public boolean isTemplate() {
@@ -96,12 +98,12 @@ public abstract class EndpointFormPage extends AbstractEsbFormPage {
 		this.endpointName = endpointName;
 	}
 		
-	public Combo getEP_Format() {
-		return eP_Format;
+	public Combo getEndpointSessionType() {
+		return endpointSesssionType;
 	}
 
-	public void setEP_Format(Combo wsdlEP_Format) {
-		this.eP_Format = wsdlEP_Format;
+	public void setEndpointSessionType(Combo sessionType) {
+		this.endpointSesssionType = sessionType;
 	}
 
 	public Combo getEndpointTrace() {
@@ -299,17 +301,17 @@ public abstract class EndpointFormPage extends AbstractEsbFormPage {
 
 		
 		toolkit.createLabel(basicSectionClient, "Format :");
-		eP_Format = new Combo(basicSectionClient, SWT.DROP_DOWN);
+		endpointSesssionType = new Combo(basicSectionClient, SWT.DROP_DOWN);
 		//eP_Format.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		String[] formats = {"LEAVE_AS_IS", "SOAP 1.1", "SOAP 1.2", "POX", "GET", "REST"};
-		eP_Format.setItems(formats);
+		endpointSesssionType.setItems(formats);
 		GridData endpointFormatGridData = new GridData();
 		endpointFormatGridData.horizontalSpan = 3;
 		endpointFormatGridData.horizontalAlignment = GridData.FILL;
 		endpointFormatGridData.grabExcessHorizontalSpace = true;
-		eP_Format.setLayoutData(endpointFormatGridData);
+		endpointSesssionType.setLayoutData(endpointFormatGridData);
 		
-		eP_Format.addSelectionListener(new SelectionAdapter() {
+		endpointSesssionType.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				setSave(true);
@@ -369,5 +371,10 @@ public abstract class EndpointFormPage extends AbstractEsbFormPage {
 	public EndpointCommons getEndpointCommons() {
 		return endpointCommons;
 	}
+
+    public Combo getEP_Format() {
+        // TODO Auto-generated method stub
+        return null;
+    }
 	
 }

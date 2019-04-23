@@ -72,7 +72,7 @@ public class AddressEndpointDeserializer extends AbstractEndpointDeserializer {
 
         ESBFormEditor addressEPFormEditor = (ESBFormEditor) formEditor;
         EndpointFormPage endpointPage = (EndpointFormPage) addressEPFormEditor
-                .getFormPageForArtifact(ArtifactType.ENDPOINT);//view is up but values are not set
+                .getFormPageForArtifact(ArtifactType.ENDPOINT);
 
         AddressEndpoint endpoint = (AddressEndpoint) endpointObject;
 

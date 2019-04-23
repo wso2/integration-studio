@@ -23,11 +23,12 @@ import java.util.Properties;
 import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.util.AXIOMUtil;
 import org.apache.commons.lang.StringUtils;
-import org.apache.synapse.config.xml.endpoints.EndpointFactory;
+import org.apache.synapse.SynapseArtifact;
 import org.apache.synapse.config.xml.endpoints.WSDLEndpointFactory;
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.endpoints.EndpointDefinition;
 import org.apache.synapse.endpoints.FailoverEndpoint;
+import org.apache.synapse.endpoints.LoadbalanceEndpoint;
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
@@ -38,6 +39,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.PlatformUI;
+import org.jaxen.JaxenException;
 import org.wso2.developerstudio.eclipse.esb.core.interfaces.IEsbEditorInput;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndpointDiagram;
@@ -52,6 +54,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.persistence.EsbTransformerRegist
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.FailoverEndpointFormPage;
 
 public class FailoverEndPointTransformer extends AbstractEndpointTransformer {
 
@@ -199,6 +202,25 @@ public class FailoverEndPointTransformer extends AbstractEndpointTransformer {
             e.printStackTrace();
         }
         return synapseFailEP;
+    }
+    
+    public SynapseArtifact create(FailoverEndpointFormPage formPage) throws NumberFormatException, JaxenException {
+        LoadbalanceEndpoint synapseLoadbalanceEP = new LoadbalanceEndpoint();
+        if (StringUtils.isNotBlank(formPage.getEndpointName().getText())) {
+            synapseLoadbalanceEP.setName(formPage.getEndpointName().getText());
+        }
+        createAdvanceOptions(formPage, synapseLoadbalanceEP);
+        synapseLoadbalanceEP.getDefinition().setAddress(formPage.getAddressEP_URI().getText());
+
+        if (formPage.endpointPropertyList != null && formPage.endpointPropertyList.size() > 0) {
+            // saveProperties(formPage, synapseLoadbalanceEP);
+        }
+
+        if (formPage.isTemplate()) {
+            return createTemplate(formPage, synapseLoadbalanceEP);
+        } else {
+            return synapseLoadbalanceEP;
+        }
     }
     
     private String getSynapseEndpointName(FailoverEndPoint visualEndPoint) {

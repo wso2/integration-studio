@@ -45,6 +45,8 @@
     <eLiterals name="ENDPOINT_HTTP" value="21" literal="ENDPOINT_HTTP"/>
     <eLiterals name="ENDPOINT_WSDL" value="22" literal="ENDPOINT_WSDL"/>
     <eLiterals name="ENDPOINT_LOADBALANCE" value="23" literal="ENDPOINT_LOADBALANCE"/>
+    <eLiterals name="ENDPOINT_FAILOVER" value="24" literal="ENDPOINT_FAILOVER"/>
+    <eLiterals name="ENDPOINT_RECIPIENTLIST" value="25" literal="ENDPOINT_RECIPIENTLIST"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Mediator" abstract="true" eSuperTypes="#//EsbElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="Reverse" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"

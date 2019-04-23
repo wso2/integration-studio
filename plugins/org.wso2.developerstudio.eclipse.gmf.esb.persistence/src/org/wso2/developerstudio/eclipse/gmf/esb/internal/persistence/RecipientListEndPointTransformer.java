@@ -24,10 +24,12 @@ import java.util.Properties;
 import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.util.AXIOMUtil;
 import org.apache.commons.lang.StringUtils;
+import org.apache.synapse.SynapseArtifact;
 import org.apache.synapse.config.xml.endpoints.EndpointFactory;
 import org.apache.synapse.config.xml.endpoints.WSDLEndpointFactory;
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.endpoints.EndpointDefinition;
+import org.apache.synapse.endpoints.LoadbalanceEndpoint;
 import org.apache.synapse.endpoints.RecipientListEndpoint;
 import org.apache.synapse.mediators.Value;
 import org.apache.synapse.mediators.base.SequenceMediator;
@@ -58,6 +60,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.persistence.EsbTransformerRegist
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.FailoverEndpointFormPage;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.RecipientListEndpointFormPage;
 
 public class RecipientListEndPointTransformer extends AbstractEndpointTransformer {
 
@@ -242,6 +246,25 @@ public class RecipientListEndPointTransformer extends AbstractEndpointTransforme
         // Serialize the parameters
         saveProperties(model, recipientList);
         return recipientList;
+    }
+    
+    public SynapseArtifact create(RecipientListEndpointFormPage formPage) throws NumberFormatException, JaxenException {
+        LoadbalanceEndpoint synapseLoadbalanceEP = new LoadbalanceEndpoint();
+        if (StringUtils.isNotBlank(formPage.getEndpointName().getText())) {
+            synapseLoadbalanceEP.setName(formPage.getEndpointName().getText());
+        }
+        createAdvanceOptions(formPage, synapseLoadbalanceEP);
+        synapseLoadbalanceEP.getDefinition().setAddress(formPage.getAddressEP_URI().getText());
+
+        if (formPage.endpointPropertyList != null && formPage.endpointPropertyList.size() > 0) {
+            // saveProperties(formPage, synapseLoadbalanceEP);
+        }
+
+        if (formPage.isTemplate()) {
+            return createTemplate(formPage, synapseLoadbalanceEP);
+        } else {
+            return synapseLoadbalanceEP;
+        }
     }
 
 }

@@ -159,11 +159,11 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
         final IWorkbenchWindow window = workbench.getActiveWorkbenchWindow();
         try {
             workbench.showPerspective(DATA_MAPPER_PERSPECTIVE, window); // $NON-NLS-1$
-            PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
+            PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
                 @Override
                 public void run() {
-                    try {
-                        loadInitialConfigFileLocations();
+                   try {
+                        //loadInitialConfigFileLocations();
                         realtimeDatamapperView = (RealtimeDatamapperView) PlatformUI.getWorkbench()
                                 .getActiveWorkbenchWindow().getActivePage().showView(DATA_MAPPER_TEST_VIEW);
                         realtimeDatamapperView.setURL();
@@ -232,7 +232,7 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
 	
     // Show datamapper test window and reload web page.
     private void reloadDataMapperTestWindow() {
-        PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
+        PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
             @Override
             public void run() {
                 try {

@@ -31,13 +31,20 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.swt.widgets.Display;
 import org.wso2.developerstudio.eclipse.esb.project.connector.store.Connector;
+import org.wso2.developerstudio.eclipse.esb.project.exception.ConnectorException;
+import org.wso2.developerstudio.eclipse.esb.project.utils.WizardDialogUtils;
 
 import com.google.gson.Gson;
 
 /**
  * Servlet that handles connector downloads
+ * 
  */
 public class ConnectorDownloadServlet extends HttpServlet {
+
+    private static String DOWNLOADING_CONNECTOR_MSG = "Download Connector";
+    private static String DOWNLOADING_CONNECTOR_FAILED_MSG = "Failed to add connector to project!";
+
     /**
      * Downloads the specified connector
      * 
@@ -49,6 +56,9 @@ public class ConnectorDownloadServlet extends HttpServlet {
             throws ServletException, IOException {
         final String function = request.getParameter("data");
         Connector connector = new Gson().fromJson(function, Connector.class);
+        
+        WizardDialogUtils.showSuccessMessage(connector.getAttributes().getOverview_name()
+                + " connector is being downloaded. Click 'Finish' to close the store view.", DOWNLOADING_CONNECTOR_MSG);
 
         response.setContentType("application/json");
         response.setStatus(HttpServletResponse.SC_OK);
@@ -57,16 +67,22 @@ public class ConnectorDownloadServlet extends HttpServlet {
             public void run() {
                 Display.getDefault().asyncExec(new Runnable() {
                     public void run() {
-                        Job downloadJob = new Job("Downloading Connectors") {
+                        Job downloadJob = new Job(DOWNLOADING_CONNECTOR_MSG) {
                             @Override
                             protected IStatus run(IProgressMonitor monitor) {
-                                monitor.beginTask("Downloading connector", 100);
+                                monitor.beginTask(DOWNLOADING_CONNECTOR_MSG, 100);
                                 monitor.subTask(connector.getAttributes().getOverview_name() + " connector");
                                 String downloadLink = connector.getAttributes().getOverview_downloadlink();
-                                if (ConnectorServletUtil.downloadConnectorAndUpdateProjects(downloadLink)) {
-                                    monitor.worked(100);
-                                    monitor.done();
-                                    return Status.OK_STATUS;
+                                try {
+                                    if (ConnectorServletUtil.downloadConnectorAndUpdateProjects(downloadLink)) {
+                                        monitor.worked(100);
+                                        monitor.done();
+                                        WizardDialogUtils.showSuccessMessage(connector.getAttributes().getOverview_name()
+                                                + " connector is downloaded Successfully.", DOWNLOADING_CONNECTOR_MSG);
+                                        return Status.OK_STATUS;
+                                    }
+                                } catch (ConnectorException e) {
+                                    WizardDialogUtils.showErrorMessage(e.getMessage(), DOWNLOADING_CONNECTOR_FAILED_MSG);
                                 }
                                 monitor.worked(100);
                                 monitor.done();

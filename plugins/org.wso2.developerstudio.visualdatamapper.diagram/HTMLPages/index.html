@@ -23,20 +23,18 @@
             <div class="col-lg-5 box">
                <h3 class="input-header header">Input data type</h3>
                <div class="row no-gutter">
-                  <div class="col-lg-5 custom">
+                  <div class="col-lg-12 custom">
                      <div class="container">
                         <div class="row" >
-                           <div class="col-lg-12">
-                              <div class="input-radio">
-                                 <label><input type="radio" class="inputTypeRadio" name="inputTypeRadio" checked value="JSON"> JSON</label>
-                              </div>
-                              <div class="input-radio">
-                                 <label><input type="radio" class="inputTypeRadio"  name="inputTypeRadio" value="XML"> XML</label>
-                              </div>
-                              <div class="input-radio">
-                                 <label><input type="radio" class="inputTypeRadio" name="inputTypeRadio" value="CSV"> CSV</label>
-                              </div>
-                           </div>
+                            <div class="col-lg-4 input-radio">
+                               <label><input type="radio" class="inputTypeRadio" name="inputTypeRadio" checked value="JSON"> JSON</label>
+                            </div>
+                            <div class="col-lg-4 input-radio">
+                               <label><input type="radio" class="inputTypeRadio"  name="inputTypeRadio" value="XML"> XML</label>
+                            </div>
+                            <div class="col-lg-4 input-radio">
+                               <label><input type="radio" class="inputTypeRadio" name="inputTypeRadio" value="CSV"> CSV</label>
+                            </div>
                         </div>
                      </div>
                   </div>
@@ -51,18 +49,16 @@
             </div>
             <div class="col-lg-5 box">
                <h3 class="output-header header">Output data type</h3>
-               <div class="col-lg-5 custom">
+               <div class="col-lg-12 custom">
                   <div class="row">
-                     <div class="col-lg-12">
-                        <div class="output-radio">
-                           <label><input type="radio" name="outputTypeRadio" checked value="JSON"> JSON</label>
-                        </div>
-                        <div class="output-radio">
-                           <label><input type="radio" name="outputTypeRadio" value="XML"> XML</label>
-                        </div>
-                        <div class="output-radio">
-                           <label><input type="radio" name="outputTypeRadio" value="CSV"> CSV</label>
-                        </div>
+                     <div class="col-lg-4 output-radio">
+                        <label><input type="radio" name="outputTypeRadio" checked value="JSON"> JSON</label>
+                     </div>
+                     <div class="col-lg-4 output-radio">
+                        <label><input type="radio" name="outputTypeRadio" value="XML"> XML</label>
+                     </div>
+                     <div class="col-lg-4 output-radio">
+                        <label><input type="radio" name="outputTypeRadio" value="CSV"> CSV</label>
                      </div>
                   </div>
                </div>
@@ -140,6 +136,8 @@
         inputSchema = retString;
         generateExamples();
         autoFormatSelection();
+        // Get output schema for the example
+        process();
       }
       
       // Generate json / xml / csv examples from the json schema.  
@@ -153,10 +151,9 @@
         jsonString = JSON.stringify(jsonString, null, "\t");
         inputEditor.setOption("mode", "text/javascript");
     	  inputEditor.setValue(jsonString);
-      
         xmlString = json2xml(JSON.parse(jsonString), "\n");
-        xmlString = "<" + inputSchemaTitle + ">" + xmlString + "</" + inputSchemaTitle + ">";
-      
+        rootElemWithNS = buildRootWithNS(inputSchema);
+        xmlString = "<" + rootElemWithNS + ">" + xmlString + "</" + inputSchemaTitle + ">";
         csvString = '<text xmlns="http://ws.apache.org/commons/ns/payload">' + Papa.unparse(JSON.parse(jsonString), configs) + "</text>";
       }
       
@@ -175,12 +172,27 @@
         }
         
         autoFormatSelection();
+        process();
       });
       
       $('input[name=outputTypeRadio]').on('change', function(e) {
         outputType = $('input[name=outputTypeRadio]:checked').val();
+        process();
       });
       
+      //Create xml root element content with namespaces
+      function buildRootWithNS(inputSchema) {
+          namespaces = inputSchema["namespaces"];
+          rootValue = inputSchema["title"];
+          rootElements = "<" + rootValue + ">";
+          tempRoot = rootValue;
+          for (var i in namespaces) {
+              tempRoot = tempRoot + " xmlns:" + namespaces[i]["prefix"] + "=\"" + namespaces[i]["url"] + "\""
+          }
+          tempRoot = tempRoot;
+          return tempRoot;
+      }
+
       // Call Datamapper.mediate() and take back the results
       function process() {
         var input = inputEditor.getValue();

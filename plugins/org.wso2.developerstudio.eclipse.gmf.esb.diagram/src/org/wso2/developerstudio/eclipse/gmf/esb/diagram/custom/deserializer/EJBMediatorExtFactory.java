@@ -96,6 +96,8 @@ public class EJBMediatorExtFactory extends AbstractMediatorFactory {
         if (attributeValue != null) {
             mediator.setMethodName(attributeValue);
         }
+        
+        addAllCommentChildrenToList(elem, mediator.getCommentsList());
 
         return mediator;
     }

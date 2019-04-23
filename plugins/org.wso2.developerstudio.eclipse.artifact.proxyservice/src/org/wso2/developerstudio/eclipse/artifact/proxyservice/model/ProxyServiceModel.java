@@ -176,7 +176,8 @@ public class ProxyServiceModel extends ProjectDataModel {
 		} else if (key.equals(PsArtifactConstants.WIZARD_OPTION_PS_TRANSPORT_FIX) || key.equals(PsArtifactConstants.WIZARD_OPTION_PS_TRANSPORT_HL7)
 				|| key.equals(PsArtifactConstants.WIZARD_OPTION_PS_TRANSPORT_HTTP) || key.equals(PsArtifactConstants.WIZARD_OPTION_PS_TRANSPORT_HTTPS)
 				|| key.equals(PsArtifactConstants.WIZARD_OPTION_PS_TRANSPORT_JMS) || key.equals(PsArtifactConstants.WIZARD_OPTION_PS_TRANSPORT_LOCAL)
-				|| key.equals(PsArtifactConstants.WIZARD_OPTION_PS_TRANSPORT_MAILTO) || key.equals(PsArtifactConstants.WIZARD_OPTION_PS_TRANSPORT_VFS)) {
+				|| key.equals(PsArtifactConstants.WIZARD_OPTION_PS_TRANSPORT_MAILTO) || key.equals(PsArtifactConstants.WIZARD_OPTION_PS_TRANSPORT_VFS)
+				|| key.equals(PsArtifactConstants.WIZARD_OPTION_PS_TRANSPORT_RABBITMQ)) {
 			List<String> selectedTransports = getTransports();
 			String transport = key.substring(10, key.lastIndexOf("."));
 			if (selectedTransports.contains(transport)) {

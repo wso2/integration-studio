@@ -40,7 +40,7 @@ import org.wso2.developerstudio.eclipse.logging.core.Logger;
  */
 public class EsbGraphicalShapeWithLabel extends RoundedRectangle {
 
-    private static int DESCRIPTION_TEXT_LABEL_HEIGHT = 40;
+    private static int DESCRIPTION_TEXT_LABEL_HEIGHT = 30;
     public GridData tempConstraintPropertyValueRectangle;
     public RoundedRectangle tempPropertyValueRectangle1;
     private WrappingLabel propertyNameLabel;
@@ -233,12 +233,12 @@ public class EsbGraphicalShapeWithLabel extends RoundedRectangle {
         GridData constraintPropertyValueRectangle = new GridData();
         constraintPropertyValueRectangle.verticalAlignment = GridData.FILL;
         constraintPropertyValueRectangle.horizontalAlignment = GridData.FILL;
-        constraintPropertyValueRectangle.horizontalIndent = 0;
+        constraintPropertyValueRectangle.horizontalIndent = 4;
         constraintPropertyValueRectangle.horizontalSpan = 1;
         constraintPropertyValueRectangle.verticalSpan = 1;
         constraintPropertyValueRectangle.grabExcessHorizontalSpace = true;
         constraintPropertyValueRectangle.grabExcessVerticalSpace = true;
-        constraintPropertyValueRectangle.widthHint = Image_PreferredWidth;
+        constraintPropertyValueRectangle.widthHint = Image_PreferredWidth + 6;
         constraintPropertyValueRectangle.heightHint = DESCRIPTION_TEXT_LABEL_HEIGHT;
 
         propertyValueRectangle1.setLayoutManager(new StackLayout());
@@ -247,7 +247,7 @@ public class EsbGraphicalShapeWithLabel extends RoundedRectangle {
         propertyNameLabel = new WrappingLabel();
         propertyNameLabel.setText("");
         propertyNameLabel.setForegroundColor(new Color(null, 126, 126, 126));
-        propertyNameLabel.setFont(new Font(null, new FontData(PROPERTY_NAME_LABEL_FONT, 7, SWT.NONE)));
+        propertyNameLabel.setFont(new Font(null, new FontData(PROPERTY_NAME_LABEL_FONT, 10, SWT.NONE)));
         propertyNameLabel.setAlignment(SWT.CENTER);
         propertyNameLabel.setPreferredSize(new Dimension(FixedSizedAbstractMediator.maxFigureWidth, 20));
         propertyNameLabel.setTextWrap(true);

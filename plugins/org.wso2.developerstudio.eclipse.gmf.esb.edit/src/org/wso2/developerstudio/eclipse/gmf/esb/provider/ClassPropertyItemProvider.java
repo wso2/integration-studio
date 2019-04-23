@@ -79,24 +79,25 @@ public class ClassPropertyItemProvider extends AbstractNameValueExpressionProper
 
     @Override
     public String getText(Object object) {
-        String propertyName = ((ClassProperty)object).getPropertyName();
-        String propertyNameLabel = WordUtils.abbreviate(propertyName.toString(), 8, 10, " ...");
-        String propertyValueType = ((ClassProperty)object).getPropertyValueType().toString();
-        String propertyValueLabel = ((ClassProperty)object).getPropertyValue();
-        String propertyExpressionLabel = ((ClassProperty)object).getPropertyExpression().toString();
+        String propertyName = ((ClassProperty) object).getPropertyName();
+        String propertyNameLabel = WordUtils.abbreviate(propertyName, 40, 45, " ...");
+        String propertyValueType = ((ClassProperty) object).getPropertyValueType().toString();
+        String propertyValueLabel = ((ClassProperty) object).getPropertyValue();
+        String propertyExpressionLabel = ((ClassProperty) object).getPropertyExpression().toString();
 
         if (propertyValueType.equals(PropertyValueType.LITERAL.getName())) {
-            return propertyName == null || propertyName.length() == 0 ?
-                getString("_UI_ClassProperty_type") :
-                    EEFPropertyViewUtil.spaceFormat(getString("_UI_ClassProperty_type")) +
-                    EEFPropertyViewUtil.spaceFormat(propertyNameLabel) +
-                    EEFPropertyViewUtil.spaceFormat(propertyValueLabel);
+            return propertyName == null || propertyName.length() == 0 ? getString("_UI_ClassProperty_type")
+                    : propertyValueLabel != null
+                            ? getString("_UI_ClassProperty_type") + "  -  "
+                                    + EEFPropertyViewUtil.spaceFormat(propertyNameLabel)
+                                    + EEFPropertyViewUtil.spaceFormat(propertyValueLabel)
+                            : getString("_UI_ClassProperty_type") + "  -  "
+                                    + EEFPropertyViewUtil.spaceFormat(propertyNameLabel);
         } else {
-            return propertyName == null || propertyName.length() == 0 ?
-                getString("_UI_ClassProperty_type") :
-                    EEFPropertyViewUtil.spaceFormat(getString("_UI_ClassProperty_type")) +
-                    EEFPropertyViewUtil.spaceFormat(propertyNameLabel) +
-                    EEFPropertyViewUtil.spaceFormat(propertyExpressionLabel);
+            return propertyName == null || propertyName.length() == 0 ? getString("_UI_ClassProperty_type")
+                    : EEFPropertyViewUtil.spaceFormat(getString("_UI_ClassProperty_type"))
+                            + EEFPropertyViewUtil.spaceFormat(propertyNameLabel)
+                            + EEFPropertyViewUtil.spaceFormat(propertyExpressionLabel);
         }
     }
 

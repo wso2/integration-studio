@@ -73,6 +73,9 @@ public abstract class EndpointFormPage extends AbstractEsbFormPage {
     protected boolean isTemplate;
 
     public List<TemplateParameter> templateParameterList;
+    
+    private List<String> endpointCommentList;
+    private List<String> templateCommentList;
 
     public boolean isTemplate() {
         return isTemplate;
@@ -367,6 +370,22 @@ public abstract class EndpointFormPage extends AbstractEsbFormPage {
     public Combo getEP_Format() {
         // TODO Auto-generated method stub
         return null;
+    }
+    
+    public List<String> getEndpointCommentList() {
+        return endpointCommentList;
+    }
+
+    public void setEndpointCommentList(List<String> commentList) {
+        this.endpointCommentList = commentList;
+    }
+
+    public List<String> getTemplateCommentList() {
+        return templateCommentList;
+    }
+
+    public void setTemplateCommentList(List<String> templateCommentList) {
+        this.templateCommentList = templateCommentList;
     }
 
 }

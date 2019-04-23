@@ -243,6 +243,10 @@ public class CarExportDetailsWizardPage extends WizardPage {
             setErrorMessage("Please specify an image name.");
             setPageComplete(false);
             return;
+        } else if (isUpperCasePresent(getImageName())) {
+        	setErrorMessage("Uppercase characters are not allowed in the image name");
+            setPageComplete(false);
+            return;
         } else if (!getImageName().matches("[a-zA-Z0-9][a-zA-Z0-9_.-]+")) {
             setErrorMessage("The image name format is invalid.");
             setPageComplete(false);
@@ -300,6 +304,22 @@ public class CarExportDetailsWizardPage extends WizardPage {
         } else {
             isPageDirty = true;
         }
+    }
+    
+    private boolean isUpperCasePresent(String str) {
+    	boolean isUpperCasePresent = false;
+    	char currentCharacter;
+    	
+    	if (null != str) {
+        	for (int i = 0; i < str.length(); i++) {
+                currentCharacter = str.charAt(i);
+                if (Character.isUpperCase(currentCharacter)) {
+                	isUpperCasePresent = true;
+                }
+        	}
+    	}
+    	
+    	return isUpperCasePresent;
     }
 
     public boolean isPageDirty() {

@@ -64,6 +64,8 @@ public class EnqueueMediatorExtFactory extends EnqueueMediatorFactory {
         if (queueAtt != null && !"".equals(queueAtt.getAttributeValue())) {
             ((EnqueueMediator) mediator).setExecutorName(queueAtt.getAttributeValue());
         }
+        
+        addAllCommentChildrenToList(omElement, ((EnqueueMediator) mediator).getCommentsList());
 
         return mediator;
 

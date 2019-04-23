@@ -124,6 +124,10 @@
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EndPointAttachmentOptimization/MTOM"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EndPointAttachmentOptimization/SWA"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//EndPointFailoverRetryType">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EndPointFailoverRetryType/RETRY_ERROR_CODES"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EndPointFailoverRetryType/NON_RETRY_ERROR_CODES"/>
+    </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//PropertyDataType">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//PropertyDataType/STRING"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//PropertyDataType/INTEGER"/>
@@ -781,6 +785,18 @@
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//APIVersionType/Context"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//APIVersionType/URL"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//CacheScopeType">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//CacheScopeType/Per_Host"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//CacheScopeType/Per_Mediator"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//CacheImplementationType">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//CacheImplementationType/memory"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//CacheImplementationType/disk"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//CacheMediatorType">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//CacheMediatorType/New_implementation"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//CacheMediatorType/Previous_implementation"/>
+    </genEnums>
     <genDataTypes ecoreDataType="esb.ecore#//Map">
       <genTypeParameters ecoreTypeParameter="esb.ecore#//Map/K"/>
       <genTypeParameters ecoreTypeParameter="esb.ecore#//Map/V"/>
@@ -958,6 +974,9 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractEndPoint/traceEnabled"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//AbstractEndPoint/inboundPolicy"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//AbstractEndPoint/outboundPolicy"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractEndPoint/failoverRetryType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractEndPoint/failoverRetryErrorCodes"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractEndPoint/failoverNonRetryErrorCodes"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//MessageMediator">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//MessageMediator/inputConnector"/>
@@ -1556,6 +1575,11 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//CacheMediator/responseCodes"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//CacheMediator/enableCacheControl"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//CacheMediator/includeAgeHeader"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//CacheMediator/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//CacheMediator/hashGeneratorAttribute"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//CacheMediator/scope"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//CacheMediator/implementationType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//CacheMediator/cacheMediatorImplementation"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//CacheMediatorInputConnector"/>
     <genClasses ecoreClass="esb.ecore#//CacheMediatorOutputConnector"/>

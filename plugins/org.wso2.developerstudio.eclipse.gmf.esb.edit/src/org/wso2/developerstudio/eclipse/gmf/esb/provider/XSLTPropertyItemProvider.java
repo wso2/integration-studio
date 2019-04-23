@@ -78,25 +78,26 @@ public class XSLTPropertyItemProvider extends AbstractNameValueExpressionPropert
     @Override
     public String getText(Object object) {
         String propertyName = ((XSLTProperty) object).getPropertyName();
-        String propertyNameLabel = WordUtils.abbreviate(propertyName.toString(), 8, 10, " ...");
+        String propertyNameLabel = WordUtils.abbreviate(propertyName, 40, 45, " ...");
         String propertyValueType = ((XSLTProperty) object).getPropertyValueType().toString();
         String propertyValue = ((XSLTProperty) object).getPropertyValue();
 
         if (propertyValueType.equalsIgnoreCase(PropertyValueType.LITERAL.getName())) {
             return propertyName == null || propertyName.length() == 0 ? getString("_UI_XSLTProperty_type")
-                    : EEFPropertyViewUtil.spaceFormat(getString("_UI_XSLTProperty_type"))
-                            + EEFPropertyViewUtil.spaceFormat(propertyNameLabel)
-                            + EEFPropertyViewUtil.spaceFormat(propertyValue);
+                    : propertyValue != null
+                            ? getString("_UI_XSLTProperty_type") + "  -  "
+                                    + EEFPropertyViewUtil.spaceFormat(propertyNameLabel)
+                                    + EEFPropertyViewUtil.spaceFormat(propertyValue)
+                            : getString("_UI_XSLTProperty_type") + "  -  "
+                                    + EEFPropertyViewUtil.spaceFormat(propertyNameLabel);
         } else if (((XSLTProperty) object).getPropertyExpression() != null) {
             String propertyExpression = ((XSLTProperty) object).getPropertyExpression().toString();
             return propertyName == null || propertyName.length() == 0 ? getString("_UI_XSLTProperty_type")
-                    : EEFPropertyViewUtil.spaceFormat(getString("_UI_XSLTProperty_type"))
-                            + EEFPropertyViewUtil.spaceFormat(propertyNameLabel)
+                    : getString("_UI_XSLTProperty_type") + "  -  " + EEFPropertyViewUtil.spaceFormat(propertyNameLabel)
                             + EEFPropertyViewUtil.spaceFormat(propertyExpression);
         } else
             return propertyName == null || propertyName.length() == 0 ? getString("_UI_XSLTProperty_type")
-                    : EEFPropertyViewUtil.spaceFormat(getString("_UI_XSLTProperty_type"))
-                            + EEFPropertyViewUtil.spaceFormat(propertyNameLabel);
+                    : getString("_UI_XSLTProperty_type") + "  -  " + EEFPropertyViewUtil.spaceFormat(propertyNameLabel);
     }
 
     /**

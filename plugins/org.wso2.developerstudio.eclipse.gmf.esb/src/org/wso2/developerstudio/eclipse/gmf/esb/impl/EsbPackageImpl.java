@@ -157,6 +157,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EnableDisableState;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPointAddressingVersion;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPointAttachmentOptimization;
+import org.wso2.developerstudio.eclipse.gmf.esb.EndPointFailoverRetryType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPointMessageFormat;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPointProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPointPropertyScope;
@@ -3229,6 +3230,13 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * <!-- end-user-doc -->
      * @generated
      */
+    private EEnum endPointFailoverRetryTypeEEnum = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     private EEnum propertyDataTypeEEnum = null;
 
     /**
@@ -5351,6 +5359,33 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      */
     public EReference getAbstractEndPoint_OutboundPolicy() {
         return (EReference)abstractEndPointEClass.getEStructuralFeatures().get(22);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getAbstractEndPoint_FailoverRetryType() {
+        return (EAttribute)abstractEndPointEClass.getEStructuralFeatures().get(23);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getAbstractEndPoint_FailoverRetryErrorCodes() {
+        return (EAttribute)abstractEndPointEClass.getEStructuralFeatures().get(24);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getAbstractEndPoint_FailoverNonRetryErrorCodes() {
+        return (EAttribute)abstractEndPointEClass.getEStructuralFeatures().get(25);
     }
 
     /**
@@ -18444,6 +18479,15 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * <!-- end-user-doc -->
      * @generated
      */
+    public EEnum getEndPointFailoverRetryType() {
+        return endPointFailoverRetryTypeEEnum;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     public EEnum getPropertyDataType() {
         return propertyDataTypeEEnum;
     }
@@ -19697,6 +19741,9 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         createEAttribute(abstractEndPointEClass, ABSTRACT_END_POINT__TRACE_ENABLED);
         createEReference(abstractEndPointEClass, ABSTRACT_END_POINT__INBOUND_POLICY);
         createEReference(abstractEndPointEClass, ABSTRACT_END_POINT__OUTBOUND_POLICY);
+        createEAttribute(abstractEndPointEClass, ABSTRACT_END_POINT__FAILOVER_RETRY_TYPE);
+        createEAttribute(abstractEndPointEClass, ABSTRACT_END_POINT__FAILOVER_RETRY_ERROR_CODES);
+        createEAttribute(abstractEndPointEClass, ABSTRACT_END_POINT__FAILOVER_NON_RETRY_ERROR_CODES);
 
         messageMediatorEClass = createEClass(MESSAGE_MEDIATOR);
         createEReference(messageMediatorEClass, MESSAGE_MEDIATOR__INPUT_CONNECTOR);
@@ -21488,6 +21535,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         endPointTimeOutActionEEnum = createEEnum(END_POINT_TIME_OUT_ACTION);
         endPointMessageFormatEEnum = createEEnum(END_POINT_MESSAGE_FORMAT);
         endPointAttachmentOptimizationEEnum = createEEnum(END_POINT_ATTACHMENT_OPTIMIZATION);
+        endPointFailoverRetryTypeEEnum = createEEnum(END_POINT_FAILOVER_RETRY_TYPE);
         propertyDataTypeEEnum = createEEnum(PROPERTY_DATA_TYPE);
         propertyActionEEnum = createEEnum(PROPERTY_ACTION);
         propertyScopeEEnum = createEEnum(PROPERTY_SCOPE);
@@ -22156,6 +22204,9 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         initEAttribute(getAbstractEndPoint_TraceEnabled(), ecorePackage.getEBoolean(), "traceEnabled", null, 0, 1, AbstractEndPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getAbstractEndPoint_InboundPolicy(), this.getRegistryKeyProperty(), null, "inboundPolicy", null, 0, 1, AbstractEndPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getAbstractEndPoint_OutboundPolicy(), this.getRegistryKeyProperty(), null, "outboundPolicy", null, 0, 1, AbstractEndPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getAbstractEndPoint_FailoverRetryType(), this.getEndPointFailoverRetryType(), "failoverRetryType", "NON_RETRY_ERROR_CODES", 0, 1, AbstractEndPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getAbstractEndPoint_FailoverRetryErrorCodes(), ecorePackage.getEString(), "failoverRetryErrorCodes", "", 0, 1, AbstractEndPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getAbstractEndPoint_FailoverNonRetryErrorCodes(), ecorePackage.getEString(), "failoverNonRetryErrorCodes", null, 0, 1, AbstractEndPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(messageMediatorEClass, MessageMediator.class, "MessageMediator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEReference(getMessageMediator_InputConnector(), this.getMessageInputConnector(), null, "inputConnector", null, 0, 1, MessageMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -24060,6 +24111,10 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         addEEnumLiteral(endPointAttachmentOptimizationEEnum, EndPointAttachmentOptimization.LEAVE_AS_IS);
         addEEnumLiteral(endPointAttachmentOptimizationEEnum, EndPointAttachmentOptimization.MTOM);
         addEEnumLiteral(endPointAttachmentOptimizationEEnum, EndPointAttachmentOptimization.SWA);
+
+        initEEnum(endPointFailoverRetryTypeEEnum, EndPointFailoverRetryType.class, "EndPointFailoverRetryType");
+        addEEnumLiteral(endPointFailoverRetryTypeEEnum, EndPointFailoverRetryType.RETRY_ERROR_CODES);
+        addEEnumLiteral(endPointFailoverRetryTypeEEnum, EndPointFailoverRetryType.NON_RETRY_ERROR_CODES);
 
         initEEnum(propertyDataTypeEEnum, PropertyDataType.class, "PropertyDataType");
         addEEnumLiteral(propertyDataTypeEEnum, PropertyDataType.STRING);

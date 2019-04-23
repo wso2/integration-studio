@@ -32,6 +32,7 @@ import org.apache.synapse.config.xml.rest.VersionStrategySerializer;
 import org.apache.synapse.rest.API;
 import org.apache.synapse.rest.Handler;
 import org.apache.synapse.rest.Resource;
+import org.apache.synapse.util.CommentListUtil;
 
 /**
  * Serialize an API
@@ -103,6 +104,7 @@ public class CustomAPISerializer {
             }
             apiElt.addChild(handlersElt);
         }
+        CommentListUtil.serializeComments(apiElt, api.getCommentsList());
         return apiElt;
     }
 

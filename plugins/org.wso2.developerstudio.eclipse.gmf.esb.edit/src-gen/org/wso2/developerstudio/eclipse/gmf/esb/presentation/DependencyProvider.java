@@ -15,21 +15,28 @@
 * specific language governing permissions and limitations
 * under the License.
 */
-package org.wso2.developerstudio.eclipse.gmf.esb.parts.forms;
+package org.wso2.developerstudio.eclipse.gmf.esb.presentation;
 
-import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.Writer;
 import java.lang.reflect.InvocationTargetException;
+import java.net.UnknownHostException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -40,43 +47,51 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.apache.maven.execution.MavenExecutionRequest;
+import org.apache.maven.execution.MavenExecutionResult;
+import org.apache.maven.lifecycle.LifecycleExecutionException;
+import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.MultiStatus;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
+import org.eclipse.m2e.core.MavenPlugin;
+import org.eclipse.m2e.core.embedder.IMaven;
+import org.eclipse.m2e.core.internal.MavenPluginActivator;
+import org.eclipse.m2e.core.internal.project.registry.MavenProjectManager;
+import org.eclipse.m2e.core.project.IMavenProjectFacade;
+import org.eclipse.m2e.core.project.ResolverConfiguration;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
-import org.eclipse.swt.events.FocusEvent;
-import org.eclipse.swt.events.FocusListener;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
-import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.Rectangle;
-import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.FormAttachment;
 import org.eclipse.swt.layout.FormData;
 import org.eclipse.swt.layout.FormLayout;
-import org.eclipse.swt.layout.GridData;
-import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Dialog;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
@@ -88,8 +103,6 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.forms.widgets.Form;
-import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleException;
 import org.w3c.dom.Attr;
@@ -98,6 +111,9 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.wso2.carbon.tools.converter.BundleGeneratorTool;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.Activator;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.xml.sax.SAXException;
 
 public class DependencyProvider extends Dialog {
@@ -112,6 +128,13 @@ public class DependencyProvider extends Dialog {
     private static final String microesbLibPath = "runtime" + File.separator + "microesb" + File.separator + "lib";
     public static final String EI_TOOLING_HOME_MACOS = File.separator + "Applications" + File.separator
             + "DeveloperStudio.app" + File.separator + "Contents" + File.separator + "MacOS";
+    public static final String POM_XML = "pom.xml";
+    public static final String TARGET = "target";
+    public static final String MYSQL = "MYSQL";
+    public static final String MSSQL = "MSSQL";
+    public static final String POSTGRESQL = "POSTGRESQL";
+    public static final String ORACLE = "ORACLE";
+    public static final String DEPENDENCIES = "dependencies";
     private Font font;
     private Combo versionComboBox;
     private String groupId;
@@ -128,7 +151,7 @@ public class DependencyProvider extends Dialog {
     private Button downloadButton;
     private boolean jarProvided;
     private ConnectionObj connectionObj;
-    private Composite connectionTypeGroup;
+    private Composite connectionComposite;
     private Label conectionTypeLabel;
     private Combo connectiontypeComboBox;
     private Group selectDriverGroup;
@@ -140,8 +163,8 @@ public class DependencyProvider extends Dialog {
     private Composite browseLocalComposite;
     private Label browseLabel;
     private Button browseButton;
-    private Composite connectionGroup;
-    private Group inputTypeRadioGroup1;
+    private Composite connectionDetailsComposite;
+    private Group connectionDetailsGroup;
     private Label hostLabel;
     private Text hostTextField;
     private Label portLabel;
@@ -164,23 +187,25 @@ public class DependencyProvider extends Dialog {
     private Shell dialogShell;
     private String OS_TYPE;
     private String[] connectionURLArray;
+    private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
     public DependencyProvider(Shell parent, int style) {
         super(parent, style);
         eclipseWorkspace = ResourcesPlugin.getWorkspace().getRoot().getLocation().toString();
-        IEditorPart editorPart = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
+        IEditorPart editorPart = PlatformUI.getWorkbench().getActiveWorkbenchWindow()
+                .getActivePage().getActiveEditor();
         if (editorPart != null) {
             IFileEditorInput input = (IFileEditorInput) editorPart.getEditorInput();
             IFile file = input.getFile();
             IProject activeProject = file.getProject();
             activeProjectName = activeProject.getName();
         }
-        jarOutputPath = eclipseWorkspace + File.separator + activeProjectName + File.separator + "dependancies";
-        dependencyDir = eclipseWorkspace + File.separator + activeProjectName + File.separator + "dependancies";
+        jarOutputPath = eclipseWorkspace + File.separator + activeProjectName + File.separator + DEPENDENCIES;
+        dependencyDir = eclipseWorkspace + File.separator + activeProjectName + File.separator + DEPENDENCIES;
         OS_TYPE = System.getProperty(OS_NAME, SYSTEM_PROPERTY_TYPE_GENERIC).toLowerCase(Locale.ENGLISH);
     }
 
-    void open(ConnectionObj connectionObj) {
+    public void open(ConnectionObj connectionObj) {
         this.connectionObj = connectionObj;
 
         dialogShell = new Shell(getParent(), SWT.DIALOG_TRIM | SWT.APPLICATION_MODAL);
@@ -203,130 +228,132 @@ public class DependencyProvider extends Dialog {
             connectionTypeOffset = 7;
         }
 
-        connectionTypeGroup = new Composite(dialogShell, SWT.NONE);
+        connectionComposite = new Composite(dialogShell, SWT.NONE);
         {
-            FormLayout inputTypeRadioGroupRowLayout = new FormLayout();
-            connectionTypeGroup.setLayout(inputTypeRadioGroupRowLayout);
+            FormLayout connectionTypeGroupLayout = new FormLayout();
+            connectionComposite.setLayout(connectionTypeGroupLayout);
 
-            FormData inputTypeRadioGroupLayout = new FormData();
-            inputTypeRadioGroupLayout.top = new FormAttachment(0);
-            inputTypeRadioGroupLayout.left = new FormAttachment(1);
-            inputTypeRadioGroupLayout.right = new FormAttachment(100);
-            connectionTypeGroup.setLayoutData(inputTypeRadioGroupLayout);
+            FormData connectionTypeGroupLayoutData = new FormData();
+            connectionTypeGroupLayoutData.top = new FormAttachment(0);
+            connectionTypeGroupLayoutData.left = new FormAttachment(1);
+            connectionTypeGroupLayoutData.right = new FormAttachment(100);
+            connectionComposite.setLayoutData(connectionTypeGroupLayoutData);
 
-            conectionTypeLabel = new Label(connectionTypeGroup, SWT.NONE);
+            conectionTypeLabel = new Label(connectionComposite, SWT.NONE);
             {
                 conectionTypeLabel.setText("Connection Type : *");
 
-                FormData xPathLabelLayoutData = new FormData();
-                xPathLabelLayoutData.top = new FormAttachment(10);
-                xPathLabelLayoutData.left = new FormAttachment(0);
-                conectionTypeLabel.setLayoutData(xPathLabelLayoutData);
+                FormData layoutData = new FormData();
+                layoutData.top = new FormAttachment(10);
+                layoutData.left = new FormAttachment(0);
+                conectionTypeLabel.setLayoutData(layoutData);
             }
 
-            connectiontypeComboBox = new Combo(connectionTypeGroup, SWT.READ_ONLY);
+            connectiontypeComboBox = new Combo(connectionComposite, SWT.READ_ONLY);
             {
                 connectiontypeComboBox.setItems(new String[] { "Select Connection Type" });
                 connectiontypeComboBox.setText("Select Connection Type");
                 connectiontypeComboBox.setItems(databaseArr);
 
-                FormData xPathLabelLayoutData = new FormData();
-                xPathLabelLayoutData.top = new FormAttachment(connectionTypeOffset);
-                xPathLabelLayoutData.right = new FormAttachment(99);
-                xPathLabelLayoutData.left = new FormAttachment(conectionTypeLabel, 10);
-                connectiontypeComboBox.setLayoutData(xPathLabelLayoutData);
+                FormData layoutData = new FormData();
+                layoutData.top = new FormAttachment(connectionTypeOffset);
+                layoutData.right = new FormAttachment(99);
+                layoutData.left = new FormAttachment(conectionTypeLabel, 10);
+                connectiontypeComboBox.setLayoutData(layoutData);
             }
 
             // input type radio button group
-            selectDriverGroup = new Group(connectionTypeGroup, SWT.NONE);
+            selectDriverGroup = new Group(connectionComposite, SWT.NONE);
             {
-                FormLayout inputTypeRadioGroupRowLayout1 = new FormLayout();
-                selectDriverGroup.setLayout(inputTypeRadioGroupRowLayout1);
+                FormLayout groupLayout = new FormLayout();
+                selectDriverGroup.setLayout(groupLayout);
 
-                FormData inputTypeRadioGroupLayout1 = new FormData();
-                inputTypeRadioGroupLayout1.top = new FormAttachment(conectionTypeLabel, 10);
-                inputTypeRadioGroupLayout1.left = new FormAttachment(0);
-                inputTypeRadioGroupLayout1.right = new FormAttachment(99);
+                FormData groupData = new FormData();
+                groupData.top = new FormAttachment(conectionTypeLabel, 10);
+                groupData.left = new FormAttachment(0);
+                groupData.right = new FormAttachment(99);
                 selectDriverGroup.setText("Select driver");
-                selectDriverGroup.setLayoutData(inputTypeRadioGroupLayout1);
+                selectDriverGroup.setLayoutData(groupData);
 
                 serverRadioButton = new Button(selectDriverGroup, SWT.RADIO);
                 {
-                    FormData xPathLabelLayoutData = new FormData();
-                    xPathLabelLayoutData.top = new FormAttachment(selectDriverGroup, 10);
-                    xPathLabelLayoutData.left = new FormAttachment(3);
+                    FormData layoutData = new FormData();
+                    layoutData.top = new FormAttachment(selectDriverGroup, 10);
+                    layoutData.left = new FormAttachment(3);
 
                     serverRadioButton.setText("Get from the server");
                     serverRadioButton.setSelection(true);
-                    serverRadioButton.setLayoutData(xPathLabelLayoutData);
+                    serverRadioButton.setLayoutData(layoutData);
 
                 }
                 browseFileRadioButton = new Button(selectDriverGroup, SWT.RADIO);
                 {
 
-                    FormData xPathLabelLayoutData = new FormData();
-                    xPathLabelLayoutData.top = new FormAttachment(selectDriverGroup, 10);
-                    xPathLabelLayoutData.left = new FormAttachment(60);
-                    xPathLabelLayoutData.right = new FormAttachment(90);
+                    FormData layoutData = new FormData();
+                    layoutData.top = new FormAttachment(selectDriverGroup, 10);
+                    layoutData.left = new FormAttachment(60);
+                    layoutData.right = new FormAttachment(90);
 
                     browseFileRadioButton.setText("Browse local");
-                    browseFileRadioButton.setLayoutData(xPathLabelLayoutData);
+                    browseFileRadioButton.setLayoutData(layoutData);
                 }
 
             }
-            
+
             serverComposite = new Composite(selectDriverGroup, SWT.NONE);
             {
 
-                FormLayout inputTypeRadioGroupRowLayout2 = new FormLayout();
-                serverComposite.setLayout(inputTypeRadioGroupRowLayout2);
+                FormLayout groupLayout = new FormLayout();
+                serverComposite.setLayout(groupLayout);
 
-                FormData inputTypeRadioGroupLayout2 = new FormData();
-                inputTypeRadioGroupLayout2.top = new FormAttachment(selectDriverGroup, 10);
-                inputTypeRadioGroupLayout2.left = new FormAttachment(0);
-                inputTypeRadioGroupLayout2.right = new FormAttachment(100);
+                FormData groupData = new FormData();
+                groupData.top = new FormAttachment(selectDriverGroup, 10);
+                groupData.left = new FormAttachment(0);
+                groupData.right = new FormAttachment(100);
 
-                serverComposite.setLayoutData(inputTypeRadioGroupLayout2);
+                serverComposite.setLayoutData(groupData);
 
                 versionLabel = new Label(serverComposite, SWT.NONE);
                 {
                     versionLabel.setText("Version");
 
-                    FormData xPathLabelLayoutData = new FormData();
-                    xPathLabelLayoutData.top = new FormAttachment(selectDriverGroup, offSet + 5);
-                    xPathLabelLayoutData.left = new FormAttachment(4);
-                    versionLabel.setLayoutData(xPathLabelLayoutData);
+                    FormData layoutData = new FormData();
+                    layoutData.top = new FormAttachment(selectDriverGroup, offSet + 5);
+                    layoutData.left = new FormAttachment(4);
+                    versionLabel.setLayoutData(layoutData);
                 }
 
                 versionComboBox = new Combo(serverComposite, SWT.READ_ONLY);
                 {
                     versionComboBox.setItems(new String[] { "Select Version" });
 
-                    FormData filePathTextFieldLayoutData = new FormData();
-                    filePathTextFieldLayoutData.top = new FormAttachment(selectDriverGroup, offSet);
-                    filePathTextFieldLayoutData.left = new FormAttachment(versionLabel, 10);
-                    filePathTextFieldLayoutData.right = new FormAttachment(70);
-                    versionComboBox.setLayoutData(filePathTextFieldLayoutData);
+                    FormData layoutData = new FormData();
+                    layoutData.top = new FormAttachment(selectDriverGroup, offSet);
+                    layoutData.left = new FormAttachment(versionLabel, 10);
+                    layoutData.right = new FormAttachment(70);
+                    versionComboBox.setLayoutData(layoutData);
                 }
 
                 downloadButton = new Button(serverComposite, SWT.NONE);
                 {
                     downloadButton.setText("Download");
-                    FormData browseButtonLayoutData = new FormData();
-                    browseButtonLayoutData.top = new FormAttachment(selectDriverGroup, offSet);
-                    browseButtonLayoutData.left = new FormAttachment(versionComboBox, 10);
-                    browseButtonLayoutData.right = new FormAttachment(99);
-                    downloadButton.setLayoutData(browseButtonLayoutData);
+
+                    FormData layoutData = new FormData();
+                    layoutData.top = new FormAttachment(selectDriverGroup, offSet);
+                    layoutData.left = new FormAttachment(versionComboBox, 10);
+                    layoutData.right = new FormAttachment(99);
+                    downloadButton.setLayoutData(layoutData);
                 }
 
                 infoLabel = new Label(serverComposite, SWT.NONE);
                 {
                     infoLabel.setText("* Selected driver is already downloaded");
                     infoLabel.setFont(font);
-                    FormData xPathLabelLayoutData = new FormData();
-                    xPathLabelLayoutData.top = new FormAttachment(versionLabel, offSet - 20);
-                    xPathLabelLayoutData.left = new FormAttachment(4);
-                    infoLabel.setLayoutData(xPathLabelLayoutData);
+
+                    FormData layoutData = new FormData();
+                    layoutData.top = new FormAttachment(versionLabel, offSet - 20);
+                    layoutData.left = new FormAttachment(4);
+                    infoLabel.setLayoutData(layoutData);
                 }
 
             }
@@ -334,187 +361,187 @@ public class DependencyProvider extends Dialog {
             browseLocalComposite = new Composite(selectDriverGroup, SWT.NONE);
             {
 
-                FormLayout inputTypeRadioGroupRowLayout2 = new FormLayout();
-                browseLocalComposite.setLayout(inputTypeRadioGroupRowLayout2);
+                FormLayout groupLayout = new FormLayout();
+                browseLocalComposite.setLayout(groupLayout);
 
-                FormData inputTypeRadioGroupLayout2 = new FormData();
-                inputTypeRadioGroupLayout2.top = new FormAttachment(connectionTypeGroup, 10);
-                inputTypeRadioGroupLayout2.left = new FormAttachment(0);
-                inputTypeRadioGroupLayout2.right = new FormAttachment(100);
-
-                browseLocalComposite.setLayoutData(inputTypeRadioGroupLayout2);
+                FormData groupLayoutData = new FormData();
+                groupLayoutData.top = new FormAttachment(connectionComposite, 10);
+                groupLayoutData.left = new FormAttachment(0);
+                groupLayoutData.right = new FormAttachment(100);
+                browseLocalComposite.setLayoutData(groupLayoutData);
 
                 browseLabel = new Label(browseLocalComposite, SWT.NONE);
                 {
                     browseLabel.setText("Browse");
 
-                    FormData xPathLabelLayoutData = new FormData();
-                    xPathLabelLayoutData.top = new FormAttachment(selectDriverGroup, offSet + 5);
-                    xPathLabelLayoutData.left = new FormAttachment(4);
+                    FormData layoutData = new FormData();
+                    layoutData.top = new FormAttachment(selectDriverGroup, offSet + 5);
+                    layoutData.left = new FormAttachment(4);
 
-                    browseLabel.setLayoutData(xPathLabelLayoutData);
+                    browseLabel.setLayoutData(layoutData);
                 }
 
                 jarLocationText = new Text(browseLocalComposite, SWT.BORDER);
                 {
 
-                    FormData filePathTextFieldLayoutData = new FormData();
-                    filePathTextFieldLayoutData.top = new FormAttachment(selectDriverGroup, offSet);
-                    filePathTextFieldLayoutData.left = new FormAttachment(browseLabel, 10);
-                    filePathTextFieldLayoutData.right = new FormAttachment(70);
-                    jarLocationText.setLayoutData(filePathTextFieldLayoutData);
+                    FormData layoutData = new FormData();
+                    layoutData.top = new FormAttachment(selectDriverGroup, offSet);
+                    layoutData.left = new FormAttachment(browseLabel, 10);
+                    layoutData.right = new FormAttachment(70);
+                    jarLocationText.setLayoutData(layoutData);
                 }
 
                 browseButton = new Button(browseLocalComposite, SWT.NONE);
                 {
                     browseButton.setText("Browse File");
-                    FormData browseButtonLayoutData = new FormData();
-                    browseButtonLayoutData.top = new FormAttachment(selectDriverGroup, offSet);
-                    browseButtonLayoutData.left = new FormAttachment(jarLocationText, 10);
-                    browseButtonLayoutData.right = new FormAttachment(99);
-                    browseButton.setLayoutData(browseButtonLayoutData);
+
+                    FormData layoutData = new FormData();
+                    layoutData.top = new FormAttachment(selectDriverGroup, offSet);
+                    layoutData.left = new FormAttachment(jarLocationText, 10);
+                    layoutData.right = new FormAttachment(99);
+                    browseButton.setLayoutData(layoutData);
                 }
 
             }
 
         }
 
-        connectionGroup = new Composite(dialogShell, SWT.NONE);
+        connectionDetailsComposite = new Composite(dialogShell, SWT.NONE);
         {
-            FormLayout inputTypeRadioGroupRowLayout = new FormLayout();
-            connectionGroup.setLayout(inputTypeRadioGroupRowLayout);
+            FormLayout connectionDetailsCompositeLayout = new FormLayout();
+            connectionDetailsComposite.setLayout(connectionDetailsCompositeLayout);
 
-            FormData inputTypeRadioGroupLayout = new FormData();
-            inputTypeRadioGroupLayout.top = new FormAttachment(connectionTypeGroup, 0);
-            inputTypeRadioGroupLayout.left = new FormAttachment(1);
-            inputTypeRadioGroupLayout.right = new FormAttachment(100);
-            connectionGroup.setLayoutData(inputTypeRadioGroupLayout);
+            FormData connectionDetailsCompositeLayoutData = new FormData();
+            connectionDetailsCompositeLayoutData.top = new FormAttachment(connectionComposite, 0);
+            connectionDetailsCompositeLayoutData.left = new FormAttachment(1);
+            connectionDetailsCompositeLayoutData.right = new FormAttachment(100);
+            connectionDetailsComposite.setLayoutData(connectionDetailsCompositeLayoutData);
 
-            inputTypeRadioGroup1 = new Group(connectionGroup, SWT.NONE);
+            connectionDetailsGroup = new Group(connectionDetailsComposite, SWT.NONE);
             {
-                FormLayout inputTypeRadioGroupRowLayout1 = new FormLayout();
-                inputTypeRadioGroup1.setLayout(inputTypeRadioGroupRowLayout1);
+                FormLayout connectionDetailsGroupLayout = new FormLayout();
+                connectionDetailsGroup.setLayout(connectionDetailsGroupLayout);
 
-                FormData inputTypeRadioGroupLayout1 = new FormData();
-                inputTypeRadioGroupLayout1.top = new FormAttachment(conectionTypeLabel, 10);
-                inputTypeRadioGroupLayout1.left = new FormAttachment(0);
-                inputTypeRadioGroupLayout1.right = new FormAttachment(99);
+                FormData connectionDetailsGroupLayoutData = new FormData();
+                connectionDetailsGroupLayoutData.top = new FormAttachment(conectionTypeLabel, 10);
+                connectionDetailsGroupLayoutData.left = new FormAttachment(0);
+                connectionDetailsGroupLayoutData.right = new FormAttachment(99);
 
-                inputTypeRadioGroup1.setText("Connection");
-                inputTypeRadioGroup1.setLayoutData(inputTypeRadioGroupLayout1);
+                connectionDetailsGroup.setText("Connection");
+                connectionDetailsGroup.setLayoutData(connectionDetailsGroupLayoutData);
 
-                hostLabel = new Label(inputTypeRadioGroup1, SWT.NONE);
+                hostLabel = new Label(connectionDetailsGroup, SWT.NONE);
                 {
                     hostLabel.setText("Host: * ");
 
-                    FormData xPathLabelLayoutData = new FormData();
-                    xPathLabelLayoutData.top = new FormAttachment(conectionTypeLabel, 10);
-                    xPathLabelLayoutData.left = new FormAttachment(4);
-                    xPathLabelLayoutData.right = new FormAttachment(20);
-                    hostLabel.setLayoutData(xPathLabelLayoutData);
+                    FormData layoutData = new FormData();
+                    layoutData.top = new FormAttachment(conectionTypeLabel, 10);
+                    layoutData.left = new FormAttachment(4);
+                    layoutData.right = new FormAttachment(20);
+                    hostLabel.setLayoutData(layoutData);
                 }
 
-                hostTextField = new Text(inputTypeRadioGroup1, SWT.BORDER);
+                hostTextField = new Text(connectionDetailsGroup, SWT.BORDER);
                 {
 
-                    FormData filePathTextFieldLayoutData = new FormData();
-                    filePathTextFieldLayoutData.top = new FormAttachment(conectionTypeLabel, 5);
-                    filePathTextFieldLayoutData.left = new FormAttachment(hostLabel, 5);
-                    filePathTextFieldLayoutData.right = new FormAttachment(50);
-                    hostTextField.setLayoutData(filePathTextFieldLayoutData);
+                    FormData layoutData = new FormData();
+                    layoutData.top = new FormAttachment(conectionTypeLabel, 5);
+                    layoutData.left = new FormAttachment(hostLabel, 5);
+                    layoutData.right = new FormAttachment(50);
+                    hostTextField.setLayoutData(layoutData);
 
                 }
 
-                portLabel = new Label(inputTypeRadioGroup1, SWT.NONE);
+                portLabel = new Label(connectionDetailsGroup, SWT.NONE);
                 {
                     portLabel.setText("Port: *");
 
-                    FormData xPathLabelLayoutData = new FormData();
-                    xPathLabelLayoutData.top = new FormAttachment(conectionTypeLabel, 10);
-                    xPathLabelLayoutData.left = new FormAttachment(hostTextField, 6);
-                    portLabel.setLayoutData(xPathLabelLayoutData);
+                    FormData layoutData = new FormData();
+                    layoutData.top = new FormAttachment(conectionTypeLabel, 10);
+                    layoutData.left = new FormAttachment(hostTextField, 6);
+                    portLabel.setLayoutData(layoutData);
                 }
 
-                portTextField = new Text(inputTypeRadioGroup1, SWT.BORDER);
+                portTextField = new Text(connectionDetailsGroup, SWT.BORDER);
                 {
 
-                    FormData filePathTextFieldLayoutData = new FormData();
-                    filePathTextFieldLayoutData.top = new FormAttachment(conectionTypeLabel, 5);
-                    filePathTextFieldLayoutData.left = new FormAttachment(65);
-                    filePathTextFieldLayoutData.right = new FormAttachment(99);
-                    portTextField.setLayoutData(filePathTextFieldLayoutData);
+                    FormData layoutData = new FormData();
+                    layoutData.top = new FormAttachment(conectionTypeLabel, 5);
+                    layoutData.left = new FormAttachment(65);
+                    layoutData.right = new FormAttachment(99);
+                    portTextField.setLayoutData(layoutData);
 
                 }
 
-                userNameLabel = new Label(inputTypeRadioGroup1, SWT.NONE);
+                userNameLabel = new Label(connectionDetailsGroup, SWT.NONE);
                 {
                     userNameLabel.setText("UserName :");
 
-                    FormData xPathLabelLayoutData = new FormData();
-                    xPathLabelLayoutData.top = new FormAttachment(hostTextField, 10);
-                    xPathLabelLayoutData.left = new FormAttachment(4);
-                    xPathLabelLayoutData.right = new FormAttachment(20);
-                    userNameLabel.setLayoutData(xPathLabelLayoutData);
+                    FormData layoutData = new FormData();
+                    layoutData.top = new FormAttachment(hostTextField, 10);
+                    layoutData.left = new FormAttachment(4);
+                    layoutData.right = new FormAttachment(20);
+                    userNameLabel.setLayoutData(layoutData);
                 }
 
-                userNameTextField = new Text(inputTypeRadioGroup1, SWT.BORDER);
+                userNameTextField = new Text(connectionDetailsGroup, SWT.BORDER);
                 {
 
-                    FormData filePathTextFieldLayoutData = new FormData();
-                    filePathTextFieldLayoutData.top = new FormAttachment(hostTextField, 5);
-                    filePathTextFieldLayoutData.left = new FormAttachment(userNameLabel, 5);
-                    filePathTextFieldLayoutData.right = new FormAttachment(50);
-                    userNameTextField.setLayoutData(filePathTextFieldLayoutData);
+                    FormData layoutData = new FormData();
+                    layoutData.top = new FormAttachment(hostTextField, 5);
+                    layoutData.left = new FormAttachment(userNameLabel, 5);
+                    layoutData.right = new FormAttachment(50);
+                    userNameTextField.setLayoutData(layoutData);
 
                 }
 
-                passwordLabel = new Label(inputTypeRadioGroup1, SWT.NONE);
+                passwordLabel = new Label(connectionDetailsGroup, SWT.NONE);
                 {
                     passwordLabel.setText("Password: ");
 
-                    FormData xPathLabelLayoutData = new FormData();
-                    xPathLabelLayoutData.top = new FormAttachment(portTextField, 10);
-                    xPathLabelLayoutData.left = new FormAttachment(hostTextField, 4);
+                    FormData layoutData = new FormData();
+                    layoutData.top = new FormAttachment(portTextField, 10);
+                    layoutData.left = new FormAttachment(hostTextField, 4);
 
-                    passwordLabel.setLayoutData(xPathLabelLayoutData);
+                    passwordLabel.setLayoutData(layoutData);
                 }
 
-                passwordTextField = new Text(inputTypeRadioGroup1, SWT.BORDER);
+                passwordTextField = new Text(connectionDetailsGroup, SWT.BORDER);
                 {
 
-                    FormData filePathTextFieldLayoutData = new FormData();
-                    filePathTextFieldLayoutData.top = new FormAttachment(portTextField, 5);
-                    filePathTextFieldLayoutData.left = new FormAttachment(65);
-                    filePathTextFieldLayoutData.right = new FormAttachment(99);
-                    passwordTextField.setLayoutData(filePathTextFieldLayoutData);
+                    FormData layoutData = new FormData();
+                    layoutData.top = new FormAttachment(portTextField, 5);
+                    layoutData.left = new FormAttachment(65);
+                    layoutData.right = new FormAttachment(99);
+                    passwordTextField.setLayoutData(layoutData);
 
                 }
-                databaseLabel = new Label(inputTypeRadioGroup1, SWT.NONE);
+                databaseLabel = new Label(connectionDetailsGroup, SWT.NONE);
                 {
                     databaseLabel.setText("Dastabase: *");
 
-                    FormData xPathLabelLayoutData = new FormData();
-                    xPathLabelLayoutData.top = new FormAttachment(userNameLabel, 10);
-                    xPathLabelLayoutData.left = new FormAttachment(4);
-                    xPathLabelLayoutData.right = new FormAttachment(20);
-                    databaseLabel.setLayoutData(xPathLabelLayoutData);
+                    FormData layoutData = new FormData();
+                    layoutData.top = new FormAttachment(userNameLabel, 10);
+                    layoutData.left = new FormAttachment(4);
+                    layoutData.right = new FormAttachment(20);
+                    databaseLabel.setLayoutData(layoutData);
                 }
 
-                databaseTextField = new Text(inputTypeRadioGroup1, SWT.BORDER);
+                databaseTextField = new Text(connectionDetailsGroup, SWT.BORDER);
                 {
-                    FormData filePathTextFieldLayoutData = new FormData();
-                    filePathTextFieldLayoutData.top = new FormAttachment(userNameTextField, 05);
-                    filePathTextFieldLayoutData.left = new FormAttachment(databaseLabel, 5);
-                    filePathTextFieldLayoutData.right = new FormAttachment(50);
+                    FormData layoutData = new FormData();
+                    layoutData.top = new FormAttachment(userNameTextField, 05);
+                    layoutData.left = new FormAttachment(databaseLabel, 5);
+                    layoutData.right = new FormAttachment(50);
 
-                    databaseTextField.setLayoutData(filePathTextFieldLayoutData);
+                    databaseTextField.setLayoutData(layoutData);
 
                 }
-                emptyLabel = new Label(inputTypeRadioGroup1, SWT.NONE);// browseLabel
+                emptyLabel = new Label(connectionDetailsGroup, SWT.NONE);// browseLabel
                 {
-                    FormData xPathLabelLayoutData = new FormData();
-                    xPathLabelLayoutData.top = new FormAttachment(databaseTextField);
-                    emptyLabel.setLayoutData(xPathLabelLayoutData);
+                    FormData layoutData = new FormData();
+                    layoutData.top = new FormAttachment(databaseTextField);
+                    emptyLabel.setLayoutData(layoutData);
                 }
             }
         }
@@ -522,32 +549,32 @@ public class DependencyProvider extends Dialog {
         testConnectionButton = new Button(dialogShell, SWT.BUTTON1);
         {
 
-            FormData xPathLabelLayoutData = new FormData();
-            xPathLabelLayoutData.top = new FormAttachment(connectionGroup, 10);
-            xPathLabelLayoutData.left = new FormAttachment(50);
-            xPathLabelLayoutData.right = new FormAttachment(75);
+            FormData layoutData = new FormData();
+            layoutData.top = new FormAttachment(connectionDetailsComposite, 10);
+            layoutData.left = new FormAttachment(50);
+            layoutData.right = new FormAttachment(75);
             testConnectionButton.setText("Test Connection");
-            testConnectionButton.setLayoutData(xPathLabelLayoutData);
+            testConnectionButton.setLayoutData(layoutData);
         }
         okButton = new Button(dialogShell, SWT.BUTTON1);
         {
 
-            FormData xPathLabelLayoutData = new FormData();
-            xPathLabelLayoutData.top = new FormAttachment(connectionGroup, 10);
-            xPathLabelLayoutData.left = new FormAttachment(testConnectionButton, 4);
-            xPathLabelLayoutData.right = new FormAttachment(85);
+            FormData layoutData = new FormData();
+            layoutData.top = new FormAttachment(connectionDetailsComposite, 10);
+            layoutData.left = new FormAttachment(testConnectionButton, 4);
+            layoutData.right = new FormAttachment(85);
             okButton.setText("Save");
-            okButton.setLayoutData(xPathLabelLayoutData);
+            okButton.setLayoutData(layoutData);
         }
         cancelButton = new Button(dialogShell, SWT.BUTTON1);
         {
 
-            FormData xPathLabelLayoutData = new FormData();
-            xPathLabelLayoutData.top = new FormAttachment(connectionGroup, 10);
-            xPathLabelLayoutData.left = new FormAttachment(okButton, 4);
-            xPathLabelLayoutData.right = new FormAttachment(99);
+            FormData layoutData = new FormData();
+            layoutData.top = new FormAttachment(connectionDetailsComposite, 10);
+            layoutData.left = new FormAttachment(okButton, 4);
+            layoutData.right = new FormAttachment(99);
             cancelButton.setText("Cancel");
-            cancelButton.setLayoutData(xPathLabelLayoutData);
+            cancelButton.setLayoutData(layoutData);
         }
 
         serverRadioButton.addSelectionListener(new SelectionAdapter() {
@@ -582,6 +609,10 @@ public class DependencyProvider extends Dialog {
                     serverComposite.setVisible(false);
                     serverRadioButton.setEnabled(true);
 
+                    jarLocationText.setEnabled(true);
+                    jarLocationText.setText("");
+                    browseButton.setEnabled(true);
+
                     testConnectionButton.setEnabled(false);
                     okButton.setEnabled(false);
 
@@ -589,6 +620,7 @@ public class DependencyProvider extends Dialog {
 
                     jarProvided = true;
                     inputFeildsSetEnabled(false);
+
                 }
             }
         });
@@ -617,7 +649,7 @@ public class DependencyProvider extends Dialog {
                     jarLocationText.setEnabled(false);
                     break;
 
-                case "MYSQL":
+                case MYSQL:
                     versionComboBox.setItems(mysqlVersionArr);
                     groupId = "mysql";
                     artifactId = "mysql-connector-java";
@@ -626,7 +658,7 @@ public class DependencyProvider extends Dialog {
                     setDefaults("localhost", "3306");
                     break;
 
-                case "MSSQL":
+                case MSSQL:
                     versionComboBox.setItems(mssqlVersionArr);
                     groupId = "com.microsoft.sqlserver";
                     artifactId = "mssql-jdbc";
@@ -635,7 +667,7 @@ public class DependencyProvider extends Dialog {
                     setDefaults("localhost", "1433");
                     break;
 
-                case "ORACLE":
+                case ORACLE:
                     downloadButton.setEnabled(false);
                     jdbcDriver = "com.oracle.jdbc.Driver";
                     setDefaults("SERVER_NAME", "PORT");
@@ -643,6 +675,7 @@ public class DependencyProvider extends Dialog {
 
                     browseFileRadioButton.setSelection(true);
                     serverRadioButton.setSelection(false);
+                    serverRadioButton.setEnabled(false);
 
                     serverComposite.setVisible(false);
                     browseLocalComposite.setVisible(true);
@@ -656,7 +689,7 @@ public class DependencyProvider extends Dialog {
 
                     break;
 
-                case "POSTGRESQL":
+                case POSTGRESQL:
                     versionComboBox.setItems(postgresSqlVersionArr);
                     groupId = "org.postgresql";
                     artifactId = "postgresql";
@@ -667,6 +700,7 @@ public class DependencyProvider extends Dialog {
 
                 }
                 jarLocationText.setText("");
+                versionComboBox.select(0);
             }
 
             public void widgetDefaultSelected(SelectionEvent e) {
@@ -702,9 +736,11 @@ public class DependencyProvider extends Dialog {
                     downloadButton.setEnabled(false);
                     testConnectionButton.setEnabled(false);
                     okButton.setEnabled(false);
+
+                } else {
+                    enableButtonsIfDataIsAvailable();
                 }
 
-                enableButtonsIfDataIsAvailable();
             }
 
             @Override
@@ -773,10 +809,9 @@ public class DependencyProvider extends Dialog {
                 createPOM(denpendency, dependencyDir, jarOutputPath);
                 progressMonitorDialog = new ProgressMonitorDialog(dialogShell);
                 try {
-                    progressMonitorDialog.run(true, true, new LongRunningOperation(true, dialogShell));
+                    progressMonitorDialog.run(true, true, new DownloadProgress(true, dialogShell));
                 } catch (Exception e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
+                    log.error("Exception", e);
                 }
             }
         });
@@ -787,7 +822,7 @@ public class DependencyProvider extends Dialog {
                 fillConnectionObj();
                 try {
                     File file = new File(eclipseWorkspace + File.separator + activeProjectName + File.separator
-                            + "dependancies" + File.separator
+                            + DEPENDENCIES + File.separator
                             + getDownlodedJarByName(connectiontypeComboBox.getText(), versionComboBox.getText()));
 
                     if (file.exists()) {
@@ -795,7 +830,7 @@ public class DependencyProvider extends Dialog {
                                 + File.separator + file.getName()));
                     }
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    log.error("Exception while copying files", e);
                 }
                 dialogShell.dispose();
             }
@@ -811,8 +846,8 @@ public class DependencyProvider extends Dialog {
         cancelButton.addListener(SWT.Selection, new Listener() {
             @Override
             public void handleEvent(org.eclipse.swt.widgets.Event event) {
-                remove(dependencyDir + "/target");
-                remove(dependencyDir + "/pom.xml");
+                remove(dependencyDir + File.separator + TARGET);
+                remove(dependencyDir + File.separator + POM_XML);
                 dialogShell.dispose();
             }
         });
@@ -836,7 +871,6 @@ public class DependencyProvider extends Dialog {
             serverRadioButton.setEnabled(true);
             serverRadioButton.setSelection(true);
 
-            versionComboBox.select(0);
             downloadButton.setEnabled(false);
 
             infoLabel.setVisible(false);
@@ -857,7 +891,8 @@ public class DependencyProvider extends Dialog {
 
         setDataFromConnectionURL();
 
-        // Open dialog.
+        versionComboBox.select(0);
+
         dialogShell.layout();
         dialogShell.pack();
 
@@ -870,7 +905,7 @@ public class DependencyProvider extends Dialog {
 
         Display display = dialogShell.getDisplay();
 
-        Monitor primary = display.getPrimaryMonitor();
+        Monitor primary = display.getActiveShell().getMonitor();
 
         /** get the size of the screen */
         Rectangle bounds = primary.getBounds();
@@ -908,9 +943,10 @@ public class DependencyProvider extends Dialog {
     }
 
     private void setDefaultsToVersionComboBox() {
+        versionComboBox.setEnabled(true);
 
         switch (connectiontypeComboBox.getText()) {
-        case "MYSQL":
+        case MYSQL:
             versionComboBox.setItems(mysqlVersionArr);
             groupId = "mysql";
             artifactId = "mysql-connector-java";
@@ -918,7 +954,7 @@ public class DependencyProvider extends Dialog {
             databaseConnectionPrefix = "jdbc:mysql://";
             break;
 
-        case "MSSQL":
+        case MSSQL:
             versionComboBox.setItems(mssqlVersionArr);
             groupId = "com.microsoft.sqlserver";
             artifactId = "mssql-jdbc";
@@ -926,7 +962,7 @@ public class DependencyProvider extends Dialog {
             databaseConnectionPrefix = "jdbc:sqlserver://";
             break;
 
-        case "POSTGRESQL":
+        case POSTGRESQL:
             versionComboBox.setItems(postgresSqlVersionArr);
             groupId = "org.postgresql";
             artifactId = "postgresql";
@@ -934,7 +970,7 @@ public class DependencyProvider extends Dialog {
             databaseConnectionPrefix = "jdbc:postgresql://";
             break;
 
-        case "ORACLE":
+        case ORACLE:
             databaseConnectionPrefix = "jdbc:postgresql://";
             jdbcDriver = "com.oracle.jdbc.Driver";
 
@@ -971,7 +1007,7 @@ public class DependencyProvider extends Dialog {
 
     private void setDataFromConnectionURL() {
         if (connectionObj.getUrl() != null && !connectionObj.getUrl().equals("")) {
-            if (connectionObj.getDbType().equals("MYSQL") || connectionObj.getDbType().equals("POSTGRESQL")) {
+            if (connectionObj.getDbType().equals(MYSQL) || connectionObj.getDbType().equals(POSTGRESQL)) {
 
                 connectionURLArray = connectionObj.getUrl().split("/");
 
@@ -979,7 +1015,7 @@ public class DependencyProvider extends Dialog {
                 portTextField.setText(connectionURLArray[2].split(":")[1]);
                 databaseTextField.setText(connectionURLArray[3]);
 
-            } else if (connectionObj.getDbType().equals("MSSQL")) {
+            } else if (connectionObj.getDbType().equals(MSSQL)) {
 
                 connectionURLArray = connectionObj.getUrl().split("/");
 
@@ -987,7 +1023,7 @@ public class DependencyProvider extends Dialog {
                 portTextField.setText(connectionURLArray[2].split(":")[1].split(";")[0]);
                 databaseTextField.setText(connectionURLArray[2].split(":")[1].split(";")[1].split("=")[1]);
 
-            } else if (connectionObj.getDbType().equals("ORACLE")) {
+            } else if (connectionObj.getDbType().equals(ORACLE)) {
 
                 connectionURLArray = connectionObj.getUrl().split("@");
 
@@ -1040,8 +1076,7 @@ public class DependencyProvider extends Dialog {
                 try {
                     FileUtils.forceDelete(new File(path));
                 } catch (IOException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
+                    log.error("Exception while deleting file", e);
                 }
             }
         }
@@ -1058,22 +1093,22 @@ public class DependencyProvider extends Dialog {
 
     private String getDownlodedJarByName(String connectionType, String version) {
         switch (connectionType) {
-        case "MYSQL":
+        case MYSQL:
             return "mysql-connector-java-" + version + ".jar";
 
-        case "MSSQL":
+        case MSSQL:
             return "mssql-jdbc-" + version + ".jar";
 
-        case "POSTGRESQL":
+        case POSTGRESQL:
             return "postgresql-" + version + ".jar";
         }
         return null;
     }
 
     private String generateDbUrl(String dbType) {
-        if (dbType.equals("MSSQL")) {
-            return databaseConnectionPrefix + hostTextField.getText() + ":" + portTextField.getText() + ";databaseName="
-                    + databaseTextField.getText() + ";";
+        if (dbType.equals(MSSQL)) {
+            return databaseConnectionPrefix + hostTextField.getText() + ":" + portTextField.getText() 
+                    + ";databaseName="+ databaseTextField.getText() + ";";
         } else {
             return databaseConnectionPrefix + hostTextField.getText() + ":" + portTextField.getText() + "/"
                     + databaseTextField.getText();
@@ -1097,7 +1132,7 @@ public class DependencyProvider extends Dialog {
                 Bundle newBundle;
                 databaseURL = generateDbUrl(connectiontypeComboBox.getText());
                 switch (connectiontypeComboBox.getText()) {
-                case "MYSQL":
+                case MYSQL:
                     newBundle = bundle.getBundleContext().installBundle(path);
                     newBundle.start();
                     if (versionComboBox.getText().equals("8.0.15") || versionComboBox.getText().equals("8.0.14")) {
@@ -1106,17 +1141,17 @@ public class DependencyProvider extends Dialog {
                         Class.forName("com.mysql.jdbc.Driver");
                     }
                     break;
-                case "MSSQL":
+                case MSSQL:
                     newBundle = bundle.getBundleContext().installBundle(path);
                     newBundle.start();
                     Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
                     break;
-                case "POSTGRESQL":
+                case POSTGRESQL:
                     newBundle = bundle.getBundleContext().installBundle(path);
                     newBundle.start();
                     Class.forName("org.postgresql.Driver");
                     break;
-                case "ORACLE":
+                case ORACLE:
                     newBundle = bundle.getBundleContext().installBundle(path);
                     newBundle.start();
                     Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -1128,25 +1163,24 @@ public class DependencyProvider extends Dialog {
                     showMessage("Connection Successful");
                 }
             } catch (ClassNotFoundException e) {
-                e.printStackTrace();
                 ErrorDialog.openError(dialogShell, "Error", "Error!", createMultiStatus(e.getLocalizedMessage(), e));
+                log.error("ClassNotFoundException", e);
             } catch (SQLException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
                 ErrorDialog.openError(dialogShell, "Error", "Error!", createMultiStatus(e.getLocalizedMessage(), e));
+                log.error("SQLException", e);
             } catch (BundleException e) {
-                e.printStackTrace();
                 ErrorDialog.openError(dialogShell, "Error", "Error!", createMultiStatus(e.getLocalizedMessage(), e));
+                log.error("BundleException", e);
             } catch (Exception e) {
-                e.printStackTrace();
                 ErrorDialog.openError(dialogShell, "Error", "Error!", createMultiStatus(e.getLocalizedMessage(), e));
+                log.error("Exception", e);
             } finally {
                 remove(jdbcBundledConnectivityJar);
                 if (conn != null) {
                     try {
                         conn.close();
                     } catch (SQLException ex) {
-                        ex.printStackTrace();
+                        log.error("Exception while closing JDBC connection", ex);
                     }
                 }
             }
@@ -1162,39 +1196,71 @@ public class DependencyProvider extends Dialog {
 
     }
 
-    public void buildPOM(String dependencyDirectory) {
-        Process p = null;
-        dependencyDir = dependencyDirectory;
+    public static MavenExecutionResult runMavenExecution(IFile pomFile, List<String> goals, IProgressMonitor monitor)
+            throws Exception {
+
+        if (monitor == null) {
+            monitor = new NullProgressMonitor();
+        }
+        MavenExecutionResult result = null;
         try {
-            File dir = new File(dependencyDir);
-            p = Runtime.getRuntime().exec("mvn install clean", null, dir);
-            File sourceDirectory = new File(dependencyDir);
+            MavenPluginActivator.getDefault().setDebugging(true);
+            monitor.beginTask("Building: " + pomFile.getName(), 3);
+            MavenProjectManager projectManager = MavenPluginActivator.getDefault().getMavenProjectManager();
+            IMaven maven = MavenPlugin.getDefault().getMaven();
 
-            remove(dependencyDir + File.separator + "pom.xml");
-            File[] sourceFiles = sourceDirectory.listFiles();
+            IMavenProjectFacade facade = projectManager.create(pomFile, true, new SubProgressMonitor(monitor, 1));
+            ResolverConfiguration config = facade.getResolverConfiguration();
+            MavenExecutionRequest request = projectManager.createExecutionRequest(pomFile, config,
+                    new SubProgressMonitor(monitor, 1));
+            request.setGoals(goals);
+            request.setShowErrors(true);
+            request.setUpdateSnapshots(true);
+            result = maven.execute(request, new SubProgressMonitor(monitor, 1));
 
-            for (File file : sourceFiles) {
-                if (file.getName().endsWith(".jar")) {
-                    FileUtils.copyFile(file, new File(getWorkingDirectory() + File.separator + microesbLibPath
-                            + File.separator + file.getName()));
+            return result;
+
+        } catch (Throwable e) {
+            log.error("Exception while executing maven task", e);
+        } finally {
+            monitor.done();
+        }
+        return result;
+    }
+
+    public void buildPOM(String dependencyDirectory) {
+        dependencyDir = dependencyDirectory;
+
+        IPath ResourcePath = new org.eclipse.core.runtime.Path(dependencyDir);
+        IContainer container = ResourcesPlugin.getWorkspace().getRoot().getContainerForLocation(ResourcePath);
+
+        IFile pomFile = container.getFile(new org.eclipse.core.runtime.Path(POM_XML));
+        try {
+            MavenExecutionResult mvn = runMavenExecution(pomFile,
+                    Arrays.asList("org.apache.maven.plugins:maven-dependency-plugin:2.8:copy-dependencies"), null);
+
+            if (mvn.hasExceptions()) {// throw errors if exists
+                List<Throwable> rr = mvn.getExceptions();
+                for (Throwable t : rr) {
+                    throw t;
+                }
+            } else {// when download of dependencies is success, copy .jars to MicroESB/lib directory
+                remove(dependencyDir + File.separator + POM_XML);
+                File[] sourceFiles = new File(dependencyDir).listFiles();
+                for (File file : sourceFiles) {
+                    if (file.getName().endsWith(".jar")) {
+                        FileUtils.copyFile(file, new File(getWorkingDirectory() + File.separator + microesbLibPath
+                                + File.separator + file.getName()));
+                    }
                 }
             }
 
+        } catch (LifecycleExecutionException e) {
+            log.error("Failed to download dependency from maven check for internet connection", e);
         } catch (IOException e) {
-            e.printStackTrace();
-            if (p == null) {
-                Display.getDefault().syncExec(new Runnable() {
-                    public void run() {
-                        remove(dependencyDir + "/target");
-                        remove(dependencyDir + "/pom.xml");
-                        MessageDialog.openInformation(dialogShell, "An Error has occoured",
-                                "An error has occured while downloading the Driver"
-                                        + "\nMake sure maven is install in your computer");
-                    }
-                });
-            }
-        } finally {
-            p.destroy();
+            log.error("Error while copying files", e);
+        } catch (Throwable e) {
+            log.error("Exception", e);
         }
     }
 
@@ -1210,7 +1276,7 @@ public class DependencyProvider extends Dialog {
                 dir.mkdirs();
             }
 
-            File pomXML = new File(dependencyDir + File.separator + "pom.xml");
+            File pomXML = new File(dependencyDir + File.separator + POM_XML);
 
             if (pomXML.exists()) {
                 document = documentBuilder.parse(pomXML);
@@ -1278,29 +1344,8 @@ public class DependencyProvider extends Dialog {
                 pVersion.appendChild(document.createTextNode("3.1.1"));
                 plugin.appendChild(pVersion);
 
-                Element executions = document.createElement("executions");
-                plugin.appendChild(executions);
-
-                Element execution = document.createElement("execution");
-                executions.appendChild(execution);
-
-                Element eId = document.createElement("id");
-                eId.appendChild(document.createTextNode("copy-dependencies"));
-                execution.appendChild(eId);
-
-                Element phase = document.createElement("phase");
-                phase.appendChild(document.createTextNode("package"));
-                execution.appendChild(phase);
-
-                Element goals = document.createElement("goals");
-                execution.appendChild(goals);
-
-                Element goal = document.createElement("goal");
-                goal.appendChild(document.createTextNode("copy-dependencies"));
-                goals.appendChild(goal);
-
                 Element configuration = document.createElement("configuration");
-                execution.appendChild(configuration);
+                plugin.appendChild(configuration);
 
                 Element excludeArtifactIds = document.createElement("excludeArtifactIds");
                 excludeArtifactIds.appendChild(document.createTextNode("protobuf-java"));
@@ -1350,7 +1395,7 @@ public class DependencyProvider extends Dialog {
                 fileset.appendChild(includes);
 
                 Element include = document.createElement("include");
-                include.appendChild(document.createTextNode(dependencyDir + File.separator + "pom.xml"));
+                include.appendChild(document.createTextNode(dependencyDir + File.separator + POM_XML));
                 includes.appendChild(include);
 
                 Element followSymlinks = document.createElement("followSymlinks");
@@ -1364,16 +1409,15 @@ public class DependencyProvider extends Dialog {
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
             transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "3");
             DOMSource domSource = new DOMSource(document);
-            StreamResult streamResult = new StreamResult(new File(dependencyDir + File.separator + "pom.xml"));
+            StreamResult streamResult = new StreamResult(new File(dependencyDir + File.separator + POM_XML));
             transformer.transform(domSource, streamResult);
 
         } catch (ParserConfigurationException pce) {
-            pce.printStackTrace();
+            log.error("Could not parse XML String", pce);
         } catch (TransformerException tfe) {
-            tfe.printStackTrace();
+            log.error("Could not transform XML", tfe);
         } catch (SAXException | IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            log.error("Could not parse XML String", e);
         }
 
     }
@@ -1437,7 +1481,7 @@ public class DependencyProvider extends Dialog {
         return ms;
     }
 
-    public int getDatabaseIndex(String arr[], String dbType) {
+    private int getDatabaseIndex(String arr[], String dbType) {
         for (int i = 0; i < arr.length; i++) {
             if (arr[i].equals(dbType)) {
                 return i;
@@ -1446,79 +1490,126 @@ public class DependencyProvider extends Dialog {
         return 0;
     }
 
-    class LongRunningOperation implements IRunnableWithProgress {
-        private static final int TOTAL_TIME = 1000000000;
+    private void createReadME() {
+
+        File readMe = new File(dependencyDir + File.separator + "README.txt");
+        if (!readMe.exists()) {
+            Writer output = null;
+            try {
+                readMe.createNewFile();
+
+                String content = "README" + "\n"
+                        + "\n===============================================================================\n" + "\n"
+                        + "\nThis directory contains downloaded drivers.\n"
+                        + "\nDrivers will not get deployed with other artifacts (in your CApp).\n"
+                        + "\nBe sure to manually copy the drivers from this directory to <PRODUCT_HOME>/lib/.";
+
+                output = new BufferedWriter(new FileWriter(readMe));
+                output.write(content);
+
+            } catch (IOException e) {
+                log.error("Error while reading README.txt", e);
+            } finally {
+                if (output != null)
+                    try {
+                        output.close();
+                    } catch (IOException e) {
+                        log.error("Error while closing output stream", e);
+                    }
+            }
+        }
+    }
+
+    class DownloadProgress implements IRunnableWithProgress {
+
+        private static final int TOTAL_TIME = 100000;
         private boolean indeterminate;
         private Shell shell;
-        protected boolean downloadSuccess = true;;
+        private int TIME_INTERVAL = 1;
+        private IProgressMonitor monitor;
+        private ScheduledExecutorService scheduledExecutorService;
 
-        public LongRunningOperation(boolean indeterminate, Shell shell) {
+        public DownloadProgress(boolean indeterminate, Shell shell) {
             this.indeterminate = indeterminate;
             this.shell = shell;
         }
 
         @Override
-        public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
-
+        public void run(IProgressMonitor mon) throws InvocationTargetException, InterruptedException {
+            monitor = mon;
             monitor.beginTask("Downloading Required Dependency JAR",
                     indeterminate ? IProgressMonitor.UNKNOWN : TOTAL_TIME);
             Thread.sleep(500);
-            Process p = null;
-            try {
-                File dir = new File(dependencyDir);
 
-                p = Runtime.getRuntime().exec("mvn install clean", null, dir);
+            scheduledExecutorService = Executors.newScheduledThreadPool(1);
 
-                BufferedReader stdInput = new BufferedReader(new InputStreamReader(p.getInputStream()));
+            ScheduledFuture<?> scheduledFuture = scheduledExecutorService.scheduleAtFixedRate(new Runnable() {
 
-                while ((stdInput.readLine()) != null) {
-                    if (monitor.isCanceled()) {
-                        p.destroy();
+                public void run() {
+
+                    IPath ResourcePath = new org.eclipse.core.runtime.Path(dependencyDir);
+                    IContainer container = ResourcesPlugin.getWorkspace().getRoot()
+                            .getContainerForLocation(ResourcePath);
+
+                    IFile pomFile = container.getFile(new org.eclipse.core.runtime.Path(POM_XML));
+                    try {
+                        MavenExecutionResult mvn = runMavenExecution(pomFile,
+                                Arrays.asList("org.apache.maven.plugins:maven-dependency-plugin:2.8:copy-dependencies"),
+                                null);
+                        if (monitor.isCanceled()) {
+                            remove(dependencyDir + File.separator + POM_XML);
+                            throw new InterruptedException("The download process was canceled");
+                        }
+
+                        if (mvn.hasExceptions()) {
+                            List<Throwable> rr = mvn.getExceptions();
+                            for (Throwable t : rr) {
+                                throw t;
+                            }
+
+                        } else {
+                            remove(dependencyDir + File.separator + POM_XML);
+                            createReadME();
+                            Display.getDefault().syncExec(new Runnable() {
+                                public void run() {
+                                    MessageDialog.openInformation(shell, "Success",
+                                            "You have successfully downloaded the driver ("
+                                                    + getDownlodedJarByName(connectiontypeComboBox.getText(),
+                                                            versionComboBox.getText())
+                                                    + ")." + "\n\nNote that the driver will not get deployed with "
+                                                    + "other artifacts (in your CApp)."
+                                                    + "\nBe sure to manually copy the driver from the \"dependencies\""
+                                                    + " directory to \"<PRODUCT_HOME>/lib/\"");
+
+                                }
+                            });
+                            scheduledExecutorService.shutdown();
+                        }
+                    } catch (LifecycleExecutionException e) {
                         Display.getDefault().syncExec(new Runnable() {
                             public void run() {
-                                downloadSuccess = false;
-                                remove(dependencyDir + "/target");
-                                remove(dependencyDir + "/pom.xml");
-                                MessageDialog.openInformation(shell, "Cancelled",
-                                        "JDBC driver download operation was cancelled");
+                                remove(dependencyDir + File.separator + TARGET);
+                                MessageDialog.openInformation(shell, "An Error has occoured",
+                                        "An error occurred when downloading the driver."
+                                                + "\nMake sure that you are connected to the internet.");
                             }
                         });
-                        throw new InterruptedException("JDBC driver download operation was cancelled");
+                        log.error("Error while downloading depenency", e);
+                        scheduledExecutorService.shutdown();
+                    } catch (InterruptedException e) {
+                        remove(dependencyDir + File.separator + TARGET);
+                        remove(dependencyDir + File.separator + POM_XML);
+                        scheduledExecutorService.shutdown();
+                        log.error("Download was interrupted", e);
+                    } catch (Throwable e) {
+                        remove(dependencyDir + File.separator + TARGET);
+                        remove(dependencyDir + File.separator + POM_XML);
+                        scheduledExecutorService.shutdown();
+                        log.error("Exception", e);
                     }
-                    monitor.worked(100);
                 }
-
-            } catch (Exception e) {
-                downloadSuccess = false;
-                e.printStackTrace();
-
-                if (p == null) {
-                    Display.getDefault().syncExec(new Runnable() {
-                        public void run() {
-                            remove(dependencyDir + "/target");
-                            remove(dependencyDir + "/pom.xml");
-                            MessageDialog.openInformation(shell, "An Error has occoured",
-                                    "An error occurred when downloading the driver."
-                                            + "\nMake sure that you have installed Apache Maven.");
-                        }
-                    });
-                }
-            } finally {
-                p.destroy();
-            }
-            monitor.done();
-
-            if (downloadSuccess) {
-                remove(dependencyDir + File.separator + "pom.xml");
-                Display.getDefault().syncExec(new Runnable() {
-                    public void run() {
-                        MessageDialog.openInformation(shell, "Success",
-                                "You have successfully downloaded the driver."
-                                        + "\n\nThe downloaded driver is located in the dependencies directory."
-                                        + "\nNote that downloaded drivers are not deployed with the CApp.");
-                    }
-                });
-            }
-        }
+            }, 0, TIME_INTERVAL, TimeUnit.SECONDS);
+            scheduledExecutorService.awaitTermination(120, TimeUnit.SECONDS);
+        };
     }
 }

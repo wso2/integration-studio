@@ -85,6 +85,8 @@ public class ForEachMediatorExtFactory extends ForEachMediatorFactory {
                 mediator.setSequence(sequenceMediator);
             }
         }
+        
+        addAllCommentChildrenToList(omElement, mediator.getCommentsList());
 
         return mediator;
     }

@@ -183,29 +183,28 @@ public class CallTemplateParameterItemProvider extends EsbNodeItemProvider {
     @Override
     public String getText(Object object) {
         String parameterName = ((CallTemplateParameter) object).getParameterName();
-        String parameterNameLabel = WordUtils.abbreviate(parameterName, 8, 10, " ...");
+        String parameterNameLabel = WordUtils.abbreviate(parameterName, 40, 45, " ...");
         String parameterType = ((CallTemplateParameter) object).getTemplateParameterType().toString();
         String parameterValue = ((CallTemplateParameter) object).getParameterValue();
         String parameterExpression = ((CallTemplateParameter) object).getParameterExpression().toString();
-        String labelSpace = "\t\t";
 
         if (parameterType.equalsIgnoreCase(RuleOptionType.VALUE.getName())) {
             if (parameterValue != null) {
                 return parameterName == null || parameterName.length() == 0
                         ? getString("_UI_CallTemplateParameter_type")
-                        : EEFPropertyViewUtil.spaceFormat(getString("_UI_CallTemplateParameter_type")) + labelSpace
-                                + EEFPropertyViewUtil.spaceFormat(parameterNameLabel) + labelSpace
+                        : getString("_UI_CallTemplateParameter_type") + "  -  "
+                                + EEFPropertyViewUtil.spaceFormat(parameterNameLabel)
                                 + EEFPropertyViewUtil.spaceFormat(parameterValue);
             } else {
                 return parameterName == null || parameterName.length() == 0
                         ? getString("_UI_CallTemplateParameter_type")
-                        : EEFPropertyViewUtil.spaceFormat(getString("_UI_CallTemplateParameter_type")) + labelSpace
+                        : getString("_UI_CallTemplateParameter_type") + "  -  "
                                 + EEFPropertyViewUtil.spaceFormat(parameterNameLabel);
             }
         } else {
             return parameterName == null || parameterName.length() == 0 ? getString("_UI_CallTemplateParameter_type")
-                    : EEFPropertyViewUtil.spaceFormat(getString("_UI_CallTemplateParameter_type")) + labelSpace
-                            + EEFPropertyViewUtil.spaceFormat(parameterNameLabel) + labelSpace
+                    : getString("_UI_CallTemplateParameter_type") + "  -  "
+                            + EEFPropertyViewUtil.spaceFormat(parameterNameLabel)
                             + EEFPropertyViewUtil.spaceFormat(parameterExpression);
         }
     }

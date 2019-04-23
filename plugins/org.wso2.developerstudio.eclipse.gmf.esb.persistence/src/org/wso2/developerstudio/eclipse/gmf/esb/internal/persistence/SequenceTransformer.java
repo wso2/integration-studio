@@ -40,6 +40,7 @@ import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.AddressEndPoint;
+import org.wso2.developerstudio.eclipse.gmf.esb.CommentMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.DefaultEndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbDiagram;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbElement;
@@ -52,6 +53,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.ProxyService;
 import org.wso2.developerstudio.eclipse.gmf.esb.Sequence;
 import org.wso2.developerstudio.eclipse.gmf.esb.TemplateEndpoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.WSDLEndPoint;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.SequencesImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.EsbNodeTransformer;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.EsbTransformerRegistry;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
@@ -92,9 +94,23 @@ public class SequenceTransformer extends AbstractEsbNodeTransformer {
         } else {
             aspectConfiguration.disableStatistics();
         }
+        
+        sequence.getCommentsList().addAll(visualSequence.getCommentsList());
 
         EsbLink outgoingLink = visualSequence.getOutputConnector().getOutgoingLink();
         doTransformWithinSequence(information, outgoingLink, sequence);
+        
+        addMissingComments(sequence);
+    }
+
+    private void addMissingComments(SequenceMediator sequence) {
+        int count = 0;
+        for (String comments : sequence.getCommentsList()) {
+            org.apache.synapse.mediators.builtin.CommentMediator commentMediator = new org.apache.synapse.mediators.builtin.CommentMediator();
+            commentMediator.setCommentText(comments);
+            sequence.addChild(count, commentMediator);
+            count++;
+        }
     }
 
     private void handleServiceChaining(org.wso2.developerstudio.eclipse.gmf.esb.Sequences visualSequence,

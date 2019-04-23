@@ -128,6 +128,9 @@ public class DefaultEndPointTransformer extends AbstractEndpointTransformer {
         if (StringUtils.isNotBlank(defaultEndpointFormPage.getEndpointName().getText())) {
             synapseEP.setName(defaultEndpointFormPage.getEndpointName().getText());
         }
+        
+        synapseEP.setCommentsList(defaultEndpointFormPage.getEndpointCommentList());
+        
         createAdvanceOptions(defaultEndpointFormPage, synapseEP);
         if (defaultEndpointFormPage.endpointPropertyList != null
                 && defaultEndpointFormPage.endpointPropertyList.size() > 0) {

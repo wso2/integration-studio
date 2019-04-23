@@ -37,6 +37,7 @@ import org.jaxen.JaxenException;
 import org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPointAddressingVersion;
+import org.wso2.developerstudio.eclipse.gmf.esb.EndPointFailoverRetryType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPointProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbLink;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
@@ -297,6 +298,24 @@ public abstract class AbstractEndpointTransformer extends AbstractEsbNodeTransfo
             synapseEPDef.setUseMTOM(true);
         } else if (visualEndPoint.getOptimize().getValue() == 2) {
             synapseEPDef.setUseSwa(true);
+        }
+        
+        String retryEnabledErrorCodes = visualEndPoint.getFailoverRetryErrorCodes();
+        if (retryEnabledErrorCodes != null && !"".equals(retryEnabledErrorCodes)) {
+            String[] retryEnabledErrorCodesList = retryEnabledErrorCodes.split("\\,");
+            List<String> retryEnabledErrorCodesArr = Arrays.asList(retryEnabledErrorCodesList);
+            for (String code : retryEnabledErrorCodesArr) {
+                synapseEPDef.addRetryEnabledErrorCode(Integer.parseInt(code));
+            }
+        }
+        
+        String retryDisabledErrorCodes = visualEndPoint.getFailoverNonRetryErrorCodes();
+        if (retryDisabledErrorCodes != null && !"".equals(retryDisabledErrorCodes)) {
+            String[] retryDisabledErrorCodesList = retryDisabledErrorCodes.split("\\,");
+            List<String> retryDisabledErrorCodesArr = Arrays.asList(retryDisabledErrorCodesList);
+            for (String code : retryDisabledErrorCodesArr) {
+                synapseEPDef.addRetryDisabledErrorCode(Integer.parseInt(code));
+            }
         }
 
         AspectConfiguration aspectConfiguration = new AspectConfiguration(visualEndPoint.getEndPointName());
@@ -614,6 +633,7 @@ public abstract class AbstractEndpointTransformer extends AbstractEsbNodeTransfo
             AbstractEndpoint synapseEP) {
         org.apache.synapse.endpoints.Template endpointTemplate = new org.apache.synapse.endpoints.Template();
         endpointTemplate.setName(formPage.getTemplateName().getText());
+        endpointTemplate.setCommentsList(formPage.getTemplateCommentList());
         for (TemplateParameter parameter : formPage.getTemplateParameterList()) {
             endpointTemplate.addParameter(parameter.getName());
         }

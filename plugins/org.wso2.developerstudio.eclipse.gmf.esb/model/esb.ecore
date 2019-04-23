@@ -300,6 +300,12 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="outboundPolicy" eType="#//RegistryKeyProperty"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="failoverRetryType" eType="#//EndPointFailoverRetryType"
+        defaultValueLiteral="NON_RETRY_ERROR_CODES"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="failoverRetryErrorCodes"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="failoverNonRetryErrorCodes"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MessageMediator" eSuperTypes="#//EsbElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="inputConnector" eType="#//MessageInputConnector"
@@ -582,6 +588,10 @@
     <eLiterals name="LEAVE_AS_IS"/>
     <eLiterals name="MTOM" value="1" literal="mtom"/>
     <eLiterals name="SWA" value="2" literal="swa"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="EndPointFailoverRetryType">
+    <eLiterals name="RETRY_ERROR_CODES" literal="RETRY_ERROR_CODES"/>
+    <eLiterals name="NON_RETRY_ERROR_CODES" value="1" literal="NON_RETRY_ERROR_CODES"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RegistryKeyProperty">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="prettyName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"

@@ -1,9 +1,12 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts;
 
 import org.eclipse.draw2d.IFigure;
+import org.eclipse.draw2d.ImageFigure;
 import org.eclipse.draw2d.RectangleFigure;
+import org.eclipse.draw2d.RoundedRectangle;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.StackLayout;
+import org.eclipse.draw2d.ToolbarLayout;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
@@ -19,7 +22,9 @@ import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.swt.graphics.Color;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditPartDrawingHelper;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.SynapseAPIItemSemanticEditPolicy;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.utils.DiagramCustomConstants;
 
 /**
  * @generated
@@ -55,6 +60,7 @@ public class SynapseAPIEditPart extends ShapeNodeEditPart {
         super.createDefaultEditPolicies();
         installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new SynapseAPIItemSemanticEditPolicy());
         installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
+        removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
         // XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable
         // editpolicies
         // removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
@@ -90,7 +96,8 @@ public class SynapseAPIEditPart extends ShapeNodeEditPart {
      */
     protected IFigure createNodeShape() {
         primaryShape = new RectangleFigure();
-        primaryShape.setPreferredSize(new Dimension(getMapMode().DPtoLP(40000), getMapMode().DPtoLP(45000)));
+        primaryShape.setPreferredSize(new Dimension(getMapMode().DPtoLP(600), getMapMode().DPtoLP(500)));
+        primaryShape.setBackgroundColor(new Color(null, 250, 250, 250));
         return primaryShape;
     }
 
@@ -115,11 +122,30 @@ public class SynapseAPIEditPart extends ShapeNodeEditPart {
      * Body of this method does not depend on settings in generation model
      * so you may safely remove <i>generated</i> tag and modify it.
      * 
-     * @generated
+     * @generated NOT
      */
     protected NodeFigure createNodeFigure() {
+        
+        ToolbarLayout apiToolbarLayout = new ToolbarLayout();
+        apiToolbarLayout.setStretchMinorAxis(true);
+        apiToolbarLayout.setMinorAlignment(ToolbarLayout.ALIGN_CENTER);
+        apiToolbarLayout.setSpacing(0);
+        apiToolbarLayout.setHorizontal(true);
+
+        ImageFigure apiIconImageFigure = EditPartDrawingHelper.getIconImageFigure(DiagramCustomConstants.API_ICON_LOCATION,
+                50, 50);
+
+        // Left rectangle for API editor canvas
+        RoundedRectangle apiLeftIconBox = new RoundedRectangle();
+        apiLeftIconBox.setMaximumSize(new Dimension(50, 6000));
+        apiLeftIconBox.setSize(new Dimension(50, 200));
+        apiLeftIconBox.setBackgroundColor(new Color(null, 41, 128, 185));
+        apiLeftIconBox.setLayoutManager(new StackLayout());
+        apiLeftIconBox.add(apiIconImageFigure);
+        
         NodeFigure figure = createNodePlate();
-        figure.setLayoutManager(new StackLayout());
+        figure.setLayoutManager(apiToolbarLayout);
+        figure.add(apiLeftIconBox);
         IFigure shape = createNodeShape();
         figure.add(shape);
         contentPane = setupContentPane(shape);
@@ -162,11 +188,11 @@ public class SynapseAPIEditPart extends ShapeNodeEditPart {
     }
 
     /**
-     * @generated
+     * @generated NOT
      */
     protected void setBackgroundColor(Color color) {
         if (primaryShape != null) {
-            primaryShape.setBackgroundColor(color);
+//            primaryShape.setBackgroundColor(color);
         }
     }
 

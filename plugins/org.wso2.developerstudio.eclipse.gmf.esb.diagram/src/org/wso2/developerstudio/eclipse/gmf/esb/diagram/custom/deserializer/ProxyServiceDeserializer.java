@@ -26,6 +26,7 @@ import org.apache.synapse.core.axis2.ProxyService;
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.endpoints.IndirectEndpoint;
 import org.apache.synapse.mediators.base.SequenceMediator;
+import org.apache.synapse.util.CommentListUtil;
 import org.apache.synapse.util.PolicyInfo;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
@@ -58,6 +59,7 @@ public class ProxyServiceDeserializer
                 .createNode(editPart, EsbElementTypes.ProxyService_3001);
 
         setElementToEdit(proxy);
+        executeAddAllCommand(proxy.getCommentsList(), object.getCommentsList());
         refreshEditPartMap();
 
         executeSetValueCommand(PROXY_SERVICE__NAME, object.getName());
@@ -318,5 +320,4 @@ public class ProxyServiceDeserializer
 
         return proxy;
     }
-
 }

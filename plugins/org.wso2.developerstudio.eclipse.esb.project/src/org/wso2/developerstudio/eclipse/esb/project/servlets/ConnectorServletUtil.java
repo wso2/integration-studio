@@ -46,6 +46,7 @@ import org.wso2.developerstudio.eclipse.esb.project.connector.store.ConnectorDat
 import org.wso2.developerstudio.eclipse.esb.project.connector.store.ConnectorStore;
 import org.wso2.developerstudio.eclipse.esb.project.control.graphicalproject.GMFPluginDetails;
 import org.wso2.developerstudio.eclipse.esb.project.control.graphicalproject.IUpdateGMFPlugin;
+import org.wso2.developerstudio.eclipse.esb.project.exception.ConnectorException;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.ui.Activator;
@@ -116,9 +117,10 @@ public class ConnectorServletUtil {
      * 
      * @param downloadLink - where to locate the connector
      * @return true if the connector was successfully downloaded and false if not
+     * @throws ConnectorException 
      * 
      */
-    public static boolean downloadConnectorAndUpdateProjects(String downloadLink) {
+    public static boolean downloadConnectorAndUpdateProjects(String downloadLink) throws ConnectorException {
         String zipDestination = null;
         try {
             URL url = new URL(downloadLink);
@@ -146,14 +148,17 @@ public class ConnectorServletUtil {
             return true;
         } catch (ZipException e) {
             log.error("Error while extracting the connector zip : " + zipDestination, e);
+            throw new ConnectorException("Error while extracting the connector zip : " + zipDestination, e);
         } catch (CoreException e) {
             log.error("Cannot refresh the project", e);
+            throw new ConnectorException("Cannot refresh the project", e);
         } catch (MalformedURLException malformedURLException) {
             log.error("Malformed connector URL provided : " + downloadLink, malformedURLException);
+            throw new ConnectorException("Malformed connector URL provided : " + downloadLink, malformedURLException);
         } catch (IOException e) {
             log.error("Error while downloading connector : " + downloadLink, e);
+            throw new ConnectorException("Error while downloading connector : " + downloadLink, e);
         }
-        return false;
     }
 
     /**

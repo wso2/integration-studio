@@ -129,10 +129,10 @@ public class ProxyServiceParameterItemProvider extends ItemProviderAdapter imple
     @Override
     public String getText(Object object) {
         String propertyName = ((ProxyServiceParameter) object).getName();
-        String propertyNameLabel = WordUtils.abbreviate(propertyName.toString(), 8, 10, " ...");
+        String propertyNameLabel = WordUtils.abbreviate(propertyName.toString(), 40, 45, " ...");
         String propertyValue = ((ProxyServiceParameter) object).getValue();
         return propertyName == null || propertyName.length() == 0 ? getString("_UI_ProxyServiceParameter_type")
-                : EEFPropertyViewUtil.spaceFormat(getString("_UI_ProxyServiceParameter_type")) + "\t"
+                : getString("_UI_ProxyServiceParameter_type") + "  -  "
                         + EEFPropertyViewUtil.spaceFormat(propertyNameLabel)
                         + EEFPropertyViewUtil.spaceFormat(propertyValue);
     }

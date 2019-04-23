@@ -183,7 +183,6 @@ public class SwitchCaseBranchOutputConnectorPropertiesEditionPartImpl extends Co
 		return parent;
 	}
 
-	
     protected Composite createCaseRegexText(Composite parent) {
         createDescription(parent, EsbViewsRepository.SwitchCaseBranchOutputConnector.Properties.caseRegex,
                 EsbMessages.SwitchCaseBranchOutputConnectorPropertiesEditionPart_CaseRegexLabel);

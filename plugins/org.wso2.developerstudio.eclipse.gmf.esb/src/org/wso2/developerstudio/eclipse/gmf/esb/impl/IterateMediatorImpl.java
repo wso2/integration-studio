@@ -265,6 +265,7 @@ public class IterateMediatorImpl extends MediatorImpl implements IterateMediator
         NamespacedProperty attachPath = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
         attachPath.setPrettyName("Attach Path");
         attachPath.setPropertyName("attachPath");
+        attachPath.setSupportJsonPaths(true);
         attachPath.setPropertyValue("");
         setAttachPath(attachPath);
 
@@ -272,6 +273,7 @@ public class IterateMediatorImpl extends MediatorImpl implements IterateMediator
         NamespacedProperty iterateExpression = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
         iterateExpression.setPrettyName("Iterate Expression");
         iterateExpression.setPropertyName("expression");
+        iterateExpression.setSupportJsonPaths(true);
         iterateExpression.setPropertyValue(DEFAULT_EXPRESSION_PROPERTY_VALUE);
         setIterateExpression(iterateExpression);
 

@@ -134,6 +134,8 @@
       // generate examples once the input schema is available
       function ajaxCallBack(retString) {
         inputSchema = retString["sample"];
+        var schema = JSON.parse(retString["schema"]);
+        inputSchemaTitle = schema.title;
         generateExamples();
         autoFormatSelection();
         // Get output schema for the example
@@ -143,16 +145,30 @@
       // Generate json / xml / csv examples from the json schema.  
       function generateExamples() {
     	  if (isJson(inputSchema)){
-    		  var inputSchemaTitle = inputSchema["title"];
+    		  /* var inputSchemaTitle = inputSchema["title"]; */
     		  jsonString = inputSchema;
     		  xmlString = json2xml(JSON.parse(jsonString), "\n");
-    	      /* xmlString = "<" + inputSchemaTitle + ">" + xmlString + "</" + inputSchemaTitle + ">"; */
+    	      xmlString = "<" + inputSchemaTitle + ">" + xmlString + "</" + inputSchemaTitle + ">";
     	      csvString = '<text xmlns="http://ws.apache.org/commons/ns/payload">' + Papa.unparse(JSON.parse(jsonString), configs) + "</text>";
     	      
     	      inputEditor.setOption("mode", "text/javascript");
   	  	  	  inputEditor.setValue(inputSchema);
     	  } else {
-    		  jsonString = "";
+    		  var oParser = new DOMParser();
+  			  var oDOM = oParser.parseFromString(inputSchema, "application/xml");
+    		  //Find the node to kill
+    		  var y=oDOM.getElementsByTagName("root")[0];
+    		  //Find that nodes parent
+    		  var z=y.childNodes;
+    		  //delete the node from the parent.
+    		  //y.removeChild(z);
+    		  
+    		  y.replaceChild(y,z);
+    		  
+    		//Get the new xml string
+    		  var newXml = (new XMLSerializer).serializeToString(oDOM);
+    		  
+    		  jsonString = xml2json(newXml, "\n");
     		  xmlString = inputSchema;
     		  document.getElementById("xmlInputTypeRadio").checked = true;
     		  

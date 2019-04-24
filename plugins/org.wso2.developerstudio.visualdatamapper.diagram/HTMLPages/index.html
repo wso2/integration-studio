@@ -101,7 +101,9 @@
       // input and output types
       var inputType = "JSON";
       var outputType = "JSON";
-      var inputSchema = "";
+      var schema = "";
+      var sample = "";
+      var inputSchemaTitle = "";
       var jsonString = "";
       var xmlString = "";
       var csvString = "";
@@ -117,7 +119,7 @@
       }
       
       // read input shema json from file
-      getInputSchema(inputSchema);
+      getInputSchema();
       
       //create codemirror instances
       inputEditor = CodeMirror.fromTextArea(document.getElementById("inputTextArea"), {
@@ -133,8 +135,8 @@
       
       // generate examples once the input schema is available
       function ajaxCallBack(retString) {
-        inputSchema = retString["sample"];
-        var schema = JSON.parse(retString["schema"]);
+        sample = retString["sample"];
+        schema = JSON.parse(retString["schema"]);
         inputSchemaTitle = schema.title;
         generateExamples();
         autoFormatSelection();
@@ -144,27 +146,27 @@
       
       // Generate json / xml / csv examples from the json schema.  
       function generateExamples() {
-    	  if (isJson(inputSchema)){
-    		  jsonString = inputSchema ;
+    	  if (isJson(sample)){
+    		  jsonString = sample ;
     		  xmlString = json2xml(JSON.parse(jsonString), "\n");
-    		  rootElemWithNS = buildRootWithNS(inputSchema);
+    		  rootElemWithNS = buildRootWithNS(schema);
     	      xmlString = "<" + rootElemWithNS + ">" + xmlString + "</" + inputSchemaTitle + ">";
     	      csvString = '<text xmlns="http://ws.apache.org/commons/ns/payload">' + Papa.unparse(JSON.parse(jsonString), configs) + "</text>";
     	      
     	      inputEditor.setOption("mode", "text/javascript");
-  	  	  	  inputEditor.setValue(inputSchema);
+  	  	  	  inputEditor.setValue(sample);
   	  	  	  
   	  	  	  inputType = $('.inputTypeRadio:checked').val();
-    	  } else if (isXML(inputSchema)){
+    	  } else if (isXML(sample)){
     		  var oParser = new DOMParser();
-  			  var oDOM = oParser.parseFromString(inputSchema, "application/xml");
+  			  var oDOM = oParser.parseFromString(sample, "application/xml");
     		  
     		  jsonString = xml2json(oDOM, "\n");
     		  var root = JSON.parse(jsonString).root;
     		  if (root){
     			jsonString = JSON.stringify(root, null, "\n");  
     		  }
-    		  xmlString = inputSchema;
+    		  xmlString = sample;
     		  document.getElementById("xmlInputTypeRadio").checked = true;
     		  
     		  csvString = '<text xmlns="http://ws.apache.org/commons/ns/payload">' + Papa.unparse(JSON.parse(jsonString), configs) + "</text>";
@@ -271,7 +273,7 @@
       }
       
       // fetch input_schema.json by calling the servlet
-      function getInputSchema(inputSchema) {
+      function getInputSchema() {
       
         var url = "http://localhost:" + portValue + "/dataMapper/getRegistryResources";
       

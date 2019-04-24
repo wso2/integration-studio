@@ -6,14 +6,10 @@ package org.wso2.developerstudio.eclipse.gmf.esb.parts.forms;
 // Start of user code for imports
 import java.util.ArrayList;
 import java.util.List;
-
-import org.eclipse.emf.common.util.BasicEList;
-import org.eclipse.emf.common.util.EList;
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.emf.common.util.Enumerator;
 
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.emf.ecore.util.EcoreAdapterFactory;
 
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 
@@ -37,7 +33,6 @@ import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
 
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 
-import org.eclipse.emf.eef.runtime.ui.widgets.EEFFeatureEditorDialog;
 import org.eclipse.emf.eef.runtime.ui.widgets.EMFComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
@@ -53,8 +48,6 @@ import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.ViewerFilter;
 
-import org.eclipse.jface.window.Window;
-
 import org.eclipse.swt.SWT;
 
 import org.eclipse.swt.events.FocusAdapter;
@@ -63,20 +56,16 @@ import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
-
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 
-import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.Text;
 
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
-import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-
-import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.LogMediatorPropertiesEditionPart;
@@ -367,6 +356,19 @@ public class LogMediatorPropertiesEditionPartForm extends SectionPropertiesEditi
 		this.properties.setLayoutData(propertiesData);
 		this.properties.setLowerBound(0);
 		this.properties.setUpperBound(-1);
+
+		String emptySpace = StringUtils.rightPad("", 2);
+		{
+		    this.properties.getTable().setHeaderVisible(true);
+		    String title = StringUtils.rightPad(emptySpace + "Property Name", 42) + "|"
+		            + StringUtils.rightPad(emptySpace + "Property Value Type", 20) + emptySpace + "|"
+		            + StringUtils.rightPad(emptySpace + "Property Value", 42) + "|";
+
+		    TableColumn column = new TableColumn(this.properties.getTable(), SWT.NONE);
+		    column.setText(title);
+		    this.properties.getTable().getColumn(0).pack();
+		}
+
 		this.properties.getTable().setFont(SWTFontUtils.getMonospacedFont());
 		properties.setID(EsbViewsRepository.LogMediator.Properties.properties_);
 		properties.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$

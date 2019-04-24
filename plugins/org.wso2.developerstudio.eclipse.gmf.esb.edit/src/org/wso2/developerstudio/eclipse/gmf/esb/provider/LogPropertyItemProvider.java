@@ -82,29 +82,38 @@ public class LogPropertyItemProvider extends AbstractNameValueExpressionProperty
 
     @Override
     public String getText(Object object) {
-        String propertyName = StringUtils.rightPad(((LogProperty) object).getPropertyName(), 40);
+
+        int maxLength = 40;
+        int spacing = 3;
+        int marginSpaceLeft = 1;
+        int comboValueLength = maxLength / 2 + 1;
+        String emptySpace = StringUtils.rightPad("", spacing);
+
+        String propertyName = StringUtils.rightPad(((LogProperty) object).getPropertyName(), maxLength);
         String propertyValueType = ((LogProperty) object).getPropertyValueType().toString();
-        String propertyValue = StringUtils.rightPad(((LogProperty) object).getPropertyValue(), 40);
-        String propertyExpression = StringUtils.rightPad((
-                (LogProperty) object).getPropertyExpression().toString(), 20);
+        String propertyValue = StringUtils.rightPad(((LogProperty) object).getPropertyValue(), maxLength);
+        String propertyExpression = StringUtils.rightPad(((LogProperty) object).getPropertyExpression().toString(),
+                comboValueLength);
 
         String formattedString = null;
         if (((LogProperty) object).getPropertyName() == null || ((LogProperty) object).getPropertyName().isEmpty()) {
-            propertyName = StringUtils.rightPad("", 40);
+            propertyName = StringUtils.rightPad("", maxLength);
         }
         if (((LogProperty) object).getPropertyValue() == null || ((LogProperty) object).getPropertyValue().isEmpty()) {
-            propertyValue = StringUtils.rightPad("", 40);
+            propertyValue = StringUtils.rightPad("", maxLength);
         }
         if (propertyValueType.equals(PropertyValueType.LITERAL.getName())) {
-            formattedString = StringUtils.abbreviate((getString("_UI_LogProperty_type") + " - "), 15)
-                    + StringUtils.abbreviate(propertyName, 40) + StringUtils.rightPad("", 8)
-                    + StringUtils.abbreviate(StringUtils.rightPad(propertyValueType, 15), 15)
-                    + StringUtils.abbreviate(propertyValue, 40);
+            formattedString = ((getString("_UI_LogProperty_type")).substring(0, 0))
+                    + StringUtils.rightPad("", marginSpaceLeft) + StringUtils.abbreviate(propertyName, maxLength)
+                    + emptySpace + StringUtils.abbreviate(StringUtils.rightPad(propertyValueType, comboValueLength),
+                            comboValueLength)
+                    + emptySpace + StringUtils.abbreviate(propertyValue, maxLength);
         } else {
-            formattedString = StringUtils.abbreviate((getString("_UI_LogProperty_type") + " - "), 15)
-                    + StringUtils.abbreviate(propertyName, 40) + StringUtils.rightPad("", 8)
-                    + StringUtils.abbreviate(StringUtils.rightPad(propertyValueType, 15), 15)
-                    + StringUtils.abbreviate(propertyExpression, 40);
+            formattedString = (getString("_UI_LogProperty_type").substring(0, 0))
+                    + StringUtils.rightPad("", marginSpaceLeft) + StringUtils.abbreviate(propertyName, maxLength)
+                    + emptySpace + StringUtils.abbreviate(StringUtils.rightPad(propertyValueType, comboValueLength),
+                            comboValueLength)
+                    + emptySpace + StringUtils.abbreviate(propertyExpression, maxLength);
         }
         return formattedString;
     }

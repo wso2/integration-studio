@@ -145,57 +145,68 @@
       }
       
       // Generate json / xml / csv examples from the json schema.  
+      // Generate json / xml / csv examples from the json schema.  
       function generateExamples() {
-    	  if (isJson(sample)){
-    		  jsonString = sample ;
-    		  xmlString = json2xml(JSON.parse(jsonString), "\n");
-    		  rootElemWithNS = buildRootWithNS(schema);
-    	      xmlString = "<" + rootElemWithNS + ">" + xmlString + "</" + inputSchemaTitle + ">";
-    	      csvString = '<text xmlns="http://ws.apache.org/commons/ns/payload">' + Papa.unparse(JSON.parse(jsonString), configs) + "</text>";
-    	      
-    	      inputEditor.setOption("mode", "text/javascript");
-  	  	  	  inputEditor.setValue(sample);
-  	  	  	  
-  	  	  	  inputType = $('.inputTypeRadio:checked').val();
-    	  } else if (isXML(sample)){
-    		  var oParser = new DOMParser();
-  			  var oDOM = oParser.parseFromString(sample, "application/xml");
-    		  
-    		  jsonString = xml2json(oDOM, "\n");
-    		  var root = JSON.parse(jsonString).root;
-    		  if (root){
-    			jsonString = JSON.stringify(root, null, "\n");  
-    		  }
-    		  xmlString = sample;
-    		  document.getElementById("xmlInputTypeRadio").checked = true;
-    		  
-    		  csvString = '<text xmlns="http://ws.apache.org/commons/ns/payload">' + Papa.unparse(JSON.parse(jsonString), configs) + "</text>";
-    		  
-    		  inputEditor.setOption("mode", "text/html");
-      	  	  inputEditor.setValue(xmlString);
-      	  	
-      	  	  inputType = $('.inputTypeRadio:checked').val();
-      	  	
-    	  } 
-    	  
-    	  autoFormatSelection();
-          process();
+        if (isJson(sample)) {
+          // Set JSON String
+          jsonString = sample;
+
+          // Set XML String
+          xmlString = json2xml(JSON.parse(jsonString), "\n");
+          rootElemWithNS = buildRootWithNS(schema);
+          xmlString = "<" + rootElemWithNS + ">" + xmlString + "</" + inputSchemaTitle + ">";
+
+          // Set CSV String
+          csvString = '<text xmlns="http://ws.apache.org/commons/ns/payload">' + Papa.unparse(JSON.parse(jsonString), configs) + "</text>";
+
+          inputEditor.setOption("mode", "text/javascript");
+          inputEditor.setValue(sample);
+          inputType = $('.inputTypeRadio:checked').val();
+
+        } else if (isXML(sample)) {
+          var oParser = new DOMParser();
+          var oDOM = oParser.parseFromString(sample, "application/xml");
+
+          // Set JSON String
+          jsonString = xml2json(oDOM, "\n");
+          var root = JSON.parse(jsonString).root;
+          if (root) {
+            jsonString = JSON.stringify(root, null, "\n");
+          }
+
+          // Set XML String
+          xmlString = sample;
+          document.getElementById("xmlInputTypeRadio").checked = true;
+
+          // Set CSV String
+          csvString = '<text xmlns="http://ws.apache.org/commons/ns/payload">' + Papa.unparse(JSON.parse(jsonString), configs) + "</text>";
+
+          inputEditor.setOption("mode", "text/html");
+          inputEditor.setValue(xmlString);
+          inputType = $('.inputTypeRadio:checked').val();
+
+        }
+
+        autoFormatSelection();
+        process();
       }
-      
+
+      // Checks whether a given string is valid JSON
       function isJson(str) {
-    	    try {
-    	        JSON.parse(str);
-    	    } catch (e) {
-    	        return false;
-    	    }
-    	    return true;
-    	};
-    	
-		function isXML(str) {
-			var oParser = new DOMParser();
-			var oDOM = oParser.parseFromString(str, "application/xml");
-			oDOM.documentElement.nodeName == "parsererror" ? oDOM.documentElement.nodeName : str;
-		};
+        try {
+          JSON.parse(str);
+        } catch (e) {
+          return false;
+        }
+        return true;
+      };
+
+      // Checks whether a given string is valid XML
+      function isXML(str) {
+        var oParser = new DOMParser();
+        var oDOM = oParser.parseFromString(str, "application/xml");
+        oDOM.documentElement.nodeName == "parsererror" ? oDOM.documentElement.nodeName : str;
+      };
       
       // Set appropiate data types depending on the input
       $('.inputTypeRadio').on('change', function(e) {

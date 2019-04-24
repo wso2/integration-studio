@@ -30,6 +30,7 @@ import org.apache.synapse.endpoints.EndpointDefinition;
 import org.apache.synapse.endpoints.LoadbalanceEndpoint;
 import org.apache.synapse.endpoints.SALoadbalanceEndpoint;
 import org.apache.synapse.endpoints.algorithms.LoadbalanceAlgorithm;
+import org.apache.synapse.endpoints.algorithms.RoundRobin;
 import org.apache.synapse.endpoints.dispatch.Dispatcher;
 import org.apache.synapse.endpoints.dispatch.HttpSessionDispatcher;
 import org.apache.synapse.endpoints.dispatch.SimpleClientSessionDispatcher;
@@ -69,7 +70,6 @@ import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.LoadbalanceEndpointFormPage;
 
 public class LoadBalanceEndPointTransformer extends AbstractEndpointTransformer {
-    private static final String ROUND_ROBIN_ALGO = "org.apache.synapse.endpoints.algorithms.RoundRobin";
 
     public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
 
@@ -175,6 +175,8 @@ public class LoadBalanceEndPointTransformer extends AbstractEndpointTransformer 
             Object algorithm = algorithmClass.newInstance();
             if (algorithm instanceof LoadbalanceAlgorithm) {
                 synapseLBEP.setAlgorithm((LoadbalanceAlgorithm) algorithm);
+            } else {
+                synapseLBEP.setAlgorithm(new RoundRobin());
             }
         } catch (ClassNotFoundException e1) {
             MessageDialog.openError(Display.getCurrent().getActiveShell(), "Error in Loadbalance Endpoint ! ",
@@ -293,28 +295,29 @@ public class LoadBalanceEndPointTransformer extends AbstractEndpointTransformer 
     
     public SynapseArtifact create(LoadbalanceEndpointFormPage formPage) throws NumberFormatException, JaxenException {
 
-        LoadbalanceEndpoint synapseLoadbalanceEP = new LoadbalanceEndpoint();
+        LoadbalanceEndpoint synapseLoadbalanceEP;
+        
+        if (formPage.getEndpointSessionType() != null && formPage.getEndpointSessionType().getSelectionIndex() == 0) {
+            synapseLoadbalanceEP = new LoadbalanceEndpoint();
+        } else {
+            synapseLoadbalanceEP = new SALoadbalanceEndpoint();
+        }
+        
         if (StringUtils.isNotBlank(formPage.getEndpointName().getText())) {
             synapseLoadbalanceEP.setName(formPage.getEndpointName().getText());
         }
 
         if (formPage.getEndpointAlgorithmn().getText().equals("Round Robin")) {
-            try {
-                Class<?> algorithmClass = Class.forName(ROUND_ROBIN_ALGO);
-                Object algorithm = algorithmClass.newInstance();
-                if (algorithm instanceof LoadbalanceAlgorithm) {
-                    synapseLoadbalanceEP.setAlgorithm((LoadbalanceAlgorithm) algorithm);
-                }
-            } catch (ClassNotFoundException e1) {
-                MessageDialog.openError(Display.getCurrent().getActiveShell(), "Error in Loadbalance Endpoint ! ",
-                        ROUND_ROBIN_ALGO + " algorithm class not found.");
-            } catch (InstantiationException e) {
-                MessageDialog.openError(Display.getCurrent().getActiveShell(), "Error in Loadbalance Endpoint ! ",
-                        ROUND_ROBIN_ALGO + " algorithm class cannot be instantiated.");
-            } catch (IllegalAccessException e) {
-                MessageDialog.openError(Display.getCurrent().getActiveShell(), "Error in Loadbalance Endpoint ! ",
-                        "Illegal access to " + ROUND_ROBIN_ALGO + " algorithm class.");
-            }
+            synapseLoadbalanceEP.setAlgorithm(
+                    (LoadbalanceAlgorithm) getAlgorithmnClass("org.apache.synapse.endpoints.algorithms.RoundRobin"));
+
+        } else if (formPage.getEndpointAlgorithmn().getText().equals("Weighted RRLC Algorithm")) {
+            synapseLoadbalanceEP.setAlgorithm((LoadbalanceAlgorithm) getAlgorithmnClass(
+                    "org.apache.synapse.endpoints.algorithms.WeightedRRLCAlgorithm"));
+
+        } else if (formPage.getEndpointAlgorithmn().getText().equals("Weighted Round Robin")) {
+            synapseLoadbalanceEP.setAlgorithm((LoadbalanceAlgorithm) getAlgorithmnClass(
+                    "org.apache.synapse.endpoints.algorithms.WeightedRoundRobin"));
 
         }
 
@@ -424,5 +427,27 @@ public class LoadBalanceEndPointTransformer extends AbstractEndpointTransformer 
         } else {
             return "{ep.name}";
         }
+    }
+    
+    private Object getAlgorithmnClass(String className) {
+        Object algorithm = null;
+        try {
+            Class<?> algorithmClass = Class.forName(className);
+            algorithm = algorithmClass.newInstance();
+            if (algorithm instanceof LoadbalanceAlgorithm) {
+                
+            }
+        } catch (ClassNotFoundException e1) {
+            MessageDialog.openError(Display.getCurrent().getActiveShell(), "Error in Loadbalance Endpoint ! ",
+                    className + " algorithm class not found.");
+        } catch (InstantiationException e) {
+            MessageDialog.openError(Display.getCurrent().getActiveShell(), "Error in Loadbalance Endpoint ! ",
+                    className + " algorithm class cannot be instantiated.");
+        } catch (IllegalAccessException e) {
+            MessageDialog.openError(Display.getCurrent().getActiveShell(), "Error in Loadbalance Endpoint ! ",
+                    "Illegal access to " + className + " algorithm class.");
+        }
+        
+        return algorithm;
     }
 }

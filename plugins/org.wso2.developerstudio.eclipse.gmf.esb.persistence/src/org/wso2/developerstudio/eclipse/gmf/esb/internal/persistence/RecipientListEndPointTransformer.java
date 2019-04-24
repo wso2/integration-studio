@@ -255,12 +255,6 @@ public class RecipientListEndPointTransformer extends AbstractEndpointTransforme
             synapseRecipientListEP.setName(formPage.getEndpointName().getText());
         }
 
-        if (formPage.getEndpointFailover().getText().equals("True")) {
-            synapseRecipientListEP.setFailover(true);
-        } else {
-            synapseRecipientListEP.setFailover(false);
-        }
-
         // set endPointsList
         if (formPage.getSynapseEndpointList().size() > 0) {
             synapseRecipientListEP.setChildren(formPage.getSynapseEndpointList());

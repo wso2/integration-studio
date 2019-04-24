@@ -85,13 +85,13 @@ public class FailoverEndpointDeserializer extends AbstractEndpointDeserializer {
         EndpointFormPage endpointPage = (EndpointFormPage) failoverEPFormEditor
                 .getFormPageForArtifact(ArtifactType.ENDPOINT);
 
-        FailoverEndPoint endpoint = (FailoverEndPoint) endpointObject;
+        org.apache.synapse.endpoints.FailoverEndpoint endpoint = (org.apache.synapse.endpoints.FailoverEndpoint) endpointObject;
 
         FailoverEndpointFormPage failoverEndpointPage = (FailoverEndpointFormPage) endpointPage;
 
         setTextValue(failoverEndpointPage.getEndpointName(), endpoint.getName());
 
-        if (endpoint.isBuildMessage()) {
+        if (endpoint.isBuildMessageAtt()) {
             failoverEndpointPage.getEndpointBuildMessage().select(0);
         } else {
             failoverEndpointPage.getEndpointBuildMessage().select(1);

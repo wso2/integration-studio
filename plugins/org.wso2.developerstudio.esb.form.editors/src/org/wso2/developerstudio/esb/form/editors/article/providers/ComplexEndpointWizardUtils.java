@@ -115,133 +115,135 @@ public class ComplexEndpointWizardUtils {
     
     public static List<Endpoint> getEndpointList(List<EndpointTableEntry> endpointsList) {
         List<Endpoint> synapseEndpointList = new ArrayList<>();
-        for (int i = 0; i < endpointsList.size(); i++) {
+        if (endpointsList != null) {
+            for (int i = 0; i < endpointsList.size(); i++) {
 
-            EndpointTableEntry endpointTableEntry = endpointsList.get(i);
-            String endpointContent = endpointTableEntry.getEndpointValue();
+                EndpointTableEntry endpointTableEntry = endpointsList.get(i);
+                String endpointContent = endpointTableEntry.getEndpointValue();
 
-            if (endpointTableEntry.isInline()) {
-                try {
-                    OMElement element = AXIOMUtil.stringToOM(endpointContent);
-                    if (element.getChildrenWithLocalName("address") != null) {
-                        if (!element.getChildrenWithName(new QName(SYNAPSE_NS, "address")).hasNext()) {
-                            Iterator children = element.getChildrenWithLocalName("address");
-                            while (children.hasNext()) {
-                                OMElement child = (OMElement) children.next();
-                                child.setNamespace(new OMNamespaceImpl(SYNAPSE_NS, ""));
-                                setNamespaceForChildren(child);
+                if (endpointTableEntry.isInline()) {
+                    try {
+                        OMElement element = AXIOMUtil.stringToOM(endpointContent);
+                        if (element.getChildrenWithLocalName("address").hasNext()) {
+                            if (!element.getChildrenWithName(new QName(SYNAPSE_NS, "address")).hasNext()) {
+                                Iterator children = element.getChildrenWithLocalName("address");
+                                while (children.hasNext()) {
+                                    OMElement child = (OMElement) children.next();
+                                    child.setNamespace(new OMNamespaceImpl(SYNAPSE_NS, ""));
+                                    setNamespaceForChildren(child);
+                                }
                             }
+
+                            AddressEndpoint addressEndpoint = (AddressEndpoint) AddressEndpointFactory
+                                    .getEndpointFromElement(element, false, null);
+                            synapseEndpointList.add(addressEndpoint);
+
+                        } else if (element.getChildrenWithLocalName("http").hasNext()) {
+                            if (!element.getChildrenWithName(new QName(SYNAPSE_NS, "http")).hasNext()) {
+                                Iterator children = element.getChildrenWithLocalName("http");
+                                while (children.hasNext()) {
+                                    OMElement child = (OMElement) children.next();
+                                    child.setNamespace(new OMNamespaceImpl(SYNAPSE_NS, ""));
+                                    setNamespaceForChildren(child);
+                                }
+                            }
+
+                            HTTPEndpoint httpEndpoint = (HTTPEndpoint) HTTPEndpointFactory
+                                    .getEndpointFromElement(element, false, null);
+                            synapseEndpointList.add(httpEndpoint);
+
+                        } else if (element.getChildrenWithLocalName("default").hasNext()) {
+                            if (!element.getChildrenWithName(new QName(SYNAPSE_NS, "default")).hasNext()) {
+                                Iterator children = element.getChildrenWithLocalName("default");
+                                while (children.hasNext()) {
+                                    OMElement child = (OMElement) children.next();
+                                    child.setNamespace(new OMNamespaceImpl(SYNAPSE_NS, ""));
+                                    setNamespaceForChildren(child);
+                                }
+                            }
+
+                            DefaultEndpoint defaultEndpoint = (DefaultEndpoint) DefaultEndpointFactory
+                                    .getEndpointFromElement(element, false, null);
+                            synapseEndpointList.add(defaultEndpoint);
+
+                        } else if (element.getChildrenWithLocalName("wsdl").hasNext()) {
+                            if (!element.getChildrenWithName(new QName(SYNAPSE_NS, "wsdl")).hasNext()) {
+                                Iterator children = element.getChildrenWithLocalName("wsdl");
+                                while (children.hasNext()) {
+                                    OMElement child = (OMElement) children.next();
+                                    child.setNamespace(new OMNamespaceImpl(SYNAPSE_NS, ""));
+                                    setNamespaceForChildren(child);
+                                }
+                            }
+
+                            WSDLEndpoint wsdlEndpoint = (WSDLEndpoint) WSDLEndpointFactory
+                                    .getEndpointFromElement(element, false, null);
+                            synapseEndpointList.add(wsdlEndpoint);
+
+                        } else if (element.getChildrenWithLocalName("loadbalance").hasNext()) {
+                            if (!element.getChildrenWithName(new QName(SYNAPSE_NS, "loadbalance")).hasNext()) {
+                                Iterator children = element.getChildrenWithLocalName("loadbalance");
+                                while (children.hasNext()) {
+                                    OMElement child = (OMElement) children.next();
+                                    child.setNamespace(new OMNamespaceImpl(SYNAPSE_NS, ""));
+                                    setNamespaceForChildren(child);
+                                }
+                            }
+
+                            LoadbalanceEndpoint lbEndpoint = (LoadbalanceEndpoint) LoadbalanceEndpointFactory
+                                    .getEndpointFromElement(element, false, null);
+                            synapseEndpointList.add(lbEndpoint);
+
+                        } else if (element.getChildrenWithLocalName("failover").hasNext()) {
+                            if (!element.getChildrenWithName(new QName(SYNAPSE_NS, "failover")).hasNext()) {
+                                Iterator children = element.getChildrenWithLocalName("failover");
+                                while (children.hasNext()) {
+                                    OMElement child = (OMElement) children.next();
+                                    child.setNamespace(new OMNamespaceImpl(SYNAPSE_NS, ""));
+                                    setNamespaceForChildren(child);
+                                }
+                            }
+
+                            FailoverEndpoint foEndpoint = (FailoverEndpoint) FailoverEndpointFactory
+                                    .getEndpointFromElement(element, false, null);
+                            synapseEndpointList.add(foEndpoint);
+
+                        } else if (element.getChildrenWithLocalName("recipientlist").hasNext()) {
+                            if (!element.getChildrenWithName(new QName(SYNAPSE_NS, "recipientlist")).hasNext()) {
+                                Iterator children = element.getChildrenWithLocalName("recipientlist");
+                                while (children.hasNext()) {
+                                    OMElement child = (OMElement) children.next();
+                                    child.setNamespace(new OMNamespaceImpl(SYNAPSE_NS, ""));
+                                    setNamespaceForChildren(child);
+                                }
+                            }
+
+                            RecipientListEndpoint rlEndpoint = (RecipientListEndpoint) RecipientListEndpointFactory
+                                    .getEndpointFromElement(element, false, null);
+                            synapseEndpointList.add(rlEndpoint);
+
                         }
 
-                        AddressEndpoint addressEndpoint = (AddressEndpoint) AddressEndpointFactory
-                                .getEndpointFromElement(element, false, null);
-                        synapseEndpointList.add(addressEndpoint);
-
-                    } else if (element.getChildrenWithLocalName("http") != null) {
-                        if (!element.getChildrenWithName(new QName(SYNAPSE_NS, "http")).hasNext()) {
-                            Iterator children = element.getChildrenWithLocalName("http");
-                            while (children.hasNext()) {
-                                OMElement child = (OMElement) children.next();
-                                child.setNamespace(new OMNamespaceImpl(SYNAPSE_NS, ""));
-                                setNamespaceForChildren(child);
-                            }
-                        }
-
-                        HTTPEndpoint httpEndpoint = (HTTPEndpoint) HTTPEndpointFactory.getEndpointFromElement(element,
-                                false, null);
-                        synapseEndpointList.add(httpEndpoint);
-
-                    } else if (element.getChildrenWithLocalName("default") != null) {
-                        if (!element.getChildrenWithName(new QName(SYNAPSE_NS, "default")).hasNext()) {
-                            Iterator children = element.getChildrenWithLocalName("default");
-                            while (children.hasNext()) {
-                                OMElement child = (OMElement) children.next();
-                                child.setNamespace(new OMNamespaceImpl(SYNAPSE_NS, ""));
-                                setNamespaceForChildren(child);
-                            }
-                        }
-
-                        DefaultEndpoint defaultEndpoint = (DefaultEndpoint) DefaultEndpointFactory
-                                .getEndpointFromElement(element, false, null);
-                        synapseEndpointList.add(defaultEndpoint);
-
-                    } else if (element.getChildrenWithLocalName("wsdl") != null) {
-                        if (!element.getChildrenWithName(new QName(SYNAPSE_NS, "wsdl")).hasNext()) {
-                            Iterator children = element.getChildrenWithLocalName("wsdl");
-                            while (children.hasNext()) {
-                                OMElement child = (OMElement) children.next();
-                                child.setNamespace(new OMNamespaceImpl(SYNAPSE_NS, ""));
-                                setNamespaceForChildren(child);
-                            }
-                        }
-
-                        WSDLEndpoint wsdlEndpoint = (WSDLEndpoint) WSDLEndpointFactory.getEndpointFromElement(element,
-                                false, null);
-                        synapseEndpointList.add(wsdlEndpoint);
-
-                    } else if (element.getChildrenWithLocalName("loadbalance") != null) {
-                        if (!element.getChildrenWithName(new QName(SYNAPSE_NS, "loadbalance")).hasNext()) {
-                            Iterator children = element.getChildrenWithLocalName("loadbalance");
-                            while (children.hasNext()) {
-                                OMElement child = (OMElement) children.next();
-                                child.setNamespace(new OMNamespaceImpl(SYNAPSE_NS, ""));
-                                setNamespaceForChildren(child);
-                            }
-                        }
-
-                        LoadbalanceEndpoint lbEndpoint = (LoadbalanceEndpoint) LoadbalanceEndpointFactory
-                                .getEndpointFromElement(element, false, null);
-                        synapseEndpointList.add(lbEndpoint);
-
-                    } else if (element.getChildrenWithLocalName("failover") != null) {
-                        if (!element.getChildrenWithName(new QName(SYNAPSE_NS, "failover")).hasNext()) {
-                            Iterator children = element.getChildrenWithLocalName("failover");
-                            while (children.hasNext()) {
-                                OMElement child = (OMElement) children.next();
-                                child.setNamespace(new OMNamespaceImpl(SYNAPSE_NS, ""));
-                                setNamespaceForChildren(child);
-                            }
-                        }
-
-                        FailoverEndpoint foEndpoint = (FailoverEndpoint) FailoverEndpointFactory
-                                .getEndpointFromElement(element, false, null);
-                        synapseEndpointList.add(foEndpoint);
-
-                    } else if (element.getChildrenWithLocalName("recipientlist") != null) {
-                        if (!element.getChildrenWithName(new QName(SYNAPSE_NS, "recipientlist")).hasNext()) {
-                            Iterator children = element.getChildrenWithLocalName("recipientlist");
-                            while (children.hasNext()) {
-                                OMElement child = (OMElement) children.next();
-                                child.setNamespace(new OMNamespaceImpl(SYNAPSE_NS, ""));
-                                setNamespaceForChildren(child);
-                            }
-                        }
-
-                        RecipientListEndpoint rlEndpoint = (RecipientListEndpoint) RecipientListEndpointFactory
-                                .getEndpointFromElement(element, false, null);
-                        synapseEndpointList.add(rlEndpoint);
-
+                    } catch (XMLStreamException e) {
+                        // TODO Auto-generated catch block
                     }
 
-                } catch (XMLStreamException e) {
-                    // TODO Auto-generated catch block
+                } else {
+                    String endpointString = "<endpoint key=\"" + endpointContent + "\" />";
+                    OMElement element = null;
+                    try {
+                        element = AXIOMUtil.stringToOM(endpointString);
+                    } catch (XMLStreamException e) {
+                        // TODO Auto-generated catch block
+                    }
+                    if (element != null) {
+                        IndirectEndpoint indirectEndpoint = (IndirectEndpoint) IndirectEndpointFactory
+                                .getEndpointFromElement(element, false, null);
+                        synapseEndpointList.add(indirectEndpoint);
+                    }
                 }
 
-            } else {
-                String endpointString = "<endpoint key=\"" + endpointContent + "\" />";
-                OMElement element = null;
-                try {
-                    element = AXIOMUtil.stringToOM(endpointString);
-                } catch (XMLStreamException e) {
-                    // TODO Auto-generated catch block
-                }
-                if (element != null) {
-                    IndirectEndpoint indirectEndpoint = (IndirectEndpoint) IndirectEndpointFactory
-                            .getEndpointFromElement(element, false, null);
-                    synapseEndpointList.add(indirectEndpoint);
-                }
             }
-
         }
         return synapseEndpointList;
     }

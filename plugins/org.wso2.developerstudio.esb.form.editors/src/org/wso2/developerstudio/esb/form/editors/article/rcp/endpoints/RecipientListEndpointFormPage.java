@@ -24,14 +24,12 @@ import org.apache.synapse.endpoints.Endpoint;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
-import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
-import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
@@ -49,8 +47,6 @@ import org.wso2.developerstudio.esb.form.editors.article.providers.EndpointTable
 import org.wso2.developerstudio.esb.form.editors.article.rcp.Messages;
 
 public class RecipientListEndpointFormPage extends EndpointFormPage {
-
-    protected Combo endpointFailover;
 
     protected Button recipientListEP_Properties;
     protected Button recipientListEP_Endpoints;
@@ -120,27 +116,6 @@ public class RecipientListEndpointFormPage extends EndpointFormPage {
         endpointName.addModifyListener(new ModifyListener() {
             @Override
             public void modifyText(ModifyEvent e) {
-                setSave(true);
-                updateDirtyState();
-            }
-        });
-
-        toolkit.createLabel(basicSectionClient, "Failover :");
-        endpointFailover = new Combo(basicSectionClient, SWT.DROP_DOWN);
-        String[] statisticsStates = { "True", "False" };
-        endpointFailover.setItems(statisticsStates);
-        GridData endpointStatisticsGridData = new GridData();
-        endpointStatisticsGridData.horizontalSpan = 3;
-        endpointStatisticsGridData.horizontalAlignment = GridData.FILL;
-        endpointStatisticsGridData.grabExcessHorizontalSpace = true;
-        endpointFailover.setLayoutData(endpointStatisticsGridData);
-
-        endpointFailover.addSelectionListener(new SelectionAdapter() {
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                if (Boolean.parseBoolean(endpointFailover.getText())) {
-                    endpointFailover.select(0);
-                }
                 setSave(true);
                 updateDirtyState();
             }
@@ -275,14 +250,6 @@ public class RecipientListEndpointFormPage extends EndpointFormPage {
             }
         });
 
-    }
-
-    public Combo getEndpointFailover() {
-        return endpointFailover;
-    }
-
-    public void setEndpointFailover(Combo endpointFailover) {
-        this.endpointFailover = endpointFailover;
     }
 
     public List<Member> getMemberList() {

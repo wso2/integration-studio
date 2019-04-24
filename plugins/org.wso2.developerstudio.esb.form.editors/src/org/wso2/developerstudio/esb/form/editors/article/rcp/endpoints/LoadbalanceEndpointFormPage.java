@@ -135,7 +135,7 @@ public class LoadbalanceEndpointFormPage extends EndpointFormPage {
 
         toolkit.createLabel(basicSectionClient, "Algorithm :");
         endpointAlgorithmn = new Combo(basicSectionClient, SWT.DROP_DOWN);
-        String[] formats = { "Round Robin", "Other" };
+        String[] formats = { "Round Robin", "Weighted RRLC Algorithm", "Weighted Round Robin" };
         endpointAlgorithmn.setItems(formats);
         GridData endpointFormatGridData = new GridData();
         endpointFormatGridData.horizontalSpan = 3;

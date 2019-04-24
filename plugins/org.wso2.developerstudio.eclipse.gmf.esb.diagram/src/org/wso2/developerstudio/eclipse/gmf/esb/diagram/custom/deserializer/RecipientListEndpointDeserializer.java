@@ -117,12 +117,6 @@ public class RecipientListEndpointDeserializer extends AbstractEndpointDeseriali
 
         setTextValue(recipientListEndpointPage.getEndpointName(), endpoint.getName());
 
-        if (endpoint.isFailover()) {
-            recipientListEndpointPage.getEndpointFailover().select(0);
-        } else {
-            recipientListEndpointPage.getEndpointFailover().select(1);
-        }
-
         setTextValue(recipientListEndpointPage.getEP_Description(), endpoint.getDescription());
 
         if (endpoint.getProperties().size() > 0) {

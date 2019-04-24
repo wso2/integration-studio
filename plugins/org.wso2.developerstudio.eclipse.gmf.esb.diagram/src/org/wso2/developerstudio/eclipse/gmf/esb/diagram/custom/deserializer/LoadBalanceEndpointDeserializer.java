@@ -22,7 +22,6 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.LOAD_
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.LOAD_BALANCE_END_POINT__SESSION_TYPE;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.LOAD_BALANCE_END_POINT__BUILD_MESSAGE;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -154,8 +153,16 @@ public class LoadBalanceEndpointDeserializer extends AbstractEndpointDeserialize
 
         if (endpoint.getAlgorithm() instanceof org.apache.synapse.endpoints.algorithms.RoundRobin) {
             loadEndpointPage.getEndpointAlgorithmn().select(0);
-        } else {
+            
+        } else if (endpoint.getAlgorithm() instanceof org.apache.synapse.endpoints.algorithms.WeightedRRLCAlgorithm) {
             loadEndpointPage.getEndpointAlgorithmn().select(1);
+            
+        } else if (endpoint.getAlgorithm() instanceof org.apache.synapse.endpoints.algorithms.WeightedRoundRobin) {
+            loadEndpointPage.getEndpointAlgorithmn().select(2);
+            
+        } else {
+            loadEndpointPage.getEndpointAlgorithmn().select(0);
+            
         }
 
         if (endpoint.isFailover()) {
@@ -171,6 +178,34 @@ public class LoadBalanceEndpointDeserializer extends AbstractEndpointDeserialize
         }
 
         setTextValue(loadEndpointPage.getEP_Description(), endpoint.getDescription());
+        
+        if (endpoint instanceof org.apache.synapse.endpoints.SALoadbalanceEndpoint) {
+            org.apache.synapse.endpoints.SALoadbalanceEndpoint saloadbalanceEndpoint = 
+                    (org.apache.synapse.endpoints.SALoadbalanceEndpoint) endpoint;
+            Long sessionTimeout = saloadbalanceEndpoint.getSessionTimeout();
+            Dispatcher dispatcher = saloadbalanceEndpoint.getDispatcher();
+            
+            if (dispatcher instanceof SoapSessionDispatcher) {
+                loadEndpointPage.getEndpointSessionType().select(2);
+                setTextValue(loadEndpointPage.getSessionTimeout(), sessionTimeout.toString());
+                
+            } else if (dispatcher instanceof HttpSessionDispatcher) {
+                loadEndpointPage.getEndpointSessionType().select(1);
+                setTextValue(loadEndpointPage.getSessionTimeout(), sessionTimeout.toString());
+                
+            } else if (dispatcher instanceof SimpleClientSessionDispatcher) {
+                loadEndpointPage.getEndpointSessionType().select(3);
+                setTextValue(loadEndpointPage.getSessionTimeout(), sessionTimeout.toString());
+                
+            } else {
+                loadEndpointPage.getEndpointSessionType().select(0);
+                setTextValue(loadEndpointPage.getSessionTimeout(), "");
+            }
+            
+        } else {
+            loadEndpointPage.getEndpointSessionType().select(0);
+            setTextValue(loadEndpointPage.getSessionTimeout(), "");
+        }
 
         if (endpoint.getProperties().size() > 0) {
             List<EndPointProperty> existingProperties = loadEndpointPage.getEndPointPropertyList();

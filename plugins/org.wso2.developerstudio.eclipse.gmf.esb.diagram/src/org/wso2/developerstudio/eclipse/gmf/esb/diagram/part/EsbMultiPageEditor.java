@@ -592,6 +592,9 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
         case ENDPOINT_DEFAULT:
         case ENDPOINT_HTTP:
         case ENDPOINT_WSDL:
+        case ENDPOINT_LOADBALANCE:
+        case ENDPOINT_FAILOVER:
+        case ENDPOINT_RECIPIENTLIST:
             createPageForm(currArtifactType);
             break;
         default:

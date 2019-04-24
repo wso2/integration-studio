@@ -144,12 +144,11 @@ public class ComplexFiguredAbstractEndpoint extends AbstractEndpoint {
         IFile fileTobeOpened = null;
         // if (!file.exists()) {
         try {
-            IFolder iFolder = currentProject.getFolder(SYNAPSE_CONFIG_DIR + "/complex-endpoints/");
+            IFolder iFolder = currentProject.getFolder(SYNAPSE_CONFIG_DIR + "/endpoints/");
             if (!iFolder.exists()) {
                 iFolder.create(IResource.NONE, true, null);
             }
-            fileTobeOpened = iFolder.getFile(name + ".xml");// currentProject.getFile(SYNAPSE_CONFIG_DIR +
-                                                            // "/complex-endpoints/" + name + ".xml");
+            fileTobeOpened = iFolder.getFile(name + ".xml");
 
             if (fileTobeOpened.exists()) {
                 OpenEditorUtils oeUtils = new OpenEditorUtils();

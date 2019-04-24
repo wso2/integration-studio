@@ -73,6 +73,8 @@ public class ConfigureEndPointPropertiesDialog extends TitleAreaDialog {
 	private TableEditor propertyValueEditor;
 	private TableEditor propertyScopeEditor;
 	
+	private boolean isOk = false;
+	
 	private List<EndPointProperty> endpointPropertyList = new ArrayList<EndPointProperty>();
 	
 	public ConfigureEndPointPropertiesDialog(Shell parentShell,List<EndPointProperty> list) {
@@ -335,6 +337,8 @@ public class ConfigureEndPointPropertiesDialog extends TitleAreaDialog {
 					endpointPropertyList.add(parameter);
 				}
 				setEndpointPropertyList(endpointPropertyList);
+				
+				this.isOk = true;
 		
 		super.okPressed();
 	}
@@ -347,6 +351,10 @@ public class ConfigureEndPointPropertiesDialog extends TitleAreaDialog {
 
 	public List<EndPointProperty> getEndpointPropertyList() {
 		return endpointPropertyList;
+	}
+	
+	public boolean isOk() {
+	    return this.isOk;
 	}
 }
 

@@ -23,11 +23,12 @@ import java.util.Properties;
 import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.util.AXIOMUtil;
 import org.apache.commons.lang.StringUtils;
-import org.apache.synapse.config.xml.endpoints.EndpointFactory;
+import org.apache.synapse.SynapseArtifact;
 import org.apache.synapse.config.xml.endpoints.WSDLEndpointFactory;
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.endpoints.EndpointDefinition;
 import org.apache.synapse.endpoints.FailoverEndpoint;
+import org.apache.synapse.mediators.MediatorProperty;
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
@@ -38,8 +39,10 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.PlatformUI;
+import org.jaxen.JaxenException;
 import org.wso2.developerstudio.eclipse.esb.core.interfaces.IEsbEditorInput;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPoint;
+import org.wso2.developerstudio.eclipse.gmf.esb.EndPointProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndpointDiagram;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.FailoverEndPoint;
@@ -52,6 +55,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.persistence.EsbTransformerRegist
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.FailoverEndpointFormPage;
 
 public class FailoverEndPointTransformer extends AbstractEndpointTransformer {
 
@@ -179,7 +183,7 @@ public class FailoverEndPointTransformer extends AbstractEndpointTransformer {
                 String endpointName = getSynapseEndpointName(visualEndPoint);
                 if (!StringUtils.isEmpty(endpointName)) {
                     IPath location = new Path(
-                            "src/main/synapse-config/complex-endpoints" + "/" + endpointName + ".xml");
+                            "src/main/synapse-config/endpoints" + "/" + endpointName + ".xml");
                     IFile file = activeProject.getFile(location);
                     if (file.exists()) {
                         final String source = FileUtils.getContentAsString(file.getContents());
@@ -199,6 +203,48 @@ public class FailoverEndPointTransformer extends AbstractEndpointTransformer {
             e.printStackTrace();
         }
         return synapseFailEP;
+    }
+    
+    public SynapseArtifact create(FailoverEndpointFormPage formPage) throws NumberFormatException, JaxenException {
+
+        FailoverEndpoint synapseFailoverEP = new FailoverEndpoint();
+        if (StringUtils.isNotBlank(formPage.getEndpointName().getText())) {
+            synapseFailoverEP.setName(formPage.getEndpointName().getText());
+        }
+
+        if (formPage.getEndpointBuildMessage().getText().equals("True")) {
+            synapseFailoverEP.setBuildMessageAtt(true);
+        } else {
+            synapseFailoverEP.setBuildMessageAtt(false);
+        }
+
+        // set endPointsList
+        if (formPage.getSynapseEndpointList().size() > 0) {
+            synapseFailoverEP.setChildren(formPage.getSynapseEndpointList());
+
+        }
+        
+        synapseFailoverEP.setDescription(formPage.getEP_Description().getText());
+
+        List<MediatorProperty> mediatorProperties = new ArrayList<>();
+        List<EndPointProperty> endpointProp = formPage.getEndPointPropertyList();
+        if (endpointProp != null) {
+            for (int i = 0; i < endpointProp.size(); i++) {
+                EndPointProperty uiMediatorProp = endpointProp.get(i);
+                MediatorProperty tempMediatorProperty = new MediatorProperty();
+                tempMediatorProperty.setName(uiMediatorProp.getName());
+                tempMediatorProperty.setScope(uiMediatorProp.getScope().getLiteral());
+                if (uiMediatorProp.getValue() != null && !uiMediatorProp.getValue().isEmpty()) {
+                    tempMediatorProperty.setValue(uiMediatorProp.getValue());
+                } else {
+                    // add expression support
+                }
+                mediatorProperties.add(tempMediatorProperty);
+            }
+        }
+        synapseFailoverEP.addProperties(mediatorProperties);
+
+        return synapseFailoverEP;
     }
     
     private String getSynapseEndpointName(FailoverEndPoint visualEndPoint) {

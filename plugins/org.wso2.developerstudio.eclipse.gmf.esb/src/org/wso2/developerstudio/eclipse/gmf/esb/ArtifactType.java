@@ -187,7 +187,31 @@ public enum ArtifactType implements Enumerator {
      * @generated
      * @ordered
      */
-    ENDPOINT_WSDL(22, "ENDPOINT_WSDL", "ENDPOINT_WSDL");
+    ENDPOINT_WSDL(22, "ENDPOINT_WSDL", "ENDPOINT_WSDL"), /**
+     * The '<em><b>ENDPOINT LOADBALANCE</b></em>' literal object.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #ENDPOINT_LOADBALANCE_VALUE
+     * @generated
+     * @ordered
+     */
+    ENDPOINT_LOADBALANCE(23, "ENDPOINT_LOADBALANCE", "ENDPOINT_LOADBALANCE"), /**
+     * The '<em><b>ENDPOINT FAILOVER</b></em>' literal object.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #ENDPOINT_FAILOVER_VALUE
+     * @generated
+     * @ordered
+     */
+    ENDPOINT_FAILOVER(24, "ENDPOINT_FAILOVER", "ENDPOINT_FAILOVER"), /**
+     * The '<em><b>ENDPOINT RECIPIENTLIST</b></em>' literal object.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #ENDPOINT_RECIPIENTLIST_VALUE
+     * @generated
+     * @ordered
+     */
+    ENDPOINT_RECIPIENTLIST(25, "ENDPOINT_RECIPIENTLIST", "ENDPOINT_RECIPIENTLIST");
 
     /**
      * The '<em><b>SYNAPSE CONFIG</b></em>' literal value.
@@ -535,6 +559,51 @@ public enum ArtifactType implements Enumerator {
     public static final int ENDPOINT_WSDL_VALUE = 22;
 
     /**
+     * The '<em><b>ENDPOINT LOADBALANCE</b></em>' literal value.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of '<em><b>ENDPOINT LOADBALANCE</b></em>' literal object isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @see #ENDPOINT_LOADBALANCE
+     * @model
+     * @generated
+     * @ordered
+     */
+    public static final int ENDPOINT_LOADBALANCE_VALUE = 23;
+
+    /**
+     * The '<em><b>ENDPOINT FAILOVER</b></em>' literal value.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of '<em><b>ENDPOINT FAILOVER</b></em>' literal object isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @see #ENDPOINT_FAILOVER
+     * @model
+     * @generated
+     * @ordered
+     */
+    public static final int ENDPOINT_FAILOVER_VALUE = 24;
+
+    /**
+     * The '<em><b>ENDPOINT RECIPIENTLIST</b></em>' literal value.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of '<em><b>ENDPOINT RECIPIENTLIST</b></em>' literal object isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @see #ENDPOINT_RECIPIENTLIST
+     * @model
+     * @generated
+     * @ordered
+     */
+    public static final int ENDPOINT_RECIPIENTLIST_VALUE = 25;
+
+    /**
      * An array of all the '<em><b>Artifact Type</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -564,6 +633,9 @@ public enum ArtifactType implements Enumerator {
             ENDPOINT_DEFAULT,
             ENDPOINT_HTTP,
             ENDPOINT_WSDL,
+            ENDPOINT_LOADBALANCE,
+            ENDPOINT_FAILOVER,
+            ENDPOINT_RECIPIENTLIST,
         };
 
     /**
@@ -643,6 +715,9 @@ public enum ArtifactType implements Enumerator {
             case ENDPOINT_DEFAULT_VALUE: return ENDPOINT_DEFAULT;
             case ENDPOINT_HTTP_VALUE: return ENDPOINT_HTTP;
             case ENDPOINT_WSDL_VALUE: return ENDPOINT_WSDL;
+            case ENDPOINT_LOADBALANCE_VALUE: return ENDPOINT_LOADBALANCE;
+            case ENDPOINT_FAILOVER_VALUE: return ENDPOINT_FAILOVER;
+            case ENDPOINT_RECIPIENTLIST_VALUE: return ENDPOINT_RECIPIENTLIST;
         }
         return null;
     }

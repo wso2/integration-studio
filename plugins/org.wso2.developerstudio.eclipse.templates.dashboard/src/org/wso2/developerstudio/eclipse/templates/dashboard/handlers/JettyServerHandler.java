@@ -115,7 +115,7 @@ public class JettyServerHandler {
 
         JSEmbeddedFunctions jsf = new JSEmbeddedFunctions();
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
-        context.addFilter(holder, "*", null);
+        //context.addFilter(holder, "*", null);
         // Context path where static webpages are hosted
         context.setContextPath("/welcome");
         String webAppPath = "TemplateDash";

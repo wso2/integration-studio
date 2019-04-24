@@ -951,7 +951,7 @@ public class SchemaKeyEditorDialog extends Dialog {
             if (schemaFileLocation == null) {
                 return;
             }
-            
+
             String configFileName = inputFile.getName().substring(0,
                     inputFile.getName().indexOf(EditorUtils.DIAGRAM_FILE_EXTENSION));
             String graphicalFileDirPath = inputFile.getParent().getRawLocation().makeAbsolute().toString();
@@ -959,11 +959,12 @@ public class SchemaKeyEditorDialog extends Dialog {
                 graphicalFileDirPath += File.separator;
             }
 
-            inputFileLocation = graphicalFileDirPath + configFileName + "_inputSample" + EditorUtils.TEXT_FILE_EXTENSION;
+            inputFileLocation = graphicalFileDirPath + configFileName + "_inputSample"
+                    + EditorUtils.TEXT_FILE_EXTENSION;
 
-            String schema =
-                    schemaGeneratorHelper.getSchemaContent(FileType.values()[schemaTypeCombo.getSelectionIndex()],
-                            schemaFileLocation, delimiterTextField.getText());
+            String schema = schemaGeneratorHelper.getSchemaContent(
+                    FileType.values()[schemaTypeCombo.getSelectionIndex()], schemaFileLocation,
+                    delimiterTextField.getText());
             if (schema != null) {
                 String schemaFilePath = schemaEditorUtil.createDiagram(schema, schemaType);
                 if (!schemaFilePath.isEmpty()) {
@@ -983,25 +984,12 @@ public class SchemaKeyEditorDialog extends Dialog {
 
     }
 
-    private void copyInputFile(String originalFilePath, String copyFilePath) {
-        File originalFile = new File(originalFilePath);
-        File copiedFile = new File(copyFilePath);
-        try {
-            FileUtils.copyFile(originalFile, copiedFile);
-            assert(copiedFile).exists();
-            assert(Files.readAllLines(originalFile.toPath())
-              .equals(Files.readAllLines(copiedFile.toPath())));
-        } catch (IOException e) {
-            log.error("Failed to create a copy of the original input file!");
-        }
-    }
-    
     private void saveInputOutputSchema(String schemaFilePath) {
         if (Messages.LoadInputSchemaAction_SchemaTypeInput.equals(schemaType)) {
             if (selectedEP.getChildren().isEmpty()) {
                 InputEditPart iep = (InputEditPart) selectedEP;
                 iep.resetInputTreeFromFile(schemaFilePath);
-                
+                // Copy input file content
                 copyInputFile(schemaFileLocation, inputFileLocation);
                 DataMapperConfigHolder.getInstance().setInputFile(inputFileLocation);
             } else {
@@ -1028,6 +1016,24 @@ public class SchemaKeyEditorDialog extends Dialog {
         }
     }
 
+    /**
+     * Copies a file to a given destination
+     * 
+     * @param originalFilePath path to the source file
+     * @param destinationFilePath path of the destination
+     */
+    private void copyInputFile(String originalFilePath, String destinationFilePath) {
+        File originalFile = new File(originalFilePath);
+        File copiedFile = new File(destinationFilePath);
+        try {
+            FileUtils.copyFile(originalFile, copiedFile);
+            assert (copiedFile).exists();
+            assert (Files.readAllLines(originalFile.toPath()).equals(Files.readAllLines(copiedFile.toPath())));
+        } catch (IOException e) {
+            log.error("Failed to create a copy of the original input file!");
+        }
+    }
+    
     private String fileExtensionForFileType(FileType option) {
         switch (option) {
             case XSD:

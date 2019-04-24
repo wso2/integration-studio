@@ -135,11 +135,11 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
 	 */
 	private static final String INPUT_SCHEMA_ID = "Input-Schema"; //$NON-NLS-1$
 
-	/**
-	 * @generated NOT
-	 */
-	private static final String OUTPUT_SCHEMA_ID = "Output-Schema"; //$NON-NLS-1$
-	
+    /**
+     * @generated NOT
+     */
+    private static final String OUTPUT_SCHEMA_ID = "Output-Schema"; //$NON-NLS-1$
+
     /**
      * @generated NOT
      */
@@ -587,21 +587,21 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
 
 		String newFilePath;
 		IFile newSchemaIFile;
-		// Schema type can only be either input or output
-		if (INPUT_SCHEMA_ID.equals(schemaType)) {
-			// TODO handle the extension of the file despite the schemaType
-			newFilePath = graphicalFileDirPath + configName + EditorUtils.INPUT_SCHEMA_FILE_SUFFIX
-					+ EditorUtils.AVRO_SCHEMA_FILE_EXTENSION;
-			newSchemaIFile = graphicalFile.getProject().getFile(newFilePath);
-		} else if (INPUT_SAMPLE_ID.equals(schemaType)){
-		    newFilePath = graphicalFileDirPath + configName + EditorUtils.INPUT_SAMPLE_FILE_SUFFIX
+        // Schema type can only be either input or output
+        if (INPUT_SCHEMA_ID.equals(schemaType)) {
+            // TODO handle the extension of the file despite the schemaType
+            newFilePath = graphicalFileDirPath + configName + EditorUtils.INPUT_SCHEMA_FILE_SUFFIX
+                    + EditorUtils.AVRO_SCHEMA_FILE_EXTENSION;
+            newSchemaIFile = graphicalFile.getProject().getFile(newFilePath);
+        } else if (INPUT_SAMPLE_ID.equals(schemaType)) {
+            newFilePath = graphicalFileDirPath + configName + EditorUtils.INPUT_SAMPLE_FILE_SUFFIX
                     + EditorUtils.TEXT_FILE_EXTENSION;
-		    newSchemaIFile = graphicalFile.getProject().getFile(newFilePath);
-		} else {
-			newFilePath = graphicalFileDirPath + configName + EditorUtils.OUTPUT_SCHEMA_FILE_SUFFIX
-					+ EditorUtils.AVRO_SCHEMA_FILE_EXTENSION;
-			newSchemaIFile = graphicalFile.getProject().getFile(newFilePath);
-		}
+            newSchemaIFile = graphicalFile.getProject().getFile(newFilePath);
+        } else {
+            newFilePath = graphicalFileDirPath + configName + EditorUtils.OUTPUT_SCHEMA_FILE_SUFFIX
+                    + EditorUtils.AVRO_SCHEMA_FILE_EXTENSION;
+            newSchemaIFile = graphicalFile.getProject().getFile(newFilePath);
+        }
 		File newSchemaFile = newSchemaIFile.getRawLocation().makeAbsolute().toFile();
 		return newSchemaFile;
 	}

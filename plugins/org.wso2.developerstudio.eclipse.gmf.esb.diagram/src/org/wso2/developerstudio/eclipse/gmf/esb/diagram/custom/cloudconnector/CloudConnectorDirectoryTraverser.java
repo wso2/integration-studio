@@ -153,11 +153,15 @@ public class CloudConnectorDirectoryTraverser {
                                 continue;
                             }
 
-                            if (new File(connectorPath + File.separator + "icon" + File.separator + "icon-small.gif")
-                                    .exists()
-                                    && new File(
-                                            connectorPath + File.separator + "icon" + File.separator + "icon-large.gif")
-                                                    .exists()) {
+                            if (new File(connectorPath 
+                                    + File.separator + "icon" + File.separator + "icon-small.gif").exists() || 
+                                new File(connectorPath 
+                                    + File.separator + "icon" + File.separator + "icon-small.png").exists()
+                                && new File(
+                                     connectorPath + File.separator + "icon" + File.separator + "icon-large.gif")
+                                         .exists() ||
+                                     new File(connectorPath + File.separator + "icon" + File.separator 
+                                             + "icon-large.png").exists()) {
                                 CloudConnectorDirectoryTraverser.getInstance(connectorPath).getOperationsMap();
                             } else {
                                 log.error("Missing icons files of " + children[i].getName());

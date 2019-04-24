@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 
-
 package org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints;
 
 import java.util.List;
@@ -43,6 +42,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.TemplateParameter;
 import org.wso2.developerstudio.esb.forgm.editors.article.FormArticlePlugin;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.AbstractEsbFormPage;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.Messages;
+
 /**
  * 
  * To change the template for this generated type comment go to Window -
@@ -50,118 +50,328 @@ import org.wso2.developerstudio.esb.form.editors.article.rcp.Messages;
  */
 public abstract class EndpointFormPage extends AbstractEsbFormPage {
 
-	protected EndpointCommons endpointCommons;
-	
-	protected ScrolledForm form;
+    protected EndpointCommons endpointCommons;
+
+    protected ScrolledForm form;
     protected FormToolkit toolkit;
-	protected Text endpointName;
-	protected Text templateName;
 
-	protected Combo endpointTrace;
-	protected Combo endpointStatistics;
-	
-    protected Text eP_Properties;
-    protected Combo eP_Optimize;
+    protected Text endpointName;
+    protected Text templateName;
     protected Text eP_Description;
+    protected Text eP_Properties;
 
-    protected Combo eP_Format;
-    Section basicSection;
-    
+    protected Combo endpointTrace;
+    protected Combo endpointStatistics;
+    protected Combo eP_Optimize;
+    protected Combo endpointSesssionType;
+
+    private Section basicSection;
+    private Section templateEndpointSection;
+
     protected Button template_parameters;
+
     protected boolean isTemplate;
-    Section templateEndpointSection;
+
     public List<TemplateParameter> templateParameterList;
+    
     private List<String> endpointCommentList;
     private List<String> templateCommentList;
-    
+
     public boolean isTemplate() {
-		return isTemplate;
-	}
+        return isTemplate;
+    }
 
-	public void setTemplate(boolean isTemplate) {
-		this.isTemplate = isTemplate;
-	}
+    public void setTemplate(boolean isTemplate) {
+        this.isTemplate = isTemplate;
+    }
 
-	public List<TemplateParameter> getTemplateParameterList() {
-		return templateParameterList;
-	}
+    public List<TemplateParameter> getTemplateParameterList() {
+        return templateParameterList;
+    }
 
-	public void setTemplateParameterList(List<TemplateParameter> templateParameterList) {
-		this.templateParameterList = templateParameterList;
-	}
+    public void setTemplateParameterList(List<TemplateParameter> templateParameterList) {
+        this.templateParameterList = templateParameterList;
+    }
 
-	public Text getEndpointName() {
-		return endpointName;
-	}
+    public Text getEndpointName() {
+        return endpointName;
+    }
 
-	public void setEndpointName(Text endpointName) {
-		this.endpointName = endpointName;
-	}
-		
-	public Combo getEP_Format() {
-		return eP_Format;
-	}
+    public void setEndpointName(Text endpointName) {
+        this.endpointName = endpointName;
+    }
 
-	public void setEP_Format(Combo wsdlEP_Format) {
-		this.eP_Format = wsdlEP_Format;
-	}
+    public Combo getEndpointSessionType() {
+        return endpointSesssionType;
+    }
 
-	public Combo getEndpointTrace() {
-		return endpointTrace;
-	}
+    public void setEndpointSessionType(Combo sessionType) {
+        this.endpointSesssionType = sessionType;
+    }
 
-	public void setEndpointTrace(Combo endpointTrace) {
-		this.endpointTrace = endpointTrace;
-	}
+    public Combo getEndpointTrace() {
+        return endpointTrace;
+    }
 
-	public Combo getEndpointStatistics() {
-		return endpointStatistics;
-	}
+    public void setEndpointTrace(Combo endpointTrace) {
+        this.endpointTrace = endpointTrace;
+    }
 
-	public void setEndpointStatistics(Combo endpointStatistics) {
-		this.endpointStatistics = endpointStatistics;
-	}
+    public Combo getEndpointStatistics() {
+        return endpointStatistics;
+    }
 
-	public Text getEP_Properties() {
-		return eP_Properties;
-	}
+    public void setEndpointStatistics(Combo endpointStatistics) {
+        this.endpointStatistics = endpointStatistics;
+    }
 
-	public void setEP_Properties(Text wsdlEP_Properties) {
-		this.eP_Properties = wsdlEP_Properties;
-	}
+    public Text getEP_Properties() {
+        return eP_Properties;
+    }
 
-	public Combo getEP_Optimize() {
-		return eP_Optimize;
-	}
+    public void setEP_Properties(Text wsdlEP_Properties) {
+        this.eP_Properties = wsdlEP_Properties;
+    }
 
-	public void setEP_Optimize(Combo wsdlEP_Optimize) {
-		this.eP_Optimize = wsdlEP_Optimize;
-	}
+    public Combo getEP_Optimize() {
+        return eP_Optimize;
+    }
 
-	public Text getEP_Description() {
-		return eP_Description;
-	}
+    public void setEP_Optimize(Combo wsdlEP_Optimize) {
+        this.eP_Optimize = wsdlEP_Optimize;
+    }
 
-	public void setEP_Description(Text wsdlEP_Description) {
-		this.eP_Description = wsdlEP_Description;
-	}
-	
-	public Button getTemplate_parameters() {
-		return template_parameters;
-	}
+    public Text getEP_Description() {
+        return eP_Description;
+    }
 
-	public void setTemplate_parameters(Button template_parameters) {
-		this.template_parameters = template_parameters;
-	}
+    public void setEP_Description(Text wsdlEP_Description) {
+        this.eP_Description = wsdlEP_Description;
+    }
+
+    public Button getTemplate_parameters() {
+        return template_parameters;
+    }
+
+    public void setTemplate_parameters(Button template_parameters) {
+        this.template_parameters = template_parameters;
+    }
 
     public Text getTemplateName() {
-		return templateName;
-	}
+        return templateName;
+    }
 
-	public void setTemplateName(Text templateName) {
-		this.templateName = templateName;
-	}
+    public void setTemplateName(Text templateName) {
+        this.templateName = templateName;
+    }
 
+    public EndpointFormPage(FormEditor editor) {
+        super(editor, "endpointForm", Messages.getString("EndpointPage.sectionMainTitle"));
+
+        endpointCommons = new EndpointCommons(this);
+    }
+
+    protected void createFormContent(IManagedForm managedForm) {
+        form = managedForm.getForm();
+        toolkit = managedForm.getToolkit();
+        form.setText(Messages.getString("EndpointPage.sectionMainTitle"));
+        form.setBackgroundImage(FormArticlePlugin.getDefault().getImage(FormArticlePlugin.IMG_FORM_BG));
+
+        GridLayout layout = new GridLayout();
+        layout.marginLeft = 20;
+        layout.marginRight = 20;
+        layout.marginTop = 10;
+        layout.numColumns = 1;
+        layout.makeColumnsEqualWidth = true;
+
+        form.getBody().setLayout(layout);
+        GridData formGridData = new GridData();
+        formGridData.horizontalSpan = 6;
+        formGridData.grabExcessHorizontalSpace = true;
+        form.setLayoutData(formGridData);
+
+        /*
+         * ColumnLayout layout = new ColumnLayout();
+         * layout.leftMargin = 10;
+         * layout.rightMargin = 10;
+         * layout.maxNumColumns = 2;
+         * form.getBody().setLayout(layout);
+         */
+
+        createTemplateEndpointSection();
+        createFormBasicSection();
+        createFormMiscSection();
+        createFormQosSection();
+        createFormErrorHandlingSection();
+    }
+
+    public void createTemplateEndpointSection() {
+        if (isTemplate) {
+            templateEndpointSection = endpointCommons.createSection(form, toolkit,
+                    Messages.getString("EndpointPage.section.template"));
+            toolkit.createLabel(templateEndpointSection, "Template Parameters :");
+
+            GridData samplegridData = new GridData();
+            samplegridData.horizontalSpan = 3;
+            samplegridData.horizontalAlignment = SWT.FILL;
+            samplegridData.grabExcessHorizontalSpace = true;
+            templateEndpointSection.setLayoutData(samplegridData);
+
+            Composite basicSectionClient = toolkit.createComposite(templateEndpointSection);
+            basicSectionClient.setLayout(new GridLayout());
+            templateEndpointSection.setClient(basicSectionClient);
+
+            toolkit.createLabel(basicSectionClient, "Name :");
+            templateName = toolkit.createText(basicSectionClient, "");
+            templateName.setBackground(new Color(null, 229, 236, 253));
+            GridData endpointNameGridData = new GridData();
+            endpointNameGridData.horizontalSpan = 3;
+            endpointNameGridData.horizontalAlignment = GridData.FILL;
+            endpointNameGridData.grabExcessHorizontalSpace = true;
+            templateName.setLayoutData(endpointNameGridData);
+
+            templateName.addModifyListener(new ModifyListener() {
+                @Override
+                public void modifyText(ModifyEvent e) {
+                    setSave(true);
+                    updateDirtyState();
+                }
+            });
+
+            toolkit.createLabel(basicSectionClient, "Parameters :");
+
+            template_parameters = toolkit.createButton(basicSectionClient, "Add Template Parameters", SWT.PUSH);
+            template_parameters.setBackground(new Color(null, 229, 236, 253));
+            template_parameters.addSelectionListener(new SelectionListener() {
+
+                @Override
+                public void widgetSelected(SelectionEvent e) {
+                    Shell shell = Display.getDefault().getActiveShell();
+                    ConfigureTemplateParametersDialog paramDialog = new ConfigureTemplateParametersDialog(shell,
+                            templateParameterList);
+                    paramDialog.setBlockOnOpen(true);
+                    paramDialog.open();
+                    templateParameterList = paramDialog.getTemplateParameterList();
+                    setSave(true);
+                    updateDirtyState();
+                }
+
+                @Override
+                public void widgetDefaultSelected(SelectionEvent e) {
+
+                }
+            });
+        }
+    }
+
+    public void createFormBasicSection() {
+        /* Basic Section */
+        basicSection = endpointCommons.createSection(form, toolkit, Messages.getString("EndpointPage.section.basic"));
+
+        GridData samplegridData = new GridData();
+        samplegridData.horizontalSpan = 3;
+        samplegridData.horizontalAlignment = SWT.FILL;
+        samplegridData.grabExcessHorizontalSpace = true;
+        basicSection.setLayoutData(samplegridData);
+
+        Composite basicSectionClient = toolkit.createComposite(basicSection);
+        basicSectionClient.setLayout(new GridLayout());
+        basicSection.setClient(basicSectionClient);
+
+        toolkit.createLabel(basicSectionClient, "Name :");
+        endpointName = toolkit.createText(basicSectionClient, "");
+        endpointName.setBackground(new Color(null, 229, 236, 253));
+        GridData endpointNameGridData = new GridData();
+        endpointNameGridData.horizontalSpan = 3;
+        endpointNameGridData.horizontalAlignment = GridData.FILL;
+        endpointNameGridData.grabExcessHorizontalSpace = true;
+        endpointName.setLayoutData(endpointNameGridData);
+
+        endpointName.addModifyListener(new ModifyListener() {
+            @Override
+            public void modifyText(ModifyEvent e) {
+                setSave(true);
+                updateDirtyState();
+            }
+        });
+
+        toolkit.createLabel(basicSectionClient, "Format :");
+        endpointSesssionType = new Combo(basicSectionClient, SWT.DROP_DOWN);
+        String[] formats = { "LEAVE_AS_IS", "SOAP 1.1", "SOAP 1.2", "POX", "GET", "REST" };
+        endpointSesssionType.setItems(formats);
+        GridData endpointFormatGridData = new GridData();
+        endpointFormatGridData.horizontalSpan = 3;
+        endpointFormatGridData.horizontalAlignment = GridData.FILL;
+        endpointFormatGridData.grabExcessHorizontalSpace = true;
+        endpointSesssionType.setLayoutData(endpointFormatGridData);
+
+        endpointSesssionType.addSelectionListener(new SelectionAdapter() {
+            @Override
+            public void widgetSelected(SelectionEvent e) {
+                setSave(true);
+                updateDirtyState();
+            }
+        });
+
+        toolkit.createLabel(basicSectionClient, "Trace Enabled :");
+        endpointTrace = new Combo(basicSectionClient, SWT.DROP_DOWN);
+        String[] tracingStates = { "True", "False" };
+        endpointTrace.setItems(tracingStates);
+        GridData endpointTraceGridData = new GridData();
+        endpointTraceGridData.horizontalSpan = 3;
+        endpointTraceGridData.horizontalAlignment = GridData.FILL;
+        endpointTraceGridData.grabExcessHorizontalSpace = true;
+        endpointTrace.setLayoutData(endpointTraceGridData);
+
+        endpointTrace.addSelectionListener(new SelectionAdapter() {
+            @Override
+            public void widgetSelected(SelectionEvent e) {
+                // Fixing DEVTOOLESB-576
+                if (Boolean.parseBoolean(endpointTrace.getText())) {
+                    endpointStatistics.select(0);
+                }
+                setSave(true);
+                updateDirtyState();
+            }
+        });
+
+        toolkit.createLabel(basicSectionClient, "Statistics Enabled :");
+        endpointStatistics = new Combo(basicSectionClient, SWT.DROP_DOWN);
+        String[] statisticsStates = { "True", "False" };
+        endpointStatistics.setItems(statisticsStates);
+        GridData endpointStatisticsGridData = new GridData();
+        endpointStatisticsGridData.horizontalSpan = 3;
+        endpointStatisticsGridData.horizontalAlignment = GridData.FILL;
+        endpointStatisticsGridData.grabExcessHorizontalSpace = true;
+        endpointStatistics.setLayoutData(endpointStatisticsGridData);
+
+        endpointStatistics.addSelectionListener(new SelectionAdapter() {
+            @Override
+            public void widgetSelected(SelectionEvent e) {
+                setSave(true);
+                updateDirtyState();
+            }
+        });
+    }
+
+    public void createFormMiscSection() {
+    }
+
+    public void createFormQosSection() {
+    }
+
+    public void createFormErrorHandlingSection() {
+    }
+
+    public EndpointCommons getEndpointCommons() {
+        return endpointCommons;
+    }
+
+    public Combo getEP_Format() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+    
     public List<String> getEndpointCommentList() {
         return endpointCommentList;
     }
@@ -178,214 +388,4 @@ public abstract class EndpointFormPage extends AbstractEsbFormPage {
         this.templateCommentList = templateCommentList;
     }
 
-    public EndpointFormPage(FormEditor editor) {
-		super(editor, "endpointForm", Messages.getString("EndpointPage.sectionMainTitle"));
-		
-		endpointCommons = new EndpointCommons(this);
-	}
-
-	protected void createFormContent(IManagedForm managedForm) {
-		form = managedForm.getForm();
-		toolkit = managedForm.getToolkit();
-		form.setText(Messages.getString("EndpointPage.sectionMainTitle")); 
-		form.setBackgroundImage(FormArticlePlugin.getDefault().getImage(FormArticlePlugin.IMG_FORM_BG));
-		
-		GridLayout layout = new GridLayout();
-		layout.marginLeft = 20;
-		layout.marginRight = 20;
-		layout.marginTop = 10;
-		layout.numColumns = 1;
-		layout.makeColumnsEqualWidth = true;
-		
-		form.getBody().setLayout(layout);
-		GridData formGridData = new GridData();
-		formGridData.horizontalSpan = 6;
-		formGridData.grabExcessHorizontalSpace = true;
-		form.setLayoutData(formGridData);
-		
-		
-		/*ColumnLayout layout = new ColumnLayout();
-		layout.leftMargin = 10;
-		layout.rightMargin = 10;
-		layout.maxNumColumns = 2;
-		form.getBody().setLayout(layout);*/
-		
-		createTemplateEndpointSection();
-		createFormBasicSection();
-		createFormMiscSection();
-		createFormQosSection();
-		createFormErrorHandlingSection();
-	}
-	
-	
-	
-	public void createTemplateEndpointSection(){
-		if(isTemplate){
-			templateEndpointSection = endpointCommons.createSection(form, toolkit, Messages.getString("EndpointPage.section.template"));
-			toolkit.createLabel(templateEndpointSection, "Template Parameters :");
-			
-			GridData samplegridData = new GridData();
-			samplegridData.horizontalSpan = 3;
-			samplegridData.horizontalAlignment = SWT.FILL;
-			samplegridData.grabExcessHorizontalSpace = true;
-			templateEndpointSection.setLayoutData(samplegridData);
-			// section.setLayoutData(new TableWrapData(TableWrapData.FILL));
-
-			Composite basicSectionClient = toolkit.createComposite(templateEndpointSection);
-			basicSectionClient.setLayout(new GridLayout());
-			templateEndpointSection.setClient(basicSectionClient);
-			
-			toolkit.createLabel(basicSectionClient, "Name :");
-			templateName = toolkit.createText(basicSectionClient, "");
-			templateName.setBackground(new Color(null, 229,236,253));
-			//endpointName.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
-			GridData endpointNameGridData = new GridData();
-			endpointNameGridData.horizontalSpan = 3;
-			endpointNameGridData.horizontalAlignment = GridData.FILL;
-			endpointNameGridData.grabExcessHorizontalSpace = true;
-			templateName.setLayoutData(endpointNameGridData);
-			
-			templateName.addModifyListener(new ModifyListener() {
-				@Override
-				public void modifyText(ModifyEvent e) {
-					setSave(true);
-					updateDirtyState();
-				}
-			});
-			
-			toolkit.createLabel(basicSectionClient, "Parameters :");
-			
-			template_parameters = toolkit.createButton(basicSectionClient, "Add Template Parameters", SWT.PUSH);
-			template_parameters.setBackground(new Color(null, 229, 236, 253));
-			template_parameters.addSelectionListener(new SelectionListener() {
-
-				@Override
-				public void widgetSelected(SelectionEvent e) {
-					Shell shell = Display.getDefault().getActiveShell();
-					ConfigureTemplateParametersDialog paramDialog = new ConfigureTemplateParametersDialog(shell, templateParameterList);
-					paramDialog.setBlockOnOpen(true);
-					paramDialog.open();
-					templateParameterList = paramDialog.getTemplateParameterList();
-					setSave(true);
-					updateDirtyState();
-				}
-
-				@Override
-				public void widgetDefaultSelected(SelectionEvent e) {
-
-				}
-			});
-		}
-	}
-	
-	public void createFormBasicSection() {
-		/* Basic Section */
-		basicSection = endpointCommons.createSection(form, toolkit, Messages.getString("EndpointPage.section.basic"));
-			
-		GridData samplegridData = new GridData();
-		samplegridData.horizontalSpan = 3;
-		samplegridData.horizontalAlignment = SWT.FILL;
-		samplegridData.grabExcessHorizontalSpace = true;
-		basicSection.setLayoutData(samplegridData);
-		// section.setLayoutData(new TableWrapData(TableWrapData.FILL));
-
-		Composite basicSectionClient = toolkit.createComposite(basicSection);
-		basicSectionClient.setLayout(new GridLayout());
-		basicSection.setClient(basicSectionClient);
-					
-		/*Composite basicSectionClient = toolkit.createComposite(basicSection);
-		basicSectionClient.setLayout(new TableWrapLayout());
-		basicSection.setClient(basicSectionClient);*/
-		
-		toolkit.createLabel(basicSectionClient, "Name :");
-		endpointName = toolkit.createText(basicSectionClient, "");
-		endpointName.setBackground(new Color(null, 229,236,253));
-		//endpointName.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
-		GridData endpointNameGridData = new GridData();
-		endpointNameGridData.horizontalSpan = 3;
-		endpointNameGridData.horizontalAlignment = GridData.FILL;
-		endpointNameGridData.grabExcessHorizontalSpace = true;
-		endpointName.setLayoutData(endpointNameGridData);
-		
-		endpointName.addModifyListener(new ModifyListener() {
-			@Override
-			public void modifyText(ModifyEvent e) {
-				setSave(true);
-				updateDirtyState();
-			}
-		});
-
-		
-		toolkit.createLabel(basicSectionClient, "Format :");
-		eP_Format = new Combo(basicSectionClient, SWT.DROP_DOWN);
-		//eP_Format.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
-		String[] formats = {"LEAVE_AS_IS", "SOAP 1.1", "SOAP 1.2", "POX", "GET", "REST"};
-		eP_Format.setItems(formats);
-		GridData endpointFormatGridData = new GridData();
-		endpointFormatGridData.horizontalSpan = 3;
-		endpointFormatGridData.horizontalAlignment = GridData.FILL;
-		endpointFormatGridData.grabExcessHorizontalSpace = true;
-		eP_Format.setLayoutData(endpointFormatGridData);
-		
-		eP_Format.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				setSave(true);
-				updateDirtyState();
-			}
-		});
-		
-		toolkit.createLabel(basicSectionClient, "Trace Enabled :");
-		endpointTrace = new Combo(basicSectionClient, SWT.DROP_DOWN);
-		//endpointTrace.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
-		String[] tracingStates = {"True", "False"};
-		endpointTrace.setItems(tracingStates);
-		GridData endpointTraceGridData = new GridData();
-		endpointTraceGridData.horizontalSpan = 3;
-		endpointTraceGridData.horizontalAlignment = GridData.FILL;
-		endpointTraceGridData.grabExcessHorizontalSpace = true;
-		endpointTrace.setLayoutData(endpointTraceGridData);
-		
-		endpointTrace.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				// Fixing DEVTOOLESB-576
-				if (Boolean.parseBoolean(endpointTrace.getText())) {
-					endpointStatistics.select(0);
-				}
-				setSave(true);
-				updateDirtyState();
-			}
-		});
-		
-		toolkit.createLabel(basicSectionClient, "Statistics Enabled :");
-		endpointStatistics = new Combo(basicSectionClient, SWT.DROP_DOWN);
-		//endpointStatistics.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
-		String[] statisticsStates = {"True", "False"};
-		endpointStatistics.setItems(statisticsStates);
-		GridData endpointStatisticsGridData = new GridData();
-		endpointStatisticsGridData.horizontalSpan = 3;
-		endpointStatisticsGridData.horizontalAlignment = GridData.FILL;
-		endpointStatisticsGridData.grabExcessHorizontalSpace = true;
-		endpointStatistics.setLayoutData(endpointStatisticsGridData);
-		
-		endpointStatistics.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				setSave(true);
-				updateDirtyState();
-			}
-		});
-	}
-	public void createFormMiscSection() {}
-	
-	public void createFormQosSection() {}
-	
-	public void createFormErrorHandlingSection(){}
-	
-	
-	public EndpointCommons getEndpointCommons() {
-		return endpointCommons;
-	}
-	
 }

@@ -961,7 +961,7 @@ public class ProcessSourceView {
                 if (graphicalEp == null) {
                     graphicalEp = omElement.getChildrenWithLocalName("recipientlist");
                 }
-                if (graphicalEp.hasNext()) {
+                if (graphicalEp != null && graphicalEp.hasNext()) {
                     OMNode ep = (OMNode) graphicalEp.next();
                     if (ep instanceof OMElement) {
                         Iterator children = ((OMElement)ep).getChildren();

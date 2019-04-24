@@ -160,7 +160,7 @@ public class EditorUtils {
     public static final String TEMPLATE_RESOURCE_DIR = "src/main/graphical-synapse-config/templates";
     public static final String TASK_RESOURCE_DIR = "src/main/graphical-synapse-config/tasks";
     public static final String API_RESOURCE_DIR = "src/main/graphical-synapse-config/api";
-    public static final String COMPLEX_ENDPOINT_RESOURCE_DIR = "src/main/graphical-synapse-config/complex_endpoints";
+    public static final String COMPLEX_ENDPOINT_RESOURCE_DIR = "src/main/graphical-synapse-config/endpoints";
     private static final int NUMBER_OF_SEGMENTS_IN_PATH_AFTER_ESBCONFIG_PROJECT = 5;
 
     public static AbstractInputConnectorEditPart getInputConnector(ShapeNodeEditPart parent) {

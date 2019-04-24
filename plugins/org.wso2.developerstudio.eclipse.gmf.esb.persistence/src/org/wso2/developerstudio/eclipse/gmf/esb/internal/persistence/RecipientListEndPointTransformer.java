@@ -24,11 +24,12 @@ import java.util.Properties;
 import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.util.AXIOMUtil;
 import org.apache.commons.lang.StringUtils;
-import org.apache.synapse.config.xml.endpoints.EndpointFactory;
+import org.apache.synapse.SynapseArtifact;
 import org.apache.synapse.config.xml.endpoints.WSDLEndpointFactory;
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.endpoints.EndpointDefinition;
 import org.apache.synapse.endpoints.RecipientListEndpoint;
+import org.apache.synapse.mediators.MediatorProperty;
 import org.apache.synapse.mediators.Value;
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.apache.synapse.util.xpath.SynapseXPath;
@@ -44,9 +45,11 @@ import org.eclipse.ui.PlatformUI;
 import org.jaxen.JaxenException;
 import org.wso2.developerstudio.eclipse.esb.core.interfaces.IEsbEditorInput;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPoint;
+import org.wso2.developerstudio.eclipse.gmf.esb.EndPointProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndpointDiagram;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.InputConnector;
+import org.wso2.developerstudio.eclipse.gmf.esb.Member;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.RecipientListEndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.RecipientListEndPointOutputConnector;
@@ -58,6 +61,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.persistence.EsbTransformerRegist
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.RecipientListEndpointFormPage;
 
 public class RecipientListEndPointTransformer extends AbstractEndpointTransformer {
 
@@ -221,7 +225,7 @@ public class RecipientListEndPointTransformer extends AbstractEndpointTransforme
 
                     String endpointName = (String) model.getName();
                     IPath location = new Path(
-                            "src/main/synapse-config/complex-endpoints" + "/" + endpointName + ".xml");
+                            "src/main/synapse-config/endpoints" + "/" + endpointName + ".xml");
                     IFile file = activeProject.getFile(location);
 
                     if (file.exists()) {
@@ -242,6 +246,58 @@ public class RecipientListEndPointTransformer extends AbstractEndpointTransforme
         // Serialize the parameters
         saveProperties(model, recipientList);
         return recipientList;
+    }
+    
+    public SynapseArtifact create(RecipientListEndpointFormPage formPage) throws NumberFormatException, JaxenException {
+
+        RecipientListEndpoint synapseRecipientListEP = new RecipientListEndpoint();
+        if (StringUtils.isNotBlank(formPage.getEndpointName().getText())) {
+            synapseRecipientListEP.setName(formPage.getEndpointName().getText());
+        }
+
+        // set endPointsList
+        if (formPage.getSynapseEndpointList().size() > 0) {
+            synapseRecipientListEP.setChildren(formPage.getSynapseEndpointList());
+
+        } else {
+            // Recipient List endpoint members.
+            List<org.apache.axis2.clustering.Member> members = new ArrayList<org.apache.axis2.clustering.Member>();
+            if (formPage.getMemberList() != null && formPage.getMemberList().size() > 0) {
+                List<Member> visualMembers = formPage.getMemberList();
+
+                for (Member visualMember : visualMembers) {
+                    org.apache.axis2.clustering.Member member = new org.apache.axis2.clustering.Member(
+                            visualMember.getHostName(), -1);
+                    member.setHttpPort(Integer.parseInt(visualMember.getHttpPort()));
+                    member.setHttpsPort(Integer.parseInt(visualMember.getHttpsPort()));
+                    members.add(member);
+                }
+            }
+
+            synapseRecipientListEP.setMembers(members);
+        }
+
+        synapseRecipientListEP.setDescription(formPage.getEP_Description().getText());
+
+        List<MediatorProperty> mediatorProperties = new ArrayList<>();
+        List<EndPointProperty> endpointProp = formPage.getEndPointPropertyList();
+        if (endpointProp != null) {
+            for (int i = 0; i < endpointProp.size(); i++) {
+                EndPointProperty uiMediatorProp = endpointProp.get(i);
+                MediatorProperty tempMediatorProperty = new MediatorProperty();
+                tempMediatorProperty.setName(uiMediatorProp.getName());
+                tempMediatorProperty.setScope(uiMediatorProp.getScope().getLiteral());
+                if (uiMediatorProp.getValue() != null && !uiMediatorProp.getValue().isEmpty()) {
+                    tempMediatorProperty.setValue(uiMediatorProp.getValue());
+                } else {
+                    // add expression support
+                }
+                mediatorProperties.add(tempMediatorProperty);
+            }
+        }
+        synapseRecipientListEP.addProperties(mediatorProperties);
+
+        return synapseRecipientListEP;
     }
 
 }

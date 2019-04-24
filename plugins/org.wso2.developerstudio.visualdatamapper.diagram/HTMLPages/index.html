@@ -145,16 +145,16 @@
       // Generate json / xml / csv examples from the json schema.  
       function generateExamples() {
     	  if (isJson(inputSchema)){
-    		  jsonString = inputSchema;
+    		  jsonString = inputSchema ;
     		  xmlString = json2xml(JSON.parse(jsonString), "\n");
     	      xmlString = "<" + inputSchemaTitle + ">" + xmlString + "</" + inputSchemaTitle + ">";
-    	      csvString = '<text xmlns="http://ws.apache.org/commons/ns/payload">' + Papa.unparse(JSON.parse(jsonString), configs) + "</text>";
+    	      csvString = '<text xmlns="http://ws.apache.org/commons/ns/payload">' + Papa.unparse(JSON.parse("[" + jsonString + "]"), configs) + "</text>";
     	      
     	      inputEditor.setOption("mode", "text/javascript");
   	  	  	  inputEditor.setValue(inputSchema);
   	  	  	  
   	  	  	  inputType = $('.inputTypeRadio:checked').val();
-    	  } else {
+    	  } else if (isXML(inputSchema)){
     		  var oParser = new DOMParser();
   			  var oDOM = oParser.parseFromString(inputSchema, "application/xml");
     		  
@@ -177,22 +177,6 @@
     	  
     	  autoFormatSelection();
           process();
-    	
-    	///////// ORIGINAL
-    	  /* var inputSchemaTitle = inputSchema["title"];
-          
-          jsonString = convertSchemaToJson(inputSchema);
-          if (inputSchemaTitle != "root" && jsonString[inputSchemaTitle] != null) {
-            jsonString = jsonString[inputSchemaTitle];
-          }
-          jsonString = JSON.stringify(jsonString, null, "\t");
-          inputEditor.setOption("mode", "text/javascript");
-      	  inputEditor.setValue(jsonString);
-        
-          xmlString = json2xml(JSON.parse(jsonString), "\n");
-          xmlString = "<" + inputSchemaTitle + ">" + xmlString + "</" + inputSchemaTitle + ">";
-        
-          csvString = '<text xmlns="http://ws.apache.org/commons/ns/payload">' + Papa.unparse(JSON.parse(jsonString), configs) + "</text>"; */
       }
       
       function isJson(str) {

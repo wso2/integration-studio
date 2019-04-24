@@ -134,16 +134,16 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
 	 * @generated NOT
 	 */
 	private static final String INPUT_SCHEMA_ID = "Input-Schema"; //$NON-NLS-1$
-
-    /**
-     * @generated NOT
-     */
-    private static final String OUTPUT_SCHEMA_ID = "Output-Schema"; //$NON-NLS-1$
-
-    /**
-     * @generated NOT
-     */
-    private static final String INPUT_SAMPLE_ID = "Input-Sample"; //$NON-NLS-1$
+	
+	/**
+	 * @generated NOT
+	 */
+	private static final String OUTPUT_SCHEMA_ID = "Output-Schema"; //$NON-NLS-1$
+	
+	/**
+	 * @generated NOT
+	 */
+	private static final String INPUT_SAMPLE_ID = "Input-Sample"; //$NON-NLS-1$
 
 	/**
 	 * @generated

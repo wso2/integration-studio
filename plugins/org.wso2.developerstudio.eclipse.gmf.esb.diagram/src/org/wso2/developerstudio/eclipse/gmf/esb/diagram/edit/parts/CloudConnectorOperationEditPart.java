@@ -149,6 +149,10 @@ public class CloudConnectorOperationEditPart extends FixedSizedAbstractMediator 
                 .getConnectorDirectoryPathFromConnectorName(project.getWorkspace().getRoot().getLocation().toOSString(),
                         connectorName);
         iconPath = connectorPath + File.separator + "icon" + File.separator + "icon-large.gif";
+        File icon = new File(iconPath);
+        if (!icon.exists()) {
+            iconPath = connectorPath + File.separator + "icon" + File.separator + "icon-large.png";
+        }
 
     }
 

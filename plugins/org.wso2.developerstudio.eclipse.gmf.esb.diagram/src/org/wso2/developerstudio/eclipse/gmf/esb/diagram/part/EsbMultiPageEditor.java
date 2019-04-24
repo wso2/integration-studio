@@ -1458,7 +1458,9 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
     @Override
     public void setFocus() {
         super.setFocus();
+        String currentPerspective = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getPerspective().getLabel();
         try {
+            if(!"debug".equalsIgnoreCase(currentPerspective))
             PlatformUI.getWorkbench().showPerspective(ESB_GRAPHICAL_PERSPECTIVE_ID,
                     PlatformUI.getWorkbench().getActiveWorkbenchWindow());
         } catch (WorkbenchException e) {

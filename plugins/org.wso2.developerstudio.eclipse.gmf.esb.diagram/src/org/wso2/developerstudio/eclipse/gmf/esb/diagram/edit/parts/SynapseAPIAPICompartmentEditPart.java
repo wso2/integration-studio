@@ -67,6 +67,7 @@ public class SynapseAPIAPICompartmentEditPart extends ShapeCompartmentEditPart {
                 new CreationEditPolicyWithCustomReparent(EsbVisualIDRegistry.TYPED_INSTANCE));
         installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
         installEditPolicy(EditPolicyRoles.CANONICAL_ROLE, new SynapseAPIAPICompartmentCanonicalEditPolicy());
+        removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
     }
 
     /**

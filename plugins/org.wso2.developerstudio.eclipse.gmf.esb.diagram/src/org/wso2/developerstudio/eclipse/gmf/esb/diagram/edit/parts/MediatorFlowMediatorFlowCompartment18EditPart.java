@@ -138,6 +138,8 @@ public class MediatorFlowMediatorFlowCompartment18EditPart extends ShapeCompartm
         installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
         installEditPolicy(EditPolicyRoles.CANONICAL_ROLE,
                 new MediatorFlowMediatorFlowCompartment18CanonicalEditPolicy());
+        removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
+
     }
 
     /**

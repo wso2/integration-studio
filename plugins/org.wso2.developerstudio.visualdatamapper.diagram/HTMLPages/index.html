@@ -147,8 +147,9 @@
     	  if (isJson(inputSchema)){
     		  jsonString = inputSchema ;
     		  xmlString = json2xml(JSON.parse(jsonString), "\n");
-    	      xmlString = "<" + inputSchemaTitle + ">" + xmlString + "</" + inputSchemaTitle + ">";
-    	      csvString = '<text xmlns="http://ws.apache.org/commons/ns/payload">' + Papa.unparse(JSON.parse("[" + jsonString + "]"), configs) + "</text>";
+    		  rootElemWithNS = buildRootWithNS(inputSchema);
+    	      xmlString = "<" + rootElemWithNS + ">" + xmlString + "</" + inputSchemaTitle + ">";
+    	      csvString = '<text xmlns="http://ws.apache.org/commons/ns/payload">' + Papa.unparse(JSON.parse(jsonString), configs) + "</text>";
     	      
     	      inputEditor.setOption("mode", "text/javascript");
   	  	  	  inputEditor.setValue(inputSchema);
@@ -217,6 +218,19 @@
         process();
       });
       
+      //Create xml root element content with namespaces
+      function buildRootWithNS(inputSchema) {
+          namespaces = inputSchema["namespaces"];
+          rootValue = inputSchema["title"];
+          rootElements = "<" + rootValue + ">";
+          tempRoot = rootValue;
+          for (var i in namespaces) {
+              tempRoot = tempRoot + " xmlns:" + namespaces[i]["prefix"] + "=\"" + namespaces[i]["url"] + "\""
+          }
+          tempRoot = tempRoot;
+          return tempRoot;
+      }
+
       // Call Datamapper.mediate() and take back the results
       function process() {
         var input = inputEditor.getValue();

@@ -20,6 +20,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
+import org.apache.synapse.config.xml.SynapsePath;
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.apache.synapse.mediators.eip.Target;
@@ -30,6 +31,7 @@ import org.jaxen.JaxenException;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.IterateMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.SynapseXPathExt;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.ValidationConstansts;
@@ -80,12 +82,12 @@ public class IterateMediatorTransformer extends AbstractEsbNodeTransformer {
             NamespacedProperty iterateExp = visualIterate.getIterateExpression();
 
             if (iterateExp != null) {
-                SynapseXPath xpath;
+                SynapsePath xpath;
                 if (!isForValidation && StringUtils.isEmpty(iterateExp.getPropertyValue())) {
                     // Add a default xpath to use the synapse serializer
-                    xpath = new SynapseXPath(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
+                    xpath = SynapseXPathExt.createSynapsePath(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
                 } else {
-                    xpath = new SynapseXPath(iterateExp.getPropertyValue());
+                    xpath = SynapseXPathExt.createSynapsePath(iterateExp.getPropertyValue());
                 }
                 Map<String, String> nameSpaceMap = iterateExp.getNamespaces();
 
@@ -102,18 +104,19 @@ public class IterateMediatorTransformer extends AbstractEsbNodeTransformer {
                 iterateMediator.setPreservePayload(true);
                 NamespacedProperty attachedPath = visualIterate.getAttachPath();
                 if (attachedPath != null) {
-                    SynapseXPath xpath;
+                    SynapsePath xpath;
                     if (!isForValidation && StringUtils.isEmpty(attachedPath.getPropertyValue())) {
                         // Add a default xpath to use the synapse serializer
-                        xpath = new SynapseXPath(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
+                        xpath = SynapseXPathExt.createSynapsePath(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
                     } else {
-                        xpath = new SynapseXPath(attachedPath.getPropertyValue());
+                        xpath = SynapseXPathExt.createSynapsePath(attachedPath.getPropertyValue());
                     }
                     Map<String, String> nameSpaceMap = attachedPath.getNamespaces();
                     for (String key : nameSpaceMap.keySet()) {
                         xpath.addNamespace(key, nameSpaceMap.get(key));
                     }
                     iterateMediator.setAttachPath(xpath);
+                    iterateMediator.setAttachPathPresent(true);
                 }
             } else {
                 iterateMediator.setPreservePayload(false);

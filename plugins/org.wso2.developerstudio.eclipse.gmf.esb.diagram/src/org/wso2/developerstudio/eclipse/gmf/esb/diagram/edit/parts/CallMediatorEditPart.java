@@ -100,6 +100,8 @@ public class CallMediatorEditPart extends SingleCompartmentComplexFiguredAbstrac
         installEditPolicy(EditPolicyRoles.CANONICAL_ROLE, new CallMediatorCanonicalEditPolicy());
         installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
         installEditPolicy(EditPolicyRoles.OPEN_ROLE, new ShowPropertyViewEditPolicy());
+        removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
+
         // XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable
         // editpolicies
         // removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);

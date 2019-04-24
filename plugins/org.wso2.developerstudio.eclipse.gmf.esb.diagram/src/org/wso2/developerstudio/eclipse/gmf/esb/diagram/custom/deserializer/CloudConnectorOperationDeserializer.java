@@ -86,11 +86,11 @@ public class CloudConnectorOperationDeserializer
 
                 if (value.getExpression() != null) {
                     NamespacedProperty namespacedProperty = createNamespacedProperty(value.getExpression());
-                    namespacedProperty.setPropertyValue("{" + value.getExpression().toString() + "}");
+                    namespacedProperty.setPropertyValue(value.getExpression().toString());
                     namespacedProperty.setDynamic(dynamic);
                     namespacedProperty.setSupportsDynamicXPaths(true);
                     visualParameter.setParameterExpression(namespacedProperty);
-                    visualParameter.setParameterValue("{" + value.getExpression().toString() + "}");
+                    visualParameter.setParameterValue(value.getExpression().toString());
                     visualParameter.setTemplateParameterType(RuleOptionType.EXPRESSION);
                     if (namespacedProperty.getNamespaces().size() > 0) {
                         namespacesExist = true;

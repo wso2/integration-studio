@@ -60,6 +60,7 @@ public class SynapseAPIEditPart extends ShapeNodeEditPart {
         super.createDefaultEditPolicies();
         installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new SynapseAPIItemSemanticEditPolicy());
         installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
+        removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
         // XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable
         // editpolicies
         // removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
@@ -96,7 +97,7 @@ public class SynapseAPIEditPart extends ShapeNodeEditPart {
     protected IFigure createNodeShape() {
         primaryShape = new RectangleFigure();
         primaryShape.setPreferredSize(new Dimension(getMapMode().DPtoLP(600), getMapMode().DPtoLP(500)));
-        primaryShape.setBackgroundColor(new Color(null, 0, 200, 200));
+        primaryShape.setBackgroundColor(new Color(null, 250, 250, 250));
         return primaryShape;
     }
 
@@ -121,7 +122,7 @@ public class SynapseAPIEditPart extends ShapeNodeEditPart {
      * Body of this method does not depend on settings in generation model
      * so you may safely remove <i>generated</i> tag and modify it.
      * 
-     * @generated
+     * @generated NOT
      */
     protected NodeFigure createNodeFigure() {
         
@@ -138,7 +139,7 @@ public class SynapseAPIEditPart extends ShapeNodeEditPart {
         RoundedRectangle apiLeftIconBox = new RoundedRectangle();
         apiLeftIconBox.setMaximumSize(new Dimension(50, 6000));
         apiLeftIconBox.setSize(new Dimension(50, 200));
-        apiLeftIconBox.setBackgroundColor(new Color(null, 100, 100, 100));
+        apiLeftIconBox.setBackgroundColor(new Color(null, 41, 128, 185));
         apiLeftIconBox.setLayoutManager(new StackLayout());
         apiLeftIconBox.add(apiIconImageFigure);
         

@@ -111,6 +111,8 @@ public class FailoverEndpointDeserializer extends AbstractEndpointDeserializer {
         if (endpoint.getChildren() != null && !endpoint.getChildren().isEmpty()) {
             failoverEndpointPage
                     .setEndpointList(ComplexEndpointDeserializerUtils.getTableEntries((AbstractEndpoint) endpoint));
+        } else {
+            failoverEndpointPage.setEndpointList(null);
         }
 
         super.createNode(formEditor, endpointObject);

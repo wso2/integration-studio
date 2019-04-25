@@ -18,12 +18,12 @@
 
 package org.wso2.developerstudio.esb.form.editors.article.providers;
 
-import javax.xml.stream.XMLStreamException;
-
 import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.util.AXIOMUtil;
+import org.apache.synapse.config.xml.endpoints.EndpointFactory;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IExportWizard;
 import org.eclipse.ui.IWorkbench;
@@ -62,10 +62,13 @@ public class ConfigureEndpointsWizard extends Wizard implements IExportWizard {
             try {
                 element = AXIOMUtil.stringToOM(endpointConfig);
                 ComplexEndpointWizardUtils.removeIndentations(element);
-                // TODO Add validation for inline endpoint
+                OMElement tempElement = element.cloneOMElement();
+                ComplexEndpointWizardUtils.setNamespaceForChildren(tempElement);
+                EndpointFactory.getEndpointFromElement(tempElement, false, null);
 
-            } catch (XMLStreamException e) {
-                // TODO open error popup
+            } catch (Exception e) {
+                ComplexEndpointWizardUtils.openMessageBox(getShell(), "Endpoint Error",
+                        "An error occured while creating the endpoint configuration.\n", SWT.ICON_ERROR);
             }
             endpointTableEntry = new EndpointTableEntry(true, element.toString());
         } else {

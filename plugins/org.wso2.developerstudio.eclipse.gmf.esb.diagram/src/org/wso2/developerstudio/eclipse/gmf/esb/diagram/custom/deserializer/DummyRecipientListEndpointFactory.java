@@ -76,21 +76,24 @@ public class DummyRecipientListEndpointFactory extends DummyEndpointFactory {
                 List<Member> members = getMembers(recipientListElement);
                 recipientListEndpoint.setMembers(members);
                 OMElement dynamicSetElement = recipientListElement.getFirstChildWithName(DYNAMIC_SET);
-                Value dynamicEndpointSet = new ValueFactory().createValue("value", dynamicSetElement);
-                String maxStr = dynamicSetElement.getAttributeValue(new QName("max-cache"));
+                if (dynamicSetElement != null) {
+                    Value dynamicEndpointSet = new ValueFactory().createValue("value", dynamicSetElement);
+                    String maxStr = dynamicSetElement.getAttributeValue(new QName("max-cache"));
 
-                int maxCache = -1;
-                try {
-                    maxCache = Integer.parseInt(maxStr);
-                } catch (NumberFormatException e) {
+                    int maxCache = -1;
+                    try {
+                        maxCache = Integer.parseInt(maxStr);
+                    } catch (NumberFormatException e) {
 
+                    }
+                    recipientListEndpoint = new RecipientListEndpoint(
+                            maxCache < 0 ? RecipientListEndpoint.DEFAULT_MAX_POOL : maxCache);
+
+                    if (name != null) {
+                        recipientListEndpoint.setName(name.getAttributeValue());
+                    }
+                    recipientListEndpoint.setDynamicEnpointSet(dynamicEndpointSet);
                 }
-                recipientListEndpoint = new RecipientListEndpoint(
-                        maxCache < 0 ? RecipientListEndpoint.DEFAULT_MAX_POOL : maxCache);
-                if (name != null) {
-                    recipientListEndpoint.setName(name.getAttributeValue());
-                }
-                recipientListEndpoint.setDynamicEnpointSet(dynamicEndpointSet);
             }
 
             processProperties(recipientListEndpoint, epConfig);

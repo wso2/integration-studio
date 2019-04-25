@@ -130,6 +130,8 @@ public class RecipientListEndpointDeserializer extends AbstractEndpointDeseriali
 
         if (endpoint.getChildren() != null && !endpoint.getChildren().isEmpty()) {
             recipientListEndpointPage.setEndpointList(ComplexEndpointDeserializerUtils.getTableEntries(endpoint));
+        } else {
+            recipientListEndpointPage.setEndpointList(null);
         }
 
         if (endpoint.getMembers() != null && endpoint.getMembers().size() > 0) {

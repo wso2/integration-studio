@@ -153,69 +153,73 @@
           if (inputType === "JSON") {
             jsonString = sample;
             setJsonInputValue();
-          } else if (inputType == "XML"){
+          } else if (inputType == "XML") {
             xmlString = sample;
             setXMLInputValue();
           } else if (inputType == "CSV") {
-            csvString = '<text xmlns="http://ws.apache.org/commons/ns/payload">' + sample + "</text>";  
+            csvString = '<text xmlns="http://ws.apache.org/commons/ns/payload">' + sample + "</text>";
             setCSVInputValue();
           } else {
-        	  generateDefaultValues();
+            generateDefaultValues();
           }
         } else {
-        	generateDefaultValues();
+          generateDefaultValues();
         }
         inputType = $('.inputTypeRadio:checked').val();
         autoFormatSelection();
         process();
       }
-      
-      // generates default values when inputs are not given or when the schema is changed
-      function generateDefaultValues(){
-    	  jsonString = convertSchemaToJson(schema);
-          if (inputSchemaTitle != "root" && jsonString[inputSchemaTitle] != null) {
-            jsonString = jsonString[inputSchemaTitle];
-          }
-          jsonString = JSON.stringify(jsonString, null, "\t");
 
-          xmlString = json2xml(JSON.parse(jsonString), "\n");
-          rootElemWithNS = buildRootWithNS(schema);
-          xmlString = "<" + rootElemWithNS + ">" + xmlString + "</" + inputSchemaTitle + ">";
-          csvString = '<text xmlns="http://ws.apache.org/commons/ns/payload">' + Papa.unparse(JSON.parse(jsonString), configs) + "</text>";
-          
-    	  if (inputType == "JSON"){
-    		  setJsonInputValue();
-    	  } else if (inputType == "XML"){
-    		  setXMLInputValue();
-    	  } else if (inputType == "CSV"){
-    		  setCSVInputValue();
-    	  } else {
-    		  inputEditor.setOption("mode", "text/javascript");
-          	  inputEditor.setValue(jsonString);
-    	  }
-      }
-      
-      function setJsonInputValue(){
-    	  $("#xmlInput").hide();
-          $("#csvInput").hide();
-          document.getElementById("jsonInputTypeRadio").checked = true;
+      // Generates default values when inputs are not given or when the schema is changed
+      function generateDefaultValues() {
+        jsonString = convertSchemaToJson(schema);
+        if (inputSchemaTitle != "root" && jsonString[inputSchemaTitle] != null) {
+          jsonString = jsonString[inputSchemaTitle];
+        }
+        jsonString = JSON.stringify(jsonString, null, "\t");
+
+        xmlString = json2xml(JSON.parse(jsonString), "\n");
+        rootElemWithNS = buildRootWithNS(schema);
+        xmlString = "<" + rootElemWithNS + ">" + xmlString + "</" + inputSchemaTitle + ">";
+        csvString = '<text xmlns="http://ws.apache.org/commons/ns/payload">' + Papa.unparse(JSON.parse(jsonString), configs) + "</text>";
+
+        if (inputType == "JSON") {
+          setJsonInputValue();
+        } else if (inputType == "XML") {
+          setXMLInputValue();
+        } else if (inputType == "CSV") {
+          setCSVInputValue();
+        } else {
           inputEditor.setOption("mode", "text/javascript");
-      	  inputEditor.setValue(jsonString);
+          inputEditor.setValue(jsonString);
+        }
       }
-      
-      function setXMLInputValue(){
-		  $("#jsonInput").hide();
-          $("#csvInput").hide();
-          document.getElementById("xmlInputTypeRadio").checked = true;
-      	  inputEditor.setOption("mode", "text/html");
-      	  inputEditor.setValue(xmlString);
+
+      // Sets the JSON Input values
+      function setJsonInputValue() {
+        $("#xmlInput").hide();
+        $("#csvInput").hide();
+        document.getElementById("jsonInputTypeRadio").checked = true;
+        inputEditor.setOption("mode", "text/javascript");
+        inputEditor.setValue(jsonString);
       }
-      
-      function setCSVInputValue(){
-		  $("#xmlInput").hide();
-          $("#jsonInput").hide();
-          document.getElementById("csvInputTypeRadio").checked = true;
-      	  inputEditor.setValue(csvString);
+
+      // Sets the XML Input values
+      function setXMLInputValue() {
+        $("#jsonInput").hide();
+        $("#csvInput").hide();
+        document.getElementById("xmlInputTypeRadio").checked = true;
+        inputEditor.setOption("mode", "text/html");
+        inputEditor.setValue(xmlString);
+      }
+
+      // Sets the CSV input values
+      function setCSVInputValue() {
+        $("#xmlInput").hide();
+        $("#jsonInput").hide();
+        document.getElementById("csvInputTypeRadio").checked = true;
+        inputEditor.setOption("mode", "text/html");
+        inputEditor.setValue(csvString);
       }
 
       // Set appropiate data types depending on the input

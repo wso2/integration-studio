@@ -76,10 +76,10 @@ public class CacheMediatorDeserializer extends AbstractEsbNodeDeserializer<Abstr
             if (mediator.isCollector()) {
                 executeSetValueCommand(CACHE_MEDIATOR__CACHE_TYPE, CacheType.COLLECTOR);
                 if (mediator.isPreviousCacheImplementation()) {
-                    if (mediator.getScope().equals("per-host")) {
-                        executeSetValueCommand(CACHE_MEDIATOR__SCOPE, CacheScopeType.PER_HOST);
-                    } else {
+                    if (mediator.getScope() != null && mediator.getScope().equals("per-mediator")) {
                         executeSetValueCommand(CACHE_MEDIATOR__SCOPE, CacheScopeType.PER_MEDIATOR);
+                    } else {
+                        executeSetValueCommand(CACHE_MEDIATOR__SCOPE, CacheScopeType.PER_HOST);
                     }
                 }
 
@@ -120,11 +120,16 @@ public class CacheMediatorDeserializer extends AbstractEsbNodeDeserializer<Abstr
                 } else {
                     // previous implementation of cache mediator
                     executeSetValueCommand(CACHE_MEDIATOR__ID, mediator.getId());
-                    executeSetValueCommand(CACHE_MEDIATOR__HASH_GENERATOR_ATTRIBUTE, mediator.getHashGenerator());
-                    if (mediator.getScope() != null && mediator.getScope().equals("per-host")) {
-                        executeSetValueCommand(CACHE_MEDIATOR__SCOPE, CacheScopeType.PER_HOST);
+                    if (mediator.getHashGenerator() != null) {
+                        executeSetValueCommand(CACHE_MEDIATOR__HASH_GENERATOR_ATTRIBUTE, mediator.getHashGenerator());
                     } else {
+                        executeSetValueCommand(CACHE_MEDIATOR__HASH_GENERATOR_ATTRIBUTE,
+                                "org.wso2.carbon.mediator.cache.digest.DOMHASHGenerator");
+                    }
+                    if (mediator.getScope() != null && mediator.getScope().equals("per-mediator")) {
                         executeSetValueCommand(CACHE_MEDIATOR__SCOPE, CacheScopeType.PER_MEDIATOR);
+                    } else {
+                        executeSetValueCommand(CACHE_MEDIATOR__SCOPE, CacheScopeType.PER_HOST);
                     }
                     if (mediator.getImplementationType().equals(CacheImplementationType.MEMORY.getLiteral())) {
                         executeSetValueCommand(CACHE_MEDIATOR__IMPLEMENTATION_TYPE, CacheImplementationType.MEMORY);

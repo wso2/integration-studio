@@ -973,7 +973,7 @@ public class SchemaKeyEditorDialog extends Dialog {
 
             String configFileName = inputFile.getName().substring(0,
                     inputFile.getName().indexOf(EditorUtils.DIAGRAM_FILE_EXTENSION));
-            String graphicalFileDirPath = inputFile.getParent().getRawLocation().makeAbsolute().toString();
+            String graphicalFileDirPath = inputFile.getParent().getLocation().toString();
             if (graphicalFileDirPath != null && !"".equals(graphicalFileDirPath)) {
                 graphicalFileDirPath += File.separator;
             }

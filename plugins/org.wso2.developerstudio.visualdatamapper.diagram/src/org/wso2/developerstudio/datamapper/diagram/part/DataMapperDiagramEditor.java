@@ -644,7 +644,7 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
             writer.print("");
             writer.close();
         } catch (FileNotFoundException e) {
-            log.error(e.getMessage(), e);
+            log.error("Input sample file not found!", e);
         }
     }
 

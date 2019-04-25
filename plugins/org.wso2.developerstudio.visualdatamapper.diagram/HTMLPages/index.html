@@ -134,7 +134,6 @@
 
       // generate examples once the input schema is available
       function ajaxCallBack(retString) {
-    	res = retString;
         sample = retString["sample"];
         schema = JSON.parse(retString["schema"]);
         inputSchemaTitle = schema.title;

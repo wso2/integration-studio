@@ -137,7 +137,6 @@
         sample = retString["sample"];
         schema = JSON.parse(retString["schema"]);
         inputSchemaTitle = schema.title;
-        generateExamples(retString);
         generateExamples();
         $("input[name=inputTypeRadio][value=" + inputType + "]").attr('checked', true).trigger('change');
         $("input[name=outputTypeRadio][value=" + outputType + "]").attr('checked', true).trigger('change');

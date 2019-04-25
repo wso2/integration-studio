@@ -1519,9 +1519,9 @@ public class EsbPaletteFactory {
                         .get(indexOfDefinedEndpoints));
         container.getChildren().clear();
         Object[] keys = cloudConnectorOperations.toArray();
-        String icon_exsists = "icon-small.png";
-        if(!new File(connectorPath + File.separator + "icon" + File.separator + icon_exsists).exists()) {
-            icon_exsists = "icon-small.gif";
+        String icon_exists = "icon-small.png";
+        if(!new File(connectorPath + File.separator + "icon" + File.separator + icon_exists).exists()) {
+            icon_exists = "icon-small.gif";
         }
         if (keys != null) {
             Arrays.sort(keys);
@@ -1529,7 +1529,7 @@ public class EsbPaletteFactory {
                 try {
                     container.add(createCloudConnectorOperationCreationTool((String) keys[k],
                             "cloudConnectorOperation-" + cloudConnectorName,
-                            connectorPath + File.separator + "icon" + File.separator + icon_exsists));
+                            connectorPath + File.separator + "icon" + File.separator + icon_exists));
                 } catch (SWTException e) {
                     container.getChildren().clear();
                     log.error("Failed to add connector " + cloudConnectorName + " to the tool palette", e);

@@ -130,12 +130,12 @@ public class RemoveCloudConnectorWizardPage extends WizardPage{
 	        		item.setData(connector);	        		
 	        		String iconFileName = children[i].getAbsolutePath()+File.separator+DIR_ICON+File.separator+ICON;
 	        		String iconFileNameNew = children[i].getAbsolutePath()+File.separator+DIR_ICON+File.separator+ICON_NEW;
-	        		File icon = new File(iconFileName);
+	        		File icon = new File(iconFileNameNew);
 					if (icon.exists()) {
-						Image image = new Image(Display.getDefault(), iconFileName);
+						Image image = new Image(Display.getDefault(), iconFileNameNew);
 						item.setImage(image);
 					}else {
-					    Image image = new Image(Display.getDefault(), iconFileNameNew);
+					    Image image = new Image(Display.getDefault(), iconFileName);
                         item.setImage(image);
 					}
 	        	}

@@ -99,13 +99,11 @@
       }
       
       // input and output types
-      var inputType = "JSON";
-      var outputType = "JSON";
+      var inputType = resolveGetParam("inputtype");
+      var outputType = resolveGetParam("outputtype");
       var schema = "";
       var sample = "";
       var inputSchemaTitle = "";
-      var inputType = resolveGetParam("inputtype");
-      var outputType = resolveGetParam("outputtype");
       var jsonString = "";
       var xmlString = "";
       var csvString = "";
@@ -136,6 +134,7 @@
 
       // generate examples once the input schema is available
       function ajaxCallBack(retString) {
+    	res = retString;
         sample = retString["sample"];
         schema = JSON.parse(retString["schema"]);
         inputSchemaTitle = schema.title;
@@ -151,84 +150,115 @@
       // Generate json / xml / csv examples from the json schema.  
       function generateExamples() {
         if (sample) {
-          if (isJson(sample)) {
+          if (inputType === "JSON") {
             $("#xmlInput").hide();
             $("#csvInput").hide();
 
             // Set JSON String
             jsonString = sample;
 
-            // Set XML String
+            /* // Set XML String
             xmlString = json2xml(JSON.parse(jsonString), "\n");
             rootElemWithNS = buildRootWithNS(schema);
             xmlString = "<" + rootElemWithNS + ">" + xmlString + "</" + inputSchemaTitle + ">";
 
             // Set CSV String
-            csvString = '<text xmlns="http://ws.apache.org/commons/ns/payload">' + Papa.unparse(JSON.parse(jsonString), configs) + "</text>";
+            csvString = '<text xmlns="http://ws.apache.org/commons/ns/payload">' + Papa.unparse(JSON.parse(jsonString), configs) + "</text>"; */
 
             inputEditor.setOption("mode", "text/javascript");
             inputEditor.setValue(sample);
             inputType = $('.inputTypeRadio:checked').val();
 
-          } else {
+          } else if (inputType == "XML"){
             $("#jsonInput").hide();
             $("#csvInput").hide();
 
-            var oParser = new DOMParser();
-            var oDOM = oParser.parseFromString(sample, "application/xml");
+            /* var oParser = new DOMParser();
+            var oDOM = oParser.parseFromString(sample, "application/xml"); */
 
             // Set JSON String
-            jsonString = xml2json(oDOM, "\n");
+/*             jsonString = xml2json(oDOM, "\n");
             var root = JSON.parse(jsonString).root;
             if (root) {
               jsonString = JSON.stringify(root, null, "\n");
-            }
+            } */
 
             // Set XML String
             xmlString = sample;
 
             // Set CSV String
-            csvString = '<text xmlns="http://ws.apache.org/commons/ns/payload">' + Papa.unparse(JSON.parse(jsonString), configs) + "</text>";
+            /* csvString = '<text xmlns="http://ws.apache.org/commons/ns/payload">' + Papa.unparse(JSON.parse(jsonString), configs) + "</text>"; */
 
             inputEditor.setOption("mode", "text/html");
             inputEditor.setValue(xmlString);
             document.getElementById("xmlInputTypeRadio").checked = true;
             inputType = $('.inputTypeRadio:checked').val();
+          } else if (inputType == "CSV") {
+        	// Set CSV String
+        	$("#jsonInput").hide();
+            $("#xmlInput").hide();
+            csvString = '<text xmlns="http://ws.apache.org/commons/ns/payload">' + sample + "</text>";  
+            inputEditor.setOption("mode", "application/xml");
+            inputEditor.setValue(xmlString);
+            document.getElementById("csvInputTypeRadio").checked = true;
+            inputType = $('.inputTypeRadio:checked').val();
+          } else {
+        	  generateDefaultValues();
           }
-
-          autoFormatSelection();
-          process();
         } else {
-          jsonString = convertSchemaToJson(schema);
+        	generateDefaultValues();
+        }
+        autoFormatSelection();
+        process();
+      }
+      
+      // generates default values when inputs are not given or when the schema is changed
+      function generateDefaultValues(){
+    	  jsonString = convertSchemaToJson(schema);
           if (inputSchemaTitle != "root" && jsonString[inputSchemaTitle] != null) {
             jsonString = jsonString[inputSchemaTitle];
           }
-          jsonString = JSON.stringify(jsonString, null, "\t"); 
-          inputEditor.setOption("mode", "text/javascript");
-          inputEditor.setValue(retString);
+          jsonString = JSON.stringify(jsonString, null, "\t");
+
           xmlString = json2xml(JSON.parse(jsonString), "\n");
           rootElemWithNS = buildRootWithNS(schema);
           xmlString = "<" + rootElemWithNS + ">" + xmlString + "</" + inputSchemaTitle + ">";
-          csvString = '<text xmlns="http://ws.apache.org/commons/ns/payload">' + Papa.unparse(JSON.parse(jsonString), configs) + "</text>"; 
-        }
+          csvString = '<text xmlns="http://ws.apache.org/commons/ns/payload">' + Papa.unparse(JSON.parse(jsonString), configs) + "</text>";
+          
+    	  if (inputType == "JSON"){
+    		  setJsonInputValue();
+    	  } else if (inputType == "XML"){
+    		  setXMLInputValue();
+    	  } else if (inputType == "CSV"){
+    		  setCSVInputValue();
+    	  } else {
+    		  inputEditor.setOption("mode", "text/javascript");
+          	  inputEditor.setValue(jsonString);
+    	  }
       }
-
-      // Checks whether a given string is valid JSON
-      function isJson(str) {
-        try {
-          JSON.parse(str);
-        } catch (e) {
-          return false;
-        }
-        return true;
-      };
-
-      // Checks whether a given string is valid XML
-      function isXML(str) {
-        var oParser = new DOMParser();
-        var oDOM = oParser.parseFromString(str, "application/xml");
-        oDOM.documentElement.nodeName == "parsererror" ? oDOM.documentElement.nodeName : str;
-      };
+      
+      function setJsonInputValue(){
+    	  $("#xmlInput").hide();
+          $("#csvInput").hide();
+          document.getElementById("jsonInputTypeRadio").checked = true;
+          inputEditor.setOption("mode", "text/javascript");
+      	  inputEditor.setValue(jsonString);
+      }
+      
+      function setXMLInputValue(){
+		  $("#jsonInput").hide();
+          $("#csvInput").hide();
+          document.getElementById("xmlInputTypeRadio").checked = true;
+      	  inputEditor.setOption("mode", "text/html");
+      	  inputEditor.setValue(xmlString);
+      }
+      
+      function setCSVInputValue(){
+		  $("#xmlInput").hide();
+          $("#jsonInput").hide();
+          document.getElementById("csvInputTypeRadio").checked = true;
+      	  inputEditor.setValue(csvString);
+      }
 
       // Set appropiate data types depending on the input
       $('.inputTypeRadio').on('change', function(e) {

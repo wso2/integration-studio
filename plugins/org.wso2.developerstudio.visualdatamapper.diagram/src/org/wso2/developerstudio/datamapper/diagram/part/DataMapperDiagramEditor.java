@@ -22,16 +22,14 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.io.InputStreamReader;
 
-import javax.swing.event.DocumentListener;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 
-import org.apache.commons.io.FileUtils;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IWorkspaceRoot;
@@ -40,14 +38,12 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.edit.ui.provider.NotifyChangedToViewerRefresh;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.workspace.util.WorkspaceSynchronizer;
 import org.eclipse.gef.KeyHandler;
@@ -56,34 +52,25 @@ import org.eclipse.gef.ui.palette.PaletteViewer;
 import org.eclipse.gmf.runtime.common.ui.services.marker.MarkerNavigationService;
 import org.eclipse.gmf.runtime.diagram.core.preferences.PreferencesHint;
 import org.eclipse.gmf.runtime.diagram.ui.actions.ActionIds;
-import org.eclipse.gmf.runtime.diagram.ui.internal.parts.DirectEditKeyHandler;
-import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramGraphicalViewer;
-import org.eclipse.gmf.runtime.diagram.ui.resources.editor.document.DocumentEvent;
 import org.eclipse.gmf.runtime.diagram.ui.resources.editor.document.IDiagramDocument;
 import org.eclipse.gmf.runtime.diagram.ui.resources.editor.document.IDocument;
-import org.eclipse.gmf.runtime.diagram.ui.resources.editor.document.IDocumentListener;
 import org.eclipse.gmf.runtime.diagram.ui.resources.editor.document.IDocumentProvider;
 import org.eclipse.gmf.runtime.diagram.ui.resources.editor.parts.DiagramDocumentEditor;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.jface.util.IPropertyChangeListener;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.window.Window;
 import org.eclipse.osgi.util.NLS;
-import org.eclipse.swt.events.FocusEvent;
-import org.eclipse.swt.events.FocusListener;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorMatchingStrategy;
 import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.IFileEditorInput;
-import org.eclipse.ui.IPageListener;
 import org.eclipse.ui.IPartListener2;
-import org.eclipse.ui.ISelectionService;
 import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPage;
@@ -117,7 +104,6 @@ import org.wso2.developerstudio.datamapper.impl.DataMapperRootImpl;
 import org.wso2.developerstudio.datamapper.impl.TreeNodeImpl;
 import org.wso2.developerstudio.datamapper.servlets.DataMapperConfigHolder;
 import org.wso2.developerstudio.datamapper.views.RealtimeDatamapperView;
-import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.xml.sax.SAXException;
@@ -571,7 +557,6 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
 		} catch (InstantiationException | IllegalAccessException e) {
 			log.error(e);
 		}
-        
 		// Model root of input schema tree
 		EList<TreeNode> inputTreeNodesList = ((DataMapperRoot) datamapperRoot).getInput().getTreeNode();
 		File schemaFile = null;
@@ -620,9 +605,6 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
 		DataMapperConfigHolder.getInstance().setOutputSchemaPath(schemaFile.getAbsolutePath());
 		schemaTransformer.updateSchemaFile(content, schemaFile);
 		
-
-
-		
 		// reload the datamapper test window once the new schema is saved.
 		reloadDataMapperTestWindow(getInputSchemaType(), getOutputSchemaType());
 	}
@@ -630,8 +612,7 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
     /**
      * Compares the schema before updating with the new schema to check whether there are any changes
      * 
-     * @param prevSchema
-     * @param content3
+     * @param modifiedSchema - changed schema
      * @throws ParseException
      */
     private boolean hasInputSchemaChanged(String modifiedSchema) {

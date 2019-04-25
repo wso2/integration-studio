@@ -1454,12 +1454,18 @@ public class EsbPaletteFactory {
         String connectorPath = activeProject.getWorkspace().getRoot().getLocation().toOSString() + File.separator
                 + CloudConnectorDirectoryTraverser.connectorPathFromWorkspace;
         File directory = new File(connectorPath);
+        
+        String icon_exsists = "icon-small.png";
+        if(!new File(connectorPath + File.separator + "icon" + File.separator + icon_exsists).exists()) {
+            icon_exsists = "icon-small.gif";
+        }
+        
         String[] names = directory.list();
         if (names != null) {
             for (int i = 0; i < names.length; ++i) {
                 container.add(createCloudConnector1CreationTool(names[i].split("-")[0],
                         names[i].split("-")[0] + "-cloudConnector", connectorPath + File.separator + names[i]
-                                + File.separator + "icon" + File.separator + "icon-small.gif"));
+                                + File.separator + "icon" + File.separator + icon_exsists));
             }
         }
     }
@@ -1513,13 +1519,17 @@ public class EsbPaletteFactory {
                         .get(indexOfDefinedEndpoints));
         container.getChildren().clear();
         Object[] keys = cloudConnectorOperations.toArray();
+        String icon_exists = "icon-small.png";
+        if(!new File(connectorPath + File.separator + "icon" + File.separator + icon_exists).exists()) {
+            icon_exists = "icon-small.gif";
+        }
         if (keys != null) {
             Arrays.sort(keys);
             for (int k = 0; k < keys.length; ++k) {
                 try {
                     container.add(createCloudConnectorOperationCreationTool((String) keys[k],
                             "cloudConnectorOperation-" + cloudConnectorName,
-                            connectorPath + File.separator + "icon" + File.separator + "icon-small.gif"));
+                            connectorPath + File.separator + "icon" + File.separator + icon_exists));
                 } catch (SWTException e) {
                     container.getChildren().clear();
                     log.error("Failed to add connector " + cloudConnectorName + " to the tool palette", e);

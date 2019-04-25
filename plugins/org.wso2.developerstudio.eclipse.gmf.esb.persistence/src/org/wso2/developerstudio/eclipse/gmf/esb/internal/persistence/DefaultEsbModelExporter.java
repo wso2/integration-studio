@@ -93,7 +93,10 @@ import org.wso2.developerstudio.eclipse.gmf.esb.persistence.ValidationConstansts
 import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.AddressEndpointFormPage;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.DefaultEndpointFormPage;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.EndpointFormPage;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.FailoverEndpointFormPage;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.HttpEndpointFormPage;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.LoadbalanceEndpointFormPage;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.RecipientListEndpointFormPage;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.TemplateEndPointFormPage;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.WsdlEndpointFormPage;
 import org.xml.sax.InputSource;
@@ -274,6 +277,15 @@ public class DefaultEsbModelExporter implements EsbModelTransformer {
         } else if ((FormPage) endpointFormPage instanceof TemplateEndPointFormPage) {
             TemplateEndPointTransformer transformer = new TemplateEndPointTransformer();
             return transformer.create((TemplateEndPointFormPage) endpointFormPage);
+        } else if ((FormPage) endpointFormPage instanceof LoadbalanceEndpointFormPage) {
+            LoadBalanceEndPointTransformer transformer = new LoadBalanceEndPointTransformer();
+            return transformer.create((LoadbalanceEndpointFormPage) endpointFormPage);
+        } else if ((FormPage) endpointFormPage instanceof FailoverEndpointFormPage) {
+            FailoverEndPointTransformer transformer = new FailoverEndPointTransformer();
+            return transformer.create((FailoverEndpointFormPage) endpointFormPage);
+        } else if ((FormPage) endpointFormPage instanceof RecipientListEndpointFormPage) {
+            RecipientListEndPointTransformer transformer = new RecipientListEndPointTransformer();
+            return transformer.create((RecipientListEndpointFormPage) endpointFormPage);
         } else {
             return null;
         }
@@ -435,6 +447,9 @@ public class DefaultEsbModelExporter implements EsbModelTransformer {
                     configOM = ProxyServiceSerializer.serializeProxy(null, transformProxyService((ProxyService) child));
                 }
                 break;
+            case ENDPOINT_LOADBALANCE:
+            case ENDPOINT_FAILOVER:
+            case ENDPOINT_RECIPIENTLIST:
             case ENDPOINT:
             case COMPLEX_ENDPOINT:
                 if (child instanceof EndpointDiagram) {

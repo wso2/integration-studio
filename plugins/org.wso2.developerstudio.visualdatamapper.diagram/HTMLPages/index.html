@@ -104,10 +104,11 @@
       var schema = "";
       var sample = "";
       var inputSchemaTitle = "";
+      var inputType = resolveGetParam("inputtype");
+      var outputType = resolveGetParam("outputtype");
       var jsonString = "";
       var xmlString = "";
       var csvString = "";
-      
       // Configuration for JSON to CSV converter
       var configs = {
         quotes: false,
@@ -117,7 +118,7 @@
         header: false,
         newline: "\r\n"
       }
-      
+
       // read input shema json from file
       getInputSchema();
       
@@ -132,20 +133,23 @@
             lineNumbers: true,
             lineWrapping: true
           });
-      
+
       // generate examples once the input schema is available
       function ajaxCallBack(retString) {
         sample = retString["sample"];
         schema = JSON.parse(retString["schema"]);
         inputSchemaTitle = schema.title;
         generateExamples(retString);
+        generateExamples();
+        $("input[name=inputTypeRadio][value=" + inputType + "]").attr('checked', true).trigger('change');
+        $("input[name=outputTypeRadio][value=" + outputType + "]").attr('checked', true).trigger('change');
         autoFormatSelection();
         // Get output schema for the example
         process();
       }
-      
+
       // Generate json / xml / csv examples from the json schema.  
-      function generateExamples(retString) {
+      function generateExamples() {
         if (sample) {
           if (isJson(sample)) {
             $("#xmlInput").hide();
@@ -225,7 +229,7 @@
         var oDOM = oParser.parseFromString(str, "application/xml");
         oDOM.documentElement.nodeName == "parsererror" ? oDOM.documentElement.nodeName : str;
       };
-      
+
       // Set appropiate data types depending on the input
       $('.inputTypeRadio').on('change', function(e) {
         var selectedValue = $('.inputTypeRadio:checked').val();
@@ -239,7 +243,7 @@
       	  inputEditor.setOption("mode", "text/javascript");
       	  inputEditor.setValue(jsonString);
         }
-        
+
         autoFormatSelection();
         process();
       });

@@ -279,11 +279,11 @@ public class Deserializer {
                     } else if ("wsdl".equals(child1LocalName)) {
                         artifactType = ArtifactType.ENDPOINT_WSDL;
                     } else if ("failover".equals(child1LocalName)) {
-                        artifactType = ArtifactType.COMPLEX_ENDPOINT;
+                        artifactType = ArtifactType.ENDPOINT_FAILOVER;
                     } else if ("loadbalance".equals(child1LocalName) || "session".equals(child1LocalName)) {
-                        artifactType = ArtifactType.COMPLEX_ENDPOINT;
+                        artifactType = ArtifactType.ENDPOINT_LOADBALANCE;
                     } else if ("recipientlist".equals(child1LocalName)) {
-                        artifactType = ArtifactType.COMPLEX_ENDPOINT;
+                        artifactType = ArtifactType.ENDPOINT_RECIPIENTLIST;
                     }
                 }
             }
@@ -378,6 +378,9 @@ public class Deserializer {
         case ENDPOINT_DEFAULT:
         case ENDPOINT_HTTP:
         case ENDPOINT_WSDL:
+        case ENDPOINT_LOADBALANCE:
+        case ENDPOINT_RECIPIENTLIST:
+        case ENDPOINT_FAILOVER:
         case TEMPLATE_ENDPOINT:
             Endpoint endpoint;
             if (withSynapse) {

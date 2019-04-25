@@ -148,7 +148,11 @@ public class CloudConnectorOperationEditPart extends FixedSizedAbstractMediator 
         String connectorPath = CloudConnectorDirectoryTraverser.getInstance()
                 .getConnectorDirectoryPathFromConnectorName(project.getWorkspace().getRoot().getLocation().toOSString(),
                         connectorName);
-        iconPath = connectorPath + File.separator + "icon" + File.separator + "icon-large.gif";
+        iconPath = connectorPath + File.separator + "icon" + File.separator + "icon-large.png";
+        File icon = new File(iconPath);
+        if (!icon.exists()) {
+            iconPath = connectorPath + File.separator + "icon" + File.separator + "icon-large.gif";
+        }
 
     }
 
@@ -475,8 +479,8 @@ public class CloudConnectorOperationEditPart extends FixedSizedAbstractMediator 
         int Figure_PreferredWidth = FixedSizedAbstractMediator.FigureWidth;
         int Figure_PreferredHeight = FixedSizedAbstractMediator.FigureHeight + 20; // Additional 20 to show the editable
                                                                                    // label
-        int Image_PreferredWidth = 75;
-        int Image_PreferredHeight = 52;
+        int Image_PreferredWidth = 72;
+        int Image_PreferredHeight = 80;
         int marginWidth = (Figure_PreferredWidth - Image_PreferredWidth) / 2; // equals to 10
         int marginHeight = 10;
 

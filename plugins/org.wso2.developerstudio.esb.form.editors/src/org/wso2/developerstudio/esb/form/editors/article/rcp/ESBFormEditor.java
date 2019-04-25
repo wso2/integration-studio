@@ -26,10 +26,12 @@ import org.eclipse.ui.forms.editor.FormPage;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
 import org.wso2.developerstudio.esb.forgm.editors.article.FormArticlePlugin;
-import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.EndpointFormPage;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.AddressEndpointFormPage;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.DefaultEndpointFormPage;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.FailoverEndpointFormPage;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.HttpEndpointFormPage;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.LoadbalanceEndpointFormPage;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.RecipientListEndpointFormPage;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.TemplateEndPointFormPage;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.WsdlEndpointFormPage;
 
@@ -77,35 +79,39 @@ public class ESBFormEditor extends FormEditor {
 	}
 
 	private void assignCurrPage() {
-		if (artifactType == ArtifactType.LOCAL_ENTRY) {
-			currFormPage = new LocalEntryFormPage(this);
-		} else if (artifactType == ArtifactType.MESSAGE_PROCESSOR) {
-			currFormPage = new MessageProcessorFormPage(this);
-		} else if (artifactType == ArtifactType.MESSAGE_STORE) {
-			currFormPage = new MessageStoreFormPage(this);
-		} else if (artifactType == ArtifactType.TASK) {
-			currFormPage = new ScheduledTaskFormPage(this);
-		} else if (artifactType == ArtifactType.TEMPLATE_ENDPOINT_DEFAULT) {
-			currFormPage = new DefaultEndpointFormPage(this,true);
-		} else if (artifactType == ArtifactType.TEMPLATE_ENDPOINT_ADDRESS) {
-			currFormPage = new AddressEndpointFormPage(this,true);
-		} else if (artifactType == ArtifactType.TEMPLATE_ENDPOINT_WSDL) {
-			currFormPage = new WsdlEndpointFormPage(this, true);
-		} else if (artifactType == ArtifactType.TEMPLATE_ENDPOINT_HTTP) {
-			currFormPage = new HttpEndpointFormPage(this, true);
-//		} else if (artifactType == ArtifactType.ENDPOINT) {
-//			currFormPage = new EndpointFormPage(this);
-		} else if (artifactType == ArtifactType.ENDPOINT_ADDRESS) {
-			currFormPage = new AddressEndpointFormPage(this,false);
-		}else if (artifactType == ArtifactType.ENDPOINT_DEFAULT) {
-			currFormPage = new DefaultEndpointFormPage(this,false);
-		}else if (artifactType == ArtifactType.ENDPOINT_HTTP) {
-			currFormPage = new HttpEndpointFormPage(this, false);
-		}else if (artifactType == ArtifactType.ENDPOINT_WSDL) {
-			currFormPage = new WsdlEndpointFormPage(this, false);
-		}else if(artifactType == ArtifactType.TEMPLATE_ENDPOINT){
-			currFormPage = new TemplateEndPointFormPage(this);
-		}
+        if (artifactType == ArtifactType.LOCAL_ENTRY) {
+            currFormPage = new LocalEntryFormPage(this);
+        } else if (artifactType == ArtifactType.MESSAGE_PROCESSOR) {
+            currFormPage = new MessageProcessorFormPage(this);
+        } else if (artifactType == ArtifactType.MESSAGE_STORE) {
+            currFormPage = new MessageStoreFormPage(this);
+        } else if (artifactType == ArtifactType.TASK) {
+            currFormPage = new ScheduledTaskFormPage(this);
+        } else if (artifactType == ArtifactType.TEMPLATE_ENDPOINT_DEFAULT) {
+            currFormPage = new DefaultEndpointFormPage(this, true);
+        } else if (artifactType == ArtifactType.TEMPLATE_ENDPOINT_ADDRESS) {
+            currFormPage = new AddressEndpointFormPage(this, true);
+        } else if (artifactType == ArtifactType.TEMPLATE_ENDPOINT_WSDL) {
+            currFormPage = new WsdlEndpointFormPage(this, true);
+        } else if (artifactType == ArtifactType.TEMPLATE_ENDPOINT_HTTP) {
+            currFormPage = new HttpEndpointFormPage(this, true);
+        } else if (artifactType == ArtifactType.ENDPOINT_ADDRESS) {
+            currFormPage = new AddressEndpointFormPage(this, false);
+        } else if (artifactType == ArtifactType.ENDPOINT_DEFAULT) {
+            currFormPage = new DefaultEndpointFormPage(this, false);
+        } else if (artifactType == ArtifactType.ENDPOINT_HTTP) {
+            currFormPage = new HttpEndpointFormPage(this, false);
+        } else if (artifactType == ArtifactType.ENDPOINT_WSDL) {
+            currFormPage = new WsdlEndpointFormPage(this, false);
+        } else if (artifactType == ArtifactType.TEMPLATE_ENDPOINT) {
+            currFormPage = new TemplateEndPointFormPage(this);
+        } else if (artifactType == ArtifactType.ENDPOINT_LOADBALANCE) {
+            currFormPage = new LoadbalanceEndpointFormPage(this);
+        } else if (artifactType == ArtifactType.ENDPOINT_FAILOVER) {
+            currFormPage = new FailoverEndpointFormPage(this);
+        } else if (artifactType == ArtifactType.ENDPOINT_RECIPIENTLIST) {
+            currFormPage = new RecipientListEndpointFormPage(this);
+        }
 	}
 
 	public FormPage getFormPageForArtifact(ArtifactType artifactType) {

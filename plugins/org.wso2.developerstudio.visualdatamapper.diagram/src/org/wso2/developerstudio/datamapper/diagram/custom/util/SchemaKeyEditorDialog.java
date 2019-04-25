@@ -73,6 +73,7 @@ import org.wso2.developerstudio.datamapper.diagram.Activator;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.Messages;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InputEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutputEditPart;
+import org.wso2.developerstudio.datamapper.diagram.part.DataMapperDiagramEditor;
 import org.wso2.developerstudio.datamapper.diagram.part.DataMapperSchemaEditorUtil;
 import org.wso2.developerstudio.eclipse.capp.core.artifacts.manager.CAppEnvironment;
 import org.wso2.developerstudio.eclipse.capp.core.model.RegistryConnection;
@@ -99,6 +100,7 @@ public class SchemaKeyEditorDialog extends Dialog {
     private static final String RESGISTRY_RESOURCE_RETRIVING_ERROR =
             Messages.SchemaKeyEditorDialog_ErrorRetreivingResource;
     private static final String FILE_DIALOG_TITLE = "Select File";
+    private IWorkbenchPart workBenchPart;
     private Text schemaKeyTextField;
     private Label lblSchemaTypeLabel;
     private Label lblDelimiterLabel;
@@ -183,6 +185,8 @@ public class SchemaKeyEditorDialog extends Dialog {
             Messages.SchemaKeyEditorDialog_GenerateSchema;
     private static final String SELECT_GENERATE_DYNAMIC_SCHEMA =
             Messages.SchemaKeyEditorDialog_GenerateDynamicSchema;
+    private static final String SCHEMA_TYPE_INPUT = Messages.LoadInputSchemaAction_SchemaTypeInput;
+    private static final String SCHEMA_TYPE_OUTPUT = Messages.LoadOutputSchemaAction_SchemaTypeOutput;
 
     private static String rootWorkspaceLocation = ResourcesPlugin.getWorkspace().getRoot()
             .getLocation().toOSString() +
@@ -196,6 +200,7 @@ public class SchemaKeyEditorDialog extends Dialog {
         super(parent);
         this.selectedEP = selectedEP;
         this.schemaType = schemaType;
+        this.workBenchPart = workbenchPart;
         schemaGeneratorHelper = new SchemaGeneratorHelper();
         IEditorPart editorPart = workbenchPart.getSite().getWorkbenchWindow().getActivePage()
                 .getActiveEditor();
@@ -599,9 +604,24 @@ public class SchemaKeyEditorDialog extends Dialog {
             }
         }
         saveConfiguration();
+        updateEditorInputTypes(); //update payload types
         super.okPressed();
     }
 
+    /**
+     * Update input type and output type parameters in Datamapper editor diagram
+     * This will be persisted to schema files on diagram save
+     */
+    private void updateEditorInputTypes() {
+        IEditorPart editorPart = workBenchPart.getSite().getWorkbenchWindow().getActivePage().getActiveEditor();
+        if(editorPart instanceof DataMapperDiagramEditor) {
+            if(SCHEMA_TYPE_INPUT.equals(this.schemaType)) {
+                ((DataMapperDiagramEditor)editorPart).setInputSchemaType(schemaTypeCombo.getText());
+            } else if (SCHEMA_TYPE_OUTPUT.equals(this.schemaType)){
+                ((DataMapperDiagramEditor)editorPart).setOutputSchemaType(schemaTypeCombo.getText());
+            }
+        }
+    }
     private void loadSchemaFromConnectorOperation(String connectorOperation) {
         try {
             String schemaFilePath = null;

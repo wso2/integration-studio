@@ -51,6 +51,7 @@ public class WorkspaceConnectorImportDialog extends Dialog {
 	private static final String CONNECTOR_XML = "connector.xml";
 	private static final String DIR_ICON = "icon";
 	private static final String ICON = "icon-large.gif";
+	private static final String ICON_NEW = "icon-large.png";
 	
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	
@@ -125,10 +126,14 @@ public class WorkspaceConnectorImportDialog extends Dialog {
 	        		item.setText(new String[] {connector.getConnectorName(),connector.getConnectorDescription()});
 	        		item.setData(connector);	        		
 	        		String iconFileName = children[i].getAbsolutePath()+File.separator+DIR_ICON+File.separator+ICON;
-	        		File icon = new File(iconFileName);
+	        		String iconFileNameNew = children[i].getAbsolutePath()+File.separator+DIR_ICON+File.separator+ICON_NEW;
+	        		File icon = new File(iconFileNameNew);
 					if (icon.exists()) {
-						Image image = new Image(Display.getDefault(), iconFileName);
+						Image image = new Image(Display.getDefault(), iconFileNameNew);
 						item.setImage(image);
+					}else{
+					    Image image = new Image(Display.getDefault(), iconFileName);
+                        item.setImage(image);
 					}
 	        	}
 	        }

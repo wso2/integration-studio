@@ -69,7 +69,9 @@ import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 /**
  * This class represents an execution context in a suspended thread. And it
@@ -80,6 +82,14 @@ import com.google.gson.JsonObject;
 public class ESBStackFrame extends ESBDebugElement implements IStackFrame, EventHandler {
 
     private static final String EMPTY_STRING = "";
+    private static final String MEDIATION_COMPONENT_WIRELOG_KEY = "mediation-component";
+    private static final String API_WIRELOG_KEY = "api";
+    private static final String RESOURCE_WIRELOG_KEY = "resource";
+    private static final String URL_MAPPING_OLD_WIRELOG_KEY = "url-mapping";
+    private static final String URL_MAPPING_NEW_WIRELOG_KEY = "mapping";
+    private static final String METHOD_WIRELOG_KEY = "method";
+    private static final String SEQUENCE_WIRELOG_KEY = "sequence";
+    
     private final IThread thread;
     private int lineNumber = 1;
     private List<IVariable> variables = new ArrayList<>();
@@ -316,6 +326,37 @@ public class ESBStackFrame extends ESBDebugElement implements IStackFrame, Event
             }
         } else if (eventObject instanceof JsonObject) {
             JsonObject breakpointCommandJsonObject = (JsonObject) eventObject;
+
+            // The following if block runs for API level wire logs, since there is change of
+            // wire log ID from the server side
+
+            if (breakpointCommandJsonObject.get(MEDIATION_COMPONENT_WIRELOG_KEY) != null
+                    && breakpointCommandJsonObject.get(SEQUENCE_WIRELOG_KEY) != null
+                    && breakpointCommandJsonObject.get(SEQUENCE_WIRELOG_KEY).getAsJsonObject().get(API_WIRELOG_KEY) != null) {
+
+                JsonObject resourceJsonObject = breakpointCommandJsonObject.get(SEQUENCE_WIRELOG_KEY).getAsJsonObject().get(API_WIRELOG_KEY)
+                        .getAsJsonObject().get(RESOURCE_WIRELOG_KEY).getAsJsonObject();
+
+                JsonElement urlMappingElement = resourceJsonObject.get(URL_MAPPING_OLD_WIRELOG_KEY);
+                resourceJsonObject.remove(URL_MAPPING_OLD_WIRELOG_KEY);
+
+                JsonElement methodElement = resourceJsonObject.get(METHOD_WIRELOG_KEY);
+                resourceJsonObject.remove(METHOD_WIRELOG_KEY);
+
+                resourceJsonObject.add(URL_MAPPING_NEW_WIRELOG_KEY, urlMappingElement);
+                resourceJsonObject.add(METHOD_WIRELOG_KEY, methodElement);
+
+                JsonElement mediationComponentElment = breakpointCommandJsonObject.get(MEDIATION_COMPONENT_WIRELOG_KEY);
+                JsonElement sequenceElment = breakpointCommandJsonObject.get(SEQUENCE_WIRELOG_KEY);
+
+                breakpointCommandJsonObject.remove(MEDIATION_COMPONENT_WIRELOG_KEY);
+                breakpointCommandJsonObject.remove(SEQUENCE_WIRELOG_KEY);
+
+                breakpointCommandJsonObject.add(MEDIATION_COMPONENT_WIRELOG_KEY, mediationComponentElment);
+                breakpointCommandJsonObject.add(SEQUENCE_WIRELOG_KEY, sequenceElment);
+
+            }
+
             ESBWirelog relaventWireLog = wireLogs.get(breakpointCommandJsonObject);
             try {
                 IViewPart wireLogView = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()

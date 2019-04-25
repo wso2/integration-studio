@@ -18,13 +18,18 @@ package org.wso2.developerstudio.datamapper.diagram.part;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 import javax.swing.event.DocumentListener;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 
+import org.apache.commons.io.FileUtils;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IWorkspaceRoot;
@@ -92,6 +97,9 @@ import org.eclipse.ui.navigator.resources.ProjectExplorer;
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.IShowInTargetList;
 import org.eclipse.ui.part.ShowInContext;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.wso2.developerstudio.datamapper.DataMapperRoot;
 import org.wso2.developerstudio.datamapper.TreeNode;
 import org.wso2.developerstudio.datamapper.diagram.Activator;
@@ -532,6 +540,7 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
 		} catch (InstantiationException | IllegalAccessException e) {
 			log.error(e);
 		}
+        
 		// Model root of input schema tree
 		EList<TreeNode> inputTreeNodesList = ((DataMapperRoot) datamapperRoot).getInput().getTreeNode();
 		File schemaFile = null;
@@ -548,7 +557,17 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
 		else {
 			schemaFile = createSchemaFile(INPUT_SCHEMA_ID);
 			content = "";
+            // Clear the content of the sample input file
+            clearInputSampleFile();
 		}
+
+        // Before saving the schema changes, check whether the schema is changed. If it has, clear the input sample file
+        // because the original input values may not apply thereafter
+        if (hasInputSchemaChanged(content)) {
+            // Clear the content of the sample input file
+            clearInputSampleFile();
+        }
+
 		DataMapperConfigHolder.getInstance().setInputSchemaPath(schemaFile.getAbsolutePath());
 		schemaTransformer.updateSchemaFile(content, schemaFile);
 
@@ -570,9 +589,52 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
 		DataMapperConfigHolder.getInstance().setOutputSchemaPath(schemaFile.getAbsolutePath());
 		schemaTransformer.updateSchemaFile(content, schemaFile);
 		
+
+
+		
 		// reload the datamapper test window once the new schema is saved.
 		reloadDataMapperTestWindow();
 	}
+
+    /**
+     * Compares the schema before updating with the new schema to check whether there are any changes
+     * 
+     * @param prevSchema
+     * @param content3
+     * @throws ParseException
+     */
+    private boolean hasInputSchemaChanged(String modifiedSchema) {
+        try {
+            String prevSchema = new String(
+                    Files.readAllBytes(Paths.get(DataMapperConfigHolder.getInstance().getInputSchemaPath())));
+            JSONObject prevSchemaJson = (JSONObject) new JSONParser().parse(prevSchema);
+            JSONObject modifiedSchemaJson = (JSONObject) new JSONParser().parse(modifiedSchema);
+            modifiedSchemaJson = (JSONObject) new JSONParser().parse(modifiedSchema);
+
+            // Compare whether the schema has any changes
+            if (prevSchemaJson != null && modifiedSchema != null && !prevSchemaJson.equals(modifiedSchemaJson)) {
+                return true;
+            }
+        } catch (ParseException | IOException e) {
+            log.error("Failed to compare schema!");
+        }
+        return false;
+    }
+
+    /**
+     * Clears input sample file
+     */
+    private void clearInputSampleFile() {
+        File sampleInputFile = createSchemaFile(INPUT_SAMPLE_ID);
+        PrintWriter writer;
+        try {
+            writer = new PrintWriter(sampleInputFile);
+            writer.print("");
+            writer.close();
+        } catch (FileNotFoundException e) {
+            log.error(e.getMessage(), e);
+        }
+    }
 
 	private File createSchemaFile(String schemaType) {
 		// Schema file location is identified using editor input

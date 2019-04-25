@@ -218,6 +218,8 @@ public class LoadBalanceEndpointDeserializer extends AbstractEndpointDeserialize
 
         if (endpoint.getChildren() != null && !endpoint.getChildren().isEmpty()) {
             loadEndpointPage.setEndpointList(ComplexEndpointDeserializerUtils.getTableEntries(endpoint));
+        } else {
+            loadEndpointPage.setEndpointList(null);
         }
 
         if (endpoint.getMembers() != null && endpoint.getMembers().size() > 0) {

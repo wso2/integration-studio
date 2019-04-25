@@ -264,25 +264,23 @@ public class Deserializer {
             OMAttribute templateAtr = element.getAttribute(new javax.xml.namespace.QName("template"));
             if (templateAtr != null) {
                 artifactType = ArtifactType.TEMPLATE_ENDPOINT;
+                
             } else {
-                Iterator children = element.getChildElements();
-                if (children.hasNext()) {
-                    OMElement child1 = (OMElement) children.next();
-                    String child1LocalName = child1.getLocalName();
+                if (element.getChildElements().hasNext()) {
 
-                    if ("address".equals(child1LocalName)) {
+                    if (element.getChildrenWithLocalName("address").hasNext()) {
                         artifactType = ArtifactType.ENDPOINT_ADDRESS;
-                    } else if ("default".equals(child1LocalName)) {
+                    } else if (element.getChildrenWithLocalName("default").hasNext()) {
                         artifactType = ArtifactType.ENDPOINT_DEFAULT;
-                    } else if ("http".equals(child1LocalName)) {
+                    } else if (element.getChildrenWithLocalName("http").hasNext()) {
                         artifactType = ArtifactType.ENDPOINT_HTTP;
-                    } else if ("wsdl".equals(child1LocalName)) {
+                    } else if (element.getChildrenWithLocalName("wsdl").hasNext()) {
                         artifactType = ArtifactType.ENDPOINT_WSDL;
-                    } else if ("failover".equals(child1LocalName)) {
+                    } else if (element.getChildrenWithLocalName("failover").hasNext()) {
                         artifactType = ArtifactType.ENDPOINT_FAILOVER;
-                    } else if ("loadbalance".equals(child1LocalName) || "session".equals(child1LocalName)) {
+                    } else if (element.getChildrenWithLocalName("loadbalance").hasNext()) {
                         artifactType = ArtifactType.ENDPOINT_LOADBALANCE;
-                    } else if ("recipientlist".equals(child1LocalName)) {
+                    } else if (element.getChildrenWithLocalName("recipientlist").hasNext()) {
                         artifactType = ArtifactType.ENDPOINT_RECIPIENTLIST;
                     }
                 }

@@ -872,6 +872,8 @@ public class ProcessSourceView {
                                 insideRuleSet = true;
                             } else if (xmlTag.isEndTag() && graphicalEndpoint.contains(xmlTag.getqName())) {
                                 insideGraphiclEP = true;
+                            } else if (xmlTag.isStartTag() && insideGraphiclEP && graphicalEndpoint.contains(xmlTag.getqName())) {
+                                insideGraphiclEP = false;
                             }
                             insideTag = true;
                         }
@@ -951,24 +953,6 @@ public class ProcessSourceView {
                             .setNamespace(new OMNamespaceImpl(SynapseConstants.SYNAPSE_NAMESPACE, ""));
                 } else {
                     omElement.setNamespace(new OMNamespaceImpl(SynapseConstants.SYNAPSE_NAMESPACE, ""));
-                }
-                
-                //This is to skip validation if there are no children within the graphical endpoint.
-                Iterator graphicalEp =  omElement.getChildrenWithLocalName("loadbalance");
-                if (graphicalEp == null) {
-                    graphicalEp = omElement.getChildrenWithLocalName("failover");
-                }
-                if (graphicalEp == null) {
-                    graphicalEp = omElement.getChildrenWithLocalName("recipientlist");
-                }
-                if (graphicalEp != null && graphicalEp.hasNext()) {
-                    OMNode ep = (OMNode) graphicalEp.next();
-                    if (ep instanceof OMElement) {
-                        Iterator children = ((OMElement)ep).getChildren();
-                        if (!children.hasNext()) {
-                            return "";
-                        }
-                    }
                 }
 
                 EndpointFactory.getEndpointFromElement(omElement, false, null);

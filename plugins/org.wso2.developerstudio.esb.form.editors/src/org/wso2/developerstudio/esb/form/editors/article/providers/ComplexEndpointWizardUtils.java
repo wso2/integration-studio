@@ -53,7 +53,7 @@ public class ComplexEndpointWizardUtils {
     
     private final static String SYNAPSE_NS = "http://ws.apache.org/ns/synapse";
     
-    private static int openMessageBox(Shell shell, String title, String message, int style) {
+    public static int openMessageBox(Shell shell, String title, String message, int style) {
         MessageBox exportMsg = new MessageBox(shell, style);
         exportMsg.setText(title);
         exportMsg.setMessage(message);

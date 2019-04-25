@@ -113,7 +113,6 @@ public class RegistryReaderServlet extends HttpServlet {
             // Retrieve input schema
             File inputSchemaFile = new File(DataMapperConfigHolder.getInstance().getInputSchemaPath());
             InputStream inputSchema = FileUtils.openInputStream(inputSchemaFile);
-            String result = IOUtils.toString(inputSchema);
 
             // Retrieve input file
             File inputSampleFile = new File(DataMapperConfigHolder.getInstance().getInputFile());
@@ -121,7 +120,7 @@ public class RegistryReaderServlet extends HttpServlet {
 
             // Create response object
             JsonObject responseObj = new JsonObject();
-            responseObj.addProperty("schema", result);
+            responseObj.addProperty("schema", IOUtils.toString(inputSchema));
             responseObj.addProperty("sample", IOUtils.toString(inputSample));
             response.getWriter().println(responseObj.toString());
         }

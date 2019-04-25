@@ -18,14 +18,9 @@
 
 package org.wso2.developerstudio.esb.form.editors.article.providers;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import java.util.Iterator;
 import javax.xml.stream.XMLStreamException;
 
 import org.apache.axiom.om.OMElement;
-import org.apache.axiom.om.OMText;
 import org.apache.axiom.om.util.AXIOMUtil;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
@@ -48,9 +43,9 @@ public class ConfigureEndpointsWizard extends Wizard implements IExportWizard {
     @Override
     public void init(IWorkbench workbench, IStructuredSelection selection) {
         if (!isEdit) {
-            endpointDialog = new ConfigureEndpointDialog("XXXXXX1");
+            endpointDialog = new ConfigureEndpointDialog("");
         } else {
-            endpointDialog = new ConfigureEndpointDialog("XXXXXX1", this.endpointTableEntry);
+            endpointDialog = new ConfigureEndpointDialog("", this.endpointTableEntry);
             isEdit = false;
         }
         initError = false;

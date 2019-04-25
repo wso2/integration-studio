@@ -221,12 +221,19 @@ public class ConfigureEndpointsDialog extends TitleAreaDialog {
         }
         item.setText(1, endpointTableEntry.getEndpointValue());
         item.setData(endpointTableEntry);
+        
+        endpointsList.remove(index);
+        endpointsList.add(index, endpointTableEntry);
+        
+        initTableEditor(endpointValueEditor, tblEndpoints);
+        initTableEditor(endpointTypeEditor, tblEndpoints);
+
     }
 
     /**
      * @param endpoint
      */
-    public TableItem bindEndpoint(EndpointTableEntry endpoint) {
+    private TableItem bindEndpoint(EndpointTableEntry endpoint) {
         TableItem item = new TableItem(tblEndpoints, SWT.NONE);
         if (endpoint.isInline()) {
             item.setText(0, "INLINE");
@@ -241,7 +248,7 @@ public class ConfigureEndpointsDialog extends TitleAreaDialog {
     /**
      * @param property
      */
-    public void unbindProperty(int itemIndex) {
+    private void unbindProperty(int itemIndex) {
         TableItem item = tblEndpoints.getItem(itemIndex);
         EndpointTableEntry tableEntry = (EndpointTableEntry) item.getData();
         removeTaskProperty(tableEntry);

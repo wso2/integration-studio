@@ -71,7 +71,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.LogMediatorPropertiesEditionPart;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
-import org.wso2.developerstudio.eclipse.gmf.esb.util.SWTFontUtils;
+import org.wso2.developerstudio.eclipse.gmf.esb.util.FontUtils;
 
 // End of user code
 
@@ -369,7 +369,7 @@ public class LogMediatorPropertiesEditionPartForm extends SectionPropertiesEditi
 		    this.properties.getTable().getColumn(0).pack();
 		}
 
-		this.properties.getTable().setFont(SWTFontUtils.getMonospacedFont());
+		this.properties.getTable().setFont(FontUtils.getMonospacedFont());
 		properties.setID(EsbViewsRepository.LogMediator.Properties.properties_);
 		properties.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
 		// Start of user code for createPropertiesTableComposition

@@ -27,9 +27,12 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.wizard.IWizard;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.IWorkbenchWizard;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.wizards.IWizardDescriptor;
 import org.osgi.framework.Bundle;
@@ -64,7 +67,11 @@ public class JSEmbeddedFunctions {
         // Then if we have a wizard, open it.
         if (descriptor != null) {
             IWizard wizard = descriptor.createWizard();
-            WizardDialog wd = new WizardDialog(Display.getDefault().getActiveShell(), wizard);
+            IWorkbenchWindow win = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+            WizardDialog wd = new WizardDialog(win.getShell(), wizard);
+            if (wizard instanceof IWorkbenchWizard) {
+                ((IWorkbenchWizard)wizard).init(PlatformUI.getWorkbench(), StructuredSelection.EMPTY);
+            }
             wd.setTitle(wizard.getWindowTitle());
             wd.open();
         }

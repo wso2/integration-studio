@@ -36,6 +36,9 @@ import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.datamapper.servlets.Utils.DatamapperUtils;
 
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
 /**
  * This is the servlet used to serve requests coming from Datamapper test window.
  * 
@@ -106,10 +109,20 @@ public class RegistryReaderServlet extends HttpServlet {
             // "getInputSchema" operation will read and return the input_schema.json
             response.setContentType("application/json;charset=utf-8");
             response.setStatus(HttpServletResponse.SC_OK);
+
+            // Retrieve input schema
             File inputSchemaFile = new File(DataMapperConfigHolder.getInstance().getInputSchemaPath());
             InputStream inputSchema = FileUtils.openInputStream(inputSchemaFile);
-            String result = IOUtils.toString(inputSchema);
-            response.getWriter().println(result);
+
+            // Retrieve input file
+            File inputSampleFile = new File(DataMapperConfigHolder.getInstance().getInputFile());
+            InputStream inputSample = FileUtils.openInputStream(inputSampleFile);
+
+            // Create response object
+            JsonObject responseObj = new JsonObject();
+            responseObj.addProperty("schema", IOUtils.toString(inputSchema));
+            responseObj.addProperty("sample", IOUtils.toString(inputSample));
+            response.getWriter().println(responseObj.toString());
         }
         
     }

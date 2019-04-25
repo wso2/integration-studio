@@ -19,11 +19,14 @@ package org.wso2.developerstudio.datamapper.diagram.part;
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
-import javax.swing.event.DocumentListener;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 
@@ -35,14 +38,12 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.edit.ui.provider.NotifyChangedToViewerRefresh;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.workspace.util.WorkspaceSynchronizer;
 import org.eclipse.gef.KeyHandler;
@@ -51,34 +52,25 @@ import org.eclipse.gef.ui.palette.PaletteViewer;
 import org.eclipse.gmf.runtime.common.ui.services.marker.MarkerNavigationService;
 import org.eclipse.gmf.runtime.diagram.core.preferences.PreferencesHint;
 import org.eclipse.gmf.runtime.diagram.ui.actions.ActionIds;
-import org.eclipse.gmf.runtime.diagram.ui.internal.parts.DirectEditKeyHandler;
-import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramGraphicalViewer;
-import org.eclipse.gmf.runtime.diagram.ui.resources.editor.document.DocumentEvent;
 import org.eclipse.gmf.runtime.diagram.ui.resources.editor.document.IDiagramDocument;
 import org.eclipse.gmf.runtime.diagram.ui.resources.editor.document.IDocument;
-import org.eclipse.gmf.runtime.diagram.ui.resources.editor.document.IDocumentListener;
 import org.eclipse.gmf.runtime.diagram.ui.resources.editor.document.IDocumentProvider;
 import org.eclipse.gmf.runtime.diagram.ui.resources.editor.parts.DiagramDocumentEditor;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.jface.util.IPropertyChangeListener;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.window.Window;
 import org.eclipse.osgi.util.NLS;
-import org.eclipse.swt.events.FocusEvent;
-import org.eclipse.swt.events.FocusListener;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorMatchingStrategy;
 import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.IFileEditorInput;
-import org.eclipse.ui.IPageListener;
 import org.eclipse.ui.IPartListener2;
-import org.eclipse.ui.ISelectionService;
 import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPage;
@@ -112,7 +104,6 @@ import org.wso2.developerstudio.datamapper.impl.DataMapperRootImpl;
 import org.wso2.developerstudio.datamapper.impl.TreeNodeImpl;
 import org.wso2.developerstudio.datamapper.servlets.DataMapperConfigHolder;
 import org.wso2.developerstudio.datamapper.views.RealtimeDatamapperView;
-import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.xml.sax.SAXException;
@@ -143,11 +134,16 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
 	 * @generated NOT
 	 */
 	private static final String INPUT_SCHEMA_ID = "Input-Schema"; //$NON-NLS-1$
-
+	
 	/**
 	 * @generated NOT
 	 */
 	private static final String OUTPUT_SCHEMA_ID = "Output-Schema"; //$NON-NLS-1$
+	
+	/**
+	 * @generated NOT
+	 */
+	private static final String INPUT_SAMPLE_ID = "Input-Sample"; //$NON-NLS-1$
 
 	/**
 	 * @generated
@@ -286,6 +282,9 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
         DataMapperConfigHolder.getInstance().setInputSchemaPath(inputSchemaFile.getAbsolutePath());
         File outputSchemaFile = createSchemaFile(OUTPUT_SCHEMA_ID);
         DataMapperConfigHolder.getInstance().setOutputSchemaPath(outputSchemaFile.getAbsolutePath());
+        File inputSampleFile = createSchemaFile(INPUT_SAMPLE_ID);
+        DataMapperConfigHolder.getInstance().setInputFile(inputSampleFile.getAbsolutePath());
+        
         IEditorInput editorInput = this.getEditorInput();
 
         if (editorInput instanceof IFileEditorInput) {
@@ -574,7 +573,17 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
 		else {
 			schemaFile = createSchemaFile(INPUT_SCHEMA_ID);
 			content = "";
+            // Clear the content of the sample input file
+            clearInputSampleFile();
 		}
+
+        // Before saving the schema changes, check whether the schema is changed. If it has, clear the input sample file
+        // because the original input values may not apply thereafter
+        if (hasInputSchemaChanged(content)) {
+            // Clear the content of the sample input file
+            clearInputSampleFile();
+        }
+
 		DataMapperConfigHolder.getInstance().setInputSchemaPath(schemaFile.getAbsolutePath());
 		schemaTransformer.updateSchemaFile(content, schemaFile);
 
@@ -600,6 +609,45 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
 		reloadDataMapperTestWindow(getInputSchemaType(), getOutputSchemaType());
 	}
 
+    /**
+     * Compares the schema before updating with the new schema to check whether there are any changes
+     * 
+     * @param modifiedSchema - changed schema
+     * @throws ParseException
+     */
+    private boolean hasInputSchemaChanged(String modifiedSchema) {
+        try {
+            String prevSchema = new String(
+                    Files.readAllBytes(Paths.get(DataMapperConfigHolder.getInstance().getInputSchemaPath())));
+            JSONObject prevSchemaJson = (JSONObject) new JSONParser().parse(prevSchema);
+            JSONObject modifiedSchemaJson = (JSONObject) new JSONParser().parse(modifiedSchema);
+            modifiedSchemaJson = (JSONObject) new JSONParser().parse(modifiedSchema);
+
+            // Compare whether the schema has any changes
+            if (prevSchemaJson != null && modifiedSchema != null && !prevSchemaJson.equals(modifiedSchemaJson)) {
+                return true;
+            }
+        } catch (ParseException | IOException e) {
+            log.error("Failed to compare schema!");
+        }
+        return false;
+    }
+
+    /**
+     * Clears input sample file
+     */
+    private void clearInputSampleFile() {
+        File sampleInputFile = createSchemaFile(INPUT_SAMPLE_ID);
+        PrintWriter writer;
+        try {
+            writer = new PrintWriter(sampleInputFile);
+            writer.print("");
+            writer.close();
+        } catch (FileNotFoundException e) {
+            log.error("Input sample file not found!", e);
+        }
+    }
+
 	private File createSchemaFile(String schemaType) {
 		// Schema file location is identified using editor input
 		IFile graphicalFile = ((IFileEditorInput) getEditorInput()).getFile();
@@ -613,17 +661,21 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
 
 		String newFilePath;
 		IFile newSchemaIFile;
-		// Schema type can only be either input or output
-		if (INPUT_SCHEMA_ID.equals(schemaType)) {
-			// TODO handle the extension of the file despite the schemaType
-			newFilePath = graphicalFileDirPath + configName + EditorUtils.INPUT_SCHEMA_FILE_SUFFIX
-					+ EditorUtils.AVRO_SCHEMA_FILE_EXTENSION;
-			newSchemaIFile = graphicalFile.getProject().getFile(newFilePath);
-		} else {
-			newFilePath = graphicalFileDirPath + configName + EditorUtils.OUTPUT_SCHEMA_FILE_SUFFIX
-					+ EditorUtils.AVRO_SCHEMA_FILE_EXTENSION;
-			newSchemaIFile = graphicalFile.getProject().getFile(newFilePath);
-		}
+        // Schema type can only be either input or output
+        if (INPUT_SCHEMA_ID.equals(schemaType)) {
+            // TODO handle the extension of the file despite the schemaType
+            newFilePath = graphicalFileDirPath + configName + EditorUtils.INPUT_SCHEMA_FILE_SUFFIX
+                    + EditorUtils.AVRO_SCHEMA_FILE_EXTENSION;
+            newSchemaIFile = graphicalFile.getProject().getFile(newFilePath);
+        } else if (INPUT_SAMPLE_ID.equals(schemaType)) {
+            newFilePath = graphicalFileDirPath + configName + EditorUtils.INPUT_SAMPLE_FILE_SUFFIX
+                    + EditorUtils.TEXT_FILE_EXTENSION;
+            newSchemaIFile = graphicalFile.getProject().getFile(newFilePath);
+        } else {
+            newFilePath = graphicalFileDirPath + configName + EditorUtils.OUTPUT_SCHEMA_FILE_SUFFIX
+                    + EditorUtils.AVRO_SCHEMA_FILE_EXTENSION;
+            newSchemaIFile = graphicalFile.getProject().getFile(newFilePath);
+        }
 		File newSchemaFile = newSchemaIFile.getRawLocation().makeAbsolute().toFile();
 		return newSchemaFile;
 	}

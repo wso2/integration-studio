@@ -24,11 +24,13 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
@@ -88,6 +90,7 @@ import org.wso2.developerstudio.eclipse.registry.core.interfaces.IRegistryData;
 import org.wso2.developerstudio.eclipse.registry.core.interfaces.IRegistryFile;
 import org.wso2.developerstudio.eclipse.registry.core.interfaces.IRegistryHandler;
 import org.wso2.developerstudio.datamapper.diagram.schemagen.util.*;
+import org.wso2.developerstudio.datamapper.servlets.DataMapperConfigHolder;
 
 public class SchemaKeyEditorDialog extends Dialog {
 
@@ -188,6 +191,9 @@ public class SchemaKeyEditorDialog extends Dialog {
             .getLocation().toOSString() +
             File.separator + "temp";
 
+    private String schemaFileLocation;
+    private String inputFileLocation;
+    
     public SchemaKeyEditorDialog(Shell parent, EditPart selectedEP, IWorkbenchPart workbenchPart,
                                  String schemaType) {
         super(parent);
@@ -951,6 +957,7 @@ public class SchemaKeyEditorDialog extends Dialog {
      */
     private void openFileBrowser() {
         hide();
+        schemaFileLocation = null;
         try {
             DataMapperSchemaEditorUtil schemaEditorUtil = new DataMapperSchemaEditorUtil(inputFile);
             FileType option = FileType.values()[schemaTypeCombo.getSelectionIndex()];
@@ -959,14 +966,24 @@ public class SchemaKeyEditorDialog extends Dialog {
                 fid.setFilterExtensions(new String[]{fileExtensionForFileType(option)});
             }
             fid.setText(FILE_DIALOG_TITLE);
-            String filePath = fid.open();
-            if (filePath == null) {
+            schemaFileLocation = fid.open();
+            if (schemaFileLocation == null) {
                 return;
             }
 
-            String schema =
-                    schemaGeneratorHelper.getSchemaContent(FileType.values()[schemaTypeCombo.getSelectionIndex()],
-                            filePath, delimiterTextField.getText());
+            String configFileName = inputFile.getName().substring(0,
+                    inputFile.getName().indexOf(EditorUtils.DIAGRAM_FILE_EXTENSION));
+            String graphicalFileDirPath = inputFile.getParent().getLocation().toString();
+            if (graphicalFileDirPath != null && !"".equals(graphicalFileDirPath)) {
+                graphicalFileDirPath += File.separator;
+            }
+
+            inputFileLocation = graphicalFileDirPath + configFileName + "_inputSample"
+                    + EditorUtils.TEXT_FILE_EXTENSION;
+
+            String schema = schemaGeneratorHelper.getSchemaContent(
+                    FileType.values()[schemaTypeCombo.getSelectionIndex()], schemaFileLocation,
+                    delimiterTextField.getText());
             if (schema != null) {
                 String schemaFilePath = schemaEditorUtil.createDiagram(schema, schemaType);
                 if (!schemaFilePath.isEmpty()) {
@@ -991,11 +1008,17 @@ public class SchemaKeyEditorDialog extends Dialog {
             if (selectedEP.getChildren().isEmpty()) {
                 InputEditPart iep = (InputEditPart) selectedEP;
                 iep.resetInputTreeFromFile(schemaFilePath);
+                // Copy input file content
+                copyInputFile(schemaFileLocation, inputFileLocation);
+                DataMapperConfigHolder.getInstance().setInputFile(inputFileLocation);
             } else {
                 if (displayUserMssg("Input Schema will be overwritten",
                         "The current Input Schema will be overwritten with the new schema loading, you want to proceed ? ") == 0) {
                     InputEditPart iep = (InputEditPart) selectedEP;
                     iep.resetInputTreeFromFile(schemaFilePath);
+                    
+                    copyInputFile(schemaFileLocation, inputFileLocation);
+                    DataMapperConfigHolder.getInstance().setInputFile(inputFileLocation);
                 }
             }
         } else if (Messages.LoadOutputSchemaAction_SchemaTypeOutput.equals(schemaType)) {
@@ -1012,6 +1035,24 @@ public class SchemaKeyEditorDialog extends Dialog {
         }
     }
 
+    /**
+     * Copies a file to a given destination
+     * 
+     * @param originalFilePath path to the source file
+     * @param destinationFilePath path of the destination
+     */
+    private void copyInputFile(String originalFilePath, String destinationFilePath) {
+        File originalFile = new File(originalFilePath);
+        File copiedFile = new File(destinationFilePath);
+        try {
+            FileUtils.copyFile(originalFile, copiedFile);
+            assert (copiedFile).exists();
+            assert (Files.readAllLines(originalFile.toPath()).equals(Files.readAllLines(copiedFile.toPath())));
+        } catch (IOException e) {
+            log.error("Failed to create a copy of the original input file!");
+        }
+    }
+    
     private String fileExtensionForFileType(FileType option) {
         switch (option) {
             case XSD:

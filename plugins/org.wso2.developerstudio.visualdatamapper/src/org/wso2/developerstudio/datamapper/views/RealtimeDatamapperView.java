@@ -75,6 +75,17 @@ public class RealtimeDatamapperView extends ViewPart {
     }
 
     /**
+     * setURL method which sends input and output payload types along with the URL
+     * @param inputSchema input payload type
+     * @param outputSchema output payload type
+     */
+    public void setURL(String inputSchema, String outputSchema) {
+        String port = getPortValueForJS();
+        browser.setUrl("http://localhost:" + port + "/dataMapper?port=" + port + "&inputtype=" + inputSchema
+                + "&outputtype=" + outputSchema);
+    }
+
+    /**
      * This method gets port value retrieved from preferences
      * 
      * @param browser started browser instance

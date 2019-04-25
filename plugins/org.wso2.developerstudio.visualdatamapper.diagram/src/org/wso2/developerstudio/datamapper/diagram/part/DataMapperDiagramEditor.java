@@ -16,10 +16,12 @@
 
 package org.wso2.developerstudio.datamapper.diagram.part;
 
+import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 
 import javax.swing.event.DocumentListener;
 import javax.xml.parsers.ParserConfigurationException;
@@ -92,6 +94,9 @@ import org.eclipse.ui.navigator.resources.ProjectExplorer;
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.IShowInTargetList;
 import org.eclipse.ui.part.ShowInContext;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.wso2.developerstudio.datamapper.DataMapperRoot;
 import org.wso2.developerstudio.datamapper.TreeNode;
 import org.wso2.developerstudio.datamapper.diagram.Activator;
@@ -119,6 +124,10 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
 	RealtimeDatamapperView realtimeDatamapperView = null;
     private static final String DATA_MAPPER_TEST_VIEW = "org.wso2.developerstudio.datamapper.views.RealtimeDatamapperView";
     private static final String DATA_MAPPER_PERSPECTIVE = "org.wso2.developerstudio.datamapper.diagram.custom.perspective";
+    private static final String DATA_MAPPER_META_INPUT_TYPE = "inputType";
+    private static final String DATA_MAPPER_META_OUTPUT_TYPE = "outputType";
+    private String inputSchemaType = "XML";
+    private String outputSchemaType = "XML";
 	
     @Override
     public void dispose() {
@@ -211,14 +220,16 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
             // Changing the browser contents when the active datamapper editor window changed
             @Override
             public void partVisible(final IWorkbenchPartReference partRef) {
+                loadContentTypes(); //This can be ommited if schema files are read from js side
                 IWorkbenchPart part = partRef.getPart(false);
                 if (partRef.getPage().getActiveEditor() instanceof DataMapperDiagramEditor) {
                     DataMapperDiagramEditor temp = (DataMapperDiagramEditor) partRef.getPage().getActiveEditor();
                     if (part == window.getActivePage().getActiveEditor()) {
                         temp.loadInitialConfigFileLocations();
-                        reloadDataMapperTestWindow();
+                        reloadDataMapperTestWindow(getInputSchemaType(), getOutputSchemaType());
                     }
                 }
+
             }
 
             @Override
@@ -246,6 +257,28 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
         });
     }
     
+    /**
+     * Show datamapper test window and reload web page
+     * @param inputSchemaType type of input payload to be sent to JS side
+     * @param outputSchemaType type of output payload to be sent to JS side
+     */
+    private void reloadDataMapperTestWindow(String inputSchemaType, String outputSchemaType) {
+        final String inputScheme = inputSchemaType;
+        final String outputScheme = outputSchemaType;
+        PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    realtimeDatamapperView = (RealtimeDatamapperView) PlatformUI.getWorkbench()
+                            .getActiveWorkbenchWindow().getActivePage().showView(DATA_MAPPER_TEST_VIEW);
+                    realtimeDatamapperView.setURL(inputScheme,outputScheme);
+                } catch (PartInitException e) {
+
+                }
+            }
+        });
+    }
+
 	// load inputSchema / outputSchema and DMC file locations and update the singleton class.
     private void loadInitialConfigFileLocations() {
 
@@ -253,7 +286,6 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
         DataMapperConfigHolder.getInstance().setInputSchemaPath(inputSchemaFile.getAbsolutePath());
         File outputSchemaFile = createSchemaFile(OUTPUT_SCHEMA_ID);
         DataMapperConfigHolder.getInstance().setOutputSchemaPath(outputSchemaFile.getAbsolutePath());
-
         IEditorInput editorInput = this.getEditorInput();
 
         if (editorInput instanceof IFileEditorInput) {
@@ -512,6 +544,7 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
 		if (success) {
 			super.doSave(monitor);
 			updateAssociatedXsltFile(monitor);
+			updateAssociatedMetaInfo(monitor); // Adds input type and output type params to schemas
 		}
 	}
 
@@ -564,7 +597,7 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
 		schemaTransformer.updateSchemaFile(content, schemaFile);
 		
 		// reload the datamapper test window once the new schema is saved.
-		reloadDataMapperTestWindow();
+		reloadDataMapperTestWindow(getInputSchemaType(), getOutputSchemaType());
 	}
 
 	private File createSchemaFile(String schemaType) {
@@ -674,5 +707,151 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
 			}
 		});
 	}
+
+    public String getInputSchemaType() {
+        return inputSchemaType;
+    }
+
+    public void setInputSchemaType(String inputSchemaType) {
+        this.inputSchemaType = inputSchemaType;
+    }
+
+    public String getOutputSchemaType() {
+        return outputSchemaType;
+    }
+
+    public void setOutputSchemaType(String outputSchemaType) {
+        this.outputSchemaType = outputSchemaType;
+    }
+
+    /**
+     * Adds and updates inputType and outputType parameters to input
+     * and output schema files respectively
+     * @param monitor
+     */
+    private void updateAssociatedMetaInfo(IProgressMonitor monitor) {
+        IEditorInput editorInput = this.getEditorInput();
+
+
+        if (editorInput instanceof IFileEditorInput) {
+            IFile diagramFile = ((FileEditorInput) editorInput).getFile();
+
+            IFile inputSchemaFile = diagramFile.getWorkspace().getRoot().getFile(getSchemaFile(INPUT_SCHEMA_ID).getFullPath());
+            JSONObject inputSource = readSchemaFile(INPUT_SCHEMA_ID);
+            if(inputSource != null) {
+                inputSource.put(DATA_MAPPER_META_INPUT_TYPE, getInputSchemaType());
+                try {
+                    inputSchemaFile.setContents(new ByteArrayInputStream(inputSource.toJSONString().getBytes()), true, true, monitor);
+                } catch (CoreException e) {
+                    log.error("Could not update input file " + e);
+                }
+            }
+
+            IFile outputSchemaFile = diagramFile.getWorkspace().getRoot().getFile(getSchemaFile(OUTPUT_SCHEMA_ID).getFullPath());
+            JSONObject outputSource = readSchemaFile(OUTPUT_SCHEMA_ID);
+            if(inputSource != null) {
+                outputSource.put(DATA_MAPPER_META_OUTPUT_TYPE, getOutputSchemaType());
+                try {
+                    outputSchemaFile.setContents(new ByteArrayInputStream(outputSource.toJSONString().getBytes()), true, true, monitor);
+                } catch (CoreException e) {
+                    log.error("Could not update output file " + e);
+                }
+            }
+        }
+
+    }
+
+    /**
+     * Get given schema files IFile objecy
+     * @param schemaType input or output schema
+     * @return IFile object of given schema file
+     */
+    private IFile getSchemaFile(String schemaType) {
+        // Schema file location is identified using editor input
+        IFile graphicalFile = ((IFileEditorInput) getEditorInput()).getFile();
+        String configName = graphicalFile.getName().substring(0,
+                graphicalFile.getName().indexOf(EditorUtils.DIAGRAM_FILE_EXTENSION));
+
+        String graphicalFileDirPath = graphicalFile.getParent().getProjectRelativePath().toString();
+        if (graphicalFileDirPath != null && !"".equals(graphicalFileDirPath)) { //$NON-NLS-1$
+            graphicalFileDirPath += File.separator;
+        }
+
+        String newFilePath;
+        IFile newSchemaIFile;
+        // Schema type can only be either input or output
+        if (INPUT_SCHEMA_ID.equals(schemaType)) {
+            newFilePath = graphicalFileDirPath + configName + EditorUtils.INPUT_SCHEMA_FILE_SUFFIX
+                    + EditorUtils.AVRO_SCHEMA_FILE_EXTENSION;
+            newSchemaIFile = graphicalFile.getProject().getFile(newFilePath);
+        } else {
+            newFilePath = graphicalFileDirPath + configName + EditorUtils.OUTPUT_SCHEMA_FILE_SUFFIX
+                    + EditorUtils.AVRO_SCHEMA_FILE_EXTENSION;
+            newSchemaIFile = graphicalFile.getProject().getFile(newFilePath);
+        }
+        return newSchemaIFile;
+    }
+
+    /**
+     * Reads given schema file and outputs its JSONObject
+     * @param schemaTypeID input or output schema
+     * @return JSONObject of the schema file read
+     */
+    private JSONObject readSchemaFile(String schemaTypeID) {
+        IEditorInput editorInput = this.getEditorInput();
+        String str = "";
+        StringBuffer buf = new StringBuffer();
+
+        if (editorInput instanceof IFileEditorInput) {
+            IFile diagramFile = ((FileEditorInput) editorInput).getFile();
+            IFile schemaFile = diagramFile.getWorkspace().getRoot().getFile(getSchemaFile(schemaTypeID).getFullPath());
+            InputStream contentStream;
+
+            try {
+                contentStream = schemaFile.getContents(true);
+                BufferedReader reader = new BufferedReader(new InputStreamReader(contentStream));
+
+                if (contentStream != null) {
+                    while ((str = reader.readLine()) != null) {
+                        buf.append(str + "\n");
+                    }
+                }
+            } catch (CoreException | IOException e) {
+                log.error("Could not read schema file" + e);
+            }
+        }
+
+        JSONParser parser = new JSONParser();
+        JSONObject json = null;
+        try {
+            json = (JSONObject) parser.parse(buf.toString());
+        } catch (ParseException e) {
+            log.error("Could not parse schema json : " + e);
+        }
+        return json;
+    }
+
+    /**
+     * Reads schema files and sets input schema type and output schema type
+     * params
+     */
+    private void loadContentTypes() {
+        JSONObject inputJsonObj = readSchemaFile(INPUT_SCHEMA_ID);
+
+        if (inputJsonObj != null) {
+            String inputType = (String) inputJsonObj.get(new String(DATA_MAPPER_META_INPUT_TYPE));
+            if (inputType != null && !inputType.isEmpty()) {
+                setInputSchemaType(inputType);
+            }
+        }
+
+        JSONObject outputJsonObj = readSchemaFile(OUTPUT_SCHEMA_ID);
+        if (outputJsonObj != null) {
+            String outputType = (String) outputJsonObj.get(new String(DATA_MAPPER_META_OUTPUT_TYPE));
+            if (outputType != null && !outputType.isEmpty()) {
+                setOutputSchemaType(outputType);
+            }
+        }
+    }
 
 }

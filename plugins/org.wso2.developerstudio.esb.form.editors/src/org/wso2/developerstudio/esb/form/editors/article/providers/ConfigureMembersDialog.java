@@ -310,7 +310,9 @@ public class ConfigureMembersDialog extends TitleAreaDialog {
 
             for (Member propertyItem : memberPropertyList) {
                 // When updating the existing members, remove the old member
-                if (propertyItem.getHostName().equals(parameter.getHostName())) {
+                if (propertyItem.getHostName().equals(parameter.getHostName())
+                        && propertyItem.getHttpPort().equals(parameter.getHttpPort())
+                        && propertyItem.getHttpsPort().equals(parameter.getHttpsPort())) {
                     memberPropertyList.remove(propertyItem);
                     break;
                 }

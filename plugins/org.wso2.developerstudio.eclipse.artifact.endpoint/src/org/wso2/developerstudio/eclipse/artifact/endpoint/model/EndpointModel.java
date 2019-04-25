@@ -171,19 +171,19 @@ public class EndpointModel extends ProjectDataModel {
 		} else if (key.equals(EpArtifactConstants.WIZARD_OPTION_EP_NAME)) {
 			setEpName(data.toString());
 		} else if (key.equals(EpArtifactConstants.WIZARD_OPTION_TEMPLATE_ADDRESS_EP_URL)) {
-			setAddressEPURI(data.toString());
+			setAddressEPURI(data.toString().trim());
 		} else if (key.equals(EpArtifactConstants.WIZARD_OPTION_TEMPLATE_WSDL_EP_URL)) {
-			setWsdlEPURI(data.toString());
+			setWsdlEPURI(data.toString().trim());
 		} else if (key.equals(EpArtifactConstants.WIZARD_OPTION_TEMPLATE_WSDL_EP_SERVICE)) {
 			setWsdlEPService(data.toString());
 		} else if (key.equals(EpArtifactConstants.WIZARD_OPTION_TEMPLATE_WSDL_EP_SERVICE_PORT)) {
 			setWsdlEPPort(data.toString());
 		} else if (key.equals(EpArtifactConstants.WIZARD_OPTION_TEMPLATE_TEMP_EP_URL)) {
-			setTemplateEPURI(data.toString());
+			setTemplateEPURI(data.toString().trim());
 		} else if (key.equals(EpArtifactConstants.WIZARD_OPTION_TEMPLATE_TEMP_TARGET)) {
 			setTemplateEPTargetTemp(data.toString());
 		} else if (key.equals(EpArtifactConstants.WIZARD_OPTION_HTTP_EP_URITEMPLATE)) {
-			setHttpUriTemplate(data.toString());
+			setHttpUriTemplate(data.toString().trim());
 		} else if (key.equals(EpArtifactConstants.WIZARD_OPTION_HTTP_EP_METHOD)) {
 			setHttpMethod((HttpMethodType) data);
 		} else if (key.equals(EpArtifactConstants.WIZARD_OPTION_AVAILABLE_EPS)) {

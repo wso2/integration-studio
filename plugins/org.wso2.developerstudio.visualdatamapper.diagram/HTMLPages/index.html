@@ -151,63 +151,21 @@
       function generateExamples() {
         if (sample) {
           if (inputType === "JSON") {
-            $("#xmlInput").hide();
-            $("#csvInput").hide();
-
-            // Set JSON String
             jsonString = sample;
-
-            /* // Set XML String
-            xmlString = json2xml(JSON.parse(jsonString), "\n");
-            rootElemWithNS = buildRootWithNS(schema);
-            xmlString = "<" + rootElemWithNS + ">" + xmlString + "</" + inputSchemaTitle + ">";
-
-            // Set CSV String
-            csvString = '<text xmlns="http://ws.apache.org/commons/ns/payload">' + Papa.unparse(JSON.parse(jsonString), configs) + "</text>"; */
-
-            inputEditor.setOption("mode", "text/javascript");
-            inputEditor.setValue(sample);
-            inputType = $('.inputTypeRadio:checked').val();
-
+            setJsonInputValue();
           } else if (inputType == "XML"){
-            $("#jsonInput").hide();
-            $("#csvInput").hide();
-
-            /* var oParser = new DOMParser();
-            var oDOM = oParser.parseFromString(sample, "application/xml"); */
-
-            // Set JSON String
-/*             jsonString = xml2json(oDOM, "\n");
-            var root = JSON.parse(jsonString).root;
-            if (root) {
-              jsonString = JSON.stringify(root, null, "\n");
-            } */
-
-            // Set XML String
             xmlString = sample;
-
-            // Set CSV String
-            /* csvString = '<text xmlns="http://ws.apache.org/commons/ns/payload">' + Papa.unparse(JSON.parse(jsonString), configs) + "</text>"; */
-
-            inputEditor.setOption("mode", "text/html");
-            inputEditor.setValue(xmlString);
-            document.getElementById("xmlInputTypeRadio").checked = true;
-            inputType = $('.inputTypeRadio:checked').val();
+            setXMLInputValue();
           } else if (inputType == "CSV") {
-        	// Set CSV String
-        	$("#jsonInput").hide();
-            $("#xmlInput").hide();
             csvString = '<text xmlns="http://ws.apache.org/commons/ns/payload">' + sample + "</text>";  
-            inputEditor.setOption("mode", "application/xml");
-            inputEditor.setValue(xmlString);
-            document.getElementById("csvInputTypeRadio").checked = true;
-            inputType = $('.inputTypeRadio:checked').val();
+            setCSVInputValue();
           } else {
         	  generateDefaultValues();
           }
         } else {
         	generateDefaultValues();
         }
+        inputType = $('.inputTypeRadio:checked').val();
         autoFormatSelection();
         process();
       }

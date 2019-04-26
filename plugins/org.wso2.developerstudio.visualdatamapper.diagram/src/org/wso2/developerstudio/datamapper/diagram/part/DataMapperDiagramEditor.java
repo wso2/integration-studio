@@ -621,7 +621,7 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
                     Files.readAllBytes(Paths.get(DataMapperConfigHolder.getInstance().getInputSchemaPath())));
             JSONObject prevSchemaJson = (JSONObject) new JSONParser().parse(prevSchema);
             JSONObject modifiedSchemaJson = (JSONObject) new JSONParser().parse(modifiedSchema);
-            modifiedSchemaJson = (JSONObject) new JSONParser().parse(modifiedSchema);
+            prevSchemaJson.remove("inputType");
 
             // Compare whether the schema has any changes
             if (prevSchemaJson != null && modifiedSchema != null && !prevSchemaJson.equals(modifiedSchemaJson)) {

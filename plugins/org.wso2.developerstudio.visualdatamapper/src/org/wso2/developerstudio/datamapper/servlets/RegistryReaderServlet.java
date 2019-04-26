@@ -37,7 +37,6 @@ import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.datamapper.servlets.Utils.DatamapperUtils;
 
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 
 /**
  * This is the servlet used to serve requests coming from Datamapper test window.

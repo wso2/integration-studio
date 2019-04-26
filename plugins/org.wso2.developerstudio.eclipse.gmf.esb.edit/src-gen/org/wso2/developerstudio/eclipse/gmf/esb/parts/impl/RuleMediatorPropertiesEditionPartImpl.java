@@ -972,7 +972,9 @@ public class RuleMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createTargetActionEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.RuleMediator.Target.targetAction, EsbMessages.RuleMediatorPropertiesEditionPart_TargetActionLabel);
 		targetAction = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -1017,7 +1019,9 @@ public class RuleMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 		return ruleSetGroup;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createRuleSetTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.RuleMediator.RuleSet.ruleSetType, EsbMessages.RuleMediatorPropertiesEditionPart_RuleSetTypeLabel);
 		ruleSetType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -1096,7 +1100,9 @@ public class RuleMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createRuleSetSourceTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.RuleMediator.RuleSet.ruleSetSourceType, EsbMessages.RuleMediatorPropertiesEditionPart_RuleSetSourceTypeLabel);
 		ruleSetSourceType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -1961,53 +1967,53 @@ public class RuleMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 		return EsbMessages.RuleMediator_Part_Title;
 	}
 
-    @Override
-    public NamespacedProperty getSourceXPath() {
-        // TODO Auto-generated method stub
-        return null;
-    }
+	@Override
+	public NamespacedProperty getSourceXPath() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-    @Override
-    public void setSourceXPath(NamespacedProperty nameSpacedProperty) {
-        // TODO Auto-generated method stub
-        
-    }
+	@Override
+	public void setSourceXPath(NamespacedProperty nameSpacedProperty) {
+		// TODO Auto-generated method stub
 
-    @Override
-    public NamespacedProperty getTargetXPath() {
-        // TODO Auto-generated method stub
-        return null;
-    }
+	}
 
-    @Override
-    public void setTargetXPath(NamespacedProperty nameSpacedProperty) {
-        // TODO Auto-generated method stub
-        
-    }
+	@Override
+	public NamespacedProperty getTargetXPath() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-    @Override
-    public NamespacedProperty getTargetResultXPath() {
-        // TODO Auto-generated method stub
-        return null;
-    }
+	@Override
+	public void setTargetXPath(NamespacedProperty nameSpacedProperty) {
+		// TODO Auto-generated method stub
 
-    @Override
-    public void setTargetResultXPath(NamespacedProperty nameSpacedProperty) {
-        // TODO Auto-generated method stub
-        
-    }
+	}
 
-    @Override
-    public RegistryKeyProperty getRuleSetSourceKey() {
-        // TODO Auto-generated method stub
-        return null;
-    }
+	@Override
+	public NamespacedProperty getTargetResultXPath() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-    @Override
-    public void setRuleSetSourceKey(RegistryKeyProperty registryKeyProperty) {
-        // TODO Auto-generated method stub
-        
-    }
+	@Override
+	public void setTargetResultXPath(NamespacedProperty nameSpacedProperty) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public RegistryKeyProperty getRuleSetSourceKey() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setRuleSetSourceKey(RegistryKeyProperty registryKeyProperty) {
+		// TODO Auto-generated method stub
+
+	}
 
 	// Start of user code additional methods
 	

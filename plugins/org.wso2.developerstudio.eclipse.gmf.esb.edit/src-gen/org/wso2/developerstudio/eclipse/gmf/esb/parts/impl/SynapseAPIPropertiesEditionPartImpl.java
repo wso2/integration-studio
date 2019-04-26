@@ -581,7 +581,9 @@ public class SynapseAPIPropertiesEditionPartImpl extends CompositePropertiesEdit
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createVersionTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.SynapseAPI.Handler.Properties.versionType, EsbMessages.SynapseAPIPropertiesEditionPart_VersionTypeLabel);
 		versionType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);

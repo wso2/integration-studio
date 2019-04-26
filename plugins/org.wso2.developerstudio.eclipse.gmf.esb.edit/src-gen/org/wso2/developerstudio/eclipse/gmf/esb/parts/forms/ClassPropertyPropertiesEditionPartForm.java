@@ -236,7 +236,9 @@ public class ClassPropertyPropertiesEditionPartForm extends SectionPropertiesEdi
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createPropertyValueTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.ClassProperty.Properties.propertyValueType, EsbMessages.ClassPropertyPropertiesEditionPart_PropertyValueTypeLabel);
 		propertyValueType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -486,8 +488,6 @@ public class ClassPropertyPropertiesEditionPartForm extends SectionPropertiesEdi
 	public String getTitle() {
 		return EsbMessages.ClassProperty_Part_Title;
 	}
-
-
 
 	// Start of user code additional methods
 	

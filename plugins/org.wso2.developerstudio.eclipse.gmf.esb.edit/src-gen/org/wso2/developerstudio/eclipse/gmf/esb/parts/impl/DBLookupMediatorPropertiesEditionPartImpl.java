@@ -381,7 +381,9 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createPropertyAutocommitEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.DBLookupMediator.Properties.propertyAutocommit, EsbMessages.DBLookupMediatorPropertiesEditionPart_PropertyAutocommitLabel);
 		propertyAutocommit = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -411,7 +413,9 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createPropertyIsolationEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.DBLookupMediator.Properties.propertyIsolation, EsbMessages.DBLookupMediatorPropertiesEditionPart_PropertyIsolationLabel);
 		propertyIsolation = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -686,7 +690,9 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createPropertyPoolstatementsEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.DBLookupMediator.Properties.propertyPoolstatements, EsbMessages.DBLookupMediatorPropertiesEditionPart_PropertyPoolstatementsLabel);
 		propertyPoolstatements = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -716,7 +722,9 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createPropertyTestonborrowEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.DBLookupMediator.Properties.propertyTestonborrow, EsbMessages.DBLookupMediatorPropertiesEditionPart_PropertyTestonborrowLabel);
 		propertyTestonborrow = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -746,7 +754,9 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createPropertyTestwhileidleEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.DBLookupMediator.Properties.propertyTestwhileidle, EsbMessages.DBLookupMediatorPropertiesEditionPart_PropertyTestwhileidleLabel);
 		propertyTestwhileidle = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -953,7 +963,9 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 		return connectionGroup;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createConnectionTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.DBLookupMediator.Connection.connectionType, EsbMessages.DBLookupMediatorPropertiesEditionPart_ConnectionTypeLabel);
 		connectionType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -983,7 +995,9 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createConnectionDsTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.DBLookupMediator.Connection.connectionDsType, EsbMessages.DBLookupMediatorPropertiesEditionPart_ConnectionDsTypeLabel);
 		connectionDsType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -1062,7 +1076,9 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createConnectionDbTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.DBLookupMediator.Connection.connectionDbType, EsbMessages.DBLookupMediatorPropertiesEditionPart_ConnectionDbTypeLabel);
 		connectionDbType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);

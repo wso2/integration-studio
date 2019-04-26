@@ -332,7 +332,9 @@ public class XQueryMediatorPropertiesEditionPartImpl extends CompositeProperties
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createScriptKeyTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.XQueryMediator.Properties.scriptKeyType, EsbMessages.XQueryMediatorPropertiesEditionPart_ScriptKeyTypeLabel);
 		scriptKeyType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);

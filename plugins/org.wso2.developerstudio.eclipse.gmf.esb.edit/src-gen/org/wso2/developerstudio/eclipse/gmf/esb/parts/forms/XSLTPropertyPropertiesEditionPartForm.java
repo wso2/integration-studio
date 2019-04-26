@@ -236,7 +236,9 @@ public class XSLTPropertyPropertiesEditionPartForm extends SectionPropertiesEdit
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createPropertyValueTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.XSLTProperty.Properties.propertyValueType, EsbMessages.XSLTPropertyPropertiesEditionPart_PropertyValueTypeLabel);
 		propertyValueType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -487,7 +489,6 @@ public class XSLTPropertyPropertiesEditionPartForm extends SectionPropertiesEdit
 	public String getTitle() {
 		return EsbMessages.XSLTProperty_Part_Title;
 	}
-
 
 	// Start of user code additional methods
 	

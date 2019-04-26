@@ -474,7 +474,9 @@ public class IterateMediatorPropertiesEditionPartImpl extends CompositePropertie
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createSequenceTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.IterateMediator.Properties.sequenceType, EsbMessages.IterateMediatorPropertiesEditionPart_SequenceTypeLabel);
 		sequenceType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -893,7 +895,7 @@ public class IterateMediatorPropertiesEditionPartImpl extends CompositePropertie
 
 
 
-    // Start of user code for iterateExpression specific getters and setters implementation
+	// Start of user code for iterateExpression specific getters and setters implementation
     @Override
     public NamespacedProperty getIterateExpression() {
         // TODO Auto-generated method stub
@@ -907,7 +909,7 @@ public class IterateMediatorPropertiesEditionPartImpl extends CompositePropertie
     }
     // End of user code
 
-    // Start of user code for sequenceKey specific getters and setters implementation
+	// Start of user code for sequenceKey specific getters and setters implementation
     @Override
     public RegistryKeyProperty getSequenceKey() {
         // TODO Auto-generated method stub
@@ -921,7 +923,7 @@ public class IterateMediatorPropertiesEditionPartImpl extends CompositePropertie
     }
     // End of user code
 
-    // Start of user code for attachPath specific getters and setters implementation
+	// Start of user code for attachPath specific getters and setters implementation
     @Override
     public NamespacedProperty getAttachPath() {
         // TODO Auto-generated method stub

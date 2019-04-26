@@ -387,7 +387,9 @@ public class FaultMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createSoapVersionEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.FaultMediator.Properties.soapVersion, EsbMessages.FaultMediatorPropertiesEditionPart_SoapVersionLabel);
 		soapVersion = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -477,7 +479,9 @@ public class FaultMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createFaultCodeSoap11EMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.FaultMediator.Properties.faultCodeSoap11, EsbMessages.FaultMediatorPropertiesEditionPart_FaultCodeSoap11Label);
 		faultCodeSoap11 = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -507,7 +511,9 @@ public class FaultMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createFaultCodeTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.FaultMediator.Properties.faultCodeType, EsbMessages.FaultMediatorPropertiesEditionPart_FaultCodeTypeLabel);
 		faultCodeType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -537,7 +543,9 @@ public class FaultMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createFaultStringTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.FaultMediator.Properties.faultStringType, EsbMessages.FaultMediatorPropertiesEditionPart_FaultStringTypeLabel);
 		faultStringType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -665,7 +673,9 @@ public class FaultMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createFaultCodeSoap12EMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.FaultMediator.Properties.faultCodeSoap12, EsbMessages.FaultMediatorPropertiesEditionPart_FaultCodeSoap12Label);
 		faultCodeSoap12 = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -695,7 +705,9 @@ public class FaultMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createFaultReasonTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.FaultMediator.Properties.faultReasonType, EsbMessages.FaultMediatorPropertiesEditionPart_FaultReasonTypeLabel);
 		faultReasonType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -872,7 +884,9 @@ public class FaultMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createFaultDetailTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.FaultMediator.Properties.faultDetailType, EsbMessages.FaultMediatorPropertiesEditionPart_FaultDetailTypeLabel);
 		faultDetailType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);

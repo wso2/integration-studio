@@ -290,7 +290,9 @@ public class RMSequenceMediatorPropertiesEditionPartImpl extends CompositeProper
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createRmSpecVersionEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.RMSequenceMediator.Properties.rmSpecVersion, EsbMessages.RMSequenceMediatorPropertiesEditionPart_RmSpecVersionLabel);
 		rmSpecVersion = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -320,7 +322,9 @@ public class RMSequenceMediatorPropertiesEditionPartImpl extends CompositeProper
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createSequenceTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.RMSequenceMediator.Properties.sequenceType, EsbMessages.RMSequenceMediatorPropertiesEditionPart_SequenceTypeLabel);
 		sequenceType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);

@@ -325,7 +325,9 @@ public class EventMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createTopicTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.EventMediator.Properties.topicType, EsbMessages.EventMediatorPropertiesEditionPart_TopicTypeLabel);
 		topicType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);

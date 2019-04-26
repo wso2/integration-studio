@@ -313,7 +313,9 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 		return connectionGroup;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createConnectionTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.DBReportMediator.Connection.connectionType, EsbMessages.DBReportMediatorPropertiesEditionPart_ConnectionTypeLabel);
 		connectionType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -343,7 +345,9 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createConnectionDsTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.DBReportMediator.Connection.connectionDsType, EsbMessages.DBReportMediatorPropertiesEditionPart_ConnectionDsTypeLabel);
 		connectionDsType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -373,7 +377,9 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createConnectionDbTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.DBReportMediator.Connection.connectionDbType, EsbMessages.DBReportMediatorPropertiesEditionPart_ConnectionDbTypeLabel);
 		connectionDbType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -881,7 +887,9 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createPropertyAutocommitEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.DBReportMediator.Properties.propertyAutocommit, EsbMessages.DBReportMediatorPropertiesEditionPart_PropertyAutocommitLabel);
 		propertyAutocommit = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -911,7 +919,9 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createPropertyIsolationEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.DBReportMediator.Properties.propertyIsolation, EsbMessages.DBReportMediatorPropertiesEditionPart_PropertyIsolationLabel);
 		propertyIsolation = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -1186,7 +1196,9 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createPropertyPoolstatementsEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.DBReportMediator.Properties.propertyPoolstatements, EsbMessages.DBReportMediatorPropertiesEditionPart_PropertyPoolstatementsLabel);
 		propertyPoolstatements = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -1216,7 +1228,9 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createPropertyTestonborrowEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.DBReportMediator.Properties.propertyTestonborrow, EsbMessages.DBReportMediatorPropertiesEditionPart_PropertyTestonborrowLabel);
 		propertyTestonborrow = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -1246,7 +1260,9 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createPropertyTestwhileidleEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.DBReportMediator.Properties.propertyTestwhileidle, EsbMessages.DBReportMediatorPropertiesEditionPart_PropertyTestwhileidleLabel);
 		propertyTestwhileidle = new EMFComboViewer(parent, SWT.SCROLL_LOCK);

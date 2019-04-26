@@ -1382,7 +1382,9 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.type, EsbMessages.InboundEndpointPropertiesEditionPart_TypeLabel);
 		type = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -1510,7 +1512,9 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createInboundEndpointBehaviourEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.inboundEndpointBehaviour, EsbMessages.InboundEndpointPropertiesEditionPart_InboundEndpointBehaviourLabel);
 		inboundEndpointBehaviour = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -2335,7 +2339,9 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createTransportVFSLockingEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.transportVFSLocking, EsbMessages.InboundEndpointPropertiesEditionPart_TransportVFSLockingLabel);
 		transportVFSLocking = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -2640,7 +2646,9 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createTransportVFSActionAfterProcessEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.transportVFSActionAfterProcess, EsbMessages.InboundEndpointPropertiesEditionPart_TransportVFSActionAfterProcessLabel);
 		transportVFSActionAfterProcess = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -2719,7 +2727,9 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createTransportVFSActionAfterErrorsEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.transportVFSActionAfterErrors, EsbMessages.InboundEndpointPropertiesEditionPart_TransportVFSActionAfterErrorsLabel);
 		transportVFSActionAfterErrors = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -2994,7 +3004,9 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createTransportVFSActionAfterFailureEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.transportVFSActionAfterFailure, EsbMessages.InboundEndpointPropertiesEditionPart_TransportVFSActionAfterFailureLabel);
 		transportVFSActionAfterFailure = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -3566,7 +3578,9 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createTransportJMSConnectionFactoryTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.transportJMSConnectionFactoryType, EsbMessages.InboundEndpointPropertiesEditionPart_TransportJMSConnectionFactoryTypeLabel);
 		transportJMSConnectionFactoryType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -3724,7 +3738,9 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createTransportJMSSessionAcknowledgementEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.transportJMSSessionAcknowledgement, EsbMessages.InboundEndpointPropertiesEditionPart_TransportJMSSessionAcknowledgementLabel);
 		transportJMSSessionAcknowledgement = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -3754,7 +3770,9 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createTransportJMSCacheLevelEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.transportJMSCacheLevel, EsbMessages.InboundEndpointPropertiesEditionPart_TransportJMSCacheLevelLabel);
 		transportJMSCacheLevel = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -4176,7 +4194,9 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createTransportVFSFileSortAttributeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.transportVFSFileSortAttribute, EsbMessages.InboundEndpointPropertiesEditionPart_TransportVFSFileSortAttributeLabel);
 		transportVFSFileSortAttribute = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -4609,7 +4629,9 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createTransportJMSBrokerTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.transportJMSBrokerType, EsbMessages.InboundEndpointPropertiesEditionPart_TransportJMSBrokerTypeLabel);
 		transportJMSBrokerType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -4835,7 +4857,9 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createTransportMQTTSubscriptionQOSEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.transportMQTTSubscriptionQOS, EsbMessages.InboundEndpointPropertiesEditionPart_TransportMQTTSubscriptionQOSLabel);
 		transportMQTTSubscriptionQOS = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -5897,7 +5921,9 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createConsumerTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.consumerType, EsbMessages.InboundEndpointPropertiesEditionPart_ConsumerTypeLabel);
 		consumerType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -5927,7 +5953,9 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createTopicsOrTopicFilterEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.topicsOrTopicFilter, EsbMessages.InboundEndpointPropertiesEditionPart_TopicsOrTopicFilterLabel);
 		topicsOrTopicFilter = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -6006,7 +6034,9 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createTopicFilterFromEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.topicFilterFrom, EsbMessages.InboundEndpointPropertiesEditionPart_TopicFilterFromLabel);
 		topicFilterFrom = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -6997,7 +7027,9 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createAutoOffsetResetEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.autoOffsetReset, EsbMessages.InboundEndpointPropertiesEditionPart_AutoOffsetResetLabel);
 		autoOffsetReset = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -7106,7 +7138,9 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createPartitionAssignmentStrategyEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.partitionAssignmentStrategy, EsbMessages.InboundEndpointPropertiesEditionPart_PartitionAssignmentStrategyLabel);
 		partitionAssignmentStrategy = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -7332,7 +7366,9 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createOffsetsStorageEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.offsetsStorage, EsbMessages.InboundEndpointPropertiesEditionPart_OffsetsStorageLabel);
 		offsetsStorage = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -9316,7 +9352,9 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createWsClientSideBroadcastLevelEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.wsClientSideBroadcastLevel, EsbMessages.InboundEndpointPropertiesEditionPart_WsClientSideBroadcastLevelLabel);
 		wsClientSideBroadcastLevel = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -9689,7 +9727,9 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createTransportFeedTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.transportFeedType, EsbMessages.InboundEndpointPropertiesEditionPart_TransportFeedTypeLabel);
 		transportFeedType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -10819,7 +10859,9 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createTransportRabbitMqConsumerQosTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqConsumerQosType, EsbMessages.InboundEndpointPropertiesEditionPart_TransportRabbitMqConsumerQosTypeLabel);
 		transportRabbitMqConsumerQosType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -18177,8 +18219,6 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	public String getTitle() {
 		return EsbMessages.InboundEndpoint_Part_Title;
 	}
-
-
 
 	// Start of user code additional methods
     @Override

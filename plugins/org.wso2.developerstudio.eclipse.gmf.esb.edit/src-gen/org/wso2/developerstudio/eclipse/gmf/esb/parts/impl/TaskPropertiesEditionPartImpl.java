@@ -403,7 +403,9 @@ public class TaskPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createTriggerTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.Task.Properties.triggerType, EsbMessages.TaskPropertiesEditionPart_TriggerTypeLabel);
 		triggerType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);

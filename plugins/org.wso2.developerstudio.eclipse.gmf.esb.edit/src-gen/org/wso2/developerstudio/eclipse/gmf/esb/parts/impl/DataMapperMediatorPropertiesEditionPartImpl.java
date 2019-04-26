@@ -305,7 +305,9 @@ public class DataMapperMediatorPropertiesEditionPartImpl extends CompositeProper
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createInputTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.DataMapperMediator.Properties.inputType, EsbMessages.DataMapperMediatorPropertiesEditionPart_InputTypeLabel);
 		inputType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -482,7 +484,9 @@ public class DataMapperMediatorPropertiesEditionPartImpl extends CompositeProper
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createOutputTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.DataMapperMediator.Properties.outputType, EsbMessages.DataMapperMediatorPropertiesEditionPart_OutputTypeLabel);
 		outputType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);

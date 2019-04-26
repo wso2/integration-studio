@@ -309,7 +309,9 @@ public class EndPointPropertyPropertiesEditionPartForm extends SectionProperties
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createScopeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.EndPointProperty.Properties.scope, EsbMessages.EndPointPropertyPropertiesEditionPart_ScopeLabel);
 		scope = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -339,7 +341,9 @@ public class EndPointPropertyPropertiesEditionPartForm extends SectionProperties
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createValueTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.EndPointProperty.Properties.valueType, EsbMessages.EndPointPropertyPropertiesEditionPart_ValueTypeLabel);
 		valueType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);

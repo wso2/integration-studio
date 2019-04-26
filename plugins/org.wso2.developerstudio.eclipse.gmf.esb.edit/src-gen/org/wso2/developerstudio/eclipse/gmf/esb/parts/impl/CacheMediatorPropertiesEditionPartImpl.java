@@ -274,7 +274,9 @@ public class CacheMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 		return typeGroup;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createCacheMediatorImplementationEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.CacheMediator.Type.cacheMediatorImplementation, EsbMessages.CacheMediatorPropertiesEditionPart_CacheMediatorImplementationLabel);
 		cacheMediatorImplementation = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -368,7 +370,9 @@ public class CacheMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createCacheTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.CacheMediator.Properties.cacheType, EsbMessages.CacheMediatorPropertiesEditionPart_CacheTypeLabel);
 		cacheType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -398,7 +402,9 @@ public class CacheMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createScopeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.CacheMediator.Properties.scope, EsbMessages.CacheMediatorPropertiesEditionPart_ScopeLabel);
 		scope = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -712,7 +718,9 @@ public class CacheMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createImplementationTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.CacheMediator.Implementation.implementationType, EsbMessages.CacheMediatorPropertiesEditionPart_ImplementationTypeLabel);
 		implementationType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -757,7 +765,9 @@ public class CacheMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 		return onCacheHitGroup;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createSequenceTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.CacheMediator.OnCacheHit.sequenceType, EsbMessages.CacheMediatorPropertiesEditionPart_SequenceTypeLabel);
 		sequenceType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -802,7 +812,9 @@ public class CacheMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 		return protocolGroup;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createCacheProtocolTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.CacheMediator.Protocol.cacheProtocolType, EsbMessages.CacheMediatorPropertiesEditionPart_CacheProtocolTypeLabel);
 		cacheProtocolType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);

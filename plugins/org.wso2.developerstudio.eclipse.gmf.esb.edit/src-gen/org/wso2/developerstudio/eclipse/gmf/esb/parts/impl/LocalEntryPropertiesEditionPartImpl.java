@@ -319,7 +319,9 @@ public class LocalEntryPropertiesEditionPartImpl extends CompositePropertiesEdit
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createLocalEntryTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.LocalEntry.Properties.localEntryType, EsbMessages.LocalEntryPropertiesEditionPart_LocalEntryTypeLabel);
 		localEntryType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);

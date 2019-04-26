@@ -230,7 +230,9 @@ public class SmooksMediatorPropertiesEditionPartImpl extends CompositeProperties
 		return inputGroup;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createInputTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.SmooksMediator.Input.inputType, EsbMessages.SmooksMediatorPropertiesEditionPart_InputTypeLabel);
 		inputType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -275,7 +277,9 @@ public class SmooksMediatorPropertiesEditionPartImpl extends CompositeProperties
 		return outputGroup;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createOutputTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.SmooksMediator.Output.outputType, EsbMessages.SmooksMediatorPropertiesEditionPart_OutputTypeLabel);
 		outputType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -354,7 +358,9 @@ public class SmooksMediatorPropertiesEditionPartImpl extends CompositeProperties
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createOutputActionEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.SmooksMediator.Output.outputAction, EsbMessages.SmooksMediatorPropertiesEditionPart_OutputActionLabel);
 		outputAction = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -384,7 +390,9 @@ public class SmooksMediatorPropertiesEditionPartImpl extends CompositeProperties
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createOutputMethodEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.SmooksMediator.Output.outputMethod, EsbMessages.SmooksMediatorPropertiesEditionPart_OutputMethodLabel);
 		outputMethod = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -985,12 +993,6 @@ public class SmooksMediatorPropertiesEditionPartImpl extends CompositeProperties
 	public String getTitle() {
 		return EsbMessages.SmooksMediator_Part_Title;
 	}
-
-
-
-
-
-
 
 	// Start of user code additional methods
 	

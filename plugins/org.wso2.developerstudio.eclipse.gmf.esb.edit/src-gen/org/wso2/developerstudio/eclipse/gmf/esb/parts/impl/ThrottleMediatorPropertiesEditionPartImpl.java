@@ -449,7 +449,9 @@ public class ThrottleMediatorPropertiesEditionPartImpl extends CompositeProperti
 		return onAcceptGroup;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createOnAcceptBranchsequenceTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.ThrottleMediator.OnAccept.onAcceptBranchsequenceType, EsbMessages.ThrottleMediatorPropertiesEditionPart_OnAcceptBranchsequenceTypeLabel);
 		onAcceptBranchsequenceType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -481,7 +483,9 @@ public class ThrottleMediatorPropertiesEditionPartImpl extends CompositeProperti
 
 //FIXME INVALID CASE INTO template public additionalImplementation(editor : ViewElement, pec : PropertiesEditionComponent, inputPEC : PropertiesEditionComponent) in SWT Impl for ViewElement onReject
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createOnRejectBranchsequenceTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.ThrottleMediator.OnReject.onRejectBranchsequenceType, EsbMessages.ThrottleMediatorPropertiesEditionPart_OnRejectBranchsequenceTypeLabel);
 		onRejectBranchsequenceType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -526,7 +530,9 @@ public class ThrottleMediatorPropertiesEditionPartImpl extends CompositeProperti
 		return throttlePolicyGroup;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createPolicyTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.ThrottleMediator.ThrottlePolicy.policyType, EsbMessages.ThrottleMediatorPropertiesEditionPart_PolicyTypeLabel);
 		policyType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);

@@ -145,7 +145,9 @@ public class AbstractCommonTargetPropertiesEditionPartImpl extends CompositeProp
 		return propertiesGroup;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createSequenceTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.AbstractCommonTarget.Properties.sequenceType, EsbMessages.AbstractCommonTargetPropertiesEditionPart_SequenceTypeLabel);
 		sequenceType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -201,7 +203,9 @@ public class AbstractCommonTargetPropertiesEditionPartImpl extends CompositeProp
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createEndpointTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.AbstractCommonTarget.Properties.endpointType, EsbMessages.AbstractCommonTargetPropertiesEditionPart_EndpointTypeLabel);
 		endpointType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);

@@ -400,7 +400,9 @@ public class EnrichMediatorPropertiesEditionPartImpl extends CompositeProperties
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createSourceTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.EnrichMediator.Source.sourceType, EsbMessages.EnrichMediatorPropertiesEditionPart_SourceTypeLabel);
 		sourceType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -430,7 +432,9 @@ public class EnrichMediatorPropertiesEditionPartImpl extends CompositeProperties
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createInlineTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.EnrichMediator.Source.inlineType, EsbMessages.EnrichMediatorPropertiesEditionPart_InlineTypeLabel);
 		inlineType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -573,7 +577,9 @@ public class EnrichMediatorPropertiesEditionPartImpl extends CompositeProperties
 		return targetGroup;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createTargetActionEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.EnrichMediator.Target.targetAction, EsbMessages.EnrichMediatorPropertiesEditionPart_TargetActionLabel);
 		targetAction = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -603,7 +609,9 @@ public class EnrichMediatorPropertiesEditionPartImpl extends CompositeProperties
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createTargetTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.EnrichMediator.Target.targetType, EsbMessages.EnrichMediatorPropertiesEditionPart_TargetTypeLabel);
 		targetType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);

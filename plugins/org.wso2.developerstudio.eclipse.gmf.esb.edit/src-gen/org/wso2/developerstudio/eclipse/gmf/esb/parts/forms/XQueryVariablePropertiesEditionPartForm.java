@@ -250,7 +250,9 @@ public class XQueryVariablePropertiesEditionPartForm extends SectionPropertiesEd
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createVariableTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.XQueryVariable.Properties.variableType, EsbMessages.XQueryVariablePropertiesEditionPart_VariableTypeLabel);
 		variableType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -280,7 +282,9 @@ public class XQueryVariablePropertiesEditionPartForm extends SectionPropertiesEd
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createValueTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.XQueryVariable.Properties.valueType, EsbMessages.XQueryVariablePropertiesEditionPart_ValueTypeLabel);
 		valueType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -591,10 +595,6 @@ public class XQueryVariablePropertiesEditionPartForm extends SectionPropertiesEd
 	public String getTitle() {
 		return EsbMessages.XQueryVariable_Part_Title;
 	}
-
-
-
-
 
 	// Start of user code additional methods
 	

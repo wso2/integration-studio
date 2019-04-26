@@ -949,8 +949,8 @@ public class ProcessSourceView {
 
             } else if (qTag.equals("endpoint")) {
                 if (omElement.getFirstElement() != null) {
-                    omElement.getFirstElement()
-                            .setNamespace(new OMNamespaceImpl(SynapseConstants.SYNAPSE_NAMESPACE, ""));
+                    setNamespaceForChildren(omElement);
+                    
                 } else {
                     omElement.setNamespace(new OMNamespaceImpl(SynapseConstants.SYNAPSE_NAMESPACE, ""));
                 }

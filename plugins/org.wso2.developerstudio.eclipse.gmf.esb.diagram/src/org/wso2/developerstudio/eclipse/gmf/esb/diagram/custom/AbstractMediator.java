@@ -67,6 +67,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.APIResourceIn
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.APIResourceOutSequenceOutputConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.APIResourceOutputConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.AggregateMediatorEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.AggregateMediatorInputConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.CacheMediatorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.CallMediatorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.CloneMediatorEditPart;
@@ -599,7 +600,10 @@ public abstract class AbstractMediator extends AbstractBorderedShapeEditPart imp
             if (!mediatorRestricted) {
                 if (restrictAddingOfMediator(nearestInputConnector, nearestEsbLinkInputConnector)) {
                     mediatorRestricted = true;
-                    if (this instanceof SendMediatorEditPart) {
+                    // Allow send mediators to be added inside aggregate mediator
+                    if (this instanceof SendMediatorEditPart
+                            && !((nearestInputConnector instanceof AggregateMediatorInputConnectorEditPart)
+                                    && (this.getParent() instanceof MediatorFlowMediatorFlowCompartment3EditPart))) {
                         mediatorType = "Send Mediator";
                         deleteNewlyAddedMediator(mediatorType + SEND_ERROR_MESSAGE);
                         return;

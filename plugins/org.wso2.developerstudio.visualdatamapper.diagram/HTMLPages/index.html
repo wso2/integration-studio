@@ -26,14 +26,17 @@
                   <div class="col-lg-12 custom">
                      <div class="container">
                         <div class="row" >
-                            <div class="col-lg-4 input-radio" id="jsonInput">
-                               <label><input type="radio" class="inputTypeRadio" name="inputTypeRadio" checked value="JSON" id="jsonInputTypeRadio"> JSON</label>
+                            <div class="col-lg-2">
+                                Input Type:
                             </div>
-                            <div class="col-lg-4 input-radio" id="xmlInput">
-                               <label><input type="radio" class="inputTypeRadio"  name="inputTypeRadio" value="XML" id="xmlInputTypeRadio"> XML</label>
+                            <div class="col-lg-4" id="inputType">
                             </div>
-                            <div class="col-lg-4 input-radio" id="csvInput">
-                               <label><input type="radio" class="inputTypeRadio" name="inputTypeRadio" value="CSV" id="csvInputTypeRadio"> CSV</label>
+                        </div>
+                        <div class="row" >
+                            <div class="col-lg-12">
+                                <div class="alert alert-primary" style="padding:0px">
+                                    <small>&nbsp Note: The Input Type is selected from the loaded input file or is set to XML by default.</small>
+                                </div>
                             </div>
                         </div>
                      </div>
@@ -51,13 +54,16 @@
                <h3 class="output-header header">Output data type</h3>
                <div class="col-lg-12 custom">
                   <div class="row">
-                     <div class="col-lg-4 output-radio">
+                     <div class="col-lg-3">
+                        Output Type:
+                     </div>
+                     <div class="col-lg-3 output-radio">
                         <label><input type="radio" name="outputTypeRadio" checked value="JSON"> JSON</label>
                      </div>
-                     <div class="col-lg-4 output-radio">
+                     <div class="col-lg-3 output-radio">
                         <label><input type="radio" name="outputTypeRadio" value="XML"> XML</label>
                      </div>
-                     <div class="col-lg-4 output-radio">
+                     <div class="col-lg-3 output-radio">
                         <label><input type="radio" name="outputTypeRadio" value="CSV"> CSV</label>
                      </div>
                   </div>
@@ -138,7 +144,6 @@
         schema = JSON.parse(retString["schema"]);
         inputSchemaTitle = schema.title;
         generateExamples();
-        $("input[name=inputTypeRadio][value=" + inputType + "]").attr('checked', true).trigger('change');
         $("input[name=outputTypeRadio][value=" + outputType + "]").attr('checked', true).trigger('change');
         autoFormatSelection();
         // Get output schema for the example
@@ -148,22 +153,25 @@
       // Generate json / xml / csv examples from the json schema.  
       function generateExamples() {
         if (sample) {
+          $('#inputType').text(inputType);
           if (inputType === "JSON") {
             jsonString = sample;
-            setJsonInputValue();
+            inputEditor.setOption("mode", "text/javascript");
+            inputEditor.setValue(jsonString);
           } else if (inputType == "XML") {
             xmlString = sample;
-            setXMLInputValue();
+            inputEditor.setOption("mode", "text/html");
+            inputEditor.setValue(xmlString);
           } else if (inputType == "CSV") {
             csvString = '<text xmlns="http://ws.apache.org/commons/ns/payload">' + sample + "</text>";
-            setCSVInputValue();
+            inputEditor.setOption("mode", "text/html");
+            inputEditor.setValue(csvString);
           } else {
             generateDefaultValues();
           }
         } else {
           generateDefaultValues();
         }
-        inputType = $('.inputTypeRadio:checked').val();
         autoFormatSelection();
         process();
       }
@@ -180,63 +188,23 @@
         rootElemWithNS = buildRootWithNS(schema);
         xmlString = "<" + rootElemWithNS + ">" + xmlString + "</" + inputSchemaTitle + ">";
         csvString = '<text xmlns="http://ws.apache.org/commons/ns/payload">' + Papa.unparse(JSON.parse(jsonString), configs) + "</text>";
+        
+        $('#inputType').text(inputType);
 
         if (inputType == "JSON") {
-          setJsonInputValue();
+          inputEditor.setOption("mode", "text/javascript");
+          inputEditor.setValue(jsonString);
         } else if (inputType == "XML") {
-          setXMLInputValue();
+          inputEditor.setOption("mode", "text/html");
+          inputEditor.setValue(xmlString);
         } else if (inputType == "CSV") {
-          setCSVInputValue();
+          inputEditor.setOption("mode", "text/html");
+          inputEditor.setValue(csvString);
         } else {
           inputEditor.setOption("mode", "text/javascript");
           inputEditor.setValue(jsonString);
         }
       }
-
-      // Sets the JSON Input values
-      function setJsonInputValue() {
-        $("#xmlInput").hide();
-        $("#csvInput").hide();
-        document.getElementById("jsonInputTypeRadio").checked = true;
-        inputEditor.setOption("mode", "text/javascript");
-        inputEditor.setValue(jsonString);
-      }
-
-      // Sets the XML Input values
-      function setXMLInputValue() {
-        $("#jsonInput").hide();
-        $("#csvInput").hide();
-        document.getElementById("xmlInputTypeRadio").checked = true;
-        inputEditor.setOption("mode", "text/html");
-        inputEditor.setValue(xmlString);
-      }
-
-      // Sets the CSV input values
-      function setCSVInputValue() {
-        $("#xmlInput").hide();
-        $("#jsonInput").hide();
-        document.getElementById("csvInputTypeRadio").checked = true;
-        inputEditor.setOption("mode", "text/html");
-        inputEditor.setValue(csvString);
-      }
-
-      // Set appropiate data types depending on the input
-      $('.inputTypeRadio').on('change', function(e) {
-        var selectedValue = $('.inputTypeRadio:checked').val();
-        inputType = selectedValue;
-        if (selectedValue == "XML") {
-      	  inputEditor.setOption("mode", "text/html");
-      	  inputEditor.setValue(xmlString);
-        } else if (selectedValue == "CSV") {
-      	  inputEditor.setValue(csvString);
-        } else if (selectedValue == "JSON") {
-      	  inputEditor.setOption("mode", "text/javascript");
-      	  inputEditor.setValue(jsonString);
-        }
-
-        autoFormatSelection();
-        process();
-      });
       
       $('input[name=outputTypeRadio]').on('change', function(e) {
         outputType = $('input[name=outputTypeRadio]:checked').val();

@@ -35,9 +35,6 @@ JDK_DISTRIBUTION_PATH_LINUX=$JDK_DISTRIBUTION_PATH/jdk-linux
 JDK_DISTRIBUTION_PATH_WINDOWS=$JDK_DISTRIBUTION_PATH/jdk-windows
 JDK_DISTRIBUTION_PATH_MACOS=$JDK_DISTRIBUTION_PATH/jdk-macos
 
-# Generate micro esb profile. Input 6 into profile-creator tool
-echo 6|$PRODUCT_PATH_ROOT/wso2ei-$PRODUCT_VERSION/bin/profile-creator.sh
-
 # Create temp directory and unzip created packages
 mkdir -p $PRODUCT_PATH_LINUX_86
 mkdir -p $PRODUCT_PATH_LINUX_64
@@ -52,18 +49,18 @@ unzip $PRODUCT_PATH_ROOT/WSO2-Developer-Studio-win32.win32.x86.zip -d $PRODUCT_P
 unzip $PRODUCT_PATH_ROOT/WSO2-Developer-Studio-win32.win32.x86_64.zip -d $PRODUCT_PATH_WIN_64
 
 # Unzip micro esb to relevant packages
-unzip $PRODUCT_PATH_ROOT/wso2ei-${PRODUCT_VERSION}_micro-integrator.zip -d $PRODUCT_PATH_LINUX_86/runtime
-unzip $PRODUCT_PATH_ROOT/wso2ei-${PRODUCT_VERSION}_micro-integrator.zip -d $PRODUCT_PATH_LINUX_64/runtime
-unzip $PRODUCT_PATH_ROOT/wso2ei-${PRODUCT_VERSION}_micro-integrator.zip -d $PRODUCT_PATH_MACOS/DeveloperStudio.app/Contents/MacOS/runtime
-unzip $PRODUCT_PATH_ROOT/wso2ei-${PRODUCT_VERSION}_micro-integrator.zip -d $PRODUCT_PATH_WIN_86/runtime
-unzip $PRODUCT_PATH_ROOT/wso2ei-${PRODUCT_VERSION}_micro-integrator.zip -d $PRODUCT_PATH_WIN_64/runtime
+unzip $PRODUCT_PATH_ROOT/wso2mi-${PRODUCT_VERSION}.zip -d $PRODUCT_PATH_LINUX_86/runtime
+unzip $PRODUCT_PATH_ROOT/wso2mi-${PRODUCT_VERSION}.zip -d $PRODUCT_PATH_LINUX_64/runtime
+unzip $PRODUCT_PATH_ROOT/wso2mi-${PRODUCT_VERSION}.zip -d $PRODUCT_PATH_MACOS/DeveloperStudio.app/Contents/MacOS/runtime
+unzip $PRODUCT_PATH_ROOT/wso2mi-${PRODUCT_VERSION}.zip -d $PRODUCT_PATH_WIN_86/runtime
+unzip $PRODUCT_PATH_ROOT/wso2mi-${PRODUCT_VERSION}.zip -d $PRODUCT_PATH_WIN_64/runtime
 
 # Rename as "microesb" (this is the static name used in EI Tooling code)
-mv $PRODUCT_PATH_LINUX_86/runtime/wso2ei-$PRODUCT_VERSION $PRODUCT_PATH_LINUX_86/runtime/microesb
-mv $PRODUCT_PATH_LINUX_64/runtime/wso2ei-$PRODUCT_VERSION $PRODUCT_PATH_LINUX_64/runtime/microesb
-mv $PRODUCT_PATH_MACOS/DeveloperStudio.app/Contents/MacOS/runtime/wso2ei-$PRODUCT_VERSION $PRODUCT_PATH_MACOS/DeveloperStudio.app/Contents/MacOS/runtime/microesb
-mv $PRODUCT_PATH_WIN_86/runtime/wso2ei-$PRODUCT_VERSION $PRODUCT_PATH_WIN_86/runtime/microesb
-mv $PRODUCT_PATH_WIN_64/runtime/wso2ei-$PRODUCT_VERSION $PRODUCT_PATH_WIN_64/runtime/microesb
+mv $PRODUCT_PATH_LINUX_86/runtime/wso2mi-$PRODUCT_VERSION $PRODUCT_PATH_LINUX_86/runtime/microesb
+mv $PRODUCT_PATH_LINUX_64/runtime/wso2mi-$PRODUCT_VERSION $PRODUCT_PATH_LINUX_64/runtime/microesb
+mv $PRODUCT_PATH_MACOS/DeveloperStudio.app/Contents/MacOS/runtime/wso2mi-$PRODUCT_VERSION $PRODUCT_PATH_MACOS/DeveloperStudio.app/Contents/MacOS/runtime/microesb
+mv $PRODUCT_PATH_WIN_86/runtime/wso2mi-$PRODUCT_VERSION $PRODUCT_PATH_WIN_86/runtime/microesb
+mv $PRODUCT_PATH_WIN_64/runtime/wso2mi-$PRODUCT_VERSION $PRODUCT_PATH_WIN_64/runtime/microesb
 
 # Clean up existing packages
 rm -rf $PRODUCT_PATH_ROOT/WSO2-Developer-Studio-linux.gtk.x86.tar.gz
@@ -153,6 +150,7 @@ popd
 
 pushd ${PRODUCT_PATH_LINUX_64}
 cd ../
+rm -rf DeveloperStudio
 mv linux-x86_64 DeveloperStudio
 tar -czf WSO2-Developer-Studio-linux.gtk.x86_64.tar.gz DeveloperStudio
 mv WSO2-Developer-Studio-linux.gtk.x86_64.tar.gz $PRODUCT_PATH_ROOT/WSO2-Developer-Studio-linux.gtk.x86_64.tar.gz
@@ -174,10 +172,9 @@ zip -r $PRODUCT_PATH_ROOT/WSO2-Developer-Studio-win32.win32.x86_64.zip *
 popd
 
 # Cleanup
-rm -rf $PRODUCT_PATH_ROOT/wso2ei-$PRODUCT_VERSION
-rm -rf $PRODUCT_PATH_ROOT/wso2ei-${PRODUCT_VERSION}_micro-integrator.zip
+rm $PRODUCT_PATH_ROOT/wso2mi-$PRODUCT_VERSION.zip
 rm -rf $PRODUCT_PATH_ROOT/temp
-rm -fr $PRODUCT_PATH_ROOT/DeveloperStudio
+rm -rf $PRODUCT_PATH_ROOT/DeveloperStudio
 rm -rf $JDK_DISTRIBUTION_PATH
 
 rm -rf $PRODUCT_PATH_ROOT/WSO2-Developer-Studio-linux.gtk.x86.zip

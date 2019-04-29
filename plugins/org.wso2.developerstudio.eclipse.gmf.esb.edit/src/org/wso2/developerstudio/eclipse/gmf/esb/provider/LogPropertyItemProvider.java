@@ -84,16 +84,16 @@ public class LogPropertyItemProvider extends AbstractNameValueExpressionProperty
     public String getText(Object object) {
 
         int maxLength = 40;
-        int spacing = 3;
+        int spacing = 5;
         int marginSpaceLeft = 1;
-        int comboValueLength = maxLength / 2 + 1;
+        int propertyTypeLength = 10;
         String emptySpace = StringUtils.rightPad("", spacing);
 
         String propertyName = StringUtils.rightPad(((LogProperty) object).getPropertyName(), maxLength);
         String propertyValueType = ((LogProperty) object).getPropertyValueType().toString();
         String propertyValue = StringUtils.rightPad(((LogProperty) object).getPropertyValue(), maxLength);
         String propertyExpression = StringUtils.rightPad(((LogProperty) object).getPropertyExpression().toString(),
-                comboValueLength);
+                maxLength);
 
         String formattedString = null;
         if (((LogProperty) object).getPropertyName() == null || ((LogProperty) object).getPropertyName().isEmpty()) {
@@ -102,17 +102,17 @@ public class LogPropertyItemProvider extends AbstractNameValueExpressionProperty
         if (((LogProperty) object).getPropertyValue() == null || ((LogProperty) object).getPropertyValue().isEmpty()) {
             propertyValue = StringUtils.rightPad("", maxLength);
         }
-        if (propertyValueType.equals(PropertyValueType.LITERAL.getName())) {
+        if (PropertyValueType.LITERAL.getName().equals(propertyValueType)) {
             formattedString = StringUtils.rightPad("", marginSpaceLeft) 
                     + StringUtils.abbreviate(propertyName, maxLength)
-                    + emptySpace + StringUtils.abbreviate(StringUtils.rightPad(propertyValueType, comboValueLength),
-                            comboValueLength)
+                    + emptySpace + StringUtils.abbreviate(StringUtils.rightPad(propertyValueType, propertyTypeLength),
+                            propertyTypeLength)
                     + emptySpace + StringUtils.abbreviate(propertyValue, maxLength);
         } else {
             formattedString = StringUtils.rightPad("", marginSpaceLeft) 
                     + StringUtils.abbreviate(propertyName, maxLength)
-                    + emptySpace + StringUtils.abbreviate(StringUtils.rightPad(propertyValueType, comboValueLength),
-                            comboValueLength)
+                    + emptySpace + StringUtils.abbreviate(StringUtils.rightPad(propertyValueType, propertyTypeLength),
+                            propertyTypeLength)
                     + emptySpace + StringUtils.abbreviate(propertyExpression, maxLength);
         }
         return formattedString;

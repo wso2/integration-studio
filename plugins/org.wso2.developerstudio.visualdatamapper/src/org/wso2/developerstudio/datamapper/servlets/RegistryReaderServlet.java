@@ -20,7 +20,6 @@
 package org.wso2.developerstudio.datamapper.servlets;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -113,20 +112,20 @@ public class RegistryReaderServlet extends HttpServlet {
             // Retrieve input schema
             File inputSchemaFile = new File(DataMapperConfigHolder.getInstance().getInputSchemaPath());
             InputStream inputSchema = FileUtils.openInputStream(inputSchemaFile);
-            
+
             // Create response object
             JsonObject responseObj = new JsonObject();
             responseObj.addProperty("schema", IOUtils.toString(inputSchema));
 
             // Retrieve input file
             File inputSampleFile = new File(DataMapperConfigHolder.getInstance().getInputFile());
-            
+
             // If the input file exists send the sample input
             if (inputSampleFile.exists()) {
                 InputStream inputSample = FileUtils.openInputStream(inputSampleFile);
                 responseObj.addProperty("sample", IOUtils.toString(inputSample));
             }
-            
+
             response.getWriter().println(responseObj.toString());
         }
         

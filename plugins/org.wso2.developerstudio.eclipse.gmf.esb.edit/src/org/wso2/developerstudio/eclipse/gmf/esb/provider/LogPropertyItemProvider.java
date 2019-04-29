@@ -103,14 +103,14 @@ public class LogPropertyItemProvider extends AbstractNameValueExpressionProperty
             propertyValue = StringUtils.rightPad("", maxLength);
         }
         if (propertyValueType.equals(PropertyValueType.LITERAL.getName())) {
-            formattedString = ((getString("_UI_LogProperty_type")).substring(0, 0))
-                    + StringUtils.rightPad("", marginSpaceLeft) + StringUtils.abbreviate(propertyName, maxLength)
+            formattedString = StringUtils.rightPad("", marginSpaceLeft) 
+                    + StringUtils.abbreviate(propertyName, maxLength)
                     + emptySpace + StringUtils.abbreviate(StringUtils.rightPad(propertyValueType, comboValueLength),
                             comboValueLength)
                     + emptySpace + StringUtils.abbreviate(propertyValue, maxLength);
         } else {
-            formattedString = (getString("_UI_LogProperty_type").substring(0, 0))
-                    + StringUtils.rightPad("", marginSpaceLeft) + StringUtils.abbreviate(propertyName, maxLength)
+            formattedString = StringUtils.rightPad("", marginSpaceLeft) 
+                    + StringUtils.abbreviate(propertyName, maxLength)
                     + emptySpace + StringUtils.abbreviate(StringUtils.rightPad(propertyValueType, comboValueLength),
                             comboValueLength)
                     + emptySpace + StringUtils.abbreviate(propertyExpression, maxLength);

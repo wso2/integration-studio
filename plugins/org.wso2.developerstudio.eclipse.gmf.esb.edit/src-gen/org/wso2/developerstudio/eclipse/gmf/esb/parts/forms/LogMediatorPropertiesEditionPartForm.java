@@ -357,7 +357,8 @@ public class LogMediatorPropertiesEditionPartForm extends SectionPropertiesEditi
 		this.properties.setLowerBound(0);
 		this.properties.setUpperBound(-1);
 
-		String emptySpace = StringUtils.rightPad("", 2);
+		//TODO: fix column header wrapping issue in mac and windows.  
+		/*String emptySpace = StringUtils.rightPad("", 2);
 		{
 		    this.properties.getTable().setHeaderVisible(true);
 		    String title = StringUtils.rightPad(emptySpace + "Property Name", 42) + "|"
@@ -367,7 +368,7 @@ public class LogMediatorPropertiesEditionPartForm extends SectionPropertiesEditi
 		    TableColumn column = new TableColumn(this.properties.getTable(), SWT.NONE);
 		    column.setText(title);
 		    this.properties.getTable().getColumn(0).pack();
-		}
+		}*/
 
 		this.properties.getTable().setFont(FontUtils.getMonospacedFont());
 		properties.setID(EsbViewsRepository.LogMediator.Properties.properties_);

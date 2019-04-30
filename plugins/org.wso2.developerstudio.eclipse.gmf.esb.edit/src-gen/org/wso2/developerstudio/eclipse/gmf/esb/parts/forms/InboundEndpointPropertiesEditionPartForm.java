@@ -340,6 +340,8 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
     protected ArrayList<Control> kafkaHighLevelTopicFilterPropertyIDs = new ArrayList<Control>();
     protected ArrayList<Control> kafkaSimplePropertyIDs = new ArrayList<Control>();
     protected Composite propertiesGroup;
+    protected Composite filterBasicSubPropertiesGroup;
+    protected Composite filterAdvanceSubPropertiesGroup;
     private static final String JAVA_NAMING_FACTORY_INITIAL_WSO2_BROKER = "org.wso2.andes.jndi.PropertiesFileInitialContextFactory";
     private static final String JAVA_NAMING_FACTORY_INITIAL_ACTIVEMQ = "org.apache.activemq.jndi.ActiveMQInitialContextFactory";
     private static final String CONNECTION_FACTORY_JNDI_NAME_WSO2_BROKER = "QueueConnectionFactory";
@@ -645,17 +647,19 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.name) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createNameText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    filterBasicSubPropertiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent, "Basic",
+                            true);
+                    Control[] previousControls = filterBasicSubPropertiesGroup.getChildren();
+                    Composite composite = createNameText(widgetFactory, filterBasicSubPropertiesGroup);
+                    Control[] newControls = filterBasicSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(generalProperties, previousControls, newControls);
                     return composite;
 
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.type) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTypeEMFComboViewer(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterBasicSubPropertiesGroup.getChildren();
+                    Composite composite = createTypeEMFComboViewer(widgetFactory, filterBasicSubPropertiesGroup);
+                    Control[] newControls = filterBasicSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(generalProperties, previousControls, newControls);
                     return composite;
 
@@ -667,74 +671,83 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
                     return createProtocolText(widgetFactory, parent);
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.inboundEndpointBehaviour) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createInboundEndpointBehaviourEMFComboViewer(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
-                    // EEFPropertyViewUtil.addTableElementsAsList(HTTPPropertyIDs, previousControls, newControls);
+                    Control[] previousControls = filterBasicSubPropertiesGroup.getChildren();
+                    Composite composite = createInboundEndpointBehaviourEMFComboViewer(widgetFactory, filterBasicSubPropertiesGroup);
+                    Control[] newControls = filterBasicSubPropertiesGroup.getChildren();
+                    EEFPropertyViewUtil.addTableElementsAsList(customPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.inboundHttpPort) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createInboundHttpPortText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterBasicSubPropertiesGroup.getChildren();
+                    Composite composite = createInboundHttpPortText(widgetFactory, filterBasicSubPropertiesGroup);
+                    Control[] newControls = filterBasicSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(HTTPPropertyIDs, previousControls, newControls);
+                    EEFPropertyViewUtil.addTableElementsAsList(httpsPropertyIDs, previousControls, newControls);
                     return composite;
 
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.inboundWorkerPoolSizeCore) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createInboundWorkerPoolSizeCoreText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    filterAdvanceSubPropertiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent, "Advance",
+                            false);
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createInboundWorkerPoolSizeCoreText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(HTTPPropertyIDs, previousControls, newControls);
+                    EEFPropertyViewUtil.addTableElementsAsList(httpsPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.inboundWorkerPoolSizeMax) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createInboundWorkerPoolSizeMaxText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createInboundWorkerPoolSizeMaxText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(HTTPPropertyIDs, previousControls, newControls);
+                    EEFPropertyViewUtil.addTableElementsAsList(httpsPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.inboundWorkerThreadKeepAliveSec) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createInboundWorkerThreadKeepAliveSecText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createInboundWorkerThreadKeepAliveSecText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(HTTPPropertyIDs, previousControls, newControls);
+                    EEFPropertyViewUtil.addTableElementsAsList(httpsPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.inboundWorkerPoolQueueLength) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createInboundWorkerPoolQueueLengthText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createInboundWorkerPoolQueueLengthText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(HTTPPropertyIDs, previousControls, newControls);
+                    EEFPropertyViewUtil.addTableElementsAsList(httpsPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.inboundThreadGroupId) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createInboundThreadGroupIdText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createInboundThreadGroupIdText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(HTTPPropertyIDs, previousControls, newControls);
+                    EEFPropertyViewUtil.addTableElementsAsList(httpsPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.inboundThreadId) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createInboundThreadIdText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createInboundThreadIdText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(HTTPPropertyIDs, previousControls, newControls);
+                    EEFPropertyViewUtil.addTableElementsAsList(httpsPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.dispatchFilterPattern) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createDispatchFilterPatternText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createDispatchFilterPatternText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(HTTPPropertyIDs, previousControls, newControls);
                     EEFPropertyViewUtil.addTableElementsAsList(httpsPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.interval) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createIntervalText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterBasicSubPropertiesGroup.getChildren();
+                    Composite composite = createIntervalText(widgetFactory, filterBasicSubPropertiesGroup);
+                    Control[] newControls = filterBasicSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(filePropertyIDs, previousControls, newControls);
                     EEFPropertyViewUtil.addTableElementsAsList(feedPropertyIDs, previousControls, newControls);
                     EEFPropertyViewUtil.addTableElementsAsList(jmsPropertyIDs, previousControls, newControls);
@@ -742,692 +755,699 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
                     EEFPropertyViewUtil.addTableElementsAsList(filePropertyIDs, previousControls, newControls);
                     EEFPropertyViewUtil.addTableElementsAsList(kafkaPropertyIDs, previousControls, newControls);
                     EEFPropertyViewUtil.addTableElementsAsList(mqttPropertyIDs, previousControls, newControls);
+                    EEFPropertyViewUtil.addTableElementsAsList(wso2MBPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.sequential) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createSequentialCheckbox(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterBasicSubPropertiesGroup.getChildren();
+                    Composite composite = createSequentialCheckbox(widgetFactory, filterBasicSubPropertiesGroup);
+                    Control[] newControls = filterBasicSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(filePropertyIDs, previousControls, newControls);
                     EEFPropertyViewUtil.addTableElementsAsList(jmsPropertyIDs, previousControls, newControls);
                     EEFPropertyViewUtil.addTableElementsAsList(kafkaPropertyIDs, previousControls, newControls);
                     EEFPropertyViewUtil.addTableElementsAsList(mqttPropertyIDs, previousControls, newControls);
                     EEFPropertyViewUtil.addTableElementsAsList(rabbitmqPropertyIDs, previousControls, newControls);
                     EEFPropertyViewUtil.addTableElementsAsList(wso2MBPropertyIDs, previousControls, newControls);
+                    EEFPropertyViewUtil.addTableElementsAsList(customPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.coordination) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createCoordinationCheckbox(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterBasicSubPropertiesGroup.getChildren();
+                    Composite composite = createCoordinationCheckbox(widgetFactory, filterBasicSubPropertiesGroup);
+                    Control[] newControls = filterBasicSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(filePropertyIDs, previousControls, newControls);
                     EEFPropertyViewUtil.addTableElementsAsList(jmsPropertyIDs, previousControls, newControls);
                     EEFPropertyViewUtil.addTableElementsAsList(kafkaPropertyIDs, previousControls, newControls);
                     EEFPropertyViewUtil.addTableElementsAsList(mqttPropertyIDs, previousControls, newControls);
                     EEFPropertyViewUtil.addTableElementsAsList(rabbitmqPropertyIDs, previousControls, newControls);
                     EEFPropertyViewUtil.addTableElementsAsList(wso2MBPropertyIDs, previousControls, newControls);
+                    EEFPropertyViewUtil.addTableElementsAsList(customPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportVFSFileURI) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportVFSFileURIText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterBasicSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportVFSFileURIText(widgetFactory, filterBasicSubPropertiesGroup);
+                    Control[] newControls = filterBasicSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(filePropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.wso2mbConnectionUrl) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createWso2mbConnectionUrlText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterBasicSubPropertiesGroup.getChildren();
+                    Composite composite = createWso2mbConnectionUrlText(widgetFactory, filterBasicSubPropertiesGroup);
+                    Control[] newControls = filterBasicSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(wso2MBPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportVFSContentType) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportVFSContentTypeText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterBasicSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportVFSContentTypeText(widgetFactory, filterBasicSubPropertiesGroup);
+                    Control[] newControls = filterBasicSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(filePropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportVFSFileNamePattern) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportVFSFileNamePatternText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportVFSFileNamePatternText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(filePropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportVFSFileProcessInterval) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportVFSFileProcessIntervalText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportVFSFileProcessIntervalText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(filePropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportVFSFileProcessCount) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportVFSFileProcessCountText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportVFSFileProcessCountText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(filePropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportVFSLocking) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportVFSLockingEMFComboViewer(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportVFSLockingEMFComboViewer(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(filePropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportVFSMaxRetryCount) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportVFSMaxRetryCountText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportVFSMaxRetryCountText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(filePropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportVFSMoveAfterFailedMove) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportVFSMoveAfterFailedMoveText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportVFSMoveAfterFailedMoveText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(filePropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportVFSReconnectTimeout) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportVFSReconnectTimeoutText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportVFSReconnectTimeoutText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(filePropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportJMSSharedSubscription) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportJMSSharedSubscriptionCheckbox(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportJMSSharedSubscriptionCheckbox(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(jmsPropertyIDs, previousControls, newControls);
                     EEFPropertyViewUtil.addTableElementsAsList(wso2MBPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportJMSSubscriptionName) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportJMSSubscriptionNameText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportJMSSubscriptionNameText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(wso2MBPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportJMSPinnedServers) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportJMSPinnedServersText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportJMSPinnedServersText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(jmsPropertyIDs, previousControls, newControls);
                     EEFPropertyViewUtil.addTableElementsAsList(wso2MBPropertyIDs, previousControls, newControls);
+                    EEFPropertyViewUtil.addTableElementsAsList(filePropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportVFSActionAfterProcess) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportVFSActionAfterProcessEMFComboViewer(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportVFSActionAfterProcessEMFComboViewer(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(filePropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportVFSMoveAfterProcess) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportVFSMoveAfterProcessText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportVFSMoveAfterProcessText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(filePropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportVFSActionAfterErrors) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportVFSActionAfterErrorsEMFComboViewer(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportVFSActionAfterErrorsEMFComboViewer(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(filePropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportVFSMoveAfterErrors) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportVFSMoveAfterErrorsText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportVFSMoveAfterErrorsText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(filePropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportVFSFailedRecordsFileName) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportVFSFailedRecordsFileNameText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportVFSFailedRecordsFileNameText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(filePropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportVFSFailedRecordsFileDestination) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportVFSFailedRecordsFileDestinationText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportVFSFailedRecordsFileDestinationText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(filePropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportVFSMoveFailedRecordTimestampFormat) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportVFSMoveFailedRecordTimestampFormatText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportVFSMoveFailedRecordTimestampFormatText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(filePropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportVFSFailedRecordNextRetryDuration) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportVFSFailedRecordNextRetryDurationText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportVFSFailedRecordNextRetryDurationText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(filePropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportVFSActionAfterFailure) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportVFSActionAfterFailureEMFComboViewer(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportVFSActionAfterFailureEMFComboViewer(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(filePropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportVFSMoveAfterFailure) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportVFSMoveAfterFailureText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportVFSMoveAfterFailureText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(filePropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportVFSReplyFileURI) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportVFSReplyFileURIText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportVFSReplyFileURIText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(filePropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportVFSReplyFileName) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportVFSReplyFileNameText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportVFSReplyFileNameText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(filePropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportVFSAutoLockRelease) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportVFSAutoLockReleaseCheckbox(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportVFSAutoLockReleaseCheckbox(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(filePropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportVFSAutoLockReleaseInterval) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportVFSAutoLockReleaseIntervalText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportVFSAutoLockReleaseIntervalText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(filePropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportVFSLockReleaseSameNode) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportVFSLockReleaseSameNodeCheckbox(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportVFSLockReleaseSameNodeCheckbox(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(filePropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportVFSDistributedLock) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportVFSDistributedLockCheckbox(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportVFSDistributedLockCheckbox(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(filePropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportVFSStreaming) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportVFSStreamingCheckbox(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportVFSStreamingCheckbox(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(filePropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportVFSBuild) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportVFSBuildCheckbox(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportVFSBuildCheckbox(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(filePropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportVFSDistributedTimeout) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportVFSDistributedTimeoutText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportVFSDistributedTimeoutText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(filePropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.javaNamingFactoryInitial) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite =  createJavaNamingFactoryInitialText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterBasicSubPropertiesGroup.getChildren();
+                    Composite composite =  createJavaNamingFactoryInitialText(widgetFactory, filterBasicSubPropertiesGroup);
+                    Control[] newControls = filterBasicSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(jmsPropertyIDs, previousControls, newControls);
                     EEFPropertyViewUtil.addTableElementsAsList(wso2MBPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.javaNamingProviderUrl) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite =  createJavaNamingProviderUrlText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterBasicSubPropertiesGroup.getChildren();
+                    Composite composite =  createJavaNamingProviderUrlText(widgetFactory, filterBasicSubPropertiesGroup);
+                    Control[] newControls = filterBasicSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(jmsPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportJMSConnectionFactoryJNDIName) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportJMSConnectionFactoryJNDINameText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterBasicSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportJMSConnectionFactoryJNDINameText(widgetFactory, filterBasicSubPropertiesGroup);
+                    Control[] newControls = filterBasicSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(jmsPropertyIDs, previousControls, newControls);
                     EEFPropertyViewUtil.addTableElementsAsList(wso2MBPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportJMSConnectionFactoryType) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportJMSConnectionFactoryTypeEMFComboViewer(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterBasicSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportJMSConnectionFactoryTypeEMFComboViewer(widgetFactory, filterBasicSubPropertiesGroup);
+                    Control[] newControls = filterBasicSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(jmsPropertyIDs, previousControls, newControls);
                     EEFPropertyViewUtil.addTableElementsAsList(wso2MBPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportJMSConcurrentConsumers) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportJMSConcurrentConsumersText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportJMSConcurrentConsumersText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(jmsPropertyIDs, previousControls, newControls);
                     EEFPropertyViewUtil.addTableElementsAsList(wso2MBPropertyIDs, previousControls, newControls);
                     return composite;
                  }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportJMSDestination) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportJMSDestinationText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterBasicSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportJMSDestinationText(widgetFactory, filterBasicSubPropertiesGroup);
+                    Control[] newControls = filterBasicSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(jmsPropertyIDs, previousControls, newControls);
                     EEFPropertyViewUtil.addTableElementsAsList(wso2MBPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportJMSSessionTransacted) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportJMSSessionTransactedCheckbox(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterBasicSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportJMSSessionTransactedCheckbox(widgetFactory, filterBasicSubPropertiesGroup);
+                    Control[] newControls = filterBasicSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(jmsPropertyIDs, previousControls, newControls);
                     EEFPropertyViewUtil.addTableElementsAsList(wso2MBPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportJMSSessionAcknowledgement) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportJMSSessionAcknowledgementEMFComboViewer(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterBasicSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportJMSSessionAcknowledgementEMFComboViewer(widgetFactory, filterBasicSubPropertiesGroup);
+                    Control[] newControls = filterBasicSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(jmsPropertyIDs, previousControls, newControls);
                     EEFPropertyViewUtil.addTableElementsAsList(wso2MBPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportJMSCacheLevel) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportJMSCacheLevelEMFComboViewer(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterBasicSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportJMSCacheLevelEMFComboViewer(widgetFactory, filterBasicSubPropertiesGroup);
+                    Control[] newControls = filterBasicSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(jmsPropertyIDs, previousControls, newControls);
                     EEFPropertyViewUtil.addTableElementsAsList(wso2MBPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportJMSUserName) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportJMSUserNameText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportJMSUserNameText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(jmsPropertyIDs, previousControls, newControls);
                     return composite;
                     
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportJMSPassword) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite =  createTransportJMSPasswordText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite =  createTransportJMSPasswordText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(jmsPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportJMSJMSSpecVersion) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportJMSJMSSpecVersionText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportJMSJMSSpecVersionText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(jmsPropertyIDs, previousControls, newControls);
                     EEFPropertyViewUtil.addTableElementsAsList(wso2MBPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportJMSSubscriptionDurable) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportJMSSubscriptionDurableText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportJMSSubscriptionDurableText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(jmsPropertyIDs, previousControls, newControls);
                     EEFPropertyViewUtil.addTableElementsAsList(wso2MBPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportJMSDurableSubscriberClientID) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportJMSDurableSubscriberClientIDText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportJMSDurableSubscriberClientIDText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(jmsPropertyIDs, previousControls, newControls);
                     EEFPropertyViewUtil.addTableElementsAsList(wso2MBPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportJMSMessageSelector) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite =  createTransportJMSMessageSelectorText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite =  createTransportJMSMessageSelectorText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(jmsPropertyIDs, previousControls, newControls);
                     EEFPropertyViewUtil.addTableElementsAsList(wso2MBPropertyIDs, previousControls, newControls);
                     return composite;
                     
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportJMSRetryDuration) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite =  createTransportJMSRetryDurationText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite =  createTransportJMSRetryDurationText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(jmsPropertyIDs, previousControls, newControls);
                     EEFPropertyViewUtil.addTableElementsAsList(wso2MBPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportVFSMoveTimestampFormat) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportVFSMoveTimestampFormatText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportVFSMoveTimestampFormatText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(filePropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportVFSFileSortAttribute) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportVFSFileSortAttributeEMFComboViewer(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportVFSFileSortAttributeEMFComboViewer(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(filePropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportVFSFileSortAscending) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportVFSFileSortAscendingCheckbox(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportVFSFileSortAscendingCheckbox(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(filePropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportVFSSubFolderTimestampFormat) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportVFSSubFolderTimestampFormatText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportVFSSubFolderTimestampFormatText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(filePropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportVFSCreateFolder) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportVFSCreateFolderCheckbox(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportVFSCreateFolderCheckbox(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(filePropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportJMSReceiveTimeout) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportJMSReceiveTimeoutText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportJMSReceiveTimeoutText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(jmsPropertyIDs, previousControls, newControls);
                     EEFPropertyViewUtil.addTableElementsAsList(wso2MBPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportJMSContentType) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportJMSContentTypeText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportJMSContentTypeText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(jmsPropertyIDs, previousControls, newControls);
                     EEFPropertyViewUtil.addTableElementsAsList(wso2MBPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportJMSContentTypeProperty) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite =  createTransportJMSContentTypePropertyText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite =  createTransportJMSContentTypePropertyText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(jmsPropertyIDs, previousControls, newControls);
                     EEFPropertyViewUtil.addTableElementsAsList(wso2MBPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportJMSReplyDestination) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportJMSReplyDestinationText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportJMSReplyDestinationText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(jmsPropertyIDs, previousControls, newControls);
                     EEFPropertyViewUtil.addTableElementsAsList(wso2MBPropertyIDs, previousControls, newControls);
                     return composite;                    
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportJMSPubSubNoLocal) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportJMSPubSubNoLocalText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportJMSPubSubNoLocalText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(jmsPropertyIDs, previousControls, newControls);
                     EEFPropertyViewUtil.addTableElementsAsList(wso2MBPropertyIDs, previousControls, newControls);
                     return composite;  
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportJMSDurableSubscriberName) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportJMSDurableSubscriberNameText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportJMSDurableSubscriberNameText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(jmsPropertyIDs, previousControls, newControls);
                     EEFPropertyViewUtil.addTableElementsAsList(wso2MBPropertyIDs, previousControls, newControls);
                     return composite; 
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportJMSBrokerType) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite =  createTransportJMSBrokerTypeEMFComboViewer(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite =  createTransportJMSBrokerTypeEMFComboViewer(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(jmsPropertyIDs, previousControls, newControls);
                     return composite; 
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportMQTTConnectionFactory) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportMQTTConnectionFactoryText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterBasicSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportMQTTConnectionFactoryText(widgetFactory, filterBasicSubPropertiesGroup);
+                    Control[] newControls = filterBasicSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(mqttPropertyIDs, previousControls, newControls);
                     return composite; 
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportMQTTServerHostName) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportMQTTServerHostNameText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterBasicSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportMQTTServerHostNameText(widgetFactory, filterBasicSubPropertiesGroup);
+                    Control[] newControls = filterBasicSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(mqttPropertyIDs, previousControls, newControls);
                     return composite; 
                     
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportMQTTServerPort) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportMQTTServerPortText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterBasicSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportMQTTServerPortText(widgetFactory, filterBasicSubPropertiesGroup);
+                    Control[] newControls = filterBasicSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(mqttPropertyIDs, previousControls, newControls);
                     return composite; 
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportMQTTTopicName) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportMQTTTopicNameText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterBasicSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportMQTTTopicNameText(widgetFactory, filterBasicSubPropertiesGroup);
+                    Control[] newControls = filterBasicSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(mqttPropertyIDs, previousControls, newControls);
                     return composite; 
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportMQTTSubscriptionQOS) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportMQTTSubscriptionQOSEMFComboViewer(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportMQTTSubscriptionQOSEMFComboViewer(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(mqttPropertyIDs, previousControls, newControls);
                     return composite; 
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportMQTTSessionClean) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportMQTTSessionCleanCheckbox(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportMQTTSessionCleanCheckbox(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(mqttPropertyIDs, previousControls, newControls);
                     return composite; 
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportMQTTSslEnable) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportMQTTSslEnableText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportMQTTSslEnableText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(mqttPropertyIDs, previousControls, newControls);
                     return composite; 
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportMQTTTemporaryStoreDirectory) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite =  createTransportMQTTTemporaryStoreDirectoryText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite =  createTransportMQTTTemporaryStoreDirectoryText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(mqttPropertyIDs, previousControls, newControls);
                     return composite; 
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportMQTTSubscriptionUsername) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite =  createTransportMQTTSubscriptionUsernameText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite =  createTransportMQTTSubscriptionUsernameText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(mqttPropertyIDs, previousControls, newControls);
                     return composite; 
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportMQTTSubscriptionPassword) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite =  createTransportMQTTSubscriptionPasswordText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite =  createTransportMQTTSubscriptionPasswordText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(mqttPropertyIDs, previousControls, newControls);
                     return composite; 
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportMQTTClientId) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite =  createTransportMQTTClientIdText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite =  createTransportMQTTClientIdText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(mqttPropertyIDs, previousControls, newControls);
                     return composite; 
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.truststore) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTruststoreText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTruststoreText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(mqttPropertyIDs, previousControls, newControls);
+                    EEFPropertyViewUtil.addTableElementsAsList(httpsPropertyIDs, previousControls, newControls);
                     return composite; 
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.keystore) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite =  createKeystoreText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterBasicSubPropertiesGroup.getChildren();
+                    Composite composite =  createKeystoreText(widgetFactory, filterBasicSubPropertiesGroup);
+                    Control[] newControls = filterBasicSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(mqttPropertyIDs, previousControls, newControls);
+                    EEFPropertyViewUtil.addTableElementsAsList(httpsPropertyIDs, previousControls, newControls);
                     return composite; 
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.sslVerifyClient) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createSslVerifyClientText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createSslVerifyClientText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(httpsPropertyIDs, previousControls, newControls);
                     return composite; 
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.sslProtocol) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createSslProtocolText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createSslProtocolText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(httpsPropertyIDs, previousControls, newControls);
                     return composite; 
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.httpsProtocols) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createHttpsProtocolsText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createHttpsProtocolsText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(httpsPropertyIDs, previousControls, newControls);
                     return composite; 
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.certificateRevocationVerifier) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createCertificateRevocationVerifierText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createCertificateRevocationVerifierText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(httpsPropertyIDs, previousControls, newControls);
                     return composite; 
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.inboundHL7Port) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createInboundHL7PortText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterBasicSubPropertiesGroup.getChildren();
+                    Composite composite = createInboundHL7PortText(widgetFactory, filterBasicSubPropertiesGroup);
+                    Control[] newControls = filterBasicSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(hl7PropertyIDs, previousControls, newControls);
                     return composite; 
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.inboundHL7AutoAck) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createInboundHL7AutoAckCheckbox(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterBasicSubPropertiesGroup.getChildren();
+                    Composite composite = createInboundHL7AutoAckCheckbox(widgetFactory, filterBasicSubPropertiesGroup);
+                    Control[] newControls = filterBasicSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(hl7PropertyIDs, previousControls, newControls);
                     return composite; 
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.inboundHL7MessagePreProcessor) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createInboundHL7MessagePreProcessorText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createInboundHL7MessagePreProcessorText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(hl7PropertyIDs, previousControls, newControls);
                     return composite; 
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.inboundHL7CharSet) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createInboundHL7CharSetText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createInboundHL7CharSetText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(hl7PropertyIDs, previousControls, newControls);
                     return composite; 
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.inboundHL7TimeOut) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createInboundHL7TimeOutText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createInboundHL7TimeOutText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(hl7PropertyIDs, previousControls, newControls);
                     return composite; 
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.inboundHL7ValidateMessage) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createInboundHL7ValidateMessageCheckbox(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createInboundHL7ValidateMessageCheckbox(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(hl7PropertyIDs, previousControls, newControls);
                     return composite; 
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.inboundHL7BuildInvalidMessages) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createInboundHL7BuildInvalidMessagesCheckbox(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createInboundHL7BuildInvalidMessagesCheckbox(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(hl7PropertyIDs, previousControls, newControls);
                     return composite; 
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.inboundHL7PassThroughInvalidMessages) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createInboundHL7PassThroughInvalidMessagesCheckbox(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createInboundHL7PassThroughInvalidMessagesCheckbox(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(hl7PropertyIDs, previousControls, newControls);
                     return composite; 
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.zookeeperConnect) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createZookeeperConnectText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterBasicSubPropertiesGroup.getChildren();
+                    Composite composite = createZookeeperConnectText(widgetFactory, filterBasicSubPropertiesGroup);
+                    Control[] newControls = filterBasicSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(kafkaPropertyIDs, previousControls, newControls);
                     return composite; 
                     
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.groupId) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createGroupIdText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterBasicSubPropertiesGroup.getChildren();
+                    Composite composite = createGroupIdText(widgetFactory, filterBasicSubPropertiesGroup);
+                    Control[] newControls = filterBasicSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(kafkaPropertyIDs, previousControls, newControls);
                     return composite; 
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.contentType) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createContentTypeText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterBasicSubPropertiesGroup.getChildren();
+                    Composite composite = createContentTypeText(widgetFactory, filterBasicSubPropertiesGroup);
+                    Control[] newControls = filterBasicSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(kafkaPropertyIDs, previousControls, newControls);
                     return composite; 
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.consumerType) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createConsumerTypeEMFComboViewer(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterBasicSubPropertiesGroup.getChildren();
+                    Composite composite = createConsumerTypeEMFComboViewer(widgetFactory, filterBasicSubPropertiesGroup);
+                    Control[] newControls = filterBasicSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(kafkaPropertyIDs, previousControls, newControls);
                     return composite; 
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.topicsOrTopicFilter) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTopicsOrTopicFilterEMFComboViewer(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterBasicSubPropertiesGroup.getChildren();
+                    Composite composite = createTopicsOrTopicFilterEMFComboViewer(widgetFactory, filterBasicSubPropertiesGroup);
+                    Control[] newControls = filterBasicSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(kafkaHighLevelPropertyIDs, previousControls, newControls);
                     return composite; 
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.topicsName) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTopicsNameText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterBasicSubPropertiesGroup.getChildren();
+                    Composite composite = createTopicsNameText(widgetFactory, filterBasicSubPropertiesGroup);
+                    Control[] newControls = filterBasicSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(kafkaHighLevelTopicsPropertyIDs, previousControls, newControls);
+                    EEFPropertyViewUtil.addTableElementsAsList(kafkaPropertyIDs, previousControls, newControls);
                     return composite; 
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.topicFilterFrom) {
@@ -1480,704 +1500,716 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
                     return composite; 
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.threadCount) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createThreadCountText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createThreadCountText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(kafkaPropertyIDs, previousControls, newControls);
                     return composite; 
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.consumerId) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createConsumerIdText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createConsumerIdText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(kafkaPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.socketTimeoutMs) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createSocketTimeoutMsText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createSocketTimeoutMsText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(kafkaPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.socketReceiveBufferBytes) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createSocketReceiveBufferBytesText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createSocketReceiveBufferBytesText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(kafkaPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.fetchMessageMaxBytes) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createFetchMessageMaxBytesText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createFetchMessageMaxBytesText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(kafkaPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.numConsumerFetches) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createNumConsumerFetchesText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createNumConsumerFetchesText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(kafkaPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.autoCommitEnable) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createAutoCommitEnableCheckbox(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createAutoCommitEnableCheckbox(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(kafkaPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.autoCommitIntervalMs) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createAutoCommitIntervalMsText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createAutoCommitIntervalMsText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(kafkaPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.queuedMaxMessageChunks) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createQueuedMaxMessageChunksText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createQueuedMaxMessageChunksText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(kafkaPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.rebalanceMaxRetries) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createRebalanceMaxRetriesText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createRebalanceMaxRetriesText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(kafkaPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.fetchMinBytes) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createFetchMinBytesText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createFetchMinBytesText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(kafkaPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.fetchWaitMaxMs) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createFetchWaitMaxMsText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createFetchWaitMaxMsText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(kafkaPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.rebalanceBackoffMs) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createRebalanceBackoffMsText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createRebalanceBackoffMsText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(kafkaPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.refreshLeaderBackoffMs) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createRefreshLeaderBackoffMsText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createRefreshLeaderBackoffMsText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(kafkaPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.autoOffsetReset) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createAutoOffsetResetEMFComboViewer(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createAutoOffsetResetEMFComboViewer(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(kafkaPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.consumerTimeoutMs) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createConsumerTimeoutMsText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createConsumerTimeoutMsText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(kafkaPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.excludeInternalTopics) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createExcludeInternalTopicsCheckbox(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createExcludeInternalTopicsCheckbox(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(kafkaPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.partitionAssignmentStrategy) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createPartitionAssignmentStrategyEMFComboViewer(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createPartitionAssignmentStrategyEMFComboViewer(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(kafkaPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.clientId) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createClientIdText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createClientIdText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(kafkaPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.zookeeperSessionTimeoutMs) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createZookeeperSessionTimeoutMsText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createZookeeperSessionTimeoutMsText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(kafkaPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.zookeeperConnectionTimeoutMs) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createZookeeperConnectionTimeoutMsText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createZookeeperConnectionTimeoutMsText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(kafkaPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.zookeeperSyncTimeMs) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createZookeeperSyncTimeMsText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createZookeeperSyncTimeMsText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(kafkaPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.offsetsStorage) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createOffsetsStorageEMFComboViewer(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createOffsetsStorageEMFComboViewer(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(kafkaPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.offsetsChannelBackoffMs) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createOffsetsChannelBackoffMsText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createOffsetsChannelBackoffMsText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(kafkaPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.offsetsChannelSocketTimeoutMs) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createOffsetsChannelSocketTimeoutMsText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createOffsetsChannelSocketTimeoutMsText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(kafkaPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.offsetsCommitMaxRetries) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createOffsetsCommitMaxRetriesText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createOffsetsCommitMaxRetriesText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(kafkaPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.dualCommitEnabled) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createDualCommitEnabledCheckbox(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createDualCommitEnabledCheckbox(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(kafkaPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.inboundCxfRmHost) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createInboundCxfRmHostText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterBasicSubPropertiesGroup.getChildren();
+                    Composite composite = createInboundCxfRmHostText(widgetFactory, filterBasicSubPropertiesGroup);
+                    Control[] newControls = filterBasicSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(cxfWsRmPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.inboundCxfRmPort) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createInboundCxfRmPortText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterBasicSubPropertiesGroup.getChildren();
+                    Composite composite = createInboundCxfRmPortText(widgetFactory, filterBasicSubPropertiesGroup);
+                    Control[] newControls = filterBasicSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(cxfWsRmPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.inboundCxfRmConfigFile) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createInboundCxfRmConfigFileText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterBasicSubPropertiesGroup.getChildren();
+                    Composite composite = createInboundCxfRmConfigFileText(widgetFactory, filterBasicSubPropertiesGroup);
+                    Control[] newControls = filterBasicSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(cxfWsRmPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.enableSSL) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createEnableSSLCheckbox(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterBasicSubPropertiesGroup.getChildren();
+                    Composite composite = createEnableSSLCheckbox(widgetFactory, filterBasicSubPropertiesGroup);
+                    Control[] newControls = filterBasicSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(cxfWsRmPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.serviceParameters) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createServiceParametersTableComposition(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterBasicSubPropertiesGroup.getChildren();
+                    Composite composite = createServiceParametersTableComposition(widgetFactory, filterBasicSubPropertiesGroup);
+                    Control[] newControls = filterBasicSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(customPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.suspend) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createSuspendCheckbox(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterBasicSubPropertiesGroup.getChildren();
+                    Composite composite = createSuspendCheckbox(widgetFactory, filterBasicSubPropertiesGroup);
+                    Control[] newControls = filterBasicSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(generalProperties, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqConnectionFactory) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportRabbitMqConnectionFactoryText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterBasicSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportRabbitMqConnectionFactoryText(widgetFactory, filterBasicSubPropertiesGroup);
+                    Control[] newControls = filterBasicSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(rabbitmqPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqServerHostName) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportRabbitMqServerHostNameText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterBasicSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportRabbitMqServerHostNameText(widgetFactory, filterBasicSubPropertiesGroup);
+                    Control[] newControls = filterBasicSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(rabbitmqPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqServerPort) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportRabbitMqServerPortText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterBasicSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportRabbitMqServerPortText(widgetFactory, filterBasicSubPropertiesGroup);
+                    Control[] newControls = filterBasicSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(rabbitmqPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqServerUserName) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportRabbitMqServerUserNameText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterBasicSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportRabbitMqServerUserNameText(widgetFactory, filterBasicSubPropertiesGroup);
+                    Control[] newControls = filterBasicSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(rabbitmqPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqServerPassword) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportRabbitMqServerPasswordText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterBasicSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportRabbitMqServerPasswordText(widgetFactory, filterBasicSubPropertiesGroup);
+                    Control[] newControls = filterBasicSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(rabbitmqPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqQueueName) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportRabbitMqQueueNameText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterBasicSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportRabbitMqQueueNameText(widgetFactory, filterBasicSubPropertiesGroup);
+                    Control[] newControls = filterBasicSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(rabbitmqPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqExchangeName) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportRabbitMqExchangeNameText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterBasicSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportRabbitMqExchangeNameText(widgetFactory, filterBasicSubPropertiesGroup);
+                    Control[] newControls = filterBasicSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(rabbitmqPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqQueueDurable) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportRabbitMqQueueDurableText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportRabbitMqQueueDurableText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(rabbitmqPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqQueueExclusive) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportRabbitMqQueueExclusiveText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportRabbitMqQueueExclusiveText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(rabbitmqPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqQueueAutoDelete) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportRabbitMqQueueAutoDeleteText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportRabbitMqQueueAutoDeleteText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(rabbitmqPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqQueueAutoAck) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportRabbitMqQueueAutoAckText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportRabbitMqQueueAutoAckText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(rabbitmqPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqQueueRoutingKey) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportRabbitMqQueueRoutingKeyText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportRabbitMqQueueRoutingKeyText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(rabbitmqPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqQueueDeliveryMode) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportRabbitMqQueueDeliveryModeText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportRabbitMqQueueDeliveryModeText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(rabbitmqPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqExchangeType) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportRabbitMqExchangeTypeText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportRabbitMqExchangeTypeText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(rabbitmqPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqExchangeDurable) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportRabbitMqExchangeDurableText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportRabbitMqExchangeDurableText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(rabbitmqPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqExchangeAutoDelete) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportRabbitMqExchangeAutoDeleteText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportRabbitMqExchangeAutoDeleteText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(rabbitmqPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqServerVirtualHost) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportRabbitMqServerVirtualHostText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportRabbitMqServerVirtualHostText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(rabbitmqPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqFactoryHeartbeat) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportRabbitMqFactoryHeartbeatText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportRabbitMqFactoryHeartbeatText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(rabbitmqPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqConnectionSslEnabled) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportRabbitMqConnectionSslEnabledText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportRabbitMqConnectionSslEnabledText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(rabbitmqPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqConnectionSslKeystoreLocation) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportRabbitMqConnectionSslKeystoreLocationText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportRabbitMqConnectionSslKeystoreLocationText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(rabbitmqPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqConnectionSslKeystoreType) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportRabbitMqConnectionSslKeystoreTypeText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportRabbitMqConnectionSslKeystoreTypeText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(rabbitmqPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqConnectionSslKeystorePassword) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportRabbitMqConnectionSslKeystorePasswordText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportRabbitMqConnectionSslKeystorePasswordText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(rabbitmqPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqConnectionSslTruststoreLocation) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportRabbitMqConnectionSslTruststoreLocationText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportRabbitMqConnectionSslTruststoreLocationText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(rabbitmqPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqConnectionSslTruststoreType) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportRabbitMqConnectionSslTruststoreTypeText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportRabbitMqConnectionSslTruststoreTypeText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(rabbitmqPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqConnectionSslTruststorePassword) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportRabbitMqConnectionSslTruststorePasswordText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportRabbitMqConnectionSslTruststorePasswordText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(rabbitmqPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqConnectionSslVersion) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportRabbitMqConnectionSslVersionText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportRabbitMqConnectionSslVersionText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(rabbitmqPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqMessageContentType) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportRabbitMqMessageContentTypeText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportRabbitMqMessageContentTypeText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(rabbitmqPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqConnectionRetryCount) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportRabbitMqConnectionRetryCountText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportRabbitMqConnectionRetryCountText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(rabbitmqPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqConnectionRetryInterval) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportRabbitMqConnectionRetryIntervalText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportRabbitMqConnectionRetryIntervalText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(rabbitmqPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqServerRetryInterval) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportRabbitMqServerRetryIntervalText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportRabbitMqServerRetryIntervalText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(rabbitmqPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.wsInboundPort) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createWsInboundPortText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterBasicSubPropertiesGroup.getChildren();
+                    Composite composite = createWsInboundPortText(widgetFactory, filterBasicSubPropertiesGroup);
+                    Control[] newControls = filterBasicSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(wsPropertyIDs, previousControls, newControls);
+                    EEFPropertyViewUtil.addTableElementsAsList(wssPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.wsClientSideBroadcastLevel) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createWsClientSideBroadcastLevelEMFComboViewer(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterBasicSubPropertiesGroup.getChildren();
+                    Composite composite = createWsClientSideBroadcastLevelEMFComboViewer(widgetFactory, filterBasicSubPropertiesGroup);
+                    Control[] newControls = filterBasicSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(wsPropertyIDs, previousControls, newControls);
+                    EEFPropertyViewUtil.addTableElementsAsList(wssPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.wsOutflowDispatchSequence) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createWsOutflowDispatchSequenceText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterBasicSubPropertiesGroup.getChildren();
+                    Composite composite = createWsOutflowDispatchSequenceText(widgetFactory, filterBasicSubPropertiesGroup);
+                    Control[] newControls = filterBasicSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(wsPropertyIDs, previousControls, newControls);
+                    EEFPropertyViewUtil.addTableElementsAsList(wssPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.wsOutflowDispatchFaultSequence) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createWsOutflowDispatchFaultSequenceText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterBasicSubPropertiesGroup.getChildren();
+                    Composite composite = createWsOutflowDispatchFaultSequenceText(widgetFactory, filterBasicSubPropertiesGroup);
+                    Control[] newControls = filterBasicSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(wsPropertyIDs, previousControls, newControls);
+                    EEFPropertyViewUtil.addTableElementsAsList(wssPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.wsBossThreadPoolSize) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createWsBossThreadPoolSizeText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createWsBossThreadPoolSizeText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(wsPropertyIDs, previousControls, newControls);
+                    EEFPropertyViewUtil.addTableElementsAsList(wssPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.wsWorkerThreadPoolSize) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createWsWorkerThreadPoolSizeText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createWsWorkerThreadPoolSizeText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(wsPropertyIDs, previousControls, newControls);
+                    EEFPropertyViewUtil.addTableElementsAsList(wssPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.wsSubprotocolHandlerClass) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createWsSubprotocolHandlerClassText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createWsSubprotocolHandlerClassText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(wsPropertyIDs, previousControls, newControls);
+                    EEFPropertyViewUtil.addTableElementsAsList(wssPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.wsPipelineHandlerClass) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createWsPipelineHandlerClassText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createWsPipelineHandlerClassText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(wsPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportFeedURL) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportFeedURLText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterBasicSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportFeedURLText(widgetFactory, filterBasicSubPropertiesGroup);
+                    Control[] newControls = filterBasicSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(feedPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportFeedType) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportFeedTypeEMFComboViewer(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterBasicSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportFeedTypeEMFComboViewer(widgetFactory, filterBasicSubPropertiesGroup);
+                    Control[] newControls = filterBasicSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(feedPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.traceEnabled) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTraceEnabledCheckbox(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterBasicSubPropertiesGroup.getChildren();
+                    Composite composite = createTraceEnabledCheckbox(widgetFactory, filterBasicSubPropertiesGroup);
+                    Control[] newControls = filterBasicSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(generalProperties, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.statisticsEnabled) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createStatisticsEnabledCheckbox(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterBasicSubPropertiesGroup.getChildren();
+                    Composite composite = createStatisticsEnabledCheckbox(widgetFactory, filterBasicSubPropertiesGroup);
+                    Control[] newControls = filterBasicSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(generalProperties, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportJMSRetriesBeforeSuspension) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportJMSRetriesBeforeSuspensionText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportJMSRetriesBeforeSuspensionText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(jmsPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportJMSResetConnectionOnPollingSuspension) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportJMSResetConnectionOnPollingSuspensionCheckbox(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportJMSResetConnectionOnPollingSuspensionCheckbox(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(jmsPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportJMSPollingSuspensionPeriod) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportJMSPollingSuspensionPeriodText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportJMSPollingSuspensionPeriodText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(jmsPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportMQTTSslKeystoreLocation) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite =  createTransportMQTTSslKeystoreLocationText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite =  createTransportMQTTSslKeystoreLocationText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(mqttPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportMQTTSslKeystoreType) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite =  createTransportMQTTSslKeystoreTypeText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite =  createTransportMQTTSslKeystoreTypeText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(mqttPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportMQTTSslKeystorePassword) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite =  createTransportMQTTSslKeystorePasswordText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite =  createTransportMQTTSslKeystorePasswordText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(mqttPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportMQTTSslTruststoreLocation) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite =  createTransportMQTTSslTruststoreLocationText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite =  createTransportMQTTSslTruststoreLocationText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(mqttPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportMQTTSslTruststoreType) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite =  createTransportMQTTSslTruststoreTypeText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite =  createTransportMQTTSslTruststoreTypeText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(mqttPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportMQTTSslTruststorePassword) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite =  createTransportMQTTSslTruststorePasswordText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite =  createTransportMQTTSslTruststorePasswordText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(mqttPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportMQTTSslVersion) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite =  createTransportMQTTSslVersionText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite =  createTransportMQTTSslVersionText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(mqttPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.wssSslKeyStoreFile) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite =  createWssSslKeyStoreFileText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterBasicSubPropertiesGroup.getChildren();
+                    Composite composite =  createWssSslKeyStoreFileText(widgetFactory, filterBasicSubPropertiesGroup);
+                    Control[] newControls = filterBasicSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(wssPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.wssSslKeyStorePass) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite =  createWssSslKeyStorePassText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterBasicSubPropertiesGroup.getChildren();
+                    Composite composite =  createWssSslKeyStorePassText(widgetFactory, filterBasicSubPropertiesGroup);
+                    Control[] newControls = filterBasicSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(wssPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.wssSslTrustStoreFile) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite =  createWssSslTrustStoreFileText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterBasicSubPropertiesGroup.getChildren();
+                    Composite composite =  createWssSslTrustStoreFileText(widgetFactory, filterBasicSubPropertiesGroup);
+                    Control[] newControls = filterBasicSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(wssPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.wssSslTrustStorePass) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite =  createWssSslTrustStorePassText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterBasicSubPropertiesGroup.getChildren();
+                    Composite composite =  createWssSslTrustStorePassText(widgetFactory, filterBasicSubPropertiesGroup);
+                    Control[] newControls = filterBasicSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(wssPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.wssSslCertPass) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite =  createWssSslCertPassText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterBasicSubPropertiesGroup.getChildren();
+                    Composite composite =  createWssSslCertPassText(widgetFactory, filterBasicSubPropertiesGroup);
+                    Control[] newControls = filterBasicSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(wssPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.wsDefaultContentType) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite =  createWsDefaultContentTypeText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite =  createWsDefaultContentTypeText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(wsPropertyIDs, previousControls, newControls);
+                    EEFPropertyViewUtil.addTableElementsAsList(wssPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.wsShutdownStatusCode) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createWsShutdownStatusCodeText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createWsShutdownStatusCodeText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(wsPropertyIDs, previousControls, newControls);
+                    EEFPropertyViewUtil.addTableElementsAsList(wssPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.wsShutdownStatusMessage) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createWsShutdownStatusMessageText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createWsShutdownStatusMessageText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(wsPropertyIDs, previousControls, newControls);
+                    EEFPropertyViewUtil.addTableElementsAsList(wssPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.wsUsePortOffset) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createWsUsePortOffsetCheckbox(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createWsUsePortOffsetCheckbox(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(wsPropertyIDs, previousControls, newControls);
+                    EEFPropertyViewUtil.addTableElementsAsList(wssPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.wssSslProtocols) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createWssSslProtocolsText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createWssSslProtocolsText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(wssPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.wssSslCipherSuites) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createWssSslCipherSuitesText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createWssSslCipherSuitesText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    EEFPropertyViewUtil.addTableElementsAsList(wssPropertyIDs, previousControls, newControls);
                     EEFPropertyViewUtil.addTableElementsAsList(wssPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqConsumerQos) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportRabbitMqConsumerQosText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportRabbitMqConsumerQosText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(rabbitmqConsumerQosProperty, previousControls, newControls);
                     return composite;
                 }
                 // Start of user code for transportRabbitMqConsumerQosKey addToPart creation
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqConsumerQosKey) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportRabbitMqConsumerQosKey(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportRabbitMqConsumerQosKey(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(rabbitmqConsumerQosKeyProperty, previousControls, newControls);
                     return composite;
                 }
                 // End of user code
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqConsumerQosType) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite = createTransportRabbitMqConsumerQosTypeEMFComboViewer(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportRabbitMqConsumerQosTypeEMFComboViewer(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(rabbitmqPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportJMSDBUrl) {
-                    Control[] previousControls = parent.getChildren();
-                    Composite composite =  createTransportJMSDBUrlText(widgetFactory, parent);
-                    Control[] newControls = parent.getChildren();
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite =  createTransportJMSDBUrlText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(jmsPropertyIDs, previousControls, newControls);
                     return composite;
                 }
@@ -24128,6 +24160,10 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
     public void validate() {
         EEFPropertyViewUtil epv = new EEFPropertyViewUtil(view);
         epv.clearElements(new Composite[] { propertiesGroup });
+        epv.showEntry(new Control[] { filterBasicSubPropertiesGroup.getParent() }, false);
+        epv.clearElements(new Composite[] { filterBasicSubPropertiesGroup });
+        epv.showEntry(new Control[] { filterAdvanceSubPropertiesGroup.getParent() }, false);
+        epv.clearElements(new Composite[] { filterAdvanceSubPropertiesGroup });
         epv.showEntry(generalProperties, false);
         switch (getType().getLiteral()) {
             case "HTTP": {

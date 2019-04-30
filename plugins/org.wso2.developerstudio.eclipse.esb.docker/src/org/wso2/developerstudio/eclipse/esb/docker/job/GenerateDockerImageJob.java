@@ -67,7 +67,7 @@ public class GenerateDockerImageJob extends Job {
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
     public GenerateDockerImageJob(String dockerDir, String eiDistributionSource, String eiDistributionDestination,
-            String serverHome, String deploymentDir, String destinationDir, File carbonFile,
+            String deploymentDir, String destinationDir, File carbonFile,
             MicroIntegratorDockerModel dockerModel) {
         super("Generating Docker Image...");
         this.dockerDirectory = dockerDir;

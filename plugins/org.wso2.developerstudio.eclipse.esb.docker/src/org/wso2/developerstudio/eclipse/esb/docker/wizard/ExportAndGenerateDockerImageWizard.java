@@ -163,9 +163,7 @@ public class ExportAndGenerateDockerImageWizard extends Wizard implements IExpor
         String eiDistrubitionDestinationPath = getWorkingDirectory() + File.separator
                 + ExportImageWizardConstants.DOCKER_IMAGE_TEMPORARY_DIR_NAME + File.separator
                 + ExportImageWizardConstants.EI_DISTRIBUTION_NAME;
-        String eiHomePath = eiDistrubitionDestinationPath + File.separator
-                + ExportImageWizardConstants.MICRO_EI_HOME_REL_PATH;
-        String deploymentPath = eiHomePath + File.separator + ExportImageWizardConstants.DEPLOYMENT_DIR_REL_PATH;
+        String deploymentPath = eiDistrubitionDestinationPath + File.separator + ExportImageWizardConstants.DEPLOYMENT_DIR_REL_PATH;
 
         try {
             File dockerDir = new File(dockerDirPath);
@@ -197,7 +195,7 @@ public class ExportAndGenerateDockerImageWizard extends Wizard implements IExpor
 
             // Create and schedule a background job to generate the docker image
             dockerJob = new GenerateDockerImageJob(dockerDirPath, eiDistributionSourcePath,
-                    eiDistrubitionDestinationPath, eiHomePath, deploymentPath, detailsPage.getExportPath(),
+                    eiDistrubitionDestinationPath, deploymentPath, detailsPage.getExportPath(),
                     destFileName, dockerModel);
             dockerJob.schedule();
 

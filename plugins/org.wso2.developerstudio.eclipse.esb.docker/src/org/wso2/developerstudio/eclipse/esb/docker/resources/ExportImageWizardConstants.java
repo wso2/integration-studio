@@ -33,7 +33,6 @@ public class ExportImageWizardConstants {
 
     public static final String EI_DISTRIBUTION_NAME = "wso2ei-6.5.0";
     public static final String MICRO_EI_DISTRIBUTION_REL_PATH = "runtime" + File.separator + "microesb";
-    public static final String MICRO_EI_HOME_REL_PATH = "wso2" + File.separator + "micro-integrator";
     public static final String DEPLOYMENT_DIR_REL_PATH = "repository" + File.separator + "deployment" + File.separator
             + "server" + File.separator + "carbonapps";
 

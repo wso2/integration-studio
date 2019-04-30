@@ -63,6 +63,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.TemplateParameter;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.DefaultEndPointPropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.developerstudio.eclipse.gmf.esb.parts.impl.DefaultEndPointPropertiesEditionPartImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 
 
@@ -303,7 +304,7 @@ public class DefaultEndPointPropertiesEditionComponent extends SinglePartPropert
 			// End of user code
 			
 			// init values for referenced views
-			
+			((DefaultEndPointPropertiesEditionPartImpl) editingPart).validate();
 			// init filters for referenced views
 			
 		}

@@ -13,8 +13,6 @@ import org.eclipse.emf.common.util.Enumerator;
 
 import org.eclipse.emf.ecore.EObject;
 
-import org.eclipse.emf.ecore.util.EcoreAdapterFactory;
-
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
@@ -74,7 +72,6 @@ import org.eclipse.swt.widgets.Text;
 
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
-import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
@@ -1862,7 +1859,6 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
         epv.hideEntry(inLineElements, false);
         epv.hideEntry(duplicateElements, false);
         epv.hideEntry(reverseElements, false);
-        epv.hideEntry(childrenElements, false);
         epv.hideEntry(nameElements, false);
         epv.hideEntry(failoverElements, false);
         epv.hideEntry(policyElements, false);

@@ -37,6 +37,7 @@ import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 
 import org.eclipse.emf.eef.runtime.ui.widgets.EEFFeatureEditorDialog;
 import org.eclipse.emf.eef.runtime.ui.widgets.EMFComboViewer;
+import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
 
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
@@ -60,6 +61,9 @@ import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.KeyListener;
+import org.eclipse.swt.events.MouseEvent;
+import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 
@@ -68,15 +72,19 @@ import org.eclipse.swt.layout.GridLayout;
 
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
-
+import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.DefaultEndPointPropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.developerstudio.esb.form.editors.article.providers.NamedEntityDescriptor;
 
 // End of user code
 
@@ -86,57 +94,101 @@ import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
  */
 public class DefaultEndPointPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, DefaultEndPointPropertiesEditionPart {
 
-	protected Text commentsList;
-	protected Button editCommentsList;
-	protected EList commentsListList;
-	protected Text endPointName;
-	protected Button anonymous;
-	protected Button inLine;
-	protected Button duplicate;
-	protected Button reversed;
-	protected EMFComboViewer format;
-	protected ReferencesTable templateParameters;
-	protected List<ViewerFilter> templateParametersBusinessFilters = new ArrayList<ViewerFilter>();
-	protected List<ViewerFilter> templateParametersFilters = new ArrayList<ViewerFilter>();
-	protected Button statisticsEnabled;
-	protected Button traceEnabled;
-	protected Text suspendErrorCodes;
-	protected Text suspendInitialDuration;
-	protected Text suspendMaximumDuration;
-	protected Text suspendProgressionFactor;
-	protected Text retryErrorCodes;
-	protected Text retryCount;
-	protected Text retryDelay;
-	protected ReferencesTable properties;
-	protected List<ViewerFilter> propertiesBusinessFilters = new ArrayList<ViewerFilter>();
-	protected List<ViewerFilter> propertiesFilters = new ArrayList<ViewerFilter>();
-	protected EMFComboViewer optimize;
-	protected Text description;
-	protected Button reliableMessagingEnabled;
-	protected Button securityEnabled;
-	protected Button addressingEnabled;
-	protected Button addressingSeparateListener;
-	protected EMFComboViewer addressingVersion;
-	// Start of user code  for Reliable Messaging Policy widgets declarations
-	
-	// End of user code
+    protected Text commentsList;
+    protected Button editCommentsList;
+    protected EList commentsListList;
+    protected Text endPointName;
+    protected Button anonymous;
+    protected Button inLine;
+    protected Button duplicate;
+    protected Button reversed;
+    protected EMFComboViewer format;
+    protected ReferencesTable templateParameters;
+    protected List<ViewerFilter> templateParametersBusinessFilters = new ArrayList<ViewerFilter>();
+    protected List<ViewerFilter> templateParametersFilters = new ArrayList<ViewerFilter>();
+    protected Button statisticsEnabled;
+    protected Button traceEnabled;
+    protected Text suspendErrorCodes;
+    protected Text suspendInitialDuration;
+    protected Text suspendMaximumDuration;
+    protected Text suspendProgressionFactor;
+    protected Text retryErrorCodes;
+    protected Text retryCount;
+    protected Text retryDelay;
+    protected ReferencesTable properties;
+    protected List<ViewerFilter> propertiesBusinessFilters = new ArrayList<ViewerFilter>();
+    protected List<ViewerFilter> propertiesFilters = new ArrayList<ViewerFilter>();
+    protected EMFComboViewer optimize;
+    protected Text description;
+    protected Button reliableMessagingEnabled;
+    protected Button securityEnabled;
+    protected Button addressingEnabled;
+    protected Button addressingSeparateListener;
+    protected EMFComboViewer addressingVersion;
+    // Start of user code  for Reliable Messaging Policy widgets declarations
+    protected RegistryKeyProperty reliableMessagingPolicy;
+    protected Text reliableMessagingPolicyText;
+    // End of user code
 
-	// Start of user code  for Security Policy widgets declarations
-	
-	// End of user code
+    // Start of user code  for Security Policy widgets declarations
+    protected RegistryKeyProperty securityPolicy;
+    protected Text securityPolicyText;
+    // End of user code
 
-	// Start of user code  for Inbound Policy widgets declarations
-	
-	// End of user code
+    // Start of user code  for Inbound Policy widgets declarations
+    protected RegistryKeyProperty inboundPolicy;
+    protected Text inboundPolicyText;
+    // End of user code
 
-	// Start of user code  for Outbound Policy widgets declarations
-	
-	// End of user code
+    // Start of user code  for Outbound Policy widgets declarations
+    protected RegistryKeyProperty outboundPolicy;
+    protected Text outboundPolicyText;
+    
+    protected Control[] inlineTypeElements;
+    protected Control[] formatTypeElements;
+    protected Control[] traceEnabledTypeElements;
+    protected Control[] statEnabledTypeElements;
+    protected Control[] suspendErrorCodesTypeElements;
+    protected Control[] suspendInitialDurationTypeElements;
+    protected Control[] suspendMaxDurationTypeElements;
+    protected Control[] suspendProgressionFactorTypeElements;
+    protected Control[] retryErrorCodesTypeElements;
+    protected Control[] retryCountTypeElements;
+    protected Control[] retryDelayTypeElements;
+    protected Control[] propertiesTypeElements;
+    protected Control[] optimizeTypeElements;
+    protected Control[] descriptionTypeElements;
+    protected Control[] reliableMegEnabledTypeElements;
+    protected Control[] securithEnabledTypeElements;
+    protected Control[] addressingEnabledTypeElements;
+    protected Control[] timeoutDurationTypeElements;
+    protected Control[] timeoutActionTypeElements;
+    protected Control[] reliablePolicyTypeElements;
+    protected Control[] securityPolicyTypeElements;
+    protected Control[] inboundPolicyTypeElements;
+    protected Control[] outboundPolicyTypeElements;
+    protected Control[] addressingVersionTypeElements;
+    protected Control[] addressingSeperateListenerTypeElements;
+ 
+    protected Group basicGroup;
+    protected Group endpointSuspendStateGroup;
+    protected Group endpointTimeoutStateGroup;
+    protected Group miscGroup;
+    protected Group qoSGroup;
+    protected Group timeoutGroup;
+    
+    protected GridData propertiesData;
+    
+    protected Composite filterAdvancedSubPropertiesGroup;
+    protected Group failoverErrorCodesGroup;
+    
+    protected Text failoverNonRetryErrorCodes;
+    protected Control[] failoverNonRetryErrorCodesElements;
+    
+    // End of user code
 
-	protected Text timeOutDuration;
-	protected EMFComboViewer timeOutAction;
-	protected Text failoverNonRetryErrorCodes;
-
+    protected Text timeOutDuration;
+    protected EMFComboViewer timeOutAction;
 
 
 	/**
@@ -316,16 +368,24 @@ public class DefaultEndPointPropertiesEditionPartImpl extends CompositePropertie
 					return createAddressingVersionEMFComboViewer(parent);
 				}
 				// Start of user code for Reliable Messaging Policy addToPart creation
-				
+                if (key == EsbViewsRepository.DefaultEndPoint.QoS.reliableMessagingPolicy) {
+                    return createReliableMessagingPolicy(parent);
+                }
 				// End of user code
 				// Start of user code for Security Policy addToPart creation
-				
+                if (key == EsbViewsRepository.DefaultEndPoint.QoS.securityPolicy) {
+                    return createSecurityPolicy(parent);
+                }
 				// End of user code
 				// Start of user code for Inbound Policy addToPart creation
-				
+                if (key == EsbViewsRepository.DefaultEndPoint.QoS.inboundPolicy) {
+                    return createInboundPolicy(parent);
+                }
 				// End of user code
 				// Start of user code for Outbound Policy addToPart creation
-				
+                if (key == EsbViewsRepository.DefaultEndPoint.QoS.outboundPolicy) {
+                    return createOutboundPolicy(parent);
+                }
 				// End of user code
 				if (key == EsbViewsRepository.DefaultEndPoint.Timeout.class) {
 					return createTimeoutGroup(parent);
@@ -349,10 +409,10 @@ public class DefaultEndPointPropertiesEditionPartImpl extends CompositePropertie
 	}
 
 	/**
-	 * 
+	 * @generated NOT
 	 */
 	protected Composite createBasicGroup(Composite parent) {
-		Group basicGroup = new Group(parent, SWT.NONE);
+		basicGroup = new Group(parent, SWT.NONE);
 		basicGroup.setText(EsbMessages.DefaultEndPointPropertiesEditionPart_BasicGroupLabel);
 		GridData basicGroupData = new GridData(GridData.FILL_HORIZONTAL);
 		basicGroupData.horizontalSpan = 3;
@@ -485,7 +545,9 @@ public class DefaultEndPointPropertiesEditionPartImpl extends CompositePropertie
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createInLineCheckbox(Composite parent) {
 		inLine = new Button(parent, SWT.CHECK);
 		inLine.setText(getDescription(EsbViewsRepository.DefaultEndPoint.Basic.inLine, EsbMessages.DefaultEndPointPropertiesEditionPart_InLineLabel));
@@ -508,9 +570,9 @@ public class DefaultEndPointPropertiesEditionPartImpl extends CompositePropertie
 		inLine.setLayoutData(inLineData);
 		EditingUtils.setID(inLine, EsbViewsRepository.DefaultEndPoint.Basic.inLine);
 		EditingUtils.setEEFtype(inLine, "eef::Checkbox"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DefaultEndPoint.Basic.inLine, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		Control inlineHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DefaultEndPoint.Basic.inLine, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createInLineCheckbox
-
+		inlineTypeElements = new Control[] { inLine, inlineHelp };
 		// End of user code
 		return parent;
 	}
@@ -575,10 +637,12 @@ public class DefaultEndPointPropertiesEditionPartImpl extends CompositePropertie
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createFormatEMFComboViewer(Composite parent) {
-		createDescription(parent, EsbViewsRepository.DefaultEndPoint.Basic.format, EsbMessages.DefaultEndPointPropertiesEditionPart_FormatLabel);
-		format = new EMFComboViewer(parent);
+	    Control formatLabel = createDescription(parent, EsbViewsRepository.DefaultEndPoint.Basic.format, EsbMessages.DefaultEndPointPropertiesEditionPart_FormatLabel);
+		format = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		format.setContentProvider(new ArrayContentProvider());
 		format.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData formatData = new GridData(GridData.FILL_HORIZONTAL);
@@ -598,10 +662,10 @@ public class DefaultEndPointPropertiesEditionPartImpl extends CompositePropertie
 
 		});
 		format.setID(EsbViewsRepository.DefaultEndPoint.Basic.format);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DefaultEndPoint.Basic.format, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		Control formatHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DefaultEndPoint.Basic.format, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createFormatEMFComboViewer
-
-		// End of user code
+		formatTypeElements = new Control[] { formatLabel, format.getCombo(), formatHelp };
+        // End of user code
 		return parent;
 	}
 
@@ -656,7 +720,9 @@ public class DefaultEndPointPropertiesEditionPartImpl extends CompositePropertie
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createStatisticsEnabledCheckbox(Composite parent) {
 		statisticsEnabled = new Button(parent, SWT.CHECK);
 		statisticsEnabled.setText(getDescription(EsbViewsRepository.DefaultEndPoint.Basic.statisticsEnabled, EsbMessages.DefaultEndPointPropertiesEditionPart_StatisticsEnabledLabel));
@@ -679,14 +745,16 @@ public class DefaultEndPointPropertiesEditionPartImpl extends CompositePropertie
 		statisticsEnabled.setLayoutData(statisticsEnabledData);
 		EditingUtils.setID(statisticsEnabled, EsbViewsRepository.DefaultEndPoint.Basic.statisticsEnabled);
 		EditingUtils.setEEFtype(statisticsEnabled, "eef::Checkbox"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DefaultEndPoint.Basic.statisticsEnabled, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		Control statEnableHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DefaultEndPoint.Basic.statisticsEnabled, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createStatisticsEnabledCheckbox
-
-		// End of user code
+		statEnabledTypeElements = new Control[] { statisticsEnabled, statEnableHelp };
+        // End of user code
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createTraceEnabledCheckbox(Composite parent) {
 		traceEnabled = new Button(parent, SWT.CHECK);
 		traceEnabled.setText(getDescription(EsbViewsRepository.DefaultEndPoint.Basic.traceEnabled, EsbMessages.DefaultEndPointPropertiesEditionPart_TraceEnabledLabel));
@@ -709,18 +777,18 @@ public class DefaultEndPointPropertiesEditionPartImpl extends CompositePropertie
 		traceEnabled.setLayoutData(traceEnabledData);
 		EditingUtils.setID(traceEnabled, EsbViewsRepository.DefaultEndPoint.Basic.traceEnabled);
 		EditingUtils.setEEFtype(traceEnabled, "eef::Checkbox"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DefaultEndPoint.Basic.traceEnabled, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		Control tracingEnabledHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DefaultEndPoint.Basic.traceEnabled, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createTraceEnabledCheckbox
-
+		traceEnabledTypeElements = new Control[] { traceEnabled, tracingEnabledHelp };
 		// End of user code
 		return parent;
 	}
 
 	/**
-	 * 
+	 * @generated NOT
 	 */
 	protected Composite createEndpointSuspendStateGroup(Composite parent) {
-		Group endpointSuspendStateGroup = new Group(parent, SWT.NONE);
+		endpointSuspendStateGroup = new Group(parent, SWT.NONE);
 		endpointSuspendStateGroup.setText(EsbMessages.DefaultEndPointPropertiesEditionPart_EndpointSuspendStateGroupLabel);
 		GridData endpointSuspendStateGroupData = new GridData(GridData.FILL_HORIZONTAL);
 		endpointSuspendStateGroupData.horizontalSpan = 3;
@@ -731,9 +799,11 @@ public class DefaultEndPointPropertiesEditionPartImpl extends CompositePropertie
 		return endpointSuspendStateGroup;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createSuspendErrorCodesText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.DefaultEndPoint.EndpointSuspendState.suspendErrorCodes, EsbMessages.DefaultEndPointPropertiesEditionPart_SuspendErrorCodesLabel);
+	    Control suspendErrorCodesLabel = createDescription(parent, EsbViewsRepository.DefaultEndPoint.EndpointSuspendState.suspendErrorCodes, EsbMessages.DefaultEndPointPropertiesEditionPart_SuspendErrorCodesLabel);
 		suspendErrorCodes = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData suspendErrorCodesData = new GridData(GridData.FILL_HORIZONTAL);
 		suspendErrorCodes.setLayoutData(suspendErrorCodesData);
@@ -773,16 +843,18 @@ public class DefaultEndPointPropertiesEditionPartImpl extends CompositePropertie
 		});
 		EditingUtils.setID(suspendErrorCodes, EsbViewsRepository.DefaultEndPoint.EndpointSuspendState.suspendErrorCodes);
 		EditingUtils.setEEFtype(suspendErrorCodes, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DefaultEndPoint.EndpointSuspendState.suspendErrorCodes, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		Control suspendErrorCodesHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DefaultEndPoint.EndpointSuspendState.suspendErrorCodes, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createSuspendErrorCodesText
-
+		suspendErrorCodesTypeElements = new Control[] { suspendErrorCodesLabel, suspendErrorCodes, suspendErrorCodesHelp };
 		// End of user code
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createSuspendInitialDurationText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.DefaultEndPoint.EndpointSuspendState.suspendInitialDuration, EsbMessages.DefaultEndPointPropertiesEditionPart_SuspendInitialDurationLabel);
+	    Control suspendInitialDurationLabel = createDescription(parent, EsbViewsRepository.DefaultEndPoint.EndpointSuspendState.suspendInitialDuration, EsbMessages.DefaultEndPointPropertiesEditionPart_SuspendInitialDurationLabel);
 		suspendInitialDuration = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData suspendInitialDurationData = new GridData(GridData.FILL_HORIZONTAL);
 		suspendInitialDuration.setLayoutData(suspendInitialDurationData);
@@ -822,16 +894,19 @@ public class DefaultEndPointPropertiesEditionPartImpl extends CompositePropertie
 		});
 		EditingUtils.setID(suspendInitialDuration, EsbViewsRepository.DefaultEndPoint.EndpointSuspendState.suspendInitialDuration);
 		EditingUtils.setEEFtype(suspendInitialDuration, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DefaultEndPoint.EndpointSuspendState.suspendInitialDuration, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		Control suspendInitialDurationHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DefaultEndPoint.EndpointSuspendState.suspendInitialDuration, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createSuspendInitialDurationText
-
+        suspendInitialDurationTypeElements = new Control[] { suspendInitialDurationLabel, suspendInitialDuration,
+                suspendInitialDurationHelp };
 		// End of user code
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createSuspendMaximumDurationText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.DefaultEndPoint.EndpointSuspendState.suspendMaximumDuration, EsbMessages.DefaultEndPointPropertiesEditionPart_SuspendMaximumDurationLabel);
+	    Control suspendMaximumDurationLabel = createDescription(parent, EsbViewsRepository.DefaultEndPoint.EndpointSuspendState.suspendMaximumDuration, EsbMessages.DefaultEndPointPropertiesEditionPart_SuspendMaximumDurationLabel);
 		suspendMaximumDuration = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData suspendMaximumDurationData = new GridData(GridData.FILL_HORIZONTAL);
 		suspendMaximumDuration.setLayoutData(suspendMaximumDurationData);
@@ -871,16 +946,19 @@ public class DefaultEndPointPropertiesEditionPartImpl extends CompositePropertie
 		});
 		EditingUtils.setID(suspendMaximumDuration, EsbViewsRepository.DefaultEndPoint.EndpointSuspendState.suspendMaximumDuration);
 		EditingUtils.setEEFtype(suspendMaximumDuration, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DefaultEndPoint.EndpointSuspendState.suspendMaximumDuration, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		Control suspendMaximumDurationHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DefaultEndPoint.EndpointSuspendState.suspendMaximumDuration, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createSuspendMaximumDurationText
-
+        suspendMaxDurationTypeElements = new Control[] { suspendMaximumDurationLabel, suspendMaximumDuration,
+                suspendMaximumDurationHelp };
 		// End of user code
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createSuspendProgressionFactorText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.DefaultEndPoint.EndpointSuspendState.suspendProgressionFactor, EsbMessages.DefaultEndPointPropertiesEditionPart_SuspendProgressionFactorLabel);
+	    Control suspendProgressionFactorLabel = createDescription(parent, EsbViewsRepository.DefaultEndPoint.EndpointSuspendState.suspendProgressionFactor, EsbMessages.DefaultEndPointPropertiesEditionPart_SuspendProgressionFactorLabel);
 		suspendProgressionFactor = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData suspendProgressionFactorData = new GridData(GridData.FILL_HORIZONTAL);
 		suspendProgressionFactor.setLayoutData(suspendProgressionFactorData);
@@ -920,18 +998,19 @@ public class DefaultEndPointPropertiesEditionPartImpl extends CompositePropertie
 		});
 		EditingUtils.setID(suspendProgressionFactor, EsbViewsRepository.DefaultEndPoint.EndpointSuspendState.suspendProgressionFactor);
 		EditingUtils.setEEFtype(suspendProgressionFactor, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DefaultEndPoint.EndpointSuspendState.suspendProgressionFactor, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		Control suspendProgressionFactorHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DefaultEndPoint.EndpointSuspendState.suspendProgressionFactor, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createSuspendProgressionFactorText
-
+        suspendProgressionFactorTypeElements = new Control[] { suspendProgressionFactorLabel, suspendProgressionFactor,
+                suspendProgressionFactorHelp };
 		// End of user code
 		return parent;
 	}
 
 	/**
-	 * 
+	 * @generated NOT
 	 */
 	protected Composite createEndpointTimeoutStateGroup(Composite parent) {
-		Group endpointTimeoutStateGroup = new Group(parent, SWT.NONE);
+		endpointTimeoutStateGroup = new Group(parent, SWT.NONE);
 		endpointTimeoutStateGroup.setText(EsbMessages.DefaultEndPointPropertiesEditionPart_EndpointTimeoutStateGroupLabel);
 		GridData endpointTimeoutStateGroupData = new GridData(GridData.FILL_HORIZONTAL);
 		endpointTimeoutStateGroupData.horizontalSpan = 3;
@@ -942,9 +1021,11 @@ public class DefaultEndPointPropertiesEditionPartImpl extends CompositePropertie
 		return endpointTimeoutStateGroup;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createRetryErrorCodesText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.DefaultEndPoint.EndpointTimeoutState.retryErrorCodes, EsbMessages.DefaultEndPointPropertiesEditionPart_RetryErrorCodesLabel);
+	    Control retryErrorCodesLabel =  createDescription(parent, EsbViewsRepository.DefaultEndPoint.EndpointTimeoutState.retryErrorCodes, EsbMessages.DefaultEndPointPropertiesEditionPart_RetryErrorCodesLabel);
 		retryErrorCodes = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData retryErrorCodesData = new GridData(GridData.FILL_HORIZONTAL);
 		retryErrorCodes.setLayoutData(retryErrorCodesData);
@@ -984,16 +1065,18 @@ public class DefaultEndPointPropertiesEditionPartImpl extends CompositePropertie
 		});
 		EditingUtils.setID(retryErrorCodes, EsbViewsRepository.DefaultEndPoint.EndpointTimeoutState.retryErrorCodes);
 		EditingUtils.setEEFtype(retryErrorCodes, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DefaultEndPoint.EndpointTimeoutState.retryErrorCodes, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		Control retryErrorCodesHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DefaultEndPoint.EndpointTimeoutState.retryErrorCodes, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createRetryErrorCodesText
-
+		retryErrorCodesTypeElements = new Control[] { retryErrorCodesLabel, retryErrorCodes, retryErrorCodesHelp };
 		// End of user code
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createRetryCountText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.DefaultEndPoint.EndpointTimeoutState.retryCount, EsbMessages.DefaultEndPointPropertiesEditionPart_RetryCountLabel);
+	    Control retryCountLabel = createDescription(parent, EsbViewsRepository.DefaultEndPoint.EndpointTimeoutState.retryCount, EsbMessages.DefaultEndPointPropertiesEditionPart_RetryCountLabel);
 		retryCount = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData retryCountData = new GridData(GridData.FILL_HORIZONTAL);
 		retryCount.setLayoutData(retryCountData);
@@ -1033,16 +1116,18 @@ public class DefaultEndPointPropertiesEditionPartImpl extends CompositePropertie
 		});
 		EditingUtils.setID(retryCount, EsbViewsRepository.DefaultEndPoint.EndpointTimeoutState.retryCount);
 		EditingUtils.setEEFtype(retryCount, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DefaultEndPoint.EndpointTimeoutState.retryCount, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		Control retryCountHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DefaultEndPoint.EndpointTimeoutState.retryCount, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createRetryCountText
-
+		retryCountTypeElements = new Control[] { retryCountLabel, retryCount, retryCountHelp };
 		// End of user code
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createRetryDelayText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.DefaultEndPoint.EndpointTimeoutState.retryDelay, EsbMessages.DefaultEndPointPropertiesEditionPart_RetryDelayLabel);
+	    Control retryDelayLabel = createDescription(parent, EsbViewsRepository.DefaultEndPoint.EndpointTimeoutState.retryDelay, EsbMessages.DefaultEndPointPropertiesEditionPart_RetryDelayLabel);
 		retryDelay = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData retryDelayData = new GridData(GridData.FILL_HORIZONTAL);
 		retryDelay.setLayoutData(retryDelayData);
@@ -1082,18 +1167,18 @@ public class DefaultEndPointPropertiesEditionPartImpl extends CompositePropertie
 		});
 		EditingUtils.setID(retryDelay, EsbViewsRepository.DefaultEndPoint.EndpointTimeoutState.retryDelay);
 		EditingUtils.setEEFtype(retryDelay, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DefaultEndPoint.EndpointTimeoutState.retryDelay, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		Control retryDelayHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DefaultEndPoint.EndpointTimeoutState.retryDelay, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createRetryDelayText
-
+		retryDelayTypeElements = new Control[] { retryDelayLabel, retryDelay, retryDelayHelp };
 		// End of user code
 		return parent;
 	}
 
 	/**
-	 * 
+	 * @generated NOT
 	 */
 	protected Composite createMiscGroup(Composite parent) {
-		Group miscGroup = new Group(parent, SWT.NONE);
+		miscGroup = new Group(parent, SWT.NONE);
 		miscGroup.setText(EsbMessages.DefaultEndPointPropertiesEditionPart_MiscGroupLabel);
 		GridData miscGroupData = new GridData(GridData.FILL_HORIZONTAL);
 		miscGroupData.horizontalSpan = 3;
@@ -1105,10 +1190,11 @@ public class DefaultEndPointPropertiesEditionPartImpl extends CompositePropertie
 	}
 
 	/**
-	 * @param container
+	 * @generated NOT
 	 * 
 	 */
 	protected Composite createPropertiesAdvancedTableComposition(Composite parent) {
+	    Control[] previousControls = miscGroup.getChildren();
 		this.properties = new ReferencesTable(getDescription(EsbViewsRepository.DefaultEndPoint.Misc.properties, EsbMessages.DefaultEndPointPropertiesEditionPart_PropertiesLabel), new ReferencesTableListener() {
 			public void handleAdd() { 
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DefaultEndPointPropertiesEditionPartImpl.this, EsbViewsRepository.DefaultEndPoint.Misc.properties, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
@@ -1150,15 +1236,18 @@ public class DefaultEndPointPropertiesEditionPartImpl extends CompositePropertie
 		properties.setID(EsbViewsRepository.DefaultEndPoint.Misc.properties);
 		properties.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
 		// Start of user code for createPropertiesAdvancedTableComposition
-
+		Control[] newControls = miscGroup.getChildren();
+        propertiesTypeElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
 		// End of user code
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createOptimizeEMFComboViewer(Composite parent) {
-		createDescription(parent, EsbViewsRepository.DefaultEndPoint.Misc.optimize, EsbMessages.DefaultEndPointPropertiesEditionPart_OptimizeLabel);
-		optimize = new EMFComboViewer(parent);
+	    Control optimizeLabel = createDescription(parent, EsbViewsRepository.DefaultEndPoint.Misc.optimize, EsbMessages.DefaultEndPointPropertiesEditionPart_OptimizeLabel);
+		optimize = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		optimize.setContentProvider(new ArrayContentProvider());
 		optimize.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData optimizeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -1178,16 +1267,18 @@ public class DefaultEndPointPropertiesEditionPartImpl extends CompositePropertie
 
 		});
 		optimize.setID(EsbViewsRepository.DefaultEndPoint.Misc.optimize);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DefaultEndPoint.Misc.optimize, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		Control optimizeHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DefaultEndPoint.Misc.optimize, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createOptimizeEMFComboViewer
-
+		optimizeTypeElements = new Control[] { optimizeLabel, optimize.getCombo(), optimizeHelp };
 		// End of user code
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createDescriptionText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.DefaultEndPoint.Misc.description, EsbMessages.DefaultEndPointPropertiesEditionPart_DescriptionLabel);
+	    Control descriptionLabel = createDescription(parent, EsbViewsRepository.DefaultEndPoint.Misc.description, EsbMessages.DefaultEndPointPropertiesEditionPart_DescriptionLabel);
 		description = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData descriptionData = new GridData(GridData.FILL_HORIZONTAL);
 		description.setLayoutData(descriptionData);
@@ -1227,18 +1318,18 @@ public class DefaultEndPointPropertiesEditionPartImpl extends CompositePropertie
 		});
 		EditingUtils.setID(description, EsbViewsRepository.DefaultEndPoint.Misc.description);
 		EditingUtils.setEEFtype(description, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DefaultEndPoint.Misc.description, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		Control descriptionHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DefaultEndPoint.Misc.description, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createDescriptionText
-
+		descriptionTypeElements = new Control[] { descriptionLabel, description, descriptionHelp };
 		// End of user code
 		return parent;
 	}
 
-	/**
-	 * 
-	 */
+    /**
+     * @generated NOT
+     */
 	protected Composite createQoSGroup(Composite parent) {
-		Group qoSGroup = new Group(parent, SWT.NONE);
+		qoSGroup = new Group(parent, SWT.NONE);
 		qoSGroup.setText(EsbMessages.DefaultEndPointPropertiesEditionPart_QoSGroupLabel);
 		GridData qoSGroupData = new GridData(GridData.FILL_HORIZONTAL);
 		qoSGroupData.horizontalSpan = 3;
@@ -1249,7 +1340,9 @@ public class DefaultEndPointPropertiesEditionPartImpl extends CompositePropertie
 		return qoSGroup;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createReliableMessagingEnabledCheckbox(Composite parent) {
 		reliableMessagingEnabled = new Button(parent, SWT.CHECK);
 		reliableMessagingEnabled.setText(getDescription(EsbViewsRepository.DefaultEndPoint.QoS.reliableMessagingEnabled, EsbMessages.DefaultEndPointPropertiesEditionPart_ReliableMessagingEnabledLabel));
@@ -1272,14 +1365,21 @@ public class DefaultEndPointPropertiesEditionPartImpl extends CompositePropertie
 		reliableMessagingEnabled.setLayoutData(reliableMessagingEnabledData);
 		EditingUtils.setID(reliableMessagingEnabled, EsbViewsRepository.DefaultEndPoint.QoS.reliableMessagingEnabled);
 		EditingUtils.setEEFtype(reliableMessagingEnabled, "eef::Checkbox"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DefaultEndPoint.QoS.reliableMessagingEnabled, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		Control reliableMessagingEnabledHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DefaultEndPoint.QoS.reliableMessagingEnabled, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createReliableMessagingEnabledCheckbox
-
+		reliableMegEnabledTypeElements = new Control[] { reliableMessagingEnabled, reliableMessagingEnabledHelp };
+        reliableMessagingEnabled.addSelectionListener(new SelectionAdapter() {
+            public void widgetSelected(SelectionEvent e) {
+                refresh();
+            }
+        });
 		// End of user code
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createSecurityEnabledCheckbox(Composite parent) {
 		securityEnabled = new Button(parent, SWT.CHECK);
 		securityEnabled.setText(getDescription(EsbViewsRepository.DefaultEndPoint.QoS.securityEnabled, EsbMessages.DefaultEndPointPropertiesEditionPart_SecurityEnabledLabel));
@@ -1302,14 +1402,21 @@ public class DefaultEndPointPropertiesEditionPartImpl extends CompositePropertie
 		securityEnabled.setLayoutData(securityEnabledData);
 		EditingUtils.setID(securityEnabled, EsbViewsRepository.DefaultEndPoint.QoS.securityEnabled);
 		EditingUtils.setEEFtype(securityEnabled, "eef::Checkbox"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DefaultEndPoint.QoS.securityEnabled, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		Control securityEnabledHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DefaultEndPoint.QoS.securityEnabled, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createSecurityEnabledCheckbox
-
+        securithEnabledTypeElements = new Control[] { securityEnabled, securityEnabledHelp };
+        securityEnabled.addSelectionListener(new SelectionAdapter() {
+            public void widgetSelected(SelectionEvent e) {
+                refresh();
+            }
+        });
 		// End of user code
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createAddressingEnabledCheckbox(Composite parent) {
 		addressingEnabled = new Button(parent, SWT.CHECK);
 		addressingEnabled.setText(getDescription(EsbViewsRepository.DefaultEndPoint.QoS.addressingEnabled, EsbMessages.DefaultEndPointPropertiesEditionPart_AddressingEnabledLabel));
@@ -1332,16 +1439,23 @@ public class DefaultEndPointPropertiesEditionPartImpl extends CompositePropertie
 		addressingEnabled.setLayoutData(addressingEnabledData);
 		EditingUtils.setID(addressingEnabled, EsbViewsRepository.DefaultEndPoint.QoS.addressingEnabled);
 		EditingUtils.setEEFtype(addressingEnabled, "eef::Checkbox"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DefaultEndPoint.QoS.addressingEnabled, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		Control addressingEnabledHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DefaultEndPoint.QoS.addressingEnabled, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createAddressingEnabledCheckbox
-
+        addressingEnabledTypeElements = new Control[] { addressingEnabled, addressingEnabledHelp };
+        addressingEnabled.addSelectionListener(new SelectionAdapter() {
+            public void widgetSelected(SelectionEvent e) {
+                refresh();
+            }
+        });
 		// End of user code
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createAddressingSeparateListenerCheckbox(Composite parent) {
-		addressingSeparateListener = new Button(parent, SWT.CHECK);
+	    addressingSeparateListener = new Button(parent, SWT.CHECK);
 		addressingSeparateListener.setText(getDescription(EsbViewsRepository.DefaultEndPoint.QoS.addressingSeparateListener, EsbMessages.DefaultEndPointPropertiesEditionPart_AddressingSeparateListenerLabel));
 		addressingSeparateListener.addSelectionListener(new SelectionAdapter() {
 
@@ -1362,17 +1476,19 @@ public class DefaultEndPointPropertiesEditionPartImpl extends CompositePropertie
 		addressingSeparateListener.setLayoutData(addressingSeparateListenerData);
 		EditingUtils.setID(addressingSeparateListener, EsbViewsRepository.DefaultEndPoint.QoS.addressingSeparateListener);
 		EditingUtils.setEEFtype(addressingSeparateListener, "eef::Checkbox"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DefaultEndPoint.QoS.addressingSeparateListener, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		Control addressingSeparateListenerHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DefaultEndPoint.QoS.addressingSeparateListener, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createAddressingSeparateListenerCheckbox
-
+		addressingSeperateListenerTypeElements = new Control[] { addressingSeparateListener, addressingSeparateListenerHelp };
 		// End of user code
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createAddressingVersionEMFComboViewer(Composite parent) {
-		createDescription(parent, EsbViewsRepository.DefaultEndPoint.QoS.addressingVersion, EsbMessages.DefaultEndPointPropertiesEditionPart_AddressingVersionLabel);
-		addressingVersion = new EMFComboViewer(parent);
+	    Control addressingVersionLabel = createDescription(parent, EsbViewsRepository.DefaultEndPoint.QoS.addressingVersion, EsbMessages.DefaultEndPointPropertiesEditionPart_AddressingVersionLabel);
+		addressingVersion = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		addressingVersion.setContentProvider(new ArrayContentProvider());
 		addressingVersion.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData addressingVersionData = new GridData(GridData.FILL_HORIZONTAL);
@@ -1392,18 +1508,19 @@ public class DefaultEndPointPropertiesEditionPartImpl extends CompositePropertie
 
 		});
 		addressingVersion.setID(EsbViewsRepository.DefaultEndPoint.QoS.addressingVersion);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DefaultEndPoint.QoS.addressingVersion, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		Control addressingVersionHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DefaultEndPoint.QoS.addressingVersion, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createAddressingVersionEMFComboViewer
-
+        addressingVersionTypeElements = new Control[] { addressingVersionLabel, addressingVersion.getCombo(),
+                addressingVersionHelp };
 		// End of user code
 		return parent;
 	}
 
-	/**
-	 * 
-	 */
+    /**
+     * @generated NOT
+     */
 	protected Composite createTimeoutGroup(Composite parent) {
-		Group timeoutGroup = new Group(parent, SWT.NONE);
+		timeoutGroup = new Group(parent, SWT.NONE);
 		timeoutGroup.setText(EsbMessages.DefaultEndPointPropertiesEditionPart_TimeoutGroupLabel);
 		GridData timeoutGroupData = new GridData(GridData.FILL_HORIZONTAL);
 		timeoutGroupData.horizontalSpan = 3;
@@ -1414,9 +1531,11 @@ public class DefaultEndPointPropertiesEditionPartImpl extends CompositePropertie
 		return timeoutGroup;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createTimeOutDurationText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.DefaultEndPoint.Timeout.timeOutDuration, EsbMessages.DefaultEndPointPropertiesEditionPart_TimeOutDurationLabel);
+	    Control timeOutDurationLabel = createDescription(parent, EsbViewsRepository.DefaultEndPoint.Timeout.timeOutDuration, EsbMessages.DefaultEndPointPropertiesEditionPart_TimeOutDurationLabel);
 		timeOutDuration = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData timeOutDurationData = new GridData(GridData.FILL_HORIZONTAL);
 		timeOutDuration.setLayoutData(timeOutDurationData);
@@ -1456,17 +1575,19 @@ public class DefaultEndPointPropertiesEditionPartImpl extends CompositePropertie
 		});
 		EditingUtils.setID(timeOutDuration, EsbViewsRepository.DefaultEndPoint.Timeout.timeOutDuration);
 		EditingUtils.setEEFtype(timeOutDuration, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DefaultEndPoint.Timeout.timeOutDuration, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		Control timeOutDurationHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DefaultEndPoint.Timeout.timeOutDuration, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createTimeOutDurationText
-
+		timeoutDurationTypeElements = new Control[] { timeOutDurationLabel, timeOutDuration, timeOutDurationHelp };
 		// End of user code
 		return parent;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createTimeOutActionEMFComboViewer(Composite parent) {
-		createDescription(parent, EsbViewsRepository.DefaultEndPoint.Timeout.timeOutAction, EsbMessages.DefaultEndPointPropertiesEditionPart_TimeOutActionLabel);
-		timeOutAction = new EMFComboViewer(parent);
+	    Control timeOutActionLabel = createDescription(parent, EsbViewsRepository.DefaultEndPoint.Timeout.timeOutAction, EsbMessages.DefaultEndPointPropertiesEditionPart_TimeOutActionLabel);
+		timeOutAction = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		timeOutAction.setContentProvider(new ArrayContentProvider());
 		timeOutAction.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData timeOutActionData = new GridData(GridData.FILL_HORIZONTAL);
@@ -1486,18 +1607,18 @@ public class DefaultEndPointPropertiesEditionPartImpl extends CompositePropertie
 
 		});
 		timeOutAction.setID(EsbViewsRepository.DefaultEndPoint.Timeout.timeOutAction);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DefaultEndPoint.Timeout.timeOutAction, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		Control timeOutActionHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DefaultEndPoint.Timeout.timeOutAction, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createTimeOutActionEMFComboViewer
-
+		timeoutActionTypeElements = new Control[] { timeOutActionLabel, timeOutAction.getCombo(), timeOutActionHelp };
 		// End of user code
 		return parent;
 	}
 
-	/**
-	 * 
-	 */
+    /**
+     * @generated NOT
+     */
 	protected Composite createFailoverErrorCodesGroup(Composite parent) {
-		Group failoverErrorCodesGroup = new Group(parent, SWT.NONE);
+		failoverErrorCodesGroup = new Group(parent, SWT.NONE);
 		failoverErrorCodesGroup.setText(EsbMessages.DefaultEndPointPropertiesEditionPart_FailoverErrorCodesGroupLabel);
 		GridData failoverErrorCodesGroupData = new GridData(GridData.FILL_HORIZONTAL);
 		failoverErrorCodesGroupData.horizontalSpan = 3;
@@ -1508,9 +1629,11 @@ public class DefaultEndPointPropertiesEditionPartImpl extends CompositePropertie
 		return failoverErrorCodesGroup;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createFailoverNonRetryErrorCodesText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.DefaultEndPoint.FailoverErrorCodes.failoverNonRetryErrorCodes, EsbMessages.DefaultEndPointPropertiesEditionPart_FailoverNonRetryErrorCodesLabel);
+	    Control failoverNonRetryErrorCodesLabel = createDescription(parent, EsbViewsRepository.DefaultEndPoint.FailoverErrorCodes.failoverNonRetryErrorCodes, EsbMessages.DefaultEndPointPropertiesEditionPart_FailoverNonRetryErrorCodesLabel);
 		failoverNonRetryErrorCodes = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData failoverNonRetryErrorCodesData = new GridData(GridData.FILL_HORIZONTAL);
 		failoverNonRetryErrorCodes.setLayoutData(failoverNonRetryErrorCodesData);
@@ -1550,9 +1673,9 @@ public class DefaultEndPointPropertiesEditionPartImpl extends CompositePropertie
 		});
 		EditingUtils.setID(failoverNonRetryErrorCodes, EsbViewsRepository.DefaultEndPoint.FailoverErrorCodes.failoverNonRetryErrorCodes);
 		EditingUtils.setEEFtype(failoverNonRetryErrorCodes, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DefaultEndPoint.FailoverErrorCodes.failoverNonRetryErrorCodes, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		Control failoverNonRetryErrorCodesHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DefaultEndPoint.FailoverErrorCodes.failoverNonRetryErrorCodes, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createFailoverNonRetryErrorCodesText
-
+		failoverNonRetryErrorCodesElements = new Control[] { failoverNonRetryErrorCodesLabel, failoverNonRetryErrorCodes, failoverNonRetryErrorCodesHelp };
 		// End of user code
 		return parent;
 	}
@@ -2621,56 +2744,60 @@ public class DefaultEndPointPropertiesEditionPartImpl extends CompositePropertie
 	// Start of user code for Reliable Messaging Policy specific getters and setters implementation
 	@Override
 	public RegistryKeyProperty getReliableMessagingPolicy() {
-		// TODO Auto-generated method stub
-		return null;
+	    return reliableMessagingPolicy;
 	}
 
 	@Override
 	public void setReliableMessagingPolicy(RegistryKeyProperty registryKeyProperty) {
-		// TODO Auto-generated method stub
-		
+	    if (registryKeyProperty != null) {
+            reliableMessagingPolicyText.setText(registryKeyProperty.getKeyValue());
+            reliableMessagingPolicy = registryKeyProperty;
+        }
 	}
 	// End of user code
 
 	// Start of user code for Security Policy specific getters and setters implementation
 	@Override
 	public RegistryKeyProperty getSecurityPolicy() {
-		// TODO Auto-generated method stub
-		return null;
+	    return securityPolicy;
 	}
 
 	@Override
 	public void setSecurityPolicy(RegistryKeyProperty registryKeyProperty) {
-		// TODO Auto-generated method stub
-		
+	    if (registryKeyProperty != null) {
+            securityPolicyText.setText(registryKeyProperty.getKeyValue());
+            securityPolicy = registryKeyProperty;
+        }
 	}
 	// End of user code
 
 	// Start of user code for Inbound Policy specific getters and setters implementation
 	@Override
 	public RegistryKeyProperty getInboundPolicy() {
-		// TODO Auto-generated method stub
-		return null;
+	    return inboundPolicy;
 	}
 
 	@Override
 	public void setInboundPolicy(RegistryKeyProperty registryKeyProperty) {
-		// TODO Auto-generated method stub
-		
+	    if (registryKeyProperty != null) {
+            inboundPolicyText.setText(registryKeyProperty.getKeyValue());
+            inboundPolicy = registryKeyProperty;
+        }
 	}
 	// End of user code
 
 	// Start of user code for Outbound Policy specific getters and setters implementation
 	@Override
 	public RegistryKeyProperty getOutboundPolicy() {
-		// TODO Auto-generated method stub
-		return null;
+	    return outboundPolicy;
 	}
 
 	@Override
 	public void setOutboundPolicy(RegistryKeyProperty registryKeyProperty) {
-		// TODO Auto-generated method stub
-		
+	    if (registryKeyProperty != null) {
+            outboundPolicyText.setText(registryKeyProperty.getKeyValue());
+            outboundPolicy = registryKeyProperty;
+        }
 	}
 	// End of user code
 
@@ -2685,7 +2812,312 @@ public class DefaultEndPointPropertiesEditionPartImpl extends CompositePropertie
 	}
 
 	// Start of user code additional methods
-	
+	   protected Composite createReliableMessagingPolicy(Composite parent) {
+	        Control reliableMessagingPolicyLabel = createDescription(parent,
+	                EsbViewsRepository.DefaultEndPoint.QoS.reliableMessagingPolicy,
+	                EsbMessages.DefaultEndPointPropertiesEditionPart_ReliableMessagingPolicyLabel);
+	        if (reliableMessagingPolicy == null) {
+	            reliableMessagingPolicy = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
+	        }
+	        String initValueExpression = reliableMessagingPolicy.getKeyValue().isEmpty() ? ""
+	                : reliableMessagingPolicy.getKeyValue();
+	        reliableMessagingPolicyText = SWTUtils.createScrollableText(parent, SWT.READ_ONLY);
+	        reliableMessagingPolicyText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+	        GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
+	        reliableMessagingPolicyText.setLayoutData(valueData);
+	        
+	        reliableMessagingPolicyText.addMouseListener(new MouseListener() {
+	            
+	            @Override
+	            public void mouseDown(MouseEvent e) {
+	                EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
+	                        SWT.NULL, reliableMessagingPolicy, new ArrayList<NamedEntityDescriptor>());
+	                dialog.open();
+	                reliableMessagingPolicyText.setText(reliableMessagingPolicy.getKeyValue());
+	                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+	                        DefaultEndPointPropertiesEditionPartImpl.this,
+	                        EsbViewsRepository.AddressEndPoint.QoS.reliableMessagingPolicy, PropertiesEditionEvent.COMMIT,
+	                        PropertiesEditionEvent.SET, null, getReliableMessagingPolicy()));
+	            }
+	            
+	            @Override
+	            public void mouseUp(MouseEvent e) {}
+	            
+	            @Override
+	            public void mouseDoubleClick(MouseEvent e) {}
+	            
+	        });
+	        
+	        reliableMessagingPolicyText.addKeyListener(new KeyListener() {
+	            
+	            @Override
+	            public void keyReleased(KeyEvent e) {
+	                if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+	                    EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
+	                            SWT.NULL, reliableMessagingPolicy, new ArrayList<NamedEntityDescriptor>());
+	                    dialog.open();
+	                    reliableMessagingPolicyText.setText(reliableMessagingPolicy.getKeyValue());
+	                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+	                            DefaultEndPointPropertiesEditionPartImpl.this,
+	                            EsbViewsRepository.AddressEndPoint.QoS.reliableMessagingPolicy, PropertiesEditionEvent.COMMIT,
+	                            PropertiesEditionEvent.SET, null, getReliableMessagingPolicy()));
+	                }
+	            }
+	            
+	            @Override
+	            public void keyPressed(KeyEvent e) {}
+	            
+	        });
+	        
+	        EditingUtils.setID(reliableMessagingPolicyText, EsbViewsRepository.DefaultEndPoint.QoS.reliableMessagingPolicy);
+	        EditingUtils.setEEFtype(reliableMessagingPolicyText, "eef::Text");
+	        Control reliableMessagingPolicyHelp = SWTUtils.createHelpButton(parent,
+	                propertiesEditionComponent.getHelpContent(
+	                        EsbViewsRepository.DefaultEndPoint.QoS.reliableMessagingPolicy, EsbViewsRepository.FORM_KIND),
+	                null); // $NON-NLS-1$
+	        reliablePolicyTypeElements = new Control[] { reliableMessagingPolicyLabel, reliableMessagingPolicyText,
+	                reliableMessagingPolicyHelp };
+	        return parent;
+	    }
+
+	    protected Composite createInboundPolicy(Composite parent) {
+	        Control inboundPolicyLabel = createDescription(parent, EsbViewsRepository.DefaultEndPoint.QoS.inboundPolicy,
+	                EsbMessages.DefaultEndPointPropertiesEditionPart_InboundPolicyLabel);
+	        if (inboundPolicy == null) {
+	            inboundPolicy = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
+	        }
+	        inboundPolicyText = SWTUtils.createScrollableText(parent, SWT.READ_ONLY);
+	        inboundPolicyText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+	        GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
+	        inboundPolicyText.setLayoutData(valueData);
+	        
+	        inboundPolicyText.addMouseListener(new MouseListener() {
+	            
+	            @Override
+	            public void mouseDown(MouseEvent e) {
+	                EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
+	                        SWT.NULL, inboundPolicy, new ArrayList<NamedEntityDescriptor>());
+	                dialog.open();
+	                inboundPolicyText.setText(inboundPolicy.getKeyValue());
+	                propertiesEditionComponent
+	                        .firePropertiesChanged(new PropertiesEditionEvent(DefaultEndPointPropertiesEditionPartImpl.this,
+	                                EsbViewsRepository.AddressEndPoint.QoS.inboundPolicy, PropertiesEditionEvent.COMMIT,
+	                                PropertiesEditionEvent.SET, null, getInboundPolicy()));
+	            }
+	            
+	            @Override
+	            public void mouseUp(MouseEvent e) {}
+	            
+	            @Override
+	            public void mouseDoubleClick(MouseEvent e) {}
+	            
+	        });
+	        
+	        inboundPolicyText.addKeyListener(new KeyListener() {
+	            
+	            @Override
+	            public void keyReleased(KeyEvent e) {
+	                if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+	                    EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
+	                            SWT.NULL, inboundPolicy, new ArrayList<NamedEntityDescriptor>());
+	                    dialog.open();
+	                    inboundPolicyText.setText(inboundPolicy.getKeyValue());
+	                    propertiesEditionComponent
+	                            .firePropertiesChanged(new PropertiesEditionEvent(DefaultEndPointPropertiesEditionPartImpl.this,
+	                                    EsbViewsRepository.AddressEndPoint.QoS.inboundPolicy, PropertiesEditionEvent.COMMIT,
+	                                    PropertiesEditionEvent.SET, null, getInboundPolicy()));
+	                }
+	            }
+	            
+	            @Override
+	            public void keyPressed(KeyEvent e) {}
+	            
+	        });
+	        
+	        EditingUtils.setID(inboundPolicyText, EsbViewsRepository.DefaultEndPoint.QoS.inboundPolicy);
+	        EditingUtils.setEEFtype(inboundPolicyText, "eef::Text");
+	        Control inboundPolicyHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent
+	                .getHelpContent(EsbViewsRepository.DefaultEndPoint.QoS.inboundPolicy, EsbViewsRepository.FORM_KIND),
+	                null); // $NON-NLS-1$
+	        inboundPolicyTypeElements = new Control[] { inboundPolicyLabel, inboundPolicyText, inboundPolicyHelp };
+	        return parent;
+	    }
+
+	    protected Composite createOutboundPolicy(Composite parent) {
+	        Control outboundPolicyLabel = createDescription(parent, EsbViewsRepository.DefaultEndPoint.QoS.outboundPolicy,
+	                EsbMessages.DefaultEndPointPropertiesEditionPart_OutboundPolicyLabel);
+	        if (outboundPolicy == null) {
+	            outboundPolicy = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
+	        }
+	        outboundPolicyText = SWTUtils.createScrollableText(parent, SWT.READ_ONLY);
+	        outboundPolicyText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+	        GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
+	        outboundPolicyText.setLayoutData(valueData);
+	        
+	        outboundPolicyText.addMouseListener(new MouseListener() {
+	            
+	            @Override
+	            public void mouseDown(MouseEvent e) {
+	                EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
+	                        SWT.NULL, outboundPolicy, new ArrayList<NamedEntityDescriptor>());
+	                dialog.open();
+	                outboundPolicyText.setText(outboundPolicy.getKeyValue());
+	                propertiesEditionComponent
+	                        .firePropertiesChanged(new PropertiesEditionEvent(DefaultEndPointPropertiesEditionPartImpl.this,
+	                                EsbViewsRepository.DefaultEndPoint.QoS.outboundPolicy, PropertiesEditionEvent.COMMIT,
+	                                PropertiesEditionEvent.SET, null, getOutboundPolicy()));
+	            }
+	            
+	            @Override
+	            public void mouseUp(MouseEvent e) {}
+	            
+	            @Override
+	            public void mouseDoubleClick(MouseEvent e) {}
+	            
+	        });
+	        
+	        outboundPolicyText.addKeyListener(new KeyListener() {
+	            
+	            @Override
+	            public void keyReleased(KeyEvent e) {
+	                if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+	                    EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
+	                            SWT.NULL, outboundPolicy, new ArrayList<NamedEntityDescriptor>());
+	                    dialog.open();
+	                    outboundPolicyText.setText(outboundPolicy.getKeyValue());
+	                    propertiesEditionComponent
+	                            .firePropertiesChanged(new PropertiesEditionEvent(DefaultEndPointPropertiesEditionPartImpl.this,
+	                                    EsbViewsRepository.DefaultEndPoint.QoS.outboundPolicy, PropertiesEditionEvent.COMMIT,
+	                                    PropertiesEditionEvent.SET, null, getOutboundPolicy()));
+	                }
+	            }
+	            
+	            @Override
+	            public void keyPressed(KeyEvent e) {}
+	            
+	        });
+	        
+	        EditingUtils.setID(outboundPolicyText, EsbViewsRepository.DefaultEndPoint.QoS.outboundPolicy);
+	        EditingUtils.setEEFtype(outboundPolicyText, "eef::Text");
+	        Control outboundPolicyHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent
+	                .getHelpContent(EsbViewsRepository.DefaultEndPoint.QoS.outboundPolicy, EsbViewsRepository.FORM_KIND),
+	                null); // $NON-NLS-1$
+	        outboundPolicyTypeElements = new Control[] { outboundPolicyLabel, outboundPolicyText, outboundPolicyHelp };
+	        return parent;
+	    }
+
+	    protected Composite createSecurityPolicy(Composite parent) {
+	        Control securityPolicyLabel = createDescription(parent, EsbViewsRepository.DefaultEndPoint.QoS.securityPolicy,
+	                EsbMessages.DefaultEndPointPropertiesEditionPart_SecurityPolicyLabel);
+	        if (securityPolicy == null) {
+	            securityPolicy = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
+	        }
+	        securityPolicyText = SWTUtils.createScrollableText(parent, SWT.READ_ONLY);
+	        securityPolicyText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+	        GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
+	        securityPolicyText.setLayoutData(valueData);
+	        
+	        securityPolicyText.addMouseListener(new MouseListener() {
+	            
+	            @Override
+	            public void mouseDown(MouseEvent e) {
+	                EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
+	                        SWT.NULL, securityPolicy, new ArrayList<NamedEntityDescriptor>());
+	                dialog.open();
+	                securityPolicyText.setText(securityPolicy.getKeyValue());
+	                propertiesEditionComponent
+	                        .firePropertiesChanged(new PropertiesEditionEvent(DefaultEndPointPropertiesEditionPartImpl.this,
+	                                EsbViewsRepository.DefaultEndPoint.QoS.securityPolicy, PropertiesEditionEvent.COMMIT,
+	                                PropertiesEditionEvent.SET, null, getSecurityPolicy()));
+	            }
+	            
+	            @Override
+	            public void mouseUp(MouseEvent e) {}
+	            
+	            @Override
+	            public void mouseDoubleClick(MouseEvent e) {}
+	            
+	        });
+	        
+	        securityPolicyText.addKeyListener(new KeyListener() {
+	            
+	            @Override
+	            public void keyReleased(KeyEvent e) {
+	                if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+	                    EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
+	                            SWT.NULL, securityPolicy, new ArrayList<NamedEntityDescriptor>());
+	                    dialog.open();
+	                    securityPolicyText.setText(securityPolicy.getKeyValue());
+	                    propertiesEditionComponent
+	                            .firePropertiesChanged(new PropertiesEditionEvent(DefaultEndPointPropertiesEditionPartImpl.this,
+	                                    EsbViewsRepository.DefaultEndPoint.QoS.securityPolicy, PropertiesEditionEvent.COMMIT,
+	                                    PropertiesEditionEvent.SET, null, getSecurityPolicy()));
+	                }
+	            }
+	            
+	            @Override
+	            public void keyPressed(KeyEvent e) {}
+	            
+	        });
+	        
+	        EditingUtils.setID(securityPolicyText, EsbViewsRepository.DefaultEndPoint.QoS.securityPolicy);
+	        EditingUtils.setEEFtype(securityPolicyText, "eef::Text");
+	        Control securityPolicyHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent
+	                .getHelpContent(EsbViewsRepository.DefaultEndPoint.QoS.securityPolicy, EsbViewsRepository.FORM_KIND),
+	                null); // $NON-NLS-1$
+	        securityPolicyTypeElements = new Control[] { securityPolicyLabel, securityPolicyText, securityPolicyHelp };
+	        return parent;
+	    }
+
+	    @Override
+	    public void refresh() {
+	        super.refresh();
+	        validate();
+	    }
+
+	    EEFPropertyViewUtil viewUtil = new EEFPropertyViewUtil(view);
+
+	    public void validate() {
+
+	        viewUtil.clearElements(new Composite[] { basicGroup, endpointSuspendStateGroup, endpointTimeoutStateGroup,
+	                miscGroup, qoSGroup, timeoutGroup, failoverErrorCodesGroup });
+
+	        viewUtil.showEntry(inlineTypeElements, false);
+	        viewUtil.showEntry(formatTypeElements, false);
+	        viewUtil.showEntry(traceEnabledTypeElements, false);
+	        viewUtil.showEntry(statEnabledTypeElements, false);
+	        viewUtil.showEntry(suspendErrorCodesTypeElements, false);
+	        viewUtil.showEntry(suspendInitialDurationTypeElements, false);
+	        viewUtil.showEntry(suspendMaxDurationTypeElements, false);
+	        viewUtil.showEntry(suspendProgressionFactorTypeElements, false);
+	        viewUtil.showEntry(retryErrorCodesTypeElements, false);
+	        viewUtil.showEntry(retryCountTypeElements, false);
+	        viewUtil.showEntry(retryDelayTypeElements, false);
+	        viewUtil.showEntry(propertiesTypeElements, false);
+	        viewUtil.showEntry(optimizeTypeElements, false);
+	        viewUtil.showEntry(descriptionTypeElements, false);
+	        viewUtil.showEntry(reliableMegEnabledTypeElements, false);
+	        if (reliableMessagingEnabled.getSelection()) {
+	            viewUtil.showEntry(reliablePolicyTypeElements, false);
+	        }
+	        viewUtil.showEntry(securithEnabledTypeElements, false);
+	        if (securityEnabled.getSelection()) {
+	            viewUtil.showEntry(securityPolicyTypeElements, false);
+	            viewUtil.showEntry(inboundPolicyTypeElements, false);
+	            viewUtil.showEntry(outboundPolicyTypeElements, false);
+	        }
+	        viewUtil.showEntry(addressingEnabledTypeElements, false);
+	        if (addressingEnabled.getSelection()) {
+	            viewUtil.showEntry(addressingVersionTypeElements, false);
+	            viewUtil.showEntry(addressingSeperateListenerTypeElements, false);
+	        }
+	        viewUtil.showEntry(timeoutDurationTypeElements, false);
+	        viewUtil.showEntry(timeoutActionTypeElements, false);
+	        
+	        viewUtil.showEntry(failoverNonRetryErrorCodesElements, false);
+
+	        view.layout(true, true);
+	    }
 	// End of user code
 
 

@@ -137,11 +137,6 @@ public class LoadBalanceEndPointTransformer extends AbstractEndpointTransformer 
     public LoadbalanceEndpoint create(TransformationInfo info, LoadBalanceEndPoint visualEndPoint, String name,
             List<Endpoint> endPoints) throws TransformerException {
 
-        if (StringUtils.isEmpty(visualEndPoint.getName()) && StringUtils.isEmpty(visualEndPoint.getEndPointName())) {
-            throw new TransformerException(
-                    "Load-BalanceEndPoint should be configured. Double click on endpoint to configure.");
-        }
-
         IEditorPart editorPart = null;
         IProject activeProject = null;
         List<Endpoint> endPointsList = new ArrayList<Endpoint>();

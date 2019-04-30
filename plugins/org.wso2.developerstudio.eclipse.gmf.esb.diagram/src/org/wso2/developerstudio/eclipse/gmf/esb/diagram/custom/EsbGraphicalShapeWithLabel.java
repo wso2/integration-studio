@@ -217,15 +217,15 @@ public class EsbGraphicalShapeWithLabel extends RoundedRectangle {
         mainImageRectangle.setCornerDimensions(new Dimension(8, 8));
         mainImageRectangle.setOutline(false);
         
-        if (!this.isEndpoint) {
+        if (this.isEndpoint) {
+            iconImageFigure = EditPartDrawingHelper.getIconImageFigure(getIconPath(), Image_PreferredWidth,
+                    EndpointImage_PreferredHeight);
+            mainImageRectangle.setPreferredSize(new Dimension(Image_PreferredWidth , EndpointImage_PreferredHeight));
+        } else {
             constraintMainImageRectangle.horizontalAlignment = GridData.CENTER;
             iconImageFigure = EditPartDrawingHelper.getIconImageFigure(getIconPath(), Image_PreferredWidth,
                     Image_PreferredHeight);
             mainImageRectangle.setPreferredSize(new Dimension(Image_PreferredWidth, Image_PreferredHeight));
-        }else {
-            iconImageFigure = EditPartDrawingHelper.getIconImageFigure(getIconPath(), Image_PreferredWidth,
-                    EndpointImage_PreferredHeight);
-            mainImageRectangle.setPreferredSize(new Dimension(Image_PreferredWidth , EndpointImage_PreferredHeight));
         }
         
         mainImageRectangle.add(iconImageFigure);
@@ -241,10 +241,10 @@ public class EsbGraphicalShapeWithLabel extends RoundedRectangle {
         GridData constraintPropertyValueRectangle = new GridData();
         constraintPropertyValueRectangle.verticalAlignment = GridData.FILL;
         constraintPropertyValueRectangle.horizontalAlignment = GridData.FILL;
-        if (!this.isEndpoint) {
-            constraintPropertyValueRectangle.horizontalIndent = 4;
-        }else {
+        if (this.isEndpoint) {
             constraintPropertyValueRectangle.horizontalIndent = 0;
+        } else {
+            constraintPropertyValueRectangle.horizontalIndent = 4;
         }
         constraintPropertyValueRectangle.horizontalSpan = 1;
         constraintPropertyValueRectangle.verticalSpan = 1;

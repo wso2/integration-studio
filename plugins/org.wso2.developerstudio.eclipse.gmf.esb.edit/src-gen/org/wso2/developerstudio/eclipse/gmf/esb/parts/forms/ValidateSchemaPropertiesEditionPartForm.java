@@ -169,7 +169,9 @@ public class ValidateSchemaPropertiesEditionPartForm extends SectionPropertiesEd
 		return propertiesGroup;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createValidateSchemaKeyTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.ValidateSchema.Properties.validateSchemaKeyType, EsbMessages.ValidateSchemaPropertiesEditionPart_ValidateSchemaKeyTypeLabel);
 		validateSchemaKeyType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -400,7 +402,6 @@ public class ValidateSchemaPropertiesEditionPartForm extends SectionPropertiesEd
 	public String getTitle() {
 		return EsbMessages.ValidateSchema_Part_Title;
 	}
-
 
 	// Start of user code additional methods
 

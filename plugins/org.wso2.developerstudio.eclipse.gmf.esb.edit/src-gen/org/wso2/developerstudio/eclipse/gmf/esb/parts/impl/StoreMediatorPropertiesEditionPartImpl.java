@@ -410,7 +410,9 @@ public class StoreMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createSpecifyAsEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.StoreMediator.Properties.specifyAs, EsbMessages.StoreMediatorPropertiesEditionPart_SpecifyAsLabel);
 		specifyAs = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -722,9 +724,6 @@ public class StoreMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	public String getTitle() {
 		return EsbMessages.StoreMediator_Part_Title;
 	}
-
-    
-
 
 	// Start of user code additional methods
 	

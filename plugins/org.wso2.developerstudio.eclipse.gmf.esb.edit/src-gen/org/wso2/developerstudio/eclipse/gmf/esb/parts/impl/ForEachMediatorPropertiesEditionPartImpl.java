@@ -381,7 +381,9 @@ public class ForEachMediatorPropertiesEditionPartImpl extends CompositePropertie
 		return sequenceGroup;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createSequenceTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.ForEachMediator.Sequence.sequenceType, EsbMessages.ForEachMediatorPropertiesEditionPart_SequenceTypeLabel);
 		sequenceType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);

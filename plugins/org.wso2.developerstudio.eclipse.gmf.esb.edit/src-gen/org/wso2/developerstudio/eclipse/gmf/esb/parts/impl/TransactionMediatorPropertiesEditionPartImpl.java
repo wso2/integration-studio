@@ -285,7 +285,9 @@ public class TransactionMediatorPropertiesEditionPartImpl extends CompositePrope
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createActionEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.TransactionMediator.Properties.action, EsbMessages.TransactionMediatorPropertiesEditionPart_ActionLabel);
 		action = new EMFComboViewer(parent, SWT.SCROLL_LOCK);

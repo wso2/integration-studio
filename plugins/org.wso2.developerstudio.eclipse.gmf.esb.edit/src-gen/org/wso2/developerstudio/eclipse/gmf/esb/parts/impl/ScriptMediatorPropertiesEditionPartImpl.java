@@ -342,7 +342,9 @@ public class ScriptMediatorPropertiesEditionPartImpl extends CompositeProperties
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createScriptTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.ScriptMediator.Properties.scriptType, EsbMessages.ScriptMediatorPropertiesEditionPart_ScriptTypeLabel);
 		scriptType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -372,7 +374,9 @@ public class ScriptMediatorPropertiesEditionPartImpl extends CompositeProperties
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createScriptLanguageEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.ScriptMediator.Properties.scriptLanguage, EsbMessages.ScriptMediatorPropertiesEditionPart_ScriptLanguageLabel);
 		scriptLanguage = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -500,7 +504,9 @@ public class ScriptMediatorPropertiesEditionPartImpl extends CompositeProperties
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createKeyTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.ScriptMediator.Properties.keyType, EsbMessages.ScriptMediatorPropertiesEditionPart_KeyTypeLabel);
 		keyType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);

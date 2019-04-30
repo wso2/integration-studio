@@ -324,7 +324,9 @@ public class TemplatePropertiesEditionPartImpl extends CompositePropertiesEditio
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createTemplateTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.Template.Properties.templateType, EsbMessages.TemplatePropertiesEditionPart_TemplateTypeLabel);
 		templateType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);

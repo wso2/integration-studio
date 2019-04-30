@@ -163,7 +163,9 @@ public class ThrottlePolicyConfigurationPropertiesEditionPartImpl extends Compos
 		return propertiesGroup;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createPolicyTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.ThrottlePolicyConfiguration.Properties.policyType, EsbMessages.ThrottlePolicyConfigurationPropertiesEditionPart_PolicyTypeLabel);
 		policyType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);

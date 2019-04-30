@@ -495,7 +495,9 @@ public class EJBMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createSessionIdTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.EJBMediator.Properties.sessionIdType, EsbMessages.EJBMediatorPropertiesEditionPart_SessionIdTypeLabel);
 		sessionIdType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -1246,8 +1248,6 @@ public class EJBMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 	public String getTitle() {
 		return EsbMessages.EJBMediator_Part_Title;
 	}
-
-
 
 	// Start of user code additional methods
 	

@@ -331,7 +331,9 @@ public class SendMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 		}
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createReceivingSequenceTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.SendMediator.Properties.receivingSequenceType, EsbMessages.SendMediatorPropertiesEditionPart_ReceivingSequenceTypeLabel);
 		receivingSequenceType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);

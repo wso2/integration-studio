@@ -459,7 +459,9 @@ public class CalloutMediatorPropertiesEditionPartImpl extends CompositePropertie
 		return serviceGroup;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createEndpointTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.CalloutMediator.Service.endpointType, EsbMessages.CalloutMediatorPropertiesEditionPart_EndpointTypeLabel);
 		endpointType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -730,7 +732,9 @@ public class CalloutMediatorPropertiesEditionPartImpl extends CompositePropertie
 		return sourceGroup;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createPayloadTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.CalloutMediator.Source.payloadType, EsbMessages.CalloutMediatorPropertiesEditionPart_PayloadTypeLabel);
 		payloadType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -824,7 +828,9 @@ public class CalloutMediatorPropertiesEditionPartImpl extends CompositePropertie
 		return targetGroup;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createResultTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.CalloutMediator.Target.resultType, EsbMessages.CalloutMediatorPropertiesEditionPart_ResultTypeLabel);
 		resultType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -918,7 +924,9 @@ public class CalloutMediatorPropertiesEditionPartImpl extends CompositePropertie
 		return wSGroup;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createPoliciesEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.CalloutMediator.WS.policies, EsbMessages.CalloutMediatorPropertiesEditionPart_PoliciesLabel);
 		policies = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -948,7 +956,9 @@ public class CalloutMediatorPropertiesEditionPartImpl extends CompositePropertie
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createSecurityTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.CalloutMediator.WS.securityType, EsbMessages.CalloutMediatorPropertiesEditionPart_SecurityTypeLabel);
 		securityType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -1696,17 +1706,6 @@ public class CalloutMediatorPropertiesEditionPartImpl extends CompositePropertie
 	public String getTitle() {
 		return EsbMessages.CalloutMediator_Part_Title;
 	}
-
-
-
-
-
-
-
-
-
-
-
 
 	// Start of user code additional methods
 	

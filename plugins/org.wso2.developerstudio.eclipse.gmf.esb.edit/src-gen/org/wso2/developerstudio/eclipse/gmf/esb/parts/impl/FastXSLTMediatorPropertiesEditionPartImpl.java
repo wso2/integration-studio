@@ -78,7 +78,6 @@ public class FastXSLTMediatorPropertiesEditionPartImpl extends CompositeProperti
 	protected Button editCommentsList;
 	protected EList commentsListList;
 	protected Button reverse;
-	
 	// Start of user code  for fastXsltStaticSchemaKey widgets declarations
 	protected RegistryKeyProperty fastXsltStaticSchemaKey;
 	// End of user code
@@ -89,6 +88,8 @@ public class FastXSLTMediatorPropertiesEditionPartImpl extends CompositeProperti
 
 	protected EMFComboViewer fastXsltSchemaKeyType;
 	protected Text description;
+
+
 
 	/**
 	 * Default constructor
@@ -292,7 +293,9 @@ public class FastXSLTMediatorPropertiesEditionPartImpl extends CompositeProperti
 		return miscGroup;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createFastXsltSchemaKeyTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.FastXSLTMediator.Misc.fastXsltSchemaKeyType, EsbMessages.FastXSLTMediatorPropertiesEditionPart_FastXsltSchemaKeyTypeLabel);
 		fastXsltSchemaKeyType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -545,6 +548,11 @@ public class FastXSLTMediatorPropertiesEditionPartImpl extends CompositeProperti
 		}	
 		
 	}
+
+
+
+
+
 
 	// Start of user code for fastXsltStaticSchemaKey specific getters and setters implementation
 	@Override

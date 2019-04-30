@@ -306,7 +306,9 @@ public class FilterMediatorPropertiesEditionPartImpl extends CompositeProperties
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createConditionTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.FilterMediator.Properties.conditionType, EsbMessages.FilterMediatorPropertiesEditionPart_ConditionTypeLabel);
 		conditionType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);

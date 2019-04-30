@@ -589,7 +589,9 @@ public class AddressEndPointPropertiesEditionPartImpl extends CompositePropertie
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createFormatEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.AddressEndPoint.Basic.format, EsbMessages.AddressEndPointPropertiesEditionPart_FormatLabel);
 		format = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -1218,7 +1220,9 @@ public class AddressEndPointPropertiesEditionPartImpl extends CompositePropertie
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createOptimizeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.AddressEndPoint.Misc.optimize, EsbMessages.AddressEndPointPropertiesEditionPart_OptimizeLabel);
 		optimize = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -1402,7 +1406,9 @@ public class AddressEndPointPropertiesEditionPartImpl extends CompositePropertie
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createAddressingVersionEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.AddressEndPoint.QoS.addressingVersion, EsbMessages.AddressEndPointPropertiesEditionPart_AddressingVersionLabel);
 		addressingVersion = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -1526,7 +1532,9 @@ public class AddressEndPointPropertiesEditionPartImpl extends CompositePropertie
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createTimeOutActionEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.AddressEndPoint.Timeout.timeOutAction, EsbMessages.AddressEndPointPropertiesEditionPart_TimeOutActionLabel);
 		timeOutAction = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -1571,10 +1579,12 @@ public class AddressEndPointPropertiesEditionPartImpl extends CompositePropertie
 		return failoverErrorCodesGroup;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createFailoverTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.AddressEndPoint.FailoverErrorCodes.failoverType, EsbMessages.AddressEndPointPropertiesEditionPart_FailoverTypeLabel);
-		failoverType = new EMFComboViewer(parent);
+		failoverType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
 		failoverType.setContentProvider(new ArrayContentProvider());
 		failoverType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData failoverTypeData = new GridData(GridData.FILL_HORIZONTAL);

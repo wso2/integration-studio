@@ -418,7 +418,9 @@ public class CallMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 		}
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createEndpointTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.CallMediator.Properties.endpointType, EsbMessages.CallMediatorPropertiesEditionPart_EndpointTypeLabel);
 		endpointType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);

@@ -140,7 +140,9 @@ public class ThrottleOnAcceptBranchPropertiesEditionPartForm extends SectionProp
 		return propertiesGroup;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createSequenceTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.ThrottleOnAcceptBranch.Properties.sequenceType, EsbMessages.ThrottleOnAcceptBranchPropertiesEditionPart_SequenceTypeLabel);
 		sequenceType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);

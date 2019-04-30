@@ -176,7 +176,9 @@ public class ThrottlePolicyConfigurationPropertiesEditionPartForm extends Sectio
 		return propertiesGroup;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createPolicyTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.ThrottlePolicyConfiguration.Properties.policyType, EsbMessages.ThrottlePolicyConfigurationPropertiesEditionPart_PolicyTypeLabel);
 		policyType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);

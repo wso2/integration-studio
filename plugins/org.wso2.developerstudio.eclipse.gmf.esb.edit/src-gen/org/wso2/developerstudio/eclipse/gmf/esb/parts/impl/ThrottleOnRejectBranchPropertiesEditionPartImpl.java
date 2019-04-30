@@ -128,7 +128,9 @@ public class ThrottleOnRejectBranchPropertiesEditionPartImpl extends CompositePr
 		return propertiesGroup;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createSequenceTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.ThrottleOnRejectBranch.Properties.sequenceType, EsbMessages.ThrottleOnRejectBranchPropertiesEditionPart_SequenceTypeLabel);
 		sequenceType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);

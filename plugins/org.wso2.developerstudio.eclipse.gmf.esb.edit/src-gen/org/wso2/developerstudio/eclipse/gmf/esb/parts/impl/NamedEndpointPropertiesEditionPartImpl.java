@@ -724,7 +724,9 @@ public class NamedEndpointPropertiesEditionPartImpl extends CompositePropertiesE
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createAddressingVersionEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.NamedEndpoint.Properties.addressingVersion, EsbMessages.NamedEndpointPropertiesEditionPart_AddressingVersionLabel);
 		addressingVersion = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -833,7 +835,9 @@ public class NamedEndpointPropertiesEditionPartImpl extends CompositePropertiesE
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createTimeOutActionEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.NamedEndpoint.Properties.timeOutAction, EsbMessages.NamedEndpointPropertiesEditionPart_TimeOutActionLabel);
 		timeOutAction = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -1206,7 +1210,9 @@ public class NamedEndpointPropertiesEditionPartImpl extends CompositePropertiesE
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createFormatEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.NamedEndpoint.Properties.format, EsbMessages.NamedEndpointPropertiesEditionPart_FormatLabel);
 		format = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -1236,7 +1242,9 @@ public class NamedEndpointPropertiesEditionPartImpl extends CompositePropertiesE
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createOptimizeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.NamedEndpoint.Properties.optimize, EsbMessages.NamedEndpointPropertiesEditionPart_OptimizeLabel);
 		optimize = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -1426,7 +1434,9 @@ public class NamedEndpointPropertiesEditionPartImpl extends CompositePropertiesE
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createReferringEndpointTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.NamedEndpoint.Properties.referringEndpointType, EsbMessages.NamedEndpointPropertiesEditionPart_ReferringEndpointTypeLabel);
 		referringEndpointType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -2601,8 +2611,6 @@ public class NamedEndpointPropertiesEditionPartImpl extends CompositePropertiesE
 	public String getTitle() {
 		return EsbMessages.NamedEndpoint_Part_Title;
 	}
-
-
 
 	// Start of user code additional methods
 	

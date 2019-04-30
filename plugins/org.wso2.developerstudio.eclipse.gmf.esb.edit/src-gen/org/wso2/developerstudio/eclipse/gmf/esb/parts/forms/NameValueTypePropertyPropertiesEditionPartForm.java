@@ -296,7 +296,9 @@ public class NameValueTypePropertyPropertiesEditionPartForm extends SectionPrope
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createPropertyTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.NameValueTypeProperty.Properties.propertyType, EsbMessages.NameValueTypePropertyPropertiesEditionPart_PropertyTypeLabel);
 		propertyType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);

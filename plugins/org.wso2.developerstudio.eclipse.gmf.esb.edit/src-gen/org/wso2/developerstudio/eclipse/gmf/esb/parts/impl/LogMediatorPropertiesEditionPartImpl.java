@@ -181,7 +181,9 @@ public class LogMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 		return propertiesGroup;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createLogCategoryEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.LogMediator.Properties.logCategory, EsbMessages.LogMediatorPropertiesEditionPart_LogCategoryLabel);
 		logCategory = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -211,7 +213,9 @@ public class LogMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createLogLevelEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.LogMediator.Properties.logLevel, EsbMessages.LogMediatorPropertiesEditionPart_LogLevelLabel);
 		logLevel = new EMFComboViewer(parent, SWT.SCROLL_LOCK);

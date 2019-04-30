@@ -175,7 +175,9 @@ public class ThrottlePolicyEntryPropertiesEditionPartForm extends SectionPropert
 		return propertiesGroup;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createThrottleTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.ThrottlePolicyEntry.Properties.throttleType, EsbMessages.ThrottlePolicyEntryPropertiesEditionPart_ThrottleTypeLabel);
 		throttleType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -273,7 +275,9 @@ public class ThrottlePolicyEntryPropertiesEditionPartForm extends SectionPropert
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createAccessTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.ThrottlePolicyEntry.Properties.accessType, EsbMessages.ThrottlePolicyEntryPropertiesEditionPart_AccessTypeLabel);
 		accessType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);

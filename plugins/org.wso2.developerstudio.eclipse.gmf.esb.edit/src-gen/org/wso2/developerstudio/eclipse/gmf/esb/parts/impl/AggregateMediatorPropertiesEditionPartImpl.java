@@ -464,7 +464,9 @@ public class AggregateMediatorPropertiesEditionPartImpl extends CompositePropert
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createCompletionMinMessagesTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.AggregateMediator.Properties.completionMinMessagesType, EsbMessages.AggregateMediatorPropertiesEditionPart_CompletionMinMessagesTypeLabel);
 		completionMinMessagesType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -494,7 +496,9 @@ public class AggregateMediatorPropertiesEditionPartImpl extends CompositePropert
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createCompletionMaxMessagesTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.AggregateMediator.Properties.completionMaxMessagesType, EsbMessages.AggregateMediatorPropertiesEditionPart_CompletionMaxMessagesTypeLabel);
 		completionMaxMessagesType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -686,7 +690,9 @@ public class AggregateMediatorPropertiesEditionPartImpl extends CompositePropert
 		return onCompleteGroup;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createSequenceTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.AggregateMediator.OnComplete.sequenceType, EsbMessages.AggregateMediatorPropertiesEditionPart_SequenceTypeLabel);
 		sequenceType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);

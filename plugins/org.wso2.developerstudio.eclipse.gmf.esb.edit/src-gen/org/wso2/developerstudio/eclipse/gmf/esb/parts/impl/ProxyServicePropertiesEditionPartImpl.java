@@ -732,7 +732,9 @@ public class ProxyServicePropertiesEditionPartImpl extends CompositePropertiesEd
 		return endpointGroup;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createEndpointTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.ProxyService.Endpoint.endpointType, EsbMessages.ProxyServicePropertiesEditionPart_EndpointTypeLabel);
 		endpointType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -826,7 +828,9 @@ public class ProxyServicePropertiesEditionPartImpl extends CompositePropertiesEd
 		return faultSequenceGroup;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createFaultSequenceTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.ProxyService.FaultSequence.faultSequenceType, EsbMessages.ProxyServicePropertiesEditionPart_FaultSequenceTypeLabel);
 		faultSequenceType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -920,7 +924,9 @@ public class ProxyServicePropertiesEditionPartImpl extends CompositePropertiesEd
 		return inSequenceGroup;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createInSequenceTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.ProxyService.InSequence.inSequenceType, EsbMessages.ProxyServicePropertiesEditionPart_InSequenceTypeLabel);
 		inSequenceType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -1014,7 +1020,9 @@ public class ProxyServicePropertiesEditionPartImpl extends CompositePropertiesEd
 		return outSequenceGroup;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createOutSequenceTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.ProxyService.OutSequence.outSequenceType, EsbMessages.ProxyServicePropertiesEditionPart_OutSequenceTypeLabel);
 		outSequenceType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -1315,7 +1323,9 @@ public class ProxyServicePropertiesEditionPartImpl extends CompositePropertiesEd
 		return wsdlGroup;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createWsdlTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.ProxyService.Wsdl.wsdlType, EsbMessages.ProxyServicePropertiesEditionPart_WsdlTypeLabel);
 		wsdlType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);

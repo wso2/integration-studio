@@ -719,7 +719,9 @@ public class TemplateEndpointPropertiesEditionPartImpl extends CompositeProperti
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createAddressingVersionEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.TemplateEndpoint.Properties.addressingVersion, EsbMessages.TemplateEndpointPropertiesEditionPart_AddressingVersionLabel);
 		addressingVersion = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -828,7 +830,9 @@ public class TemplateEndpointPropertiesEditionPartImpl extends CompositeProperti
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createTimeOutActionEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.TemplateEndpoint.Properties.timeOutAction, EsbMessages.TemplateEndpointPropertiesEditionPart_TimeOutActionLabel);
 		timeOutAction = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -1201,7 +1205,9 @@ public class TemplateEndpointPropertiesEditionPartImpl extends CompositeProperti
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createFormatEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.TemplateEndpoint.Properties.format, EsbMessages.TemplateEndpointPropertiesEditionPart_FormatLabel);
 		format = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -1231,7 +1237,9 @@ public class TemplateEndpointPropertiesEditionPartImpl extends CompositeProperti
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createOptimizeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.TemplateEndpoint.Properties.optimize, EsbMessages.TemplateEndpointPropertiesEditionPart_OptimizeLabel);
 		optimize = new EMFComboViewer(parent, SWT.SCROLL_LOCK);

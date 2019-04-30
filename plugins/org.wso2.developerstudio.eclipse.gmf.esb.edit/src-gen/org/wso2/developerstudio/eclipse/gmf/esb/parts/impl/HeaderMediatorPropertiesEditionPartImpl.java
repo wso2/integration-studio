@@ -201,7 +201,9 @@ public class HeaderMediatorPropertiesEditionPartImpl extends CompositeProperties
 		return propertiesGroup;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createHeaderActionEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.HeaderMediator.Properties.headerAction, EsbMessages.HeaderMediatorPropertiesEditionPart_HeaderActionLabel);
 		headerAction = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -231,7 +233,9 @@ public class HeaderMediatorPropertiesEditionPartImpl extends CompositeProperties
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createValueTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.HeaderMediator.Properties.valueType, EsbMessages.HeaderMediatorPropertiesEditionPart_ValueTypeLabel);
 		valueType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -261,7 +265,9 @@ public class HeaderMediatorPropertiesEditionPartImpl extends CompositeProperties
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createScopeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.HeaderMediator.Properties.scope, EsbMessages.HeaderMediatorPropertiesEditionPart_ScopeLabel);
 		scope = new EMFComboViewer(parent, SWT.SCROLL_LOCK);

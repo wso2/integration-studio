@@ -178,7 +178,9 @@ public class URLRewriteRuleActionPropertiesEditionPartForm extends SectionProper
 		return propertiesGroup;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createRuleActionEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.URLRewriteRuleAction.Properties.ruleAction, EsbMessages.URLRewriteRuleActionPropertiesEditionPart_RuleActionLabel);
 		ruleAction = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -208,7 +210,9 @@ public class URLRewriteRuleActionPropertiesEditionPartForm extends SectionProper
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createRuleFragmentEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.URLRewriteRuleAction.Properties.ruleFragment, EsbMessages.URLRewriteRuleActionPropertiesEditionPart_RuleFragmentLabel);
 		ruleFragment = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -238,7 +242,9 @@ public class URLRewriteRuleActionPropertiesEditionPartForm extends SectionProper
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createRuleOptionEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.URLRewriteRuleAction.Properties.ruleOption, EsbMessages.URLRewriteRuleActionPropertiesEditionPart_RuleOptionLabel);
 		ruleOption = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -640,8 +646,6 @@ public class URLRewriteRuleActionPropertiesEditionPartForm extends SectionProper
 	public String getTitle() {
 		return EsbMessages.URLRewriteRuleAction_Part_Title;
 	}
-
-
 
 	// Start of user code additional methods
     @Override

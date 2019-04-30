@@ -626,7 +626,9 @@ public class CloudConnectorOperationPropertiesEditionPartImpl extends CompositeP
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createParameterEditorTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.CloudConnectorOperation.Properties.parameterEditorType, EsbMessages.CloudConnectorOperationPropertiesEditionPart_ParameterEditorTypeLabel);
 		parameterEditorType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);

@@ -156,7 +156,9 @@ public class RuleResultPropertiesEditionPartImpl extends CompositePropertiesEdit
 		return propertiesGroup;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createResultTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.RuleResult.Properties.resultType, EsbMessages.RuleResultPropertiesEditionPart_ResultTypeLabel);
 		resultType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -284,7 +286,9 @@ public class RuleResultPropertiesEditionPartImpl extends CompositePropertiesEdit
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createValueTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.RuleResult.Properties.valueType, EsbMessages.RuleResultPropertiesEditionPart_ValueTypeLabel);
 		valueType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);

@@ -385,7 +385,9 @@ public class BeanMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createActionEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.BeanMediator.Properties.action, EsbMessages.BeanMediatorPropertiesEditionPart_ActionLabel);
 		action = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -513,7 +515,9 @@ public class BeanMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createValueTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.BeanMediator.Properties.valueType, EsbMessages.BeanMediatorPropertiesEditionPart_ValueTypeLabel);
 		valueType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -592,7 +596,9 @@ public class BeanMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createTargetTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.BeanMediator.Properties.targetType, EsbMessages.BeanMediatorPropertiesEditionPart_TargetTypeLabel);
 		targetType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -1143,9 +1149,6 @@ public class BeanMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 	public String getTitle() {
 		return EsbMessages.BeanMediator_Part_Title;
 	}
-
-
-
 
 	// Start of user code additional methods
 	

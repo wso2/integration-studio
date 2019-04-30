@@ -157,7 +157,9 @@ public class AbstractCommonTargetPropertiesEditionPartForm extends SectionProper
 		return propertiesGroup;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createSequenceTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.AbstractCommonTarget.Properties.sequenceType, EsbMessages.AbstractCommonTargetPropertiesEditionPart_SequenceTypeLabel);
 		sequenceType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -220,7 +222,9 @@ public class AbstractCommonTargetPropertiesEditionPartForm extends SectionProper
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createEndpointTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.AbstractCommonTarget.Properties.endpointType, EsbMessages.AbstractCommonTargetPropertiesEditionPart_EndpointTypeLabel);
 		endpointType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);

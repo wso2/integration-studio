@@ -67,7 +67,7 @@ public class OpenSeparatelyEditPolicy extends OpenEditPolicy {
                 ((NamedEndpointEditPart) getTargetEditPart(request)).createDialogBox();
             }
 
-        } else if (getTargetEditPart(request) instanceof ComplexFiguredAbstractEndpoint) {
+  /**      } else if (getTargetEditPart(request) instanceof ComplexFiguredAbstractEndpoint) {
             Object endpointImpl = ((org.eclipse.gmf.runtime.notation.impl.NodeImpl)((ComplexFiguredAbstractEndpoint) getTargetEditPart(request)).getModel()).getElement();
             String name = null;
             
@@ -128,7 +128,7 @@ public class OpenSeparatelyEditPolicy extends OpenEditPolicy {
             } else {
                 ((ComplexFiguredAbstractEndpoint) getTargetEditPart(request)).openPage(name);
             }
-            
+            */
         } else if (getTargetEditPart(request) instanceof CallTemplateMediatorEditPart) {
             String targetTemplate = ((CallTemplateMediator) ((Node) ((CallTemplateMediatorEditPart) getTargetEditPart(
                     request)).getModel()).getElement()).getTargetTemplate();

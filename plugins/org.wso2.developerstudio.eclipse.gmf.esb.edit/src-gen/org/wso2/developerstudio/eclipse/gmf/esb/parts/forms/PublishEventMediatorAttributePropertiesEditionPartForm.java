@@ -246,7 +246,9 @@ public class PublishEventMediatorAttributePropertiesEditionPartForm extends Sect
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createAttributeValueTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.PublishEventMediatorAttribute.Properties.attributeValueType, EsbMessages.PublishEventMediatorAttributePropertiesEditionPart_AttributeValueTypeLabel);
 		attributeValueType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -344,7 +346,9 @@ public class PublishEventMediatorAttributePropertiesEditionPartForm extends Sect
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createAttributeTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.PublishEventMediatorAttribute.Properties.attributeType, EsbMessages.PublishEventMediatorAttributePropertiesEditionPart_AttributeTypeLabel);
 		attributeType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);

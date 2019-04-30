@@ -424,7 +424,9 @@ public class MessageProcessorPropertiesEditionPartImpl extends CompositeProperti
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createProcessorTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.MessageProcessor.Properties.processorType, EsbMessages.MessageProcessorPropertiesEditionPart_ProcessorTypeLabel);
 		processorType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -650,7 +652,9 @@ public class MessageProcessorPropertiesEditionPartImpl extends CompositeProperti
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createProcessorStateEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.MessageProcessor.Properties.processorState, EsbMessages.MessageProcessorPropertiesEditionPart_ProcessorStateLabel);
 		processorState = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -925,7 +929,9 @@ public class MessageProcessorPropertiesEditionPartImpl extends CompositeProperti
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createDropMessageAfterMaximumDeliveryAttemptsEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.MessageProcessor.Properties.dropMessageAfterMaximumDeliveryAttempts, EsbMessages.MessageProcessorPropertiesEditionPart_DropMessageAfterMaximumDeliveryAttemptsLabel);
 		dropMessageAfterMaximumDeliveryAttempts = new EMFComboViewer(parent, SWT.SCROLL_LOCK);

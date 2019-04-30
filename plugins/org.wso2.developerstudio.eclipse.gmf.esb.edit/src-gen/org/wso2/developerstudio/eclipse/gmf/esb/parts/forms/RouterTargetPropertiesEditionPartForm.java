@@ -157,7 +157,9 @@ public class RouterTargetPropertiesEditionPartForm extends SectionPropertiesEdit
 		return propertiesGroup;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createSequenceTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.RouterTarget.Properties.sequenceType, EsbMessages.RouterTargetPropertiesEditionPart_SequenceTypeLabel);
 		sequenceType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -220,7 +222,9 @@ public class RouterTargetPropertiesEditionPartForm extends SectionPropertiesEdit
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createEndpointTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.RouterTarget.Properties.endpointType, EsbMessages.RouterTargetPropertiesEditionPart_EndpointTypeLabel);
 		endpointType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);

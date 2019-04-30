@@ -697,7 +697,9 @@ public class APIResourceEndpointPropertiesEditionPartImpl extends CompositePrope
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createAddressingVersionEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.APIResourceEndpoint.Properties.addressingVersion, EsbMessages.APIResourceEndpointPropertiesEditionPart_AddressingVersionLabel);
 		addressingVersion = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -806,7 +808,9 @@ public class APIResourceEndpointPropertiesEditionPartImpl extends CompositePrope
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createTimeOutActionEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.APIResourceEndpoint.Properties.timeOutAction, EsbMessages.APIResourceEndpointPropertiesEditionPart_TimeOutActionLabel);
 		timeOutAction = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -1179,7 +1183,9 @@ public class APIResourceEndpointPropertiesEditionPartImpl extends CompositePrope
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createFormatEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.APIResourceEndpoint.Properties.format, EsbMessages.APIResourceEndpointPropertiesEditionPart_FormatLabel);
 		format = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -1209,7 +1215,9 @@ public class APIResourceEndpointPropertiesEditionPartImpl extends CompositePrope
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createOptimizeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.APIResourceEndpoint.Properties.optimize, EsbMessages.APIResourceEndpointPropertiesEditionPart_OptimizeLabel);
 		optimize = new EMFComboViewer(parent, SWT.SCROLL_LOCK);

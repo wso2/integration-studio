@@ -202,7 +202,9 @@ public class EsbServerPropertiesEditionPartImpl extends CompositePropertiesEditi
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.EsbServer.Properties.type, EsbMessages.EsbServerPropertiesEditionPart_TypeLabel);
 		type = new EMFComboViewer(parent, SWT.SCROLL_LOCK);

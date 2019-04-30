@@ -15,12 +15,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
@@ -70,6 +65,7 @@ public class LoadBalanceEndPointItemProvider extends ParentEndPointItemProvider 
 
         addAlgorithmPropertyDescriptor(object);
         addBuildMessagePropertyDescriptor(object);
+        addMemberPropertyDescriptor(object);
         addDescriptionPropertyDescriptor(object);
         return itemPropertyDescriptors;
     }
@@ -122,7 +118,7 @@ public class LoadBalanceEndPointItemProvider extends ParentEndPointItemProvider 
      * This adds a property descriptor for the Member feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
+     * @generated NOT
      */
     protected void addMemberPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add
@@ -135,7 +131,7 @@ public class LoadBalanceEndPointItemProvider extends ParentEndPointItemProvider 
                  true,
                  false,
                  false,
-                 null,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
                  null,
                  null));
     }

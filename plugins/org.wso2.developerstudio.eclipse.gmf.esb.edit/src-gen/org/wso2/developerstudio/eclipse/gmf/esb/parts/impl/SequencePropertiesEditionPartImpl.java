@@ -612,7 +612,9 @@ public class SequencePropertiesEditionPartImpl extends CompositePropertiesEditio
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createReferringSequenceTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.Sequence.Properties.referringSequenceType, EsbMessages.SequencePropertiesEditionPart_ReferringSequenceTypeLabel);
 		referringSequenceType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);

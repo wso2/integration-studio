@@ -213,7 +213,9 @@ public class EsbServerPropertiesEditionPartForm extends SectionPropertiesEditing
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.EsbServer.Properties.type, EsbMessages.EsbServerPropertiesEditionPart_TypeLabel);
 		type = new EMFComboViewer(parent, SWT.SCROLL_LOCK);

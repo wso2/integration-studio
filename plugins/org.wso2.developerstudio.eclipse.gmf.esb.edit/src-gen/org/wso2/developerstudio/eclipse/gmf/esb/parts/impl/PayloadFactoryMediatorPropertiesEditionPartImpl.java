@@ -201,7 +201,9 @@ public class PayloadFactoryMediatorPropertiesEditionPartImpl extends CompositePr
 		return propertiesGroup;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createPayloadFormatEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.PayloadFactoryMediator.Properties.payloadFormat, EsbMessages.PayloadFactoryMediatorPropertiesEditionPart_PayloadFormatLabel);
 		payloadFormat = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -331,7 +333,9 @@ public class PayloadFactoryMediatorPropertiesEditionPartImpl extends CompositePr
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createMediaTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.PayloadFactoryMediator.Properties.mediaType, EsbMessages.PayloadFactoryMediatorPropertiesEditionPart_MediaTypeLabel);
 		mediaType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);

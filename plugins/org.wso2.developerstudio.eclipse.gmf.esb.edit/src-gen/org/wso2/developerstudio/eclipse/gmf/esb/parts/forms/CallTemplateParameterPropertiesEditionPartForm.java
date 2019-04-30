@@ -236,7 +236,9 @@ public class CallTemplateParameterPropertiesEditionPartForm extends SectionPrope
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createTemplateParameterTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.CallTemplateParameter.Properties.templateParameterType, EsbMessages.CallTemplateParameterPropertiesEditionPart_TemplateParameterTypeLabel);
 		templateParameterType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);

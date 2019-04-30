@@ -344,7 +344,9 @@ public class XSLTMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createXsltSchemaKeyTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.XSLTMediator.Properties.xsltSchemaKeyType, EsbMessages.XSLTMediatorPropertiesEditionPart_XsltSchemaKeyTypeLabel);
 		xsltSchemaKeyType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);

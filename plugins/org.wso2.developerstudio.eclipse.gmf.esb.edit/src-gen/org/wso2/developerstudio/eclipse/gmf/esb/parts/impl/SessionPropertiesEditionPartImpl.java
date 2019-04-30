@@ -128,7 +128,9 @@ public class SessionPropertiesEditionPartImpl extends CompositePropertiesEdition
 		return propertiesGroup;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.Session.Properties.type, EsbMessages.SessionPropertiesEditionPart_TypeLabel);
 		type = new EMFComboViewer(parent, SWT.SCROLL_LOCK);

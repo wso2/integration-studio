@@ -513,7 +513,9 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createStoreTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.MessageStore.Properties.storeType, EsbMessages.MessageStorePropertiesEditionPart_StoreTypeLabel);
 		storeType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -867,7 +869,9 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createJmsSpecVersionEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.MessageStore.Properties.jmsSpecVersion, EsbMessages.MessageStorePropertiesEditionPart_JmsSpecVersionLabel);
 		jmsSpecVersion = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -1417,7 +1421,9 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createJdbcConnectionInformationEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.MessageStore.Properties.jdbcConnectionInformation, EsbMessages.MessageStorePropertiesEditionPart_JdbcConnectionInformationLabel);
 		jdbcConnectionInformation = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -1920,7 +1926,9 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createResequenceConnectionInformationEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.MessageStore.Properties.resequenceConnectionInformation, EsbMessages.MessageStorePropertiesEditionPart_ResequenceConnectionInformationLabel);
 		resequenceConnectionInformation = new EMFComboViewer(parent, SWT.SCROLL_LOCK);

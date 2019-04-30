@@ -355,7 +355,9 @@ public class APIResourcePropertiesEditionPartImpl extends CompositePropertiesEdi
 		return basicGroup;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createUrlStyleEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.APIResource.Basic.urlStyle, EsbMessages.APIResourcePropertiesEditionPart_UrlStyleLabel);
 		urlStyle = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -483,7 +485,9 @@ public class APIResourcePropertiesEditionPartImpl extends CompositePropertiesEdi
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createProtocolEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.APIResource.Basic.protocol, EsbMessages.APIResourcePropertiesEditionPart_ProtocolLabel);
 		protocol = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -753,7 +757,9 @@ public class APIResourcePropertiesEditionPartImpl extends CompositePropertiesEdi
 		return inSequenceGroup;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createInSequenceTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.APIResource.InSequence.inSequenceType, EsbMessages.APIResourcePropertiesEditionPart_InSequenceTypeLabel);
 		inSequenceType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -847,7 +853,9 @@ public class APIResourcePropertiesEditionPartImpl extends CompositePropertiesEdi
 		return outSequenceGroup;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createOutSequenceTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.APIResource.OutSequence.outSequenceType, EsbMessages.APIResourcePropertiesEditionPart_OutSequenceTypeLabel);
 		outSequenceType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
@@ -941,7 +949,9 @@ public class APIResourcePropertiesEditionPartImpl extends CompositePropertiesEdi
 		return faultSequenceGroup;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createFaultSequenceTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.APIResource.FaultSequence.faultSequenceType, EsbMessages.APIResourcePropertiesEditionPart_FaultSequenceTypeLabel);
 		faultSequenceType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);

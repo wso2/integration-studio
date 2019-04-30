@@ -241,7 +241,11 @@ public class EsbGraphicalShapeWithLabel extends RoundedRectangle {
         GridData constraintPropertyValueRectangle = new GridData();
         constraintPropertyValueRectangle.verticalAlignment = GridData.FILL;
         constraintPropertyValueRectangle.horizontalAlignment = GridData.FILL;
-        constraintPropertyValueRectangle.horizontalIndent = 4;
+        if (!this.isEndpoint) {
+            constraintPropertyValueRectangle.horizontalIndent = 4;
+        }else {
+            constraintPropertyValueRectangle.horizontalIndent = 0;
+        }
         constraintPropertyValueRectangle.horizontalSpan = 1;
         constraintPropertyValueRectangle.verticalSpan = 1;
         constraintPropertyValueRectangle.grabExcessHorizontalSpace = true;

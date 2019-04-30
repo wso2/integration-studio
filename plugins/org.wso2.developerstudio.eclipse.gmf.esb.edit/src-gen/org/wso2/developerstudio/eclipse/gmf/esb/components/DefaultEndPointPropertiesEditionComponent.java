@@ -304,7 +304,9 @@ public class DefaultEndPointPropertiesEditionComponent extends SinglePartPropert
 			// End of user code
 			
 			// init values for referenced views
-			((DefaultEndPointPropertiesEditionPartImpl) editingPart).validate();
+			if (editingPart instanceof DefaultEndPointPropertiesEditionPartImpl) {
+				((DefaultEndPointPropertiesEditionPartImpl) editingPart).validate();
+			}
 			// init filters for referenced views
 			
 		}

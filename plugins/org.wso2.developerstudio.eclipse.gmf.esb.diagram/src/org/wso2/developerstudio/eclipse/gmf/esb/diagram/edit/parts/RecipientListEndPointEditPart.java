@@ -344,7 +344,7 @@ public class RecipientListEndPointEditPart extends ComplexFiguredAbstractEndpoin
 
         @Override
         public String getIconPath() {
-            return "icons/ico20/recipientlist-endpoint.gif";
+            return "icons/ico20/recipientlist-endpoint.png";
         }
 
         public String getNodeName() {

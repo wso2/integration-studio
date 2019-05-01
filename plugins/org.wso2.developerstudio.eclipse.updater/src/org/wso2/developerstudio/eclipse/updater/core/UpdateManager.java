@@ -257,7 +257,6 @@ public class UpdateManager {
 		}
 		IQuery<IInstallableUnit> allIUQuery = QueryUtil.createIUAnyQuery();
 		IQueryResult<IInstallableUnit> allIUQueryResult = metadataRepository.query(allIUQuery, progress.newChild(1));
-
 		// load artifact repository for releases
 		IArtifactRepository artifactRepository = artifactRepoManager.loadRepository(getDevStudioReleaseSite(),
 				progress.newChild(1));
@@ -265,6 +264,7 @@ public class UpdateManager {
 		// read meta-data of all available features
 		Map<String, EnhancedFeature> allFeaturesInReleaseRepo = loadWSO2FeaturesInRepo(artifactRepository,
 				allIUQueryResult, progress.newChild(1));
+
 
 		Collection<IInstallableUnit> filteredIUs = filterInstallableUnits(WSO2_FEATURE_PREFIX, FEATURE_GROUP_IU_ID_SFX,
 				allIUQueryResult, progress.newChild(1));
@@ -526,15 +526,19 @@ public class UpdateManager {
 		feature.setIconURL(FILE_PROTOCOL + cachedFeatureDir + File.separator + ICON_FILE);
 		try {
 			File updateProperties = new File(cachedFeatureDir, UPDATE_PROPERTIES_FILE);
-			Properties prop = new Properties();
-			InputStream input = new FileInputStream(updateProperties);
-			prop.load(input);
-			feature.setWhatIsNew(prop.getProperty(PROP_WHAT_IS_NEW));
-			feature.setBugFixes(prop.getProperty(PROP_BUG_FIXES));
-			feature.setKernelFeature(Boolean.parseBoolean(prop.getProperty(PROP_IS_KERNEL_FEATURE)));
-			feature.setHidden(Boolean.parseBoolean(prop.getProperty(PROP_IS_HIDDEN)));
-			String childrenStr = prop.getProperty(CHILD_FEATURES);
-			feature.setChildFeatures(childrenStr.split(","));
+			if (updateProperties.exists()) {
+				Properties prop = new Properties();
+				InputStream input = new FileInputStream(updateProperties);
+				prop.load(input);
+				feature.setWhatIsNew(prop.getProperty(PROP_WHAT_IS_NEW));
+				feature.setBugFixes(prop.getProperty(PROP_BUG_FIXES));
+				feature.setKernelFeature(Boolean.parseBoolean(prop.getProperty(PROP_IS_KERNEL_FEATURE)));
+				feature.setHidden(Boolean.parseBoolean(prop.getProperty(PROP_IS_HIDDEN)));
+				String childrenStr = prop.getProperty(CHILD_FEATURES);
+				if (childrenStr != null) {
+					feature.setChildFeatures(childrenStr.split(","));
+				}
+			}
 		} catch (Exception e) {
 			// ignore - Additional meta-data was not provided in feature.jar
 			// log.error(e);
@@ -639,7 +643,7 @@ public class UpdateManager {
 		try {
 			IPreferenceStore preferenceStore = PlatformUI.getPreferenceStore();
 			String url = preferenceStore.getString(PreferenceConstants.UPDATE_SITE_URL);
-			if (url == null || url.isEmpty()) {
+			if (url == null || url.trim().isEmpty()) {
 				url = PreferenceInitializer.DEFAULT_UPDATE_SITE;
 			}
 			updateSite = new URI(url);
@@ -654,6 +658,9 @@ public class UpdateManager {
 		try {
 			IPreferenceStore preferenceStore = PlatformUI.getPreferenceStore();
 			String url = preferenceStore.getString(PreferenceConstants.RELESE_SITE_URL);
+			if (url == null || url.trim().isEmpty()) {
+			    url = PreferenceInitializer.DEFAULT_RELEASE_SITE;
+			}
 			releaseSite = new URI(url);
 		} catch (URISyntaxException e) {
 			log.error(e);

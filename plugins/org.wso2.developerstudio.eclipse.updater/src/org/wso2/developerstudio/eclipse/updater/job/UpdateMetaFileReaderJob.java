@@ -20,7 +20,6 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.StringReader;
 import java.net.URL;
 import java.util.Collection;
 import java.util.HashMap;
@@ -63,7 +62,8 @@ public class UpdateMetaFileReaderJob extends Job {
 	public static final String JAVA_IO_TMPDIR = "java.io.tmpdir";
 	public static final String folderLoc = System.getProperty(JAVA_IO_TMPDIR) + File.separator + "DevStudioUpdater";
 	public static final String fileLoc = folderLoc + File.separator + UPDATES_TXT_FILE;
-	private static final int TIME_OUT_MS = 1000;
+	private static final int READ_TIMEOUT_MS = 5000;
+	private static final int SOCKET_TIMEOUT_MS = 6000;
 	private static final String URL_VALIDATOR = "/";
 	protected UpdateManager updateManager;
 	public int updateCount = 0;
@@ -210,7 +210,7 @@ public class UpdateMetaFileReaderJob extends Job {
 				url = url + URL_VALIDATOR;
 			}
 			URL link = new URL(url + UPDATES_TXT_FILE);
-			FileUtils.copyURLToFile(link, updateFile, TIME_OUT_MS, TIME_OUT_MS);
+			FileUtils.copyURLToFile(link, updateFile, SOCKET_TIMEOUT_MS, READ_TIMEOUT_MS);
 			reader = new BufferedReader(new FileReader (updateFile));
 			
 		} catch (IOException e) {

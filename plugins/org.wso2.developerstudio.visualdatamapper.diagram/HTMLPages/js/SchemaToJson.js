@@ -1,6 +1,6 @@
 // This function will take a JSON schema as input and
 // generate a sample JSON payload as output.
-function traverseObject(obj, parentObj) {
+function traverseObject(obj, parentObj, badgerFishCompliant) {
   if ("type" in obj) {
     var type = obj["type"].trim();
     switch (type) {
@@ -27,34 +27,52 @@ function traverseObject(obj, parentObj) {
         }
       case "array":
         {
-          return processArray(obj);
+          return processArray(obj, badgerFishCompliant);
         }
       case "object":
         {
-          var properties = obj["properties"];
-          delete obj["required"];
-          for (var key in properties) {
-            properties[key] = traverseObject(properties[key], properties);
-          }
-          // replace the main object at the end
-          return properties;
-        }
+			var attributes = obj["attributes"];
+			var properties = obj["properties"];
+
+			// resolve attributes seperately
+			for ( var attrkey in attributes) {
+				attributes[attrkey] = traverseObject(attributes[attrkey],
+						attributes, badgerFishCompliant);
+			}
+
+			for ( var attrkey in attributes) {
+				if (badgerFishCompliant) {
+					properties["@" + attrkey] = attributes[attrkey];
+				} else {
+					properties[attrkey] = attributes[attrkey];
+				}
+			}
+
+			delete obj["required"];
+			for ( var key in properties) {
+				if (typeof properties[key] == "object")
+					properties[key] = traverseObject(properties[key],
+							properties, badgerFishCompliant);
+			}
+			// replace the main object at the end
+			return properties;
+		}
     }
   } else {
     for (var key in obj) {
-      obj[key] = traverseObject(obj[key],obj);
+      obj[key] = traverseObject(obj[key],obj,badgerFishCompliant);
     }
   }
   return parentObj;
 }
 
 // process an Array object
-function processArray(obj) {
+function processArray(obj, badgerFishCompliant) {
   var itemsObj = obj["items"];
   var tempArr = [];
   if (Array.isArray(itemsObj)) {
     itemsObj.forEach(function(element) {
-      tempArr.push(traverseObject(element,obj));
+      tempArr.push(traverseObject(element,obj,badgerFishCompliant));
     });
     parentObj = tempArr;
   } else {
@@ -86,9 +104,9 @@ function processArray(obj) {
   return parentObj;
 }
 
-function convertSchemaToJson(schema) {
+function convertSchemaToJson(schema, badgerFishCompliant) {
 	  var rootValue = schema["title"];
-	  var result = traverseObject(schema, schema);
+	  var result = traverseObject(schema, schema, badgerFishCompliant);
 	  if(rootValue != "root"){
 	    var newResult = new Object();
 	    newResult[rootValue.toString()] = result;

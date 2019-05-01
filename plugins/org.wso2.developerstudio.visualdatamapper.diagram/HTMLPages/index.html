@@ -178,14 +178,24 @@
 
       // Generates default values when inputs are not given or when the schema is changed
       function generateDefaultValues() {
+		var inputSchemaClone = jQuery.extend(true, {}, schema); //create a object clone
+
         jsonString = convertSchemaToJson(schema);
+        jsonBadgerFishString = convertSchemaToJson(inputSchemaClone, true); //create badgerfish json for xml
+
         if (inputSchemaTitle != "root" && jsonString[inputSchemaTitle] != null) {
           jsonString = jsonString[inputSchemaTitle];
         }
-        jsonString = JSON.stringify(jsonString, null, "\t");
+        if (inputSchemaTitle != "root" && jsonBadgerFishString[inputSchemaTitle] != null) {
+            jsonBadgerFishString = jsonBadgerFishString[inputSchemaTitle];
+        }
 
-        xmlString = json2xml(JSON.parse(jsonString), "\n");
+        jsonString = JSON.stringify(jsonString, null, "\t");
+        jsonBadgerFishString = JSON.stringify(jsonBadgerFishString, null, "\t");
+
+        xmlString = json2xml(JSON.parse(jsonBadgerFishString), "\n");
         rootElemWithNS = buildRootWithNS(schema);
+
         xmlString = "<" + rootElemWithNS + ">" + xmlString + "</" + inputSchemaTitle + ">";
         csvString = '<text xmlns="http://ws.apache.org/commons/ns/payload">' + Papa.unparse(JSON.parse(jsonString), configs) + "</text>";
         

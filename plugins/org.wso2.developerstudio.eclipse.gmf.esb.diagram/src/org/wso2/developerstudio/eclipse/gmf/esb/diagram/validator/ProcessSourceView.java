@@ -111,6 +111,9 @@ public class ProcessSourceView {
     
     private static Set<String> proxySequence = new HashSet<>(Arrays.asList("inSequence", "outSequence", "faultSequence"));
     
+    private static Set<String> dbMediatorImtermediary = new HashSet<>(Arrays.asList("driver", "url", "user", "password",
+            "connection", "statement", "pool", "sql", "result"));
+    
     private static SequenceMediatorFactory sequenceMediatorFactory;
     private static TemplateMediatorFactory templateMediatorFactory;
 
@@ -598,11 +601,11 @@ public class ProcessSourceView {
                 xmlTags.push(tempTag);
 
                 if (tempTag.getqName().equals("target")) {
-                	insideTargetTag = true;
+                    insideTargetTag = true;
                 }
-                
+
                 if (insideTargetTag && proxySequence.contains(tempTag.getqName())) {
-                	insideProxySequence = true;
+                    insideProxySequence = true;
                 }
                 
                 if (artifactType.equals("") && artifacts.contains(tempTag.getqName())) {
@@ -657,11 +660,11 @@ public class ProcessSourceView {
             } else if (tempTag.isEndTag() || tempTag.getTagType() == 3) {// 235
 
                 if (insideTargetTag && tempTag.getqName().equals("target")) {
-                	insideTargetTag = false;
+                    insideTargetTag = false;
                 }
-                
+
                 if (insideTargetTag && proxySequence.contains(tempTag.getqName())) {
-                	insideProxySequence = false;
+                    insideProxySequence = false;
                 }
                 
                 if (tempTag.getqName().equals("ruleSet")) {
@@ -763,7 +766,13 @@ public class ProcessSourceView {
                                             && tempTag.getqName().equals(currentMediator.getqName())
                                             || (artifacts.contains(tempTag.getqName())
                                                     && !artifactType.equals("localEntry"))))) {
-                                if (((!tempTag.getqName().equals("endpoint") && !isGraphicalEP(tempTag.getqName()))
+                                if (currentMediator != null
+                                        && (currentMediator.getqName().equals("dblookup")
+                                                || currentMediator.getqName().equals("dbreport"))
+                                        && dbMediatorImtermediary.contains(tempTag.getqName())) {
+                                    intermediaryStack.push(currentMediator);
+	
+                            	} else if (((!tempTag.getqName().equals("endpoint") && !isGraphicalEP(tempTag.getqName()))
                                         || (tempTag.getqName().equals("endpoint") && !insideGraphicalEp && !graphicalEpInsideArtifact))
                                 		&& (!insideTargetTag || (insideTargetTag && insideProxySequence))) {
                                     sourceError = mediatorValidation();

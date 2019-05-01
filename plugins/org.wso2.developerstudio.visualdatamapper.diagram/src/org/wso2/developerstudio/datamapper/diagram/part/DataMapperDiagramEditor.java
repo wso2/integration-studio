@@ -72,6 +72,7 @@ import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.IPartListener2;
 import org.eclipse.ui.IViewPart;
+import org.eclipse.ui.IViewReference;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
@@ -179,62 +180,6 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
             });
         } catch (WorkbenchException e) {
         }
-
-        // Listener to detect events on datamapper editor part
-        IPartListener2 pl = new IPartListener2() {
-            public void partActivated(IWorkbenchPartReference ref) {
-
-            }
-
-            @Override
-            public void partBroughtToTop(IWorkbenchPartReference partRef) {
-
-            }
-
-            @Override
-            public void partClosed(IWorkbenchPartReference partRef) {
-                // TODO Auto-generated method stub
-
-            }
-
-            @Override
-            public void partDeactivated(IWorkbenchPartReference partRef) {
-                // TODO Auto-generated method stub
-
-            }
-
-            @Override
-            public void partOpened(IWorkbenchPartReference partRef) {
-            }
-
-            @Override
-            public void partHidden(IWorkbenchPartReference partRef) {
-                // TODO Auto-generated method stub
-
-            }
-
-            // Changing the browser contents when the active datamapper editor window changed
-            @Override
-            public void partVisible(final IWorkbenchPartReference partRef) {
-                loadContentTypes(); //This can be ommited if schema files are read from js side
-                IWorkbenchPart part = partRef.getPart(false);
-                if (partRef.getPage().getActiveEditor() instanceof DataMapperDiagramEditor) {
-                    DataMapperDiagramEditor temp = (DataMapperDiagramEditor) partRef.getPage().getActiveEditor();
-                    if (part == window.getActivePage().getActiveEditor()) {
-                        temp.loadInitialConfigFileLocations();
-                        reloadDataMapperTestWindow(getInputSchemaType(), getOutputSchemaType());
-                    }
-                }
-
-            }
-
-            @Override
-            public void partInputChanged(IWorkbenchPartReference partRef) {
-                // TODO Auto-generated method stub
-
-            }
-        };
-        window.getActivePage().addPartListener(pl);
     }
 	
     // Show datamapper test window and reload web page.
@@ -259,8 +204,8 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
      * @param outputSchemaType type of output payload to be sent to JS side
      */
     private void reloadDataMapperTestWindow(String inputSchemaType, String outputSchemaType) {
-        final String inputScheme = inputSchemaType;
-        final String outputScheme = outputSchemaType;
+        final String inputScheme = getInputSchemaType();
+        final String outputScheme = getOutputSchemaType();
         PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
             @Override
             public void run() {
@@ -823,7 +768,6 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
         IFile graphicalFile = ((IFileEditorInput) getEditorInput()).getFile();
         String configName = graphicalFile.getName().substring(0,
                 graphicalFile.getName().indexOf(EditorUtils.DIAGRAM_FILE_EXTENSION));
-
         String graphicalFileDirPath = graphicalFile.getParent().getProjectRelativePath().toString();
         if (graphicalFileDirPath != null && !"".equals(graphicalFileDirPath)) { //$NON-NLS-1$
             graphicalFileDirPath += File.separator;
@@ -904,6 +848,29 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
                 setOutputSchemaType(outputType);
             }
         }
+    }
+
+    @Override
+    public void setFocus() {
+        IWorkbench workbench = PlatformUI.getWorkbench();
+        IWorkbenchWindow window = workbench.getActiveWorkbenchWindow();
+        loadContentTypes(); // This can be ommited if schema files are read from js side
+        if (window.getActivePage().getActiveEditor() instanceof DataMapperDiagramEditor) {
+            loadInitialConfigFileLocations();
+            reloadDataMapperTestWindow(getInputSchemaType(), getOutputSchemaType());
+        }
+        super.setFocus();
+    }
+
+    private boolean isRealTimeMapperVisible() {
+        boolean isVisible = false;
+        IViewReference [] viewParts = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getViewReferences();
+        for(IViewReference viewPart: viewParts) {
+            if(viewPart.getId().equals(DATA_MAPPER_TEST_VIEW)) {
+                isVisible = true;
+            }
+        }
+        return isVisible;
     }
 
 }

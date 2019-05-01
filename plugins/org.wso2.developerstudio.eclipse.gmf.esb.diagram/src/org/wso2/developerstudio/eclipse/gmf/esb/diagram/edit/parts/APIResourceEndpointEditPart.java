@@ -241,7 +241,7 @@ public class APIResourceEndpointEditPart extends AbstractBorderedShapeEditPart {
         }
 
         public String getIconPath() {
-            return "icons/ico20/wsdl-endpoint.gif";
+            return "icons/ico20/wsdl-endpoint.png";
         }
 
         public String getNodeName() {

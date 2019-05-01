@@ -367,7 +367,7 @@ public class RecipientListEndPoint2EditPart extends ComplexFiguredAbstractEndpoi
         }
 
         public String getIconPath() {
-            return "icons/ico20/recipientlist-endpoint.gif";
+            return "icons/ico20/recipientlist-endpoint.png";
         }
 
     }

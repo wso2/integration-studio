@@ -340,7 +340,7 @@ public class WSDLEndPoint2EditPart extends AbstractEndpoint2 {
         }
 
         public String getIconPath() {
-            return "icons/ico20/wsdl-endpoint.gif";
+            return "icons/ico20/wsdl-endpoint.png";
         }
 
         public String getNodeName() {

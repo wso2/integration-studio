@@ -18,6 +18,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom;
 
 import org.eclipse.draw2d.GridData;
 import org.eclipse.draw2d.GridLayout;
+import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.ImageFigure;
 import org.eclipse.draw2d.Layer;
 import org.eclipse.draw2d.LayeredPane;
@@ -46,6 +47,7 @@ public class EsbGraphicalShapeWithLabel extends RoundedRectangle {
     private WrappingLabel propertyNameLabel;
     private static int Image_PreferredWidth = 72;
     private static int Image_PreferredHeight = 80;
+    private static int EndpointImage_PreferredHeight = 48;
     protected RoundedRectangle mainImageRectangle;
     private LayeredPane pane;
     protected Layer figureLayer;
@@ -201,6 +203,7 @@ public class EsbGraphicalShapeWithLabel extends RoundedRectangle {
     private void createContents() {
 
         figureLayer = new Layer();
+        IFigure iconImageFigure = null;
         GridLayout figureLayerLayout = new GridLayout();
         figureLayerLayout.marginHeight = 0;
         figureLayerLayout.marginWidth = 0;
@@ -208,18 +211,23 @@ public class EsbGraphicalShapeWithLabel extends RoundedRectangle {
         figureLayer.setLayoutManager(figureLayerLayout);
         GridData constraintMainImageRectangle = new GridData();
         constraintMainImageRectangle.verticalAlignment = GridData.BEGINNING;
-        if (!this.isEndpoint) {
-            constraintMainImageRectangle.horizontalAlignment = GridData.CENTER;
-        }
         constraintMainImageRectangle.verticalSpan = 1;
-
-        ImageFigure iconImageFigure = EditPartDrawingHelper.getIconImageFigure(getIconPath(), Image_PreferredWidth,
-                Image_PreferredHeight);
-
+        
         mainImageRectangle = new RoundedRectangle();
         mainImageRectangle.setCornerDimensions(new Dimension(8, 8));
         mainImageRectangle.setOutline(false);
-        mainImageRectangle.setPreferredSize(new Dimension(Image_PreferredWidth, Image_PreferredHeight));
+        
+        if (this.isEndpoint) {
+            iconImageFigure = EditPartDrawingHelper.getIconImageFigure(getIconPath(), Image_PreferredWidth,
+                    EndpointImage_PreferredHeight);
+            mainImageRectangle.setPreferredSize(new Dimension(Image_PreferredWidth , EndpointImage_PreferredHeight));
+        } else {
+            constraintMainImageRectangle.horizontalAlignment = GridData.CENTER;
+            iconImageFigure = EditPartDrawingHelper.getIconImageFigure(getIconPath(), Image_PreferredWidth,
+                    Image_PreferredHeight);
+            mainImageRectangle.setPreferredSize(new Dimension(Image_PreferredWidth, Image_PreferredHeight));
+        }
+        
         mainImageRectangle.add(iconImageFigure);
         RoundedRectangleBorder border = new RoundedRectangleBorder(0,0);
         border.setColor(borderColor);
@@ -233,7 +241,11 @@ public class EsbGraphicalShapeWithLabel extends RoundedRectangle {
         GridData constraintPropertyValueRectangle = new GridData();
         constraintPropertyValueRectangle.verticalAlignment = GridData.FILL;
         constraintPropertyValueRectangle.horizontalAlignment = GridData.FILL;
-        constraintPropertyValueRectangle.horizontalIndent = 4;
+        if (this.isEndpoint) {
+            constraintPropertyValueRectangle.horizontalIndent = 0;
+        } else {
+            constraintPropertyValueRectangle.horizontalIndent = 4;
+        }
         constraintPropertyValueRectangle.horizontalSpan = 1;
         constraintPropertyValueRectangle.verticalSpan = 1;
         constraintPropertyValueRectangle.grabExcessHorizontalSpace = true;

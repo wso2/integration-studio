@@ -59,6 +59,7 @@ public class UpdateCheckerJob extends Job {
 				updateManager.checkForAvailableUpdates(progress.newChild(1));
 				updateManager.checkForAvailableFeatures(progress.newChild(1));
 				} catch (Exception e){
+					log.error("Error occurred while checking for Developer Studio Updates.", e);
 					setIsJobRunning(false);
 					return Status.CANCEL_STATUS;
 				}

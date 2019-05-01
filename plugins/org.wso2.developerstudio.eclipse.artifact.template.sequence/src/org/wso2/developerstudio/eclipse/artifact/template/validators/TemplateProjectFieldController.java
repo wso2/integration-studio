@@ -134,6 +134,8 @@ public class TemplateProjectFieldController extends AbstractFieldController {
         } else if (modelProperty.equals(HTTP_EP_URI_TEMPLATE_ID) && isHTTPEndPoint) {
             if (propertyValue == null || propertyValue.toString().trim().isEmpty()) {
                 throw new FieldValidationException("URI Template cannot be empty");
+            } else if (!(propertyValue.toString().startsWith("http://") || propertyValue.toString().startsWith("https://"))) {
+                throw new FieldValidationException("URI Template is invalid. HTTP URI template should be started with either 'http://' or 'https://'.");
             }
         }
     }

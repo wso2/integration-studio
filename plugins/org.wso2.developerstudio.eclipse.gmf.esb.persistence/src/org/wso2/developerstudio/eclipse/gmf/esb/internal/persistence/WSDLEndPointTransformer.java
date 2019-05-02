@@ -124,7 +124,7 @@ public class WSDLEndPointTransformer extends AbstractEndpointTransformer {
         if (StringUtils.isNotBlank(wsdlEndpointFormPage.getEndpointName().getText())) {
             synapseWSDLEP.setName(wsdlEndpointFormPage.getEndpointName().getText());
         }
-        synapseWSDLEP.setCommentsList(wsdlEndpointFormPage.getEndpointCommentList());
+        synapseWSDLEP.getCommentsList().addAll(wsdlEndpointFormPage.getEndpointCommentList());
         createAdvanceOptions(wsdlEndpointFormPage, synapseWSDLEP);
 
         if (wsdlEndpointFormPage.endpointPropertyList != null && wsdlEndpointFormPage.endpointPropertyList.size() > 0) {

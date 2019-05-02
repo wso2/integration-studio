@@ -9,6 +9,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb.provider;
 import java.util.Collection;
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.WordUtils;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
@@ -17,7 +18,6 @@ import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
@@ -82,25 +82,40 @@ public class LogPropertyItemProvider extends AbstractNameValueExpressionProperty
 
     @Override
     public String getText(Object object) {
-        String propertyName = ((LogProperty) object).getPropertyName();
-        String propertyNameLabel = WordUtils.abbreviate(propertyName, 40, 45, " ...");
-        String propertyValueType = ((LogProperty) object).getPropertyValueType().toString();
-        String propertyValueLabel = ((LogProperty) object).getPropertyValue();
-        String propertyExpressionLabel = ((LogProperty) object).getPropertyExpression().toString();
 
-        if (propertyValueType.equals(PropertyValueType.LITERAL.getName())) {
-            return propertyNameLabel == null || propertyNameLabel.length() == 0 ? getString("_UI_LogProperty_type")
-                    : propertyValueLabel != null
-                            ? getString("_UI_LogProperty_type") + "  -  "
-                                    + EEFPropertyViewUtil.spaceFormat(propertyNameLabel)
-                                    + EEFPropertyViewUtil.spaceFormat(propertyValueLabel)
-                            : getString("_UI_LogProperty_type") + "  -  "
-                                    + EEFPropertyViewUtil.spaceFormat(propertyNameLabel);
-        } else {
-            return propertyNameLabel == null || propertyNameLabel.length() == 0 ? getString("_UI_LogProperty_type")
-                    : getString("_UI_LogProperty_type") + "  -  " + EEFPropertyViewUtil.spaceFormat(propertyNameLabel)
-                            + EEFPropertyViewUtil.spaceFormat(propertyExpressionLabel);
+        int maxLength = 40;
+        int spacing = 5;
+        int marginSpaceLeft = 1;
+        int propertyTypeLength = 10;
+        String emptySpace = StringUtils.rightPad("", spacing);
+
+        String propertyName = StringUtils.rightPad(((LogProperty) object).getPropertyName(), maxLength);
+        String propertyValueType = ((LogProperty) object).getPropertyValueType().toString();
+        String propertyValue = StringUtils.rightPad(((LogProperty) object).getPropertyValue(), maxLength);
+        String propertyExpression = StringUtils.rightPad(((LogProperty) object).getPropertyExpression().toString(),
+                maxLength);
+
+        String formattedString = null;
+        if (((LogProperty) object).getPropertyName() == null || ((LogProperty) object).getPropertyName().isEmpty()) {
+            propertyName = StringUtils.rightPad("", maxLength);
         }
+        if (((LogProperty) object).getPropertyValue() == null || ((LogProperty) object).getPropertyValue().isEmpty()) {
+            propertyValue = StringUtils.rightPad("", maxLength);
+        }
+        if (PropertyValueType.LITERAL.getName().equals(propertyValueType)) {
+            formattedString = StringUtils.rightPad("", marginSpaceLeft) 
+                    + StringUtils.abbreviate(propertyName, maxLength)
+                    + emptySpace + StringUtils.abbreviate(StringUtils.rightPad(propertyValueType, propertyTypeLength),
+                            propertyTypeLength)
+                    + emptySpace + StringUtils.abbreviate(propertyValue, maxLength);
+        } else {
+            formattedString = StringUtils.rightPad("", marginSpaceLeft) 
+                    + StringUtils.abbreviate(propertyName, maxLength)
+                    + emptySpace + StringUtils.abbreviate(StringUtils.rightPad(propertyValueType, propertyTypeLength),
+                            propertyTypeLength)
+                    + emptySpace + StringUtils.abbreviate(propertyExpression, maxLength);
+        }
+        return formattedString;
     }
 
     /**

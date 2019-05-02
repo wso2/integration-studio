@@ -67,4 +67,19 @@ public class MediatorFactoryUtils {
         }
     }
 
+    public static synchronized void registerConnectorFactories() {
+        Map<QName, Class> factoryMap = mediatorFactoryFinder.getFactoryMap();
+        Map<QName, Class> dummyFactoryMap = dummyMediatorFactoryFinder.getFactoryMap();
+        try {
+            List<QName> tagQNameList = (CloudConnectorOperationExtFactory.class.newInstance()).getTagQNameList();
+            for (QName tag :  tagQNameList) {
+                factoryMap.put(tag, CloudConnectorOperationExtFactory.class);
+                dummyFactoryMap.put(tag, CloudConnectorOperationExtFactory.class);
+            }
+
+        } catch (Exception e) {
+            throw new SynapseException("Error instantiating CloudConnectorOperationExtFactory.", e);
+        }
+    }
+
 }

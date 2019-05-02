@@ -1093,7 +1093,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
         getEditor(0).doSave(monitor);
         // Since Complex endpoint type editors dose not have assiociated xml
         // file do not need to call this.
-        Display.getDefault().asyncExec(new Runnable() {
+        Display.getDefault().syncExec(new Runnable() {
             @Override
             public void run() {
                 try {

@@ -30,7 +30,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditorPlu
 public class EditPartDrawingHelper {
 
     public static Color FigureBreakpointHitColor = new Color(null, 231, 76, 60);
-    public static Color FigureSelectedColor = new Color(null, 255, 255, 255);
+    public static Color FigureSelectedColor = new Color(null, 245, 245, 245);
     public static Color FigureNormalColor = new Color(null, 255, 255, 255);
     public static Color FigureSelectedBorderColor = new Color(null, 189, 195, 199);
     public static Color ComplexFigureSelectedBorderColor = new Color(null, 189, 195, 199);

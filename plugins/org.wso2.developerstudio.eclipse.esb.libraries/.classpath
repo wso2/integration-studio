@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+	<classpathentry exported="true" kind="lib" path="lib/synapse-extensions_2.1.7.wso2v105.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/synapse-vfs-transport_2.1.7.wso2v105.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/synapse-tasks_2.1.7.wso2v105.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/synapse-samples_2.1.7.wso2v105.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/synapse-nhttp-transport_2.1.7.wso2v105.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/synapse-commons_2.1.7.wso2v105.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/synapse-fix-transport_2.1.7.wso2v105.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/synapse-core_2.1.7.wso2v105.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/json-path-2.4.0.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.tools.core.5.2.8.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/synapse-extensions_2.1.7.wso2v80.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.rule.mediation_4.4.9.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.rule.kernel_4.4.9.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.rule.common_4.4.9.jar"/>
@@ -23,12 +29,6 @@
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.router.impl_4.6.123.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.service_4.6.104.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.smooks_4.6.123.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/synapse-commons_2.1.7.wso2v80.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/synapse-fix-transport_2.1.7.wso2v80.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/synapse-nhttp-transport_2.1.7.wso2v80.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/synapse-samples_2.1.7.wso2v80.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/synapse-tasks_2.1.7.wso2v80.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/synapse-vfs-transport_2.1.7.wso2v80.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/groovy-all_2.3.9.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/axiom_1.2.11.wso2v11.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/bcprov-jdk16-1.46.jar"/>

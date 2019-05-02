@@ -117,8 +117,8 @@ Bundle-ClassPath: .,
  lib/org.wso2.carbon.rule.mediation_4.4.9.jar,
  lib/synapse-extensions_2.1.7.wso2v80.jar,
  lib/json-path-2.4.0.jar,
- lib/synapse-core_2.1.7.wso2v97.jar,
- lib/org.wso2.carbon.tools.core.5.2.8.jar
+ lib/org.wso2.carbon.tools.core.5.2.8.jar,
+ lib/synapse-core_2.1.7.wso2v105.jar
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.jdt.ui,

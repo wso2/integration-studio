@@ -78,9 +78,9 @@ public class AddressEndPointImpl extends AbstractEndPointImpl implements Address
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
+     * @generated NOT
      */
-    protected AddressEndPointImpl() {
+    public AddressEndPointImpl() {
         super();
     }
 

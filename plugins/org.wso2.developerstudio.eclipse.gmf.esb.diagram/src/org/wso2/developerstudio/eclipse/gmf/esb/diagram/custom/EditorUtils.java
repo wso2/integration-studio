@@ -102,6 +102,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.ValidateMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.XQueryMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.XSLTMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.cloudconnector.CloudConnectorDirectoryTraverser;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.MediatorFactoryUtils;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.APIResourceEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.APIResourceFaultInputConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.APIResourceInputConnectorEditPart;
@@ -882,6 +883,7 @@ public class EditorUtils {
 
     private static void addCloudConnectorOperations(EsbDiagramEditor editorPart, EsbPaletteFactory esbPaletteFactory)
             throws Exception {
+        MediatorFactoryUtils.registerConnectorFactories();
         EsbEditorInput input = (EsbEditorInput) editorPart.getEditorInput();
         IFile file = input.getXmlResource();
         IProject activeProject = file.getProject();

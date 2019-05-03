@@ -9,6 +9,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb.provider;
 import java.util.Collection;
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
@@ -227,22 +228,36 @@ public class PayloadFactoryArgumentItemProvider extends EsbNodeItemProvider {
      */
     @Override
     public String getText(Object object) {
-        PayloadFactoryArgumentType argumentType = ((PayloadFactoryArgument)object).getArgumentType();
-        String argumentTypeLabel = argumentType == null ? null : argumentType.toString();
-        String argumentValue = ((PayloadFactoryArgument)object).getArgumentValue().toString();
-        String argumentExpression = ((PayloadFactoryArgument)object).getArgumentExpression().toString();
+        int maxLength = 40;
+        int spacing = 3;
+        int marginSpaceLeft = 1;
+        int argTypeLength = 10;
+        String emptySpace = StringUtils.rightPad("", spacing);
 
-        if (argumentTypeLabel.equalsIgnoreCase(PayloadFactoryArgumentType.VALUE.getName())) {
-            return argumentTypeLabel == null || argumentTypeLabel.length() == 0 ?
-                getString("_UI_PayloadFactoryArgument_type") :
-                getString("_UI_PayloadFactoryArgument_type") + "\t\t\t" + argumentTypeLabel + "\t\t\t" +
-                argumentValue;
-        } else {
-            return argumentTypeLabel == null || argumentTypeLabel.length() == 0 ?
-                getString("_UI_PayloadFactoryArgument_type") :
-                getString("_UI_PayloadFactoryArgument_type") + "\t\t\t " + argumentTypeLabel + "\t\t\t" +
-                argumentExpression;
+        String argumentType = ((PayloadFactoryArgument) object).getArgumentType().toString();
+        String argumentValue = StringUtils.rightPad(((PayloadFactoryArgument) object).getArgumentValue(), maxLength);
+        String argumentExpression = StringUtils
+                .rightPad(((PayloadFactoryArgument) object).getArgumentExpression().getPropertyValue(), maxLength);
+
+        String formattedString = null;
+        if (((PayloadFactoryArgument) object).getArgumentValue() == null
+                || ((PayloadFactoryArgument) object).getArgumentValue().isEmpty()) {
+            argumentValue = StringUtils.rightPad("", maxLength);
         }
+        if (((PayloadFactoryArgument) object).getArgumentExpression().getPropertyValue() == null
+                || ((PayloadFactoryArgument) object).getArgumentExpression().getPropertyValue().isEmpty()) {
+            argumentExpression = StringUtils.rightPad("", maxLength);
+        }
+        if (PayloadFactoryArgumentType.VALUE.getName().equalsIgnoreCase(argumentType)) {
+            formattedString = StringUtils.rightPad("", marginSpaceLeft)
+                    + StringUtils.abbreviate(StringUtils.rightPad(argumentType, argTypeLength), argTypeLength)
+                    + emptySpace + StringUtils.abbreviate(argumentValue, maxLength);
+        } else {
+            formattedString = StringUtils.rightPad("", marginSpaceLeft)
+                    + StringUtils.abbreviate(StringUtils.rightPad(argumentType, argTypeLength), argTypeLength)
+                    + emptySpace + StringUtils.abbreviate(argumentExpression, maxLength);
+        }
+        return formattedString;
     }
 
     /**

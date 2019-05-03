@@ -117,13 +117,15 @@ public class RegistryReaderServlet extends HttpServlet {
             JsonObject responseObj = new JsonObject();
             responseObj.addProperty("schema", IOUtils.toString(inputSchema));
 
-            // Retrieve input file
-            File inputSampleFile = new File(DataMapperConfigHolder.getInstance().getInputFile());
+            if (null != DataMapperConfigHolder.getInstance().getInputFile()) {
+                // Retrieve input file
+                File inputSampleFile = new File(DataMapperConfigHolder.getInstance().getInputFile());
 
-            // If the input file exists send the sample input
-            if (inputSampleFile.exists()) {
-                InputStream inputSample = FileUtils.openInputStream(inputSampleFile);
-                responseObj.addProperty("sample", IOUtils.toString(inputSample));
+                // If the input file exists send the sample input
+                if (inputSampleFile.exists()) {
+                    InputStream inputSample = FileUtils.openInputStream(inputSampleFile);
+                    responseObj.addProperty("sample", IOUtils.toString(inputSample));
+                }
             }
 
             response.getWriter().println(responseObj.toString());

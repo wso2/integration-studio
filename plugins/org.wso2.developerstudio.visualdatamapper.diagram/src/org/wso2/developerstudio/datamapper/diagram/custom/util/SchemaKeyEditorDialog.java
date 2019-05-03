@@ -17,8 +17,10 @@
 package org.wso2.developerstudio.datamapper.diagram.custom.util;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -1042,14 +1044,37 @@ public class SchemaKeyEditorDialog extends Dialog {
      * @param destinationFilePath path of the destination
      */
     private void copyInputFile(String originalFilePath, String destinationFilePath) {
-        File originalFile = new File(originalFilePath);
-        File copiedFile = new File(destinationFilePath);
+        String inputType = ((DataMapperDiagramEditor) workBenchPart.getSite().getWorkbenchWindow().getActivePage()
+                .getActiveEditor()).getInputSchemaType();
+
+        if (null != originalFilePath && null != destinationFilePath
+                && (inputType.equals("XML") || inputType.equals("JSON") || inputType.equals("CSV"))) {
+            File originalFile = new File(originalFilePath);
+            File copiedFile = new File(destinationFilePath);
+            try {
+                FileUtils.copyFile(originalFile, copiedFile);
+                assert (copiedFile).exists();
+                assert (Files.readAllLines(originalFile.toPath()).equals(Files.readAllLines(copiedFile.toPath())));
+            } catch (IOException e) {
+                log.error("Failed to create a copy of the original input file!");
+            }
+        } else if (null != destinationFilePath) {
+            clearContent(new File(destinationFilePath));
+        }
+    }
+    
+    /**
+     * Clears the content of a given file
+     * 
+     * @param file
+     */
+    private void clearContent(File file) {
         try {
-            FileUtils.copyFile(originalFile, copiedFile);
-            assert (copiedFile).exists();
-            assert (Files.readAllLines(originalFile.toPath()).equals(Files.readAllLines(copiedFile.toPath())));
-        } catch (IOException e) {
-            log.error("Failed to create a copy of the original input file!");
+            PrintWriter writer = new PrintWriter(file);
+            writer.print("");
+            writer.close();
+        } catch (FileNotFoundException e) {
+            log.error("Input sample file not found!", e);
         }
     }
     

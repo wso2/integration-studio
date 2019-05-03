@@ -105,8 +105,8 @@
       }
       
       // input and output types
-      var inputType = resolveGetParam("inputtype");
-      var outputType = resolveGetParam("outputtype");
+      var inputType = convertType(resolveGetParam("inputtype"));
+      var outputType = convertType(resolveGetParam("outputtype"));
       var schema = "";
       var sample = "";
       var inputSchemaTitle = "";
@@ -286,6 +286,15 @@
             ajaxCallBack(data);
           }
         });
+      }
+      
+      function convertType(type){
+    	  if (type === "CONNECTOR" || type === "JSONSCHEMA"){
+    		type = "JSON";
+    	  } else if (type === "XSD"){
+    		type = "XML";
+    	  }
+    	  return type;
       }
           
    </script>

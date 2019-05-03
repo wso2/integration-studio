@@ -288,6 +288,8 @@ public class ValidateResourcePropertiesEditionPartImpl extends CompositeProperti
 	            public void mouseDown(MouseEvent e) {
                     EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
                             SWT.NULL, locationKey, new ArrayList<NamedEntityDescriptor>());
+                    dialog.create();
+                    dialog.getShell().setText("Resource key");
                     dialog.open();
                     locationKeyText.setText(locationKey.getKeyValue());
                     propertiesEditionComponent.firePropertiesChanged(
@@ -311,6 +313,8 @@ public class ValidateResourcePropertiesEditionPartImpl extends CompositeProperti
                     if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
                         EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
                                 SWT.NULL, locationKey, new ArrayList<NamedEntityDescriptor>());
+                        dialog.create();
+                        dialog.getShell().setText("Resource key");
                         dialog.open();
                         locationKeyText.setText(locationKey.getKeyValue());
                         propertiesEditionComponent.firePropertiesChanged(

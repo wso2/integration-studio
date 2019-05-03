@@ -209,7 +209,7 @@ public class RegistryKeyPropertyEditorDialog extends Dialog {
 		fd_link.right = new FormAttachment(100, -4);
 		fd_link.left = new FormAttachment(0);
 		fd_link.top = new FormAttachment(0, -2);
-		fd_link.bottom = new FormAttachment(0, 15);
+		fd_link.bottom = new FormAttachment(0, 20);
 		link.setLayoutData(fd_link);
 
 		// Fixing TOOLS-2553
@@ -224,7 +224,7 @@ public class RegistryKeyPropertyEditorDialog extends Dialog {
 			}
 		});
 		FormData fd_link_1 = new FormData();
-		fd_link_1.top = new FormAttachment(rkTextField, 100);
+		fd_link_1.top = new FormAttachment(rkTextField, 150);
 		fd_link_1.right = new FormAttachment(rkTextField, 0, SWT.RIGHT);
 		link_1.setLayoutData(fd_link_1);
 		link_1.setText("<a>Create && point to a new resource...</a>");
@@ -286,6 +286,7 @@ public class RegistryKeyPropertyEditorDialog extends Dialog {
 			NewResourceTemplateDialog newResourceTemplateDialog = new NewResourceTemplateDialog(getParentShell(),(Map<String, List<String>>) rkProperty.getFilters());
 			newResourceTemplateDialog.create();
 			newResourceTemplateDialog.getShell().setText("New Resource");
+			newResourceTemplateDialog.getShell().setSize(480, 500);
 			newResourceTemplateDialog.open();
 			if (newResourceTemplateDialog.getReturnCode()==Window.OK){
 				setSelectedPath(newResourceTemplateDialog.getSelectedPath());

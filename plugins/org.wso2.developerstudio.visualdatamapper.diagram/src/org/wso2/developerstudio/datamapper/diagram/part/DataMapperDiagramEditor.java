@@ -617,15 +617,17 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
      */
     private boolean hasInputSchemaChanged(String modifiedSchema) {
         try {
-            String prevSchema = new String(
-                    Files.readAllBytes(Paths.get(DataMapperConfigHolder.getInstance().getInputSchemaPath())));
-            JSONObject prevSchemaJson = (JSONObject) new JSONParser().parse(prevSchema);
-            JSONObject modifiedSchemaJson = (JSONObject) new JSONParser().parse(modifiedSchema);
-            prevSchemaJson.remove("inputType");
+            if (null != DataMapperConfigHolder.getInstance().getInputSchemaPath()) {
+                String prevSchema = new String(
+                        Files.readAllBytes(Paths.get(DataMapperConfigHolder.getInstance().getInputSchemaPath())));
+                JSONObject prevSchemaJson = (JSONObject) new JSONParser().parse(prevSchema);
+                JSONObject modifiedSchemaJson = (JSONObject) new JSONParser().parse(modifiedSchema);
+                prevSchemaJson.remove("inputType");
 
-            // Compare whether the schema has any changes
-            if (prevSchemaJson != null && modifiedSchema != null && !prevSchemaJson.equals(modifiedSchemaJson)) {
-                return true;
+                // Compare whether the schema has any changes
+                if (prevSchemaJson != null && modifiedSchema != null && !prevSchemaJson.equals(modifiedSchemaJson)) {
+                    return true;
+                }
             }
         } catch (ParseException | IOException e) {
             log.error("Failed to compare schema!");

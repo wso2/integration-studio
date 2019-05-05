@@ -856,8 +856,8 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
     public void setFocus() {
         IWorkbench workbench = PlatformUI.getWorkbench();
         IWorkbenchWindow window = workbench.getActiveWorkbenchWindow();
-        loadContentTypes(); // This can be ommited if schema files are read from js side
         if (window.getActivePage().getActiveEditor() instanceof DataMapperDiagramEditor) {
+            loadContentTypes(); // This can be ommited if schema files are read from js side
             loadInitialConfigFileLocations();
             reloadDataMapperTestWindow(getInputSchemaType(), getOutputSchemaType());
         }

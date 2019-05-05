@@ -1983,7 +1983,7 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
         epv.hideEntry(duplicateElements, false);
         epv.hideEntry(reverseElements, false);
         epv.hideEntry(nameElements, false);
-        epv.hideEntry(failoverElements, false);
+        epv.showEntry(failoverElements, false);
         epv.hideEntry(policyElements, false);
         epv.hideEntry(outputConnectorElements, false);
         view.layout(true, true);

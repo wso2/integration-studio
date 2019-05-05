@@ -21,7 +21,7 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.LOAD_
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.LOAD_BALANCE_END_POINT__SESSION_TIMEOUT;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.LOAD_BALANCE_END_POINT__SESSION_TYPE;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.LOAD_BALANCE_END_POINT__BUILD_MESSAGE;
-import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.PARENT_END_POINT__CHILDREN;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.LOAD_BALANCE_END_POINT__FAILOVER;
 
 import java.util.Iterator;
 import java.util.List;
@@ -104,6 +104,8 @@ public class LoadBalanceEndpointDeserializer extends AbstractEndpointDeserialize
         }
 
         executeSetValueCommand(LOAD_BALANCE_END_POINT__BUILD_MESSAGE, loadbalanceEndpoint.isBuildMessageAtt());
+        
+        executeSetValueCommand(LOAD_BALANCE_END_POINT__FAILOVER, loadbalanceEndpoint.isFailover());
         
         if (loadbalanceEndpoint.getAlgorithm() != null) {
             executeSetValueCommand(LOAD_BALANCE_END_POINT__ALGORITHM,

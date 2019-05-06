@@ -89,7 +89,11 @@ public abstract class ProjectArtifactHandler {
 		try {
 			project.build(IncrementalProjectBuilder.CLEAN_BUILD, getProgressMonitor());
 			File target = project.getFolder("target").getLocation().toFile();
-			FileUtils.cleanDirectory(target);
+			
+			if (null != target && target.exists()) {
+				FileUtils.cleanDirectory(target);
+			}
+		
 		} catch (Exception e) {
 			log.error("Error while cleaning the target directory", e);
 		}

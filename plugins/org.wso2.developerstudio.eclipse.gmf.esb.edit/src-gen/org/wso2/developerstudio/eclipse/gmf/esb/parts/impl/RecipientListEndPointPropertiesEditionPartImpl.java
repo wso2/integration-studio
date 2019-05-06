@@ -695,7 +695,9 @@ public class RecipientListEndPointPropertiesEditionPartImpl extends CompositePro
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createEndpointTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.RecipientListEndPoint.Properties.endpointType, EsbMessages.RecipientListEndPointPropertiesEditionPart_EndpointTypeLabel);
 		endpointType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);

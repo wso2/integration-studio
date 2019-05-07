@@ -353,7 +353,12 @@ public class EEFNameSpacedPropertyEditorDialog extends Dialog {
     /**
      * Group for XML evaluator elements.
      */
-    private Group xmlEvaluatorGroup;    
+    private Group xmlEvaluatorGroup;
+
+    /**
+     * Type of operating system
+     */
+    private String operatingSystemType;
     
     private static final String EMPTY_STRING = "";
     private static final String SOURCE_VIEW_INFO_LABEL_TEXT = "Switch to 'Visual' tab to see a graphical "
@@ -387,7 +392,6 @@ public class EEFNameSpacedPropertyEditorDialog extends Dialog {
     private static final String TREE_ITEM_DATA_KEY = "dom_user_data_key";
     public static final String OS_NAME = "os.name";
     public static final String SYSTEM_PROPERTY_TYPE_GENERIC = "generic";
-    private String operatingSystemType;
     public static final String OS_TYPE_WINDOWS = "windows";
     
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);

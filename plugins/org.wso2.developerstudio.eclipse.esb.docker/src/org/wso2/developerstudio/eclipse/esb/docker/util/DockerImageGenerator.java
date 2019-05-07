@@ -60,6 +60,7 @@ public class DockerImageGenerator {
     private static final String FILE_POSTFIX_TAR = ".tar";
     private static final String SPACE = " ";
     private static final String EMPTY_STRING = "";
+    private static final String TAG_LATEST = "latest";
 
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
@@ -237,12 +238,13 @@ public class DockerImageGenerator {
 
         String imageNameWithTag = EMPTY_STRING;
 
-        if (dockerModel.getTag() != null || !dockerModel.getTag().equals(EMPTY_STRING)) {
-            imageNameWithTag = dockerModel.getName() + DockerGenConstants.ImageParamDefaults.TAG_SEPARATOR
-                    + dockerModel.getTag();
-        } else {
-            imageNameWithTag = dockerModel.getName() + DockerGenConstants.ImageParamDefaults.TAG_SEPARATOR;
-        }
+		if (dockerModel.getTag() != null && !dockerModel.getTag().equals(EMPTY_STRING)) {
+			imageNameWithTag = dockerModel.getName() + 
+					DockerGenConstants.ImageParamDefaults.TAG_SEPARATOR + dockerModel.getTag();
+		} else {
+			imageNameWithTag = dockerModel.getName() + 
+					DockerGenConstants.ImageParamDefaults.TAG_SEPARATOR + TAG_LATEST;
+		}
 
         try {
             // build the image

@@ -387,7 +387,7 @@ public class EEFNameSpacedPropertyEditorDialog extends Dialog {
     private static final String TREE_ITEM_DATA_KEY = "dom_user_data_key";
     public static final String OS_NAME = "os.name";
     public static final String SYSTEM_PROPERTY_TYPE_GENERIC = "generic";
-    private String OS_TYPE;
+    private String operatingSystemType;
     public static final String OS_TYPE_WINDOWS = "windows";
     
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
@@ -454,7 +454,7 @@ public class EEFNameSpacedPropertyEditorDialog extends Dialog {
         this.nsProperty = property;
         this.collectedNamespaces = new HashMap<String, String>();
         xPathValidator = XPathValidatorImpl.getInstance();
-        OS_TYPE = System.getProperty(OS_NAME, SYSTEM_PROPERTY_TYPE_GENERIC).toLowerCase(Locale.ENGLISH);
+        operatingSystemType = System.getProperty(OS_NAME, SYSTEM_PROPERTY_TYPE_GENERIC).toLowerCase(Locale.ENGLISH);
     }
     
     /**
@@ -472,7 +472,7 @@ public class EEFNameSpacedPropertyEditorDialog extends Dialog {
         this.nsProperty = property;
         this.collectedNamespaces = new HashMap<String, String>();
         xPathValidator = XPathValidatorImpl.getInstance();
-        OS_TYPE = System.getProperty(OS_NAME, SYSTEM_PROPERTY_TYPE_GENERIC).toLowerCase(Locale.ENGLISH);
+        operatingSystemType = System.getProperty(OS_NAME, SYSTEM_PROPERTY_TYPE_GENERIC).toLowerCase(Locale.ENGLISH);
     }
 
     /**
@@ -951,7 +951,7 @@ public class EEFNameSpacedPropertyEditorDialog extends Dialog {
         // Open dialog.
         dialogShell.layout();
         dialogShell.pack();
-        if (OS_TYPE.indexOf(OS_TYPE_WINDOWS) >= 0) {
+        if (operatingSystemType.indexOf(OS_TYPE_WINDOWS) >= 0) {
             dialogShell.setSize(640, 870);
         } else {
             dialogShell.setSize(640, 800);

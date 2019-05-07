@@ -277,6 +277,13 @@ public class XSD2XMLGenerator extends NewXMLGenerator {
 			createDefaultContent(document, rootCMElementDeclaration);
 		}
 
+        /*
+         * (non-Javadoc)
+         * 
+         * @see
+         * org.eclipse.wst.xml.core.internal.contentmodel.util.DOMContentBuilderImpl#createDefaultContent(org.w3c.dom.
+         * Node, org.eclipse.wst.xml.core.internal.contentmodel.CMElementDeclaration)
+         */
         @Override
         public void createDefaultContent(Node parent, CMElementDeclaration ed) {
             currentParent = parent;
@@ -284,6 +291,12 @@ public class XSD2XMLGenerator extends NewXMLGenerator {
             visitCMElementDeclaration(ed);
         }
 
+        /*
+         * (non-Javadoc)
+         * 
+         * @see org.eclipse.wst.xml.core.internal.contentmodel.util.DOMContentBuilderImpl#visitCMElementDeclaration(org.
+         * eclipse.wst.xml.core.internal.contentmodel.CMElementDeclaration)
+         */
         @Override
         public void visitCMElementDeclaration(CMElementDeclaration ed) {
             int forcedMin = (buildOptionalElements(buildPolicy) || alwaysVisit) ? 1 : 0;
@@ -307,11 +320,12 @@ public class XSD2XMLGenerator extends NewXMLGenerator {
 
             int max = Math.min(ed.getMaxOccur(), getNumOfRepeatableElements());
             if (max == -1) {
-                // If the maxOccurs is unbounded, max will be -1. To indicate it as an array we add 2 elements of the kind.
+                // If the maxOccurs is unbounded, max will be -1. To indicate it as an array we add 2 elements of the
+                // kind.
                 max = 2;
-            } else if (max < min){
+            } else if (max < min) {
                 max = min;
-            } 
+            }
 
             alwaysVisit = false;
 

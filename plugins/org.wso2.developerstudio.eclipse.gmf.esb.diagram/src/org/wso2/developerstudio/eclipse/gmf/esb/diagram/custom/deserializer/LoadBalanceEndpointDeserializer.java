@@ -21,12 +21,14 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.LOAD_
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.LOAD_BALANCE_END_POINT__SESSION_TIMEOUT;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.LOAD_BALANCE_END_POINT__SESSION_TYPE;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.LOAD_BALANCE_END_POINT__BUILD_MESSAGE;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.LOAD_BALANCE_END_POINT__FAILOVER;
 
 import java.util.Iterator;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.endpoints.AbstractEndpoint;
+import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.endpoints.LoadbalanceEndpoint;
 import org.apache.synapse.endpoints.dispatch.Dispatcher;
 import org.apache.synapse.endpoints.dispatch.HttpSessionDispatcher;
@@ -34,11 +36,14 @@ import org.apache.synapse.endpoints.dispatch.SimpleClientSessionDispatcher;
 import org.apache.synapse.endpoints.dispatch.SoapSessionDispatcher;
 import org.apache.synapse.mediators.MediatorProperty;
 import org.eclipse.core.runtime.Assert;
+import org.eclipse.emf.transaction.RecordingCommand;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.ui.forms.editor.FormEditor;
-import org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
+import org.wso2.developerstudio.eclipse.gmf.esb.EndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPointProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPointPropertyScope;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
@@ -55,8 +60,7 @@ import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.Loadbalan
 public class LoadBalanceEndpointDeserializer extends AbstractEndpointDeserializer {
 
     @Override
-    public AbstractEndPoint createNode(IGraphicalEditPart part, AbstractEndpoint object)
-            throws DeserializerException {
+    public EndPoint createNode(IGraphicalEditPart part, AbstractEndpoint object) throws DeserializerException {
 
         Assert.isTrue(object instanceof org.apache.synapse.endpoints.LoadbalanceEndpoint,
                 "Unsupported endpoint passed in for deserialization at " + this.getClass());
@@ -67,7 +71,8 @@ public class LoadBalanceEndpointDeserializer extends AbstractEndpointDeserialize
                 || part instanceof EndpointDiagramEndpointCompartmentEditPart)
                         ? EsbElementTypes.LoadBalanceEndPoint_3656
                         : EsbElementTypes.LoadBalanceEndPoint_3613;
-
+        
+        
         org.wso2.developerstudio.eclipse.gmf.esb.LoadBalanceEndPoint visualEndPoint = (org.wso2.developerstudio.eclipse.gmf.esb.LoadBalanceEndPoint) DeserializerUtils.createNode(part, endpointType);
         setElementToEdit(visualEndPoint);
 
@@ -99,12 +104,37 @@ public class LoadBalanceEndpointDeserializer extends AbstractEndpointDeserialize
         }
 
         executeSetValueCommand(LOAD_BALANCE_END_POINT__BUILD_MESSAGE, loadbalanceEndpoint.isBuildMessageAtt());
+        
+        executeSetValueCommand(LOAD_BALANCE_END_POINT__FAILOVER, loadbalanceEndpoint.isFailover());
+        
         if (loadbalanceEndpoint.getAlgorithm() != null) {
             executeSetValueCommand(LOAD_BALANCE_END_POINT__ALGORITHM,
                 loadbalanceEndpoint.getAlgorithm().getClass().getName());
         }
+        
         if (loadbalanceEndpoint.getChildren() != null && !loadbalanceEndpoint.getChildren().isEmpty()) {
-//            deserializeComplexEndpoint(loadbalanceEndpoint, part);
+
+            List<Endpoint> synpaseChildren = loadbalanceEndpoint.getChildren();
+
+            for (Endpoint synpaseChild : synpaseChildren) {
+
+                IEsbNodeDeserializer deserializer = EsbDeserializerRegistry.getInstance().getDeserializer(synpaseChild);
+                org.wso2.developerstudio.eclipse.gmf.esb.EndPoint child = ((AbstractEndpointDeserializer) deserializer)
+                        .createUIEndpoint(synpaseChild);
+
+                TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(visualEndPoint);
+                if (domain != null) {
+                    domain.getCommandStack().execute(new RecordingCommand(domain) {
+
+                        @Override
+                        protected void doExecute() {
+                            visualEndPoint.getChildren().add(child);
+                        }
+                    });
+                } else {
+                    visualEndPoint.getChildren().add(child);
+                }
+            }
 
         } else if (loadbalanceEndpoint.getMembers() != null && !loadbalanceEndpoint.getMembers().isEmpty()) {
 
@@ -126,16 +156,12 @@ public class LoadBalanceEndpointDeserializer extends AbstractEndpointDeserialize
             }
 
         }
-        
-        AbstractEndPoint endPoint = (AbstractEndPoint) DeserializerUtils.createNode(part, endpointType);
-        setElementToEdit(endPoint);
-        deserializeEndpoint(loadbalanceEndpoint, endPoint);
 
         if (StringUtils.isNotBlank(loadbalanceEndpoint.getName())) {
             executeSetValueCommand(END_POINT__END_POINT_NAME, loadbalanceEndpoint.getName());
         }
 
-        return endPoint;
+        return visualEndPoint;
     }
 
     @Override

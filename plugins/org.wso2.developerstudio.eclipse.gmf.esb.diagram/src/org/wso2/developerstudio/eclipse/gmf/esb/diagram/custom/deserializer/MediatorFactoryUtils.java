@@ -72,7 +72,7 @@ public class MediatorFactoryUtils {
         Map<QName, Class> dummyFactoryMap = dummyMediatorFactoryFinder.getFactoryMap();
         try {
             List<QName> tagQNameList = (CloudConnectorOperationExtFactory.class.newInstance()).getTagQNameList();
-            for (QName tag :  tagQNameList) {
+            for (QName tag : tagQNameList) {
                 factoryMap.put(tag, CloudConnectorOperationExtFactory.class);
                 dummyFactoryMap.put(tag, CloudConnectorOperationExtFactory.class);
             }

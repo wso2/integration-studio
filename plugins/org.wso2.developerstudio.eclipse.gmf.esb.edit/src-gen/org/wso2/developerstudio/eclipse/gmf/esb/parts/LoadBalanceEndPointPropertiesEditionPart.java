@@ -371,6 +371,50 @@ public interface LoadBalanceEndPointPropertiesEditionPart {
 
 
 
+	/**
+	 * Init the members
+	 * @param current the current value
+	 * @param containgFeature the feature where to navigate if necessary
+	 * @param feature the feature to manage
+	 */
+	public void initMembers(ReferencesTableSettings settings);
+
+	/**
+	 * Update the members
+	 * @param newValue the members to update
+	 * 
+	 */
+	public void updateMembers();
+
+	/**
+	 * Adds the given filter to the members edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addFilterToMembers(ViewerFilter filter);
+
+	/**
+	 * Adds the given filter to the members edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addBusinessFilterToMembers(ViewerFilter filter);
+
+	/**
+	 * @return true if the given element is contained inside the members table
+	 * 
+	 */
+	public boolean isContainedInMembersTable(EObject element);
+
+
+
+
 
 	/**
 	 * Returns the internationalized title text.

@@ -309,7 +309,7 @@ public class XSD2XMLGenerator extends NewXMLGenerator {
             if (max == -1) {
                 // If the maxOccurs is unbounded, max will be -1. To indicate it as an array we add 2 elements of the kind.
                 max = 2;
-            } else {
+            } else if (max < min){
                 max = min;
             } 
 

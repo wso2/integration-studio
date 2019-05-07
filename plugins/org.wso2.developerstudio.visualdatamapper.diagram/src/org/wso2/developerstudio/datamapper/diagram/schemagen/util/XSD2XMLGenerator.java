@@ -28,6 +28,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.wst.xml.core.internal.contentmodel.CMAttributeDeclaration;
+import org.eclipse.wst.xml.core.internal.contentmodel.CMContent;
 import org.eclipse.wst.xml.core.internal.contentmodel.CMDataType;
 import org.eclipse.wst.xml.core.internal.contentmodel.CMDocument;
 import org.eclipse.wst.xml.core.internal.contentmodel.CMElementDeclaration;
@@ -275,6 +276,127 @@ public class XSD2XMLGenerator extends NewXMLGenerator {
 			}
 			createDefaultContent(document, rootCMElementDeclaration);
 		}
+
+        /*
+         * (non-Javadoc)
+         * 
+         * @see
+         * org.eclipse.wst.xml.core.internal.contentmodel.util.DOMContentBuilderImpl#createDefaultContent(org.w3c.dom.
+         * Node, org.eclipse.wst.xml.core.internal.contentmodel.CMElementDeclaration)
+         */
+        @Override
+        public void createDefaultContent(Node parent, CMElementDeclaration ed) {
+            currentParent = parent;
+            alwaysVisit = true;
+            visitCMElementDeclaration(ed);
+        }
+
+        /*
+         * (non-Javadoc)
+         * 
+         * @see org.eclipse.wst.xml.core.internal.contentmodel.util.DOMContentBuilderImpl#visitCMElementDeclaration(org.
+         * eclipse.wst.xml.core.internal.contentmodel.CMElementDeclaration)
+         */
+        @Override
+        public void visitCMElementDeclaration(CMElementDeclaration ed) {
+            int forcedMin = (buildOptionalElements(buildPolicy) || alwaysVisit) ? 1 : 0;
+            int min = Math.max(ed.getMinOccur(), forcedMin);
+
+            // Correct the min value if the element is contained in
+            // a group.
+            if (!cmGroupStack.isEmpty()) {
+                CMGroup group = (CMGroup) cmGroupStack.peek();
+                int gmin = group.getMinOccur();
+                if (gmin == 0)
+                    if (buildOptionalElements(buildPolicy)) {
+                        /* do nothing: min = min */
+                    } else {
+                        min = min * gmin; // min = 0
+                    }
+                else {
+                    min = min * gmin;
+                }
+            }
+
+            int max = Math.min(ed.getMaxOccur(), getNumOfRepeatableElements());
+            if (max == -1) {
+                // If the maxOccurs is unbounded, max will be -1. To indicate it as an array we add 2 elements of the
+                // kind.
+                max = 2;
+            } else if (max < min) {
+                max = min;
+            }
+
+            alwaysVisit = false;
+
+            // Note - ed may not be abstract but has substitutionGroups
+            // involved.
+            if (buildFirstSubstitution(buildPolicy) || isAbstract(ed)) // leave
+                                                                       // this
+                                                                       // for
+                                                                       // backward
+                                                                       // compatibility
+                                                                       // for now
+            {
+                // Note - To change so that if ed is optional, we do not
+                // generate anything here.
+                ed = getSubstitution(ed);
+
+                // Note - the returned ed may be an abstract element in
+                // which case the xml will be invalid.
+            }
+
+            if (min > 0 && !visitedCMElementDeclarationList.contains(ed)) {
+                visitedCMElementDeclarationList.add(ed);
+                for (int i = 1; i <= max; i++) {
+                    // create an Element for each
+                    Element element = null;
+                    if (rootElement != null) {
+                        element = rootElement;
+                        rootElement = null;
+                    } else {
+                        element = createElement(ed, computeName(ed, currentParent), currentParent);
+                    }
+
+                    // visit the children of the GrammarElement
+                    Node oldParent = currentParent;
+                    currentParent = element;
+                    handlePushParent(element, ed);
+
+                    namespaceTable.addElement(element);
+
+                    boolean oldAttachNodesToParent = attachNodesToParent;
+                    attachNodesToParent = true;
+
+                    // instead of calling super.visitCMElementDeclaration()
+                    // we duplicate the code with some minor modifications
+                    CMNamedNodeMap nodeMap = ed.getAttributes();
+                    int size = nodeMap.getLength();
+                    for (int j = 0; j < size; j++) {
+                        visitCMNode(nodeMap.item(j));
+                    }
+
+                    CMContent content = ed.getContent();
+                    if (content != null) {
+                        visitCMNode(content);
+                    }
+
+                    if (ed.getContentType() == CMElementDeclaration.PCDATA) {
+                        CMDataType dataType = ed.getDataType();
+                        if (dataType != null) {
+                            visitCMDataType(dataType);
+                        }
+                    }
+                    // end duplication
+                    attachNodesToParent = oldAttachNodesToParent;
+                    handlePopParent(element, ed);
+                    currentParent = oldParent;
+                    linkNode(element);
+                }
+                int size = visitedCMElementDeclarationList.size();
+                visitedCMElementDeclarationList.remove(size - 1);
+            }
+        }
 		
 		/* (non-Javadoc)
 		 * @see org.eclipse.wst.xml.core.internal.contentmodel.util.DOMContentBuilderImpl#visitCMGroup(org.eclipse.wst.xml.core.internal.contentmodel.CMGroup)

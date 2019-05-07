@@ -3,6 +3,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb.presentation;
 import java.io.File;
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.regex.Matcher;
@@ -352,7 +353,12 @@ public class EEFNameSpacedPropertyEditorDialog extends Dialog {
     /**
      * Group for XML evaluator elements.
      */
-    private Group xmlEvaluatorGroup;    
+    private Group xmlEvaluatorGroup;
+
+    /**
+     * Type of operating system
+     */
+    private String operatingSystemType;
     
     private static final String EMPTY_STRING = "";
     private static final String SOURCE_VIEW_INFO_LABEL_TEXT = "Switch to 'Visual' tab to see a graphical "
@@ -384,6 +390,9 @@ public class EEFNameSpacedPropertyEditorDialog extends Dialog {
     private static final String UI_JOB_ID = "add-root-tree-item-job";
     private static final String XML_EXTENSION_TYPE = "*.xml";
     private static final String TREE_ITEM_DATA_KEY = "dom_user_data_key";
+    public static final String OS_NAME = "os.name";
+    public static final String SYSTEM_PROPERTY_TYPE_GENERIC = "generic";
+    public static final String OS_TYPE_WINDOWS = "windows";
     
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
     
@@ -449,6 +458,7 @@ public class EEFNameSpacedPropertyEditorDialog extends Dialog {
         this.nsProperty = property;
         this.collectedNamespaces = new HashMap<String, String>();
         xPathValidator = XPathValidatorImpl.getInstance();
+        operatingSystemType = System.getProperty(OS_NAME, SYSTEM_PROPERTY_TYPE_GENERIC).toLowerCase(Locale.ENGLISH);
     }
     
     /**
@@ -466,6 +476,7 @@ public class EEFNameSpacedPropertyEditorDialog extends Dialog {
         this.nsProperty = property;
         this.collectedNamespaces = new HashMap<String, String>();
         xPathValidator = XPathValidatorImpl.getInstance();
+        operatingSystemType = System.getProperty(OS_NAME, SYSTEM_PROPERTY_TYPE_GENERIC).toLowerCase(Locale.ENGLISH);
     }
 
     /**
@@ -944,7 +955,11 @@ public class EEFNameSpacedPropertyEditorDialog extends Dialog {
         // Open dialog.
         dialogShell.layout();
         dialogShell.pack();
-        dialogShell.setSize(640, 800);
+        if (operatingSystemType.indexOf(OS_TYPE_WINDOWS) >= 0) {
+            dialogShell.setSize(640, 870);
+        } else {
+            dialogShell.setSize(640, 800);
+        }
         centerDialog();
         dialogShell.open();
         Display display = dialogShell.getDisplay();

@@ -6,10 +6,10 @@
          point="org.eclipse.core.runtime.products">
       <product
             application="org.eclipse.ui.ide.workbench"
-            name="Developer Studio">
+            name="Integration Studio">
          <property
                name="appName"
-               value="Developer Studio">
+               value="Integration Studio">
          </property>
          <property
                name="aboutImage"

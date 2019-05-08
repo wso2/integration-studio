@@ -9,11 +9,11 @@ PRODUCT_PATH_ROOT=$BASE_DIR/target/products
 PRODUCT_PATH_LINUX_86=$PRODUCT_PATH_ROOT/temp/linux-x86
 PRODUCT_PATH_LINUX_64=$PRODUCT_PATH_ROOT/temp/linux-x86_64
 PRODUCT_PATH_MACOS=$PRODUCT_PATH_ROOT/temp/macos
-PRODUCT_PATH_WIN_86=$PRODUCT_PATH_ROOT/temp/win-x86/DeveloperStudio
-PRODUCT_PATH_WIN_64=$PRODUCT_PATH_ROOT/temp/win-x86_64/DeveloperStudio
+PRODUCT_PATH_WIN_86=$PRODUCT_PATH_ROOT/temp/win-x86/IntegrationStudio
+PRODUCT_PATH_WIN_64=$PRODUCT_PATH_ROOT/temp/win-x86_64/IntegrationStudio
 
 PRODUCT_EXECUTABLE_NAME_DEFAULT=developerstudio
-PRODUCT_EXECUTABLE_NAME=DeveloperStudio
+PRODUCT_EXECUTABLE_NAME=IntegrationStudio
 PRODUCT_EXECUTABLE_CONFIG_FILE_NAME_DEFAULT=$PRODUCT_EXECUTABLE_NAME_DEFAULT.ini
 PRODUCT_EXECUTABLE_CONFIG_FILE_NAME=$PRODUCT_EXECUTABLE_NAME.ini
 
@@ -143,40 +143,40 @@ popd
 # Zip the packages with microesb and JDK
 pushd ${PRODUCT_PATH_LINUX_86}
 cd ../
-mv linux-x86 DeveloperStudio
-tar -czf WSO2-Developer-Studio-linux.gtk.x86.tar.gz DeveloperStudio
-mv WSO2-Developer-Studio-linux.gtk.x86.tar.gz $PRODUCT_PATH_ROOT/WSO2-Developer-Studio-linux.gtk.x86.tar.gz
+mv linux-x86 IntegrationStudio
+tar -czf WSO2-Integration-Studio-linux.gtk.x86.tar.gz IntegrationStudio
+mv WSO2-Integration-Studio-linux.gtk.x86.tar.gz $PRODUCT_PATH_ROOT/WSO2-Integration-Studio-linux.gtk.x86.tar.gz
 popd
 
 pushd ${PRODUCT_PATH_LINUX_64}
 cd ../
-rm -rf DeveloperStudio
-mv linux-x86_64 DeveloperStudio
-tar -czf WSO2-Developer-Studio-linux.gtk.x86_64.tar.gz DeveloperStudio
-mv WSO2-Developer-Studio-linux.gtk.x86_64.tar.gz $PRODUCT_PATH_ROOT/WSO2-Developer-Studio-linux.gtk.x86_64.tar.gz
+rm -rf IntegrationStudio
+mv linux-x86_64 IntegrationStudio
+tar -czf WSO2-Integration-Studio-linux.gtk.x86_64.tar.gz IntegrationStudio
+mv WSO2-Integration-Studio-linux.gtk.x86_64.tar.gz $PRODUCT_PATH_ROOT/WSO2-Integration-Studio-linux.gtk.x86_64.tar.gz
 popd
 
 pushd ${PRODUCT_PATH_MACOS}
-tar -czf WSO2-Developer-Studio-macosx.cocoa.x86_64.tar.gz *
-mv WSO2-Developer-Studio-macosx.cocoa.x86_64.tar.gz $PRODUCT_PATH_ROOT/WSO2-Developer-Studio-macosx.cocoa.x86_64.tar.gz
+tar -czf WSO2-Integration-Studio-macosx.cocoa.x86_64.tar.gz *
+mv WSO2-Integration-Studio-macosx.cocoa.x86_64.tar.gz $PRODUCT_PATH_ROOT/WSO2-Integration-Studio-macosx.cocoa.x86_64.tar.gz
 popd
 
 pushd ${PRODUCT_PATH_WIN_86}
 cd ../
-zip -r $PRODUCT_PATH_ROOT/WSO2-Developer-Studio-win32.win32.x86.zip *
+zip -r $PRODUCT_PATH_ROOT/WSO2-Integration-Studio-win32.win32.x86.zip *
 popd
 
 pushd ${PRODUCT_PATH_WIN_64}
 cd ../
-zip -r $PRODUCT_PATH_ROOT/WSO2-Developer-Studio-win32.win32.x86_64.zip *
+zip -r $PRODUCT_PATH_ROOT/WSO2-Integration-Studio-win32.win32.x86_64.zip *
 popd
 
 # Cleanup
 rm $PRODUCT_PATH_ROOT/wso2mi-$PRODUCT_VERSION.zip
 rm -rf $PRODUCT_PATH_ROOT/temp
-rm -rf $PRODUCT_PATH_ROOT/DeveloperStudio
+rm -rf $PRODUCT_PATH_ROOT/IntegrationStudio
 rm -rf $JDK_DISTRIBUTION_PATH
 
-rm -rf $PRODUCT_PATH_ROOT/WSO2-Developer-Studio-linux.gtk.x86.zip
-rm -rf $PRODUCT_PATH_ROOT/WSO2-Developer-Studio-linux.gtk.x86_64.zip
-rm -rf $PRODUCT_PATH_ROOT/WSO2-Developer-Studio-macosx.cocoa.x86_64.zip
+rm -rf $PRODUCT_PATH_ROOT/WSO2-Integration-Studio-linux.gtk.x86.zip
+rm -rf $PRODUCT_PATH_ROOT/WSO2-Integration-Studio-linux.gtk.x86_64.zip
+rm -rf $PRODUCT_PATH_ROOT/WSO2-Integration-Studio-macosx.cocoa.x86_64.zip

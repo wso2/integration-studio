@@ -62,6 +62,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.persistence.EsbNodeTransformer;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.EsbTransformerRegistry;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerUtils;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.LoadbalanceEndpointFormPage;
 
 public class LoadBalanceEndPointTransformer extends AbstractEndpointTransformer {
@@ -243,10 +244,7 @@ public class LoadBalanceEndPointTransformer extends AbstractEndpointTransformer 
             if (visualEndPoint.getChildren() != null && visualEndPoint.getChildren().size() > 0) {
                 for (org.wso2.developerstudio.eclipse.gmf.esb.EndPoint viEndpoint : visualEndPoint.getChildren()) {
                     if (viEndpoint instanceof AddressEndPointImpl) {
-                        AddressEndPointTransformer transformer = new AddressEndPointTransformer();
-                        org.apache.synapse.endpoints.Endpoint endpoint = transformer
-                                .create((AddressEndPoint) viEndpoint, "");
-                        synapseChildren.add(endpoint);
+                        synapseChildren.add(TransformerUtils.getSynapseEndpoint(viEndpoint));
                     }
                 }
 
@@ -401,17 +399,6 @@ public class LoadBalanceEndPointTransformer extends AbstractEndpointTransformer 
         synapseLoadbalanceEP.addProperties(mediatorProperties);
 
         return synapseLoadbalanceEP;
-    }
-
-    private String getSynapseEndpointName(LoadBalanceEndPoint visualEndPoint) {
-        if (StringUtils.isNotBlank(visualEndPoint.getName()) && !visualEndPoint.getName().equals("{ep.name}")) {
-            return visualEndPoint.getName();
-        } else if (StringUtils.isNotBlank(visualEndPoint.getEndPointName())
-                && !visualEndPoint.getEndPointName().equals("{ep.name}")) {
-            return visualEndPoint.getEndPointName();
-        } else {
-            return "{ep.name}";
-        }
     }
     
     private Object getAlgorithmnClass(String className) {

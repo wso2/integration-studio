@@ -684,7 +684,7 @@ public class WSO2UIToolkit {
 					viewerFilters = Arrays.asList(new ViewerFilter[] { viewerFilter });
 				}
 				IContainer[] openFolderSelection =
-				                                   WorkspaceResourceDialog.openFolderSelection(shell,
+				        WorkspaceResourceDialogExtended.openFolderSelection(shell,
 				                                                                               "Select folder...",
 				                                                                               label, false,
 				                                                                               new Object[] {},

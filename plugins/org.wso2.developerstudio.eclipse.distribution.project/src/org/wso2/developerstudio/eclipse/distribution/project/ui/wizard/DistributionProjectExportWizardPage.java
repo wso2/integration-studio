@@ -102,7 +102,7 @@ public class DistributionProjectExportWizardPage extends WizardPage {
 		super("WSO2 Platform Distribution");
 		this.mavenProject = project;
 		setTitle("WSO2 Platform Distribution");
-		setDescription("Create an deployable CAR file");
+		setDescription("Create a deployable CAR file");
 	}
 
 	/**

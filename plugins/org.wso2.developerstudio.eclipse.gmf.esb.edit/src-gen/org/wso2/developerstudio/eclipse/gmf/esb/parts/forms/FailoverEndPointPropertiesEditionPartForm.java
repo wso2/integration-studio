@@ -64,7 +64,6 @@ import org.eclipse.swt.widgets.Text;
 
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
-import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
@@ -1360,7 +1359,6 @@ public class FailoverEndPointPropertiesEditionPartForm extends SectionProperties
         epv.hideEntry(anonymousElements, false);
         epv.hideEntry(inLineElements, false);
         epv.hideEntry(duplicateElements, false);
-        epv.hideEntry(childrenElements, false);
         epv.hideEntry(nameElements, false);
         epv.hideEntry( outputConnectorElements, false);
         view.layout(true, true);

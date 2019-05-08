@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="Developer Studio" uid="WSO2-Developer-Studio" id="org.wso2.developerstudio.rcp.plugin.devstudio" application="org.eclipse.ui.ide.workbench" version="6.5.0" useFeatures="true" includeLaunchers="true">
+<product name="Integration Studio" uid="WSO2-Developer-Studio" id="org.wso2.developerstudio.rcp.plugin.devstudio" application="org.eclipse.ui.ide.workbench" version="6.5.0" useFeatures="true" includeLaunchers="true">
 
    <aboutInfo>
       <image path="/org.wso2.developerstudio.rcp.plugin/icons/carbon-studio-logo.gif"/>

@@ -157,6 +157,7 @@ mv WSO2-Integration-Studio-linux.gtk.x86_64.tar.gz $PRODUCT_PATH_ROOT/WSO2-Integ
 popd
 
 pushd ${PRODUCT_PATH_MACOS}
+mv DeveloperStudio.app IntegrationStudio.app
 tar -czf WSO2-Integration-Studio-macosx.cocoa.x86_64.tar.gz *
 mv WSO2-Integration-Studio-macosx.cocoa.x86_64.tar.gz $PRODUCT_PATH_ROOT/WSO2-Integration-Studio-macosx.cocoa.x86_64.tar.gz
 popd

@@ -32,7 +32,7 @@
        </product.server>
     </extension>
     <extension-point id="org.wso2.developerstudio.aboutDialog.contributor" name="AboutDialogContributor" schema="schema/org.wso2.developerstudio.aboutDialog.contributor.exsd"/>
-    <extension point="org.eclipse.ui.menus">
+<!--    <extension point="org.eclipse.ui.menus">
         <menuContribution locationURI="menu:org.eclipse.ui.main.menu?after=additions">
             <menu label="Integration Studio"
                   mnemonic="C"
@@ -46,7 +46,7 @@
                 </command>
             </menu>
         </menuContribution>
-    </extension>
+    </extension> -->
     <extension point="org.eclipse.ui.intro.configExtension">
          <configExtension
             configId="org.eclipse.ui.intro.universalConfig"

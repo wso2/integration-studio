@@ -11,11 +11,11 @@
         <editor
                 class="org.wso2.developerstudio.eclipse.dashboard.handlers.Dashboard"
                 id="org.wso2.developerstudio.eclipse.dashboard"
-                name="Developer Studio Dashboard"></editor>
+                name="Integration Studio Dashboard"></editor>
     </extension>
         <extension point="org.eclipse.ui.menus">
         <menuContribution locationURI="menu:org.eclipse.ui.main.menu?before=file">
-            <menu label="Developer Studio"
+            <menu label="Integration Studio"
                   mnemonic="C"
                   id="org.wso2.developerstudio.eclipse.platform.ui.main">
                  <separator
@@ -27,7 +27,7 @@
                         icon="icons/getting-started.png"
                         id="org.wso2.developerstudio.eclipse.platform.ui.toolbars.opentemplatedashboard"
                         label="Getting Started"
-                        tooltip="Open Developer Studio Dashboard">
+                        tooltip="Open Integration Studio Dashboard">
                  </command>
                  <separator
                         name="separator-id-dashboard-middle"

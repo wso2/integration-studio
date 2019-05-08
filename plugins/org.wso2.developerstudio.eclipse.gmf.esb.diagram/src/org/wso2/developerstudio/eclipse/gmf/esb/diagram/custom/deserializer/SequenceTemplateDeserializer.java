@@ -20,12 +20,14 @@ import org.apache.synapse.mediators.base.SequenceMediator;
 import org.apache.synapse.mediators.template.TemplateMediator;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.emf.transaction.RecordingCommand;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.commands.SetBoundsCommand;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.ui.forms.editor.FormEditor;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.Template;
@@ -45,6 +47,20 @@ public class SequenceTemplateDeserializer extends AbstractEsbNodeDeserializer<Te
         Template templateModel = (Template) DeserializerUtils.createNode(part, EsbElementTypes.Template_3664);
         setElementToEdit(templateModel);
         executeSetValueCommand(TEMPLATE__NAME, template.getName());
+        
+        TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(templateModel);
+        if (domain != null) {
+            domain.getCommandStack().execute(new RecordingCommand(domain) {
+
+                @Override
+                protected void doExecute() {
+                    templateModel.setDescription(template.getDescription());
+                }
+            });
+        } else {
+            templateModel.setDescription(template.getDescription());
+        }
+        
         executeSetValueCommand(TEMPLATE__TEMPLATE_TYPE, TemplateType.SEQUENCE);
 
         if (template.getParameters() != null) {
@@ -58,7 +74,7 @@ public class SequenceTemplateDeserializer extends AbstractEsbNodeDeserializer<Te
         SequenceMediator sequenceMediator = new SequenceMediator();
         sequenceMediator.addAll(template.getList());
         sequenceMediator.setName(template.getName());
-
+        
         refreshEditPartMap();
         @SuppressWarnings("rawtypes")
         IEsbNodeDeserializer deserializer = EsbDeserializerRegistry.getInstance().getDeserializer(sequenceMediator);

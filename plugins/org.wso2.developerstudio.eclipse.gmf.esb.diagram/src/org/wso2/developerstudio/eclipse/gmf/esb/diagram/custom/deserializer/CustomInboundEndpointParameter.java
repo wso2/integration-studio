@@ -15,8 +15,10 @@
  */
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer;
 
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__COORDINATION;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__INBOUND_ENDPOINT_BEHAVIOUR;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__INTERVAL;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__SEQUENTIAL;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.InboundEndpointConstants;
@@ -29,7 +31,9 @@ import org.wso2.developerstudio.eclipse.gmf.esb.persistence.InboundEndpointConst
  */
 public enum CustomInboundEndpointParameter {
     INBOUND_BEHAVIOUR_TYPE(InboundEndpointConstants.INBOUND_BEHAVIOUR, INBOUND_ENDPOINT__INBOUND_ENDPOINT_BEHAVIOUR,
-            false), INTERVAL_TYPE(InboundEndpointConstants.INTERVAL, INBOUND_ENDPOINT__INTERVAL, true);
+            false), INTERVAL_TYPE(InboundEndpointConstants.INTERVAL, INBOUND_ENDPOINT__INTERVAL, true), SEQUENTIAL_TYPE(
+                    InboundEndpointConstants.SEQUENTIAL, INBOUND_ENDPOINT__SEQUENTIAL, false), COORDINATION_TYPE(
+                            InboundEndpointConstants.COORDINATION, INBOUND_ENDPOINT__COORDINATION, false);
 
     private final String name;
     private final EAttribute eAttributeValue;

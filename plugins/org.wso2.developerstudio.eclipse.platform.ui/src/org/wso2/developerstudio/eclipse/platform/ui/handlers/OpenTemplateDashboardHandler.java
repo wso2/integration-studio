@@ -112,7 +112,7 @@ public class OpenTemplateDashboardHandler extends AbstractHandler {
         }
 
         public String getToolTipText() {
-            return "Developer Studio Template Dashboard";
+            return "Integration Studio Template Dashboard";
         }
 
         public Object getAdapter(Class adapter) {

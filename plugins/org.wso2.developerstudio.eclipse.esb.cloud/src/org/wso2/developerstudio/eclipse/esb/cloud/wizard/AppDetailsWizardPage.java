@@ -643,6 +643,7 @@ public class AppDetailsWizardPage extends WizardPage {
         String[] items = runtimeNames;
 
         createAppRuntimeCombo.setItems(items);
+        selectDefaultRuntime(createAppRuntimeCombo);
 
         GridData txtNameGridData = new GridData(SWT.LEFT, SWT.CENTER, false, false, 2, 1);
         txtNameGridData.widthHint = 480;
@@ -686,7 +687,8 @@ public class AppDetailsWizardPage extends WizardPage {
         String[] items = runtimeNames;
 
         createVersionRuntimeCombo.setItems(items);
-
+        selectDefaultRuntime(createVersionRuntimeCombo);
+        
         GridData txtNameGridData = new GridData(SWT.LEFT, SWT.CENTER, false, false, 2, 1);
         txtNameGridData.widthHint = 480;
         createVersionRuntimeCombo.setLayoutData(txtNameGridData);
@@ -754,6 +756,17 @@ public class AppDetailsWizardPage extends WizardPage {
             }
         });
     }
+    
+    /**
+     * Selects and sets the default runtime value
+     * 
+     * @param combo
+     */
+    public void selectDefaultRuntime(Combo combo) {
+        combo.select(0);
+        String runtime = combo.getItem(0);
+        setRuntime(getRuntimeId(runtime));
+    }
 
     /**
      * Saves tags as user updates them
@@ -787,60 +800,51 @@ public class AppDetailsWizardPage extends WizardPage {
      * Validates text field values
      */
     private void validate() {
+        setPageComplete(false);
         if (!isNewVersion) {
             if ((getName() == null || getName().equals(EMPTY_STRING)) || getVersion() == null
                     || getVersion().equals(EMPTY_STRING)) {
                 setErrorMessage("Please specify a name and version to .car file.");
-                setPageComplete(false);
                 return;
             } else if (getRuntime() == 0) {
                 setErrorMessage("Please select a runtime.");
-                setPageComplete(false);
                 return;
             } else {
                 String version = getVersion();
                 String[] versionParts = version.split("\\.");
                 if (version.endsWith(".")) {
                     setErrorMessage("Application version cannot end with period.");
-                    setPageComplete(false);
                     return;
                 }
                 if (versionParts.length > 4) {
                     setErrorMessage("Application version should be in the standared format.");
-                    setPageComplete(false);
                     return;
                 }
                 if (!Character.isDigit(version.charAt(0))) {
                     setErrorMessage("Application version should start with a numeric value.");
-                    setPageComplete(false);
                     return;
                 }
             }
         } else {
             if (appNames.getText() == null || appNames.getText().equals(EMPTY_STRING)) {
                 setErrorMessage("Please select an application.");
-                setPageComplete(false);
                 return;
             } else if (getRuntime() == 0) {
                 setErrorMessage("Please select a runtime.");
-                setPageComplete(false);
                 return;
             } else {
                 String version = newVersion.getText();
                 String[] versionParts = version.split("\\.");
                 if (version.endsWith(".")) {
                     setErrorMessage("Application version cannot end with period.");
-                    setPageComplete(false);
                     return;
                 }
                 if (versionParts.length > 4) {
                     setErrorMessage("Application version should be in the standared format.");
-                    setPageComplete(false);
                     return;
                 }
                 if (!Character.isDigit(version.charAt(0))) {
                     setErrorMessage("Application version should start with a numeric value.");
-                    setPageComplete(false);
                     return;
                 }
             }

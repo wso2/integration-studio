@@ -28,6 +28,7 @@ JDK_HOME_WINDOWS="$JDK_DEFAULT_DIRECTORY_NAME/bin"
 JDK_HOME_MACOS="..\/Eclipse/$JDK_DEFAULT_DIRECTORY_NAME/Contents/Home/bin"
 JDK_DISTRIBUTION_NAME="jdk-distibution"
 MACOS_ECLIPSE_CONFIG_PATH="$PRODUCT_PATH_MACOS/DeveloperStudio.app/Contents/Eclipse"
+MACOS_ECLIPSE_PLIST_PATH="$PRODUCT_PATH_MACOS/DeveloperStudio.app/Contents"
 MACOS_ECLIPSE_EXECUTABLE_PATH="$PRODUCT_PATH_MACOS/DeveloperStudio.app/Contents/MacOS"
 MACOS_JDK_LIB_PATH="$PRODUCT_PATH_MACOS/DeveloperStudio.app/Contents/Eclipse/$JDK_DEFAULT_DIRECTORY_NAME/Contents/Home/jre/lib"
 
@@ -138,6 +139,12 @@ popd
 pushd ${PRODUCT_PATH_WIN_64}
 mv $PRODUCT_EXECUTABLE_NAME_DEFAULT.exe $PRODUCT_EXECUTABLE_NAME.exe
 mv $PRODUCT_EXECUTABLE_CONFIG_FILE_NAME_DEFAULT $PRODUCT_EXECUTABLE_CONFIG_FILE_NAME
+popd
+
+#Rename Info.plist for Mac issue 
+#TODO: Need to fix this on RCP level
+pushd ${MACOS_ECLIPSE_PLIST_PATH}
+sed -e 's/developerstudio/integrationstudio/; s/Developerstudio/IntegrationStudio/; s/WSO2-Developer-Studio/WSO2-Integration-Studio/' Info.plist
 popd
 
 # Zip the packages with microesb and JDK

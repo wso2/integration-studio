@@ -68,7 +68,9 @@ import org.eclipse.swt.layout.GridLayout;
 
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Group;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
@@ -206,11 +208,18 @@ public class PayloadFactoryMediatorPropertiesEditionPartImpl extends CompositePr
 	 */
 	protected Composite createPayloadFormatEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.PayloadFactoryMediator.Properties.payloadFormat, EsbMessages.PayloadFactoryMediatorPropertiesEditionPart_PayloadFormatLabel);
-		payloadFormat = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		payloadFormat = new EMFComboViewer(parent);
 		payloadFormat.setContentProvider(new ArrayContentProvider());
 		payloadFormat.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData payloadFormatData = new GridData(GridData.FILL_HORIZONTAL);
 		payloadFormat.getCombo().setLayoutData(payloadFormatData);
+               payloadFormat.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                   @Override
+                   public void handleEvent(Event arg0) {
+                       arg0.doit = false;
+                   }
+               });
 		payloadFormat.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -338,11 +347,18 @@ public class PayloadFactoryMediatorPropertiesEditionPartImpl extends CompositePr
 	 */
 	protected Composite createMediaTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.PayloadFactoryMediator.Properties.mediaType, EsbMessages.PayloadFactoryMediatorPropertiesEditionPart_MediaTypeLabel);
-		mediaType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		mediaType = new EMFComboViewer(parent);
 		mediaType.setContentProvider(new ArrayContentProvider());
 		mediaType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData mediaTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		mediaType.getCombo().setLayoutData(mediaTypeData);
+               mediaType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                   @Override
+                   public void handleEvent(Event arg0) {
+                       arg0.doit = false;
+                   }
+               });
 		mediaType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

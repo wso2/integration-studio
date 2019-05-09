@@ -63,6 +63,8 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
 import org.eclipse.ui.forms.widgets.Form;
@@ -181,11 +183,18 @@ public class ThrottlePolicyConfigurationPropertiesEditionPartForm extends Sectio
 	 */
 	protected Composite createPolicyTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.ThrottlePolicyConfiguration.Properties.policyType, EsbMessages.ThrottlePolicyConfigurationPropertiesEditionPart_PolicyTypeLabel);
-		policyType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		policyType = new EMFComboViewer(parent);
 		policyType.setContentProvider(new ArrayContentProvider());
 		policyType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData policyTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		policyType.getCombo().setLayoutData(policyTypeData);
+               policyType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                   @Override
+                   public void handleEvent(Event arg0) {
+                       arg0.doit = false;
+                   }
+               });
 		policyType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

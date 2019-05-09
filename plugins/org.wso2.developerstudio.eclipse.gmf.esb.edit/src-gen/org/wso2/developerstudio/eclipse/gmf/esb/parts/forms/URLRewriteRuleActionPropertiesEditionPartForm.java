@@ -49,6 +49,8 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
 import org.eclipse.ui.forms.widgets.Form;
@@ -183,11 +185,18 @@ public class URLRewriteRuleActionPropertiesEditionPartForm extends SectionProper
 	 */
 	protected Composite createRuleActionEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.URLRewriteRuleAction.Properties.ruleAction, EsbMessages.URLRewriteRuleActionPropertiesEditionPart_RuleActionLabel);
-		ruleAction = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		ruleAction = new EMFComboViewer(parent);
 		ruleAction.setContentProvider(new ArrayContentProvider());
 		ruleAction.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData ruleActionData = new GridData(GridData.FILL_HORIZONTAL);
 		ruleAction.getCombo().setLayoutData(ruleActionData);
+               ruleAction.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                   @Override
+                   public void handleEvent(Event arg0) {
+                       arg0.doit = false;
+                   }
+               });
 		ruleAction.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -215,11 +224,18 @@ public class URLRewriteRuleActionPropertiesEditionPartForm extends SectionProper
 	 */
 	protected Composite createRuleFragmentEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.URLRewriteRuleAction.Properties.ruleFragment, EsbMessages.URLRewriteRuleActionPropertiesEditionPart_RuleFragmentLabel);
-		ruleFragment = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		ruleFragment = new EMFComboViewer(parent);
 		ruleFragment.setContentProvider(new ArrayContentProvider());
 		ruleFragment.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData ruleFragmentData = new GridData(GridData.FILL_HORIZONTAL);
 		ruleFragment.getCombo().setLayoutData(ruleFragmentData);
+               ruleFragment.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                   @Override
+                   public void handleEvent(Event arg0) {
+                       arg0.doit = false;
+                   }
+               });
 		ruleFragment.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -247,11 +263,18 @@ public class URLRewriteRuleActionPropertiesEditionPartForm extends SectionProper
 	 */
 	protected Composite createRuleOptionEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.URLRewriteRuleAction.Properties.ruleOption, EsbMessages.URLRewriteRuleActionPropertiesEditionPart_RuleOptionLabel);
-		ruleOption = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		ruleOption = new EMFComboViewer(parent);
 		ruleOption.setContentProvider(new ArrayContentProvider());
 		ruleOption.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData ruleOptionData = new GridData(GridData.FILL_HORIZONTAL);
 		ruleOption.getCombo().setLayoutData(ruleOptionData);
+               ruleOption.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                   @Override
+                   public void handleEvent(Event arg0) {
+                       arg0.doit = false;
+                   }
+               });
 		ruleOption.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

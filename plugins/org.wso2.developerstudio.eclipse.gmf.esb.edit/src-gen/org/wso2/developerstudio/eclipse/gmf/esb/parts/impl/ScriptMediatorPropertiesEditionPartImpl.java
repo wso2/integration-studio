@@ -68,7 +68,9 @@ import org.eclipse.swt.layout.GridLayout;
 
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Group;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
@@ -347,11 +349,18 @@ public class ScriptMediatorPropertiesEditionPartImpl extends CompositeProperties
 	 */
 	protected Composite createScriptTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.ScriptMediator.Properties.scriptType, EsbMessages.ScriptMediatorPropertiesEditionPart_ScriptTypeLabel);
-		scriptType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		scriptType = new EMFComboViewer(parent);
 		scriptType.setContentProvider(new ArrayContentProvider());
 		scriptType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData scriptTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		scriptType.getCombo().setLayoutData(scriptTypeData);
+               scriptType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                   @Override
+                   public void handleEvent(Event arg0) {
+                       arg0.doit = false;
+                   }
+               });
 		scriptType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -379,11 +388,18 @@ public class ScriptMediatorPropertiesEditionPartImpl extends CompositeProperties
 	 */
 	protected Composite createScriptLanguageEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.ScriptMediator.Properties.scriptLanguage, EsbMessages.ScriptMediatorPropertiesEditionPart_ScriptLanguageLabel);
-		scriptLanguage = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		scriptLanguage = new EMFComboViewer(parent);
 		scriptLanguage.setContentProvider(new ArrayContentProvider());
 		scriptLanguage.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData scriptLanguageData = new GridData(GridData.FILL_HORIZONTAL);
 		scriptLanguage.getCombo().setLayoutData(scriptLanguageData);
+               scriptLanguage.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                   @Override
+                   public void handleEvent(Event arg0) {
+                       arg0.doit = false;
+                   }
+               });
 		scriptLanguage.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -509,11 +525,18 @@ public class ScriptMediatorPropertiesEditionPartImpl extends CompositeProperties
 	 */
 	protected Composite createKeyTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.ScriptMediator.Properties.keyType, EsbMessages.ScriptMediatorPropertiesEditionPart_KeyTypeLabel);
-		keyType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		keyType = new EMFComboViewer(parent);
 		keyType.setContentProvider(new ArrayContentProvider());
 		keyType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData keyTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		keyType.getCombo().setLayoutData(keyTypeData);
+               keyType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                   @Override
+                   public void handleEvent(Event arg0) {
+                       arg0.doit = false;
+                   }
+               });
 		keyType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

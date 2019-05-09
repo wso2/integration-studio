@@ -70,6 +70,8 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
 import org.eclipse.ui.forms.widgets.Form;
@@ -776,14 +778,23 @@ public class CloudConnectorOperationPropertiesEditionPartForm extends SectionPro
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createParameterEditorTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.CloudConnectorOperation.Properties.parameterEditorType, EsbMessages.CloudConnectorOperationPropertiesEditionPart_ParameterEditorTypeLabel);
-		parameterEditorType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		parameterEditorType = new EMFComboViewer(parent);
 		parameterEditorType.setContentProvider(new ArrayContentProvider());
 		parameterEditorType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData parameterEditorTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		parameterEditorType.getCombo().setLayoutData(parameterEditorTypeData);
+               parameterEditorType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                   @Override
+                   public void handleEvent(Event arg0) {
+                       arg0.doit = false;
+                   }
+               });
 		parameterEditorType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

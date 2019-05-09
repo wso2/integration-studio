@@ -72,7 +72,9 @@ import org.eclipse.swt.layout.GridLayout;
 
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Group;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
@@ -518,11 +520,18 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	 */
 	protected Composite createStoreTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.MessageStore.Properties.storeType, EsbMessages.MessageStorePropertiesEditionPart_StoreTypeLabel);
-		storeType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		storeType = new EMFComboViewer(parent);
 		storeType.setContentProvider(new ArrayContentProvider());
 		storeType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData storeTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		storeType.getCombo().setLayoutData(storeTypeData);
+               storeType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                   @Override
+                   public void handleEvent(Event arg0) {
+                       arg0.doit = false;
+                   }
+               });
 		storeType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -874,11 +883,18 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	 */
 	protected Composite createJmsSpecVersionEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.MessageStore.Properties.jmsSpecVersion, EsbMessages.MessageStorePropertiesEditionPart_JmsSpecVersionLabel);
-		jmsSpecVersion = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		jmsSpecVersion = new EMFComboViewer(parent);
 		jmsSpecVersion.setContentProvider(new ArrayContentProvider());
 		jmsSpecVersion.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData jmsSpecVersionData = new GridData(GridData.FILL_HORIZONTAL);
 		jmsSpecVersion.getCombo().setLayoutData(jmsSpecVersionData);
+               jmsSpecVersion.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                   @Override
+                   public void handleEvent(Event arg0) {
+                       arg0.doit = false;
+                   }
+               });
 		jmsSpecVersion.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -1426,11 +1442,18 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	 */
 	protected Composite createJdbcConnectionInformationEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.MessageStore.Properties.jdbcConnectionInformation, EsbMessages.MessageStorePropertiesEditionPart_JdbcConnectionInformationLabel);
-		jdbcConnectionInformation = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		jdbcConnectionInformation = new EMFComboViewer(parent);
 		jdbcConnectionInformation.setContentProvider(new ArrayContentProvider());
 		jdbcConnectionInformation.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData jdbcConnectionInformationData = new GridData(GridData.FILL_HORIZONTAL);
 		jdbcConnectionInformation.getCombo().setLayoutData(jdbcConnectionInformationData);
+               jdbcConnectionInformation.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                   @Override
+                   public void handleEvent(Event arg0) {
+                       arg0.doit = false;
+                   }
+               });
 		jdbcConnectionInformation.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -1931,11 +1954,18 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	 */
 	protected Composite createResequenceConnectionInformationEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.MessageStore.Properties.resequenceConnectionInformation, EsbMessages.MessageStorePropertiesEditionPart_ResequenceConnectionInformationLabel);
-		resequenceConnectionInformation = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		resequenceConnectionInformation = new EMFComboViewer(parent);
 		resequenceConnectionInformation.setContentProvider(new ArrayContentProvider());
 		resequenceConnectionInformation.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData resequenceConnectionInformationData = new GridData(GridData.FILL_HORIZONTAL);
 		resequenceConnectionInformation.getCombo().setLayoutData(resequenceConnectionInformationData);
+               resequenceConnectionInformation.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                   @Override
+                   public void handleEvent(Event arg0) {
+                       arg0.doit = false;
+                   }
+               });
 		resequenceConnectionInformation.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

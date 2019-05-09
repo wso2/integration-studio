@@ -68,7 +68,9 @@ import org.eclipse.swt.layout.GridLayout;
 
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Group;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
@@ -337,11 +339,18 @@ public class XQueryMediatorPropertiesEditionPartImpl extends CompositeProperties
 	 */
 	protected Composite createScriptKeyTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.XQueryMediator.Properties.scriptKeyType, EsbMessages.XQueryMediatorPropertiesEditionPart_ScriptKeyTypeLabel);
-		scriptKeyType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		scriptKeyType = new EMFComboViewer(parent);
 		scriptKeyType.setContentProvider(new ArrayContentProvider());
 		scriptKeyType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData scriptKeyTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		scriptKeyType.getCombo().setLayoutData(scriptKeyTypeData);
+               scriptKeyType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                   @Override
+                   public void handleEvent(Event arg0) {
+                       arg0.doit = false;
+                   }
+               });
 		scriptKeyType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

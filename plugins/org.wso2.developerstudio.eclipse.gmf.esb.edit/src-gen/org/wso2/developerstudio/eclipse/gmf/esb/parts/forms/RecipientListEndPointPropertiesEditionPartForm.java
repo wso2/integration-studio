@@ -70,6 +70,8 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
 import org.eclipse.ui.forms.widgets.Form;
@@ -803,14 +805,23 @@ public class RecipientListEndPointPropertiesEditionPartForm extends SectionPrope
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createEndpointTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.RecipientListEndPoint.Properties.endpointType, EsbMessages.RecipientListEndPointPropertiesEditionPart_EndpointTypeLabel);
-		endpointType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		endpointType = new EMFComboViewer(parent);
 		endpointType.setContentProvider(new ArrayContentProvider());
 		endpointType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData endpointTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		endpointType.getCombo().setLayoutData(endpointTypeData);
+               endpointType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                   @Override
+                   public void handleEvent(Event arg0) {
+                       arg0.doit = false;
+                   }
+               });
 		endpointType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

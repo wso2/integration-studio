@@ -70,6 +70,8 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
 import org.eclipse.ui.forms.widgets.Form;
@@ -2424,14 +2426,25 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
         return parent;
     }
 
+    /**
+     * @generated NOT
+     */
     protected Composite createTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
         createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.type,
                 EsbMessages.InboundEndpointPropertiesEditionPart_TypeLabel);
-        type = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+        type = new EMFComboViewer(parent);
         type.setContentProvider(new ArrayContentProvider());
         type.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
         GridData typeData = new GridData(GridData.FILL_HORIZONTAL);
         type.getCombo().setLayoutData(typeData);
+        type.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+            @Override
+            public void handleEvent(Event arg0) {
+                arg0.doit = false;
+
+            }
+        });
         type.addSelectionChangedListener(new ISelectionChangedListener() {
 
             /**
@@ -2605,15 +2618,26 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
         return parent;
     }
 
+    /**
+     * @generated NOT
+     */
     protected Composite createInboundEndpointBehaviourEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
         createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.inboundEndpointBehaviour,
                 EsbMessages.InboundEndpointPropertiesEditionPart_InboundEndpointBehaviourLabel);
-        inboundEndpointBehaviour = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+        inboundEndpointBehaviour = new EMFComboViewer(parent);
         inboundEndpointBehaviour.setContentProvider(new ArrayContentProvider());
         inboundEndpointBehaviour
                 .setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
         GridData inboundEndpointBehaviourData = new GridData(GridData.FILL_HORIZONTAL);
         inboundEndpointBehaviour.getCombo().setLayoutData(inboundEndpointBehaviourData);
+        inboundEndpointBehaviour.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+            @Override
+            public void handleEvent(Event arg0) {
+                arg0.doit = false;
+
+            }
+        });
         inboundEndpointBehaviour.addSelectionChangedListener(new ISelectionChangedListener() {
 
             /**
@@ -3800,15 +3824,26 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
         return parent;
     }
 
+    /**
+     * @generated NOT
+     */
     protected Composite createTransportVFSLockingEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
         createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.transportVFSLocking,
                 EsbMessages.InboundEndpointPropertiesEditionPart_TransportVFSLockingLabel);
-        transportVFSLocking = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+        transportVFSLocking = new EMFComboViewer(parent);
         transportVFSLocking.setContentProvider(new ArrayContentProvider());
         transportVFSLocking
                 .setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
         GridData transportVFSLockingData = new GridData(GridData.FILL_HORIZONTAL);
         transportVFSLocking.getCombo().setLayoutData(transportVFSLockingData);
+        transportVFSLocking.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+            @Override
+            public void handleEvent(Event arg0) {
+                arg0.doit = false;
+
+            }
+        });
         transportVFSLocking.addSelectionChangedListener(new ISelectionChangedListener() {
 
             /**
@@ -4245,16 +4280,27 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
         return parent;
     }
 
+    /**
+     * @generated NOT
+     */
     protected Composite createTransportVFSActionAfterProcessEMFComboViewer(FormToolkit widgetFactory,
             Composite parent) {
         createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.transportVFSActionAfterProcess,
                 EsbMessages.InboundEndpointPropertiesEditionPart_TransportVFSActionAfterProcessLabel);
-        transportVFSActionAfterProcess = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+        transportVFSActionAfterProcess = new EMFComboViewer(parent);
         transportVFSActionAfterProcess.setContentProvider(new ArrayContentProvider());
         transportVFSActionAfterProcess
                 .setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
         GridData transportVFSActionAfterProcessData = new GridData(GridData.FILL_HORIZONTAL);
         transportVFSActionAfterProcess.getCombo().setLayoutData(transportVFSActionAfterProcessData);
+        transportVFSActionAfterProcess.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+            @Override
+            public void handleEvent(Event arg0) {
+                arg0.doit = false;
+
+            }
+        });
         transportVFSActionAfterProcess.addSelectionChangedListener(new ISelectionChangedListener() {
 
             /**
@@ -4360,15 +4406,26 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
         return parent;
     }
 
+    /**
+     * @generated NOT
+     */
     protected Composite createTransportVFSActionAfterErrorsEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
         createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.transportVFSActionAfterErrors,
                 EsbMessages.InboundEndpointPropertiesEditionPart_TransportVFSActionAfterErrorsLabel);
-        transportVFSActionAfterErrors = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+        transportVFSActionAfterErrors = new EMFComboViewer(parent);
         transportVFSActionAfterErrors.setContentProvider(new ArrayContentProvider());
         transportVFSActionAfterErrors
                 .setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
         GridData transportVFSActionAfterErrorsData = new GridData(GridData.FILL_HORIZONTAL);
         transportVFSActionAfterErrors.getCombo().setLayoutData(transportVFSActionAfterErrorsData);
+        transportVFSActionAfterErrors.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+            @Override
+            public void handleEvent(Event arg0) {
+                arg0.doit = false;
+
+            }
+        });
         transportVFSActionAfterErrors.addSelectionChangedListener(new ISelectionChangedListener() {
 
             /**
@@ -4776,16 +4833,27 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
         return parent;
     }
 
+    /**
+     * @generated NOT
+     */
     protected Composite createTransportVFSActionAfterFailureEMFComboViewer(FormToolkit widgetFactory,
             Composite parent) {
         createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.transportVFSActionAfterFailure,
                 EsbMessages.InboundEndpointPropertiesEditionPart_TransportVFSActionAfterFailureLabel);
-        transportVFSActionAfterFailure = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+        transportVFSActionAfterFailure = new EMFComboViewer(parent);
         transportVFSActionAfterFailure.setContentProvider(new ArrayContentProvider());
         transportVFSActionAfterFailure
                 .setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
         GridData transportVFSActionAfterFailureData = new GridData(GridData.FILL_HORIZONTAL);
         transportVFSActionAfterFailure.getCombo().setLayoutData(transportVFSActionAfterFailureData);
+        transportVFSActionAfterFailure.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+            @Override
+            public void handleEvent(Event arg0) {
+                arg0.doit = false;
+
+            }
+        });
         transportVFSActionAfterFailure.addSelectionChangedListener(new ISelectionChangedListener() {
 
             /**
@@ -5608,16 +5676,27 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
         return parent;
     }
 
+    /**
+     * @generated NOT
+     */
     protected Composite createTransportJMSConnectionFactoryTypeEMFComboViewer(FormToolkit widgetFactory,
             Composite parent) {
         createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.transportJMSConnectionFactoryType,
                 EsbMessages.InboundEndpointPropertiesEditionPart_TransportJMSConnectionFactoryTypeLabel);
-        transportJMSConnectionFactoryType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+        transportJMSConnectionFactoryType = new EMFComboViewer(parent);
         transportJMSConnectionFactoryType.setContentProvider(new ArrayContentProvider());
         transportJMSConnectionFactoryType
                 .setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
         GridData transportJMSConnectionFactoryTypeData = new GridData(GridData.FILL_HORIZONTAL);
         transportJMSConnectionFactoryType.getCombo().setLayoutData(transportJMSConnectionFactoryTypeData);
+        transportJMSConnectionFactoryType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+            @Override
+            public void handleEvent(Event arg0) {
+                arg0.doit = false;
+
+            }
+        });
         transportJMSConnectionFactoryType.addSelectionChangedListener(new ISelectionChangedListener() {
 
             /**
@@ -5837,16 +5916,27 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
         return parent;
     }
 
+    /**
+     * @generated NOT
+     */
     protected Composite createTransportJMSSessionAcknowledgementEMFComboViewer(FormToolkit widgetFactory,
             Composite parent) {
         createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.transportJMSSessionAcknowledgement,
                 EsbMessages.InboundEndpointPropertiesEditionPart_TransportJMSSessionAcknowledgementLabel);
-        transportJMSSessionAcknowledgement = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+        transportJMSSessionAcknowledgement = new EMFComboViewer(parent);
         transportJMSSessionAcknowledgement.setContentProvider(new ArrayContentProvider());
         transportJMSSessionAcknowledgement
                 .setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
         GridData transportJMSSessionAcknowledgementData = new GridData(GridData.FILL_HORIZONTAL);
         transportJMSSessionAcknowledgement.getCombo().setLayoutData(transportJMSSessionAcknowledgementData);
+        transportJMSSessionAcknowledgement.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+            @Override
+            public void handleEvent(Event arg0) {
+                arg0.doit = false;
+
+            }
+        });
         transportJMSSessionAcknowledgement.addSelectionChangedListener(new ISelectionChangedListener() {
 
             /**
@@ -5878,15 +5968,26 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
         return parent;
     }
 
+    /**
+     * @generated NOT
+     */
     protected Composite createTransportJMSCacheLevelEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
         createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.transportJMSCacheLevel,
                 EsbMessages.InboundEndpointPropertiesEditionPart_TransportJMSCacheLevelLabel);
-        transportJMSCacheLevel = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+        transportJMSCacheLevel = new EMFComboViewer(parent);
         transportJMSCacheLevel.setContentProvider(new ArrayContentProvider());
         transportJMSCacheLevel
                 .setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
         GridData transportJMSCacheLevelData = new GridData(GridData.FILL_HORIZONTAL);
         transportJMSCacheLevel.getCombo().setLayoutData(transportJMSCacheLevelData);
+        transportJMSCacheLevel.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+            @Override
+            public void handleEvent(Event arg0) {
+                arg0.doit = false;
+
+            }
+        });
         transportJMSCacheLevel.addSelectionChangedListener(new ISelectionChangedListener() {
 
             /**
@@ -6507,15 +6608,26 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
         return parent;
     }
 
+    /**
+     * @generated NOT
+     */
     protected Composite createTransportVFSFileSortAttributeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
         createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.transportVFSFileSortAttribute,
                 EsbMessages.InboundEndpointPropertiesEditionPart_TransportVFSFileSortAttributeLabel);
-        transportVFSFileSortAttribute = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+        transportVFSFileSortAttribute = new EMFComboViewer(parent);
         transportVFSFileSortAttribute.setContentProvider(new ArrayContentProvider());
         transportVFSFileSortAttribute
                 .setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
         GridData transportVFSFileSortAttributeData = new GridData(GridData.FILL_HORIZONTAL);
         transportVFSFileSortAttribute.getCombo().setLayoutData(transportVFSFileSortAttributeData);
+        transportVFSFileSortAttribute.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+            @Override
+            public void handleEvent(Event arg0) {
+                arg0.doit = false;
+
+            }
+        });
         transportVFSFileSortAttribute.addSelectionChangedListener(new ISelectionChangedListener() {
 
             /**
@@ -7146,15 +7258,26 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
         return parent;
     }
 
+    /**
+     * @generated NOT
+     */
     protected Composite createTransportJMSBrokerTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
         createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.transportJMSBrokerType,
                 EsbMessages.InboundEndpointPropertiesEditionPart_TransportJMSBrokerTypeLabel);
-        transportJMSBrokerType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+        transportJMSBrokerType = new EMFComboViewer(parent);
         transportJMSBrokerType.setContentProvider(new ArrayContentProvider());
         transportJMSBrokerType
                 .setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
         GridData transportJMSBrokerTypeData = new GridData(GridData.FILL_HORIZONTAL);
         transportJMSBrokerType.getCombo().setLayoutData(transportJMSBrokerTypeData);
+        transportJMSBrokerType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+            @Override
+            public void handleEvent(Event arg0) {
+                arg0.doit = false;
+
+            }
+        });
         transportJMSBrokerType.addSelectionChangedListener(new ISelectionChangedListener() {
 
             /**
@@ -7493,15 +7616,26 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
         return parent;
     }
 
+    /**
+     * @generated NOT
+     */
     protected Composite createTransportMQTTSubscriptionQOSEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
         createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.transportMQTTSubscriptionQOS,
                 EsbMessages.InboundEndpointPropertiesEditionPart_TransportMQTTSubscriptionQOSLabel);
-        transportMQTTSubscriptionQOS = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+        transportMQTTSubscriptionQOS = new EMFComboViewer(parent);
         transportMQTTSubscriptionQOS.setContentProvider(new ArrayContentProvider());
         transportMQTTSubscriptionQOS
                 .setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
         GridData transportMQTTSubscriptionQOSData = new GridData(GridData.FILL_HORIZONTAL);
         transportMQTTSubscriptionQOS.getCombo().setLayoutData(transportMQTTSubscriptionQOSData);
+        transportMQTTSubscriptionQOS.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+            @Override
+            public void handleEvent(Event arg0) {
+                arg0.doit = false;
+
+            }
+        });
         transportMQTTSubscriptionQOS.addSelectionChangedListener(new ISelectionChangedListener() {
 
             /**
@@ -9015,15 +9149,26 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
         return parent;
     }
 
+    /**
+     * @generated NOT
+     */
     protected Composite createConsumerTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
         createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.consumerType,
                 EsbMessages.InboundEndpointPropertiesEditionPart_ConsumerTypeLabel);
-        consumerType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+        consumerType = new EMFComboViewer(parent);
         consumerType.setContentProvider(new ArrayContentProvider());
         consumerType
                 .setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
         GridData consumerTypeData = new GridData(GridData.FILL_HORIZONTAL);
         consumerType.getCombo().setLayoutData(consumerTypeData);
+        consumerType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+            @Override
+            public void handleEvent(Event arg0) {
+                arg0.doit = false;
+
+            }
+        });
         consumerType.addSelectionChangedListener(new ISelectionChangedListener() {
 
             /**
@@ -9050,15 +9195,26 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
         return parent;
     }
 
+    /**
+     * @generated NOT
+     */
     protected Composite createTopicsOrTopicFilterEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
         createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.topicsOrTopicFilter,
                 EsbMessages.InboundEndpointPropertiesEditionPart_TopicsOrTopicFilterLabel);
-        topicsOrTopicFilter = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+        topicsOrTopicFilter = new EMFComboViewer(parent);
         topicsOrTopicFilter.setContentProvider(new ArrayContentProvider());
         topicsOrTopicFilter
                 .setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
         GridData topicsOrTopicFilterData = new GridData(GridData.FILL_HORIZONTAL);
         topicsOrTopicFilter.getCombo().setLayoutData(topicsOrTopicFilterData);
+        topicsOrTopicFilter.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+            @Override
+            public void handleEvent(Event arg0) {
+                arg0.doit = false;
+
+            }
+        });
         topicsOrTopicFilter.addSelectionChangedListener(new ISelectionChangedListener() {
 
             /**
@@ -9153,15 +9309,26 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
         return parent;
     }
 
+    /**
+     * @generated NOT
+     */
     protected Composite createTopicFilterFromEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
         createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.topicFilterFrom,
                 EsbMessages.InboundEndpointPropertiesEditionPart_TopicFilterFromLabel);
-        topicFilterFrom = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+        topicFilterFrom = new EMFComboViewer(parent);
         topicFilterFrom.setContentProvider(new ArrayContentProvider());
         topicFilterFrom
                 .setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
         GridData topicFilterFromData = new GridData(GridData.FILL_HORIZONTAL);
         topicFilterFrom.getCombo().setLayoutData(topicFilterFromData);
+        topicFilterFrom.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+            @Override
+            public void handleEvent(Event arg0) {
+                arg0.doit = false;
+
+            }
+        });
         topicFilterFrom.addSelectionChangedListener(new ISelectionChangedListener() {
 
             /**
@@ -10586,15 +10753,26 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
         return parent;
     }
 
+    /**
+     * @generated NOT
+     */
     protected Composite createAutoOffsetResetEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
         createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.autoOffsetReset,
                 EsbMessages.InboundEndpointPropertiesEditionPart_AutoOffsetResetLabel);
-        autoOffsetReset = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+        autoOffsetReset = new EMFComboViewer(parent);
         autoOffsetReset.setContentProvider(new ArrayContentProvider());
         autoOffsetReset
                 .setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
         GridData autoOffsetResetData = new GridData(GridData.FILL_HORIZONTAL);
         autoOffsetReset.getCombo().setLayoutData(autoOffsetResetData);
+        autoOffsetReset.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+            @Override
+            public void handleEvent(Event arg0) {
+                arg0.doit = false;
+
+            }
+        });
         autoOffsetReset.addSelectionChangedListener(new ISelectionChangedListener() {
 
             /**
@@ -10733,15 +10911,26 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
         return parent;
     }
 
+    /**
+     * @generated NOT
+     */
     protected Composite createPartitionAssignmentStrategyEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
         createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.partitionAssignmentStrategy,
                 EsbMessages.InboundEndpointPropertiesEditionPart_PartitionAssignmentStrategyLabel);
-        partitionAssignmentStrategy = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+        partitionAssignmentStrategy = new EMFComboViewer(parent);
         partitionAssignmentStrategy.setContentProvider(new ArrayContentProvider());
         partitionAssignmentStrategy
                 .setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
         GridData partitionAssignmentStrategyData = new GridData(GridData.FILL_HORIZONTAL);
         partitionAssignmentStrategy.getCombo().setLayoutData(partitionAssignmentStrategyData);
+        partitionAssignmentStrategy.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+            @Override
+            public void handleEvent(Event arg0) {
+                arg0.doit = false;
+
+            }
+        });
         partitionAssignmentStrategy.addSelectionChangedListener(new ISelectionChangedListener() {
 
             /**
@@ -11058,15 +11247,26 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
         return parent;
     }
 
+    /**
+     * @generated NOT
+     */
     protected Composite createOffsetsStorageEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
         createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.offsetsStorage,
                 EsbMessages.InboundEndpointPropertiesEditionPart_OffsetsStorageLabel);
-        offsetsStorage = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+        offsetsStorage = new EMFComboViewer(parent);
         offsetsStorage.setContentProvider(new ArrayContentProvider());
         offsetsStorage
                 .setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
         GridData offsetsStorageData = new GridData(GridData.FILL_HORIZONTAL);
         offsetsStorage.getCombo().setLayoutData(offsetsStorageData);
+        offsetsStorage.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+            @Override
+            public void handleEvent(Event arg0) {
+                arg0.doit = false;
+
+            }
+        });
         offsetsStorage.addSelectionChangedListener(new ISelectionChangedListener() {
 
             /**
@@ -14024,15 +14224,26 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
         return parent;
     }
 
+    /**
+     * @generated NOT
+     */
     protected Composite createWsClientSideBroadcastLevelEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
         createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.wsClientSideBroadcastLevel,
                 EsbMessages.InboundEndpointPropertiesEditionPart_WsClientSideBroadcastLevelLabel);
-        wsClientSideBroadcastLevel = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+        wsClientSideBroadcastLevel = new EMFComboViewer(parent);
         wsClientSideBroadcastLevel.setContentProvider(new ArrayContentProvider());
         wsClientSideBroadcastLevel
                 .setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
         GridData wsClientSideBroadcastLevelData = new GridData(GridData.FILL_HORIZONTAL);
         wsClientSideBroadcastLevel.getCombo().setLayoutData(wsClientSideBroadcastLevelData);
+        wsClientSideBroadcastLevel.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+            @Override
+            public void handleEvent(Event arg0) {
+                arg0.doit = false;
+
+            }
+        });
         wsClientSideBroadcastLevel.addSelectionChangedListener(new ISelectionChangedListener() {
 
             /**
@@ -14578,15 +14789,26 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
         return parent;
     }
 
+    /**
+     * @generated NOT
+     */
     protected Composite createTransportFeedTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
         createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.transportFeedType,
                 EsbMessages.InboundEndpointPropertiesEditionPart_TransportFeedTypeLabel);
-        transportFeedType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+        transportFeedType = new EMFComboViewer(parent);
         transportFeedType.setContentProvider(new ArrayContentProvider());
         transportFeedType
                 .setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
         GridData transportFeedTypeData = new GridData(GridData.FILL_HORIZONTAL);
         transportFeedType.getCombo().setLayoutData(transportFeedTypeData);
+        transportFeedType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+            @Override
+            public void handleEvent(Event arg0) {
+                arg0.doit = false;
+
+            }
+        });
         transportFeedType.addSelectionChangedListener(new ISelectionChangedListener() {
 
             /**
@@ -16227,16 +16449,27 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
         return parent;
     }
 
+    /**
+     * @generated NOT
+     */
     protected Composite createTransportRabbitMqConsumerQosTypeEMFComboViewer(FormToolkit widgetFactory,
             Composite parent) {
         createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqConsumerQosType,
                 EsbMessages.InboundEndpointPropertiesEditionPart_TransportRabbitMqConsumerQosTypeLabel);
-        transportRabbitMqConsumerQosType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+        transportRabbitMqConsumerQosType = new EMFComboViewer(parent);
         transportRabbitMqConsumerQosType.setContentProvider(new ArrayContentProvider());
         transportRabbitMqConsumerQosType
                 .setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
         GridData transportRabbitMqConsumerQosTypeData = new GridData(GridData.FILL_HORIZONTAL);
         transportRabbitMqConsumerQosType.getCombo().setLayoutData(transportRabbitMqConsumerQosTypeData);
+        transportRabbitMqConsumerQosType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+            @Override
+            public void handleEvent(Event arg0) {
+                arg0.doit = false;
+
+            }
+        });
         transportRabbitMqConsumerQosType.addSelectionChangedListener(new ISelectionChangedListener() {
 
             /**

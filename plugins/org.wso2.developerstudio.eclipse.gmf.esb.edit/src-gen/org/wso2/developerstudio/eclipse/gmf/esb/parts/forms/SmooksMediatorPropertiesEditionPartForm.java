@@ -62,6 +62,8 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
 import org.eclipse.ui.forms.widgets.Form;
@@ -287,11 +289,18 @@ public class SmooksMediatorPropertiesEditionPartForm extends SectionPropertiesEd
      */
 	protected Composite createInputTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control inputTypeLabel = createDescription(parent, EsbViewsRepository.SmooksMediator.Input.inputType, EsbMessages.SmooksMediatorPropertiesEditionPart_InputTypeLabel);
-		inputType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		inputType = new EMFComboViewer(parent);
 		inputType.setContentProvider(new ArrayContentProvider());
 		inputType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData inputTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		inputType.getCombo().setLayoutData(inputTypeData);
+               inputType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                   @Override
+                   public void handleEvent(Event arg0) {
+                       arg0.doit = false;
+                   }
+               });
 		inputType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -336,11 +345,18 @@ public class SmooksMediatorPropertiesEditionPartForm extends SectionPropertiesEd
      */
 	protected Composite createOutputTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control outputTypeLabel = createDescription(parent, EsbViewsRepository.SmooksMediator.Output.outputType, EsbMessages.SmooksMediatorPropertiesEditionPart_OutputTypeLabel);
-		outputType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		outputType = new EMFComboViewer(parent);
 		outputType.setContentProvider(new ArrayContentProvider());
 		outputType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData outputTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		outputType.getCombo().setLayoutData(outputTypeData);
+               outputType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                   @Override
+                   public void handleEvent(Event arg0) {
+                       arg0.doit = false;
+                   }
+               });
 		outputType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -438,11 +454,18 @@ public class SmooksMediatorPropertiesEditionPartForm extends SectionPropertiesEd
      */
 	protected Composite createOutputActionEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control outputActionLabel = createDescription(parent, EsbViewsRepository.SmooksMediator.Output.outputAction, EsbMessages.SmooksMediatorPropertiesEditionPart_OutputActionLabel);
-		outputAction = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		outputAction = new EMFComboViewer(parent);
 		outputAction.setContentProvider(new ArrayContentProvider());
 		outputAction.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData outputActionData = new GridData(GridData.FILL_HORIZONTAL);
 		outputAction.getCombo().setLayoutData(outputActionData);
+               outputAction.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                   @Override
+                   public void handleEvent(Event arg0) {
+                       arg0.doit = false;
+                   }
+               });
 		outputAction.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -470,11 +493,18 @@ public class SmooksMediatorPropertiesEditionPartForm extends SectionPropertiesEd
      */
 	protected Composite createOutputMethodEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control outputMethodLabel = createDescription(parent, EsbViewsRepository.SmooksMediator.Output.outputMethod, EsbMessages.SmooksMediatorPropertiesEditionPart_OutputMethodLabel);
-		outputMethod = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		outputMethod = new EMFComboViewer(parent);
 		outputMethod.setContentProvider(new ArrayContentProvider());
 		outputMethod.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData outputMethodData = new GridData(GridData.FILL_HORIZONTAL);
 		outputMethod.getCombo().setLayoutData(outputMethodData);
+               outputMethod.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                   @Override
+                   public void handleEvent(Event arg0) {
+                       arg0.doit = false;
+                   }
+               });
 		outputMethod.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

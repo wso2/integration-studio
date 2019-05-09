@@ -50,7 +50,9 @@ import org.eclipse.swt.layout.GridLayout;
 
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Group;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType;
@@ -229,11 +231,18 @@ public class MethodArgumentPropertiesEditionPartImpl extends CompositeProperties
      */
 	protected Composite createPropertyValueTypeEMFComboViewer(Composite parent) {
 	    Control propertyValueTypeLabel = createDescription(parent, EsbViewsRepository.MethodArgument.Properties.propertyValueType, EsbMessages.MethodArgumentPropertiesEditionPart_PropertyValueTypeLabel);
-		propertyValueType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		propertyValueType = new EMFComboViewer(parent);
 		propertyValueType.setContentProvider(new ArrayContentProvider());
 		propertyValueType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData propertyValueTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		propertyValueType.getCombo().setLayoutData(propertyValueTypeData);
+               propertyValueType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                   @Override
+                   public void handleEvent(Event arg0) {
+                       arg0.doit = false;
+                   }
+               });
 		propertyValueType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

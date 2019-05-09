@@ -68,7 +68,9 @@ import org.eclipse.swt.layout.GridLayout;
 
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Group;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
@@ -429,11 +431,18 @@ public class MessageProcessorPropertiesEditionPartImpl extends CompositeProperti
 	 */
 	protected Composite createProcessorTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.MessageProcessor.Properties.processorType, EsbMessages.MessageProcessorPropertiesEditionPart_ProcessorTypeLabel);
-		processorType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		processorType = new EMFComboViewer(parent);
 		processorType.setContentProvider(new ArrayContentProvider());
 		processorType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData processorTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		processorType.getCombo().setLayoutData(processorTypeData);
+               processorType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                   @Override
+                   public void handleEvent(Event arg0) {
+                       arg0.doit = false;
+                   }
+               });
 		processorType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -657,11 +666,18 @@ public class MessageProcessorPropertiesEditionPartImpl extends CompositeProperti
 	 */
 	protected Composite createProcessorStateEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.MessageProcessor.Properties.processorState, EsbMessages.MessageProcessorPropertiesEditionPart_ProcessorStateLabel);
-		processorState = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		processorState = new EMFComboViewer(parent);
 		processorState.setContentProvider(new ArrayContentProvider());
 		processorState.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData processorStateData = new GridData(GridData.FILL_HORIZONTAL);
 		processorState.getCombo().setLayoutData(processorStateData);
+               processorState.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                   @Override
+                   public void handleEvent(Event arg0) {
+                       arg0.doit = false;
+                   }
+               });
 		processorState.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -934,11 +950,18 @@ public class MessageProcessorPropertiesEditionPartImpl extends CompositeProperti
 	 */
 	protected Composite createDropMessageAfterMaximumDeliveryAttemptsEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.MessageProcessor.Properties.dropMessageAfterMaximumDeliveryAttempts, EsbMessages.MessageProcessorPropertiesEditionPart_DropMessageAfterMaximumDeliveryAttemptsLabel);
-		dropMessageAfterMaximumDeliveryAttempts = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		dropMessageAfterMaximumDeliveryAttempts = new EMFComboViewer(parent);
 		dropMessageAfterMaximumDeliveryAttempts.setContentProvider(new ArrayContentProvider());
 		dropMessageAfterMaximumDeliveryAttempts.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData dropMessageAfterMaximumDeliveryAttemptsData = new GridData(GridData.FILL_HORIZONTAL);
 		dropMessageAfterMaximumDeliveryAttempts.getCombo().setLayoutData(dropMessageAfterMaximumDeliveryAttemptsData);
+               dropMessageAfterMaximumDeliveryAttempts.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                   @Override
+                   public void handleEvent(Event arg0) {
+                       arg0.doit = false;
+                   }
+               });
 		dropMessageAfterMaximumDeliveryAttempts.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

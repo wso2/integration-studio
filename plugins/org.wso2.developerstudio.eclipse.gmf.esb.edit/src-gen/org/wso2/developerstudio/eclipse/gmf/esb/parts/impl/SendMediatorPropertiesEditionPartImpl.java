@@ -77,7 +77,9 @@ import org.eclipse.swt.layout.GridLayout;
 
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Group;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
@@ -336,11 +338,18 @@ public class SendMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 	 */
 	protected Composite createReceivingSequenceTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.SendMediator.Properties.receivingSequenceType, EsbMessages.SendMediatorPropertiesEditionPart_ReceivingSequenceTypeLabel);
-		receivingSequenceType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		receivingSequenceType = new EMFComboViewer(parent);
 		receivingSequenceType.setContentProvider(new ArrayContentProvider());
 		receivingSequenceType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData receivingSequenceTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		receivingSequenceType.getCombo().setLayoutData(receivingSequenceTypeData);
+               receivingSequenceType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                   @Override
+                   public void handleEvent(Event arg0) {
+                       arg0.doit = false;
+                   }
+               });
 		receivingSequenceType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

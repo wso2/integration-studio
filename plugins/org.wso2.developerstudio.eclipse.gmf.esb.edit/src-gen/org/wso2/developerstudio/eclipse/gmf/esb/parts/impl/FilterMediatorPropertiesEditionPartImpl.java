@@ -55,7 +55,9 @@ import org.eclipse.swt.layout.GridLayout;
 
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Group;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
@@ -311,11 +313,18 @@ public class FilterMediatorPropertiesEditionPartImpl extends CompositeProperties
 	 */
 	protected Composite createConditionTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.FilterMediator.Properties.conditionType, EsbMessages.FilterMediatorPropertiesEditionPart_ConditionTypeLabel);
-		conditionType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		conditionType = new EMFComboViewer(parent);
 		conditionType.setContentProvider(new ArrayContentProvider());
 		conditionType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData conditionTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		conditionType.getCombo().setLayoutData(conditionTypeData);
+               conditionType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                   @Override
+                   public void handleEvent(Event arg0) {
+                       arg0.doit = false;
+                   }
+               });
 		conditionType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

@@ -55,7 +55,9 @@ import org.eclipse.swt.layout.GridLayout;
 
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Group;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
@@ -324,11 +326,18 @@ public class LocalEntryPropertiesEditionPartImpl extends CompositePropertiesEdit
 	 */
 	protected Composite createLocalEntryTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.LocalEntry.Properties.localEntryType, EsbMessages.LocalEntryPropertiesEditionPart_LocalEntryTypeLabel);
-		localEntryType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		localEntryType = new EMFComboViewer(parent);
 		localEntryType.setContentProvider(new ArrayContentProvider());
 		localEntryType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData localEntryTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		localEntryType.getCombo().setLayoutData(localEntryTypeData);
+               localEntryType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                   @Override
+                   public void handleEvent(Event arg0) {
+                       arg0.doit = false;
+                   }
+               });
 		localEntryType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

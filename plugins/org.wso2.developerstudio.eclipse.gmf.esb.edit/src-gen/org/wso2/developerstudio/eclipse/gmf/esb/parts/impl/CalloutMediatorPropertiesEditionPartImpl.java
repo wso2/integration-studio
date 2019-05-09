@@ -55,7 +55,9 @@ import org.eclipse.swt.layout.GridLayout;
 
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Group;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
@@ -464,11 +466,18 @@ public class CalloutMediatorPropertiesEditionPartImpl extends CompositePropertie
 	 */
 	protected Composite createEndpointTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.CalloutMediator.Service.endpointType, EsbMessages.CalloutMediatorPropertiesEditionPart_EndpointTypeLabel);
-		endpointType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		endpointType = new EMFComboViewer(parent);
 		endpointType.setContentProvider(new ArrayContentProvider());
 		endpointType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData endpointTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		endpointType.getCombo().setLayoutData(endpointTypeData);
+               endpointType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                   @Override
+                   public void handleEvent(Event arg0) {
+                       arg0.doit = false;
+                   }
+               });
 		endpointType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -737,11 +746,18 @@ public class CalloutMediatorPropertiesEditionPartImpl extends CompositePropertie
 	 */
 	protected Composite createPayloadTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.CalloutMediator.Source.payloadType, EsbMessages.CalloutMediatorPropertiesEditionPart_PayloadTypeLabel);
-		payloadType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		payloadType = new EMFComboViewer(parent);
 		payloadType.setContentProvider(new ArrayContentProvider());
 		payloadType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData payloadTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		payloadType.getCombo().setLayoutData(payloadTypeData);
+               payloadType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                   @Override
+                   public void handleEvent(Event arg0) {
+                       arg0.doit = false;
+                   }
+               });
 		payloadType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -833,11 +849,18 @@ public class CalloutMediatorPropertiesEditionPartImpl extends CompositePropertie
 	 */
 	protected Composite createResultTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.CalloutMediator.Target.resultType, EsbMessages.CalloutMediatorPropertiesEditionPart_ResultTypeLabel);
-		resultType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		resultType = new EMFComboViewer(parent);
 		resultType.setContentProvider(new ArrayContentProvider());
 		resultType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData resultTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		resultType.getCombo().setLayoutData(resultTypeData);
+               resultType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                   @Override
+                   public void handleEvent(Event arg0) {
+                       arg0.doit = false;
+                   }
+               });
 		resultType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -929,11 +952,18 @@ public class CalloutMediatorPropertiesEditionPartImpl extends CompositePropertie
 	 */
 	protected Composite createPoliciesEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.CalloutMediator.WS.policies, EsbMessages.CalloutMediatorPropertiesEditionPart_PoliciesLabel);
-		policies = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		policies = new EMFComboViewer(parent);
 		policies.setContentProvider(new ArrayContentProvider());
 		policies.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData policiesData = new GridData(GridData.FILL_HORIZONTAL);
 		policies.getCombo().setLayoutData(policiesData);
+               policies.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                   @Override
+                   public void handleEvent(Event arg0) {
+                       arg0.doit = false;
+                   }
+               });
 		policies.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -961,11 +991,18 @@ public class CalloutMediatorPropertiesEditionPartImpl extends CompositePropertie
 	 */
 	protected Composite createSecurityTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.CalloutMediator.WS.securityType, EsbMessages.CalloutMediatorPropertiesEditionPart_SecurityTypeLabel);
-		securityType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		securityType = new EMFComboViewer(parent);
 		securityType.setContentProvider(new ArrayContentProvider());
 		securityType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData securityTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		securityType.getCombo().setLayoutData(securityTypeData);
+               securityType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                   @Override
+                   public void handleEvent(Event arg0) {
+                       arg0.doit = false;
+                   }
+               });
 		securityType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

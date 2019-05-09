@@ -49,6 +49,8 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
 import org.eclipse.ui.forms.widgets.Form;
@@ -301,11 +303,18 @@ public class TaskPropertyPropertiesEditionPartForm extends SectionPropertiesEdit
 	 */
 	protected Composite createPropertyTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.TaskProperty.Properties.propertyType, EsbMessages.TaskPropertyPropertiesEditionPart_PropertyTypeLabel);
-		propertyType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		propertyType = new EMFComboViewer(parent);
 		propertyType.setContentProvider(new ArrayContentProvider());
 		propertyType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData propertyTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		propertyType.getCombo().setLayoutData(propertyTypeData);
+               propertyType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                   @Override
+                   public void handleEvent(Event arg0) {
+                       arg0.doit = false;
+                   }
+               });
 		propertyType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

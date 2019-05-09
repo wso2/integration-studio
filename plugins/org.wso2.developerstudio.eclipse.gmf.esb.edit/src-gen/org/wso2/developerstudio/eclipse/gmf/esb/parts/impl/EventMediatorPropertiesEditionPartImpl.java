@@ -55,7 +55,9 @@ import org.eclipse.swt.layout.GridLayout;
 
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Group;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
@@ -295,11 +297,18 @@ public class EventMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	 */
 	protected Composite createTopicTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.EventMediator.Properties.topicType, EsbMessages.EventMediatorPropertiesEditionPart_TopicTypeLabel);
-		topicType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		topicType = new EMFComboViewer(parent);
 		topicType.setContentProvider(new ArrayContentProvider());
 		topicType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData topicTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		topicType.getCombo().setLayoutData(topicTypeData);
+               topicType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                   @Override
+                   public void handleEvent(Event arg0) {
+                       arg0.doit = false;
+                   }
+               });
 		topicType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

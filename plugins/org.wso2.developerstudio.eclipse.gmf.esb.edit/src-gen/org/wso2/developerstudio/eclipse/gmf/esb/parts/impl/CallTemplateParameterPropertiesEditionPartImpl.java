@@ -50,7 +50,9 @@ import org.eclipse.swt.layout.GridLayout;
 
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Group;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
@@ -229,11 +231,18 @@ public class CallTemplateParameterPropertiesEditionPartImpl extends CompositePro
      */
 	protected Composite createTemplateParameterTypeEMFComboViewer(Composite parent) {
 		Control parameterTypeLabel = createDescription(parent, EsbViewsRepository.CallTemplateParameter.Properties.templateParameterType, EsbMessages.CallTemplateParameterPropertiesEditionPart_TemplateParameterTypeLabel);
-		templateParameterType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		templateParameterType = new EMFComboViewer(parent);
 		templateParameterType.setContentProvider(new ArrayContentProvider());
 		templateParameterType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData templateParameterTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		templateParameterType.getCombo().setLayoutData(templateParameterTypeData);
+               templateParameterType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                   @Override
+                   public void handleEvent(Event arg0) {
+                       arg0.doit = false;
+                   }
+               });
 		templateParameterType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

@@ -61,6 +61,8 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
 import org.eclipse.ui.forms.widgets.Form;
@@ -483,11 +485,18 @@ public class BeanMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	protected Composite createActionEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 	    Control [] previousControls = propertiesGroup.getChildren();
 		createDescription(parent, EsbViewsRepository.BeanMediator.Properties.action, EsbMessages.BeanMediatorPropertiesEditionPart_ActionLabel);
-		action = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		action = new EMFComboViewer(parent);
 		action.setContentProvider(new ArrayContentProvider());
 		action.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData actionData = new GridData(GridData.FILL_HORIZONTAL);
 		action.getCombo().setLayoutData(actionData);
+               action.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                   @Override
+                   public void handleEvent(Event arg0) {
+                       arg0.doit = false;
+                   }
+               });
 		action.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

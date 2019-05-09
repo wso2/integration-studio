@@ -73,6 +73,8 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
 import org.eclipse.ui.forms.widgets.Form;
@@ -448,11 +450,18 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
      */
 	protected Composite createScriptLanguageEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control scriptLanguageLabel = createDescription(parent, EsbViewsRepository.ScriptMediator.Properties.scriptLanguage, EsbMessages.ScriptMediatorPropertiesEditionPart_ScriptLanguageLabel);
-		scriptLanguage = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		scriptLanguage = new EMFComboViewer(parent);
 		scriptLanguage.setContentProvider(new ArrayContentProvider());
 		scriptLanguage.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData scriptLanguageData = new GridData(GridData.FILL_HORIZONTAL);
 		scriptLanguage.getCombo().setLayoutData(scriptLanguageData);
+               scriptLanguage.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                   @Override
+                   public void handleEvent(Event arg0) {
+                       arg0.doit = false;
+                   }
+               });
 		scriptLanguage.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -608,11 +617,18 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
      */
 	protected Composite createKeyTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control keyTypeLabel = createDescription(parent, EsbViewsRepository.ScriptMediator.Properties.keyType, EsbMessages.ScriptMediatorPropertiesEditionPart_KeyTypeLabel);
-		keyType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		keyType = new EMFComboViewer(parent);
 		keyType.setContentProvider(new ArrayContentProvider());
 		keyType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData keyTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		keyType.getCombo().setLayoutData(keyTypeData);
+               keyType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                   @Override
+                   public void handleEvent(Event arg0) {
+                       arg0.doit = false;
+                   }
+               });
 		keyType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

@@ -20,7 +20,7 @@ Please visit : http://wso2.com/products/developer-studio/
       <vmArgs>-Xms512m
 -Xmx1536m
 -XX:MaxPermSize=512m
--Dosgi.instance.area.default=@user.home/DeveloperStudio/workspace
+-Dosgi.instance.area.default=@user.home/IntegrationStudio/workspace
       </vmArgs>
       <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts
       </vmArgsMac>

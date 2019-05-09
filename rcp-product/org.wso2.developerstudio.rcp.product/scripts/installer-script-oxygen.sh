@@ -187,4 +187,4 @@ rm -rf $JDK_DISTRIBUTION_PATH
 
 rm -rf $PRODUCT_PATH_ROOT/WSO2-Integration-Studio-linux.gtk.x86.zip
 rm -rf $PRODUCT_PATH_ROOT/WSO2-Integration-Studio-linux.gtk.x86_64.zip
-rm -rf $PRODUCT_PATH_ROOT/WSO2-Integration-Studio-macosx.cocoa.x86_64.zip
+rm -rf $PRODUCT_PATH_ROOT/WSO2-Developer-Studio-macosx.cocoa.x86_64.zip

@@ -99,6 +99,9 @@ public class URLRewriteRulePropertiesEditionComponent extends SinglePartProperti
 				rewriteRuleActionSettings = new ReferencesTableSettings(uRLRewriteRule, EsbPackage.eINSTANCE.getURLRewriteRule_RewriteRuleAction());
 				basePart.initRewriteRuleAction(rewriteRuleActionSettings);
 			}
+			// Start of user code  for urlRewriteRuleCondition command update
+			// End of user code
+			
 			// init filters
 			if (isAccessible(EsbViewsRepository.URLRewriteRule.Properties.rewriteRuleAction)) {
 				basePart.addFilterToRewriteRuleAction(new ViewerFilter() {
@@ -115,6 +118,9 @@ public class URLRewriteRulePropertiesEditionComponent extends SinglePartProperti
 				// Start of user code for additional businessfilters for rewriteRuleAction
 				// End of user code
 			}
+			// Start of user code  for urlRewriteRuleCondition filter update
+			// End of user code
+			
 			// init values for referenced views
 			
 			// init filters for referenced views
@@ -126,6 +132,7 @@ public class URLRewriteRulePropertiesEditionComponent extends SinglePartProperti
 
 
 
+
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
@@ -133,6 +140,9 @@ public class URLRewriteRulePropertiesEditionComponent extends SinglePartProperti
 	public EStructuralFeature associatedFeature(Object editorKey) {
 		if (editorKey == EsbViewsRepository.URLRewriteRule.Properties.rewriteRuleAction) {
 			return EsbPackage.eINSTANCE.getURLRewriteRule_RewriteRuleAction();
+		}
+		if (editorKey == EsbViewsRepository.URLRewriteRule.Properties.urlRewriteRuleCondition) {
+			return EsbPackage.eINSTANCE.getURLRewriteRule_UrlRewriteRuleCondition();
 		}
 		return super.associatedFeature(editorKey);
 	}
@@ -169,6 +179,11 @@ public class URLRewriteRulePropertiesEditionComponent extends SinglePartProperti
 				rewriteRuleActionSettings.move(event.getNewIndex(), (URLRewriteRuleAction) event.getNewValue());
 			}
 		}
+		if (EsbViewsRepository.URLRewriteRule.Properties.urlRewriteRuleCondition == event.getAffectedEditor()) {
+			// Start of user code for updateUrlRewriteRuleCondition method body
+			// End of user code
+			
+		}
 	}
 
 	/**
@@ -181,6 +196,10 @@ public class URLRewriteRulePropertiesEditionComponent extends SinglePartProperti
 			URLRewriteRulePropertiesEditionPart basePart = (URLRewriteRulePropertiesEditionPart)editingPart;
 			if (EsbPackage.eINSTANCE.getURLRewriteRule_RewriteRuleAction().equals(msg.getFeature()) && isAccessible(EsbViewsRepository.URLRewriteRule.Properties.rewriteRuleAction))
 				basePart.updateRewriteRuleAction();
+					// Start of user code for urlRewriteRuleCondition live update
+					
+					// End of user code
+			
 			
 		}
 	}
@@ -193,7 +212,8 @@ public class URLRewriteRulePropertiesEditionComponent extends SinglePartProperti
 	@Override
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
-			EsbPackage.eINSTANCE.getURLRewriteRule_RewriteRuleAction()		);
+			EsbPackage.eINSTANCE.getURLRewriteRule_RewriteRuleAction(),
+			EsbPackage.eINSTANCE.getURLRewriteRule_UrlRewriteRuleCondition()		);
 		return new NotificationFilter[] {filter,};
 	}
 

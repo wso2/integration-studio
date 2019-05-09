@@ -62,6 +62,10 @@ public class URLRewriteRulePropertiesEditionPartForm extends SectionPropertiesEd
 	protected ReferencesTable rewriteRuleAction;
 	protected List<ViewerFilter> rewriteRuleActionBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> rewriteRuleActionFilters = new ArrayList<ViewerFilter>();
+	// Start of user code  for urlRewriteRuleCondition widgets declarations
+	
+	// End of user code
+
 
 
 
@@ -106,9 +110,9 @@ public class URLRewriteRulePropertiesEditionPartForm extends SectionPropertiesEd
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		CompositionSequence uRLRewriteRuleStep = new BindingCompositionSequence(propertiesEditionComponent);
-		uRLRewriteRuleStep
-			.addStep(EsbViewsRepository.URLRewriteRule.Properties.class)
-			.addStep(EsbViewsRepository.URLRewriteRule.Properties.rewriteRuleAction);
+		CompositionStep propertiesStep = uRLRewriteRuleStep.addStep(EsbViewsRepository.URLRewriteRule.Properties.class);
+		propertiesStep.addStep(EsbViewsRepository.URLRewriteRule.Properties.rewriteRuleAction);
+		propertiesStep.addStep(EsbViewsRepository.URLRewriteRule.Properties.urlRewriteRuleCondition);
 		
 		
 		composer = new PartComposer(uRLRewriteRuleStep) {
@@ -121,6 +125,9 @@ public class URLRewriteRulePropertiesEditionPartForm extends SectionPropertiesEd
 				if (key == EsbViewsRepository.URLRewriteRule.Properties.rewriteRuleAction) {
 					return createRewriteRuleActionTableComposition(widgetFactory, parent);
 				}
+				// Start of user code for urlRewriteRuleCondition addToPart creation
+				
+				// End of user code
 				return parent;
 			}
 		};
@@ -277,6 +284,10 @@ public class URLRewriteRulePropertiesEditionPartForm extends SectionPropertiesEd
 
 
 
+
+	// Start of user code for urlRewriteRuleCondition specific getters and setters implementation
+	
+	// End of user code
 
 	/**
 	 * {@inheritDoc}

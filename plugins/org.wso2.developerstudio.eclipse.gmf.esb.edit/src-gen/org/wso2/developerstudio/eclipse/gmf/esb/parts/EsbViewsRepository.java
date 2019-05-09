@@ -7050,6 +7050,10 @@ public class EsbViewsRepository {
 			
 			public static String rewriteRuleAction = "esb::URLRewriteRule::properties::rewriteRuleAction";
 			
+			// Start of user code for urlRewriteRuleCondition ElementEditor key
+			public static String urlRewriteRuleCondition = "esb::URLRewriteRule::properties::urlRewriteRuleCondition";
+			// End of user code
+			
 	
 		}
 	

@@ -65,6 +65,9 @@ public interface URLRewriteRulePropertiesEditionPart {
 
 
 
+	// Start of user code for urlRewriteRuleCondition specific getters and setters declaration
+	
+	// End of user code
 
 	/**
 	 * Returns the internationalized title text.

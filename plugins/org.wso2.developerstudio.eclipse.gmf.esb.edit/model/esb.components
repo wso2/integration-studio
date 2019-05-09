@@ -4047,6 +4047,9 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v-JPJnEei6boXzpRIfnA" name="rewriteRuleAction" views="_E7xKE_JnEei6boXzpRIfnA">
           <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//URLRewriteRule/rewriteRuleAction"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_N-wZcHJUEemhDccDeXMKeQ" name="urlRewriteRuleCondition" views="_ylhM4HJSEemhDccDeXMKeQ">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//URLRewriteRule/urlRewriteRuleCondition"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//URLRewriteRule"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_E7v-JfJnEei6boXzpRIfnA" name="URLRewriteMediator" views="_E7xKFPJnEei6boXzpRIfnA">
@@ -10471,6 +10474,7 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xKE_JnEei6boXzpRIfnA" name="rewriteRuleAction">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
           </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_ylhM4HJSEemhDccDeXMKeQ" name="urlRewriteRuleCondition"/>
         </elements>
       </views>
       <views xmi:id="_E7xKFPJnEei6boXzpRIfnA" name="URLRewriteMediator">

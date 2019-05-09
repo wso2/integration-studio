@@ -31,7 +31,7 @@ public class StartupUpdateHandler implements IStartup {
 		// check if user has set startup updates
 		// Read updater preferences
 		// Let updater wait a minute till workspace preferences are initialized
-		UpdaterRootJob updaterRootJob = new UpdaterRootJob("Running Developer Studio updater Tool");
+		UpdaterRootJob updaterRootJob = new UpdaterRootJob("Running Integration Studio updater Tool");
 		updaterRootJob.schedule();
 	}
 }

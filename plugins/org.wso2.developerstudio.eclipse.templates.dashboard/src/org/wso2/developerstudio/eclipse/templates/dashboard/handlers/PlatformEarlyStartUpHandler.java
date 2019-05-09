@@ -25,8 +25,6 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IPersistableElement;
 import org.eclipse.ui.IStartup;
-import org.eclipse.ui.IViewPart;
-import org.eclipse.ui.IViewReference;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.WorkbenchException;
@@ -150,7 +148,6 @@ public class PlatformEarlyStartUpHandler implements IStartup {
             public void run() {
                 IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
                 try {
-                    hideAllViews(page);
                     PlatformUI.getWorkbench().showPerspective(FunctionServerConstants.WELCOME_PERSPECTIVE_ID,
                             PlatformUI.getWorkbench().getActiveWorkbenchWindow());
                     page.openEditor(new GettingStartedEditorInput(),
@@ -161,17 +158,6 @@ public class PlatformEarlyStartUpHandler implements IStartup {
                 }
             }
         });
-    }
-
-    /**
-     * This hides all visible views
-     * @param wp workbench page
-     */
-    private void hideAllViews(IWorkbenchPage wp) {
-        IViewReference[] viewParts = wp.getViewReferences();
-        for(IViewReference viewPart: viewParts) {
-            wp.hideView(viewPart);
-        }
     }
 
     /**

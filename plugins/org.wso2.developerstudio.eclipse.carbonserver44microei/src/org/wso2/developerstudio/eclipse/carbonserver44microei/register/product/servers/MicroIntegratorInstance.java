@@ -61,7 +61,7 @@ public class MicroIntegratorInstance {
 	//static relative path to where micro-ESB is packaged
 	private static final String microesbPath = "runtime" + File.separator + "microesb";
 	//static path for DeveloperStudio for MAC when it is on Application folder
-	private static final String eiToolingHomeForMac = "/Applications/DeveloperStudio.app/Contents/MacOS";
+	private static final String eiToolingHomeForMac = "/Applications/IntegrationStudio.app/Contents/MacOS";
 	private static boolean isDebugMode = false;
 	/**
 	 * Private constructor for singleton class

@@ -24,13 +24,17 @@ import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.endpoints.AbstractEndpoint;
+import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.mediators.MediatorProperty;
 import org.eclipse.core.runtime.Assert;
+import org.eclipse.emf.transaction.RecordingCommand;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.ui.forms.editor.FormEditor;
-import org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
+import org.wso2.developerstudio.eclipse.gmf.esb.EndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPointProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPointPropertyScope;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
@@ -45,7 +49,7 @@ import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.FailoverE
 
 public class FailoverEndpointDeserializer extends AbstractEndpointDeserializer {
 
-    public AbstractEndPoint createNode(IGraphicalEditPart part, AbstractEndpoint object) throws DeserializerException {
+    public EndPoint createNode(IGraphicalEditPart part, AbstractEndpoint object) throws DeserializerException {
         Assert.isTrue(object instanceof org.apache.synapse.endpoints.FailoverEndpoint,
                 "Unsupported endpoint passed in for deserialization at " + this.getClass());
 
@@ -68,14 +72,38 @@ public class FailoverEndpointDeserializer extends AbstractEndpointDeserializer {
             }
             executeAddValueCommand(endPoint.getProperties(), property, false);
         }
+        
+        if (failoverEndpoint.getChildren() != null && failoverEndpoint.getChildren().size() > 0) {
+            List<Endpoint> synpaseChildren = failoverEndpoint.getChildren();
 
-        // deserializeComplexEndpoint(failoverEndpoint, part);
+            for (Endpoint synpaseChild : synpaseChildren) {
+
+                IEsbNodeDeserializer deserializer = EsbDeserializerRegistry.getInstance().getDeserializer(synpaseChild);
+                org.wso2.developerstudio.eclipse.gmf.esb.EndPoint child = ((AbstractEndpointDeserializer) deserializer)
+                        .createUIEndpoint(synpaseChild);
+
+                TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(endPoint);
+                if (domain != null) {
+                    domain.getCommandStack().execute(new RecordingCommand(domain) {
+
+                        @Override
+                        protected void doExecute() {
+                            endPoint.getChildren().add(child);
+                        }
+                    });
+                } else {
+                    endPoint.getChildren().add(child);
+                }
+            }
+        }
 
         if (StringUtils.isNotBlank(failoverEndpoint.getName())) {
             executeSetValueCommand(END_POINT__END_POINT_NAME, failoverEndpoint.getName());
         }
+        
         executeSetValueCommand(FAILOVER_END_POINT__BUILD_MESSAGE, failoverEndpoint.isBuildMessageAtt());
-        return (AbstractEndPoint) failoverEndpoint;
+        
+        return endPoint;
     }
 
     @Override

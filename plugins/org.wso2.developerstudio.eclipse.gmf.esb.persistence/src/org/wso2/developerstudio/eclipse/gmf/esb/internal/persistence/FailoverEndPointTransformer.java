@@ -18,43 +18,27 @@ package org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
 
-import org.apache.axiom.om.OMElement;
-import org.apache.axiom.om.util.AXIOMUtil;
 import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.SynapseArtifact;
-import org.apache.synapse.config.xml.endpoints.WSDLEndpointFactory;
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.endpoints.EndpointDefinition;
 import org.apache.synapse.endpoints.FailoverEndpoint;
 import org.apache.synapse.mediators.MediatorProperty;
 import org.apache.synapse.mediators.base.SequenceMediator;
-import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.Assert;
-import org.eclipse.core.runtime.IPath;
-import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.ui.IEditorPart;
-import org.eclipse.ui.IEditorReference;
-import org.eclipse.ui.PlatformUI;
 import org.jaxen.JaxenException;
-import org.wso2.developerstudio.eclipse.esb.core.interfaces.IEsbEditorInput;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPointProperty;
-import org.wso2.developerstudio.eclipse.gmf.esb.EndpointDiagram;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.FailoverEndPoint;
-import org.wso2.developerstudio.eclipse.gmf.esb.FailoverEndPointOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.InputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.Sequence;
 import org.wso2.developerstudio.eclipse.gmf.esb.SequenceInputConnector;
-import org.wso2.developerstudio.eclipse.gmf.esb.persistence.EsbNodeTransformer;
-import org.wso2.developerstudio.eclipse.gmf.esb.persistence.EsbTransformerRegistry;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
-import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerUtils;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.FailoverEndpointFormPage;
 
 public class FailoverEndPointTransformer extends AbstractEndpointTransformer {
@@ -125,19 +109,24 @@ public class FailoverEndPointTransformer extends AbstractEndpointTransformer {
     public FailoverEndpoint create(TransformationInfo info, FailoverEndPoint visualEndPoint, String name,
             List<Endpoint> endPoints) throws TransformerException {
 
-        IEditorPart editorPart = null;
-        IProject activeProject = null;
         FailoverEndpoint synapseFailEP = new FailoverEndpoint();
 
-        if (StringUtils.isNotBlank(name) && !name.equals("{ep.name}")) {
+        if (StringUtils.isNotBlank(name)) {
             synapseFailEP.setName(name);
-        } else {
-            synapseFailEP.setName(getSynapseEndpointName(visualEndPoint));
+        } else if (StringUtils.isNotBlank(visualEndPoint.getEndPointName())) {
+            synapseFailEP.setName(visualEndPoint.getEndPointName());
         }
         synapseFailEP.setBuildMessageAtt(visualEndPoint.isBuildMessage());
         EndpointDefinition synapseEPDef = new EndpointDefinition();
-        List<Endpoint> endPointsList = new ArrayList<Endpoint>();
-        synapseFailEP.setChildren(endPointsList);
+
+        List<Endpoint> synapseChildren = new ArrayList<>();
+        if (visualEndPoint.getChildren() != null && visualEndPoint.getChildren().size() > 0) {
+            for (org.wso2.developerstudio.eclipse.gmf.esb.EndPoint viEndpoint : visualEndPoint.getChildren()) {
+                synapseChildren.add(TransformerUtils.getSynapseEndpoint(viEndpoint));
+            }
+        }
+
+        synapseFailEP.setChildren(synapseChildren);
         synapseFailEP.setDefinition(synapseEPDef);
         saveProperties(visualEndPoint, synapseFailEP);
 
@@ -145,63 +134,7 @@ public class FailoverEndPointTransformer extends AbstractEndpointTransformer {
             info.isEndPointFound = true;
             info.firstEndPoint = visualEndPoint;
         }
-        try {
-            if (visualEndPoint.eContainer() instanceof EndpointDiagram) {
-                ArrayList<FailoverEndPointOutputConnector> connectors = new ArrayList<FailoverEndPointOutputConnector>();
-                connectors.addAll(visualEndPoint.getOutputConnector());
-                for (FailoverEndPointOutputConnector outputConnector : connectors) {
-                    if (outputConnector.getOutgoingLink() != null) {
-                        if (outputConnector.getOutgoingLink().getTarget() != null) {
-                            EsbNode esbNode = (EsbNode) outputConnector.getOutgoingLink().getTarget().eContainer();
-                            EsbNodeTransformer transformer = EsbTransformerRegistry.getInstance()
-                                    .getTransformer(esbNode);
-                            transformer.createSynapseObject(info, esbNode, endPointsList);
 
-                        }
-                    }
-                }
-
-            } else {
-
-                IEditorReference editorReferences[] = PlatformUI.getWorkbench().getActiveWorkbenchWindow()
-                        .getActivePage().getEditorReferences();
-                for (int i = 0; i < editorReferences.length; i++) {
-                    IEditorPart editor = editorReferences[i].getEditor(false);
-
-                    if (editor != null) {
-                        editorPart = editor.getSite().getWorkbenchWindow().getActivePage().getActiveEditor();
-                    }
-
-                    if (editorPart != null) {
-                        IEsbEditorInput input = (IEsbEditorInput) editorPart.getEditorInput();
-                        IFile file = input.getXmlResource();
-                        activeProject = file.getProject();
-                    }
-                }
-
-                OMElement element = null;
-                String endpointName = getSynapseEndpointName(visualEndPoint);
-                if (!StringUtils.isEmpty(endpointName)) {
-                    IPath location = new Path(
-                            "src/main/synapse-config/endpoints" + "/" + endpointName + ".xml");
-                    IFile file = activeProject.getFile(location);
-                    if (file.exists()) {
-                        final String source = FileUtils.getContentAsString(file.getContents());
-                        element = AXIOMUtil.stringToOM(source);
-                    }
-                }
-
-                if (element != null) {
-                    Properties properties = new Properties();
-                    properties.put(WSDLEndpointFactory.SKIP_WSDL_PARSING, "true");
-//                    synapseFailEP = (FailoverEndpoint) EndpointFactory.getEndpointFromElement(element, false, properties);
-                }
-
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
         return synapseFailEP;
     }
     
@@ -247,13 +180,4 @@ public class FailoverEndPointTransformer extends AbstractEndpointTransformer {
         return synapseFailoverEP;
     }
     
-    private String getSynapseEndpointName(FailoverEndPoint visualEndPoint) {
-        if (StringUtils.isNotBlank(visualEndPoint.getName()) && !visualEndPoint.getName().equals("{ep.name}")) {
-            return visualEndPoint.getName();
-        } else if (StringUtils.isNotBlank(visualEndPoint.getEndPointName()) && !visualEndPoint.getEndPointName().equals("{ep.name}")) {
-            return visualEndPoint.getEndPointName();
-        } else {
-            return "{ep.name}";
-        }
-    }
 }

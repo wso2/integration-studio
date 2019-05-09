@@ -24,6 +24,9 @@ import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.ILaunchConfigurationType;
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
 import org.eclipse.debug.core.ILaunchManager;
+import org.eclipse.jface.action.IContributionItem;
+import org.eclipse.jface.action.IMenuManager;
+import org.eclipse.jface.action.MenuManager;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IPerspectiveDescriptor;
 import org.eclipse.ui.IStartup;
@@ -31,6 +34,9 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PerspectiveAdapter;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.actions.ContributionItemFactory;
+import org.eclipse.ui.internal.IActionSetContributionItem;
+import org.eclipse.ui.internal.WorkbenchWindow;
 import org.wso2.developerstudio.eclipse.carbonserver44microei.Activator;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
@@ -61,21 +67,44 @@ public class PlatformEarlyStartUpHandler implements IStartup {
         // The following section will remove the unwanted
         Display.getDefault().asyncExec(new Runnable() {
             public void run() {
-                final IWorkbenchWindow workbenchWindow = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
-                if (workbenchWindow != null) {
 
-                    workbenchWindow.addPerspectiveListener(new PerspectiveAdapter() {
-                        @Override
-                        public void perspectiveActivated(IWorkbenchPage page,
-                                IPerspectiveDescriptor perspectiveDescriptor) {
-                            super.perspectiveActivated(page, perspectiveDescriptor);
-                            PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
-                                    .hideActionSet("org.eclipse.ui.externaltools.ExternalToolsSet");
+                try {
+                    @SuppressWarnings("restriction")
+                    WorkbenchWindow workbenchWin = (WorkbenchWindow) PlatformUI.getWorkbench()
+                            .getActiveWorkbenchWindow();
+                    @SuppressWarnings("restriction")
+                    MenuManager menuManager = workbenchWin.getMenuManager();
+                    IContributionItem[] items = menuManager.getItems();
+
+                    // The following code will delete the Welcome entry under the Help menu
+                    for (int i = 0; i < items.length; i++) {
+                        if (items[i] instanceof IMenuManager) {
+                            IMenuManager submenu = (IMenuManager) items[i];
+                            IContributionItem welcomeItem = submenu.find("intro");
+                            if (welcomeItem != null) {
+                                submenu.remove(welcomeItem);
+                            }
                         }
-                    });
+                    }
 
-                    PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
-                            .hideActionSet("org.eclipse.ui.externaltools.ExternalToolsSet");
+                    final IWorkbenchWindow workbenchWindow = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+                    if (workbenchWindow != null) {
+
+                        workbenchWindow.addPerspectiveListener(new PerspectiveAdapter() {
+                            @Override
+                            public void perspectiveActivated(IWorkbenchPage page,
+                                    IPerspectiveDescriptor perspectiveDescriptor) {
+                                super.perspectiveActivated(page, perspectiveDescriptor);
+                                PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+                                        .hideActionSet("org.eclipse.ui.externaltools.ExternalToolsSet");
+                            }
+                        });
+
+                        PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+                                .hideActionSet("org.eclipse.ui.externaltools.ExternalToolsSet");
+                    }
+                } catch (Exception e) {
+                    log.error(e);
                 }
             }
         });

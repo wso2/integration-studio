@@ -155,8 +155,8 @@ public class CappArtifactsListProvider extends AbstractListDataProvider {
 	}
 
 	private boolean isMultipleArtifactDSSProject(IProject project) throws CoreException {
-		return project.hasNature(Constants.DS_PROJECT_NATURE) && (project.getFile(Constants.ARTIFACT_XML) != null
-				&& project.getFile(Constants.ARTIFACT_XML).exists());
+		return (project.hasNature(Constants.DS_PROJECT_NATURE) || project.hasNature(Constants.DATASOURCE_PROJECT_NATURE))
+		        && (project.getFile(Constants.ARTIFACT_XML) != null && project.getFile(Constants.ARTIFACT_XML).exists());
 	}
 
 	private boolean isMultipleArtifactProject(IProject project) {

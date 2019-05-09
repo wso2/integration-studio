@@ -178,7 +178,7 @@ public class UpdateManager {
 			metadataRepo = metadataRepoManager.loadRepository(getDevStudioUpdateSite(), progress.newChild(1));
 		} catch (ProvisionException e) {
 			UpdateMetaFileReaderJob.promptUserError(
-					"The P2 Does not existed at the given location, please set the update/releases P2 for Developer Studio in the Preference Store",
+					"The P2 Does not existed at the given location, please set the update/releases P2 for Integration Studio in the Preference Store",
 					"P2 Repository Error");
 			throw e;
 		}
@@ -251,7 +251,7 @@ public class UpdateManager {
 			metadataRepository = metadataRepoManager.loadRepository(getDevStudioReleaseSite(), progress.newChild(1));
 		} catch (ProvisionException e) {
 			UpdateMetaFileReaderJob.promptUserError(
-					"The P2 Does not existed at the given location, please set the update/releases P2 for Developer Studio in the Preference Store",
+					"The P2 Does not existed at the given location, please set the update/releases P2 for Integration Studio in the Preference Store",
 					"P2 Repository Error");
 			throw e;
 		}

@@ -292,7 +292,7 @@ public class PayloadFactoryMediatorPropertiesEditionPartForm extends SectionProp
 		payload.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(filterPayloadSubPropertiesGroup);
 		GridData payloadData = new GridData(GridData.FILL_HORIZONTAL);
-		payloadData.heightHint = payload.getLineHeight()*9;
+		payloadData.heightHint = payload.getLineHeight()*4;
 		payload.setLayoutData(payloadData);
 		payload.addFocusListener(new FocusAdapter() {
 			/**

@@ -6586,6 +6586,9 @@ public class EsbMessages extends NLS {
 	public static String URLRewriteRulePropertiesEditionPart_RewriteRuleActionLabel;
 
 	
+	public static String URLRewriteRulePropertiesEditionPart_UrlRewriteRuleConditionLabel;
+
+	
 	public static String URLRewriteMediatorPropertiesEditionPart_DescriptionLabel;
 
 	

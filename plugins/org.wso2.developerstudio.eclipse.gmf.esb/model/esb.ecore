@@ -1480,7 +1480,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="implementationType" eType="#//CacheImplementationType"
         defaultValueLiteral="memory"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="cacheMediatorImplementation"
-        eType="#//CacheMediatorType" defaultValueLiteral="New_implementation"/>
+        eType="#//CacheMediatorType" defaultValueLiteral="Default"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CacheMediatorInputConnector" eSuperTypes="#//InputConnector"/>
   <eClassifiers xsi:type="ecore:EClass" name="CacheMediatorOutputConnector" eSuperTypes="#//OutputConnector"/>
@@ -3490,7 +3490,7 @@
     <eLiterals name="disk" value="1" literal="disk"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="CacheMediatorType">
-    <eLiterals name="New_implementation"/>
-    <eLiterals name="Previous_implementation" value="1"/>
+    <eLiterals name="Default" literal="Default"/>
+    <eLiterals name="Compatibility_611" value="1" literal="611 Compatible"/>
   </eClassifiers>
 </ecore:EPackage>

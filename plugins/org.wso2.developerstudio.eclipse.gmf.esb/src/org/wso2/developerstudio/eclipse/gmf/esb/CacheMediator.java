@@ -621,7 +621,7 @@ public interface CacheMediator extends Mediator {
 
     /**
      * Returns the value of the '<em><b>Cache Mediator Implementation</b></em>' attribute.
-     * The default value is <code>"New_implementation"</code>.
+     * The default value is <code>"Default"</code>.
      * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.CacheMediatorType}.
      * <!-- begin-user-doc -->
      * <p>
@@ -633,7 +633,7 @@ public interface CacheMediator extends Mediator {
      * @see org.wso2.developerstudio.eclipse.gmf.esb.CacheMediatorType
      * @see #setCacheMediatorImplementation(CacheMediatorType)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCacheMediator_CacheMediatorImplementation()
-     * @model default="New_implementation"
+     * @model default="Default"
      * @generated
      */
     CacheMediatorType getCacheMediatorImplementation();

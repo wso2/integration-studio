@@ -96,7 +96,12 @@ public class PlatformEarlyStartUpHandler implements IStartup {
                             if (updateItem != null) {
                                 submenu.remove(updateItem);
                             }
-
+                            // This removes Update
+                            IContributionItem v8CrhomeRunItem = submenu.find(
+                                    "org.eclipse.wst.jsdt.chromium.debug.ui.actions.AddExceptionBreakpointAction");
+                            if (v8CrhomeRunItem != null) {
+                                submenu.remove(v8CrhomeRunItem);
+                            }
                         }
                     }
 

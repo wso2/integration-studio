@@ -83,6 +83,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.PropertyGroupMediatorPropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.developerstudio.eclipse.gmf.esb.util.FontUtils;
 
 public class PropertyGroupMediatorPropertiesEditionPartForm extends SectionPropertiesEditingPart
         implements IFormPropertiesEditionPart, PropertyGroupMediatorPropertiesEditionPart {
@@ -414,6 +415,7 @@ public class PropertyGroupMediatorPropertiesEditionPartForm extends SectionPrope
         this.properties.setLayoutData(propertiesData);
         this.properties.setLowerBound(0);
         this.properties.setUpperBound(-1);
+        this.properties.getTable().setFont(FontUtils.getMonospacedFont());
         properties.setID(EsbViewsRepository.PropertyGroupMediator.Properties.properties_);
         properties.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
         // Start of user code for createPropertiesTableComposition

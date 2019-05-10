@@ -73,6 +73,8 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
 import org.eclipse.ui.forms.widgets.Form;
@@ -567,11 +569,18 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
      */
 	protected Composite createOnAcceptBranchsequenceTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control itemLabel = createDescription(parent, EsbViewsRepository.ThrottleMediator.OnAccept.onAcceptBranchsequenceType, EsbMessages.ThrottleMediatorPropertiesEditionPart_OnAcceptBranchsequenceTypeLabel);
-		onAcceptBranchsequenceType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		onAcceptBranchsequenceType = new EMFComboViewer(parent);
 		onAcceptBranchsequenceType.setContentProvider(new ArrayContentProvider());
 		onAcceptBranchsequenceType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData onAcceptBranchsequenceTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		onAcceptBranchsequenceType.getCombo().setLayoutData(onAcceptBranchsequenceTypeData);
+                onAcceptBranchsequenceType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		onAcceptBranchsequenceType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -613,11 +622,18 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
      */
 	protected Composite createOnRejectBranchsequenceTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control itemLabel = createDescription(parent, EsbViewsRepository.ThrottleMediator.OnReject.onRejectBranchsequenceType, EsbMessages.ThrottleMediatorPropertiesEditionPart_OnRejectBranchsequenceTypeLabel);
-		onRejectBranchsequenceType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		onRejectBranchsequenceType = new EMFComboViewer(parent);
 		onRejectBranchsequenceType.setContentProvider(new ArrayContentProvider());
 		onRejectBranchsequenceType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData onRejectBranchsequenceTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		onRejectBranchsequenceType.getCombo().setLayoutData(onRejectBranchsequenceTypeData);
+                onRejectBranchsequenceType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		onRejectBranchsequenceType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -674,11 +690,18 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
      */
 	protected Composite createPolicyTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control itemLabel = createDescription(parent, EsbViewsRepository.ThrottleMediator.ThrottlePolicy.policyType, EsbMessages.ThrottleMediatorPropertiesEditionPart_PolicyTypeLabel);
-		policyType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		policyType = new EMFComboViewer(parent);
 		policyType.setContentProvider(new ArrayContentProvider());
 		policyType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData policyTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		policyType.getCombo().setLayoutData(policyTypeData);
+                policyType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		policyType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

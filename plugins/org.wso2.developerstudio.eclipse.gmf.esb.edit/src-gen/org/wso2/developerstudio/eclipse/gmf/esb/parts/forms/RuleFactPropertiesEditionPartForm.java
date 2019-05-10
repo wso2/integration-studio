@@ -49,6 +49,8 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
 import org.eclipse.ui.forms.widgets.Form;
@@ -188,14 +190,23 @@ public class RuleFactPropertiesEditionPartForm extends SectionPropertiesEditingP
 		return propertiesGroup;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createFactTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.RuleFact.Properties.factType, EsbMessages.RuleFactPropertiesEditionPart_FactTypeLabel);
-		factType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		factType = new EMFComboViewer(parent);
 		factType.setContentProvider(new ArrayContentProvider());
 		factType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData factTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		factType.getCombo().setLayoutData(factTypeData);
+                factType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		factType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -354,14 +365,23 @@ public class RuleFactPropertiesEditionPartForm extends SectionPropertiesEditingP
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createValueTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.RuleFact.Properties.valueType, EsbMessages.RuleFactPropertiesEditionPart_ValueTypeLabel);
-		valueType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		valueType = new EMFComboViewer(parent);
 		valueType.setContentProvider(new ArrayContentProvider());
 		valueType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData valueTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		valueType.getCombo().setLayoutData(valueTypeData);
+                valueType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		valueType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

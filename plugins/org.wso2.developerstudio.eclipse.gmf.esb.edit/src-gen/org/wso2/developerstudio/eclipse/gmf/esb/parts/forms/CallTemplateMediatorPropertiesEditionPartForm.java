@@ -64,6 +64,8 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
 import org.eclipse.ui.forms.widgets.Form;
@@ -350,7 +352,7 @@ public class CallTemplateMediatorPropertiesEditionPartForm extends SectionProper
      */
 	protected Composite createAvailableTemplatesText(FormToolkit widgetFactory, Composite parent) {
 		Control availableTemplatesLabel = createDescription(parent, EsbViewsRepository.CallTemplateMediator.Properties.availableTemplates, EsbMessages.CallTemplateMediatorPropertiesEditionPart_AvailableTemplatesLabel);
-		availableTemplates = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		availableTemplates = new EMFComboViewer(parent);
 		availableTemplates.setContentProvider(new ArrayContentProvider());
 		availableTemplates.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
         GridData valueTypeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -359,6 +361,13 @@ public class CallTemplateMediatorPropertiesEditionPartForm extends SectionProper
         String [] availableTemplateNameList = Arrays.copyOf(availableTemplateList, availableTemplateList.length, String[].class);
         availableTemplates.getCombo().setItems(availableTemplateNameList);
         availableTemplates.getCombo().select(0);
+        availableTemplates.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+            @Override
+            public void handleEvent(Event arg0) {
+                arg0.doit = false;
+            }
+        });
         availableTemplates.addSelectionChangedListener(new ISelectionChangedListener() {
 
             /**

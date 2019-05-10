@@ -54,7 +54,9 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Group;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
@@ -188,11 +190,18 @@ public class PayloadFactoryArgumentPropertiesEditionPartImpl extends CompositePr
      */
 	protected Composite createArgumentTypeEMFComboViewer(Composite parent) {
 		Control argumentTypeLabel = createDescription(parent, EsbViewsRepository.PayloadFactoryArgument.Properties.argumentType, EsbMessages.PayloadFactoryArgumentPropertiesEditionPart_ArgumentTypeLabel);
-		argumentType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		argumentType = new EMFComboViewer(parent);
 		argumentType.setContentProvider(new ArrayContentProvider());
 		argumentType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData argumentTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		argumentType.getCombo().setLayoutData(argumentTypeData);
+                argumentType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		argumentType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -275,11 +284,18 @@ public class PayloadFactoryArgumentPropertiesEditionPartImpl extends CompositePr
      */
 	protected Composite createEvaluatorEMFComboViewer(Composite parent) {
 		Control evaluatorLabel = createDescription(parent, EsbViewsRepository.PayloadFactoryArgument.Properties.evaluator, EsbMessages.PayloadFactoryArgumentPropertiesEditionPart_EvaluatorLabel);
-		evaluator = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		evaluator = new EMFComboViewer(parent);
 		evaluator.setContentProvider(new ArrayContentProvider());
 		evaluator.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData evaluatorData = new GridData(GridData.FILL_HORIZONTAL);
 		evaluator.getCombo().setLayoutData(evaluatorData);
+                evaluator.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		evaluator.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

@@ -68,7 +68,9 @@ import org.eclipse.swt.layout.GridLayout;
 
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Group;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
@@ -801,11 +803,18 @@ public class LoadBalanceEndPointPropertiesEditionPartImpl extends CompositePrope
 	 */
 	protected Composite createSessionTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.LoadBalanceEndPoint.Properties.sessionType, EsbMessages.LoadBalanceEndPointPropertiesEditionPart_SessionTypeLabel);
-		sessionType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		sessionType = new EMFComboViewer(parent);
 		sessionType.setContentProvider(new ArrayContentProvider());
 		sessionType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData sessionTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		sessionType.getCombo().setLayoutData(sessionTypeData);
+                sessionType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		sessionType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

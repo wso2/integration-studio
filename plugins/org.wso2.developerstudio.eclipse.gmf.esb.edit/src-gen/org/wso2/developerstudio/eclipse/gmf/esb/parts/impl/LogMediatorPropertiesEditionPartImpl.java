@@ -68,7 +68,9 @@ import org.eclipse.swt.layout.GridLayout;
 
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Group;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
@@ -186,11 +188,18 @@ public class LogMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 	 */
 	protected Composite createLogCategoryEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.LogMediator.Properties.logCategory, EsbMessages.LogMediatorPropertiesEditionPart_LogCategoryLabel);
-		logCategory = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		logCategory = new EMFComboViewer(parent);
 		logCategory.setContentProvider(new ArrayContentProvider());
 		logCategory.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData logCategoryData = new GridData(GridData.FILL_HORIZONTAL);
 		logCategory.getCombo().setLayoutData(logCategoryData);
+                logCategory.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		logCategory.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -218,11 +227,18 @@ public class LogMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 	 */
 	protected Composite createLogLevelEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.LogMediator.Properties.logLevel, EsbMessages.LogMediatorPropertiesEditionPart_LogLevelLabel);
-		logLevel = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		logLevel = new EMFComboViewer(parent);
 		logLevel.setContentProvider(new ArrayContentProvider());
 		logLevel.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData logLevelData = new GridData(GridData.FILL_HORIZONTAL);
 		logLevel.getCombo().setLayoutData(logLevelData);
+                logLevel.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		logLevel.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

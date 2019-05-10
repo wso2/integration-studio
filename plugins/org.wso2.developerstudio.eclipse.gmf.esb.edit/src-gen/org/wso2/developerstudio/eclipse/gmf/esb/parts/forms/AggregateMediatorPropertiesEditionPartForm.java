@@ -63,6 +63,8 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
 import org.eclipse.ui.forms.widgets.Form;
@@ -821,11 +823,19 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
      */
 	protected Composite createSequenceTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control sequenceTypeLabel = createDescription(parent, EsbViewsRepository.AggregateMediator.OnComplete.sequenceType, EsbMessages.AggregateMediatorPropertiesEditionPart_SequenceTypeLabel);
-		sequenceType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		sequenceType = new EMFComboViewer(parent);
 		sequenceType.setContentProvider(new ArrayContentProvider());
 		sequenceType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData sequenceTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		sequenceType.getCombo().setLayoutData(sequenceTypeData);
+                sequenceType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+        
+                    }
+                });
 		sequenceType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

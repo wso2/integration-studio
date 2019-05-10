@@ -246,16 +246,6 @@
             <url>http://maven.wso2.org/nexus/content/repositories/wso2.maven2.snapshot/</url>
             <layout>default</layout>
         </repository>
-        <repository>
-            <releases>
-                <enabled>true</enabled>
-                <updatePolicy>daily</updatePolicy>
-                <checksumPolicy>ignore</checksumPolicy>
-            </releases>
-            <id>HTTP4e-p2-repo</id>
-            <url>http://nextinterfaces.com/http4e/install/</url>
-            <layout>p2</layout>
-        </repository>
     </repositories>
     <pluginRepositories>
         <pluginRepository>

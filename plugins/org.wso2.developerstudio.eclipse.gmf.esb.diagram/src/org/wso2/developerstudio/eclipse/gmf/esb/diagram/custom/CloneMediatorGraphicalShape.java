@@ -247,7 +247,7 @@ public class CloneMediatorGraphicalShape extends RoundedRectangle {
         // Actual label to display which type this is.
         WrappingLabel esbNodeTypeNameLabel2 = new WrappingLabel();
         esbNodeTypeNameLabel2.setText(getNodeName());
-        esbNodeTypeNameLabel2.setForegroundColor(new Color(null, 209, 52, 79));
+        esbNodeTypeNameLabel2.setBackgroundColor(new Color(null, 255, 255, 255));
         esbNodeTypeNameLabel2.setFont(new Font(null, "Arial", 10, SWT.BOLD));
         esbNodeTypeNameLabel2.setAlignment(SWT.CENTER);
         esbNodeTypeNameLabel2.setPreferredSize(new Dimension(64, 20));

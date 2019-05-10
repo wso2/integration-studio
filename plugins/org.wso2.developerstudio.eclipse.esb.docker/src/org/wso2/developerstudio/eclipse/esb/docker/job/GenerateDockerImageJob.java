@@ -174,6 +174,8 @@ public class GenerateDockerImageJob extends Job {
 
         monitor.worked(100);
         monitor.done();
+        
+        FileUtils.deleteDir(new File(dockerDirectory));
 
         // Image generation successful
         if (null != generatedImageId) {

@@ -9,6 +9,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb.provider;
 import java.util.Collection;
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.WordUtils;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
@@ -509,28 +510,61 @@ public class PropertyMediatorItemProvider extends MediatorItemProvider {
 
     @Override
     public String getText(Object object) {
+
+        int maxLength = 40;
+        int spacing = 5;
+        int marginSpaceLeft = 1;
+        int propertyTypeLength = 10;
+        String newProperty = "newPropertyName";
+        String emptySpace = StringUtils.rightPad("", spacing);
+
+        String propertyName = StringUtils.rightPad(((PropertyMediator) object).getPropertyName().getName(), maxLength);
+        String propertyValueType = ((PropertyMediator) object).getValueType().toString();
+        String propertyValue = StringUtils.rightPad(((PropertyMediator) object).getValue(), maxLength);
+        String propertyExpression = StringUtils.rightPad(((PropertyMediator) object).getValueExpression().toString(),
+                maxLength);
+
         PropertyName labelValue = ((PropertyMediator) object).getPropertyName();
         String newPropertyName = ((PropertyMediator) object).getNewPropertyName();
         String label = labelValue == null ? null : labelValue.toString();
-        String value = ((PropertyMediator) object).getValue();
+
         String newLabel = label == "New Property..." ? newPropertyName : label;
-        String propertyName = WordUtils.abbreviate(newLabel, 40, 45, " ...");
-        String valueType = ((PropertyMediator) object).getValueType().toString();
-        String valueExpression = ((PropertyMediator) object).getValueExpression().toString();
 
         if (!(((PropertyMediator) object).eContainer() instanceof PropertyGroupMediatorImpl)) {
-            return newLabel == null || label.length() == 0 ? getString("_UI_PropertyMediator_type")
-                    : EEFPropertyViewUtil.spaceFormat("Property");
-        } else if (valueType.equalsIgnoreCase(PropertyValueType.LITERAL.getName())) {
-            return newLabel == null || label.length() == 0 ? getString("_UI_PropertyMediator_type")
-                    : value != null ? "Property  -  " + EEFPropertyViewUtil.spaceFormat(propertyName) + 
-                            EEFPropertyViewUtil.spaceFormat(value) : "Property  -  " + 
-                            EEFPropertyViewUtil.spaceFormat(propertyName);
-        } else {
-            return newLabel == null || label.length() == 0 ? getString("_UI_PropertyMediator_type")
-                    : "Property  -  " + EEFPropertyViewUtil.spaceFormat(propertyName)
-                            + EEFPropertyViewUtil.spaceFormat(valueExpression);
+            return newLabel == null || label.length() == 0 ? getString("_UI_PropertyMediator_type") : "Property";
         }
+
+        String formattedString = null;
+        if (newProperty.equalsIgnoreCase(((PropertyMediator) object).getPropertyName().getName())) {
+            if (((PropertyMediator) object).getNewPropertyName() == null
+                    || ((PropertyMediator) object).getNewPropertyName().isEmpty()) {
+                propertyName = StringUtils.rightPad("", maxLength);
+            } else {
+                propertyName = StringUtils.rightPad(((PropertyMediator) object).getNewPropertyName(), maxLength);
+            }
+        } else {
+            if (((PropertyMediator) object).getPropertyName() == null
+                    || ((PropertyMediator) object).getPropertyName().getName().isEmpty()) {
+                propertyName = StringUtils.rightPad("", maxLength);
+            }
+        }
+        if (((PropertyMediator) object).getValue() == null || ((PropertyMediator) object).getValue().isEmpty()) {
+            propertyValue = StringUtils.rightPad("", maxLength);
+        }
+        if (PropertyValueType.LITERAL.getName().equals(propertyValueType)) {
+            formattedString = StringUtils.rightPad("", marginSpaceLeft)
+                    + StringUtils.abbreviate(propertyName, maxLength) + emptySpace + StringUtils
+                            .abbreviate(StringUtils.rightPad(propertyValueType, propertyTypeLength),
+                                    propertyTypeLength)
+                    + emptySpace + StringUtils.abbreviate(propertyValue, maxLength);
+        } else {
+            formattedString = StringUtils.rightPad("", marginSpaceLeft)
+                    + StringUtils.abbreviate(propertyName, maxLength) + emptySpace + StringUtils
+                            .abbreviate(StringUtils.rightPad(propertyValueType, propertyTypeLength),
+                                    propertyTypeLength)
+                    + emptySpace + StringUtils.abbreviate(propertyExpression, maxLength);
+        }
+        return formattedString;
     }
 
     /**

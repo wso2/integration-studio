@@ -71,6 +71,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.parts.ClassMediatorPropertiesEdi
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.developerstudio.eclipse.gmf.esb.util.FontUtils;
 
 // End of user code
 
@@ -439,6 +440,7 @@ public class ClassMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
 		this.properties.setLayoutData(propertiesData);
 		this.properties.setLowerBound(0);
 		this.properties.setUpperBound(-1);
+		this.properties.getTable().setFont(FontUtils.getMonospacedFont());
 		properties.setID(EsbViewsRepository.ClassMediator.Properties.properties_);
 		properties.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
 		// Start of user code for createPropertiesTableComposition

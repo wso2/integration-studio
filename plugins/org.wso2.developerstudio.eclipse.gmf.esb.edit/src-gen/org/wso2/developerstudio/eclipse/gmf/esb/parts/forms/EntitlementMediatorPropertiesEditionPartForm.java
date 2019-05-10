@@ -60,6 +60,8 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
 import org.eclipse.ui.forms.widgets.Form;
@@ -638,12 +640,20 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
         Control callbackHandlerLabel = createDescription(parent,
                 EsbViewsRepository.EntitlementMediator.Properties.callbackHandler,
                 EsbMessages.EntitlementMediatorPropertiesEditionPart_CallbackHandlerLabel);
-        callbackHandler = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+        callbackHandler = new EMFComboViewer(parent);
         callbackHandler.setContentProvider(new ArrayContentProvider());
         callbackHandler
                 .setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
         GridData callbackHandlerData = new GridData(GridData.FILL_HORIZONTAL);
         callbackHandler.getCombo().setLayoutData(callbackHandlerData);
+        callbackHandler.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+            @Override
+            public void handleEvent(Event arg0) {
+                arg0.doit = false;
+
+            }
+        });
         callbackHandler.addSelectionChangedListener(new ISelectionChangedListener() {
 
             /**
@@ -919,12 +929,20 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
         Control entitlementClientTypeLabel = createDescription(parent,
                 EsbViewsRepository.EntitlementMediator.Properties.entitlementClientType,
                 EsbMessages.EntitlementMediatorPropertiesEditionPart_EntitlementClientTypeLabel);
-        entitlementClientType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+        entitlementClientType = new EMFComboViewer(parent);
         entitlementClientType.setContentProvider(new ArrayContentProvider());
         entitlementClientType
                 .setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
         GridData entitlementClientTypeData = new GridData(GridData.FILL_HORIZONTAL);
         entitlementClientType.getCombo().setLayoutData(entitlementClientTypeData);
+        entitlementClientType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+            @Override
+            public void handleEvent(Event arg0) {
+                arg0.doit = false;
+
+            }
+        });
         entitlementClientType.addSelectionChangedListener(new ISelectionChangedListener() {
 
             /**

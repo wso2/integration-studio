@@ -67,6 +67,8 @@ import org.eclipse.swt.layout.GridLayout;
 
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Text;
 
@@ -394,11 +396,18 @@ public class TemplatePropertiesEditionPartForm extends SectionPropertiesEditingP
 	 */
 	protected Composite createTemplateTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control templateTypeLabel = createDescription(parent, EsbViewsRepository.Template.Properties.templateType, EsbMessages.TemplatePropertiesEditionPart_TemplateTypeLabel);
-		templateType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		templateType = new EMFComboViewer(parent);
 		templateType.setContentProvider(new ArrayContentProvider());
 		templateType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData templateTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		templateType.getCombo().setLayoutData(templateTypeData);
+                templateType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		templateType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

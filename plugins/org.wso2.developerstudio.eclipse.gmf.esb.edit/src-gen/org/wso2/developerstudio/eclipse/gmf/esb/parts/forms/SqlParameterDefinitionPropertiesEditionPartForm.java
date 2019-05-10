@@ -49,6 +49,8 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
 import org.eclipse.ui.forms.widgets.Form;
@@ -173,11 +175,18 @@ public class SqlParameterDefinitionPropertiesEditionPartForm extends SectionProp
 	 */
 	protected Composite createDataTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.SqlParameterDefinition.Properties.dataType, EsbMessages.SqlParameterDefinitionPropertiesEditionPart_DataTypeLabel);
-		dataType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		dataType = new EMFComboViewer(parent);
 		dataType.setContentProvider(new ArrayContentProvider());
 		dataType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData dataTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		dataType.getCombo().setLayoutData(dataTypeData);
+                dataType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		dataType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -205,11 +214,18 @@ public class SqlParameterDefinitionPropertiesEditionPartForm extends SectionProp
 	 */
 	protected Composite createValueTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.SqlParameterDefinition.Properties.valueType, EsbMessages.SqlParameterDefinitionPropertiesEditionPart_ValueTypeLabel);
-		valueType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		valueType = new EMFComboViewer(parent);
 		valueType.setContentProvider(new ArrayContentProvider());
 		valueType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData valueTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		valueType.getCombo().setLayoutData(valueTypeData);
+                valueType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		valueType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

@@ -56,6 +56,8 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
@@ -324,13 +326,24 @@ public class CacheMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
     return typeGroup;
   }
 
+    /**
+     * @generated NOT
+     */
     protected Composite createCacheMediatorImplementationEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
     Control cacheTypeDescription = createDescription(parent, EsbViewsRepository.CacheMediator.Type.cacheMediatorImplementation, EsbMessages.CacheMediatorPropertiesEditionPart_CacheMediatorImplementationLabel);
-    cacheMediatorImplementation = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+    cacheMediatorImplementation = new EMFComboViewer(parent);
     cacheMediatorImplementation.setContentProvider(new ArrayContentProvider());
     cacheMediatorImplementation.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
     GridData cacheMediatorImplementationData = new GridData(GridData.FILL_HORIZONTAL);
     cacheMediatorImplementation.getCombo().setLayoutData(cacheMediatorImplementationData);
+    cacheMediatorImplementation.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+        @Override
+        public void handleEvent(Event arg0) {
+            arg0.doit = false;
+
+        }
+    });
     cacheMediatorImplementation.addSelectionChangedListener(new ISelectionChangedListener() {
 
       /**
@@ -445,11 +458,19 @@ public class CacheMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
     protected Composite createCacheTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
         Control cacheTypeLabel = createDescription(parent, EsbViewsRepository.CacheMediator.Properties.cacheType,
                 EsbMessages.CacheMediatorPropertiesEditionPart_CacheTypeLabel);
-        cacheType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+        cacheType = new EMFComboViewer(parent);
         cacheType.setContentProvider(new ArrayContentProvider());
         cacheType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
         GridData cacheTypeData = new GridData(GridData.FILL_HORIZONTAL);
         cacheType.getCombo().setLayoutData(cacheTypeData);
+        cacheType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+            @Override
+            public void handleEvent(Event arg0) {
+                arg0.doit = false;
+
+            }
+        });
         cacheType.addSelectionChangedListener(new ISelectionChangedListener() {
 
             /**
@@ -478,13 +499,24 @@ public class CacheMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
         return parent;
     }
 
+    /**
+     * @generated NOT
+     */
     protected Composite createScopeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
     Control scopeDescription = createDescription(parent, EsbViewsRepository.CacheMediator.Properties.scope, EsbMessages.CacheMediatorPropertiesEditionPart_ScopeLabel);
-    scope = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+    scope = new EMFComboViewer(parent);
     scope.setContentProvider(new ArrayContentProvider());
     scope.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
     GridData scopeData = new GridData(GridData.FILL_HORIZONTAL);
     scope.getCombo().setLayoutData(scopeData);
+    scope.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+        @Override
+        public void handleEvent(Event arg0) {
+            arg0.doit = false;
+
+        }
+    });
     scope.addSelectionChangedListener(new ISelectionChangedListener() {
 
       /**
@@ -891,13 +923,24 @@ public class CacheMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
         return parent;
     }
 
+    /**
+     * @generated NOT
+     */
     protected Composite createImplementationTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
     Control implementationTypeDescription = createDescription(parent, EsbViewsRepository.CacheMediator.Implementation.implementationType, EsbMessages.CacheMediatorPropertiesEditionPart_ImplementationTypeLabel);
-    implementationType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+    implementationType = new EMFComboViewer(parent);
     implementationType.setContentProvider(new ArrayContentProvider());
     implementationType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
     GridData implementationTypeData = new GridData(GridData.FILL_HORIZONTAL);
     implementationType.getCombo().setLayoutData(implementationTypeData);
+    implementationType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+        @Override
+        public void handleEvent(Event arg0) {
+            arg0.doit = false;
+
+        }
+    });
     implementationType.addSelectionChangedListener(new ISelectionChangedListener() {
 
       /**
@@ -1032,12 +1075,20 @@ public class CacheMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
     protected Composite createSequenceTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
         Control sequenceTypeLabel = createDescription(parent, EsbViewsRepository.CacheMediator.OnCacheHit.sequenceType,
                 EsbMessages.CacheMediatorPropertiesEditionPart_SequenceTypeLabel);
-        sequenceType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+        sequenceType = new EMFComboViewer(parent);
         sequenceType.setContentProvider(new ArrayContentProvider());
         sequenceType
                 .setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
         GridData sequenceTypeData = new GridData(GridData.FILL_HORIZONTAL);
         sequenceType.getCombo().setLayoutData(sequenceTypeData);
+        sequenceType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+            @Override
+            public void handleEvent(Event arg0) {
+                arg0.doit = false;
+
+            }
+        });
         sequenceType.addSelectionChangedListener(new ISelectionChangedListener() {
 
             /**
@@ -1092,12 +1143,20 @@ public class CacheMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
         Control cacheProtocolTypeLabel = createDescription(parent,
                 EsbViewsRepository.CacheMediator.Protocol.cacheProtocolType,
                 EsbMessages.CacheMediatorPropertiesEditionPart_CacheProtocolTypeLabel);
-        cacheProtocolType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+        cacheProtocolType = new EMFComboViewer(parent);
         cacheProtocolType.setContentProvider(new ArrayContentProvider());
         cacheProtocolType
                 .setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
         GridData cacheProtocolTypeData = new GridData(GridData.FILL_HORIZONTAL);
         cacheProtocolType.getCombo().setLayoutData(cacheProtocolTypeData);
+        cacheProtocolType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+            @Override
+            public void handleEvent(Event arg0) {
+                arg0.doit = false;
+
+            }
+        });
         cacheProtocolType.addSelectionChangedListener(new ISelectionChangedListener() {
 
             /**

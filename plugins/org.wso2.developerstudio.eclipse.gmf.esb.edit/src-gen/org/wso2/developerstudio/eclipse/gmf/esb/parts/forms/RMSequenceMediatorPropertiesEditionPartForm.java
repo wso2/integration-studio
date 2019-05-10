@@ -57,6 +57,8 @@ import org.eclipse.swt.layout.GridLayout;
 
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
 import org.eclipse.ui.forms.widgets.Form;
@@ -330,11 +332,18 @@ public class RMSequenceMediatorPropertiesEditionPartForm extends SectionProperti
 	 */
 	protected Composite createRmSpecVersionEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.RMSequenceMediator.Properties.rmSpecVersion, EsbMessages.RMSequenceMediatorPropertiesEditionPart_RmSpecVersionLabel);
-		rmSpecVersion = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		rmSpecVersion = new EMFComboViewer(parent);
 		rmSpecVersion.setContentProvider(new ArrayContentProvider());
 		rmSpecVersion.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData rmSpecVersionData = new GridData(GridData.FILL_HORIZONTAL);
 		rmSpecVersion.getCombo().setLayoutData(rmSpecVersionData);
+                rmSpecVersion.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		rmSpecVersion.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -362,11 +371,18 @@ public class RMSequenceMediatorPropertiesEditionPartForm extends SectionProperti
 	 */
 	protected Composite createSequenceTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.RMSequenceMediator.Properties.sequenceType, EsbMessages.RMSequenceMediatorPropertiesEditionPart_SequenceTypeLabel);
-		sequenceType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		sequenceType = new EMFComboViewer(parent);
 		sequenceType.setContentProvider(new ArrayContentProvider());
 		sequenceType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData sequenceTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		sequenceType.getCombo().setLayoutData(sequenceTypeData);
+                sequenceType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		sequenceType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

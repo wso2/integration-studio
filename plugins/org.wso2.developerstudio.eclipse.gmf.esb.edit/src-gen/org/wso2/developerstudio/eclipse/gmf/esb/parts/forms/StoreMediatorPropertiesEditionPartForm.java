@@ -69,6 +69,8 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IEditorPart;
@@ -463,7 +465,7 @@ public class StoreMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
     protected Composite createAvailableMessageStoresText(FormToolkit widgetFactory, Composite parent) {
         Control availableMessageStoresLabel = createDescription(parent, EsbViewsRepository.StoreMediator.Properties.availableMessageStores, EsbMessages.StoreMediatorPropertiesEditionPart_AvailableMessageStoresLabel);
         
-        availableMessageStores = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+        availableMessageStores = new EMFComboViewer(parent);
         availableMessageStores.setContentProvider(new ArrayContentProvider());
         availableMessageStores.setInput(getAvailableArtifactListFromProject(parent));
         availableMessageStores.getCombo().select(0);
@@ -471,7 +473,13 @@ public class StoreMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
         widgetFactory.paintBordersFor(parent);
         GridData availableMessageStoresData = new GridData(GridData.FILL_HORIZONTAL);
         availableMessageStores.getCombo().setLayoutData(availableMessageStoresData);
+        availableMessageStores.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
+            @Override
+            public void handleEvent(Event arg0) {
+                arg0.doit = false;
+            }
+        });
         EditingUtils.setID(availableMessageStores.getCombo(), EsbViewsRepository.StoreMediator.Properties.availableMessageStores);
         EditingUtils.setEEFtype(availableMessageStores.getCombo(), "eef::Text"); //$NON-NLS-1$
         Control availableMessageStoreHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.StoreMediator.Properties.availableMessageStores, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$

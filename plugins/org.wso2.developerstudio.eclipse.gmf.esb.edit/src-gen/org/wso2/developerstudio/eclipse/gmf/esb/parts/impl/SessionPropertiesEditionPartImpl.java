@@ -39,8 +39,9 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Group;
-
+import org.eclipse.swt.widgets.Listener;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.SessionPropertiesEditionPart;
 
@@ -133,11 +134,18 @@ public class SessionPropertiesEditionPartImpl extends CompositePropertiesEdition
 	 */
 	protected Composite createTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.Session.Properties.type, EsbMessages.SessionPropertiesEditionPart_TypeLabel);
-		type = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		type = new EMFComboViewer(parent);
 		type.setContentProvider(new ArrayContentProvider());
 		type.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData typeData = new GridData(GridData.FILL_HORIZONTAL);
 		type.getCombo().setLayoutData(typeData);
+                type.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		type.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

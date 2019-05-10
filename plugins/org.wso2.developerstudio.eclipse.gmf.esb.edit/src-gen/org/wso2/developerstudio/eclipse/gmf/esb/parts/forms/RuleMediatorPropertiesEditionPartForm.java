@@ -76,6 +76,8 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
 import org.eclipse.ui.forms.widgets.Form;
@@ -1218,11 +1220,18 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	protected Composite createTargetActionEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 	    Control [] previousControls = targetGroup.getChildren();
 		createDescription(parent, EsbViewsRepository.RuleMediator.Target.targetAction, EsbMessages.RuleMediatorPropertiesEditionPart_TargetActionLabel);
-		targetAction = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		targetAction = new EMFComboViewer(parent);
 		targetAction.setContentProvider(new ArrayContentProvider());
 		targetAction.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData targetActionData = new GridData(GridData.FILL_HORIZONTAL);
 		targetAction.getCombo().setLayoutData(targetActionData);
+                targetAction.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		targetAction.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -1269,11 +1278,18 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	protected Composite createRuleSetTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 	    Control [] previousControls = ruleSetGroup.getChildren();
 	    createDescription(parent, EsbViewsRepository.RuleMediator.RuleSet.ruleSetType, EsbMessages.RuleMediatorPropertiesEditionPart_RuleSetTypeLabel);
-		ruleSetType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		ruleSetType = new EMFComboViewer(parent);
 		ruleSetType.setContentProvider(new ArrayContentProvider());
 		ruleSetType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData ruleSetTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		ruleSetType.getCombo().setLayoutData(ruleSetTypeData);
+                ruleSetType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		ruleSetType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -1375,11 +1391,18 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	protected Composite createRuleSetSourceTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 	    Control [] previousControls = ruleSetGroup.getChildren();
         createDescription(parent, EsbViewsRepository.RuleMediator.RuleSet.ruleSetSourceType, EsbMessages.RuleMediatorPropertiesEditionPart_RuleSetSourceTypeLabel);
-		ruleSetSourceType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		ruleSetSourceType = new EMFComboViewer(parent);
 		ruleSetSourceType.setContentProvider(new ArrayContentProvider());
 		ruleSetSourceType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData ruleSetSourceTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		ruleSetSourceType.getCombo().setLayoutData(ruleSetSourceTypeData);
+                ruleSetSourceType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		ruleSetSourceType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

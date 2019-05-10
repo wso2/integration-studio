@@ -53,7 +53,9 @@ import org.eclipse.swt.layout.GridLayout;
 
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Group;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
@@ -188,11 +190,18 @@ public class ValidateSchemaPropertiesEditionPartImpl extends CompositeProperties
      */
 	protected Composite createValidateSchemaKeyTypeEMFComboViewer(Composite parent) {
 		Control itemLabel = createDescription(parent, EsbViewsRepository.ValidateSchema.Properties.validateSchemaKeyType, EsbMessages.ValidateSchemaPropertiesEditionPart_ValidateSchemaKeyTypeLabel);
-		validateSchemaKeyType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		validateSchemaKeyType = new EMFComboViewer(parent);
 		validateSchemaKeyType.setContentProvider(new ArrayContentProvider());
 		validateSchemaKeyType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData validateSchemaKeyTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		validateSchemaKeyType.getCombo().setLayoutData(validateSchemaKeyTypeData);
+                validateSchemaKeyType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		validateSchemaKeyType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

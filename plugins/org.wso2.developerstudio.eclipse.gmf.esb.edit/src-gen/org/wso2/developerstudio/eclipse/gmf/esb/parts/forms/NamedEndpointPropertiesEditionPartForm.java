@@ -72,6 +72,8 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
 import org.eclipse.ui.forms.widgets.Form;
@@ -793,14 +795,23 @@ public class NamedEndpointPropertiesEditionPartForm extends SectionPropertiesEdi
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createAddressingVersionEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.NamedEndpoint.Properties.addressingVersion, EsbMessages.NamedEndpointPropertiesEditionPart_AddressingVersionLabel);
-		addressingVersion = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		addressingVersion = new EMFComboViewer(parent);
 		addressingVersion.setContentProvider(new ArrayContentProvider());
 		addressingVersion.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData addressingVersionData = new GridData(GridData.FILL_HORIZONTAL);
 		addressingVersion.getCombo().setLayoutData(addressingVersionData);
+                addressingVersion.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		addressingVersion.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -920,14 +931,23 @@ public class NamedEndpointPropertiesEditionPartForm extends SectionPropertiesEdi
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createTimeOutActionEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.NamedEndpoint.Properties.timeOutAction, EsbMessages.NamedEndpointPropertiesEditionPart_TimeOutActionLabel);
-		timeOutAction = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		timeOutAction = new EMFComboViewer(parent);
 		timeOutAction.setContentProvider(new ArrayContentProvider());
 		timeOutAction.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData timeOutActionData = new GridData(GridData.FILL_HORIZONTAL);
 		timeOutAction.getCombo().setLayoutData(timeOutActionData);
+                timeOutAction.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		timeOutAction.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -1426,14 +1446,23 @@ public class NamedEndpointPropertiesEditionPartForm extends SectionPropertiesEdi
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createFormatEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.NamedEndpoint.Properties.format, EsbMessages.NamedEndpointPropertiesEditionPart_FormatLabel);
-		format = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		format = new EMFComboViewer(parent);
 		format.setContentProvider(new ArrayContentProvider());
 		format.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData formatData = new GridData(GridData.FILL_HORIZONTAL);
 		format.getCombo().setLayoutData(formatData);
+                format.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		format.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -1456,14 +1485,23 @@ public class NamedEndpointPropertiesEditionPartForm extends SectionPropertiesEdi
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createOptimizeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.NamedEndpoint.Properties.optimize, EsbMessages.NamedEndpointPropertiesEditionPart_OptimizeLabel);
-		optimize = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		optimize = new EMFComboViewer(parent);
 		optimize.setContentProvider(new ArrayContentProvider());
 		optimize.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData optimizeData = new GridData(GridData.FILL_HORIZONTAL);
 		optimize.getCombo().setLayoutData(optimizeData);
+                optimize.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		optimize.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -1668,11 +1706,18 @@ public class NamedEndpointPropertiesEditionPartForm extends SectionPropertiesEdi
      */
 	protected Composite createReferringEndpointTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control referringEndpointTypeLabel = createDescription(parent, EsbViewsRepository.NamedEndpoint.Properties.referringEndpointType, EsbMessages.NamedEndpointPropertiesEditionPart_ReferringEndpointTypeLabel);
-		referringEndpointType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		referringEndpointType = new EMFComboViewer(parent);
 		referringEndpointType.setContentProvider(new ArrayContentProvider());
 		referringEndpointType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData referringEndpointTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		referringEndpointType.getCombo().setLayoutData(referringEndpointTypeData);
+                referringEndpointType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		referringEndpointType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

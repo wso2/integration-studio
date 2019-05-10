@@ -50,7 +50,9 @@ import org.eclipse.swt.layout.GridLayout;
 
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Group;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
@@ -241,11 +243,18 @@ public class CommandPropertyPropertiesEditionPartImpl extends CompositePropertie
 	 */
 	protected Composite createValueTypeEMFComboViewer(Composite parent) {
 		Control valueTypeLabel = createDescription(parent, EsbViewsRepository.CommandProperty.Properties.valueType, EsbMessages.CommandPropertyPropertiesEditionPart_ValueTypeLabel);
-		valueType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		valueType = new EMFComboViewer(parent);
 		valueType.setContentProvider(new ArrayContentProvider());
 		valueType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData valueTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		valueType.getCombo().setLayoutData(valueTypeData);
+                valueType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		valueType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -377,11 +386,18 @@ public class CommandPropertyPropertiesEditionPartImpl extends CompositePropertie
 	 */
 	protected Composite createContextActionEMFComboViewer(Composite parent) {
 		Control contextActionLabel = createDescription(parent, EsbViewsRepository.CommandProperty.Properties.contextAction, EsbMessages.CommandPropertyPropertiesEditionPart_ContextActionLabel);
-		contextAction = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		contextAction = new EMFComboViewer(parent);
 		contextAction.setContentProvider(new ArrayContentProvider());
 		contextAction.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData contextActionData = new GridData(GridData.FILL_HORIZONTAL);
 		contextAction.getCombo().setLayoutData(contextActionData);
+                contextAction.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		contextAction.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -409,11 +425,18 @@ public class CommandPropertyPropertiesEditionPartImpl extends CompositePropertie
 	 */
 	protected Composite createMessageActionEMFComboViewer(Composite parent) {
 		Control messageActionLabel = createDescription(parent, EsbViewsRepository.CommandProperty.Properties.messageAction, EsbMessages.CommandPropertyPropertiesEditionPart_MessageActionLabel);
-		messageAction = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		messageAction = new EMFComboViewer(parent);
 		messageAction.setContentProvider(new ArrayContentProvider());
 		messageAction.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData messageActionData = new GridData(GridData.FILL_HORIZONTAL);
 		messageAction.getCombo().setLayoutData(messageActionData);
+                messageAction.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		messageAction.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

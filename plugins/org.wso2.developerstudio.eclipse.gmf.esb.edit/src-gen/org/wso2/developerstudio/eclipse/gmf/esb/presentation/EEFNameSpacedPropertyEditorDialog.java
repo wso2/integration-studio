@@ -379,6 +379,11 @@ public class EEFNameSpacedPropertyEditorDialog extends Dialog {
      */
     private String operatingSystemType;
     
+    /**
+     * Browser view for expression help.
+     */
+    private Browser exprBrowserView;
+    
     private static final String EMPTY_STRING = "";
     private static final String SOURCE_VIEW_INFO_LABEL_TEXT = "Switch to 'Visual' tab to see a graphical "
             + "view of the XML content";
@@ -760,7 +765,7 @@ public class EEFNameSpacedPropertyEditorDialog extends Dialog {
             exprEvaluatorGroup.setVisible(false);
         }
         
-        Browser exprBrowserView = new Browser(exprEvaluatorGroup, SWT.NONE);
+        exprBrowserView = new Browser(exprEvaluatorGroup, SWT.NONE);
         {
             FormData exprBrowserViewLayoutData = new FormData();
             exprBrowserViewLayoutData.top = new FormAttachment(2);
@@ -774,7 +779,7 @@ public class EEFNameSpacedPropertyEditorDialog extends Dialog {
             exprBrowserViewLayout.marginWidth = 5;
             exprBrowserViewLayout.marginHeight = 5;
             exprBrowserView.setLayout(exprBrowserViewLayout);
-        	
+            
         	URL url;
             try {
                 url = new URL(EXPR_HELP_HTML_FILE_PATH);
@@ -788,6 +793,7 @@ public class EEFNameSpacedPropertyEditorDialog extends Dialog {
         			html += inputLine;
         		}
         		
+        		exprBrowserView.setBounds(100, 100, 1000, 800);
         		exprBrowserView.setText(html);
         		in.close();
             } catch (IOException e) {

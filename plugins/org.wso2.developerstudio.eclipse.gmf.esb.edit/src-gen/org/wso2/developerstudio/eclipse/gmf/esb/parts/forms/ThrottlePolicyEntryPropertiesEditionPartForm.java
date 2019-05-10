@@ -49,6 +49,8 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
 import org.eclipse.ui.forms.widgets.Form;
@@ -180,11 +182,18 @@ public class ThrottlePolicyEntryPropertiesEditionPartForm extends SectionPropert
 	 */
 	protected Composite createThrottleTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.ThrottlePolicyEntry.Properties.throttleType, EsbMessages.ThrottlePolicyEntryPropertiesEditionPart_ThrottleTypeLabel);
-		throttleType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		throttleType = new EMFComboViewer(parent);
 		throttleType.setContentProvider(new ArrayContentProvider());
 		throttleType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData throttleTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		throttleType.getCombo().setLayoutData(throttleTypeData);
+                throttleType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		throttleType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -280,11 +289,18 @@ public class ThrottlePolicyEntryPropertiesEditionPartForm extends SectionPropert
 	 */
 	protected Composite createAccessTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EsbViewsRepository.ThrottlePolicyEntry.Properties.accessType, EsbMessages.ThrottlePolicyEntryPropertiesEditionPart_AccessTypeLabel);
-		accessType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		accessType = new EMFComboViewer(parent);
 		accessType.setContentProvider(new ArrayContentProvider());
 		accessType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData accessTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		accessType.getCombo().setLayoutData(accessTypeData);
+                accessType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		accessType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

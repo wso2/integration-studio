@@ -68,7 +68,9 @@ import org.eclipse.swt.layout.GridLayout;
 
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Group;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
@@ -500,11 +502,18 @@ public class EJBMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 	 */
 	protected Composite createSessionIdTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.EJBMediator.Properties.sessionIdType, EsbMessages.EJBMediatorPropertiesEditionPart_SessionIdTypeLabel);
-		sessionIdType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		sessionIdType = new EMFComboViewer(parent);
 		sessionIdType.setContentProvider(new ArrayContentProvider());
 		sessionIdType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData sessionIdTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		sessionIdType.getCombo().setLayoutData(sessionIdTypeData);
+                sessionIdType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		sessionIdType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

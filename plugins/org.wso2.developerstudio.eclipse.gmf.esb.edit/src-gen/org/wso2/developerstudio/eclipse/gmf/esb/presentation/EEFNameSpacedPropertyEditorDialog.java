@@ -390,7 +390,7 @@ public class EEFNameSpacedPropertyEditorDialog extends Dialog {
     private static final String SOURCE_TAB_ITEM_TEXT = "Source";
     private static final String NAMESPACES_TAB_ITEM_TEXT = "Namespaces";
     private static final String XML_CONTENT_TAB_ITEM_TEXT = "XML Content";
-    private static final String FILE_RADIO_BUTTON_TEXT = "Load XML file from disk";
+    private static final String FILE_RADIO_BUTTON_TEXT = "Load XML file";
     private static final String INLINE_RADIO_BUTTON_TEXT = "Enter XML";
     private static final String IN_PROGRESS_LABEL_TEXT = "Working...";
     private static final String CANCEL_BUTTON_TEXT = "Cancel";
@@ -566,7 +566,7 @@ public class EEFNameSpacedPropertyEditorDialog extends Dialog {
             	FormData evalTypeComboBoxLayoutData = new FormData();
             	evalTypeComboBoxLayoutData.top = new FormAttachment(1);
             	evalTypeComboBoxLayoutData.left = new FormAttachment(1);
-            	evalTypeComboBoxLayoutData.width = 110;
+            	evalTypeComboBoxLayoutData.width = 125;
             	evalTypeComboBox.setLayoutData(evalTypeComboBoxLayoutData);
             }
             
@@ -657,7 +657,7 @@ public class EEFNameSpacedPropertyEditorDialog extends Dialog {
                 FormData addButtonLayoutData = new FormData();
                 addButtonLayoutData.top = new FormAttachment(nsUriLabel, 0, SWT.CENTER);
                 addButtonLayoutData.right = new FormAttachment(100);
-                addButtonLayoutData.width = 80;
+                addButtonLayoutData.width = 100;
                 addButton.setLayoutData(addButtonLayoutData);
             }
 
@@ -1137,7 +1137,7 @@ public class EEFNameSpacedPropertyEditorDialog extends Dialog {
 					setExprEvaluatorElementsVisibility(false);
 					
 					dialogShell.layout(true, true);
-					dialogShell.setSize(new Point(1050, 120));
+					dialogShell.setSize(new Point(1050, 140));
 					
 				} else {
 					setExprEvaluatorElementsVisibility(true);

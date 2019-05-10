@@ -52,6 +52,7 @@ public class Constants extends NLS {
 	public static String AXIS2_PROJECT_NATURE;
 	public static String BPEL_PROJECT_NATURE;
 	public static String DS_PROJECT_NATURE;
+	public static String DATASOURCE_PROJECT_NATURE;
 	public static String DS_VALIDATOR_PROJECT_NATURE;
 	public static String JAXWS_PROJECT_NATURE;
 	public static String JAXRS_PROJECT_NATURE;
@@ -88,6 +89,7 @@ public class Constants extends NLS {
 		list.add(AXIS2_PROJECT_NATURE);
 		list.add(BPEL_PROJECT_NATURE);
 		list.add(DS_PROJECT_NATURE);
+		list.add(DATASOURCE_PROJECT_NATURE);
 		list.add(DS_VALIDATOR_PROJECT_NATURE);
 		list.add(JAXWS_PROJECT_NATURE);
 		list.add(JAXRS_PROJECT_NATURE);

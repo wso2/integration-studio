@@ -76,14 +76,27 @@ public class PlatformEarlyStartUpHandler implements IStartup {
                     MenuManager menuManager = workbenchWin.getMenuManager();
                     IContributionItem[] items = menuManager.getItems();
 
-                    // The following code will delete the Welcome entry under the Help menu
+                    // The following code will delete selected entries under the Help menu
                     for (int i = 0; i < items.length; i++) {
                         if (items[i] instanceof IMenuManager) {
                             IMenuManager submenu = (IMenuManager) items[i];
+                            // This removes Welcome
                             IContributionItem welcomeItem = submenu.find("intro");
                             if (welcomeItem != null) {
                                 submenu.remove(welcomeItem);
                             }
+                            // This removes Install New Software
+                            IContributionItem installNewSoftwareItem = submenu
+                                    .find("org.eclipse.equinox.p2.ui.sdk.install");
+                            if (installNewSoftwareItem != null) {
+                                submenu.remove(installNewSoftwareItem);
+                            }
+                            // This removes Update
+                            IContributionItem updateItem = submenu.find("org.eclipse.equinox.p2.ui.sdk.update");
+                            if (updateItem != null) {
+                                submenu.remove(updateItem);
+                            }
+
                         }
                     }
 

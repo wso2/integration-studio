@@ -199,7 +199,7 @@ public class RegistryTreeBrowserDialog extends Dialog {
 				dialog.setBlockOnOpen(true);
 
 				dialog.create();
-				dialog.getShell().setSize(350, 174);
+				dialog.getShell().setSize(350, 200);
 				int status = dialog.open();
 				
 				if (status == dialog.OK) {

@@ -14,25 +14,25 @@
                 name="Integration Studio Dashboard"></editor>
     </extension>
         <extension point="org.eclipse.ui.menus">
-        <menuContribution locationURI="menu:org.eclipse.ui.main.menu?before=file">
-            <menu label="Integration Studio"
-                  mnemonic="C"
-                  id="org.wso2.developerstudio.eclipse.platform.ui.main">
-                 <separator
-                        name="separator-id-dashboard-up"
-                        visible="true">
-                 </separator>
-                 <command
-                        commandId="org.wso2.developerstudio.eclipse.platform.ui.commands.opentemplatedashboard"
-                        icon="icons/getting-started.png"
-                        id="org.wso2.developerstudio.eclipse.platform.ui.toolbars.opentemplatedashboard"
-                        label="Getting Started"
-                        tooltip="Open Integration Studio Dashboard">
-                 </command>
-                 <separator
-                        name="separator-id-dashboard-middle"
-                        visible="true">
-                 </separator>
+        <menuContribution locationURI="menu:help?before=helpContents">
+
+
+			<separator name="separator-id-dashboard-up"
+                       visible="true">
+            </separator>
+            
+             <command
+                    commandId="org.wso2.developerstudio.eclipse.platform.ui.commands.opentemplatedashboard"
+                    icon="icons/getting-started.png"
+                    label="Getting Started"
+                    style="push"
+                    tooltip="Open Integration Studio Dashboard">
+             </command>
+
+			<separator name="separator-id-dashboard-up"
+                       visible="true">
+            </separator>
+            
                  <!--command
                         commandId="org.wso2.developerstudio.eclipse.platform.ui.commands.opendashboard"
                         icon="icons/carbon-normal.png"
@@ -44,7 +44,6 @@
                         name="separator-id-dashboard-down"
                         visible="true">
                  </separator -->
-            </menu>
         </menuContribution>
     </extension>
     

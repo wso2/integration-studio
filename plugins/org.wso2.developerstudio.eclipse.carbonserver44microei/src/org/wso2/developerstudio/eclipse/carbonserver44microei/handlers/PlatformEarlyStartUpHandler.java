@@ -102,6 +102,34 @@ public class PlatformEarlyStartUpHandler implements IStartup {
                             if (v8CrhomeRunItem != null) {
                                 submenu.remove(v8CrhomeRunItem);
                             }
+                            // This removes Help Contents
+                            IContributionItem helpContentItem = submenu.find("helpContents");
+                            if (helpContentItem != null) {
+                                submenu.remove(helpContentItem);
+                            }
+                            // This removes Help Search
+                            IContributionItem helpSearchItem = submenu.find("helpSearch");
+                            if (helpSearchItem != null) {
+                                submenu.remove(helpSearchItem);
+                            }           
+                            // This removes Dynamic Help
+                            IContributionItem dynamicHelpItem = submenu.find("dynamicHelp");
+                            if (dynamicHelpItem != null) {
+                                submenu.remove(dynamicHelpItem);
+                            }             
+                            // This removes Tip and Tricks
+                            IContributionItem TipsAndTricksItem = submenu.find("tipsAndTricks");
+                            if (TipsAndTricksItem != null) {
+                                submenu.remove(TipsAndTricksItem);
+                            }             
+                            // This removes Cheet Sheet
+                            IContributionItem cheatSheetItem = submenu
+                                    .find("org.eclipse.ui.cheatsheets.actions.CheatSheetHelpMenuAction");
+                            if (cheatSheetItem != null) {
+                                submenu.remove(cheatSheetItem);
+                            } 
+
+
                         }
                     }
 

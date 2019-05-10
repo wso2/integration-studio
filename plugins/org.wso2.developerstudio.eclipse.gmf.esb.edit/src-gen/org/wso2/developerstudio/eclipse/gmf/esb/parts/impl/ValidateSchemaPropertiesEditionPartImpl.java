@@ -195,13 +195,13 @@ public class ValidateSchemaPropertiesEditionPartImpl extends CompositeProperties
 		validateSchemaKeyType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData validateSchemaKeyTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		validateSchemaKeyType.getCombo().setLayoutData(validateSchemaKeyTypeData);
-               validateSchemaKeyType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                validateSchemaKeyType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		validateSchemaKeyType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

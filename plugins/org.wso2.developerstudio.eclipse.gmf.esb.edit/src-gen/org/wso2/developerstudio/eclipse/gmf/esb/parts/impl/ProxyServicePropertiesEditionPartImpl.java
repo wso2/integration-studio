@@ -744,13 +744,13 @@ public class ProxyServicePropertiesEditionPartImpl extends CompositePropertiesEd
 		endpointType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData endpointTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		endpointType.getCombo().setLayoutData(endpointTypeData);
-               endpointType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                endpointType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		endpointType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -847,13 +847,13 @@ public class ProxyServicePropertiesEditionPartImpl extends CompositePropertiesEd
 		faultSequenceType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData faultSequenceTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		faultSequenceType.getCombo().setLayoutData(faultSequenceTypeData);
-               faultSequenceType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                faultSequenceType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		faultSequenceType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -950,13 +950,13 @@ public class ProxyServicePropertiesEditionPartImpl extends CompositePropertiesEd
 		inSequenceType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData inSequenceTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		inSequenceType.getCombo().setLayoutData(inSequenceTypeData);
-               inSequenceType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                inSequenceType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		inSequenceType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -1053,13 +1053,13 @@ public class ProxyServicePropertiesEditionPartImpl extends CompositePropertiesEd
 		outSequenceType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData outSequenceTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		outSequenceType.getCombo().setLayoutData(outSequenceTypeData);
-               outSequenceType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                outSequenceType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		outSequenceType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -1363,13 +1363,13 @@ public class ProxyServicePropertiesEditionPartImpl extends CompositePropertiesEd
 		wsdlType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData wsdlTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		wsdlType.getCombo().setLayoutData(wsdlTypeData);
-               wsdlType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                wsdlType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		wsdlType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

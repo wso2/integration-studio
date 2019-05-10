@@ -476,13 +476,13 @@ public class AggregateMediatorPropertiesEditionPartImpl extends CompositePropert
 		completionMinMessagesType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData completionMinMessagesTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		completionMinMessagesType.getCombo().setLayoutData(completionMinMessagesTypeData);
-               completionMinMessagesType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                completionMinMessagesType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		completionMinMessagesType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -515,13 +515,13 @@ public class AggregateMediatorPropertiesEditionPartImpl extends CompositePropert
 		completionMaxMessagesType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData completionMaxMessagesTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		completionMaxMessagesType.getCombo().setLayoutData(completionMaxMessagesTypeData);
-               completionMaxMessagesType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                completionMaxMessagesType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		completionMaxMessagesType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -716,13 +716,13 @@ public class AggregateMediatorPropertiesEditionPartImpl extends CompositePropert
 		sequenceType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData sequenceTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		sequenceType.getCombo().setLayoutData(sequenceTypeData);
-               sequenceType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                sequenceType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		sequenceType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

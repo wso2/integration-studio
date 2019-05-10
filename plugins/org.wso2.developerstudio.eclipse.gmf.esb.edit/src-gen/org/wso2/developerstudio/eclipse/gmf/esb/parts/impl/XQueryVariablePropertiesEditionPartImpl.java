@@ -262,13 +262,13 @@ public class XQueryVariablePropertiesEditionPartImpl extends CompositeProperties
 		variableType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData variableTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		variableType.getCombo().setLayoutData(variableTypeData);
-               variableType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                variableType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		variableType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -301,13 +301,13 @@ public class XQueryVariablePropertiesEditionPartImpl extends CompositeProperties
 		valueType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData valueTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		valueType.getCombo().setLayoutData(valueTypeData);
-               valueType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                valueType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		valueType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

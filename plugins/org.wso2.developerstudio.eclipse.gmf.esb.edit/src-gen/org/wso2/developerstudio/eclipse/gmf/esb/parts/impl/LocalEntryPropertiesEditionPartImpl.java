@@ -331,13 +331,13 @@ public class LocalEntryPropertiesEditionPartImpl extends CompositePropertiesEdit
 		localEntryType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData localEntryTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		localEntryType.getCombo().setLayoutData(localEntryTypeData);
-               localEntryType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                localEntryType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		localEntryType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

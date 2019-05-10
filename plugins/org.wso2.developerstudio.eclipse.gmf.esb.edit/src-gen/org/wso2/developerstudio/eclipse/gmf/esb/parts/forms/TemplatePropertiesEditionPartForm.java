@@ -390,13 +390,13 @@ public class TemplatePropertiesEditionPartForm extends SectionPropertiesEditingP
 		templateType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData templateTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		templateType.getCombo().setLayoutData(templateTypeData);
-               templateType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                templateType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		templateType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

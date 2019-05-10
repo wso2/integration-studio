@@ -397,13 +397,13 @@ public class BeanMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 		action.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData actionData = new GridData(GridData.FILL_HORIZONTAL);
 		action.getCombo().setLayoutData(actionData);
-               action.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                action.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		action.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -534,13 +534,13 @@ public class BeanMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 		valueType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData valueTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		valueType.getCombo().setLayoutData(valueTypeData);
-               valueType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                valueType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		valueType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -622,13 +622,13 @@ public class BeanMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 		targetType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData targetTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		targetType.getCombo().setLayoutData(targetTypeData);
-               targetType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                targetType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		targetType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

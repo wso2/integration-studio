@@ -305,13 +305,13 @@ public class FastXSLTMediatorPropertiesEditionPartImpl extends CompositeProperti
 		fastXsltSchemaKeyType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData fastXsltSchemaKeyTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		fastXsltSchemaKeyType.getCombo().setLayoutData(fastXsltSchemaKeyTypeData);
-               fastXsltSchemaKeyType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                fastXsltSchemaKeyType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		fastXsltSchemaKeyType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

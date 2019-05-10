@@ -232,13 +232,13 @@ public class HeaderMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 		headerAction.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData headerActionData = new GridData(GridData.FILL_HORIZONTAL);
 		headerAction.getCombo().setLayoutData(headerActionData);
-               headerAction.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                headerAction.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		headerAction.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -328,13 +328,13 @@ public class HeaderMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 		scope.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData scopeData = new GridData(GridData.FILL_HORIZONTAL);
 		scope.getCombo().setLayoutData(scopeData);
-               scope.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                scope.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		scope.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

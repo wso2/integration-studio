@@ -601,13 +601,13 @@ public class AddressEndPointPropertiesEditionPartImpl extends CompositePropertie
 		format.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData formatData = new GridData(GridData.FILL_HORIZONTAL);
 		format.getCombo().setLayoutData(formatData);
-               format.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                format.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		format.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -1239,13 +1239,13 @@ public class AddressEndPointPropertiesEditionPartImpl extends CompositePropertie
 		optimize.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData optimizeData = new GridData(GridData.FILL_HORIZONTAL);
 		optimize.getCombo().setLayoutData(optimizeData);
-               optimize.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                optimize.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		optimize.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -1432,13 +1432,13 @@ public class AddressEndPointPropertiesEditionPartImpl extends CompositePropertie
 		addressingVersion.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData addressingVersionData = new GridData(GridData.FILL_HORIZONTAL);
 		addressingVersion.getCombo().setLayoutData(addressingVersionData);
-               addressingVersion.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                addressingVersion.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		addressingVersion.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -1565,13 +1565,13 @@ public class AddressEndPointPropertiesEditionPartImpl extends CompositePropertie
 		timeOutAction.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData timeOutActionData = new GridData(GridData.FILL_HORIZONTAL);
 		timeOutAction.getCombo().setLayoutData(timeOutActionData);
-               timeOutAction.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                timeOutAction.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		timeOutAction.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -1619,13 +1619,13 @@ public class AddressEndPointPropertiesEditionPartImpl extends CompositePropertie
 		failoverType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData failoverTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		failoverType.getCombo().setLayoutData(failoverTypeData);
-               failoverType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                failoverType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		failoverType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

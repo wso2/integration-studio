@@ -343,13 +343,13 @@ public class SendMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 		receivingSequenceType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData receivingSequenceTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		receivingSequenceType.getCombo().setLayoutData(receivingSequenceTypeData);
-               receivingSequenceType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                receivingSequenceType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		receivingSequenceType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

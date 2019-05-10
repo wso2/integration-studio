@@ -356,13 +356,13 @@ public class XSLTMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 		xsltSchemaKeyType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData xsltSchemaKeyTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		xsltSchemaKeyType.getCombo().setLayoutData(xsltSchemaKeyTypeData);
-               xsltSchemaKeyType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                xsltSchemaKeyType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		xsltSchemaKeyType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

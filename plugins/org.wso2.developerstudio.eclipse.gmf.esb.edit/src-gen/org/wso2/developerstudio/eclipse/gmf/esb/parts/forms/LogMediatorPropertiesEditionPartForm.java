@@ -195,13 +195,13 @@ public class LogMediatorPropertiesEditionPartForm extends SectionPropertiesEditi
 		logCategory.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData logCategoryData = new GridData(GridData.FILL_HORIZONTAL);
 		logCategory.getCombo().setLayoutData(logCategoryData);
-               logCategory.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                logCategory.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		logCategory.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -234,13 +234,13 @@ public class LogMediatorPropertiesEditionPartForm extends SectionPropertiesEditi
 		logLevel.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData logLevelData = new GridData(GridData.FILL_HORIZONTAL);
 		logLevel.getCombo().setLayoutData(logLevelData);
-               logLevel.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                logLevel.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		logLevel.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

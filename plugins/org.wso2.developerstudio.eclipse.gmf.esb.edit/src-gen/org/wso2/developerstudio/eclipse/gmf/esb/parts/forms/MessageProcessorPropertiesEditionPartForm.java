@@ -490,13 +490,13 @@ public class MessageProcessorPropertiesEditionPartForm extends SectionProperties
 		processorType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData processorTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		processorType.getCombo().setLayoutData(processorTypeData);
-               processorType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                processorType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		processorType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -801,13 +801,13 @@ public class MessageProcessorPropertiesEditionPartForm extends SectionProperties
 		processorState.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData processorStateData = new GridData(GridData.FILL_HORIZONTAL);
 		processorState.getCombo().setLayoutData(processorStateData);
-               processorType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                processorType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		processorState.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -1180,13 +1180,13 @@ public class MessageProcessorPropertiesEditionPartForm extends SectionProperties
 		dropMessageAfterMaximumDeliveryAttempts.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData dropMessageAfterMaximumDeliveryAttemptsData = new GridData(GridData.FILL_HORIZONTAL);
 		dropMessageAfterMaximumDeliveryAttempts.getCombo().setLayoutData(dropMessageAfterMaximumDeliveryAttemptsData);
-               dropMessageAfterMaximumDeliveryAttempts.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                dropMessageAfterMaximumDeliveryAttempts.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		dropMessageAfterMaximumDeliveryAttempts.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

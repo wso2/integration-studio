@@ -422,13 +422,13 @@ public class StoreMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 		specifyAs.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData specifyAsData = new GridData(GridData.FILL_HORIZONTAL);
 		specifyAs.getCombo().setLayoutData(specifyAsData);
-               specifyAs.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                specifyAs.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		specifyAs.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

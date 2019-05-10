@@ -574,13 +574,13 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
 		onAcceptBranchsequenceType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData onAcceptBranchsequenceTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		onAcceptBranchsequenceType.getCombo().setLayoutData(onAcceptBranchsequenceTypeData);
-               onAcceptBranchsequenceType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                onAcceptBranchsequenceType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		onAcceptBranchsequenceType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -627,13 +627,13 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
 		onRejectBranchsequenceType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData onRejectBranchsequenceTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		onRejectBranchsequenceType.getCombo().setLayoutData(onRejectBranchsequenceTypeData);
-               onRejectBranchsequenceType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                onRejectBranchsequenceType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		onRejectBranchsequenceType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -695,13 +695,13 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
 		policyType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData policyTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		policyType.getCombo().setLayoutData(policyTypeData);
-               policyType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                policyType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		policyType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

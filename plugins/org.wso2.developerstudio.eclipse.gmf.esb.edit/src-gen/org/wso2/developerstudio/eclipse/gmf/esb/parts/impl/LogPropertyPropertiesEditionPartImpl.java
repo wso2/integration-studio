@@ -230,13 +230,13 @@ public class LogPropertyPropertiesEditionPartImpl extends CompositePropertiesEdi
 		propertyValueType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData propertyValueTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		propertyValueType.getCombo().setLayoutData(propertyValueTypeData);
-               propertyValueType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                propertyValueType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		propertyValueType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

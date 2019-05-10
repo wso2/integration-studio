@@ -471,13 +471,13 @@ public class CalloutMediatorPropertiesEditionPartImpl extends CompositePropertie
 		endpointType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData endpointTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		endpointType.getCombo().setLayoutData(endpointTypeData);
-               endpointType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                endpointType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		endpointType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

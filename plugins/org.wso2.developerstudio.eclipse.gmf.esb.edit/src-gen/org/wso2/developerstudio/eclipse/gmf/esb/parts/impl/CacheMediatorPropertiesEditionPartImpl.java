@@ -286,13 +286,13 @@ public class CacheMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 		cacheMediatorImplementation.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData cacheMediatorImplementationData = new GridData(GridData.FILL_HORIZONTAL);
 		cacheMediatorImplementation.getCombo().setLayoutData(cacheMediatorImplementationData);
-               cacheMediatorImplementation.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                cacheMediatorImplementation.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		cacheMediatorImplementation.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -389,13 +389,13 @@ public class CacheMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 		cacheType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData cacheTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		cacheType.getCombo().setLayoutData(cacheTypeData);
-               cacheType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                cacheType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		cacheType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -428,13 +428,13 @@ public class CacheMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 		scope.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData scopeData = new GridData(GridData.FILL_HORIZONTAL);
 		scope.getCombo().setLayoutData(scopeData);
-               scope.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                scope.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		scope.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -751,13 +751,13 @@ public class CacheMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 		implementationType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData implementationTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		implementationType.getCombo().setLayoutData(implementationTypeData);
-               implementationType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                implementationType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		implementationType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -805,13 +805,13 @@ public class CacheMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 		sequenceType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData sequenceTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		sequenceType.getCombo().setLayoutData(sequenceTypeData);
-               sequenceType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                sequenceType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		sequenceType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -859,13 +859,13 @@ public class CacheMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 		cacheProtocolType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData cacheProtocolTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		cacheProtocolType.getCombo().setLayoutData(cacheProtocolTypeData);
-               cacheProtocolType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                cacheProtocolType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		cacheProtocolType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

@@ -1742,13 +1742,13 @@ public class AddressEndPointPropertiesEditionPartForm extends SectionPropertiesE
 		addressingVersion.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData addressingVersionData = new GridData(GridData.FILL_HORIZONTAL);
 		addressingVersion.getCombo().setLayoutData(addressingVersionData);
-               addressingVersion.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                addressingVersion.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		addressingVersion.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -1901,12 +1901,13 @@ public class AddressEndPointPropertiesEditionPartForm extends SectionPropertiesE
 		timeOutAction.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData timeOutActionData = new GridData(GridData.FILL_HORIZONTAL);
 		timeOutAction.getCombo().setLayoutData(timeOutActionData);
-               timeOutAction.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                timeOutAction.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		timeOutAction.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

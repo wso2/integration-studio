@@ -318,13 +318,13 @@ public class FilterMediatorPropertiesEditionPartImpl extends CompositeProperties
 		conditionType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData conditionTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		conditionType.getCombo().setLayoutData(conditionTypeData);
-               conditionType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                conditionType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		conditionType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

@@ -193,13 +193,13 @@ public class URLRewriteRuleActionPropertiesEditionPartImpl extends CompositeProp
 		ruleAction.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData ruleActionData = new GridData(GridData.FILL_HORIZONTAL);
 		ruleAction.getCombo().setLayoutData(ruleActionData);
-               ruleAction.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                ruleAction.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		ruleAction.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -233,13 +233,13 @@ public class URLRewriteRuleActionPropertiesEditionPartImpl extends CompositeProp
 		ruleFragment.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData ruleFragmentData = new GridData(GridData.FILL_HORIZONTAL);
 		ruleFragment.getCombo().setLayoutData(ruleFragmentData);
-               ruleFragment.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                ruleFragment.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		ruleFragment.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -273,13 +273,13 @@ public class URLRewriteRuleActionPropertiesEditionPartImpl extends CompositeProp
 		ruleOption.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData ruleOptionData = new GridData(GridData.FILL_HORIZONTAL);
 		ruleOption.getCombo().setLayoutData(ruleOptionData);
-               ruleOption.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                ruleOption.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		ruleOption.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

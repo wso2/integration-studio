@@ -399,13 +399,13 @@ public class FaultMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 		soapVersion.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData soapVersionData = new GridData(GridData.FILL_HORIZONTAL);
 		soapVersion.getCombo().setLayoutData(soapVersionData);
-               soapVersion.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                soapVersion.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		soapVersion.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -498,13 +498,13 @@ public class FaultMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 		faultCodeSoap11.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData faultCodeSoap11Data = new GridData(GridData.FILL_HORIZONTAL);
 		faultCodeSoap11.getCombo().setLayoutData(faultCodeSoap11Data);
-               faultCodeSoap11.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                faultCodeSoap11.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		faultCodeSoap11.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -537,13 +537,13 @@ public class FaultMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 		faultCodeType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData faultCodeTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		faultCodeType.getCombo().setLayoutData(faultCodeTypeData);
-               faultCodeType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                faultCodeType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		faultCodeType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -576,13 +576,13 @@ public class FaultMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 		faultStringType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData faultStringTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		faultStringType.getCombo().setLayoutData(faultStringTypeData);
-               faultStringType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                faultStringType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		faultStringType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -713,13 +713,13 @@ public class FaultMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 		faultCodeSoap12.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData faultCodeSoap12Data = new GridData(GridData.FILL_HORIZONTAL);
 		faultCodeSoap12.getCombo().setLayoutData(faultCodeSoap12Data);
-               faultCodeSoap12.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                faultCodeSoap12.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		faultCodeSoap12.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -752,13 +752,13 @@ public class FaultMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 		faultReasonType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData faultReasonTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		faultReasonType.getCombo().setLayoutData(faultReasonTypeData);
-               faultReasonType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                faultReasonType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		faultReasonType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -938,13 +938,13 @@ public class FaultMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 		faultDetailType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData faultDetailTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		faultDetailType.getCombo().setLayoutData(faultDetailTypeData);
-               faultDetailType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                faultDetailType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		faultDetailType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

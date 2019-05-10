@@ -566,13 +566,13 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
 		endpointType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData endpointTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		endpointType.getCombo().setLayoutData(endpointTypeData);
-               endpointType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                endpointType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		endpointType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -942,13 +942,13 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
 		payloadType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData payloadTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		payloadType.getCombo().setLayoutData(payloadTypeData);
-               payloadType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                payloadType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		payloadType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -1076,13 +1076,13 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
 		resultType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData resultTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		resultType.getCombo().setLayoutData(resultTypeData);
-               resultType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                resultType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		resultType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -1211,13 +1211,13 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
 		policies.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData policiesData = new GridData(GridData.FILL_HORIZONTAL);
 		policies.getCombo().setLayoutData(policiesData);
-               policies.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                policies.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		policies.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -1258,13 +1258,13 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
 		securityType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData securityTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		securityType.getCombo().setLayoutData(securityTypeData);
-               securityType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                securityType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		securityType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

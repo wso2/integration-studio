@@ -412,13 +412,13 @@ public class EnrichMediatorPropertiesEditionPartImpl extends CompositeProperties
 		sourceType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData sourceTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		sourceType.getCombo().setLayoutData(sourceTypeData);
-               sourceType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                sourceType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		sourceType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -451,13 +451,13 @@ public class EnrichMediatorPropertiesEditionPartImpl extends CompositeProperties
 		inlineType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData inlineTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		inlineType.getCombo().setLayoutData(inlineTypeData);
-               inlineType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                inlineType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		inlineType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -603,13 +603,13 @@ public class EnrichMediatorPropertiesEditionPartImpl extends CompositeProperties
 		targetAction.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData targetActionData = new GridData(GridData.FILL_HORIZONTAL);
 		targetAction.getCombo().setLayoutData(targetActionData);
-               targetAction.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                targetAction.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		targetAction.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -642,13 +642,13 @@ public class EnrichMediatorPropertiesEditionPartImpl extends CompositeProperties
 		targetType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData targetTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		targetType.getCombo().setLayoutData(targetTypeData);
-               targetType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                targetType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		targetType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

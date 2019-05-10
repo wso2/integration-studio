@@ -258,13 +258,13 @@ public class PublishEventMediatorAttributePropertiesEditionPartForm extends Sect
 		attributeValueType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData attributeValueTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		attributeValueType.getCombo().setLayoutData(attributeValueTypeData);
-               attributeValueType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                attributeValueType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		attributeValueType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -365,13 +365,13 @@ public class PublishEventMediatorAttributePropertiesEditionPartForm extends Sect
 		attributeType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData attributeTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		attributeType.getCombo().setLayoutData(attributeTypeData);
-               attributeType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                attributeType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		attributeType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

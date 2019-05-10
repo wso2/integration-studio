@@ -415,13 +415,13 @@ public class TaskPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		triggerType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData triggerTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		triggerType.getCombo().setLayoutData(triggerTypeData);
-               triggerType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                triggerType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		triggerType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

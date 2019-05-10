@@ -801,13 +801,13 @@ public class LoadBalanceEndPointPropertiesEditionPartImpl extends CompositePrope
 		sessionType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData sessionTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		sessionType.getCombo().setLayoutData(sessionTypeData);
-               sessionType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                sessionType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		sessionType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

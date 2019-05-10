@@ -480,13 +480,13 @@ public class ForEachMediatorPropertiesEditionPartForm extends SectionPropertiesE
 		sequenceType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData sequenceTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		sequenceType.getCombo().setLayoutData(sequenceTypeData);
-               sequenceType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                sequenceType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		sequenceType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

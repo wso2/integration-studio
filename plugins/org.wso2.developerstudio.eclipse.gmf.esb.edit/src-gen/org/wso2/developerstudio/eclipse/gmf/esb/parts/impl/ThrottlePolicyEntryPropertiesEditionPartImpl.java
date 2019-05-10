@@ -173,13 +173,13 @@ public class ThrottlePolicyEntryPropertiesEditionPartImpl extends CompositePrope
 		throttleType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData throttleTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		throttleType.getCombo().setLayoutData(throttleTypeData);
-               throttleType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                throttleType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		throttleType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -261,13 +261,13 @@ public class ThrottlePolicyEntryPropertiesEditionPartImpl extends CompositePrope
 		accessType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData accessTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		accessType.getCombo().setLayoutData(accessTypeData);
-               accessType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                accessType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		accessType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

@@ -1394,13 +1394,13 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 		type.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData typeData = new GridData(GridData.FILL_HORIZONTAL);
 		type.getCombo().setLayoutData(typeData);
-               type.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                type.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		type.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -1531,13 +1531,13 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 		inboundEndpointBehaviour.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData inboundEndpointBehaviourData = new GridData(GridData.FILL_HORIZONTAL);
 		inboundEndpointBehaviour.getCombo().setLayoutData(inboundEndpointBehaviourData);
-               inboundEndpointBehaviour.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                inboundEndpointBehaviour.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		inboundEndpointBehaviour.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -2365,13 +2365,13 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 		transportVFSLocking.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData transportVFSLockingData = new GridData(GridData.FILL_HORIZONTAL);
 		transportVFSLocking.getCombo().setLayoutData(transportVFSLockingData);
-               transportVFSLocking.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                transportVFSLocking.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		transportVFSLocking.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -2679,13 +2679,13 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 		transportVFSActionAfterProcess.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData transportVFSActionAfterProcessData = new GridData(GridData.FILL_HORIZONTAL);
 		transportVFSActionAfterProcess.getCombo().setLayoutData(transportVFSActionAfterProcessData);
-               transportVFSActionAfterProcess.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                transportVFSActionAfterProcess.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		transportVFSActionAfterProcess.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -2767,13 +2767,13 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 		transportVFSActionAfterErrors.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData transportVFSActionAfterErrorsData = new GridData(GridData.FILL_HORIZONTAL);
 		transportVFSActionAfterErrors.getCombo().setLayoutData(transportVFSActionAfterErrorsData);
-               transportVFSActionAfterErrors.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                transportVFSActionAfterErrors.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		transportVFSActionAfterErrors.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -3051,13 +3051,13 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 		transportVFSActionAfterFailure.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData transportVFSActionAfterFailureData = new GridData(GridData.FILL_HORIZONTAL);
 		transportVFSActionAfterFailure.getCombo().setLayoutData(transportVFSActionAfterFailureData);
-               transportVFSActionAfterFailure.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                transportVFSActionAfterFailure.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		transportVFSActionAfterFailure.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -3632,13 +3632,13 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 		transportJMSConnectionFactoryType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData transportJMSConnectionFactoryTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		transportJMSConnectionFactoryType.getCombo().setLayoutData(transportJMSConnectionFactoryTypeData);
-               transportJMSConnectionFactoryType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                transportJMSConnectionFactoryType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		transportJMSConnectionFactoryType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -3799,13 +3799,13 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 		transportJMSSessionAcknowledgement.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData transportJMSSessionAcknowledgementData = new GridData(GridData.FILL_HORIZONTAL);
 		transportJMSSessionAcknowledgement.getCombo().setLayoutData(transportJMSSessionAcknowledgementData);
-               transportJMSSessionAcknowledgement.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                transportJMSSessionAcknowledgement.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		transportJMSSessionAcknowledgement.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -3838,13 +3838,13 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 		transportJMSCacheLevel.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData transportJMSCacheLevelData = new GridData(GridData.FILL_HORIZONTAL);
 		transportJMSCacheLevel.getCombo().setLayoutData(transportJMSCacheLevelData);
-               transportJMSCacheLevel.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                transportJMSCacheLevel.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		transportJMSCacheLevel.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -4269,13 +4269,13 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 		transportVFSFileSortAttribute.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData transportVFSFileSortAttributeData = new GridData(GridData.FILL_HORIZONTAL);
 		transportVFSFileSortAttribute.getCombo().setLayoutData(transportVFSFileSortAttributeData);
-               transportVFSFileSortAttribute.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                transportVFSFileSortAttribute.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		transportVFSFileSortAttribute.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -4711,13 +4711,13 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 		transportJMSBrokerType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData transportJMSBrokerTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		transportJMSBrokerType.getCombo().setLayoutData(transportJMSBrokerTypeData);
-               transportJMSBrokerType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                transportJMSBrokerType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		transportJMSBrokerType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -4946,13 +4946,13 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 		transportMQTTSubscriptionQOS.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData transportMQTTSubscriptionQOSData = new GridData(GridData.FILL_HORIZONTAL);
 		transportMQTTSubscriptionQOS.getCombo().setLayoutData(transportMQTTSubscriptionQOSData);
-               transportMQTTSubscriptionQOS.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                transportMQTTSubscriptionQOS.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		transportMQTTSubscriptionQOS.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -6017,13 +6017,13 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 		consumerType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData consumerTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		consumerType.getCombo().setLayoutData(consumerTypeData);
-               consumerType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                consumerType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		consumerType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -6056,13 +6056,13 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 		topicsOrTopicFilter.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData topicsOrTopicFilterData = new GridData(GridData.FILL_HORIZONTAL);
 		topicsOrTopicFilter.getCombo().setLayoutData(topicsOrTopicFilterData);
-               topicsOrTopicFilter.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                topicsOrTopicFilter.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		topicsOrTopicFilter.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -6144,13 +6144,13 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 		topicFilterFrom.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData topicFilterFromData = new GridData(GridData.FILL_HORIZONTAL);
 		topicFilterFrom.getCombo().setLayoutData(topicFilterFromData);
-               topicsOrTopicFilter.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                topicsOrTopicFilter.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		topicFilterFrom.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -7144,13 +7144,13 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 		autoOffsetReset.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData autoOffsetResetData = new GridData(GridData.FILL_HORIZONTAL);
 		autoOffsetReset.getCombo().setLayoutData(autoOffsetResetData);
-               autoOffsetReset.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                autoOffsetReset.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		autoOffsetReset.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -7262,13 +7262,13 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 		partitionAssignmentStrategy.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData partitionAssignmentStrategyData = new GridData(GridData.FILL_HORIZONTAL);
 		partitionAssignmentStrategy.getCombo().setLayoutData(partitionAssignmentStrategyData);
-               partitionAssignmentStrategy.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                partitionAssignmentStrategy.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		partitionAssignmentStrategy.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -7497,13 +7497,13 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 		offsetsStorage.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData offsetsStorageData = new GridData(GridData.FILL_HORIZONTAL);
 		offsetsStorage.getCombo().setLayoutData(offsetsStorageData);
-               offsetsStorage.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                offsetsStorage.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		offsetsStorage.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -9490,13 +9490,13 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 		wsClientSideBroadcastLevel.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData wsClientSideBroadcastLevelData = new GridData(GridData.FILL_HORIZONTAL);
 		wsClientSideBroadcastLevel.getCombo().setLayoutData(wsClientSideBroadcastLevelData);
-               wsClientSideBroadcastLevel.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                wsClientSideBroadcastLevel.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		wsClientSideBroadcastLevel.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -9872,13 +9872,13 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 		transportFeedType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData transportFeedTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		transportFeedType.getCombo().setLayoutData(transportFeedTypeData);
-               transportFeedType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                transportFeedType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		transportFeedType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -11011,13 +11011,13 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 		transportRabbitMqConsumerQosType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData transportRabbitMqConsumerQosTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		transportRabbitMqConsumerQosType.getCombo().setLayoutData(transportRabbitMqConsumerQosTypeData);
-               transportRabbitMqConsumerQosType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                transportRabbitMqConsumerQosType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		transportRabbitMqConsumerQosType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

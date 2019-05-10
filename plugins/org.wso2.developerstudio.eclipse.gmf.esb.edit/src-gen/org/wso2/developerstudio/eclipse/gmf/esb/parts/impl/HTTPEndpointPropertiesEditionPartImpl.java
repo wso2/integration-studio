@@ -662,13 +662,13 @@ public class HTTPEndpointPropertiesEditionPartImpl extends CompositePropertiesEd
 		addressingVersion.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData addressingVersionData = new GridData(GridData.FILL_HORIZONTAL);
 		addressingVersion.getCombo().setLayoutData(addressingVersionData);
-               addressingVersion.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                addressingVersion.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		addressingVersion.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -731,13 +731,13 @@ public class HTTPEndpointPropertiesEditionPartImpl extends CompositePropertiesEd
 		format.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData formatData = new GridData(GridData.FILL_HORIZONTAL);
 		format.getCombo().setLayoutData(formatData);
-               format.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                format.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		format.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -770,13 +770,13 @@ public class HTTPEndpointPropertiesEditionPartImpl extends CompositePropertiesEd
 		optimize.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData optimizeData = new GridData(GridData.FILL_HORIZONTAL);
 		optimize.getCombo().setLayoutData(optimizeData);
-               optimize.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                optimize.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		optimize.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -984,13 +984,13 @@ public class HTTPEndpointPropertiesEditionPartImpl extends CompositePropertiesEd
 		httpMethod.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData httpMethodData = new GridData(GridData.FILL_HORIZONTAL);
 		httpMethod.getCombo().setLayoutData(httpMethodData);
-               httpMethod.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                httpMethod.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		httpMethod.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -1590,13 +1590,13 @@ public class HTTPEndpointPropertiesEditionPartImpl extends CompositePropertiesEd
 		timeOutAction.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData timeOutActionData = new GridData(GridData.FILL_HORIZONTAL);
 		timeOutAction.getCombo().setLayoutData(timeOutActionData);
-               timeOutAction.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                timeOutAction.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		timeOutAction.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

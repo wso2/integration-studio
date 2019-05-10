@@ -139,13 +139,13 @@ public class SessionPropertiesEditionPartImpl extends CompositePropertiesEdition
 		type.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData typeData = new GridData(GridData.FILL_HORIZONTAL);
 		type.getCombo().setLayoutData(typeData);
-               type.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                type.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		type.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

@@ -297,13 +297,13 @@ public class TransactionMediatorPropertiesEditionPartImpl extends CompositePrope
 		action.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData actionData = new GridData(GridData.FILL_HORIZONTAL);
 		action.getCombo().setLayoutData(actionData);
-               action.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                action.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		action.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

@@ -624,13 +624,13 @@ public class SequencePropertiesEditionPartImpl extends CompositePropertiesEditio
 		referringSequenceType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData referringSequenceTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		referringSequenceType.getCombo().setLayoutData(referringSequenceTypeData);
-               referringSequenceType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                referringSequenceType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		referringSequenceType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

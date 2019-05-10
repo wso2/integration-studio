@@ -200,13 +200,13 @@ public class RuleFactPropertiesEditionPartForm extends SectionPropertiesEditingP
 		factType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData factTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		factType.getCombo().setLayoutData(factTypeData);
-               factType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                factType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		factType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -375,13 +375,13 @@ public class RuleFactPropertiesEditionPartForm extends SectionPropertiesEditingP
 		valueType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData valueTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		valueType.getCombo().setLayoutData(valueTypeData);
-               valueType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                valueType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		valueType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

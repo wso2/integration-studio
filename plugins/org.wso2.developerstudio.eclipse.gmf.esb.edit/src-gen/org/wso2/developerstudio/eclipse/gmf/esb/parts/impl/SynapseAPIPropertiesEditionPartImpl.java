@@ -593,13 +593,13 @@ public class SynapseAPIPropertiesEditionPartImpl extends CompositePropertiesEdit
 		versionType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData versionTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		versionType.getCombo().setLayoutData(versionTypeData);
-               versionType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                versionType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		versionType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

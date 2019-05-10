@@ -638,13 +638,13 @@ public class CloudConnectorOperationPropertiesEditionPartImpl extends CompositeP
 		parameterEditorType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData parameterEditorTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		parameterEditorType.getCombo().setLayoutData(parameterEditorTypeData);
-               parameterEditorType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                parameterEditorType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		parameterEditorType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

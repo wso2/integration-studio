@@ -507,13 +507,13 @@ public class EJBMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 		sessionIdType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData sessionIdTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		sessionIdType.getCombo().setLayoutData(sessionIdTypeData);
-               sessionIdType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                sessionIdType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		sessionIdType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

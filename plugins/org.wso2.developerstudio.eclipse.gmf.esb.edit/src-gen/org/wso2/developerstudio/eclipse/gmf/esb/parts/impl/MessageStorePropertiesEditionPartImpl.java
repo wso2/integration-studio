@@ -525,13 +525,13 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 		storeType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData storeTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		storeType.getCombo().setLayoutData(storeTypeData);
-               storeType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                storeType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		storeType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -888,13 +888,13 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 		jmsSpecVersion.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData jmsSpecVersionData = new GridData(GridData.FILL_HORIZONTAL);
 		jmsSpecVersion.getCombo().setLayoutData(jmsSpecVersionData);
-               jmsSpecVersion.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                jmsSpecVersion.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		jmsSpecVersion.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -1447,13 +1447,13 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 		jdbcConnectionInformation.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData jdbcConnectionInformationData = new GridData(GridData.FILL_HORIZONTAL);
 		jdbcConnectionInformation.getCombo().setLayoutData(jdbcConnectionInformationData);
-               jdbcConnectionInformation.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                jdbcConnectionInformation.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		jdbcConnectionInformation.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -1959,13 +1959,13 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 		resequenceConnectionInformation.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData resequenceConnectionInformationData = new GridData(GridData.FILL_HORIZONTAL);
 		resequenceConnectionInformation.getCombo().setLayoutData(resequenceConnectionInformationData);
-               resequenceConnectionInformation.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                resequenceConnectionInformation.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		resequenceConnectionInformation.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

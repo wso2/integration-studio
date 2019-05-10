@@ -242,13 +242,13 @@ public class SmooksMediatorPropertiesEditionPartImpl extends CompositeProperties
 		inputType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData inputTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		inputType.getCombo().setLayoutData(inputTypeData);
-               inputType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                inputType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		inputType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -296,13 +296,13 @@ public class SmooksMediatorPropertiesEditionPartImpl extends CompositeProperties
 		outputType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData outputTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		outputType.getCombo().setLayoutData(outputTypeData);
-               outputType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                outputType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		outputType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -384,13 +384,13 @@ public class SmooksMediatorPropertiesEditionPartImpl extends CompositeProperties
 		outputAction.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData outputActionData = new GridData(GridData.FILL_HORIZONTAL);
 		outputAction.getCombo().setLayoutData(outputActionData);
-               outputAction.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                outputAction.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		outputAction.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -423,13 +423,13 @@ public class SmooksMediatorPropertiesEditionPartImpl extends CompositeProperties
 		outputMethod.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData outputMethodData = new GridData(GridData.FILL_HORIZONTAL);
 		outputMethod.getCombo().setLayoutData(outputMethodData);
-               outputMethod.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                outputMethod.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		outputMethod.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

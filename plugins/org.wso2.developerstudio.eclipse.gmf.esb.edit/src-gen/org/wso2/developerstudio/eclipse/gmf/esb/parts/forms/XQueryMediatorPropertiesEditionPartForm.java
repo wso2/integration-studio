@@ -392,13 +392,13 @@ public class XQueryMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 		scriptKeyType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData scriptKeyTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		scriptKeyType.getCombo().setLayoutData(scriptKeyTypeData);
-               scriptKeyType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                scriptKeyType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		scriptKeyType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

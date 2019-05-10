@@ -455,13 +455,13 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 		scriptLanguage.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData scriptLanguageData = new GridData(GridData.FILL_HORIZONTAL);
 		scriptLanguage.getCombo().setLayoutData(scriptLanguageData);
-               scriptLanguage.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                scriptLanguage.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		scriptLanguage.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -622,13 +622,13 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 		keyType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData keyTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		keyType.getCombo().setLayoutData(keyTypeData);
-               keyType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                keyType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		keyType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

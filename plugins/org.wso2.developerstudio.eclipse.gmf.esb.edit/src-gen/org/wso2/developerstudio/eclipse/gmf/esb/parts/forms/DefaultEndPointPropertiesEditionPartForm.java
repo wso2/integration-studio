@@ -670,13 +670,13 @@ public class DefaultEndPointPropertiesEditionPartForm extends SectionPropertiesE
 		format.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData formatData = new GridData(GridData.FILL_HORIZONTAL);
 		format.getCombo().setLayoutData(formatData);
-               format.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                format.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		format.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

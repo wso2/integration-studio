@@ -20,7 +20,7 @@
    <extension
          point="org.eclipse.ui.menus">
       <menuContribution
-            locationURI="menu:help">
+            locationURI="menu:help?before=org.eclipse.equinox.p2.ui.sdk.install">
             <separator
       			 name="separator-id-checkupdate-up"
                 visible="true">
@@ -29,6 +29,7 @@
                   commandId="org.wso2.developerstudio.eclipse.updater.CheckUpdatesCmd"
                   label="Check for Updates"
                   icon="icons/checkupdate.gif"
+                  id="org.wso2.developerstudio.eclipse.updater.updateCommand"
                   style="push"
                   tooltip="Check updates for Integration Studio">
             </command>

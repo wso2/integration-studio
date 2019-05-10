@@ -2409,7 +2409,7 @@ public class CacheMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
         
         boolean previousCacheImplementation = false;
         if (getCacheMediatorImplementation() != null) {
-            previousCacheImplementation = getCacheMediatorImplementation().getName().equals(CacheMediatorType.PREVIOUS_IMPLEMENTATION.getName());
+            previousCacheImplementation = getCacheMediatorImplementation().getName().equals(CacheMediatorType.COMPATIBILITY_611.getName());
         }
         
         eu.showEntry(cacheTypeElements, false);

@@ -794,8 +794,8 @@
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//CacheImplementationType/disk"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//CacheMediatorType">
-      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//CacheMediatorType/New_implementation"/>
-      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//CacheMediatorType/Previous_implementation"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//CacheMediatorType/Default"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//CacheMediatorType/Compatibility_611"/>
     </genEnums>
     <genDataTypes ecoreDataType="esb.ecore#//Map">
       <genTypeParameters ecoreTypeParameter="esb.ecore#//Map/K"/>

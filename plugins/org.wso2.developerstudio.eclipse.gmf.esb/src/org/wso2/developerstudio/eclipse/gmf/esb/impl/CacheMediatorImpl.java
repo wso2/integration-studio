@@ -452,7 +452,7 @@ public class CacheMediatorImpl extends MediatorImpl implements CacheMediator {
      * @generated
      * @ordered
      */
-    protected static final CacheMediatorType CACHE_MEDIATOR_IMPLEMENTATION_EDEFAULT = CacheMediatorType.NEW_IMPLEMENTATION;
+    protected static final CacheMediatorType CACHE_MEDIATOR_IMPLEMENTATION_EDEFAULT = CacheMediatorType.DEFAULT;
 
     /**
      * The cached value of the '{@link #getCacheMediatorImplementation() <em>Cache Mediator Implementation</em>}' attribute.

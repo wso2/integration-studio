@@ -22895,7 +22895,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         initEAttribute(getCacheMediator_HashGeneratorAttribute(), ecorePackage.getEString(), "hashGeneratorAttribute", "org.wso2.carbon.mediator.cache.digest.DOMHASHGenerator", 0, 1, CacheMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getCacheMediator_Scope(), this.getCacheScopeType(), "scope", "Per_Host", 0, 1, CacheMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getCacheMediator_ImplementationType(), this.getCacheImplementationType(), "implementationType", "memory", 0, 1, CacheMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getCacheMediator_CacheMediatorImplementation(), this.getCacheMediatorType(), "cacheMediatorImplementation", "New_implementation", 0, 1, CacheMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getCacheMediator_CacheMediatorImplementation(), this.getCacheMediatorType(), "cacheMediatorImplementation", "Default", 0, 1, CacheMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(cacheMediatorInputConnectorEClass, CacheMediatorInputConnector.class, "CacheMediatorInputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -24782,8 +24782,8 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         addEEnumLiteral(cacheImplementationTypeEEnum, CacheImplementationType.DISK);
 
         initEEnum(cacheMediatorTypeEEnum, CacheMediatorType.class, "CacheMediatorType");
-        addEEnumLiteral(cacheMediatorTypeEEnum, CacheMediatorType.NEW_IMPLEMENTATION);
-        addEEnumLiteral(cacheMediatorTypeEEnum, CacheMediatorType.PREVIOUS_IMPLEMENTATION);
+        addEEnumLiteral(cacheMediatorTypeEEnum, CacheMediatorType.DEFAULT);
+        addEEnumLiteral(cacheMediatorTypeEEnum, CacheMediatorType.COMPATIBILITY_611);
 
         // Initialize data types
         initEDataType(mapEDataType, Map.class, "Map", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);

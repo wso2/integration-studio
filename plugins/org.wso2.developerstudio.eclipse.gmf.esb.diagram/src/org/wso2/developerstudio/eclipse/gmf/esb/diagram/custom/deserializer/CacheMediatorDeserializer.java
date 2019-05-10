@@ -67,10 +67,10 @@ public class CacheMediatorDeserializer extends AbstractEsbNodeDeserializer<Abstr
 
             if (!mediator.isPreviousCacheImplementation()) {
                 executeSetValueCommand(CACHE_MEDIATOR__CACHE_MEDIATOR_IMPLEMENTATION,
-                        CacheMediatorType.NEW_IMPLEMENTATION);
+                        CacheMediatorType.DEFAULT);
             } else {
                 executeSetValueCommand(CACHE_MEDIATOR__CACHE_MEDIATOR_IMPLEMENTATION,
-                        CacheMediatorType.PREVIOUS_IMPLEMENTATION);
+                        CacheMediatorType.COMPATIBILITY_611);
             }
 
             if (mediator.isCollector()) {

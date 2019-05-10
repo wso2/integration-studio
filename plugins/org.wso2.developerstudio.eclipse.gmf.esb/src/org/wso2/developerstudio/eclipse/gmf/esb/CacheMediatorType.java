@@ -32,56 +32,54 @@ import org.eclipse.emf.common.util.Enumerator;
  */
 public enum CacheMediatorType implements Enumerator {
 	/**
-     * The '<em><b>New implementation</b></em>' literal object.
+     * The '<em><b>Default</b></em>' literal object.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-     * @see #NEW_IMPLEMENTATION_VALUE
+     * <!-- end-user-doc -->
+     * @see #DEFAULT_VALUE
      * @generated
      * @ordered
      */
-	NEW_IMPLEMENTATION(0, "New_implementation", "New_implementation"),
-
-	/**
-     * The '<em><b>Previous implementation</b></em>' literal object.
+    DEFAULT(0, "Default", "Default"), /**
+     * The '<em><b>Compatibility 611</b></em>' literal object.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-     * @see #PREVIOUS_IMPLEMENTATION_VALUE
+     * <!-- end-user-doc -->
+     * @see #COMPATIBILITY_611_VALUE
      * @generated
      * @ordered
      */
-	PREVIOUS_IMPLEMENTATION(1, "Previous_implementation", "Previous_implementation");
+    COMPATIBILITY_611(1, "Compatibility_611", "611 Compatible");
 
 	/**
-     * The '<em><b>New implementation</b></em>' literal value.
+     * The '<em><b>Default</b></em>' literal value.
      * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>New implementation</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-     * @see #NEW_IMPLEMENTATION
-     * @model name="New_implementation"
+     * <p>
+     * If the meaning of '<em><b>Default</b></em>' literal object isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @see #DEFAULT
+     * @model name="Default"
      * @generated
      * @ordered
      */
-	public static final int NEW_IMPLEMENTATION_VALUE = 0;
+    public static final int DEFAULT_VALUE = 0;
 
-	/**
-     * The '<em><b>Previous implementation</b></em>' literal value.
+    /**
+     * The '<em><b>Compatibility 611</b></em>' literal value.
      * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Previous implementation</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-     * @see #PREVIOUS_IMPLEMENTATION
-     * @model name="Previous_implementation"
+     * <p>
+     * If the meaning of '<em><b>Compatibility 611</b></em>' literal object isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @see #COMPATIBILITY_611
+     * @model name="Compatibility_611" literal="611 Compatible"
      * @generated
      * @ordered
      */
-	public static final int PREVIOUS_IMPLEMENTATION_VALUE = 1;
+    public static final int COMPATIBILITY_611_VALUE = 1;
 
-	/**
+    /**
      * An array of all the '<em><b>Cache Mediator Type</b></em>' enumerators.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -89,8 +87,8 @@ public enum CacheMediatorType implements Enumerator {
      */
 	private static final CacheMediatorType[] VALUES_ARRAY =
 		new CacheMediatorType[] {
-            NEW_IMPLEMENTATION,
-            PREVIOUS_IMPLEMENTATION,
+            DEFAULT,
+            COMPATIBILITY_611,
         };
 
 	/**
@@ -147,8 +145,8 @@ public enum CacheMediatorType implements Enumerator {
      */
 	public static CacheMediatorType get(int value) {
         switch (value) {
-            case NEW_IMPLEMENTATION_VALUE: return NEW_IMPLEMENTATION;
-            case PREVIOUS_IMPLEMENTATION_VALUE: return PREVIOUS_IMPLEMENTATION;
+            case DEFAULT_VALUE: return DEFAULT;
+            case COMPATIBILITY_611_VALUE: return COMPATIBILITY_611;
         }
         return null;
     }

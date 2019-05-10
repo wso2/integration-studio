@@ -1161,7 +1161,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 		inSequenceType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData inSequenceTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		inSequenceType.getCombo().setLayoutData(inSequenceTypeData);
-                faultSequenceType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                inSequenceType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
                     @Override
                     public void handleEvent(Event arg0) {

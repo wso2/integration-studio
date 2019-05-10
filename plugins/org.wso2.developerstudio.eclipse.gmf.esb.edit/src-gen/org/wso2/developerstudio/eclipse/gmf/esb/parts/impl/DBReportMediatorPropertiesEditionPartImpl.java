@@ -1321,7 +1321,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 		propertyTestwhileidle.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData propertyTestwhileidleData = new GridData(GridData.FILL_HORIZONTAL);
 		propertyTestwhileidle.getCombo().setLayoutData(propertyTestwhileidleData);
-                propertyTestonborrow.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                propertyTestwhileidle.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
                     @Override
                     public void handleEvent(Event arg0) {

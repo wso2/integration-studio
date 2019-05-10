@@ -6144,7 +6144,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 		topicFilterFrom.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData topicFilterFromData = new GridData(GridData.FILL_HORIZONTAL);
 		topicFilterFrom.getCombo().setLayoutData(topicFilterFromData);
-                topicsOrTopicFilter.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                topicFilterFrom.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
                     @Override
                     public void handleEvent(Event arg0) {

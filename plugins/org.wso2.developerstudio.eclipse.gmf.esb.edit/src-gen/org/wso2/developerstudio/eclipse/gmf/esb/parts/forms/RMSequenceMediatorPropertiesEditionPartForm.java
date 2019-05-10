@@ -376,7 +376,7 @@ public class RMSequenceMediatorPropertiesEditionPartForm extends SectionProperti
 		sequenceType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData sequenceTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		sequenceType.getCombo().setLayoutData(sequenceTypeData);
-                rmSpecVersion.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                sequenceType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
                     @Override
                     public void handleEvent(Event arg0) {

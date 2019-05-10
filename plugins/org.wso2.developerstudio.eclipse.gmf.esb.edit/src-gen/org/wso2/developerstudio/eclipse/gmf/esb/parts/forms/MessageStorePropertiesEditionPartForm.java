@@ -1803,7 +1803,7 @@ public class MessageStorePropertiesEditionPartForm extends SectionPropertiesEdit
 		jdbcConnectionInformation.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData jdbcConnectionInformationData = new GridData(GridData.FILL_HORIZONTAL);
 		jdbcConnectionInformation.getCombo().setLayoutData(jdbcConnectionInformationData);
-                jmsSpecVersion.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                jdbcConnectionInformation.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
                     @Override
                     public void handleEvent(Event arg0) {

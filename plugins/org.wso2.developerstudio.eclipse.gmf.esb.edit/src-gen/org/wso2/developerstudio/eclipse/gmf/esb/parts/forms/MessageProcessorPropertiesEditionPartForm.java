@@ -801,7 +801,7 @@ public class MessageProcessorPropertiesEditionPartForm extends SectionProperties
 		processorState.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData processorStateData = new GridData(GridData.FILL_HORIZONTAL);
 		processorState.getCombo().setLayoutData(processorStateData);
-                processorType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                processorState.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
                     @Override
                     public void handleEvent(Event arg0) {

@@ -308,13 +308,13 @@ public class NameValueTypePropertyPropertiesEditionPartForm extends SectionPrope
 		propertyType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData propertyTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		propertyType.getCombo().setLayoutData(propertyTypeData);
-               propertyType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                propertyType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		propertyType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

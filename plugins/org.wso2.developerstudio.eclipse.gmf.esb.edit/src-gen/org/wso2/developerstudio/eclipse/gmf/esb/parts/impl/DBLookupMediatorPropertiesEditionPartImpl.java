@@ -393,13 +393,13 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 		propertyAutocommit.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData propertyAutocommitData = new GridData(GridData.FILL_HORIZONTAL);
 		propertyAutocommit.getCombo().setLayoutData(propertyAutocommitData);
-               propertyAutocommit.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                propertyAutocommit.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		propertyAutocommit.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -432,13 +432,13 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 		propertyIsolation.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData propertyIsolationData = new GridData(GridData.FILL_HORIZONTAL);
 		propertyIsolation.getCombo().setLayoutData(propertyIsolationData);
-               propertyIsolation.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                propertyIsolation.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		propertyIsolation.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -716,13 +716,13 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 		propertyPoolstatements.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData propertyPoolstatementsData = new GridData(GridData.FILL_HORIZONTAL);
 		propertyPoolstatements.getCombo().setLayoutData(propertyPoolstatementsData);
-               propertyPoolstatements.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                propertyPoolstatements.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		propertyPoolstatements.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -755,13 +755,13 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 		propertyTestonborrow.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData propertyTestonborrowData = new GridData(GridData.FILL_HORIZONTAL);
 		propertyTestonborrow.getCombo().setLayoutData(propertyTestonborrowData);
-               propertyTestonborrow.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                propertyTestonborrow.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		propertyTestonborrow.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -794,13 +794,13 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 		propertyTestwhileidle.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData propertyTestwhileidleData = new GridData(GridData.FILL_HORIZONTAL);
 		propertyTestwhileidle.getCombo().setLayoutData(propertyTestwhileidleData);
-               propertyTestwhileidle.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                propertyTestwhileidle.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		propertyTestwhileidle.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -1010,13 +1010,13 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 		connectionType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData connectionTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		connectionType.getCombo().setLayoutData(connectionTypeData);
-               connectionType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                connectionType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		connectionType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -1049,13 +1049,13 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 		connectionDsType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData connectionDsTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		connectionDsType.getCombo().setLayoutData(connectionDsTypeData);
-               connectionDsType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                connectionDsType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		connectionDsType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -1137,13 +1137,13 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 		connectionDbType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData connectionDbTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		connectionDbType.getCombo().setLayoutData(connectionDbTypeData);
-               connectionDbType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                connectionDbType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		connectionDbType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

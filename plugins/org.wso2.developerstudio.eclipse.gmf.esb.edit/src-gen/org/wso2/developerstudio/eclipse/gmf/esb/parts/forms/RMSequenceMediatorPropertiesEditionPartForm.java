@@ -337,13 +337,13 @@ public class RMSequenceMediatorPropertiesEditionPartForm extends SectionProperti
 		rmSpecVersion.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData rmSpecVersionData = new GridData(GridData.FILL_HORIZONTAL);
 		rmSpecVersion.getCombo().setLayoutData(rmSpecVersionData);
-               rmSpecVersion.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                rmSpecVersion.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		rmSpecVersion.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -376,13 +376,13 @@ public class RMSequenceMediatorPropertiesEditionPartForm extends SectionProperti
 		sequenceType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData sequenceTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		sequenceType.getCombo().setLayoutData(sequenceTypeData);
-               rmSpecVersion.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                rmSpecVersion.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		sequenceType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

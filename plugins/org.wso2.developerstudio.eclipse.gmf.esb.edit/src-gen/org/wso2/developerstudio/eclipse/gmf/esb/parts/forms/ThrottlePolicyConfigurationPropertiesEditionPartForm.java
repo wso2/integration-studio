@@ -188,13 +188,13 @@ public class ThrottlePolicyConfigurationPropertiesEditionPartForm extends Sectio
 		policyType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData policyTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		policyType.getCombo().setLayoutData(policyTypeData);
-               policyType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                policyType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		policyType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

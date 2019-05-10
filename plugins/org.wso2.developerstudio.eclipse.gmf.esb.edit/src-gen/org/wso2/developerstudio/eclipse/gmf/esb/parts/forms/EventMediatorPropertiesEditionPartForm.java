@@ -337,13 +337,13 @@ public class EventMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
 		topicType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData topicTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		topicType.getCombo().setLayoutData(topicTypeData);
-               topicType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                topicType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                   @Override
-                   public void handleEvent(Event arg0) {
-                       arg0.doit = false;
-                   }
-               });
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		topicType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

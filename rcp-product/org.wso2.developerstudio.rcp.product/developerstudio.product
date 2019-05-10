@@ -367,7 +367,6 @@ Please visit : http://wso2.com/products/developer-studio/
       <feature id="org.wso2.developerstudio.eclipse.dss.dependencies.feature"/>
       <!-- Dev studio EI features -->
       <feature id="org.wso2.developerstudio.eclipse.ei.project.feature"/>
-      <feature id="org.roussev.http4e.ui"/>
    </features>
 
    <configurations>

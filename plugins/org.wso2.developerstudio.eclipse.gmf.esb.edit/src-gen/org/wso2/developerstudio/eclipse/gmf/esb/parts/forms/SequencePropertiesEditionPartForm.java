@@ -12,7 +12,6 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.Enumerator;
 
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.emf.ecore.util.EcoreAdapterFactory;
 
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
@@ -1253,9 +1252,14 @@ public class SequencePropertiesEditionPartForm extends SectionPropertiesEditingP
                         SequencePropertiesEditionPartForm.this,
                         EsbViewsRepository.Sequence.Properties.staticReferenceKey, PropertiesEditionEvent.COMMIT,
                         PropertiesEditionEvent.SET, null, getStaticReferenceKey()));
+                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                        SequencePropertiesEditionPartForm.this, 
+                        EsbViewsRepository.Sequence.Properties.name, PropertiesEditionEvent.COMMIT, 
+                        PropertiesEditionEvent.SET, null, getStaticReferenceKey().getKeyValue()));
             }
 
         });
+        
         staticReferenceKeyText.addKeyListener(new KeyListener() {
             
             @Override
@@ -1273,6 +1277,10 @@ public class SequencePropertiesEditionPartForm extends SectionPropertiesEditingP
                             SequencePropertiesEditionPartForm.this,
                             EsbViewsRepository.Sequence.Properties.staticReferenceKey, PropertiesEditionEvent.COMMIT,
                             PropertiesEditionEvent.SET, null, getStaticReferenceKey()));
+                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                            SequencePropertiesEditionPartForm.this,
+                            EsbViewsRepository.Sequence.Properties.name, PropertiesEditionEvent.COMMIT,
+                            PropertiesEditionEvent.SET, null, getStaticReferenceKey().getKeyValue()));
                 }
             }
             

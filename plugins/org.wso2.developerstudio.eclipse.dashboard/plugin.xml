@@ -14,7 +14,7 @@
                 name="Integration Studio Dashboard"></editor>
     </extension>
         <extension point="org.eclipse.ui.menus">
-        <menuContribution locationURI="menu:help?before=helpContents">
+        <menuContribution locationURI="menu:help?before=org.wso2.developerstudio.eclipse.updater.updateCommand">
 
 
 			<separator name="separator-id-dashboard-up"
@@ -26,6 +26,7 @@
                     icon="icons/getting-started.png"
                     label="Getting Started"
                     style="push"
+                    id="org.wso2.developerstudio.eclipse.dashboard.gettingStarted"
                     tooltip="Open Integration Studio Dashboard">
              </command>
 
@@ -47,6 +48,20 @@
         </menuContribution>
     </extension>
     
+    
+    <extension point="org.eclipse.ui.menus">
+    	<menuContribution locationURI="menu:help?after=org.wso2.developerstudio.eclipse.dashboard.gettingStarted">
+			<command
+            	commandId="org.wso2.developerstudio.eclipse.platform.ui.commands.opendocviewer"
+                icon="icons/carbon-normal.png"
+                id="org.wso2.developerstudio.eclipse.platform.ui.toolbars.opendocviewer"
+                label="Help Content"
+                tooltip="WSO2 Documentation">
+			</command>
+    	</menuContribution>
+    </extension>
+    
+                 
     <extension point="org.eclipse.ui.newWizards">
   <category name="WSO2BASS" id="org.wso2.developerstudio.eclipse.capp.projectBASS">
         </category>

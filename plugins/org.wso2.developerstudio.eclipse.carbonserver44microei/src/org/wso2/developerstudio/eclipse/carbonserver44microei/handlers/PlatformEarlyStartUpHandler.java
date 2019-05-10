@@ -85,11 +85,10 @@ public class PlatformEarlyStartUpHandler implements IStartup {
                             if (welcomeItem != null) {
                                 submenu.remove(welcomeItem);
                             }
-                            // This removes Install New Software
-                            IContributionItem installNewSoftwareItem = submenu
-                                    .find("org.eclipse.equinox.p2.ui.sdk.install");
-                            if (installNewSoftwareItem != null) {
-                                submenu.remove(installNewSoftwareItem);
+                            // This removes Key Binding
+                            IContributionItem keyBindingItem = submenu.find("org.eclipse.ui.actions.showKeyAssistHandler");
+                            if (keyBindingItem != null) {
+                                submenu.remove(keyBindingItem);
                             }
                             // This removes Update
                             IContributionItem updateItem = submenu.find("org.eclipse.equinox.p2.ui.sdk.update");

@@ -1252,10 +1252,10 @@ public class SequencePropertiesEditionPartForm extends SectionPropertiesEditingP
                         SequencePropertiesEditionPartForm.this,
                         EsbViewsRepository.Sequence.Properties.staticReferenceKey, PropertiesEditionEvent.COMMIT,
                         PropertiesEditionEvent.SET, null, getStaticReferenceKey()));
-                propertiesEditionComponent
-                        .firePropertiesChanged(new PropertiesEditionEvent(SequencePropertiesEditionPartForm.this,
-                                EsbViewsRepository.Sequence.Properties.name, PropertiesEditionEvent.COMMIT,
-                                PropertiesEditionEvent.SET, null, getStaticReferenceKey().getKeyValue()));
+                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                        SequencePropertiesEditionPartForm.this, 
+                        EsbViewsRepository.Sequence.Properties.name, PropertiesEditionEvent.COMMIT, 
+                        PropertiesEditionEvent.SET, null, getStaticReferenceKey().getKeyValue()));
             }
 
         });
@@ -1277,10 +1277,10 @@ public class SequencePropertiesEditionPartForm extends SectionPropertiesEditingP
                             SequencePropertiesEditionPartForm.this,
                             EsbViewsRepository.Sequence.Properties.staticReferenceKey, PropertiesEditionEvent.COMMIT,
                             PropertiesEditionEvent.SET, null, getStaticReferenceKey()));
-                    propertiesEditionComponent
-                            .firePropertiesChanged(new PropertiesEditionEvent(SequencePropertiesEditionPartForm.this,
-                                    EsbViewsRepository.Sequence.Properties.name, PropertiesEditionEvent.COMMIT,
-                                    PropertiesEditionEvent.SET, null, getStaticReferenceKey().getKeyValue()));
+                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                            SequencePropertiesEditionPartForm.this,
+                            EsbViewsRepository.Sequence.Properties.name, PropertiesEditionEvent.COMMIT,
+                            PropertiesEditionEvent.SET, null, getStaticReferenceKey().getKeyValue()));
                 }
             }
             

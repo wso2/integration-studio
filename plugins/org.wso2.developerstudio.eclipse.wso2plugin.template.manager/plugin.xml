@@ -29,7 +29,7 @@
 			<description>WSO2 Plugin Project</description>
 		</wizard>
    </extension>
-      <extension point="org.eclipse.ui.menus">
+<!--      <extension point="org.eclipse.ui.menus">
         <menuContribution locationURI="menu:org.eclipse.ui.main.menu?before=file">
             <menu label="Integration Studio"
                   mnemonic="C"
@@ -39,5 +39,5 @@
          		</command>
             </menu>
         </menuContribution>
-         </extension>
+         </extension> -->
 </plugin>

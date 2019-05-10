@@ -20,7 +20,7 @@
    <extension
          point="org.eclipse.ui.menus">
       <menuContribution
-            locationURI="menu:org.wso2.developerstudio.eclipse.platform.ui.main">
+            locationURI="menu:help">
             <separator
       			 name="separator-id-checkupdate-up"
                 visible="true">

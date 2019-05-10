@@ -105,7 +105,7 @@ public class ProcessSourceView {
             "code", "reason", "equal", "condition", "include", "detail", "input", "output", "rewriterule", "variable",
             "result", "messageCount", "correlateOn", "completeCondition", "onComplete", "configuration", "source",
             "messageBuilder", "target", "ruleSet", "properties", "input", "output", "attribute", "arg", "fact",
-            "trigger", "in", "out", "handlers", "handler", "session", "match"));
+            "trigger", "in", "out", "handlers", "handler", "session", "match", "role"));
     
     private static Set<String> graphicalEndpoint = new HashSet<>(Arrays.asList("loadbalance", "failover", "recipientlist"));
     
@@ -629,7 +629,7 @@ public class ProcessSourceView {
                         if (intermediaryStack.size() > 0) {
                             XMLTag next = intermediaryStack.pop();
                             intermediaryStack.push(next);
-                            if (next != null && !next.getqName().equals("payloadFactory")) {
+                            if (next != null && !next.getqName().equals("payloadFactory") && !next.getqName().equals("validate")) {
                                 intermediaryStack.push(tempTag);
                             }
                         } else {
@@ -697,7 +697,8 @@ public class ProcessSourceView {
                                         || (currentMediator.getqName().equals("throttle") && !tempTag.getqName().equals("throttle")) 
                                         || (currentMediator.getqName().equals("pojoCommand") && !tempTag.getqName().equals("pojoCommand")) 
                                         || (currentMediator.getqName().equals("validate") && !tempTag.getqName().equals("validate"))
-                                        || (currentMediator.getqName().equals("enrich") && !tempTag.getqName().equals("enrich")))) {
+                                        || (currentMediator.getqName().equals("enrich") && !tempTag.getqName().equals("enrich"))
+                                        || (currentMediator.getqName().equals("header") && !tempTag.getqName().equals("header")))) {
                             intermediaryStack.push(currentMediator);
 
                         } else if (currentMediator != null && currentMediator.getqName().equals("rule")) {

@@ -63,7 +63,7 @@ public abstract class EndpointFormPage extends AbstractEsbFormPage {
     protected Combo endpointTrace;
     protected Combo endpointStatistics;
     protected Combo eP_Optimize;
-    protected Combo endpointSesssionType;
+    protected Combo endpointFormatType;
 
     private Section basicSection;
     private Section templateEndpointSection;
@@ -101,12 +101,12 @@ public abstract class EndpointFormPage extends AbstractEsbFormPage {
         this.endpointName = endpointName;
     }
 
-    public Combo getEndpointSessionType() {
-        return endpointSesssionType;
+    public Combo getEP_Format() {
+        return endpointFormatType;
     }
 
-    public void setEndpointSessionType(Combo sessionType) {
-        this.endpointSesssionType = sessionType;
+    public void setEP_Format(Combo sessionType) {
+        this.endpointFormatType = sessionType;
     }
 
     public Combo getEndpointTrace() {
@@ -296,16 +296,17 @@ public abstract class EndpointFormPage extends AbstractEsbFormPage {
         });
 
         toolkit.createLabel(basicSectionClient, "Format :");
-        endpointSesssionType = new Combo(basicSectionClient, SWT.DROP_DOWN);
+        endpointFormatType = new Combo(basicSectionClient, SWT.DROP_DOWN);
         String[] formats = { "LEAVE_AS_IS", "SOAP 1.1", "SOAP 1.2", "POX", "GET", "REST" };
-        endpointSesssionType.setItems(formats);
+        endpointFormatType.setItems(formats);
+        endpointFormatType.select(0);
         GridData endpointFormatGridData = new GridData();
         endpointFormatGridData.horizontalSpan = 3;
         endpointFormatGridData.horizontalAlignment = GridData.FILL;
         endpointFormatGridData.grabExcessHorizontalSpace = true;
-        endpointSesssionType.setLayoutData(endpointFormatGridData);
+        endpointFormatType.setLayoutData(endpointFormatGridData);
 
-        endpointSesssionType.addSelectionListener(new SelectionAdapter() {
+        endpointFormatType.addSelectionListener(new SelectionAdapter() {
             @Override
             public void widgetSelected(SelectionEvent e) {
                 setSave(true);
@@ -365,11 +366,6 @@ public abstract class EndpointFormPage extends AbstractEsbFormPage {
 
     public EndpointCommons getEndpointCommons() {
         return endpointCommons;
-    }
-
-    public Combo getEP_Format() {
-        // TODO Auto-generated method stub
-        return null;
     }
     
     public List<String> getEndpointCommentList() {

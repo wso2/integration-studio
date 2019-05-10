@@ -634,6 +634,18 @@ public class InboundEndpointDeserializer
                             executeSetValueCommand(INBOUND_ENDPOINT__INBOUND_ENDPOINT_BEHAVIOUR,
                                     InboundEndpointBehaviourType.EVENT_BASED_INBOUND_ENDPOINT);
                         }
+                    } else if (paramEntry.getKey().equals(InboundEndpointConstants.SEQUENTIAL)) {
+                        if (paramEntry.getValue().equals(InboundEndpointConstants.TRUE)) {
+                            executeSetValueCommand(INBOUND_ENDPOINT__SEQUENTIAL, true);
+                        } else {
+                            executeSetValueCommand(INBOUND_ENDPOINT__SEQUENTIAL, false);
+                        }
+                    } else if (paramEntry.getKey().equals(InboundEndpointConstants.COORDINATION)) {
+                        if (paramEntry.getValue().equals(InboundEndpointConstants.TRUE)) {
+                            executeSetValueCommand(INBOUND_ENDPOINT__COORDINATION, true);
+                        } else {
+                            executeSetValueCommand(INBOUND_ENDPOINT__COORDINATION, false);
+                        }
                     }
                 }
             }

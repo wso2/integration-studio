@@ -18,13 +18,9 @@ package org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
 
-import org.apache.axiom.om.OMElement;
-import org.apache.axiom.om.util.AXIOMUtil;
 import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.SynapseArtifact;
-import org.apache.synapse.config.xml.endpoints.WSDLEndpointFactory;
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.endpoints.EndpointDefinition;
 import org.apache.synapse.endpoints.LoadbalanceEndpoint;
@@ -40,8 +36,6 @@ import org.apache.synapse.mediators.base.SequenceMediator;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.Assert;
-import org.eclipse.core.runtime.IPath;
-import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -51,6 +45,7 @@ import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.PlatformUI;
 import org.jaxen.JaxenException;
 import org.wso2.developerstudio.eclipse.esb.core.interfaces.IEsbEditorInput;
+import org.wso2.developerstudio.eclipse.gmf.esb.AddressEndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPointProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndpointDiagram;
@@ -62,11 +57,12 @@ import org.wso2.developerstudio.eclipse.gmf.esb.LoadBalanceSessionType;
 import org.wso2.developerstudio.eclipse.gmf.esb.Member;
 import org.wso2.developerstudio.eclipse.gmf.esb.Sequence;
 import org.wso2.developerstudio.eclipse.gmf.esb.SequenceInputConnector;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.AddressEndPointImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.EsbNodeTransformer;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.EsbTransformerRegistry;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
-import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerUtils;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.LoadbalanceEndpointFormPage;
 
 public class LoadBalanceEndPointTransformer extends AbstractEndpointTransformer {
@@ -155,11 +151,6 @@ public class LoadBalanceEndPointTransformer extends AbstractEndpointTransformer 
             }
         }
         synapseLBEP.setBuildMessageAtt(visualEndPoint.isBuildMessage());
-        if (StringUtils.isNotBlank(name) && !name.equals("{ep.name}")) {
-            synapseLBEP.setName(name);
-        } else {
-            synapseLBEP.setName(getSynapseEndpointName(visualEndPoint));
-        }
 
         /*
          * We should give this LoadbalanceAlgorithm class at runtime.User should
@@ -242,19 +233,6 @@ public class LoadBalanceEndPointTransformer extends AbstractEndpointTransformer 
                     }
                 }
 
-                String endpointName = getSynapseEndpointName(visualEndPoint);
-                IPath location = new Path("src/main/synapse-config/endpoints" + "/" + endpointName + ".xml");
-                IFile file = activeProject.getFile(location);
-
-                if (file.exists()) {
-                    final String source = FileUtils.getContentAsString(file.getContents());
-                    OMElement element = AXIOMUtil.stringToOM(source);
-                }
-
-                Properties properties = new Properties();
-                properties.put(WSDLEndpointFactory.SKIP_WSDL_PARSING, "true");
-//                synapseLBEP = (LoadbalanceEndpoint) EndpointFactory.getEndpointFromElement(element, false, properties);
-
             }
 
         } catch (Exception e) {
@@ -262,7 +240,17 @@ public class LoadBalanceEndPointTransformer extends AbstractEndpointTransformer 
         }
 
         if (synapseLBEP instanceof SALoadbalanceEndpoint) {
-            synapseLBEP.setChildren(endPointsList);
+            List<Endpoint> synapseChildren = new ArrayList<>();
+            if (visualEndPoint.getChildren() != null && visualEndPoint.getChildren().size() > 0) {
+                for (org.wso2.developerstudio.eclipse.gmf.esb.EndPoint viEndpoint : visualEndPoint.getChildren()) {
+                    if (viEndpoint instanceof AddressEndPointImpl) {
+                        synapseChildren.add(TransformerUtils.getSynapseEndpoint(viEndpoint));
+                    }
+                }
+
+            }
+            synapseLBEP.setChildren(synapseChildren);
+            
         } else {
             if (endPointsList.size() > 0) {
                 synapseLBEP.setChildren(endPointsList);
@@ -411,17 +399,6 @@ public class LoadBalanceEndPointTransformer extends AbstractEndpointTransformer 
         synapseLoadbalanceEP.addProperties(mediatorProperties);
 
         return synapseLoadbalanceEP;
-    }
-
-    private String getSynapseEndpointName(LoadBalanceEndPoint visualEndPoint) {
-        if (StringUtils.isNotBlank(visualEndPoint.getName()) && !visualEndPoint.getName().equals("{ep.name}")) {
-            return visualEndPoint.getName();
-        } else if (StringUtils.isNotBlank(visualEndPoint.getEndPointName())
-                && !visualEndPoint.getEndPointName().equals("{ep.name}")) {
-            return visualEndPoint.getEndPointName();
-        } else {
-            return "{ep.name}";
-        }
     }
     
     private Object getAlgorithmnClass(String className) {

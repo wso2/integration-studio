@@ -3,7 +3,6 @@ package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer;
 import org.apache.synapse.mediators.AbstractMediator;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
-import org.eclipse.ui.forms.editor.FormEditor;
 import org.wso2.developerstudio.eclipse.gmf.esb.FaultCodeSoap11;
 import org.wso2.developerstudio.eclipse.gmf.esb.FaultCodeSoap12;
 import org.wso2.developerstudio.eclipse.gmf.esb.FaultCodeType;
@@ -89,13 +88,15 @@ public class FaultMediatorDeserializer extends AbstractEsbNodeDeserializer<Abstr
             }
             if (faultMediator.getFaultCodeValue() != null) {
                 if ("VersionMismatch".equals(faultMediator.getFaultCodeValue().getLocalPart())) {
-                    executeSetValueCommand(FAULT_MEDIATOR__FAULT_CODE_SOAP11, FaultCodeSoap11.VERSION_MISSMATCH);
+                    executeSetValueCommand(FAULT_MEDIATOR__FAULT_CODE_SOAP12, FaultCodeSoap12.VERSION_MISSMATCH);
                 } else if ("MustUnderstand".equals(faultMediator.getFaultCodeValue().getLocalPart())) {
-                    executeSetValueCommand(FAULT_MEDIATOR__FAULT_CODE_SOAP11, FaultCodeSoap11.MUST_UNDERSTAND);
-                } else if ("Server".equals(faultMediator.getFaultCodeValue().getLocalPart())) {
-                    executeSetValueCommand(FAULT_MEDIATOR__FAULT_CODE_SOAP11, FaultCodeSoap11.SERVER);
-                } else if ("Client".equals(faultMediator.getFaultCodeValue().getLocalPart())) {
-                    executeSetValueCommand(FAULT_MEDIATOR__FAULT_CODE_SOAP11, FaultCodeSoap11.CLIENT);
+                    executeSetValueCommand(FAULT_MEDIATOR__FAULT_CODE_SOAP12, FaultCodeSoap12.MUST_UNDERSTAND);
+                } else if ("DataEncodingUnknown".equals(faultMediator.getFaultCodeValue().getLocalPart())) {
+                    executeSetValueCommand(FAULT_MEDIATOR__FAULT_CODE_SOAP12, FaultCodeSoap12.DATA_ENCODING_UNKNOWN);
+                } else if ("Sender".equals(faultMediator.getFaultCodeValue().getLocalPart())) {
+                    executeSetValueCommand(FAULT_MEDIATOR__FAULT_CODE_SOAP12, FaultCodeSoap12.SENDER);
+                } else if ("Receiver".equals(faultMediator.getFaultCodeValue().getLocalPart())) {
+                    executeSetValueCommand(FAULT_MEDIATOR__FAULT_CODE_SOAP12, FaultCodeSoap12.RECEIVER);
                 }
             } else if (faultMediator.getFaultCodeExpr() != null) {
                 executeSetValueCommand(FAULT_MEDIATOR__FAULT_CODE_EXPRESSION,

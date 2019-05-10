@@ -6487,6 +6487,9 @@ public class EsbMessages extends NLS {
 	public static String LoadBalanceEndPointPropertiesEditionPart_BuildMessageLabel;
 
 	
+	public static String LoadBalanceEndPointPropertiesEditionPart_MembersLabel;
+
+	
 	public static String MemberPropertiesEditionPart_HostNameLabel;
 
 	

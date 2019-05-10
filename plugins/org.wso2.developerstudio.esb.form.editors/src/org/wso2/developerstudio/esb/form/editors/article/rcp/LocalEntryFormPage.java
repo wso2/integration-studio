@@ -22,6 +22,7 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.*;
 import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.*;
 import org.eclipse.ui.forms.*;
 import org.eclipse.ui.forms.editor.*;
@@ -121,9 +122,12 @@ public class LocalEntryFormPage extends AbstractEsbFormPage {
 		});
 		
 		localEntryValueLbl = toolkit.createLabel(basicSectionClient, IN_LINED_TEXT_ENTRY);
-		localEntryTextValue = toolkit.createText(basicSectionClient, "");
+		localEntryTextValue = toolkit.createText(basicSectionClient, "", SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL | SWT.WRAP);
 		localEntryTextValue.setBackground(new Color(null, 229,236,253));
-		localEntryTextValue.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+        TableWrapData tableWrapData = new TableWrapData(TableWrapData.FILL_GRAB);
+        tableWrapData.maxHeight = 300;
+        tableWrapData.heightHint = 300;
+		localEntryTextValue.setLayoutData(tableWrapData);
 		localEntryTextValue.addModifyListener(new ModifyListener() {
 			@Override
 			public void modifyText(ModifyEvent e) {
@@ -206,5 +210,19 @@ public class LocalEntryFormPage extends AbstractEsbFormPage {
 	public void setSelectedSection(Section selectedSection) {
 		this.selectedSection = selectedSection;
 	}
+	
+    public void setLocalEntryValueLabel(String type) {
+        switch (type) {
+        case "xml":
+            this.localEntryValueLbl.setText(IN_LINED_XML_ENTRY);
+            break;
+        case "text":
+            this.localEntryValueLbl.setText(IN_LINED_TEXT_ENTRY);
+            break;
+        case "uri":
+            this.localEntryValueLbl.setText(SOURCE_URL_ENTRY);
+            break;
+        }
+    }
 	
 }

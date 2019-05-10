@@ -93,7 +93,14 @@ public class RegistryReaderServlet extends HttpServlet {
                     break;
                 }
             }
+
             String input = payload.replace("process", "").replaceFirst(inputType, "").replaceFirst(outputType, "");
+
+            // Trim and remove extra whitespaces and new lines from XML
+            if (inputType.equals("XML")) {
+                input = input.trim().replace("\n", "").replaceAll("( *)<", "<");
+            }
+            
             String result = "";
             try {
                 result = DatamapperUtils.processDatamapper(inputType, outputType, inputSchema, outputSchema, DMC,

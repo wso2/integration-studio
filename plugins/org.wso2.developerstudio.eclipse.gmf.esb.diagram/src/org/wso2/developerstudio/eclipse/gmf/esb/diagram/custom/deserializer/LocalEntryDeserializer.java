@@ -69,6 +69,7 @@ public class LocalEntryDeserializer extends AbstractEsbNodeDeserializer<Entry, L
             if (object.getType() == INLINE_TEXT) {
                 if (localEntryPage.getLocalEntryTypeCombo() != null) {
                     localEntryPage.getLocalEntryTypeCombo().select(0);
+                    localEntryPage.setLocalEntryValueLabel("text");
                     if (localEntryPage.getLocalEntryTextValue() != null && object.getValue() != null) {
                         String trimmedValue = getTrimmedValue(object.getValue());
                         localEntryPage.getLocalEntryTextValue().setText(trimmedValue);
@@ -79,6 +80,7 @@ public class LocalEntryDeserializer extends AbstractEsbNodeDeserializer<Entry, L
             if (object.getType() == INLINE_XML) {
                 if (localEntryPage.getLocalEntryTypeCombo() != null) {
                     localEntryPage.getLocalEntryTypeCombo().select(1);
+                    localEntryPage.setLocalEntryValueLabel("xml");
                     if (localEntryPage.getLocalEntryTextValue() != null) {
                         if (object.getValue() != null) {
                             String trimmedValue = getTrimmedValue(object.getValue());
@@ -92,6 +94,7 @@ public class LocalEntryDeserializer extends AbstractEsbNodeDeserializer<Entry, L
             if (object.getType() == URL_SRC) {
                 if (localEntryPage.getLocalEntryTypeCombo() != null) {
                     localEntryPage.getLocalEntryTypeCombo().select(2);
+                    localEntryPage.setLocalEntryValueLabel("uri");
                     if (localEntryPage.getLocalEntryTextValue() != null) {
                         if (object.getSrc() != null) {
                             localEntryPage.getLocalEntryTextValue().setText(object.getSrc().toString());

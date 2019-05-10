@@ -89,6 +89,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.parts.PayloadFactoryMediatorProp
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.developerstudio.eclipse.gmf.esb.util.FontUtils;
 import org.wso2.developerstudio.esb.form.editors.article.providers.NamedEntityDescriptor;
 
 // End of user code
@@ -300,7 +301,7 @@ public class PayloadFactoryMediatorPropertiesEditionPartForm extends SectionProp
 		payload.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(filterPayloadSubPropertiesGroup);
 		GridData payloadData = new GridData(GridData.FILL_HORIZONTAL);
-		payloadData.heightHint = payload.getLineHeight()*4;
+		payloadData.heightHint = payload.getLineHeight()*9;
 		payload.setLayoutData(payloadData);
 		payload.addFocusListener(new FocusAdapter() {
 			/**
@@ -392,6 +393,7 @@ public class PayloadFactoryMediatorPropertiesEditionPartForm extends SectionProp
 		this.args.setLayoutData(argsData);
 		this.args.setLowerBound(0);
 		this.args.setUpperBound(-1);
+		this.args.getTable().setFont(FontUtils.getMonospacedFont());
 		args.setID(EsbViewsRepository.PayloadFactoryMediator.Properties.args);
 		args.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
 		// Start of user code for createArgsTableComposition

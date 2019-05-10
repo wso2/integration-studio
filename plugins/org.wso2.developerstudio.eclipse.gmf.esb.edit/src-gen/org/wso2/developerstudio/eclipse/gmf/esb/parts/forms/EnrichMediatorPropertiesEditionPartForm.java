@@ -1671,7 +1671,7 @@ public class EnrichMediatorPropertiesEditionPartForm extends SectionPropertiesEd
             epv.showEntry(inlineTypeElements, false);
             if(!((StructuredSelection) inlineType.getSelection()).isEmpty()) {
                 switch (getInlineType().getLiteral()) {
-                case "SourceXML": {
+                case "Inline XML/JSON": {
                     epv.showEntry(sourceXMLElements, false);
                     break;
                 }

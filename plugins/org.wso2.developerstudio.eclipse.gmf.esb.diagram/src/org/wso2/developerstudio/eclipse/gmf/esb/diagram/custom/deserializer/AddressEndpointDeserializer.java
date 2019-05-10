@@ -26,6 +26,8 @@ import java.util.Map;
 import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.endpoints.AbstractEndpoint;
 import org.apache.synapse.endpoints.AddressEndpoint;
+import org.apache.synapse.endpoints.Endpoint;
+import org.apache.synapse.endpoints.EndpointDefinition;
 import org.apache.synapse.mediators.MediatorProperty;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
@@ -41,6 +43,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EndpointDiagramEndpointCompartment2EditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EndpointDiagramEndpointCompartmentEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.AddressEndPointImpl;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.ESBFormEditor;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.AddressEndpointFormPage;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.EndpointFormPage;
@@ -69,6 +72,23 @@ public class AddressEndpointDeserializer extends AbstractEndpointDeserializer {
         return endPoint;
     }
 
+    public org.wso2.developerstudio.eclipse.gmf.esb.EndPoint createUIEndpoint(Endpoint synapseEndpoint) {
+        Assert.isTrue(synapseEndpoint instanceof org.apache.synapse.endpoints.AddressEndpoint,
+                "Unsupported endpoint has been passed to create the UI object at " + this.getClass());
+
+        org.wso2.developerstudio.eclipse.gmf.esb.EndPoint endpoint = new AddressEndPointImpl();
+
+        AddressEndpoint addressEndpoint = (AddressEndpoint) synapseEndpoint;
+
+        EndpointDefinition endpointDefinition = addressEndpoint.getDefinition();
+
+        ((AddressEndPointImpl) endpoint).setURI(endpointDefinition.getAddress());
+        ((AddressEndPointImpl) endpoint).setSuspendInitialDuration(endpointDefinition.getInitialSuspendDuration());
+        ((AddressEndPointImpl) endpoint).setSuspendProgressionFactor(endpointDefinition.getSuspendProgressionFactor());
+
+        return endpoint;
+    }
+    
     @Override
     public void createNode(FormEditor formEditor, AbstractEndpoint endpointObject) {
 

@@ -39,7 +39,7 @@ public enum EnrichSourceInlineType implements Enumerator {
      * @generated
      * @ordered
      */
-    CONTENT(0, "CONTENT", "SourceXML"),
+    CONTENT(0, "CONTENT", "Inline XML/JSON"),
 
     /**
      * The '<em><b>KEY</b></em>' literal object.

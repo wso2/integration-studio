@@ -169,6 +169,7 @@ public class PropertyMediatorPropertiesEditionPartImpl extends CompositeProperti
 		propertiesStep.addStep(EsbViewsRepository.PropertyMediator.Properties.propertyAction);
 		propertiesStep.addStep(EsbViewsRepository.PropertyMediator.Properties.propertyScope);
 		propertiesStep.addStep(EsbViewsRepository.PropertyMediator.Properties.valueType);
+		propertiesStep.addStep(EsbViewsRepository.PropertyMediator.Properties.valueExpression);
 		propertiesStep.addStep(EsbViewsRepository.PropertyMediator.Properties.value);
 		propertiesStep.addStep(EsbViewsRepository.PropertyMediator.Properties.expression);
 		propertiesStep.addStep(EsbViewsRepository.PropertyMediator.Properties.namespacePrefix);
@@ -177,9 +178,7 @@ public class PropertyMediatorPropertiesEditionPartImpl extends CompositeProperti
 		propertiesStep.addStep(EsbViewsRepository.PropertyMediator.Properties.oM);
 		propertiesStep.addStep(EsbViewsRepository.PropertyMediator.Properties.valueStringPattern);
 		propertiesStep.addStep(EsbViewsRepository.PropertyMediator.Properties.valueStringCapturingGroup);
-		propertiesStep.addStep(EsbViewsRepository.PropertyMediator.Properties.valueExpression);
 		propertiesStep.addStep(EsbViewsRepository.PropertyMediator.Properties.description);
-		
 		
 		composer = new PartComposer(propertyMediatorStep) {
 
@@ -295,16 +294,6 @@ public class PropertyMediatorPropertiesEditionPartImpl extends CompositeProperti
 		Control propertyNameHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PropertyMediator.Properties.propertyName, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createPropertyNameEMFComboViewer
         propertyNameElements = new Control[] {propertyNameLabel, propertyName.getCombo(), propertyNameHelp};
-        propertyName.addSelectionChangedListener(new ISelectionChangedListener() {
-                    
-            /**
-             * {@inheritDoc}
-             * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-             */
-            public void selectionChanged(SelectionChangedEvent event) {
-                validate();
-            }
-        });
 		// End of user code
 		return parent;
 	}
@@ -337,6 +326,7 @@ public class PropertyMediatorPropertiesEditionPartImpl extends CompositeProperti
 			public void selectionChanged(SelectionChangedEvent event) {
 				if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertyMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.PropertyMediator.Properties.propertyDataType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getPropertyDataType()));
+				validate();
 			}
 
 		});
@@ -344,16 +334,6 @@ public class PropertyMediatorPropertiesEditionPartImpl extends CompositeProperti
 		Control propertyDataTypeHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PropertyMediator.Properties.propertyDataType, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createPropertyDataTypeEMFComboViewer
         propertyDataTypeElements = new Control[] {propertyDataTypeLabel, propertyDataType.getCombo(), propertyDataTypeHelp};
-        propertyDataType.addSelectionChangedListener(new ISelectionChangedListener() {
-
-            /**
-             * {@inheritDoc}
-             * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent) 
-             */
-            public void selectionChanged(SelectionChangedEvent event) {
-                validate();
-            }
-        });
 		// End of user code
 		return parent;
 	}
@@ -386,6 +366,7 @@ public class PropertyMediatorPropertiesEditionPartImpl extends CompositeProperti
 			public void selectionChanged(SelectionChangedEvent event) {
 				if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertyMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.PropertyMediator.Properties.propertyAction, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getPropertyAction()));
+				validate();
 			}
 
 		});
@@ -393,17 +374,6 @@ public class PropertyMediatorPropertiesEditionPartImpl extends CompositeProperti
 		Control propertyActionHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PropertyMediator.Properties.propertyAction, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createPropertyActionEMFComboViewer
         propertyActionElements = new Control[] {propertyActionLabel, propertyAction.getCombo(), propertyActionHelp};
-        propertyAction.addSelectionChangedListener(new ISelectionChangedListener() {
-
-            /**
-             * {@inheritDoc}
-             * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-             */
-            public void selectionChanged(SelectionChangedEvent event) {
-                validate();
-            }
-
-        });
 		// End of user code
 		return parent;
 	}
@@ -436,6 +406,7 @@ public class PropertyMediatorPropertiesEditionPartImpl extends CompositeProperti
 			public void selectionChanged(SelectionChangedEvent event) {
 				if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertyMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.PropertyMediator.Properties.propertyScope, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getPropertyScope()));
+				validate();
 			}
 
 		});
@@ -443,17 +414,6 @@ public class PropertyMediatorPropertiesEditionPartImpl extends CompositeProperti
 		Control propertyScopeHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PropertyMediator.Properties.propertyScope, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createPropertyScopeEMFComboViewer
         propertyScopeElements = new Control[] {propertyScopeLabel, propertyScope.getCombo(), propertyScopeHelp};
-        propertyScope.addSelectionChangedListener(new ISelectionChangedListener() {
-
-            /**
-             * {@inheritDoc}
-             * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-             */
-            public void selectionChanged(SelectionChangedEvent event) {
-                validate();
-            }
-
-        });
 		// End of user code
 		return parent;
 	}
@@ -486,6 +446,7 @@ public class PropertyMediatorPropertiesEditionPartImpl extends CompositeProperti
 			public void selectionChanged(SelectionChangedEvent event) {
 				if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertyMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.PropertyMediator.Properties.valueType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getValueType()));
+				validate();
 			}
 
 		});
@@ -493,12 +454,6 @@ public class PropertyMediatorPropertiesEditionPartImpl extends CompositeProperti
 		Control valueTypeHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PropertyMediator.Properties.valueType, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createValueTypeEMFComboViewer
         valueTypeElements  = new Control[] {valueTypeLabel, valueType.getCombo(), valueTypeHelp};
-        valueType.addSelectionChangedListener(new ISelectionChangedListener() {
-
-            public void selectionChanged(SelectionChangedEvent event) {
-                validate();
-            }
-        });
 		// End of user code
 		return parent;
 	}

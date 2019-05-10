@@ -44,6 +44,7 @@ public class DummyTemplateMediatorFactory extends AbstractListMediatorFactory {
     private static final QName TEMPLATE_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "template");
     private static final QName TEMPLATE_BODY_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "sequence");
     protected static final QName ATT_NAME = new QName("name");
+    protected static final QName ATT_ONERROR = new QName("onError");
     protected static final QName ATT_STATS = new QName(XMLConfigConstants.STATISTICS_ATTRIB_NAME);
     protected static final QName DESCRIPTION_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "description");
 
@@ -59,6 +60,10 @@ public class DummyTemplateMediatorFactory extends AbstractListMediatorFactory {
             templateTemplateMediator.setName(nameAttr.getAttributeValue());
         } else {
             templateTemplateMediator.setName("");
+        }
+        OMAttribute onErrorAttribute = elem.getAttribute(ATT_ONERROR);
+        if (onErrorAttribute != null) {
+            templateTemplateMediator.setErrorHandler(onErrorAttribute.getAttributeValue());
         }
         processAuditStatus(templateTemplateMediator, elem);
         initParameters(elem, templateTemplateMediator);

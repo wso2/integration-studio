@@ -122,9 +122,11 @@ public class SwitchCaseBranchOutputConnectorPropertiesEditionComponent extends S
 				// End of user code
 			}
 			
-			// Start of user code for validate method call
-			((SwitchCaseBranchOutputConnectorPropertiesEditionPartImpl)editingPart).validate();
-			// End of user code
+            if (editingPart instanceof SwitchCaseBranchOutputConnectorPropertiesEditionPartImpl) {
+                // Start of user code for validate method call
+                ((SwitchCaseBranchOutputConnectorPropertiesEditionPartImpl) editingPart).validate();
+                // End of user code
+            }
 
 			// init values for referenced views
 			

@@ -44,6 +44,7 @@ import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.KeyListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 
@@ -57,7 +58,7 @@ import org.eclipse.swt.widgets.Text;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.SqlStatementPropertiesEditionPart;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
 
 // End of user code
@@ -160,7 +161,9 @@ public class SqlStatementPropertiesEditionPartImpl extends CompositePropertiesEd
 		return propertiesGroup;
 	}
 
-	
+    /**
+     * @generated NOT
+     */
 	protected Composite createQueryStringText(Composite parent) {
 		createDescription(parent, EsbViewsRepository.SqlStatement.Properties.queryString, EsbMessages.SqlStatementPropertiesEditionPart_QueryStringLabel);
 		queryString = SWTUtils.createScrollableText(parent, SWT.BORDER);
@@ -200,6 +203,22 @@ public class SqlStatementPropertiesEditionPartImpl extends CompositePropertiesEd
 			}
 
 		});
+
+            queryString.addKeyListener(new KeyListener() {
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                    if (propertiesEditionComponent != null)
+                        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SqlStatementPropertiesEditionPartImpl.this, EsbViewsRepository.SqlStatement.Properties.queryString, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, queryString.getText()));
+                }
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+            }
+
+        });
 		EditingUtils.setID(queryString, EsbViewsRepository.SqlStatement.Properties.queryString);
 		EditingUtils.setEEFtype(queryString, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.SqlStatement.Properties.queryString, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$

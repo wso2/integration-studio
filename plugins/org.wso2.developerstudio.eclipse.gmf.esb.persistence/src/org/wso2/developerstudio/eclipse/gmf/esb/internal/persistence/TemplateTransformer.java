@@ -52,6 +52,7 @@ public class TemplateTransformer extends AbstractEsbNodeTransformer {
         if (template.getChild() instanceof Sequences) {
             TemplateMediator templateMediator = new TemplateMediator();
             templateMediator.setName(template.getName());
+            templateMediator.setDescription(template.getDescription());
             templateMediator.setParameters(new ArrayList<String>());
             saveParameters(template, templateMediator.getParameters());
             SequenceMediator sequence = new SequenceMediator();

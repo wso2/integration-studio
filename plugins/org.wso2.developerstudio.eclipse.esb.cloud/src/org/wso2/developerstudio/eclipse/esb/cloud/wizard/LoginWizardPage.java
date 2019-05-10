@@ -306,8 +306,12 @@ public class LoginWizardPage extends WizardPage {
 
         try {
             appPage.runtimeList = client.getApplicationRuntimes(CloudServiceConstants.AppConfigs.ESB);
-            appPage.getCreateAppRuntimeCombo().setItems(CloudDeploymentWizardUtils.getRuntimeNames(appPage.runtimeList));
-            appPage.getCreateVersionRuntimeCombo().setItems(CloudDeploymentWizardUtils.getRuntimeNames(appPage.runtimeList));
+            appPage.getCreateAppRuntimeCombo()
+                    .setItems(CloudDeploymentWizardUtils.getRuntimeNames(appPage.runtimeList));
+            appPage.selectDefaultRuntime(appPage.getCreateAppRuntimeCombo());;
+            appPage.getCreateVersionRuntimeCombo()
+                    .setItems(CloudDeploymentWizardUtils.getRuntimeNames(appPage.runtimeList));
+            appPage.selectDefaultRuntime(appPage.getCreateVersionRuntimeCombo());
 
         } catch (CloudDeploymentException | InvalidTokenException | HttpClientException ex) {
             log.error(CloudDeploymentWizardConstants.ErrorMessages.RUNTIME_RETRIEVAL_FAILED_MESSAGE, ex);

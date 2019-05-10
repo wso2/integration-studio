@@ -6817,6 +6817,9 @@ public class EsbViewsRepository {
 			
 			public static String buildMessage = "esb::LoadBalanceEndPoint::properties::buildMessage";
 			
+			
+			public static String members = "esb::LoadBalanceEndPoint::properties::members";
+			
 	
 		}
 	

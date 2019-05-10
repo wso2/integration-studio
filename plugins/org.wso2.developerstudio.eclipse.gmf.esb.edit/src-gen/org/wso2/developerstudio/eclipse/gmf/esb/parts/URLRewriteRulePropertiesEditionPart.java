@@ -9,6 +9,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 
 import org.eclipse.jface.viewers.ViewerFilter;
+import org.wso2.developerstudio.eclipse.gmf.esb.EvaluatorExpressionProperty;
 
 
 // End of user code
@@ -66,7 +67,9 @@ public interface URLRewriteRulePropertiesEditionPart {
 
 
 	// Start of user code for urlRewriteRuleCondition specific getters and setters declaration
+	public EvaluatorExpressionProperty getUrlRewriteRuleCondition();
 	
+	public void setUrlRewriteRuleCondition(EvaluatorExpressionProperty evaluatorExpressionProperty);
 	// End of user code
 
 	/**

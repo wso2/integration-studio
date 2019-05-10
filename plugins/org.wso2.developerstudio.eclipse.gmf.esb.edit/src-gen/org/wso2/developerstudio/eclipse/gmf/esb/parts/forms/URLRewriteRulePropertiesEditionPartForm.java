@@ -23,7 +23,7 @@ import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
-
+import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
 
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
@@ -45,7 +45,7 @@ import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.EvaluatorExpressionProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.URLRewriteRulePropertiesEditionPart;
 
@@ -297,6 +297,18 @@ public class URLRewriteRulePropertiesEditionPartForm extends SectionPropertiesEd
 	 */
 	public String getTitle() {
 		return EsbMessages.URLRewriteRule_Part_Title;
+	}
+
+	@Override
+	public EvaluatorExpressionProperty getUrlRewriteRuleCondition() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setUrlRewriteRuleCondition(EvaluatorExpressionProperty evaluatorExpressionProperty) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	// Start of user code additional methods

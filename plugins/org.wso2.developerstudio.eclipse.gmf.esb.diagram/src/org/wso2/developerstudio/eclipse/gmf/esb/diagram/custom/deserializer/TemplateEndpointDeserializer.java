@@ -201,11 +201,12 @@ public class TemplateEndpointDeserializer extends AbstractEndpointDeserializer {
 
         org.apache.synapse.endpoints.TemplateEndpoint templateEndpoint = (org.apache.synapse.endpoints.TemplateEndpoint) synapseEndpoint;
         
-        EndpointDefinition endpointDefinition = templateEndpoint.getDefinition();
-        
         ((TemplateEndpointImpl) endpoint).setEndPointName(templateEndpoint.getName());
         ((TemplateEndpointImpl) endpoint).setTargetTemplate(templateEndpoint.getTemplate());
-        ((TemplateEndpointImpl) endpoint).setAddress(templateEndpoint.getAddress());
+        if (templateEndpoint.getParameterValue("suspend_duration") != null) {
+        	((TemplateEndpointImpl) endpoint).setSuspendInitialDuration(Long.parseLong(templateEndpoint.getParameterValue("suspend_duration")));
+        }
+        ((TemplateEndpointImpl) endpoint).setAddress(templateEndpoint.getParameterValue("uri"));
 
         return endpoint;
     }

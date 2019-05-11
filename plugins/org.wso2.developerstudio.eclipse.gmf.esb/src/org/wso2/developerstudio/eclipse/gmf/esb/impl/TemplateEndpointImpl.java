@@ -145,9 +145,9 @@ public class TemplateEndpointImpl extends AbstractEndPointImpl implements Templa
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
+     * @generated NOT
      */
-    protected TemplateEndpointImpl() {
+    public TemplateEndpointImpl() {
         super();
     }
 

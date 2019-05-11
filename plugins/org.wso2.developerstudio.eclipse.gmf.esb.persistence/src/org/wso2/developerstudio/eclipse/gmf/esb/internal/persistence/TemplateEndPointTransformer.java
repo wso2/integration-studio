@@ -120,6 +120,8 @@ public class TemplateEndPointTransformer extends AbstractEndpointTransformer {
 
         if (StringUtils.isNotBlank(name)) {
             synapseTemplateEP.setName(name);
+        } else if (StringUtils.isNotBlank(templateEndPoint.getEndPointName())) {
+        	synapseTemplateEP.setName(templateEndPoint.getEndPointName());
         }
 
         try {
@@ -132,6 +134,9 @@ public class TemplateEndPointTransformer extends AbstractEndpointTransformer {
                     && StringUtils.isNotBlank(parameter.getParameterValue())) {
                 synapseTemplateEP.addParameter(parameter.getParameterName(), parameter.getParameterValue());
             }
+        }
+        if (synapseTemplateEP.getAddress() != null && StringUtils.isNotBlank(synapseTemplateEP.getAddress())) {
+        	synapseTemplateEP.addParameter("uri", synapseTemplateEP.getAddress());
         }
         synapseTemplateEP.setTemplate(templateEndPoint.getTargetTemplate());
 

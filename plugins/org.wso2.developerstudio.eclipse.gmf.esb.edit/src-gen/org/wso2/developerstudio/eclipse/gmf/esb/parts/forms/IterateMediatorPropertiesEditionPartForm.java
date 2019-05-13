@@ -77,6 +77,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Listener;
 import org.wso2.developerstudio.esb.form.editors.article.providers.NamedEntityDescriptor;
 
 // End of user code
@@ -638,12 +640,19 @@ public class IterateMediatorPropertiesEditionPartForm extends SectionPropertiesE
         Control sequenceTypeLabel = createDescription(sequenceSubsection,
                 EsbViewsRepository.IterateMediator.Properties.sequenceType,
                 EsbMessages.IterateMediatorPropertiesEditionPart_SequenceTypeLabel);
-        sequenceType = new EMFComboViewer(sequenceSubsection, SWT.SCROLL_LOCK);
+        sequenceType = new EMFComboViewer(sequenceSubsection);
         sequenceType.setContentProvider(new ArrayContentProvider());
         sequenceType
                 .setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
         GridData sequenceTypeData = new GridData(GridData.FILL_HORIZONTAL);
         sequenceType.getCombo().setLayoutData(sequenceTypeData);
+        sequenceType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+            @Override
+            public void handleEvent(Event arg0) {
+                arg0.doit = false;
+            }
+        });
         sequenceType.addSelectionChangedListener(new ISelectionChangedListener() {
 
             /**

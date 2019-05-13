@@ -73,6 +73,8 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
 import org.eclipse.ui.forms.widgets.Form;
@@ -635,11 +637,18 @@ public class EJBMediatorPropertiesEditionPartForm extends SectionPropertiesEditi
                     true);
 	    Control [] previousControls = filterSessionSubPropertiesGroup.getChildren();
 	    createDescription(filterSessionSubPropertiesGroup, EsbViewsRepository.EJBMediator.Properties.sessionIdType, EsbMessages.EJBMediatorPropertiesEditionPart_SessionIdTypeLabel);
-		sessionIdType = new EMFComboViewer(filterSessionSubPropertiesGroup, SWT.SCROLL_LOCK);
+		sessionIdType = new EMFComboViewer(filterSessionSubPropertiesGroup);
 		sessionIdType.setContentProvider(new ArrayContentProvider());
 		sessionIdType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData sessionIdTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		sessionIdType.getCombo().setLayoutData(sessionIdTypeData);
+                sessionIdType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		sessionIdType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

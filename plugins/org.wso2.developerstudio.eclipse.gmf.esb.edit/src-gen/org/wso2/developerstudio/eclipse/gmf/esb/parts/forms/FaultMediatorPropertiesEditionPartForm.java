@@ -927,11 +927,18 @@ public class FaultMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
 	protected Composite createFaultReasonTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 	    filterReasonSubPropertiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent, "Reason", true);
 	    Control faultReasonTypeLabel = createDescription(filterReasonSubPropertiesGroup, null, "Type");
-		faultReasonType = new EMFComboViewer(filterReasonSubPropertiesGroup, SWT.SCROLL_LOCK);
+		faultReasonType = new EMFComboViewer(filterReasonSubPropertiesGroup);
 		faultReasonType.setContentProvider(new ArrayContentProvider());
 		faultReasonType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData faultReasonTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		faultReasonType.getCombo().setLayoutData(faultReasonTypeData);
+                faultReasonType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		faultReasonType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -1183,11 +1190,18 @@ public class FaultMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
 	protected Composite createFaultDetailTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 	    filterDetailSubPropertiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent, "Detail", true);
 	    Control faultDetailTypeLabel = createDescription(filterDetailSubPropertiesGroup, null, "Type");
-		faultDetailType = new EMFComboViewer(filterDetailSubPropertiesGroup, SWT.SCROLL_LOCK);
+		faultDetailType = new EMFComboViewer(filterDetailSubPropertiesGroup);
 		faultDetailType.setContentProvider(new ArrayContentProvider());
 		faultDetailType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData faultDetailTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		faultDetailType.getCombo().setLayoutData(faultDetailTypeData);
+                faultDetailType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		faultDetailType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

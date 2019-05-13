@@ -595,11 +595,18 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
      */
 	protected Composite createCompletionMinMessagesTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control completionMinMessagesTypeLabel = createDescription(completeConditionSubGroup, EsbViewsRepository.AggregateMediator.Properties.completionMinMessagesType, EsbMessages.AggregateMediatorPropertiesEditionPart_CompletionMinMessagesTypeLabel);
-		completionMinMessagesType = new EMFComboViewer(completeConditionSubGroup, SWT.SCROLL_LOCK);
+		completionMinMessagesType = new EMFComboViewer(completeConditionSubGroup);
 		completionMinMessagesType.setContentProvider(new ArrayContentProvider());
 		completionMinMessagesType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData completionMinMessagesTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		completionMinMessagesType.getCombo().setLayoutData(completionMinMessagesTypeData);
+                completionMinMessagesType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		completionMinMessagesType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -639,11 +646,18 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
      */
 	protected Composite createCompletionMaxMessagesTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control completionMaxMessagesTypeLabel = createDescription(completeConditionSubGroup, EsbViewsRepository.AggregateMediator.Properties.completionMaxMessagesType, EsbMessages.AggregateMediatorPropertiesEditionPart_CompletionMaxMessagesTypeLabel);
-		completionMaxMessagesType = new EMFComboViewer(completeConditionSubGroup, SWT.SCROLL_LOCK);
+		completionMaxMessagesType = new EMFComboViewer(completeConditionSubGroup);
 		completionMaxMessagesType.setContentProvider(new ArrayContentProvider());
 		completionMaxMessagesType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData completionMaxMessagesTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		completionMaxMessagesType.getCombo().setLayoutData(completionMaxMessagesTypeData);
+                completionMaxMessagesType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		completionMaxMessagesType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

@@ -84,6 +84,8 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
 import org.eclipse.ui.forms.widgets.Form;
@@ -488,11 +490,18 @@ public class CallMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
         filterEndpointTypeSubPropertiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent,
                 "Endpoint Type", true);
 		Control endpointTypeLabel = createDescription(filterEndpointTypeSubPropertiesGroup, EsbViewsRepository.CallMediator.Properties.endpointType, EsbMessages.CallMediatorPropertiesEditionPart_EndpointTypeLabel);
-		endpointType = new EMFComboViewer(filterEndpointTypeSubPropertiesGroup, SWT.SCROLL_LOCK);
+		endpointType = new EMFComboViewer(filterEndpointTypeSubPropertiesGroup);
 		endpointType.setContentProvider(new ArrayContentProvider());
 		endpointType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData endpointTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		endpointType.getCombo().setLayoutData(endpointTypeData);
+                endpointType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		endpointType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

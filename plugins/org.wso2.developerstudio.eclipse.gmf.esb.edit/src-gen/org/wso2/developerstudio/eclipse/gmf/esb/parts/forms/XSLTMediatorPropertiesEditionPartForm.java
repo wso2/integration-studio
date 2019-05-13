@@ -74,6 +74,8 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
 import org.eclipse.ui.forms.widgets.Form;
@@ -419,11 +421,18 @@ public class XSLTMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	protected Composite createXsltSchemaKeyTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 	    xsltSchemaKeySubsection = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent, "XSLT Schema Key", true);
 		Control XSLTSchemaTypeLabel = createDescription(xsltSchemaKeySubsection, EsbViewsRepository.XSLTMediator.Properties.xsltSchemaKeyType, EsbMessages.XSLTMediatorPropertiesEditionPart_XsltSchemaKeyTypeLabel);
-		xsltSchemaKeyType = new EMFComboViewer(xsltSchemaKeySubsection, SWT.SCROLL_LOCK);
+		xsltSchemaKeyType = new EMFComboViewer(xsltSchemaKeySubsection);
 		xsltSchemaKeyType.setContentProvider(new ArrayContentProvider());
 		xsltSchemaKeyType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData xsltSchemaKeyTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		xsltSchemaKeyType.getCombo().setLayoutData(xsltSchemaKeyTypeData);
+                xsltSchemaKeyType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		xsltSchemaKeyType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

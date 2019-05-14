@@ -80,7 +80,7 @@ public class APITransformer extends AbstractEsbNodeTransformer {
 
         information.getSynapseConfiguration().addAPI(visualAPI.getApiName(), api);
 
-        if (null != visualAPI.getCommentsList()) {
+        if (visualAPI.getCommentsList() != null) {
             api.getCommentsList().addAll(visualAPI.getCommentsList());
         }
     }

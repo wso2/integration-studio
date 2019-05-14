@@ -369,7 +369,7 @@ public class ProxyServiceTransformer extends AbstractEsbNodeTransformer {
             ProxyService proxyService = new ProxyService(proxyName);
             info.setCurrentProxy(proxyService);
             
-            if (null != visualService.getCommentsList()) {
+            if (visualService.getCommentsList() != null) {
                 proxyService.getCommentsList().addAll(visualService.getCommentsList());
             }
 

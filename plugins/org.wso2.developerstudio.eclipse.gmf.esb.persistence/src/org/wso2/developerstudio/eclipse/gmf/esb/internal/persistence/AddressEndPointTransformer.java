@@ -136,7 +136,7 @@ public class AddressEndPointTransformer extends AbstractEndpointTransformer {
         }
         createAdvanceOptions(formPage, synapseAddEP);
         synapseAddEP.getDefinition().setAddress(formPage.getAddressEP_URI().getText());
-        if (null != formPage.getEndpointCommentList()) {
+        if (formPage.getEndpointCommentList() != null) {
             synapseAddEP.getCommentsList().addAll(formPage.getEndpointCommentList());
         }
         

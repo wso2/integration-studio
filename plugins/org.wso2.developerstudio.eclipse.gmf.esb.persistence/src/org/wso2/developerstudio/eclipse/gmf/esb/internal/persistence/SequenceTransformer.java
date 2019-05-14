@@ -95,7 +95,7 @@ public class SequenceTransformer extends AbstractEsbNodeTransformer {
             aspectConfiguration.disableStatistics();
         }
         
-        if (null != visualSequence.getCommentsList()) {
+        if (visualSequence.getCommentsList() != null) {
             sequence.getCommentsList().addAll(visualSequence.getCommentsList());
         }
 

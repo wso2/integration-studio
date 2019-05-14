@@ -66,7 +66,7 @@ public class TemplateTransformer extends AbstractEsbNodeTransformer {
                 info.getSynapseConfiguration().addSequenceTemplate("TEMPLATE_NAME", templateMediator);
             }
             
-            if (null != template.getCommentsList()) {
+            if (template.getCommentsList() != null) {
                 templateMediator.getCommentsList().addAll(template.getCommentsList());
             }
 

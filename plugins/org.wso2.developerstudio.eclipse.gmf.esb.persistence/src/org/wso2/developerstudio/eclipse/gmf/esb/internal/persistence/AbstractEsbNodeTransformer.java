@@ -146,7 +146,9 @@ public abstract class AbstractEsbNodeTransformer implements EsbNodeTransformer {
         mediator.setShortDescription(visualElement.getDescription());
         // FIXME : invoke getCommentsList() from org.apache.synapse.Mediator
         // once it is available.
-        ((AbstractMediator) mediator).getCommentsList().addAll(visualElement.getCommentsList());
+        if (null != visualElement.getCommentsList()) {
+            ((AbstractMediator) mediator).getCommentsList().addAll(visualElement.getCommentsList());
+        }
     }
 
     private static void addXMLComments(TransformationInfo info, EList<CommentMediator> commentMediators,

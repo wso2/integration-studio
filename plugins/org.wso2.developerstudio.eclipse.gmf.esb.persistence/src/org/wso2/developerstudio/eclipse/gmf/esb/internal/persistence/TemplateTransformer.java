@@ -66,7 +66,9 @@ public class TemplateTransformer extends AbstractEsbNodeTransformer {
                 info.getSynapseConfiguration().addSequenceTemplate("TEMPLATE_NAME", templateMediator);
             }
             
-            templateMediator.getCommentsList().addAll(template.getCommentsList());
+            if (null != template.getCommentsList()) {
+                templateMediator.getCommentsList().addAll(template.getCommentsList());
+            }
 
         } else if (template.getChild() instanceof EndpointDiagram) {
             org.apache.synapse.endpoints.Template endpointTemplate = new org.apache.synapse.endpoints.Template();
@@ -94,7 +96,9 @@ public class TemplateTransformer extends AbstractEsbNodeTransformer {
 
             info.getSynapseConfiguration().addEndpointTemplate(template.getName(), endpointTemplate);
             
-            endpointTemplate.getCommentsList().addAll(template.getCommentsList());
+            if (null != template.getCommentsList()) {
+                endpointTemplate.getCommentsList().addAll(template.getCommentsList());
+            }
         }
 
     }

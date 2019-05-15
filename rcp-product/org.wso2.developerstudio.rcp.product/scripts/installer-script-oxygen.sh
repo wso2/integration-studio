@@ -29,7 +29,7 @@ JDK_HOME_MACOS="..\/Eclipse/$JDK_DEFAULT_DIRECTORY_NAME/Contents/Home/bin"
 JDK_DISTRIBUTION_NAME="jdk-distibution"
 MACOS_ECLIPSE_CONFIG_PATH="$PRODUCT_PATH_MACOS/DeveloperStudio.app/Contents/Eclipse"
 MACOS_ECLIPSE_PLIST_PATH="$PRODUCT_PATH_MACOS/DeveloperStudio.app/Contents"
-MACOS_ECLIPSE_EXECUTABLE_PATH="$PRODUCT_PATH_MACOS/DeveloperStudio.app/Contents/Eclipse"
+MACOS_ECLIPSE_EXECUTABLE_PATH="$PRODUCT_PATH_MACOS/DeveloperStudio.app/Contents/MacOS"
 MACOS_JDK_LIB_PATH="$PRODUCT_PATH_MACOS/DeveloperStudio.app/Contents/Eclipse/$JDK_DEFAULT_DIRECTORY_NAME/Contents/Home/jre/lib"
 
 JDK_DISTRIBUTION_PATH_LINUX=$JDK_DISTRIBUTION_PATH/jdk-linux
@@ -59,7 +59,7 @@ unzip $PRODUCT_PATH_ROOT/wso2mi-${PRODUCT_VERSION}.zip -d $PRODUCT_PATH_WIN_64/r
 # Rename as "microesb" (this is the static name used in EI Tooling code)
 mv $PRODUCT_PATH_LINUX_86/runtime/wso2mi-$PRODUCT_VERSION $PRODUCT_PATH_LINUX_86/runtime/microesb
 mv $PRODUCT_PATH_LINUX_64/runtime/wso2mi-$PRODUCT_VERSION $PRODUCT_PATH_LINUX_64/runtime/microesb
-mv $PRODUCT_PATH_MACOS/DeveloperStudio.app/Contents/MacOS/runtime/wso2mi-$PRODUCT_VERSION $PRODUCT_PATH_MACOS/DeveloperStudio.app/Contents/Eclipse/runtime/microesb
+mv $PRODUCT_PATH_MACOS/DeveloperStudio.app/Contents/Eclipse/runtime/wso2mi-$PRODUCT_VERSION $PRODUCT_PATH_MACOS/DeveloperStudio.app/Contents/Eclipse/runtime/microesb
 mv $PRODUCT_PATH_WIN_86/runtime/wso2mi-$PRODUCT_VERSION $PRODUCT_PATH_WIN_86/runtime/microesb
 mv $PRODUCT_PATH_WIN_64/runtime/wso2mi-$PRODUCT_VERSION $PRODUCT_PATH_WIN_64/runtime/microesb
 

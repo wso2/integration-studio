@@ -193,7 +193,7 @@
                 <checksumPolicy>ignore</checksumPolicy>
             </releases>
             <id>DevS-ESB-p2-updates-Repository</id>
-            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/4.3.0/esb-tools/updates/</url>
+            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/4.3.0/esb-tools/updates/6.5.0/ei-p2-6.5.0.201905140811/</url>
             <layout>p2</layout>
         </repository>
         <repository>

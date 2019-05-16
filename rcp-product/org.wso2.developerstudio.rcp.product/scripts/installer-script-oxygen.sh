@@ -143,11 +143,11 @@ popd
 
 #Rename Info.plist for Mac issue 
 #TODO: Need to fix this on RCP level
-#pushd ${MACOS_ECLIPSE_PLIST_PATH}
-#sed -e 's/developerstudio/integrationstudio/; s/Developerstudio/IntegrationStudio/; s/WSO2-Developer-Studio/WSO2-Integration-Studio/' Info.plist > Info_temp.plist
-#rm Info.plist
-#mv Info_temp.plist Info.plist
-#popd
+pushd ${MACOS_ECLIPSE_PLIST_PATH}
+sed -e 's/developerstudio/IntegrationStudio/; s/Developerstudio/IntegrationStudio/; s/WSO2-Developer-Studio/WSO2-Integration-Studio/' Info.plist > Info_temp.plist
+rm Info.plist
+mv Info_temp.plist Info.plist
+popd
 
 # Zip the packages with microesb and JDK
 pushd ${PRODUCT_PATH_LINUX_86}

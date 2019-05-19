@@ -162,6 +162,8 @@
 				class="org.eclipse.core.runtime.content.XMLRootElementContentDescriber2">
 				<parameter name="element" value="{http://ws.apache.org/ns/synapse}*" />				
 				<parameter name="element" value="{http://synapse.apache.org/ns/2010/04/configuration}*" />
+				<parameter name="element" value="mock-service" />
+				<parameter name="element" value="unit-test" />
 			</describer>
 		</content-type>
 	</extension>

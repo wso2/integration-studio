@@ -47,8 +47,11 @@ import org.eclipse.ui.WorkbenchException;
 import org.eclipse.ui.ide.IDE;
 import org.eclipse.ui.part.ISetSelectionTarget;
 import org.wso2.developerstudio.eclipse.esb.core.ESBMavenConstants;
+import org.wso2.developerstudio.eclipse.esb.dashboard.templates.Activator;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBArtifact;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
 import org.wso2.developerstudio.eclipse.templates.dashboard.help.TemplateGuideView;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
@@ -68,7 +71,8 @@ import java.util.zip.ZipInputStream;
  * Util class to for sample template creation.
  */
 public class ProjectCreationUtil {
-    
+    private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+	
     private static final String J2EE_PERSPECTIVE = "org.eclipse.jst.j2ee.J2EEPerspective";
     private static String MAVEN_CAR_VERSION = "2.1.1";
     private static String MAVEN_CAR_DEPLOY_VERSION = "1.1.1";
@@ -316,7 +320,11 @@ public class ProjectCreationUtil {
         typeListNode.setValue("${artifact.types}");
         pluginExecution.setConfiguration(configurationNode);
         plugin.addExecution(pluginExecution);
+       
         MavenUtils.saveMavenProject(mavenProject, mavenProjectPomLocation);
+        
+        //Adding Synapse unit testing framework client plugin to the ESB solution project pom file.
+        createSynapseUnitTestPlugin(mavenProjectPomLocation);
     }
 
     protected static File getResourceFile(String samplename, String name, String type) throws IOException {
@@ -669,5 +677,41 @@ public class ProjectCreationUtil {
             bos.write(bytesIn, 0, read);
         }
         bos.close();
+    }
+    
+    private static void createSynapseUnitTestPlugin(File pomFile) {
+        try {
+            MavenProject mavenProject = MavenUtils.getMavenProject(pomFile);
+            Plugin unitTestPlugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2",
+                    "synapse-unit-test-maven-plugin", "1.0-SNAPSHOT", false);
+
+            PluginExecution pluginExecution = new PluginExecution();
+            pluginExecution.addGoal("SynapseUnitTest");
+            pluginExecution.setPhase("test");
+            pluginExecution.setId("synapse-unit-test");
+            unitTestPlugin.addExecution(pluginExecution);
+
+            // adding plugin configuration
+            Xpp3Dom unitTestConfElement = MavenUtils.createMainConfigurationNode(unitTestPlugin);
+            Xpp3Dom serverDetails = MavenUtils.createXpp3Node(unitTestConfElement, "server");
+            Xpp3Dom testServerType = MavenUtils.createXpp3Node(serverDetails, "testServerType");
+            testServerType.setValue("${testServerType}");
+            Xpp3Dom testServerHost = MavenUtils.createXpp3Node(serverDetails, "testServerHost");
+            testServerHost.setValue("${testServerHost}");
+            Xpp3Dom testServerPort = MavenUtils.createXpp3Node(serverDetails, "testServerPort");
+            testServerPort.setValue("${testServerPort}");
+            Xpp3Dom testServerPath = MavenUtils.createXpp3Node(serverDetails, "testServerPath");
+            testServerPath.setValue("${testServerPath}");
+            Xpp3Dom testCasesFilePath = MavenUtils.createXpp3Node(unitTestConfElement, "testCasesFilePath");
+            testCasesFilePath.setValue("${project.basedir}" + File.separator + "test" + File.separator + "${testFile}");
+
+            // save the pom with plugin configuration
+            MavenUtils.saveMavenProject(mavenProject, pomFile);
+
+        } catch (XmlPullParserException e) {
+            log.error("XmlPullParserException error while adding synapse-unit-test plugin to the pom", e);
+        } catch (IOException e) {
+            log.error("IOException error while adding synapse-unit-test plugin to the pom", e);
+        }
     }
 }

@@ -593,6 +593,7 @@ public class ProcessSourceView {
         boolean graphicalEpInsideArtifact = false;
         boolean insideTargetTag = false;
         boolean insideProxySequence = false;
+        boolean insideTemplate = false;
 
         while (!xmlTagsQueue.isEmpty()) {
             XMLTag tempTag = xmlTagsQueue.remove();
@@ -604,6 +605,10 @@ public class ProcessSourceView {
                     insideTargetTag = true;
                 }
 
+                if (tempTag.getqName().equals("template")) {
+                	insideTemplate = true;
+                }
+                
                 if (insideTargetTag && proxySequence.contains(tempTag.getqName())) {
                     insideProxySequence = true;
                 }
@@ -661,6 +666,10 @@ public class ProcessSourceView {
 
                 if (insideTargetTag && tempTag.getqName().equals("target")) {
                     insideTargetTag = false;
+                }
+                
+                if (insideTemplate && tempTag.getqName().equals("template")) {
+                	insideTemplate = false;
                 }
 
                 if (insideTargetTag && proxySequence.contains(tempTag.getqName())) {
@@ -774,7 +783,7 @@ public class ProcessSourceView {
                                     intermediaryStack.push(currentMediator);
 	
                             	} else if (((!tempTag.getqName().equals("endpoint") && !isGraphicalEP(tempTag.getqName()))
-                                        || (tempTag.getqName().equals("endpoint") && !insideGraphicalEp && !graphicalEpInsideArtifact))
+                                        || (tempTag.getqName().equals("endpoint") && !insideGraphicalEp && !graphicalEpInsideArtifact && !insideTemplate))
                                 		&& (!insideTargetTag || (insideTargetTag && insideProxySequence))) {
                                     sourceError = mediatorValidation();
                                     if (sourceError != null) {

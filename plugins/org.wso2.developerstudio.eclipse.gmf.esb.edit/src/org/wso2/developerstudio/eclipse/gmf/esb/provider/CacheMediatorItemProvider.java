@@ -59,7 +59,7 @@ public class CacheMediatorItemProvider extends MediatorItemProvider {
         addCacheMediatorImplementationPropertyDescriptor(object);
 //        addScopePropertyDescriptor(object);
         
-        boolean previousCache = cacheMediator.getCacheMediatorImplementation().equals(CacheMediatorType.PREVIOUS_IMPLEMENTATION);
+        boolean previousCache = cacheMediator.getCacheMediatorImplementation().equals(CacheMediatorType.COMPATIBILITY_611);
         
         addCacheTypePropertyDescriptor(object);
         if (cacheMediator.getCacheType().equals(CacheType.FINDER)) {

@@ -412,11 +412,18 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	protected Composite createScriptTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 	    filterScriptTypeSubPropertiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent, "Script Type", true);
 		Control scriptTypeLabel = createDescription(filterScriptTypeSubPropertiesGroup, EsbViewsRepository.ScriptMediator.Properties.scriptType, EsbMessages.ScriptMediatorPropertiesEditionPart_ScriptTypeLabel);
-		scriptType = new EMFComboViewer(filterScriptTypeSubPropertiesGroup, SWT.SCROLL_LOCK);
+		scriptType = new EMFComboViewer(filterScriptTypeSubPropertiesGroup);
 		scriptType.setContentProvider(new ArrayContentProvider());
 		scriptType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData scriptTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		scriptType.getCombo().setLayoutData(scriptTypeData);
+                scriptType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		scriptType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

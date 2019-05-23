@@ -72,6 +72,8 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
 import org.eclipse.ui.forms.widgets.Form;
@@ -709,11 +711,18 @@ public class SequencePropertiesEditionPartForm extends SectionPropertiesEditingP
 	protected Composite createReferringSequenceTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 	    referingSequenceSubsection = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent, "Refering Sequence", true);
 		Control referringSequenceTypeLable = createDescription(referingSequenceSubsection, EsbViewsRepository.Sequence.Properties.referringSequenceType, EsbMessages.SequencePropertiesEditionPart_ReferringSequenceTypeLabel);
-		referringSequenceType = new EMFComboViewer(referingSequenceSubsection, SWT.SCROLL_LOCK);
+		referringSequenceType = new EMFComboViewer(referingSequenceSubsection);
 		referringSequenceType.setContentProvider(new ArrayContentProvider());
 		referringSequenceType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData referringSequenceTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		referringSequenceType.getCombo().setLayoutData(referringSequenceTypeData);
+                referringSequenceType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		referringSequenceType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

@@ -29,8 +29,10 @@ import org.apache.synapse.mediators.transform.url.RewriteRule;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.transaction.RecordingCommand;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
-import org.eclipse.ui.forms.editor.FormEditor;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.EvaluatorExpressionProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.RuleActionType;
@@ -75,7 +77,20 @@ public class URLRewriteMediatorDeserializer extends AbstractEsbNodeDeserializer<
                         evaluatorSerializer.serialize(conditionElem, evaluator);
                         String condition = conditionElem.getFirstOMChild().toString();
                         evaluatorExpressionProperty.setEvaluatorValue(condition);
-                        urlRewriteRule.setUrlRewriteRuleCondition(evaluatorExpressionProperty);
+                        
+                        TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(urlRewriteRule);
+                        if (domain != null) {
+                            domain.getCommandStack().execute(new RecordingCommand(domain) {
+
+                                @Override
+                                protected void doExecute() {
+                                	urlRewriteRule.setUrlRewriteRuleCondition(evaluatorExpressionProperty);
+                                }
+                            });
+                        } else {
+                        	urlRewriteRule.setUrlRewriteRuleCondition(evaluatorExpressionProperty);
+                        }
+                        
                     } catch (EvaluatorException e) {
                         getLog().warn("", e);
                     }

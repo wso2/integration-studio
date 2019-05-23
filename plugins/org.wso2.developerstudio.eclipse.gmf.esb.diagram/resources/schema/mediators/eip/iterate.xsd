@@ -29,7 +29,7 @@
             <xs:documentation source="description">
                 Splits a message into several different messages and passes them to another sequence or endpoint. These
                 messages are processed in parallel (by default). The mediator splits messages by matching elements of
-                the original message with an XPath expression.
+                the original message with an XPath or JSONPath expression.
             </xs:documentation>
         </xs:annotation>
         <xs:complexType>

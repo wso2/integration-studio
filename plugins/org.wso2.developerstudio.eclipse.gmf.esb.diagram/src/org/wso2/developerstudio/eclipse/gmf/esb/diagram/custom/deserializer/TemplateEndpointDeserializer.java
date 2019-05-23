@@ -27,23 +27,27 @@ import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.endpoints.AbstractEndpoint;
+import org.apache.synapse.endpoints.Endpoint;
+import org.apache.synapse.endpoints.EndpointDefinition;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.ui.forms.editor.FormEditor;
 import org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
+import org.wso2.developerstudio.eclipse.gmf.esb.EndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.TemplateEndpoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.TemplateEndpointParameter;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EndpointDiagramEndpointCompartment2EditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EndpointDiagramEndpointCompartmentEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.TemplateEndpointImpl;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.ESBFormEditor;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.EndpointFormPage;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.TemplateEndPointFormPage;
 
-public class TemplateEndpointDeserializer extends AbstractEsbNodeDeserializer<AbstractEndpoint, AbstractEndPoint> {
+public class TemplateEndpointDeserializer extends AbstractEndpointDeserializer {
 
     public AbstractEndPoint createNode(IGraphicalEditPart part, AbstractEndpoint object) {
         Assert.isTrue(object instanceof org.apache.synapse.endpoints.TemplateEndpoint,
@@ -187,5 +191,23 @@ public class TemplateEndpointDeserializer extends AbstractEsbNodeDeserializer<Ab
         }
         return newlyAddedProperties;
 
+    }
+    
+    public org.wso2.developerstudio.eclipse.gmf.esb.EndPoint createUIEndpoint(Endpoint synapseEndpoint) {
+        Assert.isTrue(synapseEndpoint instanceof org.apache.synapse.endpoints.TemplateEndpoint,
+                "Unsupported endpoint has been passed to create the UI object at " + this.getClass());
+
+        org.wso2.developerstudio.eclipse.gmf.esb.EndPoint endpoint = new TemplateEndpointImpl();
+
+        org.apache.synapse.endpoints.TemplateEndpoint templateEndpoint = (org.apache.synapse.endpoints.TemplateEndpoint) synapseEndpoint;
+        
+        ((TemplateEndpointImpl) endpoint).setEndPointName(templateEndpoint.getName());
+        ((TemplateEndpointImpl) endpoint).setTargetTemplate(templateEndpoint.getTemplate());
+        if (templateEndpoint.getParameterValue("suspend_duration") != null) {
+        	((TemplateEndpointImpl) endpoint).setSuspendInitialDuration(Long.parseLong(templateEndpoint.getParameterValue("suspend_duration")));
+        }
+        ((TemplateEndpointImpl) endpoint).setAddress(templateEndpoint.getParameterValue("uri"));
+
+        return endpoint;
     }
 }

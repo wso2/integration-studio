@@ -514,11 +514,18 @@ public class StoreMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
 	protected Composite createSpecifyAsEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 	    messageStoreSubsection = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent, "Message Store", true);
 		Control specifyAsLabel = createDescription(messageStoreSubsection, EsbViewsRepository.StoreMediator.Properties.specifyAs, EsbMessages.StoreMediatorPropertiesEditionPart_SpecifyAsLabel);
-		specifyAs = new EMFComboViewer(messageStoreSubsection, SWT.SCROLL_LOCK);
+		specifyAs = new EMFComboViewer(messageStoreSubsection);
 		specifyAs.setContentProvider(new ArrayContentProvider());
 		specifyAs.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData specifyAsData = new GridData(GridData.FILL_HORIZONTAL);
 		specifyAs.getCombo().setLayoutData(specifyAsData);
+                specifyAs.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		specifyAs.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

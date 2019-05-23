@@ -996,12 +996,19 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
         Control onRejectSequenceTypeLabel = createDescription(filterOnRejectionSubPropertiesGroup,
                 EsbViewsRepository.EntitlementMediator.Properties.onRejectSequenceType,
                 EsbMessages.EntitlementMediatorPropertiesEditionPart_OnRejectSequenceTypeLabel);
-        onRejectSequenceType = new EMFComboViewer(filterOnRejectionSubPropertiesGroup, SWT.SCROLL_LOCK);
+        onRejectSequenceType = new EMFComboViewer(filterOnRejectionSubPropertiesGroup);
         onRejectSequenceType.setContentProvider(new ArrayContentProvider());
         onRejectSequenceType
                 .setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
         GridData onRejectSequenceTypeData = new GridData(GridData.FILL_HORIZONTAL);
         onRejectSequenceType.getCombo().setLayoutData(onRejectSequenceTypeData);
+        onRejectSequenceType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+            @Override
+            public void handleEvent(Event arg0) {
+                arg0.doit = false;
+            }
+        });
         onRejectSequenceType.addSelectionChangedListener(new ISelectionChangedListener() {
 
             /**
@@ -1055,12 +1062,19 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
         Control onAcceptSequenceTypeLabel = createDescription(filterOnAcceptanceSubPropertiesGroup,
                 EsbViewsRepository.EntitlementMediator.Properties.onAcceptSequenceType,
                 EsbMessages.EntitlementMediatorPropertiesEditionPart_OnAcceptSequenceTypeLabel);
-        onAcceptSequenceType = new EMFComboViewer(filterOnAcceptanceSubPropertiesGroup, SWT.SCROLL_LOCK);
+        onAcceptSequenceType = new EMFComboViewer(filterOnAcceptanceSubPropertiesGroup);
         onAcceptSequenceType.setContentProvider(new ArrayContentProvider());
         onAcceptSequenceType
                 .setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
         GridData onAcceptSequenceTypeData = new GridData(GridData.FILL_HORIZONTAL);
         onAcceptSequenceType.getCombo().setLayoutData(onAcceptSequenceTypeData);
+        onAcceptSequenceType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+            @Override
+            public void handleEvent(Event arg0) {
+                arg0.doit = false;
+            }
+        });
         onAcceptSequenceType.addSelectionChangedListener(new ISelectionChangedListener() {
 
             /**
@@ -1114,12 +1128,19 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
         Control adviceSequenceTypeLabel = createDescription(filterAdviceSubPropertiesGroup,
                 EsbViewsRepository.EntitlementMediator.Properties.adviceSequenceType,
                 EsbMessages.EntitlementMediatorPropertiesEditionPart_AdviceSequenceTypeLabel);
-        adviceSequenceType = new EMFComboViewer(filterAdviceSubPropertiesGroup, SWT.SCROLL_LOCK);
+        adviceSequenceType = new EMFComboViewer(filterAdviceSubPropertiesGroup);
         adviceSequenceType.setContentProvider(new ArrayContentProvider());
         adviceSequenceType
                 .setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
         GridData adviceSequenceTypeData = new GridData(GridData.FILL_HORIZONTAL);
         adviceSequenceType.getCombo().setLayoutData(adviceSequenceTypeData);
+        adviceSequenceType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+            @Override
+            public void handleEvent(Event arg0) {
+                arg0.doit = false;
+            }
+        });
         adviceSequenceType.addSelectionChangedListener(new ISelectionChangedListener() {
 
             /**
@@ -1172,12 +1193,19 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
         Control obligationSequenceTypeLabel = createDescription(filterObligationsSubPropertiesGroup,
                 EsbViewsRepository.EntitlementMediator.Properties.obligationsSequenceType,
                 EsbMessages.EntitlementMediatorPropertiesEditionPart_ObligationsSequenceTypeLabel);
-        obligationsSequenceType = new EMFComboViewer(filterObligationsSubPropertiesGroup, SWT.SCROLL_LOCK);
+        obligationsSequenceType = new EMFComboViewer(filterObligationsSubPropertiesGroup);
         obligationsSequenceType.setContentProvider(new ArrayContentProvider());
         obligationsSequenceType
                 .setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
         GridData obligationsSequenceTypeData = new GridData(GridData.FILL_HORIZONTAL);
         obligationsSequenceType.getCombo().setLayoutData(obligationsSequenceTypeData);
+        obligationsSequenceType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+            @Override
+            public void handleEvent(Event arg0) {
+                arg0.doit = false;
+            }
+        });
         obligationsSequenceType.addSelectionChangedListener(new ISelectionChangedListener() {
 
             /**

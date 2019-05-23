@@ -23,6 +23,7 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOU
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__INBOUND_WORKER_POOL_QUEUE_LENGTH;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__INBOUND_WORKER_POOL_SIZE_CORE;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__INBOUND_WORKER_POOL_SIZE_MAX;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__INBOUND_WORKER_THREAD_KEEP_ALIVE_SEC;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.InboundEndpointConstants;
@@ -42,7 +43,7 @@ public enum HTTPInboundEndpointParameter {
                             INBOUND_ENDPOINT__INBOUND_WORKER_POOL_SIZE_MAX,
                             true), INBOUND_WORKER_THREAD_KEEP_ALIVE_SEC_TYPE(
                                     InboundEndpointConstants.INBOUND_WORKER_THREAD_KEEP_ALIVE_SEC,
-                                    INBOUND_ENDPOINT__INBOUND_HTTP_PORT, true), INBOUND_WORKER_POOL_QUEUE_LENGTH_TYPE(
+                                    INBOUND_ENDPOINT__INBOUND_WORKER_THREAD_KEEP_ALIVE_SEC, true), INBOUND_WORKER_POOL_QUEUE_LENGTH_TYPE(
                                             InboundEndpointConstants.INBOUND_WORKER_POOL_QUEUE_LENGTH,
                                             INBOUND_ENDPOINT__INBOUND_WORKER_POOL_QUEUE_LENGTH,
                                             true), INBOUND_THREAD_GROUOP_ID_TYPE(

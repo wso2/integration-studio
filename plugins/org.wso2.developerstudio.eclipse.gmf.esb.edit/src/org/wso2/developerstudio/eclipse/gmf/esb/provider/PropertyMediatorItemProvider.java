@@ -524,6 +524,16 @@ public class PropertyMediatorItemProvider extends MediatorItemProvider {
         String propertyExpression = StringUtils.rightPad(((PropertyMediator) object).getValueExpression().toString(),
                 maxLength);
 
+        PropertyName labelValue = ((PropertyMediator) object).getPropertyName();
+        String newPropertyName = ((PropertyMediator) object).getNewPropertyName();
+        String label = labelValue == null ? null : labelValue.toString();
+
+        String newLabel = label == "New Property..." ? newPropertyName : label;
+
+        if (!(((PropertyMediator) object).eContainer() instanceof PropertyGroupMediatorImpl)) {
+            return newLabel == null || label.length() == 0 ? getString("_UI_PropertyMediator_type") : "Property";
+        }
+
         String formattedString = null;
         if (newProperty.equalsIgnoreCase(((PropertyMediator) object).getPropertyName().getName())) {
             if (((PropertyMediator) object).getNewPropertyName() == null

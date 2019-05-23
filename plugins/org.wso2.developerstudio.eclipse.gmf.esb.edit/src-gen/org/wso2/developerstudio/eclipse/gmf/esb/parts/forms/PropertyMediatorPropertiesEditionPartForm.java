@@ -493,11 +493,18 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
 	protected Composite createValueTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 	    filterValuesSubPropertiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent, "Value", true);
 		Control valueTypeLabel = createDescription(filterValuesSubPropertiesGroup, EsbViewsRepository.PropertyMediator.Properties.valueType, EsbMessages.PropertyMediatorPropertiesEditionPart_ValueTypeLabel);
-		valueType = new EMFComboViewer(filterValuesSubPropertiesGroup, SWT.SCROLL_LOCK);
+		valueType = new EMFComboViewer(filterValuesSubPropertiesGroup);
 		valueType.setContentProvider(new ArrayContentProvider());
 		valueType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData valueTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		valueType.getCombo().setLayoutData(valueTypeData);
+                valueType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		valueType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

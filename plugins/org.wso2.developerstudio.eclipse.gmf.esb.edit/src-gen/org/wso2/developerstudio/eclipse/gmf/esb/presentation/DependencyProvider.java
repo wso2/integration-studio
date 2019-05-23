@@ -127,7 +127,7 @@ public class DependencyProvider extends Dialog {
     public static final String OS_TYPE_WINDOWS = "windows";
     private static final String microesbLibPath = "runtime" + File.separator + "microesb" + File.separator + "lib";
     public static final String EI_TOOLING_HOME_MACOS = File.separator + "Applications" + File.separator
-            + "IntegrationStudio.app" + File.separator + "Contents" + File.separator + "MacOS";
+            + "IntegrationStudio.app" + File.separator + "Contents" + File.separator + "Eclipse";
     public static final String POM_XML = "pom.xml";
     public static final String TARGET = "target";
     public static final String MYSQL = "MYSQL";
@@ -176,7 +176,7 @@ public class DependencyProvider extends Dialog {
     private Text databaseTextField;
     private Label emptyLabel;
     private Button testConnectionButton;
-    private Button okButton;
+    private Button saveButton;
     private Button cancelButton;
     private Text userNameTextField;
     private ProgressMonitorDialog progressMonitorDialog;
@@ -556,22 +556,22 @@ public class DependencyProvider extends Dialog {
             testConnectionButton.setText("Test Connection");
             testConnectionButton.setLayoutData(layoutData);
         }
-        okButton = new Button(dialogShell, SWT.BUTTON1);
+        saveButton = new Button(dialogShell, SWT.BUTTON1);
         {
 
             FormData layoutData = new FormData();
             layoutData.top = new FormAttachment(connectionDetailsComposite, 10);
             layoutData.left = new FormAttachment(testConnectionButton, 4);
             layoutData.right = new FormAttachment(85);
-            okButton.setText("Save");
-            okButton.setLayoutData(layoutData);
+            saveButton.setText("Save");
+            saveButton.setLayoutData(layoutData);
         }
         cancelButton = new Button(dialogShell, SWT.BUTTON1);
         {
 
             FormData layoutData = new FormData();
             layoutData.top = new FormAttachment(connectionDetailsComposite, 10);
-            layoutData.left = new FormAttachment(okButton, 4);
+            layoutData.left = new FormAttachment(saveButton, 4);
             layoutData.right = new FormAttachment(99);
             cancelButton.setText("Cancel");
             cancelButton.setLayoutData(layoutData);
@@ -587,7 +587,7 @@ public class DependencyProvider extends Dialog {
                     browseLocalComposite.setVisible(false);
 
                     testConnectionButton.setEnabled(false);
-                    okButton.setEnabled(false);
+                    saveButton.setEnabled(false);
 
                     versionComboBox.select(0);
                     jarLocationText.setText("");
@@ -614,7 +614,7 @@ public class DependencyProvider extends Dialog {
                     browseButton.setEnabled(true);
 
                     testConnectionButton.setEnabled(false);
-                    okButton.setEnabled(false);
+                    saveButton.setEnabled(false);
 
                     versionComboBox.select(0);
 
@@ -639,7 +639,7 @@ public class DependencyProvider extends Dialog {
                 browseLocalComposite.setVisible(false);
 
                 testConnectionButton.setEnabled(false);
-                okButton.setEnabled(false);
+                saveButton.setEnabled(false);
 
                 switch (connectiontypeComboBox.getText()) {
 
@@ -723,7 +723,7 @@ public class DependencyProvider extends Dialog {
                         infoLabel.setVisible(true);
                         downloadButton.setEnabled(false);
                         testConnectionButton.setEnabled(true);
-                        okButton.setEnabled(true);
+                        saveButton.setEnabled(true);
                         jarProvided = true;
                         jarLocationText.setText(file.getPath());
                     }
@@ -735,7 +735,7 @@ public class DependencyProvider extends Dialog {
 
                     downloadButton.setEnabled(false);
                     testConnectionButton.setEnabled(false);
-                    okButton.setEnabled(false);
+                    saveButton.setEnabled(false);
 
                 } else {
                     enableButtonsIfDataIsAvailable();
@@ -776,12 +776,12 @@ public class DependencyProvider extends Dialog {
                         && ((versionComboBox.getText().isEmpty() && !serverRadioButton.getSelection())
                                 || (jarLocationText.getText().isEmpty() && !browseFileRadioButton.getSelection()))) {
                     testConnectionButton.setEnabled(false);
-                    okButton.setEnabled(false);
+                    saveButton.setEnabled(false);
 
                 } else if (!((Text) e.getSource()).getText().isEmpty() && !((Text) e.getSource()).getText().equals("")
                         && ((Text) e.getSource()).isEnabled()) {
                     testConnectionButton.setEnabled(true);
-                    okButton.setEnabled(true);
+                    saveButton.setEnabled(true);
 
                 }
             }
@@ -816,7 +816,7 @@ public class DependencyProvider extends Dialog {
             }
         });
 
-        okButton.addListener(SWT.Selection, new Listener() {
+        saveButton.addListener(SWT.Selection, new Listener() {
             @Override
             public void handleEvent(org.eclipse.swt.widgets.Event event) {
                 fillConnectionObj();
@@ -861,7 +861,7 @@ public class DependencyProvider extends Dialog {
 
         {
             testConnectionButton.setEnabled(false);
-            okButton.setEnabled(false);
+            saveButton.setEnabled(false);
 
             jarLocationText.setEnabled(false);
             browseFileRadioButton.setEnabled(true);
@@ -897,7 +897,7 @@ public class DependencyProvider extends Dialog {
         dialogShell.pack();
 
         if (OS_TYPE.indexOf(OS_TYPE_WINDOWS) >= 0) {
-            dialogShell.setSize(480, 330);
+            dialogShell.setSize(520, 380);
         }
         if (OS_TYPE.indexOf(OS_TYPE_LINUX) >= 0) {
             dialogShell.setSize(720, 430);
@@ -994,14 +994,14 @@ public class DependencyProvider extends Dialog {
                 && !portTextField.getText().equals("") && databaseTextField.getText() != null
                 && !databaseTextField.getText().equals("")) {
             testConnectionButton.setEnabled(true);
-            okButton.setEnabled(true);
+            saveButton.setEnabled(true);
         }
 
         if (hostTextField.getText() == null || hostTextField.getText().equals("") && portTextField.getText() == null
                 || portTextField.getText().equals("") && databaseTextField.getText() == null
                 || databaseTextField.getText().equals("")) {
             testConnectionButton.setEnabled(false);
-            okButton.setEnabled(false);
+            saveButton.setEnabled(false);
         }
     }
 
@@ -1240,6 +1240,7 @@ public class DependencyProvider extends Dialog {
                     Arrays.asList("org.apache.maven.plugins:maven-dependency-plugin:2.8:copy-dependencies"), null);
 
             if (mvn.hasExceptions()) {// throw errors if exists
+                remove(dependencyDir + File.separator + POM_XML);
                 List<Throwable> rr = mvn.getExceptions();
                 for (Throwable t : rr) {
                     throw t;

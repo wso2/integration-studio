@@ -81,7 +81,7 @@ public class CacheMediatorTransformer extends AbstractEsbNodeTransformer {
         setCommonProperties(cacheMediator, visualCache);
 
         boolean isPreviousCacheImplementation = visualCache.getCacheMediatorImplementation()
-                .equals(CacheMediatorType.PREVIOUS_IMPLEMENTATION);
+                .equals(CacheMediatorType.COMPATIBILITY_611);
 
         if (isPreviousCacheImplementation) {
             cacheMediator.setPreviousCacheImplementation(true);

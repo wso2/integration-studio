@@ -28,6 +28,7 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOU
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__SSL_PROTOCOL;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__SSL_VERIFY_CLIENT;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRUSTSTORE;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__INBOUND_WORKER_THREAD_KEEP_ALIVE_SEC;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.InboundEndpointConstants;
@@ -57,7 +58,7 @@ public enum HTTPSInboundEndpointParameter {
                                                                     INBOUND_ENDPOINT__INBOUND_WORKER_POOL_SIZE_MAX,
                                                                     true), INBOUND_WORKER_THREAD_KEEP_ALIVE_SEC_TYPE(
                                                                             InboundEndpointConstants.INBOUND_WORKER_THREAD_KEEP_ALIVE_SEC,
-                                                                            INBOUND_ENDPOINT__INBOUND_HTTP_PORT,
+                                                                            INBOUND_ENDPOINT__INBOUND_WORKER_THREAD_KEEP_ALIVE_SEC,
                                                                             true), INBOUND_WORKER_POOL_QUEUE_LENGTH_TYPE(
                                                                                     InboundEndpointConstants.INBOUND_WORKER_POOL_QUEUE_LENGTH,
                                                                                     INBOUND_ENDPOINT__INBOUND_WORKER_POOL_QUEUE_LENGTH,

@@ -44,10 +44,10 @@ public enum HL7InboundEndpointParameter {
                                     true), INBOUND_HL7_BUILD_INVALID_MESSAGES_TYPE(
                                             InboundEndpointConstants.INBOUND_HL7_BUILD_INVALID_MESSAGES,
                                             INBOUND_ENDPOINT__INBOUND_HL7_BUILD_INVALID_MESSAGES,
-                                            true), INBOUND_HL7_PASSTHROUHG_INVALID_MESSAGES_TYPE(
+                                            false), INBOUND_HL7_PASSTHROUHG_INVALID_MESSAGES_TYPE(
                                                     InboundEndpointConstants.INBOUND_HL7_PASSTHROUHG_INVALID_MESSAGES,
                                                     INBOUND_ENDPOINT__INBOUND_HL7_PASS_THROUGH_INVALID_MESSAGES,
-                                                    true), INBOUND_HL7_AUTOACK_TYPE(
+                                                    false), INBOUND_HL7_AUTOACK_TYPE(
                                                             InboundEndpointConstants.INBOUND_HL7_AUTOACK,
                                                             INBOUND_ENDPOINT__INBOUND_HL7_AUTO_ACK,
                                                             false), INBOUND_HL7_VALIDATE_MESSAGE_TYPE(

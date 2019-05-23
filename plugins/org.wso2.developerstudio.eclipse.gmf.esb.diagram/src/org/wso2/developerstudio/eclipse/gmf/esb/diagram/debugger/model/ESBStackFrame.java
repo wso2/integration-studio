@@ -86,6 +86,7 @@ public class ESBStackFrame extends ESBDebugElement implements IStackFrame, Event
     private static final String API_WIRELOG_KEY = "api";
     private static final String RESOURCE_WIRELOG_KEY = "resource";
     private static final String URL_MAPPING_OLD_WIRELOG_KEY = "url-mapping";
+    private static final String URL_MAPPING_OLD_WIRELOG_KEY_TEMPLATE = "uri-template";
     private static final String URL_MAPPING_NEW_WIRELOG_KEY = "mapping";
     private static final String METHOD_WIRELOG_KEY = "method";
     private static final String SEQUENCE_WIRELOG_KEY = "sequence";
@@ -339,11 +340,17 @@ public class ESBStackFrame extends ESBDebugElement implements IStackFrame, Event
 
                 JsonElement urlMappingElement = resourceJsonObject.get(URL_MAPPING_OLD_WIRELOG_KEY);
                 resourceJsonObject.remove(URL_MAPPING_OLD_WIRELOG_KEY);
+                if(urlMappingElement == null) {
+                    urlMappingElement = resourceJsonObject.get(URL_MAPPING_OLD_WIRELOG_KEY_TEMPLATE);
+                    resourceJsonObject.remove(URL_MAPPING_OLD_WIRELOG_KEY_TEMPLATE);
+                }
 
                 JsonElement methodElement = resourceJsonObject.get(METHOD_WIRELOG_KEY);
                 resourceJsonObject.remove(METHOD_WIRELOG_KEY);
 
-                resourceJsonObject.add(URL_MAPPING_NEW_WIRELOG_KEY, urlMappingElement);
+                if (urlMappingElement != null) {
+                    resourceJsonObject.add(URL_MAPPING_NEW_WIRELOG_KEY, urlMappingElement);
+                }
                 resourceJsonObject.add(METHOD_WIRELOG_KEY, methodElement);
 
                 JsonElement mediationComponentElment = breakpointCommandJsonObject.get(MEDIATION_COMPONENT_WIRELOG_KEY);

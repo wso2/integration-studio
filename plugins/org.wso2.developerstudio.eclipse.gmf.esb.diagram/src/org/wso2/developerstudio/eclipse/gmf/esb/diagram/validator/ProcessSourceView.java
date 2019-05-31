@@ -602,9 +602,9 @@ public class ProcessSourceView {
             XMLTag tempTag = xmlTagsQueue.remove();
 
             if (tempTag.isStartTag()) { // 14
-            	if (!isComment) {
-            		xmlTags.push(tempTag);
-            	}
+                if (!isComment) {
+                    xmlTags.push(tempTag);
+                }
 
                 if (tempTag.getqName().equals("target")) {
                     insideTargetTag = true;
@@ -669,11 +669,11 @@ public class ProcessSourceView {
 
             } else if (tempTag.isEndTag() || tempTag.getTagType() == 3) {// 235
 
-            	if (tempTag.getValue().trim().startsWith(START_COMMENT)) {
-            		isComment = true;
-            	} else if (isComment && tempTag.getValue().trim().endsWith(END_COMMENT)) {
-            		isComment = false;
-            	}
+                if (tempTag.getValue().trim().startsWith(START_COMMENT)) {
+                    isComment = true;
+                } else if (isComment && tempTag.getValue().trim().endsWith(END_COMMENT)) {
+                    isComment = false;
+                }
             	
                 if (insideTargetTag && tempTag.getqName().equals("target")) {
                     insideTargetTag = false;
@@ -838,11 +838,11 @@ public class ProcessSourceView {
                 }
 
             } else if (tempTag.getTagType() == 6 || tempTag.getTagType() == 7) {
-            	if (tempTag.getValue().trim().startsWith(START_COMMENT)) {
-            		isComment = true;
-            	} else if (isComment && tempTag.getValue().trim().endsWith(END_COMMENT)) {
-            		isComment = false;
-            	}
+                if (tempTag.getValue().trim().startsWith(START_COMMENT)) {
+                    isComment = true;
+                } else if (isComment && tempTag.getValue().trim().endsWith(END_COMMENT)) {
+                    isComment = false;
+                }
             	
                 if (!isComment && prev != null && (prev.getTagType() == 4 || prev.getTagType() == 7 || prev.getTagType() == 1)) {
                     xmlTags.push(tempTag);

@@ -43,7 +43,11 @@ public class LoopBackMediatorTransformer extends AbstractEsbNodeTransformer {
         information.getParentSequence().addChild(createLoopBackMediator(visualMediator));
 
         // Transform the loopback mediator output data flow path.
-        doTransform(information, visualMediator.getOutputConnector());
+        try {
+        	doTransform(information, visualMediator.getOutputConnector());
+        } catch (TransformerException e) {
+            throw new TransformerException(e);
+        }
     }
 
     public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints) {

@@ -77,6 +77,8 @@ public class ProcessSourceView {
     private static final String IN_SEQUENCE = "inSequence";
     private static final String OUT_SEQUENCE = "outSequence";
     private static final String FAULT_SEQUENCE = "faultSequence";
+    private static final String START_COMMENT = "<!--";
+    private static final String END_COMMENT = "-->";
     
     private static SourceError sourceError = new SourceError();
     private static Stack<XMLTag> xmlTags;
@@ -594,12 +596,15 @@ public class ProcessSourceView {
         boolean insideTargetTag = false;
         boolean insideProxySequence = false;
         boolean insideTemplate = false;
+        boolean isComment = false;
 
         while (!xmlTagsQueue.isEmpty()) {
             XMLTag tempTag = xmlTagsQueue.remove();
 
             if (tempTag.isStartTag()) { // 14
-                xmlTags.push(tempTag);
+                if (!isComment) {
+                    xmlTags.push(tempTag);
+                }
 
                 if (tempTag.getqName().equals("target")) {
                     insideTargetTag = true;
@@ -664,6 +669,12 @@ public class ProcessSourceView {
 
             } else if (tempTag.isEndTag() || tempTag.getTagType() == 3) {// 235
 
+                if (tempTag.getValue().trim().startsWith(START_COMMENT)) {
+                    isComment = true;
+                } else if (isComment && tempTag.getValue().trim().endsWith(END_COMMENT)) {
+                    isComment = false;
+                }
+            	
                 if (insideTargetTag && tempTag.getqName().equals("target")) {
                     insideTargetTag = false;
                 }
@@ -689,7 +700,11 @@ public class ProcessSourceView {
                 }
 
                 if (prev != null && prev.getTagType() != 8) {
-                    xmlTags.push(tempTag);
+                	if (!isComment) {
+                		xmlTags.push(tempTag);
+                	} else if (isComment && tempTag.getValue().trim().endsWith(END_COMMENT)) {
+                		isComment = false;
+                	}
                     XMLTag currentMediator = null;
 
                     if (intermediaryStack.size() > 0) {
@@ -785,10 +800,12 @@ public class ProcessSourceView {
                             	} else if (((!tempTag.getqName().equals("endpoint") && !isGraphicalEP(tempTag.getqName()))
                                         || (tempTag.getqName().equals("endpoint") && !insideGraphicalEp && !graphicalEpInsideArtifact && !insideTemplate))
                                 		&& (!insideTargetTag || (insideTargetTag && insideProxySequence))) {
-                                    sourceError = mediatorValidation();
-                                    if (sourceError != null) {
-                                        return sourceError;
-                                    }
+                            		if (!isComment) {
+	                                    sourceError = mediatorValidation();
+	                                    if (sourceError != null) {
+	                                        return sourceError;
+	                                    }
+                            		}
                                     if (currentMediator != null && !currentMediator.getqName().equals(tempTag.getqName())) {
                                     	intermediaryStack.push(currentMediator);
                                     }
@@ -799,12 +816,21 @@ public class ProcessSourceView {
                         }
 
                     } else {
-                        if (currentMediator != null) {
-                            intermediaryStack.push(currentMediator);
+                        if (currentMediator != null && !isComment) {
+                            if (currentMediator.getTagType() == 4 && tempTag.getTagType() == 5 
+                                    && currentMediator.getValue().equals(prev.getValue())) {
+                                sourceError = mediatorValidation();
+                                if (sourceError != null) {
+                                    return sourceError;
+                                }
+                                
+                            } else {
+                                intermediaryStack.push(currentMediator);
+                            }
                         }
                     }
 
-                } else if (tempTag.getTagType() != 3) {
+                } else if (tempTag.getTagType() != 3 && !tempTag.getValue().trim().endsWith(END_COMMENT)) {
                     // type 4 is already covered in xml validation.
                     // can be 8
                     String error = "Closing tag \"" + tempTag.getValue()
@@ -821,10 +847,16 @@ public class ProcessSourceView {
                 }
 
             } else if (tempTag.getTagType() == 6 || tempTag.getTagType() == 7) {
-                if (prev != null && (prev.getTagType() == 4 || prev.getTagType() == 7 || prev.getTagType() == 1)) {
+                if (tempTag.getValue().trim().startsWith(START_COMMENT)) {
+                    isComment = true;
+                } else if (isComment && tempTag.getValue().trim().endsWith(END_COMMENT)) {
+                    isComment = false;
+                }
+            	
+                if (!isComment && prev != null && (prev.getTagType() == 4 || prev.getTagType() == 7 || prev.getTagType() == 1)) {
                     xmlTags.push(tempTag);
 
-                } else if (intermediaryStack.size() > 0) {
+                } else if (!isComment && intermediaryStack.size() > 0) {
                     xmlTags.push(tempTag);
                 }
 
@@ -856,12 +888,16 @@ public class ProcessSourceView {
         String firstMediatorQTag = "";
         boolean insideRuleSet = false;
         boolean insideGraphiclEP = false;
+        boolean isFirstType5 = false;//type 5 eg: "abc />"
 
         if (xmlTags.size() > 0) {
 
             XMLTag xmlTag = xmlTags.pop();
             String mediatorVal = xmlTag.getValue();
             firstMediatorQTag = xmlTag.getqName();
+            if (firstMediatorQTag.equals("") && xmlTag.getTagType() == 5) {
+                isFirstType5 = true;
+            }
             String error = "";
 
             if (xmlTag.getTagType() == 3) {
@@ -886,7 +922,7 @@ public class ProcessSourceView {
                             mediatorVal = xmlTag.getValue().concat(mediatorVal);
                         }
 
-                        if (xmlTag.isStartTag() && xmlTag.getqName().equals(firstMediatorQTag)) {
+                        if (xmlTag.isStartTag() && (xmlTag.getqName().equals(firstMediatorQTag) || isFirstType5)) {
 
                             if (xmlTag.getqName().equals("rule") && insideRuleSet) {
                                 insideTag = true;

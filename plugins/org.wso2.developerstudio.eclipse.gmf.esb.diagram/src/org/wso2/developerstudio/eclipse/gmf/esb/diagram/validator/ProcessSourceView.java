@@ -817,7 +817,16 @@ public class ProcessSourceView {
 
                     } else {
                         if (currentMediator != null && !isComment) {
-                            intermediaryStack.push(currentMediator);
+                            if (currentMediator.getTagType() == 4 && tempTag.getTagType() == 5 
+                                    && currentMediator.getValue().equals(prev.getValue())) {
+                                sourceError = mediatorValidation();
+                                if (sourceError != null) {
+                                    return sourceError;
+                                }
+                                
+                            } else {
+                                intermediaryStack.push(currentMediator);
+                            }
                         }
                     }
 
@@ -879,12 +888,16 @@ public class ProcessSourceView {
         String firstMediatorQTag = "";
         boolean insideRuleSet = false;
         boolean insideGraphiclEP = false;
+        boolean isFirstType5 = false;//type 5 eg: "abc />"
 
         if (xmlTags.size() > 0) {
 
             XMLTag xmlTag = xmlTags.pop();
             String mediatorVal = xmlTag.getValue();
             firstMediatorQTag = xmlTag.getqName();
+            if (firstMediatorQTag.equals("") && xmlTag.getTagType() == 5) {
+                isFirstType5 = true;
+            }
             String error = "";
 
             if (xmlTag.getTagType() == 3) {
@@ -909,7 +922,7 @@ public class ProcessSourceView {
                             mediatorVal = xmlTag.getValue().concat(mediatorVal);
                         }
 
-                        if (xmlTag.isStartTag() && xmlTag.getqName().equals(firstMediatorQTag)) {
+                        if (xmlTag.isStartTag() && (xmlTag.getqName().equals(firstMediatorQTag) || isFirstType5)) {
 
                             if (xmlTag.getqName().equals("rule") && insideRuleSet) {
                                 insideTag = true;

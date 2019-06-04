@@ -32,7 +32,9 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.FormColors;
@@ -150,7 +152,7 @@ public class Sampling implements IMessageProcessor {
     	
     	
         toolkit.createLabel(parameterSectionClient, "Processor State");
-        sampling_state = new Combo(parameterSectionClient, SWT.DROP_DOWN);
+        sampling_state = new Combo(parameterSectionClient, SWT.DROP_DOWN | SWT.READ_ONLY);
         sampling_state.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
         String[] states = {"Active", "Deactive"};
         sampling_state.setItems(states);
@@ -161,6 +163,13 @@ public class Sampling implements IMessageProcessor {
         	}
         });
 
+        sampling_state.addListener(SWT.MouseVerticalWheel, new Listener() {
+            @Override
+            public void handleEvent(Event event) {
+                event.doit = false;
+            }
+        });
+        
         toolkit.createLabel(parameterSectionClient, "Sampling Interval");
         sampling_interval = toolkit.createText(parameterSectionClient, "");
         sampling_interval.setBackground(new Color(null, 229,236,253));

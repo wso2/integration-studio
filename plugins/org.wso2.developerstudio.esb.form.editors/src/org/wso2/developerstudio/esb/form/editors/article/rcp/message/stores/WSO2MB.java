@@ -24,6 +24,8 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.FormColors;
 import org.eclipse.ui.forms.events.ExpansionAdapter;
@@ -142,7 +144,7 @@ public class WSO2MB implements IMessageStore {
 		});
 		
 		toolkit.createLabel(paramSectionClient, "JMS API Specification Version");
-		wso2mb_apiVersion = new Combo(paramSectionClient, SWT.DROP_DOWN);
+		wso2mb_apiVersion = new Combo(paramSectionClient, SWT.DROP_DOWN | SWT.READ_ONLY);
 		GridData wso2mb_apiVersionGridData = new GridData();
 		wso2mb_apiVersionGridData.horizontalSpan = 3;
 		wso2mb_apiVersionGridData.horizontalAlignment = GridData.FILL;
@@ -158,8 +160,15 @@ public class WSO2MB implements IMessageStore {
 			}
 		});
 		
+		wso2mb_apiVersion.addListener(SWT.MouseVerticalWheel, new Listener() {
+			@Override
+			public void handleEvent(Event event) {
+				event.doit = false;
+			}
+		});
+		
 		toolkit.createLabel(paramSectionClient, "Cache Connection");
-		mb_cacheConnection = new Combo(paramSectionClient, SWT.DROP_DOWN);
+		mb_cacheConnection = new Combo(paramSectionClient, SWT.DROP_DOWN | SWT.READ_ONLY);
 		GridData mb_cacheConnectionGridData = new GridData();
 		mb_cacheConnectionGridData.horizontalSpan = 3;
 		mb_cacheConnectionGridData.horizontalAlignment = GridData.FILL;
@@ -176,6 +185,12 @@ public class WSO2MB implements IMessageStore {
 			}
 		});
 		
+		mb_cacheConnection.addListener(SWT.MouseVerticalWheel, new Listener() {
+			@Override
+			public void handleEvent(Event event) {
+				event.doit = false;
+			}
+		});
 		
 	}
 

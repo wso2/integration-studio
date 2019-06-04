@@ -30,8 +30,10 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.FormColors;
 import org.eclipse.ui.forms.IManagedForm;
@@ -290,11 +292,18 @@ public class ScheduledTaskFormPage extends AbstractEsbFormPage {
 		triggerSectionClient.setLayout(new GridLayout());
 
 		toolkit.createLabel(triggerSectionClient, "Trigger Type");
-		triggerType = new Combo(triggerSectionClient, SWT.READ_ONLY);
+		triggerType = new Combo(triggerSectionClient, SWT.DROP_DOWN | SWT.READ_ONLY);
 		triggerType.setLayoutData(new GridData(GridData.FILL_BOTH));
 		// triggerType.setBackground(new Color(null, 229,236,253));
 		String[] triggerTypes = { "Simple", "Cron" };
 		triggerType.setItems(triggerTypes);
+		
+		triggerType.addListener(SWT.MouseVerticalWheel, new Listener() {
+			@Override
+			public void handleEvent(Event event) {
+				event.doit = false;
+			}
+		});
 
 		cronLbl = toolkit.createLabel(triggerSectionClient, "Cron");
 		cronLbl.setLayoutData(new GridData(GridData.FILL_BOTH));

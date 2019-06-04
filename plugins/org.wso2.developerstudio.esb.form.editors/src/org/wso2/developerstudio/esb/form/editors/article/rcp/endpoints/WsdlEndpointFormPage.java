@@ -32,6 +32,8 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.IManagedForm;
@@ -135,7 +137,7 @@ public class WsdlEndpointFormPage extends EndpointFormPage {
 		miscSection.setClient(miscSectionClient);	
 		
 		toolkit.createLabel(miscSectionClient, "Optimize :");
-		eP_Optimize = new Combo(miscSectionClient, SWT.DROP_DOWN);
+		eP_Optimize = new Combo(miscSectionClient, SWT.DROP_DOWN | SWT.READ_ONLY);
 		//eP_Optimize.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		String[] formats = {"LEAVE_AS_IS", "MTOM", "SWA"};
 		eP_Optimize.setItems(formats);
@@ -152,6 +154,13 @@ public class WsdlEndpointFormPage extends EndpointFormPage {
 				updateDirtyState();
 			}
 
+		});
+		
+		eP_Optimize.addListener(SWT.MouseVerticalWheel, new Listener() {
+			@Override
+			public void handleEvent(Event event) {
+				event.doit = false;
+			}
 		});
 		
 		toolkit.createLabel(miscSectionClient, "Description :");

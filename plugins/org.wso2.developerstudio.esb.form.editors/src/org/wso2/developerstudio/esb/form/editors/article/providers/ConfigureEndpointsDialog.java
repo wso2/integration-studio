@@ -299,7 +299,7 @@ public class ConfigureEndpointsDialog extends TitleAreaDialog {
     private void editProperty(final TableItem item) {
 
         endpointTypeEditor = initTableEditor(endpointTypeEditor, item.getParent());
-        cmbEndpointType = new Combo(item.getParent(), SWT.READ_ONLY);
+        cmbEndpointType = new Combo(item.getParent(), SWT.DROP_DOWN | SWT.READ_ONLY);
         cmbEndpointType.setItems(new String[] { "INLINE", "STATIC" });
         cmbEndpointType.setText(item.getText(0));
         endpointTypeEditor.setEditor(cmbEndpointType, item, 0);
@@ -312,6 +312,13 @@ public class ConfigureEndpointsDialog extends TitleAreaDialog {
             }
         });
 
+        cmbEndpointType.addListener(SWT.MouseVerticalWheel, new Listener() {
+            @Override
+            public void handleEvent(Event event) {
+                event.doit = false;
+            }
+        });
+        
         endpointValueEditor = initTableEditor(endpointValueEditor, item.getParent());
         txtEndpointValue = new Text(item.getParent(), SWT.NONE);
         txtEndpointValue.setText(item.getText(1));

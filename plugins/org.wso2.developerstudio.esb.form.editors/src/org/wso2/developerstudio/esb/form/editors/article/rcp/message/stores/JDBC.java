@@ -26,7 +26,9 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.FormColors;
 import org.eclipse.ui.forms.events.ExpansionAdapter;
@@ -99,7 +101,7 @@ public class JDBC implements IMessageStore {
 		});
 
 		toolkit.createLabel(connSectionClient, "JDBC Conection Information");
-		jdbc_connectionInfo = new Combo(connSectionClient, SWT.DROP_DOWN);
+		jdbc_connectionInfo = new Combo(connSectionClient, SWT.DROP_DOWN | SWT.READ_ONLY);
 		GridData jdbc_connectionInfoGridData = new GridData();
 		jdbc_connectionInfoGridData.horizontalSpan = 3;
 		jdbc_connectionInfoGridData.horizontalAlignment = GridData.FILL;
@@ -126,6 +128,13 @@ public class JDBC implements IMessageStore {
 				esbFormPage.setSave(true);
 				esbFormPage.updateDirtyState();
 
+			}
+		});
+		
+		jdbc_connectionInfo.addListener(SWT.MouseVerticalWheel, new Listener() {
+			@Override
+			public void handleEvent(Event event) {
+				event.doit = false;
 			}
 		});
 

@@ -34,6 +34,8 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.IManagedForm;
@@ -134,7 +136,7 @@ public class LoadbalanceEndpointFormPage extends EndpointFormPage {
         });
 
         toolkit.createLabel(basicSectionClient, "Algorithm :");
-        endpointAlgorithmn = new Combo(basicSectionClient, SWT.DROP_DOWN);
+        endpointAlgorithmn = new Combo(basicSectionClient, SWT.DROP_DOWN | SWT.READ_ONLY);
         String[] formats = { "Round Robin", "Weighted RRLC Algorithm", "Weighted Round Robin" };
         endpointAlgorithmn.setItems(formats);
         GridData endpointFormatGridData = new GridData();
@@ -151,8 +153,15 @@ public class LoadbalanceEndpointFormPage extends EndpointFormPage {
             }
         });
 
+        endpointAlgorithmn.addListener(SWT.MouseVerticalWheel, new Listener() {
+            @Override
+            public void handleEvent(Event event) {
+                event.doit = false;
+            }
+        });
+        
         toolkit.createLabel(basicSectionClient, "Failover :");
-        endpointFailover = new Combo(basicSectionClient, SWT.DROP_DOWN);
+        endpointFailover = new Combo(basicSectionClient, SWT.DROP_DOWN | SWT.READ_ONLY);
         String[] statisticsStates = { "True", "False" };
         endpointFailover.setItems(statisticsStates);
         GridData endpointStatisticsGridData = new GridData();
@@ -171,9 +180,16 @@ public class LoadbalanceEndpointFormPage extends EndpointFormPage {
                 updateDirtyState();
             }
         });
+        
+        endpointFailover.addListener(SWT.MouseVerticalWheel, new Listener() {
+            @Override
+            public void handleEvent(Event event) {
+                event.doit = false;
+            }
+        });
 
         toolkit.createLabel(basicSectionClient, "Build Message :");
-        endpointBuildMessage = new Combo(basicSectionClient, SWT.DROP_DOWN);
+        endpointBuildMessage = new Combo(basicSectionClient, SWT.DROP_DOWN | SWT.READ_ONLY);
         String[] buildMessageStates = { "True", "False" };
         endpointBuildMessage.setItems(buildMessageStates);
         GridData endpointBuildMessageGridData = new GridData();
@@ -190,6 +206,13 @@ public class LoadbalanceEndpointFormPage extends EndpointFormPage {
                 }
                 setSave(true);
                 updateDirtyState();
+            }
+        });
+        
+        endpointBuildMessage.addListener(SWT.MouseVerticalWheel, new Listener() {
+            @Override
+            public void handleEvent(Event event) {
+                event.doit = false;
             }
         });
 
@@ -236,7 +259,7 @@ public class LoadbalanceEndpointFormPage extends EndpointFormPage {
         sessionSection.setExpanded(false);
 
         toolkit.createLabel(basicSectionClient, "Session Management :");
-        endpointSessionType = new Combo(basicSectionClient, SWT.DROP_DOWN);
+        endpointSessionType = new Combo(basicSectionClient, SWT.DROP_DOWN | SWT.READ_ONLY);
         String[] formats = { "None", "Transport", "SOAP", "Client ID" };
         endpointSessionType.setItems(formats);
         endpointSessionType.select(0);
@@ -251,6 +274,13 @@ public class LoadbalanceEndpointFormPage extends EndpointFormPage {
             public void widgetSelected(SelectionEvent e) {
                 setSave(true);
                 updateDirtyState();
+            }
+        });
+        
+        endpointSessionType.addListener(SWT.MouseVerticalWheel, new Listener() {
+            @Override
+            public void handleEvent(Event event) {
+                event.doit = false;
             }
         });
 

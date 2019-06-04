@@ -31,6 +31,8 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.IManagedForm;
@@ -296,7 +298,7 @@ public abstract class EndpointFormPage extends AbstractEsbFormPage {
         });
 
         toolkit.createLabel(basicSectionClient, "Format :");
-        endpointFormatType = new Combo(basicSectionClient, SWT.DROP_DOWN);
+        endpointFormatType = new Combo(basicSectionClient, SWT.DROP_DOWN | SWT.READ_ONLY);
         String[] formats = { "LEAVE_AS_IS", "SOAP 1.1", "SOAP 1.2", "POX", "GET", "REST" };
         endpointFormatType.setItems(formats);
         endpointFormatType.select(0);
@@ -314,8 +316,15 @@ public abstract class EndpointFormPage extends AbstractEsbFormPage {
             }
         });
 
+        endpointFormatType.addListener(SWT.MouseVerticalWheel, new Listener() {
+            @Override
+            public void handleEvent(Event event) {
+                event.doit = false;
+            }
+        });
+        
         toolkit.createLabel(basicSectionClient, "Trace Enabled :");
-        endpointTrace = new Combo(basicSectionClient, SWT.DROP_DOWN);
+        endpointTrace = new Combo(basicSectionClient, SWT.DROP_DOWN | SWT.READ_ONLY);
         String[] tracingStates = { "True", "False" };
         endpointTrace.setItems(tracingStates);
         GridData endpointTraceGridData = new GridData();
@@ -336,8 +345,15 @@ public abstract class EndpointFormPage extends AbstractEsbFormPage {
             }
         });
 
+        endpointTrace.addListener(SWT.MouseVerticalWheel, new Listener() {
+            @Override
+            public void handleEvent(Event event) {
+                event.doit = false;
+            }
+        });
+        
         toolkit.createLabel(basicSectionClient, "Statistics Enabled :");
-        endpointStatistics = new Combo(basicSectionClient, SWT.DROP_DOWN);
+        endpointStatistics = new Combo(basicSectionClient, SWT.DROP_DOWN | SWT.READ_ONLY);
         String[] statisticsStates = { "True", "False" };
         endpointStatistics.setItems(statisticsStates);
         GridData endpointStatisticsGridData = new GridData();
@@ -351,6 +367,13 @@ public abstract class EndpointFormPage extends AbstractEsbFormPage {
             public void widgetSelected(SelectionEvent e) {
                 setSave(true);
                 updateDirtyState();
+            }
+        });
+        
+        endpointStatistics.addListener(SWT.MouseVerticalWheel, new Listener() {
+            @Override
+            public void handleEvent(Event event) {
+                event.doit = false;
             }
         });
     }

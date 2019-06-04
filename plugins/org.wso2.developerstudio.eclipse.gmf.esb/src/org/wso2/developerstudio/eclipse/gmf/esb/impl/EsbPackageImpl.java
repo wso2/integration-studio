@@ -330,6 +330,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.ParentEndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.PartitionAssignmentStrategyType;
 import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryArgument;
 import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryArgumentType;
+import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryEvaluatorType;
 import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediatorInputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediatorOutputConnector;
@@ -4050,6 +4051,13 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * @generated
      */
     private EEnum cacheMediatorTypeEEnum = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EEnum payloadFactoryEvaluatorTypeEEnum = null;
 
     /**
      * <!-- begin-user-doc -->
@@ -19541,6 +19549,15 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * <!-- end-user-doc -->
      * @generated
      */
+    public EEnum getPayloadFactoryEvaluatorType() {
+        return payloadFactoryEvaluatorTypeEEnum;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     public EDataType getMap() {
         return mapEDataType;
     }
@@ -21653,6 +21670,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         cacheScopeTypeEEnum = createEEnum(CACHE_SCOPE_TYPE);
         cacheImplementationTypeEEnum = createEEnum(CACHE_IMPLEMENTATION_TYPE);
         cacheMediatorTypeEEnum = createEEnum(CACHE_MEDIATOR_TYPE);
+        payloadFactoryEvaluatorTypeEEnum = createEEnum(PAYLOAD_FACTORY_EVALUATOR_TYPE);
 
         // Create data types
         mapEDataType = createEDataType(MAP);
@@ -23295,7 +23313,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         initEAttribute(getPayloadFactoryArgument_ArgumentType(), this.getPayloadFactoryArgumentType(), "argumentType", null, 0, 1, PayloadFactoryArgument.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getPayloadFactoryArgument_ArgumentValue(), ecorePackage.getEString(), "argumentValue", null, 0, 1, PayloadFactoryArgument.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getPayloadFactoryArgument_ArgumentExpression(), this.getNamespacedProperty(), null, "argumentExpression", null, 0, 1, PayloadFactoryArgument.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getPayloadFactoryArgument_Evaluator(), this.getMediaType(), "evaluator", "xml", 0, 1, PayloadFactoryArgument.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getPayloadFactoryArgument_Evaluator(), this.getPayloadFactoryEvaluatorType(), "evaluator", "xml", 0, 1, PayloadFactoryArgument.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getPayloadFactoryArgument_Literal(), ecorePackage.getEBoolean(), "literal", null, 0, 1, PayloadFactoryArgument.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(conditionalRouteBranchEClass, ConditionalRouteBranch.class, "ConditionalRouteBranch", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -24784,6 +24802,10 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         initEEnum(cacheMediatorTypeEEnum, CacheMediatorType.class, "CacheMediatorType");
         addEEnumLiteral(cacheMediatorTypeEEnum, CacheMediatorType.DEFAULT);
         addEEnumLiteral(cacheMediatorTypeEEnum, CacheMediatorType.COMPATIBILITY_611);
+
+        initEEnum(payloadFactoryEvaluatorTypeEEnum, PayloadFactoryEvaluatorType.class, "PayloadFactoryEvaluatorType");
+        addEEnumLiteral(payloadFactoryEvaluatorTypeEEnum, PayloadFactoryEvaluatorType.XML);
+        addEEnumLiteral(payloadFactoryEvaluatorTypeEEnum, PayloadFactoryEvaluatorType.JSON);
 
         // Initialize data types
         initEDataType(mapEDataType, Map.class, "Map", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);

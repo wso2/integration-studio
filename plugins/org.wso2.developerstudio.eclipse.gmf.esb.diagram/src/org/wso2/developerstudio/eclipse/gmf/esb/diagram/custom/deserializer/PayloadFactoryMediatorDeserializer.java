@@ -22,6 +22,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.MediaType;
 import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryArgument;
 import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryArgumentType;
+import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryEvaluatorType;
 import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFormatType;
 import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
@@ -75,9 +76,9 @@ public class PayloadFactoryMediatorDeserializer
                 executeSetValueCommand(payloadFactoryArgument, PAYLOAD_FACTORY_ARGUMENT__ARGUMENT_TYPE,
                         PayloadFactoryArgumentType.EXPRESSION);
                 if (argument.getExpression().getPathType() == SynapsePath.X_PATH) {
-                    executeSetValueCommand(payloadFactoryArgument, PAYLOAD_FACTORY_ARGUMENT__EVALUATOR, MediaType.XML);
+                    executeSetValueCommand(payloadFactoryArgument, PAYLOAD_FACTORY_ARGUMENT__EVALUATOR, PayloadFactoryEvaluatorType.XML);
                 } else if (argument.getExpression().getPathType() == SynapsePath.JSON_PATH) {
-                    executeSetValueCommand(payloadFactoryArgument, PAYLOAD_FACTORY_ARGUMENT__EVALUATOR, MediaType.JSON);
+                    executeSetValueCommand(payloadFactoryArgument, PAYLOAD_FACTORY_ARGUMENT__EVALUATOR, PayloadFactoryEvaluatorType.JSON);
                 }
 
             } else {

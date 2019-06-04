@@ -31,6 +31,9 @@
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//ArtifactType/ENDPOINT_DEFAULT"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//ArtifactType/ENDPOINT_HTTP"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//ArtifactType/ENDPOINT_WSDL"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//ArtifactType/ENDPOINT_LOADBALANCE"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//ArtifactType/ENDPOINT_FAILOVER"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//ArtifactType/ENDPOINT_RECIPIENTLIST"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//CallMediatorEndpointType">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//CallMediatorEndpointType/INLINE"/>
@@ -796,6 +799,10 @@
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//CacheMediatorType">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//CacheMediatorType/Default"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//CacheMediatorType/Compatibility_611"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//PayloadFactoryEvaluatorType">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//PayloadFactoryEvaluatorType/XML"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//PayloadFactoryEvaluatorType/JSON"/>
     </genEnums>
     <genDataTypes ecoreDataType="esb.ecore#//Map">
       <genTypeParameters ecoreTypeParameter="esb.ecore#//Map/K"/>

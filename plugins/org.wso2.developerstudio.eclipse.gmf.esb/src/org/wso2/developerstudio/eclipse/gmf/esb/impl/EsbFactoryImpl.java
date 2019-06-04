@@ -697,6 +697,8 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
                 return createCacheImplementationTypeFromString(eDataType, initialValue);
             case EsbPackage.CACHE_MEDIATOR_TYPE:
                 return createCacheMediatorTypeFromString(eDataType, initialValue);
+            case EsbPackage.PAYLOAD_FACTORY_EVALUATOR_TYPE:
+                return createPayloadFactoryEvaluatorTypeFromString(eDataType, initialValue);
             case EsbPackage.MAP:
                 return createMapFromString(eDataType, initialValue);
             default:
@@ -981,6 +983,8 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
                 return convertCacheImplementationTypeToString(eDataType, instanceValue);
             case EsbPackage.CACHE_MEDIATOR_TYPE:
                 return convertCacheMediatorTypeToString(eDataType, instanceValue);
+            case EsbPackage.PAYLOAD_FACTORY_EVALUATOR_TYPE:
+                return convertPayloadFactoryEvaluatorTypeToString(eDataType, instanceValue);
             case EsbPackage.MAP:
                 return convertMapToString(eDataType, instanceValue);
             default:
@@ -7578,6 +7582,26 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
      * @generated
      */
     public String convertCacheMediatorTypeToString(EDataType eDataType, Object instanceValue) {
+        return instanceValue == null ? null : instanceValue.toString();
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public PayloadFactoryEvaluatorType createPayloadFactoryEvaluatorTypeFromString(EDataType eDataType, String initialValue) {
+        PayloadFactoryEvaluatorType result = PayloadFactoryEvaluatorType.get(initialValue);
+        if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+        return result;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public String convertPayloadFactoryEvaluatorTypeToString(EDataType eDataType, Object instanceValue) {
         return instanceValue == null ? null : instanceValue.toString();
     }
 

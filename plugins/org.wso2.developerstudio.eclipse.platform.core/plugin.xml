@@ -21,12 +21,6 @@
                      schema="schema/org.wso2.developerstudio.eclipse.platform.core.mediatype.exsd"/>
     <extension-point id="org.wso2.developerstudio.eclipse.project.export.handler" name="Export Handler"
                      schema="schema/org.wso2.developerstudio.eclipse.project.export.exsd"/>
-
-    <extension point="org.eclipse.ui.perspectives">
-        <perspective id="org.wso2.developerstudio.welcome.perspective"
-            name="WSO2 Welcome" icon="icons/welcome.png"
-            class="org.wso2.developerstudio.eclipse.platform.core.intro.perspective.WelcomePerspectiveFactory" />
-    </extension>
     
     <extension point="org.wso2.developerstudio.eclipse.platform.core.mediatype">
         <resolver

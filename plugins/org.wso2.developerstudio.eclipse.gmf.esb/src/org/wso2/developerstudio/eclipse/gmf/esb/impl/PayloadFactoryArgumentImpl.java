@@ -19,6 +19,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.MediaType;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryArgument;
 import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryArgumentType;
+import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryEvaluatorType;
 
 /**
  * <!-- begin-user-doc -->
@@ -97,7 +98,7 @@ public class PayloadFactoryArgumentImpl extends EsbNodeImpl implements PayloadFa
      * @generated
      * @ordered
      */
-    protected static final MediaType EVALUATOR_EDEFAULT = MediaType.XML;
+    protected static final PayloadFactoryEvaluatorType EVALUATOR_EDEFAULT = PayloadFactoryEvaluatorType.XML;
 
     /**
      * The cached value of the '{@link #getEvaluator() <em>Evaluator</em>}' attribute.
@@ -107,7 +108,7 @@ public class PayloadFactoryArgumentImpl extends EsbNodeImpl implements PayloadFa
      * @generated
      * @ordered
      */
-    protected MediaType evaluator = EVALUATOR_EDEFAULT;
+    protected PayloadFactoryEvaluatorType evaluator = EVALUATOR_EDEFAULT;
 
     /**
      * The default value of the '{@link #isLiteral() <em>Literal</em>}' attribute.
@@ -245,7 +246,7 @@ public class PayloadFactoryArgumentImpl extends EsbNodeImpl implements PayloadFa
      * <!-- end-user-doc -->
      * @generated
      */
-    public MediaType getEvaluator() {
+    public PayloadFactoryEvaluatorType getEvaluator() {
         return evaluator;
     }
 
@@ -254,8 +255,8 @@ public class PayloadFactoryArgumentImpl extends EsbNodeImpl implements PayloadFa
      * <!-- end-user-doc -->
      * @generated
      */
-    public void setEvaluator(MediaType newEvaluator) {
-        MediaType oldEvaluator = evaluator;
+    public void setEvaluator(PayloadFactoryEvaluatorType newEvaluator) {
+        PayloadFactoryEvaluatorType oldEvaluator = evaluator;
         evaluator = newEvaluator == null ? EVALUATOR_EDEFAULT : newEvaluator;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PAYLOAD_FACTORY_ARGUMENT__EVALUATOR, oldEvaluator, evaluator));
@@ -336,7 +337,7 @@ public class PayloadFactoryArgumentImpl extends EsbNodeImpl implements PayloadFa
                 setArgumentExpression((NamespacedProperty)newValue);
                 return;
             case EsbPackage.PAYLOAD_FACTORY_ARGUMENT__EVALUATOR:
-                setEvaluator((MediaType)newValue);
+                setEvaluator((PayloadFactoryEvaluatorType)newValue);
                 return;
             case EsbPackage.PAYLOAD_FACTORY_ARGUMENT__LITERAL:
                 setLiteral((Boolean)newValue);

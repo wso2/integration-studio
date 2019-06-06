@@ -34,6 +34,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.MediaType;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryArgument;
 import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryArgumentType;
+import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryEvaluatorType;
 import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFormatType;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.CustomSynapsePathFactory;
@@ -98,8 +99,15 @@ public class PayloadFactoryMediatorTransformer extends AbstractEsbNodeTransforme
             if (arg.getArgumentType() == PayloadFactoryArgumentType.EXPRESSION && arg.getArgumentExpression() != null) {
                 NamespacedProperty namespacedProperty = arg.getArgumentExpression();
                 // SynapsePath expression = new SynapseXPath(namespacedProperty.getPropertyValue());
-                SynapsePath expression = CustomSynapsePathFactory.getSynapsePath(namespacedProperty.getPropertyValue(),
-                        arg.getEvaluator());
+                SynapsePath expression;
+                if (arg.getEvaluator() == PayloadFactoryEvaluatorType.JSON) {
+                    expression = CustomSynapsePathFactory.getSynapsePath(namespacedProperty.getPropertyValue(), 
+                            MediaType.JSON);
+                } else {
+                    expression = CustomSynapsePathFactory.getSynapsePath(namespacedProperty.getPropertyValue(), 
+                            MediaType.XML);
+                }
+                
                 // SynapseJsonPath doesn't support namespaces
                 if (namespacedProperty.getNamespaces() != null && !(expression instanceof SynapseJsonPath)) {
                     for (Entry<String, String> entry : namespacedProperty.getNamespaces().entrySet()) {
@@ -107,9 +115,9 @@ public class PayloadFactoryMediatorTransformer extends AbstractEsbNodeTransforme
                     }
                 }
 
-                if (arg.getEvaluator() == MediaType.XML) {
+                if (arg.getEvaluator() == PayloadFactoryEvaluatorType.XML) {
                     expression.setPathType(SynapsePath.X_PATH);
-                } else if (arg.getEvaluator() == MediaType.JSON) {
+                } else if (arg.getEvaluator() == PayloadFactoryEvaluatorType.JSON) {
                     expression.setPathType(SynapsePath.JSON_PATH);
                 }
                 argument.setExpression(expression);

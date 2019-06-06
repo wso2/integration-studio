@@ -34,6 +34,8 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.forms.IManagedForm;
 import org.eclipse.ui.forms.editor.FormEditor;
@@ -121,7 +123,7 @@ public class FailoverEndpointFormPage extends EndpointFormPage {
         });
 
         toolkit.createLabel(basicSectionClient, "Build Message :");
-        endpointBuildMessage = new Combo(basicSectionClient, SWT.DROP_DOWN);
+        endpointBuildMessage = new Combo(basicSectionClient, SWT.DROP_DOWN | SWT.READ_ONLY);
         String[] buildMessageStates = { "True", "False" };
         endpointBuildMessage.setItems(buildMessageStates);
         GridData endpointBuildMessageGridData = new GridData();
@@ -138,6 +140,13 @@ public class FailoverEndpointFormPage extends EndpointFormPage {
                 }
                 setSave(true);
                 updateDirtyState();
+            }
+        });
+        
+        endpointBuildMessage.addListener(SWT.MouseVerticalWheel, new Listener() {
+            @Override
+            public void handleEvent(Event event) {
+                event.doit = false;
             }
         });
 

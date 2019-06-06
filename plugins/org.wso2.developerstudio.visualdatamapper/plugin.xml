@@ -22,7 +22,7 @@
       <view id="org.wso2.developerstudio.datamapper.views.RealtimeDatamapperView"
          name="Realtime Datamapper Preview"
          class="org.wso2.developerstudio.datamapper.views.RealtimeDatamapperView"
-         icon="icons/obj16/DataMapper.png"/>
+         icon="icons/DataMapper.png"/>
     </extension>	
 </plugin>
 

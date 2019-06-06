@@ -277,7 +277,7 @@ public class ConfigureEndPointPropertiesDialog extends TitleAreaDialog {
 		});		
 		
 		propertyScopeEditor = initTableEditor(propertyScopeEditor, item.getParent());
-		cmbPropertyScope = new Combo(item.getParent(), SWT.READ_ONLY);
+		cmbPropertyScope = new Combo(item.getParent(), SWT.DROP_DOWN | SWT.READ_ONLY);
 		cmbPropertyScope.setItems(new String[] { EndPointPropertyScope.SYNAPSE.toString(),
 				EndPointPropertyScope.TRANSPORT.toString(), EndPointPropertyScope.AXIS2.toString(),
 				EndPointPropertyScope.AXIS2_CLIENT.toString() });
@@ -289,7 +289,14 @@ public class ConfigureEndPointPropertiesDialog extends TitleAreaDialog {
 			public void handleEvent(Event evt) {
 				item.setText(2, cmbPropertyScope.getText());
 			}
-		});		
+		});	
+		
+		cmbPropertyScope.addListener(SWT.MouseVerticalWheel, new Listener() {
+			@Override
+			public void handleEvent(Event event) {
+				event.doit = false;
+			}
+		});
 	}
 
 	private TableEditor initTableEditor(TableEditor editor, Table table) {

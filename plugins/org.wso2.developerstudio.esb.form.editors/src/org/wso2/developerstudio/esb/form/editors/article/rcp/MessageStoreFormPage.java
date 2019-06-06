@@ -38,6 +38,8 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.FormColors;
@@ -192,7 +194,7 @@ public class MessageStoreFormPage extends AbstractEsbFormPage {
 		});
 		
 		toolkit.createLabel(basicSectionClient, "Message Store Type *");
-		storeType = new Combo(basicSectionClient, SWT.DROP_DOWN);
+		storeType = new Combo(basicSectionClient, SWT.DROP_DOWN | SWT.READ_ONLY);
 		GridData storeTypeGridData = new GridData();
 		storeTypeGridData.horizontalSpan = 3;
 		storeTypeGridData.horizontalAlignment = GridData.FILL;
@@ -228,7 +230,12 @@ public class MessageStoreFormPage extends AbstractEsbFormPage {
 			}
 		});
 		
-		
+		storeType.addListener(SWT.MouseVerticalWheel, new Listener() {
+			@Override
+			public void handleEvent(Event event) {
+				event.doit = false;
+			}
+		});
 		
 	}
 	
@@ -261,7 +268,7 @@ public class MessageStoreFormPage extends AbstractEsbFormPage {
 		guaranteedDeliverySection.setExpanded(false);
 		
 		toolkit.createLabel(guaranteedDeliverySectionClient, "Enable Producer Guaranteed Delivery");
-		guaranteedDeliveryEnable = new Combo(guaranteedDeliverySectionClient, SWT.DROP_DOWN);
+		guaranteedDeliveryEnable = new Combo(guaranteedDeliverySectionClient, SWT.DROP_DOWN | SWT.READ_ONLY);
 		GridData guaranteedDeliveryEnableGridData = new GridData();
 		guaranteedDeliveryEnableGridData.horizontalSpan = 3;
 		guaranteedDeliveryEnableGridData.horizontalAlignment = GridData.FILL;
@@ -278,9 +285,16 @@ public class MessageStoreFormPage extends AbstractEsbFormPage {
 			}
 		});
 		
+		guaranteedDeliveryEnable.addListener(SWT.MouseVerticalWheel, new Listener() {
+			@Override
+			public void handleEvent(Event event) {
+				event.doit = false;
+			}
+		});
+		
 		
 		toolkit.createLabel(guaranteedDeliverySectionClient, "Failover Message Store");
-		failoverMessageStore = new Combo(guaranteedDeliverySectionClient, SWT.DROP_DOWN);
+		failoverMessageStore = new Combo(guaranteedDeliverySectionClient, SWT.DROP_DOWN | SWT.READ_ONLY);
 		ArrayList<String> availableMSList = getAvailableMessageStores();
 		String[] list = new String[availableMSList.size()];
 		list = availableMSList.toArray(list);
@@ -299,7 +313,12 @@ public class MessageStoreFormPage extends AbstractEsbFormPage {
 
 		});
 
-		
+		failoverMessageStore.addListener(SWT.MouseVerticalWheel, new Listener() {
+			@Override
+			public void handleEvent(Event event) {
+				event.doit = false;
+			}
+		});
 		
 	}
 	

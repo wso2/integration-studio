@@ -120,7 +120,7 @@ public class NewResourceTemplateDialog extends Dialog {
 		lblProject.setLayoutData(fd_lblProject);
 		lblProject.setText("Project");
 
-		cmbProject = new Combo(container, SWT.READ_ONLY);
+		cmbProject = new Combo(container, SWT.DROP_DOWN | SWT.READ_ONLY);
 		cmbProject.addModifyListener(new ModifyListener() {
 			public void modifyText(ModifyEvent arg0) {
 				validate();
@@ -151,6 +151,14 @@ public class NewResourceTemplateDialog extends Dialog {
 					}
 		        }
 		      }); 
+		
+		cmbProject.addListener(SWT.MouseVerticalWheel, new Listener() {
+			@Override
+			public void handleEvent(Event event) {
+				event.doit = false;
+			}
+		});
+		
 		Label lblArtifactName = new Label(container, SWT.NONE);
 		FormData fd_lblArtifactName = new FormData();
 		fd_lblArtifactName.top = new FormAttachment(linkButton, 22);

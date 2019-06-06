@@ -50,6 +50,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.MediaType;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryArgument;
 import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryArgumentType;
+import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryEvaluatorType;
 import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator;
 
 /**
@@ -335,10 +336,10 @@ public class ConfigurePayloadFactoryMediatorDialog extends Dialog {
 
                 item.setText(2, cmbArgumentEvaluator.getText());
                 if (cmbArgumentEvaluator.getSelectionIndex() == 0) {
-                    wrapper.setEvaluator(MediaType.XML);
+                    wrapper.setEvaluator(PayloadFactoryEvaluatorType.XML);
                     // argumentValue.setForcefullInlineEditing(false);
                 } else {
-                    wrapper.setEvaluator(MediaType.JSON);
+                    wrapper.setEvaluator(PayloadFactoryEvaluatorType.JSON);
                     // argumentValue.setForcefullInlineEditing(true);
                 }
             }
@@ -520,7 +521,7 @@ public class ConfigurePayloadFactoryMediatorDialog extends Dialog {
 
         public ArgumentWrapper(PayloadFactoryArgument argument) {
             this.argument = argument;
-            this.evaluator = MediaType.XML;
+            this.evaluator = PayloadFactoryEvaluatorType.XML;
         }
 
         public PayloadFactoryArgument getArgument() {
@@ -555,11 +556,11 @@ public class ConfigurePayloadFactoryMediatorDialog extends Dialog {
             this.expression = expression;
         }
 
-        public MediaType getEvaluator() {
+        public PayloadFactoryEvaluatorType getEvaluator() {
             return evaluator;
         }
 
-        public void setEvaluator(MediaType formatEvaluator) {
+        public void setEvaluator(PayloadFactoryEvaluatorType formatEvaluator) {
             this.evaluator = formatEvaluator;
         }
 
@@ -575,7 +576,7 @@ public class ConfigurePayloadFactoryMediatorDialog extends Dialog {
         private String argumentValue;
         private NamespacedProperty argumentExpression;
         private boolean expression;
-        private MediaType evaluator;
+        private PayloadFactoryEvaluatorType evaluator;
         private boolean literal;
     }
 }

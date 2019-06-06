@@ -467,7 +467,7 @@ public class TaskPropertyDialog extends Dialog {
 
 	private void editItem(final TableItem item) {
 		propertyTypeEditor = initTableEditor(propertyTypeEditor, item.getParent());
-		cmbPropertyType = new Combo(item.getParent(), SWT.READ_ONLY);
+		cmbPropertyType = new Combo(item.getParent(), SWT.DROP_DOWN | SWT.READ_ONLY);
 		cmbPropertyType.setItems(new String[] { TaskPropertyType.LITERAL.toString(), TaskPropertyType.XML.toString() });
 		cmbPropertyType.setText(item.getText(1));
 		propertyTypeEditor.setEditor(cmbPropertyType, item, 1);
@@ -476,6 +476,13 @@ public class TaskPropertyDialog extends Dialog {
 		cmbPropertyType.addListener(SWT.Selection, new Listener() {
 			public void handleEvent(Event evt) {
 				item.setText(1, cmbPropertyType.getText());
+			}
+		});
+		
+		cmbPropertyType.addListener(SWT.MouseVerticalWheel, new Listener() {
+			@Override
+			public void handleEvent(Event event) {
+				event.doit = false;
 			}
 		});
 	}

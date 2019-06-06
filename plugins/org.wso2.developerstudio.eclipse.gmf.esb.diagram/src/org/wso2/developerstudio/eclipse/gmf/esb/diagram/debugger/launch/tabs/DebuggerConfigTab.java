@@ -266,6 +266,17 @@ public class DebuggerConfigTab extends AbstractLaunchConfigurationTab {
             public void widgetSelected(SelectionEvent e) {
                 setDirty(true);
                 updateLaunchConfigurationDialog();
+                if(debugModeCombo.getText().equals(DEBUG_PROFILE_INTERNAL_RUNNING_MODE)) {
+                    eventPort.setText(DEFAULT_EVENT_PORT);
+                    commandPort.setText(DEFAULT_COMMAND_PORT);
+                    hostName.setEnabled(false);
+                    eventPort.setEnabled(false);
+                    commandPort.setEnabled(false);
+                }else {
+                    hostName.setEnabled(true);
+                    eventPort.setEnabled(true);
+                    commandPort.setEnabled(true);
+                }
             }
 
             @Override
@@ -275,6 +286,11 @@ public class DebuggerConfigTab extends AbstractLaunchConfigurationTab {
             }
         });
 
+        // Disable all the setting for default internal mode
+        hostName.setEnabled(false);
+        eventPort.setEnabled(false);
+        commandPort.setEnabled(false);
+        
         setControl(topControl);
     }
 

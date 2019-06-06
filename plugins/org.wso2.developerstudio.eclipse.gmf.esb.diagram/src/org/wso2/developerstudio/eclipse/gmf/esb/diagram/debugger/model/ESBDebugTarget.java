@@ -136,6 +136,14 @@ public class ESBDebugTarget extends ESBDebugElement implements IDebugTarget, Eve
                     }
 
                 } else if (event instanceof TerminatedEvent) {
+                    // Clear all the stack frames in the debug threads and unsubscribe
+                    for (ESBDebugThread debuggerThread : esbDebugThreads) {
+                        IEventBroker propertyChangeCommandEB = (IEventBroker) PlatformUI.getWorkbench()
+                                .getService(IEventBroker.class);
+                        propertyChangeCommandEB.unsubscribe(debuggerThread.getTopStackFrame());
+                        debuggerThread.getTopStackFrame().fireTerminateEvent();
+                    }
+                    
                     setState(ESBDebuggerState.TERMINATED);
                     clearSuspendedEventStatus();
                     DebugPlugin.getDefault().getBreakpointManager().removeBreakpointListener(this);

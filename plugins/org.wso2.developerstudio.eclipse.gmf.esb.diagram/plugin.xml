@@ -6634,6 +6634,105 @@
 			isEqualityPattern="true"
 			pattern="org.eclipse.papyrus.infra.viewpoints.policy/org.eclipse.papyrus.infra.viewpoints.policy.ViewpointExplorer">
 		</activityPatternBinding>
+		<activity
+			id="esb.hidden.contributions.dependenciesview"
+			name="Hidden Contributions - Plug-in Dependencies">
+		</activity>
+		<activityPatternBinding
+			activityId="esb.hidden.contributions.dependenciesview"
+			isEqualityPattern="true"
+			pattern="org.eclipse.pde.ui/org.eclipse.pde.ui.DependenciesView">
+		</activityPatternBinding>
+		<activity
+			id="esb.hidden.contributions.imagebrowserview"
+			name="Hidden Contributions - Plug-in Image Browser">
+		</activity>
+		<activityPatternBinding
+			activityId="esb.hidden.contributions.imagebrowserview"
+			isEqualityPattern="true"
+			pattern="org.eclipse.pde.ui/org.eclipse.pde.ui.ImageBrowserView">
+		</activityPatternBinding>
+		<activity
+			id="esb.hidden.contributions.pluginsview"
+			name="Hidden Contributions - Plug-ins">
+		</activity>
+		<activityPatternBinding
+			activityId="esb.hidden.contributions.pluginsview"
+			isEqualityPattern="true"
+			pattern="org.eclipse.pde.ui/org.eclipse.pde.ui.PluginsView">
+		</activityPatternBinding>
+		<activity
+			id="esb.hidden.contributions.targetplatformstate"
+			name="Hidden Contributions - Target Platform State">
+		</activity>
+		<activityPatternBinding
+			activityId="esb.hidden.contributions.targetplatformstate"
+			isEqualityPattern="true"
+			pattern="org.eclipse.pde.ui/org.eclipse.pde.ui.TargetPlatformState">
+		</activityPatternBinding>
+		<activity
+			id="esb.hidden.contributions.registrybrowser"
+			name="Hidden Contributions - Plug-in Registry">
+		</activity>
+		<activityPatternBinding
+			activityId="esb.hidden.contributions.registrybrowser"
+			isEqualityPattern="true"
+			pattern="org.eclipse.pde.runtime/org.eclipse.pde.runtime.RegistryBrowser">
+		</activityPatternBinding>
+		<activity
+			id="esb.hidden.contributions.plugincontentview"
+			name="Hidden Contributions - Plugin Content Explorer">
+		</activity>
+		<activityPatternBinding
+			activityId="esb.hidden.contributions.plugincontentview"
+			isEqualityPattern="true"
+			pattern="org.eclipse.papyrus.infra.core.pluginexplorer/org.eclipse.papyrus.infra.core.pluginexplorer.PluginsContentView">
+		</activityPatternBinding>
+		<activity
+			id="esb.hidden.contributions.apitools"
+			name="Hidden Contributions - API Tools">
+		</activity>
+		<activityPatternBinding
+			activityId="esb.hidden.contributions.apitools"
+			isEqualityPattern="true"
+			pattern="org.eclipse.pde.api.tools.ui/org.eclipse.pde.api.tools.ui.views.apitooling.views.apitoolingview">
+		</activityPatternBinding>
+		<activity
+			id="esb.hidden.contributions.jsfcomponenttree"
+			name="Hidden Contributions - JSF Component Tree">
+		</activity>
+		<activityPatternBinding
+			activityId="esb.hidden.contributions.jsfcomponenttree"
+			isEqualityPattern="true"
+			pattern="org.eclipse.jst.jsf.ui/org.eclipse.jst.jsf.ui.component.ComponentTreeView">
+		</activityPatternBinding>
+		<activity
+			id="esb.hidden.contributions.tagregistry"
+			name="Hidden Contributions - Tag Registry">
+		</activity>
+		<activityPatternBinding
+			activityId="esb.hidden.contributions.tagregistry"
+			isEqualityPattern="true"
+			pattern="org.eclipse.jst.jsf.ui/org.eclipse.jst.jsf.ui.tagregistry.TagRegistryView">
+		</activityPatternBinding>
+		<activity
+			id="esb.hidden.contributions.history"
+			name="Hidden Contributions - History">
+		</activity>
+		<activityPatternBinding
+			activityId="esb.hidden.contributions.history"
+			isEqualityPattern="true"
+			pattern="org.eclipse.team.ui/org.eclipse.team.ui.GenericHistoryView">
+		</activityPatternBinding>
+		<activity
+			id="esb.hidden.contributions.synchronize"
+			name="Hidden Contributions - Synchronize">
+		</activity>
+		<activityPatternBinding
+			activityId="esb.hidden.contributions.synchronize"
+			isEqualityPattern="true"
+			pattern="org.eclipse.team.ui/org.eclipse.team.sync.views.SynchronizeView">
+		</activityPatternBinding>
 	</extension>
 </plugin>
 

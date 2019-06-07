@@ -22,7 +22,6 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.WorkbenchException;
 import org.wso2.developerstudio.eclipse.artifact.connector.model.ConnectorModel;
 import org.wso2.developerstudio.eclipse.artifact.connector.ui.wizard.ConnectorCreationWizard;
 import org.wso2.developerstudio.eclipse.distribution.project.model.DistributionProjectModel;
@@ -45,7 +44,6 @@ import org.wso2.developerstudio.eclipse.platform.ui.wizard.AbstractWSO2ProjectCr
  * 
  */
 public class ESBSolutionProjectCreationWizard extends AbstractWSO2ProjectCreationWizard {
-	private static final String JAVAEE_PERSPECTIVE = "org.eclipse.jst.j2ee.J2EEPerspective";
 	private static final String ESB_GRAPHICAL_PERSPECTIVE = "org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.perspective";
 
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);

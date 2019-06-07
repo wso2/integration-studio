@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2019, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.developerstudio.eclipse.distribution.project.editor;
+package org.wso2.developerstudio.eclipse.docker.distribution.editor;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -35,53 +35,47 @@ import org.eclipse.jface.text.DocumentEvent;
 import org.eclipse.jface.text.IDocument;
 import org.eclipse.jface.text.IDocumentListener;
 import org.eclipse.ui.part.FileEditorInput;
-import org.wso2.developerstudio.eclipse.distribution.project.Activator;
+import org.wso2.developerstudio.eclipse.docker.distribution.Activator;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.ui.editor.Refreshable;
 
-/**
- * Editor page for docker project type.
- */
 public class DistProjectEditor extends FormEditor implements Refreshable {
- private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
- private DistProjectEditorPage distProjectEditorPage;
- private StructuredTextEditor sourceEditor;
- private boolean dirty;
- private boolean sourceDirty;
- private int formEditorIndex;
- private int sourceEditorIndex;
+	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+	private DistProjectEditorPage distProjectEditorPage;
+	private StructuredTextEditor sourceEditor;
+	private boolean dirty;
+	private boolean sourceDirty;
+	private int formEditorIndex;
+	private int sourceEditorIndex;
 
- 	
 	protected void addPages() {
-		distProjectEditorPage = new DistProjectEditorPage(
-				this,
-				"org.wso2.developerstudio.eclipse.distribution.project.editor.design",
-				"Design");
+		distProjectEditorPage = new DistProjectEditorPage(this,
+				"org.wso2.developerstudio.eclipse.docker.distribution.editor.design", "Design");
 		sourceEditor = new StructuredTextEditor();
 		sourceEditor.setEditorPart(this);
-		
+
 		try {
 			distProjectEditorPage.initContent();
 			formEditorIndex = addPage(distProjectEditorPage);
-			sourceEditorIndex = addPage(sourceEditor,getEditorInput());
+			sourceEditorIndex = addPage(sourceEditor, getEditorInput());
 			setPageText(sourceEditorIndex, "Source");
-			
-			getDocument().addDocumentListener(new IDocumentListener() {  
-				    
-	            public void documentAboutToBeChanged(final DocumentEvent event) {  
-	                // nothing to do  
-	            }  
-	   
-	            public void documentChanged(final DocumentEvent event) {  
-	                sourceDirty = true; 
-	                updateDirtyState();
-	            }  
-	        });  
-			
-			if(getFile()!=null){
-				setTitle(getFile().toString().replaceFirst("^L/",""));
-			}	
+
+			getDocument().addDocumentListener(new IDocumentListener() {
+
+				public void documentAboutToBeChanged(final DocumentEvent event) {
+					// nothing to do
+				}
+
+				public void documentChanged(final DocumentEvent event) {
+					sourceDirty = true;
+					updateDirtyState();
+				}
+			});
+
+			if (getFile() != null) {
+				setTitle(getFile().toString().replaceFirst("^L/", ""));
+			}
 
 			IWorkspace workspace = ResourcesPlugin.getWorkspace();
 			workspace.addResourceChangeListener(distProjectEditorPage);
@@ -91,11 +85,11 @@ public class DistProjectEditor extends FormEditor implements Refreshable {
 		} catch (Exception e) {
 			log.error("An unexpected error has occurred", e);
 		}
-		
+
 	}
 
 	public void doSave(IProgressMonitor pm) {
-		if(dirty){
+		if (dirty) {
 			try {
 				updateSourceFromDesign();
 				sourceDirty = false;
@@ -104,7 +98,7 @@ public class DistProjectEditor extends FormEditor implements Refreshable {
 			} catch (Exception e) {
 				log.error("An unexpected error has occurred", e);
 			}
-		} else if (sourceDirty){
+		} else if (sourceDirty) {
 			sourceDirty = false;
 			dirty = false;
 			updateDesignFromSource();
@@ -116,29 +110,28 @@ public class DistProjectEditor extends FormEditor implements Refreshable {
 		final IDocumentProvider provider = sourceEditor.getDocumentProvider();
 		return provider.getDocument(getEditorInput());
 	}
-	
 
 	protected void pageChange(int newPageIndex) {
-		if ((newPageIndex == sourceEditorIndex) && (dirty)){
+		if ((newPageIndex == sourceEditorIndex) && (dirty)) {
 			sourceDirty = false;
 			dirty = false;
 			updateSourceFromDesign();
 			updateDirtyState();
-		} else if ((newPageIndex == formEditorIndex) && (sourceDirty)){
+		} else if ((newPageIndex == formEditorIndex) && (sourceDirty)) {
 			sourceDirty = false;
 			dirty = false;
 			updateDesignFromSource();
 			updateDirtyState();
 		}
-			
+
 		super.pageChange(newPageIndex);
-		
+
 		final IFormPage page = getActivePageInstance();
 		if (page != null) {
 			page.setFocus();
 		}
 	}
-	
+
 	private void updateSourceFromDesign() {
 		String content;
 		try {
@@ -150,15 +143,15 @@ public class DistProjectEditor extends FormEditor implements Refreshable {
 		}
 	}
 
-	private void updateDesignFromSource()  {
+	private void updateDesignFromSource() {
 		try {
 			InputStream content = new ByteArrayInputStream(getDocument().get().getBytes());
 			getFile().setContents(content, true, true, null);
 			try {
 				content.close();
-	        } catch (IOException e) {
-	        	// ignore, stream is already closed
-	        }
+			} catch (IOException e) {
+				// ignore, stream is already closed
+			}
 			distProjectEditorPage.refreshForm();
 		} catch (Exception e) {
 			log.error("An unexpected error has occurred", e);
@@ -175,30 +168,29 @@ public class DistProjectEditor extends FormEditor implements Refreshable {
 	public StructuredTextEditor getSourceEditor() {
 		return sourceEditor;
 	}
-	
+
 	public void doSaveAs() {
-		// nothing to do 
+		// nothing to do
 	}
 
 	public void updateDirtyState() {
 		dirty = distProjectEditorPage.isDirty();
 		firePropertyChange(PROP_DIRTY);
-		editorDirtyStateChanged();	    
-    }
-	
+		editorDirtyStateChanged();
+	}
+
 	public boolean isDirty() {
 		return (dirty || sourceDirty);
 	}
-	
+
 	public boolean isSaveAsAllowed() {
 		return false;
 	}
-	
+
 	public void refresh() {
 		if (distProjectEditorPage != null) {
 			distProjectEditorPage.getRefreshAction().run();
 		}
 	}
-	
-	
+
 }

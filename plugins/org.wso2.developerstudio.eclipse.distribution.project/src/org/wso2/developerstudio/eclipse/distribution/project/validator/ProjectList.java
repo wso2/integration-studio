@@ -31,32 +31,32 @@ import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.core.model.AbstractListDataProvider;
 import org.wso2.developerstudio.eclipse.platform.core.project.model.ProjectDataModel;
 
-
 public class ProjectList extends AbstractListDataProvider {
 
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
-	
-	public List<ListData> getListData(String modelProperty, ProjectDataModel model) {
-		
+
+	public List<ListData> getListData(String modelProperty, ProjectDataModel model, String extensionpointId) {
+		if (extensionpointId == null || "".equals(extensionpointId)) {
+			// setting to default
+			extensionpointId = "org.wso2.developerstudio.eclipse.capp.artifacts.provider";
+		}
 		List<ListData> list = new ArrayList<ListData>();
 
 		IProject[] projects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
-		final String EXTENSIONPOINT_ID = "org.wso2.developerstudio.eclipse.capp.artifacts.provider";
-		IConfigurationElement[] config = Platform.getExtensionRegistry().getConfigurationElementsFor(EXTENSIONPOINT_ID);
-	    
-	      for (IConfigurationElement element : config) {
-	    	Object obj = null;
+		IConfigurationElement[] config = Platform.getExtensionRegistry().getConfigurationElementsFor(extensionpointId);
+
+		for (IConfigurationElement element : config) {
+			Object obj = null;
 			try {
-				 obj = element.createExecutableExtension("class");
+				obj = element.createExecutableExtension("class");
 			} catch (CoreException ex) {
 				log.error("Error executing CappArtifactsListProvider extension ", ex);
 			}
-			
-	        if (obj instanceof CappArtifactsListProvider) {
-	        	
-	        	CappArtifactsListProvider provider = (CappArtifactsListProvider)obj;
-	        	String nature = element.getAttribute("nature");
-	        	for(IProject project : projects) {
+
+			if (obj instanceof CappArtifactsListProvider) {
+				CappArtifactsListProvider provider = (CappArtifactsListProvider) obj;
+				String nature = element.getAttribute("nature");
+				for (IProject project : projects) {
 					try {
 						if (project.isOpen() && project.hasNature(nature)) {
 							List<ListData> listReceivedFromprovider = null;
@@ -66,12 +66,18 @@ public class ProjectList extends AbstractListDataProvider {
 					} catch (Exception e) {
 						log.error("Error getting artifacts from extension", e);
 					}
-	        	}
-	        }
-	        
-	      }
-	    
+				}
+			}
+
+		}
+
 		return list;
 	}
-	
+
+	@Override
+	public List<ListData> getListData(String modelProperty, ProjectDataModel model) {
+		// TODO Auto-generated method stub
+		return this.getListData(modelProperty, model, null);
+	}
+
 }

@@ -45,6 +45,7 @@
 	<module>org.wso2.developerstudio.mvn.multimodule.feature</module>
 	<module>org.wso2.developerstudio.web.ui.feature</module>
 	<module>org.wso2.developerstudio.cloud.utils.feature</module>
+	<module>org.wso2.developerstudio.eclipse.docker.distribution.feature</module>
     </modules>
     <distributionManagement>
         <repository>

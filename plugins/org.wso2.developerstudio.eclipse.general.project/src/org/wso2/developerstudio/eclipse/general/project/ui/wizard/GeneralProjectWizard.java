@@ -23,9 +23,14 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.PlatformUI;
+import org.wso2.developerstudio.eclipse.general.project.Activator;
 import org.wso2.developerstudio.eclipse.general.project.artifact.GeneralProjectArtifact;
 import org.wso2.developerstudio.eclipse.general.project.model.GeneralProjectModel;
 import org.wso2.developerstudio.eclipse.general.project.utils.GeneralProjectImageUtils;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
 import org.wso2.developerstudio.eclipse.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
 import org.wso2.developerstudio.eclipse.utils.jdt.JavaUtils;
@@ -33,6 +38,10 @@ import org.wso2.developerstudio.eclipse.utils.project.ProjectUtils;
 
 public class GeneralProjectWizard extends AbstractWSO2ProjectCreationWizard {
 	private static final String GENERAL_PROJECT_NATURE = "org.wso2.developerstudio.eclipse.general.project.nature";
+	private static final String ESB_GRAPHICAL_PERSPECTIVE = "org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.perspective";
+
+	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+    
 	private IProject project;
 
 	public GeneralProjectWizard() {
@@ -81,6 +90,21 @@ public class GeneralProjectWizard extends AbstractWSO2ProjectCreationWizard {
 			return false;
 
 		}
+		
+		getShell().getDisplay().asyncExec(new Runnable() {
+			@Override
+			public void run() {
+				IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+				if (!ESB_GRAPHICAL_PERSPECTIVE.equals(window.getActivePage().getPerspective().getId())) {
+					try {
+						PlatformUI.getWorkbench().showPerspective(ESB_GRAPHICAL_PERSPECTIVE, window);
+					} catch (Exception e) {
+						log.error("Cannot switch to ESB Graphical Perspective", e);
+					}
+				}
+			}
+		});
+		
 		return true;
 	}
 

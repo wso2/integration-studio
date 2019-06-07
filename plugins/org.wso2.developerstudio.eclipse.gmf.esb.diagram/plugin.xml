@@ -6623,6 +6623,18 @@
 	   <super type="org.eclipse.core.resources.textmarker" />
 	   <persistent value="false" />
 	</extension>
+	
+ 	<extension point="org.eclipse.ui.activities">
+		<activity
+			id="esb.hidden.contributions.viewpoint"
+			name="Hidden Contributions - Viewpoint Explorer">
+		</activity>
+		<activityPatternBinding
+			activityId="esb.hidden.contributions.viewpoint"
+			isEqualityPattern="true"
+			pattern="org.eclipse.papyrus.infra.viewpoints.policy/org.eclipse.papyrus.infra.viewpoints.policy.ViewpointExplorer">
+		</activityPatternBinding>
+	</extension>
 </plugin>
 
 

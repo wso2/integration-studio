@@ -46,20 +46,6 @@
       </actionSet>
    </extension>
    <extension
-         point="org.eclipse.ui.views">
-      <category
-            name="%categoryName"
-            id="org.eclipse.ui.forms.article">
-      </category>
-      <view
-            name="%viewName"
-            icon="icons/sample.gif"
-            category="org.eclipse.ui.forms.article"
-            class="org.wso2.developerstudio.esb.form.editors.article.views.FormView"
-            id="org.eclipse.ui.forms.article.views.FormView">
-      </view>
-   </extension>
-   <extension
          point="org.eclipse.ui.perspectiveExtensions">
       <perspectiveExtension
             targetID="org.eclipse.ui.resourcePerspective">

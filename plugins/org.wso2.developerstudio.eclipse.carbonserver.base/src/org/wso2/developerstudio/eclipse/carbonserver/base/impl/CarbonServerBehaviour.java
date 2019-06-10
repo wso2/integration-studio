@@ -203,7 +203,6 @@ public abstract class CarbonServerBehaviour extends GenericServerBehaviour imple
 		setupLaunchClasspath(workingCopy, vmInstall, getStartClasspath());
 
 		Map environVars = getEnvironmentVariables(getServerDefinition().getStart());
-		environVars.put("JAVA_HOME", "/home/saminda/software/jdk1.6.0_20");
 		if (!environVars.isEmpty()) {
 			workingCopy.setAttribute(ILaunchManager.ATTR_ENVIRONMENT_VARIABLES, environVars);
 		}

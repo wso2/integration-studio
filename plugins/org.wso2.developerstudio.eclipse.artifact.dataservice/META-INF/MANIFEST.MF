@@ -46,3 +46,4 @@ Import-Package: org.eclipse.jdt.core,
  org.wso2.developerstudio.eclipse.utils.template;version="[4.1.0,7.0.0)",
  org.wso2.developerstudio.eclipse.utils.ui;version="[4.1.0,7.0.0)",
  org.wso2.developerstudio.eclipse.utils.wst;version="[4.1.0,7.0.0)"
+Export-Package: org.wso2.developerstudio.eclipse.artifact.dataservice.artifact

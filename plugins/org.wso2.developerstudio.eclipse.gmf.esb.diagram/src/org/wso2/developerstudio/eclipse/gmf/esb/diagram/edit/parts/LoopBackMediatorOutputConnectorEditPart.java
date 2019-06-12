@@ -522,19 +522,14 @@ public class LoopBackMediatorOutputConnectorEditPart extends AbstractMediatorOut
         return types;
     }
 
-    /**
-     * @generated
-     */
-    public class EastPointerFigure extends EastPointerShape {
+    @Override
+    public IFigure createNodeShapeReverse() {
+        return primaryShapeReverse = new WestPointerFigure(false);
+    }
 
-        /**
-         * @generated
-         */
-        public EastPointerFigure() {
-            this.setBackgroundColor(THIS_BACK);
-            this.setPreferredSize(new Dimension(getMapMode().DPtoLP(12), getMapMode().DPtoLP(10)));
-        }
-
+    @Override
+    public IFigure createNodeShapeForward() {
+        return primaryShapeForward = new EastPointerFigure(false);
     }
 
     /**

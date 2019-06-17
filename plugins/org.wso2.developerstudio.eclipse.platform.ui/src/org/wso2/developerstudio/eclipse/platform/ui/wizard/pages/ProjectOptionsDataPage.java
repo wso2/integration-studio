@@ -1149,6 +1149,9 @@ public class ProjectOptionsDataPage extends WizardPage implements Observer {
 					modelPropertyValue = modelPropertyValueObj.toString();
 				}
 				txt.setData(modelPropertyValue);
+				if (optionData.getDefaultValue() != null && !optionData.getDefaultValue().isEmpty()) {
+					txt.setData(optionData.getDefaultValue());
+				}
 			}
 		};
 		txt.setOnAction(new IOnAction() {

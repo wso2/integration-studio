@@ -11,8 +11,8 @@
 		title="Message Store Artifact Creation Options"
 		description="Select how you would like to create your message-store artifact"
 		error="Please select a method to create the task">
-		<option id="create.store" default="true">Create a new message-store artifact</option>
-		<option id="import.store">Import a message-store artifact</option>
+		<option id="create.store" default="true">Create a new message store artifact</option>
+		<option id="import.store">Import a message store artifact</option>
 	</projectOptions>
 	<projectOptionSettings>
 		<settings optionId="create.store"

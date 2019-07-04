@@ -57,3 +57,5 @@ Import-Package: org.eclipse.gmf.runtime.diagram.ui.resources.editor.document,
   org.wso2.developerstudio.eclipse.utils.ui;version="[4.1.0,7.0.0)",
   org.wso2.developerstudio.eclipse.utils.wst;version="[4.1.0,7.0.0)"
 Bundle-ActivationPolicy: lazy
+Export-Package: org.wso2.developerstudio.eclipse.docker.distribution.model,
+ org.wso2.developerstudio.eclipse.docker.distribution.ui.wizard

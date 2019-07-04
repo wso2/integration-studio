@@ -67,6 +67,7 @@ public class PlatformEarlyStartUpHandler implements IStartup {
      */
     private void setFileAssociations() {
         PlatformUI.getWorkbench().getEditorRegistry().setDefaultEditor("*.html", "org.eclipse.ui.browser.editorSupport");
+        PlatformUI.getWorkbench().getEditorRegistry().setDefaultEditor("Dockerfile", "org.eclipse.ui.editors.text.TextEditor");
     }
 
     /**

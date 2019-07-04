@@ -20,12 +20,17 @@ import org.apache.maven.project.MavenProject;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.artifact.connector.model.ConnectorModel;
 import org.wso2.developerstudio.eclipse.artifact.connector.ui.wizard.ConnectorCreationWizard;
 import org.wso2.developerstudio.eclipse.distribution.project.model.DistributionProjectModel;
 import org.wso2.developerstudio.eclipse.distribution.project.ui.wizard.DistributionProjectWizard;
+import org.wso2.developerstudio.eclipse.docker.distribution.model.DockerModel;
+import org.wso2.developerstudio.eclipse.docker.distribution.ui.wizard.DockerProjectCreationWizard;
 import org.wso2.developerstudio.eclipse.esb.project.Activator;
 import org.wso2.developerstudio.eclipse.esb.project.model.ESBSolutionProjectModel;
 import org.wso2.developerstudio.eclipse.esb.project.utils.ESBImageUtils;
@@ -52,6 +57,7 @@ public class ESBSolutionProjectCreationWizard extends AbstractWSO2ProjectCreatio
 	private File pomFile;
 	private String CAPP_ARTIFACT_ID = "CompositeApplication";
 	private String CONNECTOR_ARTIFACT_ID = "ConnectorExporter";
+	private String DOCKER_ARTIFACT_ID = "DockerExporter";
 	private String REGISTRY_ARTIFACT_ID = "Registry";
 	private String PROJECT_WIZARD_TITLE = "New ESB Solution Project";
 
@@ -110,6 +116,30 @@ public class ESBSolutionProjectCreationWizard extends AbstractWSO2ProjectCreatio
 			connectorWizard.setModel(connectorModel);
 			connectorWizard.performFinish();
 		}
+		
+        // Creating docker image exporter Project
+        if (esbSolutionProjectModel.isDockerExporterProjectChecked()) {
+            DockerProjectCreationWizard dockerWizard = new DockerProjectCreationWizard();
+            DockerModel dockerModel = new DockerModel();
+            String dockerProjectName = esbSolutionProjectModel.getDockerExporterProjectName();
+            try {
+                dockerModel.setProjectName(dockerProjectName);
+                dockerModel.setLocation(location);
+                updateMavenInformation(pomFile, DOCKER_ARTIFACT_ID);
+                dockerModel.setGroupId(esbSolutionProjectModel.getGroupId());
+                dockerModel.setMavenInfo(esbSolutionProjectModel.getMavenInfo());
+                dockerModel.setIsUserDefine(esbSolutionProjectModel.isUserSet());
+                dockerModel.setSelectedWorkingSets(esbSolutionProjectModel.getSelectedWorkingSets());
+                dockerModel.setDockerRemoteRepository(esbSolutionProjectModel.getDockerRemoteRepository());
+                dockerModel.setDockerRemoteTag(esbSolutionProjectModel.getDockerRemoteTag());
+                dockerModel.setDockerTargetRepository(esbSolutionProjectModel.getDockerTargetRepository());
+                dockerModel.setDockerTargetTag(esbSolutionProjectModel.getDockerTargetTag());
+            } catch (ObserverFailedException e1) {
+                log.error("Failed to set project name : " + dockerProjectName, e1);
+            }
+            dockerWizard.setModel(dockerModel);
+            dockerWizard.performFinish();
+        }
 
 		// Creating Composite Project
 		if (esbSolutionProjectModel.isCappProjectChecked()) {

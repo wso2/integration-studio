@@ -18,42 +18,44 @@ package org.wso2.developerstudio.eclipse.esb.project.model;
 
 import java.io.File;
 
+import org.wso2.developerstudio.eclipse.esb.project.utils.SolutionProjectArtifactConstants;
 import org.wso2.developerstudio.eclipse.platform.core.exception.ObserverFailedException;
 import org.wso2.developerstudio.eclipse.platform.core.project.model.ProjectDataModel;
 
-public class ESBProjectModel extends ProjectDataModel {	
-	private File synapseConfigLocation;
-	
-	public void setLocation(File location) {
-		// TODO Auto-generated method stub
-		super.setLocation(location);
-	}
-	
-	public File getLocation() {
-		// TODO Auto-generated method stub
-		return super.getLocation();
-	}
-	
- 	public Object getModelPropertyValue(String key) {
- 		  Object modelPropertyValue = super.getModelPropertyValue(key);
- 		  if(key.equals("synapseConfig.location")){
- 				modelPropertyValue = getSynapseConfigLocation();
- 			}
- 		  return modelPropertyValue;
- 		}
-	
-	public boolean setModelPropertyValue(String key, Object data) throws ObserverFailedException {
-		boolean isUiControlUpdated = super.setModelPropertyValue(key, data);
-		if("synapseConfig.location".equals(key)){
-			setSynapseConfigLocation(new File(data.toString()));
-		}
-		return isUiControlUpdated;
-	}
-	
-	public void setSynapseConfigLocation(File synapseConfigLocation) {
-		this.synapseConfigLocation=synapseConfigLocation;
-	}	
-	public File getSynapseConfigLocation() {
-		return synapseConfigLocation;
-	}
+public class ESBProjectModel extends ProjectDataModel {
+    private File synapseConfigLocation;
+
+    public void setLocation(File location) {
+        // TODO Auto-generated method stub
+        super.setLocation(location);
+    }
+
+    public File getLocation() {
+        // TODO Auto-generated method stub
+        return super.getLocation();
+    }
+
+    public Object getModelPropertyValue(String key) {
+        Object modelPropertyValue = super.getModelPropertyValue(key);
+        if (key.equals("synapseConfig.location")) {
+            modelPropertyValue = getSynapseConfigLocation();
+        }
+        return modelPropertyValue;
+    }
+
+    public boolean setModelPropertyValue(String key, Object data) throws ObserverFailedException {
+        boolean isUiControlUpdated = super.setModelPropertyValue(key, data);
+        if ("synapseConfig.location".equals(key)) {
+            setSynapseConfigLocation(new File(data.toString()));
+        }
+        return isUiControlUpdated;
+    }
+
+    public void setSynapseConfigLocation(File synapseConfigLocation) {
+        this.synapseConfigLocation = synapseConfigLocation;
+    }
+
+    public File getSynapseConfigLocation() {
+        return synapseConfigLocation;
+    }
 }

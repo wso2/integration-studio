@@ -42,6 +42,52 @@ public abstract class ProjectDataModel extends Observable {
 	private String selectedOption;
 	private String groupId = "com.example";
 	private boolean isUserSet;
+	private boolean isDockerExporterProjectChecked = false;
+	private String dockerRemoteRepository;
+	private String dockerRemoteTag;
+	private String dockerTargetRepository;
+	private String dockerTargetTag;
+
+	public String getDockerRemoteRepository() {
+	    return dockerRemoteRepository;
+	}
+
+	public void setDockerRemoteRepository(String dockerRemoteRepository) {
+		this.dockerRemoteRepository = dockerRemoteRepository;
+	}
+
+	public String getDockerRemoteTag() {
+	    return dockerRemoteTag;
+	}
+
+	public void setDockerRemoteTag(String dockerRemoteTag) {
+	    this.dockerRemoteTag = dockerRemoteTag;
+	}
+
+	public String getDockerTargetRepository() {
+	    return dockerTargetRepository;
+	}
+
+	public void setDockerTargetRepository(String dockerTargetRepository) {
+	    this.dockerTargetRepository = dockerTargetRepository;
+	}
+
+	public String getDockerTargetTag() {
+	    return dockerTargetTag;
+	}
+
+	public void setDockerTargetTag(String dockerTargetTag) {
+	    this.dockerTargetTag = dockerTargetTag;
+	}
+
+	public boolean isDockerExporterProjectChecked() {
+	    return isDockerExporterProjectChecked;
+	}
+
+	public void setDockerExporterProjectChecked(boolean dockerExporterProjectChecked) throws ObserverFailedException {
+	    this.isDockerExporterProjectChecked = dockerExporterProjectChecked;
+	    trigger();
+	}
 
 	public String getProjectName() {
 		return projectName;
@@ -100,7 +146,7 @@ public abstract class ProjectDataModel extends Observable {
 		}
 	}
 
-	private void trigger() throws ObserverFailedException {
+	protected void trigger() throws ObserverFailedException {
 		try {
 			setChanged();
 			notifyObservers();
@@ -203,9 +249,8 @@ public abstract class ProjectDataModel extends Observable {
 		}
 		IContainer saveLocation = null;
 		if (currentSelection != null) {
-			String path =
-			              absolutionPath.toString().substring(currentSelection.getLocation().toFile().toString()
-			                                                                  .length());
+			String path = absolutionPath.toString()
+					.substring(currentSelection.getLocation().toFile().toString().length());
 
 			if (path.equals("")) {
 				saveLocation = currentSelection;

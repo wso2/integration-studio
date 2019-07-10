@@ -35,7 +35,10 @@ public class ServerModuleVisibilityPropertyTester extends PropertyTester {
 
 	public boolean test(Object arg0, String arg1, Object[] arg2, Object arg3) {
 
-		if (arg0 instanceof IServerModule) {
+        if (arg0 instanceof IServerModule) {
+            // Add the already existing carbon servers to the carbon server manager
+            CarbonServerManager.addExistingServers();
+
 			List<IServer> servers = CarbonServerManager.getServers();
 			for (IServer iServer : servers) {
 				IRuntime serverRuntime = ((IServerModule) arg0).getServer().getRuntime();

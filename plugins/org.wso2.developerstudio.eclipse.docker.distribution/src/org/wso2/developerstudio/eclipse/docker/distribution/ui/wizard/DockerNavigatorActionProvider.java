@@ -81,15 +81,19 @@ public class DockerNavigatorActionProvider extends CommonActionProvider {
 
 			IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
 			IWorkbenchPage page = window.getActivePage();
-
-			try {
-				if (selection.getWorkspace().getRoot().getFile(new Path(diagramFilePath)).exists()) {
-					fileTobeOpen = selection.getWorkspace().getRoot().getFile(new Path(diagramFilePath));
-					page.openEditor(new FileEditorInput(fileTobeOpen), DockerProjectConstants.DOCKER_EDITOR);
-				}
-			} catch (Exception e) {
-				log.error("Can't open " + fileTobeOpen, e);
-			}
+			
+            try {
+                if (selection.getWorkspace().getRoot().getFile(new Path(diagramFilePath)).exists()) {
+                    fileTobeOpen = selection.getWorkspace().getRoot().getFile(new Path(diagramFilePath));
+                    if (fileTobeOpen.getName().equals(DockerProjectConstants.DOCKER_FILE_NAME)) {
+                        page.openEditor(new FileEditorInput(fileTobeOpen), DockerProjectConstants.DOCKER_FILE_EDITOR);
+                    } else {
+                        page.openEditor(new FileEditorInput(fileTobeOpen), DockerProjectConstants.DOCKER_EDITOR);
+                    }
+                }
+            } catch (Exception e) {
+                log.error("Can't open " + fileTobeOpen, e);
+            }
 		}
 
 		public void setSelection(IFile selection) {

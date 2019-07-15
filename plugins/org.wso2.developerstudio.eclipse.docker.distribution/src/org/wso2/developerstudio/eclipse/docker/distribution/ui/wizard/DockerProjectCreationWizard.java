@@ -88,7 +88,7 @@ public class DockerProjectCreationWizard extends AbstractWSO2ProjectCreationWiza
      * @throws IOException An error occurred while writing the file
      */
     private void copyDockerFile() throws IOException {
-        IFile dockerFile = project.getFile("Dockerfile");
+        IFile dockerFile = project.getFile(DockerProjectConstants.DOCKER_FILE_NAME);
         File newFile = new File(dockerFile.getLocationURI().getPath());
         if (!newFile.exists()) {
             // Creating the new docker file
@@ -108,7 +108,7 @@ public class DockerProjectCreationWizard extends AbstractWSO2ProjectCreationWiza
             stringBuilder.append("COPY " + DockerProjectConstants.CARBON_APP_FOLDER + "/*.car "
                     + DockerProjectConstants.CARBON_APP_FOLDER_LOCATION);
             stringBuilder.append(System.lineSeparator());
-            stringBuilder.append("COPY " + DockerProjectConstants.LIBS_FOLDER + "/*.jar "
+            stringBuilder.append("#COPY " + DockerProjectConstants.LIBS_FOLDER + "/*.jar "
                     + DockerProjectConstants.LIBS_FOLDER_LOCATION);
 
             if (newFile.createNewFile()) {
@@ -166,11 +166,11 @@ public class DockerProjectCreationWizard extends AbstractWSO2ProjectCreationWiza
             spotifyPluginExecution.addGoal("build");
             spotifyPluginExecution.setId("default");
 
-            String spotifyPluginConfig = "<configuration>\n"
-                    + "					      <repository>${docker.repository}</repository>\n"
-                    + "					      <tag>${docker.tag}</tag>\n" + "					  </configuration>";
-            Xpp3Dom spotifyDom = Xpp3DomBuilder.build(new ByteArrayInputStream(spotifyPluginConfig.getBytes()),
-                    "UTF-8");
+			String spotifyPluginConfig = "<configuration>\n" + "<repository>"
+					+ dockerModel.getDockerTargetRepository() + "</repository>\n" + "<tag>"
+					+ dockerModel.getDockerTargetTag() + "</tag>\n" + "</configuration>";
+			Xpp3Dom spotifyDom = Xpp3DomBuilder.build(new ByteArrayInputStream(spotifyPluginConfig.getBytes()),
+					"UTF-8");
             spotifyPluginExecution.setConfiguration(spotifyDom);
             spotifyPlugin.addExecution(spotifyPluginExecution);
 
@@ -183,8 +183,6 @@ public class DockerProjectCreationWizard extends AbstractWSO2ProjectCreationWiza
             Properties properties = mavenProject.getModel().getProperties();
             ArtifactTypeMapping artifactTypeMapping = new ArtifactTypeMapping();
             properties.put("artifact.types", artifactTypeMapping.getArtifactTypes());
-            properties.put("docker.repository", dockerModel.getDockerTargetRepository());
-            properties.put("docker.tag", dockerModel.getDockerTargetTag());
             mavenProject.getModel().setProperties(properties);
 
             MavenUtils.saveMavenProject(mavenProject, pomfile);

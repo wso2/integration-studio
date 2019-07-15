@@ -53,6 +53,8 @@ import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
 import org.wso2.developerstudio.eclipse.platform.core.model.MavenInfo;
 import org.wso2.developerstudio.eclipse.platform.core.project.model.ProjectDataModel;
 import org.wso2.developerstudio.eclipse.platform.ui.Activator;
+import org.wso2.developerstudio.eclipse.platform.ui.utils.PlatformUIConstants;
+import org.wso2.developerstudio.eclipse.platform.ui.utils.UserInputValidator;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 
 public class MavenDetailsPage extends WizardPage implements Observer {
@@ -573,26 +575,31 @@ public class MavenDetailsPage extends WizardPage implements Observer {
             if (dataModel.isDockerExporterProjectChecked()) {
                 String targetRepo = dataModel.getDockerTargetRepository();
                 if (targetRepo == null || targetRepo.isEmpty()) {
-                    updatePageStatus("Specify a target repository for the Docker project");
+                    updatePageStatus(PlatformUIConstants.NO_TARGET_REPO_MESSAGE);
+                    return;
+                } else if (!UserInputValidator.isRepositoryValid(targetRepo)) {
+                    updatePageStatus(PlatformUIConstants.INVALID_TARGET_REPO_MESSAGE);
                     return;
                 }
                 String targetTag = dataModel.getDockerTargetTag();
                 if (targetTag == null || targetTag.isEmpty()) {
-                    updatePageStatus("Specify a target tag for the Docker project");
+                    updatePageStatus(PlatformUIConstants.NO_TARGET_TAG_MESSAGE);
+                    return;
+                } else if (!UserInputValidator.isTagValid(targetTag)) {
+                    updatePageStatus(PlatformUIConstants.INVALID_TARGET_TAG_MESSAGE);
                     return;
                 }
                 String remoteRepo = dataModel.getDockerRemoteRepository();
                 if (remoteRepo == null || remoteRepo.isEmpty()) {
-                    updatePageStatus("Specify a remote repository for the Docker project");
+                    updatePageStatus(PlatformUIConstants.NO_REMOTE_REPOSITORY_MESSAGE);
                     return;
                 }
                 String remoteTag = dataModel.getDockerRemoteTag();
                 if (remoteTag == null || remoteTag.isEmpty()) {
-                    updatePageStatus("Specify a remote tag for the Docker project");
+                    updatePageStatus(PlatformUIConstants.NO_REMOTE_TAG_MESSAGE);
                     return;
                 }
             }
-
             updatePageStatus(null);
 		}
 

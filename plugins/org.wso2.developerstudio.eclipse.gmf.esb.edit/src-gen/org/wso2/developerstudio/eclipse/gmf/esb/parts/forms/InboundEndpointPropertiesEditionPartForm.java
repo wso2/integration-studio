@@ -690,7 +690,7 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.inboundWorkerPoolSizeCore) {
                     filterAdvanceSubPropertiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent, "Advance",
-                            false);
+                            true);
                     Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
                     Composite composite = createInboundWorkerPoolSizeCoreText(widgetFactory, filterAdvanceSubPropertiesGroup);
                     Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
@@ -24388,6 +24388,7 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
     public void refresh() {
         super.refresh();
         validate();
+        name.setFocus();
     }
 
     public void validate() {
@@ -24501,6 +24502,7 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
                 break;
             }
         }
+        name.setFocus();
         // showTable(caseBranches, caseBranchesData);
         view.layout(true, true);
     }

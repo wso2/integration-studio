@@ -28,6 +28,8 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.maven.multi.module.Activator;
@@ -43,6 +45,7 @@ import org.wso2.developerstudio.eclipse.utils.project.ProjectUtils;
 
 public class MvnMultiModuleWizard extends AbstractWSO2ProjectCreationWizard {
 	private static final String MAVEN_ECLIPSE_PLUGIN = "org.apache.maven.plugins:maven-eclipse-plugin:2.9";
+	private static final String ESB_GRAPHICAL_PERSPECTIVE = "org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.perspective";
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
 	private MvnMultiModuleModel moduleModel;
@@ -187,6 +190,21 @@ public class MvnMultiModuleWizard extends AbstractWSO2ProjectCreationWizard {
 				log.error("Error occured while trying to inject values to the Project Model", e);
 			}
 		}
+		
+        getShell().getDisplay().asyncExec(new Runnable() {
+            @Override
+            public void run() {
+                IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+                if (!ESB_GRAPHICAL_PERSPECTIVE.equals(window.getActivePage().getPerspective().getId())) {
+                    try {
+                        PlatformUI.getWorkbench().showPerspective(ESB_GRAPHICAL_PERSPECTIVE, window);
+                    } catch (Exception e) {
+                        log.error("Cannot switch to ESB Graphical Perspective", e);
+                    }
+                }
+            }
+        });
+		
 		return true;
 	}
 

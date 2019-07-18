@@ -18,7 +18,17 @@
 
 package org.wso2.developerstudio.eclipse.carbonserver44microei.handlers;
 
+import org.apache.maven.project.MavenProject;
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.IResourceChangeEvent;
+import org.eclipse.core.resources.IResourceChangeListener;
+import org.eclipse.core.resources.IWorkspace;
+import org.eclipse.core.resources.IWorkspaceRoot;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.debug.core.DebugPlugin;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.ILaunchConfigurationType;
@@ -34,12 +44,11 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PerspectiveAdapter;
 import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.actions.ContributionItemFactory;
-import org.eclipse.ui.internal.IActionSetContributionItem;
 import org.eclipse.ui.internal.WorkbenchWindow;
 import org.wso2.developerstudio.eclipse.carbonserver44microei.Activator;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
 
 /**
  * This is the early startup handler of the developer studio platform, all
@@ -153,6 +162,53 @@ public class PlatformEarlyStartUpHandler implements IStartup {
                 }
             }
         });
+
+        // The following resource listener will remove the modules from the maven multi-module pom file when the child
+        // projects are deleted
+        IWorkspace workspace = ResourcesPlugin.getWorkspace();
+        IResourceChangeListener rcl = new IResourceChangeListener() {
+            public void resourceChanged(IResourceChangeEvent event) {
+                new Thread() {
+                    public void run() {
+                        try {
+                            if (event.getType() == IResourceChangeEvent.PRE_DELETE
+                                    && event.getResource().getType() == org.eclipse.core.resources.IResource.PROJECT) {
+
+                                IProject deletedProject = event.getResource().getProject();
+                                IWorkspace workspace = ResourcesPlugin.getWorkspace();
+                                IWorkspaceRoot root = workspace.getRoot();
+                                IProject[] projects = root.getProjects();
+
+                                for (IProject project : projects) {
+                                    if (project.hasNature(
+                                            "org.wso2.developerstudio.eclipse.mavenmultimodule.project.nature")) {
+                                        IFile pomFile = project.getFile("pom.xml");
+                                        MavenProject mavenProject = MavenUtils
+                                                .getMavenProject(pomFile.getLocation().toFile());
+                                        for (int i = 0; i < mavenProject.getModules().size(); i++) {
+                                            if (mavenProject.getModules().get(i).equals(deletedProject.getName())) {
+                                                mavenProject.getModules().remove(i);
+                                            }
+                                        }
+
+                                        MavenUtils.saveMavenProject(mavenProject, pomFile.getLocation().toFile());
+                                        project.getParent().refreshLocal(IResource.DEPTH_INFINITE,
+                                                new NullProgressMonitor());
+                                    }
+                                }
+                            }
+                        } catch (Exception e) {
+                            log.error(
+                                    "Error occured while delete module from pom file of the maven multi module project",
+                                    e);
+                        }
+
+                    }
+                }.start();
+            }
+        };
+        workspace.addResourceChangeListener(rcl);
+
     }
 
 	private void createESBDebugProfile(ILaunchManager launchManager) throws CoreException {

@@ -1,21 +1,19 @@
 /*
- * Copyright (c) 2012, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
- * 
+ * Copyright (c) 2019, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
- * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-package org.wso2.developerstudio.eclipse.distribution.project.provider;
-
+package org.wso2.developerstudio.eclipse.docker.distribution.ui.wizard;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.CoreException;
@@ -31,17 +29,19 @@ import org.eclipse.ui.navigator.CommonActionProvider;
 import org.eclipse.ui.navigator.ICommonActionConstants;
 import org.eclipse.ui.navigator.ICommonActionExtensionSite;
 import org.eclipse.ui.part.FileEditorInput;
-import org.wso2.developerstudio.eclipse.distribution.project.Activator;
+import org.wso2.developerstudio.eclipse.docker.distribution.Activator;
+import org.wso2.developerstudio.eclipse.docker.distribution.utils.DockerProjectConstants;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
+/**
+ * Navigation action for docker projects in the workspace.
+ */
+public class DockerNavigatorActionProvider extends CommonActionProvider {
 
-public class NavigatorActionProvider extends CommonActionProvider {
-	
-	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);	
+	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	private OpenEditorAction openEditorAction;
-	String compositeAppNatureId = "org.wso2.developerstudio.eclipse.distribution.project.nature";
-	
+
 	@Override
 	public void fillActionBars(IActionBars actionBars) {
 		IStructuredSelection selection = (IStructuredSelection) getContext().getSelection();
@@ -50,13 +50,13 @@ public class NavigatorActionProvider extends CommonActionProvider {
 			Object firstElement = treeSelection.getFirstElement();
 			if (firstElement instanceof IFile) {
 				IFile file = (IFile) firstElement;
-				
+
 				try {
-					if (file.getProject().getDescription().hasNature(compositeAppNatureId)) {
+					if (file.getProject().getDescription().hasNature(DockerProjectConstants.DOCKER_NATURE)) {
 						openEditorAction.setSelection(file);
 						actionBars.setGlobalActionHandler(ICommonActionConstants.OPEN, openEditorAction);
 					}
-					
+
 				} catch (CoreException e) {
 					/* ignore */
 				}
@@ -71,24 +71,23 @@ public class NavigatorActionProvider extends CommonActionProvider {
 	}
 
 	private static class OpenEditorAction extends Action {
-
-		private static final String DEVS_DISTRIBUTION_PROJECT_EDITOR = "org.wso2.developerstudio.eclipse.distribution.project.editor.DistProjectEditor";
+		
 		private IFile selection;
 
 		@Override
 		public void run() {
 			IFile fileTobeOpen = null;
 			String diagramFilePath = selection.getFullPath().toOSString();
-			
+
 			IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
 			IWorkbenchPage page = window.getActivePage();
 
 			try {
 				if (selection.getWorkspace().getRoot().getFile(new Path(diagramFilePath)).exists()) {
 					fileTobeOpen = selection.getWorkspace().getRoot().getFile(new Path(diagramFilePath));
-					page.openEditor(new FileEditorInput(fileTobeOpen),DEVS_DISTRIBUTION_PROJECT_EDITOR);
+					page.openEditor(new FileEditorInput(fileTobeOpen), DockerProjectConstants.DOCKER_EDITOR);
 				}
-			}catch (Exception e) {
+			} catch (Exception e) {
 				log.error("Can't open " + fileTobeOpen, e);
 			}
 		}

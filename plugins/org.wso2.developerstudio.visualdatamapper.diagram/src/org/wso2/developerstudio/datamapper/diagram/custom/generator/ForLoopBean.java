@@ -47,7 +47,7 @@ public class ForLoopBean {
 		arrayVariableListToInstantiate = new ArrayList<>();
 		objectVariableListToInstantiate = new ArrayList<>();
 		nullableVarialesList = new HashSet<>();
-		this.iterativeName = getValidIterateName(iterativeName);
+		this.iterativeName = getValidIterateName(iterativeName + "_" + java.util.UUID.randomUUID());
 		this.variableName = variableName;
 	}
 
@@ -57,7 +57,7 @@ public class ForLoopBean {
 		arrayVariableListToInstantiate = new ArrayList<>();
 		objectVariableListToInstantiate = new ArrayList<>();
 		this.nullableVarialesList = nullableVariableList;
-		this.iterativeName = getValidIterateName(iterativeName);
+		this.iterativeName = getValidIterateName(iterativeName + "_" + java.util.UUID.randomUUID());
 		this.variableName = variableName;
 	}
 

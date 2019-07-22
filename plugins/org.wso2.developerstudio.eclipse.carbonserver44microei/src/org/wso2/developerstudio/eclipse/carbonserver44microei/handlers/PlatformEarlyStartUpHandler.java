@@ -167,7 +167,7 @@ public class PlatformEarlyStartUpHandler implements IStartup {
         // projects are deleted
         IWorkspace workspace = ResourcesPlugin.getWorkspace();
         IResourceChangeListener rcl = new IResourceChangeListener() {
-            public void resourceChanged(IResourceChangeEvent event) {
+            public void resourceChanged(final IResourceChangeEvent event) {
                 new Thread() {
                     public void run() {
                         try {

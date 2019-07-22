@@ -92,6 +92,12 @@ public class LoadBalanceEndPointPropertiesEditionComponent extends SinglePartPro
 	
 	
 	/**
+   * Settings for members ReferencesTable
+   */
+  protected ReferencesTableSettings membersSettings;
+
+
+  /**
 	 * Default constructor
 	 * 
 	 */
@@ -233,6 +239,10 @@ public class LoadBalanceEndPointPropertiesEditionComponent extends SinglePartPro
 			
 			
 			// init values for referenced views
+			if (isAccessible(EsbViewsRepository.LoadBalanceEndPoint.Properties.members)) {
+				membersSettings = new ReferencesTableSettings(loadBalanceEndPoint, EsbPackage.eINSTANCE.getLoadBalanceEndPoint_Member());
+				basePart.initMembers(membersSettings);
+			}
 			
 			// init filters for referenced views
 			
@@ -314,6 +324,9 @@ public class LoadBalanceEndPointPropertiesEditionComponent extends SinglePartPro
 		}
 		if (editorKey == EsbViewsRepository.LoadBalanceEndPoint.Properties.buildMessage) {
 			return EsbPackage.eINSTANCE.getLoadBalanceEndPoint_BuildMessage();
+		}
+		if (editorKey == EsbViewsRepository.LoadBalanceEndPoint.Properties.members) {
+			return EsbPackage.eINSTANCE.getLoadBalanceEndPoint_Member();
 		}
 		return super.associatedFeature(editorKey);
 	}
@@ -445,6 +458,31 @@ public class LoadBalanceEndPointPropertiesEditionComponent extends SinglePartPro
 		if (EsbViewsRepository.LoadBalanceEndPoint.Properties.buildMessage == event.getAffectedEditor()) {
 			loadBalanceEndPoint.setBuildMessage((Boolean)event.getNewValue());
 		}
+		if (EsbViewsRepository.LoadBalanceEndPoint.Properties.members == event.getAffectedEditor()) {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
+				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, membersSettings, editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy policy = provider.getPolicy(context);
+					if (policy instanceof CreateEditingPolicy) {
+						policy.execute();
+					}
+				}
+			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
+					if (editionPolicy != null) {
+						editionPolicy.execute();
+					}
+				}
+			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+				membersSettings.removeFromReference((EObject) event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+				membersSettings.move(event.getNewIndex(), (EndPoint) event.getNewValue());
+			}
+		}
 	}
 
 	/**
@@ -536,6 +574,9 @@ public class LoadBalanceEndPointPropertiesEditionComponent extends SinglePartPro
 			if (EsbPackage.eINSTANCE.getLoadBalanceEndPoint_BuildMessage().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.LoadBalanceEndPoint.Properties.buildMessage))
 				basePart.setBuildMessage((Boolean)msg.getNewValue());
 			
+			if (EsbPackage.eINSTANCE.getLoadBalanceEndPoint_Member().equals(msg.getFeature()) && isAccessible(EsbViewsRepository.LoadBalanceEndPoint.Properties.members))
+				basePart.updateMembers();
+			
 			
 		}
 	}
@@ -564,7 +605,8 @@ public class LoadBalanceEndPointPropertiesEditionComponent extends SinglePartPro
 			EsbPackage.eINSTANCE.getLoadBalanceEndPoint_SessionType(),
 			EsbPackage.eINSTANCE.getLoadBalanceEndPoint_Algorithm(),
 			EsbPackage.eINSTANCE.getLoadBalanceEndPoint_SessionTimeout(),
-			EsbPackage.eINSTANCE.getLoadBalanceEndPoint_BuildMessage()		);
+			EsbPackage.eINSTANCE.getLoadBalanceEndPoint_BuildMessage(),
+			EsbPackage.eINSTANCE.getLoadBalanceEndPoint_Member());
 		return new NotificationFilter[] {filter,};
 	}
 

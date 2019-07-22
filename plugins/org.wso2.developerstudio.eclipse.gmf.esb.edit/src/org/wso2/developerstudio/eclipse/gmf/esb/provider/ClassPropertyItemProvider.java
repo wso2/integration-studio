@@ -9,6 +9,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb.provider;
 import java.util.Collection;
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.WordUtils;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
@@ -79,26 +80,41 @@ public class ClassPropertyItemProvider extends AbstractNameValueExpressionProper
 
     @Override
     public String getText(Object object) {
-        String propertyName = ((ClassProperty) object).getPropertyName();
-        String propertyNameLabel = WordUtils.abbreviate(propertyName, 40, 45, " ...");
-        String propertyValueType = ((ClassProperty) object).getPropertyValueType().toString();
-        String propertyValueLabel = ((ClassProperty) object).getPropertyValue();
-        String propertyExpressionLabel = ((ClassProperty) object).getPropertyExpression().toString();
+        int maxLength = 40;
+        int spacing = 5;
+        int marginSpaceLeft = 1;
+        int propertyTypeLength = 10;
+        String emptySpace = StringUtils.rightPad("", spacing);
 
-        if (propertyValueType.equals(PropertyValueType.LITERAL.getName())) {
-            return propertyName == null || propertyName.length() == 0 ? getString("_UI_ClassProperty_type")
-                    : propertyValueLabel != null
-                            ? getString("_UI_ClassProperty_type") + "  -  "
-                                    + EEFPropertyViewUtil.spaceFormat(propertyNameLabel)
-                                    + EEFPropertyViewUtil.spaceFormat(propertyValueLabel)
-                            : getString("_UI_ClassProperty_type") + "  -  "
-                                    + EEFPropertyViewUtil.spaceFormat(propertyNameLabel);
-        } else {
-            return propertyName == null || propertyName.length() == 0 ? getString("_UI_ClassProperty_type")
-                    : EEFPropertyViewUtil.spaceFormat(getString("_UI_ClassProperty_type"))
-                            + EEFPropertyViewUtil.spaceFormat(propertyNameLabel)
-                            + EEFPropertyViewUtil.spaceFormat(propertyExpressionLabel);
+        String propertyName = StringUtils.rightPad(((ClassProperty) object).getPropertyName(), maxLength);
+        String propertyValueType = ((ClassProperty) object).getPropertyValueType().toString();
+        String propertyValue = StringUtils.rightPad(((ClassProperty) object).getPropertyValue(), maxLength);
+        String propertyExpression = StringUtils.rightPad(((ClassProperty) object).getPropertyExpression().toString(),
+                maxLength);
+
+        String formattedString = null;
+        if (((ClassProperty) object).getPropertyName() == null
+                || ((ClassProperty) object).getPropertyName().isEmpty()) {
+            propertyName = StringUtils.rightPad("", maxLength);
         }
+        if (((ClassProperty) object).getPropertyValue() == null
+                || ((ClassProperty) object).getPropertyValue().isEmpty()) {
+            propertyValue = StringUtils.rightPad("", maxLength);
+        }
+        if (PropertyValueType.LITERAL.getName().equals(propertyValueType)) {
+            formattedString = StringUtils.rightPad("", marginSpaceLeft)
+                    + StringUtils.abbreviate(propertyName, maxLength)
+                    + emptySpace + StringUtils.abbreviate(StringUtils.rightPad(propertyValueType, propertyTypeLength),
+                            propertyTypeLength)
+                    + emptySpace + StringUtils.abbreviate(propertyValue, maxLength);
+        } else {
+            formattedString = StringUtils.rightPad("", marginSpaceLeft)
+                    + StringUtils.abbreviate(propertyName, maxLength) + emptySpace
+                    + StringUtils.abbreviate(StringUtils.rightPad(propertyValueType, propertyTypeLength),
+                            propertyTypeLength)
+                    + emptySpace + StringUtils.abbreviate(propertyExpression, maxLength);
+        }
+        return formattedString;
     }
 
     /**

@@ -110,9 +110,9 @@ public class ConnectionCalculator {
 
             if ((connectors.size() != 0)) {
                 if (connectors.get(0) instanceof AbstractInputConnectorEditPart) {
-                    currentConnector = EditorUtils.getInputConnector(childEditPart);
-                } else {
                     currentConnector = EditorUtils.getOutputConnector(childEditPart);
+                } else {
+                    currentConnector = EditorUtils.getInputConnector(childEditPart);
                 }
             }
 

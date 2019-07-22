@@ -1,5 +1,13 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.persistence;
 
+import org.apache.synapse.endpoints.Endpoint;
+import org.wso2.developerstudio.eclipse.gmf.esb.AddressEndPoint;
+import org.wso2.developerstudio.eclipse.gmf.esb.TemplateEndpoint;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.AddressEndPointImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.TemplateEndpointImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.AddressEndPointTransformer;
+import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.TemplateEndPointTransformer;
+
 public class TransformerUtils {
 
     public static TransformationInfo cloneTransformationInfo(TransformationInfo info) {
@@ -16,6 +24,20 @@ public class TransformerUtils {
         information.setTraversalDirection(info.getTraversalDirection());
 
         return information;
+    }
+    
+    public static Endpoint getSynapseEndpoint(org.wso2.developerstudio.eclipse.gmf.esb.EndPoint viEndpoint)
+            throws TransformerException {
+        Endpoint endpoint = null;
+        if (viEndpoint instanceof AddressEndPointImpl) {
+            AddressEndPointTransformer transformer = new AddressEndPointTransformer();
+            endpoint = transformer.create((AddressEndPoint) viEndpoint, "");
+
+        } else if (viEndpoint instanceof TemplateEndpointImpl) {
+        	TemplateEndPointTransformer transformer = new TemplateEndPointTransformer();
+        	endpoint = transformer.create((TemplateEndpoint) viEndpoint, "");
+        }
+        return endpoint;
     }
 
 }

@@ -49,7 +49,9 @@ import org.eclipse.swt.layout.GridLayout;
 
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Group;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
@@ -175,11 +177,18 @@ public class SqlParameterDefinitionPropertiesEditionPartImpl extends CompositePr
      */
 	protected Composite createDataTypeEMFComboViewer(Composite parent) {
 		Control dataTypeLabel = createDescription(parent, EsbViewsRepository.SqlParameterDefinition.Properties.dataType, EsbMessages.SqlParameterDefinitionPropertiesEditionPart_DataTypeLabel);
-		dataType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		dataType = new EMFComboViewer(parent);
 		dataType.setContentProvider(new ArrayContentProvider());
 		dataType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData dataTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		dataType.getCombo().setLayoutData(dataTypeData);
+                dataType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		dataType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -207,11 +216,18 @@ public class SqlParameterDefinitionPropertiesEditionPartImpl extends CompositePr
      */
 	protected Composite createValueTypeEMFComboViewer(Composite parent) {
 		Control valueTypeLabel = createDescription(parent, EsbViewsRepository.SqlParameterDefinition.Properties.valueType, EsbMessages.SqlParameterDefinitionPropertiesEditionPart_ValueTypeLabel);
-		valueType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		valueType = new EMFComboViewer(parent);
 		valueType.setContentProvider(new ArrayContentProvider());
 		valueType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData valueTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		valueType.getCombo().setLayoutData(valueTypeData);
+                valueType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		valueType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

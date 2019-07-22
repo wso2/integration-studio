@@ -286,11 +286,18 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
      */
 	protected Composite createPropertyNameEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control propertyNameLabel = createDescription(parent, EsbViewsRepository.PropertyMediator.Properties.propertyName, EsbMessages.PropertyMediatorPropertiesEditionPart_PropertyNameLabel);
-		propertyName = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		propertyName = new EMFComboViewer(parent);
 		propertyName.setContentProvider(new ArrayContentProvider());
 		propertyName.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData propertyNameData = new GridData(GridData.FILL_HORIZONTAL);
 		propertyName.getCombo().setLayoutData(propertyNameData);
+                propertyName.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		propertyName.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -330,11 +337,18 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
      */	
 	protected Composite createPropertyDataTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control propertyDataTypeLabel = createDescription(parent, EsbViewsRepository.PropertyMediator.Properties.propertyDataType, EsbMessages.PropertyMediatorPropertiesEditionPart_PropertyDataTypeLabel);
-		propertyDataType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		propertyDataType = new EMFComboViewer(parent);
 		propertyDataType.setContentProvider(new ArrayContentProvider());
 		propertyDataType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData propertyDataTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		propertyDataType.getCombo().setLayoutData(propertyDataTypeData);
+                propertyDataType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		propertyDataType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -374,11 +388,18 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
      */	
 	protected Composite createPropertyActionEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control propertyActionLabel = createDescription(parent, EsbViewsRepository.PropertyMediator.Properties.propertyAction, EsbMessages.PropertyMediatorPropertiesEditionPart_PropertyActionLabel);
-		propertyAction = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		propertyAction = new EMFComboViewer(parent);
 		propertyAction.setContentProvider(new ArrayContentProvider());
 		propertyAction.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData propertyActionData = new GridData(GridData.FILL_HORIZONTAL);
 		propertyAction.getCombo().setLayoutData(propertyActionData);
+                propertyAction.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		propertyAction.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -419,11 +440,18 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
      */
 	protected Composite createPropertyScopeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control propertyScopeLabel = createDescription(parent, EsbViewsRepository.PropertyMediator.Properties.propertyScope, EsbMessages.PropertyMediatorPropertiesEditionPart_PropertyScopeLabel);
-		propertyScope = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		propertyScope = new EMFComboViewer(parent);
 		propertyScope.setContentProvider(new ArrayContentProvider());
 		propertyScope.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData propertyScopeData = new GridData(GridData.FILL_HORIZONTAL);
 		propertyScope.getCombo().setLayoutData(propertyScopeData);
+                propertyScope.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		propertyScope.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -465,11 +493,18 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
 	protected Composite createValueTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 	    filterValuesSubPropertiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent, "Value", true);
 		Control valueTypeLabel = createDescription(filterValuesSubPropertiesGroup, EsbViewsRepository.PropertyMediator.Properties.valueType, EsbMessages.PropertyMediatorPropertiesEditionPart_ValueTypeLabel);
-		valueType = new EMFComboViewer(filterValuesSubPropertiesGroup, SWT.SCROLL_LOCK);
+		valueType = new EMFComboViewer(filterValuesSubPropertiesGroup);
 		valueType.setContentProvider(new ArrayContentProvider());
 		valueType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData valueTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		valueType.getCombo().setLayoutData(valueTypeData);
+                valueType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		valueType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

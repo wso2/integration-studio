@@ -36,7 +36,7 @@ public class ExportImageWizardConstants {
     public static final String DEPLOYMENT_DIR_REL_PATH = "repository" + File.separator + "deployment" + File.separator
             + "server" + File.separator + "carbonapps";
 
-    public static final String EI_TOOLING_HOME_MACOS = "/Applications/DeveloperStudio.app/Contents/MacOS";
+    public static final String EI_TOOLING_HOME_MACOS = "/Applications/IntegrationStudio.app/Contents/Eclipse";
     public static final String OS_TYPE_DARWIN = "darwin";
     public static final String OS_TYPE_MAC = "mac";
     public static final String DOCKER_IMAGE_TEMPORARY_DIR_NAME = "dockerTempDir";

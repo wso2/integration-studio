@@ -17,7 +17,6 @@
 
 package org.wso2.developerstudio.esb.form.editors.article.rcp;
 
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -27,10 +26,10 @@ import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Color;
-import org.eclipse.swt.layout.GridData;
-import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.FormColors;
 import org.eclipse.ui.forms.IManagedForm;
@@ -142,7 +141,7 @@ public class MessageProcessorFormPage extends AbstractEsbFormPage {
 
 
 		toolkit.createLabel(basicSectionClient, "Message Processor Type *");
-		processorType = new Combo(basicSectionClient, SWT.DROP_DOWN);
+		processorType = new Combo(basicSectionClient, SWT.DROP_DOWN | SWT.READ_ONLY);
 		processorType.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		String[] triggerTypes = messageProcessorTypes;
 		processorType.setItems(triggerTypes);
@@ -166,6 +165,12 @@ public class MessageProcessorFormPage extends AbstractEsbFormPage {
 			}
 		});
 		
+		processorType.addListener(SWT.MouseVerticalWheel, new Listener() {
+			@Override
+			public void handleEvent(Event event) {
+				event.doit = false;
+			}
+		});
 		
 		toolkit.createLabel(basicSectionClient, "Message Store Name *");
 		storeName = toolkit.createText(basicSectionClient, "");

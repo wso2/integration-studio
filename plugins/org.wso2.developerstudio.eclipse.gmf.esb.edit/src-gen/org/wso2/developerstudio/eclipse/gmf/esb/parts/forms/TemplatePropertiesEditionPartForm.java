@@ -13,8 +13,6 @@ import org.eclipse.emf.common.util.Enumerator;
 
 import org.eclipse.emf.ecore.EObject;
 
-import org.eclipse.emf.ecore.util.EcoreAdapterFactory;
-
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
@@ -69,6 +67,9 @@ import org.eclipse.swt.layout.GridLayout;
 
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Listener;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Text;
 
 import org.eclipse.ui.forms.widgets.Form;
@@ -80,7 +81,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.TemplatePropertiesEditionPart;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
 
 // End of user code
@@ -100,8 +101,15 @@ public class TemplatePropertiesEditionPartForm extends SectionPropertiesEditingP
 	protected ReferencesTable parameters;
 	protected List<ViewerFilter> parametersBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> parametersFilters = new ArrayList<ViewerFilter>();
-
-
+	
+	// Start of user code  for
+	protected Composite propertiesGroup;
+	
+	protected Control[] descriptionElements;
+	protected Control[] nameElements;
+	protected Control[] templateTypeElements;
+	protected Control[] templateParameterElements;
+	// End of user code
 
 	/**
 	 * For {@link ISection} use only.
@@ -145,11 +153,11 @@ public class TemplatePropertiesEditionPartForm extends SectionPropertiesEditingP
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		CompositionSequence templateStep = new BindingCompositionSequence(propertiesEditionComponent);
 		CompositionStep propertiesStep = templateStep.addStep(EsbViewsRepository.Template.Properties.class);
-		propertiesStep.addStep(EsbViewsRepository.Template.Properties.description);
 		propertiesStep.addStep(EsbViewsRepository.Template.Properties.commentsList);
 		propertiesStep.addStep(EsbViewsRepository.Template.Properties.name);
 		propertiesStep.addStep(EsbViewsRepository.Template.Properties.templateType);
 		propertiesStep.addStep(EsbViewsRepository.Template.Properties.parameters);
+		propertiesStep.addStep(EsbViewsRepository.Template.Properties.description);
 		
 		
 		composer = new PartComposer(templateStep) {
@@ -179,8 +187,9 @@ public class TemplatePropertiesEditionPartForm extends SectionPropertiesEditingP
 		};
 		composer.compose(view);
 	}
+	
 	/**
-	 * 
+	 * @generated NOT
 	 */
 	protected Composite createPropertiesGroup(FormToolkit widgetFactory, final Composite parent) {
 		Section propertiesSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
@@ -188,7 +197,7 @@ public class TemplatePropertiesEditionPartForm extends SectionPropertiesEditingP
 		GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
 		propertiesSectionData.horizontalSpan = 3;
 		propertiesSection.setLayoutData(propertiesSectionData);
-		Composite propertiesGroup = widgetFactory.createComposite(propertiesSection);
+		propertiesGroup = widgetFactory.createComposite(propertiesSection);
 		GridLayout propertiesGroupLayout = new GridLayout();
 		propertiesGroupLayout.numColumns = 3;
 		propertiesGroup.setLayout(propertiesGroupLayout);
@@ -196,9 +205,11 @@ public class TemplatePropertiesEditionPartForm extends SectionPropertiesEditingP
 		return propertiesGroup;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createDescriptionText(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EsbViewsRepository.Template.Properties.description, EsbMessages.TemplatePropertiesEditionPart_DescriptionLabel);
+		Control descriptionLabel = createDescription(parent, EsbViewsRepository.Template.Properties.description, EsbMessages.TemplatePropertiesEditionPart_DescriptionLabel);
 		description = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		description.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -257,9 +268,9 @@ public class TemplatePropertiesEditionPartForm extends SectionPropertiesEditingP
 		});
 		EditingUtils.setID(description, EsbViewsRepository.Template.Properties.description);
 		EditingUtils.setEEFtype(description, "eef::Text"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.Template.Properties.description, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		Control descriptionHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.Template.Properties.description, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createDescriptionText
-
+		descriptionElements = new Control[] {descriptionLabel, description, descriptionHelp};
 		// End of user code
 		return parent;
 	}
@@ -310,9 +321,11 @@ public class TemplatePropertiesEditionPartForm extends SectionPropertiesEditingP
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createNameText(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EsbViewsRepository.Template.Properties.name, EsbMessages.TemplatePropertiesEditionPart_NameLabel);
+		Control nameLabel = createDescription(parent, EsbViewsRepository.Template.Properties.name, EsbMessages.TemplatePropertiesEditionPart_NameLabel);
 		name = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		name.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -371,9 +384,9 @@ public class TemplatePropertiesEditionPartForm extends SectionPropertiesEditingP
 		});
 		EditingUtils.setID(name, EsbViewsRepository.Template.Properties.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.Template.Properties.name, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		Control nameHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.Template.Properties.name, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createNameText
-
+		nameElements = new Control[] {nameLabel, name, nameHelp};
 		// End of user code
 		return parent;
 	}
@@ -382,12 +395,19 @@ public class TemplatePropertiesEditionPartForm extends SectionPropertiesEditingP
 	 * @generated NOT
 	 */
 	protected Composite createTemplateTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EsbViewsRepository.Template.Properties.templateType, EsbMessages.TemplatePropertiesEditionPart_TemplateTypeLabel);
-		templateType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		Control templateTypeLabel = createDescription(parent, EsbViewsRepository.Template.Properties.templateType, EsbMessages.TemplatePropertiesEditionPart_TemplateTypeLabel);
+		templateType = new EMFComboViewer(parent);
 		templateType.setContentProvider(new ArrayContentProvider());
 		templateType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData templateTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		templateType.getCombo().setLayoutData(templateTypeData);
+                templateType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		templateType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -403,9 +423,9 @@ public class TemplatePropertiesEditionPartForm extends SectionPropertiesEditingP
 
 		});
 		templateType.setID(EsbViewsRepository.Template.Properties.templateType);
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.Template.Properties.templateType, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		Control templateTypeHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.Template.Properties.templateType, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createTemplateTypeEMFComboViewer
-
+		templateTypeElements = new Control[] {templateTypeLabel, templateType.getCombo(), templateTypeHelp};
 		// End of user code
 		return parent;
 	}
@@ -415,6 +435,8 @@ public class TemplatePropertiesEditionPartForm extends SectionPropertiesEditingP
 	 * 
 	 */
 	protected Composite createParametersTableComposition(FormToolkit widgetFactory, Composite parent) {
+		Control[] previousControls = propertiesGroup.getChildren();
+		
 		this.parameters = new ReferencesTable(getDescription(EsbViewsRepository.Template.Properties.parameters, EsbMessages.TemplatePropertiesEditionPart_ParametersLabel), new ReferencesTableListener() {
 			public void handleAdd() {
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TemplatePropertiesEditionPartForm.this, EsbViewsRepository.Template.Properties.parameters, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
@@ -456,7 +478,8 @@ public class TemplatePropertiesEditionPartForm extends SectionPropertiesEditingP
 		parameters.setID(EsbViewsRepository.Template.Properties.parameters);
 		parameters.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
 		// Start of user code for createParametersTableComposition
-
+		Control[] newControls = propertiesGroup.getChildren();
+		templateParameterElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
 		// End of user code
 		return parent;
 	}
@@ -718,8 +741,24 @@ public class TemplatePropertiesEditionPartForm extends SectionPropertiesEditingP
 	}
 
 	// Start of user code additional methods
-	
-	// End of user code
+	@Override
+	public void refresh() {
+		super.refresh();
+		validate();
+	}
 
+	public void validate() {
+
+		EEFPropertyViewUtil viewUtil = new EEFPropertyViewUtil(view);
+
+		viewUtil.clearElements(new Composite[] { propertiesGroup });
+
+		viewUtil.showEntry(descriptionElements, false);
+		viewUtil.showEntry(nameElements, false);
+		viewUtil.showEntry(templateParameterElements, false);
+
+		view.layout(true, true);
+	}
+	// End of user code
 
 }

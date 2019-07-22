@@ -68,7 +68,9 @@ import org.eclipse.swt.layout.GridLayout;
 
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Group;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
@@ -349,11 +351,18 @@ public class XSLTMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 	 */
 	protected Composite createXsltSchemaKeyTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.XSLTMediator.Properties.xsltSchemaKeyType, EsbMessages.XSLTMediatorPropertiesEditionPart_XsltSchemaKeyTypeLabel);
-		xsltSchemaKeyType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		xsltSchemaKeyType = new EMFComboViewer(parent);
 		xsltSchemaKeyType.setContentProvider(new ArrayContentProvider());
 		xsltSchemaKeyType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData xsltSchemaKeyTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		xsltSchemaKeyType.getCombo().setLayoutData(xsltSchemaKeyTypeData);
+                xsltSchemaKeyType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		xsltSchemaKeyType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

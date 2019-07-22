@@ -43,6 +43,7 @@ public final class XSLTGeneratorConstants {
     public static final String OUTPUT = "output";
     public static final String TREE_NODE = "treeNode";
     public static final String OPERATOR_TYPE = "operatorType";
+    public static final String NAMESPACE = "namespaces";
 
     // arithmetic operators
     public static final String ADD = "ADD";
@@ -150,5 +151,8 @@ public final class XSLTGeneratorConstants {
     public static final String EXTENSION_ELEMENT_PREFIXES = "extension-element-prefixes";
     public static final String EXTENSION_ELEMENT_PREFIXES_VALUES = "xs own runTimeProperties notXSLTCompatible firstElementOfTheInput";
     public static final String EXTENSION_ELEMENT_PREFIXES_VALUES_WITHOUT_PROPERTY = "xs own notXSLTCompatible firstElementOfTheInput";
+    public static final String NAMESPACE_ELEMENT_XPATH = "//properties[@key=\"namespaces\"]";
+    public static final String NAMESPACE_GENERAL_PREFIX = "xmlns:";
+    public static final String NAMESPACE_ATTRIBUTE_VALUE = "value";
 
 }

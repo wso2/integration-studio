@@ -14,7 +14,9 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.FormColors;
@@ -156,7 +158,7 @@ public class Resequence implements IMessageStore {
 		});
 
 		toolkit.createLabel(connSectionClient, "Resequence Connection Information");
-		resequence_connectionInfo = new Combo(connSectionClient, SWT.DROP_DOWN);
+		resequence_connectionInfo = new Combo(connSectionClient, SWT.DROP_DOWN | SWT.READ_ONLY);
 		GridData resequence_connectionInfoGridData = new GridData();
 		resequence_connectionInfoGridData.horizontalSpan = 3;
 		resequence_connectionInfoGridData.horizontalAlignment = GridData.FILL;
@@ -183,6 +185,13 @@ public class Resequence implements IMessageStore {
 				esbFormPage.setSave(true);
 				esbFormPage.updateDirtyState();
 
+			}
+		});
+		
+		resequence_connectionInfo.addListener(SWT.MouseVerticalWheel, new Listener() {
+			@Override
+			public void handleEvent(Event event) {
+				event.doit = false;
 			}
 		});
 

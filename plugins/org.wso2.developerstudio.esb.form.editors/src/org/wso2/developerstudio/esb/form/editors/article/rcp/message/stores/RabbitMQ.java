@@ -26,7 +26,9 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.FormColors;
 import org.eclipse.ui.forms.events.ExpansionAdapter;
@@ -128,7 +130,7 @@ public class RabbitMQ implements IMessageStore {
 		});
 
 		toolkit.createLabel(connSectionClient, "SSL Enabled :");
-		rabbitMQ_sslEnabled = new Combo(connSectionClient, SWT.DROP_DOWN);
+		rabbitMQ_sslEnabled = new Combo(connSectionClient, SWT.DROP_DOWN | SWT.READ_ONLY);
 		String[] states = { "True", "False" };
 		rabbitMQ_sslEnabled.setItems(states);
 		rabbitMQ_sslEnabled.select(1);
@@ -155,6 +157,13 @@ public class RabbitMQ implements IMessageStore {
 
 				esbFormPage.setSave(true);
 				esbFormPage.updateDirtyState();
+			}
+		});
+		
+		rabbitMQ_sslEnabled.addListener(SWT.MouseVerticalWheel, new Listener() {
+			@Override
+			public void handleEvent(Event event) {
+				event.doit = false;
 			}
 		});
 

@@ -32,7 +32,9 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.FormColors;
@@ -259,7 +261,7 @@ public class EndpointCommons {
 		qosSectionClient.setLayout(new GridLayout());
 
 		toolkit.createLabel(qosSectionClient, "Reliable Messaging Enabled :");
-		endpointReliableMessaging = new Combo(qosSectionClient, SWT.DROP_DOWN);
+		endpointReliableMessaging = new Combo(qosSectionClient, SWT.DROP_DOWN | SWT.READ_ONLY);
 		// endpointReliableMessaging.setLayoutData(new
 		// TableWrapData(TableWrapData.FILL_GRAB));
 		String[] states = { "True", "False" };
@@ -282,6 +284,13 @@ public class EndpointCommons {
 				
 				esbFormPage.setSave(true);
 				esbFormPage.updateDirtyState();
+			}
+		});
+		
+		endpointReliableMessaging.addListener(SWT.MouseVerticalWheel, new Listener() {
+			@Override
+			public void handleEvent(Event event) {
+				event.doit = false;
 			}
 		});
 
@@ -344,7 +353,7 @@ public class EndpointCommons {
 		disableRMfields();
 
 		toolkit.createLabel(qosSectionClient, "Addressing Enabled :");
-		endpointAddressing = new Combo(qosSectionClient, SWT.DROP_DOWN);
+		endpointAddressing = new Combo(qosSectionClient, SWT.DROP_DOWN | SWT.READ_ONLY);
 		// endpointAddressing.setLayoutData(new
 		// TableWrapData(TableWrapData.FILL_GRAB));
 		String[] states2 = { "True", "False" };
@@ -369,9 +378,16 @@ public class EndpointCommons {
 			}
 		});
 
+		endpointAddressing.addListener(SWT.MouseVerticalWheel, new Listener() {
+			@Override
+			public void handleEvent(Event event) {
+				event.doit = false;
+			}
+		});
+		
 		endpointVersionLabel = toolkit.createLabel(qosSectionClient, "Addressing Version :");
 		endpointVersionLabel.setLayoutData(new GridData(GridData.FILL_BOTH));
-		endpointVersion = new Combo(qosSectionClient, SWT.DROP_DOWN);
+		endpointVersion = new Combo(qosSectionClient, SWT.DROP_DOWN | SWT.READ_ONLY);
 		// endpointVersion.setLayoutData(new
 		// TableWrapData(TableWrapData.FILL_GRAB));
 		String[] version = { "final", "submission" };
@@ -388,10 +404,17 @@ public class EndpointCommons {
 				esbFormPage.updateDirtyState();
 			}
 		});
+		
+		endpointVersion.addListener(SWT.MouseVerticalWheel, new Listener() {
+			@Override
+			public void handleEvent(Event event) {
+				event.doit = false;
+			}
+		});
 
 		endpointSeparateListnerLabel = toolkit.createLabel(qosSectionClient, "Addressing Separate Listener :");
 		endpointSeparateListnerLabel.setLayoutData(new GridData(GridData.FILL_BOTH));
-		endpointSeparateListner = new Combo(qosSectionClient, SWT.DROP_DOWN);
+		endpointSeparateListner = new Combo(qosSectionClient, SWT.DROP_DOWN | SWT.READ_ONLY);
 		// endpointSeparateListner.setLayoutData(new
 		// TableWrapData(TableWrapData.FILL_GRAB));
 		String[] separateListner = { "True", "False" };
@@ -408,11 +431,18 @@ public class EndpointCommons {
 				esbFormPage.updateDirtyState();
 			}
 		});
+		
+		endpointSeparateListner.addListener(SWT.MouseVerticalWheel, new Listener() {
+			@Override
+			public void handleEvent(Event event) {
+				event.doit = false;
+			}
+		});
 
 		disabeAddressingFields();
 
 		toolkit.createLabel(qosSectionClient, "Security Enabled :");
-		endpointSecurity = new Combo(qosSectionClient, SWT.DROP_DOWN);
+		endpointSecurity = new Combo(qosSectionClient, SWT.DROP_DOWN | SWT.READ_ONLY);
 		// endpointSecurity.setLayoutData(new
 		// TableWrapData(TableWrapData.FILL_GRAB));
 		String[] states1 = { "True", "False" };
@@ -439,6 +469,13 @@ public class EndpointCommons {
 				}
 				esbFormPage.setSave(true);
 				esbFormPage.updateDirtyState();
+			}
+		});
+		
+		endpointSecurity.addListener(SWT.MouseVerticalWheel, new Listener() {
+			@Override
+			public void handleEvent(Event event) {
+				event.doit = false;
 			}
 		});
 
@@ -1014,7 +1051,7 @@ public class EndpointCommons {
 		});
 
 		toolkit.createLabel(errorHandlingSectionClient, "Timeout Action :");
-		endpointTimeoutAction = new Combo(errorHandlingSectionClient, SWT.DROP_DOWN);
+		endpointTimeoutAction = new Combo(errorHandlingSectionClient, SWT.DROP_DOWN | SWT.READ_ONLY);
 		// endpointTimeoutAction.setLayoutData(new
 		// TableWrapData(TableWrapData.FILL_GRAB));
 		String[] timeoutActions = { "Never", "Discard", "Fault" };
@@ -1032,6 +1069,14 @@ public class EndpointCommons {
 				esbFormPage.updateDirtyState();
 			}
 		});
+		
+		endpointTimeoutAction.addListener(SWT.MouseVerticalWheel, new Listener() {
+			@Override
+			public void handleEvent(Event event) {
+				event.doit = false;
+			}
+		});
+		
 		errorHandlingSection.setClient(errorHandlingSectionClient);
 	}
 

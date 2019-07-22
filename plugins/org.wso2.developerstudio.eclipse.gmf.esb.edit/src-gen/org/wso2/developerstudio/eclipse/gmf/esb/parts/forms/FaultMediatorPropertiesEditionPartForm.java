@@ -61,6 +61,8 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
 import org.eclipse.ui.forms.widgets.Form;
@@ -474,11 +476,18 @@ public class FaultMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
      */
 	protected Composite createSoapVersionEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control soapVersionLabel = createDescription(parent, EsbViewsRepository.FaultMediator.Properties.soapVersion, EsbMessages.FaultMediatorPropertiesEditionPart_SoapVersionLabel);
-		soapVersion = new EMFComboViewer(parent,SWT.SCROLL_LOCK);
+		soapVersion = new EMFComboViewer(parent);
 		soapVersion.setContentProvider(new ArrayContentProvider());
 		soapVersion.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData soapVersionData = new GridData(GridData.FILL_HORIZONTAL);
 		soapVersion.getCombo().setLayoutData(soapVersionData);
+                soapVersion.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		soapVersion.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -607,11 +616,18 @@ public class FaultMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
      */
 	protected Composite createFaultCodeSoap11EMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control faultCodeSoapLabel = createDescription(parent, EsbViewsRepository.FaultMediator.Properties.faultCodeSoap11, EsbMessages.FaultMediatorPropertiesEditionPart_FaultCodeSoap11Label);
-		faultCodeSoap11 = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		faultCodeSoap11 = new EMFComboViewer(parent);
 		faultCodeSoap11.setContentProvider(new ArrayContentProvider());
 		faultCodeSoap11.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData faultCodeSoap11Data = new GridData(GridData.FILL_HORIZONTAL);
 		faultCodeSoap11.getCombo().setLayoutData(faultCodeSoap11Data);
+                faultCodeSoap11.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		faultCodeSoap11.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -639,11 +655,18 @@ public class FaultMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
      */
 	protected Composite createFaultCodeTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control faultCodeTypeLabel = createDescription(parent, null, "Fault CodeType");
-		faultCodeType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		faultCodeType = new EMFComboViewer(parent);
 		faultCodeType.setContentProvider(new ArrayContentProvider());
 		faultCodeType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData faultCodeTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		faultCodeType.getCombo().setLayoutData(faultCodeTypeData);
+                faultCodeType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		faultCodeType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -671,11 +694,18 @@ public class FaultMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
      */
 	protected Composite createFaultStringTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 	    Control faultStringTypeLabel = createDescription(parent, null, "Type");
-		faultStringType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		faultStringType = new EMFComboViewer(parent);
 		faultStringType.setContentProvider(new ArrayContentProvider());
 		faultStringType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData faultStringTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		faultStringType.getCombo().setLayoutData(faultStringTypeData);
+                faultStringType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		faultStringType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -857,11 +887,18 @@ public class FaultMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
      */
 	protected Composite createFaultCodeSoap12EMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 	    Control faultCodeSoap12Label = createDescription(parent, EsbViewsRepository.FaultMediator.Properties.faultCodeSoap12, EsbMessages.FaultMediatorPropertiesEditionPart_FaultCodeSoap12Label);
-		faultCodeSoap12 = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		faultCodeSoap12 = new EMFComboViewer(parent);
 		faultCodeSoap12.setContentProvider(new ArrayContentProvider());
 		faultCodeSoap12.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData faultCodeSoap12Data = new GridData(GridData.FILL_HORIZONTAL);
 		faultCodeSoap12.getCombo().setLayoutData(faultCodeSoap12Data);
+                faultCodeSoap12.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		faultCodeSoap12.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -890,11 +927,18 @@ public class FaultMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
 	protected Composite createFaultReasonTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 	    filterReasonSubPropertiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent, "Reason", true);
 	    Control faultReasonTypeLabel = createDescription(filterReasonSubPropertiesGroup, null, "Type");
-		faultReasonType = new EMFComboViewer(filterReasonSubPropertiesGroup, SWT.SCROLL_LOCK);
+		faultReasonType = new EMFComboViewer(filterReasonSubPropertiesGroup);
 		faultReasonType.setContentProvider(new ArrayContentProvider());
 		faultReasonType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData faultReasonTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		faultReasonType.getCombo().setLayoutData(faultReasonTypeData);
+                faultReasonType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		faultReasonType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -1146,11 +1190,18 @@ public class FaultMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
 	protected Composite createFaultDetailTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 	    filterDetailSubPropertiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent, "Detail", true);
 	    Control faultDetailTypeLabel = createDescription(filterDetailSubPropertiesGroup, null, "Type");
-		faultDetailType = new EMFComboViewer(filterDetailSubPropertiesGroup, SWT.SCROLL_LOCK);
+		faultDetailType = new EMFComboViewer(filterDetailSubPropertiesGroup);
 		faultDetailType.setContentProvider(new ArrayContentProvider());
 		faultDetailType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData faultDetailTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		faultDetailType.getCombo().setLayoutData(faultDetailTypeData);
+                faultDetailType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		faultDetailType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

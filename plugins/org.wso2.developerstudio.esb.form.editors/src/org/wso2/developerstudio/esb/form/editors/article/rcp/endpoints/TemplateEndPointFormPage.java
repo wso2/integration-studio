@@ -36,6 +36,8 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.IManagedForm;
@@ -141,7 +143,7 @@ public class TemplateEndPointFormPage extends EndpointFormPage {
 		 */
 
 		toolkit.createLabel(miscSectionClient, "Available Templates :");
-		tempEP_AvaiableTemp = new Combo(miscSectionClient, SWT.DROP_DOWN);
+		tempEP_AvaiableTemp = new Combo(miscSectionClient, SWT.DROP_DOWN | SWT.READ_ONLY);
 		// defaultEP_Optimize.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		ArrayList<String> availableTemplateList = getAvailableTemplateList();
 		String[] list = new String[availableTemplateList.size()];
@@ -164,6 +166,13 @@ public class TemplateEndPointFormPage extends EndpointFormPage {
 				updateDirtyState();
 			}
 
+		});
+		
+		tempEP_AvaiableTemp.addListener(SWT.MouseVerticalWheel, new Listener() {
+			@Override
+			public void handleEvent(Event event) {
+				event.doit = false;
+			}
 		});
 
 		toolkit.createLabel(miscSectionClient, "Target Template :");

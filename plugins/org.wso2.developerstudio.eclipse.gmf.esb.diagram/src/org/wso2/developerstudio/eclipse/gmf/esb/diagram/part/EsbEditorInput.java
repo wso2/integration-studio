@@ -60,7 +60,7 @@ public class EsbEditorInput extends FileEditorInput implements IEsbEditorInput {
     }
 
     public String getToolTipText() {
-        return "Developer Studio Dashboard";
+        return "Integration Studio Editor";
     }
 
     public Object getAdapter(Class adapter) {

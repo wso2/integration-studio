@@ -21,6 +21,7 @@ import org.wso2.developerstudio.datamapper.diagram.xslt.config.XSLTStyleSheetWri
 import org.wso2.developerstudio.datamapper.diagram.xslt.xmltree.InPutNode;
 import org.wso2.developerstudio.datamapper.diagram.xslt.xmltree.OperatorNode;
 import org.wso2.developerstudio.datamapper.diagram.xslt.xmltree.OutPutNode;
+import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -28,6 +29,12 @@ import org.w3c.dom.NodeList;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathExpression;
+import javax.xml.xpath.XPathExpressionException;
+import javax.xml.xpath.XPathFactory;
 
 import static org.wso2.developerstudio.datamapper.diagram.xslt.config.XSLTGeneratorConstants.ABSOLUTE;
 import static org.wso2.developerstudio.datamapper.diagram.xslt.config.XSLTGeneratorConstants.ADD;
@@ -115,6 +122,9 @@ import static org.wso2.developerstudio.datamapper.diagram.xslt.config.XSLTGenera
 import static org.wso2.developerstudio.datamapper.diagram.xslt.config.XSLTGeneratorConstants.NOT_XSLT_COMPATIBLE_DEFAULT;
 import static org.wso2.developerstudio.datamapper.diagram.xslt.config.XSLTGeneratorConstants.XSLT_COMPATIBLE_DEFAULT;
 import static org.wso2.developerstudio.datamapper.diagram.xslt.config.XSLTGeneratorConstants.INPUT_FIRST_ELEMENT;
+import static org.wso2.developerstudio.datamapper.diagram.xslt.config.XSLTGeneratorConstants.NAMESPACE_ELEMENT_XPATH;
+import static org.wso2.developerstudio.datamapper.diagram.xslt.config.XSLTGeneratorConstants.NAMESPACE_GENERAL_PREFIX;
+import static org.wso2.developerstudio.datamapper.diagram.xslt.config.XSLTGeneratorConstants.NAMESPACE_ATTRIBUTE_VALUE;
 
 public class XSLTGenerator {
     private ArrayList<InPutNode> inPutNodes;
@@ -134,7 +144,7 @@ public class XSLTGenerator {
      */
     public boolean initializeGeneration(DataMapperSchemaProcessor inputXML, XSLTStyleSheetWriter outputXML) {
         rootElement = outputXML.getDocument().createElement(XSL_STYLESHEET);
-        setXSLURIs();
+        setXSLURIs(inputXML);
         outputXML.getDocument().appendChild(rootElement);
         setPrecisionFunction(outputXML);
         createOperatorNodes(inputXML);
@@ -1027,11 +1037,43 @@ public class XSLTGenerator {
      *
      * @param rootElement root element of the output XSLT stylesheet
      */
-    private void setXSLURIs() {
+    private void setXSLURIs(DataMapperSchemaProcessor inputXML) {
         rootElement.setAttribute(XMLNS_XSL, XSL_NAMESPACE_URI);
         rootElement.setAttribute(XMLNS_XS, XS_NAMESPACE_URI);
         rootElement.setAttribute(VERSION, XSLT_VERSION);
         rootElement.setAttribute(XMLNS_OWN, XSLT_FUNCTION_DECLARE_URI);
+        addCustomNameSpaces(inputXML.getDocument());
+
+    }
+
+    /**
+     * This adds any custom namespaces in input/output files to the xslt style sheet
+     * @param inputDoc .datamapper file document element
+     */
+    private void addCustomNameSpaces(Document inputDoc) {
+        XPath xpath = XPathFactory.newInstance().newXPath();
+        HashMap<String, String> customNameSpaceMap = new HashMap<String, String>();
+
+        try {
+            XPathExpression expr = xpath.compile(NAMESPACE_ELEMENT_XPATH);
+            NodeList nl = (NodeList) expr.evaluate(inputDoc, XPathConstants.NODESET);
+            for (int i = 0; i < nl.getLength(); i++) {
+                Node node = nl.item(i);
+                // namespace key value structure -> {prefix=h, url=http://www.w3.org/TR/html4/}
+                String[] nameSpaceKeyValue = node.getAttributes().getNamedItem(NAMESPACE_ATTRIBUTE_VALUE).getNodeValue()
+                        .replace("{prefix=", "").replace(" url=", "").replace("}", "").split(",");
+                if (nameSpaceKeyValue.length == 2) {
+                    customNameSpaceMap.put(nameSpaceKeyValue[0], nameSpaceKeyValue[1]);
+                }
+            }
+
+        } catch (XPathExpressionException e) {
+            //Silently ignore
+        }
+
+        for (String key : customNameSpaceMap.keySet()) {
+            rootElement.setAttribute(NAMESPACE_GENERAL_PREFIX + key, customNameSpaceMap.get(key));
+        }
 
     }
 

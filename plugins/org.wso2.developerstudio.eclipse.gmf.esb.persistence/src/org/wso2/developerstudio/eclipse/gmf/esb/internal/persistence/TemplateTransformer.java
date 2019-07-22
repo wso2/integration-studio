@@ -52,6 +52,7 @@ public class TemplateTransformer extends AbstractEsbNodeTransformer {
         if (template.getChild() instanceof Sequences) {
             TemplateMediator templateMediator = new TemplateMediator();
             templateMediator.setName(template.getName());
+            templateMediator.setDescription(template.getDescription());
             templateMediator.setParameters(new ArrayList<String>());
             saveParameters(template, templateMediator.getParameters());
             SequenceMediator sequence = new SequenceMediator();
@@ -65,7 +66,9 @@ public class TemplateTransformer extends AbstractEsbNodeTransformer {
                 info.getSynapseConfiguration().addSequenceTemplate("TEMPLATE_NAME", templateMediator);
             }
             
-            templateMediator.getCommentsList().addAll(template.getCommentsList());
+            if (template.getCommentsList() != null) {
+                templateMediator.getCommentsList().addAll(template.getCommentsList());
+            }
 
         } else if (template.getChild() instanceof EndpointDiagram) {
             org.apache.synapse.endpoints.Template endpointTemplate = new org.apache.synapse.endpoints.Template();
@@ -93,7 +96,9 @@ public class TemplateTransformer extends AbstractEsbNodeTransformer {
 
             info.getSynapseConfiguration().addEndpointTemplate(template.getName(), endpointTemplate);
             
-            endpointTemplate.getCommentsList().addAll(template.getCommentsList());
+            if (template.getCommentsList() != null) {
+                endpointTemplate.getCommentsList().addAll(template.getCommentsList());
+            }
         }
 
     }

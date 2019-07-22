@@ -35,6 +35,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.MediaType;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryArgument;
 import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryArgumentType;
+import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryEvaluatorType;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.PayloadFactoryArgumentPropertiesEditionPart;
@@ -159,7 +160,7 @@ public class PayloadFactoryArgumentPropertiesEditionComponent extends SinglePart
 			payloadFactoryArgument.setArgumentValue((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (EsbViewsRepository.PayloadFactoryArgument.Properties.evaluator == event.getAffectedEditor()) {
-			payloadFactoryArgument.setEvaluator((MediaType)event.getNewValue());
+			payloadFactoryArgument.setEvaluator((PayloadFactoryEvaluatorType)event.getNewValue());
 		}
 		if (EsbViewsRepository.PayloadFactoryArgument.Properties.literal == event.getAffectedEditor()) {
 			payloadFactoryArgument.setLiteral((Boolean)event.getNewValue());

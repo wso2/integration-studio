@@ -203,6 +203,8 @@ public class EEFPropertyViewUtil {
             return true;
         } else if (e.stateMask == SWT.COMMAND) {
             return true;
+        } else if (e.stateMask == SWT.ALT && e.keyCode != SWT.TAB) {
+        	return true;
         } else if (e.stateMask == SWT.CTRL && e.keyCode != 118) {//not returning true for Ctrl+V
             return true;
         }

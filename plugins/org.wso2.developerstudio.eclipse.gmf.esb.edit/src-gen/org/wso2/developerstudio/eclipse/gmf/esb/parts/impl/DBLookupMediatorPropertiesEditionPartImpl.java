@@ -68,7 +68,9 @@ import org.eclipse.swt.layout.GridLayout;
 
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Group;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
@@ -386,11 +388,18 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 	 */
 	protected Composite createPropertyAutocommitEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.DBLookupMediator.Properties.propertyAutocommit, EsbMessages.DBLookupMediatorPropertiesEditionPart_PropertyAutocommitLabel);
-		propertyAutocommit = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		propertyAutocommit = new EMFComboViewer(parent);
 		propertyAutocommit.setContentProvider(new ArrayContentProvider());
 		propertyAutocommit.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData propertyAutocommitData = new GridData(GridData.FILL_HORIZONTAL);
 		propertyAutocommit.getCombo().setLayoutData(propertyAutocommitData);
+                propertyAutocommit.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		propertyAutocommit.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -418,11 +427,18 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 	 */
 	protected Composite createPropertyIsolationEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.DBLookupMediator.Properties.propertyIsolation, EsbMessages.DBLookupMediatorPropertiesEditionPart_PropertyIsolationLabel);
-		propertyIsolation = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		propertyIsolation = new EMFComboViewer(parent);
 		propertyIsolation.setContentProvider(new ArrayContentProvider());
 		propertyIsolation.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData propertyIsolationData = new GridData(GridData.FILL_HORIZONTAL);
 		propertyIsolation.getCombo().setLayoutData(propertyIsolationData);
+                propertyIsolation.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		propertyIsolation.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -695,11 +711,18 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 	 */
 	protected Composite createPropertyPoolstatementsEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.DBLookupMediator.Properties.propertyPoolstatements, EsbMessages.DBLookupMediatorPropertiesEditionPart_PropertyPoolstatementsLabel);
-		propertyPoolstatements = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		propertyPoolstatements = new EMFComboViewer(parent);
 		propertyPoolstatements.setContentProvider(new ArrayContentProvider());
 		propertyPoolstatements.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData propertyPoolstatementsData = new GridData(GridData.FILL_HORIZONTAL);
 		propertyPoolstatements.getCombo().setLayoutData(propertyPoolstatementsData);
+                propertyPoolstatements.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		propertyPoolstatements.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -727,11 +750,18 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 	 */
 	protected Composite createPropertyTestonborrowEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.DBLookupMediator.Properties.propertyTestonborrow, EsbMessages.DBLookupMediatorPropertiesEditionPart_PropertyTestonborrowLabel);
-		propertyTestonborrow = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		propertyTestonborrow = new EMFComboViewer(parent);
 		propertyTestonborrow.setContentProvider(new ArrayContentProvider());
 		propertyTestonborrow.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData propertyTestonborrowData = new GridData(GridData.FILL_HORIZONTAL);
 		propertyTestonborrow.getCombo().setLayoutData(propertyTestonborrowData);
+                propertyTestonborrow.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		propertyTestonborrow.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -759,11 +789,18 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 	 */
 	protected Composite createPropertyTestwhileidleEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.DBLookupMediator.Properties.propertyTestwhileidle, EsbMessages.DBLookupMediatorPropertiesEditionPart_PropertyTestwhileidleLabel);
-		propertyTestwhileidle = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		propertyTestwhileidle = new EMFComboViewer(parent);
 		propertyTestwhileidle.setContentProvider(new ArrayContentProvider());
 		propertyTestwhileidle.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData propertyTestwhileidleData = new GridData(GridData.FILL_HORIZONTAL);
 		propertyTestwhileidle.getCombo().setLayoutData(propertyTestwhileidleData);
+                propertyTestwhileidle.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		propertyTestwhileidle.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -968,11 +1005,18 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 	 */
 	protected Composite createConnectionTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.DBLookupMediator.Connection.connectionType, EsbMessages.DBLookupMediatorPropertiesEditionPart_ConnectionTypeLabel);
-		connectionType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		connectionType = new EMFComboViewer(parent);
 		connectionType.setContentProvider(new ArrayContentProvider());
 		connectionType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData connectionTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		connectionType.getCombo().setLayoutData(connectionTypeData);
+                connectionType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		connectionType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -1000,11 +1044,18 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 	 */
 	protected Composite createConnectionDsTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.DBLookupMediator.Connection.connectionDsType, EsbMessages.DBLookupMediatorPropertiesEditionPart_ConnectionDsTypeLabel);
-		connectionDsType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		connectionDsType = new EMFComboViewer(parent);
 		connectionDsType.setContentProvider(new ArrayContentProvider());
 		connectionDsType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData connectionDsTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		connectionDsType.getCombo().setLayoutData(connectionDsTypeData);
+                connectionDsType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		connectionDsType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -1081,11 +1132,18 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 	 */
 	protected Composite createConnectionDbTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.DBLookupMediator.Connection.connectionDbType, EsbMessages.DBLookupMediatorPropertiesEditionPart_ConnectionDbTypeLabel);
-		connectionDbType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		connectionDbType = new EMFComboViewer(parent);
 		connectionDbType.setContentProvider(new ArrayContentProvider());
 		connectionDbType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData connectionDbTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		connectionDbType.getCombo().setLayoutData(connectionDbTypeData);
+                connectionDbType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		connectionDbType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

@@ -70,6 +70,8 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
 import org.eclipse.ui.forms.widgets.Form;
@@ -242,11 +244,18 @@ public class PayloadFactoryMediatorPropertiesEditionPartForm extends SectionProp
      */
 	protected Composite createPayloadFormatEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control payloadFormatLabel = createDescription(parent, EsbViewsRepository.PayloadFactoryMediator.Properties.payloadFormat, EsbMessages.PayloadFactoryMediatorPropertiesEditionPart_PayloadFormatLabel);
-		payloadFormat = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		payloadFormat = new EMFComboViewer(parent);
 		payloadFormat.setContentProvider(new ArrayContentProvider());
 		payloadFormat.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData payloadFormatData = new GridData(GridData.FILL_HORIZONTAL);
 		payloadFormat.getCombo().setLayoutData(payloadFormatData);
+                payloadFormat.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		payloadFormat.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -292,7 +301,7 @@ public class PayloadFactoryMediatorPropertiesEditionPartForm extends SectionProp
 		payload.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(filterPayloadSubPropertiesGroup);
 		GridData payloadData = new GridData(GridData.FILL_HORIZONTAL);
-		payloadData.heightHint = payload.getLineHeight()*4;
+		payloadData.heightHint = payload.getLineHeight()*9;
 		payload.setLayoutData(payloadData);
 		payload.addFocusListener(new FocusAdapter() {
 			/**
@@ -399,11 +408,18 @@ public class PayloadFactoryMediatorPropertiesEditionPartForm extends SectionProp
      */
 	protected Composite createMediaTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		Control mediaTypeLabel = createDescription(parent, EsbViewsRepository.PayloadFactoryMediator.Properties.mediaType, EsbMessages.PayloadFactoryMediatorPropertiesEditionPart_MediaTypeLabel);
-		mediaType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		mediaType = new EMFComboViewer(parent);
 		mediaType.setContentProvider(new ArrayContentProvider());
 		mediaType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData mediaTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		mediaType.getCombo().setLayoutData(mediaTypeData);
+                mediaType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		mediaType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**

@@ -6817,6 +6817,9 @@ public class EsbViewsRepository {
 			
 			public static String buildMessage = "esb::LoadBalanceEndPoint::properties::buildMessage";
 			
+			
+			public static String members = "esb::LoadBalanceEndPoint::properties::members";
+			
 	
 		}
 	
@@ -7046,6 +7049,10 @@ public class EsbViewsRepository {
 	
 			
 			public static String rewriteRuleAction = "esb::URLRewriteRule::properties::rewriteRuleAction";
+			
+			// Start of user code for urlRewriteRuleCondition ElementEditor key
+			public static String urlRewriteRuleCondition = "esb::URLRewriteRule::properties::urlRewriteRuleCondition";
+			// End of user code
 			
 	
 		}

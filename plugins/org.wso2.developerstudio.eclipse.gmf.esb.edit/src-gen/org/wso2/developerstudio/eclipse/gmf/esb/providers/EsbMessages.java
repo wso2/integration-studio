@@ -6487,6 +6487,9 @@ public class EsbMessages extends NLS {
 	public static String LoadBalanceEndPointPropertiesEditionPart_BuildMessageLabel;
 
 	
+	public static String LoadBalanceEndPointPropertiesEditionPart_MembersLabel;
+
+	
 	public static String MemberPropertiesEditionPart_HostNameLabel;
 
 	
@@ -6581,6 +6584,9 @@ public class EsbMessages extends NLS {
 
 	
 	public static String URLRewriteRulePropertiesEditionPart_RewriteRuleActionLabel;
+
+	
+	public static String URLRewriteRulePropertiesEditionPart_UrlRewriteRuleConditionLabel;
 
 	
 	public static String URLRewriteMediatorPropertiesEditionPart_DescriptionLabel;

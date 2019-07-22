@@ -68,7 +68,9 @@ import org.eclipse.swt.layout.GridLayout;
 
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Group;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
@@ -111,6 +113,9 @@ public class LoadBalanceEndPointPropertiesEditionPartImpl extends CompositePrope
 	protected Text algorithm;
 	protected Text sessionTimeout;
 	protected Button buildMessage;
+	protected ReferencesTable members;
+	protected List<ViewerFilter> membersBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> membersFilters = new ArrayList<ViewerFilter>();
 
 
 
@@ -166,6 +171,7 @@ public class LoadBalanceEndPointPropertiesEditionPartImpl extends CompositePrope
 		propertiesStep.addStep(EsbViewsRepository.LoadBalanceEndPoint.Properties.algorithm);
 		propertiesStep.addStep(EsbViewsRepository.LoadBalanceEndPoint.Properties.sessionTimeout);
 		propertiesStep.addStep(EsbViewsRepository.LoadBalanceEndPoint.Properties.buildMessage);
+		propertiesStep.addStep(EsbViewsRepository.LoadBalanceEndPoint.Properties.members);
 		
 		
 		composer = new PartComposer(loadBalanceEndPointStep) {
@@ -225,6 +231,9 @@ public class LoadBalanceEndPointPropertiesEditionPartImpl extends CompositePrope
 				}
 				if (key == EsbViewsRepository.LoadBalanceEndPoint.Properties.buildMessage) {
 					return createBuildMessageCheckbox(parent);
+				}
+				if (key == EsbViewsRepository.LoadBalanceEndPoint.Properties.members) {
+					return createMembersAdvancedTableComposition(parent);
 				}
 				return parent;
 			}
@@ -789,14 +798,23 @@ public class LoadBalanceEndPointPropertiesEditionPartImpl extends CompositePrope
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createSessionTypeEMFComboViewer(Composite parent) {
 		createDescription(parent, EsbViewsRepository.LoadBalanceEndPoint.Properties.sessionType, EsbMessages.LoadBalanceEndPointPropertiesEditionPart_SessionTypeLabel);
-		sessionType = new EMFComboViewer(parent, SWT.SCROLL_LOCK);
+		sessionType = new EMFComboViewer(parent);
 		sessionType.setContentProvider(new ArrayContentProvider());
 		sessionType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData sessionTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		sessionType.getCombo().setLayoutData(sessionTypeData);
+                sessionType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
 		sessionType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -942,6 +960,57 @@ public class LoadBalanceEndPointPropertiesEditionPartImpl extends CompositePrope
 		EditingUtils.setEEFtype(buildMessage, "eef::Checkbox"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.LoadBalanceEndPoint.Properties.buildMessage, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createBuildMessageCheckbox
+
+		// End of user code
+		return parent;
+	}
+
+	/**
+	 * @param container
+	 * 
+	 */
+	protected Composite createMembersAdvancedTableComposition(Composite parent) {
+		this.members = new ReferencesTable(getDescription(EsbViewsRepository.LoadBalanceEndPoint.Properties.members, EsbMessages.LoadBalanceEndPointPropertiesEditionPart_MembersLabel), new ReferencesTableListener() {
+			public void handleAdd() { 
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LoadBalanceEndPointPropertiesEditionPartImpl.this, EsbViewsRepository.LoadBalanceEndPoint.Properties.members, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
+				members.refresh();
+			}
+			public void handleEdit(EObject element) {
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LoadBalanceEndPointPropertiesEditionPartImpl.this, EsbViewsRepository.LoadBalanceEndPoint.Properties.members, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
+				members.refresh();
+			}
+			public void handleMove(EObject element, int oldIndex, int newIndex) { 
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LoadBalanceEndPointPropertiesEditionPartImpl.this, EsbViewsRepository.LoadBalanceEndPoint.Properties.members, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
+				members.refresh();
+			}
+			public void handleRemove(EObject element) { 
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LoadBalanceEndPointPropertiesEditionPartImpl.this, EsbViewsRepository.LoadBalanceEndPoint.Properties.members, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+				members.refresh();
+			}
+			public void navigateTo(EObject element) { }
+		});
+		for (ViewerFilter filter : this.membersFilters) {
+			this.members.addFilter(filter);
+		}
+		this.members.setHelpText(propertiesEditionComponent.getHelpContent(EsbViewsRepository.LoadBalanceEndPoint.Properties.members, EsbViewsRepository.SWT_KIND));
+		this.members.createControls(parent);
+		this.members.addSelectionListener(new SelectionAdapter() {
+			
+			public void widgetSelected(SelectionEvent e) {
+				if (e.item != null && e.item.getData() instanceof EObject) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LoadBalanceEndPointPropertiesEditionPartImpl.this, EsbViewsRepository.LoadBalanceEndPoint.Properties.members, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+				}
+			}
+			
+		});
+		GridData membersData = new GridData(GridData.FILL_HORIZONTAL);
+		membersData.horizontalSpan = 3;
+		this.members.setLayoutData(membersData);
+		this.members.setLowerBound(0);
+		this.members.setUpperBound(-1);
+		members.setID(EsbViewsRepository.LoadBalanceEndPoint.Properties.members);
+		members.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
+		// Start of user code for createMembersAdvancedTableComposition
 
 		// End of user code
 		return parent;
@@ -1638,6 +1707,72 @@ public class LoadBalanceEndPointPropertiesEditionPartImpl extends CompositePrope
 			buildMessage.setEnabled(true);
 		}	
 		
+	}
+
+
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#initMembers(EObject current, EReference containingFeature, EReference feature)
+	 */
+	public void initMembers(ReferencesTableSettings settings) {
+		if (current.eResource() != null && current.eResource().getResourceSet() != null)
+			this.resourceSet = current.eResource().getResourceSet();
+		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
+		members.setContentProvider(contentProvider);
+		members.setInput(settings);
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.LoadBalanceEndPoint.Properties.members);
+		if (eefElementEditorReadOnlyState && members.isEnabled()) {
+			members.setEnabled(false);
+			members.setToolTipText(EsbMessages.LoadBalanceEndPoint_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !members.isEnabled()) {
+			members.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#updateMembers()
+	 * 
+	 */
+	public void updateMembers() {
+	members.refresh();
+}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#addFilterMembers(ViewerFilter filter)
+	 * 
+	 */
+	public void addFilterToMembers(ViewerFilter filter) {
+		membersFilters.add(filter);
+		if (this.members != null) {
+			this.members.addFilter(filter);
+		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#addBusinessFilterMembers(ViewerFilter filter)
+	 * 
+	 */
+	public void addBusinessFilterToMembers(ViewerFilter filter) {
+		membersBusinessFilters.add(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#isContainedInMembersTable(EObject element)
+	 * 
+	 */
+	public boolean isContainedInMembersTable(EObject element) {
+		return ((ReferencesTableSettings)members.getInput()).contains(element);
 	}
 
 

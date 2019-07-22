@@ -35,8 +35,10 @@ import org.eclipse.debug.core.model.IMemoryBlock;
 import org.eclipse.debug.core.model.IProcess;
 import org.eclipse.e4.core.services.events.IEventBroker;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.WorkbenchException;
 import org.osgi.service.event.Event;
 import org.osgi.service.event.EventHandler;
+import org.wso2.developerstudio.eclipse.carbonserver44microei.register.product.servers.MicroIntegratorInstance;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.debugpoint.impl.ESBDebugPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.exception.DebugPointMarkerNotFoundException;
@@ -77,6 +79,7 @@ public class ESBDebugTarget extends ESBDebugElement implements IDebugTarget, Eve
     private final ILaunch esbDebugerLaunch;
 
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+    private static final String ESB_GRAPHICAL_PERSPECTIVE_ID = "org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.perspective";
 
     public ESBDebugTarget(final ILaunch launch) {
         super(null);
@@ -136,11 +139,34 @@ public class ESBDebugTarget extends ESBDebugElement implements IDebugTarget, Eve
                     }
 
                 } else if (event instanceof TerminatedEvent) {
+                    // Clear all the stack frames in the debug threads and unsubscribe
+                    for (ESBDebugThread debuggerThread : esbDebugThreads) {
+                        IEventBroker propertyChangeCommandEB = (IEventBroker) PlatformUI.getWorkbench()
+                                .getService(IEventBroker.class);
+                        propertyChangeCommandEB.unsubscribe(debuggerThread.getTopStackFrame());
+                        debuggerThread.getTopStackFrame().fireTerminateEvent();
+                    }
+                    
                     setState(ESBDebuggerState.TERMINATED);
                     clearSuspendedEventStatus();
                     DebugPlugin.getDefault().getBreakpointManager().removeBreakpointListener(this);
                     debugTargetEventBroker.unsubscribe(this);
                     this.fireTerminateEvent();
+                    
+                    // Switch back to ESB perspective if the user is in the debug perspective
+                    String currentPerspective = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+                            .getPerspective().getLabel();
+                    try {
+                        if ("debug".equalsIgnoreCase(currentPerspective))
+                            PlatformUI.getWorkbench().showPerspective(ESB_GRAPHICAL_PERSPECTIVE_ID,
+                                    PlatformUI.getWorkbench().getActiveWorkbenchWindow());
+                    } catch (WorkbenchException e) {
+                        log.error("Error occurred while switching to ESB perspective " + e.getMessage());
+                    }
+                    
+                    // Shut down the micro-integrator runtime
+                    MicroIntegratorInstance.getInstance().stop();
+
                 } else if (event instanceof MediationFlowCompleteEvent) {
                     clearVariableTable();
                     setState(ESBDebuggerState.RESUMED);

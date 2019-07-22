@@ -3915,6 +3915,9 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v9-_JnEei6boXzpRIfnA" name="buildMessage" views="_E7xJ3_JnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//LoadBalanceEndPoint/buildMessage"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_FrXk4G5MEemapPuGhlAOEA" name="members" views="__XdW0G5LEemapPuGhlAOEA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//LoadBalanceEndPoint/member"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//LoadBalanceEndPoint"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_E7v9_PJnEei6boXzpRIfnA" name="Member" views="_E7xJ4PJnEei6boXzpRIfnA">
@@ -4043,6 +4046,9 @@
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_E7v-I_JnEei6boXzpRIfnA" name="URLRewriteRule" views="_E7xKEfJnEei6boXzpRIfnA">
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v-JPJnEei6boXzpRIfnA" name="rewriteRuleAction" views="_E7xKE_JnEei6boXzpRIfnA">
           <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//URLRewriteRule/rewriteRuleAction"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_N-wZcHJUEemhDccDeXMKeQ" name="urlRewriteRuleCondition" views="_ylhM4HJSEemhDccDeXMKeQ">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//URLRewriteRule/urlRewriteRuleCondition"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//URLRewriteRule"/>
       </bindings>
@@ -10318,6 +10324,9 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xJ3_JnEei6boXzpRIfnA" name="buildMessage">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
           </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="__XdW0G5LEemapPuGhlAOEA" name="members">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
+          </elements>
         </elements>
       </views>
       <views xmi:id="_E7xJ4PJnEei6boXzpRIfnA" name="Member">
@@ -10465,6 +10474,7 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xKE_JnEei6boXzpRIfnA" name="rewriteRuleAction">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
           </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_ylhM4HJSEemhDccDeXMKeQ" name="urlRewriteRuleCondition"/>
         </elements>
       </views>
       <views xmi:id="_E7xKFPJnEei6boXzpRIfnA" name="URLRewriteMediator">

@@ -111,7 +111,7 @@ public interface PayloadFactoryArgument extends EsbNode {
     /**
      * Returns the value of the '<em><b>Evaluator</b></em>' attribute.
      * The default value is <code>"xml"</code>.
-     * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.MediaType}.
+     * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryEvaluatorType}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Evaluator</em>' attribute isn't clear,
@@ -119,24 +119,24 @@ public interface PayloadFactoryArgument extends EsbNode {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Evaluator</em>' attribute.
-     * @see org.wso2.developerstudio.eclipse.gmf.esb.MediaType
-     * @see #setEvaluator(MediaType)
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryEvaluatorType
+     * @see #setEvaluator(PayloadFactoryEvaluatorType)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getPayloadFactoryArgument_Evaluator()
      * @model default="xml"
      * @generated
      */
-    MediaType getEvaluator();
+    PayloadFactoryEvaluatorType getEvaluator();
 
     /**
      * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryArgument#getEvaluator <em>Evaluator</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Evaluator</em>' attribute.
-     * @see org.wso2.developerstudio.eclipse.gmf.esb.MediaType
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryEvaluatorType
      * @see #getEvaluator()
      * @generated
      */
-    void setEvaluator(MediaType value);
+    void setEvaluator(PayloadFactoryEvaluatorType value);
 
     /**
      * Returns the value of the '<em><b>Literal</b></em>' attribute.

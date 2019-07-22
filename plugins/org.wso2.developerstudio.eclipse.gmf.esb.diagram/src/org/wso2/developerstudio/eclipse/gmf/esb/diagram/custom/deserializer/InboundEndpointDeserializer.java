@@ -72,6 +72,8 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOU
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_TRUSTSTORE_PASSWORD;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_VERSION;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__WS_USE_PORT_OFFSET;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__INBOUND_HL7_BUILD_INVALID_MESSAGES;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__INBOUND_HL7_PASS_THROUGH_INVALID_MESSAGES;
 
 import java.util.Map;
 
@@ -634,6 +636,18 @@ public class InboundEndpointDeserializer
                             executeSetValueCommand(INBOUND_ENDPOINT__INBOUND_ENDPOINT_BEHAVIOUR,
                                     InboundEndpointBehaviourType.EVENT_BASED_INBOUND_ENDPOINT);
                         }
+                    } else if (paramEntry.getKey().equals(InboundEndpointConstants.SEQUENTIAL)) {
+                        if (paramEntry.getValue().equals(InboundEndpointConstants.TRUE)) {
+                            executeSetValueCommand(INBOUND_ENDPOINT__SEQUENTIAL, true);
+                        } else {
+                            executeSetValueCommand(INBOUND_ENDPOINT__SEQUENTIAL, false);
+                        }
+                    } else if (paramEntry.getKey().equals(InboundEndpointConstants.COORDINATION)) {
+                        if (paramEntry.getValue().equals(InboundEndpointConstants.TRUE)) {
+                            executeSetValueCommand(INBOUND_ENDPOINT__COORDINATION, true);
+                        } else {
+                            executeSetValueCommand(INBOUND_ENDPOINT__COORDINATION, false);
+                        }
                     }
                 }
             }
@@ -677,6 +691,20 @@ public class InboundEndpointDeserializer
                             executeSetValueCommand(INBOUND_ENDPOINT__INBOUND_HL7_VALIDATE_MESSAGE, true);
                         } else {
                             executeSetValueCommand(INBOUND_ENDPOINT__INBOUND_HL7_VALIDATE_MESSAGE, false);
+                        }
+                    } else if (paramEntry.getKey()
+                            .equals(InboundEndpointConstants.INBOUND_HL7_BUILD_INVALID_MESSAGES)) {
+                        if (paramEntry.getValue().equals(InboundEndpointConstants.TRUE)) {
+                            executeSetValueCommand(INBOUND_ENDPOINT__INBOUND_HL7_BUILD_INVALID_MESSAGES, true);
+                        } else {
+                            executeSetValueCommand(INBOUND_ENDPOINT__INBOUND_HL7_BUILD_INVALID_MESSAGES, false);
+                        }
+                    } else if (paramEntry.getKey()
+                            .equals(InboundEndpointConstants.INBOUND_HL7_PASSTHROUHG_INVALID_MESSAGES)) {
+                        if (paramEntry.getValue().equals(InboundEndpointConstants.TRUE)) {
+                            executeSetValueCommand(INBOUND_ENDPOINT__INBOUND_HL7_PASS_THROUGH_INVALID_MESSAGES, true);
+                        } else {
+                            executeSetValueCommand(INBOUND_ENDPOINT__INBOUND_HL7_PASS_THROUGH_INVALID_MESSAGES, false);
                         }
                     }
                 }

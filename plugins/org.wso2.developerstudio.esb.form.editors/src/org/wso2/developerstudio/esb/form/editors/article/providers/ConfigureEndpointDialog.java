@@ -81,7 +81,7 @@ public class ConfigureEndpointDialog extends WizardPage {
         lblEndpointType.setLayoutData(lblEndpointTypeGridData);
         lblEndpointType.setText("Endpoint Type : ");
 
-        cmbEndpointTypes = new Combo(container, SWT.SINGLE);
+        cmbEndpointTypes = new Combo(container, SWT.DROP_DOWN | SWT.READ_ONLY);
         cmbEndpointTypes.setItems(ENDPOINT_TYPES);
         cmbEndpointTypes.select(0);
         cmbEndpointTypes.setFocus();
@@ -99,6 +99,13 @@ public class ConfigureEndpointDialog extends WizardPage {
                     endpointLabel.setVisible(false);
                     endpointText.setVisible(false);
                 }
+            }
+        });
+        
+        cmbEndpointTypes.addListener(SWT.MouseVerticalWheel, new Listener() {
+            @Override
+            public void handleEvent(Event event) {
+                event.doit = false;
             }
         });
 

@@ -31,6 +31,8 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.IManagedForm;
@@ -63,7 +65,7 @@ public abstract class EndpointFormPage extends AbstractEsbFormPage {
     protected Combo endpointTrace;
     protected Combo endpointStatistics;
     protected Combo eP_Optimize;
-    protected Combo endpointSesssionType;
+    protected Combo endpointFormatType;
 
     private Section basicSection;
     private Section templateEndpointSection;
@@ -101,12 +103,12 @@ public abstract class EndpointFormPage extends AbstractEsbFormPage {
         this.endpointName = endpointName;
     }
 
-    public Combo getEndpointSessionType() {
-        return endpointSesssionType;
+    public Combo getEP_Format() {
+        return endpointFormatType;
     }
 
-    public void setEndpointSessionType(Combo sessionType) {
-        this.endpointSesssionType = sessionType;
+    public void setEP_Format(Combo sessionType) {
+        this.endpointFormatType = sessionType;
     }
 
     public Combo getEndpointTrace() {
@@ -296,16 +298,17 @@ public abstract class EndpointFormPage extends AbstractEsbFormPage {
         });
 
         toolkit.createLabel(basicSectionClient, "Format :");
-        endpointSesssionType = new Combo(basicSectionClient, SWT.DROP_DOWN);
+        endpointFormatType = new Combo(basicSectionClient, SWT.DROP_DOWN | SWT.READ_ONLY);
         String[] formats = { "LEAVE_AS_IS", "SOAP 1.1", "SOAP 1.2", "POX", "GET", "REST" };
-        endpointSesssionType.setItems(formats);
+        endpointFormatType.setItems(formats);
+        endpointFormatType.select(0);
         GridData endpointFormatGridData = new GridData();
         endpointFormatGridData.horizontalSpan = 3;
         endpointFormatGridData.horizontalAlignment = GridData.FILL;
         endpointFormatGridData.grabExcessHorizontalSpace = true;
-        endpointSesssionType.setLayoutData(endpointFormatGridData);
+        endpointFormatType.setLayoutData(endpointFormatGridData);
 
-        endpointSesssionType.addSelectionListener(new SelectionAdapter() {
+        endpointFormatType.addSelectionListener(new SelectionAdapter() {
             @Override
             public void widgetSelected(SelectionEvent e) {
                 setSave(true);
@@ -313,8 +316,15 @@ public abstract class EndpointFormPage extends AbstractEsbFormPage {
             }
         });
 
+        endpointFormatType.addListener(SWT.MouseVerticalWheel, new Listener() {
+            @Override
+            public void handleEvent(Event event) {
+                event.doit = false;
+            }
+        });
+        
         toolkit.createLabel(basicSectionClient, "Trace Enabled :");
-        endpointTrace = new Combo(basicSectionClient, SWT.DROP_DOWN);
+        endpointTrace = new Combo(basicSectionClient, SWT.DROP_DOWN | SWT.READ_ONLY);
         String[] tracingStates = { "True", "False" };
         endpointTrace.setItems(tracingStates);
         GridData endpointTraceGridData = new GridData();
@@ -335,8 +345,15 @@ public abstract class EndpointFormPage extends AbstractEsbFormPage {
             }
         });
 
+        endpointTrace.addListener(SWT.MouseVerticalWheel, new Listener() {
+            @Override
+            public void handleEvent(Event event) {
+                event.doit = false;
+            }
+        });
+        
         toolkit.createLabel(basicSectionClient, "Statistics Enabled :");
-        endpointStatistics = new Combo(basicSectionClient, SWT.DROP_DOWN);
+        endpointStatistics = new Combo(basicSectionClient, SWT.DROP_DOWN | SWT.READ_ONLY);
         String[] statisticsStates = { "True", "False" };
         endpointStatistics.setItems(statisticsStates);
         GridData endpointStatisticsGridData = new GridData();
@@ -352,6 +369,13 @@ public abstract class EndpointFormPage extends AbstractEsbFormPage {
                 updateDirtyState();
             }
         });
+        
+        endpointStatistics.addListener(SWT.MouseVerticalWheel, new Listener() {
+            @Override
+            public void handleEvent(Event event) {
+                event.doit = false;
+            }
+        });
     }
 
     public void createFormMiscSection() {
@@ -365,11 +389,6 @@ public abstract class EndpointFormPage extends AbstractEsbFormPage {
 
     public EndpointCommons getEndpointCommons() {
         return endpointCommons;
-    }
-
-    public Combo getEP_Format() {
-        // TODO Auto-generated method stub
-        return null;
     }
     
     public List<String> getEndpointCommentList() {

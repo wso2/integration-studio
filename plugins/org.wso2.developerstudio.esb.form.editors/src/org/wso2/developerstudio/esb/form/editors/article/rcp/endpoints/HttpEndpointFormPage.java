@@ -32,6 +32,8 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.IManagedForm;
@@ -111,7 +113,7 @@ public class HttpEndpointFormPage extends EndpointFormPage {
 		});
 		
 		toolkit.createLabel(basicSectionClient, "Trace Enabled :");
-		endpointTrace = new Combo(basicSectionClient, SWT.DROP_DOWN);
+		endpointTrace = new Combo(basicSectionClient, SWT.DROP_DOWN | SWT.READ_ONLY);
 		//endpointTrace.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		String[] tracingStates = {"True", "False"};
 		endpointTrace.setItems(tracingStates);
@@ -128,8 +130,15 @@ public class HttpEndpointFormPage extends EndpointFormPage {
 			}
 		});
 		
+		endpointTrace.addListener(SWT.MouseVerticalWheel, new Listener() {
+			@Override
+			public void handleEvent(Event event) {
+				event.doit = false;
+			}
+		});
+		
 		toolkit.createLabel(basicSectionClient, "Statistics Enabled :");
-		endpointStatistics = new Combo(basicSectionClient, SWT.DROP_DOWN);
+		endpointStatistics = new Combo(basicSectionClient, SWT.DROP_DOWN | SWT.READ_ONLY);
 		//endpointStatistics.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		String[] statisticsStates = {"True", "False"};
 		endpointStatistics.setItems(statisticsStates);
@@ -143,6 +152,13 @@ public class HttpEndpointFormPage extends EndpointFormPage {
 			public void widgetSelected(SelectionEvent e) {
 				setSave(true);
 				updateDirtyState();
+			}
+		});
+		
+		endpointStatistics.addListener(SWT.MouseVerticalWheel, new Listener() {
+			@Override
+			public void handleEvent(Event event) {
+				event.doit = false;
 			}
 		});
 	}
@@ -182,7 +198,7 @@ public class HttpEndpointFormPage extends EndpointFormPage {
 		});
 		
 		toolkit.createLabel(miscSectionClient, "HTTP Method :");
-		httpEP_Method = new Combo (miscSectionClient, SWT.DROP_DOWN);
+		httpEP_Method = new Combo (miscSectionClient, SWT.DROP_DOWN | SWT.READ_ONLY);
 		String[] httpMethods = {"LEAVE_AS_IS", "GET", "POST", "PUT", "DELETE", "HEAD", "OPTIONS", "PATCH"};
 		httpEP_Method.setItems(httpMethods);
 		httpEP_Method.setBackground(new Color(null, 229,236,253));
@@ -197,6 +213,13 @@ public class HttpEndpointFormPage extends EndpointFormPage {
 			public void widgetSelected(SelectionEvent e) {
 				setSave(true);
 				updateDirtyState();
+			}
+		});
+
+		httpEP_Method.addListener(SWT.MouseVerticalWheel, new Listener() {
+			@Override
+			public void handleEvent(Event event) {
+				event.doit = false;
 			}
 		});
 	

@@ -35,6 +35,8 @@ import org.eclipse.jdt.core.JavaModelException;
 import org.eclipse.jdt.ui.JavaUI;
 import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.artifact.mediator.Activator;
 import org.wso2.developerstudio.eclipse.artifact.mediator.model.CustomMediatorModel;
 import org.wso2.developerstudio.eclipse.artifact.mediator.template.CustomMediatorClassTemplate;
@@ -53,6 +55,8 @@ public class CustomMediatorCreationWizard extends AbstractWSO2ProjectCreationWiz
 	
 	private static final String PROJECT_WIZARD_WINDOW_TITLE = "New Mediator Artifact";
     private static final String MEDIATOR_PROJECT_NATURE = "org.wso2.developerstudio.eclipse.artifact.mediator.project.nature";
+	private static final String ESB_GRAPHICAL_PERSPECTIVE = "org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.perspective";
+    
 	private  CustomMediatorModel customMediatorModel;
     private  IProject project;
     private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
@@ -182,6 +186,21 @@ public class CustomMediatorCreationWizard extends AbstractWSO2ProjectCreationWiz
 		} catch (Exception e) {
 			log.error(e);
 		}
+	    
+		getShell().getDisplay().asyncExec(new Runnable() {
+			@Override
+			public void run() {
+				IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+				if (!ESB_GRAPHICAL_PERSPECTIVE.equals(window.getActivePage().getPerspective().getId())) {
+					try {
+						PlatformUI.getWorkbench().showPerspective(ESB_GRAPHICAL_PERSPECTIVE, window);
+					} catch (Exception e) {
+						log.error("Cannot switch to ESB Graphical Perspective", e);
+					}
+				}
+			}
+		});
+	    
 		return true;
 	}
 

@@ -134,6 +134,13 @@ public class DependencyProvider extends Dialog {
     public static final String MSSQL = "MSSQL";
     public static final String POSTGRESQL = "POSTGRESQL";
     public static final String ORACLE = "ORACLE";
+    public static final String INFORMIX = "Informix";
+    public static final String IBMDB2 = "IBM DB2";
+    public static final String HSQLDB = "HSQLDB";
+    public static final String ApacheDerby = "Apache Derby";
+    public static final String SYBASE_ASE = "Sybase ASE";
+    public static final String H2 = "H2";
+    public static final String GENERIC = "Generic";
     public static final String DEPENDENCIES = "dependencies";
     private Font font;
     private Combo versionComboBox;
@@ -187,21 +194,29 @@ public class DependencyProvider extends Dialog {
     private Shell dialogShell;
     private String OS_TYPE;
     private String[] connectionURLArray;
+    private String serverName = "server";
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
-    public DependencyProvider(Shell parent, int style) {
+    public DependencyProvider(Shell parent, int style, String activeProjectName, String[] dataBaseTypes) {
         super(parent, style);
         eclipseWorkspace = ResourcesPlugin.getWorkspace().getRoot().getLocation().toString();
         IEditorPart editorPart = PlatformUI.getWorkbench().getActiveWorkbenchWindow()
                 .getActivePage().getActiveEditor();
-        if (editorPart != null) {
-            IFileEditorInput input = (IFileEditorInput) editorPart.getEditorInput();
-            IFile file = input.getFile();
-            IProject activeProject = file.getProject();
-            activeProjectName = activeProject.getName();
+        if (dataBaseTypes !=null) {
+            this.databaseArr =dataBaseTypes;
         }
-        jarOutputPath = eclipseWorkspace + File.separator + activeProjectName + File.separator + DEPENDENCIES;
-        dependencyDir = eclipseWorkspace + File.separator + activeProjectName + File.separator + DEPENDENCIES;
+        if (activeProjectName !=null) {
+            this.activeProjectName = activeProjectName;
+        }else {
+            if (editorPart != null) {
+                IFileEditorInput input = (IFileEditorInput) editorPart.getEditorInput();
+                IFile file = input.getFile();
+                IProject activeProject = file.getProject();
+                this.activeProjectName = activeProject.getName();
+            }
+        }
+        jarOutputPath = eclipseWorkspace + File.separator + this.activeProjectName + File.separator + DEPENDENCIES;
+        dependencyDir = eclipseWorkspace + File.separator + this.activeProjectName + File.separator + DEPENDENCIES;
         OS_TYPE = System.getProperty(OS_NAME, SYSTEM_PROPERTY_TYPE_GENERIC).toLowerCase(Locale.ENGLISH);
     }
 
@@ -686,7 +701,6 @@ public class DependencyProvider extends Dialog {
 
                     versionComboBox.setEnabled(false);
                     downloadButton.setEnabled(false);
-
                     break;
 
                 case POSTGRESQL:
@@ -696,6 +710,82 @@ public class DependencyProvider extends Dialog {
                     jdbcDriver = "com.postgres.jdbc.Driver";
                     databaseConnectionPrefix = "jdbc:postgresql://";
                     setDefaults("localhost", "5432");
+                    break;
+
+                case SYBASE_ASE:
+                    jdbcDriver = "com.sybase.jdbc3.jdbc.SybDriver";
+                    databaseConnectionPrefix = "jdbc:sybase:Tds:";
+                    setDefaults("localhost", "2048");
+
+                    browseFileRadioButton.setSelection(true);
+                    serverRadioButton.setSelection(false);
+                    serverRadioButton.setEnabled(false);
+
+                    serverComposite.setVisible(false);
+                    browseLocalComposite.setVisible(true);
+
+                    jarProvided = true;
+
+                    inputFeildsSetEnabled(false);
+
+                    versionComboBox.setEnabled(false);
+                    downloadButton.setEnabled(false);
+                    break;
+
+                case ApacheDerby:
+                    versionComboBox.setItems(new String[] { "Select Version", "10.15.1.3" });
+                    groupId = "org.apache.derby";
+                    artifactId = "derbytools";
+                    jdbcDriver = "org.apache.derby.jdbc.EmbeddedDriver";
+                    databaseConnectionPrefix = "jdbc:derby://";
+                    setDefaults("localhost", "1527");
+                    break;
+
+                case HSQLDB:
+                    versionComboBox.setItems(new String[] { "Select Version", "2.5.0" });
+                    groupId = "org.hsqldb";
+                    artifactId = "hsqldb";
+                    jdbcDriver = "org.hsqldb.jdbcDriver";
+                    databaseConnectionPrefix = "jdbc:hsqldb:";
+                    setDefaults("localhost", "5432");
+                    break;
+
+                case IBMDB2:
+                    versionComboBox.setItems(new String[] { "Select Version", "db2jcc4" });
+                    groupId = "com.ibm.db2.jcc";
+                    artifactId = "db2jcc";
+                    jdbcDriver = "com.ibm.db2.jcc.DB2Driver";
+                    databaseConnectionPrefix = "jdbc:db2://";
+                    setDefaults("localhost", "50000");
+                    break;
+
+                case INFORMIX:
+                    versionComboBox.setItems(new String[] { "Select Version", "4.50.1" });
+                    groupId = "com.ibm.informix";
+                    artifactId = "jdbc";
+                    jdbcDriver = "com.informix.jdbc.IfxDriver";
+                    databaseConnectionPrefix = "jdbc:informix-sqli://";
+                    setDefaults("localhost", "1526");
+                    break;
+
+                case H2:
+                    jdbcDriver = "org.h2.Driver";
+                    databaseConnectionPrefix = "jdbc:h2:tcp:";
+                    setDefaults("localhost", "5432");
+
+                    browseFileRadioButton.setSelection(true);
+                    serverRadioButton.setSelection(false);
+                    serverRadioButton.setEnabled(false);
+
+                    serverComposite.setVisible(false);
+                    browseLocalComposite.setVisible(true);
+
+                    jarProvided = true;
+
+                    inputFeildsSetEnabled(false);
+
+                    versionComboBox.setEnabled(false);
+                    downloadButton.setEnabled(false);
                     break;
 
                 }
@@ -1101,11 +1191,31 @@ public class DependencyProvider extends Dialog {
 
         case POSTGRESQL:
             return "postgresql-" + version + ".jar";
+
+        case ApacheDerby:
+            return "derbytools-" + version + ".jar";
+
+        case IBMDB2:
+            return "db2jcc-" + version + ".jar";
+
+        case HSQLDB:
+            return "hsqldb-" + version + ".jar";
+
+        case INFORMIX:
+            return "jdbc-" + version + ".jar";
         }
         return null;
     }
 
     private String generateDbUrl(String dbType) {
+        if (dbType.equals(ApacheDerby)){
+            return databaseConnectionPrefix + hostTextField.getText() +":"
+                    + portTextField.getText()+"/"+databaseTextField.getText()+";create=true";
+        }
+        if (dbType.equals(INFORMIX)){
+            return databaseConnectionPrefix + hostTextField.getText() +":"
+                    + portTextField.getText()+"/"+databaseTextField.getText()+":INFORMIXSERVER="+serverName;
+        }
         if (dbType.equals(MSSQL)) {
             return databaseConnectionPrefix + hostTextField.getText() + ":" + portTextField.getText() 
                     + ";databaseName="+ databaseTextField.getText() + ";";
@@ -1141,20 +1251,63 @@ public class DependencyProvider extends Dialog {
                         Class.forName("com.mysql.jdbc.Driver");
                     }
                     break;
+
                 case MSSQL:
                     newBundle = bundle.getBundleContext().installBundle(path);
                     newBundle.start();
                     Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
                     break;
+
                 case POSTGRESQL:
                     newBundle = bundle.getBundleContext().installBundle(path);
                     newBundle.start();
                     Class.forName("org.postgresql.Driver");
                     break;
+
                 case ORACLE:
                     newBundle = bundle.getBundleContext().installBundle(path);
                     newBundle.start();
                     Class.forName("oracle.jdbc.driver.OracleDriver");
+                    break;
+
+                case SYBASE_ASE:
+                    newBundle = bundle.getBundleContext().installBundle(path);
+                    newBundle.start();
+                    Class.forName(this.jdbcDriver);
+                    break;
+
+                case ApacheDerby:
+                    newBundle = bundle.getBundleContext().installBundle(path);
+                    newBundle.start();
+                    Class.forName(this.jdbcDriver);
+                    break;
+
+                case HSQLDB:
+                    newBundle = bundle.getBundleContext().installBundle(path);
+                    newBundle.start();
+                    Class.forName(this.jdbcDriver);
+                    break;
+
+                case IBMDB2:
+                    newBundle = bundle.getBundleContext().installBundle(path);
+                    newBundle.start();
+                    Class.forName(this.jdbcDriver);
+                    break;
+
+                case INFORMIX:
+                    //TODO: need to change UI of dependency provider for ServerName input
+                    //TODO: jdbc:informix-sqli://[HOST]:[PORT]/[database]:INFORMIXSERVER=[server-name]
+                    //TODO: default serverName will be set to 'server'
+                    //TODO: test connection function is available comment off if not required
+                    newBundle = bundle.getBundleContext().installBundle(path);
+                    newBundle.start();
+                    Class.forName(this.jdbcDriver);
+                    break;
+
+                case H2:
+                    newBundle = bundle.getBundleContext().installBundle(path);
+                    newBundle.start();
+                    Class.forName(this.jdbcDriver);
                     break;
                 }
                 conn = DriverManager.getConnection(databaseURL, userNameTextField.getText(),

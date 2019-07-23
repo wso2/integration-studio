@@ -387,7 +387,7 @@ public class DBReportMediatorPropertiesEditionPartForm extends SectionProperties
                             public void run() {
                                 Display display = PlatformUI.getWorkbench().getDisplay();
                                 Shell shell = display.getActiveShell();
-                                dp = new DependencyProvider(shell,SWT.NONE);
+                                dp = new DependencyProvider(shell, SWT.NONE, null, null);
                                 ConnectionObj obj = new ConnectionObj();
                                 obj.setDbDriver(getConnectionDbDriver().isEmpty() ? "" : getConnectionDbDriver());
                                 obj.setDbType(getConnectionDbType().getName().isEmpty() ? ""

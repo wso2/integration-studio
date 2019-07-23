@@ -20,8 +20,14 @@ import java.io.FileNotFoundException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
+import java.security.cert.CertificateException;
 
+import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSession;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
 
 import org.eclipse.wst.server.core.IServer;
 
@@ -71,6 +77,43 @@ public class CarbonPingThread implements Runnable {
 					count++;
 				}
 				URL pingUrl = url;
+				
+				
+				SSLContext sc = SSLContext.getInstance("SSL");
+                // Create empty HostnameVerifier
+                HostnameVerifier hv = new HostnameVerifier() {
+                    public boolean verify(String arg0, SSLSession arg1) {
+                        return true;
+                    }
+                };
+                TrustManager[] trustAllCerts = new TrustManager[] { new X509TrustManager() {
+       
+                    @Override
+                    public void checkClientTrusted(java.security.cert.X509Certificate[] chain, String authType)
+                            throws CertificateException {
+                        // TODO Auto-generated method stub
+                        
+                    }
+       
+                    @Override
+                    public void checkServerTrusted(java.security.cert.X509Certificate[] chain, String authType)
+                            throws CertificateException {
+                        // TODO Auto-generated method stub
+                        
+                    }
+       
+                    @Override
+                    public java.security.cert.X509Certificate[] getAcceptedIssuers() {
+                        // TODO Auto-generated method stub
+                        return null;
+                    }
+                } };
+                sc.init(null, trustAllCerts, new java.security.SecureRandom());
+                HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
+                HttpsURLConnection.setDefaultHostnameVerifier(hv);
+        
+             
+             
 				URLConnection conn = pingUrl.openConnection();
 
 				int responseCode;

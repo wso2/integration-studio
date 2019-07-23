@@ -518,7 +518,7 @@ public class DependencyProvider extends Dialog {
                 }
                 databaseLabel = new Label(connectionDetailsGroup, SWT.NONE);
                 {
-                    databaseLabel.setText("Dastabase: *");
+                    databaseLabel.setText("Database: *");
 
                     FormData layoutData = new FormData();
                     layoutData.top = new FormAttachment(userNameLabel, 10);

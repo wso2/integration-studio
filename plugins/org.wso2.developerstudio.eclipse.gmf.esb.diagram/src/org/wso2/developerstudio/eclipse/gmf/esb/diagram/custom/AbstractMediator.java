@@ -76,6 +76,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EntitlementMe
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EsbLinkEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.FilterMediatorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.IterateMediatorEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.IterateMediatorInputConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.LoopBackMediatorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment10EditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment11EditPart;
@@ -600,10 +601,14 @@ public abstract class AbstractMediator extends AbstractBorderedShapeEditPart imp
             if (!mediatorRestricted) {
                 if (restrictAddingOfMediator(nearestInputConnector, nearestEsbLinkInputConnector)) {
                     mediatorRestricted = true;
-                    // Allow send mediators to be added inside aggregate mediator
+                    // Allow send mediators to be added inside aggregate mediator and iterate mediator
+                    // MediatorFlowMediatorFlowCompartment3EditPart is the editpart canvas inside the aggregate mediator
+                    // MediatorFlowMediatorFlowCompartment12EditPart is the editpart canvas inside the iterate mediator
                     if (this instanceof SendMediatorEditPart
-                            && !((nearestInputConnector instanceof AggregateMediatorInputConnectorEditPart)
-                                    && (this.getParent() instanceof MediatorFlowMediatorFlowCompartment3EditPart))) {
+                            && !(((nearestInputConnector instanceof AggregateMediatorInputConnectorEditPart)
+                                    || (nearestInputConnector instanceof IterateMediatorInputConnectorEditPart))
+                                    && ((this.getParent() instanceof MediatorFlowMediatorFlowCompartment3EditPart)
+                                            || (this.getParent() instanceof MediatorFlowMediatorFlowCompartment12EditPart)))) {
                         mediatorType = "Send Mediator";
                         deleteNewlyAddedMediator(mediatorType + SEND_ERROR_MESSAGE);
                         return;

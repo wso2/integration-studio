@@ -2000,6 +2000,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
     public void refresh() {
         super.refresh();
         validate();
+        urlStyle.getCombo().setFocus();
     }
 	
 	 protected Composite createInSequenceKey(FormToolkit widgetFactory, final Composite parent) {

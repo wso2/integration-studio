@@ -3404,13 +3404,14 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	        validateInSequence();
 	        validateOutSequence();
 	        validateWSDL();
+	        name.setFocus();
 	    }
 
 	    public void validate() {
 	        propertiesSection.setVisible(false);
 	    }
 	    
-	    public void validateEndpoint() {
+	    private void validateEndpoint() {
 	        validate();
 	        
 	        EEFPropertyViewUtil eu = new EEFPropertyViewUtil(view);
@@ -3429,7 +3430,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	        view.layout(true, true);
 	    }
 
-	    public void validateFaultSequence() {
+	    private void validateFaultSequence() {
 	        validate();
 	        
             EEFPropertyViewUtil eu = new EEFPropertyViewUtil(view);
@@ -3448,7 +3449,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
             view.layout(true, true);
         }
 	    
-	    public void validateInSequence() {
+	    private void validateInSequence() {
 	        validate();
 	        
             EEFPropertyViewUtil eu = new EEFPropertyViewUtil(view);
@@ -3467,7 +3468,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
             view.layout(true, true);
         }
 
-	    public void validateOutSequence() {
+	    private void validateOutSequence() {
 	        validate();
 	        
             EEFPropertyViewUtil eu = new EEFPropertyViewUtil(view);
@@ -3486,7 +3487,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
             view.layout(true, true);
         }
 	    
-	    public void validateWSDL() {
+	    private void validateWSDL() {
 	        validate();
 	        
             EEFPropertyViewUtil eu = new EEFPropertyViewUtil(view);

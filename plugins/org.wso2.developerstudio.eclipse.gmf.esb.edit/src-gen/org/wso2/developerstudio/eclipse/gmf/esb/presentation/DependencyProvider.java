@@ -202,12 +202,12 @@ public class DependencyProvider extends Dialog {
         eclipseWorkspace = ResourcesPlugin.getWorkspace().getRoot().getLocation().toString();
         IEditorPart editorPart = PlatformUI.getWorkbench().getActiveWorkbenchWindow()
                 .getActivePage().getActiveEditor();
-        if (dataBaseTypes !=null) {
-            this.databaseArr =dataBaseTypes;
+        if (dataBaseTypes != null) {
+            this.databaseArr = dataBaseTypes;
         }
-        if (activeProjectName !=null) {
+        if (activeProjectName != null) {
             this.activeProjectName = activeProjectName;
-        }else {
+        } else {
             if (editorPart != null) {
                 IFileEditorInput input = (IFileEditorInput) editorPart.getEditorInput();
                 IFile file = input.getFile();

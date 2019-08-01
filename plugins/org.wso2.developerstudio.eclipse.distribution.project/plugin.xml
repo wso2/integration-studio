@@ -31,7 +31,7 @@
    <!--Register new extention point for docker-->
    <extension point="org.wso2.developerstudio.eclipse.docker.artifacts.provider">
     	<provider class="org.wso2.developerstudio.eclipse.distribution.project.export.CappArtifactsListProvider"
-          nature="org.wso2.developerstudio.eclipse.docker.distribution.project.nature"></provider>
+          nature="org.wso2.developerstudio.eclipse.distribution.project.nature"></provider>
    </extension>
    
    <extension point="org.eclipse.core.resources.natures"

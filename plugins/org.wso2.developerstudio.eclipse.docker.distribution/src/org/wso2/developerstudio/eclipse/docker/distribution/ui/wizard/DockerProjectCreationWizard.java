@@ -22,7 +22,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.net.URL;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -62,164 +62,181 @@ import org.wso2.developerstudio.eclipse.utils.project.ProjectUtils;
  */
 public class DockerProjectCreationWizard extends AbstractWSO2ProjectCreationWizard {
 
-	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
-	private static final String POM_FILE = "pom.xml";
-	private IProject project;
-	private final DockerModel dockerModel;
+    private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+    private static final String POM_FILE = "pom.xml";
+    private IProject project;
+    private DockerModel dockerModel;
 
-	public DockerProjectCreationWizard() {
-		this.dockerModel = new DockerModel();
-		setModel(this.dockerModel);
-		setWindowTitle(DockerProjectConstants.DS_WIZARD_WINDOW_TITLE);
-		setDefaultPageImageDescriptor(DockerImageUtils.getInstance().getImageDescriptor("ds-wizard.png"));
-	}
+    public DockerProjectCreationWizard() {
+        this.dockerModel = new DockerModel();
+        setModel(this.dockerModel);
+        setWindowTitle(DockerProjectConstants.DS_WIZARD_WINDOW_TITLE);
+        setDefaultPageImageDescriptor(DockerImageUtils.getInstance().getImageDescriptor("ds-wizard.png"));
+    }
 
-	private void createFolder(String folderName) throws CoreException {
-		IFolder carbonAppsFolder = ProjectUtils.getWorkspaceFolder(project, folderName);
-		if (!carbonAppsFolder.exists()) {
-			// creates the CarbonAppsFolder
-			ProjectUtils.createFolder(carbonAppsFolder);
-		}
-	}
+    private void createFolder(String folderName) throws CoreException {
+        IFolder carbonAppsFolder = ProjectUtils.getWorkspaceFolder(project, folderName);
+        if (!carbonAppsFolder.exists()) {
+            // creates the CarbonAppsFolder
+            ProjectUtils.createFolder(carbonAppsFolder);
+        }
+    }
 
-	/**
-	 * Copy the docker file to project directory if not exists.
-	 * 
-	 * @throws IOException
-	 * @throws CoreException
-	 */
-	private void copyDockerFile() throws IOException, CoreException {
-		IFile dockerFile = project.getFile("Dockerfile");
-		File newFile = new File(dockerFile.getLocationURI().getPath());
-		if (!newFile.exists()) {
-			// Creating the new docker file
-			URL url = new URL(
-					"platform:/plugin/org.wso2.developerstudio.eclipse.docker.distribution/DockerFile/Dockerfile");
-			if (newFile.createNewFile()) {
-				InputStream inputStream = url.openConnection().getInputStream();
-				OutputStream outputStream = new FileOutputStream(newFile);
-				IOUtils.copy(inputStream, outputStream);
-			}
-		}
-	}
+    /**
+     * Create new docker file in the project directory if not exists.
+     * 
+     * @throws IOException An error occurred while writing the file
+     */
+    private void copyDockerFile() throws IOException {
+        IFile dockerFile = project.getFile(DockerProjectConstants.DOCKER_FILE_NAME);
+        File newFile = new File(dockerFile.getLocationURI().getPath());
+        if (!newFile.exists()) {
+            // Creating the new docker file
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.append("FROM ");
+            if (dockerModel.getDockerRemoteRepository() == null || dockerModel.getDockerRemoteRepository().isEmpty()) {
+                stringBuilder.append(DockerProjectConstants.DOCKER_DEFAULT_REPOSITORY + ":");
+            } else {
+                stringBuilder.append(dockerModel.getDockerRemoteRepository() + ":");
+            }
+            if (dockerModel.getDockerRemoteTag() == null || dockerModel.getDockerRemoteTag().isEmpty()) {
+                stringBuilder.append(DockerProjectConstants.DOCKER_DEFAULT_TAG);
+            } else {
+                stringBuilder.append(dockerModel.getDockerRemoteTag());
+            }
+            stringBuilder.append(System.lineSeparator());
+            stringBuilder.append("COPY " + DockerProjectConstants.CARBON_APP_FOLDER + "/*.car "
+                    + DockerProjectConstants.CARBON_APP_FOLDER_LOCATION);
+            stringBuilder.append(System.lineSeparator());
+            stringBuilder.append("#COPY " + DockerProjectConstants.LIBS_FOLDER + "/*.jar "
+                    + DockerProjectConstants.LIBS_FOLDER_LOCATION);
 
-	public boolean performFinish() {
-		try {
+            if (newFile.createNewFile()) {
+                InputStream inputStream = new ByteArrayInputStream(
+                        stringBuilder.toString().getBytes(Charset.forName("UTF-8")));
+                OutputStream outputStream = new FileOutputStream(newFile);
+                IOUtils.copy(inputStream, outputStream);
+            }
+        }
+    }
 
-			project = createNewProject();
+    public boolean performFinish() {
+        try {
 
-			// Creating CarbonApps and Libs folders
-			createFolder(DockerProjectConstants.CARBON_APP_FOLDER);
-			createFolder(DockerProjectConstants.LIBS_FOLDER);
+            project = createNewProject();
 
-			// Copy docker file
-			copyDockerFile();
+            // Creating CarbonApps and Libs folders
+            createFolder(DockerProjectConstants.CARBON_APP_FOLDER);
+            createFolder(DockerProjectConstants.LIBS_FOLDER);
 
-			File pomfile = project.getFile(POM_FILE).getLocation().toFile();
-			createPOM(pomfile);
-			ProjectUtils.addNatureToProject(project, false, DockerProjectConstants.DOCKER_NATURE);
-			MavenUtils.updateWithMavenEclipsePlugin(pomfile, new String[] {},
-					new String[] { DockerProjectConstants.DOCKER_NATURE });
-			project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
-			MavenProject mavenProject = MavenUtils.getMavenProject(pomfile);
+            // Copy docker file
+            copyDockerFile();
 
-			// Adding maven-dependency plugin
-			// This will copy the CAR files from .m2 to CarbonApps folder
-			Plugin dependencyPlugin = MavenUtils.createPluginEntry(mavenProject, "org.apache.maven.plugins",
-					"maven-dependency-plugin", DockerProjectConstants.MAVEN_DEPENDENCY_PLUGIN_VERSION, true);
-			PluginExecution dependencyPluginExecution = new PluginExecution();
-			dependencyPluginExecution.addGoal("copy-dependencies");
-			dependencyPluginExecution.setId("copy-dependencies");
-			dependencyPluginExecution.setPhase("package");
+            File pomfile = project.getFile(POM_FILE).getLocation().toFile();
+            createPOM(pomfile);
+            ProjectUtils.addNatureToProject(project, false, DockerProjectConstants.DOCKER_NATURE);
+            MavenUtils.updateWithMavenEclipsePlugin(pomfile, new String[] {},
+                    new String[] { DockerProjectConstants.DOCKER_NATURE });
+            project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
+            MavenProject mavenProject = MavenUtils.getMavenProject(pomfile);
 
-			String pluginConfig = "<configuration>\n"
-					+ "                <outputDirectory>${project.build.directory}/../CarbonApps</outputDirectory>\n"
-					+ "                <overWriteReleases>false</overWriteReleases>\n"
-					+ "                <overWriteSnapshots>false</overWriteSnapshots>\n"
-					+ "                <overWriteIfNewer>true</overWriteIfNewer>\n"
-					+ "                <excludeTransitive>true</excludeTransitive>\n" 
-					+ "           </configuration>";
-			Xpp3Dom dom = Xpp3DomBuilder.build(new ByteArrayInputStream(pluginConfig.getBytes()), "UTF-8");
-			dependencyPluginExecution.setConfiguration(dom);
-			dependencyPlugin.addExecution(dependencyPluginExecution);
+            // Adding maven-dependency plugin
+            // This will copy the CAR files from .m2 to CarbonApps folder
+            Plugin dependencyPlugin = MavenUtils.createPluginEntry(mavenProject, "org.apache.maven.plugins",
+                    "maven-dependency-plugin", DockerProjectConstants.MAVEN_DEPENDENCY_PLUGIN_VERSION, true);
+            PluginExecution dependencyPluginExecution = new PluginExecution();
+            dependencyPluginExecution.addGoal("copy-dependencies");
+            dependencyPluginExecution.setId("copy-dependencies");
+            dependencyPluginExecution.setPhase("package");
 
-			// Adding spotify docker plugin
-			Plugin spotifyPlugin = MavenUtils.createPluginEntry(mavenProject, "com.spotify", "dockerfile-maven-plugin",
-					DockerProjectConstants.SPOTIFY_DOCKER_PLUGIN_VERSION, true);
-			PluginExecution spotifyPluginExecution = new PluginExecution();
-			spotifyPluginExecution.addGoal("build");
-			spotifyPluginExecution.setId("default");
+            String pluginConfig = "<configuration>\n"
+                    + "                <outputDirectory>${project.build.directory}/../CarbonApps</outputDirectory>\n"
+                    + "                <overWriteReleases>false</overWriteReleases>\n"
+                    + "                <overWriteSnapshots>false</overWriteSnapshots>\n"
+                    + "                <overWriteIfNewer>true</overWriteIfNewer>\n"
+                    + "                <excludeTransitive>true</excludeTransitive>\n" + "           </configuration>";
+            Xpp3Dom dom = Xpp3DomBuilder.build(new ByteArrayInputStream(pluginConfig.getBytes()), "UTF-8");
+            dependencyPluginExecution.setConfiguration(dom);
+            dependencyPlugin.addExecution(dependencyPluginExecution);
 
-			String spotifyPluginConfig = "<configuration>\n"
-					+ "					      <repository>${docker.repository}</repository>\n"
-					+ "					      <tag>${docker.tag}</tag>\n" 
-					+ "				      </configuration>";
+            // Adding spotify docker plugin
+            Plugin spotifyPlugin = MavenUtils.createPluginEntry(mavenProject, "com.spotify", "dockerfile-maven-plugin",
+                    DockerProjectConstants.SPOTIFY_DOCKER_PLUGIN_VERSION, true);
+            PluginExecution spotifyPluginExecution = new PluginExecution();
+            spotifyPluginExecution.addGoal("build");
+            spotifyPluginExecution.setId("default");
+
+			String spotifyPluginConfig = "<configuration>\n" + "<repository>"
+					+ dockerModel.getDockerTargetRepository() + "</repository>\n" + "<tag>"
+					+ dockerModel.getDockerTargetTag() + "</tag>\n" + "</configuration>";
 			Xpp3Dom spotifyDom = Xpp3DomBuilder.build(new ByteArrayInputStream(spotifyPluginConfig.getBytes()),
 					"UTF-8");
-			spotifyPluginExecution.setConfiguration(spotifyDom);
-			spotifyPlugin.addExecution(spotifyPluginExecution);
+            spotifyPluginExecution.setConfiguration(spotifyDom);
+            spotifyPlugin.addExecution(spotifyPluginExecution);
 
-			// Adding dependencies
-			List<Dependency> dependencyList = new ArrayList<Dependency>();
+            // Adding dependencies
+            List<Dependency> dependencyList = new ArrayList<Dependency>();
 
-			MavenUtils.addMavenDependency(mavenProject, dependencyList);
+            MavenUtils.addMavenDependency(mavenProject, dependencyList);
 
-			// Adding properties ( docker repository and tag )
-			Properties properties = mavenProject.getModel().getProperties();
-			ArtifactTypeMapping artifactTypeMapping = new ArtifactTypeMapping();
-			properties.put("artifact.types", artifactTypeMapping.getArtifactTypes());
-			properties.put("docker.repository", dockerModel.getRepository());
-			properties.put("docker.tag", dockerModel.getTag());
-			mavenProject.getModel().setProperties(properties);
+            // Adding properties ( docker repository and tag )
+            Properties properties = mavenProject.getModel().getProperties();
+            ArtifactTypeMapping artifactTypeMapping = new ArtifactTypeMapping();
+            properties.put("artifact.types", artifactTypeMapping.getArtifactTypes());
+            mavenProject.getModel().setProperties(properties);
 
-			MavenUtils.saveMavenProject(mavenProject, pomfile);
-			project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
-			openEditor();
+            MavenUtils.saveMavenProject(mavenProject, pomfile);
+            project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
+            openEditor();
 
-		} catch (Exception e) {
-			log.error("An error occurred generating a project: ", e);
-			return false;
-		}
-		return true;
-	}
+        } catch (Exception e) {
+            log.error("An error occurred generating a project: ", e);
+            return false;
+        }
+        return true;
+    }
 
-	public IResource getCreatedResource() {
-		return project;
-	}
+    public IResource getCreatedResource() {
+        return project;
+    }
 
-	public IWizardPage getNextPage(IWizardPage page) {
-		IWizardPage nextPage = super.getNextPage(page);
-		if (page instanceof MavenDetailsPage) {
-			nextPage = null;
+    public IWizardPage getNextPage(IWizardPage page) {
+        IWizardPage nextPage = super.getNextPage(page);
+        if (page instanceof MavenDetailsPage) {
+            nextPage = null;
 
-		}
-		return nextPage;
-	}
+        }
+        return nextPage;
+    }
 
-	public IWizardPage getPreviousPage(IWizardPage page) {
-		IWizardPage previousPage = super.getNextPage(page);
-		return previousPage;
-	}
+    public IWizardPage getPreviousPage(IWizardPage page) {
+        IWizardPage previousPage = super.getNextPage(page);
+        return previousPage;
+    }
 
-	public boolean canFinish() {
-		if (getContainer().getCurrentPage() instanceof MavenDetailsPage) {
-			return true;
-		}
-		return super.canFinish();
-	}
+    public boolean canFinish() {
+        if (getContainer().getCurrentPage() instanceof MavenDetailsPage) {
+            return true;
+        }
+        return super.canFinish();
+    }
 
-	public DockerModel getDockerModel() {
-		return dockerModel;
-	}
+    public DockerModel getModel() {
+        return dockerModel;
+    }
 
-	public void openEditor() {
-		try {
-			IFile pom = project.getFile("pom.xml");
-			IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
-			IWorkbenchPage page = window.getActivePage();
-			page.openEditor(new FileEditorInput(pom), DockerProjectConstants.DOCKER_EDITOR);
-		} catch (Exception e) {
-			/* ignore */}
-	}
+    public void setModel(DockerModel model) {
+        this.dockerModel = model;
+    }
+
+    public void openEditor() {
+        try {
+            IFile pom = project.getFile("pom.xml");
+            IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+            IWorkbenchPage page = window.getActivePage();
+            page.openEditor(new FileEditorInput(pom), DockerProjectConstants.DOCKER_EDITOR);
+        } catch (Exception e) {
+            /* ignore */}
+    }
 
 }

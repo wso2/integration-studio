@@ -28,6 +28,8 @@
 			<data modelProperty="project.name" type="string" >Project Name</data>
 			<data modelProperty="project.repository" type="string" >Docker repository</data>
 			<data modelProperty="project.tag" type="string" >Docker tag</data>
+			<data modelProperty="project.remoteRepository" type="string" defaultValue="wso2/micro-integrator">Remote repository</data>
+			<data modelProperty="project.remoteTag" type="string" defaultValue="latest">Remote tag</data>
 			<projectNatures>
 				<nature>org.wso2.developerstudio.eclipse.docker.distribution.project.nature</nature>
 			</projectNatures>

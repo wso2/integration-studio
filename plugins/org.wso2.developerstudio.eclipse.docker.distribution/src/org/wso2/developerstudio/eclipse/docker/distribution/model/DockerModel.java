@@ -16,61 +16,27 @@
 
 package org.wso2.developerstudio.eclipse.docker.distribution.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.wso2.developerstudio.eclipse.distribution.project.model.DependencyData;
+import org.wso2.developerstudio.eclipse.docker.distribution.utils.DockerProjectConstants;
 import org.wso2.developerstudio.eclipse.platform.core.exception.ObserverFailedException;
 import org.wso2.developerstudio.eclipse.platform.core.project.model.ProjectDataModel;
 
 /**
- * Model class for the docker project type.
- * Additional properties ( docker tag, docker repository )
+ * Model class for the docker project type. Additional properties ( docker tag,
+ * docker repository )
  */
 public class DockerModel extends ProjectDataModel {
 
-	private List<DependencyData> selectedProjects = new ArrayList<DependencyData>();
-
-	private String repository;
-
-	public List<DependencyData> getSelectedProjects() {
-		return selectedProjects;
-	}
-
-	public void setSelectedProjects(List<DependencyData> selectedProjects) {
-		this.selectedProjects = selectedProjects;
-	}
-
-	public String getTag() {
-		return tag;
-	}
-
-	public void setTag(String tag) {
-		this.tag = tag;
-	}
-
-	public String getRepository() {
-		return repository;
-	}
-
-	public void setRepository(String repository) {
-		this.repository = repository;
-	}
-
-	private String tag;
-
-	public void ProjectDataModel() {
-
-	}
-
-	public boolean setModelPropertyValue(String key, Object data) throws ObserverFailedException {
-		super.setModelPropertyValue(key, data);
-		if (key.equalsIgnoreCase("project.tag")) {
-			setTag(data.toString());
-		} else if (key.equalsIgnoreCase("project.repository")) {
-			setRepository(data.toString());
-		}
-		return false;
-	}
-
+    public boolean setModelPropertyValue(String key, Object data) throws ObserverFailedException {
+        super.setModelPropertyValue(key, data);
+        if (key.equalsIgnoreCase(DockerProjectConstants.DOCKER_TAG_KEY)) {
+            setDockerTargetTag(data.toString());
+        } else if (key.equalsIgnoreCase(DockerProjectConstants.DOCKER_REPOSITORY_KEY)) {
+            setDockerTargetRepository(data.toString());
+        } else if (key.equalsIgnoreCase(DockerProjectConstants.DOCKER_REMOTE_REPOSITORY_KEY)) {
+            setDockerRemoteRepository(data.toString());
+        } else if (key.equalsIgnoreCase(DockerProjectConstants.DOCKER_REMOTE_TAG_KEY)) {
+            setDockerRemoteTag(data.toString());
+        }
+        return false;
+    }
 }

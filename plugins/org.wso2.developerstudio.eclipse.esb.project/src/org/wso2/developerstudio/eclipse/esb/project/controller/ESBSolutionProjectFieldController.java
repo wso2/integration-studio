@@ -46,6 +46,9 @@ public class ESBSolutionProjectFieldController extends ESBProjectFieldController
                 if (esbSolutionModel.isRegistryProjectChecked()) {
                     updateFields.add(REGISTRY_RESOURCES_PROJECT_NAME);
                 }
+                if (esbSolutionModel.isDockerExporterProjectChecked()) {
+                    updateFields.add(DOCKER_EXPORTER_PROJECT_NAME);
+                }
             }
 		} else if (modelProperty.equals(REGISTRY_PROJECT_CHECKED)) {
 			updateFields.add(REGISTRY_RESOURCES_PROJECT_NAME);
@@ -53,6 +56,8 @@ public class ESBSolutionProjectFieldController extends ESBProjectFieldController
 			updateFields.add(CONNECTOR_EXPORTER_PROJECT_NAME);
 		} else if (modelProperty.equals(CAPP_PROJECT_CHECKED)) {
 			updateFields.add(COMPOSITE_APPLICATION_PROJECT_NAME);
+		} else if (modelProperty.equals(DOCKER_EXPORTER_PROJECT_CHECKED)) {
+			updateFields.add(DOCKER_EXPORTER_PROJECT_NAME);
 		}
 		return updateFields;
 	}
@@ -63,12 +68,15 @@ public class ESBSolutionProjectFieldController extends ESBProjectFieldController
 		boolean registryEnabled = ((ESBSolutionProjectModel) model).isRegistryProjectChecked();
 		boolean connectorEnabled = ((ESBSolutionProjectModel) model).isConnectorExporterProjectChecked();
 		boolean cappEnabled = ((ESBSolutionProjectModel) model).isCappProjectChecked();
+		boolean dockerEnabled = ((ESBSolutionProjectModel) model).isDockerExporterProjectChecked();
 		if (modelProperty.equals(REGISTRY_RESOURCES_PROJECT_NAME)) {
 			enable = registryEnabled;
 		} else if (modelProperty.equals(CONNECTOR_EXPORTER_PROJECT_NAME)) {
 			enable = connectorEnabled;
 		} else if (modelProperty.equals(COMPOSITE_APPLICATION_PROJECT_NAME)) {
 			enable = cappEnabled;
+		} else if (modelProperty.equals(DOCKER_EXPORTER_PROJECT_NAME)) {
+			enable = dockerEnabled;
 		}
 		return enable;
 	}

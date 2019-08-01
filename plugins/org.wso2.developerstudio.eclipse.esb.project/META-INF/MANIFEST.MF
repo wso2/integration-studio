@@ -11,7 +11,8 @@ Require-Bundle: org.eclipse.ltk.core.refactoring,
  org.wso2.developerstudio.eclipse.esb.libraries;bundle-version="[6.0.0,7.0.0)",
  org.eclipse.jetty.server;bundle-version="9.4.8",
  org.eclipse.jetty.servlet;bundle-version="9.4.8",
- org.eclipse.jetty.util;bundle-version="9.4.8"
+ org.eclipse.jetty.util;bundle-version="9.4.8",
+ org.wso2.developerstudio.eclipse.docker.distribution
 Bundle-ActivationPolicy: lazy
 Import-Package: javax.servlet;version="3.1.0",
  javax.servlet.annotation;version="3.1.0",
@@ -49,6 +50,7 @@ Export-Package: org.wso2.developerstudio.eclipse.esb.project.artifact,
  org.wso2.developerstudio.eclipse.esb.project.connector.store,
  org.wso2.developerstudio.eclipse.esb.project.control.graphicalproject,
  org.wso2.developerstudio.eclipse.esb.project.filter,
+ org.wso2.developerstudio.eclipse.esb.project.model,
  org.wso2.developerstudio.eclipse.esb.project.servlets,
  org.wso2.developerstudio.eclipse.esb.project.utils
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8

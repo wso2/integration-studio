@@ -21,122 +21,141 @@ import static org.wso2.developerstudio.eclipse.esb.project.utils.SolutionProject
 
 public class ESBSolutionProjectModel extends ESBProjectModel {
 
-	private String esbProjectName;
-	private String registryProjectName;
-	private String connectorExporterProjectName;
-	private String compositeApplicationProjectName;
-	private boolean registryProjectChecked = false;
-	private boolean connectorExporterProjectChecked = false;
+    private String esbProjectName;
+    private String registryProjectName;
+    private String connectorExporterProjectName;
+    private String compositeApplicationProjectName;
+    private String dockerExporterProjectName;
+    private boolean registryProjectChecked = false;
+    private boolean connectorExporterProjectChecked = false;
 
-	public boolean isConnectorExporterProjectChecked() {
-		return connectorExporterProjectChecked;
-	}
+    public boolean isConnectorExporterProjectChecked() {
+        return connectorExporterProjectChecked;
+    }
 
-	public void setConnectorExporterProjectChecked(boolean connectorExporterProjectChecked) {
-		this.connectorExporterProjectChecked = connectorExporterProjectChecked;
-	}
+    public String getDockerExporterProjectName() {
+        return dockerExporterProjectName;
+    }
 
-	public boolean isCappProjectChecked() {
-		return cappProjectChecked;
-	}
+    public void setDockerExporterProjectName(String dockerExporterProjectName) {
+        this.dockerExporterProjectName = dockerExporterProjectName;
+    }
 
-	public void setCappProjectChecked(boolean cappProjectChecked) {
-		this.cappProjectChecked = cappProjectChecked;
-	}
+    public void setConnectorExporterProjectChecked(boolean connectorExporterProjectChecked) {
+        this.connectorExporterProjectChecked = connectorExporterProjectChecked;
+    }
 
-	private boolean cappProjectChecked = true;
+    public boolean isCappProjectChecked() {
+        return cappProjectChecked;
+    }
 
-	public boolean isRegistryProjectChecked() {
-		return registryProjectChecked;
-	}
+    public void setCappProjectChecked(boolean cappProjectChecked) {
+        this.cappProjectChecked = cappProjectChecked;
+    }
 
-	public void setRegistryProjectChecked(boolean registryProjectChecked) {
-		this.registryProjectChecked = registryProjectChecked;
-	}
+    private boolean cappProjectChecked = true;
 
-	public Object getModelPropertyValue(String key) {
-		Object modelPropertyValue = super.getModelPropertyValue(key);
-		if (modelPropertyValue == null) {
-			if (key.equals(ESB_PROJECT_NAME)) {
-				modelPropertyValue = getEsbProjectName();
-			} else if (key.equals(REGISTRY_RESOURCES_PROJECT_NAME)) {
-				modelPropertyValue = getRegistryProjectName();
-			} else if (key.equals(CONNECTOR_EXPORTER_PROJECT_NAME)) {
-				modelPropertyValue = getConnectorExporterProjectName();
-			} else if (key.equals(COMPOSITE_APPLICATION_PROJECT_NAME)) {
-				modelPropertyValue = getCompositeApplicationProjectName();
-			} else if (key.equals(SolutionProjectArtifactConstants.REGISTRY_PROJECT_CHECKED)) {
-				modelPropertyValue = isRegistryProjectChecked();
-			} else if (key.equals(CONNECTOR_EXPORTER_PROJECT_CHECKED)) {
-				modelPropertyValue = isConnectorExporterProjectChecked();
-			} else if (key.equals(CAPP_PROJECT_CHECKED)) {
-				modelPropertyValue = isCappProjectChecked();
-			}
-		}
-		return modelPropertyValue;
+    public boolean isRegistryProjectChecked() {
+        return registryProjectChecked;
+    }
 
-	}
+    public void setRegistryProjectChecked(boolean registryProjectChecked) {
+        this.registryProjectChecked = registryProjectChecked;
+    }
 
-	public boolean setModelPropertyValue(String key, Object data) throws ObserverFailedException {
-		boolean returnResult = super.setModelPropertyValue(key, data);
-		if (key.equals(ESB_PROJECT_NAME)) {
-			setEsbProjectName(data.toString());
-			if (data.toString() != null && !data.toString().isEmpty()) {
-				setRegistryProjectName(data.toString() + "Registry");
-				setConnectorExporterProjectName(data.toString() + "ConnectorExporter");
-				setCompositeApplicationProjectName(data.toString() + "CompositeApplication");
-			} else {
-				setRegistryProjectName("");
-				setConnectorExporterProjectName("");
-				setCompositeApplicationProjectName("");
-			}
-		} else if (key.equals(REGISTRY_RESOURCES_PROJECT_NAME)) {
-			setRegistryProjectName(data.toString());
-		} else if (key.equals(CONNECTOR_EXPORTER_PROJECT_NAME)) {
-			setConnectorExporterProjectName(data.toString());
-		} else if (key.equals(COMPOSITE_APPLICATION_PROJECT_NAME)) {
-			setCompositeApplicationProjectName(data.toString());
-		} else if (key.equals(REGISTRY_PROJECT_CHECKED)) {
-			setRegistryProjectChecked((boolean) data);
-		} else if (key.equals(CONNECTOR_EXPORTER_PROJECT_CHECKED)) {
-			setConnectorExporterProjectChecked((boolean) data);
-		} else if (key.equals(CAPP_PROJECT_CHECKED)) {
-			setCappProjectChecked((boolean) data);
-		}
+    public Object getModelPropertyValue(String key) {
+        Object modelPropertyValue = super.getModelPropertyValue(key);
+        if (modelPropertyValue == null) {
+            if (key.equals(ESB_PROJECT_NAME)) {
+                modelPropertyValue = getEsbProjectName();
+            } else if (key.equals(REGISTRY_RESOURCES_PROJECT_NAME)) {
+                modelPropertyValue = getRegistryProjectName();
+            } else if (key.equals(CONNECTOR_EXPORTER_PROJECT_NAME)) {
+                modelPropertyValue = getConnectorExporterProjectName();
+            } else if (key.equals(COMPOSITE_APPLICATION_PROJECT_NAME)) {
+                modelPropertyValue = getCompositeApplicationProjectName();
+            } else if (key.equals(DOCKER_EXPORTER_PROJECT_NAME)) {
+                modelPropertyValue = getDockerExporterProjectName();
+            } else if (key.equals(SolutionProjectArtifactConstants.REGISTRY_PROJECT_CHECKED)) {
+                modelPropertyValue = isRegistryProjectChecked();
+            } else if (key.equals(CONNECTOR_EXPORTER_PROJECT_CHECKED)) {
+                modelPropertyValue = isConnectorExporterProjectChecked();
+            } else if (key.equals(CAPP_PROJECT_CHECKED)) {
+                modelPropertyValue = isCappProjectChecked();
+            } else if (key.equals(DOCKER_EXPORTER_PROJECT_CHECKED)) {
+                modelPropertyValue = isDockerExporterProjectChecked();
+            }
+        }
+        return modelPropertyValue;
 
-		return returnResult;
-	}
+    }
 
-	public String getEsbProjectName() {
-		return esbProjectName;
-	}
+    public boolean setModelPropertyValue(String key, Object data) throws ObserverFailedException {
+        boolean returnResult = super.setModelPropertyValue(key, data);
+        if (key.equals(ESB_PROJECT_NAME)) {
+            setEsbProjectName(data.toString());
+            if (data.toString() != null && !data.toString().isEmpty()) {
+                setRegistryProjectName(data.toString() + "Registry");
+                setConnectorExporterProjectName(data.toString() + "ConnectorExporter");
+                setCompositeApplicationProjectName(data.toString() + "CompositeApplication");
+                setDockerExporterProjectName(data.toString() + "DockerExporter");
+            } else {
+                setRegistryProjectName("");
+                setConnectorExporterProjectName("");
+                setCompositeApplicationProjectName("");
+            }
+        } else if (key.equals(REGISTRY_RESOURCES_PROJECT_NAME)) {
+            setRegistryProjectName(data.toString());
+        } else if (key.equals(CONNECTOR_EXPORTER_PROJECT_NAME)) {
+            setConnectorExporterProjectName(data.toString());
+        } else if (key.equals(COMPOSITE_APPLICATION_PROJECT_NAME)) {
+            setCompositeApplicationProjectName(data.toString());
+        } else if (key.equals(DOCKER_EXPORTER_PROJECT_NAME)) {
+            setDockerExporterProjectName(data.toString());
+        } else if (key.equals(REGISTRY_PROJECT_CHECKED)) {
+            setRegistryProjectChecked((boolean) data);
+        } else if (key.equals(CONNECTOR_EXPORTER_PROJECT_CHECKED)) {
+            setConnectorExporterProjectChecked((boolean) data);
+        } else if (key.equals(CAPP_PROJECT_CHECKED)) {
+            setCappProjectChecked((boolean) data);
+        } else if (key.equals(DOCKER_EXPORTER_PROJECT_CHECKED)) {
+            setDockerExporterProjectChecked((boolean) data);
+            returnResult = (boolean) data;
+        }
 
-	public void setEsbProjectName(String esbProjectName) {
-		this.esbProjectName = esbProjectName;
-	}
+        return returnResult;
+    }
 
-	public String getRegistryProjectName() {
-		return registryProjectName;
-	}
+    public String getEsbProjectName() {
+        return esbProjectName;
+    }
 
-	public void setRegistryProjectName(String registryProjectName) {
-		this.registryProjectName = registryProjectName;
-	}
+    public void setEsbProjectName(String esbProjectName) {
+        this.esbProjectName = esbProjectName;
+    }
 
-	public String getConnectorExporterProjectName() {
-		return connectorExporterProjectName;
-	}
+    public String getRegistryProjectName() {
+        return registryProjectName;
+    }
 
-	public void setConnectorExporterProjectName(String connectorExporterProjectName) {
-		this.connectorExporterProjectName = connectorExporterProjectName;
-	}
+    public void setRegistryProjectName(String registryProjectName) {
+        this.registryProjectName = registryProjectName;
+    }
 
-	public String getCompositeApplicationProjectName() {
-		return compositeApplicationProjectName;
-	}
+    public String getConnectorExporterProjectName() {
+        return connectorExporterProjectName;
+    }
 
-	public void setCompositeApplicationProjectName(String compositeApplicationProjectName) {
-		this.compositeApplicationProjectName = compositeApplicationProjectName;
-	}
+    public void setConnectorExporterProjectName(String connectorExporterProjectName) {
+        this.connectorExporterProjectName = connectorExporterProjectName;
+    }
+
+    public String getCompositeApplicationProjectName() {
+        return compositeApplicationProjectName;
+    }
+
+    public void setCompositeApplicationProjectName(String compositeApplicationProjectName) {
+        this.compositeApplicationProjectName = compositeApplicationProjectName;
+    }
 
 }

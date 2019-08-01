@@ -53,6 +53,8 @@ import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
 import org.wso2.developerstudio.eclipse.platform.core.model.MavenInfo;
 import org.wso2.developerstudio.eclipse.platform.core.project.model.ProjectDataModel;
 import org.wso2.developerstudio.eclipse.platform.ui.Activator;
+import org.wso2.developerstudio.eclipse.platform.ui.utils.PlatformUIConstants;
+import org.wso2.developerstudio.eclipse.platform.ui.utils.UserInputValidator;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 
 public class MavenDetailsPage extends WizardPage implements Observer {
@@ -61,6 +63,8 @@ public class MavenDetailsPage extends WizardPage implements Observer {
 	private static final String GLOBAL_PARENT_MAVEN_VERSION = "GLOBAL_MAVEN_VERSION";
 	private static final String GLOBAL_PARENT_MAVEN_ARTIFACTID = "GLOBAL_MAVEN_ARTIFACTID";
 	private static final String GLOBAL_PARENT_MAVEN_GROUP_ID = "GLOBAL_MAVEN_GROUPID";
+	private static final String DEFAULT_REMOTE_REPOSITORY = "wso2/micro-integrator";
+	private static final String DEFAULT_REMOTE_TAG = "latest";
 
 	private Text txtGroupId;
 	private Text txtVersion;
@@ -75,6 +79,10 @@ public class MavenDetailsPage extends WizardPage implements Observer {
 	private Text lblArtifactIdValue;
 	private Button btnhasMavenParent;
 	private Combo parentProjectInfoCombo;
+	private Text txtRemoteRepository;
+	private Text txtRemoteTag;
+	private Text txtTargetRepository;
+	private Text txtTargetTag;
 
 	private boolean hasParentProject;
 	private boolean hasLoadedProjectList;
@@ -86,6 +94,7 @@ public class MavenDetailsPage extends WizardPage implements Observer {
 	private String parentRelativePath;
 	private final ProjectDataModel dataModel;
 	private final MavenInfo mavenProjectInfo;
+	private Group grpDocker;
 
 	private Map<String, Parent> parentProjectlist;
 
@@ -96,7 +105,7 @@ public class MavenDetailsPage extends WizardPage implements Observer {
 	 */
 	public MavenDetailsPage(ProjectDataModel projectDataModel) {
 		super("wizardPage");
-		setTitle("Maven Information");
+		setTitle("Additional Information");
 		setDescription("Maven information for the project");
 		this.dataModel = projectDataModel;
 		this.mavenProjectInfo = projectDataModel.getMavenInfo();
@@ -283,6 +292,80 @@ public class MavenDetailsPage extends WizardPage implements Observer {
 			}
 		});
 
+        // Docker project details
+
+        grpDocker = new Group(container, SWT.BORDER);
+        grpDocker.setText("Docker Project");
+        GridLayout gl_grpDocker = new GridLayout(2, false);
+        gl_grpDocker.verticalSpacing = 10;
+        gl_grpDocker.horizontalSpacing = 40;
+        grpDocker.setVisible(false);
+        grpDocker.setLayout(gl_grpDocker);
+
+        GridData gd_grpDocker = new GridData(GridData.FILL_HORIZONTAL);
+        gd_grpDocker.heightHint = 160;
+        grpDocker.setLayoutData(gd_grpDocker);
+
+        Label lblRemoteRepository = new Label(grpDocker, SWT.NONE);
+        lblRemoteRepository.setText("Remote Repository");
+
+        txtRemoteRepository = new Text(grpDocker, SWT.BORDER);
+        GridData gd_txtRemoteRepository = new GridData(SWT.LEFT, SWT.CENTER, true, false, 1, 1);
+        gd_txtRemoteRepository.widthHint = 257;
+        txtRemoteRepository.setLayoutData(gd_txtRemoteRepository);
+        txtRemoteRepository.setText(DEFAULT_REMOTE_REPOSITORY);
+        dataModel.setDockerRemoteRepository(DEFAULT_REMOTE_REPOSITORY);
+        txtRemoteRepository.addModifyListener(new ModifyListener() {
+            public void modifyText(ModifyEvent arg0) {
+                dataModel.setDockerRemoteRepository(txtRemoteRepository.getText());
+                updatePageStatus();
+            }
+        });
+
+        Label lblRemoteTag = new Label(grpDocker, SWT.NONE);
+        lblRemoteTag.setText("Remote tag");
+
+        txtRemoteTag = new Text(grpDocker, SWT.BORDER);
+        GridData gd_txtRemoteTag = new GridData(SWT.LEFT, SWT.CENTER, true, false, 1, 1);
+        gd_txtRemoteTag.widthHint = 100;
+        txtRemoteTag.setLayoutData(gd_txtRemoteTag);
+        txtRemoteTag.setText(DEFAULT_REMOTE_TAG);
+        dataModel.setDockerRemoteTag(DEFAULT_REMOTE_TAG);
+        txtRemoteTag.addModifyListener(new ModifyListener() {
+            public void modifyText(ModifyEvent arg0) {
+                dataModel.setDockerRemoteTag(txtRemoteTag.getText());
+                updatePageStatus();
+            }
+        });
+
+        Label lblTargetRepository = new Label(grpDocker, SWT.NONE);
+        lblTargetRepository.setText("Target Repository");
+
+        txtTargetRepository = new Text(grpDocker, SWT.BORDER);
+        GridData gd_txtTargetRepository = new GridData(SWT.LEFT, SWT.CENTER, true, false, 1, 1);
+        gd_txtTargetRepository.widthHint = 257;
+        txtTargetRepository.setLayoutData(gd_txtTargetRepository);
+        txtTargetRepository.addModifyListener(new ModifyListener() {
+            public void modifyText(ModifyEvent arg0) {
+                dataModel.setDockerTargetRepository(txtTargetRepository.getText());
+                updatePageStatus();
+            }
+        });
+
+        Label lblTargetTag = new Label(grpDocker, SWT.NONE);
+        lblTargetTag.setText("Target tag");
+
+        txtTargetTag = new Text(grpDocker, SWT.BORDER);
+        GridData gd_txtTargetTag = new GridData(SWT.LEFT, SWT.CENTER, true, false, 1, 1);
+        gd_txtTargetTag.widthHint = 100;
+        txtTargetTag.setLayoutData(gd_txtTargetTag);
+        txtTargetTag.addModifyListener(new ModifyListener() {
+            public void modifyText(ModifyEvent arg0) {
+                dataModel.setDockerTargetTag(txtTargetTag.getText());
+                updatePageStatus();
+            }
+        });
+			
 		// Trying to get info from preference store
 		Parent parent1 = getParentFromPreferernceStore();
 		if (parent1.getGroupId() != null) {
@@ -488,8 +571,36 @@ public class MavenDetailsPage extends WizardPage implements Observer {
 					return;
 				}
 			}
-
-			updatePageStatus(null);
+			
+            if (dataModel.isDockerExporterProjectChecked()) {
+                String targetRepo = dataModel.getDockerTargetRepository();
+                if (targetRepo == null || targetRepo.isEmpty()) {
+                    updatePageStatus(PlatformUIConstants.NO_TARGET_REPO_MESSAGE);
+                    return;
+                } else if (!UserInputValidator.isRepositoryValid(targetRepo)) {
+                    updatePageStatus(PlatformUIConstants.INVALID_TARGET_REPO_MESSAGE);
+                    return;
+                }
+                String targetTag = dataModel.getDockerTargetTag();
+                if (targetTag == null || targetTag.isEmpty()) {
+                    updatePageStatus(PlatformUIConstants.NO_TARGET_TAG_MESSAGE);
+                    return;
+                } else if (!UserInputValidator.isTagValid(targetTag)) {
+                    updatePageStatus(PlatformUIConstants.INVALID_TARGET_TAG_MESSAGE);
+                    return;
+                }
+                String remoteRepo = dataModel.getDockerRemoteRepository();
+                if (remoteRepo == null || remoteRepo.isEmpty()) {
+                    updatePageStatus(PlatformUIConstants.NO_REMOTE_REPOSITORY_MESSAGE);
+                    return;
+                }
+                String remoteTag = dataModel.getDockerRemoteTag();
+                if (remoteTag == null || remoteTag.isEmpty()) {
+                    updatePageStatus(PlatformUIConstants.NO_REMOTE_TAG_MESSAGE);
+                    return;
+                }
+            }
+            updatePageStatus(null);
 		}
 
 	}
@@ -555,6 +666,12 @@ public class MavenDetailsPage extends WizardPage implements Observer {
 			if (dataModel.getProjectName() != null) {
 				setArtifactIDLabel();
 			}
+            if (dataModel.isDockerExporterProjectChecked()) {
+                grpDocker.setVisible(true);
+                updatePageStatus();
+            } else {
+                grpDocker.setVisible(false);
+            }
 		}
 
 	}

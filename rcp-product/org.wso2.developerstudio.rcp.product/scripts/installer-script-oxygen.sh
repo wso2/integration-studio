@@ -45,7 +45,7 @@ mkdir -p $PRODUCT_PATH_WIN_64
 
 unzip $PRODUCT_PATH_ROOT/WSO2-Integration-Studio-linux.gtk.x86.zip -d $PRODUCT_PATH_LINUX_86
 unzip $PRODUCT_PATH_ROOT/WSO2-Integration-Studio-linux.gtk.x86_64.zip -d $PRODUCT_PATH_LINUX_64
-unzip $PRODUCT_PATH_ROOT/WSO2-Developer-Studio-macosx.cocoa.x86_64.zip -d $PRODUCT_PATH_MACOS
+unzip $PRODUCT_PATH_ROOT/WSO2-Integration-Studio-macosx.cocoa.x86_64.zip -d $PRODUCT_PATH_MACOS
 unzip $PRODUCT_PATH_ROOT/WSO2-Integration-Studio-win32.win32.x86.zip -d $PRODUCT_PATH_WIN_86
 unzip $PRODUCT_PATH_ROOT/WSO2-Integration-Studio-win32.win32.x86_64.zip -d $PRODUCT_PATH_WIN_64
 
@@ -68,7 +68,7 @@ rm -rf $PRODUCT_PATH_ROOT/WSO2-Integration-Studio-linux.gtk.x86.tar.gz
 rm -rf $PRODUCT_PATH_ROOT/WSO2-Integration-Studio-linux.gtk.x86_64.tar.gz
 rm -rf $PRODUCT_PATH_ROOT/WSO2-Integration-Studio-win32.win32.x86.zip
 rm -rf $PRODUCT_PATH_ROOT/WSO2-Integration-Studio-win32.win32.x86_64.zip
-rm -rf $PRODUCT_PATH_ROOT/WSO2-Developer-Studio-macosx.cocoa.x86_64.tar.gz
+rm -rf $PRODUCT_PATH_ROOT/WSO2-Integration-Studio-macosx.cocoa.x86_64.tar.gz
 
 # Extract JDK distributions
 pushd ${JDK_DISTRIBUTION_PATH_LINUX}
@@ -189,4 +189,4 @@ rm -rf $JDK_DISTRIBUTION_PATH
 
 rm -rf $PRODUCT_PATH_ROOT/WSO2-Integration-Studio-linux.gtk.x86.zip
 rm -rf $PRODUCT_PATH_ROOT/WSO2-Integration-Studio-linux.gtk.x86_64.zip
-rm -rf $PRODUCT_PATH_ROOT/WSO2-Developer-Studio-macosx.cocoa.x86_64.zip
+rm -rf $PRODUCT_PATH_ROOT/WSO2-Integration-Studio-macosx.cocoa.x86_64.zip

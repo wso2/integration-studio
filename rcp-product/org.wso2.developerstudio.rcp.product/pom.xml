@@ -139,7 +139,7 @@
                         </goals>
                         <configuration>
                             <outputDirectory>${project.basedir}/target/products/</outputDirectory>
-                            <finalName>WSO2-Developer-Studio-macosx.cocoa.x86_64</finalName>
+                            <finalName>WSO2-Integration-Studio-macosx.cocoa.x86_64</finalName>
                             <descriptors>
                                 <descriptor>${basedir}/assembly/macosx.cocoa_x86_64.xml</descriptor>
                             </descriptors>

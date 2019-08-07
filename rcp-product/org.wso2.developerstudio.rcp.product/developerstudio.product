@@ -267,7 +267,7 @@ Please visit : http://wso2.com/products/developer-studio/
       <feature id="org.eclipse.e4.rcp"/>
       <feature id="org.eclipse.emf.ecore"/>
       <feature id="org.eclipse.emf.common"/>
-      <feature id="org.wso2.developerstudio.rcp.feature"/>
+      <feature id="org.wso2.developerstudio.rcp.feature" installMode="root"/>
       <feature id="org.eclipse.platform"/>
       <feature id="org.eclipse.egit"/>
       <feature id="org.eclipse.ecf.filetransfer.httpclient4.feature"/>
@@ -328,46 +328,47 @@ Please visit : http://wso2.com/products/developer-studio/
       <feature id="org.eclipse.wst.ws_userdoc.feature"/>
       <feature id="org.eclipse.jst.web_ui.feature"/>
       <feature id="org.eclipse.jst.web_userdoc.feature"/>
-      <feature id="org.wso2.developerstudio.kernel.feature"/>
-      <feature id="org.wso2.developerstudio.kernel.wso2plugins.samples.feature"/>
+      <feature id="org.wso2.developerstudio.kernel.feature" installMode="root"/>
+      <feature id="org.wso2.developerstudio.kernel.wso2plugins.samples.feature" installMode="root"/>
       <feature id="org.eclipse.pde" version="3.13.4.v20180330-0640"/>
       <feature id="org.eclipse.jdt" version="3.13.4.v20180330-0919"/>
       <!-- Dev studio kernel/platform features -->
-      <feature id="org.wso2.developerstudio.capp.feature"/>
-      <feature id="org.wso2.developerstudio.carbon.server.feature"/>
-      <feature id="org.wso2.developerstudio.carbon.server-40.feature"/>
-      <feature id="org.wso2.developerstudio.carbon.server-42.feature"/>
-      <feature id="org.wso2.developerstudio.carbon.server-remote.feature"/>
-      <feature id="org.wso2.developerstudio.carbon.server-44.feature"/>
-      <feature id="org.wso2.developerstudio.carbon.server-44ei.feature"/>
-      <feature id="org.wso2.developerstudio.dashboard.feature"/>
-      <feature id="org.wso2.developerstudio.kernel.registry.core.feature"/>
-      <feature id="org.wso2.developerstudio.kernel.security.feature"/>
-      <feature id="org.wso2.developerstudio.kernel.utils.feature"/>
-      <feature id="org.wso2.developerstudio.kernel.wso2plugins.default.samples.feature"/>
-      <feature id="org.wso2.developerstudio.library.artifact.feature"/>
-      <feature id="org.wso2.developerstudio.platform.libraries.feature"/>
-      <feature id="org.wso2.developerstudio.usr.management.feature"/>
-      <feature id="org.wso2.developerstudio.mvn.multimodule.feature"/>
-      <feature id="org.wso2.developerstudio.cloud.utils.feature"/>
-      <feature id="org.wso2.developerstudio.web.ui.feature"/>
+      <feature id="org.wso2.developerstudio.capp.feature" installMode="root"/>
+      <feature id="org.wso2.developerstudio.carbon.server.feature" installMode="root"/>
+      <feature id="org.wso2.developerstudio.carbon.server-40.feature" installMode="root"/>
+      <feature id="org.wso2.developerstudio.carbon.server-42.feature" installMode="root"/>
+      <feature id="org.wso2.developerstudio.carbon.server-remote.feature" installMode="root"/>
+      <feature id="org.wso2.developerstudio.carbon.server-44.feature" installMode="root"/>
+      <feature id="org.wso2.developerstudio.carbon.server-44ei.feature" installMode="root"/>
+      <feature id="org.wso2.developerstudio.dashboard.feature" installMode="root"/>
+      <feature id="org.wso2.developerstudio.kernel.registry.core.feature" installMode="root"/>
+      <feature id="org.wso2.developerstudio.kernel.security.feature" installMode="root"/>
+      <feature id="org.wso2.developerstudio.kernel.utils.feature" installMode="root"/>
+      <feature id="org.wso2.developerstudio.kernel.wso2plugins.default.samples.feature" installMode="root"/>
+      <feature id="org.wso2.developerstudio.library.artifact.feature" installMode="root"/>
+      <feature id="org.wso2.developerstudio.platform.libraries.feature" installMode="root"/>
+      <feature id="org.wso2.developerstudio.usr.management.feature" installMode="root"/>
+      <feature id="org.wso2.developerstudio.mvn.multimodule.feature" installMode="root"/>
+      <feature id="org.wso2.developerstudio.cloud.utils.feature" installMode="root"/>
+      <feature id="org.wso2.developerstudio.web.ui.feature" installMode="root"/>
       <!-- Dev studio ESB features -->
-      <feature id="org.wso2.developerstudio.eclipse.esb.feature"/>
-      <feature id="org.wso2.developerstudio.eclipse.esb.editor.feature"/>
-      <feature id="org.wso2.developerstudio.eclipse.esb.dependencies.feature"/>
-      <feature id="org.wso2.developerstudio.eclipse.visualdatamapper.editor.feature"/>
-      <feature id="org.wso2.developerstudio.eclipse.smooks.editor.feature"/>
+      <feature id="org.wso2.developerstudio.eclipse.esb.feature" installMode="root"/>
+      <feature id="org.wso2.developerstudio.eclipse.esb.editor.feature" installMode="root"/>
+      <feature id="org.wso2.developerstudio.eclipse.esb.dependencies.feature" installMode="root"/>
+      <feature id="org.wso2.developerstudio.eclipse.visualdatamapper.editor.feature" installMode="root"/>
+      <feature id="org.wso2.developerstudio.eclipse.smooks.editor.feature" installMode="root"/>
       <!-- Dev studio BPS features -->
-      <feature id="org.wso2.developerstudio.eclipse.bps.feature"/>
-      <feature id="org.wso2.developerstudio.eclipse.bps.hteditor.feature"/>
-      <feature id="org.wso2.developerstudio.eclipse.bps.bpmn.feature"/>
+      <feature id="org.wso2.developerstudio.eclipse.bps.feature" installMode="root"/>
+      <feature id="org.wso2.developerstudio.eclipse.bps.hteditor.feature" installMode="root"/>
+      <feature id="org.wso2.developerstudio.eclipse.bps.bpmn.feature" installMode="root"/>
       <!-- Dev studio DSS features -->
-      <feature id="org.wso2.developerstudio.eclipse.data.service.feature"/>
-      <feature id="org.wso2.developerstudio.eclipse.data.source.feature"/>
-      <feature id="org.wso2.developerstudio.eclipse.dss.dependencies.feature"/>
+      <feature id="org.wso2.developerstudio.eclipse.data.service.feature" installMode="root"/>
+      <feature id="org.wso2.developerstudio.eclipse.data.source.feature" installMode="root"/>
+      <feature id="org.wso2.developerstudio.eclipse.dss.dependencies.feature" installMode="root"/>
       <!-- Dev studio EI features -->
-      <feature id="org.wso2.developerstudio.eclipse.ei.project.feature"/>
-      <feature id="org.wso2.developerstudio.eclipse.docker.distribution.feature"/>
+      <feature id="org.wso2.developerstudio.eclipse.ei.project.feature" installMode="root"/>
+      <feature id="org.wso2.developerstudio.eclipse.docker.distribution.feature" installMode="root"/>
+      <feature id="org.wso2.developerstudio.carbon.server-44microei.feature" installMode="root"/>
    </features>
 
    <configurations>

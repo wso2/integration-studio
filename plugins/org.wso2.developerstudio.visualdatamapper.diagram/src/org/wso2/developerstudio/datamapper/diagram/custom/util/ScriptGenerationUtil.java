@@ -36,6 +36,7 @@ import org.wso2.developerstudio.datamapper.diagram.custom.model.DMVariableType;
  */
 public class ScriptGenerationUtil {
 
+	private static final String DOT_REPRESENTATION = "_DOT_";
 	private static final int VARIABLE_TYPE_INDEX = 0;
 	private static final String HYPHEN_PREFIX = "_EnC0DeCHaRHyPh3n_";
 	public static final String VALID_VARIABLE_NAME_REGEX = "^[a-zA-Z][a-zA-Z_$0-9]*$";
@@ -287,8 +288,10 @@ public class ScriptGenerationUtil {
 		Pattern pattern = Pattern.compile(VALID_VARIABLE_NAME_REGEX);
 		// Now create matcher object.
 		Matcher matcher = pattern.matcher(nextName);
-		if (matcher.find()) {
+		if (matcher.find() && !nextName.contains(DOT_REPRESENTATION)) {
 			return "." + nextName;
+		} else if (nextName.contains(DOT_REPRESENTATION)) {
+		    return "['" + nextName.replace(DOT_REPRESENTATION, ".") + "']";
 		} else {
 			return "['" + nextName + "']";
 		}

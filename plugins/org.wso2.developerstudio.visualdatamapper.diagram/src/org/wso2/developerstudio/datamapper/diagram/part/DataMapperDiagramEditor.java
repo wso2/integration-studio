@@ -24,12 +24,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 
+import org.apache.commons.io.IOUtils;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IWorkspaceRoot;
@@ -117,6 +119,8 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
     private static final String DATA_MAPPER_PERSPECTIVE = "org.wso2.developerstudio.datamapper.diagram.custom.perspective";
     private static final String DATA_MAPPER_META_INPUT_TYPE = "inputType";
     private static final String DATA_MAPPER_META_OUTPUT_TYPE = "outputType";
+    private static final String DOT_REPRESENTATION = "_DOT_";
+    private static final String DOT = ".";
     private String inputSchemaType = "XML";
     private String outputSchemaType = "XML";
 	
@@ -585,7 +589,7 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
         }
 
 		DataMapperConfigHolder.getInstance().setInputSchemaPath(schemaFile.getAbsolutePath());
-		schemaTransformer.updateSchemaFile(content, schemaFile);
+		schemaTransformer.updateSchemaFile(content.replace(DOT_REPRESENTATION, DOT), schemaFile);
 
 		// Model root of output schema tree
 		EList<TreeNode> outputTreeNodesList = ((DataMapperRoot) datamapperRoot).getOutput().getTreeNode();
@@ -603,7 +607,7 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
 			content = "";
 		}
 		DataMapperConfigHolder.getInstance().setOutputSchemaPath(schemaFile.getAbsolutePath());
-		schemaTransformer.updateSchemaFile(content, schemaFile);
+		schemaTransformer.updateSchemaFile(content.replace(DOT_REPRESENTATION, DOT), schemaFile);
 		
 		// reload the datamapper test window once the new schema is saved.
 		reloadDataMapperTestWindow(getInputSchemaType(), getOutputSchemaType());
@@ -738,8 +742,14 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
             IFile schemaFile = diagramFile.getWorkspace().getRoot().getFile(new Path(schemaFilePath));
             IFile xsltStyleSheetFile = diagramFile.getWorkspace().getRoot().getFile(new Path(xsltStyleSheetFilePath));
             if (xsltStyleSheetFile.exists() && schemaFile.exists()) {
-                try (InputStream schemaInPutStream = schemaFile.getContents()){
-                    String source = XSLTStyleSheetGenerationHandler.getInstance().generate(schemaInPutStream);
+                try (InputStream schemaInPutStream = schemaFile.getContents()) {
+                    String schemaContent = IOUtils.toString(schemaInPutStream, "UTF-8");
+                    if (schemaContent.contains(DOT_REPRESENTATION)) {
+                    	schemaContent = schemaContent.replace(DOT_REPRESENTATION, DOT);
+                    	schemaFile.setContents(new ByteArrayInputStream(schemaContent.getBytes()), true, true, monitor);
+                    }
+                    InputStream replacedSchemaStream = IOUtils.toInputStream(schemaContent);
+                    String source = XSLTStyleSheetGenerationHandler.getInstance().generate(replacedSchemaStream);
                     xsltStyleSheetFile.setContents(new ByteArrayInputStream(source.getBytes()), true, true, monitor);
                 } catch (CoreException | TransformerException | SAXException | IOException | ParserConfigurationException e) {
                     log.error("Could not save file " + xsltStyleSheetFilePath + " : " + e);
@@ -795,7 +805,8 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
             if(inputSource != null) {
                 inputSource.put(DATA_MAPPER_META_INPUT_TYPE, getInputSchemaType());
                 try {
-                    inputSchemaFile.setContents(new ByteArrayInputStream(inputSource.toJSONString().getBytes()), true, true, monitor);
+                    String content = inputSource.toJSONString().replace(DOT_REPRESENTATION, DOT);
+                    inputSchemaFile.setContents(new ByteArrayInputStream(content.getBytes()), true, true, monitor);
                 } catch (CoreException e) {
                     log.error("Could not update input file " + e);
                 }
@@ -806,7 +817,8 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
             if(inputSource != null) {
                 outputSource.put(DATA_MAPPER_META_OUTPUT_TYPE, getOutputSchemaType());
                 try {
-                    outputSchemaFile.setContents(new ByteArrayInputStream(outputSource.toJSONString().getBytes()), true, true, monitor);
+                    String content = outputSource.toJSONString().replace(DOT_REPRESENTATION, DOT);
+                    outputSchemaFile.setContents(new ByteArrayInputStream(content.getBytes()), true, true, monitor);
                 } catch (CoreException e) {
                     log.error("Could not update output file " + e);
                 }

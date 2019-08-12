@@ -113,4 +113,3 @@ Bundle-ClassPath: .,
  lib/asm-util-5.0.3.jar,
  lib/commons-codec-1.9.jar,
  lib/ui-3.8.2-v20120916-1200.jar
-

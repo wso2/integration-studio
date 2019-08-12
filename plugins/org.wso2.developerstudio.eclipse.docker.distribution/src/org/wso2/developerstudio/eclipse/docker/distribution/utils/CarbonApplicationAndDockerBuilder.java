@@ -220,7 +220,7 @@ public class CarbonApplicationAndDockerBuilder extends Job {
         return Status.OK_STATUS;
     }
 
-    private void showMessageBox(String title, String message, int style) {
+    private void showMessageBox(final String title, final String message, final int style) {
 
         Display.getDefault().syncExec(new Runnable() {
             public void run() {

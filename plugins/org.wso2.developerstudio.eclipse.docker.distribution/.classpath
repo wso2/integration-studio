@@ -1,52 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry exported="true" kind="lib" path="lib/ui-3.8.2-v20120916-1200.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/activation-1.1.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/asm-5.0.3.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/asm-analysis-5.0.3.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/asm-commons-5.0.3.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/asm-tree-5.0.3.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/asm-util-5.0.3.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/bcpkix-jdk15on-1.60.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/commons-codec-1.9.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/commons-compress-1.18.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/commons-io-2.5.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/commons-lang-2.6.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/docker-client-8.14.5.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/google-auth-library-oauth2-http-0.6.0.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/guava-20.0.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/hk2-api-2.4.0-b34.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/hk2-locator-2.4.0-b34.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/hk2-utils-2.4.0-b34.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/httpclient-4.5.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/httpcore-4.4.5.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/jackson-annotations-2.9.0.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/jackson-core-2.9.6.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/jackson-databind-2.9.6.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/jackson-datatype-guava-2.9.6.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/jackson-jaxrs-base-2.9.6.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/jackson-jaxrs-json-provider-2.9.6.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/javax.annotation-api-1.2.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/javax.ws.rs-api-2.0.1.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/jersey-apache-connector-2.22.2.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/jersey-client-2.22.2.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/jersey-common-2.22.2.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/jersey-entity-filtering-2.22.2.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/jersey-guava-2.22.2.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/jersey-media-json-jackson-2.22.2.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/jffi-1.2.15-native.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/jffi-1.2.15.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/jnr-constants-0.9.8.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/jnr-enxio-0.16.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/jnr-ffi-2.1.4.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/jnr-posix-3.0.35.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/jnr-unixsocket-0.18.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/jnr-x86asm-1.0.2.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/osgi-resource-locator-1.0.1.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/slf4j-api-1.7.22.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
-	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
+	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins">
+		<accessrules>
+			<accessrule kind="accessible" pattern="*"/>
+		</accessrules>
+	</classpathentry>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="output" path="target/classes"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 </classpath>

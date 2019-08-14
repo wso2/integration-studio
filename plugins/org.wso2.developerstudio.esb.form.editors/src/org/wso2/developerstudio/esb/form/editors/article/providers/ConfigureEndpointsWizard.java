@@ -18,9 +18,12 @@
 
 package org.wso2.developerstudio.esb.form.editors.article.providers;
 
+import javax.xml.namespace.QName;
+
 import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.util.AXIOMUtil;
 import org.apache.synapse.config.xml.endpoints.EndpointFactory;
+import org.apache.synapse.config.xml.endpoints.TemplateEndpointFactory;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.swt.SWT;
@@ -64,7 +67,12 @@ public class ConfigureEndpointsWizard extends Wizard implements IExportWizard {
                 ComplexEndpointWizardUtils.removeIndentations(element);
                 OMElement tempElement = element.cloneOMElement();
                 ComplexEndpointWizardUtils.setNamespaceForChildren(tempElement);
-                EndpointFactory.getEndpointFromElement(tempElement, false, null);
+                if (tempElement.getLocalName().equals("endpoint") 
+                		&& tempElement.getAttribute(new QName("template")) != null) {
+                	TemplateEndpointFactory.getEndpointFromElement(tempElement, false, null);
+                } else {
+                	EndpointFactory.getEndpointFromElement(tempElement, false, null);
+                }
 
             } catch (Exception e) {
                 ComplexEndpointWizardUtils.openMessageBox(getShell(), "Endpoint Error",

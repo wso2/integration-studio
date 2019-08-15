@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Libraries
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.esb.libraries;singleton:=true
-Bundle-Version: 6.5.0.qualifier
+Bundle-Version: 7.0.0.qualifier
 Bundle-Vendor: WSO2
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: .,
@@ -125,14 +125,14 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.core.resources,
  javax.servlet;bundle-version="3.0.0",
  javax.servlet.jsp;bundle-version="2.2.0",
- org.wso2.developerstudio.eclipse.libraries;bundle-version="[6.0.0,7.0.0)",
- org.wso2.developerstudio.eclipse.kernel.libraries;bundle-version="[4.1.0,7.0.0)"
+ org.wso2.developerstudio.eclipse.libraries;bundle-version="[7.0.0,8.0.0)",
+ org.wso2.developerstudio.eclipse.kernel.libraries;bundle-version="[4.1.0,8.0.0)"
 Bundle-Activator: org.wso2.developerstudio.eclipse.esb.libraries.Activator
 Import-Package: org.eclipse.jdt.core,
- org.wso2.developerstudio.eclipse.logging.core;version="[4.1.0,7.0.0)",
- org.wso2.developerstudio.eclipse.utils.ide;version="[4.1.0,7.0.0)",
- org.wso2.developerstudio.eclipse.utils.jdt;version="[4.1.0,7.0.0)",
- org.wso2.developerstudio.eclipse.utils.ui;version="[4.1.0,7.0.0)"
+ org.wso2.developerstudio.eclipse.logging.core;version="[4.1.0,8.0.0)",
+ org.wso2.developerstudio.eclipse.utils.ide;version="[4.1.0,8.0.0)",
+ org.wso2.developerstudio.eclipse.utils.jdt;version="[4.1.0,8.0.0)",
+ org.wso2.developerstudio.eclipse.utils.ui;version="[4.1.0,8.0.0)"
 Export-Package: com.damnhandy.uri.template;version="2.1.6.wso2v2",
  com.google.gson,
  com.google.gson.reflect,

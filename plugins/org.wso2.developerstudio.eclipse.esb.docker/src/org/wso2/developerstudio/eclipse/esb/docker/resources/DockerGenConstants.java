@@ -115,7 +115,7 @@ public class DockerGenConstants {
         public static final String USER_GROUP_ID = "802";
         public static final String FILES = ".";
         public static final String WSO2_SERVER = "wso2ei";
-        public static final String WSO2_SERVER_VERSION = "6.5.0";
+        public static final String WSO2_SERVER_VERSION = "7.0.0";
         public static final String WSO2_SERVER_PACK = "${WSO2_SERVER}-${WSO2_SERVER_VERSION}";
         public static final String WSO2_SERVER_HOME = "${USER_HOME}/${WSO2_SERVER_PACK}";
         public static final String ENV_VARIABLES_CMD = "WSO2_SERVER_HOME=${WSO2_SERVER_HOME} \\\n"

@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.gmf.esb.diagram; singleton:=true
-Bundle-Version: 6.5.0.qualifier
+Bundle-Version: 7.0.0.qualifier
 Bundle-ClassPath: .
 Bundle-Activator: org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditorPlugin
 Bundle-Vendor: %providerName
@@ -55,13 +55,13 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.debug.core,
  org.eclipse.debug.ui,
  org.eclipse.osgi.services;bundle-version="3.4.0",
- org.wso2.developerstudio.eclipse.esb.libraries;bundle-version="[6.0.0,7.0.0)",
- org.wso2.developerstudio.eclipse.platform.core;bundle-version="[4.1.0,7.0.0)",
- org.wso2.developerstudio.eclipse.platform.ui;bundle-version="[4.1.0,7.0.0)",
- org.wso2.developerstudio.eclipse.kernel.libraries;bundle-version="[4.1.0,7.0.0)",
- org.wso2.developerstudio.eclipse.project.extensions;bundle-version="[6.5.0,7.0.0)",
+ org.wso2.developerstudio.eclipse.esb.libraries;bundle-version="[7.0.0,8.0.0)",
+ org.wso2.developerstudio.eclipse.platform.core;bundle-version="[4.1.0,8.0.0)",
+ org.wso2.developerstudio.eclipse.platform.ui;bundle-version="[4.1.0,8.0.0)",
+ org.wso2.developerstudio.eclipse.kernel.libraries;bundle-version="[4.1.0,8.0.0)",
+ org.wso2.developerstudio.eclipse.project.extensions;bundle-version="[7.0.0,8.0.0)",
  org.eclipse.papyrus.infra.gmfdiag.css,
- org.wso2.developerstudio.eclipse.carbonserver44microei;bundle-version="[6.5.0,7.0.0)"
+ org.wso2.developerstudio.eclipse.carbonserver44microei;bundle-version="[7.0.0,8.0.0)"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Eclipse-LazyStart: true
@@ -78,29 +78,29 @@ Import-Package: net.sf.saxon.s9api,
  org.jaxen,
  org.wso2.developerstudio.eclipse.artifact.localentry.model,
  org.wso2.developerstudio.eclipse.artifact.localentry.ui.wizard,
- org.wso2.developerstudio.eclipse.capp.core.artifacts.manager;version="[6.0.0,7.0.0)",
- org.wso2.developerstudio.eclipse.capp.core.manifest;version="[6.0.0,7.0.0)",
- org.wso2.developerstudio.eclipse.capp.core.model;version="[6.0.0,7.0.0)",
- org.wso2.developerstudio.eclipse.capp.maven;version="[6.0.0,7.0.0)",
- org.wso2.developerstudio.eclipse.capp.maven.utils;version="[6.0.0,7.0.0)",
- org.wso2.developerstudio.eclipse.carbonserver44microei.register.product.servers;version="[6.0.0,7.0.0)",
- org.wso2.developerstudio.eclipse.carbonserver44microei.wizard;version="[6.0.0,7.0.0)",
+ org.wso2.developerstudio.eclipse.capp.core.artifacts.manager;version="[7.0.0,8.0.0)",
+ org.wso2.developerstudio.eclipse.capp.core.manifest;version="[7.0.0,8.0.0)",
+ org.wso2.developerstudio.eclipse.capp.core.model;version="[7.0.0,8.0.0)",
+ org.wso2.developerstudio.eclipse.capp.maven;version="[7.0.0,8.0.0)",
+ org.wso2.developerstudio.eclipse.capp.maven.utils;version="[7.0.0,8.0.0)",
+ org.wso2.developerstudio.eclipse.carbonserver44microei.register.product.servers;version="[7.0.0,8.0.0)",
+ org.wso2.developerstudio.eclipse.carbonserver44microei.wizard;version="[7.0.0,8.0.0)",
  org.wso2.developerstudio.eclipse.esb.core,
  org.wso2.developerstudio.eclipse.esb.core.interfaces,
  org.wso2.developerstudio.eclipse.esb.core.utils,
  org.wso2.developerstudio.eclipse.esb.project.artifact,
  org.wso2.developerstudio.eclipse.esb.project.control.graphicalproject,
  org.wso2.developerstudio.eclipse.esb.project.utils,
- org.wso2.developerstudio.eclipse.general.project.artifact;version="[6.0.0,7.0.0)",
- org.wso2.developerstudio.eclipse.general.project.artifact.bean;version="[6.0.0,7.0.0)",
- org.wso2.developerstudio.eclipse.general.project.utils;version="[6.0.0,7.0.0)",
+ org.wso2.developerstudio.eclipse.general.project.artifact;version="[7.0.0,8.0.0)",
+ org.wso2.developerstudio.eclipse.general.project.artifact.bean;version="[7.0.0,8.0.0)",
+ org.wso2.developerstudio.eclipse.general.project.utils;version="[7.0.0,8.0.0)",
  org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom,
  org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.provider,
  org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom,
- org.wso2.developerstudio.eclipse.registry.core;version="[6.0.0,7.0.0)",
- org.wso2.developerstudio.eclipse.registry.core.interfaces;version="[6.0.0,7.0.0)",
- org.wso2.developerstudio.eclipse.registry.core.utils;version="[6.0.0,7.0.0)",
- org.wso2.developerstudio.eclipse.usermgt.remote;version="[6.0.0,7.0.0)",
+ org.wso2.developerstudio.eclipse.registry.core;version="[7.0.0,8.0.0)",
+ org.wso2.developerstudio.eclipse.registry.core.interfaces;version="[7.0.0,8.0.0)",
+ org.wso2.developerstudio.eclipse.registry.core.utils;version="[7.0.0,8.0.0)",
+ org.wso2.developerstudio.eclipse.usermgt.remote;version="[7.0.0,8.0.0)",
  org.wso2.developerstudio.esb.form.editors.article.providers,
  org.wso2.developerstudio.esb.form.editors.article.rcp,
  org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints,

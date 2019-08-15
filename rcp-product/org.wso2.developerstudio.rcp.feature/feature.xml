@@ -2,7 +2,7 @@
 <feature
       id="org.wso2.developerstudio.rcp.feature"
       label="Feature"
-      version="6.5.0.qualifier"
+      version="7.0.0.qualifier"
       provider-name="WSO2 Inc.">
 
    <description url="http://www.example.com/description">

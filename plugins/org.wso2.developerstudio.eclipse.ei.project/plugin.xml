@@ -24,7 +24,7 @@
       </product.server>
       <product.server
             carbon.server.version="carbon.server.44ei"
-            server.display.name="WSO2 Enterprise Integrator 6.5.0">
+            server.display.name="WSO2 Enterprise Integrator 7.0.0">
       </product.server>
        <product.server
                carbon.server.version="carbon.server.44microei"

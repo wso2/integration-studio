@@ -666,11 +666,13 @@ public class MavenDetailsPage extends WizardPage implements Observer {
 			if (dataModel.getProjectName() != null) {
 				setArtifactIDLabel();
 			}
-            if (dataModel.isDockerExporterProjectChecked()) {
-                grpDocker.setVisible(true);
-                updatePageStatus();
-            } else {
-                grpDocker.setVisible(false);
+            if (grpDocker != null) {
+                if (dataModel.isDockerExporterProjectChecked()) {
+                    grpDocker.setVisible(true);
+                    updatePageStatus();
+                } else {
+                    grpDocker.setVisible(false);
+                }
             }
 		}
 

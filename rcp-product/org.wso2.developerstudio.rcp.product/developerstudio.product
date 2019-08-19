@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="Integration Studio" uid="WSO2-Integration-Studio" id="org.wso2.developerstudio.rcp.plugin.devstudio" application="org.eclipse.ui.ide.workbench" version="7.0.0" useFeatures="true" includeLaunchers="true">
+<product name="Integration Studio" uid="WSO2-Integration-Studio" id="org.wso2.developerstudio.rcp.plugin.devstudio" application="org.eclipse.ui.ide.workbench" version="7.0.0.qualifier" useFeatures="true" includeLaunchers="true">
 
    <aboutInfo>
       <image path="/org.wso2.developerstudio.rcp.plugin/icons/carbon-studio-logo.gif"/>
@@ -18,7 +18,7 @@ Please visit : http://wso2.com/products/developer-studio/
       <programArgsMac>/org.wso2.developerstudio.rcp.plugin/icons/DeveloperStudio.icns
       </programArgsMac>
       <vmArgs>-Xms512m
--Xmx1536m
+-Xmx2048m
 -XX:MaxPermSize=512m
 -Dosgi.instance.area.default=@user.home/IntegrationStudio/workspace
       </vmArgs>

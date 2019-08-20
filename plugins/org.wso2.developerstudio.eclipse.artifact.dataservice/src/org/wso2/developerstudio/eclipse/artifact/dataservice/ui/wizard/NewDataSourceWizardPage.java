@@ -64,8 +64,8 @@ import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.wso2.developerstudio.eclipse.registry.base.ui.dialog.RegistryTreeBrowserDialog;
 import org.wso2.developerstudio.eclipse.artifact.dataservice.model.DataServiceModel;
-import org.wso2.developerstudio.eclipse.gmf.esb.presentation.ConnectionObj;
-import org.wso2.developerstudio.eclipse.gmf.esb.presentation.DependencyProvider;
+import org.wso2.developerstudio.eclipse.artifact.dataservice.utils.ConnectionObj;
+import org.wso2.developerstudio.eclipse.artifact.dataservice.utils.DependencyProvider;
 import org.wso2.developerstudio.eclipse.registry.base.model.RegistryResourceNode;
 import org.wso2.developerstudio.eclipse.registry.base.persistent.RegistryURLInfo;
 import org.wso2.developerstudio.eclipse.registry.base.persistent.RegistryUrlStore;
@@ -143,7 +143,7 @@ public class NewDataSourceWizardPage extends WizardPage {
     public void createControl(Composite parent) {
           
         model = (DataServiceModel) ((DataServiceCreationWizard) getWizard()).getModel();
-
+        model.setDataSourceConfig(0);
         composite = new Composite(parent, SWT.NONE);
         composite.setFont(parent.getFont());
         composite.setLayout(initGridLayout(new GridLayout(1, false), true));
@@ -552,18 +552,20 @@ public class NewDataSourceWizardPage extends WizardPage {
                 }
 			}};
         
-        dbEngineType.selectItem(0);
        
         jdbcURLField.getTextControl(null).setText(rdbmsConfig.get(rdbmsType[0])[0]);
         driverClassField.getTextControl(null).setText(rdbmsConfig.get(rdbmsType[0])[1]);
         xaDataSourceClassField.getTextControl(null).setText(rdbmsConfig.get(rdbmsType[0])[2]);
 
+        dbEngineType.getComboControl(null).addModifyListener(rdbmsFieldListener);
         xaDataSourceClassField.getTextControl(null).addModifyListener(rdbmsFieldListener);
         driverClassField.getTextControl(null).addModifyListener(rdbmsFieldListener);
         jdbcURLField.getTextControl(null).addModifyListener(rdbmsFieldListener);
         usernameField.getTextControl(null).addModifyListener(rdbmsFieldListener);
         passwordField.getTextControl(null).addModifyListener(rdbmsFieldListener);
         secretAliasPasswordField.getTextControl(null).addModifyListener(rdbmsFieldListener);
+
+        dbEngineType.selectItem(0);
 
         rdbmsControls = new DialogField[] { dataSourceIdField, dataSourceTypeField, checkSecretAliasField,
                 usernameField, passwordField, secretAliasPasswordField, dbEngineType, jdbcURLField, driverClassField,
@@ -1387,7 +1389,6 @@ public class NewDataSourceWizardPage extends WizardPage {
         final SelectionButtonDialogField optPublicField = new SelectionButtonDialogField(SWT.RADIO);
         optPublicField.setLabelText("Public");
         optPublicField.doFillIntoGrid(gSpreadSheetContainer, 1);
-        optPublicField.getSelectionButton(null).setSelection(true);
         
         final SelectionButtonDialogField optPrivate = new SelectionButtonDialogField(SWT.RADIO);
         optPrivate.setLabelText("Private");
@@ -1489,6 +1490,8 @@ public class NewDataSourceWizardPage extends WizardPage {
             }
         });
         
+        optPublicField.getSelectionButton(null).setSelection(true);
+
         gSpreadSheetControls = new Object[] { dataSourceIdField, dataSourceTypeField, googleSpreadsheetUrlField,
                 optPublicField, optPrivate, googleUserNameField, googlePasswordField
                 };
@@ -1631,7 +1634,6 @@ public class NewDataSourceWizardPage extends WizardPage {
         OptWebHarvestConfigField.setLabelText("Web Harvest Config File Path");
         OptWebHarvestConfigField.createEmptySpace(webDataSourceContainer, 1);
         OptWebHarvestConfigField.doFillIntoGrid(webDataSourceContainer, 1);
-        OptWebHarvestConfigField.setSelection(true);
      
         
         final SelectionButtonDialogField optInlineWebHarvestField = new SelectionButtonDialogField(SWT.RADIO);
@@ -1731,7 +1733,7 @@ public class NewDataSourceWizardPage extends WizardPage {
 
 		webConfigPathField.getTextControl(null).addModifyListener(webConfigFieldListener);
 		txtWebConfigText.addModifyListener(webConfigFieldListener);
-        
+		OptWebHarvestConfigField.setSelection(true);
         
         webDataSourceControls = new Object[] { dataSourceIdField, dataSourceTypeField,
                 OptWebHarvestConfigField , optInlineWebHarvestField 

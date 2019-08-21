@@ -303,7 +303,7 @@ public class MavenDetailsPage extends WizardPage implements Observer {
         grpDocker.setLayout(gl_grpDocker);
 
         GridData gd_grpDocker = new GridData(GridData.FILL_HORIZONTAL);
-        gd_grpDocker.heightHint = 160;
+        gd_grpDocker.heightHint = 200;
         grpDocker.setLayoutData(gd_grpDocker);
 
         Label lblRemoteRepository = new Label(grpDocker, SWT.NONE);

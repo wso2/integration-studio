@@ -18,8 +18,9 @@ Require-Bundle: org.eclipse.ui,
  org.wso2.developerstudio.eclipse.distribution.project,
  org.wso2.developerstudio.eclipse.platform.core,
  org.eclipse.ui.navigator,
- org.eclipse.wb.core.lib
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+ org.eclipse.wb.core.lib,
+ org.objectweb.asm;bundle-version="6.0.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Import-Package: 
  org.eclipse.debug.core,
  org.eclipse.debug.core.model,
@@ -32,6 +33,7 @@ Import-Package:
  org.eclipse.m2e.core.project,
  org.eclipse.ui.forms,
  org.eclipse.ui.ide,
+ org.objectweb.asm;version="6.0.0",
  org.wso2.developerstudio.eclipse.capp.core.artifacts.manager;version="[7.0.0,8.0.0)",
  org.wso2.developerstudio.eclipse.capp.core.model;version="[7.0.0,8.0.0)",
  org.wso2.developerstudio.eclipse.capp.maven.sample;version="[7.0.0,8.0.0)",
@@ -66,7 +68,10 @@ Import-Package:
  org.wso2.developerstudio.eclipse.utils.ui;version="[4.1.0,8.0.0)",
  org.wso2.developerstudio.eclipse.utils.wst;version="[4.1.0,8.0.0)"
 Bundle-ActivationPolicy: lazy
-Export-Package: org.wso2.developerstudio.eclipse.docker.distribution.model,
+Export-Package: org.objectweb.asm,
+ org.wso2.developerstudio.eclipse.docker.distribution.job,
+ org.wso2.developerstudio.eclipse.docker.distribution.model,
+ org.wso2.developerstudio.eclipse.docker.distribution.resources,
  org.wso2.developerstudio.eclipse.docker.distribution.ui.wizard
 Bundle-ClassPath: .,
  lib/activation-1.1.jar,
@@ -106,10 +111,11 @@ Bundle-ClassPath: .,
  lib/jnr-ffi-2.1.4.jar,
  lib/jnr-posix-3.0.35.jar,
  lib/jnr-x86asm-1.0.2.jar,
- lib/asm-5.0.3.jar,
  lib/asm-analysis-5.0.3.jar,
  lib/asm-commons-5.0.3.jar,
  lib/asm-tree-5.0.3.jar,
  lib/asm-util-5.0.3.jar,
  lib/commons-codec-1.9.jar,
- lib/ui-3.8.2-v20120916-1200.jar
+ lib/ui-3.8.2-v20120916-1200.jar,
+ lib/asm-5.0.3.jar
+Automatic-Module-Name: org.wso2.developerstudio.eclipse.docker.distribution

@@ -30,6 +30,7 @@ import org.apache.synapse.config.xml.endpoints.DefaultEndpointSerializer;
 import org.apache.synapse.config.xml.endpoints.FailoverEndpointSerializer;
 import org.apache.synapse.config.xml.endpoints.HTTPEndpointSerializer;
 import org.apache.synapse.config.xml.endpoints.LoadbalanceEndpointSerializer;
+import org.apache.synapse.config.xml.endpoints.TemplateEndpointSerializer;
 import org.apache.synapse.config.xml.endpoints.WSDLEndpointSerializer;
 import org.apache.synapse.endpoints.AbstractEndpoint;
 import org.apache.synapse.endpoints.AddressEndpoint;
@@ -40,6 +41,7 @@ import org.apache.synapse.endpoints.HTTPEndpoint;
 import org.apache.synapse.endpoints.IndirectEndpoint;
 import org.apache.synapse.endpoints.LoadbalanceEndpoint;
 import org.apache.synapse.endpoints.RecipientListEndpoint;
+import org.apache.synapse.endpoints.TemplateEndpoint;
 import org.apache.synapse.endpoints.WSDLEndpoint;
 import org.apache.synapse.mediators.MediatorProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPointProperty;
@@ -93,6 +95,10 @@ public class ComplexEndpointDeserializerUtils {
                 IndirectEndpoint indirectEndpoint = (IndirectEndpoint) child;
                 EndpointTableEntry tempEntry = new EndpointTableEntry(false, indirectEndpoint.getKey());
                 endpointTableEntries.add(tempEntry);
+                
+            } else if (child instanceof TemplateEndpoint) {
+            	TemplateEndpoint templateEndpoint = (TemplateEndpoint) child;
+            	omElement = TemplateEndpointSerializer.getElementFromEndpoint(templateEndpoint);
             }
 
             if (omElement != null) {

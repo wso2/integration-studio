@@ -137,7 +137,7 @@ public class InboundEndpointPropertiesEditionComponent extends SinglePartPropert
 			}
 			// Start of user code for additional businessfilters for serviceParameters
 			if (isAccessible(EsbViewsRepository.InboundEndpoint.Properties.class_))
-				basePart.setClass_(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, inboundEndpoint.getClass().getName()));
+				basePart.setClass_(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, inboundEndpoint.getClass_()));
 			// End of user code
 			if (isAccessible(EsbViewsRepository.InboundEndpoint.Properties.protocol))
 				basePart.setProtocol(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, inboundEndpoint.getProtocol()));
@@ -938,7 +938,7 @@ public class InboundEndpointPropertiesEditionComponent extends SinglePartPropert
 				});
 				// Start of user code for additional businessfilters for serviceParameters
 	            if (isAccessible(EsbViewsRepository.InboundEndpoint.Properties.class_))
-	                basePart.setClass_(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, inboundEndpoint.getClass().getName()));
+	                basePart.setClass_(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, inboundEndpoint.getClass_()));
                 // End of user code
 			}
 			

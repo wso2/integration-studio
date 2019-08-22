@@ -36,6 +36,7 @@ import org.apache.synapse.config.xml.endpoints.HTTPEndpointFactory;
 import org.apache.synapse.config.xml.endpoints.IndirectEndpointFactory;
 import org.apache.synapse.config.xml.endpoints.LoadbalanceEndpointFactory;
 import org.apache.synapse.config.xml.endpoints.RecipientListEndpointFactory;
+import org.apache.synapse.config.xml.endpoints.TemplateEndpointFactory;
 import org.apache.synapse.config.xml.endpoints.WSDLEndpointFactory;
 import org.apache.synapse.endpoints.AddressEndpoint;
 import org.apache.synapse.endpoints.DefaultEndpoint;
@@ -45,6 +46,7 @@ import org.apache.synapse.endpoints.HTTPEndpoint;
 import org.apache.synapse.endpoints.IndirectEndpoint;
 import org.apache.synapse.endpoints.LoadbalanceEndpoint;
 import org.apache.synapse.endpoints.RecipientListEndpoint;
+import org.apache.synapse.endpoints.TemplateEndpoint;
 import org.apache.synapse.endpoints.WSDLEndpoint;
 import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Shell;
@@ -222,6 +224,19 @@ public class ComplexEndpointWizardUtils {
                                     .getEndpointFromElement(element, false, null);
                             synapseEndpointList.add(rlEndpoint);
 
+                        } else {
+                        	if (!element.getChildrenWithName(new QName(SYNAPSE_NS, "parameter")).hasNext()) {
+                                Iterator children = element.getChildrenWithLocalName("parameter");
+                                while (children.hasNext()) {
+                                    OMElement child = (OMElement) children.next();
+                                    child.setNamespace(new OMNamespaceImpl(SYNAPSE_NS, ""));
+                                    setNamespaceForChildren(child);
+                                }
+                            }
+                        	
+                        	TemplateEndpoint templateEndpoint = (TemplateEndpoint) 
+                        			TemplateEndpointFactory.getEndpointFromElement(element, false, null);
+                        	synapseEndpointList.add(templateEndpoint);
                         }
 
                     } catch (XMLStreamException e) {

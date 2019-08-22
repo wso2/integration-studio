@@ -38,6 +38,14 @@
 			<data modelProperty="solution.connector" type="string"
 				fieldController="org.wso2.developerstudio.eclipse.esb.project.controller.ESBSolutionProjectFieldController"
 				group="solution.projects.group">Project Name</data>
+				
+			<data modelProperty="solution.docker.choice" type="choice"
+				fieldController="org.wso2.developerstudio.eclipse.esb.project.controller.ESBSolutionProjectFieldController"
+				group="solution.projects.group">Create Docker Image Exporter Project</data>
+			
+			<data modelProperty="solution.docker" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.esb.project.controller.ESBSolutionProjectFieldController"
+				group="solution.projects.group">Project Name</data>
 			
 			<projectNatures>
 				<nature>org.eclipse.jdt.core.javanature</nature>

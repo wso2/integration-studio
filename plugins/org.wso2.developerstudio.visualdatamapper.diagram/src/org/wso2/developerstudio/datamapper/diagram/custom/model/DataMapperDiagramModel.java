@@ -28,6 +28,9 @@ import java.util.Stack;
 import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.transaction.RecordingCommand;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.wso2.developerstudio.datamapper.DataMapperLink;
 import org.wso2.developerstudio.datamapper.DataMapperOperatorType;
 import org.wso2.developerstudio.datamapper.DataMapperRoot;
@@ -61,6 +64,7 @@ public class DataMapperDiagramModel {
 	private static final String ITEM_TYPE = "items_type";
 	private static final String NAMESPACE_SEPERATOR = ":";
 	private static final String JSON_SCHEMA_NULLABLE = "nullable";
+	private static final String DOT_REPRESENTATION = "_DOT_";
 	private List<DMVariable> variablesArray = new ArrayList<>();
 	private List<Integer> inputVariablesArray = new ArrayList<>();
 	private List<Integer> outputVariablesArray = new ArrayList<>();
@@ -96,7 +100,17 @@ public class DataMapperDiagramModel {
 		while (!nodeStack.isEmpty()) {
 			EObject currentNode = nodeStack.pop();
 			if (currentNode instanceof TreeNodeImpl) {
-				TreeNodeImpl currentTreeNode = (TreeNodeImpl) currentNode;
+				final TreeNodeImpl currentTreeNode = (TreeNodeImpl) currentNode;
+				
+				if (currentTreeNode.getName().contains(".")) {
+					TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(currentTreeNode);
+					domain.getCommandStack().execute(new RecordingCommand(domain) {
+						protected void doExecute() {
+							currentTreeNode.setName(replaceSpecialCharactersInAttribute(currentTreeNode.getName()));
+						}
+					});
+				}
+                
 				if (currentTreeNode.getLevel() <= parentVariableStack.size()) {
 					while (parentVariableStack.size() >= currentTreeNode.getLevel()) {
 						parentVariableStack.pop();
@@ -857,7 +871,17 @@ public class DataMapperDiagramModel {
 		while (!nodeStack.isEmpty()) {
 			EObject currentNode = nodeStack.pop();
 			if (currentNode instanceof TreeNodeImpl) {
-				TreeNodeImpl currentTreeNode = (TreeNodeImpl) currentNode;
+				final TreeNodeImpl currentTreeNode = (TreeNodeImpl) currentNode;
+				
+				if (currentTreeNode.getName().contains(".")) {
+					TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(currentTreeNode);
+					domain.getCommandStack().execute(new RecordingCommand(domain) {
+						protected void doExecute() {
+							currentTreeNode.setName(replaceSpecialCharactersInAttribute(currentTreeNode.getName()));
+						}
+					});
+				}
+				
 				if (currentTreeNode.getLevel() <= parentVariableStack.size()) {
 					while (parentVariableStack.size() >= currentTreeNode.getLevel()) {
 						parentVariableStack.pop();
@@ -869,6 +893,7 @@ public class DataMapperDiagramModel {
 				int variableIndex = variablesArray.size();
 				String variableName = getVariableName(DMVariableType.OUTPUT, parentVariableStack,
 						currentTreeNode.getName());
+				
 				int parentVariableIndex = -1;
 				if (!parentVariableStack.isEmpty()) {
 					TreeNodeImpl parent = (TreeNodeImpl) parentVariableStack.peek();
@@ -1145,6 +1170,10 @@ public class DataMapperDiagramModel {
 			getVariableTypeMap().put(variableName, new ArrayList<SchemaDataType>());
 		}
 		getVariableTypeMap().get(variableName).add(type);
+	}
+	
+	private String replaceSpecialCharactersInAttribute(String attributeName) {
+	    return attributeName.replace(".", DOT_REPRESENTATION);
 	}
 
 }

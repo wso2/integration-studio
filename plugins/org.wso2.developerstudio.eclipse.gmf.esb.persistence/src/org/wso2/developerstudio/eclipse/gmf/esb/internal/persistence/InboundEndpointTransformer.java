@@ -135,7 +135,7 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
             if (StringUtils.isNotBlank(visualInboundEndpoint.getClass_())) {
                 inboundEndpoint.setClassImpl(visualInboundEndpoint.getClass_());
             } else {
-                throw new TransformerException("Class cannot be empty. Please specify a Class");
+                inboundEndpoint.setClassImpl("org.wso2.carbon.inbound.custom.poll.SamplePollingClient");
             }
             EList<InboundEndpointParameter> serviceParameters = visualInboundEndpoint.getServiceParameters();
             for (InboundEndpointParameter inboundEndpointParameter : serviceParameters) {
@@ -587,6 +587,10 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
             if (StringUtils.isNotBlank(visualInboundEndpoint.getInterval())) {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.INTERVAL,
                         visualInboundEndpoint.getInterval());
+            }
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getClass_())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.CLASS,
+                        visualInboundEndpoint.getClass_());
             }
             if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.isSequential()))) {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.SEQUENTIAL,

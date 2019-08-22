@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.axiom.om.OMElement;
+import org.apache.synapse.config.xml.SynapsePath;
 import org.apache.synapse.mediators.AbstractMediator;
 import org.apache.synapse.util.xpath.SynapseXPath;
 import org.eclipse.core.runtime.Assert;
@@ -59,7 +60,7 @@ public class HeaderMediatorDeserializer extends AbstractEsbNodeDeserializer<Abst
             executeSetValueCommand(HEADER_MEDIATOR__VALUE_LITERAL, headerMediator.getValue());
             executeSetValueCommand(HEADER_MEDIATOR__VALUE_TYPE, HeaderValueType.LITERAL);
         } else {
-            SynapseXPath xpath = headerMediator.getExpression();
+            SynapsePath xpath = headerMediator.getExpression();
             NamespacedProperty nsp = EsbFactory.eINSTANCE.createNamespacedProperty();
             nsp.setPropertyValue(xpath.toString());
             if (xpath.getNamespaces() != null) {
@@ -117,7 +118,7 @@ public class HeaderMediatorDeserializer extends AbstractEsbNodeDeserializer<Abst
                 executeSetValueCommand(HEADER_MEDIATOR__VALUE_LITERAL, headerMediator.getValue());
                 executeSetValueCommand(HEADER_MEDIATOR__VALUE_TYPE, HeaderValueType.LITERAL);
             } else {
-                SynapseXPath xpath = headerMediator.getExpression();
+                SynapsePath xpath = headerMediator.getExpression();
                 NamespacedProperty nsp = EsbFactory.eINSTANCE.createNamespacedProperty();
                 nsp.setPropertyValue(xpath.toString());
                 if (xpath.getNamespaces() != null) {

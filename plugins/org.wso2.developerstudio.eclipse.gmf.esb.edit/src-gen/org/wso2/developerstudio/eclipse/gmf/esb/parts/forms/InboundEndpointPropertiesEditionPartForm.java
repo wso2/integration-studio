@@ -13,8 +13,6 @@ import org.eclipse.emf.common.util.Enumerator;
 
 import org.eclipse.emf.ecore.EObject;
 
-import org.eclipse.emf.ecore.util.EcoreAdapterFactory;
-
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
@@ -76,11 +74,9 @@ import org.eclipse.swt.widgets.Text;
 
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
-import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.developerstudio.eclipse.gmf.esb.JMSBrokerType;
 import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFormatType;
 import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
@@ -667,7 +663,11 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
 
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.class_) {
-                    return createClass_Text(widgetFactory, parent);
+                    Control[] previousControls = filterBasicSubPropertiesGroup.getChildren();
+                    Composite composite = createClass_Text(widgetFactory, filterBasicSubPropertiesGroup);
+                    Control[] newControls = filterBasicSubPropertiesGroup.getChildren();
+                    EEFPropertyViewUtil.addTableElementsAsList(customPropertyIDs, previousControls, newControls);
+                    return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.protocol) {
                     return createProtocolText(widgetFactory, parent);
@@ -690,7 +690,7 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.inboundWorkerPoolSizeCore) {
                     filterAdvanceSubPropertiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent, "Advance",
-                            false);
+                            true);
                     Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
                     Composite composite = createInboundWorkerPoolSizeCoreText(widgetFactory, filterAdvanceSubPropertiesGroup);
                     Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
@@ -24388,6 +24388,7 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
     public void refresh() {
         super.refresh();
         validate();
+        name.setFocus();
     }
 
     public void validate() {
@@ -24501,6 +24502,7 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
                 break;
             }
         }
+        name.setFocus();
         // showTable(caseBranches, caseBranchesData);
         view.layout(true, true);
     }

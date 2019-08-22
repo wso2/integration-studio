@@ -24,9 +24,11 @@ public final class SolutionProjectArtifactConstants extends NLS {
 	public static String REGISTRY_RESOURCES_PROJECT_NAME;
 	public static String CONNECTOR_EXPORTER_PROJECT_NAME;
 	public static String COMPOSITE_APPLICATION_PROJECT_NAME;
+	public static String DOCKER_EXPORTER_PROJECT_NAME;
 	public static String REGISTRY_PROJECT_CHECKED;
 	public static String CONNECTOR_EXPORTER_PROJECT_CHECKED;
 	public static String CAPP_PROJECT_CHECKED;
+	public static String DOCKER_EXPORTER_PROJECT_CHECKED;
 
 	static {
 		// initialize resource bundle

@@ -36,6 +36,7 @@ function setViewPortFullScreen(duration) {
 
 var welcomeNodeArray;
 GetDashboardWizards();
+loadDisableWelcomePageParameter();
 function loadWelcomeNodes(contributionsString) {
     var contributions = JSON.parse(contributionsString);
     var welcomeNodes = [];
@@ -152,6 +153,10 @@ $("#openExistingProject").click(function(){
 	openWizard(projectExportWizard);
 });
 
+$('#show-welcome').change(function() {
+	updateWelcomeDisplayConfiguration();
+});
+
 function openWizard(wizardid) {
     $.post("http://localhost:"+portValue+"/servlet/openide", { status: wizardid } ,function(data, status){
     });
@@ -254,6 +259,26 @@ function searchTemplates(searchInput, templateList){
             });
         };
     });
+}
+
+function updateWelcomeDisplayConfiguration() {
+	var checkBox = document.getElementById("show-welcome");
+	$.post("http://localhost:" + portValue + "/servlet/savewelcomeconfig", { status: checkBox.checked } ,function(data, status){
+    });
+}
+
+function loadDisableWelcomePageParameter() {
+	 $.get("http://localhost:" + portValue + "/servlet/getwelcomeconfig", function(data, status) {
+		 var checkBox = document.getElementById("show-welcome");   
+		 var data = JSON.stringify(data);
+		 var disableWelcome = JSON.parse(data);
+		 if (disableWelcome.state == true) {
+			 checkBox.checked = false;
+		 } else {
+			 checkBox.checked = true;
+		 }
+	 });
+	
 }
 
 $('#zoomInIconP').click(function () {

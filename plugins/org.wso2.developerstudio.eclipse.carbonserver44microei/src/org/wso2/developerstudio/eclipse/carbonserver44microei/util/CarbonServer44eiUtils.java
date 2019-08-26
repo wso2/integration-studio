@@ -21,17 +21,10 @@ package org.wso2.developerstudio.eclipse.carbonserver44microei.util;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.OutputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -81,9 +74,7 @@ import org.xml.sax.SAXException;
 
 import org.eclipse.jst.server.generic.servertype.definition.Property;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.util.BasicFeatureMap;
 import org.eclipse.emf.ecore.util.FeatureMap;
-import org.eclipse.emf.ecore.util.FeatureMap.Entry;
 
 @SuppressWarnings("restriction")
 public class CarbonServer44eiUtils implements CarbonServerXUtils {

@@ -500,6 +500,7 @@ public class DataServiceCreationWizard extends AbstractWSO2ProjectCreationWizard
 
 	public IWizardPage getNextPage(IWizardPage page) {
 		IWizardPage nextPage = super.getNextPage(page);
+		newDataSourcepage.setProjectLocation(getModel().getLocation());
 		if (page instanceof ProjectOptionsDataPage) {
 			if (getModel().getSelectedOption().equalsIgnoreCase(NEW_OPTION)) {
 				nextPage = newDataSourcepage;
@@ -534,7 +535,7 @@ public class DataServiceCreationWizard extends AbstractWSO2ProjectCreationWizard
 				return dsModel.getImportFile().exists();
 			}
 		} else if (getContainer().getCurrentPage() instanceof NewDataSourceWizardPage) {
-			return true;
+			return getContainer().getCurrentPage().isPageComplete();
 		}
 		return super.canFinish();
 	}

@@ -17,12 +17,19 @@ package org.wso2.developerstudio.eclipse.templates.dashboard.web.function.server
 
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.Properties;
 
+import org.eclipse.core.resources.IWorkspace;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.Platform;
@@ -30,7 +37,6 @@ import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.wizard.IWizard;
 import org.eclipse.jface.wizard.WizardDialog;
-import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.IWorkbenchWizard;
 import org.eclipse.ui.PlatformUI;
@@ -45,6 +51,9 @@ public class JSEmbeddedFunctions {
     
     private static final String PORT_PROPERTIES = "serverproperties.js";
     private static final String WELCOME_PAGE_WEB_SITE_FOLDER = "TemplateDash";
+	private static final String DISABLE_WELCOME_PAGE = "DISABLE_WELCOME_PAGE";
+	private static final String PROPERTIES_FILE_PATH = File.separator + ".metadata" + File.separator
+			+ "integration-studio.properties";
 
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
     
@@ -184,4 +193,54 @@ public class JSEmbeddedFunctions {
         File resolvedWebAppFolder = new File(resolvedFolderURI);
         return resolvedWebAppFolder.getAbsolutePath();
     }
+    
+	public void updateWelcomeDisplayConfiguration(boolean isChecked) {
+		IWorkspace workspace = ResourcesPlugin.getWorkspace();
+		File workspaceDirectory = workspace.getRoot().getLocation().toFile();
+		String configFilePath = workspaceDirectory.getAbsolutePath() + PROPERTIES_FILE_PATH;
+
+		File confFile = new File(configFilePath);
+		if (isChecked) {
+			if (confFile.exists()) {
+				setDisableWelcomePrameterValue(configFilePath, false);
+			}
+		} else {
+			setDisableWelcomePrameterValue(configFilePath, true);
+		}
+	}
+
+	private void setDisableWelcomePrameterValue(String configFilePath, boolean disableWelcomePage) {
+
+		try (OutputStream output = new FileOutputStream(configFilePath)) {
+			Properties prop = new Properties();
+			prop.setProperty(DISABLE_WELCOME_PAGE, String.valueOf(disableWelcomePage));
+			prop.store(output, null);
+
+		} catch (IOException e) {
+			log.error("Error ocuured while saving the DISABLE_WELCOME_PAGE property.", e);
+		}
+	}
+
+	public static String getDisableWelcomePrameterValue() {
+
+		IWorkspace workspace = ResourcesPlugin.getWorkspace();
+		File workspaceDirectory = workspace.getRoot().getLocation().toFile();
+		String configFilePath = workspaceDirectory.getAbsolutePath() + PROPERTIES_FILE_PATH;
+		File confFile = new File(configFilePath);
+
+		if (confFile.exists()) {
+			try (InputStream input = new FileInputStream(configFilePath)) {
+				Properties prop = new Properties();
+				prop.load(input);
+
+				return prop.getProperty(DISABLE_WELCOME_PAGE);
+
+			} catch (IOException e) {
+				return "false";
+			}
+
+		} else {
+			return "false";
+		}
+	}
 }

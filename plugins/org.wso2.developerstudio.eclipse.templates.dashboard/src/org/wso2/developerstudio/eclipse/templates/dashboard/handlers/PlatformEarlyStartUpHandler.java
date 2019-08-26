@@ -36,6 +36,7 @@ import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.templates.dashboard.Activator;
 import org.wso2.developerstudio.eclipse.templates.dashboard.web.function.server.FunctionServerConstants;
+import org.wso2.developerstudio.eclipse.templates.dashboard.web.function.server.JSEmbeddedFunctions;
 
 /**
  * This is the early startup handler of the developer studio platform, all
@@ -143,21 +144,23 @@ public class PlatformEarlyStartUpHandler implements IStartup {
      * rcp-product/plugin_customization.ini with org.eclipse.ui/showIntro = false parameter.
      */
     private void openGettingStartedPage() {
-        PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
-            @Override
-            public void run() {
-                IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
-                try {
-                    PlatformUI.getWorkbench().showPerspective(FunctionServerConstants.WELCOME_PERSPECTIVE_ID,
-                            PlatformUI.getWorkbench().getActiveWorkbenchWindow());
-                    page.openEditor(new GettingStartedEditorInput(),
-                            FunctionServerConstants.TEMPLATE_DASHBOARD_EDITOR_ID, false);
-                } catch (WorkbenchException e) {
-                    MessageDialog.openError(PlatformUI.getWorkbench().getDisplay().getActiveShell(),
-                            "Could not open Getting started page", e.getMessage());
-                }
-            }
-        });
+		if (JSEmbeddedFunctions.getDisableWelcomePrameterValue().equals("false")) {
+			PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
+				@Override
+				public void run() {
+					IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
+					try {
+						PlatformUI.getWorkbench().showPerspective(FunctionServerConstants.WELCOME_PERSPECTIVE_ID,
+								PlatformUI.getWorkbench().getActiveWorkbenchWindow());
+						page.openEditor(new GettingStartedEditorInput(),
+								FunctionServerConstants.TEMPLATE_DASHBOARD_EDITOR_ID, false);
+					} catch (WorkbenchException e) {
+						MessageDialog.openError(PlatformUI.getWorkbench().getDisplay().getActiveShell(),
+								"Could not open Getting started page", e.getMessage());
+					}
+				}
+			});
+		}
     }
 
     /**

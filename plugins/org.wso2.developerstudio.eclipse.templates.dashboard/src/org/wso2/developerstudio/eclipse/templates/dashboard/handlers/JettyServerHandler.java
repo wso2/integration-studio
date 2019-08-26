@@ -20,9 +20,7 @@ package org.wso2.developerstudio.eclipse.templates.dashboard.handlers;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
-import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Server;
-import org.eclipse.jetty.server.handler.ContextHandlerCollection;
 import org.eclipse.jetty.server.handler.HandlerCollection;
 import org.eclipse.jetty.servlet.DefaultServlet;
 import org.eclipse.jetty.servlet.FilterHolder;
@@ -31,9 +29,11 @@ import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.templates.dashboard.Activator;
 import org.wso2.developerstudio.eclipse.templates.dashboard.web.function.server.FunctionServerConstants;
+import org.wso2.developerstudio.eclipse.templates.dashboard.web.function.server.GetWelcomeDisplayConfigServlet;
 import org.wso2.developerstudio.eclipse.templates.dashboard.web.function.server.GetWizardsFunctionServlet;
 import org.wso2.developerstudio.eclipse.templates.dashboard.web.function.server.JSEmbeddedFunctions;
 import org.wso2.developerstudio.eclipse.templates.dashboard.web.function.server.OpenIDEFunctionServlet;
+import org.wso2.developerstudio.eclipse.templates.dashboard.web.function.server.UpdateWelcomeDisplayConfigServlet;
 
 public class JettyServerHandler {
 
@@ -144,5 +144,7 @@ public class JettyServerHandler {
         // be
         wsContext.addServlet(OpenIDEFunctionServlet.class, "/openide");
         wsContext.addServlet(GetWizardsFunctionServlet.class, "/getwizards");
+        wsContext.addServlet(UpdateWelcomeDisplayConfigServlet.class, "/savewelcomeconfig");
+        wsContext.addServlet(GetWelcomeDisplayConfigServlet.class, "/getwelcomeconfig");
     }
 }

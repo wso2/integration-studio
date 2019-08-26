@@ -20,11 +20,9 @@ package org.wso2.developerstudio.eclipse.carbonserver44microei.register.product.
 
 import java.io.File;
 import java.nio.file.Paths;
-import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
-import org.apache.commons.lang.StringUtils;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;

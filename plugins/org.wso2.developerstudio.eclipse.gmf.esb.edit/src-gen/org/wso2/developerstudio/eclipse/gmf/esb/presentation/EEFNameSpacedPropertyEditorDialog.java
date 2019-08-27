@@ -517,7 +517,7 @@ public class EEFNameSpacedPropertyEditorDialog extends Dialog {
      */
     public NamespacedProperty open() {
         Shell parentShell = getParent();
-        dialogShell = new Shell(parentShell, SWT.DIALOG_TRIM | SWT.APPLICATION_MODAL);
+        dialogShell = new Shell(parentShell, SWT.DIALOG_TRIM | SWT.APPLICATION_MODAL | SWT.RESIZE);
 
         // Configure dialog shell internal layout.
         FormLayout dialogShellLayout = new FormLayout();
@@ -1024,9 +1024,9 @@ public class EEFNameSpacedPropertyEditorDialog extends Dialog {
         dialogShell.layout();
         dialogShell.pack();
         if (operatingSystemType.indexOf(OS_TYPE_WINDOWS) >= 0) {
-            dialogShell.setSize(1050, 870);
+            dialogShell.setSize(1050, 770);
         } else {
-            dialogShell.setSize(1050, 800);
+            dialogShell.setSize(1050, 700);
         }
         centerDialog();
         dialogShell.open();

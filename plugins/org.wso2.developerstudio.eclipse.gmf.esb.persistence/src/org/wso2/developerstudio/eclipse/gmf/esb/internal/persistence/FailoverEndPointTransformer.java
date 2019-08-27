@@ -130,7 +130,7 @@ public class FailoverEndPointTransformer extends AbstractEndpointTransformer {
         synapseFailEP.setDefinition(synapseEPDef);
         saveProperties(visualEndPoint, synapseFailEP);
 
-        if (!info.isEndPointFound) {
+        if (info != null && !info.isEndPointFound) {
             info.isEndPointFound = true;
             info.firstEndPoint = visualEndPoint;
         }

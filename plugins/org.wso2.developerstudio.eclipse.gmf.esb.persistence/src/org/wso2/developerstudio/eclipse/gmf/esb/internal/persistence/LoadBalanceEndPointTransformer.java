@@ -57,6 +57,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.Member;
 import org.wso2.developerstudio.eclipse.gmf.esb.Sequence;
 import org.wso2.developerstudio.eclipse.gmf.esb.SequenceInputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.AddressEndPointImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.FailoverEndPointImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.TemplateEndpointImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.EsbNodeTransformer;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.EsbTransformerRegistry;
@@ -243,7 +244,7 @@ public class LoadBalanceEndPointTransformer extends AbstractEndpointTransformer 
             List<Endpoint> synapseChildren = new ArrayList<>();
             if (visualEndPoint.getChildren() != null && visualEndPoint.getChildren().size() > 0) {
                 for (org.wso2.developerstudio.eclipse.gmf.esb.EndPoint viEndpoint : visualEndPoint.getChildren()) {
-                    if (viEndpoint instanceof AddressEndPointImpl || viEndpoint instanceof TemplateEndpointImpl) {
+                    if (viEndpoint instanceof AddressEndPointImpl || viEndpoint instanceof TemplateEndpointImpl || viEndpoint instanceof FailoverEndPointImpl) {
                         synapseChildren.add(TransformerUtils.getSynapseEndpoint(viEndpoint));
                     }
                 }

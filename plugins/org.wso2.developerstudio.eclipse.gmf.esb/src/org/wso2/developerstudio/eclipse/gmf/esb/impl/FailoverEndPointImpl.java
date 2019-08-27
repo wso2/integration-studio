@@ -108,9 +108,9 @@ public class FailoverEndPointImpl extends ParentEndPointImpl implements Failover
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
+     * @generated NOT
      */
-    protected FailoverEndPointImpl() {
+    public FailoverEndPointImpl() {
         super();
     }
 

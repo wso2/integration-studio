@@ -25,6 +25,7 @@ import java.util.List;
 import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.endpoints.AbstractEndpoint;
 import org.apache.synapse.endpoints.Endpoint;
+import org.apache.synapse.endpoints.FailoverEndpoint;
 import org.apache.synapse.mediators.MediatorProperty;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.transaction.RecordingCommand;
@@ -43,6 +44,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.utils.ComplexEndp
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EndpointDiagramEndpointCompartment2EditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EndpointDiagramEndpointCompartmentEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.FailoverEndPointImpl;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.ESBFormEditor;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.EndpointFormPage;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.FailoverEndpointFormPage;
@@ -144,6 +146,41 @@ public class FailoverEndpointDeserializer extends AbstractEndpointDeserializer {
         }
 
         super.createNode(formEditor, endpointObject);
+    }
+    
+    public org.wso2.developerstudio.eclipse.gmf.esb.EndPoint createUIEndpoint(Endpoint synapseEndpoint) {
+        Assert.isTrue(synapseEndpoint instanceof org.apache.synapse.endpoints.FailoverEndpoint,
+                "Unsupported endpoint has been passed to create the UI object at " + this.getClass());
+
+        org.wso2.developerstudio.eclipse.gmf.esb.EndPoint endpoint = new FailoverEndPointImpl();
+
+        FailoverEndpoint failoverEndpoint = (FailoverEndpoint) synapseEndpoint;
+
+        if (failoverEndpoint.getChildren() != null && failoverEndpoint.getChildren().size() > 0) {
+            List<Endpoint> synpaseChildren = failoverEndpoint.getChildren();
+
+            for (Endpoint synpaseChild : synpaseChildren) {
+
+                IEsbNodeDeserializer deserializer = EsbDeserializerRegistry.getInstance().getDeserializer(synpaseChild);
+                org.wso2.developerstudio.eclipse.gmf.esb.EndPoint child = ((AbstractEndpointDeserializer) deserializer)
+                        .createUIEndpoint(synpaseChild);
+
+                TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(((FailoverEndPointImpl) endpoint));
+                if (domain != null) {
+                    domain.getCommandStack().execute(new RecordingCommand(domain) {
+
+                        @Override
+                        protected void doExecute() {
+                        	((FailoverEndPointImpl) endpoint).getChildren().add(child);
+                        }
+                    });
+                } else {
+                	((FailoverEndPointImpl) endpoint).getChildren().add(child);
+                }
+            }
+        }
+
+        return endpoint;
     }
 
 }

@@ -597,6 +597,7 @@ public class ProcessSourceView {
         boolean insideProxySequence = false;
         boolean insideTemplate = false;
         boolean isComment = false;
+        boolean insidePublishWSDL = false;
 
         while (!xmlTagsQueue.isEmpty()) {
             XMLTag tempTag = xmlTagsQueue.remove();
@@ -606,6 +607,13 @@ public class ProcessSourceView {
                     xmlTags.push(tempTag);
                 }
 
+                if (!insidePublishWSDL && tempTag.getqName().equals("publishWSDL")) {
+                	insidePublishWSDL = true;
+                	continue;
+                } else if (insidePublishWSDL) {
+                	continue;
+                }
+                
                 if (tempTag.getqName().equals("target")) {
                     insideTargetTag = true;
                 }
@@ -675,6 +683,15 @@ public class ProcessSourceView {
                     isComment = false;
                 }
             	
+                if (insidePublishWSDL && tempTag.getqName().equals("publishWSDL")) {
+                	insidePublishWSDL = false;
+                	xmlTags.push(tempTag);
+                	continue;
+                } else if (insidePublishWSDL) {
+                	xmlTags.push(tempTag);
+                	continue;
+                }
+                
                 if (insideTargetTag && tempTag.getqName().equals("target")) {
                     insideTargetTag = false;
                 }

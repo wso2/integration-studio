@@ -52,28 +52,10 @@ import org.wso2.developerstudio.esb.form.editors.article.rcp.Messages;
 
 public class EndpointCommons {
 
-	public Combo endpointReliableMessaging;
-	
 	private AbstractEsbFormPage esbFormPage;
 
 	public EndpointCommons(EndpointFormPage esbFormPage) {
 		this.esbFormPage = esbFormPage;
-	}
-
-	public Combo getEndpointReliableMessaging() {
-		return endpointReliableMessaging;
-	}
-
-	public void setEndpointReliableMessaging(Combo endpointReliableMessaging) {
-		this.endpointReliableMessaging = endpointReliableMessaging;
-	}
-
-	public Text getEndpointReliableMessagingPolicyKey() {
-		return endpointReliableMessagingPolicyKey;
-	}
-
-	public void setEndpointReliableMessagingPolicyKey(Text endpointReliableMessagingPolicyKey) {
-		this.endpointReliableMessagingPolicyKey = endpointReliableMessagingPolicyKey;
 	}
 
 	public Combo getEndpointSecurity() {
@@ -225,11 +207,6 @@ public class EndpointCommons {
 	public String outboundPolicyKey;
 	public String policyKey;
 
-	public Text endpointReliableMessagingPolicyKey;
-	public Button endpointReliableMessagingKey;
-	public String rmPolicyKey;
-	public Label rmPolicy;
-
 	public Text endpointSuspendErrorCodes;
 	public Text endpointSuspendInitialDuration;
 	public Text endpointSuspendMaxDuration;
@@ -259,98 +236,6 @@ public class EndpointCommons {
 
 		final Composite qosSectionClient = toolkit.createComposite(qosSection);
 		qosSectionClient.setLayout(new GridLayout());
-
-		toolkit.createLabel(qosSectionClient, "Reliable Messaging Enabled :");
-		endpointReliableMessaging = new Combo(qosSectionClient, SWT.DROP_DOWN | SWT.READ_ONLY);
-		// endpointReliableMessaging.setLayoutData(new
-		// TableWrapData(TableWrapData.FILL_GRAB));
-		String[] states = { "True", "False" };
-		endpointReliableMessaging.setItems(states);
-		endpointReliableMessaging.select(1);
-		GridData endpointReliableMessagingGridData = new GridData();
-		endpointReliableMessagingGridData.horizontalSpan = 3;
-		endpointReliableMessagingGridData.horizontalAlignment = GridData.FILL;
-		endpointReliableMessagingGridData.grabExcessHorizontalSpace = true;
-		endpointReliableMessaging.setLayoutData(endpointReliableMessagingGridData);
-
-		endpointReliableMessaging.addSelectionListener(new SelectionAdapter() {
-			public void widgetSelected(SelectionEvent e) {
-				if (endpointReliableMessaging.getSelectionIndex() == 0) {
-					enableRMfields();
-				} else {
-					disableRMfields();
-					endpointReliableMessagingPolicyKey.setText("");
-				}
-				
-				esbFormPage.setSave(true);
-				esbFormPage.updateDirtyState();
-			}
-		});
-		
-		endpointReliableMessaging.addListener(SWT.MouseVerticalWheel, new Listener() {
-			@Override
-			public void handleEvent(Event event) {
-				event.doit = false;
-			}
-		});
-
-		/*
-		 * rmPolicy = toolkit.createLabel(qosSectionClient,
-		 * "Reliable Messaging Policy :"); rmPolicy.setLayoutData(new
-		 * GridData(GridData.FILL_BOTH));
-		 */
-
-		endpointReliableMessagingPolicyKey = toolkit.createText(qosSectionClient, "");
-		endpointReliableMessagingPolicyKey.setEditable(false);
-		endpointReliableMessagingPolicyKey.setBackground(new Color(null, 229, 236, 253));
-		// endpointReliableMessagingPolicyKey.setLayoutData(new
-		// TableWrapData(TableWrapData.FILL_GRAB));
-		GridData rmLabelGridData = new GridData();
-		rmLabelGridData.horizontalSpan = 3;
-		rmLabelGridData.horizontalAlignment = GridData.FILL;
-		rmLabelGridData.grabExcessHorizontalSpace = true;
-		endpointReliableMessagingPolicyKey.setLayoutData(rmLabelGridData);
-		
-		endpointReliableMessagingPolicyKey.addModifyListener(new ModifyListener() {
-			@Override
-			public void modifyText(ModifyEvent e) {
-				esbFormPage.setSave(true);
-				esbFormPage.updateDirtyState();
-			}
-		});
-        
-
-		endpointReliableMessagingKey = toolkit.createButton(qosSectionClient, "Add Reliable Messaging Policy Key",
-				SWT.PUSH);
-		endpointReliableMessagingKey.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_BEGINNING));
-		endpointReliableMessagingKey.setBackground(new Color(null, 229, 236, 253));
-		endpointReliableMessagingKey.addSelectionListener(new SelectionListener() {
-
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				Shell shell = Display.getDefault().getActiveShell();
-				RegistryKeyProperty registryKeyProperty = EsbFactory.eINSTANCE.createRegistryKeyProperty();
-				RegistryKeyPropertyEditorDialog dialog = new RegistryKeyPropertyEditorDialog(shell, SWT.NULL,
-						registryKeyProperty, new ArrayList<NamedEntityDescriptor>(),
-						endpointReliableMessagingPolicyKey.getText());
-				int open = dialog.open();
-				if (open == Window.OK) {
-					rmPolicyKey = registryKeyProperty.getKeyValue();
-					endpointReliableMessagingPolicyKey.setText(rmPolicyKey);
-				}
-				
-				esbFormPage.setSave(true);
-				esbFormPage.updateDirtyState();
-			}
-
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-		});
-
-		disableRMfields();
 
 		toolkit.createLabel(qosSectionClient, "Addressing Enabled :");
 		endpointAddressing = new Combo(qosSectionClient, SWT.DROP_DOWN | SWT.READ_ONLY);
@@ -670,42 +555,6 @@ public class EndpointCommons {
 		disableInOutFields();
 
 		qosSection.setClient(qosSectionClient);
-	}
-
-	private void disableRMfields() {
-		/*
-		 * GridData gdlbl = (GridData) rmPolicy.getLayoutData(); gdlbl.exclude =
-		 * true;
-		 */
-		GridData gdBtn = (GridData) endpointReliableMessagingKey.getLayoutData();
-		gdBtn.exclude = true;
-		GridData gdTxt = (GridData) endpointReliableMessagingPolicyKey.getLayoutData();
-		gdTxt.exclude = true;
-		// rmPolicy.setVisible(false);
-		endpointReliableMessagingKey.setVisible(false);
-		endpointReliableMessagingPolicyKey.setVisible(false);
-		enbaleVisualizingAdditionalQOSFields();
-	}
-
-	private void enableRMfields() {
-		/*
-		 * GridData gdlbl = (GridData) rmPolicy.getLayoutData(); gdlbl.exclude =
-		 * false;
-		 */
-		GridData gdBtn = (GridData) endpointReliableMessagingKey.getLayoutData();
-		gdBtn.exclude = false;
-		GridData gdTxt = (GridData) endpointReliableMessagingPolicyKey.getLayoutData();
-		gdTxt.exclude = false;
-		// rmPolicy.setVisible(true);
-		endpointReliableMessagingKey.setVisible(true);
-		endpointReliableMessagingPolicyKey.setVisible(true);
-		enbaleVisualizingAdditionalQOSFields();
-	}
-
-	public void setRMFields(boolean check) {
-		if (check) {
-			enableRMfields();
-		}
 	}
 
 	private void disabeAddressingFields() {

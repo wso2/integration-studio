@@ -302,14 +302,6 @@ public abstract class AbstractEndpointDeserializer
         }
 
         // Setting QOS
-        if (definition.isReliableMessagingOn()) {
-            endpointCommons.getEndpointReliableMessaging().select(0);
-            endpointCommons.setRMFields(true);
-            endpointCommons.getEndpointReliableMessagingPolicyKey().setText(definition.getWsRMPolicyKey());
-        } else {
-            endpointCommons.getEndpointReliableMessaging().select(1);
-        }
-
         if (definition.isSecurityOn()) {
             endpointCommons.getEndpointSecurity().select(0);
             String wsSecPolicyKey = definition.getWsSecPolicyKey();

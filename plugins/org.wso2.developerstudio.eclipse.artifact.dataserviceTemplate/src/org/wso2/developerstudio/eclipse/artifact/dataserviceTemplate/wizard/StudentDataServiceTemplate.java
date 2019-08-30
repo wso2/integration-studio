@@ -36,7 +36,12 @@ import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
+import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.IWorkbenchWizard;
+import org.eclipse.ui.PlatformUI;
+import org.wso2.developerstudio.eclipse.artifact.dataserviceTemplate.Activator;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
 import org.wso2.developerstudio.eclipse.utils.project.ProjectUtils;
 
@@ -51,6 +56,9 @@ import java.util.Properties;
  * The class Student Data Service Sample.
  */
 public class StudentDataServiceTemplate extends Wizard implements INewWizard {
+
+    private static final String J2EE_PERSPECTIVE = "org.eclipse.jst.j2ee.J2EEPerspective";
+    private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
     String sampleName = "StudentDataService";
     String baseId = "wso2.sample" + sampleName + ".";
@@ -156,6 +164,7 @@ public class StudentDataServiceTemplate extends Wizard implements INewWizard {
             Shell shell = getShell();
             URL url = ProjectCreationUtil.copyReadMe(dssServiceProject, sampleName);
             ProjectCreationUtil.openEditor(shell, fileDesc, TemplateProjectConstants.DS_EDITOR_ID, url);
+            setPerspective(getShell());
         } catch (CoreException ex) {
             IStatus status = new Status(IStatus.ERROR, TemplateProjectConstants.PLUGIN_ID, IStatus.OK,
                     TemplateProjectConstants.THE_PROJECT_EXISTS_IN_THE_WORKSPACE_MESSAGE, ex);
@@ -220,4 +229,25 @@ public class StudentDataServiceTemplate extends Wizard implements INewWizard {
         CarbonAppProject.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
     }
 
+    /**
+     * This method sets the perspective to J2EE
+     *
+     * @param shell shell object that should be switched to J2EE_PERSPECTIVE perspective
+     */
+    public void setPerspective(Shell shell) {
+        shell.getDisplay().asyncExec(new Runnable() {
+            @Override
+            public void run() {
+                IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+                if (!J2EE_PERSPECTIVE.equals(window.getActivePage().getPerspective().getId())) {
+                    try {
+                        PlatformUI.getWorkbench().showPerspective(J2EE_PERSPECTIVE, window);
+                    } catch (Exception e) {
+                        log.error("Cannot switch to J2EE Perspective", e);
+                    }
+                }
+            }
+        });
+    }
+    
 }

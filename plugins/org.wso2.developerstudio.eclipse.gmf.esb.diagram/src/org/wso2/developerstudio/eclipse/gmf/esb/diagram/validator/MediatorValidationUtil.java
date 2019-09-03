@@ -38,7 +38,6 @@ import org.apache.synapse.config.xml.TransactionMediatorFactory;
 import org.apache.synapse.config.xml.URLRewriteMediatorFactory;
 import org.apache.synapse.config.xml.ValidateMediatorFactory;
 import org.apache.synapse.config.xml.XSLTMediatorFactory;
-import org.apache.synapse.mediators.bsf.ScriptMediatorFactory;
 import org.apache.synapse.mediators.spring.SpringMediatorFactory;
 import org.apache.synapse.mediators.throttle.ThrottleMediatorFactory;
 import org.apache.synapse.mediators.xquery.XQueryMediatorFactory;
@@ -57,6 +56,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.Bean
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.BuilderMediatorExtFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.ClassMediatorExtFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.DummyPOJOCommandMediatorFactory;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.DummyScriptMediatorFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.EJBMediatorExtFactory;
 
 public class MediatorValidationUtil {
@@ -81,7 +81,7 @@ public class MediatorValidationUtil {
     private static SwitchMediatorFactory switchMediatorFactory;
     private static ValidateMediatorFactory validateMediatorFactory;
     private static ConditionalRouterMediatorFactory conditionalRouterMediatorFactory;
-    private static ScriptMediatorFactory scriptMediatorFactory;
+    private static DummyScriptMediatorFactory scriptMediatorFactory;
     private static SpringMediatorFactory springMediatorFactory;
     private static FaultMediatorFactory faultMediatorFactory;
     private static HeaderMediatorFactory headerMediatorFactory;
@@ -307,7 +307,7 @@ public class MediatorValidationUtil {
             } else if (qTag.equals("script")) {
                 Properties properties = new Properties();
                 if (scriptMediatorFactory == null) {
-                    scriptMediatorFactory = new ScriptMediatorFactory();
+                    scriptMediatorFactory = new DummyScriptMediatorFactory();
                 }
                 scriptMediatorFactory.createMediator(omElement, properties);
 

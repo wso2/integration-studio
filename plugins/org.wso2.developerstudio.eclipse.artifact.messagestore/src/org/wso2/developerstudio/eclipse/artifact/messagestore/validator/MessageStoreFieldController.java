@@ -17,6 +17,7 @@
 package org.wso2.developerstudio.eclipse.artifact.messagestore.validator;
 
 import java.util.List;
+import java.util.regex.Pattern;
 
 import org.apache.axiom.om.OMElement;
 import org.apache.commons.lang.StringUtils;
@@ -90,7 +91,7 @@ public class MessageStoreFieldController extends AbstractFieldController {
             }
         } else if (key.equals(FIELD_JMS_PROVIDER_URL)) {
             if (jms) {
-                CommonFieldValidator.validateRequiredField(value, "JMS Provider URL cannot be empty");
+                validateJMSProviderURL(value);
             }
         } else if (key.equals(FIELD_JMS_TIMEOUT)) {
             if (jms) {
@@ -430,4 +431,17 @@ public class MessageStoreFieldController extends AbstractFieldController {
         }
     }
 
+	private void validateJMSProviderURL(Object value) throws FieldValidationException {
+		String val = value.toString();
+		String urlRegex = "(ftp|http|https|tcp):\\/\\/(\\w+:{0,1}\\w*@)?(\\S+)(:[0-9]+)?(\\/|\\/([\\w#!:.?+=&%@!\\-\\/]))?";
+		String pathRegex = "^((\\/|\\.\\.\\/|[a-zA-Z0-9_/\\-\\\\])*\\.[a-zA-Z0-9]+)$";
+		
+		if (value == null || val.trim().equals("")) {
+			throw new FieldValidationException("JMS Provider URL cannot be empty.");
+		} 
+		
+		if (!Pattern.matches(urlRegex, val) && !(Pattern.matches(pathRegex, val))) {
+			throw new FieldValidationException("JMS Provider URL should be either a URL or a jndi.properties file's relative path.");
+		}
+	}
 }

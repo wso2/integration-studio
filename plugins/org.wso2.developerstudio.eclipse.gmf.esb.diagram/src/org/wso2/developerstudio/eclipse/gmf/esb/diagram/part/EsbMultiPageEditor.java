@@ -1093,7 +1093,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
         getEditor(0).doSave(monitor);
         // Since Complex endpoint type editors dose not have assiociated xml
         // file do not need to call this.
-        /** Display.getDefault().syncExec(new Runnable() {
+        Display.getDefault().syncExec(new Runnable() {
             @Override
             public void run() {
                 try {
@@ -1168,7 +1168,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
                     EditorUtils.setLockmode(graphicalEditor, false);
                 }
             }
-        }); **/
+        });
         
         // The following block repeats the above save action since there is an issue with
         // sync exec method that causes loosing endpoint data(https://github.com/wso2/product-ei/issues/4383)

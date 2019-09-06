@@ -19,32 +19,47 @@ package org.wso2.developerstudio.eclipse.distribution.project.editor;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.StringReader;
 import java.util.Scanner;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.forms.editor.FormEditor;
 import org.eclipse.ui.forms.editor.IFormPage;
 import org.eclipse.ui.texteditor.IDocumentProvider;
 import org.eclipse.wst.sse.ui.StructuredTextEditor;
+import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.text.DocumentEvent;
 import org.eclipse.jface.text.IDocument;
 import org.eclipse.jface.text.IDocumentListener;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.part.FileEditorInput;
 import org.wso2.developerstudio.eclipse.distribution.project.Activator;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.ui.editor.Refreshable;
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
+import org.xml.sax.SAXParseException;
+import org.xml.sax.XMLReader;
+import org.xml.sax.helpers.DefaultHandler;
+import org.xml.sax.helpers.XMLReaderFactory;
 
 /**
  * Editor page for docker project type.
  */
 public class DistProjectEditor extends FormEditor implements Refreshable {
  private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
+ 
+ private static final String PARSER_CLASS = "org.apache.xerces.parsers.SAXParser";
+ private static final String VALIDATION_FEATURE = "http://xml.org/sax/features/validation";
+ 
  private DistProjectEditorPage distProjectEditorPage;
  private StructuredTextEditor sourceEditor;
  private boolean dirty;
@@ -105,10 +120,12 @@ public class DistProjectEditor extends FormEditor implements Refreshable {
 				log.error("An unexpected error has occurred", e);
 			}
 		} else if (sourceDirty){
-			sourceDirty = false;
-			dirty = false;
-			updateDesignFromSource();
-			updateDirtyState();
+			if (updateDesignFromSource()) {
+				sourceDirty = false;
+				dirty = false;
+				updateDirtyState();
+			}
+			
 		}
 	}
 
@@ -124,11 +141,14 @@ public class DistProjectEditor extends FormEditor implements Refreshable {
 			dirty = false;
 			updateSourceFromDesign();
 			updateDirtyState();
+			
 		} else if ((newPageIndex == formEditorIndex) && (sourceDirty)){
-			sourceDirty = false;
-			dirty = false;
-			updateDesignFromSource();
-			updateDirtyState();
+			if (updateDesignFromSource()) {
+				sourceDirty = false;
+				dirty = false;
+				updateDirtyState();
+			}
+			
 		}
 			
 		super.pageChange(newPageIndex);
@@ -150,9 +170,14 @@ public class DistProjectEditor extends FormEditor implements Refreshable {
 		}
 	}
 
-	private void updateDesignFromSource()  {
+	private boolean updateDesignFromSource()  {
 		try {
 			InputStream content = new ByteArrayInputStream(getDocument().get().getBytes());
+			
+			if (!isValidateXMLContent(getDocument().get())) {
+				return false;
+			}
+			
 			getFile().setContents(content, true, true, null);
 			try {
 				content.close();
@@ -163,6 +188,8 @@ public class DistProjectEditor extends FormEditor implements Refreshable {
 		} catch (Exception e) {
 			log.error("An unexpected error has occurred", e);
 		}
+		
+		return true;
 	}
 
 	private IFile getFile() {
@@ -200,5 +227,73 @@ public class DistProjectEditor extends FormEditor implements Refreshable {
 		}
 	}
 	
-	
+	/**
+	 * Validate for the xml parser errors in the source content
+	 * 
+	 * @param xmlContent
+	 *            source view content
+	 * @return Source error
+	 * @throws ValidationException
+	 */
+	public boolean isValidateXMLContent(String xmlContent) {
+
+		MyErrorHandler myErrorHandler = new MyErrorHandler();
+		try {
+
+			XMLReader r = XMLReaderFactory.createXMLReader(PARSER_CLASS);
+			r.setFeature(VALIDATION_FEATURE, true);
+			r.setErrorHandler(myErrorHandler);
+			InputSource inputSource = new InputSource(new StringReader(xmlContent));
+			r.parse(inputSource);
+
+		} catch (SAXException e) {
+			// ignore
+		} catch (IOException e) {
+			log.error("Error while processing the xml content.", myErrorHandler.getException());
+		}
+
+		if (myErrorHandler.getLineNumber() > 0) {
+			log.error("Error while saving the diagram", myErrorHandler.getException());
+			String errorMsgHeader = "Save failed. Following error(s) have been detected."
+					+ " Please see the error log for more details.";
+			String message = myErrorHandler.getErrorMessage();
+			IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, message);
+			ErrorDialog.openError(Display.getCurrent().getActiveShell(), "Error", errorMsgHeader, editorStatus);
+			return false;
+		}
+
+		return true;
+	}
+
+	/**
+	 * Set xml parser errors for the MyErrorHandler object.
+	 */
+	private static class MyErrorHandler extends DefaultHandler {
+		private String errorMsg = "";
+		private int lineNumber = -1;
+		private SAXParseException exception;
+
+		public void fatalError(SAXParseException e) throws SAXException {
+			errorMsg = errorMsg + " " + e.getMessage();
+			lineNumber = e.getLineNumber();
+			exception = e;
+		}
+
+		public void error(SAXParseException e) throws SAXException {
+			errorMsg = errorMsg + " " + e.getMessage();
+			exception = e;
+		}
+
+		public String getErrorMessage() {
+			return errorMsg;
+		}
+
+		public int getLineNumber() {
+			return lineNumber;
+		}
+
+		public Exception getException() {
+			return exception;
+		}
+	}
 }

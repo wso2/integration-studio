@@ -81,8 +81,7 @@ public class RemoteCarbonServer extends ServerDelegate {
 	public URL getServerURL() {
 		String urlAttr = getAttribute(ATTR_URL, "");
 		try {
-			URL url = new URL(urlAttr);
-			return url;
+			return new URL(urlAttr);
 		} catch (Exception e) {
 			return null;
 		}

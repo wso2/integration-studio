@@ -656,6 +656,10 @@ public class XYRepossition {
                 if (editPart instanceof MediatorFlowMediatorFlowCompartmentEditPart) {
                     y = (int) (((IGraphicalEditPart) editPart.getParent().getParent()).getFigure().getBounds().height
                             * (inSequenceOutSequenceHeightRatio/2));
+				} else if (editPart instanceof MediatorFlowMediatorFlowCompartment5EditPart) {
+					y = ((IGraphicalEditPart) editPart.getParent().getParent()).getFigure().getBounds().height / 2;
+					// Adding an offset value of 10 to fix github issue https://github.com/wso2/product-ei/issues/3539
+					y += 10;
                 } else {
                     y = ((IGraphicalEditPart) editPart.getParent().getParent()).getFigure().getBounds().height / 2;
                 }

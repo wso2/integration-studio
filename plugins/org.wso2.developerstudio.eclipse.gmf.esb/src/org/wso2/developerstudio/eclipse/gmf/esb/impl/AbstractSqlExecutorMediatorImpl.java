@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.SqlDatabaseType;
 import org.wso2.developerstudio.eclipse.gmf.esb.SqlExecutorBooleanValue;
 import org.wso2.developerstudio.eclipse.gmf.esb.SqlExecutorConnectionType;
@@ -60,6 +61,14 @@ import org.wso2.developerstudio.eclipse.gmf.esb.SqlStatement;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#getPropertyValidationquery <em>Property Validationquery</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#getPropertyInitialsize <em>Property Initialsize</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#getSqlStatements <em>Sql Statements</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#isIsRegistryBasedDriverConfig <em>Is Registry Based Driver Config</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#isIsRegistryBasedUrlConfig <em>Is Registry Based Url Config</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#isIsRegistryBasedUserConfig <em>Is Registry Based User Config</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#isIsRegistryBasedPassConfig <em>Is Registry Based Pass Config</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#getRegistryBasedDriverConfigKey <em>Registry Based Driver Config Key</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#getRegistryBasedUrlConfigKey <em>Registry Based Url Config Key</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#getRegistryBasedUserConfigKey <em>Registry Based User Config Key</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#getRegistryBasedPassConfigKey <em>Registry Based Pass Config Key</em>}</li>
  * </ul>
  *
  * @generated
@@ -494,6 +503,126 @@ public abstract class AbstractSqlExecutorMediatorImpl extends MediatorImpl imple
      * @ordered
      */
     protected EList<SqlStatement> sqlStatements;
+
+    /**
+     * The default value of the '{@link #isIsRegistryBasedDriverConfig() <em>Is Registry Based Driver Config</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #isIsRegistryBasedDriverConfig()
+     * @generated
+     * @ordered
+     */
+    protected static final boolean IS_REGISTRY_BASED_DRIVER_CONFIG_EDEFAULT = false;
+
+    /**
+     * The cached value of the '{@link #isIsRegistryBasedDriverConfig() <em>Is Registry Based Driver Config</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #isIsRegistryBasedDriverConfig()
+     * @generated
+     * @ordered
+     */
+    protected boolean isRegistryBasedDriverConfig = IS_REGISTRY_BASED_DRIVER_CONFIG_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #isIsRegistryBasedUrlConfig() <em>Is Registry Based Url Config</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #isIsRegistryBasedUrlConfig()
+     * @generated
+     * @ordered
+     */
+    protected static final boolean IS_REGISTRY_BASED_URL_CONFIG_EDEFAULT = false;
+
+    /**
+     * The cached value of the '{@link #isIsRegistryBasedUrlConfig() <em>Is Registry Based Url Config</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #isIsRegistryBasedUrlConfig()
+     * @generated
+     * @ordered
+     */
+    protected boolean isRegistryBasedUrlConfig = IS_REGISTRY_BASED_URL_CONFIG_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #isIsRegistryBasedUserConfig() <em>Is Registry Based User Config</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #isIsRegistryBasedUserConfig()
+     * @generated
+     * @ordered
+     */
+    protected static final boolean IS_REGISTRY_BASED_USER_CONFIG_EDEFAULT = false;
+
+    /**
+     * The cached value of the '{@link #isIsRegistryBasedUserConfig() <em>Is Registry Based User Config</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #isIsRegistryBasedUserConfig()
+     * @generated
+     * @ordered
+     */
+    protected boolean isRegistryBasedUserConfig = IS_REGISTRY_BASED_USER_CONFIG_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #isIsRegistryBasedPassConfig() <em>Is Registry Based Pass Config</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #isIsRegistryBasedPassConfig()
+     * @generated
+     * @ordered
+     */
+    protected static final boolean IS_REGISTRY_BASED_PASS_CONFIG_EDEFAULT = false;
+
+    /**
+     * The cached value of the '{@link #isIsRegistryBasedPassConfig() <em>Is Registry Based Pass Config</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #isIsRegistryBasedPassConfig()
+     * @generated
+     * @ordered
+     */
+    protected boolean isRegistryBasedPassConfig = IS_REGISTRY_BASED_PASS_CONFIG_EDEFAULT;
+
+    /**
+     * The cached value of the '{@link #getRegistryBasedDriverConfigKey() <em>Registry Based Driver Config Key</em>}' reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getRegistryBasedDriverConfigKey()
+     * @generated
+     * @ordered
+     */
+    protected RegistryKeyProperty registryBasedDriverConfigKey;
+
+    /**
+     * The cached value of the '{@link #getRegistryBasedUrlConfigKey() <em>Registry Based Url Config Key</em>}' reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getRegistryBasedUrlConfigKey()
+     * @generated
+     * @ordered
+     */
+    protected RegistryKeyProperty registryBasedUrlConfigKey;
+
+    /**
+     * The cached value of the '{@link #getRegistryBasedUserConfigKey() <em>Registry Based User Config Key</em>}' reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getRegistryBasedUserConfigKey()
+     * @generated
+     * @ordered
+     */
+    protected RegistryKeyProperty registryBasedUserConfigKey;
+
+    /**
+     * The cached value of the '{@link #getRegistryBasedPassConfigKey() <em>Registry Based Pass Config Key</em>}' reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getRegistryBasedPassConfigKey()
+     * @generated
+     * @ordered
+     */
+    protected RegistryKeyProperty registryBasedPassConfigKey;
 
     /**
      * <!-- begin-user-doc -->
@@ -973,6 +1102,242 @@ public abstract class AbstractSqlExecutorMediatorImpl extends MediatorImpl imple
      * <!-- end-user-doc -->
      * @generated
      */
+    public boolean isIsRegistryBasedDriverConfig() {
+        return isRegistryBasedDriverConfig;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setIsRegistryBasedDriverConfig(boolean newIsRegistryBasedDriverConfig) {
+        boolean oldIsRegistryBasedDriverConfig = isRegistryBasedDriverConfig;
+        isRegistryBasedDriverConfig = newIsRegistryBasedDriverConfig;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__IS_REGISTRY_BASED_DRIVER_CONFIG, oldIsRegistryBasedDriverConfig, isRegistryBasedDriverConfig));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public boolean isIsRegistryBasedUrlConfig() {
+        return isRegistryBasedUrlConfig;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setIsRegistryBasedUrlConfig(boolean newIsRegistryBasedUrlConfig) {
+        boolean oldIsRegistryBasedUrlConfig = isRegistryBasedUrlConfig;
+        isRegistryBasedUrlConfig = newIsRegistryBasedUrlConfig;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__IS_REGISTRY_BASED_URL_CONFIG, oldIsRegistryBasedUrlConfig, isRegistryBasedUrlConfig));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public boolean isIsRegistryBasedUserConfig() {
+        return isRegistryBasedUserConfig;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setIsRegistryBasedUserConfig(boolean newIsRegistryBasedUserConfig) {
+        boolean oldIsRegistryBasedUserConfig = isRegistryBasedUserConfig;
+        isRegistryBasedUserConfig = newIsRegistryBasedUserConfig;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__IS_REGISTRY_BASED_USER_CONFIG, oldIsRegistryBasedUserConfig, isRegistryBasedUserConfig));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public boolean isIsRegistryBasedPassConfig() {
+        return isRegistryBasedPassConfig;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setIsRegistryBasedPassConfig(boolean newIsRegistryBasedPassConfig) {
+        boolean oldIsRegistryBasedPassConfig = isRegistryBasedPassConfig;
+        isRegistryBasedPassConfig = newIsRegistryBasedPassConfig;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__IS_REGISTRY_BASED_PASS_CONFIG, oldIsRegistryBasedPassConfig, isRegistryBasedPassConfig));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public RegistryKeyProperty getRegistryBasedDriverConfigKey() {
+        if (registryBasedDriverConfigKey != null && registryBasedDriverConfigKey.eIsProxy()) {
+            InternalEObject oldRegistryBasedDriverConfigKey = (InternalEObject)registryBasedDriverConfigKey;
+            registryBasedDriverConfigKey = (RegistryKeyProperty)eResolveProxy(oldRegistryBasedDriverConfigKey);
+            if (registryBasedDriverConfigKey != oldRegistryBasedDriverConfigKey) {
+                if (eNotificationRequired())
+                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__REGISTRY_BASED_DRIVER_CONFIG_KEY, oldRegistryBasedDriverConfigKey, registryBasedDriverConfigKey));
+            }
+        }
+        return registryBasedDriverConfigKey;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public RegistryKeyProperty basicGetRegistryBasedDriverConfigKey() {
+        return registryBasedDriverConfigKey;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setRegistryBasedDriverConfigKey(RegistryKeyProperty newRegistryBasedDriverConfigKey) {
+        RegistryKeyProperty oldRegistryBasedDriverConfigKey = registryBasedDriverConfigKey;
+        registryBasedDriverConfigKey = newRegistryBasedDriverConfigKey;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__REGISTRY_BASED_DRIVER_CONFIG_KEY, oldRegistryBasedDriverConfigKey, registryBasedDriverConfigKey));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public RegistryKeyProperty getRegistryBasedUrlConfigKey() {
+        if (registryBasedUrlConfigKey != null && registryBasedUrlConfigKey.eIsProxy()) {
+            InternalEObject oldRegistryBasedUrlConfigKey = (InternalEObject)registryBasedUrlConfigKey;
+            registryBasedUrlConfigKey = (RegistryKeyProperty)eResolveProxy(oldRegistryBasedUrlConfigKey);
+            if (registryBasedUrlConfigKey != oldRegistryBasedUrlConfigKey) {
+                if (eNotificationRequired())
+                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__REGISTRY_BASED_URL_CONFIG_KEY, oldRegistryBasedUrlConfigKey, registryBasedUrlConfigKey));
+            }
+        }
+        return registryBasedUrlConfigKey;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public RegistryKeyProperty basicGetRegistryBasedUrlConfigKey() {
+        return registryBasedUrlConfigKey;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setRegistryBasedUrlConfigKey(RegistryKeyProperty newRegistryBasedUrlConfigKey) {
+        RegistryKeyProperty oldRegistryBasedUrlConfigKey = registryBasedUrlConfigKey;
+        registryBasedUrlConfigKey = newRegistryBasedUrlConfigKey;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__REGISTRY_BASED_URL_CONFIG_KEY, oldRegistryBasedUrlConfigKey, registryBasedUrlConfigKey));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public RegistryKeyProperty getRegistryBasedUserConfigKey() {
+        if (registryBasedUserConfigKey != null && registryBasedUserConfigKey.eIsProxy()) {
+            InternalEObject oldRegistryBasedUserConfigKey = (InternalEObject)registryBasedUserConfigKey;
+            registryBasedUserConfigKey = (RegistryKeyProperty)eResolveProxy(oldRegistryBasedUserConfigKey);
+            if (registryBasedUserConfigKey != oldRegistryBasedUserConfigKey) {
+                if (eNotificationRequired())
+                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__REGISTRY_BASED_USER_CONFIG_KEY, oldRegistryBasedUserConfigKey, registryBasedUserConfigKey));
+            }
+        }
+        return registryBasedUserConfigKey;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public RegistryKeyProperty basicGetRegistryBasedUserConfigKey() {
+        return registryBasedUserConfigKey;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setRegistryBasedUserConfigKey(RegistryKeyProperty newRegistryBasedUserConfigKey) {
+        RegistryKeyProperty oldRegistryBasedUserConfigKey = registryBasedUserConfigKey;
+        registryBasedUserConfigKey = newRegistryBasedUserConfigKey;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__REGISTRY_BASED_USER_CONFIG_KEY, oldRegistryBasedUserConfigKey, registryBasedUserConfigKey));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public RegistryKeyProperty getRegistryBasedPassConfigKey() {
+        if (registryBasedPassConfigKey != null && registryBasedPassConfigKey.eIsProxy()) {
+            InternalEObject oldRegistryBasedPassConfigKey = (InternalEObject)registryBasedPassConfigKey;
+            registryBasedPassConfigKey = (RegistryKeyProperty)eResolveProxy(oldRegistryBasedPassConfigKey);
+            if (registryBasedPassConfigKey != oldRegistryBasedPassConfigKey) {
+                if (eNotificationRequired())
+                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__REGISTRY_BASED_PASS_CONFIG_KEY, oldRegistryBasedPassConfigKey, registryBasedPassConfigKey));
+            }
+        }
+        return registryBasedPassConfigKey;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public RegistryKeyProperty basicGetRegistryBasedPassConfigKey() {
+        return registryBasedPassConfigKey;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setRegistryBasedPassConfigKey(RegistryKeyProperty newRegistryBasedPassConfigKey) {
+        RegistryKeyProperty oldRegistryBasedPassConfigKey = registryBasedPassConfigKey;
+        registryBasedPassConfigKey = newRegistryBasedPassConfigKey;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__REGISTRY_BASED_PASS_CONFIG_KEY, oldRegistryBasedPassConfigKey, registryBasedPassConfigKey));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
 
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -1036,6 +1401,26 @@ public abstract class AbstractSqlExecutorMediatorImpl extends MediatorImpl imple
                 return getPropertyInitialsize();
             case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__SQL_STATEMENTS:
                 return getSqlStatements();
+            case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__IS_REGISTRY_BASED_DRIVER_CONFIG:
+                return isIsRegistryBasedDriverConfig();
+            case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__IS_REGISTRY_BASED_URL_CONFIG:
+                return isIsRegistryBasedUrlConfig();
+            case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__IS_REGISTRY_BASED_USER_CONFIG:
+                return isIsRegistryBasedUserConfig();
+            case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__IS_REGISTRY_BASED_PASS_CONFIG:
+                return isIsRegistryBasedPassConfig();
+            case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__REGISTRY_BASED_DRIVER_CONFIG_KEY:
+                if (resolve) return getRegistryBasedDriverConfigKey();
+                return basicGetRegistryBasedDriverConfigKey();
+            case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__REGISTRY_BASED_URL_CONFIG_KEY:
+                if (resolve) return getRegistryBasedUrlConfigKey();
+                return basicGetRegistryBasedUrlConfigKey();
+            case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__REGISTRY_BASED_USER_CONFIG_KEY:
+                if (resolve) return getRegistryBasedUserConfigKey();
+                return basicGetRegistryBasedUserConfigKey();
+            case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__REGISTRY_BASED_PASS_CONFIG_KEY:
+                if (resolve) return getRegistryBasedPassConfigKey();
+                return basicGetRegistryBasedPassConfigKey();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -1117,6 +1502,30 @@ public abstract class AbstractSqlExecutorMediatorImpl extends MediatorImpl imple
                 getSqlStatements().clear();
                 getSqlStatements().addAll((Collection<? extends SqlStatement>)newValue);
                 return;
+            case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__IS_REGISTRY_BASED_DRIVER_CONFIG:
+                setIsRegistryBasedDriverConfig((Boolean)newValue);
+                return;
+            case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__IS_REGISTRY_BASED_URL_CONFIG:
+                setIsRegistryBasedUrlConfig((Boolean)newValue);
+                return;
+            case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__IS_REGISTRY_BASED_USER_CONFIG:
+                setIsRegistryBasedUserConfig((Boolean)newValue);
+                return;
+            case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__IS_REGISTRY_BASED_PASS_CONFIG:
+                setIsRegistryBasedPassConfig((Boolean)newValue);
+                return;
+            case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__REGISTRY_BASED_DRIVER_CONFIG_KEY:
+                setRegistryBasedDriverConfigKey((RegistryKeyProperty)newValue);
+                return;
+            case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__REGISTRY_BASED_URL_CONFIG_KEY:
+                setRegistryBasedUrlConfigKey((RegistryKeyProperty)newValue);
+                return;
+            case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__REGISTRY_BASED_USER_CONFIG_KEY:
+                setRegistryBasedUserConfigKey((RegistryKeyProperty)newValue);
+                return;
+            case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__REGISTRY_BASED_PASS_CONFIG_KEY:
+                setRegistryBasedPassConfigKey((RegistryKeyProperty)newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
@@ -1196,6 +1605,30 @@ public abstract class AbstractSqlExecutorMediatorImpl extends MediatorImpl imple
             case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__SQL_STATEMENTS:
                 getSqlStatements().clear();
                 return;
+            case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__IS_REGISTRY_BASED_DRIVER_CONFIG:
+                setIsRegistryBasedDriverConfig(IS_REGISTRY_BASED_DRIVER_CONFIG_EDEFAULT);
+                return;
+            case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__IS_REGISTRY_BASED_URL_CONFIG:
+                setIsRegistryBasedUrlConfig(IS_REGISTRY_BASED_URL_CONFIG_EDEFAULT);
+                return;
+            case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__IS_REGISTRY_BASED_USER_CONFIG:
+                setIsRegistryBasedUserConfig(IS_REGISTRY_BASED_USER_CONFIG_EDEFAULT);
+                return;
+            case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__IS_REGISTRY_BASED_PASS_CONFIG:
+                setIsRegistryBasedPassConfig(IS_REGISTRY_BASED_PASS_CONFIG_EDEFAULT);
+                return;
+            case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__REGISTRY_BASED_DRIVER_CONFIG_KEY:
+                setRegistryBasedDriverConfigKey((RegistryKeyProperty)null);
+                return;
+            case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__REGISTRY_BASED_URL_CONFIG_KEY:
+                setRegistryBasedUrlConfigKey((RegistryKeyProperty)null);
+                return;
+            case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__REGISTRY_BASED_USER_CONFIG_KEY:
+                setRegistryBasedUserConfigKey((RegistryKeyProperty)null);
+                return;
+            case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__REGISTRY_BASED_PASS_CONFIG_KEY:
+                setRegistryBasedPassConfigKey((RegistryKeyProperty)null);
+                return;
         }
         super.eUnset(featureID);
     }
@@ -1253,6 +1686,22 @@ public abstract class AbstractSqlExecutorMediatorImpl extends MediatorImpl imple
                 return propertyInitialsize != PROPERTY_INITIALSIZE_EDEFAULT;
             case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__SQL_STATEMENTS:
                 return sqlStatements != null && !sqlStatements.isEmpty();
+            case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__IS_REGISTRY_BASED_DRIVER_CONFIG:
+                return isRegistryBasedDriverConfig != IS_REGISTRY_BASED_DRIVER_CONFIG_EDEFAULT;
+            case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__IS_REGISTRY_BASED_URL_CONFIG:
+                return isRegistryBasedUrlConfig != IS_REGISTRY_BASED_URL_CONFIG_EDEFAULT;
+            case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__IS_REGISTRY_BASED_USER_CONFIG:
+                return isRegistryBasedUserConfig != IS_REGISTRY_BASED_USER_CONFIG_EDEFAULT;
+            case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__IS_REGISTRY_BASED_PASS_CONFIG:
+                return isRegistryBasedPassConfig != IS_REGISTRY_BASED_PASS_CONFIG_EDEFAULT;
+            case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__REGISTRY_BASED_DRIVER_CONFIG_KEY:
+                return registryBasedDriverConfigKey != null;
+            case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__REGISTRY_BASED_URL_CONFIG_KEY:
+                return registryBasedUrlConfigKey != null;
+            case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__REGISTRY_BASED_USER_CONFIG_KEY:
+                return registryBasedUserConfigKey != null;
+            case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__REGISTRY_BASED_PASS_CONFIG_KEY:
+                return registryBasedPassConfigKey != null;
         }
         return super.eIsSet(featureID);
     }
@@ -1310,6 +1759,14 @@ public abstract class AbstractSqlExecutorMediatorImpl extends MediatorImpl imple
         result.append(propertyValidationquery);
         result.append(", propertyInitialsize: ");
         result.append(propertyInitialsize);
+        result.append(", isRegistryBasedDriverConfig: ");
+        result.append(isRegistryBasedDriverConfig);
+        result.append(", isRegistryBasedUrlConfig: ");
+        result.append(isRegistryBasedUrlConfig);
+        result.append(", isRegistryBasedUserConfig: ");
+        result.append(isRegistryBasedUserConfig);
+        result.append(", isRegistryBasedPassConfig: ");
+        result.append(isRegistryBasedPassConfig);
         result.append(')');
         return result.toString();
     }

@@ -20,6 +20,7 @@ import java.util.List;
 import java.util.Map.Entry;
 import javax.xml.namespace.QName;
 
+import org.apache.axiom.om.OMElement;
 import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.commons.datasource.DataSourceInformation;
 import org.apache.synapse.config.xml.XMLConfigConstants;
@@ -71,17 +72,54 @@ public abstract class AbstractDBMediatorTransformer extends AbstractEsbNodeTrans
             dbMediator.addDataSourceProperty(DSNAME_Q, sqlExecutor.getConnectionDsName());
             if (sqlExecutor.getConnectionDsType().equals(SqlExecutorDatasourceType.EXTERNAL)) {
                 dbMediator.addDataSourceProperty(ICCLASS_Q, sqlExecutor.getConnectionDsInitialContext());
-                dbMediator.addDataSourceProperty(URL_Q, sqlExecutor.getConnectionURL());
-                dbMediator.addDataSourceProperty(USER_Q, sqlExecutor.getConnectionUsername());
-                dbMediator.addDataSourceProperty(PASS_Q, sqlExecutor.getConnectionPassword());
+                
+                if (sqlExecutor.isIsRegistryBasedUrlConfig()) {
+                    
+                } else {
+                    dbMediator.addDataSourceProperty(URL_Q, sqlExecutor.getConnectionURL());
+                }
+                
+                if (sqlExecutor.isIsRegistryBasedUserConfig()) {
+                    
+                } else {
+                    dbMediator.addDataSourceProperty(USER_Q, sqlExecutor.getConnectionUsername());
+                }
+                
+                if (sqlExecutor.isIsRegistryBasedPassConfig()) {
+                    
+                } else {
+                    dbMediator.addDataSourceProperty(PASS_Q, sqlExecutor.getConnectionPassword());
+                }
+                
                 addDataSourceProperties(dbMediator, sqlExecutor);
             }
 
         } else {
-            dbMediator.addDataSourceProperty(DRIVER_Q, sqlExecutor.getConnectionDbDriver());
-            dbMediator.addDataSourceProperty(URL_Q, sqlExecutor.getConnectionURL());
-            dbMediator.addDataSourceProperty(USER_Q, sqlExecutor.getConnectionUsername());
-            dbMediator.addDataSourceProperty(PASS_Q, sqlExecutor.getConnectionPassword());
+            
+            if (sqlExecutor.isIsRegistryBasedDriverConfig()) {
+                
+            } else {
+                dbMediator.addDataSourceProperty(DRIVER_Q, sqlExecutor.getConnectionDbDriver());
+            }
+            
+            if (sqlExecutor.isIsRegistryBasedUrlConfig()) {
+                
+            } else {
+                dbMediator.addDataSourceProperty(URL_Q, sqlExecutor.getConnectionURL());
+            }
+            
+            if (sqlExecutor.isIsRegistryBasedUserConfig()) {
+                
+            } else {
+                dbMediator.addDataSourceProperty(USER_Q, sqlExecutor.getConnectionUsername());
+            }
+            
+            if (sqlExecutor.isIsRegistryBasedPassConfig()) {
+                
+            } else {
+                dbMediator.addDataSourceProperty(PASS_Q, sqlExecutor.getConnectionPassword());
+            }
+            
             addDataSourceProperties(dbMediator, sqlExecutor);
         }
 
@@ -170,6 +208,14 @@ public abstract class AbstractDBMediatorTransformer extends AbstractEsbNodeTrans
 
     public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints) {
 
+    }
+    
+    private String getKey(OMElement pool, QName qName) {
+        OMElement ele = pool.getFirstChildWithName(qName);
+        if (ele != null) {
+            return ele.getAttributeValue(new QName("key"));
+        }
+        return null;
     }
 
 }

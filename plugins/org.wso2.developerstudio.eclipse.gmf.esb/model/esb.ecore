@@ -1884,6 +1884,22 @@
         defaultValueLiteral="-1"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="sqlStatements" upperBound="-1"
         eType="#//SqlStatement" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isRegistryBasedDriverConfig"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isRegistryBasedUrlConfig"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isRegistryBasedUserConfig"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isRegistryBasedPassConfig"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="registryBasedDriverConfigKey"
+        eType="#//RegistryKeyProperty"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="registryBasedUrlConfigKey"
+        eType="#//RegistryKeyProperty"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="registryBasedUserConfigKey"
+        eType="#//RegistryKeyProperty"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="registryBasedPassConfigKey"
+        eType="#//RegistryKeyProperty"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="SqlExecutorConnectionType">
     <eLiterals name="DB_CONNECTION"/>

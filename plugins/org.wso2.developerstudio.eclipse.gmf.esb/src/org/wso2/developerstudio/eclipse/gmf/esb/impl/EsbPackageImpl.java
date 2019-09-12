@@ -16048,6 +16048,78 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * <!-- end-user-doc -->
      * @generated
      */
+    public EAttribute getAbstractSqlExecutorMediator_IsRegistryBasedDriverConfig() {
+        return (EAttribute)abstractSqlExecutorMediatorEClass.getEStructuralFeatures().get(22);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getAbstractSqlExecutorMediator_IsRegistryBasedUrlConfig() {
+        return (EAttribute)abstractSqlExecutorMediatorEClass.getEStructuralFeatures().get(23);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getAbstractSqlExecutorMediator_IsRegistryBasedUserConfig() {
+        return (EAttribute)abstractSqlExecutorMediatorEClass.getEStructuralFeatures().get(24);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getAbstractSqlExecutorMediator_IsRegistryBasedPassConfig() {
+        return (EAttribute)abstractSqlExecutorMediatorEClass.getEStructuralFeatures().get(25);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getAbstractSqlExecutorMediator_RegistryBasedDriverConfigKey() {
+        return (EReference)abstractSqlExecutorMediatorEClass.getEStructuralFeatures().get(26);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getAbstractSqlExecutorMediator_RegistryBasedUrlConfigKey() {
+        return (EReference)abstractSqlExecutorMediatorEClass.getEStructuralFeatures().get(27);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getAbstractSqlExecutorMediator_RegistryBasedUserConfigKey() {
+        return (EReference)abstractSqlExecutorMediatorEClass.getEStructuralFeatures().get(28);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getAbstractSqlExecutorMediator_RegistryBasedPassConfigKey() {
+        return (EReference)abstractSqlExecutorMediatorEClass.getEStructuralFeatures().get(29);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     public EClass getSqlStatement() {
         return sqlStatementEClass;
     }
@@ -20650,6 +20722,14 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         createEAttribute(abstractSqlExecutorMediatorEClass, ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_VALIDATIONQUERY);
         createEAttribute(abstractSqlExecutorMediatorEClass, ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_INITIALSIZE);
         createEReference(abstractSqlExecutorMediatorEClass, ABSTRACT_SQL_EXECUTOR_MEDIATOR__SQL_STATEMENTS);
+        createEAttribute(abstractSqlExecutorMediatorEClass, ABSTRACT_SQL_EXECUTOR_MEDIATOR__IS_REGISTRY_BASED_DRIVER_CONFIG);
+        createEAttribute(abstractSqlExecutorMediatorEClass, ABSTRACT_SQL_EXECUTOR_MEDIATOR__IS_REGISTRY_BASED_URL_CONFIG);
+        createEAttribute(abstractSqlExecutorMediatorEClass, ABSTRACT_SQL_EXECUTOR_MEDIATOR__IS_REGISTRY_BASED_USER_CONFIG);
+        createEAttribute(abstractSqlExecutorMediatorEClass, ABSTRACT_SQL_EXECUTOR_MEDIATOR__IS_REGISTRY_BASED_PASS_CONFIG);
+        createEReference(abstractSqlExecutorMediatorEClass, ABSTRACT_SQL_EXECUTOR_MEDIATOR__REGISTRY_BASED_DRIVER_CONFIG_KEY);
+        createEReference(abstractSqlExecutorMediatorEClass, ABSTRACT_SQL_EXECUTOR_MEDIATOR__REGISTRY_BASED_URL_CONFIG_KEY);
+        createEReference(abstractSqlExecutorMediatorEClass, ABSTRACT_SQL_EXECUTOR_MEDIATOR__REGISTRY_BASED_USER_CONFIG_KEY);
+        createEReference(abstractSqlExecutorMediatorEClass, ABSTRACT_SQL_EXECUTOR_MEDIATOR__REGISTRY_BASED_PASS_CONFIG_KEY);
 
         sqlStatementEClass = createEClass(SQL_STATEMENT);
         createEAttribute(sqlStatementEClass, SQL_STATEMENT__QUERY_STRING);
@@ -23124,6 +23204,14 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         initEAttribute(getAbstractSqlExecutorMediator_PropertyValidationquery(), ecorePackage.getEString(), "propertyValidationquery", null, 0, 1, AbstractSqlExecutorMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getAbstractSqlExecutorMediator_PropertyInitialsize(), ecorePackage.getEInt(), "propertyInitialsize", "-1", 0, 1, AbstractSqlExecutorMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getAbstractSqlExecutorMediator_SqlStatements(), this.getSqlStatement(), null, "sqlStatements", null, 0, -1, AbstractSqlExecutorMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getAbstractSqlExecutorMediator_IsRegistryBasedDriverConfig(), ecorePackage.getEBoolean(), "isRegistryBasedDriverConfig", "false", 0, 1, AbstractSqlExecutorMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getAbstractSqlExecutorMediator_IsRegistryBasedUrlConfig(), ecorePackage.getEBoolean(), "isRegistryBasedUrlConfig", "false", 0, 1, AbstractSqlExecutorMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getAbstractSqlExecutorMediator_IsRegistryBasedUserConfig(), ecorePackage.getEBoolean(), "isRegistryBasedUserConfig", "false", 0, 1, AbstractSqlExecutorMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getAbstractSqlExecutorMediator_IsRegistryBasedPassConfig(), ecorePackage.getEBoolean(), "isRegistryBasedPassConfig", "false", 0, 1, AbstractSqlExecutorMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getAbstractSqlExecutorMediator_RegistryBasedDriverConfigKey(), this.getRegistryKeyProperty(), null, "registryBasedDriverConfigKey", null, 0, 1, AbstractSqlExecutorMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getAbstractSqlExecutorMediator_RegistryBasedUrlConfigKey(), this.getRegistryKeyProperty(), null, "registryBasedUrlConfigKey", null, 0, 1, AbstractSqlExecutorMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getAbstractSqlExecutorMediator_RegistryBasedUserConfigKey(), this.getRegistryKeyProperty(), null, "registryBasedUserConfigKey", null, 0, 1, AbstractSqlExecutorMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getAbstractSqlExecutorMediator_RegistryBasedPassConfigKey(), this.getRegistryKeyProperty(), null, "registryBasedPassConfigKey", null, 0, 1, AbstractSqlExecutorMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(sqlStatementEClass, SqlStatement.class, "SqlStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getSqlStatement_QueryString(), ecorePackage.getEString(), "queryString", "sql_query", 0, 1, SqlStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

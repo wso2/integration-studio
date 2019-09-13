@@ -3003,6 +3003,30 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_XWSS8EWFEemGk-SzClwBXw" name="DatabaseConfiguration" views="_OZJ_4EWFEemGk-SzClwBXw">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//Mediator/Reverse"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_VfyuPNUwEemts4wKHEAjmA" name="isRegistryBasedDriverConfig" views="_Vf1yldUwEemts4wKHEAjmA">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//AbstractSqlExecutorMediator/isRegistryBasedDriverConfig"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_VfyuPdUwEemts4wKHEAjmA" name="isRegistryBasedUrlConfig" views="_Vf1yltUwEemts4wKHEAjmA">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//AbstractSqlExecutorMediator/isRegistryBasedUrlConfig"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_VfyuPtUwEemts4wKHEAjmA" name="isRegistryBasedUserConfig" views="_Vf1yl9UwEemts4wKHEAjmA">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//AbstractSqlExecutorMediator/isRegistryBasedUserConfig"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_VfyuP9UwEemts4wKHEAjmA" name="isRegistryBasedPassConfig" views="_Vf1ymNUwEemts4wKHEAjmA">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//AbstractSqlExecutorMediator/isRegistryBasedPassConfig"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_VfyuQNUwEemts4wKHEAjmA" name="registryBasedDriverConfigKey" views="_EwKp0NU3Eemts4wKHEAjmA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//AbstractSqlExecutorMediator/registryBasedDriverConfigKey"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_VfyuQdUwEemts4wKHEAjmA" name="registryBasedUrlConfigKey" views="_IIX7wNU3Eemts4wKHEAjmA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//AbstractSqlExecutorMediator/registryBasedUrlConfigKey"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_VfyuQtUwEemts4wKHEAjmA" name="registryBasedUserConfigKey" views="_LQlC0NU3Eemts4wKHEAjmA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//AbstractSqlExecutorMediator/registryBasedUserConfigKey"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_VfyuQ9UwEemts4wKHEAjmA" name="registryBasedPassConfigKey" views="_OH8RgNU3Eemts4wKHEAjmA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//AbstractSqlExecutorMediator/registryBasedPassConfigKey"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//DBLookupMediator"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_E7v85vJnEei6boXzpRIfnA" name="DBLookupMediatorInputConnector" views="_E7wmifJnEei6boXzpRIfnA">
@@ -3092,6 +3116,30 @@
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v9A_JnEei6boXzpRIfnA" name="sqlStatements" views="_E7wmqfJnEei6boXzpRIfnA">
           <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//AbstractSqlExecutorMediator/sqlStatements"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_VfyuYtUwEemts4wKHEAjmA" name="isRegistryBasedDriverConfig" views="_Vf1yvtUwEemts4wKHEAjmA">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//AbstractSqlExecutorMediator/isRegistryBasedDriverConfig"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_VfyuY9UwEemts4wKHEAjmA" name="isRegistryBasedUrlConfig" views="_Vf1yv9UwEemts4wKHEAjmA">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//AbstractSqlExecutorMediator/isRegistryBasedUrlConfig"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_VfyuZNUwEemts4wKHEAjmA" name="isRegistryBasedUserConfig" views="_Vf1ywNUwEemts4wKHEAjmA">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//AbstractSqlExecutorMediator/isRegistryBasedUserConfig"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_VfyuZdUwEemts4wKHEAjmA" name="isRegistryBasedPassConfig" views="_Vf1ywdUwEemts4wKHEAjmA">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//AbstractSqlExecutorMediator/isRegistryBasedPassConfig"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_VfyuZtUwEemts4wKHEAjmA" name="registryBasedDriverConfigKey" views="_cTApENU3Eemts4wKHEAjmA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//AbstractSqlExecutorMediator/registryBasedDriverConfigKey"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_VfyuZ9UwEemts4wKHEAjmA" name="registryBasedUrlConfigKey" views="_fXH6UNU3Eemts4wKHEAjmA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//AbstractSqlExecutorMediator/registryBasedUrlConfigKey"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_VfyuaNUwEemts4wKHEAjmA" name="registryBasedUserConfigKey" views="_hnPi0NU3Eemts4wKHEAjmA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//AbstractSqlExecutorMediator/registryBasedUserConfigKey"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_VfyuadUwEemts4wKHEAjmA" name="registryBasedPassConfigKey" views="_phNIsNU3Eemts4wKHEAjmA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//AbstractSqlExecutorMediator/registryBasedPassConfigKey"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v9BPJnEei6boXzpRIfnA" name="connectionUseTransaction" views="_E7wmqvJnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//DBReportMediator/connectionUseTransaction"/>
@@ -9281,6 +9329,22 @@
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
           <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_OZJ_4EWFEemGk-SzClwBXw" name="Database Configuration"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_Vf1yldUwEemts4wKHEAjmA" name="isRegistryBasedDriverConfig">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_Vf1yltUwEemts4wKHEAjmA" name="isRegistryBasedUrlConfig">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_Vf1yl9UwEemts4wKHEAjmA" name="isRegistryBasedUserConfig">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_Vf1ymNUwEemts4wKHEAjmA" name="isRegistryBasedPassConfig">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
+          </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_EwKp0NU3Eemts4wKHEAjmA" name="registryBasedDriverConfigKey"/>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_IIX7wNU3Eemts4wKHEAjmA" name="registryBasedUrlConfigKey"/>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_LQlC0NU3Eemts4wKHEAjmA" name="registryBasedUserConfigKey"/>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_OH8RgNU3Eemts4wKHEAjmA" name="registryBasedPassConfigKey"/>
         </elements>
         <elements xsi:type="eef-views:Container" xmi:id="_OBVYECuiEemMpuboh5FIQg" name="statements">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
@@ -9339,6 +9403,22 @@
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
           </elements>
           <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_pIsZ8El9Eemnn8nn1IFR-w" name="Database Configuration"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_Vf1yvtUwEemts4wKHEAjmA" name="isRegistryBasedDriverConfig">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_Vf1yv9UwEemts4wKHEAjmA" name="isRegistryBasedUrlConfig">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_Vf1ywNUwEemts4wKHEAjmA" name="isRegistryBasedUserConfig">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_Vf1ywdUwEemts4wKHEAjmA" name="isRegistryBasedPassConfig">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
+          </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_cTApENU3Eemts4wKHEAjmA" name="registryBasedDriverConfigKey"/>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_fXH6UNU3Eemts4wKHEAjmA" name="registryBasedUrlConfigKey"/>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_hnPi0NU3Eemts4wKHEAjmA" name="registryBasedUserConfigKey"/>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_phNIsNU3Eemts4wKHEAjmA" name="registryBasedPassConfigKey"/>
         </elements>
         <elements xsi:type="eef-views:Container" xmi:id="_-bARIC3KEemFL4WMu9Ad-w" name="statements">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>

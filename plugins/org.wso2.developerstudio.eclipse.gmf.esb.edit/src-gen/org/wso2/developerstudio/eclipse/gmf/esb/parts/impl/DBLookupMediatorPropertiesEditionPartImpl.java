@@ -74,7 +74,7 @@ import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 
@@ -86,7 +86,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
  * 
  * 
  */
-public class DBLookupMediatorPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, DBLookupMediatorPropertiesEditionPart {
+public class DBLookupMediatorPropertiesEditionPartImpl extends CompositePropertiesEditionPart
+		implements ISWTPropertiesEditionPart, DBLookupMediatorPropertiesEditionPart {
 
 	protected Text commentsList;
 	protected Button editCommentsList;
@@ -114,19 +115,23 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 	protected Text connectionURL;
 	protected Text connectionUsername;
 	protected Text connectionPassword;
-	// Start of user code  for Database Configuration widgets declarations
-	
+	protected Button isRegistryBasedDriverConfig;
+	protected Button isRegistryBasedUrlConfig;
+	protected Button isRegistryBasedUserConfig;
+	protected Button isRegistryBasedPassConfig;
+	// Start of user code for Database Configuration widgets declarations
+
 	// End of user code
 
 	protected ReferencesTable sqlStatements;
 	protected List<ViewerFilter> sqlStatementsBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> sqlStatementsFilters = new ArrayList<ViewerFilter>();
 
-
-
 	/**
 	 * Default constructor
-	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 * 
+	 * @param editionComponent
+	 *            the {@link IPropertiesEditionComponent} that manage this part
 	 * 
 	 */
 	public DBLookupMediatorPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
@@ -137,7 +142,7 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
-	 * 			createFigure(org.eclipse.swt.widgets.Composite)
+	 *      createFigure(org.eclipse.swt.widgets.Composite)
 	 * 
 	 */
 	public Composite createFigure(final Composite parent) {
@@ -153,12 +158,13 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
-	 * 			createControls(org.eclipse.swt.widgets.Composite)
+	 *      createControls(org.eclipse.swt.widgets.Composite)
 	 * 
 	 */
-	public void createControls(Composite view) { 
+	public void createControls(Composite view) {
 		CompositionSequence dBLookupMediatorStep = new BindingCompositionSequence(propertiesEditionComponent);
-		CompositionStep propertiesStep = dBLookupMediatorStep.addStep(EsbViewsRepository.DBLookupMediator.Properties.class);
+		CompositionStep propertiesStep = dBLookupMediatorStep
+				.addStep(EsbViewsRepository.DBLookupMediator.Properties.class);
 		propertiesStep.addStep(EsbViewsRepository.DBLookupMediator.Properties.commentsList);
 		propertiesStep.addStep(EsbViewsRepository.DBLookupMediator.Properties.reverse);
 		propertiesStep.addStep(EsbViewsRepository.DBLookupMediator.Properties.propertyAutocommit);
@@ -173,12 +179,12 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 		propertiesStep.addStep(EsbViewsRepository.DBLookupMediator.Properties.propertyTestwhileidle);
 		propertiesStep.addStep(EsbViewsRepository.DBLookupMediator.Properties.propertyValidationquery);
 		propertiesStep.addStep(EsbViewsRepository.DBLookupMediator.Properties.propertyInitialsize);
-		
-		dBLookupMediatorStep
-			.addStep(EsbViewsRepository.DBLookupMediator.Misc.class)
-			.addStep(EsbViewsRepository.DBLookupMediator.Misc.description);
-		
-		CompositionStep connectionStep = dBLookupMediatorStep.addStep(EsbViewsRepository.DBLookupMediator.Connection.class);
+
+		dBLookupMediatorStep.addStep(EsbViewsRepository.DBLookupMediator.Misc.class)
+				.addStep(EsbViewsRepository.DBLookupMediator.Misc.description);
+
+		CompositionStep connectionStep = dBLookupMediatorStep
+				.addStep(EsbViewsRepository.DBLookupMediator.Connection.class);
 		connectionStep.addStep(EsbViewsRepository.DBLookupMediator.Connection.connectionType);
 		connectionStep.addStep(EsbViewsRepository.DBLookupMediator.Connection.connectionDsType);
 		connectionStep.addStep(EsbViewsRepository.DBLookupMediator.Connection.connectionDsInitialContext);
@@ -189,12 +195,10 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 		connectionStep.addStep(EsbViewsRepository.DBLookupMediator.Connection.connectionUsername);
 		connectionStep.addStep(EsbViewsRepository.DBLookupMediator.Connection.connectionPassword);
 		connectionStep.addStep(EsbViewsRepository.DBLookupMediator.Connection.databaseConfiguration);
-		
-		dBLookupMediatorStep
-			.addStep(EsbViewsRepository.DBLookupMediator.Statements.class)
-			.addStep(EsbViewsRepository.DBLookupMediator.Statements.sqlStatements);
-		
-		
+
+		dBLookupMediatorStep.addStep(EsbViewsRepository.DBLookupMediator.Statements.class)
+				.addStep(EsbViewsRepository.DBLookupMediator.Statements.sqlStatements);
+
 		composer = new PartComposer(dBLookupMediatorStep) {
 
 			@Override
@@ -281,7 +285,7 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 					return createConnectionPasswordText(parent);
 				}
 				// Start of user code for Database Configuration addToPart creation
-				
+
 				// End of user code
 				if (key == EsbViewsRepository.DBLookupMediator.Statements.class) {
 					return createStatementsGroup(parent);
@@ -318,7 +322,8 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 		EditingUtils.setID(commentsList, EsbViewsRepository.DBLookupMediator.Properties.commentsList);
 		EditingUtils.setEEFtype(commentsList, "eef::MultiValuedEditor::field"); //$NON-NLS-1$
 		editCommentsList = new Button(parent, SWT.NONE);
-		editCommentsList.setText(getDescription(EsbViewsRepository.DBLookupMediator.Properties.commentsList, EsbMessages.DBLookupMediatorPropertiesEditionPart_CommentsListLabel));
+		editCommentsList.setText(getDescription(EsbViewsRepository.DBLookupMediator.Properties.commentsList,
+				EsbMessages.DBLookupMediatorPropertiesEditionPart_CommentsListLabel));
 		GridData editCommentsListData = new GridData();
 		editCommentsList.setLayoutData(editCommentsListData);
 		editCommentsList.addSelectionListener(new SelectionAdapter() {
@@ -329,18 +334,19 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
 			 */
 			public void widgetSelected(SelectionEvent e) {
-				EEFFeatureEditorDialog dialog = new EEFFeatureEditorDialog(
-						commentsList.getShell(), "DBLookupMediator", new AdapterFactoryLabelProvider(adapterFactory), //$NON-NLS-1$
-						commentsListList, EsbPackage.eINSTANCE.getEsbElement_CommentsList().getEType(), null,
-						false, true, 
-						null, null);
+				EEFFeatureEditorDialog dialog = new EEFFeatureEditorDialog(commentsList.getShell(), "DBLookupMediator", //$NON-NLS-1$
+						new AdapterFactoryLabelProvider(adapterFactory), commentsListList, EsbPackage.eINSTANCE.getEsbElement_CommentsList().getEType(), null, false,
+						true, null, null);
 				if (dialog.open() == Window.OK) {
 					commentsListList = dialog.getResult();
 					if (commentsListList == null) {
 						commentsListList = new BasicEList();
 					}
 					commentsList.setText(commentsListList.toString());
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBLookupMediator.Properties.commentsList, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new BasicEList(commentsListList)));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+							DBLookupMediatorPropertiesEditionPartImpl.this,
+							EsbViewsRepository.DBLookupMediator.Properties.commentsList, PropertiesEditionEvent.COMMIT,
+							PropertiesEditionEvent.SET, null, new BasicEList(commentsListList)));
 					setHasChanged(true);
 				}
 			}
@@ -353,21 +359,24 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 		return parent;
 	}
 
-	
 	protected Composite createReverseCheckbox(Composite parent) {
 		reverse = new Button(parent, SWT.CHECK);
-		reverse.setText(getDescription(EsbViewsRepository.DBLookupMediator.Properties.reverse, EsbMessages.DBLookupMediatorPropertiesEditionPart_ReverseLabel));
+		reverse.setText(getDescription(EsbViewsRepository.DBLookupMediator.Properties.reverse,
+				EsbMessages.DBLookupMediatorPropertiesEditionPart_ReverseLabel));
 		reverse.addSelectionListener(new SelectionAdapter() {
 
 			/**
 			 * {@inheritDoc}
 			 *
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
-			 * 	
+			 * 
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBLookupMediator.Properties.reverse, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(reverse.getSelection())));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+							DBLookupMediatorPropertiesEditionPartImpl.this,
+							EsbViewsRepository.DBLookupMediator.Properties.reverse, PropertiesEditionEvent.COMMIT,
+							PropertiesEditionEvent.SET, null, new Boolean(reverse.getSelection())));
 			}
 
 		});
@@ -376,7 +385,8 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 		reverse.setLayoutData(reverseData);
 		EditingUtils.setID(reverse, EsbViewsRepository.DBLookupMediator.Properties.reverse);
 		EditingUtils.setEEFtype(reverse, "eef::Checkbox"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DBLookupMediator.Properties.reverse, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(
+				EsbViewsRepository.DBLookupMediator.Properties.reverse, EsbViewsRepository.SWT_KIND), null); // $NON-NLS-1$
 		// Start of user code for createReverseCheckbox
 
 		// End of user code
@@ -387,35 +397,43 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 	 * @generated NOT
 	 */
 	protected Composite createPropertyAutocommitEMFComboViewer(Composite parent) {
-		createDescription(parent, EsbViewsRepository.DBLookupMediator.Properties.propertyAutocommit, EsbMessages.DBLookupMediatorPropertiesEditionPart_PropertyAutocommitLabel);
+		createDescription(parent, EsbViewsRepository.DBLookupMediator.Properties.propertyAutocommit,
+				EsbMessages.DBLookupMediatorPropertiesEditionPart_PropertyAutocommitLabel);
 		propertyAutocommit = new EMFComboViewer(parent);
 		propertyAutocommit.setContentProvider(new ArrayContentProvider());
-		propertyAutocommit.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
+		propertyAutocommit
+				.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData propertyAutocommitData = new GridData(GridData.FILL_HORIZONTAL);
 		propertyAutocommit.getCombo().setLayoutData(propertyAutocommitData);
-                propertyAutocommit.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+		propertyAutocommit.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                    @Override
-                    public void handleEvent(Event arg0) {
-                        arg0.doit = false;
-                    }
-                });
+			@Override
+			public void handleEvent(Event arg0) {
+				arg0.doit = false;
+			}
+		});
 		propertyAutocommit.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-			 * 	
+			 * 
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBLookupMediator.Properties.propertyAutocommit, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getPropertyAutocommit()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+							DBLookupMediatorPropertiesEditionPartImpl.this,
+							EsbViewsRepository.DBLookupMediator.Properties.propertyAutocommit,
+							PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getPropertyAutocommit()));
 			}
 
 		});
 		propertyAutocommit.setID(EsbViewsRepository.DBLookupMediator.Properties.propertyAutocommit);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DBLookupMediator.Properties.propertyAutocommit, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent,
+				propertiesEditionComponent.getHelpContent(
+						EsbViewsRepository.DBLookupMediator.Properties.propertyAutocommit, EsbViewsRepository.SWT_KIND),
+				null); // $NON-NLS-1$
 		// Start of user code for createPropertyAutocommitEMFComboViewer
 
 		// End of user code
@@ -426,44 +444,52 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 	 * @generated NOT
 	 */
 	protected Composite createPropertyIsolationEMFComboViewer(Composite parent) {
-		createDescription(parent, EsbViewsRepository.DBLookupMediator.Properties.propertyIsolation, EsbMessages.DBLookupMediatorPropertiesEditionPart_PropertyIsolationLabel);
+		createDescription(parent, EsbViewsRepository.DBLookupMediator.Properties.propertyIsolation,
+				EsbMessages.DBLookupMediatorPropertiesEditionPart_PropertyIsolationLabel);
 		propertyIsolation = new EMFComboViewer(parent);
 		propertyIsolation.setContentProvider(new ArrayContentProvider());
-		propertyIsolation.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
+		propertyIsolation
+				.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData propertyIsolationData = new GridData(GridData.FILL_HORIZONTAL);
 		propertyIsolation.getCombo().setLayoutData(propertyIsolationData);
-                propertyIsolation.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+		propertyIsolation.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                    @Override
-                    public void handleEvent(Event arg0) {
-                        arg0.doit = false;
-                    }
-                });
+			@Override
+			public void handleEvent(Event arg0) {
+				arg0.doit = false;
+			}
+		});
 		propertyIsolation.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-			 * 	
+			 * 
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBLookupMediator.Properties.propertyIsolation, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getPropertyIsolation()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+							DBLookupMediatorPropertiesEditionPartImpl.this,
+							EsbViewsRepository.DBLookupMediator.Properties.propertyIsolation,
+							PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getPropertyIsolation()));
 			}
 
 		});
 		propertyIsolation.setID(EsbViewsRepository.DBLookupMediator.Properties.propertyIsolation);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DBLookupMediator.Properties.propertyIsolation, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent,
+				propertiesEditionComponent.getHelpContent(
+						EsbViewsRepository.DBLookupMediator.Properties.propertyIsolation, EsbViewsRepository.SWT_KIND),
+				null); // $NON-NLS-1$
 		// Start of user code for createPropertyIsolationEMFComboViewer
 
 		// End of user code
 		return parent;
 	}
 
-	
 	protected Composite createPropertyMaxactiveText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.DBLookupMediator.Properties.propertyMaxactive, EsbMessages.DBLookupMediatorPropertiesEditionPart_PropertyMaxactiveLabel);
+		createDescription(parent, EsbViewsRepository.DBLookupMediator.Properties.propertyMaxactive,
+				EsbMessages.DBLookupMediatorPropertiesEditionPart_PropertyMaxactiveLabel);
 		propertyMaxactive = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData propertyMaxactiveData = new GridData(GridData.FILL_HORIZONTAL);
 		propertyMaxactive.setLayoutData(propertyMaxactiveData);
@@ -479,7 +505,11 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBLookupMediator.Properties.propertyMaxactive, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, propertyMaxactive.getText()));
+					propertiesEditionComponent.firePropertiesChanged(
+							new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this,
+									EsbViewsRepository.DBLookupMediator.Properties.propertyMaxactive,
+									PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+									propertyMaxactive.getText()));
 			}
 
 		});
@@ -496,23 +526,30 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
 					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBLookupMediator.Properties.propertyMaxactive, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, propertyMaxactive.getText()));
+						propertiesEditionComponent.firePropertiesChanged(
+								new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this,
+										EsbViewsRepository.DBLookupMediator.Properties.propertyMaxactive,
+										PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+										propertyMaxactive.getText()));
 				}
 			}
 
 		});
 		EditingUtils.setID(propertyMaxactive, EsbViewsRepository.DBLookupMediator.Properties.propertyMaxactive);
 		EditingUtils.setEEFtype(propertyMaxactive, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DBLookupMediator.Properties.propertyMaxactive, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent,
+				propertiesEditionComponent.getHelpContent(
+						EsbViewsRepository.DBLookupMediator.Properties.propertyMaxactive, EsbViewsRepository.SWT_KIND),
+				null); // $NON-NLS-1$
 		// Start of user code for createPropertyMaxactiveText
 
 		// End of user code
 		return parent;
 	}
 
-	
 	protected Composite createPropertyMaxidleText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.DBLookupMediator.Properties.propertyMaxidle, EsbMessages.DBLookupMediatorPropertiesEditionPart_PropertyMaxidleLabel);
+		createDescription(parent, EsbViewsRepository.DBLookupMediator.Properties.propertyMaxidle,
+				EsbMessages.DBLookupMediatorPropertiesEditionPart_PropertyMaxidleLabel);
 		propertyMaxidle = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData propertyMaxidleData = new GridData(GridData.FILL_HORIZONTAL);
 		propertyMaxidle.setLayoutData(propertyMaxidleData);
@@ -528,7 +565,11 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBLookupMediator.Properties.propertyMaxidle, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, propertyMaxidle.getText()));
+					propertiesEditionComponent.firePropertiesChanged(
+							new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this,
+									EsbViewsRepository.DBLookupMediator.Properties.propertyMaxidle,
+									PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+									propertyMaxidle.getText()));
 			}
 
 		});
@@ -545,23 +586,30 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
 					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBLookupMediator.Properties.propertyMaxidle, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, propertyMaxidle.getText()));
+						propertiesEditionComponent.firePropertiesChanged(
+								new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this,
+										EsbViewsRepository.DBLookupMediator.Properties.propertyMaxidle,
+										PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+										propertyMaxidle.getText()));
 				}
 			}
 
 		});
 		EditingUtils.setID(propertyMaxidle, EsbViewsRepository.DBLookupMediator.Properties.propertyMaxidle);
 		EditingUtils.setEEFtype(propertyMaxidle, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DBLookupMediator.Properties.propertyMaxidle, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent,
+				propertiesEditionComponent.getHelpContent(
+						EsbViewsRepository.DBLookupMediator.Properties.propertyMaxidle, EsbViewsRepository.SWT_KIND),
+				null); // $NON-NLS-1$
 		// Start of user code for createPropertyMaxidleText
 
 		// End of user code
 		return parent;
 	}
 
-	
 	protected Composite createPropertyMaxopenstatementsText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.DBLookupMediator.Properties.propertyMaxopenstatements, EsbMessages.DBLookupMediatorPropertiesEditionPart_PropertyMaxopenstatementsLabel);
+		createDescription(parent, EsbViewsRepository.DBLookupMediator.Properties.propertyMaxopenstatements,
+				EsbMessages.DBLookupMediatorPropertiesEditionPart_PropertyMaxopenstatementsLabel);
 		propertyMaxopenstatements = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData propertyMaxopenstatementsData = new GridData(GridData.FILL_HORIZONTAL);
 		propertyMaxopenstatements.setLayoutData(propertyMaxopenstatementsData);
@@ -577,7 +625,11 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBLookupMediator.Properties.propertyMaxopenstatements, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, propertyMaxopenstatements.getText()));
+					propertiesEditionComponent.firePropertiesChanged(
+							new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this,
+									EsbViewsRepository.DBLookupMediator.Properties.propertyMaxopenstatements,
+									PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+									propertyMaxopenstatements.getText()));
 			}
 
 		});
@@ -594,23 +646,32 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
 					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBLookupMediator.Properties.propertyMaxopenstatements, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, propertyMaxopenstatements.getText()));
+						propertiesEditionComponent.firePropertiesChanged(
+								new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this,
+										EsbViewsRepository.DBLookupMediator.Properties.propertyMaxopenstatements,
+										PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+										propertyMaxopenstatements.getText()));
 				}
 			}
 
 		});
-		EditingUtils.setID(propertyMaxopenstatements, EsbViewsRepository.DBLookupMediator.Properties.propertyMaxopenstatements);
+		EditingUtils.setID(propertyMaxopenstatements,
+				EsbViewsRepository.DBLookupMediator.Properties.propertyMaxopenstatements);
 		EditingUtils.setEEFtype(propertyMaxopenstatements, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DBLookupMediator.Properties.propertyMaxopenstatements, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent,
+				propertiesEditionComponent.getHelpContent(
+						EsbViewsRepository.DBLookupMediator.Properties.propertyMaxopenstatements,
+						EsbViewsRepository.SWT_KIND),
+				null); // $NON-NLS-1$
 		// Start of user code for createPropertyMaxopenstatementsText
 
 		// End of user code
 		return parent;
 	}
 
-	
 	protected Composite createPropertyMaxwaitText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.DBLookupMediator.Properties.propertyMaxwait, EsbMessages.DBLookupMediatorPropertiesEditionPart_PropertyMaxwaitLabel);
+		createDescription(parent, EsbViewsRepository.DBLookupMediator.Properties.propertyMaxwait,
+				EsbMessages.DBLookupMediatorPropertiesEditionPart_PropertyMaxwaitLabel);
 		propertyMaxwait = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData propertyMaxwaitData = new GridData(GridData.FILL_HORIZONTAL);
 		propertyMaxwait.setLayoutData(propertyMaxwaitData);
@@ -626,7 +687,11 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBLookupMediator.Properties.propertyMaxwait, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, propertyMaxwait.getText()));
+					propertiesEditionComponent.firePropertiesChanged(
+							new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this,
+									EsbViewsRepository.DBLookupMediator.Properties.propertyMaxwait,
+									PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+									propertyMaxwait.getText()));
 			}
 
 		});
@@ -643,23 +708,30 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
 					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBLookupMediator.Properties.propertyMaxwait, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, propertyMaxwait.getText()));
+						propertiesEditionComponent.firePropertiesChanged(
+								new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this,
+										EsbViewsRepository.DBLookupMediator.Properties.propertyMaxwait,
+										PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+										propertyMaxwait.getText()));
 				}
 			}
 
 		});
 		EditingUtils.setID(propertyMaxwait, EsbViewsRepository.DBLookupMediator.Properties.propertyMaxwait);
 		EditingUtils.setEEFtype(propertyMaxwait, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DBLookupMediator.Properties.propertyMaxwait, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent,
+				propertiesEditionComponent.getHelpContent(
+						EsbViewsRepository.DBLookupMediator.Properties.propertyMaxwait, EsbViewsRepository.SWT_KIND),
+				null); // $NON-NLS-1$
 		// Start of user code for createPropertyMaxwaitText
 
 		// End of user code
 		return parent;
 	}
 
-	
 	protected Composite createPropertyMinidleText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.DBLookupMediator.Properties.propertyMinidle, EsbMessages.DBLookupMediatorPropertiesEditionPart_PropertyMinidleLabel);
+		createDescription(parent, EsbViewsRepository.DBLookupMediator.Properties.propertyMinidle,
+				EsbMessages.DBLookupMediatorPropertiesEditionPart_PropertyMinidleLabel);
 		propertyMinidle = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData propertyMinidleData = new GridData(GridData.FILL_HORIZONTAL);
 		propertyMinidle.setLayoutData(propertyMinidleData);
@@ -675,7 +747,11 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBLookupMediator.Properties.propertyMinidle, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, propertyMinidle.getText()));
+					propertiesEditionComponent.firePropertiesChanged(
+							new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this,
+									EsbViewsRepository.DBLookupMediator.Properties.propertyMinidle,
+									PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+									propertyMinidle.getText()));
 			}
 
 		});
@@ -692,14 +768,21 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
 					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBLookupMediator.Properties.propertyMinidle, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, propertyMinidle.getText()));
+						propertiesEditionComponent.firePropertiesChanged(
+								new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this,
+										EsbViewsRepository.DBLookupMediator.Properties.propertyMinidle,
+										PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+										propertyMinidle.getText()));
 				}
 			}
 
 		});
 		EditingUtils.setID(propertyMinidle, EsbViewsRepository.DBLookupMediator.Properties.propertyMinidle);
 		EditingUtils.setEEFtype(propertyMinidle, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DBLookupMediator.Properties.propertyMinidle, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent,
+				propertiesEditionComponent.getHelpContent(
+						EsbViewsRepository.DBLookupMediator.Properties.propertyMinidle, EsbViewsRepository.SWT_KIND),
+				null); // $NON-NLS-1$
 		// Start of user code for createPropertyMinidleText
 
 		// End of user code
@@ -710,35 +793,45 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 	 * @generated NOT
 	 */
 	protected Composite createPropertyPoolstatementsEMFComboViewer(Composite parent) {
-		createDescription(parent, EsbViewsRepository.DBLookupMediator.Properties.propertyPoolstatements, EsbMessages.DBLookupMediatorPropertiesEditionPart_PropertyPoolstatementsLabel);
+		createDescription(parent, EsbViewsRepository.DBLookupMediator.Properties.propertyPoolstatements,
+				EsbMessages.DBLookupMediatorPropertiesEditionPart_PropertyPoolstatementsLabel);
 		propertyPoolstatements = new EMFComboViewer(parent);
 		propertyPoolstatements.setContentProvider(new ArrayContentProvider());
-		propertyPoolstatements.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
+		propertyPoolstatements
+				.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData propertyPoolstatementsData = new GridData(GridData.FILL_HORIZONTAL);
 		propertyPoolstatements.getCombo().setLayoutData(propertyPoolstatementsData);
-                propertyPoolstatements.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+		propertyPoolstatements.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                    @Override
-                    public void handleEvent(Event arg0) {
-                        arg0.doit = false;
-                    }
-                });
+			@Override
+			public void handleEvent(Event arg0) {
+				arg0.doit = false;
+			}
+		});
 		propertyPoolstatements.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-			 * 	
+			 * 
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBLookupMediator.Properties.propertyPoolstatements, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getPropertyPoolstatements()));
+					propertiesEditionComponent.firePropertiesChanged(
+							new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this,
+									EsbViewsRepository.DBLookupMediator.Properties.propertyPoolstatements,
+									PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+									getPropertyPoolstatements()));
 			}
 
 		});
 		propertyPoolstatements.setID(EsbViewsRepository.DBLookupMediator.Properties.propertyPoolstatements);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DBLookupMediator.Properties.propertyPoolstatements, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent,
+				propertiesEditionComponent.getHelpContent(
+						EsbViewsRepository.DBLookupMediator.Properties.propertyPoolstatements,
+						EsbViewsRepository.SWT_KIND),
+				null); // $NON-NLS-1$
 		// Start of user code for createPropertyPoolstatementsEMFComboViewer
 
 		// End of user code
@@ -749,35 +842,45 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 	 * @generated NOT
 	 */
 	protected Composite createPropertyTestonborrowEMFComboViewer(Composite parent) {
-		createDescription(parent, EsbViewsRepository.DBLookupMediator.Properties.propertyTestonborrow, EsbMessages.DBLookupMediatorPropertiesEditionPart_PropertyTestonborrowLabel);
+		createDescription(parent, EsbViewsRepository.DBLookupMediator.Properties.propertyTestonborrow,
+				EsbMessages.DBLookupMediatorPropertiesEditionPart_PropertyTestonborrowLabel);
 		propertyTestonborrow = new EMFComboViewer(parent);
 		propertyTestonborrow.setContentProvider(new ArrayContentProvider());
-		propertyTestonborrow.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
+		propertyTestonborrow
+				.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData propertyTestonborrowData = new GridData(GridData.FILL_HORIZONTAL);
 		propertyTestonborrow.getCombo().setLayoutData(propertyTestonborrowData);
-                propertyTestonborrow.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+		propertyTestonborrow.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                    @Override
-                    public void handleEvent(Event arg0) {
-                        arg0.doit = false;
-                    }
-                });
+			@Override
+			public void handleEvent(Event arg0) {
+				arg0.doit = false;
+			}
+		});
 		propertyTestonborrow.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-			 * 	
+			 * 
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBLookupMediator.Properties.propertyTestonborrow, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getPropertyTestonborrow()));
+					propertiesEditionComponent.firePropertiesChanged(
+							new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this,
+									EsbViewsRepository.DBLookupMediator.Properties.propertyTestonborrow,
+									PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+									getPropertyTestonborrow()));
 			}
 
 		});
 		propertyTestonborrow.setID(EsbViewsRepository.DBLookupMediator.Properties.propertyTestonborrow);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DBLookupMediator.Properties.propertyTestonborrow, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent,
+				propertiesEditionComponent.getHelpContent(
+						EsbViewsRepository.DBLookupMediator.Properties.propertyTestonborrow,
+						EsbViewsRepository.SWT_KIND),
+				null); // $NON-NLS-1$
 		// Start of user code for createPropertyTestonborrowEMFComboViewer
 
 		// End of user code
@@ -788,44 +891,54 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 	 * @generated NOT
 	 */
 	protected Composite createPropertyTestwhileidleEMFComboViewer(Composite parent) {
-		createDescription(parent, EsbViewsRepository.DBLookupMediator.Properties.propertyTestwhileidle, EsbMessages.DBLookupMediatorPropertiesEditionPart_PropertyTestwhileidleLabel);
+		createDescription(parent, EsbViewsRepository.DBLookupMediator.Properties.propertyTestwhileidle,
+				EsbMessages.DBLookupMediatorPropertiesEditionPart_PropertyTestwhileidleLabel);
 		propertyTestwhileidle = new EMFComboViewer(parent);
 		propertyTestwhileidle.setContentProvider(new ArrayContentProvider());
-		propertyTestwhileidle.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
+		propertyTestwhileidle
+				.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData propertyTestwhileidleData = new GridData(GridData.FILL_HORIZONTAL);
 		propertyTestwhileidle.getCombo().setLayoutData(propertyTestwhileidleData);
-                propertyTestwhileidle.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+		propertyTestwhileidle.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                    @Override
-                    public void handleEvent(Event arg0) {
-                        arg0.doit = false;
-                    }
-                });
+			@Override
+			public void handleEvent(Event arg0) {
+				arg0.doit = false;
+			}
+		});
 		propertyTestwhileidle.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-			 * 	
+			 * 
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBLookupMediator.Properties.propertyTestwhileidle, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getPropertyTestwhileidle()));
+					propertiesEditionComponent.firePropertiesChanged(
+							new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this,
+									EsbViewsRepository.DBLookupMediator.Properties.propertyTestwhileidle,
+									PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+									getPropertyTestwhileidle()));
 			}
 
 		});
 		propertyTestwhileidle.setID(EsbViewsRepository.DBLookupMediator.Properties.propertyTestwhileidle);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DBLookupMediator.Properties.propertyTestwhileidle, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent,
+				propertiesEditionComponent.getHelpContent(
+						EsbViewsRepository.DBLookupMediator.Properties.propertyTestwhileidle,
+						EsbViewsRepository.SWT_KIND),
+				null); // $NON-NLS-1$
 		// Start of user code for createPropertyTestwhileidleEMFComboViewer
 
 		// End of user code
 		return parent;
 	}
 
-	
 	protected Composite createPropertyValidationqueryText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.DBLookupMediator.Properties.propertyValidationquery, EsbMessages.DBLookupMediatorPropertiesEditionPart_PropertyValidationqueryLabel);
+		createDescription(parent, EsbViewsRepository.DBLookupMediator.Properties.propertyValidationquery,
+				EsbMessages.DBLookupMediatorPropertiesEditionPart_PropertyValidationqueryLabel);
 		propertyValidationquery = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData propertyValidationqueryData = new GridData(GridData.FILL_HORIZONTAL);
 		propertyValidationquery.setLayoutData(propertyValidationqueryData);
@@ -841,7 +954,11 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBLookupMediator.Properties.propertyValidationquery, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, propertyValidationquery.getText()));
+					propertiesEditionComponent.firePropertiesChanged(
+							new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this,
+									EsbViewsRepository.DBLookupMediator.Properties.propertyValidationquery,
+									PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+									propertyValidationquery.getText()));
 			}
 
 		});
@@ -858,23 +975,32 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
 					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBLookupMediator.Properties.propertyValidationquery, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, propertyValidationquery.getText()));
+						propertiesEditionComponent.firePropertiesChanged(
+								new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this,
+										EsbViewsRepository.DBLookupMediator.Properties.propertyValidationquery,
+										PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+										propertyValidationquery.getText()));
 				}
 			}
 
 		});
-		EditingUtils.setID(propertyValidationquery, EsbViewsRepository.DBLookupMediator.Properties.propertyValidationquery);
+		EditingUtils.setID(propertyValidationquery,
+				EsbViewsRepository.DBLookupMediator.Properties.propertyValidationquery);
 		EditingUtils.setEEFtype(propertyValidationquery, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DBLookupMediator.Properties.propertyValidationquery, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent,
+				propertiesEditionComponent.getHelpContent(
+						EsbViewsRepository.DBLookupMediator.Properties.propertyValidationquery,
+						EsbViewsRepository.SWT_KIND),
+				null); // $NON-NLS-1$
 		// Start of user code for createPropertyValidationqueryText
 
 		// End of user code
 		return parent;
 	}
 
-	
 	protected Composite createPropertyInitialsizeText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.DBLookupMediator.Properties.propertyInitialsize, EsbMessages.DBLookupMediatorPropertiesEditionPart_PropertyInitialsizeLabel);
+		createDescription(parent, EsbViewsRepository.DBLookupMediator.Properties.propertyInitialsize,
+				EsbMessages.DBLookupMediatorPropertiesEditionPart_PropertyInitialsizeLabel);
 		propertyInitialsize = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData propertyInitialsizeData = new GridData(GridData.FILL_HORIZONTAL);
 		propertyInitialsize.setLayoutData(propertyInitialsizeData);
@@ -890,7 +1016,11 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBLookupMediator.Properties.propertyInitialsize, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, propertyInitialsize.getText()));
+					propertiesEditionComponent.firePropertiesChanged(
+							new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this,
+									EsbViewsRepository.DBLookupMediator.Properties.propertyInitialsize,
+									PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+									propertyInitialsize.getText()));
 			}
 
 		});
@@ -907,14 +1037,19 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
 					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBLookupMediator.Properties.propertyInitialsize, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, propertyInitialsize.getText()));
+						propertiesEditionComponent.firePropertiesChanged(
+								new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this,
+										EsbViewsRepository.DBLookupMediator.Properties.propertyInitialsize,
+										PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+										propertyInitialsize.getText()));
 				}
 			}
 
 		});
 		EditingUtils.setID(propertyInitialsize, EsbViewsRepository.DBLookupMediator.Properties.propertyInitialsize);
 		EditingUtils.setEEFtype(propertyInitialsize, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DBLookupMediator.Properties.propertyInitialsize, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(
+				EsbViewsRepository.DBLookupMediator.Properties.propertyInitialsize, EsbViewsRepository.SWT_KIND), null); // $NON-NLS-1$
 		// Start of user code for createPropertyInitialsizeText
 
 		// End of user code
@@ -936,9 +1071,9 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 		return miscGroup;
 	}
 
-	
 	protected Composite createDescriptionText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.DBLookupMediator.Misc.description, EsbMessages.DBLookupMediatorPropertiesEditionPart_DescriptionLabel);
+		createDescription(parent, EsbViewsRepository.DBLookupMediator.Misc.description,
+				EsbMessages.DBLookupMediatorPropertiesEditionPart_DescriptionLabel);
 		description = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData descriptionData = new GridData(GridData.FILL_HORIZONTAL);
 		description.setLayoutData(descriptionData);
@@ -954,7 +1089,10 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBLookupMediator.Misc.description, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, description.getText()));
+					propertiesEditionComponent.firePropertiesChanged(
+							new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this,
+									EsbViewsRepository.DBLookupMediator.Misc.description, PropertiesEditionEvent.COMMIT,
+									PropertiesEditionEvent.SET, null, description.getText()));
 			}
 
 		});
@@ -971,14 +1109,18 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
 					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBLookupMediator.Misc.description, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, description.getText()));
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+								DBLookupMediatorPropertiesEditionPartImpl.this,
+								EsbViewsRepository.DBLookupMediator.Misc.description, PropertiesEditionEvent.COMMIT,
+								PropertiesEditionEvent.SET, null, description.getText()));
 				}
 			}
 
 		});
 		EditingUtils.setID(description, EsbViewsRepository.DBLookupMediator.Misc.description);
 		EditingUtils.setEEFtype(description, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DBLookupMediator.Misc.description, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(
+				EsbViewsRepository.DBLookupMediator.Misc.description, EsbViewsRepository.SWT_KIND), null); // $NON-NLS-1$
 		// Start of user code for createDescriptionText
 
 		// End of user code
@@ -1004,35 +1146,41 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 	 * @generated NOT
 	 */
 	protected Composite createConnectionTypeEMFComboViewer(Composite parent) {
-		createDescription(parent, EsbViewsRepository.DBLookupMediator.Connection.connectionType, EsbMessages.DBLookupMediatorPropertiesEditionPart_ConnectionTypeLabel);
+		createDescription(parent, EsbViewsRepository.DBLookupMediator.Connection.connectionType,
+				EsbMessages.DBLookupMediatorPropertiesEditionPart_ConnectionTypeLabel);
 		connectionType = new EMFComboViewer(parent);
 		connectionType.setContentProvider(new ArrayContentProvider());
-		connectionType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
+		connectionType
+				.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData connectionTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		connectionType.getCombo().setLayoutData(connectionTypeData);
-                connectionType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+		connectionType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                    @Override
-                    public void handleEvent(Event arg0) {
-                        arg0.doit = false;
-                    }
-                });
+			@Override
+			public void handleEvent(Event arg0) {
+				arg0.doit = false;
+			}
+		});
 		connectionType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-			 * 	
+			 * 
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBLookupMediator.Connection.connectionType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getConnectionType()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+							DBLookupMediatorPropertiesEditionPartImpl.this,
+							EsbViewsRepository.DBLookupMediator.Connection.connectionType,
+							PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getConnectionType()));
 			}
 
 		});
 		connectionType.setID(EsbViewsRepository.DBLookupMediator.Connection.connectionType);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DBLookupMediator.Connection.connectionType, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(
+				EsbViewsRepository.DBLookupMediator.Connection.connectionType, EsbViewsRepository.SWT_KIND), null); // $NON-NLS-1$
 		// Start of user code for createConnectionTypeEMFComboViewer
 
 		// End of user code
@@ -1043,44 +1191,52 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 	 * @generated NOT
 	 */
 	protected Composite createConnectionDsTypeEMFComboViewer(Composite parent) {
-		createDescription(parent, EsbViewsRepository.DBLookupMediator.Connection.connectionDsType, EsbMessages.DBLookupMediatorPropertiesEditionPart_ConnectionDsTypeLabel);
+		createDescription(parent, EsbViewsRepository.DBLookupMediator.Connection.connectionDsType,
+				EsbMessages.DBLookupMediatorPropertiesEditionPart_ConnectionDsTypeLabel);
 		connectionDsType = new EMFComboViewer(parent);
 		connectionDsType.setContentProvider(new ArrayContentProvider());
-		connectionDsType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
+		connectionDsType
+				.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData connectionDsTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		connectionDsType.getCombo().setLayoutData(connectionDsTypeData);
-                connectionDsType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+		connectionDsType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                    @Override
-                    public void handleEvent(Event arg0) {
-                        arg0.doit = false;
-                    }
-                });
+			@Override
+			public void handleEvent(Event arg0) {
+				arg0.doit = false;
+			}
+		});
 		connectionDsType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-			 * 	
+			 * 
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBLookupMediator.Connection.connectionDsType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getConnectionDsType()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+							DBLookupMediatorPropertiesEditionPartImpl.this,
+							EsbViewsRepository.DBLookupMediator.Connection.connectionDsType,
+							PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getConnectionDsType()));
 			}
 
 		});
 		connectionDsType.setID(EsbViewsRepository.DBLookupMediator.Connection.connectionDsType);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DBLookupMediator.Connection.connectionDsType, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent,
+				propertiesEditionComponent.getHelpContent(
+						EsbViewsRepository.DBLookupMediator.Connection.connectionDsType, EsbViewsRepository.SWT_KIND),
+				null); // $NON-NLS-1$
 		// Start of user code for createConnectionDsTypeEMFComboViewer
 
 		// End of user code
 		return parent;
 	}
 
-	
 	protected Composite createConnectionDsInitialContextText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.DBLookupMediator.Connection.connectionDsInitialContext, EsbMessages.DBLookupMediatorPropertiesEditionPart_ConnectionDsInitialContextLabel);
+		createDescription(parent, EsbViewsRepository.DBLookupMediator.Connection.connectionDsInitialContext,
+				EsbMessages.DBLookupMediatorPropertiesEditionPart_ConnectionDsInitialContextLabel);
 		connectionDsInitialContext = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData connectionDsInitialContextData = new GridData(GridData.FILL_HORIZONTAL);
 		connectionDsInitialContext.setLayoutData(connectionDsInitialContextData);
@@ -1096,7 +1252,11 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBLookupMediator.Connection.connectionDsInitialContext, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, connectionDsInitialContext.getText()));
+					propertiesEditionComponent.firePropertiesChanged(
+							new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this,
+									EsbViewsRepository.DBLookupMediator.Connection.connectionDsInitialContext,
+									PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+									connectionDsInitialContext.getText()));
 			}
 
 		});
@@ -1113,14 +1273,23 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
 					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBLookupMediator.Connection.connectionDsInitialContext, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, connectionDsInitialContext.getText()));
+						propertiesEditionComponent.firePropertiesChanged(
+								new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this,
+										EsbViewsRepository.DBLookupMediator.Connection.connectionDsInitialContext,
+										PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+										connectionDsInitialContext.getText()));
 				}
 			}
 
 		});
-		EditingUtils.setID(connectionDsInitialContext, EsbViewsRepository.DBLookupMediator.Connection.connectionDsInitialContext);
+		EditingUtils.setID(connectionDsInitialContext,
+				EsbViewsRepository.DBLookupMediator.Connection.connectionDsInitialContext);
 		EditingUtils.setEEFtype(connectionDsInitialContext, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DBLookupMediator.Connection.connectionDsInitialContext, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent,
+				propertiesEditionComponent.getHelpContent(
+						EsbViewsRepository.DBLookupMediator.Connection.connectionDsInitialContext,
+						EsbViewsRepository.SWT_KIND),
+				null); // $NON-NLS-1$
 		// Start of user code for createConnectionDsInitialContextText
 
 		// End of user code
@@ -1131,44 +1300,52 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 	 * @generated NOT
 	 */
 	protected Composite createConnectionDbTypeEMFComboViewer(Composite parent) {
-		createDescription(parent, EsbViewsRepository.DBLookupMediator.Connection.connectionDbType, EsbMessages.DBLookupMediatorPropertiesEditionPart_ConnectionDbTypeLabel);
+		createDescription(parent, EsbViewsRepository.DBLookupMediator.Connection.connectionDbType,
+				EsbMessages.DBLookupMediatorPropertiesEditionPart_ConnectionDbTypeLabel);
 		connectionDbType = new EMFComboViewer(parent);
 		connectionDbType.setContentProvider(new ArrayContentProvider());
-		connectionDbType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
+		connectionDbType
+				.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData connectionDbTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		connectionDbType.getCombo().setLayoutData(connectionDbTypeData);
-                connectionDbType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+		connectionDbType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-                    @Override
-                    public void handleEvent(Event arg0) {
-                        arg0.doit = false;
-                    }
-                });
+			@Override
+			public void handleEvent(Event arg0) {
+				arg0.doit = false;
+			}
+		});
 		connectionDbType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-			 * 	
+			 * 
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBLookupMediator.Connection.connectionDbType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getConnectionDbType()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+							DBLookupMediatorPropertiesEditionPartImpl.this,
+							EsbViewsRepository.DBLookupMediator.Connection.connectionDbType,
+							PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getConnectionDbType()));
 			}
 
 		});
 		connectionDbType.setID(EsbViewsRepository.DBLookupMediator.Connection.connectionDbType);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DBLookupMediator.Connection.connectionDbType, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent,
+				propertiesEditionComponent.getHelpContent(
+						EsbViewsRepository.DBLookupMediator.Connection.connectionDbType, EsbViewsRepository.SWT_KIND),
+				null); // $NON-NLS-1$
 		// Start of user code for createConnectionDbTypeEMFComboViewer
 
 		// End of user code
 		return parent;
 	}
 
-	
 	protected Composite createConnectionDbDriverText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.DBLookupMediator.Connection.connectionDbDriver, EsbMessages.DBLookupMediatorPropertiesEditionPart_ConnectionDbDriverLabel);
+		createDescription(parent, EsbViewsRepository.DBLookupMediator.Connection.connectionDbDriver,
+				EsbMessages.DBLookupMediatorPropertiesEditionPart_ConnectionDbDriverLabel);
 		connectionDbDriver = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData connectionDbDriverData = new GridData(GridData.FILL_HORIZONTAL);
 		connectionDbDriver.setLayoutData(connectionDbDriverData);
@@ -1184,7 +1361,11 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBLookupMediator.Connection.connectionDbDriver, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, connectionDbDriver.getText()));
+					propertiesEditionComponent.firePropertiesChanged(
+							new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this,
+									EsbViewsRepository.DBLookupMediator.Connection.connectionDbDriver,
+									PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+									connectionDbDriver.getText()));
 			}
 
 		});
@@ -1201,23 +1382,30 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
 					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBLookupMediator.Connection.connectionDbDriver, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, connectionDbDriver.getText()));
+						propertiesEditionComponent.firePropertiesChanged(
+								new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this,
+										EsbViewsRepository.DBLookupMediator.Connection.connectionDbDriver,
+										PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+										connectionDbDriver.getText()));
 				}
 			}
 
 		});
 		EditingUtils.setID(connectionDbDriver, EsbViewsRepository.DBLookupMediator.Connection.connectionDbDriver);
 		EditingUtils.setEEFtype(connectionDbDriver, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DBLookupMediator.Connection.connectionDbDriver, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent,
+				propertiesEditionComponent.getHelpContent(
+						EsbViewsRepository.DBLookupMediator.Connection.connectionDbDriver, EsbViewsRepository.SWT_KIND),
+				null); // $NON-NLS-1$
 		// Start of user code for createConnectionDbDriverText
 
 		// End of user code
 		return parent;
 	}
 
-	
 	protected Composite createConnectionDsNameText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.DBLookupMediator.Connection.connectionDsName, EsbMessages.DBLookupMediatorPropertiesEditionPart_ConnectionDsNameLabel);
+		createDescription(parent, EsbViewsRepository.DBLookupMediator.Connection.connectionDsName,
+				EsbMessages.DBLookupMediatorPropertiesEditionPart_ConnectionDsNameLabel);
 		connectionDsName = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData connectionDsNameData = new GridData(GridData.FILL_HORIZONTAL);
 		connectionDsName.setLayoutData(connectionDsNameData);
@@ -1233,7 +1421,11 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBLookupMediator.Connection.connectionDsName, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, connectionDsName.getText()));
+					propertiesEditionComponent.firePropertiesChanged(
+							new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this,
+									EsbViewsRepository.DBLookupMediator.Connection.connectionDsName,
+									PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+									connectionDsName.getText()));
 			}
 
 		});
@@ -1250,23 +1442,30 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
 					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBLookupMediator.Connection.connectionDsName, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, connectionDsName.getText()));
+						propertiesEditionComponent.firePropertiesChanged(
+								new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this,
+										EsbViewsRepository.DBLookupMediator.Connection.connectionDsName,
+										PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+										connectionDsName.getText()));
 				}
 			}
 
 		});
 		EditingUtils.setID(connectionDsName, EsbViewsRepository.DBLookupMediator.Connection.connectionDsName);
 		EditingUtils.setEEFtype(connectionDsName, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DBLookupMediator.Connection.connectionDsName, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent,
+				propertiesEditionComponent.getHelpContent(
+						EsbViewsRepository.DBLookupMediator.Connection.connectionDsName, EsbViewsRepository.SWT_KIND),
+				null); // $NON-NLS-1$
 		// Start of user code for createConnectionDsNameText
 
 		// End of user code
 		return parent;
 	}
 
-	
 	protected Composite createConnectionURLText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.DBLookupMediator.Connection.connectionURL, EsbMessages.DBLookupMediatorPropertiesEditionPart_ConnectionURLLabel);
+		createDescription(parent, EsbViewsRepository.DBLookupMediator.Connection.connectionURL,
+				EsbMessages.DBLookupMediatorPropertiesEditionPart_ConnectionURLLabel);
 		connectionURL = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData connectionURLData = new GridData(GridData.FILL_HORIZONTAL);
 		connectionURL.setLayoutData(connectionURLData);
@@ -1282,7 +1481,10 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBLookupMediator.Connection.connectionURL, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, connectionURL.getText()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+							DBLookupMediatorPropertiesEditionPartImpl.this,
+							EsbViewsRepository.DBLookupMediator.Connection.connectionURL, PropertiesEditionEvent.COMMIT,
+							PropertiesEditionEvent.SET, null, connectionURL.getText()));
 			}
 
 		});
@@ -1299,23 +1501,28 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
 					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBLookupMediator.Connection.connectionURL, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, connectionURL.getText()));
+						propertiesEditionComponent.firePropertiesChanged(
+								new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this,
+										EsbViewsRepository.DBLookupMediator.Connection.connectionURL,
+										PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+										connectionURL.getText()));
 				}
 			}
 
 		});
 		EditingUtils.setID(connectionURL, EsbViewsRepository.DBLookupMediator.Connection.connectionURL);
 		EditingUtils.setEEFtype(connectionURL, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DBLookupMediator.Connection.connectionURL, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(
+				EsbViewsRepository.DBLookupMediator.Connection.connectionURL, EsbViewsRepository.SWT_KIND), null); // $NON-NLS-1$
 		// Start of user code for createConnectionURLText
 
 		// End of user code
 		return parent;
 	}
 
-	
 	protected Composite createConnectionUsernameText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.DBLookupMediator.Connection.connectionUsername, EsbMessages.DBLookupMediatorPropertiesEditionPart_ConnectionUsernameLabel);
+		createDescription(parent, EsbViewsRepository.DBLookupMediator.Connection.connectionUsername,
+				EsbMessages.DBLookupMediatorPropertiesEditionPart_ConnectionUsernameLabel);
 		connectionUsername = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData connectionUsernameData = new GridData(GridData.FILL_HORIZONTAL);
 		connectionUsername.setLayoutData(connectionUsernameData);
@@ -1331,7 +1538,11 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBLookupMediator.Connection.connectionUsername, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, connectionUsername.getText()));
+					propertiesEditionComponent.firePropertiesChanged(
+							new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this,
+									EsbViewsRepository.DBLookupMediator.Connection.connectionUsername,
+									PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+									connectionUsername.getText()));
 			}
 
 		});
@@ -1348,23 +1559,30 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
 					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBLookupMediator.Connection.connectionUsername, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, connectionUsername.getText()));
+						propertiesEditionComponent.firePropertiesChanged(
+								new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this,
+										EsbViewsRepository.DBLookupMediator.Connection.connectionUsername,
+										PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+										connectionUsername.getText()));
 				}
 			}
 
 		});
 		EditingUtils.setID(connectionUsername, EsbViewsRepository.DBLookupMediator.Connection.connectionUsername);
 		EditingUtils.setEEFtype(connectionUsername, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DBLookupMediator.Connection.connectionUsername, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent,
+				propertiesEditionComponent.getHelpContent(
+						EsbViewsRepository.DBLookupMediator.Connection.connectionUsername, EsbViewsRepository.SWT_KIND),
+				null); // $NON-NLS-1$
 		// Start of user code for createConnectionUsernameText
 
 		// End of user code
 		return parent;
 	}
 
-	
 	protected Composite createConnectionPasswordText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.DBLookupMediator.Connection.connectionPassword, EsbMessages.DBLookupMediatorPropertiesEditionPart_ConnectionPasswordLabel);
+		createDescription(parent, EsbViewsRepository.DBLookupMediator.Connection.connectionPassword,
+				EsbMessages.DBLookupMediatorPropertiesEditionPart_ConnectionPasswordLabel);
 		connectionPassword = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData connectionPasswordData = new GridData(GridData.FILL_HORIZONTAL);
 		connectionPassword.setLayoutData(connectionPasswordData);
@@ -1380,7 +1598,11 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBLookupMediator.Connection.connectionPassword, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, connectionPassword.getText()));
+					propertiesEditionComponent.firePropertiesChanged(
+							new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this,
+									EsbViewsRepository.DBLookupMediator.Connection.connectionPassword,
+									PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+									connectionPassword.getText()));
 			}
 
 		});
@@ -1397,15 +1619,182 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
 					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBLookupMediator.Connection.connectionPassword, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, connectionPassword.getText()));
+						propertiesEditionComponent.firePropertiesChanged(
+								new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this,
+										EsbViewsRepository.DBLookupMediator.Connection.connectionPassword,
+										PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+										connectionPassword.getText()));
 				}
 			}
 
 		});
 		EditingUtils.setID(connectionPassword, EsbViewsRepository.DBLookupMediator.Connection.connectionPassword);
 		EditingUtils.setEEFtype(connectionPassword, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DBLookupMediator.Connection.connectionPassword, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent,
+				propertiesEditionComponent.getHelpContent(
+						EsbViewsRepository.DBLookupMediator.Connection.connectionPassword, EsbViewsRepository.SWT_KIND),
+				null); // $NON-NLS-1$
 		// Start of user code for createConnectionPasswordText
+
+		// End of user code
+		return parent;
+	}
+
+	protected Composite createIsRegistryBasedDriverConfigCheckbox(Composite parent) {
+		isRegistryBasedDriverConfig = new Button(parent, SWT.CHECK);
+		isRegistryBasedDriverConfig
+				.setText(getDescription(EsbViewsRepository.DBLookupMediator.Connection.isRegistryBasedDriverConfig,
+						EsbMessages.DBLookupMediatorPropertiesEditionPart_IsRegistryBasedDriverConfigLabel));
+		isRegistryBasedDriverConfig.addSelectionListener(new SelectionAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 *
+			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 * 
+			 */
+			public void widgetSelected(SelectionEvent e) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(
+							new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this,
+									EsbViewsRepository.DBLookupMediator.Connection.isRegistryBasedDriverConfig,
+									PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+									new Boolean(isRegistryBasedDriverConfig.getSelection())));
+			}
+
+		});
+		GridData isRegistryBasedDriverConfigData = new GridData(GridData.FILL_HORIZONTAL);
+		isRegistryBasedDriverConfigData.horizontalSpan = 2;
+		isRegistryBasedDriverConfig.setLayoutData(isRegistryBasedDriverConfigData);
+		EditingUtils.setID(isRegistryBasedDriverConfig,
+				EsbViewsRepository.DBLookupMediator.Connection.isRegistryBasedDriverConfig);
+		EditingUtils.setEEFtype(isRegistryBasedDriverConfig, "eef::Checkbox"); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent,
+				propertiesEditionComponent.getHelpContent(
+						EsbViewsRepository.DBLookupMediator.Connection.isRegistryBasedDriverConfig,
+						EsbViewsRepository.SWT_KIND),
+				null); // $NON-NLS-1$
+		// Start of user code for createIsRegistryBasedDriverConfigCheckbox
+
+		// End of user code
+		return parent;
+	}
+
+	protected Composite createIsRegistryBasedUrlConfigCheckbox(Composite parent) {
+		isRegistryBasedUrlConfig = new Button(parent, SWT.CHECK);
+		isRegistryBasedUrlConfig
+				.setText(getDescription(EsbViewsRepository.DBLookupMediator.Connection.isRegistryBasedUrlConfig,
+						EsbMessages.DBLookupMediatorPropertiesEditionPart_IsRegistryBasedUrlConfigLabel));
+		isRegistryBasedUrlConfig.addSelectionListener(new SelectionAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 *
+			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 * 
+			 */
+			public void widgetSelected(SelectionEvent e) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(
+							new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this,
+									EsbViewsRepository.DBLookupMediator.Connection.isRegistryBasedUrlConfig,
+									PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+									new Boolean(isRegistryBasedUrlConfig.getSelection())));
+			}
+
+		});
+		GridData isRegistryBasedUrlConfigData = new GridData(GridData.FILL_HORIZONTAL);
+		isRegistryBasedUrlConfigData.horizontalSpan = 2;
+		isRegistryBasedUrlConfig.setLayoutData(isRegistryBasedUrlConfigData);
+		EditingUtils.setID(isRegistryBasedUrlConfig,
+				EsbViewsRepository.DBLookupMediator.Connection.isRegistryBasedUrlConfig);
+		EditingUtils.setEEFtype(isRegistryBasedUrlConfig, "eef::Checkbox"); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent,
+				propertiesEditionComponent.getHelpContent(
+						EsbViewsRepository.DBLookupMediator.Connection.isRegistryBasedUrlConfig,
+						EsbViewsRepository.SWT_KIND),
+				null); // $NON-NLS-1$
+		// Start of user code for createIsRegistryBasedUrlConfigCheckbox
+
+		// End of user code
+		return parent;
+	}
+
+	protected Composite createIsRegistryBasedUserConfigCheckbox(Composite parent) {
+		isRegistryBasedUserConfig = new Button(parent, SWT.CHECK);
+		isRegistryBasedUserConfig
+				.setText(getDescription(EsbViewsRepository.DBLookupMediator.Connection.isRegistryBasedUserConfig,
+						EsbMessages.DBLookupMediatorPropertiesEditionPart_IsRegistryBasedUserConfigLabel));
+		isRegistryBasedUserConfig.addSelectionListener(new SelectionAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 *
+			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 * 
+			 */
+			public void widgetSelected(SelectionEvent e) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(
+							new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this,
+									EsbViewsRepository.DBLookupMediator.Connection.isRegistryBasedUserConfig,
+									PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+									new Boolean(isRegistryBasedUserConfig.getSelection())));
+			}
+
+		});
+		GridData isRegistryBasedUserConfigData = new GridData(GridData.FILL_HORIZONTAL);
+		isRegistryBasedUserConfigData.horizontalSpan = 2;
+		isRegistryBasedUserConfig.setLayoutData(isRegistryBasedUserConfigData);
+		EditingUtils.setID(isRegistryBasedUserConfig,
+				EsbViewsRepository.DBLookupMediator.Connection.isRegistryBasedUserConfig);
+		EditingUtils.setEEFtype(isRegistryBasedUserConfig, "eef::Checkbox"); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent,
+				propertiesEditionComponent.getHelpContent(
+						EsbViewsRepository.DBLookupMediator.Connection.isRegistryBasedUserConfig,
+						EsbViewsRepository.SWT_KIND),
+				null); // $NON-NLS-1$
+		// Start of user code for createIsRegistryBasedUserConfigCheckbox
+
+		// End of user code
+		return parent;
+	}
+
+	protected Composite createIsRegistryBasedPassConfigCheckbox(Composite parent) {
+		isRegistryBasedPassConfig = new Button(parent, SWT.CHECK);
+		isRegistryBasedPassConfig
+				.setText(getDescription(EsbViewsRepository.DBLookupMediator.Connection.isRegistryBasedPassConfig,
+						EsbMessages.DBLookupMediatorPropertiesEditionPart_IsRegistryBasedPassConfigLabel));
+		isRegistryBasedPassConfig.addSelectionListener(new SelectionAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 *
+			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 * 
+			 */
+			public void widgetSelected(SelectionEvent e) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(
+							new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this,
+									EsbViewsRepository.DBLookupMediator.Connection.isRegistryBasedPassConfig,
+									PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+									new Boolean(isRegistryBasedPassConfig.getSelection())));
+			}
+
+		});
+		GridData isRegistryBasedPassConfigData = new GridData(GridData.FILL_HORIZONTAL);
+		isRegistryBasedPassConfigData.horizontalSpan = 2;
+		isRegistryBasedPassConfig.setLayoutData(isRegistryBasedPassConfigData);
+		EditingUtils.setID(isRegistryBasedPassConfig,
+				EsbViewsRepository.DBLookupMediator.Connection.isRegistryBasedPassConfig);
+		EditingUtils.setEEFtype(isRegistryBasedPassConfig, "eef::Checkbox"); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent,
+				propertiesEditionComponent.getHelpContent(
+						EsbViewsRepository.DBLookupMediator.Connection.isRegistryBasedPassConfig,
+						EsbViewsRepository.SWT_KIND),
+				null); // $NON-NLS-1$
+		// Start of user code for createIsRegistryBasedPassConfigCheckbox
 
 		// End of user code
 		return parent;
@@ -1431,38 +1820,62 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 	 * 
 	 */
 	protected Composite createSqlStatementsAdvancedTableComposition(Composite parent) {
-		this.sqlStatements = new ReferencesTable(getDescription(EsbViewsRepository.DBLookupMediator.Statements.sqlStatements, EsbMessages.DBLookupMediatorPropertiesEditionPart_SqlStatementsLabel), new ReferencesTableListener() {
-			public void handleAdd() { 
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBLookupMediator.Statements.sqlStatements, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
-				sqlStatements.refresh();
-			}
-			public void handleEdit(EObject element) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBLookupMediator.Statements.sqlStatements, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
-				sqlStatements.refresh();
-			}
-			public void handleMove(EObject element, int oldIndex, int newIndex) { 
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBLookupMediator.Statements.sqlStatements, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
-				sqlStatements.refresh();
-			}
-			public void handleRemove(EObject element) { 
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBLookupMediator.Statements.sqlStatements, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
-				sqlStatements.refresh();
-			}
-			public void navigateTo(EObject element) { }
-		});
+		this.sqlStatements = new ReferencesTable(
+				getDescription(EsbViewsRepository.DBLookupMediator.Statements.sqlStatements,
+						EsbMessages.DBLookupMediatorPropertiesEditionPart_SqlStatementsLabel),
+				new ReferencesTableListener() {
+					public void handleAdd() {
+						propertiesEditionComponent.firePropertiesChanged(
+								new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this,
+										EsbViewsRepository.DBLookupMediator.Statements.sqlStatements,
+										PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
+						sqlStatements.refresh();
+					}
+
+					public void handleEdit(EObject element) {
+						propertiesEditionComponent.firePropertiesChanged(
+								new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this,
+										EsbViewsRepository.DBLookupMediator.Statements.sqlStatements,
+										PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
+						sqlStatements.refresh();
+					}
+
+					public void handleMove(EObject element, int oldIndex, int newIndex) {
+						propertiesEditionComponent.firePropertiesChanged(
+								new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this,
+										EsbViewsRepository.DBLookupMediator.Statements.sqlStatements,
+										PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
+						sqlStatements.refresh();
+					}
+
+					public void handleRemove(EObject element) {
+						propertiesEditionComponent.firePropertiesChanged(
+								new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this,
+										EsbViewsRepository.DBLookupMediator.Statements.sqlStatements,
+										PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+						sqlStatements.refresh();
+					}
+
+					public void navigateTo(EObject element) {
+					}
+				});
 		for (ViewerFilter filter : this.sqlStatementsFilters) {
 			this.sqlStatements.addFilter(filter);
 		}
-		this.sqlStatements.setHelpText(propertiesEditionComponent.getHelpContent(EsbViewsRepository.DBLookupMediator.Statements.sqlStatements, EsbViewsRepository.SWT_KIND));
+		this.sqlStatements.setHelpText(propertiesEditionComponent.getHelpContent(
+				EsbViewsRepository.DBLookupMediator.Statements.sqlStatements, EsbViewsRepository.SWT_KIND));
 		this.sqlStatements.createControls(parent);
 		this.sqlStatements.addSelectionListener(new SelectionAdapter() {
-			
+
 			public void widgetSelected(SelectionEvent e) {
 				if (e.item != null && e.item.getData() instanceof EObject) {
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DBLookupMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DBLookupMediator.Statements.sqlStatements, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+							DBLookupMediatorPropertiesEditionPartImpl.this,
+							EsbViewsRepository.DBLookupMediator.Statements.sqlStatements, PropertiesEditionEvent.CHANGE,
+							PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
 				}
 			}
-			
+
 		});
 		GridData sqlStatementsData = new GridData(GridData.FILL_HORIZONTAL);
 		sqlStatementsData.horizontalSpan = 3;
@@ -1477,7 +1890,6 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 		return parent;
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -1486,7 +1898,7 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-		
+
 		// End of user code
 	}
 
@@ -1503,7 +1915,8 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setCommentsList(EList newValue)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setCommentsList(EList
+	 *      newValue)
 	 * 
 	 */
 	public void setCommentsList(EList newValue) {
@@ -1519,8 +1932,8 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 			commentsList.setToolTipText(EsbMessages.DBLookupMediator_ReadOnly);
 		} else if (!eefElementEditorReadOnlyState && !commentsList.isEnabled()) {
 			commentsList.setEnabled(true);
-		}	
-		
+		}
+
 	}
 
 	public void addToCommentsList(Object newValue) {
@@ -1554,7 +1967,8 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setReverse(Boolean newValue)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setReverse(Boolean
+	 *      newValue)
 	 * 
 	 */
 	public void setReverse(Boolean newValue) {
@@ -1569,8 +1983,8 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 			reverse.setToolTipText(EsbMessages.DBLookupMediator_ReadOnly);
 		} else if (!eefElementEditorReadOnlyState && !reverse.isEnabled()) {
 			reverse.setEnabled(true);
-		}	
-		
+		}
+
 	}
 
 	/**
@@ -1587,37 +2001,41 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#initPropertyAutocommit(Object input, Enumerator current)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#initPropertyAutocommit(Object
+	 *      input, Enumerator current)
 	 */
 	public void initPropertyAutocommit(Object input, Enumerator current) {
 		propertyAutocommit.setInput(input);
 		propertyAutocommit.modelUpdating(new StructuredSelection(current));
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.DBLookupMediator.Properties.propertyAutocommit);
+		boolean eefElementEditorReadOnlyState = isReadOnly(
+				EsbViewsRepository.DBLookupMediator.Properties.propertyAutocommit);
 		if (eefElementEditorReadOnlyState && propertyAutocommit.isEnabled()) {
 			propertyAutocommit.setEnabled(false);
 			propertyAutocommit.setToolTipText(EsbMessages.DBLookupMediator_ReadOnly);
 		} else if (!eefElementEditorReadOnlyState && !propertyAutocommit.isEnabled()) {
 			propertyAutocommit.setEnabled(true);
-		}	
-		
+		}
+
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setPropertyAutocommit(Enumerator newValue)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setPropertyAutocommit(Enumerator
+	 *      newValue)
 	 * 
 	 */
 	public void setPropertyAutocommit(Enumerator newValue) {
 		propertyAutocommit.modelUpdating(new StructuredSelection(newValue));
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.DBLookupMediator.Properties.propertyAutocommit);
+		boolean eefElementEditorReadOnlyState = isReadOnly(
+				EsbViewsRepository.DBLookupMediator.Properties.propertyAutocommit);
 		if (eefElementEditorReadOnlyState && propertyAutocommit.isEnabled()) {
 			propertyAutocommit.setEnabled(false);
 			propertyAutocommit.setToolTipText(EsbMessages.DBLookupMediator_ReadOnly);
 		} else if (!eefElementEditorReadOnlyState && !propertyAutocommit.isEnabled()) {
 			propertyAutocommit.setEnabled(true);
-		}	
-		
+		}
+
 	}
 
 	/**
@@ -1634,37 +2052,41 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#initPropertyIsolation(Object input, Enumerator current)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#initPropertyIsolation(Object
+	 *      input, Enumerator current)
 	 */
 	public void initPropertyIsolation(Object input, Enumerator current) {
 		propertyIsolation.setInput(input);
 		propertyIsolation.modelUpdating(new StructuredSelection(current));
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.DBLookupMediator.Properties.propertyIsolation);
+		boolean eefElementEditorReadOnlyState = isReadOnly(
+				EsbViewsRepository.DBLookupMediator.Properties.propertyIsolation);
 		if (eefElementEditorReadOnlyState && propertyIsolation.isEnabled()) {
 			propertyIsolation.setEnabled(false);
 			propertyIsolation.setToolTipText(EsbMessages.DBLookupMediator_ReadOnly);
 		} else if (!eefElementEditorReadOnlyState && !propertyIsolation.isEnabled()) {
 			propertyIsolation.setEnabled(true);
-		}	
-		
+		}
+
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setPropertyIsolation(Enumerator newValue)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setPropertyIsolation(Enumerator
+	 *      newValue)
 	 * 
 	 */
 	public void setPropertyIsolation(Enumerator newValue) {
 		propertyIsolation.modelUpdating(new StructuredSelection(newValue));
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.DBLookupMediator.Properties.propertyIsolation);
+		boolean eefElementEditorReadOnlyState = isReadOnly(
+				EsbViewsRepository.DBLookupMediator.Properties.propertyIsolation);
 		if (eefElementEditorReadOnlyState && propertyIsolation.isEnabled()) {
 			propertyIsolation.setEnabled(false);
 			propertyIsolation.setToolTipText(EsbMessages.DBLookupMediator_ReadOnly);
 		} else if (!eefElementEditorReadOnlyState && !propertyIsolation.isEnabled()) {
 			propertyIsolation.setEnabled(true);
-		}	
-		
+		}
+
 	}
 
 	/**
@@ -1680,7 +2102,8 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setPropertyMaxactive(String newValue)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setPropertyMaxactive(String
+	 *      newValue)
 	 * 
 	 */
 	public void setPropertyMaxactive(String newValue) {
@@ -1689,14 +2112,15 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 		} else {
 			propertyMaxactive.setText(""); //$NON-NLS-1$
 		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.DBLookupMediator.Properties.propertyMaxactive);
+		boolean eefElementEditorReadOnlyState = isReadOnly(
+				EsbViewsRepository.DBLookupMediator.Properties.propertyMaxactive);
 		if (eefElementEditorReadOnlyState && propertyMaxactive.isEnabled()) {
 			propertyMaxactive.setEnabled(false);
 			propertyMaxactive.setToolTipText(EsbMessages.DBLookupMediator_ReadOnly);
 		} else if (!eefElementEditorReadOnlyState && !propertyMaxactive.isEnabled()) {
 			propertyMaxactive.setEnabled(true);
-		}	
-		
+		}
+
 	}
 
 	/**
@@ -1712,7 +2136,8 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setPropertyMaxidle(String newValue)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setPropertyMaxidle(String
+	 *      newValue)
 	 * 
 	 */
 	public void setPropertyMaxidle(String newValue) {
@@ -1721,14 +2146,15 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 		} else {
 			propertyMaxidle.setText(""); //$NON-NLS-1$
 		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.DBLookupMediator.Properties.propertyMaxidle);
+		boolean eefElementEditorReadOnlyState = isReadOnly(
+				EsbViewsRepository.DBLookupMediator.Properties.propertyMaxidle);
 		if (eefElementEditorReadOnlyState && propertyMaxidle.isEnabled()) {
 			propertyMaxidle.setEnabled(false);
 			propertyMaxidle.setToolTipText(EsbMessages.DBLookupMediator_ReadOnly);
 		} else if (!eefElementEditorReadOnlyState && !propertyMaxidle.isEnabled()) {
 			propertyMaxidle.setEnabled(true);
-		}	
-		
+		}
+
 	}
 
 	/**
@@ -1744,7 +2170,8 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setPropertyMaxopenstatements(String newValue)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setPropertyMaxopenstatements(String
+	 *      newValue)
 	 * 
 	 */
 	public void setPropertyMaxopenstatements(String newValue) {
@@ -1753,14 +2180,15 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 		} else {
 			propertyMaxopenstatements.setText(""); //$NON-NLS-1$
 		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.DBLookupMediator.Properties.propertyMaxopenstatements);
+		boolean eefElementEditorReadOnlyState = isReadOnly(
+				EsbViewsRepository.DBLookupMediator.Properties.propertyMaxopenstatements);
 		if (eefElementEditorReadOnlyState && propertyMaxopenstatements.isEnabled()) {
 			propertyMaxopenstatements.setEnabled(false);
 			propertyMaxopenstatements.setToolTipText(EsbMessages.DBLookupMediator_ReadOnly);
 		} else if (!eefElementEditorReadOnlyState && !propertyMaxopenstatements.isEnabled()) {
 			propertyMaxopenstatements.setEnabled(true);
-		}	
-		
+		}
+
 	}
 
 	/**
@@ -1776,7 +2204,8 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setPropertyMaxwait(String newValue)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setPropertyMaxwait(String
+	 *      newValue)
 	 * 
 	 */
 	public void setPropertyMaxwait(String newValue) {
@@ -1785,14 +2214,15 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 		} else {
 			propertyMaxwait.setText(""); //$NON-NLS-1$
 		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.DBLookupMediator.Properties.propertyMaxwait);
+		boolean eefElementEditorReadOnlyState = isReadOnly(
+				EsbViewsRepository.DBLookupMediator.Properties.propertyMaxwait);
 		if (eefElementEditorReadOnlyState && propertyMaxwait.isEnabled()) {
 			propertyMaxwait.setEnabled(false);
 			propertyMaxwait.setToolTipText(EsbMessages.DBLookupMediator_ReadOnly);
 		} else if (!eefElementEditorReadOnlyState && !propertyMaxwait.isEnabled()) {
 			propertyMaxwait.setEnabled(true);
-		}	
-		
+		}
+
 	}
 
 	/**
@@ -1808,7 +2238,8 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setPropertyMinidle(String newValue)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setPropertyMinidle(String
+	 *      newValue)
 	 * 
 	 */
 	public void setPropertyMinidle(String newValue) {
@@ -1817,14 +2248,15 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 		} else {
 			propertyMinidle.setText(""); //$NON-NLS-1$
 		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.DBLookupMediator.Properties.propertyMinidle);
+		boolean eefElementEditorReadOnlyState = isReadOnly(
+				EsbViewsRepository.DBLookupMediator.Properties.propertyMinidle);
 		if (eefElementEditorReadOnlyState && propertyMinidle.isEnabled()) {
 			propertyMinidle.setEnabled(false);
 			propertyMinidle.setToolTipText(EsbMessages.DBLookupMediator_ReadOnly);
 		} else if (!eefElementEditorReadOnlyState && !propertyMinidle.isEnabled()) {
 			propertyMinidle.setEnabled(true);
-		}	
-		
+		}
+
 	}
 
 	/**
@@ -1834,44 +2266,49 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 	 * 
 	 */
 	public Enumerator getPropertyPoolstatements() {
-		Enumerator selection = (Enumerator) ((StructuredSelection) propertyPoolstatements.getSelection()).getFirstElement();
+		Enumerator selection = (Enumerator) ((StructuredSelection) propertyPoolstatements.getSelection())
+				.getFirstElement();
 		return selection;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#initPropertyPoolstatements(Object input, Enumerator current)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#initPropertyPoolstatements(Object
+	 *      input, Enumerator current)
 	 */
 	public void initPropertyPoolstatements(Object input, Enumerator current) {
 		propertyPoolstatements.setInput(input);
 		propertyPoolstatements.modelUpdating(new StructuredSelection(current));
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.DBLookupMediator.Properties.propertyPoolstatements);
+		boolean eefElementEditorReadOnlyState = isReadOnly(
+				EsbViewsRepository.DBLookupMediator.Properties.propertyPoolstatements);
 		if (eefElementEditorReadOnlyState && propertyPoolstatements.isEnabled()) {
 			propertyPoolstatements.setEnabled(false);
 			propertyPoolstatements.setToolTipText(EsbMessages.DBLookupMediator_ReadOnly);
 		} else if (!eefElementEditorReadOnlyState && !propertyPoolstatements.isEnabled()) {
 			propertyPoolstatements.setEnabled(true);
-		}	
-		
+		}
+
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setPropertyPoolstatements(Enumerator newValue)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setPropertyPoolstatements(Enumerator
+	 *      newValue)
 	 * 
 	 */
 	public void setPropertyPoolstatements(Enumerator newValue) {
 		propertyPoolstatements.modelUpdating(new StructuredSelection(newValue));
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.DBLookupMediator.Properties.propertyPoolstatements);
+		boolean eefElementEditorReadOnlyState = isReadOnly(
+				EsbViewsRepository.DBLookupMediator.Properties.propertyPoolstatements);
 		if (eefElementEditorReadOnlyState && propertyPoolstatements.isEnabled()) {
 			propertyPoolstatements.setEnabled(false);
 			propertyPoolstatements.setToolTipText(EsbMessages.DBLookupMediator_ReadOnly);
 		} else if (!eefElementEditorReadOnlyState && !propertyPoolstatements.isEnabled()) {
 			propertyPoolstatements.setEnabled(true);
-		}	
-		
+		}
+
 	}
 
 	/**
@@ -1881,44 +2318,49 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 	 * 
 	 */
 	public Enumerator getPropertyTestonborrow() {
-		Enumerator selection = (Enumerator) ((StructuredSelection) propertyTestonborrow.getSelection()).getFirstElement();
+		Enumerator selection = (Enumerator) ((StructuredSelection) propertyTestonborrow.getSelection())
+				.getFirstElement();
 		return selection;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#initPropertyTestonborrow(Object input, Enumerator current)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#initPropertyTestonborrow(Object
+	 *      input, Enumerator current)
 	 */
 	public void initPropertyTestonborrow(Object input, Enumerator current) {
 		propertyTestonborrow.setInput(input);
 		propertyTestonborrow.modelUpdating(new StructuredSelection(current));
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.DBLookupMediator.Properties.propertyTestonborrow);
+		boolean eefElementEditorReadOnlyState = isReadOnly(
+				EsbViewsRepository.DBLookupMediator.Properties.propertyTestonborrow);
 		if (eefElementEditorReadOnlyState && propertyTestonborrow.isEnabled()) {
 			propertyTestonborrow.setEnabled(false);
 			propertyTestonborrow.setToolTipText(EsbMessages.DBLookupMediator_ReadOnly);
 		} else if (!eefElementEditorReadOnlyState && !propertyTestonborrow.isEnabled()) {
 			propertyTestonborrow.setEnabled(true);
-		}	
-		
+		}
+
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setPropertyTestonborrow(Enumerator newValue)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setPropertyTestonborrow(Enumerator
+	 *      newValue)
 	 * 
 	 */
 	public void setPropertyTestonborrow(Enumerator newValue) {
 		propertyTestonborrow.modelUpdating(new StructuredSelection(newValue));
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.DBLookupMediator.Properties.propertyTestonborrow);
+		boolean eefElementEditorReadOnlyState = isReadOnly(
+				EsbViewsRepository.DBLookupMediator.Properties.propertyTestonborrow);
 		if (eefElementEditorReadOnlyState && propertyTestonborrow.isEnabled()) {
 			propertyTestonborrow.setEnabled(false);
 			propertyTestonborrow.setToolTipText(EsbMessages.DBLookupMediator_ReadOnly);
 		} else if (!eefElementEditorReadOnlyState && !propertyTestonborrow.isEnabled()) {
 			propertyTestonborrow.setEnabled(true);
-		}	
-		
+		}
+
 	}
 
 	/**
@@ -1928,44 +2370,49 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 	 * 
 	 */
 	public Enumerator getPropertyTestwhileidle() {
-		Enumerator selection = (Enumerator) ((StructuredSelection) propertyTestwhileidle.getSelection()).getFirstElement();
+		Enumerator selection = (Enumerator) ((StructuredSelection) propertyTestwhileidle.getSelection())
+				.getFirstElement();
 		return selection;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#initPropertyTestwhileidle(Object input, Enumerator current)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#initPropertyTestwhileidle(Object
+	 *      input, Enumerator current)
 	 */
 	public void initPropertyTestwhileidle(Object input, Enumerator current) {
 		propertyTestwhileidle.setInput(input);
 		propertyTestwhileidle.modelUpdating(new StructuredSelection(current));
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.DBLookupMediator.Properties.propertyTestwhileidle);
+		boolean eefElementEditorReadOnlyState = isReadOnly(
+				EsbViewsRepository.DBLookupMediator.Properties.propertyTestwhileidle);
 		if (eefElementEditorReadOnlyState && propertyTestwhileidle.isEnabled()) {
 			propertyTestwhileidle.setEnabled(false);
 			propertyTestwhileidle.setToolTipText(EsbMessages.DBLookupMediator_ReadOnly);
 		} else if (!eefElementEditorReadOnlyState && !propertyTestwhileidle.isEnabled()) {
 			propertyTestwhileidle.setEnabled(true);
-		}	
-		
+		}
+
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setPropertyTestwhileidle(Enumerator newValue)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setPropertyTestwhileidle(Enumerator
+	 *      newValue)
 	 * 
 	 */
 	public void setPropertyTestwhileidle(Enumerator newValue) {
 		propertyTestwhileidle.modelUpdating(new StructuredSelection(newValue));
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.DBLookupMediator.Properties.propertyTestwhileidle);
+		boolean eefElementEditorReadOnlyState = isReadOnly(
+				EsbViewsRepository.DBLookupMediator.Properties.propertyTestwhileidle);
 		if (eefElementEditorReadOnlyState && propertyTestwhileidle.isEnabled()) {
 			propertyTestwhileidle.setEnabled(false);
 			propertyTestwhileidle.setToolTipText(EsbMessages.DBLookupMediator_ReadOnly);
 		} else if (!eefElementEditorReadOnlyState && !propertyTestwhileidle.isEnabled()) {
 			propertyTestwhileidle.setEnabled(true);
-		}	
-		
+		}
+
 	}
 
 	/**
@@ -1981,7 +2428,8 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setPropertyValidationquery(String newValue)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setPropertyValidationquery(String
+	 *      newValue)
 	 * 
 	 */
 	public void setPropertyValidationquery(String newValue) {
@@ -1990,14 +2438,15 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 		} else {
 			propertyValidationquery.setText(""); //$NON-NLS-1$
 		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.DBLookupMediator.Properties.propertyValidationquery);
+		boolean eefElementEditorReadOnlyState = isReadOnly(
+				EsbViewsRepository.DBLookupMediator.Properties.propertyValidationquery);
 		if (eefElementEditorReadOnlyState && propertyValidationquery.isEnabled()) {
 			propertyValidationquery.setEnabled(false);
 			propertyValidationquery.setToolTipText(EsbMessages.DBLookupMediator_ReadOnly);
 		} else if (!eefElementEditorReadOnlyState && !propertyValidationquery.isEnabled()) {
 			propertyValidationquery.setEnabled(true);
-		}	
-		
+		}
+
 	}
 
 	/**
@@ -2013,7 +2462,8 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setPropertyInitialsize(String newValue)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setPropertyInitialsize(String
+	 *      newValue)
 	 * 
 	 */
 	public void setPropertyInitialsize(String newValue) {
@@ -2022,14 +2472,15 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 		} else {
 			propertyInitialsize.setText(""); //$NON-NLS-1$
 		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.DBLookupMediator.Properties.propertyInitialsize);
+		boolean eefElementEditorReadOnlyState = isReadOnly(
+				EsbViewsRepository.DBLookupMediator.Properties.propertyInitialsize);
 		if (eefElementEditorReadOnlyState && propertyInitialsize.isEnabled()) {
 			propertyInitialsize.setEnabled(false);
 			propertyInitialsize.setToolTipText(EsbMessages.DBLookupMediator_ReadOnly);
 		} else if (!eefElementEditorReadOnlyState && !propertyInitialsize.isEnabled()) {
 			propertyInitialsize.setEnabled(true);
-		}	
-		
+		}
+
 	}
 
 	/**
@@ -2045,7 +2496,8 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setDescription(String newValue)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setDescription(String
+	 *      newValue)
 	 * 
 	 */
 	public void setDescription(String newValue) {
@@ -2060,8 +2512,8 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 			description.setToolTipText(EsbMessages.DBLookupMediator_ReadOnly);
 		} else if (!eefElementEditorReadOnlyState && !description.isEnabled()) {
 			description.setEnabled(true);
-		}	
-		
+		}
+
 	}
 
 	/**
@@ -2078,37 +2530,41 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#initConnectionType(Object input, Enumerator current)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#initConnectionType(Object
+	 *      input, Enumerator current)
 	 */
 	public void initConnectionType(Object input, Enumerator current) {
 		connectionType.setInput(input);
 		connectionType.modelUpdating(new StructuredSelection(current));
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.DBLookupMediator.Connection.connectionType);
+		boolean eefElementEditorReadOnlyState = isReadOnly(
+				EsbViewsRepository.DBLookupMediator.Connection.connectionType);
 		if (eefElementEditorReadOnlyState && connectionType.isEnabled()) {
 			connectionType.setEnabled(false);
 			connectionType.setToolTipText(EsbMessages.DBLookupMediator_ReadOnly);
 		} else if (!eefElementEditorReadOnlyState && !connectionType.isEnabled()) {
 			connectionType.setEnabled(true);
-		}	
-		
+		}
+
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setConnectionType(Enumerator newValue)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setConnectionType(Enumerator
+	 *      newValue)
 	 * 
 	 */
 	public void setConnectionType(Enumerator newValue) {
 		connectionType.modelUpdating(new StructuredSelection(newValue));
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.DBLookupMediator.Connection.connectionType);
+		boolean eefElementEditorReadOnlyState = isReadOnly(
+				EsbViewsRepository.DBLookupMediator.Connection.connectionType);
 		if (eefElementEditorReadOnlyState && connectionType.isEnabled()) {
 			connectionType.setEnabled(false);
 			connectionType.setToolTipText(EsbMessages.DBLookupMediator_ReadOnly);
 		} else if (!eefElementEditorReadOnlyState && !connectionType.isEnabled()) {
 			connectionType.setEnabled(true);
-		}	
-		
+		}
+
 	}
 
 	/**
@@ -2125,37 +2581,41 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#initConnectionDsType(Object input, Enumerator current)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#initConnectionDsType(Object
+	 *      input, Enumerator current)
 	 */
 	public void initConnectionDsType(Object input, Enumerator current) {
 		connectionDsType.setInput(input);
 		connectionDsType.modelUpdating(new StructuredSelection(current));
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.DBLookupMediator.Connection.connectionDsType);
+		boolean eefElementEditorReadOnlyState = isReadOnly(
+				EsbViewsRepository.DBLookupMediator.Connection.connectionDsType);
 		if (eefElementEditorReadOnlyState && connectionDsType.isEnabled()) {
 			connectionDsType.setEnabled(false);
 			connectionDsType.setToolTipText(EsbMessages.DBLookupMediator_ReadOnly);
 		} else if (!eefElementEditorReadOnlyState && !connectionDsType.isEnabled()) {
 			connectionDsType.setEnabled(true);
-		}	
-		
+		}
+
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setConnectionDsType(Enumerator newValue)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setConnectionDsType(Enumerator
+	 *      newValue)
 	 * 
 	 */
 	public void setConnectionDsType(Enumerator newValue) {
 		connectionDsType.modelUpdating(new StructuredSelection(newValue));
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.DBLookupMediator.Connection.connectionDsType);
+		boolean eefElementEditorReadOnlyState = isReadOnly(
+				EsbViewsRepository.DBLookupMediator.Connection.connectionDsType);
 		if (eefElementEditorReadOnlyState && connectionDsType.isEnabled()) {
 			connectionDsType.setEnabled(false);
 			connectionDsType.setToolTipText(EsbMessages.DBLookupMediator_ReadOnly);
 		} else if (!eefElementEditorReadOnlyState && !connectionDsType.isEnabled()) {
 			connectionDsType.setEnabled(true);
-		}	
-		
+		}
+
 	}
 
 	/**
@@ -2171,7 +2631,8 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setConnectionDsInitialContext(String newValue)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setConnectionDsInitialContext(String
+	 *      newValue)
 	 * 
 	 */
 	public void setConnectionDsInitialContext(String newValue) {
@@ -2180,14 +2641,15 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 		} else {
 			connectionDsInitialContext.setText(""); //$NON-NLS-1$
 		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.DBLookupMediator.Connection.connectionDsInitialContext);
+		boolean eefElementEditorReadOnlyState = isReadOnly(
+				EsbViewsRepository.DBLookupMediator.Connection.connectionDsInitialContext);
 		if (eefElementEditorReadOnlyState && connectionDsInitialContext.isEnabled()) {
 			connectionDsInitialContext.setEnabled(false);
 			connectionDsInitialContext.setToolTipText(EsbMessages.DBLookupMediator_ReadOnly);
 		} else if (!eefElementEditorReadOnlyState && !connectionDsInitialContext.isEnabled()) {
 			connectionDsInitialContext.setEnabled(true);
-		}	
-		
+		}
+
 	}
 
 	/**
@@ -2204,37 +2666,41 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#initConnectionDbType(Object input, Enumerator current)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#initConnectionDbType(Object
+	 *      input, Enumerator current)
 	 */
 	public void initConnectionDbType(Object input, Enumerator current) {
 		connectionDbType.setInput(input);
 		connectionDbType.modelUpdating(new StructuredSelection(current));
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.DBLookupMediator.Connection.connectionDbType);
+		boolean eefElementEditorReadOnlyState = isReadOnly(
+				EsbViewsRepository.DBLookupMediator.Connection.connectionDbType);
 		if (eefElementEditorReadOnlyState && connectionDbType.isEnabled()) {
 			connectionDbType.setEnabled(false);
 			connectionDbType.setToolTipText(EsbMessages.DBLookupMediator_ReadOnly);
 		} else if (!eefElementEditorReadOnlyState && !connectionDbType.isEnabled()) {
 			connectionDbType.setEnabled(true);
-		}	
-		
+		}
+
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setConnectionDbType(Enumerator newValue)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setConnectionDbType(Enumerator
+	 *      newValue)
 	 * 
 	 */
 	public void setConnectionDbType(Enumerator newValue) {
 		connectionDbType.modelUpdating(new StructuredSelection(newValue));
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.DBLookupMediator.Connection.connectionDbType);
+		boolean eefElementEditorReadOnlyState = isReadOnly(
+				EsbViewsRepository.DBLookupMediator.Connection.connectionDbType);
 		if (eefElementEditorReadOnlyState && connectionDbType.isEnabled()) {
 			connectionDbType.setEnabled(false);
 			connectionDbType.setToolTipText(EsbMessages.DBLookupMediator_ReadOnly);
 		} else if (!eefElementEditorReadOnlyState && !connectionDbType.isEnabled()) {
 			connectionDbType.setEnabled(true);
-		}	
-		
+		}
+
 	}
 
 	/**
@@ -2250,7 +2716,8 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setConnectionDbDriver(String newValue)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setConnectionDbDriver(String
+	 *      newValue)
 	 * 
 	 */
 	public void setConnectionDbDriver(String newValue) {
@@ -2259,14 +2726,15 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 		} else {
 			connectionDbDriver.setText(""); //$NON-NLS-1$
 		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.DBLookupMediator.Connection.connectionDbDriver);
+		boolean eefElementEditorReadOnlyState = isReadOnly(
+				EsbViewsRepository.DBLookupMediator.Connection.connectionDbDriver);
 		if (eefElementEditorReadOnlyState && connectionDbDriver.isEnabled()) {
 			connectionDbDriver.setEnabled(false);
 			connectionDbDriver.setToolTipText(EsbMessages.DBLookupMediator_ReadOnly);
 		} else if (!eefElementEditorReadOnlyState && !connectionDbDriver.isEnabled()) {
 			connectionDbDriver.setEnabled(true);
-		}	
-		
+		}
+
 	}
 
 	/**
@@ -2282,7 +2750,8 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setConnectionDsName(String newValue)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setConnectionDsName(String
+	 *      newValue)
 	 * 
 	 */
 	public void setConnectionDsName(String newValue) {
@@ -2291,14 +2760,15 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 		} else {
 			connectionDsName.setText(""); //$NON-NLS-1$
 		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.DBLookupMediator.Connection.connectionDsName);
+		boolean eefElementEditorReadOnlyState = isReadOnly(
+				EsbViewsRepository.DBLookupMediator.Connection.connectionDsName);
 		if (eefElementEditorReadOnlyState && connectionDsName.isEnabled()) {
 			connectionDsName.setEnabled(false);
 			connectionDsName.setToolTipText(EsbMessages.DBLookupMediator_ReadOnly);
 		} else if (!eefElementEditorReadOnlyState && !connectionDsName.isEnabled()) {
 			connectionDsName.setEnabled(true);
-		}	
-		
+		}
+
 	}
 
 	/**
@@ -2314,7 +2784,8 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setConnectionURL(String newValue)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setConnectionURL(String
+	 *      newValue)
 	 * 
 	 */
 	public void setConnectionURL(String newValue) {
@@ -2323,14 +2794,15 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 		} else {
 			connectionURL.setText(""); //$NON-NLS-1$
 		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.DBLookupMediator.Connection.connectionURL);
+		boolean eefElementEditorReadOnlyState = isReadOnly(
+				EsbViewsRepository.DBLookupMediator.Connection.connectionURL);
 		if (eefElementEditorReadOnlyState && connectionURL.isEnabled()) {
 			connectionURL.setEnabled(false);
 			connectionURL.setToolTipText(EsbMessages.DBLookupMediator_ReadOnly);
 		} else if (!eefElementEditorReadOnlyState && !connectionURL.isEnabled()) {
 			connectionURL.setEnabled(true);
-		}	
-		
+		}
+
 	}
 
 	/**
@@ -2346,7 +2818,8 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setConnectionUsername(String newValue)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setConnectionUsername(String
+	 *      newValue)
 	 * 
 	 */
 	public void setConnectionUsername(String newValue) {
@@ -2355,14 +2828,15 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 		} else {
 			connectionUsername.setText(""); //$NON-NLS-1$
 		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.DBLookupMediator.Connection.connectionUsername);
+		boolean eefElementEditorReadOnlyState = isReadOnly(
+				EsbViewsRepository.DBLookupMediator.Connection.connectionUsername);
 		if (eefElementEditorReadOnlyState && connectionUsername.isEnabled()) {
 			connectionUsername.setEnabled(false);
 			connectionUsername.setToolTipText(EsbMessages.DBLookupMediator_ReadOnly);
 		} else if (!eefElementEditorReadOnlyState && !connectionUsername.isEnabled()) {
 			connectionUsername.setEnabled(true);
-		}	
-		
+		}
+
 	}
 
 	/**
@@ -2378,7 +2852,8 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setConnectionPassword(String newValue)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setConnectionPassword(String
+	 *      newValue)
 	 * 
 	 */
 	public void setConnectionPassword(String newValue) {
@@ -2387,22 +2862,158 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 		} else {
 			connectionPassword.setText(""); //$NON-NLS-1$
 		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.DBLookupMediator.Connection.connectionPassword);
+		boolean eefElementEditorReadOnlyState = isReadOnly(
+				EsbViewsRepository.DBLookupMediator.Connection.connectionPassword);
 		if (eefElementEditorReadOnlyState && connectionPassword.isEnabled()) {
 			connectionPassword.setEnabled(false);
 			connectionPassword.setToolTipText(EsbMessages.DBLookupMediator_ReadOnly);
 		} else if (!eefElementEditorReadOnlyState && !connectionPassword.isEnabled()) {
 			connectionPassword.setEnabled(true);
-		}	
-		
+		}
+
 	}
-
-
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#initSqlStatements(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#getIsRegistryBasedDriverConfig()
+	 * 
+	 */
+	public Boolean getIsRegistryBasedDriverConfig() {
+		return Boolean.valueOf(isRegistryBasedDriverConfig.getSelection());
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setIsRegistryBasedDriverConfig(Boolean
+	 *      newValue)
+	 * 
+	 */
+	public void setIsRegistryBasedDriverConfig(Boolean newValue) {
+		if (newValue != null) {
+			isRegistryBasedDriverConfig.setSelection(newValue.booleanValue());
+		} else {
+			isRegistryBasedDriverConfig.setSelection(false);
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(
+				EsbViewsRepository.DBLookupMediator.Connection.isRegistryBasedDriverConfig);
+		if (eefElementEditorReadOnlyState && isRegistryBasedDriverConfig.isEnabled()) {
+			isRegistryBasedDriverConfig.setEnabled(false);
+			isRegistryBasedDriverConfig.setToolTipText(EsbMessages.DBLookupMediator_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !isRegistryBasedDriverConfig.isEnabled()) {
+			isRegistryBasedDriverConfig.setEnabled(true);
+		}
+
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#getIsRegistryBasedUrlConfig()
+	 * 
+	 */
+	public Boolean getIsRegistryBasedUrlConfig() {
+		return Boolean.valueOf(isRegistryBasedUrlConfig.getSelection());
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setIsRegistryBasedUrlConfig(Boolean
+	 *      newValue)
+	 * 
+	 */
+	public void setIsRegistryBasedUrlConfig(Boolean newValue) {
+		if (newValue != null) {
+			isRegistryBasedUrlConfig.setSelection(newValue.booleanValue());
+		} else {
+			isRegistryBasedUrlConfig.setSelection(false);
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(
+				EsbViewsRepository.DBLookupMediator.Connection.isRegistryBasedUrlConfig);
+		if (eefElementEditorReadOnlyState && isRegistryBasedUrlConfig.isEnabled()) {
+			isRegistryBasedUrlConfig.setEnabled(false);
+			isRegistryBasedUrlConfig.setToolTipText(EsbMessages.DBLookupMediator_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !isRegistryBasedUrlConfig.isEnabled()) {
+			isRegistryBasedUrlConfig.setEnabled(true);
+		}
+
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#getIsRegistryBasedUserConfig()
+	 * 
+	 */
+	public Boolean getIsRegistryBasedUserConfig() {
+		return Boolean.valueOf(isRegistryBasedUserConfig.getSelection());
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setIsRegistryBasedUserConfig(Boolean
+	 *      newValue)
+	 * 
+	 */
+	public void setIsRegistryBasedUserConfig(Boolean newValue) {
+		if (newValue != null) {
+			isRegistryBasedUserConfig.setSelection(newValue.booleanValue());
+		} else {
+			isRegistryBasedUserConfig.setSelection(false);
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(
+				EsbViewsRepository.DBLookupMediator.Connection.isRegistryBasedUserConfig);
+		if (eefElementEditorReadOnlyState && isRegistryBasedUserConfig.isEnabled()) {
+			isRegistryBasedUserConfig.setEnabled(false);
+			isRegistryBasedUserConfig.setToolTipText(EsbMessages.DBLookupMediator_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !isRegistryBasedUserConfig.isEnabled()) {
+			isRegistryBasedUserConfig.setEnabled(true);
+		}
+
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#getIsRegistryBasedPassConfig()
+	 * 
+	 */
+	public Boolean getIsRegistryBasedPassConfig() {
+		return Boolean.valueOf(isRegistryBasedPassConfig.getSelection());
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setIsRegistryBasedPassConfig(Boolean
+	 *      newValue)
+	 * 
+	 */
+	public void setIsRegistryBasedPassConfig(Boolean newValue) {
+		if (newValue != null) {
+			isRegistryBasedPassConfig.setSelection(newValue.booleanValue());
+		} else {
+			isRegistryBasedPassConfig.setSelection(false);
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(
+				EsbViewsRepository.DBLookupMediator.Connection.isRegistryBasedPassConfig);
+		if (eefElementEditorReadOnlyState && isRegistryBasedPassConfig.isEnabled()) {
+			isRegistryBasedPassConfig.setEnabled(false);
+			isRegistryBasedPassConfig.setToolTipText(EsbMessages.DBLookupMediator_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !isRegistryBasedPassConfig.isEnabled()) {
+			isRegistryBasedPassConfig.setEnabled(true);
+		}
+
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#initSqlStatements(EObject
+	 *      current, EReference containingFeature, EReference feature)
 	 */
 	public void initSqlStatements(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -2410,14 +3021,15 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		sqlStatements.setContentProvider(contentProvider);
 		sqlStatements.setInput(settings);
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.DBLookupMediator.Statements.sqlStatements);
+		boolean eefElementEditorReadOnlyState = isReadOnly(
+				EsbViewsRepository.DBLookupMediator.Statements.sqlStatements);
 		if (eefElementEditorReadOnlyState && sqlStatements.isEnabled()) {
 			sqlStatements.setEnabled(false);
 			sqlStatements.setToolTipText(EsbMessages.DBLookupMediator_ReadOnly);
 		} else if (!eefElementEditorReadOnlyState && !sqlStatements.isEnabled()) {
 			sqlStatements.setEnabled(true);
-		}	
-		
+		}
+
 	}
 
 	/**
@@ -2427,13 +3039,14 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 	 * 
 	 */
 	public void updateSqlStatements() {
-	sqlStatements.refresh();
-}
+		sqlStatements.refresh();
+	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#addFilterSqlStatements(ViewerFilter filter)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#addFilterSqlStatements(ViewerFilter
+	 *      filter)
 	 * 
 	 */
 	public void addFilterToSqlStatements(ViewerFilter filter) {
@@ -2446,7 +3059,8 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#addBusinessFilterSqlStatements(ViewerFilter filter)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#addBusinessFilterSqlStatements(ViewerFilter
+	 *      filter)
 	 * 
 	 */
 	public void addBusinessFilterToSqlStatements(ViewerFilter filter) {
@@ -2456,20 +3070,17 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#isContainedInSqlStatementsTable(EObject element)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#isContainedInSqlStatementsTable(EObject
+	 *      element)
 	 * 
 	 */
 	public boolean isContainedInSqlStatementsTable(EObject element) {
-		return ((ReferencesTableSettings)sqlStatements.getInput()).contains(element);
+		return ((ReferencesTableSettings) sqlStatements.getInput()).contains(element);
 	}
 
+	// Start of user code for Database Configuration specific getters and setters
+	// implementation
 
-
-
-
-
-	// Start of user code for Database Configuration specific getters and setters implementation
-	
 	// End of user code
 
 	/**
@@ -2482,9 +3093,56 @@ public class DBLookupMediatorPropertiesEditionPartImpl extends CompositeProperti
 		return EsbMessages.DBLookupMediator_Part_Title;
 	}
 
-	// Start of user code additional methods
-	
-	// End of user code
+	@Override
+	public RegistryKeyProperty getRegistryBasedDriverConfigKey() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
+	@Override
+	public void setRegistryBasedDriverConfigKey(RegistryKeyProperty registryKeyProperty) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public RegistryKeyProperty getRegistryBasedUrlrConfigKey() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setRegistryBasedUrlConfigKey(RegistryKeyProperty registryKeyProperty) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public RegistryKeyProperty getRegistryBasedUserConfigKey() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setRegistryBasedUserConfigKey(RegistryKeyProperty registryKeyProperty) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public RegistryKeyProperty getRegistryBasedPassConfigKey() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setRegistryBasedPassConfigKey(RegistryKeyProperty registryKeyProperty) {
+		// TODO Auto-generated method stub
+
+	}
+
+	// Start of user code additional methods
+
+	// End of user code
 
 }

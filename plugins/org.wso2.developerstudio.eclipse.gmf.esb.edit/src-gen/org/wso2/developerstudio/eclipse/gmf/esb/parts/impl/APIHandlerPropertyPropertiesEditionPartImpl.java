@@ -129,7 +129,9 @@ public class APIHandlerPropertyPropertiesEditionPartImpl extends CompositeProper
 		return propertiesGroup;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createNameText(Composite parent) {
 		createDescription(parent, EsbViewsRepository.APIHandlerProperty.Properties.name, EsbMessages.APIHandlerPropertyPropertiesEditionPart_NameLabel);
 		name = SWTUtils.createScrollableText(parent, SWT.BORDER);
@@ -178,7 +180,9 @@ public class APIHandlerPropertyPropertiesEditionPartImpl extends CompositeProper
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createValueText(Composite parent) {
 		createDescription(parent, EsbViewsRepository.APIHandlerProperty.Properties.value, EsbMessages.APIHandlerPropertyPropertiesEditionPart_ValueLabel);
 		value = SWTUtils.createScrollableText(parent, SWT.BORDER);

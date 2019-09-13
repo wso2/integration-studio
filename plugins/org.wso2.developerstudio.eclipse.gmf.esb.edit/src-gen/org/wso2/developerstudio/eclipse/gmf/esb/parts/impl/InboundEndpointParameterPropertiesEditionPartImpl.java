@@ -129,7 +129,9 @@ public class InboundEndpointParameterPropertiesEditionPartImpl extends Composite
 		return propertiesGroup;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createNameText(Composite parent) {
 		createDescription(parent, EsbViewsRepository.InboundEndpointParameter.Properties.name, EsbMessages.InboundEndpointParameterPropertiesEditionPart_NameLabel);
 		name = SWTUtils.createScrollableText(parent, SWT.BORDER);
@@ -179,7 +181,9 @@ public class InboundEndpointParameterPropertiesEditionPartImpl extends Composite
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createValueText(Composite parent) {
 		createDescription(parent, EsbViewsRepository.InboundEndpointParameter.Properties.value, EsbMessages.InboundEndpointParameterPropertiesEditionPart_ValueLabel);
 		value = SWTUtils.createScrollableText(parent, SWT.BORDER);

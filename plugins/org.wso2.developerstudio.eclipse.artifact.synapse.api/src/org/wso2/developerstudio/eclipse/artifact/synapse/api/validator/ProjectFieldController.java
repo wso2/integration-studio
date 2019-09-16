@@ -71,6 +71,11 @@ public class ProjectFieldController extends AbstractFieldController {
 					throw new FieldValidationException("Please select at least one artifact");
 				}
 			}
+		} else if (modelProperty.equals(ArtifactConstants.ID_API_VERSIONTYPE)) {
+			APIArtifactModel apiArtifactModel = (APIArtifactModel) model;
+			if (!value.toString().equals("none") && apiArtifactModel.getVersion().isEmpty()) {
+				throw new FieldValidationException("Please enter a valid version");
+			}
 		}
 	}
 	

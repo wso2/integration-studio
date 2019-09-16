@@ -3337,7 +3337,6 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 			}
 
 		});
-
 		registryBasedDriverConfigKeyText.addKeyListener(new KeyListener() {
 
 			@Override
@@ -3347,8 +3346,9 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 			@Override
 			public void keyReleased(KeyEvent e) {
 				if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
-					EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
-							SWT.NULL, registryBasedDriverConfigKey, new ArrayList<NamedEntityDescriptor>());
+					EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(
+							view.getShell(), SWT.NULL, registryBasedDriverConfigKey,
+							new ArrayList<NamedEntityDescriptor>());
 					dialog.open();
 					registryBasedDriverConfigKeyText.setText(registryBasedDriverConfigKey.getKeyValue());
 					propertiesEditionComponent.firePropertiesChanged(
@@ -3360,6 +3360,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 			}
 
 		});
+
 		EditingUtils.setID(registryBasedDriverConfigKeyText,
 				EsbViewsRepository.DBLookupMediator.Connection.registryBasedDriverConfigKey);
 		EditingUtils.setEEFtype(registryBasedDriverConfigKeyText, "eef::Text");

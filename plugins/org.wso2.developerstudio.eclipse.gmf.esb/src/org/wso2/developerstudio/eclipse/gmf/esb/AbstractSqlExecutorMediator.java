@@ -769,104 +769,104 @@ public interface AbstractSqlExecutorMediator extends Mediator {
     void setIsRegistryBasedPassConfig(boolean value);
 
     /**
-     * Returns the value of the '<em><b>Registry Based Driver Config Key</b></em>' reference.
+     * Returns the value of the '<em><b>Registry Based Driver Config Key</b></em>' containment reference.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Registry Based Driver Config Key</em>' reference isn't clear,
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * @return the value of the '<em>Registry Based Driver Config Key</em>' reference.
+     * @return the value of the '<em>Registry Based Driver Config Key</em>' containment reference.
      * @see #setRegistryBasedDriverConfigKey(RegistryKeyProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractSqlExecutorMediator_RegistryBasedDriverConfigKey()
-     * @model
+     * @model containment="true"
      * @generated
      */
     RegistryKeyProperty getRegistryBasedDriverConfigKey();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getRegistryBasedDriverConfigKey <em>Registry Based Driver Config Key</em>}' reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getRegistryBasedDriverConfigKey <em>Registry Based Driver Config Key</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @param value the new value of the '<em>Registry Based Driver Config Key</em>' reference.
+     * @param value the new value of the '<em>Registry Based Driver Config Key</em>' containment reference.
      * @see #getRegistryBasedDriverConfigKey()
      * @generated
      */
     void setRegistryBasedDriverConfigKey(RegistryKeyProperty value);
 
     /**
-     * Returns the value of the '<em><b>Registry Based Url Config Key</b></em>' reference.
+     * Returns the value of the '<em><b>Registry Based Url Config Key</b></em>' containment reference.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Registry Based Url Config Key</em>' reference isn't clear,
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * @return the value of the '<em>Registry Based Url Config Key</em>' reference.
+     * @return the value of the '<em>Registry Based Url Config Key</em>' containment reference.
      * @see #setRegistryBasedUrlConfigKey(RegistryKeyProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractSqlExecutorMediator_RegistryBasedUrlConfigKey()
-     * @model
+     * @model containment="true"
      * @generated
      */
     RegistryKeyProperty getRegistryBasedUrlConfigKey();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getRegistryBasedUrlConfigKey <em>Registry Based Url Config Key</em>}' reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getRegistryBasedUrlConfigKey <em>Registry Based Url Config Key</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @param value the new value of the '<em>Registry Based Url Config Key</em>' reference.
+     * @param value the new value of the '<em>Registry Based Url Config Key</em>' containment reference.
      * @see #getRegistryBasedUrlConfigKey()
      * @generated
      */
     void setRegistryBasedUrlConfigKey(RegistryKeyProperty value);
 
     /**
-     * Returns the value of the '<em><b>Registry Based User Config Key</b></em>' reference.
+     * Returns the value of the '<em><b>Registry Based User Config Key</b></em>' containment reference.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Registry Based User Config Key</em>' reference isn't clear,
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * @return the value of the '<em>Registry Based User Config Key</em>' reference.
+     * @return the value of the '<em>Registry Based User Config Key</em>' containment reference.
      * @see #setRegistryBasedUserConfigKey(RegistryKeyProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractSqlExecutorMediator_RegistryBasedUserConfigKey()
-     * @model
+     * @model containment="true"
      * @generated
      */
     RegistryKeyProperty getRegistryBasedUserConfigKey();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getRegistryBasedUserConfigKey <em>Registry Based User Config Key</em>}' reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getRegistryBasedUserConfigKey <em>Registry Based User Config Key</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @param value the new value of the '<em>Registry Based User Config Key</em>' reference.
+     * @param value the new value of the '<em>Registry Based User Config Key</em>' containment reference.
      * @see #getRegistryBasedUserConfigKey()
      * @generated
      */
     void setRegistryBasedUserConfigKey(RegistryKeyProperty value);
 
     /**
-     * Returns the value of the '<em><b>Registry Based Pass Config Key</b></em>' reference.
+     * Returns the value of the '<em><b>Registry Based Pass Config Key</b></em>' containment reference.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Registry Based Pass Config Key</em>' reference isn't clear,
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * @return the value of the '<em>Registry Based Pass Config Key</em>' reference.
+     * @return the value of the '<em>Registry Based Pass Config Key</em>' containment reference.
      * @see #setRegistryBasedPassConfigKey(RegistryKeyProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractSqlExecutorMediator_RegistryBasedPassConfigKey()
-     * @model
+     * @model containment="true"
      * @generated
      */
     RegistryKeyProperty getRegistryBasedPassConfigKey();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getRegistryBasedPassConfigKey <em>Registry Based Pass Config Key</em>}' reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getRegistryBasedPassConfigKey <em>Registry Based Pass Config Key</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @param value the new value of the '<em>Registry Based Pass Config Key</em>' reference.
+     * @param value the new value of the '<em>Registry Based Pass Config Key</em>' containment reference.
      * @see #getRegistryBasedPassConfigKey()
      * @generated
      */

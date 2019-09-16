@@ -41,6 +41,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.persistence.Activator;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.securevault.secret.SecretInformation;
 import org.apache.synapse.mediators.db.AbstractDBMediator;
 import org.apache.synapse.mediators.db.Statement;
 import org.apache.synapse.util.xpath.SynapseXPath;
@@ -67,26 +68,52 @@ public abstract class AbstractDBMediatorTransformer extends AbstractEsbNodeTrans
 
         dbMediator.setDataSourceName(sqlExecutor.getConnectionDsName());
         DataSourceInformation dataSourceInfo = new DataSourceInformation();
+        SecretInformation secretInformation = new SecretInformation();
         if (sqlExecutor.getConnectionType().equals(SqlExecutorConnectionType.DATA_SOURCE)) {
             dbMediator.setDataSourceName(sqlExecutor.getConnectionDsName());
             dbMediator.addDataSourceProperty(DSNAME_Q, sqlExecutor.getConnectionDsName());
             if (sqlExecutor.getConnectionDsType().equals(SqlExecutorDatasourceType.EXTERNAL)) {
                 dbMediator.addDataSourceProperty(ICCLASS_Q, sqlExecutor.getConnectionDsInitialContext());
-                
-                if (sqlExecutor.isIsRegistryBasedUrlConfig()) {
-                    
+
+                boolean isRegistryBasedUrlConfig = sqlExecutor.isIsRegistryBasedUrlConfig();
+                dbMediator.setRegistryBasedUrlConfig(isRegistryBasedUrlConfig);
+                if (isRegistryBasedUrlConfig) {
+                    if (sqlExecutor.getRegistryBasedUrlConfigKey() != null) {
+                        dbMediator.addDataSourceProperty(URL_Q, sqlExecutor.getRegistryBasedUrlConfigKey().getKeyValue());
+                        dataSourceInfo.setUrl(sqlExecutor.getRegistryBasedUrlConfigKey().getKeyName());
+                    } else {
+                        dbMediator.addDataSourceProperty(URL_Q, "conf:url.xml");
+                        dataSourceInfo.setUrl("conf:url.xml");
+                    }
                 } else {
                     dbMediator.addDataSourceProperty(URL_Q, sqlExecutor.getConnectionURL());
                 }
-                
-                if (sqlExecutor.isIsRegistryBasedUserConfig()) {
+
+                boolean isRegistryBasedUserConfig = sqlExecutor.isIsRegistryBasedUserConfig();
+                dbMediator.setRegistryBasedUserConfig(isRegistryBasedUserConfig);
+                if (isRegistryBasedUserConfig) {
+                    if (sqlExecutor.getRegistryBasedUserConfigKey() != null) {
+                        dbMediator.addDataSourceProperty(USER_Q, sqlExecutor.getRegistryBasedUserConfigKey().getKeyValue());
+                        secretInformation.setUser(sqlExecutor.getRegistryBasedUserConfigKey().getKeyValue());
+                    } else {
+                        dbMediator.addDataSourceProperty(USER_Q, "conf:user.xml");
+                        secretInformation.setUser("conf:user.xml");
+                    }
                     
                 } else {
                     dbMediator.addDataSourceProperty(USER_Q, sqlExecutor.getConnectionUsername());
                 }
-                
-                if (sqlExecutor.isIsRegistryBasedPassConfig()) {
-                    
+
+                boolean isRegistryBasedPassConfig = sqlExecutor.isIsRegistryBasedPassConfig();
+                dbMediator.setRegistryBasedPassConfig(isRegistryBasedPassConfig);
+                if (isRegistryBasedPassConfig) {
+                    if (sqlExecutor.getRegistryBasedPassConfigKey() != null) {
+                        dbMediator.addDataSourceProperty(PASS_Q, sqlExecutor.getRegistryBasedPassConfigKey().getKeyValue());
+                        secretInformation.setAliasSecret(sqlExecutor.getRegistryBasedPassConfigKey().getKeyValue());
+                    } else {
+                        dbMediator.addDataSourceProperty(PASS_Q, "conf:password.xml");
+                        secretInformation.setAliasSecret("conf:password.xml");
+                    }
                 } else {
                     dbMediator.addDataSourceProperty(PASS_Q, sqlExecutor.getConnectionPassword());
                 }
@@ -96,33 +123,67 @@ public abstract class AbstractDBMediatorTransformer extends AbstractEsbNodeTrans
 
         } else {
             
-            if (sqlExecutor.isIsRegistryBasedDriverConfig()) {
-                
+            boolean isRegistryBasedDriverConfig = sqlExecutor.isIsRegistryBasedDriverConfig();
+            dbMediator.setRegistryBasedDriverConfig(isRegistryBasedDriverConfig);
+            if (isRegistryBasedDriverConfig) {
+                if (sqlExecutor.getRegistryBasedDriverConfigKey() != null) {
+                    dbMediator.addDataSourceProperty(DRIVER_Q, sqlExecutor.getRegistryBasedDriverConfigKey().getKeyValue());
+                    dataSourceInfo.setDriver(sqlExecutor.getRegistryBasedDriverConfigKey().getKeyValue());
+                } else {
+                    dbMediator.addDataSourceProperty(DRIVER_Q, "conf:driver.xml");
+                    dataSourceInfo.setDriver("conf:driver.xml");
+                }
             } else {
                 dbMediator.addDataSourceProperty(DRIVER_Q, sqlExecutor.getConnectionDbDriver());
             }
-            
-            if (sqlExecutor.isIsRegistryBasedUrlConfig()) {
-                
+
+            boolean isRegistryBasedUrlConfig = sqlExecutor.isIsRegistryBasedUrlConfig();
+            dbMediator.setRegistryBasedUrlConfig(isRegistryBasedUrlConfig);
+            if (isRegistryBasedUrlConfig) {
+                if (sqlExecutor.getRegistryBasedUrlConfigKey() != null) {
+                    dbMediator.addDataSourceProperty(URL_Q, sqlExecutor.getRegistryBasedUrlConfigKey().getKeyValue());
+                    dataSourceInfo.setUrl(sqlExecutor.getRegistryBasedUrlConfigKey().getKeyName());
+                } else {
+                    dbMediator.addDataSourceProperty(URL_Q, "conf:url.xml");
+                    dataSourceInfo.setUrl("conf:url.xml");
+                }
             } else {
                 dbMediator.addDataSourceProperty(URL_Q, sqlExecutor.getConnectionURL());
             }
-            
-            if (sqlExecutor.isIsRegistryBasedUserConfig()) {
+
+            boolean isRegistryBasedUserConfig = sqlExecutor.isIsRegistryBasedUserConfig();
+            dbMediator.setRegistryBasedUserConfig(isRegistryBasedUserConfig);
+            if (isRegistryBasedUserConfig) {
+                if (sqlExecutor.getRegistryBasedUserConfigKey() != null) {
+                    dbMediator.addDataSourceProperty(USER_Q, sqlExecutor.getRegistryBasedUserConfigKey().getKeyValue());
+                    secretInformation.setUser(sqlExecutor.getRegistryBasedUserConfigKey().getKeyValue());
+                } else {
+                    dbMediator.addDataSourceProperty(USER_Q, "conf:user.xml");
+                    secretInformation.setUser("conf:user.xml");
+                }
                 
             } else {
                 dbMediator.addDataSourceProperty(USER_Q, sqlExecutor.getConnectionUsername());
             }
-            
-            if (sqlExecutor.isIsRegistryBasedPassConfig()) {
-                
+
+            boolean isRegistryBasedPassConfig = sqlExecutor.isIsRegistryBasedPassConfig();
+            dbMediator.setRegistryBasedPassConfig(isRegistryBasedPassConfig);
+            if (isRegistryBasedPassConfig) {
+                if (sqlExecutor.getRegistryBasedPassConfigKey() != null) {
+                    dbMediator.addDataSourceProperty(PASS_Q, sqlExecutor.getRegistryBasedPassConfigKey().getKeyValue());
+                    secretInformation.setAliasSecret(sqlExecutor.getRegistryBasedPassConfigKey().getKeyValue());
+                } else {
+                    dbMediator.addDataSourceProperty(PASS_Q, "conf:password.xml");
+                    secretInformation.setAliasSecret("conf:password.xml");
+                }
             } else {
                 dbMediator.addDataSourceProperty(PASS_Q, sqlExecutor.getConnectionPassword());
             }
-            
+
             addDataSourceProperties(dbMediator, sqlExecutor);
         }
 
+        dataSourceInfo.setSecretInformation(secretInformation);
         dbMediator.setDataSourceInformation(dataSourceInfo);
 
         for (SqlStatement sqlStatement : sqlExecutor.getSqlStatements()) {

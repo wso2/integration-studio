@@ -1893,13 +1893,13 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isRegistryBasedPassConfig"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="false"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="registryBasedDriverConfigKey"
-        eType="#//RegistryKeyProperty"/>
+        eType="#//RegistryKeyProperty" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="registryBasedUrlConfigKey"
-        eType="#//RegistryKeyProperty"/>
+        eType="#//RegistryKeyProperty" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="registryBasedUserConfigKey"
-        eType="#//RegistryKeyProperty"/>
+        eType="#//RegistryKeyProperty" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="registryBasedPassConfigKey"
-        eType="#//RegistryKeyProperty"/>
+        eType="#//RegistryKeyProperty" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="SqlExecutorConnectionType">
     <eLiterals name="DB_CONNECTION"/>

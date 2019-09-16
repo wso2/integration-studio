@@ -63,6 +63,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.SqlStatement;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 
 
 // End of user code
@@ -841,13 +842,13 @@ public class DBReportMediatorPropertiesEditionComponent extends SinglePartProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getHelpContent(java.lang.Object, int)
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getHelpContent(java.lang.Object,
+	 *      int)
 	 * 
+	 * @generated NOT
 	 */
 	public String getHelpContent(Object key, int kind) {
-		if (key == EsbViewsRepository.DBReportMediator.Statements.sqlStatements)
-			return "SQL Statements"; //$NON-NLS-1$
-		return super.getHelpContent(key, kind);
+		return EEFPropertyViewUtil.getHelpContent(key);
 	}
 
 	/**

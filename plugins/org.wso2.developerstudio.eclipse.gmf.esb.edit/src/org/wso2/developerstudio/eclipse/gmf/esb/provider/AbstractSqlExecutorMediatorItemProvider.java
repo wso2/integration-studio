@@ -147,6 +147,15 @@ public class AbstractSqlExecutorMediatorItemProvider extends MediatorItemProvide
         addPropertyTestwhileidlePropertyDescriptor(object);
         addPropertyValidationqueryPropertyDescriptor(object);
         addPropertyInitialsizePropertyDescriptor(object);
+        
+        addIsRegistryBasedDriverConfigPropertyDescriptor(object);
+        addIsRegistryBasedPassConfigPropertyDescriptor(object);
+        addIsRegistryBasedUrlConfigPropertyDescriptor(object);
+        addIsRegistryBasedUserConfigPropertyDescriptor(object);
+        addRegistryBasedDriverConfigKeyPropertyDescriptor(object);
+        addRegistryBasedPassConfigKeyPropertyDescriptor(object);
+        addRegistryBasedUrlConfigKeyPropertyDescriptor(object);
+        addRegistryBasedUserConfigKeyPropertyDescriptor(object);
     }
 
     /**
@@ -543,6 +552,182 @@ public class AbstractSqlExecutorMediatorItemProvider extends MediatorItemProvide
     }
 
     /**
+     * This adds a property descriptor for the Is Registry Based Driver Config feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addIsRegistryBasedDriverConfigPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_AbstractSqlExecutorMediator_isRegistryBasedDriverConfig_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_AbstractSqlExecutorMediator_isRegistryBasedDriverConfig_feature", "_UI_AbstractSqlExecutorMediator_type"),
+                 EsbPackage.Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__IS_REGISTRY_BASED_DRIVER_CONFIG,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the Is Registry Based Url Config feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addIsRegistryBasedUrlConfigPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_AbstractSqlExecutorMediator_isRegistryBasedUrlConfig_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_AbstractSqlExecutorMediator_isRegistryBasedUrlConfig_feature", "_UI_AbstractSqlExecutorMediator_type"),
+                 EsbPackage.Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__IS_REGISTRY_BASED_URL_CONFIG,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the Is Registry Based User Config feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addIsRegistryBasedUserConfigPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_AbstractSqlExecutorMediator_isRegistryBasedUserConfig_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_AbstractSqlExecutorMediator_isRegistryBasedUserConfig_feature", "_UI_AbstractSqlExecutorMediator_type"),
+                 EsbPackage.Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__IS_REGISTRY_BASED_USER_CONFIG,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the Is Registry Based Pass Config feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addIsRegistryBasedPassConfigPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_AbstractSqlExecutorMediator_isRegistryBasedPassConfig_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_AbstractSqlExecutorMediator_isRegistryBasedPassConfig_feature", "_UI_AbstractSqlExecutorMediator_type"),
+                 EsbPackage.Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__IS_REGISTRY_BASED_PASS_CONFIG,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the Registry Based Driver Config Key feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addRegistryBasedDriverConfigKeyPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_AbstractSqlExecutorMediator_registryBasedDriverConfigKey_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_AbstractSqlExecutorMediator_registryBasedDriverConfigKey_feature", "_UI_AbstractSqlExecutorMediator_type"),
+                 EsbPackage.Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__REGISTRY_BASED_DRIVER_CONFIG_KEY,
+                 true,
+                 false,
+                 true,
+                 null,
+                 null,
+                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the Registry Based Url Config Key feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addRegistryBasedUrlConfigKeyPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_AbstractSqlExecutorMediator_registryBasedUrlConfigKey_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_AbstractSqlExecutorMediator_registryBasedUrlConfigKey_feature", "_UI_AbstractSqlExecutorMediator_type"),
+                 EsbPackage.Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__REGISTRY_BASED_URL_CONFIG_KEY,
+                 true,
+                 false,
+                 true,
+                 null,
+                 null,
+                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the Registry Based User Config Key feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addRegistryBasedUserConfigKeyPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_AbstractSqlExecutorMediator_registryBasedUserConfigKey_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_AbstractSqlExecutorMediator_registryBasedUserConfigKey_feature", "_UI_AbstractSqlExecutorMediator_type"),
+                 EsbPackage.Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__REGISTRY_BASED_USER_CONFIG_KEY,
+                 true,
+                 false,
+                 true,
+                 null,
+                 null,
+                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the Registry Based Pass Config Key feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addRegistryBasedPassConfigKeyPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_AbstractSqlExecutorMediator_registryBasedPassConfigKey_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_AbstractSqlExecutorMediator_registryBasedPassConfigKey_feature", "_UI_AbstractSqlExecutorMediator_type"),
+                 EsbPackage.Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__REGISTRY_BASED_PASS_CONFIG_KEY,
+                 true,
+                 false,
+                 true,
+                 null,
+                 null,
+                 null));
+    }
+
+    /**
      * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
      * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -623,6 +808,10 @@ public class AbstractSqlExecutorMediatorItemProvider extends MediatorItemProvide
             case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_TESTWHILEIDLE:
             case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_VALIDATIONQUERY:
             case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_INITIALSIZE:
+            case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__IS_REGISTRY_BASED_DRIVER_CONFIG:
+            case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__IS_REGISTRY_BASED_URL_CONFIG:
+            case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__IS_REGISTRY_BASED_USER_CONFIG:
+            case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__IS_REGISTRY_BASED_PASS_CONFIG:
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
                 return;
             case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__SQL_STATEMENTS:

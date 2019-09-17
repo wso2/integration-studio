@@ -331,8 +331,9 @@ Export-Package: com.damnhandy.uri.template;version="2.1.6.wso2v2",
  org.wso2.carbon.rule.mediator,
  org.wso2.carbon.rule.mediator.config,
  org.wso2.carbon.rule.mediator.internal.config,
- org.wso2.carbon.tools.converter,	
+ org.wso2.carbon.tools.converter,
  org.wso2.carbon.utils,
- org.wso2.developerstudio.eclipse.esb.libraries.utils
+ org.wso2.developerstudio.eclipse.esb.libraries.utils,
+ org.wso2.securevault.secret
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 

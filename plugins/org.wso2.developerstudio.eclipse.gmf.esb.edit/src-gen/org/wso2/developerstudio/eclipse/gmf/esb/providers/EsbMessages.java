@@ -5749,6 +5749,30 @@ public class EsbMessages extends NLS {
 	public static String DBLookupMediatorPropertiesEditionPart_DatabaseConfigurationLabel;
 
 	
+	public static String DBLookupMediatorPropertiesEditionPart_IsRegistryBasedDriverConfigLabel;
+
+	
+	public static String DBLookupMediatorPropertiesEditionPart_IsRegistryBasedUrlConfigLabel;
+
+	
+	public static String DBLookupMediatorPropertiesEditionPart_IsRegistryBasedUserConfigLabel;
+
+	
+	public static String DBLookupMediatorPropertiesEditionPart_IsRegistryBasedPassConfigLabel;
+
+	
+	public static String DBLookupMediatorPropertiesEditionPart_RegistryBasedDriverConfigKeyLabel;
+
+	
+	public static String DBLookupMediatorPropertiesEditionPart_RegistryBasedUrlConfigKeyLabel;
+
+	
+	public static String DBLookupMediatorPropertiesEditionPart_RegistryBasedUserConfigKeyLabel;
+
+	
+	public static String DBLookupMediatorPropertiesEditionPart_RegistryBasedPassConfigKeyLabel;
+
+	
 	public static String DBLookupMediatorPropertiesEditionPart_SqlStatementsLabel;
 
 	
@@ -5789,6 +5813,30 @@ public class EsbMessages extends NLS {
 
 	
 	public static String DBReportMediatorPropertiesEditionPart_DatabaseConfigurationLabel;
+
+	
+	public static String DBReportMediatorPropertiesEditionPart_IsRegistryBasedDriverConfigLabel;
+
+	
+	public static String DBReportMediatorPropertiesEditionPart_IsRegistryBasedUrlConfigLabel;
+
+	
+	public static String DBReportMediatorPropertiesEditionPart_IsRegistryBasedUserConfigLabel;
+
+	
+	public static String DBReportMediatorPropertiesEditionPart_IsRegistryBasedPassConfigLabel;
+
+	
+	public static String DBReportMediatorPropertiesEditionPart_RegistryBasedDriverConfigKeyLabel;
+
+	
+	public static String DBReportMediatorPropertiesEditionPart_RegistryBasedUrlConfigKeyLabel;
+
+	
+	public static String DBReportMediatorPropertiesEditionPart_RegistryBasedUserConfigKeyLabel;
+
+	
+	public static String DBReportMediatorPropertiesEditionPart_RegistryBasedPassConfigKeyLabel;
 
 	
 	public static String DBReportMediatorPropertiesEditionPart_SqlStatementsLabel;

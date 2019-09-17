@@ -14261,13 +14261,85 @@ public interface EsbPackage extends EPackage {
     int ABSTRACT_SQL_EXECUTOR_MEDIATOR__SQL_STATEMENTS = MEDIATOR_FEATURE_COUNT + 21;
 
     /**
+     * The feature id for the '<em><b>Is Registry Based Driver Config</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int ABSTRACT_SQL_EXECUTOR_MEDIATOR__IS_REGISTRY_BASED_DRIVER_CONFIG = MEDIATOR_FEATURE_COUNT + 22;
+
+    /**
+     * The feature id for the '<em><b>Is Registry Based Url Config</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int ABSTRACT_SQL_EXECUTOR_MEDIATOR__IS_REGISTRY_BASED_URL_CONFIG = MEDIATOR_FEATURE_COUNT + 23;
+
+    /**
+     * The feature id for the '<em><b>Is Registry Based User Config</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int ABSTRACT_SQL_EXECUTOR_MEDIATOR__IS_REGISTRY_BASED_USER_CONFIG = MEDIATOR_FEATURE_COUNT + 24;
+
+    /**
+     * The feature id for the '<em><b>Is Registry Based Pass Config</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int ABSTRACT_SQL_EXECUTOR_MEDIATOR__IS_REGISTRY_BASED_PASS_CONFIG = MEDIATOR_FEATURE_COUNT + 25;
+
+    /**
+     * The feature id for the '<em><b>Registry Based Driver Config Key</b></em>' containment reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int ABSTRACT_SQL_EXECUTOR_MEDIATOR__REGISTRY_BASED_DRIVER_CONFIG_KEY = MEDIATOR_FEATURE_COUNT + 26;
+
+    /**
+     * The feature id for the '<em><b>Registry Based Url Config Key</b></em>' containment reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int ABSTRACT_SQL_EXECUTOR_MEDIATOR__REGISTRY_BASED_URL_CONFIG_KEY = MEDIATOR_FEATURE_COUNT + 27;
+
+    /**
+     * The feature id for the '<em><b>Registry Based User Config Key</b></em>' containment reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int ABSTRACT_SQL_EXECUTOR_MEDIATOR__REGISTRY_BASED_USER_CONFIG_KEY = MEDIATOR_FEATURE_COUNT + 28;
+
+    /**
+     * The feature id for the '<em><b>Registry Based Pass Config Key</b></em>' containment reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int ABSTRACT_SQL_EXECUTOR_MEDIATOR__REGISTRY_BASED_PASS_CONFIG_KEY = MEDIATOR_FEATURE_COUNT + 29;
+
+    /**
      * The number of structural features of the '<em>Abstract Sql Executor Mediator</em>' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int ABSTRACT_SQL_EXECUTOR_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 22;
+    int ABSTRACT_SQL_EXECUTOR_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 30;
 
     /**
      * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SqlStatementImpl <em>Sql Statement</em>}' class.
@@ -14652,6 +14724,78 @@ public interface EsbPackage extends EPackage {
     int DB_LOOKUP_MEDIATOR__SQL_STATEMENTS = ABSTRACT_SQL_EXECUTOR_MEDIATOR__SQL_STATEMENTS;
 
     /**
+     * The feature id for the '<em><b>Is Registry Based Driver Config</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int DB_LOOKUP_MEDIATOR__IS_REGISTRY_BASED_DRIVER_CONFIG = ABSTRACT_SQL_EXECUTOR_MEDIATOR__IS_REGISTRY_BASED_DRIVER_CONFIG;
+
+    /**
+     * The feature id for the '<em><b>Is Registry Based Url Config</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int DB_LOOKUP_MEDIATOR__IS_REGISTRY_BASED_URL_CONFIG = ABSTRACT_SQL_EXECUTOR_MEDIATOR__IS_REGISTRY_BASED_URL_CONFIG;
+
+    /**
+     * The feature id for the '<em><b>Is Registry Based User Config</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int DB_LOOKUP_MEDIATOR__IS_REGISTRY_BASED_USER_CONFIG = ABSTRACT_SQL_EXECUTOR_MEDIATOR__IS_REGISTRY_BASED_USER_CONFIG;
+
+    /**
+     * The feature id for the '<em><b>Is Registry Based Pass Config</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int DB_LOOKUP_MEDIATOR__IS_REGISTRY_BASED_PASS_CONFIG = ABSTRACT_SQL_EXECUTOR_MEDIATOR__IS_REGISTRY_BASED_PASS_CONFIG;
+
+    /**
+     * The feature id for the '<em><b>Registry Based Driver Config Key</b></em>' containment reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int DB_LOOKUP_MEDIATOR__REGISTRY_BASED_DRIVER_CONFIG_KEY = ABSTRACT_SQL_EXECUTOR_MEDIATOR__REGISTRY_BASED_DRIVER_CONFIG_KEY;
+
+    /**
+     * The feature id for the '<em><b>Registry Based Url Config Key</b></em>' containment reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int DB_LOOKUP_MEDIATOR__REGISTRY_BASED_URL_CONFIG_KEY = ABSTRACT_SQL_EXECUTOR_MEDIATOR__REGISTRY_BASED_URL_CONFIG_KEY;
+
+    /**
+     * The feature id for the '<em><b>Registry Based User Config Key</b></em>' containment reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int DB_LOOKUP_MEDIATOR__REGISTRY_BASED_USER_CONFIG_KEY = ABSTRACT_SQL_EXECUTOR_MEDIATOR__REGISTRY_BASED_USER_CONFIG_KEY;
+
+    /**
+     * The feature id for the '<em><b>Registry Based Pass Config Key</b></em>' containment reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int DB_LOOKUP_MEDIATOR__REGISTRY_BASED_PASS_CONFIG_KEY = ABSTRACT_SQL_EXECUTOR_MEDIATOR__REGISTRY_BASED_PASS_CONFIG_KEY;
+
+    /**
      * The feature id for the '<em><b>Input Connector</b></em>' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -14977,6 +15121,78 @@ public interface EsbPackage extends EPackage {
      * @ordered
      */
     int DB_REPORT_MEDIATOR__SQL_STATEMENTS = ABSTRACT_SQL_EXECUTOR_MEDIATOR__SQL_STATEMENTS;
+
+    /**
+     * The feature id for the '<em><b>Is Registry Based Driver Config</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int DB_REPORT_MEDIATOR__IS_REGISTRY_BASED_DRIVER_CONFIG = ABSTRACT_SQL_EXECUTOR_MEDIATOR__IS_REGISTRY_BASED_DRIVER_CONFIG;
+
+    /**
+     * The feature id for the '<em><b>Is Registry Based Url Config</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int DB_REPORT_MEDIATOR__IS_REGISTRY_BASED_URL_CONFIG = ABSTRACT_SQL_EXECUTOR_MEDIATOR__IS_REGISTRY_BASED_URL_CONFIG;
+
+    /**
+     * The feature id for the '<em><b>Is Registry Based User Config</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int DB_REPORT_MEDIATOR__IS_REGISTRY_BASED_USER_CONFIG = ABSTRACT_SQL_EXECUTOR_MEDIATOR__IS_REGISTRY_BASED_USER_CONFIG;
+
+    /**
+     * The feature id for the '<em><b>Is Registry Based Pass Config</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int DB_REPORT_MEDIATOR__IS_REGISTRY_BASED_PASS_CONFIG = ABSTRACT_SQL_EXECUTOR_MEDIATOR__IS_REGISTRY_BASED_PASS_CONFIG;
+
+    /**
+     * The feature id for the '<em><b>Registry Based Driver Config Key</b></em>' containment reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int DB_REPORT_MEDIATOR__REGISTRY_BASED_DRIVER_CONFIG_KEY = ABSTRACT_SQL_EXECUTOR_MEDIATOR__REGISTRY_BASED_DRIVER_CONFIG_KEY;
+
+    /**
+     * The feature id for the '<em><b>Registry Based Url Config Key</b></em>' containment reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int DB_REPORT_MEDIATOR__REGISTRY_BASED_URL_CONFIG_KEY = ABSTRACT_SQL_EXECUTOR_MEDIATOR__REGISTRY_BASED_URL_CONFIG_KEY;
+
+    /**
+     * The feature id for the '<em><b>Registry Based User Config Key</b></em>' containment reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int DB_REPORT_MEDIATOR__REGISTRY_BASED_USER_CONFIG_KEY = ABSTRACT_SQL_EXECUTOR_MEDIATOR__REGISTRY_BASED_USER_CONFIG_KEY;
+
+    /**
+     * The feature id for the '<em><b>Registry Based Pass Config Key</b></em>' containment reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int DB_REPORT_MEDIATOR__REGISTRY_BASED_PASS_CONFIG_KEY = ABSTRACT_SQL_EXECUTOR_MEDIATOR__REGISTRY_BASED_PASS_CONFIG_KEY;
 
     /**
      * The feature id for the '<em><b>Connection Use Transaction</b></em>' attribute.
@@ -41666,6 +41882,94 @@ public interface EsbPackage extends EPackage {
     EReference getAbstractSqlExecutorMediator_SqlStatements();
 
     /**
+     * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#isIsRegistryBasedDriverConfig <em>Is Registry Based Driver Config</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Is Registry Based Driver Config</em>'.
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#isIsRegistryBasedDriverConfig()
+     * @see #getAbstractSqlExecutorMediator()
+     * @generated
+     */
+    EAttribute getAbstractSqlExecutorMediator_IsRegistryBasedDriverConfig();
+
+    /**
+     * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#isIsRegistryBasedUrlConfig <em>Is Registry Based Url Config</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Is Registry Based Url Config</em>'.
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#isIsRegistryBasedUrlConfig()
+     * @see #getAbstractSqlExecutorMediator()
+     * @generated
+     */
+    EAttribute getAbstractSqlExecutorMediator_IsRegistryBasedUrlConfig();
+
+    /**
+     * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#isIsRegistryBasedUserConfig <em>Is Registry Based User Config</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Is Registry Based User Config</em>'.
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#isIsRegistryBasedUserConfig()
+     * @see #getAbstractSqlExecutorMediator()
+     * @generated
+     */
+    EAttribute getAbstractSqlExecutorMediator_IsRegistryBasedUserConfig();
+
+    /**
+     * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#isIsRegistryBasedPassConfig <em>Is Registry Based Pass Config</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Is Registry Based Pass Config</em>'.
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#isIsRegistryBasedPassConfig()
+     * @see #getAbstractSqlExecutorMediator()
+     * @generated
+     */
+    EAttribute getAbstractSqlExecutorMediator_IsRegistryBasedPassConfig();
+
+    /**
+     * Returns the meta object for the containment reference '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getRegistryBasedDriverConfigKey <em>Registry Based Driver Config Key</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the containment reference '<em>Registry Based Driver Config Key</em>'.
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getRegistryBasedDriverConfigKey()
+     * @see #getAbstractSqlExecutorMediator()
+     * @generated
+     */
+    EReference getAbstractSqlExecutorMediator_RegistryBasedDriverConfigKey();
+
+    /**
+     * Returns the meta object for the containment reference '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getRegistryBasedUrlConfigKey <em>Registry Based Url Config Key</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the containment reference '<em>Registry Based Url Config Key</em>'.
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getRegistryBasedUrlConfigKey()
+     * @see #getAbstractSqlExecutorMediator()
+     * @generated
+     */
+    EReference getAbstractSqlExecutorMediator_RegistryBasedUrlConfigKey();
+
+    /**
+     * Returns the meta object for the containment reference '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getRegistryBasedUserConfigKey <em>Registry Based User Config Key</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the containment reference '<em>Registry Based User Config Key</em>'.
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getRegistryBasedUserConfigKey()
+     * @see #getAbstractSqlExecutorMediator()
+     * @generated
+     */
+    EReference getAbstractSqlExecutorMediator_RegistryBasedUserConfigKey();
+
+    /**
+     * Returns the meta object for the containment reference '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getRegistryBasedPassConfigKey <em>Registry Based Pass Config Key</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the containment reference '<em>Registry Based Pass Config Key</em>'.
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getRegistryBasedPassConfigKey()
+     * @see #getAbstractSqlExecutorMediator()
+     * @generated
+     */
+    EReference getAbstractSqlExecutorMediator_RegistryBasedPassConfigKey();
+
+    /**
      * Returns the meta object for class '{@link org.wso2.developerstudio.eclipse.gmf.esb.SqlStatement <em>Sql Statement</em>}'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -56954,6 +57258,70 @@ public interface EsbPackage extends EPackage {
          * @generated
          */
         EReference ABSTRACT_SQL_EXECUTOR_MEDIATOR__SQL_STATEMENTS = eINSTANCE.getAbstractSqlExecutorMediator_SqlStatements();
+
+        /**
+         * The meta object literal for the '<em><b>Is Registry Based Driver Config</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute ABSTRACT_SQL_EXECUTOR_MEDIATOR__IS_REGISTRY_BASED_DRIVER_CONFIG = eINSTANCE.getAbstractSqlExecutorMediator_IsRegistryBasedDriverConfig();
+
+        /**
+         * The meta object literal for the '<em><b>Is Registry Based Url Config</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute ABSTRACT_SQL_EXECUTOR_MEDIATOR__IS_REGISTRY_BASED_URL_CONFIG = eINSTANCE.getAbstractSqlExecutorMediator_IsRegistryBasedUrlConfig();
+
+        /**
+         * The meta object literal for the '<em><b>Is Registry Based User Config</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute ABSTRACT_SQL_EXECUTOR_MEDIATOR__IS_REGISTRY_BASED_USER_CONFIG = eINSTANCE.getAbstractSqlExecutorMediator_IsRegistryBasedUserConfig();
+
+        /**
+         * The meta object literal for the '<em><b>Is Registry Based Pass Config</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute ABSTRACT_SQL_EXECUTOR_MEDIATOR__IS_REGISTRY_BASED_PASS_CONFIG = eINSTANCE.getAbstractSqlExecutorMediator_IsRegistryBasedPassConfig();
+
+        /**
+         * The meta object literal for the '<em><b>Registry Based Driver Config Key</b></em>' containment reference feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference ABSTRACT_SQL_EXECUTOR_MEDIATOR__REGISTRY_BASED_DRIVER_CONFIG_KEY = eINSTANCE.getAbstractSqlExecutorMediator_RegistryBasedDriverConfigKey();
+
+        /**
+         * The meta object literal for the '<em><b>Registry Based Url Config Key</b></em>' containment reference feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference ABSTRACT_SQL_EXECUTOR_MEDIATOR__REGISTRY_BASED_URL_CONFIG_KEY = eINSTANCE.getAbstractSqlExecutorMediator_RegistryBasedUrlConfigKey();
+
+        /**
+         * The meta object literal for the '<em><b>Registry Based User Config Key</b></em>' containment reference feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference ABSTRACT_SQL_EXECUTOR_MEDIATOR__REGISTRY_BASED_USER_CONFIG_KEY = eINSTANCE.getAbstractSqlExecutorMediator_RegistryBasedUserConfigKey();
+
+        /**
+         * The meta object literal for the '<em><b>Registry Based Pass Config Key</b></em>' containment reference feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference ABSTRACT_SQL_EXECUTOR_MEDIATOR__REGISTRY_BASED_PASS_CONFIG_KEY = eINSTANCE.getAbstractSqlExecutorMediator_RegistryBasedPassConfigKey();
 
         /**
          * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SqlStatementImpl <em>Sql Statement</em>}' class.

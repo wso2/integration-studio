@@ -39,6 +39,14 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getPropertyValidationquery <em>Property Validationquery</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getPropertyInitialsize <em>Property Initialsize</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getSqlStatements <em>Sql Statements</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#isIsRegistryBasedDriverConfig <em>Is Registry Based Driver Config</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#isIsRegistryBasedUrlConfig <em>Is Registry Based Url Config</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#isIsRegistryBasedUserConfig <em>Is Registry Based User Config</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#isIsRegistryBasedPassConfig <em>Is Registry Based Pass Config</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getRegistryBasedDriverConfigKey <em>Registry Based Driver Config Key</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getRegistryBasedUrlConfigKey <em>Registry Based Url Config Key</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getRegistryBasedUserConfigKey <em>Registry Based User Config Key</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getRegistryBasedPassConfigKey <em>Registry Based Pass Config Key</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractSqlExecutorMediator()
@@ -651,5 +659,217 @@ public interface AbstractSqlExecutorMediator extends Mediator {
      * @generated
      */
     EList<SqlStatement> getSqlStatements();
+
+    /**
+     * Returns the value of the '<em><b>Is Registry Based Driver Config</b></em>' attribute.
+     * The default value is <code>"false"</code>.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Is Registry Based Driver Config</em>' attribute isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Is Registry Based Driver Config</em>' attribute.
+     * @see #setIsRegistryBasedDriverConfig(boolean)
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractSqlExecutorMediator_IsRegistryBasedDriverConfig()
+     * @model default="false"
+     * @generated
+     */
+    boolean isIsRegistryBasedDriverConfig();
+
+    /**
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#isIsRegistryBasedDriverConfig <em>Is Registry Based Driver Config</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Is Registry Based Driver Config</em>' attribute.
+     * @see #isIsRegistryBasedDriverConfig()
+     * @generated
+     */
+    void setIsRegistryBasedDriverConfig(boolean value);
+
+    /**
+     * Returns the value of the '<em><b>Is Registry Based Url Config</b></em>' attribute.
+     * The default value is <code>"false"</code>.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Is Registry Based Url Config</em>' attribute isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Is Registry Based Url Config</em>' attribute.
+     * @see #setIsRegistryBasedUrlConfig(boolean)
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractSqlExecutorMediator_IsRegistryBasedUrlConfig()
+     * @model default="false"
+     * @generated
+     */
+    boolean isIsRegistryBasedUrlConfig();
+
+    /**
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#isIsRegistryBasedUrlConfig <em>Is Registry Based Url Config</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Is Registry Based Url Config</em>' attribute.
+     * @see #isIsRegistryBasedUrlConfig()
+     * @generated
+     */
+    void setIsRegistryBasedUrlConfig(boolean value);
+
+    /**
+     * Returns the value of the '<em><b>Is Registry Based User Config</b></em>' attribute.
+     * The default value is <code>"false"</code>.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Is Registry Based User Config</em>' attribute isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Is Registry Based User Config</em>' attribute.
+     * @see #setIsRegistryBasedUserConfig(boolean)
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractSqlExecutorMediator_IsRegistryBasedUserConfig()
+     * @model default="false"
+     * @generated
+     */
+    boolean isIsRegistryBasedUserConfig();
+
+    /**
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#isIsRegistryBasedUserConfig <em>Is Registry Based User Config</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Is Registry Based User Config</em>' attribute.
+     * @see #isIsRegistryBasedUserConfig()
+     * @generated
+     */
+    void setIsRegistryBasedUserConfig(boolean value);
+
+    /**
+     * Returns the value of the '<em><b>Is Registry Based Pass Config</b></em>' attribute.
+     * The default value is <code>"false"</code>.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Is Registry Based Pass Config</em>' attribute isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Is Registry Based Pass Config</em>' attribute.
+     * @see #setIsRegistryBasedPassConfig(boolean)
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractSqlExecutorMediator_IsRegistryBasedPassConfig()
+     * @model default="false"
+     * @generated
+     */
+    boolean isIsRegistryBasedPassConfig();
+
+    /**
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#isIsRegistryBasedPassConfig <em>Is Registry Based Pass Config</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Is Registry Based Pass Config</em>' attribute.
+     * @see #isIsRegistryBasedPassConfig()
+     * @generated
+     */
+    void setIsRegistryBasedPassConfig(boolean value);
+
+    /**
+     * Returns the value of the '<em><b>Registry Based Driver Config Key</b></em>' containment reference.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Registry Based Driver Config Key</em>' reference isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Registry Based Driver Config Key</em>' containment reference.
+     * @see #setRegistryBasedDriverConfigKey(RegistryKeyProperty)
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractSqlExecutorMediator_RegistryBasedDriverConfigKey()
+     * @model containment="true"
+     * @generated
+     */
+    RegistryKeyProperty getRegistryBasedDriverConfigKey();
+
+    /**
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getRegistryBasedDriverConfigKey <em>Registry Based Driver Config Key</em>}' containment reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Registry Based Driver Config Key</em>' containment reference.
+     * @see #getRegistryBasedDriverConfigKey()
+     * @generated
+     */
+    void setRegistryBasedDriverConfigKey(RegistryKeyProperty value);
+
+    /**
+     * Returns the value of the '<em><b>Registry Based Url Config Key</b></em>' containment reference.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Registry Based Url Config Key</em>' reference isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Registry Based Url Config Key</em>' containment reference.
+     * @see #setRegistryBasedUrlConfigKey(RegistryKeyProperty)
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractSqlExecutorMediator_RegistryBasedUrlConfigKey()
+     * @model containment="true"
+     * @generated
+     */
+    RegistryKeyProperty getRegistryBasedUrlConfigKey();
+
+    /**
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getRegistryBasedUrlConfigKey <em>Registry Based Url Config Key</em>}' containment reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Registry Based Url Config Key</em>' containment reference.
+     * @see #getRegistryBasedUrlConfigKey()
+     * @generated
+     */
+    void setRegistryBasedUrlConfigKey(RegistryKeyProperty value);
+
+    /**
+     * Returns the value of the '<em><b>Registry Based User Config Key</b></em>' containment reference.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Registry Based User Config Key</em>' reference isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Registry Based User Config Key</em>' containment reference.
+     * @see #setRegistryBasedUserConfigKey(RegistryKeyProperty)
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractSqlExecutorMediator_RegistryBasedUserConfigKey()
+     * @model containment="true"
+     * @generated
+     */
+    RegistryKeyProperty getRegistryBasedUserConfigKey();
+
+    /**
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getRegistryBasedUserConfigKey <em>Registry Based User Config Key</em>}' containment reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Registry Based User Config Key</em>' containment reference.
+     * @see #getRegistryBasedUserConfigKey()
+     * @generated
+     */
+    void setRegistryBasedUserConfigKey(RegistryKeyProperty value);
+
+    /**
+     * Returns the value of the '<em><b>Registry Based Pass Config Key</b></em>' containment reference.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Registry Based Pass Config Key</em>' reference isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Registry Based Pass Config Key</em>' containment reference.
+     * @see #setRegistryBasedPassConfigKey(RegistryKeyProperty)
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractSqlExecutorMediator_RegistryBasedPassConfigKey()
+     * @model containment="true"
+     * @generated
+     */
+    RegistryKeyProperty getRegistryBasedPassConfigKey();
+
+    /**
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getRegistryBasedPassConfigKey <em>Registry Based Pass Config Key</em>}' containment reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Registry Based Pass Config Key</em>' containment reference.
+     * @see #getRegistryBasedPassConfigKey()
+     * @generated
+     */
+    void setRegistryBasedPassConfigKey(RegistryKeyProperty value);
 
 } // AbstractSqlExecutorMediator

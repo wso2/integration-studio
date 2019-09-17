@@ -59,6 +59,9 @@ import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.KeyListener;
+import org.eclipse.swt.events.MouseAdapter;
+import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 
@@ -76,19 +79,22 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
-import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.SqlDatabaseType;
 import org.wso2.developerstudio.eclipse.gmf.esb.SqlExecutorConnectionType;
 import org.wso2.developerstudio.eclipse.gmf.esb.SqlExecutorDatasourceType;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.ConnectionObj;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.DependencyProvider;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.developerstudio.esb.form.editors.article.providers.NamedEntityDescriptor;
 
 import static org.wso2.developerstudio.eclipse.gmf.esb.Constants.TXT_DATABASE_CONNECTION_URL_MSSQL;
 import static org.wso2.developerstudio.eclipse.gmf.esb.Constants.TXT_DATABASE_CONNECTION_URL_MYSQL;
@@ -122,6 +128,10 @@ public class DBReportMediatorPropertiesEditionPartForm extends SectionProperties
 	protected Text connectionPassword;
 	protected Button dependencyProvider;
 	protected Button connectionUseTransaction;
+	protected Button isRegistryBasedDriverConfig;
+	protected Button isRegistryBasedUrlConfig;
+	protected Button isRegistryBasedUserConfig;
+	protected Button isRegistryBasedPassConfig;
 	protected ReferencesTable sqlStatements;
 	protected List<ViewerFilter> sqlStatementsBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> sqlStatementsFilters = new ArrayList<ViewerFilter>();
@@ -144,6 +154,16 @@ public class DBReportMediatorPropertiesEditionPartForm extends SectionProperties
 	protected Text description;
 
 	// Start of user code for additional methods
+	protected Text registryBasedDriverConfigKeyText;
+	protected Text registryBasedUrlConfigKeyText;
+	protected Text registryBasedUserConfigKeyText;
+	protected Text registryBasedPassConfigKeyText;
+	    
+	protected RegistryKeyProperty registryBasedDriverConfigKey;
+	protected RegistryKeyProperty registryBasedUrlConfigKey;
+	protected RegistryKeyProperty registryBasedUserConfigKey;
+	protected RegistryKeyProperty registryBasedPassConfigKey;
+	    
 	protected Composite connectionGroup;
 	protected Composite statementsGroup;
 	protected Composite propertiesGroup;
@@ -175,6 +195,14 @@ public class DBReportMediatorPropertiesEditionPartForm extends SectionProperties
 	protected Control[] propertyMaxIdleElements;
 	protected Control[] propertyMaxActiveElements;
 	protected Control[] connectionDbConfiguration;
+	protected Control[] isRegistryBasedDriverConfigElements;
+	protected Control[] isRegistryBasedUrlConfigElements;
+	protected Control[] isRegistryBasedUserConfigElements;
+	protected Control[] isRegistryBasedPassConfigElements;
+	protected Control[] registryBasedDriverConfigKeyElements;
+	protected Control[] registryBasedPassConfigKeyElements;
+	protected Control[] registryBasedUserConfigKeyElements;
+	protected Control[] registryBasedUrlConfigKeyElements;
 	
 	String jarPath = "";
 
@@ -223,15 +251,23 @@ public class DBReportMediatorPropertiesEditionPartForm extends SectionProperties
 		CompositionSequence dBReportMediatorStep = new BindingCompositionSequence(propertiesEditionComponent);
 		CompositionStep connectionStep = dBReportMediatorStep.addStep(EsbViewsRepository.DBReportMediator.Connection.class);
 		connectionStep.addStep(EsbViewsRepository.DBReportMediator.Connection.connectionType);
-		connectionStep.addStep(EsbViewsRepository.DBLookupMediator.Connection.databaseConfiguration);
+		connectionStep.addStep(EsbViewsRepository.DBReportMediator.Connection.databaseConfiguration);
 		connectionStep.addStep(EsbViewsRepository.DBReportMediator.Connection.connectionDsType);
 		connectionStep.addStep(EsbViewsRepository.DBReportMediator.Connection.connectionDbType);
+		connectionStep.addStep(EsbViewsRepository.DBReportMediator.Connection.isRegistryBasedDriverConfig);
 		connectionStep.addStep(EsbViewsRepository.DBReportMediator.Connection.connectionDbDriver);
+		connectionStep.addStep(EsbViewsRepository.DBReportMediator.Connection.registryBasedDriverConfigKey);
 		connectionStep.addStep(EsbViewsRepository.DBReportMediator.Connection.connectionDsInitialContext);
 		connectionStep.addStep(EsbViewsRepository.DBReportMediator.Connection.connectionDsName);
+		connectionStep.addStep(EsbViewsRepository.DBReportMediator.Connection.isRegistryBasedUrlConfig);
 		connectionStep.addStep(EsbViewsRepository.DBReportMediator.Connection.connectionURL);
+		connectionStep.addStep(EsbViewsRepository.DBReportMediator.Connection.registryBasedUrlConfigKey);
+		connectionStep.addStep(EsbViewsRepository.DBReportMediator.Connection.isRegistryBasedUserConfig);
 		connectionStep.addStep(EsbViewsRepository.DBReportMediator.Connection.connectionUsername);
+		connectionStep.addStep(EsbViewsRepository.DBReportMediator.Connection.registryBasedUserConfigKey);
+		connectionStep.addStep(EsbViewsRepository.DBReportMediator.Connection.isRegistryBasedPassConfig);
 		connectionStep.addStep(EsbViewsRepository.DBReportMediator.Connection.connectionPassword);
+		connectionStep.addStep(EsbViewsRepository.DBReportMediator.Connection.registryBasedPassConfigKey);
 		connectionStep.addStep(EsbViewsRepository.DBReportMediator.Connection.connectionUseTransaction);
 		
 		dBReportMediatorStep
@@ -353,8 +389,32 @@ public class DBReportMediatorPropertiesEditionPartForm extends SectionProperties
 				if (key == EsbViewsRepository.DBReportMediator.Misc.description) {
 					return createDescriptionText(widgetFactory, parent);
 				}				
-				if (key == EsbViewsRepository.DBLookupMediator.Connection.databaseConfiguration) {
+				if (key == EsbViewsRepository.DBReportMediator.Connection.databaseConfiguration) {
 					return createDbConfiguration(widgetFactory, parent);
+				}
+				if (key == EsbViewsRepository.DBReportMediator.Connection.isRegistryBasedDriverConfig) {
+					return createIsRegistryBasedDriverConfigCheckbox(widgetFactory, parent);
+				}
+				if (key == EsbViewsRepository.DBReportMediator.Connection.isRegistryBasedUserConfig) {
+					return createIsRegistryBasedUserConfigCheckbox(widgetFactory, parent);
+				}
+				if (key == EsbViewsRepository.DBReportMediator.Connection.isRegistryBasedUrlConfig) {
+					return createIsRegistryBasedUrlConfigCheckbox(widgetFactory, parent);
+				}
+				if (key == EsbViewsRepository.DBReportMediator.Connection.isRegistryBasedPassConfig) {
+					return createIsRegistryBasedPassConfigCheckbox(widgetFactory, parent);
+				}
+				if (key == EsbViewsRepository.DBReportMediator.Connection.registryBasedDriverConfigKey) {
+					return createRegistryBasedDriverConfigKeyWidget(widgetFactory, parent);
+				}
+				if (key == EsbViewsRepository.DBReportMediator.Connection.registryBasedPassConfigKey) {
+					return createRegistryBasedPassConfigKeyWidget(widgetFactory, parent);
+				}
+				if (key == EsbViewsRepository.DBReportMediator.Connection.registryBasedUserConfigKey) {
+					return createRegistryBasedUserConfigKeyWidget(widgetFactory, parent);
+				}
+				if (key == EsbViewsRepository.DBReportMediator.Connection.registryBasedUrlConfigKey) {
+					return createRegistryBasedUrlConfigKeyWidget(widgetFactory, parent);
 				}
 				return parent;
 			}
@@ -368,8 +428,8 @@ public class DBReportMediatorPropertiesEditionPartForm extends SectionProperties
 
     protected Composite createDbConfiguration(FormToolkit widgetFactory, Composite parent) {
         Control propertyInitializeLabel = createDescription(parent,
-                EsbViewsRepository.DBLookupMediator.Connection.databaseConfiguration,
-                EsbMessages.DBLookupMediatorPropertiesEditionPart_DatabaseConfigurationLabel);
+                EsbViewsRepository.DBReportMediator.Connection.databaseConfiguration,
+                EsbMessages.DBReportMediatorPropertiesEditionPart_DatabaseConfigurationLabel);
         dependencyProvider = new Button(parent, SWT.NULL);
 
         GridData dependencyProviderData = new GridData();
@@ -435,7 +495,7 @@ public class DBReportMediatorPropertiesEditionPartForm extends SectionProperties
 
         Control propertyInitializeHelp = FormUtils.createHelpButton(widgetFactory, parent,
                 propertiesEditionComponent.getHelpContent(
-                        EsbViewsRepository.DBLookupMediator.Connection.databaseConfiguration,
+                        EsbViewsRepository.DBReportMediator.Connection.databaseConfiguration,
                         EsbViewsRepository.FORM_KIND),
                 null); // $NON-NLS-1$
 
@@ -1035,7 +1095,178 @@ public class DBReportMediatorPropertiesEditionPartForm extends SectionProperties
 		return parent;
 	}
 
-	/**
+	protected Composite createIsRegistryBasedDriverConfigCheckbox(FormToolkit widgetFactory, Composite parent) {
+		isRegistryBasedDriverConfig = widgetFactory
+				.createButton(parent,
+						getDescription(EsbViewsRepository.DBReportMediator.Connection.isRegistryBasedDriverConfig,
+								EsbMessages.DBReportMediatorPropertiesEditionPart_IsRegistryBasedDriverConfigLabel),
+						SWT.CHECK);
+		isRegistryBasedDriverConfig.addSelectionListener(new SelectionAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 *
+			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 * 
+			 */
+			public void widgetSelected(SelectionEvent e) {
+				if (propertiesEditionComponent != null) {
+					propertiesEditionComponent.firePropertiesChanged(
+							new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartForm.this,
+									EsbViewsRepository.DBReportMediator.Connection.isRegistryBasedDriverConfig,
+									PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+									new Boolean(isRegistryBasedDriverConfig.getSelection())));
+				}
+				validate();
+			}
+
+		});
+		GridData isRegistryBasedDriverConfigData = new GridData(GridData.FILL_HORIZONTAL);
+		isRegistryBasedDriverConfigData.horizontalSpan = 2;
+		isRegistryBasedDriverConfig.setLayoutData(isRegistryBasedDriverConfigData);
+		EditingUtils.setID(isRegistryBasedDriverConfig,
+				EsbViewsRepository.DBReportMediator.Connection.isRegistryBasedDriverConfig);
+		EditingUtils.setEEFtype(isRegistryBasedDriverConfig, "eef::Checkbox"); //$NON-NLS-1$
+		Control isRegistryBasedDriverConfigHelp = FormUtils.createHelpButton(widgetFactory, parent,
+				propertiesEditionComponent.getHelpContent(
+						EsbViewsRepository.DBReportMediator.Connection.isRegistryBasedDriverConfig,
+						EsbViewsRepository.FORM_KIND),
+				null); // $NON-NLS-1$
+		// Start of user code for createIsRegistryBasedDriverConfigCheckbox
+		isRegistryBasedDriverConfigElements = new Control[] { isRegistryBasedDriverConfig,
+				isRegistryBasedDriverConfigHelp };
+		// End of user code
+		return parent;
+	}
+
+	protected Composite createIsRegistryBasedUrlConfigCheckbox(FormToolkit widgetFactory, Composite parent) {
+		isRegistryBasedUrlConfig = widgetFactory
+				.createButton(parent,
+						getDescription(EsbViewsRepository.DBReportMediator.Connection.isRegistryBasedUrlConfig,
+								EsbMessages.DBReportMediatorPropertiesEditionPart_IsRegistryBasedUrlConfigLabel),
+						SWT.CHECK);
+		isRegistryBasedUrlConfig.addSelectionListener(new SelectionAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 *
+			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 * 
+			 */
+			public void widgetSelected(SelectionEvent e) {
+				if (propertiesEditionComponent != null) {
+					propertiesEditionComponent.firePropertiesChanged(
+							new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartForm.this,
+									EsbViewsRepository.DBReportMediator.Connection.isRegistryBasedUrlConfig,
+									PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+									new Boolean(isRegistryBasedUrlConfig.getSelection())));
+				}
+				validate();
+			}
+
+		});
+		GridData isRegistryBasedUrlConfigData = new GridData(GridData.FILL_HORIZONTAL);
+		isRegistryBasedUrlConfigData.horizontalSpan = 2;
+		isRegistryBasedUrlConfig.setLayoutData(isRegistryBasedUrlConfigData);
+		EditingUtils.setID(isRegistryBasedUrlConfig,
+				EsbViewsRepository.DBReportMediator.Connection.isRegistryBasedUrlConfig);
+		EditingUtils.setEEFtype(isRegistryBasedUrlConfig, "eef::Checkbox"); //$NON-NLS-1$
+		Control isRegistryBasedUrlConfigHelp = FormUtils.createHelpButton(widgetFactory, parent,
+				propertiesEditionComponent.getHelpContent(
+						EsbViewsRepository.DBReportMediator.Connection.isRegistryBasedUrlConfig,
+						EsbViewsRepository.FORM_KIND),
+				null); // $NON-NLS-1$
+		// Start of user code for createIsRegistryBasedUrlConfigCheckbox
+		isRegistryBasedUrlConfigElements = new Control[] { isRegistryBasedUrlConfig, isRegistryBasedUrlConfigHelp };
+		// End of user code
+		return parent;
+	}
+
+	protected Composite createIsRegistryBasedUserConfigCheckbox(FormToolkit widgetFactory, Composite parent) {
+		isRegistryBasedUserConfig = widgetFactory
+				.createButton(parent,
+						getDescription(EsbViewsRepository.DBReportMediator.Connection.isRegistryBasedUserConfig,
+								EsbMessages.DBReportMediatorPropertiesEditionPart_IsRegistryBasedUserConfigLabel),
+						SWT.CHECK);
+		isRegistryBasedUserConfig.addSelectionListener(new SelectionAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 *
+			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 * 
+			 */
+			public void widgetSelected(SelectionEvent e) {
+				if (propertiesEditionComponent != null) {
+					propertiesEditionComponent.firePropertiesChanged(
+							new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartForm.this,
+									EsbViewsRepository.DBReportMediator.Connection.isRegistryBasedUserConfig,
+									PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+									new Boolean(isRegistryBasedUserConfig.getSelection())));
+				}
+				validate();
+			}
+		});
+		GridData isRegistryBasedUserConfigData = new GridData(GridData.FILL_HORIZONTAL);
+		isRegistryBasedUserConfigData.horizontalSpan = 2;
+		isRegistryBasedUserConfig.setLayoutData(isRegistryBasedUserConfigData);
+		EditingUtils.setID(isRegistryBasedUserConfig,
+				EsbViewsRepository.DBReportMediator.Connection.isRegistryBasedUserConfig);
+		EditingUtils.setEEFtype(isRegistryBasedUserConfig, "eef::Checkbox"); //$NON-NLS-1$
+		Control isRegistryBasedUserConfigHelp = FormUtils.createHelpButton(widgetFactory, parent,
+				propertiesEditionComponent.getHelpContent(
+						EsbViewsRepository.DBReportMediator.Connection.isRegistryBasedUserConfig,
+						EsbViewsRepository.FORM_KIND),
+				null); // $NON-NLS-1$
+		// Start of user code for createIsRegistryBasedUserConfigCheckbox
+		isRegistryBasedUserConfigElements = new Control[] { isRegistryBasedUserConfig, isRegistryBasedUserConfigHelp };
+		// End of user code
+		return parent;
+	}
+
+	protected Composite createIsRegistryBasedPassConfigCheckbox(FormToolkit widgetFactory, Composite parent) {
+		isRegistryBasedPassConfig = widgetFactory
+				.createButton(parent,
+						getDescription(EsbViewsRepository.DBReportMediator.Connection.isRegistryBasedPassConfig,
+								EsbMessages.DBReportMediatorPropertiesEditionPart_IsRegistryBasedPassConfigLabel),
+						SWT.CHECK);
+		isRegistryBasedPassConfig.addSelectionListener(new SelectionAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 *
+			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 * 
+			 */
+			public void widgetSelected(SelectionEvent e) {
+				if (propertiesEditionComponent != null) {
+					propertiesEditionComponent.firePropertiesChanged(
+							new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartForm.this,
+									EsbViewsRepository.DBReportMediator.Connection.isRegistryBasedPassConfig,
+									PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+									new Boolean(isRegistryBasedPassConfig.getSelection())));
+				}
+				validate();
+			}
+		});
+		GridData isRegistryBasedPassConfigData = new GridData(GridData.FILL_HORIZONTAL);
+		isRegistryBasedPassConfigData.horizontalSpan = 2;
+		isRegistryBasedPassConfig.setLayoutData(isRegistryBasedPassConfigData);
+		EditingUtils.setID(isRegistryBasedPassConfig,
+				EsbViewsRepository.DBReportMediator.Connection.isRegistryBasedPassConfig);
+		EditingUtils.setEEFtype(isRegistryBasedPassConfig, "eef::Checkbox"); //$NON-NLS-1$
+		Control isRegistryBasedPassConfigHelp = FormUtils.createHelpButton(widgetFactory, parent,
+				propertiesEditionComponent.getHelpContent(
+						EsbViewsRepository.DBReportMediator.Connection.isRegistryBasedPassConfig,
+						EsbViewsRepository.FORM_KIND),
+				null); // $NON-NLS-1$
+		// Start of user code for createIsRegistryBasedPassConfigCheckbox
+		isRegistryBasedPassConfigElements = new Control[] { isRegistryBasedPassConfig, isRegistryBasedPassConfigHelp };
+		// End of user code
+		return parent;
+	}
+
+  /**
      * @generated NOT
      */
 	protected Composite createStatementsGroup(FormToolkit widgetFactory, final Composite parent) {
@@ -2352,6 +2583,142 @@ public class DBReportMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getIsRegistryBasedDriverConfig()
+	 * 
+	 */
+	public Boolean getIsRegistryBasedDriverConfig() {
+		return Boolean.valueOf(isRegistryBasedDriverConfig.getSelection());
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setIsRegistryBasedDriverConfig(Boolean
+	 *      newValue)
+	 * 
+	 */
+	public void setIsRegistryBasedDriverConfig(Boolean newValue) {
+		if (newValue != null) {
+			isRegistryBasedDriverConfig.setSelection(newValue.booleanValue());
+		} else {
+			isRegistryBasedDriverConfig.setSelection(false);
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(
+				EsbViewsRepository.DBReportMediator.Connection.isRegistryBasedDriverConfig);
+		if (eefElementEditorReadOnlyState && isRegistryBasedDriverConfig.isEnabled()) {
+			isRegistryBasedDriverConfig.setEnabled(false);
+			isRegistryBasedDriverConfig.setToolTipText(EsbMessages.DBReportMediator_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !isRegistryBasedDriverConfig.isEnabled()) {
+			isRegistryBasedDriverConfig.setEnabled(true);
+		}
+
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getIsRegistryBasedUrlConfig()
+	 * 
+	 */
+	public Boolean getIsRegistryBasedUrlConfig() {
+		return Boolean.valueOf(isRegistryBasedUrlConfig.getSelection());
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setIsRegistryBasedUrlConfig(Boolean
+	 *      newValue)
+	 * 
+	 */
+	public void setIsRegistryBasedUrlConfig(Boolean newValue) {
+		if (newValue != null) {
+			isRegistryBasedUrlConfig.setSelection(newValue.booleanValue());
+		} else {
+			isRegistryBasedUrlConfig.setSelection(false);
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(
+				EsbViewsRepository.DBReportMediator.Connection.isRegistryBasedUrlConfig);
+		if (eefElementEditorReadOnlyState && isRegistryBasedUrlConfig.isEnabled()) {
+			isRegistryBasedUrlConfig.setEnabled(false);
+			isRegistryBasedUrlConfig.setToolTipText(EsbMessages.DBReportMediator_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !isRegistryBasedUrlConfig.isEnabled()) {
+			isRegistryBasedUrlConfig.setEnabled(true);
+		}
+
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getIsRegistryBasedUserConfig()
+	 * 
+	 */
+	public Boolean getIsRegistryBasedUserConfig() {
+		return Boolean.valueOf(isRegistryBasedUserConfig.getSelection());
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setIsRegistryBasedUserConfig(Boolean
+	 *      newValue)
+	 * 
+	 */
+	public void setIsRegistryBasedUserConfig(Boolean newValue) {
+		if (newValue != null) {
+			isRegistryBasedUserConfig.setSelection(newValue.booleanValue());
+		} else {
+			isRegistryBasedUserConfig.setSelection(false);
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(
+				EsbViewsRepository.DBReportMediator.Connection.isRegistryBasedUserConfig);
+		if (eefElementEditorReadOnlyState && isRegistryBasedUserConfig.isEnabled()) {
+			isRegistryBasedUserConfig.setEnabled(false);
+			isRegistryBasedUserConfig.setToolTipText(EsbMessages.DBReportMediator_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !isRegistryBasedUserConfig.isEnabled()) {
+			isRegistryBasedUserConfig.setEnabled(true);
+		}
+
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getIsRegistryBasedPassConfig()
+	 * 
+	 */
+	public Boolean getIsRegistryBasedPassConfig() {
+		return Boolean.valueOf(isRegistryBasedPassConfig.getSelection());
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setIsRegistryBasedPassConfig(Boolean
+	 *      newValue)
+	 * 
+	 */
+	public void setIsRegistryBasedPassConfig(Boolean newValue) {
+		if (newValue != null) {
+			isRegistryBasedPassConfig.setSelection(newValue.booleanValue());
+		} else {
+			isRegistryBasedPassConfig.setSelection(false);
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(
+				EsbViewsRepository.DBReportMediator.Connection.isRegistryBasedPassConfig);
+		if (eefElementEditorReadOnlyState && isRegistryBasedPassConfig.isEnabled()) {
+			isRegistryBasedPassConfig.setEnabled(false);
+			isRegistryBasedPassConfig.setToolTipText(EsbMessages.DBReportMediator_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !isRegistryBasedPassConfig.isEnabled()) {
+			isRegistryBasedPassConfig.setEnabled(true);
+		}
+
+	}
+
+  /**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#initSqlStatements(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initSqlStatements(ReferencesTableSettings settings) {
@@ -3003,6 +3370,274 @@ public class DBReportMediatorPropertiesEditionPartForm extends SectionProperties
 	}
 
 	// Start of user code additional methods
+	protected Composite createRegistryBasedDriverConfigKeyWidget(FormToolkit widgetFactory, Composite parent) {
+		Control registryBasedDriverConfigKeyLabel = createDescription(parent,
+				EsbViewsRepository.DBReportMediator.Connection.registryBasedDriverConfigKey,
+				EsbMessages.DBReportMediatorPropertiesEditionPart_RegistryBasedDriverConfigKeyLabel);
+		widgetFactory.paintBordersFor(parent);
+		if (registryBasedDriverConfigKey == null) {
+			registryBasedDriverConfigKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
+		}
+		String initValueExpression = registryBasedDriverConfigKey.getKeyValue().isEmpty() ? ""
+				: registryBasedDriverConfigKey.getKeyValue();
+		registryBasedDriverConfigKeyText = widgetFactory.createText(parent, initValueExpression, SWT.READ_ONLY);
+		registryBasedDriverConfigKeyText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+		widgetFactory.paintBordersFor(parent);
+		GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
+		registryBasedDriverConfigKeyText.setLayoutData(valueData);
+		registryBasedDriverConfigKeyText.addMouseListener(new MouseAdapter() {
+
+			@Override
+			public void mouseDown(MouseEvent event) {
+				EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
+						SWT.NULL, registryBasedDriverConfigKey, new ArrayList<NamedEntityDescriptor>());
+				dialog.open();
+				registryBasedDriverConfigKeyText.setText(registryBasedDriverConfigKey.getKeyValue());
+				propertiesEditionComponent.firePropertiesChanged(
+						new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartForm.this,
+								EsbViewsRepository.DBReportMediator.Connection.registryBasedDriverConfigKey,
+								PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+								getRegistryBasedDriverConfigKey()));
+			}
+
+		});
+
+		registryBasedDriverConfigKeyText.addKeyListener(new KeyListener() {
+
+			@Override
+			public void keyPressed(KeyEvent e) {
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+					EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
+							SWT.NULL, registryBasedDriverConfigKey, new ArrayList<NamedEntityDescriptor>());
+					dialog.open();
+					registryBasedDriverConfigKeyText.setText(registryBasedDriverConfigKey.getKeyValue());
+					propertiesEditionComponent.firePropertiesChanged(
+							new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartForm.this,
+									EsbViewsRepository.DBReportMediator.Connection.registryBasedDriverConfigKey,
+									PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+									getRegistryBasedDriverConfigKey()));
+				}
+			}
+
+		});
+		EditingUtils.setID(registryBasedDriverConfigKeyText,
+				EsbViewsRepository.DBReportMediator.Connection.registryBasedDriverConfigKey);
+		EditingUtils.setEEFtype(registryBasedDriverConfigKeyText, "eef::Text");
+		Control registryBasedDriverConfigKeyHelp = FormUtils.createHelpButton(widgetFactory, parent,
+				propertiesEditionComponent.getHelpContent(
+						EsbViewsRepository.DBReportMediator.Connection.registryBasedDriverConfigKey,
+						EsbViewsRepository.FORM_KIND),
+				null); // $NON-NLS-1$
+		registryBasedDriverConfigKeyElements = new Control[] { registryBasedDriverConfigKeyLabel,
+				registryBasedDriverConfigKeyText, registryBasedDriverConfigKeyHelp };
+		return parent;
+	}
+
+	protected Composite createRegistryBasedPassConfigKeyWidget(FormToolkit widgetFactory, Composite parent) {
+		Control registryBasedPassConfigKeyLabel = createDescription(parent,
+				EsbViewsRepository.DBReportMediator.Connection.registryBasedPassConfigKey,
+				EsbMessages.DBReportMediatorPropertiesEditionPart_RegistryBasedPassConfigKeyLabel);
+		widgetFactory.paintBordersFor(parent);
+		if (registryBasedPassConfigKey == null) {
+			registryBasedPassConfigKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
+		}
+		String initValueExpression = registryBasedPassConfigKey.getKeyValue().isEmpty() ? ""
+				: registryBasedPassConfigKey.getKeyValue();
+		registryBasedPassConfigKeyText = widgetFactory.createText(parent, initValueExpression, SWT.READ_ONLY);
+		registryBasedPassConfigKeyText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+		widgetFactory.paintBordersFor(parent);
+		GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
+		registryBasedPassConfigKeyText.setLayoutData(valueData);
+		registryBasedPassConfigKeyText.addMouseListener(new MouseAdapter() {
+
+			@Override
+			public void mouseDown(MouseEvent event) {
+				EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
+						SWT.NULL, registryBasedPassConfigKey, new ArrayList<NamedEntityDescriptor>());
+				dialog.open();
+				registryBasedPassConfigKeyText.setText(registryBasedPassConfigKey.getKeyValue());
+				propertiesEditionComponent.firePropertiesChanged(
+						new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartForm.this,
+								EsbViewsRepository.DBReportMediator.Connection.registryBasedPassConfigKey,
+								PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+								getRegistryBasedPassConfigKey()));
+			}
+
+		});
+
+		registryBasedPassConfigKeyText.addKeyListener(new KeyListener() {
+
+			@Override
+			public void keyPressed(KeyEvent e) {
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+					EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
+							SWT.NULL, registryBasedPassConfigKey, new ArrayList<NamedEntityDescriptor>());
+					dialog.open();
+					registryBasedPassConfigKeyText.setText(registryBasedPassConfigKey.getKeyValue());
+					propertiesEditionComponent.firePropertiesChanged(
+							new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartForm.this,
+									EsbViewsRepository.DBReportMediator.Connection.registryBasedPassConfigKey,
+									PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+									getRegistryBasedPassConfigKey()));
+				}
+			}
+
+		});
+		EditingUtils.setID(registryBasedPassConfigKeyText,
+				EsbViewsRepository.DBReportMediator.Connection.registryBasedPassConfigKey);
+		EditingUtils.setEEFtype(registryBasedPassConfigKeyText, "eef::Text");
+		Control registryBasedPassConfigKeyHelp = FormUtils.createHelpButton(widgetFactory, parent,
+				propertiesEditionComponent.getHelpContent(
+						EsbViewsRepository.DBReportMediator.Connection.registryBasedPassConfigKey,
+						EsbViewsRepository.FORM_KIND),
+				null); // $NON-NLS-1$
+		registryBasedPassConfigKeyElements = new Control[] { registryBasedPassConfigKeyLabel,
+				registryBasedPassConfigKeyText, registryBasedPassConfigKeyHelp };
+		return parent;
+	}
+
+	protected Composite createRegistryBasedUserConfigKeyWidget(FormToolkit widgetFactory, Composite parent) {
+		Control registryBasedUserConfigKeyLabel = createDescription(parent,
+				EsbViewsRepository.DBReportMediator.Connection.registryBasedUserConfigKey,
+				EsbMessages.DBReportMediatorPropertiesEditionPart_RegistryBasedUserConfigKeyLabel);
+		widgetFactory.paintBordersFor(parent);
+		if (registryBasedUserConfigKey == null) {
+			registryBasedUserConfigKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
+		}
+		String initValueExpression = registryBasedUserConfigKey.getKeyValue().isEmpty() ? ""
+				: registryBasedUserConfigKey.getKeyValue();
+		registryBasedUserConfigKeyText = widgetFactory.createText(parent, initValueExpression, SWT.READ_ONLY);
+		registryBasedUserConfigKeyText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+		widgetFactory.paintBordersFor(parent);
+		GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
+		registryBasedUserConfigKeyText.setLayoutData(valueData);
+		registryBasedUserConfigKeyText.addMouseListener(new MouseAdapter() {
+
+			@Override
+			public void mouseDown(MouseEvent event) {
+				EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
+						SWT.NULL, registryBasedUserConfigKey, new ArrayList<NamedEntityDescriptor>());
+				dialog.open();
+				registryBasedUserConfigKeyText.setText(registryBasedUserConfigKey.getKeyValue());
+				propertiesEditionComponent.firePropertiesChanged(
+						new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartForm.this,
+								EsbViewsRepository.DBReportMediator.Connection.registryBasedUserConfigKey,
+								PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+								getRegistryBasedUserConfigKey()));
+			}
+
+		});
+
+		registryBasedUserConfigKeyText.addKeyListener(new KeyListener() {
+
+			@Override
+			public void keyPressed(KeyEvent e) {
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+					EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
+							SWT.NULL, registryBasedUserConfigKey, new ArrayList<NamedEntityDescriptor>());
+					dialog.open();
+					registryBasedUserConfigKeyText.setText(registryBasedUserConfigKey.getKeyValue());
+					propertiesEditionComponent.firePropertiesChanged(
+							new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartForm.this,
+									EsbViewsRepository.DBReportMediator.Connection.registryBasedUserConfigKey,
+									PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+									getRegistryBasedUserConfigKey()));
+				}
+			}
+
+		});
+		EditingUtils.setID(registryBasedUserConfigKeyText,
+				EsbViewsRepository.DBReportMediator.Connection.registryBasedUserConfigKey);
+		EditingUtils.setEEFtype(registryBasedUserConfigKeyText, "eef::Text");
+		Control registryBasedUserConfigKeyHelp = FormUtils.createHelpButton(widgetFactory, parent,
+				propertiesEditionComponent.getHelpContent(
+						EsbViewsRepository.DBReportMediator.Connection.registryBasedUserConfigKey,
+						EsbViewsRepository.FORM_KIND),
+				null); // $NON-NLS-1$
+		registryBasedUserConfigKeyElements = new Control[] { registryBasedUserConfigKeyLabel,
+				registryBasedUserConfigKeyText, registryBasedUserConfigKeyHelp };
+		return parent;
+	}
+
+	protected Composite createRegistryBasedUrlConfigKeyWidget(FormToolkit widgetFactory, Composite parent) {
+		Control registryBasedUrlConfigKeyLabel = createDescription(parent,
+				EsbViewsRepository.DBReportMediator.Connection.registryBasedUrlConfigKey,
+				EsbMessages.DBReportMediatorPropertiesEditionPart_RegistryBasedUrlConfigKeyLabel);
+		widgetFactory.paintBordersFor(parent);
+		if (registryBasedUrlConfigKey == null) {
+			registryBasedUrlConfigKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
+		}
+		String initValueExpression = registryBasedUrlConfigKey.getKeyValue().isEmpty() ? ""
+				: registryBasedUrlConfigKey.getKeyValue();
+		registryBasedUrlConfigKeyText = widgetFactory.createText(parent, initValueExpression, SWT.READ_ONLY);
+		registryBasedUrlConfigKeyText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+		widgetFactory.paintBordersFor(parent);
+		GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
+		registryBasedUrlConfigKeyText.setLayoutData(valueData);
+		registryBasedUrlConfigKeyText.addMouseListener(new MouseAdapter() {
+
+			@Override
+			public void mouseDown(MouseEvent event) {
+				EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
+						SWT.NULL, registryBasedUrlConfigKey, new ArrayList<NamedEntityDescriptor>());
+				dialog.open();
+				registryBasedUrlConfigKeyText.setText(registryBasedUrlConfigKey.getKeyValue());
+				propertiesEditionComponent.firePropertiesChanged(
+						new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartForm.this,
+								EsbViewsRepository.DBReportMediator.Connection.registryBasedUrlConfigKey,
+								PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+								getRegistryBasedUrlrConfigKey()));
+			}
+
+		});
+
+		registryBasedUrlConfigKeyText.addKeyListener(new KeyListener() {
+
+			@Override
+			public void keyPressed(KeyEvent e) {
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+					EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
+							SWT.NULL, registryBasedUrlConfigKey, new ArrayList<NamedEntityDescriptor>());
+					dialog.open();
+					registryBasedUrlConfigKeyText.setText(registryBasedUrlConfigKey.getKeyValue());
+					propertiesEditionComponent.firePropertiesChanged(
+							new PropertiesEditionEvent(DBReportMediatorPropertiesEditionPartForm.this,
+									EsbViewsRepository.DBReportMediator.Connection.registryBasedUrlConfigKey,
+									PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+									getRegistryBasedUrlrConfigKey()));
+				}
+			}
+
+		});
+		EditingUtils.setID(registryBasedUrlConfigKeyText,
+				EsbViewsRepository.DBReportMediator.Connection.registryBasedUrlConfigKey);
+		EditingUtils.setEEFtype(registryBasedUrlConfigKeyText, "eef::Text");
+		Control registryBasedUrlConfigKeyHelp = FormUtils.createHelpButton(widgetFactory, parent,
+				propertiesEditionComponent.getHelpContent(
+						EsbViewsRepository.DBReportMediator.Connection.registryBasedUrlConfigKey,
+						EsbViewsRepository.FORM_KIND),
+				null); // $NON-NLS-1$
+		registryBasedUrlConfigKeyElements = new Control[] { registryBasedUrlConfigKeyLabel,
+				registryBasedUrlConfigKeyText, registryBasedUrlConfigKeyHelp };
+		return parent;
+	}
+    
 	@Override
     public void refresh() {
         super.refresh();
@@ -3022,9 +3657,28 @@ public class DBReportMediatorPropertiesEditionPartForm extends SectionProperties
             
             if (getConnectionDsType() != null && getConnectionDsType().getName().equals(SqlExecutorDatasourceType.EXTERNAL.getName())) {
                 eu.showEntry(connectionDsInitialContextElements, false);
-                eu.showEntry(connectionURLElements, false);
-                eu.showEntry(connectionUsernameElements, false);
-                eu.showEntry(connectionPasswordElements, false);
+                
+                eu.showEntry(isRegistryBasedUrlConfigElements, false);
+                if (getIsRegistryBasedUrlConfig()) {
+                    eu.showEntry(registryBasedUrlConfigKeyElements, false);
+                } else {
+                    eu.showEntry(connectionURLElements, false);
+                }
+                
+                eu.showEntry(isRegistryBasedUserConfigElements, false);
+                if (getIsRegistryBasedUserConfig()) {
+                    eu.showEntry(registryBasedUserConfigKeyElements, false);
+                } else {
+                    eu.showEntry(connectionUsernameElements, false);
+                }
+                
+                eu.showEntry(isRegistryBasedPassConfigElements, false);
+                if (getIsRegistryBasedPassConfig()) {
+                    eu.showEntry(registryBasedPassConfigKeyElements, false);
+                } else {
+                    eu.showEntry(connectionPasswordElements, false);
+                }
+                
                 eu.showEntry(connectionDsNameElements, false);
                 
                 enablePropertiesElements(eu);
@@ -3039,10 +3693,35 @@ public class DBReportMediatorPropertiesEditionPartForm extends SectionProperties
             
         } else if (getConnectionType() != null && getConnectionType().getName().equals(SqlExecutorConnectionType.DB_CONNECTION.getName())) {
             eu.showEntry(connectionDbTypeElements, false);
-            eu.showEntry(connectionDbDriverElements, false);
-            eu.showEntry(connectionURLElements, false);
-            eu.showEntry(connectionUsernameElements, false);
-            eu.showEntry(connectionPasswordElements, false);
+            
+            eu.showEntry(isRegistryBasedDriverConfigElements, false);
+            if (getIsRegistryBasedDriverConfig()) {
+                eu.showEntry(registryBasedDriverConfigKeyElements, false);
+            } else {
+                eu.showEntry(connectionDbDriverElements, false);
+            }
+            
+            eu.showEntry(isRegistryBasedUrlConfigElements, false);
+            if (getIsRegistryBasedUrlConfig()) {
+                eu.showEntry(registryBasedUrlConfigKeyElements, false);
+            } else {
+                eu.showEntry(connectionURLElements, false);
+            }
+            
+            eu.showEntry(isRegistryBasedUserConfigElements, false);
+            if (getIsRegistryBasedUserConfig()) {
+                eu.showEntry(registryBasedUserConfigKeyElements, false);
+            } else {
+                eu.showEntry(connectionUsernameElements, false);
+            }
+            
+            eu.showEntry(isRegistryBasedPassConfigElements, false);
+            if (getIsRegistryBasedPassConfig()) {
+                eu.showEntry(registryBasedPassConfigKeyElements, false);
+            } else {
+                eu.showEntry(connectionPasswordElements, false);
+            }
+            
             eu.showEntry(connectionDbConfiguration, false);
             
             enablePropertiesElements(eu);
@@ -3136,6 +3815,57 @@ public class DBReportMediatorPropertiesEditionPartForm extends SectionProperties
         
     }
     
+	@Override
+	public RegistryKeyProperty getRegistryBasedDriverConfigKey() {
+		return registryBasedDriverConfigKey;
+	}
+
+	@Override
+	public void setRegistryBasedDriverConfigKey(RegistryKeyProperty registryKeyProperty) {
+		if (registryKeyProperty != null) {
+			registryBasedDriverConfigKeyText.setText(registryKeyProperty.getKeyValue());
+			registryBasedDriverConfigKey = registryKeyProperty;
+		}
+	}
+
+	@Override
+	public RegistryKeyProperty getRegistryBasedUrlrConfigKey() {
+		return registryBasedUrlConfigKey;
+	}
+
+	@Override
+	public void setRegistryBasedUrlConfigKey(RegistryKeyProperty registryKeyProperty) {
+		if (registryKeyProperty != null) {
+			registryBasedUrlConfigKeyText.setText(registryKeyProperty.getKeyValue());
+			registryBasedUrlConfigKey = registryKeyProperty;
+		}
+	}
+
+	@Override
+	public RegistryKeyProperty getRegistryBasedUserConfigKey() {
+		return registryBasedUserConfigKey;
+	}
+
+	@Override
+	public void setRegistryBasedUserConfigKey(RegistryKeyProperty registryKeyProperty) {
+		if (registryKeyProperty != null) {
+			registryBasedUserConfigKeyText.setText(registryKeyProperty.getKeyValue());
+			registryBasedUserConfigKey = registryKeyProperty;
+		}
+	}
+
+	@Override
+	public RegistryKeyProperty getRegistryBasedPassConfigKey() {
+		return registryBasedPassConfigKey;
+	}
+
+	@Override
+	public void setRegistryBasedPassConfigKey(RegistryKeyProperty registryKeyProperty) {
+		if (registryKeyProperty != null) {
+			registryBasedPassConfigKeyText.setText(registryKeyProperty.getKeyValue());
+			registryBasedPassConfigKey = registryKeyProperty;
+		}
+	}
 	// End of user code
 
 

@@ -1779,6 +1779,14 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractSqlExecutorMediator/propertyInitialsize"/>
       <genFeatures children="true" createChild="true" propertyDescription="SQL Statements"
           ecoreFeature="ecore:EReference esb.ecore#//AbstractSqlExecutorMediator/sqlStatements"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractSqlExecutorMediator/isRegistryBasedDriverConfig"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractSqlExecutorMediator/isRegistryBasedUrlConfig"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractSqlExecutorMediator/isRegistryBasedUserConfig"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractSqlExecutorMediator/isRegistryBasedPassConfig"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference esb.ecore#//AbstractSqlExecutorMediator/registryBasedDriverConfigKey"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference esb.ecore#//AbstractSqlExecutorMediator/registryBasedUrlConfigKey"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference esb.ecore#//AbstractSqlExecutorMediator/registryBasedUserConfigKey"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference esb.ecore#//AbstractSqlExecutorMediator/registryBasedPassConfigKey"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//SqlStatement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//SqlStatement/queryString"/>

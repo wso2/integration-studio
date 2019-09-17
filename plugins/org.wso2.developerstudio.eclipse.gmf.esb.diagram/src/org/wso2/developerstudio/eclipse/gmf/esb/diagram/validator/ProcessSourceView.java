@@ -408,7 +408,7 @@ public class ProcessSourceView {
         } catch (SAXException e) {
             // ignore
         } catch (IOException e) {
-            throw new ValidationException("Error while processig the xml content.", e);
+            throw new ValidationException("Error while processing the xml content.", e);
         }
 
         int start = calculateLength(xmlContent, sourceError.getStartChar(), sourceError.getLineNumber());

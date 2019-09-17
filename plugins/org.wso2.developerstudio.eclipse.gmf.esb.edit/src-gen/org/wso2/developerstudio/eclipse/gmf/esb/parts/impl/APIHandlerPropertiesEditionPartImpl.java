@@ -147,7 +147,9 @@ public class APIHandlerPropertiesEditionPartImpl extends CompositePropertiesEdit
 		return propertiesGroup;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createClassNameText(Composite parent) {
 		createDescription(parent, EsbViewsRepository.APIHandler.Properties.className, EsbMessages.APIHandlerPropertiesEditionPart_ClassNameLabel);
 		className = SWTUtils.createScrollableText(parent, SWT.BORDER);

@@ -124,7 +124,9 @@ public class TemplateParameterPropertiesEditionPartImpl extends CompositePropert
 		return propertiesGroup;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createNameText(Composite parent) {
 		createDescription(parent, EsbViewsRepository.TemplateParameter.Properties.name, EsbMessages.TemplateParameterPropertiesEditionPart_NameLabel);
 		name = SWTUtils.createScrollableText(parent, SWT.BORDER);

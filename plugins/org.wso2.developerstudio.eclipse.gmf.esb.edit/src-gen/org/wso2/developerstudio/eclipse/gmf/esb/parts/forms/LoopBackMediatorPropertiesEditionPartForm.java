@@ -96,6 +96,7 @@ public class LoopBackMediatorPropertiesEditionPartForm extends SectionProperties
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
 	 * 
+	 * @generated NOT
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 	    Form form = widgetFactory.createForm(parent);
@@ -113,6 +114,7 @@ public class LoopBackMediatorPropertiesEditionPartForm extends SectionProperties
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
 	 * 
+	 * @generated NOT
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		CompositionSequence loopBackMediatorStep = new BindingCompositionSequence(propertiesEditionComponent);

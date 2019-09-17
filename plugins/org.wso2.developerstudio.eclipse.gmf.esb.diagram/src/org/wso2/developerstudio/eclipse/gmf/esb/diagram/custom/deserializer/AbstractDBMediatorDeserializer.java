@@ -12,6 +12,7 @@ import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.SqlDatabaseType;
 import org.wso2.developerstudio.eclipse.gmf.esb.SqlExecutorBooleanValue;
 import org.wso2.developerstudio.eclipse.gmf.esb.SqlExecutorConnectionType;
@@ -41,14 +42,55 @@ public abstract class AbstractDBMediatorDeserializer
 
         executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DS_NAME,
                 dbMediator.getDataSourceProps().get(DSNAME_Q));
-        executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_URL,
-                dbMediator.getDataSourceProps().get(URL_Q));
-        executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_USERNAME,
-                dbMediator.getDataSourceProps().get(USER_Q));
-        executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_PASSWORD,
-                dbMediator.getDataSourceProps().get(PASS_Q));
-        executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DB_DRIVER,
-                dbMediator.getDataSourceProps().get(DRIVER_Q));
+        
+        executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__IS_REGISTRY_BASED_URL_CONFIG,
+                dbMediator.isRegistryBasedUrlConfig());
+        if (dbMediator.isRegistryBasedUrlConfig()) {
+            RegistryKeyProperty regKey = EsbFactory.eINSTANCE.createRegistryKeyProperty();
+
+            regKey.setKeyValue(dbMediator.getDataSourceProps().get(URL_Q));
+            executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__REGISTRY_BASED_URL_CONFIG_KEY, regKey);
+        } else {
+            executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_URL,
+                    dbMediator.getDataSourceProps().get(URL_Q));
+        }
+        
+        executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__IS_REGISTRY_BASED_USER_CONFIG,
+                dbMediator.isRegistryBasedUserConfig());
+        if (dbMediator.isRegistryBasedUserConfig()) {
+            RegistryKeyProperty regKey = EsbFactory.eINSTANCE.createRegistryKeyProperty();
+
+            regKey.setKeyValue(dbMediator.getDataSourceProps().get(USER_Q));
+            executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__REGISTRY_BASED_USER_CONFIG_KEY, regKey);
+        } else {
+            executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_USERNAME,
+                    dbMediator.getDataSourceProps().get(USER_Q));
+        }
+        
+        executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__IS_REGISTRY_BASED_PASS_CONFIG,
+                dbMediator.isRegistryBasedPassConfig());
+        if (dbMediator.isRegistryBasedPassConfig()) {
+            RegistryKeyProperty regKey = EsbFactory.eINSTANCE.createRegistryKeyProperty();
+
+            regKey.setKeyValue(dbMediator.getDataSourceProps().get(PASS_Q));
+            executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__REGISTRY_BASED_PASS_CONFIG_KEY, regKey);
+        } else {
+            executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_PASSWORD,
+                    dbMediator.getDataSourceProps().get(PASS_Q));
+        }
+        
+        executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__IS_REGISTRY_BASED_DRIVER_CONFIG,
+                dbMediator.isRegistryBasedDriverConfig());
+        if (dbMediator.isRegistryBasedDriverConfig()) {
+            RegistryKeyProperty regKey = EsbFactory.eINSTANCE.createRegistryKeyProperty();
+
+            regKey.setKeyValue(dbMediator.getDataSourceProps().get(DRIVER_Q));
+            executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__REGISTRY_BASED_DRIVER_CONFIG_KEY, regKey);
+        } else {
+            executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DB_DRIVER,
+                    dbMediator.getDataSourceProps().get(DRIVER_Q));
+        }
+        
         executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DS_INITIAL_CONTEXT,
                 dbMediator.getDataSourceProps().get(ICCLASS_Q));
         

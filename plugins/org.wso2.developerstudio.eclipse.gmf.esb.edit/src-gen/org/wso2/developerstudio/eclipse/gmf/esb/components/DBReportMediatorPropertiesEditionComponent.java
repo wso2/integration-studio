@@ -53,13 +53,14 @@ import org.eclipse.jface.viewers.ViewerFilter;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.DBReportMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.SqlDatabaseType;
 import org.wso2.developerstudio.eclipse.gmf.esb.SqlExecutorBooleanValue;
 import org.wso2.developerstudio.eclipse.gmf.esb.SqlExecutorConnectionType;
 import org.wso2.developerstudio.eclipse.gmf.esb.SqlExecutorDatasourceType;
 import org.wso2.developerstudio.eclipse.gmf.esb.SqlExecutorIsolationLevel;
 import org.wso2.developerstudio.eclipse.gmf.esb.SqlStatement;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
@@ -191,6 +192,42 @@ public class DBReportMediatorPropertiesEditionComponent extends SinglePartProper
 				sqlStatementsSettings = new ReferencesTableSettings(dBReportMediator, EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_SqlStatements());
 				basePart.initSqlStatements(sqlStatementsSettings);
 			}
+			if (isAccessible(EsbViewsRepository.DBReportMediator.Connection.isRegistryBasedDriverConfig)) {
+				basePart.setIsRegistryBasedDriverConfig(dBReportMediator.isIsRegistryBasedDriverConfig());
+			}
+			if (isAccessible(EsbViewsRepository.DBReportMediator.Connection.isRegistryBasedUrlConfig)) {
+				basePart.setIsRegistryBasedUrlConfig(dBReportMediator.isIsRegistryBasedUrlConfig());
+			}
+			if (isAccessible(EsbViewsRepository.DBReportMediator.Connection.isRegistryBasedUserConfig)) {
+				basePart.setIsRegistryBasedUserConfig(dBReportMediator.isIsRegistryBasedUserConfig());
+			}
+			if (isAccessible(EsbViewsRepository.DBReportMediator.Connection.isRegistryBasedPassConfig)) {
+				basePart.setIsRegistryBasedPassConfig(dBReportMediator.isIsRegistryBasedPassConfig());
+			}
+			// Start of user code for registryBasedDriverConfigKey command update
+			if (isAccessible(EsbViewsRepository.DBReportMediator.Connection.registryBasedDriverConfigKey)) {
+				basePart.setRegistryBasedDriverConfigKey(dBReportMediator.getRegistryBasedDriverConfigKey());
+			}
+			// End of user code
+
+			// Start of user code for registryBasedUrlConfigKey command update
+			if (isAccessible(EsbViewsRepository.DBReportMediator.Connection.registryBasedUrlConfigKey)) {
+				basePart.setRegistryBasedUrlConfigKey(dBReportMediator.getRegistryBasedUrlConfigKey());
+			}
+			// End of user code
+
+			// Start of user code for registryBasedUserConfigKey command update
+			if (isAccessible(EsbViewsRepository.DBReportMediator.Connection.registryBasedUserConfigKey)) {
+				basePart.setRegistryBasedUserConfigKey(dBReportMediator.getRegistryBasedUserConfigKey());
+			}
+			// End of user code
+
+			// Start of user code for registryBasedPassConfigKey command update
+			if (isAccessible(EsbViewsRepository.DBReportMediator.Connection.registryBasedPassConfigKey)) {
+				basePart.setRegistryBasedPassConfigKey(dBReportMediator.getRegistryBasedPassConfigKey());
+			}
+			// End of user code
+
 			if (isAccessible(EsbViewsRepository.DBReportMediator.Connection.connectionUseTransaction)) {
 				basePart.setConnectionUseTransaction(dBReportMediator.isConnectionUseTransaction());
 			}
@@ -198,29 +235,6 @@ public class DBReportMediatorPropertiesEditionComponent extends SinglePartProper
 			// End of user code
 			
 			// init filters
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
 			
 			if (isAccessible(EsbViewsRepository.DBReportMediator.Statements.sqlStatements)) {
 				basePart.addFilterToSqlStatements(new ViewerFilter() {
@@ -238,6 +252,22 @@ public class DBReportMediatorPropertiesEditionComponent extends SinglePartProper
 				// End of user code
 			}
 			
+			
+			
+			
+			// Start of user code  for registryBasedDriverConfigKey filter update
+			// End of user code
+			
+			// Start of user code  for registryBasedUrlConfigKey filter update
+			// End of user code
+			
+			// Start of user code  for registryBasedUserConfigKey filter update
+			// End of user code
+			
+			// Start of user code  for registryBasedPassConfigKey filter update
+			// End of user code
+			
+			
 			// Start of user code  for Database Configuration filter update
 			// End of user code
 			
@@ -248,35 +278,6 @@ public class DBReportMediatorPropertiesEditionComponent extends SinglePartProper
 		}
 		setInitializing(false);
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 	/**
 	 * {@inheritDoc}
@@ -357,6 +358,30 @@ public class DBReportMediatorPropertiesEditionComponent extends SinglePartProper
 		}
 		if (editorKey == EsbViewsRepository.DBReportMediator.Statements.sqlStatements) {
 			return EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_SqlStatements();
+		}
+		if (editorKey == EsbViewsRepository.DBReportMediator.Connection.isRegistryBasedDriverConfig) {
+			return EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_IsRegistryBasedDriverConfig();
+		}
+		if (editorKey == EsbViewsRepository.DBReportMediator.Connection.isRegistryBasedUrlConfig) {
+			return EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_IsRegistryBasedUrlConfig();
+		}
+		if (editorKey == EsbViewsRepository.DBReportMediator.Connection.isRegistryBasedUserConfig) {
+			return EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_IsRegistryBasedUserConfig();
+		}
+		if (editorKey == EsbViewsRepository.DBReportMediator.Connection.isRegistryBasedPassConfig) {
+			return EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_IsRegistryBasedPassConfig();
+		}
+		if (editorKey == EsbViewsRepository.DBReportMediator.Connection.registryBasedDriverConfigKey) {
+			return EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_RegistryBasedDriverConfigKey();
+		}
+		if (editorKey == EsbViewsRepository.DBReportMediator.Connection.registryBasedUrlConfigKey) {
+			return EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_RegistryBasedUrlConfigKey();
+		}
+		if (editorKey == EsbViewsRepository.DBReportMediator.Connection.registryBasedUserConfigKey) {
+			return EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_RegistryBasedUserConfigKey();
+		}
+		if (editorKey == EsbViewsRepository.DBReportMediator.Connection.registryBasedPassConfigKey) {
+			return EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_RegistryBasedPassConfigKey();
 		}
 		if (editorKey == EsbViewsRepository.DBReportMediator.Connection.connectionUseTransaction) {
 			return EsbPackage.eINSTANCE.getDBReportMediator_ConnectionUseTransaction();
@@ -473,6 +498,62 @@ public class DBReportMediatorPropertiesEditionComponent extends SinglePartProper
 			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
 				sqlStatementsSettings.move(event.getNewIndex(), (SqlStatement) event.getNewValue());
 			}
+		}
+		if (EsbViewsRepository.DBReportMediator.Connection.isRegistryBasedDriverConfig == event.getAffectedEditor()) {
+			dBReportMediator.setIsRegistryBasedDriverConfig((Boolean) event.getNewValue());
+		}
+		if (EsbViewsRepository.DBReportMediator.Connection.isRegistryBasedUrlConfig == event.getAffectedEditor()) {
+			dBReportMediator.setIsRegistryBasedUrlConfig((Boolean) event.getNewValue());
+		}
+		if (EsbViewsRepository.DBReportMediator.Connection.isRegistryBasedUserConfig == event.getAffectedEditor()) {
+			dBReportMediator.setIsRegistryBasedUserConfig((Boolean) event.getNewValue());
+		}
+		if (EsbViewsRepository.DBReportMediator.Connection.isRegistryBasedPassConfig == event.getAffectedEditor()) {
+			dBReportMediator.setIsRegistryBasedPassConfig((Boolean) event.getNewValue());
+		}
+		if (EsbViewsRepository.DBReportMediator.Connection.registryBasedDriverConfigKey == event.getAffectedEditor()) {
+			// Start of user code for updateRegistryBasedDriverConfigKey method body
+			if (event.getNewValue() != null) {
+				RegistryKeyProperty rkp = (RegistryKeyProperty) event.getNewValue();
+				dBReportMediator.setRegistryBasedDriverConfigKey(rkp);
+			} else {
+				dBReportMediator.setRegistryBasedDriverConfigKey(EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty());
+			}
+			// End of user code
+
+		}
+		if (EsbViewsRepository.DBReportMediator.Connection.registryBasedUrlConfigKey == event.getAffectedEditor()) {
+			// Start of user code for updateRegistryBasedUrlConfigKey method body
+			if (event.getNewValue() != null) {
+				RegistryKeyProperty rkp = (RegistryKeyProperty) event.getNewValue();
+				dBReportMediator.setRegistryBasedUrlConfigKey(rkp);
+			} else {
+				dBReportMediator.setRegistryBasedUrlConfigKey(EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty());
+			}
+			// End of user code
+
+		}
+		if (EsbViewsRepository.DBReportMediator.Connection.registryBasedUserConfigKey == event.getAffectedEditor()) {
+			// Start of user code for updateRegistryBasedUserConfigKey method body
+			if (event.getNewValue() != null) {
+				RegistryKeyProperty rkp = (RegistryKeyProperty) event.getNewValue();
+				dBReportMediator.setRegistryBasedUserConfigKey(rkp);
+			} else {
+				dBReportMediator.setRegistryBasedUserConfigKey(EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty());
+			}
+			// End of user code
+
+		}
+		if (EsbViewsRepository.DBReportMediator.Connection.registryBasedPassConfigKey == event.getAffectedEditor()) {
+			// Start of user code for updateRegistryBasedPassConfigKey method body
+			if (event.getNewValue() != null) {
+				RegistryKeyProperty rkp = (RegistryKeyProperty) event.getNewValue();
+				dBReportMediator.setRegistryBasedPassConfigKey(rkp);
+			} else {
+				dBReportMediator.setRegistryBasedPassConfigKey(EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty());
+			}
+			// End of user code
+
 		}
 		if (EsbViewsRepository.DBReportMediator.Connection.connectionUseTransaction == event.getAffectedEditor()) {
 			dBReportMediator.setConnectionUseTransaction((Boolean)event.getNewValue());
@@ -629,8 +710,77 @@ public class DBReportMediatorPropertiesEditionComponent extends SinglePartProper
 					basePart.setPropertyInitialsize("");
 				}
 			}
-			if (EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_SqlStatements().equals(msg.getFeature()) && isAccessible(EsbViewsRepository.DBReportMediator.Statements.sqlStatements))
+			if (EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_SqlStatements().equals(msg.getFeature())
+					&& isAccessible(EsbViewsRepository.DBReportMediator.Statements.sqlStatements))
 				basePart.updateSqlStatements();
+			if (EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_IsRegistryBasedDriverConfig()
+					.equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null
+					&& isAccessible(EsbViewsRepository.DBReportMediator.Connection.isRegistryBasedDriverConfig))
+				basePart.setIsRegistryBasedDriverConfig((Boolean) msg.getNewValue());
+
+			if (EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_IsRegistryBasedUrlConfig().equals(msg.getFeature())
+					&& msg.getNotifier().equals(semanticObject) && basePart != null
+					&& isAccessible(EsbViewsRepository.DBReportMediator.Connection.isRegistryBasedUrlConfig))
+				basePart.setIsRegistryBasedUrlConfig((Boolean) msg.getNewValue());
+
+			if (EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_IsRegistryBasedUserConfig().equals(msg.getFeature())
+					&& msg.getNotifier().equals(semanticObject) && basePart != null
+					&& isAccessible(EsbViewsRepository.DBReportMediator.Connection.isRegistryBasedUserConfig))
+				basePart.setIsRegistryBasedUserConfig((Boolean) msg.getNewValue());
+
+			if (EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_IsRegistryBasedPassConfig().equals(msg.getFeature())
+					&& msg.getNotifier().equals(semanticObject) && basePart != null
+					&& isAccessible(EsbViewsRepository.DBReportMediator.Connection.isRegistryBasedPassConfig))
+				basePart.setIsRegistryBasedPassConfig((Boolean) msg.getNewValue());
+
+			// Start of user code for registryBasedDriverConfigKey live update
+			if (EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_RegistryBasedDriverConfigKey()
+					.equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null
+					&& isAccessible(EsbViewsRepository.DBReportMediator.Connection.registryBasedDriverConfigKey)) {
+				if (msg.getNewValue() != null) {
+					basePart.setRegistryBasedDriverConfigKey((RegistryKeyProperty) msg.getNewValue());
+				} else {
+					basePart.setRegistryBasedDriverConfigKey(EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty());
+				}
+			}
+			// End of user code
+
+			// Start of user code for registryBasedUrlConfigKey live update
+			if (EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_RegistryBasedUrlConfigKey().equals(msg.getFeature())
+					&& msg.getNotifier().equals(semanticObject) && basePart != null
+					&& isAccessible(EsbViewsRepository.DBReportMediator.Connection.registryBasedUrlConfigKey)) {
+				if (msg.getNewValue() != null) {
+					basePart.setRegistryBasedUrlConfigKey((RegistryKeyProperty) msg.getNewValue());
+				} else {
+					basePart.setRegistryBasedUrlConfigKey(EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty());
+				}
+			}
+			// End of user code
+
+			// Start of user code for registryBasedUserConfigKey live update
+			if (EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_RegistryBasedUserConfigKey()
+					.equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null
+					&& isAccessible(EsbViewsRepository.DBReportMediator.Connection.registryBasedUserConfigKey)) {
+				if (msg.getNewValue() != null) {
+					basePart.setRegistryBasedUserConfigKey((RegistryKeyProperty) msg.getNewValue());
+				} else {
+					basePart.setRegistryBasedUserConfigKey(EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty());
+				}
+			}
+			// End of user code
+
+			// Start of user code for registryBasedPassConfigKey live update
+			if (EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_RegistryBasedPassConfigKey()
+					.equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null
+					&& isAccessible(EsbViewsRepository.DBReportMediator.Connection.registryBasedPassConfigKey)) {
+				if (msg.getNewValue() != null) {
+					basePart.setRegistryBasedPassConfigKey((RegistryKeyProperty) msg.getNewValue());
+				} else {
+					basePart.setRegistryBasedPassConfigKey(EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty());
+				}
+			}
+					// End of user code
+			
 			if (EsbPackage.eINSTANCE.getDBReportMediator_ConnectionUseTransaction().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.DBReportMediator.Connection.connectionUseTransaction))
 				basePart.setConnectionUseTransaction((Boolean)msg.getNewValue());
 			
@@ -675,6 +825,14 @@ public class DBReportMediatorPropertiesEditionComponent extends SinglePartProper
 			EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_PropertyValidationquery(),
 			EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_PropertyInitialsize(),
 			EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_SqlStatements(),
+			EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_IsRegistryBasedDriverConfig(),
+			EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_IsRegistryBasedUrlConfig(),
+			EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_IsRegistryBasedUserConfig(),
+			EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_IsRegistryBasedPassConfig(),
+			EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_RegistryBasedDriverConfigKey(),
+			EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_RegistryBasedUrlConfigKey(),
+			EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_RegistryBasedUserConfigKey(),
+			EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_RegistryBasedPassConfigKey(),
 			EsbPackage.eINSTANCE.getDBReportMediator_ConnectionUseTransaction(),
 			EsbPackage.eINSTANCE.getMediator_Reverse()		);
 		return new NotificationFilter[] {filter,};
@@ -684,11 +842,13 @@ public class DBReportMediatorPropertiesEditionComponent extends SinglePartProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getHelpContent(java.lang.Object, int)
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getHelpContent(java.lang.Object,
+	 *      int)
 	 * 
+	 * @generated NOT
 	 */
 	public String getHelpContent(Object key, int kind) {
-	    return EEFPropertyViewUtil.getHelpContent(key);
+		return EEFPropertyViewUtil.getHelpContent(key);
 	}
 
 	/**
@@ -868,6 +1028,51 @@ public class DBReportMediatorPropertiesEditionComponent extends SinglePartProper
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_PropertyInitialsize().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getAbstractSqlExecutorMediator_PropertyInitialsize().getEAttributeType(), newValue);
+				}
+				if (EsbViewsRepository.DBReportMediator.Connection.isRegistryBasedDriverConfig == event
+						.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE
+								.getAbstractSqlExecutorMediator_IsRegistryBasedDriverConfig().getEAttributeType(),
+								(String) newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE
+							.getAbstractSqlExecutorMediator_IsRegistryBasedDriverConfig().getEAttributeType(),
+							newValue);
+				}
+				if (EsbViewsRepository.DBReportMediator.Connection.isRegistryBasedUrlConfig == event
+						.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE
+								.getAbstractSqlExecutorMediator_IsRegistryBasedUrlConfig().getEAttributeType(),
+								(String) newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE
+							.getAbstractSqlExecutorMediator_IsRegistryBasedUrlConfig().getEAttributeType(), newValue);
+				}
+				if (EsbViewsRepository.DBReportMediator.Connection.isRegistryBasedUserConfig == event
+						.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE
+								.getAbstractSqlExecutorMediator_IsRegistryBasedUserConfig().getEAttributeType(),
+								(String) newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE
+							.getAbstractSqlExecutorMediator_IsRegistryBasedUserConfig().getEAttributeType(), newValue);
+				}
+				if (EsbViewsRepository.DBReportMediator.Connection.isRegistryBasedPassConfig == event
+						.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE
+								.getAbstractSqlExecutorMediator_IsRegistryBasedPassConfig().getEAttributeType(),
+								(String) newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE
+							.getAbstractSqlExecutorMediator_IsRegistryBasedPassConfig().getEAttributeType(), newValue);
 				}
 				if (EsbViewsRepository.DBReportMediator.Connection.connectionUseTransaction == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();

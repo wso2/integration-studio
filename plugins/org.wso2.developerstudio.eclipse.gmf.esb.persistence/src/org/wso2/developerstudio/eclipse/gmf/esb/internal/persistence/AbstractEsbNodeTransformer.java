@@ -15,12 +15,7 @@
  */
 package org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
 import org.apache.synapse.Mediator;
-import org.apache.synapse.core.axis2.ProxyService;
 import org.apache.synapse.mediators.AbstractMediator;
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.eclipse.core.runtime.Assert;

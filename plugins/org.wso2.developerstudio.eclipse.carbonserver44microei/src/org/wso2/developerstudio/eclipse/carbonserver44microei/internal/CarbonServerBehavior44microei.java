@@ -101,11 +101,6 @@ public class CarbonServerBehavior44microei extends CarbonServerBehaviour {
 		} else if (deltaKind == REMOVED) {
 			ServerController.getInstance().getServerManager()
 			                .unpublishServiceModule(getServer().getId(), "", m.getName());
-		} else {
-			checkClosed(module);
-			// To add any new services
-			ServerController.getInstance().getServerManager()
-			                .hotUpdateServiceModule(getServer().getId(), "", m.getName());
 		}
 		setModulePublishState(module, null);
 	}

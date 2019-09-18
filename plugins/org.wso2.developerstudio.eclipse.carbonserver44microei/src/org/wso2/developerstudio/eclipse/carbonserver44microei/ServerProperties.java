@@ -57,17 +57,6 @@ public class ServerProperties implements IProperties {
 			XPathExpression expr = xpath.compile("/Server/Ports/Offset");
 			String offset = expr.evaluate(doc);
 
-			file = new File(carbonServer44eiUtils.getCatelinaXmlPathFromLocalWorkspaceRepo(serverPath));
-			factory = DocumentBuilderFactory.newInstance();
-			builder = factory.newDocumentBuilder();
-			doc = builder.parse(file);
-			xPathfactory = XPathFactory.newInstance();
-			xpath = xPathfactory.newXPath();
-			expr = xpath.compile("/Server/Service/Connector[1]/@port");
-			String http = expr.evaluate(doc);
-			expr = xpath.compile("/Server/Service/Connector[2]/@port");
-			String https = expr.evaluate(doc);
-
 			file = new File(carbonServer44eiUtils.getAxis2XmlPathFromLocalWorkspaceRepo(serverPath));
 			factory = DocumentBuilderFactory.newInstance();
 			builder = factory.newDocumentBuilder();
@@ -79,9 +68,7 @@ public class ServerProperties implements IProperties {
 			expr = xpath.compile("/axisconfig/transportReceiver[@name='https']/parameter[@name='port']");
 			String trnhttps = expr.evaluate(doc);
 
-			serverInstanceProperties.put("carbon.https", https);
 			serverInstanceProperties.put("carbon.offset", offset);
-			serverInstanceProperties.put("carbon.http", http);
 			serverInstanceProperties.put("synapse.transport.http", trnhttp);
 			serverInstanceProperties.put("synapse.transport.https", trnhttps);
 			//set default location

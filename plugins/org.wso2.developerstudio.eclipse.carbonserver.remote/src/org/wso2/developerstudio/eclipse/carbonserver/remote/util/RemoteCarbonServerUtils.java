@@ -25,7 +25,6 @@ import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.Date;
@@ -68,7 +67,6 @@ import org.wso2.developerstudio.eclipse.carbon.server.model.util.CarbonServerCom
 import org.wso2.developerstudio.eclipse.carbonserver.base.manager.CarbonServerManager;
 import org.wso2.developerstudio.eclipse.carbonserver.base.utils.CarbonServerUtils;
 import org.wso2.developerstudio.eclipse.carbonserver.remote.Activator;
-import org.wso2.developerstudio.eclipse.carbonserver.remote.internal.RemoteCarbonRuntimeDeligate;
 import org.wso2.developerstudio.eclipse.carbonserver.remote.internal.RemoteCarbonServer;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;

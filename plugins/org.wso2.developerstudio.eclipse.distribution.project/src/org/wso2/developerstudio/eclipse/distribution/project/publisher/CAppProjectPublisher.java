@@ -26,7 +26,11 @@ import java.util.Map;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.wst.server.core.IServer;
 import org.wso2.developerstudio.eclipse.carbonserver.base.interfaces.ICarbonServerModulePublisher;
@@ -34,11 +38,21 @@ import org.wso2.developerstudio.eclipse.carbonserver.base.interfaces.ICredential
 import org.wso2.developerstudio.eclipse.carbonserver.base.manager.CarbonServerManager;
 import org.wso2.developerstudio.eclipse.carbonserver.base.utils.CAppDeployer;
 import org.wso2.developerstudio.eclipse.distribution.project.export.CarExportHandler;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.developerstudio.eclipse.platform.core.project.export.util.ExportUtil;
+import org.wso2.developerstudio.eclipse.distribution.project.Activator;
 import org.wso2.developerstudio.eclipse.utils.data.ITemporaryFileTag;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 
 public class CAppProjectPublisher implements ICarbonServerModulePublisher {
-
+    
+	private static final String MI_PLUGIN_ID = "org.wso2.developerstudio.eclipse.carbon.server44microei";
+	private static final String MI_CAPP_PATH = File.pathSeparator + "repository" + File.pathSeparator + "deployment"
+			+ File.pathSeparator + "server" + File.pathSeparator + "carbonapps";
+    
+	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+    
 	private final class CarPublisher implements Runnable {
 	    private final File deployLocation;
 	    private final IProject project;
@@ -105,8 +119,7 @@ public class CAppProjectPublisher implements ICarbonServerModulePublisher {
 	private static Map<IServer,List<IProject>> inQueueList;
     public void publish(final IProject project, IServer server, File serverHome,final File deployLocation) throws Exception {
 	    if (project.hasNature("org.wso2.developerstudio.eclipse.distribution.project.nature")){
-	    	List<IProject> list;
-	    	list = getProjectListForServer(server);
+	    	List<IProject> list = getProjectListForServer(server);
     		synchronized (list) {
     	        if (list.contains(project)){
     	        	return;
@@ -114,16 +127,27 @@ public class CAppProjectPublisher implements ICarbonServerModulePublisher {
     	        	list.add(project);
     	        }
     		}
-	    	final CarPublisher runnable = new CarPublisher(deployLocation, project, server);
-	    	runnable.run();
-	    	if (runnable.getException()!=null){
-	    		Display.getDefault().asyncExec(new Runnable(){
-                    public void run() {
-                    	MessageDialog.openError(Display.getCurrent().getActiveShell(), "Error while creating CAR", "An error occured while creating or publishing the car for more details view the log. \n"+runnable.getException().getMessage());
-                    }
-	    			
-	    		});
-	    	}
+
+			if (server.getServerType().getId().equals(MI_PLUGIN_ID)) {
+				IPath iPath = CarbonServerManager.getServerHome(server);
+				File file = iPath.toFile();
+				copyCApp(file.getAbsolutePath(), project);
+				server.restart("run", new NullProgressMonitor());
+
+			} else {
+				final CarPublisher runnable = new CarPublisher(deployLocation, project, server);
+				runnable.run();
+				if (runnable.getException() != null) {
+					Display.getDefault().asyncExec(new Runnable() {
+						public void run() {
+							MessageDialog.openError(Display.getCurrent().getActiveShell(), "Error while creating CAR",
+									"An error occured while creating or publishing the car for more details view the log. \n"
+											+ runnable.getException().getMessage());
+						}
+
+					});
+				}
+			}
     		synchronized (list) {
     	        if (list.contains(project)){
     	        	list.remove(project);
@@ -167,10 +191,16 @@ public class CAppProjectPublisher implements ICarbonServerModulePublisher {
 //			}else{
 //				cappName = carFile.getName().substring(0, carFile.getName().length()-4);
 //			}
-			CAppDeployer.unDeployCAR(serverURL.toString(), 
-									 serverCredentials.getUsername(), 
-									 serverCredentials.getPassword(), 
-									 cappName);
+			if (server.getServerType().getId().equals(MI_PLUGIN_ID)) {
+				IPath iPath = CarbonServerManager.getServerHome(server);
+				File file = iPath.toFile();
+				deleteCApp(file.getAbsolutePath(), project);
+				server.restart("run", new NullProgressMonitor());
+
+			} else {
+				CAppDeployer.unDeployCAR(serverURL.toString(), serverCredentials.getUsername(),
+						serverCredentials.getPassword(), cappName);
+			}
 	    }
     }
 
@@ -234,6 +264,37 @@ public class CAppProjectPublisher implements ICarbonServerModulePublisher {
 		
 	}
 
+	private void copyCApp(String deploymentFolderPath, IProject selectedProject) {
+		String CARFileName = selectedProject.getName();
+		String CARFileVersion = "1.0.0";
+		String finalFileName = String.format("%s_%s.car", CARFileName.replaceAll(".car$", ""), CARFileVersion);
+		deploymentFolderPath = deploymentFolderPath + MI_CAPP_PATH;
 
+		try {
+			File destFileName = new File(deploymentFolderPath, finalFileName);
+			if (destFileName.exists()) {
+				org.apache.commons.io.FileUtils.deleteQuietly(destFileName);
+			}
+
+			IResource carbonArchive = ExportUtil.buildCAppProject(selectedProject);
+			FileUtils.copy(carbonArchive.getLocation().toFile(), destFileName);
+
+		} catch (Exception e) {
+			log.error("An error occured while deploying the carbon archive file.", e);
+		}
+	}
+
+	private void deleteCApp(String deploymentFolderPath, IProject selectedProject) {
+		String CARFileName = selectedProject.getName();
+		String CARFileVersion = "1.0.0";
+		String finalFileName = String.format("%s_%s.car", CARFileName.replaceAll(".car$", ""), CARFileVersion);
+		deploymentFolderPath = deploymentFolderPath + MI_CAPP_PATH;
+
+		File destFileName = new File(deploymentFolderPath, finalFileName);
+		if (destFileName.exists()) {
+			org.apache.commons.io.FileUtils.deleteQuietly(destFileName);
+		}
+
+	}
 
 }

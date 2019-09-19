@@ -2179,6 +2179,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//SynapseAPI/statisticsEnabled"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//SynapseAPI/version"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//SynapseAPI/versionType"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//SynapseAPI/publishSwagger"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//APIResource">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//APIResource/inputConnector"/>

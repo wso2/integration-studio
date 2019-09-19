@@ -20749,13 +20749,22 @@ public interface EsbPackage extends EPackage {
     int SYNAPSE_API__VERSION_TYPE = ESB_ELEMENT_FEATURE_COUNT + 9;
 
     /**
+     * The feature id for the '<em><b>Publish Swagger</b></em>' containment reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int SYNAPSE_API__PUBLISH_SWAGGER = ESB_ELEMENT_FEATURE_COUNT + 10;
+
+    /**
      * The number of structural features of the '<em>Synapse API</em>' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int SYNAPSE_API_FEATURE_COUNT = ESB_ELEMENT_FEATURE_COUNT + 10;
+    int SYNAPSE_API_FEATURE_COUNT = ESB_ELEMENT_FEATURE_COUNT + 11;
 
     /**
      * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.APIResourceImpl <em>API Resource</em>}' class.
@@ -33551,6 +33560,17 @@ public interface EsbPackage extends EPackage {
      * @generated
      */
     EAttribute getSynapseAPI_VersionType();
+
+    /**
+     * Returns the meta object for the containment reference '{@link org.wso2.developerstudio.eclipse.gmf.esb.SynapseAPI#getPublishSwagger <em>Publish Swagger</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the containment reference '<em>Publish Swagger</em>'.
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.SynapseAPI#getPublishSwagger()
+     * @see #getSynapseAPI()
+     * @generated
+     */
+    EReference getSynapseAPI_PublishSwagger();
 
     /**
      * Returns the meta object for class '{@link org.wso2.developerstudio.eclipse.gmf.esb.APIResource <em>API Resource</em>}'.
@@ -50846,6 +50866,14 @@ public interface EsbPackage extends EPackage {
          * @generated
          */
         EAttribute SYNAPSE_API__VERSION_TYPE = eINSTANCE.getSynapseAPI_VersionType();
+
+        /**
+         * The meta object literal for the '<em><b>Publish Swagger</b></em>' containment reference feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference SYNAPSE_API__PUBLISH_SWAGGER = eINSTANCE.getSynapseAPI_PublishSwagger();
 
         /**
          * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.APIResourceImpl <em>API Resource</em>}' class.

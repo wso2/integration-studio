@@ -280,6 +280,7 @@ public class SynapseAPIItemProvider extends EsbElementItemProvider {
         if (childrenFeatures == null) {
             super.getChildrenFeatures(object);
             childrenFeatures.add(EsbPackage.Literals.SYNAPSE_API__RESOURCES);
+            childrenFeatures.add(EsbPackage.Literals.SYNAPSE_API__PUBLISH_SWAGGER);
         }
         return childrenFeatures;
     }
@@ -345,6 +346,7 @@ public class SynapseAPIItemProvider extends EsbElementItemProvider {
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
                 return;
             case EsbPackage.SYNAPSE_API__RESOURCES:
+            case EsbPackage.SYNAPSE_API__PUBLISH_SWAGGER:
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
                 return;
         }
@@ -366,6 +368,11 @@ public class SynapseAPIItemProvider extends EsbElementItemProvider {
             (createChildParameter
                 (EsbPackage.Literals.SYNAPSE_API__RESOURCES,
                  EsbFactory.eINSTANCE.createAPIResource()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.SYNAPSE_API__PUBLISH_SWAGGER,
+                 EsbFactory.eINSTANCE.createRegistryKeyProperty()));
     }
 
 }

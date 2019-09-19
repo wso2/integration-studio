@@ -44,6 +44,7 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.SYNAP
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.SYNAPSE_API__TRACE_ENABLED;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.SYNAPSE_API__VERSION;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.SYNAPSE_API__VERSION_TYPE;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.SYNAPSE_API__PUBLISH_SWAGGER;
 
 import java.util.Arrays;
 import java.util.Iterator;
@@ -104,6 +105,8 @@ public class APIDeserializer extends AbstractEsbNodeDeserializer<API, SynapseAPI
         }
         executeSetValueCommand(SYNAPSE_API__API_NAME, api.getAPIName());
         executeSetValueCommand(SYNAPSE_API__CONTEXT, api.getContext());
+        executeSetValueCommand(SYNAPSE_API__PUBLISH_SWAGGER, api.getSwaggerResourcePath());
+        
         if (api.getHost() != null) {
             executeSetValueCommand(SYNAPSE_API__HOST_NAME, api.getHost());
         }

@@ -2616,6 +2616,8 @@
         defaultValueLiteral=""/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="versionType" eType="#//APIVersionType"
         defaultValueLiteral="none"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="publishSwagger" eType="#//RegistryKeyProperty"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="APIResource" eSuperTypes="#//EsbNode">
     <eStructuralFeatures xsi:type="ecore:EReference" name="inputConnector" eType="#//APIResourceInputConnector"

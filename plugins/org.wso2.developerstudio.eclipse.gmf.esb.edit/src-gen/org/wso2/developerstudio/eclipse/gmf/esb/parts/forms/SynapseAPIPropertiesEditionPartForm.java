@@ -59,6 +59,9 @@ import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.KeyListener;
+import org.eclipse.swt.events.MouseAdapter;
+import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 
@@ -80,11 +83,14 @@ import org.wso2.developerstudio.eclipse.gmf.esb.APIVersionType;
 import org.wso2.developerstudio.eclipse.gmf.esb.CacheSequenceType;
 import org.wso2.developerstudio.eclipse.gmf.esb.CacheType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.SynapseAPIPropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.developerstudio.esb.form.editors.article.providers.NamedEntityDescriptor;
 
 // End of user code
 
@@ -125,6 +131,10 @@ public class SynapseAPIPropertiesEditionPartForm extends SectionPropertiesEditin
 	protected Control[] versionTypeElements;
 	protected Control[] versionElements;
 	protected Control[] descriptionElements;
+	protected Control[] publishSwaggerElements;
+	
+	protected RegistryKeyProperty publishSwagger;
+	protected Text publishSwaggerText;
 	
 	// End of user code
 
@@ -176,6 +186,7 @@ public class SynapseAPIPropertiesEditionPartForm extends SectionPropertiesEditin
 		propertiesStep.addStep(EsbViewsRepository.SynapseAPI.Handler.Properties.commentsList);
 		propertiesStep.addStep(EsbViewsRepository.SynapseAPI.Handler.Properties.apiName);
 		propertiesStep.addStep(EsbViewsRepository.SynapseAPI.Handler.Properties.context);
+		propertiesStep.addStep(EsbViewsRepository.SynapseAPI.Handler.Properties.publishSwagger);
 		propertiesStep.addStep(EsbViewsRepository.SynapseAPI.Handler.Properties.hostName);
 		propertiesStep.addStep(EsbViewsRepository.SynapseAPI.Handler.Properties.port);
 		propertiesStep.addStep(EsbViewsRepository.SynapseAPI.Handler.Properties.resources);
@@ -208,6 +219,9 @@ public class SynapseAPIPropertiesEditionPartForm extends SectionPropertiesEditin
 				}
 				if (key == EsbViewsRepository.SynapseAPI.Handler.Properties.context) {
 					return createContextText(widgetFactory, parent);
+				}
+				if (key == EsbViewsRepository.SynapseAPI.Handler.Properties.publishSwagger) {
+					return createPublishSwaggerWidget(widgetFactory, parent);
 				}
 				if (key == EsbViewsRepository.SynapseAPI.Handler.Properties.hostName) {
 					return createHostNameText(widgetFactory, parent);
@@ -1457,6 +1471,72 @@ public class SynapseAPIPropertiesEditionPartForm extends SectionPropertiesEditin
 	}
 
 	// Start of user code additional methods
+	protected Composite createPublishSwaggerWidget(FormToolkit widgetFactory, Composite parent) {
+		Control publishSwaggerLabel = createDescription(parent,
+				EsbViewsRepository.SynapseAPI.Handler.Properties.publishSwagger, EsbMessages.SynapseAPIPropertiesEditionPart_PublishSwaggerLabel);
+		widgetFactory.paintBordersFor(parent);
+		if (publishSwagger == null) {
+			publishSwagger = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
+		}
+		String initValueExpression = publishSwagger.getKeyValue().isEmpty() ? ""
+				: publishSwagger.getKeyValue();
+		publishSwaggerText = widgetFactory.createText(parent, initValueExpression, SWT.READ_ONLY);
+		publishSwaggerText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+		widgetFactory.paintBordersFor(parent);
+		GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
+		publishSwaggerText.setLayoutData(valueData);
+		publishSwaggerText.addMouseListener(new MouseAdapter() {
+
+			@Override
+			public void mouseDown(MouseEvent event) {
+				EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
+						SWT.NULL, publishSwagger, new ArrayList<NamedEntityDescriptor>());
+				dialog.open();
+				publishSwaggerText.setText(publishSwagger.getKeyValue());
+				propertiesEditionComponent.firePropertiesChanged(
+						new PropertiesEditionEvent(SynapseAPIPropertiesEditionPartForm.this,
+								EsbViewsRepository.SynapseAPI.Handler.Properties.publishSwagger,
+								PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+								getPublishSwagger()));
+			}
+
+		});
+
+		publishSwaggerText.addKeyListener(new KeyListener() {
+
+			@Override
+			public void keyPressed(KeyEvent e) {
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+					EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
+							SWT.NULL, publishSwagger, new ArrayList<NamedEntityDescriptor>());
+					dialog.open();
+					publishSwaggerText.setText(publishSwagger.getKeyValue());
+					propertiesEditionComponent.firePropertiesChanged(
+							new PropertiesEditionEvent(SynapseAPIPropertiesEditionPartForm.this,
+									EsbViewsRepository.SynapseAPI.Handler.Properties.publishSwagger,
+									PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+									getPublishSwagger()));
+				}
+			}
+
+		});
+		EditingUtils.setID(publishSwaggerText,
+				EsbViewsRepository.SynapseAPI.Handler.Properties.publishSwagger);
+		EditingUtils.setEEFtype(publishSwaggerText, "eef::Text");
+		Control publishSwaggerHelp = FormUtils.createHelpButton(widgetFactory, parent,
+				propertiesEditionComponent.getHelpContent(
+						EsbViewsRepository.SynapseAPI.Handler.Properties.publishSwagger,
+						EsbViewsRepository.FORM_KIND),
+				null); // $NON-NLS-1$
+		publishSwaggerElements = new Control[] { publishSwaggerLabel,
+				publishSwaggerText, publishSwaggerHelp };
+		return parent;
+	}
+	
 	@Override
     public void refresh() {
         super.refresh();
@@ -1469,6 +1549,7 @@ public class SynapseAPIPropertiesEditionPartForm extends SectionPropertiesEditin
 
         eu.showEntry(apiNameElements, false);
         eu.showEntry(contextElements, false);
+        eu.showEntry(publishSwaggerElements, false);
         eu.showEntry(hostNameElements, false);
         eu.showEntry(portElements, false);
         eu.showEntry(versionTypeElements, false);
@@ -1482,6 +1563,19 @@ public class SynapseAPIPropertiesEditionPartForm extends SectionPropertiesEditin
         
         view.layout(true, true);
     }
+
+	@Override
+	public void setPublishSwagger(RegistryKeyProperty registryKeyProperty) {
+		if (registryKeyProperty != null) {
+			publishSwaggerText.setText(registryKeyProperty.getKeyValue());
+			publishSwagger = registryKeyProperty;
+		}
+	}
+
+	@Override
+	public RegistryKeyProperty getPublishSwagger() {
+		return publishSwagger;
+	}
 	
 	// End of user code
 

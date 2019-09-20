@@ -74,7 +74,7 @@ import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.SynapseAPIPropertiesEditionPart;
 
@@ -1292,6 +1292,18 @@ public class SynapseAPIPropertiesEditionPartImpl extends CompositePropertiesEdit
 	 */
 	public String getTitle() {
 		return EsbMessages.SynapseAPI_Part_Title;
+	}
+
+	@Override
+	public void setPublishSwagger(RegistryKeyProperty registryKeyProperty) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public RegistryKeyProperty getPublishSwagger() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	// Start of user code additional methods

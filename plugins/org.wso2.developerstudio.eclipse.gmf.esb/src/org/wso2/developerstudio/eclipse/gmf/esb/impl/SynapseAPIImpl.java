@@ -19,7 +19,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.APIHandler;
@@ -698,6 +697,8 @@ public class SynapseAPIImpl extends EsbElementImpl implements SynapseAPI {
         result.append(context);
         result.append(", hostName: ");
         result.append(hostName);
+        result.append(", publishSwagger: ");
+        result.append(publishSwagger.getKeyValue());
         result.append(", port: ");
         result.append(port);
         result.append(", traceEnabled: ");

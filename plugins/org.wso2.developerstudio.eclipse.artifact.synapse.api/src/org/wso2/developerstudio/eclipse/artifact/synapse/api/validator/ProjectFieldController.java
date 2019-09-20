@@ -40,7 +40,7 @@ public class ProjectFieldController extends AbstractFieldController {
 			CommonFieldValidator.validateArtifactName(value);
 		} else if (modelProperty.equals(ArtifactConstants.ID_SAVE_LOCATION)) {
 			IResource resource = (IResource)value;
-			if(resource==null || !resource.exists())	
+			if (resource == null || !resource.exists())	
 				throw new FieldValidationException(ArtifactConstants.ERRMSG_SAVE_LOCATION);
 		} else if (modelProperty.equals(ArtifactConstants.ID_API_CONTEXT)) {
 			if (value == null || value.equals("")) {

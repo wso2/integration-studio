@@ -38,6 +38,8 @@
 			<data modelProperty="api.version" type="string"
 				fieldController="org.wso2.developerstudio.eclipse.artifact.synapse.api.validator.ProjectFieldController">Version</data>
 			<group id ="location"/>	
+			<data modelProperty="api.publishswagger" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.synapse.api.validator.ProjectFieldController">Path to Swagger Definition</data>
 			<data modelProperty="save.location" type="workspacefolder"
 				fieldController="org.wso2.developerstudio.eclipse.artifact.synapse.api.validator.ProjectFieldController"
 				group="location"

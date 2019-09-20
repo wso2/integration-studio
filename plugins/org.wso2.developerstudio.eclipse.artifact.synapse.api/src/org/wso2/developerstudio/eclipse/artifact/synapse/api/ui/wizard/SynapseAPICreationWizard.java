@@ -108,17 +108,18 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
 					isNewArtifact = false;
 				} 	
 				copyImportFile(location,isNewArtifact,groupId);
-			}else{			
-			artifactFile = location.getFile(new Path(artifactModel.getName() + ".xml"));
-			File destFile = artifactFile.getLocation().toFile();
-			FileUtils.createFile(destFile, getTemplateContent());
-			fileLst.add(destFile);
-			String relativePath = FileUtils.getRelativePath(esbProject.getLocation().toFile(),
-					new File(location.getLocation().toFile(), artifactModel.getName() + ".xml"))
-					.replaceAll(Pattern.quote(File.separator), "/");
-			esbProjectArtifact.addESBArtifact(createArtifact(artifactModel.getName(), groupId,
-					version, relativePath));	
-			esbProjectArtifact.toFile();
+			} else {			
+				artifactFile = location.getFile(new Path(artifactModel.getName() + ".xml"));
+				File destFile = artifactFile.getLocation().toFile();
+				FileUtils.createFile(destFile, getTemplateContent());
+				fileLst.add(destFile);
+				String relativePath = FileUtils
+						.getRelativePath(esbProject.getLocation().toFile(),
+								new File(location.getLocation().toFile(), artifactModel.getName() + ".xml"))
+						.replaceAll(Pattern.quote(File.separator), "/");
+				esbProjectArtifact
+						.addESBArtifact(createArtifact(artifactModel.getName(), groupId, version, relativePath));
+				esbProjectArtifact.toFile();
 			}
 			esbProject.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 
@@ -157,6 +158,9 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
 		    content.append("/").append(artifactModel.getContext());
 		}
 		content.append("\" name=\"").append(artifactModel.getName()).append("\"");
+		if (!artifactModel.getPublishSwagger().equals("")) {
+			content.append(" publishSwagger=\"").append(artifactModel.getPublishSwagger()).append("\"");
+		}
 		if (artifactModel.getHostname() != null && artifactModel.getHostname().length() > 0) {
 		    content.append(" hostname=\"").append(artifactModel.getHostname()).append("\"");
 		}

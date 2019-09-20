@@ -30,6 +30,7 @@ public class ArtifactConstants extends NLS {
 	public static String ID_SAVE_LOCATION;
 	public static String ID_API_VERSIONTYPE;
 	public static String ID_API_VERSION;
+	public static String ID_API_PUBLISHSWAGGER;
 	
 	//Messages
 	public static String ERRMSG_SAVE_LOCATION;

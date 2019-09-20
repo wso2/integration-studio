@@ -131,17 +131,8 @@ public class CarbonServerBehavior44microei11 extends CarbonServerBehaviour {
 			List<String> urls = new ArrayList<String>();
 			ServerPort[] ports = getServerPorts(getServer());
 			ServerPort sp = null;
-			int port = 0;
+			int port = 9191; //default Prometheus api port
 			int offSet = 0;
-
-			for (int i = 0; i < ports.length; i++) {
-				int j = CarbonServerCommonConstants.getPortcaptions(Activator.PLUGIN_ID).indexOf(ports[i].getName());
-				if (j != -1 && CarbonServerCommonConstants.getPortids(Activator.PLUGIN_ID).get(j)
-						.equals("synapse.transport.http")) {
-					sp = ports[i];
-					port = sp.getPort();
-				}
-			}
 
 			// this will be ping url
 			String newUrl = url;
@@ -152,9 +143,9 @@ public class CarbonServerBehavior44microei11 extends CarbonServerBehaviour {
 
 			// as micro integrator does not have a management console, Url of version
 			// service is used
-			newUrl = newUrl + "/services/Version";
+			newUrl = newUrl + "/metric-service/metrics";
 			urls.add(newUrl);
-
+			
 			return urls.toArray(new String[] {});
 			
 		} catch (Exception e) {

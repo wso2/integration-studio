@@ -26,11 +26,9 @@ import java.util.Map;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
-import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.wst.server.core.IServer;
 import org.wso2.developerstudio.eclipse.carbonserver.base.interfaces.ICarbonServerModulePublisher;
@@ -48,8 +46,8 @@ import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 public class CAppProjectPublisher implements ICarbonServerModulePublisher {
     
 	private static final String MI_PLUGIN_ID = "org.wso2.developerstudio.eclipse.carbon.server44microei";
-	private static final String MI_CAPP_PATH = File.pathSeparator + "repository" + File.pathSeparator + "deployment"
-			+ File.pathSeparator + "server" + File.pathSeparator + "carbonapps";
+	private static final String MI_CAPP_PATH = File.separator + "repository" + File.separator + "deployment"
+			+ File.separator + "server" + File.separator + "carbonapps";
     
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
     

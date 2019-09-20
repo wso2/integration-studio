@@ -39,6 +39,10 @@ import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
+import org.eclipse.swt.layout.FormAttachment;
+import org.eclipse.swt.layout.FormData;
+import org.eclipse.swt.layout.FormLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
@@ -53,8 +57,6 @@ import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
 import org.wso2.developerstudio.eclipse.platform.core.model.MavenInfo;
 import org.wso2.developerstudio.eclipse.platform.core.project.model.ProjectDataModel;
 import org.wso2.developerstudio.eclipse.platform.ui.Activator;
-import org.wso2.developerstudio.eclipse.platform.ui.utils.PlatformUIConstants;
-import org.wso2.developerstudio.eclipse.platform.ui.utils.UserInputValidator;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 
 public class MavenDetailsPage extends WizardPage implements Observer {
@@ -63,8 +65,6 @@ public class MavenDetailsPage extends WizardPage implements Observer {
 	private static final String GLOBAL_PARENT_MAVEN_VERSION = "GLOBAL_MAVEN_VERSION";
 	private static final String GLOBAL_PARENT_MAVEN_ARTIFACTID = "GLOBAL_MAVEN_ARTIFACTID";
 	private static final String GLOBAL_PARENT_MAVEN_GROUP_ID = "GLOBAL_MAVEN_GROUPID";
-	private static final String DEFAULT_REMOTE_REPOSITORY = "wso2/micro-integrator";
-	private static final String DEFAULT_REMOTE_TAG = "latest";
 
 	private Text txtGroupId;
 	private Text txtVersion;
@@ -79,10 +79,6 @@ public class MavenDetailsPage extends WizardPage implements Observer {
 	private Text lblArtifactIdValue;
 	private Button btnhasMavenParent;
 	private Combo parentProjectInfoCombo;
-	private Text txtRemoteRepository;
-	private Text txtRemoteTag;
-	private Text txtTargetRepository;
-	private Text txtTargetTag;
 
 	private boolean hasParentProject;
 	private boolean hasLoadedProjectList;
@@ -94,7 +90,6 @@ public class MavenDetailsPage extends WizardPage implements Observer {
 	private String parentRelativePath;
 	private final ProjectDataModel dataModel;
 	private final MavenInfo mavenProjectInfo;
-	private Group grpDocker;
 
 	private Map<String, Parent> parentProjectlist;
 
@@ -121,22 +116,25 @@ public class MavenDetailsPage extends WizardPage implements Observer {
 	 */
 	public void createControl(Composite parent) {
 		Composite container = new Composite(parent, SWT.NULL);
-
-		container.setLayout(new GridLayout(1, false));
+		container.setLayout(new FormLayout());
+		FormData data;
 
 		final Group grpMaven = new Group(container, SWT.BORDER);
 		grpMaven.setText("Maven Project");
-		GridLayout gl_grpMaven = new GridLayout(2, false);
-		gl_grpMaven.verticalSpacing = 10;
-		gl_grpMaven.horizontalSpacing = 40;
-		grpMaven.setLayout(gl_grpMaven);
-		GridData gd_grpMaven = new GridData(GridData.FILL_HORIZONTAL);
-		gd_grpMaven.heightHint = 325;
-
-		grpMaven.setLayoutData(gd_grpMaven);
+		data = new FormData();
+		data.top = new FormAttachment(1);
+		data.left = new FormAttachment(2);
+		data.right = new FormAttachment(98);
+		grpMaven.setLayout(new FormLayout());
+		grpMaven.setLayoutData(data);
 
 		Label lblNewLabel = new Label(grpMaven, SWT.NONE);
 		lblNewLabel.setText("Group Id");
+		data = new FormData();
+		data.top = new FormAttachment(grpMaven, 5);
+		data.left = new FormAttachment(2);
+		data.width = 250;
+		lblNewLabel.setLayoutData(data);
 
 		txtGroupId = new Text(grpMaven, SWT.BORDER);
 		txtGroupId.addModifyListener(new ModifyListener() {
@@ -147,12 +145,19 @@ public class MavenDetailsPage extends WizardPage implements Observer {
 			}
 		});
 
-		GridData gd_txtGroupId = new GridData(SWT.LEFT, SWT.CENTER, true, false, 1, 1);
-		gd_txtGroupId.widthHint = 257;
-		txtGroupId.setLayoutData(gd_txtGroupId);
+		data = new FormData();
+		data.top = new FormAttachment(grpMaven, 5);
+		data.left = new FormAttachment(lblNewLabel, 0);
+		data.right = new FormAttachment(98);
+		txtGroupId.setLayoutData(data);
 
 		Label lblArtifactId = new Label(grpMaven, SWT.NONE);
 		lblArtifactId.setText("Artifact Id");
+		data = new FormData();
+		data.top = new FormAttachment(lblNewLabel, 20);
+		data.left = new FormAttachment(2);
+		data.width = 250;
+		lblArtifactId.setLayoutData(data);
 
 		lblArtifactIdValue = new Text(grpMaven, SWT.BORDER);
 		lblArtifactIdValue.addModifyListener(new ModifyListener() {
@@ -169,17 +174,26 @@ public class MavenDetailsPage extends WizardPage implements Observer {
 		} else {
 			lblArtifactIdValue.setText("");
 		}
-		GridData gd_txtArtifact = new GridData(SWT.LEFT, SWT.CENTER, true, false, 1, 1);
-		gd_txtArtifact.widthHint = 257;
-		lblArtifactIdValue.setLayoutData(gd_txtArtifact);
+		data = new FormData();
+		data.top = new FormAttachment(lblNewLabel, 20);
+		data.left = new FormAttachment(lblArtifactId, 0);
+		data.right = new FormAttachment(98);
+		lblArtifactIdValue.setLayoutData(data);
 
 		Label lblNewLabel_1 = new Label(grpMaven, SWT.NONE);
 		lblNewLabel_1.setText("Version");
+		data = new FormData();
+		data.top = new FormAttachment(lblArtifactId, 20);
+		data.left = new FormAttachment(2);
+		data.width = 250;
+		lblNewLabel_1.setLayoutData(data);
 
 		txtVersion = new Text(grpMaven, SWT.BORDER);
-		GridData gd_txtVersion = new GridData(SWT.LEFT, SWT.CENTER, true, false, 1, 1);
-		gd_txtVersion.widthHint = 257;
-		txtVersion.setLayoutData(gd_txtVersion);
+		data = new FormData();
+		data.top = new FormAttachment(lblArtifactId, 20);
+		data.left = new FormAttachment(lblNewLabel_1, 0);
+		data.right = new FormAttachment(98);
+		txtVersion.setLayoutData(data);
 
 		txtVersion.addModifyListener(new ModifyListener() {
 			public void modifyText(ModifyEvent arg0) {
@@ -190,6 +204,11 @@ public class MavenDetailsPage extends WizardPage implements Observer {
 		});
 
 		btnhasMavenParent = new Button(grpMaven, SWT.CHECK);
+		data = new FormData();
+		data.top = new FormAttachment(lblNewLabel_1, 20);
+		data.left = new FormAttachment(2);
+		data.width = 250;
+		btnhasMavenParent.setLayoutData(data);
 		btnhasMavenParent.setText("Specify Parent from Workspace");
 		btnhasMavenParent.addSelectionListener(new SelectionAdapter() {
 			@Override
@@ -206,9 +225,8 @@ public class MavenDetailsPage extends WizardPage implements Observer {
 				if (!btnhasMavenParent.getSelection()) {
 					// Check whether the global setting is set. If set, user
 					// them. otherwise simply null
-					String text =
-					              preferencesService.getString("org.wso2.developerstudio.eclipse.platform.ui",
-					                                           GLOBAL_PARENT_MAVEN_GROUP_ID, null, null);
+					String text = preferencesService.getString("org.wso2.developerstudio.eclipse.platform.ui",
+							GLOBAL_PARENT_MAVEN_GROUP_ID, null, null);
 					if (text == null) {
 						mavenProjectInfo.setParentProject(null);
 						dataModel.setMavenInfo(mavenProjectInfo);
@@ -218,19 +236,23 @@ public class MavenDetailsPage extends WizardPage implements Observer {
 						updateParent();
 					}
 				}
-
 				updateMavenParentControlState();
-
 			}
-
 		});
 
 		parentProjectInfoCombo = new Combo(grpMaven, SWT.READ_ONLY);
-		GridData gd_parentProjectInfoCombo = new GridData(SWT.LEFT, SWT.CENTER, true, false, 1, 1);
-		gd_parentProjectInfoCombo.widthHint = 350;
-		parentProjectInfoCombo.setLayoutData(gd_parentProjectInfoCombo);
+		data = new FormData();
+		data.top = new FormAttachment(lblNewLabel_1, 20);
+		data.left = new FormAttachment(btnhasMavenParent, 0);
+		data.right = new FormAttachment(98);
+		parentProjectInfoCombo.setLayoutData(data);
 
 		lblParentGroupId = new Label(grpMaven, SWT.NONE);
+		data = new FormData();
+		data.top = new FormAttachment(btnhasMavenParent, 20);
+		data.left = new FormAttachment(2);
+		data.width = 250;
+		lblParentGroupId.setLayoutData(data);
 		lblParentGroupId.setText("Parent Group Id");
 
 		txtParentGroupId = new Text(grpMaven, SWT.BORDER);
@@ -242,11 +264,18 @@ public class MavenDetailsPage extends WizardPage implements Observer {
 			}
 		});
 
-		GridData gd_txtParentGroupId = new GridData(SWT.LEFT, SWT.CENTER, true, false, 1, 1);
-		gd_txtParentGroupId.widthHint = 257;
-		txtParentGroupId.setLayoutData(gd_txtParentGroupId);
+		data = new FormData();
+		data.top = new FormAttachment(btnhasMavenParent, 20);
+		data.left = new FormAttachment(lblParentGroupId, 0);
+		data.right = new FormAttachment(98);
+		txtParentGroupId.setLayoutData(data);
 
 		lblParentArtifactId = new Label(grpMaven, SWT.NONE);
+		data = new FormData();
+		data.top = new FormAttachment(lblParentGroupId, 20);
+		data.left = new FormAttachment(2);
+		data.width = 250;
+		lblParentArtifactId.setLayoutData(data);
 		lblParentArtifactId.setText("Parent Artifact Id");
 
 		txtParentArtifactId = new Text(grpMaven, SWT.BORDER);
@@ -258,17 +287,26 @@ public class MavenDetailsPage extends WizardPage implements Observer {
 			}
 		});
 
-		GridData gd_txtParentArtifact = new GridData(SWT.LEFT, SWT.CENTER, true, false, 1, 1);
-		gd_txtParentArtifact.widthHint = 257;
-		txtParentArtifactId.setLayoutData(gd_txtParentArtifact);
+		data = new FormData();
+		data.top = new FormAttachment(lblParentGroupId, 20);
+		data.left = new FormAttachment(lblParentArtifactId, 0);
+		data.right = new FormAttachment(98);
+		txtParentArtifactId.setLayoutData(data);
 
 		lblParentVersion = new Label(grpMaven, SWT.NONE);
+		data = new FormData();
+		data.top = new FormAttachment(lblParentArtifactId, 20);
+		data.left = new FormAttachment(2);
+		data.width = 250;
+		lblParentVersion.setLayoutData(data);
 		lblParentVersion.setText("Parent Version");
 
 		txtParentVersion = new Text(grpMaven, SWT.BORDER);
-		GridData gd_txtParentVersion = new GridData(SWT.LEFT, SWT.CENTER, true, false, 1, 1);
-		gd_txtParentVersion.widthHint = 257;
-		txtParentVersion.setLayoutData(gd_txtParentVersion);
+		data = new FormData();
+		data.top = new FormAttachment(lblParentArtifactId, 20);
+		data.left = new FormAttachment(lblParentVersion, 0);
+		data.right = new FormAttachment(98);
+		txtParentVersion.setLayoutData(data);
 		txtParentVersion.addModifyListener(new ModifyListener() {
 			public void modifyText(ModifyEvent evt) {
 				setParentVersion(txtParentVersion.getText());
@@ -278,12 +316,20 @@ public class MavenDetailsPage extends WizardPage implements Observer {
 		});
 
 		lblRelativePath = new Label(grpMaven, SWT.NONE);
+		data = new FormData();
+		data.top = new FormAttachment(lblParentVersion, 20);
+		data.left = new FormAttachment(2);
+		data.width = 250;
+		lblRelativePath.setLayoutData(data);
 		lblRelativePath.setText("Relative-path");
 
 		txtRelativePath = new Text(grpMaven, SWT.BORDER);
-		GridData gd_txtRelativePath = new GridData(SWT.LEFT, SWT.CENTER, true, false, 1, 1);
-		gd_txtRelativePath.widthHint = 340;
-		txtRelativePath.setLayoutData(gd_txtRelativePath);
+		data = new FormData();
+		data.top = new FormAttachment(lblParentVersion, 20);
+		data.left = new FormAttachment(lblRelativePath, 0);
+		data.right = new FormAttachment(98);
+		data.bottom = new FormAttachment(97);
+		txtRelativePath.setLayoutData(data);
 		txtRelativePath.addModifyListener(new ModifyListener() {
 			public void modifyText(ModifyEvent evt) {
 				setParentRelativePath(txtRelativePath.getText());
@@ -292,80 +338,6 @@ public class MavenDetailsPage extends WizardPage implements Observer {
 			}
 		});
 
-        // Docker project details
-
-        grpDocker = new Group(container, SWT.BORDER);
-        grpDocker.setText("Docker Project");
-        GridLayout gl_grpDocker = new GridLayout(2, false);
-        gl_grpDocker.verticalSpacing = 10;
-        gl_grpDocker.horizontalSpacing = 40;
-        grpDocker.setVisible(false);
-        grpDocker.setLayout(gl_grpDocker);
-
-        GridData gd_grpDocker = new GridData(GridData.FILL_HORIZONTAL);
-        gd_grpDocker.heightHint = 200;
-        grpDocker.setLayoutData(gd_grpDocker);
-
-        Label lblRemoteRepository = new Label(grpDocker, SWT.NONE);
-        lblRemoteRepository.setText("Remote Repository");
-
-        txtRemoteRepository = new Text(grpDocker, SWT.BORDER);
-        GridData gd_txtRemoteRepository = new GridData(SWT.LEFT, SWT.CENTER, true, false, 1, 1);
-        gd_txtRemoteRepository.widthHint = 257;
-        txtRemoteRepository.setLayoutData(gd_txtRemoteRepository);
-        txtRemoteRepository.setText(DEFAULT_REMOTE_REPOSITORY);
-        dataModel.setDockerRemoteRepository(DEFAULT_REMOTE_REPOSITORY);
-        txtRemoteRepository.addModifyListener(new ModifyListener() {
-            public void modifyText(ModifyEvent arg0) {
-                dataModel.setDockerRemoteRepository(txtRemoteRepository.getText());
-                updatePageStatus();
-            }
-        });
-
-        Label lblRemoteTag = new Label(grpDocker, SWT.NONE);
-        lblRemoteTag.setText("Remote tag");
-
-        txtRemoteTag = new Text(grpDocker, SWT.BORDER);
-        GridData gd_txtRemoteTag = new GridData(SWT.LEFT, SWT.CENTER, true, false, 1, 1);
-        gd_txtRemoteTag.widthHint = 100;
-        txtRemoteTag.setLayoutData(gd_txtRemoteTag);
-        txtRemoteTag.setText(DEFAULT_REMOTE_TAG);
-        dataModel.setDockerRemoteTag(DEFAULT_REMOTE_TAG);
-        txtRemoteTag.addModifyListener(new ModifyListener() {
-            public void modifyText(ModifyEvent arg0) {
-                dataModel.setDockerRemoteTag(txtRemoteTag.getText());
-                updatePageStatus();
-            }
-        });
-
-        Label lblTargetRepository = new Label(grpDocker, SWT.NONE);
-        lblTargetRepository.setText("Target Repository");
-
-        txtTargetRepository = new Text(grpDocker, SWT.BORDER);
-        GridData gd_txtTargetRepository = new GridData(SWT.LEFT, SWT.CENTER, true, false, 1, 1);
-        gd_txtTargetRepository.widthHint = 257;
-        txtTargetRepository.setLayoutData(gd_txtTargetRepository);
-        txtTargetRepository.addModifyListener(new ModifyListener() {
-            public void modifyText(ModifyEvent arg0) {
-                dataModel.setDockerTargetRepository(txtTargetRepository.getText());
-                updatePageStatus();
-            }
-        });
-
-        Label lblTargetTag = new Label(grpDocker, SWT.NONE);
-        lblTargetTag.setText("Target tag");
-
-        txtTargetTag = new Text(grpDocker, SWT.BORDER);
-        GridData gd_txtTargetTag = new GridData(SWT.LEFT, SWT.CENTER, true, false, 1, 1);
-        gd_txtTargetTag.widthHint = 100;
-        txtTargetTag.setLayoutData(gd_txtTargetTag);
-        txtTargetTag.addModifyListener(new ModifyListener() {
-            public void modifyText(ModifyEvent arg0) {
-                dataModel.setDockerTargetTag(txtTargetTag.getText());
-                updatePageStatus();
-            }
-        });
-			
 		// Trying to get info from preference store
 		Parent parent1 = getParentFromPreferernceStore();
 		if (parent1.getGroupId() != null) {
@@ -381,7 +353,7 @@ public class MavenDetailsPage extends WizardPage implements Observer {
 					setParentMavenInfo(info);
 					updateParent();
 				} else if (preferencesService.getString("org.wso2.developerstudio.eclipse.platform.ui",
-				                                        GLOBAL_PARENT_MAVEN_GROUP_ID, null, null) != null) {
+						GLOBAL_PARENT_MAVEN_GROUP_ID, null, null) != null) {
 					Parent parentFromPreferernceStore = getParentFromPreferernceStore();
 					setParentMavenInfo(parentFromPreferernceStore);
 					mavenProjectInfo.setParentProject(parentFromPreferernceStore);
@@ -571,38 +543,8 @@ public class MavenDetailsPage extends WizardPage implements Observer {
 					return;
 				}
 			}
-			
-            if (dataModel.isDockerExporterProjectChecked()) {
-                String targetRepo = dataModel.getDockerTargetRepository();
-                if (targetRepo == null || targetRepo.isEmpty()) {
-                    updatePageStatus(PlatformUIConstants.NO_TARGET_REPO_MESSAGE);
-                    return;
-                } else if (!UserInputValidator.isRepositoryValid(targetRepo)) {
-                    updatePageStatus(PlatformUIConstants.INVALID_TARGET_REPO_MESSAGE);
-                    return;
-                }
-                String targetTag = dataModel.getDockerTargetTag();
-                if (targetTag == null || targetTag.isEmpty()) {
-                    updatePageStatus(PlatformUIConstants.NO_TARGET_TAG_MESSAGE);
-                    return;
-                } else if (!UserInputValidator.isTagValid(targetTag)) {
-                    updatePageStatus(PlatformUIConstants.INVALID_TARGET_TAG_MESSAGE);
-                    return;
-                }
-                String remoteRepo = dataModel.getDockerRemoteRepository();
-                if (remoteRepo == null || remoteRepo.isEmpty()) {
-                    updatePageStatus(PlatformUIConstants.NO_REMOTE_REPOSITORY_MESSAGE);
-                    return;
-                }
-                String remoteTag = dataModel.getDockerRemoteTag();
-                if (remoteTag == null || remoteTag.isEmpty()) {
-                    updatePageStatus(PlatformUIConstants.NO_REMOTE_TAG_MESSAGE);
-                    return;
-                }
-            }
             updatePageStatus(null);
 		}
-
 	}
 
 	private void updatePageStatus(String msg) {
@@ -666,14 +608,6 @@ public class MavenDetailsPage extends WizardPage implements Observer {
 			if (dataModel.getProjectName() != null) {
 				setArtifactIDLabel();
 			}
-            if (grpDocker != null) {
-                if (dataModel.isDockerExporterProjectChecked()) {
-                    grpDocker.setVisible(true);
-                    updatePageStatus();
-                } else {
-                    grpDocker.setVisible(false);
-                }
-            }
 		}
 
 	}

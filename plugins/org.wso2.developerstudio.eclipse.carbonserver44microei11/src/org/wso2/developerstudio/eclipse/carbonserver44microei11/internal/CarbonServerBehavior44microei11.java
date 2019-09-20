@@ -37,12 +37,16 @@ import org.eclipse.jst.server.generic.core.internal.Trace;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.wst.server.core.IModule;
 import org.eclipse.wst.server.core.IServer;
+import org.eclipse.wst.server.core.ServerPort;
 import org.eclipse.wst.server.core.internal.DeletedModule;
+import org.wso2.developerstudio.eclipse.carbon.server.model.util.CarbonServerCommonConstants;
 import org.wso2.developerstudio.eclipse.carbon.server.model.util.CarbonServerCommonUtils;
 import org.wso2.developerstudio.eclipse.carbonserver.base.impl.CarbonServerBehaviour;
 import org.wso2.developerstudio.eclipse.carbonserver.base.manager.CarbonServerManager;
 import org.wso2.developerstudio.eclipse.carbonserver.base.service.util.CarbonUploadServiceRequestUtil;
+import org.wso2.developerstudio.eclipse.carbonserver44microei11.Activator;
 import org.wso2.developerstudio.eclipse.carbonserver44microei11.operations.CommonOperations;
+import org.wso2.developerstudio.eclipse.carbonserver44microei11.register.product.servers.MicroIntegratorInstance;
 import org.wso2.developerstudio.eclipse.carbonserver44microei11.util.CarbonServer44eiUtils;
 import org.wso2.developerstudio.eclipse.server.base.core.ServerController;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
@@ -123,7 +127,35 @@ public class CarbonServerBehavior44microei11 extends CarbonServerBehaviour {
 	protected String[] getPingURLList() {
 		try {
 			setServerisStillStarting(true);
-			return new String[] {};
+			String url = "http://" + getServer().getHost();
+			List<String> urls = new ArrayList<String>();
+			ServerPort[] ports = getServerPorts(getServer());
+			ServerPort sp = null;
+			int port = 0;
+			int offSet = 0;
+
+			for (int i = 0; i < ports.length; i++) {
+				int j = CarbonServerCommonConstants.getPortcaptions(Activator.PLUGIN_ID).indexOf(ports[i].getName());
+				if (j != -1 && CarbonServerCommonConstants.getPortids(Activator.PLUGIN_ID).get(j)
+						.equals("synapse.transport.http")) {
+					sp = ports[i];
+					port = sp.getPort();
+				}
+			}
+
+			// this will be ping url
+			String newUrl = url;
+			offSet = MicroIntegratorInstance.getInstance().getOffset();
+			if (port != 80) {
+				newUrl = newUrl + ":" + (port + offSet);
+			}
+
+			// as micro integrator does not have a management console, Url of version
+			// service is used
+			newUrl = newUrl + "/services/Version";
+			urls.add(newUrl);
+
+			return urls.toArray(new String[] {});
 			
 		} catch (Exception e) {
 			Trace.trace(Trace.SEVERE, "Can't ping for server startup.");

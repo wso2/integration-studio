@@ -19,21 +19,8 @@
 package org.wso2.developerstudio.eclipse.carbonserver44microei11.internal;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.xml.namespace.NamespaceContext;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.xpath.XPath;
-import javax.xml.xpath.XPathConstants;
-import javax.xml.xpath.XPathExpression;
-import javax.xml.xpath.XPathExpressionException;
-import javax.xml.xpath.XPathFactory;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
@@ -50,33 +37,18 @@ import org.eclipse.jst.server.generic.core.internal.Trace;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.wst.server.core.IModule;
 import org.eclipse.wst.server.core.IServer;
-import org.eclipse.wst.server.core.ServerPort;
 import org.eclipse.wst.server.core.internal.DeletedModule;
-import org.w3c.dom.Document;
-import org.wso2.developerstudio.eclipse.carbon.server.model.util.CarbonServerCommonConstants;
 import org.wso2.developerstudio.eclipse.carbon.server.model.util.CarbonServerCommonUtils;
 import org.wso2.developerstudio.eclipse.carbonserver.base.impl.CarbonServerBehaviour;
 import org.wso2.developerstudio.eclipse.carbonserver.base.manager.CarbonServerManager;
 import org.wso2.developerstudio.eclipse.carbonserver.base.service.util.CarbonUploadServiceRequestUtil;
-import org.wso2.developerstudio.eclipse.carbonserver44microei11.Activator;
 import org.wso2.developerstudio.eclipse.carbonserver44microei11.operations.CommonOperations;
-import org.wso2.developerstudio.eclipse.carbonserver44microei11.register.product.servers.MicroIntegratorInstance;
 import org.wso2.developerstudio.eclipse.carbonserver44microei11.util.CarbonServer44eiUtils;
-import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
-import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.server.base.core.ServerController;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
-import org.xml.sax.InputSource;
-import org.xml.sax.SAXException;
 
 public class CarbonServerBehavior44microei11 extends CarbonServerBehaviour {
 
-    private static final String SERVER_PORTS_OFFSET_XPATH = "/Server/Ports/Offset";
-    private static final Object EMPTY_STRING = "";
-    private static final String HTTPS_NAME_TAG = "https";
-    private static final String SERVER_SERVICE_CONNECTOR_XPATH = "/Server/Service/Connector[1]/@port";
-    private static final String HTTP_NAME_TAG = "http";
-    private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	private CarbonServer44eiUtils carbonServer44eiUtils = new CarbonServer44eiUtils();
 	private CommonOperations commonOperations = new CommonOperations();
 
@@ -151,35 +123,8 @@ public class CarbonServerBehavior44microei11 extends CarbonServerBehaviour {
 	protected String[] getPingURLList() {
 		try {
 			setServerisStillStarting(true);
-			String url = "http://" + getServer().getHost();
-			List<String> urls = new ArrayList<String>();
-			ServerPort[] ports = getServerPorts(getServer());
-			ServerPort sp = null;
-			int port = 0;
-			int offSet = 0;
-
-			for (int i = 0; i < ports.length; i++) {
-				int j = CarbonServerCommonConstants.getPortcaptions(Activator.PLUGIN_ID).indexOf(ports[i].getName());
-				if (j != -1 && CarbonServerCommonConstants.getPortids(Activator.PLUGIN_ID).get(j)
-						.equals("synapse.transport.http")) {
-					sp = ports[i];
-					port = sp.getPort();
-				}
-			}
-
-			// this will be ping url
-			String newUrl = url;
-			offSet = MicroIntegratorInstance.getInstance().getOffset();
-			if (port != 80) {
-				newUrl = newUrl + ":" + (port + offSet);
-			}
-
-			// as micro integrator does not have a management console, Url of version
-			// service is used
-			newUrl = newUrl + "/services/Version";
-			urls.add(newUrl);
-
-			return urls.toArray(new String[] {});
+			return new String[] {};
+			
 		} catch (Exception e) {
 			Trace.trace(Trace.SEVERE, "Can't ping for server startup.");
 		}
@@ -231,75 +176,12 @@ public class CarbonServerBehavior44microei11 extends CarbonServerBehaviour {
 
         String axis2FilePath = getAxis2FilePath();
         String carbonXmlPath = getCarbonXmlFilePath();
-        String catelinaXmlFilePath = getCatelinaXmlFilePath();
-
-        addServletTransportPorts(ports, carbonXmlPath, catelinaXmlFilePath);
         addAxis2XmlPorts(ports, axis2FilePath);
 
         return ports.toArray(new Integer[] {});
     }
 
-    protected void addServletTransportPorts(List<Integer> ports, String carbonXmlPath, String catelinaXmlPath) {
-        int port = 0;
-        XPathFactory factory = XPathFactory.newInstance();
-        NamespaceContext cntx = carbonServer44eiUtils.getCarbonNamespace();
-        File xmlDocument = new File(carbonXmlPath);
-        File catelineXmlDocument = new File(catelinaXmlPath);
-        try {
-            InputSource inputSource = new InputSource(new FileInputStream(xmlDocument));
-            InputSource catelineSource = new InputSource(new FileInputStream(catelineXmlDocument));
-            DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-            DocumentBuilder catelineBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-            Document document = builder.parse(xmlDocument);
-            Document catelinaDocument = catelineBuilder.parse(catelineXmlDocument);
-            XPath xPath = factory.newXPath();
-            XPath catelineXPath = factory.newXPath();
-            xPath.setNamespaceContext(cntx);
-
-            int offSet = Integer.parseInt((String) xPath.evaluate(SERVER_PORTS_OFFSET_XPATH, document,
-                    XPathConstants.STRING));
-            String evaluate = (String) catelineXPath.evaluate(
-                    CarbonServerCommonConstants.getCatalinaXpathExpressionForSslEnabledPort(Activator.PLUGIN_ID),
-                    catelinaDocument, XPathConstants.STRING);
-
-            if (!evaluate.equals(EMPTY_STRING)) {
-                port = Integer.parseInt(evaluate) + offSet;
-            } else {
-                port = getPortfromTransportXML(HTTPS_NAME_TAG);
-            }
-            ports.add(port);
-            inputSource = new InputSource(new FileInputStream(xmlDocument));
-            evaluate = (String) catelineXPath.evaluate(SERVER_SERVICE_CONNECTOR_XPATH, catelinaDocument,
-                    XPathConstants.STRING);
-
-            if (!evaluate.equals(EMPTY_STRING)) {
-                port = Integer.parseInt(evaluate) + offSet;
-            } else {
-                port = getPortfromTransportXML(HTTP_NAME_TAG);
-            }
-            ports.add(port);
-        } catch (NumberFormatException | XPathExpressionException | ParserConfigurationException | SAXException
-                | IOException e) {
-            log.warn("Error occured while adding server transport ports", e);
-        }
-    }
-
-    private int getPortfromTransportXML(String protocolType) {
-        int port = 0;
-        String transportsXmlPath = getTransportXmlFilePath();
-        XPathFactory factory = XPathFactory.newInstance();
-        File xmlDocument = new File(transportsXmlPath);
-        try {
-            InputSource inputSource = new InputSource(new FileInputStream(xmlDocument));
-            XPath xPath = factory.newXPath();
-            XPathExpression xPathExpression = xPath.compile("/transports/transport[@name='" + protocolType
-                    + "']/parameter[@name='port']");
-            String evaluate = xPathExpression.evaluate(inputSource);
-            port = Integer.parseInt(evaluate);
-        } catch (NumberFormatException | FileNotFoundException | XPathExpressionException e) {
-            log.warn("Error occured while getting port from transport XML", e);
-        }
-        return port;
-
+    protected void addServletTransportPorts(List<Integer> ports, String carbonXmlPath) {
+        
     }
 }

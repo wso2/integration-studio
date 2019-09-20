@@ -4464,6 +4464,9 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v-jfJnEei6boXzpRIfnA" name="description" views="_E7xKkfJnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//EsbElement/description"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_oJzJoNsFEemBXY8cwlvGiA" name="publishSwagger" views="_awoJENsFEemBXY8cwlvGiA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//SynapseAPI/publishSwagger"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//SynapseAPI"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_E7v-mfJnEei6boXzpRIfnA" name="APIResource" views="_E7xKnfJnEei6boXzpRIfnA">
@@ -10953,6 +10956,7 @@
             <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xKkfJnEei6boXzpRIfnA" name="description">
               <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
             </elements>
+            <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_awoJENsFEemBXY8cwlvGiA" name="publishSwagger"/>
           </elements>
         </elements>
       </views>

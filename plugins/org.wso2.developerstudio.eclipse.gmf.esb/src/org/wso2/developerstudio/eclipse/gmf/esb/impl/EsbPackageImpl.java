@@ -9127,6 +9127,15 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * <!-- end-user-doc -->
      * @generated
      */
+    public EReference getSynapseAPI_PublishSwagger() {
+        return (EReference)synapseAPIEClass.getEStructuralFeatures().get(10);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     public EClass getAPIResource() {
         return apiResourceEClass;
     }
@@ -21149,6 +21158,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         createEAttribute(synapseAPIEClass, SYNAPSE_API__STATISTICS_ENABLED);
         createEAttribute(synapseAPIEClass, SYNAPSE_API__VERSION);
         createEAttribute(synapseAPIEClass, SYNAPSE_API__VERSION_TYPE);
+        createEReference(synapseAPIEClass, SYNAPSE_API__PUBLISH_SWAGGER);
 
         apiResourceEClass = createEClass(API_RESOURCE);
         createEReference(apiResourceEClass, API_RESOURCE__INPUT_CONNECTOR);
@@ -23631,6 +23641,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         initEAttribute(getSynapseAPI_StatisticsEnabled(), ecorePackage.getEBoolean(), "statisticsEnabled", null, 0, 1, SynapseAPI.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getSynapseAPI_Version(), ecorePackage.getEString(), "version", "", 0, 1, SynapseAPI.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getSynapseAPI_VersionType(), this.getAPIVersionType(), "versionType", "none", 0, 1, SynapseAPI.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getSynapseAPI_PublishSwagger(), this.getRegistryKeyProperty(), null, "publishSwagger", null, 0, 1, SynapseAPI.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(apiResourceEClass, APIResource.class, "APIResource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEReference(getAPIResource_InputConnector(), this.getAPIResourceInputConnector(), null, "inputConnector", null, 0, 1, APIResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

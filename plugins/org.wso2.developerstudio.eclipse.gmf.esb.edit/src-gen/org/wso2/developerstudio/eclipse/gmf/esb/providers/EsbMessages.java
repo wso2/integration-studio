@@ -6940,6 +6940,9 @@ public class EsbMessages extends NLS {
 	public static String SynapseAPIPropertiesEditionPart_DescriptionLabel;
 
 	
+	public static String SynapseAPIPropertiesEditionPart_PublishSwaggerLabel;
+
+	
 	public static String APIResourcePropertiesEditionPart_InSequenceInputConnectorsLabel;
 
 	

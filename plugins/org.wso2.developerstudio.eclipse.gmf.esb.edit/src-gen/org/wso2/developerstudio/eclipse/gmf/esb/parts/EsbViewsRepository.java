@@ -1579,7 +1579,7 @@ public class EsbViewsRepository {
 			public static String propertyValue = "esb::LogProperty::properties::propertyValue";
 			
 			// Start of user code for propertyExpression ElementEditor key
-			public static String propertyExpression = "esb::ClassProperty::properties::propertyExpression";
+			public static String propertyExpression = "esb::LogProperty::properties::propertyExpression";
 			// End of user code
 			
 	
@@ -7672,6 +7672,10 @@ public class EsbViewsRepository {
 					
 					
 					public static String description = "esb::SynapseAPI::handler::properties::description";
+					
+					// Start of user code for publishSwagger ElementEditor key
+					public static String publishSwagger = "esb::SynapseAPI::handler::properties::publishSwagger";
+					// End of user code
 					
 			
 				}

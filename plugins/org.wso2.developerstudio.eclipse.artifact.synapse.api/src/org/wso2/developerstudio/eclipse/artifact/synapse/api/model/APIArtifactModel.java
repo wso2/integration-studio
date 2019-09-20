@@ -60,6 +60,7 @@ public class APIArtifactModel extends ProjectDataModel {
 	private IContainer saveLocation;
 	private List<OMElement> availableAPIslist;
 	private List<OMElement> selectedAPIsList;
+	private String publishSwagger = "";
 	
 	public APIArtifactModel() {
 		availableAPIslist = new ArrayList<OMElement>();
@@ -121,7 +122,15 @@ public class APIArtifactModel extends ProjectDataModel {
 	public void setSaveLocation(IContainer saveLocation) {
 		this.saveLocation = saveLocation;
 	}
+	
+	public String getPublishSwagger() {
+		return publishSwagger;
+	}
 
+	public void setPublishSwagger(String publishSwagger) {
+		this.publishSwagger = publishSwagger;
+	}
+	
 	@Override
 	public Object getModelPropertyValue(String key) {
 		Object modelPropertyValue = super.getModelPropertyValue(key);
@@ -130,6 +139,8 @@ public class APIArtifactModel extends ProjectDataModel {
 				modelPropertyValue = getName();
 			} else if (key.equals(ArtifactConstants.ID_API_CONTEXT)) {
 				modelPropertyValue = getContext();
+			} else if (key.equals(ArtifactConstants.ID_API_PUBLISHSWAGGER)) {
+				modelPropertyValue = getPublishSwagger();
 			} else if (key.equals(ArtifactConstants.ID_API_HOSTNAME)) {
 				modelPropertyValue = getHostname();
 			} else if (key.equals(ArtifactConstants.ID_API_PORT)) {
@@ -196,8 +207,10 @@ public class APIArtifactModel extends ProjectDataModel {
 					}
 				}
 			}
-		}else if (key.equals(ArtifactConstants.ID_API_CONTEXT)) {
+		} else if (key.equals(ArtifactConstants.ID_API_CONTEXT)) {
 			setContext(data.toString());
+		} else if (key.equals(ArtifactConstants.ID_API_PUBLISHSWAGGER)) {
+			setPublishSwagger(data.toString());
 		} else if (key.equals(ArtifactConstants.ID_API_HOSTNAME)) {
 			setHostname(data.toString());
 		} else if (key.equals(ArtifactConstants.ID_API_PORT)) {

@@ -79,6 +79,11 @@ public class DummyAPIFactory {
             api.configure(new AspectConfiguration(nameValue));
         }
 
+        OMAttribute publishSwagger = apiElt.getAttribute(new QName("publishSwagger"));
+        if (publishSwagger != null) {
+            api.setSwaggerResourcePath(publishSwagger.getAttributeValue());
+        }
+        
         OMAttribute traceAtt = apiElt.getAttribute(new QName("trace"));
         if (traceAtt != null && "enable".equals(traceAtt.getAttributeValue())) {
             api.getAspectConfiguration().setTracingEnabled(true);

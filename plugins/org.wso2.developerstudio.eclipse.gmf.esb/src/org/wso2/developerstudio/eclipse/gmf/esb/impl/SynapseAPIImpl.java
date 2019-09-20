@@ -19,13 +19,13 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.APIHandler;
 import org.wso2.developerstudio.eclipse.gmf.esb.APIResource;
 import org.wso2.developerstudio.eclipse.gmf.esb.APIVersionType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.SynapseAPI;
 
 /**
@@ -46,6 +46,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.SynapseAPI;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SynapseAPIImpl#isStatisticsEnabled <em>Statistics Enabled</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SynapseAPIImpl#getVersion <em>Version</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SynapseAPIImpl#getVersionType <em>Version Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SynapseAPIImpl#getPublishSwagger <em>Publish Swagger</em>}</li>
  * </ul>
  *
  * @generated
@@ -230,6 +231,16 @@ public class SynapseAPIImpl extends EsbElementImpl implements SynapseAPI {
      * @ordered
      */
     protected APIVersionType versionType = VERSION_TYPE_EDEFAULT;
+
+    /**
+     * The cached value of the '{@link #getPublishSwagger() <em>Publish Swagger</em>}' containment reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getPublishSwagger()
+     * @generated
+     * @ordered
+     */
+    protected RegistryKeyProperty publishSwagger;
 
     /**
      * <!-- begin-user-doc -->
@@ -453,6 +464,49 @@ public class SynapseAPIImpl extends EsbElementImpl implements SynapseAPI {
      * <!-- end-user-doc -->
      * @generated
      */
+    public RegistryKeyProperty getPublishSwagger() {
+        return publishSwagger;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public NotificationChain basicSetPublishSwagger(RegistryKeyProperty newPublishSwagger, NotificationChain msgs) {
+        RegistryKeyProperty oldPublishSwagger = publishSwagger;
+        publishSwagger = newPublishSwagger;
+        if (eNotificationRequired()) {
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.SYNAPSE_API__PUBLISH_SWAGGER, oldPublishSwagger, newPublishSwagger);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
+        }
+        return msgs;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setPublishSwagger(RegistryKeyProperty newPublishSwagger) {
+        if (newPublishSwagger != publishSwagger) {
+            NotificationChain msgs = null;
+            if (publishSwagger != null)
+                msgs = ((InternalEObject)publishSwagger).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.SYNAPSE_API__PUBLISH_SWAGGER, null, msgs);
+            if (newPublishSwagger != null)
+                msgs = ((InternalEObject)newPublishSwagger).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.SYNAPSE_API__PUBLISH_SWAGGER, null, msgs);
+            msgs = basicSetPublishSwagger(newPublishSwagger, msgs);
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.SYNAPSE_API__PUBLISH_SWAGGER, newPublishSwagger, newPublishSwagger));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
@@ -460,6 +514,8 @@ public class SynapseAPIImpl extends EsbElementImpl implements SynapseAPI {
                 return ((InternalEList<?>)getResources()).basicRemove(otherEnd, msgs);
             case EsbPackage.SYNAPSE_API__HANDLERS:
                 return ((InternalEList<?>)getHandlers()).basicRemove(otherEnd, msgs);
+            case EsbPackage.SYNAPSE_API__PUBLISH_SWAGGER:
+                return basicSetPublishSwagger(null, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -492,6 +548,8 @@ public class SynapseAPIImpl extends EsbElementImpl implements SynapseAPI {
                 return getVersion();
             case EsbPackage.SYNAPSE_API__VERSION_TYPE:
                 return getVersionType();
+            case EsbPackage.SYNAPSE_API__PUBLISH_SWAGGER:
+                return getPublishSwagger();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -537,6 +595,9 @@ public class SynapseAPIImpl extends EsbElementImpl implements SynapseAPI {
             case EsbPackage.SYNAPSE_API__VERSION_TYPE:
                 setVersionType((APIVersionType)newValue);
                 return;
+            case EsbPackage.SYNAPSE_API__PUBLISH_SWAGGER:
+                setPublishSwagger((RegistryKeyProperty)newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
@@ -579,6 +640,9 @@ public class SynapseAPIImpl extends EsbElementImpl implements SynapseAPI {
             case EsbPackage.SYNAPSE_API__VERSION_TYPE:
                 setVersionType(VERSION_TYPE_EDEFAULT);
                 return;
+            case EsbPackage.SYNAPSE_API__PUBLISH_SWAGGER:
+                setPublishSwagger((RegistryKeyProperty)null);
+                return;
         }
         super.eUnset(featureID);
     }
@@ -611,6 +675,8 @@ public class SynapseAPIImpl extends EsbElementImpl implements SynapseAPI {
                 return VERSION_EDEFAULT == null ? version != null : !VERSION_EDEFAULT.equals(version);
             case EsbPackage.SYNAPSE_API__VERSION_TYPE:
                 return versionType != VERSION_TYPE_EDEFAULT;
+            case EsbPackage.SYNAPSE_API__PUBLISH_SWAGGER:
+                return publishSwagger != null;
         }
         return super.eIsSet(featureID);
     }
@@ -631,6 +697,8 @@ public class SynapseAPIImpl extends EsbElementImpl implements SynapseAPI {
         result.append(context);
         result.append(", hostName: ");
         result.append(hostName);
+        result.append(", publishSwagger: ");
+        result.append(publishSwagger.getKeyValue());
         result.append(", port: ");
         result.append(port);
         result.append(", traceEnabled: ");

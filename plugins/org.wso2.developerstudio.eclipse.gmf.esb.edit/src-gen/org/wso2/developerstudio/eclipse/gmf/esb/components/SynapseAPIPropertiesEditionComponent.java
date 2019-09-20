@@ -55,8 +55,9 @@ import org.wso2.developerstudio.eclipse.gmf.esb.APIHandler;
 import org.wso2.developerstudio.eclipse.gmf.esb.APIResource;
 import org.wso2.developerstudio.eclipse.gmf.esb.APIVersionType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.SynapseAPI;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.SynapseAPIPropertiesEditionPart;
 
@@ -149,6 +150,12 @@ public class SynapseAPIPropertiesEditionComponent extends SinglePartPropertiesEd
 			if (isAccessible(EsbViewsRepository.SynapseAPI.Handler.Properties.description))
 				basePart.setDescription(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, synapseAPI.getDescription()));
 			
+			// Start of user code  for publishSwagger command update
+			if (isAccessible(EsbViewsRepository.SynapseAPI.Handler.Properties.publishSwagger)) {
+				basePart.setPublishSwagger(synapseAPI.getPublishSwagger());
+			}
+			// End of user code
+			
 			// init filters
 			if (isAccessible(EsbViewsRepository.SynapseAPI.Handler.handlers)) {
 				basePart.addFilterToHandlers(new ViewerFilter() {
@@ -190,6 +197,9 @@ public class SynapseAPIPropertiesEditionComponent extends SinglePartPropertiesEd
 			
 			
 			
+			// Start of user code  for publishSwagger filter update
+			// End of user code
+			
 			// init values for referenced views
 			
 			// init filters for referenced views
@@ -197,6 +207,7 @@ public class SynapseAPIPropertiesEditionComponent extends SinglePartPropertiesEd
 		}
 		setInitializing(false);
 	}
+
 
 
 
@@ -252,6 +263,9 @@ public class SynapseAPIPropertiesEditionComponent extends SinglePartPropertiesEd
 		}
 		if (editorKey == EsbViewsRepository.SynapseAPI.Handler.Properties.description) {
 			return EsbPackage.eINSTANCE.getEsbElement_Description();
+		}
+		if (editorKey == EsbViewsRepository.SynapseAPI.Handler.Properties.publishSwagger) {
+			return EsbPackage.eINSTANCE.getSynapseAPI_PublishSwagger();
 		}
 		return super.associatedFeature(editorKey);
 	}
@@ -346,6 +360,17 @@ public class SynapseAPIPropertiesEditionComponent extends SinglePartPropertiesEd
 		if (EsbViewsRepository.SynapseAPI.Handler.Properties.description == event.getAffectedEditor()) {
 			synapseAPI.setDescription((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
+		if (EsbViewsRepository.SynapseAPI.Handler.Properties.publishSwagger == event.getAffectedEditor()) {
+			// Start of user code for updatePublishSwagger method body
+			if (event.getNewValue() != null) {
+				RegistryKeyProperty rkp = (RegistryKeyProperty) event.getNewValue();
+				synapseAPI.setPublishSwagger(rkp);
+			} else {
+				synapseAPI.setPublishSwagger(EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty());
+			}
+			// End of user code
+			
+		}
 	}
 
 	/**
@@ -423,6 +448,18 @@ public class SynapseAPIPropertiesEditionComponent extends SinglePartPropertiesEd
 					basePart.setDescription("");
 				}
 			}
+					// Start of user code for publishSwagger live update
+			if (EsbPackage.eINSTANCE.getSynapseAPI_PublishSwagger()
+					.equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null
+					&& isAccessible(EsbViewsRepository.SynapseAPI.Handler.Properties.publishSwagger)) {
+				if (msg.getNewValue() != null) {
+					basePart.setPublishSwagger((RegistryKeyProperty) msg.getNewValue());
+				} else {
+					basePart.setPublishSwagger(EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty());
+				}
+			}
+					// End of user code
+			
 			
 		}
 	}
@@ -446,7 +483,8 @@ public class SynapseAPIPropertiesEditionComponent extends SinglePartPropertiesEd
 			EsbPackage.eINSTANCE.getSynapseAPI_Version(),
 			EsbPackage.eINSTANCE.getSynapseAPI_TraceEnabled(),
 			EsbPackage.eINSTANCE.getSynapseAPI_StatisticsEnabled(),
-			EsbPackage.eINSTANCE.getEsbElement_Description()		);
+			EsbPackage.eINSTANCE.getEsbElement_Description(),
+			EsbPackage.eINSTANCE.getSynapseAPI_PublishSwagger()		);
 		return new NotificationFilter[] {filter,};
 	}
 

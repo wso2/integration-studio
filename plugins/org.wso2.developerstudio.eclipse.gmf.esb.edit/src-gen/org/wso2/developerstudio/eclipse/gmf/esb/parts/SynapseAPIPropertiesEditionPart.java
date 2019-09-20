@@ -12,6 +12,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 
 import org.eclipse.jface.viewers.ViewerFilter;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 
 
 // End of user code
@@ -271,6 +272,11 @@ public interface SynapseAPIPropertiesEditionPart {
 
 
 
+	// Start of user code for publishSwagger specific getters and setters declaration
+	public void setPublishSwagger(RegistryKeyProperty registryKeyProperty);
+	
+	public RegistryKeyProperty getPublishSwagger();
+	// End of user code
 
 	/**
 	 * Returns the internationalized title text.

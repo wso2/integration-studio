@@ -36,6 +36,20 @@ public class DockerModel extends ProjectDataModel {
             setDockerRemoteRepository(data.toString());
         } else if (key.equalsIgnoreCase(DockerProjectConstants.DOCKER_REMOTE_TAG_KEY)) {
             setDockerRemoteTag(data.toString());
+        } else if (key.equalsIgnoreCase(DockerProjectConstants.KUBE_CONTAINER_NAME)) {
+            setKubeContainerName(data.toString());
+        } else if (key.equalsIgnoreCase(DockerProjectConstants.KUBE_REPLICAS)) {
+            setKubeReplicsas(data.toString());
+        } else if (key.equalsIgnoreCase(DockerProjectConstants.KUBE_REMOTE_REPOSITORY)) {
+            setKubeRemoteRepository(data.toString());
+        } else if (key.equalsIgnoreCase(DockerProjectConstants.KUBE_REMOTE_TAG)) {
+            setKubeRemoteTag(data.toString());
+        } else if (key.equalsIgnoreCase(DockerProjectConstants.KUBE_TARGET_REPOSITORY)) {
+            setKubeTargetRepository(data.toString());
+        } else if (key.equalsIgnoreCase(DockerProjectConstants.KUBE_TARGET_TAG)) {
+            setKubeTargetTag(data.toString());
+        } else if (key.equalsIgnoreCase(DockerProjectConstants.KUBE_EXPOSE_PORT)) {
+            setKubeExposePort(data.toString());
         }
         return false;
     }

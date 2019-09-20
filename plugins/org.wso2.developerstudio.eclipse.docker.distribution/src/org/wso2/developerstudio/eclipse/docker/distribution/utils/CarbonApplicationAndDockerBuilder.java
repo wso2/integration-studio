@@ -20,6 +20,8 @@ import com.spotify.docker.client.DockerClient;
 import com.spotify.docker.client.ProgressHandler;
 import com.spotify.docker.client.exceptions.DockerException;
 import com.spotify.docker.client.messages.ProgressMessage;
+import com.spotify.docker.client.messages.RegistryAuth;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
@@ -48,6 +50,7 @@ import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.docker.distribution.Activator;
+import org.wso2.developerstudio.eclipse.docker.distribution.model.DockerHubAuth;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
@@ -65,6 +68,9 @@ public class CarbonApplicationAndDockerBuilder extends Job {
     private String repository;
     private String tag;
     private String imageId;
+    private String dockerHost = "";
+    private DockerClient dockerClient;
+    private DockerHubAuth configuration;
 
     private final String POM_XML = "pom.xml";
     private static final String CAPP_NATURE = "org.wso2.developerstudio.eclipse.distribution.project.nature";
@@ -76,49 +82,62 @@ public class CarbonApplicationAndDockerBuilder extends Job {
     }
 
     public CarbonApplicationAndDockerBuilder(List<String> dependencyProjectNames, String carbonAppsFolderLocation,
-            String dockerFileLocation, String repository, String tag) {
+            String dockerFileLocation, String repository, String tag, DockerHubAuth newConfiguration) {
         super("Generating Docker Image...");
         this.dependencyProjectNames = dependencyProjectNames;
         this.carbonAppsFolderLocation = carbonAppsFolderLocation;
         this.dockerFileLocation = dockerFileLocation;
         this.repository = repository;
         this.tag = tag;
+		this.configuration = newConfiguration;
     }
 
     public Map<String, IProject> getCarbonApplicationList() {
         return carbonApplicationList;
     }
-
+    
     /**
-     * Generating a docker image using Spotify docker plugin.
+     * Create a docker client using Spotify docker plugin.
+     * 
+     * @return docker client
      */
-    private void generateDockerImage() {
-
+    private DockerClient createDockerClient() {
         // Detect the operating system
         String operatingSystem = System.getProperty(DockerProjectConstants.OS_NAME).toLowerCase(Locale.getDefault());
 
         // Set default docker host based on the Operating System
-        String dockerHost = "";
         if (operatingSystem.contains(DockerProjectConstants.WINDOWS)) {
             dockerHost = DockerProjectConstants.WINDOWS_DEFAULT_DOCKER_HOST;
         } else {
             dockerHost = DockerProjectConstants.UNIX_DEFAULT_DOCKER_HOST;
         }
-
-        DockerClient docker = DefaultDockerClient.builder().uri(dockerHost).build();
+        
+        DockerClient dockerClient = DefaultDockerClient.builder().uri(dockerHost).build();
 
         // Test connection to Docker server
         try {
-            docker.ping();
-        } catch (DockerException | InterruptedException e1) {
-            log.error(DockerProjectConstants.DOCKER_CONNECTION_FAILED_MESSAGE, e1);
+            dockerClient.ping();
+        } catch (DockerException | InterruptedException e) {
+            log.error(DockerProjectConstants.DOCKER_CONNECTION_FAILED_MESSAGE, e);
         }
+
+        return dockerClient;
+    }
+
+    /**
+     * Generating a docker image using Spotify docker plugin.
+     * 
+     * @return boolean value of image built or not
+     */
+    private boolean generateDockerImage() {
+        boolean isImageBuilt = false;
+        dockerClient = createDockerClient();
 
         // Atomic reference to store the generated docker image ID
         final AtomicReference<String> imageIdFromMessage = new AtomicReference<>();
         try {
             // build the image
-            imageId = docker.build(Paths.get(dockerFileLocation), repository + ":" + tag, new ProgressHandler() {
+            imageId = dockerClient.build(Paths.get(dockerFileLocation), repository + ":" + tag, new ProgressHandler() {
                 @Override
                 public void progress(ProgressMessage message) throws DockerException {
                     final String imageId = message.buildImageId();
@@ -130,9 +149,55 @@ public class CarbonApplicationAndDockerBuilder extends Job {
                 }
             }, DockerClient.BuildParam.noCache(), DockerClient.BuildParam.forceRm());
 
-        } catch (DockerException | InterruptedException | IOException e2) {
-            log.error(DockerProjectConstants.DOCKER_IMAGE_GEN_FAILED_MESSAGE, e2);
+            if (imageIdFromMessage.get() != null) {
+                isImageBuilt = true;
+            }
+        } catch (DockerException | InterruptedException | IOException e) {
+            log.error(DockerProjectConstants.DOCKER_IMAGE_GEN_FAILED_MESSAGE, e);
         }
+        return isImageBuilt;
+    }
+    
+    /**
+     * Pushing a docker image to the Docker Hub using Spotify docker plugin .
+     * 
+     * @return boolean value of image pushed or not
+     */
+    private boolean pushDockerImage() {
+        boolean isImagePushed = false;
+
+        if (dockerClient == null) {
+            dockerClient = createDockerClient();
+        }
+
+        // check docker hub credentials set or not. if not stop the pushing process
+        if (configuration == null) {
+            showMessageBox(DockerProjectConstants.MESSAGE_BOX_TITLE,
+                    DockerProjectConstants.DOCKER_IMAGE_AUTH_NULL_MESSAGE, SWT.ICON_ERROR);
+            return isImagePushed;
+        }
+
+        // push built docker image to the docker hub registry
+        final RegistryAuth registryAuth = RegistryAuth.builder().email(configuration.getAuthEmail())
+                .username(configuration.getAuthUsername()).password(configuration.getAuthPassword()).build();
+        try {
+            final int statusCode = dockerClient.auth(registryAuth);
+            if (statusCode == 200) {
+                String dockerImage = repository + ":" + tag;
+                dockerClient.push(dockerImage, registryAuth);
+                isImagePushed = true;
+            } else {
+                log.error(DockerProjectConstants.DOCKER_IMAGE_AUTH_FAILED_MESSAGE);
+                showMessageBox(DockerProjectConstants.MESSAGE_BOX_TITLE,
+                        DockerProjectConstants.DOCKER_IMAGE_AUTH_FAILED_MESSAGE, SWT.ICON_ERROR);
+            }
+
+        } catch (DockerException | InterruptedException e) {
+            log.error(DockerProjectConstants.DOCKER_IMAGE_PUSH_FAILED_MESSAGE, e);
+            showMessageBox(DockerProjectConstants.MESSAGE_BOX_TITLE,
+                    DockerProjectConstants.DOCKER_IMAGE_PUSH_FAILED_MESSAGE + "\n" + e.getMessage(), SWT.ICON_ERROR);
+        }
+        return isImagePushed;
     }
 
     /**
@@ -210,13 +275,31 @@ public class CarbonApplicationAndDockerBuilder extends Job {
         }
         monitor.worked(50);
 
-        // Generating the docker image
-        monitor.subTask("Exporting docker image");
-        generateDockerImage();
+        // building the docker image
+        monitor.subTask("Building the docker image");
+        boolean isBuilt = generateDockerImage();
         monitor.worked(100);
         monitor.done();
-        showMessageBox(DockerProjectConstants.MESSAGE_BOX_TITLE,
-                DockerProjectConstants.DOCKER_IMAGE_GEN_SUCCESS_MESSAGE + imageId, SWT.ICON_ERROR);
+
+        if (isBuilt) {
+            showMessageBox(DockerProjectConstants.MESSAGE_BOX_TITLE,
+                    DockerProjectConstants.DOCKER_IMAGE_GEN_SUCCESS_MESSAGE + imageId, SWT.ICON_ERROR);
+        }
+
+        // pushing the docker image if its a kubernetes project
+        if (configuration.isKubernetesProject()) {
+            monitor.beginTask("Start push the docker image to the registry", 100);
+            monitor.worked(45);
+            boolean isPushed = pushDockerImage();
+            monitor.worked(90);
+            monitor.worked(100);
+            monitor.done();
+
+            if (isPushed) {
+                showMessageBox(DockerProjectConstants.MESSAGE_BOX_TITLE,
+                        DockerProjectConstants.DOCKER_IMAGE_PUSH_SUCCESS_MESSAGE, SWT.ICON_ERROR);
+            }
+        }
         return Status.OK_STATUS;
     }
 

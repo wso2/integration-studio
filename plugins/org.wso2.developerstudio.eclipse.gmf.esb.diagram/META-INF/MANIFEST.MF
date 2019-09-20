@@ -61,7 +61,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.wso2.developerstudio.eclipse.kernel.libraries;bundle-version="[4.1.0,8.0.0)",
  org.wso2.developerstudio.eclipse.project.extensions;bundle-version="[7.0.0,8.0.0)",
  org.eclipse.papyrus.infra.gmfdiag.css,
- org.wso2.developerstudio.eclipse.carbonserver44microei;bundle-version="[7.0.0,8.0.0)"
+ org.wso2.developerstudio.eclipse.carbonserver44microei11;bundle-version="[7.0.0,8.0.0)"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Eclipse-LazyStart: true
@@ -83,8 +83,8 @@ Import-Package: net.sf.saxon.s9api,
  org.wso2.developerstudio.eclipse.capp.core.model;version="[7.0.0,8.0.0)",
  org.wso2.developerstudio.eclipse.capp.maven;version="[7.0.0,8.0.0)",
  org.wso2.developerstudio.eclipse.capp.maven.utils;version="[7.0.0,8.0.0)",
- org.wso2.developerstudio.eclipse.carbonserver44microei.register.product.servers;version="[7.0.0,8.0.0)",
- org.wso2.developerstudio.eclipse.carbonserver44microei.wizard;version="[7.0.0,8.0.0)",
+ org.wso2.developerstudio.eclipse.carbonserver44microei11.register.product.servers;version="[7.0.0,8.0.0)",
+ org.wso2.developerstudio.eclipse.carbonserver44microei11.wizard;version="[7.0.0,8.0.0)",
  org.wso2.developerstudio.eclipse.esb.core,
  org.wso2.developerstudio.eclipse.esb.core.interfaces,
  org.wso2.developerstudio.eclipse.esb.core.utils,

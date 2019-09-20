@@ -17,10 +17,7 @@
 package org.wso2.developerstudio.eclipse.dashboard.handlers;
 
 import org.eclipse.core.runtime.IConfigurationElement;
-import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Status;
-import org.eclipse.core.runtime.jobs.Job;
+
 import org.eclipse.ui.IStartup;
 import org.wso2.developerstudio.eclipse.carbonserver.base.util.ServerExtensionsRegistryUtils;
 import org.wso2.developerstudio.eclipse.carbonserver40.register.product.servers.DynamicServer40ExtensionGenerator;
@@ -28,7 +25,7 @@ import org.wso2.developerstudio.eclipse.carbonserver42.register.product.servers.
 import org.wso2.developerstudio.eclipse.carbonserver44.register.product.servers.DynamicServer44ExtensionGenerator;
 import org.wso2.developerstudio.eclipse.carbonserver44ei.register.product.servers.DynamicServer44eiExtensionGenerator;
 import org.wso2.developerstudio.eclipse.carbonserver44microei.register.product.servers.DynamicServer44MicroeiExtensionGenerator;
-import org.wso2.developerstudio.eclipse.carbonserver44microei.register.product.servers.MicroIntegratorInstance;
+import org.wso2.developerstudio.eclipse.carbonserver44microei11.register.product.servers.MicroIntegratorInstance;
 import org.wso2.developerstudio.eclipse.carbonserver44microei11.register.product.servers.DynamicServer44Microei11ExtensionGenerator;
 
 /**

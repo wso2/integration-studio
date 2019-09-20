@@ -46,7 +46,7 @@ public class ESBSolutionProjectFieldController extends ESBProjectFieldController
                 if (esbSolutionModel.isRegistryProjectChecked()) {
                     updateFields.add(REGISTRY_RESOURCES_PROJECT_NAME);
                 }
-                if (esbSolutionModel.isDockerExporterProjectChecked()) {
+                if (esbSolutionModel.isContainerExporterProjectChecked()) {
                     updateFields.add(DOCKER_EXPORTER_PROJECT_NAME);
                 }
             }
@@ -68,7 +68,7 @@ public class ESBSolutionProjectFieldController extends ESBProjectFieldController
 		boolean registryEnabled = ((ESBSolutionProjectModel) model).isRegistryProjectChecked();
 		boolean connectorEnabled = ((ESBSolutionProjectModel) model).isConnectorExporterProjectChecked();
 		boolean cappEnabled = ((ESBSolutionProjectModel) model).isCappProjectChecked();
-		boolean dockerEnabled = ((ESBSolutionProjectModel) model).isDockerExporterProjectChecked();
+		boolean dockerEnabled = ((ESBSolutionProjectModel) model).isContainerExporterProjectChecked();
 		if (modelProperty.equals(REGISTRY_RESOURCES_PROJECT_NAME)) {
 			enable = registryEnabled;
 		} else if (modelProperty.equals(CONNECTOR_EXPORTER_PROJECT_NAME)) {

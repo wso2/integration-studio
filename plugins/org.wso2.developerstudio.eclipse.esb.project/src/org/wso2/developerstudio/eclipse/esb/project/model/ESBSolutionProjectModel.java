@@ -83,7 +83,7 @@ public class ESBSolutionProjectModel extends ESBProjectModel {
             } else if (key.equals(CAPP_PROJECT_CHECKED)) {
                 modelPropertyValue = isCappProjectChecked();
             } else if (key.equals(DOCKER_EXPORTER_PROJECT_CHECKED)) {
-                modelPropertyValue = isDockerExporterProjectChecked();
+                modelPropertyValue = isContainerExporterProjectChecked();
             }
         }
         return modelPropertyValue;
@@ -98,7 +98,7 @@ public class ESBSolutionProjectModel extends ESBProjectModel {
                 setRegistryProjectName(data.toString() + "Registry");
                 setConnectorExporterProjectName(data.toString() + "ConnectorExporter");
                 setCompositeApplicationProjectName(data.toString() + "CompositeApplication");
-                setDockerExporterProjectName(data.toString() + "DockerExporter");
+                setDockerExporterProjectName(data.toString() + "DockerKubernetesExporter");
             } else {
                 setRegistryProjectName("");
                 setConnectorExporterProjectName("");
@@ -119,7 +119,7 @@ public class ESBSolutionProjectModel extends ESBProjectModel {
         } else if (key.equals(CAPP_PROJECT_CHECKED)) {
             setCappProjectChecked((boolean) data);
         } else if (key.equals(DOCKER_EXPORTER_PROJECT_CHECKED)) {
-            setDockerExporterProjectChecked((boolean) data);
+            setContainerExporterProjectChecked((boolean) data);
             returnResult = (boolean) data;
         }
 

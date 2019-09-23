@@ -276,7 +276,7 @@ public abstract class EndpointFormPage extends AbstractEsbFormPage {
         samplegridData.grabExcessHorizontalSpace = true;
         basicSection.setLayoutData(samplegridData);
 
-        Composite basicSectionClient = toolkit.createComposite(basicSection);
+        Composite basicSectionClient = new Composite(basicSection, SWT.V_SCROLL);
         basicSectionClient.setLayout(new GridLayout());
         basicSection.setClient(basicSectionClient);
 

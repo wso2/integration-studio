@@ -129,6 +129,10 @@ import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.core.event.EsbEditorEvent;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.ESBFormEditor;
+import org.wso2.developerstudio.esb.form.editors.mockservice.MockServiceFormToSourceTransformer;
+import org.wso2.developerstudio.esb.form.editors.mockservice.MockServiceSourceToFormDeserializer;
+import org.wso2.developerstudio.esb.form.editors.unittest.SynapseUnitTestFormToSourceTransformer;
+import org.wso2.developerstudio.esb.form.editors.unittest.SynapseUnitTestSourceToFormDeserializer;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
@@ -175,6 +179,10 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
     private static final int PROPERTY_VIEW_PAGE_INDEX = 2;
 
     private static final String SOURCE_VIEW_ERROR = "SOURCE_VIEW_ERROR";
+    
+    private static final String MOCK_SERVICE = "MOCK_SERVICE";
+    
+    private static final String SYNAPSE_UNIT_TEST = "MOCK_SERVICE";
 
     private static final String CONFIG_ERROR = "org.wso2.developerstudio.eclipse.gmf.esb.diagram.synapseerror";
 
@@ -595,6 +603,8 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
         case ENDPOINT_LOADBALANCE:
         case ENDPOINT_FAILOVER:
         case ENDPOINT_RECIPIENTLIST:
+        case MOCK_SERVICE:
+        case SYNAPSE_UNIT_TEST:	
             createPageForm(currArtifactType);
             break;
         default:
@@ -668,7 +678,16 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
             try {
 
                 deleteMarkers();
-                if (ProcessSourceView.validateSynapseContent(source) != null) {
+                
+                SourceError sourceError;
+                if (currArtifactType.toString().equals(MOCK_SERVICE) || 
+                		currArtifactType.toString().equals(SYNAPSE_UNIT_TEST)) {
+                	sourceError = null;
+                } else {
+                	sourceError = ProcessSourceView.validateSynapseContent(source);
+                }
+                
+                if (sourceError != null) {
                     sourceDirty = true;
                 }
 
@@ -799,13 +818,19 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
      * @throws Exception
      */
     private void handleFormViewActivatedEvent(boolean withSynapse) throws Exception {
-
         if (sourceEditor != null) {
             String xmlSource = sourceEditor.getDocument().get();
             if (xmlSource != null && sourceDirty) {// source dirty is comming as
                                                    // false
                 if (!xmlSource.trim().isEmpty()) {
-                    Deserializer.getInstance().updateDesign(xmlSource, formEditor, currArtifactType, withSynapse);
+                	if (currArtifactType.toString().equals(MOCK_SERVICE)) {
+                		MockServiceSourceToFormDeserializer.generateFormView((FormPage)formEditor.getActivePageInstance(), xmlSource, false);
+                	} else if (currArtifactType.toString().equals(SYNAPSE_UNIT_TEST)) {
+                		SynapseUnitTestSourceToFormDeserializer.generateFormView((FormPage)formEditor.getActivePageInstance(), xmlSource, false);
+                	} else {
+                		Deserializer.getInstance().updateDesign(xmlSource, formEditor, currArtifactType, withSynapse);
+                	}
+                    
                     final EsbMultiPageEditor tempEditor = this;
                     Display.getDefault().asyncExec(new Runnable() {
                         public void run() {
@@ -817,7 +842,6 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
                 }
             }
         }
-
     }
 
     /**
@@ -910,7 +934,13 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
         String source = null;
         if (isFormEditor) {
             FormPage formEditorPage = formEditor.getFormPageForArtifact(currArtifactType);
-            source = EsbModelTransformer.instance.formToSource(formEditorPage, currArtifactType);
+            if (currArtifactType.toString().equals(MOCK_SERVICE)) {
+            	source = MockServiceFormToSourceTransformer.generateMockServiceTemplate(formEditorPage);
+            } else if (currArtifactType.toString().equals(SYNAPSE_UNIT_TEST)) {
+            	source = SynapseUnitTestFormToSourceTransformer.generateUnitTestTemplate(formEditorPage);
+            } else {
+            	source = EsbModelTransformer.instance.formToSource(formEditorPage, currArtifactType);
+            }
 
         } else {
             EsbDiagram diagram = (EsbDiagram) graphicalEditor.getDiagram().getElement();
@@ -1012,8 +1042,15 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 
                 deleteMarkers();
                 if (deserializeStatus.isValid()) {
-                    SourceError sourceError = ProcessSourceView.validateSynapseContent(xmlSource);
-
+                    SourceError sourceError;
+                    
+                    if (currArtifactType.toString().equals(MOCK_SERVICE) || 
+                    		currArtifactType.toString().equals(SYNAPSE_UNIT_TEST)) {
+                    	sourceError = null;
+                    } else {
+                    	sourceError = ProcessSourceView.validateSynapseContent(xmlSource);
+                    }
+                    
                     if (sourceError != null) {
                         if (!sourceError.getException().contains("Invalid mediator")) {
                             addMarker(sourceError);
@@ -1116,7 +1153,14 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
                         inputStream.close();
 
                         String theString = writer.toString();
-                        SourceError sourceError = ProcessSourceView.validateSynapseContent(theString);
+                        SourceError sourceError;
+                        
+                        if (currArtifactType.toString().equals(MOCK_SERVICE) || 
+                        		currArtifactType.toString().equals(SYNAPSE_UNIT_TEST)) {
+                        	sourceError = null;
+                        } else {
+                        	sourceError = ProcessSourceView.validateSynapseContent(theString);
+                        }
 
                         if (sourceError != null) {
                             addMarker(sourceError);

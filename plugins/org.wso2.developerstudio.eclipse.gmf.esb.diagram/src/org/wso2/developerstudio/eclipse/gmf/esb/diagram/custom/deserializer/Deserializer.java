@@ -292,6 +292,10 @@ public class Deserializer {
             artifactType = ArtifactType.MESSAGE_PROCESSOR;
         } else if ("inboundEndpoint".equals(localName)) {
             artifactType = ArtifactType.INBOUND_ENDPOINT;
+        } else if ("mock-service".equals(localName)) {
+        	artifactType = ArtifactType.MOCK_SERVICE;
+        } else if ("unit-test".equals(localName)) {
+        	artifactType = ArtifactType.SYNAPSE_UNIT_TEST;
         } else {
             throw new UnrecogizedArtifactTypeException("Unrecognized source configuration section " + localName);
         }

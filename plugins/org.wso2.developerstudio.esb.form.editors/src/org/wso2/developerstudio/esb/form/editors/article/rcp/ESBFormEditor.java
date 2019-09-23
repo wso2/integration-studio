@@ -34,6 +34,8 @@ import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.Loadbalan
 import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.RecipientListEndpointFormPage;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.TemplateEndPointFormPage;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.WsdlEndpointFormPage;
+import org.wso2.developerstudio.esb.form.editors.mockservice.MockServiceFormPage;
+import org.wso2.developerstudio.esb.form.editors.unittest.SynapseUnitTestFormPage;
 
 /**
  * A simple multi-page form editor that uses Eclipse Forms support. Example
@@ -111,6 +113,10 @@ public class ESBFormEditor extends FormEditor {
             currFormPage = new FailoverEndpointFormPage(this);
         } else if (artifactType == ArtifactType.ENDPOINT_RECIPIENTLIST) {
             currFormPage = new RecipientListEndpointFormPage(this);
+        } else if (artifactType == ArtifactType.MOCK_SERVICE) {
+            currFormPage = new MockServiceFormPage(this);
+        } else if (artifactType == ArtifactType.SYNAPSE_UNIT_TEST) {
+        	currFormPage = new SynapseUnitTestFormPage(this);
         }
 	}
 

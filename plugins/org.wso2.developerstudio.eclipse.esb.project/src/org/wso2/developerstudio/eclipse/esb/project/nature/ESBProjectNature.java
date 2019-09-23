@@ -35,11 +35,12 @@ public class ESBProjectNature extends AbstractWSO2ProjectNature {
 	private static final String CAPP_TYPE = "bpel/workflow=zip,lib/registry/filter=jar,webapp/jaxws=war,lib/library/bundle=jar,service/dataservice=dbs,synapse/local-entry=xml,synapse/proxy-service=xml,carbon/application=car,registry/resource=zip,lib/dataservice/validator=jar,synapse/endpoint=xml,web/application=war,lib/carbon/ui=jar,service/axis2=aar,synapse/sequence=xml,synapse/configuration=xml,wso2/gadget=dar,lib/registry/handlers=jar,lib/synapse/mediator=jar,synapse/task=xml,synapse/api=xml,synapse/template=xml,synapse/message-store=xml,synapse/message-processors=xml,synapse/inbound-endpoint=xml";
 	
 	public void configure() throws CoreException {
-		String[] childrenList = { "endpoints", "proxy-services", "sequences", "local-entries",
-				"tasks", "templates", "api", "message-stores", "message-processors", "inbound-endpoints"};
-		IFolder parentFolder =
-		        ProjectUtils.getWorkspaceFolder(getProject(), "src", "main", "synapse-config");
+		String[] childrenList = { "endpoints", "proxy-services", "sequences", "local-entries", "tasks", "templates",
+				"api", "message-stores", "message-processors", "inbound-endpoints" };
+		IFolder parentFolder = ProjectUtils.getWorkspaceFolder(getProject(), "src", "main", "synapse-config");
+		IFolder parentTestFolder = ProjectUtils.getWorkspaceFolder(getProject(), "test", "resources", "mock-services");
 		ProjectUtils.createFolder(parentFolder);
+		ProjectUtils.createFolder(parentTestFolder);
 		getProject().refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 		for (String child : childrenList) {
 			createChildren(parentFolder, child);

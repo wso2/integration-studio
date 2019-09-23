@@ -17,11 +17,19 @@
 package org.wso2.developerstudio.eclipse.esb.project.ui.wizard;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import org.apache.axiom.om.OMElement;
+import org.apache.maven.model.Plugin;
+import org.apache.maven.model.PluginExecution;
+import org.apache.maven.project.MavenProject;
+import org.codehaus.plexus.util.xml.Xpp3Dom;
+import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
@@ -32,6 +40,7 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
+import org.wso2.developerstudio.eclipse.capp.maven.utils.MavenConstants;
 import org.wso2.developerstudio.eclipse.esb.core.utils.SynapseUtils;
 import org.wso2.developerstudio.eclipse.esb.project.Activator;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
@@ -78,6 +87,10 @@ public class ESBProjectWizard extends AbstractWSO2ProjectCreationWizard {
 					pomfile,
 					new String[] { },
 					new String[] { ESB_PROJECT_NATURE });
+			
+            // Adding Synapse unit testing framework client plugin to the ESB solution
+            // project pom file.
+            createSynapseUnitTestPlugin(pomfile);
 			
 			//Creating the metadata file artifact.xml while creating the ESB project. It will be hidden and users won't be able to see it via Eclipse.
 			ESBProjectArtifact artifact=new ESBProjectArtifact();
@@ -161,4 +174,40 @@ public class ESBProjectWizard extends AbstractWSO2ProjectCreationWizard {
 		// TODO Auto-generated method stub
 		super.setCurrentSelection(currentSelection);
 	}
+	
+    private void createSynapseUnitTestPlugin(File pomFile) {
+        try {
+            MavenProject mavenProject = MavenUtils.getMavenProject(pomFile);
+            Plugin unitTestPlugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2",
+                    "synapse-unit-test-maven-plugin", "1.0-SNAPSHOT", false);
+
+            PluginExecution pluginExecution = new PluginExecution();
+            pluginExecution.addGoal("SynapseUnitTest");
+            pluginExecution.setPhase("test");
+            pluginExecution.setId("synapse-unit-test");
+            unitTestPlugin.addExecution(pluginExecution);
+
+            // adding plugin configuration
+            Xpp3Dom unitTestConfElement = MavenUtils.createMainConfigurationNode(unitTestPlugin);
+            Xpp3Dom serverDetails = MavenUtils.createXpp3Node(unitTestConfElement, "server");
+            Xpp3Dom testServerType = MavenUtils.createXpp3Node(serverDetails, "testServerType");
+            testServerType.setValue("${testServerType}");
+            Xpp3Dom testServerHost = MavenUtils.createXpp3Node(serverDetails, "testServerHost");
+            testServerHost.setValue("${testServerHost}");
+            Xpp3Dom testServerPort = MavenUtils.createXpp3Node(serverDetails, "testServerPort");
+            testServerPort.setValue("${testServerPort}");
+            Xpp3Dom testServerPath = MavenUtils.createXpp3Node(serverDetails, "testServerPath");
+            testServerPath.setValue("${testServerPath}");
+            Xpp3Dom testCasesFilePath = MavenUtils.createXpp3Node(unitTestConfElement, "testCasesFilePath");
+            testCasesFilePath.setValue("${project.basedir}" + File.separator + "test" + File.separator + "${testFile}");
+
+            // save the pom with plugin configuration
+            MavenUtils.saveMavenProject(mavenProject, pomfile);
+
+        } catch (XmlPullParserException e) {
+            log.error("Cannot parse the pom file", e);
+        } catch (IOException e) {
+            log.error("Error while saving the pom file", e);
+        }
+    }
 }

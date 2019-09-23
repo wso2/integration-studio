@@ -105,4 +105,6 @@ Import-Package: net.sf.saxon.s9api,
  org.wso2.developerstudio.esb.form.editors.article.rcp,
  org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints,
  org.wso2.developerstudio.esb.form.editors.article.rcp.message.processors,
- org.wso2.developerstudio.esb.form.editors.article.rcp.message.stores
+ org.wso2.developerstudio.esb.form.editors.article.rcp.message.stores,
+ org.wso2.developerstudio.esb.form.editors.mockservice,
+ org.wso2.developerstudio.esb.form.editors.unittest

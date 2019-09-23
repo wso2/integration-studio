@@ -40,6 +40,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.ExceptionMessageM
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.EsbModelTransformer;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.developerstudio.esb.form.editors.mockservice.MockServiceFormToSourceTransformer;
+import org.wso2.developerstudio.esb.form.editors.unittest.SynapseUnitTestFormToSourceTransformer;
 
 /**
  * Wraps a {@link StructuredTextEditor} which handles actual source editing.
@@ -142,7 +144,15 @@ public class EsbObjectSourceEditor {
      *            {@link ModelObject} to be edited.
      */
     public void update(FormPage formPage, ArtifactType artifactType) throws Exception {
-        String newSource = EsbModelTransformer.instance.formToSource(formPage, artifactType);
+    	String newSource;
+    	if (artifactType.toString().equals("MOCK_SERVICE")) {
+    		newSource = MockServiceFormToSourceTransformer.generateMockServiceTemplate(formPage);
+    	} else if (artifactType.toString().equals("SYNAPSE_UNIT_TEST")) {
+    		newSource = SynapseUnitTestFormToSourceTransformer.generateUnitTestTemplate(formPage);
+    	} else {
+    		newSource = EsbModelTransformer.instance.formToSource(formPage, artifactType);
+    	}
+        
         getDocument().set(newSource);
     }
 

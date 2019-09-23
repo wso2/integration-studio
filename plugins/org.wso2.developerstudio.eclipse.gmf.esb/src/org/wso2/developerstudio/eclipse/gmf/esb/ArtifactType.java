@@ -211,7 +211,11 @@ public enum ArtifactType implements Enumerator {
      * @generated
      * @ordered
      */
-    ENDPOINT_RECIPIENTLIST(25, "ENDPOINT_RECIPIENTLIST", "ENDPOINT_RECIPIENTLIST");
+    ENDPOINT_RECIPIENTLIST(25, "ENDPOINT_RECIPIENTLIST", "ENDPOINT_RECIPIENTLIST"),
+    
+    MOCK_SERVICE(26, "MOCK_SERVICE", "MOCK_SERVICE"),
+	
+	SYNAPSE_UNIT_TEST(27, "SYNAPSE_UNIT_TEST", "SYNAPSE_UNIT_TEST");
 
     /**
      * The '<em><b>SYNAPSE CONFIG</b></em>' literal value.
@@ -602,6 +606,10 @@ public enum ArtifactType implements Enumerator {
      * @ordered
      */
     public static final int ENDPOINT_RECIPIENTLIST_VALUE = 25;
+    
+    public static final int MOCK_SERVICE_VALUE = 26;
+    
+    public static final int SYNAPSE_UNIT_TEST_VALUE = 27;
 
     /**
      * An array of all the '<em><b>Artifact Type</b></em>' enumerators.
@@ -636,6 +644,8 @@ public enum ArtifactType implements Enumerator {
             ENDPOINT_LOADBALANCE,
             ENDPOINT_FAILOVER,
             ENDPOINT_RECIPIENTLIST,
+            MOCK_SERVICE,
+            SYNAPSE_UNIT_TEST,
         };
 
     /**
@@ -718,6 +728,8 @@ public enum ArtifactType implements Enumerator {
             case ENDPOINT_LOADBALANCE_VALUE: return ENDPOINT_LOADBALANCE;
             case ENDPOINT_FAILOVER_VALUE: return ENDPOINT_FAILOVER;
             case ENDPOINT_RECIPIENTLIST_VALUE: return ENDPOINT_RECIPIENTLIST;
+            case MOCK_SERVICE_VALUE:return MOCK_SERVICE;
+            case SYNAPSE_UNIT_TEST_VALUE:return SYNAPSE_UNIT_TEST;
         }
         return null;
     }

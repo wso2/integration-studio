@@ -17,6 +17,10 @@
 package org.wso2.developerstudio.eclipse.docker.distribution.editor;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -28,6 +32,7 @@ import java.util.Properties;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
+import org.apache.commons.io.IOUtils;
 import org.apache.maven.model.Dependency;
 import org.apache.maven.model.Plugin;
 import org.apache.maven.model.PluginExecution;
@@ -49,6 +54,7 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.TreeEditor;
 import org.eclipse.swt.events.ModifyEvent;
@@ -70,6 +76,7 @@ import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeColumn;
 import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.ui.IFileEditorInput;
+import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.forms.IManagedForm;
 import org.eclipse.ui.forms.editor.FormEditor;
@@ -84,6 +91,7 @@ import org.wso2.developerstudio.eclipse.distribution.project.model.NodeData;
 import org.wso2.developerstudio.eclipse.distribution.project.util.DistProjectUtils;
 import org.wso2.developerstudio.eclipse.distribution.project.validator.ProjectList;
 import org.wso2.developerstudio.eclipse.docker.distribution.Activator;
+import org.wso2.developerstudio.eclipse.docker.distribution.model.DockerHubAuth;
 import org.wso2.developerstudio.eclipse.docker.distribution.utils.CarbonApplicationAndDockerBuilder;
 import org.wso2.developerstudio.eclipse.docker.distribution.utils.DockerProjectConstants;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
@@ -105,6 +113,7 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
     private IFile pomFileRes;
     private File pomFile;
     private MavenProject parentPrj;
+    private String containerType;
 
     private FormToolkit toolkit;
     private ScrolledForm form;
@@ -140,10 +149,12 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
 
     public DistProjectEditorPage(String id, String title) {
         super(id, title);
+        readPropertiesFile();
     }
 
     public DistProjectEditorPage(FormEditor editor, String id, String title) {
         super(editor, id, title);
+        readPropertiesFile();
     }
 
     public void initContent() throws Exception {
@@ -725,15 +736,34 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
             exportAction = new Action("Create Docker Image",
                     ImageDescriptor.createFromImage(SWTResourceManager.getImage(this.getClass(), "/icons/car.png"))) {
                 public void run() {
-                    exportDockerImage();
+                    DockerHubAuth newConfiguration = null;
+                    if (getContainerType().equals(DockerProjectConstants.KUBERNETES_CONTAINER)) {
+                        newConfiguration = new DockerHubAuth();
+                        DockerHubLoginWizard wizard = new DockerHubLoginWizard(newConfiguration);
+                        IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+                        wizard.init(PlatformUI.getWorkbench(), null);
+                        CustomWizardDialog headerWizardDialog = new CustomWizardDialog(window.getShell(), wizard);
+                        headerWizardDialog.setHelpAvailable(false);
+                        headerWizardDialog.setPageSize(580, 30);
+                        headerWizardDialog.open();
+
+                        if (newConfiguration.getAuthEmail() != null && newConfiguration.getAuthUsername() != null
+                                && newConfiguration.getAuthPassword() != null) {
+                            newConfiguration.setKubernetesProject(true);
+                            exportDockerImage(newConfiguration);
+                            exportAction.setToolTipText("Create Docker Image and Push");
+                        }
+                    } else {
+                        exportDockerImage(newConfiguration);
+                        exportAction.setToolTipText("Create Docker Image");
+                    }
                 };
             };
-            exportAction.setToolTipText("Create Docker Image");
         }
         return exportAction;
     }
 
-    public void exportDockerImage() {
+    public void exportDockerImage(DockerHubAuth newConfiguration) {
         MessageBox exportMsg = new MessageBox(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
                 SWT.ICON_INFORMATION);
         exportMsg.setText("WSO2 Docker image exporter");
@@ -769,7 +799,7 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
             }
 
             CarbonApplicationAndDockerBuilder carbonApplicationBuilder = new CarbonApplicationAndDockerBuilder(
-                    dependencyProjectNames, cappFolderLocation, rootFolderLocation, repository, tag);
+                    dependencyProjectNames, cappFolderLocation, rootFolderLocation, repository, tag, newConfiguration);
             carbonApplicationBuilder.schedule();
 
             if (isDirty()) {
@@ -825,6 +855,41 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
                 });
             }
         }).start();
+    }
+
+    /*
+     * Reads the config.properties file in the project root get the project type
+     * from it
+     */
+    private void readPropertiesFile() {
+        // read properties file and check the type of the container
+        IProject project = ((IFileEditorInput) (getEditor().getEditorInput())).getFile().getProject();
+        IFile propertiesFile = project.getFile(DockerProjectConstants.KUBE_PROPERTIES_FILE_NAME);
+
+        String filePath = propertiesFile.getLocation().toOSString();
+        File propFile = new File(filePath);
+        if (propFile.exists()) {
+            try (InputStream input = new FileInputStream(filePath)) {
+                Properties prop = new Properties();
+                prop.load(input);
+
+                // get the property value and print it out
+                if (prop.getProperty(DockerProjectConstants.CONTAINER_TYPE_PARAM) != null
+                        && prop.getProperty(DockerProjectConstants.CONTAINER_TYPE_PARAM)
+                                .equals(DockerProjectConstants.KUBERNETES_CONTAINER)) {
+                    setContainerType(prop.getProperty(DockerProjectConstants.CONTAINER_TYPE_PARAM));
+                } else {
+                    setContainerType(DockerProjectConstants.DOCKER_CONTAINER);
+                }
+            } catch (IOException e) {
+                setContainerType(DockerProjectConstants.DOCKER_CONTAINER);
+                log.error("Error in converting properties file to string ", e);
+            }
+        } else {
+            setContainerType(DockerProjectConstants.DOCKER_CONTAINER);
+        }
+
+        propertiesFile.getProject();
     }
 
     public void setDependencyList(Map<String, Dependency> dependencyList) {
@@ -984,6 +1049,14 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
         } catch (CoreException e) {
             log.error("event is failed to capture", e);
         }
+    }
+
+    public String getContainerType() {
+        return containerType;
+    }
+
+    public void setContainerType(String containerType) {
+        this.containerType = containerType;
     }
 
 }

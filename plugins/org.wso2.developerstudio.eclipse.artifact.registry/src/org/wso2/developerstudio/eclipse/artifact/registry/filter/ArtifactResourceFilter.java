@@ -13,9 +13,10 @@ public class ArtifactResourceFilter extends ViewerFilter{
 		if (element instanceof IFile) {
 
 			IFile file = (IFile) element;
-			if (file.getName().equals("artifact.xml") && file.getParent() instanceof IProject) {
+			if (file.getName().equals("artifact.xml") && file.getParent() instanceof IProject
+					|| file.getName().equals("config.properties") && file.getParent() instanceof IProject) {
 				return false;
-			}
+			} 
 		}
 
 		return true;

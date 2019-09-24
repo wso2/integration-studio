@@ -13,8 +13,6 @@ import org.eclipse.emf.common.util.Enumerator;
 
 import org.eclipse.emf.ecore.EObject;
 
-import org.eclipse.emf.ecore.util.EcoreAdapterFactory;
-
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
@@ -56,7 +54,7 @@ import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.jface.window.Window;
 
 import org.eclipse.swt.SWT;
-
+import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
@@ -79,9 +77,8 @@ import org.eclipse.swt.widgets.Text;
 
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
-import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-import org.wso2.developerstudio.eclipse.gmf.esb.AggregateSequenceType;
+import org.wso2.developerstudio.eclipse.esb.synapse.unit.test.component.SyntaxHighlightTextBox;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
@@ -110,7 +107,7 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	protected EMFComboViewer scriptType;
 	protected EMFComboViewer scriptLanguage;
 	protected Text mediateFunction;
-	protected Text scriptBody;
+	protected StyledText scriptBody;
 	protected EMFComboViewer keyType;
 	protected ReferencesTable scriptKeys;
 	protected List<ViewerFilter> scriptKeysBusinessFilters = new ArrayList<ViewerFilter>();
@@ -566,7 +563,8 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
      */
 	protected Composite createScriptBodyText(FormToolkit widgetFactory, Composite parent) {
 		Control scriptBodyLabel = createDescription(parent, EsbViewsRepository.ScriptMediator.Properties.scriptBody, EsbMessages.ScriptMediatorPropertiesEditionPart_ScriptBodyLabel);
-		scriptBody = widgetFactory.createText(parent, "", SWT.MULTI | SWT.BORDER | SWT.WRAP | SWT.V_SCROLL);
+		SyntaxHighlightTextBox syntaxStyler = new SyntaxHighlightTextBox();
+		scriptBody = syntaxStyler.getStyledTextBox(parent, SWT.MULTI | SWT.BORDER | SWT.WRAP | SWT.V_SCROLL);
 		scriptBody.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData scriptBodyData = new GridData(GridData.FILL_HORIZONTAL);
@@ -609,12 +607,32 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 				}
 			}
 		});
+		
+		scriptBody.addKeyListener(new KeyListener() {
+            
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+					if (propertiesEditionComponent != null) {
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+								ScriptMediatorPropertiesEditionPartForm.this, null,
+								PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_GAINED, null, null));
+					}
+				}
+			}
+            
+			@Override
+			public void keyPressed(KeyEvent e) {
+			}
+            
+		});
 
 		EditingUtils.setID(scriptBody, EsbViewsRepository.ScriptMediator.Properties.scriptBody);
 		EditingUtils.setEEFtype(scriptBody, "eef::Text"); //$NON-NLS-1$
 		Control scriptBodyHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.ScriptMediator.Properties.scriptBody, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createScriptBodyText
 		scriptBodyElements = new Control[] { scriptBodyLabel, scriptBody, scriptBodyHelp };
+		syntaxStyler.chooseSyntaxHighlighter(scriptBody.getText());
 		// End of user code
 		return parent;
 	}

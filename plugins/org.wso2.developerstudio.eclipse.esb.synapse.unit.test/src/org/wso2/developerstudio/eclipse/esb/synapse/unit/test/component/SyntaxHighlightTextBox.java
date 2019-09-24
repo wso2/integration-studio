@@ -29,6 +29,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Layout;
 import org.wso2.developerstudio.eclipse.esb.synapse.unit.test.constant.Constants;
+import org.wso2.developerstudio.eclipse.esb.synapse.unit.test.utils.JavaScriptLineStyler;
 import org.wso2.developerstudio.eclipse.esb.synapse.unit.test.utils.JsonLineStyler;
 import org.wso2.developerstudio.eclipse.esb.synapse.unit.test.utils.XmlRegion;
 import org.wso2.developerstudio.eclipse.esb.synapse.unit.test.utils.XmlRegionAnalyzer;
@@ -39,6 +40,7 @@ import org.wso2.developerstudio.eclipse.esb.synapse.unit.test.utils.XmlRegionAna
 public class SyntaxHighlightTextBox extends Layout {
     private StyledText styledTextInputPayload;
     private JsonLineStyler jsonStyler;
+    private JavaScriptLineStyler javaScriptStyler;
 
     /**
      * Method of creating styled box.
@@ -49,6 +51,20 @@ public class SyntaxHighlightTextBox extends Layout {
      */
     public StyledText getStyledTextBox(Composite parent) {
         SourceViewer sourceViewer = new SourceViewer(parent, null, SWT.MULTI | SWT.BORDER | SWT.V_SCROLL | SWT.WRAP);
+        styledTextInputPayload = sourceViewer.getTextWidget();
+
+        return styledTextInputPayload;
+    }
+    
+    /**
+     * Method of creating styled box.
+     * 
+     * @param parent
+     *            Composite layout
+     * @return StyledText widget
+     */
+    public StyledText getStyledTextBox(Composite parent, int styles) {
+        SourceViewer sourceViewer = new SourceViewer(parent, null, styles);
         styledTextInputPayload = sourceViewer.getTextWidget();
 
         return styledTextInputPayload;
@@ -86,6 +102,20 @@ public class SyntaxHighlightTextBox extends Layout {
         }
 
         styledTextInputPayload.setStyleRanges(array);
+    }
+    
+    /**
+     * Method of highlighting JavaScript texts.
+     * 
+     * @param inputPayload
+     *            JavaScript text
+     */
+    public void highlightJavaScript(String inputPayload) {
+        if (javaScriptStyler == null) {
+        	javaScriptStyler = new JavaScriptLineStyler();
+        }
+
+        styledTextInputPayload.addLineStyleListener(javaScriptStyler);
     }
 
     /**
@@ -154,11 +184,18 @@ public class SyntaxHighlightTextBox extends Layout {
             if (jsonStyler != null) {
                 styledTextInputPayload.removeLineStyleListener(jsonStyler);
             }
+            if (javaScriptStyler != null) {
+                styledTextInputPayload.removeLineStyleListener(javaScriptStyler);
+            }
             highlightXml(inputPayload);
         } else {
             if (jsonStyler != null) {
                 styledTextInputPayload.removeLineStyleListener(jsonStyler);
             }
+            if (javaScriptStyler != null) {
+                styledTextInputPayload.removeLineStyleListener(javaScriptStyler);
+            }
+            highlightJavaScript(inputPayload);
         }
     }
 

@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
-	<extension point="org.eclipse.jdt.ui.classpathContainerPage">
-		<classpathContainerPage id=""
-			name="WSO2 Classpath Libraries"
-			class="org.wso2.developerstudio.eclipse.esb.libraries.ui.wizard.WSO2LibraryWizardPage" />
-	</extension>
     <extension point="org.wso2.developerstudio.libraries.libraryprovider">
 		<category id="org.wso2.developerstudio.eclipse.libraries.category.axis2"
 			name="Axis2">

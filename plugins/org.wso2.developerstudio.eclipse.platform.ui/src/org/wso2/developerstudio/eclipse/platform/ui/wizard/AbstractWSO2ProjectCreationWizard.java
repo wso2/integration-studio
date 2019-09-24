@@ -94,7 +94,9 @@ public abstract class AbstractWSO2ProjectCreationWizard extends Wizard implement
 	protected final static String JDT_PROJECT_NATURE = "org.eclipse.jdt.core.javanature";
 	private Map<String, Text> map = new HashMap<String, Text>();
 	private IPreferencesService preferencesService = Platform.getPreferencesService();
-
+	private ProjectOptionsDataPage mainWizardPage;
+	private MavenDetailsPage mavenDetailPage;
+	
 	public void setMap(String label, Text txt) {
 		map.put(label, txt);
 	}
@@ -107,23 +109,24 @@ public abstract class AbstractWSO2ProjectCreationWizard extends Wizard implement
 		URL resource = getWizardManifest();
 		try {
 			ProjectWizardSettings settings = new ProjectWizardSettings(resource.openStream(), configElement);
-
 			if (settings.getProjectOptions().size() == 1) {
 				getModel().setSelectedOption(settings.getProjectOptions().get(0).getId());
 			} else {
 				addPage(new ProjectOptionsPage(settings, getModel()));
 			}
-			addPage(new ProjectOptionsDataPage(settings, getModel(), getCurrentSelection(),
-			                                   isRequireProjectLocationSection(), isRequiredWorkingSet(),
-			                                   isRequiredWorkspaceLocation()));
+			
+			mainWizardPage = new ProjectOptionsDataPage(settings, getModel(), getCurrentSelection(),
+					isRequireProjectLocationSection(), isRequiredWorkingSet(), isRequiredWorkspaceLocation());
+			mavenDetailPage = new MavenDetailsPage(getModel());
+			
+			addPage(mainWizardPage);
 			if (isCustomPageRequired()) {
 				addPage(getCustomPage());
 			}
 
 			if (isProjectWizard()) {
-				addPage(new MavenDetailsPage(getModel()));
+				addPage(mavenDetailPage);
 			}
-
 		} catch (Exception e) {
 			log.error("error adding pages", e);
 		}
@@ -548,5 +551,13 @@ public abstract class AbstractWSO2ProjectCreationWizard extends Wizard implement
 			log.warn("Project list cannot be sorted", e);
 		}
 		return projects;
+	}
+	
+	public MavenDetailsPage getMavenDetailPage() {
+		return mavenDetailPage;
+	}
+
+	public ProjectOptionsDataPage getMainWizardPage() {
+		return mainWizardPage;
 	}
 }

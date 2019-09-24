@@ -16,12 +16,22 @@
 package org.wso2.developerstudio.eclipse.platform.ui.utils;
 
 public class PlatformUIConstants {
-    public static final String NO_TARGET_REPO_MESSAGE = "Specify a target repository for the Docker project";
+    public static final String NO_TARGET_REPO_MESSAGE = "Specify a target repository for the Docker container project";
     public static final String INVALID_TARGET_REPO_MESSAGE = "Target repository is invalid. Please correct the repository name";
     public static final String NO_TARGET_TAG_MESSAGE = "Specify a target tag for the Docker project";
     public static final String INVALID_TARGET_TAG_MESSAGE = "Target tag is invalid. Please correct the tag name";
-    public static final String NO_REMOTE_REPOSITORY_MESSAGE = "Specify a remote repository for the Docker project";
-    public static final String NO_REMOTE_TAG_MESSAGE = "Specify a remote tag for the Docker project";
+    public static final String NO_REMOTE_REPOSITORY_MESSAGE = "Specify a remote repository for the Docker container project";
+    public static final String NO_REMOTE_TAG_MESSAGE = "Specify a remote tag for the Docker container project";
+    public static final String NO_TARGET_TAG_ERROR = "Specify a target tag for the Docker container project";
+    public static final String NO_CONTAINER_NAME = "Specify a name for the Kubernetes container";
+    public static final String NO_KUBE_REMOTE_REPOSITORY = "Specify a remote repository for the Kubernetes container";
+    public static final String NO_KUBE_REMOTE_TAG = "Specify a remote tag for the Kubernetes container";
+    public static final String NO_KUBE_TARGET_REPOSITORY = "Specify a target repository for the Kubernetes container";
+    public static final String INVALID_REPLICA_COUNT = "Specify number of replicas need for the Kubernetes cluster";
+    public static final String INVALID_REPLICA_COUNT_NOT_AS_INT = "Specify a integer value for replicas which need for the Kubernetes cluster";
+    public static final String INVALID_PORT = "Specify valid port to expose the Kubernetes container";
+    public static final String INVALID_PORT_TYPE = "Specify valid port in integer to expose the Kubernetes container";
+    public static final String INVALID_PORT_RANGE = "Specify valid port range to expose the Kubernetes container";
     public static final String DOCKER_REPO_REGEX = "(([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]|"
             + "[a-zA-Z0-9])([.]([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]|[a-zA-Z0-9]))*(:[0-9]+\\/))?"
             + "((([a-z0-9]+)((__|[._]|[-]+)([a-z0-9]+))*)(\\/([a-z0-9]+)((__|[._]|[-]+)([a-z0-9]+))*)*)";

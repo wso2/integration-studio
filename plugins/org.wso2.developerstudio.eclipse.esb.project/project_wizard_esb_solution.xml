@@ -41,7 +41,7 @@
 				
 			<data modelProperty="solution.docker.choice" type="choice"
 				fieldController="org.wso2.developerstudio.eclipse.esb.project.controller.ESBSolutionProjectFieldController"
-				group="solution.projects.group">Create Docker Image Exporter Project</data>
+				group="solution.projects.group">Create Docker/Kubernetes Exporter Project</data>
 			
 			<data modelProperty="solution.docker" type="string"
 				fieldController="org.wso2.developerstudio.eclipse.esb.project.controller.ESBSolutionProjectFieldController"

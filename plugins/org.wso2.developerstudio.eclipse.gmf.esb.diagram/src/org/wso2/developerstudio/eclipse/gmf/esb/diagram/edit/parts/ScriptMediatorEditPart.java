@@ -50,6 +50,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.jaxen.JaxenException;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
+import org.wso2.developerstudio.eclipse.gmf.esb.ScriptType;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EsbGraphicalShapeWithLabel;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedBorderItemLocator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedSizedAbstractMediator;
@@ -401,6 +402,13 @@ public class ScriptMediatorEditPart extends FixedSizedAbstractMediator {
             if (model.getElement() instanceof ScriptMediatorImpl) {
                 ScriptMediatorImpl scriptMediatorDataModel = (ScriptMediatorImpl) model.getElement();
                 try {
+                	
+                    ScriptType scriptType = scriptMediatorDataModel.getScriptType();
+                    int scriptTypeValue = scriptType.getValue();
+                    
+                    if (scriptTypeValue == 0 && scriptMediatorDataModel.getScriptBody() == null) {
+                    	return;
+                    }
                     org.apache.synapse.mediators.bsf.ScriptMediator scriptMediator = ScriptMediatorTransformer
                             .createScriptMediator((EsbNode) scriptMediatorDataModel, true);
 

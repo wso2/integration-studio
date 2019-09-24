@@ -34,6 +34,7 @@ Import-Package: org.apache.commons.io;version="2.0.0.wso2v1",
  org.wso2.carbon.core.util,
  org.wso2.carbon.tools.converter,
  org.wso2.developerstudio.eclipse.esb.project.artifact,
+ org.wso2.developerstudio.eclipse.esb.synapse.unit.test.component,
  org.wso2.developerstudio.eclipse.gmf.esb.persistence,
  org.wso2.developerstudio.eclipse.logging.core,
  org.wso2.developerstudio.esb.form.editors.article.providers

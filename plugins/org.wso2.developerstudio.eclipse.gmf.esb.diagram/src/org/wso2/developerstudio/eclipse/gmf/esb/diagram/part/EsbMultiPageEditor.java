@@ -182,7 +182,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
     
     private static final String MOCK_SERVICE = "MOCK_SERVICE";
     
-    private static final String SYNAPSE_UNIT_TEST = "MOCK_SERVICE";
+    private static final String SYNAPSE_UNIT_TEST = "SYNAPSE_UNIT_TEST";
 
     private static final String CONFIG_ERROR = "org.wso2.developerstudio.eclipse.gmf.esb.diagram.synapseerror";
 

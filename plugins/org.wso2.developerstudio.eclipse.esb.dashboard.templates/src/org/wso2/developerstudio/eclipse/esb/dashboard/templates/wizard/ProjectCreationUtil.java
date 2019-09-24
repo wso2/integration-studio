@@ -63,6 +63,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.regex.Pattern;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
@@ -197,6 +198,9 @@ public class ProjectCreationUtil {
             IFile proxyServiceFile = location.getFile(new Path(artifactName + ".xml"));
             File destFile = proxyServiceFile.getLocation().toFile();
             FileUtils.copy(importFile, destFile);
+            
+            //copying test file for the given artifact name and type
+            copyArtifactTestFile(esbProject, sampleName,artifactName,type);
 
             String relativePath = FileUtils.getRelativePath(location.getProject().getLocation().toFile(),
                     new File(location.getLocation().toFile(), artifactName + ".xml"))
@@ -229,6 +233,33 @@ public class ProjectCreationUtil {
             // TODO 
         }
 
+    }
+    
+    /**
+     * Copy test artifact file to the test directory if exists.
+     *
+     * @param esbProject project data
+     * @param sampleName name of the sample
+     * @param artifactName name of the artifact
+     * @param type  the containing folder name
+     */
+    private static void copyArtifactTestFile(IProject esbProject, String sampleName, String artifactName, String type) {
+        IContainer testLocation = esbProject.getFolder("test" + File.separator);
+        
+        try {
+            File importTestFile = getResourceTestFile(sampleName, artifactName, type);
+            
+            if (importTestFile != null) {
+                String testFileSource = FileUtils.getContentAsString(importTestFile);
+                testFileSource = testFileSource.replace("${project.name}", esbProject.getName());
+                FileUtils.writeContent(importTestFile, testFileSource);
+                IFile testCaseFile = testLocation.getFile(new Path(artifactName + "Test.xml"));
+                File destTestFile = testCaseFile.getLocation().toFile();
+                FileUtils.copy(importTestFile, destTestFile);
+            }
+        } catch (IOException e) {
+            log.error("Error while copying sample test file", e);
+        }
     }
 
     /*WSO2_ESB_ENDPOINT_VERSION="2.1.0";
@@ -331,6 +362,22 @@ public class ProjectCreationUtil {
 
         String fileLocation = "Samples" + File.separator + samplename + File.separator + "src" + File.separator + "main"
                 + File.separator + "synapse-config" + File.separator + type + File.separator + name + ".xml";
+
+        return ResourceUtils.getInstance().getResourceFile(fileLocation);
+    }
+    
+    /**
+     * Get test artifact file from the Samples directory.
+     *
+     * @param sampleName name of the sample
+     * @param name name of the artifact
+     * @param type  the containing folder name
+     * @return file which has the unit test artifacts
+     */
+    protected static File getResourceTestFile(String samplename, String name, String type) throws IOException {
+
+        String fileLocation = "Samples" + File.separator + samplename + File.separator + "test" 
+                + File.separator + name + "Test.xml";
 
         return ResourceUtils.getInstance().getResourceFile(fileLocation);
     }

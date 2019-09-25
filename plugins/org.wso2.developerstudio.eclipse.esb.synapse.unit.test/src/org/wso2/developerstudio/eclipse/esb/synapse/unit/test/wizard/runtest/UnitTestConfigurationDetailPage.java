@@ -350,7 +350,7 @@ public class UnitTestConfigurationDetailPage extends WizardPage {
 
         String microesbPath = "runtime" + File.separator + "microesb";
         // static path for DeveloperStudio for MAC when it is on Application folder
-        String eiToolingHomeForMac = "/Applications/Eclipse.app/Contents/Eclipse";
+        String eiToolingHomeForMac = "/Applications/IntegrationStudio.app/Contents/Eclipse";
 
         String windowsPack = File.separator + "bin" + File.separator + "micro-integrator.bat";
         String LinuxMacPack = File.separator + "bin" + File.separator + "micro-integrator.sh";

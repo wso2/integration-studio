@@ -740,11 +740,11 @@ public class ProjectCreationUtil {
     private static void createSynapseUnitTestPlugin(File pomFile) {
         try {
             MavenProject mavenProject = MavenUtils.getMavenProject(pomFile);
-            Plugin unitTestPlugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2",
-                    "synapse-unit-test-maven-plugin", "1.0-SNAPSHOT", false);
+            Plugin unitTestPlugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven",
+                    "synapse-unit-test-maven-plugin", "5.2.8", false);
 
             PluginExecution pluginExecution = new PluginExecution();
-            pluginExecution.addGoal("SynapseUnitTest");
+            pluginExecution.addGoal("synapse-unit-test");
             pluginExecution.setPhase("test");
             pluginExecution.setId("synapse-unit-test");
             unitTestPlugin.addExecution(pluginExecution);

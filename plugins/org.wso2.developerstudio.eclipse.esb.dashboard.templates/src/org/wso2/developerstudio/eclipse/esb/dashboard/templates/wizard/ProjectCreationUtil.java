@@ -33,8 +33,10 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.swt.widgets.Shell;
@@ -46,6 +48,7 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.WorkbenchException;
 import org.eclipse.ui.ide.IDE;
 import org.eclipse.ui.part.ISetSelectionTarget;
+import org.osgi.framework.Bundle;
 import org.wso2.developerstudio.eclipse.esb.core.ESBMavenConstants;
 import org.wso2.developerstudio.eclipse.esb.dashboard.templates.Activator;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBArtifact;
@@ -378,7 +381,16 @@ public class ProjectCreationUtil {
         String fileLocation = "Samples" + File.separator + samplename + File.separator + "test" + File.separator + name
                 + "Test.xml";
 
-        return ResourceUtils.getInstance().getResourceFile(fileLocation);
+        Bundle bundle = Platform.getBundle(org.wso2.developerstudio.eclipse.esb.dashboard.templates.Activator.PLUGIN_ID);
+        URL resourceURL = FileLocator.find(bundle, new Path(fileLocation), null);
+        
+        File destinationFile = null;
+        if (resourceURL != null) {
+            destinationFile = FileUtils.createTempFile();
+            FileUtils.createFile(destinationFile, resourceURL.openStream());
+        }
+        
+        return destinationFile;
     }
 
     private static ESBArtifact createArtifact(String name, String groupId, String version, String path, String type) {

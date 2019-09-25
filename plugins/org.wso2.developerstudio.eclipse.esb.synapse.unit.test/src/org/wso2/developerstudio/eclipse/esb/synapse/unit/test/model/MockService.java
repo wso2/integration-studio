@@ -71,6 +71,10 @@ public class MockService {
     public MockServiceResource getMockResource(String key) {
         return resources.get(key);
     }
+    
+    public void clearAllMockResources() {
+        this.resources.clear();
+    }
 
     public void addMockResources(String key, MockServiceResource resource) {
         this.resources.put(key, resource);

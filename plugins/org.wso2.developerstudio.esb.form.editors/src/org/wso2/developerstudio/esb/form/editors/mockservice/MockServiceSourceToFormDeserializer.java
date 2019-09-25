@@ -115,6 +115,7 @@ public class MockServiceSourceToFormDeserializer {
             OMElement importedXMLFile = AXIOMUtil.stringToOM(mockSource);
 
             MockServiceFormPage formPage = (MockServiceFormPage) formEditorPage;
+            formPage.getResourceDataHolder().clearAllMockResources();
             processAndUpdateMockServiceForm(formPage, importedXMLFile, isInitial);
 
         } catch (IOException | XMLStreamException e) {

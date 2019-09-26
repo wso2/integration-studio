@@ -291,6 +291,9 @@ public class UnitTestConfigurationWizard extends Wizard implements IExportWizard
             builder.append(" -DtestServerType=local");
             builder.append(" -DtestServerPort=" + serverPort);
             builder.append(" -DtestServerPath=" + serverPath);
+            
+            //clear embedded MI pack carbonapps folder before to run the test
+            clearCarbonAppsFolder();
         } else {
             String serverHost = unitTestConfigDetailPage.getServerHosth();
             String serverPort = unitTestConfigDetailPage.getRemoteServerPort();
@@ -305,6 +308,41 @@ public class UnitTestConfigurationWizard extends Wizard implements IExportWizard
         }
 
         return builder.toString();
+    }
+    
+    /**
+     * Clear the carbonapps folder of the embedded MI pack.
+     */
+    private void clearCarbonAppsFolder() {
+        String microesbPath = "runtime" + File.separator + "microesb";
+        String carbonAppsFolderPath = File.separator + "repository" + File.separator + "deployment" + File.separator
+                + "server" + File.separator + "carbonapps";
+        String OS = System.getProperty("os.name", "generic").toLowerCase(Locale.ENGLISH);
+        String microInteratorPath;
+
+        if (OS.indexOf("windows") >= 0) {
+            java.nio.file.Path path = Paths.get("");
+            microInteratorPath = (path).toAbsolutePath().toString() + File.separator + microesbPath;
+        } else {
+            // check if EI Tooling is in Application folder for MAC
+            File macOSEIToolingAppFile = new File(TOOLING_PATH_MAC);
+            if (macOSEIToolingAppFile.exists()) {
+                microInteratorPath = TOOLING_PATH_MAC + File.separator + microesbPath;
+            } else {
+                java.nio.file.Path path = Paths.get("");
+                microInteratorPath = (path).toAbsolutePath().toString() + File.separator + microesbPath;
+            }
+        }
+
+        // check carbonapps contains any files
+        File carbonAppsFolder = new File(microInteratorPath + carbonAppsFolderPath);
+        if (carbonAppsFolder.listFiles().length > 0) {
+            try {
+                FileUtils.cleanDirectory(carbonAppsFolder);
+            } catch (IOException e) {
+                log.error("Error while clearing the carbonapps folder in MI", e);
+            }
+        }
     }
 
     public void addPages() {

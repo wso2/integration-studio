@@ -65,6 +65,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.regex.Pattern;
 import java.util.zip.ZipEntry;
@@ -80,6 +82,9 @@ public class ProjectCreationUtil {
     private static String MAVEN_CAR_VERSION = "2.1.1";
     private static String MAVEN_CAR_DEPLOY_VERSION = "1.1.1";
     private static String version = "1.0.0";
+    private static String TEST_FOLDER = "test";
+    private static String RESOURCES_FOLDER = "resources";
+    private static String MOCKSERVICES_FOLDER = "mock-services";
 
     public static IProject createProject(String containerName, String natureID) throws CoreException {
         IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
@@ -246,7 +251,7 @@ public class ProjectCreationUtil {
      * @param type the containing folder name
      */
     private static void copyArtifactTestFile(IProject esbProject, String sampleName, String artifactName, String type) {
-        IContainer testLocation = esbProject.getFolder("test" + File.separator);
+        IContainer testLocation = esbProject.getFolder(TEST_FOLDER + File.separator);
 
         try {
             File importTestFile = getResourceTestFile(sampleName, artifactName, type);
@@ -259,8 +264,47 @@ public class ProjectCreationUtil {
                 File destTestFile = testCaseFile.getLocation().toFile();
                 FileUtils.copy(importTestFile, destTestFile);
             }
+            
+            //copy mock service files
+            copyMockServiceFiles(esbProject, sampleName, artifactName, type);
         } catch (IOException e) {
             log.error("Error while copying sample test file", e);
+        }
+    }
+    
+    /**
+     * Copy mock service files to the test/resources/mock-services directory if exists.
+     *
+     * @param esbProject project data
+     * @param sampleName name of the sample
+     * @param artifactName name of the artifact
+     * @param type the containing folder name
+     */
+    private static void copyMockServiceFiles(IProject esbProject, String sampleName, String artifactName, String type) {
+        IContainer mockServiceLocation = esbProject.getFolder(TEST_FOLDER + File.separator + RESOURCES_FOLDER
+                + File.separator + MOCKSERVICES_FOLDER + File.separator);
+
+        try {
+            String folderLocation = "Samples" + File.separator + sampleName + File.separator + TEST_FOLDER
+                    + File.separator + RESOURCES_FOLDER + File.separator + MOCKSERVICES_FOLDER;
+            Bundle bundle = Platform
+                    .getBundle(org.wso2.developerstudio.eclipse.esb.dashboard.templates.Activator.PLUGIN_ID);
+            URL resourceURL = FileLocator.find(bundle, new Path(folderLocation), null);
+            if (resourceURL != null) {
+                URL resolvedFileURL = FileLocator.toFileURL(resourceURL);
+                URI resolvedURI = new URI(resolvedFileURL.getProtocol(), resolvedFileURL.getPath(), null);
+                File mockServicesFolder = new File(resolvedURI);
+
+                if (mockServicesFolder != null) {
+                    for (File fileEntry : mockServicesFolder.listFiles()) {
+                        IFile testCaseFile = mockServiceLocation.getFile(new Path(fileEntry.getName()));
+                        File destTestFile = testCaseFile.getLocation().toFile();
+                        FileUtils.copy(fileEntry, destTestFile);
+                    }
+                }
+            }
+        } catch (URISyntaxException | IOException e) {
+            log.error("Error while copying mock service files", e);
         }
     }
 
@@ -378,7 +422,7 @@ public class ProjectCreationUtil {
      */
     protected static File getResourceTestFile(String samplename, String name, String type) throws IOException {
 
-        String fileLocation = "Samples" + File.separator + samplename + File.separator + "test" + File.separator + name
+        String fileLocation = "Samples" + File.separator + samplename + File.separator + TEST_FOLDER + File.separator + name
                 + "Test.xml";
 
         Bundle bundle = Platform.getBundle(org.wso2.developerstudio.eclipse.esb.dashboard.templates.Activator.PLUGIN_ID);

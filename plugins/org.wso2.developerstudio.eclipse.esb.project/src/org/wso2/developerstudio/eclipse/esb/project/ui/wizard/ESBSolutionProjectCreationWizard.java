@@ -171,6 +171,9 @@ public class ESBSolutionProjectCreationWizard extends AbstractWSO2ProjectCreatio
                 dockerModel.setDockerRemoteTag(esbSolutionProjectModel.getDockerRemoteTag());
                 dockerModel.setDockerTargetRepository(esbSolutionProjectModel.getDockerTargetRepository());
                 dockerModel.setDockerTargetTag(esbSolutionProjectModel.getDockerTargetTag());
+                dockerModel.setContainerExporterProjectChecked(
+                        esbSolutionProjectModel.isContainerExporterProjectChecked());
+                dockerModel.setDockerContainerSelected(esbSolutionProjectModel.isDockerContainerSelected());
             } catch (ObserverFailedException e1) {
                 log.error("Failed to set project name : " + dockerProjectName, e1);
             }

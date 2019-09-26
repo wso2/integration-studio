@@ -1,10 +1,10 @@
 <unit-test>
     <artifacts>
         <test-artifact>
-            <artifact>/MessageFiltering/src/main/synapse-config/api/PhoneVerifyAPI.xml</artifact>
+            <artifact>/${project.name}/src/main/synapse-config/api/PhoneVerifyAPI.xml</artifact>
         </test-artifact>
         <supportive-artifacts>
-            <artifact>/MessageFiltering/src/main/synapse-config/endpoints/PhoneVerifyEP.xml</artifact>
+            <artifact>/${project.name}/src/main/synapse-config/endpoints/PhoneVerifyEP.xml</artifact>
         </supportive-artifacts>
         <registry-resources/>
         <connector-resources/>

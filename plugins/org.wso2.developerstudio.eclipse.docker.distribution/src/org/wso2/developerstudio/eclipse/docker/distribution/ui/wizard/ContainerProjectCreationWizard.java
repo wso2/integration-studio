@@ -126,6 +126,9 @@ public class ContainerProjectCreationWizard extends AbstractWSO2ProjectCreationW
             stringBuilder.append(System.lineSeparator());
             stringBuilder.append("#COPY " + DockerProjectConstants.LIBS_FOLDER + "/*.jar "
                     + DockerProjectConstants.LIBS_FOLDER_LOCATION);
+            stringBuilder.append(System.lineSeparator());
+            stringBuilder.append("#COPY " + DockerProjectConstants.CONF_FOLDER + "/* "
+                    + DockerProjectConstants.CONF_FOLDER_LOCATION);
 
             if (newFile.createNewFile()) {
                 InputStream inputStream = new ByteArrayInputStream(
@@ -231,9 +234,10 @@ public class ContainerProjectCreationWizard extends AbstractWSO2ProjectCreationW
         	
             project = createNewProject();
 
-            // Creating CarbonApps and Libs folders
+            // Creating CarbonApps and Libs and Conf folders
             createFolder(DockerProjectConstants.CARBON_APP_FOLDER);
             createFolder(DockerProjectConstants.LIBS_FOLDER);
+            createFolder(DockerProjectConstants.CONF_FOLDER);
 
             // Copy docker file
             copyDockerFile();

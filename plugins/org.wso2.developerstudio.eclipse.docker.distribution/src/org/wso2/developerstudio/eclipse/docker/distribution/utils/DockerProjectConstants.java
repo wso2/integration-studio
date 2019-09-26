@@ -44,8 +44,10 @@ public class DockerProjectConstants extends NLS {
 
     public static String CARBON_APP_FOLDER;
     public static String LIBS_FOLDER;
+    public static String CONF_FOLDER;
     public static String CARBON_APP_FOLDER_LOCATION;
     public static String LIBS_FOLDER_LOCATION;
+    public static String CONF_FOLDER_LOCATION;
 
     public static String MAVEN_DEPENDENCY_PLUGIN_VERSION;
     public static String SPOTIFY_DOCKER_PLUGIN_VERSION;

@@ -1,0 +1,63 @@
+<unit-test>
+    <artifacts>
+        <test-artifact>
+            <artifact>/${project.name}/src/main/synapse-config/sequences/TimeoutFailureSeq.xml</artifact>
+        </test-artifact>
+        <supportive-artifacts/>
+        <registry-resources/>
+        <connector-resources/>
+    </artifacts>
+    <test-cases>
+        <test-case name="TimeoutFailureSeq">
+            <input>
+                <properties>
+                    <property name="SYNAPSE_REST_API" value="TimeoutAPI"/>
+                    <property name="ERROR_CODE" value="403"/>
+                    <property name="ERROR_MESSAGE" value="Forbidden"/>
+                    <property name="ERROR_DETAIL" value="User is not permitted to access the resources"/>
+                    <property name="ERROR_EXCEPTION" value="Caused by unauthentic user data"/>
+                </properties>
+            </input>
+            <assertions>
+                <assertEquals>
+                    <actual>$ctx:ERROR_CODE</actual>
+                    <expected><![CDATA[403]]></expected>
+                    <message>Invalid ERROR_CODE value in error handling test case.</message>
+                </assertEquals>
+                <assertEquals>
+                    <actual>$ctx:SYNAPSE_REST_API</actual>
+                    <expected><![CDATA[TimeoutAPI]]></expected>
+                    <message>Invalid SYNAPSE_REST_API value in error handling test case.</message>
+                </assertEquals>
+                <assertEquals>
+                    <actual>$ctx:ERROR_MESSAGE</actual>
+                    <expected><![CDATA[Forbidden]]></expected>
+                    <message>Invalid ERROR_MESSAGE value in error handling test case.</message>
+                </assertEquals>
+                <assertEquals>
+                    <actual>$ctx:ERROR_DETAIL</actual>
+                    <expected><![CDATA[User is not permitted to access the resources]]></expected>
+                    <message>Invalid ERROR_DETAIL value in error handling test case.</message>
+                </assertEquals>
+                <assertEquals>
+                    <actual>$ctx:ERROR_EXCEPTION</actual>
+                    <expected><![CDATA[Caused by unauthentic user data]]></expected>
+                    <message>Invalid ERROR_EXCEPTION value in error handling test case.</message>
+                </assertEquals>
+                <assertEquals>
+                    <actual>$body</actual>
+                    <expected><![CDATA[{
+   "MESSAGE": "An unexpected error occurred.",
+   "REST_API": "TimeoutAPI",
+   "ERROR_CODE": "403",
+   "ERROR_MESSAGE": "Forbidden",
+   "ERROR_DETAIL": "User is not permitted to access the resources",
+   "ERROR_EXCEPTION": "Caused by unauthentic user data"
+}]]></expected>
+                    <message>Invalid payload in error handling test case.</message>
+                </assertEquals>
+            </assertions>
+        </test-case>
+    </test-cases>
+    <mock-services/>
+</unit-test>

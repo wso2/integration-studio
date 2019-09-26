@@ -124,7 +124,7 @@ public class HeaderDetailPage extends WizardPage {
         comboHeaderTags.setItems(ComboItems.getServiceHeaders());
         comboHeaderTags.setLayoutData(fd);
         ComboTypingSuggestUtil.addAutoCompleteFeature(comboHeaderTags);
-        if (!getHeaderName().isEmpty()) {
+        if (getHeaderName() != null && !getHeaderName().isEmpty()) {
             comboHeaderTags.setText(getHeaderName());
         }
 
@@ -162,7 +162,7 @@ public class HeaderDetailPage extends WizardPage {
         comboHeaderValue.setLayoutData(fd);
         comboHeaderValue.setItems(ComboItems.getServiceHeaderValues());
         ComboTypingSuggestUtil.addAutoCompleteFeature(comboHeaderValue);
-        if (!getHeaderValue().isEmpty()) {
+        if (getHeaderValue() != null && !getHeaderValue().isEmpty()) {
             comboHeaderValue.setText(getHeaderValue());
         }
 

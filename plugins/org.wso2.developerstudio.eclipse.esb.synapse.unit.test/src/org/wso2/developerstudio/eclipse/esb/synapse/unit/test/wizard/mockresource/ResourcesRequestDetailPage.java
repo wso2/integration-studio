@@ -489,7 +489,7 @@ public class ResourcesRequestDetailPage extends WizardPage {
 
         for (Map.Entry<String, String> entry : existsRequestHeaders.entrySet()) {
             TableItem item = new TableItem(requestHeaderTable, SWT.NONE);
-            item.setText(0, entry.getValue());
+            item.setText(0, entry.getKey());
             item.setText(1, entry.getValue());
         }
 

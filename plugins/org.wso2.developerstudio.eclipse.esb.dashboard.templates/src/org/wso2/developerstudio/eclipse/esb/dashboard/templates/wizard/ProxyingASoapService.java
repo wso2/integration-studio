@@ -178,6 +178,8 @@ public class ProxyingASoapService extends Wizard implements INewWizard {
         String proxyName = "ProxyForEchoService";
         ProjectCreationUtil
                 .copyArtifact(esbProject, groupId, sampleName, proxyName, esbProjectArtifact, "proxy-services");
+        
+        ProjectCreationUtil.copyArtifact(esbProject, groupId, sampleName, "echo", esbProjectArtifact, "proxy-services");
 
         String endPointName = "EchoSoapEP";
         ProjectCreationUtil

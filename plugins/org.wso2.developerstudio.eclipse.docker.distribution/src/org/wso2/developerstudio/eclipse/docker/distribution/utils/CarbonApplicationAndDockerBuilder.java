@@ -287,7 +287,7 @@ public class CarbonApplicationAndDockerBuilder extends Job {
         }
 
         // pushing the docker image if its a kubernetes project
-        if (configuration.isKubernetesProject()) {
+        if (configuration != null && configuration.isKubernetesProject()) {
             monitor.beginTask("Start push the docker image to the registry", 100);
             monitor.worked(45);
             boolean isPushed = pushDockerImage();

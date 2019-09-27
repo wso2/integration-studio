@@ -85,11 +85,14 @@ public class ProjectCreationUtil {
     private static String TEST_FOLDER = "test";
     private static String RESOURCES_FOLDER = "resources";
     private static String MOCKSERVICES_FOLDER = "mock-services";
+    private static boolean isUnitTestPluginAdded;
 
     public static IProject createProject(String containerName, String natureID) throws CoreException {
         IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
         IProject project = root.getProject(containerName);
         TemplateWizardUtil templateWizardUtil = new TemplateWizardUtil();
+        isUnitTestPluginAdded = false;
+        
         if (project.exists()) {
             templateWizardUtil
                     .throwCoreException(TemplateProjectConstants.THE_PROJECT_EXISTS_IN_THE_WORKSPACE_MESSAGE, null);
@@ -401,7 +404,10 @@ public class ProjectCreationUtil {
         MavenUtils.saveMavenProject(mavenProject, mavenProjectPomLocation);
         
         //Adding Synapse unit testing framework client plugin to the ESB solution project pom file.
-        createSynapseUnitTestPlugin(mavenProjectPomLocation);
+        if (!isUnitTestPluginAdded) {
+            createSynapseUnitTestPlugin(mavenProjectPomLocation);
+            isUnitTestPluginAdded = true;
+        }
     }
 
     protected static File getResourceFile(String samplename, String name, String type) throws IOException {

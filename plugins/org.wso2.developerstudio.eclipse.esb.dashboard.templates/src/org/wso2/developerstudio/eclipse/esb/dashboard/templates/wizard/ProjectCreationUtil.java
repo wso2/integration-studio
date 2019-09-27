@@ -785,7 +785,7 @@ public class ProjectCreationUtil {
         try {
             MavenProject mavenProject = MavenUtils.getMavenProject(pomFile);
             Plugin unitTestPlugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven",
-                    "synapse-unit-test-maven-plugin", "5.2.8", false);
+                    "synapse-unit-test-maven-plugin", "5.2.9", false);
 
             PluginExecution pluginExecution = new PluginExecution();
             pluginExecution.addGoal("synapse-unit-test");

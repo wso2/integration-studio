@@ -1,0 +1,47 @@
+<unit-test>
+    <artifacts>
+        <test-artifact>
+            <artifact>/${project.name}/src/main/synapse-config/proxy-services/EngineerEmployeeService.xml</artifact>
+        </test-artifact>
+        <supportive-artifacts/>
+        <registry-resources>
+            <registry-resource>
+                <file-name>EmployeeToEngineerMappingConfig_inputSchema.json</file-name>
+                <artifact>/${project.name}RegistryResource/EmployeeToEngineerMappingConfig_inputSchema.json</artifact>
+                <registry-path>/_system/governance/datamapper</registry-path>
+                <media-type>text/plain</media-type>
+            </registry-resource>
+            <registry-resource>
+                <file-name>EmployeeToEngineerMappingConfig.dmc</file-name>
+                <artifact>/${project.name}RegistryResource/EmployeeToEngineerMappingConfig.dmc</artifact>
+                <registry-path>/_system/governance/datamapper</registry-path>
+                <media-type>text/plain</media-type>
+            </registry-resource>
+            <registry-resource>
+                <file-name>EmployeeToEngineerMappingConfig_outputSchema.json</file-name>
+                <artifact>/${project.name}RegistryResource/EmployeeToEngineerMappingConfig_outputSchema.json</artifact>
+                <registry-path>/_system/governance/datamapper</registry-path>
+                <media-type>text/plain</media-type>
+            </registry-resource>
+        </registry-resources>
+        <connector-resources/>
+    </artifacts>
+    <test-cases>
+        <test-case name="XmlToJsonMapping">
+            <input>
+                <payload><![CDATA[<ns1:employees xmlns:ns1="http://wso2.employee.info" xmlns:ns2="http://wso2.employee.address"><ns1:employee><ns1:firstname>Mike</ns1:firstname><ns1:lastname>Jhonson</ns1:lastname><ns2:addresses><ns2:address location="home"><ns2:city postalcode="30000">KS</ns2:city><ns2:road>main rd</ns2:road></ns2:address><ns2:address location="office"><ns2:city postalcode="10003">NY</ns2:city><ns2:road>cross street</ns2:road></ns2:address></ns2:addresses></ns1:employee><ns1:employee><ns1:firstname>Patric</ns1:firstname><ns1:lastname>Jane</ns1:lastname><ns2:addresses><ns2:address location="home"><ns2:city postalcode="60000">Melborne</ns2:city><ns2:road>park street</ns2:road></ns2:address><ns2:address location="office"><ns2:city postalcode="10003">NY</ns2:city><ns2:road>cross street</ns2:road></ns2:address></ns2:addresses></ns1:employee><ns1:employee><ns1:firstname>Thelesa</ns1:firstname><ns1:lastname>Lisbon</ns1:lastname><ns2:addresses><ns2:address location="home"><ns2:city postalcode="60000">Madrid</ns2:city><ns2:road>Palace street</ns2:road></ns2:address><ns2:address location="office"><ns2:city postalcode="10003">NY</ns2:city><ns2:road>cross street</ns2:road></ns2:address></ns2:addresses></ns1:employee></ns1:employees>]]></payload>
+                <properties>
+                    <property name="Content-Type" scope="transport" value="application/xml"/>
+                </properties>
+            </input>
+            <assertions>
+                <assertEquals>
+                    <actual>$body</actual>
+                    <expected><![CDATA[{"engineers":{"engineerList":[{"fullname":"Mike Jhonson","addresses":{"address":[{"location":"HOME","city":{"postalcode":30000,"name":"KS"},"road":"main rd"},{"location":"OFFICE","city":{"postalcode":10003,"name":"NY"},"road":"cross street"}]}},{"fullname":"Patric Jane","addresses":{"address":[{"location":"HOME","city":{"postalcode":60000,"name":"Melborne"},"road":"park street"},{"location":"OFFICE","city":{"postalcode":10003,"name":"NY"},"road":"cross street"}]}},{"fullname":"Thelesa Lisbon","addresses":{"address":[{"location":"HOME","city":{"postalcode":60000,"name":"Madrid"},"road":"Palace street"},{"location":"OFFICE","city":{"postalcode":10003,"name":"NY"},"road":"cross street"}]}}]}}]]></expected>
+                    <message>XML to JSON mapping test case failed.</message>
+                </assertEquals>
+            </assertions>
+        </test-case>
+    </test-cases>
+    <mock-services/>
+</unit-test>

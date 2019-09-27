@@ -234,7 +234,12 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
     }
 
     protected void createFormContent(IManagedForm managedForm) {
-        managedForm.getForm().setImage(SWTResourceManager.getImage(this.getClass(), "/icons/ds-wizard.png"));
+        if (getContainerType().equals(DockerProjectConstants.KUBERNETES_CONTAINER)) {
+            managedForm.getForm().setImage(SWTResourceManager.getImage(this.getClass(), "/kubernetes64x64.png"));
+        } else {
+            managedForm.getForm().setImage(SWTResourceManager.getImage(this.getClass(), "/icons/Docker64x64.png"));
+        }
+        
         toolkit = managedForm.getToolkit();
         form = managedForm.getForm();
         form.setText(getProjectName());
@@ -645,7 +650,7 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
         if (getMissingDependencyList().containsKey(artifactInfo)) {
             getMissingDependencyList().remove(artifactInfo);
         }
-        item.setImage(0, SWTResourceManager.getImage(this.getClass(), "/icons/car.png"));
+        item.setImage(0, SWTResourceManager.getImage(this.getClass(), "/icons/composite-folder.png"));
 
         return item;
     }
@@ -691,7 +696,7 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
             }
         }
         if (available) {
-            item.setImage(0, SWTResourceManager.getImage(this.getClass(), "/icons/car.png"));
+            item.setImage(0, SWTResourceManager.getImage(this.getClass(), "/icons/composite-folder.png"));
         } else {
             item.setImage(0, SWTResourceManager.getImage(this.getClass(), "/icons/cancel_16.png"));
         }

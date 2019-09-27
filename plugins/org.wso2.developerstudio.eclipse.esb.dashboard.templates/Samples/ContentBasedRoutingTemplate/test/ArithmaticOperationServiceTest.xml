@@ -1,0 +1,76 @@
+<unit-test>
+    <artifacts>
+        <test-artifact>
+            <artifact>/${project.name}/src/main/synapse-config/proxy-services/ArithmaticOperationService.xml</artifact>
+        </test-artifact>
+        <supportive-artifacts>
+            <artifact>/${project.name}/src/main/synapse-config/endpoints/NumberDivisionEP.xml</artifact>
+            <artifact>/${project.name}/src/main/synapse-config/endpoints/NumberAdditionEP.xml</artifact>
+        </supportive-artifacts>
+        <registry-resources/>
+        <connector-resources/>
+    </artifacts>
+    <test-cases>
+        <test-case name="Operation_Add">
+            <input>
+                <payload><![CDATA[<ArithmaticOperation>
+                          <Operation>Add</Operation>
+                          <Arg1>10</Arg1>
+                          <Arg2>25</Arg2>
+                        </ArithmaticOperation>]]></payload>
+                <properties>
+                    <property name="Content-Type" scope="transport" value="text/xml"/>
+                </properties>
+            </input>
+            <assertions>
+                <assertEquals>
+                    <actual>$body</actual>
+                    <expected><![CDATA[<?xml version="1.0" encoding="UTF-8" ?>
+                            <SOAP-ENV:Envelope xmlns:SOAP-ENV='http://schemas.xmlsoap.org/soap/envelope/' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:s='http://www.w3.org/2001/XMLSchema'>
+                                <SOAP-ENV:Body>
+                                    <AddIntegerResponse xmlns="http://tempuri.org">
+                                        <AddIntegerResult>35</AddIntegerResult>
+                                    </AddIntegerResponse>
+                                </SOAP-ENV:Body>
+                            </SOAP-ENV:Envelope>]]></expected>
+                    <message>Actual value is not equals to the expected value 35</message>
+                </assertEquals>
+                <assertNotNull>
+                    <actual>$body</actual>
+                    <message>Payload is null in the add operation</message>
+                </assertNotNull>
+            </assertions>
+        </test-case>
+        <test-case name="Operation_Divide">
+            <input>
+                <payload><![CDATA[<ArithmaticOperation>
+                          <Operation>Divide</Operation>
+                          <Arg1>25</Arg1>
+                          <Arg2>5</Arg2>
+                        </ArithmaticOperation>]]></payload>
+                <properties>
+                    <property name="Content-Type" scope="transport" value="text/xml"/>
+                </properties>
+            </input>
+            <assertions>
+                <assertEquals>
+                    <actual>$body</actual>
+                    <expected><![CDATA[<?xml version="1.0" encoding="UTF-8" ?>
+                            <SOAP-ENV:Envelope xmlns:SOAP-ENV='http://schemas.xmlsoap.org/soap/envelope/' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:s='http://www.w3.org/2001/XMLSchema'>
+                                <SOAP-ENV:Body>
+                                    <DivideIntegerResponse xmlns="http://tempuri.org">
+                                        <DivideIntegerResult>5</DivideIntegerResult>
+                                    </DivideIntegerResponse>
+                                </SOAP-ENV:Body>
+                            </SOAP-ENV:Envelope>]]></expected>
+                    <message>Actual value is not equals to the expected value 5</message>
+                </assertEquals>
+                <assertNotNull>
+                    <actual>$body</actual>
+                    <message>Payload is null in the divide operation</message>
+                </assertNotNull>
+            </assertions>
+        </test-case>
+    </test-cases>
+    <mock-services/>
+</unit-test>

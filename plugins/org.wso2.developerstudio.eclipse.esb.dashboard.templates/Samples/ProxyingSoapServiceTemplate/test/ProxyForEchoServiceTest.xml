@@ -1,0 +1,38 @@
+<unit-test>
+    <artifacts>
+        <test-artifact>
+            <artifact>/${project.name}/src/main/synapse-config/proxy-services/ProxyForEchoService.xml</artifact>
+        </test-artifact>
+        <supportive-artifacts>
+            <artifact>/${project.name}/src/main/synapse-config/proxy-services/echo.xml</artifact>
+            <artifact>/${project.name}/src/main/synapse-config/endpoints/EchoSoapEP.xml</artifact>
+        </supportive-artifacts>
+        <registry-resources/>
+        <connector-resources/>
+    </artifacts>
+    <test-cases>
+        <test-case name="EchoService">
+            <input>
+                <payload><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <echo:echoString xmlns:echo="http://echo.services.core.carbon.wso2.org">
+            <in>Hello</in>
+        </echo:echoString>
+    </soapenv:Body>
+</soapenv:Envelope>]]></payload>
+                <properties>
+                    <property name="Content-Type" scope="transport" value="text/xml"/>
+                </properties>
+            </input>
+            <assertions>
+                <assertEquals>
+                    <actual>$body</actual>
+                    <expected><![CDATA[<ns:echoStringResponse xmlns:ns="http://echo.services.core.carbon.wso2.org"><return>Hello</return></ns:echoStringResponse>]]></expected>
+                    <message>Echo Service test case failed.</message>
+                </assertEquals>
+            </assertions>
+        </test-case>
+    </test-cases>
+    <mock-services/>
+</unit-test>

@@ -6,7 +6,7 @@
         <wizard name="Unit Test Suite"
                 class="org.wso2.developerstudio.eclipse.esb.synapse.unit.test.wizard.unittest.UnitTestSuiteCreationWizard"
                 id="org.wso2.developerstudio.eclipse.esb.synapse.unit.test.testsuite"
-                icon="icons/UnitTestSuite.png">
+                icon="icons/UnitTestSuite16x16.png">
         </wizard>
     </extension>
 
@@ -44,7 +44,7 @@
         <wizard name="Mock Service"
                 class="org.wso2.developerstudio.eclipse.esb.synapse.unit.test.wizard.mockservice.MockServiceSuiteCreationWizard"
                 id="org.wso2.developerstudio.eclipse.esb.synapse.unit.test.mockservice"
-                icon="icons/MockService.png">
+                icon="icons/MockService16x16.png">
         </wizard>
     </extension>
 
@@ -82,7 +82,7 @@
                                 id="org.wso2.developerstudio.eclipse.esb.synapse.unit.test.runtest">
                 <action
                         label="Run Unit Test"
-                        icon="icons/TestSuite.png"
+                        icon="icons/TestSuite16x16.png"
                         class="org.wso2.developerstudio.eclipse.esb.synapse.unit.test.action.RunSynapseUnitTestAction"
                         id="org.wso2.developerstudio.eclipse.esb.synapse.unit.test.runtest">
                 </action>

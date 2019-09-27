@@ -65,5 +65,7 @@
             </assertions>
         </test-case>
     </test-cases>
-    <mock-services/>
+    <mock-services>
+        <mock-service>/${project.name}/test/resources/mock-services/PhoneVerifyEPMockService.xml</mock-service>
+    </mock-services>
 </unit-test>

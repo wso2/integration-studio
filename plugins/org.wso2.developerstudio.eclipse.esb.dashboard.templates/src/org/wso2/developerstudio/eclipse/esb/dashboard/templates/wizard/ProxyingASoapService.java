@@ -199,6 +199,11 @@ public class ProxyingASoapService extends Wizard implements INewWizard {
         List<Dependency> dependencyList = new ArrayList<Dependency>();
         MavenProject mavenProject = MavenUtils.getMavenProject(pomfile);
         Properties properties = mavenProject.getModel().getProperties();
+        
+        Dependency echoDependency = ProjectCreationUtil
+                .addDependencyForCAPP(groupId, "echo", "proxy-service");
+        dependencyList.add(echoDependency);
+        properties.put(ProjectCreationUtil.getArtifactInfoAsString(echoDependency), "capp/EnterpriseServiceBus");
 
         Dependency dependency = ProjectCreationUtil
                 .addDependencyForCAPP(groupId, "ProxyForEchoService", "proxy-service");

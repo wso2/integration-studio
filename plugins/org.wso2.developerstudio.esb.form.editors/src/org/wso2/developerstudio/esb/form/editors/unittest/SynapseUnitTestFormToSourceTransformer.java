@@ -91,7 +91,9 @@ public class SynapseUnitTestFormToSourceTransformer {
                         + "\' test artifact file doesn't exist in given location");
             }
             Element artifactTest = doc.createElement(Constants.ARTIFACT);
-            artifactTest.appendChild(doc.createTextNode(formPage.getTestArtifactPath()));
+            String testArtifactPath = formPage.getTestArtifactPath().replace(Constants.WINDOWS_PATH_PREFIX,
+                    Constants.PATH_PREFIX);
+            artifactTest.appendChild(doc.createTextNode(testArtifactPath));
             testArtifact.appendChild(artifactTest);
 
             // Add supportive artifact data
@@ -99,6 +101,7 @@ public class SynapseUnitTestFormToSourceTransformer {
             artifacts.appendChild(supportiveArtifacts);
 
             for (String supportivePath : unitTestData.getSupportiveArtifacts()) {
+                supportivePath = supportivePath.replace(Constants.WINDOWS_PATH_PREFIX,Constants.PATH_PREFIX);
                 IResource supportiveArtifactResource = wroot.findMember(new Path(supportivePath));
                 if (supportiveArtifactResource == null) {
                     throw new RuntimeException("Specified \'" + supportivePath
@@ -136,6 +139,7 @@ public class SynapseUnitTestFormToSourceTransformer {
             artifacts.appendChild(connectorResources);
 
             for (String resourcePath : unitTestData.getConnectorFiles()) {
+                resourcePath = resourcePath.replace(Constants.WINDOWS_PATH_PREFIX,Constants.PATH_PREFIX);
                 Element connectorResource = doc.createElement(Constants.CONNECTOR_RESOURCE);
                 connectorResource.appendChild(doc.createTextNode(resourcePath));
                 connectorResources.appendChild(connectorResource);
@@ -244,6 +248,7 @@ public class SynapseUnitTestFormToSourceTransformer {
             // Add mock services to the suite
             Element mockServices = doc.createElement(Constants.MOCK_SERVICES);
             for (String mockServicePath : unitTestData.getMockServices()) {
+                mockServicePath = mockServicePath.replace(Constants.WINDOWS_PATH_PREFIX,Constants.PATH_PREFIX);
                 IResource mockServiceData = wroot.findMember(new Path(mockServicePath));
                 if (mockServiceData == null) {
                     throw new RuntimeException("Specified \'" + mockServicePath

@@ -36,7 +36,6 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.Result;
 import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.TransformerFactoryConfigurationError;
@@ -132,9 +131,7 @@ public class CarbonServer44eiUtils implements CarbonServerXUtils {
 			xPathExpression = xPath.compile("/:Server/:Ports/:ServletTransports/:HTTPS");
 			evaluate = xPathExpression.evaluate(inputSource);
 			serverPorts[1] = new ServerPort("server", "", Integer.parseInt(evaluate), "https");
-		} catch (FileNotFoundException e) {
-			log.error(e);
-		} catch (XPathExpressionException e) {
+		} catch (FileNotFoundException | XPathExpressionException e) {
 			log.error(e);
 		}
 		return serverPorts;
@@ -169,9 +166,7 @@ public class CarbonServer44eiUtils implements CarbonServerXUtils {
 			XPathExpression xPathExpression = xPath.compile("/:Server/:WebContextRoot");
 			webContextRoot = xPathExpression.evaluate(inputSource);
 			webContextRoot = webContextRoot.equals("/") ? "" : webContextRoot;
-		} catch (FileNotFoundException e) {
-			log.error(e);
-		} catch (XPathExpressionException e) {
+		} catch (FileNotFoundException | XPathExpressionException e) {
 			log.error(e);
 		}
 		return webContextRoot;
@@ -215,9 +210,7 @@ public class CarbonServer44eiUtils implements CarbonServerXUtils {
 			String trustStorePassword = resolveProperties(server, evaluate);
 			System.setProperty("javax.net.ssl.trustStore", trustoreLocation);
 			System.setProperty("javax.net.ssl.trustStorePassword", trustStorePassword);
-		} catch (FileNotFoundException e) {
-			log.error(e);
-		} catch (XPathExpressionException e) {
+		} catch (FileNotFoundException | XPathExpressionException e) {
 			log.error(e);
 		}
 
@@ -242,13 +235,7 @@ public class CarbonServer44eiUtils implements CarbonServerXUtils {
 			Node node = nodeList.item(0);
 			nodeValue = node.getFirstChild().getNodeValue();
 
-		} catch (ParserConfigurationException e) {
-			log.error(e);
-		} catch (SAXException e) {
-			log.error(e);
-		} catch (IOException e) {
-			log.error(e);
-		} catch (TransformerFactoryConfigurationError e) {
+		} catch (ParserConfigurationException | SAXException | IOException | TransformerFactoryConfigurationError e) {
 			log.error(e);
 		}
 		return nodeValue;
@@ -274,17 +261,8 @@ public class CarbonServer44eiUtils implements CarbonServerXUtils {
 			Source source = new DOMSource(doc);
 			t.transform(source, result);
 			return true;
-		} catch (ParserConfigurationException e) {
-			log.error(e);
-		} catch (SAXException e) {
-			log.error(e);
-		} catch (IOException e) {
-			log.error(e);
-		} catch (TransformerConfigurationException e) {
-			log.error(e);
-		} catch (TransformerFactoryConfigurationError e) {
-			log.error(e);
-		} catch (TransformerException e) {
+		} catch (ParserConfigurationException | SAXException | IOException | TransformerFactoryConfigurationError 
+				| TransformerException e) {
 			log.error(e);
 		}
 		return false;
@@ -383,10 +361,8 @@ public class CarbonServer44eiUtils implements CarbonServerXUtils {
 		EList<Object> newruntimeProperies = serverFeatures1.list(ServerTypePackage.Literals.SERVER_RUNTIME__PROPERTY);
 		for(Object p : newruntimeProperies) {
 			Property property = (Property) p;
-			System.out.println(property);
 		}
 		String propertyValue = serverDefinition.getResolver().resolveProperties("${carbon.home}");
-		System.out.println(propertyValue);
 	}
 
 	@Override
@@ -427,21 +403,8 @@ public class CarbonServer44eiUtils implements CarbonServerXUtils {
 				t.transform(source, result);
 				return true;
 			}
-		} catch (FileNotFoundException e) {
-			log.error(e);
-		} catch (XPathExpressionException e) {
-			log.error(e);
-		} catch (ParserConfigurationException e) {
-			log.error(e);
-		} catch (SAXException e) {
-			log.error(e);
-		} catch (IOException e) {
-			log.error(e);
-		} catch (TransformerConfigurationException e) {
-			log.error(e);
-		} catch (TransformerFactoryConfigurationError e) {
-			log.error(e);
-		} catch (TransformerException e) {
+		} catch (XPathExpressionException | ParserConfigurationException | SAXException | IOException 
+				| TransformerFactoryConfigurationError | TransformerException e) {
 			log.error(e);
 		}
 		return false;
@@ -499,9 +462,7 @@ public class CarbonServer44eiUtils implements CarbonServerXUtils {
 				Map<String, String> obj = (Map<String, String>) obj_in.readObject();
 				gserver.getServerInstanceProperties().putAll(obj);
 			}
-		} catch (IOException e) {
-			log.error(e);
-		} catch (ClassNotFoundException e) {
+		} catch (IOException | ClassNotFoundException e) {
 			log.error(e);
 		} finally {
 			if (obj_in != null) {
@@ -574,21 +535,8 @@ public class CarbonServer44eiUtils implements CarbonServerXUtils {
 				t1.transform(source1, result1);
 				return true;
 			}
-		} catch (FileNotFoundException e) {
-			log.error(e);
-		} catch (XPathExpressionException e) {
-			log.error(e);
-		} catch (ParserConfigurationException e) {
-			log.error(e);
-		} catch (SAXException e) {
-			log.error(e);
-		} catch (IOException e) {
-			log.error(e);
-		} catch (TransformerConfigurationException e) {
-			log.error(e);
-		} catch (TransformerFactoryConfigurationError e) {
-			log.error(e);
-		} catch (TransformerException e) {
+		} catch (XPathExpressionException | ParserConfigurationException | SAXException 
+				| IOException | TransformerFactoryConfigurationError | TransformerException  e) {
 			log.error(e);
 		}
 		return false;

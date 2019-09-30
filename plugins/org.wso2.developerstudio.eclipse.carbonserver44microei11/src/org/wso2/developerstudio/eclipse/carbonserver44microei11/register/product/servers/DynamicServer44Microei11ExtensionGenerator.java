@@ -64,15 +64,8 @@ public class DynamicServer44Microei11ExtensionGenerator {
 					Object masterToken = declaredField.get(extensionRegistry);
 
 					extensionRegistry.addContribution(inputStream, contributor, false, bundleName, null, masterToken);
-				} catch (IOException e) {
-					log.error("Invalid Product Server Type, not registered to generate Dyunamic extension Point");
-				} catch (NoSuchFieldException e) {
-					log.error("Invalid Product Server Type, not registered to generate Dyunamic extension Point");
-				} catch (SecurityException e) {
-					log.error("Invalid Product Server Type, not registered to generate Dyunamic extension Point");
-				} catch (IllegalArgumentException e) {
-					log.error("Invalid Product Server Type, not registered to generate Dyunamic extension Point");
-				} catch (IllegalAccessException e) {
+				} catch (IOException | NoSuchFieldException | SecurityException | IllegalArgumentException 
+						| IllegalAccessException e) {
 					log.error("Invalid Product Server Type, not registered to generate Dyunamic extension Point");
 				}
 			}

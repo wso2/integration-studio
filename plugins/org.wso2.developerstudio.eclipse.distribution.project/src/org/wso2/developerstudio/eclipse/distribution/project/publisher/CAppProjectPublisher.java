@@ -46,6 +46,7 @@ import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 public class CAppProjectPublisher implements ICarbonServerModulePublisher {
     
 	private static final String MI_PLUGIN_ID = "org.wso2.developerstudio.eclipse.carbon.server44microei";
+	private static final String MI_110_PLUGIN_ID = "org.wso2.developerstudio.eclipse.carbon.server44microei11";
 	private static final String MI_CAPP_PATH = File.separator + "repository" + File.separator + "deployment"
 			+ File.separator + "server" + File.separator + "carbonapps";
     
@@ -126,7 +127,7 @@ public class CAppProjectPublisher implements ICarbonServerModulePublisher {
     	        }
     		}
 
-			if (server.getServerType().getId().equals(MI_PLUGIN_ID)) {
+			if (server.getServerType().getId().equals(MI_PLUGIN_ID) || server.getServerType().getId().equals(MI_110_PLUGIN_ID)) {
 				IPath iPath = CarbonServerManager.getServerHome(server);
 				File file = iPath.toFile();
 				copyCApp(file.getAbsolutePath(), project);
@@ -189,7 +190,7 @@ public class CAppProjectPublisher implements ICarbonServerModulePublisher {
 //			}else{
 //				cappName = carFile.getName().substring(0, carFile.getName().length()-4);
 //			}
-			if (server.getServerType().getId().equals(MI_PLUGIN_ID)) {
+			if (server.getServerType().getId().equals(MI_PLUGIN_ID) || server.getServerType().getId().equals(MI_110_PLUGIN_ID)) {
 				IPath iPath = CarbonServerManager.getServerHome(server);
 				File file = iPath.toFile();
 				deleteCApp(file.getAbsolutePath(), project);

@@ -23,7 +23,6 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
-import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.wst.server.core.IModule;
 import org.eclipse.wst.server.core.IServer;
@@ -33,7 +32,6 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.wso2.developerstudio.eclipse.carbon.server.model.util.CarbonServerCommonConstants;
 import org.wso2.developerstudio.eclipse.carbon.server.model.util.CarbonServerCommonUtils;
-import org.wso2.developerstudio.eclipse.carbonserver.base.exception.CarbonServerNotRunningException;
 import org.wso2.developerstudio.eclipse.carbonserver.base.exception.NoSuchCarbonOperationDefinedException;
 import org.wso2.developerstudio.eclipse.carbonserver.base.impl.CarbonServer;
 import org.wso2.developerstudio.eclipse.carbonserver.base.interfaces.ICarbonServerMonitor;
@@ -51,7 +49,6 @@ import org.xml.sax.SAXException;
 import org.wso2.developerstudio.eclipse.carbonserver.base.utils.CarbonServerUtils;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -65,7 +62,6 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.Result;
 import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.TransformerFactoryConfigurationError;
@@ -454,48 +450,6 @@ public class CarbonOperationsManager44ei implements ICarbonOperationManager {
 	}
 	
 	private static Boolean isServerHotUpdate(IServer server) {
-		return false;
-	}
-
-	private static boolean setHotUpdateEnabled(IServer server, boolean enabled) {
-		if (isHotUpdateEnabled(server) == enabled)
-			return true;
-		String axis2Xml = getAxis2FilePath(server);
-		XPathFactory factory = XPathFactory.newInstance();
-		try {
-			File xmlDocument = new File(axis2Xml);
-			DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-			Document document = builder.parse(xmlDocument);
-			XPath xPath = factory.newXPath();
-			Node httpNode =
-			                (Node) xPath.evaluate("/axisconfig/parameter[@name='hotupdate']", document,
-			                                      XPathConstants.NODE);
-			httpNode.setTextContent(enabled ? "true" : "false");
-			Transformer t = TransformerFactory.newInstance().newTransformer();
-			File confPath = new File((new File(axis2Xml)).getParent());
-			if (!confPath.exists())
-				confPath.mkdirs();
-			Result result = new StreamResult(new File(axis2Xml));
-			Source source = new DOMSource(document);
-			t.transform(source, result);
-			return true;
-		} catch (FileNotFoundException e) {
-			log.error(e);
-		} catch (XPathExpressionException e) {
-			log.error(e);
-		} catch (ParserConfigurationException e) {
-			log.error(e);
-		} catch (SAXException e) {
-			log.error(e);
-		} catch (IOException e) {
-			log.error(e);
-		} catch (TransformerConfigurationException e) {
-			log.error(e);
-		} catch (TransformerFactoryConfigurationError e) {
-			log.error(e);
-		} catch (TransformerException e) {
-			log.error(e);
-		}
 		return false;
 	}
 	

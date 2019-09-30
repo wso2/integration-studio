@@ -104,11 +104,13 @@ public class SynapseUnitTestFormPage extends AbstractEsbFormPage {
     private Button removeTestCaseButton;
     private Button addTestCaseButton;
     private Button addMockServiceButton;
+    private Button refreshMockServicesButton;
     private Table testCaseTable;
     private TableViewer testCaseTableViewer;
 
     private Tree trDependencies;
     private Tree trServiceDependencies;
+    private ReferenceTable referenceTable;
 
     public SynapseUnitTestFormPage(FormEditor editor) {
         super(editor, "synapseUnitTestForm", "Unit Test Suite");
@@ -121,8 +123,23 @@ public class SynapseUnitTestFormPage extends AbstractEsbFormPage {
         toolkit = managedForm.getToolkit();
         form.setText(FORM_TITLE);
         form.setBackgroundImage(FormArticlePlugin.getDefault().getImage(FormArticlePlugin.IMG_FORM_BG));
-        form.getBody().setLayout(new FormLayout());
+        Composite body = form.getBody();
+        body.setLayout(new FormLayout());
 
+        // Add page refresh button
+        referenceTable = new ReferenceTable();
+        refreshMockServicesButton = referenceTable.createRefreshButton(body, "", SWT.PUSH);
+        FormData data = new FormData();
+        data.top = new FormAttachment(1);
+        data.right = new FormAttachment(97);
+        refreshMockServicesButton.setLayoutData(data);
+
+        refreshMockServicesButton.addListener(SWT.Selection, new Listener() {
+            public void handleEvent(Event e) {
+                refreshAction();
+            }
+        });
+        
         createTestCasesSection();
         createArtifactsSection();
         createMockServicesSection();
@@ -372,7 +389,6 @@ public class SynapseUnitTestFormPage extends AbstractEsbFormPage {
         mockServiceslblName.setLayoutData(data);
         mockServiceslblName.setText(MOCK_SERVICE_FILES);
 
-        ReferenceTable referenceTable = new ReferenceTable();
         addMockServiceButton = referenceTable.createAddButton(mockServicesSectionClient, "", SWT.PUSH);
         data = new FormData();
         data = new FormData();
@@ -422,6 +438,17 @@ public class SynapseUnitTestFormPage extends AbstractEsbFormPage {
         mockServicesDetailSection.setExpanded(false);
     }
 
+    /**
+     * Method of refreshing unit test suite.
+     */
+    private void refreshAction() {
+        mockServiceTree.createTreeContent();
+        mockServiceTree.expandParentNodes();
+        resourceTree.createTreeContent();
+        resourceTree.expandParentNodes();
+        reloadFormPage();
+    }
+    
     /**
      * Method of refreshing test case table.
      */

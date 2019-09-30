@@ -25,6 +25,7 @@ import org.eclipse.swt.layout.FormLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Table;
+import org.wso2.developerstudio.eclipse.platform.core.utils.SWTResourceManager;
 
 /**
  * Class responsible for creating Reference Table with add and remove buttons.
@@ -32,7 +33,7 @@ import org.eclipse.swt.widgets.Table;
 public class ReferenceTable {
 
     private final Image NEW_ELEMENT_IMG = EEFRuntimePlugin.getImage(EEFRuntimePlugin.ICONS_16x16 + "Add_16x16.gif");
-
+    private final Image REFRESH_ELEMENT_IMG = SWTResourceManager.getImage(this.getClass(), "/icons/refresh.png");
     private final Image DELETE_ELEMENT_IMG = EEFRuntimePlugin
             .getImage(EEFRuntimePlugin.ICONS_16x16 + "Delete_16x16.gif");
 
@@ -88,6 +89,25 @@ public class ReferenceTable {
         Button addButton = new Button(parent, style);
         addButton.setVisible(true);
         addButton.setImage(NEW_ELEMENT_IMG);
+        addButton.setText(text);
+        return addButton;
+    }
+    
+    /**
+     * Method of creating refresh button.
+     * 
+     * @param parent
+     *            composite layout
+     * @param text
+     *            Button text
+     * @param style
+     *            style as int
+     * @return Button widget
+     */
+    public Button createRefreshButton(Composite parent, String text, int style) {
+        Button addButton = new Button(parent, style);
+        addButton.setVisible(true);
+        addButton.setImage(REFRESH_ELEMENT_IMG);
         addButton.setText(text);
         return addButton;
     }

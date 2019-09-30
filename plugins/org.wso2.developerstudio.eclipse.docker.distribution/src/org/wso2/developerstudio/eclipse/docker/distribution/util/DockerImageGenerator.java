@@ -29,11 +29,6 @@ import java.util.concurrent.atomic.AtomicReference;
 
 import javax.ws.rs.ext.RuntimeDelegate;
 
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.MessageBox;
-import org.eclipse.swt.widgets.Shell;
-import org.eclipse.ui.PlatformUI;
 import org.glassfish.jersey.internal.RuntimeDelegateImpl;
 import org.wso2.developerstudio.eclipse.docker.distribution.Activator;
 import org.wso2.developerstudio.eclipse.docker.distribution.exceptions.DockerConnectionException;

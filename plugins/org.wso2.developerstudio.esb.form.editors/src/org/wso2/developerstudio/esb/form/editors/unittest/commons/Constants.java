@@ -30,6 +30,7 @@ public class Constants {
     public static final String ASSERT_EQUAL_TYPE = "AssertEquals";
     public static final String ASSERT_NOTNULL_TYPE = "AssertNotNull";
     public static final String PATH_PREFIX = "/";
+    public static final String WINDOWS_PATH_PREFIX = "\\";
     public static final String XML_PREFIX = "<";
     public static final String FILE_SEPERATOR = "file.separator";
 

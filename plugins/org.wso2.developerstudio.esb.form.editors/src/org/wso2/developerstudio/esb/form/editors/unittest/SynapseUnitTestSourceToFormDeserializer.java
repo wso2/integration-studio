@@ -211,9 +211,10 @@ public class SynapseUnitTestSourceToFormDeserializer {
         QName qualifiedArtifact = new QName("", Constants.ARTIFACT, "");
         OMElement testArtifactDataNode = testArtifactNode.getFirstChildWithName(qualifiedArtifact);
         String testArtifactData = testArtifactDataNode.getText();
+        testArtifactData = testArtifactData.replace(Constants.WINDOWS_PATH_PREFIX, Constants.PATH_PREFIX);
 
         // Read test artifact type from synapse test data
-        String fileSeperatePattern = Pattern.quote(System.getProperty(Constants.FILE_SEPERATOR));
+        String fileSeperatePattern = Pattern.quote(Constants.PATH_PREFIX);
         String[] pathTypes = testArtifactData.split(fileSeperatePattern);
         String folderType = pathTypes[pathTypes.length - 2];
 
@@ -234,6 +235,7 @@ public class SynapseUnitTestSourceToFormDeserializer {
 
             // Read supportive artifact from synapse test data
             String supportiveArtifactData = artifact.getText();
+            supportiveArtifactData = supportiveArtifactData.replace(Constants.WINDOWS_PATH_PREFIX, Constants.PATH_PREFIX);
             formPage.getUnitTestDataHolder().addSupportiveArtifacts(supportiveArtifactData);
         }
 
@@ -287,6 +289,7 @@ public class SynapseUnitTestSourceToFormDeserializer {
         while (connectorIterator.hasNext()) {
             OMElement resource = (OMElement) connectorIterator.next();
             String connectorResourceFile = resource.getText();
+            connectorResourceFile = connectorResourceFile.replace(Constants.WINDOWS_PATH_PREFIX, Constants.PATH_PREFIX);
             formPage.getUnitTestDataHolder().addConnectorFile(connectorResourceFile);
         }
     }
@@ -434,6 +437,7 @@ public class SynapseUnitTestSourceToFormDeserializer {
             while (iterator.hasNext()) {
                 OMElement mockServiceNode = (OMElement) (iterator.next());
                 String mockServicePath = mockServiceNode.getText();
+                mockServicePath = mockServicePath.replace(Constants.WINDOWS_PATH_PREFIX, Constants.PATH_PREFIX);
                 formPage.getUnitTestDataHolder().addMockServices(mockServicePath);
             }
         }

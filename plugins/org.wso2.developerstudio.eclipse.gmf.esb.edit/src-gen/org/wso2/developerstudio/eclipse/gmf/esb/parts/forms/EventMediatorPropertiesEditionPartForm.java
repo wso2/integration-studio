@@ -133,12 +133,9 @@ public class EventMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		CompositionSequence eventMediatorStep = new BindingCompositionSequence(propertiesEditionComponent);
 		CompositionStep propertiesStep = eventMediatorStep.addStep(EsbViewsRepository.EventMediator.Properties.class);
-		propertiesStep.addStep(EsbViewsRepository.EventMediator.Properties.description);
-		propertiesStep.addStep(EsbViewsRepository.EventMediator.Properties.commentsList);
-		propertiesStep.addStep(EsbViewsRepository.EventMediator.Properties.reverse);
 		propertiesStep.addStep(EsbViewsRepository.EventMediator.Properties.topicType);
 		propertiesStep.addStep(EsbViewsRepository.EventMediator.Properties.staticTopic);
-		
+		propertiesStep.addStep(EsbViewsRepository.EventMediator.Properties.description);
 		
 		composer = new PartComposer(eventMediatorStep) {
 

@@ -27,6 +27,7 @@ public class PlatformUIConstants {
     public static final String NO_KUBE_REMOTE_REPOSITORY = "Specify a remote repository for the Kubernetes container";
     public static final String NO_KUBE_REMOTE_TAG = "Specify a remote tag for the Kubernetes container";
     public static final String NO_KUBE_TARGET_REPOSITORY = "Specify a target repository for the Kubernetes container";
+    public static final String KUBE_TARGET_REPOSITORY_INVALID = "Target Repository should be in <registry-url>/<username>/<repository> or <username>/<repository> pattern";
     public static final String INVALID_REPLICA_COUNT = "Specify number of replicas need for the Kubernetes cluster";
     public static final String INVALID_REPLICA_COUNT_NOT_AS_INT = "Specify a integer value for replicas which need for the Kubernetes cluster";
     public static final String INVALID_PORT = "Specify valid port to expose the Kubernetes container";

@@ -580,6 +580,11 @@ public class DockerKubernetesDetailsPage extends WizardPage implements Observer 
 				} else if (!UserInputValidator.isTagValid(dataModel.getKubeTargetTag())) {
 					updatePageStatus(PlatformUIConstants.INVALID_TARGET_TAG_MESSAGE);
 					return;
+				} else if (dataModel.getKubeTargetRepository() != null
+						&& (dataModel.getKubeTargetRepository().split("/").length != 2
+								&& dataModel.getKubeTargetRepository().split("/").length != 3)) {
+					updatePageStatus(PlatformUIConstants.KUBE_TARGET_REPOSITORY_INVALID);
+					return;
 				}
 			}
 			updatePageStatus(null);

@@ -179,7 +179,7 @@ public class GenerateDockerImageJob extends Job {
 
         // Image generation successful
         if (null != generatedImageId) {
-        	showSuccessNotification(generatedImageId);
+        	showSuccessNotification(generatedImageId, dockerModel.getName(), dockerModel.getTag());
         } else {
             showMessageBox(DockerGenConstants.ErrorMessages.DOCKER_IMAGE_CREATION_FAILED_TITLE,
                     DockerGenConstants.ErrorMessages.DOCKER_IMAGE_CREATION_FAILED_MSG, SWT.ICON_ERROR);
@@ -188,12 +188,13 @@ public class GenerateDockerImageJob extends Job {
         return Status.OK_STATUS;
     }
 
-    private void showSuccessNotification(String imageId) {
+    private void showSuccessNotification(String imageId, String imageName, String imageTag) {
     	
     	Display.getDefault().syncExec(new Runnable() {
             public void run() {
                 Display display = PlatformUI.getWorkbench().getDisplay();
-                final AbstractNotificationPopup popup = new ImageCreationSuccessNotificationPopUp(display, imageId);
+                final AbstractNotificationPopup popup = 
+                        new ImageCreationSuccessNotificationPopUp(display, imageId, imageName, imageTag);
                 popup.setFadingEnabled(false);
                 popup.setDelayClose(0L);
                 popup.open();

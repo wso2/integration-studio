@@ -104,7 +104,8 @@ public class DockerGenConstants {
 
     public static class SuccessMessages {
         public static final String SUCCESSFUL_TITLE = "Successful";
-        public static final String DOCKER_IMAGE_GEN_SUCCESS_MESSAGE = "Docker image successfully generated. \nImage ID: ";
+        public static final String DOCKER_IMAGE_GEN_SUCCESS_MESSAGE = "Docker image successfully generated. \nName: ";
+        public static final String DOCKER_IMAGE_ID_MESSAGE = "ID: ";
     }
 
     public static class DefaultArguments {

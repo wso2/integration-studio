@@ -32,7 +32,11 @@ import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.util.AXIOMUtil;
 import org.apache.commons.io.IOUtils;
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.IWorkspaceRoot;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.ui.forms.editor.FormPage;
 import org.wso2.developerstudio.esb.form.editors.Activator;
 import org.wso2.developerstudio.esb.form.editors.unittest.commons.Constants;
@@ -139,11 +143,12 @@ public class SynapseUnitTestSourceToFormDeserializer {
      */
     private static void processAndUpdateSynapseUnitTestForm(SynapseUnitTestFormPage formPage, OMElement importedXML,
             boolean isInitial) throws IOException, XMLStreamException {
-
+        IWorkspaceRoot wroot = ResourcesPlugin.getWorkspace().getRoot();
+        
         // Read artifact from descriptor data
         QName qualifiedArtifacts = new QName("", Constants.ARTIFACTS, "");
         OMElement artifactsNode = importedXML.getFirstChildWithName(qualifiedArtifacts);
-        readAndStoreArtifactData(artifactsNode, formPage);
+        readAndStoreArtifactData(artifactsNode, formPage, wroot);
 
         // Set test case count as zero
         int testCasesCount = 0;
@@ -189,7 +194,7 @@ public class SynapseUnitTestSourceToFormDeserializer {
 
         QName qualifiedMockServices = new QName("", Constants.MOCK_SERVICES, "");
         OMElement mockServicesNode = importedXML.getFirstChildWithName(qualifiedMockServices);
-        readAndStoreMockServiceData(mockServicesNode, formPage);
+        readAndStoreMockServiceData(mockServicesNode, formPage, wroot);
 
         if (!isInitial) {
             formPage.reloadFormPage();
@@ -203,8 +208,10 @@ public class SynapseUnitTestSourceToFormDeserializer {
      *            SynapseUnitTestFormPage currently open
      * @param artifactsNode
      *            source code as in OMElement
+     * @param wroot workspace root
      */
-    private static void readAndStoreArtifactData(OMElement artifactsNode, SynapseUnitTestFormPage formPage) {
+    private static void readAndStoreArtifactData(OMElement artifactsNode, SynapseUnitTestFormPage formPage,
+            IWorkspaceRoot wroot) {
         QName qualifiedTestArtifact = new QName("", Constants.TEST_ARTIFACT, "");
         OMElement testArtifactNode = artifactsNode.getFirstChildWithName(qualifiedTestArtifact);
 
@@ -217,9 +224,8 @@ public class SynapseUnitTestSourceToFormDeserializer {
         String fileSeperatePattern = Pattern.quote(Constants.PATH_PREFIX);
         String[] pathTypes = testArtifactData.split(fileSeperatePattern);
         String folderType = pathTypes[pathTypes.length - 2];
-
         formPage.getUnitTestDataHolder().setTestArtifact(testArtifactData);
-        formPage.getUnitTestDataHolder().setTestArtifactType(folderType);
+        formPage.getUnitTestDataHolder().setTestArtifactType(folderType); 
 
         // Read supportive test cases data
         QName qualifiedSupportiveTestArtifact = new QName("", Constants.SUPPORTIVE_ARTIFACTS, "");
@@ -235,8 +241,11 @@ public class SynapseUnitTestSourceToFormDeserializer {
 
             // Read supportive artifact from synapse test data
             String supportiveArtifactData = artifact.getText();
-            supportiveArtifactData = supportiveArtifactData.replace(Constants.WINDOWS_PATH_PREFIX, Constants.PATH_PREFIX);
-            formPage.getUnitTestDataHolder().addSupportiveArtifacts(supportiveArtifactData);
+            IResource supportiveArtifactResource = wroot.findMember(new Path(supportiveArtifactData));
+            if (supportiveArtifactResource != null) {
+                supportiveArtifactData = supportiveArtifactData.replace(Constants.WINDOWS_PATH_PREFIX, Constants.PATH_PREFIX);
+                formPage.getUnitTestDataHolder().addSupportiveArtifacts(supportiveArtifactData);
+            } 
         }
 
         // Read registry data
@@ -427,8 +436,10 @@ public class SynapseUnitTestSourceToFormDeserializer {
      *            formPage of unit test suite
      * @param mockServicesNode
      *            source code as in OMElement
+     * @param wroot workspace root
      */
-    private static void readAndStoreMockServiceData(OMElement mockServicesNode, SynapseUnitTestFormPage formPage) {
+    private static void readAndStoreMockServiceData(OMElement mockServicesNode, SynapseUnitTestFormPage formPage,
+            IWorkspaceRoot wroot) {
         // check whether descriptor data has mock services
         if (mockServicesNode != null) {
             // Iterate through mock-service in descriptor data
@@ -437,8 +448,11 @@ public class SynapseUnitTestSourceToFormDeserializer {
             while (iterator.hasNext()) {
                 OMElement mockServiceNode = (OMElement) (iterator.next());
                 String mockServicePath = mockServiceNode.getText();
-                mockServicePath = mockServicePath.replace(Constants.WINDOWS_PATH_PREFIX, Constants.PATH_PREFIX);
-                formPage.getUnitTestDataHolder().addMockServices(mockServicePath);
+                IResource mockServiceResource = wroot.findMember(new Path(mockServicePath));
+                if (mockServiceResource != null) {
+                    mockServicePath = mockServicePath.replace(Constants.WINDOWS_PATH_PREFIX, Constants.PATH_PREFIX);
+                    formPage.getUnitTestDataHolder().addMockServices(mockServicePath);
+                }
             }
         }
     }

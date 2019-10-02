@@ -831,7 +831,7 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
 			               new Action(
 			                       "Create Archive",
 			                       ImageDescriptor.createFromImage(SWTResourceManager.getImage(this.getClass(),
-			                                                                                   "/icons/car.png"))) {
+			                                                                                   "/icons/exportCapp.png"))) {
 				               public void run() {
 					               exportCar();
 				               };

@@ -19,6 +19,8 @@ package org.wso2.developerstudio.eclipse.docker.distribution.model;
 
 public class DockerHubAuth {
     private boolean isKubernetesProject = false;
+    private boolean isDockerRegistry = true;
+    private String remoteRegistryURL;
     private String authEmail;
     private String authUsername;
     private String authPassword;
@@ -53,5 +55,21 @@ public class DockerHubAuth {
 
     public void setAuthPassword(String authPassword) {
         this.authPassword = authPassword;
+    }
+
+    public boolean isDockerRegistry() {
+        return isDockerRegistry;
+    }
+
+    public void setDockerRegistry(boolean isDockerRegistry) {
+        this.isDockerRegistry = isDockerRegistry;
+    }
+
+    public String getRemoteRegistryURL() {
+        return remoteRegistryURL;
+    }
+
+    public void setRemoteRegistryURL(String remoteRegistryURL) {
+        this.remoteRegistryURL = remoteRegistryURL;
     }
 }

@@ -16,6 +16,7 @@
 
 package org.wso2.developerstudio.eclipse.docker.distribution.editor;
 
+import org.eclipse.core.resources.IFile;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.ui.IExportWizard;
@@ -32,15 +33,17 @@ public class DockerHubLoginWizard extends Wizard implements IExportWizard {
     private DockerHubLoginPage dockerHubDetailPage;
     private boolean initError = false;
     private DockerHubAuth configuration;
+    private IFile containerPomFile;
 
-    DockerHubLoginWizard(DockerHubAuth newConfiguration) {
+    DockerHubLoginWizard(DockerHubAuth newConfiguration, IFile pomFile) {
         configuration = newConfiguration;
+        containerPomFile = pomFile;
     }
 
     @Override
     public void init(IWorkbench workbench, IStructuredSelection selection) {
         setWindowTitle(WINDOW_TITLE);
-        dockerHubDetailPage = new DockerHubLoginPage(workbench, selection);
+        dockerHubDetailPage = new DockerHubLoginPage(workbench, selection, containerPomFile);
     }
 
     @Override
@@ -48,6 +51,13 @@ public class DockerHubLoginWizard extends Wizard implements IExportWizard {
         configuration.setAuthEmail(dockerHubDetailPage.getEmailValue());
         configuration.setAuthUsername(dockerHubDetailPage.getUsernameValue());
         configuration.setAuthPassword(dockerHubDetailPage.getPasswordValue());
+        
+        if (dockerHubDetailPage.getSelectedRegistryType().equals(dockerHubDetailPage.DOCKERHUB_REGISTRY)) {
+            configuration.setDockerRegistry(true);
+        } else {
+            configuration.setDockerRegistry(false);
+            configuration.setRemoteRegistryURL(dockerHubDetailPage.getDockerHubOtherRegistryURL());
+        }
 
         return true;
     }

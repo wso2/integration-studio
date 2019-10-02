@@ -71,8 +71,10 @@ public class CarbonApplicationAndDockerBuilder extends Job {
     private String dockerHost = "";
     private DockerClient dockerClient;
     private DockerHubAuth configuration;
+    private String remoteRegistryURL = "";
 
     private final String POM_XML = "pom.xml";
+    private final String REPOSITORY_SEPERATOR = "/";
     private static final String CAPP_NATURE = "org.wso2.developerstudio.eclipse.distribution.project.nature";
     private Map<String, IProject> carbonApplicationList = new HashMap<String, IProject>();
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
@@ -137,17 +139,30 @@ public class CarbonApplicationAndDockerBuilder extends Job {
         final AtomicReference<String> imageIdFromMessage = new AtomicReference<>();
         try {
             // build the image
-            imageId = dockerClient.build(Paths.get(dockerFileLocation), repository + ":" + tag, new ProgressHandler() {
-                @Override
-                public void progress(ProgressMessage message) throws DockerException {
-                    final String imageId = message.buildImageId();
-                    // Image creation successful
-                    if (imageId != null) {
-                        log.info(DockerProjectConstants.DOCKER_IMAGE_GEN_SUCCESS_MESSAGE + imageId);
-                        imageIdFromMessage.set(imageId);
-                    }
-                }
-            }, DockerClient.BuildParam.noCache(), DockerClient.BuildParam.forceRm());
+            if (configuration != null && !configuration.isDockerRegistry()
+                    && configuration.getRemoteRegistryURL() != null
+                    && !configuration.getRemoteRegistryURL().isEmpty()) {
+                remoteRegistryURL = configuration.getRemoteRegistryURL() + REPOSITORY_SEPERATOR;
+            }
+
+            // check repository has registry URL, if yes remove it
+            String[] reposirotyTags = repository.split(REPOSITORY_SEPERATOR);
+            if (reposirotyTags.length == 3) {
+                repository = reposirotyTags[1] + REPOSITORY_SEPERATOR + reposirotyTags[2];
+            }
+
+            imageId = dockerClient.build(Paths.get(dockerFileLocation), remoteRegistryURL + repository + ":" + tag,
+                    new ProgressHandler() {
+                        @Override
+                        public void progress(ProgressMessage message) throws DockerException {
+                            final String imageId = message.buildImageId();
+                            // Image creation successful
+                            if (imageId != null) {
+                                log.info(DockerProjectConstants.DOCKER_IMAGE_GEN_SUCCESS_MESSAGE + imageId);
+                                imageIdFromMessage.set(imageId);
+                            }
+                        }
+                    }, DockerClient.BuildParam.noCache(), DockerClient.BuildParam.forceRm());
 
             if (imageIdFromMessage.get() != null) {
                 isImageBuilt = true;
@@ -178,12 +193,27 @@ public class CarbonApplicationAndDockerBuilder extends Job {
         }
 
         // push built docker image to the docker hub registry
-        final RegistryAuth registryAuth = RegistryAuth.builder().email(configuration.getAuthEmail())
-                .username(configuration.getAuthUsername()).password(configuration.getAuthPassword()).build();
+        final RegistryAuth registryAuth;
+        if (configuration != null && !configuration.isDockerRegistry() && configuration.getRemoteRegistryURL() != null
+                && !configuration.getRemoteRegistryURL().isEmpty()) {
+            registryAuth = RegistryAuth.builder()
+                    .serverAddress(configuration.getRemoteRegistryURL())
+                    .email(configuration.getAuthEmail())
+                    .username(configuration.getAuthUsername())
+                    .password(configuration.getAuthPassword())
+                    .build();
+        } else {
+            registryAuth = RegistryAuth.builder()
+                    .email(configuration.getAuthEmail())
+                    .username(configuration.getAuthUsername())
+                    .password(configuration.getAuthPassword())
+                    .build();
+        }
+        
         try {
             final int statusCode = dockerClient.auth(registryAuth);
             if (statusCode == 200) {
-                String dockerImage = repository + ":" + tag;
+                String dockerImage = remoteRegistryURL + repository + ":" + tag;
                 dockerClient.push(dockerImage, registryAuth);
                 isImagePushed = true;
             } else {
@@ -283,7 +313,7 @@ public class CarbonApplicationAndDockerBuilder extends Job {
 
         if (isBuilt) {
             showMessageBox(DockerProjectConstants.MESSAGE_BOX_TITLE,
-                    DockerProjectConstants.DOCKER_IMAGE_GEN_SUCCESS_MESSAGE + imageId, SWT.ICON_ERROR);
+                    DockerProjectConstants.DOCKER_IMAGE_GEN_SUCCESS_MESSAGE + imageId, SWT.ICON_WORKING);
         }
 
         // pushing the docker image if its a kubernetes project
@@ -297,7 +327,7 @@ public class CarbonApplicationAndDockerBuilder extends Job {
 
             if (isPushed) {
                 showMessageBox(DockerProjectConstants.MESSAGE_BOX_TITLE,
-                        DockerProjectConstants.DOCKER_IMAGE_PUSH_SUCCESS_MESSAGE, SWT.ICON_ERROR);
+                        DockerProjectConstants.DOCKER_IMAGE_PUSH_SUCCESS_MESSAGE, SWT.ICON_WORKING);
             }
         }
         return Status.OK_STATUS;

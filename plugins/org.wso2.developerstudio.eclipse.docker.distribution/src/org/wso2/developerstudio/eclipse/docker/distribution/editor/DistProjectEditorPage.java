@@ -32,6 +32,23 @@ import java.util.Properties;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.TransformerFactoryConfigurationError;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathExpression;
+import javax.xml.xpath.XPathExpressionException;
+import javax.xml.xpath.XPathFactory;
+
 import org.apache.commons.io.IOUtils;
 import org.apache.maven.model.Dependency;
 import org.apache.maven.model.Plugin;
@@ -71,6 +88,7 @@ import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.MessageBox;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeColumn;
@@ -84,6 +102,8 @@ import org.eclipse.ui.forms.editor.FormPage;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
 import org.wso2.developerstudio.eclipse.capp.maven.utils.MavenConstants;
 
 import org.wso2.developerstudio.eclipse.distribution.project.model.DependencyData;
@@ -100,6 +120,9 @@ import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
 import org.wso2.developerstudio.eclipse.platform.core.model.AbstractListDataProvider.ListData;
 import org.wso2.developerstudio.eclipse.platform.core.utils.DeveloperStudioProviderUtils;
 import org.wso2.developerstudio.eclipse.platform.core.utils.SWTResourceManager;
+import org.wso2.developerstudio.eclipse.platform.ui.utils.PlatformUIConstants;
+import org.wso2.developerstudio.eclipse.platform.ui.utils.UserInputValidator;
+import org.xml.sax.SAXException;
 import org.eclipse.jface.dialogs.ErrorDialog;
 
 public class DistProjectEditorPage extends FormPage implements IResourceDeltaVisitor, IResourceChangeListener {
@@ -107,6 +130,8 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
     private static final String SERVER_ROLE_ATTR = "serverRole";
 
     private static final String REGISTERED_SERVER_ROLES = "org.wso2.developerstudio.register.server.role";
+    private static final String TARGET_REPOSITORY_XPATH = "/project/build/plugins/plugin/executions/execution/configuration/repository";
+    private static final String TARGET_TAG_XPATH = "/project/build/plugins/plugin/executions/execution/configuration/tag";
 
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
@@ -121,6 +146,8 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
     private Text txtGroupId;
     private Text txtArtifactId;
     private Text txtVersion;
+    private Text txtTargetRepository;
+    private Text txtTargetTag;
     private Text txtDescription;
     private boolean pageDirty;
 
@@ -142,6 +169,8 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
     private String artifactId = "";
     private String version = "";
     private String description = "";
+    private String targetRepository = "";
+    private String targetTag = "";
 
     private Action exportAction;
     private Action refreshAction;
@@ -197,26 +226,104 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
         setProjectList(projectList);
         setDependencyList(dependencyMap);
         setMissingDependencyList((Map<String, Dependency>) ((HashMap) getDependencyList()).clone());
+        readDockerImageDetails(pomFile);
+    }
+    
+    /**
+     * Read docker image details from the POM file.
+     * 
+     * @param pomFile pom file
+     */
+    private void readDockerImageDetails(File pomFile) {
+        try {
+            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder builder = factory.newDocumentBuilder();
+            Document doc = builder.parse(pomFile);
+
+            XPathExpression xpRepo = XPathFactory.newInstance().newXPath().compile(TARGET_REPOSITORY_XPATH);
+            String repository = xpRepo.evaluate(doc);
+            setTargetRepository(repository);
+
+            XPathExpression xpTag = XPathFactory.newInstance().newXPath().compile(TARGET_TAG_XPATH);
+            String tag = xpTag.evaluate(doc);
+            setTargetTag(tag);
+
+        } catch (XPathExpressionException e) {
+            log.error("XPathExpressionException while reading pomfile", e);
+        } catch (ParserConfigurationException e) {
+            log.error("ParserConfigurationException while reading pomfile", e);
+        } catch (SAXException e) {
+            log.error("SAXException while reading pomfile", e);
+        } catch (IOException e) {
+            log.error("IOException while reading pomfile", e);
+        }
     }
 
     public void savePOM() throws Exception {
-        if (editorStatus != null) {
-            if (!editorStatus.isOK()) {
-                ErrorDialog.openError(getSite().getShell(), "Warning", "The following warning(s) have been detected",
-                        editorStatus);
-                editorStatus = new Status(IStatus.OK, Activator.PLUGIN_ID, ""); // clear
-                                                                                // error
+        try {
+            if (editorStatus != null) {
+                if (!editorStatus.isOK()) {
+                    ErrorDialog.openError(getSite().getShell(), "Warning", "The following warning(s) have been detected",
+                            editorStatus);
+                    editorStatus = new Status(IStatus.OK, Activator.PLUGIN_ID, ""); // clear
+                                                                                    // error
+                }
             }
+            parentPrj.setGroupId(getGroupId());
+            parentPrj.setVersion(getVersion());
+            parentPrj.setDescription(getDescription());
+            parentPrj.setDependencies(new ArrayList<Dependency>(getDependencyList().values()));
+            MavenUtils.saveMavenProject(parentPrj, pomFile);
+            dockerFieldValidator();
+            changeDockerImageDataInSource(pomFile);
+            setPageDirty(false);
+            updateDirtyState();
+            pomFileRes.getProject().refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
+        } catch (Exception e) {
+            showMessageBox("Container Project Save Failed", e.getMessage(), SWT.ICON_ERROR);
         }
-        parentPrj.setGroupId(getGroupId());
-        parentPrj.setVersion(getVersion());
-        parentPrj.setDescription(getDescription());
-        parentPrj.setDependencies(new ArrayList<Dependency>(getDependencyList().values()));
-        MavenUtils.saveMavenProject(parentPrj, pomFile);
-        setPageDirty(false);
-        updateDirtyState();
-        pomFileRes.getProject().refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
+    }
+    
+    /**
+     * Save docker image details to the POM file.
+     * 
+     * @param pomFile pom file
+     */
+    private void changeDockerImageDataInSource(File pomFile) {
+        try {
+            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder builder = factory.newDocumentBuilder();
+            Document doc = builder.parse(pomFile);
 
+            XPath xPathRepo = XPathFactory.newInstance().newXPath();
+            Node repositoryNode = (Node) xPathRepo.compile(TARGET_REPOSITORY_XPATH).evaluate(doc, XPathConstants.NODE);
+            repositoryNode.setTextContent(getTargetRepository());
+
+            XPath xPathTag = XPathFactory.newInstance().newXPath();
+            Node tagNode = (Node) xPathTag.compile(TARGET_TAG_XPATH).evaluate(doc, XPathConstants.NODE);
+            tagNode.setTextContent(getTargetTag());
+
+            Transformer tf = TransformerFactory.newInstance().newTransformer();
+            tf.setOutputProperty(OutputKeys.INDENT, "yes");
+            tf.setOutputProperty(OutputKeys.METHOD, "xml");
+            tf.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
+
+            DOMSource domSource = new DOMSource(doc);
+            StreamResult sr = new StreamResult(pomFile);
+            tf.transform(domSource, sr);
+        } catch (TransformerException e) {
+            log.error("TransformerException while reading pomfile", e);
+        } catch (TransformerFactoryConfigurationError e) {
+            log.error("TransformerFactoryConfigurationError while reading pomfile", e);
+        } catch (XPathExpressionException e) {
+            log.error("XPathExpressionException while reading pomfile", e);
+        } catch (ParserConfigurationException e) {
+            log.error("ParserConfigurationException while reading pomfile", e);
+        } catch (SAXException e) {
+            log.error("SAXException while reading pomfile", e);
+        } catch (IOException e) {
+            log.error("IOException while reading pomfile", e);
+        }
     }
 
     private Properties identifyNonProjectProperties(Properties properties) {
@@ -293,7 +400,7 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
 
         Label lblDescription = managedForm.getToolkit().createLabel(managedForm.getForm().getBody(), "Description",
                 SWT.NONE);
-        lblDescription.setLayoutData(new GridData(SWT.RIGHT, SWT.TOP, false, false, 1, 1));
+        lblDescription.setLayoutData(new GridData(SWT.LEFT, SWT.TOP, false, false, 1, 1));
 
         txtDescription = managedForm.getToolkit().createText(managedForm.getForm().getBody(), "",
                 SWT.MULTI | SWT.V_SCROLL | SWT.WRAP);
@@ -306,6 +413,38 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
             public void modifyText(ModifyEvent evt) {
                 setPageDirty(true);
                 setDescription(txtDescription.getText().trim());
+                updateDirtyState();
+            }
+        });
+        
+        managedForm.getToolkit().createLabel(managedForm.getForm().getBody(), "Target Repository", SWT.NONE);
+
+        txtTargetRepository = managedForm.getToolkit().createText(managedForm.getForm().getBody(), "", SWT.NONE);
+        txtTargetRepository.setText(getTargetRepository());
+        GridData gd_txtTargetRepository = new GridData(SWT.LEFT, SWT.CENTER, true, false, 1, 1);
+        gd_txtTargetRepository.widthHint = 350;
+        txtTargetRepository.setLayoutData(gd_txtTargetRepository);
+        txtTargetRepository.addModifyListener(new ModifyListener() {
+
+            public void modifyText(ModifyEvent evt) {
+                setPageDirty(true);
+                setTargetRepository(txtTargetRepository.getText().trim());
+                updateDirtyState();
+            }
+        });
+        
+        managedForm.getToolkit().createLabel(managedForm.getForm().getBody(), "Target Tag", SWT.NONE);
+
+        txtTargetTag = managedForm.getToolkit().createText(managedForm.getForm().getBody(), "", SWT.NONE);
+        txtTargetTag.setText(getTargetTag());
+        GridData gd_txtTargetTag = new GridData(SWT.LEFT, SWT.CENTER, true, false, 1, 1);
+        gd_txtTargetTag.widthHint = 350;
+        txtTargetTag.setLayoutData(gd_txtTargetTag);
+        txtTargetTag.addModifyListener(new ModifyListener() {
+
+            public void modifyText(ModifyEvent evt) {
+                setPageDirty(true);
+                setTargetTag(txtTargetTag.getText().trim());
                 updateDirtyState();
             }
         });
@@ -401,6 +540,45 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
 
         form.updateToolBar();
         form.reflow(true);
+    }
+    
+    /**
+     * Validate the repository and tag fields in pom UI.
+     */
+    private void dockerFieldValidator() throws RuntimeException {
+        if (getTargetRepository() == null || getTargetRepository().isEmpty()) {
+            throw new RuntimeException(PlatformUIConstants.NO_KUBE_TARGET_REPOSITORY);
+        } else if (getTargetTag() == null || getTargetTag().isEmpty()) {
+            throw new RuntimeException(PlatformUIConstants.NO_TARGET_TAG_ERROR);
+        } else if (!UserInputValidator.isRepositoryValid(getTargetRepository())) {
+            throw new RuntimeException(PlatformUIConstants.INVALID_TARGET_REPO_MESSAGE);
+        } else if (!UserInputValidator.isTagValid(getTargetTag())) {
+            throw new RuntimeException(PlatformUIConstants.INVALID_TARGET_TAG_MESSAGE);
+        } else if (getTargetRepository() != null
+                && (getTargetRepository().split("/").length != 2 && getTargetRepository().split("/").length != 3)) {
+            throw new RuntimeException(PlatformUIConstants.KUBE_TARGET_REPOSITORY_INVALID);
+        }
+    }
+
+    /**
+     * Pop-up box for error messages.
+     * 
+     * @param title title of the box
+     * @param message message of the box
+     * @param style icon style
+     */
+    private void showMessageBox(final String title, final String message, final int style) {
+        Display.getDefault().syncExec(new Runnable() {
+            public void run() {
+                Display display = PlatformUI.getWorkbench().getDisplay();
+                Shell shell = display.getActiveShell();
+
+                MessageBox exportMsg = new MessageBox(shell, style);
+                exportMsg.setText(title);
+                exportMsg.setMessage(message);
+                exportMsg.open();
+            }
+        });
     }
 
     /**
@@ -738,18 +916,25 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
 
     public Action getExportAction() {
         if (exportAction == null) {
+            String actionIconType;
+            if (getContainerType().equals(DockerProjectConstants.KUBERNETES_CONTAINER)) {
+                actionIconType = "/icons/buildPush.png";
+            } else {
+                actionIconType = "/icons/build.png";
+            }
+            
             exportAction = new Action("Create Docker Image",
-                    ImageDescriptor.createFromImage(SWTResourceManager.getImage(this.getClass(), "/icons/car.png"))) {
+                    ImageDescriptor.createFromImage(SWTResourceManager.getImage(this.getClass(), actionIconType))) {
                 public void run() {
                     DockerHubAuth newConfiguration = null;
                     if (getContainerType().equals(DockerProjectConstants.KUBERNETES_CONTAINER)) {
                         newConfiguration = new DockerHubAuth();
-                        DockerHubLoginWizard wizard = new DockerHubLoginWizard(newConfiguration);
+                        DockerHubLoginWizard wizard = new DockerHubLoginWizard(newConfiguration, pomFileRes);
                         IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
                         wizard.init(PlatformUI.getWorkbench(), null);
                         CustomWizardDialog headerWizardDialog = new CustomWizardDialog(window.getShell(), wizard);
                         headerWizardDialog.setHelpAvailable(false);
-                        headerWizardDialog.setPageSize(580, 30);
+                        headerWizardDialog.setPageSize(580, 260);
                         headerWizardDialog.open();
 
                         if (newConfiguration.getAuthEmail() != null && newConfiguration.getAuthUsername() != null
@@ -856,6 +1041,8 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
                         txtArtifactId.setText(getArtifactId());
                         txtDescription.setText(getDescription());
                         txtGroupId.setText(getGroupId());
+                        txtTargetRepository.setText(getTargetRepository());
+                        txtTargetTag.setText(getTargetTag());
                     }
                 });
             }
@@ -975,6 +1162,22 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
 
     public boolean isDirty() {
         return isPageDirty();
+    }
+    
+    public String getTargetRepository() {
+        return targetRepository;
+    }
+
+    public void setTargetRepository(String targetRepository) {
+        this.targetRepository = targetRepository;
+    }
+
+    public String getTargetTag() {
+        return targetTag;
+    }
+
+    public void setTargetTag(String targetTag) {
+        this.targetTag = targetTag;
     }
 
     private String getRecentExportLocation(IProject project) {

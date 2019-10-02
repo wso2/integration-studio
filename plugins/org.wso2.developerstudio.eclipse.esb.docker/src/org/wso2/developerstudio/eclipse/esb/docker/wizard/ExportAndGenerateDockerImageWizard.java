@@ -74,6 +74,8 @@ public class ExportAndGenerateDockerImageWizard extends Wizard implements IExpor
     protected static final String CAPP_APPLICATION_SERVER = "capp/ApplicationServer";
     protected static final String ARTIFACT_TYPES = "capp/ApplicationServer";
     protected static final String POM_FILE_NAME = "pom.xml";
+    protected static final String DOCKER_IMAGE_NAME_SESSION_PROPERTY_SUFFIX = "DIN";
+    protected static final String DOCKER_IMAGE_TAG_SESSION_PROPERTY_SUFFIX = "DTN";
 
     private DistributionProjectExportWizardPage mainPage;
     private CarExportDetailsWizardPage detailsPage;
@@ -277,11 +279,17 @@ public class ExportAndGenerateDockerImageWizard extends Wizard implements IExpor
 
     private void setSessionProperty() {
         try {
-            detailsPage.getSelectedProject()
-                    .setSessionProperty(
-                            new QualifiedName(ExportImageWizardConstants.EMPTY_STRING,
-                                    detailsPage.getSelectedProject().getName()),
-                            detailsPage.getTxtExportPathText().getText());
+            IProject selectedProject = detailsPage.getSelectedProject();
+            selectedProject.setSessionProperty(new QualifiedName(ExportImageWizardConstants.EMPTY_STRING,
+                    detailsPage.getSelectedProject().getName()), detailsPage.getTxtExportPathText().getText());
+            selectedProject.setSessionProperty(
+                    new QualifiedName(ExportImageWizardConstants.EMPTY_STRING,
+                            detailsPage.getSelectedProject().getName() + DOCKER_IMAGE_NAME_SESSION_PROPERTY_SUFFIX),
+                    detailsPage.getImageName());
+            selectedProject.setSessionProperty(
+                    new QualifiedName(ExportImageWizardConstants.EMPTY_STRING,
+                            detailsPage.getSelectedProject().getName() + DOCKER_IMAGE_TAG_SESSION_PROPERTY_SUFFIX),
+                    detailsPage.getImageTag());
         } catch (CoreException e) {
             log.error("Error geting session properties", e);
         }

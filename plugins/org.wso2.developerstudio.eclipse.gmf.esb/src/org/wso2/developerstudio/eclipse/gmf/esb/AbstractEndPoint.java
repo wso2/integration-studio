@@ -281,12 +281,12 @@ public interface AbstractEndPoint extends EndPoint {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Retry Count</em>' attribute.
-     * @see #setRetryCount(int)
+     * @see #setRetryCount(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractEndPoint_RetryCount()
      * @model default="0"
      * @generated
      */
-    int getRetryCount();
+    String getRetryCount();
 
     /**
      * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getRetryCount <em>Retry Count</em>}' attribute.
@@ -296,7 +296,7 @@ public interface AbstractEndPoint extends EndPoint {
      * @see #getRetryCount()
      * @generated
      */
-    void setRetryCount(int value);
+    void setRetryCount(String value);
 
     /**
      * Returns the value of the '<em><b>Retry Delay</b></em>' attribute.
@@ -361,12 +361,12 @@ public interface AbstractEndPoint extends EndPoint {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Suspend Initial Duration</em>' attribute.
-     * @see #setSuspendInitialDuration(long)
+     * @see #setSuspendInitialDuration(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractEndPoint_SuspendInitialDuration()
      * @model default="-1"
      * @generated
      */
-    long getSuspendInitialDuration();
+    String getSuspendInitialDuration();
 
     /**
      * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getSuspendInitialDuration <em>Suspend Initial Duration</em>}' attribute.
@@ -376,7 +376,7 @@ public interface AbstractEndPoint extends EndPoint {
      * @see #getSuspendInitialDuration()
      * @generated
      */
-    void setSuspendInitialDuration(long value);
+    void setSuspendInitialDuration(String value);
 
     /**
      * Returns the value of the '<em><b>Suspend Maximum Duration</b></em>' attribute.
@@ -415,12 +415,12 @@ public interface AbstractEndPoint extends EndPoint {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Suspend Progression Factor</em>' attribute.
-     * @see #setSuspendProgressionFactor(float)
+     * @see #setSuspendProgressionFactor(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractEndPoint_SuspendProgressionFactor()
      * @model default="-1"
      * @generated
      */
-    float getSuspendProgressionFactor();
+    String getSuspendProgressionFactor();
 
     /**
      * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getSuspendProgressionFactor <em>Suspend Progression Factor</em>}' attribute.
@@ -430,7 +430,7 @@ public interface AbstractEndPoint extends EndPoint {
      * @see #getSuspendProgressionFactor()
      * @generated
      */
-    void setSuspendProgressionFactor(float value);
+    void setSuspendProgressionFactor(String value);
 
     /**
      * Returns the value of the '<em><b>Reliable Messaging Policy</b></em>' containment reference.

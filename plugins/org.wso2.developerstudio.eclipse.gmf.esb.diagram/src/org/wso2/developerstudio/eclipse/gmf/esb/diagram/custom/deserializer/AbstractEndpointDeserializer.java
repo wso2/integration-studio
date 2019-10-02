@@ -93,7 +93,7 @@ public abstract class AbstractEndpointDeserializer
                 executeSetValueCommand(ABSTRACT_END_POINT__OPTIMIZE, EndPointAttachmentOptimization.SWA);
             }
 
-            for (Integer code : endpoint.getDefinition().getSuspendErrorCodes()) {
+            for (String code : endpoint.getDefinition().getSuspendErrorCodes()) {
                 if (suspendErrorCodes == null) {
                     suspendErrorCodes = code.toString();
                 } else {

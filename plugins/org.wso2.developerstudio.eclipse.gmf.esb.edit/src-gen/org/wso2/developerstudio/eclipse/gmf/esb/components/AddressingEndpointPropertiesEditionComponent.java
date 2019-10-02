@@ -162,9 +162,8 @@ public class AddressingEndpointPropertiesEditionComponent extends SinglePartProp
 			if (isAccessible(EsbViewsRepository.AddressingEndpoint.Properties.retryErrorCodes))
 				basePart.setRetryErrorCodes(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, addressingEndpoint.getRetryErrorCodes()));
 			
-			if (isAccessible(EsbViewsRepository.AddressingEndpoint.Properties.retryCount)) {
-				basePart.setRetryCount(EEFConverterUtil.convertToString(EcorePackage.Literals.EINT, addressingEndpoint.getRetryCount()));
-			}
+			if (isAccessible(EsbViewsRepository.AddressingEndpoint.Properties.retryCount))
+				basePart.setRetryCount(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, addressingEndpoint.getRetryCount()));
 			
 			if (isAccessible(EsbViewsRepository.AddressingEndpoint.Properties.retryDelay)) {
 				basePart.setRetryDelay(EEFConverterUtil.convertToString(EcorePackage.Literals.ELONG, addressingEndpoint.getRetryDelay()));
@@ -173,17 +172,15 @@ public class AddressingEndpointPropertiesEditionComponent extends SinglePartProp
 			if (isAccessible(EsbViewsRepository.AddressingEndpoint.Properties.suspendErrorCodes))
 				basePart.setSuspendErrorCodes(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, addressingEndpoint.getSuspendErrorCodes()));
 			
-			if (isAccessible(EsbViewsRepository.AddressingEndpoint.Properties.suspendInitialDuration)) {
-				basePart.setSuspendInitialDuration(EEFConverterUtil.convertToString(EcorePackage.Literals.ELONG, addressingEndpoint.getSuspendInitialDuration()));
-			}
+			if (isAccessible(EsbViewsRepository.AddressingEndpoint.Properties.suspendInitialDuration))
+				basePart.setSuspendInitialDuration(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, addressingEndpoint.getSuspendInitialDuration()));
 			
 			if (isAccessible(EsbViewsRepository.AddressingEndpoint.Properties.suspendMaximumDuration)) {
 				basePart.setSuspendMaximumDuration(EEFConverterUtil.convertToString(EcorePackage.Literals.ELONG, addressingEndpoint.getSuspendMaximumDuration()));
 			}
 			
-			if (isAccessible(EsbViewsRepository.AddressingEndpoint.Properties.suspendProgressionFactor)) {
-				basePart.setSuspendProgressionFactor(EEFConverterUtil.convertToString(EcorePackage.Literals.EFLOAT, addressingEndpoint.getSuspendProgressionFactor()));
-			}
+			if (isAccessible(EsbViewsRepository.AddressingEndpoint.Properties.suspendProgressionFactor))
+				basePart.setSuspendProgressionFactor(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, addressingEndpoint.getSuspendProgressionFactor()));
 			
 			if (isAccessible(EsbViewsRepository.AddressingEndpoint.Properties.format)) {
 				basePart.initFormat(EEFUtils.choiceOfValues(addressingEndpoint, EsbPackage.eINSTANCE.getAbstractEndPoint_Format()), addressingEndpoint.getFormat());
@@ -464,7 +461,7 @@ public class AddressingEndpointPropertiesEditionComponent extends SinglePartProp
 			addressingEndpoint.setRetryErrorCodes((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (EsbViewsRepository.AddressingEndpoint.Properties.retryCount == event.getAffectedEditor()) {
-			addressingEndpoint.setRetryCount((EEFConverterUtil.createIntFromString(EcorePackage.Literals.EINT, (String)event.getNewValue())));
+			addressingEndpoint.setRetryCount((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (EsbViewsRepository.AddressingEndpoint.Properties.retryDelay == event.getAffectedEditor()) {
 			addressingEndpoint.setRetryDelay((EEFConverterUtil.createLongFromString(EcorePackage.Literals.ELONG, (String)event.getNewValue())));
@@ -473,13 +470,13 @@ public class AddressingEndpointPropertiesEditionComponent extends SinglePartProp
 			addressingEndpoint.setSuspendErrorCodes((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (EsbViewsRepository.AddressingEndpoint.Properties.suspendInitialDuration == event.getAffectedEditor()) {
-			addressingEndpoint.setSuspendInitialDuration((EEFConverterUtil.createLongFromString(EcorePackage.Literals.ELONG, (String)event.getNewValue())));
+			addressingEndpoint.setSuspendInitialDuration((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (EsbViewsRepository.AddressingEndpoint.Properties.suspendMaximumDuration == event.getAffectedEditor()) {
 			addressingEndpoint.setSuspendMaximumDuration((EEFConverterUtil.createLongFromString(EcorePackage.Literals.ELONG, (String)event.getNewValue())));
 		}
 		if (EsbViewsRepository.AddressingEndpoint.Properties.suspendProgressionFactor == event.getAffectedEditor()) {
-			addressingEndpoint.setSuspendProgressionFactor((EEFConverterUtil.createFloatFromString(EcorePackage.Literals.EFLOAT, (String)event.getNewValue())));
+			addressingEndpoint.setSuspendProgressionFactor((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (EsbViewsRepository.AddressingEndpoint.Properties.format == event.getAffectedEditor()) {
 			addressingEndpoint.setFormat((EndPointMessageFormat)event.getNewValue());
@@ -602,7 +599,7 @@ public class AddressingEndpointPropertiesEditionComponent extends SinglePartProp
 			}
 			if (EsbPackage.eINSTANCE.getAbstractEndPoint_RetryCount().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.AddressingEndpoint.Properties.retryCount)) {
 				if (msg.getNewValue() != null) {
-					basePart.setRetryCount(EcoreUtil.convertToString(EcorePackage.Literals.EINT, msg.getNewValue()));
+					basePart.setRetryCount(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setRetryCount("");
 				}
@@ -623,7 +620,7 @@ public class AddressingEndpointPropertiesEditionComponent extends SinglePartProp
 			}
 			if (EsbPackage.eINSTANCE.getAbstractEndPoint_SuspendInitialDuration().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.AddressingEndpoint.Properties.suspendInitialDuration)) {
 				if (msg.getNewValue() != null) {
-					basePart.setSuspendInitialDuration(EcoreUtil.convertToString(EcorePackage.Literals.ELONG, msg.getNewValue()));
+					basePart.setSuspendInitialDuration(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setSuspendInitialDuration("");
 				}
@@ -637,7 +634,7 @@ public class AddressingEndpointPropertiesEditionComponent extends SinglePartProp
 			}
 			if (EsbPackage.eINSTANCE.getAbstractEndPoint_SuspendProgressionFactor().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.AddressingEndpoint.Properties.suspendProgressionFactor)) {
 				if (msg.getNewValue() != null) {
-					basePart.setSuspendProgressionFactor(EcoreUtil.convertToString(EcorePackage.Literals.EFLOAT, msg.getNewValue()));
+					basePart.setSuspendProgressionFactor(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setSuspendProgressionFactor("");
 				}

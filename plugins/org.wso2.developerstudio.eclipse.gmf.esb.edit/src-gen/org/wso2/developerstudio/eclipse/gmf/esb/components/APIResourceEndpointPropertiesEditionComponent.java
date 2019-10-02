@@ -162,9 +162,8 @@ public class APIResourceEndpointPropertiesEditionComponent extends SinglePartPro
 			if (isAccessible(EsbViewsRepository.APIResourceEndpoint.Properties.retryErrorCodes))
 				basePart.setRetryErrorCodes(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, aPIResourceEndpoint.getRetryErrorCodes()));
 			
-			if (isAccessible(EsbViewsRepository.APIResourceEndpoint.Properties.retryCount)) {
-				basePart.setRetryCount(EEFConverterUtil.convertToString(EcorePackage.Literals.EINT, aPIResourceEndpoint.getRetryCount()));
-			}
+			if (isAccessible(EsbViewsRepository.APIResourceEndpoint.Properties.retryCount))
+				basePart.setRetryCount(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, aPIResourceEndpoint.getRetryCount()));
 			
 			if (isAccessible(EsbViewsRepository.APIResourceEndpoint.Properties.retryDelay)) {
 				basePart.setRetryDelay(EEFConverterUtil.convertToString(EcorePackage.Literals.ELONG, aPIResourceEndpoint.getRetryDelay()));
@@ -173,17 +172,15 @@ public class APIResourceEndpointPropertiesEditionComponent extends SinglePartPro
 			if (isAccessible(EsbViewsRepository.APIResourceEndpoint.Properties.suspendErrorCodes))
 				basePart.setSuspendErrorCodes(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, aPIResourceEndpoint.getSuspendErrorCodes()));
 			
-			if (isAccessible(EsbViewsRepository.APIResourceEndpoint.Properties.suspendInitialDuration)) {
-				basePart.setSuspendInitialDuration(EEFConverterUtil.convertToString(EcorePackage.Literals.ELONG, aPIResourceEndpoint.getSuspendInitialDuration()));
-			}
+			if (isAccessible(EsbViewsRepository.APIResourceEndpoint.Properties.suspendInitialDuration))
+				basePart.setSuspendInitialDuration(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, aPIResourceEndpoint.getSuspendInitialDuration()));
 			
 			if (isAccessible(EsbViewsRepository.APIResourceEndpoint.Properties.suspendMaximumDuration)) {
 				basePart.setSuspendMaximumDuration(EEFConverterUtil.convertToString(EcorePackage.Literals.ELONG, aPIResourceEndpoint.getSuspendMaximumDuration()));
 			}
 			
-			if (isAccessible(EsbViewsRepository.APIResourceEndpoint.Properties.suspendProgressionFactor)) {
-				basePart.setSuspendProgressionFactor(EEFConverterUtil.convertToString(EcorePackage.Literals.EFLOAT, aPIResourceEndpoint.getSuspendProgressionFactor()));
-			}
+			if (isAccessible(EsbViewsRepository.APIResourceEndpoint.Properties.suspendProgressionFactor))
+				basePart.setSuspendProgressionFactor(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, aPIResourceEndpoint.getSuspendProgressionFactor()));
 			
 			if (isAccessible(EsbViewsRepository.APIResourceEndpoint.Properties.format)) {
 				basePart.initFormat(EEFUtils.choiceOfValues(aPIResourceEndpoint, EsbPackage.eINSTANCE.getAbstractEndPoint_Format()), aPIResourceEndpoint.getFormat());
@@ -464,7 +461,7 @@ public class APIResourceEndpointPropertiesEditionComponent extends SinglePartPro
 			aPIResourceEndpoint.setRetryErrorCodes((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (EsbViewsRepository.APIResourceEndpoint.Properties.retryCount == event.getAffectedEditor()) {
-			aPIResourceEndpoint.setRetryCount((EEFConverterUtil.createIntFromString(EcorePackage.Literals.EINT, (String)event.getNewValue())));
+			aPIResourceEndpoint.setRetryCount((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (EsbViewsRepository.APIResourceEndpoint.Properties.retryDelay == event.getAffectedEditor()) {
 			aPIResourceEndpoint.setRetryDelay((EEFConverterUtil.createLongFromString(EcorePackage.Literals.ELONG, (String)event.getNewValue())));
@@ -473,13 +470,13 @@ public class APIResourceEndpointPropertiesEditionComponent extends SinglePartPro
 			aPIResourceEndpoint.setSuspendErrorCodes((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (EsbViewsRepository.APIResourceEndpoint.Properties.suspendInitialDuration == event.getAffectedEditor()) {
-			aPIResourceEndpoint.setSuspendInitialDuration((EEFConverterUtil.createLongFromString(EcorePackage.Literals.ELONG, (String)event.getNewValue())));
+			aPIResourceEndpoint.setSuspendInitialDuration((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (EsbViewsRepository.APIResourceEndpoint.Properties.suspendMaximumDuration == event.getAffectedEditor()) {
 			aPIResourceEndpoint.setSuspendMaximumDuration((EEFConverterUtil.createLongFromString(EcorePackage.Literals.ELONG, (String)event.getNewValue())));
 		}
 		if (EsbViewsRepository.APIResourceEndpoint.Properties.suspendProgressionFactor == event.getAffectedEditor()) {
-			aPIResourceEndpoint.setSuspendProgressionFactor((EEFConverterUtil.createFloatFromString(EcorePackage.Literals.EFLOAT, (String)event.getNewValue())));
+			aPIResourceEndpoint.setSuspendProgressionFactor((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (EsbViewsRepository.APIResourceEndpoint.Properties.format == event.getAffectedEditor()) {
 			aPIResourceEndpoint.setFormat((EndPointMessageFormat)event.getNewValue());
@@ -602,7 +599,7 @@ public class APIResourceEndpointPropertiesEditionComponent extends SinglePartPro
 			}
 			if (EsbPackage.eINSTANCE.getAbstractEndPoint_RetryCount().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.APIResourceEndpoint.Properties.retryCount)) {
 				if (msg.getNewValue() != null) {
-					basePart.setRetryCount(EcoreUtil.convertToString(EcorePackage.Literals.EINT, msg.getNewValue()));
+					basePart.setRetryCount(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setRetryCount("");
 				}
@@ -623,7 +620,7 @@ public class APIResourceEndpointPropertiesEditionComponent extends SinglePartPro
 			}
 			if (EsbPackage.eINSTANCE.getAbstractEndPoint_SuspendInitialDuration().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.APIResourceEndpoint.Properties.suspendInitialDuration)) {
 				if (msg.getNewValue() != null) {
-					basePart.setSuspendInitialDuration(EcoreUtil.convertToString(EcorePackage.Literals.ELONG, msg.getNewValue()));
+					basePart.setSuspendInitialDuration(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setSuspendInitialDuration("");
 				}
@@ -637,7 +634,7 @@ public class APIResourceEndpointPropertiesEditionComponent extends SinglePartPro
 			}
 			if (EsbPackage.eINSTANCE.getAbstractEndPoint_SuspendProgressionFactor().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.APIResourceEndpoint.Properties.suspendProgressionFactor)) {
 				if (msg.getNewValue() != null) {
-					basePart.setSuspendProgressionFactor(EcoreUtil.convertToString(EcorePackage.Literals.EFLOAT, msg.getNewValue()));
+					basePart.setSuspendProgressionFactor(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setSuspendProgressionFactor("");
 				}

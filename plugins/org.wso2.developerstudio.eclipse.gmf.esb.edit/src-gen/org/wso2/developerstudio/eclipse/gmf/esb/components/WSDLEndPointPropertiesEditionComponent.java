@@ -552,7 +552,7 @@ public class WSDLEndPointPropertiesEditionComponent extends SinglePartProperties
 			wSDLEndPoint.setRetryErrorCodes((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (EsbViewsRepository.WSDLEndPoint.EndpointTimeoutState.retryCount == event.getAffectedEditor()) {
-			wSDLEndPoint.setRetryCount((EEFConverterUtil.createIntFromString(EcorePackage.Literals.EINT, (String)event.getNewValue())));
+			wSDLEndPoint.setRetryCount((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (EsbViewsRepository.WSDLEndPoint.EndpointTimeoutState.retryDelay == event.getAffectedEditor()) {
 			wSDLEndPoint.setRetryDelay((EEFConverterUtil.createLongFromString(EcorePackage.Literals.ELONG, (String)event.getNewValue())));
@@ -561,13 +561,13 @@ public class WSDLEndPointPropertiesEditionComponent extends SinglePartProperties
 			wSDLEndPoint.setSuspendErrorCodes((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (EsbViewsRepository.WSDLEndPoint.EndpointSuspendState.suspendInitialDuration == event.getAffectedEditor()) {
-			wSDLEndPoint.setSuspendInitialDuration((EEFConverterUtil.createLongFromString(EcorePackage.Literals.ELONG, (String)event.getNewValue())));
+			wSDLEndPoint.setSuspendInitialDuration((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (EsbViewsRepository.WSDLEndPoint.EndpointSuspendState.suspendMaximumDuration == event.getAffectedEditor()) {
 			wSDLEndPoint.setSuspendMaximumDuration((EEFConverterUtil.createLongFromString(EcorePackage.Literals.ELONG, (String)event.getNewValue())));
 		}
 		if (EsbViewsRepository.WSDLEndPoint.EndpointSuspendState.suspendProgressionFactor == event.getAffectedEditor()) {
-			wSDLEndPoint.setSuspendProgressionFactor((EEFConverterUtil.createFloatFromString(EcorePackage.Literals.EFLOAT, (String)event.getNewValue())));
+			wSDLEndPoint.setSuspendProgressionFactor((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (EsbViewsRepository.WSDLEndPoint.Basic.format == event.getAffectedEditor()) {
 			wSDLEndPoint.setFormat((EndPointMessageFormat)event.getNewValue());

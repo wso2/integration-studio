@@ -121,7 +121,7 @@ public abstract class AbstractEndpointTransformer extends AbstractEsbNodeTransfo
                 List<String> suspendCodes = Arrays.asList(suspendErrorCodesList);
                 for (String code : suspendCodes) {
                     try {
-                        synapseEPDef.addSuspendErrorCode(Integer.parseInt(code));
+                        synapseEPDef.addSuspendErrorCode(code);
                     } catch (NumberFormatException ex) {
                         throw new NumberFormatException(
                                 "Input for Suspend Error Codes is invalid,the value should be an interger");
@@ -134,7 +134,7 @@ public abstract class AbstractEndpointTransformer extends AbstractEsbNodeTransfo
                 && StringUtils.isNotEmpty(endpointCommons.getEndpointSuspendInitialDuration().getText())) {
             try {
                 synapseEPDef.setInitialSuspendDuration(
-                        Long.parseLong(endpointCommons.getEndpointSuspendInitialDuration().getText().trim()));
+                        endpointCommons.getEndpointSuspendInitialDuration().getText().trim());
             } catch (NumberFormatException ex) {
                 throw new NumberFormatException(
                         "Input for Suspend Initial Duration is invalid,the value should be a long");
@@ -157,7 +157,7 @@ public abstract class AbstractEndpointTransformer extends AbstractEsbNodeTransfo
                 && StringUtils.isNotEmpty(endpointCommons.getEndpointSuspendProgressFactor().getText())) {
             try {
                 synapseEPDef.setSuspendProgressionFactor(
-                        Float.parseFloat((endpointCommons.getEndpointSuspendProgressFactor().getText().trim())));
+                        (endpointCommons.getEndpointSuspendProgressFactor().getText().trim()));
             } catch (NumberFormatException ex) {
                 throw new NumberFormatException(
                         "Input for Suspend Progression Factor is invalid,the value should be a float");
@@ -186,7 +186,7 @@ public abstract class AbstractEndpointTransformer extends AbstractEsbNodeTransfo
                 && StringUtils.isNotEmpty(endpointCommons.getEndpointRetryCount().getText())) {
             try {
                 synapseEPDef.setRetriesOnTimeoutBeforeSuspend(
-                        Integer.parseInt(endpointCommons.getEndpointRetryCount().getText().trim()));
+                        endpointCommons.getEndpointRetryCount().getText().trim());
             } catch (NumberFormatException ex) {
                 throw new NumberFormatException("Input for Entry Count is invalid,the value should be a float");
             }
@@ -326,7 +326,7 @@ public abstract class AbstractEndpointTransformer extends AbstractEsbNodeTransfo
             String[] suspendErrorCodesList = suspendErrorCodes.split("\\,");
             List<String> suspendCodes = Arrays.asList(suspendErrorCodesList);
             for (String code : suspendCodes) {
-                synapseEPDef.addSuspendErrorCode(Integer.parseInt(code));
+                synapseEPDef.addSuspendErrorCode(code);
             }
         }
         synapseEPDef.setInitialSuspendDuration(visualEndPoint.getSuspendInitialDuration());

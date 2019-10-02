@@ -94,6 +94,12 @@ public class CarExportDetailsWizardPage extends WizardPage {
                 setSelectedProject(project);
                 exportPath = (String) getSelectedProject()
                         .getSessionProperty(new QualifiedName(EMPTY_STRING, getSelectedProject().getName()));
+                imageName = (String) getSelectedProject()
+                        .getSessionProperty(new QualifiedName(EMPTY_STRING, getSelectedProject().getName()
+                                + ExportAndGenerateDockerImageWizard.DOCKER_IMAGE_NAME_SESSION_PROPERTY_SUFFIX));
+                imageTag = (String) getSelectedProject()
+                        .getSessionProperty(new QualifiedName(EMPTY_STRING, getSelectedProject().getName()
+                                + ExportAndGenerateDockerImageWizard.DOCKER_IMAGE_TAG_SESSION_PROPERTY_SUFFIX));
             }
         } catch (CoreException e) {
             log.error("Error getting session properties", e);
@@ -160,8 +166,13 @@ public class CarExportDetailsWizardPage extends WizardPage {
         txtImageNameGridData.widthHint = 253;
         txtImageName.setLayoutData(txtImageNameGridData);
         initialImageName = getImageName();
-        txtImageName.setText(initialImageName);
-
+        
+        if (initialImageName != null) {
+            txtImageName.setText(initialImageName);
+        } else {
+            setPageComplete(false);
+        }
+        
         txtImageName.addModifyListener(new ModifyListener() {
 
             public void modifyText(ModifyEvent evt) {
@@ -182,8 +193,13 @@ public class CarExportDetailsWizardPage extends WizardPage {
         txtImageTagGridData.widthHint = 253;
         txtImageTag.setLayoutData(txtImageTagGridData);
         initialImageTag = getImageTag();
-        txtImageTag.setText(initialImageTag);
-
+        
+        if (initialImageTag != null) {
+            txtImageTag.setText(initialImageTag);
+        } else {
+            setPageComplete(false);
+        }
+        
         txtImageTag.addModifyListener(new ModifyListener() {
 
             public void modifyText(ModifyEvent evt) {

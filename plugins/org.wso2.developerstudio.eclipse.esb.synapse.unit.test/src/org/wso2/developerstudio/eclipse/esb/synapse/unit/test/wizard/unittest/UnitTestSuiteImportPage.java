@@ -83,7 +83,7 @@ public class UnitTestSuiteImportPage extends WizardPage {
         FormData fd = new FormData();
         fd.top = new FormAttachment(5);
         fd.left = new FormAttachment(2);
-        fd.width = 200;
+        fd.width = 250;
         lblName.setLayoutData(fd);
         lblName.setText(IMPORT_UNIT_TEST_SUITE);
 
@@ -135,7 +135,7 @@ public class UnitTestSuiteImportPage extends WizardPage {
         fd = new FormData();
         fd.top = new FormAttachment(lblName, 20);
         fd.left = new FormAttachment(2);
-        fd.width = 200;
+        fd.width = 250;
         lblExportDestination.setLayoutData(fd);
         lblExportDestination.setText(UNIT_TEST_SUITE_SAVE_PATH);
 

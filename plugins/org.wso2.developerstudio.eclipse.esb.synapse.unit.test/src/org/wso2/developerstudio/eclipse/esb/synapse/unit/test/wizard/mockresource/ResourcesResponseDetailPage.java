@@ -160,7 +160,7 @@ public class ResourcesResponseDetailPage extends WizardPage {
         data = new FormData();
         data.top = new FormAttachment(grpResponseData, 10);
         data.left = new FormAttachment(1);
-        data.width = 160;
+        data.width = 250;
         lblStatusCode.setLayoutData(data);
         lblStatusCode.setText(STATUS_CODE);
 
@@ -215,7 +215,7 @@ public class ResourcesResponseDetailPage extends WizardPage {
         responseHeaderAddButton.setLayoutData(data);
 
         data = new FormData();
-        data.height = 100;
+        data.height = 140;
         data.top = new FormAttachment(responseHeaderRemoveButton, 5);
         data.left = new FormAttachment(1);
         data.right = new FormAttachment(99);
@@ -316,7 +316,6 @@ public class ResourcesResponseDetailPage extends WizardPage {
         data = new FormData();
         data.top = new FormAttachment(responseHeaderTable, 20);
         data.left = new FormAttachment(1);
-        data.width = 160;
         lblServiceResponsePayload.setLayoutData(data);
         lblServiceResponsePayload.setText(SERVICE_RESPONSE_PAYLOAD);
 

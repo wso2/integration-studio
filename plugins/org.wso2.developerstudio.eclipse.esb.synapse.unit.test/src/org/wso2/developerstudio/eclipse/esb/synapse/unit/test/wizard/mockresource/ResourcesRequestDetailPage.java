@@ -140,7 +140,7 @@ public class ResourcesRequestDetailPage extends WizardPage {
         data = new FormData();
         data.top = new FormAttachment(2);
         data.left = new FormAttachment(3);
-        data.width = 160;
+        data.width = 250;
         lblServiceSubContext.setLayoutData(data);
         lblServiceSubContext.setText(SERVICE_SUB_CONTEXT);
 
@@ -178,7 +178,7 @@ public class ResourcesRequestDetailPage extends WizardPage {
         data = new FormData();
         data.top = new FormAttachment(lblServiceSubContext, 12);
         data.left = new FormAttachment(3);
-        data.width = 160;
+        data.width = 250;
         lblServiceMethod.setLayoutData(data);
         lblServiceMethod.setText(SERVICE_METHOD);
 
@@ -259,7 +259,7 @@ public class ResourcesRequestDetailPage extends WizardPage {
         Label lblAddHeaders = new Label(grpRequestData, SWT.NONE);
         data = new FormData();
         data.top = new FormAttachment(grpRequestData, 10);
-        data.width = 190;
+        data.width = 250;
         data.left = new FormAttachment(1);
         lblAddHeaders.setLayoutData(data);
         lblAddHeaders.setText(ADD_REQUEST_HEADERS);
@@ -282,7 +282,7 @@ public class ResourcesRequestDetailPage extends WizardPage {
         requestHeaderAddButton.setLayoutData(data);
 
         data = new FormData();
-        data.height = 80;
+        data.height = 140;
         data.top = new FormAttachment(requestHeaderRemoveButton, 5);
         data.left = new FormAttachment(1);
         data.right = new FormAttachment(99);
@@ -383,7 +383,7 @@ public class ResourcesRequestDetailPage extends WizardPage {
         data = new FormData();
         data.top = new FormAttachment(requestHeaderTable, 20);
         data.left = new FormAttachment(1);
-        data.width = 190;
+        data.width = 250;
         lblServiceRequestPayload.setLayoutData(data);
         lblServiceRequestPayload.setText(SERVICE_REQUEST_PAYLOAD);
 

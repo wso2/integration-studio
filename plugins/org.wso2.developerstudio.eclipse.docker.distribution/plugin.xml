@@ -6,7 +6,7 @@
          <wizard
                category="org.wso2.developerstudio.eclipse.capp.distribution"
                class="org.wso2.developerstudio.eclipse.docker.distribution.ui.wizard.ContainerProjectCreationWizard"
-               icon="icons/ds-16x16.png"
+               icon="icons/car.png"
                id="org.wso2.developerstudio.eclipse.artifact.newdockerproject"
                name="Docker/Kubernetes Project"
                project="true"

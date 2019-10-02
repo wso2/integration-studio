@@ -130,6 +130,9 @@ public class ContainerProjectFieldValidator extends AbstractFieldController {
                 throw new FieldValidationException(PlatformUIConstants.NO_KUBE_TARGET_REPOSITORY);
             } else if (!UserInputValidator.isRepositoryValid(targetRepository)) {
                 throw new FieldValidationException(PlatformUIConstants.INVALID_TARGET_REPO_MESSAGE);
+            } else if (targetRepository != null
+                    && (targetRepository.split("/").length != 2 && targetRepository.split("/").length != 3)) {
+                throw new FieldValidationException(PlatformUIConstants.KUBE_TARGET_REPOSITORY_INVALID);
             }
         } else if (modelProperty.equals("kube.targetTag")) {
             String targetTag = value.toString();

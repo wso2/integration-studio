@@ -119,7 +119,7 @@ public class UnitTestConfigurationDetailPage extends WizardPage {
         data = new FormData();
         data.top = new FormAttachment(grpLocalServerData, 10);
         data.left = new FormAttachment(3);
-        data.width = 150;
+        data.width = 230;
         lblServerPath.setLayoutData(data);
         lblServerPath.setText(SERVER_PATH);
 
@@ -127,7 +127,7 @@ public class UnitTestConfigurationDetailPage extends WizardPage {
         data = new FormData();
         data.top = new FormAttachment(grpLocalServerData, 10);
         data.left = new FormAttachment(lblServerPath, 0);
-        data.width = 310;
+        data.width = 350;
         data.height = 19;
         txtServerPath.setLayoutData(data);
         txtServerPath.setText(getLocalServerDefaultPath());
@@ -166,7 +166,7 @@ public class UnitTestConfigurationDetailPage extends WizardPage {
         data = new FormData();
         data.top = new FormAttachment(lblServerPath, 15);
         data.left = new FormAttachment(3);
-        data.width = 150;
+        data.width = 230;
         lblServerPort.setLayoutData(data);
         lblServerPort.setText(SERVER_PORT);
 
@@ -220,7 +220,7 @@ public class UnitTestConfigurationDetailPage extends WizardPage {
         data = new FormData();
         data.top = new FormAttachment(grpRemoteServerData, 10);
         data.left = new FormAttachment(3);
-        data.width = 150;
+        data.width = 230;
         lblServerHost.setLayoutData(data);
         lblServerHost.setText(SERVER_HOST);
 
@@ -243,7 +243,7 @@ public class UnitTestConfigurationDetailPage extends WizardPage {
         data = new FormData();
         data.top = new FormAttachment(lblServerHost, 15);
         data.left = new FormAttachment(3);
-        data.width = 150;
+        data.width = 230;
         lblRemoteServerPort.setLayoutData(data);
         lblRemoteServerPort.setText(SERVER_PORT);
 

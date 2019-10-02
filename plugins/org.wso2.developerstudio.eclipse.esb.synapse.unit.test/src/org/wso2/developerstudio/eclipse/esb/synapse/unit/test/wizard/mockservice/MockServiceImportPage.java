@@ -83,7 +83,7 @@ public class MockServiceImportPage extends WizardPage {
         FormData fd = new FormData();
         fd.top = new FormAttachment(5);
         fd.left = new FormAttachment(2);
-        fd.width = 200;
+        fd.width = 300;
         lblName.setLayoutData(fd);
         lblName.setText(IMPORT_MOCK_SERVICE_SUITE);
 
@@ -127,7 +127,7 @@ public class MockServiceImportPage extends WizardPage {
         fd = new FormData();
         fd.top = new FormAttachment(lblName, 20);
         fd.left = new FormAttachment(2);
-        fd.width = 200;
+        fd.width = 300;
         lblExportDestination.setLayoutData(fd);
         lblExportDestination.setText(MOCK_SERVICE_SUITE_SAVE_PATH);
 

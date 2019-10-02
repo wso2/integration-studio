@@ -102,7 +102,7 @@ public class UnitTestSuiteDetailPage extends WizardPage {
         FormData data = new FormData();
         data.top = new FormAttachment(5);
         data.left = new FormAttachment(2);
-        data.width = 200;
+        data.width = 250;
         lblName.setLayoutData(data);
         lblName.setText(UNIT_TEST_SUITE_NAME);
 
@@ -126,7 +126,7 @@ public class UnitTestSuiteDetailPage extends WizardPage {
         data = new FormData();
         data.top = new FormAttachment(lblName, 20);
         data.left = new FormAttachment(2);
-        data.width = 200;
+        data.width = 250;
         lblExportDestination.setLayoutData(data);
         lblExportDestination.setText(UNIT_TEST_SUITE_SAVE_PATH);
 

@@ -130,7 +130,7 @@ public class MockServiceDetailPage extends WizardPage {
         FormData data = new FormData();
         data.top = new FormAttachment(5);
         data.left = new FormAttachment(3);
-        data.width = 250;
+        data.width = 300;
         lblName.setLayoutData(data);
         lblName.setText(UNIT_TEST_SUITE_NAME);
 
@@ -154,7 +154,7 @@ public class MockServiceDetailPage extends WizardPage {
         data = new FormData();
         data.top = new FormAttachment(lblName, 14);
         data.left = new FormAttachment(3);
-        data.width = 250;
+        data.width = 300;
         lblExportDestination.setLayoutData(data);
         lblExportDestination.setText(UNIT_TEST_SUITE_SAVE_PATH);
 
@@ -195,7 +195,7 @@ public class MockServiceDetailPage extends WizardPage {
         data = new FormData();
         data.top = new FormAttachment(lblExportDestination, 10);
         data.left = new FormAttachment(3);
-        data.width = 190;
+        data.width = 250;
         lblServiceName.setLayoutData(data);
         lblServiceName.setText(SERVICE_NAME);
 
@@ -217,7 +217,7 @@ public class MockServiceDetailPage extends WizardPage {
         data = new FormData();
         data.top = new FormAttachment(lblServiceName, 12);
         data.left = new FormAttachment(3);
-        data.width = 190;
+        data.width = 250;
         lblServicePort.setLayoutData(data);
         lblServicePort.setText(SERVICE_PORT);
 
@@ -239,7 +239,7 @@ public class MockServiceDetailPage extends WizardPage {
         data = new FormData();
         data.top = new FormAttachment(lblServicePort, 12);
         data.left = new FormAttachment(3);
-        data.width = 190;
+        data.width = 250;
         lblServiceContext.setLayoutData(data);
         lblServiceContext.setText(SERVICE_CONTEXT);
 
@@ -282,7 +282,7 @@ public class MockServiceDetailPage extends WizardPage {
         mockServiceAddButton.setEnabled(false);
 
         data = new FormData();
-        data.height = 150;
+        data.height = 200;
         data.top = new FormAttachment(mockServiceRemoveButton, 5);
         data.left = new FormAttachment(1);
         data.bottom = new FormAttachment(98);
@@ -314,7 +314,7 @@ public class MockServiceDetailPage extends WizardPage {
                 wizard.init(PlatformUI.getWorkbench(), projSelection);
                 CustomWizardDialog resourceWizardDialog = new CustomWizardDialog(getShell(), wizard);
                 resourceWizardDialog.setHelpAvailable(false);
-                resourceWizardDialog.setPageSize(580, 500);
+                resourceWizardDialog.setPageSize(580, 570);
                 resourceWizardDialog.open();
 
                 refreshResourceTable();
@@ -364,7 +364,7 @@ public class MockServiceDetailPage extends WizardPage {
                     wizard.init(PlatformUI.getWorkbench(), projSelection);
                     CustomUpdateWizardDialog resourceWizardDialog = new CustomUpdateWizardDialog(getShell(), wizard);
                     resourceWizardDialog.setHelpAvailable(false);
-                    resourceWizardDialog.setPageSize(580, 500);
+                    resourceWizardDialog.setPageSize(580, 570);
                     resourceWizardDialog.open();
 
                     refreshResourceTable();

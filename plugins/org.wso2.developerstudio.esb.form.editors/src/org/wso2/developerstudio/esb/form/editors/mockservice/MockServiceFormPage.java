@@ -288,7 +288,7 @@ public class MockServiceFormPage extends AbstractEsbFormPage {
                 wizard.init(PlatformUI.getWorkbench(), null);
                 CustomWizardDialog resourceWizardDialog = new CustomWizardDialog(form.getShell(), wizard);
                 resourceWizardDialog.setHelpAvailable(false);
-                resourceWizardDialog.setPageSize(580, 500);
+                resourceWizardDialog.setPageSize(580, 570);
                 resourceWizardDialog.open();
 
                 refreshResourceTable();
@@ -336,7 +336,7 @@ public class MockServiceFormPage extends AbstractEsbFormPage {
                     CustomUpdateWizardDialog resourceWizardDialog = new CustomUpdateWizardDialog(form.getShell(),
                             wizard);
                     resourceWizardDialog.setHelpAvailable(false);
-                    resourceWizardDialog.setPageSize(580, 500);
+                    resourceWizardDialog.setPageSize(580, 570);
                     resourceWizardDialog.open();
 
                     refreshResourceTable();

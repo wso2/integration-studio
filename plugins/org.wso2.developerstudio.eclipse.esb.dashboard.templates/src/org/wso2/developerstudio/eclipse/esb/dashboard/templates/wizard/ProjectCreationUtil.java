@@ -791,7 +791,7 @@ public class ProjectCreationUtil {
         try {
             MavenProject mavenProject = MavenUtils.getMavenProject(pomFile);
             Plugin unitTestPlugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven",
-                    "synapse-unit-test-maven-plugin", "5.2.9", false);
+                    "synapse-unit-test-maven-plugin", "5.2.10", false);
 
             PluginExecution pluginExecution = new PluginExecution();
             pluginExecution.addGoal("synapse-unit-test");
@@ -812,6 +812,8 @@ public class ProjectCreationUtil {
             testServerPath.setValue("${testServerPath}");
             Xpp3Dom testCasesFilePath = MavenUtils.createXpp3Node(unitTestConfElement, "testCasesFilePath");
             testCasesFilePath.setValue("${project.basedir}" + File.separator + "test" + File.separator + "${testFile}");
+            Xpp3Dom testSkip = MavenUtils.createXpp3Node(unitTestConfElement, "mavenTestSkip");
+            testSkip.setValue("${maven.test.skip}");
 
             // save the pom with plugin configuration
             MavenUtils.saveMavenProject(mavenProject, pomFile);

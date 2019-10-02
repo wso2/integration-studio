@@ -35,10 +35,14 @@ import org.wso2.developerstudio.eclipse.docker.distribution.resources.DockerGenC
 public class ImageCreationSuccessNotificationPopUp extends AbstractNotificationPopup {
 
 	private String imageId;
+	private String imageName;
+	private String imageTag;
 
-	public ImageCreationSuccessNotificationPopUp(Display display, String imageId) {
+	public ImageCreationSuccessNotificationPopUp(Display display, String imageId, String imageName, String imageTag) {
 		super(display);
 		this.imageId = imageId;
+		this.imageName = imageName;
+		this.imageTag = imageTag;
 	}
 
 	@Override
@@ -50,9 +54,19 @@ public class ImageCreationSuccessNotificationPopUp extends AbstractNotificationP
 		container.setLayoutData(data);
 
 		container.setLayout(new GridLayout(1, false));
+		
+		String imageNameWithTag = "";
+		
+		if (null == imageName || imageName.isEmpty()) {
+			imageNameWithTag = imageName;
+		} else {
+			imageNameWithTag = imageName + ":" + imageTag;
+		}
 
 		Label successMsg = new Label(container, SWT.NULL);
-		successMsg.setText(DockerGenConstants.SuccessMessages.DOCKER_IMAGE_GEN_SUCCESS_MESSAGE + imageId);
+		successMsg.setText(DockerGenConstants.SuccessMessages.DOCKER_IMAGE_GEN_SUCCESS_MESSAGE 
+				+ imageNameWithTag + "\n" + DockerGenConstants.SuccessMessages.DOCKER_IMAGE_ID_MESSAGE
+				+ imageId);
 
 	}
 

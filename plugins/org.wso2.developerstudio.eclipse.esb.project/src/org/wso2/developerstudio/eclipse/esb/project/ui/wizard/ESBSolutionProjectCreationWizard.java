@@ -99,6 +99,8 @@ public class ESBSolutionProjectCreationWizard extends AbstractWSO2ProjectCreatio
 	public boolean canFinish() {
 		if (getContainer().getCurrentPage() == getMainWizardPage() && getModel().isContainerExporterProjectChecked()) {
 			return false;
+		} else if (getContainer().getCurrentPage() == containerDetailPage && !containerDetailPage.isPageComplete()) {
+		    return false;
 		}
 
 		return true;

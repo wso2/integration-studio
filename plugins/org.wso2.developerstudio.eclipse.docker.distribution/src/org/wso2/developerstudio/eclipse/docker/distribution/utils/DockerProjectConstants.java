@@ -69,6 +69,7 @@ public class DockerProjectConstants extends NLS {
     public static final String WINDOWS_DEFAULT_DOCKER_HOST = "tcp://localhost:2375";
     public static final String DOCKER_IMAGE_GEN_SUCCESS_MESSAGE = "Docker image successfully generated. \nImage ID: ";
     public static final String DOCKER_IMAGE_PUSH_SUCCESS_MESSAGE = "Docker image successfully pushed to the remote registry.";
+    public static final String DOCKER_DEAMON_CONNECTION_FAILED_MESSAGE = "Cannot connect to the Docker Daemon. Start the Docker daemon to proceed.";
     public static final String DOCKER_IMAGE_GEN_FAILED_MESSAGE = "Docker image generaton failed";
     public static final String DOCKER_IMAGE_PUSH_FAILED_MESSAGE = "Docker image push failed";
     public static final String DOCKER_IMAGE_AUTH_FAILED_MESSAGE = "Docker authentication failed! Please check Docker image details or credentials";

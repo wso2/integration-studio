@@ -121,6 +121,9 @@ public class CarbonApplicationAndDockerBuilder extends Job {
             dockerClient.ping();
         } catch (DockerException | InterruptedException e) {
             log.error(DockerProjectConstants.DOCKER_CONNECTION_FAILED_MESSAGE, e);
+            showMessageBox(DockerProjectConstants.MESSAGE_BOX_TITLE,
+                    DockerProjectConstants.DOCKER_DEAMON_CONNECTION_FAILED_MESSAGE, SWT.ICON_WORKING);
+            return null;
         }
 
         return dockerClient;
@@ -134,6 +137,9 @@ public class CarbonApplicationAndDockerBuilder extends Job {
     private boolean generateDockerImage() {
         boolean isImageBuilt = false;
         dockerClient = createDockerClient();
+        if (dockerClient == null) {
+            return isImageBuilt;
+        }
 
         // Atomic reference to store the generated docker image ID
         final AtomicReference<String> imageIdFromMessage = new AtomicReference<>();
@@ -182,7 +188,7 @@ public class CarbonApplicationAndDockerBuilder extends Job {
         boolean isImagePushed = false;
 
         if (dockerClient == null) {
-            dockerClient = createDockerClient();
+            return isImagePushed;
         }
 
         // check docker hub credentials set or not. if not stop the pushing process
@@ -317,7 +323,7 @@ public class CarbonApplicationAndDockerBuilder extends Job {
         }
 
         // pushing the docker image if its a kubernetes project
-        if (configuration != null && configuration.isKubernetesProject()) {
+        if (isBuilt && configuration != null && configuration.isKubernetesProject()) {
             monitor.beginTask("Start push the docker image to the registry", 100);
             monitor.worked(45);
             boolean isPushed = pushDockerImage();

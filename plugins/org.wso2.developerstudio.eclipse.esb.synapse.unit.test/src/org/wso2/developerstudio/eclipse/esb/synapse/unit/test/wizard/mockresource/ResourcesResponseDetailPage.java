@@ -122,7 +122,6 @@ public class ResourcesResponseDetailPage extends WizardPage {
         createResourceResponseSection(container);
 
         refreshResponseHeaderTable();
-        validate();
     }
 
     /**
@@ -250,7 +249,6 @@ public class ResourcesResponseDetailPage extends WizardPage {
                 headerWizardDialog.open();
 
                 refreshResponseHeaderTable();
-                validate();
             }
         });
 
@@ -269,7 +267,6 @@ public class ResourcesResponseDetailPage extends WizardPage {
                     responseHeaderRemoveButton.setEnabled(false);
                 }
 
-                validate();
             }
         });
 
@@ -307,7 +304,6 @@ public class ResourcesResponseDetailPage extends WizardPage {
                     headerWizardDialog.open();
 
                     refreshResponseHeaderTable();
-                    validate();
                 }
             }
         });
@@ -337,26 +333,8 @@ public class ResourcesResponseDetailPage extends WizardPage {
             public void modifyText(ModifyEvent arg0) {
                 setServiceResponsePayload(txtServiceResponsePayload.getText());
                 syntaxStyler.chooseSyntaxHighlighter(txtServiceResponsePayload.getText());
-                validate();
             }
         });
-    }
-
-    /**
-     * Method for validations of wizard page. If validation fails set page as dirty
-     * and not complete
-     */
-    private void validate() {
-        if (getServiceResponsePayload() == null || getServiceResponsePayload().isEmpty()) {
-            setErrorMessage("Please specify a response payload for the mock service");
-            setPageComplete(false);
-            setPageDirty(true);
-            return;
-        }
-
-        setPageDirty(false);
-        setErrorMessage(null);
-        setPageComplete(true);
     }
 
     /**

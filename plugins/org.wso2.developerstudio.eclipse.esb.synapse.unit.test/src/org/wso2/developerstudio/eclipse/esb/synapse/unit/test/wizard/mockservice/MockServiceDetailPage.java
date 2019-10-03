@@ -314,7 +314,7 @@ public class MockServiceDetailPage extends WizardPage {
                 wizard.init(PlatformUI.getWorkbench(), projSelection);
                 CustomWizardDialog resourceWizardDialog = new CustomWizardDialog(getShell(), wizard);
                 resourceWizardDialog.setHelpAvailable(false);
-                resourceWizardDialog.setPageSize(580, 570);
+                resourceWizardDialog.setPageSize(580, 620);
                 resourceWizardDialog.open();
 
                 refreshResourceTable();
@@ -364,7 +364,7 @@ public class MockServiceDetailPage extends WizardPage {
                     wizard.init(PlatformUI.getWorkbench(), projSelection);
                     CustomUpdateWizardDialog resourceWizardDialog = new CustomUpdateWizardDialog(getShell(), wizard);
                     resourceWizardDialog.setHelpAvailable(false);
-                    resourceWizardDialog.setPageSize(580, 570);
+                    resourceWizardDialog.setPageSize(580, 620);
                     resourceWizardDialog.open();
 
                     refreshResourceTable();

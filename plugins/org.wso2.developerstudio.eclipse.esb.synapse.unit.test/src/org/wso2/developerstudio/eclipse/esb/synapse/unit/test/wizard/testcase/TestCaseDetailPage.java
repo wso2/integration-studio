@@ -508,7 +508,7 @@ public class TestCaseDetailPage extends WizardPage {
                 wizard.init(PlatformUI.getWorkbench(), null);
                 CustomWizardDialog assertionWizardDialog = new CustomWizardDialog(getShell(), wizard);
                 assertionWizardDialog.setHelpAvailable(false);
-                assertionWizardDialog.setPageSize(580, 260);
+                assertionWizardDialog.setPageSize(580, 320);
                 assertionWizardDialog.open();
 
                 refreshAssertionTable();
@@ -567,7 +567,7 @@ public class TestCaseDetailPage extends WizardPage {
                     wizard.init(PlatformUI.getWorkbench(), null);
                     CustomUpdateWizardDialog assertionWizardDialog = new CustomUpdateWizardDialog(getShell(), wizard);
                     assertionWizardDialog.setHelpAvailable(false);
-                    assertionWizardDialog.setPageSize(580, 260);
+                    assertionWizardDialog.setPageSize(580, 320);
                     assertionWizardDialog.open();
 
                     refreshAssertionTable();

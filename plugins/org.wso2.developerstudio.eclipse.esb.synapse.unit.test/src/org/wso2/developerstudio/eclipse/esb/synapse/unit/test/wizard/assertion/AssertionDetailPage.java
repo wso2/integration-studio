@@ -116,7 +116,7 @@ public class AssertionDetailPage extends WizardPage {
         data = new FormData();
         data.top = new FormAttachment(10);
         data.left = new FormAttachment(3);
-        data.width = 160;
+        data.width = 210;
         lblAssertionType.setLayoutData(data);
         lblAssertionType.setText(ASSERTION_TYPE);
 
@@ -159,7 +159,7 @@ public class AssertionDetailPage extends WizardPage {
         data = new FormData();
         data.top = new FormAttachment(assertionComboType, 12);
         data.left = new FormAttachment(3);
-        data.width = 160;
+        data.width = 210;
         lblAssertActual.setLayoutData(data);
         lblAssertActual.setText(ASSERTION_ACTUAL);
 
@@ -169,7 +169,6 @@ public class AssertionDetailPage extends WizardPage {
         data.top = new FormAttachment(assertionComboType, 12);
         data.left = new FormAttachment(lblAssertActual, 0);
         data.right = new FormAttachment(97);
-        data.width = 400;
         actualExpressions.setItems(expressions);
         actualExpressions.setLayoutData(data);
         ComboTypingSuggestUtil.addAutoCompleteFeature(actualExpressions);
@@ -287,7 +286,7 @@ public class AssertionDetailPage extends WizardPage {
         data = new FormData();
         data.top = new FormAttachment(style, 20);
         data.left = new FormAttachment(0);
-        data.width = 160;
+        data.width = 210;
         lblAssertExpected.setLayoutData(data);
         lblAssertExpected.setText(ASSERTION_EXPECTED);
 
@@ -297,7 +296,6 @@ public class AssertionDetailPage extends WizardPage {
         data.top = new FormAttachment(style, 20);
         data.left = new FormAttachment(lblAssertExpected, 0);
         data.right = new FormAttachment(99);
-        data.width = 400;
         data.height = 100;
         txtExpectedValue.setLayoutData(data);
         if (getExpectedValue() != null && !getExpectedValue().isEmpty()) {
@@ -317,7 +315,7 @@ public class AssertionDetailPage extends WizardPage {
         data = new FormData();
         data.top = new FormAttachment(txtExpectedValue, 15);
         data.left = new FormAttachment(0);
-        data.width = 160;
+        data.width = 210;
         lblAssertMessage.setLayoutData(data);
         lblAssertMessage.setText(ERROR_MESSAGE);
 
@@ -326,7 +324,6 @@ public class AssertionDetailPage extends WizardPage {
         data.top = new FormAttachment(txtExpectedValue, 15);
         data.left = new FormAttachment(lblAssertMessage, 0);
         data.right = new FormAttachment(99);
-        data.width = 400;
         txtErrorAssertEqualMessage.setLayoutData(data);
         if (!getAssertMessage().isEmpty()) {
             txtErrorAssertEqualMessage.setText(getAssertMessage());
@@ -352,7 +349,7 @@ public class AssertionDetailPage extends WizardPage {
         data = new FormData();
         data.top = new FormAttachment(style, 18);
         data.left = new FormAttachment(0);
-        data.width = 160;
+        data.width = 210;
         lblAssertMessage.setLayoutData(data);
         lblAssertMessage.setText(ERROR_MESSAGE);
 
@@ -361,7 +358,6 @@ public class AssertionDetailPage extends WizardPage {
         data.top = new FormAttachment(style, 18);
         data.left = new FormAttachment(lblAssertMessage, 0);
         data.right = new FormAttachment(99);
-        data.width = 400;
         txtErrorAssertNotNullMessage.setLayoutData(data);
         if (!getAssertMessage().isEmpty()) {
             txtErrorAssertNotNullMessage.setText(getAssertMessage());

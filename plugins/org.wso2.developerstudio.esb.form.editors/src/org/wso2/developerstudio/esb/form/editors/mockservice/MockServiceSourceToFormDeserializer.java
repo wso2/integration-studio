@@ -247,7 +247,7 @@ public class MockServiceSourceToFormDeserializer {
                     .getFirstChildWithName(qualifiedMockServicePayload);
             if (mockServiceResPayloadNode != null) {
                 String resPayload = mockServiceResPayloadNode.getText();
-                if (resPayload != null && !resPayload.isEmpty()) {
+                if (resPayload != null) {
                     resPayload = CommonUtil.addCDATATagToPayloads(resPayload);
                 }
                 mockResource.setResponsePayload(resPayload);

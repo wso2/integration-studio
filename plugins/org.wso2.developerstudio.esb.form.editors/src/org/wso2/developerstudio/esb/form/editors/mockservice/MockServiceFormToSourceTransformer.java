@@ -155,7 +155,7 @@ public class MockServiceFormToSourceTransformer {
                 }
 
                 // Add response headers, status code and payload to the resource
-                if ((resource.getResponsePayload() != null && !resource.getResponsePayload().isEmpty())
+                if ((resource.getResponsePayload() != null)
                         || (resource.getRequestHeaders() != null && resource.getResponseHeaders().size() > 0)) {
                     Element resourceResponse = doc.createElement(Constants.SERVICE_RESOURCE_RESPONSE);
 
@@ -169,11 +169,9 @@ public class MockServiceFormToSourceTransformer {
                     resourceResponse.appendChild(responseCode);
                     responseCode.appendChild(doc.createTextNode(statusCode));
 
-                    if (!resource.getResponsePayload().isEmpty()) {
-                        Element responsePayload = doc.createElement(Constants.PAYLOAD);
-                        resourceResponse.appendChild(responsePayload);
-                        responsePayload.appendChild(doc.createTextNode(resource.getResponsePayload()));
-                    }
+                    Element responsePayload = doc.createElement(Constants.PAYLOAD);
+                    resourceResponse.appendChild(responsePayload);
+                    responsePayload.appendChild(doc.createTextNode(resource.getResponsePayload()));
 
                     if (resource.getResponseHeaders().size() > 0) {
                         Element responseHeaders = doc.createElement(Constants.SERVICE_RESOURCE_HEADERS);

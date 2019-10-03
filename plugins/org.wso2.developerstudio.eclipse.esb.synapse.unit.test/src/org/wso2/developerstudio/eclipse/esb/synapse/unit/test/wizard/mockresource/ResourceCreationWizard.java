@@ -85,7 +85,10 @@ public class ResourceCreationWizard extends Wizard implements IExportWizard {
         }
         String method = resourceRequestDetailPage.getServiceMethod();
         String responsePayload = resourceResponseDetailPage.getServiceResponsePayload();
-        if (responsePayload != null && !responsePayload.isEmpty()) {
+        if (responsePayload != null) {
+            responsePayload = CommonUtil.addCDATATagToPayloads(responsePayload);
+        } else {
+            responsePayload = "";
             responsePayload = CommonUtil.addCDATATagToPayloads(responsePayload);
         }
         int statusCode = Integer.parseInt(resourceResponseDetailPage.getStatusCode().split(SPACE_STRING)[0]);

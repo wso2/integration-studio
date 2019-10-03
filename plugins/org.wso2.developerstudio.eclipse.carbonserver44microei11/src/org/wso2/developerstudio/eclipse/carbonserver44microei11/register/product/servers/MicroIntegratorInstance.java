@@ -87,6 +87,10 @@ public class MicroIntegratorInstance {
         IRuntimeType runtimeType = ServerCore
                 .findRuntimeType("org.wso2.developerstudio.eclipse.carbon.runtime44microei11");
         IServerType serverType = ServerCore.findServerType("org.wso2.developerstudio.eclipse.carbon.server44microei11");
+		IRuntimeType runtimeType100 = ServerCore
+				.findRuntimeType("org.wso2.developerstudio.eclipse.carbon.runtime44microei");
+		IServerType serverType100 = ServerCore
+				.findServerType("org.wso2.developerstudio.eclipse.carbon.server44microei");
 
         // Remove the already existing servers and runtime of micro-ei
         try {
@@ -95,12 +99,18 @@ public class MicroIntegratorInstance {
                 if (temRuntime.getRuntimeType().equals(runtimeType)) {
                     temRuntime.delete();
                 }
+                if (temRuntime.getRuntimeType().equals(runtimeType100) && temRuntime.getName().equals("Micro Integrator Runtime")) {
+                    temRuntime.delete();
+                }
             }
 
             IServer[] availableServers = ServerCore.getServers();
             for (IServer tempServers : availableServers) {
                 if (tempServers.getServerType().equals(serverType)) {
                     tempServers.delete();
+                }
+                if (tempServers.getServerType().equals(serverType100) && tempServers.getName().equals("Micro Integrator Server")) {
+                	tempServers.delete();
                 }
             }
         } catch (CoreException e1) {
@@ -111,18 +121,18 @@ public class MicroIntegratorInstance {
 
 			NullProgressMonitor progressMonitor = new NullProgressMonitor();
 
-			IRuntimeWorkingCopy runtime = runtimeType.createRuntime("org.wso2.micro.integrator.runtime",
+			IRuntimeWorkingCopy runtime = runtimeType.createRuntime("org.wso2.micro.integrator.runtime11",
 					progressMonitor);
-			runtime.setName("Micro Integrator Runtime");
+			runtime.setName("Micro Integrator Runtime 1.0.0");
 			
 			// on mac MacOS folder is considered as eclipse_home
 			runtime.setLocation(new Path(getServerHome()));
 
 			IRuntime microIntegratorRuntime = runtime.save(true, progressMonitor);
 
-			server = serverType.createServer("org.wso2.micro.integrator.server", null,
+			server = serverType.createServer("org.wso2.micro.integrator.server11", null,
 					microIntegratorRuntime, progressMonitor);
-			server.setName("Micro Integrator Server");
+			server.setName("Micro Integrator Server 1.1.0");
 
 			readConfigs(server);
 
@@ -305,7 +315,7 @@ public class MicroIntegratorInstance {
                                     .getLaunchHistory("org.eclipse.debug.ui.launchGroup.debug");
                             ILaunchConfiguration[] launchers = launchManager.getLaunchConfigurations();
                             for (ILaunchConfiguration tmpLauncher : launchers) {
-                                if ("Micro Integrator Server".equals(tmpLauncher.getName())) {
+                                if ("Micro Integrator Server 1.1.0".equals(tmpLauncher.getName())) {
                                     runHistory.removeFromHistory(tmpLauncher);
                                     debugHistory.removeFromHistory(tmpLauncher);
                                 }

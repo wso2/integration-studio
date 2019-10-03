@@ -24,6 +24,7 @@ body{
     font-family: "Roboto", Arial, Helvetica, sans-serif;
     font-size: 14px;
     line-height: 1.428571429;
+    position:relative;
 }
 
 .container-main{
@@ -201,7 +202,7 @@ button {
 }
 
 .position-right {
-    position: absolute;
+    position: fixed;
     right: 8px;
     padding: 6px 10px 0px;
     background: rgba(152, 152, 152, 0.12941176470588237);

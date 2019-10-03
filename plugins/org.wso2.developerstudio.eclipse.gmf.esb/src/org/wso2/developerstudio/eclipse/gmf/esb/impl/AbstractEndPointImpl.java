@@ -235,7 +235,7 @@ public abstract class AbstractEndPointImpl extends EndPointImpl implements Abstr
      * @generated
      * @ordered
      */
-    protected static final int RETRY_COUNT_EDEFAULT = 0;
+    protected static final String RETRY_COUNT_EDEFAULT = "0";
 
     /**
      * The cached value of the '{@link #getRetryCount() <em>Retry Count</em>}' attribute.
@@ -245,7 +245,7 @@ public abstract class AbstractEndPointImpl extends EndPointImpl implements Abstr
      * @generated
      * @ordered
      */
-    protected int retryCount = RETRY_COUNT_EDEFAULT;
+    protected String retryCount = RETRY_COUNT_EDEFAULT;
 
     /**
      * The default value of the '{@link #getRetryDelay() <em>Retry Delay</em>}' attribute.
@@ -295,7 +295,7 @@ public abstract class AbstractEndPointImpl extends EndPointImpl implements Abstr
      * @generated
      * @ordered
      */
-    protected static final long SUSPEND_INITIAL_DURATION_EDEFAULT = -1L;
+    protected static final String SUSPEND_INITIAL_DURATION_EDEFAULT = "-1";
 
     /**
      * The cached value of the '{@link #getSuspendInitialDuration() <em>Suspend Initial Duration</em>}' attribute.
@@ -305,7 +305,7 @@ public abstract class AbstractEndPointImpl extends EndPointImpl implements Abstr
      * @generated
      * @ordered
      */
-    protected long suspendInitialDuration = SUSPEND_INITIAL_DURATION_EDEFAULT;
+    protected String suspendInitialDuration = SUSPEND_INITIAL_DURATION_EDEFAULT;
 
     /**
      * The default value of the '{@link #getSuspendMaximumDuration() <em>Suspend Maximum Duration</em>}' attribute.
@@ -335,7 +335,7 @@ public abstract class AbstractEndPointImpl extends EndPointImpl implements Abstr
      * @generated
      * @ordered
      */
-    protected static final float SUSPEND_PROGRESSION_FACTOR_EDEFAULT = -1.0F;
+    protected static final String SUSPEND_PROGRESSION_FACTOR_EDEFAULT = "-1";
 
     /**
      * The cached value of the '{@link #getSuspendProgressionFactor() <em>Suspend Progression Factor</em>}' attribute.
@@ -345,7 +345,7 @@ public abstract class AbstractEndPointImpl extends EndPointImpl implements Abstr
      * @generated
      * @ordered
      */
-    protected float suspendProgressionFactor = SUSPEND_PROGRESSION_FACTOR_EDEFAULT;
+    protected String suspendProgressionFactor = SUSPEND_PROGRESSION_FACTOR_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getReliableMessagingPolicy() <em>Reliable Messaging Policy</em>}' containment reference.
@@ -755,7 +755,7 @@ public abstract class AbstractEndPointImpl extends EndPointImpl implements Abstr
      * <!-- end-user-doc -->
      * @generated
      */
-    public int getRetryCount() {
+    public String getRetryCount() {
         return retryCount;
     }
 
@@ -764,8 +764,8 @@ public abstract class AbstractEndPointImpl extends EndPointImpl implements Abstr
      * <!-- end-user-doc -->
      * @generated
      */
-    public void setRetryCount(int newRetryCount) {
-        int oldRetryCount = retryCount;
+    public void setRetryCount(String newRetryCount) {
+        String oldRetryCount = retryCount;
         retryCount = newRetryCount;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ABSTRACT_END_POINT__RETRY_COUNT, oldRetryCount, retryCount));
@@ -818,7 +818,7 @@ public abstract class AbstractEndPointImpl extends EndPointImpl implements Abstr
      * <!-- end-user-doc -->
      * @generated
      */
-    public long getSuspendInitialDuration() {
+    public String getSuspendInitialDuration() {
         return suspendInitialDuration;
     }
 
@@ -827,8 +827,8 @@ public abstract class AbstractEndPointImpl extends EndPointImpl implements Abstr
      * <!-- end-user-doc -->
      * @generated
      */
-    public void setSuspendInitialDuration(long newSuspendInitialDuration) {
-        long oldSuspendInitialDuration = suspendInitialDuration;
+    public void setSuspendInitialDuration(String newSuspendInitialDuration) {
+        String oldSuspendInitialDuration = suspendInitialDuration;
         suspendInitialDuration = newSuspendInitialDuration;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ABSTRACT_END_POINT__SUSPEND_INITIAL_DURATION, oldSuspendInitialDuration, suspendInitialDuration));
@@ -860,7 +860,7 @@ public abstract class AbstractEndPointImpl extends EndPointImpl implements Abstr
      * <!-- end-user-doc -->
      * @generated
      */
-    public float getSuspendProgressionFactor() {
+    public String getSuspendProgressionFactor() {
         return suspendProgressionFactor;
     }
 
@@ -869,8 +869,8 @@ public abstract class AbstractEndPointImpl extends EndPointImpl implements Abstr
      * <!-- end-user-doc -->
      * @generated
      */
-    public void setSuspendProgressionFactor(float newSuspendProgressionFactor) {
-        float oldSuspendProgressionFactor = suspendProgressionFactor;
+    public void setSuspendProgressionFactor(String newSuspendProgressionFactor) {
+        String oldSuspendProgressionFactor = suspendProgressionFactor;
         suspendProgressionFactor = newSuspendProgressionFactor;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ABSTRACT_END_POINT__SUSPEND_PROGRESSION_FACTOR, oldSuspendProgressionFactor, suspendProgressionFactor));
@@ -1336,7 +1336,7 @@ public abstract class AbstractEndPointImpl extends EndPointImpl implements Abstr
                 setRetryErrorCodes((String)newValue);
                 return;
             case EsbPackage.ABSTRACT_END_POINT__RETRY_COUNT:
-                setRetryCount((Integer)newValue);
+                setRetryCount((String)newValue);
                 return;
             case EsbPackage.ABSTRACT_END_POINT__RETRY_DELAY:
                 setRetryDelay((Long)newValue);
@@ -1345,13 +1345,13 @@ public abstract class AbstractEndPointImpl extends EndPointImpl implements Abstr
                 setSuspendErrorCodes((String)newValue);
                 return;
             case EsbPackage.ABSTRACT_END_POINT__SUSPEND_INITIAL_DURATION:
-                setSuspendInitialDuration((Long)newValue);
+                setSuspendInitialDuration((String)newValue);
                 return;
             case EsbPackage.ABSTRACT_END_POINT__SUSPEND_MAXIMUM_DURATION:
                 setSuspendMaximumDuration((Long)newValue);
                 return;
             case EsbPackage.ABSTRACT_END_POINT__SUSPEND_PROGRESSION_FACTOR:
-                setSuspendProgressionFactor((Float)newValue);
+                setSuspendProgressionFactor((String)newValue);
                 return;
             case EsbPackage.ABSTRACT_END_POINT__RELIABLE_MESSAGING_POLICY:
                 setReliableMessagingPolicy((RegistryKeyProperty)newValue);
@@ -1511,17 +1511,17 @@ public abstract class AbstractEndPointImpl extends EndPointImpl implements Abstr
             case EsbPackage.ABSTRACT_END_POINT__RETRY_ERROR_CODES:
                 return RETRY_ERROR_CODES_EDEFAULT == null ? retryErrorCodes != null : !RETRY_ERROR_CODES_EDEFAULT.equals(retryErrorCodes);
             case EsbPackage.ABSTRACT_END_POINT__RETRY_COUNT:
-                return retryCount != RETRY_COUNT_EDEFAULT;
+                return RETRY_COUNT_EDEFAULT == null ? retryCount != null : !RETRY_COUNT_EDEFAULT.equals(retryCount);
             case EsbPackage.ABSTRACT_END_POINT__RETRY_DELAY:
                 return retryDelay != RETRY_DELAY_EDEFAULT;
             case EsbPackage.ABSTRACT_END_POINT__SUSPEND_ERROR_CODES:
                 return SUSPEND_ERROR_CODES_EDEFAULT == null ? suspendErrorCodes != null : !SUSPEND_ERROR_CODES_EDEFAULT.equals(suspendErrorCodes);
             case EsbPackage.ABSTRACT_END_POINT__SUSPEND_INITIAL_DURATION:
-                return suspendInitialDuration != SUSPEND_INITIAL_DURATION_EDEFAULT;
+                return SUSPEND_INITIAL_DURATION_EDEFAULT == null ? suspendInitialDuration != null : !SUSPEND_INITIAL_DURATION_EDEFAULT.equals(suspendInitialDuration);
             case EsbPackage.ABSTRACT_END_POINT__SUSPEND_MAXIMUM_DURATION:
                 return suspendMaximumDuration != SUSPEND_MAXIMUM_DURATION_EDEFAULT;
             case EsbPackage.ABSTRACT_END_POINT__SUSPEND_PROGRESSION_FACTOR:
-                return suspendProgressionFactor != SUSPEND_PROGRESSION_FACTOR_EDEFAULT;
+                return SUSPEND_PROGRESSION_FACTOR_EDEFAULT == null ? suspendProgressionFactor != null : !SUSPEND_PROGRESSION_FACTOR_EDEFAULT.equals(suspendProgressionFactor);
             case EsbPackage.ABSTRACT_END_POINT__RELIABLE_MESSAGING_POLICY:
                 return reliableMessagingPolicy != null;
             case EsbPackage.ABSTRACT_END_POINT__SECURITY_POLICY:

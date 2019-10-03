@@ -533,7 +533,7 @@ public class DefaultEndPointPropertiesEditionComponent extends SinglePartPropert
 			defaultEndPoint.setRetryErrorCodes((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (EsbViewsRepository.DefaultEndPoint.EndpointTimeoutState.retryCount == event.getAffectedEditor()) {
-			defaultEndPoint.setRetryCount((EEFConverterUtil.createIntFromString(EcorePackage.Literals.EINT, (String)event.getNewValue())));
+			defaultEndPoint.setRetryCount((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (EsbViewsRepository.DefaultEndPoint.EndpointTimeoutState.retryDelay == event.getAffectedEditor()) {
 			defaultEndPoint.setRetryDelay((EEFConverterUtil.createLongFromString(EcorePackage.Literals.ELONG, (String)event.getNewValue())));
@@ -542,13 +542,13 @@ public class DefaultEndPointPropertiesEditionComponent extends SinglePartPropert
 			defaultEndPoint.setSuspendErrorCodes((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (EsbViewsRepository.DefaultEndPoint.EndpointSuspendState.suspendInitialDuration == event.getAffectedEditor()) {
-			defaultEndPoint.setSuspendInitialDuration((EEFConverterUtil.createLongFromString(EcorePackage.Literals.ELONG, (String)event.getNewValue())));
+			defaultEndPoint.setSuspendInitialDuration((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (EsbViewsRepository.DefaultEndPoint.EndpointSuspendState.suspendMaximumDuration == event.getAffectedEditor()) {
 			defaultEndPoint.setSuspendMaximumDuration((EEFConverterUtil.createLongFromString(EcorePackage.Literals.ELONG, (String)event.getNewValue())));
 		}
 		if (EsbViewsRepository.DefaultEndPoint.EndpointSuspendState.suspendProgressionFactor == event.getAffectedEditor()) {
-			defaultEndPoint.setSuspendProgressionFactor((EEFConverterUtil.createFloatFromString(EcorePackage.Literals.EFLOAT, (String)event.getNewValue())));
+			defaultEndPoint.setSuspendProgressionFactor((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (EsbViewsRepository.DefaultEndPoint.Basic.format == event.getAffectedEditor()) {
 			defaultEndPoint.setFormat((EndPointMessageFormat)event.getNewValue());

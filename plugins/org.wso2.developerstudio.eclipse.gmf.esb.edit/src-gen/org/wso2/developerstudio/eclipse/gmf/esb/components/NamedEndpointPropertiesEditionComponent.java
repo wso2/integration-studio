@@ -510,7 +510,7 @@ public class NamedEndpointPropertiesEditionComponent extends SinglePartPropertie
 			namedEndpoint.setRetryErrorCodes((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (EsbViewsRepository.NamedEndpoint.Properties.retryCount == event.getAffectedEditor()) {
-			namedEndpoint.setRetryCount((EEFConverterUtil.createIntFromString(EcorePackage.Literals.EINT, (String)event.getNewValue())));
+			namedEndpoint.setRetryCount((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (EsbViewsRepository.NamedEndpoint.Properties.retryDelay == event.getAffectedEditor()) {
 			namedEndpoint.setRetryDelay((EEFConverterUtil.createLongFromString(EcorePackage.Literals.ELONG, (String)event.getNewValue())));
@@ -519,13 +519,13 @@ public class NamedEndpointPropertiesEditionComponent extends SinglePartPropertie
 			namedEndpoint.setSuspendErrorCodes((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (EsbViewsRepository.NamedEndpoint.Properties.suspendInitialDuration == event.getAffectedEditor()) {
-			namedEndpoint.setSuspendInitialDuration((EEFConverterUtil.createLongFromString(EcorePackage.Literals.ELONG, (String)event.getNewValue())));
+			namedEndpoint.setSuspendInitialDuration((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (EsbViewsRepository.NamedEndpoint.Properties.suspendMaximumDuration == event.getAffectedEditor()) {
 			namedEndpoint.setSuspendMaximumDuration((EEFConverterUtil.createLongFromString(EcorePackage.Literals.ELONG, (String)event.getNewValue())));
 		}
 		if (EsbViewsRepository.NamedEndpoint.Properties.suspendProgressionFactor == event.getAffectedEditor()) {
-			namedEndpoint.setSuspendProgressionFactor((EEFConverterUtil.createFloatFromString(EcorePackage.Literals.EFLOAT, (String)event.getNewValue())));
+			namedEndpoint.setSuspendProgressionFactor((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (EsbViewsRepository.NamedEndpoint.Properties.format == event.getAffectedEditor()) {
 			namedEndpoint.setFormat((EndPointMessageFormat)event.getNewValue());

@@ -204,7 +204,7 @@ public class TemplateEndpointDeserializer extends AbstractEndpointDeserializer {
         ((TemplateEndpointImpl) endpoint).setEndPointName(templateEndpoint.getName());
         ((TemplateEndpointImpl) endpoint).setTargetTemplate(templateEndpoint.getTemplate());
         if (templateEndpoint.getParameterValue("suspend_duration") != null) {
-        	((TemplateEndpointImpl) endpoint).setSuspendInitialDuration(Long.parseLong(templateEndpoint.getParameterValue("suspend_duration")));
+        	((TemplateEndpointImpl) endpoint).setSuspendInitialDuration(templateEndpoint.getParameterValue("suspend_duration"));
         }
         ((TemplateEndpointImpl) endpoint).setAddress(templateEndpoint.getParameterValue("uri"));
 

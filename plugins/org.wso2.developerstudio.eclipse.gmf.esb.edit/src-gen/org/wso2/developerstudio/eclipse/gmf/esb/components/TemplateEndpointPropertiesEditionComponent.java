@@ -168,9 +168,8 @@ public class TemplateEndpointPropertiesEditionComponent extends SinglePartProper
 			if (isAccessible(EsbViewsRepository.TemplateEndpoint.Properties.retryErrorCodes))
 				basePart.setRetryErrorCodes(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, templateEndpoint.getRetryErrorCodes()));
 			
-			if (isAccessible(EsbViewsRepository.TemplateEndpoint.Properties.retryCount)) {
-				basePart.setRetryCount(EEFConverterUtil.convertToString(EcorePackage.Literals.EINT, templateEndpoint.getRetryCount()));
-			}
+			if (isAccessible(EsbViewsRepository.TemplateEndpoint.Properties.retryCount))
+				basePart.setRetryCount(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, templateEndpoint.getRetryCount()));
 			
 			if (isAccessible(EsbViewsRepository.TemplateEndpoint.Properties.retryDelay)) {
 				basePart.setRetryDelay(EEFConverterUtil.convertToString(EcorePackage.Literals.ELONG, templateEndpoint.getRetryDelay()));
@@ -179,17 +178,15 @@ public class TemplateEndpointPropertiesEditionComponent extends SinglePartProper
 			if (isAccessible(EsbViewsRepository.TemplateEndpoint.Properties.suspendErrorCodes))
 				basePart.setSuspendErrorCodes(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, templateEndpoint.getSuspendErrorCodes()));
 			
-			if (isAccessible(EsbViewsRepository.TemplateEndpoint.Properties.suspendInitialDuration)) {
-				basePart.setSuspendInitialDuration(EEFConverterUtil.convertToString(EcorePackage.Literals.ELONG, templateEndpoint.getSuspendInitialDuration()));
-			}
+			if (isAccessible(EsbViewsRepository.TemplateEndpoint.Properties.suspendInitialDuration))
+				basePart.setSuspendInitialDuration(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, templateEndpoint.getSuspendInitialDuration()));
 			
 			if (isAccessible(EsbViewsRepository.TemplateEndpoint.Properties.suspendMaximumDuration)) {
 				basePart.setSuspendMaximumDuration(EEFConverterUtil.convertToString(EcorePackage.Literals.ELONG, templateEndpoint.getSuspendMaximumDuration()));
 			}
 			
-			if (isAccessible(EsbViewsRepository.TemplateEndpoint.Properties.suspendProgressionFactor)) {
-				basePart.setSuspendProgressionFactor(EEFConverterUtil.convertToString(EcorePackage.Literals.EFLOAT, templateEndpoint.getSuspendProgressionFactor()));
-			}
+			if (isAccessible(EsbViewsRepository.TemplateEndpoint.Properties.suspendProgressionFactor))
+				basePart.setSuspendProgressionFactor(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, templateEndpoint.getSuspendProgressionFactor()));
 			
 			if (isAccessible(EsbViewsRepository.TemplateEndpoint.Properties.format)) {
 				basePart.initFormat(EEFUtils.choiceOfValues(templateEndpoint, EsbPackage.eINSTANCE.getAbstractEndPoint_Format()), templateEndpoint.getFormat());
@@ -517,7 +514,7 @@ public class TemplateEndpointPropertiesEditionComponent extends SinglePartProper
 			templateEndpoint.setRetryErrorCodes((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (EsbViewsRepository.TemplateEndpoint.Properties.retryCount == event.getAffectedEditor()) {
-			templateEndpoint.setRetryCount((EEFConverterUtil.createIntFromString(EcorePackage.Literals.EINT, (String)event.getNewValue())));
+			templateEndpoint.setRetryCount((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (EsbViewsRepository.TemplateEndpoint.Properties.retryDelay == event.getAffectedEditor()) {
 			templateEndpoint.setRetryDelay((EEFConverterUtil.createLongFromString(EcorePackage.Literals.ELONG, (String)event.getNewValue())));
@@ -526,13 +523,13 @@ public class TemplateEndpointPropertiesEditionComponent extends SinglePartProper
 			templateEndpoint.setSuspendErrorCodes((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (EsbViewsRepository.TemplateEndpoint.Properties.suspendInitialDuration == event.getAffectedEditor()) {
-			templateEndpoint.setSuspendInitialDuration((EEFConverterUtil.createLongFromString(EcorePackage.Literals.ELONG, (String)event.getNewValue())));
+			templateEndpoint.setSuspendInitialDuration((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (EsbViewsRepository.TemplateEndpoint.Properties.suspendMaximumDuration == event.getAffectedEditor()) {
 			templateEndpoint.setSuspendMaximumDuration((EEFConverterUtil.createLongFromString(EcorePackage.Literals.ELONG, (String)event.getNewValue())));
 		}
 		if (EsbViewsRepository.TemplateEndpoint.Properties.suspendProgressionFactor == event.getAffectedEditor()) {
-			templateEndpoint.setSuspendProgressionFactor((EEFConverterUtil.createFloatFromString(EcorePackage.Literals.EFLOAT, (String)event.getNewValue())));
+			templateEndpoint.setSuspendProgressionFactor((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (EsbViewsRepository.TemplateEndpoint.Properties.format == event.getAffectedEditor()) {
 			templateEndpoint.setFormat((EndPointMessageFormat)event.getNewValue());
@@ -689,7 +686,7 @@ public class TemplateEndpointPropertiesEditionComponent extends SinglePartProper
 			}
 			if (EsbPackage.eINSTANCE.getAbstractEndPoint_RetryCount().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.TemplateEndpoint.Properties.retryCount)) {
 				if (msg.getNewValue() != null) {
-					basePart.setRetryCount(EcoreUtil.convertToString(EcorePackage.Literals.EINT, msg.getNewValue()));
+					basePart.setRetryCount(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setRetryCount("");
 				}
@@ -710,7 +707,7 @@ public class TemplateEndpointPropertiesEditionComponent extends SinglePartProper
 			}
 			if (EsbPackage.eINSTANCE.getAbstractEndPoint_SuspendInitialDuration().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.TemplateEndpoint.Properties.suspendInitialDuration)) {
 				if (msg.getNewValue() != null) {
-					basePart.setSuspendInitialDuration(EcoreUtil.convertToString(EcorePackage.Literals.ELONG, msg.getNewValue()));
+					basePart.setSuspendInitialDuration(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setSuspendInitialDuration("");
 				}
@@ -724,7 +721,7 @@ public class TemplateEndpointPropertiesEditionComponent extends SinglePartProper
 			}
 			if (EsbPackage.eINSTANCE.getAbstractEndPoint_SuspendProgressionFactor().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.TemplateEndpoint.Properties.suspendProgressionFactor)) {
 				if (msg.getNewValue() != null) {
-					basePart.setSuspendProgressionFactor(EcoreUtil.convertToString(EcorePackage.Literals.EFLOAT, msg.getNewValue()));
+					basePart.setSuspendProgressionFactor(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setSuspendProgressionFactor("");
 				}

@@ -199,3 +199,11 @@ button {
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+.position-right {
+    position: absolute;
+    right: 8px;
+    padding: 6px 10px 0px;
+    background: rgba(152, 152, 152, 0.12941176470588237);
+    bottom: 7px;
+}

@@ -1195,31 +1195,42 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 		widgetFactory.paintBordersFor(parent);
 		GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
 		scriptStaticKeyText.setLayoutData(valueData);
-		scriptStaticKeyText.addFocusListener(new FocusAdapter() {
-			/**
-			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
-			 */
+		scriptStaticKeyText.addMouseListener(new MouseAdapter() {
 			@Override
-			@SuppressWarnings("synthetic-access")
-			public void focusLost(FocusEvent e) {
-			}
-
-			/**
-			 * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
-			 */
-			@Override
-			public void focusGained(FocusEvent e) {
+			public void mouseDown(MouseEvent event) {
 				EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
 						SWT.NULL, scriptStaticKey, new ArrayList<NamedEntityDescriptor>());
 				dialog.open();
 				scriptStaticKeyText.setText(scriptStaticKey.getKeyValue());
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
-						ScriptMediatorPropertiesEditionPartForm.this,
-						EsbViewsRepository.ScriptMediator.Properties.scriptStaticKey, PropertiesEditionEvent.COMMIT,
-						PropertiesEditionEvent.SET, null, getScriptStaticKey()));
+				propertiesEditionComponent
+						.firePropertiesChanged(new PropertiesEditionEvent(ScriptMediatorPropertiesEditionPartForm.this,
+								EsbViewsRepository.ScriptMediator.Properties.scriptStaticKey,
+								PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getScriptStaticKey()));
 			}
+
 		});
+
+		scriptStaticKeyText.addKeyListener(new KeyListener() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+					EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
+							SWT.NULL, scriptStaticKey, new ArrayList<NamedEntityDescriptor>());
+					dialog.open();
+					scriptStaticKeyText.setText(scriptStaticKey.getKeyValue());
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+							ScriptMediatorPropertiesEditionPartForm.this,
+							EsbViewsRepository.ScriptMediator.Properties.scriptStaticKey, PropertiesEditionEvent.COMMIT,
+							PropertiesEditionEvent.SET, null, getScriptStaticKey()));
+				}
+			}
+
+		});
+        
 		EditingUtils.setID(scriptStaticKeyText, EsbViewsRepository.ScriptMediator.Properties.scriptStaticKey);
 		EditingUtils.setEEFtype(scriptStaticKeyText, "eef::Text");
 		Control scriptStaticKeyHelp = FormUtils.createHelpButton(widgetFactory, parent,

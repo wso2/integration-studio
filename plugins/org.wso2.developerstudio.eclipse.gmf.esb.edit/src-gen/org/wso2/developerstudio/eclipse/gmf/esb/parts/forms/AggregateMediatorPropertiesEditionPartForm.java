@@ -1546,7 +1546,7 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
                 }
             }
             
-        });;
+        });
         
         EditingUtils.setID(sequenceKeyText, EsbViewsRepository.AggregateMediator.OnComplete.sequenceKey);
         EditingUtils.setEEFtype(sequenceKeyText, "eef::Text");

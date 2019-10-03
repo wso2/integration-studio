@@ -274,7 +274,11 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
             parentPrj.setDescription(getDescription());
             parentPrj.setDependencies(new ArrayList<Dependency>(getDependencyList().values()));
             MavenUtils.saveMavenProject(parentPrj, pomFile);
-            dockerFieldValidator();
+            
+            if (getContainerType().equals(DockerProjectConstants.KUBERNETES_CONTAINER)) {
+                dockerFieldValidator();
+            }
+            
             changeDockerImageDataInSource(pomFile);
             setPageDirty(false);
             updateDirtyState();

@@ -101,6 +101,7 @@ var serverWizard = 'org.eclipse.wst.server.ui.new.server';
 var registryWizard = 'org.wso2.developerstudio.eclipse.general.project';
 var configWizard = 'org.wso2.developerstudio.eclipse.artifact.newesbproject';
 var mediatorWizard = 'org.wso2.developerstudio.eclipse.artifact.newmediatorartifact';
+var containerWizard = 'org.wso2.developerstudio.eclipse.artifact.newdockerproject';
 
 $("#CompositeApplicationProject").click(function(){
 	openWizard(cappWizard);
@@ -124,6 +125,10 @@ $("#ConfigProject").click(function(){
 
 $("#MediatorProject").click(function(){
 	openWizard(mediatorWizard);
+});
+
+$("#ContainerProject").click(function(){
+	openWizard(containerWizard);
 });
 
 /*if((GetWizardDescription(mavenWizard) != null)){

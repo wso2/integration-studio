@@ -158,7 +158,7 @@
                             <goal>exec</goal>
                         </goals>
                         <configuration>
-                            <commandlineArgs>${mi.product.version}</commandlineArgs>
+                            <commandlineArgs>${mi.product.dir.version}</commandlineArgs>
                             <executable>${project.basedir}/scripts/installer-script-oxygen.sh</executable>
                         </configuration>
                     </execution>

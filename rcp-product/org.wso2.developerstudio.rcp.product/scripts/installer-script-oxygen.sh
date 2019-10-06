@@ -50,11 +50,11 @@ unzip $PRODUCT_PATH_ROOT/WSO2-Integration-Studio-win32.win32.x86.zip -d $PRODUCT
 unzip $PRODUCT_PATH_ROOT/WSO2-Integration-Studio-win32.win32.x86_64.zip -d $PRODUCT_PATH_WIN_64
 
 # Unzip micro esb to relevant packages
-unzip $PRODUCT_PATH_ROOT/wso2mi-${PRODUCT_VERSION}.zip -d $PRODUCT_PATH_LINUX_86/runtime
-unzip $PRODUCT_PATH_ROOT/wso2mi-${PRODUCT_VERSION}.zip -d $PRODUCT_PATH_LINUX_64/runtime
-unzip $PRODUCT_PATH_ROOT/wso2mi-${PRODUCT_VERSION}.zip -d $PRODUCT_PATH_MACOS/DeveloperStudio.app/Contents/Eclipse/runtime
-unzip $PRODUCT_PATH_ROOT/wso2mi-${PRODUCT_VERSION}.zip -d $PRODUCT_PATH_WIN_86/runtime
-unzip $PRODUCT_PATH_ROOT/wso2mi-${PRODUCT_VERSION}.zip -d $PRODUCT_PATH_WIN_64/runtime
+unzip $PRODUCT_PATH_ROOT/wso2mi-${PRODUCT_VERSION}-rc1.zip -d $PRODUCT_PATH_LINUX_86/runtime
+unzip $PRODUCT_PATH_ROOT/wso2mi-${PRODUCT_VERSION}-rc1.zip -d $PRODUCT_PATH_LINUX_64/runtime
+unzip $PRODUCT_PATH_ROOT/wso2mi-${PRODUCT_VERSION}-rc1.zip -d $PRODUCT_PATH_MACOS/DeveloperStudio.app/Contents/Eclipse/runtime
+unzip $PRODUCT_PATH_ROOT/wso2mi-${PRODUCT_VERSION}-rc1.zip -d $PRODUCT_PATH_WIN_86/runtime
+unzip $PRODUCT_PATH_ROOT/wso2mi-${PRODUCT_VERSION}-rc1.zip -d $PRODUCT_PATH_WIN_64/runtime
 
 # Rename as "microesb" (this is the static name used in EI Tooling code)
 mv $PRODUCT_PATH_LINUX_86/runtime/wso2mi-$PRODUCT_VERSION $PRODUCT_PATH_LINUX_86/runtime/microesb
@@ -182,7 +182,7 @@ zip -r $PRODUCT_PATH_ROOT/WSO2-Integration-Studio-win32.win32.x86_64.zip *
 popd
 
 # Cleanup
-rm $PRODUCT_PATH_ROOT/wso2mi-$PRODUCT_VERSION.zip
+rm $PRODUCT_PATH_ROOT/wso2mi-$PRODUCT_VERSION-rc1.zip
 rm -rf $PRODUCT_PATH_ROOT/temp
 rm -rf $PRODUCT_PATH_ROOT/IntegrationStudio
 rm -rf $JDK_DISTRIBUTION_PATH

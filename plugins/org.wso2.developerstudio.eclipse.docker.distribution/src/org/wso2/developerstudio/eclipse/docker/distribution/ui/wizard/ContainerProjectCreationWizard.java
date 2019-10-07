@@ -342,11 +342,6 @@ public class ContainerProjectCreationWizard extends AbstractWSO2ProjectCreationW
         return nextPage;
     }
 
-    public IWizardPage getPreviousPage(IWizardPage page) {
-        IWizardPage previousPage = super.getNextPage(page);
-        return previousPage;
-    }
-
     public boolean canFinish() {
         if (getContainer().getCurrentPage() instanceof MavenDetailsPage) {
             return true;

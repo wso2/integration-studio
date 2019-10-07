@@ -117,7 +117,6 @@ public abstract class AbstractWSO2ProjectCreationWizard extends Wizard implement
 			
 			mainWizardPage = new ProjectOptionsDataPage(settings, getModel(), getCurrentSelection(),
 					isRequireProjectLocationSection(), isRequiredWorkingSet(), isRequiredWorkspaceLocation());
-			mavenDetailPage = new MavenDetailsPage(getModel());
 			
 			addPage(mainWizardPage);
 			if (isCustomPageRequired()) {
@@ -125,6 +124,7 @@ public abstract class AbstractWSO2ProjectCreationWizard extends Wizard implement
 			}
 
 			if (isProjectWizard()) {
+				mavenDetailPage = new MavenDetailsPage(getModel());
 				addPage(mavenDetailPage);
 			}
 		} catch (Exception e) {

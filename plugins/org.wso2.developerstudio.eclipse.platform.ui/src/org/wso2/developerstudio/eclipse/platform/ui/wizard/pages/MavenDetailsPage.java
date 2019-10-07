@@ -615,7 +615,8 @@ public class MavenDetailsPage extends WizardPage implements Observer {
 	
 	public void setArtifactIDLabel() {
 
-		if (dataModel.getProjectName() != null && !dataModel.getProjectName().equals("")) {
+		if (dataModel.getProjectName() != null && !dataModel.getProjectName().equals("") && (txtGroupId != null)
+				&& (lblArtifactIdValue != null) && (txtVersion != null)) {
 			MavenInfo newmavenProjectInfo = dataModel.getMavenInfo();
 			newmavenProjectInfo.setGroupId(dataModel.getGroupId() + "." + dataModel.getProjectName());
 			newmavenProjectInfo.setArtifactId(dataModel.getProjectName());

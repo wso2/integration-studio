@@ -39,12 +39,9 @@ import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.layout.FormAttachment;
 import org.eclipse.swt.layout.FormData;
 import org.eclipse.swt.layout.FormLayout;
-import org.eclipse.swt.layout.GridData;
-import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
@@ -612,6 +609,10 @@ public class MavenDetailsPage extends WizardPage implements Observer {
 
 	}
 
+	public boolean canFlipToNextPage() {
+		return false;
+	}
+	
 	public void setArtifactIDLabel() {
 
 		if (dataModel.getProjectName() != null && !dataModel.getProjectName().equals("")) {

@@ -77,7 +77,7 @@ public class ElementMappingItemProvider extends ItemProviderAdapter implements
 			addValuePropertyDescriptor(object);
 			addExportTypePropertyDescriptor(object);
 			addExportPropertyDescriptor(object);
-			// addRequiredRolesPropertyDescriptor(object);
+			addRequiredRolesPropertyDescriptor(object);
 			addIsComplexTypePropertyDescriptor(object);
 			addArrayNamePropertyDescriptor(object);
 			addOptionalPropertyDescriptor(object);

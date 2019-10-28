@@ -3405,6 +3405,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	        validateOutSequence();
 	        validateWSDL();
 	        name.setFocus();
+	        propertiesGroup.setFocus();
 	    }
 
 	    public void validate() {

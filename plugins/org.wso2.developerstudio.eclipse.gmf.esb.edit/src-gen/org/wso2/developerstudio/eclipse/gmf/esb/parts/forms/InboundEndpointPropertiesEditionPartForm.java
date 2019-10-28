@@ -24389,6 +24389,7 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
         super.refresh();
         validate();
         name.setFocus();
+        propertiesGroup.setFocus();
     }
 
     public void validate() {
@@ -24502,7 +24503,6 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
                 break;
             }
         }
-        name.setFocus();
         // showTable(caseBranches, caseBranchesData);
         view.layout(true, true);
     }

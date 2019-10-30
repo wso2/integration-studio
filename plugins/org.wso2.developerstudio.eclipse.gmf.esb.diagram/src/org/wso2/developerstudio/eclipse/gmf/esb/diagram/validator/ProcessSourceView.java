@@ -1035,51 +1035,52 @@ public class ProcessSourceView {
         try {
             OMElement omElement = AXIOMUtil.stringToOM(mediator);
 
-            if (qTag.equals("api")) {
-                DummyAPIFactory.createAPI(omElement, true);
-
-            } else if (qTag.equals("proxy")) {
-                ProxyServiceFactory.createProxy(omElement, null);
-
-            } else if (qTag.equals("endpoint")) {
-                if (omElement.getFirstElement() != null) {
+            switch (qTag) {
+			case "api":
+				DummyAPIFactory.createAPI(omElement, true);
+				break;
+			case "proxy":
+				ProxyServiceFactory.createProxy(omElement, null);
+				break;
+			case "endpoint":
+				if (omElement.getFirstElement() != null) {
                     setNamespaceForChildren(omElement);
-                    
                 } else {
                     omElement.setNamespace(new OMNamespaceImpl(SynapseConstants.SYNAPSE_NAMESPACE, ""));
                 }
-
                 EndpointFactory.getEndpointFromElement(omElement, false, null);
-
-            } else if (qTag.equals("inboundEndpoint")) {
-                DummyInboundEndpointFactory.createInboundEndpointDev(omElement);
-
-            } else if (qTag.equals("localEntry")) {
-                 EntryExtFactory.createEntry(omElement, null);
-
-            } else if (qTag.equals("messageProcessor")) {
-                DummyMessageProcessorFactory.createMessageProcessor(omElement, null);
-
-            } else if (qTag.equals("messageStore")) {
-                 DummyMessageStoreFactory.createMessageStore(omElement, null);
-
-            } else if (qTag.equals("sequence")) {
-                if (sequenceMediatorFactory == null) {
+				break;
+			case "inboundEndpoint":
+				DummyInboundEndpointFactory.createInboundEndpointDev(omElement);
+				break;
+			case "localEntry":
+				EntryExtFactory.createEntry(omElement, null);
+				break;
+			case "messageProcessor":
+				DummyMessageProcessorFactory.createMessageProcessor(omElement, null);
+				break;
+			case "messageStore":
+				DummyMessageStoreFactory.createMessageStore(omElement, null);
+				break;
+			case "sequence":
+				if (sequenceMediatorFactory == null) {
                     sequenceMediatorFactory = new SequenceMediatorFactory();
                 }
                 sequenceMediatorFactory.createSpecificMediator(omElement, null);
-
-            } else if (qTag.equals("task")) {
-                DummyTaskDescriptionFactory.createTaskDescription(omElement,
-                        OMAbstractFactory.getOMFactory().createOMNamespace("http://ws.apache.org/ns/synapse", ""));
-
-            } else if (qTag.equals("template")) {
-                if (templateMediatorFactory == null) {
+				break;
+			case "task":
+				DummyTaskDescriptionFactory.createTaskDescription(omElement,
+                        OMAbstractFactory.getOMFactory().createOMNamespace(SYNAPSE_NAMESPACE, ""));
+				break;
+			case "template":
+				if (templateMediatorFactory == null) {
                     templateMediatorFactory = new TemplateMediatorFactory();
                 }
                 templateMediatorFactory.createMediator(omElement, null);
-
-            }
+				break;
+			default:
+				break;
+			}
 
         } catch (SynapseException | MediatorException | SynapseTaskException e) {
             return e.getMessage();
@@ -1106,7 +1107,7 @@ public class ProcessSourceView {
             Object child = childern.next();
             if (child instanceof OMElementImpl) {
                 currentElement = (OMElement) child;
-                currentElement.setNamespace(new OMNamespaceImpl("http://ws.apache.org/ns/synapse", ""));
+                currentElement.setNamespace(new OMNamespaceImpl(SYNAPSE_NAMESPACE, ""));
                 if (currentElement.getChildren().hasNext()) {
                     setNamespaceForChildren(currentElement);
                 }

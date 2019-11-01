@@ -18,9 +18,9 @@ package org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts;
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EditPartConstants.CLASS_MEDIATOR_ICON_PATH;
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EditPartConstants.DEFAULT_PROPERTY_VALUE_TEXT;
 
-import org.apache.axiom.om.OMElement;
+import java.util.Iterator;
+
 import org.apache.commons.lang.StringUtils;
-import org.apache.synapse.SynapseException;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.Shape;
@@ -47,8 +47,7 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.papyrus.infra.gmfdiag.css.CSSNodeImpl;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
-import org.jaxen.JaxenException;
-import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
+import org.wso2.developerstudio.eclipse.gmf.esb.ClassProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EsbGraphicalShapeWithLabel;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedBorderItemLocator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedSizedAbstractMediator;
@@ -59,12 +58,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.ClassMedia
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.ClassMediatorItemSemanticEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.validator.GraphicalValidatorUtil;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.validator.MediatorValidationUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.ClassMediatorImpl;
-import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.ClassMediatorTransformer;
-import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.ClassMediatorExt;
-import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.ClassMediatorExtSerializer;
-import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 
 /**
  * @generated NOT
@@ -392,34 +386,41 @@ public class ClassMediatorEditPart extends FixedSizedAbstractMediator {
 
     }
     
-    @Override
-    public void notifyChanged(Notification notification) {
-        // this.getModel() will get EMF datamodel of the class mediator datamodel
-        if (this.getModel() instanceof CSSNodeImpl) {
-            // The following part will check for validation issues with the current data in the model
-            CSSNodeImpl model = (CSSNodeImpl) this.getModel();
-            if (model.getElement() instanceof ClassMediatorImpl) {
-                ClassMediatorImpl classMediatorDataModel = (ClassMediatorImpl) model.getElement();
-                try {
-                    ClassMediatorExt classMediator = ClassMediatorTransformer
-                            .createClassMediator((EsbNode) classMediatorDataModel);
-
-                    ClassMediatorExtSerializer classMediatorSerializer = new ClassMediatorExtSerializer();
-                    OMElement omElement = classMediatorSerializer.serializeSpecificMediator(classMediator);
-
-                    if (StringUtils
-                            .isEmpty(MediatorValidationUtil.validateMediatorsFromOEMElement(omElement, "class"))) {
-                        GraphicalValidatorUtil.removeValidationMark(this);
-                    } else {
-                        GraphicalValidatorUtil.addValidationMark(this);
-                    }
-                } catch (JaxenException | TransformerException | SynapseException e) {
-                    GraphicalValidatorUtil.addValidationMark(this);
-                }
-            }
-        }
-        super.notifyChanged(notification);
-    }
+	@Override
+	public void notifyChanged(Notification notification) {
+		// this.getModel() will get EMF datamodel of the class mediator
+		// datamodel
+		if (this.getModel() instanceof CSSNodeImpl) {
+			// The following part will check for validation issues with the
+			// current data in the model
+			CSSNodeImpl model = (CSSNodeImpl) this.getModel();
+			if (model.getElement() instanceof ClassMediatorImpl) {
+				ClassMediatorImpl classMediatorDataModel = (ClassMediatorImpl) model.getElement();
+				String className = classMediatorDataModel.getClassName();
+				boolean isErrorneous = false;
+				if (className.equals("")) {
+					isErrorneous = true;
+				}
+				if (!isErrorneous) {
+					Iterator<ClassProperty> classPropertyIterator =
+					                                              classMediatorDataModel.getProperties()
+					                                                                    .iterator();
+					while (!isErrorneous && classPropertyIterator.hasNext()) {
+						ClassProperty classProperty = classPropertyIterator.next();
+						if (classProperty.getPropertyName().equals("")) {
+							isErrorneous = true;
+						}
+					}
+				}
+				if (isErrorneous) {
+					GraphicalValidatorUtil.addValidationMark(this);
+				} else {
+					GraphicalValidatorUtil.removeValidationMark(this);
+				}
+			}
+		}
+		super.notifyChanged(notification);
+	}
     
 
     /**

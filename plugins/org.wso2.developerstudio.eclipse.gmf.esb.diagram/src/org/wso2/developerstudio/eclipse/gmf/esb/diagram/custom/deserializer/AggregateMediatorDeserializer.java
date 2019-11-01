@@ -22,7 +22,6 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.config.xml.SynapsePath;
 import org.apache.synapse.mediators.AbstractMediator;
 import org.apache.synapse.mediators.Value;
-import org.apache.synapse.util.xpath.SynapseXPath;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
@@ -89,7 +88,6 @@ public class AggregateMediatorDeserializer extends AbstractEsbNodeDeserializer<A
 
             nsp.setSupportJsonPaths(true);
 
-            // vishualAggrigate.setAggregationExpression(nsp);
             executeSetValueCommand(AGGREGATE_MEDIATOR__AGGREGATION_EXPRESSION, nsp);
 
         }

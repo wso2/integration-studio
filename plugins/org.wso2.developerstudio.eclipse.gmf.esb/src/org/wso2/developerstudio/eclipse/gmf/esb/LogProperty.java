@@ -6,8 +6,6 @@
  */
 package org.wso2.developerstudio.eclipse.gmf.esb;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Log Property</b></em>'.

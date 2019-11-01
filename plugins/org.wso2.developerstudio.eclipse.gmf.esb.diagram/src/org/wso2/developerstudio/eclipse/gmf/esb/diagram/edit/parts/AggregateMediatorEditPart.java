@@ -17,10 +17,9 @@ package org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts;
 
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EditPartConstants.DEFAULT_PROPERTY_VALUE_TEXT;
 
-import org.apache.axiom.om.OMElement;
 import org.apache.commons.lang.StringUtils;
-import org.apache.synapse.SynapseException;
-import org.apache.synapse.config.xml.AggregateMediatorSerializer;
+import org.apache.synapse.util.xpath.SynapseJsonPath;
+import org.apache.synapse.util.xpath.SynapseXPath;
 import org.eclipse.draw2d.GridData;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.PositionConstants;
@@ -51,7 +50,6 @@ import org.eclipse.papyrus.infra.gmfdiag.css.CSSNodeImpl;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.jaxen.JaxenException;
-import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EsbGroupingShape;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedBorderItemLocator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.ShowPropertyViewEditPolicy;
@@ -63,11 +61,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.AggregateM
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.EsbTextSelectionEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.validator.GraphicalValidatorUtil;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.validator.MediatorValidationUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.AggregateMediatorImpl;
-import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.AggregateMediatorTransformer;
-import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
-import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 
 /**
  * @generated NOT
@@ -420,35 +414,58 @@ public class AggregateMediatorEditPart extends SingleCompartmentComplexFiguredAb
 
     }
 
-    @Override
-    public void notifyChanged(Notification notification) {
-        // this.getModel() will get EMF datamodel of the aggregate mediator datamodel
-        if (this.getModel() instanceof CSSNodeImpl) {
-            // The following part will check for validation issues with the current data in the model
-            CSSNodeImpl model = (CSSNodeImpl) this.getModel();
-            if (model.getElement() instanceof AggregateMediatorImpl) {
-                AggregateMediatorImpl aggregateMediatorDataModel = (AggregateMediatorImpl) model.getElement();
-                try {
-                    org.apache.synapse.mediators.eip.aggregator.AggregateMediator aggregateMediator = AggregateMediatorTransformer
-                            .createAggregateMediator(new TransformationInfo(), (EsbNode) aggregateMediatorDataModel,
-                                    true);
-
-                    AggregateMediatorSerializer aggregateMediatorSerializer = new AggregateMediatorSerializer();
-                    OMElement omElement = aggregateMediatorSerializer.serializeSpecificMediator(aggregateMediator);
-
-                    if (StringUtils
-                            .isEmpty(MediatorValidationUtil.validateMediatorsFromOEMElement(omElement, "aggregate"))) {
-                        GraphicalValidatorUtil.removeValidationMark(this);
-                    } else {
-                        GraphicalValidatorUtil.addValidationMark(this);
-                    }
-                } catch (JaxenException | TransformerException | SynapseException e) {
-                    GraphicalValidatorUtil.addValidationMark(this);
-                }
-            }
-        }
-        super.notifyChanged(notification);
-    }
+	@Override
+	public void notifyChanged(Notification notification) {
+		// this.getModel() will get EMF datamodel of the aggregate mediator
+		// datamodel
+		if (this.getModel() instanceof CSSNodeImpl) {
+			// The following part will check for validation issues with the
+			// current data in the model
+			CSSNodeImpl model = (CSSNodeImpl) this.getModel();
+			if (model.getElement() instanceof AggregateMediatorImpl) {
+				AggregateMediatorImpl aggregateMediatorDataModel =
+				                                                 (AggregateMediatorImpl) model.getElement();
+				boolean isErrorneous = false;
+				String xpathValue = aggregateMediatorDataModel.getAggregationExpression()
+				                                              .getPropertyValue();
+				if (xpathValue.equals("")) {
+					isErrorneous = true;
+				} else {
+					try {
+						if (xpathValue.startsWith("json-eval(")) {
+							new SynapseJsonPath(xpathValue);
+						} else {
+							new SynapseXPath(xpathValue);
+						}
+					} catch (JaxenException e) {
+						isErrorneous = true;
+					}
+				}
+				if (!isErrorneous) {
+					String correlationXpathValue =
+					                             aggregateMediatorDataModel.getCorrelationExpression()
+					                                                       .getPropertyValue();
+					if (!correlationXpathValue.equals("")) {
+						try {
+							if (correlationXpathValue.startsWith("json-eval(")) {
+								new SynapseJsonPath(correlationXpathValue);
+							} else {
+								new SynapseXPath(correlationXpathValue);
+							}
+						} catch (JaxenException e) {
+							isErrorneous = true;
+						}
+					}
+				}
+				if (isErrorneous) {
+					GraphicalValidatorUtil.addValidationMark(this);
+				} else {
+					GraphicalValidatorUtil.removeValidationMark(this);
+				}
+			}
+		}
+		super.notifyChanged(notification);
+	}
 
     /**
      * @generated NOT

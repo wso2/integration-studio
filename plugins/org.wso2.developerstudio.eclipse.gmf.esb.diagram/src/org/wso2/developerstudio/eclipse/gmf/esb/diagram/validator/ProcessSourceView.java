@@ -1082,14 +1082,11 @@ public class ProcessSourceView {
 				break;
 			}
 
-        } catch (SynapseException | MediatorException | SynapseTaskException e) {
+        } catch (SynapseException | MediatorException | SynapseTaskException | NullPointerException e) {
             return e.getMessage();
 
         } catch (XMLStreamException e) {
             // ignore
-        } catch (NullPointerException e) {
-            return e.getMessage();
-
         }
         return "";
     }

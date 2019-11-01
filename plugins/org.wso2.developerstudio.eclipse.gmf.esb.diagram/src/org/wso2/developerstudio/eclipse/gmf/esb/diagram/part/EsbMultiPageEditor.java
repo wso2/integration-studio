@@ -22,10 +22,8 @@ import java.io.StringReader;
 import java.io.StringWriter;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Properties;
-import java.util.Set;
 import java.util.UUID;
 import java.util.Scanner;
 
@@ -180,10 +178,6 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
     private static final String CONFIG_ERROR = "org.wso2.developerstudio.eclipse.gmf.esb.diagram.synapseerror";
 
     private static final String ESB_GRAPHICAL_PERSPECTIVE_ID = "org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.perspective";
-    /**
-     * Used to hold temporary files.
-     */
-    private Set<IFile> tempFiles = new HashSet<IFile>();
 
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
@@ -237,13 +231,12 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
         if (editorInput instanceof FileEditorInput) {
             IFile file = ((FileEditorInput) editorInput).getFile();
             fileName = file.getName();
-            final Deserializer deserializer = Deserializer.getInstance();
             
             try (InputStream inputStream = file.getContents()) {
                 
                 final String source = new Scanner(inputStream).useDelimiter("\\A").next();
-                ArtifactType artifactType = deserializer.getArtifactType(source);
-                editorInput = new EsbEditorInput(null, file, artifactType.getLiteral());
+                final Deserializer deserializer = Deserializer.getInstance();
+                editorInput = new EsbEditorInput(null, file, deserializer.getArtifactType(source).getLiteral());
 
                 addPage(DESIGN_VIEW_PAGE_INDEX, graphicalEditor, editorInput);
 
@@ -265,7 +258,6 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
                                         sourceError = new SourceError(deserializeStatus.getExecption().getMessage(), 0,
                                                 0, 2);
                                     }
-
                                     addMarker(sourceError);
                                 }
 
@@ -314,8 +306,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
         esbPaletteFactory.addDefinedEndpoints(getEditor(0));
 
         EsbEditorInput input = (EsbEditorInput) getEditor(0).getEditorInput();
-        IFile file = input.getXmlResource();
-        IProject activeProject = file.getProject();
+        IProject activeProject = input.getXmlResource().getProject();
 
         if (CloudConnectorDirectoryTraverser.getInstance().validate(activeProject)) {
             String connectorDirectory = activeProject.getLocation().toOSString() + File.separator + "cloudConnectors";
@@ -338,24 +329,14 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
         String pathName = activeProject.getLocation().toOSString() + File.separator + "resources";
 
         Properties prop = new Properties();
-        FileInputStream inStream = null;
         File cloudConFile = new File(pathName, "cloudConnector.properties");
         if (cloudConFile.exists()) {
-            try {
-                inStream = new FileInputStream(cloudConFile);
+            try (FileInputStream inStream = new FileInputStream(cloudConFile)) {
                 prop.load(inStream);
             } catch (FileNotFoundException e) {
                 log.error("File is not available.", e);
             } catch (IOException e) {
                 log.error("Error occurred while trying to load properties", e);
-            } finally {
-                if (inStream != null) {
-                    try {
-                        inStream.close();
-                    } catch (IOException e) {
-                        log.error("Error occurred while tying to close the file stream", e);
-                    }
-                }
             }
         }
 
@@ -397,10 +378,8 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
                 }
             });
 
-            // Initialize source editor.
-            // updateSourceEditor();
-        } catch (Exception ex) {
-            log.error("Error while initializing source viewer control.", ex);
+        } catch (Exception e) {
+            log.error("Error while initializing source viewer control.", e);
         }
 
     }
@@ -434,7 +413,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
                 final Deserializer deserializer = Deserializer.getInstance();
                 isFormEditor = true;
                 currArtifactType = artifactType;
-                try (InputStream inputStream = file.getContents();) {
+                try (InputStream inputStream = file.getContents()) {
                     
                     final String source = new Scanner(inputStream).useDelimiter("\\A").next();
                     editorInput = new EsbEditorInput(null, file, artifactType.getLiteral());
@@ -498,7 +477,6 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
         if (!tempFile.exists()) {
             tempFile.create(new ByteArrayInputStream(new byte[0]), true, null);
         }
-        tempFiles.add(tempFile);
         return tempFile;
     }
 
@@ -580,7 +558,6 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
         }
         createPage1();
         if (graphicalEditor != null) {
-            EditorUtils.setLockmode(graphicalEditor, true);
             EditorUtils.setLockmode(graphicalEditor, false);
         }
     }
@@ -1099,28 +1076,12 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
                         }
 
                     }
-                } catch (NumberFormatException nfe) {
+                } catch (NumberFormatException | TransformerException | DeserializerException nfe) {
                     sourceDirty = true;
                     log.error("Error while saving the diagram", nfe);
                     String errorMsgHeader = "Save failed. Following error(s) have been detected."
                             + " Please see the error log for more details.";
                     String simpleMessage = ExceptionMessageMapper.getNonTechnicalMessage(nfe.getMessage());
-                    IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, simpleMessage);
-                    ErrorDialog.openError(Display.getCurrent().getActiveShell(), "Error", errorMsgHeader, editorStatus);
-                } catch (TransformerException te) {
-                    sourceDirty = true;
-                    log.error("Error while saving the diagram", te);
-                    String errorMsgHeader = "Save failed. Following error(s) have been detected."
-                            + " Please see the error log for more details.";
-                    String simpleMessage = ExceptionMessageMapper.getNonTechnicalMessage(te.getMessage());
-                    IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, simpleMessage);
-                    ErrorDialog.openError(Display.getCurrent().getActiveShell(), "Error", errorMsgHeader, editorStatus);
-                } catch (DeserializerException de) {
-                    sourceDirty = true;
-                    log.error("Error while saving the diagram", de);
-                    String errorMsgHeader = "Save failed. Following error(s) have been detected."
-                            + " Please see the error log for more details.";
-                    String simpleMessage = ExceptionMessageMapper.getNonTechnicalMessage(de.getMessage());
                     IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, simpleMessage);
                     ErrorDialog.openError(Display.getCurrent().getActiveShell(), "Error", errorMsgHeader, editorStatus);
                 } catch (Exception e) {
@@ -1257,13 +1218,13 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 
     private void updateSequenceDetails() throws Exception {
 
-        IEditorPart editorPart = null;
         IProject activeProject = null;
         IEditorReference editorReferences[] = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
                 .getEditorReferences();
         for (int i = 0; i < editorReferences.length; i++) {
             IEditorPart editor = editorReferences[i].getEditor(false);
 
+            IEditorPart editorPart = null;
             if (editor != null) {
                 editorPart = editor.getSite().getWorkbenchWindow().getActivePage().getActiveEditor();
             }
@@ -1306,9 +1267,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
             File f = new File(file.getLocationURI().getPath());
             URI uri = URI.createFileURI(f.getAbsolutePath());
 
-            if (!f.exists()) {
-
-            } else {
+            if (f.exists()) {
 
                 resource = resourceSet.getResource(uri, true);
 
@@ -1416,20 +1375,13 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 
     // 20150929
     private void saveForcefully(String source, IFile xmlFile, IProgressMonitor monitor) {
-
-        InputStream is = new ByteArrayInputStream(source.getBytes());
-        try {
+        try (InputStream is = new ByteArrayInputStream(source.getBytes())) {
             if (xmlFile.exists()) {
                 xmlFile.setContents(is, true, true, monitor);
             } else {
                 xmlFile.create(is, true, monitor);
             }
-        } catch (CoreException e) {
-            log.error("Error occurred while saving " + e.getMessage());
-        }
-        try {
-            is.close();
-        } catch (IOException e) {
+        } catch (CoreException | IOException e) {
             log.error("Error occurred while saving " + e.getMessage());
         }
     }

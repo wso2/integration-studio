@@ -177,8 +177,6 @@ public class Deserializer {
                 } else {
                     log.warn("Ignoring null output from deserializer for " + artifact.getValue().getClass());
                 }
-            } else {
-
             }
         }
         if (artifacts.size() > 0) {
@@ -220,24 +218,31 @@ public class Deserializer {
         ArtifactType artifactType = null;
         OMElement element = AXIOMUtil.stringToOM(source);
         String localName = element.getLocalName();
-        if ("definitions".equals(localName)) {
-            artifactType = ArtifactType.SYNAPSE_CONFIG;
-        } else if ("proxy".equals(localName)) {
-            artifactType = ArtifactType.PROXY;
-        } else if ("sequence".equals(localName)) {
-            if ("main".equals(element.getAttributeValue(new javax.xml.namespace.QName("name")))) {
+        switch (localName) {
+		case "definitions":
+			artifactType = ArtifactType.SYNAPSE_CONFIG;
+			break;
+		case "proxy":
+			artifactType = ArtifactType.PROXY;
+			break;
+		case "sequence":
+			if ("main".equals(element.getAttributeValue(new javax.xml.namespace.QName("name")))) {
                 artifactType = ArtifactType.MAIN_SEQUENCE;
             } else {
                 artifactType = ArtifactType.SEQUENCE;
             }
-        } else if ("localEntry".equals(localName)) {
-            artifactType = ArtifactType.LOCAL_ENTRY;
-        } else if ("task".equals(localName)) {
-            artifactType = ArtifactType.TASK;
-        } else if ("api".equals(localName)) {
-            artifactType = ArtifactType.API;
-        } else if ("template".equals(localName)) {
-            Iterator children = element.getChildElements();
+			break;
+		case "localEntry":
+			artifactType = ArtifactType.LOCAL_ENTRY;
+			break;
+		case "task":
+			artifactType = ArtifactType.TASK;
+			break;
+		case "api":
+			artifactType = ArtifactType.API;
+			break;
+		case "template":
+			Iterator children = element.getChildElements();
             while (children.hasNext()) {
                 OMElement child1 = (OMElement) children.next();
                 String child1LocalName = child1.getLocalName();
@@ -259,9 +264,9 @@ public class Deserializer {
                     }
                 }
             }
-        } else if ("endpoint".equals(localName)) {
-
-            OMAttribute templateAtr = element.getAttribute(new javax.xml.namespace.QName("template"));
+			break;
+		case "endpoint":
+			OMAttribute templateAtr = element.getAttribute(new javax.xml.namespace.QName("template"));
             if (templateAtr != null) {
                 artifactType = ArtifactType.TEMPLATE_ENDPOINT;
                 
@@ -285,20 +290,25 @@ public class Deserializer {
                     }
                 }
             }
-
-        } else if ("messageStore".equals(localName)) {
-            artifactType = ArtifactType.MESSAGE_STORE;
-        } else if ("messageProcessor".equals(localName)) {
-            artifactType = ArtifactType.MESSAGE_PROCESSOR;
-        } else if ("inboundEndpoint".equals(localName)) {
-            artifactType = ArtifactType.INBOUND_ENDPOINT;
-        } else if ("mock-service".equals(localName)) {
-        	artifactType = ArtifactType.MOCK_SERVICE;
-        } else if ("unit-test".equals(localName)) {
-        	artifactType = ArtifactType.SYNAPSE_UNIT_TEST;
-        } else {
-            throw new UnrecogizedArtifactTypeException("Unrecognized source configuration section " + localName);
-        }
+			break;
+		case "messageStore":
+			artifactType = ArtifactType.MESSAGE_STORE;
+			break;
+		case "messageProcessor":
+			artifactType = ArtifactType.MESSAGE_PROCESSOR;
+			break;
+		case "inboundEndpoint":
+			artifactType = ArtifactType.INBOUND_ENDPOINT;
+			break;
+		case "mock-service":
+			artifactType = ArtifactType.MOCK_SERVICE;
+			break;
+		case "unit-test":
+			artifactType = ArtifactType.SYNAPSE_UNIT_TEST;
+			break;
+		default:
+			throw new UnrecogizedArtifactTypeException("Unrecognized source configuration section " + localName);
+		}
         return artifactType;
     }
 

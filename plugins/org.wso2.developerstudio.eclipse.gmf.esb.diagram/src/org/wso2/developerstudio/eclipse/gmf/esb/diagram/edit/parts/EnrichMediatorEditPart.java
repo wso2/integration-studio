@@ -50,7 +50,10 @@ import org.eclipse.papyrus.infra.gmfdiag.css.CSSNodeImpl;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.jaxen.JaxenException;
+import org.wso2.developerstudio.eclipse.gmf.esb.EnrichSourceType;
+import org.wso2.developerstudio.eclipse.gmf.esb.EnrichTargetType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EsbGraphicalShapeWithLabel;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedBorderItemLocator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedSizedAbstractMediator;
@@ -64,12 +67,15 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.validator.GraphicalValid
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.validator.MediatorValidationUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.EnrichMediatorImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.EnrichMediatorTransformer;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 /**
  * @generated NOT
  */
 public class EnrichMediatorEditPart extends FixedSizedAbstractMediator {
 
+    private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
     /**
      * @generated
      */
@@ -390,38 +396,56 @@ public class EnrichMediatorEditPart extends FixedSizedAbstractMediator {
 
     }
 
-    @Override
-    public void notifyChanged(Notification notification) {
-        // this.getModel() will get EMF datamodel of the enrich mediator datamodel
-        if (this.getModel() instanceof CSSNodeImpl) {
-            // The following part will check for validation issues with the current data in the model
-            CSSNodeImpl model = (CSSNodeImpl) this.getModel();
-            if (model.getElement() instanceof EnrichMediatorImpl) {
-                EnrichMediatorImpl enrichMediatorDataModel = (EnrichMediatorImpl) model.getElement();
-                try {
-                    org.apache.synapse.mediators.elementary.EnrichMediator enrichMediator = EnrichMediatorTransformer
-                            .createEnrichMediator((EsbNode) enrichMediatorDataModel, true);
+	@Override
+	public void notifyChanged(Notification notification) {
+		// this.getModel() will get EMF datamodel of the enrich mediator datamodel
+		if (notification.getEventType() == Notification.SET && this.getModel() instanceof CSSNodeImpl) {
+			// The following part will check for validation issues with the current data in
+			// the model
+			CSSNodeImpl model = (CSSNodeImpl) this.getModel();
+			if (model.getElement() instanceof EnrichMediatorImpl) {
+				EnrichMediatorImpl enrichMediatorDataModel = (EnrichMediatorImpl) model.getElement();
+				try {
+					boolean hasError = false;
+					// Validate Source Properties
+					if (enrichMediatorDataModel.getSourceType() == EnrichSourceType.CUSTOM) {
+						if (enrichMediatorDataModel.getSourceXpath().getPropertyValue().equals("")) {
+							hasError = true;
+						}
+					} else if (enrichMediatorDataModel.getSourceType() == EnrichSourceType.INLINE) {
+						if (enrichMediatorDataModel.getSourceXML() == null
+								|| enrichMediatorDataModel.getSourceXML().equals("")) {
+							hasError = true;
+						}
+					}
+					// Validate Target Properties
+					if (enrichMediatorDataModel.getTargetType() == EnrichTargetType.CUSTOM) {
+						if (enrichMediatorDataModel.getTargetXpath().getPropertyValue().equals("")) {
+							hasError = true;
+						}
+					} else if (enrichMediatorDataModel.getTargetType() == EnrichTargetType.PROPERTY) {
+						if (enrichMediatorDataModel.getTargetProperty().equals("")) {
+							hasError = true;
+						}
+					}
 
-                    EnrichMediatorSerializer enrichMediatorSerializer = new EnrichMediatorSerializer();
-                    OMElement omElement = enrichMediatorSerializer.serializeMediator(null, enrichMediator);
+					if (hasError) {
+						GraphicalValidatorUtil.addValidationMark(this);
+					} else {
+						GraphicalValidatorUtil.removeValidationMark(this);
+					}
+				} catch (Exception e) {
+					// Skip error since it's a validation related minor issue
+					log.error("Graphical validation error occured", e);
+				}
+			}
+		}
+		super.notifyChanged(notification);
+	}
 
-                    if (StringUtils
-                            .isEmpty(MediatorValidationUtil.validateMediatorsFromOEMElement(omElement, "enrich"))) {
-                        GraphicalValidatorUtil.removeValidationMark(this);
-                    } else {
-                        GraphicalValidatorUtil.addValidationMark(this);
-                    }
-                } catch (JaxenException | XMLStreamException | SynapseException e) {
-                    GraphicalValidatorUtil.addValidationMark(this);
-                }
-            }
-        }
-        super.notifyChanged(notification);
-    }
-    
-    /**
-     * @generated
-     */
-    static final Color THIS_BACK = new Color(null, 230, 230, 230);
+	/**
+	 * @generated
+	 */
+	static final Color THIS_BACK = new Color(null, 230, 230, 230);
 
 }

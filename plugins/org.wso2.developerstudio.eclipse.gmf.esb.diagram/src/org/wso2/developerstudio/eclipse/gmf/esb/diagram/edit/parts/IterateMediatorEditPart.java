@@ -55,6 +55,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.jaxen.JaxenException;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EsbGroupingShape;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedBorderItemLocator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.ShowPropertyViewEditPolicy;
@@ -70,12 +71,15 @@ import org.wso2.developerstudio.eclipse.gmf.esb.impl.IterateMediatorImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.IterateMediatorTransformer;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 /**
  * @generated NOT
  */
 public class IterateMediatorEditPart extends SingleCompartmentComplexFiguredAbstractMediator {
 
+    private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
     public IFigure targetOutputConnector;
 
     /**
@@ -428,38 +432,43 @@ public class IterateMediatorEditPart extends SingleCompartmentComplexFiguredAbst
 
     }
 
-    @Override
-    public void notifyChanged(Notification notification) {
-        // this.getModel() will get EMF datamodel of the iterate mediator datamodel
-        if (this.getModel() instanceof CSSNodeImpl) {
-            // The following part will check for validation issues with the current data in the model
-            CSSNodeImpl model = (CSSNodeImpl) this.getModel();
-            if (model.getElement() instanceof IterateMediatorImpl) {
-                IterateMediatorImpl iterateMediatorDataModel = (IterateMediatorImpl) model.getElement();
-                try {
-                    org.apache.synapse.mediators.eip.splitter.IterateMediator iterateMediator = IterateMediatorTransformer
-                            .createIterateMediator(new TransformationInfo(), (EsbNode) iterateMediatorDataModel, true);
+	@Override
+	public void notifyChanged(Notification notification) {
+		// this.getModel() will get EMF datamodel of the iterate mediator datamodel
+		if (notification.getEventType() == Notification.SET && this.getModel() instanceof CSSNodeImpl) {
+			// The following part will check for validation issues with the current data in
+			// the model
+			CSSNodeImpl model = (CSSNodeImpl) this.getModel();
+			if (model.getElement() instanceof IterateMediatorImpl) {
+				IterateMediatorImpl iterateMediatorDataModel = (IterateMediatorImpl) model.getElement();
+				boolean hasError = false;
+				try {
+					if (iterateMediatorDataModel.getIterateExpression().getPropertyValue().equals("")) {
+						hasError = true;
+					}
+					if (iterateMediatorDataModel.isPreservePayload()) {
+						if (iterateMediatorDataModel.getAttachPath().getPropertyValue().equals("")) {
+							hasError = true;
+						}
+					}
 
-                    IterateMediatorSerializer iterateMediatorSerializer = new IterateMediatorSerializer();
-                    OMElement omElement = iterateMediatorSerializer.serializeSpecificMediator(iterateMediator);
+					if (hasError) {
+						GraphicalValidatorUtil.addValidationMark(this);
+					} else {
+						GraphicalValidatorUtil.removeValidationMark(this);
+					}
+				} catch (Exception e) {
+					// Skip error since it's a validation related minor issue
+					log.error("Graphical validation error occured", e);
+				}
+			}
+		}
+		super.notifyChanged(notification);
+	}
 
-                    if (StringUtils
-                            .isEmpty(MediatorValidationUtil.validateMediatorsFromOEMElement(omElement, "iterate"))) {
-                        GraphicalValidatorUtil.removeValidationMark(this);
-                    } else {
-                        GraphicalValidatorUtil.addValidationMark(this);
-                    }
-                } catch (JaxenException | TransformerException | SynapseException e) {
-                    GraphicalValidatorUtil.addValidationMark(this);
-                }
-            }
-        }
-        super.notifyChanged(notification);
-    }
-    
-    /**
-     * @generated NOT
-     */
+	/**
+	 * @generated NOT
+	 */
     static final Color THIS_BACK = new Color(null, 255, 255, 255);
 
 }

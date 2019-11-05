@@ -51,6 +51,9 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.jaxen.JaxenException;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
+import org.wso2.developerstudio.eclipse.gmf.esb.MediaType;
+import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFormatType;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EsbGraphicalShapeWithLabel;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedBorderItemLocator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedSizedAbstractMediator;
@@ -64,12 +67,15 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.validator.GraphicalValid
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.validator.MediatorValidationUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.PayloadFactoryMediatorImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.PayloadFactoryMediatorTransformer;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 /**
  * @generated NOT
  */
 public class PayloadFactoryMediatorEditPart extends FixedSizedAbstractMediator {
 
+    private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
     /**
      * @generated
      */
@@ -360,34 +366,38 @@ public class PayloadFactoryMediatorEditPart extends FixedSizedAbstractMediator {
 
     }
     
-    @Override
-    public void notifyChanged(Notification notification) {
-        // this.getModel() will get EMF datamodel of the payload factory mediator datamodel
-        if (this.getModel() instanceof CSSNodeImpl) {
-            // The following part will check for validation issues with the current data in the model
-            CSSNodeImpl model = (CSSNodeImpl) this.getModel();
-            if (model.getElement() instanceof PayloadFactoryMediatorImpl) {
-                PayloadFactoryMediatorImpl payloadFactoryMediatorDataModel = (PayloadFactoryMediatorImpl) model.getElement();
-                try {
-                    org.apache.synapse.mediators.transform.PayloadFactoryMediator payloadFactoryMediator = PayloadFactoryMediatorTransformer
-                            .createPayloadFactoryMediator((EsbNode) payloadFactoryMediatorDataModel);
-
-                    PayloadFactoryMediatorSerializer payloadFactoryMediatorSerializer = new PayloadFactoryMediatorSerializer();
-                    OMElement omElement = payloadFactoryMediatorSerializer.serializeSpecificMediator(payloadFactoryMediator);
-
-                    if (StringUtils
-                            .isEmpty(MediatorValidationUtil.validateMediatorsFromOEMElement(omElement, "payloadFactory"))) {
-                        GraphicalValidatorUtil.removeValidationMark(this);
-                    } else {
-                        GraphicalValidatorUtil.addValidationMark(this);
-                    }
-                } catch (JaxenException | SynapseException | OMException e) {
-                    GraphicalValidatorUtil.addValidationMark(this);
-                }
-            }
-        }
-        super.notifyChanged(notification);
-    }
+	@Override
+	public void notifyChanged(Notification notification) {
+		// this.getModel() will get EMF datamodel of the payload factory mediator
+		// datamodel
+		if (notification.getEventType() == Notification.SET && this.getModel() instanceof CSSNodeImpl) {
+			// The following part will check for validation issues with the current data in
+			// the model
+			CSSNodeImpl model = (CSSNodeImpl) this.getModel();
+			if (model.getElement() instanceof PayloadFactoryMediatorImpl) {
+				PayloadFactoryMediatorImpl payloadFactoryMediatorDataModel = (PayloadFactoryMediatorImpl) model
+						.getElement();
+				boolean hasError = false;
+				try {
+					if (payloadFactoryMediatorDataModel.getPayloadFormat() == PayloadFormatType.INLINE) {
+						if (payloadFactoryMediatorDataModel.getPayload() == null
+								|| payloadFactoryMediatorDataModel.getPayload().equals("")) {
+							hasError = true;
+						}
+					}
+					if (hasError) {
+						GraphicalValidatorUtil.addValidationMark(this);
+					} else {
+						GraphicalValidatorUtil.removeValidationMark(this);
+					}
+				} catch (Exception e) {
+					// Skip error since it's a validation related minor issue
+					log.error("Graphical validation error occured", e);
+				}
+			}
+		}
+		super.notifyChanged(notification);
+	}
 
     /**
      * @generated

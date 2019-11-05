@@ -47,7 +47,9 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.tooling.runtime.edit.policies.reparent.CreationEditPolicyWithCustomReparent;
 import org.eclipse.swt.graphics.Color;
 import org.jaxen.JaxenException;
+import org.wso2.developerstudio.eclipse.gmf.esb.CallMediatorEndpointType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EsbGroupingShape;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedBorderItemLocator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.ShowPropertyViewEditPolicy;
@@ -62,6 +64,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.validator.MediatorValida
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.CallMediatorImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.CallMediatorTransformer;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.eclipse.papyrus.infra.gmfdiag.css.CSSNodeImpl;
 
 /**
@@ -69,6 +73,7 @@ import org.eclipse.papyrus.infra.gmfdiag.css.CSSNodeImpl;
  */
 public class CallMediatorEditPart extends SingleCompartmentComplexFiguredAbstractMediator {
     
+    private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
     private static String CALL_MEDIATOR_QNAME = "call";
     public IFigure endpointOutputConnector;
     /**
@@ -356,36 +361,35 @@ public class CallMediatorEditPart extends SingleCompartmentComplexFiguredAbstrac
      * 
      * This method will get invoked if the corresponding data model for the editpart changes
      */
-    @Override
-    public void notifyChanged(Notification notification) {
-        // this.getModel will get EMF datamodel of the call mediator datamodel 
-        if (this.getModel() instanceof CSSNodeImpl) {
-            // The following part will check for validation issues with the current data in the model
-            CSSNodeImpl model = (CSSNodeImpl) this.getModel();
-            if (model.getElement() instanceof CallMediatorImpl) {
-                CallMediatorImpl callMediatorDataModel = (CallMediatorImpl) model.getElement();
-                try {
-                    org.apache.synapse.mediators.builtin.CallMediator callMediator;
-                    callMediator = CallMediatorTransformer.createCallMediator((EsbNode) callMediatorDataModel, true);
-                    CallMediatorSerializer callMediatorSerializer = new CallMediatorSerializer();
-                    OMElement omElement = callMediatorSerializer.serializeSpecificMediator(callMediator);
-                    // This will add a marker in the visual view if the data model is incomplete
-                    if (StringUtils
-                            .isEmpty(MediatorValidationUtil.validateMediatorsFromOEMElement(omElement, CALL_MEDIATOR_QNAME))) {
-                        GraphicalValidatorUtil.removeValidationMark(this);
-                    } else {
-                        GraphicalValidatorUtil.addValidationMark(this);
-                    }
-                } catch (JaxenException | TransformerException e) {
-                    // If some error occur while serializing the visual data model into synapse model
-                    // this will also add a maker to the visual view
-                    GraphicalValidatorUtil.addValidationMark(this);
-                }
-            }
-        }
-        super.notifyChanged(notification);
-    }
-
+	@Override
+	public void notifyChanged(Notification notification) {
+		// this.getModel will get EMF datamodel of the call mediator datamodel
+		if (notification.getEventType() == Notification.SET && this.getModel() instanceof CSSNodeImpl) {
+			// The following part will check for validation issues with the current data in
+			// the model
+			CSSNodeImpl model = (CSSNodeImpl) this.getModel();
+			if (model.getElement() instanceof CallMediatorImpl) {
+				CallMediatorImpl callMediatorDataModel = (CallMediatorImpl) model.getElement();
+				boolean hasError = false;
+				try {
+					if (callMediatorDataModel.getEndpointType() == CallMediatorEndpointType.XPATH) {
+						if (callMediatorDataModel.getEndpointXpath().getPropertyValue().equals("")) {
+							hasError = true;
+						}
+					}
+					if (hasError) {
+						GraphicalValidatorUtil.addValidationMark(this);
+					} else {
+						GraphicalValidatorUtil.removeValidationMark(this);
+					}
+				} catch (Exception e) {
+					// Skip error since it's a validation related minor issue
+					log.error("Graphical validation error occured", e);
+				}
+			}
+		}
+		super.notifyChanged(notification);
+	}
     /**
      * @generated
      */

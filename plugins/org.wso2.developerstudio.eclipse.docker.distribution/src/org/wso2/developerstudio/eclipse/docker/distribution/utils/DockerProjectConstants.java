@@ -64,20 +64,24 @@ public class DockerProjectConstants extends NLS {
 
     public static final String DOCKER_REPOSITORY = "repository";
     public static final String DOCKER_TAG = "tag";
+    public static final String REPOSITORY_SEPERATOR = "/";
 
     public static final String UNIX_DEFAULT_DOCKER_HOST = "unix:///var/run/docker.sock";
     public static final String WINDOWS_DEFAULT_DOCKER_HOST = "tcp://localhost:2375";
-    public static final String DOCKER_IMAGE_GEN_SUCCESS_MESSAGE = "Docker image successfully generated. \nImage ID: ";
+    public static final String DOCKER_IMAGE_GEN_SUCCESS_MESSAGE = "Docker image successfully generated";
     public static final String DOCKER_IMAGE_PUSH_SUCCESS_MESSAGE = "Docker image successfully pushed to the remote registry.";
+    public static final String DOCKER_IMAGE_PUSH_FAILED_MESSAGE = "Failed to push the built Docker image to the remote registry.";
     public static final String DOCKER_DEAMON_CONNECTION_FAILED_MESSAGE = "Cannot connect to the Docker Daemon. Start the Docker daemon to proceed.";
     public static final String DOCKER_IMAGE_GEN_FAILED_MESSAGE = "Docker image generaton failed";
-    public static final String DOCKER_IMAGE_PUSH_FAILED_MESSAGE = "Docker image push failed";
     public static final String DOCKER_IMAGE_AUTH_FAILED_MESSAGE = "Docker authentication failed! Please check Docker image details or credentials";
     public static final String DOCKER_IMAGE_AUTH_NULL_MESSAGE = "Docker authentication can not be empty";
     public static final String DOCKER_CONNECTION_FAILED_MESSAGE = "Failed to connect with docker in the local machine";
     public static final String MESSAGE_BOX_TITLE = "Docker Image Exporter";
+    public static final String SUFFCIENT_DEPENDENCY_NOT_FOUND = "Cannot export an empty docker image. please tick/check atleast one carbon application from the dependencies";
     public static final String OS_NAME = "os.name";
     public static final String WINDOWS = "win";
+    public static final String TARGET_REPOSITORY_XPATH = "/project/build/plugins/plugin/executions/execution/configuration/repository";
+    public static final String TARGET_TAG_XPATH = "/project/build/plugins/plugin/executions/execution/configuration/tag";
     
     public static String KUBERNETES_PROJECT_TYPE;
     public static String DOCKER_PROJECT_TYPE;

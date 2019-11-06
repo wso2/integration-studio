@@ -50,7 +50,10 @@ import org.eclipse.papyrus.infra.gmfdiag.css.CSSNodeImpl;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.jaxen.JaxenException;
+import org.wso2.developerstudio.eclipse.gmf.esb.CallMediatorEndpointType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
+import org.wso2.developerstudio.eclipse.gmf.esb.PropertyName;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EsbGraphicalShapeWithLabel;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedBorderItemLocator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedSizedAbstractMediator;
@@ -65,6 +68,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.validator.MediatorValida
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.PropertyMediatorImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.PropertyMediatorTransformer;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 /**
  * @generated NOT
@@ -87,6 +92,8 @@ public class PropertyMediatorEditPart extends FixedSizedAbstractMediator {
     public PropertyMediatorEditPart(View view) {
         super(view);
     }
+
+    private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
     /**
      * @generated NOT
@@ -392,34 +399,37 @@ public class PropertyMediatorEditPart extends FixedSizedAbstractMediator {
 
     }
 
-    @Override
-    public void notifyChanged(Notification notification) {
-        // this.getModel() will get EMF datamodel of the property mediator datamodel
-        if (this.getModel() instanceof CSSNodeImpl) {
-            // The following part will check for validation issues with the current data in the model
-            CSSNodeImpl model = (CSSNodeImpl) this.getModel();
-            if (model.getElement() instanceof PropertyMediatorImpl) {
-                PropertyMediatorImpl propertyMediatorDataModel = (PropertyMediatorImpl) model.getElement();
-                try {
-                    org.apache.synapse.mediators.builtin.PropertyMediator propertyMediator = PropertyMediatorTransformer
-                            .createPropertyMediator((EsbNode) propertyMediatorDataModel, true);
+	@Override
+	public void notifyChanged(Notification notification) {
+		// this.getModel() will get EMF datamodel of the property mediator datamodel
+		if (notification.getEventType() == Notification.SET && this.getModel() instanceof CSSNodeImpl) {
+			// The following part will check for validation issues with the current data in
+			// the model
+			CSSNodeImpl model = (CSSNodeImpl) this.getModel();
+			if (model.getElement() instanceof PropertyMediatorImpl) {
+				PropertyMediatorImpl propertyMediatorDataModel = (PropertyMediatorImpl) model.getElement();
+				boolean hasError = false;
+				try {
+					if (propertyMediatorDataModel.getPropertyName().getValue() == PropertyName.NEW_PROPERTY_NAME
+							.getValue()) {
+						if (propertyMediatorDataModel.getNewPropertyName() == null
+								|| propertyMediatorDataModel.getNewPropertyName().isEmpty()) {
+							hasError = true;
+						}
+					}
 
-                    PropertyMediatorSerializer propertyMediatorSerializer = new PropertyMediatorSerializer();
-                    OMElement omElement = propertyMediatorSerializer.serializeSpecificMediator(propertyMediator);
-
-                    if (StringUtils
-                            .isEmpty(MediatorValidationUtil.validateMediatorsFromOEMElement(omElement, "property"))) {
-                        GraphicalValidatorUtil.removeValidationMark(this);
-                    } else {
-                        GraphicalValidatorUtil.addValidationMark(this);
-                    }
-                } catch (JaxenException | TransformerException | XMLStreamException | SynapseException e) {
-                    GraphicalValidatorUtil.addValidationMark(this);
-                }
-            }
-        }
-        super.notifyChanged(notification);
-    }
+					if (hasError) {
+						GraphicalValidatorUtil.addValidationMark(this);
+					} else {
+						GraphicalValidatorUtil.removeValidationMark(this);
+					}
+				} catch (Exception e) {
+					log.error("Graphical validation error occured", e);
+				}
+			}
+		}
+		super.notifyChanged(notification);
+	}
 
     /**
      * @generated

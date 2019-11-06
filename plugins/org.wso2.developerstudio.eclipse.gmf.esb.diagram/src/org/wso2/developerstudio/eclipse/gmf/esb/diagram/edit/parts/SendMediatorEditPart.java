@@ -63,6 +63,8 @@ import org.eclipse.swt.graphics.Color;
 import org.jaxen.JaxenException;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.developerstudio.eclipse.gmf.esb.ReceivingSequenceType;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractEndpoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EsbGroupingShape;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedBorderItemLocator;
@@ -77,6 +79,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.validator.GraphicalValid
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.validator.MediatorValidationUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.SendMediatorImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.SendMediatorTransformer;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 /**
  * @generated NOT
@@ -101,6 +105,7 @@ public class SendMediatorEditPart extends SingleCompartmentComplexFiguredAbstrac
         super(view);
     }
 
+    private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
     /**
      * @generated NOT
      */
@@ -484,43 +489,43 @@ public class SendMediatorEditPart extends SingleCompartmentComplexFiguredAbstrac
 
     }
 
-    @Override
-    public void notifyChanged(Notification notification) {
-        super.notifyChanged(notification);
+	@Override
+	public void notifyChanged(Notification notification) {
+		super.notifyChanged(notification);
 
-        if (notification.getFeature() instanceof EAttribute) {
-            if (EsbPackage.eINSTANCE.getSendMediator_SkipSerialization().equals(notification.getFeature())) {
-                updateEndpointInlineProperty(notification);
-            }
-        }
-        
-        // this.getModel() will get EMF datamodel of the send mediator datamodel
-        if (this.getModel() instanceof CSSNodeImpl) {
-            // The following part will check for validation issues with the current data in the model
-            CSSNodeImpl model = (CSSNodeImpl) this.getModel();
-            if (model.getElement() instanceof SendMediatorImpl) {
-                SendMediatorImpl sendMediatorDataModel = (SendMediatorImpl) model.getElement();
-                try {
-                    org.apache.synapse.mediators.builtin.SendMediator sendMediator = SendMediatorTransformer
-                            .createSendMediator((EsbNode) sendMediatorDataModel, true);
+		if (notification.getFeature() instanceof EAttribute) {
+			if (EsbPackage.eINSTANCE.getSendMediator_SkipSerialization().equals(notification.getFeature())) {
+				updateEndpointInlineProperty(notification);
+			}
+		}
 
-                    SendMediatorSerializer sendMediatorSerializer = new SendMediatorSerializer();
-                    if (sendMediator != null) {
-	                    OMElement omElement = sendMediatorSerializer.serializeSpecificMediator(sendMediator);
-	
-	                    if (StringUtils
-	                            .isEmpty(MediatorValidationUtil.validateMediatorsFromOEMElement(omElement, "send"))) {
-	                        GraphicalValidatorUtil.removeValidationMark(this);
-	                    } else {
-	                        GraphicalValidatorUtil.addValidationMark(this);
-	                    }
-                    }
-                } catch (JaxenException | SynapseException e) {
-                    GraphicalValidatorUtil.addValidationMark(this);
-                }
-            }
-        }
-    }
+		// this.getModel() will get EMF datamodel of the send mediator datamodel
+		if (notification.getEventType() == Notification.SET && this.getModel() instanceof CSSNodeImpl) {
+			// The following part will check for validation issues with the current data in
+			// the model
+			CSSNodeImpl model = (CSSNodeImpl) this.getModel();
+			if (model.getElement() instanceof SendMediatorImpl) {
+				SendMediatorImpl sendMediatorDataModel = (SendMediatorImpl) model.getElement();
+				boolean hasError = false;
+				try {
+					if (sendMediatorDataModel.getReceivingSequenceType().getValue() == ReceivingSequenceType.DYNAMIC
+							.getValue()) {
+						if (sendMediatorDataModel.getDynamicReceivingSequence().getPropertyValue().isEmpty()) {
+							hasError = true;
+						}
+					}
+
+					if (hasError) {
+						GraphicalValidatorUtil.addValidationMark(this);
+					} else {
+						GraphicalValidatorUtil.removeValidationMark(this);
+					}
+				} catch (Exception e) {
+					log.error("Graphical validation error occured", e);
+				}
+			}
+		}
+	}
     
     /**
      * @generated NOT

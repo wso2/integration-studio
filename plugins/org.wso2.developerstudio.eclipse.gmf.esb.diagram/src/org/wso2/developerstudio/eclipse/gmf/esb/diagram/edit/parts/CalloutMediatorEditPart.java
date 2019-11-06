@@ -391,35 +391,6 @@ public class CalloutMediatorEditPart extends FixedSizedAbstractMediator {
 
     }
 
-    @Override
-    public void notifyChanged(Notification notification) {
-        // this.getModel() will get EMF datamodel of the callout mediator datamodel
-        if (this.getModel() instanceof CSSNodeImpl) {
-            // The following part will check for validation issues with the current data in the model
-            CSSNodeImpl model = (CSSNodeImpl) this.getModel();
-            if (model.getElement() instanceof CalloutMediatorImpl) {
-                CalloutMediatorImpl calloutMediatorDataModel = (CalloutMediatorImpl) model.getElement();
-                try {
-                    org.apache.synapse.mediators.builtin.CalloutMediator calloutMediator = CalloutMediatorTransformer
-                            .createCalloutMediator((EsbNode) calloutMediatorDataModel);
-
-                    CalloutMediatorSerializer calloutMediatorSerializer = new CalloutMediatorSerializer();
-                    OMElement omElement = calloutMediatorSerializer.serializeSpecificMediator(calloutMediator);
-
-                    if (StringUtils
-                            .isEmpty(MediatorValidationUtil.validateMediatorsFromOEMElement(omElement, "callout"))) {
-                        GraphicalValidatorUtil.removeValidationMark(this);
-                    } else {
-                        GraphicalValidatorUtil.addValidationMark(this);
-                    }
-                } catch (JaxenException | TransformerException | SynapseException e) {
-                    GraphicalValidatorUtil.addValidationMark(this);
-                }
-            }
-        }
-        super.notifyChanged(notification);
-    }
-
     /**
      * @generated
      */

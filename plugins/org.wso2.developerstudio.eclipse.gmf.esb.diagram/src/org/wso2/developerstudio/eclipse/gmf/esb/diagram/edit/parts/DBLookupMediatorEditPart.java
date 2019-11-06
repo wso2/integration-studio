@@ -53,6 +53,9 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.jaxen.JaxenException;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
+import org.wso2.developerstudio.eclipse.gmf.esb.SqlExecutorConnectionType;
+import org.wso2.developerstudio.eclipse.gmf.esb.SqlExecutorDatasourceType;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EsbGraphicalShapeWithLabel;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedBorderItemLocator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedSizedAbstractMediator;
@@ -70,12 +73,15 @@ import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.DBLookupMed
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.PropertyMediatorTransformer;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 /**
  * @generated NOT
  */
 public class DBLookupMediatorEditPart extends FixedSizedAbstractMediator {
 
+    private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
     /**
      * @generated
      */
@@ -398,35 +404,43 @@ public class DBLookupMediatorEditPart extends FixedSizedAbstractMediator {
 
     }
 
-    @Override
-    public void notifyChanged(Notification notification) {
-        // this.getModel() will get EMF datamodel of the db lookup mediator datamodel
-        if (this.getModel() instanceof CSSNodeImpl) {
-            // The following part will check for validation issues with the current data in the model
-            CSSNodeImpl model = (CSSNodeImpl) this.getModel();
-            if (model.getElement() instanceof DBLookupMediatorImpl) {
-                DBLookupMediatorImpl dbLookupMediatorDataModel = (DBLookupMediatorImpl) model.getElement();
-                try {
-                    org.apache.synapse.mediators.db.DBLookupMediator dbLookupMediator = DBLookupMediatorTransformer
-                            .createDBLookupMediator(new TransformationInfo(), (EsbNode) dbLookupMediatorDataModel);
+	@Override
+	public void notifyChanged(Notification notification) {
+		// this.getModel() will get EMF datamodel of the db lookup mediator datamodel
+		if (notification.getEventType() == Notification.SET && this.getModel() instanceof CSSNodeImpl) {
+			// The following part will check for validation issues with the current data in
+			// the model
+			CSSNodeImpl model = (CSSNodeImpl) this.getModel();
+			if (model.getElement() instanceof DBLookupMediatorImpl) {
+				DBLookupMediatorImpl dbLookupMediatorDataModel = (DBLookupMediatorImpl) model.getElement();
+				boolean hasError = false;
+				try {
+					if (dbLookupMediatorDataModel.getConnectionType() == SqlExecutorConnectionType.DATA_SOURCE) {
+						if (dbLookupMediatorDataModel.getConnectionDsName() == null
+								|| dbLookupMediatorDataModel.getConnectionDsName().equals("")) {
+							hasError = true;
+						}
+						if (dbLookupMediatorDataModel.getConnectionDsType() == SqlExecutorDatasourceType.EXTERNAL) {
+							if (dbLookupMediatorDataModel.getConnectionDsInitialContext() == null
+									|| dbLookupMediatorDataModel.getConnectionDsInitialContext().equals("")) {
+								hasError = true;
+							}
+						}
+					}
+					if (hasError) {
+						GraphicalValidatorUtil.addValidationMark(this);
+					} else {
+						GraphicalValidatorUtil.removeValidationMark(this);
+					}
+				} catch (Exception e) {
+					// Skip error since it's a validation related minor issue
+					log.error("Graphical validation error occured", e);
+				}
+			}
+		}
+		super.notifyChanged(notification);
+	}
 
-                    DBLookupMediatorSerializer dbLookupMediatorSerializer = new DBLookupMediatorSerializer();
-                    OMElement omElement = dbLookupMediatorSerializer.serializeSpecificMediator(dbLookupMediator);
-
-                    if (StringUtils
-                            .isEmpty(MediatorValidationUtil.validateMediatorsFromOEMElement(omElement, "dblookup"))) {
-                        GraphicalValidatorUtil.removeValidationMark(this);
-                    } else {
-                        GraphicalValidatorUtil.addValidationMark(this);
-                    }
-                } catch (SynapseException e) {
-                    GraphicalValidatorUtil.addValidationMark(this);
-                }
-            }
-        }
-        super.notifyChanged(notification);
-    }
-    
     /**
      * @generated
      */

@@ -353,34 +353,6 @@ public class BAMMediatorEditPart extends FixedSizedAbstractMediator {
         }
 
     }
-    
-    @Override
-    public void notifyChanged(Notification notification) {
-        // this.getModel() will get EMF datamodel of the BAM mediator datamodel
-        if (this.getModel() instanceof CSSNodeImpl) {
-            // The following part will check for validation issues with the current data in the model
-            CSSNodeImpl model = (CSSNodeImpl) this.getModel();
-            if (model.getElement() instanceof BAMMediatorImpl) {
-                BAMMediatorImpl bamMediatorDataModel = (BAMMediatorImpl) model.getElement();
-                try {
-                    org.wso2.carbon.mediator.bam.BamMediator bamMediator = BAMMediatorTransformer
-                            .createBAMMediator((EsbNode) bamMediatorDataModel, new TransformationInfo(), true);
-
-                    BamMediatorSerializer bamMediatorSerializer = new BamMediatorSerializer();
-                    OMElement omElement = bamMediatorSerializer.serializeSpecificMediator(bamMediator);
-
-                    if (StringUtils.isEmpty(MediatorValidationUtil.validateMediatorsFromOEMElement(omElement, "bam"))) {
-                        GraphicalValidatorUtil.removeValidationMark(this);
-                    } else {
-                        GraphicalValidatorUtil.addValidationMark(this);
-                    }
-                } catch (TransformerException | SynapseException | NullPointerException e) {
-                    GraphicalValidatorUtil.addValidationMark(this);
-                }
-            }
-        }
-        super.notifyChanged(notification);
-    }
 
     /**
      * @generated

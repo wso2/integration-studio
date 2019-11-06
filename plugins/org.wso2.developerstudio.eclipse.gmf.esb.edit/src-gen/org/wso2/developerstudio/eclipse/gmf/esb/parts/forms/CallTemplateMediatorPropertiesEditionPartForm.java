@@ -451,7 +451,7 @@ public class CallTemplateMediatorPropertiesEditionPartForm extends SectionProper
      */
 	protected Composite createTargetTemplateText(FormToolkit widgetFactory, Composite parent) {
 		Control targeTemplateLabel = createDescription(parent, EsbViewsRepository.CallTemplateMediator.Properties.targetTemplate, EsbMessages.CallTemplateMediatorPropertiesEditionPart_TargetTemplateLabel);
-		targetTemplate = widgetFactory.createText(parent, "",  SWT.READ_ONLY); //$NON-NLS-1$
+		targetTemplate = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		targetTemplate.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData targetTemplateData = new GridData(GridData.FILL_HORIZONTAL);

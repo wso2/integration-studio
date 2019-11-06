@@ -26,17 +26,15 @@ import java.io.File;
 import java.io.IOException;
 import java.text.MessageFormat;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.axiom.om.OMElement;
 import org.apache.commons.lang.RandomStringUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.maven.model.Plugin;
 import org.apache.maven.model.PluginExecution;
 import org.apache.maven.project.MavenProject;
-import org.apache.synapse.config.xml.CallMediatorSerializer;
-import org.apache.synapse.config.xml.InvokeMediatorSerializer;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
 import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
 import org.eclipse.core.resources.IFile;
@@ -84,17 +82,14 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.FileEditorInput;
-import org.jaxen.JaxenException;
-//import org.wso2.developerstudio.eclipse.artifact.template.validators.TemplateList;
 import org.wso2.developerstudio.eclipse.esb.core.ESBMavenConstants;
 import org.wso2.developerstudio.eclipse.esb.core.utils.ESBMediaTypeConstants;
-//import org.wso2.developerstudio.eclipse.capp.maven.utils.MavenConstants;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBArtifact;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
 import org.wso2.developerstudio.eclipse.esb.project.utils.ESBProjectUtils;
 import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
 import org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateMediator;
-import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
+import org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateParameter;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditorUtils;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EsbGraphicalShapeWithLabel;
@@ -108,13 +103,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.CallTempla
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.CallTemplateMediatorItemSemanticEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.validator.GraphicalValidatorUtil;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.validator.MediatorValidationUtil;
-import org.wso2.developerstudio.eclipse.gmf.esb.impl.CallMediatorImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.CallTemplateMediatorImpl;
-import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.CallMediatorTransformer;
-import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.CallTemplateMediatorTransformer;
-import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
-import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
@@ -623,33 +612,37 @@ public class CallTemplateMediatorEditPart extends FixedSizedAbstractMediator {
 
     }
 
-    @Override
-    public void notifyChanged(Notification notification) {
-        if (this.getModel() instanceof CSSNodeImpl) {
-            CSSNodeImpl model = (CSSNodeImpl) this.getModel();
-            if (model.getElement() instanceof CallTemplateMediatorImpl) {
-                CallTemplateMediatorImpl callTemplateMediatorDataModel = (CallTemplateMediatorImpl) model.getElement();
-                try {
-                    org.apache.synapse.mediators.template.InvokeMediator callTemplateMediator;
-                    callTemplateMediator = CallTemplateMediatorTransformer
-                            .createInvokeMediator(new TransformationInfo(), callTemplateMediatorDataModel);
-
-                    InvokeMediatorSerializer invokeMediatorSerializer = new InvokeMediatorSerializer();
-                    OMElement omElement = invokeMediatorSerializer.serializeMediator(null , callTemplateMediator);
-
-                    if (StringUtils
-                            .isEmpty(MediatorValidationUtil.validateMediatorsFromOEMElement(omElement, "call-template"))) {
-                        GraphicalValidatorUtil.removeValidationMark(this);
-                    } else {
-                        GraphicalValidatorUtil.addValidationMark(this);
-                    }
-                } catch (JaxenException e) {
-                    GraphicalValidatorUtil.addValidationMark(this);
-                }
-            }
-        }
-        super.notifyChanged(notification);
-    }
+	@Override
+	public void notifyChanged(Notification notification) {
+		if (this.getModel() instanceof CSSNodeImpl) {
+			CSSNodeImpl model = (CSSNodeImpl) this.getModel();
+			if (model.getElement() instanceof CallTemplateMediatorImpl) {
+				CallTemplateMediatorImpl callTemplateMediatorDataModel =
+				                                                       (CallTemplateMediatorImpl) model.getElement();
+				boolean isErrorneous = false;
+				if (callTemplateMediatorDataModel.getTargetTemplate().equals("")) {
+					isErrorneous = true;
+				}
+				if (!isErrorneous) {
+					Iterator<CallTemplateParameter> callTemplateParameters =
+					                                                       callTemplateMediatorDataModel.getTemplateParameters()
+					                                                                                    .iterator();
+					while (!isErrorneous && callTemplateParameters.hasNext()) {
+						CallTemplateParameter callTemplateParameter = callTemplateParameters.next();
+						if (callTemplateParameter.getParameterName().equals("")) {
+							isErrorneous = true;
+						}
+					}
+				}
+				if (isErrorneous) {
+					GraphicalValidatorUtil.addValidationMark(this);
+				} else {
+					GraphicalValidatorUtil.removeValidationMark(this);
+				}
+			}
+		}
+		super.notifyChanged(notification);
+	}
 
     /**
      * @generated

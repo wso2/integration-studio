@@ -58,6 +58,7 @@ import org.eclipse.swt.graphics.Color;
 import org.jaxen.JaxenException;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.SwitchMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedBorderItemLocator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.MultipleCompartmentComplexFiguredAbstractMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.ShowPropertyViewEditPolicy;
@@ -74,6 +75,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.impl.SwitchMediatorImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.SwitchMediatorTransformer;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 /**
  * @generated NOT
@@ -96,6 +99,7 @@ public class SwitchMediatorEditPart extends MultipleCompartmentComplexFiguredAbs
      */
     protected IFigure contentPane;
 
+    private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
     /**
      * @generated
      */
@@ -230,43 +234,42 @@ public class SwitchMediatorEditPart extends MultipleCompartmentComplexFiguredAbs
         ++activeCount;
     }
 
-    @Override
-    public void notifyChanged(Notification notification) {
-        super.notifyChanged(notification);
-        // Fixing TOOLS-1786
-        if (notification.getEventType() == Notification.SET && activeCount == 1 && !reorderdOnUndo && !reversed) {
-            EObject parentContainer = ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) (this).getModel()).getElement();
-            if (((SwitchMediator) parentContainer).getCaseBranches().size() > 1) {
-                SwitchMediatorUtils.reorderWhenForward(this);
-                reorderdOnUndo = true;
-            }
-        }
+	@Override
+	public void notifyChanged(Notification notification) {
+		super.notifyChanged(notification);
+		// Fixing TOOLS-1786
+		if (notification.getEventType() == Notification.SET && activeCount == 1 && !reorderdOnUndo && !reversed) {
+			EObject parentContainer = ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) (this).getModel()).getElement();
+			if (((SwitchMediator) parentContainer).getCaseBranches().size() > 1) {
+				SwitchMediatorUtils.reorderWhenForward(this);
+				reorderdOnUndo = true;
+			}
+		}
 
-        // this.getModel() will get EMF datamodel of the switch mediator datamodel
-        if (this.getModel() instanceof CSSNodeImpl) {
-            // The following part will check for validation issues with the current data in the model
-            CSSNodeImpl model = (CSSNodeImpl) this.getModel();
-            if (model.getElement() instanceof SwitchMediatorImpl) {
-                SwitchMediatorImpl switchMediatorDataModel = (SwitchMediatorImpl) model.getElement();
-                try {
-                    org.apache.synapse.mediators.filters.SwitchMediator switchMediator = SwitchMediatorTransformer
-                            .createSwitchMediator(new TransformationInfo(), (EsbNode) switchMediatorDataModel, true);
+		// this.getModel() will get EMF datamodel of the switch mediator datamodel
+		if (notification.getEventType() == Notification.SET && this.getModel() instanceof CSSNodeImpl) {
+			// The following part will check for validation issues with the current data in
+			// the model
+			CSSNodeImpl model = (CSSNodeImpl) this.getModel();
+			if (model.getElement() instanceof SwitchMediatorImpl) {
+				SwitchMediatorImpl switchMediatorDataModel = (SwitchMediatorImpl) model.getElement();
+				boolean hasError = false;
+				try {
+					if (switchMediatorDataModel.getSourceXpath().getPropertyValue().isEmpty()) {
+						hasError = true;
+					}
 
-                    SwitchMediatorSerializer switchMediatorSerializer = new SwitchMediatorSerializer();
-                    OMElement omElement = switchMediatorSerializer.serializeSpecificMediator(switchMediator);
-
-                    if (StringUtils
-                            .isEmpty(MediatorValidationUtil.validateMediatorsFromOEMElement(omElement, "switch"))) {
-                        GraphicalValidatorUtil.removeValidationMark(this);
-                    } else {
-                        GraphicalValidatorUtil.addValidationMark(this);
-                    }
-                } catch (JaxenException | TransformerException | SynapseException e) {
-                    GraphicalValidatorUtil.addValidationMark(this);
-                }
-            }
-        }
-    }
+					if (hasError) {
+						GraphicalValidatorUtil.addValidationMark(this);
+					} else {
+						GraphicalValidatorUtil.removeValidationMark(this);
+					}
+				} catch (Exception e) {
+					log.error("Graphical validation error occured", e);
+				}
+			}
+		}
+	}
 
     /**
      * @generated

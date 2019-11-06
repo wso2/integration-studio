@@ -54,6 +54,8 @@ import org.eclipse.papyrus.infra.gmfdiag.css.CSSNodeImpl;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
+import org.wso2.developerstudio.eclipse.gmf.esb.ThrottlePolicyType;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FilterMediatorGraphicalShape;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedBorderItemLocator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.MultipleCompartmentComplexFiguredAbstractMediator;
@@ -69,6 +71,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.impl.ThrottleMediatorImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.ThrottleMediatorTransformer;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 /**
  * @generated NOT
@@ -87,6 +91,8 @@ public class ThrottleMediatorEditPart extends MultipleCompartmentComplexFiguredA
      * @generated
      */
     protected IFigure contentPane;
+    
+    private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
     /**
      * @generated
@@ -430,34 +436,39 @@ public class ThrottleMediatorEditPart extends MultipleCompartmentComplexFiguredA
 
     }
 
-    @Override
-    public void notifyChanged(Notification notification) {
-        // this.getModel() will get EMF datamodel of the throttle mediator datamodel
-        if (this.getModel() instanceof CSSNodeImpl) {
-            // The following part will check for validation issues with the current data in the model
-            CSSNodeImpl model = (CSSNodeImpl) this.getModel();
-            if (model.getElement() instanceof ThrottleMediatorImpl) {
-                ThrottleMediatorImpl throttleMediatorDataModel = (ThrottleMediatorImpl) model.getElement();
-                try {
-                    org.apache.synapse.mediators.throttle.ThrottleMediator throttleMediator = ThrottleMediatorTransformer
-                            .createThrottleMediator((EsbNode) throttleMediatorDataModel, new TransformationInfo());
+	@Override
+	public void notifyChanged(Notification notification) {
+		// this.getModel() will get EMF datamodel of the throttle mediator datamodel
+		if (notification.getEventType() == Notification.SET && this.getModel() instanceof CSSNodeImpl) {
+			// The following part will check for validation issues with the current data in
+			// the model
+			CSSNodeImpl model = (CSSNodeImpl) this.getModel();
+			if (model.getElement() instanceof ThrottleMediatorImpl) {
+				ThrottleMediatorImpl throttleMediatorDataModel = (ThrottleMediatorImpl) model.getElement();
+				boolean hasError = false;
+				try {
+					if (throttleMediatorDataModel.getGroupId().isEmpty()) {
+						hasError = true;
+					}
+					if (throttleMediatorDataModel.getPolicyType()
+							.getValue() == ThrottlePolicyType.REGISTRY_REFERENCE_VALUE) {
+						if (throttleMediatorDataModel.getPolicyKey().getKeyValue().isEmpty()) {
+							hasError = true;
+						}
+					}
 
-                    ThrottleMediatorSerializer throttleMediatorSerializer = new ThrottleMediatorSerializer();
-                    OMElement omElement = throttleMediatorSerializer.serializeSpecificMediator(throttleMediator);
-
-                    if (StringUtils
-                            .isEmpty(MediatorValidationUtil.validateMediatorsFromOEMElement(omElement, "throttle"))) {
-                        GraphicalValidatorUtil.removeValidationMark(this);
-                    } else {
-                        GraphicalValidatorUtil.addValidationMark(this);
-                    }
-                } catch (TransformerException | SynapseException e) {
-                    GraphicalValidatorUtil.addValidationMark(this);
-                }
-            }
-        }
-        super.notifyChanged(notification);
-    }
+					if (hasError) {
+						GraphicalValidatorUtil.addValidationMark(this);
+					} else {
+						GraphicalValidatorUtil.removeValidationMark(this);
+					}
+				} catch (Exception e) {
+					log.error("Graphical validation error occured", e);
+				}
+			}
+		}
+		super.notifyChanged(notification);
+	}
 
     /**
      * @generated NOT

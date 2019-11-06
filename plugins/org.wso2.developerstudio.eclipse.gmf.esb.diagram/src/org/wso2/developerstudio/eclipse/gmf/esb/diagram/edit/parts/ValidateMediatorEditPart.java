@@ -379,7 +379,7 @@ public class ValidateMediatorEditPart extends SingleCompartmentComplexFiguredAbs
         // Since the on-fail sequence is not passed with the datamodel from the source view, need to skip this warning 
         String validateInvalidChildWarning = "A non-empty <on-fail> child element is required for the <validate> mediator";
         // this.getModel() will get EMF data model of the validate mediator data model
-        if (this.getModel() instanceof CSSNodeImpl) {
+        if (notification.getEventType() == Notification.SET && this.getModel() instanceof CSSNodeImpl) {
             // The following part will check for validation issues with the current data in the model
             CSSNodeImpl model = (CSSNodeImpl) this.getModel();
             if (model.getElement() instanceof ValidateMediatorImpl) {

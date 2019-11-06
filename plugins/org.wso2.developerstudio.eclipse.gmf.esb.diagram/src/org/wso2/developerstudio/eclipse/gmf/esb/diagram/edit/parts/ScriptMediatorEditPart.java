@@ -50,7 +50,10 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.jaxen.JaxenException;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
+import org.wso2.developerstudio.eclipse.gmf.esb.KeyType;
 import org.wso2.developerstudio.eclipse.gmf.esb.ScriptType;
+import org.wso2.developerstudio.eclipse.gmf.esb.scriptKeyTypeEnum;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EsbGraphicalShapeWithLabel;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedBorderItemLocator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedSizedAbstractMediator;
@@ -65,12 +68,15 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.validator.MediatorValida
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.ScriptMediatorImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.ScriptMediatorTransformer;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 /**
  * @generated NOT
  */
 public class ScriptMediatorEditPart extends FixedSizedAbstractMediator {
 
+    private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
     /**
      * @generated
      */
@@ -394,40 +400,40 @@ public class ScriptMediatorEditPart extends FixedSizedAbstractMediator {
     }
     
     @Override
-    public void notifyChanged(Notification notification) {
-        // this.getModel() will get EMF datamodel of the script mediator datamodel
-        if (this.getModel() instanceof CSSNodeImpl) {
-            // The following part will check for validation issues with the current data in the model
-            CSSNodeImpl model = (CSSNodeImpl) this.getModel();
-            if (model.getElement() instanceof ScriptMediatorImpl) {
-                ScriptMediatorImpl scriptMediatorDataModel = (ScriptMediatorImpl) model.getElement();
-                try {
-                	
-                    ScriptType scriptType = scriptMediatorDataModel.getScriptType();
-                    int scriptTypeValue = scriptType.getValue();
-                    
-                    if (scriptTypeValue == 0 && scriptMediatorDataModel.getScriptBody() == null) {
-                    	return;
-                    }
-                    org.apache.synapse.mediators.bsf.ScriptMediator scriptMediator = ScriptMediatorTransformer
-                            .createScriptMediator((EsbNode) scriptMediatorDataModel, true);
-
-                    ScriptMediatorSerializer scriptMediatorSerializer = new ScriptMediatorSerializer();
-                    OMElement omElement = scriptMediatorSerializer.serializeSpecificMediator(scriptMediator);
-
-                    if (StringUtils
-                            .isEmpty(MediatorValidationUtil.validateMediatorsFromOEMElement(omElement, "script"))) {
-                        GraphicalValidatorUtil.removeValidationMark(this);
-                    } else {
-                        GraphicalValidatorUtil.addValidationMark(this);
-                    }
-                } catch (JaxenException | TransformerException | SynapseException e) {
-                    GraphicalValidatorUtil.addValidationMark(this);
-                }
-            }
-        }
-        super.notifyChanged(notification);
-    }
+	public void notifyChanged(Notification notification) {
+		// this.getModel() will get EMF datamodel of the script mediator datamodel
+		if (notification.getEventType() == Notification.SET && this.getModel() instanceof CSSNodeImpl) {
+			// The following part will check for validation issues with the current data in
+			// the model
+			CSSNodeImpl model = (CSSNodeImpl) this.getModel();
+			if (model.getElement() instanceof ScriptMediatorImpl) {
+				ScriptMediatorImpl scriptMediatorDataModel = (ScriptMediatorImpl) model.getElement();
+				boolean hasError = false;
+				try {
+					if(scriptMediatorDataModel.getScriptType() == ScriptType.REGISTRY_REFERENCE) {
+						if(scriptMediatorDataModel.getKeyType() == scriptKeyTypeEnum.DYNAMIC_KEY) {
+							if(scriptMediatorDataModel.getScriptDynamicKey().getPropertyValue().equals("")) {
+								hasError = true;
+							}
+						}
+					}else if(scriptMediatorDataModel.getScriptType() == ScriptType.INLINE) {
+						if(scriptMediatorDataModel.getScriptBody() == null) {
+							hasError = true;
+						}
+					}
+					if (hasError) {
+						GraphicalValidatorUtil.addValidationMark(this);
+					} else {
+						GraphicalValidatorUtil.removeValidationMark(this);
+					}
+				} catch (Exception e) {
+					// Skip error since it's a validation related minor issue
+					log.error("Graphical validation error occured", e);
+				}
+			}
+		}
+		super.notifyChanged(notification);
+	}
 
     /**
      * @generated

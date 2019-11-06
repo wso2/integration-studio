@@ -55,6 +55,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.jaxen.JaxenException;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EsbGroupingShape;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedBorderItemLocator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.ShowPropertyViewEditPolicy;
@@ -70,12 +71,15 @@ import org.wso2.developerstudio.eclipse.gmf.esb.impl.ForEachMediatorImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.ForEachMediatorTransformer;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 /**
  * @generated NOT
  */
 public class ForEachMediatorEditPart extends SingleCompartmentComplexFiguredAbstractMediator {
 
+    private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
     public IFigure targetOutputConnector;
 
     /**
@@ -428,35 +432,33 @@ public class ForEachMediatorEditPart extends SingleCompartmentComplexFiguredAbst
 
     }
     
-    @Override
-    public void notifyChanged(Notification notification) {
-        // this.getModel() will get EMF datamodel of the ForEach mediator datamodel
-        if (this.getModel() instanceof CSSNodeImpl) {
-            // The following part will check for validation issues with the current data in the model
-            CSSNodeImpl model = (CSSNodeImpl) this.getModel();
-            if (model.getElement() instanceof ForEachMediatorImpl) {
-                ForEachMediatorImpl forEachMediatorDataModel = (ForEachMediatorImpl) model.getElement();
-                try {
-                    org.apache.synapse.mediators.builtin.ForEachMediator forEachMediator = ForEachMediatorTransformer
-                            .createForEachMediator(new TransformationInfo(), (EsbNode) forEachMediatorDataModel,
-                                    true);
-
-                    ForEachMediatorSerializer forEachMediatorSerializer = new ForEachMediatorSerializer();
-                    OMElement omElement = forEachMediatorSerializer.serializeMediator(null, forEachMediator);
-
-                    if (StringUtils
-                            .isEmpty(MediatorValidationUtil.validateMediatorsFromOEMElement(omElement, "foreach"))) {
-                        GraphicalValidatorUtil.removeValidationMark(this);
-                    } else {
-                        GraphicalValidatorUtil.addValidationMark(this);
-                    }
-                } catch (JaxenException | TransformerException | SynapseException e) {
-                    GraphicalValidatorUtil.addValidationMark(this);
-                }
-            }
-        }
-        super.notifyChanged(notification);
-    }
+	@Override
+	public void notifyChanged(Notification notification) {
+		// this.getModel() will get EMF datamodel of the ForEach mediator datamodel
+		if (notification.getEventType() == Notification.SET && this.getModel() instanceof CSSNodeImpl) {
+			// The following part will check for validation issues with the current data in
+			// the model
+			CSSNodeImpl model = (CSSNodeImpl) this.getModel();
+			if (model.getElement() instanceof ForEachMediatorImpl) {
+				ForEachMediatorImpl forEachMediatorDataModel = (ForEachMediatorImpl) model.getElement();
+				boolean hasError = false;
+				if (forEachMediatorDataModel.getForEachExpression().getPropertyValue().equals("")) {
+					hasError = true;
+				}
+				try {
+					if (hasError) {
+						GraphicalValidatorUtil.addValidationMark(this);
+					} else {
+						GraphicalValidatorUtil.removeValidationMark(this);
+					}
+				} catch (Exception e) {
+					// Skip error since it's a validation related minor issue
+					log.error("Graphical validation error occured", e);
+				}
+			}
+		}
+		super.notifyChanged(notification);
+	}
 
     /**
      * @generated NOT

@@ -53,7 +53,9 @@ import org.eclipse.papyrus.infra.gmfdiag.css.CSSNodeImpl;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.wso2.carbon.mediator.cache.CacheMediatorSerializer;
+import org.wso2.developerstudio.eclipse.gmf.esb.CacheType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EsbGroupingShape;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedBorderItemLocator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.ShowPropertyViewEditPolicy;
@@ -69,12 +71,15 @@ import org.wso2.developerstudio.eclipse.gmf.esb.impl.CacheMediatorImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.CacheMediatorTransformer;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 /**
  * @generated NOT
  */
 public class CacheMediatorEditPart extends SingleCompartmentComplexFiguredAbstractMediator {
 
+    private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
     public IFigure onHitOutputConnector;
 
     /**
@@ -424,34 +429,36 @@ public class CacheMediatorEditPart extends SingleCompartmentComplexFiguredAbstra
 
     }
 
-    @Override
-    public void notifyChanged(Notification notification) {
-        // this.getModel() will get EMF datamodel of the cache mediator datamodel
-        if (this.getModel() instanceof CSSNodeImpl) {
-            // The following part will check for validation issues with the current data in the model
-            CSSNodeImpl model = (CSSNodeImpl) this.getModel();
-            if (model.getElement() instanceof CacheMediatorImpl) {
-                CacheMediatorImpl cacheMediatorDataModel = (CacheMediatorImpl) model.getElement();
-                try {
-                    org.wso2.carbon.mediator.cache.CacheMediator cacheMediator = CacheMediatorTransformer
-                            .createNewCacheMediator((EsbNode) cacheMediatorDataModel, new TransformationInfo());
-
-                    CacheMediatorSerializer cacheMediatorSerializer = new CacheMediatorSerializer();
-                    OMElement omElement = cacheMediatorSerializer.serializeMediator(null, cacheMediator);
-
-                    if (StringUtils
-                            .isEmpty(MediatorValidationUtil.validateMediatorsFromOEMElement(omElement, "cache"))) {
-                        GraphicalValidatorUtil.removeValidationMark(this);
-                    } else {
-                        GraphicalValidatorUtil.addValidationMark(this);
-                    }
-                } catch (TransformerException | SynapseException e) {
-                    GraphicalValidatorUtil.addValidationMark(this);
-                }
-            }
-        }
-        super.notifyChanged(notification);
-    }
+	@Override
+	public void notifyChanged(Notification notification) {
+		// this.getModel() will get EMF datamodel of the cache mediator datamodel
+		if (notification.getEventType() == Notification.SET && this.getModel() instanceof CSSNodeImpl) {
+			// The following part will check for validation issues with the current data in
+			// the model
+			CSSNodeImpl model = (CSSNodeImpl) this.getModel();
+			if (model.getElement() instanceof CacheMediatorImpl) {
+				CacheMediatorImpl cacheMediatorDataModel = (CacheMediatorImpl) model.getElement();
+				boolean hasError = false;
+				try {
+					if (cacheMediatorDataModel.getCacheType() == CacheType.FINDER) {
+						if (cacheMediatorDataModel.getHashGenerator() == null
+								|| cacheMediatorDataModel.getHashGenerator().equals("")) {
+							hasError = true;
+						}
+					}
+					if (hasError) {
+						GraphicalValidatorUtil.addValidationMark(this);
+					} else {
+						GraphicalValidatorUtil.removeValidationMark(this);
+					}
+				} catch (Exception e) {
+					// Skip error since it's a validation related minor issue
+					log.error("Graphical validation error occured", e);
+				}
+			}
+		}
+		super.notifyChanged(notification);
+	}
 
     /**
      * @generated NOT

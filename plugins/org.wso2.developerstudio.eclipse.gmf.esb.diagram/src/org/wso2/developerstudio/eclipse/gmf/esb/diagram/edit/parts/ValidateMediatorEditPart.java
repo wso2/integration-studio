@@ -53,6 +53,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.jaxen.JaxenException;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EsbGroupingShape;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedBorderItemLocator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.ShowPropertyViewEditPolicy;
@@ -69,6 +70,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.impl.ValidateMediatorImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.ValidateMediatorTransformer;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 /**
  * @generated NOT
@@ -86,6 +89,8 @@ public class ValidateMediatorEditPart extends SingleCompartmentComplexFiguredAbs
      * @generated
      */
     protected IFigure contentPane;
+
+    private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
     /**
      * @generated
@@ -376,31 +381,28 @@ public class ValidateMediatorEditPart extends SingleCompartmentComplexFiguredAbs
 
     @Override
     public void notifyChanged(Notification notification) {
-        // Since the on-fail sequence is not passed with the datamodel from the source view, need to skip this warning 
+        // Since the on-fail sequence is not passed with the datamodel from the source view, need to skip this warning
         String validateInvalidChildWarning = "A non-empty <on-fail> child element is required for the <validate> mediator";
         // this.getModel() will get EMF data model of the validate mediator data model
-        if (notification.getEventType() == Notification.SET && this.getModel() instanceof CSSNodeImpl) {
+        if ((notification.getEventType() == Notification.REMOVE || notification.getEventType() == Notification.ADD)
+                && this.getModel() instanceof CSSNodeImpl) {
             // The following part will check for validation issues with the current data in the model
             CSSNodeImpl model = (CSSNodeImpl) this.getModel();
             if (model.getElement() instanceof ValidateMediatorImpl) {
                 ValidateMediatorImpl validateMediatorDataModel = (ValidateMediatorImpl) model.getElement();
+                boolean hasError = false;
                 try {
-                    org.apache.synapse.mediators.builtin.ValidateMediator validateMediator = ValidateMediatorTransformer
-                            .createValidateMediator((EsbNode) validateMediatorDataModel, new TransformationInfo());
-
-                    ValidateMediatorSerializer validateMediatorSerializer = new ValidateMediatorSerializer();
-                    OMElement omElement = validateMediatorSerializer.serializeSpecificMediator(validateMediator);
-
-                    if (StringUtils
-                            .isEmpty(MediatorValidationUtil.validateMediatorsFromOEMElement(omElement, "validate"))
-                            || validateInvalidChildWarning.equals(
-                                    MediatorValidationUtil.validateMediatorsFromOEMElement(omElement, "validate"))) {
-                        GraphicalValidatorUtil.removeValidationMark(this);
-                    } else {
-                        GraphicalValidatorUtil.addValidationMark(this);
+                    if (validateMediatorDataModel.getSchemas().size() == 0) {
+                        hasError = true;
                     }
-                } catch (JaxenException | TransformerException | SynapseException e) {
-                    GraphicalValidatorUtil.addValidationMark(this);
+
+                    if (hasError) {
+                        GraphicalValidatorUtil.addValidationMark(this);
+                    } else {
+                        GraphicalValidatorUtil.removeValidationMark(this);
+                    }
+                } catch (Exception e) {
+                    log.error("Graphical validation error occured", e);
                 }
             }
         }

@@ -51,6 +51,10 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.jaxen.JaxenException;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
+import org.wso2.developerstudio.eclipse.gmf.esb.FaultDetailType;
+import org.wso2.developerstudio.eclipse.gmf.esb.FaultReasonType;
+import org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EsbGraphicalShapeWithLabel;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedBorderItemLocator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedSizedAbstractMediator;
@@ -64,6 +68,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.validator.GraphicalValid
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.validator.MediatorValidationUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.FaultMediatorImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.FaultMediatorTransformer;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 /**
  * @generated NOT
@@ -80,6 +86,7 @@ public class FaultMediatorEditPart extends FixedSizedAbstractMediator {
      */
     protected IFigure contentPane;
 
+    private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
     /**
      * @generated
      */
@@ -405,26 +412,32 @@ public class FaultMediatorEditPart extends FixedSizedAbstractMediator {
     @Override
     public void notifyChanged(Notification notification) {
         // this.getModel() will get EMF datamodel of the fault mediator datamodel
-        if (this.getModel() instanceof CSSNodeImpl) {
+        if (notification.getEventType() == Notification.SET && this.getModel() instanceof CSSNodeImpl) {
             // The following part will check for validation issues with the current data in the model
             CSSNodeImpl model = (CSSNodeImpl) this.getModel();
             if (model.getElement() instanceof FaultMediatorImpl) {
                 FaultMediatorImpl faultMediatorDataModel = (FaultMediatorImpl) model.getElement();
+                boolean hasError = false;
                 try {
-                    org.apache.synapse.mediators.transform.FaultMediator faultMediator = FaultMediatorTransformer
-                            .createFaultMediator((EsbNode) faultMediatorDataModel, true);
-
-                    FaultMediatorSerializer faultMediatorSerializer = new FaultMediatorSerializer();
-                    OMElement omElement = faultMediatorSerializer.serializeSpecificMediator(faultMediator);
-
-                    if (StringUtils
-                            .isEmpty(MediatorValidationUtil.validateMediatorsFromOEMElement(omElement, "makefault"))) {
-                        GraphicalValidatorUtil.removeValidationMark(this);
-                    } else {
-                        GraphicalValidatorUtil.addValidationMark(this);
+                    if (faultMediatorDataModel.getFaultDetailType() == FaultDetailType.EXPRESSION) {
+                        if (faultMediatorDataModel.getFaultDetailExpression().getPropertyValue().isEmpty()) {
+                            hasError = true;
+                        }
                     }
-                } catch (JaxenException | URISyntaxException  | SynapseException e) {
-                    GraphicalValidatorUtil.addValidationMark(this);
+
+                    if (faultMediatorDataModel.getFaultReasonType() == FaultReasonType.EXPRESSION) {
+                        if (faultMediatorDataModel.getFaultReasonExpression().getPropertyValue().isEmpty()) {
+                            hasError = true;
+                        }
+                    }
+
+                    if (hasError) {
+                        GraphicalValidatorUtil.addValidationMark(this);
+                    } else {
+                        GraphicalValidatorUtil.removeValidationMark(this);
+                    }
+                } catch (Exception e) {
+                    log.error("Graphical validation error occured", e);
                 }
             }
         }

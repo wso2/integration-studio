@@ -376,35 +376,6 @@ public class PublishEventMediatorEditPart extends FixedSizedAbstractMediator {
 
     }
 
-    @Override
-    public void notifyChanged(Notification notification) {
-        // this.getModel() will get EMF datamodel of the publish mediator datamodel
-        if (this.getModel() instanceof CSSNodeImpl) {
-            // The following part will check for validation issues with the current data in the model
-            CSSNodeImpl model = (CSSNodeImpl) this.getModel();
-            if (model.getElement() instanceof PublishEventMediatorImpl) {
-                PublishEventMediatorImpl eventPublishMediatorDataModel = (PublishEventMediatorImpl) model.getElement();
-                try {
-                    org.wso2.carbon.mediator.publishevent.PublishEventMediator eventPulishMediator = PublishEventMediatorTransformer
-                            .createPublishEventMediator((PublishEventMediator) eventPublishMediatorDataModel);
-
-                    PublishEventMediatorSerializer publishEventMediatorSerializer = new PublishEventMediatorSerializer();
-                    OMElement omElement = publishEventMediatorSerializer.serializeSpecificMediator(eventPulishMediator);
-
-                    if (StringUtils.isEmpty(
-                            MediatorValidationUtil.validateMediatorsFromOEMElement(omElement, "publishEvent"))) {
-                        GraphicalValidatorUtil.removeValidationMark(this);
-                    } else {
-                        GraphicalValidatorUtil.addValidationMark(this);
-                    }
-                } catch (JaxenException | SynapseException e) {
-                    GraphicalValidatorUtil.addValidationMark(this);
-                }
-            }
-        }
-        super.notifyChanged(notification);
-    }
-    
     /**
      * @generated
      */

@@ -49,6 +49,9 @@ import org.eclipse.papyrus.infra.gmfdiag.css.CSSNodeImpl;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
+import org.wso2.developerstudio.eclipse.gmf.esb.SqlExecutorConnectionType;
+import org.wso2.developerstudio.eclipse.gmf.esb.SqlExecutorDatasourceType;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EsbGraphicalShapeWithLabel;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedBorderItemLocator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedSizedAbstractMediator;
@@ -60,14 +63,18 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.DBReportMe
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.validator.GraphicalValidatorUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.validator.MediatorValidationUtil;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.DBLookupMediatorImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.DBReportMediatorImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.DBReportMediatorTransformer;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 /**
  * @generated NOT
  */
 public class DBReportMediatorEditPart extends FixedSizedAbstractMediator {
 
+    private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
     /**
      * @generated
      */
@@ -389,34 +396,43 @@ public class DBReportMediatorEditPart extends FixedSizedAbstractMediator {
 
     }
 
-    @Override
-    public void notifyChanged(Notification notification) {
-        // this.getModel() will get EMF datamodel of the db report mediator datamodel
-        if (this.getModel() instanceof CSSNodeImpl) {
-            // The following part will check for validation issues with the current data in the model
-            CSSNodeImpl model = (CSSNodeImpl) this.getModel();
-            if (model.getElement() instanceof DBReportMediatorImpl) {
-                DBReportMediatorImpl dbReportMediatorDataModel = (DBReportMediatorImpl) model.getElement();
-                try {
-                    org.apache.synapse.mediators.db.DBReportMediator dbReportMediator = DBReportMediatorTransformer
-                            .createDBReportMediator((EsbNode) dbReportMediatorDataModel);
+	@Override
+	public void notifyChanged(Notification notification) {
+		// this.getModel() will get EMF datamodel of the db lookup mediator datamodel
+		if (notification.getEventType() == Notification.SET && this.getModel() instanceof CSSNodeImpl) {
+			// The following part will check for validation issues with the current data in
+			// the model
+			CSSNodeImpl model = (CSSNodeImpl) this.getModel();
+			if (model.getElement() instanceof DBReportMediatorImpl) {
+				DBReportMediatorImpl dbReportMediatorDataModel = (DBReportMediatorImpl) model.getElement();
+				boolean hasError = false;
+				try {
+					if (dbReportMediatorDataModel.getConnectionType() == SqlExecutorConnectionType.DATA_SOURCE) {
+						if (dbReportMediatorDataModel.getConnectionDsName() == null
+								|| dbReportMediatorDataModel.getConnectionDsName().equals("")) {
+							hasError = true;
+						}
+						if (dbReportMediatorDataModel.getConnectionDsType() == SqlExecutorDatasourceType.EXTERNAL) {
+							if (dbReportMediatorDataModel.getConnectionDsInitialContext() == null
+									|| dbReportMediatorDataModel.getConnectionDsInitialContext().equals("")) {
+								hasError = true;
+							}
+						}
+					}
+					if (hasError) {
+						GraphicalValidatorUtil.addValidationMark(this);
+					} else {
+						GraphicalValidatorUtil.removeValidationMark(this);
+					}
+				} catch (Exception e) {
+					// Skip error since it's a validation related minor issue
+					log.error("Graphical validation error occured", e);
+				}
+			}
+		}
+		super.notifyChanged(notification);
+	}
 
-                    DBReportMediatorSerializer dbReportMediatorSerializer = new DBReportMediatorSerializer();
-                    OMElement omElement = dbReportMediatorSerializer.serializeSpecificMediator(dbReportMediator);
-
-                    if (StringUtils
-                            .isEmpty(MediatorValidationUtil.validateMediatorsFromOEMElement(omElement, "dbreport"))) {
-                        GraphicalValidatorUtil.removeValidationMark(this);
-                    } else {
-                        GraphicalValidatorUtil.addValidationMark(this);
-                    }
-                } catch (SynapseException e) {
-                    GraphicalValidatorUtil.addValidationMark(this);
-                }
-            }
-        }
-        super.notifyChanged(notification);
-    }
     /**
      * @generated
      */

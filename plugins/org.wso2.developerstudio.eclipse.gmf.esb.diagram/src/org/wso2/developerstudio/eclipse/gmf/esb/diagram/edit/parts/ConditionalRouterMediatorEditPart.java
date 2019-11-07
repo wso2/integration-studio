@@ -376,36 +376,6 @@ public class ConditionalRouterMediatorEditPart extends FixedSizedAbstractMediato
 
     }
     
-    @Override
-    public void notifyChanged(Notification notification) {
-        // this.getModel() will get EMF datamodel of the conditional router mediator datamodel
-        if (this.getModel() instanceof CSSNodeImpl) {
-            // The following part will check for validation issues with the current data in the model
-            CSSNodeImpl model = (CSSNodeImpl) this.getModel();
-            if (model.getElement() instanceof ConditionalRouterMediatorImpl) {
-                ConditionalRouterMediatorImpl conditionalRouterMediatorDataModel = (ConditionalRouterMediatorImpl) model
-                        .getElement();
-                try {
-                    org.apache.synapse.mediators.filters.router.ConditionalRouterMediator conditionalRouterMediator = ConditionalRouterMediatorTransformer
-                            .createConditionalRouterMediator(new TransformationInfo(),(EsbNode) conditionalRouterMediatorDataModel);
-
-                    ConditionalRouterMediatorSerializer conditionalRouterMediatorSerializer = new ConditionalRouterMediatorSerializer();
-                    OMElement omElement = conditionalRouterMediatorSerializer.serializeSpecificMediator(conditionalRouterMediator);
-
-                    if (StringUtils
-                            .isEmpty(MediatorValidationUtil.validateMediatorsFromOEMElement(omElement, "conditionalRouter"))) {
-                        GraphicalValidatorUtil.removeValidationMark(this);
-                    } else {
-                        GraphicalValidatorUtil.addValidationMark(this);
-                    }
-                } catch ( EvaluatorException | XMLStreamException | SynapseException e) {
-                    GraphicalValidatorUtil.addValidationMark(this);
-                }
-            }
-        }
-        super.notifyChanged(notification);
-    }
-
     /**
      * @generated NOT
      */

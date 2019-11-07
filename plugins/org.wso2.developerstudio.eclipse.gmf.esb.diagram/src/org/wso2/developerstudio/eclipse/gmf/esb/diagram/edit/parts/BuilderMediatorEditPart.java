@@ -374,35 +374,6 @@ public class BuilderMediatorEditPart extends FixedSizedAbstractMediator {
 
     }
 
-    @Override
-    public void notifyChanged(Notification notification) {
-        // this.getModel() will get EMF datamodel of the builder mediator datamodel
-        if (this.getModel() instanceof CSSNodeImpl) {
-            // The following part will check for validation issues with the current data in the model
-            CSSNodeImpl model = (CSSNodeImpl) this.getModel();
-            if (model.getElement() instanceof BuilderMediatorImpl) {
-                BuilderMediatorImpl builderMediatorDataModel = (BuilderMediatorImpl) model.getElement();
-                try {
-                    org.wso2.carbon.relay.mediators.builder.BuilderMediator builderMediator = BuilderMediatorTransformer
-                            .createBuilderMediator((EsbNode) builderMediatorDataModel, new TransformationInfo());
-
-                    BuilderMediatorSerializer builderMediatorSerializer = new BuilderMediatorSerializer();
-                    OMElement omElement = builderMediatorSerializer.serializeSpecificMediator(builderMediator);
-
-                    if (StringUtils
-                            .isEmpty(MediatorValidationUtil.validateMediatorsFromOEMElement(omElement, "builder"))) {
-                        GraphicalValidatorUtil.removeValidationMark(this);
-                    } else {
-                        GraphicalValidatorUtil.addValidationMark(this);
-                    }
-                } catch (TransformerException | SynapseException e) {
-                    GraphicalValidatorUtil.addValidationMark(this);
-                }
-            }
-        }
-        super.notifyChanged(notification);
-    }
-
     /**
      * @generated
      */

@@ -48,6 +48,8 @@ import org.eclipse.swt.graphics.Color;
 import org.jaxen.JaxenException;
 import org.wso2.carbon.mediator.transform.xml.SmooksMediatorSerializer;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
+import org.wso2.developerstudio.eclipse.gmf.esb.OutputMethod;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EsbGraphicalShapeWithLabel;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedBorderItemLocator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedSizedAbstractMediator;
@@ -62,12 +64,15 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.validator.MediatorValida
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.SmooksMediatorImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.SmooksMediatorTransformer;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 /**
  * @generated NOT
  */
 public class SmooksMediatorEditPart extends FixedSizedAbstractMediator {
 
+    private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
     /**
      * @generated
      */
@@ -351,35 +356,36 @@ public class SmooksMediatorEditPart extends FixedSizedAbstractMediator {
 
     }
 
-    @Override
-    public void notifyChanged(Notification notification) {
-        // this.getModel() will get EMF datamodel of the smooks mediator datamodel
-        if (this.getModel() instanceof CSSNodeImpl) {
-            // The following part will check for validation issues with the current data in the model
-            CSSNodeImpl model = (CSSNodeImpl) this.getModel();
-            if (model.getElement() instanceof SmooksMediatorImpl) {
-                SmooksMediatorImpl smooksMediatorDataModel = (SmooksMediatorImpl) model.getElement();
-                try {
-                    org.wso2.carbon.mediator.transform.SmooksMediator smooksMediator = SmooksMediatorTransformer
-                            .createSmooksMediator(new TransformationInfo(), (EsbNode) smooksMediatorDataModel, true);
+	@Override
+	public void notifyChanged(Notification notification) {
+		// this.getModel() will get EMF datamodel of the smooks mediator datamodel
+		if (notification.getEventType() == Notification.SET && this.getModel() instanceof CSSNodeImpl) {
+			// The following part will check for validation issues with the current data in
+			// the model
+			CSSNodeImpl model = (CSSNodeImpl) this.getModel();
+			if (model.getElement() instanceof SmooksMediatorImpl) {
+				SmooksMediatorImpl smooksMediatorDataModel = (SmooksMediatorImpl) model.getElement();
+				boolean hasError = false;
+				try {
+					if (smooksMediatorDataModel.getOutputMethod() == OutputMethod.EXPRESSION) {
+						if (smooksMediatorDataModel.getOutputExpression().getPropertyValue().equals("")) {
+							hasError = true;
+						}
+					}
+					if (hasError) {
+						GraphicalValidatorUtil.addValidationMark(this);
+					} else {
+						GraphicalValidatorUtil.removeValidationMark(this);
+					}
+				} catch (Exception e) {
+					// Skip error since it's a validation related minor issue
+					log.error("Graphical validation error occured", e);
+				}
+			}
+		}
+		super.notifyChanged(notification);
+	}
 
-                    SmooksMediatorSerializer smooksMediatorSerializer = new SmooksMediatorSerializer();
-                    OMElement omElement = smooksMediatorSerializer.serializeSpecificMediator(smooksMediator);
-
-                    if (StringUtils
-                            .isEmpty(MediatorValidationUtil.validateMediatorsFromOEMElement(omElement, "smooks"))) {
-                        GraphicalValidatorUtil.removeValidationMark(this);
-                    } else {
-                        GraphicalValidatorUtil.addValidationMark(this);
-                    }
-                } catch (JaxenException | SynapseException e) {
-                    GraphicalValidatorUtil.addValidationMark(this);
-                }
-            }
-        }
-        super.notifyChanged(notification);
-    }
-    
     /**
      * @generated
      */

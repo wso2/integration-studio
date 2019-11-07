@@ -54,6 +54,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.wso2.carbon.identity.entitlement.mediator.config.xml.EntitlementMediatorSerializer;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EntitlementMediatorGraphicalShape;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedBorderItemLocator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.MultipleCompartmentComplexFiguredAbstractMediator;
@@ -70,6 +71,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.Entitlement
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.EntitlementMediatorExt;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 /**
  * @generated NOT
@@ -90,6 +93,8 @@ public class EntitlementMediatorEditPart extends MultipleCompartmentComplexFigur
      * @generated
      */
     protected IFigure contentPane;
+
+    private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
     /**
      * @generated
@@ -457,29 +462,30 @@ public class EntitlementMediatorEditPart extends MultipleCompartmentComplexFigur
     @Override
     public void notifyChanged(Notification notification) {
         // this.getModel() will get EMF datamodel of the entitlement mediator datamodel
-        if (this.getModel() instanceof CSSNodeImpl) {
-            // The following part will check for validation issues with the current data in the model
-            CSSNodeImpl model = (CSSNodeImpl) this.getModel();
-            if (model.getElement() instanceof EntitlementMediatorImpl) {
-                EntitlementMediatorImpl entitlementMediatorDataModel = (EntitlementMediatorImpl) model.getElement();
-                try {
-                    EntitlementMediatorExt entitlementMediator = EntitlementMediatorTransformer
-                            .createEntitlementMediator(new TransformationInfo(),
-                                    (EsbNode) entitlementMediatorDataModel);
-                    EntitlementMediatorSerializer entitlementMediatorSerializer = new EntitlementMediatorSerializer();
-                    OMElement omElement = entitlementMediatorSerializer.serializeSpecificMediator(entitlementMediator);
-
-                    if (StringUtils.isEmpty(
-                            MediatorValidationUtil.validateMediatorsFromOEMElement(omElement, "entitlementService"))) {
-                        GraphicalValidatorUtil.removeValidationMark(this);
-                    } else {
-                        GraphicalValidatorUtil.addValidationMark(this);
-                    }
-                } catch (TransformerException | SynapseException e) {
-                    GraphicalValidatorUtil.addValidationMark(this);
-                }
-            }
-        }
+//        if (this.getModel() instanceof CSSNodeImpl) {
+//            // The following part will check for validation issues with the current data in the model
+//            CSSNodeImpl model = (CSSNodeImpl) this.getModel();
+//            if (model.getElement() instanceof EntitlementMediatorImpl) {
+//                EntitlementMediatorImpl entitlementMediatorDataModel = (EntitlementMediatorImpl) model.getElement();
+//                try {
+//                    EntitlementMediatorExt entitlementMediator = EntitlementMediatorTransformer
+//                            .createEntitlementMediator(new TransformationInfo(),
+//                                    (EsbNode) entitlementMediatorDataModel);
+//                    EntitlementMediatorSerializer entitlementMediatorSerializer = new EntitlementMediatorSerializer();
+//                    OMElement omElement = entitlementMediatorSerializer.serializeSpecificMediator(entitlementMediator);
+//
+//                    if (StringUtils.isEmpty(
+//                            MediatorValidationUtil.validateMediatorsFromOEMElement(omElement, "entitlementService"))) {
+//                        GraphicalValidatorUtil.removeValidationMark(this);
+//                    } else {
+//                        GraphicalValidatorUtil.addValidationMark(this);
+//                    }
+//                } catch (TransformerException | SynapseException e) {
+//                    GraphicalValidatorUtil.addValidationMark(this);
+//                }
+//            }
+//        }
+// Commented since no validation is done at synapse level
         super.notifyChanged(notification);
     }
 

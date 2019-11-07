@@ -49,6 +49,8 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.jaxen.JaxenException;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
+import org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EsbGraphicalShapeWithLabel;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedBorderItemLocator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedSizedAbstractMediator;
@@ -63,6 +65,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.impl.EJBMediatorImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.EJBMediatorTransformer;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.EJBMediatorExt;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.EJBMediatorExtSerializer;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 /**
  * @generated NOT
@@ -78,6 +82,8 @@ public class EJBMediatorEditPart extends FixedSizedAbstractMediator {
      * @generated
      */
     protected IFigure contentPane;
+
+    private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
     /**
      * @generated
@@ -358,26 +364,27 @@ public class EJBMediatorEditPart extends FixedSizedAbstractMediator {
     @Override
     public void notifyChanged(Notification notification) {
         // this.getModel() will get EMF datamodel of the class mediator datamodel
-        if (this.getModel() instanceof CSSNodeImpl) {
-            // The following part will check for validation issues with the current data in the model
+        if (notification.getEventType() == Notification.SET && this.getModel() instanceof CSSNodeImpl) {
+            // The following part will check for validation issues with the current data in
+            // the model
             CSSNodeImpl model = (CSSNodeImpl) this.getModel();
             if (model.getElement() instanceof EJBMediatorImpl) {
                 EJBMediatorImpl ejbMediatorDataModel = (EJBMediatorImpl) model.getElement();
+                boolean hasError = false;
                 try {
-                    EJBMediatorExt ejbMediator = (EJBMediatorExt) EJBMediatorTransformer
-                            .createEJBMediator((EsbNode) ejbMediatorDataModel, true);
-
-                    EJBMediatorExtSerializer ejbMediatorSerializer = new EJBMediatorExtSerializer();
-                    OMElement omElement = ejbMediatorSerializer.serializeSpecificMediator(ejbMediator);
-
-                    if (StringUtils
-                            .isEmpty(MediatorValidationUtil.validateMediatorsFromOEMElement(omElement, "ejb"))) {
-                        GraphicalValidatorUtil.removeValidationMark(this);
-                    } else {
-                        GraphicalValidatorUtil.addValidationMark(this);
+                    if (ejbMediatorDataModel.getSessionIdType() == PropertyValueType.EXPRESSION) {
+                        if (ejbMediatorDataModel.getSessionIdExpression().getPropertyValue().isEmpty()) {
+                            hasError = true;
+                        }
                     }
-                } catch (JaxenException | SynapseException e) {
-                    GraphicalValidatorUtil.addValidationMark(this);
+
+                    if (hasError) {
+                        GraphicalValidatorUtil.addValidationMark(this);
+                    } else {
+                        GraphicalValidatorUtil.removeValidationMark(this);
+                    }
+                } catch (Exception e) {
+                    log.error("Graphical validation error occured", e);
                 }
             }
         }

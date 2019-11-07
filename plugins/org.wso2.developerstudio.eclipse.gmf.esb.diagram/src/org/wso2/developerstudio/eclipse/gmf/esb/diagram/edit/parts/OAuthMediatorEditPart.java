@@ -49,6 +49,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.wso2.carbon.identity.oauth.mediator.config.xml.OAuthMediatorSerializer;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EsbGraphicalShapeWithLabel;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedBorderItemLocator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedSizedAbstractMediator;
@@ -62,6 +63,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.validator.GraphicalValid
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.validator.MediatorValidationUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.OAuthMediatorImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.OAuthMediatorTransformer;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 /**
  * @generated NOT
@@ -77,6 +80,8 @@ public class OAuthMediatorEditPart extends FixedSizedAbstractMediator {
      * @generated
      */
     protected IFigure contentPane;
+
+    private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
     /**
      * @generated
@@ -392,26 +397,33 @@ public class OAuthMediatorEditPart extends FixedSizedAbstractMediator {
     @Override
     public void notifyChanged(Notification notification) {
         // this.getModel() will get EMF datamodel of the oauth mediator datamodel
-        if (this.getModel() instanceof CSSNodeImpl) {
+        if (notification.getEventType() == Notification.SET && this.getModel() instanceof CSSNodeImpl) {
             // The following part will check for validation issues with the current data in the model
             CSSNodeImpl model = (CSSNodeImpl) this.getModel();
             if (model.getElement() instanceof OAuthMediatorImpl) {
                 OAuthMediatorImpl oauthMediatorDataModel = (OAuthMediatorImpl) model.getElement();
+                boolean hasError = false;
                 try {
-                    org.wso2.carbon.identity.oauth.mediator.OAuthMediator oAuthMediator = OAuthMediatorTransformer
-                            .createOAuthMediator((EsbNode) oauthMediatorDataModel, true);
-
-                    OAuthMediatorSerializer oauthMediatorSerializer = new OAuthMediatorSerializer();
-                    OMElement omElement = oauthMediatorSerializer.serializeSpecificMediator(oAuthMediator);
-
-                    if (StringUtils.isEmpty(
-                            MediatorValidationUtil.validateMediatorsFromOEMElement(omElement, "oauthService"))) {
-                        GraphicalValidatorUtil.removeValidationMark(this);
-                    } else {
-                        GraphicalValidatorUtil.addValidationMark(this);
+                    if (oauthMediatorDataModel.getRemoteServiceUrl() == null
+                            || oauthMediatorDataModel.getRemoteServiceUrl().isEmpty()) {
+                        hasError = true;
                     }
-                } catch (SynapseException | IllegalArgumentException e) {
-                    GraphicalValidatorUtil.addValidationMark(this);
+                    if (oauthMediatorDataModel.getUsername() == null
+                            || oauthMediatorDataModel.getUsername().isEmpty()) {
+                        hasError = true;
+                    }
+                    if (oauthMediatorDataModel.getPassword() == null
+                            || oauthMediatorDataModel.getPassword().isEmpty()) {
+                        hasError = true;
+                    }
+
+                    if (hasError) {
+                        GraphicalValidatorUtil.addValidationMark(this);
+                    } else {
+                        GraphicalValidatorUtil.removeValidationMark(this);
+                    }
+                } catch (Exception e) {
+                    log.error("Graphical validation error occured", e);
                 }
             }
         }

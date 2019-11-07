@@ -91,6 +91,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
 import org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateParameter;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditorUtils;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EsbGraphicalShapeWithLabel;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedBorderItemLocator;
@@ -614,30 +615,34 @@ public class CallTemplateMediatorEditPart extends FixedSizedAbstractMediator {
 
 	@Override
 	public void notifyChanged(Notification notification) {
-		if (this.getModel() instanceof CSSNodeImpl) {
+		if (notification.getEventType() == Notification.SET && this.getModel() instanceof CSSNodeImpl) {
 			CSSNodeImpl model = (CSSNodeImpl) this.getModel();
 			if (model.getElement() instanceof CallTemplateMediatorImpl) {
-				CallTemplateMediatorImpl callTemplateMediatorDataModel =
-				                                                       (CallTemplateMediatorImpl) model.getElement();
+				CallTemplateMediatorImpl callTemplateMediatorDataModel = (CallTemplateMediatorImpl) model.getElement();
 				boolean isErrorneous = false;
-				if (callTemplateMediatorDataModel.getTargetTemplate().equals("")) {
-					isErrorneous = true;
-				}
-				if (!isErrorneous) {
-					Iterator<CallTemplateParameter> callTemplateParameters =
-					                                                       callTemplateMediatorDataModel.getTemplateParameters()
-					                                                                                    .iterator();
-					while (!isErrorneous && callTemplateParameters.hasNext()) {
-						CallTemplateParameter callTemplateParameter = callTemplateParameters.next();
-						if (callTemplateParameter.getParameterName().equals("")) {
-							isErrorneous = true;
+				try {
+					if (callTemplateMediatorDataModel.getTargetTemplate() == null
+							|| callTemplateMediatorDataModel.getTargetTemplate().equals("")) {
+						isErrorneous = true;
+					}
+					if (!isErrorneous) {
+						Iterator<CallTemplateParameter> callTemplateParameters = callTemplateMediatorDataModel
+								.getTemplateParameters().iterator();
+						while (!isErrorneous && callTemplateParameters.hasNext()) {
+							CallTemplateParameter callTemplateParameter = callTemplateParameters.next();
+							if (callTemplateParameter.getParameterName().equals("")) {
+								isErrorneous = true;
+							}
 						}
 					}
-				}
-				if (isErrorneous) {
-					GraphicalValidatorUtil.addValidationMark(this);
-				} else {
-					GraphicalValidatorUtil.removeValidationMark(this);
+					if (isErrorneous) {
+						GraphicalValidatorUtil.addValidationMark(this);
+					} else {
+						GraphicalValidatorUtil.removeValidationMark(this);
+					}
+				} catch (Exception e) {
+					// Skip error since it's a validation related minor issue
+					log.error("Graphical validation error occured", e);
 				}
 			}
 		}

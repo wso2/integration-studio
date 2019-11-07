@@ -47,6 +47,8 @@ import org.eclipse.papyrus.infra.gmfdiag.css.CSSNodeImpl;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
+import org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EsbGraphicalShapeWithLabel;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedBorderItemLocator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedSizedAbstractMediator;
@@ -60,6 +62,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.validator.GraphicalValid
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.validator.MediatorValidationUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.EnqueueMediatorImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.EnqueueMediatorTransformer;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 /**
  * @generated NOT
@@ -75,6 +79,8 @@ public class EnqueueMediatorEditPart extends FixedSizedAbstractMediator {
      * @generated
      */
     protected IFigure contentPane;
+
+    private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
     /**
      * @generated
@@ -340,26 +346,27 @@ public class EnqueueMediatorEditPart extends FixedSizedAbstractMediator {
     @Override
     public void notifyChanged(Notification notification) {
         // this.getModel() will get EMF datamodel of the enqueue mediator datamodel
-        if (this.getModel() instanceof CSSNodeImpl) {
+        if (notification.getEventType() == Notification.SET && this.getModel() instanceof CSSNodeImpl) {
             // The following part will check for validation issues with the current data in the model
             CSSNodeImpl model = (CSSNodeImpl) this.getModel();
             if (model.getElement() instanceof EnqueueMediatorImpl) {
                 EnqueueMediatorImpl enqueueMediatorDataModel = (EnqueueMediatorImpl) model.getElement();
+                boolean hasError = false;
                 try {
-                    org.apache.synapse.mediators.builtin.EnqueueMediator enqueueMediator = EnqueueMediatorTransformer
-                            .createEnqueueMediator((EsbNode) enqueueMediatorDataModel, true);
-
-                    EnqueueMediatorSerializer enqueueMediatorSerializer = new EnqueueMediatorSerializer();
-                    OMElement omElement = enqueueMediatorSerializer.serializeSpecificMediator(enqueueMediator);
-
-                    if (StringUtils
-                            .isEmpty(MediatorValidationUtil.validateMediatorsFromOEMElement(omElement, "enqueue"))) {
-                        GraphicalValidatorUtil.removeValidationMark(this);
-                    } else {
-                        GraphicalValidatorUtil.addValidationMark(this);
+                    if (enqueueMediatorDataModel.getExecutor().isEmpty()) {
+                        hasError = true;
                     }
-                } catch (SynapseException e) {
-                    GraphicalValidatorUtil.addValidationMark(this);
+                    if (enqueueMediatorDataModel.getSequenceKey().getKeyValue().isEmpty()) {
+                        hasError = true;
+                    }
+
+                    if (hasError) {
+                        GraphicalValidatorUtil.addValidationMark(this);
+                    } else {
+                        GraphicalValidatorUtil.removeValidationMark(this);
+                    }
+                } catch (Exception e) {
+                    log.error("Graphical validation error occured", e);
                 }
             }
         }

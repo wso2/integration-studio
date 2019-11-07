@@ -394,29 +394,30 @@ public class EventMediatorEditPart extends FixedSizedAbstractMediator {
     @Override
     public void notifyChanged(Notification notification) {
         // this.getModel() will get EMF datamodel of the event mediator datamodel
-        if (this.getModel() instanceof CSSNodeImpl) {
-            // The following part will check for validation issues with the current data in the model
-            CSSNodeImpl model = (CSSNodeImpl) this.getModel();
-            if (model.getElement() instanceof EventMediatorImpl) {
-                EventMediatorImpl eventMediatorDataModel = (EventMediatorImpl) model.getElement();
-                try {
-                    org.wso2.carbon.mediator.event.EventMediator eventMediator = EventMediatorTransformer
-                            .createEventMediator(new TransformationInfo(), (EsbNode) eventMediatorDataModel);
-
-                    EventMediatorSerializer eventMediatorSerializer = new EventMediatorSerializer();
-                    OMElement omElement = eventMediatorSerializer.serializeMediator(null, eventMediator);
-
-                    if (StringUtils
-                            .isEmpty(MediatorValidationUtil.validateMediatorsFromOEMElement(omElement, "event"))) {
-                        GraphicalValidatorUtil.removeValidationMark(this);
-                    } else {
-                        GraphicalValidatorUtil.addValidationMark(this);
-                    }
-                } catch (JaxenException | SynapseException e) {
-                    GraphicalValidatorUtil.addValidationMark(this);
-                }
-            }
-        }
+//        if (this.getModel() instanceof CSSNodeImpl) {
+//            // The following part will check for validation issues with the current data in the model
+//            CSSNodeImpl model = (CSSNodeImpl) this.getModel();
+//            if (model.getElement() instanceof EventMediatorImpl) {
+//                EventMediatorImpl eventMediatorDataModel = (EventMediatorImpl) model.getElement();
+//                try {
+//                    org.wso2.carbon.mediator.event.EventMediator eventMediator = EventMediatorTransformer
+//                            .createEventMediator(new TransformationInfo(), (EsbNode) eventMediatorDataModel);
+//
+//                    EventMediatorSerializer eventMediatorSerializer = new EventMediatorSerializer();
+//                    OMElement omElement = eventMediatorSerializer.serializeMediator(null, eventMediator);
+//
+//                    if (StringUtils
+//                            .isEmpty(MediatorValidationUtil.validateMediatorsFromOEMElement(omElement, "event"))) {
+//                        GraphicalValidatorUtil.removeValidationMark(this);
+//                    } else {
+//                        GraphicalValidatorUtil.addValidationMark(this);
+//                    }
+//                } catch (JaxenException | SynapseException e) {
+//                    GraphicalValidatorUtil.addValidationMark(this);
+//                }
+//            }
+//        }
+// Commented since no validation is done at synapse level
         super.notifyChanged(notification);
     }
 

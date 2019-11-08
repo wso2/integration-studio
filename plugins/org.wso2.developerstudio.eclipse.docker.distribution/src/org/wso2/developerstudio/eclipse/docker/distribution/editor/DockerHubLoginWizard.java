@@ -35,7 +35,7 @@ public class DockerHubLoginWizard extends Wizard implements IExportWizard {
     private DockerHubAuth configuration;
     private IFile containerPomFile;
 
-    DockerHubLoginWizard(DockerHubAuth newConfiguration, IFile pomFile) {
+    public DockerHubLoginWizard(DockerHubAuth newConfiguration, IFile pomFile) {
         configuration = newConfiguration;
         containerPomFile = pomFile;
     }

@@ -20,7 +20,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -35,26 +34,14 @@ import java.util.TreeMap;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.OutputKeys;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerConfigurationException;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.TransformerFactoryConfigurationError;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
-import javax.xml.xpath.XPath;
-import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 
-import org.apache.commons.io.IOUtils;
+import org.apache.commons.io.FileUtils;
 import org.apache.maven.model.Dependency;
 import org.apache.maven.model.Plugin;
-import org.apache.maven.model.PluginExecution;
 import org.apache.maven.project.MavenProject;
-import org.codehaus.plexus.util.xml.Xpp3Dom;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
@@ -71,7 +58,6 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.resource.ImageDescriptor;
-import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.TreeEditor;
 import org.eclipse.swt.events.ModifyEvent;
@@ -103,7 +89,6 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 import org.w3c.dom.Document;
-import org.w3c.dom.Node;
 import org.wso2.developerstudio.eclipse.capp.maven.utils.MavenConstants;
 
 import org.wso2.developerstudio.eclipse.distribution.project.model.DependencyData;
@@ -111,8 +96,8 @@ import org.wso2.developerstudio.eclipse.distribution.project.model.NodeData;
 import org.wso2.developerstudio.eclipse.distribution.project.util.DistProjectUtils;
 import org.wso2.developerstudio.eclipse.distribution.project.validator.ProjectList;
 import org.wso2.developerstudio.eclipse.docker.distribution.Activator;
+import org.wso2.developerstudio.eclipse.docker.distribution.action.DockerBuildActionUtil;
 import org.wso2.developerstudio.eclipse.docker.distribution.model.DockerHubAuth;
-import org.wso2.developerstudio.eclipse.docker.distribution.utils.CarbonApplicationAndDockerBuilder;
 import org.wso2.developerstudio.eclipse.docker.distribution.utils.DockerProjectConstants;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
@@ -130,8 +115,6 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
     private static final String SERVER_ROLE_ATTR = "serverRole";
 
     private static final String REGISTERED_SERVER_ROLES = "org.wso2.developerstudio.register.server.role";
-    private static final String TARGET_REPOSITORY_XPATH = "/project/build/plugins/plugin/executions/execution/configuration/repository";
-    private static final String TARGET_TAG_XPATH = "/project/build/plugins/plugin/executions/execution/configuration/tag";
 
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
@@ -174,7 +157,6 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
 
     private Action exportAction;
     private Action refreshAction;
-    private static final String POM_FILE = "pom.xml";
 
     public DistProjectEditorPage(String id, String title) {
         super(id, title);
@@ -240,11 +222,11 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
             DocumentBuilder builder = factory.newDocumentBuilder();
             Document doc = builder.parse(pomFile);
 
-            XPathExpression xpRepo = XPathFactory.newInstance().newXPath().compile(TARGET_REPOSITORY_XPATH);
+            XPathExpression xpRepo = XPathFactory.newInstance().newXPath().compile(DockerProjectConstants.TARGET_REPOSITORY_XPATH);
             String repository = xpRepo.evaluate(doc);
             setTargetRepository(repository);
 
-            XPathExpression xpTag = XPathFactory.newInstance().newXPath().compile(TARGET_TAG_XPATH);
+            XPathExpression xpTag = XPathFactory.newInstance().newXPath().compile(DockerProjectConstants.TARGET_TAG_XPATH);
             String tag = xpTag.evaluate(doc);
             setTargetTag(tag);
 
@@ -279,7 +261,7 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
                 dockerFieldValidator();
             }
             
-            changeDockerImageDataInSource(pomFile);
+            DockerBuildActionUtil.changeDockerImageDataInPOMPlugin(pomFile, getTargetRepository(), getTargetTag());
             setPageDirty(false);
             updateDirtyState();
             pomFileRes.getProject().refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
@@ -288,47 +270,7 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
         }
     }
     
-    /**
-     * Save docker image details to the POM file.
-     * 
-     * @param pomFile pom file
-     */
-    private void changeDockerImageDataInSource(File pomFile) {
-        try {
-            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder builder = factory.newDocumentBuilder();
-            Document doc = builder.parse(pomFile);
-
-            XPath xPathRepo = XPathFactory.newInstance().newXPath();
-            Node repositoryNode = (Node) xPathRepo.compile(TARGET_REPOSITORY_XPATH).evaluate(doc, XPathConstants.NODE);
-            repositoryNode.setTextContent(getTargetRepository());
-
-            XPath xPathTag = XPathFactory.newInstance().newXPath();
-            Node tagNode = (Node) xPathTag.compile(TARGET_TAG_XPATH).evaluate(doc, XPathConstants.NODE);
-            tagNode.setTextContent(getTargetTag());
-
-            Transformer tf = TransformerFactory.newInstance().newTransformer();
-            tf.setOutputProperty(OutputKeys.INDENT, "yes");
-            tf.setOutputProperty(OutputKeys.METHOD, "xml");
-            tf.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
-
-            DOMSource domSource = new DOMSource(doc);
-            StreamResult sr = new StreamResult(pomFile);
-            tf.transform(domSource, sr);
-        } catch (TransformerException e) {
-            log.error("TransformerException while reading pomfile", e);
-        } catch (TransformerFactoryConfigurationError e) {
-            log.error("TransformerFactoryConfigurationError while reading pomfile", e);
-        } catch (XPathExpressionException e) {
-            log.error("XPathExpressionException while reading pomfile", e);
-        } catch (ParserConfigurationException e) {
-            log.error("ParserConfigurationException while reading pomfile", e);
-        } catch (SAXException e) {
-            log.error("SAXException while reading pomfile", e);
-        } catch (IOException e) {
-            log.error("IOException while reading pomfile", e);
-        }
-    }
+    
 
     private Properties identifyNonProjectProperties(Properties properties) {
         Map<String, DependencyData> dependencies = getProjectList();
@@ -889,10 +831,8 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
     /**
      * Create a tree Item for a project
      * 
-     * @param parent
-     *            Parent tree control
-     * @param project
-     *            eclipse project
+     * @param parent Parent tree control
+     * @param project eclipse project
      * @return new TreeItem
      */
     TreeItem createNode(Tree parent, final IProject project) {
@@ -918,18 +858,33 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
 
     }
 
+    /**
+     * Trigger the build action from the UI.
+     * 
+     * @return triggered action
+     */
     public Action getExportAction() {
         if (exportAction == null) {
+            IProject project = ((IFileEditorInput) (getEditor().getEditorInput())).getFile().getProject();
             String actionIconType;
             if (getContainerType().equals(DockerProjectConstants.KUBERNETES_CONTAINER)) {
                 actionIconType = "/icons/buildPush.png";
             } else {
                 actionIconType = "/icons/build.png";
             }
-            
-            exportAction = new Action("Create Docker Image",
+
+            exportAction = new Action("Generate Docker Image",
                     ImageDescriptor.createFromImage(SWTResourceManager.getImage(this.getClass(), actionIconType))) {
                 public void run() {
+
+                    // check whether there are atleast one depenedency composite project to build a image
+                    List<String> dependencyProjectNames = DockerBuildActionUtil.getCompositeAppDependencyList(pomFile);
+                    if (dependencyProjectNames.size() == 0) {
+                        DockerBuildActionUtil.showMessageBox(DockerProjectConstants.MESSAGE_BOX_TITLE,
+                                DockerProjectConstants.SUFFCIENT_DEPENDENCY_NOT_FOUND, SWT.ERROR);
+                        return;
+                    }
+
                     DockerHubAuth newConfiguration = null;
                     if (getContainerType().equals(DockerProjectConstants.KUBERNETES_CONTAINER)) {
                         newConfiguration = new DockerHubAuth();
@@ -941,69 +896,57 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
                         headerWizardDialog.setPageSize(580, 260);
                         headerWizardDialog.open();
 
-                        if (newConfiguration.getAuthEmail() != null && newConfiguration.getAuthUsername() != null
-                                && newConfiguration.getAuthPassword() != null) {
-                            newConfiguration.setKubernetesProject(true);
-                            exportDockerImage(newConfiguration);
-                            exportAction.setToolTipText("Create Docker Image and Push");
+                        if (newConfiguration.getAuthEmail() == null || newConfiguration.getAuthUsername() == null
+                                || newConfiguration.getAuthPassword() == null) {
+                            return;
                         }
+                        
+                        newConfiguration.setKubernetesProject(true);
+                        exportAction.setToolTipText("Build & Push Docker Image");
                     } else {
-                        exportDockerImage(newConfiguration);
-                        exportAction.setToolTipText("Create Docker Image");
+                        exportAction.setToolTipText("Build Docker Image");
                     }
+
+                    //execute maven build and push jobs using project POM
+                    executeDockerBuildProcess(project, dependencyProjectNames, newConfiguration);
                 };
             };
         }
         return exportAction;
     }
+    
+    /**
+     * Execute docker build and push maven jobs in UI thread.
+     * 
+     * @param project container project
+     * @param dependencyProjectNames CApp project name list in POM file
+     * @param configuration auth connection data for docker push
+     */
+    private void executeDockerBuildProcess(IProject project, List<String> dependencyProjectNames,
+            DockerHubAuth configuration) {
+        String m2Directory = FileUtils.getUserDirectory().getPath() + File.separator + ".m2" + File.separator
+                + "repository";
 
-    public void exportDockerImage(DockerHubAuth newConfiguration) {
-        MessageBox exportMsg = new MessageBox(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
-                SWT.ICON_INFORMATION);
-        exportMsg.setText("WSO2 Docker image exporter");
-        if (dependencyList.size() == 0) {
-            exportMsg.setMessage(
-                    "Cannot export an empty docker image. please tick/check atleast one carbon application from the dependencies");
-            exportMsg.open();
-            return;
-        }
         try {
+            DockerBuildActionUtil.exportCarbonAppsToTargetFolder(m2Directory, dependencyProjectNames);
 
-            // Building all dependency carbon applications.
-            String pomFileLocation = pomFileRes.getLocation().toString();
-            String rootFolderLocation = pomFileLocation.substring(0, pomFileLocation.length() - POM_FILE.length());
-            String cappFolderLocation = rootFolderLocation + DockerProjectConstants.CARBON_APP_FOLDER;
-            // take repository and tag from the pom file
-            String repository = "";
-            String tag = "";
-            MavenProject mavenProject = MavenUtils.getMavenProject(pomFileRes.getLocation().toFile());
-            List<Plugin> pluginList = mavenProject.getBuildPlugins();
-            for (Plugin plugin : pluginList) {
-                if (plugin.getGroupId().equals("com.spotify")) {
-                    PluginExecution pluginExecution = plugin.getExecutions().get(0);
-                    Xpp3Dom[] childs = ((Xpp3Dom) pluginExecution.getConfiguration()).getChildren();
-                    for (Xpp3Dom child : childs) {
-                        if (child.getName().equals(DockerProjectConstants.DOCKER_REPOSITORY)) {
-                            repository = child.getValue();
-                        } else if (child.getName().equals(DockerProjectConstants.DOCKER_TAG)) {
-                            tag = child.getValue();
-                        }
-                    }
-                }
+            // check docker registry URL has changed, if yes append the private remote url to the target repository
+            String targetRepository = DockerBuildActionUtil.readDockerImageDetailsFromPomPlugin(pomFile);
+            String[] reposirotyTags = targetRepository.split(DockerProjectConstants.REPOSITORY_SEPERATOR);
+            if (reposirotyTags.length == 3) {
+                targetRepository = reposirotyTags[1] + DockerProjectConstants.REPOSITORY_SEPERATOR + reposirotyTags[2];
             }
 
-            CarbonApplicationAndDockerBuilder carbonApplicationBuilder = new CarbonApplicationAndDockerBuilder(
-                    dependencyProjectNames, cappFolderLocation, rootFolderLocation, repository, tag, newConfiguration);
-            carbonApplicationBuilder.schedule();
-
-            if (isDirty()) {
-                savePOM();
+            if (!configuration.isDockerRegistry()) {
+                targetRepository = configuration.getRemoteRegistryURL() + DockerProjectConstants.REPOSITORY_SEPERATOR
+                        + targetRepository;
             }
-        } catch (Exception e) {
-            log.error("An error occurred while creating the carbon archive file", e);
-            exportMsg.setMessage(
-                    "An error occurred while creating the carbon archive file. For more details view the log");
-            exportMsg.open();
+
+            DockerBuildActionUtil.changeDockerImageDataInPOMPlugin(pomFile, targetRepository);
+            DockerBuildActionUtil.runDockerBuildWithMavenProfile(project, DockerBuildActionUtil.MAVEN_BUILD_GOAL,
+                    configuration);
+        } catch (CoreException e) {
+            log.error("CoreException in while executing the docker build process", e);
         }
     }
 

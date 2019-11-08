@@ -50,6 +50,8 @@ import org.eclipse.papyrus.infra.gmfdiag.css.CSSNodeImpl;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.jaxen.JaxenException;
+import org.wso2.developerstudio.eclipse.gmf.esb.CompletionMessagesType;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EsbGroupingShape;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedBorderItemLocator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.ShowPropertyViewEditPolicy;
@@ -62,12 +64,15 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.EsbTextSel
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.validator.GraphicalValidatorUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.AggregateMediatorImpl;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 /**
  * @generated NOT
  */
 public class AggregateMediatorEditPart extends SingleCompartmentComplexFiguredAbstractMediator {
 
+    private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
     public IFigure onCompleteOutputConnector;
 
     /**
@@ -418,49 +423,65 @@ public class AggregateMediatorEditPart extends SingleCompartmentComplexFiguredAb
 	public void notifyChanged(Notification notification) {
 		// this.getModel() will get EMF datamodel of the aggregate mediator
 		// datamodel
-		if (this.getModel() instanceof CSSNodeImpl) {
+		if (notification.getEventType() == Notification.SET && this.getModel() instanceof CSSNodeImpl) {
 			// The following part will check for validation issues with the
 			// current data in the model
 			CSSNodeImpl model = (CSSNodeImpl) this.getModel();
 			if (model.getElement() instanceof AggregateMediatorImpl) {
-				AggregateMediatorImpl aggregateMediatorDataModel =
-				                                                 (AggregateMediatorImpl) model.getElement();
+				AggregateMediatorImpl aggregateMediatorDataModel = (AggregateMediatorImpl) model.getElement();
 				boolean isErrorneous = false;
-				String xpathValue = aggregateMediatorDataModel.getAggregationExpression()
-				                                              .getPropertyValue();
-				if (xpathValue.equals("")) {
-					isErrorneous = true;
-				} else {
-					try {
-						if (xpathValue.startsWith("json-eval(")) {
-							new SynapseJsonPath(xpathValue);
-						} else {
-							new SynapseXPath(xpathValue);
-						}
-					} catch (JaxenException e) {
+				try {
+					String xpathValue = aggregateMediatorDataModel.getAggregationExpression().getPropertyValue();
+					if (xpathValue.equals("")) {
 						isErrorneous = true;
-					}
-				}
-				if (!isErrorneous) {
-					String correlationXpathValue =
-					                             aggregateMediatorDataModel.getCorrelationExpression()
-					                                                       .getPropertyValue();
-					if (!correlationXpathValue.equals("")) {
+					} else {
 						try {
-							if (correlationXpathValue.startsWith("json-eval(")) {
-								new SynapseJsonPath(correlationXpathValue);
+							if (xpathValue.startsWith("json-eval(")) {
+								new SynapseJsonPath(xpathValue);
 							} else {
-								new SynapseXPath(correlationXpathValue);
+								new SynapseXPath(xpathValue);
 							}
 						} catch (JaxenException e) {
 							isErrorneous = true;
 						}
 					}
-				}
-				if (isErrorneous) {
-					GraphicalValidatorUtil.addValidationMark(this);
-				} else {
-					GraphicalValidatorUtil.removeValidationMark(this);
+					if (!isErrorneous) {
+						String correlationXpathValue = aggregateMediatorDataModel.getCorrelationExpression()
+								.getPropertyValue();
+						if (!correlationXpathValue.equals("")) {
+							try {
+								if (correlationXpathValue.startsWith("json-eval(")) {
+									new SynapseJsonPath(correlationXpathValue);
+								} else {
+									new SynapseXPath(correlationXpathValue);
+								}
+							} catch (JaxenException e) {
+								isErrorneous = true;
+							}
+						}
+					}
+					if (aggregateMediatorDataModel
+							.getCompletionMinMessagesType() == CompletionMessagesType.EXPRESSION) {
+						if (aggregateMediatorDataModel.getCompletionMinMessagesExpression().getPropertyValue()
+								.equals("")) {
+							isErrorneous = true;
+						}
+					}
+					if (aggregateMediatorDataModel
+							.getCompletionMaxMessagesType() == CompletionMessagesType.EXPRESSION) {
+						if (aggregateMediatorDataModel.getCompletionMaxMessagesExpression().getPropertyValue()
+								.equals("")) {
+							isErrorneous = true;
+						}
+					}
+					if (isErrorneous) {
+						GraphicalValidatorUtil.addValidationMark(this);
+					} else {
+						GraphicalValidatorUtil.removeValidationMark(this);
+					}
+				} catch (Exception e) {
+					// Skip error since it's a validation related minor issue
+					log.error("Graphical validation error occured", e);
 				}
 			}
 		}

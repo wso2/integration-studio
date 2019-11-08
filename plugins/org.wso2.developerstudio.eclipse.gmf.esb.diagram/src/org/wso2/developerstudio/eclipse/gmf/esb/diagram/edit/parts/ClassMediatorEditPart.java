@@ -48,6 +48,7 @@ import org.eclipse.papyrus.infra.gmfdiag.css.CSSNodeImpl;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.wso2.developerstudio.eclipse.gmf.esb.ClassProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EsbGraphicalShapeWithLabel;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedBorderItemLocator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedSizedAbstractMediator;
@@ -59,12 +60,15 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.ClassMedia
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.validator.GraphicalValidatorUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.ClassMediatorImpl;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 /**
  * @generated NOT
  */
 public class ClassMediatorEditPart extends FixedSizedAbstractMediator {
 
+    private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
     /**
      * @generated
      */
@@ -385,12 +389,12 @@ public class ClassMediatorEditPart extends FixedSizedAbstractMediator {
         }
 
     }
-    
+
 	@Override
 	public void notifyChanged(Notification notification) {
 		// this.getModel() will get EMF datamodel of the class mediator
 		// datamodel
-		if (this.getModel() instanceof CSSNodeImpl) {
+		if (notification.getEventType() == Notification.SET && this.getModel() instanceof CSSNodeImpl) {
 			// The following part will check for validation issues with the
 			// current data in the model
 			CSSNodeImpl model = (CSSNodeImpl) this.getModel();
@@ -398,30 +402,33 @@ public class ClassMediatorEditPart extends FixedSizedAbstractMediator {
 				ClassMediatorImpl classMediatorDataModel = (ClassMediatorImpl) model.getElement();
 				String className = classMediatorDataModel.getClassName();
 				boolean isErrorneous = false;
-				if (className.equals("")) {
-					isErrorneous = true;
-				}
-				if (!isErrorneous) {
-					Iterator<ClassProperty> classPropertyIterator =
-					                                              classMediatorDataModel.getProperties()
-					                                                                    .iterator();
-					while (!isErrorneous && classPropertyIterator.hasNext()) {
-						ClassProperty classProperty = classPropertyIterator.next();
-						if (classProperty.getPropertyName().equals("")) {
-							isErrorneous = true;
+				try {
+					if (className == null || className.equals("")) {
+						isErrorneous = true;
+					}
+					if (!isErrorneous) {
+						Iterator<ClassProperty> classPropertyIterator = classMediatorDataModel.getProperties()
+								.iterator();
+						while (!isErrorneous && classPropertyIterator.hasNext()) {
+							ClassProperty classProperty = classPropertyIterator.next();
+							if (classProperty.getPropertyName().equals("")) {
+								isErrorneous = true;
+							}
 						}
 					}
-				}
-				if (isErrorneous) {
-					GraphicalValidatorUtil.addValidationMark(this);
-				} else {
-					GraphicalValidatorUtil.removeValidationMark(this);
+					if (isErrorneous) {
+						GraphicalValidatorUtil.addValidationMark(this);
+					} else {
+						GraphicalValidatorUtil.removeValidationMark(this);
+					}
+				} catch (Exception e) {
+					// Skip error since it's a validation related minor issue
+					log.error("Graphical validation error occured", e);
 				}
 			}
 		}
 		super.notifyChanged(notification);
 	}
-    
 
     /**
      * @generated

@@ -46,6 +46,7 @@ import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EsbGraphicalShapeWithLabel;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedBorderItemLocator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedSizedAbstractMediator;
@@ -57,6 +58,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.LogMediato
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.validator.GraphicalValidatorUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.LogMediatorImpl;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.eclipse.papyrus.infra.gmfdiag.css.CSSNodeImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.LogProperty;
 
@@ -65,6 +68,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.LogProperty;
  */
 public class LogMediatorEditPart extends FixedSizedAbstractMediator {
 
+    private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
     /**
      * @generated
      */
@@ -390,22 +394,27 @@ public class LogMediatorEditPart extends FixedSizedAbstractMediator {
 	@Override
 	public void notifyChanged(Notification notification) {
 		// This will validate the log mediator data object
-		if (this.getModel() instanceof CSSNodeImpl) {
+		if (notification.getEventType() == Notification.SET && this.getModel() instanceof CSSNodeImpl) {
 			CSSNodeImpl model = (CSSNodeImpl) this.getModel();
 			if (model.getElement() instanceof LogMediatorImpl) {
 				LogMediatorImpl logMediatorDataModel = (LogMediatorImpl) model.getElement();
-				Iterator<LogProperty> properties = logMediatorDataModel.getProperties().iterator();
-				boolean isErrorneous = false;
-				while (!isErrorneous && properties.hasNext()) {
-					LogProperty logProperty = properties.next();
-					if (logProperty.getPropertyName().equals("")) {
-						isErrorneous = true;
+				try {
+					Iterator<LogProperty> properties = logMediatorDataModel.getProperties().iterator();
+					boolean isErrorneous = false;
+					while (!isErrorneous && properties.hasNext()) {
+						LogProperty logProperty = properties.next();
+						if (logProperty.getPropertyName().equals("")) {
+							isErrorneous = true;
+						}
 					}
-				}
-				if (isErrorneous) {
-					GraphicalValidatorUtil.addValidationMark(this);
-				} else {
-					GraphicalValidatorUtil.removeValidationMark(this);
+					if (isErrorneous) {
+						GraphicalValidatorUtil.addValidationMark(this);
+					} else {
+						GraphicalValidatorUtil.removeValidationMark(this);
+					}
+				} catch (Exception e) {
+					// Skip error since it's a validation related minor issue
+					log.error("Graphical validation error occured", e);
 				}
 			}
 		}

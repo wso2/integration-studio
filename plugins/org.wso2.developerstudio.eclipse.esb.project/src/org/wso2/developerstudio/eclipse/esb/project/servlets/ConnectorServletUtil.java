@@ -133,19 +133,22 @@ public class ConnectorServletUtil {
                 parentDirectory.mkdir();
             }
             zipDestination = parentDirectoryPath + File.separator + zipFileName;
-            InputStream is = url.openStream();
-            File targetFile = new File(zipDestination);
-            targetFile.createNewFile();
-            FileOutputStream outputStream = new FileOutputStream(targetFile);
-            int bytesRead = -1;
-            byte[] buffer = new byte[BUFFER_SIZE];
-            while ((bytesRead = is.read(buffer)) != -1) {
-                outputStream.write(buffer, 0, bytesRead);
+            try (InputStream is = url.openStream()) {
+                File targetFile = new File(zipDestination);
+                targetFile.createNewFile();
+                try (FileOutputStream outputStream = new FileOutputStream(targetFile)) {
+                    int bytesRead = -1;
+                    byte[] buffer = new byte[BUFFER_SIZE];
+                    while ((bytesRead = is.read(buffer)) != -1) {
+                        outputStream.write(buffer, 0, bytesRead);
+                    }
+                    updateProjects(zipDestination);
+                    return true;
+                }
+            } catch (IOException e) {
+                log.error("Error while downloading connector : " + downloadLink, e);
+                throw new ConnectorException("Error while downloading connector : " + downloadLink, e);
             }
-            outputStream.close();
-            is.close();
-            updateProjects(zipDestination);
-            return true;
         } catch (ZipException e) {
             log.error("Error while extracting the connector zip : " + zipDestination, e);
             throw new ConnectorException("Error while extracting the connector zip : " + zipDestination, e);
@@ -155,10 +158,7 @@ public class ConnectorServletUtil {
         } catch (MalformedURLException malformedURLException) {
             log.error("Malformed connector URL provided : " + downloadLink, malformedURLException);
             throw new ConnectorException("Malformed connector URL provided : " + downloadLink, malformedURLException);
-        } catch (IOException e) {
-            log.error("Error while downloading connector : " + downloadLink, e);
-            throw new ConnectorException("Error while downloading connector : " + downloadLink, e);
-        }
+        } 
     }
 
     /**

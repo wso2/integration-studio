@@ -51,12 +51,12 @@ public class ConnectorStore {
      * requested page and return a Object object which can be used to fetch relevant information for a particular
      * connector.
      * 
+     * @param httpclient
      * @param url
-     * @return Object
-     * @throws NoSuchAlgorithmException
-     * @throws KeyManagementException
-     * @throws IOException
+     * @param page
+     * @return
      * @throws HttpException
+     * @throws IOException
      */
     public static Object getConnectorInfo(HttpClient httpclient, String url, int page)
             throws HttpException, IOException {
@@ -75,19 +75,20 @@ public class ConnectorStore {
             return null;
         }
     }
-
+    
     /**
      * This will connect to connector store - ES 2.1.0 using provided URL and
      * retrieve information for available connectors in the requested page and
      * return a ConnectorData object which can be used to fetch relevant
      * information for a particular connector.
      * 
+     * @param httpclient
      * @param url
-     * @return ConnectorData
-     * @throws NoSuchAlgorithmException
-     * @throws KeyManagementException
-     * @throws IOException
+     * @param start
+     * @param end
+     * @return
      * @throws HttpException
+     * @throws IOException
      */
     public static ConnectorData getConnectorInfo_es210(HttpClient httpclient, String url, int start, int end)
             throws HttpException, IOException {

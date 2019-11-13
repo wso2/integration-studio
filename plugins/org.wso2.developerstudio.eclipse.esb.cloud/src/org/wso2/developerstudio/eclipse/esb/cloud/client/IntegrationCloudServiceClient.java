@@ -96,8 +96,11 @@ public class IntegrationCloudServiceClient {
                     cookieStore);
             JsonParser parser = new JsonParser();
             JsonElement jsonResponse = parser.parse(response);
-            String message = jsonResponse.getAsJsonObject().get("message").getAsString();
-            return message.equals(CloudServiceConstants.ResponseMessages.USER_SUCCESSFULLY_LOGGED_IN);
+            JsonElement messageJson = jsonResponse.getAsJsonObject().get("message");
+            if (messageJson != null) {
+                String message = jsonResponse.getAsJsonObject().get("message").getAsString();
+                return CloudServiceConstants.ResponseMessages.USER_SUCCESSFULLY_LOGGED_IN.equals(message); 
+            }
         } catch (InvalidTokenException e) {
             log.error("Failed to authenticate user!", e);
         }

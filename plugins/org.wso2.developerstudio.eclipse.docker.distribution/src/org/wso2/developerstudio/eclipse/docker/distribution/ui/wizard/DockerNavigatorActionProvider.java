@@ -52,7 +52,8 @@ public class DockerNavigatorActionProvider extends CommonActionProvider {
 				IFile file = (IFile) firstElement;
 
 				try {
-					if (file.getProject().getDescription().hasNature(DockerProjectConstants.DOCKER_NATURE)) {
+					if (file.getProject().getDescription().hasNature(DockerProjectConstants.DOCKER_NATURE)
+							|| file.getProject().getDescription().hasNature(DockerProjectConstants.KUBERNETES_NATURE)) {
 						openEditorAction.setSelection(file);
 						actionBars.setGlobalActionHandler(ICommonActionConstants.OPEN, openEditorAction);
 					}
@@ -71,7 +72,7 @@ public class DockerNavigatorActionProvider extends CommonActionProvider {
 	}
 
 	private static class OpenEditorAction extends Action {
-		
+
 		private IFile selection;
 
 		@Override
@@ -81,7 +82,7 @@ public class DockerNavigatorActionProvider extends CommonActionProvider {
 
 			IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
 			IWorkbenchPage page = window.getActivePage();
-			
+
             try {
                 if (selection.getWorkspace().getRoot().getFile(new Path(diagramFilePath)).exists()) {
                     fileTobeOpen = selection.getWorkspace().getRoot().getFile(new Path(diagramFilePath));
@@ -95,7 +96,7 @@ public class DockerNavigatorActionProvider extends CommonActionProvider {
             } catch (Exception e) {
                 log.error("Can't open " + fileTobeOpen, e);
             }
-		}
+        }
 
 		public void setSelection(IFile selection) {
 			this.selection = selection;

@@ -36,6 +36,7 @@ public class DockerProjectConstants extends NLS {
 
     public static String EXTENTION_POINT_NAME;
     public static String DOCKER_NATURE;
+    public static String KUBERNETES_NATURE;
     public static String DOCKER_EDITOR;
     public static String DOCKER_FILE_EDITOR;
     public static String DOCKER_FILE_NAME;

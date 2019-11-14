@@ -57,7 +57,6 @@ public class DockerHubLoginPage extends WizardPage {
     private static final String EMPTY_STRING = "";
     private static final String REGISTRY_URL = "Registry URL Type:";
     private static final String ENTER_REGISTRY_URL = "Enter Registry URL:";
-    private static final String EMAIL = "Email:";
     private static final String USERNAME = "Username:";
     private static final String PASSWORD = "Password:";
     public final String DOCKERHUB_REGISTRY = "Docker Hub";
@@ -67,16 +66,13 @@ public class DockerHubLoginPage extends WizardPage {
             Pattern.CASE_INSENSITIVE);
 
     private String dockerHubUsername = EMPTY_STRING;
-    private String dockerHubEmail = EMPTY_STRING;
     private String dockerHubPassword = EMPTY_STRING;
     private String dockerHubOtherRegistryURL = EMPTY_STRING;
     private String selectedRegistryType = EMPTY_STRING;
 
     private Combo registryURLCombo;
-    private Text txtDockerEmail;
     private Text txtDockerUsername;
     private Text txtDockerPassword;
-    private Text txtOtherEmail;
     private Text txtOtherUsername;
     private Text txtOtherPassword;
     private Text txtOtherRegistryURL;
@@ -161,9 +157,6 @@ public class DockerHubLoginPage extends WizardPage {
             containerOtherRegistry.setVisible(false);
             containerDockerRegistry.setVisible(true);
             
-            if (!getEmailValue().isEmpty()) {
-                txtDockerEmail.setText(getEmailValue());
-            }
             if (!getUsernameValue().isEmpty()) {
                 txtDockerUsername.setText(getUsernameValue());
             }
@@ -174,10 +167,7 @@ public class DockerHubLoginPage extends WizardPage {
             txtOtherRegistryURL.setVisible(true);
             containerOtherRegistry.setVisible(true);
             containerDockerRegistry.setVisible(false);
-            
-            if (!getEmailValue().isEmpty()) {
-                txtOtherEmail.setText(getEmailValue());
-            }
+
             if (!getUsernameValue().isEmpty()) {
                 txtOtherUsername.setText(getUsernameValue());
             }
@@ -217,33 +207,10 @@ public class DockerHubLoginPage extends WizardPage {
                 validate();
             }
         });
-        
-        Label lblEmail = new Label(containerOtherRegistry, SWT.NONE);
-        data = new FormData();
-        data.top = new FormAttachment(txtOtherRegistryURL, 20);
-        data.left = new FormAttachment(3);
-        data.width = 160;
-        lblEmail.setLayoutData(data);
-        lblEmail.setText(EMAIL);
-
-        txtOtherEmail = new Text(containerOtherRegistry, SWT.BORDER);
-        data = new FormData();
-        data.top = new FormAttachment(txtOtherRegistryURL, 20);
-        data.left = new FormAttachment(lblEmail, 0);
-        data.right = new FormAttachment(97);
-        data.width = 400;
-        txtOtherEmail.setLayoutData(data);
-
-        txtOtherEmail.addModifyListener(new ModifyListener() {
-            public void modifyText(ModifyEvent arg0) {
-                setEmailValue(txtOtherEmail.getText());
-                validate();
-            }
-        });
 
         Label lblUsername = new Label(containerOtherRegistry, SWT.NONE);
         data = new FormData();
-        data.top = new FormAttachment(lblEmail, 25);
+        data.top = new FormAttachment(lblEnterRegistryURL, 25);
         data.left = new FormAttachment(3);
         data.width = 160;
         lblUsername.setLayoutData(data);
@@ -251,7 +218,7 @@ public class DockerHubLoginPage extends WizardPage {
 
         txtOtherUsername = new Text(containerOtherRegistry, SWT.BORDER);
         data = new FormData();
-        data.top = new FormAttachment(lblEmail, 25);
+        data.top = new FormAttachment(lblEnterRegistryURL, 25);
         data.left = new FormAttachment(lblUsername, 0);
         data.right = new FormAttachment(97);
         data.width = 400;
@@ -291,35 +258,9 @@ public class DockerHubLoginPage extends WizardPage {
     private void previewAuthFieldsForDockerRegistry() {
         FormData data;
         
-        Label lblEmail = new Label(containerDockerRegistry, SWT.NONE);
-        data = new FormData();
-        data.top = new FormAttachment(containerDockerRegistry);
-        data.left = new FormAttachment(3);
-        data.width = 160;
-        lblEmail.setLayoutData(data);
-        lblEmail.setText(EMAIL);
-
-        txtDockerEmail = new Text(containerDockerRegistry, SWT.BORDER);
-        data = new FormData();
-        data.top = new FormAttachment(containerDockerRegistry);
-        data.left = new FormAttachment(lblEmail, 0);
-        data.right = new FormAttachment(97);
-        data.width = 400;
-        txtDockerEmail.setLayoutData(data);
-        if (!getEmailValue().isEmpty()) {
-            txtDockerEmail.setText(getEmailValue());
-        }
-
-        txtDockerEmail.addModifyListener(new ModifyListener() {
-            public void modifyText(ModifyEvent arg0) {
-                setEmailValue(txtDockerEmail.getText());
-                validate();
-            }
-        });
-
         Label lblUsername = new Label(containerDockerRegistry, SWT.NONE);
         data = new FormData();
-        data.top = new FormAttachment(lblEmail, 25);
+        data.top = new FormAttachment(containerDockerRegistry);
         data.left = new FormAttachment(3);
         data.width = 160;
         lblUsername.setLayoutData(data);
@@ -327,7 +268,7 @@ public class DockerHubLoginPage extends WizardPage {
 
         txtDockerUsername = new Text(containerDockerRegistry, SWT.BORDER);
         data = new FormData();
-        data.top = new FormAttachment(lblEmail, 25);
+        data.top = new FormAttachment(containerDockerRegistry);
         data.left = new FormAttachment(lblUsername, 0);
         data.right = new FormAttachment(97);
         data.width = 400;
@@ -383,14 +324,6 @@ public class DockerHubLoginPage extends WizardPage {
             setErrorMessage("Please enter the Docker registry password");
             setPageComplete(false);
             return;
-        } else if (getEmailValue() == null || getEmailValue().equals(EMPTY_STRING)) {
-            setErrorMessage("Please enter the Docker registry email");
-            setPageComplete(false);
-            return;
-        } else if (!validateEmail(getEmailValue())) {
-            setErrorMessage("Please enter a valid Email address");
-            setPageComplete(false);
-            return;
         } else if (getSelectedRegistryType().equals(OTHER_REGISTRY)
                 && (getDockerHubOtherRegistryURL() == null || getDockerHubOtherRegistryURL().isEmpty())) {
             setErrorMessage("Please enter a valid registry URL to push the Docker image");
@@ -435,11 +368,6 @@ public class DockerHubLoginPage extends WizardPage {
         }
     }
 
-    public static boolean validateEmail(String emailStr) {
-        Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(emailStr);
-        return matcher.find();
-    }
-
     public String getUsernameValue() {
         return dockerHubUsername;
     }
@@ -454,14 +382,6 @@ public class DockerHubLoginPage extends WizardPage {
 
     public void setPasswordValue(String password) {
         this.dockerHubPassword = password;
-    }
-
-    public String getEmailValue() {
-        return dockerHubEmail;
-    }
-
-    public void setEmailValue(String email) {
-        this.dockerHubEmail = email;
     }
 
     public String getDockerHubOtherRegistryURL() {

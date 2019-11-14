@@ -103,7 +103,7 @@ public class ContainerProjectCreationWizard extends AbstractWSO2ProjectCreationW
             
             String remoteRepository;
             String remoteTag;
-            if (dockerModel.isContainerExporterProjectChecked() && dockerModel.isDockerContainerSelected()) {
+            if (dockerModel.isDockerExporterProjectChecked()) {
                 remoteRepository = dockerModel.getDockerRemoteRepository();
                 remoteTag = dockerModel.getDockerRemoteTag();
             } else {
@@ -130,6 +130,15 @@ public class ContainerProjectCreationWizard extends AbstractWSO2ProjectCreationW
             stringBuilder.append("#COPY " + DockerProjectConstants.CONF_FOLDER + "/* "
                     + DockerProjectConstants.CONF_FOLDER_LOCATION);
 
+            stringBuilder.append(System.lineSeparator());
+            if (dockerModel.isDockerExporterProjectChecked() && dockerModel.getDockerEnvParameters().size() > 0) {
+                stringBuilder.append("ENV ");
+                for (Map.Entry<String, String> envMap : dockerModel.getDockerEnvParameters().entrySet()) {
+                    stringBuilder.append(envMap.getKey() + "=" + envMap.getValue() + " ");
+                }
+                stringBuilder.append(System.lineSeparator());
+            }
+            
             if (newFile.createNewFile()) {
                 InputStream inputStream = new ByteArrayInputStream(
                         stringBuilder.toString().getBytes(Charset.forName("UTF-8")));
@@ -167,15 +176,27 @@ public class ContainerProjectCreationWizard extends AbstractWSO2ProjectCreationW
                 yamlGenerator.writeStartObject();
                 yamlGenerator.writeObjectField("replicas", Integer.parseInt(dockerModel.getKubeReplicsas()));
                 yamlGenerator.writeObjectField("image", imagePath);
-                yamlGenerator.writeObjectField("port", Integer.parseInt(dockerModel.getKubeExposePort()));
+                
+                // check whether there are Inbound Ports given by user and append to the yaml
+                // file
+                if (dockerModel.getKubernetesPortParameters().size() > 0) {
+                    yamlGenerator.writeFieldName("inboundPorts");
+                    yamlGenerator.writeStartArray();
+
+                    for (Map.Entry<String, String> envMap : dockerModel.getKubernetesPortParameters().entrySet()) {
+                        yamlGenerator.writeObject(Integer.parseInt(envMap.getKey()));
+                    }
+
+                    yamlGenerator.writeEndArray();
+                }
 
                 // check whether there are ENV variables given by user and append to the yaml
                 // file
-                if (dockerModel.getCustomParameters().size() > 0) {
+                if (dockerModel.getKubernetesEnvParameters().size() > 0) {
                     yamlGenerator.writeFieldName("env");
                     yamlGenerator.writeStartArray();
 
-                    for (Map.Entry<String, String> envMap : dockerModel.getCustomParameters().entrySet()) {
+                    for (Map.Entry<String, String> envMap : dockerModel.getKubernetesEnvParameters().entrySet()) {
                         yamlGenerator.writeStartObject();
                         yamlGenerator.writeObjectField("name", envMap.getKey());
                         yamlGenerator.writeObjectField("value", envMap.getValue());
@@ -193,43 +214,18 @@ public class ContainerProjectCreationWizard extends AbstractWSO2ProjectCreationW
         }
     }
 
-    /**
-     * Create new kube.properties file in the project directory if not exists.
-     * 
-     * @throws IOException
-     *             An error occurred while writing the file
-     */
-    private void copyKubePropertiesFile() throws IOException {
-        IFile dockerFile = project.getFile(DockerProjectConstants.KUBE_PROPERTIES_FILE_NAME);
-        File newFile = new File(dockerFile.getLocationURI().getPath());
-        if (!newFile.exists()) {
-            // Creating the new properties file
-            StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.append("containerType=kubernetes");
-
-            if (newFile.createNewFile()) {
-                InputStream inputStream = new ByteArrayInputStream(
-                        stringBuilder.toString().getBytes(Charset.forName("UTF-8")));
-                OutputStream outputStream = new FileOutputStream(newFile);
-                IOUtils.copy(inputStream, outputStream);
-            }
-        }
-    }
-
     public boolean performFinish() {
         try {
             // check docker project created via project wizard
             if (this.getModel().getSelectedOption() != null
                     && this.getModel().getSelectedOption().equals(DockerProjectConstants.DOCKER_PROJECT_TYPE)) {
-                dockerModel.setContainerExporterProjectChecked(true);
-                dockerModel.setDockerContainerSelected(true);
+                dockerModel.setDockerExporterProjectChecked(true);
             }
 
             // check kubernetes project created via project wizard
             if (this.getModel().getSelectedOption() != null
                     && this.getModel().getSelectedOption().equals(DockerProjectConstants.KUBERNETES_PROJECT_TYPE)) {
-                dockerModel.setContainerExporterProjectChecked(true);
-                dockerModel.setDockerContainerSelected(false);
+                dockerModel.setKubernetesExporterProjectChecked(false);
             }
         	
             project = createNewProject();
@@ -242,17 +238,23 @@ public class ContainerProjectCreationWizard extends AbstractWSO2ProjectCreationW
             // Copy docker file
             copyDockerFile();
             
-            // Copy kubernetes CRD yml file and properties file to the project
-            if (dockerModel.isContainerExporterProjectChecked() && !dockerModel.isDockerContainerSelected()) {
-                copyKubeYamlFile();
-                copyKubePropertiesFile();
-            }
-            
             File pomfile = project.getFile(POM_FILE).getLocation().toFile();
             createPOM(pomfile);
-            ProjectUtils.addNatureToProject(project, false, DockerProjectConstants.DOCKER_NATURE);
-            MavenUtils.updateWithMavenEclipsePlugin(pomfile, new String[] {},
-                    new String[] { DockerProjectConstants.DOCKER_NATURE });
+            
+            if (dockerModel.isKubernetesExporterProjectChecked()) {
+                // Copy integration CR yml file and properties file to the project
+                copyKubeYamlFile();
+                
+                ProjectUtils.addNatureToProject(project, false, DockerProjectConstants.KUBERNETES_NATURE);
+                MavenUtils.updateWithMavenEclipsePlugin(pomfile, new String[] {},
+                        new String[] { DockerProjectConstants.KUBERNETES_NATURE });
+                
+            } else if (dockerModel.isDockerExporterProjectChecked()) {
+                ProjectUtils.addNatureToProject(project, false, DockerProjectConstants.DOCKER_NATURE);
+                MavenUtils.updateWithMavenEclipsePlugin(pomfile, new String[] {},
+                        new String[] { DockerProjectConstants.DOCKER_NATURE });
+            }
+            
             project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
             MavenProject mavenProject = MavenUtils.getMavenProject(pomfile);
 
@@ -285,19 +287,16 @@ public class ContainerProjectCreationWizard extends AbstractWSO2ProjectCreationW
 
             String repository;
             String tag;
-            if (dockerModel.isContainerExporterProjectChecked() && dockerModel.isDockerContainerSelected()) {
+            String spotifyPluginConfig;
+            
+            if (dockerModel.isDockerExporterProjectChecked()) {
                 repository = dockerModel.getDockerTargetRepository();
                 tag = dockerModel.getDockerTargetTag();
-            } else {
-                repository = dockerModel.getKubeTargetRepository();
-                tag = dockerModel.getKubeTargetTag();
-            }
-
-            String spotifyPluginConfig;
-            if (dockerModel.isContainerExporterProjectChecked() && dockerModel.isDockerContainerSelected()) {
                 spotifyPluginConfig = "<configuration>\n" + "<repository>" + repository + "</repository>\n" + "<tag>"
                         + tag + "</tag>\n" + "</configuration>";
             } else {
+                repository = dockerModel.getKubeTargetRepository();
+                tag = dockerModel.getKubeTargetTag();
                 spotifyPluginConfig = "<configuration>\n" + "<username>${username}</username>\n"
                         + "<password>${password}</password>\n" + "<repository>" + repository + "</repository>\n"
                         + "<tag>" + tag + "</tag>\n" + "</configuration>";

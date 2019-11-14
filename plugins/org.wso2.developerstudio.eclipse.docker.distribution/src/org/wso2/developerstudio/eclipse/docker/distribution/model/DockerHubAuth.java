@@ -21,7 +21,6 @@ public class DockerHubAuth {
     private boolean isKubernetesProject = false;
     private boolean isDockerRegistry = true;
     private String remoteRegistryURL;
-    private String authEmail;
     private String authUsername;
     private String authPassword;
 
@@ -32,15 +31,7 @@ public class DockerHubAuth {
     public void setKubernetesProject(boolean isKubernetesProject) {
         this.isKubernetesProject = isKubernetesProject;
     }
-
-    public String getAuthEmail() {
-        return authEmail;
-    }
-
-    public void setAuthEmail(String authEmail) {
-        this.authEmail = authEmail;
-    }
-
+    
     public String getAuthUsername() {
         return authUsername;
     }

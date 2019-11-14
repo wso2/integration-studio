@@ -101,7 +101,8 @@ var serverWizard = 'org.eclipse.wst.server.ui.new.server';
 var registryWizard = 'org.wso2.developerstudio.eclipse.general.project';
 var configWizard = 'org.wso2.developerstudio.eclipse.artifact.newesbproject';
 var mediatorWizard = 'org.wso2.developerstudio.eclipse.artifact.newmediatorartifact';
-var containerWizard = 'org.wso2.developerstudio.eclipse.artifact.newdockerproject';
+var dockerWizard = 'org.wso2.developerstudio.eclipse.artifact.newdockerproject';
+var kubernetesWizard = 'org.wso2.developerstudio.eclipse.artifact.newkubernetesproject';
 
 $("#CompositeApplicationProject").click(function(){
 	openWizard(cappWizard);
@@ -127,8 +128,12 @@ $("#MediatorProject").click(function(){
 	openWizard(mediatorWizard);
 });
 
-$("#ContainerProject").click(function(){
-	openWizard(containerWizard);
+$("#DockerProject").click(function(){
+	openWizard(dockerWizard);
+});
+
+$("#KubernetesProject").click(function(){
+	openWizard(kubernetesWizard);
 });
 
 /*if((GetWizardDescription(mavenWizard) != null)){

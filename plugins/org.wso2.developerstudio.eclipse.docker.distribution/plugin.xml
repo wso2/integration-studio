@@ -5,30 +5,54 @@
          point="org.eclipse.ui.newWizards">
          <wizard
                category="org.wso2.developerstudio.eclipse.capp.distribution"
-               class="org.wso2.developerstudio.eclipse.docker.distribution.ui.wizard.ContainerProjectCreationWizard"
+               class="org.wso2.developerstudio.eclipse.docker.distribution.ui.wizard.DockerProjectCreationWizard"
                icon="icons/car.png"
                id="org.wso2.developerstudio.eclipse.artifact.newdockerproject"
-               name="Docker/Kubernetes Project"
-               project="true"
-               wizardManifest="project_wizard.xml">
+               name="Docker Exporter Project"
+               project="true">
 			<description>Docker Project</description>
 		</wizard>
    </extension>
+      <extension
+         point="org.eclipse.ui.newWizards">
+         <wizard
+               category="org.wso2.developerstudio.eclipse.capp.distribution"
+               class="org.wso2.developerstudio.eclipse.docker.distribution.ui.wizard.KubernetesProjectCreationWizard"
+               icon="icons/car.png"
+               id="org.wso2.developerstudio.eclipse.artifact.newkubernetesproject"
+               name="Kubernetes Exporter Project"
+               project="true">
+			<description>Kubernetes Project</description>
+		</wizard>
+   </extension>
  
+   <!-- Docker project nature -->
    <extension point="org.eclipse.core.resources.natures"
 		id="org.wso2.developerstudio.eclipse.docker.distribution.project.nature" name="Docker Project Nature">
 		<runtime>
-			<run
-				class="org.wso2.developerstudio.eclipse.docker.distribution.project.export.DockerProjectNature">
-			</run>
+			<run class="org.wso2.developerstudio.eclipse.docker.distribution.project.export.DockerProjectNature"/>
 		</runtime>
 	</extension>
+	
 	<extension point="org.eclipse.ui.ide.projectNatureImages">
-		<image id="org.wso2.developerstudio.eclipse.docker.project.natureImage"
-			natureId="org.wso2.developerstudio.eclipse.docker.distribution.project.nature" icon="icons/car.png">
-		</image>
+		<image id="org.wso2.developerstudio.eclipse.docker.project.natureImage" 
+		natureId="org.wso2.developerstudio.eclipse.docker.distribution.project.nature" icon="icons/car.png" />
 	</extension>
 	
+	<!-- Kubernetes project nature -->
+    <extension point="org.eclipse.core.resources.natures"
+		id="org.wso2.developerstudio.eclipse.kubernetes.distribution.project.nature" name="Kubernetes Project Nature">
+		<runtime>
+			<run class="org.wso2.developerstudio.eclipse.docker.distribution.project.export.KubernetesProjectNature" />
+		</runtime>
+	</extension>
+	
+	<extension point="org.eclipse.ui.ide.projectNatureImages">
+		<image id="org.wso2.developerstudio.eclipse.kubernetes.project.natureImage" 
+		natureId="org.wso2.developerstudio.eclipse.kubernetes.distribution.project.nature" icon="icons/car.png" />
+	</extension>
+	
+	<!-- Projects file opening editors -->
 	 <extension
          point="org.eclipse.ui.editors">
       <editor
@@ -36,12 +60,12 @@
             id="org.wso2.developerstudio.eclipse.docker.distribution.editor.DistProjectEditor"
             extensions="xml"
             default="false"
-            name="Docker Project POM Editor">
+            name="Docker/K8S Project POM Editor">
             <contentTypeBinding
 				contentTypeId="org.wso2.developerstudio.eclipse.docker.distribution.project.contenttype.pom">
 			</contentTypeBinding>
       </editor>
-          <editor
+      <editor
             class="org.eclipse.ui.editors.text.TextEditor"
             id="org.wso2.developerstudio.eclipse.docker.distribution.editor.DockerFileEditor"
             default="false"
@@ -79,7 +103,7 @@
 		</content-type>
 		<content-type base-type="org.eclipse.core.runtime.text"
 			id="org.wso2.developerstudio.eclipse.docker.distribution.project.contenttype.yamlfile"
-			name="Yaml File" priority="normal" file-extensions="Kubernetes_CRD.yaml">
+			name="Yaml File" priority="normal" file-extensions="integration_cr.yaml">
 			<describer
 				class="org.wso2.developerstudio.eclipse.docker.distribution.utils.DockerPOMDiscriber">
 			</describer>
@@ -111,9 +135,9 @@
 	
 	<extension point="org.eclipse.ui.popupMenus">
         <objectContribution objectClass="org.eclipse.core.resources.IProject" 
-        id="org.wso2.developerstudio.eclipse.docker.distribution.exportandgeneratedocker">
+        	id="org.wso2.developerstudio.eclipse.docker.distribution.exportandgeneratedocker">
             <action
-                label="Generate Docker Image"
+                label="Build Docker Image"
                 icon="icons/docker.png"
                 class="org.wso2.developerstudio.eclipse.docker.distribution.action.DockerRunMavenAction"
                 id="org.wso2.developerstudio.eclipse.docker.distribution.exportandgeneratedocker">
@@ -122,6 +146,24 @@
                 <adapt type="org.eclipse.core.resources.IProject">
                     <test property="org.eclipse.core.resources.projectNature" 
                     value="org.wso2.developerstudio.eclipse.docker.distribution.project.nature" />
+                </adapt>
+            </enablement>
+        </objectContribution>
+    </extension>
+    
+    <extension point="org.eclipse.ui.popupMenus">
+        <objectContribution objectClass="org.eclipse.core.resources.IProject" 
+        	id="org.wso2.developerstudio.eclipse.docker.distribution.exportbuildandgeneratedocker">
+            <action
+                label="Build and Push Docker Image"
+                icon="icons/docker.png"
+                class="org.wso2.developerstudio.eclipse.docker.distribution.action.DockerRunMavenAction"
+                id="org.wso2.developerstudio.eclipse.docker.distribution.exportbuildandgeneratedocker">
+            </action>
+            <enablement>
+                <adapt type="org.eclipse.core.resources.IProject">
+                    <test property="org.eclipse.core.resources.projectNature" 
+                    value="org.wso2.developerstudio.eclipse.kubernetes.distribution.project.nature" />
                 </adapt>
             </enablement>
         </objectContribution>

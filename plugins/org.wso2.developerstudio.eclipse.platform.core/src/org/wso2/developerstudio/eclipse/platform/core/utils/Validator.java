@@ -22,7 +22,11 @@ import java.security.KeyStore;
 import java.security.Principal;
 import java.security.cert.X509Certificate;
 import java.util.Enumeration;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.core.Activator;
@@ -80,4 +84,41 @@ public class Validator {
 		}
 		return trusted;
 	}
+	
+	/**
+     * Validate the project name of the Docker project.
+     * 
+     * @param projectName name of the project
+     * @return invalidReason as a string
+     */
+	public static String validateProjectName(String projectName) {
+	    String invalidReason = null;
+        if (projectName == null) {
+            invalidReason = "Project name cannot be null";
+        } else if (projectName.trim().equals("")) {
+            invalidReason = "Project name cannot be empty";
+        } else if (projectName.indexOf(32) != -1) {
+            invalidReason = "Project name cannot contain spaces";
+        } else if (!isValidArtifactName(projectName)) {
+            invalidReason =  "Project name cannot contain invalid characters(^/ : ; * # $ ? \" <> + $)";
+        } else {
+            IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
+            if (project.exists()) {
+                invalidReason = "Project with the name '" + projectName + "' already exists";
+            }
+        }
+        return invalidReason;
+    }
+    
+    /**
+     * Check the name is a valid artifact or not.
+     * 
+     * @param name name of the project
+     * @return isValid or not
+     */
+	public static boolean isValidArtifactName(String name) {
+        Pattern pattern = Pattern.compile("^[^/\\ \\\\:@%\\^+;,=\\[\\{\\]\\}*#\\$?\"<>|\\(\\)]+$");
+        Matcher matcher = pattern.matcher(name);
+        return matcher.matches();
+    }
 }

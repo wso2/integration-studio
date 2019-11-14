@@ -44,8 +44,9 @@ public abstract class ProjectDataModel extends Observable {
 	private String selectedOption;
 	private String groupId = "com.example";
 	private boolean isUserSet;
-	private boolean isContainerExporterProjectChecked = false;
-	private boolean isDockerContainerSelected = false;
+	private boolean isDockerExporterProjectChecked = false;
+	private boolean isKubernetesExporterProjectChecked = false;
+	private boolean isDirectContainerProjectCreation = false;
 	private String dockerRemoteRepository;
 	private String dockerRemoteTag;
 	private String dockerTargetRepository;
@@ -56,15 +57,28 @@ public abstract class ProjectDataModel extends Observable {
 	private String kubeRemoteTag;
 	private String kubeTargetRepository;
 	private String kubeTargetTag;
-	private String kubeExposePort;
-	private Map<String, String> customParameters = new HashMap<String, String>();
+	private Map<String, String> dockerEnvParameters = new HashMap<String, String>();
+	private Map<String, String> kubernetesEnvParameters = new HashMap<String, String>();
+	private Map<String, String> kubernetesPortParameters = new HashMap<String, String>();
 
-	public Map<String, String> getCustomParameters() {
-		return customParameters;
+	public boolean isDirectContainerProjectCreation() {
+		return isDirectContainerProjectCreation;
 	}
 
-	public boolean isDockerContainerSelected() {
-		return isDockerContainerSelected;
+	public void setDirectContainerProjectCreation(boolean isDirectContainerProjectCreation) {
+		this.isDirectContainerProjectCreation = isDirectContainerProjectCreation;
+	}
+
+	public Map<String, String> getKubernetesEnvParameters() {
+		return kubernetesEnvParameters;
+	}
+
+	public Map<String, String> getKubernetesPortParameters() {
+		return kubernetesPortParameters;
+	}
+
+	public Map<String, String> getDockerEnvParameters() {
+		return dockerEnvParameters;
 	}
 
 	public String getKubeRemoteTag() {
@@ -91,10 +105,6 @@ public abstract class ProjectDataModel extends Observable {
 		this.kubeTargetTag = kubeTargetTag;
 	}
 
-	public void setDockerContainerSelected(boolean isDockerContainerSelected) {
-		this.isDockerContainerSelected = isDockerContainerSelected;
-	}
-
 	public String getKubeContainerName() {
 		return kubeContainerName;
 	}
@@ -117,14 +127,6 @@ public abstract class ProjectDataModel extends Observable {
 
 	public void setKubeRemoteRepository(String kubeRemoteRepository) {
 		this.kubeRemoteRepository = kubeRemoteRepository;
-	}
-
-	public String getKubeExposePort() {
-		return kubeExposePort;
-	}
-
-	public void setKubeExposePort(String kubeExposePort) {
-		this.kubeExposePort = kubeExposePort;
 	}
 
 	public String getDockerRemoteRepository() {
@@ -159,13 +161,22 @@ public abstract class ProjectDataModel extends Observable {
 	    this.dockerTargetTag = dockerTargetTag;
 	}
 
-	public boolean isContainerExporterProjectChecked() {
-		return isContainerExporterProjectChecked;
+	public boolean isDockerExporterProjectChecked() {
+		return isDockerExporterProjectChecked;
 	}
 
-	public void setContainerExporterProjectChecked(boolean containerExporterProjectChecked)
+	public boolean isKubernetesExporterProjectChecked() {
+		return isKubernetesExporterProjectChecked;
+	}
+
+	public void setDockerExporterProjectChecked(boolean dockerExporterProjectChecked) throws ObserverFailedException {
+		this.isDockerExporterProjectChecked = dockerExporterProjectChecked;
+		trigger();
+	}
+
+	public void setKubernetesExporterProjectChecked(boolean kubernetesExporterProjectChecked)
 			throws ObserverFailedException {
-		this.isContainerExporterProjectChecked = containerExporterProjectChecked;
+		this.isKubernetesExporterProjectChecked = kubernetesExporterProjectChecked;
 		trigger();
 	}
 

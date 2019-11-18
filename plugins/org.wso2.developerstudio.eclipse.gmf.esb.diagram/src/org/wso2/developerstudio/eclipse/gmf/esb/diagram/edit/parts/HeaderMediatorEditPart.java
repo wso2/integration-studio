@@ -410,7 +410,7 @@ public class HeaderMediatorEditPart extends FixedSizedAbstractMediator {
 					if (headerMediatorDataModel.getHeaderName().getPropertyValue().equals("")) {
 						hasError = true;
 					}
-					if (headerMediatorDataModel.getHeaderAction() == HeaderAction.SET
+					if (!hasError && headerMediatorDataModel.getHeaderAction() == HeaderAction.SET
 							&& headerMediatorDataModel.getValueType() == HeaderValueType.EXPRESSION) {
 						if (headerMediatorDataModel.getValueExpression().getPropertyValue().equals("")) {
 							hasError = true;

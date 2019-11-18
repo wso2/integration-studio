@@ -410,14 +410,14 @@ public class ScriptMediatorEditPart extends FixedSizedAbstractMediator {
 				ScriptMediatorImpl scriptMediatorDataModel = (ScriptMediatorImpl) model.getElement();
 				boolean hasError = false;
 				try {
-					if(scriptMediatorDataModel.getScriptType() == ScriptType.REGISTRY_REFERENCE) {
-						if(scriptMediatorDataModel.getKeyType() == scriptKeyTypeEnum.DYNAMIC_KEY) {
-							if(scriptMediatorDataModel.getScriptDynamicKey().getPropertyValue().equals("")) {
+					if (scriptMediatorDataModel.getScriptType() == ScriptType.REGISTRY_REFERENCE) {
+						if (scriptMediatorDataModel.getKeyType() == scriptKeyTypeEnum.DYNAMIC_KEY) {
+							if (scriptMediatorDataModel.getScriptDynamicKey().getPropertyValue().equals("")) {
 								hasError = true;
 							}
 						}
-					}else if(scriptMediatorDataModel.getScriptType() == ScriptType.INLINE) {
-						if(scriptMediatorDataModel.getScriptBody() == null) {
+					} else if (scriptMediatorDataModel.getScriptType() == ScriptType.INLINE) {
+						if (scriptMediatorDataModel.getScriptBody() == null) {
 							hasError = true;
 						}
 					}

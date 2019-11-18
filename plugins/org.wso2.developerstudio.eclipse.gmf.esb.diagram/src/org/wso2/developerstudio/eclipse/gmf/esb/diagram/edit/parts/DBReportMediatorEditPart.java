@@ -412,7 +412,7 @@ public class DBReportMediatorEditPart extends FixedSizedAbstractMediator {
 								|| dbReportMediatorDataModel.getConnectionDsName().equals("")) {
 							hasError = true;
 						}
-						if (dbReportMediatorDataModel.getConnectionDsType() == SqlExecutorDatasourceType.EXTERNAL) {
+						if (!hasError && (dbReportMediatorDataModel.getConnectionDsType() == SqlExecutorDatasourceType.EXTERNAL)) {
 							if (dbReportMediatorDataModel.getConnectionDsInitialContext() == null
 									|| dbReportMediatorDataModel.getConnectionDsInitialContext().equals("")) {
 								hasError = true;

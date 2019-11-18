@@ -408,12 +408,12 @@ public class OAuthMediatorEditPart extends FixedSizedAbstractMediator {
                             || oauthMediatorDataModel.getRemoteServiceUrl().isEmpty()) {
                         hasError = true;
                     }
-                    if (oauthMediatorDataModel.getUsername() == null
-                            || oauthMediatorDataModel.getUsername().isEmpty()) {
+                    if (!hasError && (oauthMediatorDataModel.getUsername() == null
+                            || oauthMediatorDataModel.getUsername().isEmpty())) {
                         hasError = true;
                     }
-                    if (oauthMediatorDataModel.getPassword() == null
-                            || oauthMediatorDataModel.getPassword().isEmpty()) {
+                    if (!hasError && (oauthMediatorDataModel.getPassword() == null
+                            || oauthMediatorDataModel.getPassword().isEmpty())) {
                         hasError = true;
                     }
 

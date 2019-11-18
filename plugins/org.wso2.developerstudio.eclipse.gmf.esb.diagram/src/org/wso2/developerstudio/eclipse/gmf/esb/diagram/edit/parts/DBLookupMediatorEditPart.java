@@ -420,7 +420,7 @@ public class DBLookupMediatorEditPart extends FixedSizedAbstractMediator {
 								|| dbLookupMediatorDataModel.getConnectionDsName().equals("")) {
 							hasError = true;
 						}
-						if (dbLookupMediatorDataModel.getConnectionDsType() == SqlExecutorDatasourceType.EXTERNAL) {
+						if (!hasError && (dbLookupMediatorDataModel.getConnectionDsType() == SqlExecutorDatasourceType.EXTERNAL)) {
 							if (dbLookupMediatorDataModel.getConnectionDsInitialContext() == null
 									|| dbLookupMediatorDataModel.getConnectionDsInitialContext().equals("")) {
 								hasError = true;

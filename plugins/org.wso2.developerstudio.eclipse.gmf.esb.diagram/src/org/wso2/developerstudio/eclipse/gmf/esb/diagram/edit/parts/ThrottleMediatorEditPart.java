@@ -450,8 +450,8 @@ public class ThrottleMediatorEditPart extends MultipleCompartmentComplexFiguredA
 					if (throttleMediatorDataModel.getGroupId().isEmpty()) {
 						hasError = true;
 					}
-					if (throttleMediatorDataModel.getPolicyType()
-							.getValue() == ThrottlePolicyType.REGISTRY_REFERENCE_VALUE) {
+					if (!hasError && (throttleMediatorDataModel.getPolicyType()
+							.getValue() == ThrottlePolicyType.REGISTRY_REFERENCE_VALUE)) {
 						if (throttleMediatorDataModel.getPolicyKey().getKeyValue().isEmpty()) {
 							hasError = true;
 						}

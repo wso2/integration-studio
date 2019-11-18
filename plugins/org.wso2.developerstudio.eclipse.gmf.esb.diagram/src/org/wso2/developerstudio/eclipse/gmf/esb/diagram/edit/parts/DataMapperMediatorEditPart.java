@@ -33,6 +33,7 @@ import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.ToolbarLayout;
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gef.EditPart;
@@ -54,6 +55,7 @@ import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.runtime.notation.impl.NodeImpl;
 import org.eclipse.gmf.tooling.runtime.edit.policies.reparent.CreationEditPolicyWithCustomReparent;
+import org.eclipse.papyrus.infra.gmfdiag.css.CSSNodeImpl;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.graphics.Color;
@@ -75,6 +77,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.utils.CustomToolT
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.DataMapperMediatorCanonicalEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.DataMapperMediatorItemSemanticEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.validator.GraphicalValidatorUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.DataMapperMediatorImpl;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
@@ -640,5 +643,47 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
             log.error("Error occurred while switching to ESB perspective " + e.getMessage());
         }
     }
+
+    @Override
+    public void notifyChanged(Notification notification) {
+        // this.getModel() will get EMF datamodel of the enrich mediator datamodel
+        if (notification.getEventType() == Notification.SET && this.getModel() instanceof CSSNodeImpl) {
+            // The following part will check for validation issues with the current data in
+            // the model
+            CSSNodeImpl model = (CSSNodeImpl) this.getModel();
+            if (model.getElement() instanceof DataMapperMediatorImpl) {
+                DataMapperMediatorImpl dataMapperMediatorDataModel = (DataMapperMediatorImpl) model.getElement();
+                try {
+                    boolean isErroneous = false;
+                    String configLocalPath = dataMapperMediatorDataModel.getConfigurationLocalPath();
+                    if (configLocalPath == null || configLocalPath.equals("")) {
+                        isErroneous = true;
+                    }
+                    if (!isErroneous) {
+                        String inputSchemaLocalPath = dataMapperMediatorDataModel.getInputSchemaLocalPath();
+                        if (inputSchemaLocalPath == null || inputSchemaLocalPath.equals("")) {
+                            isErroneous = true;
+                        }
+                    }
+                    if (!isErroneous) {
+                        String outSchemaLocalPath = dataMapperMediatorDataModel.getOutputSchemaLocalPath();
+                        if (outSchemaLocalPath == null || outSchemaLocalPath.equals("")) {
+                            isErroneous = true;
+                        }
+                    }
+                    if (isErroneous) {
+                        GraphicalValidatorUtil.addValidationMark(this);
+                    } else {
+                        GraphicalValidatorUtil.removeValidationMark(this);
+                    }
+                } catch (Exception e) {
+                    // Skip error since it's a validation related minor issue
+                    log.error("Graphical validation error occured", e);
+                }
+            }
+        }
+        super.notifyChanged(notification);
+    }
+
 
 }

@@ -18,9 +18,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts;
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EditPartConstants.DEFAULT_PROPERTY_VALUE_TEXT;
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EditPartConstants.ENTITLEMENT_MEDIATOR_ICON_PATH;
 
-import org.apache.axiom.om.OMElement;
 import org.apache.commons.lang.StringUtils;
-import org.apache.synapse.SynapseException;
 import org.eclipse.draw2d.GridData;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.PositionConstants;
@@ -49,11 +47,8 @@ import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.papyrus.infra.gmfdiag.css.CSSNodeImpl;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
-import org.wso2.carbon.identity.entitlement.mediator.config.xml.EntitlementMediatorSerializer;
-import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EntitlementMediatorGraphicalShape;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedBorderItemLocator;
@@ -64,13 +59,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.utils.CustomToolT
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.EntitlementMediatorCanonicalEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.EntitlementMediatorItemSemanticEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.validator.GraphicalValidatorUtil;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.validator.MediatorValidationUtil;
-import org.wso2.developerstudio.eclipse.gmf.esb.impl.EntitlementMediatorImpl;
-import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.EntitlementMediatorTransformer;
-import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.EntitlementMediatorExt;
-import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
-import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
@@ -461,31 +449,6 @@ public class EntitlementMediatorEditPart extends MultipleCompartmentComplexFigur
 
     @Override
     public void notifyChanged(Notification notification) {
-        // this.getModel() will get EMF datamodel of the entitlement mediator datamodel
-//        if (this.getModel() instanceof CSSNodeImpl) {
-//            // The following part will check for validation issues with the current data in the model
-//            CSSNodeImpl model = (CSSNodeImpl) this.getModel();
-//            if (model.getElement() instanceof EntitlementMediatorImpl) {
-//                EntitlementMediatorImpl entitlementMediatorDataModel = (EntitlementMediatorImpl) model.getElement();
-//                try {
-//                    EntitlementMediatorExt entitlementMediator = EntitlementMediatorTransformer
-//                            .createEntitlementMediator(new TransformationInfo(),
-//                                    (EsbNode) entitlementMediatorDataModel);
-//                    EntitlementMediatorSerializer entitlementMediatorSerializer = new EntitlementMediatorSerializer();
-//                    OMElement omElement = entitlementMediatorSerializer.serializeSpecificMediator(entitlementMediator);
-//
-//                    if (StringUtils.isEmpty(
-//                            MediatorValidationUtil.validateMediatorsFromOEMElement(omElement, "entitlementService"))) {
-//                        GraphicalValidatorUtil.removeValidationMark(this);
-//                    } else {
-//                        GraphicalValidatorUtil.addValidationMark(this);
-//                    }
-//                } catch (TransformerException | SynapseException e) {
-//                    GraphicalValidatorUtil.addValidationMark(this);
-//                }
-//            }
-//        }
-// Commented since no validation is done at synapse level
         super.notifyChanged(notification);
     }
 

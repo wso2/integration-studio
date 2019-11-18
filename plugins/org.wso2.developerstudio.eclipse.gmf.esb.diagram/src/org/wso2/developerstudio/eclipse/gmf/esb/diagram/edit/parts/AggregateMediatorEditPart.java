@@ -72,6 +72,7 @@ import org.wso2.developerstudio.eclipse.logging.core.Logger;
  */
 public class AggregateMediatorEditPart extends SingleCompartmentComplexFiguredAbstractMediator {
 
+    private static final String JSON_XPATH_START = "json-eval(";
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
     public IFigure onCompleteOutputConnector;
 
@@ -429,23 +430,23 @@ public class AggregateMediatorEditPart extends SingleCompartmentComplexFiguredAb
 			CSSNodeImpl model = (CSSNodeImpl) this.getModel();
 			if (model.getElement() instanceof AggregateMediatorImpl) {
 				AggregateMediatorImpl aggregateMediatorDataModel = (AggregateMediatorImpl) model.getElement();
-				boolean isErrorneous = false;
+				boolean isErroneous = false;
 				try {
 					String xpathValue = aggregateMediatorDataModel.getAggregationExpression().getPropertyValue();
 					if (xpathValue.equals("")) {
-						isErrorneous = true;
+						isErroneous = true;
 					} else {
 						try {
-							if (xpathValue.startsWith("json-eval(")) {
+							if (xpathValue.startsWith(JSON_XPATH_START)) {
 								new SynapseJsonPath(xpathValue);
 							} else {
 								new SynapseXPath(xpathValue);
 							}
 						} catch (JaxenException e) {
-							isErrorneous = true;
+							isErroneous = true;
 						}
 					}
-					if (!isErrorneous) {
+					if (!isErroneous) {
 						String correlationXpathValue = aggregateMediatorDataModel.getCorrelationExpression()
 								.getPropertyValue();
 						if (!correlationXpathValue.equals("")) {
@@ -456,25 +457,45 @@ public class AggregateMediatorEditPart extends SingleCompartmentComplexFiguredAb
 									new SynapseXPath(correlationXpathValue);
 								}
 							} catch (JaxenException e) {
-								isErrorneous = true;
+								isErroneous = true;
 							}
 						}
 					}
-					if (aggregateMediatorDataModel
-							.getCompletionMinMessagesType() == CompletionMessagesType.EXPRESSION) {
-						if (aggregateMediatorDataModel.getCompletionMinMessagesExpression().getPropertyValue()
-								.equals("")) {
-							isErrorneous = true;
+					if (!isErroneous && (aggregateMediatorDataModel
+							.getCompletionMinMessagesType() == CompletionMessagesType.EXPRESSION)) {
+						String minExpressionValue = aggregateMediatorDataModel.getCompletionMinMessagesExpression().getPropertyValue();
+						if (minExpressionValue.equals("")) {
+							isErroneous = true;
+						} else {
+							try {
+								if (minExpressionValue.startsWith(JSON_XPATH_START)) {
+									new SynapseJsonPath(minExpressionValue);
+								} else {
+									new SynapseXPath(minExpressionValue);
+								}
+							} catch (JaxenException e) {
+								isErroneous = true;
+							}
 						}
 					}
-					if (aggregateMediatorDataModel
-							.getCompletionMaxMessagesType() == CompletionMessagesType.EXPRESSION) {
-						if (aggregateMediatorDataModel.getCompletionMaxMessagesExpression().getPropertyValue()
-								.equals("")) {
-							isErrorneous = true;
+					if (!isErroneous && (aggregateMediatorDataModel
+							.getCompletionMaxMessagesType() == CompletionMessagesType.EXPRESSION)) {
+						String maxExpressionValue = aggregateMediatorDataModel.getCompletionMaxMessagesExpression().getPropertyValue();
+						if (maxExpressionValue.equals("")) {
+							isErroneous = true;
+						} else {
+							try {
+								if (maxExpressionValue.startsWith(JSON_XPATH_START)) {
+									new SynapseJsonPath(maxExpressionValue);
+								} else {
+									new SynapseXPath(maxExpressionValue);
+								}
+							} catch (JaxenException e) {
+								isErroneous = true;
+							}
 						}
 					}
-					if (isErrorneous) {
+					if (isErroneous) {
 						GraphicalValidatorUtil.addValidationMark(this);
 					} else {
 						GraphicalValidatorUtil.removeValidationMark(this);

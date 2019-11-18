@@ -419,13 +419,15 @@ public class EnrichMediatorEditPart extends FixedSizedAbstractMediator {
 						}
 					}
 					// Validate Target Properties
-					if (enrichMediatorDataModel.getTargetType() == EnrichTargetType.CUSTOM) {
-						if (enrichMediatorDataModel.getTargetXpath().getPropertyValue().equals("")) {
-							hasError = true;
-						}
-					} else if (enrichMediatorDataModel.getTargetType() == EnrichTargetType.PROPERTY) {
-						if (enrichMediatorDataModel.getTargetProperty().equals("")) {
-							hasError = true;
+					if (!hasError) {
+ 						if (enrichMediatorDataModel.getTargetType() == EnrichTargetType.CUSTOM) {
+							if (enrichMediatorDataModel.getTargetXpath().getPropertyValue().equals("")) {
+								hasError = true;
+							}
+						} else if (enrichMediatorDataModel.getTargetType() == EnrichTargetType.PROPERTY) {
+							if (enrichMediatorDataModel.getTargetProperty().equals("")) {
+								hasError = true;
+							}
 						}
 					}
 

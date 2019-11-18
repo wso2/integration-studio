@@ -18,9 +18,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts;
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EditPartConstants.DEFAULT_PROPERTY_VALUE_TEXT;
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EditPartConstants.EVENT_MEDIATOR_ICON_PATH;
 
-import org.apache.axiom.om.OMElement;
 import org.apache.commons.lang.StringUtils;
-import org.apache.synapse.SynapseException;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.Shape;
@@ -44,12 +42,8 @@ import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.papyrus.infra.gmfdiag.css.CSSNodeImpl;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
-import org.jaxen.JaxenException;
-import org.wso2.carbon.mediator.event.xml.EventMediatorSerializer;
-import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EsbGraphicalShapeWithLabel;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedBorderItemLocator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedSizedAbstractMediator;
@@ -59,11 +53,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.utils.CustomToolT
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.EventMediatorCanonicalEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.EventMediatorItemSemanticEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.validator.GraphicalValidatorUtil;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.validator.MediatorValidationUtil;
-import org.wso2.developerstudio.eclipse.gmf.esb.impl.EventMediatorImpl;
-import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.EventMediatorTransformer;
-import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 
 /**
  * @generated NOT
@@ -393,31 +382,6 @@ public class EventMediatorEditPart extends FixedSizedAbstractMediator {
     
     @Override
     public void notifyChanged(Notification notification) {
-        // this.getModel() will get EMF datamodel of the event mediator datamodel
-//        if (this.getModel() instanceof CSSNodeImpl) {
-//            // The following part will check for validation issues with the current data in the model
-//            CSSNodeImpl model = (CSSNodeImpl) this.getModel();
-//            if (model.getElement() instanceof EventMediatorImpl) {
-//                EventMediatorImpl eventMediatorDataModel = (EventMediatorImpl) model.getElement();
-//                try {
-//                    org.wso2.carbon.mediator.event.EventMediator eventMediator = EventMediatorTransformer
-//                            .createEventMediator(new TransformationInfo(), (EsbNode) eventMediatorDataModel);
-//
-//                    EventMediatorSerializer eventMediatorSerializer = new EventMediatorSerializer();
-//                    OMElement omElement = eventMediatorSerializer.serializeMediator(null, eventMediator);
-//
-//                    if (StringUtils
-//                            .isEmpty(MediatorValidationUtil.validateMediatorsFromOEMElement(omElement, "event"))) {
-//                        GraphicalValidatorUtil.removeValidationMark(this);
-//                    } else {
-//                        GraphicalValidatorUtil.addValidationMark(this);
-//                    }
-//                } catch (JaxenException | SynapseException e) {
-//                    GraphicalValidatorUtil.addValidationMark(this);
-//                }
-//            }
-//        }
-// Commented since no validation is done at synapse level
         super.notifyChanged(notification);
     }
 

@@ -356,7 +356,7 @@ public class EnqueueMediatorEditPart extends FixedSizedAbstractMediator {
                     if (enqueueMediatorDataModel.getExecutor().isEmpty()) {
                         hasError = true;
                     }
-                    if (enqueueMediatorDataModel.getSequenceKey().getKeyValue().isEmpty()) {
+                    if (!hasError && enqueueMediatorDataModel.getSequenceKey().getKeyValue().isEmpty()) {
                         hasError = true;
                     }
 

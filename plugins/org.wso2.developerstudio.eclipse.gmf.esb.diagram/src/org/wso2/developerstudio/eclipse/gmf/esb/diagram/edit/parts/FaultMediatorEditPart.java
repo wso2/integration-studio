@@ -425,7 +425,7 @@ public class FaultMediatorEditPart extends FixedSizedAbstractMediator {
                         }
                     }
 
-                    if (faultMediatorDataModel.getFaultReasonType() == FaultReasonType.EXPRESSION) {
+                    if (!hasError && faultMediatorDataModel.getFaultReasonType() == FaultReasonType.EXPRESSION) {
                         if (faultMediatorDataModel.getFaultReasonExpression().getPropertyValue().isEmpty()) {
                             hasError = true;
                         }

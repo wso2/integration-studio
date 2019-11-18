@@ -446,7 +446,7 @@ public class IterateMediatorEditPart extends SingleCompartmentComplexFiguredAbst
 					if (iterateMediatorDataModel.getIterateExpression().getPropertyValue().equals("")) {
 						hasError = true;
 					}
-					if (iterateMediatorDataModel.isPreservePayload()) {
+					if (!hasError && iterateMediatorDataModel.isPreservePayload()) {
 						if (iterateMediatorDataModel.getAttachPath().getPropertyValue().equals("")) {
 							hasError = true;
 						}

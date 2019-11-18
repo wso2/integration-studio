@@ -104,7 +104,6 @@ public class XSLTMediatorExtFactory extends XSLTMediatorFactory {
         ((XSLTMediator) mediator).addAllProperties(MediatorPropertyFactory.getMediatorProperties(omElement));
 
         ((XSLTMediator) mediator).setResourceMap(ResourceMapFactory.createResourceMap(omElement));
-        
         addAllCommentChildrenToList(omElement, mediator.getCommentsList());
 
         return mediator;

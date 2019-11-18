@@ -158,7 +158,6 @@ public class XQueryMediatorExtFactory extends XQueryMediatorFactory {
                 }
             }
         }
-        
         addAllCommentChildrenToList(omElement, ((XQueryMediator) mediator).getCommentsList());
 
         return mediator;

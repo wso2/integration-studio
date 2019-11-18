@@ -72,7 +72,6 @@ public class SequenceMediatorExtFactory extends SequenceMediatorFactory {
 
             }
         }
-        
         addAllCommentChildrenToList(omElement, ((SequenceMediator) mediator).getCommentsList());
 
         return mediator;

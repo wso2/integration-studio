@@ -54,7 +54,6 @@ public class CallTemplateMediatorExtFactory extends InvokeMediatorFactory {
             ((InvokeMediator) mediator).setTargetTemplate(targetTemplateAttr.getAttributeValue());
             buildParameters(omElement, (InvokeMediator) mediator);
         }
-        
         addAllCommentChildrenToList(omElement, mediator.getCommentsList());
 
         return mediator;

@@ -53,7 +53,6 @@ public class BuilderMediatorExtSerializer extends AbstractMediatorSerializer {
                 builder.addChild(omMessageBuilder);
             }
         }
-        
         serializeComments(builder, builderMediatorExt.getCommentsList());
 
         return builder;

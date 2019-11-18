@@ -167,7 +167,6 @@ public class SendMediatorExtFactory extends SendMediatorFactory {
         if ("true".equals(buildMessage)) {
             ((SendMediator) mediator).setBuildMessage(true);
         }
-        
         addAllCommentChildrenToList(omElement, ((SendMediator) mediator).getCommentsList());
 
         return mediator;

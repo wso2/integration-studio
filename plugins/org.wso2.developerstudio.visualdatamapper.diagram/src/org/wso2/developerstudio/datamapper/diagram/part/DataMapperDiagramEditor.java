@@ -634,7 +634,7 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
                 }
             }
         } catch (ParseException | IOException e) {
-            log.error("Failed to compare schema!");
+            log.error("Failed to compare the new schema with the previous schema to identify changes!", e);
         }
         return false;
     }

@@ -1,0 +1,12 @@
+.modal-dialog {
+  overflow-y: initial !important;
+  /*overflow-x: initial !important;*/
+  max-width: 800px !important;
+}
+
+.modal-body {
+  height: 70vh;
+  overflow-y: auto;
+  overflow-x: auto;
+}
+

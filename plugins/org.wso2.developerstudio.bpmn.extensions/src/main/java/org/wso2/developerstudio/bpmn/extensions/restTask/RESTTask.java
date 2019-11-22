@@ -117,4 +117,21 @@ public class RESTTask extends AbstractCustomServiceTask {
     @Help(displayHelpShort = RESTConstants.HEADERS_HELP, displayHelpLong = RESTConstants.HEADERS_HELP_LONG)
     private String headers;
 
+    /**
+     * @See RESTConstants.HTTP_STATUS_VARIABLE_LONG
+     */
+    @Property(type = PropertyType.TEXT, displayName = RESTConstants.HTTP_STATUS_VARIABLE_LABEL, required = false)
+    @Help(displayHelpShort = RESTConstants.HTTP_STATUS_VARIABLE_HELP,
+            displayHelpLong = RESTConstants.HTTP_STATUS_VARIABLE_LONG)
+    private String httpStatusVariable;
+
+    /**
+     * @See RESTConstants.ERROR_MESSAGE_VARIABLE_LONG
+     */
+    @Property(type = PropertyType.TEXT, displayName = RESTConstants.ERROR_MESSAGE_VARIABLE_LABEL, required = false)
+    @Help(displayHelpShort = RESTConstants.ERROR_MESSAGE_VARIABLE_HELP,
+            displayHelpLong = RESTConstants.ERROR_MESSAGE_VARIABLE_LONG)
+    private String errorMessageVariable;
+
+
 }

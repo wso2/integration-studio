@@ -94,4 +94,14 @@ public interface RESTConstants {
     public static final String HEADERS_HELP_LONG = "Additional headers. Supports expressions and fixed values.\n" +
             "\n\r The headers should be given in the format : headerName1:headerValue1, headerName2:headerValue2." +
             "\n\r Eg: Content-Type:application/json,Accept:application/json ";
+
+    public static final String HTTP_STATUS_VARIABLE_LABEL = "HTTP Status Variable";
+    public static final String HTTP_STATUS_VARIABLE_HELP = "HTTP Status Variable";
+    public static final String HTTP_STATUS_VARIABLE_LONG = "HTTP Status variable which saves the HTTP status of the "
+            + "response of the rest call";
+
+    public static final String ERROR_MESSAGE_VARIABLE_LABEL = "Error message Variable";
+    public static final String ERROR_MESSAGE_VARIABLE_HELP = "Error message Variable";
+    public static final String ERROR_MESSAGE_VARIABLE_LONG = "Error message variable which saves the error message "
+            + "of the rest call if there is any";
 }

@@ -19,11 +19,9 @@
 package org.wso2.developerstudio.eclipse.docker.distribution.action;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.nio.file.Paths;
 import java.util.List;
-import java.util.Properties;
+import java.util.Locale;
 
 import org.apache.commons.io.FileUtils;
 import org.eclipse.core.resources.IFile;
@@ -125,14 +123,13 @@ public class DockerRunMavenAction implements IActionDelegate {
                 targetRepository = reposirotyTags[1] + DockerProjectConstants.REPOSITORY_SEPERATOR + reposirotyTags[2];
             }
 
-            if (!configuration.isDockerRegistry()) {
+            if (configuration != null && !configuration.isDockerRegistry()) {
                 targetRepository = configuration.getRemoteRegistryURL() + DockerProjectConstants.REPOSITORY_SEPERATOR + targetRepository;
             }
 
             DockerBuildActionUtil.changeDockerImageDataInPOMPlugin(pomFile, targetRepository);
-            DockerBuildActionUtil.runDockerBuildWithMavenProfile(project, DockerBuildActionUtil.MAVEN_BUILD_GOAL,
-                    configuration);
-
+			DockerBuildActionUtil.runDockerBuildWithMavenProfile(project, DockerBuildActionUtil.MAVEN_BUILD_GOAL,
+					configuration);
         } catch (CoreException e) {
             log.error("CoreException in while executing the docker build process", e);
         }

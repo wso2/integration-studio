@@ -218,7 +218,7 @@ public class DockerBuildActionUtil {
                 DebugPlugin.getDefault().getLaunchManager().generateLaunchConfigurationName(MAVEN_DOCKER_BUILD));
 
         // set maven properties for the created launcher
-        String containerMavenBuildGoal = mavenGoal + " -DconfigurationTemplatePath=" + getToolingTemplateaPath();
+        String containerMavenBuildGoal = mavenGoal;
         mavenTestLaunchConfig.setAttribute(MAVEN_GOAL_KEY, containerMavenBuildGoal);
         mavenTestLaunchConfig.setAttribute(MAVEN_WORKING_DIR_KEY, "${workspace_loc:/" + project.getName() + "}");
         String javaHomePath = getJavaHomePath();
@@ -397,37 +397,6 @@ public class DockerBuildActionUtil {
         
         return repository;
     }
-    
-    /*
-     * Gets template folder path in tooling pack.
-     * 
-     * @return path for the template folder
-     */
-	private static String getToolingTemplateaPath() {
-		String microesbPath = "runtime" + File.separator + "microesb";
-		// static path for DeveloperStudio for MAC when it is on Application folder
-		String eiToolingHomeForMac = "/Applications/IntegrationStudio.app/Contents/Eclipse";
-		String templatePath = File.separator + "repository" + File.separator + "resources" + File.separator + "conf";
-
-		String OS = System.getProperty("os.name", "generic").toLowerCase(Locale.ENGLISH);
-		String microInteratorPath;
-
-		if (OS.indexOf("windows") >= 0) {
-			java.nio.file.Path path = Paths.get("");
-			microInteratorPath = (path).toAbsolutePath().toString() + File.separator + microesbPath + templatePath;
-		} else {
-			// check if EI Tooling is in Application folder for MAC
-			File macOSEIToolingAppFile = new File(eiToolingHomeForMac);
-			if (macOSEIToolingAppFile.exists()) {
-				microInteratorPath = eiToolingHomeForMac + File.separator + microesbPath + templatePath;
-			} else {
-				java.nio.file.Path path = Paths.get("");
-				microInteratorPath = (path).toAbsolutePath().toString() + File.separator + microesbPath + templatePath;
-			}
-		}
-
-		return microInteratorPath;
-	}
 
     /**
      * Method for generating UI pop up box with cutom messages.

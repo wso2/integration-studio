@@ -48,9 +48,10 @@ public class DockerPOMDiscriber extends XMLContentDescriber {
 					IProject project = ((File) firstElement).getProject();
 					String[] natureIDs = project.getDescription().getNatureIds();
 					for (String natureID : natureIDs) {
-						if (natureID.equals(DockerProjectConstants.DOCKER_NATURE)) {
+						if (natureID.equals(DockerProjectConstants.DOCKER_NATURE)
+								|| natureID.equals(DockerProjectConstants.KUBERNETES_NATURE)) {
 							return VALID;
-						}
+						} 
 					}
 				}
 			}

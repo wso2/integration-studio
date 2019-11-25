@@ -41,7 +41,7 @@ import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.ui.editor.Refreshable;
 
 public class DistProjectEditor extends FormEditor implements Refreshable {
-	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+	private static final IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	private DistProjectEditorPage distProjectEditorPage;
 	private StructuredTextEditor sourceEditor;
 	private boolean dirty;

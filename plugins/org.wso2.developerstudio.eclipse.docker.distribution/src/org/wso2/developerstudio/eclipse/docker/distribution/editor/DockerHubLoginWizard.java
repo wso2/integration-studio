@@ -48,7 +48,6 @@ public class DockerHubLoginWizard extends Wizard implements IExportWizard {
 
     @Override
     public boolean performFinish() {
-        configuration.setAuthEmail(dockerHubDetailPage.getEmailValue());
         configuration.setAuthUsername(dockerHubDetailPage.getUsernameValue());
         configuration.setAuthPassword(dockerHubDetailPage.getPasswordValue());
         

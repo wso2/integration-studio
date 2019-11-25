@@ -52,7 +52,8 @@ public class DockerNavigatorActionProvider extends CommonActionProvider {
 				IFile file = (IFile) firstElement;
 
 				try {
-					if (file.getProject().getDescription().hasNature(DockerProjectConstants.DOCKER_NATURE)) {
+					if (file.getProject().getDescription().hasNature(DockerProjectConstants.DOCKER_NATURE)
+							|| file.getProject().getDescription().hasNature(DockerProjectConstants.KUBERNETES_NATURE)) {
 						openEditorAction.setSelection(file);
 						actionBars.setGlobalActionHandler(ICommonActionConstants.OPEN, openEditorAction);
 					}
@@ -71,7 +72,7 @@ public class DockerNavigatorActionProvider extends CommonActionProvider {
 	}
 
 	private static class OpenEditorAction extends Action {
-		
+
 		private IFile selection;
 
 		@Override
@@ -81,21 +82,22 @@ public class DockerNavigatorActionProvider extends CommonActionProvider {
 
 			IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
 			IWorkbenchPage page = window.getActivePage();
-			
+
             try {
                 if (selection.getWorkspace().getRoot().getFile(new Path(diagramFilePath)).exists()) {
                     fileTobeOpen = selection.getWorkspace().getRoot().getFile(new Path(diagramFilePath));
-                    if (fileTobeOpen.getName().equals(DockerProjectConstants.DOCKER_FILE_NAME)
-                            || fileTobeOpen.getName().equals(DockerProjectConstants.KUBE_YAML_FILE_NAME)) {
-                        page.openEditor(new FileEditorInput(fileTobeOpen), DockerProjectConstants.DOCKER_FILE_EDITOR);
-                    } else {
+					if (fileTobeOpen.getName().equals(DockerProjectConstants.DOCKER_FILE_NAME)
+							|| fileTobeOpen.getName().equals(DockerProjectConstants.KUBE_YAML_FILE_NAME)
+							|| fileTobeOpen.getName().equals(DockerProjectConstants.DEPLOYMENT_TOML_FILE_NAME)) {
+						page.openEditor(new FileEditorInput(fileTobeOpen), DockerProjectConstants.DOCKER_FILE_EDITOR);
+					} else {
                         page.openEditor(new FileEditorInput(fileTobeOpen), DockerProjectConstants.DOCKER_EDITOR);
                     }
                 }
             } catch (Exception e) {
                 log.error("Can't open " + fileTobeOpen, e);
             }
-		}
+        }
 
 		public void setSelection(IFile selection) {
 			this.selection = selection;

@@ -19,11 +19,9 @@
 package org.wso2.developerstudio.eclipse.docker.distribution.action;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.nio.file.Paths;
 import java.util.List;
-import java.util.Properties;
+import java.util.Locale;
 
 import org.apache.commons.io.FileUtils;
 import org.eclipse.core.resources.IFile;
@@ -75,7 +73,7 @@ public class DockerRunMavenAction implements IActionDelegate {
         }
 
         // check the project type is kubernetes, if yes open the credentials wizard
-        readPropertiesFile(project);
+        readContainerProjectNature(project);
         DockerHubAuth newConfiguration = null;
         if (getContainerType().equals(DockerProjectConstants.KUBERNETES_CONTAINER)) {
             newConfiguration = new DockerHubAuth();
@@ -84,11 +82,10 @@ public class DockerRunMavenAction implements IActionDelegate {
             wizard.init(PlatformUI.getWorkbench(), null);
             CustomWizardDialog headerWizardDialog = new CustomWizardDialog(window.getShell(), wizard);
             headerWizardDialog.setHelpAvailable(false);
-            headerWizardDialog.setPageSize(580, 260);
+            headerWizardDialog.setPageSize(580, 200);
             headerWizardDialog.open();
 
-            if (newConfiguration.getAuthEmail() == null
-                    || newConfiguration.getAuthUsername() == null && newConfiguration.getAuthPassword() == null) {
+            if (newConfiguration.getAuthUsername() == null && newConfiguration.getAuthPassword() == null) {
                 return;
             }
             newConfiguration.setKubernetesProject(true);
@@ -126,50 +123,31 @@ public class DockerRunMavenAction implements IActionDelegate {
                 targetRepository = reposirotyTags[1] + DockerProjectConstants.REPOSITORY_SEPERATOR + reposirotyTags[2];
             }
 
-            if (!configuration.isDockerRegistry()) {
+            if (configuration != null && !configuration.isDockerRegistry()) {
                 targetRepository = configuration.getRemoteRegistryURL() + DockerProjectConstants.REPOSITORY_SEPERATOR + targetRepository;
             }
 
             DockerBuildActionUtil.changeDockerImageDataInPOMPlugin(pomFile, targetRepository);
-            DockerBuildActionUtil.runDockerBuildWithMavenProfile(project, DockerBuildActionUtil.MAVEN_BUILD_GOAL,
-                    configuration);
-
+			DockerBuildActionUtil.runDockerBuildWithMavenProfile(project, DockerBuildActionUtil.MAVEN_BUILD_GOAL,
+					configuration);
         } catch (CoreException e) {
             log.error("CoreException in while executing the docker build process", e);
         }
     }
 
     /*
-     * Reads the config.properties file in the project root get the project type from it.
+     * Reads project nature of the project to get the project type.
      */
-    private void readPropertiesFile(IProject project) {
-        // read properties file and check the type of the container
-        IFile propertiesFile = project.getFile(DockerProjectConstants.KUBE_PROPERTIES_FILE_NAME);
-
-        String filePath = propertiesFile.getLocation().toOSString();
-        File propFile = new File(filePath);
-        if (propFile.exists()) {
-            try (InputStream input = new FileInputStream(filePath)) {
-                Properties prop = new Properties();
-                prop.load(input);
-
-                // get the property value and print it out
-                if (prop.getProperty(DockerProjectConstants.CONTAINER_TYPE_PARAM) != null
-                        && prop.getProperty(DockerProjectConstants.CONTAINER_TYPE_PARAM)
-                                .equals(DockerProjectConstants.KUBERNETES_CONTAINER)) {
-                    setContainerType(prop.getProperty(DockerProjectConstants.CONTAINER_TYPE_PARAM));
-                } else {
-                    setContainerType(DockerProjectConstants.DOCKER_CONTAINER);
-                }
-            } catch (IOException e) {
+    private void readContainerProjectNature(IProject project) {
+        try {
+            if (project.hasNature(DockerProjectConstants.KUBERNETES_NATURE)) {
+                setContainerType(DockerProjectConstants.KUBERNETES_CONTAINER);
+            } else {
                 setContainerType(DockerProjectConstants.DOCKER_CONTAINER);
-                log.error("Error in converting properties file to string ", e);
             }
-        } else {
-            setContainerType(DockerProjectConstants.DOCKER_CONTAINER);
+        } catch (CoreException e) {
+            log.error("CoreException while reading the project nature", e);
         }
-
-        propertiesFile.getProject();
     }
     
     /*

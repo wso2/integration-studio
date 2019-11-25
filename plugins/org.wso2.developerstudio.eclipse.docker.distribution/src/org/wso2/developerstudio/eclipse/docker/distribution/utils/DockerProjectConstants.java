@@ -16,6 +16,8 @@
 
 package org.wso2.developerstudio.eclipse.docker.distribution.utils;
 
+import java.io.File;
+
 import org.eclipse.osgi.util.NLS;
 
 public class DockerProjectConstants extends NLS {
@@ -36,15 +38,17 @@ public class DockerProjectConstants extends NLS {
 
     public static String EXTENTION_POINT_NAME;
     public static String DOCKER_NATURE;
+    public static String KUBERNETES_NATURE;
     public static String DOCKER_EDITOR;
     public static String DOCKER_FILE_EDITOR;
     public static String DOCKER_FILE_NAME;
     public static String KUBE_YAML_FILE_NAME;
+    public static String DEPLOYMENT_TOML_FILE_NAME;
     public static String KUBE_PROPERTIES_FILE_NAME;
 
     public static String CARBON_APP_FOLDER;
     public static String LIBS_FOLDER;
-    public static String CONF_FOLDER;
+    public static String CARBON_HOME_FOLDER;
     public static String CARBON_APP_FOLDER_LOCATION;
     public static String LIBS_FOLDER_LOCATION;
     public static String CONF_FOLDER_LOCATION;
@@ -82,6 +86,7 @@ public class DockerProjectConstants extends NLS {
     public static final String WINDOWS = "win";
     public static final String TARGET_REPOSITORY_XPATH = "/project/build/plugins/plugin/executions/execution/configuration/repository";
     public static final String TARGET_TAG_XPATH = "/project/build/plugins/plugin/executions/execution/configuration/tag";
+    public static final String DEPLOYMENT_TOML_FILE_PATH = "resources" + File.separator + "deployment.toml";
     
     public static String KUBERNETES_PROJECT_TYPE;
     public static String DOCKER_PROJECT_TYPE;

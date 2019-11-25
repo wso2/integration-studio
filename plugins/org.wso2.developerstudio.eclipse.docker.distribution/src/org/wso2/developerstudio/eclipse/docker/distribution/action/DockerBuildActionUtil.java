@@ -218,7 +218,8 @@ public class DockerBuildActionUtil {
                 DebugPlugin.getDefault().getLaunchManager().generateLaunchConfigurationName(MAVEN_DOCKER_BUILD));
 
         // set maven properties for the created launcher
-        mavenTestLaunchConfig.setAttribute(MAVEN_GOAL_KEY, mavenGoal);
+        String containerMavenBuildGoal = mavenGoal;
+        mavenTestLaunchConfig.setAttribute(MAVEN_GOAL_KEY, containerMavenBuildGoal);
         mavenTestLaunchConfig.setAttribute(MAVEN_WORKING_DIR_KEY, "${workspace_loc:/" + project.getName() + "}");
         String javaHomePath = getJavaHomePath();
         Map<String, String> environmentVariableMap = new HashMap<>();

@@ -23,6 +23,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
@@ -41,13 +44,16 @@ import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.IExecutableExtension;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.FileEditorInput;
+import org.osgi.framework.Bundle;
 import org.wso2.developerstudio.eclipse.distribution.project.util.ArtifactTypeMapping;
 import org.wso2.developerstudio.eclipse.docker.distribution.Activator;
 import org.wso2.developerstudio.eclipse.docker.distribution.model.DockerModel;
@@ -56,8 +62,10 @@ import org.wso2.developerstudio.eclipse.docker.distribution.utils.DockerProjectC
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
+import org.wso2.developerstudio.eclipse.platform.ui.utils.PlatformUIConstants;
 import org.wso2.developerstudio.eclipse.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
 import org.wso2.developerstudio.eclipse.platform.ui.wizard.pages.MavenDetailsPage;
+import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 import org.wso2.developerstudio.eclipse.utils.project.ProjectUtils;
 
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
@@ -103,7 +111,7 @@ public class ContainerProjectCreationWizard extends AbstractWSO2ProjectCreationW
             
             String remoteRepository;
             String remoteTag;
-            if (dockerModel.isContainerExporterProjectChecked() && dockerModel.isDockerContainerSelected()) {
+            if (dockerModel.isDockerExporterProjectChecked()) {
                 remoteRepository = dockerModel.getDockerRemoteRepository();
                 remoteTag = dockerModel.getDockerRemoteTag();
             } else {
@@ -127,9 +135,16 @@ public class ContainerProjectCreationWizard extends AbstractWSO2ProjectCreationW
             stringBuilder.append("#COPY " + DockerProjectConstants.LIBS_FOLDER + "/*.jar "
                     + DockerProjectConstants.LIBS_FOLDER_LOCATION);
             stringBuilder.append(System.lineSeparator());
-            stringBuilder.append("#COPY " + DockerProjectConstants.CONF_FOLDER + "/* "
-                    + DockerProjectConstants.CONF_FOLDER_LOCATION);
 
+            stringBuilder.append(System.lineSeparator());
+            if (dockerModel.isDockerExporterProjectChecked() && dockerModel.getDockerEnvParameters().size() > 0) {
+                stringBuilder.append("ENV ");
+                for (Map.Entry<String, String> envMap : dockerModel.getDockerEnvParameters().entrySet()) {
+                    stringBuilder.append(envMap.getKey() + "=" + envMap.getValue() + " ");
+                }
+                stringBuilder.append(System.lineSeparator());
+            }
+            
             if (newFile.createNewFile()) {
                 InputStream inputStream = new ByteArrayInputStream(
                         stringBuilder.toString().getBytes(Charset.forName("UTF-8")));
@@ -139,8 +154,33 @@ public class ContainerProjectCreationWizard extends AbstractWSO2ProjectCreationW
         }
     }
     
+	/**
+	 * Create new deployment.toml file in the project directory if not exists.
+	 * 
+	 * @throws IOException
+	 *             An error occurred while writing the file
+	 */
+	private void copyDeploymentTomlFile() throws IOException {
+		IFile tomlFile = project.getFile(DockerProjectConstants.DEPLOYMENT_TOML_FILE_NAME);
+		File newFile = new File(tomlFile.getLocationURI().getPath());
+		if (!newFile.exists()) {
+			try {
+				Bundle bundle = Platform.getBundle(Activator.PLUGIN_ID);
+				URL fileURL = bundle.getEntry(DockerProjectConstants.DEPLOYMENT_TOML_FILE_PATH);
+				File deploymentFile = null;
+
+				URL resolvedFileURL = FileLocator.toFileURL(fileURL);
+				URI resolvedURI = new URI(resolvedFileURL.getProtocol(), resolvedFileURL.getPath(), null);
+				deploymentFile = new File(resolvedURI);
+				FileUtils.copy(deploymentFile, newFile);
+			} catch (URISyntaxException e) {
+				log.error("An error occurred generating a deployment.toml file: ", e);
+			}
+		}
+	}
+    
     /**
-     * Create new kube crd yaml file in the project directory if not exists.
+     * Create new integration crd yaml file in the project directory if not exists.
      * 
      * @throws IOException
      *             An error occurred while writing the file
@@ -167,15 +207,27 @@ public class ContainerProjectCreationWizard extends AbstractWSO2ProjectCreationW
                 yamlGenerator.writeStartObject();
                 yamlGenerator.writeObjectField("replicas", Integer.parseInt(dockerModel.getKubeReplicsas()));
                 yamlGenerator.writeObjectField("image", imagePath);
-                yamlGenerator.writeObjectField("port", Integer.parseInt(dockerModel.getKubeExposePort()));
+                
+                // check whether there are Inbound Ports given by user and append to the yaml
+                // file
+                if (dockerModel.getKubernetesPortParameters().size() > 0) {
+                    yamlGenerator.writeFieldName("inboundPorts");
+                    yamlGenerator.writeStartArray();
+
+                    for (Map.Entry<String, String> envMap : dockerModel.getKubernetesPortParameters().entrySet()) {
+                        yamlGenerator.writeObject(Integer.parseInt(envMap.getKey()));
+                    }
+
+                    yamlGenerator.writeEndArray();
+                }
 
                 // check whether there are ENV variables given by user and append to the yaml
                 // file
-                if (dockerModel.getCustomParameters().size() > 0) {
+                if (dockerModel.getKubernetesEnvParameters().size() > 0) {
                     yamlGenerator.writeFieldName("env");
                     yamlGenerator.writeStartArray();
 
-                    for (Map.Entry<String, String> envMap : dockerModel.getCustomParameters().entrySet()) {
+                    for (Map.Entry<String, String> envMap : dockerModel.getKubernetesEnvParameters().entrySet()) {
                         yamlGenerator.writeStartObject();
                         yamlGenerator.writeObjectField("name", envMap.getKey());
                         yamlGenerator.writeObjectField("value", envMap.getValue());
@@ -193,66 +245,49 @@ public class ContainerProjectCreationWizard extends AbstractWSO2ProjectCreationW
         }
     }
 
-    /**
-     * Create new kube.properties file in the project directory if not exists.
-     * 
-     * @throws IOException
-     *             An error occurred while writing the file
-     */
-    private void copyKubePropertiesFile() throws IOException {
-        IFile dockerFile = project.getFile(DockerProjectConstants.KUBE_PROPERTIES_FILE_NAME);
-        File newFile = new File(dockerFile.getLocationURI().getPath());
-        if (!newFile.exists()) {
-            // Creating the new properties file
-            StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.append("containerType=kubernetes");
-
-            if (newFile.createNewFile()) {
-                InputStream inputStream = new ByteArrayInputStream(
-                        stringBuilder.toString().getBytes(Charset.forName("UTF-8")));
-                OutputStream outputStream = new FileOutputStream(newFile);
-                IOUtils.copy(inputStream, outputStream);
-            }
-        }
-    }
-
     public boolean performFinish() {
         try {
             // check docker project created via project wizard
             if (this.getModel().getSelectedOption() != null
                     && this.getModel().getSelectedOption().equals(DockerProjectConstants.DOCKER_PROJECT_TYPE)) {
-                dockerModel.setContainerExporterProjectChecked(true);
-                dockerModel.setDockerContainerSelected(true);
+                dockerModel.setDockerExporterProjectChecked(true);
             }
 
             // check kubernetes project created via project wizard
             if (this.getModel().getSelectedOption() != null
                     && this.getModel().getSelectedOption().equals(DockerProjectConstants.KUBERNETES_PROJECT_TYPE)) {
-                dockerModel.setContainerExporterProjectChecked(true);
-                dockerModel.setDockerContainerSelected(false);
+                dockerModel.setKubernetesExporterProjectChecked(false);
             }
         	
             project = createNewProject();
 
-            // Creating CarbonApps and Libs and Conf folders
+            // Creating CarbonApps and Libs and CarbonHome folders
             createFolder(DockerProjectConstants.CARBON_APP_FOLDER);
             createFolder(DockerProjectConstants.LIBS_FOLDER);
-            createFolder(DockerProjectConstants.CONF_FOLDER);
+            createFolder(DockerProjectConstants.CARBON_HOME_FOLDER);
 
             // Copy docker file
             copyDockerFile();
-            
-            // Copy kubernetes CRD yml file and properties file to the project
-            if (dockerModel.isContainerExporterProjectChecked() && !dockerModel.isDockerContainerSelected()) {
-                copyKubeYamlFile();
-                copyKubePropertiesFile();
-            }
+            // Copy deployment.toml file
+            copyDeploymentTomlFile();
             
             File pomfile = project.getFile(POM_FILE).getLocation().toFile();
             createPOM(pomfile);
-            ProjectUtils.addNatureToProject(project, false, DockerProjectConstants.DOCKER_NATURE);
-            MavenUtils.updateWithMavenEclipsePlugin(pomfile, new String[] {},
-                    new String[] { DockerProjectConstants.DOCKER_NATURE });
+            
+            if (dockerModel.isKubernetesExporterProjectChecked()) {
+                // Copy integration CR yml file and properties file to the project
+                copyKubeYamlFile();
+                
+                ProjectUtils.addNatureToProject(project, false, DockerProjectConstants.KUBERNETES_NATURE);
+                MavenUtils.updateWithMavenEclipsePlugin(pomfile, new String[] {},
+                        new String[] { DockerProjectConstants.KUBERNETES_NATURE });
+                
+            } else if (dockerModel.isDockerExporterProjectChecked()) {
+                ProjectUtils.addNatureToProject(project, false, DockerProjectConstants.DOCKER_NATURE);
+                MavenUtils.updateWithMavenEclipsePlugin(pomfile, new String[] {},
+                        new String[] { DockerProjectConstants.DOCKER_NATURE });
+            }
+            
             project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
             MavenProject mavenProject = MavenUtils.getMavenProject(pomfile);
 
@@ -274,6 +309,21 @@ public class ContainerProjectCreationWizard extends AbstractWSO2ProjectCreationW
             Xpp3Dom dom = Xpp3DomBuilder.build(new ByteArrayInputStream(pluginConfig.getBytes()), "UTF-8");
             dependencyPluginExecution.setConfiguration(dom);
             dependencyPlugin.addExecution(dependencyPluginExecution);
+            
+            //Add deployment.toml execution plugin
+            Plugin deploymentTomlPlugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven",
+                    "mi-container-config-mapper", "5.2.12", true);
+            PluginExecution deploymentTomlPluginExecution = new PluginExecution();
+            deploymentTomlPluginExecution.addGoal("config-mapper-parser");
+            deploymentTomlPluginExecution.setId("config-mapper-parser");
+            deploymentTomlPluginExecution.setPhase("package");
+
+            String deploymentTomlPluginConfig = "<configuration>\n"
+                    + "                <miVersion>" + PlatformUIConstants.DEFAULT_REMOTE_TAG + "</miVersion>\n" 
+            		+ "            </configuration>";
+            Xpp3Dom tomlDom = Xpp3DomBuilder.build(new ByteArrayInputStream(deploymentTomlPluginConfig.getBytes()), "UTF-8");
+            deploymentTomlPluginExecution.setConfiguration(tomlDom);
+            deploymentTomlPlugin.addExecution(deploymentTomlPluginExecution);        
 
             // Adding spotify docker plugin
             Plugin spotifyPlugin = MavenUtils.createPluginEntry(mavenProject, "com.spotify", "dockerfile-maven-plugin",
@@ -285,19 +335,16 @@ public class ContainerProjectCreationWizard extends AbstractWSO2ProjectCreationW
 
             String repository;
             String tag;
-            if (dockerModel.isContainerExporterProjectChecked() && dockerModel.isDockerContainerSelected()) {
+            String spotifyPluginConfig;
+            
+            if (dockerModel.isDockerExporterProjectChecked()) {
                 repository = dockerModel.getDockerTargetRepository();
                 tag = dockerModel.getDockerTargetTag();
-            } else {
-                repository = dockerModel.getKubeTargetRepository();
-                tag = dockerModel.getKubeTargetTag();
-            }
-
-            String spotifyPluginConfig;
-            if (dockerModel.isContainerExporterProjectChecked() && dockerModel.isDockerContainerSelected()) {
                 spotifyPluginConfig = "<configuration>\n" + "<repository>" + repository + "</repository>\n" + "<tag>"
                         + tag + "</tag>\n" + "</configuration>";
             } else {
+                repository = dockerModel.getKubeTargetRepository();
+                tag = dockerModel.getKubeTargetTag();
                 spotifyPluginConfig = "<configuration>\n" + "<username>${username}</username>\n"
                         + "<password>${password}</password>\n" + "<repository>" + repository + "</repository>\n"
                         + "<tag>" + tag + "</tag>\n" + "</configuration>";

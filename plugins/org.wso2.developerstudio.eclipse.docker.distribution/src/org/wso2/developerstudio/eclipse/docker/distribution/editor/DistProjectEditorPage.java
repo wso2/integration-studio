@@ -17,17 +17,13 @@
 package org.wso2.developerstudio.eclipse.docker.distribution.editor;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Properties;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
@@ -40,7 +36,6 @@ import javax.xml.xpath.XPathFactory;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.maven.model.Dependency;
-import org.apache.maven.model.Plugin;
 import org.apache.maven.project.MavenProject;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
@@ -53,7 +48,6 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.core.runtime.QualifiedName;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -73,8 +67,6 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
-import org.eclipse.swt.widgets.MessageBox;
-import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeColumn;
@@ -89,7 +81,6 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 import org.w3c.dom.Document;
-import org.wso2.developerstudio.eclipse.capp.maven.utils.MavenConstants;
 
 import org.wso2.developerstudio.eclipse.distribution.project.model.DependencyData;
 import org.wso2.developerstudio.eclipse.distribution.project.model.NodeData;
@@ -112,11 +103,9 @@ import org.eclipse.jface.dialogs.ErrorDialog;
 
 public class DistProjectEditorPage extends FormPage implements IResourceDeltaVisitor, IResourceChangeListener {
 
+    private static final IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
     private static final String SERVER_ROLE_ATTR = "serverRole";
-
     private static final String REGISTERED_SERVER_ROLES = "org.wso2.developerstudio.register.server.role";
-
-    private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
     private IFile pomFileRes;
     private File pomFile;
@@ -160,12 +149,12 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
 
     public DistProjectEditorPage(String id, String title) {
         super(id, title);
-        readPropertiesFile();
+        readContainerProjectNature();
     }
 
     public DistProjectEditorPage(FormEditor editor, String id, String title) {
         super(editor, id, title);
-        readPropertiesFile();
+        readContainerProjectNature();
     }
 
     public void initContent() throws Exception {
@@ -207,7 +196,6 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
         setDescription(parentPrj.getDescription());
         setProjectList(projectList);
         setDependencyList(dependencyMap);
-        setMissingDependencyList((Map<String, Dependency>) ((HashMap) getDependencyList()).clone());
         readDockerImageDetails(pomFile);
     }
     
@@ -266,24 +254,8 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
             updateDirtyState();
             pomFileRes.getProject().refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
         } catch (Exception e) {
-            showMessageBox("Container Project Save Failed", e.getMessage(), SWT.ICON_ERROR);
+            DockerBuildActionUtil.showMessageBox("Container Project Save Failed", e.getMessage(), SWT.ICON_ERROR);
         }
-    }
-    
-    
-
-    private Properties identifyNonProjectProperties(Properties properties) {
-        Map<String, DependencyData> dependencies = getProjectList();
-        for (Iterator iterator = dependencies.values().iterator(); iterator.hasNext();) {
-            DependencyData dependency = (DependencyData) iterator.next();
-            String artifactInfoAsString = DistProjectUtils.getArtifactInfoAsString(dependency.getDependency());
-            if (properties.containsKey(artifactInfoAsString)) {
-                properties.remove(artifactInfoAsString);
-            }
-        }
-        // Removing the artifact.type
-        properties.remove("artifact.types");
-        return properties;
     }
 
     protected void createFormContent(IManagedForm managedForm) {
@@ -502,29 +474,8 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
             throw new RuntimeException(PlatformUIConstants.INVALID_TARGET_TAG_MESSAGE);
         } else if (getTargetRepository() != null
                 && (getTargetRepository().split("/").length != 2 && getTargetRepository().split("/").length != 3)) {
-            throw new RuntimeException(PlatformUIConstants.KUBE_TARGET_REPOSITORY_INVALID);
+            throw new RuntimeException(PlatformUIConstants.TARGET_REPOSITORY_INVALID);
         }
-    }
-
-    /**
-     * Pop-up box for error messages.
-     * 
-     * @param title title of the box
-     * @param message message of the box
-     * @param style icon style
-     */
-    private void showMessageBox(final String title, final String message, final int style) {
-        Display.getDefault().syncExec(new Runnable() {
-            public void run() {
-                Display display = PlatformUI.getWorkbench().getDisplay();
-                Shell shell = display.getActiveShell();
-
-                MessageBox exportMsg = new MessageBox(shell, style);
-                exportMsg.setText(title);
-                exportMsg.setMessage(message);
-                exportMsg.open();
-            }
-        });
     }
 
     /**
@@ -893,11 +844,10 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
                         wizard.init(PlatformUI.getWorkbench(), null);
                         CustomWizardDialog headerWizardDialog = new CustomWizardDialog(window.getShell(), wizard);
                         headerWizardDialog.setHelpAvailable(false);
-                        headerWizardDialog.setPageSize(580, 260);
+                        headerWizardDialog.setPageSize(580, 200);
                         headerWizardDialog.open();
 
-                        if (newConfiguration.getAuthEmail() == null || newConfiguration.getAuthUsername() == null
-                                || newConfiguration.getAuthPassword() == null) {
+                        if (newConfiguration.getAuthUsername() == null || newConfiguration.getAuthPassword() == null) {
                             return;
                         }
                         
@@ -937,7 +887,7 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
                 targetRepository = reposirotyTags[1] + DockerProjectConstants.REPOSITORY_SEPERATOR + reposirotyTags[2];
             }
 
-            if (!configuration.isDockerRegistry()) {
+            if (configuration != null && !configuration.isDockerRegistry()) {
                 targetRepository = configuration.getRemoteRegistryURL() + DockerProjectConstants.REPOSITORY_SEPERATOR
                         + targetRepository;
             }
@@ -964,7 +914,6 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
                     } catch (Exception e) {
                         log.error("An unexpected error has occurred", e);
                     }
-
                 };
             };
             refreshAction.setToolTipText("Refresh");
@@ -997,38 +946,21 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
     }
 
     /*
-     * Reads the config.properties file in the project root get the project type
-     * from it
+     * Reads project nature of the project to get the project type.
      */
-    private void readPropertiesFile() {
+    private void readContainerProjectNature() {
         // read properties file and check the type of the container
         IProject project = ((IFileEditorInput) (getEditor().getEditorInput())).getFile().getProject();
-        IFile propertiesFile = project.getFile(DockerProjectConstants.KUBE_PROPERTIES_FILE_NAME);
-
-        String filePath = propertiesFile.getLocation().toOSString();
-        File propFile = new File(filePath);
-        if (propFile.exists()) {
-            try (InputStream input = new FileInputStream(filePath)) {
-                Properties prop = new Properties();
-                prop.load(input);
-
-                // get the property value and print it out
-                if (prop.getProperty(DockerProjectConstants.CONTAINER_TYPE_PARAM) != null
-                        && prop.getProperty(DockerProjectConstants.CONTAINER_TYPE_PARAM)
-                                .equals(DockerProjectConstants.KUBERNETES_CONTAINER)) {
-                    setContainerType(prop.getProperty(DockerProjectConstants.CONTAINER_TYPE_PARAM));
-                } else {
-                    setContainerType(DockerProjectConstants.DOCKER_CONTAINER);
-                }
-            } catch (IOException e) {
+      
+        try {
+            if (project.hasNature(DockerProjectConstants.KUBERNETES_NATURE)) {
+                setContainerType(DockerProjectConstants.KUBERNETES_CONTAINER);
+            } else {
                 setContainerType(DockerProjectConstants.DOCKER_CONTAINER);
-                log.error("Error in converting properties file to string ", e);
             }
-        } else {
-            setContainerType(DockerProjectConstants.DOCKER_CONTAINER);
+        } catch (CoreException e) {
+            log.error("CoreException while reading the project nature", e);
         }
-
-        propertiesFile.getProject();
     }
 
     public void setDependencyList(Map<String, Dependency> dependencyList) {
@@ -1125,48 +1057,6 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
 
     public void setTargetTag(String targetTag) {
         this.targetTag = targetTag;
-    }
-
-    private String getRecentExportLocation(IProject project) {
-        try {
-            return (String) project.getSessionProperty(new QualifiedName("devStudio.export", "export-path"));
-        } catch (CoreException e) {
-            log.error("cannot read session propery 'export-path'", e);
-            return null;
-        }
-    }
-
-    private void setRecentExportLocation(IProject project, String location) {
-        try {
-            project.setSessionProperty(new QualifiedName("devStudio.export", "export-path"), location);
-        } catch (CoreException e) {
-            log.error("cannot save session propery 'export-path'", e);
-        }
-    }
-
-    private void transformProperties(Properties properties) {
-        Map<String, String> oldServerRoleList = new HashMap<String, String>();
-        for (Dependency dependency : (List<Dependency>) parentPrj.getDependencies()) {
-            oldServerRoleList.put(DistProjectUtils.getArtifactInfoAsString(dependency),
-                    DistProjectUtils.getServerRole(parentPrj, dependency));
-        }
-
-        properties.clear();
-        for (String key : oldServerRoleList.keySet()) {
-            properties.setProperty(key, oldServerRoleList.get(key));
-        }
-
-        // change maven-car-plugin version to 2.0.5 and car-deploy version 1.0.4
-        List<Plugin> pluginList = parentPrj.getBuildPlugins();
-        for (Plugin plugin : pluginList) {
-            if (plugin.getArtifactId().equalsIgnoreCase("maven-car-plugin")) {
-                plugin.setVersion(MavenConstants.MAVEN_CAR_VERSION);
-            } else if (plugin.getArtifactId().equalsIgnoreCase("maven-car-deploy-plugin")) {
-                plugin.setVersion(MavenConstants.MAVEN_CAR_DEPLOY_VERSION);
-            }
-        }
-        setPageDirty(true);
-        updateDirtyState();
     }
 
     public static String[] combine(String[] a, String[] b) {

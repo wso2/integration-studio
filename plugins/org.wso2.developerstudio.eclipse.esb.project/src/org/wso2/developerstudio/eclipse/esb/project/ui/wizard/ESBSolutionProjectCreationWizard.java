@@ -16,7 +16,6 @@
 package org.wso2.developerstudio.eclipse.esb.project.ui.wizard;
 
 import java.io.File;
-import java.net.URL;
 import java.util.Map;
 
 import org.apache.maven.project.MavenProject;
@@ -24,10 +23,6 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.wizard.IWizardPage;
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Shell;
-import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.artifact.connector.model.ConnectorModel;
@@ -45,13 +40,9 @@ import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
 import org.wso2.developerstudio.eclipse.platform.core.exception.ObserverFailedException;
-import org.wso2.developerstudio.eclipse.platform.core.project.model.ProjectWizardSettings;
 import org.wso2.developerstudio.eclipse.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
-import org.wso2.developerstudio.eclipse.platform.ui.wizard.pages.DockerKubernetesDetailsPage;
-import org.wso2.developerstudio.eclipse.platform.ui.wizard.pages.MavenDetailsPage;
-import org.wso2.developerstudio.eclipse.platform.ui.wizard.pages.ProjectOptionsDataPage;
-import org.wso2.developerstudio.eclipse.platform.ui.wizard.pages.ProjectOptionsPage;
-
+import org.wso2.developerstudio.eclipse.platform.ui.wizard.pages.DockerDetailsPage;
+import org.wso2.developerstudio.eclipse.platform.ui.wizard.pages.KubernetesDetailsPage;
 
 /**
  * This wizard class is to create ESB, Registry, Connector Exporter, Composite
@@ -67,10 +58,12 @@ public class ESBSolutionProjectCreationWizard extends AbstractWSO2ProjectCreatio
 	private File pomFile;
 	private String CAPP_ARTIFACT_ID = "CompositeApplication";
 	private String CONNECTOR_ARTIFACT_ID = "ConnectorExporter";
-	private String DOCKER_ARTIFACT_ID = "DockerKubernetsExporter";
+	private String DOCKER_ARTIFACT_ID = "DockerExporter";
+	private String KUBERNETES_ARTIFACT_ID = "KubernetsExporter";
 	private String REGISTRY_ARTIFACT_ID = "Registry";
 	private String PROJECT_WIZARD_TITLE = "New ESB Solution Project";
-	private DockerKubernetesDetailsPage containerDetailPage;
+	private DockerDetailsPage dockerDetailPage;
+	private KubernetesDetailsPage kubernetesDetailPage;
 
 	public ESBSolutionProjectCreationWizard() {
 		setEsbSolutionProjectModel(new ESBSolutionProjectModel());
@@ -81,8 +74,11 @@ public class ESBSolutionProjectCreationWizard extends AbstractWSO2ProjectCreatio
 	
 	@Override
 	public IWizardPage getNextPage(IWizardPage currentPage) {
-		if (currentPage == getMainWizardPage() && getModel().isContainerExporterProjectChecked()) {
-			return containerDetailPage;
+		if (currentPage == getMainWizardPage() && getModel().isDockerExporterProjectChecked()) {
+			return dockerDetailPage;
+		} else if ((currentPage == getMainWizardPage() && getModel().isKubernetesExporterProjectChecked())
+				|| (currentPage == dockerDetailPage && getModel().isKubernetesExporterProjectChecked())) {
+			return kubernetesDetailPage;
 		} else {
 			return getMavenDetailPage();
 		}
@@ -91,16 +87,23 @@ public class ESBSolutionProjectCreationWizard extends AbstractWSO2ProjectCreatio
 	@Override
 	public void addPages() {
 		super.addPages();
-		containerDetailPage = new DockerKubernetesDetailsPage(getModel());
-		addPage(containerDetailPage);
+		dockerDetailPage = new DockerDetailsPage(getModel());
+		kubernetesDetailPage = new KubernetesDetailsPage(getModel());
+		addPage(dockerDetailPage);
+		addPage(kubernetesDetailPage);
 	}
 
 	@Override
 	public boolean canFinish() {
-		if (getContainer().getCurrentPage() == getMainWizardPage() && getModel().isContainerExporterProjectChecked()) {
+		if ((getContainer().getCurrentPage() == getMainWizardPage() && getModel().isDockerExporterProjectChecked())
+				|| (getContainer().getCurrentPage() == getMainWizardPage()
+						&& getModel().isKubernetesExporterProjectChecked())
+				|| (getContainer().getCurrentPage() == dockerDetailPage && !dockerDetailPage.isPageComplete())
+				|| (getContainer().getCurrentPage() == dockerDetailPage
+						&& getModel().isKubernetesExporterProjectChecked())
+				|| (getContainer().getCurrentPage() == kubernetesDetailPage
+						&& !kubernetesDetailPage.isPageComplete())) {
 			return false;
-		} else if (getContainer().getCurrentPage() == containerDetailPage && !containerDetailPage.isPageComplete()) {
-		    return false;
 		}
 
 		return true;
@@ -156,8 +159,7 @@ public class ESBSolutionProjectCreationWizard extends AbstractWSO2ProjectCreatio
 		}
 		
         // Creating docker image exporter Project
-		if (esbSolutionProjectModel.isContainerExporterProjectChecked()
-				&& esbSolutionProjectModel.isDockerContainerSelected()) {
+		if (esbSolutionProjectModel.isDockerExporterProjectChecked()) {
 			ContainerProjectCreationWizard dockerWizard = new ContainerProjectCreationWizard();
             DockerModel dockerModel = new DockerModel();
             String dockerProjectName = esbSolutionProjectModel.getDockerExporterProjectName();
@@ -173,9 +175,12 @@ public class ESBSolutionProjectCreationWizard extends AbstractWSO2ProjectCreatio
                 dockerModel.setDockerRemoteTag(esbSolutionProjectModel.getDockerRemoteTag());
                 dockerModel.setDockerTargetRepository(esbSolutionProjectModel.getDockerTargetRepository());
                 dockerModel.setDockerTargetTag(esbSolutionProjectModel.getDockerTargetTag());
-                dockerModel.setContainerExporterProjectChecked(
-                        esbSolutionProjectModel.isContainerExporterProjectChecked());
-                dockerModel.setDockerContainerSelected(esbSolutionProjectModel.isDockerContainerSelected());
+                dockerModel.setDockerExporterProjectChecked(
+                        esbSolutionProjectModel.isDockerExporterProjectChecked());
+                
+                for (Map.Entry<String, String> item : esbSolutionProjectModel.getKubernetesEnvParameters().entrySet()) {
+                    dockerModel.getDockerEnvParameters().put(item.getKey(), item.getValue());
+                }
             } catch (ObserverFailedException e1) {
                 log.error("Failed to set project name : " + dockerProjectName, e1);
             }
@@ -184,15 +189,14 @@ public class ESBSolutionProjectCreationWizard extends AbstractWSO2ProjectCreatio
         }
 
 		// Creating Kubernetes image exporter Project
-		if (esbSolutionProjectModel.isContainerExporterProjectChecked()
-				&& !esbSolutionProjectModel.isDockerContainerSelected()) {
+		if (esbSolutionProjectModel.isKubernetesExporterProjectChecked()) {
 			ContainerProjectCreationWizard containerWizard = new ContainerProjectCreationWizard();
 			DockerModel kubeModel = new DockerModel();
-			String kubeProjectName = esbSolutionProjectModel.getDockerExporterProjectName();
+			String kubeProjectName = esbSolutionProjectModel.getKubernetesExporterProjectName();
 			try {
 				kubeModel.setProjectName(kubeProjectName);
 				kubeModel.setLocation(location);
-				updateMavenInformation(pomFile, DOCKER_ARTIFACT_ID);
+				updateMavenInformation(pomFile, KUBERNETES_ARTIFACT_ID);
 				kubeModel.setGroupId(esbSolutionProjectModel.getGroupId());
 				kubeModel.setMavenInfo(esbSolutionProjectModel.getMavenInfo());
 				kubeModel.setIsUserDefine(esbSolutionProjectModel.isUserSet());
@@ -204,14 +208,16 @@ public class ESBSolutionProjectCreationWizard extends AbstractWSO2ProjectCreatio
 				kubeModel.setKubeRemoteTag(esbSolutionProjectModel.getKubeRemoteTag());
 				kubeModel.setKubeTargetRepository(esbSolutionProjectModel.getKubeTargetRepository());
 				kubeModel.setKubeTargetTag(esbSolutionProjectModel.getKubeTargetTag());
-				kubeModel.setKubeExposePort(esbSolutionProjectModel.getKubeExposePort());
-				kubeModel.setContainerExporterProjectChecked(
-						esbSolutionProjectModel.isContainerExporterProjectChecked());
-				kubeModel.setDockerContainerSelected(esbSolutionProjectModel.isDockerContainerSelected());
+				kubeModel.setKubernetesExporterProjectChecked(
+						esbSolutionProjectModel.isKubernetesExporterProjectChecked());
 
-				for (Map.Entry<String, String> item : esbSolutionProjectModel.getCustomParameters().entrySet()) {
-					kubeModel.getCustomParameters().put(item.getKey(), item.getValue());
+				for (Map.Entry<String, String> item : esbSolutionProjectModel.getKubernetesPortParameters().entrySet()) {
+					kubeModel.getKubernetesPortParameters().put(item.getKey(), item.getValue());
 				}
+				
+				for (Map.Entry<String, String> item : esbSolutionProjectModel.getKubernetesEnvParameters().entrySet()) {
+                    kubeModel.getKubernetesEnvParameters().put(item.getKey(), item.getValue());
+                }
 			} catch (ObserverFailedException e1) {
 				log.error("Failed to set project name : " + kubeProjectName, e1);
 			}

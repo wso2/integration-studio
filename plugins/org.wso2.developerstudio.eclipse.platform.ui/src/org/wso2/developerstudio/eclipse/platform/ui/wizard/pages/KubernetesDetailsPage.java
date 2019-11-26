@@ -48,6 +48,7 @@ import org.wso2.developerstudio.eclipse.platform.core.project.model.ProjectDataM
 import org.wso2.developerstudio.eclipse.platform.core.utils.Validator;
 import org.wso2.developerstudio.eclipse.platform.ui.Activator;
 import org.wso2.developerstudio.eclipse.platform.ui.utils.PlatformUIConstants;
+import org.wso2.developerstudio.eclipse.platform.ui.utils.PluginImageUtils;
 import org.wso2.developerstudio.eclipse.platform.ui.utils.UserInputValidator;
 
 public class KubernetesDetailsPage extends WizardPage {
@@ -82,6 +83,7 @@ public class KubernetesDetailsPage extends WizardPage {
 		super("wizardPage");
 		setTitle("Kubernetes Project Information");
 		setDescription("Kubernetes deployment information for the project");
+		setImageDescriptor(PluginImageUtils.getInstance().getImageDescriptor("kubernetes64x64.png"));
 		this.dataModel = projectDataModel;
 	}
 

@@ -48,15 +48,20 @@ import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.IExecutableExtension;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.wizard.IWizardPage;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.FileEditorInput;
 import org.osgi.framework.Bundle;
 import org.wso2.developerstudio.eclipse.distribution.project.util.ArtifactTypeMapping;
 import org.wso2.developerstudio.eclipse.docker.distribution.Activator;
 import org.wso2.developerstudio.eclipse.docker.distribution.model.DockerModel;
+import org.wso2.developerstudio.eclipse.docker.distribution.resources.DockerUserGuideTemplate;
+import org.wso2.developerstudio.eclipse.docker.distribution.resources.K8sUserGuideTemplate;
 import org.wso2.developerstudio.eclipse.docker.distribution.utils.DockerImageUtils;
 import org.wso2.developerstudio.eclipse.docker.distribution.utils.DockerProjectConstants;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
@@ -376,6 +381,90 @@ public class ContainerProjectCreationWizard extends AbstractWSO2ProjectCreationW
         return true;
     }
 
+    /**
+     * Used to open the help content of the docker user guide.
+     *
+     * @param shell
+     *            Eclipse shell reference
+     * @param helpURL
+     *            URL of the help html page
+     */
+    public static void openDockerHelper(Shell shell, URL helpURL) {
+        shell.getDisplay().asyncExec(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    DockerUserGuideTemplate templateGuideView = (DockerUserGuideTemplate) PlatformUI.getWorkbench()
+                            .getActiveWorkbenchWindow().getActivePage()
+                            .showView(DockerUserGuideTemplate.TEMPLATE_GUIDE_VIEW_ID);
+                    templateGuideView.setURL(helpURL);
+                } catch (PartInitException e) {
+                    MessageDialog.openError(shell, DockerUserGuideTemplate.ERROR_MESSAGE_OPENING_EDITOR,
+                            e.getMessage());
+                }
+            }
+        });
+    }
+
+    /**
+     * Used to open the help content of the kubernetes user guide.
+     *
+     * @param shell
+     *            Eclipse shell reference
+     * @param helpURL
+     *            URL of the help html page
+     */
+    public static void openK8sHelper(Shell shell, URL helpURL) {
+        shell.getDisplay().asyncExec(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    K8sUserGuideTemplate templateGuideView = (K8sUserGuideTemplate) PlatformUI.getWorkbench()
+                            .getActiveWorkbenchWindow().getActivePage()
+                            .showView(K8sUserGuideTemplate.TEMPLATE_GUIDE_VIEW_ID);
+                    templateGuideView.setURL(helpURL);
+                } catch (PartInitException e) {
+                    MessageDialog.openError(shell, DockerUserGuideTemplate.ERROR_MESSAGE_OPENING_EDITOR,
+                            e.getMessage());
+                }
+            }
+        });
+    }
+
+    /**
+     * Get the UserGuideReadMe.html to the relevant project.
+     *
+     * @param project current project
+     * @param guidePath user guide path
+     * @param guideName user guide name
+     * @return URL of the docker user guide html file
+     */
+    private URL getUserGuideURL(IProject project, String guidePath, String guideName) {
+        URL url = null;
+        IFile tomlFile = project.getFile(guideName);
+        File newFile = new File(tomlFile.getLocationURI().getPath());
+        if (!newFile.exists()) {
+            try {
+                Bundle bundle = Platform.getBundle(Activator.PLUGIN_ID);
+                URL fileURL = bundle.getEntry(guidePath);
+                File guideHTML = null;
+
+                URL resolvedFileURL = FileLocator.toFileURL(fileURL);
+                URI resolvedURI = new URI(resolvedFileURL.getProtocol(), resolvedFileURL.getPath(), null);
+                guideHTML = new File(resolvedURI);
+                FileUtils.copy(guideHTML, newFile);
+
+                IFile fileDeschtml = project.getFile(guideName);
+                File file = new File(fileDeschtml.getLocation().toString());
+                url = file.toURI().toURL();
+            } catch (URISyntaxException | IOException e) {
+                log.error("An error occurred generating a deployment.toml file: \n", e);
+            }
+        }
+
+        return url;
+    }
+
     public IResource getCreatedResource() {
         return project;
     }
@@ -410,6 +499,19 @@ public class ContainerProjectCreationWizard extends AbstractWSO2ProjectCreationW
             IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
             IWorkbenchPage page = window.getActivePage();
             page.openEditor(new FileEditorInput(pom), DockerProjectConstants.DOCKER_EDITOR);
+
+            // open docker user guide
+            if (dockerModel.isDockerExporterProjectChecked()) {
+                openDockerHelper(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
+                        getUserGuideURL(project, DockerProjectConstants.DOCKER_USER_GUIDE_PATH,
+                                DockerProjectConstants.DOCKER_USER_GUIDE_FILE));
+            }
+
+            // open kubernetes user guide
+            if (dockerModel.isKubernetesExporterProjectChecked()) {
+                openK8sHelper(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), getUserGuideURL(project,
+                        DockerProjectConstants.K8S_USER_GUIDE_PATH, DockerProjectConstants.K8S_USER_GUIDE_FILE));
+            }
         } catch (Exception e) {
             /* ignore */}
     }

@@ -452,11 +452,7 @@ public class ContainerProjectCreationWizard extends AbstractWSO2ProjectCreationW
                 URL resolvedFileURL = FileLocator.toFileURL(fileURL);
                 URI resolvedURI = new URI(resolvedFileURL.getProtocol(), resolvedFileURL.getPath(), null);
                 guideHTML = new File(resolvedURI);
-                FileUtils.copy(guideHTML, newFile);
-
-                IFile fileDeschtml = project.getFile(guideName);
-                File file = new File(fileDeschtml.getLocation().toString());
-                url = file.toURI().toURL();
+                url = guideHTML.toURI().toURL();
             } catch (URISyntaxException | IOException e) {
                 log.error("An error occurred generating a deployment.toml file: \n", e);
             }

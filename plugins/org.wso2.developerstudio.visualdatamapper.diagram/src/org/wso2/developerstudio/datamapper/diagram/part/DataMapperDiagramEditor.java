@@ -24,7 +24,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
@@ -172,7 +171,6 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
                 @Override
                 public void run() {
                    try {
-                        //loadInitialConfigFileLocations();
                         realtimeDatamapperView = (RealtimeDatamapperView) PlatformUI.getWorkbench()
                                 .getActiveWorkbenchWindow().getActivePage().showView(DATA_MAPPER_TEST_VIEW);
                         realtimeDatamapperView.setURL();
@@ -239,22 +237,6 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
             }
         };
         window.getActivePage().addPartListener(pl);
-    }
-	
-    // Show datamapper test window and reload web page.
-    private void reloadDataMapperTestWindow() {
-        PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    realtimeDatamapperView = (RealtimeDatamapperView) PlatformUI.getWorkbench()
-                            .getActiveWorkbenchWindow().getActivePage().showView(DATA_MAPPER_TEST_VIEW);
-                    realtimeDatamapperView.setURL();
-                } catch (PartInitException e) {
-
-                }
-            }
-        });
     }
     
     /**
@@ -547,7 +529,6 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
 		if (success) {
 			super.doSave(monitor);
 			updateAssociatedXsltFile(monitor);
-			updateAssociatedMetaInfo(monitor); // Adds input type and output type params to schemas
 		}
 	}
 
@@ -571,7 +552,7 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
 			// This traverses input tree view and returns the updated avro
 			// schema
 			schemaFile = createSchemaFile(INPUT_SCHEMA_ID);
-			content = schemaTransformer.getSchemaContentFromModel(inputTreeNode, schemaFile);
+			content = schemaTransformer.getSchemaContentFromModel(inputTreeNode, schemaFile, true, inputSchemaType);
 		}
 		// Empty tree node, clear the file
 		else {
@@ -599,7 +580,7 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
 			// This traverses output tree view and returns the updated avro
 			// schema
 			schemaFile = createSchemaFile(OUTPUT_SCHEMA_ID);
-			content = schemaTransformer.getSchemaContentFromModel(outputTreeNode, schemaFile);
+			content = schemaTransformer.getSchemaContentFromModel(outputTreeNode, schemaFile, false, outputSchemaType);
 		}
 		// Empty tree node, clear the file
 		else {
@@ -786,45 +767,6 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
 
     public void setOutputSchemaType(String outputSchemaType) {
         this.outputSchemaType = outputSchemaType;
-    }
-
-    /**
-     * Adds and updates inputType and outputType parameters to input
-     * and output schema files respectively
-     * @param monitor
-     */
-    private void updateAssociatedMetaInfo(IProgressMonitor monitor) {
-        IEditorInput editorInput = this.getEditorInput();
-
-
-        if (editorInput instanceof IFileEditorInput) {
-            IFile diagramFile = ((FileEditorInput) editorInput).getFile();
-
-            IFile inputSchemaFile = diagramFile.getWorkspace().getRoot().getFile(getSchemaFile(INPUT_SCHEMA_ID).getFullPath());
-            JSONObject inputSource = readSchemaFile(INPUT_SCHEMA_ID);
-            if(inputSource != null) {
-                inputSource.put(DATA_MAPPER_META_INPUT_TYPE, getInputSchemaType());
-                try {
-                    String content = inputSource.toJSONString().replace(DOT_REPRESENTATION, DOT);
-                    inputSchemaFile.setContents(new ByteArrayInputStream(content.getBytes()), true, true, monitor);
-                } catch (CoreException e) {
-                    log.error("Could not update input file " + e);
-                }
-            }
-
-            IFile outputSchemaFile = diagramFile.getWorkspace().getRoot().getFile(getSchemaFile(OUTPUT_SCHEMA_ID).getFullPath());
-            JSONObject outputSource = readSchemaFile(OUTPUT_SCHEMA_ID);
-            if(inputSource != null) {
-                outputSource.put(DATA_MAPPER_META_OUTPUT_TYPE, getOutputSchemaType());
-                try {
-                    String content = outputSource.toJSONString().replace(DOT_REPRESENTATION, DOT);
-                    outputSchemaFile.setContents(new ByteArrayInputStream(content.getBytes()), true, true, monitor);
-                } catch (CoreException e) {
-                    log.error("Could not update output file " + e);
-                }
-            }
-        }
-
     }
 
     /**

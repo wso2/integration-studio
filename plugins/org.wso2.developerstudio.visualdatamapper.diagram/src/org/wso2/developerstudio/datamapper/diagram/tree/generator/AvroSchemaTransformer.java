@@ -427,5 +427,11 @@ public class AvroSchemaTransformer implements ISchemaTransformer {
 		return null;
 	}
 
+	@Override
+	public String getSchemaContentFromModel(TreeNodeImpl treeNodeModel, File schemaFile, boolean isInput, String type) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 }

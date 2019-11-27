@@ -48,6 +48,7 @@ import org.wso2.developerstudio.eclipse.platform.core.exception.ObserverFailedEx
 import org.wso2.developerstudio.eclipse.platform.core.project.model.ProjectDataModel;
 import org.wso2.developerstudio.eclipse.platform.core.utils.Validator;
 import org.wso2.developerstudio.eclipse.platform.ui.utils.PlatformUIConstants;
+import org.wso2.developerstudio.eclipse.platform.ui.utils.PluginImageUtils;
 import org.wso2.developerstudio.eclipse.platform.ui.utils.UserInputValidator;
 
 public class DockerDetailsPage extends WizardPage {
@@ -75,6 +76,7 @@ public class DockerDetailsPage extends WizardPage {
 		super("wizardPage");
 		setTitle("Docker Project Information");
 		setDescription("Docker image information for the project");
+		setImageDescriptor(PluginImageUtils.getInstance().getImageDescriptor("Docker64x64.png"));
 		this.dataModel = projectDataModel;
 	}
 

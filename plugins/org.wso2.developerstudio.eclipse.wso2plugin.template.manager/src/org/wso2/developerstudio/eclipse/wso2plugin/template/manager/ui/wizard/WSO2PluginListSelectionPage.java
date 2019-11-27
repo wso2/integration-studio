@@ -52,11 +52,11 @@ import org.wso2.developerstudio.eclipse.platform.ui.preferences.DeveloperPrefere
 import org.wso2.developerstudio.eclipse.platform.ui.preferences.PreferenceInitializer;
 import org.wso2.developerstudio.eclipse.platform.ui.preferences.UpdateCheckerPreferencePage;
 import org.wso2.developerstudio.eclipse.platform.ui.utils.MessageDialogUtils;
+import org.wso2.developerstudio.eclipse.platform.ui.utils.PluginImageUtils;
 import org.wso2.developerstudio.eclipse.wso2plugin.template.manager.Activator;
 import org.wso2.developerstudio.eclipse.wso2plugin.template.manager.ui.elements.WSO2PluginSampleExt;
 import org.wso2.developerstudio.eclipse.wso2plugin.template.manager.ui.elements.WSO2PluginSampleExtList;
 import org.wso2.developerstudio.eclipse.wso2plugin.template.manager.util.JGitSampleRepoManager;
-import org.wso2.developerstudio.eclipse.wso2plugin.template.manager.util.PluginImageUtils;
 import org.wso2.developerstudio.eclipse.wso2plugin.template.manager.util.WSO2PluginConstants;
 
 public class WSO2PluginListSelectionPage extends WizardSelectionPage {

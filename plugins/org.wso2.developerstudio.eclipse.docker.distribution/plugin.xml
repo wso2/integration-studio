@@ -34,7 +34,7 @@
 	
     <extension point="org.eclipse.ui.ide.projectNatureImages">
         <image id="org.wso2.developerstudio.eclipse.docker.project.natureImage" 
-		natureId="org.wso2.developerstudio.eclipse.docker.distribution.project.nature" icon="icons/car.png" />
+		natureId="org.wso2.developerstudio.eclipse.docker.distribution.project.nature" icon="icons/docker-16.png" />
     </extension>
 	
     <!-- Kubernetes project nature -->
@@ -47,7 +47,7 @@
 	
     <extension point="org.eclipse.ui.ide.projectNatureImages">
 		<image id="org.wso2.developerstudio.eclipse.kubernetes.project.natureImage" 
-		natureId="org.wso2.developerstudio.eclipse.kubernetes.distribution.project.nature" icon="icons/car.png" />
+		natureId="org.wso2.developerstudio.eclipse.kubernetes.distribution.project.nature" icon="icons/k8s-16.png" />
     </extension>
 	
 	<!-- Projects file opening editors -->
@@ -171,5 +171,18 @@
                 </adapt>
             </enablement>
         </objectContribution>
+    </extension>
+    
+    <extension point="org.eclipse.ui.views">
+        <view id="org.wso2.developerstudio.eclipse.esb.templates.docker.view"
+              name="Docker Project User Guide"
+              class="org.wso2.developerstudio.eclipse.docker.distribution.resources.DockerUserGuideTemplate"
+              icon="icons/help.png"/>
+    </extension>
+    <extension point="org.eclipse.ui.views">
+        <view id="org.wso2.developerstudio.eclipse.esb.templates.kubernetes.view"
+              name="Kubernetes Project User Guide"
+              class="org.wso2.developerstudio.eclipse.docker.distribution.resources.K8sUserGuideTemplate"
+              icon="icons/help.png"/>
     </extension>
 </plugin>

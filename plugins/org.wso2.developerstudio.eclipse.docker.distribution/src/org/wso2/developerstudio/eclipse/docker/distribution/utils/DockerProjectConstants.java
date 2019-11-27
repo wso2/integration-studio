@@ -87,6 +87,10 @@ public class DockerProjectConstants extends NLS {
     public static final String TARGET_REPOSITORY_XPATH = "/project/build/plugins/plugin/executions/execution/configuration/repository";
     public static final String TARGET_TAG_XPATH = "/project/build/plugins/plugin/executions/execution/configuration/tag";
     public static final String DEPLOYMENT_TOML_FILE_PATH = "resources" + File.separator + "deployment.toml";
+    public static final String DOCKER_USER_GUIDE_PATH = "resources" + File.separator + "UserGuide" + File.separator + "DockerGuideReadMe.html";
+    public static final String K8S_USER_GUIDE_PATH = "resources" + File.separator + "UserGuide" + File.separator + "K8sGuideReadMe.html";
+    public static final String DOCKER_USER_GUIDE_FILE = "DockerGuideReadMe.html";
+    public static final String K8S_USER_GUIDE_FILE = "K8sGuideReadMe.html";
     
     public static String KUBERNETES_PROJECT_TYPE;
     public static String DOCKER_PROJECT_TYPE;

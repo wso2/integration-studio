@@ -7,7 +7,6 @@ import java.util.Map;
 import org.apache.axiom.om.OMElement;
 import org.apache.synapse.config.xml.SynapsePath;
 import org.apache.synapse.mediators.AbstractMediator;
-import org.apache.synapse.util.xpath.SynapseXPath;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;

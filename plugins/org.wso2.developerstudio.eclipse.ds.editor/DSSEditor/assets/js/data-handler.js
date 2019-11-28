@@ -3,65 +3,90 @@ $(document).ready(function ($) {
     // var portValue = resolveGetParam("port");
     // var url = "http://localhost:" + portValue + "/dsseditor/service";
 
-    var dummyXml = "<data name=\"StudentDataService\" serviceGroup=\"\" " +
-        "serviceNamespace=\"http://mynamespace.com/blah\" transports=\"http, https\">\n" +
-        "    <description>sample description</description>\n" +
-        "    <config id=\"StudentsDatasource\">\n" +
-        "        <property name=\"org.wso2.ws.dataservice.user\">user</property>\n" +
-        "        <property name=\"org.wso2.ws.dataservice.password\">password</property>\n" +
-        "        <property name=\"org.wso2.ws.dataservice.protocol\">jdbc:mysql://localhost:3306/school_db</property>\n" +
-        "        <property name=\"org.wso2.ws.dataservice.driver\">com.mysql.jdbc.Driver</property>\n" +
-        "    </config>\n" +
-        "    <query id=\"CreateStudents\" useConfig=\"StudentsDatasource\">\n" +
-        "        <sql>INSERT INTO students (name, school, grade) VALUES (:name, :school, :grade)</sql>\n" +
-        "        <param name=\"name\" paramType=\"SCALAR\" sqlType=\"STRING\"/>\n" +
-        "        <param name=\"school\" paramType=\"SCALAR\" sqlType=\"STRING\"/>\n" +
-        "        <param name=\"grade\" paramType=\"SCALAR\" sqlType=\"INTEGER\"/>\n" +
-        "    </query>\n" +
-        "    <query id=\"UpdateStudents\" useConfig=\"StudentsDatasource\">\n" +
-        "        <sql>UPDATE students SET name = :name, school = :school, grade = :grade WHERE id = :id</sql>\n" +
-        "        <param name=\"name\" paramType=\"SCALAR\" sqlType=\"STRING\"/>\n" +
-        "        <param name=\"school\" paramType=\"SCALAR\" sqlType=\"STRING\"/>\n" +
-        "        <param name=\"grade\" paramType=\"SCALAR\" sqlType=\"INTEGER\"/>\n" +
-        "        <param name=\"id\" paramType=\"SCALAR\" sqlType=\"INTEGER\"/>\n" +
-        "    </query>\n" +
-        "    <query id=\"ReadStudents\" useConfig=\"StudentsDatasource\">\n" +
-        "        <sql>SELECT id, name, school, grade FROM students</sql>\n" +
-        "        <result element=\"Students\" rowName=\"Student\">\n" +
-        "            <element column=\"id\" name=\"Id\" xsdType=\"xs:integer\"/>\n" +
-        "            <element column=\"name\" name=\"Name\" xsdType=\"xs:string\"/>\n" +
-        "            <element column=\"school\" name=\"School\" xsdType=\"xs:string\"/>\n" +
-        "            <element column=\"grade\" name=\"Grade\" xsdType=\"xs:integer\"/>\n" +
-        "        </result>\n" +
-        "    </query>\n" +
-        "    <query id=\"DeleteStudent\" useConfig=\"StudentsDatasource\">\n" +
-        "        <sql>DELETE FROM students WHERE id = :id</sql>\n" +
-        "        <param name=\"id\" paramType=\"SCALAR\" sqlType=\"INTEGER\"/>\n" +
-        "    </query>\n" +
-        "    <operation name=\"CreateStudents\">\n" +
-        "        <call-query href=\"CreateStudents\">\n" +
-        "            <with-param name=\"name\" query-param=\"name\"/>\n" +
-        "            <with-param name=\"school\" query-param=\"school\"/>\n" +
-        "            <with-param name=\"grade\" query-param=\"grade\"/>\n" +
-        "        </call-query>\n" +
-        "    </operation>\n" +
-        "    <operation name=\"UpdateStudents\">\n" +
-        "        <call-query href=\"UpdateStudents\">\n" +
-        "            <with-param name=\"name\" query-param=\"name\"/>\n" +
-        "            <with-param name=\"school\" query-param=\"school\"/>\n" +
-        "            <with-param name=\"grade\" query-param=\"grade\"/>\n" +
-        "            <with-param name=\"id\" query-param=\"id\"/>\n" +
-        "        </call-query>\n" +
-        "    </operation>\n" +
-        "    <operation name=\"ReadStudents\">\n" +
-        "        <call-query href=\"ReadStudents\"/>\n" +
-        "    </operation>\n" +
-        "    <operation name=\"DeleteStudents\">\n" +
-        "        <call-query href=\"DeleteStudent\">\n" +
-        "            <with-param name=\"id\" query-param=\"id\"/>\n" +
-        "        </call-query>\n" +
-        "    </operation>\n" +
-        "</data>\n";
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+        form.addEventListener('submit', function(event) {
+            if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+        }, false);
+    });
+
+    var dummyXml =
+        "<data disableLegacyBoxcarringMode=\"true\" enableBatchRequests=\"true\" enableBoxcarring=\"true\" name=\"StudentDataService\" serviceNamespace=\"namespace\" transports=\"http https\">\n" +
+        "   <description>sample description</description>\n" +
+        "   <config enableOData=\"true\" id=\"StudentsDatasource\">\n" +
+        "      <property name=\"username\">root</property>\n" +
+        "      <property name=\"password\">root</property>\n" +
+        "      <property name=\"url\">jdbc:mysql://localhost:3306/school_db</property>\n" +
+        "      <property name=\"driverClassName\">com.mysql.jdbc.Driver</property>\n" +
+        "      <property name=\"dynamicUserAuthClass\">dynauthclass</property>\n" +
+        "      <property name=\"dynamicUserAuthMapping\">\n" +
+        "         <configuration>\n" +
+        "            <entry request=\"un\">\n" +
+        "               <username>dbun</username>\n" +
+        "               <password>passw</password>\n" +
+        "            </entry>\n" +
+        "         </configuration>\n" +
+        "      </property>\n" +
+        "   </config>\n" +
+        "   <query id=\"CreateStudents\" useConfig=\"StudentsDatasource\">\n" +
+        "      <sql>INSERT INTO students (name, school, grade) VALUES (:name, :school, :grade)</sql>\n" +
+        "      <param name=\"name\" sqlType=\"STRING\"/>\n" +
+        "      <param name=\"school\" sqlType=\"STRING\"/>\n" +
+        "      <param name=\"grade\" sqlType=\"INTEGER\"/>\n" +
+        "   </query>\n" +
+        "   <query id=\"UpdateStudents\" useConfig=\"StudentsDatasource\">\n" +
+        "      <sql>UPDATE students SET name = :name, school = :school, grade = :grade WHERE id = :id</sql>\n" +
+        "      <param name=\"name\" sqlType=\"STRING\" type=\"OUT\"/>\n" +
+        "      <param name=\"school\" sqlType=\"STRING\"/>\n" +
+        "      <param name=\"grade\" sqlType=\"INTEGER\"/>\n" +
+        "      <param name=\"id\" sqlType=\"INTEGER\"/>\n" +
+        "   </query>\n" +
+        "   <query id=\"ReadStudents\" useConfig=\"StudentsDatasource\">\n" +
+        "      <sql>SELECT id, name, school, grade FROM students</sql>\n" +
+        "      <result element=\"Students\" rowName=\"Student\">\n" +
+        "         <element column=\"id\" name=\"Id\" xsdType=\"xs:integer\"/>\n" +
+        "         <element column=\"name\" name=\"Name\" xsdType=\"xs:string\"/>\n" +
+        "         <element column=\"school\" name=\"School\" xsdType=\"xs:string\"/>\n" +
+        "         <element column=\"grade\" name=\"Grade\" xsdType=\"xs:integer\"/>\n" +
+        "      </result>\n" +
+        "   </query>\n" +
+        "   <query id=\"DeleteStudent\" useConfig=\"StudentsDatasource\">\n" +
+        "      <sql>DELETE FROM students WHERE id = :id</sql>\n" +
+        "      <param name=\"id\" sqlType=\"INTEGER\"/>\n" +
+        "   </query>\n" +
+        "   <operation name=\"CreateStudents\">\n" +
+        "      <call-query href=\"CreateStudents\">\n" +
+        "         <with-param name=\"name\" query-param=\"name\"/>\n" +
+        "         <with-param name=\"school\" query-param=\"school\"/>\n" +
+        "         <with-param name=\"grade\" query-param=\"grade\"/>\n" +
+        "      </call-query>\n" +
+        "   </operation>\n" +
+        "   <operation name=\"UpdateStudents\">\n" +
+        "      <call-query href=\"UpdateStudents\">\n" +
+        "         <with-param name=\"name\" query-param=\"name\"/>\n" +
+        "         <with-param name=\"school\" query-param=\"school\"/>\n" +
+        "         <with-param name=\"grade\" query-param=\"grade\"/>\n" +
+        "         <with-param name=\"id\" query-param=\"id\"/>\n" +
+        "      </call-query>\n" +
+        "   </operation>\n" +
+        "   <operation name=\"ReadStudents\">\n" +
+        "      <call-query href=\"ReadStudents\" requiredRoles=\"\"/>\n" +
+        "   </operation>\n" +
+        "   <operation name=\"DeleteStudents\">\n" +
+        "      <call-query href=\"DeleteStudent\">\n" +
+        "         <with-param name=\"id\" query-param=\"id\"/>\n" +
+        "      </call-query>\n" +
+        "   </operation>\n" +
+        "   <authorization_provider class=\"authproviderclass\">\n" +
+        "      <property name=\"blah\">bleh</property>\n" +
+        "   </authorization_provider>\n" +
+        "</data>";
 
     var url = "http://localhost:7774/dsseditor/service";
 
@@ -86,6 +111,7 @@ $(document).ready(function ($) {
 
     populateGeneralDetails(root);
     populateTransportSettings(root);
+    populateDataSources(root);
 
     /** Start of Event handlers **/
 
@@ -93,10 +119,23 @@ $(document).ready(function ($) {
     $("#ts-transport-check-row input").change(function () {
         var transportsStr = $('.ts-transport-checkbox:checked').map(function() {
             return this.name;
-        }).get().join(',');
+        }).get().join(' ');
 
         root.getElementsByTagName("data")[0].attributes.getNamedItem("transports").value = transportsStr;
     });
+
+    // Data sources - Add data source
+    $("#ds-add-save-btn").click(function () {
+        $("#create-ds-form").submit(function () {
+            //addDataSource();
+            alert("asdfasdafadsf");
+        });
+    });
+
+    // $("#create-ds-form").submit(function () {
+    //     alert("asdfasdafadsf");
+    // });
+
 
     /** End of Event handlers **/
 
@@ -130,11 +169,11 @@ function populateGeneralDetails(root) {
  * @param root Document object.
  */
 function populateTransportSettings(root) {
-    var transports = root.getElementsByTagName("data")[0].attributes.getNamedItem("transports").value;
-    var transportValues;
+    let transports = root.getElementsByTagName("data")[0].attributes.getNamedItem("transports").value;
+    let transportValues;
 
     if (transports) {
-        transportValues = transports.split(",");
+        transportValues = transports.split(" ");
         transportValues.forEach(function (item, index) {
             item = item.trim();
             if (item == "http") {
@@ -148,10 +187,58 @@ function populateTransportSettings(root) {
             }
         });
     }
+}
+
+/**
+ * Populates Data sources data.
+ *
+ * @param root Document object.
+ */
+function populateDataSources(root) {
+    let dsConfigs = root.getElementsByTagName("config");
+
+    if (!dsConfigs) {
+        return;
+    }
+
+    for (let i = 0, len = dsConfigs.length; i < len; i++) {
+        let dsName = dsConfigs[i].id;
+        let markup = "<tr><td>" + dsName + "</td><td class='text-center'>" +
+            "<i class='fa fa-edit'></i><i class='fa fa-trash'></i></td></tr>";
+
+        $("#ds-datasources-table tbody").append(markup);
+    }
 
 }
 
-//------------ Utility functions ----------- //
+/**
+ * Processes the add data source view.
+ *
+ * @param root Document object
+ */
+function addDataSource(root) {
+
+    var validator = $("#create-ds-form").data("bs.validator");
+    validator.validate();
+
+    if (!validator.hasErrors()) {
+        alert("askjhasdkfj");
+    } else {
+
+    }
+
+    // let formData = $("#create-ds-form").find(':visible').serializeArray();
+    // let rdbmsType = $("#ds-dstype-select").val();
+    //
+    // if (rdbmsType == "rdbms_ds") {
+    //
+    // } else if (rdbmsType == "carbon_ds") {
+    //
+    // }
+
+}
+
+//------------ Utility functions ------------//
 /**
  * Extracts query params from the URI.
  *
@@ -159,31 +246,35 @@ function populateTransportSettings(root) {
  * @returns {*} Value of the param.
  */
 function resolveGetParam(param) {
-    var paramValue = null,
+    let paramValue = null,
         tmp = [];
     location.search
         .substr(1)
         .split("&")
         .forEach(function (item) {
             tmp = item.split("=");
-            if (tmp[0] === param) paramValue = decodeURIComponent(tmp[1]);
+            if (tmp[0] === param) {
+                paramValue = decodeURIComponent(tmp[1]);
+            }
         });
     return paramValue;
 }
 
 /**
- * Parses XML text content into a DOM object
+ * Parses XML text content into a DOM object.
  *
  * @param xmlTextContent XML content to be parsed.
  * @returns {Document} Document object.
  */
 function parseXmlTextContent(xmlTextContent) {
+    let root;
     try {
-        var parser = new DOMParser();
-        var root = parser.parseFromString(xmlTextContent, "text/xml");
+        let parser = new DOMParser();
+        root = parser.parseFromString(xmlTextContent, "text/xml");
     } catch (err) {
-        handleError("Parsing Error \n" + err.message);
+        console.log("Error while parsing the document.", err);
     }
+
     return root;
 }
 

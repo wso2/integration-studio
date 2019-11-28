@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="assets/css/panel-table-styles.css">
     <link rel="stylesheet" href="assets/css/query.css">
     <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/validation.css">
 </head>
 
 <body style="padding-top: 10px;padding-bottom: 10px;padding-right: 50px;padding-left: 50px;">
@@ -88,8 +89,8 @@
             </div>
         </div>
     </div>
-    <div id="ds-collapse" class="collapse-custom"><a class="btn btn-primary btn-collapse-header" data-toggle="collapse" aria-expanded="false" aria-controls="data-sources-collapse" role="button" href="#data-sources-collapse">Data Sources</a>
-        <div class="collapse table-bordered" id="data-sources-collapse">
+    <div id="ds-collapse" class="collapse-custom"><a class="btn btn-primary btn-collapse-header" data-toggle="collapse" aria-expanded="true" aria-controls="data-sources-collapse" role="button" href="#data-sources-collapse">Data Sources</a>
+        <div class="collapse show table-bordered" id="data-sources-collapse">
             <div class="table-responsive" id="ds-datasources-table">
                 <table class="table table-hover table-sm">
                     <thead>
@@ -98,12 +99,7 @@
                             <th class="text-center"><i class="fa fa-cog"></i></th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>Data_Source_Name_Placeholder</td>
-                            <td class="text-center"><i class="fa fa-edit"></i><i class="fa fa-trash"></i></td>
-                        </tr>
-                    </tbody>
+                    <tbody></tbody>
                 </table>
             </div>
             <div class="text-right"><button class="btn btn-success btn-sm" type="button" id="ds-datasource-add-btn" data-toggle="modal" data-target="#ds-add-ds-modal">Add New</button></div>
@@ -192,99 +188,102 @@
                 <div class="modal-header">
                     <h4 class="modal-title">Create Datasource</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
                 <div class="modal-body table-bordered">
-                    <form id="create-ds-form" class="general-form">
+                    <form id="create-ds-form" class="general-form" name="create-ds-form">
                         <div class="form-group">
-                            <div id="ds-ds-id-input-inputgroup" class="field inputgroup"><input class="form-control" type="text" required="" placeholder=" " id="ds-ds-id-input" name="float-input" style="border: 0; border-bottom: 1px solid #E0E0E0;"><label class="mb-0" for="ds-ds-id-input">Datasource ID *</label></div>
+                            <div id="ds-ds-id-input-inputgroup" class="field inputgroup"><input class="form-control" type="text" required="" placeholder=" " id="ds-ds-id-inputgroup" name="ds-ds-id-input"><label class="mb-0" for="ds-ds-id-input">Datasource ID</label></div>
                         </div>
                         <div class="form-group form-inline">
-                            <div class="form-group"><label>Datasource Type *</label><select class="form-control" required="" id="ds-dstype-select"><option value="rdbms_ds" selected="">RDBMS</option><option value="carbon_ds">Carbon Datasource</option></select><select class="form-control"
-                                    value="default" required="" id="ds-dstype-2-select"><option value="default_ds">Default</option><option value="external_ds">External Datasource</option></select></div>
+                            <div class="form-group"><label>Datasource Type</label><select class="form-control" required="" id="ds-dstype-select" name="ds-dstype-select"><option value="rdbms_ds" selected="">RDBMS</option><option value="carbon_ds">Carbon Datasource</option></select>
+                                <select
+                                    class="form-control" value="default" required="" id="ds-dstype-2-select" name="ds-dstype-2-select">
+                                    <option value="default_ds">Default</option>
+                                    <option value="external_ds">External Datasource</option>
+                                    </select>
+                            </div>
                         </div>
                         <div class="form-group form-inline" id="ds-db-engine-formgroup">
-                            <div class="form-group"><label>Database Engine *</label><select class="form-control" required="" id="ds-db-engine-select"><option value="" selected="">- Select Engine -</option><option value="12">MySQL</option><option value="">Apache Derby</option><option value="">Microsoft SQL Server</option><option value="">Oracle</option><option value="">IBM DB2</option><option value="">HSQLDB</option><option value="">Informix</option><option value="">PostgreSQL</option><option value="">Sybase ASE</option><option value="">H2</option><option value="">Generic</option></select></div>
+                            <div class="form-group"><label>Database Engine</label><select class="form-control" id="ds-db-engine-select" name="ds-db-engine-select"><option value="" selected="">- Select Engine -</option><option value="mysql">MySQL</option><option value="">Apache Derby</option><option value="">Microsoft SQL Server</option><option value="">Oracle</option><option value="">IBM DB2</option><option value="">HSQLDB</option><option value="">Informix</option><option value="">PostgreSQL</option><option value="">Sybase ASE</option><option value="h2">H2</option><option value="generic">Generic</option></select></div>
                         </div>
                         <div class="form-group">
-                            <div id="ds-driver-class-inputgroup" class="field inputgroup"><input class="form-control" type="text" required="" placeholder=" " id="ds-driver-class-input" name="ds-driver-class-input" style="border: 0; border-bottom: 1px solid #E0E0E0;"><label class="mb-0" for="ds-driver-class-input">Driver Class *</label></div>
-                            <div
-                                id="ds-ds-name-inputgroup" class="field inputgroup"><input class="form-control" type="text" required="" placeholder=" " id="ds-ds-name-input" name="ds-ds-name-input" style="border: 0; border-bottom: 1px solid #E0E0E0;"><label class="mb-0" for="ds-ds-name-input">Datasource Name *</label></div>
-                        <div
-                            id="ds-class-name-inputgroup" class="field inputgroup"><input class="form-control" type="text" required="" placeholder=" " id="ds-class-name-input" name="ds-class-name-input" style="border: 0; border-bottom: 1px solid #E0E0E0;"><label class="mb-0" for="ds-class-name-input">Datasource Class Name *</label></div>
-                <div
-                    id="ds-ext-prop-group" class="form-custom-group">
-                    <div class="table-responsive" id="ds-ext-properties-table">
-                        <table class="table table-sm">
-                            <thead class="align-items-center">
-                                <tr class="text-center">
-                                    <th>Property Name</th>
-                                    <th>Property Value</th>
-                                    <th>Use Secret Alias</th>
-                                    <th><i class="fa fa-cog delete-row"></i></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><input class="form-control" type="text" placeholder="Property Name" style="width: 100%;"></td>
-                                    <td><input class="form-control" type="text" placeholder="Property Value" style="width: 100%;"></td>
-                                    <td class="text-center"><input type="checkbox"></td>
-                                    <td class="text-center"><i class="fa fa-trash"></i></td>
-                                </tr>
-                                <tr></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="d-lg-flex justify-content-lg-end"><button class="btn btn-success d-lg-flex justify-content-lg-center btn-sm" type="button" id="ds-ext-properties-add-btn">Add New</button></div>
+                            <div id="ds-driver-class-inputgroup" class="field inputgroup"><input class="form-control" type="text" placeholder=" " id="ds-driver-class-input" name="ds-driver-class-input"><label class="mb-0" for="ds-driver-class-input">Driver Class</label></div>
+                            <div id="ds-ds-name-inputgroup" class="field inputgroup"><input class="form-control" type="text" placeholder=" " id="ds-ds-name-input" name="ds-ds-name-input"><label class="mb-0" for="ds-ds-name-input">Datasource Name</label></div>
+                            <div id="ds-class-name-inputgroup" class="field inputgroup"><input class="form-control" type="text" placeholder=" " id="ds-class-name-input" name="ds-class-name-input"><label class="mb-0" for="ds-class-name-input">Datasource Class Name</label></div>
+                            <div id="ds-ext-prop-group" class="form-custom-group">
+                                <div class="table-responsive" id="ds-ext-properties-table">
+                                    <table class="table table-sm">
+                                        <thead class="align-items-center">
+                                            <tr class="text-center">
+                                                <th>Property Name</th>
+                                                <th>Property Value</th>
+                                                <th>Use Secret Alias</th>
+                                                <th><i class="fa fa-cog delete-row"></i></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><input class="form-control" type="text" placeholder="Property Name" style="width: 100%;"></td>
+                                                <td><input class="form-control" type="text" placeholder="Property Value" style="width: 100%;"></td>
+                                                <td class="text-center"><input type="checkbox"></td>
+                                                <td class="text-center"><i class="fa fa-trash"></i></td>
+                                            </tr>
+                                            <tr></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="d-lg-flex justify-content-lg-end"><button class="btn btn-success d-lg-flex justify-content-lg-center btn-sm" type="button" id="ds-ext-properties-add-btn">Add New</button></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div id="ds-url-inputgroup" class="field inputgroup"><input class="form-control" type="text" required="" placeholder=" " id="ds-url-input" name="ds-url-input"><label class="mb-0" for="ds-url-input">URL</label></div>
+                        </div>
+                        <div class="form-group">
+                            <div id="ds-username-inputgroup" class="field inputgroup"><input class="form-control" type="text" placeholder=" " id="ds-username-input" name="ds-username-input"><label class="mb-0" for="ds-username-input">Username</label></div>
+                        </div>
+                        <div class="form-group form-inline" id="ds-password-formgroup">
+                            <div id="ds-password-inputgroup" class="field inputgroup" style="width: 70%;"><input class="form-control" type="password" placeholder=" " id="ds-password-input" name="ds-password-input"><label class="d-lg-flex justify-content-lg-start mb-0" for="ds-password-input">Password</label></div>
+                            <div class="form-check"><input class="form-check-input" type="checkbox" id="ds-secret-alias-check" name="ds-secret-alias-check"><label class="form-check-label" for="formCheck-1">Use as Secret Alias</label></div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-check"><input class="form-check-input" type="checkbox" id="ds-enable-odata-check" name="ds-enable-odata-check"><label class="form-check-label" for="ds-enable-odata-check">Enable OData</label></div>
+                        </div>
+                        <div class="form-group" id="ds-test-conn-btn-formgroup"><button class="btn btn-secondary btn-sm d-lg-flex justify-content-lg-end" type="button" id="ds-test-conn-btn">Test Connection</button></div>
+                        <div id="ds-config-params-collapse-group" class="collapse-custom"><a class="btn btn-primary btn-collapse-header" data-toggle="collapse" aria-expanded="false" aria-controls="ds-conf-params-collapse" role="button" href="#ds-conf-params-collapse">Configuration Parameters</a>
+                            <div class="collapse"
+                                id="ds-conf-params-collapse"></div>
+                        </div>
+                        <div id="ds-dynamic-auth-collapse-group-2" class="collapse-custom"><a class="btn btn-primary btn-collapse-header" data-toggle="collapse" aria-expanded="false" aria-controls="ds-dyn-auth-collapse" role="button" href="#ds-dyn-auth-collapse">Dynamic Authentication</a>
+                            <div class="collapse table-bordered"
+                                id="ds-dyn-auth-collapse">
+                                <div id="ds-dynamic-auth-class-inputgroup" class="field inputgroup"><input class="form-control" type="text" placeholder=" " id="ds-dynamic-auth-class-input" name="ds-dynamic-auth-class-input" style="border: 0; border-bottom: 1px solid #E0E0E0;"><label class="mb-0" for="ds-dynamic-auth-class-input">Dynamic User Authentication Class</label></div>
+                                <div
+                                    class="table-responsive" id="ds-dynamic-auth-usermapping-table">
+                                    <table class="table table-sm">
+                                        <thead class="align-items-center">
+                                            <tr class="text-center">
+                                                <th>Carbon Username</th>
+                                                <th>DB Username</th>
+                                                <th>DB Password</th>
+                                                <th><i class="fa fa-cog delete-row"></i></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><input class="form-control" type="text" placeholder="Carbon Username" style="width: 100%;"></td>
+                                                <td><input class="form-control" type="text" placeholder="DB Username" style="width: 100%;"></td>
+                                                <td><input class="form-control" type="password" placeholder="DB Password" style="width: 100%;"></td>
+                                                <td class="text-center"><i class="fa fa-trash"></i></td>
+                                            </tr>
+                                            <tr></tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div class="d-lg-flex justify-content-lg-end"><button class="btn btn-success d-lg-flex justify-content-lg-center btn-sm" type="button" id="ds-dynamic-auth-add-btn">Add New</button></div>
+                        </div>
+                </div>
+                </form>
             </div>
+            <div class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal">Close</button><button class="btn btn-primary" type="submit" id="ds-add-save-btn" form="create-ds-form">Save</button></div>
         </div>
-        <div class="form-group">
-            <div id="ds-url-inputgroup" class="field inputgroup"><input class="form-control" type="text" required="" placeholder=" " id="ds-url-input" name="ds-url-input" style="border: 0; border-bottom: 1px solid #E0E0E0;"><label class="mb-0" for="ds-url-input">URL *</label></div>
-        </div>
-        <div class="form-group">
-            <div id="ds-username-inputgroup" class="field inputgroup"><input class="form-control" type="text" placeholder=" " id="ds-username-input" name="ds-username-input" style="border: 0; border-bottom: 1px solid #E0E0E0;"><label class="mb-0" for="ds-username-input">Username</label></div>
-        </div>
-        <div class="form-group form-inline" id="ds-password-formgroup">
-            <div id="ds-password-inputgroup" class="field inputgroup" style="width: 70%;"><input class="form-control" type="password" placeholder=" " id="ds-password-input" name="ds-password-input" style="border: 0; border-bottom: 1px solid #E0E0E0;"><label class="d-lg-flex justify-content-lg-start mb-0" for="ds-password-input">Password</label></div>
-            <div
-                class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label" for="formCheck-1">Use as Secret Alias</label></div>
-    </div>
-    <div class="form-group">
-        <div class="form-check"><input class="form-check-input" type="checkbox" id="ds-enable-odata-check"><label class="form-check-label" for="ds-enable-odata-check">Enable OData</label></div>
-    </div>
-    <div class="form-group" id="ds-test-conn-btn-formgroup"><button class="btn btn-secondary btn-sm d-lg-flex justify-content-lg-end" type="button" id="ds-test-conn-btn">Test Connection</button></div>
-    <div id="ds-config-params-collapse-group" class="collapse-custom"><a class="btn btn-primary btn-collapse-header" data-toggle="collapse" aria-expanded="false" aria-controls="ds-conf-params-collapse" role="button" href="#ds-conf-params-collapse">Configuration Parameters</a>
-        <div class="collapse" id="ds-conf-params-collapse"></div>
-    </div>
-    <div id="ds-dynamic-auth-collapse-group-2" class="collapse-custom"><a class="btn btn-primary btn-collapse-header" data-toggle="collapse" aria-expanded="false" aria-controls="ds-dyn-auth-collapse" role="button" href="#ds-dyn-auth-collapse">Dynamic Authentication</a>
-        <div class="collapse table-bordered" id="ds-dyn-auth-collapse">
-            <div id="ds-dynamic-auth-class-inputgroup" class="field inputgroup"><input class="form-control" type="text" placeholder=" " id="ds-dynamic-auth-class-input" name="ds-dynamic-auth-class-input" style="border: 0; border-bottom: 1px solid #E0E0E0;"><label class="mb-0" for="ds-dynamic-auth-class-input">Dynamic User Authentication Class</label></div>
-            <div
-                class="table-responsive" id="ds-dynamic-auth-usermapping-table">
-                <table class="table table-sm">
-                    <thead class="align-items-center">
-                        <tr class="text-center">
-                            <th>Carbon Username</th>
-                            <th>DB Username</th>
-                            <th>DB Password</th>
-                            <th><i class="fa fa-cog delete-row"></i></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><input class="form-control" type="text" placeholder="Carbon Username" style="width: 100%;"></td>
-                            <td><input class="form-control" type="text" placeholder="DB Username" style="width: 100%;"></td>
-                            <td><input class="form-control" type="password" placeholder="DB Password" style="width: 100%;"></td>
-                            <td class="text-center"><i class="fa fa-trash"></i></td>
-                        </tr>
-                        <tr></tr>
-                    </tbody>
-                </table>
-        </div>
-        <div class="d-lg-flex justify-content-lg-end"><button class="btn btn-success d-lg-flex justify-content-lg-center btn-sm" type="button" id="ds-dynamic-auth-add-btn">Add New</button></div>
-    </div>
-    </div>
-    </form>
-    </div>
-    <div class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal">Close</button><button class="btn btn-primary" type="submit" form="create-ds-form">Save</button></div>
-    </div>
     </div>
     </div>
     <div class="modal fade" role="dialog" tabindex="-1" id="q-input-mapping-modal">

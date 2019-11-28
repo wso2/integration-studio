@@ -44,7 +44,6 @@ button, input {
 input {
   padding: 0.15rem !important;
   border: 0;
-  border-bottom: 1px solid #E0E0E0;
 }
 
 input:focus {
@@ -81,14 +80,30 @@ input:not(:placeholder-shown) + label, input:focus + label {
 
 label {
   font-size: 14px;
-  /*font-weight: bold;*/
 }
 
 #dss-description-input {
   font-size: 25px;
   white-space: nowrap;
-  /*width: 50px;*/
   overflow: hidden;
   text-overflow: clip;
+}
+
+input:invalid {
+  border-right: 0;
+  border-left: 0;
+  border-top: 0;
+  border-bottom: 1px solid #b71c1c;
+}
+
+input:valid {
+  border-bottom: 1px solid #E0E0E0 !important;
+  border-right: 0;
+  border-left: 0;
+  border-top: 0 !important;
+}
+
+select:invalid {
+  border: 1px solid #b71c1c;
 }
 

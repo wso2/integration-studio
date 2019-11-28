@@ -1,4 +1,7 @@
 $(document).ready(function(){
+
+    setVisibleDSTypeRDBMS(true);
+    setVisibleDSTypeCarbon(false);
     
     //--- Start of Data Source Type ---//
     $("#ds-dstype-select").change(function() {
@@ -36,6 +39,8 @@ function setVisibleDSTypeRDBMS(isVisible) {
     $('#ds-dynamic-auth-collapse').toggle(isVisible);
     $('#ds-test-conn-btn-formgroup').toggle(isVisible);
     $('#ds-dstype-2-select').toggle(isVisible);
+
+    $('#ds-db-engine-select').attr('required', isVisible);
     
     if (isVisible) {
         if ($("#ds-dstype-2-select").val() == "external_ds") {
@@ -54,16 +59,20 @@ function setVisibleDSTypeRDBMS(isVisible) {
 
 function setVisibleDSTypeCarbon(isVisible) {
     $('#ds-ds-name-inputgroup').toggle(isVisible);
+    $('#ds-ds-name-input').attr('required', isVisible);
 }
 
 function setVisibleDSType2Ext(isVisible) {
     $('#ds-class-name-inputgroup').toggle(isVisible);
+    $('#ds-class-name-input').attr('required', isVisible);
     $('#ds-ext-prop-group').toggle(isVisible);
 }
 
 function setVisibleDSType2Default(isVisible) {
     $('#ds-driver-class-inputgroup').toggle(isVisible);
+    $('#ds-driver-class-input').attr('required', isVisible);
     $('#ds-url-inputgroup').toggle(isVisible);
+    $('#ds-url-input').attr('required', isVisible);
     $('#ds-username-inputgroup').toggle(isVisible);
     $('#ds-password-formgroup').toggle(isVisible);
 }

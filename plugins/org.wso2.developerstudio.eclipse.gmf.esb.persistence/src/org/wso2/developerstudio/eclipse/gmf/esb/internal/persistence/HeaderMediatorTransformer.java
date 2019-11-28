@@ -7,6 +7,7 @@ import javax.xml.namespace.QName;
 
 import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.util.AXIOMUtil;
+import org.apache.synapse.config.xml.SynapsePath;
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.apache.synapse.util.xpath.SynapseXPath;
@@ -16,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.jaxen.JaxenException;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.HeaderMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.SynapseXPathExt;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.ValidationConstansts;
@@ -94,13 +96,12 @@ public class HeaderMediatorTransformer extends AbstractEsbNodeTransformer {
                     /* Ignored if user body is not in the xml format */
                 }
             } else {
-                SynapseXPath synapseXPath;
-                if(!isForValidation && StringUtils.isEmpty(visualHeader.getValueExpression().getPropertyValue())) {
+                SynapsePath synapseXPath;
+                if (!isForValidation && StringUtils.isEmpty(visualHeader.getValueExpression().getPropertyValue())) {
                     // Fill the XPath with a default values, so that we can use synapse serializer
                     synapseXPath = new SynapseXPath(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
-                }
-                else {
-                    synapseXPath = new SynapseXPath(visualHeader.getValueExpression().getPropertyValue());
+                } else {
+                    synapseXPath = (SynapseXPath) SynapseXPathExt.createSynapsePath(visualHeader.getValueExpression().getPropertyValue());
                 }
                 for (int i = 0; i < visualHeader.getValueExpression().getNamespaces().keySet().size(); ++i) {
                     String prefix = (String) visualHeader.getValueExpression().getNamespaces().keySet().toArray()[i];

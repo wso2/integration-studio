@@ -26,7 +26,7 @@ import org.apache.axiom.om.OMAttribute;
 import org.apache.axiom.om.OMElement;
 import org.apache.synapse.Mediator;
 import org.apache.synapse.config.xml.ForEachMediatorFactory;
-import org.apache.synapse.config.xml.SynapseXPathFactory;
+import org.apache.synapse.config.xml.SynapsePathFactory;
 import org.apache.synapse.config.xml.XMLConfigConstants;
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.apache.synapse.mediators.builtin.CallMediator;
@@ -64,7 +64,7 @@ public class ForEachMediatorExtFactory extends ForEachMediatorFactory {
         OMAttribute expression = omElement.getAttribute(ATT_EXPRN);
         if (expression != null) {
             try {
-                mediator.setExpression(SynapseXPathFactory.getSynapseXPath(omElement, ATT_EXPRN));
+                mediator.setExpression(SynapsePathFactory.getSynapsePath(omElement, ATT_EXPRN));
             } catch (JaxenException e) {
                 // ignore
             }

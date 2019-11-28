@@ -7,15 +7,16 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.core.internal.runtime.Activator;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 // Start of user code for imports
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.Enumerator;
-
-import org.eclipse.emf.ecore.util.EcoreAdapterFactory;
 
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 
@@ -59,7 +60,6 @@ import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.KeyListener;
 import org.eclipse.swt.events.MouseAdapter;
 import org.eclipse.swt.events.MouseEvent;
-import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 
@@ -76,7 +76,6 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
-import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 import org.eclipse.ui.internal.WorkbenchWindow;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBArtifact;
@@ -995,11 +994,13 @@ public class StoreMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
                             }
                         } catch (Exception e) {
                             ErrorDialog.openError(shell, "Error occured while scanning the project for "
-                                    + synapseArtifcatCategory + " artifacts", e.getMessage(), null);
+                                    + synapseArtifcatCategory + " artifacts", e.getMessage(), 
+                                    new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage()));
                         }
                     }
                 } catch (CoreException e) {
-                    ErrorDialog.openError(shell, "Error occured while scanning the project", e.getMessage(), null);
+                    ErrorDialog.openError(shell, "Error occured while scanning the project", e.getMessage(), 
+                    		new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage()));
                 }
             }
         }

@@ -17,17 +17,12 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer;
 
 import org.apache.synapse.mediators.AbstractMediator;
-import org.apache.synapse.mediators.eip.Target;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
-import org.eclipse.ui.forms.editor.FormEditor;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.ForEachMediator;
-import org.wso2.developerstudio.eclipse.gmf.esb.ForEachTarget;
 import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.SequenceType;
-import org.wso2.developerstudio.eclipse.gmf.esb.TargetEndpointType;
-import org.wso2.developerstudio.eclipse.gmf.esb.TargetSequenceType;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
 

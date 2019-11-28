@@ -655,22 +655,23 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
                 DataMapperMediatorImpl dataMapperMediatorDataModel = (DataMapperMediatorImpl) model.getElement();
                 try {
                     boolean isErroneous = false;
-                    String configLocalPath = dataMapperMediatorDataModel.getConfigurationLocalPath();
+                    String configLocalPath = dataMapperMediatorDataModel.getConfiguration().getKeyValue();
                     if (configLocalPath == null || configLocalPath.equals("")) {
                         isErroneous = true;
                     }
                     if (!isErroneous) {
-                        String inputSchemaLocalPath = dataMapperMediatorDataModel.getInputSchemaLocalPath();
+                        String inputSchemaLocalPath = dataMapperMediatorDataModel.getInputSchema().getKeyValue();
                         if (inputSchemaLocalPath == null || inputSchemaLocalPath.equals("")) {
                             isErroneous = true;
                         }
                     }
                     if (!isErroneous) {
-                        String outSchemaLocalPath = dataMapperMediatorDataModel.getOutputSchemaLocalPath();
+                        String outSchemaLocalPath = dataMapperMediatorDataModel.getOutputSchema().getKeyValue();
                         if (outSchemaLocalPath == null || outSchemaLocalPath.equals("")) {
                             isErroneous = true;
                         }
                     }
+                    
                     if (isErroneous) {
                         GraphicalValidatorUtil.addValidationMark(this);
                     } else {

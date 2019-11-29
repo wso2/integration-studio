@@ -125,7 +125,6 @@ public class PublishEventMediatorExtFactory extends PublishEventMediatorFactory 
         if (eventSinkElement != null) {
             ((PublishEventMediator) mediator).setEventSinkName(eventSinkElement.getText());
         }
-        
         addAllCommentChildrenToList(omElement, ((PublishEventMediator) mediator).getCommentsList());
 
         return mediator;

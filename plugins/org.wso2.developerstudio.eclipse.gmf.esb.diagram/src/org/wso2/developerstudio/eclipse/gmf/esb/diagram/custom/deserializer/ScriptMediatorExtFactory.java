@@ -74,7 +74,6 @@ public class ScriptMediatorExtFactory extends ScriptMediatorFactory {
         }
 
         processAuditStatus(mediator, omElement);
-        
         addAllCommentChildrenToList(omElement, ((ScriptMediator) mediator).getCommentsList());
 
         return mediator;

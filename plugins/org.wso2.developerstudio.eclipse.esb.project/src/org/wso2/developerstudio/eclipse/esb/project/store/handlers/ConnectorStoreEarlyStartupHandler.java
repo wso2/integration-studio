@@ -67,10 +67,8 @@ public class ConnectorStoreEarlyStartupHandler implements IStartup {
         try {
             // Get web app path from current bundle
             webAppPath = getWebAppPath();
-        } catch (URISyntaxException uriException) {
-            log.error("Error resolving web app path", uriException);
-        } catch (IOException ioException) {
-            log.error("Error resolving web app path", ioException);
+        } catch (URISyntaxException | IOException e) {
+            log.error("Error resolving web app path", e);
         }
         connectorsContext.setContextPath(CONTEXT_PATH);
 

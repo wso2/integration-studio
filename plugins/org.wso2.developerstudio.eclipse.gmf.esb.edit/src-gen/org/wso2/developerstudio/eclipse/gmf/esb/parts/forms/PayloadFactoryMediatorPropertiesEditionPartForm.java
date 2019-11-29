@@ -997,7 +997,8 @@ public class PayloadFactoryMediatorPropertiesEditionPartForm extends SectionProp
         eu.showEntry(argsTableElements, false);
         
         // Sets a default XML value. If not, parsing to XML fails and is unable to load the source view
-        if (getMediaType().getName().equals(MediaType.XML.getName()) && getPayload().equals("")) {
+        if (getMediaType() != null && getMediaType().getName().equals(MediaType.XML.getName())
+                && ("").equals(getPayload())) {
             setPayload(INITIAL_XML_PAYLOAD);
             propertiesEditionComponent.firePropertiesChanged(
                     new PropertiesEditionEvent(PayloadFactoryMediatorPropertiesEditionPartForm.this,

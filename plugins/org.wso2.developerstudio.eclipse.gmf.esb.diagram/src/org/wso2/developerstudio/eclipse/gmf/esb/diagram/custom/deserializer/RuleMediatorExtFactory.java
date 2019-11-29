@@ -31,7 +31,6 @@ public class RuleMediatorExtFactory extends RuleMediatorFactory {
 
         RuleMediatorConfig ruleMediatorConfig = RuleMediatorConfigHelper.getRuleMediatorConfig(omElement);
         RuleMediatorExt mediator = new RuleMediatorExt(ruleMediatorConfig);
-
         addAllCommentChildrenToList(omElement, mediator.getCommentsList());
         
         return mediator;

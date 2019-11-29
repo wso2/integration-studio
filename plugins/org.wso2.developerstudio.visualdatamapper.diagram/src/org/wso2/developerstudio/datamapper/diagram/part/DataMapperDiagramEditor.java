@@ -593,13 +593,13 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
 		// reload the datamapper test window once the new schema is saved.
 		reloadDataMapperTestWindow(getInputSchemaType(), getOutputSchemaType());
 	}
-
-    /**
-     * Compares the schema before updating with the new schema to check whether there are any changes
-     * 
-     * @param modifiedSchema - changed schema
-     * @throws ParseException
-     */
+	
+	/**
+	 * Compares the schema before updating with the new schema to check whether there are any changes
+	 * 
+	 * @param modifiedSchema
+	 * @return true if the input schema has changed and false if not
+	 */
     private boolean hasInputSchemaChanged(String modifiedSchema) {
         try {
             if (null != DataMapperConfigHolder.getInstance().getInputSchemaPath()) {
@@ -615,7 +615,7 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
                 }
             }
         } catch (ParseException | IOException e) {
-            log.error("Failed to compare schema!");
+            log.error("Failed to compare the new schema with the previous schema to identify changes!", e);
         }
         return false;
     }

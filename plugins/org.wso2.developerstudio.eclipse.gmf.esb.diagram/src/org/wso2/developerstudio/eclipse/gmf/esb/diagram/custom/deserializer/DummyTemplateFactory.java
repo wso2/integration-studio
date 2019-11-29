@@ -63,7 +63,6 @@ public class DummyTemplateFactory {
         if (endpointElement != null) {
             template.setElement(endpointElement);
         }
-        
         CommentListUtil.populateComments(element, template.getCommentsList());
 
         return template;

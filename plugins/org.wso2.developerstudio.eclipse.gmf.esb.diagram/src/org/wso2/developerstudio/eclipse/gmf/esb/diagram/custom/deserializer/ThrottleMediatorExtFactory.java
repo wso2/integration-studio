@@ -99,7 +99,6 @@ public class ThrottleMediatorExtFactory extends ThrottleMediatorFactory {
                         .setOnAcceptMediator(mediatorFactory.createAnonymousSequence(onAcceptMediatorElement, null));
             }
         }
-        
         addAllCommentChildrenToList(omElement, ((ThrottleMediator) mediator).getCommentsList());
 
         return mediator;

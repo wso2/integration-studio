@@ -87,7 +87,6 @@ public class LogMediatorExtFactory extends LogMediatorFactory {
         if (separator != null) {
             ((LogMediator) mediator).setSeparator(separator.getAttributeValue());
         }
-        
         addAllCommentChildrenToList(omElement, ((LogMediator) mediator).getCommentsList());
 
         return mediator;

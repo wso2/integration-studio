@@ -162,7 +162,6 @@ public class EntitlementMediatorExtFactory extends EntitlementMediatorFactory {
                 mediator.setAdviceMediator(mediatorFactory.createAnonymousSequence(adviceMediatorElement, properties));
             }
         }
-        
         addAllCommentChildrenToList(element, mediator.getCommentsList());
 
         return mediator;

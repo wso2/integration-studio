@@ -320,7 +320,6 @@ public class DummyProxyServiceFactory {
         if (elem.getFirstChildWithName(new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "enableSec")) != null) {
             proxy.setWsSecEnabled(true);
         }
-        
         CommentListUtil.populateComments(elem, proxy.getCommentsList());
 
         return proxy;

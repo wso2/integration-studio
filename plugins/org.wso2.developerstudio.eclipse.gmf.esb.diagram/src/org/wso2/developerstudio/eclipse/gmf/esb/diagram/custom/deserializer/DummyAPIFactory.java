@@ -134,7 +134,6 @@ public class DummyAPIFactory {
                 defineHandler(api, handlerElt, withSynapse);
             }
         }
-        
         CommentListUtil.populateComments(apiElt, api.getCommentsList());
 
         return api;

@@ -74,7 +74,6 @@ public class TemplateEndpointDeserializer extends AbstractEndpointDeserializer {
         if (StringUtils.isNotBlank(templateEndpoint.getName())) {
             executeSetValueCommand(END_POINT__END_POINT_NAME, templateEndpoint.getName());
         }
-        
         executeAddAllCommand(endPoint.getCommentsList(), templateEndpoint.getCommentsList());
 
         return endPoint;

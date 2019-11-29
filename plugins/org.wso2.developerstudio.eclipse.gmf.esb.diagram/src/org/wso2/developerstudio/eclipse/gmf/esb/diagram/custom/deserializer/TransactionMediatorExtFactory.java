@@ -50,7 +50,6 @@ public class TransactionMediatorExtFactory extends TransactionMediatorFactory {
         if (action != null) {
             ((TransactionMediator) mediator).setAction(action.getAttributeValue());
         }
-        
         addAllCommentChildrenToList(omElement, ((TransactionMediator) mediator).getCommentsList());
 
         return mediator;

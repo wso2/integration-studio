@@ -1056,7 +1056,7 @@ public class SchemaKeyEditorDialog extends Dialog {
                 assert (copiedFile).exists();
                 assert (Files.readAllLines(originalFile.toPath()).equals(Files.readAllLines(copiedFile.toPath())));
             } catch (IOException e) {
-                log.error("Failed to create a copy of the original input file!");
+                log.error("IO error occured while saving the datamapper input file!", e);
             }
         } else if (null != destinationFilePath) {
             clearContent(new File(destinationFilePath));
@@ -1074,7 +1074,7 @@ public class SchemaKeyEditorDialog extends Dialog {
             writer.print("");
             writer.close();
         } catch (FileNotFoundException e) {
-            log.error("Input sample file not found!", e);
+            log.error("Datamapper input sample file " + file.getName() + "cannot be found!", e);
         }
     }
     

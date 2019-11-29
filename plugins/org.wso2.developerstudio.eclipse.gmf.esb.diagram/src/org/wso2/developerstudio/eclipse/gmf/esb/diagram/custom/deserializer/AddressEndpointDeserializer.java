@@ -66,7 +66,6 @@ public class AddressEndpointDeserializer extends AbstractEndpointDeserializer {
         if (addressEndpoint.getDefinition() != null) {
             executeSetValueCommand(ADDRESS_END_POINT__URI, addressEndpoint.getDefinition().getAddress());
         }
-        
         executeAddAllCommand(endPoint.getCommentsList(), object.getCommentsList());
 
         return endPoint;

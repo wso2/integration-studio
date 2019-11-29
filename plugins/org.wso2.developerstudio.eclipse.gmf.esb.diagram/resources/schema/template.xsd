@@ -29,6 +29,14 @@
             </xs:documentation>
         </xs:annotation>
     </xs:element>
+    
+    <xs:element name="description">
+        <xs:annotation>
+            <xs:documentation source="description">
+                Artifact description
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
 
     <xs:complexType name="Template">
         <xs:annotation>
@@ -39,6 +47,7 @@
         <xs:choice minOccurs="1">
             <xs:element ref="endpoint" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="sequence" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="description" minOccurs="0" maxOccurs="1"/>
         </xs:choice>
         <xs:attribute name="name" type="xs:string" use="required"/>
     </xs:complexType>

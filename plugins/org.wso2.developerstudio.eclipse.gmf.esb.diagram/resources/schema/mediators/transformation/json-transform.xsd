@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!--
- Copyright (c) 2018, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+* Copyright (c) 2019, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -15,33 +15,29 @@
 * limitations under the License.
 -->
 
+
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
            targetNamespace="http://ws.apache.org/ns/synapse"
            xmlns="http://ws.apache.org/ns/synapse">
+           
+    <xs:include schemaLocation="../../misc/common.xsd"/>
 
-    <xs:element name="bam">
+    <xs:element name="jsontransform">
         <xs:annotation>
             <xs:documentation source="description">
-                Captures data events and sends them to the BAM server
+                Transforms json message according to the given schema.
             </xs:documentation>
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="serverProfile" minOccurs="1" maxOccurs="1">
-                    <xs:complexType>
-                        <xs:sequence>
-                            <xs:element name="streamConfig" minOccurs="1" maxOccurs="1">
-                                <xs:complexType>
-                                    <xs:attribute name="name" type="xs:string" use="required"/>
-                                    <xs:attribute name="version" type="xs:string" use="required"/>
-                                </xs:complexType>
-                            </xs:element>
-                        </xs:sequence>
-                        <xs:attribute name="name" type="xs:string" use="required"/>
-                    </xs:complexType>
+                <xs:element name="property">
+                	<xs:complexType>
+                		<xs:attributeGroup ref="nameValue"/>
+                	</xs:complexType>
                 </xs:element>
             </xs:sequence>
-            <xs:attribute name="description" type="xs:string" use="optional"/>
+        	<xs:attribute name="schema" type="xs:string" use="optional"/>
+        	<xs:attribute name="description" type="xs:string" use="optional"/>
         </xs:complexType>
     </xs:element>
 

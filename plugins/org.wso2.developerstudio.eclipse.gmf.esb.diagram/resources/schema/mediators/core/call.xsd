@@ -33,6 +33,7 @@
                 <xs:element name="endpoint" type="Endpoint" minOccurs="0" maxOccurs="1"/>
             </xs:sequence>
             <xs:attribute name="blocking" type="xs:boolean" use="optional" default="true"/>
+            <xs:attribute name="description" type="xs:string" use="optional"/>
         </xs:complexType>
     </xs:element>
 

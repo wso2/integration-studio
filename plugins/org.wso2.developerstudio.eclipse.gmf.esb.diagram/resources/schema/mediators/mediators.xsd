@@ -28,6 +28,7 @@
     <xs:include schemaLocation="core/log.xsd"/>
     <xs:include schemaLocation="core/loopback.xsd"/>
     <xs:include schemaLocation="core/property.xsd"/>
+    <xs:include schemaLocation="core/property-group.xsd"/>
     <xs:include schemaLocation="core/respond.xsd"/>
     <xs:include schemaLocation="core/send.xsd"/>
     <xs:include schemaLocation="core/sequence.xsd"/>
@@ -52,6 +53,7 @@
     <xs:include schemaLocation="transformation/xslt.xsd"/>
     <xs:include schemaLocation="transformation/datamapper.xsd"/>
     <xs:include schemaLocation="transformation/fastXSLT.xsd"/>
+    <xs:include schemaLocation="transformation/json-transform.xsd"/>
     <xs:include schemaLocation="advanced/cache.xsd"/>
     <xs:include schemaLocation="advanced/db_mediators.xsd"/>
     <xs:include schemaLocation="advanced/enqueue.xsd"/>
@@ -83,6 +85,7 @@
             <xs:element ref="log"/>
             <xs:element ref="loopback"/>
             <xs:element ref="property"/>
+            <xs:element ref="propertyGroup"/>
             <xs:element ref="respond"/>
             <xs:element ref="send"/>
             <xs:element ref="sequence"/>
@@ -101,6 +104,7 @@
             <xs:element ref="makefault"/>
             <xs:element ref="header"/>
             <xs:element ref="payloadFactory"/>
+            <xs:element ref="jsontransform"/>
             <xs:element ref="smooks"/>
             <xs:element ref="rewrite"/>
             <xs:element ref="xquery"/>

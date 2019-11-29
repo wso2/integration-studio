@@ -98,7 +98,7 @@ public class IntegrationCloudServiceClient {
             JsonElement jsonResponse = parser.parse(response);
             JsonElement messageJson = jsonResponse.getAsJsonObject().get("message");
             if (messageJson != null) {
-                String message = jsonResponse.getAsJsonObject().get("message").getAsString();
+                String message = messageJson.getAsString();
                 return CloudServiceConstants.ResponseMessages.USER_SUCCESSFULLY_LOGGED_IN.equals(message); 
             }
         } catch (InvalidTokenException e) {

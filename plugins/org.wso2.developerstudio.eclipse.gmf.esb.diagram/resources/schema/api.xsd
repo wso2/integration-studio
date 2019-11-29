@@ -33,11 +33,30 @@
     <xs:complexType name="API">
         <xs:annotation>
             <xs:documentation source="description">
-                This is the element type representing the REST API in the Synapse Configuration
+                This is the element type that represents a REST API in the Synapse configuration
             </xs:documentation>
         </xs:annotation>
         <xs:sequence>
             <xs:element name="resource" type="APIResource" minOccurs="1" maxOccurs="unbounded"/>
+            <xs:element name="handlers" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="handler" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="property" minOccurs="0" maxOccurs="unbounded">
+                                        <xs:complexType>
+                                            <xs:attribute name="name" type="xs:string" use="required" />
+                                            <xs:attribute name="value" type="xs:string" use="required" />
+                                        </xs:complexType>
+                                    </xs:element>
+                                </xs:sequence>
+                                <xs:attribute name="class" type="xs:string" use="required" />
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
         </xs:sequence>
         <xs:attributeGroup ref="monitoringAspect"/>
         <xs:attribute name="name" type="xs:string" use="required"/>

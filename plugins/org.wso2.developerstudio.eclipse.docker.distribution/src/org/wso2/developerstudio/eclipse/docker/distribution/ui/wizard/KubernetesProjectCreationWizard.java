@@ -47,15 +47,28 @@ public class KubernetesProjectCreationWizard extends Wizard implements IExportWi
     private MavenDetailsPage mavenDetailPage;
     private DockerModel dockerModel;
     
+    public KubernetesProjectCreationWizard() {
+        dockerModel = new DockerModel();
+    }
+    
+    public KubernetesProjectCreationWizard(boolean isCompositeOnClickCreation) {
+        dockerModel = new DockerModel();
+        dockerModel.setCompositeOnClickContainerCreation(isCompositeOnClickCreation);
+    }
+    
     @Override
     public void init(IWorkbench workbench, IStructuredSelection selection) {
         setWindowTitle(WINDOW_TITLE);
-        dockerModel = new DockerModel();
         try {
             IProject project = getSelectedProject(selection);
             File location;
             if (project != null) {
-                location = project.getLocation().toFile();
+                if (dockerModel.isCompositeOnClickContainerCreation()) {
+                    location = project.getParent().getLocation().toFile();
+                    dockerModel.setSelectedCompositeProjectOnCreation(project);
+                } else {
+                    location = project.getLocation().toFile();
+                }
             } else {
                 location = ResourcesPlugin.getWorkspace().getRoot().getLocation().toFile();
             }

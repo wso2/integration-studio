@@ -47,7 +47,9 @@ public abstract class ProjectDataModel extends Observable {
 	private boolean isDockerExporterProjectChecked = false;
 	private boolean isKubernetesExporterProjectChecked = false;
 	private boolean isDirectContainerProjectCreation = false;
+	private boolean isCompositeOnClickContainerCreation = false;
 	private String dockerRemoteRepository;
+	private IProject selectedCompositeProjectOnCreation;
 	private String dockerRemoteTag;
 	private String dockerTargetRepository;
 	private String dockerTargetTag;
@@ -60,6 +62,22 @@ public abstract class ProjectDataModel extends Observable {
 	private Map<String, String> dockerEnvParameters = new HashMap<String, String>();
 	private Map<String, String> kubernetesEnvParameters = new HashMap<String, String>();
 	private Map<String, String> kubernetesPortParameters = new HashMap<String, String>();
+
+	public IProject getSelectedCompositeProjectOnCreation() {
+		return selectedCompositeProjectOnCreation;
+	}
+
+	public void setSelectedCompositeProjectOnCreation(IProject selectedCompositeProjectOnCreation) {
+		this.selectedCompositeProjectOnCreation = selectedCompositeProjectOnCreation;
+	}
+
+	public boolean isCompositeOnClickContainerCreation() {
+		return isCompositeOnClickContainerCreation;
+	}
+
+	public void setCompositeOnClickContainerCreation(boolean isCompositeOnClickContainerCreation) {
+		this.isCompositeOnClickContainerCreation = isCompositeOnClickContainerCreation;
+	}
 
 	public boolean isDirectContainerProjectCreation() {
 		return isDirectContainerProjectCreation;

@@ -168,13 +168,13 @@ $('#show-welcome').change(function() {
 });
 
 function openWizard(wizardid) {
-    $.post("http://localhost:"+portValue+"/servlet/openide", { status: wizardid } ,function(data, status){
+    $.post("http://127.0.0.1:"+portValue+"/servlet/openide", { status: wizardid } ,function(data, status){
     });
 }
 
 function GetDashboardWizards() {
 	var jsonString;
-    $.get("http://localhost:"+portValue+"/servlet/getwizards", function(data, status){
+    $.get("http://127.0.0.1:"+portValue+"/servlet/getwizards", function(data, status){
         loadWelcomeNodes(JSON.stringify(data));
     });
 }
@@ -273,12 +273,12 @@ function searchTemplates(searchInput, templateList){
 
 function updateWelcomeDisplayConfiguration() {
 	var checkBox = document.getElementById("show-welcome");
-	$.post("http://localhost:" + portValue + "/servlet/savewelcomeconfig", { status: checkBox.checked } ,function(data, status){
+	$.post("http://127.0.0.1:" + portValue + "/servlet/savewelcomeconfig", { status: checkBox.checked } ,function(data, status){
     });
 }
 
 function loadDisableWelcomePageParameter() {
-	 $.get("http://localhost:" + portValue + "/servlet/getwelcomeconfig", function(data, status) {
+	 $.get("http://127.0.0.1:" + portValue + "/servlet/getwelcomeconfig", function(data, status) {
 		 var checkBox = document.getElementById("show-welcome");   
 		 var data = JSON.stringify(data);
 		 var disableWelcome = JSON.parse(data);

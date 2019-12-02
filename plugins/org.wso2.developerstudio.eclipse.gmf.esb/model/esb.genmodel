@@ -2662,5 +2662,14 @@
     <genClasses ecoreClass="esb.ecore#//CommentMediator">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//CommentMediator/commentText"/>
     </genClasses>
+    <genClasses ecoreClass="esb.ecore#//JsonTransformMediator">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//JsonTransformMediator/inputConnector"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//JsonTransformMediator/outputConnector"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference esb.ecore#//JsonTransformMediator/jsonTransformProperty"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//JsonTransformMediator/schema"/>
+    </genClasses>
+    <genClasses ecoreClass="esb.ecore#//JsonTransformMediatorOutputConnector"/>
+    <genClasses ecoreClass="esb.ecore#//JsonTransformMediatorInputConnector"/>
+    <genClasses ecoreClass="esb.ecore#//JsonTransformMediatorProperty"/>
   </genPackages>
 </genmodel:GenModel>

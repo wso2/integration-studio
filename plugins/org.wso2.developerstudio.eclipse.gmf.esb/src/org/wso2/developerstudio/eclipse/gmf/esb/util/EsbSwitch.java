@@ -2964,6 +2964,38 @@ public class EsbSwitch<T> extends Switch<T> {
                 if (result == null) result = defaultCase(theEObject);
                 return result;
             }
+            case EsbPackage.JSON_TRANSFORM_MEDIATOR: {
+                JsonTransformMediator jsonTransformMediator = (JsonTransformMediator)theEObject;
+                T result = caseJsonTransformMediator(jsonTransformMediator);
+                if (result == null) result = caseMediator(jsonTransformMediator);
+                if (result == null) result = caseEsbElement(jsonTransformMediator);
+                if (result == null) result = caseEsbNode(jsonTransformMediator);
+                if (result == null) result = defaultCase(theEObject);
+                return result;
+            }
+            case EsbPackage.JSON_TRANSFORM_MEDIATOR_OUTPUT_CONNECTOR: {
+                JsonTransformMediatorOutputConnector jsonTransformMediatorOutputConnector = (JsonTransformMediatorOutputConnector)theEObject;
+                T result = caseJsonTransformMediatorOutputConnector(jsonTransformMediatorOutputConnector);
+                if (result == null) result = caseOutputConnector(jsonTransformMediatorOutputConnector);
+                if (result == null) result = caseEsbConnector(jsonTransformMediatorOutputConnector);
+                if (result == null) result = defaultCase(theEObject);
+                return result;
+            }
+            case EsbPackage.JSON_TRANSFORM_MEDIATOR_INPUT_CONNECTOR: {
+                JsonTransformMediatorInputConnector jsonTransformMediatorInputConnector = (JsonTransformMediatorInputConnector)theEObject;
+                T result = caseJsonTransformMediatorInputConnector(jsonTransformMediatorInputConnector);
+                if (result == null) result = caseInputConnector(jsonTransformMediatorInputConnector);
+                if (result == null) result = caseEsbConnector(jsonTransformMediatorInputConnector);
+                if (result == null) result = defaultCase(theEObject);
+                return result;
+            }
+            case EsbPackage.JSON_TRANSFORM_MEDIATOR_PROPERTY: {
+                JsonTransformMediatorProperty jsonTransformMediatorProperty = (JsonTransformMediatorProperty)theEObject;
+                T result = caseJsonTransformMediatorProperty(jsonTransformMediatorProperty);
+                if (result == null) result = caseAbstractNameValueProperty(jsonTransformMediatorProperty);
+                if (result == null) result = defaultCase(theEObject);
+                return result;
+            }
             default: return defaultCase(theEObject);
         }
     }
@@ -6085,6 +6117,66 @@ public class EsbSwitch<T> extends Switch<T> {
      * @generated
      */
     public T caseCommentMediator(CommentMediator object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Json Transform Mediator</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Json Transform Mediator</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseJsonTransformMediator(JsonTransformMediator object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Json Transform Mediator Output Connector</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Json Transform Mediator Output Connector</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseJsonTransformMediatorOutputConnector(JsonTransformMediatorOutputConnector object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Json Transform Mediator Input Connector</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Json Transform Mediator Input Connector</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseJsonTransformMediatorInputConnector(JsonTransformMediatorInputConnector object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Json Transform Mediator Property</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Json Transform Mediator Property</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseJsonTransformMediatorProperty(JsonTransformMediatorProperty object) {
         return null;
     }
 

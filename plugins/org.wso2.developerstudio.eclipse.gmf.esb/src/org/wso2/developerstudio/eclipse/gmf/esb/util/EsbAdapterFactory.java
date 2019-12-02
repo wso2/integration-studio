@@ -1537,6 +1537,22 @@ public class EsbAdapterFactory extends AdapterFactoryImpl {
                 return createCommentMediatorAdapter();
             }
             @Override
+            public Adapter caseJsonTransformMediator(JsonTransformMediator object) {
+                return createJsonTransformMediatorAdapter();
+            }
+            @Override
+            public Adapter caseJsonTransformMediatorOutputConnector(JsonTransformMediatorOutputConnector object) {
+                return createJsonTransformMediatorOutputConnectorAdapter();
+            }
+            @Override
+            public Adapter caseJsonTransformMediatorInputConnector(JsonTransformMediatorInputConnector object) {
+                return createJsonTransformMediatorInputConnectorAdapter();
+            }
+            @Override
+            public Adapter caseJsonTransformMediatorProperty(JsonTransformMediatorProperty object) {
+                return createJsonTransformMediatorPropertyAdapter();
+            }
+            @Override
             public Adapter defaultCase(EObject object) {
                 return createEObjectAdapter();
             }
@@ -4465,6 +4481,62 @@ public class EsbAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createCommentMediatorAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.eclipse.gmf.esb.JsonTransformMediator <em>Json Transform Mediator</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.JsonTransformMediator
+     * @generated
+     */
+    public Adapter createJsonTransformMediatorAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.eclipse.gmf.esb.JsonTransformMediatorOutputConnector <em>Json Transform Mediator Output Connector</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.JsonTransformMediatorOutputConnector
+     * @generated
+     */
+    public Adapter createJsonTransformMediatorOutputConnectorAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.eclipse.gmf.esb.JsonTransformMediatorInputConnector <em>Json Transform Mediator Input Connector</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.JsonTransformMediatorInputConnector
+     * @generated
+     */
+    public Adapter createJsonTransformMediatorInputConnectorAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.eclipse.gmf.esb.JsonTransformMediatorProperty <em>Json Transform Mediator Property</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.JsonTransformMediatorProperty
+     * @generated
+     */
+    public Adapter createJsonTransformMediatorPropertyAdapter() {
         return null;
     }
 

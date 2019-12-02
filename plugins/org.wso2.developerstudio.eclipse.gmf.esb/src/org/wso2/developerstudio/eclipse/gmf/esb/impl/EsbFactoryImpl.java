@@ -415,6 +415,10 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
             case EsbPackage.INBOUND_ENDPOINT_ON_ERROR_SEQUENCE_OUTPUT_CONNECTOR: return createInboundEndpointOnErrorSequenceOutputConnector();
             case EsbPackage.INBOUND_ENDPOINT_ON_ERROR_SEQUENCE_INPUT_CONNECTOR: return createInboundEndpointOnErrorSequenceInputConnector();
             case EsbPackage.COMMENT_MEDIATOR: return createCommentMediator();
+            case EsbPackage.JSON_TRANSFORM_MEDIATOR: return createJsonTransformMediator();
+            case EsbPackage.JSON_TRANSFORM_MEDIATOR_OUTPUT_CONNECTOR: return createJsonTransformMediatorOutputConnector();
+            case EsbPackage.JSON_TRANSFORM_MEDIATOR_INPUT_CONNECTOR: return createJsonTransformMediatorInputConnector();
+            case EsbPackage.JSON_TRANSFORM_MEDIATOR_PROPERTY: return createJsonTransformMediatorProperty();
             default:
                 throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
         }
@@ -3154,6 +3158,46 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
     public CommentMediator createCommentMediator() {
         CommentMediatorImpl commentMediator = new CommentMediatorImpl();
         return commentMediator;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public JsonTransformMediator createJsonTransformMediator() {
+        JsonTransformMediatorImpl jsonTransformMediator = new JsonTransformMediatorImpl();
+        return jsonTransformMediator;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public JsonTransformMediatorOutputConnector createJsonTransformMediatorOutputConnector() {
+        JsonTransformMediatorOutputConnectorImpl jsonTransformMediatorOutputConnector = new JsonTransformMediatorOutputConnectorImpl();
+        return jsonTransformMediatorOutputConnector;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public JsonTransformMediatorInputConnector createJsonTransformMediatorInputConnector() {
+        JsonTransformMediatorInputConnectorImpl jsonTransformMediatorInputConnector = new JsonTransformMediatorInputConnectorImpl();
+        return jsonTransformMediatorInputConnector;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public JsonTransformMediatorProperty createJsonTransformMediatorProperty() {
+        JsonTransformMediatorPropertyImpl jsonTransformMediatorProperty = new JsonTransformMediatorPropertyImpl();
+        return jsonTransformMediatorProperty;
     }
 
     /**

@@ -45,6 +45,7 @@ public class ImageHolder {
 	private static final String ADD_INPUT_CONTENT = "icons/gmf/add-input-content.png";
 	private static final String ADD_OUTPUT_CONTENT = "icons/gmf/add-output-content.png";
 	private static final String ADD_ROOT = "icons/gmf/add-root.png";
+	private static final String MAP_CONTENT = "icons/gmf/map-content-5.png";
 	
 	private Image elementImage;
 	private Image attributeImage;
@@ -64,6 +65,7 @@ public class ImageHolder {
 	private Image addInputContentImage;
 	private Image addOutputContentImage;
 	private Image addRootImage;
+	private Image addMapImage;
 	
 	private ImageHolder() {
 		
@@ -105,6 +107,8 @@ public class ImageHolder {
 				.imageDescriptorFromPlugin(ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, ADD_OUTPUT_CONTENT);
 		ImageDescriptor addRootDesc = AbstractUIPlugin
 				.imageDescriptorFromPlugin(ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, ADD_ROOT);
+		ImageDescriptor addMapImageDesc = AbstractUIPlugin
+                .imageDescriptorFromPlugin(ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, MAP_CONTENT);
 		
 		elementImage = elementImgDescCollapse.createImage();
 		attributeImage = attributeImgDesc.createImage();
@@ -124,6 +128,7 @@ public class ImageHolder {
 		addInputContentImage = addInputContentDesc.createImage();
 		addOutputContentImage = addOutputContentDesc.createImage();
 		addRootImage = addRootDesc.createImage();
+		addMapImage = addMapImageDesc.createImage();
 	}
 	
 	public Image getElementImage() {
@@ -196,6 +201,10 @@ public class ImageHolder {
 	public Image getAddRootImage() {
 		return addRootImage;
 	}
+	
+	public Image getMapContentImage() {
+        return addMapImage;
+    }
 
 	public static ImageHolder getInstance() {
 		return ImageHolderInstanceHolder.IMAGEHOLDER_INSTANCE;

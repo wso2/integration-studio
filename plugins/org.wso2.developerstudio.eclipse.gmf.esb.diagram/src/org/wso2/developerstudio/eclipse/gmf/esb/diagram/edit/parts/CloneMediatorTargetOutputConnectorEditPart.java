@@ -350,6 +350,9 @@ public class CloneMediatorTargetOutputConnectorEditPart extends AdditionalOutput
         if (targetEditPart instanceof MergeNodeSecondInputConnectorEditPart) {
             types.add(EsbElementTypes.EsbLink_4001);
         }
+        if (targetEditPart instanceof JsonTransformMediatorInputConnectorEditPart) {
+            types.add(EsbElementTypes.EsbLink_4001);
+        }
         return types;
     }
 
@@ -406,6 +409,7 @@ public class CloneMediatorTargetOutputConnectorEditPart extends AdditionalOutput
             types.add(EsbElementTypes.MessageInputConnector_3046);
             types.add(EsbElementTypes.MergeNodeFirstInputConnector_3014);
             types.add(EsbElementTypes.MergeNodeSecondInputConnector_3015);
+            types.add(EsbElementTypes.JsonTransformMediatorInputConnector_3792);
         }
         return types;
     }

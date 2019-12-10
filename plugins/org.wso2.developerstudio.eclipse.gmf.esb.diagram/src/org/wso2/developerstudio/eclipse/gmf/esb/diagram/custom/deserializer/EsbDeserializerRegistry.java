@@ -81,6 +81,7 @@ import org.wso2.carbon.mediator.fastXSLT.FastXSLTMediator;
 import org.wso2.carbon.mediator.publishevent.PublishEventMediator;
 import org.wso2.carbon.mediator.transform.SmooksMediator;
 import org.wso2.carbon.mediators.router.impl.RouterMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.JsonTransformMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditor;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.BeanMediatorExt;
@@ -199,6 +200,7 @@ public class EsbDeserializerRegistry {
         addDeserializer(ForEachMediator.class, new ForEachMediatorDeserializer());
         addDeserializer(CommentMediator.class, new CommentMediatorDeserializer());
         addDeserializer(PublishEventMediator.class, new PublishEventMediatorDeserializer());
+        addDeserializer(JsonTransformMediator.class, new JsonTransformMediatorDeserializer());
     }
 
     /**

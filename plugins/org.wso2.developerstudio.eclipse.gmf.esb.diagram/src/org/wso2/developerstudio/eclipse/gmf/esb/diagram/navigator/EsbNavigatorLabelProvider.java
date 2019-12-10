@@ -1328,6 +1328,17 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements ICommonL
             return getImage(
                     "Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?PropertyGroupMediatorOutputConnector", //$NON-NLS-1$
                     EsbElementTypes.PropertyGroupMediatorOutputConnector_3790);
+        case JsonTransformMediatorEditPart.VISUAL_ID:
+            return getImage("Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?JsonTransformMediator", //$NON-NLS-1$
+                    EsbElementTypes.JsonTransformMediator_3791);
+        case JsonTransformMediatorInputConnectorEditPart.VISUAL_ID:
+            return getImage(
+                    "Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?JsonTransformMediatorInputConnector", //$NON-NLS-1$
+                    EsbElementTypes.JsonTransformMediatorInputConnector_3792);
+        case JsonTransformMediatorOutputConnectorEditPart.VISUAL_ID:
+            return getImage(
+                    "Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?JsonTransformMediatorOutputConnector", //$NON-NLS-1$
+                    EsbElementTypes.JsonTransformMediatorOutputConnector_3793);
         case EsbLinkEditPart.VISUAL_ID:
             return getImage("Navigator?Link?http:///org/wso2/developerstudio/eclipse/gmf/esb?EsbLink", //$NON-NLS-1$
                     EsbElementTypes.EsbLink_4001);
@@ -2059,6 +2070,12 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements ICommonL
             return getPropertyGroupMediatorInputConnector_3789Text(view);
         case PropertyGroupMediatorOutputConnectorEditPart.VISUAL_ID:
             return getPropertyGroupMediatorOutputConnector_3790Text(view);
+        case JsonTransformMediatorEditPart.VISUAL_ID:
+            return getJsonTransformMediator_3791Text(view);
+        case JsonTransformMediatorInputConnectorEditPart.VISUAL_ID:
+            return getJsonTransformMediatorInputConnector_3792Text(view);
+        case JsonTransformMediatorOutputConnectorEditPart.VISUAL_ID:
+            return getJsonTransformMediatorOutputConnector_3793Text(view);
         case EsbLinkEditPart.VISUAL_ID:
             return getEsbLink_4001Text(view);
         }
@@ -3510,6 +3527,36 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements ICommonL
     * @generated
     */
     private String getPropertyGroupMediatorOutputConnector_3790Text(View view) {
+        return ""; //$NON-NLS-1$
+    }
+
+    /**
+    * @generated
+    */
+    private String getJsonTransformMediator_3791Text(View view) {
+        IParser parser = EsbParserProvider.getParser(EsbElementTypes.JsonTransformMediator_3791,
+                view.getElement() != null ? view.getElement() : view,
+                EsbVisualIDRegistry.getType(JsonTransformMediatorDescriptionEditPart.VISUAL_ID));
+        if (parser != null) {
+            return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
+                    ParserOptions.NONE.intValue());
+        } else {
+            EsbDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5216); //$NON-NLS-1$
+            return ""; //$NON-NLS-1$
+        }
+    }
+
+    /**
+    * @generated
+    */
+    private String getJsonTransformMediatorInputConnector_3792Text(View view) {
+        return ""; //$NON-NLS-1$
+    }
+
+    /**
+    * @generated
+    */
+    private String getJsonTransformMediatorOutputConnector_3793Text(View view) {
         return ""; //$NON-NLS-1$
     }
 

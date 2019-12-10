@@ -3163,10 +3163,12 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
+     * @generated NOT
      */
     public JsonTransformMediator createJsonTransformMediator() {
         JsonTransformMediatorImpl jsonTransformMediator = new JsonTransformMediatorImpl();
+        jsonTransformMediator.setInputConnector(createJsonTransformMediatorInputConnector());
+        jsonTransformMediator.setOutputConnector(createJsonTransformMediatorOutputConnector());
         return jsonTransformMediator;
     }
 

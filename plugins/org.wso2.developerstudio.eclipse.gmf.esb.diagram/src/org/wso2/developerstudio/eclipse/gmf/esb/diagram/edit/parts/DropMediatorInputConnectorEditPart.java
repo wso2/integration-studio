@@ -257,6 +257,7 @@ public class DropMediatorInputConnectorEditPart extends AbstractMediatorInputCon
             types.add(EsbElementTypes.LoadBalanceEndPointWestOutputConnector_3098);
             types.add(EsbElementTypes.MessageOutputConnector_3047);
             types.add(EsbElementTypes.MergeNodeOutputConnector_3016);
+            types.add(EsbElementTypes.JsonTransformMediatorOutputConnector_3793);
         }
         return types;
     }
@@ -284,8 +285,8 @@ public class DropMediatorInputConnectorEditPart extends AbstractMediatorInputCon
      * public class EastPointerFigure extends EastPointerShape {
      * 
      *//**
-        * @generated
-        */
+             * @generated
+             */
     /*
      * public EastPointerFigure() {
      * 

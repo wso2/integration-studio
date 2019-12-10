@@ -267,6 +267,7 @@ public class ProxyInputConnectorEditPart extends AbstractBaseFigureInputConnecto
             types.add(EsbElementTypes.DBReportMediatorOutputConnector_3080);
             types.add(EsbElementTypes.SmooksMediatorOutputConnector_3083);
             types.add(EsbElementTypes.SendMediatorOutputConnector_3086);
+            types.add(EsbElementTypes.JsonTransformMediatorOutputConnector_3793);
         }
         return types;
     }

@@ -263,6 +263,7 @@ public class EnqueueMediatorInputConnectorEditPart extends AbstractMediatorInput
             types.add(EsbElementTypes.EnqueueMediatorOutputConnector_3602);
             types.add(EsbElementTypes.MessageOutputConnector_3047);
             types.add(EsbElementTypes.MergeNodeOutputConnector_3016);
+            types.add(EsbElementTypes.JsonTransformMediatorOutputConnector_3793);
         }
         return types;
     }

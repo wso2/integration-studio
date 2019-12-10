@@ -304,6 +304,7 @@ public class APIResourceFaultInputConnectorEditPart extends AbstractBaseFigureFa
             types.add(EsbElementTypes.LoadBalanceEndPointOutputConnector_3658);
             types.add(EsbElementTypes.LoadBalanceEndPointWestOutputConnector_3659);
             types.add(EsbElementTypes.APIResourceOutputConnector_3671);
+            types.add(EsbElementTypes.JsonTransformMediatorOutputConnector_3793);
         }
         return types;
     }

@@ -430,6 +430,9 @@ public class TemplateEndpointOutputConnectorEditPart extends AbstractEndpointOut
         if (targetEditPart instanceof APIResourceFaultInputConnectorEditPart) {
             types.add(EsbElementTypes.EsbLink_4001);
         }
+        if (targetEditPart instanceof JsonTransformMediatorInputConnectorEditPart) {
+            types.add(EsbElementTypes.EsbLink_4001);
+        }
         return types;
     }
 
@@ -509,6 +512,7 @@ public class TemplateEndpointOutputConnectorEditPart extends AbstractEndpointOut
             types.add(EsbElementTypes.HTTPEndPointInputConnector_3713);
             types.add(EsbElementTypes.APIResourceInputConnector_3670);
             types.add(EsbElementTypes.APIResourceFaultInputConnector_3672);
+            types.add(EsbElementTypes.JsonTransformMediatorInputConnector_3792);
         }
         return types;
     }

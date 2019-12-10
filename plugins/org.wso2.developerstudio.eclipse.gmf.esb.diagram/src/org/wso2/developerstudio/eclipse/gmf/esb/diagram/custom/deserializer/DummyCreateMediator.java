@@ -354,6 +354,11 @@ public class DummyCreateMediator {
 
 	    PublishEventMediatorExtFactory factory = PublishEventMediatorExtFactory.getInstance();
 	    return factory.createSpecificMediator(omElement);
+	} else if ("jsontransform".equals(localName)) {
+	    
+	    JsonTransformMediatorExtFactory factory = JsonTransformMediatorExtFactory.getInstance();
+	    return factory.createMediator(omElement, null);
+	    
 	}
 
         return mediator;

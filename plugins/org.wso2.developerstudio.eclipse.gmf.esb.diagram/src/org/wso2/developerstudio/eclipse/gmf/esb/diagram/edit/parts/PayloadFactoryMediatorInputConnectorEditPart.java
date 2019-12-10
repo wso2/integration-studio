@@ -263,6 +263,7 @@ public class PayloadFactoryMediatorInputConnectorEditPart extends AbstractMediat
             types.add(EsbElementTypes.PayloadFactoryMediatorOutputConnector_3599);
             types.add(EsbElementTypes.MessageOutputConnector_3047);
             types.add(EsbElementTypes.MergeNodeOutputConnector_3016);
+            types.add(EsbElementTypes.JsonTransformMediatorOutputConnector_3793);
         }
         return types;
     }

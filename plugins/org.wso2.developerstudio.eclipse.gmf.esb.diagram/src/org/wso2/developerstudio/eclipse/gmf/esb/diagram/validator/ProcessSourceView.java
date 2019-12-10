@@ -89,7 +89,7 @@ public class ProcessSourceView {
             "makefault", "header", "payloadFactory", "smooks", "rewrite", "xquery", "xslt", "datamapper", "fastXSLT",
             "cache", "dbreport", "dblookup", "event", "throttle", "transaction", "aggregate", "callout", "clone",
             "iterate", "foreach", "entitlementService", "oauthService", "builder", "rule", "bam", "publishEvent",
-            "builder"));
+            "builder", "propertyGroup", "jsontransform"));
 
     private static Set<String> artifacts = new HashSet<>(Arrays.asList("api", "proxy", "endpoint", "inboundEndpoint",
             "localEntry", "messageProcessor", "messageStore", "sequence", "task", "template"));

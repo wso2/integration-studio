@@ -51,6 +51,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.HeaderMediato
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.InboundEndpointOnErrorSequenceInputConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.InboundEndpointSequenceInputConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.IterateMediatorInputConnectorEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.JsonTransformMediatorInputConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.LoadBalanceEndPointInputConnector2EditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.LoadBalanceEndPointInputConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.LogMediatorInputConnectorEditPart;
@@ -333,6 +334,9 @@ public class EsbModelingAssistantProviderOfProxyOutSequenceOutputConnectorEditPa
         if (targetEditPart instanceof PublishEventMediatorInputConnectorEditPart) {
             types.add(EsbElementTypes.EsbLink_4001);
         }
+        if (targetEditPart instanceof JsonTransformMediatorInputConnectorEditPart) {
+            types.add(EsbElementTypes.EsbLink_4001);
+        }
         if (targetEditPart instanceof ProxyInSequenceInputConnectorEditPart) {
             types.add(EsbElementTypes.EsbLink_4001);
         }
@@ -472,6 +476,7 @@ public class EsbModelingAssistantProviderOfProxyOutSequenceOutputConnectorEditPa
             types.add(EsbElementTypes.FastXSLTMediatorInputConnector_3765);
             types.add(EsbElementTypes.ForEachMediatorInputConnector_3781);
             types.add(EsbElementTypes.PublishEventMediatorInputConnector_3786);
+            types.add(EsbElementTypes.JsonTransformMediatorInputConnector_3792);
             types.add(EsbElementTypes.ProxyInSequenceInputConnector_3731);
             types.add(EsbElementTypes.MessageInputConnector_3046);
             types.add(EsbElementTypes.MergeNodeFirstInputConnector_3014);

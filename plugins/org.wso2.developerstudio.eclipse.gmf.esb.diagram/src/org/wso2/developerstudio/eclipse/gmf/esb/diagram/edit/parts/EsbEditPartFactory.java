@@ -962,6 +962,18 @@ public class EsbEditPartFactory implements EditPartFactory {
             case PublishEventMediatorOutputConnectorEditPart.VISUAL_ID:
                 return new PublishEventMediatorOutputConnectorEditPart(view);
 
+            case JsonTransformMediatorEditPart.VISUAL_ID:
+                return new JsonTransformMediatorEditPart(view);
+
+            case JsonTransformMediatorDescriptionEditPart.VISUAL_ID:
+                return new JsonTransformMediatorDescriptionEditPart(view);
+
+            case JsonTransformMediatorInputConnectorEditPart.VISUAL_ID:
+                return new JsonTransformMediatorInputConnectorEditPart(view);
+
+            case JsonTransformMediatorOutputConnectorEditPart.VISUAL_ID:
+                return new JsonTransformMediatorOutputConnectorEditPart(view);
+
             case EntitlementOnAcceptContainerEditPart.VISUAL_ID:
                 return new EntitlementOnAcceptContainerEditPart(view);
 

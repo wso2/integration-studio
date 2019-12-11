@@ -91,7 +91,7 @@ public class ThrottleMediatorEditPart extends MultipleCompartmentComplexFiguredA
      * @generated
      */
     protected IFigure contentPane;
-    
+
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
     /**
@@ -154,7 +154,8 @@ public class ThrottleMediatorEditPart extends MultipleCompartmentComplexFiguredA
      * @generated NOT
      */
     protected IFigure createNodeShape() {
-        return primaryShape = new ThrottleMediatorFigure(new Color(null, 78, 186, 111), new Color(null, 255, 255, 255)) {
+        return primaryShape = new ThrottleMediatorFigure(new Color(null, 78, 186, 111),
+                new Color(null, 255, 255, 255)) {
             public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
                 super.setBounds(rect);
                 if ((!connected) && (this.getBounds().getLocation().x != 0 && this.getBounds().getLocation().y != 0)) {
@@ -436,39 +437,39 @@ public class ThrottleMediatorEditPart extends MultipleCompartmentComplexFiguredA
 
     }
 
-	@Override
-	public void notifyChanged(Notification notification) {
-		// this.getModel() will get EMF datamodel of the throttle mediator datamodel
-		if (notification.getEventType() == Notification.SET && this.getModel() instanceof CSSNodeImpl) {
-			// The following part will check for validation issues with the current data in
-			// the model
-			CSSNodeImpl model = (CSSNodeImpl) this.getModel();
-			if (model.getElement() instanceof ThrottleMediatorImpl) {
-				ThrottleMediatorImpl throttleMediatorDataModel = (ThrottleMediatorImpl) model.getElement();
-				boolean hasError = false;
-				try {
-					if (throttleMediatorDataModel.getGroupId().isEmpty()) {
-						hasError = true;
-					}
-					if (!hasError && (throttleMediatorDataModel.getPolicyType()
-							.getValue() == ThrottlePolicyType.REGISTRY_REFERENCE_VALUE)) {
-						if (throttleMediatorDataModel.getPolicyKey().getKeyValue().isEmpty()) {
-							hasError = true;
-						}
-					}
+    @Override
+    public void notifyChanged(Notification notification) {
+        // this.getModel() will get EMF datamodel of the throttle mediator datamodel
+        if (notification.getEventType() == Notification.SET && this.getModel() instanceof CSSNodeImpl) {
+            // The following part will check for validation issues with the current data in
+            // the model
+            CSSNodeImpl model = (CSSNodeImpl) this.getModel();
+            if (model.getElement() instanceof ThrottleMediatorImpl) {
+                ThrottleMediatorImpl throttleMediatorDataModel = (ThrottleMediatorImpl) model.getElement();
+                boolean hasError = false;
+                try {
+                    if (throttleMediatorDataModel.getGroupId().isEmpty()) {
+                        hasError = true;
+                    }
+                    if (!hasError && (throttleMediatorDataModel.getPolicyType()
+                            .getValue() == ThrottlePolicyType.REGISTRY_REFERENCE_VALUE)) {
+                        if (throttleMediatorDataModel.getPolicyKey().getKeyValue().isEmpty()) {
+                            hasError = true;
+                        }
+                    }
 
-					if (hasError) {
-						GraphicalValidatorUtil.addValidationMark(this);
-					} else {
-						GraphicalValidatorUtil.removeValidationMark(this);
-					}
-				} catch (Exception e) {
-					log.error("Graphical validation error occured", e);
-				}
-			}
-		}
-		super.notifyChanged(notification);
-	}
+                    if (hasError) {
+                        GraphicalValidatorUtil.addValidationMark(this);
+                    } else {
+                        GraphicalValidatorUtil.removeValidationMark(this);
+                    }
+                } catch (Exception e) {
+                    log.error("Graphical validation error occured", e);
+                }
+            }
+        }
+        super.notifyChanged(notification);
+    }
 
     /**
      * @generated NOT

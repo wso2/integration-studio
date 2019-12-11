@@ -379,39 +379,39 @@ public class StoreMediatorEditPart extends FixedSizedAbstractMediator {
 
     }
 
-	@Override
-	public void notifyChanged(Notification notification) {
-		// this.getModel() will get EMF datamodel of the store mediator datamodel
-		if (notification.getEventType() == Notification.SET && this.getModel() instanceof CSSNodeImpl) {
-			// The following part will check for validation issues with the current data in
-			// the model
-			CSSNodeImpl model = (CSSNodeImpl) this.getModel();
-			if (model.getElement() instanceof StoreMediatorImpl) {
-				StoreMediatorImpl storeMediatorDataModel = (StoreMediatorImpl) model.getElement();
-				boolean hasError = false;
-				try {
-					if (storeMediatorDataModel.getSpecifyAs() == StoreMediatorSpecifyType.EXPRESSION) {
-						if (storeMediatorDataModel.getExpression().getPropertyValue().equals("")) {
-							hasError = true;
-						}
-					}
-					if (hasError) {
-						GraphicalValidatorUtil.addValidationMark(this);
-					} else {
-						GraphicalValidatorUtil.removeValidationMark(this);
-					}
-				} catch (Exception e) {
-					// Skip error since it's a validation related minor issue
-					log.error("Graphical validation error occured", e);
-				}
-			}
-		}
-		super.notifyChanged(notification);
-	}
+    @Override
+    public void notifyChanged(Notification notification) {
+        // this.getModel() will get EMF datamodel of the store mediator datamodel
+        if (notification.getEventType() == Notification.SET && this.getModel() instanceof CSSNodeImpl) {
+            // The following part will check for validation issues with the current data in
+            // the model
+            CSSNodeImpl model = (CSSNodeImpl) this.getModel();
+            if (model.getElement() instanceof StoreMediatorImpl) {
+                StoreMediatorImpl storeMediatorDataModel = (StoreMediatorImpl) model.getElement();
+                boolean hasError = false;
+                try {
+                    if (storeMediatorDataModel.getSpecifyAs() == StoreMediatorSpecifyType.EXPRESSION) {
+                        if (storeMediatorDataModel.getExpression().getPropertyValue().equals("")) {
+                            hasError = true;
+                        }
+                    }
+                    if (hasError) {
+                        GraphicalValidatorUtil.addValidationMark(this);
+                    } else {
+                        GraphicalValidatorUtil.removeValidationMark(this);
+                    }
+                } catch (Exception e) {
+                    // Skip error since it's a validation related minor issue
+                    log.error("Graphical validation error occured", e);
+                }
+            }
+        }
+        super.notifyChanged(notification);
+    }
 
-	/**
-	 * @generated
-	 */
+    /**
+     * @generated
+     */
     static final Color THIS_BACK = new Color(null, 230, 230, 230);
 
 }

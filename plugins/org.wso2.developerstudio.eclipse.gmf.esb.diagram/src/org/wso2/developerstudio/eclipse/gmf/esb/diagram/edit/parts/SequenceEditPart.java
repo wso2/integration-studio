@@ -250,33 +250,33 @@ public class SequenceEditPart extends FixedSizedAbstractMediator {
         return lep;
     }
 
-	public void notifyChanged(Notification notification) {
+    public void notifyChanged(Notification notification) {
 
-		// this.getModel() will get EMF datamodel of the sequence mediator datamodel
-		if (notification.getEventType() == Notification.SET && this.getModel() instanceof CSSNodeImpl) {
-			// The following part will check for validation issues with the current data in
-			// the model
-			CSSNodeImpl model = (CSSNodeImpl) this.getModel();
-			if (model.getElement() instanceof SequenceImpl) {
-				SequenceImpl sequenceMediatorDataModel = (SequenceImpl) model.getElement();
-				boolean hasError = false;
-				try {
-					if (sequenceMediatorDataModel.getReferringSequenceType() == KeyType.DYNAMIC) {
-						if (sequenceMediatorDataModel.getDynamicReferenceKey().getPropertyValue().equals("")) {
-							hasError = true;
-						}
-					}
-					if (hasError) {
-						GraphicalValidatorUtil.addValidationMark(this);
-					} else {
-						GraphicalValidatorUtil.removeValidationMark(this);
-					}
-				} catch (Exception e) {
-					// Skip error since it's a validation related minor issue
-					log.error("Graphical validation error occured", e);
-				}
-			}
-		}
+        // this.getModel() will get EMF datamodel of the sequence mediator datamodel
+        if (notification.getEventType() == Notification.SET && this.getModel() instanceof CSSNodeImpl) {
+            // The following part will check for validation issues with the current data in
+            // the model
+            CSSNodeImpl model = (CSSNodeImpl) this.getModel();
+            if (model.getElement() instanceof SequenceImpl) {
+                SequenceImpl sequenceMediatorDataModel = (SequenceImpl) model.getElement();
+                boolean hasError = false;
+                try {
+                    if (sequenceMediatorDataModel.getReferringSequenceType() == KeyType.DYNAMIC) {
+                        if (sequenceMediatorDataModel.getDynamicReferenceKey().getPropertyValue().equals("")) {
+                            hasError = true;
+                        }
+                    }
+                    if (hasError) {
+                        GraphicalValidatorUtil.addValidationMark(this);
+                    } else {
+                        GraphicalValidatorUtil.removeValidationMark(this);
+                    }
+                } catch (Exception e) {
+                    // Skip error since it's a validation related minor issue
+                    log.error("Graphical validation error occured", e);
+                }
+            }
+        }
 
         super.notifyChanged(notification);
         Object notifier = ((ENotificationImpl) notification).getNotifier();
@@ -739,8 +739,8 @@ public class SequenceEditPart extends FixedSizedAbstractMediator {
 
             };
             String defaultName = calculateDefaultName();
-            final InputDialog sequenceNameInput = new InputDialog(Display.getCurrent().getActiveShell(), "Enter Sequence Name", "Sequence Name",
-                    defaultName, validator) {
+            final InputDialog sequenceNameInput = new InputDialog(Display.getCurrent().getActiveShell(),
+                    "Enter Sequence Name", "Sequence Name", defaultName, validator) {
                 protected Control createDialogArea(Composite parent) {
                     Composite composite = (Composite) super.createDialogArea(parent);
                     return composite;

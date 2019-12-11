@@ -352,7 +352,7 @@ public class TransactionMediatorEditPart extends FixedSizedAbstractMediator {
         }
 
     }
-    
+
     @Override
     public void notifyChanged(Notification notification) {
         // this.getModel() will get EMF datamodel of the transaction mediator datamodel
@@ -368,8 +368,8 @@ public class TransactionMediatorEditPart extends FixedSizedAbstractMediator {
                     TransactionMediatorSerializer transactionMediatorSerializer = new TransactionMediatorSerializer();
                     OMElement omElement = transactionMediatorSerializer.serializeSpecificMediator(transactionMediator);
 
-                    if (StringUtils
-                            .isEmpty(MediatorValidationUtil.validateMediatorsFromOEMElement(omElement, "transaction"))) {
+                    if (StringUtils.isEmpty(
+                            MediatorValidationUtil.validateMediatorsFromOEMElement(omElement, "transaction"))) {
                         GraphicalValidatorUtil.removeValidationMark(this);
                     } else {
                         GraphicalValidatorUtil.addValidationMark(this);
@@ -381,7 +381,6 @@ public class TransactionMediatorEditPart extends FixedSizedAbstractMediator {
         }
         super.notifyChanged(notification);
     }
-
 
     /**
      * @generated

@@ -492,34 +492,34 @@ public class WSDLEndPointEditPart extends AbstractEndpoint {
  * public class WSDLEndPointEditPart extends AbstractEndpoint {
  * 
  *//**
-    * @generated
-    */
+         * @generated
+         */
 /*
  * public static final int VISUAL_ID = 3566;
  * 
  *//**
-    * @generated
-    */
+         * @generated
+         */
 /*
  * protected IFigure contentPane;
  * 
  *//**
-    * @generated
-    */
+         * @generated
+         */
 /*
  * protected IFigure primaryShape;
  * 
  *//**
-    * @generated
-    */
+         * @generated
+         */
 /*
  * public WSDLEndPointEditPart(View view) {
  * super(view);
  * }
  * 
  *//**
-    * @generated NOT
-    */
+         * @generated NOT
+         */
 /*
  * protected void createDefaultEditPolicies() {
  * installEditPolicy(EditPolicyRoles.CREATION_ROLE,
@@ -540,8 +540,8 @@ public class WSDLEndPointEditPart extends AbstractEndpoint {
  * }
  * 
  *//**
-    * @generated
-    */
+         * @generated
+         */
 /*
  * protected LayoutEditPolicy createLayoutEditPolicy() {
  * org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy lep = new
@@ -574,24 +574,24 @@ public class WSDLEndPointEditPart extends AbstractEndpoint {
  * }
  * 
  *//**
-    * @generated
-    */
+         * @generated
+         */
 /*
  * protected IFigure createNodeShape() {
  * return primaryShape = new WSDLEndPointFigure();
  * }
  * 
  *//**
-    * @generated
-    */
+         * @generated
+         */
 /*
  * public WSDLEndPointFigure getPrimaryShape() {
  * return (WSDLEndPointFigure) primaryShape;
  * }
  * 
  *//**
-    * @generated NOT
-    */
+         * @generated NOT
+         */
 /*
  * protected boolean addFixedChild(EditPart childEditPart) {
  * if (childEditPart instanceof WSDLEndPointEndPointNameEditPart) {
@@ -638,8 +638,8 @@ public class WSDLEndPointEditPart extends AbstractEndpoint {
  * }
  * 
  *//**
-    * @generated
-    */
+         * @generated
+         */
 /*
  * protected boolean removeFixedChild(EditPart childEditPart) {
  * if (childEditPart instanceof WSDLEndPointEndPointNameEditPart) {
@@ -661,8 +661,8 @@ public class WSDLEndPointEditPart extends AbstractEndpoint {
  * }
  * 
  *//**
-    * @generated
-    */
+         * @generated
+         */
 /*
  * protected void addChildVisual(EditPart childEditPart, int index) {
  * if (addFixedChild(childEditPart)) {
@@ -672,8 +672,8 @@ public class WSDLEndPointEditPart extends AbstractEndpoint {
  * }
  * 
  *//**
-    * @generated
-    */
+         * @generated
+         */
 /*
  * protected void removeChildVisual(EditPart childEditPart) {
  * if (removeFixedChild(childEditPart)) {
@@ -683,8 +683,8 @@ public class WSDLEndPointEditPart extends AbstractEndpoint {
  * }
  * 
  *//**
-    * @generated
-    */
+         * @generated
+         */
 /*
  * protected IFigure getContentPaneFor(IGraphicalEditPart editPart) {
  * if (editPart instanceof IBorderItemEditPart) {
@@ -699,8 +699,8 @@ public class WSDLEndPointEditPart extends AbstractEndpoint {
  * }
  * 
  *//**
-    * @generated
-    */
+         * @generated
+         */
 /*
  * protected NodeFigure createNodePlate() {
  * DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(40, 40);
@@ -708,13 +708,13 @@ public class WSDLEndPointEditPart extends AbstractEndpoint {
  * }
  * 
  *//**
-    * Creates figure for this edit part.
-    * 
-    * Body of this method does not depend on settings in generation model
-    * so you may safely remove <i>generated</i> tag and modify it.
-    * 
-    * @generated
-    */
+         * Creates figure for this edit part.
+         * 
+         * Body of this method does not depend on settings in generation model
+         * so you may safely remove <i>generated</i> tag and modify it.
+         * 
+         * @generated
+         */
 /*
  * protected NodeFigure createMainFigure() {
  * NodeFigure figure = createNodePlate();
@@ -726,12 +726,12 @@ public class WSDLEndPointEditPart extends AbstractEndpoint {
  * }
  * 
  *//**
-    * Default implementation treats passed figure as content pane.
-    * Respects layout one may have set for generated figure.
-    * 
-    * @param nodeShape instance of generated figure class
-    * @generated
-    */
+         * Default implementation treats passed figure as content pane.
+         * Respects layout one may have set for generated figure.
+         * 
+         * @param nodeShape instance of generated figure class
+         * @generated
+         */
 /*
  * protected IFigure setupContentPane(IFigure nodeShape) {
  * if (nodeShape.getLayoutManager() == null) {
@@ -743,8 +743,8 @@ public class WSDLEndPointEditPart extends AbstractEndpoint {
  * }
  * 
  *//**
-    * @generated
-    */
+         * @generated
+         */
 /*
  * public IFigure getContentPane() {
  * if (contentPane != null) {
@@ -754,8 +754,8 @@ public class WSDLEndPointEditPart extends AbstractEndpoint {
  * }
  * 
  *//**
-    * @generated
-    */
+         * @generated
+         */
 /*
  * protected void setForegroundColor(Color color) {
  * if (primaryShape != null) {
@@ -764,8 +764,8 @@ public class WSDLEndPointEditPart extends AbstractEndpoint {
  * }
  * 
  *//**
-    * @generated
-    */
+         * @generated
+         */
 /*
  * protected void setBackgroundColor(Color color) {
  * if (primaryShape != null) {
@@ -774,8 +774,8 @@ public class WSDLEndPointEditPart extends AbstractEndpoint {
  * }
  * 
  *//**
-    * @generated
-    */
+         * @generated
+         */
 /*
  * protected void setLineWidth(int width) {
  * if (primaryShape instanceof Shape) {
@@ -784,8 +784,8 @@ public class WSDLEndPointEditPart extends AbstractEndpoint {
  * }
  * 
  *//**
-    * @generated
-    */
+         * @generated
+         */
 /*
  * protected void setLineType(int style) {
  * if (primaryShape instanceof Shape) {
@@ -794,8 +794,8 @@ public class WSDLEndPointEditPart extends AbstractEndpoint {
  * }
  * 
  *//**
-    * @generated
-    */
+         * @generated
+         */
 /*
  * public EditPart getPrimaryChildEditPart() {
  * return getChildBySemanticHint(EsbVisualIDRegistry
@@ -803,20 +803,20 @@ public class WSDLEndPointEditPart extends AbstractEndpoint {
  * }
  * 
  *//**
-    * @generated
-    */
+         * @generated
+         */
 /*
  * public class WSDLEndPointFigure extends EsbGraphicalShape {
  * 
  *//**
-    * @generated
-    */
+         * @generated
+         */
 /*
  * private WrappingLabel fFigureWSDLEndPointNamePropertyLabel;
  * 
  *//**
-    * @generated
-    */
+         * @generated
+         */
 /*
  * public WSDLEndPointFigure() {
  * 
@@ -825,8 +825,8 @@ public class WSDLEndPointEditPart extends AbstractEndpoint {
  * }
  * 
  *//**
-    * @generated NOT
-    */
+         * @generated NOT
+         */
 /*
  * private void createContents() {
  * 
@@ -839,8 +839,8 @@ public class WSDLEndPointEditPart extends AbstractEndpoint {
  * }
  * 
  *//**
-    * @generated
-    */
+         * @generated
+         */
 /*
  * public WrappingLabel getFigureWSDLEndPointNamePropertyLabel() {
  * return fFigureWSDLEndPointNamePropertyLabel;
@@ -865,8 +865,8 @@ public class WSDLEndPointEditPart extends AbstractEndpoint {
  * }
  * 
  *//**
-    * @generated
-    */
+         * @generated
+         */
 /*
  * static final Color THIS_BACK = new Color(null, 40, 151, 248);
  * 

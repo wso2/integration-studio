@@ -391,35 +391,35 @@ public class LogMediatorEditPart extends FixedSizedAbstractMediator {
 
     }
 
-	@Override
-	public void notifyChanged(Notification notification) {
-		// This will validate the log mediator data object
-		if (notification.getEventType() == Notification.SET && this.getModel() instanceof CSSNodeImpl) {
-			CSSNodeImpl model = (CSSNodeImpl) this.getModel();
-			if (model.getElement() instanceof LogMediatorImpl) {
-				LogMediatorImpl logMediatorDataModel = (LogMediatorImpl) model.getElement();
-				try {
-					Iterator<LogProperty> properties = logMediatorDataModel.getProperties().iterator();
-					boolean isErrorneous = false;
-					while (!isErrorneous && properties.hasNext()) {
-						LogProperty logProperty = properties.next();
-						if (logProperty.getPropertyName().equals("")) {
-							isErrorneous = true;
-						}
-					}
-					if (isErrorneous) {
-						GraphicalValidatorUtil.addValidationMark(this);
-					} else {
-						GraphicalValidatorUtil.removeValidationMark(this);
-					}
-				} catch (Exception e) {
-					// Skip error since it's a validation related minor issue
-					log.error("Graphical validation error occured", e);
-				}
-			}
-		}
-		super.notifyChanged(notification);
-	}
+    @Override
+    public void notifyChanged(Notification notification) {
+        // This will validate the log mediator data object
+        if (notification.getEventType() == Notification.SET && this.getModel() instanceof CSSNodeImpl) {
+            CSSNodeImpl model = (CSSNodeImpl) this.getModel();
+            if (model.getElement() instanceof LogMediatorImpl) {
+                LogMediatorImpl logMediatorDataModel = (LogMediatorImpl) model.getElement();
+                try {
+                    Iterator<LogProperty> properties = logMediatorDataModel.getProperties().iterator();
+                    boolean isErrorneous = false;
+                    while (!isErrorneous && properties.hasNext()) {
+                        LogProperty logProperty = properties.next();
+                        if (logProperty.getPropertyName().equals("")) {
+                            isErrorneous = true;
+                        }
+                    }
+                    if (isErrorneous) {
+                        GraphicalValidatorUtil.addValidationMark(this);
+                    } else {
+                        GraphicalValidatorUtil.removeValidationMark(this);
+                    }
+                } catch (Exception e) {
+                    // Skip error since it's a validation related minor issue
+                    log.error("Graphical validation error occured", e);
+                }
+            }
+        }
+        super.notifyChanged(notification);
+    }
 
     /**
      * @generated NOT

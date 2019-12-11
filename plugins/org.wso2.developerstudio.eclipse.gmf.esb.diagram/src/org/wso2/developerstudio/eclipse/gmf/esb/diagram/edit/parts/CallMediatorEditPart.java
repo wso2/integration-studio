@@ -72,7 +72,7 @@ import org.eclipse.papyrus.infra.gmfdiag.css.CSSNodeImpl;
  * @generated NOT
  */
 public class CallMediatorEditPart extends SingleCompartmentComplexFiguredAbstractMediator {
-    
+
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
     private static String CALL_MEDIATOR_QNAME = "call";
     public IFigure endpointOutputConnector;
@@ -355,41 +355,42 @@ public class CallMediatorEditPart extends SingleCompartmentComplexFiguredAbstrac
             return new CustomToolTip().getCustomToolTipShape(toolTipMessage);
         }
     }
-    
+
     /**
      * @generated NOT
      * 
      * This method will get invoked if the corresponding data model for the editpart changes
      */
-	@Override
-	public void notifyChanged(Notification notification) {
-		// this.getModel will get EMF datamodel of the call mediator datamodel
-		if (notification.getEventType() == Notification.SET && this.getModel() instanceof CSSNodeImpl) {
-			// The following part will check for validation issues with the current data in
-			// the model
-			CSSNodeImpl model = (CSSNodeImpl) this.getModel();
-			if (model.getElement() instanceof CallMediatorImpl) {
-				CallMediatorImpl callMediatorDataModel = (CallMediatorImpl) model.getElement();
-				boolean hasError = false;
-				try {
-					if (callMediatorDataModel.getEndpointType() == CallMediatorEndpointType.XPATH) {
-						if (callMediatorDataModel.getEndpointXpath().getPropertyValue().equals("")) {
-							hasError = true;
-						}
-					}
-					if (hasError) {
-						GraphicalValidatorUtil.addValidationMark(this);
-					} else {
-						GraphicalValidatorUtil.removeValidationMark(this);
-					}
-				} catch (Exception e) {
-					// Skip error since it's a validation related minor issue
-					log.error("Graphical validation error occured", e);
-				}
-			}
-		}
-		super.notifyChanged(notification);
-	}
+    @Override
+    public void notifyChanged(Notification notification) {
+        // this.getModel will get EMF datamodel of the call mediator datamodel
+        if (notification.getEventType() == Notification.SET && this.getModel() instanceof CSSNodeImpl) {
+            // The following part will check for validation issues with the current data in
+            // the model
+            CSSNodeImpl model = (CSSNodeImpl) this.getModel();
+            if (model.getElement() instanceof CallMediatorImpl) {
+                CallMediatorImpl callMediatorDataModel = (CallMediatorImpl) model.getElement();
+                boolean hasError = false;
+                try {
+                    if (callMediatorDataModel.getEndpointType() == CallMediatorEndpointType.XPATH) {
+                        if (callMediatorDataModel.getEndpointXpath().getPropertyValue().equals("")) {
+                            hasError = true;
+                        }
+                    }
+                    if (hasError) {
+                        GraphicalValidatorUtil.addValidationMark(this);
+                    } else {
+                        GraphicalValidatorUtil.removeValidationMark(this);
+                    }
+                } catch (Exception e) {
+                    // Skip error since it's a validation related minor issue
+                    log.error("Graphical validation error occured", e);
+                }
+            }
+        }
+        super.notifyChanged(notification);
+    }
+
     /**
      * @generated
      */

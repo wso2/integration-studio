@@ -95,9 +95,8 @@ public class CloneMediatorItemSemanticEditPolicy extends EsbBaseItemSemanticEdit
                     }
                 }
                 cmd.add(new DestroyElementCommand(
-                        new DestroyElementRequest(getEditingDomain(), node.getElement(), false))); // directlyOwned:
-                                                                                                   // true
-                // don't need explicit deletion of node as parent's view deletion would clean child views as well
+                        new DestroyElementRequest(getEditingDomain(), node.getElement(), false))); // directlyOwned: true
+                // don't need explicit deletion of node as parent's view deletion would clean child views as well 
                 // cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), node));
                 break;
             case CloneMediatorOutputConnectorEditPart.VISUAL_ID:
@@ -111,9 +110,8 @@ public class CloneMediatorItemSemanticEditPolicy extends EsbBaseItemSemanticEdit
                     }
                 }
                 cmd.add(new DestroyElementCommand(
-                        new DestroyElementRequest(getEditingDomain(), node.getElement(), false))); // directlyOwned:
-                                                                                                   // true
-                // don't need explicit deletion of node as parent's view deletion would clean child views as well
+                        new DestroyElementRequest(getEditingDomain(), node.getElement(), false))); // directlyOwned: true
+                // don't need explicit deletion of node as parent's view deletion would clean child views as well 
                 // cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), node));
                 break;
             case CloneMediatorTargetOutputConnectorEditPart.VISUAL_ID:
@@ -127,16 +125,14 @@ public class CloneMediatorItemSemanticEditPolicy extends EsbBaseItemSemanticEdit
                     }
                 }
                 cmd.add(new DestroyElementCommand(
-                        new DestroyElementRequest(getEditingDomain(), node.getElement(), false))); // directlyOwned:
-                                                                                                   // true
-                // don't need explicit deletion of node as parent's view deletion would clean child views as well
+                        new DestroyElementRequest(getEditingDomain(), node.getElement(), false))); // directlyOwned: true
+                // don't need explicit deletion of node as parent's view deletion would clean child views as well 
                 // cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), node));
                 break;
             case CloneMediatorContainerEditPart.VISUAL_ID:
                 cmd.add(new DestroyElementCommand(
-                        new DestroyElementRequest(getEditingDomain(), node.getElement(), false))); // directlyOwned:
-                                                                                                   // true
-                // don't need explicit deletion of node as parent's view deletion would clean child views as well
+                        new DestroyElementRequest(getEditingDomain(), node.getElement(), false))); // directlyOwned: true
+                // don't need explicit deletion of node as parent's view deletion would clean child views as well 
                 // cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), node));
                 break;
             }

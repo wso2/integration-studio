@@ -269,12 +269,12 @@ public class ProxyServiceEditPart extends AbstractBaseFigureEditPart {
             inSequenceInputConnectorFigure = ((ProxyInSequenceInputConnectorEditPart) childEditPart).getFigure();
             IFigure figure = ((GraphicalEditPart) ((GraphicalEditPart) ((GraphicalEditPart) getChildren().get(5))
                     .getChildren().get(0)).getChildren().get(0)).getFigure();
-            BorderItemLocator locator = new FixedBorderItemLocator(
-                    /*
-                     * (IFigure) ((IFigure) ((IFigure) (IFigure) getFigure()
-                     * .getChildren().get(0)).getChildren().get(0))
-                     * .getChildren().get(1)
-                     */figure, inSequenceInputConnectorFigure, PositionConstants.EAST, 0.25);
+            BorderItemLocator locator = new FixedBorderItemLocator(/*
+                                                                    * (IFigure) ((IFigure) ((IFigure) (IFigure) getFigure()
+                                                                    * .getChildren().get(0)).getChildren().get(0))
+                                                                    * .getChildren().get(1)
+                                                                    */figure, inSequenceInputConnectorFigure,
+                    PositionConstants.EAST, 0.25);
             getBorderedFigure().getBorderItemContainer().add(inSequenceInputConnectorFigure, locator);
             return true;
         }
@@ -501,7 +501,7 @@ public class ProxyServiceEditPart extends AbstractBaseFigureEditPart {
         public WrappingLabel getFigureProxyNamePropertyLabel() {
             return fFigureProxyNamePropertyLabel;
         }
-        
+
         /**
          * @generated NOT
          */

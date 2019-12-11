@@ -100,9 +100,8 @@ public class FilterMediatorItemSemanticEditPolicy extends EsbBaseItemSemanticEdi
                     }
                 }
                 cmd.add(new DestroyElementCommand(
-                        new DestroyElementRequest(getEditingDomain(), node.getElement(), false))); // directlyOwned:
-                                                                                                   // true
-                // don't need explicit deletion of node as parent's view deletion would clean child views as well
+                        new DestroyElementRequest(getEditingDomain(), node.getElement(), false))); // directlyOwned: true
+                // don't need explicit deletion of node as parent's view deletion would clean child views as well 
                 // cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), node));
                 break;
             case FilterMediatorOutputConnectorEditPart.VISUAL_ID:
@@ -116,9 +115,8 @@ public class FilterMediatorItemSemanticEditPolicy extends EsbBaseItemSemanticEdi
                     }
                 }
                 cmd.add(new DestroyElementCommand(
-                        new DestroyElementRequest(getEditingDomain(), node.getElement(), false))); // directlyOwned:
-                                                                                                   // true
-                // don't need explicit deletion of node as parent's view deletion would clean child views as well
+                        new DestroyElementRequest(getEditingDomain(), node.getElement(), false))); // directlyOwned: true
+                // don't need explicit deletion of node as parent's view deletion would clean child views as well 
                 // cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), node));
                 break;
             case FilterMediatorPassOutputConnectorEditPart.VISUAL_ID:
@@ -132,9 +130,8 @@ public class FilterMediatorItemSemanticEditPolicy extends EsbBaseItemSemanticEdi
                     }
                 }
                 cmd.add(new DestroyElementCommand(
-                        new DestroyElementRequest(getEditingDomain(), node.getElement(), false))); // directlyOwned:
-                                                                                                   // true
-                // don't need explicit deletion of node as parent's view deletion would clean child views as well
+                        new DestroyElementRequest(getEditingDomain(), node.getElement(), false))); // directlyOwned: true
+                // don't need explicit deletion of node as parent's view deletion would clean child views as well 
                 // cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), node));
                 break;
             case FilterMediatorFailOutputConnectorEditPart.VISUAL_ID:
@@ -148,16 +145,14 @@ public class FilterMediatorItemSemanticEditPolicy extends EsbBaseItemSemanticEdi
                     }
                 }
                 cmd.add(new DestroyElementCommand(
-                        new DestroyElementRequest(getEditingDomain(), node.getElement(), false))); // directlyOwned:
-                                                                                                   // true
-                // don't need explicit deletion of node as parent's view deletion would clean child views as well
+                        new DestroyElementRequest(getEditingDomain(), node.getElement(), false))); // directlyOwned: true
+                // don't need explicit deletion of node as parent's view deletion would clean child views as well 
                 // cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), node));
                 break;
             case FilterContainerEditPart.VISUAL_ID:
                 cmd.add(new DestroyElementCommand(
-                        new DestroyElementRequest(getEditingDomain(), node.getElement(), false))); // directlyOwned:
-                                                                                                   // true
-                // don't need explicit deletion of node as parent's view deletion would clean child views as well
+                        new DestroyElementRequest(getEditingDomain(), node.getElement(), false))); // directlyOwned: true
+                // don't need explicit deletion of node as parent's view deletion would clean child views as well 
                 // cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), node));
                 break;
             }

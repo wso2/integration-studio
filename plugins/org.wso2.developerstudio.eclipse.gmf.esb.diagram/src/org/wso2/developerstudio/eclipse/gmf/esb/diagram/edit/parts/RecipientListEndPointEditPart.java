@@ -352,12 +352,14 @@ public class RecipientListEndPointEditPart extends ComplexFiguredAbstractEndpoin
         }
 
     }
-    
+
     public void createDialogBox(ComplexFiguredAbstractEndpoint abstractEP) throws Exception {
 
-        final EObject recipientEP = (RecipientListEndPoint) ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) getModel()).getElement();
+        final EObject recipientEP = (RecipientListEndPoint) ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) getModel())
+                .getElement();
 
-        if (((RecipientListEndPoint) recipientEP).getName() == null || ((RecipientListEndPoint) recipientEP).getName().trim().equals("")) {
+        if (((RecipientListEndPoint) recipientEP).getName() == null
+                || ((RecipientListEndPoint) recipientEP).getName().trim().equals("")) {
             IInputValidator validator = new IInputValidator() {
 
                 public String isValid(String str) {
@@ -371,9 +373,8 @@ public class RecipientListEndPointEditPart extends ComplexFiguredAbstractEndpoin
 
             };
             String defaultName = "recipientList-endpoint";
-            final InputDialog recipientEPNameInput = new InputDialog(Display.getCurrent().getActiveShell(), 
-                    "Enter RecipientList Endpoint Name", "Endpoint Name",
-                    defaultName, validator) {
+            final InputDialog recipientEPNameInput = new InputDialog(Display.getCurrent().getActiveShell(),
+                    "Enter RecipientList Endpoint Name", "Endpoint Name", defaultName, validator) {
                 protected Control createDialogArea(Composite parent) {
                     Composite composite = (Composite) super.createDialogArea(parent);
                     return composite;
@@ -398,7 +399,7 @@ public class RecipientListEndPointEditPart extends ComplexFiguredAbstractEndpoin
                                 return true;
                             }
                         };
-                        
+
                         getEditDomain().getCommandStack().execute(new ICommandProxy(operation));
                         abstractEP.openPage(recipientEPName);
                     }

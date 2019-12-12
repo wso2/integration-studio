@@ -34,5 +34,11 @@ public class DSSVisualEditorConstants {
     public static class ErrorMessages {
         public static final String ERROR_CREATING_UI_EDITOR = "Error creating GUI editor";
         public static final String ERROR_CREATING_NESTED_TEXT_EDITOR = "Error creating nested text editor";
+        public static final String ERROR_INVALID_INPUT_MUST_BE_IFILE_EDITOR_INPUT = "Invalid input: Must be IFileEditorInput";
+    }
+    
+    public static class RequestHeaders {
+        public static final String HEADER_OPERATION_TYPE = "x-operation-type";
+        public static final String HEADER_VALUE_SAVE_ALL = "save-all";
     }
 }

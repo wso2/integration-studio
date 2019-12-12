@@ -36,7 +36,7 @@ import org.wso2.developerstudio.eclipse.ds.servlets.DSSEditorServlet;
 import org.wso2.developerstudio.eclipse.templates.dashboard.handlers.JettyServerHandler;
 
 /**
- * This startup handler will add the DSS context handler to the Jetty
+ * This startup handler will add the DSS context handler to Jetty.
  * handler collection.
  *
  */

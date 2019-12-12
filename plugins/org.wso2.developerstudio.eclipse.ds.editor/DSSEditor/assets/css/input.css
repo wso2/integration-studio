@@ -107,3 +107,7 @@ select:invalid {
   border: 1px solid #b71c1c;
 }
 
+#ds-notification-alert-holder .alert {
+  margin-bottom: 0 !important;
+}
+

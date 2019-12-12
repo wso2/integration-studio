@@ -70,3 +70,25 @@
   padding: 0;
 }
 
+#ds-notification-alert-holder .alert {
+  margin-right: 0 !important;
+}
+
+#ds-notification-alert-holder {
+  padding: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+#ds-password-formgroup {
+  text-align: left;
+}
+
+#ds-table-notification-alert-holder .alert {
+  margin-right: 0 !important;
+}
+
+#ds-table-notification-alert-holder {
+  padding: 0 !important;
+  margin-bottom: 0 !important;
+}
+

@@ -1,6 +1,5 @@
 .modal-dialog {
   overflow-y: initial !important;
-  /*overflow-x: initial !important;*/
   max-width: 800px !important;
 }
 

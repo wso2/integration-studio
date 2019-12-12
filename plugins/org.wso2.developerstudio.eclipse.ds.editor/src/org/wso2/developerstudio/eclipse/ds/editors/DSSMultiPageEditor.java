@@ -45,12 +45,14 @@ import org.eclipse.ui.part.MultiPageEditorPart;
 import org.eclipse.ui.texteditor.IDocumentProvider;
 import org.eclipse.ui.texteditor.ITextEditor;
 import org.eclipse.wst.sse.ui.StructuredTextEditor;
-import org.wso2.developerstudio.eclipse.ds.presentation.DsEditorPlugin;
 import org.wso2.developerstudio.eclipse.ds.presentation.md.DSSVisualEditorPage;
 import org.wso2.developerstudio.eclipse.ds.presentation.util.DSSVisualEditorConstants;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
+/**
+ * Represents the multi-page editor of the DSS
+ */
 public class DSSMultiPageEditor extends MultiPageEditorPart implements IResourceChangeListener {
 
     /** 
@@ -68,7 +70,10 @@ public class DSSMultiPageEditor extends MultiPageEditorPart implements IResource
      */
     private String dsXmlContent;
     
-    public static final String PLUGIN_ID = "org.wso2.developerstudio.eclipse.ds.editors";
+    public static final String PLUGIN_ID = "org.wso2.developerstudio.eclipse.ds.editor";
+    
+    public static final int VISUAL_EDITOR_PAGE_INDEX = 0;
+    public static final int SOURCE_EDITOR_PAGE_INDEX = 1;
     
     private static IDeveloperStudioLog log = Logger.getLog(PLUGIN_ID);
 
@@ -142,11 +147,17 @@ public class DSSMultiPageEditor extends MultiPageEditorPart implements IResource
     }
 
     /**
-     * Saves the multi-page editor's document. while calling js functions to save and sync
+     * Saves the multi-page editor's document.
      */
     @Override
     public void doSave(IProgressMonitor monitor) {
-
+        ITextEditor editor = (ITextEditor) getEditor(SOURCE_EDITOR_PAGE_INDEX);
+        IDocumentProvider dp = editor.getDocumentProvider();
+        IDocument doc = dp.getDocument(editor.getEditorInput());
+        setDsXmlContent(doc.get());
+        getEditor(1).doSave(monitor);
+        
+        ((DSSVisualEditorPage) getEditor(VISUAL_EDITOR_PAGE_INDEX)).getBrowser().refresh();
     }
 
     /**
@@ -177,6 +188,8 @@ public class DSSMultiPageEditor extends MultiPageEditorPart implements IResource
     @Override
     public void init(IEditorSite site, IEditorInput editorInput) throws PartInitException {
         if (!(editorInput instanceof IFileEditorInput)) {
+            throw new PartInitException(DSSVisualEditorConstants.
+                    ErrorMessages.ERROR_INVALID_INPUT_MUST_BE_IFILE_EDITOR_INPUT);
         }
         super.init(site, editorInput);
         setPartName(editorInput.getName());
@@ -195,10 +208,8 @@ public class DSSMultiPageEditor extends MultiPageEditorPart implements IResource
      */
     @Override
     protected void pageChange(int newPageIndex) {
-//        super.pageChange(newPageIndex);
-//        ITextEditor editor = (ITextEditor) getEditor(1);
-//        IDocumentProvider dp = editor.getDocumentProvider();
-//        IDocument doc = dp.getDocument(editor.getEditorInput());
+        super.pageChange(newPageIndex);
+        ((DSSVisualEditorPage) getEditor(VISUAL_EDITOR_PAGE_INDEX)).getBrowser().refresh();
     }
 
     /**
@@ -229,6 +240,14 @@ public class DSSMultiPageEditor extends MultiPageEditorPart implements IResource
 
     public void setDsXmlContent(String dsXmlContent) {
         this.dsXmlContent = dsXmlContent;
+    }
+    
+    public TextEditor getTextEditor() {
+        return textEditor;
+    }
+
+    public void setTextEditor(TextEditor textEditor) {
+        this.textEditor = textEditor;
     }
 
 }

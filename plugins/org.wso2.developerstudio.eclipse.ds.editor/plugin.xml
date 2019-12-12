@@ -28,8 +28,7 @@
    <extension point="org.eclipse.ui.editors">
 	 <editor id="org.wso2.developerstudio.eclipse.ds.presentation.DsEditorID"
 			name="%_UI_DsEditor_label" icon="icons/wso2/dbsIcon.gif"
-			extensions="dbs" class="org.wso2.developerstudio.eclipse.ds.editors.DSSMultiPageEditor"
-			contributorClass="org.wso2.developerstudio.eclipse.ds.presentation.DsActionBarContributor">
+			extensions="dbs" class="org.wso2.developerstudio.eclipse.ds.editors.DSSMultiPageEditor">
 			<contentTypeBinding
 				contentTypeId="org.wso2.developerstudio.eclipse.ds.contenttype.dsconfxml">
 			</contentTypeBinding>

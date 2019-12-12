@@ -28,7 +28,6 @@ import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.ui.part.MultiPageEditorPart;
-import org.osgi.service.prefs.BackingStoreException;
 import org.wso2.developerstudio.eclipse.ds.presentation.DsEditorPlugin;
 import org.wso2.developerstudio.eclipse.ds.presentation.util.DSSVisualEditorConstants;
 import org.wso2.developerstudio.eclipse.webui.core.editor.AbstractWebBasedEditor;

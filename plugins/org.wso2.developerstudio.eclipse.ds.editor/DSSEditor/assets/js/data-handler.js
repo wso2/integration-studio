@@ -1,121 +1,25 @@
 $(document).ready(function ($) {
 
-    // var portValue = resolveGetParam("port");
-    // var url = "http://localhost:" + portValue + "/dsseditor/service";
+    let portValue = resolveGetParam("port");
+    // let url = "http://localhost:" + portValue + "/dsseditor/service";
+    let url = "http://localhost:7774/dsseditor/service";
+    let root = "";
 
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    var forms = document.getElementsByClassName('needs-validation');
-    // Loop over them and prevent submission
-    var validation = Array.prototype.filter.call(forms, function(form) {
-        form.addEventListener('submit', function(event) {
-            if (form.checkValidity() === false) {
-                event.preventDefault();
-                event.stopPropagation();
-            }
-            form.classList.add('was-validated');
-        }, false);
+    // Retrieve the XML source from backend.
+    $.get(url, function (data, status) {
+
+        let parser = new DOMParser();
+        root = parser.parseFromString(data, "text/xml");
+
+        populateGeneralDetails(root);
+        populateTransportSettings(root);
+        populateDataSources(root);
+
     });
-
-    var dummyXml =
-        "<data disableLegacyBoxcarringMode=\"true\" enableBatchRequests=\"true\" enableBoxcarring=\"true\" name=\"StudentDataService\" serviceNamespace=\"namespace\" transports=\"http https\">\n" +
-        "   <description>sample description</description>\n" +
-        "   <config enableOData=\"true\" id=\"StudentsDatasource\">\n" +
-        "      <property name=\"username\">root</property>\n" +
-        "      <property name=\"password\">root</property>\n" +
-        "      <property name=\"url\">jdbc:mysql://localhost:3306/school_db</property>\n" +
-        "      <property name=\"driverClassName\">com.mysql.jdbc.Driver</property>\n" +
-        "      <property name=\"dynamicUserAuthClass\">dynauthclass</property>\n" +
-        "      <property name=\"dynamicUserAuthMapping\">\n" +
-        "         <configuration>\n" +
-        "            <entry request=\"un\">\n" +
-        "               <username>dbun</username>\n" +
-        "               <password>passw</password>\n" +
-        "            </entry>\n" +
-        "         </configuration>\n" +
-        "      </property>\n" +
-        "   </config>\n" +
-        "   <query id=\"CreateStudents\" useConfig=\"StudentsDatasource\">\n" +
-        "      <sql>INSERT INTO students (name, school, grade) VALUES (:name, :school, :grade)</sql>\n" +
-        "      <param name=\"name\" sqlType=\"STRING\"/>\n" +
-        "      <param name=\"school\" sqlType=\"STRING\"/>\n" +
-        "      <param name=\"grade\" sqlType=\"INTEGER\"/>\n" +
-        "   </query>\n" +
-        "   <query id=\"UpdateStudents\" useConfig=\"StudentsDatasource\">\n" +
-        "      <sql>UPDATE students SET name = :name, school = :school, grade = :grade WHERE id = :id</sql>\n" +
-        "      <param name=\"name\" sqlType=\"STRING\" type=\"OUT\"/>\n" +
-        "      <param name=\"school\" sqlType=\"STRING\"/>\n" +
-        "      <param name=\"grade\" sqlType=\"INTEGER\"/>\n" +
-        "      <param name=\"id\" sqlType=\"INTEGER\"/>\n" +
-        "   </query>\n" +
-        "   <query id=\"ReadStudents\" useConfig=\"StudentsDatasource\">\n" +
-        "      <sql>SELECT id, name, school, grade FROM students</sql>\n" +
-        "      <result element=\"Students\" rowName=\"Student\">\n" +
-        "         <element column=\"id\" name=\"Id\" xsdType=\"xs:integer\"/>\n" +
-        "         <element column=\"name\" name=\"Name\" xsdType=\"xs:string\"/>\n" +
-        "         <element column=\"school\" name=\"School\" xsdType=\"xs:string\"/>\n" +
-        "         <element column=\"grade\" name=\"Grade\" xsdType=\"xs:integer\"/>\n" +
-        "      </result>\n" +
-        "   </query>\n" +
-        "   <query id=\"DeleteStudent\" useConfig=\"StudentsDatasource\">\n" +
-        "      <sql>DELETE FROM students WHERE id = :id</sql>\n" +
-        "      <param name=\"id\" sqlType=\"INTEGER\"/>\n" +
-        "   </query>\n" +
-        "   <operation name=\"CreateStudents\">\n" +
-        "      <call-query href=\"CreateStudents\">\n" +
-        "         <with-param name=\"name\" query-param=\"name\"/>\n" +
-        "         <with-param name=\"school\" query-param=\"school\"/>\n" +
-        "         <with-param name=\"grade\" query-param=\"grade\"/>\n" +
-        "      </call-query>\n" +
-        "   </operation>\n" +
-        "   <operation name=\"UpdateStudents\">\n" +
-        "      <call-query href=\"UpdateStudents\">\n" +
-        "         <with-param name=\"name\" query-param=\"name\"/>\n" +
-        "         <with-param name=\"school\" query-param=\"school\"/>\n" +
-        "         <with-param name=\"grade\" query-param=\"grade\"/>\n" +
-        "         <with-param name=\"id\" query-param=\"id\"/>\n" +
-        "      </call-query>\n" +
-        "   </operation>\n" +
-        "   <operation name=\"ReadStudents\">\n" +
-        "      <call-query href=\"ReadStudents\" requiredRoles=\"\"/>\n" +
-        "   </operation>\n" +
-        "   <operation name=\"DeleteStudents\">\n" +
-        "      <call-query href=\"DeleteStudent\">\n" +
-        "         <with-param name=\"id\" query-param=\"id\"/>\n" +
-        "      </call-query>\n" +
-        "   </operation>\n" +
-        "   <authorization_provider class=\"authproviderclass\">\n" +
-        "      <property name=\"blah\">bleh</property>\n" +
-        "   </authorization_provider>\n" +
-        "</data>";
-
-    var url = "http://localhost:7774/dsseditor/service";
-
-    // $.get(url, function (data, status) {
-    //
-    //     parser = new DOMParser();
-    //     xmlDoc = parser.parseFromString(dummyXml, "text/xml");
-    //
-    //     $('#dss-name-header').text(xmlDoc.getElementsByTagName("data")[0].attributes.getNamedItem("name").value);
-    //
-    //
-    //     var description = xmlDoc.getElementsByTagName("description")[0].nodeValue;
-    //
-    //     if (description != null) {
-    //         $('#dss-description-input').val(description);
-    //     }
-    //
-    //
-    // });
-
-    var root = parseXmlTextContent(dummyXml);
-
-    populateGeneralDetails(root);
-    populateTransportSettings(root);
-    populateDataSources(root);
 
     /** Start of Event handlers **/
 
-    // Transport settings - Transports
+    // Start of Transport settings - Transports
     $("#ts-transport-check-row input").change(function () {
         var transportsStr = $('.ts-transport-checkbox:checked').map(function() {
             return this.name;
@@ -123,19 +27,60 @@ $(document).ready(function ($) {
 
         root.getElementsByTagName("data")[0].attributes.getNamedItem("transports").value = transportsStr;
     });
+    // End of Transport settings - Transports
 
-    // Data sources - Add data source
-    $("#ds-add-save-btn").click(function () {
-        $("#create-ds-form").submit(function () {
-            //addDataSource();
-            alert("asdfasdafadsf");
-        });
+    // Start of Data sources - Add data source
+    $("#create-ds-form").submit(function (e) {
+        e.preventDefault();
+        let status = addDataSource(root);
+
+        if (status) {
+            $("#ds-add-edit-ds-modal").modal('hide');
+            save(root, url);
+s
+            $.get(url, function (data, status) {
+                let parser = new DOMParser();
+                console.log("From backend: ");
+                console.log(parser.parseFromString(data, "text/xml"));
+            });
+        }
+
     });
 
-    // $("#create-ds-form").submit(function () {
-    //     alert("asdfasdafadsf");
-    // });
+    $(".modal").on("hidden.bs.modal", function() {
+        //$(this).removeData();
+        $(':input', '#create-ds-form').not(':button, :submit, :reset, :hidden')
+            .removeAttr('checked').removeAttr('selected').not(':checkbox, :radio, select').val('');
+    });
 
+    $("#ds-datasource-add-btn").click(function() {
+        console.log(root);
+        openDSModal(false);
+    });
+
+    $(document).on('click','#ds-datasources-table .fa-trash',function() {
+        let dsId = $(this).closest("tr").data('id');
+        deleteDatasource(root, dsId);
+        $(this).closest("tr").remove();
+        save(root, url);
+    });
+
+    $(document).on('click','#ds-datasources-table .fa-edit',function() {
+        let dsId = $(this).closest("tr").data('id');
+        populateDSModal(root, dsId);
+        openDSModal(true);
+    });
+    // End of Data sources - Add data source
+
+    // Start of input event handlers - General details
+    $("#dss-description-input, #dss-namespace-input").change(function() {
+        save(root, url);
+    });
+
+    $("#dss-namespace-input").change(function() {
+        save(root, url);
+    });
+    // End of input event handlers - General details
 
     /** End of Event handlers **/
 
@@ -150,17 +95,16 @@ $(document).ready(function ($) {
 function populateGeneralDetails(root) {
     $('#dss-name-header').text(root.getElementsByTagName("data")[0].attributes.getNamedItem("name").value);
 
-    var description = root.getElementsByTagName("description")[0].childNodes[0].nodeValue;
-    var namespace = root.getElementsByTagName("data")[0].attributes.getNamedItem("serviceNamespace").value;
+    let description = root.getElementsByTagName("description")[0];
+    let namespace = root.getElementsByTagName("data")[0];
 
-    if (description) {
-        $('#dss-description-input').val(description);
+    if (description.hasChildNodes()) {
+        $('#dss-description-input').val(description.childNodes[0].nodeValue);
     }
 
-    if (namespace) {
-        $('#dss-namespace-input').val(namespace);
+    if (namespace.hasChildNodes()) {
+        $('#dss-namespace-input').val(namespace.attributes.getNamedItem("serviceNamespace").value);
     }
-
 }
 
 /**
@@ -169,11 +113,11 @@ function populateGeneralDetails(root) {
  * @param root Document object.
  */
 function populateTransportSettings(root) {
-    let transports = root.getElementsByTagName("data")[0].attributes.getNamedItem("transports").value;
+    let transports = root.getElementsByTagName("data")[0].attributes.getNamedItem("transports");
     let transportValues;
 
-    if (transports) {
-        transportValues = transports.split(" ");
+    if (transports !== undefined && transports !== null) {
+        transportValues = transports.value.split(" ");
         transportValues.forEach(function (item, index) {
             item = item.trim();
             if (item == "http") {
@@ -197,17 +141,30 @@ function populateTransportSettings(root) {
 function populateDataSources(root) {
     let dsConfigs = root.getElementsByTagName("config");
 
-    if (!dsConfigs) {
+    if (dsConfigs.length == 0 || dsConfigs === undefined || dsConfigs === null)  {
+        $("#ds-datasources-table").hide();
+        showDSTableNotification("info", "No data sources available. Click 'Add New' to create a new data source.", 0);
         return;
     }
 
+    $("#ds-datasources-table").show();
+
     for (let i = 0, len = dsConfigs.length; i < len; i++) {
         let dsName = dsConfigs[i].id;
-        let markup = "<tr><td>" + dsName + "</td><td class='text-center'>" +
+        let markup = "<tr" + " data-id='" + dsName + "'" + "><td>" + dsName + "</td><td class='text-center'>" +
             "<i class='fa fa-edit'></i><i class='fa fa-trash'></i></td></tr>";
 
         $("#ds-datasources-table tbody").append(markup);
     }
+
+}
+
+/**
+ * Populates the data source modal when editing an existing data source.
+ * @param root Document root object.
+ * @param dsId Data source ID.
+ */
+function populateDSModal(root, dsId) {
 
 }
 
@@ -217,74 +174,211 @@ function populateDataSources(root) {
  * @param root Document object
  */
 function addDataSource(root) {
+    // Check if data source name already exists
+    let dsConfigs = root.getElementsByTagName("config");
+    let datasourceId = $("#ds-ds-id-input").val();
 
-    var validator = $("#create-ds-form").data("bs.validator");
-    validator.validate();
-
-    if (!validator.hasErrors()) {
-        alert("askjhasdkfj");
-    } else {
-
+    for (let i = 0, len = dsConfigs.length; i < len; i++) {
+        if (dsConfigs[i].id == datasourceId) {
+            showDSNotification("danger", "A data source with the given name already exists.", 4000);
+            return false;
+        }
     }
 
-    // let formData = $("#create-ds-form").find(':visible').serializeArray();
-    // let rdbmsType = $("#ds-dstype-select").val();
-    //
-    // if (rdbmsType == "rdbms_ds") {
-    //
-    // } else if (rdbmsType == "carbon_ds") {
-    //
-    // }
+    // Process the form
+    let formData = $("#create-ds-form").find(':visible').serializeArray();
+    let dataObj = {};
 
+    $(formData).each(function(i, field){
+        dataObj[field.name] = field.value;
+    });
+
+    processDSInputData(root, dataObj, true);
+
+    return true;
 }
 
-//------------ Utility functions ------------//
 /**
- * Extracts query params from the URI.
+ * Processes form input data of the create/edit data source form.
  *
- * @param param Parameter name.
- * @returns {*} Value of the param.
+ * @param root Document root element.
+ * @param data Form data in data['field-name'] format.
+ * @param deleteIfExists Delete the config node if exists already.
  */
-function resolveGetParam(param) {
-    let paramValue = null,
-        tmp = [];
-    location.search
-        .substr(1)
-        .split("&")
-        .forEach(function (item) {
-            tmp = item.split("=");
-            if (tmp[0] === param) {
-                paramValue = decodeURIComponent(tmp[1]);
+function processDSInputData(root, data, deleteIfExists) {
+    let dataRoot = root.getElementsByTagName("data")[0];
+    let dsConfigs = root.getElementsByTagName("config");
+
+    let rdbmsType = $("#ds-dstype-select").val();
+    let dbTypeExt = $("#ds-dstype-2-select").val();
+    let dsId = $("#ds-ds-id-input").val();
+
+    // Delete if existing config node exists
+    if (deleteIfExists) {
+        for (let i = 0, len = dsConfigs.length; i < len; i++) {
+            if (dsConfigs[i].id == dsId) {
+                // Delete the node.
+                root.documentElement.removeChild(dsConfigs[i]);
+                return;
             }
-        });
-    return paramValue;
-}
-
-/**
- * Parses XML text content into a DOM object.
- *
- * @param xmlTextContent XML content to be parsed.
- * @returns {Document} Document object.
- */
-function parseXmlTextContent(xmlTextContent) {
-    let root;
-    try {
-        let parser = new DOMParser();
-        root = parser.parseFromString(xmlTextContent, "text/xml");
-    } catch (err) {
-        console.log("Error while parsing the document.", err);
+        }
     }
 
-    return root;
+    // Create a new config element
+    let configElement = root.createElement("config");
+    configElement.setAttribute("id", dsId);
+
+    let properties = [];
+
+    if (rdbmsType === "rdbms_ds") {
+        if (dbTypeExt === "default_ds") {
+            properties.push(createTextNode(root, createPropertyNode(root, "driverClassName"), data['ds-driver-class-input']));
+            properties.push(createTextNode(root, createPropertyNode(root, "url"), data['ds-url-input']));
+            properties.push(createTextNode(root, createPropertyNode(root, "username"), data['ds-username-input']));
+            properties.push(createTextNode(root, createPropertyNode(root, "password"), data['ds-password-input']));
+        }
+
+        if (dbTypeExt === "external_ds") {
+            properties.push(createTextNode(root, createPropertyNode(root, "dataSourceClassName"), data['ds-class-name-input']));
+        }
+    } else if (rdbmsType === "carbon_ds") {
+        properties.push(createTextNode(root, createPropertyNode(root, "carbon_datasource_name"), data['ds-ds-name-input']));
+    }
+
+    // Append properties to config node
+    for (let i = 0, len = properties.length; i < len; i++) {
+        configElement.appendChild(properties[i]);
+    }
+
+    // OData enabled
+    configElement.setAttribute("enableOData", $('#ds-enable-odata-check').is(":checked"));
+
+    if (dsConfigs.length > 0) {
+        insertAfter(configElement, dsConfigs[dsConfigs.length - 1]);
+    } else {
+        dataRoot.appendChild(configElement);
+    }
+
 }
 
 /**
- * Returns an array of a string split by a given delimiter.
+ * Opens the data sources Add/Edit modal.
  *
- * @param str String to be split.
- * @param delimiter Delimiter to be split with.
- * @returns {string[]} Array of strings.
+ * @param isEditEnabled 'True' to open a data source in edit mode. 'False' to add a new data source.
  */
-function splitAndTrim(str, delimiter) {
-    return str.split(delimiter).map((item)=>item.trim());
+function openDSModal(isEditEnabled) {
+    if (isEditEnabled) {
+        $("#ds-modal-header").text("Edit Datasource");
+    } else {
+        $("#ds-modal-header").text("Create Datasource");
+    }
+
+    $("#ds-add-edit-ds-modal").modal('show');
 }
+
+/**
+ * Shows an alert of a given type in the data source editor modal.
+ *
+ * @param type Type of the alert: success | info | warning | danger
+ * @param message Message to be displayed.
+ * @param interval Number of milliseconds before the notification disappears. If not provided or '0',
+ * notification will stay forever.
+ */
+function showDSNotification(type, message, interval) {
+    let alertHtml = "<div id='ds-notification-alert' class=\"alert " + "alert-" + type + "\"" + ">" + message + "</div>";
+    $("#ds-notification-alert-holder").html(alertHtml);
+    $("#ds-notification-alert").show();
+
+    if (interval > 0) {
+        window.setTimeout(function () {
+            $("#ds-notification-alert").fadeTo(500, 0).slideUp(500, function () {
+                $(this).remove();
+            });
+        }, interval);
+    }
+}
+
+/**
+ * Shows an alert of a given type in the data sources table.
+ *
+ * @param type Type of the alert: success | info | warning | danger
+ * @param message Message to be displayed.
+ * @param interval Number of milliseconds before the notification disappears. If not provided or '0',
+ * notification will stay forever.
+ */
+function showDSTableNotification(type, message, interval) {
+    let alertHtml = "<span><div id='ds-table-notification-alert' class=\"alert " + "alert-" + type + "\"" + ">" + message + "</div></span>";
+    $("#ds-table-notification-alert-holder").html(alertHtml);
+    $("#ds-table-notification-alert").show();
+
+    if (interval > 0) {
+        window.setTimeout(function () {
+            $("#ds-table-notification-alert").fadeTo(500, 0).slideUp(500, function () {
+                $(this).remove();
+            });
+        }, interval);
+    }
+}
+
+/**
+ * Creates and returns a new 'property' node.
+ *
+ * @param root Document object.
+ * @param name Name of the property.
+ * @returns {HTMLElement | any | ActiveX.IXMLDOMElement} Created node.
+ */
+function createPropertyNode(root, name) {
+    let newNode = root.createElement("property");
+    newNode.setAttribute("name", name);
+    return newNode;
+}
+
+/**
+ * Creates a text node in a given parent node.
+ *
+ * @param root Document object.
+ * @param parentNode Parent Node.
+ * @param textContent Text content.
+ * @returns {*} Parent node object.
+ */
+function createTextNode(root, parentNode, textContent) {
+    let newTextNode = root.createTextNode(textContent);
+    parentNode.appendChild(newTextNode);
+    return parentNode;
+}
+
+/**
+ * Inserts a node after a given reference node.
+ *
+ * @param newNode New node.
+ * @param refNode Reference node.
+ */
+function insertAfter(newNode, refNode) {
+    refNode.parentNode.insertBefore(newNode, refNode.nextSibling);
+}
+
+/**
+ * This function sends the modified source to the back-end and invokes the save operation.
+ *
+ * @param root Document object.
+ * @param url Back-end URL.
+ * @returns {*|{getAllResponseHeaders, abort, setRequestHeader, readyState,
+ * getResponseHeader, overrideMimeType, statusCode}} Status code
+ */
+function save(root, url) {
+    let serializedData = new XMLSerializer().serializeToString(root);
+    console.log(serializedData);
+
+    let request = $.ajax({
+        url: url,
+        type: "post",
+        headers: { OPERATION_TYPE_HEADER: OPERATION_TYPE_HEADER_SAVE_ALL },
+        data: {xmlcontent: serializedData},
+        success: function (resData) {
+            location.reload();
+        }
+    });
+
+    return request;
+}
+

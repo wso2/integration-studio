@@ -58,8 +58,6 @@ public class JsonTransformMediatorPropertyPropertiesEditionPartForm extends Sect
 	protected Text propertyName;
 	protected Text propertyValue;
 
-
-
 	/**
 	 * For {@link ISection} use only.
 	 */

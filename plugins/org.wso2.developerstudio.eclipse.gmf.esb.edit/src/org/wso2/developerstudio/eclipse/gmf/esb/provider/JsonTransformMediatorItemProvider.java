@@ -26,7 +26,6 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
@@ -62,10 +61,7 @@ public class JsonTransformMediatorItemProvider extends MediatorItemProvider {
             itemPropertyDescriptors.clear();
         }
         super.getPropertyDescriptors(object);
-        
-//        addSchemaPropertyDescriptor(object);
         addDescriptionPropertyDescriptor(object);
-//        addJsonTransformPropertiesPropertyDescriptor(object);
         
         return itemPropertyDescriptors;
     }

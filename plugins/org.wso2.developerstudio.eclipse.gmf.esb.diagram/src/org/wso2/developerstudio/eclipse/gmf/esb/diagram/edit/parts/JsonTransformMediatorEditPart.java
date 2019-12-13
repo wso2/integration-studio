@@ -3,14 +3,10 @@ package org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts;
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EditPartConstants.DEFAULT_PROPERTY_VALUE_TEXT;
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EditPartConstants.JSON_TRANSFORM_MEDIATOR_ICON_PATH;
 
-import java.util.Iterator;
-
 import org.apache.commons.lang.StringUtils;
-import org.eclipse.draw2d.FlowLayout;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.Shape;
-import org.eclipse.draw2d.StackLayout;
 import org.eclipse.draw2d.ToolbarLayout;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
@@ -107,17 +103,12 @@ public class JsonTransformMediatorEditPart extends FixedSizedAbstractMediator {
                 case JsonTransformMediatorOutputConnectorEditPart.VISUAL_ID:
                     return new BorderItemSelectionEditPolicy();
                 }
-//                return super.createChildEditPolicy(child);
                 EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
                 if (result == null) {
                     result = new NonResizableEditPolicy();
                 }
                 return result;
             }
-
-//            protected Command createAddCommand(EditPart child, EditPart after) {
-//                return null;
-//            }
 
             protected Command getMoveChildrenCommand(Request request) {
                 return null;
@@ -162,10 +153,6 @@ public class JsonTransformMediatorEditPart extends FixedSizedAbstractMediator {
             return true;
         }
         if (childEditPart instanceof JsonTransformMediatorInputConnectorEditPart) {
-//            BorderItemLocator locator = new BorderItemLocator(getMainFigure(), PositionConstants.WEST);
-//            getBorderedFigure().getBorderItemContainer()
-//                    .add(((JsonTransformMediatorInputConnectorEditPart) childEditPart).getFigure(), locator);
-//            return true;
             IFigure borderItemFigure = ((JsonTransformMediatorInputConnectorEditPart) childEditPart).getFigure();
             BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(), borderItemFigure,
                     PositionConstants.WEST, 0.5);
@@ -173,10 +160,6 @@ public class JsonTransformMediatorEditPart extends FixedSizedAbstractMediator {
             return true;
         }
         if (childEditPart instanceof JsonTransformMediatorOutputConnectorEditPart) {
-//            BorderItemLocator locator = new BorderItemLocator(getMainFigure(), PositionConstants.EAST);
-//            getBorderedFigure().getBorderItemContainer()
-//                    .add(((JsonTransformMediatorOutputConnectorEditPart) childEditPart).getFigure(), locator);
-//            return true;
             IFigure borderItemFigure = ((JsonTransformMediatorOutputConnectorEditPart) childEditPart).getFigure();
             BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(), borderItemFigure,
                     PositionConstants.EAST, 0.5);
@@ -237,14 +220,6 @@ public class JsonTransformMediatorEditPart extends FixedSizedAbstractMediator {
     }
 
     /**
-    * @generated
-    */
-//    protected NodeFigure createNodePlate() {
-//        DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(40, 40);
-//        return result;
-//    }
-
-    /**
     * Creates figure for this edit part.
     * 
     * Body of this method does not depend on settings in generation model
@@ -254,7 +229,6 @@ public class JsonTransformMediatorEditPart extends FixedSizedAbstractMediator {
     */
     protected NodeFigure createMainFigure() {
         NodeFigure figure = createNodePlate();
-//        figure.setLayoutManager(new StackLayout());
         figure.setLayoutManager(new ToolbarLayout(true));
         IFigure shape = createNodeShape();
         figure.add(shape);
@@ -323,13 +297,6 @@ public class JsonTransformMediatorEditPart extends FixedSizedAbstractMediator {
         }
     }
 
-//    /**
-//    * @generated
-//    */
-//    public EditPart getPrimaryChildEditPart() {
-//        return getChildBySemanticHint(EsbVisualIDRegistry.getType(JsonTransformMediatorDescriptionEditPart.VISUAL_ID));
-//    }
-
     /**
      * @generated
      */
@@ -352,19 +319,6 @@ public class JsonTransformMediatorEditPart extends FixedSizedAbstractMediator {
             super(borderColor, false);
             this.setBackgroundColor(THIS_BACK);
             createContents();
-//            FlowLayout layoutThis = new FlowLayout();
-//            layoutThis.setStretchMinorAxis(false);
-//            layoutThis.setMinorAlignment(FlowLayout.ALIGN_LEFTTOP);
-//
-//            layoutThis.setMajorAlignment(FlowLayout.ALIGN_LEFTTOP);
-//            layoutThis.setMajorSpacing(5);
-//            layoutThis.setMinorSpacing(5);
-//            layoutThis.setHorizontal(true);
-//
-//            this.setLayoutManager(layoutThis);
-//
-//            this.setBackgroundColor(THIS_BACK);
-//            createContents();
         }
 
         /**
@@ -372,17 +326,6 @@ public class JsonTransformMediatorEditPart extends FixedSizedAbstractMediator {
          */
         private void createContents() {
 
-//            fFigureJsonTransformMediatorPropertyLabel = new WrappingLabel();
-//
-//            fFigureJsonTransformMediatorPropertyLabel.setText("<…>");
-//
-//            this.add(fFigureJsonTransformMediatorPropertyLabel);
-//
-//            fFigureJsonTransformMediatorDescriptionFigure = new WrappingLabel();
-//
-//            fFigureJsonTransformMediatorDescriptionFigure.setText("<…>");
-//
-//            this.add(fFigureJsonTransformMediatorDescriptionFigure);
             fFigureJsonTransformMediatorPropertyLabel = new WrappingLabel();
             fFigureJsonTransformMediatorPropertyLabel.setText(DEFAULT_PROPERTY_VALUE_TEXT);
             fFigureJsonTransformMediatorPropertyLabel.setAlignment(SWT.CENTER);

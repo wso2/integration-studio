@@ -78,7 +78,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.parts.JsonTransformMediatorPrope
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
-import org.wso2.developerstudio.eclipse.gmf.esb.util.FontUtils;
 import org.wso2.developerstudio.esb.form.editors.article.providers.NamedEntityDescriptor;
 
 // End of user code
@@ -100,7 +99,11 @@ public class JsonTransformMediatorPropertiesEditionPartForm extends SectionPrope
 	// Start of user code  for schema widgets declarations
 	protected RegistryKeyProperty schemaRegistryKey;
 	protected Text schemaRegistryKeyText;
+	protected Composite propertiesGroup;
 	protected final EEFPropertyViewUtil eefPropertyViewUtil = new EEFPropertyViewUtil(view);
+	
+	protected Control[] reverseElements;
+	protected Control[] commentsElements;
 	// End of user code
 
 
@@ -148,8 +151,8 @@ public class JsonTransformMediatorPropertiesEditionPartForm extends SectionPrope
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		CompositionSequence jsonTransformMediatorStep = new BindingCompositionSequence(propertiesEditionComponent);
 		CompositionStep propertiesStep = jsonTransformMediatorStep.addStep(EsbViewsRepository.JsonTransformMediator.Properties.class);
-//		propertiesStep.addStep(EsbViewsRepository.JsonTransformMediator.Properties.commentsList);
-//		propertiesStep.addStep(EsbViewsRepository.JsonTransformMediator.Properties.reverse);
+		propertiesStep.addStep(EsbViewsRepository.JsonTransformMediator.Properties.commentsList);
+		propertiesStep.addStep(EsbViewsRepository.JsonTransformMediator.Properties.reverse);
 		propertiesStep.addStep(EsbViewsRepository.JsonTransformMediator.Properties.schema);
 		propertiesStep.addStep(EsbViewsRepository.JsonTransformMediator.Properties.jsonTransformProperties);
 		propertiesStep.addStep(EsbViewsRepository.JsonTransformMediator.Properties.description);
@@ -194,7 +197,7 @@ public class JsonTransformMediatorPropertiesEditionPartForm extends SectionPrope
 		GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
 		propertiesSectionData.horizontalSpan = 3;
 		propertiesSection.setLayoutData(propertiesSectionData);
-		Composite propertiesGroup = widgetFactory.createComposite(propertiesSection);
+		propertiesGroup = widgetFactory.createComposite(propertiesSection);
 		GridLayout propertiesGroupLayout = new GridLayout();
 		propertiesGroupLayout.numColumns = 3;
 		propertiesGroup.setLayout(propertiesGroupLayout);
@@ -203,9 +206,10 @@ public class JsonTransformMediatorPropertiesEditionPartForm extends SectionPrope
 	}
 
 	/**
-	 * 
+	 * @generated NOT
 	 */
 	protected Composite createCommentsListMultiValuedEditor(FormToolkit widgetFactory, Composite parent) {
+		Control[] previousControls = propertiesGroup.getChildren();
 		commentsList = widgetFactory.createText(parent, "", SWT.READ_ONLY); //$NON-NLS-1$
 		GridData commentsListData = new GridData(GridData.FILL_HORIZONTAL);
 		commentsListData.horizontalSpan = 2;
@@ -243,13 +247,17 @@ public class JsonTransformMediatorPropertiesEditionPartForm extends SectionPrope
 		EditingUtils.setID(editCommentsList, EsbViewsRepository.JsonTransformMediator.Properties.commentsList);
 		EditingUtils.setEEFtype(editCommentsList, "eef::MultiValuedEditor::browsebutton"); //$NON-NLS-1$
 		// Start of user code for createCommentsListMultiValuedEditor
-
+		Control[] newControls = propertiesGroup.getChildren();
+		commentsElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
 		// End of user code
 		return parent;
 	}
 
-	
+	/**
+	 * @generated NOT
+	 */
 	protected Composite createReverseCheckbox(FormToolkit widgetFactory, Composite parent) {
+		Control[] previousControls = propertiesGroup.getChildren();
 		reverse = widgetFactory.createButton(parent, getDescription(EsbViewsRepository.JsonTransformMediator.Properties.reverse, EsbMessages.JsonTransformMediatorPropertiesEditionPart_ReverseLabel), SWT.CHECK);
 		reverse.addSelectionListener(new SelectionAdapter() {
 
@@ -272,7 +280,8 @@ public class JsonTransformMediatorPropertiesEditionPartForm extends SectionPrope
 		EditingUtils.setEEFtype(reverse, "eef::Checkbox"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.JsonTransformMediator.Properties.reverse, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createReverseCheckbox
-
+		Control[] newControls = propertiesGroup.getChildren();
+		reverseElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
 		// End of user code
 		return parent;
 	}
@@ -328,10 +337,14 @@ public class JsonTransformMediatorPropertiesEditionPartForm extends SectionPrope
 		return parent;
 	}
 
+	/**
+	 * 
+	 * @generated NOT
+	 */
     protected Composite createSchemaRegistryKeyWidget(FormToolkit widgetFactory, final Composite parent) {
         Control schemaRegistryKeyLabel = createDescription(parent, EsbViewsRepository.JsonTransformMediator.Properties.schema, EsbMessages.JsonTransformMediatorPropertiesEditionPart_SchemaLabel);
         widgetFactory.paintBordersFor(parent);
-        if(schemaRegistryKey == null) {
+        if (schemaRegistryKey == null) {
             schemaRegistryKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
         } 
         String initValueExpression = schemaRegistryKey.getKeyValue().isEmpty() ? "" : schemaRegistryKey.getKeyValue();
@@ -647,6 +660,9 @@ public class JsonTransformMediatorPropertiesEditionPartForm extends SectionPrope
         if (registryKeyProperty != null) {
             schemaRegistryKeyText.setText(registryKeyProperty.getKeyValue());
             schemaRegistryKey = registryKeyProperty;
+        } else {
+            schemaRegistryKeyText.setText("");
+            schemaRegistryKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
         }
     }
 	// End of user code
@@ -674,6 +690,18 @@ public class JsonTransformMediatorPropertiesEditionPartForm extends SectionPrope
 
 
 	// Start of user code additional methods
+    @Override
+    public void refresh() {
+        super.refresh();
+        validate();
+    }
+
+    public void validate() {
+        EEFPropertyViewUtil epv = new EEFPropertyViewUtil(view);
+        epv.hideEntry(commentsElements, false);
+        epv.hideEntry(reverseElements, false);
+        view.layout(true, true);
+    }
 	// End of user code
 
 

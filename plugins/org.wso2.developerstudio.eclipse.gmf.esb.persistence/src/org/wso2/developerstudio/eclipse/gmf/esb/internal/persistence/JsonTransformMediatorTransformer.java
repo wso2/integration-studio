@@ -1,3 +1,21 @@
+/*
+ * Copyright (c) 2019, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ *
+ * WSO2 Inc. licenses this file to you under the Apache License,
+ * Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+
 package org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence;
 
 import java.util.ArrayList;
@@ -15,6 +33,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.JsonTransformMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.JsonTransformMediatorProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.ValidationConstansts;
 
 public class JsonTransformMediatorTransformer extends AbstractEsbNodeTransformer {
 
@@ -32,10 +51,14 @@ public class JsonTransformMediatorTransformer extends AbstractEsbNodeTransformer
         org.apache.synapse.mediators.builtin.JSONTransformMediator jsonTransformMediator = new org.apache.synapse.mediators.builtin.JSONTransformMediator();
         setCommonProperties(jsonTransformMediator, visualJsonTransform);
 
+        boolean hasNoSchema = false;
         if (visualJsonTransform.getSchema() != null && !visualJsonTransform.getSchema().getKeyValue().equals("")) {
             jsonTransformMediator.setSchemaKey(new Value(visualJsonTransform.getSchema().getKeyValue()));
+        } else {
+            hasNoSchema = true;
         }
-        
+
+        boolean hasNoProperties = false;
         if (!visualJsonTransform.getJsonTransformProperties().isEmpty()) {
             List<MediatorProperty> mediatorPropertyList = new ArrayList<MediatorProperty>();
             for (JsonTransformMediatorProperty jsonTransformMediatorProperty : visualJsonTransform
@@ -46,6 +69,12 @@ public class JsonTransformMediatorTransformer extends AbstractEsbNodeTransformer
                 mediatorPropertyList.add(mediatorProperty);
             }
             jsonTransformMediator.addAllProperties(mediatorPropertyList);
+        } else {
+            hasNoProperties = true;
+        }
+        
+        if (hasNoSchema && hasNoProperties) {
+            jsonTransformMediator.setSchemaKey(new Value(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION));
         }
 
         return jsonTransformMediator;

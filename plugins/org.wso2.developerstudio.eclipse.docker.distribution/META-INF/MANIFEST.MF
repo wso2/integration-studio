@@ -69,6 +69,8 @@ Import-Package:
  org.wso2.developerstudio.eclipse.utils.wst;version="[4.1.0,8.0.0)"
 Bundle-ActivationPolicy: lazy
 Export-Package: org.objectweb.asm,
+ org.wso2.developerstudio.eclipse.docker.distribution.action,
+ org.wso2.developerstudio.eclipse.docker.distribution.editor,
  org.wso2.developerstudio.eclipse.docker.distribution.job,
  org.wso2.developerstudio.eclipse.docker.distribution.model,
  org.wso2.developerstudio.eclipse.docker.distribution.resources,

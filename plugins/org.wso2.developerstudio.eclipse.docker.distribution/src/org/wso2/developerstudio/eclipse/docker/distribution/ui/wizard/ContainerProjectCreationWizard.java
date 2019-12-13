@@ -295,6 +295,17 @@ public class ContainerProjectCreationWizard extends AbstractWSO2ProjectCreationW
             
             project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
             MavenProject mavenProject = MavenUtils.getMavenProject(pomfile);
+            
+            // Adding selected composite project if the project creation is based on composite right click
+            if (dockerModel.isCompositeOnClickContainerCreation()) {
+                IProject compositeProject = dockerModel.getSelectedCompositeProjectOnCreation();
+                IFile compositePomFile = compositeProject.getFile(POM_FILE);
+                MavenProject parentPrj = MavenUtils.getMavenProject(compositePomFile.getLocation().toFile());
+                List<Dependency> dependencies = new ArrayList<>();
+                dependencies.add(MavenUtils.createDependency(parentPrj.getGroupId(), parentPrj.getArtifactId(),
+                        parentPrj.getVersion(), null, "car"));
+                MavenUtils.addMavenDependency(mavenProject, dependencies);
+            }
 
             // Adding maven-dependency plugin
             // This will copy the CAR files from .m2 to CarbonApps folder

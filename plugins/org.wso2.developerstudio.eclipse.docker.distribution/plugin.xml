@@ -185,4 +185,23 @@
               class="org.wso2.developerstudio.eclipse.docker.distribution.resources.K8sUserGuideTemplate"
               icon="icons/help.png"/>
     </extension>
+    
+    <!-- Composite project run extensions-->
+    <extension point="org.eclipse.ui.popupMenus">
+        <objectContribution objectClass="org.eclipse.core.resources.IProject" 
+        id="org.wso2.developerstudio.eclipse.docker.distribution.exportkubernetesartifacts">
+            <action
+                label="Generate Kubernetes Artifacts"
+                icon="icons/docker.png"
+                class="org.wso2.developerstudio.eclipse.docker.distribution.action.GenerateKubernetesArtifactsAction"
+                id="org.wso2.developerstudio.eclipse.docker.distribution.exportkubernetesartifacts">
+            </action>
+            <enablement>
+                <adapt type="org.eclipse.core.resources.IProject">
+                    <test property="org.eclipse.core.resources.projectNature" 
+                    value="org.wso2.developerstudio.eclipse.distribution.project.nature" />
+                </adapt>
+            </enablement>
+        </objectContribution>
+    </extension>
 </plugin>

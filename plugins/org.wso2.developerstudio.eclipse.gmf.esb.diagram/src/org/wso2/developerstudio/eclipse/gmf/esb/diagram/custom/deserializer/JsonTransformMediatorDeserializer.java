@@ -13,7 +13,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
 
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.JSON_TRANSFORM_MEDIATOR__SCHEMA;
-import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.JSON_TRANSFORM_MEDIATOR__JSON_TRANSFORM_PROPERTY;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.JSON_TRANSFORM_MEDIATOR__JSON_TRANSFORM_PROPERTIES;
 
 public class JsonTransformMediatorDeserializer
         extends AbstractEsbNodeDeserializer<AbstractMediator, JsonTransformMediator> {
@@ -35,8 +35,9 @@ public class JsonTransformMediatorDeserializer
             RegistryKeyProperty schema = EsbFactory.eINSTANCE.createRegistryKeyProperty();
             schema.setKeyValue(jsonTransformMediator.getSchemaKey().getKeyValue());
             executeSetValueCommand(JSON_TRANSFORM_MEDIATOR__SCHEMA, schema);
+        }
 
-        } else if (!jsonTransformMediator.getProperties().isEmpty()) {
+        if (!jsonTransformMediator.getProperties().isEmpty()) {
             EList<JsonTransformMediatorProperty> JsonTransformMediatorPropertyList = new BasicEList<JsonTransformMediatorProperty>();
             for (MediatorProperty mediatorProperty : jsonTransformMediator.getProperties()) {
                 JsonTransformMediatorProperty jsonTransformMediatorProperty = EsbFactory.eINSTANCE
@@ -45,7 +46,8 @@ public class JsonTransformMediatorDeserializer
                 jsonTransformMediatorProperty.setPropertyValue(mediatorProperty.getValue());
                 JsonTransformMediatorPropertyList.add(jsonTransformMediatorProperty);
             }
-            executeSetValueCommand(JSON_TRANSFORM_MEDIATOR__JSON_TRANSFORM_PROPERTY, JsonTransformMediatorPropertyList);
+            executeSetValueCommand(JSON_TRANSFORM_MEDIATOR__JSON_TRANSFORM_PROPERTIES,
+                    JsonTransformMediatorPropertyList);
         }
 
         return visualJsonTransform;

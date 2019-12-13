@@ -23,21 +23,23 @@ public class JsonTransformMediatorTransformer extends AbstractEsbNodeTransformer
         Assert.isTrue(subject instanceof JsonTransformMediator, "Invalid subject.");
         JsonTransformMediator visualJsonTransform = (JsonTransformMediator) subject;
 
-            information.getParentSequence().addChild(createJsonTransformMediator(visualJsonTransform, false));
-            // Transform the jsonTransform mediator output data flow path.
-            doTransform(information, visualJsonTransform.getOutputConnector());
+        information.getParentSequence().addChild(createJsonTransformMediator(visualJsonTransform, false));
+        // Transform the jsonTransform mediator output data flow path.
+        doTransform(information, visualJsonTransform.getOutputConnector());
     }
 
     private Mediator createJsonTransformMediator(JsonTransformMediator visualJsonTransform, boolean b) {
         org.apache.synapse.mediators.builtin.JSONTransformMediator jsonTransformMediator = new org.apache.synapse.mediators.builtin.JSONTransformMediator();
         setCommonProperties(jsonTransformMediator, visualJsonTransform);
-        
+
         if (visualJsonTransform.getSchema() != null && !visualJsonTransform.getSchema().getKeyValue().equals("")) {
             jsonTransformMediator.setSchemaKey(new Value(visualJsonTransform.getSchema().getKeyValue()));
-            
-        } else if(!visualJsonTransform.getJsonTransformProperty().isEmpty()) {
+        }
+        
+        if (!visualJsonTransform.getJsonTransformProperties().isEmpty()) {
             List<MediatorProperty> mediatorPropertyList = new ArrayList<MediatorProperty>();
-            for (JsonTransformMediatorProperty jsonTransformMediatorProperty : visualJsonTransform.getJsonTransformProperty()) {
+            for (JsonTransformMediatorProperty jsonTransformMediatorProperty : visualJsonTransform
+                    .getJsonTransformProperties()) {
                 MediatorProperty mediatorProperty = new MediatorProperty();
                 mediatorProperty.setName(jsonTransformMediatorProperty.getPropertyName());
                 mediatorProperty.setValue(jsonTransformMediatorProperty.getPropertyValue());
@@ -45,7 +47,7 @@ public class JsonTransformMediatorTransformer extends AbstractEsbNodeTransformer
             }
             jsonTransformMediator.addAllProperties(mediatorPropertyList);
         }
-        
+
         return jsonTransformMediator;
 
     }
@@ -54,14 +56,12 @@ public class JsonTransformMediatorTransformer extends AbstractEsbNodeTransformer
     public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints)
             throws TransformerException {
         // TODO Auto-generated method stub
-        System.out.println("########## JsonTransformMediatorTransformer == createSynapseObject");
     }
 
     @Override
     public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
             throws TransformerException {
         // TODO Auto-generated method stub
-        System.out.println("########## JsonTransformMediatorTransformer == transformWithinSequence");
     }
 
 }

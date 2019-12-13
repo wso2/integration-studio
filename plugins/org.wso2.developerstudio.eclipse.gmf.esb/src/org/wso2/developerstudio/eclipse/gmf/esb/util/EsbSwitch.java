@@ -2992,7 +2992,8 @@ public class EsbSwitch<T> extends Switch<T> {
             case EsbPackage.JSON_TRANSFORM_MEDIATOR_PROPERTY: {
                 JsonTransformMediatorProperty jsonTransformMediatorProperty = (JsonTransformMediatorProperty)theEObject;
                 T result = caseJsonTransformMediatorProperty(jsonTransformMediatorProperty);
-                if (result == null) result = caseAbstractNameValueProperty(jsonTransformMediatorProperty);
+                if (result == null) result = caseAbstractNameValueExpressionProperty(jsonTransformMediatorProperty);
+                if (result == null) result = caseEsbNode(jsonTransformMediatorProperty);
                 if (result == null) result = defaultCase(theEObject);
                 return result;
             }

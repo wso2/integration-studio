@@ -3520,8 +3520,8 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="outputConnector" eType="#//JsonTransformMediatorOutputConnector"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="jsonTransformProperty"
-        upperBound="-1" eType="#//JsonTransformMediatorProperty"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="jsonTransformProperties"
+        upperBound="-1" eType="#//JsonTransformMediatorProperty" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="schema" eType="#//RegistryKeyProperty"
         containment="true"/>
   </eClassifiers>
@@ -3529,5 +3529,5 @@
       eSuperTypes="#//OutputConnector"/>
   <eClassifiers xsi:type="ecore:EClass" name="JsonTransformMediatorInputConnector"
       eSuperTypes="#//InputConnector"/>
-  <eClassifiers xsi:type="ecore:EClass" name="JsonTransformMediatorProperty" eSuperTypes="#//AbstractNameValueProperty"/>
+  <eClassifiers xsi:type="ecore:EClass" name="JsonTransformMediatorProperty" eSuperTypes="#//AbstractNameValueExpressionProperty"/>
 </ecore:EPackage>

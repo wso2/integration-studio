@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
@@ -53,35 +54,61 @@ public class JsonTransformMediatorItemProvider extends MediatorItemProvider {
      * This returns the property descriptors for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
+     * @generated NOT
      */
     @Override
     public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-        if (itemPropertyDescriptors == null) {
-            super.getPropertyDescriptors(object);
-
-            addJsonTransformPropertyPropertyDescriptor(object);
+        if (itemPropertyDescriptors != null) {
+            itemPropertyDescriptors.clear();
         }
+        super.getPropertyDescriptors(object);
+        
+//        addSchemaPropertyDescriptor(object);
+        addDescriptionPropertyDescriptor(object);
+//        addJsonTransformPropertiesPropertyDescriptor(object);
+        
         return itemPropertyDescriptors;
     }
 
     /**
-     * This adds a property descriptor for the Json Transform Property feature.
+     * This adds a property descriptor for the Json Transform Properties feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    protected void addJsonTransformPropertyPropertyDescriptor(Object object) {
+    protected void addJsonTransformPropertiesPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add
             (createItemPropertyDescriptor
                 (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
                  getResourceLocator(),
-                 getString("_UI_JsonTransformMediator_jsonTransformProperty_feature"),
-                 getString("_UI_PropertyDescriptor_description", "_UI_JsonTransformMediator_jsonTransformProperty_feature", "_UI_JsonTransformMediator_type"),
-                 EsbPackage.Literals.JSON_TRANSFORM_MEDIATOR__JSON_TRANSFORM_PROPERTY,
+                 getString("_UI_JsonTransformMediator_jsonTransformProperties_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_JsonTransformMediator_jsonTransformProperties_feature", "_UI_JsonTransformMediator_type"),
+                 EsbPackage.Literals.JSON_TRANSFORM_MEDIATOR__JSON_TRANSFORM_PROPERTIES,
                  true,
                  false,
                  true,
+                 null,
+                 null,
+                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the Schema feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addSchemaPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_JsonTransformMediator_schema_feature"),
+                 getString("_UI_PropertyDescriptor_description", "__UI_JsonTransformMediator_schema_feature", "_UI_JsonTransformMediator_type"),
+                 EsbPackage.Literals.JSON_TRANSFORM_MEDIATOR__SCHEMA,
+                 true,
+                 false,
+                 false,
                  null,
                  null,
                  null));

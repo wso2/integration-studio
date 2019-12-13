@@ -12966,7 +12966,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * <!-- end-user-doc -->
      * @generated
      */
-    public EReference getJsonTransformMediator_JsonTransformProperty() {
+    public EReference getJsonTransformMediator_JsonTransformProperties() {
         return (EReference)jsonTransformMediatorEClass.getEStructuralFeatures().get(2);
     }
 
@@ -21732,7 +21732,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         jsonTransformMediatorEClass = createEClass(JSON_TRANSFORM_MEDIATOR);
         createEReference(jsonTransformMediatorEClass, JSON_TRANSFORM_MEDIATOR__INPUT_CONNECTOR);
         createEReference(jsonTransformMediatorEClass, JSON_TRANSFORM_MEDIATOR__OUTPUT_CONNECTOR);
-        createEReference(jsonTransformMediatorEClass, JSON_TRANSFORM_MEDIATOR__JSON_TRANSFORM_PROPERTY);
+        createEReference(jsonTransformMediatorEClass, JSON_TRANSFORM_MEDIATOR__JSON_TRANSFORM_PROPERTIES);
         createEReference(jsonTransformMediatorEClass, JSON_TRANSFORM_MEDIATOR__SCHEMA);
 
         jsonTransformMediatorOutputConnectorEClass = createEClass(JSON_TRANSFORM_MEDIATOR_OUTPUT_CONNECTOR);
@@ -22252,7 +22252,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         jsonTransformMediatorEClass.getESuperTypes().add(this.getMediator());
         jsonTransformMediatorOutputConnectorEClass.getESuperTypes().add(this.getOutputConnector());
         jsonTransformMediatorInputConnectorEClass.getESuperTypes().add(this.getInputConnector());
-        jsonTransformMediatorPropertyEClass.getESuperTypes().add(this.getAbstractNameValueProperty());
+        jsonTransformMediatorPropertyEClass.getESuperTypes().add(this.getAbstractNameValueExpressionProperty());
 
         // Initialize classes and features; add operations and parameters
         initEClass(esbDiagramEClass, EsbDiagram.class, "EsbDiagram", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -24231,7 +24231,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         initEClass(jsonTransformMediatorEClass, JsonTransformMediator.class, "JsonTransformMediator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEReference(getJsonTransformMediator_InputConnector(), this.getJsonTransformMediatorInputConnector(), null, "inputConnector", null, 0, 1, JsonTransformMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getJsonTransformMediator_OutputConnector(), this.getJsonTransformMediatorOutputConnector(), null, "outputConnector", null, 0, 1, JsonTransformMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getJsonTransformMediator_JsonTransformProperty(), this.getJsonTransformMediatorProperty(), null, "jsonTransformProperty", null, 0, -1, JsonTransformMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getJsonTransformMediator_JsonTransformProperties(), this.getJsonTransformMediatorProperty(), null, "jsonTransformProperties", null, 0, -1, JsonTransformMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getJsonTransformMediator_Schema(), this.getRegistryKeyProperty(), null, "schema", null, 0, 1, JsonTransformMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(jsonTransformMediatorOutputConnectorEClass, JsonTransformMediatorOutputConnector.class, "JsonTransformMediatorOutputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

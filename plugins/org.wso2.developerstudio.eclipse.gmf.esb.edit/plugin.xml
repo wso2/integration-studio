@@ -2004,6 +2004,30 @@
                id="org.wso2.developerstudio.eclipse.gmf.esb.section.CommentMediator"
                tab="Base">
          </propertySection>
+         <propertySection
+               class="org.wso2.developerstudio.eclipse.gmf.esb.parts.forms.JsonTransformMediatorPropertiesEditionPartForm"
+               filter="org.wso2.developerstudio.eclipse.gmf.esb.providers.JsonTransformMediatorPropertiesEditionProvider$EditionFilter"
+               id="org.wso2.developerstudio.eclipse.gmf.esb.section.JsonTransformMediator"
+               tab="Base">
+         </propertySection>
+         <propertySection
+               class="org.wso2.developerstudio.eclipse.gmf.esb.parts.forms.JsonTransformMediatorInputConnectorPropertiesEditionPartForm"
+               filter="org.wso2.developerstudio.eclipse.gmf.esb.providers.JsonTransformMediatorInputConnectorPropertiesEditionProvider$EditionFilter"
+               id="org.wso2.developerstudio.eclipse.gmf.esb.section.JsonTransformMediatorInputConnector"
+               tab="Base">
+         </propertySection>
+         <propertySection
+               class="org.wso2.developerstudio.eclipse.gmf.esb.parts.forms.JsonTransformMediatorOutputConnectorPropertiesEditionPartForm"
+               filter="org.wso2.developerstudio.eclipse.gmf.esb.providers.JsonTransformMediatorOutputConnectorPropertiesEditionProvider$EditionFilter"
+               id="org.wso2.developerstudio.eclipse.gmf.esb.section.JsonTransformMediatorOutputConnector"
+               tab="Base">
+         </propertySection>
+         <propertySection
+               class="org.wso2.developerstudio.eclipse.gmf.esb.parts.forms.JsonTransformMediatorPropertyPropertiesEditionPartForm"
+               filter="org.wso2.developerstudio.eclipse.gmf.esb.providers.JsonTransformMediatorPropertyPropertiesEditionProvider$EditionFilter"
+               id="org.wso2.developerstudio.eclipse.gmf.esb.section.JsonTransformMediatorProperty"
+               tab="Base">
+         </propertySection>
       </propertySections>
    </extension>
 </plugin>

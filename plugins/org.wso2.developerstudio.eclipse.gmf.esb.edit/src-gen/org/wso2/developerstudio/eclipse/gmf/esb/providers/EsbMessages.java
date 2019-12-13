@@ -1282,6 +1282,18 @@ public class EsbMessages extends NLS {
 	
 	public static String CommentMediatorPropertiesEditionPart_PropertiesGroupLabel;
 
+	
+	public static String JsonTransformMediatorPropertiesEditionPart_PropertiesGroupLabel;
+
+	
+	public static String JsonTransformMediatorOutputConnectorPropertiesEditionPart_PropertiesGroupLabel;
+
+	
+	public static String JsonTransformMediatorInputConnectorPropertiesEditionPart_PropertiesGroupLabel;
+
+	
+	public static String JsonTransformMediatorPropertyPropertiesEditionPart_PropertiesGroupLabel;
+
 
 	
 	public static String EsbDiagram_ReadOnly;
@@ -3388,6 +3400,30 @@ public class EsbMessages extends NLS {
 
 	
 	public static String CommentMediator_Part_Title;
+
+	
+	public static String JsonTransformMediator_ReadOnly;
+
+	
+	public static String JsonTransformMediator_Part_Title;
+
+	
+	public static String JsonTransformMediatorOutputConnector_ReadOnly;
+
+	
+	public static String JsonTransformMediatorOutputConnector_Part_Title;
+
+	
+	public static String JsonTransformMediatorInputConnector_ReadOnly;
+
+	
+	public static String JsonTransformMediatorInputConnector_Part_Title;
+
+	
+	public static String JsonTransformMediatorProperty_ReadOnly;
+
+	
+	public static String JsonTransformMediatorProperty_Part_Title;
 
 
 	
@@ -8273,6 +8309,33 @@ public class EsbMessages extends NLS {
 
 	
 	public static String CommentMediatorPropertiesEditionPart_CommentTextLabel;
+
+	
+	public static String JsonTransformMediatorPropertiesEditionPart_CommentsListLabel;
+
+	
+	public static String JsonTransformMediatorPropertiesEditionPart_ReverseLabel;
+
+	
+	public static String JsonTransformMediatorPropertiesEditionPart_JsonTransformPropertiesLabel;
+
+	
+	public static String JsonTransformMediatorPropertiesEditionPart_DescriptionLabel;
+
+	
+	public static String JsonTransformMediatorPropertiesEditionPart_SchemaLabel;
+
+	
+	public static String JsonTransformMediatorOutputConnectorPropertiesEditionPart_CommentMediatorsLabel;
+
+	
+	public static String JsonTransformMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;
+
+	
+	public static String JsonTransformMediatorPropertyPropertiesEditionPart_PropertyNameLabel;
+
+	
+	public static String JsonTransformMediatorPropertyPropertiesEditionPart_PropertyValueLabel;
 
 
 	

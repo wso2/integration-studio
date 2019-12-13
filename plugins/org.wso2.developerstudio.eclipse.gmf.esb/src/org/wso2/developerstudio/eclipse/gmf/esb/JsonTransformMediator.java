@@ -28,7 +28,7 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.JsonTransformMediator#getInputConnector <em>Input Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.JsonTransformMediator#getOutputConnector <em>Output Connector</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.JsonTransformMediator#getJsonTransformProperty <em>Json Transform Property</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.JsonTransformMediator#getJsonTransformProperties <em>Json Transform Properties</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.JsonTransformMediator#getSchema <em>Schema</em>}</li>
  * </ul>
  *
@@ -90,20 +90,20 @@ public interface JsonTransformMediator extends Mediator {
     void setOutputConnector(JsonTransformMediatorOutputConnector value);
 
     /**
-     * Returns the value of the '<em><b>Json Transform Property</b></em>' reference list.
+     * Returns the value of the '<em><b>Json Transform Properties</b></em>' containment reference list.
      * The list contents are of type {@link org.wso2.developerstudio.eclipse.gmf.esb.JsonTransformMediatorProperty}.
      * <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Json Transform Property</em>' reference list isn't clear,
+     * If the meaning of the '<em>Json Transform Properties</em>' reference list isn't clear,
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * @return the value of the '<em>Json Transform Property</em>' reference list.
-     * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getJsonTransformMediator_JsonTransformProperty()
-     * @model
+     * @return the value of the '<em>Json Transform Properties</em>' containment reference list.
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getJsonTransformMediator_JsonTransformProperties()
+     * @model containment="true"
      * @generated
      */
-    EList<JsonTransformMediatorProperty> getJsonTransformProperty();
+    EList<JsonTransformMediatorProperty> getJsonTransformProperties();
 
     /**
      * Returns the value of the '<em><b>Schema</b></em>' containment reference.

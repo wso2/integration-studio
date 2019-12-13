@@ -32,7 +32,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.JsonTransformMediatorProperty;
  * <!-- end-user-doc -->
  * @generated
  */
-public class JsonTransformMediatorPropertyItemProvider extends AbstractNameValuePropertyItemProvider {
+public class JsonTransformMediatorPropertyItemProvider extends AbstractNameValueExpressionPropertyItemProvider {
     /**
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->

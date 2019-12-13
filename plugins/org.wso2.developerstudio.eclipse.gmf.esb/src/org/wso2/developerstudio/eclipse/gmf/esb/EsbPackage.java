@@ -26313,13 +26313,13 @@ public interface EsbPackage extends EPackage {
     int JSON_TRANSFORM_MEDIATOR__OUTPUT_CONNECTOR = MEDIATOR_FEATURE_COUNT + 1;
 
     /**
-     * The feature id for the '<em><b>Json Transform Property</b></em>' reference list.
+     * The feature id for the '<em><b>Json Transform Properties</b></em>' containment reference list.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int JSON_TRANSFORM_MEDIATOR__JSON_TRANSFORM_PROPERTY = MEDIATOR_FEATURE_COUNT + 2;
+    int JSON_TRANSFORM_MEDIATOR__JSON_TRANSFORM_PROPERTIES = MEDIATOR_FEATURE_COUNT + 2;
 
     /**
      * The feature id for the '<em><b>Schema</b></em>' containment reference.
@@ -26421,7 +26421,16 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int JSON_TRANSFORM_MEDIATOR_PROPERTY__PROPERTY_NAME = ABSTRACT_NAME_VALUE_PROPERTY__PROPERTY_NAME;
+    int JSON_TRANSFORM_MEDIATOR_PROPERTY__PROPERTY_NAME = ABSTRACT_NAME_VALUE_EXPRESSION_PROPERTY__PROPERTY_NAME;
+
+    /**
+     * The feature id for the '<em><b>Property Value Type</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int JSON_TRANSFORM_MEDIATOR_PROPERTY__PROPERTY_VALUE_TYPE = ABSTRACT_NAME_VALUE_EXPRESSION_PROPERTY__PROPERTY_VALUE_TYPE;
 
     /**
      * The feature id for the '<em><b>Property Value</b></em>' attribute.
@@ -26430,7 +26439,16 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int JSON_TRANSFORM_MEDIATOR_PROPERTY__PROPERTY_VALUE = ABSTRACT_NAME_VALUE_PROPERTY__PROPERTY_VALUE;
+    int JSON_TRANSFORM_MEDIATOR_PROPERTY__PROPERTY_VALUE = ABSTRACT_NAME_VALUE_EXPRESSION_PROPERTY__PROPERTY_VALUE;
+
+    /**
+     * The feature id for the '<em><b>Property Expression</b></em>' containment reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int JSON_TRANSFORM_MEDIATOR_PROPERTY__PROPERTY_EXPRESSION = ABSTRACT_NAME_VALUE_EXPRESSION_PROPERTY__PROPERTY_EXPRESSION;
 
     /**
      * The number of structural features of the '<em>Json Transform Mediator Property</em>' class.
@@ -26439,7 +26457,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int JSON_TRANSFORM_MEDIATOR_PROPERTY_FEATURE_COUNT = ABSTRACT_NAME_VALUE_PROPERTY_FEATURE_COUNT + 0;
+    int JSON_TRANSFORM_MEDIATOR_PROPERTY_FEATURE_COUNT = ABSTRACT_NAME_VALUE_EXPRESSION_PROPERTY_FEATURE_COUNT + 0;
 
     /**
      * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType <em>Artifact Type</em>}' enum.
@@ -38352,15 +38370,15 @@ public interface EsbPackage extends EPackage {
     EReference getJsonTransformMediator_OutputConnector();
 
     /**
-     * Returns the meta object for the reference list '{@link org.wso2.developerstudio.eclipse.gmf.esb.JsonTransformMediator#getJsonTransformProperty <em>Json Transform Property</em>}'.
+     * Returns the meta object for the containment reference list '{@link org.wso2.developerstudio.eclipse.gmf.esb.JsonTransformMediator#getJsonTransformProperties <em>Json Transform Properties</em>}'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @return the meta object for the reference list '<em>Json Transform Property</em>'.
-     * @see org.wso2.developerstudio.eclipse.gmf.esb.JsonTransformMediator#getJsonTransformProperty()
+     * @return the meta object for the containment reference list '<em>Json Transform Properties</em>'.
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.JsonTransformMediator#getJsonTransformProperties()
      * @see #getJsonTransformMediator()
      * @generated
      */
-    EReference getJsonTransformMediator_JsonTransformProperty();
+    EReference getJsonTransformMediator_JsonTransformProperties();
 
     /**
      * Returns the meta object for the containment reference '{@link org.wso2.developerstudio.eclipse.gmf.esb.JsonTransformMediator#getSchema <em>Schema</em>}'.
@@ -54614,12 +54632,12 @@ public interface EsbPackage extends EPackage {
         EReference JSON_TRANSFORM_MEDIATOR__OUTPUT_CONNECTOR = eINSTANCE.getJsonTransformMediator_OutputConnector();
 
         /**
-         * The meta object literal for the '<em><b>Json Transform Property</b></em>' reference list feature.
+         * The meta object literal for the '<em><b>Json Transform Properties</b></em>' containment reference list feature.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @generated
          */
-        EReference JSON_TRANSFORM_MEDIATOR__JSON_TRANSFORM_PROPERTY = eINSTANCE.getJsonTransformMediator_JsonTransformProperty();
+        EReference JSON_TRANSFORM_MEDIATOR__JSON_TRANSFORM_PROPERTIES = eINSTANCE.getJsonTransformMediator_JsonTransformProperties();
 
         /**
          * The meta object literal for the '<em><b>Schema</b></em>' containment reference feature.

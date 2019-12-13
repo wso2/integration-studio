@@ -27,7 +27,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.JsonTransformMediatorProperty;
  *
  * @generated
  */
-public class JsonTransformMediatorPropertyImpl extends AbstractNameValuePropertyImpl implements JsonTransformMediatorProperty {
+public class JsonTransformMediatorPropertyImpl extends AbstractNameValueExpressionPropertyImpl implements JsonTransformMediatorProperty {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->

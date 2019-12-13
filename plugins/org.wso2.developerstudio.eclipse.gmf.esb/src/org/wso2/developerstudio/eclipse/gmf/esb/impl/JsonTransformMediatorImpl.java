@@ -27,8 +27,10 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
+import org.eclipse.emf.ecore.util.InternalEList;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.JsonTransformMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.JsonTransformMediatorInputConnector;
@@ -46,7 +48,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.JsonTransformMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.JsonTransformMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.JsonTransformMediatorImpl#getJsonTransformProperty <em>Json Transform Property</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.JsonTransformMediatorImpl#getJsonTransformProperties <em>Json Transform Properties</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.JsonTransformMediatorImpl#getSchema <em>Schema</em>}</li>
  * </ul>
  *
@@ -74,14 +76,14 @@ public class JsonTransformMediatorImpl extends MediatorImpl implements JsonTrans
     protected JsonTransformMediatorOutputConnector outputConnector;
 
     /**
-     * The cached value of the '{@link #getJsonTransformProperty() <em>Json Transform Property</em>}' reference list.
+     * The cached value of the '{@link #getJsonTransformProperties() <em>Json Transform Properties</em>}' containment reference list.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see #getJsonTransformProperty()
+     * @see #getJsonTransformProperties()
      * @generated
      * @ordered
      */
-    protected EList<JsonTransformMediatorProperty> jsonTransformProperty;
+    protected EList<JsonTransformMediatorProperty> jsonTransformProperties;
 
     /**
      * The cached value of the '{@link #getSchema() <em>Schema</em>}' containment reference.
@@ -203,11 +205,11 @@ public class JsonTransformMediatorImpl extends MediatorImpl implements JsonTrans
      * <!-- end-user-doc -->
      * @generated
      */
-    public EList<JsonTransformMediatorProperty> getJsonTransformProperty() {
-        if (jsonTransformProperty == null) {
-            jsonTransformProperty = new EObjectResolvingEList<JsonTransformMediatorProperty>(JsonTransformMediatorProperty.class, this, EsbPackage.JSON_TRANSFORM_MEDIATOR__JSON_TRANSFORM_PROPERTY);
+    public EList<JsonTransformMediatorProperty> getJsonTransformProperties() {
+        if (jsonTransformProperties == null) {
+            jsonTransformProperties = new EObjectContainmentEList<JsonTransformMediatorProperty>(JsonTransformMediatorProperty.class, this, EsbPackage.JSON_TRANSFORM_MEDIATOR__JSON_TRANSFORM_PROPERTIES);
         }
-        return jsonTransformProperty;
+        return jsonTransformProperties;
     }
 
     /**
@@ -265,6 +267,8 @@ public class JsonTransformMediatorImpl extends MediatorImpl implements JsonTrans
                 return basicSetInputConnector(null, msgs);
             case EsbPackage.JSON_TRANSFORM_MEDIATOR__OUTPUT_CONNECTOR:
                 return basicSetOutputConnector(null, msgs);
+            case EsbPackage.JSON_TRANSFORM_MEDIATOR__JSON_TRANSFORM_PROPERTIES:
+                return ((InternalEList<?>)getJsonTransformProperties()).basicRemove(otherEnd, msgs);
             case EsbPackage.JSON_TRANSFORM_MEDIATOR__SCHEMA:
                 return basicSetSchema(null, msgs);
         }
@@ -283,8 +287,8 @@ public class JsonTransformMediatorImpl extends MediatorImpl implements JsonTrans
                 return getInputConnector();
             case EsbPackage.JSON_TRANSFORM_MEDIATOR__OUTPUT_CONNECTOR:
                 return getOutputConnector();
-            case EsbPackage.JSON_TRANSFORM_MEDIATOR__JSON_TRANSFORM_PROPERTY:
-                return getJsonTransformProperty();
+            case EsbPackage.JSON_TRANSFORM_MEDIATOR__JSON_TRANSFORM_PROPERTIES:
+                return getJsonTransformProperties();
             case EsbPackage.JSON_TRANSFORM_MEDIATOR__SCHEMA:
                 return getSchema();
         }
@@ -306,9 +310,9 @@ public class JsonTransformMediatorImpl extends MediatorImpl implements JsonTrans
             case EsbPackage.JSON_TRANSFORM_MEDIATOR__OUTPUT_CONNECTOR:
                 setOutputConnector((JsonTransformMediatorOutputConnector)newValue);
                 return;
-            case EsbPackage.JSON_TRANSFORM_MEDIATOR__JSON_TRANSFORM_PROPERTY:
-                getJsonTransformProperty().clear();
-                getJsonTransformProperty().addAll((Collection<? extends JsonTransformMediatorProperty>)newValue);
+            case EsbPackage.JSON_TRANSFORM_MEDIATOR__JSON_TRANSFORM_PROPERTIES:
+                getJsonTransformProperties().clear();
+                getJsonTransformProperties().addAll((Collection<? extends JsonTransformMediatorProperty>)newValue);
                 return;
             case EsbPackage.JSON_TRANSFORM_MEDIATOR__SCHEMA:
                 setSchema((RegistryKeyProperty)newValue);
@@ -331,8 +335,8 @@ public class JsonTransformMediatorImpl extends MediatorImpl implements JsonTrans
             case EsbPackage.JSON_TRANSFORM_MEDIATOR__OUTPUT_CONNECTOR:
                 setOutputConnector((JsonTransformMediatorOutputConnector)null);
                 return;
-            case EsbPackage.JSON_TRANSFORM_MEDIATOR__JSON_TRANSFORM_PROPERTY:
-                getJsonTransformProperty().clear();
+            case EsbPackage.JSON_TRANSFORM_MEDIATOR__JSON_TRANSFORM_PROPERTIES:
+                getJsonTransformProperties().clear();
                 return;
             case EsbPackage.JSON_TRANSFORM_MEDIATOR__SCHEMA:
                 setSchema((RegistryKeyProperty)null);
@@ -353,8 +357,8 @@ public class JsonTransformMediatorImpl extends MediatorImpl implements JsonTrans
                 return inputConnector != null;
             case EsbPackage.JSON_TRANSFORM_MEDIATOR__OUTPUT_CONNECTOR:
                 return outputConnector != null;
-            case EsbPackage.JSON_TRANSFORM_MEDIATOR__JSON_TRANSFORM_PROPERTY:
-                return jsonTransformProperty != null && !jsonTransformProperty.isEmpty();
+            case EsbPackage.JSON_TRANSFORM_MEDIATOR__JSON_TRANSFORM_PROPERTIES:
+                return jsonTransformProperties != null && !jsonTransformProperties.isEmpty();
             case EsbPackage.JSON_TRANSFORM_MEDIATOR__SCHEMA:
                 return schema != null;
         }

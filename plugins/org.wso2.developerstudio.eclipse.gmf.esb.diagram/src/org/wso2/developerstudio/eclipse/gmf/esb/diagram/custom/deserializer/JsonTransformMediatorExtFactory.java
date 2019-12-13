@@ -34,7 +34,6 @@ public class JsonTransformMediatorExtFactory extends JSONTransformMediatorFactor
     }
     
     protected Mediator createSpecificMediator(OMElement omElement) {
-        System.out.println("############# JsonTransformMediatorExtFactory ");
         JSONTransformMediator JSONTransformMediator = new JSONTransformMediator();
         processAuditStatus(JSONTransformMediator, omElement);
         OMAttribute schema = omElement.getAttribute(ATT_SCHEMA);

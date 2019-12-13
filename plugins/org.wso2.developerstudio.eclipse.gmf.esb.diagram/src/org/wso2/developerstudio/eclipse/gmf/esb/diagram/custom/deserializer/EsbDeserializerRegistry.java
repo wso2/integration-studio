@@ -49,6 +49,7 @@ import org.apache.synapse.mediators.builtin.PropertyMediator;
 import org.apache.synapse.mediators.builtin.RespondMediator;
 import org.apache.synapse.mediators.builtin.SendMediator;
 import org.apache.synapse.mediators.builtin.ValidateMediator;
+import org.apache.synapse.mediators.builtin.JSONTransformMediator;
 import org.wso2.carbon.mediator.cache.CacheMediator;
 import org.apache.synapse.mediators.db.DBLookupMediator;
 import org.apache.synapse.mediators.db.DBReportMediator;
@@ -81,7 +82,6 @@ import org.wso2.carbon.mediator.fastXSLT.FastXSLTMediator;
 import org.wso2.carbon.mediator.publishevent.PublishEventMediator;
 import org.wso2.carbon.mediator.transform.SmooksMediator;
 import org.wso2.carbon.mediators.router.impl.RouterMediator;
-import org.wso2.developerstudio.eclipse.gmf.esb.JsonTransformMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditor;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.BeanMediatorExt;
@@ -200,7 +200,7 @@ public class EsbDeserializerRegistry {
         addDeserializer(ForEachMediator.class, new ForEachMediatorDeserializer());
         addDeserializer(CommentMediator.class, new CommentMediatorDeserializer());
         addDeserializer(PublishEventMediator.class, new PublishEventMediatorDeserializer());
-        addDeserializer(JsonTransformMediator.class, new JsonTransformMediatorDeserializer());
+        addDeserializer(JSONTransformMediator.class, new JsonTransformMediatorDeserializer());
     }
 
     /**

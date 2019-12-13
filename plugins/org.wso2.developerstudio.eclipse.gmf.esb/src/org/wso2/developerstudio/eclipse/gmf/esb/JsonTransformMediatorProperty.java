@@ -26,5 +26,5 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  * @model
  * @generated
  */
-public interface JsonTransformMediatorProperty extends AbstractNameValueProperty {
+public interface JsonTransformMediatorProperty extends AbstractNameValueExpressionProperty {
 } // JsonTransformMediatorProperty

@@ -730,7 +730,7 @@ public class ProcessSourceView {
 
                     if (!intermediary.contains(tempTag.getqName()) && ((tempTag.getTagType() == 3)
                             || (currentMediator != null && currentMediator.getqName().equals(tempTag.getqName()))
-                            || artifacts.contains(tempTag.getqName()) || (currentMediator.getqName().equals("property") && intermediary.size() > 0))) {
+                            || artifacts.contains(tempTag.getqName()) || (currentMediator != null && currentMediator.getqName().equals("property") && intermediary.size() > 0))) {
 
                         if (tempTag.getTagType() == 3 && currentMediator != null
                                 && ((currentMediator.getqName().equals("payloadFactory")

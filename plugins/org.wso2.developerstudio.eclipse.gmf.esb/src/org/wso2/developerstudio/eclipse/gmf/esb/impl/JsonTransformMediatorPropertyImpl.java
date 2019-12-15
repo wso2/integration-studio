@@ -15,8 +15,9 @@
  */
 package org.wso2.developerstudio.eclipse.gmf.esb.impl;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
-
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.JsonTransformMediatorProperty;
 
@@ -45,6 +46,56 @@ public class JsonTransformMediatorPropertyImpl extends AbstractNameValueExpressi
     @Override
     protected EClass eStaticClass() {
         return EsbPackage.Literals.JSON_TRANSFORM_MEDIATOR_PROPERTY;
+    }
+    
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public String getPropertyName() {
+        if (propertyName.equals(PROPERTY_NAME_EDEFAULT)) {
+            return "";
+        }
+        return propertyName;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated NOT
+     */
+    @Override
+    public void setPropertyName(String newPropertyName) {
+        String oldPropertyName = propertyName;
+        propertyName = newPropertyName;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_PROPERTY__PROPERTY_NAME, oldPropertyName, propertyName));
+    }
+    
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated NOT
+     */
+    @Override
+    public String getPropertyValue() {
+        if (propertyValue.equals(PROPERTY_VALUE_EDEFAULT)) {
+            return "";
+        }
+        return propertyValue;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setPropertyValue(String newPropertyValue) {
+        String oldPropertyValue = propertyValue;
+        propertyValue = newPropertyValue;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_PROPERTY__PROPERTY_VALUE, oldPropertyValue, propertyValue));
     }
 
 } //JsonTransformMediatorPropertyImpl

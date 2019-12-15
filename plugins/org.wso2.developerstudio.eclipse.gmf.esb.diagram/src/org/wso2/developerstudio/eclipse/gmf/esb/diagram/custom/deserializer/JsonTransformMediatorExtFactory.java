@@ -19,6 +19,7 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer;
 
 import java.util.List;
+import java.util.Properties;
 
 import javax.xml.namespace.QName;
 
@@ -26,7 +27,6 @@ import org.apache.axiom.om.OMAttribute;
 import org.apache.axiom.om.OMElement;
 import org.apache.synapse.Mediator;
 import org.apache.synapse.config.xml.JSONTransformMediatorFactory;
-import org.apache.synapse.config.xml.MediatorPropertyFactory;
 import org.apache.synapse.config.xml.ValueFactory;
 import org.apache.synapse.mediators.MediatorProperty;
 import org.apache.synapse.mediators.Value;
@@ -49,7 +49,8 @@ public class JsonTransformMediatorExtFactory extends JSONTransformMediatorFactor
         return instance;
     }
 
-    protected Mediator createSpecificMediator(OMElement omElement) {
+    @Override
+    protected Mediator createSpecificMediator(OMElement omElement, Properties properties) {
         JSONTransformMediator JSONTransformMediator = new JSONTransformMediator();
         processAuditStatus(JSONTransformMediator, omElement);
         OMAttribute schema = omElement.getAttribute(ATT_SCHEMA);
@@ -60,11 +61,11 @@ public class JsonTransformMediatorExtFactory extends JSONTransformMediatorFactor
             Value generatedKey = keyFac.createValue("schema", omElement);
             JSONTransformMediator.setSchemaKey(generatedKey);
         }
-        List<MediatorProperty> mediatorPropertyList = MediatorPropertyFactory.getMediatorProperties(omElement);
+        List<MediatorProperty> mediatorPropertyList = MediatorPropertyExtFactory.getMediatorProperties(omElement);
         if (!mediatorPropertyList.isEmpty()) {
             JSONTransformMediator.addAllProperties(mediatorPropertyList);
         }
-
+        addAllCommentChildrenToList(omElement, JSONTransformMediator.getCommentsList());
         return JSONTransformMediator;
     }
 }

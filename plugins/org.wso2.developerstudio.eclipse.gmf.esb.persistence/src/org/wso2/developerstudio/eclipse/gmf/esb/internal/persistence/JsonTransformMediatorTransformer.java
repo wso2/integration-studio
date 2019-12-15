@@ -64,8 +64,16 @@ public class JsonTransformMediatorTransformer extends AbstractEsbNodeTransformer
             for (JsonTransformMediatorProperty jsonTransformMediatorProperty : visualJsonTransform
                     .getJsonTransformProperties()) {
                 MediatorProperty mediatorProperty = new MediatorProperty();
-                mediatorProperty.setName(jsonTransformMediatorProperty.getPropertyName());
-                mediatorProperty.setValue(jsonTransformMediatorProperty.getPropertyValue());
+                if (jsonTransformMediatorProperty.getPropertyName() != null) {
+                	mediatorProperty.setName(jsonTransformMediatorProperty.getPropertyName());
+                } else {
+                	mediatorProperty.setName(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
+                }
+                if (jsonTransformMediatorProperty.getPropertyValue() != null) {
+                	mediatorProperty.setValue(jsonTransformMediatorProperty.getPropertyValue());
+                } else {
+                	mediatorProperty.setValue(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
+                }
                 mediatorPropertyList.add(mediatorProperty);
             }
             jsonTransformMediator.addAllProperties(mediatorPropertyList);
